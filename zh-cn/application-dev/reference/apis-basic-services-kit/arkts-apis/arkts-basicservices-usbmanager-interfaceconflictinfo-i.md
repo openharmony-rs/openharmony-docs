@@ -4,12 +4,12 @@
 interface InterfaceConflictInfo
 ```
 
-描述当已独占声明的USB接口被其他进程以非独占方式声明时的冲突信息，通过调用[usbManager.claimInterfaceExclusive](arkts-basicservices-usbmanager-claiminterfaceexclusive-f.md)独占声明接口后使用。
+描述当已独占声明的USB接口被其他进程以非独占方式声明时的冲突信息，通过调用[usbManager.claimInterfaceExclusive](arkts-basicservices-usbmanager-claiminterfaceexclusive-f.md#claiminterfaceexclusive-1)独占声明接口后使用。
 
 > **说明：** 
 > 
 > 此回调在其他进程调用非独占的
-> [usbManager.claimInterface](arkts-basicservices-usbmanager-claiminterface-f.md)
+> [usbManager.claimInterface](arkts-basicservices-usbmanager-claiminterface-f.md#claiminterface-1)
 > 接口声明同一USB接口时触发。独占持有方可通过此回调获知潜在的访问冲突。
 
 **起始版本：** 26.0.1

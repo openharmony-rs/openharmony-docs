@@ -1,4 +1,4 @@
-# CloudSyncConfig
+# CloudSyncConfig（系统接口）
 
 ```TypeScript
 interface CloudSyncConfig

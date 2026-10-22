@@ -22,7 +22,7 @@ Enumerates the flags that specify how the Want will be handled.
 FLAG_ABILITY_CLEAR_MISSION = 0x00008000
 ```
 
-Clears other operation missions. This flag can be set for the Want passed in [startAbility](arkts-ability-featureability-startability-f.md#startability). It must be used together with **FLAG_ABILITY_NEW_MISSION**.
+Clears other operation missions. This flag can be set for the Want passed in [startAbility](arkts-ability-featureability-startability-f.md#startability-1). It must be used together with **FLAG_ABILITY_NEW_MISSION**.
 
 **Since:** 6
 

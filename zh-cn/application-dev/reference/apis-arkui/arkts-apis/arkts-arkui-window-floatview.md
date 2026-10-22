@@ -52,11 +52,11 @@ import { floatView } from '@kit.ArkUI';
 
 | 名称 | 说明 |
 | --- | --- |
-| [bind](arkts-arkui-floatview-bind-f.md#bind) | 绑定标准悬浮窗和闪控球。需要先创建[标准悬浮窗控制器](arkts-arkui-floatview-floatviewcontroller-i.md)和[闪控球控制器](arkts-arkui-floatingball-floatingballcontroller-i.md)，且均未启动。使用Promise异步回调。 |
-| [create](arkts-arkui-floatview-create-f.md#create) | 创建标准悬浮窗控制器。使用Promise异步回调。 |
-| [getFloatViewLimits](arkts-arkui-floatview-getfloatviewlimits-f.md#getfloatviewlimits) | 根据传入的模板类型获取对应标准悬浮窗窗口的限制，单位为px。 |
-| [isFloatViewEnabled](arkts-arkui-floatview-isfloatviewenabled-f.md#isfloatviewenabled) | 判断当前设备是否支持标准悬浮窗功能。 |
-| [unbind](arkts-arkui-floatview-unbind-f.md#unbind) | 解绑标准悬浮窗和闪控球。需要在[标准悬浮窗控制器](arkts-arkui-floatview-floatviewcontroller-i.md)和[闪控球控制器](arkts-arkui-floatingball-floatingballcontroller-i.md)均停止后才可解绑。使用Promise异步回调。 |
+| [bind](arkts-arkui-floatview-bind-f.md#bind-1) | 绑定标准悬浮窗和闪控球。需要先创建[标准悬浮窗控制器](arkts-arkui-floatview-floatviewcontroller-i.md)和[闪控球控制器](arkts-arkui-floatingball-floatingballcontroller-i.md)，且均未启动。使用Promise异步回调。 |
+| [create](arkts-arkui-floatview-create-f.md#create-1) | 创建标准悬浮窗控制器。使用Promise异步回调。 |
+| [getFloatViewLimits](arkts-arkui-floatview-getfloatviewlimits-f.md#getfloatviewlimits-1) | 根据传入的模板类型获取对应标准悬浮窗窗口的限制，单位为px。 |
+| [isFloatViewEnabled](arkts-arkui-floatview-isfloatviewenabled-f.md#isfloatviewenabled-1) | 判断当前设备是否支持标准悬浮窗功能。 |
+| [unbind](arkts-arkui-floatview-unbind-f.md#unbind-1) | 解绑标准悬浮窗和闪控球。需要在[标准悬浮窗控制器](arkts-arkui-floatview-floatviewcontroller-i.md)和[闪控球控制器](arkts-arkui-floatingball-floatingballcontroller-i.md)均停止后才可解绑。使用Promise异步回调。 |
 
 ### 接口
 

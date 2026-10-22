@@ -230,10 +230,10 @@ openAtomicService(appId: string, options?: AtomicServiceOptions): Promise<Abilit
 
 Opens an atomic service in an independent window and returns the result. This API uses a promise to return the result. The following situations may be possible for a started atomic service:
 
-- Normally, you can call [terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult) to terminate the atomic service. The result is returned to the caller.  
+- Normally, you can call [terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult-1) to terminate the atomic service. The result is returned to the caller.  
 - If an exception occurs, for example, the atomic service is killed, an error message, in which **resultCode** is  
 **-1**, is returned to the caller.  
-- If different applications call this API to start an atomic service and then call [terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult) to terminate the atomic service, the normal result is returned to the last caller, and an exception message, in which **resultCode** is **-1**, is returned to others.
+- If different applications call this API to start an atomic service and then call [terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult-1) to terminate the atomic service, the normal result is returned to the last caller, and an exception message, in which **resultCode** is **-1**, is returned to others.
 
 > **NOTE:** 
 > 
@@ -286,7 +286,7 @@ Starts a UIAbility by using App Linking or Deep Linking. This API uses a promise
 - The **actions** field must contain **ohos.want.action.viewData**.  
 - The **entities** field must contain **entity.system.browsable**.  
 - The **uris** field must contain elements whose **scheme** is **https** and **domainVerify** is **true**.  
-If you want to obtain the result after the started UIAbility is terminated, set the **callback** parameter. For details about how to use this parameter, see [startAbilityForResult](#startabilityforresult). If an input parameter is invalid, for example, a mandatory parameter is not set or the URL set in **link** is not in the standard format, an exception is thrown. If the parameter verification is successful but an error occurs when starting the target UIAbility, the error information is returned through promise.
+If you want to obtain the result after the started UIAbility is terminated, set the **callback** parameter. For details about how to use this parameter, see [startAbilityForResult](#startabilityforresult-1). If an input parameter is invalid, for example, a mandatory parameter is not set or the URL set in **link** is not in the standard format, an exception is thrown. If the parameter verification is successful but an error occurs when starting the target UIAbility, the error information is returned through promise.
 
 > **NOTE:** 
 > 
@@ -600,10 +600,10 @@ startAbilityForResult(want: Want, callback: AsyncCallback<AbilityResult>): void
 
 Starts a UIAbility and returns the exit result of the launched UIAbility via a callback. This API uses an asynchronous callback to return the result. The following situations may be possible for a started UIAbility:
 
-- Normally, you can call [terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult) to terminate the UIAbility. The result is returned to the caller.  
+- Normally, you can call [terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult-1) to terminate the UIAbility. The result is returned to the caller.  
 - If an exception occurs, for example, the UIAbility is killed, an error message, in which **resultCode** is **-1**  
 , is returned to the initiator UIAbility.  
-- If different applications call this API to start a UIAbility that uses the singleton mode and then call [terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult) to terminate the UIAbility, the normal result is returned to the last caller, and an exception message, in which **resultCode** is **-1**, is returned to others.
+- If different applications call this API to start a UIAbility that uses the singleton mode and then call [terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult-1) to terminate the UIAbility, the normal result is returned to the last caller, and an exception message, in which **resultCode** is **-1**, is returned to others.
 
 > **NOTE:** 
 > 
@@ -667,10 +667,10 @@ startAbilityForResult(want: Want, options: StartOptions, callback: AsyncCallback
 
 Starts a UIAbility and returns the exit result of the launched UIAbility via a callback. This API uses an asynchronous callback to return the result. The following situations may be possible for a started UIAbility:
 
-- Normally, you can call [terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult) to terminate the UIAbility. The result is returned to the caller.  
+- Normally, you can call [terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult-1) to terminate the UIAbility. The result is returned to the caller.  
 - If an exception occurs, for example, the UIAbility is killed, an error message, in which **resultCode** is **-1**  
 , is returned to the initiator UIAbility.  
-- If different applications call this API to start a UIAbility that uses the singleton mode and then call [terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult) to terminate the UIAbility, the normal result is returned to the last caller, and an exception message, in which **resultCode** is **-1**, is returned to others.
+- If different applications call this API to start a UIAbility that uses the singleton mode and then call [terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult-1) to terminate the UIAbility, the normal result is returned to the last caller, and an exception message, in which **resultCode** is **-1**, is returned to others.
 
 > **NOTE:** 
 > 
@@ -733,10 +733,10 @@ startAbilityForResult(want: Want, options?: StartOptions): Promise<AbilityResult
 
 Starts a UIAbility and returns the exit result of the launched UIAbility via a callback. This API uses a promise to return the result. The following situations may be possible for a started UIAbility:
 
-- Normally, you can call [terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult) to terminate the UIAbility. The result is returned to the caller.  
+- Normally, you can call [terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult-1) to terminate the UIAbility. The result is returned to the caller.  
 - If an exception occurs, for example, the UIAbility is killed, an error message, in which **resultCode** is **-1**  
 , is returned to the initiator UIAbility.  
-- If different applications call this API to start a UIAbility that uses the singleton mode and then call [terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult) to terminate the UIAbility, the normal result is returned to the last caller, and an exception message, in which **resultCode** is **-1**, is returned to others.
+- If different applications call this API to start a UIAbility that uses the singleton mode and then call [terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult-1) to terminate the UIAbility, the normal result is returned to the last caller, and an exception message, in which **resultCode** is **-1**, is returned to others.
 
 > **NOTE:** 
 > 

@@ -229,7 +229,7 @@ Generates a random key using this symmetric key generator. This API uses an asyn
 > when the symmetric key generator is created, a binary key matching the hash length (for example, a 256-bit key)
 > will be randomly generated. If no hash algorithm is specified, for example, only **HMAC** is specified, random
 > symmetric key generation is not supported. You can generate symmetric key data using
-> [convertKey](#convertkey).
+> [convertKey](#convertkey-1).
 
 **Since:** 9
 

@@ -4,7 +4,7 @@
 export interface UnlitMaterial extends Material
 ```
 
-Material that is not affected by lighting. The shading value of the material is related only to the base color and is irrelevant to lighting conditions. It inherits from Material.
+Material that is not affected by lighting. The shading value of the material is related only to the base color and is irrelevant to lighting conditions. It inherits from [Material](arkts-arkgraphics3d-sceneresources-material-i.md).
 
 **Inheritance/Implementation:** UnlitMaterial extends [Material](arkts-arkgraphics3d-sceneresources-material-i.md)
 

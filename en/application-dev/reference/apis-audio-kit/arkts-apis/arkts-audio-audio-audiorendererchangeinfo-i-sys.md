@@ -1,4 +1,4 @@
-# AudioRendererChangeInfo
+# AudioRendererChangeInfo (System API)
 
 ```TypeScript
 interface AudioRendererChangeInfo

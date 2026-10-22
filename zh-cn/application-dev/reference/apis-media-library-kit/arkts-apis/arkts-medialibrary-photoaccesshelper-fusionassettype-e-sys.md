@@ -1,4 +1,4 @@
-# FusionAssetType
+# FusionAssetType（系统接口）
 
 ```TypeScript
 enum FusionAssetType

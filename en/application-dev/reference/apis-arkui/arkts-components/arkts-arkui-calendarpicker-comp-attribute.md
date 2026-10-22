@@ -47,7 +47,7 @@ Sets how the picker is aligned with the entry component.
 edgeAlign(alignType: Optional<CalendarAlign>, offset?: Offset)
 ```
 
-Sets how the picker is aligned with the entry component. Compared with [edgeAlign](#edgealign), this API supports the **undefined** type for the **alignType** parameter.
+Sets how the picker is aligned with the entry component. Compared with [edgeAlign](#edgealign-1), this API supports the **undefined** type for the **alignType** parameter.
 
 **Since:** 18
 
@@ -144,7 +144,7 @@ Triggered when a date is selected. This event cannot be triggered by two-way bou
 onChange(callback: Optional<Callback<Date>>)
 ```
 
-Triggered when a date is selected. This event cannot be triggered by two-way bound state variables. Compared with [onChange](#onchange), this API supports the **undefined** type for the **callback** parameter.
+Triggered when a date is selected. This event cannot be triggered by two-way bound state variables. Compared with [onChange](#onchange-1), this API supports the **undefined** type for the **callback** parameter.
 
 > **NOTE:** 
 > 
@@ -196,7 +196,7 @@ Sets the font color, font size, and font weight in the entry area.
 textStyle(style: Optional<PickerTextStyle>)
 ```
 
-Sets the font color, font size, and font weight in the entry area. Compared with [textStyle](#textstyle), this API supports the **undefined** type for the **style** parameter.
+Sets the font color, font size, and font weight in the entry area. Compared with [textStyle](#textstyle-1), this API supports the **undefined** type for the **style** parameter.
 
 **Since:** 18
 

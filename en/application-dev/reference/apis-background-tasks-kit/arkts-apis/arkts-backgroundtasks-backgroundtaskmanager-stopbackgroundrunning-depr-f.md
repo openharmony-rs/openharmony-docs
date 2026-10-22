@@ -17,7 +17,7 @@ Requests to cancel a continuous task. This API uses an asynchronous callback to 
 
 **Deprecated since:** 9
 
-**Substitutes:** [stopBackgroundRunning](arkts-backgroundtasks-backgroundtaskmanager-stopbackgroundrunning-f.md#stopbackgroundrunning)(context: Context, callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [stopBackgroundRunning](arkts-backgroundtasks-backgroundtaskmanager-stopbackgroundrunning-f.md#stopbackgroundrunning-1)(context: Context, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-backgroundTaskManager-function stopBackgroundRunning(context: Context, callback: AsyncCallback<void>): void--><!--Device-backgroundTaskManager-function stopBackgroundRunning(context: Context, callback: AsyncCallback<void>): void-End-->
 
@@ -87,7 +87,7 @@ Requests to cancel a continuous task. This API uses a promise to return the resu
 
 **Deprecated since:** 9
 
-**Substitutes:** [stopBackgroundRunning](arkts-backgroundtasks-backgroundtaskmanager-stopbackgroundrunning-f.md#stopbackgroundrunning)(context: Context)
+**Substitutes:** [stopBackgroundRunning](arkts-backgroundtasks-backgroundtaskmanager-stopbackgroundrunning-f.md#stopbackgroundrunning-2)(context: Context)
 
 <!--Device-backgroundTaskManager-function stopBackgroundRunning(context: Context): Promise<void>--><!--Device-backgroundTaskManager-function stopBackgroundRunning(context: Context): Promise<void>-End-->
 
@@ -120,4 +120,25 @@ backgroundTaskManager.stopBackgroundRunning(featureAbility.getContext()).then(()
 }).catch((err: BusinessError) => {
   console.error(`Operation stopBackgroundRunning failed. code is ${err.code} message is ${err.message}`);
 });
+```
+
+stage model example:
+
+```TypeScript
+import UIAbility from '@ohos.app.ability.UIAbility';
+import backgroundTaskManager from '@ohos.backgroundTaskManager';
+import Want from '@ohos.app.ability.Want';
+import AbilityConstant from '@ohos.app.ability.AbilityConstant';
+import { BusinessError } from '@ohos.base';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    // Cancel a continuous task.
+    backgroundTaskManager.stopBackgroundRunning(this.context).then(() => {
+      console.info('Operation stopBackgroundRunning succeeded');
+    }).catch((err: BusinessError) => {
+      console.error(`Operation stopBackgroundRunning failed. code is ${err.code} message is ${err.message}`);
+    });
+  }
+};
 ```

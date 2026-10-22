@@ -97,9 +97,9 @@ struct ScrollBarExample {
 
 
 
-## Example 2: Implementing a ScrollBar Component Without Child Components
+## 示例2（不设置子节点）
 
-This example illustrates the style of a **ScrollBar** component without child components. The [scrollBarColor](arkts-arkui-scrollbar-comp-attribute.md#scrollbarcolor) attribute is added since API version 20.
+该示例为ScrollBar组件没有子节点时的滚动条样式。从API version 20开始，可通过[scrollBarColor](arkts-arkui-scrollbar-comp-attribute.md#scrollbarcolor)设置滚动条颜色。
 
 ```ts
 import { ColorMetrics } from '@kit.ArkUI'
@@ -141,9 +141,9 @@ struct ScrollBarExample {
 
 
 
-## Example 3: Enabling Nested Scrolling
+## 示例3（支持嵌套滚动）
 
-This example demonstrates how to enable nested scrolling for a **ScrollBar** component using the [enableNestedScroll](arkts-arkui-scrollbar-comp-attribute.md#enablenestedscroll) attribute. This feature is available from API version 20.
+从API version 14开始，可通过[enableNestedScroll](arkts-arkui-scrollbar-comp-attribute.md#enablenestedscroll)属性使ScrollBar组件支持嵌套滚动。本示例同时使用从API version 20开始支持的[scrollBarColor](arkts-arkui-scrollbar-comp-attribute.md#scrollbarcolor)属性设置滚动条颜色。
 
 ```ts
 import { ColorMetrics } from '@kit.ArkUI'

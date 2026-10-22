@@ -143,7 +143,7 @@ async function demo() {
 getMeasureResult(metric: PerfMetric): PerfMeasureResult
 ```
 
-获取指定性能指标的测量数据。需要在run()执行完成后调用，否则无法获取到有效的测量数据。
+获取指定性能指标的测量数据。需要在[run()](#run)执行完成后调用，否则无法获取到有效的测量数据。
 
 **起始版本：** 20
 
@@ -222,7 +222,7 @@ run(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

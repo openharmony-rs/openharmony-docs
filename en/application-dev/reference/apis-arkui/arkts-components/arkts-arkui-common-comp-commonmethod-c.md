@@ -788,7 +788,7 @@ Sets the alignment mode for child components within the component's drawing area
 alignRules(value: AlignRuleOption): T
 ```
 
-Sets the alignment rule for child components within the relative container. This attribute only takes effect when the parent container is RelativeContainer, and supports dynamic configuration via [attributeModifier](#attributemodifier).
+Sets the alignment rule for child components within the relative container. This attribute only takes effect when the parent container is [RelativeContainer](arkts-arkui-relativecontainer-comp.md), and supports dynamic configuration via [attributeModifier](#attributemodifier).
 
 **Since:** 9
 
@@ -818,7 +818,7 @@ Sets the alignment rule for child components within the relative container. This
 alignRules(alignRule: LocalizedAlignRuleOptions): T
 ```
 
-Sets the alignment rules in the relative container. This API is valid only when the container is RelativeContainer, This attribute replaces the original **left** and **right** directional parameters with **start** and **end** to support proper mirroring in right-to-left (RTL) layout modes. It is recommended that you use this attribute for configuring child component alignment rules in relative containers. This attribute supports dynamic configuration via [attributeModifier](#attributemodifier).
+Sets the alignment rules in the relative container. This API is valid only when the container is [RelativeContainer](arkts-arkui-relativecontainer-comp.md), This attribute replaces the original **left** and **right** directional parameters with **start** and **end** to support proper mirroring in right-to-left (RTL) layout modes. It is recommended that you use this attribute for configuring child component alignment rules in relative containers. This attribute supports dynamic configuration via [attributeModifier](#attributemodifier).
 
 **Since:** 12
 
@@ -866,7 +866,7 @@ The alignment mode of the child component along the cross axis (the direction pe
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ItemAlign](../arkts-apis/arkts-arkui-itemalign-e.md) | Yes | Alignment format of the child component on the cross axis of the parent container, which overrides the alignItems setting in the Flex, Column, Row, DynamicLayout, and GridRow layout containers. Use it when a child component needs a different alignment from other child components in the parent container (typical scenarios: most child components in the parent container are center-aligned, but a specific child component needs top or bottom alignment; or a special alignment needs to be specified for a single child component).<br>GridCol can bind the alignSelf attribute to change its own layout in the cross axis direction.<br>Default value: ItemAlign.Auto (indicates inheriting the alignment setting of the parent container) |
+| value | [ItemAlign](../arkts-apis/arkts-arkui-itemalign-e.md) | Yes | Alignment format of the child component on the cross axis of the parent container, which overrides the alignItems setting in the [Flex](arkts-arkui-flex-comp.md), [Column](arkts-arkui-column-comp.md), [Row](arkts-arkui-row-comp.md), DynamicLayout, and GridRow layout containers. Use it when a child component needs a different alignment from other child components in the parent container (typical scenarios: most child components in the parent container are center-aligned, but a specific child component needs top or bottom alignment; or a special alignment needs to be specified for a single child component).<br>GridCol can bind the alignSelf attribute to change its own layout in the cross axis direction.<br>Default value: ItemAlign.Auto (indicates inheriting the alignment setting of the parent container) |
 
 **Return value:**
 
@@ -944,7 +944,7 @@ Sets a property animation for the component.
 
 > **NOTE:** 
 > 
-> - When a single page contains a large number of components with animations, use [renderGroup](#rendergroup) to minimize frame freezing and improve animation performance. For best practices, see
+> - When a single page contains a large number of components with animations, use [renderGroup](#rendergroup-1) to minimize frame freezing and improve animation performance. For best practices, see
 > 
 > [Animation Usage Guide – Using RenderGroup](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-fair-use-animation#section1223162922415).
 > 
@@ -1071,7 +1071,7 @@ Applies a background blur effect to the component. You can customize the blur ra
 backdropBlur(radius: Optional<number>, options?: BlurOptions): T
 ```
 
-Applies a background blur effect to the component. You can customize the blur radius and grayscale parameters. Compared to [backdropBlur](#backdropblur), the **radius** parameter supports the **undefined** type.
+Applies a background blur effect to the component. You can customize the blur radius and grayscale parameters. Compared to [backdropBlur](#backdropblur-1), the **radius** parameter supports the **undefined** type.
 
 **Since:** 18
 
@@ -1204,7 +1204,7 @@ Defines the background material blur style. It encapsulates various blur radius,
 backgroundBlurStyle(style: Optional<BlurStyle>, options?: BackgroundBlurStyleOptions): T
 ```
 
-Defines the background material blur style. It encapsulates various blur radius, mask color, mask opacity, saturation, and brightness values through enum values. Compared to [backgroundBlurStyle<sup>9+</sup>](#backgroundblurstyle), the **style** parameter supports the **undefined** type.
+Defines the background material blur style. It encapsulates various blur radius, mask color, mask opacity, saturation, and brightness values through enum values. Compared to [backgroundBlurStyle<sup>9+</sup>](#backgroundblurstyle-1), the **style** parameter supports the **undefined** type.
 
 **Since:** 18
 
@@ -1301,7 +1301,7 @@ Sets the background brightness of the component.
 backgroundBrightness(options: Optional<BackgroundBrightnessOptions>): T
 ```
 
-Sets the background brightness of the component. Compared to [backgroundBrightness<sup>12+</sup>](#backgroundbrightness), the **options** parameter supports the **undefined** type.
+Sets the background brightness of the component. Compared to [backgroundBrightness<sup>12+</sup>](#backgroundbrightness-1), the **options** parameter supports the **undefined** type.
 
 **Since:** 18
 
@@ -1455,7 +1455,7 @@ Sets the background effect of the component, including the blur radius, brightne
 backgroundEffect(options: Optional<BackgroundEffectOptions>): T
 ```
 
-Sets the background effect of the component, including the blur radius, brightness, saturation, and color. Compared to [backgroundEffect<sup>11+</sup>](#backgroundeffect), the **options** parameter supports the **undefined** type.
+Sets the background effect of the component, including the blur radius, brightness, saturation, and color. Compared to [backgroundEffect<sup>11+</sup>](#backgroundeffect-1), the **options** parameter supports the **undefined** type.
 
 **Since:** 18
 
@@ -2138,7 +2138,7 @@ Defines how the component's content (including the content of it child component
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | value | [BlendMode](arkts-arkui-common-comp-blendmode-e.md) | Yes | Blend mode. <br>Default value: **BlendMode.NONE** <br>**NOTE:** <br>When **BlendMode.NONE** is used, the blend effect is **BlendMode.SRC_OVER** by default, and **BlendApplyType** does not take effect. |
-| type | [BlendApplyType](arkts-arkui-common-comp-blendapplytype-e.md) | No | Whether the blend mode is implemented offscreen. <br>Default value: **BlendApplyType.FAST** <br>**NOTE:** <br>1. **BlendApplyType.FAST**: The blend mode is not implemented offscreen. <br>2. **BlendApplyType.OFFSCREEN**: An offscreen canvas of the size of the current component is created. The content of the current component (including child components) is then drawn onto the offscreen canvas, and blended with the existing content on the canvas below using the specified blend mode. This approach may cause issues with screen capture for APIs such as  [linearGradientBlur<sup>12+</sup>](#lineargradientblur), [backgroundEffect](#backgroundeffect), [brightness](#brightness), and [blur](#blur). |
+| type | [BlendApplyType](arkts-arkui-common-comp-blendapplytype-e.md) | No | Whether the blend mode is implemented offscreen. <br>Default value: **BlendApplyType.FAST** <br>**NOTE:** <br>1. **BlendApplyType.FAST**: The blend mode is not implemented offscreen. <br>2. **BlendApplyType.OFFSCREEN**: An offscreen canvas of the size of the current component is created. The content of the current component (including child components) is then drawn onto the offscreen canvas, and blended with the existing content on the canvas below using the specified blend mode. This approach may cause issues with screen capture for APIs such as  [linearGradientBlur<sup>12+</sup>](#lineargradientblur-1), [backgroundEffect](#backgroundeffect-1), [brightness](#brightness-1), and [blur](#blur-1). |
 
 **Return value:**
 
@@ -2152,7 +2152,7 @@ Defines how the component's content (including the content of it child component
 blendMode(mode: Optional<BlendMode>, type?: BlendApplyType): T
 ```
 
-Defines how the component's content (including the content of it child components) is blended with the existing content on the canvas (possibly offscreen canvas) below. Compared to [blendMode<sup>11+</sup>](#blendmode), the **mode** parameter supports the **undefined** type.
+Defines how the component's content (including the content of it child components) is blended with the existing content on the canvas (possibly offscreen canvas) below. Compared to [blendMode<sup>11+</sup>](#blendmode-1), the **mode** parameter supports the **undefined** type.
 
 **Since:** 18
 
@@ -2171,7 +2171,7 @@ Defines how the component's content (including the content of it child component
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | mode | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[BlendMode](arkts-arkui-common-comp-blendmode-e.md)&gt; | Yes | Blend mode. <br>Default value: **BlendMode.NONE** <br>If **mode** is **undefined**, the component reverts to its original effect of not enabling offscreen rendering as a whole before blending with the parent component. <br>**NOTE:** <br>When **BlendMode.NONE** is used, the blend effect is **BlendMode.SRC_OVER** by default, and **BlendApplyType** does not take effect. |
-| type | [BlendApplyType](arkts-arkui-common-comp-blendapplytype-e.md) | No | Whether the blend mode is implemented offscreen. <br>Default value: **BlendApplyType.FAST** <br>**NOTE:** <br>1. **BlendApplyType.FAST**: The blend mode is not implemented offscreen. <br>2. **BlendApplyType.OFFSCREEN**: An offscreen canvas of the size of the current component is created. The content of the current component (including child components) is then drawn onto the offscreen canvas, and blended with the existing content on the canvas below using the specified blend mode. This approach may cause issues with screen capture for APIs such as  [linearGradientBlur<sup>12+</sup>](#lineargradientblur), [backgroundEffect](#backgroundeffect), [brightness](#brightness), and [blur](#blur). |
+| type | [BlendApplyType](arkts-arkui-common-comp-blendapplytype-e.md) | No | Whether the blend mode is implemented offscreen. <br>Default value: **BlendApplyType.FAST** <br>**NOTE:** <br>1. **BlendApplyType.FAST**: The blend mode is not implemented offscreen. <br>2. **BlendApplyType.OFFSCREEN**: An offscreen canvas of the size of the current component is created. The content of the current component (including child components) is then drawn onto the offscreen canvas, and blended with the existing content on the canvas below using the specified blend mode. This approach may cause issues with screen capture for APIs such as  [linearGradientBlur<sup>12+</sup>](#lineargradientblur-1), [backgroundEffect](#backgroundeffect-1), [brightness](#brightness-1), and [blur](#blur-1). |
 
 **Return value:**
 
@@ -2216,7 +2216,7 @@ Applies a foreground blur effect to the component.
 blur(blurRadius: Optional<number>, options?: BlurOptions): T
 ```
 
-Applies a foreground blur effect to the component. Compared to [blur](#blur), the **blurRadius** parameter supports the **undefined** type.
+Applies a foreground blur effect to the component. Compared to [blur](#blur-1), the **blurRadius** parameter supports the **undefined** type.
 
 **Since:** 18
 
@@ -2533,7 +2533,7 @@ Applies a brightness effect to the component. If this API is not used, there wil
 brightness(brightness: Optional<number>): T
 ```
 
-Applies a brightness effect to the component. If this API is not used, there will be no change by default. Compared with [brightness](#brightness), this API supports the **undefined** type for the **brightness** parameter.
+Applies a brightness effect to the component. If this API is not used, there will be no change by default. Compared with [brightness](#brightness-1), this API supports the **undefined** type for the **brightness** parameter.
 
 **Since:** 18
 
@@ -2596,7 +2596,7 @@ Sets the parameters of the chain in which the component is the head. This attrib
 chainWeight(chainWeight: ChainWeightOptions): T
 ```
 
-Sets the weight of the component in a chain, which is used to re-lay out components that form the chain. This attribute takes effect only when the parent container is RelativeContainer.
+Sets the weight of the component in a chain, which is used to re-lay out components that form the chain. This attribute takes effect only when the parent container is [RelativeContainer](arkts-arkui-relativecontainer-comp.md).
 
 **NOTE:** 
 
@@ -2660,7 +2660,7 @@ Sets the click feedback effect of the component.
 clickEffect(effect: Optional<ClickEffect | null>): T
 ```
 
-Sets the click feedback effect of the component. Compared with [clickEffect](#clickeffect), this API supports the **undefined** type.
+Sets the click feedback effect of the component. Compared with [clickEffect](#clickeffect-1), this API supports the **undefined** type.
 
 **Since:** 18
 
@@ -2722,7 +2722,7 @@ Sets whether to clip the areas of child components that extend beyond this compo
 clip(clip: Optional<boolean>): T
 ```
 
-Sets whether to clip the areas of child components that extend beyond this component's bounds, that is, whether to perform clipping based on the edge contour of the parent container If this API is not used, the area of child components extending beyond the current component's bounds is not clipped by default. Compared with [clip<sup>12+</sup>](#clip), this API supports the **undefined** type.
+Sets whether to clip the areas of child components that extend beyond this component's bounds, that is, whether to perform clipping based on the edge contour of the parent container If this API is not used, the area of child components extending beyond the current component's bounds is not clipped by default. Compared with [clip<sup>12+</sup>](#clip-1), this API supports the **undefined** type.
 
 **Since:** 18
 
@@ -2833,7 +2833,7 @@ Clips this component according to the specified shape (which may include positio
 clipShape(shape: Optional<CircleShape | EllipseShape | PathShape | RectShape>): T
 ```
 
-Clips this component according to the specified shape (which may include position information). Compared with [clipShape<sup>12+</sup>](#clipshape), this API supports the **undefined** type.
+Clips this component according to the specified shape (which may include position information). Compared with [clipShape<sup>12+</sup>](#clipshape-1), this API supports the **undefined** type.
 
 > **NOTE:** 
 > 
@@ -2906,7 +2906,7 @@ Applies a color blend effect to the component.
 colorBlend(color: Optional<Color | string | Resource>): T
 ```
 
-Applies a color blend effect to the component. Compared with [colorBlend](#colorblend), this API supports the **undefined** type for the **color** parameter.
+Applies a color blend effect to the component. Compared with [colorBlend](#colorblend-1), this API supports the **undefined** type for the **color** parameter.
 
 **Since:** 18
 
@@ -3009,7 +3009,7 @@ Sets the constraint size, which limits the size range during component layout. A
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ConstraintSizeOptions](../arkts-apis/arkts-arkui-constraintsizeoptions-i.md) | Yes | Constraint size. The priority of **constraintSize** is higher than that of [width](#width) and [height](#height). For the value result, refer to the impact of the **constraintSize** value on width and height. <br>Default value:<br>**{<br>minWidth:&nbsp;0,<br>maxWidth:&nbsp;Infinity,<br>minHeight:&nbsp;0, <br>maxHeight:&nbsp;Infinity<br>}**<br>Abnormal value: For a string starting with a number, only the numeric part is parsed; for a string not starting with a number, it is parsed as 0. For other abnormal values, the **constraintSize** attribute is restored to the default behavior when it is not configured. <br>Unit: vp |
+| value | [ConstraintSizeOptions](../arkts-apis/arkts-arkui-constraintsizeoptions-i.md) | Yes | Constraint size. The priority of **constraintSize** is higher than that of [width](#width-1) and [height](#height-1). For the value result, refer to the impact of the **constraintSize** value on width and height. <br>Default value:<br>**{<br>minWidth:&nbsp;0,<br>maxWidth:&nbsp;Infinity,<br>minHeight:&nbsp;0, <br>maxHeight:&nbsp;Infinity<br>}**<br>Abnormal value: For a string starting with a number, only the numeric part is parsed; for a string not starting with a number, it is parsed as 0. For other abnormal values, the **constraintSize** attribute is restored to the default behavior when it is not configured. <br>Unit: vp |
 
 **Return value:**
 
@@ -3055,7 +3055,7 @@ Applies a contrast effect to the component. If this API is not used, there will 
 contrast(contrast: Optional<number>): T
 ```
 
-Applies a contrast effect to the component. If this API is not used, there will be no change by default. Compared to [contrast](#contrast), the **contrast** parameter supports the **undefined** type.
+Applies a contrast effect to the component. If this API is not used, there will be no change by default. Compared to [contrast](#contrast-1), the **contrast** parameter supports the **undefined** type.
 
 **Since:** 18
 
@@ -3205,7 +3205,7 @@ Sets the display priority of the current component in a Row/Column/Flex (single-
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | number | Yes | Sets the display priority of the current component in the layout container. The value range is 0, +∞). <br>Default value: **1** <br>**NOTE:** <br> Takes effect only in [Row/Column/Flex (single-line) container components. <br>Used when the container space is limited and the display order of components needs to be controlled or low-priority components need to be hidden (for example, dynamically displaying content based on the available space in a Flex container). It is recommended to set the priority based on the importance of the component, with a larger value (such as 2-10) for key components and a smaller value (such as 1) for secondary components. <br>The digits after the decimal point do not affect the priority. All values not greater than 1 have the same priority. When the value is greater than 1, the larger the integer part of displayPriority, the higher the priority; values within the same integer range have the same priority. For example, **0.5** and **1.0** have the same priority (both are not greater than 1); **1.5** and **1.9** have the same priority (both have an integer part of 1); **2.0** and **2.9** have the same priority (both have an integer part of 2), and their priority is higher than that of 1.x. <br>If the parent container has insufficient space, child components with lower priority are hidden. If child components at a certain priority level are hidden, all child components with lower priority are also hidden. |
+| value | number | Yes | Sets the display priority of the current component in the layout container. The value range is [0, +∞). <br>Default value: **1** <br>**NOTE:** <br> Takes effect only in [Row](arkts-arkui-row-comp.md)/[Column](arkts-arkui-column-comp.md)/Flex (single-line) container components. <br>Used when the container space is limited and the display order of components needs to be controlled or low-priority components need to be hidden (for example, dynamically displaying content based on the available space in a Flex container). It is recommended to set the priority based on the importance of the component, with a larger value (such as 2-10) for key components and a smaller value (such as 1) for secondary components. <br>The digits after the decimal point do not affect the priority. All values not greater than 1 have the same priority. When the value is greater than 1, the larger the integer part of displayPriority, the higher the priority; values within the same integer range have the same priority. For example, **0.5** and **1.0** have the same priority (both are not greater than 1); **1.5** and **1.9** have the same priority (both have an integer part of 1); **2.0** and **2.9** have the same priority (both have an integer part of 2), and their priority is higher than that of 1.x. <br>If the parent container has insufficient space, child components with lower priority are hidden. If child components at a certain priority level are hidden, all child components with lower priority are also hidden. |
 
 **Return value:**
 
@@ -3303,7 +3303,7 @@ Sets the preview image displayed during component drag operations.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [CustomBuilder](arkts-arkui-common-comp-custombuilder-t.md) &#124; [DragItemInfo](arkts-arkui-common-comp-dragiteminfo-i.md) &#124; string | Yes | Preview image displayed during component drag operations. It only applies to [onDragStart](#ondragstart) drag mode.<br>If the component supports drag and drop and a preview is specified through [bindContextMenu](#bindcontextmenu), that specified preview is displayed when the component is dragged. The priority of the background image returned in [onDragStart](#ondragstart) is lower than that of the preview set in [dragPreview](#dragpreview). This means that, once set, the latter will be used in place of the former. Using [CustomBuilder](../../../reference/apis-arkui/arkui-ts/ts-types.md#custombuilder8) requires offline rendering and may increase performance overhead and latency. In light of this, you are advised to use [PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md) in [DragItemInfo](arkts-arkui-common-comp-dragiteminfo-i.md) instead.<br> When an ID of the string type is passed in, the snapshot of the component assigned the ID is used as the preview image. If the component assigned the ID cannot be found or its Visibility attribute is set to **None** or **Hidden**, a snapshot of the current component is used as the preview image. Currently, snapshots do not support visual effects, such as brightness, shadow, blur, and rotation.<br>**Since:** 12 |
+| value | [CustomBuilder](arkts-arkui-common-comp-custombuilder-t.md) &#124; [DragItemInfo](arkts-arkui-common-comp-dragiteminfo-i.md) &#124; string | Yes | Preview image displayed during component drag operations. It only applies to [onDragStart](#ondragstart) drag mode.<br>If the component supports drag and drop and a preview is specified through [bindContextMenu](#bindcontextmenu-1), that specified preview is displayed when the component is dragged. The priority of the background image returned in [onDragStart](#ondragstart) is lower than that of the preview set in [dragPreview](#dragpreview). This means that, once set, the latter will be used in place of the former. Using [CustomBuilder](../../../reference/apis-arkui/arkui-ts/ts-types.md#custombuilder8) requires offline rendering and may increase performance overhead and latency. In light of this, you are advised to use [PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md) in [DragItemInfo](arkts-arkui-common-comp-dragiteminfo-i.md) instead.<br> When an ID of the string type is passed in, the snapshot of the component assigned the ID is used as the preview image. If the component assigned the ID cannot be found or its Visibility attribute is set to **None** or **Hidden**, a snapshot of the current component is used as the preview image. Currently, snapshots do not support visual effects, such as brightness, shadow, blur, and rotation.<br>**Since:** 12 |
 
 **Return value:**
 
@@ -3339,7 +3339,7 @@ Sets the preview image displayed during the component float and drag process. Th
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| preview | [CustomBuilder](arkts-arkui-common-comp-custombuilder-t.md) &#124; [DragItemInfo](arkts-arkui-common-comp-dragiteminfo-i.md) &#124; string | Yes | Preview image displayed during component drag operations. It only applies to [onDragStart](#ondragstart) drag mode.<br>If the component supports drag and drop and a preview is specified through [bindContextMenu](#bindcontextmenu), that specified preview is displayed when the component is dragged. The priority of the background image returned in [onDragStart](#ondragstart) is lower than that of the preview set in [dragPreview](#dragpreview). This means that, once set, the latter will be used in place of the former. Using [CustomBuilder](../../../reference/apis-arkui/arkui-ts/ts-types.md#custombuilder8) requires offline rendering and may increase performance overhead and latency. In light of this, you are advised to use [PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md) in [DragItemInfo](arkts-arkui-common-comp-dragiteminfo-i.md) instead.<br> When an ID of the string type is passed in, the snapshot of the component assigned the ID is used as the preview image. If the component assigned the ID cannot be found or its Visibility attribute is set to **None** or **Hidden**, a snapshot of the current component is used as the preview image. Currently, snapshots do not support visual effects, such as brightness, shadow, blur, and rotation. |
+| preview | [CustomBuilder](arkts-arkui-common-comp-custombuilder-t.md) &#124; [DragItemInfo](arkts-arkui-common-comp-dragiteminfo-i.md) &#124; string | Yes | Preview image displayed during component drag operations. It only applies to [onDragStart](#ondragstart) drag mode.<br>If the component supports drag and drop and a preview is specified through [bindContextMenu](#bindcontextmenu-1), that specified preview is displayed when the component is dragged. The priority of the background image returned in [onDragStart](#ondragstart) is lower than that of the preview set in [dragPreview](#dragpreview). This means that, once set, the latter will be used in place of the former. Using [CustomBuilder](../../../reference/apis-arkui/arkui-ts/ts-types.md#custombuilder8) requires offline rendering and may increase performance overhead and latency. In light of this, you are advised to use [PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md) in [DragItemInfo](arkts-arkui-common-comp-dragiteminfo-i.md) instead.<br> When an ID of the string type is passed in, the snapshot of the component assigned the ID is used as the preview image. If the component assigned the ID cannot be found or its Visibility attribute is set to **None** or **Hidden**, a snapshot of the current component is used as the preview image. Currently, snapshots do not support visual effects, such as brightness, shadow, blur, and rotation. |
 | config | [PreviewConfiguration](arkts-arkui-common-comp-previewconfiguration-i.md) | No | Configures the preview image during the custom drag process. This parameter takes effect only for the preview in [dragPreview](#dragpreview). Pass this parameter when you need to configure custom preview behaviors such as whether the preview image is used only for the float effect and whether to delay creation. If this parameter is not passed, the system default drag preview behavior is used, that is, the preview image is not restricted to the float effect only and is not created with a delay. |
 
 **Return value:**
@@ -3593,7 +3593,7 @@ Sets the proportion of the component in the remaining space of the parent contai
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | number | Yes | Sets the proportion of the remaining space in the parent container along the main axis (horizontal for row layout and vertical for column layout) allocated to the component where this attribute resides. The value 0 means the component does not participate in the allocation of remaining space and keeps its original size. When the value is greater than 0, the remaining space of the parent container is allocated proportionally; the larger the value, the more space is allocated.<br>Value range: 0, +∞)<br>Default value: 0<br>When the parent container is [Column or Row, you need to set the size along the main axis (width/height/size); otherwise, the remaining space allocation effect of flexGrow may be affected.<br>[constraintSize](#constraintsize) restricts the size range of the component. When the component size after flexGrow expansion exceeds the maximum limit of constraintSize, it is constrained by constraintSize.<br>When an invalid value is set, this attribute takes the default value. |
+| value | number | Yes | Sets the proportion of the remaining space in the parent container along the main axis (horizontal for row layout and vertical for column layout) allocated to the component where this attribute resides. The value 0 means the component does not participate in the allocation of remaining space and keeps its original size. When the value is greater than 0, the remaining space of the parent container is allocated proportionally; the larger the value, the more space is allocated.<br>Value range: [0, +∞)<br>Default value: 0<br>When the parent container is [Column](arkts-arkui-column-comp.md) or [Row](arkts-arkui-row-comp.md), you need to set the size along the main axis (width/height/size); otherwise, the remaining space allocation effect of flexGrow may be affected.<br>[constraintSize](#constraintsize) restricts the size range of the component. When the component size after flexGrow expansion exceeds the maximum limit of constraintSize, it is constrained by constraintSize.<br>When an invalid value is set, this attribute takes the default value. |
 
 **Return value:**
 
@@ -3632,7 +3632,7 @@ Sets the proportion of the shrink size allocated to the component where this att
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | number | Yes | Sets the proportion of the compressed size allocated to the component to which this attribute belongs when the parent container space is insufficient. The value 0 indicates that the component does not participate in compression; when the value is greater than 0, compression is performed proportionally, and a larger value indicates a larger compression amount.<br>When the parent container is Column or Row, default value: 0, value range: 0, +∞).<br>When the parent container is [Flex, default value: 1, value range: [0, +∞).<br>[constraintSize](#constraintsize) restricts the size range of the component. Even if [constraintSize](#constraintsize) is set for Column and Row, when the main axis size (width/height/size) is not set in the parent container, the default layout behavior is still followed, and the component size is adapted to the children on the main axis. In this case, flexShrink does not take effect.<br>When an exception value is set, this attribute uses the default value. |
+| value | number | Yes | Sets the proportion of the compressed size allocated to the component to which this attribute belongs when the parent container space is insufficient. The value 0 indicates that the component does not participate in compression; when the value is greater than 0, compression is performed proportionally, and a larger value indicates a larger compression amount.<br>When the parent container is [Column](arkts-arkui-column-comp.md) or [Row](arkts-arkui-row-comp.md), default value: 0, value range: [0, +∞).<br>When the parent container is [Flex](arkts-arkui-flex-comp.md), default value: 1, value range: [0, +∞).<br>[constraintSize](#constraintsize) restricts the size range of the component. Even if [constraintSize](#constraintsize) is set for [Column](arkts-arkui-column-comp.md) and [Row](arkts-arkui-row-comp.md), when the main axis size (width/height/size) is not set in the parent container, the default layout behavior is still followed, and the component size is adapted to the children on the main axis. In this case, flexShrink does not take effect.<br>When an exception value is set, this attribute uses the default value. |
 
 **Return value:**
 
@@ -3795,7 +3795,7 @@ Sets the ID of the current container component and whether it is a focus group. 
 focusScopePriority(scopeId: string, priority?: FocusPriority): T
 ```
 
-Sets the focus priority of this component in a specified container. It must be used together with [focusScopeId](#focusscopeid).
+Sets the focus priority of this component in a specified container. It must be used together with [focusScopeId](#focusscopeid-1).
 
 **Since:** 12
 
@@ -3861,7 +3861,7 @@ Applies a foreground blur style to the component.
 foregroundBlurStyle(style: Optional<BlurStyle>, options?: ForegroundBlurStyleOptions): T
 ```
 
-Applies a foreground blur style to the component. Compared to [foregroundBlurStyle](#foregroundblurstyle), the **style** parameter supports the **undefined** type.
+Applies a foreground blur style to the component. Compared to [foregroundBlurStyle](#foregroundblurstyle-1), the **style** parameter supports the **undefined** type.
 
 **Since:** 18
 
@@ -3954,7 +3954,7 @@ Sets the foreground color of the component. Components without explicit foregrou
 foregroundColor(color: Optional<ResourceColor | ColoringStrategy>): T
 ```
 
-Sets the foreground color of the component. Components without explicit foreground color settings inherit from their parent components by default. Compared to [foregroundColor](#foregroundcolor), the **color** parameter supports the **undefined** type.
+Sets the foreground color of the component. Components without explicit foreground color settings inherit from their parent components by default. Compared to [foregroundColor](#foregroundcolor-1), the **color** parameter supports the **undefined** type.
 
 **Since:** 18
 
@@ -4082,7 +4082,7 @@ Sets whether to freeze the component. When frozen, the component and its childre
 freeze(freeze: Optional<boolean>): T
 ```
 
-Sets whether to freeze the component. When frozen, the component and its children are cached for repeated drawing after offscreen rendering, without updating internal attributes. Compared with [freeze](#freeze), this API supports the **undefined** type for the **freeze** parameter.
+Sets whether to freeze the component. When frozen, the component and its children are cached for repeated drawing after offscreen rendering, without updating internal attributes. Compared with [freeze](#freeze-1), this API supports the **undefined** type for the **freeze** parameter.
 
 > **NOTE:** 
 > 
@@ -4274,7 +4274,7 @@ Applies a grayscale effect to the component. The grayscale rendering of the uppe
 grayscale(grayscale: Optional<number>): T
 ```
 
-Applies a grayscale effect to the component. The grayscale rendering of the upper layer will overlay that of lower- layer child components. If this API is not used, there will be no change by default. Compared to [grayscale](#grayscale), the **grayscale** parameter supports the **undefined** type.
+Applies a grayscale effect to the component. The grayscale rendering of the upper layer will overlay that of lower- layer child components. If this API is not used, there will be no change by default. Compared to [grayscale](#grayscale-1), the **grayscale** parameter supports the **undefined** type.
 
 **Since:** 18
 
@@ -4338,7 +4338,7 @@ Sets the height of the component itself. By default, the height required for the
 
 > **NOTE:** 
 > 
-> In the Row, Column, and RelativeContainer
+> In the [Row](arkts-arkui-row-comp.md), [Column](arkts-arkui-column-comp.md), and [RelativeContainer](arkts-arkui-relativecontainer-comp.md)
 > components, setting **width** and **height** to **auto** means that the size adapts to the size of their
 > child components.
 
@@ -4494,7 +4494,7 @@ Rotates the hue of the component. If this API is not used, there will be no chan
 hueRotate(rotation: Optional<number | string>): T
 ```
 
-Rotates the hue of the component. If this API is not used, there will be no change by default. Compared to [hueRotate](#huerotate), the **rotation** parameter supports the **undefined** type.
+Rotates the hue of the component. If this API is not used, there will be no change by default. Compared to [hueRotate](#huerotate-1), the **rotation** parameter supports the **undefined** type.
 
 **Since:** 18
 
@@ -4659,7 +4659,7 @@ Inverts an image.
 invert(options: Optional<number | InvertOptions>): T
 ```
 
-Inverts an image. Compared with [invert](#invert), this API supports the **undefined** type for the **options** parameter.
+Inverts an image. Compared with [invert](#invert-1), this API supports the **undefined** type for the **options** parameter.
 
 **Since:** 18
 
@@ -4849,7 +4849,7 @@ Applies a light up effect to the component.
 lightUpEffect(degree: Optional<number>): T
 ```
 
-Applies a light up effect to the component. Compared to [lightUpEffect<sup>12+</sup>](#lightupeffect), the **degree** parameter supports the **undefined** type.
+Applies a light up effect to the component. Compared to [lightUpEffect<sup>12+</sup>](#lightupeffect-1), the **degree** parameter supports the **undefined** type.
 
 **Since:** 18
 
@@ -4909,7 +4909,7 @@ Creates a linear gradient.
 linearGradient(options: Optional<LinearGradientOptions>): T
 ```
 
-Creates a linear gradient. Compared to [linearGradient](#lineargradient), this API supports the **undefined** type for the **options** parameter.
+Creates a linear gradient. Compared to [linearGradient](#lineargradient-1), this API supports the **undefined** type for the **options** parameter.
 
 **Since:** 18
 
@@ -4972,7 +4972,7 @@ Applies a linear gradient foreground blur effect to the component.
 linearGradientBlur(blurRadius: Optional<number>, options: Optional<LinearGradientBlurOptions>): T
 ```
 
-Applies a linear gradient foreground blur effect to the component. Compared with [linearGradientBlur<sup>12+</sup>](#lineargradientblur), this API supports the **undefined** type.
+Applies a linear gradient foreground blur effect to the component. Compared with [linearGradientBlur<sup>12+</sup>](#lineargradientblur-1), this API supports the **undefined** type.
 
 **Since:** 18
 
@@ -5093,7 +5093,7 @@ Adds a mask to the component to indicate the progress.
 mask(mask: Optional<ProgressMask>): T
 ```
 
-Adds a mask to the component to indicate the progress. Compared with [mask<sup>12+</sup>](#mask), this API supports the **undefined** type.
+Adds a mask to the component to indicate the progress. Compared with [mask<sup>12+</sup>](#mask-1), this API supports the **undefined** type.
 
 **Since:** 18
 
@@ -5191,7 +5191,7 @@ Adds a mask of the specified shape to the component.
 maskShape(shape: Optional<CircleShape | EllipseShape | PathShape | RectShape>): T
 ```
 
-Adds a mask of the specified shape to the component. Compared with [maskShape<sup>12+</sup>](#maskshape), this API supports the **undefined** type.
+Adds a mask of the specified shape to the component. Compared with [maskShape<sup>12+</sup>](#maskshape-1), this API supports the **undefined** type.
 
 **Since:** 18
 
@@ -5327,7 +5327,7 @@ Applies a motion blur effect to the component being scaled or moved.
 motionBlur(motionBlur: Optional<MotionBlurOptions>): T
 ```
 
-Applies a motion blur effect to the component being scaled or moved. Compared with [motionBlur](#motionblur), this API supports the **undefined** type for the **motionBlur** parameter.
+Applies a motion blur effect to the component being scaled or moved. Compared with [motionBlur](#motionblur-1), this API supports the **undefined** type for the **motionBlur** parameter.
 
 1. Do not use this API in intra-component transitions, shared element transitions, implicit element transitions,
 or particle animations. Doing so may cause unexpected results.
@@ -5677,7 +5677,7 @@ onAreaChange(event: (oldValue: Area, newValue: Area) => void): T
 
 Triggered when the component area changes in size or position due to layout updates.
 
-This event is not triggered for render attribute changes caused by re-rendering, such as changes to [translate](#translate), [offset](#offset), [markAnchor](#markanchor), [scale](#scale), or [transform](#transform). In addition, if the component position is altered due to drawing changes, for example, through [bindSheet](#bindsheet), this event is also not triggered.
+This event is not triggered for render attribute changes caused by re-rendering, such as changes to [translate](#translate-1), [offset](#offset), [markAnchor](#markanchor), [scale](#scale-1), or [transform](#transform-1). In addition, if the component position is altered due to drawing changes, for example, through [bindSheet](#bindsheet), this event is also not triggered.
 
 > **NOTE:** 
 > 
@@ -5712,7 +5712,7 @@ This event is not triggered for render attribute changes caused by re-rendering,
 onAreaChange(event: AreaChangeCallback, options?: AreaChangeOptions): T
 ```
 
-Triggered when the component area changes. The interval for triggering the callback can be set through **expectedUpdateInterval** in [AreaChangeOptions](arkts-arkui-common-comp-areachangeoptions-i.md). This callback responds only to changes in the component size and position caused by layout changes. Rendering attribute changes caused by drawing changes do not trigger the callback, such as [translate](#translate), [offset](#offset), [markAnchor](#markanchor), [scale](#scale), and [transform](#transform). If the position of the component itself is determined by drawing changes, the callback is not triggered either, such as [bindSheet](#bindsheet).
+Triggered when the component area changes. The interval for triggering the callback can be set through **expectedUpdateInterval** in [AreaChangeOptions](arkts-arkui-common-comp-areachangeoptions-i.md). This callback responds only to changes in the component size and position caused by layout changes. Rendering attribute changes caused by drawing changes do not trigger the callback, such as [translate](#translate-1), [offset](#offset), [markAnchor](#markanchor), [scale](#scale-1), and [transform](#transform-1). If the position of the component itself is determined by drawing changes, the callback is not triggered either, such as [bindSheet](#bindsheet).
 
 > **NOTE:** 
 > 
@@ -5883,7 +5883,7 @@ Allows the current component to customize the hit test and control child compone
 onClick(event: (event: ClickEvent) => void): T
 ```
 
-A click action triggers this callback. For click scenarios without a finger movement distance limit, it is recommended to use this API. If you need to limit the finger movement range during a click, it is recommended to use the [onClick](#onclick) API.
+A click action triggers this callback. For click scenarios without a finger movement distance limit, it is recommended to use this API. If you need to limit the finger movement range during a click, it is recommended to use the [onClick](#onclick-2) API.
 
 When triggered by keyboard or gamepad input, the event's **SourceTool** is **Unknown**, and [SourceType](arkts-arkui-common-comp-sourcetype-e.md) is **KEY** or **JOYSTICK**.
 
@@ -6476,7 +6476,7 @@ Binds a custom gesture recognizer judgment callback to the component.
 
 The **exposeInnerGesture** parameter indicates whether to expose gestures from built-in components within ArkUI system composite components to developers. When this parameter is set to **true**, these internal gestures are exposed.
 
-For scenarios where exposure of internal gestures is not required, use the original [onGestureRecognizerJudgeBegin](#ongesturerecognizerjudgebegin) API. Use this API with **exposeInnerGesture** set to **true** only when internal gesture exposure is necessary.
+For scenarios where exposure of internal gestures is not required, use the original [onGestureRecognizerJudgeBegin](#ongesturerecognizerjudgebegin-1) API. Use this API with **exposeInnerGesture** set to **true** only when internal gesture exposure is necessary.
 
 **Since:** 13
 
@@ -6731,7 +6731,7 @@ Called when component is focused, the return value indicates whether keyboard is
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| onNeedSoftkeyboardCallback | [OnNeedSoftkeyboardCallback](arkts-arkui-common-comp-onneedsoftkeyboardcallback-t.md) &#124; undefined | Yes | Callback executed when an event is triggered. The system determines whether a keyboard is required based on the return value of the callback. If this parameter is set to undefined, no callback is triggered, and the input box component returns true. For other components, false is returned. Prerequisite: The component must be able to obtain focus. Otherwise, this interface does not take effect. When the return value is true, the self-drawn text box needs to actively invoke the [attach](../../apis-ime-kit/arkts-apis/arkts-ime-inputmethod-inputmethodcontroller-i.md#attach) method to establish input method communication when the focus is obtained. Otherwise, the keyboard does not respond. |
+| onNeedSoftkeyboardCallback | [OnNeedSoftkeyboardCallback](arkts-arkui-common-comp-onneedsoftkeyboardcallback-t.md) &#124; undefined | Yes | Callback executed when an event is triggered. The system determines whether a keyboard is required based on the return value of the callback. If this parameter is set to undefined, no callback is triggered, and the input box component returns true. For other components, false is returned. Prerequisite: The component must be able to obtain focus. Otherwise, this interface does not take effect. When the return value is true, the self-drawn text box needs to actively invoke the [attach](../../apis-ime-kit/arkts-apis/arkts-ime-inputmethod-inputmethodcontroller-i.md#attach-3) method to establish input method communication when the focus is obtained. Otherwise, the keyboard does not respond. |
 
 **Return value:**
 
@@ -6918,11 +6918,11 @@ Configures a callback for the **onVisibleAreaApproximateChange** event, with opt
 > 
 > - This API can be called within [attributeModifier](#attributemodifier) since API version 23.
 > 
-> - This API differs from [onVisibleAreaChange](#onvisibleareachange)as follows: **onVisibleAreaChange** calculates the visible area ratio in every frame. If too many nodes are registered, the system power consumption may deteriorate. This API reduces the frequency of visible area ratio calculation, and the calculation interval is determined by the **expectedUpdateInterval** parameter of [VisibleAreaEventOptions](arkts-arkui-common-comp-visibleareaeventoptions-i.md).
+> - This API differs from [onVisibleAreaChange](#onvisibleareachange-1)as follows: **onVisibleAreaChange** calculates the visible area ratio in every frame. If too many nodes are registered, the system power consumption may deteriorate. This API reduces the frequency of visible area ratio calculation, and the calculation interval is determined by the **expectedUpdateInterval** parameter of [VisibleAreaEventOptions](arkts-arkui-common-comp-visibleareaeventoptions-i.md).
 > 
 > - This API only takes into account the relative clipped area ratio of the component with respect to all ancestor nodes (up to the window boundary) and its own area.
 > 
-> - The following calculation scenarios are not supported: clipping by sibling nodes, clipping by siblings of any ancestor node, window-level occlusion, and component rotation. Examples include layouts using [Stack](../../apis-default/arkts-apis/arkts-lib-es5-error-i.md#stack), [z-order control](#zindex), and [rotate](#rotate) transformations.
+> - The following calculation scenarios are not supported: clipping by sibling nodes, clipping by siblings of any ancestor node, window-level occlusion, and component rotation. Examples include layouts using [Stack](../../apis-default/arkts-apis/arkts-lib-es5-error-i.md#stack), [z-order control](#zindex), and [rotate](#rotate-1) transformations.
 > 
 > - It does not support visibility change calculations for nodes that are not in the component tree. For example,preloaded nodes or custom nodes mounted using the [overlay](#overlay) capability.
 > 
@@ -6930,7 +6930,7 @@ Configures a callback for the **onVisibleAreaApproximateChange** event, with opt
 > 
 > - Since API version 18, this API can be called in custom components.
 > 
-> - This API does not support the [scale](#scale) attribute. Since API version 22, to enable support for the [scale](#scale) attribute, set
+> - This API does not support the [scale](#scale-1) attribute. Since API version 22, to enable support for the [scale](#scale-1) attribute, set
 > **measureFromViewport** of [VisibleAreaEventOptions](arkts-arkui-common-comp-visibleareaeventoptions-i.md) to **true**.
 > 
 > - Since API version 21, the return value type is changed from **void** to **T**.
@@ -6972,11 +6972,11 @@ Called when the visible area of the component changes. For details about the dev
 > 
 > - This API only takes into account the relative clipped area ratio of the component with respect to all ancestor nodes (up to the window boundary) and its own area.
 > 
-> - The following calculation scenarios are not supported: clipping by sibling nodes, clipping by siblings of any ancestor node, window-level occlusion, and component rotation. Examples include layouts using [Stack](../../apis-default/arkts-apis/arkts-lib-es5-error-i.md#stack), [z-order control](#zindex), and [rotate](#rotate) transformations.
+> - The following calculation scenarios are not supported: clipping by sibling nodes, clipping by siblings of any ancestor node, window-level occlusion, and component rotation. Examples include layouts using [Stack](../../apis-default/arkts-apis/arkts-lib-es5-error-i.md#stack), [z-order control](#zindex), and [rotate](#rotate-1) transformations.
 > 
 > - It does not support visibility change calculations for nodes that are not in the component tree. For example,preloaded nodes or custom nodes mounted using the [overlay](../../../reference/apis-arkui/arkui-ts/ts-universal-attributes-overlay.md#overlay) capability.
 > 
-> - This API does not support the [scale](#scale) attribute. To enable support for the [scale](#scale) attribute, use [onVisibleAreaChange<sup>22+</sup>](#onvisibleareachange)and set **measureFromViewport** to **true**.
+> - This API does not support the [scale](#scale-1) attribute. To enable support for the [scale](#scale-1) attribute, use [onVisibleAreaChange<sup>22+</sup>](#onvisibleareachange-2)and set **measureFromViewport** to **true**.
 
 **Since:** 9
 
@@ -7011,7 +7011,7 @@ Called when the visible area of the component changes. You can use **measureFrom
 > 
 > - This API only takes into account the relative clipped area ratio of the component with respect to all ancestor nodes (up to the window boundary) and its own area.
 > 
-> - The following calculation scenarios are not supported: clipping by sibling nodes, clipping by siblings of any ancestor node, window-level occlusion, and component rotation. Examples include layouts using [Stack](../../apis-default/arkts-apis/arkts-lib-es5-error-i.md#stack), [z-order control](#zindex), and [rotate](#rotate) transformations.
+> - The following calculation scenarios are not supported: clipping by sibling nodes, clipping by siblings of any ancestor node, window-level occlusion, and component rotation. Examples include layouts using [Stack](../../apis-default/arkts-apis/arkts-lib-es5-error-i.md#stack), [z-order control](#zindex), and [rotate](#rotate-1) transformations.
 > 
 > - It does not support visibility change calculations for nodes that are not in the component tree. For example,preloaded nodes or custom nodes mounted using the [overlay](#overlay) capability.
 
@@ -7031,7 +7031,7 @@ Called when the visible area of the component changes. You can use **measureFrom
 | --- | --- | --- | --- |
 | ratios | Array&lt;number&gt; | Yes | Threshold array. Each threshold represents the ratio of the component's visible area to its own total area. This callback is invoked when the ratio of the component's visible area to its total area is greater than or less than the threshold. The value of each threshold ranges from 0.0 to 1.0. If a threshold value is less than 0.0, it is clamped to 0.0; if it is greater than 1.0, it is clamped to 1.0.<br> **NOTE:** <br>When the value is close to the boundary 0 or 1, it is rounded off with a round-off error not greater than 0.001. For example, 0.9997 is rounded off to 1. |
 | event | [VisibleAreaChangeCallback](arkts-arkui-common-comp-visibleareachangecallback-t.md) | Yes | Callback for visible area changes of the component. |
-| measureFromViewport | boolean | Yes | Visible area calculation mode.<br>**true**: considers the parent's [clip](#clip) attribute. If [clip](#clip) is **false**, areas of the child component beyond the parent's bounds are counted as visible; if [clip](#clip) is **true**, such areas are counted as invisible. **false**: ignores the parent's [clip](#clip) attribute, treating areas beyond the parent's bounds as invisible.<br>When **measureFromViewport** is set to **true**, and an ancestor node has the [scale](#scale) attribute set, the component's visible ratio will be correctly calculated. |
+| measureFromViewport | boolean | Yes | Visible area calculation mode.<br>**true**: considers the parent's [clip](#clip-1) attribute. If [clip](#clip-1) is **false**, areas of the child component beyond the parent's bounds are counted as visible; if [clip](#clip-1) is **true**, such areas are counted as invisible. **false**: ignores the parent's [clip](#clip-1) attribute, treating areas beyond the parent's bounds as invisible.<br>When **measureFromViewport** is set to **true**, and an ancestor node has the [scale](#scale-1) attribute set, the component's visible ratio will be correctly calculated. |
 
 **Return value:**
 
@@ -7203,7 +7203,7 @@ Sets the outline color. If this API is not used, the default color black will be
 outlineColor(color: Optional<ResourceColor | EdgeColors | LocalizedEdgeColors>): T
 ```
 
-Sets the outline color. If this API is not used, the default color black will be applied. Compared with [outlineColor](#outlinecolor), this API supports the **undefined** type for the **color** parameter.
+Sets the outline color. If this API is not used, the default color black will be applied. Compared with [outlineColor](#outlinecolor-1), this API supports the **undefined** type for the **color** parameter.
 
 **Since:** 18
 
@@ -7267,7 +7267,7 @@ Sets the radius of the outline corners. If this API is not used, there will be n
 outlineRadius(radius: Optional<Dimension | OutlineRadiuses>): T
 ```
 
-Sets the radius of the outline corners. If this API is not used, there will be no change by default. Compared with [outlineRadius](#outlineradius), this API supports the **undefined** type for the **radius** parameter.
+Sets the radius of the outline corners. If this API is not used, there will be no change by default. Compared with [outlineRadius](#outlineradius-1), this API supports the **undefined** type for the **radius** parameter.
 
 **Since:** 18
 
@@ -7331,7 +7331,7 @@ Sets the outline style. If this API is not used, a solid line is displayed by de
 outlineStyle(style: Optional<OutlineStyle | EdgeOutlineStyles>): T
 ```
 
-Sets the outline style. If this API is not used, a solid line is displayed by default. Compared with [outlineStyle](#outlinestyle), this API supports the **undefined** type for the **style** parameter.
+Sets the outline style. If this API is not used, a solid line is displayed by default. Compared with [outlineStyle](#outlinestyle-1), this API supports the **undefined** type for the **style** parameter.
 
 **Since:** 18
 
@@ -7395,7 +7395,7 @@ Sets the thickness of the outline. If this API is not used, there will be no cha
 outlineWidth(width: Optional<Dimension | EdgeOutlineWidths>): T
 ```
 
-Sets the thickness of the outline. If this API is not used, there will be no change by default. Compared with [outlineWidth](#outlinewidth), this API supports the **undefined** type for the **width** parameter.
+Sets the thickness of the outline. If this API is not used, there will be no change by default. Compared with [outlineWidth](#outlinewidth-1), this API supports the **undefined** type for the **width** parameter.
 
 **Since:** 18
 
@@ -7613,7 +7613,7 @@ Applies a pixel stretch effect to the component.
 pixelStretchEffect(options: Optional<PixelStretchEffectOptions>): T
 ```
 
-Applies a pixel stretch effect to the component. Compared to [pixelStretchEffect<sup>12+</sup>](#pixelstretcheffect), the **options** parameter supports the **undefined** type.
+Applies a pixel stretch effect to the component. Compared to [pixelStretchEffect<sup>12+</sup>](#pixelstretcheffect-1), the **options** parameter supports the **undefined** type.
 
 **Since:** 18
 
@@ -7648,11 +7648,11 @@ Sets the absolute positioning, which determines the position of a child componen
 > **NOTE:** 
 > 
 > - The effect of **position** on the position takes effect after the component's size measurement is complete.
-> - When the parent component is Row, Column, or Flex, a child component with **position** set does not occupy space. In this scenario, if all child components contained in the parent component have **position** set, the parent component's size cannot be determined by other child components, and layout measurement is performed based on the size (0, 0).
+> - When the parent component is [Row](arkts-arkui-row-comp.md), [Column](arkts-arkui-column-comp.md), or [Flex](arkts-arkui-flex-comp.md), a child component with **position** set does not occupy space. In this scenario, if all child components contained in the parent component have **position** set, the parent component's size cannot be determined by other child components, and layout measurement is performed based on the size (0, 0).
 > - The Position type determines the position based on the upper left corner of the parent component's content area. The Edges type determines the position based on the four edges of the parent component's content area, where **top**, **left**, **right**, and **bottom** are the distances from each edge of the component to the corresponding edge of the parent component's content area, and the component's position relative to the parent component's content area is determined by these distances. The [LocalizedEdges](../arkts-apis/arkts-arkui-localizededges-i.md) type determines the position based on the four edges of the parent component's content area and supports mirroring mode.
 > - This attribute is applicable to scenarios where components such as top-displayed elements and floating buttons have fixed positions within the parent component.
 > - This attribute is not supported on layout components with zero width and height.
-> - When the parent component is RelativeContainer and the child component has the [alignRules](#alignrules) attribute set, the child component's **position** attribute does not take effect.
+> - When the parent component is [RelativeContainer](arkts-arkui-relativecontainer-comp.md) and the child component has the [alignRules](#alignrules) attribute set, the child component's **position** attribute does not take effect.
 > - If the parent component of the component where this attribute is located does not have a fixed width and height, this component performs absolute positioning with reference to the first ancestor component that has a fixed width and height.
 
 **Since:** 7
@@ -7817,7 +7817,7 @@ Sets how the final state of the component's content is rendered during its width
 renderFit(fitMode: Optional<RenderFit>): T
 ```
 
-Sets how the final state of the component's content is rendered during its width and height animation process. If it is not set via this API, the content size at the end of the animation is maintained, and the content always remains top-left aligned with the component. Compared to [renderFit](#renderfit), this API supports the **undefined** type for the **fitMode** parameter.
+Sets how the final state of the component's content is rendered during its width and height animation process. If it is not set via this API, the content size at the end of the animation is maintained, and the content always remains top-left aligned with the component. Compared to [renderFit](#renderfit-1), this API supports the **undefined** type for the **fitMode** parameter.
 
 **Since:** 18
 
@@ -8103,7 +8103,7 @@ Rotates the component.
 rotate(options: Optional<RotateOptions>): T
 ```
 
-Rotates the component. Compared with [rotate](#rotate), this API supports the **undefined** type.
+Rotates the component. Compared with [rotate](#rotate-1), this API supports the **undefined** type.
 
 **Since:** 18
 
@@ -8135,7 +8135,7 @@ Rotates the component. Compared with [rotate](#rotate), this API supports the **
 rotate(options: Optional<RotateOptions | RotateAngleOptions>): T
 ```
 
-Sets the component rotation effect. Compared with [rotate](#rotate), this API supports the **RotateAngleOptions** type for the **options** parameter.
+Sets the component rotation effect. Compared with [rotate](#rotate-2), this API supports the **RotateAngleOptions** type for the **options** parameter.
 
 **Since:** 20
 
@@ -8248,7 +8248,7 @@ Applies a saturation effect to the component. If this API is not used, there wil
 saturate(saturate: Optional<number>): T
 ```
 
-Applies a saturation effect to the component. If this API is not used, there will be no change by default. Compared to [saturate](#saturate), the **saturate** parameter supports the **undefined** type.
+Applies a saturation effect to the component. If this API is not used, there will be no change by default. Compared to [saturate](#saturate-1), the **saturate** parameter supports the **undefined** type.
 
 **Since:** 18
 
@@ -8310,7 +8310,7 @@ Scales the component.
 scale(options: Optional<ScaleOptions>): T
 ```
 
-Scales the component. Compared with [scale](#scale), this API supports the **undefined** type.
+Scales the component. Compared with [scale](#scale-1), this API supports the **undefined** type.
 
 **Since:** 18
 
@@ -8372,7 +8372,7 @@ Converts the image to a sepia tone, reducing color intensity to create a warm, v
 sepia(sepia: Optional<number>): T
 ```
 
-Converts the image to a sepia tone, reducing color intensity to create a warm, vintage image style. Compared to [sepia](#sepia), this API supports the **undefined** type for the **sepia** parameter.
+Converts the image to a sepia tone, reducing color intensity to create a warm, vintage image style. Compared to [sepia](#sepia-1), this API supports the **undefined** type for the **sepia** parameter.
 
 **Since:** 18
 
@@ -8434,7 +8434,7 @@ Applies a shadow effect to the component.
 shadow(options: Optional<ShadowOptions | ShadowStyle>): T
 ```
 
-Applies a shadow effect to the component. Compared to [shadow](#shadow), the **options** parameter supports the **undefined** type.
+Applies a shadow effect to the component. Compared to [shadow](#shadow-1), the **options** parameter supports the **undefined** type.
 
 **Since:** 18
 
@@ -8647,7 +8647,7 @@ Applies a spherical effect to the component.
 sphericalEffect(effect: Optional<number>): T
 ```
 
-Applies a spherical effect to the component. Compared to [sphericalEffect<sup>12+</sup>](#sphericaleffect), the **effect** parameter supports the **undefined** type.
+Applies a spherical effect to the component. Compared to [sphericalEffect<sup>12+</sup>](#sphericaleffect-1), the **effect** parameter supports the **undefined** type.
 
 **Since:** 18
 
@@ -8799,7 +8799,7 @@ Applies a system bar effect to the component, which means to invert colors based
 systemMaterial(material: SystemUiMaterial | undefined): T
 ```
 
-Sets the system material for a component. Different system materials have different attribute effects. This API affects the background color ([backgroundColor](#backgroundcolor)), border color ([borderColor](#bordercolor)), border width ([borderWidth](#borderwidth)), and shadow ([shadow](#shadow)). You are advised not to use this API together with the aforementioned APIs. For details about the example, see [Setting the System Material](../../../reference/apis-arkui/arkts-apis-uimaterial-sys.md#example-1-setting-the-system-material).
+Sets the system material for a component. Different system materials have different attribute effects. This API affects the background color ([backgroundColor](#backgroundcolor-1)), border color ([borderColor](#bordercolor)), border width ([borderWidth](#borderwidth)), and shadow ([shadow](#shadow-1)). You are advised not to use this API together with the aforementioned APIs. For details about the example, see [Setting the System Material](../../../reference/apis-arkui/arkts-apis-uimaterial-sys.md#example-1-setting-the-system-material).
 
 **Since:** 26.0.0
 
@@ -9049,7 +9049,7 @@ Sets the transition effects used when a component is inserted or removed.
 transition(effect: TransitionEffect, onFinish: Optional<TransitionFinishCallback>): T
 ```
 
-Sets the transition effects used when a component is inserted or removed. Compared with [transition](#transition), this API provides the callback when the transition animation ends.
+Sets the transition effects used when a component is inserted or removed. Compared with [transition](#transition-1), this API provides the callback when the transition animation ends.
 
 > **NOTE:** 
 > 
@@ -9116,7 +9116,7 @@ Translates the component.
 translate(translate: Optional<TranslateOptions>): T
 ```
 
-Translates the component. Compared with [translate](#translate), this API supports the **undefined** type.
+Translates the component. Compared with [translate](#translate-1), this API supports the **undefined** type.
 
 **Since:** 18
 
@@ -9272,7 +9272,7 @@ Sets whether to render child node shadows at the same layer, enabling shadow ove
 useShadowBatching(use: Optional<boolean>): T
 ```
 
-Sets whether to render child node shadows at the same layer, enabling shadow overlap within the same layer. Compared with [useShadowBatching<sup>11+</sup>](#useshadowbatching), this API supports the **undefined** type for the **use** parameter.
+Sets whether to render child node shadows at the same layer, enabling shadow overlap within the same layer. Compared with [useShadowBatching<sup>11+</sup>](#useshadowbatching-1), this API supports the **undefined** type for the **use** parameter.
 
 **Since:** 18
 
@@ -9377,7 +9377,7 @@ Sets the width of the component itself. By default, the width required for the c
 > - In the [AlphabetIndexer](./ts-container-alphabet-indexer.md) component, setting **width** to
 > **auto** means adapting to the width of the largest index item.
 > 
-> - In the Row, Column, and RelativeContainercomponents, setting width to auto means adapting to the child components.
+> - In the [Row](arkts-arkui-row-comp.md), [Column](arkts-arkui-column-comp.md), and [RelativeContainer](arkts-arkui-relativecontainer-comp.md)components, setting width to auto means adapting to the child components.
 
 **Since:** 7
 

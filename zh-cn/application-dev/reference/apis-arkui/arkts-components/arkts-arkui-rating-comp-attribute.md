@@ -42,7 +42,7 @@ contentModifier(modifier: ContentModifier<RatingConfiguration>)
 contentModifier(modifier: Optional<ContentModifier<RatingConfiguration>>)
 ```
 
-定制Rating内容区的方法。与[contentModifier](#contentmodifier)相比，modifier参数新增了对undefined类型的支持。当modifier的值为undefined时，不使用内容修改器。
+定制Rating内容区的方法。与[contentModifier](#contentmodifier-1)相比，modifier参数新增了对undefined类型的支持。当modifier的值为undefined时，不使用内容修改器。
 
 **起始版本：** 18
 
@@ -92,7 +92,7 @@ onChange(callback: (value: number) => void)
 onChange(callback: Optional<OnRatingChangeCallback>)
 ```
 
-当评分条的评分变化时触发该回调。与[onChange](#onchange)相比，callback参数新增了对undefined类型的支持。
+当评分条的评分变化时触发该回调。与[onChange](#onchange-1)相比，callback参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -144,7 +144,7 @@ stars(value: number)
 stars(starCount: Optional<number>)
 ```
 
-设置评分总数。与[stars](#stars)相比，starCount参数新增了对undefined类型的支持。当starCount的值为undefined时，默认值：5。
+设置评分总数。与[stars](#stars-1)相比，starCount参数新增了对undefined类型的支持。当starCount的值为undefined时，默认值：5。
 
 **起始版本：** 18
 
@@ -206,7 +206,7 @@ starStyle(options: Optional<StarStyleOptions>)
 
 默认图片加载方式为异步，暂不支持同步加载。
 
-与[starStyle](#starstyle)相比，options参数新增了对undefined类型的支持。
+与[starStyle](#starstyle-1)相比，options参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -258,7 +258,7 @@ stepSize(value: number)
 stepSize(size: Optional<number>)
 ```
 
-设置操作评级的步长。设置为小于0.1的值时，按默认值显示。与[stepSize](#stepsize)相比，size参数新增了对undefined类型的支持。当size的值为undefined时，默认值：0.5。
+设置操作评级的步长。设置为小于0.1的值时，按默认值显示。与[stepSize](#stepsize-1)相比，size参数新增了对undefined类型的支持。当size的值为undefined时，默认值：0.5。
 
 **起始版本：** 18
 

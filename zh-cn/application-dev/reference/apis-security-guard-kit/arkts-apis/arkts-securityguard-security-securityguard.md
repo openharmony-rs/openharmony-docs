@@ -23,14 +23,14 @@ import { securityGuard } from '@kit.SecurityGuardKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [getModelResult](arkts-securityguard-securityguard-getmodelresult-f-sys.md#getmodelresult) | 请求安全模型检测结果。 |
+| [getModelResult](arkts-securityguard-securityguard-getmodelresult-f-sys.md#getmodelresult-1) | 请求安全模型检测结果。 |
 | [off('securityEventOccur')](arkts-securityguard-securityguard-off-f-sys.md#offsecurityeventoccur) | 解订阅安全事件。 |
 | [on('securityEventOccur')](arkts-securityguard-securityguard-on-f-sys.md#onsecurityeventoccur) | 订阅安全事件。 |
-| [querySecurityEvent](arkts-securityguard-securityguard-querysecurityevent-f-sys.md#querysecurityevent) | 用于获取安全事件信息。 |
-| [reportSecurityEvent](arkts-securityguard-securityguard-reportsecurityevent-f-sys.md#reportsecurityevent) | 安全事件上报接口。 |
-| [startSecurityEventCollector](arkts-securityguard-securityguard-startsecurityeventcollector-f-sys.md#startsecurityeventcollector) | 开始采集事件。 |
-| [stopSecurityEventCollector](arkts-securityguard-securityguard-stopsecurityeventcollector-f-sys.md#stopsecurityeventcollector) | 停止采集事件。 |
-| [updatePolicyFile](arkts-securityguard-securityguard-updatepolicyfile-f-sys.md#updatepolicyfile) | 更新配置文件。 |
+| [querySecurityEvent](arkts-securityguard-securityguard-querysecurityevent-f-sys.md#querysecurityevent-1) | 用于获取安全事件信息。 |
+| [reportSecurityEvent](arkts-securityguard-securityguard-reportsecurityevent-f-sys.md#reportsecurityevent-1) | 安全事件上报接口。 |
+| [startSecurityEventCollector](arkts-securityguard-securityguard-startsecurityeventcollector-f-sys.md#startsecurityeventcollector-1) | 开始采集事件。 |
+| [stopSecurityEventCollector](arkts-securityguard-securityguard-stopsecurityeventcollector-f-sys.md#stopsecurityeventcollector-1) | 停止采集事件。 |
+| [updatePolicyFile](arkts-securityguard-securityguard-updatepolicyfile-f-sys.md#updatepolicyfile-1) | 更新配置文件。 |
 <!--DelEnd-->
 
 <!--Del-->

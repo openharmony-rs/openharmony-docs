@@ -1,4 +1,4 @@
-# NotificationCapsule
+# NotificationCapsule (System API)
 
 ```TypeScript
 export interface NotificationCapsule

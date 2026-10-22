@@ -22,9 +22,9 @@ import { privacyComputation } from '@kit.DataProtectionKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [genPrivacyTarget](arkts-dataprotection-privacycomputation-genprivacytarget-f.md#genprivacytarget) | 为给定元素生成隐私目标。隐私目标是加密的表示的搜索元素，可以用于保护隐私的搜索，而不会泄露原始数据。 |
-| [getSearchResult](arkts-dataprotection-privacycomputation-getsearchresult-f.md#getsearchresult) | 获取隐私搜索结果和最终搜索结果。解密搜索结果密文privateSearch返回，获取最终匹配结果和可选的附加值。 |
-| [privacySearch](arkts-dataprotection-privacycomputation-privacysearch-f.md#privacysearch) | 执行隐私保护搜索。根据加密的隐私目标搜索给定的数据集元素而不向对方透露目标或数据集内容。 |
+| [genPrivacyTarget](arkts-dataprotection-privacycomputation-genprivacytarget-f.md#genprivacytarget-1) | 为给定元素生成隐私目标。隐私目标是加密的表示的搜索元素，可以用于保护隐私的搜索，而不会泄露原始数据。 |
+| [getSearchResult](arkts-dataprotection-privacycomputation-getsearchresult-f.md#getsearchresult-1) | 获取隐私搜索结果和最终搜索结果。解密搜索结果密文privateSearch返回，获取最终匹配结果和可选的附加值。 |
+| [privacySearch](arkts-dataprotection-privacycomputation-privacysearch-f.md#privacysearch-1) | 执行隐私保护搜索。根据加密的隐私目标搜索给定的数据集元素而不向对方透露目标或数据集内容。 |
 
 ### 接口
 

@@ -1,4 +1,4 @@
-# AudioSpatializationManager
+# AudioSpatializationManager (System API)
 
 ```TypeScript
 interface AudioSpatializationManager

@@ -461,3 +461,65 @@ struct PinchGestureExample {
   }
 }
 ```
+
+该示例通过配置GestureGroup，实现了长按和拖动的组合手势顺序识别功能。
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct GestureGroupExample {
+  @State count: number = 0;
+  @State offsetX: number = 0;
+  @State offsetY: number = 0;
+  @State positionX: number = 0;
+  @State positionY: number = 0;
+  @State borderStyles: BorderStyle = BorderStyle.Solid;
+
+  build() {
+    Column() {
+      Text('sequence gesture\n' + 'LongPress onAction:' + this.count + '\nPanGesture offset:\nX: ' + this.offsetX + '\n' + 'Y: ' + this.offsetY)
+        .fontSize(15);
+    }
+    .translate({ x: this.offsetX, y: this.offsetY, z: 0 })
+    .height(150)
+    .width(200)
+    .padding(20)
+    .margin(20)
+    .border({ width: 3, style: this.borderStyles })
+    .gesture(
+      // 以下组合手势为顺序识别，当长按手势事件未正常触发时则不会触发拖动手势事件
+      GestureGroup(GestureMode.Sequence,
+        LongPressGesture({ repeat: true })
+          .onAction((event?: GestureEvent) => {
+            if (event && event.repeat) {
+              this.count++;
+            }
+            console.info('LongPress onAction');
+          }),
+        PanGesture()
+          .onActionStart(() => {
+            this.borderStyles = BorderStyle.Dashed;
+            console.info('pan start');
+          })
+          .onActionUpdate((event?: GestureEvent) => {
+            if (event) {
+              this.offsetX = this.positionX + event.offsetX;
+              this.offsetY = this.positionY + event.offsetY;
+            }
+            console.info('pan update');
+          })
+          .onActionEnd(() => {
+            this.positionX = this.offsetX;
+            this.positionY = this.offsetY;
+            this.borderStyles = BorderStyle.Solid;
+            console.info('pan end');
+          })
+      )
+        .onCancel(() => {
+          console.info('sequence gesture canceled');
+        })
+    );
+  }
+}
+```

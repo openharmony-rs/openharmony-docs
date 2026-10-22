@@ -4,7 +4,7 @@
 export interface SpotLight extends Light
 ```
 
-聚光灯类型，继承自Light。
+聚光灯类型，继承自[Light](arkts-arkgraphics3d-scenenodes-light-i.md)。
 
 聚光灯会朝某个方向发出锥形光，强度随着圆锥角度的衰减由innerAngle和outerAngle两个参数定义。另外与点光源类似，强度也会随着距离光源位置的增加而衰减。
 

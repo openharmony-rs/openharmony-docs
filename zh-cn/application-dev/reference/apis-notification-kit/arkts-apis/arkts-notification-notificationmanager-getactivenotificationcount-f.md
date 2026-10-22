@@ -22,7 +22,7 @@ function getActiveNotificationCount(callback: AsyncCallback<number>): void
 
 **系统能力：** SystemCapability.Notification.Notification
 
-**参见：** [setBadgeNumber](arkts-notification-notificationmanager-setbadgenumber-f.md#setbadgenumber) 设置角标个数。
+**参见：** [setBadgeNumber](arkts-notification-notificationmanager-setbadgenumber-f.md#setbadgenumber-1) 设置角标个数。
 
 **参数：**
 
@@ -72,7 +72,7 @@ function getActiveNotificationCount(): Promise<number>
 
 **系统能力：** SystemCapability.Notification.Notification
 
-**参见：** [setBadgeNumber](arkts-notification-notificationmanager-setbadgenumber-f.md#setbadgenumber) 设置角标个数。
+**参见：** [setBadgeNumber](arkts-notification-notificationmanager-setbadgenumber-f.md#setbadgenumber-2) 设置角标个数。
 
 **返回值：**
 

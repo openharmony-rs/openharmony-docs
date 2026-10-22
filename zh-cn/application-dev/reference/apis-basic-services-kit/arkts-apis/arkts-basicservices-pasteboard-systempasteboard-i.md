@@ -372,7 +372,7 @@ try {
 getDataSync(): PasteData
 ```
 
-读取系统剪贴板内容，此接口为同步接口。适用于应用需要在关键业务流程中同步获取剪贴板数据，或需要立即处理剪贴板内容的场景。避免在UI线程调用此接口，以免阻塞界面；处理大量数据或远端数据时，建议使用异步接口[getData](#getdata)。
+读取系统剪贴板内容，此接口为同步接口。适用于应用需要在关键业务流程中同步获取剪贴板数据，或需要立即处理剪贴板内容的场景。避免在UI线程调用此接口，以免阻塞界面；处理大量数据或远端数据时，建议使用异步接口[getData](#getdata-1)。
 
 应用使用自定义控件访问剪贴板内容需[申请访问剪贴板权限](../../../basic-services/pasteboard/get-pastedata-permission-guidelines.md)。应用[使用粘贴控件](../../../security/AccessToken/pastebutton.md)访问剪贴板内容，无需申请权限。
 
@@ -540,7 +540,7 @@ systemPasteboard.getMimeTypes().then((data: Array<string>) => {
 getUnifiedData(): Promise<unifiedDataChannel.UnifiedData>
 ```
 
-读取系统剪贴板内容，使用Promise异步回调。适用于需要使用标准化数据结构[UnifiedData](../../apis-arkdata/arkts-apis/arkts-arkdata-unifieddatachannel-unifieddata-c.md)进行跨应用数据交换的场景。当应用需要与其他支持UnifiedData的应用进行数据共享，或需要处理复杂的多类型数据时，使用本接口。与[getData](#getdata)相比，getUnifiedData提供了更标准化的数据格式。
+读取系统剪贴板内容，使用Promise异步回调。适用于需要使用标准化数据结构[UnifiedData](../../apis-arkdata/arkts-apis/arkts-arkdata-unifieddatachannel-unifieddata-c.md)进行跨应用数据交换的场景。当应用需要与其他支持UnifiedData的应用进行数据共享，或需要处理复杂的多类型数据时，使用本接口。与[getData](#getdata-1)相比，getUnifiedData提供了更标准化的数据格式。
 
 应用使用自定义控件访问剪贴板内容需[申请访问剪贴板权限](../../../basic-services/pasteboard/get-pastedata-permission-guidelines.md)。应用[使用粘贴控件](../../../security/AccessToken/pastebutton.md)访问剪贴板内容，无需申请权限。
 
@@ -1391,7 +1391,7 @@ clear(callback: AsyncCallback<void>): void
 
 **废弃版本：** 9
 
-**替代接口：** [clearData](#cleardata)(callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [clearData](#cleardata-1)(callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-SystemPasteboard-clear(callback: AsyncCallback<void>): void--><!--Device-SystemPasteboard-clear(callback: AsyncCallback<void>): void-End-->
 
@@ -1471,7 +1471,7 @@ getPasteData(callback: AsyncCallback<PasteData>): void
 
 **废弃版本：** 9
 
-**替代接口：** [getData](#getdata)(callback: AsyncCallback&lt;PasteData&gt;)
+**替代接口：** [getData](#getdata-1)(callback: AsyncCallback&lt;PasteData&gt;)
 
 <!--Device-SystemPasteboard-getPasteData(callback: AsyncCallback<PasteData>): void--><!--Device-SystemPasteboard-getPasteData(callback: AsyncCallback<PasteData>): void-End-->
 
@@ -1559,7 +1559,7 @@ hasPasteData(callback: AsyncCallback<boolean>): void
 
 **废弃版本：** 9
 
-**替代接口：** [hasData](#hasdata)(callback: AsyncCallback&lt;boolean&gt;)
+**替代接口：** [hasData](#hasdata-1)(callback: AsyncCallback&lt;boolean&gt;)
 
 <!--Device-SystemPasteboard-hasPasteData(callback: AsyncCallback<boolean>): void--><!--Device-SystemPasteboard-hasPasteData(callback: AsyncCallback<boolean>): void-End-->
 
@@ -1641,7 +1641,7 @@ setPasteData(data: PasteData, callback: AsyncCallback<void>): void
 
 **废弃版本：** 9
 
-**替代接口：** [setData](#setdata)(data: PasteData, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [setData](#setdata-1)(data: PasteData, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-SystemPasteboard-setPasteData(data: PasteData, callback: AsyncCallback<void>): void--><!--Device-SystemPasteboard-setPasteData(data: PasteData, callback: AsyncCallback<void>): void-End-->
 
@@ -1686,7 +1686,7 @@ setPasteData(data: PasteData): Promise<void>
 
 **废弃版本：** 9
 
-**替代接口：** [setData](#setdata)(data: PasteData)
+**替代接口：** [setData](#setdata-2)(data: PasteData)
 
 <!--Device-SystemPasteboard-setPasteData(data: PasteData): Promise<void>--><!--Device-SystemPasteboard-setPasteData(data: PasteData): Promise<void>-End-->
 

@@ -175,6 +175,18 @@ Unsubscribes from the event indicating that transcoding is complete.
 | type | 'complete' | Yes | Event type, which is **'complete'** in this case. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | No | Callback that has been registered to listen for transcoding completion events. |
 
+**Examples**
+
+```TypeScript
+import { media } from '@kit.MediaKit';
+
+async function test() {
+  // Create an AVTranscoder instance.
+  let avTranscoder = await media.createAVTranscoder();
+  avTranscoder.off('complete');
+}
+```
+
 ## off('error')
 
 ```TypeScript

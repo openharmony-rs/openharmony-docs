@@ -506,7 +506,7 @@ scrollToIndex(value: number, smooth?: boolean, align?: ScrollAlign, options?: Sc
 > 
 > 2. 在[LazyForEach](arkts-arkui-lazyforeach-comp.md)、[ForEach](arkts-arkui-foreach-comp-attribute.md)、[Repeat](arkts-arkui-repeat-comp.md)刷新数据源时，需确保在数据刷新完成之后再调用此接口。
 > 
-> 3. 从API version 11开始，在List中支持[contentStartOffset](arkts-arkui-list-comp-attribute.md#contentstartoffset)和[contentEndOffset](arkts-arkui-list-comp-attribute.md#contentendoffset)。从API version 22开始，在Grid和WaterFlow组件中支持设置contentStartOffset和contentEndOffset。
+> 3. 从API version 11开始，在List中支持[contentStartOffset](arkts-arkui-list-comp-attribute.md#contentstartoffset-1)和[contentEndOffset](arkts-arkui-list-comp-attribute.md#contentendoffset-1)。从API version 22开始，在Grid和WaterFlow组件中支持设置contentStartOffset和contentEndOffset。
 > 
 > - 当滚动容器组件设置contentStartOffset时，如果ScrollAlign设置为START，滚动结束时，指定item首部会与滚动容器组件contentStartOffset处对齐。
 > 

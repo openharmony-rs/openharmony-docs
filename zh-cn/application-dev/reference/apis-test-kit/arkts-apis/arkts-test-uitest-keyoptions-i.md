@@ -4,7 +4,7 @@
 declare interface KeyOptions
 ```
 
-表示按键操作的选项。
+按键操作选项。
 
 **起始版本：** 26.0.0
 
@@ -27,7 +27,7 @@ import { UiComponent, UiDriver, BY, By } from '@kit.TestKit';
 key1?: number
 ```
 
-操作期间要按下的第一个键码。如果未设置，将不会注入任何按键事件。如果仅设置 key2 而未设置 key1，将会导致业务错误 17000007。
+操作时注入的第一个按键值，取值范围：[KeyCode键码值](../../apis-input-kit/arkts-apis/arkts-input-multimodalinput-keycode-keycode-e.md)。未设置时不注入按键事件。
 
 **类型：** number
 
@@ -49,7 +49,9 @@ key1?: number
 key2?: number
 ```
 
-操作期间要按下的第二个键码。如果未设置，将不会注入任何按键事件。如果仅设置 key2 而未设置 key1，将会导致业务错误 17000007。
+操作时注入的第二个按键值，取值范围：[KeyCode键码值](../../apis-input-kit/arkts-apis/arkts-input-multimodalinput-keycode-keycode-e.md)。未设置时不注入按键事件。
+
+**说明：** 仅设置key2而不设置key1时，将抛出17000007参数校验失败的错误。
 
 **类型：** number
 

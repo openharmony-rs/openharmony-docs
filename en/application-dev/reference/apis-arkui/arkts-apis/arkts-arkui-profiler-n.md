@@ -23,6 +23,6 @@ Profiler tools for inspectors.
 
 | Name | Description |
 | --- | --- |
-| [registerVsyncCallback](arkts-arkui-profiler-registervsynccallback-f-sys.md#registervsynccallback) | Registers vsync callback for profiler. |
-| [unregisterVsyncCallback](arkts-arkui-profiler-unregistervsynccallback-f-sys.md#unregistervsynccallback) | Unregisters vsync callback. |
+| [registerVsyncCallback](arkts-arkui-profiler-registervsynccallback-f-sys.md#registervsynccallback-1) | Registers vsync callback for profiler. |
+| [unregisterVsyncCallback](arkts-arkui-profiler-unregistervsynccallback-f-sys.md#unregistervsynccallback-1) | Unregisters vsync callback. |
 <!--DelEnd-->

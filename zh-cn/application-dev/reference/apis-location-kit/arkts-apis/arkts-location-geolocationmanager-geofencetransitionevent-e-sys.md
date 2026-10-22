@@ -1,4 +1,4 @@
-# GeofenceTransitionEvent
+# GeofenceTransitionEvent（系统接口）
 
 ```TypeScript
 export enum GeofenceTransitionEvent

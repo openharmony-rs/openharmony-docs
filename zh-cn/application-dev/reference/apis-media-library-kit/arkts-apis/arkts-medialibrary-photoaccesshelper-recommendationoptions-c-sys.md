@@ -1,4 +1,4 @@
-# RecommendationOptions
+# RecommendationOptions（系统接口）
 
 ```TypeScript
 class RecommendationOptions

@@ -669,7 +669,7 @@ ws.off('headerReceive');
 on(type: 'open', callback: AsyncCallback<Object>): void
 ```
 
-订阅WebSocket的打开事件，使用callback异步回调。该事件用于指示WebSocket是否连接成功。该接口需要在调用[connect](#connect)发起连接请求前调用。
+订阅WebSocket的打开事件，使用callback异步回调。该事件用于指示WebSocket是否连接成功。该接口需要在调用[connect](#connect-1)发起连接请求前调用。
 
 **起始版本：** 6
 
@@ -747,7 +747,7 @@ ws.on('message', (err: BusinessError<void>, value: string | ArrayBuffer) => {
 on(type: 'openInfo', callback: AsyncCallback<WebSocketOpenInfo>): void
 ```
 
-订阅WebSocket的打开信息事件，使用callback异步回调。该事件用于获取WebSocket连接成功后的详细信息。该接口需要在调用[connect](#connect)发起连接请求前调用。
+订阅WebSocket的打开信息事件，使用callback异步回调。该事件用于获取WebSocket连接成功后的详细信息。该接口需要在调用[connect](#connect-1)发起连接请求前调用。
 
 **起始版本：** 26.0.0
 

@@ -1,4 +1,4 @@
-# ExtraKey
+# ExtraKey (System API)
 
 ```TypeScript
 enum ExtraKey

@@ -4,7 +4,7 @@
 declare class CanvasAttribute extends CommonMethod<CanvasAttribute>
 ```
 
-除支持[通用属性](arkts-arkui-common-comp-commonmethod-c.md)外，还支持以下属性：
+支持[通用属性](arkts-arkui-common-comp-commonmethod-c.md)。
 
 设置组件支持AI分析，当前支持主体识别、文字识别和对象查找等功能，支持[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)动态设置属性方法。
 
@@ -12,7 +12,7 @@ declare class CanvasAttribute extends CommonMethod<CanvasAttribute>
 
 不能和[overlay](arkts-arkui-common-comp-commonmethod-c.md#overlay)属性同时使用，两者同时设置时overlay中CustomBuilder属性将失效。该特性依赖设备能力，可通过[ImageAnalyzerController.getImageAnalyzerSupportTypes](../arkts-apis/arkts-arkui-imageanalyzercontroller-c.md#getimageanalyzersupporttypes)接口查询设备支持的分析类型。
 
-除支持[通用事件](arkts-arkui-common-comp-commonmethod-c.md)外，还支持如下事件：
+支持[通用事件](arkts-arkui-common-comp-commonmethod-c.md)。
 
 **继承/实现关系：** CanvasAttribute extends CommonMethod&lt;CanvasAttribute&gt;
 
@@ -64,7 +64,7 @@ onReady(event: VoidCallback)
 
 Canvas组件初始化完成或者发生大小变化时的事件回调，支持[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)动态设置属性方法。
 
-当该事件被触发时画布被清空，该事件之后Canvas组件宽高确定且可获取，可使用Canvas相关API进行绘制。当Canvas组件仅发生位置变化时，只触发[onAreaChange](arkts-arkui-common-comp-commonmethod-c.md#onareachange)事件，不触发onReady事件。[onAreaChange](arkts-arkui-common-comp-commonmethod-c.md#onareachange)事件在onReady事件后触发。
+当该事件被触发时画布被清空，该事件之后Canvas组件宽高确定且可获取，可使用Canvas相关API进行绘制。当Canvas组件仅发生位置变化时，只触发[onAreaChange](arkts-arkui-common-comp-commonmethod-c.md#onareachange-1)事件，不触发onReady事件。[onAreaChange](arkts-arkui-common-comp-commonmethod-c.md#onareachange-1)事件在onReady事件后触发。
 
 **起始版本：** 8
 
@@ -92,7 +92,7 @@ onReady(event: Callback<DrawingRenderingContext | undefined> | undefined)
 
 Canvas组件初始化完成或者发生大小变化时的事件回调，支持[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)动态设置属性方法。
 
-当该事件被触发时画布被清空，该事件之后Canvas组件宽高确定且可获取，可使用Canvas相关API进行绘制。当Canvas组件仅发生位置变化时，只触发[onAreaChange](arkts-arkui-common-comp-commonmethod-c.md#onareachange)事件，不触发onReady事件。[onAreaChange](arkts-arkui-common-comp-commonmethod-c.md#onareachange)事件在onReady事件后触发。
+当该事件被触发时画布被清空，该事件之后Canvas组件宽高确定且可获取，可使用Canvas相关API进行绘制。当Canvas组件仅发生位置变化时，只触发[onAreaChange](arkts-arkui-common-comp-commonmethod-c.md#onareachange-1)事件，不触发onReady事件。[onAreaChange](arkts-arkui-common-comp-commonmethod-c.md#onareachange-1)事件在onReady事件后触发。
 
 **起始版本：** 23
 

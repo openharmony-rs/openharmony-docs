@@ -41,6 +41,8 @@
   <!--Del-->
   - [FeedbackType(system api)](arkts-multimodalawareness-behaviorawareness-feedbacktype-e-sys.md)<!--DelEnd-->
   <!--Del-->
+  - [LocationStatusType(system api)](arkts-multimodalawareness-behaviorawareness-locationstatustype-e-sys.md)<!--DelEnd-->
+  <!--Del-->
   - [LocationType(system api)](arkts-multimodalawareness-behaviorawareness-locationtype-e-sys.md)<!--DelEnd-->
   <!--Del-->
   - [Operation(system api)](arkts-multimodalawareness-behaviorawareness-operation-e-sys.md)<!--DelEnd-->

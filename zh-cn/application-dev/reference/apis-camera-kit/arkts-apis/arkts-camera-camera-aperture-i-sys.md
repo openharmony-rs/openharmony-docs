@@ -1,4 +1,4 @@
-# Aperture
+# Aperture（系统接口）
 
 ```TypeScript
 interface Aperture extends ApertureQuery

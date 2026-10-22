@@ -179,7 +179,7 @@ readonly windowChangeType?: WindowChangeType
 readonly windowId?: number
 ```
 
-控件所属窗口id。
+控件所属窗口id，若非窗口变化事件或非控件操作事件则返回-1。
 
 从API version 22开始，该接口支持在原子化服务中使用。
 

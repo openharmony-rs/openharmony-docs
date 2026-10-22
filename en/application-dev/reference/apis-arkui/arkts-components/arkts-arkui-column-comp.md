@@ -168,3 +168,31 @@ struct ColumnExample {
   }
 }
 ```
+
+### Example 2: Configuring the Reverse Attribute
+
+This example demonstrates how to set the reverse attribute of the Column component and its effect.
+
+```TypeScript
+@Entry
+@Component
+struct ColumnReverseSample {
+  build() {
+    Column() {
+      Text("1")
+        .width(50)
+        .height(100)
+        .backgroundColor(0xAFEEEE)
+
+      Text("2")
+        .width(50)
+        .height(100)
+        .backgroundColor(0x00FFFF)
+    }
+    .height(300)
+    .width(100)
+    .border({ width: 1 })
+    .reverse(true)
+  }
+}
+```

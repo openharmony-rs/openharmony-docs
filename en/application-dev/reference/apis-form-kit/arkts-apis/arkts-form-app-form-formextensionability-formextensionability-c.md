@@ -437,7 +437,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
 onUpdateForm(formId: string, wantParams?: Record<string, Object>): void
 ```
 
-Called to notify the widget provider that a widget is being updated, with update parameters carried. After obtaining the latest data, your application should call [updateForm](arkts-form-formprovider-updateform-f.md#updateform) of **formProvider** to update the widget data.
+Called to notify the widget provider that a widget is being updated, with update parameters carried. After obtaining the latest data, your application should call [updateForm](arkts-form-formprovider-updateform-f.md#updateform-1) of **formProvider** to update the widget data.
 
 **Since:** 9
 

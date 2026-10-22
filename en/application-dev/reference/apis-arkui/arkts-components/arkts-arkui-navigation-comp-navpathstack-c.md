@@ -714,7 +714,7 @@ Pushes the navigation destination page specified by **name**, with the data spec
 | --- | --- | --- | --- |
 | name | string | Yes | Name of the navigation destination page. |
 | param | Object | Yes | Detailed parameters for the custom **NavDestination** page. |
-| onPop | import('../api/@ohos.base').Callback&lt;[PopInfo](arkts-arkui-navigation-comp-popinfo-i.md)&gt; | Yes | Callback used to handle the result returned when the page is popped out of the stack. It is triggered only when the **result** parameter is set in [pop](#pop), [popToName](#poptoname), or [popToIndex](#poptoindex). |
+| onPop | import('../api/@ohos.base').Callback&lt;[PopInfo](arkts-arkui-navigation-comp-popinfo-i.md)&gt; | Yes | Callback used to handle the result returned when the page is popped out of the stack. It is triggered only when the **result** parameter is set in [pop](#pop-2), [popToName](#poptoname-2), or [popToIndex](#poptoindex-2). |
 | animated | boolean | No | Whether to enable the transition animation. <br>**true**: yes; **false**: no <br>Default value: **true** |
 
 **Return value:**
@@ -832,7 +832,7 @@ Pushes the navigation destination page specified by **name**, with the data spec
 | --- | --- | --- | --- |
 | name | string | Yes | Name of the navigation destination page. |
 | param | Object | Yes | Detailed parameters for the custom **NavDestination** page. |
-| onPop | import('../api/@ohos.base').Callback&lt;[PopInfo](arkts-arkui-navigation-comp-popinfo-i.md)&gt; | Yes | Callback used to receive the result. It is triggered only when the **result** parameter is set in [pop](#pop), [popToName](#poptoname), or [popToIndex](#poptoindex). |
+| onPop | import('../api/@ohos.base').Callback&lt;[PopInfo](arkts-arkui-navigation-comp-popinfo-i.md)&gt; | Yes | Callback used to receive the result. It is triggered only when the **result** parameter is set in [pop](#pop-2), [popToName](#poptoname-2), or [popToIndex](#poptoindex-2). |
 | animated | boolean | No | Whether to enable the transition animation. <br>**true**: yes; **false**: no <br>Default value: **true** |
 
 ## removeByIndexes

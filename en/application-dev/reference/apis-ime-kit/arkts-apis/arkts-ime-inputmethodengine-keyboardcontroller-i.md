@@ -188,7 +188,7 @@ Hides the keyboard. This API uses an asynchronous callback to return the result.
 
 **Deprecated since:** 9
 
-**Substitutes:** [hide](#hide)(callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [hide](#hide-1)(callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-KeyboardController-hideKeyboard(callback: AsyncCallback<void>): void--><!--Device-KeyboardController-hideKeyboard(callback: AsyncCallback<void>): void-End-->
 

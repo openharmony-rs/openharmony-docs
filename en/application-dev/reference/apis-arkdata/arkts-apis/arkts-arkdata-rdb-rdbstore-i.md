@@ -6,7 +6,7 @@ interface RdbStore
 
 Provides APIs for managing data in an RDB store.
 
-Before using the APIs of this class, use [executeSql](#executesql) to initialize the database table structure and related data.
+Before using the APIs of this class, use [executeSql](#executesql-1) to initialize the database table structure and related data.
 
 **Since:** 7
 

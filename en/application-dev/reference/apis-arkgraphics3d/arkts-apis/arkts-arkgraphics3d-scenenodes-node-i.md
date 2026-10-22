@@ -4,7 +4,7 @@
 export interface Node extends SceneResource
 ```
 
-The 3D scene consists of nodes in a tree hierarchy, where each node implements a Node interface. This class inherits from SceneResource.
+The 3D scene consists of nodes in a tree hierarchy, where each node implements a Node interface. This class inherits from [SceneResource](arkts-arkgraphics3d-sceneresources-sceneresource-i.md).
 
 **Inheritance/Implementation:** Node extends [SceneResource](arkts-arkgraphics3d-sceneresources-sceneresource-i.md)
 

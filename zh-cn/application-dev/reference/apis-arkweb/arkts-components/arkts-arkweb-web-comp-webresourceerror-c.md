@@ -50,6 +50,8 @@ getCustomErrorCode(): number
 
 **示例**
 
+完整示例代码参考[onErrorReceive事件](./arkts-basic-components-web-events.md#onerrorreceive)。
+
 ## getErrorCode
 
 ```TypeScript

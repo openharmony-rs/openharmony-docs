@@ -1,4 +1,4 @@
-# A2dpSourceProfile
+# A2dpSourceProfile (System API)
 
 ```TypeScript
 interface A2dpSourceProfile extends BaseProfile

@@ -1,4 +1,4 @@
-# MediaAssetManager
+# MediaAssetManager（系统接口）
 
 ```TypeScript
 class MediaAssetManager

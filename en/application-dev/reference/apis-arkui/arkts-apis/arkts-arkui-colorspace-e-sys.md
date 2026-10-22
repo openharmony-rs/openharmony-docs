@@ -1,4 +1,4 @@
-# ColorSpace
+# ColorSpace (System API)
 
 ```TypeScript
 declare enum ColorSpace

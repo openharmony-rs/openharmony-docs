@@ -1,4 +1,4 @@
-# MediaAlbumChangeRequest
+# MediaAlbumChangeRequest (System API)
 
 ```TypeScript
 class MediaAlbumChangeRequest implements MediaChangeRequest

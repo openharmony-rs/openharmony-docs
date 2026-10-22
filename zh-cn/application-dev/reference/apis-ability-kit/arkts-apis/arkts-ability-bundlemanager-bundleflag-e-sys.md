@@ -1,4 +1,4 @@
-# BundleFlag
+# BundleFlag（系统接口）
 
 ```TypeScript
 enum BundleFlag

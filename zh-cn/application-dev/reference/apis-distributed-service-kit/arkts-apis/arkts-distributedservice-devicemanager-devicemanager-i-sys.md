@@ -1,4 +1,4 @@
-# DeviceManager
+# DeviceManager（系统接口）
 
 ```TypeScript
 interface DeviceManager
@@ -512,7 +512,7 @@ getTrustedDeviceList(callback: AsyncCallback<Array<DeviceInfo>>): void
 
 **废弃版本：** 11
 
-**替代接口：** [getAvailableDeviceList](arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#getavailabledevicelist)(callback: AsyncCallback&lt;Array&lt;DeviceBasicInfo&gt;&gt;)
+**替代接口：** [getAvailableDeviceList](arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#getavailabledevicelist-1)(callback: AsyncCallback&lt;Array&lt;DeviceBasicInfo&gt;&gt;)
 
 **需要权限：** ohos.permission.ACCESS_SERVICE_DM
 

@@ -30,7 +30,7 @@ import { IconOptions, LabelOptions as ChipItemLabelOptions, ChipGroupItemOptions
 backgroundSystemMaterial?: uiMaterial.Material
 ```
 
-设置组件系统材质样式。不同材质具有不同的效果，能够影响组件的[backgroundColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor)、[border](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#border)、[shadow](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#shadow)视觉属性。设置自动反色的系统材质时，fontColor如果使用系统预定义的可反色颜色资源（如`$r('sys.color.font_primary')`），颜色自动适配到材质背景色的反色。
+设置组件系统材质样式。不同材质具有不同的效果，能够影响组件的[backgroundColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor-1)、[border](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#border)、[shadow](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#shadow-1)视觉属性。设置自动反色的系统材质时，fontColor如果使用系统预定义的可反色颜色资源（如`$r('sys.color.font_primary')`），颜色自动适配到材质背景色的反色。
 
 默认值：undefined
 
@@ -208,13 +208,33 @@ Chip状态改变时的回调方法，用于监听Chip选中状态的变更。该
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+## onItemsChange
+
+```TypeScript
+onItemsChange?: Callback<ChipGroupItemOptions[]>
+```
+
+注册ChipItems的回调。
+
+**类型：** Callback&lt;[ChipGroupItemOptions](arkts-arkui-arkui-advanced-chipgroup-chipgroupitemoptions-i.md)[]&gt;
+
+**起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-ChipGroup-onItemsChange?: Callback<ChipGroupItemOptions[]>--><!--Device-ChipGroup-onItemsChange?: Callback<ChipGroupItemOptions[]>-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 ## selectedBackgroundSystemMaterial
 
 ```TypeScript
 selectedBackgroundSystemMaterial?: uiMaterial.Material
 ```
 
-设置组件选中状态的系统材质样式。不同材质具有不同的效果，能够影响组件选中时的[backgroundColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor)、[border](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#border)、[shadow](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#shadow)视觉属性。设置自动反色的系统材质时，selectedFontColor如果使用系统预定义的可反色颜色资源（如`$r('sys.color.font_primary')`），颜色自动适配到材质背景色的反色。当设置selectedBackgroundSystemMaterial时，应将selectedBackgroundColor设为Color.Transparent，否则会与系统材质冲突。
+设置组件选中状态的系统材质样式。不同材质具有不同的效果，能够影响组件选中时的[backgroundColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor-1)、[border](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#border)、[shadow](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#shadow-1)视觉属性。设置自动反色的系统材质时，selectedFontColor如果使用系统预定义的可反色颜色资源（如`$r('sys.color.font_primary')`），颜色自动适配到材质背景色的反色。当设置selectedBackgroundSystemMaterial时，应将selectedBackgroundColor设为Color.Transparent，否则会与系统材质冲突。
 
 默认值：undefined
 

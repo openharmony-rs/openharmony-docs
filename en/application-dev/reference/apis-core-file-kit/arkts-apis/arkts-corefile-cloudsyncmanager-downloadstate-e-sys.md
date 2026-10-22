@@ -1,4 +1,4 @@
-# DownloadState
+# DownloadState (System API)
 
 ```TypeScript
 enum DownloadState

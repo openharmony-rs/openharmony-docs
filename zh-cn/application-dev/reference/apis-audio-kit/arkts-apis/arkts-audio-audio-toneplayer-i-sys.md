@@ -4,7 +4,7 @@
 interface TonePlayer
 ```
 
-提供播放和管理DTMF（Dual Tone Multi Frequency，双音多频）音调的方法，包括各种系统监听音调、专有音调，如拨号音、通话回铃音等。在调用TonePlayer的接口前，需要先通过[createTonePlayer](arkts-audio-audio-createtoneplayer-f-sys.md#createtoneplayer)创建实例。
+提供播放和管理DTMF（Dual Tone Multi Frequency，双音多频）音调的方法，包括各种系统监听音调、专有音调，如拨号音、通话回铃音等。在调用TonePlayer的接口前，需要先通过[createTonePlayer](arkts-audio-audio-createtoneplayer-f-sys.md#createtoneplayer-1)创建实例。
 
 **起始版本：** 9
 

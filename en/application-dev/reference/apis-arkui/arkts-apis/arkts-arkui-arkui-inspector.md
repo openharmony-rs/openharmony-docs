@@ -22,7 +22,7 @@ import { inspector } from '@kit.ArkUI';
 
 | Name | Description |
 | --- | --- |
-| [createComponentObserver](arkts-arkui-inspector-createcomponentobserver-f.md#createcomponentobserver) | Binds to the specified component and returns the corresponding observation handle. |
+| [createComponentObserver](arkts-arkui-inspector-createcomponentobserver-f.md#createcomponentobserver-1) | Binds to the specified component and returns the corresponding observation handle. |
 
 ### Interfaces
 

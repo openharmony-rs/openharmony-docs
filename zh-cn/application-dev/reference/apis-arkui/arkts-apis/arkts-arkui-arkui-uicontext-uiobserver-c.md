@@ -2886,7 +2886,7 @@ on(type: 'nodeRenderState', nodeIdentity: NodeIdentity, callback: NodeRenderStat
 
 注意节点数量的限制。出于性能考虑，在单个UI实例中，注册节点太多，将会抛出异常。
 
-通常，当组件被移动到屏幕外时，会收到RENDER_OUT的通知。但在某些情况下，即使组件移动到屏幕外也不会触发RENDER_OUT通知。例如，具有缓存功能的组件Swiper，即使[cachedCount](../arkts-components/arkts-arkui-swiper-comp-attribute.md#cachedcount)属性中的参数isShown配置为true，也不会触发RENDER_OUT通知。
+通常，当组件被移动到屏幕外时，会收到RENDER_OUT的通知。但在某些情况下，即使组件移动到屏幕外也不会触发RENDER_OUT通知。例如，具有缓存功能的组件Swiper，即使[cachedCount](../arkts-components/arkts-arkui-swiper-comp-attribute.md#cachedcount-2)属性中的参数isShown配置为true，也不会触发RENDER_OUT通知。
 
 **起始版本：** 20
 

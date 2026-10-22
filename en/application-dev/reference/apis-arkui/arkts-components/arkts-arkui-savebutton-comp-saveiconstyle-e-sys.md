@@ -1,4 +1,4 @@
-# SaveIconStyle
+# SaveIconStyle (System API)
 
 ```TypeScript
 declare enum SaveIconStyle

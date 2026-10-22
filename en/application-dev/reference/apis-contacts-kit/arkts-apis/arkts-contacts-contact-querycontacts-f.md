@@ -18,7 +18,7 @@ Queries all contacts. This API uses an asynchronous callback to return the resul
 
 **Deprecated since:** 10
 
-**Substitutes:** [queryContacts](#querycontacts)(context: Context, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
+**Substitutes:** [queryContacts](#querycontacts-2)(context: Context, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
 
 **Required permissions:** ohos.permission.READ_CONTACTS
 
@@ -114,7 +114,7 @@ Queries all contacts based on the specified holder. This API uses an asynchronou
 
 **Deprecated since:** 10
 
-**Substitutes:** [queryContacts](#querycontacts)(context: Context, holder: Holder, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
+**Substitutes:** [queryContacts](#querycontacts-4)(context: Context, holder: Holder, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
 
 **Required permissions:** ohos.permission.READ_CONTACTS
 
@@ -220,7 +220,7 @@ Queries all contacts based on the specified attributes. This API uses an asynchr
 
 **Deprecated since:** 10
 
-**Substitutes:** [queryContacts](#querycontacts)(context: Context, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
+**Substitutes:** [queryContacts](#querycontacts-6)(context: Context, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
 
 **Required permissions:** ohos.permission.READ_CONTACTS
 
@@ -322,7 +322,7 @@ Queries all contacts based on the specified holder and attributes. This API uses
 
 **Deprecated since:** 10
 
-**Substitutes:** [queryContacts](#querycontacts)(context: Context, holder: Holder, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
+**Substitutes:** [queryContacts](#querycontacts-8)(context: Context, holder: Holder, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
 
 **Required permissions:** ohos.permission.READ_CONTACTS
 
@@ -434,7 +434,7 @@ Queries all contacts based on the specified holder and attributes. This API uses
 
 **Deprecated since:** 10
 
-**Substitutes:** [queryContacts](#querycontacts)(context: Context, holder?: Holder, attrs?: ContactAttributes)
+**Substitutes:** [queryContacts](#querycontacts-10)(context: Context, holder?: Holder, attrs?: ContactAttributes)
 
 **Required permissions:** ohos.permission.READ_CONTACTS
 

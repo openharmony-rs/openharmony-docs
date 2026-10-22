@@ -76,7 +76,7 @@ cachedCount(count: number, show: boolean)
 
 Sets the number of grid rows/columns to be preloaded on both sides along the main axis, and configures whether to display the preloaded nodes. This attribute takes effect only in [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md) and [Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md) with [virtualScroll](arkts-arkui-repeat-comp-attribute.md#virtualscroll) enabled.
 
-After caching is set, **cachedCount** grid rows/columns are preloaded on both sides of the display area of the **Grid** component along the main axis. During vertical scrolling, **cachedCount** rows are preloaded on the top and bottom sides respectively. During horizontal scrolling, **cachedCount** columns are preloaded on the left and right sides respectively. The preloaded nodes can be displayed together with the [clip](arkts-arkui-common-comp-commonmethod-c.md#clip) or [clipContent](../../../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#clipcontent14) attribute.
+After caching is set, **cachedCount** grid rows/columns are preloaded on both sides of the display area of the **Grid** component along the main axis. During vertical scrolling, **cachedCount** rows are preloaded on the top and bottom sides respectively. During horizontal scrolling, **cachedCount** columns are preloaded on the left and right sides respectively. The preloaded nodes can be displayed together with the [clip](arkts-arkui-common-comp-commonmethod-c.md#clip-1) or [clipContent](../../../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#clipcontent14) attribute.
 
 **Since:** 14
 
@@ -199,7 +199,7 @@ columnsTemplate(value: string | ItemFillPolicy)
 
 Number of columns in the current grid layout. If this attribute is not set, one column will be used.
 
-When the value is of the string type, refer to [columnsTemplate(value: string)](#columnstemplate) for the usage.
+When the value is of the string type, refer to [columnsTemplate(value: string)](#columnstemplate-1) for the usage.
 
 When the value is of the **ItemFillPolicy** type, the number of columns is determined based on the [breakpoint type](../../../ui/arkts-layout-development-grid-layout.md#breakpoints) corresponding to the width of the **Grid** component.
 
@@ -1000,7 +1000,7 @@ Sets the scrollbar color.
 scrollBarColor(color: Color | number | string | Resource)
 ```
 
-Sets the scrollbar color. Compared with [scrollBarColor](#scrollbarcolor), the parameter name is changed to **color** and the Resource type is supported.
+Sets the scrollbar color. Compared with [scrollBarColor](#scrollbarcolor-1), the parameter name is changed to **color** and the Resource type is supported.
 
 **Since:** 22
 

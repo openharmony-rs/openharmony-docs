@@ -1,10 +1,10 @@
-# RenderResourceFactory
+# RenderResourceFactory (System API)
 
 ```TypeScript
 export interface RenderResourceFactory
 ```
 
-Creates rendering resources that can be shared in multiple scenes ([Scene](arkts-arkgraphics3d-scene-c.md)) that share RenderContext.
+Creates rendering resources that can be shared in multiple scenes ([Scene](arkts-arkgraphics3d-scene-c.md)) that share [RenderContext](arkts-arkgraphics3d-scene-rendercontext-i.md).
 
 **Since:** 20
 

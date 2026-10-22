@@ -4,7 +4,7 @@
 interface Preferences
 ```
 
-Provides APIs for obtaining and modifying the stored data. Before calling any API of **Preferences**, you must obtain a **Preferences** instance by using [preferences.getPreferences](arkts-arkdata-preferences-getpreferences-f.md#getpreferences).
+Provides APIs for obtaining and modifying the stored data. Before calling any API of **Preferences**, you must obtain a **Preferences** instance by using [preferences.getPreferences](arkts-arkdata-preferences-getpreferences-f.md#getpreferences-1).
 
 **Since:** 9
 
@@ -24,7 +24,7 @@ import { preferences } from '@kit.ArkData';
 clear(callback: AsyncCallback<void>): void
 ```
 
-Clears this **Preferences** instance. This API uses an asynchronous callback to return the result. You can use [flush](#flush) to persist the **Preferences** instance.
+Clears this **Preferences** instance. This API uses an asynchronous callback to return the result. You can use [flush](#flush-1) to persist the **Preferences** instance.
 
 **Since:** 9
 
@@ -66,7 +66,7 @@ dataPreferences.clear((err: BusinessError) =>{
 clear(): Promise<void>
 ```
 
-Clears this **Preferences** instance. This API uses a promise to return the result. You can use [flush](#flush) to persist the **Preferences** instance.
+Clears this **Preferences** instance. This API uses a promise to return the result. You can use [flush](#flush-1) to persist the **Preferences** instance.
 
 **Since:** 9
 
@@ -107,7 +107,7 @@ promise.then(() => {
 clearSync(): void
 ```
 
-Clears this **Preferences** instance. This API returns the result synchronously. You can use [flush](#flush) to persist the **Preferences** instance.
+Clears this **Preferences** instance. This API returns the result synchronously. You can use [flush](#flush-1) to persist the **Preferences** instance.
 
 **Since:** 10
 
@@ -129,7 +129,7 @@ dataPreferences.clearSync();
 delete(key: string, callback: AsyncCallback<void>): void
 ```
 
-Deletes a KV pair from this **Preferences** instance. This API uses an asynchronous callback to return the result. You can use [flush](#flush) to persist the **Preferences** instance.
+Deletes a KV pair from this **Preferences** instance. This API uses an asynchronous callback to return the result. You can use [flush](#flush-1) to persist the **Preferences** instance.
 
 **Since:** 9
 
@@ -173,7 +173,7 @@ dataPreferences.delete('startup', (err: BusinessError) => {
 delete(key: string): Promise<void>
 ```
 
-Deletes a KV pair from this **Preferences** instance. This API uses a promise to return the result. You can use [flush](#flush) to persist the **Preferences** instance.
+Deletes a KV pair from this **Preferences** instance. This API uses a promise to return the result. You can use [flush](#flush-1) to persist the **Preferences** instance.
 
 **Since:** 9
 
@@ -221,7 +221,7 @@ deleteStartupPromise.then(() => {
 deleteSync(key: string): void
 ```
 
-Deletes a KV pair from this **Preferences** instance. This API returns the result synchronously. You can use [flush](#flush) to persist the **Preferences** instance.
+Deletes a KV pair from this **Preferences** instance. This API returns the result synchronously. You can use [flush](#flush-1) to persist the **Preferences** instance.
 
 **Since:** 10
 
@@ -950,7 +950,7 @@ dataPreferences.off('dataChange', keys, observer);
 on(type: 'change', callback: Callback<string>): void
 ```
 
-Subscribes to data changes. The registered callback will be invoked to return the new value if the data change is [flushed](#flush).
+Subscribes to data changes. The registered callback will be invoked to return the new value if the data change is [flushed](#flush-1).
 
 **Since:** 9
 
@@ -999,7 +999,7 @@ dataPreferences.flush((err: BusinessError) => {
 on(type: 'multiProcessChange', callback: Callback<string>): void
 ```
 
-Subscribes to data changes between processes. When multiple processes hold the same preference file, calling [flush](#flush) in any process (including the current process) will trigger the callback in this API. This API is provided for applications that have applied for [dataGroupId](arkts-arkdata-preferences-options-i.md). Avoid using this API for the applications that have not applied for **dataGroupId** because calling it in multiple process may damage the persistent files and cause data loss.
+Subscribes to data changes between processes. When multiple processes hold the same preference file, calling [flush](#flush-1) in any process (including the current process) will trigger the callback in this API. This API is provided for applications that have applied for [dataGroupId](arkts-arkdata-preferences-options-i.md). Avoid using this API for the applications that have not applied for **dataGroupId** because calling it in multiple process may damage the persistent files and cause data loss.
 
 **Since:** 10
 
@@ -1049,7 +1049,7 @@ dataPreferences.flush((err: BusinessError) => {
 on(type: 'dataChange', keys: Array<string>, callback: Callback<Record<string, ValueType>>): void
 ```
 
-Subscribes to changes of specific data. The registered callback will be invoked only after the values of the specified keys are changed and [flushed](#flush).
+Subscribes to changes of specific data. The registered callback will be invoked only after the values of the specified keys are changed and [flushed](#flush-1).
 
 **Since:** 12
 
@@ -1104,7 +1104,7 @@ dataPreferences.flush((err: BusinessError) => {
 put(key: string, value: ValueType, callback: AsyncCallback<void>): void
 ```
 
-Writes data to this **Preferences** instance. This API uses an asynchronous callback to return the result. You can use [flush](#flush) to persist the **Preferences** instance.
+Writes data to this **Preferences** instance. This API uses an asynchronous callback to return the result. You can use [flush](#flush-1) to persist the **Preferences** instance.
 
 **Since:** 9
 
@@ -1149,7 +1149,7 @@ dataPreferences.put('startup', 'auto', (err: BusinessError) => {
 put(key: string, value: ValueType): Promise<void>
 ```
 
-Writes data to this **Preferences** instance. This API uses a promise to return the result. You can use [flush](#flush) to persist the **Preferences** instance.
+Writes data to this **Preferences** instance. This API uses a promise to return the result. You can use [flush](#flush-1) to persist the **Preferences** instance.
 
 **Since:** 9
 
@@ -1198,7 +1198,7 @@ putStartupPref.then(() => {
 putSync(key: string, value: ValueType): void
 ```
 
-Writes data to this **Preferences** instance. This API returns the result synchronously. You can use [flush](#flush) to persist the **Preferences** instance.
+Writes data to this **Preferences** instance. This API returns the result synchronously. You can use [flush](#flush-1) to persist the **Preferences** instance.
 
 **Since:** 10
 

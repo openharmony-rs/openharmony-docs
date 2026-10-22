@@ -1,4 +1,4 @@
-# SubWindowOptions
+# SubWindowOptions（系统接口）
 
 ```TypeScript
 interface SubWindowOptions

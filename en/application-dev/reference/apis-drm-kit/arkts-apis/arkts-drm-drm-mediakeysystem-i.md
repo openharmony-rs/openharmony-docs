@@ -4,7 +4,7 @@
 interface MediaKeySystem
 ```
 
-MediaKeySystem manages MediaKeySystem instances, handles device certificate (DRM certificate) requests and processing, creates sessions, manages offline media keys, obtains DRM metrics, and obtain device configurations. Before calling any API in MediaKeySystem, you must use [createMediaKeySystem](arkts-drm-drm-createmediakeysystem-f.md) to create a MediaKeySystem instance.
+MediaKeySystem manages MediaKeySystem instances, handles device certificate (DRM certificate) requests and processing, creates sessions, manages offline media keys, obtains DRM metrics, and obtain device configurations. Before calling any API in MediaKeySystem, you must use [createMediaKeySystem](arkts-drm-drm-createmediakeysystem-f.md#createmediakeysystem-1) to create a MediaKeySystem instance.
 
 **Since:** 11
 
@@ -168,6 +168,13 @@ Destroys this MediaKeySystem instance.
 | [24700201](../errorcode-drm.md#24700201-service-exception) | Fatal service error, for example, service died. |
 
 **Examples**
+
+```TypeScript
+import { drm } from '@kit.DrmKit';
+
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem('com.clearplay.drm');
+mediaKeySystem.destroy();
+```
 
 ## generateKeySystemRequest
 
@@ -520,7 +527,7 @@ Unsubscribes from events indicating that the application requests a device certi
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | 'keySystemRequired' | Yes | Event type. This event is available for listening after a MediaKeySystem instance is created by calling [createMediaKeySystem](arkts-drm-drm-createmediakeysystem-f.md). |
+| type | 'keySystemRequired' | Yes | Event type. This event is available for listening after a MediaKeySystem instance is created by calling [createMediaKeySystem](arkts-drm-drm-createmediakeysystem-f.md#createmediakeysystem-1). |
 | callback | (eventInfo: EventInfo) =&gt; void | No | Callback used to return the event information. |
 
 **Error codes:**
@@ -559,7 +566,7 @@ Subscribes to events indicating that the application requests a device certifica
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | 'keySystemRequired' | Yes | Event type. This event is available for listening after a MediaKeySystem instance is created by calling [createMediaKeySystem](arkts-drm-drm-createmediakeysystem-f.md). It is triggered when a device certificate is required. |
+| type | 'keySystemRequired' | Yes | Event type. This event is available for listening after a MediaKeySystem instance is created by calling [createMediaKeySystem](arkts-drm-drm-createmediakeysystem-f.md#createmediakeysystem-1). It is triggered when a device certificate is required. |
 | callback | (eventInfo: EventInfo) =&gt; void | Yes | Callback used to return the event information. The occurrence of this event signals the need to request a device certificate. |
 
 **Error codes:**

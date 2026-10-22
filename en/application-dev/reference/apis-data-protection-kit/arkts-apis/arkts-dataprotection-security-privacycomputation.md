@@ -22,9 +22,9 @@ import { privacyComputation } from '@kit.DataProtectionKit';
 
 | Name | Description |
 | --- | --- |
-| [genPrivacyTarget](arkts-dataprotection-privacycomputation-genprivacytarget-f.md#genprivacytarget) | Generates a privacy target for the given element. The privacy target is an encrypted representation of the search element that can be used in a privacy-preserving search without revealing the original data. This API uses a promise to return the result. |
-| [getSearchResult](arkts-dataprotection-privacycomputation-getsearchresult-f.md#getsearchresult) | Get the privacy search result and the final search outcome. Decrypts the search result ciphertexts returned by privacySearch to obtain the final match result and optional attached value. This API uses a promise to return the result. |
-| [privacySearch](arkts-dataprotection-privacycomputation-privacysearch-f.md#privacysearch) | Performs a privacy-preserving search. Searches the given dataset elements against the encrypted privacy target without revealing the target or the dataset contents to the other party. This API uses a promise to return the result. |
+| [genPrivacyTarget](arkts-dataprotection-privacycomputation-genprivacytarget-f.md#genprivacytarget-1) | Generates a privacy target for the given element. The privacy target is an encrypted representation of the search element that can be used in a privacy-preserving search without revealing the original data. This API uses a promise to return the result. |
+| [getSearchResult](arkts-dataprotection-privacycomputation-getsearchresult-f.md#getsearchresult-1) | Get the privacy search result and the final search outcome. Decrypts the search result ciphertexts returned by privacySearch to obtain the final match result and optional attached value. This API uses a promise to return the result. |
+| [privacySearch](arkts-dataprotection-privacycomputation-privacysearch-f.md#privacysearch-1) | Performs a privacy-preserving search. Searches the given dataset elements against the encrypted privacy target without revealing the target or the dataset contents to the other party. This API uses a promise to return the result. |
 
 ### Interfaces
 

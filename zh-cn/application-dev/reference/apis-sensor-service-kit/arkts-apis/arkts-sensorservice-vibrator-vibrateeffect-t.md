@@ -4,7 +4,7 @@
 type VibrateEffect = VibrateTime | VibratePreset | VibrateFromFile | VibrateFromPattern
 ```
 
-马达振动效果，支持以下四种：在调用[vibrator.startVibration<sup>9+</sup>](arkts-sensorservice-vibrator-startvibration-f.md#startvibration)或[vibrator.startVibration<sup>9+</sup>](arkts-sensorservice-vibrator-startvibration-f.md#startvibration)接口时，此参数的四种类型表示以四种不同的形式触发振动。
+马达振动效果，支持以下四种：在调用[vibrator.startVibration<sup>9+</sup>](arkts-sensorservice-vibrator-startvibration-f.md#startvibration-1)或[vibrator.startVibration<sup>9+</sup>](arkts-sensorservice-vibrator-startvibration-f.md#startvibration-2)接口时，此参数的四种类型表示以四种不同的形式触发振动。
 
 **起始版本：** 9
 

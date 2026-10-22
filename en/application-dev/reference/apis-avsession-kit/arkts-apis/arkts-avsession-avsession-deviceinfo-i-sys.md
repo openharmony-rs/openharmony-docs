@@ -1,4 +1,4 @@
-# DeviceInfo
+# DeviceInfo (System API)
 
 ```TypeScript
 interface DeviceInfo
@@ -31,6 +31,26 @@ Define different authentication status. 0: Device not authenticated. 1: Device a
 **Since:** 11
 
 <!--Device-DeviceInfo-authenticationStatus?: int--><!--Device-DeviceInfo-authenticationStatus?: int-End-->
+
+**System capability:** SystemCapability.Multimedia.AVSession.AVCast
+
+**System API:** This is a system API.
+
+## brMacAddress
+
+```TypeScript
+brMacAddress?: string
+```
+
+Static Bluetooth MAC address of the distributed device. This parameter is available only when the distributed device reports the Bluetooth MAC address. Format example: "00:11:22:33:44:55". You need to apply for the Ohos.permission.USE_BLUETOOTH permission. Default value: "".
+
+**Type:** string
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DeviceInfo-brMacAddress?: string--><!--Device-DeviceInfo-brMacAddress?: string-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVCast
 

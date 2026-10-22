@@ -20,47 +20,47 @@ import { mechanicManager } from '@kit.MechanicKit';
 
 | Name | Description |
 | --- | --- |
-| [getAttachedMechDevices](arkts-mechanic-mechanicmanager-getattachedmechdevices-f.md#getattachedmechdevices) | Obtain the list of connected mechanical devices. |
-| [getCameraTrackingEnabled](arkts-mechanic-mechanicmanager-getcameratrackingenabled-f.md#getcameratrackingenabled) | Checks whether camera tracking is enabled for this mechanical device. |
-| [getCameraTrackingLayout](arkts-mechanic-mechanicmanager-getcameratrackinglayout-f.md#getcameratrackinglayout) | Obtains the camera tracking layout of this mechanical device. |
-| [isControlSupported](arkts-mechanic-mechanicmanager-iscontrolsupported-f.md#iscontrolsupported) | Checks whether the current device supports embodied control for a specific type of device. |
+| [getAttachedMechDevices](arkts-mechanic-mechanicmanager-getattachedmechdevices-f.md#getattachedmechdevices-1) | Obtain the list of connected mechanical devices. |
+| [getCameraTrackingEnabled](arkts-mechanic-mechanicmanager-getcameratrackingenabled-f.md#getcameratrackingenabled-1) | Checks whether camera tracking is enabled for this mechanical device. |
+| [getCameraTrackingLayout](arkts-mechanic-mechanicmanager-getcameratrackinglayout-f.md#getcameratrackinglayout-1) | Obtains the camera tracking layout of this mechanical device. |
+| [isControlSupported](arkts-mechanic-mechanicmanager-iscontrolsupported-f.md#iscontrolsupported-1) | Checks whether the current device supports embodied control for a specific type of device. |
 | [off('attachStateChange')](arkts-mechanic-mechanicmanager-off-f.md#offattachstatechange) | Unsubscribes from device attachment state change events. |
 | [off('trackingStateChange')](arkts-mechanic-mechanicmanager-off-f.md#offtrackingstatechange) | Unsubscribes from tracking events. |
 | [on('attachStateChange')](arkts-mechanic-mechanicmanager-on-f.md#onattachstatechange) | Subscribes to device attachment state change events. |
 | [on('trackingStateChange')](arkts-mechanic-mechanicmanager-on-f.md#ontrackingstatechange) | Subscribes to tracking events. |
-| [setCameraTrackingEnabled](arkts-mechanic-mechanicmanager-setcameratrackingenabled-f.md#setcameratrackingenabled) | Enables or disables camera tracking. |
+| [setCameraTrackingEnabled](arkts-mechanic-mechanicmanager-setcameratrackingenabled-f.md#setcameratrackingenabled-1) | Enables or disables camera tracking. |
 
 <!--Del-->
 ### Functions(System API)
 
 | Name | Description |
 | --- | --- |
-| [connectDevice](arkts-mechanic-mechanicmanager-connectdevice-f-sys.md#connectdevice) | Connecting devices based on addresses |
-| [disconnectDevice](arkts-mechanic-mechanicmanager-disconnectdevice-f-sys.md#disconnectdevice) | Disconnect a device with mechanic id. |
-| [doAction](arkts-mechanic-mechanicmanager-doaction-f-sys.md#doaction) | Execute an action sequence. |
-| [getCurrentAngles](arkts-mechanic-mechanicmanager-getcurrentangles-f-sys.md#getcurrentangles) | Obtains the current angles of a mechanical device. |
-| [getDeviceAdsorbState](arkts-mechanic-mechanicmanager-getdeviceadsorbstate-f-sys.md#getdeviceadsorbstate) | Obtains the adsorb state of a device. Before calling this method, ensure that the device is connected. |
-| [getMaxRotationSpeed](arkts-mechanic-mechanicmanager-getmaxrotationspeed-f-sys.md#getmaxrotationspeed) | Obtains the maximum rotation speed of a mechanical device. |
-| [getMaxRotationTime](arkts-mechanic-mechanicmanager-getmaxrotationtime-f-sys.md#getmaxrotationtime) | Obtains the maximum continuous rotation duration of a mechanical device. |
-| [getRotationAxesStatus](arkts-mechanic-mechanicmanager-getrotationaxesstatus-f-sys.md#getrotationaxesstatus) | Obtains the status of the rotation axes. |
-| [getRotationLimits](arkts-mechanic-mechanicmanager-getrotationlimits-f-sys.md#getrotationlimits) | Obtains the maximum rotation angles relative to the reference point for the specified mechanical device. |
-| [isSupportAction](arkts-mechanic-mechanicmanager-issupportaction-f-sys.md#issupportaction) | Check whether the specific action type is supported. |
-| [move](arkts-mechanic-mechanicmanager-move-f-sys.md#move) | Move a mechanical device with the specified parameters. |
-| [moveBySpeed](arkts-mechanic-mechanicmanager-movebyspeed-f-sys.md#movebyspeed) | Move a mechanical device at the specified speed. |
+| [connectDevice](arkts-mechanic-mechanicmanager-connectdevice-f-sys.md#connectdevice-1) | Connecting devices based on addresses |
+| [disconnectDevice](arkts-mechanic-mechanicmanager-disconnectdevice-f-sys.md#disconnectdevice-1) | Disconnect a device with mechanic id. |
+| [doAction](arkts-mechanic-mechanicmanager-doaction-f-sys.md#doaction-1) | Execute an action sequence. |
+| [getCurrentAngles](arkts-mechanic-mechanicmanager-getcurrentangles-f-sys.md#getcurrentangles-1) | Obtains the current angles of a mechanical device. |
+| [getDeviceAdsorbState](arkts-mechanic-mechanicmanager-getdeviceadsorbstate-f-sys.md#getdeviceadsorbstate-1) | Obtains the adsorb state of a device. Before calling this method, ensure that the device is connected. |
+| [getMaxRotationSpeed](arkts-mechanic-mechanicmanager-getmaxrotationspeed-f-sys.md#getmaxrotationspeed-1) | Obtains the maximum rotation speed of a mechanical device. |
+| [getMaxRotationTime](arkts-mechanic-mechanicmanager-getmaxrotationtime-f-sys.md#getmaxrotationtime-1) | Obtains the maximum continuous rotation duration of a mechanical device. |
+| [getRotationAxesStatus](arkts-mechanic-mechanicmanager-getrotationaxesstatus-f-sys.md#getrotationaxesstatus-1) | Obtains the status of the rotation axes. |
+| [getRotationLimits](arkts-mechanic-mechanicmanager-getrotationlimits-f-sys.md#getrotationlimits-1) | Obtains the maximum rotation angles relative to the reference point for the specified mechanical device. |
+| [isSupportAction](arkts-mechanic-mechanicmanager-issupportaction-f-sys.md#issupportaction-1) | Check whether the specific action type is supported. |
+| [move](arkts-mechanic-mechanicmanager-move-f-sys.md#move-1) | Move a mechanical device with the specified parameters. |
+| [moveBySpeed](arkts-mechanic-mechanicmanager-movebyspeed-f-sys.md#movebyspeed-1) | Move a mechanical device at the specified speed. |
 | [off('rotationAxesStatusChange')](arkts-mechanic-mechanicmanager-off-f-sys.md#offrotationaxesstatuschange) | Unregister a listener for axis state changes. |
-| [offBatteryLevelChange](arkts-mechanic-mechanicmanager-offbatterylevelchange-f-sys.md#offbatterylevelchange) | Unsubscribes to device battery level change information. |
+| [offBatteryLevelChange](arkts-mechanic-mechanicmanager-offbatterylevelchange-f-sys.md#offbatterylevelchange-1) | Unsubscribes to device battery level change information. |
 | [on('rotationAxesStatusChange')](arkts-mechanic-mechanicmanager-on-f-sys.md#onrotationaxesstatuschange) | Register a listener for axis state changes. The status of the rotation axis changes dynamically, which needs to be monitored. |
-| [onBatteryLevelChange](arkts-mechanic-mechanicmanager-onbatterylevelchange-f-sys.md#onbatterylevelchange) | Subscribes to device battery level change information. Before calling this method, ensure that the device is connected. |
-| [rotate](arkts-mechanic-mechanicmanager-rotate-f-sys.md#rotate) | Rotates a mechanical device to the relative angles. |
-| [rotateBySpeed](arkts-mechanic-mechanicmanager-rotatebyspeed-f-sys.md#rotatebyspeed) | Rotates a mechanical device at the specified speed. |
-| [rotateToEulerAngles](arkts-mechanic-mechanicmanager-rotatetoeulerangles-f-sys.md#rotatetoeulerangles) | Rotates a mechanical device to the absolute angles. |
-| [searchTarget](arkts-mechanic-mechanicmanager-searchtarget-f-sys.md#searchtarget) | Searching for a specified target. |
-| [setCameraTrackingLayout](arkts-mechanic-mechanicmanager-setcameratrackinglayout-f-sys.md#setcameratrackinglayout) | Sets the camera tracking layout for this mechanical device. |
-| [setUserOperation](arkts-mechanic-mechanicmanager-setuseroperation-f-sys.md#setuseroperation) | Sets a user operation. |
-| [stopMoving](arkts-mechanic-mechanicmanager-stopmoving-f-sys.md#stopmoving) | Stops a mechanical device from moving. |
-| [subscribe](arkts-mechanic-mechanicmanager-subscribe-f-sys.md#subscribe) | Subscribe to the specified events. |
-| [turnBySpeed](arkts-mechanic-mechanicmanager-turnbyspeed-f-sys.md#turnbyspeed) | Rotate in place according to the speed. |
-| [unSubscribe](arkts-mechanic-mechanicmanager-unsubscribe-f-sys.md#unsubscribe) | Unsubscribes the specified events. |
+| [onBatteryLevelChange](arkts-mechanic-mechanicmanager-onbatterylevelchange-f-sys.md#onbatterylevelchange-1) | Subscribes to device battery level change information. Before calling this method, ensure that the device is connected. |
+| [rotate](arkts-mechanic-mechanicmanager-rotate-f-sys.md#rotate-1) | Rotates a mechanical device to the relative angles. |
+| [rotateBySpeed](arkts-mechanic-mechanicmanager-rotatebyspeed-f-sys.md#rotatebyspeed-1) | Rotates a mechanical device at the specified speed. |
+| [rotateToEulerAngles](arkts-mechanic-mechanicmanager-rotatetoeulerangles-f-sys.md#rotatetoeulerangles-1) | Rotates a mechanical device to the absolute angles. |
+| [searchTarget](arkts-mechanic-mechanicmanager-searchtarget-f-sys.md#searchtarget-1) | Searching for a specified target. |
+| [setCameraTrackingLayout](arkts-mechanic-mechanicmanager-setcameratrackinglayout-f-sys.md#setcameratrackinglayout-1) | Sets the camera tracking layout for this mechanical device. |
+| [setUserOperation](arkts-mechanic-mechanicmanager-setuseroperation-f-sys.md#setuseroperation-1) | Sets a user operation. |
+| [stopMoving](arkts-mechanic-mechanicmanager-stopmoving-f-sys.md#stopmoving-1) | Stops a mechanical device from moving. |
+| [subscribe](arkts-mechanic-mechanicmanager-subscribe-f-sys.md#subscribe-1) | Subscribe to the specified events. |
+| [turnBySpeed](arkts-mechanic-mechanicmanager-turnbyspeed-f-sys.md#turnbyspeed-1) | Rotate in place according to the speed. |
+| [unSubscribe](arkts-mechanic-mechanicmanager-unsubscribe-f-sys.md#unsubscribe-1) | Unsubscribes the specified events. |
 <!--DelEnd-->
 
 ### Interfaces

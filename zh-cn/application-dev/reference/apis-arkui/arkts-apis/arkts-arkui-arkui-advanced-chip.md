@@ -8,6 +8,9 @@ Chip组件用于标签展示和交互场景，支持自定义样式、图标、�
  > 编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到Chip本身。
  > 这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议Chip设置通用属性和通用事件。
 
+## 子组件
+
+无
 
 ## 导入模块
 
@@ -21,7 +24,7 @@ import { Chip, ChipOptions, ChipSize, IconCommonOptions, LabelMarginOptions, Lab
 
 | 名称 | 说明 |
 | --- | --- |
-| [Chip](arkts-arkui-arkui-advanced-chip-chip-f.md#chip) | 创建Chip组件。 |
+| [Chip](arkts-arkui-arkui-advanced-chip-chip-f.md#chip-1) | 创建Chip组件。 |
 
 ### 接口
 

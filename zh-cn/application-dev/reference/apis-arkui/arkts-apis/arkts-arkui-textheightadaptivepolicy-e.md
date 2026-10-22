@@ -36,7 +36,7 @@ LAYOUT_CONSTRAINT_FIRST = 2
 MAX_LINES_FIRST = 0
 ```
 
-设置文本高度自适应方式为以[maxLines](../arkts-components/arkts-arkui-textarea-comp-attribute.md#maxlines)优先。
+设置文本高度自适应方式为以[maxLines](../arkts-components/arkts-arkui-textarea-comp-attribute.md#maxlines-1)优先。
 
 **起始版本：** 10
 

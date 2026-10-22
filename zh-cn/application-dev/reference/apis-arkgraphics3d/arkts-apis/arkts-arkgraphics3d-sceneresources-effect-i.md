@@ -4,7 +4,7 @@
 export interface Effect extends SceneResource
 ```
 
-特效类型，继承自SceneResource。由createEffect接口获得。
+特效类型，继承自[SceneResource](arkts-arkgraphics3d-sceneresources-sceneresource-i.md)。由[createEffect](arkts-arkgraphics3d-scene-sceneresourcefactory-i.md#createeffect)接口获得。
 
 **继承/实现关系：** Effect extends [SceneResource](arkts-arkgraphics3d-sceneresources-sceneresource-i.md)
 
@@ -92,6 +92,24 @@ setPropertyValue(propertyName: string, value: Object | undefined): boolean
 | boolean | 返回设置特效属性值操作是否成功。true表示设置成功，false表示设置失败。 |
 
 **示例**
+
+```TypeScript
+import { SceneResourceFactory, Scene, Effect, EffectParameters } from '@kit.ArkGraphics3D';
+
+function setEffectProperty() {
+  let scene: Promise<Scene> = Scene.load();
+  scene.then(async (result: Scene | undefined) => {
+    if (!result) {
+      return;
+    }
+    let sceneFactory: SceneResourceFactory = result.getResourceFactory();
+    // 特效ID，固定格式为'XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX'，比如'e68a7f45-2d21-4a0d-9aef-7d9c825d3f12'
+    let params: EffectParameters = {effectId: "e68a7f45-2d21-4a0d-9aef-7d9c825d3f12"};
+    let effect: Effect = await sceneFactory.createEffect(params);
+    effect.setPropertyValue('exposure', 1);
+  });
+}
+```
 
 ## effectId
 

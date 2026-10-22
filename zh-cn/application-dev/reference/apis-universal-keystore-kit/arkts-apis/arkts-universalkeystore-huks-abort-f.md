@@ -17,14 +17,14 @@ abort终止密钥操作。使用callback异步回调。
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃，建议使用
-> [huks.abortSession<sup>9+</sup>](arkts-universalkeystore-huks-abortsession-f.md#abortsession)
+> [huks.abortSession<sup>9+</sup>](arkts-universalkeystore-huks-abortsession-f.md#abortsession-1)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [abortSession](arkts-universalkeystore-huks-abortsession-f.md#abortsession)(handle: number, options: HuksOptions, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [abortSession](arkts-universalkeystore-huks-abortsession-f.md#abortsession-1)(handle: number, options: HuksOptions, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-huks-function abort(handle: number, options: HuksOptions, callback: AsyncCallback<HuksResult>): void--><!--Device-huks-function abort(handle: number, options: HuksOptions, callback: AsyncCallback<HuksResult>): void-End-->
 
@@ -144,13 +144,13 @@ abort终止密钥操作。使用Promise异步回调。
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃，建议使用
-> [huks.abortSession<sup>9+</sup>](arkts-universalkeystore-huks-abortsession-f.md#abortsession)替代。
+> [huks.abortSession<sup>9+</sup>](arkts-universalkeystore-huks-abortsession-f.md#abortsession-2)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [abortSession](arkts-universalkeystore-huks-abortsession-f.md#abortsession)(handle: number, options: HuksOptions)
+**替代接口：** [abortSession](arkts-universalkeystore-huks-abortsession-f.md#abortsession-2)(handle: number, options: HuksOptions)
 
 <!--Device-huks-function abort(handle: number, options: HuksOptions): Promise<HuksResult>--><!--Device-huks-function abort(handle: number, options: HuksOptions): Promise<HuksResult>-End-->
 

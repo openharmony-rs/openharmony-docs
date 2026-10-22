@@ -1,4 +1,4 @@
-# WorkSchedulerExtensionContext
+# WorkSchedulerExtensionContext (System API)
 
 ```TypeScript
 declare class WorkSchedulerExtensionContext extends ExtensionContext

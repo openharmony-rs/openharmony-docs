@@ -1,10 +1,10 @@
-# AVRecorder
+# AVRecorder (System API)
 
 ```TypeScript
 interface AVRecorder
 ```
 
-AVRecorder is a class for audio and video recording management. It provides APIs to record media assets. Before calling any API in AVRecorder, you must use [createAVRecorder()](arkts-media-media-createavrecorder-f.md#createavrecorder) to create an AVRecorder instance.
+AVRecorder is a class for audio and video recording management. It provides APIs to record media assets. Before calling any API in AVRecorder, you must use [createAVRecorder()](arkts-media-media-createavrecorder-f.md#createavrecorder-1) to create an AVRecorder instance.
 
 For details about the audio and video recording demo, see [Audio Recording](../../../media/media/using-avrecorder-for-recording.md) and [Video Recording](../../../media/media/video-recording.md).
 

@@ -184,13 +184,13 @@ id(id: number): By
 
 > **说明：** 
 > 
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[id<sup>9+</sup>](arkts-test-uitest-on-c.md#id)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[id<sup>9+</sup>](arkts-test-uitest-on-c.md#id-1)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [id](arkts-test-uitest-on-c.md#id)(id: string)
+**替代接口：** [id](arkts-test-uitest-on-c.md#id-1)(id: string)
 
 <!--Device-By-id(id: number): By--><!--Device-By-id(id: number): By-End-->
 
@@ -321,13 +321,13 @@ key(key: string): By
 
 > **说明：** 
 > 
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[id<sup>9+</sup>](arkts-test-uitest-on-c.md#id)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[id<sup>9+</sup>](arkts-test-uitest-on-c.md#id-1)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [id](arkts-test-uitest-on-c.md#id)(id: string)
+**替代接口：** [id](arkts-test-uitest-on-c.md#id-1)(id: string)
 
 <!--Device-By-key(key: string): By--><!--Device-By-key(key: string): By-End-->
 
@@ -502,13 +502,13 @@ type(tp: string): By
 
 > **说明：** 
 > 
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[type<sup>9+</sup>](arkts-test-uitest-on-c.md#type)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[type<sup>9+</sup>](arkts-test-uitest-on-c.md#type-1)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [type](arkts-test-uitest-on-c.md#type)(tp: string)
+**替代接口：** [type](arkts-test-uitest-on-c.md#type-1)(tp: string)
 
 <!--Device-By-type(tp: string): By--><!--Device-By-type(tp: string): By-End-->
 

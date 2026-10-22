@@ -1,4 +1,4 @@
-# NotificationCapsule
+# NotificationCapsule（系统接口）
 
 ```TypeScript
 export interface NotificationCapsule

@@ -1,4 +1,4 @@
-# AgentExtensionAbility
+# AgentExtensionAbility（系统接口）
 
 ```TypeScript
 declare class AgentExtensionAbility extends ExtensionAbility

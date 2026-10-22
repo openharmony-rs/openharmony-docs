@@ -1,4 +1,4 @@
-# WindowType
+# WindowType (System API)
 
 ```TypeScript
 enum WindowType

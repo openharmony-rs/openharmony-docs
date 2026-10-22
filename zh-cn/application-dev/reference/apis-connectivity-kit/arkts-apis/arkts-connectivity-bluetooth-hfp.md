@@ -20,8 +20,8 @@ import { hfp } from '@kit.ConnectivityKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [createHfpAgProfile](arkts-connectivity-hfp-createhfpagprofile-f.md#createhfpagprofile) | 创建蓝牙通话音频中的HFP AG实例。通过该实例可使用本端作为HFP AG设备的接口，如：获取和其他设备间的蓝牙通话音频连接状态。典型应用场景包括车载信息娱乐系统的蓝牙通话功能、平板电脑蓝牙通话等，本端设备作为音频网关（AG）角色管理通话音频路由。 |
-| [createHfpHfProfile](arkts-connectivity-hfp-createhfphfprofile-f.md#createhfphfprofile) | 创建蓝牙通话音频中的HF实例。通过该实例可使用本端作为HF设备的接口，如：获取和其他设备间的蓝牙通话音频连接状态。典型应用场景包括蓝牙耳机的免提通话功能、车载免提系统等，本端设备作为免提（HF）角色接收和处理通话音频。 |
+| [createHfpAgProfile](arkts-connectivity-hfp-createhfpagprofile-f.md#createhfpagprofile-1) | 创建蓝牙通话音频中的HFP AG实例。通过该实例可使用本端作为HFP AG设备的接口，如：获取和其他设备间的蓝牙通话音频连接状态。典型应用场景包括车载信息娱乐系统的蓝牙通话功能、平板电脑蓝牙通话等，本端设备作为音频网关（AG）角色管理通话音频路由。 |
+| [createHfpHfProfile](arkts-connectivity-hfp-createhfphfprofile-f.md#createhfphfprofile-1) | 创建蓝牙通话音频中的HF实例。通过该实例可使用本端作为HF设备的接口，如：获取和其他设备间的蓝牙通话音频连接状态。典型应用场景包括蓝牙耳机的免提通话功能、车载免提系统等，本端设备作为免提（HF）角色接收和处理通话音频。 |
 
 <!--Del-->
 ### 接口（系统接口）

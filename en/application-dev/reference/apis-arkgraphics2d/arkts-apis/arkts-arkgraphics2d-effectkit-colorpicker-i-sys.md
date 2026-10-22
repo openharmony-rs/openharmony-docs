@@ -1,4 +1,4 @@
-# ColorPicker
+# ColorPicker (System API)
 
 ```TypeScript
 interface ColorPicker

@@ -1,4 +1,4 @@
-# ScanOptions
+# ScanOptions (System API)
 
 ```TypeScript
 interface ScanOptions

@@ -24,7 +24,7 @@ import { sensor } from '@kit.SensorServiceKit';
 interval?: number | SensorFrequency
 ```
 
-用于设置传感器数据上报的时间间隔。默认值：200000000ns（即200ms）。单位：ns（纳秒）。取值范围需参考各传感器的minSamplePeriod和maxSamplePeriod，可通过[getSingleSensor](arkts-sensorservice-sensor-getsinglesensor-f.md#getsinglesensor)查询。建议根据实际业务需求设置合理的上报频率，取值越小上报越频繁。当设置频率大于最大值时以最大值上报数据，小于最小值时以最小值上报数据。
+用于设置传感器数据上报的时间间隔。默认值：200000000ns（即200ms）。单位：ns（纳秒）。取值范围需参考各传感器的minSamplePeriod和maxSamplePeriod，可通过[getSingleSensor](arkts-sensorservice-sensor-getsinglesensor-f.md#getsinglesensor-1)查询。建议根据实际业务需求设置合理的上报频率，取值越小上报越频繁。当设置频率大于最大值时以最大值上报数据，小于最小值时以最小值上报数据。
 
 **类型：** number &#124; [SensorFrequency](arkts-sensorservice-sensor-sensorfrequency-t.md)
 

@@ -1,4 +1,4 @@
-# Capability
+# Capability (System API)
 
 ```TypeScript
 enum Capability

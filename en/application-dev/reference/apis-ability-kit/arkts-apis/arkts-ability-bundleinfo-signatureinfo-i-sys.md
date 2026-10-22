@@ -1,4 +1,4 @@
-# SignatureInfo
+# SignatureInfo (System API)
 
 ```TypeScript
 export interface SignatureInfo

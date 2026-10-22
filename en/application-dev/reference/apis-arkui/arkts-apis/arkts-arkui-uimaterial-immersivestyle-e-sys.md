@@ -1,4 +1,4 @@
-# ImmersiveStyle
+# ImmersiveStyle (System API)
 
 ```TypeScript
 enum ImmersiveStyle

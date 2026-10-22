@@ -14,7 +14,7 @@ function createImagePacker(): ImagePacker
 
 Creates an ImagePacker instance.
 
-Images occupy a large amount of memory. When you finish using an ImagePacker instance, call [release](arkts-image-image-imagepacker-i.md#release) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
+Images occupy a large amount of memory. When you finish using an ImagePacker instance, call [release](arkts-image-image-imagepacker-i.md#release-1) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
 
 **Since:** 6
 

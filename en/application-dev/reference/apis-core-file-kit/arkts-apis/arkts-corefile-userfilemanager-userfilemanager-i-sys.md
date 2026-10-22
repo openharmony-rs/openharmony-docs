@@ -961,7 +961,7 @@ getAlbums(
 
 Obtains albums based on the specified options and album type. This API uses an asynchronous callback to return the result.
 
-This API cannot be used to obtain hidden albums. Use [getHiddenAlbums](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoaccesshelper-i-sys.md#gethiddenalbums) to obtain hidden albums.
+This API cannot be used to obtain hidden albums. Use [getHiddenAlbums](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoaccesshelper-i-sys.md#gethiddenalbums-1) to obtain hidden albums.
 
 Before the operation, ensure that the albums to obtain exist.
 
@@ -1037,7 +1037,7 @@ getAlbums(type: AlbumType, subType: AlbumSubType, callback: AsyncCallback<FetchR
 
 Obtains albums by type. This API uses an asynchronous callback to return the result.
 
-This API cannot be used to obtain hidden albums. Use [getHiddenAlbums](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoaccesshelper-i-sys.md#gethiddenalbums) to obtain hidden albums.
+This API cannot be used to obtain hidden albums. Use [getHiddenAlbums](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoaccesshelper-i-sys.md#gethiddenalbums-1) to obtain hidden albums.
 
 Before the operation, ensure that the albums to obtain exist.
 
@@ -1104,7 +1104,7 @@ getAlbums(type: AlbumType, subType: AlbumSubType, options?: FetchOptions): Promi
 
 Obtains albums based on the specified options and album type. This API uses a promise to return the result.
 
-This API cannot be used to obtain hidden albums. Use [getHiddenAlbums](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoaccesshelper-i-sys.md#gethiddenalbums) to obtain hidden albums.
+This API cannot be used to obtain hidden albums. Use [getHiddenAlbums](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoaccesshelper-i-sys.md#gethiddenalbums-1) to obtain hidden albums.
 
 Before the operation, ensure that the albums to obtain exist.
 
@@ -1417,9 +1417,9 @@ getPhotoAlbums(options: AlbumFetchOptions, callback: AsyncCallback<FetchResult<A
 
 Obtains image and video albums. This API uses an asynchronous callback to return the result.
 
-This API cannot be used to obtain hidden albums. Use [getHiddenAlbums](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoaccesshelper-i-sys.md#gethiddenalbums) to obtain hidden albums.
+This API cannot be used to obtain hidden albums. Use [getHiddenAlbums](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoaccesshelper-i-sys.md#gethiddenalbums-1) to obtain hidden albums.
 
-This API will be deprecated. Use [getAlbums](#getalbums) instead.
+This API will be deprecated. Use [getAlbums](#getalbums-1) instead.
 
 **Since:** 9
 
@@ -1490,9 +1490,9 @@ getPhotoAlbums(options: AlbumFetchOptions): Promise<FetchResult<Album>>
 
 Obtains albums. This API uses a promise to return the result.
 
-This API cannot be used to obtain hidden albums. Use [getHiddenAlbums](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoaccesshelper-i-sys.md#gethiddenalbums) to obtain hidden albums.
+This API cannot be used to obtain hidden albums. Use [getHiddenAlbums](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoaccesshelper-i-sys.md#gethiddenalbums-1) to obtain hidden albums.
 
-This API will be deprecated. Use [getAlbums](#getalbums) instead.
+This API will be deprecated. Use [getAlbums](#getalbums-1) instead.
 
 **Since:** 9
 
@@ -1870,7 +1870,7 @@ getPrivateAlbum(type: PrivateAlbumType, callback: AsyncCallback<FetchResult<Priv
 
 Obtains the system album. This API uses an asynchronous callback to return the result.
 
-This API will be deprecated. Use [getAlbums](#getalbums) instead.
+This API will be deprecated. Use [getAlbums](#getalbums-1) instead.
 
 **Since:** 9
 
@@ -1928,7 +1928,7 @@ getPrivateAlbum(type: PrivateAlbumType): Promise<FetchResult<PrivateAlbum>>
 
 Obtains the private album. This API uses a promise to return the result.
 
-This API will be deprecated. Use [getAlbums](#getalbums) instead.
+This API will be deprecated. Use [getAlbums](#getalbums-1) instead.
 
 **Since:** 9
 

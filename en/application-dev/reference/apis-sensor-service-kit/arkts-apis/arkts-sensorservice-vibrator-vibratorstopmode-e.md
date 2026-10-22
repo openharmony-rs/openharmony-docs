@@ -4,7 +4,7 @@
 enum VibratorStopMode
 ```
 
-Enumerates vibration stop modes. This type is used to specify the vibration stop mode when the [vibrator.stopVibration<sup>9+</sup>](arkts-sensorservice-vibrator-stopvibration-f.md#stopvibration) or [vibrator.stopVibration<sup>9+</sup>](arkts-sensorservice-vibrator-stopvibration-f.md#stopvibration) API is called. The stop mode must match that delivered in [VibrateEffect<sup>9+</sup>](arkts-sensorservice-vibrator-vibrateeffect-t.md).
+Enumerates vibration stop modes. This type is used to specify the vibration stop mode when the [vibrator.stopVibration<sup>9+</sup>](arkts-sensorservice-vibrator-stopvibration-f.md#stopvibration-2) or [vibrator.stopVibration<sup>9+</sup>](arkts-sensorservice-vibrator-stopvibration-f.md#stopvibration-1) API is called. The stop mode must match that delivered in [VibrateEffect<sup>9+</sup>](arkts-sensorservice-vibrator-vibrateeffect-t.md).
 
 **Since:** 8
 

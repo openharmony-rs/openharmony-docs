@@ -29,7 +29,7 @@ interface SingleKVStore extends KVStore
 closeResultSet(resultSet: KvStoreResultSet, callback: AsyncCallback<void>): void
 ```
 
-关闭由[SingleKVStore.getResultSet](#getresultset)返回的KvStoreResultSet对象，使用callback异步回调。
+关闭由[SingleKVStore.getResultSet](#getresultset-1)返回的KvStoreResultSet对象，使用callback异步回调。
 
 **起始版本：** 8
 
@@ -72,7 +72,7 @@ try {
 closeResultSet(resultSet: KvStoreResultSet): Promise<void>
 ```
 
-关闭由[SingleKVStore.getResultSet](#getresultset)返回的KvStoreResultSet对象，使用Promise异步回调。
+关闭由[SingleKVStore.getResultSet](#getresultset-1)返回的KvStoreResultSet对象，使用Promise异步回调。
 
 **起始版本：** 8
 

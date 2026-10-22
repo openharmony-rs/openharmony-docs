@@ -27,10 +27,10 @@ import { functionManager, FunctionHook, InvokeFunctionParam, FunctionResultWrap 
 
 | 名称 | 说明 |
 | --- | --- |
-| [invokeFunction](arkts-ability-functionmanager-invokefunction-f-sys.md#invokefunction) | 根据Function命名空间和Function名称调用指定的Function，使用Promise异步回调。 |
-| [queryFunctions](arkts-ability-functionmanager-queryfunctions-f-sys.md#queryfunctions) | 查询所有可用的Function信息，使用Promise异步回调。 |
-| [registerFunctionHook](arkts-ability-functionmanager-registerfunctionhook-f-sys.md#registerfunctionhook) | 注册Function Hook，用于拦截Function调用。同一时间只能注册一个Function Hook；若已存在已注册的Hook，再次注册将失败。本接口仅在开发者模式下可用。如需更新已注册的Hook，请先调用unregisterFunctionHook取消注册，再重新注册。Hook对象必须实现FunctionHook中至少一个可选方法。 |
-| [unregisterFunctionHook](arkts-ability-functionmanager-unregisterfunctionhook-f-sys.md#unregisterfunctionhook) | 取消注册之前注册的Function Hook。Hook对象必须与传递给registerFunctionHook的对象相同。若未注册Hook，调用将失败并抛出错误。 |
+| [invokeFunction](arkts-ability-functionmanager-invokefunction-f-sys.md#invokefunction-1) | 根据Function命名空间和Function名称调用指定的Function，使用Promise异步回调。 |
+| [queryFunctions](arkts-ability-functionmanager-queryfunctions-f-sys.md#queryfunctions-1) | 查询所有可用的Function信息，使用Promise异步回调。 |
+| [registerFunctionHook](arkts-ability-functionmanager-registerfunctionhook-f-sys.md#registerfunctionhook-1) | 注册Function Hook，用于拦截Function调用。同一时间只能注册一个Function Hook；若已存在已注册的Hook，再次注册将失败。本接口仅在开发者模式下可用。如需更新已注册的Hook，请先调用unregisterFunctionHook取消注册，再重新注册。Hook对象必须实现FunctionHook中至少一个可选方法。 |
+| [unregisterFunctionHook](arkts-ability-functionmanager-unregisterfunctionhook-f-sys.md#unregisterfunctionhook-1) | 取消注册之前注册的Function Hook。Hook对象必须与传递给registerFunctionHook的对象相同。若未注册Hook，调用将失败并抛出错误。 |
 <!--DelEnd-->
 
 <!--Del-->

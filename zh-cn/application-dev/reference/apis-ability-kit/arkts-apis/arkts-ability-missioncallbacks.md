@@ -2,7 +2,7 @@
 
 该模块定义了同步启动后触发的回调，这些回调可作为输入使用。
  parameters in
- [registerMissionListener](arkts-ability-distributedmissionmanager-registermissionlistener-f-sys.md#registermissionlistener)
+ [registerMissionListener](arkts-ability-distributedmissionmanager-registermissionlistener-f-sys.md#registermissionlistener-2)
 
 
 

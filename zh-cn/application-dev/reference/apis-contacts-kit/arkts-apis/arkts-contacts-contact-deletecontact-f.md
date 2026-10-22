@@ -18,7 +18,7 @@ function deleteContact(key: string, callback: AsyncCallback<void>): void
 
 **废弃版本：** 10
 
-**替代接口：** [deleteContact](#deletecontact)(context: Context, key: string, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [deleteContact](#deletecontact-2)(context: Context, key: string, callback: AsyncCallback&lt;void&gt;)
 
 **需要权限：** ohos.permission.WRITE_CONTACTS
 
@@ -30,7 +30,7 @@ function deleteContact(key: string, callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | string | 是 | 联系人的唯一查询键key，一个联系人对应一个key，可以通过[queryKey](arkts-contacts-contact-querykey-f.md#querykey)获取。 |
+| key | string | 是 | 联系人的唯一查询键key，一个联系人对应一个key，可以通过[queryKey](arkts-contacts-contact-querykey-f.md#querykey-2)获取。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。成功返回删除的联系人id；失败返回具体的错误码信息。 |
 
 **示例**
@@ -76,7 +76,7 @@ function deleteContact(context: Context, key: string, callback: AsyncCallback<vo
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | context | Context | 是 | 应用上下文Context。 |
-| key | string | 是 | 联系人的唯一查询键key，一个联系人对应一个key，可以通过[queryKey](arkts-contacts-contact-querykey-f.md#querykey)获取。 |
+| key | string | 是 | 联系人的唯一查询键key，一个联系人对应一个key，可以通过[queryKey](arkts-contacts-contact-querykey-f.md#querykey-2)获取。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。成功返回删除的联系人id；失败返回具体的错误码信息。 |
 
 **错误码：**
@@ -125,7 +125,7 @@ function deleteContact(key: string): Promise<void>
 
 **废弃版本：** 10
 
-**替代接口：** [deleteContact](#deletecontact)(context: Context, key: string)
+**替代接口：** [deleteContact](#deletecontact-4)(context: Context, key: string)
 
 **需要权限：** ohos.permission.WRITE_CONTACTS
 
@@ -137,7 +137,7 @@ function deleteContact(key: string): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | string | 是 | 联系人的唯一查询键key，一个联系人对应一个key，可以通过[queryKey](arkts-contacts-contact-querykey-f.md#querykey)获取。 |
+| key | string | 是 | 联系人的唯一查询键key，一个联系人对应一个key，可以通过[queryKey](arkts-contacts-contact-querykey-f.md#querykey-2)获取。 |
 
 **返回值：**
 
@@ -182,7 +182,7 @@ function deleteContact(context: Context, key: string): Promise<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | context | Context | 是 | 应用上下文Context。 |
-| key | string | 是 | 联系人的唯一查询键key，一个联系人对应一个key，可以通过[queryKey](arkts-contacts-contact-querykey-f.md#querykey)获取。 |
+| key | string | 是 | 联系人的唯一查询键key，一个联系人对应一个key，可以通过[queryKey](arkts-contacts-contact-querykey-f.md#querykey-2)获取。 |
 
 **返回值：**
 

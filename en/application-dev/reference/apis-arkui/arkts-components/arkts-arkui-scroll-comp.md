@@ -41,7 +41,7 @@ Creates a **Scroll** component.
 | [ScrollPageOptions](arkts-arkui-scroll-comp-scrollpageoptions-i.md) | Provides parameters for page scrolling behavior. |
 | [ScrollSnapOptions](arkts-arkui-scroll-comp-scrollsnapoptions-i.md) | Defines a scroll snapping mode object. |
 | [ScrollToIndexOptions](arkts-arkui-scroll-comp-scrolltoindexoptions-i.md) | Provides parameters for scrolling to a specific index. |
-| [UIScrollEvent](arkts-arkui-scroll-comp-uiscrollevent-i.md) | Represents the return value of the [getEvent('Scroll')](../arkts-apis/arkts-arkui-typenode-getevent-f.md#getevent) method in **frameNode**, which can be used to set scroll events for a **Scroll** node. |
+| [UIScrollEvent](arkts-arkui-scroll-comp-uiscrollevent-i.md) | Represents the return value of the [getEvent('Scroll')](../arkts-apis/arkts-arkui-typenode-getevent-f.md#getevent-1) method in **frameNode**, which can be used to set scroll events for a **Scroll** node. |
 
 ### Types
 
@@ -57,6 +57,7 @@ Creates a **Scroll** component.
 
 | Name | Description |
 | --- | --- |
+| [FastScrollMode](arkts-arkui-scroll-comp-fastscrollmode-e.md) | Enumerates the fast scroll modes for scrolling to a specified index. |
 | [ScrollAlign](arkts-arkui-scroll-comp-scrollalign-e.md) | Enumerates alignment modes. |
 | [ScrollDirection](arkts-arkui-scroll-comp-scrolldirection-e.md) | Enumerates the scrolling directions. |
 

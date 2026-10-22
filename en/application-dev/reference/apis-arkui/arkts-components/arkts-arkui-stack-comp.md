@@ -4,7 +4,7 @@ Defines a stack container where child components are successively stacked and th
 
 > **NOTE:** 
 > 
-> - The general attribute [align](arkts-arkui-common-comp-commonmethod-c.md#align) supports the mirroring capability on this component.
+> - The general attribute [align](arkts-arkui-common-comp-commonmethod-c.md#align-1) supports the mirroring capability on this component.
 
 ## Child Components
 
@@ -25,7 +25,7 @@ Defines a stack container where child components are successively stacked and th
 > thereby optimize performance. For best practices, see
 > [Optimizing Component Nesting - Preferentially Using Component Properties Instead of Nested Components](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-component-nesting-optimization#section78181114123811).
 > 
-> When both the **alignContent** parameter of this API and [align](arkts-arkui-common-comp-commonmethod-c.md#align) are
+> When both the **alignContent** parameter of this API and [align](arkts-arkui-common-comp-commonmethod-c.md#align-1) are
 > set, whichever is set last takes effect. When both the **alignContent** parameter of this API and the
 > **alignContent** attribute are set, the value set by the attribute takes effect.
 
@@ -54,3 +54,26 @@ Defines a stack container where child components are successively stacked and th
 | [StackOptions](arkts-arkui-stack-comp-stackoptions-i.md) | Sets the alignment method of the child component in the stack container. |
 
 ## Examples
+
+When the [alignContent](#aligncontent) attribute of the Stack component is set to Alignment.Bottom and [syncLoad](#syncload) is set to true, the child components are displayed horizontally centered at the bottom of the Stack component, and all child components are loaded within the same frame.
+
+The syncLoad attribute is added since API version 26.0.0.
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct StackExample {
+  build() {
+    // Set the child component to align at the bottom of the Stack container.
+    Stack({ alignContent: Alignment.Bottom }) {
+      // The first child component, displayed at the bottom.
+      Text('First child, show in bottom').width('90%').height('100%').backgroundColor(0xd2cab3).align(Alignment.Top)
+      // The second child component, displayed on the upper layer.
+      Text('Second child, show in top').width('70%').height('60%').backgroundColor(0xc1cbac).align(Alignment.Top)
+    }.width('100%').height(150).margin({ top: 5 })
+    // Since API version 26.0.0, the syncLoad attribute is added. Setting it to true means synchronously loading all child components in the Stack area.
+    .syncLoad(true)
+  }
+}
+```

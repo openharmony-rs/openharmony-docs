@@ -18,7 +18,7 @@ The module defines the information required for triggering the WantAgent. The in
 code: number
 ```
 
-Common event code to pass. This field takes effect only when the [OperationType](arkts-ability-wantagent-operationtype-e.md) of the WantAgent instance is'SEND_COMMON_EVENT'. It has the same meaning as the code field in the [CommonEventPublishData](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-commoneventpublishdata-i.md) passed by the publisher when publishing a common event through [commonEventManager.publish](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-commoneventmanager-publish-f.md#publish). The value is determined by the common event type.
+Common event code to pass. This field takes effect only when the [OperationType](arkts-ability-wantagent-operationtype-e.md) of the WantAgent instance is'SEND_COMMON_EVENT'. It has the same meaning as the code field in the [CommonEventPublishData](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-commoneventpublishdata-i.md) passed by the publisher when publishing a common event through [commonEventManager.publish](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-commoneventmanager-publish-f.md#publish-2). The value is determined by the common event type.
 
 **Type:** number
 

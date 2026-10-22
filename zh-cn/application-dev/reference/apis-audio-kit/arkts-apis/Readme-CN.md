@@ -133,6 +133,8 @@
   - [VolumeEvent（系统接口）](arkts-audio-audio-volumeevent-i-sys.md)<!--DelEnd-->
   <!--Del-->
   - [VolumeGroupInfo（系统接口）](arkts-audio-audio-volumegroupinfo-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [VolumeLimitExceededEvent（系统接口）](arkts-audio-audio-volumelimitexceededevent-i-sys.md)<!--DelEnd-->
   - [AudioInterrupt](arkts-audio-audio-audiointerrupt-i.md)
   - [AudioPlaybackCaptureConfig](arkts-audio-audio-audioplaybackcaptureconfig-i.md)
   - [CaptureFilterOptions](arkts-audio-audio-capturefilteroptions-i.md)

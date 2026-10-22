@@ -565,7 +565,7 @@ readBooleanArray(dataIn: boolean[]): void
 
 **废弃版本：** 9
 
-**替代接口：** [readBooleanArray](arkts-ipc-rpc-messagesequence-c.md#readbooleanarray)(dataIn: boolean[])
+**替代接口：** [readBooleanArray](arkts-ipc-rpc-messagesequence-c.md#readbooleanarray-1)(dataIn: boolean[])
 
 <!--Device-MessageParcel-readBooleanArray(dataIn: boolean[]): void--><!--Device-MessageParcel-readBooleanArray(dataIn: boolean[]): void-End-->
 
@@ -1672,7 +1672,7 @@ readRemoteObjectArray(objects: IRemoteObject[]): void
 
 **废弃版本：** 9
 
-**替代接口：** [readRemoteObjectArray](arkts-ipc-rpc-messagesequence-c.md#readremoteobjectarray)(objects: IRemoteObject[])
+**替代接口：** [readRemoteObjectArray](arkts-ipc-rpc-messagesequence-c.md#readremoteobjectarray-1)(objects: IRemoteObject[])
 
 <!--Device-MessageParcel-readRemoteObjectArray(objects: IRemoteObject[]): void--><!--Device-MessageParcel-readRemoteObjectArray(objects: IRemoteObject[]): void-End-->
 
@@ -1726,7 +1726,7 @@ readRemoteObjectArray(): IRemoteObject[]
 
 **废弃版本：** 9
 
-**替代接口：** [readRemoteObjectArray](arkts-ipc-rpc-messagesequence-c.md#readremoteobjectarray)(objects: IRemoteObject[])
+**替代接口：** [readRemoteObjectArray](arkts-ipc-rpc-messagesequence-c.md#readremoteobjectarray-1)(objects: IRemoteObject[])
 
 <!--Device-MessageParcel-readRemoteObjectArray(): IRemoteObject[]--><!--Device-MessageParcel-readRemoteObjectArray(): IRemoteObject[]-End-->
 
@@ -2077,7 +2077,7 @@ readStringArray(dataIn: string[]): void
 
 **废弃版本：** 9
 
-**替代接口：** [readStringArray](arkts-ipc-rpc-messagesequence-c.md#readstringarray)(dataIn: string[])
+**替代接口：** [readStringArray](arkts-ipc-rpc-messagesequence-c.md#readstringarray-1)(dataIn: string[])
 
 <!--Device-MessageParcel-readStringArray(dataIn: string[]): void--><!--Device-MessageParcel-readStringArray(dataIn: string[]): void-End-->
 

@@ -1,4 +1,4 @@
-# A2dpSinkProfile
+# A2dpSinkProfile（系统接口）
 
 ```TypeScript
 interface A2dpSinkProfile extends BaseProfile

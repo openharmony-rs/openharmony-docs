@@ -18,7 +18,7 @@ Enables or disables the printing capability of the device. This API uses an asyn
 
 **Deprecated since:** 26.0.0
 
-**Substitutes:** [setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy)(admin: Want, feature: FeatureForDevice, disallow: boolean)
+**Substitutes:** [setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy-2)(admin: Want, feature: FeatureForDevice, disallow: boolean)
 
 **Required permissions:** ohos.permission.ENTERPRISE_RESTRICT_POLICY
 
@@ -85,7 +85,7 @@ Enables or disables the printing capability of the device. This API uses a promi
 
 **Deprecated since:** 26.0.0
 
-**Substitutes:** [setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy)(admin: Want, feature: FeatureForDevice, disallow: boolean)
+**Substitutes:** [setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy-2)(admin: Want, feature: FeatureForDevice, disallow: boolean)
 
 **Required permissions:** ohos.permission.ENTERPRISE_RESTRICT_POLICY
 

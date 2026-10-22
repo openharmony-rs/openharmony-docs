@@ -4,7 +4,7 @@
 class MediaAssetChangeRequest implements MediaChangeRequest
 ```
 
-MediaAssetChangeRequest implements [MediaChangeRequest](arkts-medialibrary-photoaccesshelper-mediachangerequest-i.md).
+MediaAssetChangeRequest类实现了[MediaChangeRequest](arkts-medialibrary-photoaccesshelper-mediachangerequest-i.md)接口。
 
 资产变更请求。
 
@@ -32,7 +32,7 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 addResource(type: ResourceType, fileUri: string): void
 ```
 
-通过文件URI从应用沙箱添加资源，待添加资源的数据来源可参考[@ohos.file.fileuri (File URI)](../../apis-core-file-kit/arkts-apis/arkts-corefile-file-fileuri.md).
+通过文件URI从应用沙箱添加资源，待添加资源的数据来源可参考[文件URI](../../apis-core-file-kit/arkts-apis/arkts-corefile-fileuri-fileuri-c.md).
 
 > **注意：**
 > 
@@ -262,7 +262,7 @@ static createImageAssetRequest(context: Context, fileUri: string): MediaAssetCha
 
 创建图片资产变更请求。
 
-指定待创建资产的数据来源，可参考[@ohos.file.fileuri (File URI)](../../apis-core-file-kit/arkts-apis/arkts-corefile-file-fileuri.md).
+指定待创建资产的数据来源，可参考[文件URI](../../apis-core-file-kit/arkts-apis/arkts-corefile-fileuri-fileuri-c.md).
 
 **起始版本：** 11
 
@@ -322,7 +322,7 @@ static createVideoAssetRequest(context: Context, fileUri: string): MediaAssetCha
 
 创建视频资产变更请求。
 
-指定待创建资产的数据来源，可参考[@ohos.file.fileuri (File URI)](../../apis-core-file-kit/arkts-apis/arkts-corefile-file-fileuri.md).
+指定待创建资产的数据来源，可参考[文件URI](../../apis-core-file-kit/arkts-apis/arkts-corefile-fileuri-fileuri-c.md).
 
 **起始版本：** 11
 

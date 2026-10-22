@@ -1,4 +1,4 @@
-# PhotoSession
+# PhotoSession (System API)
 
 ```TypeScript
 interface PhotoSession extends Session, Flash, AutoExposure, WhiteBalance, Focus, Zoom, ColorManagement,

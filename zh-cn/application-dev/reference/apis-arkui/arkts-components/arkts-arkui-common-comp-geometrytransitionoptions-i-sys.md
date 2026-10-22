@@ -1,4 +1,4 @@
-# GeometryTransitionOptions
+# GeometryTransitionOptions（系统接口）
 
 ```TypeScript
 declare interface GeometryTransitionOptions

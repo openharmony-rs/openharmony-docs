@@ -1,4 +1,4 @@
-# ShortcutWant
+# ShortcutWant (System API)
 
 ```TypeScript
 export interface ShortcutWant

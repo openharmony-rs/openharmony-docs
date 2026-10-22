@@ -18,7 +18,7 @@ Dumps the VM heap data and generates the **filename.heapsnapshot** file.
 
 **Deprecated since:** 9
 
-**Substitutes:** [dumpJsHeapData](arkts-performanceanalysis-hidebug-dumpjsheapdata-f.md)
+**Substitutes:** [dumpJsRawHeapData](arkts-performanceanalysis-hidebug-dumpjsrawheapdata-f.md)
 
 <!--Device-hidebug-function dumpHeapData(filename: string): void--><!--Device-hidebug-function dumpHeapData(filename: string): void-End-->
 

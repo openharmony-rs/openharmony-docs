@@ -1,4 +1,4 @@
-# ProtocolType
+# ProtocolType (System API)
 
 ```TypeScript
 enum ProtocolType

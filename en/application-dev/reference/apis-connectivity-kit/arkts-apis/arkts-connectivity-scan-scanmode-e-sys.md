@@ -1,4 +1,4 @@
-# ScanMode
+# ScanMode (System API)
 
 ```TypeScript
 enum ScanMode

@@ -1,4 +1,4 @@
-# ApplicationContext
+# ApplicationContext (System API)
 
 ```TypeScript
 declare class ApplicationContext extends Context

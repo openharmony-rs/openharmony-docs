@@ -1,4 +1,4 @@
-# PrintExtensionAbility
+# PrintExtensionAbility (System API)
 
 ```TypeScript
 declare class PrintExtensionAbility

@@ -4,6 +4,17 @@
 declare class GridItemAttribute extends CommonMethod<GridItemAttribute>
 ```
 
+Rules for setting **rowStart**, **rowEnd**, **columnStart**, and **columnEnd**: The valid value range of **rowStart** and **rowEnd** is 0 to the total number of rows minus 1. The valid value range of **columnStart** and **columnEnd** is 0 to the total number of columns minus 1. If **rowStart**, **rowEnd**, **columnStart**, or **columnEnd** is set, **GridItem** components occupy the specified number of rows (**rowEnd** - **rowStart** + 1) or columns (**columnEnd** - **columnStart** + 1). **GridItem** components with properly configured **rowStart** or **rowEnd** or **columnStart** or **columnEnd** attributes can only be laid out according to the specified grid coordinates when the parent **Grid** has both **columnsTemplate** and **rowsTemplate** defined. In the **Grid** component with both **columnsTemplate** and **rowsTemplate** set, **GridItem** components that have **rowStart** or **rowEnd** or **columnStart** or **columnEnd** set are laid out in a row-by-row then column-by-column manner. In the **Grid** component with only **columnsTemplate** set, **GridItem** components that have **columnStart** or **columnEnd** set are laid out in the specified columns. If there are already grid items in those columns, the grid items will be laid out in another row. In the **Grid** component with only **rowsTemplate** set, **GridItem** components that have **rowStart** or **rowEnd** set are laid out on the specified rows. If there are already grid items in those rows, the grid items will be laid out in another column. In the **Grid** component with neither **columnsTemplate** nor **rowsTemplate** set, the row and column number attributes have no effect for **GridItem** components. The following table describes the rules for handling abnormal values for **GridItem** row and column numbers.
+
+| Attribute Setting | Exception Type| Layout Principles After Correction |  
+| ----- |----| ------------------------ |  
+| Only **columnsTemplate** is set | Any row or column exception| Laid out in a row-by-row then column-by-column manner|  
+| Only **rowsTemplate** is set| Any row or column exception| Laid out in a row-by-row then column-by-column manner|  
+| Both **rowsTemplate** and **columnsTemplate** are set| rowStart &lt; rowEnd | Row span = min(rowEnd - rowStart + 1, total number of rows)|  
+| Both **rowsTemplate** and **columnsTemplate** are set| rowStart &gt; rowEnd | Laid out in a row-by-row then column-by-column manner|  
+| Both **rowsTemplate** and **columnsTemplate** are set| columnStart &lt; columnEnd | Column span = min(columnEnd - columnStart + 1, total number of columns)|  
+| Both **rowsTemplate** and **columnsTemplate** are set| columnStart &gt; columnEnd | Laid out in a row-by-row then column-by-column manner|
+
 **Inheritance/Implementation:** GridItemAttribute extends CommonMethod&lt;GridItemAttribute&gt;
 
 **Since:** 7

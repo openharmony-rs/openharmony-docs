@@ -26,7 +26,7 @@ import { formInfo } from '@kit.FormKit';
 customData?: Record<string, string>
 ```
 
-The custom data.
+The custom data. By default, no value is passed.
 
 **Type:** Record&lt;string, string&gt;
 

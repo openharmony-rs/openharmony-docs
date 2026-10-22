@@ -18,7 +18,7 @@ declare enum DragResult
 DRAG_CANCELED = 2
 ```
 
-拖拽取消，在[onDrop](arkts-arkui-common-comp-commonmethod-c.md#ondrop)中使用。
+拖拽取消，在[onDrop](arkts-arkui-common-comp-commonmethod-c.md#ondrop-1)中使用。
 
 **起始版本：** 10
 
@@ -36,7 +36,7 @@ DRAG_CANCELED = 2
 DRAG_FAILED = 1
 ```
 
-拖拽失败，在[onDrop](arkts-arkui-common-comp-commonmethod-c.md#ondrop)中使用。
+拖拽失败，在[onDrop](arkts-arkui-common-comp-commonmethod-c.md#ondrop-1)中使用。
 
 **起始版本：** 10
 
@@ -54,7 +54,7 @@ DRAG_FAILED = 1
 DRAG_SUCCESSFUL = 0
 ```
 
-拖拽成功，在[onDrop](arkts-arkui-common-comp-commonmethod-c.md#ondrop)中使用。
+拖拽成功，在[onDrop](arkts-arkui-common-comp-commonmethod-c.md#ondrop-1)中使用。
 
 **起始版本：** 10
 
@@ -108,7 +108,7 @@ DROP_ENABLED = 3
 UNKNOWN = -1
 ```
 
-拖拽结果尚未设置，在[onDragStart](arkts-arkui-common-comp-commonmethod-c.md#ondragstart)，[onDragEnter](arkts-arkui-common-comp-commonmethod-c.md#ondragenter)，[onDragMove](arkts-arkui-common-comp-commonmethod-c.md#ondragmove)，[onDragLeave](arkts-arkui-common-comp-commonmethod-c.md#ondragleave)，[onDrop](arkts-arkui-common-comp-commonmethod-c.md#ondrop)中使用。
+拖拽结果尚未设置，在[onDragStart](arkts-arkui-common-comp-commonmethod-c.md#ondragstart)，[onDragEnter](arkts-arkui-common-comp-commonmethod-c.md#ondragenter)，[onDragMove](arkts-arkui-common-comp-commonmethod-c.md#ondragmove)，[onDragLeave](arkts-arkui-common-comp-commonmethod-c.md#ondragleave)，[onDrop](arkts-arkui-common-comp-commonmethod-c.md#ondrop-1)中使用。
 
 **起始版本：** 24
 

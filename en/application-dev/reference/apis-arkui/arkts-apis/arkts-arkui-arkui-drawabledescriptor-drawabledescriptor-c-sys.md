@@ -1,4 +1,4 @@
-# DrawableDescriptor
+# DrawableDescriptor (System API)
 
 ```TypeScript
 export class DrawableDescriptor

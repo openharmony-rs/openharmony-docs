@@ -72,7 +72,7 @@ Sets the alignment between the text and arrow of an option.
 arrowPosition(position: Optional<ArrowPosition>)
 ```
 
-Sets the alignment between the text and arrow of an option. Compared with [arrowPosition](#arrowposition), this API supports the **undefined** type for the **position** parameter.
+Sets the alignment between the text and arrow of an option. Compared with [arrowPosition](#arrowposition-1), this API supports the **undefined** type for the **position** parameter.
 
 **Since:** 18
 
@@ -144,7 +144,7 @@ Sets the size of the **Select** component.
 controlSize(size: Optional<ControlSize>)
 ```
 
-Sets the size of the **Select** component. Compared with [controlSize](#controlsize)<sup>12+</sup>, this API supports the **undefined** type for **size** parameter.
+Sets the size of the **Select** component. Compared with [controlSize](#controlsize-1)<sup>12+</sup>, this API supports the **undefined** type for **size** parameter.
 
 **Since:** 18
 
@@ -240,7 +240,7 @@ Sets the text style of the drop-down button. When **size** is set to **0**, the 
 font(selectFont: Optional<Font>)
 ```
 
-Sets the text style of the drop-down button. When **size** is set to **0**, the text is not displayed. When **size** is set to a negative value, the text is displayed at its default size. Compared with [font](#font), this API supports the **undefined** type for the **selectFont** parameter.
+Sets the text style of the drop-down button. When **size** is set to **0**, the text is not displayed. When **size** is set to a negative value, the text is displayed at its default size. Compared with [font](#font-1), this API supports the **undefined** type for the **selectFont** parameter.
 
 **Since:** 18
 
@@ -288,7 +288,7 @@ Sets the font color of the drop-down button.
 fontColor(resColor: Optional<ResourceColor>)
 ```
 
-Sets the font color of the drop-down button. Compared with [fontColor](#fontcolor), this API supports the **undefined** type for the **resColor** parameter.
+Sets the font color of the drop-down button. Compared with [fontColor](#fontcolor-1), this API supports the **undefined** type for the **resColor** parameter.
 
 **Since:** 18
 
@@ -361,7 +361,7 @@ Sets the alignment between the drop-down button and the drop-down menu.
 menuAlign(alignType: Optional<MenuAlignType>, offset?: Offset)
 ```
 
-Sets the alignment between the drop-down button and the drop-down menu. Compared with [menuAlign](#menualign)<sup>10+</sup>, this API supports the **undefined** type for the **alignType** parameter.
+Sets the alignment between the drop-down button and the drop-down menu. Compared with [menuAlign](#menualign-1)<sup>10+</sup>, this API supports the **undefined** type for the **alignType** parameter.
 
 **Since:** 18
 
@@ -414,7 +414,7 @@ Sets the background blur style of the drop-down menu.
 menuBackgroundBlurStyle(style: Optional<BlurStyle>)
 ```
 
-Sets the background blur style of the drop-down menu. Compared with [menuBackgroundBlurStyle](#menubackgroundblurstyle)<sup>11+</sup>, this API supports the **undefined** type for the **style** parameter.
+Sets the background blur style of the drop-down menu. Compared with [menuBackgroundBlurStyle](#menubackgroundblurstyle-1)<sup>11+</sup>, this API supports the **undefined** type for the **style** parameter.
 
 **Since:** 18
 
@@ -490,7 +490,7 @@ Sets the background color of the drop-down menu.
 menuBackgroundColor(resColor: Optional<ResourceColor>)
 ```
 
-Sets the background color of the drop-down menu. Compared with [menuBackgroundColor](#menubackgroundcolor)<sup>11+</sup>, this API supports the **undefined** type for the **resColor** parameter.
+Sets the background color of the drop-down menu. Compared with [menuBackgroundColor](#menubackgroundcolor-1)<sup>11+</sup>, this API supports the **undefined** type for the **resColor** parameter.
 
 **Since:** 18
 
@@ -566,7 +566,7 @@ Creates a content modifier for the drop-down menu. After **menuItemContentModifi
 menuItemContentModifier(modifier: Optional<ContentModifier<MenuItemConfiguration>>)
 ```
 
-Creates a content modifier for the drop-down menu. Compared with [menuItemContentModifier](#menuitemcontentmodifier) <sup>12+</sup>, this API supports the **undefined** type for **modifier** parameter. After **menuItemContentModifier** is applied, the drop-down menu content will be completely customized by the developer, and the **Select** component's attributes, including the divider, option color, and drop-down menu font color, will not take effect.
+Creates a content modifier for the drop-down menu. Compared with [menuItemContentModifier](#menuitemcontentmodifier-1) <sup>12+</sup>, this API supports the **undefined** type for **modifier** parameter. After **menuItemContentModifier** is applied, the drop-down menu content will be completely customized by the developer, and the **Select** component's attributes, including the divider, option color, and drop-down menu font color, will not take effect.
 
 > **NOTE:** 
 > 
@@ -692,7 +692,7 @@ Triggered when a drop-down menu option is selected.
 onSelect(callback: Optional<OnSelectCallback>)
 ```
 
-Triggered when a drop-down menu option is selected. Compared with [onSelect](#onselect), this API supports the **undefined** type for the **callback** parameter.
+Triggered when a drop-down menu option is selected. Compared with [onSelect](#onselect-1), this API supports the **undefined** type for the **callback** parameter.
 
 **Since:** 18
 
@@ -740,7 +740,7 @@ Sets the background color of options in the drop-down menu.
 optionBgColor(resColor: Optional<ResourceColor>)
 ```
 
-Sets the background color of options in the drop-down menu. Compared with [optionBgColor](#optionbgcolor), this API supports the **undefined** type for the **resColor** parameter.
+Sets the background color of options in the drop-down menu. Compared with [optionBgColor](#optionbgcolor-1), this API supports the **undefined** type for the **resColor** parameter.
 
 **Since:** 18
 
@@ -790,7 +790,7 @@ optionFont(selectFont: Optional<Font>)
 
 Sets the text font of options in the drop-down menu. When **size** is set to **0**, the text is not displayed. When **size** is set to a negative value, the text is displayed at its default size.
 
-Compared with [optionFont](#optionfont), this API supports the **undefined** type for the **selectFont** parameter.
+Compared with [optionFont](#optionfont-1), this API supports the **undefined** type for the **selectFont** parameter.
 
 **Since:** 18
 
@@ -838,7 +838,7 @@ Sets the font color of options in the drop-down menu.
 optionFontColor(resColor: Optional<ResourceColor>)
 ```
 
-Sets the font color of options in the drop-down menu. Compared with [optionFontColor](#optionfontcolor), this API supports the **undefined** type for the **resColor** parameter.
+Sets the font color of options in the drop-down menu. Compared with [optionFontColor](#optionfontcolor-1), this API supports the **undefined** type for the **resColor** parameter.
 
 **Since:** 18
 
@@ -890,7 +890,7 @@ If the actual height of all drop-down menu options is less than the set height, 
 optionHeight(height: Optional<Dimension>)
 ```
 
-Sets the maximum height for the drop-down menu. Percentage values are not supported. The default maximum height is 80% of the available screen height, and any custom maximum height setting must not exceed this limit. Compared with [optionHeight](#optionheight)<sup>11+</sup>, this API supports the **undefined** type for the **height** parameter.
+Sets the maximum height for the drop-down menu. Percentage values are not supported. The default maximum height is 80% of the available screen height, and any custom maximum height setting must not exceed this limit. Compared with [optionHeight](#optionheight-1)<sup>11+</sup>, this API supports the **undefined** type for the **height** parameter.
 
 This attribute has no effect when set to abnormal values or zero.
 
@@ -920,7 +920,7 @@ optionTextModifier(modifier: Optional<TextModifier>)
 
 Creates an option text modifier to customize the text style of unselected options in the drop-down menu. After **optionTextModifier** is applied, the unselected option text style will be completely customized by the developer.
 
-If both [optionFont](#optionfont) and **Font** of **optionTextModifier** are set, [optionFont](#optionfont) takes precedence. Any unspecified attributes in **optionFont** will use default values.
+If both [optionFont](#optionfont-1) and **Font** of **optionTextModifier** are set, [optionFont](#optionfont-1) takes precedence. Any unspecified attributes in **optionFont** will use default values.
 
 > **NOTE:** 
 > 
@@ -976,7 +976,7 @@ The **Select** component maintains 16 vp spacing from both left and right screen
 optionWidth(width: Optional<Dimension | OptionWidthMode> )
 ```
 
-Sets the width for the drop-down menu option. Percentage values are not supported. **OptionWidthMode** specifies whether to inherit the width of the drop-down button. Compared with [optionWidth](#optionwidth)<sup>11+</sup>, this API supports the **undefined** type for the **width** parameter.
+Sets the width for the drop-down menu option. Percentage values are not supported. **OptionWidthMode** specifies whether to inherit the width of the drop-down button. Compared with [optionWidth](#optionwidth-1)<sup>11+</sup>, this API supports the **undefined** type for the **width** parameter.
 
 If an invalid value or a value less than the minimum width of 56 vp is set, the attribute has no effect. In this case, the option width uses the default value, which is the width of two columns.
 
@@ -1082,7 +1082,7 @@ Sets the background color of the selected option in the drop-down menu.
 selectedOptionBgColor(resColor: Optional<ResourceColor>)
 ```
 
-Sets the background color of the selected option in the drop-down menu. Compared with [selectedOptionBgColor](#selectedoptionbgcolor), this API supports the **undefined** type for the **resColor** parameter.
+Sets the background color of the selected option in the drop-down menu. Compared with [selectedOptionBgColor](#selectedoptionbgcolor-1), this API supports the **undefined** type for the **resColor** parameter.
 
 **Since:** 18
 
@@ -1130,7 +1130,7 @@ Sets the text font of the selected option in the drop-down menu. When **size** i
 selectedOptionFont(selectFont: Optional<Font>)
 ```
 
-Sets the text font of the selected option in the drop-down menu. When **size** is set to **0**, the text is not displayed. When **size** is set to a negative value, the text is displayed at its default size. Compared with [selectedOptionFont](#selectedoptionfont), this API supports the **undefined** type for the **selectFont** parameter.
+Sets the text font of the selected option in the drop-down menu. When **size** is set to **0**, the text is not displayed. When **size** is set to a negative value, the text is displayed at its default size. Compared with [selectedOptionFont](#selectedoptionfont-1), this API supports the **undefined** type for the **selectFont** parameter.
 
 **Since:** 18
 
@@ -1178,7 +1178,7 @@ Sets the font color of the selected option in the drop-down menu.
 selectedOptionFontColor(resColor: Optional<ResourceColor>)
 ```
 
-Sets the font color of the selected option in the drop-down menu. Compared with [selectedOptionFontColor](#selectedoptionfontcolor), this API supports the **undefined** type for the **resColor** parameter.
+Sets the font color of the selected option in the drop-down menu. Compared with [selectedOptionFontColor](#selectedoptionfontcolor-1), this API supports the **undefined** type for the **resColor** parameter.
 
 **Since:** 18
 
@@ -1204,7 +1204,7 @@ selectedOptionTextModifier(modifier: Optional<TextModifier>)
 
 Creates a selected-option text modifier to customize the text style of selected options in the drop-down menu. After **selectedOptionTextModifier** is applied, the selected-option text style will be completely customized by the developer.
 
-If both [selectedOptionFont](#selectedoptionfont) and **Font** of **selectedOptionTextModifier** are set, [selectedOptionFont](#selectedoptionfont) takes precedence. If **selectedOptionFont** is not set, [optionFont](#optionfont) settings are applied. Any unspecified attributes in **selectedOptionFont** or **optionFont** will use default values.
+If both [selectedOptionFont](#selectedoptionfont-1) and **Font** of **selectedOptionTextModifier** are set, [selectedOptionFont](#selectedoptionfont-1) takes precedence. If **selectedOptionFont** is not set, [optionFont](#optionfont-1) settings are applied. Any unspecified attributes in **selectedOptionFont** or **optionFont** will use default values.
 
 > **NOTE:** 
 > 
@@ -1384,7 +1384,7 @@ Since API version 18, this attribute supports two-way binding through [!!](../..
 value(resStr: Optional<ResourceStr>)
 ```
 
-Sets the text content of drop-down button. After a menu option is selected, the button text will automatically update to display the selected option's text. Compared with [value](#value), this API supports the **undefined** type for the **resStr** parameter.
+Sets the text content of drop-down button. After a menu option is selected, the button text will automatically update to display the selected option's text. Compared with [value](#value-1), this API supports the **undefined** type for the **resStr** parameter.
 
 This attribute supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md) and [!!](../../../ui/state-management/arkts-new-binding.md#two-way-binding-between-built-in-component-parameters).
 

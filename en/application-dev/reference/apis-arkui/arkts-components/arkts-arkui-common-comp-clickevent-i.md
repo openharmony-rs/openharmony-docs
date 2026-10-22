@@ -226,7 +226,7 @@ Unit: vp
 x: number
 ```
 
-X coordinate of the click position in the [component coordinate system](../../../ui/arkui-glossary.md#component-coordinate-system) based on the clicked element. After [distanceThreshold](arkts-arkui-common-comp-commonmethod-c.md#onclick) is set for **onClick**, the click position is the lift-off point. If the event is triggered by a keyboard or gamepad device, the click position is the center of the clicked element.
+X coordinate of the click position in the [component coordinate system](../../../ui/arkui-glossary.md#component-coordinate-system) based on the clicked element. After [distanceThreshold](arkts-arkui-common-comp-commonmethod-c.md#onclick-2) is set for **onClick**, the click position is the lift-off point. If the event is triggered by a keyboard or gamepad device, the click position is the center of the clicked element.
 
 Unit: vp
 

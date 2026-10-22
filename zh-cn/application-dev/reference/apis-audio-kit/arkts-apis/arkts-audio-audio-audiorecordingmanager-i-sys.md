@@ -1,4 +1,4 @@
-# AudioRecordingManager
+# AudioRecordingManager（系统接口）
 
 ```TypeScript
 interface AudioRecordingManager

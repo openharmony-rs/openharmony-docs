@@ -22,21 +22,21 @@ import { abilityToolAccessCtrl } from '@kit.AbilityKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [requestToolTicket](arkts-ability-abilitytoolaccessctrl-requesttoolticket-f.md#requesttoolticket) | 获取CLI工具的执行认证票据。该函数用于获取CLI工具及子命令的执行认证票据。如果CLI工具所需权限用户尚未授权，会返回需要授权的权限列表及权限状态。如果CLI工具所需权限用户均授权，会返回授权的票据。 |
+| [requestToolTicket](arkts-ability-abilitytoolaccessctrl-requesttoolticket-f.md#requesttoolticket-1) | 获取CLI工具的执行认证票据。该函数用于获取CLI工具及子命令的执行认证票据。如果CLI工具所需权限用户尚未授权，会返回需要授权的权限列表及权限状态。如果CLI工具所需权限用户均授权，会返回授权的票据。 |
 
 <!--Del-->
 ### 函数（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| [generateControlledDevicePackage](arkts-ability-abilitytoolaccessctrl-generatecontrolleddevicepackage-f-sys.md#generatecontrolleddevicepackage) | 生成受控设备的授权包。根据权限查询列表生成远程授权包。生成的包可以发送到控制器设备进行权限验证。 |
-| [generateControllerDevicePackage](arkts-ability-abilitytoolaccessctrl-generatecontrollerdevicepackage-f-sys.md#generatecontrollerdevicepackage) | 生成控制器设备的授权包。根据远程用户授权结果生成远程授权包。生成的包可以发送到受控设备进行权限验证。 |
-| [getRemoteGrantStatus](arkts-ability-abilitytoolaccessctrl-getremotegrantstatus-f-sys.md#getremotegrantstatus) | 获取远程授权状态。该功能用于查询远程授权特性的使能状态。启用时，设备可以向远程设备授予权限；禁用时，不允许远程授权。 |
-| [grantToolPermissionsByUser](arkts-ability-abilitytoolaccessctrl-granttoolpermissionsbyuser-f-sys.md#granttoolpermissionsbyuser) | 根据用户授权结果授予工具权限。该功能根据用户的授权决定授予工具（CLI命令或API）的权限。授权成功后，会生成工单，用于权限验证。 |
-| [requestToolPermissions](arkts-ability-abilitytoolaccessctrl-requesttoolpermissions-f-sys.md#requesttoolpermissions) | 根据指定的操作查询工具权限。该函数用于检查权限查询中指定的CLI命令或API的权限状态。对于每个操作，它返回权限状态、授权状态以及是否需要用户对话框。当needTicket设置为true时，远程授权会生成一个票据。 |
-| [updateRemoteGrantStatus](arkts-ability-abilitytoolaccessctrl-updateremotegrantstatus-f-sys.md#updateremotegrantstatus) | 更新远程授权状态。该功能用于开启或关闭远程授权特性。启用时，设备可以向远程设备授予权限；禁用时，不允许远程授权。 |
-| [verifyControlledDevicePackage](arkts-ability-abilitytoolaccessctrl-verifycontrolleddevicepackage-f-sys.md#verifycontrolleddevicepackage) | 对受控设备的授权包进行校验。对被控设备发送的远程授权包进行校验。它验证票证以确保授权是合法的。 |
-| [verifyControllerDevicePackage](arkts-ability-abilitytoolaccessctrl-verifycontrollerdevicepackage-f-sys.md#verifycontrollerdevicepackage) | 验证来自控制器设备的授权包。验证控制器设备发送的远程授权包。它验证票证和远程设备信息，以确保授权是合法的。 |
+| [generateControlledDevicePackage](arkts-ability-abilitytoolaccessctrl-generatecontrolleddevicepackage-f-sys.md#generatecontrolleddevicepackage-1) | 生成受控设备的授权包。根据权限查询列表生成远程授权包。生成的包可以发送到控制器设备进行权限验证。 |
+| [generateControllerDevicePackage](arkts-ability-abilitytoolaccessctrl-generatecontrollerdevicepackage-f-sys.md#generatecontrollerdevicepackage-1) | 生成控制器设备的授权包。根据远程用户授权结果生成远程授权包。生成的包可以发送到受控设备进行权限验证。 |
+| [getRemoteGrantStatus](arkts-ability-abilitytoolaccessctrl-getremotegrantstatus-f-sys.md#getremotegrantstatus-1) | 获取远程授权状态。该功能用于查询远程授权特性的使能状态。启用时，设备可以向远程设备授予权限；禁用时，不允许远程授权。 |
+| [grantToolPermissionsByUser](arkts-ability-abilitytoolaccessctrl-granttoolpermissionsbyuser-f-sys.md#granttoolpermissionsbyuser-1) | 根据用户授权结果授予工具权限。该功能根据用户的授权决定授予工具（CLI命令或API）的权限。授权成功后，会生成工单，用于权限验证。 |
+| [requestToolPermissions](arkts-ability-abilitytoolaccessctrl-requesttoolpermissions-f-sys.md#requesttoolpermissions-1) | 根据指定的操作查询工具权限。该函数用于检查权限查询中指定的CLI命令或API的权限状态。对于每个操作，它返回权限状态、授权状态以及是否需要用户对话框。当needTicket设置为true时，远程授权会生成一个票据。 |
+| [updateRemoteGrantStatus](arkts-ability-abilitytoolaccessctrl-updateremotegrantstatus-f-sys.md#updateremotegrantstatus-1) | 更新远程授权状态。该功能用于开启或关闭远程授权特性。启用时，设备可以向远程设备授予权限；禁用时，不允许远程授权。 |
+| [verifyControlledDevicePackage](arkts-ability-abilitytoolaccessctrl-verifycontrolleddevicepackage-f-sys.md#verifycontrolleddevicepackage-1) | 对受控设备的授权包进行校验。对被控设备发送的远程授权包进行校验。它验证票证以确保授权是合法的。 |
+| [verifyControllerDevicePackage](arkts-ability-abilitytoolaccessctrl-verifycontrollerdevicepackage-f-sys.md#verifycontrollerdevicepackage-1) | 验证来自控制器设备的授权包。验证控制器设备发送的远程授权包。它验证票证和远程设备信息，以确保授权是合法的。 |
 <!--DelEnd-->
 
 ### 接口

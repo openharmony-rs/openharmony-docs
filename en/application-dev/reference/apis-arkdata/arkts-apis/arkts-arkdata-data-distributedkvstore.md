@@ -32,7 +32,7 @@ import { distributedKVStore } from '@kit.ArkData';
 
 | Name | Description |
 | --- | --- |
-| [createKVManager](arkts-arkdata-distributedkvstore-createkvmanager-f.md#createkvmanager) | Creates a **KVManager** instance for KV store management. |
+| [createKVManager](arkts-arkdata-distributedkvstore-createkvmanager-f.md#createkvmanager-1) | Creates a **KVManager** instance for KV store management. |
 
 ### Classes
 

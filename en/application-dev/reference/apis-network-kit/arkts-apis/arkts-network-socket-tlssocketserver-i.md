@@ -29,7 +29,7 @@ Stops listening for events of the **TLSSocketServer** object and releases the po
 > **NOTE:** 
 > 
 > This API does not close existing connections. To close the connection, call the
-> [close](arkts-network-socket-tcpsocketconnection-i.md#close) API of
+> [close](arkts-network-socket-tcpsocketconnection-i.md#close-1) API of
 > [TLSSocketConnection](arkts-network-socket-tlssocketconnection-i.md).
 
 **Since:** 20

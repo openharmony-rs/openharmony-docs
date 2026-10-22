@@ -27,7 +27,7 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [apiAvailable](arkts-basicservices-deviceinfo-apiavailable-f.md#apiavailable) | 检查指定的API版本在当前设备上是否可用。此方法提供OpenHarmony及其各发行版系统版本的兼容性检查。该方法会根据输入格式和API版本范围自动选择合适的版本检查方法。 |
+| [apiAvailable](arkts-basicservices-deviceinfo-apiavailable-f.md#apiavailable-1) | 检查指定的API版本在当前设备上是否可用。此方法提供OpenHarmony及其各发行版系统版本的兼容性检查。该方法会根据输入格式和API版本范围自动选择合适的版本检查方法。 |
 
 ### 枚举
 

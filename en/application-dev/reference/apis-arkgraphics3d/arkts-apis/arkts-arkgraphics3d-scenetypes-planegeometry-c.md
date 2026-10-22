@@ -4,7 +4,7 @@
 export declare class PlaneGeometry extends GeometryDefinition
 ```
 
-A plane geometry type that inherits from GeometryDefinition.
+A plane geometry type that inherits from [GeometryDefinition](arkts-arkgraphics3d-scenetypes-geometrydefinition-c.md).
 
 **Inheritance/Implementation:** PlaneGeometry extends [GeometryDefinition](arkts-arkgraphics3d-scenetypes-geometrydefinition-c.md)
 

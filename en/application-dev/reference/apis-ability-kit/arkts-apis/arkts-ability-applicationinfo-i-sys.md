@@ -1,4 +1,4 @@
-# ApplicationInfo
+# ApplicationInfo (System API)
 
 ```TypeScript
 export interface ApplicationInfo

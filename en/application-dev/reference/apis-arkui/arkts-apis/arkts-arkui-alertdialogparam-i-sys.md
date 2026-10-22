@@ -1,4 +1,4 @@
-# AlertDialogParam
+# AlertDialogParam (System API)
 
 ```TypeScript
 declare interface AlertDialogParam

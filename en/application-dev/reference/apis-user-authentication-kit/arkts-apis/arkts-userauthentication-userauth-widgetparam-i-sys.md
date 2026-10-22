@@ -1,4 +1,4 @@
-# WidgetParam
+# WidgetParam (System API)
 
 ```TypeScript
 interface WidgetParam

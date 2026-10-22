@@ -26,7 +26,7 @@ Stops NearLink scanning. This API uses a promise to return the result. Before ca
 
 **System capability:** SystemCapability.Communication.NearLink.Base
 
-**See also:** [startScan](arkts-connectivity-scan-startscan-f.md) Starts NearLink scanning.
+**See also:** [startScan](arkts-connectivity-scan-startscan-f.md#startscan-1) Starts NearLink scanning.
 
 **Return value:**
 

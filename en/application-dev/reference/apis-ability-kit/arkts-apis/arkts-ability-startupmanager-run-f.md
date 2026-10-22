@@ -17,7 +17,7 @@ Runs startup tasks or loads .so files.
 > **NOTE:** 
 > 
 > This API cannot be used to run startup tasks defined in a feature-type HAP. To run those tasks, use
-> [startupManager.run](#run)
+> [startupManager.run](#run-2)
 > .
 
 **Since:** 12

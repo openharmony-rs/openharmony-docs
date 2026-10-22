@@ -1,4 +1,4 @@
-# NotificationFlags
+# NotificationFlags (System API)
 
 ```TypeScript
 export interface NotificationFlags

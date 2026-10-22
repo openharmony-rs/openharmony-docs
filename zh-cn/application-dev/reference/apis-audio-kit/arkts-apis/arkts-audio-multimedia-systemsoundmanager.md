@@ -20,15 +20,15 @@ import { systemSoundManager } from '@kit.AudioKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [createSystemSoundPlayer](arkts-audio-systemsoundmanager-createsystemsoundplayer-f.md#createsystemsoundplayer) | 创建系统音效播放器对象。使用Promise异步回调。 |
+| [createSystemSoundPlayer](arkts-audio-systemsoundmanager-createsystemsoundplayer-f.md#createsystemsoundplayer-1) | 创建系统音效播放器对象。使用Promise异步回调。 |
 
 <!--Del-->
 ### 函数（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| [createCustomizedToneAttrs](arkts-audio-systemsoundmanager-createcustomizedtoneattrs-f-sys.md#createcustomizedtoneattrs) | 创建自定义铃声属性。 |
-| [getSystemSoundManager](arkts-audio-systemsoundmanager-getsystemsoundmanager-f-sys.md#getsystemsoundmanager) | 获取系统声音管理器。 |
+| [createCustomizedToneAttrs](arkts-audio-systemsoundmanager-createcustomizedtoneattrs-f-sys.md#createcustomizedtoneattrs-1) | 创建自定义铃声属性。 |
+| [getSystemSoundManager](arkts-audio-systemsoundmanager-getsystemsoundmanager-f-sys.md#getsystemsoundmanager-1) | 获取系统声音管理器。 |
 <!--DelEnd-->
 
 <!--Del-->

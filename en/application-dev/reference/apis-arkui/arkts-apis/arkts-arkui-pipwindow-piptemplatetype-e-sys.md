@@ -1,4 +1,4 @@
-# PiPTemplateType
+# PiPTemplateType (System API)
 
 ```TypeScript
 enum PiPTemplateType

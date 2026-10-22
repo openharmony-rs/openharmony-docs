@@ -31,11 +31,11 @@ import { prompt } from '@kit.ArkUI';
 
 | Name | Description |
 | --- | --- |
-| [showActionMenu](arkts-arkui-prompt-showactionmenu-f.md#showactionmenu) | Shows an action menu. This API uses a callback to return the result asynchronously. |
-| [showActionMenu](arkts-arkui-prompt-showactionmenu-f.md#showactionmenu) | Shows an action menu. This API uses a promise to return the result. |
-| [showDialog](arkts-arkui-prompt-showdialog-f.md#showdialog) | Shows a dialog box. This API uses an asynchronous callback to return the result. |
-| [showDialog](arkts-arkui-prompt-showdialog-f.md#showdialog) | Shows a dialog box. This API uses a promise to return the result. |
-| [showToast](arkts-arkui-prompt-showtoast-f.md#showtoast) | Shows a toast. |
+| [showActionMenu](arkts-arkui-prompt-showactionmenu-f.md#showactionmenu-1) | Shows an action menu. This API uses a callback to return the result asynchronously. |
+| [showActionMenu](arkts-arkui-prompt-showactionmenu-f.md#showactionmenu-2) | Shows an action menu. This API uses a promise to return the result. |
+| [showDialog](arkts-arkui-prompt-showdialog-f.md#showdialog-1) | Shows a dialog box. This API uses an asynchronous callback to return the result. |
+| [showDialog](arkts-arkui-prompt-showdialog-f.md#showdialog-2) | Shows a dialog box. This API uses a promise to return the result. |
+| [showToast](arkts-arkui-prompt-showtoast-f.md#showtoast-1) | Shows a toast. |
 
 ### Interfaces
 

@@ -22,23 +22,23 @@ import { cliManager, CliHook, ExecToolParam, ExecCmdParam, ExecResultWrap } from
 
 | Name | Description |
 | --- | --- |
-| [clearSession](arkts-ability-climanager-clearsession-f.md#clearsession) | Closes a session and forcibly terminates the associated command process. |
-| [execCmd](arkts-ability-climanager-execcmd-f.md#execcmd) | Executes a raw command string in the system shell environment. |
-| [getToolInfoByName](arkts-ability-climanager-gettoolinfobyname-f.md#gettoolinfobyname) | Get detailed information of a single tool by its name |
-| [querySession](arkts-ability-climanager-querysession-f.md#querysession) | Queries the current status and execution result of a session. |
-| [queryTools](arkts-ability-climanager-querytools-f.md#querytools) | Query all detailed information of tools |
-| [queryToolSummaries](arkts-ability-climanager-querytoolsummaries-f.md#querytoolsummaries) | Query all tool summary information. The summary information only contains the fields: name, description, version. |
-| [sendMessage](arkts-ability-climanager-sendmessage-f.md#sendmessage) | Sends a message to the standard input of a running command process. |
-| [subscribeSession](arkts-ability-climanager-subscribesession-f.md#subscribesession) | Subscribes to events from a CLI tool or command execution session. |
+| [clearSession](arkts-ability-climanager-clearsession-f.md#clearsession-1) | Closes a session and forcibly terminates the associated command process. |
+| [execCmd](arkts-ability-climanager-execcmd-f.md#execcmd-1) | Executes a raw command string in the system shell environment. |
+| [getToolInfoByName](arkts-ability-climanager-gettoolinfobyname-f.md#gettoolinfobyname-1) | Get detailed information of a single tool by its name |
+| [querySession](arkts-ability-climanager-querysession-f.md#querysession-1) | Queries the current status and execution result of a session. |
+| [queryTools](arkts-ability-climanager-querytools-f.md#querytools-1) | Query all detailed information of tools |
+| [queryToolSummaries](arkts-ability-climanager-querytoolsummaries-f.md#querytoolsummaries-1) | Query all tool summary information. The summary information only contains the fields: name, description, version. |
+| [sendMessage](arkts-ability-climanager-sendmessage-f.md#sendmessage-1) | Sends a message to the standard input of a running command process. |
+| [subscribeSession](arkts-ability-climanager-subscribesession-f.md#subscribesession-1) | Subscribes to events from a CLI tool or command execution session. |
 
 <!--Del-->
 ### Functions(System API)
 
 | Name | Description |
 | --- | --- |
-| [execTool](arkts-ability-climanager-exectool-f-sys.md#exectool) | Execute a CLI command |
-| [registerCliHook](arkts-ability-climanager-registerclihook-f-sys.md#registerclihook) | Register a CLI hook for intercepting tool and command execution. Only one CLI hook can be registered at a time; registering again while one is already active will fail. This API is only available in developer mode. To update a registered hook, call unregisterCliHook first, then register again. The hook object must implement at least one of the optional methods in CliHook. |
-| [unregisterCliHook](arkts-ability-climanager-unregisterclihook-f-sys.md#unregisterclihook) | Unregister the previously registered CLI hook. The hook object must be the same as the one passed to registerCliHook. If no hook is registered, the call will fail with an error. |
+| [execTool](arkts-ability-climanager-exectool-f-sys.md#exectool-1) | Execute a CLI command |
+| [registerCliHook](arkts-ability-climanager-registerclihook-f-sys.md#registerclihook-1) | Register a CLI hook for intercepting tool and command execution. Only one CLI hook can be registered at a time; registering again while one is already active will fail. This API is only available in developer mode. To update a registered hook, call unregisterCliHook first, then register again. The hook object must implement at least one of the optional methods in CliHook. |
+| [unregisterCliHook](arkts-ability-climanager-unregisterclihook-f-sys.md#unregisterclihook-1) | Unregister the previously registered CLI hook. The hook object must be the same as the one passed to registerCliHook. If no hook is registered, the call will fail with an error. |
 <!--DelEnd-->
 
 ### Interfaces

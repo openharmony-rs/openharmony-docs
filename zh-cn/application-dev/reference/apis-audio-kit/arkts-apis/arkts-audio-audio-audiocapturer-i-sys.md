@@ -1,10 +1,10 @@
-# AudioCapturer
+# AudioCapturer（系统接口）
 
 ```TypeScript
 interface AudioCapturer
 ```
 
-提供音频采集的相关接口。在使用AudioCapturer的接口之前，需先通过[createAudioCapturer](arkts-audio-audio-createaudiocapturer-f.md#createaudiocapturer)获取AudioCapturer实例。
+提供音频采集的相关接口。在使用AudioCapturer的接口之前，需先通过[createAudioCapturer](arkts-audio-audio-createaudiocapturer-f.md#createaudiocapturer-1)获取AudioCapturer实例。
 
 **起始版本：** 8
 

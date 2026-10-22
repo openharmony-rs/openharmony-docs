@@ -1,4 +1,4 @@
-# ImmersiveEffect
+# ImmersiveEffect（系统接口）
 
 ```TypeScript
 interface ImmersiveEffect

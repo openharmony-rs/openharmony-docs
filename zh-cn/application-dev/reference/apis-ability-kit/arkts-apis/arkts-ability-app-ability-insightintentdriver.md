@@ -31,13 +31,13 @@ import { insightIntentDriver } from '@kit.AbilityKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [execute](arkts-ability-insightintentdriver-execute-f-sys.md#execute) | 执行意图调用的接口。使用callback异步回调。当调用方在后台时，需要申请`ohos.permission.START_ABILITIES_FROM_BACKGROUND`权限。当意图调用执行模式[ExecuteMode](arkts-ability-insightintent-executemode-e.md)取值为UI_ABILITY_BACKGROUND时，需要申请`ohos.permission.ABILITY_BACKGROUND_COMMUNICATION`权限。 |
-| [execute](arkts-ability-insightintentdriver-execute-f-sys.md#execute) | 执行意图调用的接口。使用Promise异步回调。当调用方在后台时，需要申请`ohos.permission.START_ABILITIES_FROM_BACKGROUND`权限。当意图调用执行模式[ExecuteMode](arkts-ability-insightintent-executemode-e.md)取值为UI_ABILITY_BACKGROUND时，需要申请`ohos.permission.ABILITY_BACKGROUND_COMMUNICATION`权限。 |
-| [getAllInsightIntentInfo](arkts-ability-insightintentdriver-getallinsightintentinfo-f-sys.md#getallinsightintentinfo) | 查询当前设备上的所有意图信息。使用Promise异步回调。 |
-| [getInsightIntentInfoByBundleName](arkts-ability-insightintentdriver-getinsightintentinfobybundlename-f-sys.md#getinsightintentinfobybundlename) | 根据包名查询当前设备上的意图信息。使用Promise异步回调。 |
-| [getInsightIntentInfoByFilter](arkts-ability-insightintentdriver-getinsightintentinfobyfilter-f-sys.md#getinsightintentinfobyfilter) | Obtains the intent information on the current device based on the given intent filter. This API uses a promise to return the result.<br>If the user ID of the calling application is different from the user ID of the intent, the |
-| [getInsightIntentInfoByIntentName](arkts-ability-insightintentdriver-getinsightintentinfobyintentname-f-sys.md#getinsightintentinfobyintentname) | 根据包名、模块名和意图名查询当前设备上的意图信息。使用Promise异步回调。 |
-| [queryEntityInfo](arkts-ability-insightintentdriver-queryentityinfo-f-sys.md#queryentityinfo) | 根据[QueryParam](arkts-ability-insightintentdriver-queryparam-i-sys.md)查询应用的动态意图实体信息。使用Promise异步回调。如果调用方应用的用户ID与目标用户ID不同，则需要申请权限ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS。 |
+| [execute](arkts-ability-insightintentdriver-execute-f-sys.md#execute-1) | 执行意图调用的接口。使用callback异步回调。当调用方在后台时，需要申请`ohos.permission.START_ABILITIES_FROM_BACKGROUND`权限。当意图调用执行模式[ExecuteMode](arkts-ability-insightintent-executemode-e.md)取值为UI_ABILITY_BACKGROUND时，需要申请`ohos.permission.ABILITY_BACKGROUND_COMMUNICATION`权限。 |
+| [execute](arkts-ability-insightintentdriver-execute-f-sys.md#execute-2) | 执行意图调用的接口。使用Promise异步回调。当调用方在后台时，需要申请`ohos.permission.START_ABILITIES_FROM_BACKGROUND`权限。当意图调用执行模式[ExecuteMode](arkts-ability-insightintent-executemode-e.md)取值为UI_ABILITY_BACKGROUND时，需要申请`ohos.permission.ABILITY_BACKGROUND_COMMUNICATION`权限。 |
+| [getAllInsightIntentInfo](arkts-ability-insightintentdriver-getallinsightintentinfo-f-sys.md#getallinsightintentinfo-1) | 查询当前设备上的所有意图信息。使用Promise异步回调。 |
+| [getInsightIntentInfoByBundleName](arkts-ability-insightintentdriver-getinsightintentinfobybundlename-f-sys.md#getinsightintentinfobybundlename-1) | 根据包名查询当前设备上的意图信息。使用Promise异步回调。 |
+| [getInsightIntentInfoByFilter](arkts-ability-insightintentdriver-getinsightintentinfobyfilter-f-sys.md#getinsightintentinfobyfilter-1) | Obtains the intent information on the current device based on the given intent filter. This API uses a promise to return the result.<br>If the user ID of the calling application is different from the user ID of the intent, the |
+| [getInsightIntentInfoByIntentName](arkts-ability-insightintentdriver-getinsightintentinfobyintentname-f-sys.md#getinsightintentinfobyintentname-1) | 根据包名、模块名和意图名查询当前设备上的意图信息。使用Promise异步回调。 |
+| [queryEntityInfo](arkts-ability-insightintentdriver-queryentityinfo-f-sys.md#queryentityinfo-1) | 根据[QueryParam](arkts-ability-insightintentdriver-queryparam-i-sys.md)查询应用的动态意图实体信息。使用Promise异步回调。如果调用方应用的用户ID与目标用户ID不同，则需要申请权限ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS。 |
 <!--DelEnd-->
 
 <!--Del-->

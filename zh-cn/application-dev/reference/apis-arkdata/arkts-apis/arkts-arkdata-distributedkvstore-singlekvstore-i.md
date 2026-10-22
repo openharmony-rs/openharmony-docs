@@ -185,7 +185,7 @@ try {
 closeResultSet(resultSet: KVStoreResultSet, callback: AsyncCallback<void>): void
 ```
 
-关闭由[SingleKVStore.getResultSet](#getresultset)返回的KVStoreResultSet对象，使用callback异步回调。关闭结果集后，该结果集对象将不可再用，相关数据库资源被释放。
+关闭由[SingleKVStore.getResultSet](#getresultset-2)返回的KVStoreResultSet对象，使用callback异步回调。关闭结果集后，该结果集对象将不可再用，相关数据库资源被释放。
 
 **起始版本：** 9
 
@@ -244,7 +244,7 @@ try {
 closeResultSet(resultSet: KVStoreResultSet): Promise<void>
 ```
 
-关闭由[SingleKVStore.getResultSet](#getresultset)返回的KVStoreResultSet对象，使用Promise异步回调。关闭结果集后，该结果集对象将不可再用，相关数据库资源被释放。
+关闭由[SingleKVStore.getResultSet](#getresultset-2)返回的KVStoreResultSet对象，使用Promise异步回调。关闭结果集后，该结果集对象将不可再用，相关数据库资源被释放。
 
 **起始版本：** 9
 
@@ -305,7 +305,7 @@ try {
 commit(callback: AsyncCallback<void>): void
 ```
 
-提交SingleKVStore数据库中的事务，使用callback异步回调。需先调用[startTransaction](#starttransaction)启动事务后再调用本接口提交事务。提交成功后，事务期间的所有数据变更将永久生效并写入数据库。
+提交SingleKVStore数据库中的事务，使用callback异步回调。需先调用[startTransaction](#starttransaction-1)启动事务后再调用本接口提交事务。提交成功后，事务期间的所有数据变更将永久生效并写入数据库。
 
 **起始版本：** 9
 
@@ -352,7 +352,7 @@ try {
 commit(): Promise<void>
 ```
 
-提交SingleKVStore数据库中的事务，使用Promise异步回调。需先调用[startTransaction](#starttransaction)启动事务后再调用本接口提交事务。提交成功后，事务期间的所有数据变更将永久生效并写入数据库。
+提交SingleKVStore数据库中的事务，使用Promise异步回调。需先调用[startTransaction](#starttransaction-1)启动事务后再调用本接口提交事务。提交成功后，事务期间的所有数据变更将永久生效并写入数据库。
 
 **起始版本：** 9
 
@@ -522,7 +522,7 @@ try {
 deleteBackup(files: Array<string>, callback: AsyncCallback<Array<[string, number]>>): void
 ```
 
-根据指定名称从默认路径（context.databaseDir）删除备份文件，使用callback异步回调。删除备份文件后，将无法再通过[restore](#restore)接口恢复该备份文件中的数据。如需从自定义路径删除备份，请使用[deleteBackupEx](#deletebackupex)接口。
+根据指定名称从默认路径（context.databaseDir）删除备份文件，使用callback异步回调。删除备份文件后，将无法再通过[restore](#restore-2)接口恢复该备份文件中的数据。如需从自定义路径删除备份，请使用[deleteBackupEx](#deletebackupex)接口。
 
 **起始版本：** 9
 
@@ -571,7 +571,7 @@ try {
 deleteBackup(files: Array<string>): Promise<Array<[string, number]>>
 ```
 
-根据指定名称从默认路径（context.databaseDir）删除备份文件，使用Promise异步回调。删除备份文件后，将无法再通过[restore](#restore)接口恢复该备份文件中的数据。如需从自定义路径删除备份，请使用[deleteBackupEx](#deletebackupex)接口。
+根据指定名称从默认路径（context.databaseDir）删除备份文件，使用Promise异步回调。删除备份文件后，将无法再通过[restore](#restore-1)接口恢复该备份文件中的数据。如需从自定义路径删除备份，请使用[deleteBackupEx](#deletebackupex)接口。
 
 **起始版本：** 9
 
@@ -1412,7 +1412,7 @@ try {
 getResultSet(keyPrefix: string, callback: AsyncCallback<KVStoreResultSet>): void
 ```
 
-从SingleKVStore数据库中获取具有指定前缀的结果集，使用callback异步回调。获取结果集后，在使用完毕时需调用[closeResultSet](#closeresultset)关闭结果集释放资源。
+从SingleKVStore数据库中获取具有指定前缀的结果集，使用callback异步回调。获取结果集后，在使用完毕时需调用[closeResultSet](#closeresultset-1)关闭结果集释放资源。
 
 **起始版本：** 9
 
@@ -1495,7 +1495,7 @@ try {
 getResultSet(keyPrefix: string): Promise<KVStoreResultSet>
 ```
 
-从SingleKVStore数据库中获取具有指定前缀的结果集，使用Promise异步回调。获取结果集后，在使用完毕时需调用[closeResultSet](#closeresultset)关闭结果集释放资源。
+从SingleKVStore数据库中获取具有指定前缀的结果集，使用Promise异步回调。获取结果集后，在使用完毕时需调用[closeResultSet](#closeresultset-1)关闭结果集释放资源。
 
 **起始版本：** 9
 
@@ -1575,7 +1575,7 @@ try {
 getResultSet(query: Query, callback: AsyncCallback<KVStoreResultSet>): void
 ```
 
-获取与指定Query对象匹配的KVStoreResultSet对象，使用callback异步回调。获取结果集后，在使用完毕时需调用[closeResultSet](#closeresultset)关闭结果集释放资源。
+获取与指定Query对象匹配的KVStoreResultSet对象，使用callback异步回调。获取结果集后，在使用完毕时需调用[closeResultSet](#closeresultset-1)关闭结果集释放资源。
 
 **起始版本：** 9
 
@@ -1650,7 +1650,7 @@ try {
 getResultSet(query: Query): Promise<KVStoreResultSet>
 ```
 
-获取与指定Query对象匹配的KVStoreResultSet对象，使用Promise异步回调。获取结果集后，在使用完毕时需调用[closeResultSet](#closeresultset)关闭结果集释放资源。
+获取与指定Query对象匹配的KVStoreResultSet对象，使用Promise异步回调。获取结果集后，在使用完毕时需调用[closeResultSet](#closeresultset-1)关闭结果集释放资源。
 
 **起始版本：** 9
 
@@ -2805,7 +2805,7 @@ try {
 rollback(callback: AsyncCallback<void>): void
 ```
 
-在SingleKVStore数据库中回滚事务，使用callback异步回调。需先调用[startTransaction](#starttransaction)启动事务后再调用本接口回滚事务。回滚成功后，事务期间的所有数据变更将被丢弃，不会写入数据库。
+在SingleKVStore数据库中回滚事务，使用callback异步回调。需先调用[startTransaction](#starttransaction-1)启动事务后再调用本接口回滚事务。回滚成功后，事务期间的所有数据变更将被丢弃，不会写入数据库。
 
 **起始版本：** 9
 
@@ -2852,7 +2852,7 @@ try {
 rollback(): Promise<void>
 ```
 
-在SingleKVStore数据库中回滚事务，使用Promise异步回调。需先调用[startTransaction](#starttransaction)启动事务后再调用本接口回滚事务。回滚成功后，事务期间的所有数据变更将被丢弃，不会写入数据库。
+在SingleKVStore数据库中回滚事务，使用Promise异步回调。需先调用[startTransaction](#starttransaction-1)启动事务后再调用本接口回滚事务。回滚成功后，事务期间的所有数据变更将被丢弃，不会写入数据库。
 
 **起始版本：** 9
 
@@ -3115,7 +3115,7 @@ try {
 startTransaction(callback: AsyncCallback<void>): void
 ```
 
-启动SingleKVStore数据库中的事务，使用callback异步回调。启动事务后，后续的数据库操作将纳入此事务范围，直到调用[commit](#commit)提交或[rollback](#rollback)回滚才会结束事务。
+启动SingleKVStore数据库中的事务，使用callback异步回调。启动事务后，后续的数据库操作将纳入此事务范围，直到调用[commit](#commit-1)提交或[rollback](#rollback-1)回滚才会结束事务。
 
 **起始版本：** 9
 
@@ -3194,7 +3194,7 @@ try {
 startTransaction(): Promise<void>
 ```
 
-启动SingleKVStore数据库中的事务，使用Promise异步回调。启动事务后，后续的数据库操作将纳入此事务范围，直到调用[commit](#commit)提交或[rollback](#rollback)回滚才会结束事务。
+启动SingleKVStore数据库中的事务，使用Promise异步回调。启动事务后，后续的数据库操作将纳入此事务范围，直到调用[commit](#commit-1)提交或[rollback](#rollback-1)回滚才会结束事务。
 
 **起始版本：** 9
 

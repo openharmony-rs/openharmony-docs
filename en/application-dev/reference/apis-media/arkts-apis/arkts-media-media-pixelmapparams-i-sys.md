@@ -1,4 +1,4 @@
-# PixelMapParams
+# PixelMapParams (System API)
 
 ```TypeScript
 interface PixelMapParams

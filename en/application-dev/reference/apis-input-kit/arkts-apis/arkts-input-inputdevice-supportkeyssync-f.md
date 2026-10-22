@@ -12,7 +12,7 @@ import { inputDevice } from '@kit.InputKit';
 function supportKeysSync(deviceId: number, keys: Array<KeyCode>): Array<boolean>
 ```
 
-Checks whether the input device supports the specified keys.
+Checks whether the input device supports the specified keys. Before calling this API, call [getDeviceList](arkts-input-inputdevice-getdevicelist-f.md) first to obtain the ID of the input device.
 
 **Since:** 10
 

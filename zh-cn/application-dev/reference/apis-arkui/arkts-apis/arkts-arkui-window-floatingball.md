@@ -24,8 +24,8 @@ import { floatingBall } from '@kit.ArkUI';
 
 | 名称 | 说明 |
 | --- | --- |
-| [create](arkts-arkui-floatingball-create-f.md#create) | 创建闪控球控制器，使用Promise异步回调。 |
-| [isFloatingBallEnabled](arkts-arkui-floatingball-isfloatingballenabled-f.md#isfloatingballenabled) | 判断当前设备是否支持闪控球功能。 |
+| [create](arkts-arkui-floatingball-create-f.md#create-1) | 创建闪控球控制器，使用Promise异步回调。 |
+| [isFloatingBallEnabled](arkts-arkui-floatingball-isfloatingballenabled-f.md#isfloatingballenabled-1) | 判断当前设备是否支持闪控球功能。 |
 
 ### 接口
 

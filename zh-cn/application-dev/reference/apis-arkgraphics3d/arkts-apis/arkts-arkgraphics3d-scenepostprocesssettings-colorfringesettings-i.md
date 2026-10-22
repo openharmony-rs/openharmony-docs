@@ -4,7 +4,7 @@
 export interface ColorFringeSettings
 ```
 
-色晕设置。当RenderingPipelineType为FORWARD_LIGHTWEIGHT时，此功能不可用。
+色晕设置。当[RenderingPipelineType](arkts-arkgraphics3d-scenetypes-renderingpipelinetype-e.md)为FORWARD_LIGHTWEIGHT时，此功能不可用。
 
 **起始版本：** 22
 

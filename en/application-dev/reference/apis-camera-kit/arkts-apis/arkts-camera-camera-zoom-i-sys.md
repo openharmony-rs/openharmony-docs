@@ -1,4 +1,4 @@
-# Zoom
+# Zoom (System API)
 
 ```TypeScript
 interface Zoom extends ZoomQuery

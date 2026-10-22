@@ -1,4 +1,4 @@
-# FusionAssetType
+# FusionAssetType (System API)
 
 ```TypeScript
 enum FusionAssetType

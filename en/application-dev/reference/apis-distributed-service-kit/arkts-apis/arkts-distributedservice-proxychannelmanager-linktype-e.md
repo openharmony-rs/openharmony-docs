@@ -18,7 +18,7 @@ Enumerates the link types.
 LINK_BR = 0
 ```
 
-Bluetooth BR protocol, used for establishing a bidirectional data channel with a wearable device over a Bluetooth BR link.
+BR protocol, which is used to establish a bidirectional data channel with a wearable device through a BR link.
 
 **Since:** 20
 

@@ -102,6 +102,28 @@ Set the custom builder for the picker appearance. If not set, system will show t
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVCast
 
+## isIndependent
+
+```TypeScript
+isIndependent?: boolean
+```
+
+Indicates whether the playback component is an independent process. If this parameter is not set and multiple playback components exist on the application page, each playback component has an independent process. Default value: true.
+
+**Type:** boolean
+
+**Since:** 26.2.0
+
+**Decorator:** @Prop
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
+<!--Device-AVCastPicker-isIndependent?: boolean--><!--Device-AVCastPicker-isIndependent?: boolean-End-->
+
+**System capability:** SystemCapability.Multimedia.AVSession.AVCast
+
 ## normalColor
 
 ```TypeScript

@@ -12,7 +12,7 @@ import { remoteDevice } from '@kit.ConnectivityKit';
 function onAcbStateChange(callback: Callback<AcbStateParam>): void
 ```
 
-Subscribes to the logical link connection status change event. This API uses an asynchronous callback to return the result. This API is applicable when corresponding processing needs to be triggered when a logical link is established or disconnected, for example, checking whether the link is ready before data transfer or clearing resources after disconnection. Unlike [remoteDevice.onConnectionStateChange](arkts-connectivity-remotedevice-onconnectionstatechange-f.md) which listens for the connection status change at the device level, this API listens for the connection status change at the logical link level.
+Subscribes to the logical link connection status change event. This API uses an asynchronous callback to return the result. This API is applicable when corresponding processing needs to be triggered when a logical link is established or disconnected, for example, checking whether the link is ready before data transfer or clearing resources after disconnection. Unlike [remoteDevice.onConnectionStateChange](arkts-connectivity-remotedevice-onconnectionstatechange-f.md#onconnectionstatechange-1) which listens for the connection status change at the device level, this API listens for the connection status change at the logical link level.
 
 The app must have the **ohos.permission.ACCESS_NEARLINK** permission to receive this event. Before calling this API, you may call [isNearLinkSupported](arkts-connectivity-manager-isnearlinksupported-f.md) to check whether the device supports NearLink.
 
@@ -26,7 +26,7 @@ The app must have the **ohos.permission.ACCESS_NEARLINK** permission to receive 
 
 **System capability:** SystemCapability.Communication.NearLink.Base
 
-**See also:** [offAcbStateChange](arkts-connectivity-remotedevice-offacbstatechange-f.md) Unsubscribes from the logical link connection status change event.
+**See also:** [offAcbStateChange](arkts-connectivity-remotedevice-offacbstatechange-f.md#offacbstatechange-1) Unsubscribes from the logical link connection status change event.
 
 **Parameters:**
 

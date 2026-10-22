@@ -26,8 +26,8 @@ import { abilityDelegatorRegistry } from '@kit.TestKit';
 
 | Name | Description |
 | --- | --- |
-| [getAbilityDelegator](arkts-test-abilitydelegatorregistry-getabilitydelegator-f.md#getabilitydelegator) | Obtains an [AbilityDelegator](../../apis-ability-kit/arkts-apis/arkts-ability-abilitydelegator-i.md) object. |
-| [getArguments](arkts-test-abilitydelegatorregistry-getarguments-f.md#getarguments) | Obtains an [AbilityDelegatorArgs](../../apis-ability-kit/arkts-apis/arkts-ability-abilitydelegatorargs-i.md) object. |
+| [getAbilityDelegator](arkts-test-abilitydelegatorregistry-getabilitydelegator-f.md#getabilitydelegator-1) | Obtains an [AbilityDelegator](../../apis-ability-kit/arkts-apis/arkts-ability-abilitydelegator-i.md) object. |
+| [getArguments](arkts-test-abilitydelegatorregistry-getarguments-f.md#getarguments-1) | Obtains an [AbilityDelegatorArgs](../../apis-ability-kit/arkts-apis/arkts-ability-abilitydelegatorargs-i.md) object. |
 
 ### Types
 

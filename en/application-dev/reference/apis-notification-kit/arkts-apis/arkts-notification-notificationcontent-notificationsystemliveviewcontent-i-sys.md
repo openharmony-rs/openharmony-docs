@@ -1,4 +1,4 @@
-# NotificationSystemLiveViewContent
+# NotificationSystemLiveViewContent (System API)
 
 ```TypeScript
 export interface NotificationSystemLiveViewContent extends NotificationBasicContent

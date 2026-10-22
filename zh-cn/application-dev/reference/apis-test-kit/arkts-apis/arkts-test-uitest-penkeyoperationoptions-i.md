@@ -4,7 +4,7 @@
 declare interface PenKeyOperationOptions
 ```
 
-笔按键操作选项。
+手写笔按键操作选项。
 
 **起始版本：** 26.0.0
 
@@ -27,7 +27,7 @@ import { UiComponent, UiDriver, BY, By } from '@kit.TestKit';
 point?: Point
 ```
 
-空鼠模式操作的坐标点。当按键为 AIR_MOUSE 并处于空鼠模式时，该坐标点是必需的。
+空鼠模式下的坐标点，在[triggerPenKey](arkts-test-uitest-driver-c.md#triggerpenkey)接口中，当参数key设置为[AIR_MOUSE](arkts-test-uitest-penkey-e.md)时必须设置该属性，否则接口调用抛出17000007错误码。
 
 **类型：** [Point](arkts-test-uitest-point-i.md)
 

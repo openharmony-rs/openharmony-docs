@@ -1,4 +1,4 @@
-# SensorId
+# SensorId（系统接口）
 
 ```TypeScript
 enum SensorId

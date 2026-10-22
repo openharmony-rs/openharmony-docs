@@ -4,7 +4,7 @@
 interface DownloadTask
 ```
 
-Implements file downloads. Before using any APIs of this class, you must obtain a **DownloadTask** object, from a promise through [request.downloadFile](arkts-basicservices-request-downloadfile-f.md#downloadfile) or from a callback through [request.downloadFile](arkts-basicservices-request-downloadfile-f.md#downloadfile).
+Implements file downloads. Before using any APIs of this class, you must obtain a **DownloadTask** object, from a promise through [request.downloadFile](arkts-basicservices-request-downloadfile-f.md#downloadfile-2) or from a callback through [request.downloadFile](arkts-basicservices-request-downloadfile-f.md#downloadfile-1).
 
 **Since:** 6
 
@@ -990,7 +990,7 @@ Pauses this download task. This API uses an asynchronous callback to return the 
 
 **Deprecated since:** 9
 
-**Substitutes:** [suspend](#suspend)(callback: AsyncCallback&lt;boolean&gt;)
+**Substitutes:** [suspend](#suspend-1)(callback: AsyncCallback&lt;boolean&gt;)
 
 **Required permissions:** ohos.permission.INTERNET
 
@@ -1076,7 +1076,7 @@ Queries this download task. This API uses an asynchronous callback to return the
 
 **Deprecated since:** 9
 
-**Substitutes:** [getTaskInfo](#gettaskinfo)(callback: AsyncCallback&lt;DownloadInfo&gt;)
+**Substitutes:** [getTaskInfo](#gettaskinfo-1)(callback: AsyncCallback&lt;DownloadInfo&gt;)
 
 **Required permissions:** ohos.permission.INTERNET
 
@@ -1162,7 +1162,7 @@ Queries the MIME type of this download task. This API uses an asynchronous callb
 
 **Deprecated since:** 9
 
-**Substitutes:** [getTaskMimeType](#gettaskmimetype)(callback: AsyncCallback&lt;string&gt;)
+**Substitutes:** [getTaskMimeType](#gettaskmimetype-1)(callback: AsyncCallback&lt;string&gt;)
 
 **Required permissions:** ohos.permission.INTERNET
 
@@ -1248,7 +1248,7 @@ Deletes the download task. This API uses an asynchronous callback to return the 
 
 **Deprecated since:** 9
 
-**Substitutes:** [delete](arkts-basicservices-request-uploadtask-i.md#delete)(callback: AsyncCallback&lt;boolean&gt;)
+**Substitutes:** [delete](arkts-basicservices-request-uploadtask-i.md#delete-1)(callback: AsyncCallback&lt;boolean&gt;)
 
 **Required permissions:** ohos.permission.INTERNET
 
@@ -1334,7 +1334,7 @@ Restores the download task. This API uses an asynchronous callback to return the
 
 **Deprecated since:** 9
 
-**Substitutes:** [restore](#restore)(callback: AsyncCallback&lt;boolean&gt;)
+**Substitutes:** [restore](#restore-1)(callback: AsyncCallback&lt;boolean&gt;)
 
 **Required permissions:** ohos.permission.INTERNET
 

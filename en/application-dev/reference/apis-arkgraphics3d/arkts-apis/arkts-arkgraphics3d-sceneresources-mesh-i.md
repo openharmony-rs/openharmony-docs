@@ -4,7 +4,7 @@
 export interface Mesh extends SceneResource
 ```
 
-Mesh resource, which inherits from SceneResource.
+Mesh resource, which inherits from [SceneResource](arkts-arkgraphics3d-sceneresources-sceneresource-i.md).
 
 **Inheritance/Implementation:** Mesh extends [SceneResource](arkts-arkgraphics3d-sceneresources-sceneresource-i.md)
 

@@ -1,4 +1,4 @@
-# InputMethodExtensionContext
+# InputMethodExtensionContext (System API)
 
 ```TypeScript
 declare class InputMethodExtensionContext extends ExtensionContext
@@ -455,7 +455,7 @@ Destroys this input method extension. This API uses an asynchronous callback to 
 
 **Deprecated since:** 10
 
-**Substitutes:** [destroy](arkts-ime-inputmethodextensioncontext-c.md#destroy)(callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [destroy](arkts-ime-inputmethodextensioncontext-c.md#destroy-1)(callback: AsyncCallback&lt;void&gt;)
 
 **Model restriction:** This API can be used only in the stage model.
 

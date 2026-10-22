@@ -44,7 +44,7 @@ Creates a content modifier. You need to customize a class to implement the **Con
 contentModifier(modifier: Optional<ContentModifier<RatingConfiguration>>)
 ```
 
-Creates a content modifier. Compared with [contentModifier](#contentmodifier), this API supports the **undefined** type for the **modifier** parameter. If **modifier** is set to **undefined**, no content modifier is used.
+Creates a content modifier. Compared with [contentModifier](#contentmodifier-1), this API supports the **undefined** type for the **modifier** parameter. If **modifier** is set to **undefined**, no content modifier is used.
 
 **Since:** 18
 
@@ -94,7 +94,7 @@ Triggered when the rating value changes.
 onChange(callback: Optional<OnRatingChangeCallback>)
 ```
 
-Triggered when the rating value changes. Compared with [onChange](#onchange), this API supports the **undefined** type for the **callback** parameter.
+Triggered when the rating value changes. Compared with [onChange](#onchange-1), this API supports the **undefined** type for the **callback** parameter.
 
 **Since:** 18
 
@@ -146,7 +146,7 @@ Sets the total number of stars. The default value is **5**.
 stars(starCount: Optional<number>)
 ```
 
-Sets the total number of stars. Compared with [stars](#stars), this API supports the **undefined** type for the **starCount** parameter. If **starCount** is set to **undefined**, the default value **5** is used.
+Sets the total number of stars. Compared with [stars](#stars-1), this API supports the **undefined** type for the **starCount** parameter. If **starCount** is set to **undefined**, the default value **5** is used.
 
 **Since:** 18
 
@@ -208,7 +208,7 @@ Local and network images are supported. The PixelMap type is not supported.
 
 By default, the image is loaded in asynchronous mode. Synchronous loading is not supported.
 
-Compared with [starStyle](#starstyle), this API supports the **undefined** type for the **options** parameter.
+Compared with [starStyle](#starstyle-1), this API supports the **undefined** type for the **options** parameter.
 
 **Since:** 18
 
@@ -260,7 +260,7 @@ Sets the step for rating. Values less than 0.1 are treated as the default value.
 stepSize(size: Optional<number>)
 ```
 
-Sets the step for rating. Values less than 0.1 are treated as the default value. Compared with [stepSize](#stepsize), this API supports the **undefined** type for the **size** parameter. If **size** is set to **undefined**, the default value **0.5** is used.
+Sets the step for rating. Values less than 0.1 are treated as the default value. Compared with [stepSize](#stepsize-1), this API supports the **undefined** type for the **size** parameter. If **size** is set to **undefined**, the default value **0.5** is used.
 
 **Since:** 18
 

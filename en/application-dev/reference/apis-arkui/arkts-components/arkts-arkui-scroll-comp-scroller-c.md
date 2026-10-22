@@ -489,7 +489,7 @@ When the smooth animation is enabled, all items passed through are loaded and la
 > 
 > 2. When refreshing the data source in [LazyForEach](arkts-arkui-lazyforeach-comp.md), [ForEach](arkts-arkui-foreach-comp-attribute.md#foreachattribute), or [Repeat](arkts-arkui-repeat-comp.md), ensure that this API is called after the data refresh is complete.
 > 
-> 3. Since API version 11, [contentStartOffset](arkts-arkui-list-comp-attribute.md#contentstartoffset) and [contentEndOffset](arkts-arkui-list-comp-attribute.md#contentendoffset) are supported in **List**. Since API version 22,contentStartOffsetand contentEndOffsetcan be set in the **Grid** and **WaterFlow** components.
+> 3. Since API version 11, [contentStartOffset](arkts-arkui-list-comp-attribute.md#contentstartoffset-1) and [contentEndOffset](arkts-arkui-list-comp-attribute.md#contentendoffset-1) are supported in **List**. Since API version 22,contentStartOffsetand contentEndOffsetcan be set in the **Grid** and **WaterFlow** components.
 > 
 > - When **contentStartOffset** is set for the scroll container component and **ScrollAlign** is set to **START**,the head of the specified item is aligned with the **contentStartOffset** position of the scroll container component when scrolling ends.
 > 

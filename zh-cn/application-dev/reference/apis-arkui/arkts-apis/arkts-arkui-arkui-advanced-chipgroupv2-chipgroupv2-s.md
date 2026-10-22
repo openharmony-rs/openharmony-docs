@@ -6,14 +6,6 @@ export declare struct ChipGroupV2
 
 创建ChipGroupV2组件。
 
-> **说明：** 
-> 
-> - 如果ChipGroupV2设置[通用属性](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md)或[通用事件](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md)，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到ChipGroupV2本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议ChipGroupV2设置通用属性和通用事件。
-
-## 子组件
-
-不支持设置子组件。
-
 **起始版本：** 26.0.0
 
 **装饰器类型：** @ComponentV2
@@ -247,6 +239,28 @@ ChipV2状态改变时的回调方法，用于响应ChipV2选中状态变化。�
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-ChipGroupV2-onChange?: Callback<Array<number>>--><!--Device-ChipGroupV2-onChange?: Callback<Array<number>>-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## onItemsChange
+
+```TypeScript
+onItemsChange?: Callback<ChipGroupV2Items>
+```
+
+ChipGroupV2Items变更回调方法。
+
+**类型：** Callback&lt;[ChipGroupV2Items](arkts-arkui-arkui-advanced-chipgroupv2-chipgroupv2items-c.md)&gt;
+
+**起始版本：** 26.2.0
+
+**装饰器类型：** @Event
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-ChipGroupV2-onItemsChange?: Callback<ChipGroupV2Items>--><!--Device-ChipGroupV2-onItemsChange?: Callback<ChipGroupV2Items>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

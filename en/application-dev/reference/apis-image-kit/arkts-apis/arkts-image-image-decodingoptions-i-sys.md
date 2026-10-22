@@ -1,4 +1,4 @@
-# DecodingOptions
+# DecodingOptions (System API)
 
 ```TypeScript
 interface DecodingOptions

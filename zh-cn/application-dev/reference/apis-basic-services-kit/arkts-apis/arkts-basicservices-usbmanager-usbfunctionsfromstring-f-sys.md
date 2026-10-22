@@ -18,7 +18,7 @@ function usbFunctionsFromString(funcs: string): number
 
 **废弃版本：** 12
 
-**替代接口：** [getFunctionsFromString](arkts-basicservices-usbmanager-getfunctionsfromstring-f-sys.md)(funcs: string)
+**替代接口：** [getFunctionsFromString](arkts-basicservices-usbmanager-getfunctionsfromstring-f-sys.md#getfunctionsfromstring-1)(funcs: string)
 
 <!--Device-usbManager-function usbFunctionsFromString(funcs: string): number--><!--Device-usbManager-function usbFunctionsFromString(funcs: string): number-End-->
 

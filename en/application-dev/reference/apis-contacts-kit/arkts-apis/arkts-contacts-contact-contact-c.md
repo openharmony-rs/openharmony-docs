@@ -54,24 +54,6 @@ List of email addresses of the contact.
 
 **System capability:** SystemCapability.Applications.ContactsData
 
-## events
-
-```TypeScript
-events?: Event[]
-```
-
-List of important dates such as birthdays and anniversaries of the contact.
-
-**Type:** [Event](arkts-contacts-contact-event-c.md)[]
-
-**Since:** 7
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-<!--Device-Contact-events?: Event[]--><!--Device-Contact-events?: Event[]-End-->
-
-**System capability:** SystemCapability.Applications.ContactsData
-
 ## groups
 
 ```TypeScript
@@ -306,6 +288,26 @@ List of relationships with the contact.
 
 **System capability:** SystemCapability.Applications.ContactsData
 
+## significantDates
+
+```TypeScript
+significantDates?: SignificantDate[]
+```
+
+List of significant dates such as birthdays and anniversaries of the contact.
+
+**Type:** [SignificantDate](arkts-contacts-contact-significantdate-c.md)[]
+
+**Since:** 26.2.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
+<!--Device-Contact-significantDates?: SignificantDate[]--><!--Device-Contact-significantDates?: SignificantDate[]-End-->
+
+**System capability:** SystemCapability.Applications.ContactsData
+
 ## sipAddresses
 
 ```TypeScript
@@ -339,5 +341,27 @@ List of websites of the contact.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-Contact-websites?: Website[]--><!--Device-Contact-websites?: Website[]-End-->
+
+**System capability:** SystemCapability.Applications.ContactsData
+
+## events
+
+```TypeScript
+events?: Event[]
+```
+
+List of important dates such as birthdays and anniversaries of the contact.
+
+**Type:** [Event](arkts-contacts-contact-event-c.md)[]
+
+**Since:** 7
+
+**Deprecated since:** 26.2.0
+
+**Substitutes:** [significantDates](#significantdates)
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Contact-events?: Event[]--><!--Device-Contact-events?: Event[]-End-->
 
 **System capability:** SystemCapability.Applications.ContactsData

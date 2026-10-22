@@ -113,6 +113,28 @@ customPicker?: CustomBuilder
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
+## isIndependent
+
+```TypeScript
+isIndependent?: boolean
+```
+
+表示投播组件AVCastPicker是否是独立进程。如果没有设置这个参数，并且应用页面上存在多个投播组件AVCastPicker，每个投播组件AVCastPicker都有独立的进程。默认值：true
+
+**类型：** boolean
+
+**起始版本：** 26.2.0
+
+**装饰器类型：** @Prop
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-AVCastPicker-isIndependent?: boolean--><!--Device-AVCastPicker-isIndependent?: boolean-End-->
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
 ## normalColor
 
 ```TypeScript

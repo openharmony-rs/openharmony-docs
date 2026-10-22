@@ -1,4 +1,4 @@
-# Aperture
+# Aperture (System API)
 
 ```TypeScript
 interface Aperture extends ApertureQuery

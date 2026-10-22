@@ -57,7 +57,7 @@ click(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **示例**
 
@@ -100,7 +100,7 @@ doubleClick(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **示例**
 
@@ -297,13 +297,13 @@ inputText(text: string): Promise<void>
 
 > **说明：** 
 > 
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[inputText<sup>9+</sup>](arkts-test-uitest-component-c.md#inputtext)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[inputText<sup>9+</sup>](arkts-test-uitest-component-c.md#inputtext-1)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [inputText](arkts-test-uitest-component-c.md#inputtext)(text: string)
+**替代接口：** [inputText](arkts-test-uitest-component-c.md#inputtext-1)(text: string)
 
 <!--Device-UiComponent-inputText(text: string): Promise<void>--><!--Device-UiComponent-inputText(text: string): Promise<void>-End-->
 
@@ -321,7 +321,7 @@ inputText(text: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **示例**
 
@@ -599,7 +599,7 @@ longClick(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **示例**
 
@@ -624,13 +624,13 @@ scrollSearch(by: By): Promise<UiComponent>
 
 > **说明：** 
 > 
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[scrollSearch<sup>9+</sup>](arkts-test-uitest-component-c.md#scrollsearch)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[scrollSearch<sup>9+</sup>](arkts-test-uitest-component-c.md#scrollsearch-1)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [scrollSearch](arkts-test-uitest-component-c.md#scrollsearch)(on: On)
+**替代接口：** [scrollSearch](arkts-test-uitest-component-c.md#scrollsearch-1)(on: On)
 
 <!--Device-UiComponent-scrollSearch(by: By): Promise<UiComponent>--><!--Device-UiComponent-scrollSearch(by: By): Promise<UiComponent>-End-->
 

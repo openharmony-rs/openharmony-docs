@@ -20,14 +20,14 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [getPhotoAccessHelper](arkts-medialibrary-photoaccesshelper-getphotoaccesshelper-f.md#getphotoaccesshelper) | 获取相册管理模块的实例，用于访问和修改相册中的媒体文件。 |
+| [getPhotoAccessHelper](arkts-medialibrary-photoaccesshelper-getphotoaccesshelper-f.md#getphotoaccesshelper-1) | 获取相册管理模块的实例，用于访问和修改相册中的媒体文件。 |
 
 <!--Del-->
 ### 函数（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| [getPhotoAccessHelper](arkts-medialibrary-photoaccesshelper-getphotoaccesshelper-f-sys.md#getphotoaccesshelper) | 支持跨用户获取相册管理模块的实例，用于访问和修改相册中的媒体文件。 |
+| [getPhotoAccessHelper](arkts-medialibrary-photoaccesshelper-getphotoaccesshelper-f-sys.md#getphotoaccesshelper-3) | 支持跨用户获取相册管理模块的实例，用于访问和修改相册中的媒体文件。 |
 <!--DelEnd-->
 
 ### 类
@@ -39,8 +39,8 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 | [ContextRecoveryInfo](arkts-medialibrary-photoaccesshelper-contextrecoveryinfo-c.md) | 介绍退出PhotoPicker的上下文信息。可以在后续的发射中使用的PhotoPicker，以从上一个出口恢复状态。 |
 | [FileSizeFilter](arkts-medialibrary-photoaccesshelper-filesizefilter-c.md) | 可选择媒体文件大小的过滤配置。 |
 | [GridPinchMode](arkts-medialibrary-photoaccesshelper-gridpinchmode-c.md) | picker内宫格的捏合模式。 |
-| [MediaAlbumChangeRequest](arkts-medialibrary-photoaccesshelper-mediaalbumchangerequest-c.md) | MediaAlbumChangeRequest implements [MediaChangeRequest](arkts-medialibrary-photoaccesshelper-mediachangerequest-i.md). |
-| [MediaAssetChangeRequest](arkts-medialibrary-photoaccesshelper-mediaassetchangerequest-c.md) | MediaAssetChangeRequest implements [MediaChangeRequest](arkts-medialibrary-photoaccesshelper-mediachangerequest-i.md). |
+| [MediaAlbumChangeRequest](arkts-medialibrary-photoaccesshelper-mediaalbumchangerequest-c.md) | MediaAlbumChangeRequest类实现了[MediaChangeRequest](arkts-medialibrary-photoaccesshelper-mediachangerequest-i.md)接口。 |
+| [MediaAssetChangeRequest](arkts-medialibrary-photoaccesshelper-mediaassetchangerequest-c.md) | MediaAssetChangeRequest类实现了[MediaChangeRequest](arkts-medialibrary-photoaccesshelper-mediachangerequest-i.md)接口。 |
 | [MediaAssetManager](arkts-medialibrary-photoaccesshelper-mediaassetmanager-c.md) | 媒体资产管理类，管理媒体资源读取。 |
 | [MediaAssetsChangeRequest](arkts-medialibrary-photoaccesshelper-mediaassetschangerequest-c.md) | 批量资产变更请求。 |
 | [MimeTypeFilter](arkts-medialibrary-photoaccesshelper-mimetypefilter-c.md) | 文件类型的过滤配置。 |
@@ -66,9 +66,9 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 | [DefaultCoverOrderInfo](arkts-medialibrary-photoaccesshelper-defaultcoverorderinfo-c-sys.md) | 相册默认封面选择规则信息。 |
 | [HighlightAlbum](arkts-medialibrary-photoaccesshelper-highlightalbum-c-sys.md) | 时刻相册。 |
 | [KnowledgeContent](arkts-medialibrary-photoaccesshelper-knowledgecontent-c-sys.md) | 支持的MIME类型。 |
-| [MediaAlbumChangeRequest](arkts-medialibrary-photoaccesshelper-mediaalbumchangerequest-c-sys.md) | MediaAlbumChangeRequest implements [MediaChangeRequest](arkts-medialibrary-photoaccesshelper-mediachangerequest-i.md). |
+| [MediaAlbumChangeRequest](arkts-medialibrary-photoaccesshelper-mediaalbumchangerequest-c-sys.md) | MediaAlbumChangeRequest类实现了[MediaChangeRequest](arkts-medialibrary-photoaccesshelper-mediachangerequest-i.md)接口。 |
 | [MediaAnalysisAlbumChangeRequest](arkts-medialibrary-photoaccesshelper-mediaanalysisalbumchangerequest-c-sys.md) | 智慧相册变更请求。 |
-| [MediaAssetChangeRequest](arkts-medialibrary-photoaccesshelper-mediaassetchangerequest-c-sys.md) | MediaAssetChangeRequest implements [MediaChangeRequest](arkts-medialibrary-photoaccesshelper-mediachangerequest-i.md). |
+| [MediaAssetChangeRequest](arkts-medialibrary-photoaccesshelper-mediaassetchangerequest-c-sys.md) | MediaAssetChangeRequest类实现了[MediaChangeRequest](arkts-medialibrary-photoaccesshelper-mediachangerequest-i.md)接口。 |
 | [MediaAssetEditData](arkts-medialibrary-photoaccesshelper-mediaasseteditdata-c-sys.md) | 资产编辑数据。 |
 | [MediaAssetManager](arkts-medialibrary-photoaccesshelper-mediaassetmanager-c-sys.md) | 媒体资产管理类，管理媒体资源读取。 |
 | [MediaAssetsChangeRequest](arkts-medialibrary-photoaccesshelper-mediaassetschangerequest-c-sys.md) | 批量资产变更请求。 |

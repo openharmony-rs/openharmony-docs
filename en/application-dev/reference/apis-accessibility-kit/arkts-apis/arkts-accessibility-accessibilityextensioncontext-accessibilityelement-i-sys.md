@@ -1,4 +1,4 @@
-# AccessibilityElement
+# AccessibilityElement (System API)
 
 ```TypeScript
 export declare interface AccessibilityElement
@@ -380,7 +380,7 @@ findElementByFocusDirection(condition: FocusDirection): Promise<AccessibilityEle
 
 Searches for an element based on the focus direction. This API uses a promise to return the result.
 
-Compared with [findElementsByCondition](#findelementsbycondition), this method is mainly used to search for web components, while findElementsByCondition is mainly used to search for UI components.
+Compared with [findElementsByCondition](#findelementsbycondition-1), this method is mainly used to search for web components, while findElementsByCondition is mainly used to search for UI components.
 
 **Since:** 20
 
@@ -702,7 +702,7 @@ findElementsByCondition(rule: FocusRule, condition: FocusCondition): Promise<Foc
 
 Queries focusable nodes that meet the conditions. This API uses a promise to return the result.
 
-Compared with [findElementByFocusDirection](#findelementbyfocusdirection), this method is mainly used to find UI components, while findElementByFocusDirection is mainly used to find Web components.
+Compared with [findElementByFocusDirection](#findelementbyfocusdirection-1), this method is mainly used to find UI components, while findElementByFocusDirection is mainly used to find Web components.
 
 **Since:** 23
 

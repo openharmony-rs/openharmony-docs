@@ -33,9 +33,9 @@ import { errorManager } from '@kit.AbilityKit';
 | [on('globalUnhandledRejectionDetected')](arkts-ability-errormanager-on-f.md#onglobalunhandledrejectiondetected) | 在进程中任意线程注册被拒绝promise监听器，注册后可以捕获到当前进程中未被捕获到的promise rejection。 |
 | [on('freeze')](arkts-ability-errormanager-on-f.md#onfreeze) | 注册应用主线程freeze监听。多次注册情况下，取最后一次注册的结果。 |
 | [on('globalErrorOccurred')](arkts-ability-errormanager-on-f.md#onglobalerroroccurred) | 在进程中的任意线程中注册 `errormanager.on` 接口，监听整个进程中任意线程的异常。观测器捕获到该异常时应用不退出，建议在回调函数执行完后，增加同步退出操作。 |
-| [setDefaultErrorHandler](arkts-ability-errormanager-setdefaulterrorhandler-f.md#setdefaulterrorhandler) | 发生JS_CRASH异常时，支持链式回调，返回上一次注册的处理器，仅限主线程调用。 |
-| [setDefaultFreezeObserver](arkts-ability-errormanager-setdefaultfreezeobserver-f.md#setdefaultfreezeobserver) | 发生APP_FREEZE时，支持链式回调，返回上一次注册的处理器，仅限主线程调用。如果传入非法参数或在子线程调用，将抛出错误码并返回undefined，因此建议使用try-catch逻辑进行处理。 |
-| [setDefaultResourceUsageObserver](arkts-ability-errormanager-setdefaultresourceusageobserver-f.md#setdefaultresourceusageobserver) | 设置资源占用观察者，应用资源超基线时，支持链式回调，返回上一次注册的资源占用观察者，仅限主线程调用。 |
+| [setDefaultErrorHandler](arkts-ability-errormanager-setdefaulterrorhandler-f.md#setdefaulterrorhandler-1) | 发生JS_CRASH异常时，支持链式回调，返回上一次注册的处理器，仅限主线程调用。 |
+| [setDefaultFreezeObserver](arkts-ability-errormanager-setdefaultfreezeobserver-f.md#setdefaultfreezeobserver-1) | 发生APP_FREEZE时，支持链式回调，返回上一次注册的处理器，仅限主线程调用。如果传入非法参数或在子线程调用，将抛出错误码并返回undefined，因此建议使用try-catch逻辑进行处理。 |
+| [setDefaultResourceUsageObserver](arkts-ability-errormanager-setdefaultresourceusageobserver-f.md#setdefaultresourceusageobserver-1) | 设置资源占用观察者，应用资源超基线时，支持链式回调，返回上一次注册的资源占用观察者，仅限主线程调用。 |
 
 ### 接口
 

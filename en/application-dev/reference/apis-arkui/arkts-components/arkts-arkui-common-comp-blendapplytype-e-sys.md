@@ -1,4 +1,4 @@
-# BlendApplyType
+# BlendApplyType (System API)
 
 ```TypeScript
 declare enum BlendApplyType

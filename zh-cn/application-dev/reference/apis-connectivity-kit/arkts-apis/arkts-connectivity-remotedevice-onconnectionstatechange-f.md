@@ -12,7 +12,7 @@ import { remoteDevice } from '@kit.ConnectivityKit';
 function onConnectionStateChange(callback: Callback<ConnectionStateParam>): void
 ```
 
-订阅连接状态变化事件。使用callback异步回调。与[remoteDevice.onAcbStateChange](arkts-connectivity-remotedevice-onacbstatechange-f.md)监听逻辑链路层级连接状态不同，本接口监听设备层级的连接状态变化。
+订阅连接状态变化事件。使用callback异步回调。与[remoteDevice.onAcbStateChange](arkts-connectivity-remotedevice-onacbstatechange-f.md#onacbstatechange-1)监听逻辑链路层级连接状态不同，本接口监听设备层级的连接状态变化。
 
 应用需具备ohos.permission.ACCESS_NEARLINK权限，方可接收此事件上报。调用此接口前，您可以调用[isNearLinkSupported](arkts-connectivity-manager-isnearlinksupported-f.md)查询设备是否支持星闪。
 

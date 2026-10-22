@@ -1,4 +1,4 @@
-# FileSync
+# FileSync (System API)
 
 ```TypeScript
 class FileSync

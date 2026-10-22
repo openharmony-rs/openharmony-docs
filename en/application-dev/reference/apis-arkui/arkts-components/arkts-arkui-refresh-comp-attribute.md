@@ -64,7 +64,7 @@ If this API is not set, the maximum pull-down distance is **undefined**.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| distance | number &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) &#124; undefined | Yes | Maximum pull-down distance. <br>Default value: **undefined**. <br>Unit: vp <br>Value range: [0, +∞). If the value is less than 0, **0** is used. If this value is less than the [refreshOffset](#refreshoffset), the refresh action will not be triggered when the pull-down gesture is released. <br>If this parameter is set to **undefined** or **null**, it is considered that this attribute is not set, meaning there is no limit on the maximum pull-down distance. |
+| distance | number &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) &#124; undefined | Yes | Maximum pull-down distance. <br>Default value: **undefined**. <br>Unit: vp <br>Value range: [0, +∞). If the value is less than 0, **0** is used. If this value is less than the [refreshOffset](#refreshoffset-1), the refresh action will not be triggered when the pull-down gesture is released. <br>If this parameter is set to **undefined** or **null**, it is considered that this attribute is not set, meaning there is no limit on the maximum pull-down distance. |
 
 ## onOffsetChange
 
@@ -172,7 +172,7 @@ Sets the pull-down ratio.
 pullToRefresh(value: boolean)
 ```
 
-Sets whether to initiate a refresh when the pull-down distance exceeds the value of [refreshOffset](#refreshoffset).
+Sets whether to initiate a refresh when the pull-down distance exceeds the value of [refreshOffset](#refreshoffset-1).
 
 **Since:** 12
 
@@ -188,7 +188,7 @@ Sets whether to initiate a refresh when the pull-down distance exceeds the value
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | boolean | Yes | Whether to initiate a refresh when the pull-down distance exceeds the value of [refreshOffset](#refreshoffset). The value **true** means to initiate a refresh, and **false** means the opposite. <br>Default value: **true** |
+| value | boolean | Yes | Whether to initiate a refresh when the pull-down distance exceeds the value of [refreshOffset](#refreshoffset-1). The value **true** means to initiate a refresh, and **false** means the opposite. <br>Default value: **true** |
 
 ## pullUpToCancelRefresh
 
@@ -196,7 +196,7 @@ Sets whether to initiate a refresh when the pull-down distance exceeds the value
 pullUpToCancelRefresh(enabled: boolean | undefined)
 ```
 
-Sets whether to enable the pull-up-to-cancel gesture for refreshing operations.
+Sets whether to cancel refresh when swiping up.
 
 **Since:** 23
 
@@ -212,7 +212,7 @@ Sets whether to enable the pull-up-to-cancel gesture for refreshing operations.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enabled | boolean &#124; undefined | Yes | Whether to enable the pull-up-to-cancel gesture for refreshing operations. <br>**true**: Enable the pull-up-to-cancel gesture. **false**: Disable the pull-up-to-cancel gesture.<br> **undefined**: Enable the pull-up-to-cancel gesture. |
+| enabled | boolean &#124; undefined | Yes | Whether to cancel refresh when swiping up.<br>The value **true** indicates cancel refresh, and **false** indicates not cancel refresh.<br>Default value: **true**. If the value is **undefined**, the default value is used. |
 
 ## refreshOffset
 

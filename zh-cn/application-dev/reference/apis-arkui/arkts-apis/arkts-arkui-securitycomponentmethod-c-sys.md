@@ -1,4 +1,4 @@
-# SecurityComponentMethod
+# SecurityComponentMethod（系统接口）
 
 ```TypeScript
 declare class SecurityComponentMethod<T>

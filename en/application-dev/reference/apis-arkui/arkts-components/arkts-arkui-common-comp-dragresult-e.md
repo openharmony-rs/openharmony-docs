@@ -18,7 +18,7 @@ Enumerates the results of drag operations and the drop-enabled states of compone
 DRAG_CANCELED = 2
 ```
 
-The drag is canceled. This value applies to [onDrop](arkts-arkui-common-comp-commonmethod-c.md#ondrop).
+The drag is canceled. This value applies to [onDrop](arkts-arkui-common-comp-commonmethod-c.md#ondrop-1).
 
 **Since:** 10
 
@@ -36,7 +36,7 @@ The drag is canceled. This value applies to [onDrop](arkts-arkui-common-comp-com
 DRAG_FAILED = 1
 ```
 
-The drag fails. This value applies to [onDrop](arkts-arkui-common-comp-commonmethod-c.md#ondrop).
+The drag fails. This value applies to [onDrop](arkts-arkui-common-comp-commonmethod-c.md#ondrop-1).
 
 **Since:** 10
 
@@ -54,7 +54,7 @@ The drag fails. This value applies to [onDrop](arkts-arkui-common-comp-commonmet
 DRAG_SUCCESSFUL = 0
 ```
 
-The drag is successful. This value applies to [onDrop](arkts-arkui-common-comp-commonmethod-c.md#ondrop).
+The drag is successful. This value applies to [onDrop](arkts-arkui-common-comp-commonmethod-c.md#ondrop-1).
 
 **Since:** 10
 
@@ -108,7 +108,7 @@ The component allows dropping. This value applies to [onDragEnter](arkts-arkui-c
 UNKNOWN = -1
 ```
 
-The drag result has not been set. This value applies to [onDragStart](arkts-arkui-common-comp-commonmethod-c.md#ondragstart), [onDragEnter](arkts-arkui-common-comp-commonmethod-c.md#ondragenter), [onDragMove](arkts-arkui-common-comp-commonmethod-c.md#ondragmove), [onDragLeave](arkts-arkui-common-comp-commonmethod-c.md#ondragleave), and [onDrop](arkts-arkui-common-comp-commonmethod-c.md#ondrop).
+The drag result has not been set. This value applies to [onDragStart](arkts-arkui-common-comp-commonmethod-c.md#ondragstart), [onDragEnter](arkts-arkui-common-comp-commonmethod-c.md#ondragenter), [onDragMove](arkts-arkui-common-comp-commonmethod-c.md#ondragmove), [onDragLeave](arkts-arkui-common-comp-commonmethod-c.md#ondragleave), and [onDrop](arkts-arkui-common-comp-commonmethod-c.md#ondrop-1).
 
 **Since:** 24
 

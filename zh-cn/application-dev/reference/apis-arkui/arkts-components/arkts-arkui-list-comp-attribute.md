@@ -104,7 +104,7 @@ cachedCount(count: number, show: boolean)
 
 设置列表的预加载行数，并配置是否显示预加载节点。懒加载场景才会预加载List显示区域外上下各cachedCount行，非懒加载场景会全量加载。
 
-List设置cachedCount后，显示区域外上下各会预加载并布局cachedCount行。计算预加载行数时，会计算ListItemGroup内部的ListItem行数。如果ListItemGroup内没有ListItem，则整个ListItemGroup算一行。配合裁剪[clip](arkts-arkui-common-comp-commonmethod-c.md#clip)或内容裁剪[clipContent](arkts-arkui-common-comp-scrollablecommonmethod-c.md#clipcontent)属性可以显示出预加载节点。
+List设置cachedCount后，显示区域外上下各会预加载并布局cachedCount行。计算预加载行数时，会计算ListItemGroup内部的ListItem行数。如果ListItemGroup内没有ListItem，则整个ListItemGroup算一行。配合裁剪[clip](arkts-arkui-common-comp-commonmethod-c.md#clip-1)或内容裁剪[clipContent](arkts-arkui-common-comp-scrollablecommonmethod-c.md#clipcontent)属性可以显示出预加载节点。
 
 > **说明：** 
 > 
@@ -142,7 +142,7 @@ cachedCount(count: number | CacheCountInfo, show: boolean)
 
 若cachedCount属性的第一个参数为CacheCountInfo类型，当已缓存行数小于CacheCountInfo.minCount时，会在帧间空闲时隙预加载和布局。当已缓存行数大于CacheCountInfo.maxCount时，会将超出范围的节点销毁或回收复用。UI空闲时（无动画或用户操作），会在显示区域外上下各预加载CacheCountInfo.maxCount行。
 
-计算预加载行数时，会计算ListItemGroup内部的ListItem行数。如果ListItemGroup内没有ListItem，则整个ListItemGroup算一行。配合[clip](arkts-arkui-common-comp-commonmethod-c.md#clip)或[clipContent](arkts-arkui-common-comp-scrollablecommonmethod-c.md#clipcontent)属性可以显示出预加载节点。
+计算预加载行数时，会计算ListItemGroup内部的ListItem行数。如果ListItemGroup内没有ListItem，则整个ListItemGroup算一行。配合[clip](arkts-arkui-common-comp-commonmethod-c.md#clip-1)或[clipContent](arkts-arkui-common-comp-scrollablecommonmethod-c.md#clipcontent)属性可以显示出预加载节点。
 
 默认行为：count参数默认为number类型，数值根据屏幕内显示的节点个数设置，最大值为16。预加载的ListItem默认不参与绘制。
 
@@ -273,7 +273,7 @@ contentStartOffset + contentEndOffset超过List内容区长度后contentStartOff
 contentEndOffset(offset: number | Resource)
 ```
 
-设置内容区末尾偏移量。列表滚动到末尾位置时，列表内容与列表显示区域边界保留指定距离。与[contentEndOffset<sup>11+</sup>](#contentendoffset)相比，参数名改为offset，并开始支持Resource类型。
+设置内容区末尾偏移量。列表滚动到末尾位置时，列表内容与列表显示区域边界保留指定距离。与[contentEndOffset<sup>11+</sup>](#contentendoffset-1)相比，参数名改为offset，并开始支持Resource类型。
 
 contentStartOffset + contentEndOffset超过List内容区长度后contentStartOffset和contentEndOffset会置0。
 
@@ -325,7 +325,7 @@ contentStartOffset + contentEndOffset超过List内容区长度后contentStartOff
 contentStartOffset(offset: number | Resource)
 ```
 
-设置内容区域起始偏移量。列表滚动到起始位置时，列表内容与列表显示区域边界保留指定距离。与[contentStartOffset<sup>11+</sup>](#contentstartoffset)相比，参数名改为offset，并开始支持Resource类型。
+设置内容区域起始偏移量。列表滚动到起始位置时，列表内容与列表显示区域边界保留指定距离。与[contentStartOffset<sup>11+</sup>](#contentstartoffset-1)相比，参数名改为offset，并开始支持Resource类型。
 
 contentStartOffset + contentEndOffset超过List内容区长度后contentStartOffset和contentEndOffset会置0。
 

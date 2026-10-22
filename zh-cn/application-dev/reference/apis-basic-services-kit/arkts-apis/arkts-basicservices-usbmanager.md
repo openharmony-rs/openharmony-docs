@@ -36,60 +36,60 @@ import { usbManager } from '@kit.BasicServicesKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [bulkTransfer](arkts-basicservices-usbmanager-bulktransfer-f.md#bulktransfer) | 批量传输。调用成功后完成批量数据传输，返回实际传输或接收到的数据块大小。使用Promise异步回调。与usbSubmitTransfer相比，bulkTransfer适合简单的批量传输场景，通过独立参数直接传递数据和端点，使用Promise异步返回结果；usbSubmitTransfer适合需要更灵活控制的场景，通过UsbDataTransferParams对象封装参数，支持异步callback回调，并可通过usbCancelTransfer取消传输请求。 |
-| [cancelAccessoryRight](arkts-basicservices-usbmanager-cancelaccessoryright-f.md#cancelaccessoryright) | 取消当前应用访问USB配件的权限。与requestAccessoryRight()方法配合使用，用于取消此前通过requestAccessoryRight()申请的配件访问权限。 |
-| [claimInterface](arkts-basicservices-usbmanager-claiminterface-f.md#claiminterface) | 声明对USB设备某个接口的控制权。UsbManager获得独占权，可以通过UsbManager提供的接口进行数据传输等操作。如需声明独占接口，并感知其它应用声明冲突，请使用[usbManager.claimInterfaceExclusive](arkts-basicservices-usbmanager-claiminterfaceexclusive-f.md)。使用完后需调用[releaseInterface](arkts-basicservices-usbmanager-releaseinterface-f.md)释放该接口的控制权。 |
-| [claimInterfaceExclusive](arkts-basicservices-usbmanager-claiminterfaceexclusive-f.md#claiminterfaceexclusive) | 以独占方式声明USB设备接口。本接口在调用时检查其他进程是否已占用指定的USB接口，避免声明时发生冲突。设置**force**为**true**时，操作系统会先从内核驱动程序中释放该接口，再将控制权授予调用方应用。独占声明成功后，其他进程仍可通过[usbManager.claimInterface](arkts-basicservices-usbmanager-claiminterface-f.md)声明同一接口（即本接口的独占声明不会阻止其他进程的声明行为，与claimInterface声明成功后其他程序无法访问该接口的独占语义不同）；可使用**onConflict**回调接收此类冲突通知。使用完后需调用[releaseInterface](arkts-basicservices-usbmanager-releaseinterface-f.md)释放该接口的控制权。 |
-| [closeAccessory](arkts-basicservices-usbmanager-closeaccessory-f.md#closeaccessory) | 关闭配件文件描述符。 |
-| [closePipe](arkts-basicservices-usbmanager-closepipe-f.md#closepipe) | 关闭设备连接通道。适用于使用USBDevicePipe完成数据传输和设备控制操作后释放设备连接的场景。 |
-| [connectDevice](arkts-basicservices-usbmanager-connectdevice-f.md#connectdevice) | 根据getDevices()返回的设备信息打开USB设备，调用成功后建立设备连接通道，可以进行后续的数据传输和设备控制操作。使用完后需要调用[usbManager.closePipe](arkts-basicservices-usbmanager-closepipe-f.md)关闭设备连接通道。如果USB服务异常，会返回`undefined`，注意需要对接口返回值做判空处理。 |
-| [getAccessoryList](arkts-basicservices-usbmanager-getaccessorylist-f.md#getaccessorylist) | 获取当前已接入主机的USB配件列表。可作为调用requestAccessoryRight申请配件访问权限、openAccessory打开配件等后续操作的前置步骤。 |
-| [getDevices](arkts-basicservices-usbmanager-getdevices-f.md#getdevices) | 获取接入主机的USB设备列表。调用成功后返回已连接设备的详细信息列表，包括设备名称、厂商产品信息等。 |
-| [getFileDescriptor](arkts-basicservices-usbmanager-getfiledescriptor-f.md#getfiledescriptor) | 获取文件描述符。该接口适用于需要通过文件描述符访问USB设备的场景，获取后可结合文件读写能力与设备进行数据交互。如果USB服务异常，会返回错误码，注意需要对接口返回值做错误码检查处理。 |
-| [getRawDescriptor](arkts-basicservices-usbmanager-getrawdescriptor-f.md#getrawdescriptor) | 获取原始的USB描述符。如果USB服务异常，可能返回`undefined`，注意需要对接口返回值做判空处理。 |
-| [hasAccessoryRight](arkts-basicservices-usbmanager-hasaccessoryright-f.md#hasaccessoryright) | 检查应用是否有权访问USB配件。适用于在调用requestAccessoryRight申请权限或openAccessory打开配件前，先确认应用是否已拥有该配件访问权限的场景。 |
-| [hasRight](arkts-basicservices-usbmanager-hasright-f.md#hasright) | 判断是否有权访问该设备。适用于在调用requestRight申请权限或connectDevice建立连接前，先确认应用是否已拥有该设备的访问权限，避免重复申请的场景。 |
-| [openAccessory](arkts-basicservices-usbmanager-openaccessory-f.md#openaccessory) | 获取配件句柄并打开配件文件描述符。之后可以通过CoreFileKit提供的read/write接口和配件进行通信。使用完后需要调用[closeAccessory](arkts-basicservices-usbmanager-closeaccessory-f.md)接口关闭文件描述符。 |
-| [releaseInterface](arkts-basicservices-usbmanager-releaseinterface-f.md#releaseinterface) | 释放claim过的通信接口。 |
-| [removeRight](arkts-basicservices-usbmanager-removeright-f.md#removeright) | 移除应用访问设备的权限。系统应用默认拥有访问设备权限，调用此接口不会产生影响。返回true表示权限移除成功；返回false则表示权限移除失败。 |
-| [requestAccessoryRight](arkts-basicservices-usbmanager-requestaccessoryright-f.md#requestaccessoryright) | 为当前应用申请访问USB配件的权限。使用Promise异步回调。 |
-| [requestRight](arkts-basicservices-usbmanager-requestright-f.md#requestright) | 请求应用访问设备的临时权限。使用Promise异步回调返回结果。系统应用默认拥有访问设备权限，无需调用此接口。 |
-| [resetUsbDevice](arkts-basicservices-usbmanager-resetusbdevice-f.md#resetusbdevice) | 重置USB设备。适用于USB设备出现通信异常需要恢复的场景，如设备固件升级后需要重新初始化、设备状态异常需要恢复、调试过程中需要重置设备状态等。调用成功后系统会将设备重置为初始状态，并清除此前设置的配置和接口设置，设备需要重新初始化。 |
-| [setConfiguration](arkts-basicservices-usbmanager-setconfiguration-f.md#setconfiguration) | 设置设备配置。适用于多功能USB设备需要切换工作模式的场景，如打印机+扫描仪组合设备切换为打印模式或扫描模式、设备从低功耗配置切换到高功耗配置以启用全部功能等。调用成功后设备的配置将被切换为指定的配置，后续的数据传输和设备操作将基于新配置进行。 |
-| [setInterface](arkts-basicservices-usbmanager-setinterface-f.md#setinterface) | 设置设备接口。调用成功后系统会将接口切换到指定的替代设置，端点配置将随之改变以匹配传输类型要求。 |
-| [usbCancelTransfer](arkts-basicservices-usbmanager-usbcanceltransfer-f.md#usbcanceltransfer) | 取消异步传输请求。适用于需要主动终止未完成USB数据传输的场景，如用户手动取消长时间数据传输、传输超时后的错误恢复、应用切换时中止当前传输等。 |
-| [usbControlTransfer](arkts-basicservices-usbmanager-usbcontroltransfer-f.md#usbcontroltransfer) | 控制传输。调用成功后完成控制命令的传输，返回传输或接收到的数据块大小。适用于需要与USB设备进行控制命令交互的场景，如获取设备描述符、设置设备地址、发送厂商自定义命令、配置HID（Human Interface Device，人机接口设备）设备特性等。使用Promise异步回调。 |
-| [usbSubmitTransfer](arkts-basicservices-usbmanager-usbsubmittransfer-f.md#usbsubmittransfer) | 提交异步传输请求，调用后立即返回，实际读写操作的结果以回调的方式返回。可通过调用[usbCancelTransfer](arkts-basicservices-usbmanager-usbcanceltransfer-f.md)接口取消异步传输请求。 |
-| [controlTransfer](arkts-basicservices-usbmanager-controltransfer-f.md#controltransfer) | 控制传输。使用Promise异步回调。 |
+| [bulkTransfer](arkts-basicservices-usbmanager-bulktransfer-f.md#bulktransfer-1) | 批量传输。调用成功后完成批量数据传输，返回实际传输或接收到的数据块大小。使用Promise异步回调。与usbSubmitTransfer相比，bulkTransfer适合简单的批量传输场景，通过独立参数直接传递数据和端点，使用Promise异步返回结果；usbSubmitTransfer适合需要更灵活控制的场景，通过UsbDataTransferParams对象封装参数，支持异步callback回调，并可通过usbCancelTransfer取消传输请求。 |
+| [cancelAccessoryRight](arkts-basicservices-usbmanager-cancelaccessoryright-f.md#cancelaccessoryright-1) | 取消当前应用访问USB配件的权限。与requestAccessoryRight()方法配合使用，用于取消此前通过requestAccessoryRight()申请的配件访问权限。 |
+| [claimInterface](arkts-basicservices-usbmanager-claiminterface-f.md#claiminterface-1) | 声明对USB设备某个接口的控制权。UsbManager获得独占权，可以通过UsbManager提供的接口进行数据传输等操作。如需声明独占接口，并感知其它应用声明冲突，请使用[usbManager.claimInterfaceExclusive](arkts-basicservices-usbmanager-claiminterfaceexclusive-f.md#claiminterfaceexclusive-1)。使用完后需调用[releaseInterface](arkts-basicservices-usbmanager-releaseinterface-f.md)释放该接口的控制权。 |
+| [claimInterfaceExclusive](arkts-basicservices-usbmanager-claiminterfaceexclusive-f.md#claiminterfaceexclusive-1) | 以独占方式声明USB设备接口。本接口在调用时检查其他进程是否已占用指定的USB接口，避免声明时发生冲突。设置**force**为**true**时，操作系统会先从内核驱动程序中释放该接口，再将控制权授予调用方应用。独占声明成功后，其他进程仍可通过[usbManager.claimInterface](arkts-basicservices-usbmanager-claiminterface-f.md#claiminterface-1)声明同一接口（即本接口的独占声明不会阻止其他进程的声明行为，与claimInterface声明成功后其他程序无法访问该接口的独占语义不同）；可使用**onConflict**回调接收此类冲突通知。使用完后需调用[releaseInterface](arkts-basicservices-usbmanager-releaseinterface-f.md)释放该接口的控制权。 |
+| [closeAccessory](arkts-basicservices-usbmanager-closeaccessory-f.md#closeaccessory-1) | 关闭配件文件描述符。 |
+| [closePipe](arkts-basicservices-usbmanager-closepipe-f.md#closepipe-1) | 关闭设备连接通道。适用于使用USBDevicePipe完成数据传输和设备控制操作后释放设备连接的场景。 |
+| [connectDevice](arkts-basicservices-usbmanager-connectdevice-f.md#connectdevice-1) | 根据getDevices()返回的设备信息打开USB设备，调用成功后建立设备连接通道，可以进行后续的数据传输和设备控制操作。使用完后需要调用[usbManager.closePipe](arkts-basicservices-usbmanager-closepipe-f.md)关闭设备连接通道。如果USB服务异常，会返回`undefined`，注意需要对接口返回值做判空处理。 |
+| [getAccessoryList](arkts-basicservices-usbmanager-getaccessorylist-f.md#getaccessorylist-1) | 获取当前已接入主机的USB配件列表。可作为调用requestAccessoryRight申请配件访问权限、openAccessory打开配件等后续操作的前置步骤。 |
+| [getDevices](arkts-basicservices-usbmanager-getdevices-f.md#getdevices-1) | 获取接入主机的USB设备列表。调用成功后返回已连接设备的详细信息列表，包括设备名称、厂商产品信息等。 |
+| [getFileDescriptor](arkts-basicservices-usbmanager-getfiledescriptor-f.md#getfiledescriptor-1) | 获取文件描述符。该接口适用于需要通过文件描述符访问USB设备的场景，获取后可结合文件读写能力与设备进行数据交互。如果USB服务异常，会返回错误码，注意需要对接口返回值做错误码检查处理。 |
+| [getRawDescriptor](arkts-basicservices-usbmanager-getrawdescriptor-f.md#getrawdescriptor-1) | 获取原始的USB描述符。如果USB服务异常，可能返回`undefined`，注意需要对接口返回值做判空处理。 |
+| [hasAccessoryRight](arkts-basicservices-usbmanager-hasaccessoryright-f.md#hasaccessoryright-1) | 检查应用是否有权访问USB配件。适用于在调用requestAccessoryRight申请权限或openAccessory打开配件前，先确认应用是否已拥有该配件访问权限的场景。 |
+| [hasRight](arkts-basicservices-usbmanager-hasright-f.md#hasright-1) | 判断是否有权访问该设备。适用于在调用requestRight申请权限或connectDevice建立连接前，先确认应用是否已拥有该设备的访问权限，避免重复申请的场景。 |
+| [openAccessory](arkts-basicservices-usbmanager-openaccessory-f.md#openaccessory-1) | 获取配件句柄并打开配件文件描述符。之后可以通过CoreFileKit提供的read/write接口和配件进行通信。使用完后需要调用[closeAccessory](arkts-basicservices-usbmanager-closeaccessory-f.md)接口关闭文件描述符。 |
+| [releaseInterface](arkts-basicservices-usbmanager-releaseinterface-f.md#releaseinterface-1) | 释放claim过的通信接口。 |
+| [removeRight](arkts-basicservices-usbmanager-removeright-f.md#removeright-1) | 移除应用访问设备的权限。系统应用默认拥有访问设备权限，调用此接口不会产生影响。返回true表示权限移除成功；返回false则表示权限移除失败。 |
+| [requestAccessoryRight](arkts-basicservices-usbmanager-requestaccessoryright-f.md#requestaccessoryright-1) | 为当前应用申请访问USB配件的权限。使用Promise异步回调。 |
+| [requestRight](arkts-basicservices-usbmanager-requestright-f.md#requestright-1) | 请求应用访问设备的临时权限。使用Promise异步回调返回结果。系统应用默认拥有访问设备权限，无需调用此接口。 |
+| [resetUsbDevice](arkts-basicservices-usbmanager-resetusbdevice-f.md#resetusbdevice-1) | 重置USB设备。适用于USB设备出现通信异常需要恢复的场景，如设备固件升级后需要重新初始化、设备状态异常需要恢复、调试过程中需要重置设备状态等。调用成功后系统会将设备重置为初始状态，并清除此前设置的配置和接口设置，设备需要重新初始化。 |
+| [setConfiguration](arkts-basicservices-usbmanager-setconfiguration-f.md#setconfiguration-1) | 设置设备配置。适用于多功能USB设备需要切换工作模式的场景，如打印机+扫描仪组合设备切换为打印模式或扫描模式、设备从低功耗配置切换到高功耗配置以启用全部功能等。调用成功后设备的配置将被切换为指定的配置，后续的数据传输和设备操作将基于新配置进行。 |
+| [setInterface](arkts-basicservices-usbmanager-setinterface-f.md#setinterface-1) | 设置设备接口。调用成功后系统会将接口切换到指定的替代设置，端点配置将随之改变以匹配传输类型要求。 |
+| [usbCancelTransfer](arkts-basicservices-usbmanager-usbcanceltransfer-f.md#usbcanceltransfer-1) | 取消异步传输请求。适用于需要主动终止未完成USB数据传输的场景，如用户手动取消长时间数据传输、传输超时后的错误恢复、应用切换时中止当前传输等。 |
+| [usbControlTransfer](arkts-basicservices-usbmanager-usbcontroltransfer-f.md#usbcontroltransfer-1) | 控制传输。调用成功后完成控制命令的传输，返回传输或接收到的数据块大小。适用于需要与USB设备进行控制命令交互的场景，如获取设备描述符、设置设备地址、发送厂商自定义命令、配置HID（Human Interface Device，人机接口设备）设备特性等。使用Promise异步回调。 |
+| [usbSubmitTransfer](arkts-basicservices-usbmanager-usbsubmittransfer-f.md#usbsubmittransfer-1) | 提交异步传输请求，调用后立即返回，实际读写操作的结果以回调的方式返回。可通过调用[usbCancelTransfer](arkts-basicservices-usbmanager-usbcanceltransfer-f.md)接口取消异步传输请求。 |
+| [controlTransfer](arkts-basicservices-usbmanager-controltransfer-f.md#controltransfer-1) | 控制传输。使用Promise异步回调。 |
 
 <!--Del-->
 ### 函数（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| [addAccessoryRight](arkts-basicservices-usbmanager-addaccessoryright-f-sys.md#addaccessoryright) | 为应用添加访问USB配件权限。适用于系统应用需要为第三方应用授权访问USB配件的场景。usbManager.requestAccessoryRight会触发弹窗请求用户授权；addAccessoryRight不会触发弹窗，而是直接添加应用访问USB配件的权限。授权立即生效并持久化存储，设备重启后仍然有效。授权范围为指定的USB配件实例，多个应用可以同时获得同一配件的访问权限。与requestAccessoryRight相比，addAccessoryRight不需要用户交互，适用于系统应用自动授权场景。 |
-| [addDeviceAccessRight](arkts-basicservices-usbmanager-adddeviceaccessright-f-sys.md#adddeviceaccessright) | 添加应用访问设备的权限。系统应用默认拥有访问设备权限，调用此接口不会产生影响。适用于系统设置应用、设备管理应用等需要为第三方应用授权访问USB设备的场景。授权立即生效并持久化存储，设备重启后仍然有效。授权范围为指定的USB设备实例，多个应用可以同时获得同一设备的访问权限。 |
-| [getDeviceFunctions](arkts-basicservices-usbmanager-getdevicefunctions-f-sys.md#getdevicefunctions) | 在设备模式下，获取当前的USB功能列表的数字组合掩码。适用于需要检查当前USB功能状态、确认功能配置、或在功能切换前后进行状态对比的场景。开发者模式关闭时，如果没有设备接入，接口返回`undefined`，注意需要对接口返回值做判空处理。 |
-| [getFunctionsFromString](arkts-basicservices-usbmanager-getfunctionsfromstring-f-sys.md#getfunctionsfromstring) | 在设备模式下，将字符串形式的USB功能列表转换为数字掩码。适用于需要将配置文件或用户输入的字符串形式USB功能列表转换为系统内部使用的数字掩码的场景，以便后续调用setDeviceFunctions等接口设置USB功能。 |
-| [getPortList](arkts-basicservices-usbmanager-getportlist-f-sys.md#getportlist) | 获取所有物理USB端口描述信息。适用于需要枚举USB端口、进行端口管理、设备连接诊断、或查询端口配置信息的场景。开发者模式关闭时，如果没有设备接入，接口返回`undefined`，注意需要对接口返回值做判空处理。 |
-| [getPortSupportModes](arkts-basicservices-usbmanager-getportsupportmodes-f-sys.md#getportsupportmodes) | 获取指定的端口支持的模式列表的组合掩码。适用于系统应用需要查询USB-C端口能力判断是否支持特定模式（如UFP、DFP或DRP模式）的场景。开发者模式关闭时，如果没有设备接入，接口返回undefined，注意需要对接口返回值做判空处理。详细枚举值参见[PortModeType](arkts-basicservices-usbmanager-portmodetype-e-sys.md)。 |
-| [getStringFromFunctions](arkts-basicservices-usbmanager-getstringfromfunctions-f-sys.md#getstringfromfunctions) | 在设备模式下，将数字掩码形式的USB功能列表转换为字符串。适用于需要将当前USB功能状态以字符串形式显示或保存的场景，如在日志中记录当前功能配置、在UI界面展示当前功能等。 |
-| [setDeviceFunctions](arkts-basicservices-usbmanager-setdevicefunctions-f-sys.md#setdevicefunctions) | 在设备模式下，设置当前的USB功能列表。使用Promise异步回调。调用成功后，设备的USB功能将切换为指定的功能列表。部分USB功能可能不被当前设备支持，设置前建议先查询设备支持的功能列表。开发者模式关闭时，如果没有设备接入，操作可能会失败，调用失败时抛出异常。功能切换会触发USB设备的重新枚举，已连接的主机可能需要重新识别设备。多个功能可通过位运算组合设置，但某些功能可能互斥或存在优先级，具体约束请参考设备规格。功能设置失败可能由于设备不支持、权限不足或系统限制，详见错误码说明。 |
-| [setPortRoleTypes](arkts-basicservices-usbmanager-setportroletypes-f-sys.md#setportroletypes) | 设置指定端口当前的角色类型，包含电源角色、数据传输角色。使用Promise异步回调。调用成功后端口的电源角色和数据传输角色将切换为指定的角色。适用于系统应用需要动态切换USB端口角色的场景。开发者模式关闭时，如果没有设备接入，操作可能会失败，调用失败时抛出异常。角色约束详情参见[USBPortStatus](arkts-basicservices-usbmanager-usbportstatus-i-sys.md)。 |
-| [getCurrentFunctions](arkts-basicservices-usbmanager-getcurrentfunctions-f-sys.md#getcurrentfunctions) | 在设备模式下，获取当前的USB功能列表的数字组合掩码。适用于需要检查当前USB功能状态、确认功能配置、或在功能切换前后进行状态对比的场景。开发者模式关闭时，如果没有设备接入，接口返回`undefined`，注意需要对接口返回值做判空处理。 |
-| [getPorts](arkts-basicservices-usbmanager-getports-f-sys.md#getports) | 获取所有物理USB端口描述信息。适用于需要枚举USB端口、进行端口管理、设备连接诊断、或查询端口配置信息的场景。开发者模式关闭时，如果没有设备接入，接口返回`undefined`，注意需要对接口返回值做判空处理。 |
-| [getSupportedModes](arkts-basicservices-usbmanager-getsupportedmodes-f-sys.md#getsupportedmodes) | 获取指定的端口支持的模式列表的组合掩码。适用于系统应用需要查询USB-C端口能力判断是否支持特定模式（如UFP、DFP或DRP模式）的场景。返回值为PortModeType的组合掩码，可通过位运算判断端口是否支持特定模式。PortModeType包括：NONE（0，无模式）、UFP（1，上行端口模式，dataRole为DEVICE）、DFP（2，下行端口模式，dataRole为HOST）、DRP（3，双角色模式，可在UFP和DFP间切换）、NUM_MODES（4，当前不支持）。开发者可根据返回值判断端口是否支持所需的电源角色和数据传输角色组合。 |
-| [setCurrentFunctions](arkts-basicservices-usbmanager-setcurrentfunctions-f-sys.md#setcurrentfunctions) | 在设备模式下，设置当前的USB功能列表。使用Promise异步回调。调用成功后，设备的USB功能将切换为指定的功能列表。适用于系统应用需要动态切换设备USB功能、配置设备工作模式的场景。 |
-| [setPortRoles](arkts-basicservices-usbmanager-setportroles-f-sys.md#setportroles) | 设置指定端口当前的角色模式，包含电源角色、数据传输角色。使用Promise异步回调。调用成功后端口角色将切换为指定的角色。适用于系统应用需要动态切换USB端口角色的场景。开发者模式关闭时，如果没有设备接入，操作可能会失败，调用失败时抛出异常。 |
-| [usbFunctionsFromString](arkts-basicservices-usbmanager-usbfunctionsfromstring-f-sys.md#usbfunctionsfromstring) | 在设备模式下，将字符串形式的USB功能列表转换为数字掩码。适用于需要将配置文件或用户输入的字符串形式USB功能列表转换为系统内部使用的数字掩码的场景，以便后续调用setDeviceFunctions等接口设置USB功能。 |
-| [usbFunctionsToString](arkts-basicservices-usbmanager-usbfunctionstostring-f-sys.md#usbfunctionstostring) | 在设备模式下，将数字掩码形式的USB功能列表转换为字符串。适用于需要将当前USB功能状态以字符串形式显示或保存的场景，如在日志中记录当前功能配置、在UI界面展示当前功能等。 |
+| [addAccessoryRight](arkts-basicservices-usbmanager-addaccessoryright-f-sys.md#addaccessoryright-1) | 为应用添加访问USB配件权限。适用于系统应用需要为第三方应用授权访问USB配件的场景。usbManager.requestAccessoryRight会触发弹窗请求用户授权；addAccessoryRight不会触发弹窗，而是直接添加应用访问USB配件的权限。授权立即生效并持久化存储，设备重启后仍然有效。授权范围为指定的USB配件实例，多个应用可以同时获得同一配件的访问权限。与requestAccessoryRight相比，addAccessoryRight不需要用户交互，适用于系统应用自动授权场景。 |
+| [addDeviceAccessRight](arkts-basicservices-usbmanager-adddeviceaccessright-f-sys.md#adddeviceaccessright-1) | 添加应用访问设备的权限。系统应用默认拥有访问设备权限，调用此接口不会产生影响。适用于系统设置应用、设备管理应用等需要为第三方应用授权访问USB设备的场景。授权立即生效并持久化存储，设备重启后仍然有效。授权范围为指定的USB设备实例，多个应用可以同时获得同一设备的访问权限。 |
+| [getDeviceFunctions](arkts-basicservices-usbmanager-getdevicefunctions-f-sys.md#getdevicefunctions-1) | 在设备模式下，获取当前的USB功能列表的数字组合掩码。适用于需要检查当前USB功能状态、确认功能配置、或在功能切换前后进行状态对比的场景。开发者模式关闭时，如果没有设备接入，接口返回`undefined`，注意需要对接口返回值做判空处理。 |
+| [getFunctionsFromString](arkts-basicservices-usbmanager-getfunctionsfromstring-f-sys.md#getfunctionsfromstring-1) | 在设备模式下，将字符串形式的USB功能列表转换为数字掩码。适用于需要将配置文件或用户输入的字符串形式USB功能列表转换为系统内部使用的数字掩码的场景，以便后续调用setDeviceFunctions等接口设置USB功能。 |
+| [getPortList](arkts-basicservices-usbmanager-getportlist-f-sys.md#getportlist-1) | 获取所有物理USB端口描述信息。适用于需要枚举USB端口、进行端口管理、设备连接诊断、或查询端口配置信息的场景。开发者模式关闭时，如果没有设备接入，接口返回`undefined`，注意需要对接口返回值做判空处理。 |
+| [getPortSupportModes](arkts-basicservices-usbmanager-getportsupportmodes-f-sys.md#getportsupportmodes-1) | 获取指定的端口支持的模式列表的组合掩码。适用于系统应用需要查询USB-C端口能力判断是否支持特定模式（如UFP、DFP或DRP模式）的场景。开发者模式关闭时，如果没有设备接入，接口返回undefined，注意需要对接口返回值做判空处理。详细枚举值参见[PortModeType](arkts-basicservices-usbmanager-portmodetype-e-sys.md)。 |
+| [getStringFromFunctions](arkts-basicservices-usbmanager-getstringfromfunctions-f-sys.md#getstringfromfunctions-1) | 在设备模式下，将数字掩码形式的USB功能列表转换为字符串。适用于需要将当前USB功能状态以字符串形式显示或保存的场景，如在日志中记录当前功能配置、在UI界面展示当前功能等。 |
+| [setDeviceFunctions](arkts-basicservices-usbmanager-setdevicefunctions-f-sys.md#setdevicefunctions-1) | 在设备模式下，设置当前的USB功能列表。使用Promise异步回调。调用成功后，设备的USB功能将切换为指定的功能列表。部分USB功能可能不被当前设备支持，设置前建议先查询设备支持的功能列表。开发者模式关闭时，如果没有设备接入，操作可能会失败，调用失败时抛出异常。功能切换会触发USB设备的重新枚举，已连接的主机可能需要重新识别设备。多个功能可通过位运算组合设置，但某些功能可能互斥或存在优先级，具体约束请参考设备规格。功能设置失败可能由于设备不支持、权限不足或系统限制，详见错误码说明。 |
+| [setPortRoleTypes](arkts-basicservices-usbmanager-setportroletypes-f-sys.md#setportroletypes-1) | 设置指定端口当前的角色类型，包含电源角色、数据传输角色。使用Promise异步回调。调用成功后端口的电源角色和数据传输角色将切换为指定的角色。适用于系统应用需要动态切换USB端口角色的场景。开发者模式关闭时，如果没有设备接入，操作可能会失败，调用失败时抛出异常。角色约束详情参见[USBPortStatus](arkts-basicservices-usbmanager-usbportstatus-i-sys.md)。 |
+| [getCurrentFunctions](arkts-basicservices-usbmanager-getcurrentfunctions-f-sys.md#getcurrentfunctions-1) | 在设备模式下，获取当前的USB功能列表的数字组合掩码。适用于需要检查当前USB功能状态、确认功能配置、或在功能切换前后进行状态对比的场景。开发者模式关闭时，如果没有设备接入，接口返回`undefined`，注意需要对接口返回值做判空处理。 |
+| [getPorts](arkts-basicservices-usbmanager-getports-f-sys.md#getports-1) | 获取所有物理USB端口描述信息。适用于需要枚举USB端口、进行端口管理、设备连接诊断、或查询端口配置信息的场景。开发者模式关闭时，如果没有设备接入，接口返回`undefined`，注意需要对接口返回值做判空处理。 |
+| [getSupportedModes](arkts-basicservices-usbmanager-getsupportedmodes-f-sys.md#getsupportedmodes-1) | 获取指定的端口支持的模式列表的组合掩码。适用于系统应用需要查询USB-C端口能力判断是否支持特定模式（如UFP、DFP或DRP模式）的场景。返回值为PortModeType的组合掩码，可通过位运算判断端口是否支持特定模式。PortModeType包括：NONE（0，无模式）、UFP（1，上行端口模式，dataRole为DEVICE）、DFP（2，下行端口模式，dataRole为HOST）、DRP（3，双角色模式，可在UFP和DFP间切换）、NUM_MODES（4，当前不支持）。开发者可根据返回值判断端口是否支持所需的电源角色和数据传输角色组合。 |
+| [setCurrentFunctions](arkts-basicservices-usbmanager-setcurrentfunctions-f-sys.md#setcurrentfunctions-1) | 在设备模式下，设置当前的USB功能列表。使用Promise异步回调。调用成功后，设备的USB功能将切换为指定的功能列表。适用于系统应用需要动态切换设备USB功能、配置设备工作模式的场景。 |
+| [setPortRoles](arkts-basicservices-usbmanager-setportroles-f-sys.md#setportroles-1) | 设置指定端口当前的角色模式，包含电源角色、数据传输角色。使用Promise异步回调。调用成功后端口角色将切换为指定的角色。适用于系统应用需要动态切换USB端口角色的场景。开发者模式关闭时，如果没有设备接入，操作可能会失败，调用失败时抛出异常。 |
+| [usbFunctionsFromString](arkts-basicservices-usbmanager-usbfunctionsfromstring-f-sys.md#usbfunctionsfromstring-1) | 在设备模式下，将字符串形式的USB功能列表转换为数字掩码。适用于需要将配置文件或用户输入的字符串形式USB功能列表转换为系统内部使用的数字掩码的场景，以便后续调用setDeviceFunctions等接口设置USB功能。 |
+| [usbFunctionsToString](arkts-basicservices-usbmanager-usbfunctionstostring-f-sys.md#usbfunctionstostring-1) | 在设备模式下，将数字掩码形式的USB功能列表转换为字符串。适用于需要将当前USB功能状态以字符串形式显示或保存的场景，如在日志中记录当前功能配置、在UI界面展示当前功能等。 |
 <!--DelEnd-->
 
 ### 接口
 
 | 名称 | 说明 |
 | --- | --- |
-| [InterfaceConflictInfo](arkts-basicservices-usbmanager-interfaceconflictinfo-i.md) | 描述当已独占声明的USB接口被其他进程以非独占方式声明时的冲突信息，通过调用[usbManager.claimInterfaceExclusive](arkts-basicservices-usbmanager-claiminterfaceexclusive-f.md)独占声明接口后使用。 |
+| [InterfaceConflictInfo](arkts-basicservices-usbmanager-interfaceconflictinfo-i.md) | 描述当已独占声明的USB接口被其他进程以非独占方式声明时的冲突信息，通过调用[usbManager.claimInterfaceExclusive](arkts-basicservices-usbmanager-claiminterfaceexclusive-f.md#claiminterfaceexclusive-1)独占声明接口后使用。 |
 | [SubmitTransferCallback](arkts-basicservices-usbmanager-submittransfercallback-i.md) | USB异步传输回调。 |
 | [USBAccessory](arkts-basicservices-usbmanager-usbaccessory-i.md) | USB配件信息。 |
 | [USBAccessoryHandle](arkts-basicservices-usbmanager-usbaccessoryhandle-i.md) | USB配件句柄，包含配件文件描述符，用于通过CoreFileKit提供的read/write接口和配件进行通信。 |

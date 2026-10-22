@@ -82,6 +82,24 @@ Whether the device is a local device. The value **true** indicates that the devi
 
 **System capability:** SystemCapability.Sensors.MiscDevice
 
+## isSupportIntensity
+
+```TypeScript
+isSupportIntensity?: boolean
+```
+
+Indicates whether vibration intensity adjustment is supported. The value **true** indicates that vibration intensity adjustment is supported, and the value **false** indicates that vibration intensity adjustment is not supported. Default value: false.
+
+**Type:** boolean
+
+**Since:** 26.2.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-VibratorInfo-isSupportIntensity?: boolean--><!--Device-VibratorInfo-isSupportIntensity?: boolean-End-->
+
+**System capability:** SystemCapability.Sensors.MiscDevice
+
 ## vibratorId
 
 ```TypeScript

@@ -868,7 +868,7 @@ export default class EntryAbility extends UIAbility {
 createAnimator(options: AnimatorOptions | SimpleAnimatorOptions): AnimatorResult
 ```
 
-Creates an **AnimatorResult** object for animations. Compared to the previous [createAnimator](#createanimator) API, this API adds support for the [SimpleAnimatorOptions](arkts-arkui-animator-simpleanimatoroptions-c.md) type.
+Creates an **AnimatorResult** object for animations. Compared to the previous [createAnimator](#createanimator-1) API, this API adds support for the [SimpleAnimatorOptions](arkts-arkui-animator-simpleanimatoroptions-c.md) type.
 
 **Since:** 18
 
@@ -3407,6 +3407,30 @@ struct Index {
 }
 ```
 
+## isTransPageEnabled
+
+```TypeScript
+isTransPageEnabled(): boolean
+```
+
+Checks whether the transPages configuration is currently enabled.
+
+**Since:** 26.2.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
+<!--Device-UIContext-isTransPageEnabled(): boolean--><!--Device-UIContext-isTransPageEnabled(): boolean-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| boolean | Returns true if transPages behavior is enabled; returns false otherwise. |
+
 ## isWindowInfoInitialized
 
 ```TypeScript
@@ -4705,6 +4729,55 @@ Sets the text selection clear policy for text component. Default policy: **TextS
 | policy | [TextSelectionClearPolicy](arkts-arkui-arkui-uicontext-textselectionclearpolicy-e.md) | Yes | The text selection clear policy. |
 
 **Examples**
+
+```TypeScript
+import { TextSelectionClearPolicy } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+
+  build() {
+    Column() {
+      Text(this.message)
+        .fontSize(20)
+        .margin(10)
+        .copyOption(CopyOptions.LocalDevice)
+      Button('Set Clear Policy')
+        .onClick(() => {
+          this.getUIContext()?.setTextSelectionClearPolicy(TextSelectionClearPolicy.CLEAR_SELECTED_TEXT_ON_EXTERNAL_TOUCH);
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+## setTransPageEnabled
+
+```TypeScript
+setTransPageEnabled(enabled: boolean): void
+```
+
+Enables or disables the transPages configuration of the easy split (parallel view). When disabled, transition pages configured in transPages will participate in the right-push-left behavior instead of being fixed on the right side. This interface only takes effect in displace mode (shopping mode). The change takes effect on the next route transition, not on the current page. Default value is true (consistent with static configuration behavior).
+
+**Since:** 26.2.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
+<!--Device-UIContext-setTransPageEnabled(enabled: boolean): void--><!--Device-UIContext-setTransPageEnabled(enabled: boolean): void-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| enabled | boolean | Yes | true to enable transPages behavior (default), false to disable. |
 
 ## showActionSheet
 

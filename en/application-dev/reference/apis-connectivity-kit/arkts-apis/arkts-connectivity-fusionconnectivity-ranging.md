@@ -22,14 +22,14 @@ import { ranging } from '@kit.ConnectivityKit';
 
 | Name | Description |
 | --- | --- |
-| [getRangingCapability](arkts-connectivity-ranging-getrangingcapability-f.md#getrangingcapability) | Queries whether the current device supports ranging capability. |
-| [isRangingSupported](arkts-connectivity-ranging-israngingsupported-f.md#israngingsupported) | Checks whether the current device supports the ranging feature. |
-| [offRangingStateChange](arkts-connectivity-ranging-offrangingstatechange-f.md#offrangingstatechange) | Unsubscribe from ranging state change events. |
-| [onRangingStateChange](arkts-connectivity-ranging-onrangingstatechange-f.md#onrangingstatechange) | Registers a callback to receive ranging state change notifications. |
-| [startPassiveRanging](arkts-connectivity-ranging-startpassiveranging-f.md#startpassiveranging) | Starts passive ranging mode. |
-| [startRanging](arkts-connectivity-ranging-startranging-f.md#startranging) | Initiates ranging with a specified device. If the link to the target device is already established, ranging starts directly. If not connected, this interface will:  1. Attempt to establish connection and perform pairing/encryption.  2. Query service to verify the device supports ranging. Initiate ranging upon confirmation. Ranging state updates are notified via onRangingStateChange callback. |
-| [stopPassiveRanging](arkts-connectivity-ranging-stoppassiveranging-f.md#stoppassiveranging) | Stops passive ranging mode. |
-| [stopRanging](arkts-connectivity-ranging-stopranging-f.md#stopranging) | Stops ongoing ranging operations. If no target device is specified, stops ranging for all devices associated with the callback. If a target device is specified, only stops ranging for that specific device. This method also releases all occupied resources. For proper resource management, stopRanging must be called after startRanging to avoid resource leaks. State changes are notified via the onRangingStateChange callback. |
+| [getRangingCapability](arkts-connectivity-ranging-getrangingcapability-f.md#getrangingcapability-1) | Queries whether the current device supports ranging capability. |
+| [isRangingSupported](arkts-connectivity-ranging-israngingsupported-f.md#israngingsupported-1) | Checks whether the current device supports the ranging feature. |
+| [offRangingStateChange](arkts-connectivity-ranging-offrangingstatechange-f.md#offrangingstatechange-1) | Unsubscribe from ranging state change events. |
+| [onRangingStateChange](arkts-connectivity-ranging-onrangingstatechange-f.md#onrangingstatechange-1) | Registers a callback to receive ranging state change notifications. |
+| [startPassiveRanging](arkts-connectivity-ranging-startpassiveranging-f.md#startpassiveranging-1) | Starts passive ranging mode. |
+| [startRanging](arkts-connectivity-ranging-startranging-f.md#startranging-1) | Initiates ranging with a specified device. If the link to the target device is already established, ranging starts directly. If not connected, this interface will:  1. Attempt to establish connection and perform pairing/encryption.  2. Query service to verify the device supports ranging. Initiate ranging upon confirmation. Ranging state updates are notified via onRangingStateChange callback. |
+| [stopPassiveRanging](arkts-connectivity-ranging-stoppassiveranging-f.md#stoppassiveranging-1) | Stops passive ranging mode. |
+| [stopRanging](arkts-connectivity-ranging-stopranging-f.md#stopranging-1) | Stops ongoing ranging operations. If no target device is specified, stops ranging for all devices associated with the callback. If a target device is specified, only stops ranging for that specific device. This method also releases all occupied resources. For proper resource management, stopRanging must be called after startRanging to avoid resource leaks. State changes are notified via the onRangingStateChange callback. |
 
 ### Interfaces
 

@@ -1,4 +1,4 @@
-# SourceType
+# SourceType (System API)
 
 ```TypeScript
 enum SourceType

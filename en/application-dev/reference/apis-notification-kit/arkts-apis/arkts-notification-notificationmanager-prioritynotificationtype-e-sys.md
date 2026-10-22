@@ -1,4 +1,4 @@
-# PriorityNotificationType
+# PriorityNotificationType (System API)
 
 ```TypeScript
 export enum PriorityNotificationType

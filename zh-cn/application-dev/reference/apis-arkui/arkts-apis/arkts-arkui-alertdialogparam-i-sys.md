@@ -1,4 +1,4 @@
-# AlertDialogParam
+# AlertDialogParam（系统接口）
 
 ```TypeScript
 declare interface AlertDialogParam

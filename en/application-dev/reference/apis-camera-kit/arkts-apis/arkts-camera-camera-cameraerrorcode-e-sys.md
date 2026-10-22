@@ -1,4 +1,4 @@
-# CameraErrorCode
+# CameraErrorCode (System API)
 
 ```TypeScript
 enum CameraErrorCode

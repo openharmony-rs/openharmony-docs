@@ -1012,7 +1012,7 @@ Sets the system material of the component.
 
 Default value: undefined, which clears the material effect set by this API.
 
-**Note:** Different system materials correspond to different attribute effects. This API affects the background color [backgroundColor](arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor), border color [borderColor](arkts-arkui-common-comp-commonmethod-c.md#bordercolor), border width [borderWidth](arkts-arkui-common-comp-commonmethod-c.md#borderwidth), and shadow [shadow](arkts-arkui-common-comp-commonmethod-c.md#shadow). Using it together with the preceding APIs is not recommended. For a usage example, see [Example 10 (Setting the System Material for a Half-Modal)](../../../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#example-10-setting-the-system-material-for-a-half-modal).
+**Note:** Different system materials correspond to different attribute effects. This API affects the background color [backgroundColor](arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor-1), border color [borderColor](arkts-arkui-common-comp-commonmethod-c.md#bordercolor), border width [borderWidth](arkts-arkui-common-comp-commonmethod-c.md#borderwidth), and shadow [shadow](arkts-arkui-common-comp-commonmethod-c.md#shadow-1). Using it together with the preceding APIs is not recommended. For a usage example, see [Example 10 (Setting the System Material for a Half-Modal)](../../../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#example-10-setting-the-system-material-for-a-half-modal).
 
 **Type:** [SystemUiMaterial](arkts-arkui-common-comp-systemuimaterial-t.md)
 
@@ -1058,11 +1058,11 @@ The full-screen modal style (CONTENT_COVER) does not support displaying the titl
 titleBarHoverMode?: SheetTitleBarHoverMode
 ```
 
-Title bar hover mode.
-
+Title bar hover mode.  
 - STANDARD: The title bar and content are arranged vertically without overlapping.  
 - STACK: The title bar overlays on top of the content. Developers need to add padding to avoid occlusion.  
-Default value: **SheetTitleBarHoverMode.STANDARD**.
+- SAFE_AREA_PADDING: The title bar is placed in the safe area padding region. The content expands  
+into the safe area, and the scroll content is clipped to the safe area. The default value is **SheetTitleBarHoverMode.STANDARD**. After [BIND_SHEET_EXPAND_SAFE_AREA](../arkts-apis/arkts-arkui-immersivestrategy-e.md#bind_sheet_expand_safe_area) is successfully set via [applyDefaultImmersiveStrategy](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#applydefaultimmersivestrategy), the default value is **SheetTitleBarHoverMode.SAFE_AREA_PADDING**.
 
 **Type:** [SheetTitleBarHoverMode](arkts-arkui-common-comp-sheettitlebarhovermode-e.md)
 

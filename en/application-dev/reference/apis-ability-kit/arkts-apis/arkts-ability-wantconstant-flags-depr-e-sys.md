@@ -1,4 +1,4 @@
-# Flags
+# Flags (System API)
 
 ```TypeScript
 export enum Flags

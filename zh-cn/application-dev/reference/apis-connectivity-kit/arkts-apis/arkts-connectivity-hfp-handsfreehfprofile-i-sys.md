@@ -1,4 +1,4 @@
-# HandsFreeHfProfile
+# HandsFreeHfProfile（系统接口）
 
 ```TypeScript
 interface HandsFreeHfProfile extends BaseProfile

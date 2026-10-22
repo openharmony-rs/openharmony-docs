@@ -24,7 +24,7 @@ close(): void
 > 
 > - 必须与[constructor()](#constructor)方法配对使用，创建ImageBitmap对象后，应在使用完毕时调用close()释放资源。未调用close()可能导致图形资源泄漏，影响应用性能。
 > 
-> - 建议在Canvas绘制完成后调用，如在[onReady](arkts-arkui-canvas-comp-attribute.md#onready)回调的最后调用close()。
+> - 建议在Canvas绘制完成后调用，如在[onReady](arkts-arkui-canvas-comp-attribute.md#onready-1)回调的最后调用close()。
 
 **起始版本：** 8
 

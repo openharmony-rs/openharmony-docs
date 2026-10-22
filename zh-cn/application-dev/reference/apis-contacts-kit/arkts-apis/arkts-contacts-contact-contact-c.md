@@ -54,24 +54,6 @@ emails?: Email[]
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
-## events
-
-```TypeScript
-events?: Event[]
-```
-
-联系人的生日、周年纪念等重要日期列表。
-
-**类型：** [Event](arkts-contacts-contact-event-c.md)[]
-
-**起始版本：** 7
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-Contact-events?: Event[]--><!--Device-Contact-events?: Event[]-End-->
-
-**系统能力：** SystemCapability.Applications.ContactsData
-
 ## groups
 
 ```TypeScript
@@ -306,6 +288,26 @@ relations?: Relation[]
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
+## significantDates
+
+```TypeScript
+significantDates?: SignificantDate[]
+```
+
+联系人的生日、周年纪念等重要日期列表。从API version 26.2.0开始，建议使用该版本。
+
+**类型：** [SignificantDate](arkts-contacts-contact-significantdate-c.md)[]
+
+**起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-Contact-significantDates?: SignificantDate[]--><!--Device-Contact-significantDates?: SignificantDate[]-End-->
+
+**系统能力：** SystemCapability.Applications.ContactsData
+
 ## sipAddresses
 
 ```TypeScript
@@ -339,5 +341,27 @@ websites?: Website[]
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Contact-websites?: Website[]--><!--Device-Contact-websites?: Website[]-End-->
+
+**系统能力：** SystemCapability.Applications.ContactsData
+
+## events
+
+```TypeScript
+events?: Event[]
+```
+
+联系人的生日、周年纪念等重要日期列表。
+
+**类型：** [Event](arkts-contacts-contact-event-c.md)[]
+
+**起始版本：** 7
+
+**废弃版本：** 26.2.0
+
+**替代接口：** [significantDates](#significantdates)
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-Contact-events?: Event[]--><!--Device-Contact-events?: Event[]-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData

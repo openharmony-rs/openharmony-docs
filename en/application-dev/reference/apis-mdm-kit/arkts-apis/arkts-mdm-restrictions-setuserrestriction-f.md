@@ -18,7 +18,7 @@ Sets restrictions on user behaviors.
 
 **Deprecated since:** 26.0.0
 
-**Substitutes:** [setUserRestriction](#setuserrestriction)(admin: Want, settingsItem: SettingsForDevice, restricted: boolean)
+**Substitutes:** [setUserRestriction](#setuserrestriction-2)(admin: Want, settingsItem: SettingsForDevice, restricted: boolean)
 
 **Required permissions:** ohos.permission.ENTERPRISE_SET_USER_RESTRICTION
 

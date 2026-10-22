@@ -24,7 +24,7 @@ Unsubscribes from the logical link connection status change event. This API uses
 
 **System capability:** SystemCapability.Communication.NearLink.Base
 
-**See also:** [onAcbStateChange](arkts-connectivity-remotedevice-onacbstatechange-f.md) Subscribes to the logical link connection status change event.
+**See also:** [onAcbStateChange](arkts-connectivity-remotedevice-onacbstatechange-f.md#onacbstatechange-1) Subscribes to the logical link connection status change event.
 
 **Parameters:**
 

@@ -18,7 +18,7 @@ function upload(config: UploadConfig, callback: AsyncCallback<UploadTask>): void
 
 **废弃版本：** 9
 
-**替代接口：** [uploadFile](arkts-basicservices-request-uploadfile-f.md#uploadfile)(context: BaseContext, config: UploadConfig)
+**替代接口：** [uploadFile](arkts-basicservices-request-uploadfile-f.md#uploadfile-2)(context: BaseContext, config: UploadConfig)
 
 **需要权限：** ohos.permission.INTERNET
 
@@ -74,7 +74,7 @@ function upload(config: UploadConfig): Promise<UploadTask>
 
 **废弃版本：** 9
 
-**替代接口：** [uploadFile](arkts-basicservices-request-uploadfile-f.md#uploadfile)(context: BaseContext, config: UploadConfig)
+**替代接口：** [uploadFile](arkts-basicservices-request-uploadfile-f.md#uploadfile-2)(context: BaseContext, config: UploadConfig)
 
 **需要权限：** ohos.permission.INTERNET
 

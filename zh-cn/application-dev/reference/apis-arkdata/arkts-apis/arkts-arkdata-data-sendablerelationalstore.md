@@ -20,12 +20,12 @@ import { sendableRelationalStore } from '@kit.ArkData';
 
 | 名称 | 说明 |
 | --- | --- |
-| [fromSendableAsset](arkts-arkdata-sendablerelationalstore-fromsendableasset-f.md#fromsendableasset) | 将可跨线程传递的附件数据，转换为不可跨线程传递的附件数据。 |
-| [fromSendableValues](arkts-arkdata-sendablerelationalstore-fromsendablevalues-f.md#fromsendablevalues) | 将可跨线程传递的数组数据，转换为不可跨线程传递的数组数据。 |
-| [fromSendableValuesBucket](arkts-arkdata-sendablerelationalstore-fromsendablevaluesbucket-f.md#fromsendablevaluesbucket) | 将可用于跨线程传递的键值对数据，转换为不能用于跨线程传递的键值对数据。 |
-| [toSendableAsset](arkts-arkdata-sendablerelationalstore-tosendableasset-f.md#tosendableasset) | 将不可跨线程传递的附件数据，转换为可跨线程传递的附件数据。 |
-| [toSendableValues](arkts-arkdata-sendablerelationalstore-tosendablevalues-f.md#tosendablevalues) | 将不可跨线程传递的数组数据，转换为可跨线程传递的数组数据。 |
-| [toSendableValuesBucket](arkts-arkdata-sendablerelationalstore-tosendablevaluesbucket-f.md#tosendablevaluesbucket) | 将不能用于跨线程传递的键值对数据，转换为可用于跨线程传递的键值对数据。 |
+| [fromSendableAsset](arkts-arkdata-sendablerelationalstore-fromsendableasset-f.md#fromsendableasset-1) | 将可跨线程传递的附件数据，转换为不可跨线程传递的附件数据。 |
+| [fromSendableValues](arkts-arkdata-sendablerelationalstore-fromsendablevalues-f.md#fromsendablevalues-1) | 将可跨线程传递的数组数据，转换为不可跨线程传递的数组数据。 |
+| [fromSendableValuesBucket](arkts-arkdata-sendablerelationalstore-fromsendablevaluesbucket-f.md#fromsendablevaluesbucket-1) | 将可用于跨线程传递的键值对数据，转换为不能用于跨线程传递的键值对数据。 |
+| [toSendableAsset](arkts-arkdata-sendablerelationalstore-tosendableasset-f.md#tosendableasset-1) | 将不可跨线程传递的附件数据，转换为可跨线程传递的附件数据。 |
+| [toSendableValues](arkts-arkdata-sendablerelationalstore-tosendablevalues-f.md#tosendablevalues-1) | 将不可跨线程传递的数组数据，转换为可跨线程传递的数组数据。 |
+| [toSendableValuesBucket](arkts-arkdata-sendablerelationalstore-tosendablevaluesbucket-f.md#tosendablevaluesbucket-1) | 将不能用于跨线程传递的键值对数据，转换为可用于跨线程传递的键值对数据。 |
 
 ### 接口
 

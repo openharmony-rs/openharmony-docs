@@ -18,7 +18,7 @@ function createPlainTextRecord(text: string): PasteDataRecord
 
 **废弃版本：** 9
 
-**替代接口：** [createRecord](arkts-basicservices-pasteboard-createrecord-f.md)(mimeType: string, value: ValueType)
+**替代接口：** [createRecord](arkts-basicservices-pasteboard-createrecord-f.md#createrecord-1)(mimeType: string, value: ValueType)
 
 <!--Device-pasteboard-function createPlainTextRecord(text: string): PasteDataRecord--><!--Device-pasteboard-function createPlainTextRecord(text: string): PasteDataRecord-End-->
 

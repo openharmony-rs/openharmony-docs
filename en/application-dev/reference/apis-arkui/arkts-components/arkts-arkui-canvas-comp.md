@@ -2,6 +2,10 @@
 
 The **Canvas** component can be used to customize drawings.
 
+## Child Components
+
+Not supported.
+
 ## Canvas
 
 ```TypeScript

@@ -49,7 +49,7 @@ import { abilityAccessCtrl, Context, PermissionRequestResult, Permissions } from
 
 | 名称 | 说明 |
 | --- | --- |
-| [abilityAccessCtrl](arkts-ability-abilityaccessctrl-n.md) |  |
+| [abilityAccessCtrl](arkts-ability-abilityaccessctrl-n.md) | 提供应用程序的权限校验和管理能力，支持应用在访问受保护资源前进行权限状态判断、运行时授权申请、设置页授权引导和权限状态变化监听。 |
 
 ### 类型
 

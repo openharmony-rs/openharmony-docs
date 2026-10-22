@@ -20,13 +20,13 @@ import { mdns } from '@kit.NetworkKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [addLocalService](arkts-network-mdns-addlocalservice-f.md#addlocalservice) | 添加一个MDNS服务，使用callback方式作为异步方法。 |
-| [addLocalService](arkts-network-mdns-addlocalservice-f.md#addlocalservice) | 添加一个MDNS服务，使用Promise方式作为异步方法。 |
-| [createDiscoveryService](arkts-network-mdns-creatediscoveryservice-f.md#creatediscoveryservice) | 返回一个DiscoveryService对象，该对象用于发现指定服务类型（serviceType）的MDNS服务。 |
-| [removeLocalService](arkts-network-mdns-removelocalservice-f.md#removelocalservice) | 移除一个MDNS服务，使用callback方式作为异步方法。 |
-| [removeLocalService](arkts-network-mdns-removelocalservice-f.md#removelocalservice) | 移除一个MDNS服务，使用Promise方式作为异步方法。 |
-| [resolveLocalService](arkts-network-mdns-resolvelocalservice-f.md#resolvelocalservice) | 解析一个MDNS服务，使用callback方式作为异步方法。 |
-| [resolveLocalService](arkts-network-mdns-resolvelocalservice-f.md#resolvelocalservice) | 解析一个MDNS服务，使用Promise方式作为异步方法。 |
+| [addLocalService](arkts-network-mdns-addlocalservice-f.md#addlocalservice-1) | 添加一个MDNS服务，使用callback方式作为异步方法。 |
+| [addLocalService](arkts-network-mdns-addlocalservice-f.md#addlocalservice-2) | 添加一个MDNS服务，使用Promise方式作为异步方法。 |
+| [createDiscoveryService](arkts-network-mdns-creatediscoveryservice-f.md#creatediscoveryservice-1) | 返回一个DiscoveryService对象，该对象用于发现指定服务类型（serviceType）的MDNS服务。 |
+| [removeLocalService](arkts-network-mdns-removelocalservice-f.md#removelocalservice-1) | 移除一个MDNS服务，使用callback方式作为异步方法。 |
+| [removeLocalService](arkts-network-mdns-removelocalservice-f.md#removelocalservice-2) | 移除一个MDNS服务，使用Promise方式作为异步方法。 |
+| [resolveLocalService](arkts-network-mdns-resolvelocalservice-f.md#resolvelocalservice-1) | 解析一个MDNS服务，使用callback方式作为异步方法。 |
+| [resolveLocalService](arkts-network-mdns-resolvelocalservice-f.md#resolvelocalservice-2) | 解析一个MDNS服务，使用Promise方式作为异步方法。 |
 
 ### 接口
 

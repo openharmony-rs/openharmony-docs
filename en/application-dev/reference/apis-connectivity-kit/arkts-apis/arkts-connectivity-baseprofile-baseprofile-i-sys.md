@@ -1,4 +1,4 @@
-# BaseProfile
+# BaseProfile (System API)
 
 ```TypeScript
 export interface BaseProfile

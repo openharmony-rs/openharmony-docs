@@ -4,7 +4,7 @@
 interface DownloadTask
 ```
 
-下载任务，使用下列方法前，需要先获取DownloadTask对象，promise形式通过[request.downloadFile](arkts-basicservices-request-downloadfile-f.md#downloadfile)获取，callback形式通过[request.downloadFile](arkts-basicservices-request-downloadfile-f.md#downloadfile)获取。
+下载任务，使用下列方法前，需要先获取DownloadTask对象，promise形式通过[request.downloadFile](arkts-basicservices-request-downloadfile-f.md#downloadfile-2)获取，callback形式通过[request.downloadFile](arkts-basicservices-request-downloadfile-f.md#downloadfile-1)获取。
 
 **起始版本：** 6
 
@@ -978,13 +978,13 @@ pause(callback: AsyncCallback<void>): void
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃，建议使用
-> [suspend](#suspend)替代。
+> [suspend](#suspend-1)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [suspend](#suspend)(callback: AsyncCallback&lt;boolean&gt;)
+**替代接口：** [suspend](#suspend-1)(callback: AsyncCallback&lt;boolean&gt;)
 
 **需要权限：** ohos.permission.INTERNET
 
@@ -1073,13 +1073,13 @@ query(callback: AsyncCallback<DownloadInfo>): void
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃，建议使用
-> [getTaskInfo](#gettaskinfo)替代。
+> [getTaskInfo](#gettaskinfo-1)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [getTaskInfo](#gettaskinfo)(callback: AsyncCallback&lt;DownloadInfo&gt;)
+**替代接口：** [getTaskInfo](#gettaskinfo-1)(callback: AsyncCallback&lt;DownloadInfo&gt;)
 
 **需要权限：** ohos.permission.INTERNET
 
@@ -1168,13 +1168,13 @@ queryMimeType(callback: AsyncCallback<string>): void
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃，建议使用
-> [getTaskMimeType](#gettaskmimetype)替代。
+> [getTaskMimeType](#gettaskmimetype-1)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [getTaskMimeType](#gettaskmimetype)(callback: AsyncCallback&lt;string&gt;)
+**替代接口：** [getTaskMimeType](#gettaskmimetype-1)(callback: AsyncCallback&lt;string&gt;)
 
 **需要权限：** ohos.permission.INTERNET
 
@@ -1263,13 +1263,13 @@ remove(callback: AsyncCallback<boolean>): void
 > **说明：** 
 > 
 > 从API version 6开始支持，从API version 9开始废弃，建议使用
-> [delete](arkts-basicservices-request-uploadtask-i.md#delete)替代。
+> [delete](arkts-basicservices-request-uploadtask-i.md#delete-1)替代。
 
 **起始版本：** 6
 
 **废弃版本：** 9
 
-**替代接口：** [delete](arkts-basicservices-request-uploadtask-i.md#delete)(callback: AsyncCallback&lt;boolean&gt;)
+**替代接口：** [delete](arkts-basicservices-request-uploadtask-i.md#delete-1)(callback: AsyncCallback&lt;boolean&gt;)
 
 **需要权限：** ohos.permission.INTERNET
 
@@ -1358,13 +1358,13 @@ resume(callback: AsyncCallback<void>): void
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃，建议使用
-> [restore](#restore)替代。
+> [restore](#restore-1)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [restore](#restore)(callback: AsyncCallback&lt;boolean&gt;)
+**替代接口：** [restore](#restore-1)(callback: AsyncCallback&lt;boolean&gt;)
 
 **需要权限：** ohos.permission.INTERNET
 

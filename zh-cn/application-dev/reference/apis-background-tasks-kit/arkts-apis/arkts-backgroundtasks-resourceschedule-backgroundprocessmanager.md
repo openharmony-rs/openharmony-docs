@@ -20,18 +20,18 @@ import { backgroundProcessManager } from '@kit.BackgroundTasksKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [getPowerSaveMode](arkts-backgroundtasks-backgroundprocessmanager-getpowersavemode-f.md#getpowersavemode) | 获取进程能效模式。使用Promise异步回调。 |
-| [isPowerSaveMode](arkts-backgroundtasks-backgroundprocessmanager-ispowersavemode-f.md#ispowersavemode) | 查询进程是否处于能效模式，使用Promise异步回调。 |
-| [resetProcessPriority](arkts-backgroundtasks-backgroundprocessmanager-resetprocesspriority-f.md#resetprocesspriority) | 为子进程解压制，即子进程策略恢复为主进程调度策略。若主进程调度策略发生变化，如从后台切至前台等， 子进程会跟随主进程一同变化，等效于执行一次resetProcessPriority动作。使用Promise异步回调。 |
-| [setPowerSaveMode](arkts-backgroundtasks-backgroundprocessmanager-setpowersavemode-f.md#setpowersavemode) | 设置进程的能效模式，使用Promise异步回调。 |
-| [setProcessPriority](arkts-backgroundtasks-backgroundprocessmanager-setprocesspriority-f.md#setprocesspriority) | 设置子进程的压制档位，子进程被压制后可获得的CPU资源将会受到限制。如果主进程调度策略发生变化，如从后台切至前台等，子进程会跟随主进程一同变化，子进程如需继续压制，需要重新调用本接口。使用Promise异步回调。 |
+| [getPowerSaveMode](arkts-backgroundtasks-backgroundprocessmanager-getpowersavemode-f.md#getpowersavemode-1) | 获取进程能效模式。使用Promise异步回调。 |
+| [isPowerSaveMode](arkts-backgroundtasks-backgroundprocessmanager-ispowersavemode-f.md#ispowersavemode-1) | 查询进程是否处于能效模式，使用Promise异步回调。 |
+| [resetProcessPriority](arkts-backgroundtasks-backgroundprocessmanager-resetprocesspriority-f.md#resetprocesspriority-1) | 为子进程解压制，即子进程策略恢复为主进程调度策略。若主进程调度策略发生变化，如从后台切至前台等， 子进程会跟随主进程一同变化，等效于执行一次resetProcessPriority动作。使用Promise异步回调。 |
+| [setPowerSaveMode](arkts-backgroundtasks-backgroundprocessmanager-setpowersavemode-f.md#setpowersavemode-1) | 设置进程的能效模式，使用Promise异步回调。 |
+| [setProcessPriority](arkts-backgroundtasks-backgroundprocessmanager-setprocesspriority-f.md#setprocesspriority-1) | 设置子进程的压制档位，子进程被压制后可获得的CPU资源将会受到限制。如果主进程调度策略发生变化，如从后台切至前台等，子进程会跟随主进程一同变化，子进程如需继续压制，需要重新调用本接口。使用Promise异步回调。 |
 
 <!--Del-->
 ### 函数（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| [clearBackgroundApps](arkts-backgroundtasks-backgroundprocessmanager-clearbackgroundapps-f-sys.md#clearbackgroundapps) | 主动清理后台资源。 |
+| [clearBackgroundApps](arkts-backgroundtasks-backgroundprocessmanager-clearbackgroundapps-f-sys.md#clearbackgroundapps-1) | 主动清理后台资源。 |
 <!--DelEnd-->
 
 ### 枚举

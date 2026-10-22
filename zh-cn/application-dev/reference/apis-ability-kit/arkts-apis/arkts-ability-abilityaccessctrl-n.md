@@ -4,6 +4,8 @@
 declare namespace abilityAccessCtrl
 ```
 
+提供应用程序的权限校验和管理能力，支持应用在访问受保护资源前进行权限状态判断、运行时授权申请、设置页授权引导和权限状态变化监听。
+
 **起始版本：** 8
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
@@ -24,7 +26,7 @@ import { abilityAccessCtrl, Context, PermissionRequestResult, Permissions } from
 
 | 名称 | 说明 |
 | --- | --- |
-| [createAtManager](arkts-ability-abilityaccessctrl-createatmanager-f.md#createatmanager) | 创建程序访问控制管理实例，用于权限校验、运行时权限申请、设置页授权引导和权限状态变化监听等场景。调用成功后返回AtManager实例，可用于后续的权限管理操作。 |
+| [createAtManager](arkts-ability-abilityaccessctrl-createatmanager-f.md#createatmanager-1) | 创建程序访问控制管理实例，用于权限校验、运行时权限申请、设置页授权引导和权限状态变化监听等场景。调用成功后返回AtManager实例，可用于后续的权限管理操作。 |
 
 ### 接口
 

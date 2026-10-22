@@ -4,7 +4,7 @@
 interface KVManager
 ```
 
-数据管理实例，用于获取KVStore的相关信息。在调用KVManager的方法前，需要先通过[createKVManager](arkts-arkdata-distributeddata-createkvmanager-f.md#createkvmanager)构建一个KVManager实例。
+数据管理实例，用于获取KVStore的相关信息。在调用KVManager的方法前，需要先通过[createKVManager](arkts-arkdata-distributeddata-createkvmanager-f.md#createkvmanager-1)构建一个KVManager实例。
 
 **起始版本：** 7
 
@@ -259,7 +259,7 @@ try {
 getAllKVStoreId(appId: string, callback: AsyncCallback<string[]>): void
 ```
 
-获取所有通过getKVStore方法创建的且没有调用[deleteKVStore](#deletekvstore)方法删除的KVStore数据库的storeId，使用callback异步回调。
+获取所有通过getKVStore方法创建的且没有调用[deleteKVStore](#deletekvstore-1)方法删除的KVStore数据库的storeId，使用callback异步回调。
 
 **起始版本：** 8
 
@@ -298,7 +298,7 @@ try {
 getAllKVStoreId(appId: string): Promise<string[]>
 ```
 
-获取所有通过getKVStore方法创建的且没有调用[deleteKVStore](#deletekvstore)方法删除的KVStore数据库的storeId，使用Promise异步回调。
+获取所有通过getKVStore方法创建的且没有调用[deleteKVStore](#deletekvstore-1)方法删除的KVStore数据库的storeId，使用Promise异步回调。
 
 **起始版本：** 8
 

@@ -4,7 +4,9 @@ The **Rating** component is used to select a rating within a given range, which 
 
 > **NOTE:** 
 > 
-> - If the parent node of the **Rating** component has fixed dimensions, you must also specify the width and height for the **Rating** component, or set its parent node's [clip](arkts-arkui-common-comp-commonmethod-c.md#clip)attribute to **true**.
+> - If the parent node of the **Rating** component has fixed dimensions, you must also specify the width and height for the **Rating** component, or set its parent node's [clip](arkts-arkui-common-comp-commonmethod-c.md#clip-2)attribute to **true**.
+> 
+> - **Keyboard navigation**: **Tab** moves focus to or from the component; **Left/Right arrow** decreases or increases the rating; **Home/End** sets the rating to the minimum or maximum value; **Space/Enter** confirms the rating.
 
 ## Child Components
 

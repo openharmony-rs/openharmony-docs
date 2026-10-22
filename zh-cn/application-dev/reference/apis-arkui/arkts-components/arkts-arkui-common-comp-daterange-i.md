@@ -4,7 +4,7 @@
 declare interface DateRange
 ```
 
-Defines a range of dates.
+日期区间，用于描述起止日期区间。
 
 **起始版本：** 19
 
@@ -18,7 +18,7 @@ Defines a range of dates.
 end?: Date
 ```
 
-Defines the end date of the date range.
+设置日期区间的结束日期。不传入、日期格式错误、日期超出系统支持范围或end早于start时，该日期区间无效。
 
 **类型：** Date
 
@@ -38,7 +38,7 @@ Defines the end date of the date range.
 start?: Date
 ```
 
-Defines the start date of the date range.
+设置日期区间的开始日期，应不晚于结束日期。不传入、日期格式错误、日期超出系统支持范围或start晚于end时，该日期区间无效。
 
 **类型：** Date
 

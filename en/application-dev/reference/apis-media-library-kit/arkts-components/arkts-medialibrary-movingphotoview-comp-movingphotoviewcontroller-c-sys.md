@@ -1,4 +1,4 @@
-# MovingPhotoViewController
+# MovingPhotoViewController (System API)
 
 ```TypeScript
 export class MovingPhotoViewController

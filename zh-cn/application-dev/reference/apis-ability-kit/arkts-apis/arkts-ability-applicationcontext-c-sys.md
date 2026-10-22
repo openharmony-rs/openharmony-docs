@@ -1,4 +1,4 @@
-# ApplicationContext
+# ApplicationContext（系统接口）
 
 ```TypeScript
 declare class ApplicationContext extends Context

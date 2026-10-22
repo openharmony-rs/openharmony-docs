@@ -20,8 +20,8 @@ import { a2dp } from '@kit.ConnectivityKit';
 
 | Name | Description |
 | --- | --- |
-| [createA2dpSnkProfile](arkts-connectivity-a2dp-createa2dpsnkprofile-f.md#createa2dpsnkprofile) | Create the instance of a2dp sink profile. |
-| [createA2dpSrcProfile](arkts-connectivity-a2dp-createa2dpsrcprofile-f.md#createa2dpsrcprofile) | create the instance of a2dp profile. |
+| [createA2dpSnkProfile](arkts-connectivity-a2dp-createa2dpsnkprofile-f.md#createa2dpsnkprofile-1) | Create the instance of a2dp sink profile. |
+| [createA2dpSrcProfile](arkts-connectivity-a2dp-createa2dpsrcprofile-f.md#createa2dpsrcprofile-1) | create the instance of a2dp profile. |
 
 ### Interfaces
 

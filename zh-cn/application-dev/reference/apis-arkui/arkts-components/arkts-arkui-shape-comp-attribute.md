@@ -4,7 +4,7 @@
 declare class ShapeAttribute extends CommonMethod<ShapeAttribute>
 ```
 
-除支持[通用属性](arkts-arkui-common-comp-commonmethod-c.md)以及[图形绘制通用属性](../../../reference/apis-arkui/arkui-ts/ts-drawing-components-common.md)外，还支持以下属性：
+支持[通用属性](arkts-arkui-common-comp-commonmethod-c.md)以及[图形绘制通用属性](../../../reference/apis-arkui/arkui-ts/ts-drawing-components-common.md)。
 
 **继承/实现关系：** ShapeAttribute extends CommonMethod&lt;ShapeAttribute&gt;
 

@@ -1,4 +1,4 @@
-# DomainAccountManager
+# DomainAccountManager（系统接口）
 
 ```TypeScript
 class DomainAccountManager

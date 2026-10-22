@@ -104,7 +104,7 @@ cachedCount(count: number, show: boolean)
 
 Sets the number of rows to be preloaded for the list and specifies whether to display the preloaded nodes. In the lazy loading scenario, **cachedCount** rows are preloaded both above and below the display area of **List**. In the non-lazy loading scenario, all child components are loaded.
 
-After **cachedCount** is set for the list, **cachedCount** rows are preloaded and laid out both above and below the display area. When calculating the number of preloaded rows, the number of **ListItem** rows inside a **ListItemGroup** is counted. If a **ListItemGroup** contains no **ListItem**, the entire **ListItemGroup** is counted as one row. The preloaded nodes can be displayed together with the [clip](arkts-arkui-common-comp-commonmethod-c.md#clip) or [clipContent](../../../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#clipcontent14) attribute.
+After **cachedCount** is set for the list, **cachedCount** rows are preloaded and laid out both above and below the display area. When calculating the number of preloaded rows, the number of **ListItem** rows inside a **ListItemGroup** is counted. If a **ListItemGroup** contains no **ListItem**, the entire **ListItemGroup** is counted as one row. The preloaded nodes can be displayed together with the [clip](arkts-arkui-common-comp-commonmethod-c.md#clip-1) or [clipContent](../../../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#clipcontent14) attribute.
 
 > **NOTE:** 
 > 
@@ -143,7 +143,7 @@ If the first parameter of the **cachedCount** attribute is of the **number** typ
 
 If the first parameter of the **cachedCount** attribute is of the **CacheCountInfo** type, preloading and layout occur during idle frames when the number of cached rows is less than **CacheCountInfo.minCount**. When the number of cached rows is greater than **CacheCountInfo.maxCount**, the nodes beyond the range are destroyed or recycled for reuse. When the UI is idle (no animation or user operation), **CacheCountInfo.maxCount** rows are preloaded both above and below the display area.
 
-When calculating the number of preloaded rows, the number of **ListItem** rows inside a **ListItemGroup** is counted. If a **ListItemGroup** contains no **ListItem**, the entire **ListItemGroup** is counted as one row. The preloaded nodes can be displayed together with the [clip](arkts-arkui-common-comp-commonmethod-c.md#clip) or [clipContent](../../../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#clipcontent14) attribute.
+When calculating the number of preloaded rows, the number of **ListItem** rows inside a **ListItemGroup** is counted. If a **ListItemGroup** contains no **ListItem**, the entire **ListItemGroup** is counted as one row. The preloaded nodes can be displayed together with the [clip](arkts-arkui-common-comp-commonmethod-c.md#clip-1) or [clipContent](../../../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#clipcontent14) attribute.
 
 Default behavior: The **count** parameter is of the **number** type by default, with its value set based on the number of nodes displayed on the screen, up to a maximum of 16. Preloaded **ListItem** components are not involved in drawing by default.
 
@@ -283,7 +283,7 @@ If the sum of **contentStartOffset** and **contentEndOffset** exceeds the length
 contentEndOffset(offset: number | Resource)
 ```
 
-Sets the offset from the end of the list content to the boundary of the list display area. Compared with [contentEndOffset<sup>11+</sup>](#contentendoffset), the parameter name is changed to **offset** and the Resource type is supported.
+Sets the offset from the end of the list content to the boundary of the list display area. Compared with [contentEndOffset<sup>11+</sup>](#contentendoffset-1), the parameter name is changed to **offset** and the Resource type is supported.
 
 If the sum of **contentStartOffset** and **contentEndOffset** exceeds the length of the list content area, both offsets are reset to **0**.
 
@@ -335,7 +335,7 @@ If the sum of **contentStartOffset** and **contentEndOffset** exceeds the length
 contentStartOffset(offset: number | Resource)
 ```
 
-Sets the offset from the start of the list content to the boundary of the list display area. Compared with [contentStartOffset<sup>11+</sup>](#contentstartoffset), the parameter name is changed to **offset** and the Resource type is supported.
+Sets the offset from the start of the list content to the boundary of the list display area. Compared with [contentStartOffset<sup>11+</sup>](#contentstartoffset-1), the parameter name is changed to **offset** and the Resource type is supported.
 
 If the sum of **contentStartOffset** and **contentEndOffset** exceeds the length of the list content area, both offsets are reset to **0**.
 

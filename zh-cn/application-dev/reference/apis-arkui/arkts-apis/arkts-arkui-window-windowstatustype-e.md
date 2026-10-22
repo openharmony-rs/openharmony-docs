@@ -38,7 +38,7 @@ FULL_SCREEN = 1
 
 [自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下，窗口铺满整个屏幕，默认无dock栏、标题栏和状态栏显示。
 
-可通过[maximize()](arkts-arkui-window-window-i.md#maximize)和[setTitleAndDockHoverShown()](arkts-arkui-window-window-i.md#settitleanddockhovershown)配置，当hover到热区时是否显示标题栏和dock栏。
+可通过[maximize()](arkts-arkui-window-window-i.md#maximize-1)和[setTitleAndDockHoverShown()](arkts-arkui-window-window-i.md#settitleanddockhovershown)配置，当hover到热区时是否显示标题栏和dock栏。
 
 当maximize()和setTitleAndDockHoverShown()接口都调用时，以最后调用设置的效果为准。
 

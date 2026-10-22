@@ -16,7 +16,7 @@ Uninstalls a DLP sandbox application for an application. This API uses a promise
 
 Use this API to clear the corresponding sandbox environment.
 
-This API can be called only after a DLP sandbox is installed by calling [installDLPSandbox](arkts-dataprotection-dlppermission-installdlpsandbox-f-sys.md#installdlpsandbox).
+This API can be called only after a DLP sandbox is installed by calling [installDLPSandbox](arkts-dataprotection-dlppermission-installdlpsandbox-f-sys.md#installdlpsandbox-1).
 
 **Since:** 10
 
@@ -82,7 +82,7 @@ Uninstalls a DLP sandbox application for an application. This API uses an asynch
 
 Use this API to clear the sandbox environment.
 
-This API can be called only after a DLP sandbox is installed by calling [installDLPSandbox](arkts-dataprotection-dlppermission-installdlpsandbox-f-sys.md#installdlpsandbox).
+This API can be called only after a DLP sandbox is installed by calling [installDLPSandbox](arkts-dataprotection-dlppermission-installdlpsandbox-f-sys.md#installdlpsandbox-1).
 
 **Since:** 10
 

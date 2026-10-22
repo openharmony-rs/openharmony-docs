@@ -1,4 +1,4 @@
-# ContextMenuOptions
+# ContextMenuOptions (System API)
 
 ```TypeScript
 declare interface ContextMenuOptions
@@ -29,11 +29,11 @@ Configures menu item information.
 
 | API| Default Menu Position|  
 |------|-------------|  
-| [bindMenu](arkts-arkui-common-comp-commonmethod-c.md#bindmenu) | Placement.BottomLeft |  
-| [bindMenu<sup>11+</sup>](arkts-arkui-common-comp-commonmethod-c.md#bindmenu) | Placement.BottomLeft |  
-| [bindContextMenu<sup>8+</sup>](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu) | Placement.Top |  
-| [bindContextMenu<sup>12+</sup>](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu) | Placement.BottomLeft |  
-| [bindContextMenuWithResponse<sup>23+</sup>](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenuwithresponse) | Placement.Top |
+| [bindMenu](arkts-arkui-common-comp-commonmethod-c.md#bindmenu-1) | Placement.BottomLeft |  
+| [bindMenu<sup>11+</sup>](arkts-arkui-common-comp-commonmethod-c.md#bindmenu-2) | Placement.BottomLeft |  
+| [bindContextMenu<sup>8+</sup>](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu-1) | Placement.Top |  
+| [bindContextMenu<sup>12+</sup>](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu-2) | Placement.BottomLeft |  
+| [bindContextMenuWithResponse<sup>23+</sup>](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenuwithresponse-1) | Placement.Top |
 
 **Since:** 10
 

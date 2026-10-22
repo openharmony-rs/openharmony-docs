@@ -1,4 +1,4 @@
-# GeoAddress
+# GeoAddress（系统接口）
 
 ```TypeScript
 export interface GeoAddress

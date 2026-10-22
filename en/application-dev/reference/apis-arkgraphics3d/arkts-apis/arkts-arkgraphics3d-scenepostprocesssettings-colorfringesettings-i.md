@@ -4,7 +4,7 @@
 export interface ColorFringeSettings
 ```
 
-Describes the settings for color fringing. It is unavailable when RenderingPipelineType is set to FORWARD_LIGHTWEIGHT.
+Describes the settings for color fringing. It is unavailable when [RenderingPipelineType](arkts-arkgraphics3d-scenetypes-renderingpipelinetype-e.md) is set to FORWARD_LIGHTWEIGHT.
 
 **Since:** 22
 

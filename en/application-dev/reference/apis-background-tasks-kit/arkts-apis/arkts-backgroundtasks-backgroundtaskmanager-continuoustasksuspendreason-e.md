@@ -204,6 +204,22 @@ A continuous task is suspended due to high system load. This value is reserved.
 
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
+## SYSTEM_SUSPEND_USB_ALREADY_OCCUPIED
+
+```TypeScript
+SYSTEM_SUSPEND_USB_ALREADY_OCCUPIED = 21
+```
+
+A continuous task of the **USB_CONNECTION** type is requested, but the USB device is already occupied.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ContinuousTaskSuspendReason-SYSTEM_SUSPEND_USB_ALREADY_OCCUPIED = 21--><!--Device-ContinuousTaskSuspendReason-SYSTEM_SUSPEND_USB_ALREADY_OCCUPIED = 21-End-->
+
+**System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
 ## SYSTEM_SUSPEND_USB_NOT_USED
 
 ```TypeScript

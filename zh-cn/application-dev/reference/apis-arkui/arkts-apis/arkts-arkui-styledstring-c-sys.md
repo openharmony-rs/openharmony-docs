@@ -1,4 +1,4 @@
-# StyledString
+# StyledString（系统接口）
 
 ```TypeScript
 declare class StyledString

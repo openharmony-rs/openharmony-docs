@@ -4,7 +4,7 @@
 export interface ImageStream extends Image
 ```
 
-流图片类型，继承自Image。
+流图片类型，继承自[Image](arkts-arkgraphics3d-sceneresources-image-i.md)。
 
 **继承/实现关系：** ImageStream extends [Image](arkts-arkgraphics3d-sceneresources-image-i.md)
 

@@ -1,4 +1,4 @@
-# AgentExtensionAbility
+# AgentExtensionAbility (System API)
 
 ```TypeScript
 declare class AgentExtensionAbility extends ExtensionAbility

@@ -1,4 +1,4 @@
-# ExposureMeteringMode
+# ExposureMeteringMode (System API)
 
 ```TypeScript
 enum ExposureMeteringMode

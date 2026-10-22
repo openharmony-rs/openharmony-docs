@@ -18,7 +18,7 @@ Queries the key of a contact based on the specified contact ID. This API uses an
 
 **Deprecated since:** 10
 
-**Substitutes:** [queryKey](#querykey)(context: Context, id: number, callback: AsyncCallback&lt;string&gt;)
+**Substitutes:** [queryKey](#querykey-2)(context: Context, id: number, callback: AsyncCallback&lt;string&gt;)
 
 **Required permissions:** ohos.permission.READ_CONTACTS
 
@@ -115,7 +115,7 @@ Queries the key of a contact based on the specified contact ID and holder. This 
 
 **Deprecated since:** 10
 
-**Substitutes:** [queryKey](#querykey)(context: Context, id: number, holder: Holder, callback: AsyncCallback&lt;string&gt;)
+**Substitutes:** [queryKey](#querykey-4)(context: Context, id: number, holder: Holder, callback: AsyncCallback&lt;string&gt;)
 
 **Required permissions:** ohos.permission.READ_CONTACTS
 
@@ -222,7 +222,7 @@ Queries the key of a contact based on the specified contact ID and holder. This 
 
 **Deprecated since:** 10
 
-**Substitutes:** [queryKey](#querykey)(context: Context, id: number, holder?: Holder)
+**Substitutes:** [queryKey](#querykey-6)(context: Context, id: number, holder?: Holder)
 
 **Required permissions:** ohos.permission.READ_CONTACTS
 

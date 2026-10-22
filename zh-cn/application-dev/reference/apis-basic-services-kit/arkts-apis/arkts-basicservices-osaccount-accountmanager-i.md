@@ -2221,14 +2221,14 @@ getDistributedVirtualDeviceId(callback: AsyncCallback<string>): void
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [queryDistributedVirtualDeviceId](#querydistributedvirtualdeviceid)
+> [queryDistributedVirtualDeviceId](#querydistributedvirtualdeviceid-1)
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [queryDistributedVirtualDeviceId](#querydistributedvirtualdeviceid)(callback: AsyncCallback&lt;string&gt;)
+**替代接口：** [queryDistributedVirtualDeviceId](#querydistributedvirtualdeviceid-1)(callback: AsyncCallback&lt;string&gt;)
 
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC or ohos.permission.MANAGE_LOCAL_ACCOUNTS
 
@@ -2690,14 +2690,14 @@ getOsAccountLocalIdFromDomain(domainInfo: DomainAccountInfo): Promise<number>
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [getOsAccountLocalIdForDomain](#getosaccountlocalidfordomain)
+> [getOsAccountLocalIdForDomain](#getosaccountlocalidfordomain-2)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [getOsAccountLocalIdForDomain](#getosaccountlocalidfordomain)(domainInfo: DomainAccountInfo)
+**替代接口：** [getOsAccountLocalIdForDomain](#getosaccountlocalidfordomain-2)(domainInfo: DomainAccountInfo)
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS
 
@@ -2928,13 +2928,13 @@ getOsAccountTypeFromProcess(callback: AsyncCallback<OsAccountType>): void
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [getOsAccountType](#getosaccounttype)替代。
+> [getOsAccountType](#getosaccounttype-1)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [getOsAccountType](#getosaccounttype)(callback: AsyncCallback&lt;OsAccountType&gt;)
+**替代接口：** [getOsAccountType](#getosaccounttype-1)(callback: AsyncCallback&lt;OsAccountType&gt;)
 
 <!--Device-AccountManager-getOsAccountTypeFromProcess(callback: AsyncCallback<OsAccountType>): void--><!--Device-AccountManager-getOsAccountTypeFromProcess(callback: AsyncCallback<OsAccountType>): void-End-->
 
@@ -3117,14 +3117,14 @@ isMultiOsAccountEnable(callback: AsyncCallback<boolean>): void
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [checkMultiOsAccountEnabled](#checkmultiosaccountenabled)
+> [checkMultiOsAccountEnabled](#checkmultiosaccountenabled-1)
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [checkMultiOsAccountEnabled](#checkmultiosaccountenabled)(callback: AsyncCallback&lt;boolean&gt;)
+**替代接口：** [checkMultiOsAccountEnabled](#checkmultiosaccountenabled-1)(callback: AsyncCallback&lt;boolean&gt;)
 
 <!--Device-AccountManager-isMultiOsAccountEnable(callback: AsyncCallback<boolean>): void--><!--Device-AccountManager-isMultiOsAccountEnable(callback: AsyncCallback<boolean>): void-End-->
 
@@ -3406,14 +3406,14 @@ isOsAccountVerified(callback: AsyncCallback<boolean>): void
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [checkOsAccountVerified](#checkosaccountverified)
+> [checkOsAccountVerified](#checkosaccountverified-1)
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [checkOsAccountVerified](#checkosaccountverified)(callback: AsyncCallback&lt;boolean&gt;)
+**替代接口：** [checkOsAccountVerified](#checkosaccountverified-1)(callback: AsyncCallback&lt;boolean&gt;)
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS or ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
@@ -3546,14 +3546,14 @@ isTestOsAccount(callback: AsyncCallback<boolean>): void
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [checkOsAccountTestable](#checkosaccounttestable)
+> [checkOsAccountTestable](#checkosaccounttestable-1)
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [checkOsAccountTestable](#checkosaccounttestable)(callback: AsyncCallback&lt;boolean&gt;)
+**替代接口：** [checkOsAccountTestable](#checkosaccounttestable-1)(callback: AsyncCallback&lt;boolean&gt;)
 
 <!--Device-AccountManager-isTestOsAccount(callback: AsyncCallback<boolean>): void--><!--Device-AccountManager-isTestOsAccount(callback: AsyncCallback<boolean>): void-End-->
 

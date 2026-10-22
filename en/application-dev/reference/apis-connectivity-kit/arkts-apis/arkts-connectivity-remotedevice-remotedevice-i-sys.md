@@ -1,4 +1,4 @@
-# RemoteDevice
+# RemoteDevice (System API)
 
 ```TypeScript
 interface RemoteDevice

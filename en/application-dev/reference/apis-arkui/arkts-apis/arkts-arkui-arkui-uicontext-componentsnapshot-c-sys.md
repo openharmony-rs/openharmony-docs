@@ -1,4 +1,4 @@
-# ComponentSnapshot
+# ComponentSnapshot (System API)
 
 ```TypeScript
 export class ComponentSnapshot

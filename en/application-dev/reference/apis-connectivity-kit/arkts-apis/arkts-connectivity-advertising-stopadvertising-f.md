@@ -26,7 +26,7 @@ Stops NearLink advertising. This API uses a promise to return the result. Before
 
 **System capability:** SystemCapability.Communication.NearLink.Base
 
-**See also:** [startAdvertising](arkts-connectivity-advertising-startadvertising-f.md) Starts NearLink advertising.
+**See also:** [startAdvertising](arkts-connectivity-advertising-startadvertising-f.md#startadvertising-1) Starts NearLink advertising.
 
 **Parameters:**
 

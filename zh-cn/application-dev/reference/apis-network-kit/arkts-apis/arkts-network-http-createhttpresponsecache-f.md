@@ -12,7 +12,7 @@ import { http } from '@kit.NetworkKit';
 function createHttpResponseCache(cacheSize?: number): HttpResponseCache
 ```
 
-创建一个HttpResponseCache对象，可用于存储HTTP请求的响应数据。对象中可调用[flush](arkts-network-http-httpresponsecache-i.md#flush)与[delete](arkts-network-http-httpresponsecache-i.md#delete)方法，cacheSize指定缓存大小。
+创建一个HttpResponseCache对象，可用于存储HTTP请求的响应数据。对象中可调用[flush](arkts-network-http-httpresponsecache-i.md#flush-1)与[delete](arkts-network-http-httpresponsecache-i.md#delete-1)方法，cacheSize指定缓存大小。
 
 **起始版本：** 9
 

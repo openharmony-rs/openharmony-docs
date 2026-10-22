@@ -20,18 +20,18 @@ import { screenshot } from '@kit.ArkUI';
 
 | Name | Description |
 | --- | --- |
-| [capture](arkts-arkui-screenshot-capture-f.md#capture) | Takes a screenshot of the entire screen. This API uses a promise to return the result. |
-| [pick](arkts-arkui-screenshot-pick-f.md#pick) | Obtains this screenshot. Currently, only the screenshot of the display whose ID is **0** can be obtained. (If a screenshot of the extended screen is needed, you can use the [capture](arkts-arkui-screenshot-capture-f.md) API.) This API uses a promise to return the result. |
+| [capture](arkts-arkui-screenshot-capture-f.md#capture-1) | Takes a screenshot of the entire screen. This API uses a promise to return the result. |
+| [pick](arkts-arkui-screenshot-pick-f.md#pick-1) | Obtains this screenshot. Currently, only the screenshot of the display whose ID is **0** can be obtained. (If a screenshot of the extended screen is needed, you can use the [capture](arkts-arkui-screenshot-capture-f.md) API.) This API uses a promise to return the result. |
 
 <!--Del-->
 ### Functions(System API)
 
 | Name | Description |
 | --- | --- |
-| [save](arkts-arkui-screenshot-save-f-sys.md#save) | Obtains a screenshot. This API uses an asynchronous callback to return the result. |
-| [save](arkts-arkui-screenshot-save-f-sys.md#save) | Obtains a screenshot. This API uses an asynchronous callback to return the result. |
-| [save](arkts-arkui-screenshot-save-f-sys.md#save) | Obtains a screenshot. This API uses a promise to return the result. |
-| [saveHdrPicture](arkts-arkui-screenshot-savehdrpicture-f-sys.md#savehdrpicture) | Obtains a screenshot. This API uses a promise to return the result. SDR stands for Standard Dynamic Range, and HDR stands for High Dynamic Range. |
+| [save](arkts-arkui-screenshot-save-f-sys.md#save-1) | Obtains a screenshot. This API uses an asynchronous callback to return the result. |
+| [save](arkts-arkui-screenshot-save-f-sys.md#save-2) | Obtains a screenshot. This API uses an asynchronous callback to return the result. |
+| [save](arkts-arkui-screenshot-save-f-sys.md#save-3) | Obtains a screenshot. This API uses a promise to return the result. |
+| [saveHdrPicture](arkts-arkui-screenshot-savehdrpicture-f-sys.md#savehdrpicture-1) | Obtains a screenshot. This API uses a promise to return the result. SDR stands for Standard Dynamic Range, and HDR stands for High Dynamic Range. |
 <!--DelEnd-->
 
 ### Interfaces

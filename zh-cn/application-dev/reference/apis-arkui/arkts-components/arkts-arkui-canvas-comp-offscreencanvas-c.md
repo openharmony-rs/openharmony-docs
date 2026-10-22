@@ -14,10 +14,6 @@ OffscreenCanvas组件用于绘制自定义图形。
 > [Drawing模块](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-graphics-drawing.md)
 > 进行离屏绘制。
 
-## 子组件
-
-不支持。
-
 **起始版本：** 8
 
 <!--Device-unnamed-declare class OffscreenCanvas--><!--Device-unnamed-declare class OffscreenCanvas-End-->

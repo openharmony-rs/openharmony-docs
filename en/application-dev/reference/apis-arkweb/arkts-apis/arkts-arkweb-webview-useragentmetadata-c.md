@@ -276,6 +276,8 @@ Obtains whether the binary file is running in 32-bit mode on 64-bit Windows. If 
 
 **Examples**
 
+For details about the sample code, see [setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled).
+
 ## setArchitecture
 
 ```TypeScript

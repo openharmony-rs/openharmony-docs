@@ -97,6 +97,30 @@ Callback triggered when the size or position of the atomic service menu bar (Ato
 
 **Examples**
 
+```TypeScript
+import { AtomicServiceBar, UIContext, Frame } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+@Entry
+@Component
+struct Index {
+  aboutToAppear(): void {
+    let uiContext: UIContext = this.getUIContext();
+    let currentBar: Nullable<AtomicServiceBar> = uiContext.getAtomicServiceBar();
+    if (currentBar != undefined) {
+      currentBar.onBarRectChange((rect: Frame) => {
+        hilog.info(0x0000, 'testTag', 'trigger onBarRectChange callback success. X: %{public}d, Y: %{public}d, Width: %{public}d, height: %{public}d.', rect.x, rect.y, rect.width, rect.height);
+      });
+    } else {
+      hilog.info(0x0000, 'testTag', 'set onBarRectChange callback failed.');
+    }
+  }
+  build() {
+    Text('hello world')
+  }
+}
+```
+
 ## setBackgroundColor
 
 ```TypeScript

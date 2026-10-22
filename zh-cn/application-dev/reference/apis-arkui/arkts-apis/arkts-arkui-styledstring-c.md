@@ -20,7 +20,7 @@ constructor(value: string | ImageAttachment | CustomSpan, styles?: Array<StyleOp
 
 属性字符串的构造函数。
 
-不支持在[loadContent()](arkts-arkui-window-window-i.md#loadcontent)之前创建。
+不支持在[loadContent()](arkts-arkui-window-window-i.md#loadcontent-1)之前创建。
 
 **起始版本：** 12
 

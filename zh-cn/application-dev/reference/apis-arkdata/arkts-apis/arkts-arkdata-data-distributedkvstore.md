@@ -30,7 +30,7 @@ import { distributedKVStore } from '@kit.ArkData';
 
 | 名称 | 说明 |
 | --- | --- |
-| [createKVManager](arkts-arkdata-distributedkvstore-createkvmanager-f.md#createkvmanager) | 创建一个KVManager对象实例，用于管理数据库对象。 |
+| [createKVManager](arkts-arkdata-distributedkvstore-createkvmanager-f.md#createkvmanager-1) | 创建一个KVManager对象实例，用于管理数据库对象。 |
 
 ### 类
 

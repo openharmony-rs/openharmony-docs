@@ -1,4 +1,4 @@
-# SecurityComponentMethod
+# SecurityComponentMethod (System API)
 
 ```TypeScript
 declare class SecurityComponentMethod<T>

@@ -89,7 +89,7 @@ Creates a **NumberFormat** object for rich text display.
 
 **Deprecated since:** 20
 
-**Substitutes:** [constructor](#constructor)(numberFormat: Intl.NumberFormat | SimpleNumberFormat, options?: StyledNumberFormatOptions)
+**Substitutes:** [constructor](#constructor-1)(numberFormat: Intl.NumberFormat | SimpleNumberFormat, options?: StyledNumberFormatOptions)
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 

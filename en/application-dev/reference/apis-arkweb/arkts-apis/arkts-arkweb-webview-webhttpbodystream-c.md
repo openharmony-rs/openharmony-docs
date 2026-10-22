@@ -258,6 +258,8 @@ Checks whether the uploaded data in this **WebHttpBodyStream** instance is in me
 
 **Examples**
 
+For the complete sample code, see [initialize](#initialize).
+
 ## read
 
 ```TypeScript

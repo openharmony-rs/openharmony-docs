@@ -4,7 +4,7 @@
 export declare class WithEnvAttribute
 ```
 
-Supports the following **WithEnv**-specific attributes.
+The [universal attributes](arkts-arkui-common-comp-commonmethod-c.md) are not supported.
 
 The [universal events](arkts-arkui-common-comp-commonmethod-c.md) are not supported.
 

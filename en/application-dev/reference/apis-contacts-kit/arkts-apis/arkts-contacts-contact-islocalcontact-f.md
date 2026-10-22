@@ -18,7 +18,7 @@ Checks whether the ID of this contact is in the local address book. This API use
 
 **Deprecated since:** 10
 
-**Substitutes:** [isLocalContact](#islocalcontact)(context: Context, id: number, callback: AsyncCallback&lt;boolean&gt;)
+**Substitutes:** [isLocalContact](#islocalcontact-2)(context: Context, id: number, callback: AsyncCallback&lt;boolean&gt;)
 
 **Required permissions:** ohos.permission.READ_CONTACTS
 
@@ -116,7 +116,7 @@ Checks whether the ID of this contact is in the local address book. This API use
 
 **Deprecated since:** 10
 
-**Substitutes:** [isLocalContact](#islocalcontact)(context: Context, id: number)
+**Substitutes:** [isLocalContact](#islocalcontact-4)(context: Context, id: number)
 
 **Required permissions:** ohos.permission.READ_CONTACTS
 

@@ -565,3 +565,47 @@ struct Index {
   }
 }
 ```
+
+### Example 5
+
+Sets whether the security control supports adaptive actual text height and the related behavior in screen reader mode.
+
+```TypeScript
+@Entry
+@Component
+struct Index {
+  build() {
+    Row() {
+      Column({ space: 10 }) {
+        // Set fallbackLineSpacing of the save control to true.
+        SaveButton()
+          .fallbackLineSpacing(true)
+          .id('btn1')
+
+        // Set the save control as the initial focus for screen reading on the page.
+        SaveButton()
+          .accessibilityDefaultFocus(true)
+          .id('btn2')
+
+        // Specify btn1 as the next focus of the save control during screen reader swipe focus traversal.
+        SaveButton()
+          .accessibilityDefaultFocus(true)
+          .id('btn3')
+          .accessibilityNextFocusId('btn1')
+
+        // Specify the accessibility component type of the save control as null.
+        SaveButton()
+          .accessibilityRole(SecurityComponentRoleType.ROLE_NONE)
+          .id('btn4')
+
+        // Specify the accessibility component description of the save control as test text.
+        SaveButton()
+          .accessibilityDescription("test text for description")
+          .id('btn5')
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```

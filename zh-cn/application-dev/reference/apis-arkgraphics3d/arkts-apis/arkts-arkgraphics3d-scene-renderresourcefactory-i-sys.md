@@ -1,10 +1,10 @@
-# RenderResourceFactory
+# RenderResourceFactory（系统接口）
 
 ```TypeScript
 export interface RenderResourceFactory
 ```
 
-用于创建可在共享RenderContext的多个场景（[Scene](arkts-arkgraphics3d-scene-c.md)）中共享的渲染资源。
+用于创建可在共享[RenderContext](arkts-arkgraphics3d-scene-rendercontext-i.md)的多个场景（[Scene](arkts-arkgraphics3d-scene-c.md)）中共享的渲染资源。
 
 **起始版本：** 20
 

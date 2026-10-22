@@ -1,4 +1,4 @@
-# ProtocolType
+# ProtocolType（系统接口）
 
 ```TypeScript
 enum ProtocolType

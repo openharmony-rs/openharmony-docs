@@ -1,6 +1,6 @@
 # @ohos.arkui.uiMaterial(System Material)
 
-This module provides APIs for system materials. Different system materials correspond to different UI effects, including the background color ([backgroundColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor)), border color ([borderColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bordercolor)), border width ([borderWidth](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#borderwidth)), and shadow ([shadow](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#shadow)).
+This module provides APIs for system materials. Different system materials correspond to different UI effects, including the background color ([backgroundColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor-1)), border color ([borderColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bordercolor)), border width ([borderWidth](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#borderwidth)), and shadow ([shadow](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#shadow-1)).
 
 > **NOTE:** 
 > 
@@ -26,17 +26,17 @@ import { uiMaterial } from '@kit.ArkUI';
 
 | Name | Description |
 | --- | --- |
-| [getGlobalMaterialLevel](arkts-arkui-uimaterial-getglobalmateriallevel-f.md#getglobalmateriallevel) | Obtains the global material level, which is related to the device computing power. This configuration item is defined by the device and cannot be modified. |
-| [getMaterialInfo](arkts-arkui-uimaterial-getmaterialinfo-f.md#getmaterialinfo) | Obtains the material configuration information of this application. The returned configuration information comes from the metadata configured in the [module.json5](../../../quick-start/module-configuration-file.md) file of the application. |
-| [isImmersiveMaterialSupported](arkts-arkui-uimaterial-isimmersivematerialsupported-f.md#isimmersivematerialsupported) | Checks whether the current device supports immersive system materials ([ImmersiveMaterial](arkts-arkui-uimaterial-immersivematerial-c.md)). This configuration item is defined by the device and cannot be modified. |
+| [getGlobalMaterialLevel](arkts-arkui-uimaterial-getglobalmateriallevel-f.md#getglobalmateriallevel-1) | Obtains the global material level, which is related to the device computing power. This configuration item is defined by the device and cannot be modified. |
+| [getMaterialInfo](arkts-arkui-uimaterial-getmaterialinfo-f.md#getmaterialinfo-1) | Obtains the material configuration information of this application. The returned configuration information comes from the metadata configured in the [module.json5](../../../quick-start/module-configuration-file.md) file of the application. |
+| [isImmersiveMaterialSupported](arkts-arkui-uimaterial-isimmersivematerialsupported-f.md#isimmersivematerialsupported-1) | Checks whether the current device supports immersive system materials ([ImmersiveMaterial](arkts-arkui-uimaterial-immersivematerial-c.md)). This configuration item is defined by the device and cannot be modified. |
 
 <!--Del-->
 ### Functions(System API)
 
 | Name | Description |
 | --- | --- |
-| [convertToECMaterial](arkts-arkui-uimaterial-converttoecmaterial-f-sys.md#converttoecmaterial) | Converts an [ImmersiveMaterial](arkts-arkui-uimaterial-immersivematerial-c.md) material into an ImmersiveMaterial material applicable to [EffectComponent](../arkts-components/arkts-arkui-effectcomponent-comp-sys.md). |
-| [convertToECSubMaterial](arkts-arkui-uimaterial-converttoecsubmaterial-f-sys.md#converttoecsubmaterial) | Converts an [ImmersiveMaterial](arkts-arkui-uimaterial-immersivematerial-c.md) material into an ImmersiveMaterial material applicable to the child components of [EffectComponent](../arkts-components/arkts-arkui-effectcomponent-comp-sys.md). |
+| [convertToECMaterial](arkts-arkui-uimaterial-converttoecmaterial-f-sys.md#converttoecmaterial-1) | Converts an [ImmersiveMaterial](arkts-arkui-uimaterial-immersivematerial-c.md) material into an ImmersiveMaterial material applicable to [EffectComponent](../arkts-components/arkts-arkui-effectcomponent-comp-sys.md). |
+| [convertToECSubMaterial](arkts-arkui-uimaterial-converttoecsubmaterial-f-sys.md#converttoecsubmaterial-1) | Converts an [ImmersiveMaterial](arkts-arkui-uimaterial-immersivematerial-c.md) material into an ImmersiveMaterial material applicable to the child components of [EffectComponent](../arkts-components/arkts-arkui-effectcomponent-comp-sys.md). |
 <!--DelEnd-->
 
 ### Classes

@@ -1,4 +1,4 @@
-# Album
+# Album (System API)
 
 ```TypeScript
 interface Album extends AbsAlbum

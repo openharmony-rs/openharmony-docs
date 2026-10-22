@@ -338,23 +338,23 @@ Sets whether to enable the edge fading effect and the length of the fading edge.
 > **NOTE:** 
 > 
 > **fadingEdge** is implemented by setting the [overlay](arkts-arkui-common-comp-commonmethod-c.md#overlay) attribute and the
-> [blendMode](arkts-arkui-common-comp-commonmethod-c.md#blendmode) attribute (with the parameter
+> [blendMode](arkts-arkui-common-comp-commonmethod-c.md#blendmode-1) attribute (with the parameter
 > values **BlendMode.SRC_OVER** and **BlendApplyType.OFFSCREEN**). When **fadingEdge** takes effect, it overrides
 > the **.overlay()** and **.blendMode()** attributes of the original component, and causes the APIs that require
 > screen capture of the current component and its child components to fail to capture the correct image. The APIs
-> that require screen capture include [blur](arkts-arkui-common-comp-commonmethod-c.md#blur),
-> [linearGradientBlur](arkts-arkui-common-comp-commonmethod-c.md#lineargradientblur),
-> [brightness](arkts-arkui-common-comp-commonmethod-c.md#brightness), [visualEffect](arkts-arkui-common-comp-commonmethod-c.md#visualeffect),
-> [grayscale](arkts-arkui-common-comp-commonmethod-c.md#grayscale), [saturate](arkts-arkui-common-comp-commonmethod-c.md#saturate),
-> [contrast](arkts-arkui-common-comp-commonmethod-c.md#contrast),
-> [invert](arkts-arkui-common-comp-commonmethod-c.md#invert),
-> [sepia](arkts-arkui-common-comp-commonmethod-c.md#sepia),
-> [hueRotate](arkts-arkui-common-comp-commonmethod-c.md#huerotate),
-> [colorBlend](arkts-arkui-common-comp-commonmethod-c.md#colorblend),
-> [lightUpEffect](arkts-arkui-common-comp-commonmethod-c.md#lightupeffect),
-> [pixelStretchEffect](arkts-arkui-common-comp-commonmethod-c.md#pixelstretcheffect),
-> [blendMode](arkts-arkui-common-comp-commonmethod-c.md#blendmode), and
-> [backgroundBrightness](arkts-arkui-common-comp-commonmethod-c.md#backgroundbrightness).
+> that require screen capture include [blur](arkts-arkui-common-comp-commonmethod-c.md#blur-1),
+> [linearGradientBlur](arkts-arkui-common-comp-commonmethod-c.md#lineargradientblur-1),
+> [brightness](arkts-arkui-common-comp-commonmethod-c.md#brightness-1), [visualEffect](arkts-arkui-common-comp-commonmethod-c.md#visualeffect),
+> [grayscale](arkts-arkui-common-comp-commonmethod-c.md#grayscale-1), [saturate](arkts-arkui-common-comp-commonmethod-c.md#saturate-1),
+> [contrast](arkts-arkui-common-comp-commonmethod-c.md#contrast-1),
+> [invert](arkts-arkui-common-comp-commonmethod-c.md#invert-1),
+> [sepia](arkts-arkui-common-comp-commonmethod-c.md#sepia-1),
+> [hueRotate](arkts-arkui-common-comp-commonmethod-c.md#huerotate-1),
+> [colorBlend](arkts-arkui-common-comp-commonmethod-c.md#colorblend-1),
+> [lightUpEffect](arkts-arkui-common-comp-commonmethod-c.md#lightupeffect-1),
+> [pixelStretchEffect](arkts-arkui-common-comp-commonmethod-c.md#pixelstretcheffect-1),
+> [blendMode](arkts-arkui-common-comp-commonmethod-c.md#blendmode-1), and
+> [backgroundBrightness](arkts-arkui-common-comp-commonmethod-c.md#backgroundbrightness-1).
 > 
 > When **fadingEdge** takes effect, it is recommended not to set the [background](arkts-arkui-common-comp-commonmethod-c.md#background)
 > related attributes on the component on which the **fadingEdge** attribute is set, because doing so affects the
@@ -366,7 +366,7 @@ Sets whether to enable the edge fading effect and the length of the fading edge.
 > system material and causes the material effect to be inconsistent with the expected effect.
 > 
 > When **fadingEdge** takes effect, the component on which the **fadingEdge** attribute is set is clipped to the
-> boundary. Setting the [clip](arkts-arkui-common-comp-commonmethod-c.md#clip) attribute to **false** on this component
+> boundary. Setting the [clip](arkts-arkui-common-comp-commonmethod-c.md#clip-1) attribute to **false** on this component
 > does not take effect.
 
 **Since:** 14
@@ -934,7 +934,7 @@ Sets the scrollbar color.
 scrollBarColor(color: Color | number | string | Resource): T
 ```
 
-Sets the scrollbar color. Compared with [scrollBarColor<sup>11+</sup>](#scrollbarcolor), this API supports the Resource type for the **color** parameter.
+Sets the scrollbar color. Compared with [scrollBarColor<sup>11+</sup>](#scrollbarcolor-1), this API supports the Resource type for the **color** parameter.
 
 **Since:** 22
 

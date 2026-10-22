@@ -1,4 +1,4 @@
-# State
+# State（系统接口）
 
 ```TypeScript
 enum State

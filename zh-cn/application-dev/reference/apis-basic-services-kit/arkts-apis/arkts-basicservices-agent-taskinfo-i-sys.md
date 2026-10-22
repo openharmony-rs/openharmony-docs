@@ -1,4 +1,4 @@
-# TaskInfo
+# TaskInfo（系统接口）
 
 ```TypeScript
 interface TaskInfo

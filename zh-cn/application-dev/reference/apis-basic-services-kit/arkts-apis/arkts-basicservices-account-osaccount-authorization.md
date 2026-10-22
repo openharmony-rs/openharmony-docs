@@ -32,7 +32,7 @@ import { authorization } from '@kit.BasicServicesKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [getAuthorizationManager](arkts-basicservices-authorization-getauthorizationmanager-f.md#getauthorizationmanager) | 获取[AuthorizationManager](arkts-basicservices-authorization-authorizationmanager-i.md)实例。 |
+| [getAuthorizationManager](arkts-basicservices-authorization-getauthorizationmanager-f.md#getauthorizationmanager-1) | 获取[AuthorizationManager](arkts-basicservices-authorization-authorizationmanager-i.md)实例。 |
 
 ### 接口
 

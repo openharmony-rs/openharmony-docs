@@ -18,7 +18,7 @@ Disallows the device to modify the system time. This API uses an asynchronous ca
 
 **Deprecated since:** 26.0.0
 
-**Substitutes:** [setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy)(admin: Want, feature: FeatureForDevice, disallow: boolean)
+**Substitutes:** [setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy-2)(admin: Want, feature: FeatureForDevice, disallow: boolean)
 
 **Required permissions:** ohos.permission.ENTERPRISE_SET_DATETIME
 
@@ -85,7 +85,7 @@ Disallows the device to modify the system time. This API uses a promise to retur
 
 **Deprecated since:** 26.0.0
 
-**Substitutes:** [setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy)(admin: Want, feature: FeatureForDevice, disallow: boolean)
+**Substitutes:** [setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy-2)(admin: Want, feature: FeatureForDevice, disallow: boolean)
 
 **Required permissions:** ohos.permission.ENTERPRISE_SET_DATETIME
 

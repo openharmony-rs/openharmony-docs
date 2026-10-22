@@ -1,4 +1,4 @@
-# WifiDeviceConfig
+# WifiDeviceConfig (System API)
 
 ```TypeScript
 interface WifiDeviceConfig

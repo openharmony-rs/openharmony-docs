@@ -4,7 +4,7 @@
 interface MediaSource
 ```
 
-媒体数据信息。来源于[createMediaSourceWithUrl](arkts-media-media-createmediasourcewithurl-f.md)。
+媒体数据信息。来源于[createMediaSourceWithUrl](arkts-media-media-createmediasourcewithurl-f.md#createmediasourcewithurl-1)。
 
 > **说明：** 
 > 

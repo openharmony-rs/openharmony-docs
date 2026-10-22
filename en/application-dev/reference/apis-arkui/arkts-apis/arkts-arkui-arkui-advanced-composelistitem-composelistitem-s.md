@@ -4,13 +4,7 @@
 export declare struct ComposeListItem
 ```
 
-The **ComposeListItem** component is a container that presents a series of items arranged in a column with the same width. You can use it to present data of the same type in a multiple and coherent row style, for example, images or text.
-
-> **NOTE:** 
-> 
-> - This component can be used only in the stage model.
-> 
-> - If the **ComposeListItem** component has [universal attributes](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md) and [universal events](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md) configured, the compiler toolchain automatically generates an additional \_\_Common\_\_ node and mounts the universal attributes and universal events on this node rather than the **ComposeListItem** component itself. As a result, the configured universal attributes and universal events may fail to take effect or behave as intended. For this reason, avoid using universal attributes and events with the **ComposeListItem** component.
+Creates a ComposeListItem component that allows customization of the left, center, and right content areas.
 
 **Since:** 10
 

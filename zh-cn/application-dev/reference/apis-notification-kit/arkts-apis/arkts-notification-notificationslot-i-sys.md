@@ -1,4 +1,4 @@
-# NotificationSlot
+# NotificationSlot（系统接口）
 
 ```TypeScript
 export interface NotificationSlot

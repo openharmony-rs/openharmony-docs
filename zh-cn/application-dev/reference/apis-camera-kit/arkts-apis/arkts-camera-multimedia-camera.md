@@ -24,7 +24,7 @@ import { camera } from '@kit.CameraKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [getCameraManager](arkts-camera-camera-getcameramanager-f.md#getcameramanager) | 获取相机管理器实例，同步返回结果。 |
+| [getCameraManager](arkts-camera-camera-getcameramanager-f.md#getcameramanager-1) | 获取相机管理器实例，同步返回结果。 |
 
 <!--Del-->
 ### 类（系统接口）

@@ -28,7 +28,7 @@ function onPairingRequest(callback: Callback<PairingRequestParam>): void
 
 **系统接口：** 此接口为系统接口。
 
-**参见：** [offPairingRequest](arkts-connectivity-remotedevice-offpairingrequest-f-sys.md) 取消订阅配对请求事件。
+**参见：** [offPairingRequest](arkts-connectivity-remotedevice-offpairingrequest-f-sys.md#offpairingrequest-1) 取消订阅配对请求事件。
 
 **参数：**
 

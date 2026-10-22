@@ -1,4 +1,4 @@
-# AudioVolumeType
+# AudioVolumeType (System API)
 
 ```TypeScript
 enum AudioVolumeType

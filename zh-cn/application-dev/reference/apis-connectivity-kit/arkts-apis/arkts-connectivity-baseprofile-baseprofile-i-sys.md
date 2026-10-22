@@ -1,4 +1,4 @@
-# BaseProfile
+# BaseProfile（系统接口）
 
 ```TypeScript
 export interface BaseProfile

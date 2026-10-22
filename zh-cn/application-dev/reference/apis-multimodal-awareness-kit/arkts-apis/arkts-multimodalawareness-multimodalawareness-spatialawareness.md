@@ -25,10 +25,10 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [offDistanceMeasure](arkts-multimodalawareness-spatialawareness-offdistancemeasure-f-sys.md#offdistancemeasure) | 取消订阅测距接口。停止运行已订阅的测距算法。 |
-| [offIndoorOrOutdoorIdentify](arkts-multimodalawareness-spatialawareness-offindoororoutdooridentify-f-sys.md#offindoororoutdooridentify) | 取消订阅门内外识别接口。停止运行已订阅的门内外识别算法。 |
-| [onDistanceMeasure](arkts-multimodalawareness-spatialawareness-ondistancemeasure-f-sys.md#ondistancemeasure) | 订阅测距接口。触发测距算法执行，并返回测距结果。 |
-| [onIndoorOrOutdoorIdentify](arkts-multimodalawareness-spatialawareness-onindoororoutdooridentify-f-sys.md#onindoororoutdooridentify) | 订阅门内外识别接口。触发门内外识别算法执行，并返回设备在门内还是门外的信息。 |
+| [offDistanceMeasure](arkts-multimodalawareness-spatialawareness-offdistancemeasure-f-sys.md#offdistancemeasure-1) | 取消订阅测距接口。停止运行已订阅的测距算法。 |
+| [offIndoorOrOutdoorIdentify](arkts-multimodalawareness-spatialawareness-offindoororoutdooridentify-f-sys.md#offindoororoutdooridentify-1) | 取消订阅门内外识别接口。停止运行已订阅的门内外识别算法。 |
+| [onDistanceMeasure](arkts-multimodalawareness-spatialawareness-ondistancemeasure-f-sys.md#ondistancemeasure-1) | 订阅测距接口。触发测距算法执行，并返回测距结果。 |
+| [onIndoorOrOutdoorIdentify](arkts-multimodalawareness-spatialawareness-onindoororoutdooridentify-f-sys.md#onindoororoutdooridentify-1) | 订阅门内外识别接口。触发门内外识别算法执行，并返回设备在门内还是门外的信息。 |
 <!--DelEnd-->
 
 <!--Del-->

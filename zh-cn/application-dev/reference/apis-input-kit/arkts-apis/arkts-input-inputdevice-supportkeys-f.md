@@ -12,7 +12,7 @@ import { inputDevice } from '@kit.InputKit';
 function supportKeys(deviceId: number, keys: Array<KeyCode>, callback: AsyncCallback<Array<boolean>>): void
 ```
 
-查询指定输入设备是否支持指定按键，使用callback异步回调。
+查询指定输入设备是否支持指定按键，使用callback异步回调。调用此接口前，需要先调用[getDeviceList](arkts-input-inputdevice-getdevicelist-f.md)接口获取输入设备的ID。
 
 **起始版本：** 9
 
@@ -73,7 +73,7 @@ struct Index {
 function supportKeys(deviceId: number, keys: Array<KeyCode>): Promise<Array<boolean>>
 ```
 
-查询指定输入设备是否支持指定按键，使用Promise异步回调。
+查询指定输入设备是否支持指定按键，使用Promise异步回调。调用此接口前，需要先调用[getDeviceList](arkts-input-inputdevice-getdevicelist-f.md)接口获取输入设备的ID。
 
 **起始版本：** 9
 

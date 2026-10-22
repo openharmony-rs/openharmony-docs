@@ -30,7 +30,7 @@ function offSeniorModeStateChangeForApp(callback?: Callback<AppSeniorModeInfo>):
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[AppSeniorModeInfo](arkts-accessibility-config-appseniormodeinfo-i-sys.md)&gt; | 否 | 回调函数，取消指定callback对象的事件响应。需与[config.onSeniorModeStateChangeForApp](arkts-accessibility-config-onseniormodestatechangeforapp-f-sys.md)的callback一致。缺省时，表示注销所有已注册事件。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[AppSeniorModeInfo](arkts-accessibility-config-appseniormodeinfo-i-sys.md)&gt; | 否 | 回调函数，取消指定callback对象的事件响应。需与[config.onSeniorModeStateChangeForApp](arkts-accessibility-config-onseniormodestatechangeforapp-f-sys.md#onseniormodestatechangeforapp-1)的callback一致。缺省时，表示注销所有已注册事件。 |
 
 **错误码：**
 

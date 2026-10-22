@@ -1,4 +1,4 @@
-# CellInformation
+# CellInformation（系统接口）
 
 ```TypeScript
 export interface CellInformation

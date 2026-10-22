@@ -22,28 +22,28 @@ import { ble } from '@kit.ConnectivityKit';
 
 | Name | Description |
 | --- | --- |
-| [createBleScanner](arkts-connectivity-ble-createblescanner-f.md#createblescanner) | Create a ble scanner instance. Each ble scanner instance can be independently started or stopped. |
-| [createGattClientDevice](arkts-connectivity-ble-creategattclientdevice-f.md#creategattclientdevice) | create a Gatt client device instance. |
-| [createGattClientDevice](arkts-connectivity-ble-creategattclientdevice-f.md#creategattclientdevice) | create a Gatt client device instance with custom setting. |
-| [createGattServer](arkts-connectivity-ble-creategattserver-f.md#creategattserver) | create a Gatt server instance. |
-| [disableAdvertising](arkts-connectivity-ble-disableadvertising-f.md#disableadvertising) | Disable the advertising with a specific ID temporarily. |
-| [disableAdvertising](arkts-connectivity-ble-disableadvertising-f.md#disableadvertising) | Disable the advertising with a specific ID temporarily. |
-| [enableAdvertising](arkts-connectivity-ble-enableadvertising-f.md#enableadvertising) | Enable the advertising with a specific ID temporarily. |
-| [enableAdvertising](arkts-connectivity-ble-enableadvertising-f.md#enableadvertising) | Enable the advertising with a specific ID temporarily. |
-| [getConnectedBLEDevices](arkts-connectivity-ble-getconnectedbledevices-f.md#getconnectedbledevices) | Obtains the list of devices in the connected status. |
-| [getConnectedBLEDevices](arkts-connectivity-ble-getconnectedbledevices-f.md#getconnectedbledevices) | Obtains the list of devices in the connected status. |
+| [createBleScanner](arkts-connectivity-ble-createblescanner-f.md#createblescanner-1) | Create a ble scanner instance. Each ble scanner instance can be independently started or stopped. |
+| [createGattClientDevice](arkts-connectivity-ble-creategattclientdevice-f.md#creategattclientdevice-1) | create a Gatt client device instance. |
+| [createGattClientDevice](arkts-connectivity-ble-creategattclientdevice-f.md#creategattclientdevice-2) | create a Gatt client device instance with custom setting. |
+| [createGattServer](arkts-connectivity-ble-creategattserver-f.md#creategattserver-1) | create a Gatt server instance. |
+| [disableAdvertising](arkts-connectivity-ble-disableadvertising-f.md#disableadvertising-1) | Disable the advertising with a specific ID temporarily. |
+| [disableAdvertising](arkts-connectivity-ble-disableadvertising-f.md#disableadvertising-2) | Disable the advertising with a specific ID temporarily. |
+| [enableAdvertising](arkts-connectivity-ble-enableadvertising-f.md#enableadvertising-1) | Enable the advertising with a specific ID temporarily. |
+| [enableAdvertising](arkts-connectivity-ble-enableadvertising-f.md#enableadvertising-2) | Enable the advertising with a specific ID temporarily. |
+| [getConnectedBLEDevices](arkts-connectivity-ble-getconnectedbledevices-f.md#getconnectedbledevices-1) | Obtains the list of devices in the connected status. |
+| [getConnectedBLEDevices](arkts-connectivity-ble-getconnectedbledevices-f.md#getconnectedbledevices-2) | Obtains the list of devices in the connected status. |
 | [off('advertisingStateChange')](arkts-connectivity-ble-off-f.md#offadvertisingstatechange) | Unsubscribe from advertising state change event. |
 | [off('BLEDeviceFind')](arkts-connectivity-ble-off-f.md#offbledevicefind) | Unsubscribe BLE scan result. |
 | [on('advertisingStateChange')](arkts-connectivity-ble-on-f.md#onadvertisingstatechange) | Subscribing to advertising state change event. |
 | [on('BLEDeviceFind')](arkts-connectivity-ble-on-f.md#onbledevicefind) | Subscribe BLE scan result. |
-| [startAdvertising](arkts-connectivity-ble-startadvertising-f.md#startadvertising) | Starts BLE advertising. |
-| [startAdvertising](arkts-connectivity-ble-startadvertising-f.md#startadvertising) | Starts BLE advertising. The API returns a advertising ID. The ID can be used to temporarily enable or disable this advertising using the API [enableAdvertising](arkts-connectivity-ble-enableadvertising-f.md) or [disableAdvertising](arkts-connectivity-ble-disableadvertising-f.md). To completely stop the advertising corresponding to the ID, invoke the API [stopAdvertising](arkts-connectivity-ble-stopadvertising-f.md) with ID. |
-| [startAdvertising](arkts-connectivity-ble-startadvertising-f.md#startadvertising) | Starts BLE advertising. The API returns a advertising ID. The ID can be used to temporarily enable or disable this advertising using the API [enableAdvertising](arkts-connectivity-ble-enableadvertising-f.md) or [disableAdvertising](arkts-connectivity-ble-disableadvertising-f.md). To completely stop the advertising corresponding to the ID, invoke the API [stopAdvertising](arkts-connectivity-ble-stopadvertising-f.md) with ID. |
-| [startBLEScan](arkts-connectivity-ble-startblescan-f.md#startblescan) | Starts scanning for specified BLE devices with filters. |
-| [stopAdvertising](arkts-connectivity-ble-stopadvertising-f.md#stopadvertising) | Stops BLE advertising. |
-| [stopAdvertising](arkts-connectivity-ble-stopadvertising-f.md#stopadvertising) | Stops BLE advertising. Completely stop the advertising corresponding to the ID. |
-| [stopAdvertising](arkts-connectivity-ble-stopadvertising-f.md#stopadvertising) | Stops BLE advertising. Completely stop the advertising corresponding to the ID. |
-| [stopBLEScan](arkts-connectivity-ble-stopblescan-f.md#stopblescan) | Stops BLE scanning. |
+| [startAdvertising](arkts-connectivity-ble-startadvertising-f.md#startadvertising-1) | Starts BLE advertising. |
+| [startAdvertising](arkts-connectivity-ble-startadvertising-f.md#startadvertising-2) | Starts BLE advertising. The API returns a advertising ID. The ID can be used to temporarily enable or disable this advertising using the API [enableAdvertising](arkts-connectivity-ble-enableadvertising-f.md) or [disableAdvertising](arkts-connectivity-ble-disableadvertising-f.md). To completely stop the advertising corresponding to the ID, invoke the API [stopAdvertising](arkts-connectivity-ble-stopadvertising-f.md) with ID. |
+| [startAdvertising](arkts-connectivity-ble-startadvertising-f.md#startadvertising-3) | Starts BLE advertising. The API returns a advertising ID. The ID can be used to temporarily enable or disable this advertising using the API [enableAdvertising](arkts-connectivity-ble-enableadvertising-f.md) or [disableAdvertising](arkts-connectivity-ble-disableadvertising-f.md). To completely stop the advertising corresponding to the ID, invoke the API [stopAdvertising](arkts-connectivity-ble-stopadvertising-f.md) with ID. |
+| [startBLEScan](arkts-connectivity-ble-startblescan-f.md#startblescan-1) | Starts scanning for specified BLE devices with filters. |
+| [stopAdvertising](arkts-connectivity-ble-stopadvertising-f.md#stopadvertising-1) | Stops BLE advertising. |
+| [stopAdvertising](arkts-connectivity-ble-stopadvertising-f.md#stopadvertising-2) | Stops BLE advertising. Completely stop the advertising corresponding to the ID. |
+| [stopAdvertising](arkts-connectivity-ble-stopadvertising-f.md#stopadvertising-3) | Stops BLE advertising. Completely stop the advertising corresponding to the ID. |
+| [stopBLEScan](arkts-connectivity-ble-stopblescan-f.md#stopblescan-1) | Stops BLE scanning. |
 
 ### Interfaces
 

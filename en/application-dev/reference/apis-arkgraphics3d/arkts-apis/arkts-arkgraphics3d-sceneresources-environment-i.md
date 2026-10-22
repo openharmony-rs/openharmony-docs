@@ -4,7 +4,7 @@
 export interface Environment extends SceneResource
 ```
 
-Environment resource, which inherits from SceneResource.
+Environment resource, which inherits from [SceneResource](arkts-arkgraphics3d-sceneresources-sceneresource-i.md).
 
 **Inheritance/Implementation:** Environment extends [SceneResource](arkts-arkgraphics3d-sceneresources-sceneresource-i.md)
 

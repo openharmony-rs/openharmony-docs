@@ -30,7 +30,7 @@ import { scriptManager } from '@kit.AbilityKit';
 
 | Name | Description |
 | --- | --- |
-| [completeArkTSScriptInApp](arkts-ability-scriptmanager-completearktsscriptinapp-f.md#completearktsscriptinapp) | Completes the ArkTS script execution of an app and reports the execution result. This API uses a promise to return the result. |
+| [completeArkTSScriptInApp](arkts-ability-scriptmanager-completearktsscriptinapp-f.md#completearktsscriptinapp-1) | Completes the ArkTS script execution of an app and reports the execution result. This API uses a promise to return the result. |
 
 ### Interfaces
 

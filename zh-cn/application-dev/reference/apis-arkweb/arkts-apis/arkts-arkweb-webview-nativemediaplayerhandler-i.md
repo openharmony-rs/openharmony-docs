@@ -364,6 +364,8 @@ handleVideoSizeChanged(width: number, height: number): void
 
 **示例**
 
+完整示例代码参考[onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer)。
+
 ## handleVolumeChanged
 
 ```TypeScript

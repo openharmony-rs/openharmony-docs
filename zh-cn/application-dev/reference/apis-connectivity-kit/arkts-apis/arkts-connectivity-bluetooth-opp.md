@@ -25,7 +25,7 @@ import { opp } from '@kit.ConnectivityKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [createOppServerProfile](arkts-connectivity-opp-createoppserverprofile-f-sys.md#createoppserverprofile) | 创建oppServer profile实例。 |
+| [createOppServerProfile](arkts-connectivity-opp-createoppserverprofile-f-sys.md#createoppserverprofile-1) | 创建oppServer profile实例。 |
 <!--DelEnd-->
 
 <!--Del-->

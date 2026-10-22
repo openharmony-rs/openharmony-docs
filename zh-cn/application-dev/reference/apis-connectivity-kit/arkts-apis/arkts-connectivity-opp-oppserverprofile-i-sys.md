@@ -1,4 +1,4 @@
-# OppServerProfile
+# OppServerProfile（系统接口）
 
 ```TypeScript
 interface OppServerProfile

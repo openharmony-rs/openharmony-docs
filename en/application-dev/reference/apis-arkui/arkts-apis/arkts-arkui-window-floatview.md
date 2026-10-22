@@ -57,11 +57,11 @@ import { floatView } from '@kit.ArkUI';
 
 | Name | Description |
 | --- | --- |
-| [bind](arkts-arkui-floatview-bind-f.md#bind) | Binds the float view and floating ball. You need to create the [float view controller](arkts-arkui-floatview-floatviewcontroller-i.md) and [floating ball controller](arkts-arkui-floatingball-floatingballcontroller-i.md) first, and neither of them has been started. This API uses a promise to return the result. |
-| [create](arkts-arkui-floatview-create-f.md#create) | Creates a float view controller. This API uses a promise to return the result. |
-| [getFloatViewLimits](arkts-arkui-floatview-getfloatviewlimits-f.md#getfloatviewlimits) | Obtains the limits of the float view based on the passed template type. The unit is px. |
-| [isFloatViewEnabled](arkts-arkui-floatview-isfloatviewenabled-f.md#isfloatviewenabled) | Checks whether the device supports the float view. |
-| [unbind](arkts-arkui-floatview-unbind-f.md#unbind) | Unbinds the float view and floating ball. The unbinding can be performed only after both the [float view controller](arkts-arkui-floatview-floatviewcontroller-i.md) and [floating ball controller](arkts-arkui-floatingball-floatingballcontroller-i.md) are stopped. This API uses a promise to return the result. |
+| [bind](arkts-arkui-floatview-bind-f.md#bind-1) | Binds the float view and floating ball. You need to create the [float view controller](arkts-arkui-floatview-floatviewcontroller-i.md) and [floating ball controller](arkts-arkui-floatingball-floatingballcontroller-i.md) first, and neither of them has been started. This API uses a promise to return the result. |
+| [create](arkts-arkui-floatview-create-f.md#create-1) | Creates a float view controller. This API uses a promise to return the result. |
+| [getFloatViewLimits](arkts-arkui-floatview-getfloatviewlimits-f.md#getfloatviewlimits-1) | Obtains the limits of the float view based on the passed template type. The unit is px. |
+| [isFloatViewEnabled](arkts-arkui-floatview-isfloatviewenabled-f.md#isfloatviewenabled-1) | Checks whether the device supports the float view. |
+| [unbind](arkts-arkui-floatview-unbind-f.md#unbind-1) | Unbinds the float view and floating ball. The unbinding can be performed only after both the [float view controller](arkts-arkui-floatview-floatviewcontroller-i.md) and [floating ball controller](arkts-arkui-floatingball-floatingballcontroller-i.md) are stopped. This API uses a promise to return the result. |
 
 ### Interfaces
 

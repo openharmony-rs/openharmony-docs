@@ -48,7 +48,7 @@ checkboxShape(value: CheckBoxShape)
 checkboxShape(shape: Optional<CheckBoxShape>)
 ```
 
-设置CheckboxGroup组件形状，包括圆形和圆角方形。与[checkboxShape](#checkboxshape)<sup>12+</sup>相比，shape参数新增了对undefined类型的支持。
+设置CheckboxGroup组件形状，包括圆形和圆角方形。与[checkboxShape](#checkboxshape-1)<sup>12+</sup>相比，shape参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -126,7 +126,7 @@ mark(value: MarkStyle)
 mark(style: Optional<MarkStyle>)
 ```
 
-设置多选框内部图标样式。与[mark](#mark)<sup>10+</sup>相比，style参数新增了对undefined类型的支持。
+设置多选框内部图标样式。与[mark](#mark-1)<sup>10+</sup>相比，style参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -176,7 +176,7 @@ CheckboxGroup的选中状态或群组内的Checkbox的选中状态发生变化�
 onChange(callback: Optional<OnCheckboxGroupChangeCallback>)
 ```
 
-CheckboxGroup的选中状态或群组内的Checkbox的选中状态发生变化时，触发回调。与[onChange](#onchange)相比，callback参数新增了对undefined类型的支持。在与带有缓存功能的组件（如List）配合使用时，需注意未创建的Checkbox的选中状态对回调结果的影响。
+CheckboxGroup的选中状态或群组内的Checkbox的选中状态发生变化时，触发回调。与[onChange](#onchange-1)相比，callback参数新增了对undefined类型的支持。在与带有缓存功能的组件（如List）配合使用时，需注意未创建的Checkbox的选中状态对回调结果的影响。
 
 **起始版本：** 18
 
@@ -234,7 +234,7 @@ selectAll(value: boolean)
 selectAll(isAllSelected: Optional<boolean>)
 ```
 
-设置是否全选。若同组的Checkbox显式设置了select属性，则Checkbox的优先级高。与[selectAll](#selectall)相比，isAllSelected参数新增了对undefined类型的支持。
+设置是否全选。若同组的Checkbox显式设置了select属性，则Checkbox的优先级高。与[selectAll](#selectall-1)相比，isAllSelected参数新增了对undefined类型的支持。
 
 在与带有缓存功能的组件（如List）配合使用时，未创建的Checkbox选中状态需由开发者控制。
 
@@ -290,7 +290,7 @@ selectedColor(value: ResourceColor)
 selectedColor(resColor: Optional<ResourceColor>)
 ```
 
-设置被选中或部分选中状态的颜色。与[selectedColor](#selectedcolor)相比，resColor参数新增了对undefined类型的支持。
+设置被选中或部分选中状态的颜色。与[selectedColor](#selectedcolor-1)相比，resColor参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -340,7 +340,7 @@ unselectedColor(value: ResourceColor)
 unselectedColor(resColor: Optional<ResourceColor>)
 ```
 
-设置非选中状态边框颜色。与[unselectedColor](#unselectedcolor)<sup>10+</sup>相比，resColor参数新增了对undefined类型的支持。
+设置非选中状态边框颜色。与[unselectedColor](#unselectedcolor-1)<sup>10+</sup>相比，resColor参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 

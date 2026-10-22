@@ -112,7 +112,7 @@ status为true时，[addPermissionUsedRecord](arkts-ability-privacymanager-addper
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system app. Interface caller is not a system app. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [12100001](../errorcode-access-token.md#12100001-入参错误) | Invalid parameter. The specified subProfileId does not exist for the current user. |
-| [12100006](../errorcode-access-token.md#12100006-指定操作不允许) | Operation not allowed. The toggle status of the specified permission has already been set by [setPermissionUsedRecordToggleStatus](#setpermissionusedrecordtogglestatus). |
+| [12100006](../errorcode-access-token.md#12100006-指定操作不允许) | Operation not allowed. The toggle status of the specified permission has already been set by [setPermissionUsedRecordToggleStatus](#setpermissionusedrecordtogglestatus-1). |
 | [12100007](../errorcode-access-token.md#12100007-系统服务工作异常) | Service exception. |
 | [12100009](../errorcode-access-token.md#12100009-服务内部错误) | Common inner error. Possible causes: 1. Database error. 2. Failed to query all applications under the user. |
 

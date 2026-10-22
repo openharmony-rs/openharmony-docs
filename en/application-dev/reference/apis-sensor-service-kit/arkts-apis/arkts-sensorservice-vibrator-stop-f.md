@@ -17,13 +17,13 @@ Stops vibration in the specified mode. This API uses a promise to return the res
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [vibrator.stopVibration](arkts-sensorservice-vibrator-stopvibration-f.md#stopvibration)<sup>9+</sup> instead.
+> [vibrator.stopVibration](arkts-sensorservice-vibrator-stopvibration-f.md#stopvibration-1)<sup>9+</sup> instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [stopVibration](arkts-sensorservice-vibrator-stopvibration-f.md#stopvibration)(stopMode: VibratorStopMode)
+**Substitutes:** [stopVibration](arkts-sensorservice-vibrator-stopvibration-f.md#stopvibration-1)(stopMode: VibratorStopMode)
 
 **Required permissions:** ohos.permission.VIBRATE
 
@@ -77,14 +77,14 @@ Stops vibration in the specified mode. This API uses an asynchronous callback to
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [vibrator.stopVibration](arkts-sensorservice-vibrator-stopvibration-f.md#stopvibration)
+> [vibrator.stopVibration](arkts-sensorservice-vibrator-stopvibration-f.md#stopvibration-2)
 > <sup>9+</sup> instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [stopVibration](arkts-sensorservice-vibrator-stopvibration-f.md#stopvibration)(stopMode: VibratorStopMode, callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [stopVibration](arkts-sensorservice-vibrator-stopvibration-f.md#stopvibration-2)(stopMode: VibratorStopMode, callback: AsyncCallback&lt;void&gt;)
 
 **Required permissions:** ohos.permission.VIBRATE
 

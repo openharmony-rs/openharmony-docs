@@ -1,4 +1,4 @@
-# SensorId
+# SensorId (System API)
 
 ```TypeScript
 enum SensorId

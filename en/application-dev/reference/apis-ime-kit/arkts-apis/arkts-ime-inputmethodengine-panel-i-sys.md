@@ -1,10 +1,10 @@
-# Panel
+# Panel (System API)
 
 ```TypeScript
 interface Panel
 ```
 
-In the following API examples, you must first use [createPanel](arkts-ime-inputmethodengine-inputmethodability-i.md#createpanel) to obtain a **Panel** instance, and then call the APIs using the obtained instance.
+In the following API examples, you must first use [createPanel](arkts-ime-inputmethodengine-inputmethodability-i.md#createpanel-1) to obtain a **Panel** instance, and then call the APIs using the obtained instance.
 
 **Since:** 10
 
@@ -29,7 +29,7 @@ Disables listening for the panel size change. This API uses an asynchronous call
 > <br>
 > This API applies only to the panels of the **SOFT_KEYBOARD** type in the **FLG_FIXED** or **FLG_FLOATING** <br>
 > state. When you call <br>
-> [adjustPanelRect](arkts-ime-inputmethodengine-panel-i.md#adjustpanelrect) to <br>
+> [adjustPanelRect](arkts-ime-inputmethodengine-panel-i.md#adjustpanelrect-2) to <br>
 > adjust the panel size, the system calculates the final value based on certain rules (for example, whether the <br>
 > panel size exceeds the screen). This callback can be used to obtain the actual panel size to refresh the panel <br>
 > layout.
@@ -73,7 +73,7 @@ Listens for the panel size change. This API uses an asynchronous callback to ret
 > <br>
 > This API applies only to the panels of the **SOFT_KEYBOARD** type in the **FLG_FIXED** or **FLG_FLOATING** <br>
 > state. When you call <br>
-> [adjustPanelRect](arkts-ime-inputmethodengine-panel-i.md#adjustpanelrect) to <br>
+> [adjustPanelRect](arkts-ime-inputmethodengine-panel-i.md#adjustpanelrect-2) to <br>
 > adjust the panel size, the system calculates the final value based on certain rules (for example, whether the <br>
 > panel size exceeds the screen). This callback can be used to obtain the actual panel size to refresh the panel <br>
 > layout.

@@ -142,7 +142,7 @@ Adds an interceptor chain to the target HTTP request. Each HTTP request instance
 > [HTTP Interceptor Function Code Example](../../../network/http-request.md#http-interceptor).
 
 > The HTTP interceptor feature is supported only by
-> [HttpRequest.request](arkts-network-http-httprequest-i.md#request) APIs,
+> [HttpRequest.request](arkts-network-http-httprequest-i.md#request-1) APIs,
 > and is not supported by
 > [HttpRequest.requestInStream](arkts-network-http-httprequest-i.md#requestinstream)
 > APIs (streaming transmission).

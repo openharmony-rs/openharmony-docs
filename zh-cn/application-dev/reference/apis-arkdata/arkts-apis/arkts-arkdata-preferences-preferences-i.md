@@ -26,7 +26,7 @@ import { preferences } from '@kit.ArkData';
 clear(callback: AsyncCallback<void>): void
 ```
 
-清除缓存的Preferences实例中的所有数据，可通过[flush](#flush)将Preferences实例持久化，使用callback异步回调。
+清除缓存的Preferences实例中的所有数据，可通过[flush](#flush-1)将Preferences实例持久化，使用callback异步回调。
 
 **起始版本：** 9
 
@@ -69,7 +69,7 @@ dataPreferences.clear((err: BusinessError) =>{
 clear(): Promise<void>
 ```
 
-清除缓存的Preferences实例中的所有数据，可通过[flush](#flush)将Preferences实例持久化，使用Promise异步回调。
+清除缓存的Preferences实例中的所有数据，可通过[flush](#flush-1)将Preferences实例持久化，使用Promise异步回调。
 
 **起始版本：** 9
 
@@ -110,7 +110,7 @@ promise.then(() => {
 clearSync(): void
 ```
 
-清除缓存的Preferences实例中的所有数据，可通过[flush](#flush)将Preferences实例持久化，此为同步接口。
+清除缓存的Preferences实例中的所有数据，可通过[flush](#flush-1)将Preferences实例持久化，此为同步接口。
 
 **起始版本：** 10
 
@@ -132,7 +132,7 @@ dataPreferences.clearSync();
 delete(key: string, callback: AsyncCallback<void>): void
 ```
 
-从缓存的Preferences实例中删除名为给定Key的存储键值对，可通过[flush](#flush)将Preferences实例持久化，使用callback异步回调。
+从缓存的Preferences实例中删除名为给定Key的存储键值对，可通过[flush](#flush-1)将Preferences实例持久化，使用callback异步回调。
 
 **起始版本：** 9
 
@@ -176,7 +176,7 @@ dataPreferences.delete('startup', (err: BusinessError) => {
 delete(key: string): Promise<void>
 ```
 
-从缓存的Preferences实例中删除名为给定Key的存储键值对，可通过[flush](#flush)将Preferences实例持久化，使用Promise异步回调。
+从缓存的Preferences实例中删除名为给定Key的存储键值对，可通过[flush](#flush-1)将Preferences实例持久化，使用Promise异步回调。
 
 **起始版本：** 9
 
@@ -224,7 +224,7 @@ deleteStartupPromise.then(() => {
 deleteSync(key: string): void
 ```
 
-从缓存的Preferences实例中删除名为给定Key的存储键值对，可通过[flush](#flush)将Preferences实例持久化，此为同步接口。
+从缓存的Preferences实例中删除名为给定Key的存储键值对，可通过[flush](#flush-1)将Preferences实例持久化，此为同步接口。
 
 **起始版本：** 10
 
@@ -975,7 +975,7 @@ dataPreferences.off('dataChange', keys, observer);
 on(type: 'change', callback: Callback<string>): void
 ```
 
-订阅数据变更，订阅的Key的值发生变更后，并且在执行[flush](#flush)方法后，触发callback回调。
+订阅数据变更，订阅的Key的值发生变更后，并且在执行[flush](#flush-1)方法后，触发callback回调。
 
 > **不同订阅方法的对比：**
 > 
@@ -1041,7 +1041,7 @@ dataPreferences.flush((err: BusinessError) => {
 on(type: 'multiProcessChange', callback: Callback<string>): void
 ```
 
-订阅进程间数据变更，多个进程持有同一个首选项文件时，在任意一个进程（包括本进程）执行[flush](#flush)方法，持久化文件发生变更后，触发callback回调。
+订阅进程间数据变更，多个进程持有同一个首选项文件时，在任意一个进程（包括本进程）执行[flush](#flush-1)方法，持久化文件发生变更后，触发callback回调。
 
 本接口提供给申请了[dataGroupId](arkts-arkdata-preferences-options-i.md)的应用进行使用，未申请的应用不推荐使用（监听不到数据变更），多进程操作可能会损坏持久化文件，导致数据丢失。
 
@@ -1101,7 +1101,7 @@ dataPreferences.flush((err: BusinessError) => {
 on(type: 'dataChange', keys: Array<string>, callback: Callback<Record<string, ValueType>>): void
 ```
 
-精确订阅数据变更，只有被订阅的Key值发生变更后，在执行[flush](#flush)方法后，触发callback回调。
+精确订阅数据变更，只有被订阅的Key值发生变更后，在执行[flush](#flush-1)方法后，触发callback回调。
 
 > **说明：** 
 > 
@@ -1162,7 +1162,7 @@ dataPreferences.flush((err: BusinessError) => {
 put(key: string, value: ValueType, callback: AsyncCallback<void>): void
 ```
 
-将数据写入缓存的Preferences实例中，可通过[flush](#flush)将Preferences实例持久化，使用callback异步回调。
+将数据写入缓存的Preferences实例中，可通过[flush](#flush-1)将Preferences实例持久化，使用callback异步回调。
 
 > **说明：** 
 > 
@@ -1213,7 +1213,7 @@ dataPreferences.put('startup', 'auto', (err: BusinessError) => {
 put(key: string, value: ValueType): Promise<void>
 ```
 
-将数据写入缓存的Preferences实例中，可通过[flush](#flush)将Preferences实例持久化，使用Promise异步回调。
+将数据写入缓存的Preferences实例中，可通过[flush](#flush-1)将Preferences实例持久化，使用Promise异步回调。
 
 > **说明：** 
 > 
@@ -1268,7 +1268,7 @@ putStartupPref.then(() => {
 putSync(key: string, value: ValueType): void
 ```
 
-将数据写入缓存的Preferences实例中，可通过[flush](#flush)将Preferences实例持久化，此为同步接口。
+将数据写入缓存的Preferences实例中，可通过[flush](#flush-1)将Preferences实例持久化，此为同步接口。
 
 > **说明：** 
 > 

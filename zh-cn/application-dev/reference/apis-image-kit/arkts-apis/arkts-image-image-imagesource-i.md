@@ -10,7 +10,7 @@ ImageSource类，用于获取图片相关信息。
 
 ImageSource的所有方法均不支持并发调用。
 
-由于图片占用内存较大，所以当ImageSource实例使用完成后，应主动调用[release](#release)方法及时释放内存。释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
+由于图片占用内存较大，所以当ImageSource实例使用完成后，应主动调用[release](#release-1)方法及时释放内存。释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
 
 **起始版本：** 6
 
@@ -1509,14 +1509,14 @@ getImageProperty(key: string, options?: GetImagePropertyOptions): Promise<string
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 11废弃，建议使用
-> [getImageProperty](#getimageproperty)代
+> [getImageProperty](#getimageproperty-1)代
 > 替。
 
 **起始版本：** 7
 
 **废弃版本：** 11
 
-**替代接口：** [getImageProperty](#getimageproperty)(key: PropertyKey, options?: ImagePropertyOptions)
+**替代接口：** [getImageProperty](#getimageproperty-1)(key: PropertyKey, options?: ImagePropertyOptions)
 
 <!--Device-ImageSource-getImageProperty(key: string, options?: GetImagePropertyOptions): Promise<string>--><!--Device-ImageSource-getImageProperty(key: string, options?: GetImagePropertyOptions): Promise<string>-End-->
 
@@ -1563,14 +1563,14 @@ getImageProperty(key: string, callback: AsyncCallback<string>): void
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 11废弃，建议使用
-> [getImageProperty](#getimageproperty)代
+> [getImageProperty](#getimageproperty-1)代
 > 替。
 
 **起始版本：** 7
 
 **废弃版本：** 11
 
-**替代接口：** [getImageProperty](#getimageproperty)(key: PropertyKey, options?: ImagePropertyOptions)
+**替代接口：** [getImageProperty](#getimageproperty-1)(key: PropertyKey, options?: ImagePropertyOptions)
 
 <!--Device-ImageSource-getImageProperty(key: string, callback: AsyncCallback<string>): void--><!--Device-ImageSource-getImageProperty(key: string, callback: AsyncCallback<string>): void-End-->
 
@@ -1612,14 +1612,14 @@ getImageProperty(key: string, options: GetImagePropertyOptions, callback: AsyncC
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 11废弃，建议使用
-> [getImageProperty](#getimageproperty)代
+> [getImageProperty](#getimageproperty-1)代
 > 替。
 
 **起始版本：** 7
 
 **废弃版本：** 11
 
-**替代接口：** [getImageProperty](#getimageproperty)(key: PropertyKey, options?: ImagePropertyOptions)
+**替代接口：** [getImageProperty](#getimageproperty-1)(key: PropertyKey, options?: ImagePropertyOptions)
 
 <!--Device-ImageSource-getImageProperty(key: string, options: GetImagePropertyOptions, callback: AsyncCallback<string>): void--><!--Device-ImageSource-getImageProperty(key: string, options: GetImagePropertyOptions, callback: AsyncCallback<string>): void-End-->
 
@@ -1920,7 +1920,7 @@ modifyImageProperty(key: string, value: string): Promise<void>
 > 
 > - 调用modifyImageProperty修改属性会改变属性字节长度，使用buffer创建的ImageSource调用modifyImageProperty会导致buffer内容覆盖，目前buffer创建的ImageSource不支持调用此接口，请改用fd或path创建的ImageSource。
 > 
-> - 从API version 9开始支持，从API version 11废弃，建议使用[modifyImageProperty](#modifyimageproperty)代替。
+> - 从API version 9开始支持，从API version 11废弃，建议使用[modifyImageProperty](#modifyimageproperty-1)代替。
 > 
 > - 调用modifyImageProperty接口修改Exif字段时，必须确保对应的图片文件有写权限，否则会导致字段修改不成功。
 
@@ -1928,7 +1928,7 @@ modifyImageProperty(key: string, value: string): Promise<void>
 
 **废弃版本：** 11
 
-**替代接口：** [modifyImageProperty](#modifyimageproperty)(key: PropertyKey, value: string)
+**替代接口：** [modifyImageProperty](#modifyimageproperty-1)(key: PropertyKey, value: string)
 
 <!--Device-ImageSource-modifyImageProperty(key: string, value: string): Promise<void>--><!--Device-ImageSource-modifyImageProperty(key: string, value: string): Promise<void>-End-->
 
@@ -1979,7 +1979,7 @@ modifyImageProperty(key: string, value: string, callback: AsyncCallback<void>): 
 > 
 > - 调用modifyImageProperty修改属性会改变属性字节长度，使用buffer创建的ImageSource调用modifyImageProperty会导致buffer内容覆盖，目前buffer创建的ImageSource不支持调用此接口，请改用fd或path创建的ImageSource。
 > 
-> - 从API version 9开始支持，从API version 11废弃，建议使用[modifyImageProperty](#modifyimageproperty)代替。
+> - 从API version 9开始支持，从API version 11废弃，建议使用[modifyImageProperty](#modifyimageproperty-1)代替。
 > 
 > - 调用modifyImageProperty接口修改Exif字段时，必须确保对应的图片文件有写权限，否则会导致字段修改不成功。
 
@@ -1987,7 +1987,7 @@ modifyImageProperty(key: string, value: string, callback: AsyncCallback<void>): 
 
 **废弃版本：** 11
 
-**替代接口：** [modifyImageProperty](#modifyimageproperty)(key: PropertyKey, value: string)
+**替代接口：** [modifyImageProperty](#modifyimageproperty-1)(key: PropertyKey, value: string)
 
 <!--Device-ImageSource-modifyImageProperty(key: string, value: string, callback: AsyncCallback<void>): void--><!--Device-ImageSource-modifyImageProperty(key: string, value: string, callback: AsyncCallback<void>): void-End-->
 

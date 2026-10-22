@@ -1,4 +1,4 @@
-# Panel
+# Panel (System API)
 
 ```TypeScript
 interface Panel

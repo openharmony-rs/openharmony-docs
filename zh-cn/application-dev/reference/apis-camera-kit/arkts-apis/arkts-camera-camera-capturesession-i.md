@@ -140,7 +140,7 @@ commitConfig(callback: AsyncCallback<void>): void
 
 **废弃版本：** 11
 
-**替代接口：** [commitConfig](arkts-camera-camera-session-i.md#commitconfig)(callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [commitConfig](arkts-camera-camera-session-i.md#commitconfig-1)(callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-CaptureSession-commitConfig(callback: AsyncCallback<void>): void--><!--Device-CaptureSession-commitConfig(callback: AsyncCallback<void>): void-End-->
 
@@ -898,7 +898,7 @@ release(callback: AsyncCallback<void>): void
 
 **废弃版本：** 11
 
-**替代接口：** [release](arkts-camera-camera-session-i.md#release)(callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [release](arkts-camera-camera-session-i.md#release-1)(callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-CaptureSession-release(callback: AsyncCallback<void>): void--><!--Device-CaptureSession-release(callback: AsyncCallback<void>): void-End-->
 
@@ -1321,7 +1321,7 @@ start(callback: AsyncCallback<void>): void
 
 **废弃版本：** 11
 
-**替代接口：** [start](arkts-camera-camera-session-i.md#start)(callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [start](arkts-camera-camera-session-i.md#start-1)(callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-CaptureSession-start(callback: AsyncCallback<void>): void--><!--Device-CaptureSession-start(callback: AsyncCallback<void>): void-End-->
 
@@ -1391,7 +1391,7 @@ stop(callback: AsyncCallback<void>): void
 
 **废弃版本：** 11
 
-**替代接口：** [stop](arkts-camera-camera-session-i.md#stop)(callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [stop](arkts-camera-camera-session-i.md#stop-1)(callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-CaptureSession-stop(callback: AsyncCallback<void>): void--><!--Device-CaptureSession-stop(callback: AsyncCallback<void>): void-End-->
 

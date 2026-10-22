@@ -16,7 +16,7 @@ function getBleMacByBrMac(brMac: string): string
 
 该接口用于识别配对中同一双模设备的BR表项和BLE表项。设备列表。输入brMac是配对的远程设备的真实BR地址，返回值是同一远端设备的真实BLE地址。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.0.1
 
 **需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
@@ -49,5 +49,5 @@ function getBleMacByBrMac(brMac: string): string
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [2900003](../errorcode-bluetoothManager.md#2900003-蓝牙开关关闭) | Bluetooth disabled. |
 | [2900016](../errorcode-bluetoothManager.md#2900016-设备未配对) | Device unpaired. |
-| 2900017 | No BLE address is associated with the input BR address. |
+| [2900017](../errorcode-bluetoothManager.md#2900017-输入br地址未关联ble地址) | No BLE address is associated with the input BR address. |
 | [2900099](../errorcode-bluetoothManager.md#2900099-操作失败) | Operation failed. |

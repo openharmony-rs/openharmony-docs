@@ -158,6 +158,22 @@ SYSTEM_CANCEL_NOT_USE_USB = 16
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
+## SYSTEM_CANCEL_USB_ALREADY_OCCUPIED
+
+```TypeScript
+SYSTEM_CANCEL_USB_ALREADY_OCCUPIED = 17
+```
+
+申请USB类型长时任务，但是USB设备已经被占用。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-ContinuousTaskDetailedCancelReason-SYSTEM_CANCEL_USB_ALREADY_OCCUPIED = 17--><!--Device-ContinuousTaskDetailedCancelReason-SYSTEM_CANCEL_USB_ALREADY_OCCUPIED = 17-End-->
+
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
 ## SYSTEM_CANCEL_USE_ILLEGALLY
 
 ```TypeScript

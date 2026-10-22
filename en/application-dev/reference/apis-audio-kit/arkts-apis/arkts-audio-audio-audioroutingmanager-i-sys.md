@@ -1,4 +1,4 @@
-# AudioRoutingManager
+# AudioRoutingManager (System API)
 
 ```TypeScript
 interface AudioRoutingManager

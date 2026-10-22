@@ -4,7 +4,7 @@
 declare class Driver
 ```
 
-Driver类为uitest测试框架的总入口，提供控件匹配/查找，按键注入，坐标点击/滑动，截图等能力。通过create创建实例。该类提供的方法除Driver.create()和Driver.createUIEventObserver()以外的所有方法都使用Promise方式作为异步方法，需使用await方式调用。
+Driver类为UiTest测试框架的总入口。提供控件匹配/查找、按键注入、坐标点击/滑动、截图等能力。通过[Driver.create()](#create)创建实例。该类提供的方法除Driver.create()和Driver.createUIEventObserver()以外的所有方法都使用Promise方式作为异步方法，需使用await方式调用。
 
 **起始版本：** 9
 
@@ -49,13 +49,13 @@ assertComponentExist(on: On): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [17000002](../errorcode-uitest.md#17000002-接口不支持并发调用) | The API does not support concurrent calls. |
 | [17000003](../errorcode-uitest.md#17000003-断言失败) | Assertion failed. |
 
@@ -93,20 +93,20 @@ click(x: number, y: number): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| x | number | 是 | 以number的形式传入目标点的横坐标信息，取值范围：大于等于0的整数。 |
-| y | number | 是 | 以number的形式传入目标点的纵坐标信息，取值范围：大于等于0的整数。 |
+| x | number | 是 | 目标点的横坐标信息，取值范围：大于等于0的整数，单位：px。传入不在范围内的值抛出401错误码。 |
+| y | number | 是 | 目标点的纵坐标信息，取值范围：大于等于0的整数，单位：px。传入不在范围内的值抛出401错误码。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [17000002](../errorcode-uitest.md#17000002-接口不支持并发调用) | The API does not support concurrent calls. |
 
 **示例**
@@ -151,7 +151,7 @@ clickAt(point: Point): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -197,13 +197,13 @@ clickAtWithOptions(point: Point, options?: TouchOptions): Promise<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | point | [Point](arkts-test-uitest-point-i.md) | 是 | 手指接触屏幕的坐标点。 |
-| options | [TouchOptions](arkts-test-uitest-touchoptions-i.md) | 否 | 单击操作的选项。只有''属性适用于此方法。设置其他属性将导致BusinessError 17000007。<br>默认值：参考TouchOptions的默认值。 |
+| options | [TouchOptions](arkts-test-uitest-touchoptions-i.md) | 否 | 触摸操作选项。仅支持设置[TouchOptions](arkts-test-uitest-touchoptions-i.md)中的pressure属性，设置其他属性将抛出17000007参数校验失败的错误。默认值继承[TouchOptions](arkts-test-uitest-touchoptions-i.md)各属性默认值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -333,14 +333,14 @@ crownRotate(d: number, speed?: number): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| d | number | 是 | 手表表冠旋转的格数，正值表示顺时针旋转，负值表示逆时针旋转，取值需为整数。 |
-| speed | number | 否 | 手表表冠旋转的格数，正值表示顺时针旋转，负值表示逆时针旋转，取值需为整数。 |
+| d | number | 是 | 手表表冠旋转的格数，正值表示顺时针旋转，负值表示逆时针旋转，取值需为整数。为非整数时抛出401错误码。 |
+| speed | number | 否 | 手表表冠旋转的速度，取值范围：1-500的整数，单位：格/秒。为不在范围内的非负数或为null/undefined时设为默认值20。为负数时抛出17000007错误码。<br>**说明：** 参数取值超出合法范围时，设为默认值20。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -387,19 +387,19 @@ delayMs(duration: number): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| duration | number | 是 | 给定的时间，单位：ms，取值范围：大于等于0的整数。 |
+| duration | number | 是 | 给定的时间，单位：ms，取值范围：大于等于0的整数。传入负数时抛出401错误码。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [17000002](../errorcode-uitest.md#17000002-接口不支持并发调用) | The API does not support concurrent calls. |
 
 **示例**
@@ -436,20 +436,20 @@ doubleClick(x: number, y: number): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| x | number | 是 | 以number的形式传入目标点的横坐标信息，取值范围：大于等于0的整数。 |
-| y | number | 是 | 以number的形式传入目标点的纵坐标信息，取值范围：大于等于0的整数。 |
+| x | number | 是 | 目标点的横坐标信息，取值范围：大于等于0的整数，单位：px。传入不在范围内的值抛出401错误码。 |
+| y | number | 是 | 目标点的纵坐标信息，取值范围：大于等于0的整数，单位：px。传入不在范围内的值抛出401错误码。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [17000002](../errorcode-uitest.md#17000002-接口不支持并发调用) | The API does not support concurrent calls. |
 
 **示例**
@@ -492,7 +492,7 @@ doubleClickAt(point: Point): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -535,23 +535,23 @@ drag(startx: number, starty: number, endx: number, endy: number, speed?: number)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| startx | number | 是 | 以number的形式传入起始点的横坐标信息，取值范围：大于等于0的整数。 |
-| starty | number | 是 | 以number的形式传入起始点的纵坐标信息，取值范围：大于等于0的整数。 |
-| endx | number | 是 | 以number的形式传入目的点的横坐标信息，取值范围：大于等于0的整数。 |
-| endy | number | 是 | 以number的形式传入目的点的纵坐标信息，取值范围：大于等于0的整数。 |
+| startx | number | 是 | 起始点的横坐标信息，取值范围：大于等于0的整数，单位：px。 |
+| starty | number | 是 | 起始点的纵坐标信息，取值范围：大于等于0的整数，单位：px。 |
+| endx | number | 是 | 目的点的横坐标信息，取值范围：大于等于0的整数，单位：px。 |
+| endy | number | 是 | 目的点的纵坐标信息，取值范围：大于等于0的整数，单位：px。 |
 | speed | number | 否 | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出401错误码。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [17000002](../errorcode-uitest.md#17000002-接口不支持并发调用) | The API does not support concurrent calls. |
 
 **示例**
@@ -597,7 +597,7 @@ dragBetween(from: Point, to: Point, speed?: number, duration?: number): Promise<
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -644,13 +644,13 @@ dragBetweenWithOptions(from: Point, to: Point, options?: TouchOptions): Promise<
 | --- | --- | --- | --- |
 | from | [Point](arkts-test-uitest-point-i.md) | 是 | 手指接触屏幕的坐标点。 |
 | to | [Point](arkts-test-uitest-point-i.md) | 是 | 手指离开屏幕的坐标点。 |
-| options | [TouchOptions](arkts-test-uitest-touchoptions-i.md) | 否 | 拖动操作的选项。只有“压力”、“速度”和“持续时间”属性适用于此方法。设置其他属性将导致BusinessError 17000007。<br>默认值：参考TouchOptions的默认值。 |
+| options | [TouchOptions](arkts-test-uitest-touchoptions-i.md) | 否 | 触摸操作选项。仅支持设置[TouchOptions](arkts-test-uitest-touchoptions-i.md)中的pressure、speed和duration属性，设置其他属性将抛出17000007参数校验失败的错误。默认值继承[TouchOptions](arkts-test-uitest-touchoptions-i.md)各属性默认值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -683,7 +683,7 @@ async function demo() {
 dumpLayout(savePath: string, displayId?: number): Promise<boolean>
 ```
 
-Get the current layout information and save as file with json format.
+获取当前布局信息并保存为JSON格式的文件，适用于需要分析UI控件层级结构或调试控件定位问题的测试场景。使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
@@ -701,14 +701,14 @@ Get the current layout information and save as file with json format.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| savePath | string | 是 | the path where to store the json, must be in the application sandbox directory. The path must be the [sandbox path](../../../file-management/app-sandbox-directory.md) of the current application. |
-| displayId | number | 否 | the Id of the specified display, default is the displayId of the main screen. |
+| savePath | string | 是 | JSON文件保存路径。路径需为当前应用的[沙箱路径](../../../file-management/app-sandbox-directory.md)。 |
+| displayId | number | 否 | 指定设备屏幕ID，取值范围：大于等于0的整数。默认值为设备默认屏幕ID。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | true if dump layout and file-storing are completed successfully,false otherwise. |
+| Promise&lt;boolean&gt; | Promise对象，返回布局信息导出和文件存储是否成功完成。true：成功完成。false：未成功完成。 |
 
 **错误码：**
 
@@ -764,7 +764,7 @@ findComponent(on: On): Promise<Component>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [17000002](../errorcode-uitest.md#17000002-接口不支持并发调用) | The API does not support concurrent calls. |
 
 **示例**
@@ -815,7 +815,7 @@ findComponents(on: On): Promise<Array<Component>>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [17000002](../errorcode-uitest.md#17000002-接口不支持并发调用) | The API does not support concurrent calls. |
 
 **示例**
@@ -866,7 +866,7 @@ findWindow(filter: WindowFilter): Promise<UiWindow>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [17000002](../errorcode-uitest.md#17000002-接口不支持并发调用) | The API does not support concurrent calls. |
 
 **示例**
@@ -905,20 +905,20 @@ fling(from: Point, to: Point, stepLen: number, speed: number): Promise<void>
 | --- | --- | --- | --- |
 | from | [Point](arkts-test-uitest-point-i.md) | 是 | 手指接触屏幕的起始点坐标。 |
 | to | [Point](arkts-test-uitest-point-i.md) | 是 | 手指离开屏幕时的坐标点。 |
-| stepLen | number | 是 | 间隔距离，取值大于等于0的整数，单位：px。 |
+| stepLen | number | 是 | 滑动间隔距离，取值大于等于0的整数，单位：px。为负数时抛出401错误码。 |
 | speed | number | 是 | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数时设为默认值600。为负数时抛出401错误码。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [17000002](../errorcode-uitest.md#17000002-接口不支持并发调用) | The API does not support concurrent calls. |
 
 **示例**
@@ -962,13 +962,13 @@ fling(direction: UiDirection, speed: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [17000002](../errorcode-uitest.md#17000002-接口不支持并发调用) | The API does not support concurrent calls. |
 
 **示例**
@@ -1007,19 +1007,19 @@ fling(direction: UiDirection, speed: number, displayId: number): Promise<void>
 | --- | --- | --- | --- |
 | direction | [UiDirection](arkts-test-uitest-uidirection-e.md) | 是 | 进行抛滑的方向。 |
 | speed | number | 是 | 滑动速率，取值范围为200-40000，默认值为600，单位：px/s。为不在范围内的非负数时设为默认值600。为负数时抛出401错误码。 |
-| displayId | number | 是 | 指定设备屏幕ID。取值范围：大于等于0的整数。**说明：** 传入displayId不存在时，将抛出17000007异常。 |
+| displayId | number | 是 | 指定设备屏幕ID。取值范围：大于等于0的整数。**说明：** 传入displayId不存在时，将抛出401错误码。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [17000002](../errorcode-uitest.md#17000002-接口不支持并发调用) | The API does not support concurrent calls. |
 
 **示例**
@@ -1041,6 +1041,8 @@ getDisplayDensity(): Promise<Point>
 ```
 
 获取当前设备屏幕的分辨率。使用Promise异步回调。
+
+**说明：** 本方法仅支持获取主屏幕的分辨率。如需获取指定屏幕的分辨率，请使用[getDisplayDensity(displayId: int)](#getdisplaydensity)。
 
 **起始版本：** 9
 
@@ -1133,6 +1135,8 @@ getDisplayRotation(): Promise<DisplayRotation>
 
 获取当前设备的屏幕显示方向。使用Promise异步回调。
 
+**说明：** 本方法仅支持获取主屏幕的显示方向。如需获取指定屏幕的显示方向，请使用[getDisplayRotation(displayId: int)](#getdisplayrotation)。
+
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
@@ -1223,6 +1227,8 @@ getDisplaySize(): Promise<Point>
 ```
 
 获取当前设备的屏幕大小。使用Promise异步回调。
+
+**说明：** 本方法仅支持获取主屏幕的大小。如需获取指定屏幕的大小，请使用[getDisplaySize(displayId: int)](#getdisplaysize)。
 
 **起始版本：** 9
 
@@ -1340,7 +1346,7 @@ injectKnucklePointerAction(pointers: PointerMatrix, speed?: number): Promise<voi
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1376,7 +1382,7 @@ async function demo() {
 injectMultiPointerAction(pointers: PointerMatrix, speed?: number): Promise<boolean>
 ```
 
-向设备注入多指操作。使用Promise异步回调。
+向设备注入多指操作，适用于需要模拟多指手势的测试场景，如双指捏合缩放图片、多指滑动切换页面等。使用Promise异步回调。
 
 **起始版本：** 9
 
@@ -1405,7 +1411,7 @@ injectMultiPointerAction(pointers: PointerMatrix, speed?: number): Promise<boole
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [17000002](../errorcode-uitest.md#17000002-接口不支持并发调用) | The API does not support concurrent calls. |
 
 **示例**
@@ -1442,7 +1448,7 @@ async function demo() {
 injectPenPointerAction(pointers: PointerMatrix, speed?: number, pressure?: number): Promise<void>
 ```
 
-模拟手写笔多点连续注入操作。使用Promise异步回调。
+模拟手写笔多点连续注入操作，适用于需要模拟手写笔连续书写、绘图等自定义轨迹操作的测试场景。使用Promise异步回调。
 
 **起始版本：** 18
 
@@ -1460,20 +1466,20 @@ injectPenPointerAction(pointers: PointerMatrix, speed?: number, pressure?: numbe
 | --- | --- | --- | --- |
 | pointers | [PointerMatrix](arkts-test-uitest-pointermatrix-c.md) | 是 | 滑动轨迹，包括操作手指个数和滑动坐标序列。  **说明：** 当前仅支持单指操作，PointerMatrix中的操作手指个数fingers必须设置为1。 |
 | speed | number | 否 | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出401错误码。 |
-| pressure | number | 否 | 手写笔多点连续注入的压力，默认为1.0，取值范围为0.0到1.0。 |
+| pressure | number | 否 | 手写笔多点连续注入的压力，默认为1.0，取值范围为[0.0, 1.0]，包含0.0和1.0。取值为null或undefined时按照默认值处理，其他超出取值范围情况时抛出401错误码。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，返回无结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [17000002](../errorcode-uitest.md#17000002-接口不支持并发调用) | The API does not support concurrent calls. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) |  |
 
 **示例**
 
@@ -1523,13 +1529,13 @@ inputText(p: Point, text: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [17000002](../errorcode-uitest.md#17000002-接口不支持并发调用) | The API does not support concurrent calls. |
 
 **示例**
@@ -1574,19 +1580,19 @@ inputText(p: Point, text: string, mode: InputTextMode): Promise<void>
 | --- | --- | --- | --- |
 | p | [Point](arkts-test-uitest-point-i.md) | 是 | 输入文本的坐标点。 |
 | text | string | 是 | 输入的文本信息，当前支持英文、中文和特殊字符。 |
-| mode | [InputTextMode](arkts-test-uitest-inputtextmode-i.md) | 是 | 输入文本的方式，取值请参考[InputTextMode](arkts-test-uitest-inputtextmode-i.md)。  **说明：**   InputTextMode.addition取值为true时，将光标移动至文本末尾后输入指定文本。取值为false时，将在坐标点位置输入指定文本。 |
+| mode | [InputTextMode](arkts-test-uitest-inputtextmode-i.md) | 是 | 输入文本的方式，取值请参考[InputTextMode](arkts-test-uitest-inputtextmode-i.md)。  **说明：**   InputTextMode.addition取值为true时，将光标移动至文本末尾后输入指定文本。取值为false时，将在坐标点位置输入指定文本。当输入文本中包含中文、特殊字符或文本长度超过200字符时，无论[InputTextMode](arkts-test-uitest-inputtextmode-i.md).paste取值为何，均以复制粘贴方式输入。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [17000002](../errorcode-uitest.md#17000002-接口不支持并发调用) | The API does not support concurrent calls. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) |  |
 
@@ -1618,7 +1624,7 @@ async function demoChinese() {
 isComponentPresentWhenDrag(on: On, from: Point, to: Point, speed?: number, duration?: number): Promise<boolean>
 ```
 
-从起始点拖拽至终止点，并查找目标控件是否存在。使用Promise异步回调。
+从起始点拖拽至终止点，并查找目标控件是否存在，适用于验证拖拽过程中动态出现的UI元素，例如拖拽文件到目标文件夹时验证文件夹高亮效果等。使用Promise异步回调。
 
 **起始版本：** 22
 
@@ -1671,7 +1677,7 @@ async function demo() {
 isComponentPresentWhenLongClick(on: On, point: Point, duration?: number): Promise<boolean>
 ```
 
-在坐标点长按，并查找目标控件是否存在。使用Promise异步回调。
+在坐标点长按，并查找目标控件是否存在，适用于验证长按操作后动态出现的UI元素，例如长按后弹出的上下文菜单或编辑按钮等。使用Promise异步回调。
 
 **起始版本：** 22
 
@@ -1722,7 +1728,7 @@ async function demo() {
 isComponentPresentWhenSwipe(on: On, from: Point, to: Point, speed?: number): Promise<boolean>
 ```
 
-从起始点滑向终止点，并查找目标控件是否存在。使用Promise异步回调。
+从起始点滑向终止点，并查找目标控件是否存在，适用于验证滑动操作过程中动态出现的UI元素，例如滑动删除列表项时验证删除按钮出现等。使用Promise异步回调。
 
 **起始版本：** 22
 
@@ -1794,14 +1800,14 @@ knuckleKnock(pointers: Array<Point>, times: number): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| pointers | Array&lt;[Point](arkts-test-uitest-point-i.md)&gt; | 是 | 指关节敲击屏幕坐标点的数组，数组长度取值为1或2。 |
-| times | number | 是 | 指关节连续敲击屏幕的次数，取值为1或2。 |
+| pointers | Array&lt;[Point](arkts-test-uitest-point-i.md)&gt; | 是 | 指关节敲击屏幕坐标点的数组，数组长度取值为1或2。取值不在范围内抛出17000007错误码。 |
+| times | number | 是 | 指关节连续敲击屏幕的次数，取值为1或2。取值不在范围内抛出17000007错误码。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1847,20 +1853,20 @@ longClick(x: number, y: number): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| x | number | 是 | 以number的形式传入目标点的横坐标信息，取值范围：大于等于0的整数。 |
-| y | number | 是 | 以number的形式传入目标点的纵坐标信息，取值范围：大于等于0的整数。 |
+| x | number | 是 | 目标点的横坐标信息，取值范围：大于等于0的整数，单位：px。传入不在范围内的值抛出401错误码。 |
+| y | number | 是 | 目标点的纵坐标信息，取值范围：大于等于0的整数，单位：px。传入不在范围内的值抛出401错误码。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [17000002](../errorcode-uitest.md#17000002-接口不支持并发调用) | The API does not support concurrent calls. |
 
 **示例**
@@ -1904,7 +1910,7 @@ longClickAt(point: Point, duration?: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1950,13 +1956,13 @@ longClickAtWithOptions(point: Point, options?: TouchOptions): Promise<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | point | [Point](arkts-test-uitest-point-i.md) | 是 | 手指接触屏幕的坐标点。 |
-| options | [TouchOptions](arkts-test-uitest-touchoptions-i.md) | 否 | 用于长单击操作的选项。只有“持续时间”和“压力”属性适用于此方法。设置其他属性将导致BusinessError 17000007。<br>默认值：参考TouchOptions的默认值。 |
+| options | [TouchOptions](arkts-test-uitest-touchoptions-i.md) | 否 | 触摸操作选项。仅支持设置[TouchOptions](arkts-test-uitest-touchoptions-i.md)中的duration和pressure属性，设置其他属性将抛出17000007参数校验失败的错误。默认值继承[TouchOptions](arkts-test-uitest-touchoptions-i.md)各属性默认值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1988,7 +1994,7 @@ async function demo() {
 mouseClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Promise<void>
 ```
 
-在指定坐标点注入鼠标点击动作，支持同时按下对应键盘组合键。使用Promise异步回调。例如，Key值为2072时，按下Ctrl并进行鼠标点击动作。
+在指定坐标点注入鼠标点击动作，支持同时按下对应键盘组合键。使用Promise异步回调。例如，键码值为2072时，按下Ctrl并进行鼠标点击动作。
 
 **起始版本：** 10
 
@@ -2006,20 +2012,20 @@ mouseClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Promise<
 | --- | --- | --- | --- |
 | p | [Point](arkts-test-uitest-point-i.md) | 是 | 鼠标点击的坐标。 |
 | btnId | [MouseButton](arkts-test-uitest-mousebutton-e.md) | 是 | 按下的鼠标按钮。 |
-| key1 | number | 否 | 指定的第一个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../../apis-input-kit/arkts-apis/arkts-input-multimodalinput-keycode-keycode-e.md)，默认值为0。 |
-| key2 | number | 否 | 指定的第二个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../../apis-input-kit/arkts-apis/arkts-input-multimodalinput-keycode-keycode-e.md)，默认值为0。 |
+| key1 | number | 否 | 指定的第一个键码值，取值范围：[KeyCode键码值](../../apis-input-kit/arkts-apis/arkts-input-multimodalinput-keycode-keycode-e.md)，默认值为0。 |
+| key2 | number | 否 | 指定的第二个键码值，取值范围：[KeyCode键码值](../../apis-input-kit/arkts-apis/arkts-input-multimodalinput-keycode-keycode-e.md)，默认值为0。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [17000002](../errorcode-uitest.md#17000002-接口不支持并发调用) | The API does not support concurrent calls. |
 
 **示例**
@@ -2040,7 +2046,7 @@ async function demo() {
 mouseDoubleClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Promise<void>
 ```
 
-在指定坐标点注入鼠标双击动作，支持同时按下对应键盘组合键。使用Promise异步回调。例如，Key值为2072时，按下Ctrl并进行鼠标双击动作。
+在指定坐标点注入鼠标双击动作，支持同时按下对应键盘组合键。使用Promise异步回调。例如，键码值为2072时，按下Ctrl并进行鼠标双击动作。
 
 **起始版本：** 11
 
@@ -2058,20 +2064,20 @@ mouseDoubleClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Pr
 | --- | --- | --- | --- |
 | p | [Point](arkts-test-uitest-point-i.md) | 是 | 鼠标双击的坐标。 |
 | btnId | [MouseButton](arkts-test-uitest-mousebutton-e.md) | 是 | 按下的鼠标按钮。 |
-| key1 | number | 否 | 指定的第一个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../../apis-input-kit/arkts-apis/arkts-input-multimodalinput-keycode-keycode-e.md)，默认值0。 |
-| key2 | number | 否 | 指定的第二个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../../apis-input-kit/arkts-apis/arkts-input-multimodalinput-keycode-keycode-e.md)，默认值0。 |
+| key1 | number | 否 | 指定的第一个键码值，取值范围：[KeyCode键码值](../../apis-input-kit/arkts-apis/arkts-input-multimodalinput-keycode-keycode-e.md)，默认值为0。 |
+| key2 | number | 否 | 指定的第二个键码值，取值范围：[KeyCode键码值](../../apis-input-kit/arkts-apis/arkts-input-multimodalinput-keycode-keycode-e.md)，默认值为0。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [17000002](../errorcode-uitest.md#17000002-接口不支持并发调用) | The API does not support concurrent calls. |
 
 **示例**
@@ -2116,13 +2122,13 @@ mouseDrag(from: Point, to: Point, speed?: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [17000002](../errorcode-uitest.md#17000002-接口不支持并发调用) | The API does not support concurrent calls. |
 
 **示例**
@@ -2168,13 +2174,13 @@ mouseDrag(from: Point, to: Point, speed?: number, duration?: number): Promise<vo
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [17000002](../errorcode-uitest.md#17000002-接口不支持并发调用) | The API does not support concurrent calls. |
 
 **示例**
@@ -2195,7 +2201,7 @@ async function demo() {
 mouseDragWithOptions(from: Point, to: Point, touchOptions?: TouchOptions, keyOptions?: KeyOptions): Promise<void>
 ```
 
-按住鼠标左键并在屏幕上的指定点之间拖动，具有可选的触摸和按键设置。
+按住鼠标左键从起始坐标点拖拽至终点坐标点，支持指定触摸选项和按键选项。使用Promise异步回调。该接口支持鼠标跨屏拖拽操作。
 
 **起始版本：** 26.0.0
 
@@ -2213,16 +2219,16 @@ mouseDragWithOptions(from: Point, to: Point, touchOptions?: TouchOptions, keyOpt
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| from | [Point](arkts-test-uitest-point-i.md) | 是 | 起点。 |
-| to | [Point](arkts-test-uitest-point-i.md) | 是 | 终点。 |
-| touchOptions | [TouchOptions](arkts-test-uitest-touchoptions-i.md) | 否 | 速度和持续时间设置的触摸选项。在此方法中，只有“速度”和“持续时间”属性有效。设置其他属性会导致BusinessError 17000007。<br>默认值：参考TouchOptions的默认值。 |
-| keyOptions | [KeyOptions](arkts-test-uitest-keyoptions-i.md) | 否 | 拖动期间要按的键代码的键选项。<br>默认值：参考keyOptions的默认值。 |
+| from | [Point](arkts-test-uitest-point-i.md) | 是 | 起始点坐标。 |
+| to | [Point](arkts-test-uitest-point-i.md) | 是 | 终点坐标。 |
+| touchOptions | [TouchOptions](arkts-test-uitest-touchoptions-i.md) | 否 | 触摸操作选项。仅支持设置[TouchOptions](arkts-test-uitest-touchoptions-i.md)中的speed和duration属性，设置其他属性将抛出17000007参数校验失败的错误。默认值继承[TouchOptions](arkts-test-uitest-touchoptions-i.md)各属性默认值。 |
+| keyOptions | [KeyOptions](arkts-test-uitest-keyoptions-i.md) | 否 | 按键操作选项。拖拽过程中同时按下指定的按键。默认值继承[KeyOptions](arkts-test-uitest-keyoptions-i.md)各属性默认值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2258,7 +2264,7 @@ async function demo() {
 mouseLongClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Promise<void>
 ```
 
-在指定坐标点注入鼠标长按动作，支持同时按下对应键盘组合键。使用Promise异步回调。例如，Key值为2072时，按下Ctrl并进行鼠标长按动作。
+在指定坐标点注入鼠标长按动作，支持同时按下对应键盘组合键。使用Promise异步回调。例如，键码值为2072时，按下Ctrl并进行鼠标长按动作。
 
 **起始版本：** 11
 
@@ -2276,20 +2282,20 @@ mouseLongClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Prom
 | --- | --- | --- | --- |
 | p | [Point](arkts-test-uitest-point-i.md) | 是 | 鼠标长按的坐标。 |
 | btnId | [MouseButton](arkts-test-uitest-mousebutton-e.md) | 是 | 按下的鼠标按钮。 |
-| key1 | number | 否 | 指定的第一个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../../apis-input-kit/arkts-apis/arkts-input-multimodalinput-keycode-keycode-e.md)，默认值为0。 |
-| key2 | number | 否 | 指定的第二个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../../apis-input-kit/arkts-apis/arkts-input-multimodalinput-keycode-keycode-e.md)，默认值为0。 |
+| key1 | number | 否 | 指定的第一个键码值，取值范围：[KeyCode键码值](../../apis-input-kit/arkts-apis/arkts-input-multimodalinput-keycode-keycode-e.md)，默认值为0。 |
+| key2 | number | 否 | 指定的第二个键码值，取值范围：[KeyCode键码值](../../apis-input-kit/arkts-apis/arkts-input-multimodalinput-keycode-keycode-e.md)，默认值为0。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [17000002](../errorcode-uitest.md#17000002-接口不支持并发调用) | The API does not support concurrent calls. |
 
 **示例**
@@ -2311,7 +2317,7 @@ async function demo() {
 mouseLongClick(p: Point, btnId: MouseButton, key1?: number, key2?: number, duration?: number): Promise<void>
 ```
 
-在指定坐标点注入鼠标长按动作，支持同时按下对应键盘组合键，支持指定长按时长。使用Promise异步回调。例如，Key值为2072时，按下Ctrl并进行鼠标长按动作。
+在指定坐标点注入鼠标长按动作，支持同时按下对应键盘组合键，支持指定长按时长。使用Promise异步回调。例如，键码值为2072时，按下Ctrl并进行鼠标长按动作。
 
 **起始版本：** 20
 
@@ -2329,21 +2335,21 @@ mouseLongClick(p: Point, btnId: MouseButton, key1?: number, key2?: number, durat
 | --- | --- | --- | --- |
 | p | [Point](arkts-test-uitest-point-i.md) | 是 | 鼠标长按的坐标。 |
 | btnId | [MouseButton](arkts-test-uitest-mousebutton-e.md) | 是 | 按下的鼠标按钮。 |
-| key1 | number | 否 | 指定的第一个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../../apis-input-kit/arkts-apis/arkts-input-multimodalinput-keycode-keycode-e.md)，默认值为0。 |
-| key2 | number | 否 | 指定的第二个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../../apis-input-kit/arkts-apis/arkts-input-multimodalinput-keycode-keycode-e.md)，默认值为0。 |
+| key1 | number | 否 | 指定的第一个键码值，取值范围：[KeyCode键码值](../../apis-input-kit/arkts-apis/arkts-input-multimodalinput-keycode-keycode-e.md)，默认值为0。 |
+| key2 | number | 否 | 指定的第二个键码值，取值范围：[KeyCode键码值](../../apis-input-kit/arkts-apis/arkts-input-multimodalinput-keycode-keycode-e.md)，默认值为0。 |
 | duration | number | 否 | 长按持续的时间，取值范围为大于等于1500的整数，默认值为1500，单位：ms。取值小于1500时抛出401错误码，为null或undefined时使用默认值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [17000002](../errorcode-uitest.md#17000002-接口不支持并发调用) | The API does not support concurrent calls. |
 
 **示例**
@@ -2387,13 +2393,13 @@ mouseMoveTo(p: Point): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [17000002](../errorcode-uitest.md#17000002-接口不支持并发调用) | The API does not support concurrent calls. |
 
 **示例**
@@ -2414,7 +2420,7 @@ async function demo() {
 mouseMoveWithTrack(from: Point, to: Point, speed?: number): Promise<void>
 ```
 
-鼠标从起始坐标点滑向终点坐标点。使用Promise异步回调。
+鼠标从起始坐标点滑向终点坐标点，带有可见移动轨迹，适用于需要验证鼠标悬停效果、鼠标拖拽选择区域等依赖鼠标移动轨迹的测试场景。使用Promise异步回调。
 
 **起始版本：** 11
 
@@ -2438,13 +2444,13 @@ mouseMoveWithTrack(from: Point, to: Point, speed?: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [17000002](../errorcode-uitest.md#17000002-接口不支持并发调用) | The API does not support concurrent calls. |
 
 **示例**
@@ -2465,7 +2471,7 @@ async function demo() {
 mouseScroll(p: Point, down: boolean, d: number, key1?: number, key2?: number): Promise<void>
 ```
 
-在指定坐标点注入鼠标滚轮滑动动作，支持同时按下对应键盘组合键。使用Promise异步回调。例如，Key值为2072时，按下Ctrl并进行鼠标滚轮滑动动作。
+在指定坐标点注入鼠标滚轮滑动动作，支持同时按下对应键盘组合键。使用Promise异步回调。例如，键码值为2072时，按下Ctrl并进行鼠标滚轮滑动动作。
 
 **起始版本：** 10
 
@@ -2483,21 +2489,21 @@ mouseScroll(p: Point, down: boolean, d: number, key1?: number, key2?: number): P
 | --- | --- | --- | --- |
 | p | [Point](arkts-test-uitest-point-i.md) | 是 | 鼠标点击的坐标。 |
 | down | boolean | 是 | 滚轮滑动方向是否向下。true表示向下滑动。false表示向上滚动。 |
-| d | number | 是 | 鼠标滚轮滚动的格数，取值大于等于0的整数，每格对应目标点位移120px。 |
-| key1 | number | 否 | 指定的第一个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../../apis-input-kit/arkts-apis/arkts-input-multimodalinput-keycode-keycode-e.md)，默认值为0。 |
-| key2 | number | 否 | 指定的第二个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../../apis-input-kit/arkts-apis/arkts-input-multimodalinput-keycode-keycode-e.md)，默认值为0。 |
+| d | number | 是 | 鼠标滚轮滚动的格数，取值大于等于0的整数，每格对应目标点位移120px。为负数时抛出401错误码。 |
+| key1 | number | 否 | 指定的第一个键码值，取值范围：[KeyCode键码值](../../apis-input-kit/arkts-apis/arkts-input-multimodalinput-keycode-keycode-e.md)，默认值为0。 |
+| key2 | number | 否 | 指定的第二个键码值，取值范围：[KeyCode键码值](../../apis-input-kit/arkts-apis/arkts-input-multimodalinput-keycode-keycode-e.md)，默认值为0。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [17000002](../errorcode-uitest.md#17000002-接口不支持并发调用) | The API does not support concurrent calls. |
 
 **示例**
@@ -2536,22 +2542,22 @@ mouseScroll(p: Point, down: boolean, d: number, key1?: number, key2?: number, sp
 | --- | --- | --- | --- |
 | p | [Point](arkts-test-uitest-point-i.md) | 是 | 鼠标点击的坐标。 |
 | down | boolean | 是 | 滚轮滑动方向是否向下。true表示向下滑动。false表示向上滚动。 |
-| d | number | 是 | 鼠标滚轮滚动的格数，取值大于等于0的整数，每格对应目标点位移120px。 |
-| key1 | number | 否 | 指定的第一个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../../apis-input-kit/arkts-apis/arkts-input-multimodalinput-keycode-keycode-e.md)，默认值为0。 |
-| key2 | number | 否 | 指定的第二个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../../apis-input-kit/arkts-apis/arkts-input-multimodalinput-keycode-keycode-e.md)，默认值为0。 |
+| d | number | 是 | 鼠标滚轮滚动的格数，取值大于等于0的整数，每格对应目标点位移120px。为负数时抛出401错误码。 |
+| key1 | number | 否 | 指定的第一个键码值，取值范围：[KeyCode键码值](../../apis-input-kit/arkts-apis/arkts-input-multimodalinput-keycode-keycode-e.md)，默认值为0。 |
+| key2 | number | 否 | 指定的第二个键码值，取值范围：[KeyCode键码值](../../apis-input-kit/arkts-apis/arkts-input-multimodalinput-keycode-keycode-e.md)，默认值为0。 |
 | speed | number | 否 | 鼠标滚轮滚动的速度，范围：1-500的整数，单位：格/秒。为不在范围内的非负数或为null/undefined时设为默认值20。为负数时抛出401错误码。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [17000002](../errorcode-uitest.md#17000002-接口不支持并发调用) | The API does not support concurrent calls. |
 
 **示例**
@@ -2594,14 +2600,14 @@ penClick(point: Point): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，返回无结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [17000002](../errorcode-uitest.md#17000002-接口不支持并发调用) | The API does not support concurrent calls. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) |  |
 
 **示例**
 
@@ -2643,14 +2649,14 @@ penDoubleClick(point: Point): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，返回无结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [17000002](../errorcode-uitest.md#17000002-接口不支持并发调用) | The API does not support concurrent calls. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) |  |
 
 **示例**
 
@@ -2687,20 +2693,20 @@ penLongClick(point: Point, pressure?: number): Promise<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | point | [Point](arkts-test-uitest-point-i.md) | 是 | 长按的坐标点。 |
-| pressure | number | 否 | 手写笔滑动操作的压力，默认为1.0，取值范围为0.0到1.0。 |
+| pressure | number | 否 | 手写笔长按操作的压力，默认为1.0，取值范围为0.0到1.0。取值为null或undefined时按照默认值处理，其他超出取值范围情况时抛出401错误码。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，返回无结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [17000002](../errorcode-uitest.md#17000002-接口不支持并发调用) | The API does not support concurrent calls. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) |  |
 
 **示例**
 
@@ -2739,20 +2745,20 @@ penSwipe(startPoint: Point, endPoint: Point, speed?: number, pressure?: number):
 | startPoint | [Point](arkts-test-uitest-point-i.md) | 是 | 起始位置的坐标点。 |
 | endPoint | [Point](arkts-test-uitest-point-i.md) | 是 | 结束位置的坐标点。 |
 | speed | number | 否 | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出401错误码。 |
-| pressure | number | 否 | 手写笔滑动操作的压力，默认为1.0，取值范围为0.0到1.0。 |
+| pressure | number | 否 | 手写笔滑动操作的压力，默认为1.0，取值范围为0.0到1.0。取值为null或undefined时按照默认值处理，其他超出取值范围情况时抛出401错误码。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，返回无结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [17000002](../errorcode-uitest.md#17000002-接口不支持并发调用) | The API does not support concurrent calls. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) |  |
 
 **示例**
 
@@ -2774,6 +2780,8 @@ pressBack(): Promise<void>
 
 进行点击BACK键的操作。使用Promise异步回调。
 
+**说明：** 本方法仅支持在主屏幕上模拟点击BACK键。如需在指定屏幕上模拟点击BACK键，请使用[pressBack(displayId: int)](#pressback)。
+
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
@@ -2788,7 +2796,7 @@ pressBack(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2836,7 +2844,7 @@ pressBack(displayId: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2879,7 +2887,7 @@ pressHome(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2927,7 +2935,7 @@ pressHome(displayId: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2982,7 +2990,7 @@ screenCap(savePath: string): Promise<boolean>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync/Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [17000002](../errorcode-uitest.md#17000002-接口不支持并发调用) | The API does not support concurrent calls. |
 
 **示例**
@@ -3020,7 +3028,7 @@ screenCap(savePath: string, displayId: number): Promise<boolean>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | savePath | string | 是 | 文件保存路径。路径需为当前应用的[沙箱路径](../../../file-management/app-sandbox-directory.md)。 |
-| displayId | number | 是 | 指定设备屏幕ID。取值范围：大于等于0的整数。**说明：** 传入displayId不存在时，将抛出17000007异常。 |
+| displayId | number | 是 | 指定设备屏幕ID。取值范围：大于等于0的整数。**说明：** 传入displayId不存在时，将抛出401错误码。 |
 
 **返回值：**
 
@@ -3032,7 +3040,7 @@ screenCap(savePath: string, displayId: number): Promise<boolean>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync/Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [17000002](../errorcode-uitest.md#17000002-接口不支持并发调用) | The API does not support concurrent calls. |
 
 **示例**
@@ -3082,7 +3090,7 @@ screenCapture(savePath: string, rect?: Rect): Promise<boolean>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync/Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [17000002](../errorcode-uitest.md#17000002-接口不支持并发调用) | The API does not support concurrent calls. |
 
 **示例**
@@ -3108,7 +3116,7 @@ async function demo() {
 setDisplayRotation(rotation: DisplayRotation): Promise<void>
 ```
 
-将当前场景的显示方向设置为指定的显示方向。使用Promise异步回调。适用于可旋转的应用场景。
+将当前场景的显示方向设置为指定的显示方向。使用Promise异步回调。适用于可旋转的应用场景，应用可以在[module.json5配置文件](../../../quick-start/module-configuration-file.md)中配置"orientation" = "auto_rotation" 使能旋转功能。
 
 **起始版本：** 9
 
@@ -3130,13 +3138,13 @@ setDisplayRotation(rotation: DisplayRotation): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified;           2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified;           2. Incorrect parameter types; 3. Parameter verification failed. |
 | [17000002](../errorcode-uitest.md#17000002-接口不支持并发调用) | The API does not support concurrent calls. |
 
 **示例**
@@ -3157,7 +3165,7 @@ async function demo() {
 setDisplayRotationEnabled(enabled: boolean): Promise<void>
 ```
 
-启用/禁用设备旋转屏幕的功能。使用Promise异步回调。
+启用/禁用设备旋转屏幕的功能，适用于需要在测试过程中锁定屏幕方向以保持特定显示状态的场景，例如测试横屏或竖屏下的布局稳定性。使用Promise异步回调。
 
 **起始版本：** 9
 
@@ -3179,13 +3187,13 @@ setDisplayRotationEnabled(enabled: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [17000002](../errorcode-uitest.md#17000002-接口不支持并发调用) | The API does not support concurrent calls. |
 
 **示例**
@@ -3222,23 +3230,23 @@ swipe(startx: number, starty: number, endx: number, endy: number, speed?: number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| startx | number | 是 | 以number的形式传入起始点的横坐标信息，取值范围：大于等于0的整数。 |
-| starty | number | 是 | 以number的形式传入起始点的纵坐标信息，取值范围：大于等于0的整数。 |
-| endx | number | 是 | 以number的形式传入目的点的横坐标信息，取值范围：大于等于0的整数。 |
-| endy | number | 是 | 以number的形式传入目的点的纵坐标信息，取值范围：大于等于0的整数。 |
+| startx | number | 是 | 起始点的横坐标信息，取值范围：大于等于0的整数，单位：px。传入不在范围内的值抛出401错误码。 |
+| starty | number | 是 | 起始点的纵坐标信息，取值范围：大于等于0的整数，单位：px。传入不在范围内的值抛出401错误码。 |
+| endx | number | 是 | 目的点的横坐标信息，取值范围：大于等于0的整数，单位：px。传入不在范围内的值抛出401错误码。 |
+| endy | number | 是 | 目的点的纵坐标信息，取值范围：大于等于0的整数，单位：px。传入不在范围内的值抛出401错误码。 |
 | speed | number | 否 | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出401错误码。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [17000002](../errorcode-uitest.md#17000002-接口不支持并发调用) | The API does not support concurrent calls. |
 
 **示例**
@@ -3285,7 +3293,7 @@ swipeBetween(from: Point, to: Point, speed?: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -3332,13 +3340,13 @@ swipeBetweenWithOptions(from: Point, to: Point, options?: TouchOptions): Promise
 | --- | --- | --- | --- |
 | from | [Point](arkts-test-uitest-point-i.md) | 是 | 手指接触屏幕的坐标点。 |
 | to | [Point](arkts-test-uitest-point-i.md) | 是 | 手指离开屏幕的坐标点。 |
-| options | [TouchOptions](arkts-test-uitest-touchoptions-i.md) | 否 | 滑动操作的选项。只有“速度”和“压力”属性适用于此方法。设置其他属性将导致BusinessError 17000007。<br>默认值：参考TouchOptions的默认值。 |
+| options | [TouchOptions](arkts-test-uitest-touchoptions-i.md) | 否 | 触摸操作选项。仅支持设置[TouchOptions](arkts-test-uitest-touchoptions-i.md)中的speed和pressure属性，设置其他属性将抛出17000007参数校验失败的错误。默认值继承[TouchOptions](arkts-test-uitest-touchoptions-i.md)各属性默认值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -3386,22 +3394,22 @@ touchPadMultiFingerSwipe(fingers: number, direction: UiDirection, options?: Touc
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| fingers | number | 是 | 触摸板多指滑动的手指数。取值为3或者4。 |
+| fingers | number | 是 | 触摸板多指滑动的手指数。取值为3或者4。取值不在范围内时抛出401错误码。 |
 | direction | [UiDirection](arkts-test-uitest-uidirection-e.md) | 是 | 触摸板多指滑动的方向。 |
-| options | [TouchPadSwipeOptions](arkts-test-uitest-touchpadswipeoptions-i.md) | 否 | 触摸板多指滑动手势附加选项，默认取TouchPadSwipeOptions中各属性的默认值。 |
+| options | [TouchPadSwipeOptions](arkts-test-uitest-touchpadswipeoptions-i.md) | 否 | 触摸板多指滑动手势附加选项，默认取TouchPadSwipeOptions中各属性的默认值，用于设置触摸板多指滑动结束是否停留以及滑动速率，适用于在触摸板上模拟多指滑动手势的场景，如三指上滑切换任务视图等。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，返回无结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [17000002](../errorcode-uitest.md#17000002-接口不支持并发调用) | The API does not support concurrent calls. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) |  |
 | [17000005](../errorcode-uitest.md#17000005-操作不支持) |  |
 
 **示例**
@@ -3440,7 +3448,7 @@ touchPadTwoFingersScroll(point: Point, direction: UiDirection, d: number, speed?
 | --- | --- | --- | --- |
 | point | [Point](arkts-test-uitest-point-i.md) | 是 | 触摸板双指滚动时鼠标光标的位置。 |
 | direction | [UiDirection](arkts-test-uitest-uidirection-e.md) | 是 | 触摸板双指滚动的方向。 |
-| d | number | 是 | 触摸板双指滚动的格数，取值为大于等于0的整数，每格对应目标点位移120px。 |
+| d | number | 是 | 触摸板双指滚动的格数，取值为大于等于0的整数，每格对应目标点位移120px。为负数时抛出17000007错误码。 |
 | speed | number | 否 | 触摸板双指滚动的速度，范围：1-500的整数，单位：格/秒。为不在范围内的非负数或为null/undefined时设为默认值20。为负数时抛出17000007错误码。 |
 
 **返回值：**
@@ -3475,7 +3483,7 @@ async function demo() {
 triggerCombineKeys(key0: number, key1: number, key2?: number): Promise<void>
 ```
 
-通过给定的key值，找到对应组合键并点击。使用Promise异步回调。例如，Key值为(2072, 2019)时，找到key值对应的组合键并点击，如Ctrl+c。
+通过给定的键码值，找到对应组合键并点击。使用Promise异步回调。例如，键码值为(2072, 2019)时，找到键码值对应的组合键并点击，如Ctrl+c。
 
 **起始版本：** 9
 
@@ -3491,21 +3499,21 @@ triggerCombineKeys(key0: number, key1: number, key2?: number): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key0 | number | 是 | 指定的第一个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../../apis-input-kit/arkts-apis/arkts-input-multimodalinput-keycode-keycode-e.md)。 |
-| key1 | number | 是 | 指定的第二个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../../apis-input-kit/arkts-apis/arkts-input-multimodalinput-keycode-keycode-e.md)。 |
-| key2 | number | 否 | 指定的第三个key值，取值范围：大于等于0的整数。取值范围：[KeyCode键码值](../../apis-input-kit/arkts-apis/arkts-input-multimodalinput-keycode-keycode-e.md)，默认值为0。 |
+| key0 | number | 是 | 指定的第一个键码值，取值范围：[KeyCode键码值](../../apis-input-kit/arkts-apis/arkts-input-multimodalinput-keycode-keycode-e.md)。 |
+| key1 | number | 是 | 指定的第二个键码值，取值范围：[KeyCode键码值](../../apis-input-kit/arkts-apis/arkts-input-multimodalinput-keycode-keycode-e.md)。 |
+| key2 | number | 否 | 指定的第三个键码值，取值范围：[KeyCode键码值](../../apis-input-kit/arkts-apis/arkts-input-multimodalinput-keycode-keycode-e.md)，默认值为0。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [17000002](../errorcode-uitest.md#17000002-接口不支持并发调用) | The API does not support concurrent calls. |
 
 **示例**
@@ -3527,7 +3535,7 @@ async function demo() {
 triggerCombineKeys(key0: number, key1: number, key2?: number, displayId?: number): Promise<void>
 ```
 
-通过给定的key值，找到对应组合键，并在指定屏幕下进行点击。使用Promise异步回调。例如，Key值为(2072, 2019)时，找到key值对应的组合键并点击，如Ctrl+c。
+通过给定的键码值，找到对应组合键，并在指定屏幕下进行点击。使用Promise异步回调。例如，键码值为(2072, 2019)时，找到键码值对应的组合键并点击，如Ctrl+c。
 
 **起始版本：** 20
 
@@ -3543,22 +3551,22 @@ triggerCombineKeys(key0: number, key1: number, key2?: number, displayId?: number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key0 | number | 是 | 指定的第一个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../../apis-input-kit/arkts-apis/arkts-input-multimodalinput-keycode-keycode-e.md)。 |
-| key1 | number | 是 | 指定的第二个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../../apis-input-kit/arkts-apis/arkts-input-multimodalinput-keycode-keycode-e.md)。 |
-| key2 | number | 否 | 指定的第三个key值，取值范围：大于等于0的整数，取值范围：[KeyCode键码值](../../apis-input-kit/arkts-apis/arkts-input-multimodalinput-keycode-keycode-e.md)，默认值为0。 |
-| displayId | number | 否 | 指定的屏幕ID，取值范围：大于等于0的整数，默认值为设备默认屏幕ID。 |
+| key0 | number | 是 | 指定的第一个键码值，取值范围：[KeyCode键码值](../../apis-input-kit/arkts-apis/arkts-input-multimodalinput-keycode-keycode-e.md)。 |
+| key1 | number | 是 | 指定的第二个键码值，取值范围：[KeyCode键码值](../../apis-input-kit/arkts-apis/arkts-input-multimodalinput-keycode-keycode-e.md)。 |
+| key2 | number | 否 | 指定的第三个键码值，取值范围：[KeyCode键码值](../../apis-input-kit/arkts-apis/arkts-input-multimodalinput-keycode-keycode-e.md)，默认值为0。 |
+| displayId | number | 否 | 指定的屏幕ID，取值范围：大于等于0的整数，默认值为设备默认屏幕ID。传入displayId不存在时，将抛出401错误码。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [17000002](../errorcode-uitest.md#17000002-接口不支持并发调用) | The API does not support concurrent calls. |
 
 **示例**
@@ -3579,7 +3587,7 @@ async function demo() {
 triggerKey(keyCode: number): Promise<void>
 ```
 
-传入key值实现模拟点击对应按键的效果。使用Promise异步回调。
+传入键码值实现模拟点击对应按键的效果。使用Promise异步回调。
 
 **起始版本：** 9
 
@@ -3595,19 +3603,19 @@ triggerKey(keyCode: number): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| keyCode | number | 是 | 指定的key值，取值范围：大于等于0的整数。取值范围：[KeyCode键码值](../../apis-input-kit/arkts-apis/arkts-input-multimodalinput-keycode-keycode-e.md)。 |
+| keyCode | number | 是 | 指定的键码值，取值范围：[KeyCode键码值](../../apis-input-kit/arkts-apis/arkts-input-multimodalinput-keycode-keycode-e.md)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [17000002](../errorcode-uitest.md#17000002-接口不支持并发调用) | The API does not support concurrent calls. |
 
 **示例**
@@ -3629,7 +3637,7 @@ async function demo() {
 triggerKey(keyCode: number, displayId: number): Promise<void>
 ```
 
-在指定屏幕，传入key值实现模拟点击对应按键的效果。使用Promise异步回调。
+在指定屏幕，传入键码值实现模拟点击对应按键的效果。使用Promise异步回调。
 
 **起始版本：** 20
 
@@ -3645,20 +3653,20 @@ triggerKey(keyCode: number, displayId: number): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| keyCode | number | 是 | 指定的key值，取值范围：大于等于0的整数。取值范围：[KeyCode键码值](../../apis-input-kit/arkts-apis/arkts-input-multimodalinput-keycode-keycode-e.md)。 |
-| displayId | number | 是 | 指定的屏幕ID，取值范围：大于等于0的整数。**说明：** 传入displayId不存在时，将抛出17000007异常。 |
+| keyCode | number | 是 | 指定的键码值，取值范围：[KeyCode键码值](../../apis-input-kit/arkts-apis/arkts-input-multimodalinput-keycode-keycode-e.md)。 |
+| displayId | number | 是 | 指定的屏幕ID，取值范围：大于等于0的整数。**说明：** 传入displayId不存在时，将抛出401错误码。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [17000002](../errorcode-uitest.md#17000002-接口不支持并发调用) | The API does not support concurrent calls. |
 
 **示例**
@@ -3680,13 +3688,13 @@ async function demo() {
 triggerPenKey(key: PenKey, mode: PenMode, operation: PenKeyOperation, options?: PenKeyOperationOptions): Promise<void>
 ```
 
-Trigger pen key operation.
+触发手写笔按键操作，适用于需要模拟手写笔功能切换的测试场景，例如模拟空鼠模式下的点击操作或智慧键唤起等。使用Promise异步回调。
 
-Supported combinations:
+**支持的参数组合：**
 
-- HANDWRITING mode: HANDWRITING key with CLICK or DOUBLE_CLICK operation.  
-- AIR_MOUSE mode: AIR_MOUSE key with CLICK or DOUBLE_CLICK operation (requires point in options),  
-HANDWRITING key with CLICK or DOUBLE_CLICK operation, SMART key with CLICK operation. Other combinations will result in a BusinessError 17000007.
+- mode取值为[HANDWRITING](arkts-test-uitest-penmode-e.md)时：支持key取值为[HANDWRITING](arkts-test-uitest-penkey-e.md)，operation取值为[CLICK](arkts-test-uitest-penkeyoperation-e.md)或[DOUBLE_CLICK](arkts-test-uitest-penkeyoperation-e.md)。  
+- mode取值为[AIR_MOUSE](arkts-test-uitest-penmode-e.md)时：支持key取值为[AIR_MOUSE](arkts-test-uitest-penkey-e.md)，operation取值为[CLICK](arkts-test-uitest-penkeyoperation-e.md)或[DOUBLE_CLICK](arkts-test-uitest-penkeyoperation-e.md)（需要在options中指定point）；支持key取值为[HANDWRITING](arkts-test-uitest-penkey-e.md)，operation取值为[CLICK](arkts-test-uitest-penkeyoperation-e.md)或[DOUBLE_CLICK](arkts-test-uitest-penkeyoperation-e.md)；支持key取值为[SMART](arkts-test-uitest-penkey-e.md)，operation取值为[CLICK](arkts-test-uitest-penkeyoperation-e.md)。  
+- 使用其他参数组合将抛出17000007错误码。
 
 **起始版本：** 26.0.0
 
@@ -3704,16 +3712,16 @@ HANDWRITING key with CLICK or DOUBLE_CLICK operation, SMART key with CLICK opera
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | [PenKey](arkts-test-uitest-penkey-e.md) | 是 | the pen key to operate. |
-| mode | [PenMode](arkts-test-uitest-penmode-e.md) | 是 | the pen mode. |
-| operation | [PenKeyOperation](arkts-test-uitest-penkeyoperation-e.md) | 是 | the operation type. |
-| options | [PenKeyOperationOptions](arkts-test-uitest-penkeyoperationoptions-i.md) | 否 | the operation options, including optional coordinate point. Default value: Refer to the default value of PenKeyOperationOption. <br>默认值：参考PenKeyOperationOption的默认值。 |
+| key | [PenKey](arkts-test-uitest-penkey-e.md) | 是 | 要触发的手写笔按键类型，用于指定执行操作的手写笔按键，如书写键、智慧键或空鼠键。 |
+| mode | [PenMode](arkts-test-uitest-penmode-e.md) | 是 | 手写笔的工作模式，用于指定手写笔当前所处的操作模式，如手写模式或空鼠模式。 |
+| operation | [PenKeyOperation](arkts-test-uitest-penkeyoperation-e.md) | 是 | 对手写笔按键执行的操作类型，用于指定按键的操作方式，如单击或双击。 |
+| options | [PenKeyOperationOptions](arkts-test-uitest-penkeyoperationoptions-i.md) | 否 | 操作选项，包括可选的坐标点。默认值继承[PenKeyOperationOptions](arkts-test-uitest-penkeyoperationoptions-i.md)各属性默认值。<br>**说明：** 当参数mode取值为[AIR_MOUSE](arkts-test-uitest-penmode-e.md)且key取值为[AIR_MOUSE](arkts-test-uitest-penkey-e.md)时，必须在options中设置point属性，否则将抛出17000007错误码。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -3775,7 +3783,7 @@ waitForComponent(on: On, time: number): Promise<Component>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [17000002](../errorcode-uitest.md#17000002-接口不支持并发调用) | The API does not support concurrent calls. |
 
 **示例**
@@ -3796,7 +3804,7 @@ async function demo() {
 waitForIdle(idleTime: number, timeout: number): Promise<boolean>
 ```
 
-判断当前界面的所有控件是否已经空闲。使用Promise异步回调。
+判断当前界面的所有控件是否已经空闲，适用于在页面跳转、动画播放或加载等场景后，等待UI界面完全稳定再执行后续测试操作。使用Promise异步回调。
 
 **起始版本：** 9
 
@@ -3812,8 +3820,8 @@ waitForIdle(idleTime: number, timeout: number): Promise<boolean>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| idleTime | number | 是 | 空闲时间的阈值。在这个时间段控件不发生变化，视为该控件空闲，单位：毫秒，取值范围：大于等于0的整数。 |
-| timeout | number | 是 | 等待空闲的最大时间，单位：毫秒，取值范围：大于等于0的整数。 |
+| idleTime | number | 是 | 空闲时间的阈值。在这个时间段控件不发生变化，视为该控件空闲，单位：ms，取值范围：大于等于0的整数。传入负数时抛出401错误码。 |
+| timeout | number | 是 | 等待空闲的最大时间，单位：ms，取值范围：大于等于0的整数。传入负数时抛出401错误码。 |
 
 **返回值：**
 
@@ -3825,7 +3833,7 @@ waitForIdle(idleTime: number, timeout: number): Promise<boolean>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Async] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [17000002](../errorcode-uitest.md#17000002-接口不支持并发调用) | The API does not support concurrent calls. |
 
 **示例**
@@ -3862,7 +3870,7 @@ wakeUpDisplay(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

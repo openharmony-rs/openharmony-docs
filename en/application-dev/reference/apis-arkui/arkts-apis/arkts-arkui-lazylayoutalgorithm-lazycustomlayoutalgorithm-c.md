@@ -54,9 +54,9 @@ Customizes the position of the child component to be arranged. When the position
 
 > **NOTE:** 
 > 
-> - In this callback, you can call the [getChild()](arkts-arkui-framenode-c.md#getchild) API of [FrameNode](arkts-arkui-framenode-c.md) to obtain the child component FrameNode and call the [layout()](arkts-arkui-framenode-c.md#layout) API of [FrameNode](arkts-arkui-framenode-c.md) to set the position of the child component. For details, see [Example 1: Implementing Custom Lazy Loading Layout](arkts-arkui-lazylayoutalgorithm-i.md)of the **LazyDynamicLayout** component.
+> - In this callback, you can call the [getChild()](arkts-arkui-framenode-c.md#getchild-1) API of [FrameNode](arkts-arkui-framenode-c.md) to obtain the child component FrameNode and call the [layout()](arkts-arkui-framenode-c.md#layout) API of [FrameNode](arkts-arkui-framenode-c.md) to set the position of the child component. For details, see [Example 1: Implementing Custom Lazy Loading Layout](arkts-arkui-lazylayoutalgorithm-i.md)of the **LazyDynamicLayout** component.
 > 
-> - When calling [getChild()](arkts-arkui-framenode-c.md#getchild) in this callback to obtain a child component, you must pass [ExpandMode.LAZY_NOT_EXPAND](arkts-arkui-framenode-expandmode-e.md) to prevent lazy loading from becoming invalid due to full loading of child components. When calling [getChildrenCount()](arkts-arkui-framenode-c.md#getchildrencount) to obtain the total number of child components, you must pass [ChildrenCountMode.ALL_NOT_EXPAND](arkts-arkui-framenode-childrencountmode-e.md) to prevent lazy loading from becoming invalid due to full loading of child components.
+> - When calling [getChild()](arkts-arkui-framenode-c.md#getchild-1) in this callback to obtain a child component, you must pass [ExpandMode.LAZY_NOT_EXPAND](arkts-arkui-framenode-expandmode-e.md) to prevent lazy loading from becoming invalid due to full loading of child components. When calling [getChildrenCount()](arkts-arkui-framenode-c.md#getchildrencount) to obtain the total number of child components, you must pass [ChildrenCountMode.ALL_NOT_EXPAND](arkts-arkui-framenode-childrencountmode-e.md) to prevent lazy loading from becoming invalid due to full loading of child components.
 
 **Since:** 26.0.0
 
@@ -85,9 +85,9 @@ Customizes the size of the child component to be measured. When the size of the 
 
 > **NOTE:** 
 > 
-> - In this callback, you can call the [getChild()](arkts-arkui-framenode-c.md#getchild) API of [FrameNode](arkts-arkui-framenode-c.md) to obtain the child component FrameNode and call the [measure()](arkts-arkui-framenode-c.md#measure) API of [FrameNode](arkts-arkui-framenode-c.md) to measure the size of the child component. For details, see [Example 1: Implementing Custom Lazy Loading Layout](arkts-arkui-lazylayoutalgorithm-i.md)of the **LazyDynamicLayout** component.
+> - In this callback, you can call the [getChild()](arkts-arkui-framenode-c.md#getchild-1) API of [FrameNode](arkts-arkui-framenode-c.md) to obtain the child component FrameNode and call the [measure()](arkts-arkui-framenode-c.md#measure) API of [FrameNode](arkts-arkui-framenode-c.md) to measure the size of the child component. For details, see [Example 1: Implementing Custom Lazy Loading Layout](arkts-arkui-lazylayoutalgorithm-i.md)of the **LazyDynamicLayout** component.
 > 
-> - When calling [getChild()](arkts-arkui-framenode-c.md#getchild) in this callback to obtain a child component, you must pass [ExpandMode.LAZY_NOT_EXPAND](arkts-arkui-framenode-expandmode-e.md) to prevent lazy loading from becoming invalid due to full loading of child components. When calling [getChildrenCount()](arkts-arkui-framenode-c.md#getchildrencount) to obtain the total number of child components, you must pass [ChildrenCountMode.ALL_NOT_EXPAND](arkts-arkui-framenode-childrencountmode-e.md) to prevent lazy loading from becoming invalid due to full loading of child components.
+> - When calling [getChild()](arkts-arkui-framenode-c.md#getchild-1) in this callback to obtain a child component, you must pass [ExpandMode.LAZY_NOT_EXPAND](arkts-arkui-framenode-expandmode-e.md) to prevent lazy loading from becoming invalid due to full loading of child components. When calling [getChildrenCount()](arkts-arkui-framenode-c.md#getchildrencount) to obtain the total number of child components, you must pass [ChildrenCountMode.ALL_NOT_EXPAND](arkts-arkui-framenode-childrencountmode-e.md) to prevent lazy loading from becoming invalid due to full loading of child components.
 
 **Since:** 26.0.0
 

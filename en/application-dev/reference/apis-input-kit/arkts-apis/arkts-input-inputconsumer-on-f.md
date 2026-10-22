@@ -12,7 +12,7 @@ import { inputConsumer } from '@kit.InputKit';
 function on(type: 'hotkeyChange', hotkeyOptions: HotkeyOptions, callback: Callback<HotkeyOptions>): void
 ```
 
-Subscribes to application hotkey change events. This API obtains combination key input events that meet the specified conditions, and uses an asynchronous callback to return the result.
+Subscribes to application hotkey change events. This API obtains combination key input events that meet the specified conditions, and uses an asynchronous callback to return the result. Before calling this API, you are advised to call [getAllSystemHotkeys](arkts-input-inputconsumer-getallsystemhotkeys-f.md) first to obtain the system hotkey list and check that the combination keys to be subscribed to are not occupied by the system, preventing subscription failures.
 
 **Since:** 14
 

@@ -1,4 +1,4 @@
-# CommonShapeMethod
+# CommonShapeMethod (System API)
 
 ```TypeScript
 declare class CommonShapeMethod<T> extends CommonMethod<T>

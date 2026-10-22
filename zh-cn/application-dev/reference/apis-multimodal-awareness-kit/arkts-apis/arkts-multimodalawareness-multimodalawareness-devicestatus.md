@@ -28,7 +28,7 @@ import { deviceStatus } from '@kit.MultimodalAwarenessKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [getDeviceRotationRadian](arkts-multimodalawareness-devicestatus-getdevicerotationradian-f-sys.md#getdevicerotationradian) | 获取设备的姿态数据。 |
+| [getDeviceRotationRadian](arkts-multimodalawareness-devicestatus-getdevicerotationradian-f-sys.md#getdevicerotationradian-1) | 获取设备的姿态数据。 |
 <!--DelEnd-->
 
 <!--Del-->

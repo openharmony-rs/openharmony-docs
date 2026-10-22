@@ -18,7 +18,7 @@ Creates a **PasteDataRecord** object of the HTML text type.
 
 **Deprecated since:** 9
 
-**Substitutes:** [createRecord](arkts-basicservices-pasteboard-createrecord-f.md)(mimeType: string, value: ValueType)
+**Substitutes:** [createRecord](arkts-basicservices-pasteboard-createrecord-f.md#createrecord-1)(mimeType: string, value: ValueType)
 
 <!--Device-pasteboard-function createHtmlTextRecord(htmlText: string): PasteDataRecord--><!--Device-pasteboard-function createHtmlTextRecord(htmlText: string): PasteDataRecord-End-->
 

@@ -12,7 +12,7 @@ import { Popup, PopupButtonOptions, PopupIconOptions, PopupOptions, PopupTextOpt
 
 | Name | Description |
 | --- | --- |
-| [Popup](arkts-arkui-arkui-advanced-popup-popup-f.md#popup) | Build function of Popup. |
+| [Popup](arkts-arkui-arkui-advanced-popup-popup-f.md#popup-1) | Build function of Popup. |
 
 ### Interfaces
 

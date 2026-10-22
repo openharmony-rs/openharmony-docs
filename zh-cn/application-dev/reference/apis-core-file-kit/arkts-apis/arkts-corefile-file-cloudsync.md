@@ -20,21 +20,21 @@ import { cloudSync } from '@kit.CoreFileKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [getCoreFileSyncState](arkts-corefile-cloudsync-getcorefilesyncstate-f.md#getcorefilesyncstate) | 同步方法获取云盘文件同步上行状态。 |
-| [registerChange](arkts-corefile-cloudsync-registerchange-f.md#registerchange) | 订阅监听指定文件的变化通知。callback返回更改的数据。 |
-| [unregisterChange](arkts-corefile-cloudsync-unregisterchange-f.md#unregisterchange) | 取消订阅监听指定文件的变化通知。 |
+| [getCoreFileSyncState](arkts-corefile-cloudsync-getcorefilesyncstate-f.md#getcorefilesyncstate-1) | 同步方法获取云盘文件同步上行状态。 |
+| [registerChange](arkts-corefile-cloudsync-registerchange-f.md#registerchange-1) | 订阅监听指定文件的变化通知。callback返回更改的数据。 |
+| [unregisterChange](arkts-corefile-cloudsync-unregisterchange-f.md#unregisterchange-1) | 取消订阅监听指定文件的变化通知。 |
 
 <!--Del-->
 ### 函数（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| [getFileSyncState](arkts-corefile-cloudsync-getfilesyncstate-f-sys.md#getfilesyncstate) | 异步方法获取文件同步状态。使用Promise异步回调。 |
-| [getFileSyncState](arkts-corefile-cloudsync-getfilesyncstate-f-sys.md#getfilesyncstate) | 异步方法获取文件同步状态。使用callback异步回调。 |
-| [getFileSyncState](arkts-corefile-cloudsync-getfilesyncstate-f-sys.md#getfilesyncstate) | 获取文件同步状态。 |
-| [optimizeStorage](arkts-corefile-cloudsync-optimizestorage-f-sys.md#optimizestorage) | 优化图库已同步云空间的本地资源，按照本地剩余空间执行自动老化策略。使用Promise异步回调。 |
-| [startOptimizeSpace](arkts-corefile-cloudsync-startoptimizespace-f-sys.md#startoptimizespace) | 优化图库已同步云空间的本地资源，执行立即优化空间策略，对老化天数前未访问的本地图片/视频进行优化。使用Promise异步回调。callback返回优化进度。 |
-| [stopOptimizeSpace](arkts-corefile-cloudsync-stopoptimizespace-f-sys.md#stopoptimizespace) | 同步方法停止图库云图资源空间优化，和startOptimizeSpace配对使用。 |
+| [getFileSyncState](arkts-corefile-cloudsync-getfilesyncstate-f-sys.md#getfilesyncstate-1) | 异步方法获取文件同步状态。使用Promise异步回调。 |
+| [getFileSyncState](arkts-corefile-cloudsync-getfilesyncstate-f-sys.md#getfilesyncstate-2) | 异步方法获取文件同步状态。使用callback异步回调。 |
+| [getFileSyncState](arkts-corefile-cloudsync-getfilesyncstate-f-sys.md#getfilesyncstate-3) | 获取文件同步状态。 |
+| [optimizeStorage](arkts-corefile-cloudsync-optimizestorage-f-sys.md#optimizestorage-1) | 优化图库已同步云空间的本地资源，按照本地剩余空间执行自动老化策略。使用Promise异步回调。 |
+| [startOptimizeSpace](arkts-corefile-cloudsync-startoptimizespace-f-sys.md#startoptimizespace-1) | 优化图库已同步云空间的本地资源，执行立即优化空间策略，对老化天数前未访问的本地图片/视频进行优化。使用Promise异步回调。callback返回优化进度。 |
+| [stopOptimizeSpace](arkts-corefile-cloudsync-stopoptimizespace-f-sys.md#stopoptimizespace-1) | 同步方法停止图库云图资源空间优化，和startOptimizeSpace配对使用。 |
 <!--DelEnd-->
 
 ### 类

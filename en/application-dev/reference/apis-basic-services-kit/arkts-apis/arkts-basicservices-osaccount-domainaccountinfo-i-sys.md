@@ -1,4 +1,4 @@
-# DomainAccountInfo
+# DomainAccountInfo (System API)
 
 ```TypeScript
 interface DomainAccountInfo

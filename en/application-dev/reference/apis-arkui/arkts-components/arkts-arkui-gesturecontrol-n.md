@@ -66,6 +66,68 @@ struct RotationGestureExample {
 }
 ```
 
+This example demonstrates the sequential recognition of combined gestures, specifically long press and pan gestures, using GestureGroup.
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct GestureGroupExample {
+  @State count: number = 0;
+  @State offsetX: number = 0;
+  @State offsetY: number = 0;
+  @State positionX: number = 0;
+  @State positionY: number = 0;
+  @State borderStyles: BorderStyle = BorderStyle.Solid;
+
+  build() {
+    Column() {
+      Text('sequence gesture\n' + 'LongPress onAction:' + this.count + '\nPanGesture offset:\nX: ' + this.offsetX + '\n' + 'Y: ' + this.offsetY)
+        .fontSize(15);
+    }
+    .translate({ x: this.offsetX, y: this.offsetY, z: 0 })
+    .height(150)
+    .width(200)
+    .padding(20)
+    .margin(20)
+    .border({ width: 3, style: this.borderStyles })
+    .gesture(
+      // The following combined gestures use sequence recognition. If the long press gesture event is not triggered normally, the drag gesture event will not be triggered.
+      GestureGroup(GestureMode.Sequence,
+        LongPressGesture({ repeat: true })
+          .onAction((event?: GestureEvent) => {
+            if (event && event.repeat) {
+              this.count++;
+            }
+            console.info('LongPress onAction');
+          }),
+        PanGesture()
+          .onActionStart(() => {
+            this.borderStyles = BorderStyle.Dashed;
+            console.info('pan start');
+          })
+          .onActionUpdate((event?: GestureEvent) => {
+            if (event) {
+              this.offsetX = this.positionX + event.offsetX;
+              this.offsetY = this.positionY + event.offsetY;
+            }
+            console.info('pan update');
+          })
+          .onActionEnd(() => {
+            this.positionX = this.offsetX;
+            this.positionY = this.offsetY;
+            this.borderStyles = BorderStyle.Solid;
+            console.info('pan end');
+          })
+      )
+        .onCancel(() => {
+          console.info('sequence gesture canceled');
+        })
+    );
+  }
+}
+```
+
 This example demonstrates the recognition of a long press gesture using LongPressGesture. Since API version 22, the allowableMovement attribute in [LongPressGestureHandlerOptions](./ts-gesturehandler.md#longpressgesturehandleroptions) can be used to set the maximum movement distance of a gesture to be recognized.
 
 ```TypeScript

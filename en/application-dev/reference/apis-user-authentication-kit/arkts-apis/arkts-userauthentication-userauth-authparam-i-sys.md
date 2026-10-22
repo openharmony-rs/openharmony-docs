@@ -1,4 +1,4 @@
-# AuthParam
+# AuthParam (System API)
 
 ```TypeScript
 interface AuthParam

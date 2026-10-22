@@ -18,7 +18,7 @@ Queries all applications that have created contacts. This API uses an asynchrono
 
 **Deprecated since:** 10
 
-**Substitutes:** [queryHolders](#queryholders)(context: Context, callback: AsyncCallback&lt;Array&lt;Holder&gt;&gt;)
+**Substitutes:** [queryHolders](#queryholders-2)(context: Context, callback: AsyncCallback&lt;Array&lt;Holder&gt;&gt;)
 
 **Required permissions:** ohos.permission.READ_CONTACTS
 
@@ -113,7 +113,7 @@ Queries all applications that have created contacts. This API uses a promise to 
 
 **Deprecated since:** 10
 
-**Substitutes:** [queryHolders](#queryholders)(context: Context)
+**Substitutes:** [queryHolders](#queryholders-4)(context: Context)
 
 **Required permissions:** ohos.permission.READ_CONTACTS
 

@@ -619,7 +619,7 @@ Obtains the file descriptor of the **TCPSocket** object. This API uses an asynch
 > 
 > - This API can be called only after **bind** or **connect** is successfully called.
 > 
-> - The lifecycle of the file descriptor is managed by the system. The application can use the [close](arkts-network-socket-udpsocket-i.md#close) method to close the socket connection,instead of directly operating the file descriptor.
+> - The lifecycle of the file descriptor is managed by the system. The application can use the [close](arkts-network-socket-udpsocket-i.md#close-1) method to close the socket connection,instead of directly operating the file descriptor.
 
 **Since:** 10
 
@@ -672,7 +672,7 @@ Obtains the file descriptor of the **TCPSocket** object. This API uses a promise
 > 
 > - This API can be called only after **bind** or **connect** is successfully called.
 > 
-> - The lifecycle of the file descriptor is managed by the system. The application can use the [close](arkts-network-socket-udpsocket-i.md#close) method to close the socket connection,instead of directly operating the file descriptor.
+> - The lifecycle of the file descriptor is managed by the system. The application can use the [close](arkts-network-socket-udpsocket-i.md#close-1) method to close the socket connection,instead of directly operating the file descriptor.
 
 **Since:** 10
 

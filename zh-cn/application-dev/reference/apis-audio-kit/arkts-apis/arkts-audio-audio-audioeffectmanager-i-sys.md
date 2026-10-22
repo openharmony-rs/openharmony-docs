@@ -399,7 +399,7 @@ setAudioEffectProperty(propertyArray: Array<AudioEffectProperty>): void
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Caller is not a system application. |
-| [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. Possible causes:                                                                 1. More than one effect property name of the same effect property category are in the input array.                                                                 2. The input audioEffectProperties are not supported by the current device.                                                                 3. The name or catergory of the input audioEffectProperties is incorrect. |
+| [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. Possible causes:                                                                 1. More than one effect property name of the same effect property category are in the input array.                                                                 2. The input audioEffectProperties are not supported by the current device.                                                                 3. The name or category of the input audioEffectProperties is incorrect. |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | System error. |
 
 <!--Del-->

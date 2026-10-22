@@ -1,4 +1,4 @@
-# ManualExposureQuery
+# ManualExposureQuery（系统接口）
 
 ```TypeScript
 interface ManualExposureQuery

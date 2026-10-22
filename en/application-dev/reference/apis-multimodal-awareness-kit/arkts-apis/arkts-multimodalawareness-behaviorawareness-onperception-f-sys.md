@@ -47,4 +47,5 @@ When a user performs an action, MSDP filters matches from the awareness event ta
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application uses the system API. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: <br>1. The hardware does not support the capability. <br>2. The chip does not support the capability. <br>3. A dependent service feature is not supported. |
 | [32500001](../errorcode-deviceStatus.md#32500001-abnormal-service) | Service exception. |

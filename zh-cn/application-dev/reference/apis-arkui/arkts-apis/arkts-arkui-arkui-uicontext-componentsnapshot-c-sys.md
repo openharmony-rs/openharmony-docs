@@ -1,4 +1,4 @@
-# ComponentSnapshot
+# ComponentSnapshot（系统接口）
 
 ```TypeScript
 export class ComponentSnapshot

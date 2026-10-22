@@ -1,4 +1,4 @@
-# AlbumSubtype
+# AlbumSubtype (System API)
 
 ```TypeScript
 enum AlbumSubtype

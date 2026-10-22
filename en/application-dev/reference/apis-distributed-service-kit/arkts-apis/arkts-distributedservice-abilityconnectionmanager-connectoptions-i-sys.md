@@ -1,4 +1,4 @@
-# ConnectOptions
+# ConnectOptions (System API)
 
 ```TypeScript
 interface ConnectOptions

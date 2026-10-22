@@ -4,7 +4,7 @@
 export interface DLPFile
 ```
 
-管理DLPFile的实例，表示一个DLP文件对象，需要通过[generateDLPFile](arkts-dataprotection-dlppermission-generatedlpfile-f-sys.md#generatedlpfile) /[openDLPFile](arkts-dataprotection-dlppermission-opendlpfile-f-sys.md#opendlpfile)获取DLPFile的实例。DLPFile对象代表一个已打开的DLP文件句柄，封装了对DLP文件的所有操作接口。对象在使用完毕后必须调用[closeDLPFile](#closedlpfile)方法释放资源，避免文件句柄泄漏。DLPFile对象在跨进程传递时，需要进行授权。
+管理DLPFile的实例，表示一个DLP文件对象，需要通过[generateDLPFile](arkts-dataprotection-dlppermission-generatedlpfile-f-sys.md#generatedlpfile-1) /[openDLPFile](arkts-dataprotection-dlppermission-opendlpfile-f-sys.md#opendlpfile-1)获取DLPFile的实例。DLPFile对象代表一个已打开的DLP文件句柄，封装了对DLP文件的所有操作接口。对象在使用完毕后必须调用[closeDLPFile](#closedlpfile)方法释放资源，避免文件句柄泄漏。DLPFile对象在跨进程传递时，需要进行授权。
 
 **起始版本：** 10
 
@@ -28,7 +28,7 @@ addDLPLinkFile(linkFileName: string): Promise<void>
 
 在FUSE文件系统（Filesystem in Userspace）添加link文件。FUSE是一种用户空间文件系统框架，允许在用户空间实现自定义文件系统逻辑。link文件是FUSE中映射到DLP密文的虚拟文件，对该文件的读写操作会同步到实际DLP文件。使用Promise异步回调。
 
-在调用addDLPLinkFile后需要调用[deleteDLPLinkFile](#deletedlplinkfile)移除DLP link文件。
+在调用addDLPLinkFile后需要调用[deleteDLPLinkFile](#deletedlplinkfile-1)移除DLP link文件。
 
 DLP应用需要通过标准文件接口访问加密文件内容时，先添加link文件将DLP文件映射为虚拟明文文件，应用可像操作普通文件一样读写该link文件。
 
@@ -109,7 +109,7 @@ addDLPLinkFile(linkFileName: string, callback: AsyncCallback<void>): void
 
 在FUSE文件系统添加link文件。使用callback异步回调。调用成功后，在FUSE文件系统中创建一个映射到DLP文件密文的虚拟文件。
 
-在调用addDLPLinkFile后需要调用[deleteDLPLinkFile](#deletedlplinkfile)移除DLP link文件。
+在调用addDLPLinkFile后需要调用[deleteDLPLinkFile](#deletedlplinkfile-1)移除DLP link文件。
 
 DLP应用需要通过标准文件接口访问加密文件内容时使用此接口。
 
@@ -188,7 +188,7 @@ closeDLPFile(): Promise<void>
 
 关闭DLPFile，释放对象。使用Promise异步回调。
 
-调用[openDLPFile](arkts-dataprotection-dlppermission-opendlpfile-f-sys.md#opendlpfile)成功后返回DLPFile对象，必须在使用完毕后调用closeDLPFile()释放资源。
+调用[openDLPFile](arkts-dataprotection-dlppermission-opendlpfile-f-sys.md#opendlpfile-1)成功后返回DLPFile对象，必须在使用完毕后调用closeDLPFile()释放资源。
 
 文件所有者决定关闭DLP文件时使用此接口。
 
@@ -346,7 +346,7 @@ deleteDLPLinkFile(linkFileName: string): Promise<void>
 
 删除FUSE文件系统中创建的link文件。使用Promise异步回调。调用成功后，从FUSE文件系统中移除指定的link文件。
 
-在调用deleteDLPLinkFile前需要调用[addDLPLinkFile](#adddlplinkfile)添加DLP link文件。
+在调用deleteDLPLinkFile前需要调用[addDLPLinkFile](#adddlplinkfile-1)添加DLP link文件。
 
 DLP文件访问结束后清理link文件映射时使用此接口。
 
@@ -428,7 +428,7 @@ deleteDLPLinkFile(linkFileName: string, callback: AsyncCallback<void>): void
 
 删除FUSE文件系统中创建的link文件，使用callback异步回调。调用成功后，从FUSE文件系统中移除指定的link文件。
 
-在调用deleteDLPLinkFile前需要调用[addDLPLinkFile](#adddlplinkfile)添加DLP link文件。
+在调用deleteDLPLinkFile前需要调用[addDLPLinkFile](#adddlplinkfile-1)添加DLP link文件。
 
 DLP文件访问结束后清理link文件映射时使用此接口。
 

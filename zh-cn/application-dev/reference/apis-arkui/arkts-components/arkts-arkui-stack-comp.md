@@ -6,7 +6,7 @@
 > 
 > - 该组件从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > 
-> - 通用属性[align](arkts-arkui-common-comp-commonmethod-c.md#align)在该组件上支持镜像能力。
+> - 通用属性[align](arkts-arkui-common-comp-commonmethod-c.md#align-1)在该组件上支持镜像能力。
 
 ## 子组件
 
@@ -24,7 +24,7 @@ Stack(options?: StackOptions)
 > 
 > 组件嵌套层数过多会导致性能下降。在可通过组件属性或系统API实现相同布局效果的场景中，使用这些替代方法可以减少嵌套层数，从而优化性能。最佳实践请参考组件嵌套优化-优先使用组件属性代替嵌套组件。
 > 
-> 该接口的alignContent参数与[align](arkts-arkui-common-comp-commonmethod-c.md#align)同时设置时，后设置的属性值会覆盖先设置的属性值。该接口的alignContent参数与
+> 该接口的alignContent参数与[align](arkts-arkui-common-comp-commonmethod-c.md#align-1)同时设置时，后设置的属性值会覆盖先设置的属性值。该接口的alignContent参数与
 > alignContent属性同时设置时，以属性设置的值为准。
 
 **起始版本：** 7
@@ -52,3 +52,26 @@ Stack(options?: StackOptions)
 | [StackOptions](arkts-arkui-stack-comp-stackoptions-i.md) | 设置堆叠容器的子组件对齐方式。 |
 
 ## 示例
+
+当Stack的[alignContent](#aligncontent)属性设为Alignment.Bottom，且[syncLoad](#syncload)为true时，其子组件的显示效果表现为在Stack组件底部横向居中并且所有子组件在同一帧内加载完成。
+
+从API版本26.0.0开始，新增syncLoad属性。
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct StackExample {
+  build() {
+    // 设置子组件在Stack容器底部对齐
+    Stack({ alignContent: Alignment.Bottom }) {
+      // 第一个子组件，显示在底部
+      Text('First child, show in bottom').width('90%').height('100%').backgroundColor(0xd2cab3).align(Alignment.Top)
+      // 第二个子组件，显示在上层
+      Text('Second child, show in top').width('70%').height('60%').backgroundColor(0xc1cbac).align(Alignment.Top)
+    }.width('100%').height(150).margin({ top: 5 })
+    // 从API版本26.0.0开始，新增syncLoad属性，设置为true表示同步加载Stack区域内所有子组件
+    .syncLoad(true)
+  }
+}
+```

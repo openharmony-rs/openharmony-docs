@@ -1,4 +1,4 @@
-# AVMetadata
+# AVMetadata (System API)
 
 ```TypeScript
 interface AVMetadata

@@ -21,9 +21,9 @@ import { batteryInfo } from '@kit.BasicServicesKit';
 
 | Name | Description |
 | --- | --- |
-| [getBatteryConfig](arkts-basicservices-batteryinfo-getbatteryconfig-f-sys.md#getbatteryconfig) | Obtains the battery configuration based on the specified scenario. |
-| [isBatteryConfigSupported](arkts-basicservices-batteryinfo-isbatteryconfigsupported-f-sys.md#isbatteryconfigsupported) | Checks whether the battery configuration is enabled based on the specified scenario. |
-| [setBatteryConfig](arkts-basicservices-batteryinfo-setbatteryconfig-f-sys.md#setbatteryconfig) | Sets the battery configuration based on the specified scenario. |
+| [getBatteryConfig](arkts-basicservices-batteryinfo-getbatteryconfig-f-sys.md#getbatteryconfig-1) | Obtains the battery configuration based on the specified scenario. |
+| [isBatteryConfigSupported](arkts-basicservices-batteryinfo-isbatteryconfigsupported-f-sys.md#isbatteryconfigsupported-1) | Checks whether the battery configuration is enabled based on the specified scenario. |
+| [setBatteryConfig](arkts-basicservices-batteryinfo-setbatteryconfig-f-sys.md#setbatteryconfig-1) | Sets the battery configuration based on the specified scenario. |
 <!--DelEnd-->
 
 ### Enums

@@ -24,7 +24,7 @@ Unsubscribes from pairing status change events. This API uses an asynchronous ca
 
 **System capability:** SystemCapability.Communication.NearLink.Base
 
-**See also:** [onPairingStateChange](arkts-connectivity-remotedevice-onpairingstatechange-f.md) Subscribes to the pairing status change event.
+**See also:** [onPairingStateChange](arkts-connectivity-remotedevice-onpairingstatechange-f.md#onpairingstatechange-1) Subscribes to the pairing status change event.
 
 **Parameters:**
 

@@ -1,4 +1,4 @@
-# VideoOutput
+# VideoOutput (System API)
 
 ```TypeScript
 interface VideoOutput extends CameraOutput

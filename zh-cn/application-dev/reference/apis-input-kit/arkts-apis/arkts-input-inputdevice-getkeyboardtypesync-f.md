@@ -12,7 +12,7 @@ import { inputDevice } from '@kit.InputKit';
 function getKeyboardTypeSync(deviceId: number): KeyboardType
 ```
 
-获取输入设备的键盘类型。
+获取输入设备的键盘类型。调用此接口前，需要先调用[getDeviceList](arkts-input-inputdevice-getdevicelist-f.md)接口获取输入设备的ID。
 
 **起始版本：** 10
 

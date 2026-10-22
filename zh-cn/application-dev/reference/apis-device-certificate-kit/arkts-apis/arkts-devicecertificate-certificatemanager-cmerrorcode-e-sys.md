@@ -1,4 +1,4 @@
-# CMErrorCode
+# CMErrorCode（系统接口）
 
 ```TypeScript
 export enum CMErrorCode

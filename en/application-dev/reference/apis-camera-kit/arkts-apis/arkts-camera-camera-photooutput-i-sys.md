@@ -1,4 +1,4 @@
-# PhotoOutput
+# PhotoOutput (System API)
 
 ```TypeScript
 interface PhotoOutput extends CameraOutput

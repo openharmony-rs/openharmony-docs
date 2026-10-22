@@ -1,4 +1,4 @@
-# FormInfo
+# FormInfo (System API)
 
 ```TypeScript
 interface FormInfo

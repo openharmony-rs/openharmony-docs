@@ -1,4 +1,4 @@
-# PhotoAsset
+# PhotoAsset（系统接口）
 
 ```TypeScript
 interface PhotoAsset extends lang.ISendable

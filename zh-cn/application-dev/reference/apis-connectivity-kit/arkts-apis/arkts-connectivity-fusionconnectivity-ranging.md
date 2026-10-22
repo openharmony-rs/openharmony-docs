@@ -26,14 +26,14 @@ import { ranging } from '@kit.ConnectivityKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [getRangingCapability](arkts-connectivity-ranging-getrangingcapability-f.md#getrangingcapability) | 查询本端设备支持的测距能力，使用Promise异步回调。 |
-| [isRangingSupported](arkts-connectivity-ranging-israngingsupported-f.md#israngingsupported) | 判断本端设备是否支持测距特性。 |
-| [offRangingStateChange](arkts-connectivity-ranging-offrangingstatechange-f.md#offrangingstatechange) | 注销测距状态变化回调。 |
-| [onRangingStateChange](arkts-connectivity-ranging-onrangingstatechange-f.md#onrangingstatechange) | 注册测距状态变化回调，监听测距状态通知。 |
-| [startPassiveRanging](arkts-connectivity-ranging-startpassiveranging-f.md#startpassiveranging) | 启动被动测距模式。本端设备将作为测距信标广播测距数据包，允许其他支持对应测距类型的主动测距设备发现本端设备。典型应用场景包括：本端设备作为被定位标签或防丢贴片、固定信标部署等，适用于本端需要被其他设备测量距离的场景。 |
-| [startRanging](arkts-connectivity-ranging-startranging-f.md#startranging) | 向指定设备发起主动测距，获取目标设备的距离和信号强度等信息。典型应用场景包括：智能防丢与寻找、近场找物、数字钥匙等。 |
-| [stopPassiveRanging](arkts-connectivity-ranging-stoppassiveranging-f.md#stoppassiveranging) | 停止被动测距模式。根据指定的句柄和测距类型停止对应的被动测距广播，并清理相关资源。 |
-| [stopRanging](arkts-connectivity-ranging-stopranging-f.md#stopranging) | 停止正在进行中的主动测距。 |
+| [getRangingCapability](arkts-connectivity-ranging-getrangingcapability-f.md#getrangingcapability-1) | 查询本端设备支持的测距能力，使用Promise异步回调。 |
+| [isRangingSupported](arkts-connectivity-ranging-israngingsupported-f.md#israngingsupported-1) | 判断本端设备是否支持测距特性。 |
+| [offRangingStateChange](arkts-connectivity-ranging-offrangingstatechange-f.md#offrangingstatechange-1) | 注销测距状态变化回调。 |
+| [onRangingStateChange](arkts-connectivity-ranging-onrangingstatechange-f.md#onrangingstatechange-1) | 注册测距状态变化回调，监听测距状态通知。 |
+| [startPassiveRanging](arkts-connectivity-ranging-startpassiveranging-f.md#startpassiveranging-1) | 启动被动测距模式。本端设备将作为测距信标广播测距数据包，允许其他支持对应测距类型的主动测距设备发现本端设备。典型应用场景包括：本端设备作为被定位标签或防丢贴片、固定信标部署等，适用于本端需要被其他设备测量距离的场景。 |
+| [startRanging](arkts-connectivity-ranging-startranging-f.md#startranging-1) | 向指定设备发起主动测距，获取目标设备的距离和信号强度等信息。典型应用场景包括：智能防丢与寻找、近场找物、数字钥匙等。 |
+| [stopPassiveRanging](arkts-connectivity-ranging-stoppassiveranging-f.md#stoppassiveranging-1) | 停止被动测距模式。根据指定的句柄和测距类型停止对应的被动测距广播，并清理相关资源。 |
+| [stopRanging](arkts-connectivity-ranging-stopranging-f.md#stopranging-1) | 停止正在进行中的主动测距。 |
 
 ### 接口
 

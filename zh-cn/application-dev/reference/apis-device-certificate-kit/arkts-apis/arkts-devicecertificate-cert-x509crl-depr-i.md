@@ -37,7 +37,7 @@ getEncoded(callback: AsyncCallback<EncodingBlob>): void
 > **说明：** 
 > 
 > 从API version 9开始支持，从API version 11开始废弃，建议使用
-> [X509CRL.getEncoded()](arkts-devicecertificate-cert-x509crl-i.md#getencoded)替代。
+> [X509CRL.getEncoded()](arkts-devicecertificate-cert-x509crl-i.md#getencoded-1)替代。
 
 **起始版本：** 9
 
@@ -759,7 +759,7 @@ getRevokedCerts(callback: AsyncCallback<Array<X509CrlEntry>>): void
 > **说明：** 
 > 
 > 从API version 9开始支持，从API version 11开始废弃，建议使用
-> [X509CRL.getRevokedCerts()](arkts-devicecertificate-cert-x509crl-i.md#getrevokedcerts)替代。
+> [X509CRL.getRevokedCerts()](arkts-devicecertificate-cert-x509crl-i.md#getrevokedcerts-1)替代。
 
 **起始版本：** 9
 
@@ -2041,7 +2041,7 @@ verify(key: cryptoFramework.PubKey, callback: AsyncCallback<void>): void
 > **说明：** 
 > 
 > 从API version 9开始支持，从API version 11开始废弃，建议使用
-> [X509CRL.verify()](arkts-devicecertificate-cert-x509crl-i.md#verify)替代。
+> [X509CRL.verify()](arkts-devicecertificate-cert-x509crl-i.md#verify-1)替代。
 
 **起始版本：** 9
 
@@ -2326,7 +2326,7 @@ verify(key: cryptoFramework.PubKey): Promise<void>
 > **说明：** 
 > 
 > 从API version 9开始支持，从API version 11开始废弃，建议使用
-> [X509CRL.verify()](arkts-devicecertificate-cert-x509crl-i.md#verify)替代。
+> [X509CRL.verify()](arkts-devicecertificate-cert-x509crl-i.md#verify-2)替代。
 
 **起始版本：** 9
 

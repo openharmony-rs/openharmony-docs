@@ -1,4 +1,4 @@
-# Scenario
+# Scenario (System API)
 
 ```TypeScript
 export enum Scenario

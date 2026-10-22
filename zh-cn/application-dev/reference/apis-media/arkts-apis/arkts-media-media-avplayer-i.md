@@ -4,7 +4,7 @@
 interface AVPlayer
 ```
 
-播放管理类，用于管理和播放媒体资源。支持音视频播放、播放控制（播放、暂停、停止、跳转、倍速等）、状态管理和事件监听。在调用AVPlayer的方法前，需要先通过[createAVPlayer()](arkts-media-media-createavplayer-f.md#createavplayer)构建一个AVPlayer实例。
+播放管理类，用于管理和播放媒体资源。支持音视频播放、播放控制（播放、暂停、停止、跳转、倍速等）、状态管理和事件监听。在调用AVPlayer的方法前，需要先通过[createAVPlayer()](arkts-media-media-createavplayer-f.md#createavplayer-1)构建一个AVPlayer实例。
 
 在使用AVPlayer实例的方法时，建议开发者注册相关回调，主动获取当前状态变化。[on('stateChange')](#onstatechange)：监听播放状态机AVPlayerState切换。[on('error')](#onerror)：监听错误事件。
 
@@ -96,7 +96,7 @@ addSubtitleFromFd(fd: number, offset?: number, length?: number): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| fd | number | 是 | 资源句柄，通过[resourceManager.getRawFd](../../apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-resourcemanager-i.md#getrawfd)获取。 |
+| fd | number | 是 | 资源句柄，通过[resourceManager.getRawFd](../../apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-resourcemanager-i.md#getrawfd-1)获取。 |
 | offset | number | 否 | 资源偏移量，需要基于预置资源的信息输入，非法值会造成字幕频资源解析错误，默认值:0。 |
 | length | number | 否 | 资源长度，默认值为文件中从偏移量开始的剩余字节，需要基于预置资源的信息输入，非法值会造成字幕频资源解析错误，默认值:0。 |
 
@@ -1537,7 +1537,7 @@ async function test(){
 off(type: 'availableBitrates', callback?: Callback<Array<number>>): void
 ```
 
-取消监听HLS/DASH协议网络流可用的比特率列表，调用[prepare](#prepare)后，上报此事件。
+取消监听HLS/DASH协议网络流可用的比特率列表，调用[prepare](#prepare-1)后，上报此事件。
 
 **起始版本：** 9
 
@@ -2502,7 +2502,7 @@ async function test(){
 on(type: 'error', callback: ErrorCallback): void
 ```
 
-监听[AVPlayer](arkts-media-multimedia-media.md)的错误事件，该事件仅用于错误提示，不需要用户停止播控动作。如果此时[AVPlayerState](arkts-media-media-avplayerstate-t.md)也切至error状态，用户需要通过[reset()](#reset)或者[release()](#release)退出播放操作。若调用[reset()](#reset)方法后，播放状态仍为error状态，建议直接调用[release()](#release)方法，退出播放操作。
+监听[AVPlayer](arkts-media-multimedia-media.md)的错误事件，该事件仅用于错误提示，不需要用户停止播控动作。如果此时[AVPlayerState](arkts-media-media-avplayerstate-t.md)也切至error状态，用户需要通过[reset()](#reset-1)或者[release()](#release-1)退出播放操作。若调用[reset()](#reset-1)方法后，播放状态仍为error状态，建议直接调用[release()](#release-1)方法，退出播放操作。
 
 **起始版本：** 9
 
@@ -4058,7 +4058,7 @@ setSuperResolution(enabled: boolean) : Promise<void>
 
 动态开启/关闭超分算法，可在 'initialized' | 'prepared' | 'playing' | 'paused' | 'completed' | 'stopped' 状态下调用。使用Promise异步回调。
 
-在调用[prepare()](#prepare)前先通过[PlaybackStrategy](arkts-media-media-playbackstrategy-i.md)使能超分。
+在调用[prepare()](#prepare-1)前先通过[PlaybackStrategy](arkts-media-media-playbackstrategy-i.md)使能超分。
 
 **起始版本：** 18
 
@@ -4178,7 +4178,7 @@ setVideoWindowSize(width: number, height: number) : Promise<void>
 
 输入参数须在320x320~1920x1080范围内，单位为像素。
 
-在调用[prepare()](#prepare)前先通过[PlaybackStrategy](arkts-media-media-playbackstrategy-i.md)使能超分。
+在调用[prepare()](#prepare-1)前先通过[PlaybackStrategy](arkts-media-media-playbackstrategy-i.md)使能超分。
 
 **起始版本：** 18
 
@@ -4377,7 +4377,7 @@ audioInterruptMode?: audio.InterruptMode
 
 只允许在**prepared/playing/paused/completed**状态下设置。
 
-在第一次调用[play()](#play)之前设置， 以便此后中断模式生效。
+在第一次调用[play()](#play-1)之前设置， 以便此后中断模式生效。
 
 **类型：** [audio.InterruptMode](../../apis-audio-kit/arkts-apis/arkts-audio-audio-interruptmode-e.md)
 
@@ -4399,7 +4399,7 @@ audioRendererInfo?: audio.AudioRendererInfo
 
 只允许在**initialized**状态下设置。
 
-在第一次调用[prepare()](#prepare)之前设置，以便音频渲染器信息在之后生效。
+在第一次调用[prepare()](#prepare-1)之前设置，以便音频渲染器信息在之后生效。
 
 **类型：** [audio.AudioRendererInfo](../../apis-audio-kit/arkts-apis/arkts-audio-audio-audiorendererinfo-i.md)
 

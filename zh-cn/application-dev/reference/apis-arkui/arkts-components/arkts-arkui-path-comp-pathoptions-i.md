@@ -22,7 +22,7 @@ declare interface PathOptions
 commands?: ResourceStr
 ```
 
-路径绘制的命令字符串，符合[SVG路径描述规范](arkts-arkui-path-comp.md#path)，单位为px。
+路径绘制的命令字符串，符合SVG路径描述规范，单位为px。
 
 默认值：空字符串
 

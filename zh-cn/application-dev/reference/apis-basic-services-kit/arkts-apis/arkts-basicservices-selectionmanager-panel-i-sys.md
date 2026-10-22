@@ -1,4 +1,4 @@
-# Panel
+# Panel（系统接口）
 
 ```TypeScript
 interface Panel

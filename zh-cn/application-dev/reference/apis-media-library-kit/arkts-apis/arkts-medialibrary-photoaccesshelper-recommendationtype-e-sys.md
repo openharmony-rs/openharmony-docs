@@ -1,4 +1,4 @@
-# RecommendationType
+# RecommendationType（系统接口）
 
 ```TypeScript
 enum RecommendationType
@@ -138,5 +138,32 @@ LANDSCAPE表示风景照片会被推荐。
 
 <!--Del-->
 **示例**
+
+```TypeScript
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function example() {
+  try {
+    let recommendOptions: photoAccessHelper.RecommendationOptions = {
+      recommendationType: photoAccessHelper.RecommendationType.ID_CARD
+    };
+    let options: photoAccessHelper.PhotoSelectOptions = {
+      MIMEType: photoAccessHelper.PhotoViewMIMETypes.IMAGE_TYPE,
+      maxSelectNumber: 1,
+      recommendationOptions: recommendOptions
+    };
+    let photoPicker = new photoAccessHelper.PhotoViewPicker();
+    photoPicker.select(options).then((photoSelectResult: photoAccessHelper.PhotoSelectResult) => {
+      console.info('PhotoViewPicker.select successfully, photoSelectResult uri: ' + JSON.stringify(photoSelectResult));
+    }).catch((err: BusinessError) => {
+      console.error(`PhotoViewPicker.select failed with err: ${err.code}, ${err.message}`);
+    });
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+    console.error(`PhotoViewPicker failed with err: ${err.code}, ${err.message}`);
+  }
+}
+```
 
 <!--DelEnd-->

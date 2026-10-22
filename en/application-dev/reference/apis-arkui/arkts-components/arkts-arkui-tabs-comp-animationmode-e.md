@@ -4,7 +4,7 @@
 declare enum AnimationMode
 ```
 
-Enumerates the animation forms for switching **TabContent** when a [TabBar](arkts-arkui-tabcontent-comp-attribute.md#tabbar) tab is tapped.
+Enumerates the animation forms for switching **TabContent** when a [TabBar](arkts-arkui-tabcontent-comp-attribute.md#tabbar-1) tab is tapped.
 
 **Since:** 12
 

@@ -150,7 +150,7 @@ iterations(value: number)
 monitorInvisibleArea(monitorInvisibleArea: boolean) : ImageAnimatorAttribute
 ```
 
-设置组件是否通过系统[onVisibleAreaChange](arkts-arkui-common-comp-commonmethod-c.md#onvisibleareachange)的可见性判定，控制组件的暂停和播放。
+设置组件是否通过系统[onVisibleAreaChange](arkts-arkui-common-comp-commonmethod-c.md#onvisibleareachange-1)的可见性判定，控制组件的暂停和播放。
 
 **起始版本：** 17
 
@@ -166,7 +166,7 @@ monitorInvisibleArea(monitorInvisibleArea: boolean) : ImageAnimatorAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| monitorInvisibleArea | boolean | 是 | true时，组件基于系统的[onVisibleAreaChange](arkts-arkui-common-comp-commonmethod-c.md#onvisibleareachange)可见性判定控制暂停和播放；当组件的运行状态为[AnimationStatus](../arkts-apis/arkts-arkui-animationstatus-e.md)的Running时，若判定不可见则自动暂停，若判定可见则自动恢复播放。false时，组件的暂停和播放不受onVisibleAreaChange影响。<br>默认值：false <br> **说明：** <br>当该属性由true动态修改为false时，组件将依据当前的[AnimationStatus](../arkts-apis/arkts-arkui-animationstatus-e.md)状态进行处理。<br> 例如，若当前状态为Running且因[onVisibleAreaChange](arkts-arkui-common-comp-commonmethod-c.md#onvisibleareachange)的不可见回调暂停，则在属性由true改为false后，组件会从上次暂停的位置重新开始播放。<br>由该属性导致的不可见暂停和可见播放操作不会改变用户设置的[state](#state)值。 |
+| monitorInvisibleArea | boolean | 是 | true时，组件基于系统的[onVisibleAreaChange](arkts-arkui-common-comp-commonmethod-c.md#onvisibleareachange-1)可见性判定控制暂停和播放；当组件的运行状态为[AnimationStatus](../arkts-apis/arkts-arkui-animationstatus-e.md)的Running时，若判定不可见则自动暂停，若判定可见则自动恢复播放。false时，组件的暂停和播放不受onVisibleAreaChange影响。<br>默认值：false <br> **说明：** <br>当该属性由true动态修改为false时，组件将依据当前的[AnimationStatus](../arkts-apis/arkts-arkui-animationstatus-e.md)状态进行处理。<br> 例如，若当前状态为Running且因[onVisibleAreaChange](arkts-arkui-common-comp-commonmethod-c.md#onvisibleareachange-1)的不可见回调暂停，则在属性由true改为false后，组件会从上次暂停的位置重新开始播放。<br>由该属性导致的不可见暂停和可见播放操作不会改变用户设置的[state](#state)值。 |
 
 ## onCancel
 

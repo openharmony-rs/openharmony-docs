@@ -4,9 +4,9 @@
 export declare class ContainerReaderAttribute extends CommonMethod<ContainerReaderAttribute>
 ```
 
-In addition to the [universal attributes](arkts-arkui-common-comp-commonmethod-c.md), the following attributes are supported:
+The [universal attributes](arkts-arkui-common-comp-commonmethod-c.md) are supported.
 
-[Universal events](arkts-arkui-common-comp-commonmethod-c.md) are supported.
+The [Universal events](arkts-arkui-common-comp-commonmethod-c.md) are supported.
 
 **Inheritance/Implementation:** ContainerReaderAttribute extends CommonMethod&lt;ContainerReaderAttribute&gt;
 

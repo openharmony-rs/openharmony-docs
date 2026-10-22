@@ -20,8 +20,8 @@ import { formBindingData } from '@kit.FormKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [createFormBindingData](arkts-form-formbindingdata-createformbindingdata-f.md#createformbindingdata) | 创建一个FormBindingData对象。 |
-| [createFormBindingDataEx](arkts-form-formbindingdata-createformbindingdataex-f.md#createformbindingdataex) | 创建一个FormBindingData对象 |
+| [createFormBindingData](arkts-form-formbindingdata-createformbindingdata-f.md#createformbindingdata-1) | 创建一个FormBindingData对象。 |
+| [createFormBindingDataEx](arkts-form-formbindingdata-createformbindingdataex-f.md#createformbindingdataex-1) | 创建一个FormBindingData对象 |
 
 ### 接口
 

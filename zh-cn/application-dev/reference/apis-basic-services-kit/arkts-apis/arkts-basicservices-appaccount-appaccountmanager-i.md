@@ -1367,14 +1367,14 @@ getAllAccounts(owner: string, callback: AsyncCallback<Array<AppAccountInfo>>): v
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [getAccountsByOwner](#getaccountsbyowner)
+> [getAccountsByOwner](#getaccountsbyowner-1)
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [getAccountsByOwner](#getaccountsbyowner)(owner: string, callback: AsyncCallback&lt;Array&lt;AppAccountInfo&gt;&gt;)
+**替代接口：** [getAccountsByOwner](#getaccountsbyowner-1)(owner: string, callback: AsyncCallback&lt;Array&lt;AppAccountInfo&gt;&gt;)
 
 **需要权限：** ohos.permission.GET_ALL_APP_ACCOUNTS
 
@@ -1415,13 +1415,13 @@ getAllAccounts(owner: string): Promise<Array<AppAccountInfo>>
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [getAccountsByOwner](#getaccountsbyowner)替代。
+> [getAccountsByOwner](#getaccountsbyowner-2)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [getAccountsByOwner](#getaccountsbyowner)(owner: string)
+**替代接口：** [getAccountsByOwner](#getaccountsbyowner-2)(owner: string)
 
 **需要权限：** ohos.permission.GET_ALL_APP_ACCOUNTS
 
@@ -1698,7 +1698,7 @@ export default class EntryAbility extends UIAbility {
 getAuthList(name: string, authType: string, callback: AsyncCallback<Array<string>>): void
 ```
 
-获取指定应用账号的特定鉴权类型的授权列表，即被授权的包名数组（令牌的授权列表通过[setAuthTokenVisibility](#setauthtokenvisibility)来设置）。使用callback异步回调。
+获取指定应用账号的特定鉴权类型的授权列表，即被授权的包名数组（令牌的授权列表通过[setAuthTokenVisibility](#setauthtokenvisibility-1)来设置）。使用callback异步回调。
 
 **起始版本：** 9
 
@@ -1749,7 +1749,7 @@ try {
 getAuthList(name: string, authType: string): Promise<Array<string>>
 ```
 
-获取指定应用账号的特定鉴权类型的授权列表，即被授权的包名数组（令牌的授权列表通过[setAuthTokenVisibility](#setauthtokenvisibility)来设置）。使用Promise异步回调。
+获取指定应用账号的特定鉴权类型的授权列表，即被授权的包名数组（令牌的授权列表通过[setAuthTokenVisibility](#setauthtokenvisibility-1)来设置）。使用Promise异步回调。
 
 **起始版本：** 9
 
@@ -3570,14 +3570,14 @@ addAccount(name: string, callback: AsyncCallback<void>): void
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [createAccount](#createaccount)替
+> [createAccount](#createaccount-1)替
 > 代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [createAccount](#createaccount)(name: string, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [createAccount](#createaccount-1)(name: string, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AppAccountManager-addAccount(name: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-addAccount(name: string, callback: AsyncCallback<void>): void-End-->
 
@@ -3611,14 +3611,14 @@ addAccount(name: string, extraInfo: string, callback: AsyncCallback<void>): void
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [createAccount](#createaccount)
+> [createAccount](#createaccount-2)
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [createAccount](#createaccount)(name: string, options: CreateAccountOptions, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [createAccount](#createaccount-2)(name: string, options: CreateAccountOptions, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AppAccountManager-addAccount(name: string, extraInfo: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-addAccount(name: string, extraInfo: string, callback: AsyncCallback<void>): void-End-->
 
@@ -3652,14 +3652,14 @@ addAccount(name: string, extraInfo?: string): Promise<void>
 
 > **说明：** 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [createAccount](#createaccount)
+> [createAccount](#createaccount-3)
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [createAccount](#createaccount)(name: string, options?: CreateAccountOptions)
+**替代接口：** [createAccount](#createaccount-3)(name: string, options?: CreateAccountOptions)
 
 <!--Device-AppAccountManager-addAccount(name: string, extraInfo?: string): Promise<void>--><!--Device-AppAccountManager-addAccount(name: string, extraInfo?: string): Promise<void>-End-->
 
@@ -3706,14 +3706,14 @@ addAccountImplicitly(
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [createAccountImplicitly](#createaccountimplicitly)
+> [createAccountImplicitly](#createaccountimplicitly-1)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [createAccountImplicitly](#createaccountimplicitly)(owner: string, callback: AuthCallback)
+**替代接口：** [createAccountImplicitly](#createaccountimplicitly-1)(owner: string, callback: AuthCallback)
 
 <!--Device-AppAccountManager-addAccountImplicitly(      owner: string,      authType: string,      options: { [key: string]: any },      callback: AuthenticatorCallback    ): void--><!--Device-AppAccountManager-addAccountImplicitly(      owner: string,      authType: string,      options: { [key: string]: any },      callback: AuthenticatorCallback    ): void-End-->
 
@@ -3786,14 +3786,14 @@ authenticate(
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [auth](#auth)
+> [auth](#auth-1)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [auth](#auth)(name: string, owner: string, authType: string, callback: AuthCallback)
+**替代接口：** [auth](#auth-1)(name: string, owner: string, authType: string, callback: AuthCallback)
 
 <!--Device-AppAccountManager-authenticate(      name: string,      owner: string,      authType: string,      options: { [key: string]: any },      callback: AuthenticatorCallback    ): void--><!--Device-AppAccountManager-authenticate(      name: string,      owner: string,      authType: string,      options: { [key: string]: any },      callback: AuthenticatorCallback    ): void-End-->
 
@@ -3861,14 +3861,14 @@ checkAppAccountSyncEnable(name: string, callback: AsyncCallback<boolean>): void
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [checkDataSyncEnabled](#checkdatasyncenabled)
+> [checkDataSyncEnabled](#checkdatasyncenabled-1)
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [checkDataSyncEnabled](#checkdatasyncenabled)(name: string, callback: AsyncCallback&lt;boolean&gt;)
+**替代接口：** [checkDataSyncEnabled](#checkdatasyncenabled-1)(name: string, callback: AsyncCallback&lt;boolean&gt;)
 
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -3908,13 +3908,13 @@ checkAppAccountSyncEnable(name: string): Promise<boolean>
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [checkDataSyncEnabled](#checkdatasyncenabled)替代。
+> [checkDataSyncEnabled](#checkdatasyncenabled-2)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [checkDataSyncEnabled](#checkdatasyncenabled)(name: string)
+**替代接口：** [checkDataSyncEnabled](#checkdatasyncenabled-2)(name: string)
 
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -3962,14 +3962,14 @@ checkOAuthTokenVisibility(
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [checkAuthTokenVisibility](#checkauthtokenvisibility)
+> [checkAuthTokenVisibility](#checkauthtokenvisibility-1)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [checkAuthTokenVisibility](#checkauthtokenvisibility)(name: string, authType: string, bundleName: string, callback: AsyncCallback&lt;boolean&gt;)
+**替代接口：** [checkAuthTokenVisibility](#checkauthtokenvisibility-1)(name: string, authType: string, bundleName: string, callback: AsyncCallback&lt;boolean&gt;)
 
 <!--Device-AppAccountManager-checkOAuthTokenVisibility(      name: string,      authType: string,      bundleName: string,      callback: AsyncCallback<boolean>    ): void--><!--Device-AppAccountManager-checkOAuthTokenVisibility(      name: string,      authType: string,      bundleName: string,      callback: AsyncCallback<boolean>    ): void-End-->
 
@@ -4010,14 +4010,14 @@ checkOAuthTokenVisibility(name: string, authType: string, bundleName: string): P
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [checkAuthTokenVisibility](#checkauthtokenvisibility)
+> [checkAuthTokenVisibility](#checkauthtokenvisibility-2)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [checkAuthTokenVisibility](#checkauthtokenvisibility)(name: string, authType: string, bundleName: string)
+**替代接口：** [checkAuthTokenVisibility](#checkauthtokenvisibility-2)(name: string, authType: string, bundleName: string)
 
 <!--Device-AppAccountManager-checkOAuthTokenVisibility(name: string, authType: string, bundleName: string): Promise<boolean>--><!--Device-AppAccountManager-checkOAuthTokenVisibility(name: string, authType: string, bundleName: string): Promise<boolean>-End-->
 
@@ -4061,14 +4061,14 @@ deleteAccount(name: string, callback: AsyncCallback<void>): void
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [removeAccount](#removeaccount)替
+> [removeAccount](#removeaccount-1)替
 > 代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [removeAccount](#removeaccount)(name: string, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [removeAccount](#removeaccount-1)(name: string, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AppAccountManager-deleteAccount(name: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-deleteAccount(name: string, callback: AsyncCallback<void>): void-End-->
 
@@ -4102,14 +4102,14 @@ deleteAccount(name: string): Promise<void>
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [removeAccount](#removeaccount)替
+> [removeAccount](#removeaccount-2)替
 > 代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [removeAccount](#removeaccount)(name: string)
+**替代接口：** [removeAccount](#removeaccount-2)(name: string)
 
 <!--Device-AppAccountManager-deleteAccount(name: string): Promise<void>--><!--Device-AppAccountManager-deleteAccount(name: string): Promise<void>-End-->
 
@@ -4150,14 +4150,14 @@ deleteOAuthToken(name: string, owner: string, authType: string, token: string, c
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [deleteAuthToken](#deleteauthtoken)
+> [deleteAuthToken](#deleteauthtoken-1)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [deleteAuthToken](#deleteauthtoken)(name: string, owner: string, authType: string, token: string, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [deleteAuthToken](#deleteauthtoken-1)(name: string, owner: string, authType: string, token: string, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AppAccountManager-deleteOAuthToken(name: string, owner: string, authType: string, token: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-deleteOAuthToken(name: string, owner: string, authType: string, token: string, callback: AsyncCallback<void>): void-End-->
 
@@ -4199,14 +4199,14 @@ deleteOAuthToken(name: string, owner: string, authType: string, token: string): 
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [deleteAuthToken](#deleteauthtoken)
+> [deleteAuthToken](#deleteauthtoken-2)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [deleteAuthToken](#deleteauthtoken)(name: string, owner: string, authType: string, token: string)
+**替代接口：** [deleteAuthToken](#deleteauthtoken-2)(name: string, owner: string, authType: string, token: string)
 
 <!--Device-AppAccountManager-deleteOAuthToken(name: string, owner: string, authType: string, token: string): Promise<void>--><!--Device-AppAccountManager-deleteOAuthToken(name: string, owner: string, authType: string, token: string): Promise<void>-End-->
 
@@ -4250,14 +4250,14 @@ disableAppAccess(name: string, bundleName: string, callback: AsyncCallback<void>
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [setAppAccess](#setappaccess)
+> [setAppAccess](#setappaccess-1)
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [setAppAccess](#setappaccess)(name: string, bundleName: string, isAccessible: boolean, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [setAppAccess](#setappaccess-1)(name: string, bundleName: string, isAccessible: boolean, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AppAccountManager-disableAppAccess(name: string, bundleName: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-disableAppAccess(name: string, bundleName: string, callback: AsyncCallback<void>): void-End-->
 
@@ -4292,14 +4292,14 @@ disableAppAccess(name: string, bundleName: string): Promise<void>
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [setAppAccess](#setappaccess)
+> [setAppAccess](#setappaccess-2)
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [setAppAccess](#setappaccess)(name: string, bundleName: string, isAccessible: boolean)
+**替代接口：** [setAppAccess](#setappaccess-2)(name: string, bundleName: string, isAccessible: boolean)
 
 <!--Device-AppAccountManager-disableAppAccess(name: string, bundleName: string): Promise<void>--><!--Device-AppAccountManager-disableAppAccess(name: string, bundleName: string): Promise<void>-End-->
 
@@ -4341,14 +4341,14 @@ enableAppAccess(name: string, bundleName: string, callback: AsyncCallback<void>)
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [setAppAccess](#setappaccess)
+> [setAppAccess](#setappaccess-1)
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [setAppAccess](#setappaccess)(name: string, bundleName: string, isAccessible: boolean, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [setAppAccess](#setappaccess-1)(name: string, bundleName: string, isAccessible: boolean, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AppAccountManager-enableAppAccess(name: string, bundleName: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-enableAppAccess(name: string, bundleName: string, callback: AsyncCallback<void>): void-End-->
 
@@ -4387,14 +4387,14 @@ enableAppAccess(name: string, bundleName: string): Promise<void>
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [setAppAccess](#setappaccess)
+> [setAppAccess](#setappaccess-2)
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [setAppAccess](#setappaccess)(name: string, bundleName: string, isAccessible: boolean)
+**替代接口：** [setAppAccess](#setappaccess-2)(name: string, bundleName: string, isAccessible: boolean)
 
 <!--Device-AppAccountManager-enableAppAccess(name: string, bundleName: string): Promise<void>--><!--Device-AppAccountManager-enableAppAccess(name: string, bundleName: string): Promise<void>-End-->
 
@@ -4436,14 +4436,14 @@ getAccountCredential(name: string, credentialType: string, callback: AsyncCallba
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [getCredential](#getcredential)
+> [getCredential](#getcredential-1)
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [getCredential](#getcredential)(name: string, credentialType: string, callback: AsyncCallback&lt;string&gt;)
+**替代接口：** [getCredential](#getcredential-1)(name: string, credentialType: string, callback: AsyncCallback&lt;string&gt;)
 
 <!--Device-AppAccountManager-getAccountCredential(name: string, credentialType: string, callback: AsyncCallback<string>): void--><!--Device-AppAccountManager-getAccountCredential(name: string, credentialType: string, callback: AsyncCallback<string>): void-End-->
 
@@ -4482,13 +4482,13 @@ getAccountCredential(name: string, credentialType: string): Promise<string>
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [getCredential](#getcredential)替代。
+> [getCredential](#getcredential-2)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [getCredential](#getcredential)(name: string, credentialType: string)
+**替代接口：** [getCredential](#getcredential-2)(name: string, credentialType: string)
 
 <!--Device-AppAccountManager-getAccountCredential(name: string, credentialType: string): Promise<string>--><!--Device-AppAccountManager-getAccountCredential(name: string, credentialType: string): Promise<string>-End-->
 
@@ -4530,14 +4530,14 @@ getAccountExtraInfo(name: string, callback: AsyncCallback<string>): void
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [getCustomData](#getcustomdata)
+> [getCustomData](#getcustomdata-1)
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [getCustomData](#getcustomdata)(name: string, key: string, callback: AsyncCallback&lt;string&gt;)
+**替代接口：** [getCustomData](#getcustomdata-1)(name: string, key: string, callback: AsyncCallback&lt;string&gt;)
 
 <!--Device-AppAccountManager-getAccountExtraInfo(name: string, callback: AsyncCallback<string>): void--><!--Device-AppAccountManager-getAccountExtraInfo(name: string, callback: AsyncCallback<string>): void-End-->
 
@@ -4575,13 +4575,13 @@ getAccountExtraInfo(name: string): Promise<string>
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [getCustomData](#getcustomdata)替代。
+> [getCustomData](#getcustomdata-2)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [getCustomData](#getcustomdata)(name: string, key: string)
+**替代接口：** [getCustomData](#getcustomdata-2)(name: string, key: string)
 
 <!--Device-AppAccountManager-getAccountExtraInfo(name: string): Promise<string>--><!--Device-AppAccountManager-getAccountExtraInfo(name: string): Promise<string>-End-->
 
@@ -4622,14 +4622,14 @@ getAllAccessibleAccounts(callback: AsyncCallback<Array<AppAccountInfo>>): void
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [getAllAccounts](#getallaccounts)
+> [getAllAccounts](#getallaccounts-1)
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [getAllAccounts](#getallaccounts)(callback: AsyncCallback&lt;Array&lt;AppAccountInfo&gt;&gt;)
+**替代接口：** [getAllAccounts](#getallaccounts-1)(callback: AsyncCallback&lt;Array&lt;AppAccountInfo&gt;&gt;)
 
 **需要权限：** ohos.permission.GET_ALL_APP_ACCOUNTS
 
@@ -4711,14 +4711,14 @@ getAllOAuthTokens(name: string, owner: string, callback: AsyncCallback<Array<OAu
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [getAllAuthTokens](#getallauthtokens)
+> [getAllAuthTokens](#getallauthtokens-1)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [getAllAuthTokens](#getallauthtokens)(name: string, owner: string, callback: AsyncCallback&lt;Array&lt;AuthTokenInfo&gt;&gt;)
+**替代接口：** [getAllAuthTokens](#getallauthtokens-1)(name: string, owner: string, callback: AsyncCallback&lt;Array&lt;AuthTokenInfo&gt;&gt;)
 
 <!--Device-AppAccountManager-getAllOAuthTokens(name: string, owner: string, callback: AsyncCallback<Array<OAuthTokenInfo>>): void--><!--Device-AppAccountManager-getAllOAuthTokens(name: string, owner: string, callback: AsyncCallback<Array<OAuthTokenInfo>>): void-End-->
 
@@ -4758,13 +4758,13 @@ getAllOAuthTokens(name: string, owner: string): Promise<Array<OAuthTokenInfo>>
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [getAllAuthTokens](#getallauthtokens)替代。
+> [getAllAuthTokens](#getallauthtokens-2)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [getAllAuthTokens](#getallauthtokens)(name: string, owner: string)
+**替代接口：** [getAllAuthTokens](#getallauthtokens-2)(name: string, owner: string)
 
 <!--Device-AppAccountManager-getAllOAuthTokens(name: string, owner: string): Promise<Array<OAuthTokenInfo>>--><!--Device-AppAccountManager-getAllOAuthTokens(name: string, owner: string): Promise<Array<OAuthTokenInfo>>-End-->
 
@@ -4807,14 +4807,14 @@ getAssociatedData(name: string, key: string, callback: AsyncCallback<string>): v
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [getCustomData](#getcustomdata)
+> [getCustomData](#getcustomdata-1)
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [getCustomData](#getcustomdata)(name: string, key: string, callback: AsyncCallback&lt;string&gt;)
+**替代接口：** [getCustomData](#getcustomdata-1)(name: string, key: string, callback: AsyncCallback&lt;string&gt;)
 
 <!--Device-AppAccountManager-getAssociatedData(name: string, key: string, callback: AsyncCallback<string>): void--><!--Device-AppAccountManager-getAssociatedData(name: string, key: string, callback: AsyncCallback<string>): void-End-->
 
@@ -4853,13 +4853,13 @@ getAssociatedData(name: string, key: string): Promise<string>
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [getCustomData](#getcustomdata)替代。
+> [getCustomData](#getcustomdata-2)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [getCustomData](#getcustomdata)(name: string, key: string)
+**替代接口：** [getCustomData](#getcustomdata-2)(name: string, key: string)
 
 <!--Device-AppAccountManager-getAssociatedData(name: string, key: string): Promise<string>--><!--Device-AppAccountManager-getAssociatedData(name: string, key: string): Promise<string>-End-->
 
@@ -4901,14 +4901,14 @@ getAuthenticatorCallback(sessionId: string, callback: AsyncCallback<Authenticato
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [getAuthCallback](#getauthcallback)
+> [getAuthCallback](#getauthcallback-1)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [getAuthCallback](#getauthcallback)(sessionId: string, callback: AsyncCallback&lt;AuthCallback&gt;)
+**替代接口：** [getAuthCallback](#getauthcallback-1)(sessionId: string, callback: AsyncCallback&lt;AuthCallback&gt;)
 
 <!--Device-AppAccountManager-getAuthenticatorCallback(sessionId: string, callback: AsyncCallback<AuthenticatorCallback>): void--><!--Device-AppAccountManager-getAuthenticatorCallback(sessionId: string, callback: AsyncCallback<AuthenticatorCallback>): void-End-->
 
@@ -4958,13 +4958,13 @@ getAuthenticatorCallback(sessionId: string): Promise<AuthenticatorCallback>
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [getAuthCallback](#getauthcallback)替代。
+> [getAuthCallback](#getauthcallback-2)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [getAuthCallback](#getauthcallback)(sessionId: string)
+**替代接口：** [getAuthCallback](#getauthcallback-2)(sessionId: string)
 
 <!--Device-AppAccountManager-getAuthenticatorCallback(sessionId: string): Promise<AuthenticatorCallback>--><!--Device-AppAccountManager-getAuthenticatorCallback(sessionId: string): Promise<AuthenticatorCallback>-End-->
 
@@ -5017,14 +5017,14 @@ getAuthenticatorInfo(owner: string, callback: AsyncCallback<AuthenticatorInfo>):
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [queryAuthenticatorInfo](#queryauthenticatorinfo)
+> [queryAuthenticatorInfo](#queryauthenticatorinfo-1)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [queryAuthenticatorInfo](#queryauthenticatorinfo)(owner: string, callback: AsyncCallback&lt;AuthenticatorInfo&gt;)
+**替代接口：** [queryAuthenticatorInfo](#queryauthenticatorinfo-1)(owner: string, callback: AsyncCallback&lt;AuthenticatorInfo&gt;)
 
 <!--Device-AppAccountManager-getAuthenticatorInfo(owner: string, callback: AsyncCallback<AuthenticatorInfo>): void--><!--Device-AppAccountManager-getAuthenticatorInfo(owner: string, callback: AsyncCallback<AuthenticatorInfo>): void-End-->
 
@@ -5063,13 +5063,13 @@ getAuthenticatorInfo(owner: string): Promise<AuthenticatorInfo>
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [queryAuthenticatorInfo](#queryauthenticatorinfo)替代。
+> [queryAuthenticatorInfo](#queryauthenticatorinfo-2)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [queryAuthenticatorInfo](#queryauthenticatorinfo)(owner: string)
+**替代接口：** [queryAuthenticatorInfo](#queryauthenticatorinfo-2)(owner: string)
 
 <!--Device-AppAccountManager-getAuthenticatorInfo(owner: string): Promise<AuthenticatorInfo>--><!--Device-AppAccountManager-getAuthenticatorInfo(owner: string): Promise<AuthenticatorInfo>-End-->
 
@@ -5106,19 +5106,19 @@ appAccountManager.getAuthenticatorInfo('com.example.accountjsdemo').then((
 getOAuthList(name: string, authType: string, callback: AsyncCallback<Array<string>>): void
 ```
 
-获取指定应用账号的特定鉴权类型的授权列表，即被授权的包名数组（令牌的授权列表通过[setOAuthTokenVisibility](#setoauthtokenvisibility)来设置）。使用callback异步回调。
+获取指定应用账号的特定鉴权类型的授权列表，即被授权的包名数组（令牌的授权列表通过[setOAuthTokenVisibility](#setoauthtokenvisibility-1)来设置）。使用callback异步回调。
 
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [getAuthList](#getauthlist)
+> [getAuthList](#getauthlist-1)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [getAuthList](#getauthlist)(name: string, authType: string, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;)
+**替代接口：** [getAuthList](#getauthlist-1)(name: string, authType: string, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;)
 
 <!--Device-AppAccountManager-getOAuthList(name: string, authType: string, callback: AsyncCallback<Array<string>>): void--><!--Device-AppAccountManager-getOAuthList(name: string, authType: string, callback: AsyncCallback<Array<string>>): void-End-->
 
@@ -5152,18 +5152,18 @@ appAccountManager.getOAuthList('LiSi', 'getSocialData', (err: BusinessError, dat
 getOAuthList(name: string, authType: string): Promise<Array<string>>
 ```
 
-获取指定应用账号的特定鉴权类型的授权列表，即被授权的包名数组（令牌的授权列表通过[setOAuthTokenVisibility](#setoauthtokenvisibility)来设置）。使用Promise异步回调。
+获取指定应用账号的特定鉴权类型的授权列表，即被授权的包名数组（令牌的授权列表通过[setOAuthTokenVisibility](#setoauthtokenvisibility-1)来设置）。使用Promise异步回调。
 
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [getAuthList](#getauthlist)替代。
+> [getAuthList](#getauthlist-2)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [getAuthList](#getauthlist)(name: string, authType: string)
+**替代接口：** [getAuthList](#getauthlist-2)(name: string, authType: string)
 
 <!--Device-AppAccountManager-getOAuthList(name: string, authType: string): Promise<Array<string>>--><!--Device-AppAccountManager-getOAuthList(name: string, authType: string): Promise<Array<string>>-End-->
 
@@ -5205,14 +5205,14 @@ getOAuthToken(name: string, owner: string, authType: string, callback: AsyncCall
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [getAuthToken](#getauthtoken)
+> [getAuthToken](#getauthtoken-1)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [getAuthToken](#getauthtoken)(name: string, owner: string, authType: string, callback: AsyncCallback&lt;string&gt;)
+**替代接口：** [getAuthToken](#getauthtoken-1)(name: string, owner: string, authType: string, callback: AsyncCallback&lt;string&gt;)
 
 <!--Device-AppAccountManager-getOAuthToken(name: string, owner: string, authType: string, callback: AsyncCallback<string>): void--><!--Device-AppAccountManager-getOAuthToken(name: string, owner: string, authType: string, callback: AsyncCallback<string>): void-End-->
 
@@ -5253,13 +5253,13 @@ getOAuthToken(name: string, owner: string, authType: string): Promise<string>
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [getAuthToken](#getauthtoken)替代。
+> [getAuthToken](#getauthtoken-2)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [getAuthToken](#getauthtoken)(name: string, owner: string, authType: string)
+**替代接口：** [getAuthToken](#getauthtoken-2)(name: string, owner: string, authType: string)
 
 <!--Device-AppAccountManager-getOAuthToken(name: string, owner: string, authType: string): Promise<string>--><!--Device-AppAccountManager-getOAuthToken(name: string, owner: string, authType: string): Promise<string>-End-->
 
@@ -5302,14 +5302,14 @@ setAccountCredential(name: string, credentialType: string, credential: string, c
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃，建议使用
-> [setCredential](#setcredential)
+> [setCredential](#setcredential-1)
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [setCredential](#setcredential)(name: string, credentialType: string, credential: string, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [setCredential](#setcredential-1)(name: string, credentialType: string, credential: string, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AppAccountManager-setAccountCredential(name: string, credentialType: string, credential: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-setAccountCredential(name: string, credentialType: string, credential: string, callback: AsyncCallback<void>): void-End-->
 
@@ -5349,14 +5349,14 @@ setAccountCredential(name: string, credentialType: string, credential: string): 
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃，建议使用
-> [setCredential](#setcredential)
+> [setCredential](#setcredential-2)
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [setCredential](#setcredential)(name: string, credentialType: string, credential: string)
+**替代接口：** [setCredential](#setcredential-2)(name: string, credentialType: string, credential: string)
 
 <!--Device-AppAccountManager-setAccountCredential(name: string, credentialType: string, credential: string): Promise<void>--><!--Device-AppAccountManager-setAccountCredential(name: string, credentialType: string, credential: string): Promise<void>-End-->
 
@@ -5399,14 +5399,14 @@ setAccountExtraInfo(name: string, extraInfo: string, callback: AsyncCallback<voi
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [setCustomData](#setcustomdata)
+> [setCustomData](#setcustomdata-1)
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [setCustomData](#setcustomdata)(name: string, key: string, value: string, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [setCustomData](#setcustomdata-1)(name: string, key: string, value: string, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AppAccountManager-setAccountExtraInfo(name: string, extraInfo: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-setAccountExtraInfo(name: string, extraInfo: string, callback: AsyncCallback<void>): void-End-->
 
@@ -5445,13 +5445,13 @@ setAccountExtraInfo(name: string, extraInfo: string): Promise<void>
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [setCustomData](#setcustomdata)替代。
+> [setCustomData](#setcustomdata-2)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [setCustomData](#setcustomdata)(name: string, key: string, value: string)
+**替代接口：** [setCustomData](#setcustomdata-2)(name: string, key: string, value: string)
 
 <!--Device-AppAccountManager-setAccountExtraInfo(name: string, extraInfo: string): Promise<void>--><!--Device-AppAccountManager-setAccountExtraInfo(name: string, extraInfo: string): Promise<void>-End-->
 
@@ -5493,14 +5493,14 @@ setAppAccountSyncEnable(name: string, isEnable: boolean, callback: AsyncCallback
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [setDataSyncEnabled](#setdatasyncenabled)
+> [setDataSyncEnabled](#setdatasyncenabled-1)
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [setDataSyncEnabled](#setdatasyncenabled)(name: string, isEnabled: boolean, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [setDataSyncEnabled](#setdatasyncenabled-1)(name: string, isEnabled: boolean, callback: AsyncCallback&lt;void&gt;)
 
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -5541,13 +5541,13 @@ setAppAccountSyncEnable(name: string, isEnable: boolean): Promise<void>
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [setDataSyncEnabled](#setdatasyncenabled)替代。
+> [setDataSyncEnabled](#setdatasyncenabled-2)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [setDataSyncEnabled](#setdatasyncenabled)(name: string, isEnabled: boolean)
+**替代接口：** [setDataSyncEnabled](#setdatasyncenabled-2)(name: string, isEnabled: boolean)
 
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -5591,14 +5591,14 @@ setAssociatedData(name: string, key: string, value: string, callback: AsyncCallb
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [setCustomData](#setcustomdata)
+> [setCustomData](#setcustomdata-1)
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [setCustomData](#setcustomdata)(name: string, key: string, value: string, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [setCustomData](#setcustomdata-1)(name: string, key: string, value: string, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AppAccountManager-setAssociatedData(name: string, key: string, value: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-setAssociatedData(name: string, key: string, value: string, callback: AsyncCallback<void>): void-End-->
 
@@ -5638,13 +5638,13 @@ setAssociatedData(name: string, key: string, value: string): Promise<void>
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [setCustomData](#setcustomdata)替代。
+> [setCustomData](#setcustomdata-2)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [setCustomData](#setcustomdata)(name: string, key: string, value: string)
+**替代接口：** [setCustomData](#setcustomdata-2)(name: string, key: string, value: string)
 
 <!--Device-AppAccountManager-setAssociatedData(name: string, key: string, value: string): Promise<void>--><!--Device-AppAccountManager-setAssociatedData(name: string, key: string, value: string): Promise<void>-End-->
 
@@ -5687,14 +5687,14 @@ setOAuthToken(name: string, authType: string, token: string, callback: AsyncCall
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [setAuthToken](#setauthtoken)
+> [setAuthToken](#setauthtoken-1)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [setAuthToken](#setauthtoken)(name: string, authType: string, token: string, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [setAuthToken](#setauthtoken-1)(name: string, authType: string, token: string, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AppAccountManager-setOAuthToken(name: string, authType: string, token: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-setOAuthToken(name: string, authType: string, token: string, callback: AsyncCallback<void>): void-End-->
 
@@ -5734,13 +5734,13 @@ setOAuthToken(name: string, authType: string, token: string): Promise<void>
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [setAuthToken](#setauthtoken)替代。
+> [setAuthToken](#setauthtoken-2)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [setAuthToken](#setauthtoken)(name: string, authType: string, token: string)
+**替代接口：** [setAuthToken](#setauthtoken-2)(name: string, authType: string, token: string)
 
 <!--Device-AppAccountManager-setOAuthToken(name: string, authType: string, token: string): Promise<void>--><!--Device-AppAccountManager-setOAuthToken(name: string, authType: string, token: string): Promise<void>-End-->
 
@@ -5789,14 +5789,14 @@ setOAuthTokenVisibility(
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [setAuthTokenVisibility](#setauthtokenvisibility)
+> [setAuthTokenVisibility](#setauthtokenvisibility-1)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [setAuthTokenVisibility](#setauthtokenvisibility)( name: string, authType: string, bundleName: string, isVisible: boolean, callback: AsyncCallback&lt;void&gt; )
+**替代接口：** [setAuthTokenVisibility](#setauthtokenvisibility-1)( name: string, authType: string, bundleName: string, isVisible: boolean, callback: AsyncCallback&lt;void&gt; )
 
 <!--Device-AppAccountManager-setOAuthTokenVisibility(      name: string,      authType: string,      bundleName: string,      isVisible: boolean,      callback: AsyncCallback<void>    ): void--><!--Device-AppAccountManager-setOAuthTokenVisibility(      name: string,      authType: string,      bundleName: string,      isVisible: boolean,      callback: AsyncCallback<void>    ): void-End-->
 
@@ -5838,14 +5838,14 @@ setOAuthTokenVisibility(name: string, authType: string, bundleName: string, isVi
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [setAuthTokenVisibility](#setauthtokenvisibility)
+> [setAuthTokenVisibility](#setauthtokenvisibility-2)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [setAuthTokenVisibility](#setauthtokenvisibility)(name: string, authType: string, bundleName: string, isVisible: boolean)
+**替代接口：** [setAuthTokenVisibility](#setauthtokenvisibility-2)(name: string, authType: string, bundleName: string, isVisible: boolean)
 
 <!--Device-AppAccountManager-setOAuthTokenVisibility(name: string, authType: string, bundleName: string, isVisible: boolean): Promise<void>--><!--Device-AppAccountManager-setOAuthTokenVisibility(name: string, authType: string, bundleName: string, isVisible: boolean): Promise<void>-End-->
 

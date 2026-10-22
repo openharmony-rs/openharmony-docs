@@ -1,4 +1,4 @@
-# CustomDialogControllerOptions
+# CustomDialogControllerOptions（系统接口）
 
 ```TypeScript
 declare interface CustomDialogControllerOptions

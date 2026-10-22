@@ -1,4 +1,4 @@
-# Window
+# Window（系统接口）
 
 ```TypeScript
 interface Window
@@ -6,7 +6,7 @@ interface Window
 
 当前窗口实例，窗口管理器管理的基本单元。
 
-下列API示例中都需先使用[getLastWindow()](arkts-arkui-window-getlastwindow-f.md#getlastwindow)、[createWindow()](arkts-arkui-window-createwindow-f.md#createwindow)、[findWindow()](arkts-arkui-window-findwindow-f.md)中的任一方法获取到Window实例（windowClass），再通过此实例调用对应方法。
+下列API示例中都需先使用[getLastWindow()](arkts-arkui-window-getlastwindow-f.md#getlastwindow-1)、[createWindow()](arkts-arkui-window-createwindow-f.md#createwindow-1)、[findWindow()](arkts-arkui-window-findwindow-f.md)中的任一方法获取到Window实例（windowClass），再通过此实例调用对应方法。
 
 **起始版本：** 6
 
@@ -36,7 +36,7 @@ attachLayoutToParentWindow(anchorInfo?: WindowAnchorInfo, attachOptions?: SubWin
 > 
 > - 当子窗调用该接口后，立即使其显示位置跟随主窗并保持相对位置不变，并且可以监听主窗大小及模式切换。除非调用[detachLayoutToParentWindow()](#detachlayouttoparentwindow)接口解绑，否则效果将持续。
 > 
-> - 当子窗调用该接口后，再调用[moveWindowTo()](arkts-arkui-window-window-i.md#movewindowto)、[maximize()](arkts-arkui-window-window-i.md#maximize)、[setFollowParentWindowLayoutEnabled()](arkts-arkui-window-window-i.md#setfollowparentwindowlayoutenabled)等修改窗口位置的接口，或通过鼠标/触摸操作对子窗进行拖拽移动、拖拽缩放时将不生效。
+> - 当子窗调用该接口后，再调用[moveWindowTo()](arkts-arkui-window-window-i.md#movewindowto)、[maximize()](arkts-arkui-window-window-i.md#maximize-1)、[setFollowParentWindowLayoutEnabled()](arkts-arkui-window-window-i.md#setfollowparentwindowlayoutenabled)等修改窗口位置的接口，或通过鼠标/触摸操作对子窗进行拖拽移动、拖拽缩放时将不生效。
 
 **起始版本：** 24
 
@@ -479,7 +479,7 @@ detachLayoutToParentWindow(): Promise<void>
 > 
 > - 调用接口解除协同后，子窗将保持协同时的位置，可对子窗进行拖拽以修改子窗大小和位置。
 > 
-> - 解除协同后，调用[moveWindowTo()](arkts-arkui-window-window-i.md#movewindowto)、[maximize()](arkts-arkui-window-window-i.md#maximize)、[setFollowParentWindowLayoutEnabled()](arkts-arkui-window-window-i.md#setfollowparentwindowlayoutenabled)修改窗口位置的接口，或通过鼠标/触摸操作对子窗进行拖拽移动、拖拽缩放时将生效。
+> - 解除协同后，调用[moveWindowTo()](arkts-arkui-window-window-i.md#movewindowto)、[maximize()](arkts-arkui-window-window-i.md#maximize-1)、[setFollowParentWindowLayoutEnabled()](arkts-arkui-window-window-i.md#setfollowparentwindowlayoutenabled)修改窗口位置的接口，或通过鼠标/触摸操作对子窗进行拖拽移动、拖拽缩放时将生效。
 
 **起始版本：** 24
 
@@ -1197,7 +1197,7 @@ raiseAboveTarget(windowId: number, callback: AsyncCallback<void>): void
 
 将同一个主窗口下的子窗口抬升到目标子窗口之上。使用callback异步回调。
 
-使用该接口需要确保要抬升的子窗口和目标子窗口都已创建完成，分别调用[showWindow()](arkts-arkui-window-window-i.md#showwindow)并执行完毕。
+使用该接口需要确保要抬升的子窗口和目标子窗口都已创建完成，分别调用[showWindow()](arkts-arkui-window-window-i.md#showwindow-1)并执行完毕。
 
 **起始版本：** 10
 
@@ -1279,7 +1279,7 @@ raiseAboveTarget(windowId: number): Promise<void>
 
 将同一个主窗下的子窗口提升到目标子窗口之上。使用Promise异步回调。
 
-使用该接口需要确保要抬升的子窗口和目标子窗口都已创建完成，分别调用[showWindow()](arkts-arkui-window-window-i.md#showwindow)并执行完毕。
+使用该接口需要确保要抬升的子窗口和目标子窗口都已创建完成，分别调用[showWindow()](arkts-arkui-window-window-i.md#showwindow-1)并执行完毕。
 
 **起始版本：** 10
 
@@ -1535,7 +1535,7 @@ raiseToAppTop(callback: AsyncCallback<void>): void
 
 提升应用子窗口到应用顶层。使用callback异步回调。
 
-使用该接口需要先创建子窗口，并确保该子窗口调用[showWindow()](arkts-arkui-window-window-i.md#showwindow)并执行完毕。
+使用该接口需要先创建子窗口，并确保该子窗口调用[showWindow()](arkts-arkui-window-window-i.md#showwindow-1)并执行完毕。
 
 **起始版本：** 10
 
@@ -1944,7 +1944,7 @@ try {
 setDefaultDensityEnabled(enabled: boolean): void
 ```
 
-设置窗口是否使用所在屏幕的系统默认Density。Stage模型下，该接口需要在[loadContent()](arkts-arkui-window-window-i.md#loadcontent)或[setUIContent()](arkts-arkui-window-window-i.md#setuicontent)调用生效后使用。
+设置窗口是否使用所在屏幕的系统默认Density。Stage模型下，该接口需要在[loadContent()](arkts-arkui-window-window-i.md#loadcontent-1)或[setUIContent()](arkts-arkui-window-window-i.md#setuicontent-1)调用生效后使用。
 
 不调用此接口进行设置，则表示不使用系统默认Density。
 
@@ -2131,7 +2131,7 @@ setRaiseByClickEnabled(enable: boolean, callback: AsyncCallback<void>): void
 
 通常来说，点击一个子窗口，会将该子窗口显示到最上方，如果设置为false，那么点击子窗口的时候，不会将该子窗口显示到最上方，而是保持不变。
 
-使用该接口需要先创建子窗口，并确保该子窗口调用[showWindow()](arkts-arkui-window-window-i.md#showwindow)并执行完毕。
+使用该接口需要先创建子窗口，并确保该子窗口调用[showWindow()](arkts-arkui-window-window-i.md#showwindow-1)并执行完毕。
 
 **起始版本：** 10
 
@@ -2210,15 +2210,15 @@ setRotationLocked(locked: boolean): Promise<void>
 
 > **说明：** 
 > 
-> - 如果在锁定期间主窗口通过[setPreferredOrientation()](arkts-arkui-window-window-i.md#setpreferredorientation)设置显示方向属性，则解除旋转锁定后该窗口在前台还原最后一次的方向请求。
+> - 如果在锁定期间主窗口通过[setPreferredOrientation()](arkts-arkui-window-window-i.md#setpreferredorientation-2)设置显示方向属性，则解除旋转锁定后该窗口在前台还原最后一次的方向请求。
 > 
-> - 如果在锁定期间系统窗口通过[setPreferredOrientation()](arkts-arkui-window-window-i.md#setpreferredorientation)设置显示方向属性，则解除旋转锁定后该窗口在前台且层级最高时还原最后一次的方向请求。低层级窗口通过setRotationLocked设置旋转锁定不会影响高层级系统窗口调用[setPreferredOrientation()](arkts-arkui-window-window-i.md#setpreferredorientation)设置显示方向。
+> - 如果在锁定期间系统窗口通过[setPreferredOrientation()](arkts-arkui-window-window-i.md#setpreferredorientation-2)设置显示方向属性，则解除旋转锁定后该窗口在前台且层级最高时还原最后一次的方向请求。低层级窗口通过setRotationLocked设置旋转锁定不会影响高层级系统窗口调用[setPreferredOrientation()](arkts-arkui-window-window-i.md#setpreferredorientation-2)设置显示方向。
 > 
 > - 如果在锁定期间sensor方向发生了变化，则解除旋转锁定后还原到最后一次的sensor方向。
 > 
-> - 如果在锁定期间应用调用[setOrientation()](arkts-arkui-screen-screen-i-sys.md#setorientation)设置屏幕方向，忽略该次屏幕方向设置。
+> - 如果在锁定期间应用调用[setOrientation()](arkts-arkui-screen-screen-i-sys.md#setorientation-1)设置屏幕方向，忽略该次屏幕方向设置。
 > 
-> - 解除锁定时，根据主窗口的显示方向属性[setPreferredOrientation()](arkts-arkui-window-window-i.md#setpreferredorientation)、sensor方向等决定应用显示方向，具体见[窗口旋转简介](../../../windowmanager/window-rotation.md#窗口旋转简介)。
+> - 解除锁定时，根据主窗口的显示方向属性[setPreferredOrientation()](arkts-arkui-window-window-i.md#setpreferredorientation-2)、sensor方向等决定应用显示方向，具体见[窗口旋转简介](../../../windowmanager/window-rotation.md#窗口旋转简介)。
 > 
 > - 不影响应用[module.json5配置文件中的abilities标签](../../../quick-start/module-configuration-file.md#abilities标签)orientation属性设置的启动方向。
 
@@ -2758,7 +2758,7 @@ setWindowMode(mode: WindowMode): Promise<void>
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 12+ |
-| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. |
+| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: 1. The window is not created or destroyed.                                             2. Invalid window type. Only main windows are supported. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
 
 <!--Del-->
@@ -2828,7 +2828,7 @@ setWindowMode(mode: WindowMode, callback: AsyncCallback<void>): void
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 12+ |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
-| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. |
+| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: 1. The window is not created or destroyed.                                             2. Invalid window type. Only main windows are supported. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
 
 <!--Del-->
@@ -2963,6 +2963,99 @@ promise.then(() => {
 }).catch((err: BusinessError) => {
   console.error(`Failed to show the window with animation. Cause code: ${err.code}, message: ${err.message}`);
 });
+```
+
+<!--DelEnd-->
+
+## startMovingWithOptions
+
+```TypeScript
+startMovingWithOptions(startMovingOptions?: StartMovingOptions): Promise<void>
+```
+
+开始移动此窗口。只有在 `onTouch` 回调函数中调用此 API，且事件类型为 `TouchType.Down` 时，窗口才会随光标移动。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-Window-startMovingWithOptions(startMovingOptions?: StartMovingOptions): Promise<void>--><!--Device-Window-startMovingWithOptions(startMovingOptions?: StartMovingOptions): Promise<void>-End-->
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| startMovingOptions | [StartMovingOptions](arkts-arkui-window-startmovingoptions-i-sys.md) | 否 | 拖拽移动过程中的移动配置。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise that returns no value. |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
+| [1300001](../errorcode-window.md#1300001-重复操作) | Repeated operation. |
+| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause:         1. The window is not created or destroyed.         2. Internal task error. |
+| [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
+| [1300004](../errorcode-window.md#1300004-无权限操作) | Unauthorized operation. Possible cause: Invalid window type, main windows are not supported in non-free window mode. |
+| [1300016](../errorcode-window.md#1300016-参数校验错误) | Parameter error. Possible cause: Invalid parameter range. |
+
+<!--Del-->
+**示例**
+
+```TypeScript
+// Index.ets
+import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Row() {
+      Column() {
+        Blank('160')
+          .color(Color.Red)
+          .onTouch((event: TouchEvent) => {
+            if (event.type == TouchType.Down) {
+              let options: window.StartMovingOptions = {
+                needFocused: true,
+                avoidRect: {
+                  left: 0,
+                  top: 0,
+                  width: 200,
+                  height: 200
+                }
+              };
+              try {
+                windowClass.startMovingWithOptions(options)
+                  .then(() => {
+                    console.info('Succeeded in starting moving window.');
+                  })
+                  .catch((err: BusinessError) => {
+                    console.error(`Failed to start moving. Cause code: ${err.code}, message: ${err.message}`);
+                  });
+              } catch (exception) {
+                console.error(`Failed to start moving. Cause code: ${exception.code}, message: ${exception.message}`);
+              }
+            }
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
 ```
 
 <!--DelEnd-->

@@ -4,7 +4,7 @@
 export interface Camera extends Node
 ```
 
-Camera node, which inherits from Node.
+Camera node, which inherits from [Node](arkts-arkgraphics3d-scenenodes-node-i.md).
 
 **Inheritance/Implementation:** Camera extends [Node](arkts-arkgraphics3d-scenenodes-node-i.md)
 

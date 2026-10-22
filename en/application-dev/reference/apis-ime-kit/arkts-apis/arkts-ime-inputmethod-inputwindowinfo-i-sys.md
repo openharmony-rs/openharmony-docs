@@ -1,4 +1,4 @@
-# InputWindowInfo
+# InputWindowInfo (System API)
 
 ```TypeScript
 export interface InputWindowInfo

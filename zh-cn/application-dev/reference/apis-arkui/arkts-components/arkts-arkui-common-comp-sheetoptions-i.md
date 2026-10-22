@@ -988,7 +988,7 @@ systemMaterial?: SystemUiMaterial
 
 默认值：undefined，会清除由该接口设置的材质效果。
 
-**说明：**  不同系统材质对应不同的属性影响效果，该接口影响背景色[backgroundColor](arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor)、边框颜色[borderColor](arkts-arkui-common-comp-commonmethod-c.md#bordercolor)、边框宽度[borderWidth](arkts-arkui-common-comp-commonmethod-c.md#borderwidth)、阴影[shadow](arkts-arkui-common-comp-commonmethod-c.md#shadow)，不建议与上述接口一起使用。使用示例请参考[示例10（半模态设置系统材质）](arkts-arkui-common-comp-commonmethod-c.md)。
+**说明：**  不同系统材质对应不同的属性影响效果，该接口影响背景色[backgroundColor](arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor)、边框颜色[borderColor](arkts-arkui-common-comp-commonmethod-c.md#bordercolor)、边框宽度[borderWidth](arkts-arkui-common-comp-commonmethod-c.md#borderwidth)、阴影[shadow](arkts-arkui-common-comp-commonmethod-c.md#shadow-1)，不建议与上述接口一起使用。使用示例请参考[示例10（半模态设置系统材质）](arkts-arkui-common-comp-commonmethod-c.md)。
 
 **类型：** [SystemUiMaterial](arkts-arkui-common-comp-systemuimaterial-t.md)
 
@@ -1025,6 +1025,31 @@ title?: SheetTitleOptions | CustomBuilder
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-SheetOptions-title?: SheetTitleOptions | CustomBuilder--><!--Device-SheetOptions-title?: SheetTitleOptions | CustomBuilder-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## titleBarHoverMode
+
+```TypeScript
+titleBarHoverMode?: SheetTitleBarHoverMode
+```
+
+标题栏悬浮模式。
+
+- STANDARD：标题栏与内容上下排布，无重叠。  
+- STACK：标题栏悬浮于内容之上。开发者需要在内容顶部添加padding以避免遮挡。  
+- SAFE_AREA_PADDING：标题栏放置在安全区域padding区域。内容扩展到安全区域，  
+滚动内容裁剪到安全区域。默认值为**SheetTitleBarHoverMode.STANDARD**。通过applyDefaultImmersiveStrategy成功设置[BIND_SHEET_EXPAND_SAFE_AREA](../arkts-apis/arkts-arkui-immersivestrategy-e.md#bind_sheet_expand_safe_area)后，默认值为**SheetTitleBarHoverMode.SAFE_AREA_PADDING**。
+
+**类型：** [SheetTitleBarHoverMode](arkts-arkui-common-comp-sheettitlebarhovermode-e.md)
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+<!--Device-SheetOptions-titleBarHoverMode?: SheetTitleBarHoverMode--><!--Device-SheetOptions-titleBarHoverMode?: SheetTitleBarHoverMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

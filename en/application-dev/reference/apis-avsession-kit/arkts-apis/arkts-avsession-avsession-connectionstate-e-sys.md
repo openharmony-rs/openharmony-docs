@@ -1,4 +1,4 @@
-# ConnectionState
+# ConnectionState (System API)
 
 ```TypeScript
 enum ConnectionState

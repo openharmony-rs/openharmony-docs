@@ -46,7 +46,7 @@ Sets whether to display a leading zero for the hour, minute, and second. '2-digi
 dateTimeOptions(timeFormat: Optional<DateTimeOptions>)
 ```
 
-Sets whether to display a leading zero for the hours, minutes, and seconds. Compared with [dateTimeOptions<sup>12+</sup>](#datetimeoptions), this API supports the **undefined** type for the **timeFormat** parameter.
+Sets whether to display a leading zero for the hours, minutes, and seconds. Compared with [dateTimeOptions<sup>12+</sup>](#datetimeoptions-1), this API supports the **undefined** type for the **timeFormat** parameter.
 
 **Since:** 18
 
@@ -118,7 +118,7 @@ Sets the text color, font size, and font weight of edge items (the second item a
 disappearTextStyle(style: Optional<PickerTextStyle>)
 ```
 
-Sets the text color, font size, and font weight of edge items (the second item above or below the selected item). Compared with [disappearTextStyle<sup>10+</sup>](#disappeartextstyle), this API supports the **undefined** type for the **style** parameter.
+Sets the text color, font size, and font weight of edge items (the second item above or below the selected item). Compared with [disappearTextStyle<sup>10+</sup>](#disappeartextstyle-1), this API supports the **undefined** type for the **style** parameter.
 
 **Since:** 18
 
@@ -142,7 +142,7 @@ Sets the text color, font size, and font weight of edge items (the second item a
 enableCascade(enabled: boolean)
 ```
 
-Sets whether the AM/PM indicator automatically switches based on the hour value. This takes effect only when [useMilitaryTime](#usemilitarytime) is set to false. Automatic switching applies to daily consumer scenarios such as alarms and schedules that emphasize operation efficiency and a smooth experience, while manual switching applies to scenarios such as healthcare and legal affairs that demand strict time precision and tolerate no ambiguity.
+Sets whether the AM/PM indicator automatically switches based on the hour value. This takes effect only when [useMilitaryTime](#usemilitarytime-1) is set to false. Automatic switching applies to daily consumer scenarios such as alarms and schedules that emphasize operation efficiency and a smooth experience, while manual switching applies to scenarios such as healthcare and legal affairs that demand strict time precision and tolerate no ambiguity.
 
 **Since:** 18
 
@@ -196,7 +196,7 @@ To enable haptic feedback, you must declare the following permission under **req
 enableHapticFeedback(enable: Optional<boolean>)
 ```
 
-Sets whether to enable haptic feedback. Compared with [enableHapticFeedback<sup>12+</sup>](#enablehapticfeedback), the enable parameter additionally supports the undefined type.
+Sets whether to enable haptic feedback. Compared with [enableHapticFeedback<sup>12+</sup>](#enablehapticfeedback-1), the enable parameter additionally supports the undefined type.
 
 To enable haptic feedback, you must declare the following permission under **requestPermissions** in **module** in **src/main/module.json5** of the project.
 
@@ -246,7 +246,7 @@ Sets whether to enable loop mode. Loop mode is suitable for scenarios where the 
 loop(isLoop: Optional<boolean>)
 ```
 
-Sets whether to enable loop scrolling. Compared with [loop<sup>11+</sup>](#loop), this API supports the **undefined** type for the **isLoop** parameter.
+Sets whether to enable loop scrolling. Compared with [loop<sup>11+</sup>](#loop-1), this API supports the **undefined** type for the **isLoop** parameter.
 
 > **NOTE:** 
 > 
@@ -300,7 +300,7 @@ The callback is triggered after the scroll animation ends. If you need to obtain
 onChange(callback: Optional<OnTimePickerChangeCallback>)
 ```
 
-Triggered when the time picker snaps to the selected item. This event cannot be triggered by two-way bound state variables. Compared with [onChange](#onchange), this API supports the **undefined** type for the **callback** parameter.
+Triggered when the time picker snaps to the selected item. This event cannot be triggered by two-way bound state variables. Compared with [onChange](#onchange-1), this API supports the **undefined** type for the **callback** parameter.
 
 The callback is triggered after the scroll animation ends. If you need to obtain index changes quickly, use the [onEnterSelectedArea](#onenterselectedarea) API instead. Note that when [enableCascade](#enablecascade) is set to true, because the AM/PM column and the hour column are linked, the behavior of this callback may not meet expectations, and it is not recommended to use it in this scenario.
 
@@ -328,7 +328,7 @@ onEnterSelectedArea(callback: Callback<TimePickerResult>)
 
 Triggered when an option enters the divider area during the scrolling of the TimePicker. It applies to scenarios that require a quick response, such as updating the UI in real time and validating the time range in real time during scrolling. Compared with onChange, this callback is triggered earlier and is suitable for scenarios that require immediate feedback.
 
-The difference from the [onChange](#onchange) event is that this event is triggered earlier than the [onChange](#onchange) event. When the scroll distance of the scrolled column exceeds half the height of the selected item, the option has already entered the divider area, and this event is triggered. When [enableCascade](#enablecascade) is set to true, because the AM/PM column and the hour column are linked (that is, the AM/PM indicator is automatically adjusted based on the hour value), it is not recommended to use this callback. This callback marks the point at which the option enters the divider area during scrolling, while the options changed by the linkage do not involve scrolling. Therefore, in the return value of the callback, only the value of the currently scrolled column changes normally, and the values of the other unscrolled columns remain unchanged.
+The difference from the [onChange](#onchange-1) event is that this event is triggered earlier than the [onChange](#onchange-1) event. When the scroll distance of the scrolled column exceeds half the height of the selected item, the option has already entered the divider area, and this event is triggered. When [enableCascade](#enablecascade) is set to true, because the AM/PM column and the hour column are linked (that is, the AM/PM indicator is automatically adjusted based on the hour value), it is not recommended to use this callback. This callback marks the point at which the option enters the divider area during scrolling, while the options changed by the linkage do not involve scrolling. Therefore, in the return value of the callback, only the value of the currently scrolled column changes normally, and the values of the other unscrolled columns remain unchanged.
 
 > **NOTE:** 
 > 
@@ -380,7 +380,7 @@ Sets the text color, font size, and font weight of the selected item.
 selectedTextStyle(style: Optional<PickerTextStyle>)
 ```
 
-Sets the text color, font size, and font weight of the selected item. Compared with [selectedTextStyle<sup>10+</sup>](#selectedtextstyle), the **style** parameter additionally supports the **undefined** type.
+Sets the text color, font size, and font weight of the selected item. Compared with [selectedTextStyle<sup>10+</sup>](#selectedtextstyle-1), the **style** parameter additionally supports the **undefined** type.
 
 **Since:** 18
 
@@ -428,7 +428,7 @@ Sets the text color, font size, and font weight of candidate items (the item imm
 textStyle(style: Optional<PickerTextStyle>)
 ```
 
-Sets the text color, font size, and font weight of candidate items (the item immediately adjacent to the selected item, above or below). Compared with [textStyle<sup>10+</sup>](#textstyle), this API supports the **undefined** type for the **style** parameter.
+Sets the text color, font size, and font weight of candidate items (the item immediately adjacent to the selected item, above or below). Compared with [textStyle<sup>10+</sup>](#textstyle-1), this API supports the **undefined** type for the **style** parameter.
 
 **Since:** 18
 
@@ -476,7 +476,7 @@ Sets whether the time is displayed in 24-hour format. If this API is not used, t
 useMilitaryTime(isMilitaryTime: Optional<boolean>)
 ```
 
-Sets whether the time is displayed in 24-hour format. If this attribute is not specified, the system time format is used by default. Compared with [useMilitaryTime](#usemilitarytime), this API supports the **undefined** type for the **isMilitaryTime** parameter.
+Sets whether the time is displayed in 24-hour format. If this attribute is not specified, the system time format is used by default. Compared with [useMilitaryTime](#usemilitarytime-1), this API supports the **undefined** type for the **isMilitaryTime** parameter.
 
 **Since:** 18
 

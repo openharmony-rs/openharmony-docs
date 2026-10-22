@@ -22,7 +22,7 @@ import { videoProcessing } from '@kit.MediaKit';
 
 | Name | Description |
 | --- | --- |
-| [createVideoProcessor](arkts-media-videoprocessing-createvideoprocessor-f.md#createvideoprocessor) | Create a video processing instance. |
+| [createVideoProcessor](arkts-media-videoprocessing-createvideoprocessor-f.md#createvideoprocessor-1) | Create a video processing instance. |
 
 ### Interfaces
 

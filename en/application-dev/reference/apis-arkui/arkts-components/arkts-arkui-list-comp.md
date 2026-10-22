@@ -12,7 +12,7 @@ rendered at a time. When a user swipes, the nodes that are out of the screen ran
 
 If a scrollable component is nested in a **List** component, their scrolling directions are the same, and the main axis size is not set for the **List** component, the **List** component loads all child components, causing lazy loading to fail. In this scenario, you are advised to nest the [ListItemGroup](arkts-arkui-listitemgroup-comp.md) component in **List** to optimize performance.
 
-Preloading in **List** refers to loading not only the visible child components within the display area but also some invisible child components outside the display area during idle time. Preloading can reduce frame drops during scrolling and improve smoothness. Preloading takes effect only when combined with lazy loading. **List** supports setting the number of preloaded items through [cachedCount](arkts-arkui-list-comp-attribute.md#cachedcount). By default, one screen of child components is preloaded both above and below the display area (up to 16 rows of child components). When **List** is used together with [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md), [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md), and [Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md), the preloading capabilities differ as follows:
+Preloading in **List** refers to loading not only the visible child components within the display area but also some invisible child components outside the display area during idle time. Preloading can reduce frame drops during scrolling and improve smoothness. Preloading takes effect only when combined with lazy loading. **List** supports setting the number of preloaded items through [cachedCount](arkts-arkui-list-comp-attribute.md#cachedcount-1). By default, one screen of child components is preloaded both above and below the display area (up to 16 rows of child components). When **List** is used together with [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md), [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md), and [Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md), the preloading capabilities differ as follows:
 
 - When the **List** component is used together with **ForEach** and **cachedCount** is set, in addition to laying out  
 child components within the visible area, child components within the range of **cachedCount** outside the visible area are pre-laid out during idle time.  
@@ -92,7 +92,7 @@ Creates a list container.
 | [ListBackPressBehavior](arkts-arkui-list-comp-listbackpressbehavior-i.md) | Defines the system back button behavior of the **List** component. |
 | [ListDividerOptions](arkts-arkui-list-comp-listdivideroptions-i.md) | Defines the divider style of the list or list item group. |
 | [ListOptions](arkts-arkui-list-comp-listoptions-i.md) | Defines the options of the **List** component. |
-| [UIListEvent](arkts-arkui-list-comp-uilistevent-i.md) | Represents the return value of the [getEvent('List')](../arkts-apis/arkts-arkui-typenode-getevent-f.md#getevent) method in **frameNode**, which can be used to set scroll events for a **List** node. |
+| [UIListEvent](arkts-arkui-list-comp-uilistevent-i.md) | Represents the return value of the [getEvent('List')](../arkts-apis/arkts-arkui-typenode-getevent-f.md#getevent-2) method in **frameNode**, which can be used to set scroll events for a **List** node. |
 | [VisibleListContentInfo](arkts-arkui-list-comp-visiblelistcontentinfo-i.md) | Describes the details of the child components in the visible area of a list. |
 
 <!--Del-->
@@ -1371,6 +1371,80 @@ struct ListExample {
       .height(300)
       .scrollBar(BarState.Off)
     }.width('100%').margin({ top: 5 }).backgroundColor('#FFDCDCDC')
+  }
+}
+```
+
+### Example 18: Implementing Swipe-based Multi-Selection
+
+This example implements the finger-swipe multi-select effect on List by using the [enableEditMode](#enableeditmode) API and the [onEditModeChange](#oneditmodechange) event.
+
+Since API version 26.0.0, the List component adds the enableEditMode API and the onEditModeChange event.
+
+For details about ListDataSource and the complete code, see [Example 1: Adding a Scroll Event](#example-1-adding-a-scroll-event).
+
+```TypeScript
+// xxx.ets
+import { ListDataSource } from './ListDataSource';
+
+@Entry
+@Component
+struct ListExample {
+  private arr: ListDataSource = new ListDataSource([]);
+  @State @Watch('onEditModeChanged') enableEditMode: boolean = false;
+  @State selectedIndexes: number[] = [];
+
+  onEditModeChanged() {
+    console.info(`enableEditMode changed to: ${this.enableEditMode}`);
+    if (!this.enableEditMode) {
+      console.info('enableEditMode changed to false, clearing selectedIndexes');
+      this.selectedIndexes = [];
+    }
+  }
+
+  aboutToAppear() {
+    let list: number[] = [];
+    for (let i = 0; i < 10; i++) {
+        list.push(i);
+    }
+    this.arr = new ListDataSource(list);
+  }
+
+  build() {
+    Column({ space: 5 }) {
+      List({ space: 10 }) {
+        LazyForEach(this.arr, (item: number, index: number) => {
+          ListItem() {
+            Text(item.toString())
+              .fontSize(16)
+              .width('100%')
+              .height(50)
+              .textAlign(TextAlign.Center)
+          }
+          .backgroundColor(Color.White)
+          .selected(this.selectedIndexes.includes(index))
+          .onSelect((isSelected: boolean) => {
+            if (isSelected) {
+              this.selectedIndexes.push(index);
+            } else {
+              let deleted = this.selectedIndexes.findIndex((value) => value === index);
+              if (deleted !== -1) {
+                this.selectedIndexes.splice(deleted, 1);
+              }
+            }
+          })
+        }, (item: number) => item.toString())
+      }
+      .width('90%')
+      .height(300)
+      .scrollBar(BarState.Off)
+      .enableEditMode(this.enableEditMode!!)
+      .onEditModeChange((data: boolean) => {
+        // Implement the business logic of onEditModeChanged here as well.
+        console.info(`onEditModeChange:${data}`)
+      })
+      .editModeOptions({ useDefaultMultiSelectStyle: true, enableTwoFingerMultiSelect: true })
+    }.width('100%').padding({ top: 10 }).backgroundColor('#FFDCDCDC')
   }
 }
 ```

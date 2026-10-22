@@ -1,4 +1,4 @@
-# AgentCardType
+# AgentCardType（系统接口）
 
 ```TypeScript
 export enum AgentCardType

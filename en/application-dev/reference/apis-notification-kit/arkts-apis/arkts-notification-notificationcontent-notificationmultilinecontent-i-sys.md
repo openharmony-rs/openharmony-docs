@@ -1,4 +1,4 @@
-# NotificationMultiLineContent
+# NotificationMultiLineContent (System API)
 
 ```TypeScript
 export interface NotificationMultiLineContent extends NotificationBasicContent

@@ -1,4 +1,4 @@
-# LiteResultSet
+# LiteResultSet（系统接口）
 
 ```TypeScript
 class LiteResultSet

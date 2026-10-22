@@ -32,7 +32,7 @@ Downloads a file. This API returns no value.
 
 **Deprecated since:** 9
 
-**Substitutes:** [downloadFile](arkts-basicservices-request-downloadfile-f.md#downloadfile)(context: BaseContext, config: DownloadConfig)
+**Substitutes:** [downloadFile](arkts-basicservices-request-downloadfile-f.md#downloadfile-2)(context: BaseContext, config: DownloadConfig)
 
 <!--Device-Request-static download(options: DownloadRequestOptions): void--><!--Device-Request-static download(options: DownloadRequestOptions): void-End-->
 
@@ -130,7 +130,7 @@ Uploads a file. This API returns no value.
 
 **Deprecated since:** 9
 
-**Substitutes:** [uploadFile](arkts-basicservices-request-uploadfile-f.md#uploadfile)(context: BaseContext, config: UploadConfig)
+**Substitutes:** [uploadFile](arkts-basicservices-request-uploadfile-f.md#uploadfile-2)(context: BaseContext, config: UploadConfig)
 
 <!--Device-Request-static upload(options: UploadRequestOptions): void--><!--Device-Request-static upload(options: UploadRequestOptions): void-End-->
 

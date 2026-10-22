@@ -506,7 +506,7 @@ onPrepareTermination(): AbilityConstant.PrepareTermination
 
 | 类型 | 说明 |
 | --- | --- |
-| [AbilityConstant.PrepareTermination](arkts-ability-abilityconstant-preparetermination-e.md) | The user's choice. |
+| [AbilityConstant.PrepareTermination](arkts-ability-abilityconstant-preparetermination-e.md) | 用户的选择。 |
 
 **示例**
 
@@ -551,7 +551,7 @@ onPrepareTerminationAsync(): Promise<AbilityConstant.PrepareTermination>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[AbilityConstant.PrepareTermination](arkts-ability-abilityconstant-preparetermination-e.md)&gt; | Promise used to return the user's choice. |
+| Promise&lt;[AbilityConstant.PrepareTermination](arkts-ability-abilityconstant-preparetermination-e.md)&gt; | Promise对象，用于返回用户的选择。 |
 
 **示例**
 

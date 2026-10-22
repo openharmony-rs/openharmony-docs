@@ -8,7 +8,7 @@
 
 ## 子组件
 
-仅支持[ArcListItem](arkts-arkui-arclist-comp.md)子组件。
+仅支持[ArcListItem](arkts-arkui-arclist-comp.md)和[自定义组件](../../../ui/state-management/arkts-create-custom-components.md)。自定义组件在ArcList下使用时，请使用ArcListItem作为自定义组件的顶层组件，请勿直接给自定义组件设置属性和事件方法，因为ArcList通过ArcListItem管理子组件的布局和事件处理，直接设置可能导致部分功能无法正常生效。
 
 > **说明：** 
 > 

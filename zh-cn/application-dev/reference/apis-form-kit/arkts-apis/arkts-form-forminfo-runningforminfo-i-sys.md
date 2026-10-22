@@ -1,4 +1,4 @@
-# RunningFormInfo
+# RunningFormInfo（系统接口）
 
 ```TypeScript
 interface RunningFormInfo

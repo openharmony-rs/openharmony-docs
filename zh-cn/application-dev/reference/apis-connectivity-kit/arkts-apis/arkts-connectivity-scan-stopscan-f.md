@@ -26,7 +26,7 @@ function stopScan(): Promise<void>
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
-**参见：** [startScan](arkts-connectivity-scan-startscan-f.md) 发起星闪扫描。
+**参见：** [startScan](arkts-connectivity-scan-startscan-f.md#startscan-1) 发起星闪扫描。
 
 **返回值：**
 

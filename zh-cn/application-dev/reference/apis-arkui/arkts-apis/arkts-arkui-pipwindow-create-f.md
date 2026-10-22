@@ -38,6 +38,7 @@ function create(config: PiPConfiguration): Promise<PiPController>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
 
 **示例**
@@ -177,6 +178,7 @@ function create(config: PiPConfiguration, contentNode: typeNode.XComponent): Pro
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
 
 **示例**

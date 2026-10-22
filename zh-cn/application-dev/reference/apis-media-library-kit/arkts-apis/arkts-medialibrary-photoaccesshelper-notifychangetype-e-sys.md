@@ -1,4 +1,4 @@
-# NotifyChangeType
+# NotifyChangeType（系统接口）
 
 ```TypeScript
 enum NotifyChangeType

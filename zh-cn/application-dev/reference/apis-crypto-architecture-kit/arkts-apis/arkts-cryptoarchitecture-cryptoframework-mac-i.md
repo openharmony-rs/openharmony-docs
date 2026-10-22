@@ -4,7 +4,7 @@
 interface Mac
 ```
 
-消息认证码接口，定义基于对称密钥计算消息认证码的方法。调用前，需通过[createMac](arkts-cryptoarchitecture-cryptoframework-createmac-f.md#createmac)方法创建一个Mac实例。
+消息认证码接口，定义基于对称密钥计算消息认证码的方法。调用前，需通过[createMac](arkts-cryptoarchitecture-cryptoframework-createmac-f.md#createmac-1)方法创建一个Mac实例。
 
 **起始版本：** 9
 

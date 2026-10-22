@@ -24,12 +24,12 @@ import { socket } from '@kit.NetworkKit';
 close(): Promise<void>
 ```
 
-TCPSocketServer停止监听并释放通过[listen](#listen)方法绑定的端口。若多次调用[listen](#listen)方法，再调用此方法时会释放TCPSocketServer的所有监听端口。使用Promise异步回调。
+TCPSocketServer停止监听并释放通过[listen](#listen-1)方法绑定的端口。若多次调用[listen](#listen-1)方法，再调用此方法时会释放TCPSocketServer的所有监听端口。使用Promise异步回调。
 
 > **说明：** 
 > 
 > 该方法不会关闭已有连接。如需关闭，请调用[TCPSocketConnection](arkts-network-socket-tcpsocketconnection-i.md)的
-> [close](arkts-network-socket-tcpsocketconnection-i.md#close)方法。
+> [close](arkts-network-socket-tcpsocketconnection-i.md#close-1)方法。
 
 **起始版本：** 20
 
@@ -142,7 +142,7 @@ getSocketFd(): Promise<number>
 
 > **说明：** 
 > 
-> - [listen](#listen)方法调用成功后，才可调用此方法。多次调用listen时，会获取最新监听端口绑定的文件描述符。
+> - [listen](#listen-1)方法调用成功后，才可调用此方法。多次调用listen时，会获取最新监听端口绑定的文件描述符。
 > 
 > - 监听异常、Socket已关闭（如调用close后）等异常情况下调用本接口会返回-1。
 > 

@@ -152,7 +152,7 @@ struct Index {
 getSelectedIndex(): number
 ```
 
-Obtains the index of the file suffix type of the file saved. This method takes effect only when used with [save()](#save). This method can be used only after [DocumentSaveOptions.fileSuffixChoices](arkts-corefile-picker-documentsaveoptions-c.md) is configured. The index (number) returned by this method indicates the location of the file suffix specified in [DocumentSaveOptions.fileSuffixChoices](arkts-corefile-picker-documentsaveoptions-c.md). If no file suffix is specified, **getSelectedIndex()** returns **-1**.
+Obtains the index of the file suffix type of the file saved. This method takes effect only when used with [save()](#save-1). This method can be used only after [DocumentSaveOptions.fileSuffixChoices](arkts-corefile-picker-documentsaveoptions-c.md) is configured. The index (number) returned by this method indicates the location of the file suffix specified in [DocumentSaveOptions.fileSuffixChoices](arkts-corefile-picker-documentsaveoptions-c.md). If no file suffix is specified, **getSelectedIndex()** returns **-1**.
 
 **Since:** 14
 

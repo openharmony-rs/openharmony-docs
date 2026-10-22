@@ -33,7 +33,7 @@ import { authorization } from '@kit.BasicServicesKit';
 
 | Name | Description |
 | --- | --- |
-| [getAuthorizationManager](arkts-basicservices-authorization-getauthorizationmanager-f.md#getauthorizationmanager) | Obtains an [AuthorizationManager](arkts-basicservices-authorization-authorizationmanager-i.md) instance. |
+| [getAuthorizationManager](arkts-basicservices-authorization-getauthorizationmanager-f.md#getauthorizationmanager-1) | Obtains an [AuthorizationManager](arkts-basicservices-authorization-authorizationmanager-i.md) instance. |
 
 ### Interfaces
 

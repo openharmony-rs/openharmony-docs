@@ -12,13 +12,13 @@ import { contact } from '@kit.ContactsKit';
 function queryContactsByPhoneNumber(phoneNumber: string, callback: AsyncCallback<Array<Contact>>): void
 ```
 
-根据电话号码查询联系人。使用callback异步回调。该接口仅返回联系人信息中的id、key、phoneNumbers属性。如果要查询联系人的所有信息，建议使用[queryContact](arkts-contacts-contact-querycontact-f.md#querycontact)接口，根据该接口返回的属性key查询。应用在后台调用此接口获取联系人信息必须要申请对应的长时任务。
+根据电话号码查询联系人。使用callback异步回调。该接口仅返回联系人信息中的id、key、phoneNumbers属性。如果要查询联系人的所有信息，建议使用[queryContact](arkts-contacts-contact-querycontact-f.md#querycontact-8)接口，根据该接口返回的属性key查询。应用在后台调用此接口获取联系人信息必须要申请对应的长时任务。
 
 **起始版本：** 7
 
 **废弃版本：** 10
 
-**替代接口：** [queryContactsByPhoneNumber](#querycontactsbyphonenumber)(context: Context, phoneNumber: string, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
+**替代接口：** [queryContactsByPhoneNumber](#querycontactsbyphonenumber-2)(context: Context, phoneNumber: string, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -56,7 +56,7 @@ contact.queryContactsByPhoneNumber('138xxxxxxxx', (err: BusinessError, data) => 
 function queryContactsByPhoneNumber(context: Context, phoneNumber: string, callback: AsyncCallback<Array<Contact>>): void
 ```
 
-根据电话号码查询联系人。使用callback异步回调。该接口仅返回联系人信息中的id、key、phoneNumbers属性。如果要查询联系人的所有信息，建议使用[queryContact](arkts-contacts-contact-querycontact-f.md#querycontact)接口，根据该接口返回的属性key查询。应用在后台调用此接口获取联系人信息必须要申请对应的长时任务。
+根据电话号码查询联系人。使用callback异步回调。该接口仅返回联系人信息中的id、key、phoneNumbers属性。如果要查询联系人的所有信息，建议使用[queryContact](arkts-contacts-contact-querycontact-f.md#querycontact-8)接口，根据该接口返回的属性key查询。应用在后台调用此接口获取联系人信息必须要申请对应的长时任务。
 
 **起始版本：** 10
 
@@ -110,13 +110,13 @@ contact.queryContactsByPhoneNumber(context, '138xxxxxxxx', (err: BusinessError, 
 function queryContactsByPhoneNumber(phoneNumber: string, holder: Holder, callback: AsyncCallback<Array<Contact>>): void
 ```
 
-根据电话号码和holder查询联系人，使用callback异步回调。该接口返回的列表仅包含联系人信息中的id、key、phoneNumbers属性。如果要查询联系人的所有信息，建议使用[queryContact](arkts-contacts-contact-querycontact-f.md#querycontact)接口，根据该接口返回的属性key查询。应用在后台调用此接口获取联系人信息必须要申请对应的长时任务。
+根据电话号码和holder查询联系人，使用callback异步回调。该接口返回的列表仅包含联系人信息中的id、key、phoneNumbers属性。如果要查询联系人的所有信息，建议使用[queryContact](arkts-contacts-contact-querycontact-f.md#querycontact-8)接口，根据该接口返回的属性key查询。应用在后台调用此接口获取联系人信息必须要申请对应的长时任务。
 
 **起始版本：** 7
 
 **废弃版本：** 10
 
-**替代接口：** [queryContactsByPhoneNumber](#querycontactsbyphonenumber)(context: Context, phoneNumber: string, holder: Holder, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
+**替代接口：** [queryContactsByPhoneNumber](#querycontactsbyphonenumber-4)(context: Context, phoneNumber: string, holder: Holder, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -159,7 +159,7 @@ contact.queryContactsByPhoneNumber('138xxxxxxxx', {
 function queryContactsByPhoneNumber(context: Context, phoneNumber: string, holder: Holder, callback: AsyncCallback<Array<Contact>>): void
 ```
 
-根据电话号码和holder查询联系人。使用callback异步回调。该接口返回的列表仅包含联系人信息中的id、key、phoneNumbers属性。如果要查询联系人的所有信息，建议使用[queryContact](arkts-contacts-contact-querycontact-f.md#querycontact)接口，根据该接口返回的属性key查询。应用在后台调用此接口获取联系人信息必须要申请对应的长时任务。
+根据电话号码和holder查询联系人。使用callback异步回调。该接口返回的列表仅包含联系人信息中的id、key、phoneNumbers属性。如果要查询联系人的所有信息，建议使用[queryContact](arkts-contacts-contact-querycontact-f.md#querycontact-8)接口，根据该接口返回的属性key查询。应用在后台调用此接口获取联系人信息必须要申请对应的长时任务。
 
 **起始版本：** 10
 
@@ -218,13 +218,13 @@ contact.queryContactsByPhoneNumber(context, '138xxxxxxxx', {
 function queryContactsByPhoneNumber(phoneNumber: string, attrs: ContactAttributes, callback: AsyncCallback<Array<Contact>>): void
 ```
 
-根据电话号码和attrs查询联系人。使用callback异步回调。该接口返回的列表仅包含联系人信息中的id、key、phoneNumbers属性。如果要查询联系人的所有信息，建议使用[queryContact](arkts-contacts-contact-querycontact-f.md#querycontact)接口，根据该接口返回的属性key查询。应用在后台调用此接口获取联系人信息必须要申请对应的长时任务。
+根据电话号码和attrs查询联系人。使用callback异步回调。该接口返回的列表仅包含联系人信息中的id、key、phoneNumbers属性。如果要查询联系人的所有信息，建议使用[queryContact](arkts-contacts-contact-querycontact-f.md#querycontact-8)接口，根据该接口返回的属性key查询。应用在后台调用此接口获取联系人信息必须要申请对应的长时任务。
 
 **起始版本：** 7
 
 **废弃版本：** 10
 
-**替代接口：** [queryContactsByPhoneNumber](#querycontactsbyphonenumber)(context: Context, phoneNumber: string, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
+**替代接口：** [queryContactsByPhoneNumber](#querycontactsbyphonenumber-6)(context: Context, phoneNumber: string, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -264,7 +264,7 @@ contact.queryContactsByPhoneNumber('138xxxxxxxx', {
 function queryContactsByPhoneNumber(context: Context, phoneNumber: string, attrs: ContactAttributes, callback: AsyncCallback<Array<Contact>>): void
 ```
 
-根据电话号码和attrs查询联系人。使用callback异步回调。该接口返回的列表仅包含联系人信息中的id、key、phoneNumbers属性。如果要查询联系人的所有信息，建议使用[queryContact](arkts-contacts-contact-querycontact-f.md#querycontact)接口，根据该接口返回的属性key查询。应用在后台调用此接口获取联系人信息必须要申请对应的长时任务。
+根据电话号码和attrs查询联系人。使用callback异步回调。该接口返回的列表仅包含联系人信息中的id、key、phoneNumbers属性。如果要查询联系人的所有信息，建议使用[queryContact](arkts-contacts-contact-querycontact-f.md#querycontact-8)接口，根据该接口返回的属性key查询。应用在后台调用此接口获取联系人信息必须要申请对应的长时任务。
 
 **起始版本：** 10
 
@@ -321,13 +321,13 @@ contact.queryContactsByPhoneNumber(context, '138xxxxxxxx', {
 function queryContactsByPhoneNumber(phoneNumber: string, holder: Holder, attrs: ContactAttributes, callback: AsyncCallback<Array<Contact>>): void
 ```
 
-根据电话号码、holder和attrs查询联系人。使用callback异步回调。该接口返回的列表仅包含联系人信息中的id、key、phoneNumbers属性。如果要查询联系人的所有信息，建议使用[queryContact](arkts-contacts-contact-querycontact-f.md#querycontact)接口，根据该接口返回的属性key查询。应用在后台调用此接口获取联系人信息必须要申请对应的长时任务。
+根据电话号码、holder和attrs查询联系人。使用callback异步回调。该接口返回的列表仅包含联系人信息中的id、key、phoneNumbers属性。如果要查询联系人的所有信息，建议使用[queryContact](arkts-contacts-contact-querycontact-f.md#querycontact-8)接口，根据该接口返回的属性key查询。应用在后台调用此接口获取联系人信息必须要申请对应的长时任务。
 
 **起始版本：** 7
 
 **废弃版本：** 10
 
-**替代接口：** [queryContactsByPhoneNumber](#querycontactsbyphonenumber)(context: Context, phoneNumber: string, holder: Holder, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
+**替代接口：** [queryContactsByPhoneNumber](#querycontactsbyphonenumber-8)(context: Context, phoneNumber: string, holder: Holder, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -373,7 +373,7 @@ function queryContactsByPhoneNumber(context: Context, phoneNumber: string, holde
     callback: AsyncCallback<Array<Contact>>): void
 ```
 
-根据电话号码、holder和attrs查询联系人。使用callback异步回调。该接口返回的列表仅包含联系人信息中的id、key、phoneNumbers属性。如果要查询联系人的所有信息，建议使用[queryContact](arkts-contacts-contact-querycontact-f.md#querycontact)接口，根据该接口返回的属性key查询。应用在后台调用此接口获取联系人信息必须要申请对应的长时任务。
+根据电话号码、holder和attrs查询联系人。使用callback异步回调。该接口返回的列表仅包含联系人信息中的id、key、phoneNumbers属性。如果要查询联系人的所有信息，建议使用[queryContact](arkts-contacts-contact-querycontact-f.md#querycontact-8)接口，根据该接口返回的属性key查询。应用在后台调用此接口获取联系人信息必须要申请对应的长时任务。
 
 **起始版本：** 10
 
@@ -435,13 +435,13 @@ contact.queryContactsByPhoneNumber(context, '138xxxxxxxx', {
 function queryContactsByPhoneNumber(phoneNumber: string, holder?: Holder, attrs?: ContactAttributes): Promise<Array<Contact>>
 ```
 
-根据电话号码、holder和attrs查询联系人。使用Promise异步回调。该接口返回的列表仅包含联系人信息中的id、key、phoneNumbers属性。如果要查询联系人的所有信息，建议使用[queryContact](arkts-contacts-contact-querycontact-f.md#querycontact)接口，根据该接口返回的属性key查询。应用在后台调用此接口获取联系人信息必须要申请对应的长时任务。
+根据电话号码、holder和attrs查询联系人。使用Promise异步回调。该接口返回的列表仅包含联系人信息中的id、key、phoneNumbers属性。如果要查询联系人的所有信息，建议使用[queryContact](arkts-contacts-contact-querycontact-f.md#querycontact-8)接口，根据该接口返回的属性key查询。应用在后台调用此接口获取联系人信息必须要申请对应的长时任务。
 
 **起始版本：** 7
 
 **废弃版本：** 10
 
-**替代接口：** [queryContactsByPhoneNumber](#querycontactsbyphonenumber)(context: Context, phoneNumber: string, holder?: Holder, attrs?: ContactAttributes)
+**替代接口：** [queryContactsByPhoneNumber](#querycontactsbyphonenumber-10)(context: Context, phoneNumber: string, holder?: Holder, attrs?: ContactAttributes)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -487,7 +487,7 @@ promise.then((data) => {
 function queryContactsByPhoneNumber(context: Context, phoneNumber: string, holder?: Holder, attrs?: ContactAttributes): Promise<Array<Contact>>
 ```
 
-根据电话号码、holder和attrs查询联系人。使用Promise异步回调。该接口返回的列表仅包含联系人信息中的id、key、phoneNumbers属性。如果要查询联系人的所有信息，建议使用[queryContact](arkts-contacts-contact-querycontact-f.md#querycontact)接口，根据该接口返回的属性key查询。应用在后台调用此接口获取联系人信息必须要申请对应的长时任务。
+根据电话号码、holder和attrs查询联系人。使用Promise异步回调。该接口返回的列表仅包含联系人信息中的id、key、phoneNumbers属性。如果要查询联系人的所有信息，建议使用[queryContact](arkts-contacts-contact-querycontact-f.md#querycontact-8)接口，根据该接口返回的属性key查询。应用在后台调用此接口获取联系人信息必须要申请对应的长时任务。
 
 **起始版本：** 10
 

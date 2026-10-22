@@ -4,7 +4,7 @@
 declare class UiDriver
 ```
 
-UiDriver类为uitest测试框架的总入口，提供控件匹配/查找，按键注入，坐标点击/滑动，截图等API。该类提供的方法除UiDriver.create()以外的所有方法都使用Promise方式作为异步方法，需使用await调用。
+UiDriver类为UiTest测试框架的总入口，提供控件匹配/查找，按键注入，坐标点击/滑动，截图等API。该类提供的方法除UiDriver.create()以外的所有方法都使用Promise方式作为异步方法，需使用await调用。
 
 > **说明：** 
 > 
@@ -64,13 +64,13 @@ assertComponentExist(by: By): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | if the input parameters are invalid. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Async] if the input parameters are invalid. |
 | [17000002](../errorcode-uitest.md#17000002-接口不支持并发调用) | The API does not support concurrent calls. |
 | [17000003](../errorcode-uitest.md#17000003-断言失败) | if the assertion failed. |
 
@@ -114,14 +114,14 @@ UiDriver对象采取如下操作：在目标坐标点单击。使用Promise异�
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| x | number | 是 | 以number的形式传入目标点的横坐标信息，取值范围：大于等于0的整数。 |
-| y | number | 是 | 以number的形式传入目标点的纵坐标信息，取值范围：大于等于0的整数。 |
+| x | number | 是 | 目标点的横坐标信息，取值范围：大于等于0的整数，单位：px。 |
+| y | number | 是 | 目标点的纵坐标信息，取值范围：大于等于0的整数，单位：px。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **示例**
 
@@ -210,7 +210,7 @@ UiDriver对象在给定的时间内延时。使用Promise异步回调。
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **示例**
 
@@ -252,14 +252,14 @@ UiDriver对象采取如下操作：在目标坐标点双击。使用Promise异�
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| x | number | 是 | 以number的形式传入目标点的横坐标信息，取值范围：大于等于0的整数。 |
-| y | number | 是 | 以number的形式传入目标点的纵坐标信息，取值范围：大于等于0的整数。 |
+| x | number | 是 | 目标点的横坐标信息，取值范围：大于等于0的整数，单位：px。 |
+| y | number | 是 | 目标点的纵坐标信息，取值范围：大于等于0的整数，单位：px。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **示例**
 
@@ -375,7 +375,7 @@ async function demo() {
 longClick(x: number, y: number): Promise<void>
 ```
 
-UiDriver对象采取如下操作：在目标坐标点长按下鼠标左键。使用Promise异步回调。
+UiDriver对象采取如下操作：在目标坐标点长按。使用Promise异步回调。
 
 > **说明：** 
 > 
@@ -397,14 +397,14 @@ UiDriver对象采取如下操作：在目标坐标点长按下鼠标左键。使
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| x | number | 是 | 以number的形式传入目标点的横坐标信息，取值范围：大于等于0的整数。 |
-| y | number | 是 | 以number的形式传入目标点的纵坐标信息，取值范围：大于等于0的整数。 |
+| x | number | 是 | 目标点的横坐标信息，取值范围：大于等于0的整数，单位：px。 |
+| y | number | 是 | 目标点的纵坐标信息，取值范围：大于等于0的整数，单位：px。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **示例**
 
@@ -446,7 +446,7 @@ UiDriver对象进行点击BACK键的操作。使用Promise异步回调。
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **示例**
 
@@ -470,13 +470,13 @@ UiDriver对象采取如下操作：捕获当前屏幕，并保存为PNG格式的
 
 > **说明：** 
 > 
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[screenCap<sup>9+</sup>](arkts-test-uitest-driver-c.md#screencap)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[screenCap<sup>9+</sup>](arkts-test-uitest-driver-c.md#screencap-1)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [screenCap](arkts-test-uitest-driver-c.md#screencap)(savePath: string)
+**替代接口：** [screenCap](arkts-test-uitest-driver-c.md#screencap-1)(savePath: string)
 
 <!--Device-UiDriver-screenCap(savePath: string): Promise<boolean>--><!--Device-UiDriver-screenCap(savePath: string): Promise<boolean>-End-->
 
@@ -536,16 +536,16 @@ UiDriver对象采取如下操作：从给出的起始坐标点滑向给出的目
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| startx | number | 是 | 以number的形式传入起始点的横坐标信息，取值范围：大于等于0的整数。 |
-| starty | number | 是 | 以number的形式传入起始点的纵坐标信息，取值范围：大于等于0的整数。 |
-| endx | number | 是 | 以number的形式传入目的点的横坐标信息，取值范围：大于等于0的整数。 |
-| endy | number | 是 | 以number的形式传入目的点的纵坐标信息，取值范围：大于等于0的整数。 |
+| startx | number | 是 | 起始点的横坐标信息，取值范围：大于等于0的整数，单位：px。 |
+| starty | number | 是 | 起始点的纵坐标信息，取值范围：大于等于0的整数，单位：px。 |
+| endx | number | 是 | 目的点的横坐标信息，取值范围：大于等于0的整数，单位：px。 |
+| endy | number | 是 | 目的点的纵坐标信息，取值范围：大于等于0的整数，单位：px。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **示例**
 
@@ -565,7 +565,7 @@ async function demo() {
 triggerKey(keyCode: number): Promise<void>
 ```
 
-UiDriver对象采取如下操作：通过key值找到对应键并点击。使用Promise异步回调。
+UiDriver对象采取如下操作：传入键码值实现模拟点击对应按键的效果。使用Promise异步回调。
 
 > **说明：** 
 > 
@@ -587,13 +587,13 @@ UiDriver对象采取如下操作：通过key值找到对应键并点击。使用
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| keyCode | number | 是 | 指定的key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../../apis-input-kit/arkts-apis/arkts-input-multimodalinput-keycode-keycode-e.md)。 |
+| keyCode | number | 是 | 指定的键码值，取值范围：[KeyCode键码值](../../apis-input-kit/arkts-apis/arkts-input-multimodalinput-keycode-keycode-e.md)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **示例**
 

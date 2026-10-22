@@ -1,4 +1,4 @@
-# WindowStage
+# WindowStage（系统接口）
 
 ```TypeScript
 interface WindowStage

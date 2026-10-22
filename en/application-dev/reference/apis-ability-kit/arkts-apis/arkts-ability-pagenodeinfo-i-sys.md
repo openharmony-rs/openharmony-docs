@@ -1,4 +1,4 @@
-# PageNodeInfo
+# PageNodeInfo (System API)
 
 ```TypeScript
 export default interface PageNodeInfo

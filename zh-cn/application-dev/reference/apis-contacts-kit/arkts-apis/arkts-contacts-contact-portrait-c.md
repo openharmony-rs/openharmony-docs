@@ -16,7 +16,7 @@ class Portrait
 > [PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)对象。
 > 
 > 从API version 22开始，支持通过uri格式读取联系人头像资源，该格式仅支持以
-> [fs.open](../../apis-core-file-kit/arkts-apis/arkts-corefile-file-fs-open-f.md)方式打开，无法直接在Image组件内显示，需读取后转换为
+> [fs.open](../../apis-core-file-kit/arkts-apis/arkts-corefile-file-fs-open-f.md#open-1)方式打开，无法直接在Image组件内显示，需读取后转换为
 > [PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)格式显示。
 
 **起始版本：** 7

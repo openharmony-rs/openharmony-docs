@@ -24,7 +24,7 @@ Unsubscribes from the port channel data receiving event. This API uses an asynch
 
 **System capability:** SystemCapability.Communication.NearLink.Base
 
-**See also:** [onReadData](arkts-connectivity-datatransfer-onreaddata-f.md) Subscribes to the data receiving event of the port channel.
+**See also:** [onReadData](arkts-connectivity-datatransfer-onreaddata-f.md#onreaddata-1) Subscribes to the data receiving event of the port channel.
 
 **Parameters:**
 

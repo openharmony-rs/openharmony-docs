@@ -1,4 +1,4 @@
-# MediaAssetChangeRequest
+# MediaAssetChangeRequest (System API)
 
 ```TypeScript
 class MediaAssetChangeRequest implements MediaChangeRequest

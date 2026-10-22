@@ -111,7 +111,7 @@ Triggered when a touch cancellation event occurs after successful pinch gesture 
 onActionCancel(event: Callback<GestureEvent>): PinchGestureInterface
 ```
 
-Triggered when a touch cancellation event occurs after successful pinch gesture recognition. Compared with [onActionCancel](#onactioncancel), this callback returns gesture event information.
+Triggered when a touch cancellation event occurs after successful pinch gesture recognition. Compared with [onActionCancel](#onactioncancel-1), this callback returns gesture event information.
 
 **Since:** 18
 

@@ -25,9 +25,9 @@ import { dialogSession } from '@kit.AbilityKit';
 
 | Name | Description |
 | --- | --- |
-| [getDialogSessionInfo](arkts-ability-dialogsession-getdialogsessioninfo-f-sys.md#getdialogsessioninfo) | Obtains the session information based on the session ID. |
-| [sendDialogResult](arkts-ability-dialogsession-senddialogresult-f-sys.md#senddialogresult) | Sends a request for a dialog box. This API uses a promise to return the result. |
-| [sendDialogResult](arkts-ability-dialogsession-senddialogresult-f-sys.md#senddialogresult) | Sends a request for a dialog box. This API uses an asynchronous callback to return the result. |
+| [getDialogSessionInfo](arkts-ability-dialogsession-getdialogsessioninfo-f-sys.md#getdialogsessioninfo-1) | Obtains the session information based on the session ID. |
+| [sendDialogResult](arkts-ability-dialogsession-senddialogresult-f-sys.md#senddialogresult-1) | Sends a request for a dialog box. This API uses a promise to return the result. |
+| [sendDialogResult](arkts-ability-dialogsession-senddialogresult-f-sys.md#senddialogresult-2) | Sends a request for a dialog box. This API uses an asynchronous callback to return the result. |
 <!--DelEnd-->
 
 <!--Del-->

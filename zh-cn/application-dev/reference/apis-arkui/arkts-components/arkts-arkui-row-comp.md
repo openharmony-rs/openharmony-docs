@@ -152,3 +152,31 @@ struct RowExample {
   }
 }
 ```
+
+### 示例2（设置反转属性）
+
+本示例展示设置Row组件的reverse属性后的效果，演示如何实现子组件排列顺序的反转。
+
+```TypeScript
+@Entry
+@Component
+struct RowReverseSample {
+  build() {
+    Row() {
+      Text('1')
+        .width(100)
+        .height(50)
+        .backgroundColor(0xAFEEEE)
+
+      Text('2')
+        .width(100)
+        .height(50)
+        .backgroundColor(0x00FFFF)
+    }
+    .height(100)
+    .width(300)
+    .border({ width: 1 })
+    .reverse(true)
+  }
+}
+```

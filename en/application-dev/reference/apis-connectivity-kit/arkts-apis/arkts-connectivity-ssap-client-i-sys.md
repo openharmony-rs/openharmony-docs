@@ -1,4 +1,4 @@
-# Client
+# Client (System API)
 
 ```TypeScript
 interface Client

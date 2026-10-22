@@ -1,4 +1,4 @@
-# FormExtensionAbility
+# FormExtensionAbility (System API)
 
 ```TypeScript
 declare class FormExtensionAbility

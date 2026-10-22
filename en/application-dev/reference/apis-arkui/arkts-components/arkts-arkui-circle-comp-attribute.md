@@ -4,7 +4,7 @@
 declare class CircleAttribute extends CommonShapeMethod<CircleAttribute>
 ```
 
-In addition to the [universal attributes](arkts-arkui-common-comp-commonmethod-c.md) and [universal drawing attributes](arkts-arkui-common-comp-commonmethod-c.md), the following attributes are supported:
+The [universal attributes](arkts-arkui-common-comp-commonmethod-c.md) and [universal drawing attributes](arkts-arkui-common-comp-commonmethod-c.md) are supported.
 
 **Inheritance/Implementation:** CircleAttribute extends CommonShapeMethod&lt;CircleAttribute&gt;
 

@@ -1,4 +1,4 @@
-# IntentResult
+# IntentResult（系统接口）
 
 ```TypeScript
 interface IntentResult<T>

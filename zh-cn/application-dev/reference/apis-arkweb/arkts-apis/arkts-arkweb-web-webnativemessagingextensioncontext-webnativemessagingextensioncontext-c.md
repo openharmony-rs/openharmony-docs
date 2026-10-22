@@ -117,7 +117,7 @@ startAbilityForResult(want: Want, options?: StartOptions): Promise<AbilityResult
 
 启动一个UIAbility，使用Promise异步回调接收被拉起的UIAbility退出时的返回结果。UIAbility被启动后，有如下情况:
 
-- 正常情况下可通过调用[terminateSelfWithResult](../../apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md#terminateselfwithresult)接口使之终止并且返回结果给调用方。  
+- 正常情况下可通过调用[terminateSelfWithResult](../../apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md#terminateselfwithresult-1)接口使之终止并且返回结果给调用方。  
 - 异常情况下比如销毁UIAbility会返回异常信息给调用方，异常信息中resultCode为-1。  
 - 只支持拉起自己应用的UIAbility。
 

@@ -1,4 +1,4 @@
-# DeviceManager
+# DeviceManager (System API)
 
 ```TypeScript
 interface DeviceManager

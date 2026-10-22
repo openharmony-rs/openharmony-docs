@@ -156,6 +156,22 @@ A continuous task of the **USB_CONNECTION** type is requested, but USB device is
 
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
+## SYSTEM_CANCEL_USB_ALREADY_OCCUPIED
+
+```TypeScript
+SYSTEM_CANCEL_USB_ALREADY_OCCUPIED = 17
+```
+
+A continuous task of the **USB_CONNECTION** type is requested, but the USB device is already occupied.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ContinuousTaskDetailedCancelReason-SYSTEM_CANCEL_USB_ALREADY_OCCUPIED = 17--><!--Device-ContinuousTaskDetailedCancelReason-SYSTEM_CANCEL_USB_ALREADY_OCCUPIED = 17-End-->
+
+**System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
 ## SYSTEM_CANCEL_USE_ILLEGALLY
 
 ```TypeScript

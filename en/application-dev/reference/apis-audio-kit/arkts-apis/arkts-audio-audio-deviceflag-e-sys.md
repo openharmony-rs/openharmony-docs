@@ -1,4 +1,4 @@
-# DeviceFlag
+# DeviceFlag (System API)
 
 ```TypeScript
 enum DeviceFlag

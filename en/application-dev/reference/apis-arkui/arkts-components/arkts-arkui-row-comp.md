@@ -159,3 +159,31 @@ struct RowExample {
   }
 }
 ```
+
+### Example 2: Configuring the Reverse Attribute
+
+This example shows the effect after setting the reverse attribute of the Row component, demonstrating how to reverse the arrangement order of child components.
+
+```TypeScript
+@Entry
+@Component
+struct RowReverseSample {
+  build() {
+    Row() {
+      Text('1')
+        .width(100)
+        .height(50)
+        .backgroundColor(0xAFEEEE)
+
+      Text('2')
+        .width(100)
+        .height(50)
+        .backgroundColor(0x00FFFF)
+    }
+    .height(100)
+    .width(300)
+    .border({ width: 1 })
+    .reverse(true)
+  }
+}
+```

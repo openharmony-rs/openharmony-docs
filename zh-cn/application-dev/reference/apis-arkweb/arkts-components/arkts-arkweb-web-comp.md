@@ -57,6 +57,7 @@ Sets Value.
 | [LargestContentfulPaint](arkts-arkweb-web-comp-largestcontentfulpaint-i.md) | 提供网页绘制页面最大内容的详细信息，包括导航时间和各类绘制时间。适用于需要监控页面渲染性能的场景，提升性能优化的准确性和用户体验。 |
 | [LoadCommittedDetails](arkts-arkweb-web-comp-loadcommitteddetails-i.md) | 提供已提交跳转的网页详细信息，包括是否主文档、导航类型等。适用于需要监控页面导航行为的场景，提升导航状态管理的准确性和用户体验。 |
 | [MicrophoneCaptureStateChangeInfo](arkts-arkweb-web-comp-microphonecapturestatechangeinfo-i.md) | 提供麦克风触发回调时的状态变化信息，包括改变前的状态和改变后的状态。适用于需要监控麦克风状态变化的场景，提升麦克风管理的可见性和用户体验。 |
+| [MonitoredBlankScreenEventInfo](arkts-arkweb-web-comp-monitoredblankscreeneventinfo-i.md) | 提供监测到白屏并完成根因归因时的事件信息，包括页面URL、归因原因和附加详情。 |
 | [NativeEmbedDataInfo](arkts-arkweb-web-comp-nativeembeddatainfo-i.md) | 提供同层标签生命周期变化的详细信息，包括状态和标签信息。适用于需要监控同层元素生命周期的场景，提升渲染状态管理的准确性和用户体验。 |
 | [NativeEmbedInfo](arkts-arkweb-web-comp-nativeembedinfo-i.md) | 提供同层标签的详细信息，包括ID、类型、尺寸和位置等。适用于需要获取同层元素属性的场景，提升同层渲染的定制性和用户体验。 |
 | [NativeEmbedMouseInfo](arkts-arkweb-web-comp-nativeembedmouseinfo-i.md) | 提供鼠标/触摸板在同层标签上点击或长按的详细信息，包括标签ID和鼠标事件。适用于需要处理同层元素鼠标交互的场景，提升鼠标体验的定制性和灵活性。 |
@@ -145,6 +146,7 @@ Sets Value.
 | [OnIntelligentTrackingPreventionCallback](arkts-arkweb-web-comp-onintelligenttrackingpreventioncallback-t.md) | 当跟踪者cookie被拦截时触发的回调。 |
 | [OnLargestContentfulPaintCallback](arkts-arkweb-web-comp-onlargestcontentfulpaintcallback-t.md) | 当网页绘制最大内容区域时触发的回调，用于获取最大内容绘制的性能度量信息。适用于需要监控网页加载性能、优化页面渲染速度等场景。与OnFirstMeaningfulPaintCallback关注主要内容加载完成、OnFirstScreenPaintCallback关注首屏可见内容渲染完成相比，本回调关注最大内容元素的绘制时间，适合评估页面渲染完成度和性能瓶颈。 |
 | [OnMicrophoneCaptureStateChangeCallback](arkts-arkweb-web-comp-onmicrophonecapturestatechangecallback-t.md) | 当页面麦克风状态发生改变时触发此回调。 |
+| [OnMonitorBlankScreenCallback](arkts-arkweb-web-comp-onmonitorblankscreencallback-t.md) | 监测到白屏并完成根因归因时触发的回调。 |
 | [OnNativeEmbedObjectParamChangeCallback](arkts-arkweb-web-comp-onnativeembedobjectparamchangecallback-t.md) | 增加、修改或删除同层渲染object标签内嵌param元素时触发此回调。 |
 | [OnNativeEmbedVisibilityChangeCallback](arkts-arkweb-web-comp-onnativeembedvisibilitychangecallback-t.md) | 当同层标签可见性变化时触发该回调。 |
 | [OnNavigationEntryCommittedCallback](arkts-arkweb-web-comp-onnavigationentrycommittedcallback-t.md) | 导航条目提交时触发的回调。 |
@@ -169,6 +171,7 @@ Sets Value.
 | [AISessionType](arkts-arkweb-web-comp-aisessiontype-e.md) | 支持的AI会话类型。 |
 | [AudioSessionType](arkts-arkweb-web-comp-audiosessiontype-e.md) | 应用中 Web 音频类型，用于控制 Web 音频的音频流类型和行为，帮助开发者根据应用场景优化音频体验，如支持网页游戏声音与系统音乐同时播放。 |
 | [BlankScreenDetectionMethod](arkts-arkweb-web-comp-blankscreendetectionmethod-e.md) | 白屏检测使用的检测策略的方法，用于定义页面内容检测的具体算法和点位，帮助开发者在检测准确性和性能开销之间取得平衡，及时发现页面渲染异常。 |
+| [BlankScreenReason](arkts-arkweb-web-comp-blankscreenreason-e.md) | 枚举白屏归因的具体原因，从网络层、资源层、渲染与JS层、内核与进程层、容器层标识白屏问题的根因。 |
 | [BlurOnKeyboardHideMode](arkts-arkweb-web-comp-bluronkeyboardhidemode-e.md) | 设置手动收起软键盘时Web元素是否失焦。 |
 | [CacheMode](arkts-arkweb-web-comp-cachemode-e.md) | 缓存模式。 |
 | [CameraCaptureState](arkts-arkweb-web-comp-cameracapturestate-e.md) | 定义摄像头使用状态的值，用于标识摄像头的当前工作状态，帮助开发者实时监控摄像头资源使用情况，优化资源管理和用户隐私保护。 |

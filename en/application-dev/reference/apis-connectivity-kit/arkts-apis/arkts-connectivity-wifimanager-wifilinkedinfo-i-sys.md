@@ -1,4 +1,4 @@
-# WifiLinkedInfo
+# WifiLinkedInfo (System API)
 
 ```TypeScript
 interface WifiLinkedInfo

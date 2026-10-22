@@ -1,4 +1,4 @@
-# ManualExposure
+# ManualExposure (System API)
 
 ```TypeScript
 interface ManualExposure extends ManualExposureQuery

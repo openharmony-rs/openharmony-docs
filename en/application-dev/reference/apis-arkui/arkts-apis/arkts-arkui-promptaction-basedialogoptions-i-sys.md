@@ -1,4 +1,4 @@
-# BaseDialogOptions
+# BaseDialogOptions (System API)
 
 ```TypeScript
 interface BaseDialogOptions

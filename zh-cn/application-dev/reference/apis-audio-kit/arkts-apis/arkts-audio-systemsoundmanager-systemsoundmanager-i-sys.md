@@ -632,8 +632,7 @@ systemSoundManagerInstance.getHapticsAttrsSyncedWithTone(context, toneUri).then(
 ## getMockHapticRingtonePlayer
 
 ```TypeScript
-getMockHapticRingtonePlayer(
-      context: BaseContext, type: RingtoneType, ringtoneUri: string): Promise<RingtonePlayer | null>
+getMockHapticRingtonePlayer(context: BaseContext, type: RingtoneType, ringtoneUri: string): Promise<RingtonePlayer | null>
 ```
 
 获取模拟触觉铃声播放器，根据指定的铃声类型和铃音文件URI，播放该铃音文件对应的振动文件及其模拟触觉声音文件。使用Promise异步回调。
@@ -642,13 +641,13 @@ getMockHapticRingtonePlayer(
 > 
 > - 调用该接口前，请确保传入的ringtoneUri在系统中存在，否则会出现异常和错误。例如无法播放匹配的触觉声音文件。
 > 
-> - 通过该接口获取实例后，在服务终止时需主动调用RingtonePlayer的[release](arkts-audio-ringtoneplayer-i-sys.md#release)方法释放播放器资源。
+> - 通过该接口获取实例后，在服务终止时需主动调用RingtonePlayer的[release](arkts-audio-ringtoneplayer-i-sys.md#release-1)方法释放播放器资源。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SystemSoundManager-getMockHapticRingtonePlayer(      context: BaseContext, type: RingtoneType, ringtoneUri: string): Promise<RingtonePlayer | null>--><!--Device-SystemSoundManager-getMockHapticRingtonePlayer(      context: BaseContext, type: RingtoneType, ringtoneUri: string): Promise<RingtonePlayer | null>-End-->
+<!--Device-SystemSoundManager-getMockHapticRingtonePlayer(context: BaseContext, type: RingtoneType, ringtoneUri: string): Promise<RingtonePlayer | null>--><!--Device-SystemSoundManager-getMockHapticRingtonePlayer(context: BaseContext, type: RingtoneType, ringtoneUri: string): Promise<RingtonePlayer | null>-End-->
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
@@ -660,7 +659,7 @@ getMockHapticRingtonePlayer(
 | --- | --- | --- | --- |
 | context | [BaseContext](../../apis-ability-kit/arkts-apis/arkts-ability-basecontext-c.md) | 是 | 当前应用的上下文。 |
 | type | [RingtoneType](arkts-audio-systemsoundmanager-ringtonetype-e-sys.md) | 是 | 待获取播放器的铃声类型。 |
-| ringtoneUri | string | 是 | 铃音文件的URI，需确保在系统文件中真实存在。<br>如果为自定义铃声需使用[addCustomizedTone](#addcustomizedtone)接口返回的ringtoneUri，确保铃音文件URI在铃音库中存在。 |
+| ringtoneUri | string | 是 | 铃音文件的URI，需确保在系统文件中真实存在。<br>如果为自定义铃声需使用[addCustomizedTone](#addcustomizedtone-1)接口返回的ringtoneUri，确保铃音文件URI在铃音库中存在。 |
 
 **返回值：**
 
@@ -714,7 +713,7 @@ getMockHapticRingtonePlayer(context: BaseContext, hapticUri: string): Promise<Ri
 > 
 > - 调用该接口前，请确保传入的hapticUri在系统中存在，否则会出现异常和错误。例如无法播放匹配的触觉声音文件。
 > 
-> - 通过该接口获取实例后，在服务终止时需主动调用RingtonePlayer的[release](arkts-audio-ringtoneplayer-i-sys.md#release)方法释放播放器资源。
+> - 通过该接口获取实例后，在服务终止时需主动调用RingtonePlayer的[release](arkts-audio-ringtoneplayer-i-sys.md#release-1)方法释放播放器资源。
 
 **起始版本：** 26.0.0
 
@@ -1390,7 +1389,7 @@ openToneList(uriList: Array<string>): Promise<Array<[string, number, SystemSound
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Caller is not a system application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Calleris not a system application. |
 | [20700007](../errorcode-audio-ringtone-sys.md#20700007-参数无效) | Parameter is invalid, e.g. the length of uriList is too long. |
 
 <!--Del-->
@@ -1439,7 +1438,7 @@ removeCustomizedTone(context: BaseContext, uri:string): Promise<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | context | [BaseContext](../../apis-ability-kit/arkts-apis/arkts-ability-basecontext-c.md) | 是 | 当前应用的上下文。 |
-| uri | string | 是 | 铃音uri，可通过[addCustomizedTone](#addcustomizedtone)或[getAlarmToneAttrList](#getalarmtoneattrlist)等方法获取。 |
+| uri | string | 是 | 铃音uri，可通过[addCustomizedTone](#addcustomizedtone-1)或[getAlarmToneAttrList](#getalarmtoneattrlist)等方法获取。 |
 
 **返回值：**
 

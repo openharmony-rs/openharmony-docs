@@ -1,4 +1,4 @@
-# ExposureMeteringMode
+# ExposureMeteringMode（系统接口）
 
 ```TypeScript
 enum ExposureMeteringMode

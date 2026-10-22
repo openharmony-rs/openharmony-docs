@@ -1,4 +1,4 @@
-# AudioRenderer
+# AudioRenderer (System API)
 
 ```TypeScript
 interface AudioRenderer
@@ -6,7 +6,7 @@ interface AudioRenderer
 
 This interface provides APIs for audio rendering.
 
-Before calling any API in AudioRenderer, you must use [createAudioRenderer](arkts-audio-audio-createaudiorenderer-f.md#createaudiorenderer) to create an AudioRenderer instance.
+Before calling any API in AudioRenderer, you must use [createAudioRenderer](arkts-audio-audio-createaudiorenderer-f.md#createaudiorenderer-1) to create an AudioRenderer instance.
 
 > **NOTE:** 
 > 

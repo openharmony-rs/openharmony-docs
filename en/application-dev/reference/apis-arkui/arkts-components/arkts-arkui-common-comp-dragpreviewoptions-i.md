@@ -50,15 +50,15 @@ Use [opacity](../../../reference/apis-arkui/arkui-ts/ts-universal-attributes-opa
 
 2. Shadow
 
-Use [shadow](arkts-arkui-common-comp-commonmethod-c.md#shadow).
+Use [shadow](arkts-arkui-common-comp-commonmethod-c.md#shadow-1).
 
 3. Background blur
 
-Use [backgroundEffect](arkts-arkui-common-comp-commonmethod-c.md#backgroundeffect) or [backgroundBlurStyle](arkts-arkui-common-comp-commonmethod-c.md#backgroundblurstyle). If both are set, the latter setting takes precedence.
+Use [backgroundEffect](arkts-arkui-common-comp-commonmethod-c.md#backgroundeffect-1) or [backgroundBlurStyle](arkts-arkui-common-comp-commonmethod-c.md#backgroundblurstyle-1). If both are set, the latter setting takes precedence.
 
 4. Rounded corners
 
-Use [border](../../../reference/apis-arkui/arkui-ts/ts-universal-attributes-border.md#border) or [borderRadius](arkts-arkui-common-comp-commonmethod-c.md#borderradius). Modifier settings override mode settings.
+Use [border](../../../reference/apis-arkui/arkui-ts/ts-universal-attributes-border.md#border) or [borderRadius](arkts-arkui-common-comp-commonmethod-c.md#borderradius-1). Modifier settings override mode settings.
 
 Default value: empty (unmodifiable).
 

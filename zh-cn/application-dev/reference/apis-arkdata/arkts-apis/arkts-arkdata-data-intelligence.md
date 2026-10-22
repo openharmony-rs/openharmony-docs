@@ -20,10 +20,10 @@ import { intelligence } from '@kit.ArkData';
 
 | 名称 | 说明 |
 | --- | --- |
-| [getImageEmbeddingModel](arkts-arkdata-intelligence-getimageembeddingmodel-f.md#getimageembeddingmodel) | 获取图像嵌入模型。使用Promise异步回调。 |
-| [getSupportedCloudModel](arkts-arkdata-intelligence-getsupportedcloudmodel-f.md#getsupportedcloudmodel) | 获取支持的云侧模型信息。使用Promise异步回调。 |
-| [getTextEmbeddingModel](arkts-arkdata-intelligence-gettextembeddingmodel-f.md#gettextembeddingmodel) | 获取文本嵌入模型。使用Promise异步回调。 |
-| [splitText](arkts-arkdata-intelligence-splittext-f.md#splittext) | 获取文本的分块。使用Promise异步回调。 |
+| [getImageEmbeddingModel](arkts-arkdata-intelligence-getimageembeddingmodel-f.md#getimageembeddingmodel-1) | 获取图像嵌入模型。使用Promise异步回调。 |
+| [getSupportedCloudModel](arkts-arkdata-intelligence-getsupportedcloudmodel-f.md#getsupportedcloudmodel-1) | 获取支持的云侧模型信息。使用Promise异步回调。 |
+| [getTextEmbeddingModel](arkts-arkdata-intelligence-gettextembeddingmodel-f.md#gettextembeddingmodel-1) | 获取文本嵌入模型。使用Promise异步回调。 |
+| [splitText](arkts-arkdata-intelligence-splittext-f.md#splittext-1) | 获取文本的分块。使用Promise异步回调。 |
 
 ### 接口
 

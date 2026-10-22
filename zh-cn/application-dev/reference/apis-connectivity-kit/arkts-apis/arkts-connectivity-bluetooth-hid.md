@@ -22,8 +22,8 @@ import { hid } from '@kit.ConnectivityKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [createHidDeviceProfile](arkts-connectivity-hid-createhiddeviceprofile-f.md#createhiddeviceprofile) | 创建蓝牙HID Device实例。通过该实例可使用本端作为HID Device的接口，如：获取和其他设备间的蓝牙HID连接状态。 |
-| [createHidHostProfile](arkts-connectivity-hid-createhidhostprofile-f.md#createhidhostprofile) | 创建蓝牙HID Host实例。通过该实例可使用本端作为HID Host的接口，如：获取和其他设备间的蓝牙HID连接状态。 |
+| [createHidDeviceProfile](arkts-connectivity-hid-createhiddeviceprofile-f.md#createhiddeviceprofile-1) | 创建蓝牙HID Device实例。通过该实例可使用本端作为HID Device的接口，如：获取和其他设备间的蓝牙HID连接状态。 |
+| [createHidHostProfile](arkts-connectivity-hid-createhidhostprofile-f.md#createhidhostprofile-1) | 创建蓝牙HID Host实例。通过该实例可使用本端作为HID Host的接口，如：获取和其他设备间的蓝牙HID连接状态。 |
 
 ### 接口
 

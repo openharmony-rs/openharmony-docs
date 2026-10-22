@@ -23,16 +23,16 @@ import { formObserver } from '@kit.FormKit';
 
 | Name | Description |
 | --- | --- |
-| [getRunningFormInfoById](arkts-form-formobserver-getrunningforminfobyid-f-sys.md#getrunningforminfobyid) | Obtains the RunningFormInfo object by formId. |
-| [getRunningFormInfoById](arkts-form-formobserver-getrunningforminfobyid-f-sys.md#getrunningforminfobyid) | Obtains the RunningFormInfo object by formId. |
-| [getRunningFormInfoById](arkts-form-formobserver-getrunningforminfobyid-f-sys.md#getrunningforminfobyid) | Obtains the RunningFormInfo object by formId. |
-| [getRunningFormInfoById](arkts-form-formobserver-getrunningforminfobyid-f-sys.md#getrunningforminfobyid) | Obtains the RunningFormInfo object by formId. |
-| [getRunningFormInfos](arkts-form-formobserver-getrunningforminfos-f-sys.md#getrunningforminfos) | Obtains the RunningFormInfo objects provided by a specific card host application on the device. |
-| [getRunningFormInfos](arkts-form-formobserver-getrunningforminfos-f-sys.md#getrunningforminfos) | Obtains the RunningFormInfo objects provided by a specific card host application on the device. |
-| [getRunningFormInfos](arkts-form-formobserver-getrunningforminfos-f-sys.md#getrunningforminfos) | Obtains the RunningFormInfo objects provided by a specific card host application on the device. |
-| [getRunningFormInfos](arkts-form-formobserver-getrunningforminfos-f-sys.md#getrunningforminfos) | Obtains the RunningFormInfo objects provided by a specific card host application on the device. |
-| [getRunningFormInfosByFilter](arkts-form-formobserver-getrunningforminfosbyfilter-f-sys.md#getrunningforminfosbyfilter) | Obtains the RunningFormInfo objects by FormProviderFilter. |
-| [getRunningFormInfosByFilter](arkts-form-formobserver-getrunningforminfosbyfilter-f-sys.md#getrunningforminfosbyfilter) | Obtains the RunningFormInfo objects by FormProviderFilter. |
+| [getRunningFormInfoById](arkts-form-formobserver-getrunningforminfobyid-f-sys.md#getrunningforminfobyid-1) | Obtains the RunningFormInfo object by formId. |
+| [getRunningFormInfoById](arkts-form-formobserver-getrunningforminfobyid-f-sys.md#getrunningforminfobyid-2) | Obtains the RunningFormInfo object by formId. |
+| [getRunningFormInfoById](arkts-form-formobserver-getrunningforminfobyid-f-sys.md#getrunningforminfobyid-3) | Obtains the RunningFormInfo object by formId. |
+| [getRunningFormInfoById](arkts-form-formobserver-getrunningforminfobyid-f-sys.md#getrunningforminfobyid-4) | Obtains the RunningFormInfo object by formId. |
+| [getRunningFormInfos](arkts-form-formobserver-getrunningforminfos-f-sys.md#getrunningforminfos-1) | Obtains the RunningFormInfo objects provided by a specific card host application on the device. |
+| [getRunningFormInfos](arkts-form-formobserver-getrunningforminfos-f-sys.md#getrunningforminfos-2) | Obtains the RunningFormInfo objects provided by a specific card host application on the device. |
+| [getRunningFormInfos](arkts-form-formobserver-getrunningforminfos-f-sys.md#getrunningforminfos-3) | Obtains the RunningFormInfo objects provided by a specific card host application on the device. |
+| [getRunningFormInfos](arkts-form-formobserver-getrunningforminfos-f-sys.md#getrunningforminfos-4) | Obtains the RunningFormInfo objects provided by a specific card host application on the device. |
+| [getRunningFormInfosByFilter](arkts-form-formobserver-getrunningforminfosbyfilter-f-sys.md#getrunningforminfosbyfilter-1) | Obtains the RunningFormInfo objects by FormProviderFilter. |
+| [getRunningFormInfosByFilter](arkts-form-formobserver-getrunningforminfosbyfilter-f-sys.md#getrunningforminfosbyfilter-2) | Obtains the RunningFormInfo objects by FormProviderFilter. |
 | [off('formAdd')](arkts-form-formobserver-off-f-sys.md#offformadd) | Cancels listening to the event of add form. <p>You can use this method to cancel listening to the event of add form.</p> |
 | [off('formRemove')](arkts-form-formobserver-off-f-sys.md#offformremove) | Cancels listening to the event of remove form. <p>You can use this method to cancel listening to the event of remove form.</p> |
 | [off('notifyVisible')](arkts-form-formobserver-off-f-sys.md#offnotifyvisible) | Cancels listening to the event of notifyVisible type change. <p>You can use this method to cancel listening to the event of notifyVisible type change.</p> |

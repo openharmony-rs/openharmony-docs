@@ -1,4 +1,4 @@
-# AudioDeviceDescriptor
+# AudioDeviceDescriptor (System API)
 
 ```TypeScript
 interface AudioDeviceDescriptor

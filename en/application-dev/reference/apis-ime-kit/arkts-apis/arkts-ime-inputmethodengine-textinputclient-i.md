@@ -299,7 +299,7 @@ Obtains the attribute of the edit box. This API uses an asynchronous callback to
 
 **Deprecated since:** 9
 
-**Substitutes:** [getEditorAttribute](arkts-ime-inputmethodengine-inputclient-i.md#geteditorattribute)(callback: AsyncCallback&lt;EditorAttribute&gt;)
+**Substitutes:** [getEditorAttribute](arkts-ime-inputmethodengine-inputclient-i.md#geteditorattribute-1)(callback: AsyncCallback&lt;EditorAttribute&gt;)
 
 <!--Device-TextInputClient-getEditorAttribute(callback: AsyncCallback<EditorAttribute>): void--><!--Device-TextInputClient-getEditorAttribute(callback: AsyncCallback<EditorAttribute>): void-End-->
 
@@ -340,7 +340,7 @@ Obtains the attribute of the edit box. This API uses a promise to return the res
 
 **Deprecated since:** 9
 
-**Substitutes:** [getEditorAttribute](arkts-ime-inputmethodengine-inputclient-i.md#geteditorattribute)(callback: AsyncCallback&lt;EditorAttribute&gt;)
+**Substitutes:** [getEditorAttribute](arkts-ime-inputmethodengine-inputclient-i.md#geteditorattribute-1)(callback: AsyncCallback&lt;EditorAttribute&gt;)
 
 <!--Device-TextInputClient-getEditorAttribute(): Promise<EditorAttribute>--><!--Device-TextInputClient-getEditorAttribute(): Promise<EditorAttribute>-End-->
 
@@ -460,7 +460,7 @@ Inserts text. This API uses an asynchronous callback to return the result.
 
 **Deprecated since:** 9
 
-**Substitutes:** [insertText](arkts-ime-inputmethodengine-inputclient-i.md#inserttext)(text: string, callback: AsyncCallback&lt;boolean&gt;)
+**Substitutes:** [insertText](arkts-ime-inputmethodengine-inputclient-i.md#inserttext-1)(text: string, callback: AsyncCallback&lt;boolean&gt;)
 
 <!--Device-TextInputClient-insertText(text: string, callback: AsyncCallback<boolean>): void--><!--Device-TextInputClient-insertText(text: string, callback: AsyncCallback<boolean>): void-End-->
 
@@ -503,7 +503,7 @@ Inserts text. This API uses a promise to return the result.
 
 **Deprecated since:** 9
 
-**Substitutes:** [insertText](arkts-ime-inputmethodengine-inputclient-i.md#inserttext)(text: string): Promise&lt;boolean&gt;
+**Substitutes:** [insertText](arkts-ime-inputmethodengine-inputclient-i.md#inserttext-2)(text: string): Promise&lt;boolean&gt;
 
 <!--Device-TextInputClient-insertText(text: string): Promise<boolean>--><!--Device-TextInputClient-insertText(text: string): Promise<boolean>-End-->
 

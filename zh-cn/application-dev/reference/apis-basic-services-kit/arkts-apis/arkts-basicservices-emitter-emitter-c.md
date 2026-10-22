@@ -340,7 +340,7 @@ off(eventId: string): void
 
 取消当前Emitter类实例事件ID为eventId的所有订阅。
 
-使用该接口取消某个事件订阅后，已通过[emit](#emit)接口发布但尚未被执行的事件将被取消。
+使用该接口取消某个事件订阅后，已通过[emit](#emit-1)接口发布但尚未被执行的事件将被取消。
 
 **起始版本：** 22
 
@@ -377,7 +377,7 @@ off(eventId: string, callback: Callback<EventData>): void
 
 取消订阅当前Emitter类实例的事件。仅当已使用[on](#on)或[once](#once)接口订阅了事件ID为eventId且回调处理函数为callback的事件时，该接口才生效。
 
-使用该接口取消事件订阅后，已通过[emit](#emit)接口发布但尚未被执行的事件将被取消。
+使用该接口取消事件订阅后，已通过[emit](#emit-1)接口发布但尚未被执行的事件将被取消。
 
 **起始版本：** 22
 
@@ -427,7 +427,7 @@ off<T>(eventId: string, callback: Callback<GenericEventData<T>>): void
 
 取消订阅当前Emitter类实例的事件。仅当已使用[on](#on)或[once](#once)接口订阅了事件ID为eventId且回调处理函数为callback的事件时，该接口才生效。
 
-使用该接口取消事件订阅后，已通过[emit](#emit)接口发布但尚未被执行的事件将被取消。
+使用该接口取消事件订阅后，已通过[emit](#emit-2)接口发布但尚未被执行的事件将被取消。
 
 **起始版本：** 22
 

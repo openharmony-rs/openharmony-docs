@@ -28,7 +28,7 @@ Releases all image resources associated with the **ImageBitmap** object and sets
 > **NOTE:** 
 > 
 > - This method must be used together with the [constructor()](#constructor)method. After creating an **ImageBitmap** object, call **close()** to release resources when they are no longer needed. Failure to call **close()** may cause image resource leaks and affect app performance.
-> - It is recommended to call this method after **Canvas** drawing is complete, for example, at the end of the [onReady](arkts-arkui-canvas-comp-attribute.md#onready)callback.
+> - It is recommended to call this method after **Canvas** drawing is complete, for example, at the end of the [onReady](arkts-arkui-canvas-comp-attribute.md#onready-1)callback.
 
 **Since:** 8
 

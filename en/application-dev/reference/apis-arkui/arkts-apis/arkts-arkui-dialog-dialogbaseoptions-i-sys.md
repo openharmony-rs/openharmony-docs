@@ -1,4 +1,4 @@
-# DialogBaseOptions
+# DialogBaseOptions (System API)
 
 ```TypeScript
 declare interface DialogBaseOptions

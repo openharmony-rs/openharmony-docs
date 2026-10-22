@@ -619,7 +619,7 @@ getUIAbilityChildProcessInfos(): Promise<Array<ChildProcessInformation>>
 
 Obtains the UIAbility child process information of the current application. This API uses a promise to return the result asynchronously.
 
-Returns the processes started through the [startSelfUIAbilityInChildProcess](arkts-ability-uiabilitycontext-c.md#startselfuiabilityinchildprocess) API, as well as the child processes started through the [startAbility](arkts-ability-uiabilitycontext-c.md#startability) API with [processMode](arkts-ability-contextconstant-processmode-e.md) in the [StartOptions](arkts-ability-app-ability-startoptions-startoptions-c.md) parameter set to NEW_PROCESS_ATTACH_TO_PARENT. An empty array is returned when there is no child process.
+Returns the processes started through the [startSelfUIAbilityInChildProcess](arkts-ability-uiabilitycontext-c.md#startselfuiabilityinchildprocess) API, as well as the child processes started through the [startAbility](arkts-ability-uiabilitycontext-c.md#startability-3) API with [processMode](arkts-ability-contextconstant-processmode-e.md) in the [StartOptions](arkts-ability-app-ability-startoptions-startoptions-c.md) parameter set to NEW_PROCESS_ATTACH_TO_PARENT. An empty array is returned when there is no child process.
 
 **Since:** 26.0.1
 

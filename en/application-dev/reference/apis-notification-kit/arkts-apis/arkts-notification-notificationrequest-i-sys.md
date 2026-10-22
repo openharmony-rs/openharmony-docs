@@ -1,4 +1,4 @@
-# NotificationRequest
+# NotificationRequest (System API)
 
 ```TypeScript
 export interface NotificationRequest

@@ -1,4 +1,4 @@
-# WifiScanInfo
+# WifiScanInfo (System API)
 
 ```TypeScript
 interface WifiScanInfo

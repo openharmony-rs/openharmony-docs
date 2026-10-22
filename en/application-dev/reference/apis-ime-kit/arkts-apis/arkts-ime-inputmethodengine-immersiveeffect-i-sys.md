@@ -1,4 +1,4 @@
-# ImmersiveEffect
+# ImmersiveEffect (System API)
 
 ```TypeScript
 interface ImmersiveEffect

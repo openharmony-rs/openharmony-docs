@@ -4,7 +4,7 @@
 interface DataInfo
 ```
 
-Represents the received data information, including the channel ID and data.
+Represents the received data, including the channel ID and data.
 
 **Since:** 20
 
@@ -24,7 +24,7 @@ import { proxyChannelManager } from '@kit.DistributedServiceKit';
 channelId: number
 ```
 
-Channel ID of the proxy channel. The value range is 1 to 2147483647.
+Proxy channel ID. The value ranges from 1 to 2147483647.
 
 **Type:** number
 
@@ -42,7 +42,7 @@ Channel ID of the proxy channel. The value range is 1 to 2147483647.
 data: ArrayBuffer
 ```
 
-Received byte data. The maximum length is 4096 bytes.
+Received data, in bytes. The maximum value is **4096**.
 
 **Type:** ArrayBuffer
 

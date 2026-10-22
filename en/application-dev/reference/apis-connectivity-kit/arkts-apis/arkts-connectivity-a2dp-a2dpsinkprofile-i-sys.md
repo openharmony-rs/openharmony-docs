@@ -1,4 +1,4 @@
-# A2dpSinkProfile
+# A2dpSinkProfile (System API)
 
 ```TypeScript
 interface A2dpSinkProfile extends BaseProfile

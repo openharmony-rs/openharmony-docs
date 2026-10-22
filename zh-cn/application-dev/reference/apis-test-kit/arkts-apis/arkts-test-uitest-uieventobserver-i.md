@@ -4,7 +4,7 @@
 declare interface UIEventObserver
 ```
 
-UI事件监听器。
+UI事件监听器，用于监听UI界面上的各类事件，包括toast控件出现事件、dialog控件出现事件、窗口变化事件以及控件操作事件。通过[Driver.createUIEventObserver()](arkts-test-uitest-driver-c.md#createuieventobserver)创建实例。
 
 **起始版本：** 10
 
@@ -50,7 +50,7 @@ once(type: 'toastShow', callback: Callback<UIElementInfo>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**
 
@@ -103,7 +103,7 @@ once(type: 'dialogShow', callback: Callback<UIElementInfo>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**
 

@@ -8,6 +8,10 @@ Defines a contact's event.
 
 **Since:** 7
 
+**Deprecated since:** 26.2.0
+
+**Substitutes:** [SignificantDate](arkts-contacts-contact-significantdate-c.md)
+
 <!--Device-contact-class Event--><!--Device-contact-class Event-End-->
 
 **System capability:** SystemCapability.Applications.ContactsData
@@ -30,6 +34,10 @@ Custom event type, the default value is **0**.
 
 **Since:** 7
 
+**Deprecated since:** 26.2.0
+
+**Substitutes:** [DATE_TYPE_OTHER](arkts-contacts-contact-significantdatetype-e.md#date_type_other)
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-Event-static readonly CUSTOM_LABEL: 0--><!--Device-Event-static readonly CUSTOM_LABEL: 0-End-->
@@ -47,6 +55,10 @@ Anniversary event type, the default value is **1**.
 **Type:** 1
 
 **Since:** 7
+
+**Deprecated since:** 26.2.0
+
+**Substitutes:** [DATE_TYPE_ANNIVERSARY](arkts-contacts-contact-significantdatetype-e.md#date_type_anniversary)
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -66,6 +78,10 @@ Birthday event, the default value is **3**.
 
 **Since:** 7
 
+**Deprecated since:** 26.2.0
+
+**Substitutes:** [DATE_TYPE_BIRTHDAY](arkts-contacts-contact-significantdatetype-e.md#date_type_birthday)
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-Event-static readonly EVENT_BIRTHDAY: 3--><!--Device-Event-static readonly EVENT_BIRTHDAY: 3-End-->
@@ -83,6 +99,10 @@ Other event type, the default value is **2**.
 **Type:** 2
 
 **Since:** 7
+
+**Deprecated since:** 26.2.0
+
+**Substitutes:** [DATE_TYPE_OTHER](arkts-contacts-contact-significantdatetype-e.md#date_type_other)
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -102,6 +122,10 @@ Event date.
 
 **Since:** 7
 
+**Deprecated since:** 26.2.0
+
+**Substitutes:** [dateValue](arkts-contacts-contact-significantdate-c.md#datevalue)
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-Event-eventDate: string--><!--Device-Event-eventDate: string-End-->
@@ -119,6 +143,10 @@ Invalid event type, the default value is **-1**.
 **Type:** -1
 
 **Since:** 7
+
+**Deprecated since:** 26.2.0
+
+**Substitutes:** [DATE_TYPE_OTHER](arkts-contacts-contact-significantdatetype-e.md#date_type_other)
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -138,6 +166,10 @@ Event type.
 
 **Since:** 7
 
+**Deprecated since:** 26.2.0
+
+**Substitutes:** [dateType](arkts-contacts-contact-significantdate-c.md#datetype)
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-Event-labelId?: number--><!--Device-Event-labelId?: number-End-->
@@ -155,6 +187,10 @@ Name of the Event type.
 **Type:** string
 
 **Since:** 7
+
+**Deprecated since:** 26.2.0
+
+**Substitutes:** [dateName](arkts-contacts-contact-significantdate-c.md#datename)
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 

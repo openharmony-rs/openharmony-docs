@@ -18,7 +18,7 @@ Queries whether a feature is disabled.
 
 **Deprecated since:** 26.0.0
 
-**Substitutes:** [getDisallowedPolicy](#getdisallowedpolicy)(admin: Want | null, feature: FeatureForDevice)
+**Substitutes:** [getDisallowedPolicy](#getdisallowedpolicy-2)(admin: Want | null, feature: FeatureForDevice)
 
 **Required permissions:** 
 - API version 20 and later: ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS or ohos.permission.PERSONAL_MANAGE_RESTRICTIONS or ohos.permission.ENTERPRISE_MANAGE_NETWORK

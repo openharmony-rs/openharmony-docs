@@ -1,5 +1,9 @@
 # @ohos.arkui.advanced.SplitLayout
 
+## Child Components
+
+None
+
 ## Modules to Import
 
 ```TypeScript

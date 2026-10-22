@@ -1,4 +1,4 @@
-# LiveFormExtensionContext
+# LiveFormExtensionContext (System API)
 
 ```TypeScript
 declare class LiveFormExtensionContext extends ExtensionContext

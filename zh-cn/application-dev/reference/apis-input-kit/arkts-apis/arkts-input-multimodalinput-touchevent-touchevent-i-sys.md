@@ -1,4 +1,4 @@
-# TouchEvent
+# TouchEvent（系统接口）
 
 ```TypeScript
 export declare interface TouchEvent extends InputEvent

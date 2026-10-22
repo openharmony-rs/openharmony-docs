@@ -4,7 +4,7 @@
 export interface Geometry extends Node
 ```
 
-Geometric node type that holds renderable mesh data and supports optional deformation features. It inherits from Node.
+Geometric node type that holds renderable mesh data and supports optional deformation features. It inherits from [Node](arkts-arkgraphics3d-scenenodes-node-i.md).
 
 **Inheritance/Implementation:** Geometry extends [Node](arkts-arkgraphics3d-scenenodes-node-i.md)
 

@@ -61,3 +61,14 @@ A constructor used to create a `WrappedBuilder` instance.
 | builder | (...args: Args) =&gt; void | Yes | A global function decorated by `@Builder`, used as a constructor parameter to initialize a `WrappedBuilder` instance. The function parameter `args` is the parameter list required by the `@Builder` function. |
 
 **Examples**
+
+```TypeScript
+@Builder
+function myBuilder(value: string, size: number) {
+  Text(value)
+    .fontSize(size)
+}
+
+// Use WrappedBuilder to wrap myBuilder.
+let builderVar: WrappedBuilder<[string, number]> = new WrappedBuilder<[string, number]>(myBuilder);
+```

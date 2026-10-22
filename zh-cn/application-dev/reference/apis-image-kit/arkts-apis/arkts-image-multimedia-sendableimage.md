@@ -20,16 +20,16 @@ import { sendableImage } from '@kit.ImageKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [convertFromPixelMap](arkts-image-sendableimage-convertfrompixelmap-f.md#convertfrompixelmap) | 通过image下的PixelMap创建出一个sendableImage下的PixelMap，同步返回PixelMap结果。原PixelMap的方法均不可再调用。 |
-| [convertToPixelMap](arkts-image-sendableimage-converttopixelmap-f.md#converttopixelmap) | 通过sendableImage下的PixelMap创建出一个image下的PixelMap，同步返回PixelMap结果。原PixelMap的方法均不可再调用。 |
-| [createImageReceiver](arkts-image-sendableimage-createimagereceiver-f.md#createimagereceiver) | 通过图片大小、图片格式、容量创建ImageReceiver实例。 |
-| [createImageSource](arkts-image-sendableimage-createimagesource-f.md#createimagesource) | 通过传入的uri创建ImageSource实例。 |
-| [createImageSource](arkts-image-sendableimage-createimagesource-f.md#createimagesource) | 通过传入文件描述符来创建ImageSource实例。 |
-| [createImageSource](arkts-image-sendableimage-createimagesource-f.md#createimagesource) | 通过缓冲区创建ImageSource实例。buf数据是未解码的数据，不可以传入类似于RBGA，YUV的像素buffer数据，如果想通过像素buffer数据创建pixelMap，可以调用[sendableImage.createPixelMap](arkts-image-sendableimage-createpixelmap-f.md)这一类方法。 |
-| [createPixelMap](arkts-image-sendableimage-createpixelmap-f.md#createpixelmap) | 通过像素数据和图像属性创建PixelMap。传入的像素数据会进行拷贝并转换为[InitializationOptions](arkts-image-image-initializationoptions-i.md).pixelFormat指定的像素格式，用于初始化PixelMap的像素。使用Promise异步回调。 |
-| [createPixelMapFromParcel](arkts-image-sendableimage-createpixelmapfromparcel-f.md#createpixelmapfromparcel) | 从MessageSequence中反序列化并获取PixelMap。 |
-| [createPixelMapFromSurface](arkts-image-sendableimage-createpixelmapfromsurface-f.md#createpixelmapfromsurface) | 根据Surface ID和区域信息创建一个PixelMap对象。该区域的大小由[Region](arkts-image-image-region-i.md).size指定。使用Promise异步回调。 |
-| [createPixelMapSync](arkts-image-sendableimage-createpixelmapsync-f.md#createpixelmapsync) | 通过像素数据和图像属性创建PixelMap。传入的像素数据会进行拷贝并转换为[InitializationOptions](arkts-image-image-initializationoptions-i.md).pixelFormat指定的像素格式，用于初始化PixelMap的像素。同步返回结果。 |
+| [convertFromPixelMap](arkts-image-sendableimage-convertfrompixelmap-f.md#convertfrompixelmap-1) | 通过image下的PixelMap创建出一个sendableImage下的PixelMap，同步返回PixelMap结果。原PixelMap的方法均不可再调用。 |
+| [convertToPixelMap](arkts-image-sendableimage-converttopixelmap-f.md#converttopixelmap-1) | 通过sendableImage下的PixelMap创建出一个image下的PixelMap，同步返回PixelMap结果。原PixelMap的方法均不可再调用。 |
+| [createImageReceiver](arkts-image-sendableimage-createimagereceiver-f.md#createimagereceiver-1) | 通过图片大小、图片格式、容量创建ImageReceiver实例。 |
+| [createImageSource](arkts-image-sendableimage-createimagesource-f.md#createimagesource-1) | 通过传入的uri创建ImageSource实例。 |
+| [createImageSource](arkts-image-sendableimage-createimagesource-f.md#createimagesource-2) | 通过传入文件描述符来创建ImageSource实例。 |
+| [createImageSource](arkts-image-sendableimage-createimagesource-f.md#createimagesource-3) | 通过缓冲区创建ImageSource实例。buf数据是未解码的数据，不可以传入类似于RBGA，YUV的像素buffer数据，如果想通过像素buffer数据创建pixelMap，可以调用[sendableImage.createPixelMap](arkts-image-sendableimage-createpixelmap-f.md)这一类方法。 |
+| [createPixelMap](arkts-image-sendableimage-createpixelmap-f.md#createpixelmap-1) | 通过像素数据和图像属性创建PixelMap。传入的像素数据会进行拷贝并转换为[InitializationOptions](arkts-image-image-initializationoptions-i.md).pixelFormat指定的像素格式，用于初始化PixelMap的像素。使用Promise异步回调。 |
+| [createPixelMapFromParcel](arkts-image-sendableimage-createpixelmapfromparcel-f.md#createpixelmapfromparcel-1) | 从MessageSequence中反序列化并获取PixelMap。 |
+| [createPixelMapFromSurface](arkts-image-sendableimage-createpixelmapfromsurface-f.md#createpixelmapfromsurface-1) | 根据Surface ID和区域信息创建一个PixelMap对象。该区域的大小由[Region](arkts-image-image-region-i.md).size指定。使用Promise异步回调。 |
+| [createPixelMapSync](arkts-image-sendableimage-createpixelmapsync-f.md#createpixelmapsync-1) | 通过像素数据和图像属性创建PixelMap。传入的像素数据会进行拷贝并转换为[InitializationOptions](arkts-image-image-initializationoptions-i.md).pixelFormat指定的像素格式，用于初始化PixelMap的像素。同步返回结果。 |
 
 ### 接口
 

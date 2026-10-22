@@ -6,6 +6,10 @@ export declare class WithEnvAttribute
 
 定义WithEnv组件的属性功能。
 
+不支持[通用属性](arkts-arkui-common-comp-commonmethod-c.md)。
+
+不支持[通用事件](arkts-arkui-common-comp-commonmethod-c.md)。
+
 **起始版本：** 26.0.0
 
 <!--Device-unnamed-export declare class WithEnvAttribute--><!--Device-unnamed-export declare class WithEnvAttribute-End-->

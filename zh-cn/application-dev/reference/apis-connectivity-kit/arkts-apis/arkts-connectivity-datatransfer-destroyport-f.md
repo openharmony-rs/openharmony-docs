@@ -26,7 +26,7 @@ function destroyPort(uuid: string): void
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
-**参见：** [createPort](arkts-connectivity-datatransfer-createport-f.md) 注册端口通道。
+**参见：** [createPort](arkts-connectivity-datatransfer-createport-f.md#createport-1) 注册端口通道。
 
 **参数：**
 

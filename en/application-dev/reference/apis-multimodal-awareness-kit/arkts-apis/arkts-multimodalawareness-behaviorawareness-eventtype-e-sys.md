@@ -248,19 +248,19 @@ Daily time point.
 
 **System API:** This is a system API.
 
-## LOCATION_ARRIVE
+## LOCATION
 
 ```TypeScript
-LOCATION_ARRIVE = 'locationArrive'
+LOCATION = 'location'
 ```
 
-Location arrival.
+Location information, including the location and fence entry and exit status.
 
 **Since:** 26.2.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-EventType-LOCATION_ARRIVE = 'locationArrive'--><!--Device-EventType-LOCATION_ARRIVE = 'locationArrive'-End-->
+<!--Device-EventType-LOCATION = 'location'--><!--Device-EventType-LOCATION = 'location'-End-->
 
 **System capability:** SystemCapability.MultimodalAwareness.DeviceStatus
 

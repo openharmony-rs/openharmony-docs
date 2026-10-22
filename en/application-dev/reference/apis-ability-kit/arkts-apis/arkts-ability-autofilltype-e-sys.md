@@ -1,4 +1,4 @@
-# AutoFillType
+# AutoFillType (System API)
 
 ```TypeScript
 export enum AutoFillType

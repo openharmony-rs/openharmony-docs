@@ -28,7 +28,7 @@ import { deviceStatus } from '@kit.MultimodalAwarenessKit';
 
 | Name | Description |
 | --- | --- |
-| [getDeviceRotationRadian](arkts-multimodalawareness-devicestatus-getdevicerotationradian-f-sys.md#getdevicerotationradian) | Obtains the device posture data. |
+| [getDeviceRotationRadian](arkts-multimodalawareness-devicestatus-getdevicerotationradian-f-sys.md#getdevicerotationradian-1) | Obtains the device posture data. |
 <!--DelEnd-->
 
 <!--Del-->

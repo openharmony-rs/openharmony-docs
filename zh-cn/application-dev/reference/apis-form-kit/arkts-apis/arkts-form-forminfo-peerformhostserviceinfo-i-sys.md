@@ -26,7 +26,7 @@ import { formInfo } from '@kit.FormKit';
 customData?: Record<string, string>
 ```
 
-远端卡片使用方服务的自定义数据。
+远端卡片使用方服务的自定义数据。默认值为空。
 
 **类型：** Record&lt;string, string&gt;
 
@@ -126,7 +126,7 @@ serviceDisplayName: string
 serviceId: string
 ```
 
-远端卡片使用方服务的服务Id。
+远端卡片使用方服务的服务标识。
 
 **类型：** string
 

@@ -364,6 +364,8 @@ When the player parses the video dimensions, this method is called to notify the
 
 **Examples**
 
+For details about the sample code, see [onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer).
+
 ## handleVolumeChanged
 
 ```TypeScript

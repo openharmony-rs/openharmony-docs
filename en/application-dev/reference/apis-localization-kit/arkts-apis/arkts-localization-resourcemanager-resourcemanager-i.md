@@ -1619,7 +1619,7 @@ Obtains the [plural](../../../internationalization/l10n-singular-plural.md) stri
 
 **Deprecated since:** 20
 
-**Substitutes:** [getDoublePluralStringValueSync](#getdoublepluralstringvaluesync)(resId: number, num: number, ...args: Array&lt;string | number&gt;)
+**Substitutes:** [getDoublePluralStringValueSync](#getdoublepluralstringvaluesync-1)(resId: number, num: number, ...args: Array&lt;string | number&gt;)
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -2123,7 +2123,7 @@ Obtains the [plural](../../../internationalization/l10n-singular-plural.md) stri
 
 **Deprecated since:** 20
 
-**Substitutes:** [getIntPluralStringValueSync](#getintpluralstringvaluesync)(resId: number, num: number,...args: Array&lt;string | number&gt;)
+**Substitutes:** [getIntPluralStringValueSync](#getintpluralstringvaluesync-1)(resId: number, num: number,...args: Array&lt;string | number&gt;)
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -4252,7 +4252,7 @@ Obtains an integer or float number based on the specified resource object. This 
 
 **Deprecated since:** 20
 
-**Substitutes:** [getNumber](#getnumber)(resId: number)
+**Substitutes:** [getNumber](#getnumber-1)(resId: number)
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -4532,7 +4532,7 @@ Obtains the file descriptor (fd) of the HAP where a specific rawfile in the **re
 > **NOTE:** 
 > 
 > To prevent resource leakage, call [closeRawFdSync](#closerawfdsync) or
-> [closeRawFd](#closerawfd)
+> [closeRawFd](#closerawfd-1)
 > to close the fd after use.
 
 **Since:** 9
@@ -4599,7 +4599,7 @@ Obtains the file descriptor (fd) of the HAP where a specific rawfile in the **re
 > **NOTE:** 
 > 
 > To prevent resource leakage, call [closeRawFdSync](#closerawfdsync) or
-> [closeRawFd](#closerawfd)
+> [closeRawFd](#closerawfd-1)
 > to close the fd after use.
 
 **Since:** 9
@@ -4669,7 +4669,7 @@ Obtains the file descriptor (fd) of the HAP where the rawfile file in the resour
 > **NOTE:** 
 > 
 > To prevent resource leakage, call [closeRawFdSync](#closerawfdsync) or
-> [closeRawFd](#closerawfd)
+> [closeRawFd](#closerawfd-1)
 > to close the fd after use.
 
 **Since:** 10
@@ -6333,7 +6333,7 @@ Obtains the string corresponding to the specified resource object, and replaces 
 
 **Deprecated since:** 20
 
-**Substitutes:** [getStringSync](#getstringsync)(resId: number, ...args: Array&lt;string | number&gt;)
+**Substitutes:** [getStringSync](#getstringsync-2)(resId: number, ...args: Array&lt;string | number&gt;)
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -7053,7 +7053,7 @@ Closes the file descriptor (fd) of a specific rawfile in the **resources/rawfile
 
 **Deprecated since:** 9
 
-**Substitutes:** [closeRawFd](#closerawfd)(path: string, callback: _AsyncCallback&lt;void&gt;)
+**Substitutes:** [closeRawFd](#closerawfd-1)(path: string, callback: _AsyncCallback&lt;void&gt;)
 
 <!--Device-ResourceManager-closeRawFileDescriptor(path: string, callback: AsyncCallback<void>): void--><!--Device-ResourceManager-closeRawFileDescriptor(path: string, callback: AsyncCallback<void>): void-End-->
 
@@ -7094,7 +7094,7 @@ Closes the file descriptor (fd) of a specific rawfile in the **resources/rawfile
 
 **Deprecated since:** 9
 
-**Substitutes:** [closeRawFd](#closerawfd)(path: string)
+**Substitutes:** [closeRawFd](#closerawfd-2)(path: string)
 
 <!--Device-ResourceManager-closeRawFileDescriptor(path: string): Promise<void>--><!--Device-ResourceManager-closeRawFileDescriptor(path: string): Promise<void>-End-->
 
@@ -7307,7 +7307,7 @@ Obtains the plural string based on the specified resource ID and the specified r
 
 **Deprecated since:** 9
 
-**Substitutes:** [getPluralStringValue](#getpluralstringvalue)(resId: number, num: number, callback: _AsyncCallback&lt;string&gt;)
+**Substitutes:** [getPluralStringValue](#getpluralstringvalue-3)(resId: number, num: number, callback: _AsyncCallback&lt;string&gt;)
 
 <!--Device-ResourceManager-getPluralString(resId: number, num: number, callback: AsyncCallback<string>): void--><!--Device-ResourceManager-getPluralString(resId: number, num: number, callback: AsyncCallback<string>): void-End-->
 
@@ -7354,7 +7354,7 @@ Obtains the plural string based on the specified resource ID and the specified r
 
 **Deprecated since:** 9
 
-**Substitutes:** [getPluralStringValue](#getpluralstringvalue)(resId: number, num: number)
+**Substitutes:** [getPluralStringValue](#getpluralstringvalue-4)(resId: number, num: number)
 
 <!--Device-ResourceManager-getPluralString(resId: number, num: number): Promise<string>--><!--Device-ResourceManager-getPluralString(resId: number, num: number): Promise<string>-End-->
 
@@ -7655,7 +7655,7 @@ Obtains the plural string based on the specified resource information and the sp
 
 **Deprecated since:** 18
 
-**Substitutes:** [getIntPluralStringValueSync](#getintpluralstringvaluesync)(resId: number, num: number,...args: Array&lt;string | number&gt;)
+**Substitutes:** [getIntPluralStringValueSync](#getintpluralstringvaluesync-1)(resId: number, num: number,...args: Array&lt;string | number&gt;)
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -7744,7 +7744,7 @@ Obtains the plural string based on the specified resource information and the sp
 
 **Deprecated since:** 18
 
-**Substitutes:** [getIntPluralStringValueSync](#getintpluralstringvaluesync)(resId: number, num: number,...args: Array&lt;string | number&gt;)
+**Substitutes:** [getIntPluralStringValueSync](#getintpluralstringvaluesync-1)(resId: number, num: number,...args: Array&lt;string | number&gt;)
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -7837,7 +7837,7 @@ Obtains the plural string based on the specified resource ID and the specified r
 
 **Deprecated since:** 18
 
-**Substitutes:** [getIntPluralStringValueSync](#getintpluralstringvaluesync)(resId: number, num: number,...args: Array&lt;string | number&gt;)
+**Substitutes:** [getIntPluralStringValueSync](#getintpluralstringvaluesync-1)(resId: number, num: number,...args: Array&lt;string | number&gt;)
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -7918,7 +7918,7 @@ Obtains the plural string based on the specified resource ID and the specified r
 
 **Deprecated since:** 18
 
-**Substitutes:** [getIntPluralStringValueSync](#getintpluralstringvaluesync)(resId: number, num: number,...args: Array&lt;string | number&gt;)
+**Substitutes:** [getIntPluralStringValueSync](#getintpluralstringvaluesync-1)(resId: number, num: number,...args: Array&lt;string | number&gt;)
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -8003,7 +8003,7 @@ Obtains singular/plural strings based on the specified resource ID and quantity.
 
 **Deprecated since:** 18
 
-**Substitutes:** [getIntPluralStringValueSync](#getintpluralstringvaluesync)(resId: number, num: number,...args: Array&lt;string | number&gt;)
+**Substitutes:** [getIntPluralStringValueSync](#getintpluralstringvaluesync-1)(resId: number, num: number,...args: Array&lt;string | number&gt;)
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -8089,7 +8089,7 @@ Obtains singular/plural strings based on the specified quantity and resource obj
 
 **Deprecated since:** 18
 
-**Substitutes:** [getIntPluralStringValueSync](#getintpluralstringvaluesync)(resId: number, num: number,...args: Array&lt;string | number&gt;)
+**Substitutes:** [getIntPluralStringValueSync](#getintpluralstringvaluesync-1)(resId: number, num: number,...args: Array&lt;string | number&gt;)
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -8178,7 +8178,7 @@ Obtain the content of a rawfile in the **resources/rawfile** directory. This API
 
 **Deprecated since:** 9
 
-**Substitutes:** [getRawFileContent](#getrawfilecontent)(path: string, callback: _AsyncCallback&lt;Uint8Array&gt;)
+**Substitutes:** [getRawFileContent](#getrawfilecontent-1)(path: string, callback: _AsyncCallback&lt;Uint8Array&gt;)
 
 <!--Device-ResourceManager-getRawFile(path: string, callback: AsyncCallback<Uint8Array>): void--><!--Device-ResourceManager-getRawFile(path: string, callback: AsyncCallback<Uint8Array>): void-End-->
 
@@ -8221,7 +8221,7 @@ Obtain the content of a rawfile in the **resources/rawfile** directory. This API
 
 **Deprecated since:** 9
 
-**Substitutes:** [getRawFileContent](#getrawfilecontent)(path: string)
+**Substitutes:** [getRawFileContent](#getrawfilecontent-2)(path: string)
 
 <!--Device-ResourceManager-getRawFile(path: string): Promise<Uint8Array>--><!--Device-ResourceManager-getRawFile(path: string): Promise<Uint8Array>-End-->
 
@@ -8267,7 +8267,7 @@ Obtains the file descriptor (fd) of a specific rawfile in the **resources/rawfil
 
 **Deprecated since:** 9
 
-**Substitutes:** [getRawFd](#getrawfd)(path: string, callback: _AsyncCallback&lt;RawFileDescriptor&gt;)
+**Substitutes:** [getRawFd](#getrawfd-1)(path: string, callback: _AsyncCallback&lt;RawFileDescriptor&gt;)
 
 <!--Device-ResourceManager-getRawFileDescriptor(path: string, callback: AsyncCallback<RawFileDescriptor>): void--><!--Device-ResourceManager-getRawFileDescriptor(path: string, callback: AsyncCallback<RawFileDescriptor>): void-End-->
 
@@ -8312,7 +8312,7 @@ Obtains the file descriptor (fd) of a specific rawfile in the **resources/rawfil
 
 **Deprecated since:** 9
 
-**Substitutes:** [getRawFd](#getrawfd)(path: string)
+**Substitutes:** [getRawFd](#getrawfd-2)(path: string)
 
 <!--Device-ResourceManager-getRawFileDescriptor(path: string): Promise<RawFileDescriptor>--><!--Device-ResourceManager-getRawFileDescriptor(path: string): Promise<RawFileDescriptor>-End-->
 

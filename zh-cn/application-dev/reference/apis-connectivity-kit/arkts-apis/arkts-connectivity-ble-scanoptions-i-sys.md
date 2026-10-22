@@ -1,4 +1,4 @@
-# ScanOptions
+# ScanOptions（系统接口）
 
 ```TypeScript
 interface ScanOptions

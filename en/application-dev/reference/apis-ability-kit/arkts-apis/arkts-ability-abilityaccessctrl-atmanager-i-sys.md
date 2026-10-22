@@ -1,4 +1,4 @@
-# AtManager
+# AtManager (System API)
 
 ```TypeScript
 interface AtManager
@@ -123,7 +123,7 @@ Obtains the toggle state of a permission. This API uses a promise to return the 
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System App. Interface caller is not a system app. |
 | [12100001](../errorcode-access-token.md#12100001-invalid-parameters) | Invalid parameter. The permissionName exceeds 256 characters, or the specified permission is not a user_grant permission. |
 | [12100003](../errorcode-access-token.md#12100003-permission-not-exist) | The specified permission does not exist. |
-| [12100004](../errorcode-access-token.md#12100004-listener-apis-not-used-in-pairs) | This API must be used together with [setPermissionRequestToggleStatus](#setpermissionrequesttogglestatus).<br>**Applicable version:** 26.0.1 and later |
+| [12100004](../errorcode-access-token.md#12100004-listener-apis-not-used-in-pairs) | This API must be used together with [setPermissionRequestToggleStatus](#setpermissionrequesttogglestatus-1).<br>**Applicable version:** 26.0.1 and later |
 | [12100007](../errorcode-access-token.md#12100007-system-service-not-working-properly) | Service exception. |
 
 <!--Del-->

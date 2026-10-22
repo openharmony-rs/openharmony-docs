@@ -171,7 +171,7 @@ Obtains the serialized data of this revoked certificate entry. This API uses an 
 > **NOTE:** 
 > 
 > This API is supported since API version 9 and deprecated since API version 11. Use
-> [X509CRLEntry.getEncoded()](arkts-devicecertificate-cert-x509crlentry-i.md#getencoded) instead.
+> [X509CRLEntry.getEncoded()](arkts-devicecertificate-cert-x509crlentry-i.md#getencoded-1) instead.
 
 **Since:** 9
 

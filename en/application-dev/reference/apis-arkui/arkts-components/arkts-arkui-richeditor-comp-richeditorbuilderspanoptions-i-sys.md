@@ -1,4 +1,4 @@
-# RichEditorBuilderSpanOptions
+# RichEditorBuilderSpanOptions (System API)
 
 ```TypeScript
 declare interface RichEditorBuilderSpanOptions

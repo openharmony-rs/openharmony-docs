@@ -18,7 +18,7 @@ function queryMyCard(callback: AsyncCallback<Contact>): void
 
 **废弃版本：** 10
 
-**替代接口：** [queryMyCard](#querymycard)(context: Context, callback: AsyncCallback&lt;Contact&gt;)
+**替代接口：** [queryMyCard](#querymycard-2)(context: Context, callback: AsyncCallback&lt;Contact&gt;)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -114,7 +114,7 @@ function queryMyCard(attrs: ContactAttributes, callback: AsyncCallback<Contact>)
 
 **废弃版本：** 10
 
-**替代接口：** [queryMyCard](#querymycard)(context: Context, attrs: ContactAttributes, callback: AsyncCallback&lt;Contact&gt;)
+**替代接口：** [queryMyCard](#querymycard-4)(context: Context, attrs: ContactAttributes, callback: AsyncCallback&lt;Contact&gt;)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -216,7 +216,7 @@ function queryMyCard(attrs?: ContactAttributes): Promise<Contact>
 
 **废弃版本：** 10
 
-**替代接口：** [queryMyCard](#querymycard)(context: Context, attrs?: ContactAttributes)
+**替代接口：** [queryMyCard](#querymycard-6)(context: Context, attrs?: ContactAttributes)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 

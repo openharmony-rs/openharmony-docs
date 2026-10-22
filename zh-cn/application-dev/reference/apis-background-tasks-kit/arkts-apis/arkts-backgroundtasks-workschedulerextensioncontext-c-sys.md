@@ -1,4 +1,4 @@
-# WorkSchedulerExtensionContext
+# WorkSchedulerExtensionContext（系统接口）
 
 ```TypeScript
 declare class WorkSchedulerExtensionContext extends ExtensionContext

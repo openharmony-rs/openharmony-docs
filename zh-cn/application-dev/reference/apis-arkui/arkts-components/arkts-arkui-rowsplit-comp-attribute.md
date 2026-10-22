@@ -4,7 +4,7 @@
 declare class RowSplitAttribute extends CommonMethod<RowSplitAttribute>
 ```
 
-除支持[通用属性](arkts-arkui-common-comp-commonmethod-c.md)外，还支持以下属性：
+支持[通用属性](arkts-arkui-common-comp-commonmethod-c.md)。
 
 支持[通用事件](arkts-arkui-common-comp-commonmethod-c.md)。
 

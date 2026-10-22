@@ -1,4 +1,4 @@
-# AccessibilityExtensionAbility
+# AccessibilityExtensionAbility (System API)
 
 ```TypeScript
 declare class AccessibilityExtensionAbility

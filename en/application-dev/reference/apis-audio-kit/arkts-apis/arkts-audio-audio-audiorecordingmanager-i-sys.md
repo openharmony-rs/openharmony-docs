@@ -1,4 +1,4 @@
-# AudioRecordingManager
+# AudioRecordingManager (System API)
 
 ```TypeScript
 interface AudioRecordingManager

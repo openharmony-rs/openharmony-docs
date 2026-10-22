@@ -1,4 +1,4 @@
-# CameraOutputCapability
+# CameraOutputCapability (System API)
 
 ```TypeScript
 interface CameraOutputCapability

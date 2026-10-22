@@ -1,4 +1,4 @@
-# ImmersiveStyle
+# ImmersiveStyle（系统接口）
 
 ```TypeScript
 enum ImmersiveStyle

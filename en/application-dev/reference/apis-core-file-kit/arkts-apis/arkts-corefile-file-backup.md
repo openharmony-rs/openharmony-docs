@@ -23,14 +23,14 @@ import { backup } from '@kit.CoreFileKit';
 
 | Name | Description |
 | --- | --- |
-| [fileSystemServiceRequest](arkts-corefile-backup-filesystemservicerequest-f-sys.md#filesystemservicerequest) | Requests filesystem garbage collection with specified configuration. |
-| [getBackupInfo](arkts-corefile-backup-getbackupinfo-f-sys.md#getbackupinfo) | Get Backup information from bundle. |
-| [getBackupVersion](arkts-corefile-backup-getbackupversion-f-sys.md#getbackupversion) | Obtain the backupVersion. |
-| [getLocalCapabilities](arkts-corefile-backup-getlocalcapabilities-f-sys.md#getlocalcapabilities) | Obtain a Json file that describes local capabilities. |
-| [getLocalCapabilities](arkts-corefile-backup-getlocalcapabilities-f-sys.md#getlocalcapabilities) | Obtain a Json file that describes local capabilities. |
-| [getLocalCapabilities](arkts-corefile-backup-getlocalcapabilities-f-sys.md#getlocalcapabilities) | Obtain a json file that describes local capabilities. |
-| [updateSendRate](arkts-corefile-backup-updatesendrate-f-sys.md#updatesendrate) | Update send file fd rate. |
-| [updateTimer](arkts-corefile-backup-updatetimer-f-sys.md#updatetimer) | Update backup or restore timeout. |
+| [fileSystemServiceRequest](arkts-corefile-backup-filesystemservicerequest-f-sys.md#filesystemservicerequest-1) | Requests filesystem garbage collection with specified configuration. |
+| [getBackupInfo](arkts-corefile-backup-getbackupinfo-f-sys.md#getbackupinfo-1) | Get Backup information from bundle. |
+| [getBackupVersion](arkts-corefile-backup-getbackupversion-f-sys.md#getbackupversion-1) | Obtain the backupVersion. |
+| [getLocalCapabilities](arkts-corefile-backup-getlocalcapabilities-f-sys.md#getlocalcapabilities-1) | Obtain a Json file that describes local capabilities. |
+| [getLocalCapabilities](arkts-corefile-backup-getlocalcapabilities-f-sys.md#getlocalcapabilities-2) | Obtain a Json file that describes local capabilities. |
+| [getLocalCapabilities](arkts-corefile-backup-getlocalcapabilities-f-sys.md#getlocalcapabilities-3) | Obtain a json file that describes local capabilities. |
+| [updateSendRate](arkts-corefile-backup-updatesendrate-f-sys.md#updatesendrate-1) | Update send file fd rate. |
+| [updateTimer](arkts-corefile-backup-updatetimer-f-sys.md#updatetimer-1) | Update backup or restore timeout. |
 <!--DelEnd-->
 
 <!--Del-->

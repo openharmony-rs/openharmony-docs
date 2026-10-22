@@ -1,4 +1,4 @@
-# Environment
+# Environment (System API)
 
 ```TypeScript
 declare class Environment

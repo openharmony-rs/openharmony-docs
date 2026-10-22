@@ -1,4 +1,4 @@
-# Flash
+# Flash (System API)
 
 ```TypeScript
 interface Flash extends FlashQuery

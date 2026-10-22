@@ -222,6 +222,25 @@ Clears the browsing history.
 
 **Examples**
 
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct WebComponent {
+  controller: WebController = new WebController()
+
+  build() {
+    Column() {
+      Button('clearHistory')
+        .onClick(() => {
+          this.controller.clearHistory()
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## constructor
 
 ```TypeScript

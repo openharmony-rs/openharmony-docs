@@ -106,7 +106,7 @@ Triggered when a tap cancellation event is received after the rotation gesture i
 onActionCancel(event: Callback<GestureEvent>): RotationGestureInterface
 ```
 
-Triggered when a tap cancellation event is received after the rotation gesture is recognized. Compared with [onActionCancel](#onactioncancel), this callback returns gesture event information.
+Triggered when a tap cancellation event is received after the rotation gesture is recognized. Compared with [onActionCancel](#onactioncancel-1), this callback returns gesture event information.
 
 **Since:** 18
 

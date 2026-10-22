@@ -1,4 +1,4 @@
-# AudioCapturerChangeInfo
+# AudioCapturerChangeInfo (System API)
 
 ```TypeScript
 interface AudioCapturerChangeInfo

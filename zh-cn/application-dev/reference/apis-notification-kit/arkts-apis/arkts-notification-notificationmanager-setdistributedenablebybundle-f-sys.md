@@ -18,7 +18,7 @@ function setDistributedEnableByBundle(bundle: BundleOption, enable: boolean, cal
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [setDistributedEnabledByBundle](arkts-notification-notificationmanager-setdistributedenabledbybundle-f-sys.md)(bundle: BundleOption, deviceType: string, enable: boolean)
+**替代接口：** [setDistributedEnabledByBundle](arkts-notification-notificationmanager-setdistributedenabledbybundle-f-sys.md#setdistributedenabledbybundle-1)(bundle: BundleOption, deviceType: string, enable: boolean)
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -85,7 +85,7 @@ function setDistributedEnableByBundle(bundle: BundleOption, enable: boolean): Pr
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [setDistributedEnabledByBundle](arkts-notification-notificationmanager-setdistributedenabledbybundle-f-sys.md)(bundle: BundleOption, deviceType: string, enable: boolean)
+**替代接口：** [setDistributedEnabledByBundle](arkts-notification-notificationmanager-setdistributedenabledbybundle-f-sys.md#setdistributedenabledbybundle-1)(bundle: BundleOption, deviceType: string, enable: boolean)
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 

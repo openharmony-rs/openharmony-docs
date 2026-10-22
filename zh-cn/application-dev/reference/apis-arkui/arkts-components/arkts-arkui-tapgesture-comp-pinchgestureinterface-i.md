@@ -110,7 +110,7 @@ Pinch手势识别成功，接收到触摸取消事件触发的回调，不返回
 onActionCancel(event: Callback<GestureEvent>): PinchGestureInterface
 ```
 
-Pinch手势识别成功并接收到触摸取消事件的回调。与[onActionCancel](#onactioncancel)相比，该回调返回手势事件信息。
+Pinch手势识别成功并接收到触摸取消事件的回调。与[onActionCancel](#onactioncancel-1)相比，该回调返回手势事件信息。
 
 **起始版本：** 18
 

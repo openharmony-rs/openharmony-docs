@@ -1,10 +1,10 @@
-# AVPlayer
+# AVPlayer (System API)
 
 ```TypeScript
 interface AVPlayer
 ```
 
-AVPlayer is a playback management class. It provides APIs to manage and play media assets. Before calling any API in AVPlayer, you must use [createAVPlayer()](arkts-media-media-createavplayer-f.md#createavplayer) to create an AVPlayer instance.
+AVPlayer is a playback management class. It provides APIs to manage and play media assets. Before calling any API in AVPlayer, you must use [createAVPlayer()](arkts-media-media-createavplayer-f.md#createavplayer-1) to create an AVPlayer instance.
 
 When using the AVPlayer instance, you are advised to register the following callbacks to proactively obtain status changes: [on('stateChange')](arkts-media-media-avplayer-i.md#onstatechange): listens for AVPlayer state changes. [on('error')](arkts-media-media-avplayer-i.md#onerror): listens for error events.
 
@@ -59,6 +59,14 @@ Enable the post-processing function of Camera for video playback.
 
 <!--Del-->
 **Examples**
+
+```TypeScript
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  // Here is only an example. In real development, you must wait for the stateChange event to successfully trigger and reach the initialized state before proceeding.
+  avPlayer.enableCameraPostprocessing();
+}
+```
 
 <!--DelEnd-->
 

@@ -17,17 +17,17 @@
 
 | Name | Description |
 | --- | --- |
-| [decodeURI](arkts-lib-es5-decodeuri-f.md#decodeuri) | Gets the unencoded version of an encoded Uniform Resource Identifier (URI). |
-| [decodeURIComponent](arkts-lib-es5-decodeuricomponent-f.md#decodeuricomponent) | Gets the unencoded version of an encoded component of a Uniform Resource Identifier (URI). |
-| [encodeURI](arkts-lib-es5-encodeuri-f.md#encodeuri) | Encodes a text string as a valid Uniform Resource Identifier (URI) |
-| [encodeURIComponent](arkts-lib-es5-encodeuricomponent-f.md#encodeuricomponent) | Encodes a text string as a valid component of a Uniform Resource Identifier (URI). |
-| [eval](arkts-lib-es5-eval-f.md#eval) | Evaluates JavaScript code and executes it. |
-| [isFinite](arkts-lib-es5-isfinite-f.md#isfinite) | Determines whether a supplied number is finite. |
-| [isNaN](arkts-lib-es5-isnan-f.md#isnan) | Returns a Boolean value that indicates whether a value is the reserved value NaN (not a number). |
-| [parseFloat](arkts-lib-es5-parsefloat-f.md#parsefloat) | Converts a string to a floating-point number. |
-| [parseInt](arkts-lib-es5-parseint-f.md#parseint) | Converts a string to an integer. |
-| [escape](arkts-lib-es5-escape-f.md#escape) | Computes a new string in which certain characters have been replaced by a hexadecimal escape sequence. |
-| [unescape](arkts-lib-es5-unescape-f.md#unescape) | Computes a new string in which hexadecimal escape sequences are replaced with the character that it represents. |
+| [decodeURI](arkts-lib-es5-decodeuri-f.md#decodeuri-1) | Gets the unencoded version of an encoded Uniform Resource Identifier (URI). |
+| [decodeURIComponent](arkts-lib-es5-decodeuricomponent-f.md#decodeuricomponent-1) | Gets the unencoded version of an encoded component of a Uniform Resource Identifier (URI). |
+| [encodeURI](arkts-lib-es5-encodeuri-f.md#encodeuri-1) | Encodes a text string as a valid Uniform Resource Identifier (URI) |
+| [encodeURIComponent](arkts-lib-es5-encodeuricomponent-f.md#encodeuricomponent-1) | Encodes a text string as a valid component of a Uniform Resource Identifier (URI). |
+| [eval](arkts-lib-es5-eval-f.md#eval-1) | Evaluates JavaScript code and executes it. |
+| [isFinite](arkts-lib-es5-isfinite-f.md#isfinite-1) | Determines whether a supplied number is finite. |
+| [isNaN](arkts-lib-es5-isnan-f.md#isnan-1) | Returns a Boolean value that indicates whether a value is the reserved value NaN (not a number). |
+| [parseFloat](arkts-lib-es5-parsefloat-f.md#parsefloat-1) | Converts a string to a floating-point number. |
+| [parseInt](arkts-lib-es5-parseint-f.md#parseint-1) | Converts a string to an integer. |
+| [escape](arkts-lib-es5-escape-f.md#escape-1) | Computes a new string in which certain characters have been replaced by a hexadecimal escape sequence. |
+| [unescape](arkts-lib-es5-unescape-f.md#unescape-1) | Computes a new string in which hexadecimal escape sequences are replaced with the character that it represents. |
 
 ### Interfaces
 

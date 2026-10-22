@@ -1,4 +1,4 @@
-# ManualIsoQuery
+# ManualIsoQuery (System API)
 
 ```TypeScript
 interface ManualIsoQuery

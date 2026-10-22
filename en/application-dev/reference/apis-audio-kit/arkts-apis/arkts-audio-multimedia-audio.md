@@ -28,23 +28,23 @@ import { audio } from '@kit.AudioKit';
 
 | Name | Description |
 | --- | --- |
-| [createAudioCapturer](arkts-audio-audio-createaudiocapturer-f.md#createaudiocapturer) | Creates an AudioCapturer instance. This API uses an asynchronous callback to return the result. |
-| [createAudioCapturer](arkts-audio-audio-createaudiocapturer-f.md#createaudiocapturer) | Creates an AudioCapturer instance. This API uses a promise to return the result. |
-| [createAudioLoopback](arkts-audio-audio-createaudioloopback-f.md#createaudioloopback) | Creates an <b>AudioLoopback</b> instance, which provides low-latency in-ear monitoring using a fast capturer and renderer. |
-| [createAudioRenderer](arkts-audio-audio-createaudiorenderer-f.md#createaudiorenderer) | Obtains an [AudioRenderer](arkts-audio-audio-audiorenderer-i.md) instance. This method uses a promise to return the renderer instance. |
-| [createAudioRenderer](arkts-audio-audio-createaudiorenderer-f.md#createaudiorenderer) | Obtains an [AudioRenderer](arkts-audio-audio-audiorenderer-i.md) instance. This method uses a promise to return the renderer instance. |
-| [getAudioManager](arkts-audio-audio-getaudiomanager-f.md#getaudiomanager) | Obtains an AudioManager instance. |
+| [createAudioCapturer](arkts-audio-audio-createaudiocapturer-f.md#createaudiocapturer-1) | Creates an AudioCapturer instance. This API uses an asynchronous callback to return the result. |
+| [createAudioCapturer](arkts-audio-audio-createaudiocapturer-f.md#createaudiocapturer-3) | Creates an AudioCapturer instance. This API uses a promise to return the result. |
+| [createAudioLoopback](arkts-audio-audio-createaudioloopback-f.md#createaudioloopback-1) | Creates an <b>AudioLoopback</b> instance, which provides low-latency in-ear monitoring using a fast capturer and renderer. |
+| [createAudioRenderer](arkts-audio-audio-createaudiorenderer-f.md#createaudiorenderer-1) | Obtains an [AudioRenderer](arkts-audio-audio-audiorenderer-i.md) instance. This method uses a promise to return the renderer instance. |
+| [createAudioRenderer](arkts-audio-audio-createaudiorenderer-f.md#createaudiorenderer-3) | Obtains an [AudioRenderer](arkts-audio-audio-audiorenderer-i.md) instance. This method uses a promise to return the renderer instance. |
+| [getAudioManager](arkts-audio-audio-getaudiomanager-f.md#getaudiomanager-1) | Obtains an AudioManager instance. |
 
 <!--Del-->
 ### Functions(System API)
 
 | Name | Description |
 | --- | --- |
-| [createAsrProcessingController](arkts-audio-audio-createasrprocessingcontroller-f-sys.md#createasrprocessingcontroller) | Create ASR processing controller on one audio capturer. |
-| [createGlobalAudioLoopback](arkts-audio-audio-createglobalaudioloopback-f-sys.md#createglobalaudioloopback) | Creates a global audio loopback instance, which provides low-latency in-ear monitor function. Hardware audio loopback can only be created in supported platform, application can use [isAudioLoopbackSupported](arkts-audio-audio-audiostreammanager-i.md#isaudioloopbacksupported) to check first. There should be only one main instance that own the global loopback in the system, the others are controllers. A controller can manage the global loopback by sending commands to the main instance, and listen status change from it. |
-| [createMicInAudioCapturer](arkts-audio-audio-createmicinaudiocapturer-f-sys.md#createmicinaudiocapturer) | Obtains a special [AudioCapturer](arkts-audio-audio-audiocapturer-i.md) instance. This method uses a promise to return the capturer instance. This capture can be used to record both Mic-In audio data and echo reference signal, for application to process algorithm. Mic-In audio data and echo reference signal will be put in one buffer or multiple buffers according to configuration set by application. Capturer is also not allowed to be created when application is in background. |
-| [createTonePlayer](arkts-audio-audio-createtoneplayer-f-sys.md#createtoneplayer) | Obtains a [TonePlayer](arkts-audio-audio-toneplayer-i-sys.md) instance. This method uses an asynchronous callback to return the renderer instance. |
-| [createTonePlayer](arkts-audio-audio-createtoneplayer-f-sys.md#createtoneplayer) | Obtains a [TonePlayer](arkts-audio-audio-toneplayer-i-sys.md) instance. This method uses a promise to return the renderer instance. |
+| [createAsrProcessingController](arkts-audio-audio-createasrprocessingcontroller-f-sys.md#createasrprocessingcontroller-1) | Create ASR processing controller on one audio capturer. |
+| [createGlobalAudioLoopback](arkts-audio-audio-createglobalaudioloopback-f-sys.md#createglobalaudioloopback-1) | Creates a global audio loopback instance, which provides low-latency in-ear monitor function. Hardware audio loopback can only be created in supported platform, application can use [isAudioLoopbackSupported](arkts-audio-audio-audiostreammanager-i.md#isaudioloopbacksupported) to check first. There should be only one main instance that own the global loopback in the system, the others are controllers. A controller can manage the global loopback by sending commands to the main instance, and listen status change from it. |
+| [createMicInAudioCapturer](arkts-audio-audio-createmicinaudiocapturer-f-sys.md#createmicinaudiocapturer-1) | Obtains a special [AudioCapturer](arkts-audio-audio-audiocapturer-i.md) instance. This method uses a promise to return the capturer instance. This capture can be used to record both Mic-In audio data and echo reference signal, for application to process algorithm. Mic-In audio data and echo reference signal will be put in one buffer or multiple buffers according to configuration set by application. Capturer is also not allowed to be created when application is in background. |
+| [createTonePlayer](arkts-audio-audio-createtoneplayer-f-sys.md#createtoneplayer-1) | Obtains a [TonePlayer](arkts-audio-audio-toneplayer-i-sys.md) instance. This method uses an asynchronous callback to return the renderer instance. |
+| [createTonePlayer](arkts-audio-audio-createtoneplayer-f-sys.md#createtoneplayer-3) | Obtains a [TonePlayer](arkts-audio-audio-toneplayer-i-sys.md) instance. This method uses a promise to return the renderer instance. |
 <!--DelEnd-->
 
 ### Interfaces
@@ -211,6 +211,7 @@ import { audio } from '@kit.AudioKit';
 | [NoiseReductionMode](arkts-audio-audio-noisereductionmode-e.md) | Enumerates the noise reduction modes. |
 | [OutputDeviceChangeRecommendedAction](arkts-audio-audio-outputdevicechangerecommendedaction-e.md) | Enumerates the recommended actions to take after an output device changes. |
 | [PlaybackCaptureStartState](arkts-audio-audio-playbackcapturestartstate-e.md) | Defines the playback capture start state, which is returned asynchronously after calling [requestPlaybackCaptureStart](arkts-audio-audio-audiocapturer-i.md#requestplaybackcapturestart) function. |
+| [SoundCardType](arkts-audio-audio-soundcardtype-e.md) | Enumerates sound card types. |
 | [SourceType](arkts-audio-audio-sourcetype-e.md) | Enumerates the types of audio streams captured. |
 | [StreamUsage](arkts-audio-audio-streamusage-e.md) | Enumerates the types of audio streams played. |
 | [ActiveDeviceType](arkts-audio-audio-activedevicetype-e.md) | Enumerates the active device types. |

@@ -1,4 +1,4 @@
-# WantAgentInfo
+# WantAgentInfo（系统接口）
 
 ```TypeScript
 export interface WantAgentInfo

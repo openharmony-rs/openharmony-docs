@@ -174,11 +174,11 @@ Sets the default visibility of the tab.
 > - When **visibility** is **TabVisibility.HIDDEN** and **displayMode** is not set, the tab is not displayed in both display modes.
 > - Hidden tab content can still be switched and displayed using **TabsController.changeIndex()** or by modifying the **index** state variable.
 
-**Since:** 26.2.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 <!--Device-TabContentAttribute-tabBarVisibility(visibility: TabVisibility, displayMode?: TabBarDisplayMode): TabContentAttribute--><!--Device-TabContentAttribute-tabBarVisibility(visibility: TabVisibility, displayMode?: TabBarDisplayMode): TabContentAttribute-End-->
 

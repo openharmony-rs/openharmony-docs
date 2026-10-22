@@ -1,4 +1,4 @@
-# XComponentOptions
+# XComponentOptions（系统接口）
 
 ```TypeScript
 declare interface XComponentOptions

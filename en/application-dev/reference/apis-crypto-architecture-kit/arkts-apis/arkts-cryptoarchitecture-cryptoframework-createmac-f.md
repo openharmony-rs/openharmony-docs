@@ -16,7 +16,7 @@ Creates a **Mac** instance.
 
 > **NOTE:** 
 > 
-> This API supports only HMAC. The [createMac()](#createmac) API is
+> This API supports only HMAC. The [createMac()](#createmac-2) API is
 > preferred.
 
 <br>For details about the supported specifications, see [MAC Overview and Algorithm Specifications](../../../security/CryptoArchitectureKit/crypto-compute-mac-overview.md).

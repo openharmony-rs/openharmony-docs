@@ -20,6 +20,26 @@ interface AudioRendererFilter
 import { audio } from '@kit.AudioKit';
 ```
 
+## blockFirstOverrode
+
+```TypeScript
+blockFirstOverrode?: boolean
+```
+
+保持首次设备选择不被清除。默认值：false。
+
+**类型：** boolean
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AudioRendererFilter-blockFirstOverrode?: boolean--><!--Device-AudioRendererFilter-blockFirstOverrode?: boolean-End-->
+
+**系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**系统接口：** 此接口为系统接口。
+
 ## rendererId
 
 ```TypeScript

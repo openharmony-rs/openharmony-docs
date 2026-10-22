@@ -1,4 +1,4 @@
-# MetadataObject
+# MetadataObject (System API)
 
 ```TypeScript
 interface MetadataObject

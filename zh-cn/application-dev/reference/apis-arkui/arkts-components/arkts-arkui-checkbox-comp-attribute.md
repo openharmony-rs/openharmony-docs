@@ -46,7 +46,7 @@ contentModifier(modifier: ContentModifier<CheckBoxConfiguration>)
 contentModifier(modifier: Optional<ContentModifier<CheckBoxConfiguration>>)
 ```
 
-定制Checkbox内容区的方法。与[contentModifier](#contentmodifier)<sup>12 +</sup>相比，modifier参数新增了对undefined类型的支持。设置该属性时，会导致其他属性设置失效。
+定制Checkbox内容区的方法。与[contentModifier](#contentmodifier-1)<sup>12 +</sup>相比，modifier参数新增了对undefined类型的支持。设置该属性时，会导致其他属性设置失效。
 
 **起始版本：** 18
 
@@ -94,7 +94,7 @@ mark(value: MarkStyle)
 mark(style: Optional<MarkStyle>)
 ```
 
-设置多选框内部图标的样式。与[mark](#mark)<sup>10+</sup>相比，style参数新增了对undefined类型的支持。
+设置多选框内部图标的样式。与[mark](#mark-1)<sup>10+</sup>相比，style参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -144,7 +144,7 @@ onChange(callback: OnCheckboxChangeCallback)
 onChange(callback: Optional<OnCheckboxChangeCallback>)
 ```
 
-当选中状态发生变化时，触发该回调。与[onChange](#onchange)相比，callback参数新增了对undefined类型的支持。
+当选中状态发生变化时，触发该回调。与[onChange](#onchange-1)相比，callback参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -200,7 +200,7 @@ select(value: boolean)
 select(isSelected: Optional<boolean>)
 ```
 
-设置多选框选中状态。与[select](#select)相比，isSelected参数新增了对undefined类型的支持。
+设置多选框选中状态。与[select](#select-1)相比，isSelected参数新增了对undefined类型的支持。
 
 该属性支持[$$](../../../ui/state-management/arkts-two-way-sync.md)、[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。
 
@@ -254,7 +254,7 @@ selectedColor(value: ResourceColor)
 selectedColor(resColor: Optional<ResourceColor>)
 ```
 
-设置多选框选中状态颜色。与[selectedColor](#selectedcolor)相比，resColor参数新增了对undefined类型的支持。
+设置多选框选中状态颜色。与[selectedColor](#selectedcolor-1)相比，resColor参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -280,7 +280,7 @@ selectedColor(resColor: Optional<ResourceColor>)
 shape(value: CheckBoxShape)
 ```
 
-设置Checkbox组件形状，包括圆形和圆角方形。如果想要调整当前Checkbox的样式，需使用[contentModifier](#contentmodifier)属性自定义Checkbox样式。
+设置Checkbox组件形状，包括圆形和圆角方形。如果想要调整当前Checkbox的样式，需使用[contentModifier](#contentmodifier-1)属性自定义Checkbox样式。
 
 **起始版本：** 11
 
@@ -306,7 +306,7 @@ shape(value: CheckBoxShape)
 shape(shape: Optional<CheckBoxShape>)
 ```
 
-设置Checkbox组件形状。与[shape](#shape)<sup>11+</sup>相比，shape参数新增了对undefined类型的支持。如果想要调整当前Checkbox的样式，需使用[contentModifier](#contentmodifier)属性自定义Checkbox样式。
+设置Checkbox组件形状。与[shape](#shape-1)<sup>11+</sup>相比，shape参数新增了对undefined类型的支持。如果想要调整当前Checkbox的样式，需使用[contentModifier](#contentmodifier-1)属性自定义Checkbox样式。
 
 **起始版本：** 18
 
@@ -356,7 +356,7 @@ unselectedColor(value: ResourceColor)
 unselectedColor(resColor: Optional<ResourceColor>)
 ```
 
-设置多选框非选中状态的边框颜色。与[unselectedColor](#unselectedcolor)<sup>10+</sup>相比，resColor参数新增了对undefined类型的支持。
+设置多选框非选中状态的边框颜色。与[unselectedColor](#unselectedcolor-1)<sup>10+</sup>相比，resColor参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 

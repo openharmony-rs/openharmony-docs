@@ -1398,7 +1398,7 @@ if (dataShareHelper != undefined) {
 on(type: 'dataChange', uri: string, callback: AsyncCallback<void>): void
 ```
 
-订阅指定URI对应数据的数据变更事件。不支持跨用户订阅通知。<br> **触发通知：** 非静默场景下，调用[notifyChange](#notifychange)方法，就会触发对指定URI订阅者的通知；或者静默场景下，使用指定URI的静默访问修改了数据，也会自动触发通知。<br>规格限制：
+订阅指定URI对应数据的数据变更事件。不支持跨用户订阅通知。<br> **触发通知：** 非静默场景下，调用[notifyChange](#notifychange-2)方法，就会触发对指定URI订阅者的通知；或者静默场景下，使用指定URI的静默访问修改了数据，也会自动触发通知。<br>规格限制：
 
 <br>* 在OpenHarmony 6.0之前，同一应用内对单个URI的重复订阅上限为50次，单个URI全局最多支持50个订阅。<br>* 从OpenHarmony 6.0开始，同一应用内对单个URI的重复订阅上限为50次，单个URI全局最多支持2500个订阅。
 
@@ -1449,7 +1449,7 @@ if (dataShareHelper !== undefined) {
 on(event: 'dataChange', type:SubscriptionType, uri: string, callback: AsyncCallback<ChangeInfo>): void
 ```
 
-订阅指定URI对应数据的数据变更事件。不支持跨用户订阅通知。<br> **触发通知：** 非静默场景下，调用[notifyChange](#notifychange)方法，就会触发对指定URI订阅者的通知，通知携带[ChangeInfo](arkts-arkdata-datashare-changeinfo-i-sys.md)；或者静默场景下，使用指定URI的静默访问修改了数据，也会自动触发通知，但此时callback通知中的ChangeInfo无效。<br>规格限制：<br>  
+订阅指定URI对应数据的数据变更事件。不支持跨用户订阅通知。<br> **触发通知：** 非静默场景下，调用[notifyChange](#notifychange-3)方法，就会触发对指定URI订阅者的通知，通知携带[ChangeInfo](arkts-arkdata-datashare-changeinfo-i-sys.md)；或者静默场景下，使用指定URI的静默访问修改了数据，也会自动触发通知，但此时callback通知中的ChangeInfo无效。<br>规格限制：<br>  
 * 在OpenHarmony 6.0之前，同一应用内对单个URI的重复订阅上限为50次，单个URI全局最多支持50个订阅。  
 * 从OpenHarmony 6.0开始，同一应用内对单个URI的重复订阅上限为50次，单个URI全局最多支持2500个订阅。
 

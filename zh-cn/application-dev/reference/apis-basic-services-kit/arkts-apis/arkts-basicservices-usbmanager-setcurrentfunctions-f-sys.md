@@ -18,7 +18,7 @@ function setCurrentFunctions(funcs: FunctionType): Promise<void>
 
 **废弃版本：** 12
 
-**替代接口：** [setDeviceFunctions](arkts-basicservices-usbmanager-setdevicefunctions-f-sys.md)(funcs: FunctionType)
+**替代接口：** [setDeviceFunctions](arkts-basicservices-usbmanager-setdevicefunctions-f-sys.md#setdevicefunctions-1)(funcs: FunctionType)
 
 <!--Device-usbManager-function setCurrentFunctions(funcs: FunctionType): Promise<void>--><!--Device-usbManager-function setCurrentFunctions(funcs: FunctionType): Promise<void>-End-->
 

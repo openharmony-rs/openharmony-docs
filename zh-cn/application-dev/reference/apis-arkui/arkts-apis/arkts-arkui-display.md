@@ -20,24 +20,24 @@ import { display } from '@kit.ArkUI';
 
 | 名称 | 说明 |
 | --- | --- |
-| [convertGlobalToRelativeCoordinate](arkts-arkui-display-convertglobaltorelativecoordinate-f.md#convertglobaltorelativecoordinate) | 将主屏左上角为原点的全局坐标转换成displayId指定屏幕左上角为原点的相对坐标。若未传入displayId，默认转换为全局坐标所在屏幕的相对坐标系。若全局坐标不在任何屏幕上，默认转换成主屏的相对坐标。 |
-| [convertRelativeToGlobalCoordinate](arkts-arkui-display-convertrelativetoglobalcoordinate-f.md#convertrelativetoglobalcoordinate) | 将指定屏幕左上角为原点的相对坐标转换成主屏左上角为原点的全局坐标，仅支持主屏和扩展屏的坐标转换。 |
-| [createVirtualScreen](arkts-arkui-display-createvirtualscreen-f.md#createvirtualscreen) | 创建虚拟屏幕，使用Promise异步回调。 |
-| [destroyVirtualScreen](arkts-arkui-display-destroyvirtualscreen-f.md#destroyvirtualscreen) | 销毁虚拟屏幕，使用Promise异步回调。 |
-| [getAllDisplayPhysicalResolution](arkts-arkui-display-getalldisplayphysicalresolution-f.md#getalldisplayphysicalresolution) | 获取当前设备支持的所有显示模式及其对应的物理屏幕分辨率信息对象。使用Promise异步回调。 |
-| [getAllDisplays](arkts-arkui-display-getalldisplays-f.md#getalldisplays) | 获取当前所有的Display对象，使用callback异步回调。 |
-| [getAllDisplays](arkts-arkui-display-getalldisplays-f.md#getalldisplays) | 获取当前所有的Display对象，使用Promise异步回调。 |
-| [getBrightnessInfo](arkts-arkui-display-getbrightnessinfo-f.md#getbrightnessinfo) | 获取指定displayId对应屏幕的亮度信息。如果屏幕不支持HDR，返回的[BrightnessInfo](arkts-arkui-display-brightnessinfo-i.md)对象中的currentHeadroom和maxHeadroom为默认值。虚拟屏的BrightnessInfo对象中sdrNits为默认值。 |
-| [getCurrentFoldCreaseRegion](arkts-arkui-display-getcurrentfoldcreaseregion-f.md#getcurrentfoldcreaseregion) | 在当前显示模式下获取折叠折痕区域。 |
-| [getDefaultDisplaySync](arkts-arkui-display-getdefaultdisplaysync-f.md#getdefaultdisplaysync) | 返回应用所在屏幕的Display对象。若应用内多个Ability在不同屏幕，返回主屏的Display对象，若应用内多个Ability在同一屏幕，返回所在屏幕的Display对象。 |
-| [getDisplayByIdSync](arkts-arkui-display-getdisplaybyidsync-f.md#getdisplaybyidsync) | 根据displayId获取对应的Display对象。 |
-| [getFoldDisplayMode](arkts-arkui-display-getfolddisplaymode-f.md#getfolddisplaymode) | 获取可折叠设备当前的显示模式。 |
-| [getFoldStatus](arkts-arkui-display-getfoldstatus-f.md#getfoldstatus) | 获取可折叠设备当前的折叠状态。 |
-| [getPrimaryDisplaySync](arkts-arkui-display-getprimarydisplaysync-f.md#getprimarydisplaysync) | 获取主屏信息。除2in1之外的设备获取的是设备自带屏幕的Display对象；2in1设备外接屏幕时获取的是当前主屏幕的Display对象；2in1设备没有外接屏幕时获取的是自带屏幕的Display对象。 |
-| [isCaptured](arkts-arkui-display-iscaptured-f.md#iscaptured) | 检查设备的屏幕显示信息是否被获取。 |
-| [isCaptured](arkts-arkui-display-iscaptured-f.md#iscaptured) | 检查该设备是否被bundle名称列表中的任何应用抓拍、投影或录制。 |
-| [isFoldable](arkts-arkui-display-isfoldable-f.md#isfoldable) | 判断设备是否可折叠。 |
-| [makeUnique](arkts-arkui-display-makeunique-f.md#makeunique) | 将屏幕设置为异源模式，使用Promise异步回调。 |
+| [convertGlobalToRelativeCoordinate](arkts-arkui-display-convertglobaltorelativecoordinate-f.md#convertglobaltorelativecoordinate-1) | 将主屏左上角为原点的全局坐标转换成displayId指定屏幕左上角为原点的相对坐标。若未传入displayId，默认转换为全局坐标所在屏幕的相对坐标系。若全局坐标不在任何屏幕上，默认转换成主屏的相对坐标。 |
+| [convertRelativeToGlobalCoordinate](arkts-arkui-display-convertrelativetoglobalcoordinate-f.md#convertrelativetoglobalcoordinate-1) | 将指定屏幕左上角为原点的相对坐标转换成主屏左上角为原点的全局坐标，仅支持主屏和扩展屏的坐标转换。 |
+| [createVirtualScreen](arkts-arkui-display-createvirtualscreen-f.md#createvirtualscreen-1) | 创建虚拟屏幕，使用Promise异步回调。 |
+| [destroyVirtualScreen](arkts-arkui-display-destroyvirtualscreen-f.md#destroyvirtualscreen-1) | 销毁虚拟屏幕，使用Promise异步回调。 |
+| [getAllDisplayPhysicalResolution](arkts-arkui-display-getalldisplayphysicalresolution-f.md#getalldisplayphysicalresolution-1) | 获取当前设备支持的所有显示模式及其对应的物理屏幕分辨率信息对象。使用Promise异步回调。 |
+| [getAllDisplays](arkts-arkui-display-getalldisplays-f.md#getalldisplays-1) | 获取当前所有的Display对象，使用callback异步回调。 |
+| [getAllDisplays](arkts-arkui-display-getalldisplays-f.md#getalldisplays-2) | 获取当前所有的Display对象，使用Promise异步回调。 |
+| [getBrightnessInfo](arkts-arkui-display-getbrightnessinfo-f.md#getbrightnessinfo-1) | 获取指定displayId对应屏幕的亮度信息。如果屏幕不支持HDR，返回的[BrightnessInfo](arkts-arkui-display-brightnessinfo-i.md)对象中的currentHeadroom和maxHeadroom为默认值。虚拟屏的BrightnessInfo对象中sdrNits为默认值。 |
+| [getCurrentFoldCreaseRegion](arkts-arkui-display-getcurrentfoldcreaseregion-f.md#getcurrentfoldcreaseregion-1) | 在当前显示模式下获取折叠折痕区域。 |
+| [getDefaultDisplaySync](arkts-arkui-display-getdefaultdisplaysync-f.md#getdefaultdisplaysync-1) | 返回应用所在屏幕的Display对象。若应用内多个Ability在不同屏幕，返回主屏的Display对象，若应用内多个Ability在同一屏幕，返回所在屏幕的Display对象。 |
+| [getDisplayByIdSync](arkts-arkui-display-getdisplaybyidsync-f.md#getdisplaybyidsync-1) | 根据displayId获取对应的Display对象。 |
+| [getFoldDisplayMode](arkts-arkui-display-getfolddisplaymode-f.md#getfolddisplaymode-1) | 获取可折叠设备当前的显示模式。 |
+| [getFoldStatus](arkts-arkui-display-getfoldstatus-f.md#getfoldstatus-1) | 获取可折叠设备当前的折叠状态。 |
+| [getPrimaryDisplaySync](arkts-arkui-display-getprimarydisplaysync-f.md#getprimarydisplaysync-1) | 获取主屏信息。除2in1之外的设备获取的是设备自带屏幕的Display对象；2in1设备外接屏幕时获取的是当前主屏幕的Display对象；2in1设备没有外接屏幕时获取的是自带屏幕的Display对象。 |
+| [isCaptured](arkts-arkui-display-iscaptured-f.md#iscaptured-1) | 检查设备的屏幕显示信息是否被获取。 |
+| [isCaptured](arkts-arkui-display-iscaptured-f.md#iscaptured-2) | 检查该设备是否被bundle名称列表中的任何应用抓拍、投影或录制。 |
+| [isFoldable](arkts-arkui-display-isfoldable-f.md#isfoldable-1) | 判断设备是否可折叠。 |
+| [makeUnique](arkts-arkui-display-makeunique-f.md#makeunique-1) | 将屏幕设置为异源模式，使用Promise异步回调。 |
 | [off('add' | 'remove' | 'change')](arkts-arkui-display-off-f.md#offadd-remove-change) | 关闭显示设备变化的监听。 |
 | [off('add' | 'remove' | 'change')](arkts-arkui-display-off-f.md#offadd-remove-change) | 关闭显示设备变化的监听。 |
 | [off('add' | 'remove' | 'change')](arkts-arkui-display-off-f.md#offadd-remove-change) | 关闭显示设备变化的监听。 |
@@ -54,28 +54,28 @@ import { display } from '@kit.ArkUI';
 | [on('captureStatusChange')](arkts-arkui-display-on-f.md#oncapturestatuschange) | 开启设备的屏幕显示信息是否被获取的监听。 |
 | [on('foldDisplayModeChange')](arkts-arkui-display-on-f.md#onfolddisplaymodechange) | 开启折叠设备屏幕显示模式变化的监听。 |
 | [on('brightnessInfoChange')](arkts-arkui-display-on-f.md#onbrightnessinfochange) | 开启所有屏幕亮度信息变化的监听。如果屏幕不支持HDR，监听到的[BrightnessInfo](arkts-arkui-display-brightnessinfo-i.md)对象中的currentHeadroom和maxHeadroom为默认值。虚拟屏的BrightnessInfo对象中sdrNits为默认值。 |
-| [onChangeWithAttribute](arkts-arkui-display-onchangewithattribute-f.md#onchangewithattribute) | 开启显示设备指定属性变化的监听。 |
-| [setVirtualScreenSurface](arkts-arkui-display-setvirtualscreensurface-f.md#setvirtualscreensurface) | 设置虚拟屏幕的surfaceId。使用Promise异步回调。 |
-| [getAllDisplay](arkts-arkui-display-getalldisplay-f.md#getalldisplay) | 获取当前所有的Display对象，使用callback异步回调。 |
-| [getAllDisplay](arkts-arkui-display-getalldisplay-f.md#getalldisplay) | 获取当前所有的Display对象，使用Promise异步回调。 |
-| [getDefaultDisplay](arkts-arkui-display-getdefaultdisplay-f.md#getdefaultdisplay) | 获取当前默认的Display对象，使用callback异步回调。 |
-| [getDefaultDisplay](arkts-arkui-display-getdefaultdisplay-f.md#getdefaultdisplay) | 获取当前默认的Display对象，使用Promise异步回调。 |
+| [onChangeWithAttribute](arkts-arkui-display-onchangewithattribute-f.md#onchangewithattribute-1) | 开启显示设备指定属性变化的监听。 |
+| [setVirtualScreenSurface](arkts-arkui-display-setvirtualscreensurface-f.md#setvirtualscreensurface-1) | 设置虚拟屏幕的surfaceId。使用Promise异步回调。 |
+| [getAllDisplay](arkts-arkui-display-getalldisplay-f.md#getalldisplay-1) | 获取当前所有的Display对象，使用callback异步回调。 |
+| [getAllDisplay](arkts-arkui-display-getalldisplay-f.md#getalldisplay-2) | 获取当前所有的Display对象，使用Promise异步回调。 |
+| [getDefaultDisplay](arkts-arkui-display-getdefaultdisplay-f.md#getdefaultdisplay-1) | 获取当前默认的Display对象，使用callback异步回调。 |
+| [getDefaultDisplay](arkts-arkui-display-getdefaultdisplay-f.md#getdefaultdisplay-2) | 获取当前默认的Display对象，使用Promise异步回调。 |
 
 <!--Del-->
 ### 函数（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| [addVirtualScreenBlocklist](arkts-arkui-display-addvirtualscreenblocklist-f-sys.md#addvirtualscreenblocklist) | 将窗口添加到禁止投屏显示的名单中，被添加的窗口无法在投屏时显示。仅对应用主窗或系统窗口生效。使用Promise异步回调。 |
-| [addVirtualScreenSurface](arkts-arkui-display-addvirtualscreensurface-f-sys.md#addvirtualscreensurface) | 为虚拟屏幕添加surface。 |
-| [hasPrivateWindow](arkts-arkui-display-hasprivatewindow-f-sys.md#hasprivatewindow) | 查询指定display对象上是否有可见的隐私窗口。可通过[setWindowPrivacyMode()](../../../reference/apis-arkui/arkts-apis-window-Window.md#setwindowprivacymode9)接口设置隐私窗口。隐私窗口内容将无法被截屏或录屏。 |
+| [addVirtualScreenBlocklist](arkts-arkui-display-addvirtualscreenblocklist-f-sys.md#addvirtualscreenblocklist-1) | 将窗口添加到禁止投屏显示的名单中，被添加的窗口无法在投屏时显示。仅对应用主窗或系统窗口生效。使用Promise异步回调。 |
+| [addVirtualScreenSurface](arkts-arkui-display-addvirtualscreensurface-f-sys.md#addvirtualscreensurface-1) | 为虚拟屏幕添加surface。 |
+| [hasPrivateWindow](arkts-arkui-display-hasprivatewindow-f-sys.md#hasprivatewindow-1) | 查询指定display对象上是否有可见的隐私窗口。可通过[setWindowPrivacyMode()](../../../reference/apis-arkui/arkts-apis-window-Window.md#setwindowprivacymode9)接口设置隐私窗口。隐私窗口内容将无法被截屏或录屏。 |
 | [off('privateModeChange')](arkts-arkui-display-off-f-sys.md#offprivatemodechange) | 关闭屏幕隐私模式变化的监听。当屏幕前台有隐私窗口，则屏幕处于隐私模式，屏幕中的隐私窗口内容无法被截屏或录屏。 |
 | [on('privateModeChange')](arkts-arkui-display-on-f-sys.md#onprivatemodechange) | 开启屏幕隐私模式变化的监听。当屏幕前台有隐私窗口，则屏幕处于隐私模式，屏幕中的隐私窗口内容无法被截屏或录屏。 |
-| [removeVirtualScreenBlocklist](arkts-arkui-display-removevirtualscreenblocklist-f-sys.md#removevirtualscreenblocklist) | 将窗口从禁止投屏显示的名单中移除，被移除的窗口可以在投屏时显示。仅对应用主窗或系统窗口生效。使用Promise异步回调。 |
-| [removeVirtualScreenSurface](arkts-arkui-display-removevirtualscreensurface-f-sys.md#removevirtualscreensurface) | 删除虚拟屏的surface。 |
-| [setFoldDisplayMode](arkts-arkui-display-setfolddisplaymode-f-sys.md#setfolddisplaymode) | 更改可折叠设备的显示模式。 |
-| [setFoldDisplayMode](arkts-arkui-display-setfolddisplaymode-f-sys.md#setfolddisplaymode) | 更改可折叠设备的显示模式，并指明更改原因。 |
-| [setFoldStatusLocked](arkts-arkui-display-setfoldstatuslocked-f-sys.md#setfoldstatuslocked) | 设置可折叠设备当前折叠状态的锁定状态。 |
+| [removeVirtualScreenBlocklist](arkts-arkui-display-removevirtualscreenblocklist-f-sys.md#removevirtualscreenblocklist-1) | 将窗口从禁止投屏显示的名单中移除，被移除的窗口可以在投屏时显示。仅对应用主窗或系统窗口生效。使用Promise异步回调。 |
+| [removeVirtualScreenSurface](arkts-arkui-display-removevirtualscreensurface-f-sys.md#removevirtualscreensurface-1) | 删除虚拟屏的surface。 |
+| [setFoldDisplayMode](arkts-arkui-display-setfolddisplaymode-f-sys.md#setfolddisplaymode-1) | 更改可折叠设备的显示模式。 |
+| [setFoldDisplayMode](arkts-arkui-display-setfolddisplaymode-f-sys.md#setfolddisplaymode-2) | 更改可折叠设备的显示模式，并指明更改原因。 |
+| [setFoldStatusLocked](arkts-arkui-display-setfoldstatuslocked-f-sys.md#setfoldstatuslocked-1) | 设置可折叠设备当前折叠状态的锁定状态。 |
 <!--DelEnd-->
 
 ### 接口

@@ -4,7 +4,7 @@
 interface Task
 ```
 
-Implements an upload or download task. Before using this API, you must obtain a **Task** object, from a promise through [request.agent.create](arkts-basicservices-agent-create-f.md#create) or from a callback through [request.agent.create](arkts-basicservices-agent-create-f.md#create).
+Implements an upload or download task. Before using this API, you must obtain a **Task** object, from a promise through [request.agent.create](arkts-basicservices-agent-create-f.md#create-2) or from a callback through [request.agent.create](arkts-basicservices-agent-create-f.md#create-1).
 
 > **NOTE:** 
 > 
@@ -409,7 +409,7 @@ Subscribes to task completion events. This API uses an asynchronous callback to 
 on(event: 'failed', callback: (progress: Progress) => void): void
 ```
 
-Subscribes to task failure events. This API uses an asynchronous callback to return the result. You can call [request.agent.show](arkts-basicservices-agent-show-f.md#show) to view the error cause.
+Subscribes to task failure events. This API uses an asynchronous callback to return the result. You can call [request.agent.show](arkts-basicservices-agent-show-f.md#show-2) to view the error cause.
 
 > **NOTE:** 
 > 
@@ -645,7 +645,7 @@ Subscribes to task wait events. This API uses a callback to return the result.
 pause(callback: AsyncCallback<void>): void
 ```
 
-Pauses a task that is waiting, running, or retrying. A paused task can be resumed by [resume](#resume). This API uses an asynchronous callback to return the result.
+Pauses a task that is waiting, running, or retrying. A paused task can be resumed by [resume](#resume-1). This API uses an asynchronous callback to return the result.
 
 **Since:** 10
 
@@ -673,7 +673,7 @@ Pauses a task that is waiting, running, or retrying. A paused task can be resume
 pause(): Promise<void>
 ```
 
-Pauses a task that is waiting, running, or retrying. A paused task can be resumed by [resume](#resume). This API uses a promise to return the result.
+Pauses a task that is waiting, running, or retrying. A paused task can be resumed by [resume](#resume-1). This API uses a promise to return the result.
 
 **Since:** 10
 
@@ -882,7 +882,7 @@ Tasks in the following states can be started:
 stop(callback: AsyncCallback<void>): void
 ```
 
-Stops a task that is running, waiting, or retrying. A paused task can be resumed by [start](#start). This API uses an asynchronous callback to return the result.
+Stops a task that is running, waiting, or retrying. A paused task can be resumed by [start](#start-1). This API uses an asynchronous callback to return the result.
 
 **Since:** 10
 
@@ -911,7 +911,7 @@ Stops a task that is running, waiting, or retrying. A paused task can be resumed
 stop(): Promise<void>
 ```
 
-Stops a task that is running, waiting, or retrying. A paused task can be resumed by [start](#start). This API uses a promise to return the result.
+Stops a task that is running, waiting, or retrying. A paused task can be resumed by [start](#start-1). This API uses a promise to return the result.
 
 **Since:** 10
 

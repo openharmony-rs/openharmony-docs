@@ -1,4 +1,4 @@
-# RecommendationOptions
+# RecommendationOptions (System API)
 
 ```TypeScript
 class RecommendationOptions

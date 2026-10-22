@@ -1,4 +1,4 @@
-# ZoomQuery
+# ZoomQuery (System API)
 
 ```TypeScript
 interface ZoomQuery

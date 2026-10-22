@@ -26,7 +26,7 @@ import { mediaquery } from '@kit.ArkUI';
 
 | 名称 | 说明 |
 | --- | --- |
-| [matchMediaSync](arkts-arkui-mediaquery-matchmediasync-f.md#matchmediasync) | 设置媒体查询的查询条件，并返回对应的监听句柄。 |
+| [matchMediaSync](arkts-arkui-mediaquery-matchmediasync-f.md#matchmediasync-1) | 设置媒体查询的查询条件，并返回对应的监听句柄。 |
 
 ### 接口
 

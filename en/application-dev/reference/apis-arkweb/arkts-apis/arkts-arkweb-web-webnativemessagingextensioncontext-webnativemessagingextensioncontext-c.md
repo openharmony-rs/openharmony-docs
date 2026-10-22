@@ -115,7 +115,7 @@ Starts a UIAbility. This API uses a promise to return the result when the starte
 
 After the UIAbility is started, the following situations may occur:
 
-- Under normal circumstances,[terminateSelfWithResult](../../apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md#terminateselfwithresult) can be called to terminate the UIAbility and return the result to the caller.  
+- Under normal circumstances,[terminateSelfWithResult](../../apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md#terminateselfwithresult-1) can be called to terminate the UIAbility and return the result to the caller.  
 - In abnormal cases, such as when the UIAbility is destroyed, exception information is returned to the caller, with  
 resultCode set to -1.  
 - Only UIAbilities of the current app can be started.

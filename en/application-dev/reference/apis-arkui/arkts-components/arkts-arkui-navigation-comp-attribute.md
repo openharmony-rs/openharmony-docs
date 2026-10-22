@@ -28,7 +28,7 @@ Sets the icon of the back button in the title bar.
 > [fontSize](arkts-arkui-symbolglyph-comp-attribute.md#fontsize) attribute cannot be used to change the icon size,
 > [effectStrategy](arkts-arkui-symbolglyph-comp-attribute.md#effectstrategy) attribute cannot be used to change the animation
 > effect, and
-> [symbolEffect](arkts-arkui-symbolglyph-comp-attribute.md#symboleffect) attribute
+> [symbolEffect](arkts-arkui-symbolglyph-comp-attribute.md#symboleffect-1) attribute
 > cannot be used to change the animation effect type.
 
 **Since:** 9
@@ -206,7 +206,7 @@ Sets whether to enable the animation for switching between single- and split-col
 enableToolBarAdaptation(enable: Optional<boolean>)
 ```
 
-Sets whether to enable toolbar adaptation ([toolbarConfiguration](#toolbarconfiguration)) for the **Navigation** and **NavDestination** components. If this feature is disabled, the bottom toolbar ([toolbarConfiguration](#toolbarconfiguration)) will no longer be moved into the menu in the upper right corner of the page. This API does not apply to custom menus; using it requires defining the [menu](#menus) via the [NavigationMenuItem](arkts-arkui-navigation-comp-navigationmenuitem-i.md) API.
+Sets whether to enable toolbar adaptation ([toolbarConfiguration](#toolbarconfiguration)) for the **Navigation** and **NavDestination** components. If this feature is disabled, the bottom toolbar ([toolbarConfiguration](#toolbarconfiguration)) will no longer be moved into the menu in the upper right corner of the page. This API does not apply to custom menus; using it requires defining the [menu](#menus-1) via the [NavigationMenuItem](arkts-arkui-navigation-comp-navigationmenuitem-i.md) API.
 
 **Since:** 19
 
@@ -326,7 +326,7 @@ Specifies whether to hide the title bar.
 hideTitleBar(hide: boolean, animated: boolean)
 ```
 
-Specifies whether to hide the title bar. Compared with [hideTitleBar](#hidetitlebar), this API adds the capability to control whether to animate the visibility change of the title bar.
+Specifies whether to hide the title bar. Compared with [hideTitleBar](#hidetitlebar-1), this API adds the capability to control whether to animate the visibility change of the title bar.
 
 **Since:** 13
 
@@ -373,7 +373,7 @@ Specifies whether to hide the toolbar.
 hideToolBar(hide: boolean, animated: boolean)
 ```
 
-Specifies whether to hide the toolbar. Compared with [hideToolBar](#hidetoolbar), this API adds the capability to control whether to animate the visibility change of the toolbar.
+Specifies whether to hide the toolbar. Compared with [hideToolBar](#hidetoolbar-1), this API adds the capability to control whether to animate the visibility change of the toolbar.
 
 **Since:** 13
 
@@ -456,7 +456,7 @@ Sets the menu items in the upper right corner of the page. If this attribute is 
 menus(items: Array<NavigationMenuItem> | CustomBuilder, options?: NavigationMenuOptions)
 ```
 
-Sets the menu items in the upper right corner of the page. If this attribute is not set, no menu item is displayed. Compared with [menus](#menus), this API adds menu options. When the value type is Array&lt;[NavigationMenuItem](arkts-arkui-navigation-comp-navigationmenuitem-i.md)&gt;, the menu shows a maximum of three icons in portrait mode and a maximum of five icons in landscape mode, with excess icons (if any) placed under the automatically generated **More** icon.
+Sets the menu items in the upper right corner of the page. If this attribute is not set, no menu item is displayed. Compared with [menus](#menus-1), this API adds menu options. When the value type is Array&lt;[NavigationMenuItem](arkts-arkui-navigation-comp-navigationmenuitem-i.md)&gt;, the menu shows a maximum of three icons in portrait mode and a maximum of five icons in landscape mode, with excess icons (if any) placed under the automatically generated **More** icon.
 
 > **NOTE:** 
 > 
@@ -769,7 +769,7 @@ Sets the style of the system status bar when the home page of the **Navigation**
 
 > **NOTE:** 
 > 
-> 1. Avoid using the **systemBarStyle** attribute in conjunction with the status bar style APIs in the **Window**module, such as [setWindowSystemBarProperties](../arkts-apis/arkts-arkui-window-window-i.md#setwindowsystembarproperties).
+> 1. Avoid using the **systemBarStyle** attribute in conjunction with the status bar style APIs in the **Window**module, such as [setWindowSystemBarProperties](../arkts-apis/arkts-arkui-window-window-i.md#setwindowsystembarproperties-2).
 > 
 > 2. When you first set the **systemBarStyle** attribute for a **Navigation** or **NavDestination** component, the current status bar style is saved for potential future restoration.
 > 

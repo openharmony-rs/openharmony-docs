@@ -18,7 +18,7 @@ Queries all groups of a contact. This API uses an asynchronous callback to retur
 
 **Deprecated since:** 10
 
-**Substitutes:** [queryGroups](#querygroups)(context: Context, callback: AsyncCallback&lt;Array&lt;Group&gt;&gt;)
+**Substitutes:** [queryGroups](#querygroups-2)(context: Context, callback: AsyncCallback&lt;Array&lt;Group&gt;&gt;)
 
 **Required permissions:** ohos.permission.READ_CONTACTS
 
@@ -113,7 +113,7 @@ Queries all groups of a contact based on the specified holder. This API uses an 
 
 **Deprecated since:** 10
 
-**Substitutes:** [queryGroups](#querygroups)(context: Context, holder: Holder, callback: AsyncCallback&lt;Array&lt;Group&gt;&gt;)
+**Substitutes:** [queryGroups](#querygroups-4)(context: Context, holder: Holder, callback: AsyncCallback&lt;Array&lt;Group&gt;&gt;)
 
 **Required permissions:** ohos.permission.READ_CONTACTS
 
@@ -218,7 +218,7 @@ Queries all groups of a contact based on the specified holder. This API uses a p
 
 **Deprecated since:** 10
 
-**Substitutes:** [queryGroups](#querygroups)(context: Context, holder?: Holder)
+**Substitutes:** [queryGroups](#querygroups-6)(context: Context, holder?: Holder)
 
 **Required permissions:** ohos.permission.READ_CONTACTS
 

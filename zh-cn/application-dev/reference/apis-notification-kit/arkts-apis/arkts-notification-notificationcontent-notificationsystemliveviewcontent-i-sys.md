@@ -1,4 +1,4 @@
-# NotificationSystemLiveViewContent
+# NotificationSystemLiveViewContent（系统接口）
 
 ```TypeScript
 export interface NotificationSystemLiveViewContent extends NotificationBasicContent

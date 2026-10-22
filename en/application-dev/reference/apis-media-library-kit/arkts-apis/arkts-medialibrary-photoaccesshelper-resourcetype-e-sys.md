@@ -1,4 +1,4 @@
-# ResourceType
+# ResourceType (System API)
 
 ```TypeScript
 enum ResourceType

@@ -22,7 +22,7 @@ import { cdsm } from '@kit.ConnectivityKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [createCdsmClient](arkts-connectivity-cdsm-createcdsmclient-f.md#createcdsmclient) | 创建CDSM客户端实例。调用此接口前，您可以调用[isNearLinkSupported](arkts-connectivity-manager-isnearlinksupported-f.md)查询设备是否支持星闪。 |
+| [createCdsmClient](arkts-connectivity-cdsm-createcdsmclient-f.md#createcdsmclient-1) | 创建CDSM客户端实例。调用此接口前，您可以调用[isNearLinkSupported](arkts-connectivity-manager-isnearlinksupported-f.md)查询设备是否支持星闪。 |
 
 ### 接口
 

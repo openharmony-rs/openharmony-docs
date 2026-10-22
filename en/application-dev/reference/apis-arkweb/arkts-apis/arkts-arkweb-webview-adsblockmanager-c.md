@@ -240,6 +240,52 @@ Clears the allowed list of this **AdsBlockManager** object.
 
 **Examples**
 
+```TypeScript
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  main_url: string = 'https://www.example.com';
+  text_input_controller: TextInputController = new TextInputController();
+  controller: webview.WebviewController = new webview.WebviewController();
+  @State input_text: string = 'https://www.example.com';
+
+
+  build() {
+    Column() {
+      Row() {
+        Flex() {
+          TextInput({ text: this.input_text, placeholder: this.main_url, controller: this.text_input_controller})
+            .id("input_url")
+            .height(40)
+            .margin(5)
+            .borderColor(Color.Blue)
+            .onChange((value: string) => {
+              this.input_text = value;
+            })
+
+          Button({type: ButtonType.Capsule}) { Text("Go") }
+          .onClick(() => {
+            this.controller.loadUrl(this.input_text);
+          })
+
+          Button({type: ButtonType.Capsule}) { Text("clearAdsBlockAllowedList") }
+          .onClick(() => {
+            webview.AdsBlockManager.clearAdsBlockAllowedList();
+          })
+        }
+      }
+      Web({ src: this.main_url, controller: this.controller })
+      .onControllerAttached(()=>{
+        this.controller.enableAdsBlock(true);
+      })
+    }
+  }
+}
+```
+
 ## clearAdsBlockDisallowedList
 
 ```TypeScript

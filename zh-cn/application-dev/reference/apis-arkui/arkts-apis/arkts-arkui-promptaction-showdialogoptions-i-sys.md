@@ -1,4 +1,4 @@
-# ShowDialogOptions
+# ShowDialogOptions（系统接口）
 
 ```TypeScript
 interface ShowDialogOptions

@@ -1,4 +1,4 @@
-# DeviceKVStore
+# DeviceKVStore (System API)
 
 ```TypeScript
 interface DeviceKVStore extends SingleKVStore

@@ -38,6 +38,8 @@
   <!--Del-->
   - [FeedbackType（系统接口）](arkts-multimodalawareness-behaviorawareness-feedbacktype-e-sys.md)<!--DelEnd-->
   <!--Del-->
+  - [LocationStatusType（系统接口）](arkts-multimodalawareness-behaviorawareness-locationstatustype-e-sys.md)<!--DelEnd-->
+  <!--Del-->
   - [LocationType（系统接口）](arkts-multimodalawareness-behaviorawareness-locationtype-e-sys.md)<!--DelEnd-->
   <!--Del-->
   - [Operation（系统接口）](arkts-multimodalawareness-behaviorawareness-operation-e-sys.md)<!--DelEnd-->

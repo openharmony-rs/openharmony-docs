@@ -18,7 +18,7 @@ function isModifyDateTimeDisallowed(admin: Want, callback: AsyncCallback<boolean
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [getDisallowedPolicy](arkts-mdm-restrictions-getdisallowedpolicy-f.md#getdisallowedpolicy)(admin: Want | null, feature: FeatureForDevice)
+**替代接口：** [getDisallowedPolicy](arkts-mdm-restrictions-getdisallowedpolicy-f.md#getdisallowedpolicy-2)(admin: Want | null, feature: FeatureForDevice)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_DATETIME
 
@@ -84,7 +84,7 @@ function isModifyDateTimeDisallowed(admin: Want): Promise<boolean>
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [getDisallowedPolicy](arkts-mdm-restrictions-getdisallowedpolicy-f.md#getdisallowedpolicy)(admin: Want | null, feature: FeatureForDevice)
+**替代接口：** [getDisallowedPolicy](arkts-mdm-restrictions-getdisallowedpolicy-f.md#getdisallowedpolicy-2)(admin: Want | null, feature: FeatureForDevice)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_DATETIME
 

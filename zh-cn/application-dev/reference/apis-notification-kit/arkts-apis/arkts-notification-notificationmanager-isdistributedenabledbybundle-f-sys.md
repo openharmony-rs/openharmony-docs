@@ -18,7 +18,7 @@ function isDistributedEnabledByBundle(bundle: BundleOption, callback: AsyncCallb
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [isDistributedEnabledByBundle](#isdistributedenabledbybundle)(bundle: BundleOption, deviceType: string)
+**替代接口：** [isDistributedEnabledByBundle](#isdistributedenabledbybundle-3)(bundle: BundleOption, deviceType: string)
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -83,7 +83,7 @@ function isDistributedEnabledByBundle(bundle: BundleOption): Promise<boolean>
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [isDistributedEnabledByBundle](#isdistributedenabledbybundle)(bundle: BundleOption, deviceType: string)
+**替代接口：** [isDistributedEnabledByBundle](#isdistributedenabledbybundle-3)(bundle: BundleOption, deviceType: string)
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 

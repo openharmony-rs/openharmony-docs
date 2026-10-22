@@ -661,7 +661,7 @@ pen.setColor(color);
 setColor(alpha: number, red: number, green: number, blue: number): void
 ```
 
-设置画笔的颜色。性能优于[setColor](#setcolor)接口，推荐使用本接口。
+设置画笔的颜色。性能优于[setColor](#setcolor-1)接口，推荐使用本接口。
 
 **起始版本：** 12
 
@@ -728,7 +728,7 @@ pen.setColor(0xffff0000);
 setColor4f(color4f: common2D.Color4f, colorSpace: colorSpaceManager.ColorSpaceManager | null): void
 ```
 
-设置画笔的颜色以及标准色域，与[setColor](#setcolor)的区别在于可以单独设置色域。
+设置画笔的颜色以及标准色域，与[setColor](#setcolor-1)的区别在于可以单独设置色域。
 
 **起始版本：** 20
 

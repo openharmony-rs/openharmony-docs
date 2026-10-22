@@ -1367,14 +1367,14 @@ Obtains the application accounts that can be accessed by the invoker based on th
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [getAccountsByOwner](#getaccountsbyowner)
+> [getAccountsByOwner](#getaccountsbyowner-1)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [getAccountsByOwner](#getaccountsbyowner)(owner: string, callback: AsyncCallback&lt;Array&lt;AppAccountInfo&gt;&gt;)
+**Substitutes:** [getAccountsByOwner](#getaccountsbyowner-1)(owner: string, callback: AsyncCallback&lt;Array&lt;AppAccountInfo&gt;&gt;)
 
 **Required permissions:** ohos.permission.GET_ALL_APP_ACCOUNTS
 
@@ -1415,13 +1415,13 @@ Obtains the application accounts that can be accessed by the invoker based on th
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [getAccountsByOwner](#getaccountsbyowner) instead.
+> [getAccountsByOwner](#getaccountsbyowner-2) instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [getAccountsByOwner](#getaccountsbyowner)(owner: string)
+**Substitutes:** [getAccountsByOwner](#getaccountsbyowner-2)(owner: string)
 
 **Required permissions:** ohos.permission.GET_ALL_APP_ACCOUNTS
 
@@ -1698,7 +1698,7 @@ export default class EntryAbility extends UIAbility {
 getAuthList(name: string, authType: string, callback: AsyncCallback<Array<string>>): void
 ```
 
-Obtains the authorization list of the specified authentication type for an application account. The authorization list contains all authorized bundles. The token authorization list is set by [setAuthTokenVisibility](#setauthtokenvisibility). This API uses an asynchronous callback to return the result.
+Obtains the authorization list of the specified authentication type for an application account. The authorization list contains all authorized bundles. The token authorization list is set by [setAuthTokenVisibility](#setauthtokenvisibility-1). This API uses an asynchronous callback to return the result.
 
 **Since:** 9
 
@@ -1749,7 +1749,7 @@ try {
 getAuthList(name: string, authType: string): Promise<Array<string>>
 ```
 
-Obtains the authorization list of the specified authentication type for an application account. The authorization list contains all authorized bundles. The token authorization list is set by [setAuthTokenVisibility](#setauthtokenvisibility). This API uses a promise to return the result.
+Obtains the authorization list of the specified authentication type for an application account. The authorization list contains all authorized bundles. The token authorization list is set by [setAuthTokenVisibility](#setauthtokenvisibility-1). This API uses a promise to return the result.
 
 **Since:** 9
 
@@ -3570,14 +3570,14 @@ Adds an application account with the given name. This API uses an asynchronous c
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [createAccount](#createaccount)
+> [createAccount](#createaccount-1)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [createAccount](#createaccount)(name: string, callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [createAccount](#createaccount-1)(name: string, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AppAccountManager-addAccount(name: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-addAccount(name: string, callback: AsyncCallback<void>): void-End-->
 
@@ -3611,14 +3611,14 @@ Adds an application account name and additional information. This API uses an as
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [createAccount](#createaccount)
+> [createAccount](#createaccount-2)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [createAccount](#createaccount)(name: string, options: CreateAccountOptions, callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [createAccount](#createaccount-2)(name: string, options: CreateAccountOptions, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AppAccountManager-addAccount(name: string, extraInfo: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-addAccount(name: string, extraInfo: string, callback: AsyncCallback<void>): void-End-->
 
@@ -3652,14 +3652,14 @@ Adds an application account name and additional information. This API uses a pro
 
 > **NOTE:** 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [createAccount](#createaccount)
+> [createAccount](#createaccount-3)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [createAccount](#createaccount)(name: string, options?: CreateAccountOptions)
+**Substitutes:** [createAccount](#createaccount-3)(name: string, options?: CreateAccountOptions)
 
 <!--Device-AppAccountManager-addAccount(name: string, extraInfo?: string): Promise<void>--><!--Device-AppAccountManager-addAccount(name: string, extraInfo?: string): Promise<void>-End-->
 
@@ -3706,14 +3706,14 @@ Adds an application account implicitly based on the specified owner. This API us
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [createAccountImplicitly](#createaccountimplicitly)
+> [createAccountImplicitly](#createaccountimplicitly-1)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [createAccountImplicitly](#createaccountimplicitly)(owner: string, callback: AuthCallback)
+**Substitutes:** [createAccountImplicitly](#createaccountimplicitly-1)(owner: string, callback: AuthCallback)
 
 <!--Device-AppAccountManager-addAccountImplicitly(      owner: string,      authType: string,      options: { [key: string]: any },      callback: AuthenticatorCallback    ): void--><!--Device-AppAccountManager-addAccountImplicitly(      owner: string,      authType: string,      options: { [key: string]: any },      callback: AuthenticatorCallback    ): void-End-->
 
@@ -3786,14 +3786,14 @@ Authenticates an application account. This API uses an asynchronous callback to 
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [auth](#auth)
+> [auth](#auth-1)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [auth](#auth)(name: string, owner: string, authType: string, callback: AuthCallback)
+**Substitutes:** [auth](#auth-1)(name: string, owner: string, authType: string, callback: AuthCallback)
 
 <!--Device-AppAccountManager-authenticate(      name: string,      owner: string,      authType: string,      options: { [key: string]: any },      callback: AuthenticatorCallback    ): void--><!--Device-AppAccountManager-authenticate(      name: string,      owner: string,      authType: string,      options: { [key: string]: any },      callback: AuthenticatorCallback    ): void-End-->
 
@@ -3861,14 +3861,14 @@ Checks whether data synchronization is enabled for an application account. This 
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [checkDataSyncEnabled](#checkdatasyncenabled)
+> [checkDataSyncEnabled](#checkdatasyncenabled-1)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [checkDataSyncEnabled](#checkdatasyncenabled)(name: string, callback: AsyncCallback&lt;boolean&gt;)
+**Substitutes:** [checkDataSyncEnabled](#checkdatasyncenabled-1)(name: string, callback: AsyncCallback&lt;boolean&gt;)
 
 **Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -3908,13 +3908,13 @@ Checks whether data synchronization is enabled for an application account. This 
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [checkDataSyncEnabled](#checkdatasyncenabled) instead.
+> [checkDataSyncEnabled](#checkdatasyncenabled-2) instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [checkDataSyncEnabled](#checkdatasyncenabled)(name: string)
+**Substitutes:** [checkDataSyncEnabled](#checkdatasyncenabled-2)(name: string)
 
 **Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -3962,14 +3962,14 @@ Checks the visibility of an authorization token of the specified authentication 
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [checkAuthTokenVisibility](#checkauthtokenvisibility)
+> [checkAuthTokenVisibility](#checkauthtokenvisibility-1)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [checkAuthTokenVisibility](#checkauthtokenvisibility)(name: string, authType: string, bundleName: string, callback: AsyncCallback&lt;boolean&gt;)
+**Substitutes:** [checkAuthTokenVisibility](#checkauthtokenvisibility-1)(name: string, authType: string, bundleName: string, callback: AsyncCallback&lt;boolean&gt;)
 
 <!--Device-AppAccountManager-checkOAuthTokenVisibility(      name: string,      authType: string,      bundleName: string,      callback: AsyncCallback<boolean>    ): void--><!--Device-AppAccountManager-checkOAuthTokenVisibility(      name: string,      authType: string,      bundleName: string,      callback: AsyncCallback<boolean>    ): void-End-->
 
@@ -4010,14 +4010,14 @@ Checks the visibility of an authorization token of the specified authentication 
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [checkAuthTokenVisibility](#checkauthtokenvisibility)
+> [checkAuthTokenVisibility](#checkauthtokenvisibility-2)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [checkAuthTokenVisibility](#checkauthtokenvisibility)(name: string, authType: string, bundleName: string)
+**Substitutes:** [checkAuthTokenVisibility](#checkauthtokenvisibility-2)(name: string, authType: string, bundleName: string)
 
 <!--Device-AppAccountManager-checkOAuthTokenVisibility(name: string, authType: string, bundleName: string): Promise<boolean>--><!--Device-AppAccountManager-checkOAuthTokenVisibility(name: string, authType: string, bundleName: string): Promise<boolean>-End-->
 
@@ -4061,14 +4061,14 @@ Deletes an application account. This API uses an asynchronous callback to return
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [removeAccount](#removeaccount)
+> [removeAccount](#removeaccount-1)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [removeAccount](#removeaccount)(name: string, callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [removeAccount](#removeaccount-1)(name: string, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AppAccountManager-deleteAccount(name: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-deleteAccount(name: string, callback: AsyncCallback<void>): void-End-->
 
@@ -4102,14 +4102,14 @@ Deletes an application account. This API uses a promise to return the result.
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [removeAccount](#removeaccount)
+> [removeAccount](#removeaccount-2)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [removeAccount](#removeaccount)(name: string)
+**Substitutes:** [removeAccount](#removeaccount-2)(name: string)
 
 <!--Device-AppAccountManager-deleteAccount(name: string): Promise<void>--><!--Device-AppAccountManager-deleteAccount(name: string): Promise<void>-End-->
 
@@ -4150,14 +4150,14 @@ Deletes the authorization token of the specified authentication type for an appl
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [deleteAuthToken](#deleteauthtoken)
+> [deleteAuthToken](#deleteauthtoken-1)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [deleteAuthToken](#deleteauthtoken)(name: string, owner: string, authType: string, token: string, callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [deleteAuthToken](#deleteauthtoken-1)(name: string, owner: string, authType: string, token: string, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AppAccountManager-deleteOAuthToken(name: string, owner: string, authType: string, token: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-deleteOAuthToken(name: string, owner: string, authType: string, token: string, callback: AsyncCallback<void>): void-End-->
 
@@ -4199,14 +4199,14 @@ Deletes the authorization token of the specified authentication type for an appl
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [deleteAuthToken](#deleteauthtoken)
+> [deleteAuthToken](#deleteauthtoken-2)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [deleteAuthToken](#deleteauthtoken)(name: string, owner: string, authType: string, token: string)
+**Substitutes:** [deleteAuthToken](#deleteauthtoken-2)(name: string, owner: string, authType: string, token: string)
 
 <!--Device-AppAccountManager-deleteOAuthToken(name: string, owner: string, authType: string, token: string): Promise<void>--><!--Device-AppAccountManager-deleteOAuthToken(name: string, owner: string, authType: string, token: string): Promise<void>-End-->
 
@@ -4250,14 +4250,14 @@ Disables access to the third-party application with the specified package name u
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [setAppAccess](#setappaccess)
+> [setAppAccess](#setappaccess-1)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [setAppAccess](#setappaccess)(name: string, bundleName: string, isAccessible: boolean, callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [setAppAccess](#setappaccess-1)(name: string, bundleName: string, isAccessible: boolean, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AppAccountManager-disableAppAccess(name: string, bundleName: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-disableAppAccess(name: string, bundleName: string, callback: AsyncCallback<void>): void-End-->
 
@@ -4292,14 +4292,14 @@ Disables an application account from accessing an application. This API uses a p
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [setAppAccess](#setappaccess)
+> [setAppAccess](#setappaccess-2)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [setAppAccess](#setappaccess)(name: string, bundleName: string, isAccessible: boolean)
+**Substitutes:** [setAppAccess](#setappaccess-2)(name: string, bundleName: string, isAccessible: boolean)
 
 <!--Device-AppAccountManager-disableAppAccess(name: string, bundleName: string): Promise<void>--><!--Device-AppAccountManager-disableAppAccess(name: string, bundleName: string): Promise<void>-End-->
 
@@ -4341,14 +4341,14 @@ Enables an application to access an application account. This API uses an asynch
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [setAppAccess](#setappaccess)
+> [setAppAccess](#setappaccess-1)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [setAppAccess](#setappaccess)(name: string, bundleName: string, isAccessible: boolean, callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [setAppAccess](#setappaccess-1)(name: string, bundleName: string, isAccessible: boolean, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AppAccountManager-enableAppAccess(name: string, bundleName: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-enableAppAccess(name: string, bundleName: string, callback: AsyncCallback<void>): void-End-->
 
@@ -4387,14 +4387,14 @@ Enables an application to access an application account. This API uses a promise
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [setAppAccess](#setappaccess)
+> [setAppAccess](#setappaccess-2)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [setAppAccess](#setappaccess)(name: string, bundleName: string, isAccessible: boolean)
+**Substitutes:** [setAppAccess](#setappaccess-2)(name: string, bundleName: string, isAccessible: boolean)
 
 <!--Device-AppAccountManager-enableAppAccess(name: string, bundleName: string): Promise<void>--><!--Device-AppAccountManager-enableAppAccess(name: string, bundleName: string): Promise<void>-End-->
 
@@ -4436,14 +4436,14 @@ Obtains the credential of an application account. This API uses an asynchronous 
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [getCredential](#getcredential)
+> [getCredential](#getcredential-1)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [getCredential](#getcredential)(name: string, credentialType: string, callback: AsyncCallback&lt;string&gt;)
+**Substitutes:** [getCredential](#getcredential-1)(name: string, credentialType: string, callback: AsyncCallback&lt;string&gt;)
 
 <!--Device-AppAccountManager-getAccountCredential(name: string, credentialType: string, callback: AsyncCallback<string>): void--><!--Device-AppAccountManager-getAccountCredential(name: string, credentialType: string, callback: AsyncCallback<string>): void-End-->
 
@@ -4482,14 +4482,14 @@ Obtains the credential of an application account. This API uses a promise to ret
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [getCredential](#getcredential)
+> [getCredential](#getcredential-2)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [getCredential](#getcredential)(name: string, credentialType: string)
+**Substitutes:** [getCredential](#getcredential-2)(name: string, credentialType: string)
 
 <!--Device-AppAccountManager-getAccountCredential(name: string, credentialType: string): Promise<string>--><!--Device-AppAccountManager-getAccountCredential(name: string, credentialType: string): Promise<string>-End-->
 
@@ -4531,14 +4531,14 @@ Obtains additional information of an application account. Additional information
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [getCustomData](#getcustomdata)
+> [getCustomData](#getcustomdata-1)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [getCustomData](#getcustomdata)(name: string, key: string, callback: AsyncCallback&lt;string&gt;)
+**Substitutes:** [getCustomData](#getcustomdata-1)(name: string, key: string, callback: AsyncCallback&lt;string&gt;)
 
 <!--Device-AppAccountManager-getAccountExtraInfo(name: string, callback: AsyncCallback<string>): void--><!--Device-AppAccountManager-getAccountExtraInfo(name: string, callback: AsyncCallback<string>): void-End-->
 
@@ -4576,13 +4576,13 @@ Obtains additional information of an application account. Additional information
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [getCustomData](#getcustomdata) instead.
+> [getCustomData](#getcustomdata-2) instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [getCustomData](#getcustomdata)(name: string, key: string)
+**Substitutes:** [getCustomData](#getcustomdata-2)(name: string, key: string)
 
 <!--Device-AppAccountManager-getAccountExtraInfo(name: string): Promise<string>--><!--Device-AppAccountManager-getAccountExtraInfo(name: string): Promise<string>-End-->
 
@@ -4623,14 +4623,14 @@ Obtains information about all accessible application accounts. This API uses an 
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [getAllAccounts](#getallaccounts)
+> [getAllAccounts](#getallaccounts-1)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [getAllAccounts](#getallaccounts)(callback: AsyncCallback&lt;Array&lt;AppAccountInfo&gt;&gt;)
+**Substitutes:** [getAllAccounts](#getallaccounts-1)(callback: AsyncCallback&lt;Array&lt;AppAccountInfo&gt;&gt;)
 
 **Required permissions:** ohos.permission.GET_ALL_APP_ACCOUNTS
 
@@ -4712,14 +4712,14 @@ Obtains all tokens visible to the invoker for an application account. This API u
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [getAllAuthTokens](#getallauthtokens)
+> [getAllAuthTokens](#getallauthtokens-1)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [getAllAuthTokens](#getallauthtokens)(name: string, owner: string, callback: AsyncCallback&lt;Array&lt;AuthTokenInfo&gt;&gt;)
+**Substitutes:** [getAllAuthTokens](#getallauthtokens-1)(name: string, owner: string, callback: AsyncCallback&lt;Array&lt;AuthTokenInfo&gt;&gt;)
 
 <!--Device-AppAccountManager-getAllOAuthTokens(name: string, owner: string, callback: AsyncCallback<Array<OAuthTokenInfo>>): void--><!--Device-AppAccountManager-getAllOAuthTokens(name: string, owner: string, callback: AsyncCallback<Array<OAuthTokenInfo>>): void-End-->
 
@@ -4759,13 +4759,13 @@ Obtains all tokens visible to the invoker for an application account. This API u
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [getAllAuthTokens](#getallauthtokens) instead.
+> [getAllAuthTokens](#getallauthtokens-2) instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [getAllAuthTokens](#getallauthtokens)(name: string, owner: string)
+**Substitutes:** [getAllAuthTokens](#getallauthtokens-2)(name: string, owner: string)
 
 <!--Device-AppAccountManager-getAllOAuthTokens(name: string, owner: string): Promise<Array<OAuthTokenInfo>>--><!--Device-AppAccountManager-getAllOAuthTokens(name: string, owner: string): Promise<Array<OAuthTokenInfo>>-End-->
 
@@ -4808,14 +4808,14 @@ Obtains the associated data of an application account based on the specified key
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [getCustomData](#getcustomdata)
+> [getCustomData](#getcustomdata-1)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [getCustomData](#getcustomdata)(name: string, key: string, callback: AsyncCallback&lt;string&gt;)
+**Substitutes:** [getCustomData](#getcustomdata-1)(name: string, key: string, callback: AsyncCallback&lt;string&gt;)
 
 <!--Device-AppAccountManager-getAssociatedData(name: string, key: string, callback: AsyncCallback<string>): void--><!--Device-AppAccountManager-getAssociatedData(name: string, key: string, callback: AsyncCallback<string>): void-End-->
 
@@ -4854,13 +4854,13 @@ Obtains data to be associated with an application account. This API uses a promi
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [getCustomData](#getcustomdata) instead.
+> [getCustomData](#getcustomdata-2) instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [getCustomData](#getcustomdata)(name: string, key: string)
+**Substitutes:** [getCustomData](#getcustomdata-2)(name: string, key: string)
 
 <!--Device-AppAccountManager-getAssociatedData(name: string, key: string): Promise<string>--><!--Device-AppAccountManager-getAssociatedData(name: string, key: string): Promise<string>-End-->
 
@@ -4902,14 +4902,14 @@ Obtains the authenticator callback for an authentication session. This API uses 
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [getAuthCallback](#getauthcallback)
+> [getAuthCallback](#getauthcallback-1)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [getAuthCallback](#getauthcallback)(sessionId: string, callback: AsyncCallback&lt;AuthCallback&gt;)
+**Substitutes:** [getAuthCallback](#getauthcallback-1)(sessionId: string, callback: AsyncCallback&lt;AuthCallback&gt;)
 
 <!--Device-AppAccountManager-getAuthenticatorCallback(sessionId: string, callback: AsyncCallback<AuthenticatorCallback>): void--><!--Device-AppAccountManager-getAuthenticatorCallback(sessionId: string, callback: AsyncCallback<AuthenticatorCallback>): void-End-->
 
@@ -4959,13 +4959,13 @@ Obtains the authenticator callback for an authentication session. This API uses 
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [getAuthCallback](#getauthcallback) instead.
+> [getAuthCallback](#getauthcallback-2) instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [getAuthCallback](#getauthcallback)(sessionId: string)
+**Substitutes:** [getAuthCallback](#getauthcallback-2)(sessionId: string)
 
 <!--Device-AppAccountManager-getAuthenticatorCallback(sessionId: string): Promise<AuthenticatorCallback>--><!--Device-AppAccountManager-getAuthenticatorCallback(sessionId: string): Promise<AuthenticatorCallback>-End-->
 
@@ -5018,14 +5018,14 @@ Obtains the authenticator information of an application. This API uses an asynch
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [queryAuthenticatorInfo](#queryauthenticatorinfo)
+> [queryAuthenticatorInfo](#queryauthenticatorinfo-1)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [queryAuthenticatorInfo](#queryauthenticatorinfo)(owner: string, callback: AsyncCallback&lt;AuthenticatorInfo&gt;)
+**Substitutes:** [queryAuthenticatorInfo](#queryauthenticatorinfo-1)(owner: string, callback: AsyncCallback&lt;AuthenticatorInfo&gt;)
 
 <!--Device-AppAccountManager-getAuthenticatorInfo(owner: string, callback: AsyncCallback<AuthenticatorInfo>): void--><!--Device-AppAccountManager-getAuthenticatorInfo(owner: string, callback: AsyncCallback<AuthenticatorInfo>): void-End-->
 
@@ -5064,13 +5064,13 @@ Obtains the authenticator information of an application. This API uses a promise
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [queryAuthenticatorInfo](#queryauthenticatorinfo) instead.
+> [queryAuthenticatorInfo](#queryauthenticatorinfo-2) instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [queryAuthenticatorInfo](#queryauthenticatorinfo)(owner: string)
+**Substitutes:** [queryAuthenticatorInfo](#queryauthenticatorinfo-2)(owner: string)
 
 <!--Device-AppAccountManager-getAuthenticatorInfo(owner: string): Promise<AuthenticatorInfo>--><!--Device-AppAccountManager-getAuthenticatorInfo(owner: string): Promise<AuthenticatorInfo>-End-->
 
@@ -5107,19 +5107,19 @@ appAccountManager.getAuthenticatorInfo('com.example.accountjsdemo').then((
 getOAuthList(name: string, authType: string, callback: AsyncCallback<Array<string>>): void
 ```
 
-Obtains the authorization list of the specified authentication type for an application account. The authorization list contains all authorized bundles. The token authorization list is set by [setOAuthTokenVisibility](#setoauthtokenvisibility). This API uses an asynchronous callback to return the result.
+Obtains the authorization list of the specified authentication type for an application account. The authorization list contains all authorized bundles. The token authorization list is set by [setOAuthTokenVisibility](#setoauthtokenvisibility-1). This API uses an asynchronous callback to return the result.
 
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [getAuthList](#getauthlist)
+> [getAuthList](#getauthlist-1)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [getAuthList](#getauthlist)(name: string, authType: string, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;)
+**Substitutes:** [getAuthList](#getauthlist-1)(name: string, authType: string, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;)
 
 <!--Device-AppAccountManager-getOAuthList(name: string, authType: string, callback: AsyncCallback<Array<string>>): void--><!--Device-AppAccountManager-getOAuthList(name: string, authType: string, callback: AsyncCallback<Array<string>>): void-End-->
 
@@ -5153,18 +5153,18 @@ appAccountManager.getOAuthList('LiSi', 'getSocialData', (err: BusinessError, dat
 getOAuthList(name: string, authType: string): Promise<Array<string>>
 ```
 
-Obtains the authorization list of the specified authentication type for an application account. The authorization list contains all authorized bundles. The token authorization list is set by [setOAuthTokenVisibility](#setoauthtokenvisibility). This API uses a promise to return the result.
+Obtains the authorization list of the specified authentication type for an application account. The authorization list contains all authorized bundles. The token authorization list is set by [setOAuthTokenVisibility](#setoauthtokenvisibility-1). This API uses a promise to return the result.
 
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [getAuthList](#getauthlist) instead.
+> [getAuthList](#getauthlist-2) instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [getAuthList](#getauthlist)(name: string, authType: string)
+**Substitutes:** [getAuthList](#getauthlist-2)(name: string, authType: string)
 
 <!--Device-AppAccountManager-getOAuthList(name: string, authType: string): Promise<Array<string>>--><!--Device-AppAccountManager-getOAuthList(name: string, authType: string): Promise<Array<string>>-End-->
 
@@ -5206,14 +5206,14 @@ Obtains the authorization token of the specified authentication type for an appl
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [getAuthToken](#getauthtoken)
+> [getAuthToken](#getauthtoken-1)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [getAuthToken](#getauthtoken)(name: string, owner: string, authType: string, callback: AsyncCallback&lt;string&gt;)
+**Substitutes:** [getAuthToken](#getauthtoken-1)(name: string, owner: string, authType: string, callback: AsyncCallback&lt;string&gt;)
 
 <!--Device-AppAccountManager-getOAuthToken(name: string, owner: string, authType: string, callback: AsyncCallback<string>): void--><!--Device-AppAccountManager-getOAuthToken(name: string, owner: string, authType: string, callback: AsyncCallback<string>): void-End-->
 
@@ -5254,14 +5254,14 @@ Obtains the authorization token of the specified authentication type for an appl
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [getAuthToken](#getauthtoken)
+> [getAuthToken](#getauthtoken-2)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [getAuthToken](#getauthtoken)(name: string, owner: string, authType: string)
+**Substitutes:** [getAuthToken](#getauthtoken-2)(name: string, owner: string, authType: string)
 
 <!--Device-AppAccountManager-getOAuthToken(name: string, owner: string, authType: string): Promise<string>--><!--Device-AppAccountManager-getOAuthToken(name: string, owner: string, authType: string): Promise<string>-End-->
 
@@ -5304,14 +5304,14 @@ Sets a credential for an application account. This API uses an asynchronous call
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [setCredential](#setcredential)
+> [setCredential](#setcredential-1)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [setCredential](#setcredential)(name: string, credentialType: string, credential: string, callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [setCredential](#setcredential-1)(name: string, credentialType: string, credential: string, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AppAccountManager-setAccountCredential(name: string, credentialType: string, credential: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-setAccountCredential(name: string, credentialType: string, credential: string, callback: AsyncCallback<void>): void-End-->
 
@@ -5351,14 +5351,14 @@ Sets a credential for an application account. This API uses a promise to return 
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [setCredential](#setcredential)
+> [setCredential](#setcredential-2)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [setCredential](#setcredential)(name: string, credentialType: string, credential: string)
+**Substitutes:** [setCredential](#setcredential-2)(name: string, credentialType: string, credential: string)
 
 <!--Device-AppAccountManager-setAccountCredential(name: string, credentialType: string, credential: string): Promise<void>--><!--Device-AppAccountManager-setAccountCredential(name: string, credentialType: string, credential: string): Promise<void>-End-->
 
@@ -5401,14 +5401,14 @@ Sets additional information for an application account. This API uses an asynchr
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [setCustomData](#setcustomdata)
+> [setCustomData](#setcustomdata-1)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [setCustomData](#setcustomdata)(name: string, key: string, value: string, callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [setCustomData](#setcustomdata-1)(name: string, key: string, value: string, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AppAccountManager-setAccountExtraInfo(name: string, extraInfo: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-setAccountExtraInfo(name: string, extraInfo: string, callback: AsyncCallback<void>): void-End-->
 
@@ -5447,14 +5447,14 @@ Sets additional information for an application account. This API uses a promise 
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [setCustomData](#setcustomdata)
+> [setCustomData](#setcustomdata-2)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [setCustomData](#setcustomdata)(name: string, key: string, value: string)
+**Substitutes:** [setCustomData](#setcustomdata-2)(name: string, key: string, value: string)
 
 <!--Device-AppAccountManager-setAccountExtraInfo(name: string, extraInfo: string): Promise<void>--><!--Device-AppAccountManager-setAccountExtraInfo(name: string, extraInfo: string): Promise<void>-End-->
 
@@ -5496,14 +5496,14 @@ Sets data synchronization for an application account. This API uses an asynchron
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [setDataSyncEnabled](#setdatasyncenabled)
+> [setDataSyncEnabled](#setdatasyncenabled-1)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [setDataSyncEnabled](#setdatasyncenabled)(name: string, isEnabled: boolean, callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [setDataSyncEnabled](#setdatasyncenabled-1)(name: string, isEnabled: boolean, callback: AsyncCallback&lt;void&gt;)
 
 **Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -5544,14 +5544,14 @@ Sets data synchronization for an application account. This API uses a promise to
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [setDataSyncEnabled](#setdatasyncenabled)
+> [setDataSyncEnabled](#setdatasyncenabled-2)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [setDataSyncEnabled](#setdatasyncenabled)(name: string, isEnabled: boolean)
+**Substitutes:** [setDataSyncEnabled](#setdatasyncenabled-2)(name: string, isEnabled: boolean)
 
 **Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -5595,14 +5595,14 @@ Sets data to be associated with an application account. This API uses an asynchr
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [setCustomData](#setcustomdata)
+> [setCustomData](#setcustomdata-1)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [setCustomData](#setcustomdata)(name: string, key: string, value: string, callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [setCustomData](#setcustomdata-1)(name: string, key: string, value: string, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AppAccountManager-setAssociatedData(name: string, key: string, value: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-setAssociatedData(name: string, key: string, value: string, callback: AsyncCallback<void>): void-End-->
 
@@ -5642,14 +5642,14 @@ Sets data to be associated with an application account. This API uses a promise 
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [setCustomData](#setcustomdata)
+> [setCustomData](#setcustomdata-2)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [setCustomData](#setcustomdata)(name: string, key: string, value: string)
+**Substitutes:** [setCustomData](#setcustomdata-2)(name: string, key: string, value: string)
 
 <!--Device-AppAccountManager-setAssociatedData(name: string, key: string, value: string): Promise<void>--><!--Device-AppAccountManager-setAssociatedData(name: string, key: string, value: string): Promise<void>-End-->
 
@@ -5692,14 +5692,14 @@ Sets an authorization token of the specific authentication type for an applicati
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [setAuthToken](#setauthtoken)
+> [setAuthToken](#setauthtoken-1)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [setAuthToken](#setauthtoken)(name: string, authType: string, token: string, callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [setAuthToken](#setauthtoken-1)(name: string, authType: string, token: string, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AppAccountManager-setOAuthToken(name: string, authType: string, token: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-setOAuthToken(name: string, authType: string, token: string, callback: AsyncCallback<void>): void-End-->
 
@@ -5739,14 +5739,14 @@ Sets an authorization token of the specific authentication type for an applicati
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [setAuthToken](#setauthtoken)
+> [setAuthToken](#setauthtoken-2)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [setAuthToken](#setauthtoken)(name: string, authType: string, token: string)
+**Substitutes:** [setAuthToken](#setauthtoken-2)(name: string, authType: string, token: string)
 
 <!--Device-AppAccountManager-setOAuthToken(name: string, authType: string, token: string): Promise<void>--><!--Device-AppAccountManager-setOAuthToken(name: string, authType: string, token: string): Promise<void>-End-->
 
@@ -5795,14 +5795,14 @@ Sets the visibility of an authorization token to an application. This API uses a
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [setAuthTokenVisibility](#setauthtokenvisibility)
+> [setAuthTokenVisibility](#setauthtokenvisibility-1)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [setAuthTokenVisibility](#setauthtokenvisibility)( name: string, authType: string, bundleName: string, isVisible: boolean, callback: AsyncCallback&lt;void&gt; )
+**Substitutes:** [setAuthTokenVisibility](#setauthtokenvisibility-1)( name: string, authType: string, bundleName: string, isVisible: boolean, callback: AsyncCallback&lt;void&gt; )
 
 <!--Device-AppAccountManager-setOAuthTokenVisibility(      name: string,      authType: string,      bundleName: string,      isVisible: boolean,      callback: AsyncCallback<void>    ): void--><!--Device-AppAccountManager-setOAuthTokenVisibility(      name: string,      authType: string,      bundleName: string,      isVisible: boolean,      callback: AsyncCallback<void>    ): void-End-->
 
@@ -5844,14 +5844,14 @@ Sets the visibility of an authorization token to an application. This API uses a
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [setAuthTokenVisibility](#setauthtokenvisibility)
+> [setAuthTokenVisibility](#setauthtokenvisibility-2)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [setAuthTokenVisibility](#setauthtokenvisibility)(name: string, authType: string, bundleName: string, isVisible: boolean)
+**Substitutes:** [setAuthTokenVisibility](#setauthtokenvisibility-2)(name: string, authType: string, bundleName: string, isVisible: boolean)
 
 <!--Device-AppAccountManager-setOAuthTokenVisibility(name: string, authType: string, bundleName: string, isVisible: boolean): Promise<void>--><!--Device-AppAccountManager-setOAuthTokenVisibility(name: string, authType: string, bundleName: string, isVisible: boolean): Promise<void>-End-->
 

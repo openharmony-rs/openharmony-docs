@@ -29,7 +29,7 @@ import { ArkTSUtils } from '@kit.ArkTS';
 
 | Name | Description |
 | --- | --- |
-| [isSendable](arkts-arkts-utils-issendable-f.md#issendable) | Checks whether an ArkTS value is sendable. |
+| [isSendable](arkts-arkts-utils-issendable-f.md#issendable-1) | Checks whether an ArkTS value is sendable. |
 
 ### Classes
 

@@ -26,20 +26,20 @@ import { cacheDownload } from '@kit.BasicServicesKit';
 
 | Name | Description |
 | --- | --- |
-| [cancel](arkts-basicservices-cachedownload-cancel-f.md#cancel) | Cancels an ongoing download task based on the URL. The saved memory cache and file cache are not affected. |
-| [clearFileCache](arkts-basicservices-cachedownload-clearfilecache-f.md#clearfilecache) | Clears this file cache. |
-| [clearMemoryCache](arkts-basicservices-cachedownload-clearmemorycache-f.md#clearmemorycache) | Clears this memory cache. |
-| [download](arkts-basicservices-cachedownload-download-f.md#download) | Downloads a task from a specified URL. If the transfer is successful, the data is downloaded to the memory cache and file cache. |
-| [getDownloadInfo](arkts-basicservices-cachedownload-getdownloadinfo-f.md#getdownloadinfo) | Obtains the download information based on the URL. The download information is stored in the download information list in memory and is cleared when the application exits. |
-| [offDownloadError](arkts-basicservices-cachedownload-offdownloaderror-f.md#offdownloaderror) | Unsubscribes from the pre-download error events. This API uses an asynchronous callback to return the result. |
-| [offDownloadSuccess](arkts-basicservices-cachedownload-offdownloadsuccess-f.md#offdownloadsuccess) | Unsubscribes from the pre-download completion events. This API uses an asynchronous callback to return the result. |
-| [onDownloadError](arkts-basicservices-cachedownload-ondownloaderror-f.md#ondownloaderror) | Subscribes to the pre-download error events. This API uses an asynchronous callback to return the result. |
-| [onDownloadSuccess](arkts-basicservices-cachedownload-ondownloadsuccess-f.md#ondownloadsuccess) | Subscribes to the pre-download completion events. This API uses an asynchronous callback to return the result. |
-| [setDownloadInfoListSize](arkts-basicservices-cachedownload-setdownloadinfolistsize-f.md#setdownloadinfolistsize) | Sets the size of the download information list. |
-| [setFileCacheSize](arkts-basicservices-cachedownload-setfilecachesize-f.md#setfilecachesize) | Sets the upper limit of the file cache size for the **cacheDownload** component. |
-| [setGlobalRetryOptions](arkts-basicservices-cachedownload-setglobalretryoptions-f.md#setglobalretryoptions) | Sets retry options for all tasks. Used when task-specific retry configuration is not configured. |
-| [setGlobalTimeoutOptions](arkts-basicservices-cachedownload-setglobaltimeoutoptions-f.md#setglobaltimeoutoptions) | Sets timeout configuration for all tasks. Used when task-specific timeout configuration is not configured. |
-| [setMemoryCacheSize](arkts-basicservices-cachedownload-setmemorycachesize-f.md#setmemorycachesize) | Sets the upper limit of the memory cache size for the **cacheDownload** component. |
+| [cancel](arkts-basicservices-cachedownload-cancel-f.md#cancel-1) | Cancels an ongoing download task based on the URL. The saved memory cache and file cache are not affected. |
+| [clearFileCache](arkts-basicservices-cachedownload-clearfilecache-f.md#clearfilecache-1) | Clears this file cache. |
+| [clearMemoryCache](arkts-basicservices-cachedownload-clearmemorycache-f.md#clearmemorycache-1) | Clears this memory cache. |
+| [download](arkts-basicservices-cachedownload-download-f.md#download-1) | Downloads a task from a specified URL. If the transfer is successful, the data is downloaded to the memory cache and file cache. |
+| [getDownloadInfo](arkts-basicservices-cachedownload-getdownloadinfo-f.md#getdownloadinfo-1) | Obtains the download information based on the URL. The download information is stored in the download information list in memory and is cleared when the application exits. |
+| [offDownloadError](arkts-basicservices-cachedownload-offdownloaderror-f.md#offdownloaderror-1) | Unsubscribes from the pre-download error events. This API uses an asynchronous callback to return the result. |
+| [offDownloadSuccess](arkts-basicservices-cachedownload-offdownloadsuccess-f.md#offdownloadsuccess-1) | Unsubscribes from the pre-download completion events. This API uses an asynchronous callback to return the result. |
+| [onDownloadError](arkts-basicservices-cachedownload-ondownloaderror-f.md#ondownloaderror-1) | Subscribes to the pre-download error events. This API uses an asynchronous callback to return the result. |
+| [onDownloadSuccess](arkts-basicservices-cachedownload-ondownloadsuccess-f.md#ondownloadsuccess-1) | Subscribes to the pre-download completion events. This API uses an asynchronous callback to return the result. |
+| [setDownloadInfoListSize](arkts-basicservices-cachedownload-setdownloadinfolistsize-f.md#setdownloadinfolistsize-1) | Sets the size of the download information list. |
+| [setFileCacheSize](arkts-basicservices-cachedownload-setfilecachesize-f.md#setfilecachesize-1) | Sets the upper limit of the file cache size for the **cacheDownload** component. |
+| [setGlobalRetryOptions](arkts-basicservices-cachedownload-setglobalretryoptions-f.md#setglobalretryoptions-1) | Sets retry options for all tasks. Used when task-specific retry configuration is not configured. |
+| [setGlobalTimeoutOptions](arkts-basicservices-cachedownload-setglobaltimeoutoptions-f.md#setglobaltimeoutoptions-1) | Sets timeout configuration for all tasks. Used when task-specific timeout configuration is not configured. |
+| [setMemoryCacheSize](arkts-basicservices-cachedownload-setmemorycachesize-f.md#setmemorycachesize-1) | Sets the upper limit of the memory cache size for the **cacheDownload** component. |
 
 ### Interfaces
 

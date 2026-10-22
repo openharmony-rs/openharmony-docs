@@ -16,7 +16,7 @@ Image为图片组件，常用于在应用中显示图片。Image支持加载[Pix
 > 
 > - 图片格式支持SVG图源，SVG标签文档请参考[SVG标签说明](arkts-arkui-common-comp.md)。
 > 
-> - 动图的播放依赖于Image节点的可见性变化，其默认行为是不播放的。当节点可见时，通过回调启动动画，当节点不可见时，停止动画。可见性状态的判断是通过[onVisibleAreaChange](arkts-arkui-common-comp-commonmethod-c.md#onvisibleareachange)事件触发的，当可见阈值ratios大于0时，表明Image处于可见状态。
+> - 动图的播放依赖于Image节点的可见性变化，其默认行为是不播放的。当节点可见时，通过回调启动动画，当节点不可见时，停止动画。可见性状态的判断是通过[onVisibleAreaChange](arkts-arkui-common-comp-commonmethod-c.md#onvisibleareachange-1)事件触发的，当可见阈值ratios大于0时，表明Image处于可见状态。
 > 
 > - Image组件播放GIF动图时，帧时长取自GIF文件中各帧的delay time字段。当某帧的时长值小于等于0时，系统会将其修正为100ms；当某帧的时长值大于0时，系统直接使用该原始值，不做最小帧时长限制。 &gt;
 
@@ -103,7 +103,7 @@ antialiased(isAntialiased: Optional<boolean>)
 
 > **说明：** 
 > 
-> 如果图片设置了背景色属性([backgroundColor](arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor))，图片的抗锯齿属性设置为true不会影响背景色的
+> 如果图片设置了背景色属性([backgroundColor](arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor-1))，图片的抗锯齿属性设置为true不会影响背景色的
 > 锯齿效果。
 > 
 > 和[resizable](#resizable)一起使用时，该属性不生效。
@@ -216,7 +216,7 @@ colorFilter(value: ColorFilter | DrawingColorFilter | ResourceColor)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [ColorFilter](../arkts-apis/arkts-arkui-colorfilter-c.md) &#124; [DrawingColorFilter](arkts-arkui-image-comp-drawingcolorfilter-t.md) &#124; [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | 是 | 图像颜色的滤镜值。<br>ColorFilter、[DrawingColorFilter](arkts-arkui-image-comp-drawingcolorfilter-t.md)类型及SVG图源的相关说明，请参考[colorFilter](#colorfilter)的接口说明。[ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)类型的输入颜色值，默认按照[DrawingColorFilter](arkts-arkui-image-comp-drawingcolorfilter-t.md). [createBlendModeColorFilter](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-drawing-colorfilter-c.md#createblendmodecolorfilter)的SRC_ATOP模式进行绘制（该模式表示滤镜颜色与目标图像叠加，滤镜覆盖在目标上方）。 |
+| value | [ColorFilter](../arkts-apis/arkts-arkui-colorfilter-c.md) &#124; [DrawingColorFilter](arkts-arkui-image-comp-drawingcolorfilter-t.md) &#124; [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | 是 | 图像颜色的滤镜值。<br>ColorFilter、[DrawingColorFilter](arkts-arkui-image-comp-drawingcolorfilter-t.md)类型及SVG图源的相关说明，请参考[colorFilter](#colorfilter)的接口说明。[ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)类型的输入颜色值，默认按照[DrawingColorFilter](arkts-arkui-image-comp-drawingcolorfilter-t.md). [createBlendModeColorFilter](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-drawing-colorfilter-c.md#createblendmodecolorfilter-1)的SRC_ATOP模式进行绘制（该模式表示滤镜颜色与目标图像叠加，滤镜覆盖在目标上方）。 |
 
 ## contentTransition
 
@@ -332,9 +332,9 @@ enableAnalyzer(enable: boolean)
 
 分析图像要求是静态非矢量图，即svg、gif等图像类型不支持分析，支持传入[PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)进行分析，目前仅支持[RGBA_8888](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmapformat-e.md)类型，使用方式见[示例5（开启图像AI分析）](../../../reference/apis-arkui/arkui-ts/ts-basic-components-image.md#示例5开启图像ai分析)。
 
-[alt](#alt)占位图不支持分析，[objectRepeat](#objectrepeat)属性仅在取值为ImageRepeat.NoRepeat时支持分析，隐私遮罩属性[obscured](arkts-arkui-common-comp-commonmethod-c.md#obscured)打开时不支持分析。
+[alt](#alt-1)占位图不支持分析，[objectRepeat](#objectrepeat)属性仅在取值为ImageRepeat.NoRepeat时支持分析，隐私遮罩属性[obscured](arkts-arkui-common-comp-commonmethod-c.md#obscured)打开时不支持分析。
 
-基于完整原始图像进行分析，设置[clip](arkts-arkui-common-comp-commonmethod-c.md#clip)、[margin](arkts-arkui-common-comp-commonmethod-c.md#margin)、[borderRadius](arkts-arkui-common-comp-commonmethod-c.md#borderradius)、[position](arkts-arkui-common-comp-commonmethod-c.md#position)和[objectFit](#objectfit)属性导致图像显示不完整，或使用[renderMode](#rendermode)设置蒙层，仍基于完整原始图像进行分析。 [copyOption](#copyoption)属性不影响AI分析功能。
+基于完整原始图像进行分析，设置[clip](arkts-arkui-common-comp-commonmethod-c.md#clip-1)、[margin](arkts-arkui-common-comp-commonmethod-c.md#margin)、[borderRadius](arkts-arkui-common-comp-commonmethod-c.md#borderradius-1)、[position](arkts-arkui-common-comp-commonmethod-c.md#position)和[objectFit](#objectfit)属性导致图像显示不完整，或使用[renderMode](#rendermode)设置蒙层，仍基于完整原始图像进行分析。 [copyOption](#copyoption)属性不影响AI分析功能。
 
 当组件的参数类型为[AnimatedDrawableDescriptor](../arkts-apis/arkts-arkui-arkui-drawabledescriptor-animateddrawabledescriptor-c.md)时设置该属性不生效。
 
@@ -366,7 +366,7 @@ enableAnalyzer(enable: boolean)
 fillColor(value: ResourceColor)
 ```
 
-设置填充颜色。仅对SVG图源生效，设置后会替换SVG图片中所有可绘制元素的填充颜色。如需对png图片进行修改颜色，可以使用[colorFilter](#colorfilter)。
+设置填充颜色。仅对SVG图源生效，设置后会替换SVG图片中所有可绘制元素的填充颜色。如需对png图片进行修改颜色，可以使用[colorFilter](#colorfilter-1)。
 
 当组件的参数类型为[AnimatedDrawableDescriptor](../arkts-apis/arkts-arkui-arkui-drawabledescriptor-animateddrawabledescriptor-c.md)时设置该属性不生效。
 
@@ -394,7 +394,7 @@ fillColor(value: ResourceColor)
 fillColor(color: ResourceColor | ColorContent)
 ```
 
-设置填充颜色。仅对SVG图源生效，设置后会替换SVG图片中所有可绘制元素的填充颜色。如需对png图片进行修改颜色，可以使用[colorFilter](#colorfilter)。如果想重置填充颜色可以传入[ColorContent](arkts-arkui-image-comp-colorcontent-c.md)类型。
+设置填充颜色。仅对SVG图源生效，设置后会替换SVG图片中所有可绘制元素的填充颜色。如需对png图片进行修改颜色，可以使用[colorFilter](#colorfilter-1)。如果想重置填充颜色可以传入[ColorContent](arkts-arkui-image-comp-colorcontent-c.md)类型。
 
 当组件的参数类型为[AnimatedDrawableDescriptor](../arkts-apis/arkts-arkui-arkui-drawabledescriptor-animateddrawabledescriptor-c.md)时设置该属性不生效。
 
@@ -420,7 +420,7 @@ fillColor(color: ResourceColor | ColorContent)
 fillColor(color: ResourceColor | ColorContent | ColorMetrics)
 ```
 
-设置填充颜色。仅对SVG图源生效，设置后会替换SVG图片中所有可绘制元素的填充颜色。如需对png图片进行修改颜色，可以使用[colorFilter](#colorfilter)。如果想重置填充颜色可以传入[ColorContent](arkts-arkui-image-comp-colorcontent-c.md)类型。支持通过传入[ColorMetrics](../arkts-apis/arkts-arkui-graphics-colormetrics-c.md)类型设置P3色域颜色值&lt;!- -Del--&gt;，从API version 24开始，支持BT2020色域颜色值<!--DelEnd-->，可在支持高色域的设备上获得更丰富的色彩表现。
+设置填充颜色。仅对SVG图源生效，设置后会替换SVG图片中所有可绘制元素的填充颜色。如需对png图片进行修改颜色，可以使用[colorFilter](#colorfilter-1)。如果想重置填充颜色可以传入[ColorContent](arkts-arkui-image-comp-colorcontent-c.md)类型。支持通过传入[ColorMetrics](../arkts-apis/arkts-arkui-graphics-colormetrics-c.md)类型设置P3色域颜色值&lt;!- -Del--&gt;，从API version 24开始，支持BT2020色域颜色值<!--DelEnd-->，可在支持高色域的设备上获得更丰富的色彩表现。
 
 当组件的参数类型为[AnimatedDrawableDescriptor](../arkts-apis/arkts-arkui-arkui-drawabledescriptor-animateddrawabledescriptor-c.md)时设置该属性不生效。
 
@@ -1004,7 +1004,7 @@ orientation(orientation: ImageRotateOrientation) : ImageAttribute
 
 设置图像内容的显示方向。
 
-该属性对[alt](#alt)占位图不生效。
+该属性对[alt](#alt-1)占位图不生效。
 
 设置合法的[resizable](#resizable)时，该属性不生效。
 
@@ -1060,7 +1060,7 @@ renderMode(value: ImageRenderMode)
 
 设置图片的渲染模式。SVG类型图源不支持该属性。
 
-设置[ColorFilter](#colorfilter)时，该属性设置不生效。
+设置[ColorFilter](#colorfilter-1)时，该属性设置不生效。
 
 当组件的参数类型为[AnimatedDrawableDescriptor](../arkts-apis/arkts-arkui-arkui-drawabledescriptor-animateddrawabledescriptor-c.md)时设置该属性不生效。
 

@@ -10,7 +10,7 @@ declare class SwiperAttribute extends CommonMethod<SwiperAttribute>
 
 > **说明：** 
 
-> Swiper组件通用属性[clip](arkts-arkui-common-comp-commonmethod-c.md#clip)的默认值为true。
+> Swiper组件通用属性[clip](arkts-arkui-common-comp-commonmethod-c.md#clip-1)的默认值为true。
 
 **继承/实现关系：** SwiperAttribute extends CommonMethod&lt;SwiperAttribute&gt;
 
@@ -147,7 +147,7 @@ cachedCount(count: number, options: CachedCountOptions)
 
 > **说明：** 
 
-> - 当options的independent设置为true时，预加载子组件个数按count个数计算，与[displayCount](#displaycount)的分组swipeByGroup计算解耦。例如cachedCount的count为1时，会将当前显示子节点的前一个和后一个子组件预加载。
+> - 当options的independent设置为true时，预加载子组件个数按count个数计算，与[displayCount](#displaycount-2)的分组swipeByGroup计算解耦。例如cachedCount的count为1时，会将当前显示子节点的前一个和后一个子组件预加载。
 > 
 > - 当displayCount的swipeByGroup参数设为true，且options的independent为false（默认值）时，预加载子组件个数以组为基本单位。例如cachedCount的count为1，displayCount的value为2，displayCount的swipeByGroup为true时，会将当前显示组的前一组和后一组的各两个子组件预加载。
 > 
@@ -356,7 +356,7 @@ displayCount(value: number | string | SwiperAutoFill | ItemFillPolicy, swipeByGr
 
 使用ItemFillPolicy类型时，子元素主轴宽度会基于Swiper主轴宽度适应。将根据Swiper组件宽度对应断点类型确定显示个数。例如，设置断点类型为ItemFillPolicy.BREAKPOINT_DEFAULT时，在组件宽度相当于sm及更小断点区间时显示1列，相当于md断点区间时显示2列，相当于lg及更大断点区间时显示3列。
 
-参数说明参考[displayCount](#displaycount)。
+参数说明参考[displayCount](#displaycount-1)。
 
 **起始版本：** 22
 
@@ -383,7 +383,7 @@ displayCount(value: number | string | SwiperAutoFill | ItemFillPolicy, swipeByGr
 displayMode(value: SwiperDisplayMode)
 ```
 
-设置主轴方向上元素排列的模式，优先以[displayCount](#displaycount)设置的个数显示，displayCount未设置时本属性生效。
+设置主轴方向上元素排列的模式，优先以[displayCount](#displaycount-1)设置的个数显示，displayCount未设置时本属性生效。
 
 **起始版本：** 7
 
@@ -433,7 +433,7 @@ curve默认曲线为[interpolatingSpring](../arkts-apis/arkts-arkui-curves-inter
 effectMode(value: EdgeEffect)
 ```
 
-设置边缘滑动效果，[loop](#loop)为false或Swiper视窗内一屏显示所有子节点时生效。调用[SwiperController.changeIndex()](arkts-arkui-swiper-comp-swipercontroller-c.md#changeindex)、[SwiperController.showNext()](arkts-arkui-swiper-comp-swipercontroller-c.md#shownext)和[SwiperController.showPrevious()](arkts-arkui-swiper-comp-swipercontroller-c.md#showprevious)接口跳转至首尾页时不生效回弹。
+设置边缘滑动效果，[loop](#loop)为false或Swiper视窗内一屏显示所有子节点时生效。调用[SwiperController.changeIndex()](arkts-arkui-swiper-comp-swipercontroller-c.md#changeindex-1)、[SwiperController.showNext()](arkts-arkui-swiper-comp-swipercontroller-c.md#shownext)和[SwiperController.showPrevious()](arkts-arkui-swiper-comp-swipercontroller-c.md#showprevious)接口跳转至首尾页时不生效回弹。
 
 **起始版本：** 8
 
@@ -637,7 +637,7 @@ maintainVisibleContentPosition(enabled: boolean)
 
 设置显示区域上方或前方插入或删除数据时是否保持可见内容位置不变。适用于使用单一[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)作为Swiper子节点的情况，通过LazyForEach的[onDataAdd](arkts-arkui-lazyforeach-comp-datachangelistener-i.md#ondataadd)、[onDataDelete](arkts-arkui-lazyforeach-comp-datachangelistener-i.md#ondatadelete)等接口修改数据源。其他场景下，显示区域上方或前方插入或删除数据，可见内容位置会变化。
 
-在[displayCount](#displaycount)属性的swipeByGroup参数设置为true，即按组翻页生效时，一次在显示区域上方或前方插入或删除数据，且插入或删除的是一组节点数量倍数的数据量时，才能保持可见内容位置不变，否则可见内容位置可能会随每组数据重新分组改变。
+在[displayCount](#displaycount-1)属性的swipeByGroup参数设置为true，即按组翻页生效时，一次在显示区域上方或前方插入或删除数据，且插入或删除的是一组节点数量倍数的数据量时，才能保持可见内容位置不变，否则可见内容位置可能会随每组数据重新分组改变。
 
 **起始版本：** 20
 
@@ -1071,13 +1071,13 @@ indicatorStyle(value?: IndicatorStyle)
 > **说明：** 
 
 > 从API version 8开始支持，从API version 10开始废弃，建议使用
-> [indicator](#indicator)替代。
+> [indicator](#indicator-1)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 10
 
-**替代接口：** [indicator](#indicator)(value: DotIndicator | DigitIndicator | boolean)
+**替代接口：** [indicator](#indicator-1)(value: DotIndicator | DigitIndicator | boolean)
 
 <!--Device-SwiperAttribute-indicatorStyle(value?: IndicatorStyle): SwiperAttribute--><!--Device-SwiperAttribute-indicatorStyle(value?: IndicatorStyle): SwiperAttribute-End-->
 

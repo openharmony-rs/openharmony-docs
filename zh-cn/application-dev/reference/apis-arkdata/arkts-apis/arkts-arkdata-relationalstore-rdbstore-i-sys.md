@@ -1,4 +1,4 @@
-# RdbStore
+# RdbStore（系统接口）
 
 ```TypeScript
 interface RdbStore
@@ -8,7 +8,7 @@ interface RdbStore
 
 在使用以下API前，请先通过[getRdbStore](arkts-arkdata-relationalstore-getrdbstore-f.md)方法获取RdbStore实例，并使用该实例调用对应接口方法。
 
-在此基础上，建议优先使用[execute](arkts-arkdata-relationalstore-rdbstore-i.md#execute)方法完成数据库表结构和初始数据的初始化，以确保相关接口调用的前置条件已满足。
+在此基础上，建议优先使用[execute](arkts-arkdata-relationalstore-rdbstore-i.md#execute-1)方法完成数据库表结构和初始数据的初始化，以确保相关接口调用的前置条件已满足。
 
 **起始版本：** 9
 
@@ -1200,7 +1200,7 @@ update(
     ): void
 ```
 
-根据DataSharePredicates的指定实例对象更新数据库中的数据，使用callback异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](arkts-arkdata-relationalstore-rdbstore-i.md#query)或[querySql](arkts-arkdata-relationalstore-rdbstore-i.md#querysql)接口获取ResultSet后，调用[getValue](arkts-arkdata-relationalstore-resultset-i.md#getvalue)、[getString](arkts-arkdata-relationalstore-resultset-i.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
+根据DataSharePredicates的指定实例对象更新数据库中的数据，使用callback异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](arkts-arkdata-relationalstore-rdbstore-i.md#query-2)或[querySql](arkts-arkdata-relationalstore-rdbstore-i.md#querysql-2)接口获取ResultSet后，调用[getValue](arkts-arkdata-relationalstore-resultset-i.md#getvalue)、[getString](arkts-arkdata-relationalstore-resultset-i.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
 **起始版本：** 9
 
@@ -1414,7 +1414,7 @@ if (store != undefined) {
 update(table: string, values: ValuesBucket, predicates: dataSharePredicates.DataSharePredicates): Promise<number>
 ```
 
-根据DataSharePredicates的指定实例对象更新数据库中的数据，使用Promise异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](arkts-arkdata-relationalstore-rdbstore-i.md#query)或[querySql](arkts-arkdata-relationalstore-rdbstore-i.md#querysql)接口获取ResultSet后，调用[getValue](arkts-arkdata-relationalstore-resultset-i.md#getvalue)、[getString](arkts-arkdata-relationalstore-resultset-i.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
+根据DataSharePredicates的指定实例对象更新数据库中的数据，使用Promise异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](arkts-arkdata-relationalstore-rdbstore-i.md#query-2)或[querySql](arkts-arkdata-relationalstore-rdbstore-i.md#querysql-2)接口获取ResultSet后，调用[getValue](arkts-arkdata-relationalstore-resultset-i.md#getvalue)、[getString](arkts-arkdata-relationalstore-resultset-i.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
 **起始版本：** 9
 

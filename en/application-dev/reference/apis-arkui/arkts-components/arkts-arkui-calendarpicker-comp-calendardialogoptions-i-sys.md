@@ -1,4 +1,4 @@
-# CalendarDialogOptions
+# CalendarDialogOptions (System API)
 
 ```TypeScript
 declare interface CalendarDialogOptions extends CalendarOptions

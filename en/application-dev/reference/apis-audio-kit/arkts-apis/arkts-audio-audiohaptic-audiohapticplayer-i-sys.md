@@ -1,4 +1,4 @@
-# AudioHapticPlayer
+# AudioHapticPlayer (System API)
 
 ```TypeScript
 interface AudioHapticPlayer

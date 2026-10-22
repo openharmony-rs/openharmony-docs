@@ -18,7 +18,7 @@ function queryContacts(callback: AsyncCallback<Array<Contact>>): void
 
 **废弃版本：** 10
 
-**替代接口：** [queryContacts](#querycontacts)(context: Context, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
+**替代接口：** [queryContacts](#querycontacts-2)(context: Context, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -114,7 +114,7 @@ function queryContacts(holder: Holder, callback: AsyncCallback<Array<Contact>>):
 
 **废弃版本：** 10
 
-**替代接口：** [queryContacts](#querycontacts)(context: Context, holder: Holder, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
+**替代接口：** [queryContacts](#querycontacts-4)(context: Context, holder: Holder, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -220,7 +220,7 @@ function queryContacts(attrs: ContactAttributes, callback: AsyncCallback<Array<C
 
 **废弃版本：** 10
 
-**替代接口：** [queryContacts](#querycontacts)(context: Context, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
+**替代接口：** [queryContacts](#querycontacts-6)(context: Context, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -322,7 +322,7 @@ function queryContacts(holder: Holder, attrs: ContactAttributes, callback: Async
 
 **废弃版本：** 10
 
-**替代接口：** [queryContacts](#querycontacts)(context: Context, holder: Holder, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
+**替代接口：** [queryContacts](#querycontacts-8)(context: Context, holder: Holder, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -434,7 +434,7 @@ function queryContacts(holder?: Holder, attrs?: ContactAttributes): Promise<Arra
 
 **废弃版本：** 10
 
-**替代接口：** [queryContacts](#querycontacts)(context: Context, holder?: Holder, attrs?: ContactAttributes)
+**替代接口：** [queryContacts](#querycontacts-10)(context: Context, holder?: Holder, attrs?: ContactAttributes)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 

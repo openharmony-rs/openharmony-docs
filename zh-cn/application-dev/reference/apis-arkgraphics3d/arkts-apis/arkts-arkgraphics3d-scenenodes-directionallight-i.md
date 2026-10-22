@@ -4,7 +4,7 @@
 export interface DirectionalLight extends Light
 ```
 
-平行光类型，继承自Light。
+平行光类型，继承自[Light](arkts-arkgraphics3d-scenenodes-light-i.md)。
 
 **继承/实现关系：** DirectionalLight extends [Light](arkts-arkgraphics3d-scenenodes-light-i.md)
 

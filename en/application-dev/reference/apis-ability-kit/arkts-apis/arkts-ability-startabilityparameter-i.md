@@ -4,7 +4,7 @@
 export interface StartAbilityParameter
 ```
 
-The module defines the parameters for starting an ability. The parameters can be used as input parameters in [startAbility](arkts-ability-featureability-startability-f.md#startability) to start the specified ability.
+The module defines the parameters for starting an ability. The parameters can be used as input parameters in [startAbility](arkts-ability-featureability-startability-f.md#startability-1) to start the specified ability.
 
 **Since:** 6
 

@@ -1,4 +1,4 @@
-# PlaybackStrategy
+# PlaybackStrategy (System API)
 
 ```TypeScript
 interface PlaybackStrategy

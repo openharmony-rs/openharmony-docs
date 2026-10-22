@@ -1,4 +1,4 @@
-# Session
+# Session (System API)
 
 ```TypeScript
 interface Session

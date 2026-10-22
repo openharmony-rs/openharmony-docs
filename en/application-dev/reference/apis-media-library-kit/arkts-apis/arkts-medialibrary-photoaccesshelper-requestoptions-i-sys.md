@@ -1,4 +1,4 @@
-# RequestOptions
+# RequestOptions (System API)
 
 ```TypeScript
 interface RequestOptions

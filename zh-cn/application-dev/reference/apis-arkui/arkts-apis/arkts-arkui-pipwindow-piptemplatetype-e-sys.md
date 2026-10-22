@@ -1,4 +1,4 @@
-# PiPTemplateType
+# PiPTemplateType（系统接口）
 
 ```TypeScript
 enum PiPTemplateType

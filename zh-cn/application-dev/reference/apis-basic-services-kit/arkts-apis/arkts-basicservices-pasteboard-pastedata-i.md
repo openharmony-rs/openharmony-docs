@@ -4,7 +4,7 @@
 interface PasteData
 ```
 
-剪贴板内容对象。剪贴板内容包含一个或者多个内容条目（[PasteDataRecord](arkts-basicservices-pasteboard-pastedatarecord-i.md)）以及属性描述对象（[PasteDataProperty](arkts-basicservices-pasteboard-pastedataproperty-i.md)）。在调用PasteData的接口前，需要先通过[createData()](arkts-basicservices-pasteboard-createdata-f.md#createdata)或[getData()](arkts-basicservices-pasteboard-systempasteboard-i.md#getdata)获取一个PasteData对象。
+剪贴板内容对象。剪贴板内容包含一个或者多个内容条目（[PasteDataRecord](arkts-basicservices-pasteboard-pastedatarecord-i.md)）以及属性描述对象（[PasteDataProperty](arkts-basicservices-pasteboard-pastedataproperty-i.md)）。在调用PasteData的接口前，需要先通过[createData()](arkts-basicservices-pasteboard-createdata-f.md#createdata-1)或[getData()](arkts-basicservices-pasteboard-systempasteboard-i.md#getdata-1)获取一个PasteData对象。
 
 **起始版本：** 6
 
@@ -743,7 +743,7 @@ addHtmlRecord(htmlText: string): void
 
 **废弃版本：** 9
 
-**替代接口：** [addRecord](#addrecord)(mimeType: string, value: ValueType)
+**替代接口：** [addRecord](#addrecord-2)(mimeType: string, value: ValueType)
 
 <!--Device-PasteData-addHtmlRecord(htmlText: string): void--><!--Device-PasteData-addHtmlRecord(htmlText: string): void-End-->
 
@@ -775,7 +775,7 @@ addTextRecord(text: string): void
 
 **废弃版本：** 9
 
-**替代接口：** [addRecord](#addrecord)(mimeType: string, value: ValueType)
+**替代接口：** [addRecord](#addrecord-2)(mimeType: string, value: ValueType)
 
 <!--Device-PasteData-addTextRecord(text: string): void--><!--Device-PasteData-addTextRecord(text: string): void-End-->
 
@@ -806,7 +806,7 @@ addUriRecord(uri: string): void
 
 **废弃版本：** 9
 
-**替代接口：** [addRecord](#addrecord)(mimeType: string, value: ValueType)
+**替代接口：** [addRecord](#addrecord-2)(mimeType: string, value: ValueType)
 
 <!--Device-PasteData-addUriRecord(uri: string): void--><!--Device-PasteData-addUriRecord(uri: string): void-End-->
 
@@ -837,7 +837,7 @@ addWantRecord(want: Want): void
 
 **废弃版本：** 9
 
-**替代接口：** [addRecord](#addrecord)(mimeType: string, value: ValueType)
+**替代接口：** [addRecord](#addrecord-2)(mimeType: string, value: ValueType)
 
 <!--Device-PasteData-addWantRecord(want: Want): void--><!--Device-PasteData-addWantRecord(want: Want): void-End-->
 

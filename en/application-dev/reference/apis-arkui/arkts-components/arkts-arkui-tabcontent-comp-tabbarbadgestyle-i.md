@@ -6,7 +6,7 @@ declare interface TabBarBadgeStyle
 
 Represents a tab bar badge style object.
 
-**Since:** 26.0.1
+**Since:** 26.2.0
 
 <!--Device-unnamed-declare interface TabBarBadgeStyle--><!--Device-unnamed-declare interface TabBarBadgeStyle-End-->
 
@@ -22,11 +22,11 @@ Maximum count of the badge. When the badge value exceeds this count, the badge d
 
 **Type:** number
 
-**Since:** 26.0.1
+**Since:** 26.2.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
 
 <!--Device-TabBarBadgeStyle-maxCount?: number--><!--Device-TabBarBadgeStyle-maxCount?: number-End-->
 
@@ -42,11 +42,11 @@ Badge value. If this parameter is not set or set to **undefined**, the badge is 
 
 **Type:** [TabBarBadgeType](arkts-arkui-tabcontent-comp-tabbarbadgetype-t.md)
 
-**Since:** 26.0.1
+**Since:** 26.2.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
 
 <!--Device-TabBarBadgeStyle-value?: TabBarBadgeType--><!--Device-TabBarBadgeStyle-value?: TabBarBadgeType-End-->
 

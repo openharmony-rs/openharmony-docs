@@ -22,96 +22,96 @@ import { call } from '@kit.TelephonyKit';
 
 | Name | Description |
 | --- | --- |
-| [answerCall](arkts-telephony-call-answercall-f.md#answercall) | Answers a call. This API uses an asynchronous callback to return the result. |
-| [formatPhoneNumber](arkts-telephony-call-formatphonenumber-f.md#formatphonenumber) | Formats a phone number based on specified formatting options. This API uses an asynchronous callback to return the result. |
-| [formatPhoneNumber](arkts-telephony-call-formatphonenumber-f.md#formatphonenumber) | Formats a phone number based on specified formatting options. This API uses a promise to return the result. |
-| [formatPhoneNumber](arkts-telephony-call-formatphonenumber-f.md#formatphonenumber) | Formats a phone number. This API uses an asynchronous callback to return the result. |
-| [formatPhoneNumberToE164](arkts-telephony-call-formatphonenumbertoe164-f.md#formatphonenumbertoe1641) | Converts a phone number into the E.164 format. This API uses an asynchronous callback to return the result. |
-| [formatPhoneNumberToE164](arkts-telephony-call-formatphonenumbertoe164-f.md#formatphonenumbertoe1642) | Converts a phone number into the E.164 format. This API uses a promise to return the result. |
-| [getCallState](arkts-telephony-call-getcallstate-f.md#getcallstate) | Obtains the call status. This API uses an asynchronous callback to return the result. |
-| [getCallState](arkts-telephony-call-getcallstate-f.md#getcallstate) | Obtains the call status. This API uses a promise to return the result. |
-| [getCallStateSync](arkts-telephony-call-getcallstatesync-f.md#getcallstatesync) | Obtains the call status. |
-| [getCallTransferInfo](arkts-telephony-call-getcalltransferinfo-f.md#getcalltransferinfo) | Obtains call transfer information with the phone number. This API uses a promise to return the result. |
-| [hangUpCall](arkts-telephony-call-hangupcall-f.md#hangupcall) | Ends a call. This API uses an asynchronous callback to return the result. |
-| [hasCall](arkts-telephony-call-hascall-f.md#hascall) | Checks whether a call is in progress. This API uses an asynchronous callback to return the result. |
-| [hasCall](arkts-telephony-call-hascall-f.md#hascall) | Checks whether a call is in progress. This API uses a promise to return the result. |
-| [hasCallSync](arkts-telephony-call-hascallsync-f.md#hascallsync) | Checks whether a call is in progress. |
-| [hasVoiceCapability](arkts-telephony-call-hasvoicecapability-f.md#hasvoicecapability) | Checks whether a device supports voice calls. |
-| [isEmergencyPhoneNumber](arkts-telephony-call-isemergencyphonenumber-f.md#isemergencyphonenumber) | Checks whether the called number is an emergency number based on the phone number. This API uses an asynchronous callback to return the result. |
-| [isEmergencyPhoneNumber](arkts-telephony-call-isemergencyphonenumber-f.md#isemergencyphonenumber) | Checks whether the called number is an emergency number based on the phone number. This API uses a promise to return the result. |
-| [isEmergencyPhoneNumber](arkts-telephony-call-isemergencyphonenumber-f.md#isemergencyphonenumber) | Checks whether the called number is an emergency number. This API uses an asynchronous callback to return the result. |
-| [makeCall](arkts-telephony-call-makecall-f.md#makecall) | Launches the call screen and displays the dialed number. This API uses an asynchronous callback to return the result. This API can be called only in a UIAbility. |
-| [makeCall](arkts-telephony-call-makecall-f.md#makecall) | Launches the call screen and displays the dialed number. This API uses a promise to return the result. This API can be called only in a UIAbility. |
-| [makeCall](arkts-telephony-call-makecall-f.md#makecall) | Launches the call screen and displays the dialed number. This API uses a promise to return the result. This API can be called only in a UIAbility. |
-| [makeCall](arkts-telephony-call-makecall-f.md#makecall) | Launches the call screen and displays the dialed number. This API uses a promise to return the result. You need to declare the **ohos.permission.START_ABILITIES_FROM_BACKGROUND** permission if you want to call the API in the background. |
-| [makeCallWithToken](arkts-telephony-call-makecallwithtoken-f.md#makecallwithtoken) | Go to the dial screen and the called number is displayed.The authentication challenge value is returned. |
-| [makeDirectCall](arkts-telephony-call-makedirectcall-f.md#makedirectcall) | Application make calls with one tap. |
-| [rejectCall](arkts-telephony-call-rejectcall-f.md#rejectcall) | Rejects a call. This API uses an asynchronous callback to return the result. |
-| [dial](arkts-telephony-call-dial-f.md#dial) | Initiates a call. You can set call options as needed. This API uses an asynchronous callback to return the result. |
-| [dial](arkts-telephony-call-dial-f.md#dial) | Initiates a call. You can set call options as needed. This API uses a promise to return the result. |
-| [dial](arkts-telephony-call-dial-f.md#dial) | Initiates a call. This API uses an asynchronous callback to return the result. |
+| [answerCall](arkts-telephony-call-answercall-f.md#answercall-3) | Answers a call. This API uses an asynchronous callback to return the result. |
+| [formatPhoneNumber](arkts-telephony-call-formatphonenumber-f.md#formatphonenumber-1) | Formats a phone number based on specified formatting options. This API uses an asynchronous callback to return the result. |
+| [formatPhoneNumber](arkts-telephony-call-formatphonenumber-f.md#formatphonenumber-2) | Formats a phone number based on specified formatting options. This API uses a promise to return the result. |
+| [formatPhoneNumber](arkts-telephony-call-formatphonenumber-f.md#formatphonenumber-3) | Formats a phone number. This API uses an asynchronous callback to return the result. |
+| [formatPhoneNumberToE164](arkts-telephony-call-formatphonenumbertoe164-f.md#formatphonenumbertoe164-1) | Converts a phone number into the E.164 format. This API uses an asynchronous callback to return the result. |
+| [formatPhoneNumberToE164](arkts-telephony-call-formatphonenumbertoe164-f.md#formatphonenumbertoe164-2) | Converts a phone number into the E.164 format. This API uses a promise to return the result. |
+| [getCallState](arkts-telephony-call-getcallstate-f.md#getcallstate-1) | Obtains the call status. This API uses an asynchronous callback to return the result. |
+| [getCallState](arkts-telephony-call-getcallstate-f.md#getcallstate-2) | Obtains the call status. This API uses a promise to return the result. |
+| [getCallStateSync](arkts-telephony-call-getcallstatesync-f.md#getcallstatesync-1) | Obtains the call status. |
+| [getCallTransferInfo](arkts-telephony-call-getcalltransferinfo-f.md#getcalltransferinfo-1) | Obtains call transfer information with the phone number. This API uses a promise to return the result. |
+| [hangUpCall](arkts-telephony-call-hangupcall-f.md#hangupcall-3) | Ends a call. This API uses an asynchronous callback to return the result. |
+| [hasCall](arkts-telephony-call-hascall-f.md#hascall-1) | Checks whether a call is in progress. This API uses an asynchronous callback to return the result. |
+| [hasCall](arkts-telephony-call-hascall-f.md#hascall-2) | Checks whether a call is in progress. This API uses a promise to return the result. |
+| [hasCallSync](arkts-telephony-call-hascallsync-f.md#hascallsync-1) | Checks whether a call is in progress. |
+| [hasVoiceCapability](arkts-telephony-call-hasvoicecapability-f.md#hasvoicecapability-1) | Checks whether a device supports voice calls. |
+| [isEmergencyPhoneNumber](arkts-telephony-call-isemergencyphonenumber-f.md#isemergencyphonenumber-1) | Checks whether the called number is an emergency number based on the phone number. This API uses an asynchronous callback to return the result. |
+| [isEmergencyPhoneNumber](arkts-telephony-call-isemergencyphonenumber-f.md#isemergencyphonenumber-2) | Checks whether the called number is an emergency number based on the phone number. This API uses a promise to return the result. |
+| [isEmergencyPhoneNumber](arkts-telephony-call-isemergencyphonenumber-f.md#isemergencyphonenumber-3) | Checks whether the called number is an emergency number. This API uses an asynchronous callback to return the result. |
+| [makeCall](arkts-telephony-call-makecall-f.md#makecall-1) | Launches the call screen and displays the dialed number. This API uses an asynchronous callback to return the result. This API can be called only in a UIAbility. |
+| [makeCall](arkts-telephony-call-makecall-f.md#makecall-2) | Launches the call screen and displays the dialed number. This API uses a promise to return the result. This API can be called only in a UIAbility. |
+| [makeCall](arkts-telephony-call-makecall-f.md#makecall-3) | Launches the call screen and displays the dialed number. This API uses a promise to return the result. This API can be called only in a UIAbility. |
+| [makeCall](arkts-telephony-call-makecall-f.md#makecall-4) | Launches the call screen and displays the dialed number. This API uses a promise to return the result. You need to declare the **ohos.permission.START_ABILITIES_FROM_BACKGROUND** permission if you want to call the API in the background. |
+| [makeCallWithToken](arkts-telephony-call-makecallwithtoken-f.md#makecallwithtoken-1) | Go to the dial screen and the called number is displayed.The authentication challenge value is returned. |
+| [makeDirectCall](arkts-telephony-call-makedirectcall-f.md#makedirectcall-1) | Application make calls with one tap. |
+| [rejectCall](arkts-telephony-call-rejectcall-f.md#rejectcall-4) | Rejects a call. This API uses an asynchronous callback to return the result. |
+| [dial](arkts-telephony-call-dial-f.md#dial-1) | Initiates a call. You can set call options as needed. This API uses an asynchronous callback to return the result. |
+| [dial](arkts-telephony-call-dial-f.md#dial-2) | Initiates a call. You can set call options as needed. This API uses a promise to return the result. |
+| [dial](arkts-telephony-call-dial-f.md#dial-3) | Initiates a call. This API uses an asynchronous callback to return the result. |
 
 <!--Del-->
 ### Functions(System API)
 
 | Name | Description |
 | --- | --- |
-| [answerCall](arkts-telephony-call-answercall-f-sys.md#answercall) | Answers a call. This API uses an asynchronous callback to return the result. |
-| [answerCall](arkts-telephony-call-answercall-f-sys.md#answercall) | Answers a call. This API uses a promise to return the result. |
-| [answerCall](arkts-telephony-call-answercall-f-sys.md#answercall) | Answers a call. This API uses a promise to return the result. |
-| [answerCall](arkts-telephony-call-answercall-f-sys.md#answercall) | Answers the incoming rtt |
-| [cancelCallUpgrade](arkts-telephony-call-cancelcallupgrade-f-sys.md#cancelcallupgrade) | Cancels the upgrade of a video call. This API uses a promise to return the result. |
-| [cancelMuted](arkts-telephony-call-cancelmuted-f-sys.md#cancelmuted) | Cancels call muting. This API uses an asynchronous callback to return the result. |
-| [cancelMuted](arkts-telephony-call-cancelmuted-f-sys.md#cancelmuted) | Cancels call muting. This API uses a promise to return the result. |
-| [canSetCallTransferTime](arkts-telephony-call-cansetcalltransfertime-f-sys.md#cansetcalltransfertime) | Checks whether the call forwarding time can be set. This API uses an asynchronous callback to return the result. |
-| [canSetCallTransferTime](arkts-telephony-call-cansetcalltransfertime-f-sys.md#cansetcalltransfertime) | Checks whether the call forwarding time can be set. This API uses a promise to return the result. |
-| [closeUnfinishedUssd](arkts-telephony-call-closeunfinishedussd-f-sys.md#closeunfinishedussd) | Cancels the unfinished USSD services. This API uses an asynchronous callback to return the result. |
-| [closeUnfinishedUssd](arkts-telephony-call-closeunfinishedussd-f-sys.md#closeunfinishedussd) | Cancels the unfinished USSD services. This API uses a promise to return the result. |
-| [combineConference](arkts-telephony-call-combineconference-f-sys.md#combineconference) | Combines two calls into a conference call. This API uses an asynchronous callback to return the result. |
-| [combineConference](arkts-telephony-call-combineconference-f-sys.md#combineconference) | Combines two calls into a conference call. This API uses a promise to return the result. |
-| [controlCamera](arkts-telephony-call-controlcamera-f-sys.md#controlcamera) | Uses the specified camera to make a video call. If **cameraId** is left empty, the camera is disabled. This API uses a promise to return the result. |
-| [dialCall](arkts-telephony-call-dialcall-f-sys.md#dialcall) | Initiates a call. You can set call options as needed. This API uses an asynchronous callback to return the result. |
-| [dialCall](arkts-telephony-call-dialcall-f-sys.md#dialcall) | Initiates a call. You can set call options as needed. This API uses a promise to return the result. |
-| [dialCall](arkts-telephony-call-dialcall-f-sys.md#dialcall) | Initiates a call. This API uses an asynchronous callback to return the result. |
-| [disableImsSwitch](arkts-telephony-call-disableimsswitch-f-sys.md#disableimsswitch) | Disables the IMS service. This API uses an asynchronous callback to return the result. |
-| [disableImsSwitch](arkts-telephony-call-disableimsswitch-f-sys.md#disableimsswitch) | Disables the IMS service. This API uses a promise to return the result. |
-| [enableImsSwitch](arkts-telephony-call-enableimsswitch-f-sys.md#enableimsswitch) | Enables the IMS service. This API uses an asynchronous callback to return the result. |
-| [enableImsSwitch](arkts-telephony-call-enableimsswitch-f-sys.md#enableimsswitch) | Enables the IMS service. This API uses a promise to return the result. |
-| [getCallIdListForConference](arkts-telephony-call-getcallidlistforconference-f-sys.md#getcallidlistforconference) | Obtains the list of call IDs in a conference. This API uses an asynchronous callback to return the result. |
-| [getCallIdListForConference](arkts-telephony-call-getcallidlistforconference-f-sys.md#getcallidlistforconference) | Obtains the list of call IDs in a conference. This API uses a promise to return the result. |
-| [getCallRestrictionStatus](arkts-telephony-call-getcallrestrictionstatus-f-sys.md#getcallrestrictionstatus) | Obtains the call restriction status. This API uses an asynchronous callback to return the result. |
-| [getCallRestrictionStatus](arkts-telephony-call-getcallrestrictionstatus-f-sys.md#getcallrestrictionstatus) | Obtains the call restriction status. This API uses a promise to return the result. |
-| [getCallTransferInfo](arkts-telephony-call-getcalltransferinfo-f-sys.md#getcalltransferinfo) | Obtains call transfer information. This API uses an asynchronous callback to return the result. |
-| [getCallTransferInfo](arkts-telephony-call-getcalltransferinfo-f-sys.md#getcalltransferinfo) | Obtains call transfer information. This API uses a promise to return the result. |
-| [getCallWaitingStatus](arkts-telephony-call-getcallwaitingstatus-f-sys.md#getcallwaitingstatus) | Obtains the call waiting status. This API uses an asynchronous callback to return the result. |
-| [getCallWaitingStatus](arkts-telephony-call-getcallwaitingstatus-f-sys.md#getcallwaitingstatus) | Obtains the call waiting status. This API uses a promise to return the result. |
-| [getMainCallId](arkts-telephony-call-getmaincallid-f-sys.md#getmaincallid) | Obtains the main call ID. This API uses an asynchronous callback to return the result. |
-| [getMainCallId](arkts-telephony-call-getmaincallid-f-sys.md#getmaincallid) | Obtains the main call ID. This API uses a promise to return the result. |
-| [getSubCallIdList](arkts-telephony-call-getsubcallidlist-f-sys.md#getsubcallidlist) | Obtains the list of subcall IDs. This API uses an asynchronous callback to return the result. |
-| [getSubCallIdList](arkts-telephony-call-getsubcallidlist-f-sys.md#getsubcallidlist) | Obtains the list of subcall IDs. This API uses a promise to return the result. |
-| [getVoNRState](arkts-telephony-call-getvonrstate-f-sys.md#getvonrstate) | Obtains the status of the VoNR switch. This API uses an asynchronous callback to return the result. |
-| [getVoNRState](arkts-telephony-call-getvonrstate-f-sys.md#getvonrstate) | Obtains the status of the VoNR switch. This API uses a promise to return the result. |
-| [hangUpCall](arkts-telephony-call-hangupcall-f-sys.md#hangupcall) | Ends a call. This API uses an asynchronous callback to return the result. |
-| [hangUpCall](arkts-telephony-call-hangupcall-f-sys.md#hangupcall) | Ends a call. This API uses a promise to return the result. |
-| [holdCall](arkts-telephony-call-holdcall-f-sys.md#holdcall) | Holds a call based on the specified call ID. This API uses an asynchronous callback to return the result. |
-| [holdCall](arkts-telephony-call-holdcall-f-sys.md#holdcall) | Holds a call based on the specified call ID. This API uses a promise to return the result. |
-| [inputDialerSpecialCode](arkts-telephony-call-inputdialerspecialcode-f-sys.md#inputdialerspecialcode) | Performs a secret code broadcast. This API uses an asynchronous callback to return the result. |
-| [inputDialerSpecialCode](arkts-telephony-call-inputdialerspecialcode-f-sys.md#inputdialerspecialcode) | Performs a secret code broadcast. This API uses a promise to return the result. |
-| [isImsSwitchEnabled](arkts-telephony-call-isimsswitchenabled-f-sys.md#isimsswitchenabled) | Checks whether the IMS service is enabled. This API uses an asynchronous callback to return the result. |
-| [isImsSwitchEnabled](arkts-telephony-call-isimsswitchenabled-f-sys.md#isimsswitchenabled) | Checks whether the IMS service is enabled. This API uses a promise to return the result. |
-| [isImsSwitchEnabledSync](arkts-telephony-call-isimsswitchenabledsync-f-sys.md#isimsswitchenabledsync) | Checks whether the IMS service is enabled. This API returns the result synchronously. |
-| [isInEmergencyCall](arkts-telephony-call-isinemergencycall-f-sys.md#isinemergencycall) | Checks whether a call is an emergency call. This API uses an asynchronous callback to return the result. |
-| [isInEmergencyCall](arkts-telephony-call-isinemergencycall-f-sys.md#isinemergencycall) | Checks whether a call is an emergency call. This API uses a promise to return the result. |
-| [isNewCallAllowed](arkts-telephony-call-isnewcallallowed-f-sys.md#isnewcallallowed) | Checks whether a new call is allowed. This API uses an asynchronous callback to return the result. |
-| [isNewCallAllowed](arkts-telephony-call-isnewcallallowed-f-sys.md#isnewcallallowed) | Checks whether a new call is allowed. This API uses a promise to return the result. |
-| [isRinging](arkts-telephony-call-isringing-f-sys.md#isringing) | Checks whether the ringtone is playing. This API uses an asynchronous callback to return the result. |
-| [isRinging](arkts-telephony-call-isringing-f-sys.md#isringing) | Checks whether the ringtone is playing. This API uses a promise to return the result. |
-| [joinConference](arkts-telephony-call-joinconference-f-sys.md#joinconference) | Joins a conference call. This API uses an asynchronous callback to return the result. |
-| [joinConference](arkts-telephony-call-joinconference-f-sys.md#joinconference) | Joins a conference call. This API uses a promise to return the result. |
-| [kickOutFromConference](arkts-telephony-call-kickoutfromconference-f-sys.md#kickoutfromconference) | Removes a specified call from a conference call. This API uses an asynchronous callback to return the result. |
-| [kickOutFromConference](arkts-telephony-call-kickoutfromconference-f-sys.md#kickoutfromconference) | Removes a specified call from a conference call. This API uses a promise to return the result. |
-| [muteRinger](arkts-telephony-call-muteringer-f-sys.md#muteringer) | Mutes the ringtone while it is playing. It does not work if the ringtone has been muted. This API uses an asynchronous callback to return the result. |
-| [muteRinger](arkts-telephony-call-muteringer-f-sys.md#muteringer) | Mutes the ringtone while it is playing. It does not work if the ringtone has been muted. This API uses a promise to return the result. |
+| [answerCall](arkts-telephony-call-answercall-f-sys.md#answercall-1) | Answers a call. This API uses an asynchronous callback to return the result. |
+| [answerCall](arkts-telephony-call-answercall-f-sys.md#answercall-2) | Answers a call. This API uses a promise to return the result. |
+| [answerCall](arkts-telephony-call-answercall-f-sys.md#answercall-4) | Answers a call. This API uses a promise to return the result. |
+| [answerCall](arkts-telephony-call-answercall-f-sys.md#answercall-5) | Answers the incoming rtt |
+| [cancelCallUpgrade](arkts-telephony-call-cancelcallupgrade-f-sys.md#cancelcallupgrade-1) | Cancels the upgrade of a video call. This API uses a promise to return the result. |
+| [cancelMuted](arkts-telephony-call-cancelmuted-f-sys.md#cancelmuted-1) | Cancels call muting. This API uses an asynchronous callback to return the result. |
+| [cancelMuted](arkts-telephony-call-cancelmuted-f-sys.md#cancelmuted-2) | Cancels call muting. This API uses a promise to return the result. |
+| [canSetCallTransferTime](arkts-telephony-call-cansetcalltransfertime-f-sys.md#cansetcalltransfertime-1) | Checks whether the call forwarding time can be set. This API uses an asynchronous callback to return the result. |
+| [canSetCallTransferTime](arkts-telephony-call-cansetcalltransfertime-f-sys.md#cansetcalltransfertime-2) | Checks whether the call forwarding time can be set. This API uses a promise to return the result. |
+| [closeUnfinishedUssd](arkts-telephony-call-closeunfinishedussd-f-sys.md#closeunfinishedussd-1) | Cancels the unfinished USSD services. This API uses an asynchronous callback to return the result. |
+| [closeUnfinishedUssd](arkts-telephony-call-closeunfinishedussd-f-sys.md#closeunfinishedussd-2) | Cancels the unfinished USSD services. This API uses a promise to return the result. |
+| [combineConference](arkts-telephony-call-combineconference-f-sys.md#combineconference-1) | Combines two calls into a conference call. This API uses an asynchronous callback to return the result. |
+| [combineConference](arkts-telephony-call-combineconference-f-sys.md#combineconference-2) | Combines two calls into a conference call. This API uses a promise to return the result. |
+| [controlCamera](arkts-telephony-call-controlcamera-f-sys.md#controlcamera-1) | Uses the specified camera to make a video call. If **cameraId** is left empty, the camera is disabled. This API uses a promise to return the result. |
+| [dialCall](arkts-telephony-call-dialcall-f-sys.md#dialcall-1) | Initiates a call. You can set call options as needed. This API uses an asynchronous callback to return the result. |
+| [dialCall](arkts-telephony-call-dialcall-f-sys.md#dialcall-2) | Initiates a call. You can set call options as needed. This API uses a promise to return the result. |
+| [dialCall](arkts-telephony-call-dialcall-f-sys.md#dialcall-3) | Initiates a call. This API uses an asynchronous callback to return the result. |
+| [disableImsSwitch](arkts-telephony-call-disableimsswitch-f-sys.md#disableimsswitch-1) | Disables the IMS service. This API uses an asynchronous callback to return the result. |
+| [disableImsSwitch](arkts-telephony-call-disableimsswitch-f-sys.md#disableimsswitch-2) | Disables the IMS service. This API uses a promise to return the result. |
+| [enableImsSwitch](arkts-telephony-call-enableimsswitch-f-sys.md#enableimsswitch-1) | Enables the IMS service. This API uses an asynchronous callback to return the result. |
+| [enableImsSwitch](arkts-telephony-call-enableimsswitch-f-sys.md#enableimsswitch-2) | Enables the IMS service. This API uses a promise to return the result. |
+| [getCallIdListForConference](arkts-telephony-call-getcallidlistforconference-f-sys.md#getcallidlistforconference-1) | Obtains the list of call IDs in a conference. This API uses an asynchronous callback to return the result. |
+| [getCallIdListForConference](arkts-telephony-call-getcallidlistforconference-f-sys.md#getcallidlistforconference-2) | Obtains the list of call IDs in a conference. This API uses a promise to return the result. |
+| [getCallRestrictionStatus](arkts-telephony-call-getcallrestrictionstatus-f-sys.md#getcallrestrictionstatus-1) | Obtains the call restriction status. This API uses an asynchronous callback to return the result. |
+| [getCallRestrictionStatus](arkts-telephony-call-getcallrestrictionstatus-f-sys.md#getcallrestrictionstatus-2) | Obtains the call restriction status. This API uses a promise to return the result. |
+| [getCallTransferInfo](arkts-telephony-call-getcalltransferinfo-f-sys.md#getcalltransferinfo-2) | Obtains call transfer information. This API uses an asynchronous callback to return the result. |
+| [getCallTransferInfo](arkts-telephony-call-getcalltransferinfo-f-sys.md#getcalltransferinfo-3) | Obtains call transfer information. This API uses a promise to return the result. |
+| [getCallWaitingStatus](arkts-telephony-call-getcallwaitingstatus-f-sys.md#getcallwaitingstatus-1) | Obtains the call waiting status. This API uses an asynchronous callback to return the result. |
+| [getCallWaitingStatus](arkts-telephony-call-getcallwaitingstatus-f-sys.md#getcallwaitingstatus-2) | Obtains the call waiting status. This API uses a promise to return the result. |
+| [getMainCallId](arkts-telephony-call-getmaincallid-f-sys.md#getmaincallid-1) | Obtains the main call ID. This API uses an asynchronous callback to return the result. |
+| [getMainCallId](arkts-telephony-call-getmaincallid-f-sys.md#getmaincallid-2) | Obtains the main call ID. This API uses a promise to return the result. |
+| [getSubCallIdList](arkts-telephony-call-getsubcallidlist-f-sys.md#getsubcallidlist-1) | Obtains the list of subcall IDs. This API uses an asynchronous callback to return the result. |
+| [getSubCallIdList](arkts-telephony-call-getsubcallidlist-f-sys.md#getsubcallidlist-2) | Obtains the list of subcall IDs. This API uses a promise to return the result. |
+| [getVoNRState](arkts-telephony-call-getvonrstate-f-sys.md#getvonrstate-1) | Obtains the status of the VoNR switch. This API uses an asynchronous callback to return the result. |
+| [getVoNRState](arkts-telephony-call-getvonrstate-f-sys.md#getvonrstate-2) | Obtains the status of the VoNR switch. This API uses a promise to return the result. |
+| [hangUpCall](arkts-telephony-call-hangupcall-f-sys.md#hangupcall-1) | Ends a call. This API uses an asynchronous callback to return the result. |
+| [hangUpCall](arkts-telephony-call-hangupcall-f-sys.md#hangupcall-2) | Ends a call. This API uses a promise to return the result. |
+| [holdCall](arkts-telephony-call-holdcall-f-sys.md#holdcall-1) | Holds a call based on the specified call ID. This API uses an asynchronous callback to return the result. |
+| [holdCall](arkts-telephony-call-holdcall-f-sys.md#holdcall-2) | Holds a call based on the specified call ID. This API uses a promise to return the result. |
+| [inputDialerSpecialCode](arkts-telephony-call-inputdialerspecialcode-f-sys.md#inputdialerspecialcode-1) | Performs a secret code broadcast. This API uses an asynchronous callback to return the result. |
+| [inputDialerSpecialCode](arkts-telephony-call-inputdialerspecialcode-f-sys.md#inputdialerspecialcode-2) | Performs a secret code broadcast. This API uses a promise to return the result. |
+| [isImsSwitchEnabled](arkts-telephony-call-isimsswitchenabled-f-sys.md#isimsswitchenabled-1) | Checks whether the IMS service is enabled. This API uses an asynchronous callback to return the result. |
+| [isImsSwitchEnabled](arkts-telephony-call-isimsswitchenabled-f-sys.md#isimsswitchenabled-2) | Checks whether the IMS service is enabled. This API uses a promise to return the result. |
+| [isImsSwitchEnabledSync](arkts-telephony-call-isimsswitchenabledsync-f-sys.md#isimsswitchenabledsync-1) | Checks whether the IMS service is enabled. This API returns the result synchronously. |
+| [isInEmergencyCall](arkts-telephony-call-isinemergencycall-f-sys.md#isinemergencycall-1) | Checks whether a call is an emergency call. This API uses an asynchronous callback to return the result. |
+| [isInEmergencyCall](arkts-telephony-call-isinemergencycall-f-sys.md#isinemergencycall-2) | Checks whether a call is an emergency call. This API uses a promise to return the result. |
+| [isNewCallAllowed](arkts-telephony-call-isnewcallallowed-f-sys.md#isnewcallallowed-1) | Checks whether a new call is allowed. This API uses an asynchronous callback to return the result. |
+| [isNewCallAllowed](arkts-telephony-call-isnewcallallowed-f-sys.md#isnewcallallowed-2) | Checks whether a new call is allowed. This API uses a promise to return the result. |
+| [isRinging](arkts-telephony-call-isringing-f-sys.md#isringing-1) | Checks whether the ringtone is playing. This API uses an asynchronous callback to return the result. |
+| [isRinging](arkts-telephony-call-isringing-f-sys.md#isringing-2) | Checks whether the ringtone is playing. This API uses a promise to return the result. |
+| [joinConference](arkts-telephony-call-joinconference-f-sys.md#joinconference-1) | Joins a conference call. This API uses an asynchronous callback to return the result. |
+| [joinConference](arkts-telephony-call-joinconference-f-sys.md#joinconference-2) | Joins a conference call. This API uses a promise to return the result. |
+| [kickOutFromConference](arkts-telephony-call-kickoutfromconference-f-sys.md#kickoutfromconference-1) | Removes a specified call from a conference call. This API uses an asynchronous callback to return the result. |
+| [kickOutFromConference](arkts-telephony-call-kickoutfromconference-f-sys.md#kickoutfromconference-2) | Removes a specified call from a conference call. This API uses a promise to return the result. |
+| [muteRinger](arkts-telephony-call-muteringer-f-sys.md#muteringer-1) | Mutes the ringtone while it is playing. It does not work if the ringtone has been muted. This API uses an asynchronous callback to return the result. |
+| [muteRinger](arkts-telephony-call-muteringer-f-sys.md#muteringer-2) | Mutes the ringtone while it is playing. It does not work if the ringtone has been muted. This API uses a promise to return the result. |
 | [off('callDetailsChange')](arkts-telephony-call-off-f-sys.md#offcalldetailschange) | Unsubscribes from **callDetailsChange** events. This API uses an asynchronous callback to return the result. |
 | [off('callEventChange')](arkts-telephony-call-off-f-sys.md#offcalleventchange) | Unsubscribes from **callEventChange** events. This API uses an asynchronous callback to return the result. |
 | [off('callDisconnectedCause')](arkts-telephony-call-off-f-sys.md#offcalldisconnectedcause) | Unsubscribes from **callDisconnectedCause** events. This API uses an asynchronous callback to return the result. |
@@ -122,9 +122,9 @@ import { call } from '@kit.TelephonyKit';
 | [off('callSessionEvent')](arkts-telephony-call-off-f-sys.md#offcallsessionevent) | Unsubscribes from **callSessionEvent** events. This API uses an asynchronous callback to return the result. |
 | [off('peerDimensionsChange')](arkts-telephony-call-off-f-sys.md#offpeerdimensionschange) | Unsubscribes from **peerDimensionsChange** events. This API uses an asynchronous callback to return the result. |
 | [off('cameraCapabilitiesChange')](arkts-telephony-call-off-f-sys.md#offcameracapabilitieschange) | Unsubscribes from **cameraCapabilitiesChange** events. This API uses an asynchronous callback to return the result. |
-| [offReceiveRttMessage](arkts-telephony-call-offreceiverttmessage-f-sys.md#offreceiverttmessage) | Unsubscribe from the rtt message event. |
-| [offRttErrCause](arkts-telephony-call-offrtterrcause-f-sys.md#offrtterrcause) | Unsubscribe from the rtt error report event. |
-| [offRttModifyInd](arkts-telephony-call-offrttmodifyind-f-sys.md#offrttmodifyind) | Unsubscribe from the rtt modify indication. |
+| [offReceiveRttMessage](arkts-telephony-call-offreceiverttmessage-f-sys.md#offreceiverttmessage-1) | Unsubscribe from the rtt message event. |
+| [offRttErrCause](arkts-telephony-call-offrtterrcause-f-sys.md#offrtterrcause-1) | Unsubscribe from the rtt error report event. |
+| [offRttModifyInd](arkts-telephony-call-offrttmodifyind-f-sys.md#offrttmodifyind-1) | Unsubscribe from the rtt modify indication. |
 | [on('callDetailsChange')](arkts-telephony-call-on-f-sys.md#oncalldetailschange) | Subscribes to **callDetailsChange** events. This API uses an asynchronous callback to return the result. |
 | [on('callEventChange')](arkts-telephony-call-on-f-sys.md#oncalleventchange) | Subscribes to **callEventChange** events. This API uses an asynchronous callback to return the result. |
 | [on('callDisconnectedCause')](arkts-telephony-call-on-f-sys.md#oncalldisconnectedcause) | Subscribes to **callDisconnectedCause** events. This API uses an asynchronous callback to return the result. |
@@ -135,54 +135,54 @@ import { call } from '@kit.TelephonyKit';
 | [on('callSessionEvent')](arkts-telephony-call-on-f-sys.md#oncallsessionevent) | Subscribes to **callSessionEvent** events. This API uses an asynchronous callback to return the result. |
 | [on('peerDimensionsChange')](arkts-telephony-call-on-f-sys.md#onpeerdimensionschange) | Subscribes to **peerDimensionsChange** events. This API uses an asynchronous callback to return the result. |
 | [on('cameraCapabilitiesChange')](arkts-telephony-call-on-f-sys.md#oncameracapabilitieschange) | Subscribes to **cameraCapabilitiesChange** events. This API uses an asynchronous callback to return the result. |
-| [onReceiveRttMessage](arkts-telephony-call-onreceiverttmessage-f-sys.md#onreceiverttmessage) | Subscribe to the rtt message event. |
-| [onRttErrCause](arkts-telephony-call-onrtterrcause-f-sys.md#onrtterrcause) | Subscribe to the rtt error event. |
-| [onRttModifyInd](arkts-telephony-call-onrttmodifyind-f-sys.md#onrttmodifyind) | Subscribe to the rtt modify indication. |
-| [postDialProceed](arkts-telephony-call-postdialproceed-f-sys.md#postdialproceed) | Continues a call by playing a post-dial DTMF string. This API uses an asynchronous callback to return the result. |
-| [postDialProceed](arkts-telephony-call-postdialproceed-f-sys.md#postdialproceed) | Continues a call by playing a post-dial DTMF string. This API uses a promise to return the result. |
-| [preloadCallUI](arkts-telephony-call-preloadcallui-f-sys.md#preloadcallui) | Preload callUI. |
-| [rejectCall](arkts-telephony-call-rejectcall-f-sys.md#rejectcall) | Rejects a call. This API uses an asynchronous callback to return the result. |
-| [rejectCall](arkts-telephony-call-rejectcall-f-sys.md#rejectcall) | Rejects a call. This API uses a promise to return the result. |
-| [rejectCall](arkts-telephony-call-rejectcall-f-sys.md#rejectcall) | Rejects a call. This API uses an asynchronous callback to return the result. |
-| [rejectCall](arkts-telephony-call-rejectcall-f-sys.md#rejectcall) | Rejects a call. This API uses an asynchronous callback to return the result. |
-| [removeMissedIncomingCallNotification](arkts-telephony-call-removemissedincomingcallnotification-f-sys.md#removemissedincomingcallnotification) | Removes missed call notifications. This API uses an asynchronous callback to return the result. |
-| [removeMissedIncomingCallNotification](arkts-telephony-call-removemissedincomingcallnotification-f-sys.md#removemissedincomingcallnotification) | Removes missed call notifications. This API uses a promise to return the result. |
-| [sendCallUiEvent](arkts-telephony-call-sendcalluievent-f-sys.md#sendcalluievent) | Sends a call UI event. This API uses a promise to return the result. |
-| [sendRttMessage](arkts-telephony-call-sendrttmessage-f-sys.md#sendrttmessage) | Send rtt message. |
-| [sendUssdResponse](arkts-telephony-call-sendussdresponse-f-sys.md#sendussdresponse) | Sends a response to the Unstructured Supplementary Service Data (USSD) service to the carrier. |
-| [separateConference](arkts-telephony-call-separateconference-f-sys.md#separateconference) | Separates calls from a conference call. This API uses an asynchronous callback to return the result. |
-| [separateConference](arkts-telephony-call-separateconference-f-sys.md#separateconference) | Separates calls from a conference call. This API uses a promise to return the result. |
-| [setAudioDevice](arkts-telephony-call-setaudiodevice-f-sys.md#setaudiodevice) | Sets the audio device for a call. This API uses an asynchronous callback to return the result. |
-| [setAudioDevice](arkts-telephony-call-setaudiodevice-f-sys.md#setaudiodevice) | Sets the audio device for a call. This API uses a promise to return the result. |
-| [setCallRestriction](arkts-telephony-call-setcallrestriction-f-sys.md#setcallrestriction) | Sets the call restriction status. This API uses an asynchronous callback to return the result. |
-| [setCallRestriction](arkts-telephony-call-setcallrestriction-f-sys.md#setcallrestriction) | Sets the call restriction status. This API uses a promise to return the result. |
-| [setCallRestrictionPassword](arkts-telephony-call-setcallrestrictionpassword-f-sys.md#setcallrestrictionpassword) | Changes the call barring password. This API uses an asynchronous callback to return the result. |
-| [setCallRestrictionPassword](arkts-telephony-call-setcallrestrictionpassword-f-sys.md#setcallrestrictionpassword) | Changes the call barring password. This API uses a promise to return the result. |
-| [setCallTransfer](arkts-telephony-call-setcalltransfer-f-sys.md#setcalltransfer) | Sets call transfer information. This API uses an asynchronous callback to return the result. |
-| [setCallTransfer](arkts-telephony-call-setcalltransfer-f-sys.md#setcalltransfer) | Sets call transfer information. This API uses a promise to return the result. |
-| [setCallWaiting](arkts-telephony-call-setcallwaiting-f-sys.md#setcallwaiting) | Specifies whether to enable the call waiting service. This API uses an asynchronous callback to return the result. |
-| [setCallWaiting](arkts-telephony-call-setcallwaiting-f-sys.md#setcallwaiting) | Specifies whether to enable the call waiting service. This API uses a promise to return the result. |
-| [setDeviceDirection](arkts-telephony-call-setdevicedirection-f-sys.md#setdevicedirection) | Sets the video call screen to follow the device direction. This API uses a promise to return the result. |
-| [setDisplaySurface](arkts-telephony-call-setdisplaysurface-f-sys.md#setdisplaysurface) | Sets the remote display window. This API uses a promise to return the result. |
-| [setMuted](arkts-telephony-call-setmuted-f-sys.md#setmuted) | Sets call muting. This API uses an asynchronous callback to return the result. |
-| [setMuted](arkts-telephony-call-setmuted-f-sys.md#setmuted) | Sets call muting. This API uses a promise to return the result. |
-| [setPreviewSurface](arkts-telephony-call-setpreviewsurface-f-sys.md#setpreviewsurface) | Sets the local preview window. This API uses a promise to return the result. |
-| [setRttCapability](arkts-telephony-call-setrttcapability-f-sys.md#setrttcapability) | Set rtt capability. |
-| [setVoNRState](arkts-telephony-call-setvonrstate-f-sys.md#setvonrstate) | Sets the status of the VoNR switch. This API uses an asynchronous callback to return the result. |
-| [setVoNRState](arkts-telephony-call-setvonrstate-f-sys.md#setvonrstate) | Sets the status of the VoNR switch. This API uses a promise to return the result. |
-| [startDTMF](arkts-telephony-call-startdtmf-f-sys.md#startdtmf) | Starts playing DTMF tones. This API uses an asynchronous callback to return the result. |
-| [startDTMF](arkts-telephony-call-startdtmf-f-sys.md#startdtmf) | Starts playing DTMF tones. This API uses a promise to return the result. |
-| [startRtt](arkts-telephony-call-startrtt-f-sys.md#startrtt) | Start rtt. |
-| [stopDTMF](arkts-telephony-call-stopdtmf-f-sys.md#stopdtmf) | Stops playing DTMF tones. This API uses an asynchronous callback to return the result. |
-| [stopDTMF](arkts-telephony-call-stopdtmf-f-sys.md#stopdtmf) | Stops playing DTMF tones. This API uses a promise to return the result. |
-| [stopRtt](arkts-telephony-call-stoprtt-f-sys.md#stoprtt) | Stop rtt. |
-| [switchCall](arkts-telephony-call-switchcall-f-sys.md#switchcall) | Switches a call. This API uses an asynchronous callback to return the result. |
-| [switchCall](arkts-telephony-call-switchcall-f-sys.md#switchcall) | Switches a call. This API uses a promise to return the result. |
-| [unHoldCall](arkts-telephony-call-unholdcall-f-sys.md#unholdcall) | Unholds a call based on the specified call ID. This API uses an asynchronous callback to return the result. |
-| [unHoldCall](arkts-telephony-call-unholdcall-f-sys.md#unholdcall) | Unholds a call based on the specified call ID. This API uses a promise to return the result. |
-| [unloadCallUI](arkts-telephony-call-unloadcallui-f-sys.md#unloadcallui) | Unload callUI. |
-| [updateImsCallMode](arkts-telephony-call-updateimscallmode-f-sys.md#updateimscallmode) | Updates the IMS call mode. This API uses an asynchronous callback to return the result. |
-| [updateImsCallMode](arkts-telephony-call-updateimscallmode-f-sys.md#updateimscallmode) | Updates the IMS call mode. This API uses a promise to return the result. |
+| [onReceiveRttMessage](arkts-telephony-call-onreceiverttmessage-f-sys.md#onreceiverttmessage-1) | Subscribe to the rtt message event. |
+| [onRttErrCause](arkts-telephony-call-onrtterrcause-f-sys.md#onrtterrcause-1) | Subscribe to the rtt error event. |
+| [onRttModifyInd](arkts-telephony-call-onrttmodifyind-f-sys.md#onrttmodifyind-1) | Subscribe to the rtt modify indication. |
+| [postDialProceed](arkts-telephony-call-postdialproceed-f-sys.md#postdialproceed-1) | Continues a call by playing a post-dial DTMF string. This API uses an asynchronous callback to return the result. |
+| [postDialProceed](arkts-telephony-call-postdialproceed-f-sys.md#postdialproceed-2) | Continues a call by playing a post-dial DTMF string. This API uses a promise to return the result. |
+| [preloadCallUI](arkts-telephony-call-preloadcallui-f-sys.md#preloadcallui-1) | Preload callUI. |
+| [rejectCall](arkts-telephony-call-rejectcall-f-sys.md#rejectcall-1) | Rejects a call. This API uses an asynchronous callback to return the result. |
+| [rejectCall](arkts-telephony-call-rejectcall-f-sys.md#rejectcall-2) | Rejects a call. This API uses a promise to return the result. |
+| [rejectCall](arkts-telephony-call-rejectcall-f-sys.md#rejectcall-3) | Rejects a call. This API uses an asynchronous callback to return the result. |
+| [rejectCall](arkts-telephony-call-rejectcall-f-sys.md#rejectcall-5) | Rejects a call. This API uses an asynchronous callback to return the result. |
+| [removeMissedIncomingCallNotification](arkts-telephony-call-removemissedincomingcallnotification-f-sys.md#removemissedincomingcallnotification-1) | Removes missed call notifications. This API uses an asynchronous callback to return the result. |
+| [removeMissedIncomingCallNotification](arkts-telephony-call-removemissedincomingcallnotification-f-sys.md#removemissedincomingcallnotification-2) | Removes missed call notifications. This API uses a promise to return the result. |
+| [sendCallUiEvent](arkts-telephony-call-sendcalluievent-f-sys.md#sendcalluievent-1) | Sends a call UI event. This API uses a promise to return the result. |
+| [sendRttMessage](arkts-telephony-call-sendrttmessage-f-sys.md#sendrttmessage-1) | Send rtt message. |
+| [sendUssdResponse](arkts-telephony-call-sendussdresponse-f-sys.md#sendussdresponse-1) | Sends a response to the Unstructured Supplementary Service Data (USSD) service to the carrier. |
+| [separateConference](arkts-telephony-call-separateconference-f-sys.md#separateconference-1) | Separates calls from a conference call. This API uses an asynchronous callback to return the result. |
+| [separateConference](arkts-telephony-call-separateconference-f-sys.md#separateconference-2) | Separates calls from a conference call. This API uses a promise to return the result. |
+| [setAudioDevice](arkts-telephony-call-setaudiodevice-f-sys.md#setaudiodevice-1) | Sets the audio device for a call. This API uses an asynchronous callback to return the result. |
+| [setAudioDevice](arkts-telephony-call-setaudiodevice-f-sys.md#setaudiodevice-2) | Sets the audio device for a call. This API uses a promise to return the result. |
+| [setCallRestriction](arkts-telephony-call-setcallrestriction-f-sys.md#setcallrestriction-1) | Sets the call restriction status. This API uses an asynchronous callback to return the result. |
+| [setCallRestriction](arkts-telephony-call-setcallrestriction-f-sys.md#setcallrestriction-2) | Sets the call restriction status. This API uses a promise to return the result. |
+| [setCallRestrictionPassword](arkts-telephony-call-setcallrestrictionpassword-f-sys.md#setcallrestrictionpassword-1) | Changes the call barring password. This API uses an asynchronous callback to return the result. |
+| [setCallRestrictionPassword](arkts-telephony-call-setcallrestrictionpassword-f-sys.md#setcallrestrictionpassword-2) | Changes the call barring password. This API uses a promise to return the result. |
+| [setCallTransfer](arkts-telephony-call-setcalltransfer-f-sys.md#setcalltransfer-1) | Sets call transfer information. This API uses an asynchronous callback to return the result. |
+| [setCallTransfer](arkts-telephony-call-setcalltransfer-f-sys.md#setcalltransfer-2) | Sets call transfer information. This API uses a promise to return the result. |
+| [setCallWaiting](arkts-telephony-call-setcallwaiting-f-sys.md#setcallwaiting-1) | Specifies whether to enable the call waiting service. This API uses an asynchronous callback to return the result. |
+| [setCallWaiting](arkts-telephony-call-setcallwaiting-f-sys.md#setcallwaiting-2) | Specifies whether to enable the call waiting service. This API uses a promise to return the result. |
+| [setDeviceDirection](arkts-telephony-call-setdevicedirection-f-sys.md#setdevicedirection-1) | Sets the video call screen to follow the device direction. This API uses a promise to return the result. |
+| [setDisplaySurface](arkts-telephony-call-setdisplaysurface-f-sys.md#setdisplaysurface-1) | Sets the remote display window. This API uses a promise to return the result. |
+| [setMuted](arkts-telephony-call-setmuted-f-sys.md#setmuted-1) | Sets call muting. This API uses an asynchronous callback to return the result. |
+| [setMuted](arkts-telephony-call-setmuted-f-sys.md#setmuted-2) | Sets call muting. This API uses a promise to return the result. |
+| [setPreviewSurface](arkts-telephony-call-setpreviewsurface-f-sys.md#setpreviewsurface-1) | Sets the local preview window. This API uses a promise to return the result. |
+| [setRttCapability](arkts-telephony-call-setrttcapability-f-sys.md#setrttcapability-1) | Set rtt capability. |
+| [setVoNRState](arkts-telephony-call-setvonrstate-f-sys.md#setvonrstate-1) | Sets the status of the VoNR switch. This API uses an asynchronous callback to return the result. |
+| [setVoNRState](arkts-telephony-call-setvonrstate-f-sys.md#setvonrstate-2) | Sets the status of the VoNR switch. This API uses a promise to return the result. |
+| [startDTMF](arkts-telephony-call-startdtmf-f-sys.md#startdtmf-1) | Starts playing DTMF tones. This API uses an asynchronous callback to return the result. |
+| [startDTMF](arkts-telephony-call-startdtmf-f-sys.md#startdtmf-2) | Starts playing DTMF tones. This API uses a promise to return the result. |
+| [startRtt](arkts-telephony-call-startrtt-f-sys.md#startrtt-1) | Start rtt. |
+| [stopDTMF](arkts-telephony-call-stopdtmf-f-sys.md#stopdtmf-1) | Stops playing DTMF tones. This API uses an asynchronous callback to return the result. |
+| [stopDTMF](arkts-telephony-call-stopdtmf-f-sys.md#stopdtmf-2) | Stops playing DTMF tones. This API uses a promise to return the result. |
+| [stopRtt](arkts-telephony-call-stoprtt-f-sys.md#stoprtt-1) | Stop rtt. |
+| [switchCall](arkts-telephony-call-switchcall-f-sys.md#switchcall-1) | Switches a call. This API uses an asynchronous callback to return the result. |
+| [switchCall](arkts-telephony-call-switchcall-f-sys.md#switchcall-2) | Switches a call. This API uses a promise to return the result. |
+| [unHoldCall](arkts-telephony-call-unholdcall-f-sys.md#unholdcall-1) | Unholds a call based on the specified call ID. This API uses an asynchronous callback to return the result. |
+| [unHoldCall](arkts-telephony-call-unholdcall-f-sys.md#unholdcall-2) | Unholds a call based on the specified call ID. This API uses a promise to return the result. |
+| [unloadCallUI](arkts-telephony-call-unloadcallui-f-sys.md#unloadcallui-1) | Unload callUI. |
+| [updateImsCallMode](arkts-telephony-call-updateimscallmode-f-sys.md#updateimscallmode-1) | Updates the IMS call mode. This API uses an asynchronous callback to return the result. |
+| [updateImsCallMode](arkts-telephony-call-updateimscallmode-f-sys.md#updateimscallmode-2) | Updates the IMS call mode. This API uses a promise to return the result. |
 <!--DelEnd-->
 
 ### Interfaces

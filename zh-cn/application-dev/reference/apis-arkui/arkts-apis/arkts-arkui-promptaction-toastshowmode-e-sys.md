@@ -1,4 +1,4 @@
-# ToastShowMode
+# ToastShowMode（系统接口）
 
 ```TypeScript
 export enum ToastShowMode

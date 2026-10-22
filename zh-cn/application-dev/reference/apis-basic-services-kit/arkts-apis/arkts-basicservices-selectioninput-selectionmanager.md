@@ -35,9 +35,9 @@ import { selectionManager } from '@kit.BasicServicesKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [createPanel](arkts-basicservices-selectionmanager-createpanel-f.md#createpanel) | 创建划词面板，用于向用户展示业务相关的操作界面或文本处理结果，使用完毕后需调用[destroyPanel](arkts-basicservices-selectionmanager-destroypanel-f.md)销毁面板释放资源。使用Promise异步回调。 |
-| [destroyPanel](arkts-basicservices-selectionmanager-destroypanel-f.md#destroypanel) | 销毁划词面板。与[createPanel](arkts-basicservices-selectionmanager-createpanel-f.md)搭配使用，用于销毁由createPanel()创建的面板对象。使用Promise异步回调。 |
-| [getSelectionContent](arkts-basicservices-selectionmanager-getselectioncontent-f.md#getselectioncontent) | 获取选中文本的内容。使用Promise异步回调。需在[on('selectionCompleted')](arkts-basicservices-selectionmanager-on-f.md#onselectioncompleted)回调中调用，且仅在划词完成事件触发后有效。 |
+| [createPanel](arkts-basicservices-selectionmanager-createpanel-f.md#createpanel-1) | 创建划词面板，用于向用户展示业务相关的操作界面或文本处理结果，使用完毕后需调用[destroyPanel](arkts-basicservices-selectionmanager-destroypanel-f.md)销毁面板释放资源。使用Promise异步回调。 |
+| [destroyPanel](arkts-basicservices-selectionmanager-destroypanel-f.md#destroypanel-1) | 销毁划词面板。与[createPanel](arkts-basicservices-selectionmanager-createpanel-f.md)搭配使用，用于销毁由createPanel()创建的面板对象。使用Promise异步回调。 |
+| [getSelectionContent](arkts-basicservices-selectionmanager-getselectioncontent-f.md#getselectioncontent-1) | 获取选中文本的内容。使用Promise异步回调。需在[on('selectionCompleted')](arkts-basicservices-selectionmanager-on-f.md#onselectioncompleted)回调中调用，且仅在划词完成事件触发后有效。 |
 | [off('selectionCompleted')](arkts-basicservices-selectionmanager-off-f.md#offselectioncompleted) | 取消订阅划词完成事件，与[on('selectionCompleted')](arkts-basicservices-selectionmanager-on-f.md#onselectioncompleted)搭配使用。 |
 | [on('selectionCompleted')](arkts-basicservices-selectionmanager-on-f.md#onselectioncompleted) | 订阅划词完成事件，与[off('selectionCompleted')](arkts-basicservices-selectionmanager-off-f.md#offselectioncompleted)搭配使用取消订阅。 |
 

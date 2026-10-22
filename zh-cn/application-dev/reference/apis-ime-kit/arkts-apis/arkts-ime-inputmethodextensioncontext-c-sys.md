@@ -1,4 +1,4 @@
-# InputMethodExtensionContext
+# InputMethodExtensionContext（系统接口）
 
 ```TypeScript
 declare class InputMethodExtensionContext extends ExtensionContext
@@ -492,7 +492,7 @@ terminateSelf(callback: AsyncCallback<void>): void
 
 **废弃版本：** 10
 
-**替代接口：** [destroy](arkts-ime-inputmethodextensioncontext-c.md#destroy)(callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [destroy](arkts-ime-inputmethodextensioncontext-c.md#destroy-1)(callback: AsyncCallback&lt;void&gt;)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

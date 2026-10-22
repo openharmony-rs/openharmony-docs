@@ -31,30 +31,30 @@ import { i18n } from '@kit.LocalizationKit';
 
 | Name | Description |
 | --- | --- |
-| [getCalendar](arkts-localization-i18n-getcalendar-f.md#getcalendar) | Obtains the **Calendar** object for the specified locale and calendar type. |
-| [getChineseCalendar](arkts-localization-i18n-getchinesecalendar-f.md#getchinesecalendar) | Obtains the ChineseCalendar object for the specified locale. |
-| [getCurrency](arkts-localization-i18n-getcurrency-f.md#getcurrency) | Obtains the **currency** object of the specified locale environment. |
-| [getInstance](arkts-localization-i18n-getinstance-f.md#getinstance) | Creates an **IndexUtil** object. |
-| [getLineInstance](arkts-localization-i18n-getlineinstance-f.md#getlineinstance) | Obtains a **BreakIterator** object. The **BreakIterator** object maintains an internal break iterator that can be used to access various line break points. |
-| [getSimpleDateTimeFormatByPattern](arkts-localization-i18n-getsimpledatetimeformatbypattern-f.md#getsimpledatetimeformatbypattern) | Obtains a **SimpleDateTimeFormat** object based on the specified pattern string. For details about the difference between the objects obtained by this API and [getSimpleDateTimeFormatBySkeleton](arkts-localization-i18n-getsimpledatetimeformatbyskeleton-f.md#getsimpledatetimeformatbyskeleton), see the examples in [SimpleDateTimeFormat.format](arkts-localization-i18n-simpledatetimeformat-c.md#format). |
-| [getSimpleDateTimeFormatBySkeleton](arkts-localization-i18n-getsimpledatetimeformatbyskeleton-f.md#getsimpledatetimeformatbyskeleton) | Obtains a **SimpleDateTimeFormat** object based on the specified skeleton. For details about the difference between the objects obtained by this API and [getSimpleDateTimeFormatByPattern](arkts-localization-i18n-getsimpledatetimeformatbypattern-f.md#getsimpledatetimeformatbypattern), see the examples in [SimpleDateTimeFormat.format](arkts-localization-i18n-simpledatetimeformat-c.md#format). |
-| [getSimpleNumberFormatBySkeleton](arkts-localization-i18n-getsimplenumberformatbyskeleton-f.md#getsimplenumberformatbyskeleton) | Obtains a **SimpleNumberFormat** object based on the specified skeleton. |
-| [getTimeZone](arkts-localization-i18n-gettimezone-f.md#gettimezone) | Obtains the **TimeZone** object corresponding to the specified time zone ID. |
-| [isRTL](arkts-localization-i18n-isrtl-f.md#isrtl) | Checks whether a language is an RTL language. For an RTL language, [UI mirroring](../../../internationalization/i18n-ui-design.md#ui-mirroring) is required. |
-| [addPreferredLanguage](arkts-localization-i18n-addpreferredlanguage-f.md#addpreferredlanguage) | Adds a preferred language to the specified position on the preferred language list. |
-| [getDisplayCountry](arkts-localization-i18n-getdisplaycountry-f.md#getdisplaycountry) | Obtains the localized name of the specified country/region. |
-| [getDisplayLanguage](arkts-localization-i18n-getdisplaylanguage-f.md#getdisplaylanguage) | Obtains the localized script for the specified language. |
-| [getFirstPreferredLanguage](arkts-localization-i18n-getfirstpreferredlanguage-f.md#getfirstpreferredlanguage) | Obtains the first language in the preferred language list. |
-| [getPreferredLanguageList](arkts-localization-i18n-getpreferredlanguagelist-f.md#getpreferredlanguagelist) | Obtains the list of preferred languages. |
-| [getSimpleDateTimeFormatByPattern](arkts-localization-i18n-getsimpledatetimeformatbypattern-f.md#getsimpledatetimeformatbypattern) | Obtains a **SimpleDateTimeFormat** object based on the specified pattern string. For details about the difference between the objects obtained by this API and [getSimpleDateTimeFormatBySkeleton](arkts-localization-i18n-getsimpledatetimeformatbyskeleton-f.md#getsimpledatetimeformatbyskeleton), see the examples in [SimpleDateTimeFormat.format](arkts-localization-i18n-simpledatetimeformat-c.md#format). |
-| [getSimpleDateTimeFormatBySkeleton](arkts-localization-i18n-getsimpledatetimeformatbyskeleton-f.md#getsimpledatetimeformatbyskeleton) | Obtains a **SimpleDateTimeFormat** object based on the specified skeleton. For details about the difference between the objects obtained by this API and [getSimpleDateTimeFormatByPattern](arkts-localization-i18n-getsimpledatetimeformatbypattern-f.md#getsimpledatetimeformatbypattern), see the examples in [SimpleDateTimeFormat.format](arkts-localization-i18n-simpledatetimeformat-c.md#format). |
-| [getSimpleNumberFormatBySkeleton](arkts-localization-i18n-getsimplenumberformatbyskeleton-f.md#getsimplenumberformatbyskeleton) | Obtains a **SimpleNumberFormat** object based on the specified skeleton. |
-| [getSystemLanguage](arkts-localization-i18n-getsystemlanguage-f.md#getsystemlanguage) | Obtains the system language. |
-| [getSystemLocale](arkts-localization-i18n-getsystemlocale-f.md#getsystemlocale) | Obtains the system locale. |
-| [getSystemRegion](arkts-localization-i18n-getsystemregion-f.md#getsystemregion) | Obtains the system region. |
-| [is24HourClock](arkts-localization-i18n-is24hourclock-f.md#is24hourclock) | Checks whether the 24-hour clock is used. |
-| [removePreferredLanguage](arkts-localization-i18n-removepreferredlanguage-f.md#removepreferredlanguage) | Removes a preferred language from the specified position on the preferred language list. |
-| [set24HourClock](arkts-localization-i18n-set24hourclock-f.md#set24hourclock) | Sets the 24-hour clock. |
+| [getCalendar](arkts-localization-i18n-getcalendar-f.md#getcalendar-1) | Obtains the **Calendar** object for the specified locale and calendar type. |
+| [getChineseCalendar](arkts-localization-i18n-getchinesecalendar-f.md#getchinesecalendar-1) | Obtains the ChineseCalendar object for the specified locale. |
+| [getCurrency](arkts-localization-i18n-getcurrency-f.md#getcurrency-1) | Obtains the **currency** object of the specified locale environment. |
+| [getInstance](arkts-localization-i18n-getinstance-f.md#getinstance-1) | Creates an **IndexUtil** object. |
+| [getLineInstance](arkts-localization-i18n-getlineinstance-f.md#getlineinstance-1) | Obtains a **BreakIterator** object. The **BreakIterator** object maintains an internal break iterator that can be used to access various line break points. |
+| [getSimpleDateTimeFormatByPattern](arkts-localization-i18n-getsimpledatetimeformatbypattern-f.md#getsimpledatetimeformatbypattern-1) | Obtains a **SimpleDateTimeFormat** object based on the specified pattern string. For details about the difference between the objects obtained by this API and [getSimpleDateTimeFormatBySkeleton](arkts-localization-i18n-getsimpledatetimeformatbyskeleton-f.md#getsimpledatetimeformatbyskeleton-1), see the examples in [SimpleDateTimeFormat.format](arkts-localization-i18n-simpledatetimeformat-c.md#format). |
+| [getSimpleDateTimeFormatBySkeleton](arkts-localization-i18n-getsimpledatetimeformatbyskeleton-f.md#getsimpledatetimeformatbyskeleton-1) | Obtains a **SimpleDateTimeFormat** object based on the specified skeleton. For details about the difference between the objects obtained by this API and [getSimpleDateTimeFormatByPattern](arkts-localization-i18n-getsimpledatetimeformatbypattern-f.md#getsimpledatetimeformatbypattern-1), see the examples in [SimpleDateTimeFormat.format](arkts-localization-i18n-simpledatetimeformat-c.md#format). |
+| [getSimpleNumberFormatBySkeleton](arkts-localization-i18n-getsimplenumberformatbyskeleton-f.md#getsimplenumberformatbyskeleton-1) | Obtains a **SimpleNumberFormat** object based on the specified skeleton. |
+| [getTimeZone](arkts-localization-i18n-gettimezone-f.md#gettimezone-1) | Obtains the **TimeZone** object corresponding to the specified time zone ID. |
+| [isRTL](arkts-localization-i18n-isrtl-f.md#isrtl-1) | Checks whether a language is an RTL language. For an RTL language, [UI mirroring](../../../internationalization/i18n-ui-design.md#ui-mirroring) is required. |
+| [addPreferredLanguage](arkts-localization-i18n-addpreferredlanguage-f.md#addpreferredlanguage-1) | Adds a preferred language to the specified position on the preferred language list. |
+| [getDisplayCountry](arkts-localization-i18n-getdisplaycountry-f.md#getdisplaycountry-1) | Obtains the localized name of the specified country/region. |
+| [getDisplayLanguage](arkts-localization-i18n-getdisplaylanguage-f.md#getdisplaylanguage-1) | Obtains the localized script for the specified language. |
+| [getFirstPreferredLanguage](arkts-localization-i18n-getfirstpreferredlanguage-f.md#getfirstpreferredlanguage-1) | Obtains the first language in the preferred language list. |
+| [getPreferredLanguageList](arkts-localization-i18n-getpreferredlanguagelist-f.md#getpreferredlanguagelist-1) | Obtains the list of preferred languages. |
+| [getSimpleDateTimeFormatByPattern](arkts-localization-i18n-getsimpledatetimeformatbypattern-f.md#getsimpledatetimeformatbypattern-2) | Obtains a **SimpleDateTimeFormat** object based on the specified pattern string. For details about the difference between the objects obtained by this API and [getSimpleDateTimeFormatBySkeleton](arkts-localization-i18n-getsimpledatetimeformatbyskeleton-f.md#getsimpledatetimeformatbyskeleton-2), see the examples in [SimpleDateTimeFormat.format](arkts-localization-i18n-simpledatetimeformat-c.md#format). |
+| [getSimpleDateTimeFormatBySkeleton](arkts-localization-i18n-getsimpledatetimeformatbyskeleton-f.md#getsimpledatetimeformatbyskeleton-2) | Obtains a **SimpleDateTimeFormat** object based on the specified skeleton. For details about the difference between the objects obtained by this API and [getSimpleDateTimeFormatByPattern](arkts-localization-i18n-getsimpledatetimeformatbypattern-f.md#getsimpledatetimeformatbypattern-2), see the examples in [SimpleDateTimeFormat.format](arkts-localization-i18n-simpledatetimeformat-c.md#format). |
+| [getSimpleNumberFormatBySkeleton](arkts-localization-i18n-getsimplenumberformatbyskeleton-f.md#getsimplenumberformatbyskeleton-2) | Obtains a **SimpleNumberFormat** object based on the specified skeleton. |
+| [getSystemLanguage](arkts-localization-i18n-getsystemlanguage-f.md#getsystemlanguage-1) | Obtains the system language. |
+| [getSystemLocale](arkts-localization-i18n-getsystemlocale-f.md#getsystemlocale-1) | Obtains the system locale. |
+| [getSystemRegion](arkts-localization-i18n-getsystemregion-f.md#getsystemregion-1) | Obtains the system region. |
+| [is24HourClock](arkts-localization-i18n-is24hourclock-f.md#is24hourclock-1) | Checks whether the 24-hour clock is used. |
+| [removePreferredLanguage](arkts-localization-i18n-removepreferredlanguage-f.md#removepreferredlanguage-1) | Removes a preferred language from the specified position on the preferred language list. |
+| [set24HourClock](arkts-localization-i18n-set24hourclock-f.md#set24hourclock-1) | Sets the 24-hour clock. |
 
 ### Classes
 

@@ -1,4 +1,4 @@
-# HidHostProfile
+# HidHostProfile (System API)
 
 ```TypeScript
 interface HidHostProfile extends BaseProfile

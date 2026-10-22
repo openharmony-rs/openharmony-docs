@@ -104,7 +104,7 @@ Sets the callback for long press gesture cancellation. This callback is triggere
 onActionCancel(event: Callback<GestureEvent>): LongPressGestureHandler
 ```
 
-Sets the callback for long press gesture cancellation. This callback is triggered when a touch cancellation event occurs after successful recognition. Compared with [onActionCancel](#onactioncancel), this API returns gesture event information.
+Sets the callback for long press gesture cancellation. This callback is triggered when a touch cancellation event occurs after successful recognition. Compared with [onActionCancel](#onactioncancel-1), this API returns gesture event information.
 
 **Since:** 18
 

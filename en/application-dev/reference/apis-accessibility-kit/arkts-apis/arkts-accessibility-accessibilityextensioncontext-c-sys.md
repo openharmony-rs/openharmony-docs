@@ -1,4 +1,4 @@
-# AccessibilityExtensionContext
+# AccessibilityExtensionContext (System API)
 
 ```TypeScript
 declare class AccessibilityExtensionContext extends ExtensionContext

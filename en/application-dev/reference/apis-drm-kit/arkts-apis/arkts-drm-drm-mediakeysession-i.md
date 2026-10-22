@@ -4,7 +4,7 @@
 interface MediaKeySession
 ```
 
-MediaKeySession implements media key management. Before calling any API in MediaKeySession, you must use [createMediaKeySession](arkts-drm-drm-mediakeysystem-i.md#createmediakeysession) to create a MediaKeySession instance.
+MediaKeySession implements media key management. Before calling any API in MediaKeySession, you must use [createMediaKeySession](arkts-drm-drm-mediakeysystem-i.md#createmediakeysession-1) to create a MediaKeySession instance.
 
 **Since:** 11
 
@@ -148,7 +148,7 @@ Generates a media key request. This API uses a promise to return the result.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| mimeType | string | Yes | MIME type. The supported DRM solution names can be obtained by calling [isMediaKeySystemSupported](arkts-drm-drm-ismediakeysystemsupported-f.md#ismediakeysystemsupported). |
+| mimeType | string | Yes | MIME type. The supported DRM solution names can be obtained by calling [isMediaKeySystemSupported](arkts-drm-drm-ismediakeysystemsupported-f.md#ismediakeysystemsupported-2). |
 | initData | Uint8Array | Yes | Initial data. |
 | mediaKeyType | number | Yes | Type of the media key. The value **0** means an online media key, and **1** means an offline media key. |
 | options | [OptionsData](arkts-drm-drm-optionsdata-i.md)[] | No | Optional data. |
@@ -809,7 +809,7 @@ Checks whether secure decoding is required.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| mimeType | string | Yes | MIME type. The supported MIME types depend on the DRM solution and can be obtained by calling [isMediaKeySystemSupported](arkts-drm-drm-ismediakeysystemsupported-f.md#ismediakeysystemsupported). |
+| mimeType | string | Yes | MIME type. The supported MIME types depend on the DRM solution and can be obtained by calling [isMediaKeySystemSupported](arkts-drm-drm-ismediakeysystemsupported-f.md#ismediakeysystemsupported-2). |
 
 **Return value:**
 

@@ -4,7 +4,7 @@
 export interface Material extends SceneResource
 ```
 
-Material resource, which inherits from SceneResource.
+Material resource, which inherits from [SceneResource](arkts-arkgraphics3d-sceneresources-sceneresource-i.md).
 
 **Inheritance/Implementation:** Material extends [SceneResource](arkts-arkgraphics3d-sceneresources-sceneresource-i.md)
 

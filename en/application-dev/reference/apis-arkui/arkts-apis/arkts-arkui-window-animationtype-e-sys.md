@@ -1,4 +1,4 @@
-# AnimationType
+# AnimationType (System API)
 
 ```TypeScript
 enum AnimationType

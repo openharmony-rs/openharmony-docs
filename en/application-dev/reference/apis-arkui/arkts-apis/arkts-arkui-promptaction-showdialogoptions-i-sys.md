@@ -1,4 +1,4 @@
-# ShowDialogOptions
+# ShowDialogOptions (System API)
 
 ```TypeScript
 interface ShowDialogOptions

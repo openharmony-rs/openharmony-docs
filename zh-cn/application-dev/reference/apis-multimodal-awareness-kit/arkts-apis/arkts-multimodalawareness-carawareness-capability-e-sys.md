@@ -1,4 +1,4 @@
-# Capability
+# Capability（系统接口）
 
 ```TypeScript
 enum Capability

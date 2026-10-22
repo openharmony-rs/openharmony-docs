@@ -26,7 +26,7 @@ The app must have the **ohos.permission.ACCESS_NEARLINK** permission to receive 
 
 **System capability:** SystemCapability.Communication.NearLink.Base
 
-**See also:** [offDeviceFound](arkts-connectivity-scan-offdevicefound-f.md) Unsubscribes from the NearLink scanning result event.
+**See also:** [offDeviceFound](arkts-connectivity-scan-offdevicefound-f.md#offdevicefound-1) Unsubscribes from the NearLink scanning result event.
 
 **Parameters:**
 

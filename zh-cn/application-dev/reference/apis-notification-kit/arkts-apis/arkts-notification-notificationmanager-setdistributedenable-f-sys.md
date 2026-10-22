@@ -18,7 +18,7 @@ function setDistributedEnable(enable: boolean, callback: AsyncCallback<void>): v
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [setDistributedEnabled](arkts-notification-notificationmanager-setdistributedenabled-f-sys.md)(enable: boolean, deviceType: string)
+**替代接口：** [setDistributedEnabled](arkts-notification-notificationmanager-setdistributedenabled-f-sys.md#setdistributedenabled-1)(enable: boolean, deviceType: string)
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -80,7 +80,7 @@ function setDistributedEnable(enable: boolean): Promise<void>
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [setDistributedEnabled](arkts-notification-notificationmanager-setdistributedenabled-f-sys.md)(enable: boolean, deviceType: string)
+**替代接口：** [setDistributedEnabled](arkts-notification-notificationmanager-setdistributedenabled-f-sys.md#setdistributedenabled-1)(enable: boolean, deviceType: string)
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 

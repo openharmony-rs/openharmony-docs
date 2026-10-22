@@ -88,7 +88,7 @@ struct WebComponent {
 static clearAllCookies(callback: AsyncCallback<void>): void
 ```
 
-Clears all cookies, including session cookies and persistent cookies. This API uses an asynchronous callback to return the result. To clear only session cookies, use [clearSessionCookie](#clearsessioncookie).
+Clears all cookies, including session cookies and persistent cookies. This API uses an asynchronous callback to return the result. To clear only session cookies, use [clearSessionCookie](#clearsessioncookie-2).
 
 **Since:** 11
 
@@ -360,7 +360,7 @@ Sets a single cookie value for a specified URL. This API uses a promise to retur
 > 
 > - In configCookie, you can specify a domain name in the URL so that in-page requests also carry the cookie.
 > 
-> - Cookies are periodically saved to the disk every 30 seconds. You can also use [saveCookieAsync](#savecookieasync) for force storage.
+> - Cookies are periodically saved to the disk every 30 seconds. You can also use [saveCookieAsync](#savecookieasync-2) for force storage.
 > 
 > - The value parameter must follow the format of the Set-Cookie HTTP response header. It is a key-value pair in the form of "key=value", optionally followed by a cookie property list separated by "; " (for example, "key=value; Max-Age=100").
 > 
@@ -447,7 +447,7 @@ Sets a single cookie value for a specified URL. This API uses a promise to retur
 > 
 > - In configCookie, you can specify a domain name in the URL so that in-page requests also carry the cookie.
 > 
-> - Cookies are periodically saved to the disk every 30 seconds. You can also use [saveCookieAsync](#savecookieasync) for force storage.
+> - Cookies are periodically saved to the disk every 30 seconds. You can also use [saveCookieAsync](#savecookieasync-2) for force storage.
 > 
 > - The value parameter must follow the format of the Set-Cookie HTTP response header. It is a key-value pair in the form of "key=value", optionally followed by a cookie property list separated by "; " (for example, "key=value; Max-Age=100").
 > 
@@ -532,7 +532,7 @@ Sets a single cookie value for a specified URL. This API uses an asynchronous ca
 > 
 > - In configCookie, you can specify a domain name in the URL so that in-page requests also carry the cookie.
 > 
-> - Cookies are periodically saved to the disk every 30 seconds. You can also use [saveCookieAsync](#savecookieasync) for force storage.
+> - Cookies are periodically saved to the disk every 30 seconds. You can also use [saveCookieAsync](#savecookieasync-2) for force storage.
 > 
 > - The value parameter must follow the format of the Set-Cookie HTTP response header. It is a key-value pair in the form of "key=value", optionally followed by a cookie property list separated by "; " (for example, "key=value; Max-Age=100").
 > 
@@ -612,7 +612,7 @@ Sets a cookie for the specified URL.
 > 
 > - In configCookieSync, you can specify a domain name in the URL so that in-page requests also carry the cookie.
 > 
-> - Cookies are periodically saved to the disk every 30 seconds. You can also use [saveCookieAsync](#savecookieasync) for force storage.
+> - Cookies are periodically saved to the disk every 30 seconds. You can also use [saveCookieAsync](#savecookieasync-2) for force storage.
 > 
 > - The value parameter must follow the format of the Set-Cookie HTTP response header. It is a key-value pair in the form of "key=value", optionally followed by a cookie property list separated by "; " (for example, "key=value; Max-Age=100").
 > 
@@ -689,7 +689,7 @@ Sets a single cookie value for a specified URL.
 > 
 > - In configCookieSync, you can specify a domain name in the URL so that in-page requests also carry the cookie.
 > 
-> - Cookies are periodically saved to the disk every 30 seconds. You can also use [saveCookieAsync](#savecookieasync) for force storage.
+> - Cookies are periodically saved to the disk every 30 seconds. You can also use [saveCookieAsync](#savecookieasync-2) for force storage.
 > 
 > - The value parameter must follow the format of the Set-Cookie HTTP response header. It is a key-value pair in the form of "key=value", optionally followed by a cookie property list separated by "; " (for example, "key=value; Max-Age=100").
 > 

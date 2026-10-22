@@ -1,4 +1,4 @@
-# CameraInput
+# CameraInput (System API)
 
 ```TypeScript
 interface CameraInput

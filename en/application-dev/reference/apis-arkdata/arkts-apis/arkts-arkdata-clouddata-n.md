@@ -32,9 +32,9 @@ import { cloudData } from '@kit.ArkData';
 
 | Name | Description |
 | --- | --- |
-| [offAutoSyncTrigger](arkts-arkdata-clouddata-offautosynctrigger-f.md#offautosynctrigger) | Describes unsubscribing from the device-cloud automatic synchronization trigger mode. |
-| [onAutoSyncTrigger](arkts-arkdata-clouddata-onautosynctrigger-f.md#onautosynctrigger) | Describes the triggering method for automatic device-cloud synchronization subscription. |
-| [setCloudStrategy](arkts-arkdata-clouddata-setcloudstrategy-f.md#setcloudstrategy) | Sets the cloud sync strategy of an application. This API uses a promise to return the result. |
+| [offAutoSyncTrigger](arkts-arkdata-clouddata-offautosynctrigger-f.md#offautosynctrigger-1) | Describes unsubscribing from the device-cloud automatic synchronization trigger mode. |
+| [onAutoSyncTrigger](arkts-arkdata-clouddata-onautosynctrigger-f.md#onautosynctrigger-1) | Describes the triggering method for automatic device-cloud synchronization subscription. |
+| [setCloudStrategy](arkts-arkdata-clouddata-setcloudstrategy-f.md#setcloudstrategy-1) | Sets the cloud sync strategy of an application. This API uses a promise to return the result. |
 
 <!--Del-->
 ### Classes(System API)

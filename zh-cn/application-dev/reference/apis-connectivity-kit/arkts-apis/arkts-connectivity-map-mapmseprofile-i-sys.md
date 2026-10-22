@@ -1,4 +1,4 @@
-# MapMseProfile
+# MapMseProfile（系统接口）
 
 ```TypeScript
 interface MapMseProfile extends BaseProfile

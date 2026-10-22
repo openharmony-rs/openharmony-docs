@@ -24,7 +24,7 @@ import { Animator, AnimatorOptions, AnimatorResult, SimpleAnimatorOptions } from
 static create(options: AnimatorOptions | SimpleAnimatorOptions): AnimatorResult
 ```
 
-创建animator动画结果对象（AnimatorResult）。与[create](#create)相比，新增对[SimpleAnimatorOptions](arkts-arkui-animator-simpleanimatoroptions-c.md)类型入参的支持。
+创建animator动画结果对象（AnimatorResult）。与[create](#create-2)相比，新增对[SimpleAnimatorOptions](arkts-arkui-animator-simpleanimatoroptions-c.md)类型入参的支持。
 
 **起始版本：** 18
 

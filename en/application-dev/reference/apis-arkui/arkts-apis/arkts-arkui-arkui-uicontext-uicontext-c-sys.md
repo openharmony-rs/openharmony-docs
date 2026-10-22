@@ -1,4 +1,4 @@
-# UIContext
+# UIContext (System API)
 
 ```TypeScript
 export class UIContext

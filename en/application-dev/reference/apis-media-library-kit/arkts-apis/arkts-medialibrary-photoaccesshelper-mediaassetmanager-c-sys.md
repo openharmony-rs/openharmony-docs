@@ -1,4 +1,4 @@
-# MediaAssetManager
+# MediaAssetManager (System API)
 
 ```TypeScript
 class MediaAssetManager

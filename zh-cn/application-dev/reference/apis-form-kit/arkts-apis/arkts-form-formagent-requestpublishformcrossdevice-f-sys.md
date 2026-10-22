@@ -32,8 +32,8 @@ function requestPublishFormCrossDevice(peerServiceInfo: formInfo.PeerFormHostSer
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | peerServiceInfo | [formInfo.PeerFormHostServiceInfo](arkts-form-forminfo-peerformhostserviceinfo-i-sys.md) | 是 | 远端卡片使用方服务信息。 |
-| want | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | 是 | 发布请求，需包含以下字段。<br>bundleName: 目标卡片所属应用的bundleName <br>abilityName: 目标卡片所属应用的Ability <br>parameters: <br>- ohos.extra.param.key.form_dimension: 目标卡片规格<br>- ohos.extra.param.key.form_name: 目标卡片名<br>- ohos.extra.param.key.module_name: 目标卡片的模块名称 |
-| formBindingData | [formBindingData.FormBindingData](arkts-form-formbindingdata-formbindingdata-i.md) | 否 | 用于更新的卡片数据。 |
+| want | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | 是 | 发布请求，需包含以下字段。<br>bundleName: 目标卡片所属应用的bundleName。<br>abilityName: 目标卡片所属应用的Ability。<br>parameters: <br>- ohos.extra.param.key.form_dimension: 目标卡片规格。<br>- ohos.extra.param.key.form_name: 目标卡片名。<br>- ohos.extra.param.key.module_name: 目标卡片的模块名称。 |
+| formBindingData | [formBindingData.FormBindingData](arkts-form-formbindingdata-formbindingdata-i.md) | 否 | 用于更新的卡片数据。默认值为空。 |
 
 **返回值：**
 

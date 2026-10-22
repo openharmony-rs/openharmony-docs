@@ -1,4 +1,4 @@
-# PhotoAsset
+# PhotoAsset（系统接口）
 
 ```TypeScript
 interface PhotoAsset
@@ -100,7 +100,7 @@ commitEditedAsset(editData: string, uri: string, callback: AsyncCallback<void>):
 
 提交编辑数据以及编辑后的图片或视频。使用callback异步回调。
 
-通过uri将编辑后的文件传递给媒体库，uri是编辑后的文件在应用沙箱下的FileUri，可参考[FileUri](../../apis-core-file-kit/arkts-apis/arkts-corefile-file-fileuri.md)。
+通过uri将编辑后的文件传递给媒体库，uri是编辑后的文件在应用沙箱下的FileUri，可参考[文件URI](../../apis-core-file-kit/arkts-apis/arkts-corefile-fileuri-fileuri-c.md)。
 
 > **注意：**
 > 
@@ -180,7 +180,7 @@ commitEditedAsset(editData: string, uri: string): Promise<void>
 
 提交编辑数据以及编辑后的图片或视频。使用Promise异步回调。
 
-通过uri将编辑后的文件传递给媒体库，uri是编辑后的文件在应用沙箱下的FileUri，可参考[FileUri](../../apis-core-file-kit/arkts-apis/arkts-corefile-file-fileuri.md)。
+通过uri将编辑后的文件传递给媒体库，uri是编辑后的文件在应用沙箱下的FileUri，可参考[文件URI](../../apis-core-file-kit/arkts-apis/arkts-corefile-fileuri-fileuri-c.md)。
 
 > **注意：**
 > 

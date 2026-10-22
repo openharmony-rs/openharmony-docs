@@ -1,4 +1,4 @@
-# SceneResources(3D scene resource type declarations)
+# SceneResources
 
 ## Summary
 
@@ -6,33 +6,34 @@
 
 | Name | Description |
 | --- | --- |
-| [Animation](arkts-arkgraphics3d-sceneresources-animation-i.md) | Animation resource, which inherits from SceneResource. |
+| [Animation](arkts-arkgraphics3d-sceneresources-animation-i.md) | Animation resource, which inherits from [SceneResource](arkts-arkgraphics3d-sceneresources-sceneresource-i.md). |
 | [Blend](arkts-arkgraphics3d-sceneresources-blend-i.md) | Controls the transparency of materials. |
-| [Effect](arkts-arkgraphics3d-sceneresources-effect-i.md) | Effect resource, which inherits from SceneResource. It is obtained from the createEffect API. |
-| [Environment](arkts-arkgraphics3d-sceneresources-environment-i.md) | Environment resource, which inherits from SceneResource. |
-| [Image](arkts-arkgraphics3d-sceneresources-image-i.md) | Image resource, which inherits from SceneResource. |
-| [ImageStream](arkts-arkgraphics3d-sceneresources-imagestream-i.md) | ImageStream resource. |
-| [Material](arkts-arkgraphics3d-sceneresources-material-i.md) | Material resource, which inherits from SceneResource. |
+| [Effect](arkts-arkgraphics3d-sceneresources-effect-i.md) | Effect resource, which inherits from [SceneResource](arkts-arkgraphics3d-sceneresources-sceneresource-i.md). It is obtained from the [createEffect](arkts-arkgraphics3d-scene-sceneresourcefactory-i.md#createeffect) API. |
+| [Environment](arkts-arkgraphics3d-sceneresources-environment-i.md) | Environment resource, which inherits from [SceneResource](arkts-arkgraphics3d-sceneresources-sceneresource-i.md). |
+| [Image](arkts-arkgraphics3d-sceneresources-image-i.md) | Image resource, which inherits from [SceneResource](arkts-arkgraphics3d-sceneresources-sceneresource-i.md). |
+| [ImageStream](arkts-arkgraphics3d-sceneresources-imagestream-i.md) | Image stream type, which inherits from [Image](arkts-arkgraphics3d-sceneresources-image-i.md). |
+| [Material](arkts-arkgraphics3d-sceneresources-material-i.md) | Material resource, which inherits from [SceneResource](arkts-arkgraphics3d-sceneresources-sceneresource-i.md). |
 | [MaterialProperty](arkts-arkgraphics3d-sceneresources-materialproperty-i.md) | Defines the textures, property factors, and texture samplers used by a material. |
-| [Mesh](arkts-arkgraphics3d-sceneresources-mesh-i.md) | Mesh resource, which inherits from SceneResource. |
-| [MeshResource](arkts-arkgraphics3d-sceneresources-meshresource-i.md) | Mesh resource, which inherits from SceneResource. |
-| [MetallicRoughnessMaterial](arkts-arkgraphics3d-sceneresources-metallicroughnessmaterial-i.md) | Material resource for creating realistic appearances, using the Metallic-Roughness model based on PBR. It simulates the surface lighting and reflection effects of different materials like metal and plastic by adjusting metallicity and roughness parameters. It inherits from Material. |
+| [Mesh](arkts-arkgraphics3d-sceneresources-mesh-i.md) | Mesh resource, which inherits from [SceneResource](arkts-arkgraphics3d-sceneresources-sceneresource-i.md). |
+| [MeshResource](arkts-arkgraphics3d-sceneresources-meshresource-i.md) | Mesh resource, which inherits from [SceneResource](arkts-arkgraphics3d-sceneresources-sceneresource-i.md). |
+| [MetallicRoughnessMaterial](arkts-arkgraphics3d-sceneresources-metallicroughnessmaterial-i.md) | Material resource for creating realistic appearances, using the Metallic-Roughness model based on PBR. It simulates the surface lighting and reflection effects of different materials like metal and plastic by adjusting metallicity and roughness parameters. It inherits from [Material](arkts-arkgraphics3d-sceneresources-material-i.md). |
 | [Morpher](arkts-arkgraphics3d-sceneresources-morpher-i.md) | Defines the deformation of 3D models by adjusting the weights of different deformation targets to create dynamic effects. |
-| [OcclusionMaterial](arkts-arkgraphics3d-sceneresources-occlusionmaterial-i.md) | Occlusion material: occludes other objects in the scene but does not occlude the environment. It is inherited from Material. |
+| [OcclusionMaterial](arkts-arkgraphics3d-sceneresources-occlusionmaterial-i.md) | Occlusion material: occludes other objects in the scene but does not occlude the environment. It is inherited from [Material](arkts-arkgraphics3d-sceneresources-material-i.md). |
 | [RenderSort](arkts-arkgraphics3d-sceneresources-rendersort-i.md) | Describes the order in which materials are rendered, controlling the sequence of drawing in the rendering pipeline. |
 | [Sampler](arkts-arkgraphics3d-sceneresources-sampler-i.md) | Describes the sampling modes used during texture sampling. |
 | [SceneResource](arkts-arkgraphics3d-sceneresources-sceneresource-i.md) | Describes a resource in a scene. |
-| [Shader](arkts-arkgraphics3d-sceneresources-shader-i.md) | Shader resource, which inherits from SceneResource. |
-| [ShaderMaterial](arkts-arkgraphics3d-sceneresources-shadermaterial-i.md) | Shader material, which inherits from Material. |
+| [Shader](arkts-arkgraphics3d-sceneresources-shader-i.md) | Shader resource, which inherits from [SceneResource](arkts-arkgraphics3d-sceneresources-sceneresource-i.md). |
+| [ShaderMaterial](arkts-arkgraphics3d-sceneresources-shadermaterial-i.md) | Shader material, which inherits from [Material](arkts-arkgraphics3d-sceneresources-material-i.md). |
 | [SubMesh](arkts-arkgraphics3d-sceneresources-submesh-i.md) | Sub-mesh resource. |
-| [UnlitMaterial](arkts-arkgraphics3d-sceneresources-unlitmaterial-i.md) | Material that is not affected by lighting. The shading value of the material is related only to the base color and is irrelevant to lighting conditions. It inherits from Material. |
+| [UnlitMaterial](arkts-arkgraphics3d-sceneresources-unlitmaterial-i.md) | Material that is not affected by lighting. The shading value of the material is related only to the base color and is irrelevant to lighting conditions. It inherits from [Material](arkts-arkgraphics3d-sceneresources-material-i.md). |
 
 <!--Del-->
 ### Interfaces(System API)
 
 | Name | Description |
 | --- | --- |
-| [UnlitShadowAlphaMaterial](arkts-arkgraphics3d-sceneresources-unlitshadowalphamaterial-i-sys.md) | This material inherits from Material and draws only the surface shadows. When the Blend property is enabled, the material can be blended with the background to simulate transparency. |
+| [RenderTarget](arkts-arkgraphics3d-sceneresources-rendertarget-i-sys.md) | render target object, used for offscreen rendering |
+| [UnlitShadowAlphaMaterial](arkts-arkgraphics3d-sceneresources-unlitshadowalphamaterial-i-sys.md) | This material inherits from [Material](arkts-arkgraphics3d-sceneresources-material-i.md) and draws only the surface shadows. When the [Blend](arkts-arkgraphics3d-sceneresources-blend-i.md) property is enabled, the material can be blended with the background to simulate transparency. |
 <!--DelEnd-->
 
 ### Enums

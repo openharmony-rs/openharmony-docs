@@ -1280,7 +1280,7 @@ Obtains the file descriptor of the **TLSSocket** object. This API uses a promise
 > 
 > - This API can be called only after **bind** is successfully called.
 > 
-> - The lifecycle of the file descriptor is managed by the system. The application can use the [close](#close) method to close the socket connection,instead of directly operating the file descriptor.
+> - The lifecycle of the file descriptor is managed by the system. The application can use the [close](#close-1) method to close the socket connection,instead of directly operating the file descriptor.
 
 **Since:** 16
 

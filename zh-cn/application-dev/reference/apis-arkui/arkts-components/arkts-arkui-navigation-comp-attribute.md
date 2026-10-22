@@ -27,7 +27,7 @@ backButtonIcon(value: string | PixelMap | Resource | SymbolGlyphModifier)
 > 不支持通过SymbolGlyphModifier对象的
 > [fontSize](arkts-arkui-symbolglyph-comp-attribute.md#fontsize)属性修改图标大小、
 > [effectStrategy](arkts-arkui-symbolglyph-comp-attribute.md#effectstrategy)属性修改动效、
-> [symbolEffect](arkts-arkui-symbolglyph-comp-attribute.md#symboleffect)属性修改动效类型。
+> [symbolEffect](arkts-arkui-symbolglyph-comp-attribute.md#symboleffect-1)属性修改动效类型。
 
 **起始版本：** 9
 
@@ -58,7 +58,7 @@ backButtonIcon(icon: string | PixelMap | Resource | SymbolGlyphModifier, accessi
 > 不支持通过SymbolGlyphModifier对象的
 > [fontSize](arkts-arkui-symbolglyph-comp-attribute.md#fontsize)属性修改图标大小、
 > [effectStrategy](arkts-arkui-symbolglyph-comp-attribute.md#effectstrategy)属性修改动效、
-> [symbolEffect](arkts-arkui-symbolglyph-comp-attribute.md#symboleffect)属性修改动效类型。
+> [symbolEffect](arkts-arkui-symbolglyph-comp-attribute.md#symboleffect-1)属性修改动效类型。
 
 **起始版本：** 19
 
@@ -208,7 +208,7 @@ enableModeChangeAnimation(isEnabled: Optional<boolean>)
 enableToolBarAdaptation(enable: Optional<boolean>)
 ```
 
-设置是否启用Navigation和NavDestination的工具栏[toolbarConfiguration](#toolbarconfiguration)自适应能力。关闭此能力后，底部工具栏[toolbarConfiguration](#toolbarconfiguration)将不会再移动至页面右上角的菜单中。该接口不适配于自定义菜单，使用该接口需采用[NavigationMenuItem](arkts-arkui-navigation-comp-navigationmenuitem-i.md)接口来定义[菜单](#menus)。
+设置是否启用Navigation和NavDestination的工具栏[toolbarConfiguration](#toolbarconfiguration)自适应能力。关闭此能力后，底部工具栏[toolbarConfiguration](#toolbarconfiguration)将不会再移动至页面右上角的菜单中。该接口不适配于自定义菜单，使用该接口需采用[NavigationMenuItem](arkts-arkui-navigation-comp-navigationmenuitem-i.md)接口来定义[菜单](#menus-1)。
 
 **起始版本：** 19
 
@@ -328,7 +328,7 @@ hideTitleBar(value: boolean)
 hideTitleBar(hide: boolean, animated: boolean)
 ```
 
-设置是否隐藏标题栏。与[hideTitleBar](#hidetitlebar)相比，新增标题栏显隐时是否使用动画。
+设置是否隐藏标题栏。与[hideTitleBar](#hidetitlebar-1)相比，新增标题栏显隐时是否使用动画。
 
 **起始版本：** 13
 
@@ -375,7 +375,7 @@ hideToolBar(value: boolean)
 hideToolBar(hide: boolean, animated: boolean)
 ```
 
-设置是否隐藏工具栏。与[hideToolBar](#hidetoolbar)相比，新增工具栏显隐时是否使用动画。
+设置是否隐藏工具栏。与[hideToolBar](#hidetoolbar-1)相比，新增工具栏显隐时是否使用动画。
 
 **起始版本：** 13
 
@@ -457,7 +457,7 @@ menus(value: Array<NavigationMenuItem> | CustomBuilder)
 menus(items: Array<NavigationMenuItem> | CustomBuilder, options?: NavigationMenuOptions)
 ```
 
-设置页面右上角菜单。不设置时不显示菜单项。与[menus](#menus)相比，新增菜单选项。使用Array&lt;[NavigationMenuItem](arkts-arkui-navigation-comp-navigationmenuitem-i.md)&gt; 写法时，竖屏最多支持显示3个图标，横屏最多支持显示5个图标，多余的图标会被放入自动生成的更多图标。
+设置页面右上角菜单。不设置时不显示菜单项。与[menus](#menus-1)相比，新增菜单选项。使用Array&lt;[NavigationMenuItem](arkts-arkui-navigation-comp-navigationmenuitem-i.md)&gt; 写法时，竖屏最多支持显示3个图标，横屏最多支持显示5个图标，多余的图标会被放入自动生成的更多图标。
 
 > **说明：** 
 > 

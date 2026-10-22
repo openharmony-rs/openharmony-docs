@@ -301,7 +301,7 @@ Obtains the file descriptor of a TCPSocketConnection connection. This API uses a
 > 
 > - This API returns **-1** in abnormal cases such as disconnection and socket closed (for example, after the close API is called).
 > 
-> - The lifecycle of the file descriptor is managed by the system. The application can use the [close](#close) method to close the socket connection, instead of directly operating the file descriptor.
+> - The lifecycle of the file descriptor is managed by the system. The application can use the [close](#close-1) method to close the socket connection, instead of directly operating the file descriptor.
 
 **Since:** 23
 

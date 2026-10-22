@@ -1,4 +1,4 @@
-# AtManager
+# AtManager（系统接口）
 
 ```TypeScript
 interface AtManager
@@ -123,7 +123,7 @@ getPermissionRequestToggleStatus(permissionName: Permissions): Promise<Permissio
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. Interface caller is not a system app. |
 | [12100001](../errorcode-access-token.md#12100001-入参错误) | Invalid parameter. The permissionName exceeds 256 characters, or the specified permission is not a user_grant permission. |
 | [12100003](../errorcode-access-token.md#12100003-权限名不存在) | The specified permission does not exist. |
-| [12100004](../errorcode-access-token.md#12100004-接口未配套使用) | This API must be used together with [setPermissionRequestToggleStatus](#setpermissionrequesttogglestatus).<br>**适用版本：** 26.0.1+ |
+| [12100004](../errorcode-access-token.md#12100004-接口未配套使用) | This API must be used together with [setPermissionRequestToggleStatus](#setpermissionrequesttogglestatus-1).<br>**适用版本：** 26.0.1+ |
 | [12100007](../errorcode-access-token.md#12100007-系统服务工作异常) | Service exception. |
 
 <!--Del-->

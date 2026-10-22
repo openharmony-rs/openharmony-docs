@@ -120,7 +120,7 @@ Commits the configuration for this session. This API uses an asynchronous callba
 
 **Deprecated since:** 11
 
-**Substitutes:** [commitConfig](arkts-camera-camera-session-i.md#commitconfig)(callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [commitConfig](arkts-camera-camera-session-i.md#commitconfig-1)(callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-CaptureSession-commitConfig(callback: AsyncCallback<void>): void--><!--Device-CaptureSession-commitConfig(callback: AsyncCallback<void>): void-End-->
 
@@ -794,7 +794,7 @@ Releases this session. This API uses an asynchronous callback to return the resu
 
 **Deprecated since:** 11
 
-**Substitutes:** [release](arkts-camera-camera-session-i.md#release)(callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [release](arkts-camera-camera-session-i.md#release-1)(callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-CaptureSession-release(callback: AsyncCallback<void>): void--><!--Device-CaptureSession-release(callback: AsyncCallback<void>): void-End-->
 
@@ -1169,7 +1169,7 @@ Starts this session. This API uses an asynchronous callback to return the result
 
 **Deprecated since:** 11
 
-**Substitutes:** [start](arkts-camera-camera-session-i.md#start)(callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [start](arkts-camera-camera-session-i.md#start-1)(callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-CaptureSession-start(callback: AsyncCallback<void>): void--><!--Device-CaptureSession-start(callback: AsyncCallback<void>): void-End-->
 
@@ -1231,7 +1231,7 @@ Stops this session. This API uses an asynchronous callback to return the result.
 
 **Deprecated since:** 11
 
-**Substitutes:** [stop](arkts-camera-camera-session-i.md#stop)(callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [stop](arkts-camera-camera-session-i.md#stop-1)(callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-CaptureSession-stop(callback: AsyncCallback<void>): void--><!--Device-CaptureSession-stop(callback: AsyncCallback<void>): void-End-->
 

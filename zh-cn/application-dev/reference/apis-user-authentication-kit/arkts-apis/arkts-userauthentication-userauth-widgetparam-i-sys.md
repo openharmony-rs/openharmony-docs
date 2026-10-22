@@ -1,4 +1,4 @@
-# WidgetParam
+# WidgetParam（系统接口）
 
 ```TypeScript
 interface WidgetParam

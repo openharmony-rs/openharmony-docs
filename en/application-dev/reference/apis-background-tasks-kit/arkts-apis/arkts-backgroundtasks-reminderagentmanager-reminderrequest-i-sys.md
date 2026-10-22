@@ -1,4 +1,4 @@
-# ReminderRequest
+# ReminderRequest (System API)
 
 ```TypeScript
 interface ReminderRequest

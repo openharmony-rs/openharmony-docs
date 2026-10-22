@@ -1,4 +1,4 @@
-# RichEditorChangeValue
+# RichEditorChangeValue（系统接口）
 
 ```TypeScript
 declare interface RichEditorChangeValue

@@ -581,7 +581,7 @@ scrollBarColor(color: Color | number | string)
 scrollBarColor(color: Color | number | string | Resource)
 ```
 
-设置滚动条的颜色。与[scrollBarColor](#scrollbarcolor)相比，color参数开始支持Resource类型。
+设置滚动条的颜色。与[scrollBarColor](#scrollbarcolor-1)相比，color参数开始支持Resource类型。
 
 **起始版本：** 22
 

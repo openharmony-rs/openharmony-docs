@@ -1,4 +1,4 @@
-# SheetOptions
+# SheetOptions (System API)
 
 ```TypeScript
 declare interface SheetOptions extends BindOptions

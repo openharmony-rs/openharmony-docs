@@ -18,7 +18,7 @@ function setDisallowedPolicyForAccount(admin: Want, feature: string, disallow: b
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [setDisallowedPolicyForAccount](#setdisallowedpolicyforaccount)(admin: Want, feature: FeatureForAccount, disallow: boolean, accountId: number)
+**替代接口：** [setDisallowedPolicyForAccount](#setdisallowedpolicyforaccount-2)(admin: Want, feature: FeatureForAccount, disallow: boolean, accountId: number)
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS
 

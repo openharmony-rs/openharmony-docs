@@ -1,4 +1,4 @@
-# AlbumSubtype
+# AlbumSubtype（系统接口）
 
 ```TypeScript
 const enum AlbumSubtype

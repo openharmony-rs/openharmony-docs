@@ -609,7 +609,7 @@ export default class EntryAbility extends UIAbility {
 getUIAbilityChildProcessInfos(): Promise<Array<ChildProcessInformation>>
 ```
 
-获取当前应用的UIAbility子进程信息。使用Promise异步回调。返回通过[startSelfUIAbilityInChildProcess](arkts-ability-uiabilitycontext-c.md#startselfuiabilityinchildprocess)接口启动的进程，以及通过[startAbility](arkts-ability-uiabilitycontext-c.md#startability)接口启动且[StartOptions](arkts-ability-app-ability-startoptions-startoptions-c.md)参数中[processMode](arkts-ability-contextconstant-processmode-e.md)设置为NEW_PROCESS_ATTACH_TO_PARENT模式启动的子进程。无子进程时返回空数组。
+获取当前应用的UIAbility子进程信息。使用Promise异步回调。返回通过[startSelfUIAbilityInChildProcess](arkts-ability-uiabilitycontext-c.md#startselfuiabilityinchildprocess)接口启动的进程，以及通过[startAbility](arkts-ability-uiabilitycontext-c.md#startability-3)接口启动且[StartOptions](arkts-ability-app-ability-startoptions-startoptions-c.md)参数中[processMode](arkts-ability-contextconstant-processmode-e.md)设置为NEW_PROCESS_ATTACH_TO_PARENT模式启动的子进程。无子进程时返回空数组。
 
 **起始版本：** 26.0.1
 

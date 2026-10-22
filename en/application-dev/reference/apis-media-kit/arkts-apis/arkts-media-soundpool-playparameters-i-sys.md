@@ -1,4 +1,4 @@
-# PlayParameters
+# PlayParameters (System API)
 
 ```TypeScript
 export interface PlayParameters

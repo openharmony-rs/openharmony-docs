@@ -9,10 +9,8 @@ The **FoldSplitContainer** component implements split-screen layout, providing r
 > **NOTE:** 
 > 
 > - When the window width is less than or equal to 600 vp, the split-screen layout is used by default. When the window width is greater than 600 vp, an expanded area can be supported in addition to the top-bottom split. When the window width is greater than 600 vp and the device is in landscape half-folded state, the hover state layout can be triggered. In the hover state layout, the crease area is avoided and the expanded area cannot cross the crease area. In the hover state, you can set not to display the expanded area. For details, see [Examples](../../../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-FoldSplitContainer.md#examples).
-
-## Child Components
-
-Not supported
+> 
+> - If the **FoldSplitContainer** component has [universal attributes](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md) or [universal events](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md) configured, the compiler toolchain automatically generates an additional \_\_Common\_\_ node and mounts the universal attributes and universal events on this node rather than the **FoldSplitContainer** component itself. As a result, the configured universal attributes and universal events may fail to take effect or behave as intended. For this reason, avoid using universal attributes and events with the **FoldSplitContainer** component.
 
 **Since:** 12
 
@@ -21,6 +19,10 @@ Not supported
 <!--Device-unnamed-export declare struct FoldSplitContainer--><!--Device-unnamed-export declare struct FoldSplitContainer-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## Child Components
+
+Not supported
 
 ## Modules to Import
 

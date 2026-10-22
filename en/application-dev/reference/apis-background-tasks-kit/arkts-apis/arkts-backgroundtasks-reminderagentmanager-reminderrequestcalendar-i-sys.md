@@ -1,4 +1,4 @@
-# ReminderRequestCalendar
+# ReminderRequestCalendar (System API)
 
 ```TypeScript
 interface ReminderRequestCalendar extends ReminderRequest

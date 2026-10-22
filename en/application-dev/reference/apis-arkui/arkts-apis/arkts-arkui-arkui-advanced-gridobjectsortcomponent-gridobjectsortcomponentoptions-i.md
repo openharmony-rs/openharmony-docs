@@ -68,7 +68,7 @@ Default value: **Edit**
 imageSize?: number | Resource
 ```
 
-Image size, in vp.
+Image size, in vp. This parameter takes effect only when **type** is **GridObjectSortComponentType.IMAGE_TEXT**. When it is set to **0**, a common image is displayed at the default size, and the font size of the Symbol icon is 0 vp.
 
 The value must be greater than or equal to 0.
 
@@ -136,7 +136,7 @@ Default value: **Drag to sort**
 type?: GridObjectSortComponentType
 ```
 
-Component display type: text only or image with text
+Component display type: text only or image with text. When it is set to **GridObjectSortComponentType.IMAGE_TEXT**, configure **url** or **symbolStyle** for the data items.
 
 Default value: **GridObjectSortComponentType.TEXT**
 

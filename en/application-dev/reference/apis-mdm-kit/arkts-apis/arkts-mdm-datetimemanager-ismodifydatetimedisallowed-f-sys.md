@@ -18,7 +18,7 @@ Queries whether the system time of a device can be modified. This API uses an as
 
 **Deprecated since:** 26.0.0
 
-**Substitutes:** [getDisallowedPolicy](arkts-mdm-restrictions-getdisallowedpolicy-f.md#getdisallowedpolicy)(admin: Want | null, feature: FeatureForDevice)
+**Substitutes:** [getDisallowedPolicy](arkts-mdm-restrictions-getdisallowedpolicy-f.md#getdisallowedpolicy-2)(admin: Want | null, feature: FeatureForDevice)
 
 **Required permissions:** ohos.permission.ENTERPRISE_SET_DATETIME
 
@@ -84,7 +84,7 @@ Queries whether the system time of a device can be modified. This API uses a pro
 
 **Deprecated since:** 26.0.0
 
-**Substitutes:** [getDisallowedPolicy](arkts-mdm-restrictions-getdisallowedpolicy-f.md#getdisallowedpolicy)(admin: Want | null, feature: FeatureForDevice)
+**Substitutes:** [getDisallowedPolicy](arkts-mdm-restrictions-getdisallowedpolicy-f.md#getdisallowedpolicy-2)(admin: Want | null, feature: FeatureForDevice)
 
 **Required permissions:** ohos.permission.ENTERPRISE_SET_DATETIME
 

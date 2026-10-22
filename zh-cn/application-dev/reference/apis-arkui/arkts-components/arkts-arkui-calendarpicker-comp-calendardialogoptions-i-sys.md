@@ -1,4 +1,4 @@
-# CalendarDialogOptions
+# CalendarDialogOptions（系统接口）
 
 ```TypeScript
 declare interface CalendarDialogOptions extends CalendarOptions

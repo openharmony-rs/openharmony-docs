@@ -94,7 +94,7 @@ Deletes all data in the specified origin.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| origin | string | Yes | Index of the origin, which is obtained through [getOrigins](#getorigins). |
+| origin | string | Yes | Index of the origin, which is obtained through [getOrigins](#getorigins-2). |
 
 **Error codes:**
 

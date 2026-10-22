@@ -1,4 +1,4 @@
-# DialOptions
+# DialOptions (System API)
 
 ```TypeScript
 export interface DialOptions

@@ -1,10 +1,10 @@
-# AudioRenderer
+# AudioRenderer（系统接口）
 
 ```TypeScript
 interface AudioRenderer
 ```
 
-音频渲染。在使用AudioRenderer的接口之前，需先通过[audio.createAudioRenderer](arkts-audio-audio-createaudiorenderer-f.md#createaudiorenderer)获取AudioRenderer实例。
+音频渲染。在使用AudioRenderer的接口之前，需先通过[audio.createAudioRenderer](arkts-audio-audio-createaudiorenderer-f.md#createaudiorenderer-1)获取AudioRenderer实例。
 
 **起始版本：** 8
 
@@ -30,7 +30,7 @@ getTarget(): RenderTarget
 > 
 > - 若未更改过渲染目标，将返回默认值[PLAYBACK](arkts-audio-audio-rendertarget-e-sys.md)。
 > 
-> - 若调用此接口前，已经调用过[SetTarget](#settarget)，请确保[SetTarget](#settarget)的Promise对象已成功解析，否则获取到的数值可能不准确。
+> - 若调用此接口前，已经调用过[SetTarget](#settarget-1)，请确保[SetTarget](#settarget-1)的Promise对象已成功解析，否则获取到的数值可能不准确。
 
 **起始版本：** 22
 
@@ -87,7 +87,7 @@ setTarget(target: RenderTarget): Promise<void>
 > 
 > - 该音频渲染器的device type为[DeviceType](arkts-audio-audio-devicetype-e.md).SYSTEM_PRIVATE。
 > 
-> - 调用[Start](arkts-audio-audio-audiorenderer-i.md#start)且audio scene不为[AudioScene](arkts-audio-audio-audioscene-e.md).AUDIO_SCENE_VOICE_CHAT时，将返回错误码[6800301 系统处理异常](../../../reference/apis-audio-kit/errorcode-audio.md#6800301-系统处理异常)。
+> - 调用[Start](arkts-audio-audio-audiorenderer-i.md#start-1)且audio scene不为[AudioScene](arkts-audio-audio-audioscene-e.md).AUDIO_SCENE_VOICE_CHAT时，将返回错误码[6800301 系统处理异常](../../../reference/apis-audio-kit/errorcode-audio.md#6800301-系统处理异常)。
 > 
 > - 调用[getAudioTime](arkts-audio-audio-audiorenderer-i.md#getaudiotime)、[getAudioTimeSync](arkts-audio-audio-audiorenderer-i.md#getaudiotimesync)、[getAudioTimestampInfo](arkts-audio-audio-audiorenderer-i.md#getaudiotimestampinfo)、[getAudioTimestampInfoSync](arkts-audio-audio-audiorenderer-i.md#getaudiotimestampinfosync)、[setDefaultOutputDevice](arkts-audio-audio-audiorenderer-i.md#setdefaultoutputdevice)时，将返回错误码[6800301 系统处理异常](../../../reference/apis-audio-kit/errorcode-audio.md#6800301-系统处理异常)。
 
@@ -157,7 +157,7 @@ setTarget(target: RenderTarget, targetParams?: AudioRendererTargetParams): Promi
 > 
 > - 该音频渲染器的device type为[DeviceType](arkts-audio-audio-devicetype-e.md).SYSTEM_PRIVATE。
 > 
-> - 调用[Start](arkts-audio-audio-audiorenderer-i.md#start)且audio scene不为[AudioScene](arkts-audio-audio-audioscene-e.md).AUDIO_SCENE_VOICE_CHAT时，将返回错误码[6800301 系统处理异常](../../../reference/apis-audio-kit/errorcode-audio.md#6800301-系统处理异常)。
+> - 调用[Start](arkts-audio-audio-audiorenderer-i.md#start-1)且audio scene不为[AudioScene](arkts-audio-audio-audioscene-e.md).AUDIO_SCENE_VOICE_CHAT时，将返回错误码[6800301 系统处理异常](../../../reference/apis-audio-kit/errorcode-audio.md#6800301-系统处理异常)。
 > 
 > - 调用[getAudioTime](arkts-audio-audio-audiorenderer-i.md#getaudiotime)、[getAudioTimeSync](arkts-audio-audio-audiorenderer-i.md#getaudiotimesync)、[getAudioTimestampInfo](arkts-audio-audio-audiorenderer-i.md#getaudiotimestampinfo)、[getAudioTimestampInfoSync](arkts-audio-audio-audiorenderer-i.md#getaudiotimestampinfosync)、[setDefaultOutputDevice](arkts-audio-audio-audiorenderer-i.md#setdefaultoutputdevice)时，将返回错误码[6800301 系统处理异常](../../../reference/apis-audio-kit/errorcode-audio.md#6800301-系统处理异常)。
 

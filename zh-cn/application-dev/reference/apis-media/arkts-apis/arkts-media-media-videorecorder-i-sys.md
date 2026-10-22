@@ -29,7 +29,7 @@ interface VideoRecorder
 getInputSurface(callback: AsyncCallback<string>): void
 ```
 
-获得录制需要的surface。使用callback异步回调。开发者从此surface中获取surfaceBuffer，填入相应的数据。应当注意，填入的视频数据需要携带时间戳（单位ns），buffersize。时间戳的起始时间请以系统启动时间为基准。只能在[prepare()](#prepare)接口调用后调用。
+获得录制需要的surface。使用callback异步回调。开发者从此surface中获取surfaceBuffer，填入相应的数据。应当注意，填入的视频数据需要携带时间戳（单位ns），buffersize。时间戳的起始时间请以系统启动时间为基准。只能在[prepare()](#prepare-1)接口调用后调用。
 
 **起始版本：** 9
 
@@ -80,7 +80,7 @@ videoRecorder.getInputSurface((err: BusinessError, surfaceId: string) => {
 getInputSurface(): Promise<string>
 ```
 
-获得录制需要的surface。使用Promise异步回调。开发者从此surface中获取surfaceBuffer，填入相应的数据。应当注意，填入的视频数据需要携带时间戳（单位ns），buffersize。时间戳的起始时间请以系统启动时间为基准。只能在[prepare()](#prepare)接口调用后调用。
+获得录制需要的surface。使用Promise异步回调。开发者从此surface中获取surfaceBuffer，填入相应的数据。应当注意，填入的视频数据需要携带时间戳（单位ns），buffersize。时间戳的起始时间请以系统启动时间为基准。只能在[prepare()](#prepare-2)接口调用后调用。
 
 **起始版本：** 9
 
@@ -177,7 +177,7 @@ pause(callback: AsyncCallback<void>): void
 
 暂停视频录制。使用callback异步回调。
 
-在[start()](#start)后调用。可以通过调用[resume()](#resume)接口来恢复录制。
+在[start()](#start-1)后调用。可以通过调用[resume()](#resume-1)接口来恢复录制。
 
 **起始版本：** 9
 
@@ -524,7 +524,7 @@ reset(callback: AsyncCallback<void>): void
 
 重置视频录制。使用callback异步回调。
 
-需要重新调用[prepare()](#prepare)和[getInputSurface()](#getinputsurface)接口才能重新录制。
+需要重新调用[prepare()](#prepare-1)和[getInputSurface()](#getinputsurface)接口才能重新录制。
 
 **起始版本：** 9
 
@@ -574,7 +574,7 @@ reset(): Promise<void>
 
 重置视频录制。使用Promise异步回调。
 
-需要重新调用[prepare()](#prepare)和[getInputSurface()](#getinputsurface)接口才能重新录制。
+需要重新调用[prepare()](#prepare-2)和[getInputSurface()](#getinputsurface)接口才能重新录制。
 
 **起始版本：** 9
 
@@ -718,7 +718,7 @@ start(callback: AsyncCallback<void>): void
 
 开始视频录制。使用callback异步回调。
 
-在[prepare()](#prepare)和[getInputSurface()](#getinputsurface)后调用，需要依赖数据源先给surface传递数据。
+在[prepare()](#prepare-1)和[getInputSurface()](#getinputsurface-1)后调用，需要依赖数据源先给surface传递数据。
 
 **起始版本：** 9
 
@@ -769,7 +769,7 @@ start(): Promise<void>
 
 开始视频录制。使用Promise异步回调。
 
-在[prepare()](#prepare)和[getInputSurface()](#getinputsurface)后调用，需要依赖数据源先给surface传递数据。
+在[prepare()](#prepare-2)和[getInputSurface()](#getinputsurface)后调用，需要依赖数据源先给surface传递数据。
 
 **起始版本：** 9
 
@@ -818,7 +818,7 @@ stop(callback: AsyncCallback<void>): void
 
 停止视频录制。使用callback异步回调。
 
-需要重新调用[prepare()](#prepare)和[getInputSurface()](#getinputsurface)接口才能重新录制。
+需要重新调用[prepare()](#prepare-1)和[getInputSurface()](#getinputsurface)接口才能重新录制。
 
 **起始版本：** 9
 
@@ -869,7 +869,7 @@ stop(): Promise<void>
 
 停止视频录制。使用callback异步回调。
 
-需要重新调用[prepare()](#prepare)和[getInputSurface()](#getinputsurface)接口才能重新录制。
+需要重新调用[prepare()](#prepare-2)和[getInputSurface()](#getinputsurface)接口才能重新录制。
 
 **起始版本：** 9
 

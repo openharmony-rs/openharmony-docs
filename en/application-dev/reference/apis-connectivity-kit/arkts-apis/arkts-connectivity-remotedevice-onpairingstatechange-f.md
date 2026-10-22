@@ -26,7 +26,7 @@ The app must have the **ohos.permission.ACCESS_NEARLINK** permission to receive 
 
 **System capability:** SystemCapability.Communication.NearLink.Base
 
-**See also:** [offPairingStateChange](arkts-connectivity-remotedevice-offpairingstatechange-f.md) Unsubscribes from the pairing status change event.
+**See also:** [offPairingStateChange](arkts-connectivity-remotedevice-offpairingstatechange-f.md#offpairingstatechange-1) Unsubscribes from the pairing status change event.
 
 **Parameters:**
 

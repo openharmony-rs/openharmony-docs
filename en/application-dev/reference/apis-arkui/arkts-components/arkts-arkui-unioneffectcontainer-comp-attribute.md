@@ -18,9 +18,9 @@ Universal attributes are supported. The width and height can be set.
 > 
 > [outline](../../../reference/apis-arkui/arkui-ts/ts-universal-attributes-outline.md#outline),
 > 
-> [shadow](arkts-arkui-common-comp-commonmethod-c.md#shadow),
+> [shadow](arkts-arkui-common-comp-commonmethod-c.md#shadow-1),
 > 
-> [backgroundColor](arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor), and
+> [backgroundColor](arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor-1), and
 > 
 > [pointLight](#pointlight). The above effects are drawn on the shape after
 > union,

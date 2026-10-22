@@ -32,16 +32,16 @@ import { text } from '@kit.ArkGraphics2D';
 
 | 名称 | 说明 |
 | --- | --- |
-| [getFontCount](arkts-arkgraphics2d-text-getfontcount-f.md#getfontcount) | 根据字体文件路径获取包含的字体文件数。 |
-| [getFontDescriptorByFullName](arkts-arkgraphics2d-text-getfontdescriptorbyfullname-f.md#getfontdescriptorbyfullname) | 根据字体名称和类型获取字体描述符，使用Promise异步回调。 |
-| [getFontDescriptorsFromPath](arkts-arkgraphics2d-text-getfontdescriptorsfrompath-f.md#getfontdescriptorsfrompath) | 根据字体文件路径获取字体描述符数组。使用Promise异步回调。 |
-| [getFontPathsByType](arkts-arkgraphics2d-text-getfontpathsbytype-f.md#getfontpathsbytype) | 获取指定字体类型的所有字体文件路径。 |
-| [getFontUnicodeSet](arkts-arkgraphics2d-text-getfontunicodeset-f.md#getfontunicodeset) | 根据字体文件路径获取字体unicode数组。使用Promise异步回调。 |
-| [getSystemFontFullNamesByType](arkts-arkgraphics2d-text-getsystemfontfullnamesbytype-f.md#getsystemfontfullnamesbytype) | 根据字体类型返回该类型对应的所有字体的字体名称，使用Promise异步回调。 |
-| [isFontSupported](arkts-arkgraphics2d-text-isfontsupported-f.md#isfontsupported) | 检查系统是否支持指定的字体文件。可在加载自定义字体前预先验证字体文件的可用性，避免因字体不支持导致文本渲染异常。 |
-| [matchFontDescriptors](arkts-arkgraphics2d-text-matchfontdescriptors-f.md#matchfontdescriptors) | 根据指定的字体描述符返回所有符合要求的系统字体描述符，使用Promise异步回调。 |
-| [setTextHighContrast](arkts-arkgraphics2d-text-settexthighcontrast-f.md#settexthighcontrast) | 用于设置文字渲染高对比度模式。 |
-| [setTextUndefinedGlyphDisplay](arkts-arkgraphics2d-text-settextundefinedglyphdisplay-f.md#settextundefinedglyphdisplay) | 设置字符映射到.notdef（未定义）字形时要使用的字形类型。 |
+| [getFontCount](arkts-arkgraphics2d-text-getfontcount-f.md#getfontcount-1) | 根据字体文件路径获取包含的字体文件数。 |
+| [getFontDescriptorByFullName](arkts-arkgraphics2d-text-getfontdescriptorbyfullname-f.md#getfontdescriptorbyfullname-1) | 根据字体名称和类型获取字体描述符，使用Promise异步回调。 |
+| [getFontDescriptorsFromPath](arkts-arkgraphics2d-text-getfontdescriptorsfrompath-f.md#getfontdescriptorsfrompath-1) | 根据字体文件路径获取字体描述符数组。使用Promise异步回调。 |
+| [getFontPathsByType](arkts-arkgraphics2d-text-getfontpathsbytype-f.md#getfontpathsbytype-1) | 获取指定字体类型的所有字体文件路径。 |
+| [getFontUnicodeSet](arkts-arkgraphics2d-text-getfontunicodeset-f.md#getfontunicodeset-1) | 根据字体文件路径获取字体unicode数组。使用Promise异步回调。 |
+| [getSystemFontFullNamesByType](arkts-arkgraphics2d-text-getsystemfontfullnamesbytype-f.md#getsystemfontfullnamesbytype-1) | 根据字体类型返回该类型对应的所有字体的字体名称，使用Promise异步回调。 |
+| [isFontSupported](arkts-arkgraphics2d-text-isfontsupported-f.md#isfontsupported-1) | 检查系统是否支持指定的字体文件。可在加载自定义字体前预先验证字体文件的可用性，避免因字体不支持导致文本渲染异常。 |
+| [matchFontDescriptors](arkts-arkgraphics2d-text-matchfontdescriptors-f.md#matchfontdescriptors-1) | 根据指定的字体描述符返回所有符合要求的系统字体描述符，使用Promise异步回调。 |
+| [setTextHighContrast](arkts-arkgraphics2d-text-settexthighcontrast-f.md#settexthighcontrast-1) | 用于设置文字渲染高对比度模式。 |
+| [setTextUndefinedGlyphDisplay](arkts-arkgraphics2d-text-settextundefinedglyphdisplay-f.md#settextundefinedglyphdisplay-1) | 设置字符映射到.notdef（未定义）字形时要使用的字形类型。 |
 
 ### 类
 

@@ -19,7 +19,7 @@ Sends an accessibility event. The event will be distributed to registered access
 
 **Deprecated since:** 9
 
-**Substitutes:** [sendAccessibilityEvent](arkts-accessibility-accessibility-sendaccessibilityevent-f.md#sendaccessibilityevent)(event: EventInfo, callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [sendAccessibilityEvent](arkts-accessibility-accessibility-sendaccessibilityevent-f.md#sendaccessibilityevent-1)(event: EventInfo, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-accessibility-function sendEvent(event: EventInfo, callback: AsyncCallback<void>): void--><!--Device-accessibility-function sendEvent(event: EventInfo, callback: AsyncCallback<void>): void-End-->
 
@@ -66,7 +66,7 @@ Sends an accessibility event. The event will be distributed to registered access
 
 **Deprecated since:** 9
 
-**Substitutes:** [sendAccessibilityEvent](arkts-accessibility-accessibility-sendaccessibilityevent-f.md#sendaccessibilityevent)(event: EventInfo)
+**Substitutes:** [sendAccessibilityEvent](arkts-accessibility-accessibility-sendaccessibilityevent-f.md#sendaccessibilityevent-2)(event: EventInfo)
 
 <!--Device-accessibility-function sendEvent(event: EventInfo): Promise<void>--><!--Device-accessibility-function sendEvent(event: EventInfo): Promise<void>-End-->
 

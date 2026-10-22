@@ -20,8 +20,8 @@ import { http } from '@kit.NetworkKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [createHttp](arkts-network-http-createhttp-f.md#createhttp) | 创建一个HTTP请求，里面包括发起请求、中断请求、订阅/取消订阅HTTP Response Header事件。当发起多个HTTP请求时，需为每个HTTP请求创建对应HttpRequest对象。每一个HttpRequest对象对应一个HTTP请求。 |
-| [createHttpResponseCache](arkts-network-http-createhttpresponsecache-f.md#createhttpresponsecache) | 创建一个HttpResponseCache对象，可用于存储HTTP请求的响应数据。对象中可调用[flush](arkts-network-http-httpresponsecache-i.md#flush)与[delete](arkts-network-http-httpresponsecache-i.md#delete)方法，cacheSize指定缓存大小。 |
+| [createHttp](arkts-network-http-createhttp-f.md#createhttp-1) | 创建一个HTTP请求，里面包括发起请求、中断请求、订阅/取消订阅HTTP Response Header事件。当发起多个HTTP请求时，需为每个HTTP请求创建对应HttpRequest对象。每一个HttpRequest对象对应一个HTTP请求。 |
+| [createHttpResponseCache](arkts-network-http-createhttpresponsecache-f.md#createhttpresponsecache-1) | 创建一个HttpResponseCache对象，可用于存储HTTP请求的响应数据。对象中可调用[flush](arkts-network-http-httpresponsecache-i.md#flush-1)与[delete](arkts-network-http-httpresponsecache-i.md#delete-1)方法，cacheSize指定缓存大小。 |
 
 ### 类
 

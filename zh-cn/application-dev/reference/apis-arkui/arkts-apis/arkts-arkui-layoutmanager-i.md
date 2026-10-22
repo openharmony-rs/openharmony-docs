@@ -71,7 +71,7 @@ getCharacterPositionAtCoordinate(
 
 根据指定编码类型，获取距离指定坐标最近的字符位置信息。
 
-相比[getCharacterPositionAtCoordinate](#getcharacterpositionatcoordinate)，本接口支持通过encoding参数指定字符位置使用的编码类型（UTF-8或UTF-16）。
+相比[getCharacterPositionAtCoordinate](#getcharacterpositionatcoordinate-1)，本接口支持通过encoding参数指定字符位置使用的编码类型（UTF-8或UTF-16）。
 
 > **说明：** 
 > 
@@ -151,7 +151,7 @@ getCharacterRangeForGlyphRange(glyphRange: TextRange, encoding?: TextEncoding): 
 
 根据指定编码类型和文本字形范围，获取字符范围以及实际的字形范围。
 
-相比[getCharacterRangeForGlyphRange](#getcharacterrangeforglyphrange)，本接口支持通过encoding参数指定字符范围使用的编码类型（UTF-8或UTF-16）。
+相比[getCharacterRangeForGlyphRange](#getcharacterrangeforglyphrange-1)，本接口支持通过encoding参数指定字符范围使用的编码类型（UTF-8或UTF-16）。
 
 > **说明：** 
 > 
@@ -278,7 +278,7 @@ getGlyphRangeForCharacterRange(charRange: TextRange, encoding?: TextEncoding): A
 
 根据指定编码类型和文本字符范围，获取字形范围以及实际的字符范围。
 
-相比[getGlyphRangeForCharacterRange](#getglyphrangeforcharacterrange)，本接口支持通过encoding参数指定字符范围使用的编码类型（UTF-8或UTF-16）。
+相比[getGlyphRangeForCharacterRange](#getglyphrangeforcharacterrange-1)，本接口支持通过encoding参数指定字符范围使用的编码类型（UTF-8或UTF-16）。
 
 > **说明：** 
 > 

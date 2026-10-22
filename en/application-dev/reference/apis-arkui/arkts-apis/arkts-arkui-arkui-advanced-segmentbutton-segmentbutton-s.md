@@ -20,6 +20,18 @@ Creates a tab-style or capsule-style segment button.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
+## Child Components
+
+None
+
+## Attributes
+
+The [universal attributes](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md) are not supported.
+
+## Events
+
+The [universal events](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md) are not supported.
+
 ## Modules to Import
 
 ```TypeScript

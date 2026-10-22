@@ -154,7 +154,7 @@ Sets the indicator style of the selected subtab. It takes effect only in the hor
 indicator(value: IndicatorStyle | DrawableTabBarIndicator): SubTabBarStyle
 ```
 
-Sets the indicator style of the selected subtab. Compared with [indicator](#indicator), the image format is added. For details about the display effect of the image, see [ImageFit.Cover](../arkts-apis/arkts-arkui-imagefit-e.md). It takes effect only in the horizontal layout.
+Sets the indicator style of the selected subtab. Compared with [indicator](#indicator-1), the image format is added. For details about the display effect of the image, see [ImageFit.Cover](../arkts-apis/arkts-arkui-imagefit-e.md). It takes effect only in the horizontal layout.
 
 > **NOTE:** 
 > 
@@ -296,7 +296,7 @@ Sets the padding of the subtab. It cannot be set in percentage. When the paramet
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | Padding &#124; [Dimension](../arkts-apis/arkts-arkui-dimension-t.md) | Yes | Padding attributes of a subtab (percentage setting is not supported), which are used to adjust the distance between the tab content and the boundary. <br>Value range: [0, +∞] <br>If the value is abnormal, the default value is used. <br>Default value: **{left:8.0vp,right:8.0vp,top:17.0vp,bottom:18.0vp}** <br>**NOTE:** <br>Since API version 12, the [padding<sup>12+</sup>](#padding) method is added to support the [LocalizedPadding](../arkts-apis/arkts-arkui-localizedpadding-i.md) type and the mirroring capability. |
+| value | Padding &#124; [Dimension](../arkts-apis/arkts-arkui-dimension-t.md) | Yes | Padding attributes of a subtab (percentage setting is not supported), which are used to adjust the distance between the tab content and the boundary. <br>Value range: [0, +∞] <br>If the value is abnormal, the default value is used. <br>Default value: **{left:8.0vp,right:8.0vp,top:17.0vp,bottom:18.0vp}** <br>**NOTE:** <br>Since API version 12, the [padding<sup>12+</sup>](#padding-2) method is added to support the [LocalizedPadding](../arkts-apis/arkts-arkui-localizedpadding-i.md) type and the mirroring capability. |
 
 **Return value:**
 

@@ -20,7 +20,7 @@ constructor(value: string | ImageAttachment | CustomSpan, styles?: Array<StyleOp
 
 A constructor used to create a styled string.
 
-It is not supported to create it before [loadContent()](arkts-arkui-window-window-i.md#loadcontent).
+It is not supported to create it before [loadContent()](arkts-arkui-window-window-i.md#loadcontent-1).
 
 **Since:** 12
 

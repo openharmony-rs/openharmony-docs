@@ -26,7 +26,7 @@ import { sensor } from '@kit.SensorServiceKit';
 deviceId?: number
 ```
 
-ID of the device to which the target sensor belongs. The default value is **-1**, which indicates the local device. You can obtain the ID of a remote device through sensor.on('sensorStatusChange') or [getSensorList](arkts-sensorservice-sensor-getsensorlist-f.md#getsensorlist).
+ID of the device to which the target sensor belongs. The default value is **-1**, which indicates the local device. You can obtain the ID of a remote device through sensor.on('sensorStatusChange') or [getSensorList](arkts-sensorservice-sensor-getsensorlist-f.md#getsensorlist-1).
 
 **Type:** number
 
@@ -44,7 +44,7 @@ ID of the device to which the target sensor belongs. The default value is **-1**
 sensorIndex?: number
 ```
 
-Index of the target sensor. A sensor type may have multiple instances. The default value is **0**, which indicates the default sensor on the device. You can use [getSensorList](arkts-sensorservice-sensor-getsensorlist-f.md#getsensorlist) or sensor.on('sensorStatusChange') to obtain the sensor index.
+Index of the target sensor. A sensor type may have multiple instances. The default value is **0**, which indicates the default sensor on the device. You can use [getSensorList](arkts-sensorservice-sensor-getsensorlist-f.md#getsensorlist-1) or sensor.on('sensorStatusChange') to obtain the sensor index.
 
 **Type:** number
 

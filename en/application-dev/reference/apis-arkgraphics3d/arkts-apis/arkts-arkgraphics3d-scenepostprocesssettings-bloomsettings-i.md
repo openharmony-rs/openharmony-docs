@@ -4,7 +4,7 @@
 export interface BloomSettings
 ```
 
-Describes the settings for bloom effects. It is unavailable when RenderingPipelineType is set to FORWARD_LIGHTWEIGHT.
+Describes the settings for bloom effects. It is unavailable when [RenderingPipelineType](arkts-arkgraphics3d-scenetypes-renderingpipelinetype-e.md) is set to FORWARD_LIGHTWEIGHT.
 
 **Since:** 18
 

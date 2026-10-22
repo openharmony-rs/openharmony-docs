@@ -33,10 +33,10 @@ Creates an input method panel. This API can be called only by the input method a
 > as <br>
 > [window.createWindow](../../../windowmanager/application-window-fa.md#setting-the-child-window-of-an-application), <br>
 > <br>
-> [bindContextMenu](../../apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu), <br>
+> [bindContextMenu](../../apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu-1), <br>
 > and [CustomDialog](../../apis-arkui/arkts-apis/arkts-arkui-customdialogcontroller.md#custom_dialog_controllercustomdialog). You are advised to adopt <br>
 > alternative solutions to sub-windows, such as using a [dialog box](../../apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-dialog.md) or <br>
-> [bindMenu](../../apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindmenu), or <br>
+> [bindMenu](../../apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindmenu-1), or <br>
 > set **showInSubwindow** to **false**.
 
 **Since:** 10
@@ -104,10 +104,10 @@ Creates an input method panel. This API can be called only by the input method a
 > as <br>
 > [window.createWindow](../../../windowmanager/application-window-fa.md#setting-the-child-window-of-an-application), <br>
 > <br>
-> [bindContextMenu](../../apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu), <br>
+> [bindContextMenu](../../apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu-1), <br>
 > and [CustomDialog](../../apis-arkui/arkts-apis/arkts-arkui-customdialogcontroller.md#custom_dialog_controllercustomdialog). You are advised to adopt <br>
 > alternative solutions to sub-windows, such as using a [dialog box](../../apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-dialog.md) or <br>
-> [bindMenu](../../apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindmenu), or <br>
+> [bindMenu](../../apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindmenu-1), or <br>
 > set **showInSubwindow** to **false**.
 
 **Since:** 10

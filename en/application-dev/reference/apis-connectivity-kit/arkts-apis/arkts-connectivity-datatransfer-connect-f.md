@@ -26,7 +26,7 @@ Connects to a remote device. This API uses a promise to return the result. Befor
 
 **System capability:** SystemCapability.Communication.NearLink.Base
 
-**See also:** [disconnect](arkts-connectivity-datatransfer-disconnect-f.md) Disconnects from the remote device.
+**See also:** [disconnect](arkts-connectivity-datatransfer-disconnect-f.md#disconnect-1) Disconnects from the remote device.
 
 **Parameters:**
 

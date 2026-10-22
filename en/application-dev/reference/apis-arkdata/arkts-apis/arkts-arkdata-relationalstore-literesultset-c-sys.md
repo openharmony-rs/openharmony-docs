@@ -1,4 +1,4 @@
-# LiteResultSet
+# LiteResultSet (System API)
 
 ```TypeScript
 class LiteResultSet

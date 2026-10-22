@@ -1,4 +1,4 @@
-# AudioPlaybackCaptureMode
+# AudioPlaybackCaptureMode (System API)
 
 ```TypeScript
 enum AudioPlaybackCaptureMode

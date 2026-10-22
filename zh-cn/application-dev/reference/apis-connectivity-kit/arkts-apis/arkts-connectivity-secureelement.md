@@ -28,7 +28,7 @@ import { omapi } from '@kit.ConnectivityKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [createService](arkts-connectivity-omapi-createservice-f.md#createservice) | 建立一个可用于连接到系统中所有可用SE的新连接（服务）。连接过程较为耗时，所以此方法仅提供异步方式。使用Promise异步回调。 |
+| [createService](arkts-connectivity-omapi-createservice-f.md#createservice-1) | 建立一个可用于连接到系统中所有可用SE的新连接（服务）。连接过程较为耗时，所以此方法仅提供异步方式。使用Promise异步回调。 |
 | [off('stateChanged')](arkts-connectivity-omapi-off-f.md#offstatechanged) | 取消订阅服务状态更改事件。 |
 | [on('stateChanged')](arkts-connectivity-omapi-on-f.md#onstatechanged) | 注册监听服务状态变化事件。 |
 | [newSEService('serviceState')](arkts-connectivity-omapi-newseservice-f.md) | 建立一个可用于连接到系统中所有可用SE的新连接（服务）。连接过程较为耗时，所以此方法仅提供异步方式进行的。使用callback异步回调。 |
@@ -37,7 +37,7 @@ import { omapi } from '@kit.ConnectivityKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [Channel](arkts-connectivity-omapi-channel-i.md) | Channel的实例表示在某个Session实例上创建通道，可能为基础通道或逻辑通道。通过[Session.openBasicChannel](arkts-connectivity-omapi-session-i.md#openbasicchannel)或[Session.openLogicalChannel](arkts-connectivity-omapi-session-i.md#openlogicalchannel)获取Channel实例。 |
+| [Channel](arkts-connectivity-omapi-channel-i.md) | Channel的实例表示在某个Session实例上创建通道，可能为基础通道或逻辑通道。通过[Session.openBasicChannel](arkts-connectivity-omapi-session-i.md#openbasicchannel-1)或[Session.openLogicalChannel](arkts-connectivity-omapi-session-i.md#openlogicalchannel-1)获取Channel实例。 |
 | [Reader](arkts-connectivity-omapi-reader-i.md) | Reader的实例表示该设备支持的SE，如果支持eSE、SIM和SIM2，则返回3个实例，其中SIM2从API version 22开始支持。通过[SEService.getReaders](arkts-connectivity-omapi-seservice-i.md#getreaders)获取Reader实例。 |
 | [SEService](arkts-connectivity-omapi-seservice-i.md) | SEService表示可用于连接到系统中所有可用SE的连接（服务），通过[createService](arkts-connectivity-omapi-createservice-f.md)获取SEService实例。 |
 | [Session](arkts-connectivity-omapi-session-i.md) | Session的实例表示在某个SE Reader实例上创建连接会话。通过[Reader.openSession](arkts-connectivity-omapi-reader-i.md#opensession)获取Session实例。 |

@@ -1,4 +1,4 @@
-# VibrateAttribute
+# VibrateAttribute (System API)
 
 ```TypeScript
 interface VibrateAttribute

@@ -26,8 +26,8 @@ Checks whether the device supports the combination of the DRM solution, MIME typ
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| name | string | Yes | DRM solution name. Before calling this API, ensure that the DRM solution name is supported by calling [isMediaKeySystemSupported](#ismediakeysystemsupported). |
-| mimeType | string | Yes | MIME type. The supported MIME types depend on the DRM solution. Before calling this API, ensure that the MIME type is supported by calling [isMediaKeySystemSupported](#ismediakeysystemsupported). |
+| name | string | Yes | DRM solution name. Before calling this API, ensure that the DRM solution name is supported by calling [isMediaKeySystemSupported](#ismediakeysystemsupported-3). |
+| mimeType | string | Yes | MIME type. The supported MIME types depend on the DRM solution. Before calling this API, ensure that the MIME type is supported by calling [isMediaKeySystemSupported](#ismediakeysystemsupported-2). |
 | level | [ContentProtectionLevel](arkts-drm-drm-contentprotectionlevel-e.md) | Yes | Content protection level. |
 
 **Return value:**
@@ -74,7 +74,7 @@ Checks whether the device supports the combination of the DRM solution and MIME 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| name | string | Yes | DRM solution name. Before calling this API, ensure that the DRM solution name is supported by calling [isMediaKeySystemSupported](#ismediakeysystemsupported). |
+| name | string | Yes | DRM solution name. Before calling this API, ensure that the DRM solution name is supported by calling [isMediaKeySystemSupported](#ismediakeysystemsupported-3). |
 | mimeType | string | Yes | MIME type. The supported MIME types depend on the DRM solution. For example, video/avc and video/hevc. |
 
 **Return value:**

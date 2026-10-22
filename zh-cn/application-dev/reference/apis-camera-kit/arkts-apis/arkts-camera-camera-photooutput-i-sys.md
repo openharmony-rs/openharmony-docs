@@ -1,4 +1,4 @@
-# PhotoOutput
+# PhotoOutput（系统接口）
 
 ```TypeScript
 interface PhotoOutput extends CameraOutput

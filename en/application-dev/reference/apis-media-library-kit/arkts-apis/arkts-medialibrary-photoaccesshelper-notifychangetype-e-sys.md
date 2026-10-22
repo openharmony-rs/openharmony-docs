@@ -1,4 +1,4 @@
-# NotifyChangeType
+# NotifyChangeType (System API)
 
 ```TypeScript
 enum NotifyChangeType

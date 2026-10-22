@@ -26,7 +26,7 @@ Unsubscribes from pairing request events from remote NearLink devices. Before ca
 
 **System API:** This is a system API.
 
-**See also:** [onPairingRequest](arkts-connectivity-remotedevice-onpairingrequest-f-sys.md) Subscribes to the pairing request event.
+**See also:** [onPairingRequest](arkts-connectivity-remotedevice-onpairingrequest-f-sys.md#onpairingrequest-1) Subscribes to the pairing request event.
 
 **Parameters:**
 

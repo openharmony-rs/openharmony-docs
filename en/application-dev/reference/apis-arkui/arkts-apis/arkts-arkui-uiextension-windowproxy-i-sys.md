@@ -1,4 +1,4 @@
-# WindowProxy
+# WindowProxy (System API)
 
 ```TypeScript
 interface WindowProxy

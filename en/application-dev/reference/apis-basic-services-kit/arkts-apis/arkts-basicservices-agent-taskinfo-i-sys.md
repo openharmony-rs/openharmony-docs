@@ -1,4 +1,4 @@
-# TaskInfo
+# TaskInfo (System API)
 
 ```TypeScript
 interface TaskInfo

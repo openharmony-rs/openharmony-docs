@@ -1,4 +1,4 @@
-# PbapServerProfile
+# PbapServerProfile（系统接口）
 
 ```TypeScript
 interface PbapServerProfile extends BaseProfile

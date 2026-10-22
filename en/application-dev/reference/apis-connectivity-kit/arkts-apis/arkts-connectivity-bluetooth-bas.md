@@ -25,10 +25,10 @@ import { bas } from '@kit.ConnectivityKit';
 
 | Name | Description |
 | --- | --- |
-| [getRemoteDeviceBatteryInfo](arkts-connectivity-bas-getremotedevicebatteryinfo-f-sys.md#getremotedevicebatteryinfo) | Get remote device battery information. |
-| [isBasSupported](arkts-connectivity-bas-isbassupported-f-sys.md#isbassupported) | Determine whether the local device can obtain the battery level of the remote device. |
-| [offBatteryChange](arkts-connectivity-bas-offbatterychange-f-sys.md#offbatterychange) | Unsubscribe the event of battery state changes from a remote device. |
-| [onBatteryChange](arkts-connectivity-bas-onbatterychange-f-sys.md#onbatterychange) | Subscribe the event of battery state changed from a remote device. |
+| [getRemoteDeviceBatteryInfo](arkts-connectivity-bas-getremotedevicebatteryinfo-f-sys.md#getremotedevicebatteryinfo-1) | Get remote device battery information. |
+| [isBasSupported](arkts-connectivity-bas-isbassupported-f-sys.md#isbassupported-1) | Determine whether the local device can obtain the battery level of the remote device. |
+| [offBatteryChange](arkts-connectivity-bas-offbatterychange-f-sys.md#offbatterychange-1) | Unsubscribe the event of battery state changes from a remote device. |
+| [onBatteryChange](arkts-connectivity-bas-onbatterychange-f-sys.md#onbatterychange-1) | Subscribe the event of battery state changed from a remote device. |
 <!--DelEnd-->
 
 <!--Del-->

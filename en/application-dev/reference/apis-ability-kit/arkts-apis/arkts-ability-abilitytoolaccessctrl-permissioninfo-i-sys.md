@@ -1,4 +1,4 @@
-# PermissionInfo
+# PermissionInfo (System API)
 
 ```TypeScript
 interface PermissionInfo

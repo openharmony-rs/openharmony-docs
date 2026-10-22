@@ -20,33 +20,33 @@ import { eSIM } from '@kit.TelephonyKit';
 
 | Name | Description |
 | --- | --- |
-| [addProfile](arkts-telephony-esim-addprofile-f.md#addprofile) | Launches the download page for the user to add a single profile. This API uses a promise to return the result. |
-| [isSupported](arkts-telephony-esim-issupported-f.md#issupported) | Checks whether the specified card slot supports the eSIM function. |
+| [addProfile](arkts-telephony-esim-addprofile-f.md#addprofile-1) | Launches the download page for the user to add a single profile. This API uses a promise to return the result. |
+| [isSupported](arkts-telephony-esim-issupported-f.md#issupported-1) | Checks whether the specified card slot supports the eSIM function. |
 
 <!--Del-->
 ### Functions(System API)
 
 | Name | Description |
 | --- | --- |
-| [cancelSession](arkts-telephony-esim-cancelsession-f-sys.md#cancelsession) | Cancels a session. This API uses a promise to return the result. |
-| [deleteProfile](arkts-telephony-esim-deleteprofile-f-sys.md#deleteprofile) | Deletes a profile. This API uses a promise to return the result. |
-| [downloadProfile](arkts-telephony-esim-downloadprofile-f-sys.md#downloadprofile) | Downloads a profile. This API uses a promise to return the result. |
-| [getContractInfo](arkts-telephony-esim-getcontractinfo-f-sys.md#getcontractinfo) | Obtains the encrypted eSIM ID and other information required for enabling eSIM. |
-| [getDefaultSmdpAddress](arkts-telephony-esim-getdefaultsmdpaddress-f-sys.md#getdefaultsmdpaddress) | Obtains the default SM-DP+ address stored in the eUICC. This API uses a promise to return the result. |
-| [getDownloadableProfileMetadata](arkts-telephony-esim-getdownloadableprofilemetadata-f-sys.md#getdownloadableprofilemetadata) | Obtains the metadata of the downloadable profile. This API uses a promise to return the result. |
-| [getDownloadableProfiles](arkts-telephony-esim-getdownloadableprofiles-f-sys.md#getdownloadableprofiles) | Obtains the list of downloadable profiles. This API uses a promise to return the result. |
-| [getEid](arkts-telephony-esim-geteid-f-sys.md#geteid) | Obtains the equipment identifier (EID) of the eUICC hardware in a specified card slot. |
-| [getEsimFreeStorage](arkts-telephony-esim-getesimfreestorage-f-sys.md#getesimfreestorage) | This API is used to obtain the remaining storage space of the eUICC hardware. This API uses a promise to return the result. |
-| [getEuiccInfo](arkts-telephony-esim-geteuiccinfo-f-sys.md#geteuiccinfo) | Obtains eUICC information. This API uses a promise to return the result. |
-| [getEuiccProfileInfoList](arkts-telephony-esim-geteuiccprofileinfolist-f-sys.md#geteuiccprofileinfolist) | Obtains the profile information list. This API uses a promise to return the result. |
-| [getOsuStatus](arkts-telephony-esim-getosustatus-f-sys.md#getosustatus) | Obtains the OS upgrade status for the eSIM in the specified slot. This API uses a promise to return the result. |
-| [getSupportedPkids](arkts-telephony-esim-getsupportedpkids-f-sys.md#getsupportedpkids) | Obtains the public key ID information supported by the phone. |
-| [reserveProfilesForFactoryRestore](arkts-telephony-esim-reserveprofilesforfactoryrestore-f-sys.md#reserveprofilesforfactoryrestore) | Restores factory settings and retains profiles. This API uses a promise to return the result. |
-| [resetMemory](arkts-telephony-esim-resetmemory-f-sys.md#resetmemory) | Clears all specific profiles and resets the eUICC. This API uses a promise to return the result. |
-| [setDefaultSmdpAddress](arkts-telephony-esim-setdefaultsmdpaddress-f-sys.md#setdefaultsmdpaddress) | Sets or updates the default SM-DP+ address stored in the eUICC. This API uses a promise to return the result. |
-| [setProfileNickname](arkts-telephony-esim-setprofilenickname-f-sys.md#setprofilenickname) | Sets a nickname for the specified profile. This API uses a promise to return the result. |
-| [startOsu](arkts-telephony-esim-startosu-f-sys.md#startosu) | Upgrades the OS if the OS version of the eSIM in the specified slot is not the latest. This API uses a promise to return the result. |
-| [switchToProfile](arkts-telephony-esim-switchtoprofile-f-sys.md#switchtoprofile) | Switches to the specified profile. This API uses a promise to return the result. |
+| [cancelSession](arkts-telephony-esim-cancelsession-f-sys.md#cancelsession-1) | Cancels a session. This API uses a promise to return the result. |
+| [deleteProfile](arkts-telephony-esim-deleteprofile-f-sys.md#deleteprofile-1) | Deletes a profile. This API uses a promise to return the result. |
+| [downloadProfile](arkts-telephony-esim-downloadprofile-f-sys.md#downloadprofile-1) | Downloads a profile. This API uses a promise to return the result. |
+| [getContractInfo](arkts-telephony-esim-getcontractinfo-f-sys.md#getcontractinfo-1) | Obtains the encrypted eSIM ID and other information required for enabling eSIM. |
+| [getDefaultSmdpAddress](arkts-telephony-esim-getdefaultsmdpaddress-f-sys.md#getdefaultsmdpaddress-1) | Obtains the default SM-DP+ address stored in the eUICC. This API uses a promise to return the result. |
+| [getDownloadableProfileMetadata](arkts-telephony-esim-getdownloadableprofilemetadata-f-sys.md#getdownloadableprofilemetadata-1) | Obtains the metadata of the downloadable profile. This API uses a promise to return the result. |
+| [getDownloadableProfiles](arkts-telephony-esim-getdownloadableprofiles-f-sys.md#getdownloadableprofiles-1) | Obtains the list of downloadable profiles. This API uses a promise to return the result. |
+| [getEid](arkts-telephony-esim-geteid-f-sys.md#geteid-1) | Obtains the equipment identifier (EID) of the eUICC hardware in a specified card slot. |
+| [getEsimFreeStorage](arkts-telephony-esim-getesimfreestorage-f-sys.md#getesimfreestorage-1) | This API is used to obtain the remaining storage space of the eUICC hardware. This API uses a promise to return the result. |
+| [getEuiccInfo](arkts-telephony-esim-geteuiccinfo-f-sys.md#geteuiccinfo-1) | Obtains eUICC information. This API uses a promise to return the result. |
+| [getEuiccProfileInfoList](arkts-telephony-esim-geteuiccprofileinfolist-f-sys.md#geteuiccprofileinfolist-1) | Obtains the profile information list. This API uses a promise to return the result. |
+| [getOsuStatus](arkts-telephony-esim-getosustatus-f-sys.md#getosustatus-1) | Obtains the OS upgrade status for the eSIM in the specified slot. This API uses a promise to return the result. |
+| [getSupportedPkids](arkts-telephony-esim-getsupportedpkids-f-sys.md#getsupportedpkids-1) | Obtains the public key ID information supported by the phone. |
+| [reserveProfilesForFactoryRestore](arkts-telephony-esim-reserveprofilesforfactoryrestore-f-sys.md#reserveprofilesforfactoryrestore-1) | Restores factory settings and retains profiles. This API uses a promise to return the result. |
+| [resetMemory](arkts-telephony-esim-resetmemory-f-sys.md#resetmemory-1) | Clears all specific profiles and resets the eUICC. This API uses a promise to return the result. |
+| [setDefaultSmdpAddress](arkts-telephony-esim-setdefaultsmdpaddress-f-sys.md#setdefaultsmdpaddress-1) | Sets or updates the default SM-DP+ address stored in the eUICC. This API uses a promise to return the result. |
+| [setProfileNickname](arkts-telephony-esim-setprofilenickname-f-sys.md#setprofilenickname-1) | Sets a nickname for the specified profile. This API uses a promise to return the result. |
+| [startOsu](arkts-telephony-esim-startosu-f-sys.md#startosu-1) | Upgrades the OS if the OS version of the eSIM in the specified slot is not the latest. This API uses a promise to return the result. |
+| [switchToProfile](arkts-telephony-esim-switchtoprofile-f-sys.md#switchtoprofile-1) | Switches to the specified profile. This API uses a promise to return the result. |
 <!--DelEnd-->
 
 ### Interfaces

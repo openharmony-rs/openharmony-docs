@@ -50,7 +50,7 @@ declareDeviceTypesCompatibility(deviceTypes: DeviceTypeArray): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed, the param deviceTypes contains value that is invalid enum or is not a device type introduced in API 20 onwards. |
+| [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed, the param deviceTypes contains value that is invalid enum or is not device type introduced in API 20 onwards. |
 
 **示例**
 

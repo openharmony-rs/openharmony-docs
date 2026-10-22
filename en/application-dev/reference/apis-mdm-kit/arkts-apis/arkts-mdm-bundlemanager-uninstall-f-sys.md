@@ -24,7 +24,7 @@ Uninstalls an application of the current user without retaining the bundle data.
 
 **Deprecated since:** 26.0.0
 
-**Substitutes:** [uninstall](arkts-mdm-bundlemanager-uninstall-f.md#uninstall)(admin: Want, bundleName: string, userId?: number, isKeepData?: boolean)
+**Substitutes:** [uninstall](arkts-mdm-bundlemanager-uninstall-f.md#uninstall-5)(admin: Want, bundleName: string, userId?: number, isKeepData?: boolean)
 
 **Required permissions:** ohos.permission.ENTERPRISE_INSTALL_BUNDLE
 
@@ -97,7 +97,7 @@ Uninstalls an application of the specified user without retaining the bundle dat
 
 **Deprecated since:** 26.0.0
 
-**Substitutes:** [uninstall](arkts-mdm-bundlemanager-uninstall-f.md#uninstall)(admin: Want, bundleName: string, userId?: number, isKeepData?: boolean)
+**Substitutes:** [uninstall](arkts-mdm-bundlemanager-uninstall-f.md#uninstall-5)(admin: Want, bundleName: string, userId?: number, isKeepData?: boolean)
 
 **Required permissions:** ohos.permission.ENTERPRISE_INSTALL_BUNDLE
 
@@ -171,7 +171,7 @@ Uninstalls an application of the current user. The **isKeepData** parameter spec
 
 **Deprecated since:** 26.0.0
 
-**Substitutes:** [uninstall](arkts-mdm-bundlemanager-uninstall-f.md#uninstall)(admin: Want, bundleName: string, userId?: number, isKeepData?: boolean)
+**Substitutes:** [uninstall](arkts-mdm-bundlemanager-uninstall-f.md#uninstall-5)(admin: Want, bundleName: string, userId?: number, isKeepData?: boolean)
 
 **Required permissions:** ohos.permission.ENTERPRISE_INSTALL_BUNDLE
 
@@ -245,7 +245,7 @@ Uninstalls an application of the specified user. The **isKeepData** parameter sp
 
 **Deprecated since:** 26.0.0
 
-**Substitutes:** [uninstall](arkts-mdm-bundlemanager-uninstall-f.md#uninstall)(admin: Want, bundleName: string, userId?: number, isKeepData?: boolean)
+**Substitutes:** [uninstall](arkts-mdm-bundlemanager-uninstall-f.md#uninstall-5)(admin: Want, bundleName: string, userId?: number, isKeepData?: boolean)
 
 **Required permissions:** ohos.permission.ENTERPRISE_INSTALL_BUNDLE
 

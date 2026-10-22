@@ -1,4 +1,4 @@
-# Album
+# Album（系统接口）
 
 ```TypeScript
 interface Album extends AbsAlbum

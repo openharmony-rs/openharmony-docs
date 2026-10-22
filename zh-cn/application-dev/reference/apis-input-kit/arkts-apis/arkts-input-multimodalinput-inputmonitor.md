@@ -54,7 +54,7 @@ import { inputMonitor } from '@kit.InputKit';
 | [on('touchscreenSwipe')](arkts-input-inputmonitor-on-f-sys.md#ontouchscreenswipe) | 监听触摸屏滑动手势事件。使用callback异步回调。 |
 | [on('touchscreenPinch')](arkts-input-inputmonitor-on-f-sys.md#ontouchscreenpinch) | 监听触摸屏捏合手势事件。使用callback异步回调。 |
 | [on('keyPressed')](arkts-input-inputmonitor-on-f-sys.md#onkeypressed) | 监听指定按键的按下抬起事件，支持监听META_LEFT键、META_RIGHT键、电源键、音量键。使用callback异步回调。 |
-| [queryTouchEvents](arkts-input-inputmonitor-querytouchevents-f-sys.md#querytouchevents) | 查询最近的触屏输入事件，最多支持查询100条事件，从API版本26.0.0开始，最多支持查询60条事件，使用Promise异步回调。 |
+| [queryTouchEvents](arkts-input-inputmonitor-querytouchevents-f-sys.md#querytouchevents-1) | 查询最近的触屏输入事件，最多支持查询100条事件，从API版本26.0.0开始，最多支持查询60条事件，使用Promise异步回调。 |
 <!--DelEnd-->
 
 <!--Del-->

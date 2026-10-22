@@ -1,4 +1,4 @@
-# LifecycleForm
+# LifecycleForm (System API)
 
 ```TypeScript
 export declare interface LifecycleForm

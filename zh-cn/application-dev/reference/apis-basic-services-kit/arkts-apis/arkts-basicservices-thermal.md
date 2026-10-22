@@ -20,12 +20,12 @@ import { thermal } from '@kit.BasicServicesKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [getLevel](arkts-basicservices-thermal-getlevel-f.md#getlevel) | 获取当前热档位信息。系统根据设备温度实时判定当前所处的热档位层级并返回对应等级，开发者可据此执行相应的业务降级策略。 |
-| [registerThermalLevelCallback](arkts-basicservices-thermal-registerthermallevelcallback-f.md#registerthermallevelcallback) | 订阅热档位变化时的回调提醒。当设备温度跨越档位阈值导致热档位发生变化时，系统自动触发回调通知，通过callback返回变化后的热档位等级。使用callback异步回调。此方法与thermal.unregisterThermalLevelCallback配对使用，用于取消先前注册的热档位回调。 |
-| [unregisterThermalLevelCallback](arkts-basicservices-thermal-unregisterthermallevelcallback-f.md#unregisterthermallevelcallback) | 取消订阅热档位变化时的回调提醒。使用callback异步回调。此方法与thermal.registerThermalLevelCallback配对使用，用于取消先前注册的热档位回调。 |
-| [getThermalLevel](arkts-basicservices-thermal-getthermallevel-f.md#getthermallevel) | 获取当前热档位信息。 |
-| [subscribeThermalLevel](arkts-basicservices-thermal-subscribethermallevel-f.md#subscribethermallevel) | 订阅热档位变化时的回调提醒。使用callback异步回调。此方法需与thermal.unsubscribeThermalLevel配对使用，在不再需要监听时取消订阅。 |
-| [unsubscribeThermalLevel](arkts-basicservices-thermal-unsubscribethermallevel-f.md#unsubscribethermallevel) | 取消订阅热档位变化时的回调提醒。使用callback异步回调。此方法与thermal.subscribeThermalLevel配对使用，用于取消先前订阅的热档位回调。 |
+| [getLevel](arkts-basicservices-thermal-getlevel-f.md#getlevel-1) | 获取当前热档位信息。系统根据设备温度实时判定当前所处的热档位层级并返回对应等级，开发者可据此执行相应的业务降级策略。 |
+| [registerThermalLevelCallback](arkts-basicservices-thermal-registerthermallevelcallback-f.md#registerthermallevelcallback-1) | 订阅热档位变化时的回调提醒。当设备温度跨越档位阈值导致热档位发生变化时，系统自动触发回调通知，通过callback返回变化后的热档位等级。使用callback异步回调。此方法与thermal.unregisterThermalLevelCallback配对使用，用于取消先前注册的热档位回调。 |
+| [unregisterThermalLevelCallback](arkts-basicservices-thermal-unregisterthermallevelcallback-f.md#unregisterthermallevelcallback-1) | 取消订阅热档位变化时的回调提醒。使用callback异步回调。此方法与thermal.registerThermalLevelCallback配对使用，用于取消先前注册的热档位回调。 |
+| [getThermalLevel](arkts-basicservices-thermal-getthermallevel-f.md#getthermallevel-1) | 获取当前热档位信息。 |
+| [subscribeThermalLevel](arkts-basicservices-thermal-subscribethermallevel-f.md#subscribethermallevel-1) | 订阅热档位变化时的回调提醒。使用callback异步回调。此方法需与thermal.unsubscribeThermalLevel配对使用，在不再需要监听时取消订阅。 |
+| [unsubscribeThermalLevel](arkts-basicservices-thermal-unsubscribethermallevel-f.md#unsubscribethermallevel-1) | 取消订阅热档位变化时的回调提醒。使用callback异步回调。此方法与thermal.subscribeThermalLevel配对使用，用于取消先前订阅的热档位回调。 |
 
 ### 枚举
 

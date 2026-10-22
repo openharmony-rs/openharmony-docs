@@ -1,4 +1,4 @@
-# Filter
+# Filter (System API)
 
 ```TypeScript
 interface Filter

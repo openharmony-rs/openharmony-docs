@@ -108,6 +108,33 @@ Clears the geolocation permission status of all origins. It is used to revoke ge
 
 **Examples**
 
+```TypeScript
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('deleteAllGeolocation')
+        .onClick(() => {
+          try {
+            // Clear the geolocation permission status of all origins.
+            webview.GeolocationPermissions.deleteAllGeolocation();
+          } catch (error) {
+            console.error(`Failed to delete all geolocation. Code: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## deleteGeolocation
 
 ```TypeScript

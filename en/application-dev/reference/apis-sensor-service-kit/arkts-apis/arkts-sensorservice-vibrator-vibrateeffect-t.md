@@ -4,7 +4,7 @@
 type VibrateEffect = VibrateTime | VibratePreset | VibrateFromFile | VibrateFromPattern
 ```
 
-Defines the vibration effect. This parameter is required for [vibrator.startVibration9+](arkts-sensorservice-vibrator-startvibration-f.md#startvibration) or [vibrator.startVibration9+](arkts-sensorservice-vibrator-startvibration-f.md#startvibration).
+Defines the vibration effect. This parameter is required for [vibrator.startVibration9+](arkts-sensorservice-vibrator-startvibration-f.md#startvibration-1) or [vibrator.startVibration9+](arkts-sensorservice-vibrator-startvibration-f.md#startvibration-2).
 
 **Since:** 9
 

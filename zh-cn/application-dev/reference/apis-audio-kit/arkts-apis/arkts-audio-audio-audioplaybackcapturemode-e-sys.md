@@ -1,4 +1,4 @@
-# AudioPlaybackCaptureMode
+# AudioPlaybackCaptureMode（系统接口）
 
 ```TypeScript
 enum AudioPlaybackCaptureMode

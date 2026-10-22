@@ -28,7 +28,7 @@ Sets the effect strategy of the **SymbolGlyph** component. If this API is not us
 > 
 > - For animation attributes, only the **effectStrategy** attribute or a single **symbolEffect** attribute is supported. Mixing multiple animation attributes is not supported.
 > 
-> - This API supports only the three preset animation types: NONE, SCALE, and HIERARCHICAL. After being set, the animation plays automatically. To use richer animation types (such as appear, disappear, bounce, replacement, and pulse animations) or to control the playback state and trigger timing of the animation, use the [symbolEffect](#symboleffect) API. The two cannot be used at the same time. For details, see the description of the [symbolEffect](#symboleffect) API.
+> - This API supports only the three preset animation types: NONE, SCALE, and HIERARCHICAL. After being set, the animation plays automatically. To use richer animation types (such as appear, disappear, bounce, replacement, and pulse animations) or to control the playback state and trigger timing of the animation, use the [symbolEffect](#symboleffect-1) API. The two cannot be used at the same time. For details, see the description of the [symbolEffect](#symboleffect-1) API.
 
 **Since:** 11
 
@@ -84,7 +84,7 @@ Sets the font color of the **SymbolGlyph** component.
 fontColor(value: Array<ResourceColor | ColorMetrics> | undefined)
 ```
 
-Sets the font color of the **SymbolGlyph** component. Compared with the [fontColor](#fontcolor) API, this API supports passing in a parameter of the [ColorMetrics](../arkts-apis/arkts-arkui-graphics-colormetrics-c.md) type.
+Sets the font color of the **SymbolGlyph** component. Compared with the [fontColor](#fontcolor-1) API, this API supports passing in a parameter of the [ColorMetrics](../arkts-apis/arkts-arkui-graphics-colormetrics-c.md) type.
 
 > **NOTE:** 
 > 
@@ -285,7 +285,7 @@ shaderStyle(shader: Array<ShaderStyle | undefined> | ShaderStyle)
 
 Applies a gradient or solid color shader effect to the **SymbolGlyph** component.
 
-Can be displayed as a radial gradient [RadialGradientStyle](../arkts-apis/arkts-arkui-radialgradientstyle-c.md), a linear gradient [LinearGradientStyle](../arkts-apis/arkts-arkui-lineargradientstyle-c.md), or a solid color [ColorShaderStyle](../arkts-apis/arkts-arkui-colorshaderstyle-c.md). The priority of shaderStyle is higher than that of [fontColor](#fontcolor) and AI recognition. For solid colors, [fontColor](#fontcolor) is recommended.
+Can be displayed as a radial gradient [RadialGradientStyle](../arkts-apis/arkts-arkui-radialgradientstyle-c.md), a linear gradient [LinearGradientStyle](../arkts-apis/arkts-arkui-lineargradientstyle-c.md), or a solid color [ColorShaderStyle](../arkts-apis/arkts-arkui-colorshaderstyle-c.md). The priority of shaderStyle is higher than that of [fontColor](#fontcolor-1) and AI recognition. For solid colors, [fontColor](#fontcolor-1) is recommended.
 
 **Since:** 20
 

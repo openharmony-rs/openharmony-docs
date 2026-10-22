@@ -18,7 +18,7 @@ Sets whether to enable distributed notification on this device. This API uses an
 
 **Deprecated since:** 26.0.0
 
-**Substitutes:** [setDistributedEnabled](arkts-notification-notificationmanager-setdistributedenabled-f-sys.md)(enable: boolean, deviceType: string)
+**Substitutes:** [setDistributedEnabled](arkts-notification-notificationmanager-setdistributedenabled-f-sys.md#setdistributedenabled-1)(enable: boolean, deviceType: string)
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -80,7 +80,7 @@ Sets whether to enable distributed notification on this device. This API uses a 
 
 **Deprecated since:** 26.0.0
 
-**Substitutes:** [setDistributedEnabled](arkts-notification-notificationmanager-setdistributedenabled-f-sys.md)(enable: boolean, deviceType: string)
+**Substitutes:** [setDistributedEnabled](arkts-notification-notificationmanager-setdistributedenabled-f-sys.md#setdistributedenabled-1)(enable: boolean, deviceType: string)
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
 

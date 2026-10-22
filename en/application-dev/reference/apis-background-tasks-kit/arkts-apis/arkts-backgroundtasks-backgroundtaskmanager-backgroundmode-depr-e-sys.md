@@ -1,4 +1,4 @@
-# BackgroundMode
+# BackgroundMode (System API)
 
 ```TypeScript
 export enum BackgroundMode

@@ -1,4 +1,4 @@
-# AgentCardType
+# AgentCardType (System API)
 
 ```TypeScript
 export enum AgentCardType

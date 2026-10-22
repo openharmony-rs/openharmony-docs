@@ -1,4 +1,4 @@
-# IccAccountInfo
+# IccAccountInfo (System API)
 
 ```TypeScript
 export interface IccAccountInfo

@@ -12,7 +12,7 @@ import { formHost } from '@kit.FormKit';
 function releaseForm(formId: string, callback: AsyncCallback<void>): void
 ```
 
-释放指定的卡片。调用此方法后，应用程序将无法使用该卡片，但卡片管理器服务仍然保留有关该卡片的缓存信息和存储信息。使用callback异步回调。
+释放指定的卡片。调用此方法后，应用程序将无法使用该卡片，但卡片管理服务仍然保留有关该卡片的缓存信息和存储信息。使用callback异步回调。
 
 **起始版本：** 9
 
@@ -72,7 +72,7 @@ try {
 function releaseForm(formId: string, isReleaseCache: boolean, callback: AsyncCallback<void>): void
 ```
 
-释放指定的卡片。调用此方法后，应用程序将无法使用该卡片，卡片管理器服务保留有关该卡片的存储信息，可以选择是否保留缓存信息。使用callback异步回调。
+释放指定的卡片。调用此方法后，应用程序将无法使用该卡片，卡片管理服务保留有关该卡片的存储信息，可以选择是否保留缓存信息。使用callback异步回调。
 
 **起始版本：** 9
 
@@ -133,7 +133,7 @@ try {
 function releaseForm(formId: string, isReleaseCache?: boolean): Promise<void>
 ```
 
-释放指定的卡片。调用此方法后，应用程序将无法使用该卡片，卡片管理器服务保留有关该卡片的存储信息，可以选择是否保留缓存信息。使用Promise异步回调。
+释放指定的卡片。调用此方法后，应用程序将无法使用该卡片，卡片管理服务保留有关该卡片的存储信息，可以选择是否保留缓存信息。使用Promise异步回调。
 
 **起始版本：** 9
 

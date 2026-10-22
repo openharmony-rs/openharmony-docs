@@ -1,4 +1,4 @@
-# GeofenceTransitionEvent
+# GeofenceTransitionEvent (System API)
 
 ```TypeScript
 export enum GeofenceTransitionEvent

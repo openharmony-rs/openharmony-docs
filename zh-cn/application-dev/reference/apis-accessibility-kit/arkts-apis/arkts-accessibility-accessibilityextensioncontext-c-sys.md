@@ -1,4 +1,4 @@
-# AccessibilityExtensionContext
+# AccessibilityExtensionContext（系统接口）
 
 ```TypeScript
 declare class AccessibilityExtensionContext extends ExtensionContext

@@ -57,6 +57,13 @@ addVariation(axis: string, value: number)
 
 **示例**
 
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+let typefaceArgument = new drawing.TypefaceArguments();
+typefaceArgument.addVariation('wght', 10);
+```
+
 ## constructor
 
 ```TypeScript

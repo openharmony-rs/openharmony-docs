@@ -21,10 +21,10 @@ import { deviceStandby } from '@kit.BackgroundTasksKit';
 
 | Name | Description |
 | --- | --- |
-| [getExemptedApps](arkts-backgroundtasks-devicestandby-getexemptedapps-f-sys.md#getexemptedapps) | Returns the information about the specified exempted application. |
-| [getExemptedApps](arkts-backgroundtasks-devicestandby-getexemptedapps-f-sys.md#getexemptedapps) | Returns the information about the specified exempted application. |
-| [releaseExemptionResource](arkts-backgroundtasks-devicestandby-releaseexemptionresource-f-sys.md#releaseexemptionresource) | Releases exemption resources. |
-| [requestExemptionResource](arkts-backgroundtasks-devicestandby-requestexemptionresource-f-sys.md#requestexemptionresource) | Requests exemption resources. |
+| [getExemptedApps](arkts-backgroundtasks-devicestandby-getexemptedapps-f-sys.md#getexemptedapps-1) | Returns the information about the specified exempted application. |
+| [getExemptedApps](arkts-backgroundtasks-devicestandby-getexemptedapps-f-sys.md#getexemptedapps-2) | Returns the information about the specified exempted application. |
+| [releaseExemptionResource](arkts-backgroundtasks-devicestandby-releaseexemptionresource-f-sys.md#releaseexemptionresource-1) | Releases exemption resources. |
+| [requestExemptionResource](arkts-backgroundtasks-devicestandby-requestexemptionresource-f-sys.md#requestexemptionresource-1) | Requests exemption resources. |
 <!--DelEnd-->
 
 <!--Del-->

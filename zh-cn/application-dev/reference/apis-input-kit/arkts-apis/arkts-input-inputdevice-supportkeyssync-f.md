@@ -12,7 +12,7 @@ import { inputDevice } from '@kit.InputKit';
 function supportKeysSync(deviceId: number, keys: Array<KeyCode>): Array<boolean>
 ```
 
-查询指定id的输入设备对指定键值的支持情况。
+查询指定id的输入设备对指定键值的支持情况。调用此接口前，需要先调用[getDeviceList](arkts-input-inputdevice-getdevicelist-f.md)接口获取输入设备的ID。
 
 **起始版本：** 10
 

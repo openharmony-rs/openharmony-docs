@@ -34,16 +34,16 @@ import { text } from '@kit.ArkGraphics2D';
 
 | Name | Description |
 | --- | --- |
-| [getFontCount](arkts-arkgraphics2d-text-getfontcount-f.md#getfontcount) | Obtains the number of font files contained in a font file based on the font file path. |
-| [getFontDescriptorByFullName](arkts-arkgraphics2d-text-getfontdescriptorbyfullname-f.md#getfontdescriptorbyfullname) | Obtains the font descriptor based on the font name and type. This API uses a promise to return the result. |
-| [getFontDescriptorsFromPath](arkts-arkgraphics2d-text-getfontdescriptorsfrompath-f.md#getfontdescriptorsfrompath) | Obtains an array of font descriptors by font file path. This API uses a promise to return the result. |
-| [getFontPathsByType](arkts-arkgraphics2d-text-getfontpathsbytype-f.md#getfontpathsbytype) | Obtains the paths of all font files of a specified font type. |
-| [getFontUnicodeSet](arkts-arkgraphics2d-text-getfontunicodeset-f.md#getfontunicodeset) | Obtains an array of font Unicode by font file path. This API uses a promise to return the result. |
-| [getSystemFontFullNamesByType](arkts-arkgraphics2d-text-getsystemfontfullnamesbytype-f.md#getsystemfontfullnamesbytype) | Obtains the full names of all fonts of the specified type. This API uses a promise to return the result. |
-| [isFontSupported](arkts-arkgraphics2d-text-isfontsupported-f.md#isfontsupported) | Checks whether the system supports the specified font file. You can use this API to verify the availability of a font file before loading a custom font, preventing text rendering exceptions caused by unsupported fonts. |
-| [matchFontDescriptors](arkts-arkgraphics2d-text-matchfontdescriptors-f.md#matchfontdescriptors) | Obtains all system font descriptors that match the provided font descriptor. This API uses a promise to return the result. |
-| [setTextHighContrast](arkts-arkgraphics2d-text-settexthighcontrast-f.md#settexthighcontrast) | Sets the high contrast mode for text rendering. |
-| [setTextUndefinedGlyphDisplay](arkts-arkgraphics2d-text-settextundefinedglyphdisplay-f.md#settextundefinedglyphdisplay) | Sets the glyph type to be used when characters are mapped to the .notdef (undefined) glyph. |
+| [getFontCount](arkts-arkgraphics2d-text-getfontcount-f.md#getfontcount-1) | Obtains the number of font files contained in a font file based on the font file path. |
+| [getFontDescriptorByFullName](arkts-arkgraphics2d-text-getfontdescriptorbyfullname-f.md#getfontdescriptorbyfullname-1) | Obtains the font descriptor based on the font name and type. This API uses a promise to return the result. |
+| [getFontDescriptorsFromPath](arkts-arkgraphics2d-text-getfontdescriptorsfrompath-f.md#getfontdescriptorsfrompath-1) | Obtains an array of font descriptors by font file path. This API uses a promise to return the result. |
+| [getFontPathsByType](arkts-arkgraphics2d-text-getfontpathsbytype-f.md#getfontpathsbytype-1) | Obtains the paths of all font files of a specified font type. |
+| [getFontUnicodeSet](arkts-arkgraphics2d-text-getfontunicodeset-f.md#getfontunicodeset-1) | Obtains an array of font Unicode by font file path. This API uses a promise to return the result. |
+| [getSystemFontFullNamesByType](arkts-arkgraphics2d-text-getsystemfontfullnamesbytype-f.md#getsystemfontfullnamesbytype-1) | Obtains the full names of all fonts of the specified type. This API uses a promise to return the result. |
+| [isFontSupported](arkts-arkgraphics2d-text-isfontsupported-f.md#isfontsupported-1) | Checks whether the system supports the specified font file. You can use this API to verify the availability of a font file before loading a custom font, preventing text rendering exceptions caused by unsupported fonts. |
+| [matchFontDescriptors](arkts-arkgraphics2d-text-matchfontdescriptors-f.md#matchfontdescriptors-1) | Obtains all system font descriptors that match the provided font descriptor. This API uses a promise to return the result. |
+| [setTextHighContrast](arkts-arkgraphics2d-text-settexthighcontrast-f.md#settexthighcontrast-1) | Sets the high contrast mode for text rendering. |
+| [setTextUndefinedGlyphDisplay](arkts-arkgraphics2d-text-settextundefinedglyphdisplay-f.md#settextundefinedglyphdisplay-1) | Sets the glyph type to be used when characters are mapped to the .notdef (undefined) glyph. |
 
 ### Classes
 

@@ -20,13 +20,13 @@ import { hichecker } from '@kit.PerformanceAnalysisKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [addCheckRule](arkts-performanceanalysis-hichecker-addcheckrule-f.md#addcheckrule) | 添加一条或多条规则到系统，系统根据添加的规则进行检测或反馈，当有相应规则触发时可在hilog中grep HiChecker查看运行信息。 |
-| [containsCheckRule](arkts-performanceanalysis-hichecker-containscheckrule-f.md#containscheckrule) | 当前已添加的规则集中是否包含了某一个特定的规则。如果传入的规则级别为线程级别，则仅在当前线程中进行查询。 |
-| [getRule](arkts-performanceanalysis-hichecker-getrule-f.md#getrule) | 获取当前线程规则、进程规则、告警规则的合集。 |
-| [removeCheckRule](arkts-performanceanalysis-hichecker-removecheckrule-f.md#removecheckrule) | 删除一条或多条规则，删除的规则后续将不再生效。 |
-| [addRule](arkts-performanceanalysis-hichecker-addrule-f.md#addrule) |  |
-| [contains](arkts-performanceanalysis-hichecker-contains-f.md#contains) |  |
-| [removeRule](arkts-performanceanalysis-hichecker-removerule-f.md#removerule) |  |
+| [addCheckRule](arkts-performanceanalysis-hichecker-addcheckrule-f.md#addcheckrule-1) | 添加一条或多条规则到系统，系统根据添加的规则进行检测或反馈，当有相应规则触发时可在hilog中grep HiChecker查看运行信息。 |
+| [containsCheckRule](arkts-performanceanalysis-hichecker-containscheckrule-f.md#containscheckrule-1) | 当前已添加的规则集中是否包含了某一个特定的规则。如果传入的规则级别为线程级别，则仅在当前线程中进行查询。 |
+| [getRule](arkts-performanceanalysis-hichecker-getrule-f.md#getrule-1) | 获取当前线程规则、进程规则、告警规则的合集。 |
+| [removeCheckRule](arkts-performanceanalysis-hichecker-removecheckrule-f.md#removecheckrule-1) | 删除一条或多条规则，删除的规则后续将不再生效。 |
+| [addRule](arkts-performanceanalysis-hichecker-addrule-f.md#addrule-1) |  |
+| [contains](arkts-performanceanalysis-hichecker-contains-f.md#contains-1) |  |
+| [removeRule](arkts-performanceanalysis-hichecker-removerule-f.md#removerule-1) |  |
 
 ### 常量
 

@@ -248,14 +248,14 @@ Queries the distributed account information. This API uses an asynchronous callb
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [getOsAccountDistributedInfo](#getosaccountdistributedinfo)
+> [getOsAccountDistributedInfo](#getosaccountdistributedinfo-1)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [getOsAccountDistributedInfo](#getosaccountdistributedinfo)(callback: AsyncCallback&lt;DistributedInfo&gt;)
+**Substitutes:** [getOsAccountDistributedInfo](#getosaccountdistributedinfo-1)(callback: AsyncCallback&lt;DistributedInfo&gt;)
 
 **Required permissions:** ohos.permission.MANAGE_LOCAL_ACCOUNTS or ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -343,14 +343,14 @@ Updates the distributed account information. This API uses an asynchronous callb
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [setOsAccountDistributedInfo](#setosaccountdistributedinfo)
+> [setOsAccountDistributedInfo](#setosaccountdistributedinfo-1)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [setOsAccountDistributedInfo](#setosaccountdistributedinfo)(accountInfo: DistributedInfo, callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [setOsAccountDistributedInfo](#setosaccountdistributedinfo-1)(accountInfo: DistributedInfo, callback: AsyncCallback&lt;void&gt;)
 
 **Required permissions:** ohos.permission.MANAGE_LOCAL_ACCOUNTS
 
@@ -395,14 +395,14 @@ Updates the distributed account information. This API uses a promise to return t
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [setOsAccountDistributedInfo](#setosaccountdistributedinfo)
+> [setOsAccountDistributedInfo](#setosaccountdistributedinfo-2)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [setOsAccountDistributedInfo](#setosaccountdistributedinfo)(accountInfo: DistributedInfo)
+**Substitutes:** [setOsAccountDistributedInfo](#setosaccountdistributedinfo-2)(accountInfo: DistributedInfo)
 
 **Required permissions:** ohos.permission.MANAGE_LOCAL_ACCOUNTS
 

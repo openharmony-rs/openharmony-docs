@@ -1,10 +1,10 @@
-# WindowMode
+# WindowMode（系统接口）
 
 ```TypeScript
 export enum WindowMode
 ```
 
-启动UIAbility时窗口的创建模式，类型为枚举。可配合[startAbility](arkts-ability-uiabilitycontext-c.md#startability)方法使用。
+启动UIAbility时窗口的创建模式，类型为枚举。可配合[startAbility](arkts-ability-uiabilitycontext-c.md#startability-3)方法使用。
 
 **起始版本：** 12
 

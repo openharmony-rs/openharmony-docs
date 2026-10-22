@@ -1,4 +1,4 @@
-# BatteryInfo
+# BatteryInfo (System API)
 
 ```TypeScript
 interface BatteryInfo

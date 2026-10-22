@@ -60,9 +60,9 @@ import { update } from '@kit.BasicServicesKit';
 
 | Name | Description |
 | --- | --- |
-| [getLocalUpdater](arkts-basicservices-update-getlocalupdater-f-sys.md#getlocalupdater) | Obtains a **LocalUpdater** object, which is used to upgrade the system from a local storage device (such as the SD card). After this API is called, the system returns the **LocalUpdater** utility object, which provides functions such as verifying and installing the local upgrade package. |
-| [getOnlineUpdater](arkts-basicservices-update-getonlineupdater-f-sys.md#getonlineupdater) | Obtains an **OnlineUpdater** object, which can be used to check for new versions online, download update packages, and install update packages. This API can be used in scenarios such as OTA upgrade (for details, see [Upgrading Service Terms](../../../basic-services/update/update-kit-term.md)) of client applications and online system upgrade. This API can help users obtain system updates in a timely manner, improving upgrade efficiency and user experience. |
-| [getRestorer](arkts-basicservices-update-getrestorer-f-sys.md#getrestorer) | Obtains a **Restorer** object for restoring factory settings. After this API is called, the system returns the **Restorer** utility object. Three factory reset methods are provided: |
+| [getLocalUpdater](arkts-basicservices-update-getlocalupdater-f-sys.md#getlocalupdater-1) | Obtains a **LocalUpdater** object, which is used to upgrade the system from a local storage device (such as the SD card). After this API is called, the system returns the **LocalUpdater** utility object, which provides functions such as verifying and installing the local upgrade package. |
+| [getOnlineUpdater](arkts-basicservices-update-getonlineupdater-f-sys.md#getonlineupdater-1) | Obtains an **OnlineUpdater** object, which can be used to check for new versions online, download update packages, and install update packages. This API can be used in scenarios such as OTA upgrade (for details, see [Upgrading Service Terms](../../../basic-services/update/update-kit-term.md)) of client applications and online system upgrade. This API can help users obtain system updates in a timely manner, improving upgrade efficiency and user experience. |
+| [getRestorer](arkts-basicservices-update-getrestorer-f-sys.md#getrestorer-1) | Obtains a **Restorer** object for restoring factory settings. After this API is called, the system returns the **Restorer** utility object. Three factory reset methods are provided: |
 <!--DelEnd-->
 
 <!--Del-->

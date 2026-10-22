@@ -14,7 +14,7 @@ function deleteRdbStore(context: Context, name: string, callback: AsyncCallback<
 
 Deletes the RDB store with the specified database file name. This API uses a promise to return the result.
 
-If **vector** is set to **true** in [StoreConfig] [StoreConfig](arkts-arkdata-relationalstore-storeconfig-i.md) when an RDB store is created, using this API cannot delete the RDB store. Use [deleteRdbStore] [deleteRdbStore](#deleterdbstore) instead.
+If **vector** is set to **true** in [StoreConfig] [StoreConfig](arkts-arkdata-relationalstore-storeconfig-i.md) when an RDB store is created, using this API cannot delete the RDB store. Use [deleteRdbStore] [deleteRdbStore](#deleterdbstore-4) instead.
 
 Before calling **deleteRdbStore**, ensure that the **RdbStore** and **ResultSet** of the vector store have been closed.
 
@@ -181,7 +181,7 @@ function deleteRdbStore(context: Context, name: string): Promise<void>
 
 Deletes an RDB store. This API uses a promise to return the result.
 
-After the deletion, you are advised to set the database object to null. If a custom path is set in [StoreConfig](arkts-arkdata-relationalstore-storeconfig-i.md) when an RDB store is created, using this API cannot delete the RDB store. Use [deleteRdbStore](#deleterdbstore) instead.
+After the deletion, you are advised to set the database object to null. If a custom path is set in [StoreConfig](arkts-arkdata-relationalstore-storeconfig-i.md) when an RDB store is created, using this API cannot delete the RDB store. Use [deleteRdbStore](#deleterdbstore-4) instead.
 
 Before calling **deleteRdbStore**, ensure that the **RdbStore** and **ResultSet** of the vector store have been closed.
 

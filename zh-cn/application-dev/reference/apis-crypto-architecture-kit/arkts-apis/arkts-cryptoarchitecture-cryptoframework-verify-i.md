@@ -534,7 +534,7 @@ update(data: DataBlob, callback: AsyncCallback<void>): void
 > 
 > 根据数据量，可以不调用update（即[init](#init)
 > 完成后直接调用
-> [verify](#verify)
+> [verify](#verify-2)
 > ）或多次调用update。
 > 
 > 算法库目前没有对update（单次或累计）的数据量设置大小限制，建议对于大数据量的验签操作，采用多次update的方式传入数据，避免一次性申请
@@ -588,7 +588,7 @@ update(data: DataBlob): Promise<void>
 > **说明：** 
 > 
 > 根据数据量，可以不调用update（即[init](#init)完成后直接调用
-> [verify](#verify)）或多次调用update。
+> [verify](#verify-4)）或多次调用update。
 > 
 > 算法库目前没有对update（单次或累计）的数据量设置大小限制，建议对于大数据量的验签操作，采用多次update的方式传入数据，避免一次性申请
 > 过大内存。

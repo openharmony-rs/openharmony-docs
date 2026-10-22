@@ -1,4 +1,4 @@
-# TagInfo
+# TagInfo（系统接口）
 
 ```TypeScript
 export interface TagInfo

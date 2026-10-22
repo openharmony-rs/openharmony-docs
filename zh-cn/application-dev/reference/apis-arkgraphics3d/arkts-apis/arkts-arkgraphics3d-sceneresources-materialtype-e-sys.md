@@ -1,4 +1,4 @@
-# MaterialType
+# MaterialType（系统接口）
 
 ```TypeScript
 export enum MaterialType

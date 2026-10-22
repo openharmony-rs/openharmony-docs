@@ -61,7 +61,7 @@ Asserts that a component that matches the given attributes exists on the current
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | if the input parameters are invalid. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Async] if the input parameters are invalid. |
 | [17000002](../errorcode-uitest.md#17000002-api-does-not-support-concurrent-calls) | The API does not support concurrent calls. |
 | [17000003](../errorcode-uitest.md#17000003-assertion-failure) | if the assertion failed. |
 
@@ -436,7 +436,7 @@ Captures the current screen of this **UiDriver** object and saves it as a PNG im
 
 **Deprecated since:** 9
 
-**Substitutes:** [screenCap](arkts-test-uitest-driver-c.md#screencap)(savePath: string)
+**Substitutes:** [screenCap](arkts-test-uitest-driver-c.md#screencap-1)(savePath: string)
 
 <!--Device-UiDriver-screenCap(savePath: string): Promise<boolean>--><!--Device-UiDriver-screenCap(savePath: string): Promise<boolean>-End-->
 

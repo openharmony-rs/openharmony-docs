@@ -20,7 +20,7 @@ The child window created uses an [immersive layout](../../../windowmanager/windo
 
 **Deprecated since:** 9
 
-**Substitutes:** [createWindow](arkts-arkui-window-createwindow-f.md#createwindow)(config: Configuration, callback: AsyncCallback&lt;Window&gt;)
+**Substitutes:** [createWindow](arkts-arkui-window-createwindow-f.md#createwindow-1)(config: Configuration, callback: AsyncCallback&lt;Window&gt;)
 
 **Model restriction:** This API can be used only in the FA model.
 
@@ -68,7 +68,7 @@ The child window created uses an [immersive layout](../../../windowmanager/windo
 
 **Deprecated since:** 9
 
-**Substitutes:** [createWindow](arkts-arkui-window-createwindow-f.md#createwindow)(config: Configuration)
+**Substitutes:** [createWindow](arkts-arkui-window-createwindow-f.md#createwindow-2)(config: Configuration)
 
 **Model restriction:** This API can be used only in the FA model.
 
@@ -117,7 +117,7 @@ Creates a system window. This API uses a promise to return the result.
 
 **Deprecated since:** 9
 
-**Substitutes:** [createWindow](arkts-arkui-window-createwindow-f.md#createwindow)(config: Configuration)
+**Substitutes:** [createWindow](arkts-arkui-window-createwindow-f.md#createwindow-2)(config: Configuration)
 
 <!--Device-window-function create(ctx: BaseContext, id: string, type: WindowType): Promise<Window>--><!--Device-window-function create(ctx: BaseContext, id: string, type: WindowType): Promise<Window>-End-->
 
@@ -165,7 +165,7 @@ Creates a system window. This API uses an asynchronous callback to return the re
 
 **Deprecated since:** 9
 
-**Substitutes:** [createWindow](arkts-arkui-window-createwindow-f.md#createwindow)(config: Configuration, callback: AsyncCallback&lt;Window&gt;)
+**Substitutes:** [createWindow](arkts-arkui-window-createwindow-f.md#createwindow-1)(config: Configuration, callback: AsyncCallback&lt;Window&gt;)
 
 <!--Device-window-function create(ctx: BaseContext, id: string, type: WindowType, callback: AsyncCallback<Window>): void--><!--Device-window-function create(ctx: BaseContext, id: string, type: WindowType, callback: AsyncCallback<Window>): void-End-->
 

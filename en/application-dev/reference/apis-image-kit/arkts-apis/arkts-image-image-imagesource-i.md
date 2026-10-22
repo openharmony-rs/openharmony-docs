@@ -6,11 +6,11 @@ interface ImageSource
 
 The **ImageSource** class provides APIs to obtain image information.
 
-Before calling any API in ImageSource, you must use [image.createImageSource](arkts-image-image-createimagesource-f.md#createimagesource) to create an ImageSource instance.
+Before calling any API in ImageSource, you must use [image.createImageSource](arkts-image-image-createimagesource-f.md#createimagesource-1) to create an ImageSource instance.
 
 All APIs in ImageSource cannot be called concurrently.
 
-Images occupy a large amount of memory. When you finish using an ImageSource instance, call [release](#release) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
+Images occupy a large amount of memory. When you finish using an ImageSource instance, call [release](#release-1) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
 
 **Since:** 6
 
@@ -1482,7 +1482,7 @@ This API applies only to images that are in JPEG, PNG, HEIF<sup>12+</sup>, or WE
 
 **Deprecated since:** 11
 
-**Substitutes:** [getImageProperty](#getimageproperty)(key: PropertyKey, options?: ImagePropertyOptions)
+**Substitutes:** [getImageProperty](#getimageproperty-1)(key: PropertyKey, options?: ImagePropertyOptions)
 
 <!--Device-ImageSource-getImageProperty(key: string, options?: GetImagePropertyOptions): Promise<string>--><!--Device-ImageSource-getImageProperty(key: string, options?: GetImagePropertyOptions): Promise<string>-End-->
 
@@ -1530,7 +1530,7 @@ This API applies only to images that are in JPEG, PNG, HEIF<sup>12+</sup>, or WE
 
 **Deprecated since:** 11
 
-**Substitutes:** [getImageProperty](#getimageproperty)(key: PropertyKey, options?: ImagePropertyOptions)
+**Substitutes:** [getImageProperty](#getimageproperty-1)(key: PropertyKey, options?: ImagePropertyOptions)
 
 <!--Device-ImageSource-getImageProperty(key: string, callback: AsyncCallback<string>): void--><!--Device-ImageSource-getImageProperty(key: string, callback: AsyncCallback<string>): void-End-->
 
@@ -1571,7 +1571,7 @@ Obtains the value of a property in this image. This API uses an asynchronous cal
 
 **Deprecated since:** 11
 
-**Substitutes:** [getImageProperty](#getimageproperty)(key: PropertyKey, options?: ImagePropertyOptions)
+**Substitutes:** [getImageProperty](#getimageproperty-1)(key: PropertyKey, options?: ImagePropertyOptions)
 
 <!--Device-ImageSource-getImageProperty(key: string, options: GetImagePropertyOptions, callback: AsyncCallback<string>): void--><!--Device-ImageSource-getImageProperty(key: string, options: GetImagePropertyOptions, callback: AsyncCallback<string>): void-End-->
 
@@ -1737,7 +1737,7 @@ Modifies image properties in batches. This API uses a promise to return the resu
 
 > **NOTE:** 
 > 
-> - Calling this API to modify properties alters the property byte length. You are advised to create an [image.createImageSource](arkts-image-image-createimagesource-f.md) instance by passing a file descriptor or an [image.createImageSource](arkts-image-image-createimagesource-f.md#createimagesource) instance by passing a URI.
+> - Calling this API to modify properties alters the property byte length. You are advised to create an [image.createImageSource](arkts-image-image-createimagesource-f.md) instance by passing a file descriptor or an [image.createImageSource](arkts-image-image-createimagesource-f.md#createimagesource-1) instance by passing a URI.
 > 
 > - This API modifies batch data in memory and writes the data to the file in a single operation. It is more efficient than [modifyImageProperties](#modifyimageproperties).
 > 
@@ -1874,7 +1874,7 @@ This API applies only to images that are in JPEG, PNG, HEIF<sup>12+</sup>, or WE
 
 **Deprecated since:** 11
 
-**Substitutes:** [modifyImageProperty](#modifyimageproperty)(key: PropertyKey, value: string)
+**Substitutes:** [modifyImageProperty](#modifyimageproperty-1)(key: PropertyKey, value: string)
 
 <!--Device-ImageSource-modifyImageProperty(key: string, value: string): Promise<void>--><!--Device-ImageSource-modifyImageProperty(key: string, value: string): Promise<void>-End-->
 
@@ -1929,7 +1929,7 @@ This API applies only to images that are in JPEG, PNG, HEIF<sup>12+</sup>, or WE
 
 **Deprecated since:** 11
 
-**Substitutes:** [modifyImageProperty](#modifyimageproperty)(key: PropertyKey, value: string)
+**Substitutes:** [modifyImageProperty](#modifyimageproperty-1)(key: PropertyKey, value: string)
 
 <!--Device-ImageSource-modifyImageProperty(key: string, value: string, callback: AsyncCallback<void>): void--><!--Device-ImageSource-modifyImageProperty(key: string, value: string, callback: AsyncCallback<void>): void-End-->
 
@@ -2322,7 +2322,7 @@ Modifies image properties in batches. This API uses a promise to return the resu
 
 > **NOTE:** 
 > 
-> - Calling this API to modify properties alters the property byte length. You are advised to create an [image.createImageSource](arkts-image-image-createimagesource-f.md) instance by passing a file descriptor or an [image.createImageSource](arkts-image-image-createimagesource-f.md#createimagesource) instance by passing a URI.
+> - Calling this API to modify properties alters the property byte length. You are advised to create an [image.createImageSource](arkts-image-image-createimagesource-f.md) instance by passing a file descriptor or an [image.createImageSource](arkts-image-image-createimagesource-f.md#createimagesource-1) instance by passing a URI.
 > 
 > - This API modifies batch data in memory and writes the data to the file in a single operation. It is more efficient than [modifyImageProperties](#modifyimageproperties).
 > 

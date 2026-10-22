@@ -106,7 +106,7 @@ Rotation手势识别成功，接收到触摸取消事件触发的回调。该回
 onActionCancel(event: Callback<GestureEvent>): RotationGestureInterface
 ```
 
-Rotation手势识别成功，接收到触摸取消事件触发的回调。与[onActionCancel](#onactioncancel)相比，该回调返回手势事件信息。
+Rotation手势识别成功，接收到触摸取消事件触发的回调。与[onActionCancel](#onactioncancel-1)相比，该回调返回手势事件信息。
 
 **起始版本：** 18
 

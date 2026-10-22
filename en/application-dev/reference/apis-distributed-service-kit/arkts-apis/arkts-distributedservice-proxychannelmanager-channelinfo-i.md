@@ -4,7 +4,7 @@
 interface ChannelInfo
 ```
 
-Input parameters of the function for opening a proxy channel, including the link type of the proxy channel, the MAC address of the peer device, and the UUID of the listening service.
+Represents the proxy channel information, including the link type of the proxy channel, MAC address of the peer device, and service UUID.
 
 **Since:** 20
 
@@ -24,7 +24,7 @@ import { proxyChannelManager } from '@kit.DistributedServiceKit';
 linkType: LinkType
 ```
 
-Link type of the proxy channel. For details about the value range, see [LinkType](arkts-distributedservice-proxychannelmanager-linktype-e.md). Currently, only **LINK_BR** (Bluetooth BR protocol) is supported.
+Link type of the proxy channel. For details about the value range, see [LinkType](arkts-distributedservice-proxychannelmanager-linktype-e.md). Currently, only **LINK_BR** (BR protocol) is supported.
 
 **Type:** [LinkType](arkts-distributedservice-proxychannelmanager-linktype-e.md)
 
@@ -42,7 +42,7 @@ Link type of the proxy channel. For details about the value range, see [LinkType
 peerDevAddr: string
 ```
 
-MAC address of the peer device, in the format of XX:XX:XX:XX:XX:XX, where XX is a hexadecimal character (0-9, A- F, or a-f). The peer device must be paired. Error code 32390002 is returned if the device is not paired. Error code 32390006 is returned if the format does not meet the requirements.
+MAC address of the peer device, in the format of **XX:XX:XX:XX:XX:XX**, where **XX** is a hexadecimal character (0 to 9, A to F, or a to f). The peer device must have been paired. If not, error code 32390002 will be returned. If the format does not meet requirements, error code 32390006 will be returned.
 
 **Type:** string
 
@@ -60,7 +60,7 @@ MAC address of the peer device, in the format of XX:XX:XX:XX:XX:XX, where XX is 
 peerUuid: string
 ```
 
-UUID of the service listened on by the peer device, in the standard UUID string format, for example, xxxxxxxx- xxxx-xxxx-xxxx-xxxxxxxxxxxx. Error code 32390006 is returned if the format does not meet the requirements.
+Service UUID of the peer device. The value is a standard UUID string, for example, **xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx**. If the format does not meet requirements, error code 32390006 will be returned.
 
 **Type:** string
 

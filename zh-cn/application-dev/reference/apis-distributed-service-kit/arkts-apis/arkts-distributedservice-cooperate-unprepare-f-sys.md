@@ -18,7 +18,7 @@ function unprepare(callback: AsyncCallback<void>): void
 
 **废弃版本：** 11
 
-**替代接口：** [unprepareCooperate](arkts-distributedservice-cooperate-unpreparecooperate-f-sys.md#unpreparecooperate)(callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [unprepareCooperate](arkts-distributedservice-cooperate-unpreparecooperate-f-sys.md#unpreparecooperate-1)(callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-cooperate-function unprepare(callback: AsyncCallback<void>): void--><!--Device-cooperate-function unprepare(callback: AsyncCallback<void>): void-End-->
 

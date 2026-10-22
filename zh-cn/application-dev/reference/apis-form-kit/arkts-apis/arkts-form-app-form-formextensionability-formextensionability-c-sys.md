@@ -1,4 +1,4 @@
-# FormExtensionAbility
+# FormExtensionAbility（系统接口）
 
 ```TypeScript
 declare class FormExtensionAbility

@@ -26,7 +26,7 @@ Destroys the port channel. Before calling this API, you may call [isNearLinkSupp
 
 **System capability:** SystemCapability.Communication.NearLink.Base
 
-**See also:** [createPort](arkts-connectivity-datatransfer-createport-f.md) Registers a port channel.
+**See also:** [createPort](arkts-connectivity-datatransfer-createport-f.md#createport-1) Registers a port channel.
 
 **Parameters:**
 

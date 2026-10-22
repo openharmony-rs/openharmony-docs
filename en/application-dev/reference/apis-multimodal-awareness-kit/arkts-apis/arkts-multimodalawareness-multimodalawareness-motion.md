@@ -20,7 +20,7 @@ import { motion } from '@kit.MultimodalAwarenessKit';
 
 | Name | Description |
 | --- | --- |
-| [getRecentOperatingHandStatus](arkts-multimodalawareness-motion-getrecentoperatinghandstatus-f.md#getrecentoperatinghandstatus) | Obtains the latest operating hand status. |
+| [getRecentOperatingHandStatus](arkts-multimodalawareness-motion-getrecentoperatinghandstatus-f.md#getrecentoperatinghandstatus-1) | Obtains the latest operating hand status. |
 | [off('operatingHandChanged')](arkts-multimodalawareness-motion-off-f.md#offoperatinghandchanged) | Unsubscribes from operating hand change events. |
 | [off('holdingHandChanged')](arkts-multimodalawareness-motion-off-f.md#offholdinghandchanged) | Disables listening for holding hand status changes. |
 | [on('operatingHandChanged')](arkts-multimodalawareness-motion-on-f.md#onoperatinghandchanged) | Subscribes to operating hand awareness events. The system collects user touch data through touchscreen sensors and combines gesture recognition algorithms to determine whether the current operating hand is the left hand or the right hand. This is suitable for scenarios such as gesture interaction and single-hand or dual-hand operation adaptation, optimizing the UI layout and interaction mode by identifying the user's operating hand state. It is recommended that you call off() to unsubscribe and release resources after use, to avoid unnecessary performance and power consumption overhead. Related method: off('operatingHandChanged'): unsubscribes from operating hand awareness events. |
@@ -31,15 +31,15 @@ import { motion } from '@kit.MultimodalAwarenessKit';
 
 | Name | Description |
 | --- | --- |
-| [offHoverHandChange](arkts-multimodalawareness-motion-offhoverhandchange-f-sys.md#offhoverhandchange) | Unsubscribe to hover hand event. |
-| [offPickupChange](arkts-multimodalawareness-motion-offpickupchange-f-sys.md#offpickupchange) | Unsubscribe to pick up sensor event. |
-| [offRotateChange](arkts-multimodalawareness-motion-offrotatechange-f-sys.md#offrotatechange) | Unsubscribe to rotate sensor event. |
-| [offSmartRotateChange](arkts-multimodalawareness-motion-offsmartrotatechange-f-sys.md#offsmartrotatechange) | Unsubscribe to smart rotate sensor event. |
-| [onHoverHandChange](arkts-multimodalawareness-motion-onhoverhandchange-f-sys.md#onhoverhandchange) | Subscribes to hover hand events and immediately starts detection for five seconds. |
-| [onHoverHandChange](arkts-multimodalawareness-motion-onhoverhandchange-f-sys.md#onhoverhandchange) | Subscribes to hover hand events and immediately starts detection. |
-| [onPickupChange](arkts-multimodalawareness-motion-onpickupchange-f-sys.md#onpickupchange) | Subscribe to pick up sensor event. |
-| [onRotateChange](arkts-multimodalawareness-motion-onrotatechange-f-sys.md#onrotatechange) | Subscribe to rotate sensor event. |
-| [onSmartRotateChange](arkts-multimodalawareness-motion-onsmartrotatechange-f-sys.md#onsmartrotatechange) | Subscribe to smart rotate sensor event. |
+| [offHoverHandChange](arkts-multimodalawareness-motion-offhoverhandchange-f-sys.md#offhoverhandchange-1) | Unsubscribe to hover hand event. |
+| [offPickupChange](arkts-multimodalawareness-motion-offpickupchange-f-sys.md#offpickupchange-1) | Unsubscribe to pick up sensor event. |
+| [offRotateChange](arkts-multimodalawareness-motion-offrotatechange-f-sys.md#offrotatechange-1) | Unsubscribe to rotate sensor event. |
+| [offSmartRotateChange](arkts-multimodalawareness-motion-offsmartrotatechange-f-sys.md#offsmartrotatechange-1) | Unsubscribe to smart rotate sensor event. |
+| [onHoverHandChange](arkts-multimodalawareness-motion-onhoverhandchange-f-sys.md#onhoverhandchange-1) | Subscribes to hover hand events and immediately starts detection for five seconds. |
+| [onHoverHandChange](arkts-multimodalawareness-motion-onhoverhandchange-f-sys.md#onhoverhandchange-2) | Subscribes to hover hand events and immediately starts detection. |
+| [onPickupChange](arkts-multimodalawareness-motion-onpickupchange-f-sys.md#onpickupchange-1) | Subscribe to pick up sensor event. |
+| [onRotateChange](arkts-multimodalawareness-motion-onrotatechange-f-sys.md#onrotatechange-1) | Subscribe to rotate sensor event. |
+| [onSmartRotateChange](arkts-multimodalawareness-motion-onsmartrotatechange-f-sys.md#onsmartrotatechange-1) | Subscribe to smart rotate sensor event. |
 <!--DelEnd-->
 
 <!--Del-->

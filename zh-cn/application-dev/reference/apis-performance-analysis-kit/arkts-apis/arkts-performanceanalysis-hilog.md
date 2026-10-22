@@ -20,14 +20,14 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [debug](arkts-performanceanalysis-hilog-debug-f.md#debug) | 打印DEBUG级别的日志。 |
-| [error](arkts-performanceanalysis-hilog-error-f.md#error) | 打印ERROR级别的日志。 |
-| [fatal](arkts-performanceanalysis-hilog-fatal-f.md#fatal) | 打印FATAL级别的日志。 |
-| [info](arkts-performanceanalysis-hilog-info-f.md#info) | 打印INFO级别的日志。 |
-| [isLoggable](arkts-performanceanalysis-hilog-isloggable-f.md#isloggable) | 在打印日志前调用该接口，用于检查指定领域标识、日志标识和级别的日志是否可以打印。 |
-| [setLogLevel](arkts-performanceanalysis-hilog-setloglevel-f.md#setloglevel) | 设置当前应用程序进程的最低日志级别。 |
-| [setMinLogLevel](arkts-performanceanalysis-hilog-setminloglevel-f.md#setminloglevel) | 设置应用日志打印的最低日志级别，用于拦截低级别日志打印。 |
-| [warn](arkts-performanceanalysis-hilog-warn-f.md#warn) | 打印WARN级别的日志。 |
+| [debug](arkts-performanceanalysis-hilog-debug-f.md#debug-1) | 打印DEBUG级别的日志。 |
+| [error](arkts-performanceanalysis-hilog-error-f.md#error-1) | 打印ERROR级别的日志。 |
+| [fatal](arkts-performanceanalysis-hilog-fatal-f.md#fatal-1) | 打印FATAL级别的日志。 |
+| [info](arkts-performanceanalysis-hilog-info-f.md#info-1) | 打印INFO级别的日志。 |
+| [isLoggable](arkts-performanceanalysis-hilog-isloggable-f.md#isloggable-1) | 在打印日志前调用该接口，用于检查指定领域标识、日志标识和级别的日志是否可以打印。 |
+| [setLogLevel](arkts-performanceanalysis-hilog-setloglevel-f.md#setloglevel-1) | 设置当前应用程序进程的最低日志级别。 |
+| [setMinLogLevel](arkts-performanceanalysis-hilog-setminloglevel-f.md#setminloglevel-1) | 设置应用日志打印的最低日志级别，用于拦截低级别日志打印。 |
+| [warn](arkts-performanceanalysis-hilog-warn-f.md#warn-1) | 打印WARN级别的日志。 |
 
 ### 枚举
 

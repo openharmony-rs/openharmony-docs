@@ -179,6 +179,18 @@ off(type:'complete', callback?: Callback<void>):void
 | type | 'complete' | 是 | 转码完成事件回调类型，支持的事件：'complete'。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | 否 | 完成事件回调方法。 |
 
+**示例**
+
+```TypeScript
+import { media } from '@kit.MediaKit';
+
+async function test() {
+  // 创建转码实例。
+  let avTranscoder = await media.createAVTranscoder();
+  avTranscoder.off('complete');
+}
+```
+
 ## off('error')
 
 ```TypeScript

@@ -107,7 +107,7 @@ Callback invoked to return the collaboration result in multi-device collaboratio
 > 
 > - This callback does not support ability launch in [specified mode](../../../application-models/uiability-launch-type.md#specified).
 > 
-> - When you use methods such as [startAbility](arkts-ability-uiabilitycontext-c.md#startability)to start an application, you must include **FLAG_ABILITY_ON_COLLABORATE** in [Flags](arkts-ability-wantconstant-flags-e.md) in the Want object.
+> - When you use methods such as [startAbility](arkts-ability-uiabilitycontext-c.md#startability-1)to start an application, you must include **FLAG_ABILITY_ON_COLLABORATE** in [Flags](arkts-ability-wantconstant-flags-e.md) in the Want object.
 > 
 > - During a [cold start](../../../application-models/uiability-intra-device-interaction.md#cold-starting-uiability), this callback must be invoked before [onForeground](#onforeground) or after [onBackground](#onbackground). During a [hot start](../../../application-models/uiability-intra-device-interaction.md#hot-starting-uiability), this callback must be invoked before [onNewWant](#onnewwant).
 
@@ -267,7 +267,7 @@ export default class MyUIAbility extends UIAbility {
 onDestroy(): void | Promise<void>
 ```
 
-Called when the UIAbility is destroyed (for example, when the UIAbility is terminated using the [terminateSelf](arkts-ability-uiabilitycontext-c.md#terminateself) API). You can clear resources and save data during this lifecycle.
+Called when the UIAbility is destroyed (for example, when the UIAbility is terminated using the [terminateSelf](arkts-ability-uiabilitycontext-c.md#terminateself-1) API). You can clear resources and save data during this lifecycle.
 
 This API returns the result synchronously or uses a promise to return the result.
 
@@ -535,7 +535,7 @@ export default class MyUIAbility extends UIAbility {
 onPrepareToTerminate(): boolean
 ```
 
-Triggered by the system just before the UIAbility is about to close (for example, when the user clicks the close button in the top-right corner of the application window or exits from the dock or system tray), allowing for additional operations to be performed before the UIAbility is officially shut down. You can return **true** to block the current closure attempt and then manually call [terminateSelf](arkts-ability-uiabilitycontext-c.md#terminateself) at an appropriate time to close it. For example, you might ask the user to confirm whether they want to close the UIAbility and then proceed with the closure manually. This API executes the callback normally only on 2-in-1 devices and tablets. It does not execute the callback on other devices.
+Triggered by the system just before the UIAbility is about to close (for example, when the user clicks the close button in the top-right corner of the application window or exits from the dock or system tray), allowing for additional operations to be performed before the UIAbility is officially shut down. You can return **true** to block the current closure attempt and then manually call [terminateSelf](arkts-ability-uiabilitycontext-c.md#terminateself-1) at an appropriate time to close it. For example, you might ask the user to confirm whether they want to close the UIAbility and then proceed with the closure manually. This API executes the callback normally only on 2-in-1 devices and tablets. It does not execute the callback on other devices.
 
 > **NOTE:** 
 > 
@@ -602,7 +602,7 @@ onPrepareToTerminateAsync(): Promise<boolean>
 
 Triggered by the system just before the UIAbility is close (for example, when the user clicks the close button in the top-right corner of the application window or exits from the dock or system tray), allowing for additional operations to be performed before the UIAbility is officially shut down.
 
-You can return **true** to block the current closure attempt and then manually call [terminateSelf](arkts-ability-uiabilitycontext-c.md#terminateself) at an appropriate time to close it. For example, you might ask the user to confirm whether they want to close the UIAbility and then proceed with the closure manually. Starting from API version 15, this API executes the callback normally only on 2-in-1 devices. It does not execute the callback on other devices. Starting from API version 19, this API executes the callback normally only on 2-in-1 devices and tablets. It does not execute the callback on other devices.
+You can return **true** to block the current closure attempt and then manually call [terminateSelf](arkts-ability-uiabilitycontext-c.md#terminateself-1) at an appropriate time to close it. For example, you might ask the user to confirm whether they want to close the UIAbility and then proceed with the closure manually. Starting from API version 15, this API executes the callback normally only on 2-in-1 devices. It does not execute the callback on other devices. Starting from API version 19, this API executes the callback normally only on 2-in-1 devices and tablets. It does not execute the callback on other devices.
 
 > **NOTE:** 
 > 

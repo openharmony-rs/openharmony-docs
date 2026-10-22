@@ -4,7 +4,7 @@
 export interface Image extends SceneResource
 ```
 
-图片类型，继承自SceneResource。
+图片类型，继承自[SceneResource](arkts-arkgraphics3d-sceneresources-sceneresource-i.md)。
 
 **继承/实现关系：** Image extends [SceneResource](arkts-arkgraphics3d-sceneresources-sceneresource-i.md)
 

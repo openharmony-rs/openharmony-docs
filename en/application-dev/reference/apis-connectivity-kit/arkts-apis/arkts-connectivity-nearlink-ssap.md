@@ -22,8 +22,8 @@ import { ssap } from '@kit.ConnectivityKit';
 
 | Name | Description |
 | --- | --- |
-| [createClient](arkts-connectivity-ssap-createclient-f.md#createclient) | Creates an SSAP client instance. Before calling this API, you may call [isNearLinkSupported](arkts-connectivity-manager-isnearlinksupported-f.md) to check whether the device supports NearLink. |
-| [createServer](arkts-connectivity-ssap-createserver-f.md#createserver) | Creates an SSAP server instance. Before calling this API, you may call [isNearLinkSupported](arkts-connectivity-manager-isnearlinksupported-f.md) to check whether the device supports NearLink. |
+| [createClient](arkts-connectivity-ssap-createclient-f.md#createclient-1) | Creates an SSAP client instance. Before calling this API, you may call [isNearLinkSupported](arkts-connectivity-manager-isnearlinksupported-f.md) to check whether the device supports NearLink. |
+| [createServer](arkts-connectivity-ssap-createserver-f.md#createserver-1) | Creates an SSAP server instance. Before calling this API, you may call [isNearLinkSupported](arkts-connectivity-manager-isnearlinksupported-f.md) to check whether the device supports NearLink. |
 
 ### Interfaces
 

@@ -28,13 +28,13 @@ Opens a proxy channel. This API uses a promise to return the result. Based on th
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| channelInfo | [ChannelInfo](arkts-distributedservice-proxychannelmanager-channelinfo-i.md) | Yes | Link type of the proxy channel, MAC address of the peer device, and UUID of the listening service on the peer device. |
+| channelInfo | [ChannelInfo](arkts-distributedservice-proxychannelmanager-channelinfo-i.md) | Yes | Proxy channel information, including the link type, MAC address of the peer device, and service UUID of the peer device. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;number&gt; | Promise used to return the result. When the proxy channel is opened successfully, the promise is resolved, and the channelId of the proxy channel is returned. The value ranges from 1 to 2147483647. The lifecycle of the channelId is the same as that of the proxy channel. If the proxy is not closed, passing the same input parameters returns the same channelId. If the operation fails, the promise is rejected with error information. For details about the error codes, see the error code table. |
+| Promise&lt;number&gt; | Promise used to return the result. If the proxy channel is successfully opened, the return value of **resolve** is the channel ID, and value range is [1, 2147483647]. The lifecycle of the channel ID is the same as that of the proxy channel. If the proxy channel is not closed, the same input parameter will return the same channel ID. If the proxy channel fails to be opened, the return value of **reject** is an error message. For details about the error codes, see the error code table. |
 
 **Error codes:**
 

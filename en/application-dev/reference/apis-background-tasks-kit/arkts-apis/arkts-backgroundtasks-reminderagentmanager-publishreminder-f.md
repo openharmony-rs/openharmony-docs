@@ -17,7 +17,7 @@ Publishes a reminder. This API uses an asynchronous callback to return the resul
 > **NOTE:** 
 > 
 > This API can be called only after the
-> [notificationManager.requestEnableNotification](../../apis-notification-kit/arkts-apis/arkts-notification-notificationmanager-requestenablenotification-f.md#requestenablenotification)
+> [notificationManager.requestEnableNotification](../../apis-notification-kit/arkts-apis/arkts-notification-notificationmanager-requestenablenotification-f.md#requestenablenotification-2)
 > permission is obtained. &gt;
 
 **Since:** 9
@@ -76,7 +76,7 @@ Publishes a reminder. This API uses a promise to return the result.
 > **NOTE:** 
 > 
 > This API can be called only after the
-> [notificationManager.requestEnableNotification](../../apis-notification-kit/arkts-apis/arkts-notification-notificationmanager-requestenablenotification-f.md#requestenablenotification)
+> [notificationManager.requestEnableNotification](../../apis-notification-kit/arkts-apis/arkts-notification-notificationmanager-requestenablenotification-f.md#requestenablenotification-2)
 > permission is obtained. &gt;
 
 **Since:** 9

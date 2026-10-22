@@ -18,6 +18,8 @@ declare enum ImageAnalyzerType
 OBJECT_LOOKUP
 ```
 
+对象查找功能。
+
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -51,6 +53,8 @@ SUBJECT = 0
 ```TypeScript
 TEXT
 ```
+
+文字识别功能。
 
 **起始版本：** 12
 

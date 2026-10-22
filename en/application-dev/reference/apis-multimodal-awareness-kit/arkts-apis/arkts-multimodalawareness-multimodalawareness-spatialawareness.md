@@ -25,10 +25,10 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
 
 | Name | Description |
 | --- | --- |
-| [offDistanceMeasure](arkts-multimodalawareness-spatialawareness-offdistancemeasure-f-sys.md#offdistancemeasure) | Unsubscribe from distance measurement result data. |
-| [offIndoorOrOutdoorIdentify](arkts-multimodalawareness-spatialawareness-offindoororoutdooridentify-f-sys.md#offindoororoutdooridentify) | Unsubscribe from the results of indoor and outdoor recognition. |
-| [onDistanceMeasure](arkts-multimodalawareness-spatialawareness-ondistancemeasure-f-sys.md#ondistancemeasure) | Subscribe to distance measurement result data. |
-| [onIndoorOrOutdoorIdentify](arkts-multimodalawareness-spatialawareness-onindoororoutdooridentify-f-sys.md#onindoororoutdooridentify) | Subscribe to the results of indoorand outdoor identification. |
+| [offDistanceMeasure](arkts-multimodalawareness-spatialawareness-offdistancemeasure-f-sys.md#offdistancemeasure-1) | Unsubscribe from distance measurement result data. |
+| [offIndoorOrOutdoorIdentify](arkts-multimodalawareness-spatialawareness-offindoororoutdooridentify-f-sys.md#offindoororoutdooridentify-1) | Unsubscribe from the results of indoor and outdoor recognition. |
+| [onDistanceMeasure](arkts-multimodalawareness-spatialawareness-ondistancemeasure-f-sys.md#ondistancemeasure-1) | Subscribe to distance measurement result data. |
+| [onIndoorOrOutdoorIdentify](arkts-multimodalawareness-spatialawareness-onindoororoutdooridentify-f-sys.md#onindoororoutdooridentify-1) | Subscribe to the results of indoorand outdoor identification. |
 <!--DelEnd-->
 
 <!--Del-->

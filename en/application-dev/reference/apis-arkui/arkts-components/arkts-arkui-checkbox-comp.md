@@ -6,8 +6,7 @@ Provides the **Checkbox** component for selection among multiple options.
 > 
 > Since API version 11, the default style of the **Checkbox** component is changed from rounded square to circle.
 > 
-> By default, this component has a [margin](arkts-arkui-common-comp-commonmethod-c.md#margin) of {&nbsp;top: '14px',&nbsp;right: '14px',&
-> nbsp;bottom: '14px',&nbsp;left: '14px' }.
+> By default, this component has a [margin](arkts-arkui-common-comp-commonmethod-c.md#margin) of { top: '14px', right: '14px', bottom: '14px', left: '14px' }.
 
 ## Child Components
 

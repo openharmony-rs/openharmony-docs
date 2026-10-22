@@ -30,11 +30,11 @@ import { prompt } from '@kit.ArkUI';
 
 | 名称 | 说明 |
 | --- | --- |
-| [showActionMenu](arkts-arkui-prompt-showactionmenu-f.md#showactionmenu) | 创建并显示操作菜单，菜单响应结果异步返回。 |
-| [showActionMenu](arkts-arkui-prompt-showactionmenu-f.md#showactionmenu) | 创建并显示操作菜单，菜单响应后同步返回结果。 |
-| [showDialog](arkts-arkui-prompt-showdialog-f.md#showdialog) | 创建并显示对话框，对话框响应结果异步返回。 |
-| [showDialog](arkts-arkui-prompt-showdialog-f.md#showdialog) | 创建并显示对话框，对话框响应后同步返回结果。 |
-| [showToast](arkts-arkui-prompt-showtoast-f.md#showtoast) | 创建并显示文本提示框。 |
+| [showActionMenu](arkts-arkui-prompt-showactionmenu-f.md#showactionmenu-1) | 创建并显示操作菜单，菜单响应结果异步返回。 |
+| [showActionMenu](arkts-arkui-prompt-showactionmenu-f.md#showactionmenu-2) | 创建并显示操作菜单，菜单响应后同步返回结果。 |
+| [showDialog](arkts-arkui-prompt-showdialog-f.md#showdialog-1) | 创建并显示对话框，对话框响应结果异步返回。 |
+| [showDialog](arkts-arkui-prompt-showdialog-f.md#showdialog-2) | 创建并显示对话框，对话框响应后同步返回结果。 |
+| [showToast](arkts-arkui-prompt-showtoast-f.md#showtoast-1) | 创建并显示文本提示框。 |
 
 ### 接口
 

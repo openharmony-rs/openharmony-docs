@@ -17,7 +17,7 @@ Creates an AudioPlayer instance in synchronous mode.
 
 **Deprecated since:** 9
 
-**Substitutes:** [createAVPlayer](arkts-media-media-createavplayer-f.md#createavplayer)(callback: AsyncCallback&lt;AVPlayer&gt;)
+**Substitutes:** [createAVPlayer](arkts-media-media-createavplayer-f.md#createavplayer-1)(callback: AsyncCallback&lt;AVPlayer&gt;)
 
 <!--Device-media-function createAudioPlayer(): AudioPlayer--><!--Device-media-function createAudioPlayer(): AudioPlayer-End-->
 

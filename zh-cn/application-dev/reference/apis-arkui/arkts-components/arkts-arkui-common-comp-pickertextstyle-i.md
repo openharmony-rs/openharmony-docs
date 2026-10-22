@@ -18,7 +18,7 @@ Provide an interface for the text style of picker
 color?: ResourceColor
 ```
 
-Font color.
+文本颜色，用于自定义选择器中文字的颜色。
 
 **类型：** [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)
 
@@ -38,7 +38,7 @@ Font color.
 font?: Font
 ```
 
-Text style.
+文本样式，包括字体大小、字体粗细、字体族等属性。
 
 **类型：** Font
 

@@ -391,3 +391,57 @@ struct FlexExample6 {
   }
 }
 ```
+
+### Example 7: Implementing a Flex Component with Adaptive Width
+
+This example shows how the Flex component can automatically adjust to fit the layout of child components when the width is set to auto.
+
+```TypeScript
+@Component
+struct Demo {
+  @Require @Prop text: string
+
+  build() {
+    Button() {
+      Flex() {
+        Image($r('sys.media.ohos_ic_public_voice'))
+          .width(16)
+          .height(16)
+
+        Row() {
+          Text(this.text)
+            .margin({
+              left: 6,
+              right: 6
+            })
+            .fontSize(14)
+            .maxLines(1)
+            .textOverflow({ overflow: TextOverflow.Ellipsis })
+        }
+
+        Image($r('sys.media.ohos_ic_public_sound'))
+          .width(16)
+          .height(16)
+      }.width('auto')
+    }
+    .backgroundColor(0xAFEEEE)
+    .height(36)
+    .padding({ left: 16, right: 16 })
+    .constraintSize({ maxWidth: 156 })
+    .width('auto')
+  }
+}
+
+@Entry
+@Component
+struct FlexExample7 {
+  build() {
+    Column({ space: 12 }) {
+      Text('Width does not reach max length').fontSize(11).fontColor(0XCCCCCC).width('50%')
+      Demo({ text: '123' })
+      Text('Width reaches max length').fontSize(11).fontColor(0XCCCCCC).width('50%')
+      Demo({ text: '1234567890-1234567890-1234567890-1234567890' })
+    }
+  }
+}
+```

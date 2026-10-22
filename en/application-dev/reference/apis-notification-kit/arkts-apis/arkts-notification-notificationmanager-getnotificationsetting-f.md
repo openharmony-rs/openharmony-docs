@@ -22,7 +22,7 @@ Obtains the notification settings of the application, including the switch statu
 
 **See also:**
 
-[openNotificationSettings](arkts-notification-notificationmanager-opennotificationsettings-f.md) opens the notification settings page of the application, which is displayed in semi-modal mode and can be used to set the notification enabling and notification mode.
+[openNotificationSettings](arkts-notification-notificationmanager-opennotificationsettings-f.md#opennotificationsettings-1) opens the notification settings page of the application, which is displayed in semi-modal mode and can be used to set the notification enabling and notification mode.
 
 [isNotificationEnabled](arkts-notification-notificationmanager-isnotificationenabled-f.md) Checks whether notification is enabled for the specified application.
 

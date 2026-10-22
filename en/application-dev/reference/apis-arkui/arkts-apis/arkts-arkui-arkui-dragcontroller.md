@@ -28,10 +28,10 @@ import { dragController } from '@kit.ArkUI';
 
 | Name | Description |
 | --- | --- |
-| [createDragAction](arkts-arkui-dragcontroller-createdragaction-f.md#createdragaction) | Creates a drag action object for initiating drag and drop operations. You need to explicitly specify one or more drag previews, the drag data, and the drag handle point. If a drag operation initiated by an existing drag action object is not completed, no new object can be created, and calling the API will throw an exception. After the lifecycle of the drag action object ends, the callback functions registered on this object become invalid. Therefore, it is necessary to hold this object within a longer scope and replace the old value with a new object returned by **createDragAction** before each drag initiation. |
-| [executeDrag](arkts-arkui-dragcontroller-executedrag-f.md#executedrag) | Initiates a drag action, with the object to be dragged and the drag information passed in. This API uses an asynchronous callback to return the result. |
-| [executeDrag](arkts-arkui-dragcontroller-executedrag-f.md#executedrag) | Initiates a drag action, with the object to be dragged and the drag information passed in. This API uses a promise to return the result. |
-| [getDragPreview](arkts-arkui-dragcontroller-getdragpreview-f.md#getdragpreview) | Obtains the **DragPreview** object, which represents the preview displayed during a drag operation. |
+| [createDragAction](arkts-arkui-dragcontroller-createdragaction-f.md#createdragaction-1) | Creates a drag action object for initiating drag and drop operations. You need to explicitly specify one or more drag previews, the drag data, and the drag handle point. If a drag operation initiated by an existing drag action object is not completed, no new object can be created, and calling the API will throw an exception. After the lifecycle of the drag action object ends, the callback functions registered on this object become invalid. Therefore, it is necessary to hold this object within a longer scope and replace the old value with a new object returned by **createDragAction** before each drag initiation. |
+| [executeDrag](arkts-arkui-dragcontroller-executedrag-f.md#executedrag-1) | Initiates a drag action, with the object to be dragged and the drag information passed in. This API uses an asynchronous callback to return the result. |
+| [executeDrag](arkts-arkui-dragcontroller-executedrag-f.md#executedrag-2) | Initiates a drag action, with the object to be dragged and the drag information passed in. This API uses a promise to return the result. |
+| [getDragPreview](arkts-arkui-dragcontroller-getdragpreview-f.md#getdragpreview-1) | Obtains the **DragPreview** object, which represents the preview displayed during a drag operation. |
 
 ### Classes
 

@@ -6,6 +6,33 @@ class WebStorage
 
 通过WebStorage可管理Web SQL数据库接口和HTML5 Web存储接口，每个应用中的所有Web组件共享一个WebStorage。
 
+## 概述
+
+WebStorage提供对Web存储数据的管理能力，包括Web SQL数据库和HTML5 Web存储API，主要解决以下问题：  
+- 跨Web组件的数据存储管理。  
+- 存储空间配额和使用量的查询。  
+- 存储数据的清理。
+
+### 基本概念
+
+- **源（Origin）**：Web存储的数据隔离单位，相同源下的页面可以共享存储数据。  
+- **配额（Quota）**：每个源允许使用的最大存储空间，以字节为单位。  
+- **使用量（Usage）**：每个源当前已使用的存储空间，以字节为单位。
+
+### 关键设计
+
+WebStorage采用统一管理的设计模式：
+1. 每个应用中的所有Web组件共享一个WebStorage实例。
+2. 通过源（origin）作为索引来区分和管理不同源的存储数据。
+3. 支持同步和异步两种方式访问存储数据。
+4. 支持隐私模式和非隐私模式下的数据分离管理。
+
+> **说明：** 
+> 
+> - 目前调用WebStorage下的方法，都需要先加载Web组件。
+> 
+> - 本Class下的接口在ArkWeb内核升级到M132版本后因内核废弃Web SQL，对Web SQL数据库的管理失效。ArkWeb内核版本参考ArkWeb简介[约束与限制](../../../web/web-component-overview.md#约束与限制)。
+
 **起始版本：** 9
 
 <!--Device-webview-class WebStorage--><!--Device-webview-class WebStorage-End-->
@@ -96,7 +123,7 @@ static deleteOrigin(origin: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| origin | string | 是 | 指定源的字符串索引，来自于[getOrigins](#getorigins)。 |
+| origin | string | 是 | 指定源的字符串索引，来自于[getOrigins](#getorigins-2)。 |
 
 **错误码：**
 

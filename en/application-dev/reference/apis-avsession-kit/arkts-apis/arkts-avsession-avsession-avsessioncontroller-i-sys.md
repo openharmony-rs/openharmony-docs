@@ -1,4 +1,4 @@
-# AVSessionController
+# AVSessionController (System API)
 
 ```TypeScript
 interface AVSessionController

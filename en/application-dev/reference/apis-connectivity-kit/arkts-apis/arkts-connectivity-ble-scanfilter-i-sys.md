@@ -1,4 +1,4 @@
-# ScanFilter
+# ScanFilter (System API)
 
 ```TypeScript
 interface ScanFilter

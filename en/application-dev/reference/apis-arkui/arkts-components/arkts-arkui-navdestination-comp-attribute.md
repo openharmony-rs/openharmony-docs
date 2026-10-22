@@ -331,7 +331,7 @@ Specifies whether to hide the title bar.
 hideTitleBar(hide: boolean, animated: boolean)
 ```
 
-Specifies whether to hide the title bar. Compared with [hideTitleBar](#hidetitlebar), this API adds the capability to control whether to animate the visibility change of the title bar.
+Specifies whether to hide the title bar. Compared with [hideTitleBar](#hidetitlebar-1), this API adds the capability to control whether to animate the visibility change of the title bar.
 
 **Since:** 13
 
@@ -449,7 +449,7 @@ Sets the menu items in the upper right corner of the page. If this attribute is 
 menus(items: Array<NavigationMenuItem> | CustomBuilder, options?: NavigationMenuOptions)
 ```
 
-Sets the menu items in the upper right corner of the page. If this attribute is not set, no menu item is displayed. Compared with [menus](#menus), this API adds menu options. When the value type is Array&lt;[NavigationMenuItem](arkts-arkui-navigation-comp-navigationmenuitem-i.md)&gt;, the menu shows a maximum of three icons in portrait mode and a maximum of five icons in landscape mode, with excess icons (if any) placed under the automatically generated **More** icon.
+Sets the menu items in the upper right corner of the page. If this attribute is not set, no menu item is displayed. Compared with [menus](#menus-1), this API adds menu options. When the value type is Array&lt;[NavigationMenuItem](arkts-arkui-navigation-comp-navigationmenuitem-i.md)&gt;, the menu shows a maximum of three icons in portrait mode and a maximum of five icons in landscape mode, with excess icons (if any) placed under the automatically generated **More** icon.
 
 > **NOTE:** 
 > 
@@ -620,7 +620,7 @@ Triggered when a **NavDestination** page that already exists in the stack is mov
 
 > **NOTE:** 
 > 
-> - This callback is not triggered by [replacePath](arkts-arkui-navigation-comp-navpathstack-c.md#replacepath) or [replaceDestination](arkts-arkui-navigation-comp-navpathstack-c.md#replacedestination).
+> - This callback is not triggered by [replacePath](arkts-arkui-navigation-comp-navpathstack-c.md#replacepath-1) or [replaceDestination](arkts-arkui-navigation-comp-navpathstack-c.md#replacedestination).
 > 
 > - This API can be called in [attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier) since API version 22.
 
@@ -902,7 +902,7 @@ Sets the display orientation for the **NavDestination** component. After the tra
 > 
 > 3. The type of **NavDestination** is [NavDestinationMode](arkts-arkui-navdestination-comp-navdestinationmode-e.md).STANDARD.
 > 
-> - The actual effect of setting the display orientation depends on the specific device support. For details, see [setPreferredOrientation](../arkts-apis/arkts-arkui-window-window-i.md#setpreferredorientation).
+> - The actual effect of setting the display orientation depends on the specific device support. For details, see [setPreferredOrientation](../arkts-apis/arkts-arkui-window-window-i.md#setpreferredorientation-1).
 
 **Since:** 19
 

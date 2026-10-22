@@ -18,6 +18,42 @@ Provides enhanced audio device management capabilities.
 import { audio } from '@kit.AudioKit';
 ```
 
+## getSoundCardInfoList
+
+```TypeScript
+getSoundCardInfoList(): Promise<Array<SoundCardInfo>>
+```
+
+This interface is used to obtain the audio card information list, including the onboard audio card and USB audio card. Use the Promise asynchronous callback to return the query results. Application scenario: The application needs to obtain information about all audio adapters on the device, including onboard audio adapters and USB audio adapters, for asset management and monitoring.
+
+Restriction:  
+- The application must apply for the ohos.permission.GET_AUDIO_ADAPTER_INFO permission.  
+- This interface supports only PC devices. When a non-PC device invokes this interface, error code 801 is  
+returned.
+
+**Since:** 26.2.0
+
+**Required permissions:** ohos.permission.GET_AUDIO_ADAPTER_INFO
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AudioDeviceEnhanceManager-getSoundCardInfoList(): Promise<Array<SoundCardInfo>>--><!--Device-AudioDeviceEnhanceManager-getSoundCardInfoList(): Promise<Array<SoundCardInfo>>-End-->
+
+**System capability:** SystemCapability.Multimedia.Audio.DeviceEnhance
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;Array&lt;[SoundCardInfo](arkts-audio-audio-soundcardinfo-i-sys.md)&gt;&gt; | Promise used to return the sound card information list. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | The current device model does not support this function. |
+
 ## isEnhancedRoutingSupported
 
 ```TypeScript

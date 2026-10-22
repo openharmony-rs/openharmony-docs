@@ -4,13 +4,13 @@
 interface ImageReceiver
 ```
 
-ImageReceiver类，用于获取组件surface id、接收最新的图片和读取下一张图片以及释放ImageReceiver实例。ImageReceiver作为图片的接收方和消费者，其参数属性实际上不会对接收到的图片产生影响。图片属性的配置应在发送方和生产者上进行，如相机预览流[createPreviewOutput](../../apis-camera-kit/arkts-apis/arkts-camera-camera-cameramanager-i.md#createpreviewoutput)。
+ImageReceiver类，用于获取组件surface id、接收最新的图片和读取下一张图片以及释放ImageReceiver实例。ImageReceiver作为图片的接收方和消费者，其参数属性实际上不会对接收到的图片产生影响。图片属性的配置应在发送方和生产者上进行，如相机预览流[createPreviewOutput](../../apis-camera-kit/arkts-apis/arkts-camera-camera-cameramanager-i.md#createpreviewoutput-1)。
 
 在调用以下方法前需要先通过[image.createImageReceiver](arkts-image-image-createimagereceiver-f.md)创建ImageReceiver实例。
 
 从API version 23开始，更推荐使用[image.createImageReceiver](arkts-image-image-createimagereceiver-f.md)，通过传入[ImageReceiverOptions](arkts-image-image-imagereceiveroptions-i.md)创建ImageReceiver实例。
 
-由于图片占用内存较大，所以当ImageReceiver实例使用完成后，应主动调用[release](#release)方法及时释放内存。释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
+由于图片占用内存较大，所以当ImageReceiver实例使用完成后，应主动调用[release](#release-1)方法及时释放内存。释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
 
 > **说明：** 
 > 
@@ -180,7 +180,7 @@ readLatestImage(callback: AsyncCallback<Image>): void
 > 
 > 此接口需要在[on](#onimagearrival)回调触发后调用，才能正常的接收到数
 > 据。且此接口返回的[Image](arkts-image-image-image-i.md)对象使用完毕后需要调用
-> [release](arkts-image-image-image-i.md#release)方法释放，释放后才可以继续接收新的数据。
+> [release](arkts-image-image-image-i.md#release-1)方法释放，释放后才可以继续接收新的数据。
 
 **起始版本：** 9
 
@@ -235,7 +235,7 @@ readLatestImage(): Promise<Image>
 > 
 > 此接口需要在[on](#onimagearrival)回调触发后调用，才能正常的接收到数
 > 据。且此接口返回的[Image](arkts-image-image-image-i.md)对象使用完毕后需要调用
-> [release](arkts-image-image-image-i.md#release)方法释放，释放后才可以继续接收新的数据。
+> [release](arkts-image-image-image-i.md#release-1)方法释放，释放后才可以继续接收新的数据。
 
 **起始版本：** 9
 
@@ -288,7 +288,7 @@ readNextImage(callback: AsyncCallback<Image>): void
 > 
 > 此接口需要在[on](#onimagearrival)回调触发后调用，才能正常的接收到数
 > 据。且此接口返回的[Image](arkts-image-image-image-i.md)对象使用完毕后需要调用
-> [release](arkts-image-image-image-i.md#release)方法释放，释放后才可以继续接收新的数据。
+> [release](arkts-image-image-image-i.md#release-1)方法释放，释放后才可以继续接收新的数据。
 
 **起始版本：** 9
 
@@ -343,7 +343,7 @@ readNextImage(): Promise<Image>
 > 
 > 此接口需要在[on](#onimagearrival)回调触发后调用，才能正常的接收到数
 > 据。且此接口返回的[Image](arkts-image-image-image-i.md)对象使用完毕后需要调用
-> [release](arkts-image-image-image-i.md#release)方法释放，释放后才可以继续接收新的数据。
+> [release](arkts-image-image-image-i.md#release-1)方法释放，释放后才可以继续接收新的数据。
 
 **起始版本：** 9
 

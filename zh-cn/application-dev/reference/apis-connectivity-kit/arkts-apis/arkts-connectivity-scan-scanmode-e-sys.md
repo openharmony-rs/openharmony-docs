@@ -1,4 +1,4 @@
-# ScanMode
+# ScanMode（系统接口）
 
 ```TypeScript
 enum ScanMode

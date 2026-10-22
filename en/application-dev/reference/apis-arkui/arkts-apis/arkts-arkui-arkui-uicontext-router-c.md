@@ -561,7 +561,7 @@ struct Index {
 pushNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode, callback: AsyncCallback<void>): void
 ```
 
-Navigates to a page using the named route. This API uses an asynchronous callback to return the result. Compared with [pushNamedRoute](#pushnamedroute), this API supports the **mode** parameter, which enables you to set the routing mode.
+Navigates to a page using the named route. This API uses an asynchronous callback to return the result. Compared with [pushNamedRoute](#pushnamedroute-1), this API supports the **mode** parameter, which enables you to set the routing mode.
 
 **Since:** 10
 
@@ -650,7 +650,7 @@ struct Index {
 pushNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode): Promise<void>
 ```
 
-Navigates to a page using the named route. This API uses a promise to return the result. Compared with [pushNamedRoute](#pushnamedroute), this API supports the **mode** parameter, which enables you to set the routing mode.
+Navigates to a page using the named route. This API uses a promise to return the result. Compared with [pushNamedRoute](#pushnamedroute-2), this API supports the **mode** parameter, which enables you to set the routing mode.
 
 **Since:** 10
 
@@ -972,7 +972,7 @@ struct Second {
 pushUrl(options: router.RouterOptions, mode: router.RouterMode, callback: AsyncCallback<void>): void
 ```
 
-Navigates to a specified page in the application. This API uses an asynchronous callback to return the result. Compared with [pushUrl](#pushurl), this API supports the **mode** parameter, which enables you to set the routing mode.
+Navigates to a specified page in the application. This API uses an asynchronous callback to return the result. Compared with [pushUrl](#pushurl-1), this API supports the **mode** parameter, which enables you to set the routing mode.
 
 **Since:** 10
 
@@ -1061,7 +1061,7 @@ struct Index {
 pushUrl(options: router.RouterOptions, mode: router.RouterMode): Promise<void>
 ```
 
-Navigates to a specified page in the application. This API uses a promise to return the result. Compared with [pushUrl](#pushurl), this API supports the **mode** parameter, which enables you to set the routing mode.
+Navigates to a specified page in the application. This API uses a promise to return the result. Compared with [pushUrl](#pushurl-2), this API supports the **mode** parameter, which enables you to set the routing mode.
 
 **Since:** 10
 
@@ -1312,7 +1312,7 @@ struct Index {
 replaceNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode, callback: AsyncCallback<void>): void
 ```
 
-Replaces the current page with another one using the named route and destroys the current page. This API uses an asynchronous callback to return the result. Compared with [replaceNamedRoute](#replacenamedroute), this API supports the **mode** parameter, which enables you to set the routing mode.
+Replaces the current page with another one using the named route and destroys the current page. This API uses an asynchronous callback to return the result. Compared with [replaceNamedRoute](#replacenamedroute-1), this API supports the **mode** parameter, which enables you to set the routing mode.
 
 **Since:** 10
 
@@ -1397,7 +1397,7 @@ struct Index {
 replaceNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode): Promise<void>
 ```
 
-Replaces the current page with another one using the named route and destroys the current page. This API uses a promise to return the result. Compared with [replaceNamedRoute](#replacenamedroute), this API supports the **mode** parameter, which enables you to set the routing mode.
+Replaces the current page with another one using the named route and destroys the current page. This API uses a promise to return the result. Compared with [replaceNamedRoute](#replacenamedroute-2), this API supports the **mode** parameter, which enables you to set the routing mode.
 
 **Since:** 10
 
@@ -1643,7 +1643,7 @@ struct Index {
 replaceUrl(options: router.RouterOptions, mode: router.RouterMode, callback: AsyncCallback<void>): void
 ```
 
-Replaces the current page with another one in the application and destroys the current page. This API uses an asynchronous callback to return the result. Compared with [replaceUrl](#replaceurl), this API supports the **mode** parameter, which enables you to set the routing mode.
+Replaces the current page with another one in the application and destroys the current page. This API uses an asynchronous callback to return the result. Compared with [replaceUrl](#replaceurl-1), this API supports the **mode** parameter, which enables you to set the routing mode.
 
 **Since:** 10
 
@@ -1728,7 +1728,7 @@ struct Index {
 replaceUrl(options: router.RouterOptions, mode: router.RouterMode): Promise<void>
 ```
 
-Replaces the current page with another one in the application and destroys the current page. This API uses a promise to return the result. Compared with [replaceUrl](#replaceurl), this API supports the **mode** parameter, which enables you to set the routing mode.
+Replaces the current page with another one in the application and destroys the current page. This API uses a promise to return the result. Compared with [replaceUrl](#replaceurl-2), this API supports the **mode** parameter, which enables you to set the routing mode.
 
 **Since:** 10
 

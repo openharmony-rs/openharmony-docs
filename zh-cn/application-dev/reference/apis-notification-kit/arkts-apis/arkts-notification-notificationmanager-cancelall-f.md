@@ -24,9 +24,9 @@ function cancelAll(callback: AsyncCallback<void>): void
 
 **参见：**
 
-[publish](arkts-notification-notificationmanager-publish-f.md#publish) 发布通知。
+[publish](arkts-notification-notificationmanager-publish-f.md#publish-1) 发布通知。
 
-[cancel](arkts-notification-notificationmanager-cancel-f.md#cancel) 取消已发布的通知。
+[cancel](arkts-notification-notificationmanager-cancel-f.md#cancel-2) 取消已发布的通知。
 
 **参数：**
 
@@ -78,9 +78,9 @@ function cancelAll(): Promise<void>
 
 **参见：**
 
-[publish](arkts-notification-notificationmanager-publish-f.md#publish) 发布通知。
+[publish](arkts-notification-notificationmanager-publish-f.md#publish-2) 发布通知。
 
-[cancel](arkts-notification-notificationmanager-cancel-f.md#cancel) 根据指定的通知ID取消已发布的通知。
+[cancel](arkts-notification-notificationmanager-cancel-f.md#cancel-3) 根据指定的通知ID取消已发布的通知。
 
 **返回值：**
 

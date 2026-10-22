@@ -12,7 +12,7 @@ import { usbManager } from '@kit.BasicServicesKit';
 function claimInterface(pipe: USBDevicePipe, iface: USBInterface, force?: boolean): number
 ```
 
-声明对USB设备某个接口的控制权。UsbManager获得独占权，可以通过UsbManager提供的接口进行数据传输等操作。如需声明独占接口，并感知其它应用声明冲突，请使用[usbManager.claimInterfaceExclusive](arkts-basicservices-usbmanager-claiminterfaceexclusive-f.md)。使用完后需调用[releaseInterface](arkts-basicservices-usbmanager-releaseinterface-f.md)释放该接口的控制权。
+声明对USB设备某个接口的控制权。UsbManager获得独占权，可以通过UsbManager提供的接口进行数据传输等操作。如需声明独占接口，并感知其它应用声明冲突，请使用[usbManager.claimInterfaceExclusive](arkts-basicservices-usbmanager-claiminterfaceexclusive-f.md#claiminterfaceexclusive-1)。使用完后需调用[releaseInterface](arkts-basicservices-usbmanager-releaseinterface-f.md)释放该接口的控制权。
 
 **使用场景**：在需要进行USB数据传输时，需要先声明接口控制权以独占访问该接口。例如，在USB存储设备读写、USB摄像头数据采集、USB串口通信等场景中，都需要先声明接口控制权。
 

@@ -191,7 +191,7 @@ hideKeyboard(callback: AsyncCallback<void>): void
 
 **废弃版本：** 9
 
-**替代接口：** [hide](#hide)(callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [hide](#hide-1)(callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-KeyboardController-hideKeyboard(callback: AsyncCallback<void>): void--><!--Device-KeyboardController-hideKeyboard(callback: AsyncCallback<void>): void-End-->
 

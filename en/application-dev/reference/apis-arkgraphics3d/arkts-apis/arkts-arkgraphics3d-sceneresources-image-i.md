@@ -4,7 +4,7 @@
 export interface Image extends SceneResource
 ```
 
-Image resource, which inherits from SceneResource.
+Image resource, which inherits from [SceneResource](arkts-arkgraphics3d-sceneresources-sceneresource-i.md).
 
 **Inheritance/Implementation:** Image extends [SceneResource](arkts-arkgraphics3d-sceneresources-sceneresource-i.md)
 

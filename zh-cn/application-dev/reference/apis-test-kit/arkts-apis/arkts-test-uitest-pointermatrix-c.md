@@ -4,7 +4,7 @@
 declare class PointerMatrix
 ```
 
-存储多指操作中每根手指每一步动作的坐标点及其行为的二维数组。
+存储多指操作中每根手指每一步动作的坐标点及其行为的二维数组。通过[create](#create)构造对象后，使用[setPoint](#setpoint)设置每个手指每步操作的坐标值，再作为参数传给[injectMultiPointerAction](arkts-test-uitest-driver-c.md#injectmultipointeraction)执行多指操作。
 
 **起始版本：** 9
 
@@ -43,8 +43,8 @@ static create(fingers: number, steps: number): PointerMatrix
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| fingers | number | 是 | 多指操作中注入的手指数，取值范围：[1,10]的整数。 |
-| steps | number | 是 | 每根手指操作的步骤数，取值范围：[1,1000]的整数。 |
+| fingers | number | 是 | 多指操作中注入的手指数，取值范围：[1,10]的整数。传入不在取值范围内的值时抛出401错误码。 |
+| steps | number | 是 | 每根手指操作的步骤数，取值范围：[1,1000]的整数。传入不在取值范围内的值时抛出401错误码。 |
 
 **返回值：**
 
@@ -56,7 +56,7 @@ static create(fingers: number, steps: number): PointerMatrix
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**
 
@@ -99,7 +99,7 @@ setPoint(finger: number, step: number, point: Point): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync] Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**
 
