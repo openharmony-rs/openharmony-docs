@@ -135,6 +135,7 @@ Surface模式下，相机将视频帧输出到OH_NativeImage的Surface上，开�
    
    add_library(recorder SHARED recorder/RecorderNative.cpp
                                recorder/Recorder.cpp
+                               capbilities/camera/NativeCamera.cpp
                                capbilities/codec/Muxer.cpp
                                capbilities/codec/VideoEncoder.cpp
                                capbilities/codec/AudioCapturer.cpp
@@ -146,7 +147,7 @@ Surface模式下，相机将视频帧输出到OH_NativeImage的Surface上，开�
                                common/RoiQueue.cpp
    )
    
-   target_link_libraries(recorder PUBLIC ${BASE_LIBRARY} player)
+   target_link_libraries(recorder PUBLIC ${BASE_LIBRARY} player libohcamera.so)
    ```
 
    > **说明：**
@@ -155,7 +156,9 @@ Surface模式下，相机将视频帧输出到OH_NativeImage的Surface上，开�
 
 2. 开启相机ROI信息随帧输出。
 
-   从API版本26.0.1开始，相机默认不随视频帧输出ROI信息。使用相机帧中的ROI信息前，需查询设备是否支持该能力，并显式开启。以下以ArkTS相机接口为例，示例在会话提交配置后、启动前开启该能力；相机元数据流的创建和会话配置参考[元数据（ArkTS）](../camera/camera-metadata.md)和[元数据(C/C++)](../camera/native-camera-metadata.md)。
+   从API版本26.0.1开始，相机默认不随视频帧输出ROI信息。使用相机帧中的ROI信息前，需查询设备是否支持该能力，并显式开启。开发者可根据相机接口类型，选择以下ArkTS或C/C++示例，在会话提交配置后、启动前开启该能力。相机元数据流的创建和会话配置参考[元数据（ArkTS）](../camera/camera-metadata.md)和[元数据(C/C++)](../camera/native-camera-metadata.md)。
+
+   **ArkTS：**
 
    <!-- @[roi_enable_in_frame_metadata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/ROISample/entry/src/main/ets/controller/CameraController.ets) -->
 
@@ -164,6 +167,28 @@ Surface模式下，相机将视频帧输出到OH_NativeImage的Surface上，开�
      metadataOutput.setInFrameMetadataForEncoderEnabled(true);
    } else {
      Logger.warn(TAG, 'In-frame metadata for encoder is not supported; camera ROI is unavailable.');
+   }
+   ```
+
+   **C/C++：**
+
+   以下示例中的`metadataOutput_`为已创建并加入相机会话的元数据输出对象。
+
+   <!-- @[roi_enable_in_frame_metadata_native](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/ROISample/entry/src/main/cpp/capbilities/camera/NativeCamera.cpp) -->
+
+   ``` C++
+   Camera_ErrorCode NativeCamera::EnableInFrameMetadata()
+   {
+       if (OH_MetadataOutput_IsInFrameMetadataForEncoderSupported(metadataOutput_)) {
+           Camera_ErrorCode ret = OH_MetadataOutput_SetInFrameMetadataForEncoderEnabled(metadataOutput_, true);
+           if (ret != CAMERA_OK) {
+               SAMPLE_LOGE("Enable in-frame metadata for encoder failed, code: %{public}d", ret);
+               return ret;
+           }
+       } else {
+           SAMPLE_LOGW("In-frame metadata for encoder is not supported; camera ROI is unavailable.");
+       }
+       return CAMERA_OK;
    }
    ```
 
