@@ -69162,5 +69162,50 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/basic-services/powermgr/runningLock/runningLock-dev.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Basic-Services-Kit/powermgr/RunningLock/entry/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":23,
+						"name":"import_module",
+						"start_line":18
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Basic-Services-Kit/powermgr/RunningLock/entry/src/main/ets/pages/CommonEventHelper.ets",
+				"functions":[
+					{
+						"end_line":66,
+						"name":"common_event_utility_class",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Basic-Services-Kit/powermgr/RunningLock/entry/src/main/ets/pages/RunningLockUtil.ets",
+				"functions":[
+					{
+						"end_line":75,
+						"name":"running_lock_utility_class",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Basic-Services-Kit/powermgr/RunningLock/entry/src/main/ets/pages/UserIdleTask.ets",
+				"functions":[
+					{
+						"end_line":66,
+						"name":"Implement_Background_Idle_Tasks",
+						"start_line":15
+					}
+				]
+			}
+		]
 	}
 ]
