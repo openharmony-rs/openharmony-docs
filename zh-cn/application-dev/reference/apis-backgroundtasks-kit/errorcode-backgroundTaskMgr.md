@@ -159,7 +159,7 @@ Notification verification failed for a continuous task.
 
 1. 请检查系统长时任务资源"ohos.backgroundtaskmgr.resources"是否存在。
 2. 系统服务内部工作异常，请稍候重试，或者重启设备尝试。
-3. 请检查更新长时任务通知时，长时任务Id、通知进度信息是否正确，重新传入正确的参数。
+3. 请检查更新长时任务通知时，长时任务ID、通知进度信息是否正确，重新传入正确的参数。
 4. 请检查更新长时任务通知时，长时任务是否包含“数据传输”类型。若未包含，请重新申请或者更新长时任务。
 5. 请使用[startBackgroundRunning](./js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstartbackgroundrunning21)接口申请长时任务。
 
