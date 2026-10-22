@@ -748,7 +748,7 @@ caretColor(value: ResourceColor): WebAttribute
 
 
 ```ts
-import webview from '@ohos.web.webview';
+import { webview } from '@kit.ArkWeb';
 
 @Entry
 @Component
