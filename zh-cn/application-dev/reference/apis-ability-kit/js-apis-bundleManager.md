@@ -845,7 +845,7 @@ canOpenLink(link: string): boolean
 
 | 参数名     | 类型   | 必填 | 说明                |
 | ----------- | ------ | ---- | --------------------- |
-| link | string | 是   | 表示需要查询的链接，需为包含scheme的URI格式字符串（例如scheme://path）。 |
+| link | string | 是   | 表示需要查询的链接，链接中的scheme需要在[module.json5文件](../../quick-start/module-configuration-file.md)的querySchemes字段下配置。 |
 
 **返回值：**
 
@@ -1135,8 +1135,9 @@ try {
     hilog.error(0x0000, 'testTag', 'getBundleInfo failed. Code: %{public}d, message: %{public}s', err.code, err.message);
   });
 } catch (err) {
+  let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
-  hilog.error(0x0000, 'testTag', 'getBundleInfo failed. Cause: %{public}s', message);
+  hilog.error(0x0000, 'testTag', 'getBundleInfo failed. Cause: code: %{public}d, message: %{public}s', code, message);
 }
 ```
 
@@ -1155,8 +1156,9 @@ try {
     hilog.error(0x0000, 'testTag', 'getBundleInfo failed. Code: %{public}d, message: %{public}s', err.code, err.message);
   });
 } catch (err) {
+  let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
-  hilog.error(0x0000, 'testTag', 'getBundleInfo failed. Cause: %{public}s', message);
+  hilog.error(0x0000, 'testTag', 'getBundleInfo failed. Code: %{public}d, message: %{public}s', err.code, err.message);
 }
 ```
 
@@ -1608,8 +1610,9 @@ try {
     hilog.error(0x0000, 'testTag', 'getAbilityInfo failed. Cause: Code: %{public}d, message: %{public}s', err.code, err.message);
   });
 } catch (err) {
+  let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
-  hilog.error(0x0000, 'testTag', 'getAbilityInfo failed. Cause: %{public}s', message);
+  hilog.error(0x0000, 'testTag', 'getAbilityInfo failed. Cause: Code: %{public}d, message: %{public}s', code, message);
 }
 ```
 
@@ -1762,8 +1765,9 @@ try {
   let want: Want = bundleManager.getLaunchWantForBundleSync(bundleName);
   hilog.info(0x0000, 'testTag', 'getLaunchWantForBundleSync successfully. Data: %{public}s', JSON.stringify(want));
 } catch (err) {
+  let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
-  hilog.error(0x0000, 'testTag', 'getLaunchWantForBundleSync failed. Cause: %{public}s', message);
+  hilog.error(0x0000, 'testTag', 'getLaunchWantForBundleSync failed. Cause: Code: %{public}d, message: %{public}s', code, message);
 }
 ```
 

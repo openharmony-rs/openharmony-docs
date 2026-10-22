@@ -238,14 +238,15 @@ let userId = 100;
 try {
   bundleManager.getApplicationInfo(bundleName, appFlags, userId, (err, data) => {
     if (err) {
-      hilog.error(0x0000, 'testTag', 'getApplicationInfo failed: %{public}s', err.message);
+      hilog.error(0x0000, 'testTag', 'getApplicationInfo failed. Code: %{public}d, message: %{public}s', err.code, err.message);
     } else {
       hilog.info(0x0000, 'testTag', 'getApplicationInfo successfully: %{public}s', JSON.stringify(data));
     }
   });
 } catch (err) {
+  let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
-  hilog.error(0x0000, 'testTag', 'getApplicationInfo failed: %{public}s', message);
+  hilog.error(0x0000, 'testTag', 'getApplicationInfo failed. Code: %{public}d, message: %{public}s', code, message);
 }
 ```
 
@@ -1156,11 +1157,12 @@ try {
   bundleManager.queryAbilityInfo(wants, abilityFlags, userId).then((data) => {
     hilog.info(0x0000, 'testTag', 'queryAbilityInfo successfully. Data: %{public}s', JSON.stringify(data));
   }).catch((err: BusinessError) => {
-    hilog.error(0x0000, 'testTag', 'queryAbilityInfo failed. Cause: %{public}s', err.message);
-  })
+    hilog.error(0x0000, 'testTag', 'queryAbilityInfo failed. Code: %{public}d, message: %{public}s', err.code, err.message);
+  });
 } catch (err) {
+  let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
-  hilog.error(0x0000, 'testTag', 'queryAbilityInfo failed. Cause: %{public}s', message);
+  hilog.error(0x0000, 'testTag', 'queryAbilityInfo failed. Code: %{public}d, message: %{public}s', code, message);
 }
 ```
 
@@ -1387,11 +1389,12 @@ try {
   bundleManager.queryExtensionAbilityInfo(want, extensionAbilityType, extensionFlags).then((data) => {
     hilog.info(0x0000, 'testTag', 'queryExtensionAbilityInfo successfully. Data: %{public}s', JSON.stringify(data));
   }).catch((err: BusinessError) => {
-    hilog.error(0x0000, 'testTag', 'queryExtensionAbilityInfo failed. Cause: %{public}s', err.message);
-  })
+    hilog.error(0x0000, 'testTag', 'queryExtensionAbilityInfo failed. Code: %{public}d, message: %{public}s', err.code, err.message);
+  });
 } catch (err) {
+  let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
-  hilog.error(0x0000, 'testTag', 'queryExtensionAbilityInfo failed. Cause: %{public}s', message);
+  hilog.error(0x0000, 'testTag', 'queryExtensionAbilityInfo failed. Code: %{public}d, message: %{public}s', code, message);
 }
 ```
 
@@ -4398,12 +4401,13 @@ try {
   let info = bundleManager.getAdditionalInfo(bundleName);
   hilog.info(0x0000, 'testTag', 'getAdditionalInfo successfully, additionInfo:%{public}s', info);
 } catch (error) {
+  let code = (error as BusinessError).code;
   let message = (error as BusinessError).message;
-  hilog.error(0x0000, 'testTag', 'getAdditionalInfo failed. Cause: %{public}s', message);
+  hilog.error(0x0000, 'testTag', 'getAdditionalInfo failed. Code: %{public}d, message: %{public}s', code, message);
 }
 ```
 
-## bundleManager.queryExtensionAbilityInfoSync<sup>11+</sup>
+## bundleManager.queryExtensionAbilityInfoSync<sup>11+</sup>（重载二）
 
 queryExtensionAbilityInfoSync(want: Want, extensionAbilityType: string, extensionAbilityFlags: number, userId?: number): Array\<ExtensionAbilityInfo>
 
@@ -6035,7 +6039,7 @@ try {
     })
     .catch((err: BusinessError) => {
       hilog.error(0x0000, 'testTag', 'migrateData err: %{public}s', JSON.stringify(err));
-    })
+    });
 } catch (err) {
   hilog.error(0x0000, 'testTag', 'migrateData call err: %{public}s', JSON.stringify(err));
 }
