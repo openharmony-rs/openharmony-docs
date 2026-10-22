@@ -299,7 +299,11 @@
    {
        napi_property_descriptor desc[] = {
            // ...
-           { "leakMB", nullptr, LeakMB, nullptr, nullptr, nullptr, napi_default, nullptr}
+           { "leakMB", nullptr, LeakMB, nullptr, nullptr, nullptr, napi_default, nullptr},
+           // 将HiCollieTestTimerNdk注册为ArkTS接口
+           { "HiCollieTestTimerNdk", nullptr, HiCollieTestTimerNdk, nullptr, nullptr, nullptr, napi_default, nullptr },
+           { "RegisterMainThreadJankWatcher", nullptr, RegisterMainThreadJankWatcher, nullptr, nullptr, nullptr,
+               napi_default, nullptr },
        };
        napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
        return exports;
