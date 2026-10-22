@@ -1,11 +1,3 @@
----
-kits: ["ArkTS / 方舟编程语言"]
-description: "概述ArkTS运行时的组成与能力：由Core、Execution、Compiler、Runtime四个子系统构成，提供解释器、AOT与JIT执行方式、垃圾回收、并发管理、标准库及Node-API跨语言调用，支撑ArkTS、TS、JS应用高效运行。"
-keywords: [ArkTS运行时, 字节码执行, AOT, JIT, 垃圾回收, 并发管理, Node-API, 子系统架构]
-doctype: guide
-status: active
----
-
 # ArkTS运行时概述
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
