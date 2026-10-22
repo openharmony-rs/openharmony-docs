@@ -5324,6 +5324,74 @@ format(num: number): string
 | SIZE_FILE_BYTE | 22 | 文件大小。 |
 | SIZE_SHORTFILE_BYTE | 23 | 简短的文件大小。 |
 
+## i18n.getCurrency<sup>26+</sup>
+
+getCurrency(locale: Intl.Locale): Currency
+
+创建并返回Currency对象。
+
+**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名    | 类型     | 必填   | 说明                           |
+| ------ | ------ | ---- | ---------------------------- |
+| locale  | [Intl.Locale](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale) | 是    | 区域对象。 |
+
+**返回值：**
+
+| 类型                       | 说明                    |
+| ------------------------ | --------------------- |
+| [Currency](#currency26) | 根据区域对象创建的Currency对象。 |
+
+**示例：**
+
+```ts
+let locale = new Intl.Locale('zh-Hans-CN');
+let currency: i18n.Currency = i18n.getCurrency(locale);
+```
+
+
+## Currency<sup>26+</sup>
+
+提供货币相关的能力，包括获取符合ISO 4217标准的货币代码。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+### getISO4217Code<sup>26+</sup>
+
+getISO4217Code(): string
+
+获取符合ISO 4217标准的货币代码。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+| 类型                  | 说明                 |
+| ------------------- | ------------------ |
+| string | 符合ISO 4217标准的三字母货币代码。例如美国的默认货币是USD，中国的默认货币是CNY。 |
+
+**示例：**
+
+```ts
+let locale = new Intl.Locale('zh-Hans-CN');
+let currency: i18n.Currency = i18n.getCurrency(locale);
+let code = currency.getISO4217Code(); // code = CNY
+```
+
 ## i18n.getDisplayCountry<sup>(deprecated)</sup>
 
 getDisplayCountry(country: string, locale: string, sentenceCase?: boolean): string
