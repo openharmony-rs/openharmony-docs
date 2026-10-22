@@ -839,7 +839,7 @@ CloudDisk_ErrorCode OH_CloudDisk_GetPlaceholderCustomInfo(const CloudDisk_SyncFo
 | const CloudDisk_SyncFolderPath syncFolderPath | 已注册的同步根路径。 |
 | [const CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md) relativePathInfo | 同步根路径下待查询的占位符文件相对路径信息。 |
 | uint8_t *dataBuf | 输出参数。调用方分配的输出缓冲区。如果缓冲区容量不足，函数执行返回错误码INVALID_ARG。 |
-| size_t *inOutDataLength | 输出参数。调用时传入预分配的缓冲区大小；函数执行完后，会被修改为实际写入的数据长度。如果缓冲区容量不足，函数执行返回错误码INVALID_ARG，inOutDataLength被置为成功写入所需的数据长度。 |
+| size_t *inOutDataLength | 输出参数。调用时传入预分配的缓冲区容量；函数执行完后，会被修改为实际写入的数据长度。如果缓冲区容量不足，函数执行返回错误码INVALID_ARG，inOutDataLength被置为成功写入所需的数据长度。 |
 
 **返回：**
 
