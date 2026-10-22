@@ -32691,9 +32691,9 @@
 						"start_line":222
 					},
 					{
-						"end_line":285,
+						"end_line":310,
 						"name":"create_pixelMap",
-						"start_line":253
+						"start_line":278
 					},
 					{
 						"end_line":37,
@@ -32816,9 +32816,9 @@
 						"start_line":222
 					},
 					{
-						"end_line":316,
+						"end_line":363,
 						"name":"create_picture",
-						"start_line":265
+						"start_line":312
 					},
 					{
 						"end_line":338,
