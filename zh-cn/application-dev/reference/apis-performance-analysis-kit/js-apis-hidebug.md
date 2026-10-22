@@ -282,7 +282,7 @@ ArkTS-Sta: getServiceDump(serviceid: int, fd: int, args: Array\<string>): void
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------------------------------------------------- |
-| 401 | The parameter check failed,Possible causes:1.The parameter type error. 2.The args parameter is not string array.  |
+| 401 | [Sync] Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed.  |
 | 11400101 | ServiceId invalid. The system ability does not exist.                                           |
 
 **示例**：
@@ -360,7 +360,7 @@ startJsCpuProfiling(filename: string): void
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------------------------------------------------- |
-| 401 | The parameter check failed,Parameter type error.                        |
+| 401 | [Sync] Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed.                        |
 
 **示例**：
 
@@ -438,7 +438,7 @@ dumpJsHeapData(filename: string): void
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------------------------------------------------- |
-| 401 | The parameter check failed, Parameter type error.                      |
+| 401 | [Sync] Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed.                      |
 
 **示例**：
 
