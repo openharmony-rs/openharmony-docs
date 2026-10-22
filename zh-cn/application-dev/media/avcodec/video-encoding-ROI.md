@@ -88,7 +88,7 @@ ROI是一个矩形区域，`Top,Left`和`Bottom,Right`分别定义了ROI的区�
 - [方式二：通过编码输入回调配置](#方式二通过编码输入回调配置)：使用视频编码参数`OH_MD_KEY_VIDEO_ENCODER_ROI_PARAMS`在编码输入回调中配置，包含编码输入参数回调（Surface模式）和编码输入buffer回调（Buffer模式）。
 
 **通用生效机制：**
-1. ROI参数支持随帧下发并实时生效，开发者无需进行能力查询或配置全局开关。
+1. ROI参数支持随帧下发并实时生效，编码器侧无需进行能力查询或配置全局开关。使用相机随帧元数据作为ROI来源时，需先查询并开启相机侧的编码用随帧元数据输出能力。
 2. 如果系统编码器不支持ROI编码能力，编码器会忽略ROI参数，进行普通编码。
 3. DeltaQp有效取值范围为[-51, 51]，编码器会在ROI区域的QP上叠加DeltaQp，然后限制到[minQp, maxQp]范围内得到最终QP。
 4. 当某一帧未配置ROI参数时，若上一帧生效了ROI编码，则复用上一帧ROI信息进行当前帧ROI编码；若上一帧是普通编码，则进行普通编码。
@@ -111,7 +111,7 @@ ROI是一个矩形区域，`Top,Left`和`Bottom,Right`分别定义了ROI的区�
 
 Surface模式和Buffer模式共用相同的ROI信息获取与组装流程，区别在于如何将ROI配置到编码器。
 
-当相机输出视频帧时，如果检测到ROI区域（如人脸），会将ROI信息写入帧的NativeBuffer元数据。开发者可直接从每帧中提取，无需额外的回调接口和时间戳匹配，具体参考[OH_NativeBuffer_MetadataKey](../../reference/apis-arkgraphics2d/capi-buffer-common-h.md#oh_nativebuffer_metadatakey)。
+相机开启编码用随帧元数据输出后，如果检测到ROI区域（如人脸），会将ROI信息写入视频帧的NativeBuffer元数据。开发者可直接从每帧中提取，无需额外的回调接口和时间戳匹配，具体参考[OH_NativeBuffer_MetadataKey](../../reference/apis-arkgraphics2d/capi-buffer-common-h.md#oh_nativebuffer_metadatakey)。
 
 Surface模式下，相机将视频帧输出到OH_NativeImage的Surface上，开发者在帧处理线程中从每帧的NativeBuffer元数据提取ROI信息并组装成配置字符串，随后将ROI字符串写入编码器输入帧的NativeBuffer元数据，实现ROI随帧下发到编码器（如图2所示）。
 
@@ -153,9 +153,27 @@ Surface模式下，相机将视频帧输出到OH_NativeImage的Surface上，开�
    >
    > 上述'recorder','player'字样仅为示例，此处应由开发者根据具体的CMake工程目标名称进行替换。
 
-2. 从视频帧NativeBuffer元数据提取ROI信息。
+2. 开启相机编码用随帧元数据输出。
 
-   相机输出视频帧时，若检测到ROI区域（如人脸），会将ROI信息写入帧的NativeBuffer元数据中。开发者可通过`OH_NativeBuffer_GetMetadataValue`提取ROI原始字符串。
+   从API版本26.0.1开始，相机编码用随帧元数据输出默认关闭。使用相机帧中的ROI信息前，需查询设备是否支持该能力，并显式开启。以下以ArkTS相机接口为例，示例在会话提交配置后、启动前开启该能力；相机元数据流的创建和会话配置参考[元数据（ArkTS）](../camera/camera-metadata.md)。
+
+   <!-- @[roi_enable_in_frame_metadata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/ROISample/entry/src/main/ets/controller/CameraController.ets) -->
+
+   ```ts
+   if (metadataOutput.isInFrameMetadataForEncoderSupported()) {
+     metadataOutput.setInFrameMetadataForEncoderEnabled(true);
+   } else {
+     Logger.warn(TAG, 'In-frame metadata for encoder is not supported; camera ROI is unavailable.');
+   }
+   ```
+
+   > **说明：**
+   >
+   > 该步骤适用于本文中所有从相机帧NativeBuffer元数据获取ROI的方式。设备不支持该能力或开启失败时，无法通过此方式获取相机ROI信息。应用自行构造ROI参数时，无需配置此相机开关。
+
+3. 从视频帧NativeBuffer元数据提取ROI信息。
+
+   完成上述相机配置后，若检测到ROI区域（如人脸），相机会将ROI信息写入帧的NativeBuffer元数据中。开发者可通过`OH_NativeBuffer_GetMetadataValue`提取ROI原始字符串。
 
    <!-- @[roi_buffer_roi_extraction](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/ROISample/entry/src/main/cpp/capbilities/render/render_thread.cpp) -->
    
@@ -177,7 +195,7 @@ Surface模式下，相机将视频帧输出到OH_NativeImage的Surface上，开�
    >
    > `InBuffer`是通过OH_NativeImage_AcquireNativeWindowBuffer从OH_NativeImage获取的相机帧，相机输出的ROI信息已写入该Buffer的元数据中。关于NativeImage的创建和帧接收机制，请参考开发指南视频编码中[Surface模式](video-encoding.md#surface模式)的相关说明。
 
-3. 使用OH_VideoMetadata API组装ROI配置字符串。
+4. 使用OH_VideoMetadata API组装ROI配置字符串。
 
    提取的ROI原始字符串包含区域坐标信息，开发者需要通过`OH_VideoMetadata_GetRoiCount`、`OH_VideoMetadata_ParseRoiString`和`OH_VideoMetadata_AppendRoiString`接口解析原始ROI并追加DeltaQP参数，生成完整的ROI配置字符串（如"100,50-300,200=dqp:-6"）。
 
@@ -220,7 +238,7 @@ Surface模式下，相机将视频帧输出到OH_NativeImage的Surface上，开�
    >
    > `OH_VideoMetadata_AppendRoiString`会在内部进行内存扩容，返回的C风格字符串需要开发者调用`free()`释放。
 
-4. 将ROI配置字符串写入编码器输入帧的NativeBuffer元数据。
+5. 将ROI配置字符串写入编码器输入帧的NativeBuffer元数据。
 
    在Surface模式下，编码器通过Surface接收视频帧。开发者需要先通过`OH_NativeWindow_NativeWindowRequestBuffer`从编码器Surface请求Buffer，再将组装好的ROI字符串写入该Buffer的NativeBuffer元数据中。
 
@@ -248,7 +266,7 @@ Surface模式下，相机将视频帧输出到OH_NativeImage的Surface上，开�
    >
    > 当相机帧未检测到ROI区域时，`assembledRoiStr`为空字符串。方式一不支持空字符串，需写入无位置信息的字符串（如"Clear"或";"）。具体参考[生效机制说明](#生效机制说明)。
 
-5. 将Buffer提交给编码器并释放资源。
+6. 将Buffer提交给编码器并释放资源。
 
    ROI配置完成后，通过`OH_NativeWindow_NativeWindowFlushBuffer`将预览Buffer和编码器Buffer提交，并释放相机帧资源。
 
@@ -294,11 +312,11 @@ Surface模式下，相机将视频帧输出到OH_NativeImage的Surface上，开�
 
 2. 从视频帧NativeBuffer元数据提取ROI信息。
 
-   同[方式一：通过NativeBuffer元数据配置（推荐）](#方式一通过nativebuffer元数据配置推荐)步骤2。
+   需先完成[方式一：通过NativeBuffer元数据配置（推荐）](#方式一通过nativebuffer元数据配置推荐)步骤2的相机配置，再按步骤3提取ROI信息。
 
 3. 使用OH_VideoMetadata API组装ROI配置字符串。
 
-   同[方式一：通过NativeBuffer元数据配置（推荐）](#方式一通过nativebuffer元数据配置推荐)步骤3。
+   同[方式一：通过NativeBuffer元数据配置（推荐）](#方式一通过nativebuffer元数据配置推荐)步骤4。
 
 4. 实现PTS同步队列与回调用户数据结构。
 
@@ -418,11 +436,11 @@ Buffer模式下，视频帧通过`OH_VideoEncoder_PushInputBuffer`送入编码�
 
 2. 从视频帧NativeBuffer元数据提取ROI信息。
 
-   同[方式一：通过NativeBuffer元数据配置（推荐）](#方式一通过nativebuffer元数据配置推荐)步骤2。
+   需先完成[方式一：通过NativeBuffer元数据配置（推荐）](#方式一通过nativebuffer元数据配置推荐)步骤2的相机配置，再按步骤3提取ROI信息。
 
 3. 使用OH_VideoMetadata API组装ROI配置字符串。
 
-   同[方式一：通过NativeBuffer元数据配置（推荐）](#方式一通过nativebuffer元数据配置推荐)步骤3。
+   同[方式一：通过NativeBuffer元数据配置（推荐）](#方式一通过nativebuffer元数据配置推荐)步骤4。
 
 4. 将ROI字符串连同帧PTS传递到RoiQueue。
 
