@@ -992,11 +992,12 @@ try {
   bundleManager.queryAbilityInfo(want, abilityFlags).then((data) => {
     hilog.info(0x0000, 'testTag', 'queryAbilityInfo successfully. Data: %{public}s', JSON.stringify(data));
   }).catch((err: BusinessError) => {
-    hilog.error(0x0000, 'testTag', 'queryAbilityInfo failed. Cause: %{public}s', err.message);
-  })
+    hilog.error(0x0000, 'testTag', 'queryAbilityInfo failed. Code: %{public}d, message: %{public}s', err.code, err.message);
+  });
 } catch (err) {
+  let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
-  hilog.error(0x0000, 'testTag', 'queryAbilityInfo failed. Cause: %{public}s', message);
+  hilog.error(0x0000, 'testTag', 'queryAbilityInfo failed. Code: %{public}d, message: %{public}s', code, message);
 }
 ```
 
@@ -4407,7 +4408,7 @@ try {
 }
 ```
 
-## bundleManager.queryExtensionAbilityInfoSync<sup>11+</sup>（重载二）
+## bundleManager.queryExtensionAbilityInfoSync<sup>11+</sup>
 
 queryExtensionAbilityInfoSync(want: Want, extensionAbilityType: string, extensionAbilityFlags: number, userId?: number): Array\<ExtensionAbilityInfo>
 
@@ -5362,7 +5363,7 @@ try {
 
 disableDynamicIcon(bundleName: string): Promise\<void>;
 
-根据给定的bundleName和option禁用动态图标。使用Promise异步回调。本方法与enableDynamicIcon互逆，后者用于启用动态图标。禁用生效后可通过getAllDynamicIconInfo查询到该动态图标的状态变化。
+根据给定的bundleName禁用动态图标。使用Promise异步回调。本方法与enableDynamicIcon互逆，后者用于启用动态图标。禁用生效后可通过getAllDynamicIconInfo查询到该动态图标的状态变化。
 
 **系统接口：** 此接口为系统接口。
 

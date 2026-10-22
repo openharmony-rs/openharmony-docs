@@ -300,8 +300,9 @@ try {
     hilog.error(0x0000, 'testTag', 'getBundleInfoForSelf failed: Code: %{public}d, message: %{public}s', err.code, err.message);
   });
 } catch (err) {
+  let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
-  hilog.error(0x0000, 'testTag', 'getBundleInfoForSelf failed: %{public}s', message);
+  hilog.error(0x0000, 'testTag', 'getBundleInfoForSelf failed. Code: %{public}d, message: %{public}s', code, message);
 }
 ```
 
@@ -1137,7 +1138,7 @@ try {
 } catch (err) {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
-  hilog.error(0x0000, 'testTag', 'getBundleInfo failed. Cause: code: %{public}d, message: %{public}s', code, message);
+  hilog.error(0x0000, 'testTag', 'getBundleInfo failed. Code: %{public}d, message: %{public}s', code, message);
 }
 ```
 
@@ -1333,7 +1334,7 @@ try {
 } catch (err) {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
-  hilog.error(0x0000, 'testTag', 'getBundleNameByUid failed. Cause: Code: %{public}d, message: %{public}s', code, message);
+  hilog.error(0x0000, 'testTag', 'getBundleNameByUid failed. Code: %{public}d, message: %{public}s', code, message);
 }
 ```
 
@@ -1385,7 +1386,7 @@ try {
   bundleManager.getBundleNameByUid(uid).then((data) => {
     hilog.info(0x0000, 'testTag', 'getBundleNameByUid successfully. Data: %{public}s', JSON.stringify(data));
   }).catch((err: BusinessError) => {
-    hilog.error(0x0000, 'testTag', 'getBundleNameByUid failed. Cause: Code: %{public}d, message: %{public}s', err.code, err.message);
+    hilog.error(0x0000, 'testTag', 'getBundleNameByUid failed. Code: %{public}d, message: %{public}s', err.code, err.message);
   });
 } catch (err) {
   let code = (err as BusinessError).code;
@@ -1444,7 +1445,7 @@ try {
 } catch (err) {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
-  hilog.error(0x0000, 'testTag', 'getBundleNameByUidSync failed. Cause: Code: %{public}d, message: %{public}s', code, message);
+  hilog.error(0x0000, 'testTag', 'getBundleNameByUidSync failed. Code: %{public}d, message: %{public}s', code, message);
 }
 ```
 
@@ -1497,11 +1498,12 @@ try {
   bundleManager.getAppCloneIdentity(uid).then((res) => {
     hilog.info(0x0000, 'testTag', 'getAppCloneIdentity res = %{public}s', JSON.stringify(res));
   }).catch((err: BusinessError) => {
-    hilog.error(0x0000, 'testTag', 'getAppCloneIdentity failed. Cause: Code: %{public}d, message: %{public}s', err.code, err.message);
+    hilog.error(0x0000, 'testTag', 'getAppCloneIdentity failed. Code: %{public}d, message: %{public}s', err.code, err.message);
   });
 } catch (err) {
+  let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
-  hilog.error(0x0000, 'testTag', 'getAppCloneIdentity failed. Cause: %{public}s', message);
+  hilog.error(0x0000, 'testTag', 'getAppCloneIdentity failed. Code: %{public}d, message: %{public}s', code, message);
 }
 ```
 
@@ -1551,7 +1553,7 @@ try {
 } catch (err) {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
-  hilog.error(0x0000, 'testTag', 'getSignatureInfo failed. Cause: Code: %{public}d, message: %{public}s', code, message);
+  hilog.error(0x0000, 'testTag', 'getSignatureInfo failed. Code: %{public}d, message: %{public}s', code, message);
 }
 ```
 
@@ -1607,12 +1609,12 @@ try {
   bundleManager.getAbilityInfo(uri, abilityFlags).then((data) => {
     hilog.info(0x0000, 'testTag', 'getAbilityInfo successfully. Data: %{public}s', JSON.stringify(data));
   }).catch((err: BusinessError) => {
-    hilog.error(0x0000, 'testTag', 'getAbilityInfo failed. Cause: Code: %{public}d, message: %{public}s', err.code, err.message);
+    hilog.error(0x0000, 'testTag', 'getAbilityInfo failed. Code: %{public}d, message: %{public}s', err.code, err.message);
   });
 } catch (err) {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
-  hilog.error(0x0000, 'testTag', 'getAbilityInfo failed. Cause: Code: %{public}d, message: %{public}s', code, message);
+  hilog.error(0x0000, 'testTag', 'getAbilityInfo failed. Code: %{public}d, message: %{public}s', code, message);
 }
 ```
 
@@ -1686,7 +1688,7 @@ try {
 } catch (err) {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
-  hilog.error(0x0000, 'testTag', 'getPluginBundlePathForSelf failed. Cause: Code: %{public}d, message: %{public}s', code, message);
+  hilog.error(0x0000, 'testTag', 'getPluginBundlePathForSelf failed. Code: %{public}d, message: %{public}s', code, message);
 }
 ```
 
@@ -1748,7 +1750,7 @@ try {
 } catch (err) {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
-  hilog.error(0x0000, 'testTag', 'getLaunchWantForBundleSync failed. Cause: Code: %{public}d, message: %{public}s', code, message);
+  hilog.error(0x0000, 'testTag', 'getLaunchWantForBundleSync failed. Code: %{public}d, message: %{public}s', code, message);
 }
 ```
 
@@ -1767,7 +1769,7 @@ try {
 } catch (err) {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
-  hilog.error(0x0000, 'testTag', 'getLaunchWantForBundleSync failed. Cause: Code: %{public}d, message: %{public}s', code, message);
+  hilog.error(0x0000, 'testTag', 'getLaunchWantForBundleSync failed. Code: %{public}d, message: %{public}s', code, message);
 }
 ```
 
@@ -1825,7 +1827,7 @@ try {
 } catch (err) {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
-  hilog.error(0x0000, 'testTag', 'getApplicationLabel failed. Cause: Code: %{public}d, message: %{public}s', code, message);
+  hilog.error(0x0000, 'testTag', 'getApplicationLabel failed. Code: %{public}d, message: %{public}s', code, message);
 }
 ```
 
@@ -1879,11 +1881,12 @@ try {
   bundleManager.getInstalledBundleList(bundleFlags).then((data) => {
     hilog.info(0x0000, 'testTag', 'getInstalledBundleList successfully. Data: %{public}s', JSON.stringify(data));
   }).catch((err: BusinessError) => {
-    hilog.error(0x0000, 'testTag', 'getInstalledBundleList failed. Cause: Code: %{public}d, message: %{public}s', err.code, err.message);
+    hilog.error(0x0000, 'testTag', 'getInstalledBundleList failed. Code: %{public}d, message: %{public}s', err.code, err.message);
   });
 } catch (err) {
+  let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
-  hilog.error(0x0000, 'testTag', 'getInstalledBundleList failed. Cause: %{public}s', message);
+  hilog.error(0x0000, 'testTag', 'getInstalledBundleList failed. Code: %{public}d, message: %{public}s', code, message);
 }
 ```
 
@@ -1935,11 +1938,12 @@ try {
   bundleManager.setAlternateIcon(alternateIconName).then((data) => {
     hilog.info(0x0000, 'testTag', 'setAlternateIcon successfully');
   }).catch((err: BusinessError) => {
-    hilog.error(0x0000, 'testTag', 'setAlternateIcon failed. Cause: %{public}s', err.message);
+    hilog.error(0x0000, 'testTag', 'setAlternateIcon failed. Code: %{public}d, message: %{public}s', err.code, err.message);
   });
 } catch (err) {
+  let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
-  hilog.error(0x0000, 'testTag', 'setAlternateIcon failed. Cause: %{public}s', message);
+  hilog.error(0x0000, 'testTag', 'setAlternateIcon failed. Code: %{public}d, message: %{public}s', code, message);
 }
 ```
 
@@ -1980,11 +1984,12 @@ try {
   bundleManager.getAlternateIcons().then((data) => {
     hilog.info(0x0000, 'testTag', 'getAlternateIcons successfully. Data: %{public}s', JSON.stringify(data));
   }).catch((err: BusinessError) => {
-    hilog.error(0x0000, 'testTag', 'getAlternateIcons failed. Cause: %{public}s', err.message);
+    hilog.error(0x0000, 'testTag', 'getAlternateIcons failed. Code: %{public}d, message: %{public}s', err.code, err.message);
   });
 } catch (err) {
+  let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
-  hilog.error(0x0000, 'testTag', 'getAlternateIcons failed. Cause: %{public}s', message);
+  hilog.error(0x0000, 'testTag', 'getAlternateIcons failed. Code: %{public}d, message: %{public}s', code, message);
 }
 ```
 
@@ -2035,8 +2040,9 @@ try {
   let bundleInstallStatus = bundleManager.getBundleInstallStatus(bundleName);
   hilog.info(0x0000, 'testTag', 'bundle install status:' + bundleInstallStatus);
 } catch (err) {
+  let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
-  hilog.error(0x0000, 'testTag', 'getBundleInstallStatus failed. Cause: %{public}s', message);
+  hilog.error(0x0000, 'testTag', 'getBundleInstallStatus failed. Code: %{public}d, message: %{public}s', code, message);
 }
 ```
 
