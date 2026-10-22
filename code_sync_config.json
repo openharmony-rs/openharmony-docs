@@ -10483,6 +10483,26 @@
 						"start_line":16
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ProcessWebPageCont/entry/src/main/resources/rawfile/print.html",
+				"functions":[
+					{
+						"end_line":64,
+						"name":"w3c_print_html_html",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ProcessWebPageCont/entry/src/main/resources/rawfile/iframe.html",
+				"functions":[
+					{
+						"end_line":42,
+						"name":"w3c_print_html_iframe",
+						"start_line":15
+					}
+				]
 			}
 		]
 	},
@@ -69068,6 +69088,76 @@
 						"end_line":1434,
 						"name":"RegisterExternalLogMgr",
 						"start_line":1405
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/web/web-geolocation-permission.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/resources/rawfile/getLocation.html",
+				"functions":[
+					{
+						"end_line":41,
+						"name":"getLocation_html",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/ManageLocPerms.ets",
+				"functions":[
+					{
+						"end_line":88,
+						"name":"a_pop_up_window_is_used_to_notify_the_app_side_location_permission_request_message",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/GeolocationPermissions.ets",
+				"functions":[
+					{
+						"end_line":68,
+						"name":"create_a_web_component_use_GeolocationPermissions",
+						"start_line":16
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/web/web-sensor.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/module.json5",
+				"functions":[
+					{
+						"end_line":79,
+						"name":"declare_the_appropriate_sensor_permissions",
+						"start_line":65
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/ets/pages/UseMotionDirSensor.ets",
+				"functions":[
+					{
+						"end_line":78,
+						"name":"the_type_of_resource_for_which_permission_is_requested",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/resources/rawfile/index.html",
+				"functions":[
+					{
+						"end_line":149,
+						"name":"the_type_of_resource_for_which_permission_is_requested_html",
+						"start_line":15
 					}
 				]
 			}
