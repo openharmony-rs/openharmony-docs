@@ -1236,8 +1236,9 @@ onZoomChange(callback: OnZoomChangeCallback)
 > **说明：**
 >
 > - 通过[setZoomFactor](./arkts-apis-webview-WebviewController.md#setzoomfactor)设置，或[zoomControlAccess](./arkts-basic-components-web-attributes.md#zoomcontrolaccess22)为`true`时通过Ctrl组合键或鼠标滚轮/触摸板缩放，均会触发该回调。
+> - 在同一浏览数据上下文中，其他同Host Web组件改变页面缩放倍率后，如果当前Web组件的实际倍率随之变化，也会触发该回调。
 > - 页面缩放会缩放文字、图片并重新布局页面；CSS `zoom`不会触发该回调，捏合缩放导致的页面显示比例变化由[onScaleChange](#onscalechange9)通知。
-> - 同一Web组件加载另一网页后恢复相同倍率不会重复触发回调。
+> - 当前Web组件导航至其他Host时，若实际倍率发生变化则触发回调；实际倍率不变时不会重复触发。
 
 **起始版本：** 26.2.0
 
