@@ -4896,7 +4896,7 @@ promise.then((data) => {
 | key               | string                                  | 是   | 是   | 联系人的key，由系统自动生成。               |
 | contactAttributes | [ContactAttributes](#contactattributes) | 否   | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。                     |
 | emails            | [Email](#email)[]                       | 否   | 是   | 联系人的邮箱地址列表。                 |
-| events<sup>(deprecated)</sup>            | [Event](#event)[]                       | 否   | 是   | 联系人的生日、周年纪念等重要日期列表。 |
+| events<sup>(deprecated)</sup>            | [Event](#eventdeprecated)[]                       | 否   | 是   | 联系人的生日、周年纪念等重要日期列表。 |
 | groups            | [Group](#group)[]                       | 否   | 是   | 联系人的群组列表。<br> **说明**： 添加或更新联系人时，仅支持关联到已有群组，不支持创建新群组。                     |
 | imAddresses       | [ImAddress](#imaddress)[]               | 否   | 是   | 联系人的即时消息地址列表。             |
 | phoneNumbers      | [PhoneNumber](#phonenumber)[]           | 否   | 是   | 联系人的电话号码列表。                 |
@@ -4909,7 +4909,7 @@ promise.then((data) => {
 | nickName          | [NickName](#nickname)                   | 否   | 是   | 联系人的昵称。                         |
 | note              | [Note](#note)                           | 否   | 是   | 联系人的备注。                         |
 | organization      | [Organization](#organization)           | 否   | 是   | 联系人的组织信息。                     |
-| significantDates      | [SignificantDate](#significantDate)           | 否   | 是   | 联系人的生日、周年纪念等重要日期列表。从API version 26.2.0开始，建议使用该版本。                     |
+| significantDates      | [SignificantDate](#significantdate)           | 否   | 是   | 联系人的生日、周年纪念等重要日期列表。**起始版本：** 26.2.0                    |
 
 **示例：**
 
@@ -5062,7 +5062,11 @@ let holder: contact.Holder = {
 
 联系人事件类。
 
-**原子化服务API**：从API version 11 开始，该接口支持在原子化服务中使用。从API version 26.2.0 开始废弃，建议使用[SignificantDate](#SignificantDate)替代。
+> **说明：**
+>
+> 从API version 11开始支持，从API version 26.2.0 开始废弃，建议使用[SignificantDate](#significantdate)替代。
+
+**原子化服务API**：从API version 11 开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Applications.ContactsData
 
@@ -5620,9 +5624,9 @@ let website: contact.Website = {
 
 |    名称   |   类型   | 只读 | 可选 | 说明           |
 | --------- | -------- | ---- | ---- | -------------- |
-| dateType      | [SignificantDateType](#SignificantDateType)   | 是   | 否   | 重要日期类型。   |
+| dateType      | [SignificantDateType](#significantdatetype)   | 是   | 否   | 重要日期类型。   |
 | dateValue | string   | 是   | 否   | 重要日期取值。 |
-| dateName       | string   | 是   | 否   | 重要日期类型名称。     |
+| dateName       | string   | 是   | 是   | 重要日期类型名称。     |
 
 **示例：**
 
