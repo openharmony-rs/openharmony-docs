@@ -3,9 +3,10 @@
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=b97bbcb0e110a51170b961b11d1f4dbe26e0e8c1 translatedAt=2026-10-19T01:17:35.925Z pushedAt=2026-10-19T04:27:00.628Z -->
 
 ## Overview
 
@@ -41,10 +42,10 @@ The following table lists the APIs for clipping. For details, see [drawing_canva
 
 | API| Description|
 | -------- | -------- |
-| void OH_Drawing_CanvasClipRect (OH_Drawing_Canvas \*, const OH_Drawing_Rect \*, OH_Drawing_CanvasClipOp clipOp, bool doAntiAlias) | Clips a rectangle.|
-| void OH_Drawing_CanvasClipRoundRect (OH_Drawing_Canvas \*, const OH_Drawing_RoundRect \*, OH_Drawing_CanvasClipOp clipOp, bool doAntiAlias) | Clips a rounded rectangle.|
-| void OH_Drawing_CanvasClipPath (OH_Drawing_Canvas \*, const OH_Drawing_Path \*, OH_Drawing_CanvasClipOp clipOp, bool doAntiAlias) | Clips a path.|
-| OH_Drawing_ErrorCode OH_Drawing_CanvasClipRegion (OH_Drawing_Canvas \*canvas, const OH_Drawing_Region \*region, OH_Drawing_CanvasClipOp clipOp) | Clips a rectangle.|
+| void OH_Drawing_CanvasClipRect(OH_Drawing_Canvas \*canvas, const OH_Drawing_Rect \*rect, OH_Drawing_CanvasClipOp clipOp, bool doAntiAlias) | Clips a rectangle. |
+| void OH_Drawing_CanvasClipRoundRect(OH_Drawing_Canvas \*canvas, const OH_Drawing_RoundRect \*roundRect, OH_Drawing_CanvasClipOp clipOp, bool doAntiAlias) | Clips a rounded rectangle. |
+| void OH_Drawing_CanvasClipPath(OH_Drawing_Canvas \*canvas, const OH_Drawing_Path \*path, OH_Drawing_CanvasClipOp clipOp, bool doAntiAlias) | Clips a custom path. |
+| OH_Drawing_ErrorCode OH_Drawing_CanvasClipRegion(OH_Drawing_Canvas \*canvas, const OH_Drawing_Region \*region, OH_Drawing_CanvasClipOp clipOp) | Clips a region. |
 
 
 ### How to Develop
@@ -72,7 +73,7 @@ OH_Drawing_BrushSetColor(brush, 0xff0000ff);
 OH_Drawing_CanvasAttachBrush(canvas, brush);
 OH_Drawing_Rect *rect = OH_Drawing_RectCreate(value400_, value400_, value1200_, value1200_);
 // Clip the rectangle region.
-OH_Drawing_CanvasClipRect(canvas, rect, OH_Drawing_CanvasClipOp::INTERSECT, true);
+OH_Drawing_CanvasClipRect(canvas, rect, INTERSECT, true);
 OH_Drawing_Point *point = OH_Drawing_PointCreate(value600_, value600_);
 // Draw a circle.
 OH_Drawing_CanvasDrawCircle(canvas, point, value600_);
@@ -80,6 +81,8 @@ OH_Drawing_CanvasDrawCircle(canvas, point, value600_);
 OH_Drawing_CanvasDetachBrush(canvas);
 // Destroy the brush object and reclaim the memory occupied by the object.
 OH_Drawing_BrushDestroy(brush);
+OH_Drawing_PointDestroy(point);
+OH_Drawing_RectDestroy(rect);
 ```
 
 | Original Image| Clipped Image|
@@ -102,14 +105,14 @@ The following matrix transformation operations are supported:
 
 ### Available APIs
 
-The following table lists the APIs for matrix transformation. For details, see [drawing_matrix.h](../reference/apis-arkgraphics2d/capi-drawing-matrix-h.md).
+The following table lists the common APIs for matrix transformation operations. For detailed usage and parameter descriptions, see [drawing_canvas.h](../reference/apis-arkgraphics2d/capi-drawing-canvas-h.md).
 
 | API| Description|
 | -------- | -------- |
-| void OH_Drawing_CanvasTranslate (OH_Drawing_Canvas \*, float dx, float dy) | Translates a canvas by a given distance.|
-| void OH_Drawing_CanvasScale (OH_Drawing_Canvas \*, float sx, float sy) | Scales a canvas.|
-| void OH_Drawing_CanvasRotate (OH_Drawing_Canvas \*, float degrees, float px, float py) | Rotates a canvas by a given angle. A positive value indicates a clockwise rotation, and a negative value indicates a counterclockwise rotation.|
-| void OH_Drawing_CanvasSkew (OH_Drawing_Canvas \*, float sx, float sy) | Skews a canvas. This function premultiplies the current canvas matrix by a skew transformation matrix and applies the resulting matrix to the canvas. The skew transformation matrix is as follows: \|1 sx 0\| \|sy 1 0\| \|0 0 1\|.|
+| void OH_Drawing_CanvasTranslate(OH_Drawing_Canvas \*canvas, float dx, float dy) | Translates the canvas by a specified distance. |
+| void OH_Drawing_CanvasScale(OH_Drawing_Canvas \*canvas, float sx, float sy) | Scales the canvas. |
+| void OH_Drawing_CanvasRotate(OH_Drawing_Canvas \*canvas, float degrees, float px, float py) | Rotates the canvas by a specified angle. A positive value indicates clockwise rotation, and a negative value indicates counterclockwise rotation. |
+| void OH_Drawing_CanvasSkew(OH_Drawing_Canvas \*canvas, float sx, float sy) | Skews the canvas. This is equivalent to premultiplying the current canvas matrix by the skew transformation matrix and applying the result to the canvas. The skew transformation matrix is: \|1 sx 0\| \|sy 1 0\| \|0 0 1\|. |
 
 
 ### Translation
@@ -138,11 +141,12 @@ OH_Drawing_CanvasDrawRect(canvas, rect);
 OH_Drawing_CanvasDetachBrush(canvas);
 OH_Drawing_RectDestroy(rect);
 OH_Drawing_MatrixDestroy(matrix);
+OH_Drawing_BrushDestroy(brush);
 ```
 
 | Original Image| Translated Image|
 | -------- | -------- |
-| ![Original-Image3](figures/Original-Image3.png)| ![Translated-Image](figures/Translated-Image.png)|
+| ![Original-Image3](figures/Original-Image3.png) | ![Translated-Image](figures/Translated-Image.png) |
 
 
 ### Rotation
@@ -171,16 +175,17 @@ OH_Drawing_CanvasDrawRect(canvas, rect);
 OH_Drawing_CanvasDetachBrush(canvas);
 OH_Drawing_RectDestroy(rect);
 OH_Drawing_MatrixDestroy(matrix);
+OH_Drawing_BrushDestroy(brush);
 ```
 
 | Original Image| Rotated Image|
 | -------- | -------- |
-| ![Original-Image1](figures/Original-Image1.png)| ![Rotated-Image](figures/Rotated-Image.png)|
+| ![Original-Image1](figures/Original-Image1.png) | ![Rotated-Image](figures/Rotated-Image.png) |
 
 
 ### Scaling
 
-Use **OH_Drawing_MatrixCreateScale()** to scale the canvas. The API takes four parameters, which are the scaling factors along the X and Y axes and the X and Y coordinates of the rotation center.
+Use the **OH_Drawing_MatrixCreateScale()** API to scale the canvas. This API accepts four parameters: the scaling factors along the x-axis and y-axis, and the x-axis and y-axis coordinates of the scaling center.
 
 The following shows the sample code and effect:
 
@@ -193,7 +198,7 @@ OH_Drawing_Brush* brush = OH_Drawing_BrushCreate();
 OH_Drawing_BrushSetColor(brush, OH_Drawing_ColorSetArgb(RGBA_MAX, RGBA_MAX, RGBA_MIN, RGBA_MIN));
 // Set the brush for the canvas.
 OH_Drawing_CanvasAttachBrush(canvas, brush);
-// Create a scaling matrix object. The four parameters are the X and Y coordinates of the rotation center and the scaling factors in the horizontal and vertical directions.
+// Create a scaling matrix object. The four parameters specify the horizontal and vertical scaling factors and the coordinates of the scaling center, respectively.
 OH_Drawing_Matrix* matrix = OH_Drawing_MatrixCreateScale(2, 2, value200_, value300_);
 // Perform matrix transformation on the canvas.
 OH_Drawing_CanvasConcatMatrix(canvas, matrix);
@@ -203,16 +208,18 @@ OH_Drawing_CanvasDrawRect(canvas, rect);
 // Remove the brush from the canvas.
 OH_Drawing_CanvasDetachBrush(canvas);
 OH_Drawing_RectDestroy(rect);
+OH_Drawing_MatrixDestroy(matrix);
+OH_Drawing_BrushDestroy(brush);
 ```
 
 | Original Image| Scaled up Image|
 | -------- | -------- |
-| ![Original-Image2](figures/Original-Image2.png)| ![Scaled-up-Image](figures/Scaled-up-Image.png)|
+| ![Original-Image2](figures/Original-Image2.png) | ![Scaled-up-Image](figures/Scaled-up-Image.png) |
 
 
 ## Saving and Restoring the Canvas Status
 
-The saving operation is used to save the current canvas status to the top of the stack. The restoration operation is used to restore the canvas status saved at the top of the stack. Once the restoration operation is performed, a series of operations such as translation, scaling, and clipping between the saving and restoration operations are cleared.
+The save operation saves the current canvas state to the top of a stack, and the restore operation restores the canvas state saved at the top of the stack. Once the restore operation is executed, all translation, scaling, and clip operations performed between the save and restore operations are cleared.
 
 
 ### Available APIs
@@ -221,9 +228,9 @@ The following table lists the APIs used for saving and restoring the canvas stat
 
 | API| Description|
 | -------- | -------- |
-| void OH_Drawing_CanvasSave (OH_Drawing_Canvas \*) | Saves the current canvas status (canvas matrix) to the top of the stack.|
-| void OH_Drawing_CanvasRestore (OH_Drawing_Canvas \*) | Restores the canvas status (canvas matrix) saved on the top of the stack.|
-| void OH_Drawing_CanvasRestoreToCount (OH_Drawing_Canvas \*, uint32_t saveCount) | Restores to a given number of canvas statuses (canvas matrices).|
+| void OH_Drawing_CanvasSave(OH_Drawing_Canvas \*canvas) | Saves the current canvas state (canvas matrix) to the top of a stack. |
+| void OH_Drawing_CanvasRestore(OH_Drawing_Canvas \*canvas) | Restores the canvas state (canvas matrix) saved at the top of the stack. |
+| void OH_Drawing_CanvasRestoreToCount(OH_Drawing_Canvas \*canvas, uint32_t saveCount) | Restores the canvas state (canvas matrix) to a specified save count. |
 
 
 ### How to Develop

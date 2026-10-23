@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍如何通过HandleScope与JSVM_Ref管理JSVM_Value生命周期，涵盖可逃逸作用域、引用计数操作及垃圾回收回调，帮助避免内存泄漏。"
+keywords: [OH_JSVM_OpenHandleScope, OH_JSVM_CloseHandleScope, OH_JSVM_CreateReference, OH_JSVM_EscapeHandle, OH_JSVM_AddFinalizer, HandleScope, 引用计数, 生命周期管理, 可逃逸作用域]
+doctype: guide
+status: active
+---
+
 # 使用JSVM-API接口进行生命周期相关开发
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->

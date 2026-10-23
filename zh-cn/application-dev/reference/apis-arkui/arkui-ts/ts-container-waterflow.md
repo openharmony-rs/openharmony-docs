@@ -580,6 +580,34 @@ supportEmptyBranchInLazyLoading(supported: boolean | undefined)
 | ------ | ------ | ---- | -------------------------------------------------- |
 | supported  | boolean \| undefined | 是   | 当前WaterFlow组件是否支持在[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)或[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)中使用[if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)渲染控制语法生成一个不含任何子组件的空分支节点。<br>true表示显示空分支后的FlowItem；false表示不显示空分支后的FlowItem。<br>值为undefined时，按false处理。 |
 
+### scrollSnapStrategy
+
+scrollSnapStrategy(strategy?: ScrollSnapAlign | ScrollSnapOffsetProvider)
+
+设置WaterFlow的限位滚动策略。滚动结束时，按指定方式对齐目标FlowItem，或停在自定义的吸附位置。用法见[示例12（设置滚动吸附对齐）](#示例12设置滚动吸附对齐)。
+
+支持[ALWAYS_TOP_DOWN](#waterflowlayoutmode12枚举说明)和[SLIDING_WINDOW](#waterflowlayoutmode12枚举说明)两种布局模式，也支持通过[WaterFlowSections](#waterflowsections12)配置的分组混合布局。
+
+> **说明：**
+>
+> - 吸附位置不会超出组件从内容起始端到末尾端的可滚动区间。未设置[contentStartOffset](ts-container-scrollable-common.md#contentstartoffset22)和[contentEndOffset](ts-container-scrollable-common.md#contentendoffset22)时，该区间为[0, max(0, 内容总长度-视口长度)]，长度均沿滚动轴计算。例如，内容总长度为1000vp、视口长度为400vp时，区间为[0, 600]vp。设置首尾内容偏移后，以包含对应预留区域的实际滚动边界为准。内容总长度按当前布局结果计算。
+>
+> - 超出可滚动范围时，目标位置限制在可滚动范围的边界，因此首尾FlowItem可能无法完全按指定方式对齐。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                 |
+| ------ | ------ | ---- | ------------------------------------ |
+| strategy  | [ScrollSnapAlign](ts-container-list.md#scrollsnapalign10枚举说明) \| [ScrollSnapOffsetProvider](ts-container-scrollable-common.md#scrollsnapoffsetprovider) | 否   | 限位滚动策略。<br/>传入[ScrollSnapAlign](ts-container-list.md#scrollsnapalign10枚举说明)枚举时，使用内置对齐方式。START、CENTER和END分别将目标FlowItem对齐到视口沿滚动轴的起始、中央和末尾。<br/>传入实现[ScrollSnapOffsetProvider](ts-container-scrollable-common.md#scrollsnapoffsetprovider)接口的对象时，由开发者计算滚动距离和最终吸附位置：[calculateApproachOffset](ts-container-scrollable-common.md#calculateapproachoffset)确定惯性阶段的滚动距离，[calculateSnapOffset](ts-container-scrollable-common.md#calculatesnapoffset)确定最终吸附位置。<br/>不设置或传入ScrollSnapAlign.NONE、undefined时，不启用限位滚动，WaterFlow不做吸附对齐，按惯性自然滑行至停止。 |
+
 ## 事件
 
 除支持[通用事件](ts-component-general-events.md)和[滚动组件通用事件](ts-container-scrollable-common.md#事件)外，还支持以下事件：
@@ -2248,3 +2276,54 @@ struct Index {
   }
 }
 ```
+
+### 示例12（设置滚动吸附对齐）
+
+本示例使用[scrollSnapStrategy](#scrollsnapstrategy)设置尾部吸附（ScrollSnapAlign.END）。滚动结束时，目标FlowItem的底边与视口底边对齐。示例采用SLIDING_WINDOW布局模式，包含100个高度不同的FlowItem。
+
+从API版本26.1.0开始，新增scrollSnapStrategy接口。
+
+WaterFlowDataSource说明及完整代码参考[示例1（使用基本瀑布流）](#示例1使用基本瀑布流)。
+
+```ts
+// Index.ets
+import { WaterFlowDataSource } from './WaterFlowDataSource';
+
+@Entry
+@Component
+struct WaterFlowSnapExample {
+  private dataSource: WaterFlowDataSource = new WaterFlowDataSource();
+
+  build() {
+    Column({ space: 10 }) {
+      Text('WaterFlow End Snapping')
+        .fontSize(20)
+      WaterFlow({ layoutMode: WaterFlowLayoutMode.SLIDING_WINDOW }) {
+        LazyForEach(this.dataSource, (item: number) => {
+          FlowItem() {
+            Text(item.toString())
+              .fontSize(20)
+              .width('100%')
+              .height('100%')
+              .textAlign(TextAlign.Center)
+          }
+          .width('100%')
+          .height(80 + (item % 4) * 20)
+          .backgroundColor(0xF9CF93)
+          .borderRadius(8)
+        }, (item: number) => item.toString())
+      }
+      .columnsTemplate('1fr 1fr')
+      .columnsGap(10)
+      .rowsGap(20)
+      .width('100%')
+      .height(400)
+      .scrollSnapStrategy(ScrollSnapAlign.END)
+    }
+    .width('100%')
+    .padding(16)
+  }
+}
+```
+
+![scrollSnapStrategy-waterflow](figures/scrollSnapStrategy-waterflow.gif)

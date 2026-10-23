@@ -69,5 +69,7 @@
 | [checkbox.h](capi-checkbox-h.md) | 为NativeNode API提供Checkbox节点类型定义。 |
 | [slider.h](capi-slider-h.md) | 为NativeNode API提供Slider节点类型定义。 |
 | [styled_string.h](capi-styled-string-h.md) | 提供ArkUI在Native侧的属性字符串能力。 |
+| [ui_info_collection.h](capi-ui-info-collection-h.md) | 声明供应用内智能体和UI自动化使用的接口，用于监听UI交互事件并获取命中的节点。<br>返回状态码的函数通过[ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)报告错误。接口执行完成后，通过回调函数返回异步执行结果。这些接口不通过错误码变量errno报告错误，调用后该变量的取值未作规定，不得据此判断调用是否成功。 |
+| [ui_json_wrapper.h](capi-ui-json-wrapper-h.md) | 声明UI感知与控制等接口共用的JSON数据对象。<br>接口通过返回值报告错误，具体含义参见各接口的返回值说明。这些接口不通过错误码变量errno报告错误，调用后该变量的取值未作规定，不得据此判断调用是否成功。<br>在满足对象生命周期要求的前提下，这些函数可在任意线程（包括UI线程）调用。对同一个有效对象的只读查询可并发执行，调用方必须确保销毁操作不会与该对象或其借用数据的访问同时进行。对独立对象的操作可并发执行。这些函数不触发应用回调；满足所有权和生命周期要求时，可在回调中调用。这些函数不具备异步信号安全性，不得在信号处理函数中调用。<br>查询函数以同步方式读取本地内存中的数据。创建和销毁对象还涉及内存分配或释放，这些内存操作的耗时上限不作保证。<br>这些接口不支持异步完成，也不提供取消操作。 |
 | [xcomponent.h](capi-xcomponent-h.md) | XComponent组件的枚举类型定义。 |
 | [error_code.h](capi-arkui-nativemodule-arkui-error-code-h.md) |  定义ArkUI Native API的错误码枚举值。 |

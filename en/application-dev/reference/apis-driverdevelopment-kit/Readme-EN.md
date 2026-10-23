@@ -5,6 +5,7 @@
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=30ff403ace182f0de0060bb4c7a6927c49cd76ac translatedAt=2026-10-14T05:06:56.478Z pushedAt=2026-10-22T07:52:49.073Z nl=2 -->
 
 - ArkTS API<!--driver-development-arkts-->
   - [@ohos.app.ability.DriverExtensionAbility (Driver Extension Ability)](js-apis-app-ability-driverExtensionAbility.md)
@@ -13,10 +14,10 @@
   - [@ohos.driver.deviceManager (Peripheral Management) (System API)](js-apis-driver-deviceManager-sys.md)
   <!--DelEnd-->
   - application<!--driver-development-arkts-application-->
-    - [DriverExtensionContext](js-apis-inner-application-driverExtensionContext.md)
+    - [DriverExtensionContext (Driver Extension Context)](js-apis-inner-application-driverExtensionContext.md)
 - C API<!--driver-development-c-->
   - Modules<!--driver-development-module-->
-    - [BaseDdk](capi-baseddk.md)
+    - [Ddk](capi-baseddk.md)
     - [HidDdk](capi-hidddk.md)
     - [ScsiPeripheralDDK](capi-scsiperipheralddk.md)
     - [UsbDdk](capi-usbddk.md)

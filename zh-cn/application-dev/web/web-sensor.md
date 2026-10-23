@@ -27,17 +27,20 @@
 
 使用加速度、陀螺仪及设备运动事件接口时，需在配置文件module.json5中声明相应的传感器权限。具体配置方法请参考[在配置文件中声明权限](../security/AccessToken/declare-permissions.md#在配置文件中声明权限)。
 
-
-``` JSON5
-    "requestPermissions":[
-      {
-        "name" : "ohos.permission.ACCELEROMETER" // 加速度权限
-      },
-      {
-        "name" : "ohos.permission.GYROSCOPE"     // 陀螺仪权限
-      }
-    ]
-```
+  <!-- @[declare_the_appropriate_sensor_permissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/module.json5) --> 
+  
+  ``` JSON5
+  "requestPermissions": [
+    // ...
+    {
+      "name" : "ohos.permission.ACCELEROMETER" // 加速度权限
+    },
+    {
+      "name" : "ohos.permission.GYROSCOPE"     // 陀螺仪权限
+    }
+  ]
+  ```
+  
 
 Web组件在对接运动和方向传感器时，需配置[onPermissionRequest](../reference/apis-arkweb/arkts-basic-components-web-events.md#onpermissionrequest9)接口，通过该接口接收权限请求通知。
 
@@ -45,7 +48,9 @@ Web组件在对接运动和方向传感器时，需配置[onPermissionRequest](.
 
 1. 应用侧代码中，Web组件配置[onPermissionRequest](../reference/apis-arkweb/arkts-basic-components-web-events.md#onpermissionrequest9)接口，可通过[PermissionRequest](../reference/apis-arkweb/arkts-basic-components-web-PermissionRequest.md)的[getAccessibleResource](../reference/apis-arkweb/arkts-basic-components-web-PermissionRequest.md#getaccessibleresource9)接口获取请求权限的资源类型，当资源类型为TYPE_SENSOR时，进行传感器授权处理。
 
-   ```ts
+   <!-- @[the_type_of_resource_for_which_permission_is_requested](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/ets/pages/UseMotionDirSensor.ets) -->  
+   
+   ``` TypeScript
    import { UIContext } from '@kit.ArkUI';
    import { webview } from '@kit.ArkWeb';
    import { abilityAccessCtrl, PermissionRequestResult } from '@kit.AbilityKit';
@@ -56,7 +61,7 @@ Web组件在对接运动和方向传感器时，需配置[onPermissionRequest](.
    struct WebComponent {
      controller: webview.WebviewController = new webview.WebviewController();
      uiContext: UIContext = this.getUIContext();
-
+   
      aboutToAppear() {
        // 配置Web开启调试模式
        webview.WebviewController.setWebDebuggingAccess(true);
@@ -111,7 +116,9 @@ Web组件在对接运动和方向传感器时，需配置[onPermissionRequest](.
 
 2. 在前端页面代码中，利用JavaScript调用传感器相关的W3C标准协议接口。
 
-   ```html
+   <!-- @[the_type_of_resource_for_which_permission_is_requested_html](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/resources/rawfile/index.html) --> 
+   
+   ``` HTML
    <!DOCTYPE HTML>
    <html>
    <head>
@@ -129,7 +136,7 @@ Web组件在对接运动和方向传感器时，需配置[onPermissionRequest](.
        <script type="text/javascript">
            // 访问设备的加速度计传感器，并获取其数据。
            function getAccelerometer() {
-               var acc = new Accelerometer({frequency: 60});
+               let acc = new Accelerometer({frequency: 60});
                acc.addEventListener('activate', () => console.info('Ready to measure.'));
                acc.addEventListener('error', error => console.info('Error type: ' + error.type + ', error: ' + error.error ));
                acc.addEventListener('reading', () => {
@@ -140,7 +147,7 @@ Web组件在对接运动和方向传感器时，需配置[onPermissionRequest](.
    
            // 访问设备的陀螺仪传感器，并获取其数据。
            function getGyroscope() {
-               var gyr = new Gyroscope({frequency: 60});
+               let gyr = new Gyroscope({frequency: 60});
                gyr.addEventListener('activate', () => console.info('Ready to measure.'));
                gyr.addEventListener('error', error => console.info('Error type: ' + error.type + ', error: ' + error.error ));
                gyr.addEventListener('reading', () => {
@@ -151,7 +158,7 @@ Web组件在对接运动和方向传感器时，需配置[onPermissionRequest](.
    
            // 访问设备的方向传感器，并获取其数据。
            function getAbsoluteOrientationSensor() {
-               var aos = new AbsoluteOrientationSensor({frequency: 60});
+               let aos = new AbsoluteOrientationSensor({frequency: 60});
                aos.addEventListener('activate', () => console.info('Ready to measure.'));
                aos.addEventListener('error', error => console.info('Error type: ' + error.type + ', error: ' + error.error ));
                aos.addEventListener('reading', () => {
@@ -206,7 +213,7 @@ Web组件在对接运动和方向传感器时，需配置[onPermissionRequest](.
                }
            }
    
-           // 监听设备的绝对定位方向事件，并执行相应的处理逻辑。
+           // 监听设备方向的变化，并执行相应的处理逻辑。
            function listenDeviceOrientationEvent2() {
                removeDeviceOrientationEvent2();
                if ('DeviceOrientationEvent' in window) {
@@ -216,7 +223,7 @@ Web组件在对接运动和方向传感器时，需配置[onPermissionRequest](.
                }
            }
    
-           // 移除之前添加的绝对定位方向事件监听器。
+           // 移除之前添加的设备方向事件监听器。
            function removeDeviceOrientationEvent2() {
                if ('DeviceOrientationEvent' in window) {
                  window.removeEventListener('deviceorientationabsolute', handleOrientationEvent, false);

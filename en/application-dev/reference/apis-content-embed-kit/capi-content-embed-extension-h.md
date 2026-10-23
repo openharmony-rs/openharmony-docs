@@ -33,7 +33,7 @@ Defines the data structures and operation APIs related to the OE extension in se
 | [ContentEmbed_ExtensionInstance](capi-contentembed-contentembed-extensioninstance.md) | ContentEmbed_ExtensionInstance | Defines the struct type of the OE extension instance. This method can be used to manage core functions such as the lifecycle of the extension, callback registration, and association with the client OE object. This method is applicable to scenarios where server apps need to embed OE extension capabilities and complete lifecycle synchronization, callback listening, and object association and binding between the extension and the client OE document.|
 | [ContentEmbed_ExtensionInstance*](capi-contentembed-contentembed-extensioninstance8h.md) | ContentEmbed_ExtensionInstanceHandle | Defines the pointer type of the OE extension instance. In the **OH_AbilityRuntime_OnNativeExtensionCreate** function, you need to obtain the OE extension instance when the OE extension is started by calling [OH_ContentEmbed_Extension_GetExtensionInstance](capi-content-embed-extension-h.md#oh_contentembed_extension_getextensioninstance).|
 | [ContentEmbed_Object](capi-contentembed-contentembed-object.md) | ContentEmbed_Object | Defines the **ContentEmbed_Object** struct. This struct points to the program object (server OE object for short) that encapsulates the document embedding and editing functions of the OE document on the server.|
-| [ContentEmbed_Object*](capi-contentembed-contentembed-object8h.md) | ContentEmbed_ObjectHandle | Defines the **ContentEmbed_Object** struct. When the client connects to the server, the system creates an instance of this object, calls back the **OH_ContentEmbed_Extension_OnObjectAttachFunc** function registered by [OH_ContentEmbed_Extension_RegisterOnObjectAttachFunc](capi-content-embed-extension-h.md#oh_contentembed_extension_registeronobjectattachfunc), and passes the instance pointer of this type.|
+| [ContentEmbed_Object*](capi-contentembed-contentembed-object8h.md) | ContentEmbed_ObjectHandle | Defines a struct for the pointer to a **ContentEmbed_Object** object. When the client connects to the server, the system creates an instance of this object, calls back the **OH_ContentEmbed_Extension_OnObjectAttachFunc** function registered by [OH_ContentEmbed_Extension_RegisterOnObjectAttachFunc](capi-content-embed-extension-h.md#oh_contentembed_extension_registeronobjectattachfunc), and passes the instance pointer of this type.|
 
 ### Functions
 
@@ -315,7 +315,7 @@ Defines the callback function used when the client OE object queries the capabil
 | Parameter| Description|
 | -- | -- |
 | [ContentEmbed_ObjectHandle](capi-contentembed-contentembed-object8h.md) object | [ContentEmbed_ObjectHandle](capi-contentembed-contentembed-object8h.md) instance.|
-| uint32_t \*bitmask | Capabilities supported by the OE Extension instance. This is an output parameter. The value is a combination of values in [ContentEmbed_CapabilityCode](capi-content-embed-common-h.md#contentembed_capabilitycode).|
+| uint32_t \*bitmask | Capabilities supported by the OE Extension instance. The value is a combination of values in [ContentEmbed_CapabilityCode](capi-content-embed-common-h.md#contentembed_capabilitycode).|
 
 ### OH_ContentEmbed_Extension_RegisterOnCreateFunc()
 

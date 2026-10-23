@@ -58,7 +58,7 @@ Tabs组件参数，设置Tabs的页签位置，当前显示页签的索引，Tab
 | barPosition<sup>7+</sup> | [BarPosition](#barposition枚举说明)| 否 | 是    | 设置Tabs的页签位置。页签的具体位置受vertical属性影响：vertical为true时Start位于左侧、End位于右侧；vertical为false时Start位于顶部、End位于底部。<br/>默认值：BarPosition.Start。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
 | index<sup>7+</sup>       | number                            | 否 | 是   | 设置当前显示页签的索引。<br/>默认值：0<br/>**说明：** <br/>设置为小于0的值时按默认值显示。<br/>可选值为[0, TabContent子节点数量-1]。<br/>直接修改index跳页时，切换动效不生效。 使用TabsController的[changeIndex](#changeindex)时，默认生效切换动效，可以设置[animationDuration](#animationduration)为0关闭动画。<br />从API version 10开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br/>Tabs重建、系统资源切换（如系统字体切换、系统深浅色切换）或者组件属性变化时，会跳转到index对应的页面。若需要在上述情况下不跳转，建议使用双向绑定。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | controller<sup>7+</sup>  | [TabsController](#tabscontroller) | 否 | 是    | 设置Tabs控制器。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。         |
-| barModifier  | [CommonModifier](#commonmodifier15) | 否 | 是    | 设置TabBar的[通用属性](ts-component-general-attributes.md)，用于通过CommonModifier统一管理TabBar的样式、布局等通用属性。当需要动态修改TabBar的通用属性或实现属性的状态管理时传入此参数，不传入时TabBar使用默认样式和布局，无额外通用属性设置。<br/>**说明：** <br/>动态置为undefined时会保持当前状态不变，不会重置各通用属性。 <br/>由一个CommonModifier切换为另一个CommonModifier时，重复属性会进行覆盖，非重复属性会同时生效，不会重置前一个CommonModifier的通用属性。<br/>Tabs的[barWidth](#barwidth)、[barHeight](#barheight)、[barBackgroundColor](#barbackgroundcolor10)、[barBackgroundBlurStyle](#barbackgroundblurstyle18)、[barBackgroundEffect](#barbackgroundeffect18)属性会覆盖CommonModifier的[width](ts-universal-attributes-size.md#width)、[height](ts-universal-attributes-size.md#height)、[backgroundColor](ts-universal-attributes-background.md#backgroundcolor18)、[backgroundBlurStyle](ts-universal-attributes-background.md#backgroundblurstyle18)、[backgroundEffect](ts-universal-attributes-background.md#backgroundeffect18)属性。<br/>从API版本26.2.0开始，Tabs的[sidebarWidth](#sidebarwidth)、[sidebarBackgroundColor](#sidebarbackgroundcolor)、[sidebarBackgroundBlurStyle](#sidebarbackgroundblurstyle)属性会覆盖CommonModifier的[width](ts-universal-attributes-size.md#width)、[backgroundColor](ts-universal-attributes-background.md#backgroundcolor18)、[backgroundBlurStyle](ts-universal-attributes-background.md#backgroundblurstyle18)属性。<br/>[align](ts-universal-attributes-location.md#align)属性仅在[BarMode.Scrollable](#barmode10-1)模式下生效，且Tabs为横向时还需[nonScrollableLayoutStyle](#scrollablebarmodeoptions10对象说明)未设置或设置为异常值时才能生效。<br/>[TabContent](ts-container-tabcontent.md)组件的[tabBar](ts-container-tabcontent.md#tabbar18)属性为底部页签样式时不支持拖拽功能。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。|
+| barModifier  | [CommonModifier](#commonmodifier15) | 否 | 是    | 设置TabBar的[通用属性](ts-component-general-attributes.md)，用于通过CommonModifier统一管理TabBar的样式、布局等通用属性。当需要动态修改TabBar的通用属性或实现属性的状态管理时传入此参数，不传入时TabBar使用默认样式和布局，无额外通用属性设置。<br/>**说明：** <br/>动态置为undefined时会保持当前状态不变，不会重置各通用属性。 <br/>由一个CommonModifier切换为另一个CommonModifier时，重复属性会进行覆盖，非重复属性会同时生效，不会重置前一个CommonModifier的通用属性。<br/>Tabs的[barWidth](#barwidth)、[barHeight](#barheight)、[barBackgroundColor](#barbackgroundcolor10)、[barBackgroundBlurStyle](#barbackgroundblurstyle18)、[barBackgroundEffect](#barbackgroundeffect18)属性会覆盖CommonModifier的[width](ts-universal-attributes-size.md#width)、[height](ts-universal-attributes-size.md#height)、[backgroundColor](ts-universal-attributes-background.md#backgroundcolor18)、[backgroundBlurStyle](ts-universal-attributes-background.md#backgroundblurstyle18)、[backgroundEffect](ts-universal-attributes-background.md#backgroundeffect18)属性。<br/>从API版本26.0.1开始，Tabs的[sidebarWidth](#sidebarwidth)、[sidebarBackgroundColor](#sidebarbackgroundcolor)、[sidebarBackgroundBlurStyle](#sidebarbackgroundblurstyle)属性会覆盖CommonModifier的[width](ts-universal-attributes-size.md#width)、[backgroundColor](ts-universal-attributes-background.md#backgroundcolor18)、[backgroundBlurStyle](ts-universal-attributes-background.md#backgroundblurstyle18)属性。<br/>[align](ts-universal-attributes-location.md#align)属性仅在[BarMode.Scrollable](#barmode10-1)模式下生效，且Tabs为横向时还需[nonScrollableLayoutStyle](#scrollablebarmodeoptions10对象说明)未设置或设置为异常值时才能生效。<br/>[TabContent](ts-container-tabcontent.md)组件的[tabBar](ts-container-tabcontent.md#tabbar18)属性为底部页签样式时不支持拖拽功能。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。|
 
 ## BarPosition枚举说明
 
@@ -77,11 +77,11 @@ Tabs页签位置枚举。
 
 TabBar显示样式枚举。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -573,11 +573,11 @@ barStyle(style: Optional\<TabBarStyle\>)
 
 设置TabBar的显示样式，未通过该接口设置时，TabBar的显示样式默认为TabBarStyle.BOTTOM。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -597,11 +597,11 @@ sidebarPosition(position: Optional\<BarPosition\>)
 >
 > 侧边页签栏的位置不受[vertical](#vertical)和[barPosition](#barposition9)属性影响。BarPosition.Start表示侧边页签栏位于Tabs容器的起始侧，当语言方向为LTR时显示在左侧，RTL时显示在右侧；BarPosition.End表示侧边页签栏位于Tabs容器的结束侧，当语言方向为LTR时显示在右侧，RTL时显示在左侧。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -617,11 +617,11 @@ sidebarHeader(header: Optional\<ComponentContent>)
 
 设置侧边页签栏的头部内容，未通过该接口设置时，侧边页签栏不显示自定义头部区域。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -637,11 +637,11 @@ sidebarFooter(footer: Optional\<ComponentContent>)
 
 设置侧边页签栏的尾部内容，该区域随页签列表滚动，未通过该接口设置时，侧边页签栏不显示自定义尾部区域。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -657,11 +657,11 @@ sidebarBottomBar(bottomBar: Optional\<ComponentContent>)
 
 设置侧边页签栏的固定底部内容，未通过该接口设置时，侧边页签栏不显示自定义固定底部区域。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -677,11 +677,11 @@ sidebarSearchable(searchOptions?: TabsSidebarSearchableOptions)
 
 设置侧边页签栏的搜索选项。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -697,11 +697,11 @@ barDisplayModeBreakpoint(style: Optional\<TabsBreakpointType\<TabBarDisplayMode>
 
 设置不同Tabs容器断点下页签栏的显示模式，仅当barStyle属性设置为TabBarStyle.SIDEBAR_ADAPTABLE时生效。未通过该接口设置时，显示模式默认值为：{ sm: TabBarDisplayMode.BOTTOM_TABBAR, md: TabBarDisplayMode.BOTTOM_TABBAR, lg: TabBarDisplayMode.SIDEBAR }。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -719,13 +719,13 @@ sidebarSelectedIconColor(value: Optional\<ResourceColor\>)
 
 > **说明：**
 >
-> Tabs的sidebarSelectedIconColor属性、[SubTabBarStyle](./ts-container-tabcontent.md#subtabbarstyle9)的[labelStyle](./ts-container-tabcontent.md#labelstyle10)属性、[BottomTabBarStyle](./ts-container-tabcontent.md#bottomtabbarstyle9)的[labelStyle](./ts-container-tabcontent.md#labelstyle10-1)属性都可以设置侧边页签栏中页签图标的选中态颜色，后两者的优先级高于sidebarSelectedIconColor。
+> 当页签样式为[BottomTabBarStyle](./ts-container-tabcontent.md#bottomtabbarstyle9)时，其[iconStyle](./ts-container-tabcontent.md#iconstyle12)属性中[TabBarIconStyle](./ts-container-tabcontent.md#tabbariconstyle12对象说明)的selectedColor优先级高于sidebarSelectedIconColor。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -743,13 +743,13 @@ sidebarSelectedTextColor(value: Optional\<ResourceColor\>)
 
 > **说明：**
 >
-> Tabs的sidebarSelectedTextColor属性、[SubTabBarStyle](./ts-container-tabcontent.md#subtabbarstyle9)的[labelStyle](./ts-container-tabcontent.md#labelstyle10)属性、[BottomTabBarStyle](./ts-container-tabcontent.md#bottomtabbarstyle9)的[labelStyle](./ts-container-tabcontent.md#labelstyle10-1)属性都可以设置侧边页签栏中页签文本的选中态颜色，后两者的优先级高于sidebarSelectedTextColor。
+> 当页签样式为[SubTabBarStyle](./ts-container-tabcontent.md#subtabbarstyle9)或[BottomTabBarStyle](./ts-container-tabcontent.md#bottomtabbarstyle9)时（二者作为[tabBar](./ts-container-tabcontent.md#tabbar18)参数互斥使用），其[labelStyle](./ts-container-tabcontent.md#labelstyle10)属性中[LabelStyle](./ts-container-tabcontent.md#labelstyle10对象说明)的selectedColor优先级高于sidebarSelectedTextColor。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -767,13 +767,13 @@ sidebarUnselectedIconColor(value: Optional\<ResourceColor\>)
 
 > **说明：**
 >
-> Tabs的sidebarUnselectedIconColor属性、[SubTabBarStyle](./ts-container-tabcontent.md#subtabbarstyle9)的[labelStyle](./ts-container-tabcontent.md#labelstyle10)属性、[BottomTabBarStyle](./ts-container-tabcontent.md#bottomtabbarstyle9)的[labelStyle](./ts-container-tabcontent.md#labelstyle10-1)属性都可以设置侧边页签栏中页签图标的非选中态颜色，后两者的优先级高于sidebarUnselectedIconColor。
+> 当页签样式为[BottomTabBarStyle](./ts-container-tabcontent.md#bottomtabbarstyle9)时，其[iconStyle](./ts-container-tabcontent.md#iconstyle12)属性中[TabBarIconStyle](./ts-container-tabcontent.md#tabbariconstyle12对象说明)的unselectedColor优先级高于sidebarUnselectedIconColor。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -791,13 +791,13 @@ sidebarUnselectedTextColor(value: Optional\<ResourceColor\>)
 
 > **说明：**
 >
-> Tabs的sidebarUnselectedTextColor属性、[SubTabBarStyle](./ts-container-tabcontent.md#subtabbarstyle9)的[labelStyle](./ts-container-tabcontent.md#labelstyle10)属性、[BottomTabBarStyle](./ts-container-tabcontent.md#bottomtabbarstyle9)的[labelStyle](./ts-container-tabcontent.md#labelstyle10-1)属性都可以设置侧边页签栏中页签文本的非选中态颜色，后两者的优先级高于sidebarUnselectedTextColor。
+> 当页签样式为[SubTabBarStyle](./ts-container-tabcontent.md#subtabbarstyle9)或[BottomTabBarStyle](./ts-container-tabcontent.md#bottomtabbarstyle9)时（二者作为[tabBar](./ts-container-tabcontent.md#tabbar18)参数互斥使用），其[labelStyle](./ts-container-tabcontent.md#labelstyle10)属性中[LabelStyle](./ts-container-tabcontent.md#labelstyle10对象说明)的unselectedColor优先级高于sidebarUnselectedTextColor。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -813,11 +813,11 @@ sidebarSelectedBoardColor(value: Optional\<ResourceColor\>)
 
 设置Tabs侧边页签栏中页签的背板颜色。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -836,13 +836,13 @@ sidebarWidth(value: Optional\<Length\>)
 > **说明：**
 >
 > - sidebarWidth设置异常值或者undefined时，采用默认240vp的宽度。
-> - [barModifier](#tabsoptions15)的width属性，Tabs的[barWidth](#barwidth)属性，Tabs的[sidebarWidth](#sidebarwidth)属性都能控制侧边页签栏的宽度，优先级顺序是后者高于前者。
+> - 优先级生效规则：sidebarWidth属性 > [barWidth](#barwidth)属性 > [barModifier](#tabsoptions15)的width属性。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -856,13 +856,13 @@ sidebarWidth(value: Optional\<Length\>)
 
 minSidebarWidth(value: Optional\<Length\>)
 
-设置Tabs侧边页签栏在分割线拖拽场景中的最小宽度，不使用该接口设置时不限制最小宽度，此时最小宽度默认为0。通过该接口设置最小宽度后，会影响分割线拖拽范围，具体请参考[minContentWidth](#mincontentwidth)接口说明。
+设置Tabs侧边页签栏在分割线拖拽场景中的最小宽度，不使用该接口设置时不限制最小宽度，此时最小宽度默认为0。分割线拖拽规格详见[sidebarDivider](#sidebardivider)属性说明。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -876,13 +876,13 @@ minSidebarWidth(value: Optional\<Length\>)
 
 maxSidebarWidth(value: Optional\<Length\>)
 
-设置Tabs侧边页签栏在分割线拖拽场景中的最大宽度，不使用该接口设置时不限制最大宽度，此时最大可达到Tabs容器的宽度。通过该接口设置最大宽度后，会影响分割线拖拽范围，具体请参考[minContentWidth](#mincontentwidth)接口说明。
+设置Tabs侧边页签栏在分割线拖拽场景中的最大宽度，不使用该接口设置时不限制最大宽度，此时最大可达到Tabs容器的宽度。分割线拖拽规格详见[sidebarDivider](#sidebardivider)属性说明。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -896,21 +896,13 @@ maxSidebarWidth(value: Optional\<Length\>)
 
 minContentWidth(value: Optional\<Length\>)
 
-设置Tabs显示侧边页签栏模式时，在分割线拖拽场景中内容区的最小宽度。不使用该接口设置属性时不限制最小宽度，此时最小宽度默认为0。
+设置Tabs显示侧边页签栏模式时，在分割线拖拽场景中内容区的最小宽度。不使用该接口设置属性时不限制最小宽度，此时最小宽度默认为0。分割线拖拽规格详见[sidebarDivider](#sidebardivider)属性说明。
 
-> **说明：**
->
-> - 侧边页签栏不显示分割线时，不支持拖拽。
-> - [minSidebarWidth](#minsidebarwidth)，[maxSidebarWidth](#maxsidebarwidth)，minContentWidth属性都不设置时，不支持拖拽。
-> - 侧边页签栏显示分割线时，通过minSidebarWidth，maxSidebarWidth，minContentWidth属性能够控制分割线的拖拽范围。
-> - 当minSidebarWidth >= maxSidebarWidth时属于异常场景，会导致对应属性失效，分割线无法拖拽。
-> - 当[barStyle](#barstyle)属性设置为TabBarStyle.SIDEBAR_ADAPTABLE，并且minSidebarWidth + minContentWidth > Tabs容器宽度时，因为宽度约束无法满足，会显示成TabBarDisplayMode.BOTTOM_TABBAR样式。
-
-**起始版本：** 26.2.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -929,13 +921,13 @@ sidebarBackgroundColor(value: Optional\<ResourceColor\>)
 > **说明：**
 >
 > - sidebarBackgroundColor设置undefined时，恢复侧边页签栏默认背景颜色。
-> - [barModifier](#tabsoptions15)的backgroundColor属性，Tabs的[barBackgroundColor](#barbackgroundcolor10)属性，sidebarBackgroundColor属性都能控制侧边页签栏的背景颜色，优先级顺序是后者高于前者。
+> - 优先级生效规则：sidebarBackgroundColor属性 > [barBackgroundColor](#barbackgroundcolor10)属性 > [barModifier](#tabsoptions15)的backgroundColor属性。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -954,13 +946,13 @@ sidebarBackgroundBlurStyle(value: Optional\<BlurStyle\>)
 > **说明：**
 >
 > - 不使用sidebarBackgroundBlurStyle接口或者sidebarBackgroundBlurStyle设置undefined时，没有模糊效果，相当于设置BlurStyle.NONE。
-> - [barModifier](#tabsoptions15)的backgroundBlurStyle属性，Tabs的[barBackgroundBlurStyle](#barbackgroundblurstyle11)属性，sidebarBackgroundBlurStyle属性都能控制侧边页签栏的模糊样式，优先级顺序是后者高于前者。
+> - 优先级生效规则：sidebarBackgroundBlurStyle属性 > [barBackgroundBlurStyle](#barbackgroundblurstyle11)属性 > [barModifier](#tabsoptions15)的backgroundBlurStyle属性。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -974,18 +966,35 @@ sidebarBackgroundBlurStyle(value: Optional\<BlurStyle\>)
 
 sidebarDivider(value: Optional\<DividerStyle\>)
 
-设置Tabs侧边页签栏的分割线样式。
+设置Tabs侧边页签栏与内容区之间的分割线样式。
 
 > **说明：**
 >
-> - sidebarDivider设置undefined时，不显示侧边页签栏分割线。
-> - Tabs的[divider](#divider10)属性，sidebarDivider属性都能控制侧边页签栏的分割线样式，优先级顺序是后者高于前者。
+> - sidebarDivider属性的优先级高于Tabs的[divider](#divider10)属性。
+> - 侧边页签栏不显示分割线时，不支持拖拽。
+> - [minSidebarWidth](#minsidebarwidth)，[maxSidebarWidth](#maxsidebarwidth)，[minContentWidth](#mincontentwidth)属性都不设置时，不支持拖拽。
+> - 当minSidebarWidth >= maxSidebarWidth时属于异常场景，分割线无法拖拽。
+> - 当[barStyle](#barstyle)属性设置为TabBarStyle.SIDEBAR_ADAPTABLE，并且minSidebarWidth + minContentWidth > Tabs容器宽度时，因为宽度约束无法满足，会显示成TabBarDisplayMode.BOTTOM_TABBAR样式。
 
-**起始版本：** 26.2.0
+可以拖拽的场景下，分割线的拖拽范围见下表。最大值均需再减去dividerWidth（[DividerStyle](#dividerstyle10对象说明)的strokeWidth，即分割线线宽）。
+
+| 条件（设置有效值） | 分割线的拖拽最小值（分割线与容器起始边界的距离）|
+| ---- | ----------- |
+| 设置minSidebarWidth属性 | minSidebarWidth |
+| 不设置minSidebarWidth属性 | 0 |
+
+| 条件（设置有效值） | 分割线的拖拽最大值（分割线与容器起始边界的距离）|
+| ---- | ----------- |
+| 同时设置maxSidebarWidth和minContentWidth属性 | （Tabs容器宽度 - minContentWidth）和maxSidebarWidth的较小值 |
+| 仅设置maxSidebarWidth属性 | maxSidebarWidth和Tabs容器宽度的较小值 |
+| 仅设置minContentWidth属性 | Tabs容器宽度 - minContentWidth |
+| 未设置maxSidebarWidth和minContentWidth属性 | Tabs容器宽度 |
+
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -993,7 +1002,7 @@ sidebarDivider(value: Optional\<DividerStyle\>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | -------- | ---- | ---------- |
-| value | Optional<[DividerStyle](#dividerstyle10对象说明)> | 是 | Tabs侧边页签栏的分割线样式。 |
+| value | Optional<[DividerStyle](#dividerstyle10对象说明)> | 是 | Tabs侧边页签栏与内容区之间的分割线样式。<br/>设置undefined时，不显示分割线。 |
 
 ### sidebarDisplayStyle
 
@@ -1001,11 +1010,11 @@ sidebarDisplayStyle(style: Optional\<TabsSidebarDisplayStyle\>)
 
 设置Tabs的侧边栏展示模式。未通过该接口设置时，展示模式默认为TabsSidebarDisplayStyle.EMBED。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1146,11 +1155,11 @@ type TabsSidebarSearchFilterCallback = (tabIndex: number, text: string) => boole
 
 Tabs侧边页签栏搜索框的搜索过滤函数。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1175,11 +1184,11 @@ Tabs侧边页签栏的搜索选项。
 >
 > 页签默认搜索规则：在页签对应的文本信息中查找搜索输入框的内容（忽略大小写），如果能够找到，则认为页签匹配搜索条件，页签会显示；如果找不到则认为不匹配，页签不显示。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1194,11 +1203,11 @@ Tabs侧边页签栏的搜索选项。
 
 不同Tabs容器断点下的值。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1304,11 +1313,11 @@ Tabs组件和父组件的嵌套滚动模式枚举。
 
 不同Tabs容器断点下页签栏的实际显示模式枚举。该枚举用于[barDisplayModeBreakpoint](#bardisplaymodebreakpoint)接口指定不同断点下的显示模式。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1321,11 +1330,11 @@ Tabs组件和父组件的嵌套滚动模式枚举。
 
 侧边栏展示模式枚举。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1602,11 +1611,11 @@ onBarDisplayModeChange(callback: Optional\<Callback\<TabBarDisplayMode>>)
 
 页签栏显示模式切换事件。使用callback异步回调。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1947,9 +1956,9 @@ getBarDisplayMode(): TabBarDisplayMode
 
 获取当前Tabs组件的显示模式。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.0.1
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -4063,7 +4072,7 @@ struct TabsFloatingStyleExample {
 
 本示例展示了通过[barStyle](#barstyle)接口设置页签栏的显示样式，包括固定底部页签栏样式、固定侧边页签栏样式、自适应侧边页签栏样式。通过[sidebarPosition](#sidebarposition)接口设置侧边页签栏的显示位置，通过[sidebarHeader](#sidebarheader)接口在侧边页签栏头部设置自定义内容，通过[sidebarFooter](#sidebarfooter)接口在侧边页签栏页签列表尾部设置随页签列表滚动的自定义内容，通过[sidebarBottomBar](#sidebarbottombar)接口在侧边页签栏固定底部设置自定义内容。通过[sidebarSearchable](#sidebarsearchable)接口开启侧边页签栏的搜索功能，通过[onBarDisplayModeChange](#onbardisplaymodechange)接口注册显示模式切换的监听函数。
 
-从API版本26.2.0开始，新增barStyle、sidebarPosition、sidebarHeader、sidebarFooter、sidebarBottomBar、sidebarSearchable、onBarDisplayModeChange接口。
+从API版本26.0.1开始，新增barStyle、sidebarPosition、sidebarHeader、sidebarSearchable、onBarDisplayModeChange接口。从API版本26.1.0开始，新增sidebarFooter、sidebarBottomBar接口。
 
 ```ts
 // xxx.ets
@@ -4209,7 +4218,7 @@ struct TabsSidebarExample {
 
 本示例展示了如何通过[sidebarDisplayStyle](#sidebardisplaystyle)接口设置Tabs的侧边栏展示模式，切换嵌入模式（EMBED）和推挤模式（DISPLACE）。
 
-从API版本26.2.0开始，新增sidebarDisplayStyle接口。
+从API版本26.0.1开始，新增sidebarDisplayStyle接口。
 
 ```ts
 // xxx.ets
@@ -4285,7 +4294,7 @@ struct TabsSideBarDemo {
 7. 通过[sidebarUnselectedTextColor](#sidebarunselectedtextcolor)接口设置侧边页签栏中非选中态页签的文本颜色。
 8. 通过[sidebarSelectedBoardColor](#sidebarselectedboardcolor)接口设置侧边页签栏中选中页签的背板颜色。
 
-从API版本26.2.0开始，新增sidebarWidth、sidebarBackgroundColor、sidebarBackgroundBlurStyle、sidebarSelectedTextColor、sidebarSelectedIconColor、sidebarUnselectedTextColor、sidebarUnselectedIconColor、sidebarSelectedBoardColor接口。
+从API版本26.0.1开始，新增sidebarWidth、sidebarBackgroundColor、sidebarBackgroundBlurStyle、sidebarSelectedTextColor、sidebarSelectedIconColor、sidebarUnselectedTextColor、sidebarUnselectedIconColor、sidebarSelectedBoardColor接口。
 
 ```ts
 // xxx.ets
@@ -4349,7 +4358,7 @@ struct TabsSidebarContentStyleExample {
 3. 通过[maxSidebarWidth](#maxsidebarwidth)接口设置侧边页签栏的最大宽度。
 4. 通过[minContentWidth](#mincontentwidth)接口设置内容区的最小宽度。
 
-从API版本26.2.0开始，新增sidebarDivider、minSidebarWidth、maxSidebarWidth、minContentWidth接口。
+从API版本26.0.1开始，新增sidebarDivider、minSidebarWidth、maxSidebarWidth、minContentWidth接口。
 
 ```ts
 // xxx.ets
@@ -4406,7 +4415,7 @@ struct TabsSidebarDraggableExample {
 
 本示例展示了通过[barDisplayModeBreakpoint](#bardisplaymodebreakpoint)接口实现自定义显示模式断点的功能。
 
-从API版本26.2.0开始，新增barDisplayModeBreakpoint接口。
+从API版本26.0.1开始，新增barDisplayModeBreakpoint接口。
 
 ```ts
 // xxx.ets

@@ -56,9 +56,8 @@ MindSpore Lite对接NNRt可无需构图，两者共享同一份模型图格式�
 此外，MindSpore Lite也支持通用硬件CPU/GPU与NNRt AI加速硬件之间的模型异构推理功能。
 <!--RP1End-->
 
+<!--RP2-->
 ## 约束限制
 
 NNRt强依赖硬件，只适用于支持NPU的设备。
-
-## 模拟器支持情况
-本Kit暂不支持模拟器。
+<!--RP2End-->

@@ -1,11 +1,11 @@
-# DriverExtensionContext
+# DriverExtensionContext (Driver Extension Context)
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
 <!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=a30d46aa87725f954a8669c5a6106a0f5fa2de6d translatedAt=2026-06-22T10:50:12.734Z pushedAt=2026-06-22T11:21:11.448Z -->
+<!-- md-trans-meta sourceCommit=30ff403ace182f0de0060bb4c7a6927c49cd76ac translatedAt=2026-10-14T05:06:00.864Z pushedAt=2026-10-22T07:51:23.163Z nl=2 -->
 
 The **DriverExtensionContext** module provides the context of **DriverExtensionAbility**. It inherits from **ExtensionContext**.
 
@@ -19,7 +19,7 @@ The **DriverExtensionContext** module provides the operations that need to be ac
 ## Modules to Import
 
 ```ts
-import { common } from '@kit.AbilityKit';
+import { DriverExtensionAbility, DriverExtensionContext } from '@kit.DriverDevelopmentKit';
 ```
 
 ## How to Use
@@ -27,9 +27,7 @@ import { common } from '@kit.AbilityKit';
 Before using **DriverExtensionContext**, you need to obtain it through a **DriverExtensionAbility** child class instance.
 
 ```ts
-  import { DriverExtensionAbility, DriverExtensionContext } from '@kit.DriverDevelopmentKit';
-
-  let context : DriverExtensionContext | undefined;
+  let context: DriverExtensionContext | undefined;
   class EntryAbility extends DriverExtensionAbility {
     onInit() {
       context = this.context; // Obtain DriverExtensionContext.
@@ -43,13 +41,15 @@ updateDriverState(): void
 
 Updates the driver state. This interface is reserved and does not provide specific functionality currently.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.Driver.ExternalDevice
 
 **Example**
 
   ```ts
   // The current code implementation depends on the code implementation in the previous section.
-  if (context != null) {
+  if (context !== undefined) {
     context.updateDriverState();
   }
   ```

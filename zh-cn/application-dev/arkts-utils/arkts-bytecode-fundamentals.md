@@ -1,9 +1,17 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "介绍方舟字节码指令的基本原理，说明操作码、寄存器、累加器、立即数及string id/method id/literal id等指令入参构成，并阐述全局变量、模块变量、词法变量等值存储方式与函数调用规范。"
+keywords: [方舟字节码, 字节码指令, 操作码, 寄存器, 累加器, "string id", 词法环境, 值存储方式, 函数调用规范]
+doctype: guide
+status: active
+---
+
 # 方舟字节码基本原理
 
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @jokerxd-liu; @zmw1-->
-<!--Designer: @huyunhui1; @oatuwwutao-->
+<!--Owner: @jokerxd-liu-->
+<!--Designer: @huyunhui1; @zmw1; @oatuwwutao-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
 

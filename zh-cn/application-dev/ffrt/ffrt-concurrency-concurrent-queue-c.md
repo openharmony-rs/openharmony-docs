@@ -57,7 +57,7 @@ ffrt_queue_t CreateBankSystem(const char *name, int concurrency)
     // 队列创建完后需要销毁队列属性
     ffrt_queue_attr_destroy(&queue_attr);
     if (!queue) {
-        OH_LOG_INFO(LOG_APP, "create queue failed");
+        OH_LOG_ERROR(LOG_APP, "create queue failed");
         return NULL;
     }
 
@@ -110,7 +110,7 @@ int ConcurrentQueueCExec()
     ffrt_queue_t bank = CreateBankSystem("Bank", BANK_CONCURRENCY);
     if (!bank) {
         printf("create bank system failed\n");
-        OH_LOG_INFO(LOG_APP, "create bank system failed");
+        OH_LOG_ERROR(LOG_APP, "create bank system failed");
         return -1;
     }
 

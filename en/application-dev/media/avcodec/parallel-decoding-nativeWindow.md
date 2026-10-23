@@ -2,10 +2,11 @@
 
 <!--Kit: AVCodec Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @zhanghongran-->
+<!--Owner: @rchdlee-->
 <!--Designer: @dpy2650--->
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=2e205e439bc0f41b94da84e35d75dd910dd5454c translatedAt=2026-10-22T04:00:15.817Z pushedAt=2026-10-22T12:51:19.094Z nl=1 -->
 
 ## When to Use
 
@@ -145,10 +146,16 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
     }
     ```
 
-9. Destroy the OH_NativeImage instance.
+9. Unregister the callback of NativeImage and destroy the **OH_NativeImage** instance.
    
-   After calling **OH_VideoDecoder_Destroy**, call **OH_NativeImage_Destroy** to destroy the OH_NativeImage instance.
+   After calling **OH_VideoDecoder_Destroy**, call **OH_NativeImage_UnsetOnFrameAvailableListener** to unregister the frame available callback, and then call **OH_NativeImage_Destroy** to destroy the **OH_NativeImage** instance.
    ```c++
+   // Cancel the frame-available callback listener.
+   ret = OH_NativeImage_UnsetOnFrameAvailableListener(image);
+   if (ret != AV_ERR_OK) {
+      // Handle exceptions.
+   }
+
    // Destroy the OH_NativeImage instance.
    OH_NativeImage_Destroy(&image);
    ```

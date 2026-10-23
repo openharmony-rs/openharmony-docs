@@ -2617,6 +2617,7 @@ request.agent提供基于任务的后台上传下载代理能力。开发者通�
 | text | string | 否 | 是 | 通知栏自定义正文。若不设置则使用默认显示方式。text长度上限为3072B，超出长度上限时使用默认显示方式。 |
 | visibility<sup>21+</sup> | number | 否 | 是 | 设置任务的通知栏显示方式，通过[VISIBILITY常量](#常量-1)的位运算方式决定显示方式，任务通知的显示方式，包括如下几种：<br>- 仅显示完成通知，参数为VISIBILITY_COMPLETION或1，任务完成/失败后展示对应通知。<br>- 仅显示进度通知，参数为VISIBILITY_PROGRESS或2，任务在进行中显示进度通知，当任务下载成功/失败后会直接退出进度通知，不会显示完成通知。<br>- 显示进度通知/完成通知，参数为VISIBILITY_COMPLETION \| VISIBILITY_PROGRESS或3，任务在进行中显示进度通知，当任务下载成功/失败后会退出进度通知，并显示完成通知。<br>若不设置该参数，则根据gauge字段来判断；若无gauge字段，则仅显示完成通知。|
 | wantAgent<sup>22+</sup> | [WantAgent](../../reference/apis-ability-kit/js-apis-app-ability-wantAgent.md) | 否 | 是 | 通知参数，用于实现点击任务通知后跳转的功能。默认值为空。|
+| hideStopButton | boolean | 否 | 是 | 设置是否隐藏通知栏后台任务实时窗口中的停止按钮。该值为true时，隐藏停止按钮，且布局会自动调整；该值为false时，不隐藏停止按钮，停止按钮的显示情况与不设置该参数时保持一致（即若任务原本没有停止按钮，则不会显示）。默认值为false。<br/>**起始版本：** 26.1.0|
 
 
 **示例：**
@@ -2657,6 +2658,7 @@ request.agent提供基于任务的后台上传下载代理能力。开发者通�
     notification: {
       visibility: request.agent.VISIBILITY_COMPLETION | request.agent.VISIBILITY_PROGRESS,
       wantAgent: await wantAgent.getWantAgent(wantAgentInfo),
+      hideStopButton: false,
     }
   };
   let createOnCallback = (progress: request.agent.Progress) => {

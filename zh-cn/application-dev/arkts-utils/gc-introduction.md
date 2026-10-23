@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍ArkTS运行时垃圾回收（GC）机制，涵盖引用计数与对象追踪算法、HPP GC分代模型与混合回收算法、Young/Old/Full GC触发策略、堆内存结构、Smart GC特性及GC日志分析方法，帮助开发者理解内存回收原理并排查稳定性问题。"
+keywords: [垃圾回收, GC, HPP GC, 分代回收, 引用计数, 对象追踪, Smart GC, 堆内存, GC日志]
+doctype: guide
+status: active
+---
+
 # GC垃圾回收
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->

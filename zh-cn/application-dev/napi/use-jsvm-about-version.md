@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍如何通过OH_JSVM_GetVersion获取当前运行时支持的最高JSVM API版本号，并使用OH_JSVM_GetVMInfo查询虚拟机引擎、版本等基础信息。"
+keywords: [OH_JSVM_GetVersion, OH_JSVM_GetVMInfo, 版本号, API版本, 虚拟机信息, JSVM_VMInfo, 版本查询]
+doctype: guide
+status: active
+---
+
 # 使用JSVM-API接口获取JSVM API的版本号
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->

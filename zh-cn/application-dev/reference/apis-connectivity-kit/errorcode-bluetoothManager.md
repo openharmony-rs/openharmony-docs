@@ -267,6 +267,27 @@ Device unpaired.
 
 在蓝牙设置界面检查是否与该设备配对。
 
+<!--Del-->
+## 2900017 输入BR地址未关联BLE地址
+
+**错误信息**
+
+No BLE address is associated with the input BR address.
+
+**错误描述**
+
+调用connection.getBleMacByBrMac根据已配对的对端设备的BR地址查询BLE地址时，输入的BR地址没有关联的BLE地址。
+
+**可能原因**
+
+1. 该BR地址对应的对端设备不支持BLE（非双模设备）。
+2. 系统未记录该对端设备的BLE地址。
+
+**处理步骤**
+
+1. 确认输入的是已配对的对端设备的实际BR地址。
+2. 确认该对端设备为支持BLE的双模设备。<!--DelEnd-->
+
 ## 2900099 操作失败
 
 根据实际错误原因的不同，上报不同的错误信息，具体如下。

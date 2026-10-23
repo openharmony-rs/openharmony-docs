@@ -625,3 +625,17 @@ WebView中输入法沉浸模式，用于控制软键盘的显示风格，帮助�
 | IMMERSIVE       | 1 |沉浸式模式，跟随系统。|
 | LIGHT_IMMERSIVE | 2 |浅色沉浸式风格。                |
 | DARK_IMMERSIVE  | 3 |深色沉浸式风格。                |
+
+## WebContextMenuItemId
+
+复制指向高亮文本的链接菜单项。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+| 名称 | 值 | 说明 |
+| ------- | -- | ---------- |
+| MENU_COPY_LINK | 11 | 复制指向高亮文本链接菜单项。 |

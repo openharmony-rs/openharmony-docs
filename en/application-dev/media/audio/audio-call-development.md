@@ -5,7 +5,7 @@
 <!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=d91dd4ac7567cae533b6472147db0080c0825f64 translatedAt=2026-09-18T01:35:52.795Z pushedAt=2026-09-18T06:27:01.509Z -->
+<!-- md-trans-meta sourceCommit=f9904cb259de43a2fe3e83c5ab8fb7dfa50a986e translatedAt=2026-10-22T02:39:11.586Z pushedAt=2026-10-22T03:32:54.480Z nl=1 -->
 
 During an audio call, the app needs to simultaneously perform audio output (playing the peer voice) and audio input (recording the local voice). You can use AudioRenderer for audio output and AudioCapturer for audio input, and leverage the 3A algorithms (acoustic echo cancellation, noise suppression, and automatic gain control) provided since API version 8 to improve call quality.
 
@@ -98,7 +98,7 @@ async function initArguments(context: common.UIAbilityContext) {
       if (bufferLength < buffer.byteLength) {
         let view = new DataView(buffer);
         for (let i = bufferLength; i < buffer.byteLength; i++) {
-          // Fill the blank area with silence data. When the audio sampling format is SAMPLE_FORMAT_U8, 0x7F is silence data; for other sampling formats, 0 is silence data.
+          // Fill the blank area with silence data. When the audio sampling format is SAMPLE_FORMAT_U8, 0x80 is the silence data; when other sampling formats are used, 0 is the silence data. In this example, the sampling format is SAMPLE_FORMAT_S16LE, so 0 is filled as the silence data.
           view.setUint8(i, 0);
         }
       }
@@ -134,7 +134,7 @@ async function init() {
         audioRenderer.on('writeData', writeDataCallback);
       }
     } else {
-      console.info(`${TAG}: creating AudioRenderer failed, error: ${err.message}`);
+      console.error(`${TAG}: creating AudioRenderer failed, error: ${err.message}`);
       // ...
     }
   });
@@ -167,7 +167,7 @@ async function pause() {
   if (audioRenderer !== undefined) {
     // Rendering can be paused only when the AudioRenderer is in the running state.
     if (audioRenderer.state.valueOf() !== audio.AudioState.STATE_RUNNING) {
-      console.info('Renderer is not running');
+      console.error('Renderer is not running');
       // ...
       return;
     }
@@ -190,7 +190,7 @@ async function stop() {
     // Rendering can be stopped only when the AudioRenderer is in the running or paused state.
     if (audioRenderer.state.valueOf() !== audio.AudioState.STATE_RUNNING &&
       audioRenderer.state.valueOf() !== audio.AudioState.STATE_PAUSED) {
-      console.info('Renderer is not running or paused.');
+      console.error('Renderer is not running or paused.');
       // ...
       return;
     }
@@ -212,7 +212,7 @@ async function release() {
   if (audioRenderer !== undefined) {
     // The renderer can be released only when it is not in the released state.
     if (audioRenderer.state.valueOf() === audio.AudioState.STATE_RELEASED) {
-      console.info('Renderer already released');
+      console.error('Renderer already released');
       // ...
       return;
     }
@@ -338,7 +338,7 @@ async function stop() {
     // The AudioCapturer can be stopped only when it is in the STATE_RUNNING or STATE_PAUSED state.
     if (audioCapturer.state.valueOf() !== audio.AudioState.STATE_RUNNING &&
       audioCapturer.state.valueOf() !== audio.AudioState.STATE_PAUSED) {
-      console.info('Capturer is not running or paused');
+      console.error('Capturer is not running or paused');
       // ...
       return;
     }
@@ -363,7 +363,7 @@ async function release() {
     // Release only when the capturer state is neither STATE_RELEASED nor STATE_NEW.
     if (audioCapturer.state.valueOf() === audio.AudioState.STATE_RELEASED ||
       audioCapturer.state.valueOf() === audio.AudioState.STATE_NEW) {
-      console.info('Capturer already released');
+      console.error('Capturer already released');
       // ...
       return;
     }

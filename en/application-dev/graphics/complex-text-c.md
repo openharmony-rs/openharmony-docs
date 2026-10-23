@@ -1,10 +1,12 @@
 # Drawing and Displaying Complex Text (C/C++)
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @gmiao522-->
-<!--Designer: @liumingxiang-->
-<!--Tester: @yhl0101-->
+<!--Owner: @oh_wangxk-->
+<!--Designer: @KejiePeng-->
+<!--Tester: @LiTongguan2026-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=5284e30f06236fe06b1ce39618ec19c1d67b8d4a translatedAt=2026-10-19T01:20:26.574Z pushedAt=2026-10-19T07:11:58.645Z -->
+
 When drawing text, simple text can be drawn and displayed by selecting appropriate fonts, sizes, and colors. Additionally, complex text drawing is supported by setting other styles, languages, paragraphs, etc.
 
 Complex text drawing involves the following scenarios:
@@ -25,6 +27,8 @@ Multi-language support is the foundation of globalized applications. Multi-langu
 When multi-language text is used, you can specify the **locale** field in **TextStyle** to match the corresponding font, skipping the process of traversing the font list to save time and memory.
 
 ### Available APIs
+
+The following table lists the APIs related to multi-language text drawing. For details, see [drawing_text_typography.h](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md).
 
 | API Definition| Description| 
 | -------- | -------- |
@@ -89,6 +93,8 @@ Multi-line text is more complex than single-line text. Generally, text typograph
 
 
 ### Available APIs
+
+The following table lists the APIs related to multiline text drawing. For details, see [drawing_text_typography.h](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md).
 
 | API Definition| Description| 
 | -------- | -------- |
@@ -158,7 +164,7 @@ OH_Drawing_DestroyTypography(typography);
 | -------- | -------- |
 | ![ndk_word_break_all.jpg](figures/ndk_word_break_all.jpg) | ![ndk_word_break_word.jpg](figures/ndk_word_break_word.jpg) | 
 
-| BREAK_HYPHEN (locale: Not Set)| BREAK_HYPHEN (locale: en-gb)| BREAK_HYPHEN (locale: en-us)| 
+| BREAK_HYPHEN (locale: Not Set)| BREAK_HYPHEN (locale: en-gb)| BREAK_HYPHEN (locale: en-us)|
 | -------- | -------- |-------- |
 | ![hyphen-locale-undefined.jpg](figures/hyphen-locale-undefined.jpg) | ![hyphen-local-en-gb.jpg](figures/hyphen-local-en-gb.jpg) | ![hyphen-local-en-us.jpg](figures/hyphen-local-en-us.jpg) |
 
@@ -191,6 +197,12 @@ The following lists the multi-style drawing supported by the current version and
 - **Line height adjustment**: adjusts the line height to change the vertical spacing of text lines, making the line spacing looser or tighter, significantly addressing the problem of vertical truncation of text and improving readability.
 
 - **Line spacing adjustment**: adjusts the line spacing to change the line height, optimizing the reading experience.
+
+- **Ellipsis style settings:** When the text content exceeds the drawing area, you can use ellipsis to truncate the text. The head, middle, tail, and multiline ellipsis modes are supported.
+
+- **Line break mode settings:** Different break strategies are supported during text layout. You can select an appropriate line break mode based on the scenario.
+
+- **Line-start punctuation compression:** During typesetting, you can enable the line-start punctuation compression feature to squeeze line-start punctuation marks, preventing them from occupying space at the beginning of a line and improving layout compactness.
 
 ### Decoration
 
@@ -275,7 +287,7 @@ OH_Drawing_DestroyTypography(typography);
 
 ### Font Feature
 
-**FontFeature** focus on processing font features (such as bold, italic, and font variants) during text rendering. It allows fonts to display different effects in different typesetting scenarios, enhancing the expressiveness of text to better meet design and reading requirements.
+**FontFeature** focuses on processing font features (such as bold, italic, and font variants) during text rendering. It allows fonts to display different effects in different typesetting scenarios, enhancing the expressiveness of text to better meet design and reading requirements.
 
 Common **FontFeature** includes liga, frac, and case, which can be enabled only when the corresponding TTF file is supported.
 
@@ -321,14 +333,14 @@ OH_Drawing_TypographyCreate *handler = OH_Drawing_CreateTypographyHandler(typoSt
 OH_Drawing_TypographyHandlerPushTextStyle(handler, txtStyleWithFeature);
 // Add the text to handler.
 OH_Drawing_TypographyHandlerAddText(handler, text);
-// Destroy the created TextStyle object.
+// Pop the previously added TextStyle.
 OH_Drawing_TypographyHandlerPopTextStyle(handler);
 
 // Add a text style without font features.
 OH_Drawing_TypographyHandlerPushTextStyle(handler, txtStyleNoFeature);
 // Add the text to handler.
 OH_Drawing_TypographyHandlerAddText(handler, text);
-// Destroy the created TextStyle object.
+// Pop the previously added TextStyle.
 OH_Drawing_TypographyHandlerPopTextStyle(handler);
 
 OH_Drawing_Typography *typography = OH_Drawing_CreateTypography(handler);
@@ -399,14 +411,14 @@ OH_Drawing_TypographyCreate *handler = OH_Drawing_CreateTypographyHandler(typoSt
 OH_Drawing_TypographyHandlerPushTextStyle(handler, txtStyleWithVar);
 // Add the text to handler.
 OH_Drawing_TypographyHandlerAddText(handler, text);
-// Display the created TextStyle object.
+// Pop the created TextStyle object.
 OH_Drawing_TypographyHandlerPopTextStyle(handler);
 
 // Add a text style without font variation.
 OH_Drawing_TypographyHandlerPushTextStyle(handler, txtStyleNoVar);
 // Add the text to handler.
 OH_Drawing_TypographyHandlerAddText(handler, text);
-// Display the created TextStyle object.
+// Pop the created TextStyle object.
 OH_Drawing_TypographyHandlerPopTextStyle(handler);
 
 OH_Drawing_Typography *typography = OH_Drawing_CreateTypography(handler);
@@ -432,18 +444,18 @@ OH_Drawing_DestroyTypography(typography);
 
 Text shadow creates a 3D effect for text by adding depth against the background. It is usually used to improve the visual appeal or readability of text, especially in scenarios with low color contrast.
 
-**TextShadow** has three attributes: **color** (shadow color), **point** (shadow offset from the text), and **blurRadius** (shadow radius).
+Text shadow has three properties: `color` (the shadow color), `offset` (the offset of the shadow relative to the current text), and `blurRadius` (the shadow radius).
 
 To use the shadow effect, you need to set the shadow effect array in the text style so that the shadow effect takes effect when the text is drawn.
 
 
-| API Definition| Description| 
+| API Definition| Description|
 | -------- | -------- |
-| OH_Drawing_Point\* OH_Drawing_PointCreate(float x, float y) | Creates an **OH_Drawing_Point** object.| 
-| OH_Drawing_TextShadow\* OH_Drawing_CreateTextShadow(void) | Creates an **OH_Drawing_TextShadow** object.| 
-| void OH_Drawing_SetTextShadow(OH_Drawing_TextShadow\* shadow, uint32_t color, OH_Drawing_Point\* offset, double blurRadius) | Sets a text shadow.| 
-| void OH_Drawing_TextStyleAddShadow(OH_Drawing_TextStyle\* style, const OH_Drawing_TextShadow\* shadow) | Adds a shadow to a text shadow container.| 
-| void OH_Drawing_DestroyTextShadow(OH_Drawing_TextShadow\* shadow) | Destroys an **OH_Drawing_TextShadow** object and reclaims the memory occupied by the object.| 
+| OH_Drawing_Point\* OH_Drawing_PointCreate(float x, float y) | Creates an **OH_Drawing_Point** object.|
+| OH_Drawing_TextShadow\* OH_Drawing_CreateTextShadow(void) | Creates a pointer to a text shadow object. |
+| void OH_Drawing_SetTextShadow(OH_Drawing_TextShadow\* shadow, uint32_t color, OH_Drawing_Point\* offset, double blurRadius) | Sets the parameters of a text shadow object. |
+| void OH_Drawing_TextStyleAddShadow(OH_Drawing_TextStyle\* style, const OH_Drawing_TextShadow\* shadow) | Adds a text shadow element to the text shadow container. |
+| void OH_Drawing_DestroyTextShadow(OH_Drawing_TextShadow\* shadow) | Releases the memory occupied by the text shadow object. |
 
 
 The following is an example:
@@ -672,10 +684,10 @@ OH_Drawing_DestroyTypography(typography);
 OH_Drawing_DestroyTypography(typographyWithoutAutoSpace);
 ```
 
-| Paragraph Style Setting (Automatic Spacing)| Effect| 
+| Paragraph Style (Automatic Spacing)| Effect|
 | -------- | -------- |
-| Disabled| ![Disabled-autoSpace](figures/Disabled-autoSpace.png)| 
-| Enabled| ![Enabled-autoSpace](figures/Enabled-autoSpace.png)| 
+| Disabled Automatic Spacing | ![Disabled-autoSpace](figures/Disabled-autoSpace.png) |
+| Enabled Automatic Spacing | ![Enabled-autoSpace](figures/Enabled-autoSpace.png) |
 
 ### Gradients
 
@@ -724,6 +736,8 @@ OH_Drawing_TypographyLayout(typography, maxWidth);
 OH_Drawing_TypographyPaint(typography, cCanvas_, 0, DIV_TEN(width_));
 
 // Release the object.
+OH_Drawing_PointDestroy(startPt);
+OH_Drawing_PointDestroy(endPt);
 OH_Drawing_DestroyFontCollection(fc);
 OH_Drawing_ShaderEffectDestroy(colorShaderEffect);
 OH_Drawing_BrushDestroy(brush);
@@ -780,7 +794,7 @@ OH_Drawing_DestroyTypography(typography);
 
 The following figure shows the effect (The black box only shows the text drawing area and is not drawn in practice).
 
-![image_complexArkTsDemo2_2](figures/en_image_verticalAlignment_center.jpg)
+![verticalAlignment-center](figures/verticalAlignment-center.jpg)
 
 ### Superscript and Subscript
 
@@ -831,7 +845,7 @@ OH_Drawing_DestroyTypographyHandler(handler);
 OH_Drawing_DestroyTypography(typography);
 ```
 
-![image_complexArkTsDemo2_2](figures/en_image_superscript.jpg)
+![superscript](figures/superscript.jpg)
 
 ### High Contrast
 
@@ -885,14 +899,14 @@ OH_Drawing_DestroyTypographyHandler(handler);
 OH_Drawing_DestroyTypography(typography);
 ```
 
-| High Contrast| Effect| 
+| High Contrast | Effect | 
 | -------- | -------- |
-| Disabled| ![Disabled-highContrast](figures/Disabled-highContrast.png)| 
-| Enabled| ![Enabled-highContrast](figures/Enabled-highContrast.png)| 
+| High contrast disabled | ![Disabled-highContrast](figures/Disabled-highContrast.png) | 
+| High contrast enabled | ![Enabled-highContrast](figures/Enabled-highContrast.png) | 
 
 ### Line Height Adjustment
 
-Adjusting the line height can change the vertical spacing of text lines, making the line spacing looser or tighter, significantly addressing the problem of vertical truncation of text and improving readability.
+Adjusting the line height changes the vertical spacing between text lines, making the line spacing looser or tighter. This can significantly improve the issue of text being vertically truncated and make the text more readable.
 
 You can adjust the line height either by setting the maximum and minimum line heights or using a line height scaling coefficient.
 
@@ -949,10 +963,10 @@ The following figures show the effect.
 
 Set the line height scaling coefficient.
 
-| API Definition| Description| 
+| API Definition| Description|
 | -------- | -------- |
 | [void OH_Drawing_SetTextStyleFontHeight(OH_Drawing_TextStyle* style, double fontHeight)](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_settextstylefontheight) | Enables line height scaling.|
-| [OH_Drawing_ErrorCode OH_Drawing_SetTextStyleAttributeInt(OH_Drawing_TextStyle* style, OH_Drawing_TextStyleAttributeId id)](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_settextstyleattributeint) | Enables the line height scaling style. The input ID is **OH_Drawing_TextStyleAttributeId::TEXT_STYLE_ATTR_I_LINE_HEIGHT_STYLE**.|
+| [OH_Drawing_ErrorCode OH_Drawing_SetTextStyleAttributeInt(OH_Drawing_TextStyle* style, OH_Drawing_TextStyleAttributeId id, int value)](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_settextstyleattributeint) | Passes `id` as `OH_Drawing_TextStyleAttributeId::TEXT_STYLE_ATTR_I_LINE_HEIGHT_STYLE` to enable the line height scaling style.|
 
 The following is an example:
 <!-- @[complex_text_c_line_height_limit_two_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
@@ -1037,11 +1051,86 @@ OH_Drawing_DestroyTypography(typography);
   
 The following figures show the effect.
 
-| Ascent and Descent| Effect (The black box only shows the text drawing area and is not drawn in actual.)|
-| -------- | -------- |
-| TEXT_HEIGHT_DISABLE_ALL | ![zh-cn_image_lineSpacingAndDisableBehavior](figures/LineSpacingAndDisableBehavior.png) |
-| TEXT_HEIGHT_ALL | ![zh-cn_image_lineSpacing](figures/LineSpacing.png) |
+| Line Spacing | Ascender/Descender Switch | Illustrative Effect (the black box only shows the text drawing area and is not actually drawn) |
+| -------- | -------- | -------- |
+|  0  | TEXT_HEIGHT_ALL | ![en-us_image_noLineSpacing](figures/LineSpacingClose.png) |
+| 100 | TEXT_HEIGHT_ALL | ![en-us_image_lineSpacing](figures/LineSpacing.png) |
+| 100 | TEXT_HEIGHT_DISABLE_ALL | ![en-us_image_lineSpacingAndDisableBehavior](figures/LineSpacingAndDisableBehavior.png) |
 
+
+### Ellipsis Style Settings
+
+Starting from API version 22, you can set the ellipsis style to truncate text when the content exceeds the drawing area. Starting from API version 24, the multiline ellipsis mode is supported.
+
+Use [OH_Drawing_SetTypographyStyleAttributeInt](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_settypographystyleattributeint) and pass [TYPOGRAPHY_STYLE_ATTR_I_ELLIPSIS_MODAL](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_typographystyleattributeid) to set the ellipsis mode. For available ellipsis modes, see [OH_Drawing_EllipsisModal](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_ellipsismodal).
+
+<!-- @[complex_text_c_ellipsis_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
+
+``` C++
+// Create a TypographyStyle with ellipsis settings.
+OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
+// Set the maximum number of lines to 2. Content beyond 2 lines will be omitted.
+OH_Drawing_SetTypographyTextMaxLines(typoStyle, 2);
+// Set the ellipsis mode to trailing ellipsis.
+OH_Drawing_SetTypographyStyleAttributeInt(typoStyle,
+    OH_Drawing_TypographyStyleAttributeId::TYPOGRAPHY_STYLE_ATTR_I_ELLIPSIS_MODAL, ELLIPSIS_MODAL_TAIL);
+// Set a custom ellipsis string.
+OH_Drawing_SetTypographyTextEllipsis(typoStyle, "...");
+```
+
+| Ellipsis Mode | Effect |
+| -------- | -------- |
+| ELLIPSIS_MODAL_TAIL | ![complexCDemoEllipsis1](figures/complexCDemoEllipsis1.png) |
+| ELLIPSIS_MODAL_HEAD | ![complexCDemoEllipsis2](figures/complexCDemoEllipsis2.png) |
+| ELLIPSIS_MODAL_MIDDLE | ![complexCDemoEllipsis3](figures/complexCDemoEllipsis3.png) |
+| ELLIPSIS_MODAL_MULTILINE_HEAD | ![complexCDemoEllipsis4](figures/complexCDemoEllipsis4.png) |
+| ELLIPSIS_MODAL_MULTILINE_MIDDLE | ![complexCDemoEllipsis5](figures/complexCDemoEllipsis5.png) |
+
+
+### Line Break Mode Settings
+
+Starting from API version 22, you can set a break strategy during text layout. The break strategy determines how text is wrapped at the end of a line.
+
+Use [OH_Drawing_SetTypographyTextBreakStrategy](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_settypographytextbreakstrategy) to set the break strategy. For available break strategies, see [OH_Drawing_BreakStrategy](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_breakstrategy).
+
+<!-- @[complex_text_c_break_strategy_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
+
+``` C++
+// Create a TypographyStyle with a balanced line break strategy.
+OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
+// Set the line break strategy to BALANCED.
+OH_Drawing_SetTypographyTextBreakStrategy(typoStyle, BREAK_STRATEGY_BALANCED);
+```
+
+| Line Break Mode | Effect |
+| -------- | -------- |
+| GREEDY | ![complexCDemoBreakStrategy1](figures/complexCDemoBreakStrategy1.png) |
+| HIGH_QUALITY | ![complexCDemoBreakStrategy2](figures/complexCDemoBreakStrategy2.png) |
+| BALANCED | ![complexCDemoBreakStrategy3](figures/complexCDemoBreakStrategy3.png) |
+
+### Line-Start Punctuation Compression
+
+Starting from API version 23, line-start punctuation compression is supported during text layout. By enabling this feature, you can squeeze line-start punctuation marks to improve layout compactness.
+
+Use [OH_Drawing_SetTypographyStyleAttributeBool](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_settypographystyleattributebool) and pass [TYPOGRAPHY_STYLE_ATTR_B_COMPRESS_HEAD_PUNCTUATION](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_typographystyleattributeid) to set whether to enable line-start punctuation compression. Use [OH_Drawing_GetTypographyStyleAttributeBool](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_gettypographystyleattributebool) to query whether line-start punctuation compression is enabled.
+
+<!-- @[complex_text_c_punctuation_compress_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
+
+``` C++
+// Second paragraph: enable line-start punctuation compression.
+OH_Drawing_TypographyStyle *typoStyleCompress = OH_Drawing_CreateTypographyStyle();
+OH_Drawing_SetTypographyTextAlign(typoStyleCompress, TEXT_ALIGN_LEFT);
+OH_Drawing_ErrorCode errorCode = OH_Drawing_SetTypographyStyleAttributeBool(typoStyleCompress,
+    OH_Drawing_TypographyStyleAttributeId::TYPOGRAPHY_STYLE_ATTR_B_COMPRESS_HEAD_PUNCTUATION, true);
+if (errorCode != OH_DRAWING_SUCCESS) {
+    DRAWING_LOGE("SetTypographyStyleAttributeBool failed, errorCode: %{public}d", errorCode);
+}
+```
+
+| Enable Leading Punctuation Compression | Effect |
+| -------- | -------- |
+| Disable line-start punctuation compression | ![complexCDemoCompressPunctuation1](figures/complexCDemoCompressPunctuation1.png) |
+| Enable line-start punctuation compression | ![complexCDemoCompressPunctuation2](figures/complexCDemoCompressPunctuation2.png) |
 
 ## Style Copying, Drawing, and Display
 You can copy text styles, paragraph styles, and shadow styles to quickly apply them to different texts.
@@ -1065,7 +1154,7 @@ OH_Drawing_SetTypographyTextAutoSpace(typoStyle, true);
 // Set the maximum number of lines in the paragraph to 3.
 OH_Drawing_SetTypographyTextMaxLines(typoStyle, 3);
 // Set the ellipsis mode to end ellipsis.
-OH_Drawing_SetTypographyTextEllipsisModal(typoStyle, ELLIPSIS_MODAL_TAIL);
+OH_Drawing_SetTypographyStyleAttributeInt(typoStyle, TYPOGRAPHY_STYLE_ATTR_I_ELLIPSIS_MODAL, ELLIPSIS_MODAL_TAIL);
 // Set the ellipsis text.
 OH_Drawing_SetTypographyTextEllipsis(typoStyle, "...");
 // Set the alignment mode to center.
@@ -1091,8 +1180,7 @@ OH_Drawing_TextShadow *shadow = OH_Drawing_CreateTextShadow();
 // Set the shadow offset to (5, 5).
 OH_Drawing_Point *offset = OH_Drawing_PointCreate(5, 5);
 // Set the shadow blur radius to 4.
-double blurRadius = 4;
-OH_Drawing_SetTextShadow(shadow, OH_Drawing_ColorSetArgb(0xFF, 0xFF, 0x00, 0xFF), offset, blurRadius);
+OH_Drawing_SetTextShadow(shadow, OH_Drawing_ColorSetArgb(0xFF, 0xFF, 0x00, 0xFF), offset, 4);
 
 // Copy the shadow object.
 OH_Drawing_TextShadow *shadowCopy = OH_Drawing_CopyTextShadow(shadow);
@@ -1142,6 +1230,9 @@ OH_Drawing_DestroyTypographyStyle(typographyStyleCopy);
 OH_Drawing_DestroyTextStyle(textStyleCopy);
 OH_Drawing_DestroyTypographyHandler(handlerCopy);
 OH_Drawing_DestroyTypography(typographyCopy);
+OH_Drawing_PointDestroy(offset);
+OH_Drawing_DestroyTextShadow(shadow);
+OH_Drawing_DestroyTextShadow(shadowCopy);
 ```
 
 ![styleCopy](figures/styleCopy.png)

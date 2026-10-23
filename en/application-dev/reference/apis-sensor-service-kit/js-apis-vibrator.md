@@ -922,6 +922,8 @@ For details about the error codes, see [Vibrator Error Codes](errorcode-vibrator
      // Check whether the preset 'haptic.notice.success' is supported.
      let ret = vibrator.isSupportEffectSync('haptic.notice.success');
      console.info(`The query result is ${ret}`);
+     let imeRet = vibrator.isSupportEffectSync(vibrator.HapticFeedback.EFFECT_IME_STRENGTH1);
+     console.info(`IME strength1 supported: ${imeRet}`);
    } catch (error) {
      let e: BusinessError = error as BusinessError;
      console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
@@ -1005,6 +1007,9 @@ Queries the vibrator list of one or all devices.
    try {
      const vibratorInfoList: vibrator.VibratorInfo[] = vibrator.getVibratorInfoSync({ deviceId: 1, vibratorId: 3 });
      console.info(`vibratorInfoList: ${JSON.stringify(vibratorInfoList)}`);
+     if (vibratorInfoList.length > 0 && vibratorInfoList[0].isSupportIntensity) {
+       console.info('intensity adjustment is supported');
+     }
    } catch (error) {
      let e: BusinessError = error as BusinessError;
      console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
@@ -1158,6 +1163,7 @@ Defines the vibrator information.
 | vibratorId          | number  | No | No | Vibrator ID.    |
 | deviceName          | string  | No | No | Device name.    |
 | isHdHapticSupported | boolean | No | No | Whether HD vibration is supported. The value **true** indicates that HD vibration is supported, and the value **false** indicates the opposite.|
+| isSupportIntensity | boolean | No | Yes | Indicates whether vibration intensity adjustment is supported. The value **true** indicates that vibration intensity adjustment is supported, and the value **false** indicates that vibration intensity adjustment is not supported. Default value: false.<br>**Since:** 26.1.0|
 | isLocalVibrator     | boolean | No | No | Whether the device is a local device. The value **true** indicates that the device is a local device, and the value **false** indicates the opposite.|
 
 
@@ -1404,6 +1410,11 @@ Defines the vibration effect. The frequency of the same vibration effect may var
 | EFFECT_NOTICE_SUCCESS<sup>18+</sup> | 'haptic.notice.success' | Vibration for a success notification.    |
 | EFFECT_NOTICE_FAILURE<sup>18+</sup> | 'haptic.notice.fail'    | Vibration for a failure notification.    |
 | EFFECT_NOTICE_WARNING<sup>18+</sup> | 'haptic.notice.warning' | Vibration for an alert.    |
+| EFFECT_IME_STRENGTH1 | 'haptic.grade.normal.strength1' | Vibration effect of the input method keyboard. The strength is 1 (minimum strength).<br>**Since:** 26.1.0|
+| EFFECT_IME_STRENGTH2 | 'haptic.grade.normal.strength2' | Vibration effect of the input method keyboard. The strength is 2.<br>**Since:** 26.1.0|
+| EFFECT_IME_STRENGTH3 | 'haptic.grade.normal.strength3' | Vibration effect of the input method keyboard. The strength is 3 (medium strength).<br>**Since:** 26.1.0|
+| EFFECT_IME_STRENGTH4 | 'haptic.grade.normal.strength4' | Vibration effect of the input method keyboard. The strength is 4.<br>**Since:** 26.1.0|
+| EFFECT_IME_STRENGTH5 | 'haptic.grade.normal.strength5' | Vibration effect of the input method keyboard. The strength is 5 (maximum strength).<br>**Since:** 26.1.0|
 
 ## VibratorStopMode
 

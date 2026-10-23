@@ -11,6 +11,8 @@
 > **说明：**
 >
 > 本模块首批接口从API version 22开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> 通过本模块订阅的通知扩展事件不通过本模块的接口回调投递，而是通过[NotificationSubscriberExtensionAbility](js-apis-notificationSubscriberExtensionAbility.md)的回调（如onReceiveMessage）投递，相关回调在该ExtensionAbility实例的主线程上执行。
 ## 导入模块
 
 ```ts
@@ -335,7 +337,7 @@ getUserGrantedBundleIcon(bundleName: string): Promise\<image.PixelMap\>
 
 查询本应用中“已获取的本机通知”列表中开关状态为开的应用图标。使用Promise异步回调。
 
-**起始版本**：26.2.0
+**起始版本**：26.1.0
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -385,7 +387,7 @@ disableUserGrantedByBundle(bundle: GrantedBundleInfo): Promise\<void\>
 
 关闭本应用中“已获取的本机通知”列表中指定应用的开关状态。使用Promise异步回调。
 
-**起始版本**：26.2.0
+**起始版本**：26.1.0
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
