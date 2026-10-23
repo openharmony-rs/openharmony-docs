@@ -1448,7 +1448,7 @@ let myLogManager: hiAppEvent.ExternalLogManager = {
 
 ### getAllLogFiles
 
-getAllLogs(): Set&lt;string&gt;
+getAllLogFiles(): Set&lt;string&gt;
 
 获取当前应用内所有external_log的日志文件路径。
 
