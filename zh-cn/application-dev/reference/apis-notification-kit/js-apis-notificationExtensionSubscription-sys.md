@@ -283,7 +283,7 @@ subscribeNotification(priorityStrategy?: number): Promise\<void\>
 
 根据[优先通知](../../notification/notification-glossary.md#priority-notification优先通知)过滤条件订阅通知。使用Promise异步回调。
 
-**起始版本**：26.2.0
+**起始版本：** 26.2.0
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -314,10 +314,10 @@ subscribeNotification(priorityStrategy?: number): Promise\<void\>
 | 201      | Permission denied. |
 | 202      | Not system application to call the interface. |
 | 801      | Capability not supported. |
-| 1600001  | Internal error. Possible cause: 1.IPC communication failed. 2.Memory operation error. 3.The user does not exist. |
+| 1600001  | Internal error. |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service. |
-| 1600022  | The application does not implement the NotificationSubscriberExtensionAbility. |
+| 1600023  | The application does not implement the NotificationSubscriberExtensionAbility. |
 
 **示例：**
 
