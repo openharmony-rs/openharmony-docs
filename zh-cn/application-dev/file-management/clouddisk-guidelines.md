@@ -659,9 +659,9 @@ static napi_value CreatePlaceholderFile(napi_env env, napi_callback_info info)
     }
 
     // 解析时间与大小参数
-    uint64_t atimeMs = static_cast<uint64_t>(GetNumberParam(env, args[2]));  // 访问时间（毫秒时间戳，映射云端文件访问时间）
-    uint64_t mtimeMs = static_cast<uint64_t>(GetNumberParam(env, args[3]));  // 修改时间（毫秒时间戳，映射云端文件修改时间）
-    uint64_t logicalSize = static_cast<uint64_t>(GetNumberParam(env, args[4])); // 云端文件逻辑大小（字节）
+    uint64_t atimeMs = static_cast<uint64_t>(GetNumberParam(env, args[2]));  // 访问时间（毫秒时间戳，映射云侧文件访问时间）
+    uint64_t mtimeMs = static_cast<uint64_t>(GetNumberParam(env, args[3]));  // 修改时间（毫秒时间戳，映射云侧文件修改时间）
+    uint64_t logicalSize = static_cast<uint64_t>(GetNumberParam(env, args[4])); // 云侧文件逻辑大小（字节）
 
     // 解析可选入参：自定义信息（不传或空串时置NULL，表示不写入自定义信息）
     char* customInfo = nullptr;
@@ -913,8 +913,8 @@ static napi_value GetPlaceholderCustomInfo(napi_env env, napi_callback_info info
     CloudDisk_SyncFolderPath syncFolderPath = MakePathInfo(syncPath);
     CloudDisk_PathInfo relativePathInfo = MakePathInfo(relativePath);
 
-    // 分配自定义信息读取缓冲区（上限4096字节 = 4 KiB）
-    size_t dataLength = 4096;
+    // 分配自定义信息读取缓冲区（自定义信息上限1024字节）
+    size_t dataLength = 1024;
     uint8_t *dataBuf = (uint8_t *)malloc(dataLength);
     if (!dataBuf) {
         delete[] syncPath;
