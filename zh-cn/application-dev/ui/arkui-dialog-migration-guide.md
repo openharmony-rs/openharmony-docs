@@ -323,7 +323,7 @@
   @Component
   export struct AlertDialogAfterMigrate {
     private presenter: DialogPresenter = this.getUIContext().getDialogPresenter();
-    @State result: string = '';
+    @State result: ResourceStr = '';
   
     build() {
       NavDestination() {
@@ -338,7 +338,7 @@
               .width('90%')
               .margin({ bottom: 10 })
               .onClick(() => {
-                this.result = '老接口示例请参考 ts-methods-alert-dialog-box.md';
+                this.result = $r('app.string.OldInterfaceAlertDialogOnClick');
               })
   
             Button('新接口：DialogPresenter.present（固定样式弹窗）')
@@ -489,7 +489,7 @@
   @Component
   export struct ActionSheetAfterMigrate {
     private presenter: DialogPresenter = this.getUIContext().getDialogPresenter();
-    @State result: string = '';
+    @State result: ResourceStr = '';
   
     build() {
       NavDestination() {
@@ -504,7 +504,7 @@
               .width('90%')
               .margin({ bottom: 10 })
               .onClick(() => {
-                this.result = '老接口示例请参考 ts-methods-action-sheet.md';
+                this.result = $r('app.string.OldInterfaceActionSheetOnClick');
               })
   
             Button('新接口：DialogPresenter.present（列表选择弹窗）')
@@ -646,7 +646,7 @@
   @Component
   export struct ShowDialogAfterMigrate {
     private presenter: DialogPresenter = this.getUIContext().getDialogPresenter();
-    @State result: string = '';
+    @State result: ResourceStr = '';
   
     build() {
       NavDestination() {
@@ -661,7 +661,7 @@
               .width('90%')
               .margin({ bottom: 10 })
               .onClick(() => {
-                this.result = '老接口示例请参考 js-apis-promptAction.md';
+                this.result = $r('app.string.OldInterfaceShowDialogOnClick');
               })
   
             Button('新接口：DialogPresenter.present（对话框）')
@@ -798,7 +798,7 @@
   @Component
   export struct ActionMenuAfterMigrate {
     private presenter: DialogPresenter = this.getUIContext().getDialogPresenter();
-    @State result: string = '';
+    @State result: ResourceStr = '';
   
     build() {
       NavDestination() {
@@ -813,7 +813,7 @@
               .width('90%')
               .margin({ bottom: 10 })
               .onClick(() => {
-                this.result = '老接口示例请参考 js-apis-promptAction.md';
+                this.result = $r('app.string.OldInterfacePromptActionShowActionMenuOnClick');
               })
   
             Button('新接口：DialogPresenter.present（操作菜单）')
@@ -959,7 +959,7 @@
   export struct PresentCustomDialogAfterMigrate {
     private presenter: DialogPresenter = this.getUIContext().getDialogPresenter();
     private controller: DialogBaseController = new DialogBaseController();
-    @State result: string = '';
+    @State result: ResourceStr = '';
   
     build() {
       NavDestination() {
@@ -974,7 +974,7 @@
               .width('90%')
               .margin({ bottom: 10 })
               .onClick(() => {
-                this.result = '老接口示例请参考 arkts-apis-uicontext-promptaction.md';
+                this.result = $r('app.string.OldInterfacePresentCustomDialogOnClick');
               })
   
             Button('新接口：DialogPresenter.present（自定义弹窗）')
@@ -1141,7 +1141,7 @@
   export struct OpenCustomDialogWithControllerAfterMigrate {
     private presenter: DialogPresenter = this.getUIContext().getDialogPresenter();
     private controller: DialogBaseController = new DialogBaseController();
-    @State result: string = '';
+    @State result: ResourceStr = '';
   
     build() {
       NavDestination() {
@@ -1156,7 +1156,7 @@
               .width('90%')
               .margin({ bottom: 10 })
               .onClick(() => {
-                this.result = '老接口示例请参考 arkts-apis-uicontext-promptaction.md';
+                this.result = $r('app.string.OldInterfaceOpenCustomDialogWithControllerOnClick');
               })
   
             Button('新接口：DialogPresenter.present（自定义弹窗）')
