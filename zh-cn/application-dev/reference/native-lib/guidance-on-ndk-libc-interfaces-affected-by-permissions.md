@@ -314,7 +314,9 @@
 | syslog.h | syslog 相关接口 | `/dev/log`、`/dev/console` |
 | fmtmsg.h | fmtmsg | `/dev/console` |
 
->说明：`/dev/log`、`/dev/console` 的访问一般依赖主体域授权，不是默认全放行。
+> **说明：**
+>
+> `/dev/log`、`/dev/console` 的访问一般依赖主体域授权，不是默认全放行。
 
 ### 账号与敏感文件
 
