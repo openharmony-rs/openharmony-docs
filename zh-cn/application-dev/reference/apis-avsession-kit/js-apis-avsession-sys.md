@@ -143,7 +143,9 @@ getSessionDescriptorsForAudioZone(userId: int): Promise\<Array\<Readonly\<AVSess
  
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
  
-**系统能力：** SystemCapability.Multimedia.AVSession.Manager 
+**系统能力：** SystemCapability.Multimedia.AVSession.Manager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
  
 **系统接口：** 该接口为系统接口。 
  
@@ -151,7 +153,7 @@ getSessionDescriptorsForAudioZone(userId: int): Promise\<Array\<Readonly\<AVSess
  
 | 参数名        | 类型           | 必填 | 说明 |
 | ------------ | -------------- |------|------|
-| userId       | int            | 是   | 指定用户UserId。 |
+| userId       | int            | 是   | 指定用户userId。 |
  
 **返回值：**
  
@@ -165,21 +167,21 @@ getSessionDescriptorsForAudioZone(userId: int): Promise\<Array\<Readonly\<AVSess
  
 | 错误码ID | 错误信息 | 
 | -------- | ---------------------------------------- | 
-| 201 | permission denied. | 
-| 202 | Not System App. |
-| 6700101  |Session service is not running. | 
+| 201 |  Permission verification failed. The application does not have the permission required to call the API.  | 
+| 202 |  Permission verification failed. A non-system application calls a system API.  |
+| 6700101  |  Session service is not running.  | 
  
 **示例：** 
  
 ```ts
 avSession.getSessionDescriptorsForAudioZone(100).then((descriptors: avSession.AVSessionDescriptor[]) => {
-    console.info(`Succeeded in getting session descriptors for userid, length: ${descriptors.length}`);
+    console.info(`Succeeded in getting session descriptors for userId, length: ${descriptors.length}`);
     if (descriptors.length > 0 ) {
-      console.info(`Succeeded in getting session descriptors for userid, isActive: ${descriptors[0].isActive}`);
-      console.info(`Succeeded in getting session descriptors for userid, type: ${descriptors[0].type}`);
-      console.info(`Succeeded in getting session descriptors for userid, sessionTag: ${descriptors[0].sessionTag}`);
-      console.info(`Succeeded in getting session descriptors for userid, sessionId: ${descriptors[0].sessionId}`);
-      console.info(`Succeeded in getting session descriptors for userid, bundleName: ${descriptors[0].elementName.bundleName}`);
+      console.info(`Succeeded in getting session descriptors for userId, isActive: ${descriptors[0].isActive}`);
+      console.info(`Succeeded in getting session descriptors for userId, type: ${descriptors[0].type}`);
+      console.info(`Succeeded in getting session descriptors for userId, sessionTag: ${descriptors[0].sessionTag}`);
+      console.info(`Succeeded in getting session descriptors for userId, sessionId: ${descriptors[0].sessionId}`);
+      console.info(`Succeeded in getting session descriptors for userId, bundleName: ${descriptors[0].elementName.bundleName}`);
     }
 });
 ```
@@ -582,7 +584,7 @@ avSession.startAVPlayback("com.example.myapplication", "121278").then(() => {
 
 ## avSession.startAVPlaybackForAudioZone
  
-startAVPlaybackForAudioZone(userId: int, bundleName: string, assetId: string, info?: CommandInfo): Promise\<void>
+startAVPlaybackForAudioZone(userId: number, bundleName: string, assetId: string, info?: CommandInfo, extraInfo?: ExtraInfo): Promise<void>
  
 启动指定用户所在音区的媒体播放应用程序。使用Promise异步回调。
 
@@ -591,6 +593,8 @@ startAVPlaybackForAudioZone(userId: int, bundleName: string, assetId: string, in
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
  
 **系统能力：** SystemCapability.Multimedia.AVSession.Manager
+
+ **模型约束：** 此接口仅可在Stage模型下使用。
  
 **系统接口：** 该接口为系统接口。
  
@@ -601,7 +605,7 @@ startAVPlaybackForAudioZone(userId: int, bundleName: string, assetId: string, in
 | userId       | int            | 是   | 指定用户UserId。 |
 | bundleName   | string         | 是   | 指定应用包名。   |
 | assetId      | string         | 是   | 指定媒体ID。    |
-| info         | CommandInfo    | 否   | 发送到会话的命令信息。 |
+| info         |   [CommandInfo](arkts-apis-avsession-i.md#commandinfo22)     | 否   | 发送到会话的命令信息。 |
 | extraInfo | ExtraInfo    |  否  |  冷启动扩展信息。 |
  
 **返回值：**
@@ -616,8 +620,8 @@ startAVPlaybackForAudioZone(userId: int, bundleName: string, assetId: string, in
  
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201 | permission denied. |
-| 202 | Not System App. Interface caller is not a system app. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 801 | Capability not supported. Possible causes:  1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
 | 6700101  | Session service is not running. |
  
@@ -627,7 +631,7 @@ startAVPlaybackForAudioZone(userId: int, bundleName: string, assetId: string, in
 import { avSession } from '@kit.AVSessionKit';
  
 avSession.startAVPlaybackForAudioZone(100, "com.example.myapplication", "121278").then(() => {
-  console.info('Succeeded in starting AV playbackForAudioZone.');
+  console.info('Succeeded in starting AV playback for audio zone.');
 });
 ```
 
