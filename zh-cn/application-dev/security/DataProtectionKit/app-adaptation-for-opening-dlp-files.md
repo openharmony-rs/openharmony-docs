@@ -104,7 +104,7 @@ DLP文件所涉及的重要模块及其交互，如下图所示。文件所有�
 
 2. 应用内支持打开选定的DLP文件。
 
-    使用该接口的前置条件：链接DLP凭据服务器。
+    使用该接口的前置条件：连接DLP凭据服务器。
 
     应用可以支持从最近打开列表、文件选择器中选择DLP文件，打开DLP文件的场景，按如下流程适配：
 
@@ -112,7 +112,7 @@ DLP文件所涉及的重要模块及其交互，如下图所示。文件所有�
 
     2.2 获取[UIAbilityContext](../../reference/apis-ability-kit/js-apis-app-ability-common.md#uiabilitycontext)的context。
 
-    2.3 调用context的[startAbility](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability)方法传入want参数，打开dlp文件。
+    2.3 调用context的[startAbility](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability)方法传入want参数，打开DLP文件。
 
     <!-- @[dlp_prepareForOpenDlpFile](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
     
@@ -195,7 +195,7 @@ DLP文件所涉及的重要模块及其交互，如下图所示。文件所有�
   
 3. 应用内支持对DLP文件权限设置。
 
-    使用该接口的前置条件：链接DLP凭据服务器。
+    使用该接口的前置条件：连接DLP凭据服务器。
    
     应用内可以集成权限设置按钮，当已打开一个普通文件后，点击权限设置按钮，拉起DLP管理应用的模态设置权限页面，生成DLP文件。也可以在DLP沙箱分身中查看当前正在打开的DLP文件的操作权限。
 
@@ -347,7 +347,7 @@ DLP文件所涉及的重要模块及其交互，如下图所示。文件所有�
 
 7. 判断当前打开文件是否是DLP文件。
 
-    使用该接口的前置条件：需要dlp文件进行判断。
+    使用该接口的前置条件：需要DLP文件进行判断。
 
     [isDLPFile](../../reference/apis-data-protection-kit/js-apis-dlppermission.md#dlppermissionisdlpfile)用于判断当前打开文件是否是DLP文件。
 
@@ -365,7 +365,7 @@ DLP文件所涉及的重要模块及其交互，如下图所示。文件所有�
           if (res.valueOf()) {
             this.result = 'isDLPFile result: ' + JSON.stringify(res);
           } else {
-            this.result = '请打开一个dlp文件! ';
+            this.result = getResourceString(this.context, $r('app.string.open_dlp_file_prompt'));
           }
           console.info('res', res);
           hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'res' + res);
@@ -463,7 +463,7 @@ DLP文件所涉及的重要模块及其交互，如下图所示。文件所有�
   
     设置保留沙箱接口，只有当再次调用取消保留沙箱接口并关闭DLP沙箱分身才会触发沙箱的卸载。
 
-    9.1 调用接口[setRetentionState](../../reference/apis-data-protection-kit/js-apis-dlppermission.md#dlppermissionsetretentionstate)设置保留沙箱，传入参数为本沙箱内打开的dlp文件的URI列表，该接口只允许在沙箱中调用。
+    9.1 调用接口[setRetentionState](../../reference/apis-data-protection-kit/js-apis-dlppermission.md#dlppermissionsetretentionstate)设置保留沙箱，传入参数为本沙箱内打开的DLP文件的URI列表，该接口只允许在沙箱中调用。
 
     <!-- @[dlp_setRetentionState](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
     
@@ -762,9 +762,9 @@ DLP文件所涉及的重要模块及其交互，如下图所示。文件所有�
     }
     ```
 
-13. 获取dlp文件原始名。
+13. 获取DLP文件原始名。
 
-    [getOriginalFileName](../../reference/apis-data-protection-kit/js-apis-dlppermission.md#dlppermissiongetoriginalfilename)用于获取dlp文件原始名。
+    [getOriginalFileName](../../reference/apis-data-protection-kit/js-apis-dlppermission.md#dlppermissiongetoriginalfilename)用于获取DLP文件原始名。
 
     <!-- @[dlp_getOriginalFileName](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
     
@@ -784,9 +784,9 @@ DLP文件所涉及的重要模块及其交互，如下图所示。文件所有�
     }
     ```
 
-14. 获取dlp文件的后缀名。
+14. 获取DLP文件的后缀名。
 
-    [getDLPSuffix](../../reference/apis-data-protection-kit/js-apis-dlppermission.md#dlppermissiongetdlpsuffix)用于获取dlp文件的后缀名。
+    [getDLPSuffix](../../reference/apis-data-protection-kit/js-apis-dlppermission.md#dlppermissiongetdlpsuffix)用于获取DLP文件的后缀名。
 
     <!-- @[dlp_getDLPSuffix](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
     
