@@ -431,10 +431,10 @@ ArkTS-Sta: subscribeNotification(priorityStrategy?: int): Promise\<void\>
 | 201      | Permission denied. |
 | 202      | Not system application to call the interface. |
 | 801      | Capability not supported. |
-| 1600001  | Internal error. Possible cause: 1.IPC communication failed. 2.Memory operation error. 3.The user does not exist. |
+| 1600001  | Internal error. |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service. |
-| 1600022  | The application does not implement the NotificationSubscriberExtensionAbility. |
+| 1600023  | The application does not implement the NotificationSubscriberExtensionAbility. |
 
 **示例：**
 

@@ -2295,7 +2295,7 @@ getActiveNotification(hashCode: string): Promise\<NotificationRequest\>
 
 | 类型                                                                                                          | 说明                             |
 | ------------------------------------------------------------------------------------------------------------- | -------------------------------- |
-| Promise\<[NotificationRequest](js-apis-inner-notification-notificationRequest-sys.md#notificationrequest)\> | 以Promise形式返回获取通知信息。 |
+| Promise\<[NotificationRequest](js-apis-inner-notification-notificationRequest-sys.md#notificationrequest)\> | Promise对象。返回获取到的通知信息。 |
 
 **错误码：**
 
@@ -2305,7 +2305,7 @@ getActiveNotification(hashCode: string): Promise\<NotificationRequest\>
 | -------- | -------- |
 | 201      | Permission denied. |
 | 202      | Not system application to call the interface. |
-| 1600001  | Internal error. Possible cause: 1.IPC communication failed. 2.Memory operation error. 3.The user does not exist. |
+| 1600001  | Internal error. |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service. |
 | 1600007  | The notification does not exist. |
