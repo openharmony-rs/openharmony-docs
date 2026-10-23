@@ -4791,12 +4791,12 @@ struct Index {
 ## setTransPageEnabled
 
 setTransPageEnabled(enabled: boolean): void
-<!--RP3--><!--RP3End-->
-启用或禁用强制分栏的transPages配置。禁用后，transPages中配置的过渡页面将参与右推左的转场行为，不再固定在右侧。未通过该接口设置时，默认值为true。
+
+<!--RP3-->启用或禁用强制分栏的transPages配置。禁用后，transPages中配置的过渡页面将参与右推左的转场行为，不再固定在右侧。未通过该接口设置时，默认值为true。<!--RP3End-->
 
 > **说明：**
 >
-> - 该接口仅在购物模式下生效，导航模式（使用pagePairs机制）下调用无副作用。
+> - <!--RP4-->该接口仅在购物模式下生效，导航模式（使用pagePairs机制）下调用无副作用。<!--RP4End-->
 > - 该接口在下一次路由转场时生效，不会触发当前页面的重新布局或动效。
 > - 应用未配置强制分栏时调用该接口不产生任何效果，也不影响应用稳定性。
 
@@ -4848,8 +4848,8 @@ struct Index {
 ## isTransPageEnabled
 
 isTransPageEnabled(): boolean
-<!--RP3--><!--RP3End-->
-查询强制分栏的transPages配置当前是否启用。
+
+<!--RP5-->查询强制分栏的transPages配置当前是否启用。<!--RP5End-->
 
 > **说明：**
 >
