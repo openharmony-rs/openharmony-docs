@@ -256,7 +256,7 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
           if (res.valueOf()) {
             this.result = 'isDLPFile result: ' + JSON.stringify(res);
           } else {
-            this.result = '请打开一个DLP文件! ';
+            this.result = getResourceString(this.context, $r('app.string.open_dlp_file_prompt'));
           }
           console.info('res', res);
           hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'res' + res);
