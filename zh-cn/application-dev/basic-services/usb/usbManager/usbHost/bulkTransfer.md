@@ -1,4 +1,4 @@
-# USB批量传输
+# USB批量传输（ArkTS）
 
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: USB-->
