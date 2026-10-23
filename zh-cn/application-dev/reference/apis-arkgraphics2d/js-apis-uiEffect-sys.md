@@ -154,7 +154,7 @@ createColorfulBrightnessBlender(brightnessBlenderParam: BrightnessBlenderParam, 
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Dyn起始版本：** 26.2.0
+**ArkTS-Dyn起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1713,9 +1713,9 @@ ArkTS-Sta: mapColorByBrightness(colors: Array\<Color\>, positions: Array\<double
  
 **系统能力：** SystemCapability.Graphics.Drawing
 
-**ArkTS-Dyn起始版本:** 26.2.0
+**ArkTS-Dyn起始版本:** 26.1.0
 
-**ArkTS-Sta起始版本:** 26.2.0
+**ArkTS-Sta起始版本:** 26.1.0
  
 **系统接口：** 此接口为系统接口。
  
@@ -2527,7 +2527,7 @@ type Blender = BrightnessBlender | HdrBrightnessBlender | ColorfulBrightnessBlen
 | ----------------------------- | ------------------------------------------------- |
 | [BrightnessBlender](#brightnessblender) | 具有提亮效果的混合器。<br>**ArkTS-Dyn起始版本**: 12<br>**ArkTS-Sta起始版本**: 23 |
 | [HdrBrightnessBlender](#hdrbrightnessblender20)<sup>20+</sup> | 具有提亮效果的混合器（支持HDR）。<br>**ArkTS-Dyn起始版本**: 20<br>**ArkTS-Sta起始版本**: 23 |
-| [ColorfulBrightnessBlender](#colorfulbrightnessblender) | 具有提亮压暗效果的混合器（保持色相）。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本**: 26.2.0 |
+| [ColorfulBrightnessBlender](#colorfulbrightnessblender) | 具有提亮压暗效果的混合器（保持色相）。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本**: 26.1.0 |
 
 ## BrightnessBlender
 提亮混合器，用于将提亮效果添加到指定的组件上。在调用BrightnessBlender前，需要先通过[createBrightnessBlender](#uieffectcreatebrightnessblender)创建一个BrightnessBlender实例。
@@ -2571,7 +2571,7 @@ type Blender = BrightnessBlender | HdrBrightnessBlender | ColorfulBrightnessBlen
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Dyn起始版本：** 26.2.0
+**ArkTS-Dyn起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3935,7 +3935,7 @@ BrightnessBlender参数列表。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Dyn起始版本：** 26.2.0
+**ArkTS-Dyn起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

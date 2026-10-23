@@ -303,7 +303,7 @@ type PageUpdateType = 'pageContentUpdate' | 'pageStateUpdate' | 'pageStatePreUpd
 | ----------------- | ---------------- |
 | 'pageContentUpdate' | 表示页面内容更新。<br>**ArkTS-Dyn起始版本：** 9 |
 | 'pageStateUpdate' | 表示页面状态更新。<br>**ArkTS-Dyn起始版本：** 9 |
-| 'pageStatePreUpdate' | 表示页面状态即将刷新。<br>**ArkTS-Dyn起始版本：** 26.2.0 |
+| 'pageStatePreUpdate' | 表示页面状态即将刷新。<br>**ArkTS-Dyn起始版本：** 26.1.0 |
 
 ## TouchGuideType
 

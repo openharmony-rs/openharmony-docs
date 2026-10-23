@@ -106,7 +106,7 @@ import { accessibility } from '@kit.AccessibilityKit';
 | TYPE_FOCUS_INVISIBLE |71| 表示焦点变为不可见状态。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0 |
 | TYPE_ONE_FINGER_DOUBLE_TAP |72| 表示单指双击的手势。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0 |
 | TYPE_TOUCH_GUIDE_GESTURE |73| 表示触摸浏览手势事件。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0 |
-| TYPE_PAGE_STATE_PRE_UPDATE |74| 表示页面状态即将更新。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 26.2.0<br>**ArkTS-Sta起始版本：** 26.2.0 |
+| TYPE_PAGE_STATE_PRE_UPDATE |74| 表示页面状态即将更新。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 26.1.0<br>**ArkTS-Sta起始版本：** 26.1.0 |
 
 ## AccessibilityAction
 

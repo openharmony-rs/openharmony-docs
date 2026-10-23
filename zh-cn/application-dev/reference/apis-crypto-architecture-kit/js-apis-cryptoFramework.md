@@ -9477,11 +9477,11 @@ ArkTS-Sta: squeeze(len: int): Promise\<DataBlob>
 >
 > 当前Md实例中，此接口与[squeezeSync](#squeezesync)仅支持单次调用。
 
-**ArkTS-Dyn起始版本：** 26.2.0
+**ArkTS-Dyn起始版本：** 26.1.0
 
-**ArkTS-Sta起始版本：** 26.2.0
+**ArkTS-Sta起始版本：** 26.1.0
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -9536,11 +9536,11 @@ ArkTS-Sta: squeezeSync(len: int): DataBlob
 >
 > 当前Md实例中，此接口与[squeeze](#squeeze)仅支持单次调用。
 
-**ArkTS-Dyn起始版本：** 26.2.0
+**ArkTS-Dyn起始版本：** 26.1.0
 
-**ArkTS-Sta起始版本：** 26.2.0
+**ArkTS-Sta起始版本：** 26.1.0
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
