@@ -80,9 +80,9 @@
 | 名称              | 类型                                       | 只读   | 可选   | 说明            |
 | --------------- | ---------------------------------------- | ---- | ---- | ------------- |
 | blurStyle | [SheetTitleBarBackgroundBlur](#sheettitlebarbackgroundblur) | 否    | 是    | 模糊效果层的模糊样式，设置为GRADIENT启用渐变模糊效果。<br>默认值：SheetTitleBarBackgroundBlur.NONE。 |
-| maskExtraHeight | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否    | 是    | 模糊效果层的额外高度，以标题栏高度为基础的额外效果高度。<br>默认值：32vp。<br>当取值为0vp时，模糊效果层下边沿与标题栏等高。<br>**起始版本：** 26.2.0 |
-| maskColor | [ResourceColor](ts-types.md#resourcecolor) | 否    | 是    | 模糊效果层的渐变基色，作为渐变顶部的最大颜色值，系统应用内置透明度曲线从顶部到底部逐渐将其淡化。<br>未设置时：浅色模式使用半透明白色效果，深色模式使用半透明黑色效果。<br>**起始版本：** 26.2.0 |
-| effectiveDistance | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否    | 是    | 模糊效果从完全隐藏到完全可见所需的滑动距离。<br>取值范围：大于等于0，小于0的值按0处理。<br>默认值：8vp。<br>**起始版本：** 26.2.0 |
+| maskExtraHeight | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否    | 是    | 模糊效果层的额外高度，以标题栏高度为基础的额外效果高度。<br>默认值：32vp。<br>当取值为0vp时，模糊效果层下边沿与标题栏等高。<br>**起始版本：** 26.1.0 |
+| maskColor | [ResourceColor](ts-types.md#resourcecolor) | 否    | 是    | 模糊效果层的渐变基色，作为渐变顶部的最大颜色值，系统应用内置透明度曲线从顶部到底部逐渐将其淡化。<br>未设置时：浅色模式使用半透明白色效果，深色模式使用半透明黑色效果。<br>**起始版本：** 26.1.0 |
+| effectiveDistance | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否    | 是    | 模糊效果从完全隐藏到完全可见所需的滑动距离。<br>取值范围：大于等于0，小于0的值按0处理。<br>默认值：8vp。<br>**起始版本：** 26.1.0 |
 
 ## 示例
 

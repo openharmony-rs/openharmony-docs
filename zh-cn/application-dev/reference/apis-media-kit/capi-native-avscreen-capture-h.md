@@ -1528,7 +1528,7 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForMicAEC(OH_AVScreenCapt
 
 在使用麦克风时是否开启回声消除（Acoustic Echo Cancellation）功能。<br>此功能需要使用[OH_AVScreenCapture_SetCaptureStrategy](#oh_avscreencapture_setcapturestrategy)在录屏启动前完成配置。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **参数：**
 

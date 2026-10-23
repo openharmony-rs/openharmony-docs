@@ -1240,7 +1240,7 @@ onZoomChange(callback: OnZoomChangeCallback)
 > - 页面缩放会缩放文字、图片并重新布局页面；CSS `zoom`不会触发该回调，捏合缩放导致的页面显示比例变化由[onScaleChange](#onscalechange9)通知。
 > - 当前Web组件导航至其他Host时，若实际倍率发生变化则触发回调；实际倍率不变时不会重复触发。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2400,7 +2400,7 @@ onContextMenuUpdate(callback: OnContextMenuUpdateCallback)
 
 在单次上下文菜单会话期间，此回调可能被多次调用，每个被内核异步更新状态的菜单项各触发一次。回调绑定于Web组件生命周期，组件销毁时自动释放。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
