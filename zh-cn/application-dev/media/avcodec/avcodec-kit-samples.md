@@ -15,8 +15,6 @@ status: active
 <!--Tester: @cyakee; @baotianhao-->
 <!--Adviser: @w_Machine_cc-->
 
-AVCodec Kit开发指南配套的示例工程汇总如下，开发者可按开发场景获取对应示例代码参考。AVCodec Kit仅提供C接口，以下示例均为C/C++工程。
-
 | 分类 | Sample名称 | 语言 | 场景介绍 |
 | -------- | -------- | -------- | -------- |
 | 视频编解码 | [AVCodecSample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Media/AVCodec) | C/C++ | 使用AVCodec Kit（C/C++）完成视频编解码：播放器支持硬件/软件/自动选择解码（含软解回退）以及Surface、Buffer、OpenGL、Vulkan多种送显，录制时相机流经编码器Surface输入编码为H.264/H.265，同时覆盖异步与同步两种模式。 |
