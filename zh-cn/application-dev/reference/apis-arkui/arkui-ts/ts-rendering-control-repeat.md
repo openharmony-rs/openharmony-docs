@@ -22,6 +22,8 @@ Repeat基于数组类型数据来进行循环渲染，一般与滚动容器组�
 
 Repeat\<T\>(arr: Array\<T\>)
 
+**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -45,6 +47,8 @@ Repeat\<T\>(arr: RepeatArray\<T\>)
 > **说明：**
 >
 > 从API version 18开始，Repeat数据源支持RepeatArray类型。
+
+**卡片能力：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
