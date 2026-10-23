@@ -140,23 +140,29 @@ OH_HiAppEvent_SetEventConfig配置参考[订阅崩溃事件（C/C++）开发步�
 
 参数设置示例如下：
 
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog, hiAppEvent } from '@kit.PerformanceAnalysisKit';
+<!-- @[CrashConfig_Policy_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
+```
+
+<!-- @[CrashConfig_Policy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 let policy: hiAppEvent.EventPolicy = {
-    appCrashPolicy: {
-      pageSwitchLogEnable: true, // 启用页面切换日志。从API version 24开始支持该参数
-      extendPcLrPrinting: true, // 使能扩展打印pc和lr寄存器附近的内存值。从API版本26.0.0开始支持该参数
-      logFileCutoffSzBytes: 102400, // 截断崩溃日志到100KB。从API版本26.0.0开始支持该参数
-      simplifyVmaPrinting: true, // 使能精简打印maps。从API版本26.0.0开始支持该参数
-      collectMinidump: true // native崩溃场景，使能minidump。从API版本26.0.0开始支持该参数
-    }
+  appCrashPolicy: {
+    pageSwitchLogEnable: true, // 启用页面切换日志。从API version 24开始支持该参数
+    extendPcLrPrinting: true, // 使能扩展打印pc和lr寄存器附近的内存值。从API版本26.0.0开始支持该参数
+    logFileCutoffSzBytes: 102400, // 截断崩溃日志到100KB。从API版本26.0.0开始支持该参数
+    simplifyVmaPrinting: true, // 使能精简打印maps。从API版本26.0.0开始支持该参数
+    collectMinidump: true // native崩溃场景，使能minidump。从API版本26.0.0开始支持该参数
+  }
 };
 hiAppEvent.configEventPolicy(policy).then(() => {
-    hilog.info(0x0000, 'hiAppEvent', `Set crash config policy successfully.`);
+  hilog.info(0x0000, 'hiAppEvent', `Set crash config policy successfully.`);
 }).catch((err: BusinessError) => {
-    hilog.error(0x0000, 'hiAppEvent', `Failed to set crash config policy. code: ${err.code}, message: ${err.message}`);
+  hilog.error(0x0000, 'hiAppEvent', `Failed to set crash config policy. code: ${err.code}, message: ${err.message}`);
 });
 ```
 

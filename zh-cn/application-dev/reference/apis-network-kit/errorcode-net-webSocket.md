@@ -41,7 +41,7 @@ WebSocket连接失败。
 
 4. 如果问题仍然存在，收集完整日志后联系技术支持获取帮助。 
 
-## 2302001 Websocket URL错误
+## 2302001 WebSocket URL错误
 
 **错误信息**
 
@@ -57,11 +57,11 @@ WebSocket URL错误。
 
 **处理步骤**
 
-1.检查URL是否为空或者未包含正确的协议（ws://或wss://）。
+1. 检查URL是否为空或者未包含正确的协议（ws://或wss://）。
 
-2.检查URL长度是否超过2048个字符。
+2. 检查URL长度是否超过2048个字符。
 
-## 2302002 Websocket 证书不存在
+## 2302002 WebSocket 证书不存在
 
 **错误信息**
 
@@ -77,12 +77,12 @@ WebSocket 证书不存在。
 
 **处理步骤**
 
-1.检查CA证书路径是否有效。
+1. 检查CA证书路径是否有效。
 
-2.如指定了WebSocketRequestOptions.clientCert，请检查证书路径与私钥路径是否有效。
+2. 如指定了WebSocketRequestOptions.clientCert，请检查证书路径与私钥路径是否有效。
 
 
-## 2302003 Websocket 连接已经存在
+## 2302003 WebSocket 连接已经存在
 
 **错误信息**
 
@@ -98,9 +98,9 @@ WebSocket 连接已经建立。
 
 **处理步骤**
 
-已建立websocket连接，无需重复调用WebSocket.connect进行建连，无其他处理步骤。
+已建立WebSocket连接，无需重复调用WebSocket.connect进行建连，无其他处理步骤。
 
-## 2302004 WebsocketServer 无法在指定的NIC（网络接口）上进行网络监听
+## 2302004 WebSocketServer 无法在指定的NIC（网络接口）上进行网络监听
 
 **错误信息**
 
@@ -118,7 +118,7 @@ WebSocketServer服务器配置文件中的IP地址无效。
 
 检查网络连接是否正常，检查IP地址有效性。
 
-## 2302005 WebsocketServer 无法在指定的端口上进行网络监听
+## 2302005 WebSocketServer 无法在指定的端口上进行网络监听
 
 **错误信息**
 
@@ -154,7 +154,7 @@ WebSocketServer连接不存在。
  
 检查该连接是否仍然有效，必要时重新建立连接后再操作。
 
-## 2302007 WebsocketServer当前监听的端口已被占用
+## 2302007 WebSocketServer当前监听的端口已被占用
 
 **错误信息**
 
@@ -162,7 +162,7 @@ Websocket port already occupied.
 
 **错误描述**
 
-WebsocketServer当前监听的端口已经被占用。
+WebSocketServer当前监听的端口已经被占用。
 
 **可能原因**
 

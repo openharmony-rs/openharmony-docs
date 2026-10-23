@@ -20,7 +20,7 @@ Asynchronous Connectionless Link，即异步无连接链路。在蓝牙子系统
 ### BLE
 Bluetooth Low Energy，即低功耗蓝牙。从蓝牙4.0开始支持的协议，相比于传统蓝牙，是支持低功耗、长续航的蓝牙通信技术。
 ### BR
-Basic Rate，即蓝牙基础率。是一种蓝牙无线通信技术，用来表示传统蓝牙，主要用于文件和音频流的传输场景。
+Basic Rate，即蓝牙基础速率。是一种蓝牙无线通信技术，用来表示传统蓝牙，主要用于文件和音频流的传输场景。
 ### Bluetooth SIG
 Bluetooth Special Interest Group，即蓝牙技术联盟，发布蓝牙技术规范的组织。开发者可以在其官网获取详细的蓝牙技术文档。
 ## C
@@ -31,7 +31,7 @@ Bluetooth Special Interest Group，即蓝牙技术联盟，发布蓝牙技术规
 [GATT](#gatt)特征值（[Characteristic](#characteristic)）的数据单元，用于描述特征值的附加信息和属性，可进行数据读写，通过[UUID](#uuid)标识。
 ## E
 ### EDR
-Enhanced Data Rate，即蓝牙增强数据率。是蓝牙[BR](#br)的增强版本，具有更高的数据传输速率，和BR统称为传统蓝牙。
+Enhanced Data Rate，即蓝牙增强数据速率。是蓝牙[BR](#br)的增强版本，具有更高的数据传输速率，和BR统称为传统蓝牙。
 ## G
 ### GATT
 Generic Attribute Profile，即通用属性协议。是[BLE](#ble)的核心协议，定义了基于服务（[Service](#service)）、特征值（[Characteristic](#characteristic)）和描述符（[Descriptor](#descriptor)）进行蓝牙通信和传输数据的机制。

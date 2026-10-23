@@ -26,7 +26,7 @@ import { vpnExtension } from '@kit.NetworkKit';
 ## LinkAddress
 type LinkAddress = connection.LinkAddress
 
-获取网络链接信息。
+获取网络链路信息。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
@@ -147,7 +147,7 @@ stopVpnExtensionAbility(want: Want): Promise\<void>
 
 | 参数名 | 类型                                | 必填 | 说明             |
 | ------ | ----------------------------------- | ---- | ---------------- |
-| want   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 指示要启动的信息。 |
+| want   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 指示要停止的信息。 |
 
 **返回值：**
 
@@ -246,7 +246,7 @@ let vpnObserver: vpnExtension.VpnObserver = vpnExtension.createVpnObserver();
 
 ## VpnObserver
 
-VPN观察者对象。用于监听VPN相关事件。在调用VpnObserver的方法前，需要先通过[vpnExtension.createVpnObserver](#vpnextensioncreatevpnobserver)创建VPN连接对象。
+VPN观察者对象。用于监听VPN相关事件。在调用VpnObserver的方法前，需要先通过[vpnExtension.createVpnObserver](#vpnextensioncreatevpnobserver)创建VPN观察者对象。
 
 ### onAuthorizationResult
 
@@ -379,7 +379,7 @@ export default class MyVpnExtAbility extends VpnExtensionAbility {
 
 ## VpnConnection
 
-VPN连接对象。在调用VpnConnection的方法前，需要先通过vpnExt.createVpnConnection创建VPN连接对象。
+VPN连接对象。在调用VpnConnection的方法前，需要先通过vpnExtension.createVpnConnection创建VPN连接对象。
 
 ### create
 
