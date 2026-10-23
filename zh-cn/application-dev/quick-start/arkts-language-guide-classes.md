@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "讲解ArkTS类的定义与使用，涵盖属性、方法、构造函数、访问控制、抽象类、继承与原型等面向对象核心特性。"
+keywords: [ArkTS, 类, class, 装饰器, 构造函数, 访问控制, 抽象类, 面向对象, 原型]
+doctype: guide
+status: active
+---
+
 # 类
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->

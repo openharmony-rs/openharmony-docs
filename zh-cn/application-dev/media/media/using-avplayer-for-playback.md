@@ -1,3 +1,11 @@
+---
+kits: ["Media Kit / 媒体服务"]
+description: "介绍使用AVPlayer在ArkTS环境实现音频端到端播放，覆盖创建播放器、设置监听事件与音频渲染信息、播放控制（播放/暂停/跳转/停止）、重置与资源释放等完整开发流程。"
+keywords: [AVPlayer, 音频播放, 播放控制, 静音帧, 后台播放]
+doctype: guide
+status: active
+---
+
 # 使用AVPlayer播放音频(ArkTS)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->

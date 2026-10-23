@@ -261,9 +261,9 @@ dispatchInputEvent(event: InputEventType, competitionStrategy?: CompetitionStrat
 
 向当前FrameNode派发输入事件，并可指定竞争策略。支持[TouchEvent](arkui-ts/ts-universal-events-touch.md#touchevent对象说明)、[MouseEvent](arkui-ts/ts-universal-mouse-key.md#mouseevent对象说明)和[AxisEvent](arkui-ts/ts-universal-events-axis.md#axisevent)。KeyEvent请使用[dispatchKeyEvent](#dispatchkeyevent)派发。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -292,9 +292,9 @@ dispatchKeyEvent(event: KeyEvent): boolean
 
 向当前FrameNode派发按键事件。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -9419,7 +9419,7 @@ struct FrameNodeTypeTest {
 
 该示例通过[dispatchInputEvent](#dispatchinputevent)接口向子节点派发触摸事件，通过[dispatchKeyEvent](#dispatchkeyevent)接口向子节点派发按键事件。
 
-从API版本26.2.0开始，新增[dispatchInputEvent](#dispatchinputevent)、[dispatchKeyEvent](#dispatchkeyevent)接口。
+从API版本26.1.0开始，新增[dispatchInputEvent](#dispatchinputevent)、[dispatchKeyEvent](#dispatchkeyevent)接口。
 
 ```ts
 import { NodeController, FrameNode, UIContext, typeNode } from '@kit.ArkUI';

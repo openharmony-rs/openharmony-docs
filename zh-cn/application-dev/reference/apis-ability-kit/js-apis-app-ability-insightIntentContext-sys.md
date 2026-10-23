@@ -9,7 +9,7 @@
 
 本模块提供意图执行上下文，是[意图执行基类](js-apis-app-ability-insightIntentExecutor.md)和[@InsightIntentEntry的意图执行基类](js-apis-app-ability-InsightIntentEntryExecutor.md)的属性，为意图执行提供基础能力，例如启动本应用内的[UIAbility](js-apis-app-ability-uiAbility.md)组件。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 > **说明：**
 >
@@ -23,7 +23,7 @@ import { InsightIntentContext } from '@kit.AbilityKit';
 
 ## 属性
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 

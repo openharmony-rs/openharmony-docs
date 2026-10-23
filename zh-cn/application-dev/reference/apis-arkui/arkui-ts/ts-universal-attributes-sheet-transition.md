@@ -372,7 +372,7 @@ bindSheet(isShow: boolean, builder: CustomBuilder, options?: SheetOptions): T
 | ------- | ---- | -------- |
 | STANDARD | 0 | 标准模式，标题栏与内容区竖直排列不重叠。<br/>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
 | STACK    | 1 | 堆叠模式，标题栏悬浮在内容区上方，设置为该样式时开发者需要在内容区顶部添加内边距以避免遮挡。<br/>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
-| SAFE_AREA_PADDING | 2 | 安全区模式，标题栏放置在安全区域内边距区域，内容区扩展到安全区，滚动内容的裁剪范围延伸到安全区范围。<br/>**起始版本：** 26.2.0<br/>**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。 |
+| SAFE_AREA_PADDING | 2 | 安全区模式，标题栏放置在安全区域内边距区域，内容区扩展到安全区，滚动内容的裁剪范围延伸到安全区范围。<br/>**起始版本：** 26.1.0<br/>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。 |
 
 ## 示例
 ### 示例1（不同高度的半模态弹窗）
@@ -1075,7 +1075,7 @@ struct SheetMaterialExample {
 
 该示例通过titleBarHoverMode属性演示不同半模态标题栏悬浮模式（[SheetTitleBarHoverMode](#sheettitlebarhovermode)）的效果。
 
-从API版本26.0.1开始，[SheetOptions](#sheetoptions)新增titleBarHoverMode属性。从API版本26.2.0开始，SheetTitleBarHoverMode中新增[SAFE_AREA_PADDING](#sheettitlebarhovermode)枚举值。
+从API版本26.0.1开始，[SheetOptions](#sheetoptions)新增titleBarHoverMode属性。从API版本26.1.0开始，SheetTitleBarHoverMode中新增[SAFE_AREA_PADDING](#sheettitlebarhovermode)枚举值。
 
 ```ts
 // xxx.ets

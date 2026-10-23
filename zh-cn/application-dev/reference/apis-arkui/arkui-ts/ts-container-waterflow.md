@@ -594,11 +594,11 @@ scrollSnapStrategy(strategy?: ScrollSnapAlign | ScrollSnapOffsetProvider)
 >
 > - 超出可滚动范围时，目标位置限制在可滚动范围的边界，因此首尾FlowItem可能无法完全按指定方式对齐。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2281,7 +2281,7 @@ struct Index {
 
 本示例使用[scrollSnapStrategy](#scrollsnapstrategy)设置尾部吸附（ScrollSnapAlign.END）。滚动结束时，目标FlowItem的底边与视口底边对齐。示例采用SLIDING_WINDOW布局模式，包含100个高度不同的FlowItem。
 
-从API版本26.2.0开始，新增scrollSnapStrategy接口。
+从API版本26.1.0开始，新增scrollSnapStrategy接口。
 
 WaterFlowDataSource说明及完整代码参考[示例1（使用基本瀑布流）](#示例1使用基本瀑布流)。
 

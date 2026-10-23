@@ -15,7 +15,7 @@
 >
 > - 该装饰器从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> - 从API版本26.2.0开始，支持传入[BuilderDecoratorConfig](#builderdecoratorconfig)配置项，声明占位构建函数。
+> - 从API版本26.1.0开始，支持传入[BuilderDecoratorConfig](#builderdecoratorconfig)配置项，声明占位构建函数。
 
 ## @Builder
 
@@ -65,11 +65,11 @@ type BuilderMethodDecorator = (value: BuilderDecoratorConfig) => MethodDecorator
 
 \@Builder装饰器传入配置项时的实际类型。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
-**卡片能力：** 从API版本26.2.0开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本26.1.0开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -91,13 +91,13 @@ type BuilderMethodDecorator = (value: BuilderDecoratorConfig) => MethodDecorator
 
 \@Builder装饰器的配置选项。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**卡片能力：** 从API版本26.2.0开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本26.1.0开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

@@ -12,7 +12,7 @@
 >
 > 本模块接口仅可在Stage模型下使用。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 ## 导入模块
 
@@ -28,7 +28,7 @@ import { PlaceholderRegister } from '@kit.ArkUI';
 >
 > 以下API需先使用UIContext中的[getPlaceholderRegister()](./arkts-apis-uicontext-uicontext.md#getplaceholderregister)方法获取到PlaceholderRegister对象，再通过该对象调用对应方法。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 ### register
 
@@ -42,11 +42,11 @@ register(id: string, builder: WrappedBuilder<[]>): void
 > - 框架在注册时校验编译产物中携带的受限Builder标记：未在编译期标记`@Builder({ isPlaceholder: true })`的builder（包括通过绕过编译期类型检查的动态方式传入的builder）会被拒绝注册，该id不会注册成功，[scrollPlaceholder](arkui-ts/ts-container-list.md#scrollplaceholder)的provider命中该id时使用系统默认占位。
 > - 重复注册相同id时，会原子地发布新版本的模板；已派发的占位任务在上屏前会先与模板版本做校验。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -80,11 +80,11 @@ unregister(id: string): void
 > - 模板注销后，该id不再能被匹配：[scrollPlaceholder](arkui-ts/ts-container-list.md#scrollplaceholder)的[PlaceholderProvider](#placeholderprovider)命中该id时使用系统默认占位，已为该模板派发的占位任务不会上屏。
 > - 注销未注册的id时，静默处理，不产生异常。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -108,11 +108,11 @@ isRegistered(id: string): boolean
 >
 > 该接口为只读查询，不改变注册状态，也不影响后续占位行为。无论框架当前是否为该模板保留预构建的占位实例，模板的注册状态均保持不变。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -136,11 +136,11 @@ isRegistered(id: string): boolean
 
 描述滚动组件单个列表项的占位信息。真实列表项需要分帧创建时，可滚动组件会先显示该项的占位组件。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -155,11 +155,11 @@ type PlaceholderProvider = (index: number) => PlaceholderOptions | undefined
 
 列表项占位信息的提供函数，供[List](arkui-ts/ts-container-list.md)的[scrollPlaceholder](arkui-ts/ts-container-list.md#scrollplaceholder)属性使用。该函数在UI线程滚动过程中同步调用，须为纯计算，不得执行耗时操作。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -181,7 +181,7 @@ type PlaceholderProvider = (index: number) => PlaceholderOptions | undefined
 
 该示例通过[register](#register)接口注册占位模板，通过[isRegistered](#isregistered)接口查询注册状态，通过[unregister](#unregister)接口在组件销毁时注销占位模板，并通过[List](arkui-ts/ts-container-list.md)的[scrollPlaceholder](arkui-ts/ts-container-list.md#scrollplaceholder)属性设置占位提供者：快速滚动时，帧预算不足的列表项先显示已注册的占位模板，真实列表项分帧创建完成后替换占位，减少丢帧。
 
-从API版本26.2.0开始，新增register、unregister、isRegistered接口及PlaceholderOptions、PlaceholderProvider类型。
+从API版本26.1.0开始，新增register、unregister、isRegistered接口及PlaceholderOptions、PlaceholderProvider类型。
 
 <!--code_no_check-->
 ```ts
