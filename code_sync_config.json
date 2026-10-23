@@ -48293,6 +48293,22 @@
 		"sample_files":[
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/audio_decoder.cpp",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/common/sample_callback.cpp",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/sample/player/output/audio/PlayerAudioOutput.cpp",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/sample/player/output/audio/AudioOutputPump.cpp",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/audio_decoder.cpp",
 				"functions":[
 					{
 						"end_line":38,
@@ -48357,7 +48373,7 @@
 				]
 			},
 			{
-				"file_name":"openharmony/applications_app_samples/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/common/sample_callback.cpp",
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/common/sample_callback.cpp",
 				"functions":[
 					{
 						"end_line":311,
@@ -48382,7 +48398,7 @@
 				]
 			},
 			{
-				"file_name":"openharmony/applications_app_samples/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/sample/player/output/audio/PlayerAudioOutput.cpp",
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/sample/player/output/audio/PlayerAudioOutput.cpp",
 				"functions":[
 					{
 						"end_line":61,
@@ -48392,7 +48408,7 @@
 				]
 			},
 			{
-				"file_name":"openharmony/applications_app_samples/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/sample/player/output/audio/AudioOutputPump.cpp",
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/sample/player/output/audio/AudioOutputPump.cpp",
 				"functions":[
 					{
 						"end_line":141,
@@ -48408,6 +48424,18 @@
 		"sample_files":[
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/audio_encoder.cpp",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/common/sample_callback.cpp",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/sample/recorder/Recorder.cpp",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/audio_encoder.cpp",
 				"functions":[
 					{
 						"end_line":42,
@@ -48477,7 +48505,7 @@
 				]
 			},
 			{
-				"file_name":"openharmony/applications_app_samples/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/common/sample_callback.cpp",
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/common/sample_callback.cpp",
 				"functions":[
 					{
 						"end_line":311,
@@ -48497,17 +48525,17 @@
 				]
 			},
 			{
-				"file_name":"openharmony/applications_app_samples/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/sample/recorder/Recorder.cpp",
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/sample/recorder/Recorder.cpp",
 				"functions":[
 					{
-						"end_line":556,
+						"end_line":825,
 						"name":"Recorder::AudioEncInputThread",
-						"start_line":535
+						"start_line":804
 					},
 					{
-						"end_line":632,
+						"end_line":917,
 						"name":"Recorder::AudioEncOutputThread",
-						"start_line":608
+						"start_line":877
 					}
 				]
 			}
@@ -48518,6 +48546,14 @@
 		"sample_files":[
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/muxer.cpp",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/sample/recorder/Recorder.cpp",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/muxer.cpp",
 				"functions":[
 					{
 						"end_line":39,
@@ -48535,39 +48571,39 @@
 						"start_line":72
 					},
 					{
-						"end_line":118,
+						"end_line":128,
 						"name":"Muxer::AddVideoTrack",
 						"start_line":91
 					},
 					{
-						"end_line":129,
+						"end_line":139,
 						"name":"Muxer::Start",
-						"start_line":120
+						"start_line":130
 					},
 					{
-						"end_line":148,
+						"end_line":158,
 						"name":"Muxer::WriteSample",
-						"start_line":131
+						"start_line":141
 					},
 					{
-						"end_line":159,
+						"end_line":169,
 						"name":"Muxer::Stop",
-						"start_line":150
+						"start_line":160
 					},
 					{
-						"end_line":171,
+						"end_line":181,
 						"name":"Muxer::Release",
-						"start_line":161
+						"start_line":171
 					}
 				]
 			},
 			{
-				"file_name":"openharmony/applications_app_samples/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/sample/recorder/Recorder.cpp",
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/sample/recorder/Recorder.cpp",
 				"functions":[
 					{
-						"end_line":632,
+						"end_line":917,
 						"name":"Recorder::AudioEncOutputThread",
-						"start_line":608
+						"start_line":877
 					}
 				]
 			}
@@ -48578,6 +48614,18 @@
 		"sample_files":[
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/audio_decoder.cpp",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/sample/player/output/audio/PlayerAudioOutput.cpp",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/sample/player/output/audio/AudioOutputPump.cpp",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/audio_decoder.cpp",
 				"functions":[
 					{
 						"end_line":38,
@@ -48637,7 +48685,7 @@
 				]
 			},
 			{
-				"file_name":"openharmony/applications_app_samples/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/sample/player/output/audio/PlayerAudioOutput.cpp",
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/sample/player/output/audio/PlayerAudioOutput.cpp",
 				"functions":[
 					{
 						"end_line":110,
@@ -48647,7 +48695,7 @@
 				]
 			},
 			{
-				"file_name":"openharmony/applications_app_samples/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/sample/player/output/audio/AudioOutputPump.cpp",
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/sample/player/output/audio/AudioOutputPump.cpp",
 				"functions":[
 					{
 						"end_line":166,
@@ -48663,6 +48711,14 @@
 		"sample_files":[
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/audio_encoder.cpp",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/sample/recorder/Recorder.cpp",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/audio_encoder.cpp",
 				"functions":[
 					{
 						"end_line":42,
@@ -48722,17 +48778,17 @@
 				]
 			},
 			{
-				"file_name":"openharmony/applications_app_samples/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/sample/recorder/Recorder.cpp",
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/sample/recorder/Recorder.cpp",
 				"functions":[
 					{
-						"end_line":669,
+						"end_line":954,
 						"name":"Recorder::AudioEncInputSyncThread",
-						"start_line":634
+						"start_line":919
 					},
 					{
-						"end_line":702,
+						"end_line":1003,
 						"name":"Recorder::AudioEncOutputSyncThread",
-						"start_line":671
+						"start_line":956
 					}
 				]
 			}
