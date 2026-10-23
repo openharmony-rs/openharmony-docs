@@ -348,7 +348,8 @@ getProfileByAbility(moduleName: string, abilityName: string, metadataName: strin
 
 根据给定的moduleName、abilityName和metadataName（module.json5中[abilities标签](../../quick-start/module-configuration-file.md#abilities标签)下的metadata标签的name）获取自身相应配置文件的json格式字符串。使用callback异步回调。
 
-> 说明：
+> **说明：**
+>
 > 如果配置文件信息采用了资源引用格式，则返回值将保持资源引用格式（例如 $string:res_id），开发者可以通过[资源管理](../apis-localization-kit/js-apis-resource-manager.md)的相关接口，来获取引用的资源。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -407,7 +408,8 @@ getProfileByAbility(moduleName: string, abilityName: string, metadataName?: stri
 
 根据给定的moduleName、abilityName和metadataName（module.json5中[abilities标签](../../quick-start/module-configuration-file.md#abilities标签)下的metadata标签的name）获取自身相应配置文件的json格式字符串。使用Promise异步回调。
 
-> 说明：
+> **说明：**
+>
 > 如果配置文件信息采用了资源引用格式，则返回值将保持资源引用格式（例如 $string:res_id），开发者可以通过[资源管理](../apis-localization-kit/js-apis-resource-manager.md)的相关接口，来获取引用的资源。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
