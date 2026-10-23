@@ -4800,9 +4800,9 @@ setTransPageEnabled(enabled: boolean): void
 > - 该接口在下一次路由转场时生效，不会触发当前页面的重新布局或动效。
 > - 应用未配置强制分栏时调用该接口不产生任何效果，也不影响应用稳定性。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4856,9 +4856,9 @@ isTransPageEnabled(): boolean
 > - 未调用[setTransPageEnabled](#settranspageenabled)时返回true，表示transPages配置默认生效。
 > - 应用未配置强制分栏时返回true（与默认行为一致）。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
