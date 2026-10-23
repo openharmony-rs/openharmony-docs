@@ -35087,6 +35087,16 @@
 						"start_line":17
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ManageWebPageFileIO/entry/src/main/ets/pages/SelectDownloadDir.ets",
+				"functions":[
+					{
+						"end_line":92,
+						"name":"select_download_dir",
+						"start_line":16
+					}
+				]
 			}
 		]
 	},
@@ -35250,13 +35260,7 @@
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry2/src/main/ets/pages/PrefetchingAPOSTRequest_three.ets",
-				"functions":[
-					{
-						"end_line":43,
-						"name":"on_page_end_trigger_prefetch_post_request_access_page",
-						"start_line":15
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry3/src/main/ets/pages/DynamicComponent.ets",
@@ -35403,7 +35407,7 @@
 				"functions":[
 					{
 						"end_line":44,
-						"name":"initialize_kernel_in_onCreate_and_pre_fetch_post_request",
+						"name":"on_page_end_trigger_prefetch_post_request_access_page",
 						"start_line":16
 					}
 				]
@@ -35517,6 +35521,46 @@
 						"start_line":17
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry1/src/main/ets/entryability/EntryAbility.ets",
+				"functions":[
+					{
+						"end_line":68,
+						"name":"initialize_kernel_in_onCreate_and_pre_connect_to_homepage",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry2/src/main/ets/entryability/EntryAbility.ets",
+				"functions":[
+					{
+						"end_line":79,
+						"name":"initialize_kernel_in_onCreate_and_pre_fetch_post_request",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry3/src/main/ets/entryability/EntryAbility.ets",
+				"functions":[
+					{
+						"end_line":68,
+						"name":"save_the_uiContext_to_localstorage_in_entry_ability",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry4/src/main/ets/entryability/EntryAbility.ets",
+				"functions":[
+					{
+						"end_line":68,
+						"name":"save_uiContext_to_localstorage_in_entry_ability",
+						"start_line":16
+					}
+				]
 			}
 		]
 	},
@@ -35550,6 +35594,16 @@
 						"end_line":96,
 						"name":"Intercept_requested_information",
 						"start_line":32
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ArkWebSchemeHandler/entry/src/main/ets/pages/CustomizeSchemes.ets",
+				"functions":[
+					{
+						"end_line":49,
+						"name":"register_custom_schemes",
+						"start_line":16
 					}
 				]
 			}
@@ -49134,6 +49188,21 @@
 						"end_line":493,
 						"name":"CApiClosePipe",
 						"start_line":477
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/web/web-set-back-forward-cache.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/NetReqInterceptCacheWinOps/entry2/src/main/ets/entryability/EntryAbility.ets",
+				"functions":[
+					{
+						"end_line":67,
+						"name":"web_module_open_bf_cache",
+						"start_line":16
 					}
 				]
 			}
