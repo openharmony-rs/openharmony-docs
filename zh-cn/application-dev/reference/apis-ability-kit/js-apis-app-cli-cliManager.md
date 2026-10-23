@@ -101,7 +101,7 @@ execCmd(cmd: string, execCmdOptions?: ExecCmdOptions): Promise\<CliSessionInfo\>
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**需要权限**：<!--Del-->ohos.permission.EXEC_CLI_TOOL（系统应用可配置）或<!--DelEnd--> ohos.permission.EXEC_PUBLIC_CLI_TOOL
+**需要权限**：ohos.permission.EXEC_CLI_TOOL（系统应用可配置）或 ohos.permission.EXEC_PUBLIC_CLI_TOOL
 
 > **说明：**
 >
