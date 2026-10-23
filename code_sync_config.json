@@ -68450,7 +68450,7 @@
 						"start_line":72
 					},
 					{
-						"end_line":118,
+						"end_line":128,
 						"name":"Muxer::AddVideoTrack",
 						"start_line":91
 					},
