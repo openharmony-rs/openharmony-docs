@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "ArkTS术语表汇总并解释ArkTS开发中的核心术语，包括方舟字节码（abc产物）、ArkGuard代码混淆器、ASON序列化工具、es2abc编译器及Sendable可共享对象机制等概念定义，帮助开发者准确理解ArkTS技术体系中各关键名词的内涵与用途。"
+keywords: [ArkTS术语, 方舟字节码, ArkGuard, ASON, es2abc, Sendable, 代码混淆, 序列化反序列化, 并发共享对象]
+doctype: glossary
+status: active
+---
+
 # ArkTS术语
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
