@@ -2370,14 +2370,14 @@ SIM卡类型和状态。
 
 ## CallStateInfo<sup>11+</sup>
 
-通话状态相关信息。
+运营商通话状态及号码。
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
 
 |     名称            |                 类型                    | 只读 | 可选 | 说明     |
 | ------------------- | -------------------------------------- | ---- | ---- | -------- |
-| state               | [CallState](js-apis-call.md#callstate) | 否   | 否   | 通话状态。 |
-| number              | string                                 | 否   | 否   | 电话号码。受系统权限管控，仅面向系统应用开放，三方应用无法获取。 |
+| state               | [CallState](js-apis-call.md#callstate) | 否   | 否   | 运营商通话状态。 |
+| number              | string                                 | 否   | 否   | 运营商通话电话号码。受系统权限管控，仅面向系统应用开放，三方应用无法获取。 |
 
 
 ## CCallStateInfo<sup>23+</sup>
@@ -2388,7 +2388,7 @@ SIM卡类型和状态。
 
 |     名称            |                 类型                    | 只读 | 可选 | 说明     |
 | ------------------- | -------------------------------------- | ---- | ---- | -------- |
-| state               | [CCallState](js-apis-call.md#ccallstate23) | 否   | 否   | 通话状态。 |
+| state               | [CCallState](js-apis-call.md#ccallstate23) | 否   | 否   | 通话类型。 |
 | teleNumber              | string                                 | 否   | 否   | 电话号码。 |
 
 
