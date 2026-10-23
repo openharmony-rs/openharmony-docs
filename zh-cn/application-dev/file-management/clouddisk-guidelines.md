@@ -681,6 +681,7 @@ static napi_value CreatePlaceholderFile(napi_env env, napi_callback_info info)
     placeholderInfo.mtimeMs = mtimeMs;       // 修改时间（毫秒）
     placeholderInfo.logicalSize = logicalSize; // 逻辑大小（字节）
 
+    // ...
     // 创建占位符文件（customInfo为NULL表示不写入自定义信息，非NULL时写入自定义信息）
     auto ret = OH_CloudDisk_CreatePlaceholder(syncFolderPath, relativePathInfo, placeholderInfo, customInfoPtr);
     if (ret != CLOUD_DISK_OK) {
@@ -745,6 +746,7 @@ static napi_value UpdatePlaceholder(napi_env env, napi_callback_info info)
     placeholderInfo.mtimeMs = mtimeMs;       // 修改时间（毫秒）
     placeholderInfo.logicalSize = logicalSize; // 逻辑大小（字节）
 
+    // ...
     // 更新占位符元数据（customInfo为NULL时保留原有自定义信息，非NULL时更新）
     auto ret = OH_CloudDisk_UpdatePlaceholder(syncFolderPath, relativePathInfo, placeholderInfo, customInfoPtr);
     if (ret != CLOUD_DISK_OK) {
@@ -859,6 +861,7 @@ static napi_value GetPlaceholderState(napi_env env, napi_callback_info info)
 
     // 调用SDK查询占位符水合状态（结果写入state，出错时SDK置NONE）
     OH_CloudDisk_PlaceholderState state = OH_CLOUD_DISK_PLACEHOLDER_STATE_NONE;
+    // ...
     auto ret = OH_CloudDisk_GetPlaceholderState(syncFolderPath, relativePathInfo, &state);
     if (ret != CLOUD_DISK_OK) {
         LOGE("OH_CloudDisk_GetPlaceholderState failed, errorCode: %{public}d.", ret);
@@ -921,6 +924,7 @@ static napi_value GetPlaceholderCustomInfo(napi_env env, napi_callback_info info
         return result;
     }
 
+    // ...
     // 读取自定义信息（dataLength为in/out参数，返回时携带实际读取长度）
     CloudDisk_ErrorCode ret =
         OH_CloudDisk_GetPlaceholderCustomInfo(syncFolderPath, relativePathInfo, dataBuf, &dataLength);
@@ -1011,6 +1015,7 @@ static napi_value MarkFileAsPlaceholder(napi_env env, napi_callback_info info)
     CloudDisk_SyncFolderPath syncFolderPath = MakePathInfo(syncPath);
     CloudDisk_PathInfo relativePathInfo = MakePathInfo(relativePath);
 
+    // ...
     // 普通文件标记为占位符
     auto ret = OH_CloudDisk_MarkFileAsPlaceholder(syncFolderPath, relativePathInfo);
     if (ret != CLOUD_DISK_OK) {
@@ -1056,6 +1061,7 @@ static napi_value UnmarkPlaceholderFile(napi_env env, napi_callback_info info)
     CloudDisk_SyncFolderPath syncFolderPath = MakePathInfo(syncPath);
     CloudDisk_PathInfo relativePathInfo = MakePathInfo(relativePath);
 
+    // ...
     // 取消占位符标记
     auto ret = OH_CloudDisk_UnmarkPlaceholderFile(syncFolderPath, relativePathInfo);
     if (ret != CLOUD_DISK_OK) {
