@@ -1,4 +1,4 @@
-# Video Decoding in Asynchronous Mode
+# Asynchronous Video Decoding
 
 <!--Kit: AVCodec Kit-->
 <!--Subsystem: Multimedia-->

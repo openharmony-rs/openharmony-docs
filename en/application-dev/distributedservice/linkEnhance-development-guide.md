@@ -45,7 +45,7 @@ Bluetooth is enabled on the client and server devices.
 ### Environment Setup
 
 1. Install [DevEco Studio](https://developer.huawei.com/consumer/en/download/deveco-studio) 4.1 or later on the PC.
-2. Update the public-SDK to API version 20 or later<!--Del-->. For details, see [Update Guide](../tools/openharmony-sdk-upgrade-assistant.md)<!--DelEnd-->.
+2. Update the public-SDK to API version 20 or later.
 3. Connect device A and device B to the PC using USB cables.
 4. Enable Bluetooth on device A and device B.
 
