@@ -3,11 +3,12 @@
 <!--Subsystem: Ability-->
 <!--Owner: @xialiangwei-->
 <!--Designer: @jsjzju-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 <!--deprecated_code_no_check-->
+<!-- md-trans-meta sourceCommit=79e2b0709a488b07e5881d61578e00850aa4f234 translatedAt=2026-10-13T07:26:09.363Z pushedAt=2026-10-14T06:17:54.717Z -->
 
-A ServiceAbility is started in the same way other abilities. You can start a ServiceAbility by calling **featureAbility.startAbility()** in the PageAbility or calling **particleAbility.startAbility()** in another ServiceAbility. For details about the startup rules, see [Component Startup Rules](component-startup-rules.md).
+Starting a ServiceAbility is no different from starting other abilities. An application developer can start a ServiceAbility in a PageAbility through the **startAbility** API of **featureAbility**, and start a ServiceAbility in a ServiceAbility through the **startAbility** API of **particleAbility**. For details about the ServiceAbility startup rules, see [FA Model Component Startup Rules](component-startup-rules-fa.md).
 
 
 The following example shows how to use **startAbility()** to start the ServiceAbility whose **bundleName** is **com.example.myapplication** and **abilityName** is **ServiceAbility** in a PageAbility. When starting the ServiceAbility of the [FA model](ability-terminology.md#fa-model), concatenate the **bundleName** string before **abilityName**.
@@ -47,7 +48,7 @@ struct PageServiceAbility {
 ```
 
 
-In the preceding code, [startAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability) is used to start the ServiceAbility.
+After the preceding code is executed, the ability starts the ServiceAbility through the [`startAbility()`](../reference/apis-ability-kit/js-apis-ability-featureAbility.md#featureabilitystartability) method.
 
 
 - If the ServiceAbility is not running, the system calls **onStart()** to initialize the ServiceAbility, and then calls **onCommand()** on the ServiceAbility.

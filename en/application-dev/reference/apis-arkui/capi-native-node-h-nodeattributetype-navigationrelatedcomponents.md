@@ -5,7 +5,7 @@
 <!--Designer: @fangzhiyuan1-->
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=b5d07443c629fc3cb39d28cdcd1858d2f47dbab3 translatedAt=2026-10-10T09:44:50.941Z pushedAt=2026-10-13T01:28:01.799Z -->
+<!-- md-trans-meta sourceCommit=b5d07443c629fc3cb39d28cdcd1858d2f47dbab3 translatedAt=2026-10-10T09:44:50.941Z pushedAt=2026-10-16T06:48:56.199Z -->
 
 ```c
 enum ArkUI_NodeAttributeType
@@ -333,13 +333,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Effect used at the edges of the component when the boundary of the scrollable content is reached. The parameter type is [ArkUI_EdgeEffect](capi-native-type-h.md#arkui_edgeeffect).<br>The default value is **ARKUI_EDGE_EFFECT_SPRING**.|
+| .value[0].i32 | Effect used at the edges of the component when the boundary of the scrollable content is reached. The parameter type is [ArkUI_EdgeEffect](capi-scroll-h.md#arkui_edgeeffect).<br>The default value is **ARKUI_EDGE_EFFECT_SPRING**.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Effect used at the edges of the component when the boundary of the scrollable content is reached. The parameter type is [ArkUI_EdgeEffect](capi-native-type-h.md#arkui_edgeeffect).|
+| .value[0].i32 | Effect used at the edges of the component when the boundary of the scrollable content is reached. The parameter type is [ArkUI_EdgeEffect](capi-scroll-h.md#arkui_edgeeffect).|
 
 ## NODE_SWIPER_NODE_ADAPTER
 

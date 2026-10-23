@@ -73,7 +73,7 @@
 ### 搭建环境
 
 1. 在PC上安装[DevEco Studio](https://developer.huawei.com/consumer/cn/download/deveco-studio)，要求版本在4.1及以上。
-2. 将public-SDK更新到API 18或以上，更新SDK的具体操作可参见[更新指南]( ../tools/openharmony-sdk-upgrade-assistant.md)。
+2. 将public-SDK更新到API 18或以上，更新SDK的具体操作可参见[更新指南](../tools/openharmony-sdk-upgrade-assistant.md)。
 3. 用USB线缆将两台调试设备（设备A和设备B）连接到PC。
 4. 打开设备A和设备B的Wi-Fi和蓝牙。如果登录同一个华为账号，则设备间会进行自组网；非同账号环境下，需先通过[设备发现](devicemanager-guidelines.md#设备发现开发指导)和[设备绑定](devicemanager-guidelines.md#设备绑定开发指导)建立可信关系以完成组网。
 
@@ -152,7 +152,7 @@ function initDmClass(): void {
   try {
     dmClass = distributedDeviceManager.createDeviceManager('com.example.remotephotodemo');
   } catch (err) {
-    hilog.info(0x0000, 'testTag', 'createDeviceManager err');
+    hilog.error(0x0000, 'testTag', 'createDeviceManager err');
   }
 }
 
@@ -163,17 +163,17 @@ function getRemoteDeviceId(): string | undefined {
     hilog.info(0x0000, 'testTag', 'getRemoteDeviceId begin');
     let list = dmClass.getAvailableDeviceListSync();
     if (typeof (list) === 'undefined' || typeof (list.length) === 'undefined') {
-      hilog.info(0x0000, 'testTag', 'getRemoteDeviceId err: list is null');
+      hilog.error(0x0000, 'testTag', 'getRemoteDeviceId err: list is null');
       return;
     }
     if (list.length === 0) {
-      hilog.info(0x0000, 'testTag', 'getRemoteDeviceId err: list is empty');
+      hilog.error(0x0000, 'testTag', 'getRemoteDeviceId err: list is empty');
       return;
     }
     // 弹框选择设备
     return list[0].networkId;
   } else {
-    hilog.info(0x0000, 'testTag', 'getRemoteDeviceId err: dmClass is null');
+    hilog.error(0x0000, 'testTag', 'getRemoteDeviceId err: dmClass is null');
     return;
   }
 }
@@ -208,7 +208,7 @@ function getRemoteDeviceId(): string | undefined {
       hilog.info(0x0000, 'testTag', 'createSession sessionId is', this.sessionId);
       abilityConnectionManager.connect(this.sessionId).then((connectResult) => {
         if (!connectResult.isConnected) {
-          hilog.info(0x0000, 'testTag', 'connect failed');
+          hilog.error(0x0000, 'testTag', 'connect failed');
           return;
         }
       }).catch(() => {
@@ -329,7 +329,7 @@ registerSessionEvent(sessionId: number) {
   abilityConnectionManager.sendData(this.sessionId, arrayBuffer.buffer).then(() => {
     hilog.info(0x0000, 'testTag', "sendData success");
   }).catch(() => {
-    hilog.info(0x0000, 'testTag', "sendData failed");
+    hilog.error(0x0000, 'testTag', "sendData failed");
   })
   ```
 

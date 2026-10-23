@@ -1,11 +1,11 @@
 # Audio Session Management (ArkTS)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @funny_sunix-->
+<!--Owner: @LauJianghu-->
 <!--Designer: @hao-liangfei-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=1fc37bb32330967012f419321b27588787af533d translatedAt=2026-09-28T02:35:32.780Z pushedAt=2026-09-29T06:49:42.264Z -->
+<!-- md-trans-meta sourceCommit=1d8516904d45ad9b388880a584cf8cd014dd5cf1 translatedAt=2026-10-13T13:17:44.671Z pushedAt=2026-10-16T02:46:18.032Z -->
 
 In the scenario where multiple audio streams are concurrently playing, the system has preset a default [audio focus strategy](audio-playback-concurrency.md#audio-focus-strategy) for unified audio focus management across all audio streams (including playback and recording).
 
@@ -387,6 +387,7 @@ You can call [on('audioSessionStateChanged')](../../reference/apis-audio-kit/ark
            break;
          case audio.AudioSessionStateChangeHint.AUDIO_SESSION_STATE_CHANGE_HINT_UNDUCK:
            // This branch indicates that the system has restored the volume of all playback audio streams of the app to normal.
+           break;
          case audio.AudioSessionStateChangeHint.AUDIO_SESSION_STATE_CHANGE_HINT_MUTE_SUGGESTION:
            // This branch indicates that another app has started playing non-mixable audio. The system may decide whether to mute.
            break;
@@ -486,6 +487,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
         break;
       case audio.AudioSessionStateChangeHint.AUDIO_SESSION_STATE_CHANGE_HINT_UNDUCK:
         // This branch indicates that the system has restored the volume of all playback audio streams of the app to normal.
+        break;
       case audio.AudioSessionStateChangeHint.AUDIO_SESSION_STATE_CHANGE_HINT_MUTE_SUGGESTION:
         // This branch indicates that another app has started playing non-mixable audio. The system may decide whether to mute at its own discretion.
         break;

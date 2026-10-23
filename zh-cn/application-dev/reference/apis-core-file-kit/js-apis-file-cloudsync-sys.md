@@ -1,8 +1,8 @@
 # @ohos.file.cloudSync (端云同步能力)(系统接口)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @Hermits; @reminder2352-->
-<!--Designer: @oh_create_jiawei-->
+<!--Owner: @bao-yangyang; @maokelong95-->
+<!--Designer: @reminder2352-->
 <!--Tester: @zsyztt-->
 <!--Adviser: @jinqiuheng-->
 
@@ -1308,7 +1308,7 @@ try {
   let state = cloudSync.getFileSyncState(uri);
 } catch (err) {
   let error:BusinessError = err as BusinessError;
-  console.error("getFileSyncStatefailed with error: " + JSON.stringify(error));
+  console.error("getFileSyncState failed with error: " + JSON.stringify(error));
 }
 ```
 

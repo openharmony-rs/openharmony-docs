@@ -3,8 +3,9 @@
 <!--Subsystem: Window-->
 <!--Owner: @Pakoo007-->
 <!--Designer: @stupidb-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=494f31a35d1b25179fe202754d9ee44d527d8ab6 translatedAt=2026-10-21T09:31:45.047Z pushedAt=2026-10-22T02:15:29.780Z -->
 
 The **uiExtension** module provides APIs for the [EmbeddedUIExtensionAbility](../../application-models/embeddeduiextensionability.md) (or [UIExtensionAbility](../apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#uiextensionability)) to obtain the host application window information or the information about the corresponding [EmbeddedComponent](./arkui-ts/ts-container-embedded-component.md)<!--Del--> (or [UIExtensionComponent](../../reference/apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md))<!--DelEnd--> component.
 
@@ -235,7 +236,7 @@ Unsubscribes from size change events of the component (**EmbeddedComponent** or 
 
 | Name  | Type                 | Mandatory| Description                  |
 | -------- | --------------------- | ---- | ---------------------- |
-| type     | string                | Yes  | Event type. The value is fixed at **'windowSizeChange'**, indicating the component (**EmbeddedComponent** or **UIExtensionComponent**) size change events.|
+| type     | string                | Yes   | Event type. The value is fixed at **'windowSizeChange'**, indicating the component (**EmbeddedComponent** or **UIExtensionComponent**) size change events. |
 | callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<[window.Size](arkts-apis-window-i.md#size7)> | No  | Callback used to return the size of the current component (**EmbeddedComponent** or **UIExtensionComponent**). If a value is passed in, the corresponding subscription is canceled. If no value is passed in, all subscriptions to the specified event are canceled.|
 
 **Error codes**
@@ -280,9 +281,9 @@ Subscribes to position and size change events of the component (**EmbeddedCompon
 
 | Name  | Type                          | Mandatory| Description                                                    |
 | -------- | ------------------------------ | ---- | -------------------------------------------------------- |
-| type     | string                         | Yes  | Event type. The value is fixed at **'rectChange'**, indicating the rectangle change event for the component (**EmbeddedComponent** or **UIExtensionComponent**).|
+| type     | string                         | Yes  | Event type. The value is fixed at **'rectChange'**, indicating the rectangle change event for the component (**EmbeddedComponent** or **UIExtensionComponent**). |
 | reasons  | number                         | Yes  | Reason why the position and size of the component (**EmbeddedComponent** or **UIExtensionComponent**) change. For details about the values, see [RectChangeReason](#rectchangereason14).|
-| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<[RectChangeOptions](#rectchangeoptions14)> | Yes| Callback used to return the current rectangle change values and the reason for the change of the component (**EmbeddedComponent** or **UIExtensionComponent**).|
+| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<[RectChangeOptions](#rectchangeoptions14)> | Yes | Callback used to return the current rectangle change values and the reason for the change of the component (**EmbeddedComponent** or **UIExtensionComponent**). |
 
 **Error codes**
 
@@ -330,7 +331,7 @@ Unsubscribes from position and size change events of the component (**EmbeddedCo
 
 | Name  | Type                          | Mandatory| Description                                                        |
 | -------- | ------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                         | Yes  | Event type. The value is fixed at **'rectChange'**, indicating the rectangle change event for the component (**EmbeddedComponent** or **UIExtensionComponent**).|
+| type     | string                         | Yes   | Event type. The value is fixed at **'rectChange'**, indicating the rectangle change event for the component (**EmbeddedComponent** or **UIExtensionComponent**). |
 | callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<[RectChangeOptions](#rectchangeoptions14)> | No  | Callback used to return the current rectangle change values and the reason for the change of the component (**EmbeddedComponent** or **UIExtensionComponent**). If a value is passed in, the corresponding subscription is canceled. If no value is passed in, all subscriptions to the specified event are canceled.|
 
 **Error codes**
@@ -393,7 +394,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ------- | ------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed.   |
 | 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. Possible causes: 1. The window is not created or destroyed. 2. Internal task error. 3. The subWindow has been created and can not be created again. 4. It is not allowed to create non-secure window when secure extension exists. |
+| 1300002 | This window state is abnormal. Possible causes: 1. The window is not created or destroyed. 2. Internal task error. 3. The subWindow has been created and cannot be created again. 4. It is not allowed to create non-secure window when secure extension exists. |
 | 1300035 | Creating a subwindow is not allowed in the current context. Possible cause: 1. An AgentUIExtensionAbility cannot create a subwindow. |
 
 **Example**
@@ -415,22 +416,22 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
     extensionWindow.createSubWindowWithOptions('subWindowForHost', subWindowOpts)
       .then((subWindow: window.Window) => {
         subWindow.setUIContent('pages/Index', (err, data) => {
-          if (err && err.code != 0) {
+          if (err && err.code) {
             return;
           }
           subWindow?.resize(300, 300, (err, data) => {
-            if (err && err.code != 0) {
+            if (err && err.code) {
               return;
             }
             subWindow?.moveWindowTo(100, 100, (err, data) => {
-              if (err && err.code != 0) {
+              if (err && err.code) {
                 return;
               }
               subWindow?.showWindow((err, data) => {
-                if (err && err.code == 0) {
-                  console.info(`The subwindow has been shown!`);
+                if (err && err.code) {
+                  console.error(`Failed to show the subwindow. Code: ${err.code}, message: ${err.message}`);
                 } else {
-                  console.error(`Failed to show the subwindow!`);
+                  console.info(`The subwindow has been shown!`);
                 }
               });
             });
@@ -476,7 +477,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | ------------------------------ |
 | 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. 2. Internal task error. 3. The subWindow has been created and can not be created again. 4. It is not allowed to create non-secure window when secure extension exists. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. 2. Internal task error. 3. The subWindow has been created and cannot be created again. 4. It is not allowed to create non-secure window when secure extension exists. |
 | 1300035 | Creating a subwindow is not allowed in the current context. Possible cause: 1. An AgentUIExtensionAbility cannot create a subwindow. |
 
 **Example**
@@ -498,22 +499,22 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
     extensionWindow.createSubWindowWithOptions('subWindowForHost', subWindowConfig, true)
       .then((subWindow: window.Window) => {
         subWindow.setUIContent('pages/Index', (err, data) => {
-          if (err && err.code != 0) {
+          if (err && err.code) {
             return;
           }
           subWindow?.resize(300, 300, (err, data) => {
-            if (err && err.code != 0) {
+            if (err && err.code) {
               return;
             }
             subWindow?.moveWindowTo(100, 100, (err, data) => {
-              if (err && err.code != 0) {
+              if (err && err.code) {
                 return;
               }
               subWindow?.showWindow((err, data) => {
-                if (err && err.code == 0) {
-                  console.info(`The subwindow has been shown!`);
+                if (err && err.code) {
+                  console.error(`Failed to show the subwindow. Code: ${err.code}, message: ${err.message}`);
                 } else {
-                  console.error(`Failed to show the subwindow!`);
+                  console.info(`The subwindow has been shown!`);
                 }
               });
             });
@@ -581,8 +582,8 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
         }).catch((err: BusinessError) => {
           console.error(`Failed to occupy events. Cause code: ${err.code}, message: ${err.message}`);
         });
-      } catch (e) {
-        console.error(`Occupy events got exception code: ${e.code}, message: ${e.message}`);
+      } catch (err) {
+        console.error(`Occupy events got exception code: ${err.code}, message: ${err.message}`);
       }
     }, 500);
   }
@@ -626,7 +627,7 @@ Represents the information about the avoidance area of the window.
 
 ## WindowProxyProperties<sup>14+</sup>
 
-Provides information about a component.
+Represents the position and size information about the component (**EmbeddedComponent** or **UIExtensionComponent**).
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -682,9 +683,9 @@ import { Want } from '@kit.AbilityKit';
 struct Index {
   @State message: string = 'Message: ';
   private want: Want = {
-    bundleName: "com.example.embeddeddemo",
-    abilityName: "ExampleEmbeddedAbility",
-  }
+    bundleName: 'com.example.embeddeddemo',
+    abilityName: 'ExampleEmbeddedAbility',
+  };
 
   build() {
     Row() {
@@ -782,16 +783,16 @@ struct Extension {
       Text(this.message)
         .fontSize(20)
         .fontWeight(FontWeight.Bold)
-      Button("Obtain Component Size").width('90%').margin({ top: 5, bottom: 5 }).fontSize(16).onClick(() => {
+      Button('Obtain Component Size').width('90%').margin({ top: 5, bottom: 5 }).fontSize(16).onClick(() => {
         let rect = this.extensionWindow?.properties.uiExtensionHostWindowProxyRect;
-        console.info(`EmbeddedComponent position and size: ${JSON.stringify(rect)}`);
+        console.info(`EmbeddedComponent position and size info: ${JSON.stringify(rect)}`);
       })
-      Button("Obtain Avoid Area Info").width('90%').margin({ top: 5, bottom: 5 }).fontSize(16).onClick(() => {
+      Button('Obtain System Avoid Area Info').width('90%').margin({ top: 5, bottom: 5 }).fontSize(16).onClick(() => {
         let avoidArea: window.AvoidArea | undefined =
           this.extensionWindow?.getWindowAvoidArea(window.AvoidAreaType.TYPE_SYSTEM);
-        console.info(`Avoidance area: ${JSON.stringify(avoidArea)}`);
+        console.info(`System avoid area: ${JSON.stringify(avoidArea)}`);
       })
-      Button("Create Subwindow").width('90%').margin({ top: 5, bottom: 5 }).fontSize(16).onClick(() => {
+      Button('Create Subwindow').width('90%').margin({ top: 5, bottom: 5 }).fontSize(16).onClick(() => {
         let subWindowOpts: window.SubWindowOptions = {
           'title': 'This is a subwindow',
           decorEnabled: true
@@ -799,23 +800,23 @@ struct Extension {
         this.extensionWindow?.createSubWindowWithOptions('subWindowForHost', subWindowOpts)
           .then((subWindow: window.Window) => {
             this.subWindow = subWindow;
-            this.subWindow.loadContent('pages/Index', this.storage, (err, data) => {
-              if (err && err.code != 0) {
+            this.subWindow?.loadContent('pages/Index', this.storage, (err, data) => {
+              if (err && err.code) {
                 return;
               }
               this.subWindow?.resize(300, 300, (err, data) => {
-                if (err && err.code != 0) {
+                if (err && err.code) {
                   return;
                 }
                 this.subWindow?.moveWindowTo(100, 100, (err, data) => {
-                  if (err && err.code != 0) {
+                  if (err && err.code) {
                     return;
                   }
                   this.subWindow?.showWindow((err, data) => {
-                    if (err && err.code == 0) {
-                      console.info(`The subwindow has been shown!`);
+                    if (err && err.code) {
+                      console.error(`Failed to show the subwindow. Code: ${err.code}, message: ${err.message}`);
                     } else {
-                      console.error(`Failed to show the subwindow!`);
+                      console.info(`The subwindow has been shown!`);
                     }
                   });
                 });

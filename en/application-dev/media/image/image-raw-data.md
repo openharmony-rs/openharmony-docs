@@ -1,4 +1,4 @@
-# Using ImageSource to Obtain RAW Data 
+# Using ImageSource to Obtain RAW Data
 
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
@@ -6,7 +6,7 @@
 <!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=51871fad202ca89cea4824e5e1f6eae94c62de6c translatedAt=2026-08-11T01:46:17.587Z pushedAt=2026-08-11T08:28:50.459Z -->
+<!-- md-trans-meta sourceCommit=99170cd098d394aca06fa01cb6bc53938313bd82 translatedAt=2026-10-13T13:20:38.811Z pushedAt=2026-10-16T03:03:22.846Z -->
 
 Image RAW data is the raw data directly obtained from the image sensor, which fully retains all sensor information without any compression loss. By using RAW data, you can obtain the highest quality image information and customize image processing algorithms based on specific requirements, enabling more flexible image processing and optimization.
 
@@ -19,9 +19,9 @@ The currently supported image file format is DNG.
 For details about the APIs for obtaining image RAW data, see [createImageRawData](../../reference/apis-image-kit/arkts-apis-image-ImageSource.md#createimagerawdata24).
 
 1. Import the `Image` module globally, and import the corresponding Kit modules as needed.
-
+   
    <!-- @[decodingPixelMap_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/pages/DecodingPixelMap.ets) -->    
-
+   
    ``` TypeScript
    // Import the required modules.
    import { image } from '@kit.ImageKit';
@@ -32,11 +32,10 @@ For details about the APIs for obtaining image RAW data, see [createImageRawData
    ```
 
 2. Obtain the image.
-
    - Method 1: Obtain the image directly through the sandbox path. This method is **only applicable** to images in the app sandbox. For details about how to obtain the path, see [Obtaining Application File Paths](../../application-models/application-context-stage.md#obtaining-application-file-paths).
-
+     
      <!-- @[get_filePath](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
-
+     
      ``` TypeScript
      function getFilePath(context: Context, fileName: string): string {
        const filePath: string = context.cacheDir + '/' + fileName;
@@ -45,9 +44,9 @@ For details about the APIs for obtaining image RAW data, see [createImageRawData
      ```
 
    - Method 2: Obtain the file descriptor of the image through the sandbox path. For details, see [@ohos.file.fs (File Management)](../../reference/apis-core-file-kit/js-apis-file-fs.md). This method requires importing the \@kit.CoreFileKit module.
-
+   
      <!-- @[get_fileFd](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
-
+     
      ``` TypeScript
      function getFileFd(context: Context, fileName: string): number | undefined {
        try {
@@ -61,11 +60,11 @@ For details about the APIs for obtaining image RAW data, see [createImageRawData
        }
      }
      ```
-
+      
    - Method 3: Obtain the `ArrayBuffer` of a resource file through the resource manager. For details, see [getRawFileContent](../../reference/apis-localization-kit/js-apis-resource-manager.md#getrawfilecontent9-1). This method requires importing the @kit.LocalizationKit module.
 
      <!-- @[get_fileBuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
-
+     
      ``` TypeScript
      async function getFileBuffer(context: Context, fileName: string): Promise<ArrayBuffer | undefined> {
        try {
@@ -82,11 +81,11 @@ For details about the APIs for obtaining image RAW data, see [createImageRawData
        }
      }
      ```
-
+      
    - Method 4: Obtain the `RawFileDescriptor` of a resource file through the resource manager. For details, see [getRawFd](../../reference/apis-localization-kit/js-apis-resource-manager.md#getrawfd9-1). This method requires importing the @kit.LocalizationKit module.
-
+   
      <!-- @[get_RawFd](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
-
+     
      ``` TypeScript
      async function getRawFd(context: Context, fileName: string): Promise<resourceManager.RawFileDescriptor | undefined> {
        try {
@@ -100,13 +99,13 @@ For details about the APIs for obtaining image RAW data, see [createImageRawData
        }
      }
      ```
-
+   
 3. Create an `ImageSource` instance.
 
    - Method 1: Create an `ImageSource` using a sandbox path. The sandbox path can be obtained through method 1 in step 2.
 
      <!-- @[createImageSource_filePath](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
-
+     
      ``` TypeScript
      // path is the obtained sandbox path.
      const imageSource : image.ImageSource = image.createImageSource(filePath);
@@ -115,7 +114,7 @@ For details about the APIs for obtaining image RAW data, see [createImageRawData
    - Method 2: Create an `ImageSource` using a file descriptor (fd). The fd can be obtained through method 2 in step 2.
 
      <!-- @[createImageSource_fd](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
-
+     
      ``` TypeScript
      // fd is the obtained file descriptor.
      const imageSource: image.ImageSource = image.createImageSource(fd);
@@ -124,7 +123,7 @@ For details about the APIs for obtaining image RAW data, see [createImageRawData
    - Method 3: Create an `ImageSource` using a buffer array. The buffer array can be obtained through method 3 in step 2.
 
      <!-- @[createImageSource_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
-
+     
      ``` TypeScript
      const imageSource: image.ImageSource = image.createImageSource(buffer);
      ```
@@ -132,7 +131,7 @@ For details about the APIs for obtaining image RAW data, see [createImageRawData
    - Method 4: Create an `ImageSource` using the `RawFileDescriptor` of a resource file. The `RawFileDescriptor` can be obtained through method 4 in step 2.
 
      <!-- @[createImageSource_rawFd](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
-
+     
      ``` TypeScript
      const imageSource: image.ImageSource = image.createImageSource(rawFileDescriptor);
      ```
@@ -140,7 +139,7 @@ For details about the APIs for obtaining image RAW data, see [createImageRawData
 4. Obtain the `ImageRawData` object and print the pixel values.
 
    <!-- @[createImageRawData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->      
-
+   
    ``` TypeScript
    async createImageRawData(imageSource: image.ImageSource | undefined) : Promise<image.ImageRawData | undefined> {
      if (!imageSource) {
@@ -166,23 +165,15 @@ For details about the APIs for obtaining image RAW data, see [createImageRawData
      }
    }
    ```
-
+   
 5. Release the `imageSource`.
 
    After confirming that the asynchronous method of `imageSource` has completed execution and the variable is no longer in use, you can manually call the following method to release it as needed.
 
-   <!-- @[release_pixelMapDecoder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/pages/DecodingPixelMap.ets) -->    
-
-   ``` TypeScript
-   async release() {
-     try {
-       await this.pixelMap?.release();
-     } catch (error) {
-       console.error(`Failed to release PixelMap: ${error}.`);
-     } finally {
-       this.pixelMap = undefined;
-     }
+   <!-- @[release_imageSource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/pages/DecodingPixelMap.ets) -->  
    
+   ``` TypeScript
+   async release_imageSource() {
      try {
        await this.imageSource?.release();
      } catch (error) {

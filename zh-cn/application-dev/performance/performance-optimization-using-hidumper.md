@@ -238,7 +238,7 @@ hdc shell hidumper --mem [pid]
 
 ![内存信息](figures/hidumper-mem.png)
 
-一般情况下，开发者只需要关注PSS （Proportional Set Size（实际使用物理内存））Total一列的数据，即示例应用实际使用的物理内存。在上图中可以看到，应用总共占用了53395KB的内存，主要包括ark ts heap（ArkUI堆内存）的3411KB以及native heap的45846KB。
+一般情况下，开发者只需要关注PSS （Proportional Set Size（实际使用物理内存））Total一列的数据，即示例应用实际使用的物理内存。在上图中可以看到，应用总共占用了53395KB的内存，主要包括ArkTS heap（ArkUI堆内存）的3411KB以及native heap的45846KB。
 
 ## HiDumper查看CPU信息
 

@@ -4,8 +4,9 @@
 <!--Subsystem: Ability-->
 <!--Owner: @lidongrui-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=79e2b0709a488b07e5881d61578e00850aa4f234 translatedAt=2026-10-13T07:22:33.625Z pushedAt=2026-10-14T03:57:07.623Z -->
 
 Depending on the launch type, the action performed when the PageAbility starts differs, as described in the table below.
 
@@ -18,7 +19,7 @@ Depending on the launch type, the action performed when the PageAbility starts d
 | multiton | Multiton mode| Default type. Each time **startAbility()** is called, a new ability instance is created in the application process. Multiple ability instances of this type are displayed in the recent task list.<br>A typical scenario is as follows: When a user opens a document application and touches **New**, a new document task is created. Multiple new document missions are displayed in the recent task list.|
 
 
-You can set **launchType** in the **config.json** file to configure the launch type. The sample code is as follows:
+Developers can configure the launch type through "launchType" in the config.json file. The following is an example:
 
 ```json5
 {

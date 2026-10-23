@@ -6,7 +6,7 @@
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=4b483f6ded13e509559a42efa5c91336f6a913b4 translatedAt=2026-08-15T01:47:30.914Z pushedAt=2026-08-15T07:19:21.383Z -->
+<!-- md-trans-meta sourceCommit=1afb9d0e0114e99744aca00b3dd4a65cd35bf2d1 translatedAt=2026-10-13T12:47:58.113Z pushedAt=2026-10-15T10:30:07.806Z -->
 
 ## Overview
 
@@ -62,7 +62,7 @@ The following demonstrates how to add a button in the app and click the button t
    Import the header files and define **LOG_TAG**.
 
    <!-- @[EventSub_napi_nohiappevent_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
-
+   
    ``` C++
    #include "napi/native_api.h"
    // ...
@@ -73,7 +73,7 @@ The following demonstrates how to add a button in the app and click the button t
    ```
 
    <!-- @[Hicollie_Set_Timer_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
-
+   
    ``` C++
    #include <unistd.h>
    #include "hicollie/hicollie.h"
@@ -81,8 +81,8 @@ The following demonstrates how to add a button in the app and click the button t
 
    Construct a scenario where the task execution times out, and use the **OH_HiCollie_SetTimer** and **OH_HiCollie_CancelTimer** functions to monitor the task.
 
-   <!-- @[Hicollie_Set_Timer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) --> 
-
+   <!-- @[Hicollie_Set_Timer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->  
+   
    ``` C++
    // Define the callback function.
    void CallBack(void*)
@@ -99,7 +99,9 @@ The following demonstrates how to add a button in the app and click the button t
        if (errorCode == HICOLLIE_SUCCESS) {  // The HiCollieTimer task is successfully registered.
            OH_LOG_INFO(LogType::LOG_APP, "HiCollieTimer taskId: %{public}d", id); // Print the task ID.
            sleep(2);  // Simulate a time-consuming function by blocking the thread for 2s.
-           OH_HiCollie_CancelTimer (id); // Cancel the registered timer based on the ID.
+           OH_HiCollie_CancelTimer(id); // Cancel the registered timer based on the ID.
+       } else {
+           OH_LOG_INFO(LogType::LOG_APP, "OH_HiCollie_SetTimer failed, errorCode is %{public}d", errorCode);
        }
        return nullptr;
    }
@@ -108,7 +110,7 @@ The following demonstrates how to add a button in the app and click the button t
    Register **TestHiCollieTimerNdk** as an ArkTS API in the **desc[]** array in the **Init** function.
 
    <!-- @[test_hicollie_timer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
-
+   
    ``` C++
    // Register TestHiCollieTimerNdk as an ArkTS API.
    { "TestHiCollieTimerNdk", nullptr, TestHiCollieTimerNdk, nullptr, nullptr, nullptr, napi_default, nullptr },
@@ -117,17 +119,17 @@ The following demonstrates how to add a button in the app and click the button t
 4. Edit the **Index.ets** file under **entry > src > main > cpp > types > libentry** in the project to define the ArkTS APIs.
 
    <!-- @[test_hicollie_timer_Index.d.ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/types/libentry/Index.d.ts) -->
-
+   
    ``` TypeScript
    export const TestHiCollieTimerNdk: () => void;
    ```
 
 5. Edit the **Index.ets** file under **entry > src > main > ets > pages** in the project.
-
+   
    Import the header file for calling the C API.
 
    <!-- @[EventSub_Index_Capi_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
    import testNapi from 'libentry.so';
    ```
@@ -135,7 +137,7 @@ The following demonstrates how to add a button in the app and click the button t
    Add a button on the **Index** page to trigger the **TestHiCollieTimerNdk** method.
 
    <!-- @[hicollie_timer_ndk_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) --> 
-
+   
    ``` TypeScript
    // Add a click event to trigger the TestHiCollieTimerNdk method.
    Button('TestHiCollieTimerNdk')

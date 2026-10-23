@@ -1,10 +1,11 @@
 # Display Error Codes
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @oh_wangxk; @logn-->
-<!--Designer: @hejunfei1991-->
-<!--Tester: @qinliwen0417-->
+<!--Owner: @oh_wangxk-->
+<!--Designer: @wulong158-->
+<!--Tester: @LiTongguan2026-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=494f31a35d1b25179fe202754d9ee44d527d8ab6 translatedAt=2026-10-15T10:41:06.949Z pushedAt=2026-10-16T02:49:13.474Z -->
 
 > **NOTE**
 >
@@ -56,7 +57,7 @@ Try again later or restart the device.
 
 ## 1400004 Parameter Error
 **Error Message**<br>
-Parameter error. 
+Parameter error.
 
 **Description**<br>
 This error code is reported when an input parameter is incorrect.

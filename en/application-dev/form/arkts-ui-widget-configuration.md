@@ -1,12 +1,11 @@
 # Configuring ArkTS Widget Configuration Files
-
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @Qian-Win-->
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=04869f9e89f730a6d0eb27f25db0b204c50aad54 translatedAt=2026-08-22T01:26:24.959Z pushedAt=2026-08-22T03:10:48.287Z -->
+<!-- md-trans-meta sourceCommit=14c25dcfa79d2f07b35a4a6bbbdc3d13f8f727f0 translatedAt=2026-10-13T12:54:30.668Z pushedAt=2026-10-15T13:00:13.285Z -->
 
 Widget-related configuration files include the [FormExtensionAbility](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md) configuration and the widget configuration. For [standalone widget packages](./arkts-ui-widget-creation.md#method-2-creating-a-standalone-package), the [standalone widget package configuration](./arkts-ui-widget-configuration.md#standalone-widget-package-configuration) is also included.
 > **NOTE**
@@ -16,13 +15,13 @@ Widget-related configuration files include the [FormExtensionAbility](../referen
 >- If the quintuple changes after an app upgrade, the corresponding widget in the system will be deleted and will disappear from the screen.
 
 ## FormExtensionAbility Configuration
-
 Configure `FormExtensionAbility` information under `extensionAbilities` in the [module.json5 file](../quick-start/module-configuration-file.md). For `FormExtensionAbility`, you must specify `metadata`. Specifically, set **name** to **ohos.extension.form** (fixed), and set **resource** to the [index of the widget configuration information](#widget-configuration).
 
    Example:
 
-  <!-- @[module_config_formCreate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormStandaloneDemo/entry/src/main/module.json5) --> 
 
+  <!-- @[module_config_formCreate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormStandaloneDemo/entry/src/main/module.json5) --> 
+  
   ``` JSON5
   {
     "module": {
@@ -47,12 +46,11 @@ Configure `FormExtensionAbility` information under `extensionAbilities` in the [
     }
   }
   ```
+  
 
 ## Standalone Widget Package Configuration
-
 In the [module.json5 file](../quick-start/module-configuration-file.md) of a widget package, the `formExtensionModule` field is used to associate with the `module` of the application bundle.<br>
 Example:
-
 <!-- @[standalone_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormStandaloneDemo/library/src/main/module.json5) --> 
 
 ``` JSON5
@@ -70,6 +68,7 @@ Example:
   }
 }
 ```
+
 
 ## Widget Configuration
 
@@ -109,9 +108,9 @@ In the **metadata** configuration item of FormExtensionAbility, you can specify 
 |multiScheduledUpdateTime|Multiple scheduled refresh times of the widget, as an additional parameter for single-point refresh, in 24-hour format, accurate to the minute. Multiple times are separated by commas, with a maximum of 24 times, for example, "10:30,10:50,11:00".<br/>**Note:**<br/>This field is supported since API version 18. multiScheduledUpdateTime must be used together with scheduledUpdateTime.|String|Yes, no multi-scheduled refresh is performed by default.|
 |conditionUpdate|Conditional refresh supported by the widget. The currently supported values are as follows:<br/>-&nbsp;network: Network refresh is supported.<br/>**Note:**<br/>This field configuration is supported since API version 18<!--Del-->, and the feature is supported only for system apps<!--DelEnd-->. Starting from API version 26.0.0, the feature takes effect after configuration.|String array|Yes, default value is an empty string array.|
 |[funInteractionParams](#funinteractionparams-field)|Extended field for fun interaction type interactive widgets.<br/>**Note:**<br/>This field is supported since API version 20.|Object|Yes, default is empty. When both funInteractionParams and sceneAnimationParams are configured, the widget is identified as a fun interaction type interactive widget.|
-|[sceneAnimationParams](#sceneanimationparams-field)|Extended field for [scene-based interactive widgets](./arkts-ui-liveform-sceneanimation-development.md). This field is supported since API version 20.|Object|Yes, default is empty. When both funInteractionParams and sceneAnimationParams are configured, the widget is identified as a fun interaction type interactive widget.|
+| [sceneAnimationParams](#sceneanimationparams-field) | Extended field of the [scene-based widget](./arkts-ui-liveform-sceneanimation-development.md).<br/>**Note:**<br/>This field is supported since API version 20. | Object | Optional. The default is empty. When sceneAnimationParams and funInteractionParams are configured simultaneously, the widget is recognized as a fun-based interactive widget; when only sceneAnimationParams is configured, the widget is recognized as a scene-based interactive widget. |
 | resizable | Whether the widget can be resized by dragging. The adjusted value must be in the supportDimensions configuration list of this widget or widgets with the same groupId.<br/>-&nbsp;true: Resizing is supported.<br/>-&nbsp;false: Resizing is not supported.<br/>**Note:**<br/>This field is supported since API version 20.| Boolean | Yes, default value is false. |
-| groupId | Common ID of a group of widgets. When multiple widgets have the same groupId and resizable is true, the supportDimensions configurations of the multiple widgets are shared. This is recommended when multiple widgets have the same function and widget size adjustment is needed.<br>Example 1: Widget A has groupId configured as '1', resizable configured as true, and supportDimension as 2\*2. Widget B has groupId configured as '1', resizable configured as true, and supportDimension as 2\*4. In this case, resizing between widgets A and B is supported.<br>Example 2: When supportDimension has multiple values and resizable is set to true, resizing within the same widget takes priority. Widget A has resizable configured as true and supportDimension as 2\*2 and 2\*4. Resizing between the two sizes of widget A is supported.<br>Example 3: Widget A has groupId configured as '1', resizable configured as true, and supportDimension as 1\*2. Widget B has groupId configured as '1', resizable configured as true, and supportDimension as 2\*2, 2\*4, and 4\*4. Widget A can be resized to the default size of widget B, but widget B only supports resizing among the three sizes supported by widget B and cannot be resized to widget A.<br/>**Note:**<br/>This field is supported since API version 20.| String | Yes, empty string. |
+| groupId | Indicates the common ID of a group of widgets. When multiple widgets have the same groupId and resizable is set to true, the supportDimensions configurations of these widgets are shared. It is recommended to configure this field when multiple widgets have the same functions and need to adjust the widget size.<br>Example 1: Widget A has groupId set to '1', resizable set to true, and supportDimensions set to 2\*2. Widget B has groupId set to '1', resizable set to true, and supportDimensions set to 2\*4. In this case, resizing between widgets A and B is supported.<br>Example 2: When supportDimensions contains multiple values and resizable is set to true, resizing within the same widget takes priority. Widget A has resizable set to true and supportDimensions set to 2\*2 and 2\*4, and resizing between the two sizes of widget A is supported.<br>Example 3: Widget A has groupId set to '1', resizable set to true, and supportDimensions set to 1\*2. Widget B has groupId set to '1', resizable set to true, and supportDimensions set to 2\*2, 2\*4, and 4\*4. Widget A can be resized to the default size of widget B, while widget B supports resizing only among the three sizes it supports and cannot be resized to widget A.<br/>**Note:**<br/>This field is supported since API version 20. | string | Optional. Empty string. |
 | [supportDeviceTypes](#supportdevicetypes-field) | Device types supported by a specific widget. For example, if the supportDeviceTypes field of a widget is configured with "phone", "tablet", and "tv", the widget can be displayed on phones, tablets, and large screens.<br/>**Note:**<br/>This field is supported since API version 22.| String array | Yes, default value: ["phone", "tablet", "tv", "wearable", "car", "2in1"]. |
 | [supportDevicePerformanceClasses](#supportdeviceperformanceclasses-field) | Device performance class information supported by a specific widget. For example, if the supportDevicePerformanceClasses field of a widget is configured with "high", "medium", and "low", the widget can be displayed on devices with performance classes "high", "medium", and "low".<br/>**Note:**<br/>This field is supported since API version 22.| String array | Yes, default value: ["high", "medium", "low"]. |
 | [standby](#standby-field) | Extended field for the standby screen saver display page widget.<br/>**Note:**<br/>This field is supported since API version 23. It depends on the system implementing the standby screen saver display app before being displayed.| Object | Yes. For default values of attributes, see the [standby Field](#standby-field). |
@@ -175,7 +174,7 @@ Specifies a fun-based widget. If **funInteractionParams** and **sceneAnimationPa
 
 ### sceneAnimationParams Field
 
-Specifies a scene-based widget. If **funInteractionParams** and **sceneAnimationParams** are both configured, the interactive widget is a fun-based widget.
+Specifies a scene-based widget. If **sceneAnimationParams** and **funInteractionParams** are both configured, the interactive widget is a fun-based widget; if only **sceneAnimationParams** is configured, the interactive widget is a scene-based widget.
 
 | Name                                   | Type    | Mandatory| Description|
 |---------------------------------------|--------|----|----------------------------|
@@ -184,7 +183,6 @@ Specifies a scene-based widget. If **funInteractionParams** and **sceneAnimation
 | triggerTypes                           | Array of strings | No  | Scene animation trigger type. Supported values include shake.<br/>**Note:**<br/>This field is supported since API version 26.0.0.|
 
 <!--RP2-->
-
    ```json5
    {
      "forms": [
@@ -206,7 +204,6 @@ Specifies a scene-based widget. If **funInteractionParams** and **sceneAnimation
      ]
    }
    ```
-
 <!--RP2End-->
 
 ### standby Field
@@ -237,7 +234,6 @@ This tag identifies the internal structure of the standby object. The app must a
 ### Configuration File Example
 
 <!--RP1-->
-
    ```json5
    {
      "forms": [
@@ -267,7 +263,6 @@ This tag identifies the internal structure of the standby object. The app must a
      ]
    }
    ```
-
 <!--RP1End-->
 
 ### supportDimensions Field and Device Support Relationship Table

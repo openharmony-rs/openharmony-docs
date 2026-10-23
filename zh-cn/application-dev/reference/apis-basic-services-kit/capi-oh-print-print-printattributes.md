@@ -1,7 +1,7 @@
 # Print_PrintAttributes
  <!--Kit: Basic Services Kit-->
  <!--Subsystem: Print-->
- <!--Owner: @guoshengbang-->
+ <!--Owner: @Zouhaifeng1-->
  <!--Designer: @baozewei-->
  <!--Tester: @baozewei-->
  <!--Adviser: @fang-jinxu-->
@@ -32,8 +32,8 @@ typedef struct {...} Print_PrintAttributes
 | uint32_t copyNumber                                        | 份数。取值范围：大于等于1。                 |
 | uint32_t duplexMode                                        | 双面模式。有效取值参见[Print_DuplexMode](capi-ohprint-h.md#print_duplexmode)枚举定义。             |
 | uint32_t colorMode                                         | 色彩模式。有效取值参见[Print_ColorMode](capi-ohprint-h.md#print_colormode)枚举定义。             |
-| bool isSequential                                          | 顺序打印。<br>true 表示顺序打印，false 表示逆序打印。 |
-| bool isLandscape                                           | 打印方向（是否横向）。<br>true 表示打印方向为横向，false 表示打印方向为纵向。 |
-| bool hasOption                                             | 打印选项标志。<br>true 表示有打印选项（options 字段有效），false 表示没有打印选项（options 字段无效）。 |
-| char options[256]                                          | 打印选项，用于传递额外的打印配置参数。仅在 hasOption 为 true 时生效，最大长度255个字符。             |
+| bool isSequential                                          | 顺序打印。<br>true表示顺序打印，false表示逆序打印。 |
+| bool isLandscape                                           | 打印方向（是否横向）。<br>true表示打印方向为横向，false表示打印方向为纵向。 |
+| bool hasOption                                             | 打印选项标志。<br>true表示有打印选项（options字段有效），false表示没有打印选项（options字段无效）。 |
+| char options[256]                                          | 打印选项，用于传递额外的打印配置参数。仅在hasOption为true时生效，最大长度255个字符。             |
 

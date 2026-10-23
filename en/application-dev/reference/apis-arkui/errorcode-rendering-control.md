@@ -5,12 +5,13 @@
 <!--Designer: @sunbees-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=4da4cab88c5c9e987b28cefe3239aadd52f84dba translatedAt=2026-10-15T10:46:39.067Z pushedAt=2026-10-16T03:18:40.219Z -->
 
 > **NOTE**
 >
 > This topic describes only module-specific error codes. For details about universal error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-## 103801 Failed to Generate ForEach ID
+## 103801 Failed to Generate a Key Value for ForEach
 
 **Error Message**
 
@@ -22,7 +23,7 @@ This error code is reported when the default key value generation function of [F
 
 **Possible Causes**
 
-The data source you provide cannot generate key values. For example, the data item type is incorrect.
+The data source you provide cannot generate key values. For example, the data item type is not supported by the key value generation function.
 
 **Solution**
 
@@ -36,33 +37,33 @@ lacks mandatory '.each' attribute function, i.e. has no default item builder. Ap
 
 **Description**
 
-This error code is reported when the '[each](./arkui-ts/ts-rendering-control-repeat.md#each)' attribute is missing.
+This error code is reported when the [each](./arkui-ts/ts-rendering-control-repeat.md#each) attribute is missing.
 
 **Possible Causes**
 
-The **'each'** attribute is missing.
+You do not set the `each` attribute when using the **Repeat** component, causing the component to lack the default child node builder function.
 
 **Solution**
 
-Set **'each'** to provide the default component generator.
+Set `each` to provide the default child node builder function.
 
 ## 103803 Invalid Index Value
 
 **Error Message**
 
-__RepeatVirtualScrollImpl (eg:1) onCreateNode: for index=(eg:7) with data array length (eg:5), totalCount= (eg:5) out of range error.
+\_\_RepeatVirtualScrollImpl (eg:1) onCreateNode: for index=(eg:7) with data array length (eg:5), totalCount= (eg:5) out of range error.
 
 **Description**
 
-This error code is reported when the node index exceeds the data source length.
+This error code is reported when the node index is greater than or equal to the length of the data source.
 
 **Possible Causes**
 
-The data source length is incorrectly set, or the data source is added or deleted at an improper time.
+The length of the data source is set incorrectly, or the data source is added or deleted during node creation.
 
 **Solution**
 
-Set the index and data source length correctly to ensure that the index is less than the data source length.
+Set the index and data source length correctly to ensure that the index is not greater than or equal to the data source length. Avoid adding or deleting data sources during node creation.
 
 ## 103804 Invalid Operation During Lazy Loading of Repeat
 
@@ -76,11 +77,11 @@ This error code is reported when invalid data operations are performed in the [l
 
 **Possible Causes**
 
-The lazy loading method is incorrectly used.
+You call a data operation method without following the data operation constraints of the lazy loading API.
 
 **Solution**
 
-Use the lazy loading method properly. For details, see [Precise Lazy Loading](../../ui/rendering-control/arkts-new-rendering-control-repeat.md#precise-lazy-loading).
+Call the method by following the data operation constraints of the lazy loading API. For details, see [Precise Lazy Loading](../../ui/rendering-control/arkts-new-rendering-control-repeat.md#precise-lazy-loading).
 
 ## 103805 Failed to Generate the Default Key Value
 
@@ -94,8 +95,8 @@ This error code is reported when the default [key value](../../ui/rendering-cont
 
 **Possible Causes**
 
-The data source is incorrectly set.
+The data source you set cannot generate a unique key value.
 
 **Solution**
 
-Set the data source properly. For details, see [Key Generation Rules](../../ui/rendering-control/arkts-new-rendering-control-repeat.md#key-generation-rules).
+Modify the data source so that it can generate a unique key value, or manually implement a key-value generation function. For details, see [Key Generation Rules](../../ui/rendering-control/arkts-new-rendering-control-repeat.md#key-generation-rules).

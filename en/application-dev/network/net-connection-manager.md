@@ -5,6 +5,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=5deff1f81c6ebbb89799f64e7011acb34a641e30 translatedAt=2026-10-13T13:15:34.721Z pushedAt=2026-10-16T04:13:19.701Z -->
 
 ## Introduction
 
@@ -50,7 +51,7 @@ The following describes the development procedure specific to each application s
    import { BusinessError } from '@kit.BasicServicesKit';
    import { hilog } from '@kit.PerformanceAnalysisKit';
    ```
-3. Call [createNetConnection](../reference/apis-network-kit/js-apis-net-connection.md#connectioncreatenetconnection) to create a **NetConnection** object. You can specify the network type, capability, and timeout interval. If you do not specify parameters, the default values will be used. 
+3. Call [createNetConnection](../reference/apis-network-kit/js-apis-net-connection.md#connectioncreatenetconnection) to create a **NetConnection** object. You can specify the network type, capability, and timeout interval. If you do not specify parameters, the default values will be used.
 
    <!-- @[notification_network_create_NetConnection](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/ConnectNetworkBtn.ets) -->
    
@@ -155,7 +156,7 @@ import { connection, socket } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 ```
-### Monitoring Changes of the Default Network 
+### Monitoring Changes of the Default Network
 
 <!-- @[monitor_default_network_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/Index.ets) -->
 
@@ -287,17 +288,17 @@ Close the original socket and re-establish a socket connection when the default 
     // Import the connection namespace from @kit.NetworkKit.
     import { connection } from '@kit.NetworkKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
-    // ···
+    // ...
         let netHandleInfo:connection.NetHandle|null = null;
         // Call **getDefaultNet** to obtain the default data network specified by **NetHandle**.
         connection.getDefaultNet().then((data: connection.NetHandle) => {
           if (data.netId == 0) {
-            hilog.info(0x0000, 'testTag', `don't have defaultNet`);
+            hilog.error(0x0000, 'testTag', `don't have defaultNet`);
             // If the obtained netid of netHandler is 0 when no default network is specified, an exception has occurred and extra processing is needed.
             return;
           }
           if (data) {
-            // ···
+            // ...
             hilog.info(0x0000, 'testTag', 'getDefaultNet get data: ' + JSON.stringify(data));
             // Obtain the network capability information of the data network specified by **NetHandle**. The capability information includes information such as the network type and specific network capabilities.
             netHandleInfo = data;
@@ -342,6 +343,10 @@ Close the original socket and re-establish a socket connection when the default 
                   }
                 }
               });
+            // Obtain network connection information based on the specified netHandle. Call this only after a valid netHandle is obtained.
+            connection.getConnectionProperties(netHandleInfo).then((data: connection.ConnectionProperties) => {
+              hilog.info(0x0000, 'testTag', 'getConnectionProperties get data: ' + JSON.stringify(data));
+            })
           }
         });
     
@@ -349,7 +354,7 @@ Close the original socket and re-establish a socket connection when the default 
         connection.getConnectionProperties(netHandleInfo).then((data: connection.ConnectionProperties) => {
           hilog.info(0x0000, 'testTag', 'getConnectionProperties get data: ' + JSON.stringify(data));
         })
-    // ···
+      // ...
     ```
     
 3. Query the connection information of all connected networks.
@@ -456,7 +461,7 @@ If an application needs to check whether the current network supports Internet a
     import { hilog } from '@kit.PerformanceAnalysisKit';
     // ...
           // Use the default network to resolve the host name to obtain the list of all IP addresses.
-          connection.getAddressesByName('xxxx').then((data: connection.NetAddress[]) => {
+          connection.getAddressesByName('www.example.com').then((data: connection.NetAddress[]) => {
             hilog.info(0x0000, 'testTag', 'Successfully retrieved default network IP address: ' + JSON.stringify(data));
             // ...
           })

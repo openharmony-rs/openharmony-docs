@@ -40,7 +40,7 @@ useEffect(value: boolean): T
 
 useEffect(useEffect: boolean, effectType: EffectType): T
 
-用于设置组件是否应用<!--Del-->父级[EffectComponent](ts-container-effectcomponent-sys.md)或<!--DelEnd-->窗口定义的效果模板。effectType为DEFAULT时，必须在EffectComponent的子组件上使用且EffectComponent需配置特效属性才能生效；effectType为WINDOW_EFFECT时，需配合窗口效果模板使用。不在对应容器内使用时，useEffect将不产生任何效果。效果模板是一组预定义的视觉特效参数（包括模糊半径、饱和度、亮度、颜色），应用于组件以实现统一的视觉特效风格。
+用于设置组件是否应用<!--Del-->父级[EffectComponent](ts-container-effectcomponent-sys.md)或<!--DelEnd-->窗口定义的效果模板。<!--Del-->effectType为DEFAULT时，必须在EffectComponent的子组件上使用且EffectComponent需配置特效属性才能生效；<!--DelEnd-->effectType为WINDOW_EFFECT时，需配合窗口效果模板使用。<!--Del-->不在对应容器内使用时，useEffect将不产生任何效果。<!--DelEnd-->效果模板是一组预定义的视觉特效参数（包括模糊半径、饱和度、亮度、颜色），应用于组件以实现统一的视觉特效风格。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -63,7 +63,7 @@ useEffect(useEffect: boolean, effectType: EffectType): T
 
 useEffect(useEffect: Optional\<boolean>, effectType?: EffectType): T
 
-用于设置组件是否应用<!--Del-->父级[EffectComponent](ts-container-effectcomponent-sys.md)或<!--DelEnd-->窗口定义的效果模板。与[useEffect<sup>14+</sup>](#useeffect14)相比，useEffect参数新增了对undefined类型的支持。effectType为DEFAULT时，必须在EffectComponent的子组件上使用且EffectComponent需配置特效属性才能生效；effectType为WINDOW_EFFECT时，需配合窗口效果模板使用。不在对应容器内使用时，useEffect将不产生任何效果。
+用于设置组件是否应用<!--Del-->父级[EffectComponent](ts-container-effectcomponent-sys.md)或<!--DelEnd-->窗口定义的效果模板。与[useEffect<sup>14+</sup>](#useeffect14)相比，useEffect参数新增了对undefined类型的支持。<!--Del-->effectType为DEFAULT时，必须在EffectComponent的子组件上使用且EffectComponent需配置特效属性才能生效；<!--DelEnd-->effectType为WINDOW_EFFECT时，需配合窗口效果模板使用。<!--Del-->不在对应容器内使用时，useEffect将不产生任何效果。<!--DelEnd-->
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -95,7 +95,7 @@ useEffect(useEffect: Optional\<boolean>, effectType?: EffectType): T
 | DEFAULT  | 0   | 使用<!--Del-->父级EffectComponent定义的<!--DelEnd-->效果模板来渲染组件特效。 |
 | WINDOW_EFFECT  | 1   | 使用窗口定义的效果模板来渲染组件特效。 |
 
-效果模板
+窗口定义的效果模板
 
 |  设备类型    | 模糊半径（单位：px）   | 饱和度                 |  亮度  |  颜色  |
 | -------- | ---- | ---------------------- | -------- | -------- |

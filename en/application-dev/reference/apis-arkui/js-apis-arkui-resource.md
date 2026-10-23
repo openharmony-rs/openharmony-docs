@@ -5,6 +5,7 @@
 <!--Designer: @fangzhiyuan1-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=84f6910acf7a2e0204b7d0e7d63899869e66db1c translatedAt=2026-10-15T11:13:11.629Z pushedAt=2026-10-20T03:36:47.639Z -->
 
 Provides APIs for accessing application and system resources. For details about resource types and usage, see [Resource Categories and Access](../../quick-start/resource-categories-and-access.md).
 
@@ -62,7 +63,7 @@ For sample code about how to access resources in an HSP, see [Accessing Resource
 
 $rawfile(value: string): Resource
 
-Accesses resources in the **rawfile** directory of the project. During compilation, the toolchain converts $rawfile into a [Resource](../apis-localization-kit/js-apis-resource-manager.md#resource9) object. For details about how to access application or system resources using \$rawfile, see [Resource Categories and Access](../../quick-start/resource-categories-and-access.md).
+Obtains information about resources in the **rawfile** directory of the project. **\$rawfile** is converted by the toolchain into a [Resource](../apis-localization-kit/js-apis-resource-manager.md#resource9) object during compilation. To access resources in the **rawfile** directory through **\$rawfile**, see [Resource Categories and Access](../../quick-start/resource-categories-and-access.md).
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -74,7 +75,7 @@ Accesses resources in the **rawfile** directory of the project. During compilati
 
 | Name| Type  | Mandatory| Description                                                                                                                                                                                                                                                                                                                                                                                             |
 | ------ | ------ | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| value  | string | Yes  | Relative path in the **rawfile** directory. The file name must contain an extension, and the path cannot start with a slash (/).|
+| value  | string | Yes   | Relative path in the **rawfile** directory. The file name must contain a file name extension, and the path cannot start with a slash (/). |
 
 **Return value**
 

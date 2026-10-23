@@ -1,10 +1,12 @@
 # oh_window.h
+
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
 <!--Owner: @fei_1007-->
 <!--Designer: @gcw_sPCsris4-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=494f31a35d1b25179fe202754d9ee44d527d8ab6 translatedAt=2026-10-10T10:46:29.262Z pushedAt=2026-10-15T06:42:43.582Z -->
 
 ## Overview
 
@@ -43,7 +45,7 @@ The file declares the window management APIs. You can use the APIs to set and ob
 | [int32_t OH_WindowManager_GetAllWindowLayoutInfoList(int64_t displayId,WindowManager_Rect** windowLayoutInfoList, size_t* windowLayoutInfoSize)](#oh_windowmanager_getallwindowlayoutinfolist) | - | Obtains the layout information array of all windows visible on a display. The layout information is arranged based on the current window stacking order, and the topmost window in the hierarchy is at index 0 of the array.|
 | [void OH_WindowManager_ReleaseAllWindowLayoutInfoList(WindowManager_Rect* windowLayoutInfoList)](#oh_windowmanager_releaseallwindowlayoutinfolist) | - | Releases the memory occupied by a window layout information array.|
 | [int32_t OH_WindowManager_InjectTouchEvent(int32_t windowId, Input_TouchEvent* touchEvent, int32_t windowX, int32_t windowY)](#oh_windowmanager_injecttouchevent) | - | Injects a multimodal touch event into the target window. This function is limited to injecting events into windows that belong to the same process. The injection does not affect window focus or stacking order, nor does it start window dragging. The event is forwarded directly to ArkUI. This function must be called after the target window has completed its UI loading.|
-| [int32_t OH_WindowManager_GetAllMainWindowInfo(WindowManager_MainWindowInfo** infoList, size_t* mainWindowInfoSize)](#oh_windowmanager_getallmainwindowinfo) | - | Obtains the information about all main windows.|
+| [int32_t OH_WindowManager_GetAllMainWindowInfo(WindowManager_MainWindowInfo** infoList, size_t* mainWindowInfoSize)](#oh_windowmanager_getallmainwindowinfo) | - | Obtains all main window information. |
 | [void OH_WindowManager_ReleaseAllMainWindowInfo(WindowManager_MainWindowInfo* infoList)](#oh_windowmanager_releaseallmainwindowinfo) | - | Releases the memory used by the main window information list.|
 | [typedef void (\*OH_WindowManager_WindowSnapshotCallback)(const OH_PixelmapNative** snapshotPixelMapList, size_t snapshotListSize)](#oh_windowmanager_windowsnapshotcallback) | OH_WindowManager_WindowSnapshotCallback | Defines the callback used for receiving the main window screenshot list.|
 | [int32_t OH_WindowManager_GetMainWindowSnapshot(int32_t* windowIdList, size_t windowIdListSize, WindowManager_WindowSnapshotConfig config, OH_WindowManager_WindowSnapshotCallback callback)](#oh_windowmanager_getmainwindowsnapshot) | - | Obtains the screenshots of one or more main windows specified by **windowId**.|
@@ -54,13 +56,13 @@ The file declares the window management APIs. You can use the APIs to set and ob
 | [int32_t OH_WindowManager_FrameMetrics_GetInputHandlingDuration(const OH_WindowManager_FrameMetrics* metrics, uint64_t* duration)](#oh_windowmanager_framemetrics_getinputhandlingduration) | - | Obtains the time consumed for gesture handling in this frame.|
 | [int32_t OH_WindowManager_FrameMetrics_GetLayoutMeasureDuration(const OH_WindowManager_FrameMetrics* metrics, uint64_t* duration)](#oh_windowmanager_framemetrics_getlayoutmeasureduration) | - | Obtains the time consumed for layout measurement in this frame.|
 | [int32_t OH_WindowManager_FrameMetrics_GetVsyncTimestamp(const OH_WindowManager_FrameMetrics* metrics, uint64_t* timestamp)](#oh_windowmanager_framemetrics_getvsynctimestamp) | - | Obtains the timestamp when this frame starts.|
-| [int32_t OH_WindowManager_RegisterFrameMetricsMeasuredCallback(int32_t windowId, OH_WindowManager_FrameMetricsMeasuredCallback callback)](#oh_windowmanager_registerframemetricsmeasuredcallback) | - | Registers a callback for window frame metric change events.<br> This API depends on the loading of the window page content. That is, this API can be called only after the **loadContent()** or **setUIContent()** API in ArkTS takes effect.<br> The callback is triggered only when the client UI content is redrawn (for example, page switching, interaction with responsive components, or background color and opacity setting).<br> To cancel the registration, call the [OH_WindowManager_UnregisterFrameMetricsMeasuredCallback](capi-oh-window-h.md#oh_windowmanager_unregisterframemetricsmeasuredcallback) API.|
-| [int32_t OH_WindowManager_UnregisterFrameMetricsMeasuredCallback(int32_t windowId, OH_WindowManager_FrameMetricsMeasuredCallback callback)](#oh_windowmanager_unregisterframemetricsmeasuredcallback) | - | Unregisters the callback for window frame metric change events.<br> This API depends on the loading of the window page content. That is, this API can be called only after the **loadContent()** or **setUIContent()** API in ArkTS takes effect.<br> To register such a callback, call the [OH_WindowManager_RegisterFrameMetricsMeasuredCallback](capi-oh-window-h.md#oh_windowmanager_registerframemetricsmeasuredcallback) API.|
+| [int32_t OH_WindowManager_RegisterFrameMetricsMeasuredCallback(int32_t windowId, OH_WindowManager_FrameMetricsMeasuredCallback callback)](#oh_windowmanager_registerframemetricsmeasuredcallback) | - | Registers a callback for window frame metric change events.<br> This API depends on the loading of the window page content. That is, this API can be called only after the **loadContent()** or **setUIContent()** API in ArkTS takes effect.<br> The callback is triggered only when the client UI content is redrawn (for example, page switching, interaction with responsive components, or background color and opacity setting).<br> To unregister the callback, call the [OH_WindowManager_UnregisterFrameMetricsMeasuredCallback](#oh_windowmanager_unregisterframemetricsmeasuredcallback) API. |
+| [int32_t OH_WindowManager_UnregisterFrameMetricsMeasuredCallback(int32_t windowId, OH_WindowManager_FrameMetricsMeasuredCallback callback)](#oh_windowmanager_unregisterframemetricsmeasuredcallback) | - | Unregisters the callback for window frame metric change events.<br> This API depends on the loading of the window page content. That is, this API can be called only after the **loadContent()** or **setUIContent()** API in ArkTS takes effect.<br> To register the callback, call the [OH_WindowManager_RegisterFrameMetricsMeasuredCallback](#oh_windowmanager_registerframemetricsmeasuredcallback) API. |
 | [int32_t OH_WindowManager_DensityInfo_GetDefaultDensity(const OH_WindowManager_DensityInfo* info, float* density)](#oh_windowmanager_densityinfo_getdefaultdensity) | - | Obtains the scale factor of the system default display size of the screen where the window is located.|
 | [int32_t OH_WindowManager_DensityInfo_GetSystemDensity(const OH_WindowManager_DensityInfo* info, float* density)](#oh_windowmanager_densityinfo_getsystemdensity) | - | Obtains the scale factor of the system display size of the screen where the window is located.|
 | [int32_t OH_WindowManager_DensityInfo_GetCustomDensity(const OH_WindowManager_DensityInfo* info, float* density)](#oh_windowmanager_densityinfo_getcustomdensity) | - | Obtains the scale factor of the custom display size of the window.|
 | [int32_t OH_WindowManager_GetDensityInfoCopy(int32_t windowId, const OH_WindowManager_DensityInfo** info)](#oh_windowmanager_getdensityinfocopy) | - | Obtains window scale factor information, including the scale factors of the system display size, system default display size, and custom display size. The priorities in descending order are as follows:<br> Scale factor of the custom display size: window-level display scale factor, which affects only a single window.<br> Scale factor of the system display size: display size scale factor set in the current system.<br> Scale factor of the system default display size: default reference scale factor of the system.<br>|
-| [int32_t OH_WindowManager_RegisterDensityInfoChangeCallback(int32_t windowId, OH_WindowManager_DensityInfoCallback callback)](#oh_windowmanager_registerdensityinfochangecallback) | - | Registers a callback for listening to window scale factor changes.<br> This callback will be triggered when any of the following changes: the scale factor of the system display size of the screen where the window is located, the scale factor of the system default display size, or the scale factor of the custom display size.<br> To unregister this callback, use [OH_WindowManager_UnregisterDensityInfoChangeCallback](capi-oh-window-h.md#oh_windowmanager_unregisterdensityinfochangecallback).|
+| [int32_t OH_WindowManager_RegisterDensityInfoChangeCallback(int32_t windowId, OH_WindowManager_DensityInfoCallback callback)](#oh_windowmanager_registerdensityinfochangecallback) | - | Registers a callback for listening to window scale factor changes.  <br> This callback will be triggered when any of the following changes: the scale factor of the system display size of the screen where the window is located, the scale factor of the system default display size, or the scale factor of the custom display size.  <br> To unregister the callback, call the [OH_WindowManager_UnregisterDensityInfoChangeCallback](#oh_windowmanager_unregisterdensityinfochangecallback) API. |
 | [int32_t OH_WindowManager_UnregisterDensityInfoChangeCallback(int32_t windowId, OH_WindowManager_DensityInfoCallback callback)](#oh_windowmanager_unregisterdensityinfochangecallback) | - | Unregisters the callback for listening to window scale factor changes.<br> This callback will not be triggered after being unregistered even if any of the following changes: the scale factor of the system display size of the screen where the window is located, the scale factor of the system default display size, or the scale factor of the custom display size.<br>|
 | [int32_t OH_WindowManager_DensityInfo_Release(const OH_WindowManager_DensityInfo* info)](#oh_windowmanager_densityinfo_release) | - | Releases the memory occupied by the window scale factor object.|
 
@@ -137,10 +139,9 @@ int32_t OH_WindowManager_SetWindowNavigationBarEnabled(int32_t windowId, bool en
 
 **Description**
 
-Sets whether the main window displays the navigation bar.<!--RP2--><!--RP2End-->
+Sets whether the main window displays the navigation bar.<!--RP2--> This API takes effect only on devices where the navigation area can only be displayed as three-key navigation.<!--RP2End-->
 
 **Since**: 15
-
 
 **Parameters**
 
@@ -168,7 +169,6 @@ Obtains the avoid area of a window.
 
 **Since**: 15
 
-
 **Parameters**
 
 | Parameter| Description|
@@ -195,7 +195,6 @@ Checks whether a window is displayed.
 
 **Since**: 15
 
-
 **Parameters**
 
 | Parameter| Description|
@@ -221,7 +220,6 @@ Shows a window.
 
 **Since**: 15
 
-
 **Parameters**
 
 | Parameter| Description|
@@ -245,7 +243,6 @@ int32_t OH_WindowManager_SetWindowTouchable(int32_t windowId, bool isTouchable)
 Sets whether a window is touchable.
 
 **Since**: 15
-
 
 **Parameters**
 
@@ -272,7 +269,6 @@ Sets whether a window is focusable.
 
 **Since**: 15
 
-
 **Parameters**
 
 | Parameter| Description|
@@ -297,7 +293,6 @@ int32_t OH_WindowManager_SetWindowBackgroundColor(int32_t windowId, const char* 
 Sets the background color of a window.
 
 **Since**: 15
-
 
 **Parameters**
 
@@ -329,16 +324,22 @@ If the input parameter is **-1**, the window brightness reverts to the system br
 When the window moves to the background, the setting becomes invalid, and brightness can be adjusted through Control Panel or shortcut keys. You are not advised to call this API when the window is in the background, as it may cause timing issues.
 
 **Device behavior differences**:
+
 - For TVs: This API does not take effect or report an error.
+
 - For non-2-in-1 devices (excluding TVs):
+
   - Before <!--RP1-->OpenHarmony 6.1<!--RP1End-->, when the window brightness of the current window is active, adjusting the system screen brightness from the Control Panel does not take effect.
+
   - Since <!--RP1-->OpenHarmony 6.1<!--RP1End-->, Control Panel can adjust system brightness even when the window brightness of the current window is active. Doing so will automatically reset that window's brightness to match the new system brightness.
+
 - For 2-in-1 devices:
+
   - Before OpenHarmony 5.0.2, when the screen brightness set by a window is active, adjusting the system screen brightness from the Control Panel or a shortcut key does not take effect.
+
   - Since OpenHarmony 5.0.2, window brightness is always synchronized with system brightness. Brightness can be adjusted through this API, Control Panel, or shortcut keys.
 
 **Since**: 15
-
 
 **Parameters**
 
@@ -364,7 +365,6 @@ int32_t OH_WindowManager_SetWindowKeepScreenOn(int32_t windowId, bool isKeepScre
 Sets whether to always keep the screen on for a window.
 
 **Since**: 15
-
 
 **Parameters**
 
@@ -393,7 +393,6 @@ Sets whether to enable privacy mode for a window.
 
 **Since**: 15
 
-
 **Parameters**
 
 | Parameter| Description|
@@ -418,7 +417,6 @@ int32_t OH_WindowManager_GetWindowProperties(int32_t windowId, WindowManager_Win
 Obtains the properties of a window.
 
 **Since**: 15
-
 
 **Parameters**
 
@@ -445,7 +443,6 @@ Obtains the snapshot of a window.
 
 **Since**: 15
 
-
 **Parameters**
 
 | Parameter| Description|
@@ -470,7 +467,6 @@ int32_t OH_WindowManager_GetAllWindowLayoutInfoList(int64_t displayId,WindowMana
 Obtains the layout information array of all windows visible on a display. The layout information is arranged based on the current window stacking order, and the topmost window in the hierarchy is at index 0 of the array.
 
 **Since**: 17
-
 
 **Parameters**
 
@@ -498,12 +494,12 @@ Releases the memory occupied by a window layout information array.
 
 **Since**: 17
 
-
 **Parameters**
 
 | Parameter| Description|
 | -- | -- |
-| [WindowManager_Rect](capi-windowmanager-rect.md)* windowLayoutInfoList | Pointer to the layout information array of all windows visible on the display. You can obtain the array pointer by calling [OH_WindowManager_GetAllWindowLayoutInfoList](capi-oh-window-h.md#oh_windowmanager_getallwindowlayoutinfolist).|
+| [WindowManager_Rect](capi-windowmanager-rect.md)* windowLayoutInfoList | Pointer to the array of layout information of windows visible on the screen, which can be obtained by calling [OH_WindowManager_GetAllWindowLayoutInfoList](#oh_windowmanager_getallwindowlayoutinfolist). |
+
 ### OH_WindowManager_InjectTouchEvent()
 
 ```c
@@ -521,7 +517,7 @@ Injects a multimodal touch event into the target window. This function is limite
 | Parameter| Description|
 | -- | -- |
 | int32_t windowId | Window ID. The default value is **0**. The value is an integer.|
-| [Input_TouchEvent](../apis-input-kit/capi-input-input-touchevent.md)* touchEvent | Pointer to the multimodal touch event. For details, see [Input_TouchEvent](../apis-input-kit/capi-input-input-touchevent.md). The event is defined in **oh_input_manager.h**. Certain fields in this parameter have specific constraints. Specifically, **action** should be an integer in the range [0, 3]; **id**, **displayX**, **displayY**, and **actionTime** should be an integer greater than or equal to 0. If these constraints are not met, the function returns **WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL**, indicating that the window manager service is abnormal.|
+| [Input_TouchEvent](../apis-input-kit/capi-input-input-touchevent.md)* touchEvent | Pointer to the multimodal touch event. For details, see [Input_TouchEvent](../apis-input-kit/capi-input-input-touchevent.md). The event is defined in **oh_input_manager.h**. Certain fields in this parameter have specific constraints. Specifically, **action** should be an integer in the range [0, 3]; **id**, **displayX**, and **displayY** should be an integer greater than or equal to 0. If these constraints are not met, the API returns **WINDOW_MANAGER_ERRORCODE_SYSTEM_ABNORMAL**, indicating that the window manager service is abnormal. |
 | int32_t windowX | X coordinate of the event relative to the target window. The value is an integer.|
 | int32_t windowY | Y coordinate of the event relative to the target window. The value is an integer.|
 
@@ -539,7 +535,7 @@ int32_t OH_WindowManager_GetAllMainWindowInfo(WindowManager_MainWindowInfo** inf
 
 **Description**
 
-Obtains the information about all main windows.
+Obtains all main window information.
 
 **Device behavior differences**: This API can be properly called on PC/2-in-1 devices. If it is called on other device types, error code 801 is returned.
 
@@ -576,7 +572,7 @@ Releases the memory used by the main window information list.
 
 | Parameter| Description|
 | -- | -- |
-| [WindowManager_MainWindowInfo](capi-windowmanager-windowmanager-mainwindowinfo.md)* infoList | Pointer to the main window information list.|
+| [WindowManager_MainWindowInfo](capi-windowmanager-windowmanager-mainwindowinfo.md)* infoList | Pointer to the main window information list. |
 
 ### OH_WindowManager_WindowSnapshotCallback()
 
@@ -620,7 +616,7 @@ Obtains the screenshots of one or more main windows specified by **windowId**.
 | int32_t* windowIdList | Pointer to the main window ID list.|
 | size_t windowIdListSize | Size of the main window ID list.|
 | [WindowManager_WindowSnapshotConfig](capi-windowmanager-windowmanager-windowsnapshotconfig.md) config | Configuration for obtaining the window screenshot.|
-| [OH_WindowManager_WindowSnapshotCallback](capi-oh-window-h.md#oh_windowmanager_windowsnapshotcallback) callback | Callback used to return the lists of window screenshots, in the order of the provided window ID array.|
+| [OH_WindowManager_WindowSnapshotCallback](#oh_windowmanager_windowsnapshotcallback) callback | Callback used to return the lists of window screenshots, in the order of the provided window ID array. |
 
 **Return value**
 
@@ -807,7 +803,7 @@ int32_t OH_WindowManager_RegisterFrameMetricsMeasuredCallback(int32_t windowId, 
 
 **Description**
 
-Registers a callback for window frame metric change events.<br> This API depends on the loading of the window page content. That is, this API can be called only after the **loadContent()** or **setUIContent()** API in ArkTS takes effect.<br> The callback is triggered only when the client UI content is redrawn (for example, page switching, interaction with responsive components, or background color and opacity setting).<br> To cancel the registration, call the [OH_WindowManager_UnregisterFrameMetricsMeasuredCallback](capi-oh-window-h.md#oh_windowmanager_unregisterframemetricsmeasuredcallback) API.
+Registers a callback for window frame metric change events.<br> This API depends on the loading of the window page content. That is, this API can be called only after the **loadContent()** or **setUIContent()** API in ArkTS takes effect.<br> The callback is triggered only when the client UI content is redrawn (for example, page switching, interaction with responsive components, or background color and opacity setting).<br> To unregister the callback, call the [OH_WindowManager_UnregisterFrameMetricsMeasuredCallback](#oh_windowmanager_unregisterframemetricsmeasuredcallback) API.
 
 **Since**: 26.0.0
 
@@ -832,7 +828,7 @@ int32_t OH_WindowManager_UnregisterFrameMetricsMeasuredCallback(int32_t windowId
 
 **Description**
 
-Unregisters the callback for window frame metric change events.<br> This API depends on the loading of the window page content. That is, this API can be called only after the **loadContent()** or **setUIContent()** API in ArkTS takes effect.<br> To register such a callback, call the [OH_WindowManager_RegisterFrameMetricsMeasuredCallback](capi-oh-window-h.md#oh_windowmanager_registerframemetricsmeasuredcallback) API.
+Unregisters the callback for window frame metric change events.<br> This API depends on the loading of the window page content. That is, this API can be called only after the **loadContent()** or **setUIContent()** API in ArkTS takes effect.<br> To register the callback, call the [OH_WindowManager_RegisterFrameMetricsMeasuredCallback](#oh_windowmanager_registerframemetricsmeasuredcallback) API.
 
 **Since**: 26.0.0
 
@@ -865,7 +861,7 @@ Obtains the scale factor of the system default display size of the screen where 
 
 | Parameter| Description|
 | -- | -- |
-| [const OH_WindowManager_DensityInfo](capi-windowmanager-oh-windowmanager-densityinfo.md)* info | Pointer to the window scale factor information, which can be obtained through [OH_WindowManager_GetDensityInfoCopy](capi-oh-window-h.md#oh_windowmanager_getdensityinfocopy).|
+| [const OH_WindowManager_DensityInfo](capi-windowmanager-oh-windowmanager-densityinfo.md)* info | Pointer to the window scale factor information, which can be obtained by calling [OH_WindowManager_GetDensityInfoCopy](#oh_windowmanager_getdensityinfocopy). |
 | float* density | Pointer to the scale factor of the system default display size. The value ranges from 0.5 to 4.0. This parameter is used as an output parameter.|
 
 **Return value**
@@ -890,7 +886,7 @@ Obtains the scale factor of the system display size of the screen where the wind
 
 | Parameter| Description|
 | -- | -- |
-| [const OH_WindowManager_DensityInfo](capi-windowmanager-oh-windowmanager-densityinfo.md)* info | Pointer to the window scale factor information, which can be obtained through [OH_WindowManager_GetDensityInfoCopy](capi-oh-window-h.md#oh_windowmanager_getdensityinfocopy).|
+| [const OH_WindowManager_DensityInfo](capi-windowmanager-oh-windowmanager-densityinfo.md)* info | Pointer to the window scale factor information, which can be obtained by calling [OH_WindowManager_GetDensityInfoCopy](#oh_windowmanager_getdensityinfocopy). |
 | float* density | Pointer to the scale factor of the system display size. The value ranges from 0.5 to 4.0. This parameter is used as an output parameter.|
 
 **Return value**
@@ -915,7 +911,7 @@ Obtains the scale factor of the custom display size of the window.
 
 | Parameter| Description|
 | -- | -- |
-| [const OH_WindowManager_DensityInfo](capi-windowmanager-oh-windowmanager-densityinfo.md)* info | Pointer to the window scale factor information, which can be obtained through [OH_WindowManager_GetDensityInfoCopy](capi-oh-window-h.md#oh_windowmanager_getdensityinfocopy).|
+| [const OH_WindowManager_DensityInfo](capi-windowmanager-oh-windowmanager-densityinfo.md)* info | Pointer to the window scale factor information, which can be obtained by calling [OH_WindowManager_GetDensityInfoCopy](#oh_windowmanager_getdensityinfocopy). |
 | float* density | Pointer to the scale factor of the custom display size of the window. The value ranges from 0.5 to 4.0. This parameter is used as an output parameter.<br>If this parameter is not set, the scale factor of the system display size is used. For a child window, global floating window, modal window, or system window, the scale factor of the custom display size is equal to the scale factor of the system display size (**systemDensity**).|
 
 **Return value**
@@ -967,7 +963,7 @@ Registers a callback for listening to window scale factor changes.
 
 This callback will be triggered when any of the following changes: the scale factor of the system display size of the screen where the window is located, the scale factor of the system default display size, or the scale factor of the custom display size.
 
-To unregister this callback, use [OH_WindowManager_UnregisterDensityInfoChangeCallback](capi-oh-window-h.md#oh_windowmanager_unregisterdensityinfochangecallback).
+To unregister the callback, call the [OH_WindowManager_UnregisterDensityInfoChangeCallback](#oh_windowmanager_unregisterdensityinfochangecallback) API.
 
 **Since:** 24
 

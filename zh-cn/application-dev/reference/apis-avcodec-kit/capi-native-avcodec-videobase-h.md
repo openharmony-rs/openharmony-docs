@@ -40,7 +40,7 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| const char * OH_MD_KEY_VIDEO_METADATA_ROI_TOP | 用于描述单个ROI（感兴趣区域）矩形顶部坐标（y）的键，值类型为int32_t。坐标系的原点位于视频的左上角。取值范围为[0, OH_MD_KEY_VIDEO_METADATA_ROI_BOTTOM)。这是配置ROI参数时的必填键。<br>**起始版本：** 26.0.0<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
+| const char * OH_MD_KEY_VIDEO_METADATA_ROI_TOP | 用于描述单个ROI（感兴趣区域）矩形顶部坐标（y）的键，值类型为int32_t。坐标系的原点位于视频的左上角。取值范围为[0, OH_MD_KEY_VIDEO_METADATA_ROI_BOTTOM)。这是配置ROI参数时的必填键。<br>**起始版本：** 26.0.0 |
 | const char * OH_MD_KEY_VIDEO_METADATA_ROI_LEFT | 用于描述单个ROI矩形左侧坐标（x）的键，值类型为 int32_t。坐标系的原点位于视频的左上角。取值范围为[0, OH_MD_KEY_VIDEO_METADATA_ROI_RIGHT)。这是配置ROI参数时的必填键。<br>**起始版本：** 26.0.0 |
 | const char * OH_MD_KEY_VIDEO_METADATA_ROI_BOTTOM | 用于描述单个ROI矩形底部坐标（y）的键，值类型为int32_t。坐标系的原点位于视频的左上角。取值范围为(OH_MD_KEY_VIDEO_METADATA_ROI_TOP, OH_MD_KEY_VIDEO_HEIGHT]。这是配置ROI参数时的必填键。<br>**起始版本：** 26.0.0 |
 | const char * OH_MD_KEY_VIDEO_METADATA_ROI_RIGHT | 用于描述单个ROI矩形右侧坐标（x）的键，值类型为int32_t。坐标系的原点位于视频的左上角。取值范围为(OH_MD_KEY_VIDEO_METADATA_ROI_LEFT, OH_MD_KEY_VIDEO_WIDTH]。这是配置ROI参数时的必填键。<br>**起始版本：** 26.0.0 |
@@ -135,8 +135,11 @@ OH_AVErrCode OH_VideoMetadata_ParseRoiString(const char *roiStr, OH_AVFormat **o
 
 解析ROI字符串并填充调用者提供的OH_AVFormat数组。
 
->**说明：** 
->调用者拥有每个成功创建的OH_AVFormat句柄的所有权。返回时，有效的句柄存储在outOwnedFormats数组的前*outCount个元素中。- 完全或部分成功时（*outCount > 0），调用者必须使用[OH_AVFormat_Destroy](./capi-native-avformat-h.md#oh_avformat_destroy)逐个销毁有效句柄，以防止内存泄漏。- 完全失败时（*outCount == 0），不会创建任何句柄，也无需销毁。
+> **说明：** 
+> 
+> 调用者拥有每个成功创建的OH_AVFormat句柄的所有权。返回时，有效的句柄存储在outOwnedFormats数组的前*outCount个元素中。
+> - 完全或部分成功时（*outCount > 0），调用者必须使用[OH_AVFormat_Destroy](./capi-native-avformat-h.md#oh_avformat_destroy)逐个销毁有效句柄，以防止内存泄漏。
+> - 完全失败时（*outCount == 0），不会创建任何句柄，也无需销毁。
 
 **起始版本：** 26.0.0
 

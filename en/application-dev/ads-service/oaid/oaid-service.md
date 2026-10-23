@@ -6,6 +6,7 @@
 <!--Designer: @zhansf1988-->
 <!--Tester: @hongmei_may-->
 <!--Adviser: @RayShih-->
+<!-- md-trans-meta sourceCommit=4119e06971884e7235d54ab2fca2f5a72671c099 translatedAt=2026-10-13T07:13:00.077Z pushedAt=2026-10-13T08:22:40.949Z -->
 
 ## Obtaining an OAID
 
@@ -35,10 +36,11 @@ The OAID changes in the following scenarios:
 | <!--Del-->[<!--DelEnd-->getOAID<!--Del-->](../../reference/apis-ads-kit/js-apis-oaid.md#identifiergetoaid-1)<!--DelEnd-->(callback:&nbsp;AsyncCallback&lt;string&gt;):&nbsp; void | Obtains an OAID. This API uses an asynchronous callback to return the result.|
 
 > **NOTE**
-> To call **getOAID()**, an application must request the permission ohos.permission.APP_TRACKING_CONSENT and obtain user authorization. The following three scenarios are involved:<br>
-> 1. If the application has configured the permission ohos.permission.APP_TRACKING_CONSENT and the permission is allowed, the OAID is returned.<br>
-> 2. If the application has configured the permission ohos.permission.APP_TRACKING_CONSENT and the permission is disallowed, 00000000-0000-0000-0000-000000000000 is returned.<br>
-> 3. If the application has not configured the permission ohos.permission.APP_TRACKING_CONSENT, 00000000-0000-0000-0000-000000000000 is returned.
+> 
+> To call the getOAID API, you need to apply for the ohos.permission.APP_TRACKING_CONSENT permission and obtain user authorization. The following three cases exist:<br/>
+> 1. If the application has configured the ohos.permission.APP_TRACKING_CONSENT permission and the cross-app associated access permission is "Allow", then return the OAID.<br/>
+> 2. If the application has configured the ohos.permission.APP_TRACKING_CONSENT permission and the cross-app associated access permission is "Deny", then return 00000000-0000-0000-0000-000000000000.<br/>
+> 3. If the application has not configured the ohos.permission.APP_TRACKING_CONSENT permission, then return 00000000-0000-0000-0000-000000000000.
 
 
 ### How to Develop

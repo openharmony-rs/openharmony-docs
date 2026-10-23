@@ -1,12 +1,11 @@
 # oh_window_event_filter.h
-
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
 <!--Owner: @fei_1007-->
 <!--Designer: @gcw_sPCsris4-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=43433a4dbf9ba0069b5e7d96c07741ab924162cf translatedAt=2026-08-25T02:17:01.682Z pushedAt=2026-08-25T02:32:48.016Z -->
+<!-- md-trans-meta sourceCommit=494f31a35d1b25179fe202754d9ee44d527d8ab6 translatedAt=2026-10-10T10:45:14.562Z pushedAt=2026-10-15T03:52:52.079Z -->
 
 ## Overview
 
@@ -29,13 +28,13 @@ Defines the APIs for event filtering in window management. When a multimodal inp
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
 | [typedef bool (\*OH_NativeWindowManager_KeyEventFilter)(Input_KeyEvent* keyEvent)](#oh_nativewindowmanager_keyeventfilter) | OH_NativeWindowManager_KeyEventFilter | Defines a function for filtering multimodal key events.|
-| [WindowManager_ErrorCode OH_NativeWindowManager_RegisterKeyEventFilter(int32_t windowId,OH_NativeWindowManager_KeyEventFilter keyEventFilter)](#oh_nativewindowmanager_registerkeyeventfilter) | - | Registers a function for filtering multimodal key events.|
+| [WindowManager_ErrorCode OH_NativeWindowManager_RegisterKeyEventFilter(int32_t windowId,OH_NativeWindowManager_KeyEventFilter keyEventFilter)](#oh_nativewindowmanager_registerkeyeventfilter) | - | Registers a function for filtering multimodal key events. |
 | [WindowManager_ErrorCode OH_NativeWindowManager_UnregisterKeyEventFilter(int32_t windowId)](#oh_nativewindowmanager_unregisterkeyeventfilter) | - | Unregisters a function for filtering multimodal key events.|
 | [typedef bool (\*OH_NativeWindowManager_MouseEventFilter)(Input_MouseEvent* mouseEvent)](#oh_nativewindowmanager_mouseeventfilter) | OH_NativeWindowManager_MouseEventFilter | Defines a function for filtering multimodal mouse events.|
-| [WindowManager_ErrorCode OH_NativeWindowManager_RegisterMouseEventFilter(int32_t windowId,OH_NativeWindowManager_MouseEventFilter mouseEventFilter)](#oh_nativewindowmanager_registermouseeventfilter) | - | Registers a function for filtering multimodal mouse events.|
+| [WindowManager_ErrorCode OH_NativeWindowManager_RegisterMouseEventFilter(int32_t windowId,OH_NativeWindowManager_MouseEventFilter mouseEventFilter)](#oh_nativewindowmanager_registermouseeventfilter) | - | Registers a function for filtering multimodal mouse events. |
 | [WindowManager_ErrorCode OH_NativeWindowManager_UnregisterMouseEventFilter(int32_t windowId)](#oh_nativewindowmanager_unregistermouseeventfilter) | - | Unregisters a function for filtering multimodal mouse events.|
 | [typedef bool (\*OH_NativeWindowManager_TouchEventFilter)(Input_TouchEvent* touchEvent)](#oh_nativewindowmanager_toucheventfilter) | OH_NativeWindowManager_TouchEventFilter | Defines a function for filtering multimodal touch events.|
-| [WindowManager_ErrorCode OH_NativeWindowManager_RegisterTouchEventFilter(int32_t windowId,OH_NativeWindowManager_TouchEventFilter touchEventFilter)](#oh_nativewindowmanager_registertoucheventfilter) | - | Registers a function for filtering multimodal touch events.|
+| [WindowManager_ErrorCode OH_NativeWindowManager_RegisterTouchEventFilter(int32_t windowId,OH_NativeWindowManager_TouchEventFilter touchEventFilter)](#oh_nativewindowmanager_registertoucheventfilter) | - | Registers a function for filtering multimodal touch events. |
 | [WindowManager_ErrorCode OH_NativeWindowManager_UnregisterTouchEventFilter(int32_t windowId)](#oh_nativewindowmanager_unregistertoucheventfilter) | - | Unregisters a function for filtering multimodal touch events.|
 | [WindowManager_ErrorCode OH_NativeWindowManager_GetKeyEventFilter(int32_t windowId, OH_NativeWindowManager_KeyEventFilter* outKeyEventFilter)](#oh_nativewindowmanager_getkeyeventfilter) | - | Obtains the multimodal key event filtering function registered for the specified window. |
 | [WindowManager_ErrorCode OH_NativeWindowManager_GetMouseEventFilter(int32_t windowId, OH_NativeWindowManager_MouseEventFilter* outMouseEventFilter)](#oh_nativewindowmanager_getmouseeventfilter) | - | Obtains the multimodal mouse event filtering function registered for the specified window. |
@@ -55,6 +54,7 @@ Defines a function for filtering multimodal key events.
 
 **Since**: 12
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -65,7 +65,7 @@ Defines a function for filtering multimodal key events.
 
 | Type| Description|
 | -- | -- |
-| bool | Whether the event is filtered out. The value **true** indicates that the event is not distributed to the next node. The value **false** indicates that the event is not intercepted.|
+| bool | Event filtering result. The value **true** indicates that the event is intercepted and will not be distributed to the next node. The value **false** indicates that the event is not intercepted and will be distributed to the next node. |
 
 ### OH_NativeWindowManager_RegisterKeyEventFilter()
 
@@ -78,6 +78,7 @@ WindowManager_ErrorCode OH_NativeWindowManager_RegisterKeyEventFilter(int32_t wi
 Registers a function for filtering multimodal key events.
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -104,6 +105,7 @@ Unregisters a function for filtering multimodal key events.
 
 **Since**: 12
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -128,6 +130,7 @@ Defines a function for filtering multimodal mouse events.
 
 **Since**: 15
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -138,7 +141,7 @@ Defines a function for filtering multimodal mouse events.
 
 | Type| Description|
 | -- | -- |
-| bool | Whether the event is filtered out. The value **true** indicates that the event is filtered out and will not be distributed to the next node. The value **false** indicates that the event is not filtered out or intercepted and will be distributed to the next node.|
+| bool | Event filtering result. The value **true** indicates that the event is intercepted and will not be distributed to the next node. The value **false** indicates that the event is not intercepted and will be distributed to the next node. |
 
 ### OH_NativeWindowManager_RegisterMouseEventFilter()
 
@@ -151,6 +154,7 @@ WindowManager_ErrorCode OH_NativeWindowManager_RegisterMouseEventFilter(int32_t 
 Registers a function for filtering multimodal mouse events.
 
 **Since**: 15
+
 
 **Parameters**
 
@@ -177,6 +181,7 @@ Unregisters a function for filtering multimodal mouse events.
 
 **Since**: 15
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -201,6 +206,7 @@ Defines a function for filtering multimodal touch events.
 
 **Since**: 15
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -211,7 +217,7 @@ Defines a function for filtering multimodal touch events.
 
 | Type| Description|
 | -- | -- |
-| bool | Whether the event is filtered out. The value **true** indicates that the event is filtered out and will not be distributed to the next node. The value **false** indicates that the event is not filtered out or intercepted and will be distributed to the next node.|
+| bool | Event filtering result. The value **true** indicates that the event is intercepted and will not be distributed to the next node. The value **false** indicates that the event is not intercepted and will be distributed to the next node. |
 
 ### OH_NativeWindowManager_RegisterTouchEventFilter()
 
@@ -225,18 +231,19 @@ Registers a function for filtering multimodal touch events.
 
 **Since**: 15
 
+
 **Parameters**
 
 | Parameter| Description|
 | -- | -- |
 | int32_t windowId | ID of the window for which the function is registered.|
-| [WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode) | Execution result of the function. <br> **OK**: The API is successfully called.<br> **INVAILD_WINDOW_ID**: The **windowId** parameter is invalid.<br> **WINDOW_MANAGER_ERRORCODE_INVALID_PARAM**: The **touchEventFilter** parameter is invalid.<br> **SERVICE_ERROR**: The window management service is abnormal.|
+| [WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode) | Result code.<br> Returns **OK** if the API is called successfully.<br> Returns **INVAILD_WINDOW_ID** if the **windowId** parameter is invalid.<br> Returns **WINDOW_MANAGER_ERRORCODE_INVALID_PARAM** if the **touchEventFilter** parameter is invalid.<br> Returns **SERVICE_ERROR** if the window management service is abnormal. |
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| [WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode) | General state code of the window management API. For details, see [WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode). |
+| [WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode) | Common status code of the window management API. For details, see [WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode). |
 
 ### OH_NativeWindowManager_UnregisterTouchEventFilter()
 
@@ -249,6 +256,7 @@ WindowManager_ErrorCode OH_NativeWindowManager_UnregisterTouchEventFilter(int32_
 Unregisters a function for filtering multimodal touch events.
 
 **Since**: 15
+
 
 **Parameters**
 

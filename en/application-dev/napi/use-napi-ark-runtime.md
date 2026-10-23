@@ -5,7 +5,7 @@
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=3383cf6b2a36933eae9d88e06bbfad5f09f5363a translatedAt=2026-09-16T03:40:44.102Z pushedAt=2026-09-16T08:26:10.230Z -->
+<!-- md-trans-meta sourceCommit=82b72d075adc31c15fba68dcf8f34e61b2521f6c translatedAt=2026-10-13T13:14:34.639Z pushedAt=2026-10-16T04:13:07.794Z -->
 
 ## When to Use
 
@@ -15,12 +15,12 @@ After creating a thread using **pthread_create**, you can use **napi_create_ark_
 
 A maximum of 64 runtime environments can be created for a process.
 
-### Sample Code
+## Sample Code
 
 - API declaration
 
    <!-- @[napi_ark_runtime_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/cpp/types/libentry/Index.d.ts) -->
-
+   
    ``` TypeScript
    // index.d.ts
    export const createArkRuntime: () => object;
@@ -48,7 +48,7 @@ A maximum of 64 runtime environments can be created for a process.
   Configure the **build-profile.json5** file of the current module as follows:
 
   <!-- @[napi_ark_runtime_build](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/build-profile.json5) -->
-
+  
   ``` JSON5
     "buildOption": {
       "arkOptions" : {
@@ -98,7 +98,7 @@ A maximum of 64 runtime environments can be created for a process.
   Create a thread and an ArkTS runtime environment, and load the module. For details about how to load a custom module, see [Loading a Module Using Node-API](use-napi-load-module-with-info.md).
 
   <!-- @[napi_ark_runtime_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/cpp/napi_init.cpp) -->
-
+  
   ``` C++
   #include "napi/native_api.h"
   #include <pthread.h>
@@ -170,9 +170,9 @@ A maximum of 64 runtime environments can be created for a process.
   ```
 
 - ArkTS sample code
-
+  
   <!-- @[napi_ark_runtime_utils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/ets/pages/ObjectUtils.ets) -->
-
+  
   ``` TypeScript
   export function Logger() {
     console.info('print log');
@@ -180,7 +180,7 @@ A maximum of 64 runtime environments can be created for a process.
   ```
 
   <!-- @[napi_ark_runtime_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/ets/pages/Index.ets) -->
-
+  
   ``` TypeScript
   // index.ets
   testNapi.createArkRuntime();

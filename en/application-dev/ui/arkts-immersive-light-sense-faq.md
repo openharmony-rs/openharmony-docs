@@ -1,4 +1,4 @@
-# FAQs About Immersive Light Sense
+# FAQs About Immersive Light Sensing
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @H-xinwei-->

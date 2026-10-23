@@ -354,7 +354,7 @@
 - 接口声明
     ```ts
     // index.d.ts
-    export const callFunctionInContext: (func: (func:()=>number)=>{}) => number;
+    export const callFunctionInContext: (func: (func:()=>number)=>number) => number;
     ```
 
 - 编译配置
