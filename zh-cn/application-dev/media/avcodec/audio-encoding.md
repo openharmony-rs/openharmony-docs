@@ -1,4 +1,4 @@
-# 异步模式音频编码
+# 音频编码
 <!--Kit: AVCodec Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @mr-chencxy-->

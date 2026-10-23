@@ -1,4 +1,4 @@
-# 异步模式音频解码
+# 音频解码
 
 <!--Kit: AVCodec Kit-->
 <!--Subsystem: Multimedia-->
