@@ -283,7 +283,7 @@ subscribeNotification(priorityStrategy?: number): Promise\<void\>
 
 根据[优先通知](../../notification/notification-glossary.md#priority-notification优先通知)过滤条件订阅通知。使用Promise异步回调。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束**：此接口仅可在Stage模型下使用。
 

@@ -1604,7 +1604,7 @@ getActiveNotification(hashCode: string): Promise\<NotificationRequest\>
 
 根据通知的唯一标识hashCode获取当前未删除的通知信息。使用Promise异步回调。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
