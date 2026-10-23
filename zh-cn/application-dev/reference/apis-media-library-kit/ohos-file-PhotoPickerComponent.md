@@ -454,7 +454,6 @@ PhotoPickerComponent进入大图后，大图放大缩小时的回调。
 | 参数名 | 类型                            | 必填 | 说明 |
 | ----- |-------------------------------| ----- |----------------------------------------------|
 | scale  | number | 是 | 图片相比原图放大缩小的比例。 |
- 
 ## UnselectableItemClickedCallback 
  
 type UnselectableItemClickedCallback = (unselectableItemInfo: UnselectableItemInfo) => void
