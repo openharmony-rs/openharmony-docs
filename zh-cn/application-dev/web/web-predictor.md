@@ -230,6 +230,7 @@ struct WebComponent {
 
 ArkTS-Dyn示例：
 <!-- @[on_page_end_trigger_prefetch_post_request_access_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry2/src/main/ets/pages/PrefetchingAPOSTRequest_two.ets) -->
+
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
 
