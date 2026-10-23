@@ -1219,6 +1219,4 @@ The specified userId is not a foreground user.
 
 **处理步骤**
 
-使用acm工具将指定的userId用户激活至前台。
-
-acm工具使用方式可以参考：[acm工具](./acm-tool.md)。
+检查指定userId用户是否在前台
