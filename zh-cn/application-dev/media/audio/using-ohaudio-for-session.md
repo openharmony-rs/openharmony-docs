@@ -322,8 +322,8 @@ void AudioSessionStateChangedCallback(OH_AudioSession_StateChangedEvent event)
 
 | 枚举值 | API版本 | 使用场景 |
 | -------- | -------- | -------- |
-| [OH_AudioSession_BehaviorFlags](../../reference/apis-audio-kit/capi-native-audio-session-base-h.md#oh_audiosession_behaviorflags).MUTE_WHEN_INTERRUPTED | 24 | 该枚举用于直播类音频被打断场景。 |
-| [OH_AudioSession_BehaviorFlags](../../reference/apis-audio-kit/capi-native-audio-session-base-h.md#oh_audiosession_behaviorflags).PAUSE_WHEN_INTERRUPTED | 26.0.0 | 该枚举用于媒体类音频被其他短时媒体音频（如有声广告）打断后需要恢复播放的场景。 |
+| [OH_AudioSession_BehaviorFlags](../../reference/apis-audio-kit/capi-native-audio-session-base-h.md#oh_audiosession_behaviorflags).MUTE_WHEN_INTERRUPTED | 24 | 该枚举值用于直播类音频被打断场景。 |
+| [OH_AudioSession_BehaviorFlags](../../reference/apis-audio-kit/capi-native-audio-session-base-h.md#oh_audiosession_behaviorflags).PAUSE_WHEN_INTERRUPTED | 26.0.0 | 该枚举值用于媒体类音频被其他短时媒体音频（如有声广告）打断后需要恢复播放的场景。 |
 
 当用户观看直播时，若其他应用启动音频流（如键盘录音转文字）打断直播，默认会导致直播的音频和画面暂停，影响观看体验。设置[OH_AudioSession_BehaviorFlags](../../reference/apis-audio-kit/capi-native-audio-session-base-h.md#oh_audiosession_behaviorflags).MUTE_WHEN_INTERRUPTED会话行为后，直播在被打断时将保持静音播放而非暂停，避免画面中断，打断结束后会自动解除静音。
 
