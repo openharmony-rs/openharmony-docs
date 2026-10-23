@@ -1493,7 +1493,7 @@ reminderAgentManager.unsubscribeReminderState(reminderStateCallback).then(() => 
 
 代理提醒对象，用于设置提醒类型、响铃时长等具体信息。
 
-在API版本26.2.0之前，倒计时和闹钟类型的代理提醒不支持在通知中心一键清除；从API版本26.2.0开始，所有代理提醒的通知都支持在通知中心一键清除。
+在API版本26.1.0之前，倒计时和闹钟类型的代理提醒不支持在通知中心一键清除；从API版本26.1.0开始，所有代理提醒的通知都支持在通知中心一键清除。
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
 

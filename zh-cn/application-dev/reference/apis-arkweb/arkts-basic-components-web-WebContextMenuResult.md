@@ -361,7 +361,7 @@ copyLinkToTextMenu(): void
 >
 > 完成操作后，应调用[closeContextMenu](#closecontextmenu9)关闭菜单，未调用可能导致菜单资源未正确释放。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -379,7 +379,7 @@ removeFragments(): void
 >
 > 完成操作后，应调用[closeContextMenu](#closecontextmenu9)关闭菜单，未调用可能导致菜单资源未正确释放。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

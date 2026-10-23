@@ -1821,7 +1821,7 @@ getDefaultReusePool?: () => IDefaultReusePool | undefined
 >
 > 该方法为可选方法，调用时建议使用`getDefaultReusePool?.()`的形式。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2551,7 +2551,7 @@ struct CompA {
 
 `IDefaultReusePool`接口提供自定义组件上的默认复用池的相关功能，包括清理复用池中的组件。通过[CustomComponentContext.getDefaultReusePool](#getdefaultreusepool)获取实例。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2568,7 +2568,7 @@ clearCache(reuseId?: string): void
 > 1. 已从复用池中取出、正参与复用的组件不受影响。
 > 2. 传入不存在或空字符串的`reuseId`时，本次调用不产生效果。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

@@ -4896,7 +4896,7 @@ promise.then((data) => {
 | key               | string                                  | 是   | 是   | 联系人的key，由系统自动生成。               |
 | contactAttributes | [ContactAttributes](#contactattributes) | 否   | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。                     |
 | emails            | [Email](#email)[]                       | 否   | 是   | 联系人的邮箱地址列表。                 |
-| events<sup>(deprecated)</sup>            | [Event](#eventdeprecated)[]                       | 否   | 是   | 联系人的生日、周年纪念等重要日期列表。<br> **起始版本：** 7 <br> **废弃版本：** 26.2.0 <br> **替代接口：** significantDates |
+| events<sup>(deprecated)</sup>            | [Event](#eventdeprecated)[]                       | 否   | 是   | 联系人的生日、周年纪念等重要日期列表。<br> **起始版本：** 7 <br> **废弃版本：** 26.1.0 <br> **替代接口：** significantDates |
 | groups            | [Group](#group)[]                       | 否   | 是   | 联系人的群组列表。<br> **说明**： 添加或更新联系人时，仅支持关联到已有群组，不支持创建新群组。                     |
 | imAddresses       | [ImAddress](#imaddress)[]               | 否   | 是   | 联系人的即时消息地址列表。             |
 | phoneNumbers      | [PhoneNumber](#phonenumber)[]           | 否   | 是   | 联系人的电话号码列表。                 |
@@ -4909,7 +4909,7 @@ promise.then((data) => {
 | nickName          | [NickName](#nickname)                   | 否   | 是   | 联系人的昵称。                         |
 | note              | [Note](#note)                           | 否   | 是   | 联系人的备注。                         |
 | organization      | [Organization](#organization)           | 否   | 是   | 联系人的组织信息。                     |
-| significantDates      | [SignificantDate](#significantdate)[]           | 否   | 是   | 联系人的生日、周年纪念等重要日期列表。<br> **起始版本：** 26.2.0                    |
+| significantDates      | [SignificantDate](#significantdate)[]           | 否   | 是   | 联系人的生日、周年纪念等重要日期列表。<br> **起始版本：** 26.1.0                    |
 
 **示例：**
 
@@ -5064,7 +5064,7 @@ let holder: contact.Holder = {
 
 **起始版本**：7
 
-**废弃版本**：26.2.0
+**废弃版本**：26.1.0
 
 **替代接口**：[SignificantDate](#significantdate)
 
@@ -5596,9 +5596,9 @@ let website: contact.Website = {
 
 联系人重要日期类型枚举。
 
-**起始版本**：26.2.0
+**起始版本**：26.1.0
 
-**原子化服务API**：从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -5616,9 +5616,9 @@ let website: contact.Website = {
 
 联系人重要日期类。
 
-**起始版本**：26.2.0
+**起始版本**：26.1.0
 
-**原子化服务API**：从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
