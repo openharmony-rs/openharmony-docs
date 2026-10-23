@@ -11,7 +11,7 @@
 
 开发者可以调用本模块的Native API接口，完成同步模式的视频编码。
 
-具体实现可参考[示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Media/AVCodec)。
+具体实现可参考[示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVCodec/AVCodec)。
 
 当前支持的编码能力，请参考[AVCodec支持的格式](avcodec-support-formats.md#视频编码)。
 
@@ -96,7 +96,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
    - category：编解码器类别，HARDWARE硬件编解码，SOFTWARE为软件编解码。
    - capability：编码器能力查询实例的指针。
 
-   <!-- @[encoder_create_byname](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/video_encoder.cpp) -->
+   <!-- @[encoder_create_byname](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_encoder.cpp) -->
 
    ```c++
    // 通过codec name创建编码器，应用有特殊需求，比如选择支持某种分辨率规格的编码器，可先查询capability，再根据codec name创建编码器。
@@ -120,16 +120,16 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
    目前支持的所有格式都必须配置以下选项：视频帧宽度、视频帧高度、视频像素格式。
 
-   <!-- @[encoder_sync_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/video_encoder.cpp) -->
+   <!-- @[encoder_sync_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_encoder.cpp) -->
 
    ```c++
    // 同步模式配置。
-   if (sampleInfo.codec.codecSyncMode) {
-       OH_AVFormat_SetIntValue(format, OH_MD_KEY_ENABLE_SYNC_MODE, sampleInfo.codec.codecSyncMode);
+   if (codec.codecSyncMode) {
+       OH_AVFormat_SetIntValue(format, OH_MD_KEY_ENABLE_SYNC_MODE, codec.codecSyncMode);
    }
    ```
 
-   <!-- @[encoder_configure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/video_encoder.cpp) -->
+   <!-- @[encoder_configure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_encoder.cpp) -->
 
    ```c++
    int32_t VideoEncoder::Configure(const SampleInfo &sampleInfo)
@@ -148,6 +148,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
        OH_AVFormat_SetIntValue(format, OH_MD_KEY_PROFILE, sampleInfo.video.hevcProfile);
        OH_AVFormat_SetIntValue(format, OH_MD_KEY_I_FRAME_INTERVAL, sampleInfo.video.iFrameInterval);
        // ...
+
        int ret = OH_VideoEncoder_Configure(encoder_, format);
        OH_AVFormat_Destroy(format);
        format = nullptr;
@@ -168,7 +169,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
    sampleInfo.video.window：送显窗口，类型为OHNativeWindow，获取方式请参考异步模式视频编码[Surface模式](video-encoding.md#surface模式)的“步骤-6：获取surface”。
 
-   <!-- @[encoder_get_surface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/video_encoder.cpp) -->
+   <!-- @[encoder_get_surface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_encoder.cpp) -->
 
    ```c++
    // 获取编码器Surface模式的OHNativeWindow输入，需要在调用OH_VideoEncoder_Prepare接口之前完成。
@@ -185,7 +186,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
    该接口将在编码器运行前进行一些数据的准备工作。
 
-   <!-- @[encoder_prepare](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/video_encoder.cpp) -->
+   <!-- @[encoder_prepare](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_encoder.cpp) -->
 
    ```c++
    // 申请编码器运行所需资源。Prepare 成功后才能调用 Start。
@@ -212,7 +213,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
    }
    ```
 
-   <!-- @[encoder_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/video_encoder.cpp) -->
+   <!-- @[encoder_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_encoder.cpp) -->
 
    ```c++
    int32_t VideoEncoder::Start()
@@ -233,25 +234,16 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
    编码器出帧处理循环：
 
-   <!-- @[encoder_sync_output_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/sample/recorder/Recorder.cpp) -->
+   <!-- @[encoder_sync_output_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/sample/recorder/Recorder.cpp) -->
 
    ```c++
    while (true) {
        CHECK_AND_BREAK_LOG(isStarted_, "Work done, thread out");
-       std::unique_lock<std::mutex> lock(encContext_->outputMutex);
+       std::unique_lock<std::mutex> lock(context->outputMutex);
        CodecBufferInfo bufferInfo;
-       CHECK_AND_BREAK_LOG(videoEncoder_->GetOutputBuffer(bufferInfo, TIMEOUT_US),
+       CHECK_AND_BREAK_LOG(encoder->GetOutputBuffer(bufferInfo, TIMEOUT_US),
            "Get output buffer failed, thread out");
        // ...
-       int32_t ret = videoEncoder_->FreeOutputBuffer(bufferInfo);
-       CHECK_AND_BREAK_LOG(ret == AVCODEC_SAMPLE_ERR_OK, "Encoder output thread out");
-       if (bufferInfo.attr.flags & AVCODEC_BUFFER_FLAGS_EOS) {
-           AVCODEC_SAMPLE_LOGI("Video EOS processed (sync), notifying StopEnd");
-           isVideoEos_.store(true);
-           videoEosCond_.notify_all();
-           AVCODEC_SAMPLE_LOGI("Video EOS complete (sync), exiting thread");
-           break;
-       }
    }
    ```
 
@@ -261,7 +253,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
    获取输出buffer：
 
-   <!-- @[encoder_sync_get_outputbuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/video_encoder.cpp) -->
+   <!-- @[encoder_sync_get_outputbuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_encoder.cpp) -->
 
    ```c++
    bool VideoEncoder::GetOutputBuffer(CodecBufferInfo &info, int64_t timeoutUs)
@@ -317,7 +309,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
    输出buffer释放处理：
 
-   <!-- @[encoder_free_output](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/video_encoder.cpp) -->
+   <!-- @[encoder_free_output](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_encoder.cpp) -->
 
    ```c++
    int32_t VideoEncoder::FreeOutputBuffer(const CodecBufferInfo &info)
@@ -333,7 +325,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
 7. 调用OH_VideoEncoder_NotifyEndOfStream()通知编码器结束。
 
-   <!-- @[encoder_notify_end_of_stream](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/video_encoder.cpp) -->
+   <!-- @[encoder_notify_end_of_stream](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_encoder.cpp) -->
 
    ```c++
    // Surface模式：通知视频编码器输入流已结束，只能使用此接口进行通知。
@@ -353,7 +345,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
    调用OH_VideoEncoder_Flush接口后，编码器仍处于运行态，但会清除编码器中缓存的输入和输出数据及参数集（如H.264格式的PPS/SPS）。此时需要调用OH_VideoEncoder_Start接口重新开始编码。
 
-   <!-- @[encoder_flush](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/video_encoder.cpp) -->
+   <!-- @[encoder_flush](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_encoder.cpp) -->
 
    ```c++
    int32_t VideoEncoder::Flush()
@@ -373,7 +365,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
    调用OH_VideoEncoder_Reset接口后，编码器回到初始化的状态，需要调用接口[OH_VideoEncoder_Configure](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_configure)和[OH_VideoEncoder_Prepare](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_prepare)重新配置。
 
-   <!-- @[encoder_reset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/video_encoder.cpp) -->
+   <!-- @[encoder_reset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_encoder.cpp) -->
 
    ```c++
    int32_t VideoEncoder::Reset()
@@ -395,7 +387,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
     调用OH_VideoEncoder_Stop接口后，编码器保留了编码实例，释放输入输出buffer。开发者可以直接调用OH_VideoEncoder_Start接口继续编码。
 
-    <!-- @[encoder_stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/video_encoder.cpp) -->
+    <!-- @[encoder_stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_encoder.cpp) -->
 
     ```c++
     int32_t VideoEncoder::Stop()
@@ -414,11 +406,25 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
 11. 调用OH_VideoEncoder_Destroy()销毁编码器实例，释放资源。
 
-    <!-- @[recorder_release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/sample/recorder/Recorder.cpp) -->
+    <!-- @[recorder_release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/sample/recorder/Recorder.cpp) -->
 
     ```c++
     void Recorder::ReleaseVideoEncoder()
     {
+        // API 26 要求先销毁副编码器，再销毁主编码器；主路拥有共享输入的生命周期。
+        if (secondaryVideoEncoder_ != nullptr) {
+            if (secondaryEncContext_ != nullptr) {
+                secondaryEncContext_->isDestroyed.store(true);
+                std::unique_lock<std::shared_mutex> codecLock(secondaryEncContext_->codecMutex);
+                secondaryEncContext_->ClearQueue();
+            }
+            secondaryVideoEncoder_->Release();
+            secondaryVideoEncoder_.reset();
+            if (secondaryEncContext_ != nullptr) {
+                delete secondaryEncContext_;
+                secondaryEncContext_ = nullptr;
+            }
+        }
         if (videoEncoder_ != nullptr) {
             if (encContext_ != nullptr) {
                 // 回调只借用上下文。先拒绝迟到回调，再销毁 codec 和上下文。
@@ -438,7 +444,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
     }
     ```
 
-    <!-- @[encoder_destroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/video_encoder.cpp) -->
+    <!-- @[encoder_destroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_encoder.cpp) -->
 
     ```c++
     // 调用OH_VideoEncoder_Destroy，注销编码器，释放资源。
@@ -469,7 +475,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
     方式一：通过名称创建编码器。
 
-    <!-- @[encoder_create_byname](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/video_encoder.cpp) -->
+    <!-- @[encoder_create_byname](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_encoder.cpp) -->
 
     ```c++
     // 通过codec name创建编码器，应用有特殊需求，比如选择支持某种分辨率规格的编码器，可先查询capability，再根据codec name创建编码器。
@@ -487,7 +493,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
     方式二：通过媒体类型创建编码器。
 
-    <!-- @[encoder_create_bymime](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/video_encoder.cpp) -->
+    <!-- @[encoder_create_bymime](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_encoder.cpp) -->
 
     ```c++
     // 通过 MIME TYPE 创建编码器，由系统选择对应的编码器实现。
@@ -502,16 +508,16 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
     与Surface模式相同，此处不再赘述。
 
-    <!-- @[encoder_sync_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/video_encoder.cpp) -->
+    <!-- @[encoder_sync_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_encoder.cpp) -->
 
     ```c++
     // 同步模式配置。
-    if (sampleInfo.codec.codecSyncMode) {
-        OH_AVFormat_SetIntValue(format, OH_MD_KEY_ENABLE_SYNC_MODE, sampleInfo.codec.codecSyncMode);
+    if (codec.codecSyncMode) {
+        OH_AVFormat_SetIntValue(format, OH_MD_KEY_ENABLE_SYNC_MODE, codec.codecSyncMode);
     }
     ```
 
-    <!-- @[encoder_configure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/video_encoder.cpp) -->
+    <!-- @[encoder_configure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_encoder.cpp) -->
 
     ```c++
     int32_t VideoEncoder::Configure(const SampleInfo &sampleInfo)
@@ -530,6 +536,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
         OH_AVFormat_SetIntValue(format, OH_MD_KEY_PROFILE, sampleInfo.video.hevcProfile);
         OH_AVFormat_SetIntValue(format, OH_MD_KEY_I_FRAME_INTERVAL, sampleInfo.video.iFrameInterval);
         // ...
+
         int ret = OH_VideoEncoder_Configure(encoder_, format);
         OH_AVFormat_Destroy(format);
         format = nullptr;
@@ -547,7 +554,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
     与Surface模式相同，此处不再赘述。
 
-    <!-- @[encoder_prepare](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/video_encoder.cpp) -->
+    <!-- @[encoder_prepare](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_encoder.cpp) -->
 
     ```c++
     // 申请编码器运行所需资源。Prepare 成功后才能调用 Start。
@@ -579,7 +586,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
     }
     ```
 
-    <!-- @[encoder_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/video_encoder.cpp) -->
+    <!-- @[encoder_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_encoder.cpp) -->
 
     ```c++
     int32_t VideoEncoder::Start()
@@ -604,7 +611,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
     获取输入buffer：
 
-    <!-- @[encoder_sync_get_inputbuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/video_encoder.cpp) -->
+    <!-- @[encoder_sync_get_inputbuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_encoder.cpp) -->
 
     ```c++
     OH_AVBuffer *VideoEncoder::GetInputBuffer(CodecBufferInfo &info, int64_t timeoutUs)
@@ -658,7 +665,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
                 return false;
             }
             if (inFile_->eof()) {
-                // 读取结束处理。
+                inputDone = 1;
             }
         **/
         return buffer;
@@ -667,7 +674,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
     送入编码输入队列：
 
-    <!-- @[encoder_push_input_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/video_encoder.cpp) -->
+    <!-- @[encoder_push_input_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_encoder.cpp) -->
 
     ```c++
     // 送入编码输入队列进行编码，将填充好图像数据的buffer推送给编码器。
@@ -695,7 +702,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
    获取输出buffer：
 
-   <!-- @[encoder_sync_get_outputbuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/video_encoder.cpp) -->
+   <!-- @[encoder_sync_get_outputbuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_encoder.cpp) -->
 
    ```c++
    bool VideoEncoder::GetOutputBuffer(CodecBufferInfo &info, int64_t timeoutUs)
@@ -751,7 +758,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
    输出buffer释放处理：
 
-   <!-- @[encoder_free_output](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/video_encoder.cpp) -->
+   <!-- @[encoder_free_output](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_encoder.cpp) -->
 
    ```c++
    int32_t VideoEncoder::FreeOutputBuffer(const CodecBufferInfo &info)
