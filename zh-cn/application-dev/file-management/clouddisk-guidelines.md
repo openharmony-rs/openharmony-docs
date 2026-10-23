@@ -925,7 +925,7 @@ static napi_value GetPlaceholderCustomInfo(napi_env env, napi_callback_info info
     }
 
     // ...
-    // 读取自定义信息（dataLength为in/out参数，返回时携带实际读取长度）
+    // 读取自定义信息（dataLength为输出参数，输入时传入缓冲区容量，返回时携带实际读取长度）
     CloudDisk_ErrorCode ret =
         OH_CloudDisk_GetPlaceholderCustomInfo(syncFolderPath, relativePathInfo, dataBuf, &dataLength);
     if (ret != CLOUD_DISK_OK) {
