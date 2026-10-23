@@ -153,8 +153,10 @@ struct WebComponent {
 ```
 
 使用[DocumentViewPicker()](../reference/apis-core-file-kit/js-apis-file-picker.md#documentviewpicker)获取当前示例的默认下载目录，将该目录设置为下载目录。
-```ts
-// xxx.ets
+
+<!-- @[select_download_dir](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageFileIO/entry/src/main/ets/pages/SelectDownloadDir.ets) -->
+
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { picker, fileUri } from  '@kit.CoreFileKit';
@@ -170,7 +172,7 @@ struct WebComponent {
         .onClick(() => {
           try {
             this.delegate.onBeforeDownload((webDownloadItem: webview.WebDownloadItem) => {
-              console.info("will start a download.");
+              console.info('will start a download.');
               // 使用DocumentViewPicker()获取当前示例的默认下载目录，将该目录设置为下载目录
               getDownloadPathFromPicker().then((downloadPath) => {
                 webDownloadItem.start(downloadPath + '/' + webDownloadItem.getSuggestedFileName());
@@ -179,19 +181,19 @@ struct WebComponent {
             })
             this.delegate.onDownloadUpdated((webDownloadItem: webview.WebDownloadItem) => {
               // 下载任务的唯一标识。
-              console.info("download update guid: " + webDownloadItem.getGuid());
+              console.info('download update guid: ' + webDownloadItem.getGuid());
               // 下载的进度。
-              console.info("download update percent complete: " + webDownloadItem.getPercentComplete());
+              console.info('download update percent complete: ' + webDownloadItem.getPercentComplete());
               // 当前的下载速度。
-              console.info("download update speed: " + webDownloadItem.getCurrentSpeed())
+              console.info('download update speed: ' + webDownloadItem.getCurrentSpeed())
             })
             this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
-              console.error("download failed guid: " + webDownloadItem.getGuid());
+              console.error('download failed guid: ' + webDownloadItem.getGuid());
               // 下载任务失败的错误码。
-              console.error("download failed last error code: " + webDownloadItem.getLastErrorCode());
+              console.error('download failed last error code: ' + webDownloadItem.getLastErrorCode());
             })
             this.delegate.onDownloadFinish((webDownloadItem: webview.WebDownloadItem) => {
-              console.info("download finish guid: " + webDownloadItem.getGuid());
+              console.info('download finish guid: ' + webDownloadItem.getGuid());
             })
             this.controller.setDownloadDelegate(this.delegate);
           } catch (error) {
