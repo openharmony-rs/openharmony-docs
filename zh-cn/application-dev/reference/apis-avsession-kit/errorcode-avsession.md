@@ -1221,7 +1221,7 @@ DRM密钥响应的处理过程出现了问题。
  
 **错误信息**
  
-The session service is not running or the session service communication failed.
+Session service is not running.
  
 **错误描述**
  
