@@ -520,12 +520,12 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
  
 **模型约束：** 此接口仅可在Stage模型下使用。
  
-**原子化服务API**：从API版本26.0.1开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
  
-**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
  
 | 名称                | 值   | 说明    |
 |-------------------|-----|-------|
-| AUTO | 0   | 颜色跟随系统。 |
+| AUTO | 0   | 颜色跟随系统。不填写时默认采用此模式。 |
 | LIGHT | 1   | 浅色模式。 |
 | DARK | 2   | 深色模式。 |
