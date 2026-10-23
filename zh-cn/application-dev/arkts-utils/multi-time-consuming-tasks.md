@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍使用TaskPool执行多个耗时任务的方法：通过TaskGroup并发执行任务并等待全部结果，或将大数据列表拆分为多个子任务并行处理后合并，以多图片加载为例演示完整实现。"
+keywords: [多任务并发, TaskGroup, 任务分组, 大数据拆分, 结果合并, TaskPool, 批量图片加载]
+doctype: guide
+status: active
+---
+
 # 使用TaskPool执行多个耗时任务
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->

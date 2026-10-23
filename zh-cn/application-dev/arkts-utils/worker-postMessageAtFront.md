@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍Worker向宿主线程进行消息插队通信的能力：postMessageAtFront将消息插入宿主线程消息队列头部优先处理，适用于高优先级消息需要即时响应的场景，并说明插队机制与完整使用示例。"
+keywords: [消息插队, postMessageAtFront, 消息队列, 高优先级消息, 优先处理, Worker通信, 即时响应, 多线程]
+doctype: guide
+status: active
+---
+
 # Worker向宿主线程进行消息插队通信
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->

@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍XML（可扩展标记语言）的基本概念：由元素、属性和内容组成文档结构，支持XML Schema与DTD结构校验、命名空间、实体引用等特性，并概述XML生成、解析、转换等基础类库能力。"
+keywords: [XML概述, 标记语言, 元素, 属性, 命名空间, DTD, XML生成, XML解析, XML转换]
+doctype: guide
+status: active
+---
+
 # XML概述
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
