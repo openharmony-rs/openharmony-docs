@@ -1,3 +1,11 @@
+---
+kits: ["Media Kit / 媒体服务"]
+description: "从API版本20开始介绍屏幕录制支持的矩形区域录制能力，允许开发者通过屏幕捕获ID和指定区域参数自主选择录屏范围，适用于在线教育和游戏直播等选择性录制场景。"
+keywords: [矩形区域录制, OH_Rect, 屏幕录制]
+doctype: guide
+status: active
+---
+
 # 屏幕录制支持矩形区域录制
 
 <!--Kit: Media Kit-->
@@ -37,7 +45,7 @@ target_link_libraries(sample PUBLIC libnative_avscreen_capture.so libnative_disp
 
 **添加头文件**
 
-<!-- @[screenCapture_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/main.h) -->  
+<!-- @[screenCapture_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/main.h) --> 
 
 ``` C
 #include "hilog/log.h"
