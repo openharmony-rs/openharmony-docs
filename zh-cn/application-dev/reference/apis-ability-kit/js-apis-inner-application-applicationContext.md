@@ -2152,9 +2152,11 @@ struct Index {
 }
 ```
 
-## ApplicationContext.setFont<sup>26.2.0+</sup>
+## ApplicationContext.setFont
 
-setFont(font: string, enableAnimation: boolean): void
+ArkTS-Dyn: setFont(font: string, enableAnimation: boolean): void
+
+ArkTS-Sta: setFont(font: string, enableAnimation: boolean): void
 
 设置应用的字体。仅支持在主线程调用。
 
@@ -2163,6 +2165,10 @@ setFont(font: string, enableAnimation: boolean): void
 > 调用该接口前，需要确保窗口已完成创建、且UIAbility对应的页面已完成加载，即在[onWindowStageCreate()](js-apis-app-ability-uiAbility.md#onwindowstagecreate)生命周期中通过[loadContent](../apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)方法加载页面之后调用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
 
 **参数：**
 
@@ -2181,6 +2187,8 @@ setFont(font: string, enableAnimation: boolean): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { common } from '@kit.AbilityKit';
 
@@ -2193,8 +2201,45 @@ struct Index {
   aboutToAppear() {
     this.getUIContext().getFont().registerFont({
       familyName: 'fontName',
-      familySrc: $rawfile('font/medium.ttf') // 'font/medium.ttf'仅作为示例，实际使用时请替换为真实的字体资源文件。
+      familySrc: $rawfile('font/medium.ttf')  // 'font/medium.ttf'仅作为示例，实际使用时请替换为真实的字体资源文件。
     });
+
+    // 设置应用使用注册的字体，不使用动画
+    this.context.getApplicationContext().setFont('fontName', false);
+  }
+
+  build() {
+    Row() {
+      Column() {
+        Text(this.message)
+          .fontSize(50)
+          .fontWeight(50)
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { common } from '@kit.AbilityKit';
+import { Entry, Text, Column, Row, Component, State } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+  private context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+
+  aboutToAppear() {
+    this.getUIContext().getFont().registerFont({
+      familyName: 'fontName',
+      familySrc: 'font/medium.ttf'
+    })
 
     // 设置应用使用注册的字体，不使用动画
     this.context.getApplicationContext().setFont('fontName', false);
