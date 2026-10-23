@@ -945,7 +945,7 @@ getAllExtBundleStats(userId: number): Promise&lt;Array&lt;ExtBundleStats&gt;&gt;
 
 | 名称      | 类型   | 只读  | 可选  | 说明           |
 | --------- | ------ | ---- | ----- | -------------- |
-| index   | number | 否 | 是 | 分身应用的索引号，默认值为0（表示未分身的主应用）。<br>分身应用索引号在分身创建时默认占用从1开始且当前未被占用的最小索引号，并赋值给该应用的[BundleResourceInfo](../apis-ability-kit/js-apis-bundleManager-BundleResourceInfo-sys.md#bundleresourceinfo)的appIndex属性，后续可以通过调用[getBundleResourceInfo](../apis-ability-kit/js-apis-bundleResourceManager-sys.md#bundleresourcemanagergetbundleresourceinfo12)接口获得。  |
+| index   | number | 否 | 是 | 分身应用的索引号，默认值为0（表示未分身的主应用）。<br>传入不满足范围的值时返回错误码401。<br>分身应用索引号在分身创建时默认占用从1开始且当前未被占用的最小索引号，并赋值给该应用的[BundleResourceInfo](../apis-ability-kit/js-apis-bundleManager-BundleResourceInfo-sys.md#bundleresourceinfo)的appIndex属性，后续可以通过调用[getBundleResourceInfo](../apis-ability-kit/js-apis-bundleResourceManager-sys.md#bundleresourcemanagergetbundleresourceinfo12)()接口获得。  |
 | statFlag | [GetBundleStatsFlag](#getbundlestatsflag)  |否 | 是 | 应用存储空间统计信息的标志，用于指定统计范围。默认值是GET_BUNDLE_WITH_ALL_SIZE。  |
 
 ## GetBundleStatsFlag
