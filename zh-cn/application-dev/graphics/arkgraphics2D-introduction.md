@@ -1,7 +1,7 @@
 ---
 kits: ["ArkGraphics 2D / 方舟2D图形服务"]
 description: "介绍 ArkGraphics 2D方舟2D图形服务的能力范围与使用场景，涵盖图像处理、色彩管理、可变帧率、自绘制、HDR及Native图形绘制等核心能力。"
-keywords: [ArkGraphics 2D,图形绘制,图像处理,色彩管理,可变帧率,自绘制,HDR]
+keywords: [ArkGraphics 2D, 图形绘制,图像处理, 色彩管理, 可变帧率, 自绘制, HDR]
 doctype: guide
 status: active
 ---
