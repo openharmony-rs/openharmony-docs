@@ -16,7 +16,7 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
@@ -93,7 +93,7 @@ enum OH_ArkUI_NativeModule_UIInfoCollection_InteractionEventType
 
 定义可监听的UI交互事件类型。<br>各枚举值均为位标志，用于构造传给[OH_ArkUI_NativeModule_UIInfoCollectionRegisterInteractionObserver()](capi-ui-info-collection-h.md#oh_arkui_nativemodule_uiinfocollectionregisterinteractionobserver)的eventMask。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 | 枚举项 | 描述 |
 | -- | -- |
@@ -118,7 +118,7 @@ enum OH_ArkUI_NativeModule_UIAgentTreeType
 
 定义UI树采集类型的枚举。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 | 枚举项 | 描述 |
 | -- | -- |
@@ -135,7 +135,7 @@ enum OH_ArkUI_NativeModule_UIContentChangeEventCategory
 
 定义UI内容变化事件类别的枚举。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 | 枚举项 | 描述 |
 | -- | -- |
@@ -154,7 +154,7 @@ enum OH_ArkUI_NativeModule_UIContentChangeIgnoreType
 
 定义可忽略的UI内容变化事件类型。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 | 枚举项 | 描述 |
 | -- | -- |
@@ -172,7 +172,7 @@ enum OH_ArkUI_NativeModule_UIContentChangeEventType
 
 定义ArkUI内容变化事件类型的枚举。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 | 枚举项 | 描述 |
 | -- | -- |
@@ -204,7 +204,7 @@ typedef void (*OH_ArkUI_NativeModule_UIInfoCollectionInteractionJsonCallback)(co
 
 回调通过借用的[OH_ArkUI_NativeModule_UIJsonWrapper](capi-arkui-nativemodule-oh-arkui-nativemodule-uijsonwrapper.md)对象接收事件数据，不取得该对象的所有权。对象仅在本次回调执行期间有效，回调不得保留或销毁该对象。事件数据中的所有位置坐标均相对于屏幕（显示器），单位为物理像素（px）。事件数据顶层始终包含schemaVersion字段。顶层结构为{ "schemaVersion": 1, "type": "<event type>", ... }。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **参数：**
 
@@ -223,7 +223,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIInfoCollectionRegisterInteractionObserve
 
 注册UI交互事件观察者。<br>观察者仅接收eventMask指定类型的事件回调。同一个UI实例可以注册多个观察者。使用相同的callback和userData组合重复注册，会创建一个新的独立观察者，并分配新的注册ID。<br>不再使用观察者时，必须调用[OH_ArkUI_NativeModule_UIInfoCollectionUnregisterInteractionObserver()](capi-ui-info-collection-h.md#oh_arkui_nativemodule_uiinfocollectionunregisterinteractionobserver)注销回调。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **参数：**
 
@@ -251,7 +251,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIInfoCollectionUnregisterInteractionObser
 
 注销交互事件观察者。<br>本次调用完成后，不再调用对应的回调函数。<br>本函数是线程安全的，可以从任意线程调用，且不会阻塞调用方，但不具备异步信号安全性。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **参数：**
 
@@ -275,7 +275,7 @@ typedef void (*OH_ArkUI_NativeModule_UIAgentJsonCallback)(ArkUI_ContextHandle co
 
 定义异步JSON树采集请求完成时调用的回调函数类型。<br>每个被接受的请求均在UI线程上触发且仅触发一次回调。仅当errorCode为[ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)时，回调才会接收非NULL的JSON对象并取得其所有权。调用方必须调用[OH_ArkUI_NativeModule_UIJsonWrapperDestroy()](capi-ui-json-wrapper-h.md#oh_arkui_nativemodule_uijsonwrapperdestroy)释放该对象。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **参数：**
 
@@ -297,7 +297,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIAgentTreeRequestCreate(OH_ArkUI_NativeMo
 
 创建UI树采集请求。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **参数：**
 
@@ -322,7 +322,7 @@ void OH_ArkUI_NativeModule_UIAgentTreeRequestDestroy(OH_ArkUI_NativeModule_UIAge
 
 销毁UI树采集请求对象。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **参数：**
 
@@ -340,7 +340,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIAgentTreeRequestSetFilterPureLayoutNodes
 
 设置是否从返回的UI树中过滤纯布局节点。<br>默认不启用过滤。启用后，被过滤节点下仍需保留的后代节点会挂载到最近的、仍被保留的祖先节点，并保持原有的相对顺序。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **参数：**
 
@@ -365,7 +365,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIAgentTreeRequestSetFilterOccludedNodes(O
 
 设置是否从返回的UI树中过滤被完全遮挡的节点。<br>默认不启用过滤，且仅可对可见树采集请求启用此选项。开启遮挡过滤可能给采集带来较大的额外计算量，请根据界面复杂程度酌情使用。关闭此选项不会关闭可见性过滤、裁剪过滤、离屏节点过滤或完全透明节点过滤。<br>作为遮挡方的节点所需满足的不透明度阈值由[OH_ArkUI_NativeModule_UIAgentTreeRequestSetOcclusionOpacityThreshold()](capi-ui-info-collection-h.md#oh_arkui_nativemodule_uiagenttreerequestsetocclusionopacitythreshold)单独配置。修改此选项不会改变该阈值。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **参数：**
 
@@ -390,7 +390,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIAgentTreeRequestSetOcclusionOpacityThres
 
 设置节点作为遮挡方参与遮挡判断时，其最终不透明度必须达到的最小值。<br>默认值为1.0，仅可见树采集请求支持此选项。只有满足阈值条件的遮挡节点的区域并集完全覆盖目标节点的有效可见区域时，才会移除目标节点。<br>如果未通过[OH_ArkUI_NativeModule_UIAgentTreeRequestSetFilterOccludedNodes()](capi-ui-info-collection-h.md#oh_arkui_nativemodule_uiagenttreerequestsetfilteroccludednodes)启用遮挡过滤，此阈值不会生效。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **参数：**
 
@@ -415,7 +415,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIAgentTreeRequestSetInteractionInfo(OH_Ar
 
 设置是否采集额外的交互信息。<br>默认不启用采集。启用后，结果中会包含受支持的交互信息，例如节点是否可点击、可获焦或可编辑。此选项不会注册事件观察者，也不会改变任何节点的交互行为。<br>关闭此选项不会移除默认精简结果中已有的字段。高级属性采集不会隐式启用此选项，也不会采集此选项专属的字段。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **参数：**
 
@@ -440,7 +440,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIAgentTreeRequestSetAccessibilityInfo(OH_
 
 设置是否采集额外的无障碍信息。<br>默认不启用采集。启用后，结果中会包含受支持的无障碍信息，例如无障碍内容。此选项不会启用无障碍服务，也不会改变节点行为。<br>关闭此选项不会移除默认精简结果中已有的字段。高级属性采集不会隐式启用此选项，也不会采集此选项专属的字段。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **参数：**
 
@@ -465,7 +465,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIAgentTreeRequestSetCollectVisualProperti
 
 设置是否采集高级视觉属性。<br>默认不启用采集。启用后，结果中会额外包含受支持的、用于描述可直接感知的外观的属性，例如视觉样式和显示状态。<br>默认精简结果中已有的属性不会重复采集。无论交互信息和无障碍信息采集选项是否启用，这两类信息的专属字段均不属于本组属性。内部诊断属性始终不会包含在内。<br>此选项独立于高级功能属性采集选项，不会改变UI树中保留的节点。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **参数：**
 
@@ -490,7 +490,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIAgentTreeRequestSetCollectFunctionalProp
 
 设置是否采集高级功能属性。<br>默认不启用采集。启用后，结果中会额外包含受支持的属性，用于描述开发者配置的组件行为和功能能力。<br>默认精简结果中已有的属性不会重复采集。无论交互信息和无障碍信息采集选项是否启用，这两类信息的专属字段均不属于本组属性。内部诊断属性始终不会包含在内。<br>此选项独立于高级视觉属性采集选项，不会改变UI树中保留的节点。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **参数：**
 
@@ -515,7 +515,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIAgentGetTreeJson(ArkUI_ContextHandle con
 
 同步采集UI树，并以JSON格式返回。<br>本函数必须在UI线程上调用。结果最多包含5000个节点，大小不得超过5MiB。大小限制以规范的紧凑格式JSON为准；如果带缩进和换行的格式化输出本身超过5MiB，请求同样失败。不会返回部分JSON数据。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **参数：**
 
@@ -542,7 +542,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIAgentGetTreeJsonAsync(ArkUI_ContextHandl
 
 发起异步UI树采集请求，并通过异步回调接收采集结果。<br>本函数必须在UI线程上调用。函数返回前会复制request和format，因此调用方可以在调用返回后立即销毁或复用请求对象。每个被接受的请求都在UI线程上完成，且仅完成一次。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **参数：**
 
@@ -571,7 +571,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIAgentGetPageText(ArkUI_ContextHandle uiC
 
 同步采集当前ArkUI页面的文本，并以JSON格式输出。<br>每个JSON项包含用于标识控件的整数"id"、相对于目标窗口的矩形区域"rect"，以及表示文本内容的字符串"content"。使用完毕后，必须调用[OH_ArkUI_NativeModule_UIJsonWrapperDestroy()](capi-ui-json-wrapper-h.md#oh_arkui_nativemodule_uijsonwrapperdestroy)释放结果所占用的内存。本函数必须在UI线程上调用。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **参数：**
 
@@ -596,7 +596,7 @@ typedef void (*OH_ArkUI_NativeModule_UIContentChangeEventCallback)(const OH_ArkU
 
 定义已注册的ArkUI内容变化事件触发时调用的回调函数类型。<br>回调在注册时指定的UI上下文所关联的UI线程上执行。事件快照不可修改，且仅在本次回调返回前有效。ArkUI仅借用userData，不取得其所有权，也不会访问或释放其指向的数据。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **参数：**
 
@@ -615,7 +615,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_RegisterUIContentChangeEvent(ArkUI_Context
 
 为指定UI上下文注册所选类别的ArkUI内容变化事件订阅。<br>每次成功调用都会创建一个独立订阅。返回的订阅ID非零，且在该UI上下文内唯一。回调在该UI上下文关联的UI线程上同步执行。ArkUI仅借用uiContext和userData，不会释放两者。操作失败时，不修改subscriptionId指向的值。本函数必须在UI线程上调用；从非UI线程调用会导致进程终止。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **参数：**
 
@@ -645,7 +645,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UnRegisterUIContentChangeEvent(ArkUI_Conte
 
 注销指定UI上下文中仍然有效的ArkUI内容变化事件订阅。<br>本函数成功返回后，后续事件将不再触发已移除订阅的回调，调用方随后可以释放其userData。在回调中取消订阅，不会改变当前正在分发的这一批回调。本函数必须在UI线程上调用；从非UI线程调用会导致进程终止。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **参数：**
 
@@ -670,7 +670,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIContentChangeEventGetType(const OH_ArkUI
 
 从ArkUI内容变化事件快照中获取事件类型。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **参数：**
 
@@ -695,7 +695,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIContentChangeEventGetTimestamp(const OH_
 
 获取ArkUI内容变化事件快照的单调时间戳。<br>该时间戳在事件完成时记录，单位为纳秒，使用单调时钟，不表示日历时间。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **参数：**
 
@@ -720,7 +720,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIContentChangeEventGetContext(const OH_Ar
 
 获取与ArkUI内容变化事件快照关联的UI上下文。<br>返回的句柄为借用句柄，调用方不拥有其所有权，不得释放该句柄，也不得在回调返回后使用该句柄。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **参数：**
 
@@ -745,7 +745,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIContentChangeEventGetContentChangeEventJ
 
 从ArkUI内容变化事件快照中获取内容变化事件详情，并以JSON封装对象返回。<br>JSON输出的顶层包含schemaVersion字段，并包含内容变化类型、触发节点、目标节点、浮层类型，以及根据事件类别决定是否包含的子树转储信息。<br>页面事件标识目标页面，滚动事件标识发生滚动的节点，浮层事件标识浮层节点并提供浮层类型，例如"dialog"。触发节点是引起内容变化的节点，在浮层事件和一般的开始、结束场景中可用。对于页面事件和滚动事件，如果无法提供触发节点，则该节点为NULL。如果无法提供目标节点，操作仍然成功，返回的JSON中仍包含schemaVersion字段。JSON封装对象中引用的句柄均为借用句柄，不得释放，也不得在回调返回后使用。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **参数：**
 
@@ -770,7 +770,7 @@ typedef void (*OH_ArkUI_NativeModule_ImageCollectionCallback)(ArkUI_ErrorCode er
 
 定义用于返回ArkUI节点图像采集结果的回调函数类型。<br>对于每个被接受的请求，框架都会在UI线程上调用且仅调用一次此回调。当errorCode为[ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)时，框架将非NULL的collection的所有权转移给调用方。当errorCode为[ARKUI_ERROR_CODE_INTERNAL_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)或[ARKUI_ERROR_CODE_UI_CONTEXT_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)时，collection为NULL。<br>框架将userData原样传回，不会解引用该指针，也不会复制或释放其指向的对象。调用方必须保证该对象在回调结束使用前一直有效。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **参数：**
 
@@ -790,7 +790,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_GetImagesByNodeIdAsync(ArkUI_ContextHandle
 
 异步采集指定ArkUI节点ID对应的图像。<br>单次请求可包含1到20个互不重复的节点ID。框架会在本函数返回前复制nodeIds数组。如果count为0或大于20，本函数返回[ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。<br>每个被接受的节点ID在结果集合中都有对应的结果项，即使未找到该节点或无法截取其图像。对于Image节点，如果可以获取其源PixelMap，则返回完整的源PixelMap；否则，对节点边界内的渲染内容进行截图。非Image节点同样对节点边界内的渲染内容进行截图。节点无需处于可见状态。<br>如果找不到请求的节点ID对应的ArkUI节点，对应结果项会报告[ARKUI_ERROR_CODE_NODE_NOT_FOUND](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)，调用方应检查节点ID。截图超时时，对应结果项报告[ARKUI_ERROR_CODE_COMPONENT_SNAPSHOT_TIMEOUT](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)，调用方可以重试请求。发生其他内部截图错误时，对应结果项报告[ARKUI_ERROR_CODE_INTERNAL_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)，调用方可以在处理该错误后重试请求。单个结果项失败不会改变请求整体成功的结果。<br>调用方可以从任意线程调用本函数。对于每个被接受的请求，框架都会在context关联的UI线程上调用且仅调用一次callback。如果上一次请求尚未完成，本函数返回[ARKUI_ERROR_CODE_COMMAND_UNFINISHED](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。调用方必须等待该请求完成后再提交下一次请求。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **参数：**
 
@@ -818,7 +818,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_ImageCollectionTakeItemByNodeId(OH_ArkUI_N
 
 取出指定节点ID对应的结果。<br>对于图像采集成功的结果项，本函数将PixelMap的所有权转移给调用方。调用方必须调用[OH_PixelmapNative_Destroy()](../apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_destroy)释放该对象。本函数也可取出图像采集失败的结果项，此时会将\*outPixelmap设置为NULL，并将该结果项的错误码写入\*outItemError。集合中每个节点ID对应的结果仅可取出一次。<br>销毁集合时，仅释放调用方尚未取出的PixelMap实例，已转移给调用方的PixelMap不会因此失效。<br>调用方不得针对同一个集合，将本函数与其他集合操作接口并发调用。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **参数：**
 
@@ -845,7 +845,7 @@ void OH_ArkUI_NativeModule_ImageCollectionDestroy(OH_ArkUI_NativeModule_ImageCol
 
 销毁图像集合，并释放尚未取出的PixelMap实例。<br>调用方必须销毁回调返回的每个非NULL集合，即使其中的所有结果项均已取出。本函数不会释放通过[OH_ArkUI_NativeModule_ImageCollectionTakeItemByNodeId()](#oh_arkui_nativemodule_imagecollectiontakeitembynodeid)取得的PixelMap实例，也不会使这些实例失效。<br>调用方不得针对同一个集合，将本函数与其他集合操作接口并发调用。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **参数：**
 

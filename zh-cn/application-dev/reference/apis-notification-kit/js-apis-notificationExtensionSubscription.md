@@ -337,7 +337,7 @@ getUserGrantedBundleIcon(bundleName: string): Promise\<image.PixelMap\>
 
 查询本应用中“已获取的本机通知”列表中开关状态为开的应用图标。使用Promise异步回调。
 
-**起始版本**：26.2.0
+**起始版本**：26.1.0
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -387,7 +387,7 @@ disableUserGrantedByBundle(bundle: GrantedBundleInfo): Promise\<void\>
 
 关闭本应用中“已获取的本机通知”列表中指定应用的开关状态。使用Promise异步回调。
 
-**起始版本**：26.2.0
+**起始版本**：26.1.0
 
 **模型约束**：此接口仅可在Stage模型下使用。
 

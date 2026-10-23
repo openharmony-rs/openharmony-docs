@@ -808,4 +808,4 @@ Allows an enterprise application to obtain audio sound card information.
 
 **Supported devices**: PCs/2-in-1 devices
 
-**Valid since**: 26.2.0
+**Valid since**: 26.1.0

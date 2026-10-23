@@ -955,7 +955,7 @@ With this permission, the application can read user disk sectors, including the 
  
 **Supported devices**: PCs/2-in-1 devices
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 ## ohos.permission.ENTERPRISE_EXTERNAL_READ
 
@@ -989,4 +989,4 @@ Allows a device management application to use the non-anonymous key attestation 
 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
-**Since**: 26.2.0
+**Since**: 26.1.0

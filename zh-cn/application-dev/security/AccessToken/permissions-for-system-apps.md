@@ -9106,7 +9106,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.2.0
+**起始版本**：26.1.0
 
 ## ohos.permission.AUTH_MODEL_DOWNLOAD
 
@@ -9518,7 +9518,7 @@
  
 **支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable | Car
  
-**起始版本**：26.2.0
+**起始版本**：26.1.0
 
 ## ohos.permission.ALLOW_INSTALL_DEBUG_HAP
 
@@ -9546,7 +9546,7 @@
 
 **支持设备**：PC/2in1
 
-**起始版本**：26.2.0
+**起始版本**：26.1.0
 
 ## ohos.permission.SET_DSL_MODE
 
@@ -9560,7 +9560,7 @@
 
 **支持设备**：PC/2in1 | Tablet
 
-**起始版本**：26.2.0
+**起始版本**：26.1.0
 
 ## ohos.permission.vehicle.INNER_NETWORK
 
@@ -9574,7 +9574,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.2.0
+**起始版本**：26.1.0
 
 ## ohos.permission.vehicle.LOGIN_TSP
 
@@ -9812,4 +9812,4 @@
 
 **支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable | Car
 
-**起始版本**：26.2.0
+**起始版本**：26.1.0

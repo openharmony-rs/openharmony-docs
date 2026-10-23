@@ -1780,4 +1780,4 @@ With this permission, an application can implement the recording and playback fu
 
 **Supported devices**: PCs/2-in-1 devices
 
-**Since**: 26.2.0
+**Since**: 26.1.0
