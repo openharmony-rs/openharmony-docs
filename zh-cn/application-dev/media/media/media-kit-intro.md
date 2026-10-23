@@ -1,5 +1,5 @@
 ---
-kit: ["Media Kit / 媒体服务"]
+kits: ["Media Kit / 媒体服务"]
 description: "Media Kit（媒体服务）能力总览，介绍AVPlayer、SoundPool、AVRecorder、AVScreenCapture、AVMetadataExtractor、AVImageGenerator、AVTranscoder等模块，涵盖播放、录制、元数据获取、缩略图、转码及各自支持的格式与协议。"
 keywords: [Media Kit, 媒体服务, AVPlayer, SoundPool, AVRecorder, AVScreenCapture, AVTranscoder, 轻量媒体引擎, HDR]
 doctype: guide
