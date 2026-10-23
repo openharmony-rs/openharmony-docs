@@ -167,7 +167,7 @@ module.json5配置文件包含以下标签。
 | formExtensionModule | 在[独立卡片包](../form/arkts-ui-widget-creation.md#方式二独立包方式创建卡片)中，卡片包需要配置该标签，用来关联应用包。取值为应用包的模块名称，对应应用包module.json5中的name标签。具体使用方式请参考[独立卡片包配置](../form/arkts-ui-widget-configuration.md#独立卡片包配置)。<br/>**说明：**<br/>1. 从API version 20开始，支持该标签。<br/>2. 仅在独立卡片包的卡片包中，该标签配置生效，且要求对应的应用包模块必须配置formWidgetModule标签。 | 字符串 | 该标签可缺省，缺省值为空。  |
 | shareFiles | 标识应用沙箱中分享目录的配置文件路径，用于为应用文件提供有安全保障的开放范围，保护应用资产。只允许entry类型模块配置，取值为长度不超过255字节的字符串。具体使用方式请参考[应用共享目录配置](../file-management/share-app-file-configuration.md)。<br/>**说明：**<br/>从API version 23开始，支持该标签。 | 字符串 | 该标签可缺省，缺省值为空。  |
 | [skillProfiles](#skillprofiles标签) | 标识当前模块的技能配置信息，用于定义AI代理的技能能力。仅允许type字段取值为entry、feature、shared、skill的模块配置，对于skill类型的模块必须配置该标签。<br/>**说明：**<br/>从API版本26.0.0开始，支持该标签。 | 对象数组 | 对于skill类型的模块，该标签不可缺省。对于其他类型的模块，该标签可缺省，缺省值为空。 |
-| [executableBinaryPaths](#executablebinarypaths标签) | 标识应用内可执行二进制文件的路径信息。<br/>**说明：** <br/>1. 从API version 24开始，支持该标签。<br/>2. 仅在PC/2in1设备上生效。 | 对象数组 | 该标签可缺省，缺省值为空。 |
+| [executableBinaryPaths](#executablebinarypaths标签) | 标识应用内可执行二进制文件的路径及权限控制模式信息。<br/>**说明：** <br/>1. 从API version 24开始，支持该标签。<br/>2. 仅在PC/2in1设备上生效。| 对象数组 | 该标签可缺省，缺省值为空。 |
 | uiSyntax<sup>(deprecated)</sup> | 标识当前Module&nbsp;syntax定义该JS&nbsp;Component的语法类型。<br/>-&nbsp;hml：标识该JS&nbsp;Component使用hml/css/js进行开发。<br/>-&nbsp;ets：标识该JS&nbsp;Component使用ArkTS声明式语法进行开发。<br/>**说明：**<br/>该标签从API version 9开始废弃。 | 字符串 | 该标签可缺省，缺省值为hml。 |
 | srcEntrance<sup>(deprecated)</sup> | 标识当前Module所对应的代码路径，标签值为字符串（最长为127字节）。<br/>**说明：**<br/>该标签从API version 9开始废弃，请使用srcEntry字段替代。 | 字符串 | 该标签可缺省，缺省值为空。 |
 <!--RP6--><!--RP6End-->
@@ -1330,18 +1330,19 @@ definePermissions标签示例：
 
 ## executableBinaryPaths标签
 
-标识应用内可执行二进制文件的路径信息，仅在PC/2in1设备上生效。从API version 24开始，支持该标签。
+标识应用内可执行二进制文件的路径及权限控制模式信息，仅在PC/2in1设备上生效。从API version 24开始，支持该标签。
 
 **表31** executableBinaryPaths标签说明
 
 | 属性名称 | 含义 | 数据类型 | 是否可缺省 |
 | -------- | -------- | -------- | -------- |
 | path | 标识可执行文件的路径。该路径是相对路径，必须以`libs/{abi}/`为前缀，其中`{abi}`为设备CPU架构类型（如arm64-v8a、x86_64、armeabi-v7a），即可执行二进制文件必须配置在`libs/{abi}/`目录下。 | 字符串 | 该标签不可缺省。 |
+| permissionControlMode | 标识可执行文件的权限控制模式。<br/>- "independent"：独立权限控制（按BIN自身声明的权限进行控制）；对应整型语义0。<br/>- "inheritParentProcess"：继承父进程权限控制模式；对应整型语义1。<br/>未配置或配置为未知/非法字符串字面量时，按"independent"处理。<br/>从API版本26.1.0开始支持。 | 字符串 | 该标签可缺省，缺省值为"independent"。 |
 
 
 executableBinaryPaths示例：
 
-<!-- @[module_executableBinaryPaths](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile05/entry/src/main/module.json5) -->
+<!-- @[module_executableBinaryPaths](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile05/entry/src/main/module.json5) -->    
 
 ``` JSON5
 {
