@@ -90,6 +90,7 @@ TabBar显示样式枚举。
 | BOTTOM | 0 | 底部页签栏样式。页签栏位置可通过Tabs的vertical、barPosition属性调整。 |
 | SIDEBAR | 1 | 侧边页签栏样式。页签栏显示为侧边栏。 |
 | SIDEBAR_ADAPTABLE | 2 | 自适应侧边页签栏样式。页签栏可根据Tabs容器大小在底部页签栏样式和侧边栏样式之间切换。 |
+| TOP | 3 | 顶部悬浮页签栏样式。页签栏始终以悬浮形式显示在顶部。使用该样式时，BarPosition设置不生效。<br/>**起始版本：** 26.2.0 |
 
 ## 属性
 
@@ -566,6 +567,26 @@ barFloatingStyle(style: Optional\<FloatingTabBarStyle>)
 | 参数名 | 类型                                                        | 必填 | 说明                                                         |
 | ------ | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | style   | Optional<[FloatingTabBarStyle](#floatingtabbarstyle)>           | 是   | TabBar的悬浮样式配置。<br/>设置undefined时，取消悬浮样式，恢复默认样式。   |
+
+### topBarFloatingStyle
+
+topBarFloatingStyle(style: Optional\<TopFloatingTabBarStyle\>)
+
+设置TabBar的顶部悬浮样式。仅当[barStyle](#barstyle)设置为TabBarStyle.TOP时生效。
+
+**起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型                                                        | 必填 | 说明                                                         |
+| ------ | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| style   | Optional<[TopFloatingTabBarStyle](#topfloatingtabbarstyle)>           | 是   | TabBar的顶部悬浮样式配置。<br/>设置undefined时，取消顶部悬浮样式，恢复默认样式。默认样式见[TopFloatingTabBarStyle](#topfloatingtabbarstyle)各个属性的详细说明。   |
 
 ### barStyle
 
@@ -1135,19 +1156,41 @@ TabBar悬浮样式。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称          | 类型                                     | 只读 | 可选   | 说明                                       |
+| ----------- | ---------------------------------------- | ---- | ---- | ------------------------------------ |
+| barWidth | [FloatingTabBarWidth](#floatingtabbarwidth)             | 否 | 是    | 不同Tabs宽度下TabBar的宽度。宽度默认计算规则见[FloatingTabBarWidth](#floatingtabbarwidth)说明。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| barSideMargin      | [Length](ts-types.md#length) | 否 | 是   | TabBar宽度默认计算规则中的左右边距。<br/>取值范围：[0, +∞)<br/>Tabs宽度小于600vp时，默认值为16vp。Tabs宽度处于600vp到840vp时，默认值为24vp。Tabs宽度大于840vp时，默认值为32vp。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| barBottomMargin   | [Length](ts-types.md#length)           | 否 | 是    | TabBar距离Tabs底部的距离。<br/>取值范围：[0, +∞)<br/>默认值为28vp。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| maskColor   | [ResourceColor](ts-types.md#resourcecolor)           | 否 | 是    | 蒙层的颜色。蒙层显示区域会基于蒙层的颜色进行透明度渐变显示，从下到上不透明度变小。浅色模式下默认值为#CCF1F3F5，显示为白色。深色模式下默认值为#99000000，显示为黑色。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| maskHeight   | [Length](ts-types.md#length)           | 否 | 是    | 蒙层的高度。蒙层显示上边缘默认比TabBar上边缘高16vp。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| adaptToHandedness   | boolean           | 否 | 是    | 是否跟随操作手左右布局显示。<br/>true表示跟随操作手左右布局显示；false表示不跟随操作手左右布局显示。<br/>默认值：false<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| systemMaterial | [UIMaterial](#uimaterial).[ImmersiveMaterial](../arkts-apis-uimaterial.md#immersivematerial) | 否 | 是 | TabBar的背板沉浸式材质样式。仅当Tabs为横向布局且barPosition为BarPosition.End时，底部TabBar的沉浸光感效果生效。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| maxWidth | [Length](ts-types.md#length) | 否 | 是 | TabBar的最大宽度。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**起始版本：** 26.2.0<br/>**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。 |
+| offset | [Position](ts-types.md#position) \| [Edges](ts-types.md#edges12) \| [LocalizedEdges](ts-types.md#localizededges12) | 否 | 是 | TabBar的偏移量。<br/>单位：vp<br/>默认值为{ x: 0, y: 0 }。<br/>x、y的取值范围：(-∞, +∞)<br/>**起始版本：** 26.2.0<br/>**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。 |
+
+## TopFloatingTabBarStyle
+
+TabBar顶部悬浮样式的配置选项。
+
+**起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称          | 类型                                     | 只读 | 可选   | 说明                                       |
 | ----------- | ---------------------------------------- | ---- | ---- | ------------------------------------ |
-| barWidth | [FloatingTabBarWidth](#floatingtabbarwidth)             | 否 | 是    | 不同Tabs宽度下TabBar的宽度。宽度默认计算规则见[FloatingTabBarWidth](#floatingtabbarwidth)说明。 |
-| barSideMargin      | [Length](ts-types.md#length) | 否 | 是   | TabBar宽度默认计算规则中的左右边距。<br/>取值范围：[0, +∞)<br/>Tabs宽度小于600vp时，默认值为16vp。Tabs宽度处于600vp到840vp时，默认值为24vp。Tabs宽度大于840vp时，默认值为32vp。 |
-| barBottomMargin   | [Length](ts-types.md#length)           | 否 | 是    | TabBar距离Tabs底部的距离。<br/>取值范围：[0, +∞)<br/>默认值为28vp。 |
-| maskColor   | [ResourceColor](ts-types.md#resourcecolor)           | 否 | 是    | 蒙层的颜色。蒙层显示区域会基于蒙层的颜色进行透明度渐变显示，从下到上不透明度变小。浅色模式下默认值为#CCF1F3F5，显示为白色。深色模式下默认值为#99000000，显示为黑色。 |
-| maskHeight   | [Length](ts-types.md#length)           | 否 | 是    | 蒙层的高度。蒙层显示上边缘默认比TabBar上边缘高16vp。 |
-| adaptToHandedness   | boolean           | 否 | 是    | 是否跟随操作手左右布局显示。<br/>true表示跟随操作手左右布局显示；false表示不跟随操作手左右布局显示。<br/>默认值：false |
-| systemMaterial | [UIMaterial](#uimaterial).[ImmersiveMaterial](../arkts-apis-uimaterial.md#immersivematerial) | 否 | 是 | TabBar的背板沉浸式材质样式。仅当Tabs为横向布局且barPosition为BarPosition.End时，底部TabBar的沉浸光感效果生效。 |
+| barWidth | [Length](ts-types.md#length) | 否 | 是 | TabBar的宽度。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>未设置时根据内容大小计算，最大值由barSideMargin控制。 |
+| barSideMargin | [Length](ts-types.md#length) | 否 | 是 | TabBar左右边距。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>Tabs宽度小于600vp时，默认值为16vp。Tabs宽度处于600vp到840vp时，默认值为24vp。Tabs宽度大于840vp时，默认值为32vp。<br/>barWidth最大值计算规则：Tabs宽度大于840vp时，barWidth最大值为（组件宽度-barSideMargin×2-176）/12×10+144；Tabs宽度小于840vp时，barWidth最大值为（组件宽度-barSideMargin×2）。 |
+| barTopMargin | [Length](ts-types.md#length) | 否 | 是 | TabBar距离Tabs顶部的距离。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>默认值为32vp。 |
+| maskColor | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 蒙层的颜色。浅色模式下默认值为#CCF1F3F5（白色），深色模式下默认值为#99000000（黑色）。 |
+| maskHeight | [Length](ts-types.md#length) | 否 | 是 | 蒙层的高度。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>未设置时，不显示蒙层。 |
+| maxWidth | [Length](ts-types.md#length) | 否 | 是 | TabBar的最大宽度。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>未设置时，TabBar最大宽度由barSideMargin计算得到。 |
+| offset | [Position](ts-types.md#position) \| [Edges](ts-types.md#edges12) \| [LocalizedEdges](ts-types.md#localizededges12) | 否 | 是 | TabBar的偏移量。<br/>单位：vp<br/>默认值为{ x: 0, y: 0 }。<br/>x、y的取值范围：(-∞, +∞) |
 
 ## TabsSidebarSearchFilterCallback
 
@@ -1325,6 +1368,7 @@ Tabs组件和父组件的嵌套滚动模式枚举。
 | ------ | -- | ------  |
 | BOTTOM_TABBAR | 0 | 底部页签栏显示模式。可以通过[vertical](#vertical)和[barPosition](#barposition9)属性调整页签栏实际显示位置。 |
 | SIDEBAR | 1 | 侧边页签栏显示模式。可以通过[sidebarPosition](#sidebarposition)属性调整页签栏实际显示位置。 |
+| TOP_TABBAR | 2 | 顶部悬浮页签栏显示模式。页签栏以悬浮形式显示在顶部。<br/>**起始版本：** 26.2.0 |
 
 ## TabsSidebarDisplayStyle
 
@@ -4014,11 +4058,11 @@ struct TabsExample {
 
 ### 示例24（TabBar悬浮样式）
 
-本示例展示了如何通过[barFloatingStyle](#barfloatingstyle)接口设置TabBar的悬浮样式和背板沉浸式材质。
+本示例展示了如何通过[barFloatingStyle](#barfloatingstyle)接口设置TabBar的悬浮样式和背板沉浸式材质，以及通过maxWidth和offset属性设置TabBar的最大宽度和偏移量。
 
 该示例配图为高算力设备强档效果，组件沉浸光感效果会根据设备算力与用户在系统中设置的沉浸光感效果自适应调整，开发者无需额外适配。
 
-从API版本26.0.0开始，新增barFloatingStyle接口。
+从API版本26.0.0开始，新增barFloatingStyle接口。从API版本26.2.0开始，[FloatingTabBarStyle](#floatingtabbarstyle)新增maxWidth、offset属性。
 
 ```ts
 // xxx.ets
@@ -4485,3 +4529,59 @@ struct TabsSidebarBreakpointExample {
 ```
 
 ![tabsSidebarBreakpoint](figures/tabsSidebarBreakpoint.gif)
+
+### 示例30（TabBar顶部悬浮样式）
+
+本示例展示了如何通过[barStyle](#barstyle)接口设置TabBar为顶部悬浮页签栏样式（TabBarStyle.TOP），并通过[topBarFloatingStyle](#topbarfloatingstyle)接口设置TabBar的顶部悬浮样式，包括以下属性：页签栏宽度、左右边距、顶部边距、蒙层颜色、蒙层高度、最大宽度、偏移量。
+
+从API版本26.2.0开始，新增topBarFloatingStyle接口、[TabBarStyle](#tabbarstyle).TOP枚举值。
+
+```ts
+@Entry
+@Component
+struct TabsTopFloatingStyleExample {
+  @State barWidth: number = 320;
+  @State barTopMargin: number = 16;
+  @State useOffset: boolean = false;
+
+  build() {
+    Column() {
+      Tabs() {
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor("#E5E5E5")
+        }.tabBar('Gray')
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor(Color.Green)
+        }.tabBar('Green')
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor(Color.Orange)
+        }.tabBar('Orange')
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor(Color.Pink)
+        }.tabBar('Pink')
+      }
+      // 设置TabBar为顶部悬浮页签栏样式
+      .barStyle(TabBarStyle.TOP)
+      // 设置TabBar的顶部悬浮样式
+      .topBarFloatingStyle({
+        barWidth: this.barWidth,
+        barSideMargin: 24,
+        barTopMargin: this.barTopMargin,
+        maskColor: '#80F1F3F5',
+        maskHeight: 80,
+        maxWidth: 360,
+        offset: this.useOffset ? { x: 0, y: 10 } : undefined
+      })
+      .barOverlap(true)
+      .layoutWeight(1)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+![tabsTopFloatingStyle](figures/tabsTopBar.PNG)
