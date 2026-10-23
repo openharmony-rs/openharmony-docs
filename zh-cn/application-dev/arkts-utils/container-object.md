@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍容器类对象作为线程间通信对象的传递方式：说明线性容器、非线性容器等已支持序列化传输的容器类型及使用约束，并给出容器类对象跨线程传递的示例。"
+keywords: [容器类对象, 线程间通信, 序列化传输, 线性容器, 非线性容器, 跨线程传递, 容器支持情况]
+doctype: guide
+status: active
+---
+
 # 容器类对象
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->

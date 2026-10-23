@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "详细说明Sendable的使用规则与约束：包括Sendable类的继承规则、接口实现规则、成员变量须为Sendable支持类型、不支持断言与计算属性名与类型别名，以及泛型模板类型必须为Sendable等要求。"
+keywords: [Sendable约束, 继承规则, 接口实现规则, 成员变量规则, 泛型规则, 计算属性名, 类型别名, Sendable数据类型]
+doctype: guide
+status: active
+---
+
 # Sendable使用规则与约束
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->

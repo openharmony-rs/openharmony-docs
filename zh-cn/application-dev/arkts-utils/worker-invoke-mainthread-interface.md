@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍Worker同步调用宿主线程接口的方法：在宿主线程实现接口并注册调用对象，Worker线程通过callGlobalCallObjectMethod发起同步调用并获取返回结果，适用于子线程复用主线程已实现能力的场景。"
+keywords: [同步调用, callGlobalCallObjectMethod, 宿主线程接口, Worker, 对象注册, 接口复用, 跨线程调用]
+doctype: guide
+status: active
+---
+
 # Worker同步调用宿主线程的接口
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->

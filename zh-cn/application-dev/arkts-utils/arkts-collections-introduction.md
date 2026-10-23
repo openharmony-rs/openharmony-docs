@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍ArkTS共享容器（@arkts.collections）的Array、Map、Set、TypedArray等类型及其跨并发实例的引用传递机制，适用于TaskPool、Worker等多线程场景下高性能传递大量数据，并对比其与原生API的行为差异。"
+keywords: [共享容器, ArkTS容器集, arkts.collections, Sendable, Array, Map, ArrayBuffer, 跨线程数据传递, 引用传递, 异步锁, fail-fast, 行为差异对比]
+doctype: guide
+status: active
+---
+
 # 共享容器
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
