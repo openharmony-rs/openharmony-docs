@@ -4853,7 +4853,7 @@ isTransPageEnabled(): boolean
 
 > **说明：**
 >
-> - 未调用setTransPageEnabled时返回true（默认值）。
+> - 未调用[setTransPageEnabled](#settranspageenabled)时返回true，表示transPages配置默认生效。
 > - 应用未配置强制分栏时返回true（与默认行为一致）。
 
 **起始版本：** 26.2.0
