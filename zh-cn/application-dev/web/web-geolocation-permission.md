@@ -33,8 +33,6 @@ Web组件根据[GeolocationPermissions](../reference/apis-arkweb/arkts-apis-webv
 
 - 前端页面代码。
 
-<!-- @[getLocation_html](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/resources/rawfile/getLocation.html) -->
-
 ``` HTML
 <!DOCTYPE html>
 <html lang="en">
