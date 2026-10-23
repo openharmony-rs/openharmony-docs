@@ -63,7 +63,7 @@ target_link_libraries(sample PUBLIC libohclouddiskmanager.so)
 
 **注册同步根**
 
-网盘应用首次接入时，可调用OH_CloudDisk_RegisterSyncFolder()将用户授权的网盘目录注册为同步根，注册成功后文件管理器侧边栏才会展示网盘入口，系统才会开始记录该目录下的文件变更。这是接入网盘服务底座的第一步，后续的变更监听、占位符创建、水合/脱水等能力均依赖已注册的同步根。
+应用首次接入时，可调用OH_CloudDisk_RegisterSyncFolder()将用户授权的网盘目录注册为同步根，注册成功后文件管理器侧边栏才会展示网盘入口，系统才会开始记录该目录下的文件变更。这是接入网盘服务底座的第一步，后续的变更监听、占位符创建、水合/脱水等能力均依赖已注册的同步根。
 
 <!-- @[register_sync_folder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/CloudDisk/entry/src/main/cpp/napi_init.cpp) -->
 
@@ -111,7 +111,7 @@ static napi_value RegisterSyncFolder(napi_env env, napi_callback_info info)
 
 **取消注册同步根**
 
-网盘应用不再需要某个同步根，或需替换同步根目录时，可调用OH_CloudDisk_UnregisterSyncFolder()接口注销该同步根，注销后会自动批量清理同步根下的占位符文件，普通文件保留。
+应用不再需要某个同步根，或需替换同步根目录时，可调用OH_CloudDisk_UnregisterSyncFolder()接口注销该同步根，注销后会自动批量清理同步根下的占位符文件，普通文件保留。
 
 > **注意：**
 >
@@ -257,7 +257,7 @@ static napi_value GetAllSyncFolder(napi_env env, napi_callback_info info)
 
 **更新同步根别名**
 
-当用户在网盘应用侧修改了网盘目录的显示名称时，可调用OH_CloudDisk_UpdateCustomAlias()接口同步更新同步根的自定义别名，更新后文件管理器侧边栏将按新别名展示网盘入口。
+当用户在应用侧修改了网盘目录的显示名称时，可调用OH_CloudDisk_UpdateCustomAlias()接口同步更新同步根的自定义别名，更新后文件管理器侧边栏将按新别名展示网盘入口。
 
 <!-- @[update_custom_alias](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/CloudDisk/entry/src/main/cpp/napi_init.cpp) -->
 
@@ -635,7 +635,7 @@ static napi_value GetFileSyncStates(napi_env env, napi_callback_info info)
 
 **创建占位符文件**
 
-调用OH_CloudDisk_CreatePlaceholder()接口，网盘应用创建一个本地的占位符文件来映射云侧的真实数据，以达到在端侧浏览云侧文件的目的。需已注册同步根，创建的占位符文件是后续水合/脱水的操作对象。创建时可通过customInfo参数可选写入自定义信息（如云侧文件标识），不写入时传NULL，写入后可通过OH_CloudDisk_GetPlaceholderCustomInfo()读回。
+调用OH_CloudDisk_CreatePlaceholder()接口，应用创建一个本地的占位符文件来映射云侧的真实数据，以达到在端侧浏览云侧文件的目的。需已注册同步根，创建的占位符文件是后续水合/脱水的操作对象。创建时可通过customInfo参数可选写入自定义信息（如云侧文件标识），不写入时传NULL，写入后可通过OH_CloudDisk_GetPlaceholderCustomInfo()读回。
 
 <!-- @[create_placeholder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/CloudDisk/entry/src/main/cpp/napi_init.cpp) -->
 
@@ -945,7 +945,7 @@ static napi_value GetPlaceholderCustomInfo(napi_env env, napi_callback_info info
 
 **将占位符文件转换为0字节普通文件**
 
-当网盘应用需要清除占位符语义、使文件回归普通文件操作策略时（如文件被移出同步根、或不再走网盘同步流程），可调用OH_CloudDisk_ConvertPlaceholderToFile()接口将占位符文件转换为0字节普通文件。
+当应用需要清除占位符语义、使文件回归普通文件操作策略时（如文件被移出同步根、或不再走网盘同步流程），可调用OH_CloudDisk_ConvertPlaceholderToFile()接口将占位符文件转换为0字节普通文件。
 
 <!-- @[convert_placeholder_to_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/CloudDisk/entry/src/main/cpp/napi_init.cpp) -->
 
@@ -990,7 +990,7 @@ static napi_value ConvertPlaceholderToFile(napi_env env, napi_callback_info info
 
 **将普通文件标记为占位符文件**
 
-当网盘应用需要将同步根下已有完整数据的普通文件纳入占位符管理（例如配合脱水流程转为按需管理）时，可调用OH_CloudDisk_MarkFileAsPlaceholder()接口将其标记为完全水合的占位符文件，标记过程不改变文件的数据与元数据；若目标已是占位符文件，返回OH_CLOUD_DISK_IS_A_PLACEHOLDER。
+当应用需要将同步根下已有完整数据的普通文件纳入占位符管理（例如配合脱水流程转为按需管理）时，可调用OH_CloudDisk_MarkFileAsPlaceholder()接口将其标记为完全水合的占位符文件，标记过程不改变文件的数据与元数据；若目标已是占位符文件，返回OH_CLOUD_DISK_IS_A_PLACEHOLDER。
 
 <!-- @[mark_file_as_placeholder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/CloudDisk/entry/src/main/cpp/napi_init.cpp) -->
 
@@ -1098,7 +1098,7 @@ static napi_value UnmarkPlaceholderFile(napi_env env, napi_callback_info info)
 
 **注册回调表**
 
-网盘应用需承接水合取数、取消取数、流式读取、脱水授权等场景的回调时，可调用OH_CloudDisk_RegisterCallbackTable接口为同步根注册回调表，注册后网盘服务底座会通过回调向应用下发相应请求。需已注册同步根，这是水合/脱水操作的前置条件。
+应用需承接水合取数、取消取数、流式读取、脱水授权等场景的回调时，可调用OH_CloudDisk_RegisterCallbackTable接口为同步根注册回调表，注册后网盘服务底座会通过回调向应用下发相应请求。需已注册同步根，这是水合/脱水操作的前置条件。
 
 > **注意：**
 >
