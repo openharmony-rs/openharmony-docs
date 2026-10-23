@@ -626,16 +626,16 @@ static napi_value GetFileSyncStates(napi_env env, napi_callback_info info)
 | CloudDisk_ErrorCode OH_CloudDisk_UpdatePlaceholder(const CloudDisk_SyncFolderPath syncFolderPath, const CloudDisk_PathInfo relativePathInfo, const OH_CloudDisk_PlaceholderInfo placeholderInfo, const OH_CloudDisk_PlaceholderCustomInfo *customInfo) | 更新占位符文件的元数据信息（logicalSize、atimeMs、mtimeMs等），customInfo为NULL时保留原有自定义信息。<br>**说明**：从API版本26.0.1开始，支持该接口。 |
 | CloudDisk_ErrorCode OH_CloudDisk_IsPlaceholderFile(const CloudDisk_SyncFolderPath syncFolderPath, const CloudDisk_PathInfo relativePathInfo, bool *isPlaceholder) | 判断同步根内文件是否为占位符文件。<br>**说明**：从API版本26.0.1开始，支持该接口。 |
 | CloudDisk_ErrorCode OH_CloudDisk_GetPlaceholderState(const CloudDisk_SyncFolderPath syncFolderPath, const CloudDisk_PathInfo relativePathInfo, OH_CloudDisk_PlaceholderState *state) | 查询占位符文件的水合状态（未水合、部分水合、完全水合）。<br>**说明**：从API版本26.0.1开始，支持该接口。 |
-| CloudDisk_ErrorCode OH_CloudDisk_GetPlaceholderCustomInfo(const CloudDisk_SyncFolderPath syncFolderPath, const CloudDisk_PathInfo relativePathInfo, uint8_t *dataBuf, size_t *inOutDataLength) | 读取占位符文件的自定义信息（上限4 KiB）。<br>**说明**：从API版本26.0.1开始，支持该接口。 |
+| CloudDisk_ErrorCode OH_CloudDisk_GetPlaceholderCustomInfo(const CloudDisk_SyncFolderPath syncFolderPath, const CloudDisk_PathInfo relativePathInfo, uint8_t *dataBuf, size_t *inOutDataLength) | 读取占位符文件的自定义信息（上限1024字节）。<br>**说明**：从API版本26.0.1开始，支持该接口。 |
 | CloudDisk_ErrorCode OH_CloudDisk_ConvertPlaceholderToFile(const CloudDisk_SyncFolderPath syncFolderPath, const CloudDisk_PathInfo relativePathInfo) | 将占位符文件转换为0字节普通文件。<br>**说明**：从API版本26.0.1开始，支持该接口。 |
-| CloudDisk_ErrorCode OH_CloudDisk_MarkFileAsPlaceholder(const CloudDisk_SyncFolderPath syncFolderPath, const CloudDisk_PathInfo relativePathInfo) | 将普通文件标记为完全水合的占位符文件，不改变文件数据与元数据。<br>**说明**：从API版本26.0.1开始，支持该接口。 |
-| CloudDisk_ErrorCode OH_CloudDisk_UnmarkPlaceholderFile(const CloudDisk_SyncFolderPath syncFolderPath, const CloudDisk_PathInfo relativePathInfo) | 将完全水合的占位符文件恢复为普通文件，不改变文件数据与元数据。<br>**说明**：从API版本26.0.1开始，支持该接口。 |
+| CloudDisk_ErrorCode OH_CloudDisk_MarkFileAsPlaceholder(const CloudDisk_SyncFolderPath syncFolderPath, const CloudDisk_PathInfo relativePathInfo) | 将文件的占位符状态从普通文件标记为完全水合占位符文件。<br>**说明**：从API版本26.0.1开始，支持该接口。 |
+| CloudDisk_ErrorCode OH_CloudDisk_UnmarkPlaceholderFile(const CloudDisk_SyncFolderPath syncFolderPath, const CloudDisk_PathInfo relativePathInfo) | 将文件的占位符状态从完全水合占位符文件恢复为普通文件。<br>**说明**：从API版本26.0.1开始，支持该接口。 |
 
 ### 示例代码
 
 **创建占位符文件**
 
-调用OH_CloudDisk_CreatePlaceholder()接口，网盘应用创建一个本地的占位符文件来映射云侧的真实数据，以达到在端侧浏览云侧文件的目的。需已注册同步根，创建的占位符文件是后续水合/脱水的操作对象。创建时可通过customInfo参数可选写入自定义信息（如云端文件标识），不写入时传NULL，写入后可通过OH_CloudDisk_GetPlaceholderCustomInfo()读回。
+调用OH_CloudDisk_CreatePlaceholder()接口，网盘应用创建一个本地的占位符文件来映射云侧的真实数据，以达到在端侧浏览云侧文件的目的。需已注册同步根，创建的占位符文件是后续水合/脱水的操作对象。创建时可通过customInfo参数可选写入自定义信息（如云侧文件标识），不写入时传NULL，写入后可通过OH_CloudDisk_GetPlaceholderCustomInfo()读回。
 
 <!-- @[create_placeholder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/CloudDisk/entry/src/main/cpp/napi_init.cpp) -->
 
@@ -827,7 +827,7 @@ static napi_value IsPlaceholderFile(napi_env env, napi_callback_info info)
 
 **查询占位符水合状态**
 
-应用需要了解占位符文件的水合进度（如展示下载状态、判断文件是否可脱水）时，可调用OH_CloudDisk_GetPlaceholderState()接口，查询结果通过出参state带出，取值包括：OH_CLOUD_DISK_PLACEHOLDER_STATE_NONE（非占位符文件）、OH_CLOUD_DISK_PLACEHOLDER_STATE_UNHYDRATED（未水合）、OH_CLOUD_DISK_PLACEHOLDER_STATE_PARTIALLY_HYDRATED（部分水合）、OH_CLOUD_DISK_PLACEHOLDER_STATE_FULLY_HYDRATED（完全水合）；存储状态非法时返回错误码OH_CLOUD_DISK_INVALID_PLACEHOLDER_STATE。
+应用需要了解占位符文件的水合状态（如展示下载状态、判断文件是否可脱水）时，可调用OH_CloudDisk_GetPlaceholderState()接口，查询结果通过出参state带出，取值包括：OH_CLOUD_DISK_PLACEHOLDER_STATE_NONE（非占位符文件）、OH_CLOUD_DISK_PLACEHOLDER_STATE_UNHYDRATED（未水合）、OH_CLOUD_DISK_PLACEHOLDER_STATE_PARTIALLY_HYDRATED（部分水合）、OH_CLOUD_DISK_PLACEHOLDER_STATE_FULLY_HYDRATED（完全水合）；存储状态非法时返回错误码OH_CLOUD_DISK_INVALID_PLACEHOLDER_STATE。
 
 <!-- @[get_placeholder_state](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/CloudDisk/entry/src/main/cpp/napi_init.cpp) -->
 
@@ -888,7 +888,7 @@ static napi_value GetPlaceholderState(napi_env env, napi_callback_info info)
 
 **读取占位符自定义信息**
 
-应用需要读取创建/更新占位符时写入的自定义信息（如云端文件标识等业务数据，上限4 KiB）时，可调用OH_CloudDisk_GetPlaceholderCustomInfo()接口，数据通过调用方分配的缓冲区dataBuf带回，inOutDataLength入参为缓冲区容量、出参为实际读取的数据长度。
+应用需要读取创建/更新占位符时写入的自定义信息（如云侧文件标识等业务数据，上限1024字节）时，可调用OH_CloudDisk_GetPlaceholderCustomInfo()接口，数据通过调用方分配的缓冲区dataBuf带回，inOutDataLength输入时为调用方预分配的缓冲区容量，调用后改为实际读取的数据长度。
 
 <!-- @[get_placeholder_custom_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/CloudDisk/entry/src/main/cpp/napi_init.cpp) -->
 
@@ -1036,7 +1036,7 @@ static napi_value MarkFileAsPlaceholder(napi_env env, napi_callback_info info)
 
 **取消占位符标记**
 
-当应用需要使完全水合的占位符文件脱离占位符语义、回归普通文件操作策略（数据与元数据保持不变）时，可调用OH_CloudDisk_UnmarkPlaceholderFile()接口取消占位符标记。目标不是占位符文件时返回OH_CLOUD_DISK_NOT_A_PLACEHOLDER；文件未完全水合时返回OH_CLOUD_DISK_PLACEHOLDER_NOT_FULLY_HYDRATED。
+当应用需要使完全水合的占位符文件脱离占位符语义、回归普通文件操作策略时，可调用OH_CloudDisk_UnmarkPlaceholderFile()接口取消占位符标记，取消标记过程不改变文件的数据与元数据。目标不是占位符文件时返回OH_CLOUD_DISK_NOT_A_PLACEHOLDER；文件未完全水合时返回OH_CLOUD_DISK_PLACEHOLDER_NOT_FULLY_HYDRATED。
 
 <!-- @[unmark_placeholder_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/CloudDisk/entry/src/main/cpp/napi_init.cpp) -->
 
