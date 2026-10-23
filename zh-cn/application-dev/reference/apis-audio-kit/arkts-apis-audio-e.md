@@ -189,6 +189,9 @@
 | ERROR_TIMEOUT        | 6800105 | 处理超时。         |
 | ERROR_STREAM_LIMIT   | 6800201 | 音频流数量达到限制。|
 | ERROR_SYSTEM         | 6800301 | 系统处理异常。     |
+| ERROR_SERVICE_DIED   | 6800302 | 系统服务进程终止。<br>**起始版本：** 26.0.1 |
+| ERROR_NETWORK_CONDITION_NOT_MET | 6800501 | 网络条件不满足。<br>**起始版本：** 26.0.1 |
+| ERROR_STORAGE_NOT_ENOUGH        | 6800502 | 存储空间不足。<br>**起始版本：** 26.0.1  |
 
 ## AudioChannel<sup>8+</sup>
 
