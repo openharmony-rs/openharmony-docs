@@ -160,7 +160,7 @@ setWindowBackgroundColor(color: string): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Ability.Form
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **参数：**
 
