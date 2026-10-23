@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "介绍如何使用命令行CMake将已有CMake工程切换到OpenHarmony工具链进行编译构建，涵盖NDK开发包下载解压、环境变量配置、CMakeLists.txt编写及在Linux/Mac/Windows下编译生成动态库、静态库和可执行程序的完整流程。"
+keywords: [NDK, CMake, 命令行, CMakeLists.txt, OHOS_STL, ohos.toolchain.cmake, 动态库, 静态库, Ninja]
+doctype: guide
+status: active
+---
+
 # 使用命令行CMake构建NDK工程
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
