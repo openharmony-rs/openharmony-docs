@@ -90,7 +90,7 @@ import { bundleManager } from '@kit.AbilityKit';
 | AGENT_UI<sup>24+</sup> | 38 | [AgentUIExtensionAbility](js-apis-agent-agentUIExtensionAbility.md)：为开发者提供接入端侧Agent UI界面显示能力。<br>**模型约束**：此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 24<br>**ArkTS-Sta起始版本：** 24 |
 | MODULAR_OBJECT | 39 | [modular_object_extension_ability](capi-modular-object-extension-ability-h.md)：提供[模块化对象](../../application-models/modular-object-extension-overview.md)扩展能力，可以将应用自身功能封装为独立的功能模块，开放给其他应用使用。<br>**模型约束**：此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0|
 | UKEY_AUTH      | 40 | [UkeyAuthExtensionAbility](../apis-device-certificate-kit/js-apis-UkeyAuthExtensionAbility.md)：为开发者提供接入自定义UKey认证界面的能力。<br>**模型约束**：此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 26.0.1<br>**ArkTS-Sta起始版本：** 26.0.1 |
-| UNSPECIFIED      | 255 | 不指定类型<!--Del-->，配合[queryExtensionAbilityInfo接口](js-apis-bundleManager-sys.md#bundlemanagerqueryextensionabilityinfo)可以查询所有类型的ExtensionAbility<!--DelEnd-->。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| UNSPECIFIED      | 255 | 不指定类型<!--Del-->，配合[queryExtensionAbilityInfo](js-apis-bundleManager-sys.md#bundlemanagerqueryextensionabilityinfo)可以查询所有类型的ExtensionAbility<!--DelEnd-->。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
 <!--RP2--><!--RP2End-->
 
 ## PermissionGrantState
@@ -269,7 +269,7 @@ Ability组件信息标志，指示需要获取的Ability组件信息的内容。
 
 | 名称                              | 值         | 说明                                                         |
 | --------------------------------- | ---------- | ------------------------------------------------------------ |
-| GET_ABILITY_INFO_DEFAULT          | 0x00000000 | 获取默认[AbilityInfo](js-apis-bundleManager-abilityInfo.md)，获取的AbilityInfo不包含permissions、metadata、被禁用Ability对应的AbilityInfo。<!--Del-->通过[setAbilityEnabled接口](./js-apis-bundleManager-sys.md#bundlemanagersetabilityenabled)可设置Ability禁用状态、通过[isAbilityEnabled接口](./js-apis-bundleManager-sys.md#bundlemanagerisabilityenabled-1)可获取Ability禁用状态。<!--DelEnd-->|
+| GET_ABILITY_INFO_DEFAULT          | 0x00000000 | 获取默认[AbilityInfo](js-apis-bundleManager-abilityInfo.md)，获取的AbilityInfo不包含permissions、metadata、被禁用Ability对应的AbilityInfo。<!--Del-->通过[setAbilityEnabled](./js-apis-bundleManager-sys.md#bundlemanagersetabilityenabled)可设置Ability禁用状态、通过[isAbilityEnabled](./js-apis-bundleManager-sys.md#bundlemanagerisabilityenabled-1)可获取Ability禁用状态。<!--DelEnd-->|
 | GET_ABILITY_INFO_WITH_PERMISSION  | 0x00000001 | 获取包含permissions的AbilityInfo。                         |
 | GET_ABILITY_INFO_WITH_APPLICATION | 0x00000002 | 获取包含applicationInfo的AbilityInfo。                     |
 | GET_ABILITY_INFO_WITH_METADATA    | 0x00000004 | 获取包含metadata的AbilityInfo。                            |
