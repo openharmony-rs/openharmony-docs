@@ -15813,33 +15813,11 @@
 		"sample_files":[
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry4/src/main/ets/pages/Index.ets",
-				"functions":[
-					{
-						"end_line":52,
-						"name":"customize_a_webtag_and_send_it_to_the_native_side_of_the_application",
-						"start_line":39
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry4/src/main/cpp/hello.cpp",
-				"functions":[
-					{
-						"end_line":296,
-						"name":"parse_and_store_webtags",
-						"start_line":247
-					},
-					{
-						"end_line":245,
-						"name":"the_native_side_registers_the_callback_of_the_component_lifecycle",
-						"start_line":220
-					},
-					{
-						"end_line":152,
-						"name":"the_front_end_page_calls_application_side_functions",
-						"start_line":138
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry4/src/main/cpp/types/libentry4/Index.d.ts",
@@ -15872,6 +15850,21 @@
 						"end_line":361,
 						"name":"node_api_layer_code",
 						"start_line":16
+					},
+					{
+						"end_line":296,
+						"name":"parse_and_store_webtags",
+						"start_line":247
+					},
+					{
+						"end_line":244,
+						"name":"the_native_side_registers_the_callback_of_the_component_lifecycle",
+						"start_line":219
+					},
+					{
+						"end_line":149,
+						"name":"the_front_end_page_calls_application_side_functions",
+						"start_line":135
 					}
 				]
 			},
@@ -15902,6 +15895,11 @@
 						"end_line":76,
 						"name":"interact_with_the_webview_via_the_native_api",
 						"start_line":16
+					},
+					{
+						"end_line":52,
+						"name":"customize_a_webtag_and_send_it_to_the_native_side_of_the_application",
+						"start_line":39
 					}
 				]
 			},
@@ -15922,6 +15920,21 @@
 						"end_line":331,
 						"name":"node_api_layer_code",
 						"start_line":16
+					},
+					{
+						"end_line":269,
+						"name":"parse_and_store_webtags",
+						"start_line":235
+					},
+					{
+						"end_line":232,
+						"name":"the_native_side_registers_the_callback_of_the_component_lifecycle",
+						"start_line":207
+					},
+					{
+						"end_line":137,
+						"name":"the_front_end_page_calls_application_side_functions",
+						"start_line":126
 					}
 				]
 			},
