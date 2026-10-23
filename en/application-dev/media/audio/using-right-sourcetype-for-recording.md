@@ -5,7 +5,7 @@
 <!--Designer: @weixin_41398971-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=71348747bbf9793e9f5f1c2fb40af0c2fb7152f7 translatedAt=2026-09-18T04:10:19.646Z pushedAt=2026-09-20T03:54:19.035Z -->
+<!-- md-trans-meta sourceCommit=578060f8655ef0371fd6de1e6ded2de4b0bb5d49 translatedAt=2026-10-22T03:47:46.175Z pushedAt=2026-10-22T07:37:38.117Z nl=1 -->
 
 The recording stream type is defined by [SourceType](../../reference/apis-audio-kit/arkts-apis-audio-e.md#sourcetype8), which identifies the usage scenario of the recording stream to the system. The system uses it for the [audio focus strategy](audio-playback-concurrency.md#audio-focus-strategy) and [audio channel configuration](audio-performance.md#understanding-the-system-audio-channel). Certain types also correspond to specific audio recording processing scenarios.
 
@@ -17,7 +17,7 @@ When selecting a `SourceType`, first determine the actual purpose of the recorde
 | ---------- | ---------- | ---------- |
 | SOURCE_TYPE_MIC | Normal recording, such as a recorder. | The system configures the default input path and recording processing according to the normal recording scenario. If a more specific service type exists, preferentially select the corresponding type. |
 | SOURCE_TYPE_VOICE_RECOGNITION<sup>9+</sup> | Speech recognition. | Corresponds to the speech recognition processing scenario. The system can match the speech recognition input path based on the device configuration. |
-| SOURCE_TYPE_PLAYBACK_CAPTURE | Records the raw audio data that other applications send to the system for playback. | Deprecated since API version 12. Audio Kit no longer provides the internal recording interface. For internal recording scenarios, use [AVScreenCapture](../../reference/apis-media-kit/capi-avscreencapture.md). |
+| SOURCE_TYPE_PLAYBACK_CAPTURE | Records the raw audio data that other applications send to the system for playback. | Uses the audio played inside the device as the capture source for recording, unaffected by ambient noise. Deprecated since API version 12. To implement internal recording, use [AVScreenCapture](../../reference/apis-media-kit/capi-avscreencapture.md). Since API version 26.0.0, you can also configure the internal recording mode through [AudioCapturer](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md) (ArkTS) or [native_audiocapturer.h](../../reference/apis-audio-kit/capi-native-audiocapturer-h.md) (C API). For details, see [Implementing System Audio Recording](implement-system-audio-recording.md). |
 | SOURCE_TYPE_VOICE_COMMUNICATION | VoIP voice or video calls. | Enhances voice recording and suppresses non-voice sounds such as ambient noise. According to the [SourceType](../../reference/apis-audio-kit/arkts-apis-audio-e.md#sourcetype8) definition, starting recording alone enables the 3A algorithm. |
 | SOURCE_TYPE_VOICE_MESSAGE<sup>12+</sup> | Records voice messages. | Identifies the voice message recording scenario. According to the system default [audio focus policy](audio-playback-concurrency.md#audio-focus-strategy), starting recording pauses the currently playing music, and notifies the music application to resume playback after recording ends. |
 | SOURCE_TYPE_CAMCORDER<sup>13+</sup> | Camera recording. | Identifies the recording purpose to the system. The system can match the recording input path based on the device configuration. |

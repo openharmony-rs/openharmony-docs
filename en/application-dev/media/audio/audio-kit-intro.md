@@ -1,10 +1,11 @@
 # About This Kit
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @boxwall-->
+<!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=ae0f76f239c21806b95d0f359f48114cf63a6fb3 translatedAt=2026-10-22T03:41:09.490Z pushedAt=2026-10-22T04:00:31.261Z nl=1 -->
 
 Audio Kit provides scenario-specific audio playback and recording APIs to help you quickly build HD audio collection and immersive playback capabilities.
 
@@ -16,7 +17,7 @@ Audio Kit provides scenario-specific audio playback and recording APIs to help y
 <!--Del-->
 - Low-power playback
 
-   In long-duration audio playback scenarios such as music playing and audiobook listening, a differentiated audio buffer processing mechanism is used for the screen-off scene. This helps audio playback consume less power by reducing the CPU wake-up frequency.
+   In long-duration audio playback scenarios such as music playing and audiobook listening, a differentiated audio buffer processing mechanism is used for both screen-on and screen-off scenes. This helps audio playback consume less power by reducing the CPU wake-up frequency.
 <!--DelEnd-->
 - Audio effect mode
 
@@ -30,7 +31,7 @@ Audio Kit provides scenario-specific audio playback and recording APIs to help y
 <!--DelEnd-->
 - Audio-haptic
 
-   Provides AudioHaptic APIs to implement low-delay synchronous control of audio and haptic streams. When the audio-haptic effect is enabled, users can get rhythmic auditory and haptic feedback while typing or having incoming calls.
+   AudioHaptic APIs are provided to implement low-delay synchronous control of audio and haptic streams. When the audio-haptic effect is enabled, users can get rhythmic auditory and haptic feedback while typing or having incoming calls.
 
 ## Audio Architecture
 
@@ -48,7 +49,7 @@ NAPI, an interface introduced by Node.js for developing C++ modules, encapsulate
 
 **Native framework**
 
-At the native framework layer, the audio system implements interfaces for playing, recording, volume control, device routing, and audio effect processing, and connects to the audio service through inter-process interfaces.
+At the native framework layer, the audio system implements APIs for playing, recording, volume control, device routing, and audio effect processing, and connects to the audio service through inter-process APIs.
 
 **Native SystemAbility**
 
@@ -68,7 +69,7 @@ For every functionality provided by the multimedia subsystem, you will learn mul
 
 This development guide applies only to audio playback or recording, which are implemented by Audio Kit. The UI, image processing, media storage, or other related capabilities are not covered.
 
-Before developing an audio feature, especially before implementing audio data processing, you are advised to understand the following acoustic concepts. This will help you understand how the APIs control the audio module and how to develop audio and video applications that are easier to use and deliver better experience.  
+Before developing an audio feature, especially before implementing audio data processing, you are advised to understand the following acoustic concepts. This will help you understand how the APIs control the audio module and how to develop audio and video applications that are easier to use and deliver better experience.
 
 - Audio quantization process: sampling > quantization > encoding
 
@@ -76,11 +77,11 @@ Before developing an audio feature, especially before implementing audio data pr
 
 ## Introduction to Audio Streams
 
- 
+Before developing an audio application, you also need to understand audio streams, a key concept in the OpenHarmony audio system that is mentioned repeatedly in the following sections.
 
-An audio stream is an independent audio data processing unit that has a specific audio format and audio usage scenario information. The audio stream can be used in playback and recording scenarios, and supports independent volume adjustment and audio device routing.
+The audio stream is an independent audio data processing unit in the audio system that has audio format and audio usage scenario information. It can be used in playback and recording scenarios, and supports independent volume adjustment and audio device routing.
 
-The basic audio stream information is defined by [AudioStreamInfo](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiostreaminfo8), which includes the sampling, audio channel, bit width, and encoding information. It describes the basic attributes of audio data and is mandatory for creating an audio playback or recording stream. To enable the audio module to correctly process audio data, the configured basic information must match the transmitted audio data.
+The basic audio stream information is defined by [AudioStreamInfo](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiostreaminfo8), which includes the sampling rate, audio channel, bit width, and encoding information. It is a required parameter for creating an audio playback or recording stream and describes the basic attributes of audio data. When configuring it, you must ensure that the basic information matches the audio data to be transmitted so that the audio system can process the data correctly.
 
 ### Audio Stream Usage Scenario Information
 
@@ -92,13 +93,15 @@ In addition to the basic information (which describes only audio data), an audio
 
   **StreamUsage** specifies the usage type of an audio stream, for example, used for media, voice communication, voice assistant, notification, and ringtone.
 
+  For details on setting the playback stream type, see [Choosing the Right Playback Stream Type](using-right-streamusage-for-playback.md).
+
 - Recording scenario
 
   Information about the audio stream recording scenario is defined by [SourceType](../../reference/apis-audio-kit/arkts-apis-audio-e.md#sourcetype8).
 
   **SourceType** specifies the recording source type of an audio stream, including the mic source, voice recognition source, and voice communication source.
 
-For details, see [Selecting an Appropriate Audio Stream Type](using-right-streamusage-and-sourcetype.md).
+  For details on setting the recording stream type, see [Choosing the Right Recording Stream Type](using-right-sourcetype-for-recording.md).
 
 ## Supported Audio Formats
 
@@ -123,3 +126,5 @@ Be familiar with the following about the audio format:
 The following samples are provided to help you better understand how to develop Audio Kit:
 
 - [Audio Management (ArkTS, API version 10)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Media/Audio)
+
+<!--RP1--><!--RP1End-->
