@@ -234,7 +234,7 @@ export default class ExampleFormEditAbility extends FormEditExtensionAbility {
 
 setWindowBackgroundColor(color: string): Promise&lt;void&gt;
 
-设置卡片编辑页的背景色。使用Promise异步回调。
+设置卡片编辑页的背景颜色。使用Promise异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -248,7 +248,7 @@ setWindowBackgroundColor(color: string): Promise&lt;void&gt;
 
 | 参数名 | 类型    | 必填 | 说明                                   |
 | ------ | ------ | ---- | ------------------------------------- |
-| color  | string | 是   | 要设置的背景颜色。该值是一个十六进制RGB或ARGB颜色代码，不区分大小写，例如`#00FF00`或`#FF00FF00`。它也可以是一个资源字符串。|
+| color  | string | 是   | 要设置的背景颜色。该值是一个十六进制RGB或ARGB的颜色代码，不区分大小写，例如`#00FF00`或`#FF00FF00`。|
 
 **返回值：**
 
