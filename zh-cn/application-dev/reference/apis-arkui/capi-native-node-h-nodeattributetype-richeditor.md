@@ -741,7 +741,7 @@ NODE_TEXT_EDITOR_SHOW_UNDERLINE = 22038
 设置TextEditor组件是否显示下划线，支持属性设置、属性重置和属性获取。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 
 **参数：**
@@ -766,7 +766,7 @@ NODE_TEXT_EDITOR_UNDERLINE_COLOR = 22039
 需先设置[NODE_TEXT_EDITOR_SHOW_UNDERLINE](#node_text_editor_show_underline)属性为1以开启下划线后，本属性设置才生效。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 
 **参数：**
@@ -796,7 +796,7 @@ NODE_TEXT_EDITOR_CARET_STYLE = 22040
 设置TextEditor组件的光标宽度，支持属性设置、属性重置和属性获取。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 
 **参数：**
@@ -821,7 +821,7 @@ NODE_TEXT_EDITOR_SELECT_ALL = 22041
 仅在首次获焦并完成布局阶段时触发全选。窗口恢复获焦时不执行全选。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 
 **参数：**
@@ -846,7 +846,7 @@ NODE_TEXT_EDITOR_BLUR_ON_SUBMIT = 22042
 仅在EnterKeyType为NEW_LINE时按Enter键生效：设置为1时关闭键盘并失焦，不插入换行；设置为0时插入换行，不失焦。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 
 **参数：**
@@ -870,7 +870,7 @@ NODE_TEXT_EDITOR_CONTENT_RECT = 22043
 获取TextEditor组件编辑内容区域的位置和大小，仅支持属性获取。<br>
 作为属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 
 **返回：**
@@ -892,7 +892,7 @@ NODE_TEXT_EDITOR_SELECTION_MENU_HIDDEN = 22044
 设置为1时，长按、双击或右击时不弹出选择菜单，但不影响选区手柄。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 
 **参数：**
@@ -917,7 +917,7 @@ NODE_TEXT_EDITOR_ENABLE_SKIP_PREVIEW_LONG_PRESS = 22045
 设置为1时，长按后直接进入编辑态（键盘弹出、光标闪烁），跳过预览态。双击行为不受影响。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 
 **参数：**
@@ -941,7 +941,7 @@ NODE_TEXT_EDITOR_CANCEL_BUTTON = 22046
 设置TextEditor组件的清除按钮样式属性，支持属性设置、属性重置和属性获取。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 
 **参数：**
@@ -971,7 +971,7 @@ NODE_TEXT_EDITOR_SHOW_COUNTER = 22047
 设置TextEditor组件输入的字符数超过阈值时是否显示计数器并设置计数器样式，支持属性设置，属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **参数：**
 
@@ -1004,7 +1004,7 @@ NODE_TEXT_EDITOR_INPUT_FILTER = 22048
 非字符内容（ImageSpan/SymbolSpan/BuilderSpan）在正则匹配时被视为\uFFFC字符。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 
 **参数：**

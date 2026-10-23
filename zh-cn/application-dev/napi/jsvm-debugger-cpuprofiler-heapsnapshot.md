@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "总览JSVM调试调优能力与接口清单，详解OH_JSVM_OpenInspector连接Chrome DevTools断点调试、websocket调试，以及CPU Profiler与堆快照的采集分析方法。"
+keywords: [JSVM调试, inspector, Chrome DevTools, 断点调试, CPU Profiler, 堆快照, OH_JSVM_OpenInspector, OH_JSVM_StartCpuProfiler, OH_JSVM_TakeHeapSnapshot]
+doctype: guide
+status: active
+---
+
 # JSVM-API调试&定位
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->

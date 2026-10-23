@@ -275,7 +275,7 @@ ArkTS-Sta: firstDayOfWeek(value: CalendarFirstDayOfWeek | undefined)
 
 设置日历选择器每周的起始日。未通过该接口设置时，默认为CalendarFirstDayOfWeek.LOCAL（跟随系统区域变化）。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -283,9 +283,9 @@ ArkTS-Sta: firstDayOfWeek(value: CalendarFirstDayOfWeek | undefined)
 
 **设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
 
-**ArkTS-Dyn起始版本：** 26.2.0
+**ArkTS-Dyn起始版本：** 26.1.0
 
-**ArkTS-Sta起始版本：** 26.2.0
+**ArkTS-Sta起始版本：** 26.1.0
 
 **参数：**
 
@@ -432,7 +432,7 @@ onChange(callback: Callback\<Date> | undefined)
 
 日历选择器每周起始日的枚举类型。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -440,9 +440,9 @@ onChange(callback: Callback\<Date> | undefined)
 
 **设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
 
-**ArkTS-Dyn起始版本：** 26.2.0
+**ArkTS-Dyn起始版本：** 26.1.0
 
-**ArkTS-Sta起始版本：** 26.2.0
+**ArkTS-Sta起始版本：** 26.1.0
 
 | 名称   | 值 | 说明                     |
 | ------ | - | ------------------------ |
@@ -626,7 +626,7 @@ struct CalendarPickerExample {
 
 该示例通过firstDayOfWeek设置日历选择器每周的起始日为周一。
 
-从API版本26.2.0开始，新增了[firstDayOfWeek](#firstdayofweek)接口。
+从API版本26.1.0开始，新增了[firstDayOfWeek](#firstdayofweek)接口。
 
 ArkTS-Dyn示例：
 

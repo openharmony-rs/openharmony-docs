@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "介绍ArkTS基础知识，涵盖常量与变量、注释、分号、类型声明与标注、类型推断、可空类型、非空断言及类型安全等核心概念。"
+keywords: [ArkTS, 基础知识, const, let, 类型标注, 类型推断, 可空类型, 非空断言, 类型安全]
+doctype: guide
+status: active
+---
+
 # 基础知识
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->

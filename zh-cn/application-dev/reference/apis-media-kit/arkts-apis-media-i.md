@@ -502,7 +502,7 @@ async function setupPlayer() {
 | enableBFrame | boolean | 否 | 是 | 录屏是否使能B帧编码。true表示录屏文件使能B帧编码，false表示录屏文件禁用B帧编码，默认是false。<br>B帧视频编码相关的约束和限制可以参考文档[B帧视频编码约束和限制](../../media/avcodec/video-encoding-b-frame.md#约束和限制)。如果当前不符合B帧视频编码的约束和限制，则正常录制不含B帧的视频，不会返回错误。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
 | privacyMaskMode<sup>23+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 设置屏幕录制时对隐私窗口的屏蔽模式。<br> - 0：表示存在隐私窗口时，采用全屏屏蔽模式，默认是0。<br> - 1：表示存在隐私窗口时，采用隐私窗口屏蔽模式。<br> - 设置为其他值时返回错误。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23<br> **模型约束：** 此接口仅可在Stage模型下使用。 |
 | enablePause | boolean | 否 | 是 | 表示录屏过程中是否允许暂停录屏。<br>true表示允许，false表示不允许。默认是false。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。|
-| enableAEC | boolean | 否 | 是 | 表示当麦克风采集开启时，是否开启回声检测与回声消除功能。<br>true表示开启回声消除功能，false表示关闭回声消除功能，默认值为false。<br>**ArkTS-Dyn起始版本：** 26.2.0<br>**ArkTS-Sta起始版本：** 26.2.0<br>**模型约束：** 此接口仅可在Stage模型下使用。|
+| enableAEC | boolean | 否 | 是 | 表示当麦克风采集开启时，是否开启回声检测与回声消除功能。<br>true表示开启回声消除功能，false表示关闭回声消除功能，默认值为false。<br>**ArkTS-Dyn起始版本：** 26.1.0<br>**ArkTS-Sta起始版本：** 26.1.0<br>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ## AVScreenCaptureRecordConfig<sup>12+</sup>
 

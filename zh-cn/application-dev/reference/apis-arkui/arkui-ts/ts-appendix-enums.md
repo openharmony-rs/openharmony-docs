@@ -1633,7 +1633,7 @@ type Nullable\<T> = T | undefined
 
 | 名称            | 值   | 说明                                                         |
 | --------------- | ---- | ------------------------------------------------------------ |
-| BREAKPOINT_DEFAULT         | 0    | 针对[List](./ts-container-list.md)和[Swiper](./ts-container-swiper.md)组件：在组件宽度属于sm及更小的断点区间时显示1列，属于md断点区间时显示2列，属于lg及更大的断点区间时显示3列。<br> 针对[Grid](./ts-container-grid.md)、[WaterFlow](./ts-container-waterflow.md)、[LazyVWaterFlowLayout](./ts-container-lazyvwaterflowlayout.md)和[LazyVGridLayout](./ts-container-lazyvgridlayout.md)组件：在组件宽度属于sm及更小的断点区间时显示2列，属于md断点区间时显示3列，属于lg及更大的断点区间时显示5列。LazyVWaterFlowLayout组件从API版本26.0.0开始支持，LazyVGridLayout组件从API版本26.2.0开始支持。<br> LazyVWaterFlowLayout和LazyVGridLayout使用内容区宽度判断断点，内容区宽度为组件宽度减去左右内边距（padding）及占用布局的左右边框宽度后的可用宽度。 |
+| BREAKPOINT_DEFAULT         | 0    | 针对[List](./ts-container-list.md)和[Swiper](./ts-container-swiper.md)组件：在组件宽度属于sm及更小的断点区间时显示1列，属于md断点区间时显示2列，属于lg及更大的断点区间时显示3列。<br> 针对[Grid](./ts-container-grid.md)、[WaterFlow](./ts-container-waterflow.md)、[LazyVWaterFlowLayout](./ts-container-lazyvwaterflowlayout.md)和[LazyVGridLayout](./ts-container-lazyvgridlayout.md)组件：在组件宽度属于sm及更小的断点区间时显示2列，属于md断点区间时显示3列，属于lg及更大的断点区间时显示5列。LazyVWaterFlowLayout组件从API版本26.0.0开始支持，LazyVGridLayout组件从API版本26.1.0开始支持。<br> LazyVWaterFlowLayout和LazyVGridLayout使用内容区宽度判断断点，内容区宽度为组件宽度减去左右内边距（padding）及占用布局的左右边框宽度后的可用宽度。 |
 | BREAKPOINT_SM1MD2LG3 | 1    | 在组件宽度属于sm及更小的断点区间时显示1列，属于md断点区间时显示2列，属于lg及更大的断点区间时显示3列。 |
 | BREAKPOINT_SM2MD3LG5 | 2    | 在组件宽度属于sm及更小的断点区间时显示2列，属于md断点区间时显示3列，属于lg及更大的断点区间时显示5列。 |
 
@@ -2156,18 +2156,19 @@ type Nullable\<T> = T | undefined
 
 安全区域的沉浸式策略。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**ArkTS-Dyn起始版本：** 26.2.0
+**ArkTS-Dyn起始版本：** 26.1.0
 
-**ArkTS-Sta起始版本：** 26.2.0
+**ArkTS-Sta起始版本：** 26.1.0
 
 | 名称   | 值   | 说明       |
 | ------ | ---- | ---------- |
 | AVOID_CUTOUT | 0 | 避让挖孔区域。<br/>该策略的优先级比module.json5中的avoid_cutout配置项低，如果在module.json5的metadata中配置了avoid_cutout，该配置项的效果会优先生效，具体配置方式请参考[安全区域](ts-universal-attributes-expand-safe-area.md)文档说明。 |
 | AVOID_FLOAT_NAV | 1 | 避让三键导航栏区域。 |
+| AVOID_WINDOW_CONTROLS | 6 | 在[自由窗口](../../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下，通过[setWindowDecorVisible](../arkts-apis-window-Window.md#setwindowdecorvisible11)接口隐藏窗口标题栏时，设置此策略避让窗口三键，即窗口右上角的窗口最大化/还原、窗口最小化和关闭窗口三个按钮。 |
 | NAVIGATION_EXPAND_SAFE_AREA | 8 | 将Navigation/NavDestination组件的标题栏和工具栏扩展为内容区的安全区域，若在Navigation/NavDestination组件上显式设置了标题栏或工具栏样式，则显式设置优先于该配置。 |

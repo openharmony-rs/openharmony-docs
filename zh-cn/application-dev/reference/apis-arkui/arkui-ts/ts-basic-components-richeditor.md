@@ -698,7 +698,7 @@ ArkTS-Sta: includeFontPadding(include: boolean | undefined)
 
 设置是否在首行和尾行增加间距以避免文字截断。适用于自定义字体行高较小导致文字被裁剪、紧凑排版等场景。不通过该接口设置，默认不增加间距。
 
-从API版本26.2.0开始，该接口与[fallbackLineSpacing](#fallbacklinespacing23)支持通过module.json5中配置[metadata](../../../../application-dev/quick-start/module-structure.md#metadata对象内部结构)字段统一开启，两个能力同时生效，不支持单独开启。配置后，[Text](ts-basic-components-text.md)、[TextArea](ts-basic-components-textarea.md)、[TextInput](ts-basic-components-textinput.md)、[RichEditor](ts-basic-components-richeditor.md)、[Search](ts-basic-components-search.md)等文本类组件在未显式设置对应属性时默认按true处理；组件显式设置的值优先于metadata开关；未配置metadata的应用行为不变。配置如下：
+从API版本26.1.0开始，该接口与[fallbackLineSpacing](#fallbacklinespacing23)支持通过module.json5中配置[metadata](../../../../application-dev/quick-start/module-structure.md#metadata对象内部结构)字段统一开启，两个能力同时生效，不支持单独开启。配置后，[Text](ts-basic-components-text.md)、[TextArea](ts-basic-components-textarea.md)、[TextInput](ts-basic-components-textinput.md)、[RichEditor](ts-basic-components-richeditor.md)、[Search](ts-basic-components-search.md)等文本类组件在未显式设置对应属性时默认按true处理；组件显式设置的值优先于metadata开关；未配置metadata的应用行为不变。配置如下：
 ```json
 "metadata": [
   {
@@ -734,7 +734,7 @@ ArkTS-Sta: fallbackLineSpacing(enabled: boolean | undefined)
 
 该接口依赖[RichEditorTextStyle](#richeditortextstyle)的lineHeight属性。当lineHeight设置值小于当前字号下文本渲染出的实际高度时，fallbackLineSpacing属性将生效。
 
-从API版本26.2.0开始，该接口与[includeFontPadding](#includefontpadding23)支持通过module.json5中配置[metadata](../../../../application-dev/quick-start/module-structure.md#metadata对象内部结构)字段统一开启，两个能力同时生效，不支持单独开启。配置后，[Text](ts-basic-components-text.md)、[TextArea](ts-basic-components-textarea.md)、[TextInput](ts-basic-components-textinput.md)、[RichEditor](ts-basic-components-richeditor.md)、[Search](ts-basic-components-search.md)等文本类组件在未显式设置对应属性时默认按true处理；组件显式设置的值优先于metadata开关；未配置metadata的应用行为不变。配置如下：
+从API版本26.1.0开始，该接口与[includeFontPadding](#includefontpadding23)支持通过module.json5中配置[metadata](../../../../application-dev/quick-start/module-structure.md#metadata对象内部结构)字段统一开启，两个能力同时生效，不支持单独开启。配置后，[Text](ts-basic-components-text.md)、[TextArea](ts-basic-components-textarea.md)、[TextInput](ts-basic-components-textinput.md)、[RichEditor](ts-basic-components-richeditor.md)、[Search](ts-basic-components-search.md)等文本类组件在未显式设置对应属性时默认按true处理；组件显式设置的值优先于metadata开关；未配置metadata的应用行为不变。配置如下：
 ```json
 "metadata": [
   {
@@ -2110,15 +2110,15 @@ ArkTS-Sta: addRichEditorBuilderSpan(value: RichEditorBuilderSpan, info?: Builder
 > - 当RichEditor组件使用[RichEditorStyledStringOptions](#richeditorstyledstringoptions12)构造时，不支持此接口。
 > - 撤销/重做不会还原BuilderSpan对象。通过撤销还原时，被移除的BuilderSpan会降级为空格文本Span。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 26.2.0
+**ArkTS-Dyn起始版本：** 26.1.0
 
-**ArkTS-Sta起始版本：** 26.2.0
+**ArkTS-Sta起始版本：** 26.1.0
 
 **参数：**
 
@@ -2253,15 +2253,15 @@ ArkTS-Sta: getRichEditorBuilderSpans(value?: RichEditorRange): Array\<BuilderSpa
 > - 通过接口[addBuilderSpan](#addbuilderspan11)创建的BuilderSpan，返回的[BuilderSpanInfo](#builderspaninfo)中id为**undefined**（匿名）。
 > - 返回的[BuilderSpanInfo](#builderspaninfo)中的**offset**字段反映当前实际偏移位置，随文本内容变化动态更新。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 26.2.0
+**ArkTS-Dyn起始版本：** 26.1.0
 
-**ArkTS-Sta起始版本：** 26.2.0
+**ArkTS-Sta起始版本：** 26.1.0
 
 **参数：**
 
@@ -2831,15 +2831,15 @@ SymbolSpan样式选项。
 >
 > 当RichEditor组件使用[RichEditorStyledStringOptions](#richeditorstyledstringoptions12)构造时，不支持此接口。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 26.2.0
+**ArkTS-Dyn起始版本：** 26.1.0
 
-**ArkTS-Sta起始版本：** 26.2.0
+**ArkTS-Sta起始版本：** 26.1.0
 
 | 名称     | 类型      | 只读 | 可选   | 说明                                    |
 | ------ | ------ | ---- | ----------|--------------------------- |
@@ -2854,15 +2854,15 @@ SymbolSpan样式选项。
 >
 > 当RichEditor组件使用[RichEditorStyledStringOptions](#richeditorstyledstringoptions12)构造时，不支持此接口。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 26.2.0
+**ArkTS-Dyn起始版本：** 26.1.0
 
-**ArkTS-Sta起始版本：** 26.2.0
+**ArkTS-Sta起始版本：** 26.1.0
 
 | 名称     | 类型      | 只读 | 可选   | 说明                                    |
 | ------ | ------ | ---- | ----------|--------------------------- |
@@ -8808,7 +8808,7 @@ struct RichEditorResizablePage {
 
 该示例演示通过[addRichEditorBuilderSpan](#addricheditorbuilderspan)添加带身份标识的BuilderSpan，并通过[getRichEditorBuilderSpans](#getricheditorbuilderspans)获取BuilderSpan信息，在日志中打印返回结果。
 
-从API版本26.2.0开始，新增addRichEditorBuilderSpan和getRichEditorBuilderSpans接口。
+从API版本26.1.0开始，新增addRichEditorBuilderSpan和getRichEditorBuilderSpans接口。
 
 ArkTS-Dyn示例：
 ```ts

@@ -586,13 +586,13 @@ ArkTS-Sta: enableScrollWithKeyboard(enabled: boolean | undefined): this
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 26.2.0
+**ArkTS-Dyn起始版本：** 26.1.0
 
-**ArkTS-Sta起始版本：** 26.2.0
+**ArkTS-Sta起始版本：** 26.1.0
 
 **参数：**
 
@@ -1614,9 +1614,9 @@ ArkTS-Sta: type OnVisibleIndexesChangeCallback = (start: int, end: int) => void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 26.2.0
+**ArkTS-Dyn起始版本：** 26.1.0
 
-**ArkTS-Sta起始版本：** 26.2.0
+**ArkTS-Sta起始版本：** 26.1.0
 
 ### calculateApproachOffset
 
@@ -1628,13 +1628,13 @@ ArkTS-Sta: calculateApproachOffset(velocity: double, decayOffset: double): doubl
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 26.2.0
+**ArkTS-Dyn起始版本：** 26.1.0
 
-**ArkTS-Sta起始版本：** 26.2.0
+**ArkTS-Sta起始版本：** 26.1.0
 
 **参数：**
 
@@ -1659,13 +1659,13 @@ ArkTS-Sta: calculateSnapOffset(velocity: double): double
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 26.2.0
+**ArkTS-Dyn起始版本：** 26.1.0
 
-**ArkTS-Sta起始版本：** 26.2.0
+**ArkTS-Sta起始版本：** 26.1.0
 
 **参数：**
 
@@ -2061,10 +2061,10 @@ struct Index {
 }
 ```
 
-API版本26.2.0之前，enableScrollWithMouse属性的默认值为false，效果图如下：
+API版本26.1.0之前，enableScrollWithMouse属性的默认值为false，效果图如下：
 
 ![enableScrollWithMouse_before](figures/enableScrollWithMouse_before.gif)
 
-从API版本26.2.0开始，当可滚动组件水平滚动时，enableScrollWithMouse属性的默认值为true，否则为false，效果图如下：
+从API版本26.1.0开始，当可滚动组件水平滚动时，enableScrollWithMouse属性的默认值为true，否则为false，效果图如下：
 
 ![enableScrollWithMouse_after](figures/enableScrollWithMouse_after.gif)

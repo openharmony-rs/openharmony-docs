@@ -41,7 +41,7 @@ import { bundleManager } from '@kit.AbilityKit';
 | GET_BUNDLE_INFO_WITH_ROUTER_MAP<sup>12+</sup> | 0x00000200 | 用于获取包含routerMap的bundleInfo。单独使用不生效，需要与GET_BUNDLE_INFO_WITH_HAP_MODULE一起使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
 | GET_BUNDLE_INFO_WITH_SKILL<sup>12+</sup>      | 0x00000800 | 用于获取包含skills的bundleInfo。单独使用不生效，需要与GET_BUNDLE_INFO_WITH_HAP_MODULE、GET_BUNDLE_INFO_WITH_ABILITY、GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY一起使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
 | GET_BUNDLE_INFO_WITH_ENTRY_MODULE<sup>23+</sup>      | 0x00010000 | 用于获取包含hapModuleInfo的bundleInfo，仅支持entry模块对应的bundleInfo.hapModulesInfo，如果entry模块不存在，bundleInfo.hapModulesInfo列表为空。获取的bundleInfo不包含signatureInfo、applicationInfo、ability、extensionAbility和permission的信息。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
-| GET_BUNDLE_INFO_ONLY_WITH_LAUNCHER_ABILITY | 0x00001000 | 用于获取仅包含有桌面图标的应用的bundleInfo。<br/>**起始版本：** 26.2.0 |
+| GET_BUNDLE_INFO_ONLY_WITH_LAUNCHER_ABILITY | 0x00001000 | 用于获取仅包含有桌面图标的应用的bundleInfo。<br/>**起始版本：** 26.1.0 |
 
 ## ExtensionAbilityType
 
@@ -90,7 +90,7 @@ import { bundleManager } from '@kit.AbilityKit';
 | AGENT_UI<sup>24+</sup> | 38 | [AgentUIExtensionAbility](js-apis-agent-agentUIExtensionAbility.md)：为开发者提供接入端侧Agent UI界面显示能力。<br>**模型约束**：此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 24<br>**ArkTS-Sta起始版本：** 24 |
 | MODULAR_OBJECT | 39 | [modular_object_extension_ability](capi-modular-object-extension-ability-h.md)：提供[模块化对象](../../application-models/modular-object-extension-overview.md)扩展能力，可以将应用自身功能封装为独立的功能模块，开放给其他应用使用。<br>**模型约束**：此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0|
 | UKEY_AUTH      | 40 | [UkeyAuthExtensionAbility](../apis-device-certificate-kit/js-apis-UkeyAuthExtensionAbility.md)：为开发者提供接入自定义UKey认证界面的能力。<br>**模型约束**：此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 26.0.1<br>**ArkTS-Sta起始版本：** 26.0.1 |
-| UNSPECIFIED      | 255 | 不指定类型<!--Del-->，配合[queryExtensionAbilityInfo接口](js-apis-bundleManager-sys.md#bundlemanagerqueryextensionabilityinfo)可以查询所有类型的ExtensionAbility<!--DelEnd-->。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| UNSPECIFIED      | 255 | 不指定类型<!--Del-->，配合[queryExtensionAbilityInfo](js-apis-bundleManager-sys.md#bundlemanagerqueryextensionabilityinfo)可以查询所有类型的ExtensionAbility<!--DelEnd-->。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
 <!--RP2--><!--RP2End-->
 
 ## PermissionGrantState
@@ -269,7 +269,7 @@ Ability组件信息标志，指示需要获取的Ability组件信息的内容。
 
 | 名称                              | 值         | 说明                                                         |
 | --------------------------------- | ---------- | ------------------------------------------------------------ |
-| GET_ABILITY_INFO_DEFAULT          | 0x00000000 | 获取默认[AbilityInfo](js-apis-bundleManager-abilityInfo.md)，获取的AbilityInfo不包含permissions、metadata、被禁用Ability对应的AbilityInfo。<!--Del-->通过[setAbilityEnabled接口](./js-apis-bundleManager-sys.md#bundlemanagersetabilityenabled)可设置Ability禁用状态、通过[isAbilityEnabled接口](./js-apis-bundleManager-sys.md#bundlemanagerisabilityenabled-1)可获取Ability禁用状态。<!--DelEnd-->|
+| GET_ABILITY_INFO_DEFAULT          | 0x00000000 | 获取默认[AbilityInfo](js-apis-bundleManager-abilityInfo.md)，获取的AbilityInfo不包含permissions、metadata、被禁用Ability对应的AbilityInfo。<!--Del-->通过[setAbilityEnabled](./js-apis-bundleManager-sys.md#bundlemanagersetabilityenabled)可设置Ability禁用状态、通过[isAbilityEnabled](./js-apis-bundleManager-sys.md#bundlemanagerisabilityenabled-1)可获取Ability禁用状态。<!--DelEnd-->|
 | GET_ABILITY_INFO_WITH_PERMISSION  | 0x00000001 | 获取包含permissions的AbilityInfo。                         |
 | GET_ABILITY_INFO_WITH_APPLICATION | 0x00000002 | 获取包含applicationInfo的AbilityInfo。                     |
 | GET_ABILITY_INFO_WITH_METADATA    | 0x00000004 | 获取包含metadata的AbilityInfo。                            |
