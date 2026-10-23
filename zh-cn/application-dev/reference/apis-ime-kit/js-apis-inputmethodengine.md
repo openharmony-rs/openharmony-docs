@@ -8318,7 +8318,7 @@ getContent(): string
 
 > **说明：**
 >
-> 如果span类型为[SpanType.IMAGE](#spantype)，则content为图片插入到ArkUI富文本组件时携带的标签信息（imageTag）。
+> 如果span类型为[SpanType.IMAGE](#spantype)，则content为图片插入到ArkUI富文本组件时携带的标签信息，即[RichEditorImageSpanOptions](../apis-arkui/arkui-ts/ts-basic-components-richeditor.md#richeditorimagespanoptions)中的imageTag属性。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
