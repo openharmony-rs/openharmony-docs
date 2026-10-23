@@ -1,3 +1,11 @@
+---
+kits: ["Media Kit / 媒体服务"]
+description: "AVPlayer支持在视频播放前设置外挂字幕，通过addSubtitleFromFd加载srt字幕资源，注册subtitleUpdate回调实时显示字幕内容，并支持注销回调隐藏字幕。"
+keywords: [AVPlayer, 外挂字幕, 字幕监听, 字幕资源, 视频播放]
+doctype: guide
+status: active
+---
+
 # 使用AVPlayer添加视频外挂字幕(ArkTS)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
