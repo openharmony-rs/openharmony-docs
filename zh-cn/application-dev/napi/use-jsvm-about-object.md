@@ -167,7 +167,7 @@ cpp部分代码：
 const int FREEZE_TEST_VALUE = 111111;
 static JSVM_Value ObjectFreeze(JSVM_Env env, JSVM_CallbackInfo info)
 {
-    // 接受一个JavaScript侧传入的object
+    // 接收一个JavaScript侧传入的object
     size_t argc = 1;
     JSVM_Value argv[1] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, argv, nullptr, nullptr);
@@ -220,7 +220,7 @@ cpp部分代码：
 const int TEST_VALUE = 111111;
 static JSVM_Value ObjectSeal(JSVM_Env env, JSVM_CallbackInfo info)
 {
-    // 接受一个JavaScript侧传入的object
+    // 接收一个JavaScript侧传入的object
     size_t argc = 1;
     JSVM_Value argv[1] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, argv, nullptr, nullptr);
