@@ -178,8 +178,8 @@ OH_HiAppEvent_SysEvent
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_APP_CRASH = 0 | 崩溃事件。                   |
-| OH_APP_FREEZE = 1 | 应用冻屏事件。 |
+| OH_APP_CRASH = 1 | 崩溃事件。                   |
+| OH_APP_FREEZE = 2 | 应用冻屏事件。 |
 | OH_RESOURCE_OVERLIMIT = 3 | 资源泄漏事件。                        |
 | OH_ADDRESS_SANITIZER = 4 | 地址越界事件。                        |
 | OH_APP_HICOLLIE = 5 | 任务执行超时事件。                  |
