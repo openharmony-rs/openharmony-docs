@@ -1039,7 +1039,7 @@ export default class EntryAbility extends UIExtensionAbility {
 | ------------------------------ | ----------- | --------------- | ----------------- | -------------------------------- |
 | uiExtensionHostWindowProxyRect | [window.Rect](arkts-apis-window-i.md#rect7) | 否 | 否 |UIExtensionComponent的位置和宽高。 |
 
-## 完整示例
+## 示例
 
 本示例展示文档中主要API在UIExtensionAbility中的基础使用方式，示例应用需采用系统签名，且`bundleName`为"com.example.uiextensiondemo"， 被拉起的`UIExtensionAbility`为"ExampleUIExtensionAbility"。
 
