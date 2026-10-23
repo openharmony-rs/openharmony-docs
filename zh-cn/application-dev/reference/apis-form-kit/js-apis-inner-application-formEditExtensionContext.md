@@ -240,9 +240,9 @@ setWindowBackgroundColor(color: string): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Ability.Form
 
-**ArkTS-Dyn起始版本：** 26.2.0
+**ArkTS-Dyn起始版本：** 26.1.0
 
-**ArkTS-Sta起始版本：** 26.2.0
+**ArkTS-Sta起始版本：** 26.1.0
 
 **参数：**
 
