@@ -440,6 +440,8 @@ function printNodeTreeInRelativePath(node: Node | null): void {
 | ---- | ---- | ---- |
 | DIRECTIONAL | 1 | 平行光类型。 |
 | SPOT | 2 | 聚光灯类型。 |
+| POINT | 3 | 点光源类型。 |
+| RECT | 4 | 矩形光类型。 |
 
 ## Light
 
@@ -454,6 +456,10 @@ function printNodeTreeInRelativePath(node: Node | null): void {
 | intensity | number | 否 | 否 | 光照强度，单位为坎德拉（cd），取值范围是大于0的实数。 |
 | shadowEnabled | boolean | 否 | 否 | 是否使能阴影。true表示添加阴影，false表示没有阴影效果。 |
 | enabled | boolean | 否 | 否 | 是否使能光源。true表示使用光源，false表示不使用。 |
+
+> **注意：**
+>
+> 单个场景中所有光源的数量上限为64。当光源数量超过64时，超出该上限后添加的光源将被直接舍弃，不参与场景渲染。
 
 ## SpotLight
 
@@ -477,6 +483,32 @@ function printNodeTreeInRelativePath(node: Node | null): void {
 平行光类型，继承自[Light](#light)。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
+
+## PointLight
+
+点光源类型，继承自[Light](#light)。
+
+点光源从空间中的单个点向所有方向均匀发射光，强度随着距离光源位置的增加而衰减。
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| range<sup>26+</sup> | number | 否 | 是 | 点光源影响的最大距离，超过该范围光强为0。单位为世界坐标系下的场景单位（比如cm、m、km等），取值大于0。若未设置此参数或取值为负数，系统自动计算一个安全值。 |
+
+## RectLight
+
+矩形区域光类型，继承自[Light](#light)。
+
+矩形光源从矩形区域发射光，模拟柔和的区域照明效果，强度随着距离的增加而衰减。
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| width<sup>26+</sup> | number | 否 | 是 | 矩形发光面的宽度。单位为世界坐标系下的场景单位（比如cm、m、km等），取值大于0，若未设置，默认为1。 |
+| height<sup>26+</sup> | number | 否 | 是 | 矩形发光面的高度。单位为世界坐标系下的场景单位（比如cm、m、km等），取值大于0，若未设置，默认为1。 |
+| twoSided<sup>26+</sup> | boolean | 否 | 是 | 矩形光源是否从矩形的两侧发光。若未设置，默认为false。 |
 
 ## Camera
 
