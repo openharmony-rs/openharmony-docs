@@ -121,6 +121,30 @@ ImageSpan组件创建后，不支持动态修改该属性的值。
 | ------ | -------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | enable  | Optional\<boolean> | 是   | 是否开启[SVG标签解析能力增强功能](ts-image-svg2-capabilities.md)。<br>true：支持SVG解析新能力；false：保持原有SVG解析能力。 |
 
+### resizable
+
+resizable(value: ResizableOptions)
+
+设置图片拉伸时的大小调整选项。拉伸对拖拽缩略图以及占位图有效。
+
+当设置`top + bottom`大于原图的高或者`left + right`大于原图的宽时[ResizableOptions](ts-basic-components-image.md#resizableoptions11)属性设置不生效。
+
+当组件加载的图片为动图、[AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12)和SVG时设置该属性不生效。
+
+**起始版本：** 26.0.1
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型                                    | 必填 | 说明                             |
+| ------ | --------------------------------------- | ---- | -------------------------------- |
+| value  | [ResizableOptions](ts-basic-components-image.md#resizableoptions11) | 是   | 图像拉伸时可调整大小的图像选项。 |
+
 ## 事件
 
 通用事件仅支持[点击控制事件](ts-universal-attributes-click.md)。还支持以下事件：
@@ -463,3 +487,70 @@ struct Index {
 ```
 
 ![styledString_17](figures/styledString_17.png)
+
+### 示例7（设置图片拉伸）
+
+该示例分别通过[resizable](#resizable)属性的slice和lattice选项，对ImageSpan图片进行拉伸。
+
+从API版本26.0.1开始，新增resizable属性。
+
+```ts
+import { drawing } from '@kit.ArkGraphics2D';
+
+@Entry
+@Component
+struct ImageSpanResizablePage {
+  private xDivs: Array<number> = [1, 2, 200];
+  private yDivs: Array<number> = [1, 2, 200];
+  private fXCount: number = 3;
+  private fYCount: number = 3;
+  private drawingLattice: DrawingLattice =
+    drawing.Lattice.createImageLattice(this.xDivs, this.yDivs, this.fXCount, this.fYCount);
+
+  build() {
+    Column({ space: 20 }) {
+      Text('使用Text + ImageSpan，分别设置resizable的slice和lattice属性实现图片拉伸：')
+        .fontSize(18)
+        .fontColor('#666666')
+        .width('90%')
+
+      Text() {
+        Span('原图\n')
+          .fontSize(25)
+        ImageSpan($r('app.media.landscape'))
+          .width(200)
+          .height(200)
+        Span('\n设置slice后\n')
+          .fontSize(25)
+        ImageSpan($r('app.media.landscape'))
+          .width(200)
+          .height(200)
+          .resizable({
+            slice: {
+              left: '200px',
+              top: '200px',
+              right: '20px',
+              bottom: '20px'
+            }
+          })
+        Span('\n设置lattice后\n')
+          .fontSize(25)
+        ImageSpan($r('app.media.landscape'))
+          .width(200)
+          .height(200)
+          .resizable({
+            lattice: this.drawingLattice
+          })
+      }
+      .width('90%')
+      .textAlign(TextAlign.Center)
+    }
+    .width('100%')
+    .height('100%')
+    .padding(20)
+    .alignItems(HorizontalAlign.Center)
+  }
+}
+```
+
+![resizable](figures/imagespan-resizable.png)

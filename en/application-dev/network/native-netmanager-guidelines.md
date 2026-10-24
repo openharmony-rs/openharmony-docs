@@ -216,6 +216,7 @@ libnet_connection.so
      }
    
      CodeNumber() {
+       // A non-zero value passes a valid netHandle pointer; 0 passes NULL to demonstrate the parameter error (401).
        let testParam = 1;
        // ...
          let codeNumber = testNetManager.GetDefaultNet(testParam);

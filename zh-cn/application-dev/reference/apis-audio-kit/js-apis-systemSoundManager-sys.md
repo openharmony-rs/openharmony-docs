@@ -503,6 +503,7 @@ let toneAttrs: systemSoundManager.ToneAttrs = systemSoundManager.createCustomize
 | TEXT_MESSAGE_ESIM_CARD_0 | 22 | ESIM卡1的短信提示音的振动。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | TEXT_MESSAGE_ESIM_CARD_1 | 23 | ESIM卡2的短信提示音的振动。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | NOTIFICATION            | 40 | 通知提示音的振动。 |
+| ALARM            | 41 | 闹钟的振动。<br>**起始版本：** 26.0.1<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## ToneHapticsMode<sup>14+</sup>
 

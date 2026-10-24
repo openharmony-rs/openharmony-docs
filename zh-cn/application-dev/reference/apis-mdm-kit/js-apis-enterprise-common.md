@@ -122,3 +122,128 @@ EnterpriseAdminExtensionContext是[EnterpriseAdminExtensionAbility](js-apis-Ente
 | functionName        | string       | 否   | 否 | 接口名称。例如调用[setPasswordPolicy](./js-apis-enterprise-securityManager.md#securitymanagersetpasswordpolicy)接口时，该字段返回值为setPasswordPolicy。            |
 | parameters        | string       | 否   | 否 | 调用接口时传入的参数值（不包含admin参数），JSON格式字符串。例如调用[setPasswordPolicy](./js-apis-enterprise-securityManager.md#securitymanagersetpasswordpolicy)接口，该字段返回值为{"policy":{"complexityRegex":"^(?=.\*[a-zA-Z])(?=.\*\\\\d).{8},$","validityPeriod":1808309786000,"additionalDescription":"至少8个字符，且包含数字和字母。"}}。            |
 | time        | number       | 否   | 否 | 调用接口的时间戳，单位：ms。           |
+
+## DiskType
+
+外置存储设备磁盘类型的枚举。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+| 名称      | 值   | 说明                   |
+| --------- | ---- | ---------------------- |
+| SD_CARD   | 1    | SD卡类型。             |
+| USB_FLASH | 2    | U盘类型。              |
+| CD_DVD_BD | 3    | 光盘类型。             |
+
+## ExternalStorageDeviceInfo
+
+外置存储设备信息。该接口目前在[usbManager.getExternalStorageDeviceInfos](./js-apis-enterprise-usbManager.md#usbmanagergetexternalstoragedeviceinfos)接口中作为返回值使用，在[EnterpriseAdminExtensionAbility.onUnmountExternalStorageDevice](./js-apis-EnterpriseAdminExtensionAbility.md#onunmountexternalstoragedevice)接口中作为回调入参使用。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+| 名称        | 类型                  | 只读 | 可选 | 说明                                                         |
+| ----------- | --------------------- | ---- | ---- | ------------------------------------------------------------ |
+| type        | [DiskType](#disktype) | 否   | 否   | 磁盘类型。                                                   |
+| devicePath  | string                | 否   | 否   | 挂载路径。                                                   |
+| volumeId    | string                | 否   | 否   | 卷ID。                                                       |
+| mountStatus | boolean               | 否   | 否   | 挂载状态。返回true表示已挂载；返回false表示未挂载。         |
+| vendorId    | number                | 否   | 否   | 厂商ID。                                                     |
+| productId   | number                | 否   | 否   | 产品ID。                                                     |
+| serial      | string                | 否   | 否   | 序列号。                                                     |
+
+## QueryPolicy
+
+获取策略。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+| 名称         | 值 | 说明                            |
+| ----------- | -------- | ------------------------------- |
+| SELF | 0  | 当前Admin设置的策略。|
+| ALL | 1  | 全部Admin设置的策略。|
+
+## ManagedFeature
+
+管控特性。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+| 名称                    | 值 | 说明                              |
+| ----------------------- | -------- | --------------------------------- |
+| LOCAL_HOTA_DOMAIN       | 0  | 本机HOTA（Huawei Over-the-Air）域名。    |
+| USER_EXTEND_CREDENTIAL  | 1  | 扩展身份认证凭据。                |
+| DEVICE_SECURITY_LEVEL   | 2  | 设备安全等级。              |
+| PRINTER_IP_ADDRESS_POLICY | 3 | 打印机IP地址策略。          |
+| OPTICAL_DISC_DRIVE_BURN | 4 | 光驱刻录。          |
+| EXACT_TIMER | 5 | 精确定时器。          |
+| EXEMPTION_RESOURCE | 6 | 资源豁免。          |
+| X_KEY | 7 | X键。          |
+| SYSTEM_ROLLBACK | 8 | 系统回退。          |
+| SUPER_PRIVACY | 9 | 超级隐私模式。          |
+
+## common.isFeatureSupported
+
+isFeatureSupported(feature: ManagedFeature): boolean
+
+查询是否支持某个管控特性。适用于企业设备管理应用在调用与设备形态相关的管控接口前，先确认当前设备是否支持对应特性，再进行差异化的业务处理，避免在不支持的设备上调用相关接口。
+
+**起始版本：** 26.0.1
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名  | 类型                                        | 必填 | 说明           |
+| ------- | ------------------------------------------- | ---- | -------------- |
+| feature | [ManagedFeature](#managedfeature)           | 是   | 管控特性。     |
+
+**返回值：**
+
+| 类型    | 说明                                       |
+| ------- | ------------------------------------------ |
+| boolean | true表示支持该特性，false表示不支持该特性。 |
+
+**示例：**
+
+```ts
+import { common, systemManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+// 需根据实际情况进行替换
+let domain: string = "https://www.hotaExample.com";
+// 调用接口前，先使用本接口查询设备是否支持本机HOTA域名特性
+let isSupported: boolean = common.isFeatureSupported(common.ManagedFeature.LOCAL_HOTA_DOMAIN);
+if (isSupported) {
+  try {
+    systemManager.setLocalHotaDomain(wantTemp, domain);
+    console.info('Succeeded in setting local HOTA domain.');
+  } catch (err) {
+    console.error(`Failed to set local HOTA domain. Code is ${err.code}, message is ${err.message}`);
+  }
+} else {
+  console.info('The local HOTA domain feature is not supported.');
+}
+```

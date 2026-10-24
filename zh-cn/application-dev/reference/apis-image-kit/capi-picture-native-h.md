@@ -114,6 +114,8 @@ enum Image_AuxiliaryPictureType
 | AUXILIARY_PICTURE_TYPE_UNREFOCUS_MAP = 3 | 人像未对焦的原图，提供了一种在人像拍摄中突出背景模糊效果的方式，能够帮助用户在后期处理中选择焦点区域，增加创作自由度。 |
 | AUXILIARY_PICTURE_TYPE_LINEAR_MAP = 4 | 线性图，用于提供额外的数据视角或补充信息，通常用于视觉效果的增强，它可以包含场景中光照、颜色或其他视觉元素的线性表示。 |
 | AUXILIARY_PICTURE_TYPE_FRAGMENT_MAP = 5 | 水印裁剪图，表示在原图中被水印覆盖的区域，该图像用于修复或移除水印影响，恢复图像的完整性和可视性。 |
+| OH_IMAGE_NATIVEMODULE_AUXILIARY_PICTURE_TYPE_OXY_MAP = 11 | 血氧图，记录人脸区域像素的血氧饱和度。可用于肤质分析，当前仅作为相机拍照流程的中间结果，不支持用于编解码。<br>**起始版本：** 26.0.1 |
+| OH_IMAGE_NATIVEMODULE_AUXILIARY_PICTURE_TYPE_MEL_MAP = 12 | 色斑图，记录人脸区域的色斑分布。可用于肤质分析，当前仅作为相机拍照流程的中间结果，不支持用于编解码。<br>**起始版本：** 26.0.1 |
 
 ## 函数说明
 
