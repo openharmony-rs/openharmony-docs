@@ -240,7 +240,7 @@ Defines the drag interaction modes of single-selection segmented buttons.
 | Name | Value | Description |
 | --- | --- | --- |
 | FOLLOWING_DRAG | 0 | Following drag. When dragging from the currently selected item, the background of the selected item continuously follows the finger. The selected index remains unchanged during dragging and is updated when the finger is released. Enabling this mode does not add material deformation or light effects when **backgroundSystemMaterial** is not configured. |
-| NORMAL_DRAG | 1 | Normal drag. When dragging from the currently selected item, the background of the selected item transitions between item positions, and the selected index is updated as the finger moves across items. Only drag positioning and selection update timing differ from following drag. The original material feedback, including configured light effects, is retained. |
+| NORMAL_DRAG | 1 | Normal drag. When dragging from the currently selected item, the background of the selected item transitions between item positions, and the selected index is updated as the finger moves across items. When **backgroundSystemMaterial** is configured, the original material feedback, including configured light effects, is retained. |
 
 ## BorderRadiusMode<sup>20+</sup>
 
