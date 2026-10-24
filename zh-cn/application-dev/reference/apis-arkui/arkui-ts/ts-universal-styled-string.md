@@ -1001,6 +1001,7 @@ ShadowOptions对象中不支持fill字段。
 | colorFilter<sup>15+</sup>  | [ColorFilterType](#colorfiltertype15) |  是  |  是  | 获取属性字符串的图片颜色滤镜效果。<br>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
 | supportSvg2<sup>22+</sup>  | boolean |  是  |  是  | 获取属性字符串是否开启[SVG标签解析能力增强功能](ts-image-svg2-capabilities.md)。<br>true：支持SVG解析新能力；false：保持原有SVG解析能力。<br>默认值：false<br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
 | resizable  | [ResizableOptions](ts-basic-components-image.md#resizableoptions11) |  是  |  是  | 获取属性字符串的图像拉伸时可调整大小的图像选项。<br>**起始版本：** 26.0.1<br>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
+| imageTag  | string |  是  |  是  | 获取属性字符串的图片文本标签。<br>**起始版本：** 26.1.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。 |
 
 ### constructor
 
@@ -1077,6 +1078,7 @@ type ColorFilterType = ColorFilter | DrawingColorFilter
 | layoutStyle | [ImageAttachmentLayoutStyle](#imageattachmentlayoutstyle对象说明) | 否    | 是 | 设置图片布局。不传入时使用默认布局（外边距、内边距和圆角均为0）。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | colorFilter<sup>15+</sup>  | [ColorFilterType](#colorfiltertype15) |  否   | 是 | 设置属性字符串的图片颜色滤镜效果。不传入时不应用颜色滤镜，图片显示原始颜色。<br>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
 | resizable  | [ResizableOptions](ts-basic-components-image.md#resizableoptions11) |  否   | 是 | 设置属性字符串的图像拉伸时可调整大小的图像选项。不传入时不进行拉伸。<br>**起始版本：** 26.0.1<br>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
+| imageTag  | string |  否   | 是 | 设置属性字符串的图片文本标签。不传入时不设置文本标签。<br>**起始版本：** 26.1.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。 |
 
 ## ImageAttachmentLayoutStyle对象说明
 
@@ -1107,6 +1109,7 @@ ResourceStr类型图片设置项。
 | syncLoad  | boolean |  否  | 是 | 是否同步加载图片，默认是异步加载。同步加载时阻塞UI线程，不会显示占位图。<br>true：同步加载；false：异步加载。<br>默认值：false<br>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
 | supportSvg2<sup>22+</sup>  | boolean |  否  |  是  | 控制是否开启[SVG标签解析能力增强功能](ts-image-svg2-capabilities.md)。<br>true：支持SVG解析新能力；false：保持原有SVG解析能力。<br>默认值：false<br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
 | resizable  | [ResizableOptions](ts-basic-components-image.md#resizableoptions11) |  否  |  是  | 设置属性字符串的图像拉伸时可调整大小的图像选项。不传入时不进行拉伸。<br>**起始版本：** 26.0.1<br>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
+| imageTag  | string |  否  |  是  | 设置属性字符串的图片文本标签。不传入时不设置文本标签。<br>**起始版本：** 26.1.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。 |
 
 ## CustomSpan
 
@@ -3567,4 +3570,81 @@ struct StyledStringResizablePage {
 ```
 
 ![imageAttachmentResizable](figures/styledstring-resizable.png)
+
+### 示例23（获取图片文本标签）
+
+该示例通过[ImageAttachment](#imageattachment)的imageTag属性为表情图片设置图片文本标签，使用[getStyles](#getstyles)获取属性字符串中的图片样式。随后从图片样式中读取图片文本标签，将图片转义为“标签”形式的纯文本内容。
+
+从API版本26.1.0开始，[ImageAttachment](#imageattachment)、[ImageAttachmentInterface](#imageattachmentinterface对象说明)和[ResourceImageAttachmentOptions](#resourceimageattachmentoptions15)新增imageTag属性。
+
+```ts
+// xxx.ets
+import { LengthMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct StyledStringImageTagDemo {
+  @State tagResult: string = '点击按钮获取图片文本标签';
+  plainText: string = '图片标签设置';
+  mutableStr: MutableStyledString = new MutableStyledString(this.plainText);
+  controller: TextController = new TextController();
+
+  aboutToAppear(): void {
+    // $r('app.media.startIcon')为统一占位资源，可替换为开发者所需的表情图片资源。
+    this.mutableStr.appendStyledString(new MutableStyledString(new ImageAttachment({
+      resourceValue: $r('app.media.startIcon'),
+      imageTag: '【微笑】',
+      size: { width: 30, height: 30 },
+      layoutStyle: { margin: LengthMetrics.vp(10) }
+    })));
+    this.mutableStr.appendStyledString(new MutableStyledString(new ImageAttachment({
+      resourceValue: $r('app.media.startIcon'),
+      imageTag: '【哭泣】',
+      size: { width: 30, height: 30 },
+      layoutStyle: { margin: LengthMetrics.vp(10) }
+    })));
+    this.mutableStr.appendStyledString(new MutableStyledString(new ImageAttachment({
+      resourceValue: $r('app.media.startIcon'),
+      imageTag: '【捂脸】',
+      size: { width: 30, height: 30 },
+      layoutStyle: { margin: LengthMetrics.vp(10) }
+    })));
+    this.controller.setStyledString(this.mutableStr);
+  }
+
+  build() {
+    Column() {
+      // 展示图片转义后的纯文本内容
+      Text(this.tagResult)
+        .fontSize(18)
+        .fontWeight(FontWeight.Bold)
+        .padding(10)
+      // 展示纯文本加三个表情图片
+      Text(undefined, { controller: this.controller })
+        .fontSize(18)
+        .margin(10)
+
+      Button('getImageTag')
+        .margin(10)
+        .onClick(() => {
+          // 获取图片文本标签
+          let imageStyles = this.mutableStr.getStyles(0, this.mutableStr.length, StyledStringKey.IMAGE);
+          let tags = '';
+          for (let i = 0; i < imageStyles.length; i++) {
+            let attachment = imageStyles[i].styledValue as ImageAttachment;
+            if (attachment.imageTag !== undefined) {
+              tags += attachment.imageTag;
+            }
+          }
+          this.tagResult = this.plainText + tags;
+        })
+    }
+    .justifyContent(FlexAlign.Center)
+    .width('100%')
+    .height('70%')
+  }
+}
+```
+
+![imageAttachmentImageTag](figures/styledStringImageTag.gif)
 

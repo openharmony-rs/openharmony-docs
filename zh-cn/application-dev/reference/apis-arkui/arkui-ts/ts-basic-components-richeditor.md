@@ -1205,17 +1205,16 @@ RichEditorSymbolSpanStyle和RichEditorSymbolSpanStyleResult中fontWeight的转�
 
 后端返回的图片信息。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称               | 类型                                                                   | 只读 | 可选  | 说明               |
 |------------------|-------------------------------------------------------------------|-----|-------|-----------|
-| spanPosition     | [RichEditorSpanPosition](#richeditorspanposition)                 | 否 | 否   | Span位置。|
-| valuePixelMap    | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)                    | 否 | 是   | 图片内容。|
-| valueResourceStr | [ResourceStr](ts-types.md#resourcestr)                            | 否 | 是   | 图片资源id。|
-| imageStyle       | [RichEditorImageSpanStyleResult](#richeditorimagespanstyleresult) | 否 | 否 | 图片样式。|
-| offsetInSpan     | [number, number] | 否 | 否 | Span里图片的起始和结束位置，取值范围为[起始位置, 结束位置)，结束位置对应的内容不包含在内。|
+| spanPosition     | [RichEditorSpanPosition](#richeditorspanposition)                 | 否 | 否   | Span位置。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| valuePixelMap    | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)                    | 否 | 是   | 图片内容。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| valueResourceStr | [ResourceStr](ts-types.md#resourcestr)                            | 否 | 是   | 图片资源id。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| imageStyle       | [RichEditorImageSpanStyleResult](#richeditorimagespanstyleresult) | 否 | 否 | 图片样式。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| offsetInSpan     | [number, number] | 否 | 否 | Span里图片的起始和结束位置，取值范围为[起始位置, 结束位置)，结束位置对应的内容不包含在内。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| imageTag     | string | 否 | 是 | 图片文本标签。<br>**起始版本：** 26.1.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。|
 
 ## RichEditorImageSpanStyleResult
 
@@ -2195,6 +2194,7 @@ SymbolSpan样式选项。
 | imageStyle            | [RichEditorImageSpanStyle](#richeditorimagespanstyle) | 否 | 是    | 图片样式信息。当需要自定义图片的大小、垂直对齐方式、缩放类型等样式时传入此参数；省略时，使用系统默认图片样式。     <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | gesture<sup>11+</sup> | [RichEditorGesture](#richeditorgesture11) | 否 | 是    | 行为触发回调。省略时，仅使用系统默认行为。      <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | onHover<sup>14+</sup> | [OnHoverCallback](#onhovercallback14) | 否 | 是    | 鼠标悬停触发回调。省略时，不执行鼠标悬停回调行为。     <br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
+| imageTag | string | 否 | 是    | 图片文本标签。省略时，不设置图片文本标签。<br>**起始版本：** 26.1.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。 |
 
 ## RichEditorImageSpanStyle
 
@@ -7309,3 +7309,107 @@ struct RichEditorBuilderSpanPage {
 ```
 
 ![builderSpanInfoDemo](figures/richeditor-builderspan-info.gif)
+
+### 示例46（获取图片文本标签）
+
+该示例通过[addImageSpan](#addimagespan)插入带[imageTag](#richeditorimagespanoptions)图片文本标签的表情图片，使用[getSelection](#getselection11)获取选中的图片Span并读取其图片文本标签。
+
+从API版本26.1.0开始，[RichEditorImageSpanOptions](#richeditorimagespanoptions)和[RichEditorImageSpanResult](#richeditorimagespanresult)新增imageTag属性。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct RichEditorImageTagDemo {
+  controller: RichEditorController = new RichEditorController();
+  options: RichEditorOptions = { controller: this.controller };
+  textSpanOptions: RichEditorTextSpanOptions = { style: { fontSize: 20 } };
+  exampleText: string = 'RichEditor组件';
+  @State tagResult: string = '选中图片后点击按钮获取文本标签';
+
+  build() {
+    Column() {
+      Text(this.tagResult)
+        .fontSize(18)
+        .fontWeight(FontWeight.Bold)
+        .margin({ bottom: 10 })
+
+      RichEditor(this.options)
+        .onReady(() => {
+          this.controller.addTextSpan(this.exampleText, this.textSpanOptions);
+        })
+        .width('80%')
+        .height('15%')
+        .margin(10)
+        .borderWidth(1)
+        .borderColor(Color.Blue)
+
+      Row({ space: 8 }) {
+        Button('微笑表情')
+          .onClick(() => {
+            // $r('app.media.startIcon')为统一占位资源，可替换为开发者所需的表情图片资源。
+            this.controller.addImageSpan($r('app.media.startIcon'), {
+              imageTag: '【微笑】',
+              imageStyle: {
+                size: ['30vp', '30vp'],
+                layoutStyle: { margin: 5 }
+              }
+            });
+          })
+        Button('哭泣表情')
+          .onClick(() => {
+            this.controller.addImageSpan($r('app.media.startIcon'), {
+              imageTag: '【哭泣】',
+              imageStyle: {
+                size: ['30vp', '30vp'],
+                layoutStyle: { margin: 5 }
+              }
+            });
+          })
+        Button('捂脸表情')
+          .onClick(() => {
+            this.controller.addImageSpan($r('app.media.startIcon'), {
+              imageTag: '【捂脸】',
+              imageStyle: {
+                size: ['30vp', '30vp'],
+                layoutStyle: { margin: 5 }
+              }
+            });
+          })
+      }
+      .margin(10)
+
+      Row({ space: 8 }) {
+        Button('选中图片')
+          .onClick(() => {
+            this.controller.setSelection(12, 15, { menuPolicy: MenuPolicy.HIDE });
+          })
+        Button('获取选中图片文本标签')
+          .onClick(() => {
+            let selection = this.controller.getSelection();
+            if (selection === undefined || selection.spans.length === 0) {
+              this.tagResult = '未选中任何内容';
+              return;
+            }
+            let tags: string = '';
+            selection.spans.forEach(item => {
+              if (typeof (item as RichEditorImageSpanResult)['imageStyle'] !== 'undefined') {
+                let imageSpan = item as RichEditorImageSpanResult;
+                if (imageSpan.imageTag !== undefined) {
+                  tags += imageSpan.imageTag;
+                }
+              }
+            });
+            this.tagResult = tags === '' ? '选中的内容不含图片标签' : tags;
+          })
+      }
+      .margin(10)
+    }
+    .justifyContent(FlexAlign.Center)
+    .width('100%')
+    .height('70%')
+  }
+}
+```
+
+![RichEditorImageTagDemo](figures/richeditor-imagetag.gif)
