@@ -1372,7 +1372,7 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 | fontFamily | string | 否 | 是 | 字体家族，可取任意字符串，默认为空字符串。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 14<br>**ArkTS-Sta起始版本：** 23 |
 | fontSubfamily | string | 否 | 是 | 子字体家族，可取任意字符串，默认为空字符串。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 14<br>**ArkTS-Sta起始版本：** 23 |
 | weight | [FontWeight](#fontweight) | 否 | 是 | 字体字重，默认值为0。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 14<br>**ArkTS-Sta起始版本：** 23 |
-| width | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 字体宽度，取值范围1-9整数，默认值为0。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 14<br>**ArkTS-Sta起始版本：** 23 |
+| width | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 字体宽度，取值范围1-9整数，默认值为0，0表示未指定字体宽度。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 14<br>**ArkTS-Sta起始版本：** 23 |
 | italic | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 是否是斜体字体，0表示非斜体，1表示斜体，默认值为0。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 14<br>**ArkTS-Sta起始版本：** 23 |
 | monoSpace | boolean | 否 | 是 | 是否是等宽字体，true表示等宽，false表示非等宽，默认值为false。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 14<br>**ArkTS-Sta起始版本：** 23 |
 | symbolic | boolean | 否 | 是 | 是否支持符号，true表示支持，false表示不支持，默认值为false。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 14<br>**ArkTS-Sta起始版本：** 23 |
@@ -2962,7 +2962,7 @@ ArkTS-Dyn: getAlphabeticBaseline(): number
 
 ArkTS-Sta: getAlphabeticBaseline(): double
 
-获取拉丁字母基线位置。
+获取拉丁字母的基线位置。
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
@@ -2976,7 +2976,7 @@ ArkTS-Sta: getAlphabeticBaseline(): double
 
 | 类型   | 说明                |
 | ------ | ------------------ |
-| ArkTS-Dyn: number<br>ArkTS-Sta: double | 拉丁字母下的基线位置，浮点数，单位为物理像素px。|
+| ArkTS-Dyn: number<br>ArkTS-Sta: double | 拉丁字母的基线位置，浮点数，单位为物理像素px。|
 
 **示例：**
 
@@ -2990,7 +2990,7 @@ ArkTS-Dyn: getIdeographicBaseline(): number
 
 ArkTS-Sta: getIdeographicBaseline(): double
 
-获取表意字（如CJK（中文，日文，韩文））下的基线位置。
+获取表意字（如CJK（中文，日文，韩文））的基线位置。
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
@@ -3004,7 +3004,7 @@ ArkTS-Sta: getIdeographicBaseline(): double
 
 | 类型   | 说明                  |
 | ------ | -------------------- |
-| ArkTS-Dyn: number<br>ArkTS-Sta: double | 表意字下的基线位置，浮点数，单位为物理像素px。|
+| ArkTS-Dyn: number<br>ArkTS-Sta: double | 表意字的基线位置，浮点数，单位为物理像素px。|
 
 **示例：**
 
