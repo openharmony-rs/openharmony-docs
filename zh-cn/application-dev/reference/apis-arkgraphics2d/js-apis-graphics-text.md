@@ -923,7 +923,7 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 | decoration    | [Decoration](#decoration)                            | 否 | 是 | 装饰线设置，默认不使用装饰线。             |
 | color         | [common2D.Color](js-apis-graphics-common2D.md#color) | 否 | 是 | 文字颜色，默认为白色。                         |
 | fontWeight    | [FontWeight](#fontweight)                            | 否 | 是 | 字重，默认为W400。 在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，仅系统字体中的可变字体支持字重调节；从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，系统字体与三方注册字体中的可变字体均支持字重调节。非可变字体设置字重值小于semi-bold（即W600）时字体粗细无变化，设置字重值大于等于semi-bold（即W600）时可能会触发伪加粗效果。                         |
-| fontWidth<sup>21+</sup>     | [FontWidth](#fontwidth)                              | 否 | 是 | 字体宽度，默认为NORMAL。                          |
+| fontWidth<sup>21+</sup>     | [FontWidth](#fontwidth)                              | 否 | 是 | 字体宽度，默认为NORMAL。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。                          |
 | fontStyle     | [FontStyle](#fontstyle)                              | 否 | 是 | 字体样式，默认为常规样式。                          |
 | baseline      | [TextBaseline](#textbaseline)                        | 否 | 是 | 文本基线类型，默认为ALPHABETIC。               |
 | fontFamilies  | Array\<string>                                       | 否 | 是 | 字体家族名称列表，默认为空，匹配系统字体。使用自定义字体时，需将加载字体时指定的名称填入此列表中。当与fontTypefaces同时设置时，fontTypefaces优先级更高，fontFamilies不生效。                    |
@@ -2553,7 +2553,7 @@ struct Index {
         .onClick(() => {
           let glyphRange: text.Range = { start: 0, end: 5 };
           let encoding: drawing.TextEncoding = drawing.TextEncoding.TEXT_ENCODING_UTF8;
-          let textData = "Heน้ำl👨‍👩‍👧lo1️⃣World";
+          let textData = "Heน้ำllo1️⃣World";
           let myTextStyle: text.TextStyle = {
             color: { alpha: 255, red: 255, green: 0, blue: 0 },
             fontSize: 33,
@@ -2621,7 +2621,7 @@ struct Index {
         .onClick(() => {
           let characterRange: text.Range = { start: 0, end: 5 };
           let encoding: drawing.TextEncoding = drawing.TextEncoding.TEXT_ENCODING_UTF8;
-          let textData = "Heน้ำl👨‍👩‍👧lo1️⃣World";
+          let textData = "Heน้ำllo1️⃣World";
           let myTextStyle: text.TextStyle = {
             color: { alpha: 255, red: 255, green: 0, blue: 0 },
             fontSize: 33,
@@ -2689,7 +2689,7 @@ struct Index {
       Button("get character position")
         .onClick(() => {
           let encoding: drawing.TextEncoding = drawing.TextEncoding.TEXT_ENCODING_UTF8;
-          let textData = "Heน้ำl👨‍👩‍👧lo1️⃣World";
+          let textData = "Heน้ำllo1️⃣World";
           let myTextStyle: text.TextStyle = {
             color: { alpha: 255, red: 255, green: 0, blue: 0 },
             fontSize: 33,
