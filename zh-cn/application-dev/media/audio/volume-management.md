@@ -302,7 +302,7 @@ let appVolumeChangeCallback = (volumeEvent: audio.VolumeEvent) => {
 ``` TypeScript
 import { audio } from '@kit.AudioKit';
 
-let uid: number = 20010041; // 应用ID。
+let uid: number = 20010041; // 应用UID。
 let audioManager = audio.getAudioManager();
 let audioVolumeManager = audioManager.getVolumeManager();
 
