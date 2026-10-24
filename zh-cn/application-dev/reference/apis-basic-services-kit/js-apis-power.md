@@ -33,7 +33,7 @@ isActive(): boolean
 
 | 类型                | 说明                                   |
 | ------------------- | -------------------------------------- |
-| boolean | 活动状态返回true，非活动状态返回false。 |
+| boolean | 活动状态返回true，非活动状态或电源服务不可用时返回false。 |
 
 **示例：**
 
@@ -73,7 +73,7 @@ power.rebootDevice('reboot_test');
 
 getPowerMode(): DevicePowerMode
 
-获取当前设备的电源模式。不同电源模式对应不同的设备行为策略，开发者可根据返回的模式值调整应用行为以适配当前模式。各模式定义及说明请参见[DevicePowerMode](#devicepowermode9)。
+获取当前设备的电源模式。不同电源模式对应不同的设备行为策略，开发者可根据返回的模式值调整应用行为以适配当前模式。各模式定义及说明请参见[DevicePowerMode](#devicepowermode9)。当电源服务不可用时返回0，该值不在[DevicePowerMode](#devicepowermode9)枚举定义范围内。开发者应检查返回值是否为有效枚举值（600及以上），若返回0则表示电源服务可能不可用。
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
