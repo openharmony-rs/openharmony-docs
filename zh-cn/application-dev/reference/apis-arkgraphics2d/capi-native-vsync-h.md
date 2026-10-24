@@ -3,7 +3,7 @@
 <!--Subsystem: Graphics-->
 <!--Owner: @opasser-->
 <!--Designer: @opasser-->
-<!--Tester: @zhouhuan31-->
+<!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
 ## 概述

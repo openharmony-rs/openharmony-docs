@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍使用Node-API扩展接口在异步线程中运行和停止事件循环，通过napi_run_event_loop和napi_stop_event_loop管理事件循环，支持nowait和default两种模式。"
+keywords: [Node-API, 事件循环, napi_run_event_loop, napi_stop_event_loop, 异步线程, 事件队列, nowait, default模式]
+doctype: guide
+status: active
+---
+
 # 使用扩展的Node-API接口在异步线程中运行和停止事件循环
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->

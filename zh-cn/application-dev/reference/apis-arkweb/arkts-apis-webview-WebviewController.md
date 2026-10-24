@@ -2713,12 +2713,13 @@ setZoomFactor(zoomFactor: number): void
 
 > **说明：**
 >
-> - `zoomFactor`仅作用于当前Web组件实例。同一Web组件通过同一Controller加载另一网页后，已设置的页面缩放倍率会自动应用到新网页；新建Web组件不会继承该倍率。
+> - 页面缩放倍率按网页的主机名（Host）管理。在同一浏览数据上下文中，设置成功后，已打开的同Host Web组件会同步缩放，后续打开的同Host网页也会使用已保存的倍率；不同Host互不影响。当前Web组件导航至其他Host时，使用目标Host的页面缩放倍率，而非继续沿用原Host的倍率。
+> - 如需让不同Host的网页使用相同倍率，可在网页开始加载时通过[onPageBegin](./arkts-basic-components-web-events.md#onpagebegin)针对当前Web组件再次调用本接口；原Host的倍率不会自动应用到目标Host。
 > - [zoomControlAccess](./arkts-basic-components-web-attributes.md#zoomcontrolaccess22)是Web组件的用户缩放开关：设置为`true`时，用户可通过Ctrl+'-/+'或Ctrl+鼠标滚轮/触摸板调整页面缩放倍率；设置为`false`时，上述用户操作无效。该开关不限制本接口的程序化设置。
 > - 需要按指定倍率调整页面布局时，建议使用本接口；[zoom](#zoom)、[zoomIn](#zoomin)、[zoomOut](#zoomout)适用于视觉缩放，[textZoomRatio](./arkts-basic-components-web-attributes.md#textzoomratio9)适用于文字缩放，三者相互独立。
 > - 本接口需在Controller关联Web组件后调用，无需等待网页加载完成。若浏览器实例尚未创建，设置的倍率会在缩放控制器可用后应用。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2739,6 +2740,8 @@ setZoomFactor(zoomFactor: number): void
 | 17100001 | Init error. The WebviewController must be associated with a Web component. |
 
 **示例：**
+
+以下示例通过按钮设置当前网页的页面缩放倍率。
 
 ```ts
 // xxx.ets
@@ -2761,6 +2764,46 @@ struct WebComponent {
 }
 ```
 
+以下示例将目标倍率应用于首次加载的网页，并在同一Web组件切换到不同Host时，于页面开始加载阶段再次设置该倍率。
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebZoomAcrossHosts {
+  private controller: webview.WebviewController = new webview.WebviewController();
+  private controllerAttached: boolean = false;
+  private targetFactor: number = 1.5;
+
+  private applyTargetFactor(): void {
+    if (this.controllerAttached) {
+      this.controller.setZoomFactor(this.targetFactor);
+    }
+  }
+
+  build() {
+    Column() {
+      Row() {
+        Button('网页A').onClick(() => this.controller.loadUrl('https://www.example.com'))
+        Button('网页B').onClick(() => this.controller.loadUrl('https://www.example.org'))
+      }
+
+      Web({ src: 'https://www.example.com', controller: this.controller })
+        .onControllerAttached(() => {
+          this.controllerAttached = true;
+          this.applyTargetFactor();
+        })
+        .onPageBegin(() => {
+          this.applyTargetFactor();
+        })
+        .height('80%')
+    }
+  }
+}
+```
+
 ## getZoomFactor
 
 getZoomFactor(): number
@@ -2769,9 +2812,10 @@ getZoomFactor(): number
 
 > **说明：**
 >
+> - 本接口返回当前Web组件实际生效的页面缩放倍率。该倍率可能由本Controller通过[setZoomFactor](#setzoomfactor)设置，也可能在`zoomControlAccess`开启时由用户通过Ctrl+'-/+'或Ctrl+鼠标滚轮/触摸板调整，还可能受其他同Host Web组件的缩放操作影响，因此不一定等于本Controller上次设置的值。
 > - 浏览器实例尚未创建时，`getZoomFactor`返回默认值`1.0`，不会返回尚待应用的设置值。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "基于业界标准与ArkTS语言特点提供编码规范，覆盖命名、格式与编程实践的规则与建议，帮助开发者提升代码的规范性、安全性和性能。"
+keywords: [ArkTS, 编程规范, 代码风格, 命名规范, 代码格式, 编程实践, 代码安全, 代码可维护性]
+doctype: guide
+status: active
+---
+
 # ArkTS编程规范
 
 <!--Kit: ArkTS-->

@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "讲解使用JSVM-API实现JS与C/C++交互的开发流程：创建NDK工程、链接libjsvm.so、注册Native方法并由ArkTS侧导入so库调用。"
+keywords: [JSVM-API, 开发流程, libjsvm.so, NDK工程, Native模块注册, CMake, ArkTS调用, 跨语言交互]
+doctype: guide
+status: active
+---
+
 # 使用JSVM-API实现JS与C/C++语言交互开发流程
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
@@ -12,7 +20,7 @@
 
 - Native侧：.cpp文件，实现模块的注册。需要提供注册lib库的名称，并在注册回调方法中定义接口的映射关系，即Native方法及对应的JS/ArkTS接口名称等。
 
-此处以在ArkTS/JS侧和Native侧实现RunTest()接口实现跨语言交互为例，展示使用JSVM-API进行跨语言交互的流程。
+此处以在ArkTS/JS侧和Native侧实现runTest()接口实现跨语言交互为例，展示使用JSVM-API进行跨语言交互的流程。
 
 ## 创建Native C++工程
 
@@ -60,7 +68,7 @@
   target_link_libraries(entry PUBLIC libace_napi.z.so libjsvm.so libhilog_ndk.z.so)
   ```
 
-- 新建entry/src/main/cpp/hello.cpp，实现Native侧的runTest接口。具体代码如下：
+- 新建entry/src/main/cpp/hello.cpp，实现Native侧的RunTest()接口。具体代码如下：
 
   <!-- @[oh_jsvm_process](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmProcess/entry/src/main/cpp/hello.cpp) -->
   

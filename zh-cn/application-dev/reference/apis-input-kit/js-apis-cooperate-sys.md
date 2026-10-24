@@ -659,7 +659,7 @@ struct Index {
 
 > **说明：**
 >
->从 API version 9开始支持，从API version 23开始废弃。建议使用[CooperateMessage](../apis-distributedservice-kit/js-apis-devicestatus-cooperate-sys.md#cooperatemessage11)替代。
+>从 API version 9开始支持，从API version 23开始废弃。建议使用[CooperateState](../apis-distributedservice-kit/js-apis-devicestatus-cooperate-sys.md#cooperatestate11)替代。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Cooperator
 

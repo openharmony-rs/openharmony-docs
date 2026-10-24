@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍Worker的运作机制与基本用法：Worker与宿主线程内存隔离、通过消息传递通信，涵盖Worker线程文件目录与Stage、FA模型文件路径规则、生命周期管理及多级Worker推荐用法，指导正确创建和使用Worker。"
+keywords: [Worker, 运作机制, 宿主线程, 消息传递, 生命周期, 多级Worker, 文件路径规则, 线程创建, 多线程, Stage模型]
+doctype: guide
+status: active
+---
+
 # Worker简介
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
@@ -315,6 +323,12 @@ const workerFA3: worker.ThreadWorker = new worker.ThreadWorker('ThreadFile/worke
                 // 发送消息给Worker线程
                 workerInstance.postMessage('1');
                 // ...
+      
+                // 延迟1秒等待其他步骤完成后手动销毁Worker线程
+                // 此处延迟仅用作terminate()功能演示，实际使用时应基于Worker业务完成事件而非固定延时
+                setTimeout(() => {
+                  workerInstance.terminate();
+                }, 1000);
               })
           }
           .height('100%')

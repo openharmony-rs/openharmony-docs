@@ -281,7 +281,7 @@ struct CompA {
 
   build() {
     Column() {
-      Text(this.a.prop2) // 当this.a.prop1的值改变, 将会刷新组件
+      Text(this.a.prop2) // 当this.a.prop2的值改变, 将会刷新组件
         .margin({ bottom: 10 })
         .fontSize(this.isRenderText()) // 如果Text组件刷新，会执行isRenderText方法
       Text("subProp1 : " + this.a.prop3.subProp1) // Text组件刷新时，不会观测到this.a.prop3.subProp1的值改变
@@ -732,7 +732,6 @@ this.needRenderScale.scaleX = (this.needRenderScale.scaleX + 0.6) % 1;
 class NeedRenderProperty {
   public property: number = 1;
 }
-;
 
 @Observed
 class SomeClass {

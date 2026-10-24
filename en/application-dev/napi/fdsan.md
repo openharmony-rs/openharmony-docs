@@ -67,8 +67,8 @@ uint64_t fdsan_create_owner_tag(enum fdsan_owner_type type, uint64_t tag);
 
 | Value                      | Description                                                        |
 | -------------------------- | ------------------------------------------------------------ |
-| `FDSAN_OWNER_TYPE_GENERIC_00` | Default type.    |
-| `FDSAN_OWNER_TYPE_GENERIC_FF` | Default type for invalid file descriptors.|
+| `FDSAN_OWNER_TYPE_DEFAULT` | Default type.    |
+| `FDSAN_OWNER_TYPE_MAX` | Default type for invalid file descriptors.|
 | `FDSAN_OWNER_TYPE_FILE` | Type for a file, which can be opened by using **fopen()** or **fdopen()**.|
 | `FDSAN_OWNER_TYPE_DIRECTORY` | Type for a directory, which can be opened by using **opendir** or **fdopendir**.|
 | `FDSAN_OWNER_TYPE_UNIQUE_FD` | Type for **unique_fd**. This value is reserved.|

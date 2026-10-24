@@ -732,6 +732,61 @@ NODE_TEXT_EDITOR_PUNCTUATION_OVERFLOW = 22030
 | .value[0].i32 | 是否启用行尾标点符号悬挂，0表示不启用行尾标点符号悬挂，1表示启用行尾标点符号悬挂。 |
 
 
+## NODE_TEXT_EDITOR_SHOW_UNDERLINE
+
+```c
+NODE_TEXT_EDITOR_SHOW_UNDERLINE = 22038
+```
+
+设置TextEditor组件是否显示下划线，支持属性设置、属性重置和属性获取。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.1.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .value[0].i32 | 是否显示下划线，0表示不显示，1表示显示。默认值为0。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .value[0].i32 | 是否显示下划线。1表示显示，0表示不显示。 |
+
+## NODE_TEXT_EDITOR_UNDERLINE_COLOR
+
+```c
+NODE_TEXT_EDITOR_UNDERLINE_COLOR = 22039
+```
+
+开启下划线时，支持配置下划线颜色，支持属性设置、属性重置和属性获取。<br>
+需先设置NODE_TEXT_EDITOR_SHOW_UNDERLINE属性为1以开启下划线后，本属性设置才生效。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.1.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .value[0].u32 | typing下划线颜色，表示键入时的下划线颜色，0xARGB类型。 |
+| .value[1].u32 | normal下划线颜色，表示非特殊状态时下划线颜色，0xARGB类型。 |
+| .value[2].u32 | error下划线颜色，表示错误时下划线颜色，0xARGB类型。 |
+| .value[3].u32 | disable下划线颜色，表示禁用时下划线颜色，0xARGB类型。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .value[0].u32 | typing下划线颜色，表示键入时的下划线颜色，0xARGB类型。 |
+| .value[1].u32 | normal下划线颜色，表示非特殊状态时下划线颜色，0xARGB类型。 |
+| .value[2].u32 | error下划线颜色，表示错误时下划线颜色，0xARGB类型。 |
+| .value[3].u32 | disable下划线颜色，表示禁用时下划线颜色，0xARGB类型。 |
+
 ## NODE_TEXT_EDITOR_CARET_STYLE
 
 ```c
@@ -741,7 +796,7 @@ NODE_TEXT_EDITOR_CARET_STYLE = 22040
 设置TextEditor组件的光标宽度，支持属性设置、属性重置和属性获取。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 
 **参数：**
@@ -766,7 +821,7 @@ NODE_TEXT_EDITOR_SELECT_ALL = 22041
 仅在首次获焦并完成布局阶段时触发全选。窗口恢复获焦时不执行全选。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 
 **参数：**
@@ -791,7 +846,7 @@ NODE_TEXT_EDITOR_BLUR_ON_SUBMIT = 22042
 仅在EnterKeyType为NEW_LINE时按Enter键生效：设置为1时关闭键盘并失焦，不插入换行；设置为0时插入换行，不失焦。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 
 **参数：**
@@ -815,7 +870,7 @@ NODE_TEXT_EDITOR_CONTENT_RECT = 22043
 获取TextEditor组件编辑内容区域的位置和大小，仅支持属性获取。<br>
 作为属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 
 **返回：**
@@ -837,7 +892,7 @@ NODE_TEXT_EDITOR_SELECTION_MENU_HIDDEN = 22044
 设置为1时，长按、双击或右击时不弹出选择菜单，但不影响选区手柄。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 
 **参数：**
@@ -862,7 +917,7 @@ NODE_TEXT_EDITOR_ENABLE_SKIP_PREVIEW_LONG_PRESS = 22045
 设置为1时，长按后直接进入编辑态（键盘弹出、光标闪烁），跳过预览态。双击行为不受影响。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 
 **参数：**
@@ -886,7 +941,7 @@ NODE_TEXT_EDITOR_CANCEL_BUTTON = 22046
 设置TextEditor组件的清除按钮样式属性，支持属性设置、属性重置和属性获取。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 
 **参数：**
@@ -916,7 +971,7 @@ NODE_TEXT_EDITOR_SHOW_COUNTER = 22047
 设置TextEditor组件输入的字符数超过阈值时是否显示计数器并设置计数器样式，支持属性设置，属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **参数：**
 
@@ -935,3 +990,31 @@ NODE_TEXT_EDITOR_SHOW_COUNTER = 22047
 | .value[1].f32 | 可输入字符数占最大字符限制的百分比值，超过此值时显示计数器，取值范围[1, 100]。 |
 | .value[2].i32 | 输入字符超出限制时高亮边框。0表示不高亮边框，1表示高亮边框。 |
 | .object | 计数器配置，配置属性为文本输入框未达到最大字符数时计数器的颜色以及超出最大字符数时计数器的颜色。参数类型为[ArkUI_ShowCounterConfig](capi-arkui-nativemodule-arkui-textshowcounterconfig.md)。 |
+
+## NODE_TEXT_EDITOR_INPUT_FILTER
+
+```c
+NODE_TEXT_EDITOR_INPUT_FILTER = 22048
+```
+
+设置TextEditor组件的输入过滤正则表达式，支持属性设置、属性重置和属性获取。<br>
+该属性仅在StyledString模式下生效（包含单行和多行模式），即设置了[NODE_TEXT_EDITOR_STYLED_STRING_CONTROLLER](#node_text_editor_styled_string_controller)后的模式。<br>
+当同时设置该属性和[NODE_TEXT_EDITOR_MAX_LENGTH](#node_text_editor_max_length)时，过滤优先级为：先NODE_TEXT_EDITOR_INPUT_FILTER过滤，再NODE_TEXT_EDITOR_MAX_LENGTH截断。<br>
+正则表达式变更时，已有内容会被静默重新过滤（与TextInput行为一致）。<br>
+非字符内容（ImageSpan/SymbolSpan/BuilderSpan）在正则匹配时被视为\uFFFC字符。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.1.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .string | 正则表达式，用于过滤用户输入内容。匹配表达式的输入允许显示，不匹配的输入将被过滤。当需要限制用户只能输入特定格式的字符时设置此属性，例如"[a-zA-Z]"表示只允许字母，"[0-9]"表示只允许数字。空字符串等效于不设置过滤。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .string | 当前设置的输入过滤正则表达式字符串。 |

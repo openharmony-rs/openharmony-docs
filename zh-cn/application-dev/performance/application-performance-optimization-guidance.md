@@ -115,7 +115,7 @@ export struct PageOnePositive {
 
 问题：在aboutToAppear生命周期函数中，运行了业务数据解析和处理等耗时操作，影响了上一页面点击跳转该页面的响应时延。
 
-可以把耗时操作的执行从同步执行改为异步或者延后执行，[提升应用冷启动速度](improve-application-cold-start-speed.md)，比如使用setTimeOut执行耗时操作，示例如下：
+可以把耗时操作的执行从同步执行改为异步或者延后执行，[提升应用冷启动速度](improve-application-cold-start-speed.md)，比如使用setTimeout执行耗时操作，示例如下：
 
 ```typescript
 import { hilog, hiTraceMeter } from '@kit.PerformanceAnalysisKit';

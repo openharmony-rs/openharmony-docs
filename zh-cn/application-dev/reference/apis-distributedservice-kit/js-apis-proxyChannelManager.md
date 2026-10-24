@@ -214,7 +214,7 @@ sendData(channelId:&nbsp;number, data:&nbsp;ArrayBuffer):&nbsp;Promise&lt;void&g
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| &nbsp;Promise&lt;void&gt; | 无返回值的Promise对象。数据发送成功时resolve，发送失败时reject并返回错误信息。 |
+| &nbsp;Promise&lt;void&gt; | 无返回值的Promise对象。 |
 
 **错误码：**
 

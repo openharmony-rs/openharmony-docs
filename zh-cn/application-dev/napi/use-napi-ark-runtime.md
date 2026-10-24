@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍使用Node-API接口创建和销毁ArkTS运行时环境，通过napi_create_ark_runtime在新线程中创建独立运行时并加载ArkTS模块，适用于需要多运行时环境的场景。"
+keywords: [Node-API, ArkTS运行时, napi_create_ark_runtime, napi_destroy_ark_runtime, 运行时环境, 线程创建, 模块加载]
+doctype: guide
+status: active
+---
+
 # 使用Node-API接口创建ArkTS运行时环境
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->

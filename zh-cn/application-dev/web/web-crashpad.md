@@ -12,14 +12,14 @@ Web组件支持使用Crashpad记录进程崩溃信息。Crashpad是Chromium内�
 
 1. 在应用使用Web组件导致的进程崩溃出现后，Crashpad收到信号，对应Hilog日志（节选部分）如下
 
-  ```c
-  pid-30069             I     [crashpad_ohos.cc:254] crashpad SandboxedHandler::HandleCrash, received signo = 6
-  pid-30069             I     [crashpad_ohos.cc:182] crashpad SandboxedHandler::HandleCrashNonFatal, connect to handler successfully, need to request dump
-  ...
-  arkweb_cr..._handler  I     [crash_report_database.cc:91] crash dmp path : /data/storage/el2/log/crashpad/new/xxx.dmp
-  ```
+   ```c
+   pid-30069             I     [crashpad_ohos.cc:254] crashpad SandboxedHandler::HandleCrash, received signo = 6
+   pid-30069             I     [crashpad_ohos.cc:182] crashpad SandboxedHandler::HandleCrashNonFatal, connect to handler successfully, need to request dump
+   ...
+   arkweb_cr..._handler  I     [crash_report_database.cc:91] crash dmp path : /data/storage/el2/log/crashpad/new/xxx.dmp
+   ```
 
-这时Crashpad开始请求dump，成功之后，会在应用主进程沙箱目录下产生对应的dmp文件，对应的沙箱路径如下：
+   这时Crashpad开始请求dump，成功之后，会在应用主进程沙箱目录下产生对应的dmp文件，对应的沙箱路径如下：
 
    ```c
    /data/storage/el2/log/crashpad
@@ -27,49 +27,49 @@ Web组件支持使用Crashpad记录进程崩溃信息。Crashpad是Chromium内�
 
 2. 参考<!--RP1-->Native访问应用沙箱<!--RP1End-->实现访问应用沙箱dmp文件；也可将存放dmp文件的沙箱路径的文件复制到可以查看的路径。示例如下
 
-<!-- @[web_get_dmp_files](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebGetDmpFiles/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[web_get_dmp_files](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebGetDmpFiles/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   import { fileIo as fs } from '@kit.CoreFileKit'
+   import { BusinessError } from '@kit.BasicServicesKit'
+   import { webview } from '@kit.ArkWeb'
+   
+   @Entry
+   @Component
+   struct Index {
+     controller: webview.WebviewController = new webview.WebviewController();
+     uiContext: UIContext = this.getUIContext();
+     build() {
+       RelativeContainer() {
+         Web({src:'chrome://memory-exhaust/', controller:this.controller})
+         Button('file')
+           .onClick(() => {
+             let pathDir = this.uiContext.getHostContext()?.filesDir;
+             console.info("pathdir=" + pathDir);
+             fs.copyDir("/data/storage/el2/log/crashpad/pending/", pathDir, 0)
+               .then(()=>{
+                 console.info("copy files success");
+               })
+               .catch((err: BusinessError)=>{
+                 console.error("copy failed with error message: " + err.message + ", error code: " + err.code);
+               })
+           })
+       }
+       .height('100%')
+       .width('100%')
+     }
+   }
+   ```
 
-``` TypeScript
-import { fileIo as fs } from '@kit.CoreFileKit'
-import { BusinessError } from '@kit.BasicServicesKit'
-import { webview } from '@kit.ArkWeb'
+   以上示例将所有的dmp文件都复制到可查看的沙箱路径中，也可以搜索Hilog日志“.dmp”得到dmp文件名，这样就可以将某个dmp文件复制到另一个沙箱路径下了，具体的路径为
 
-@Entry
-@Component
-struct Index {
-  controller: webview.WebviewController = new webview.WebviewController();
-  uiContext: UIContext = this.getUIContext();
-  build() {
-    RelativeContainer() {
-      Web({src:'chrome://memory-exhaust/', controller:this.controller})
-      Button('file')
-        .onClick(() => {
-          let pathDir = this.uiContext.getHostContext()?.filesDir;
-          console.info("pathdir=" + pathDir);
-          fs.copyDir("/data/storage/el2/log/crashpad/pending/", pathDir, 0)
-            .then(()=>{
-              console.info("copy files success");
-            })
-            .catch((err: BusinessError)=>{
-              console.error("copy failed with error message: " + err.message + ", error code: " + err.code);
-            })
-        })
-    }
-    .height('100%')
-    .width('100%')
-  }
-}
-```
+   ```c
+   /data/app/el2/100/base/com.example.myapplication/haps/entry/files/
+   ```
 
-以上示例将所有的dmp文件都复制到可查看的沙箱路径中，也可以搜索Hilog日志“.dmp”得到dmp文件名，这样就可以将某个dmp文件复制到另一个沙箱路径下了，具体的路径为
+   这个路径可以利用DevEco Studio查看。
 
-  ```c
-  /data/app/el2/100/base/com.example.myapplication/haps/entry/files/
-  ```
-
-这个路径可以利用DevEco Studio查看。
-
-![image.png](figures/arkweb-visible-sandbox-path.png 'image.png')
+   ![image.png](figures/arkweb-visible-sandbox-path.png 'image.png')
 
 3. 获取dmp文件后进行解析，具体步骤如下：
 

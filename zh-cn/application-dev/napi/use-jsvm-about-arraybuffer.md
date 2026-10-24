@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍如何使用JSVM-API创建ArrayBuffer二进制缓冲区，获取底层数据指针与长度，执行Detach分离操作并判断分离状态。"
+keywords: [OH_JSVM_CreateArraybuffer, OH_JSVM_GetArraybufferInfo, OH_JSVM_DetachArraybuffer, OH_JSVM_IsArraybuffer, OH_JSVM_IsDetachedArraybuffer, ArrayBuffer, 二进制数据缓冲区, TypedArray, DataView]
+doctype: guide
+status: active
+---
+
 # 使用JSVM-API接口进行ArrayBuffer相关开发
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->

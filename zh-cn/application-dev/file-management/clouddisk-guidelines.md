@@ -23,7 +23,12 @@
 
 ## 环境准备
 
-IDE为DevEco Studio 6.1.0 Release或更新版本（下载地址：[DevEco Studio官网](https://developer.huawei.com/consumer/cn/deveco-studio/)），SDK版本为API版本21及以上。
+网盘服务底座各项能力对IDE与SDK版本的要求不同，请根据实际使用的能力选择对应的版本：
+
+- [同步根管理开发](#同步根管理开发指导)与[文件变更感知与同步状态管理开发](#文件变更感知与同步状态管理开发指导)：IDE为DevEco Studio 6.0.0 Release及以上版本，SDK为API版本21及以上。
+- [占位符文件操作开发](#占位符文件操作开发指导)与[按需水合与脱水开发](#按需水合与脱水开发指导)：IDE为DevEco Studio 26.0.0 Release及以上版本，SDK为API版本26.0.1及以上。
+
+如需使用网盘服务底座的全部能力，请使用DevEco Studio 26.0.0 Release及以上版本，SDK为API版本26.0.1及以上。IDE下载地址：[DevEco Studio官网](https://developer.huawei.com/consumer/cn/deveco-studio/)。
 
 **添加动态链接库**
 
@@ -914,7 +919,7 @@ static napi_value ConvertPlaceholderToFile(napi_env env, napi_callback_info info
        g_lastReqContextMap[syncPathKey] = copiedContext;
    
        // 手动模式：仅保存reqKey与上下文，由UI手动触发Execute。
-       if (reqHead.callbackType == CLOUD_DISK_CALLBACK_TYPE_FETCH_DATA && reqContext.fetchData) {
+       if (reqHead.callbackType == OH_CLOUD_DISK_CALLBACK_TYPE_FETCH_DATA && reqContext.fetchData) {
            LOGI("OnCallbackTableCallback: FETCH_DATA stored for manual execute, "
                 "syncFolder: %{public}s, file: %{public}s.",
                 reqHead.syncFolderPath.value, reqContext.fetchData->filePath.value);
@@ -922,7 +927,7 @@ static napi_value ConvertPlaceholderToFile(napi_env env, napi_callback_info info
    
        // 自动水合：注册回调表时若填写了"水合数据文件"，回调到达后自动读取该文件
        // 内容并分块Execute回传。g_fetchFilePath为空时不自动执行，走上方手动模式。
-       if (reqHead.callbackType == CLOUD_DISK_CALLBACK_TYPE_FETCH_DATA && reqContext.fetchData) {
+       if (reqHead.callbackType == OH_CLOUD_DISK_CALLBACK_TYPE_FETCH_DATA && reqContext.fetchData) {
            OH_CloudDisk_CallbackReqHead *heapReqHead = DeepCopyReqHead(reqHead);
            OH_CloudDisk_CallbackContext *heapContext = DeepCopyFetchContext(copiedContext);
            std::thread([heapReqHead, heapContext]() {
@@ -1064,7 +1069,7 @@ static napi_value Execute(napi_env env, napi_callback_info info)
     OH_CloudDisk_CallbackContext reqContext = {};
     BuildReqContext(reqContext, reqHead, ctx);
 
-    // 构造回调响应：FETCH_DATA / FETCH_RANGE_DATA类型需要回传文件数据
+    // 构造回调响应：FETCH_DATA类型需要回传文件数据
     OH_CloudDisk_CallbackResponse rsp = {};
     OH_CloudDisk_FetchData fetchDataRsp = {};
     BuildCallbackResponse(rsp, fetchDataRsp, reqHead, ctx);
@@ -1131,7 +1136,7 @@ static napi_value HydratePlaceholder(napi_env env, napi_callback_info info)
     // 发起水合请求（异步，结果通过回调表回调返回）
     auto ret = OH_CloudDisk_HydratePlaceholder(&syncFolderPath, &filePath,
         static_cast<OH_CloudDisk_CallbackType>(callbackType),
-        CLOUD_DISK_HYDRATE_PRIORITY_NORMAL);
+        OH_CLOUD_DISK_HYDRATE_PRIORITY_NORMAL);
     if (ret != CLOUD_DISK_OK) {
         LOGE("OH_CloudDisk_HydratePlaceholder failed, errorCode: %{public}d.", ret);
     } else {

@@ -6,14 +6,15 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-MediaAssetsChangeRequest implements [MediaChangeRequest](arkts-apis-photoAccessHelper-i.md#mediachangerequest11).
+MediaAssetsChangeRequest类实现了[MediaChangeRequest](arkts-apis-photoAccessHelper-i.md#mediachangerequest11)接口。
 
 批量媒体资产变更请求。
 
+**起始版本：** 26.0.0
+
 > **说明：**
 >
-> - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> - 本Class首批接口从API version 26.0.0开始支持。
+> 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 

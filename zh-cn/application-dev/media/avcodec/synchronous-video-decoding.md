@@ -236,7 +236,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
                    return false;
                }
                if (inFile_->eof()) {
-                   inputDone = 1;
+                   inputDone = true;
                }
                break;
            }
@@ -282,7 +282,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
                    return false;
                }
                if (info.flags & AVCODEC_BUFFER_FLAGS_EOS) {
-                   outputDone = 1;
+                   outputDone = true;
                }
                
                // 解码输出数据处理。
@@ -339,7 +339,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
 
    ```c++
    bool result = true;
-   int64_t timeoutUs = 0; // 单位：微秒（us），负值：无限等待；0：立即退出；正值：指定时间后结束后退出。
+   int64_t timeoutUs = 0; // 单位：微秒（us），负值：无限等待；0：立即退出；正值：等待指定时长后退出。
 
    while (!outputDone && result) {
        if (!inputDone) {
@@ -569,7 +569,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
                     return false;
                 }
                 if (inFile_->eof()) {
-                    inputDone = 1;
+                    inputDone = true;
                 }
                 break;
             }
@@ -620,7 +620,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
                     return false;
                 }
                 if (info.flags & AVCODEC_BUFFER_FLAGS_EOS) {
-                    outputDone = 1;
+                    outputDone = true;
                 }
                 
                 // 释放已完成处理的信息，index为对应buffer队列的下标。

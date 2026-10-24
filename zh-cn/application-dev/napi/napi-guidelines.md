@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍Node-API开发规范，涵盖参数获取、作用域管理、引用管理等编码规则，帮助开发者编写安全可靠的Node-API代码，避免内存越界和泄漏等问题。"
+keywords: [Node-API, 开发规范, 编码规则, napi_get_cb_info, 作用域管理, 引用管理, 参数校验, 内存安全]
+doctype: guide
+status: active
+---
+
 # Node-API开发规范
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
@@ -101,13 +109,13 @@ napi_create_string_utf8(env1, "bar", NAPI_AUTO_LENGTH, &string);
 // 线程2执行，在env2创建object对象，并将上述的string对象设置到object对象中
 napi_status status = napi_create_object(env2, &object);
 if (status != napi_ok) {
-    napi_throw_error(env, ...);
+    napi_throw_error(env2, ...);
     return;
 }
 
 status = napi_set_named_property(env2, object, "foo", string);
 if (status != napi_ok) {
-    napi_throw_error(env, ...);
+    napi_throw_error(env2, ...);
     return;
 }
 ```
