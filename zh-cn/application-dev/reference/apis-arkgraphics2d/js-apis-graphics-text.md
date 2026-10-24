@@ -3586,7 +3586,7 @@ struct Index {
         .onClick(() => {
           let glyphRange: text.Range = { start: 0, end: 5 };
           let encoding: drawing.TextEncoding = drawing.TextEncoding.TEXT_ENCODING_UTF8;
-          let textData = "Heน้ำl👨‍👩‍👧lo1️⃣World";
+          let textData = "Heน้ำllo1️⃣World";
           let myTextStyle: text.TextStyle = {
             color: { alpha: 255, red: 255, green: 0, blue: 0 },
             fontSize: 33,
@@ -3622,7 +3622,7 @@ struct Index {
         .onClick(() => {
           let glyphRange: text.Range = { start: 0, end: 5 };
           let encoding: drawing.TextEncoding = drawing.TextEncoding.TEXT_ENCODING_UTF8;
-          let textData = "Heน้ำl👨‍👩‍👧lo1️⃣World";
+          let textData = "Heน้ำllo1️⃣World";
           let myTextStyle: text.TextStyle = {
             color: { alpha: 255, red: 255, green: 0, blue: 0 },
             fontSize: 33,
@@ -3696,7 +3696,7 @@ struct Index {
         .onClick(() => {
           let characterRange: text.Range = { start: 0, end: 5 };
           let encoding: drawing.TextEncoding = drawing.TextEncoding.TEXT_ENCODING_UTF8;
-          let textData = "Heน้ำl👨‍👩‍👧lo1️⃣World";
+          let textData = "Heน้ำllo1️⃣World";
           let myTextStyle: text.TextStyle = {
             color: { alpha: 255, red: 255, green: 0, blue: 0 },
             fontSize: 33,
@@ -3732,7 +3732,7 @@ struct Index {
         .onClick(() => {
           let characterRange: text.Range = { start: 0, end: 5 };
           let encoding: drawing.TextEncoding = drawing.TextEncoding.TEXT_ENCODING_UTF8;
-          let textData = "Heน้ำl👨‍👩‍👧lo1️⃣World";
+          let textData = "Heน้ำllo1️⃣World";
           let myTextStyle: text.TextStyle = {
             color: { alpha: 255, red: 255, green: 0, blue: 0 },
             fontSize: 33,
@@ -3806,7 +3806,7 @@ struct Index {
       Button("get character position")
         .onClick(() => {
           let encoding: drawing.TextEncoding = drawing.TextEncoding.TEXT_ENCODING_UTF8;
-          let textData = "Heน้ำl👨‍👩‍👧lo1️⃣World";
+          let textData = "Heน้ำllo1️⃣World";
           let myTextStyle: text.TextStyle = {
             color: { alpha: 255, red: 255, green: 0, blue: 0 },
             fontSize: 33,
@@ -3843,7 +3843,7 @@ struct Index {
       Button("get character position")
         .onClick(() => {
           let encoding: drawing.TextEncoding = drawing.TextEncoding.TEXT_ENCODING_UTF8;
-          let textData = "Heน้ำl👨‍👩‍👧lo1️⃣World";
+          let textData = "Heน้ำllo1️⃣World";
           let myTextStyle: text.TextStyle = {
             color: { alpha: 255, red: 255, green: 0, blue: 0 },
             fontSize: 33,
