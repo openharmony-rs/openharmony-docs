@@ -715,7 +715,7 @@ enableEditMode(enabled: boolean | undefined)
 
 scrollSnapStrategy(strategy?: ScrollSnapAlign | ScrollSnapOffsetProvider)
 
-设置Grid的限位滚动策略，使Grid在滚动结束时按指定方式对齐item，或停在自定义的吸附位置。使用方法参考[示例23](#示例23设置滚动吸附对齐)。
+设置Grid的限位滚动策略，使Grid在滚动结束时按指定方式对齐item，或停在自定义的吸附位置。内置对齐方式参考[示例23](#示例23设置滚动吸附对齐)，自定义吸附位置参考[示例24](#示例24自定义滚动吸附位置)。
 
 包含跨行或跨列（不规则）GridItem的布局不支持本接口。
 
@@ -3681,3 +3681,95 @@ struct GridSnapExample {
 ```
 
 ![scrollSnapStrategy-grid](figures/scrollSnapStrategy-grid.gif)
+
+### 示例24（自定义滚动吸附位置）
+
+本示例通过实现[ScrollSnapOffsetProvider](ts-container-scrollable-common.md#scrollsnapoffsetprovider)接口，自定义Grid的惯性滚动距离和最终吸附位置。Grid每行高100vp，按两行一组、每200vp吸附一次，区别于按单个item对齐。
+
+从API版本26.1.0开始，新增ScrollSnapOffsetProvider接口。
+
+- calculateApproachOffset返回惯性阶段的非负滚动距离，本示例将其限制在200vp以内；速度为0时返回0，直接进入最终吸附阶段。
+- calculateSnapOffset读取当前滚动偏移，选择最近的200vp分组位置。该示例不使用速度参数；返回值是相对内容起点的绝对滚动偏移，不是本次需要滚动的距离。
+- 两个回调仅计算并返回偏移，不修改组件布局或应用状态。页面在onScrollStop中读取最终位置并更新显示。
+
+运行后，在Grid内分别向上、向下快速滑动，或缓慢拖动后停住再松手。停止位置应为0、200、400……1600vp，页面显示“已对齐到分组位置”。到达首尾时，目标位置由组件限制在合法滚动范围内。
+
+```ts
+// xxx.ets
+const ITEM_HEIGHT: number = 100;
+const SNAP_INTERVAL: number = 200;
+
+class GridSnapProvider implements ScrollSnapOffsetProvider {
+  private scroller: Scroller;
+
+  constructor(scroller: Scroller) {
+    this.scroller = scroller;
+  }
+
+  calculateApproachOffset(velocity: number, decayOffset: number): number {
+    // 返回距离大小，滚动方向由组件根据速度处理。
+    return velocity === 0 ? 0 : Math.min(decayOffset, SNAP_INTERVAL);
+  }
+
+  calculateSnapOffset(_velocity: number): number {
+    const offset = this.scroller.currentOffset().yOffset;
+    const target = Math.round(offset / SNAP_INTERVAL) * SNAP_INTERVAL;
+    return Math.max(0, target);
+  }
+}
+
+@Entry
+@Component
+struct GridSnapProviderExample {
+  private scroller: Scroller = new Scroller();
+  private provider: ScrollSnapOffsetProvider = new GridSnapProvider(this.scroller);
+  private numbers: number[] = [];
+  @State settledOffset: number = 0;
+  @State aligned: boolean = true;
+
+  aboutToAppear(): void {
+    for (let index = 0; index < 40; index++) {
+      this.numbers.push(index);
+    }
+  }
+
+  build() {
+    Column({ space: 8 }) {
+      Text('自定义吸附：每两行一组（200vp）').fontSize(18)
+      Text('在Grid内快速滑动，或缓慢拖动后停住再松手').fontSize(14)
+      Grid(this.scroller) {
+        ForEach(this.numbers, (item: number) => {
+          GridItem() {
+            Text(item.toString())
+              .fontSize(24)
+              .width('100%')
+              .height('100%')
+              .textAlign(TextAlign.Center)
+          }
+          .height(ITEM_HEIGHT)
+          .backgroundColor(Math.floor(item / 4) % 2 === 0 ? 0xF9CF93 : 0xAEDFF7)
+        }, (item: number) => item.toString())
+      }
+      .columnsTemplate('1fr 1fr')
+      .columnsGap(10)
+      .rowsGap(0)
+      .width('100%')
+      .height(400)
+      .scrollSnapStrategy(this.provider)
+      .onScrollStop(() => {
+        this.settledOffset = this.scroller.currentOffset().yOffset;
+        const target = Math.round(this.settledOffset / SNAP_INTERVAL) * SNAP_INTERVAL;
+        this.aligned = Math.abs(this.settledOffset - target) < 0.5;
+      })
+      Text('停止位置：' + this.settledOffset.toFixed(1) + 'vp').fontSize(16)
+      Text(this.aligned ? '已对齐到分组位置' : '未对齐到分组位置')
+        .fontColor(this.aligned ? Color.Green : Color.Red)
+        .fontSize(16)
+    }
+    .width('100%')
+    .padding(16)
+  }
+}
+```
+
+![scrollSnapStrategy-provider-grid](figures/scrollSnapStrategy-provider-grid.gif)
