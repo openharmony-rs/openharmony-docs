@@ -141,6 +141,32 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 系统提供了ArkTS组件AVVolumePanel（音量面板），应用可以创建该组件，具体样例和介绍请查看参考文档：[avVolumePanel](../../reference/apis-audio-kit/ohos-multimedia-avvolumepanel.md)。
 
+### PC设备形态的系统音量映射
+
+手机、平板等形态下，不同流类型拥有独立的系统音量（如媒体音量、通话音量、铃声音量、闹钟音量等）。在PC设备上，为贴合桌面系统的使用习惯，系统对系统音量类型进行了收敛，多个流类型共用一套系统音量。
+
+应用通过[getVolumeByStream](../../reference/apis-audio-kit/arkts-apis-audio-AudioVolumeManager.md#getvolumebystream20)查询音量时，不同流类型在PC设备形态下的映射关系如下：
+
+| 流类型（StreamUsage） | PC上对应的系统音量类型 |
+| -------- | -------- |
+| STREAM_USAGE_MUSIC<br>STREAM_USAGE_MOVIE<br>STREAM_USAGE_GAME<br>STREAM_USAGE_AUDIOBOOK<br>STREAM_USAGE_VOICE_COMMUNICATION<br>STREAM_USAGE_VIDEO_COMMUNICATION<br>STREAM_USAGE_VOICE_MESSAGE<br>STREAM_USAGE_RINGTONE<br>STREAM_USAGE_ALARM<br>STREAM_USAGE_VOICE_ASSISTANT<br>STREAM_USAGE_ACCESSIBILITY | 输出音量 |
+| STREAM_USAGE_NOTIFICATION | 系统音量 |
+
+与手机等形态相比，PC设备形态的系统音量映射存在以下差异：
+
+- **通话音量与媒体音量合并**：VoIP通话、视频通话、语音消息在PC上使用媒体音量，不再有独立的通话音量。
+- **铃声/闹钟音量合并到媒体音量**：铃声、闹钟在PC上使用媒体音量，不提供单独的铃声、闹钟音量调节入口。
+- **通知音量合并到系统音量**：PC上没有独立的通知音量，系统提示音与通知音统一由系统音量控制。
+- **不提供独立的铃声模式调节入口**：PC上铃声已合并到媒体音量，设置界面不提供独立的铃声模式（静音/振动）调节入口。
+- **输出静音联动系统静音**：PC的输出音量静音时，系统音量会跟随一起静音，从而实现整机静音的效果。
+
+> **说明：**
+>
+> PC设备形态对系统音量类型进行收敛，主要基于以下原因：
+> - PC没有蜂窝通话能力，通话类音频（VoIP、语音消息）与媒体播放共用一套音量更符合桌面使用习惯，也无需维护与听筒强绑定的通话音量。
+> - PC作为办公/生产力设备，通知和系统提示音不强调响铃属性，统一归入系统音量即可满足提示需求。
+> - 收敛音量类型可简化用户的音量调节入口，与常见桌面操作系统的音量交互方式保持一致。
+
 ## 应用音量
 
 管理应用音量的接口由AudioVolumeManager提供，在使用之前，需要使用[getVolumeManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioManager.md#getvolumemanager9)获取AudioVolumeManager实例。
