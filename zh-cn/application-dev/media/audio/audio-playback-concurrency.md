@@ -1,3 +1,10 @@
+---
+kits: ["Audio Kit / 音频服务"]
+description: "介绍音频焦点的概念与工作机制，指导开发者使用合适的音频类型进行焦点申请与释放，处理焦点打断事件。"
+keywords: [音频焦点, 焦点被抢占, 音频打断, 并发播放, 焦点事件, 焦点是什么, 短音播放, 静音播放, InterruptEvent]
+doctype: guide
+status: active
+---
 # 音频焦点介绍
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
