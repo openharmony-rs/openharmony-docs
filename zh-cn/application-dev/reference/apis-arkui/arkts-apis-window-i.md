@@ -95,6 +95,9 @@
 | inputHandlingDuration    | ArkTS-Dyn: number<br>ArkTS-Sta: long   | 否   | 否   | 一帧中的手势处理耗时（单位：纳秒）。 |
 | layoutMeasureDuration  | ArkTS-Dyn: number<br>ArkTS-Sta: long   | 否   | 否   | 一帧中的布局测量耗时（单位：纳秒）。 |
 | vsyncTimestamp | ArkTS-Dyn: number<br>ArkTS-Sta: long   | 否   | 否   | 当前帧的开始时间戳（单位：纳秒）。 |
+| intendedVsyncTimestamp | ArkTS-Dyn: number<br>ArkTS-Sta: long   | 否   | 否   | 当前帧的预期起始时间戳（单位：纳秒）。<br>**ArkTS-Dyn起始版本：** 26.1.0<br>**ArkTS-Sta起始版本：** 26.1.0 |
+| totalDuration | ArkTS-Dyn: number<br>ArkTS-Sta: long   | 否   | 否   | 渲染此帧并将其发送到显示子系统所需要的总时间（单位：纳秒）。<br>**ArkTS-Dyn起始版本：** 26.1.0<br>**ArkTS-Sta起始版本：** 26.1.0 |
+| animationDuration | ArkTS-Dyn: number<br>ArkTS-Sta: long   | 否   | 否   | 执行一帧中所有动画回调所消耗的总时间（单位：纳秒）。<br>**ArkTS-Dyn起始版本：** 26.1.0<br>**ArkTS-Sta起始版本：** 26.1.0 |
 
 ## Rect<sup>7+</sup>
 
