@@ -39,14 +39,14 @@ function getPhotoAccessHelper(context: Context): photoAccessHelper.PhotoAccessHe
 }
    
 class MediaDataHandler implements photoAccessHelper.MediaAssetDataHandler<ArrayBuffer> {
-  onDataPrepared(data: ArrayBuffer) {
+  async onDataPrepared(data: ArrayBuffer) {
     if (data === undefined) {
       console.error('Error occurred when preparing data');
       return;
     }
     console.info('on image data prepared');
     // 请在获取到拍照buffer后，再释放session，提前释放session，会导致无法正常出图。
-    releaseCamSession();
+    await releaseCamSession();
   }
 }
 

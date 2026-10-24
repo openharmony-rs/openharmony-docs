@@ -54,6 +54,7 @@
     - [相机管理(C/C++)](native-camera-device-management.md)
     - [设备输入(C/C++)](native-camera-device-input.md)
     - [会话管理(C/C++)](native-camera-session-management.md)
+    - [多摄同开(C/C++)](native-camera-concurrent-open.md)
   - 拍照与预览(C/C++)<!--camera-dev-native-preview-->
     - [预览(C/C++)](native-camera-preview.md)
     - [预览流二次处理(C/C++)](native-camera-preview-imageReceiver.md)
@@ -71,7 +72,6 @@
   - 相机性能优化(C/C++)<!--camera-dev-native-perf--><!--RP9--><!--RP9End-->
     - [压力管控(C/C++)](native-camera-system-pressure.md)
   - 相机状态变化处理(C/C++)<!--camera-dev-native-state--><!--RP8--><!--RP8End-->
-    - [多摄同开(C/C++)](native-camera-concurrent-open.md)
 - Camera Kit常见问题<!--camera-dev-faq-->
   - 相机无法启动<!--camera-dev-faq-start-->
     - [相机API调用时序问题](camera-api-faq.md)
