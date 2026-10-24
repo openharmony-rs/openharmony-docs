@@ -155,7 +155,7 @@
      }
      
      // 获取拍照的主图的pixelMap。
-     async GetMainPixelmap(context: Context, pictureObj : image.Picture) {
+     async getMainPixelmap(context: Context, pictureObj : image.Picture) {
        let funcName = 'getMainPixelmap';
        if (pictureObj != null) {
          let mainPixelmap: image.PixelMap = pictureObj.getMainPixelmap();
@@ -169,7 +169,7 @@
            this.callback(mainPixelmap, '');
            mainPixelmap.getImageInfo().then((imageInfo: image.ImageInfo) => {
              if (imageInfo != null) {
-               Logger.info(TAG_LOG, 'GetMainPixelmap information height:' + imageInfo.size.height + ' width:' + imageInfo.size.width +
+               Logger.info(TAG_LOG, 'getMainPixelmap information height:' + imageInfo.size.height + ' width:' + imageInfo.size.width +
                  ' pixelFormat:' + imageInfo.pixelFormat + ' isHdr:' + imageInfo.isHdr);
              }
            }).catch((error: BusinessError) => {
@@ -184,7 +184,7 @@
      }
      
      // 释放资源。
-     async Release(pictureObj : image.Picture) {
+     async release(pictureObj : image.Picture) {
        let funcName = 'Release';
        if (pictureObj != null) {
          pictureObj.release();

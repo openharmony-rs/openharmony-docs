@@ -19,6 +19,7 @@
 参数的具体内容可参考相机管理器回调接口实例[SystemPressureLevel](../../reference/apis-camera-kit/arkts-apis-camera-e.md#systempressurelevel20)。
 
 ```ts
+import { camera } from '@kit.CameraKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 function callback(err: BusinessError, systemPressureLevel: camera.SystemPressureLevel): void {

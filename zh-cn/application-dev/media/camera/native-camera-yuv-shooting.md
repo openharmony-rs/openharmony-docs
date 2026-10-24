@@ -407,6 +407,6 @@
   ``` C++
   void PhotoOutputOnError(Camera_PhotoOutput *photoOutput, Camera_ErrorCode errorCode)
   {
-      OH_LOG_INFO(LOG_APP, "PhotoOutput errorCode = %{public}d", errorCode);
+      OH_LOG_ERROR(LOG_APP, "PhotoOutput errorCode = %{public}d", errorCode);
   }
   ```
