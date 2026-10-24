@@ -1456,15 +1456,9 @@ requestSystemInputCapability(type: InputCapabilityType): Promise&lt;void&gt;
 
 请求系统输入能力。使用promise异步回调。
 
-> **说明：**
->
-> 本接口为系统接口，调用方需为系统应用。
-
-当type为TRANSLATION时，当前输入法须为系统预置默认输入法，否则请求被拒绝。当type为DEFAULT时，退出当前特殊输入模式，恢复默认输入。
+当type为TRANSLATION时，当前输入法须为系统预置默认输入法，否则请求被拒绝。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
-
-**系统接口：** 此接口为系统接口。
 
 **参数：**
 
@@ -1484,7 +1478,6 @@ requestSystemInputCapability(type: InputCapabilityType): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
 | 12800010 | current ime is not the default ime. |
 
@@ -1500,15 +1493,6 @@ inputMethod.getController().requestSystemInputCapability(
   console.info('Succeeded requestSystemInputCapability.');
 }).catch((err: BusinessError) => {
   console.error(`Failed to requestSystemInputCapability, code: ${err.code}, message: ${err.message}`);
-});
-
-// 退出翻译模式
-inputMethod.getController().requestSystemInputCapability(
-  inputMethod.InputCapabilityType.DEFAULT
-).then(() => {
-  console.info('Succeeded exit translation mode.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to exit translation mode, code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -4362,9 +4346,6 @@ inputMethod.getSetting().getInputMethodState().then((status: inputMethod.Enabled
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**系统接口：** 此接口为系统接口。
-
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| DEFAULT | 0 | 默认输入能力。<br/>使用场景：用于退出当前特殊输入模式（如翻译模式），恢复默认输入模式。 |
-| TRANSLATION | 1 | 翻译输入能力。<br/>使用场景：用于请求输入法切换到翻译模式。当前输入法须为系统预置默认输入法，否则请求将被拒绝并返回12800010错误码。 |
+| TRANSLATION | 0 | 翻译输入能力。<br/>使用场景：用于请求输入法切换到翻译模式。当前输入法须为系统预置默认输入法，否则请求将被拒绝并返回12800010错误码。 |

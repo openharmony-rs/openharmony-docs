@@ -282,5 +282,4 @@ enum InputMethod_InputCapabilityType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| IME_INPUT_CAPABILITY_TYPE_DEFAULT = 0 | 默认输入能力。用于退出当前特殊输入模式（如翻译模式），恢复默认输入模式。 |
-| IME_INPUT_CAPABILITY_TYPE_TRANSLATION = 1 | 翻译输入能力。用于请求输入法切换到翻译模式。当前输入法须为系统预置默认输入法，否则请求将被拒绝并返回[IME_ERR_NOT_DEFAULT_IME](#inputmethod_errorcode)错误码。 |
+| IME_INPUT_CAPABILITY_TYPE_TRANSLATION = 0 | 翻译输入能力。用于请求输入法切换到翻译模式。当前输入法须为系统预置默认输入法，否则请求将被拒绝并返回[IME_ERR_NOT_DEFAULT_IME](#inputmethod_errorcode)错误码。 |
