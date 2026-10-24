@@ -33,6 +33,10 @@ onProgress(progress: number): void
 | ------- | ------- | ---- | -------------------------- |
 | progress | number | 是   | 传入的进度百分比，范围为[0, 100]。 |
 
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
 ```ts
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
 import { dataSharePredicates } from '@kit.ArkData';

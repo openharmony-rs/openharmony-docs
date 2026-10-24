@@ -56,7 +56,7 @@ export struct Scene1 {
     icon: SaveIconStyle.FULL_FILLED,
     text: SaveDescription.SAVE_IMAGE,
     buttonType: ButtonType.Capsule
-  }// Set properties of SaveButton.
+  }// 设置保存按钮的属性。
 
   // ...
 
@@ -65,13 +65,13 @@ export struct Scene1 {
       Column({ space: 20 }) {
         // ...
 
-        SaveButton(this.saveButtonOptions) // Create a button with SaveButton.
+        SaveButton(this.saveButtonOptions) // 创建一个带有“保存”按钮的按钮。
           .onClick(async (event, result: SaveButtonOnClickResult) => {
             if (result == SaveButtonOnClickResult.SUCCESS) {
               try {
                 let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
                 let phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
-                // Ensure that the assets specified by imageFileUri and videoFileUri exist.
+                // 确保imageFileUri和videoFileUri指定的资产存在。
                 let photoPath = context.filesDir;
                 let imageFileUri = fileUri.getUriFromPath(photoPath) + '/create_moving_photo.jpg';
                 let videoFileUri = fileUri.getUriFromPath(photoPath) + '/create_moving_photo.mp4';
@@ -163,7 +163,7 @@ export struct Scene2 {
 }
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context): Promise<string> {
   try {
-    // Use Picker to select the URI of the moving photo.
+    // 使用选择器选择动态照片的URI。
     let photoSelectOptions = new photoAccessHelper.PhotoSelectOptions();
     photoSelectOptions.MIMEType = photoAccessHelper.PhotoViewMIMETypes.MOVING_PHOTO_IMAGE_TYPE;
     photoSelectOptions.maxSelectNumber = 9;
@@ -174,7 +174,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
     let resultMessage = 'Selected ' + uris.length + ' moving photo(s)\n\n';
 
     for (let i = 0; i < uris.length; i++) {
-      // Obtain the photo asset corresponding to the URI.
+      // 获取与URI对应的照片资源。
       let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
       predicates.equalTo(photoAccessHelper.PhotoKeys.URI, uris[i]);
       let fetchOption: photoAccessHelper.FetchOptions = {
@@ -186,13 +186,13 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
       let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
 
       let movingPhotoUri = await new Promise<string>((resolve) => {
-        // Obtain the moving photo object corresponding to the photo asset.
+        // 获取与照片资源对应的动态照片对象。
         photoAccessHelper.MediaAssetManager.requestMovingPhoto(context, photoAsset, {
           deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE
         }, {
           async onDataPrepared(movingPhoto: photoAccessHelper.MovingPhoto) {
             if (movingPhoto !== undefined) {
-              // Customize the logic for processing the moving photo.
+              // 自定义处理动态照片的逻辑。
               console.info('request moving photo successfully, uri: ' + movingPhoto.getUri());
               resolve(movingPhoto.getUri());
             }
