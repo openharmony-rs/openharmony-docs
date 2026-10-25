@@ -135,7 +135,7 @@ avSession.getSessionDescriptors(avSession.SessionCategory.CATEGORY_ALL).then((de
 
 ## avSession.getSessionDescriptorsForAudioZone
  
-getSessionDescriptorsForAudioZone(userId: int): Promise\<Array\<Readonly\<AVSessionDescriptor>>> 
+getSessionDescriptorsForAudioZone(userId: number): Promise\<Array\<Readonly\<AVSessionDescriptor>>> 
  
 获取userId用户所属音区的会话描述符信息。使用Promise异步回调。
 
@@ -605,7 +605,7 @@ startAVPlaybackForAudioZone(userId: number, bundleName: string, assetId: string,
 | userId       | int            | 是   | 指定用户UserId。 |
 | bundleName   | string         | 是   | 指定应用包名。   |
 | assetId      | string         | 是   | 指定媒体ID。    |
-| info         |   [CommandInfo](arkts-apis-avsession-i.md#commandinfo22)     | 否   | 发送到会话的命令信息。 |
+| info         | \<[CommandInfo](arkts-apis-avsession-i.md#commandinfo22)\>    | 否   | 发送到会话的命令信息。 |
 | extraInfo | ExtraInfo    |  否  |  冷启动扩展信息。 |
  
 **返回值：**
