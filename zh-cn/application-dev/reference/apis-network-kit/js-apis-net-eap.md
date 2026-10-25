@@ -7,7 +7,7 @@
 <!--Tester: @WIFIroam-test-->
 <!--Adviser: @zhang_yixin13-->
 
-该模块提供了第三方客户端接入802.1X认证（一种基于端口的网络接入控制协议）流程的机制，支撑客户端的定制认证等功能，同时提供以太网802.1X EAP配置管理、认证控制和认证状态监听功能。
+该模块提供了第三方客户端接入802.1X（一种基于端口的网络接入控制协议）认证流程的机制，支撑客户端的定制认证等功能，同时提供以太网802.1X EAP（Extensible Authentication Protocol，可扩展认证协议）配置管理、认证控制和认证状态监听功能。
 
 > **说明：** 
 >
@@ -277,7 +277,7 @@ setEthEapConfig(config: EthEapConfig): void
 
 设置以太网802.1X EAP配置，配置将加密并持久化保存。
 
-任意字段发生变化时，会触发一次自动认证流程。如果802.1X功能已禁用，或者认证正由企业应用控制，则仅保存配置，不触发自动认证；企业应用仍保留认证控制权。认证结果通过[eap.onStateChange](#eaponstatechange)注册的回调返回，本接口的返回不代表认证成功。
+任意字段发生变化时，会触发一次自动认证流程。如果802.1X功能已禁用，或者认证正由企业应用控制，则仅保存配置，不触发自动认证；企业应用仍保留认证控制权。认证结果通过[eap.onStateChange](#eaponstatechange)注册的回调返回，本接口调用返回不代表认证成功。
 
 **起始版本：** 26.2.0
 
@@ -291,9 +291,9 @@ setEthEapConfig(config: EthEapConfig): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| config | [EthEapConfig](#etheapconfig) | 是 | 待设置的以太网802.1X EAP配置。profile中的敏感字段password、certPassword传入空字符串，或certEntry传入空数组时，表示保留原值；通过getEthEapConfig读取时，这些字段始终返回空值。 |
+| config | [EthEapConfig](#etheapconfig) | 是 | 待设置的以太网802.1X EAP配置。当EthEapProfile中的敏感字段password、certPassword传入空字符串，或certEntry传入空数组时，表示保留原值；通过getEthEapConfig读取时，password、certPassword返回空字符串，certEntry返回空数组。 |
 
-**错误码：**
+**错误码**：
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
@@ -361,9 +361,9 @@ getEthEapConfig(): Promise\<EthEapConfig\>
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise\<[EthEapConfig](#etheapconfig)\> | Promise对象，返回已保存的以太网802.1X EAP配置，敏感字段返回空值。 |
+| Promise\<[EthEapConfig](#etheapconfig)\> | Promise对象，返回已保存的以太网802.1X EAP配置，其中password、certPassword返回空字符串，certEntry返回空数组。 |
 
-**错误码：**
+**错误码**：
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
@@ -411,7 +411,7 @@ deleteEthEapConfig(): Promise\<void\>
 | -------- | -------- |
 | Promise\<void\> | Promise对象，无返回结果。 |
 
-**错误码：**
+**错误码**：
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
@@ -457,7 +457,7 @@ getEthEapStateInfo(): EthEapStateInfo
 | -------- | -------- |
 | [EthEapStateInfo](#etheapstateinfo) | 当前以太网802.1X EAP认证状态信息。 |
 
-**错误码：**
+**错误码**：
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
@@ -500,7 +500,7 @@ onStateChange(callback: Callback\<EthEapStateInfo\>): void
 | -------- | -------- | -------- | -------- |
 | callback | Callback\<[EthEapStateInfo](#etheapstateinfo)\> | 是 | 回调函数，返回以太网802.1X EAP认证状态信息。 |
 
-**错误码：**
+**错误码**：
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
@@ -547,7 +547,7 @@ offStateChange(callback?: Callback\<EthEapStateInfo\>): void
 | -------- | -------- | -------- | -------- |
 | callback | Callback\<[EthEapStateInfo](#etheapstateinfo)\> | 否 | 待取消的回调函数，应与订阅时传入的回调函数为同一对象。不传入时，取消该事件的所有回调。 |
 
-**错误码：**
+**错误码**：
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
@@ -608,7 +608,7 @@ connect(action: EthEapConnectAction): Promise\<void\>
 | -------- | -------- |
 | Promise\<void\> | Promise对象，无返回结果。认证结果通过状态变化回调返回。 |
 
-**错误码：**
+**错误码**：
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
@@ -731,7 +731,7 @@ EAP信息。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| profile | [EthEapProfile](#etheapprofile) | 否 | 否 | EAP配置信息。通过setEthEapConfig设置时，password、certPassword传入空字符串或certEntry传入空数组表示保留原值；通过getEthEapConfig获取时，这些敏感字段始终返回空值。 |
+| profile | [EthEapProfile](#etheapprofile) | 否 | 否 | EAP配置信息。通过setEthEapConfig设置时，password、certPassword传入空字符串或certEntry传入空数组表示保留原值；通过getEthEapConfig获取时，password、certPassword返回空字符串，certEntry返回空数组。 |
 | enabled | boolean | 否 | 否 | 是否启用802.1X功能。true表示启用，false表示禁用。 |
 | autoAuth | boolean | 否 | 否 | 是否在连接网线或设备启动时自动发起认证。true表示自动发起，false表示不自动发起。 |
 | locked | boolean | 否 | 否 | 是否锁定配置。true表示锁定，false表示未锁定。锁定后，除解锁外，不允许修改配置。 |
