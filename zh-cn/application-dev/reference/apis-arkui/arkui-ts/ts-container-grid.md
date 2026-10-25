@@ -3689,7 +3689,7 @@ struct GridSnapExample {
 从API版本26.1.0开始，新增ScrollSnapOffsetProvider接口。
 
 - calculateApproachOffset返回惯性阶段的非负滚动距离，本示例将其限制在200vp以内；速度为0时返回0，直接进入最终吸附阶段。
-- calculateSnapOffset读取当前滚动偏移，选择最近的200vp分组位置。该示例不使用速度参数；返回值是相对内容起点的绝对滚动偏移，不是本次需要滚动的距离。
+- calculateSnapOffset读取当前滚动偏移，按速度方向选择200vp分组位置：速度大于0时向内容末端取整，小于0时向内容起点取整，使抛滑后的吸附继续沿原方向运动；速度为0时选择最近的分组位置。返回值是相对内容起点的绝对滚动偏移，不是本次需要滚动的距离。
 - 两个回调仅计算并返回偏移，不修改组件布局或应用状态。页面在onScrollStop中读取最终位置并更新显示。
 
 运行后，在Grid内分别向上、向下快速滑动，或缓慢拖动后停住再松手。停止位置应为0、200、400……1600vp，页面显示“已对齐到分组位置”。到达首尾时，目标位置由组件限制在合法滚动范围内。
@@ -3711,10 +3711,16 @@ class GridSnapProvider implements ScrollSnapOffsetProvider {
     return velocity === 0 ? 0 : Math.min(decayOffset, SNAP_INTERVAL);
   }
 
-  calculateSnapOffset(_velocity: number): number {
+  calculateSnapOffset(velocity: number): number {
     const offset = this.scroller.currentOffset().yOffset;
-    const target = Math.round(offset / SNAP_INTERVAL) * SNAP_INTERVAL;
-    return Math.max(0, target);
+    const group = offset / SNAP_INTERVAL;
+    let targetGroup = Math.round(group);
+    if (velocity > 0) {
+      targetGroup = Math.ceil(group);
+    } else if (velocity < 0) {
+      targetGroup = Math.floor(group);
+    }
+    return Math.max(0, targetGroup * SNAP_INTERVAL);
   }
 }
 
@@ -3736,7 +3742,7 @@ struct GridSnapProviderExample {
   build() {
     Column({ space: 8 }) {
       Text('自定义吸附：每两行一组（200vp）').fontSize(18)
-      Text('在Grid内快速滑动，或缓慢拖动后停住再松手').fontSize(14)
+      Text('抛滑后顺向吸附；慢拖后停住再松手就近吸附').fontSize(14)
       Grid(this.scroller) {
         ForEach(this.numbers, (item: number) => {
           GridItem() {
