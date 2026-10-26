@@ -66,6 +66,8 @@ Since API version 12, [writeArrayBuffer](#writearraybuffer12) and [readArrayBuff
 
 Provides APIs for reading and writing data in specific format. During RPC or IPC, the sender can use the **write()** method provided by **MessageSequence** to write data in specific format to a **MessageSequence** object. The receiver can use the **read()** method provided by **MessageSequence** to read data in specific format from a **MessageSequence** object. The data formats include basic data types and arrays, IPC objects, interface tokens, and custom sequenceable objects. The read sequence must be the same as the write sequence. Otherwise, data parsing errors occurs.
 
+**System capability**: SystemCapability.Communication.IPC.Core
+
 ### create<sup>9+</sup>
 
 static create(): MessageSequence
@@ -75,8 +77,6 @@ Creates a **MessageSequence** object. This API is a static method. After this me
 - The created **MessageSequence** object must be released by calling **reclaim()** after use; otherwise, memory leaks may occur.
 - An **MessageSequence** object cannot be used across threads.
 - You are advised to create the object on demand when IPC/RPC communication is required, and to avoid frequent creation and release.
-
-**Paired calling**: For the **MessageSequence** object created via **create()**, you must call **reclaim()** to release its resources after use. Otherwise, memory resource leaks occur.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -185,7 +185,7 @@ class TestRemoteObject extends rpc.RemoteObject {
 
 try {
   let data = rpc.MessageSequence.create();
-  let testRemoteObject = new TestRemoteObject("testObject");
+  let testRemoteObject = new TestRemoteObject('testObject');
   // Write the remote object to the MessageSequence object.
   data.writeRemoteObject(testRemoteObject);
 } catch (error) {
@@ -242,7 +242,7 @@ class TestRemoteObject extends rpc.RemoteObject {
 
 try {
   let data = rpc.MessageSequence.create();
-  let testRemoteObject = new TestRemoteObject("testObject");
+  let testRemoteObject = new TestRemoteObject('testObject');
   data.writeRemoteObject(testRemoteObject);
   let proxy = data.readRemoteObject();
   hilog.info(0x0000, 'testTag', 'readRemoteObject is ' + proxy);
@@ -289,7 +289,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let data = rpc.MessageSequence.create();
   // Write the interface token to this MessageSequence object.
-  data.writeInterfaceToken("aaa");
+  data.writeInterfaceToken('aaa');
 } catch (error) {
   let e: BusinessError = error as BusinessError;
   hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
@@ -332,7 +332,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let data = rpc.MessageSequence.create();
-  data.writeInterfaceToken("aaa");
+  data.writeInterfaceToken('aaa');
   let interfaceToken = data.readInterfaceToken();
   hilog.info(0x0000, 'testTag', 'RpcServer: interfaceToken is ' + interfaceToken);
 } catch (error) {
@@ -548,7 +548,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let data = rpc.MessageSequence.create();
-  data.writeString("hello world");
+  data.writeString('hello world');
   let result = data.getReadableBytes();
   hilog.info(0x0000, 'testTag', 'RpcServer: getReadableBytes is ' + result);
 } catch (error) {
@@ -581,7 +581,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let data = rpc.MessageSequence.create();
-  data.writeString("hello world");
+  data.writeString('hello world');
   let readPos = data.getReadPosition();
   hilog.info(0x0000, 'testTag', 'readPos is ' + readPos);
 } catch (error) {
@@ -657,7 +657,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let data = rpc.MessageSequence.create();
   data.writeInt(12);
-  data.writeString("sequence");
+  data.writeString('sequence');
   let number = data.readInt();
   hilog.info(0x0000, 'testTag', 'number is ' + number);
   data.rewindRead(0);
@@ -720,7 +720,7 @@ writeByte(val: number): void
 
 Writes a byte value to this **MessageSequence** object. After this method is called, the byte value is stored as an 8-bit unsigned integer at the current write pointer position in the buffer, and the write pointer is automatically updated. This method is suitable for transmitting small-range integers or flag data.
 
-- Storage range: 0 to 255 (unsigned) or -128 to 127 (signed).
+- Storage range: [0, 255] (unsigned) or [-128, 127] (signed).
 - Data alignment is byte-aligned.
 - The value must be within the byte range. Values outside this range may cause data truncation.
 - This method and the [readByte](#readbyte9) method must be used in pairs.
@@ -796,7 +796,7 @@ try {
   let data = rpc.MessageSequence.create();
   data.writeByte(2);
   let ret = data.readByte();
-  hilog.info(0x0000, 'testTag', 'readByte is: ' +  ret);
+  hilog.info(0x0000, 'testTag', 'readByte is ' +  ret);
 } catch (error) {
   let e: BusinessError = error as BusinessError;
   hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
@@ -948,7 +948,7 @@ readInt(): number
 Reads the integer from this **MessageSequence** object.
 
 - The integer occupies 4 bytes of storage space.
-- Storage range: –2^31 to 2^31 – 1.
+- Storage range: [-2^31, 2^31-1].
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
@@ -1205,9 +1205,6 @@ readDouble(): number
 
 Reads the double value from this **MessageSequence** object.
 
-- This API returns a newly created array. It is not necessary to pre-allocate the array.
-- The array elements are double-precision floating-point numbers.
-
 **System capability**: SystemCapability.Communication.IPC.Core
 
 **Return value**
@@ -1415,14 +1412,10 @@ try {
 
 writeString(val: string): void
 
-Writes a string to this **MessageSequence** object. After this method is called, the string is serialized and stored to the buffer. During the write operation, the string length is stored first, followed by the byte data.
+Writes a string to this **MessageSequence** object.
 
 - This method must be used in pairs with the [readString](#readstring9) method.
-- The length is written first, followed by the content.
 - Multilingual character sets are supported.
-- The length information helps [readString](#readstring9) determine the read boundary.
-- Note the difference between the number of characters and the number of bytes. Chinese characters occupy more bytes.
-- Long strings consume more buffer space.
 - An empty string can also be written normally.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
@@ -1467,8 +1460,6 @@ try {
 readString(): string
 
 Reads the string from this **MessageSequence** object.
-
-- The length is read first, followed by the content.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
@@ -1568,7 +1559,7 @@ class MyParcelable implements rpc.Parcelable {
 }
 
 try {
-  let parcelable = new MyParcelable(1, "aaa");
+  let parcelable = new MyParcelable(1, 'aaa');
   let data = rpc.MessageSequence.create();
   data.writeParcelable(parcelable);
 } catch (error) {
@@ -1634,10 +1625,10 @@ class MyParcelable implements rpc.Parcelable {
 }
 
 try {
-  let parcelable = new MyParcelable(1, "aaa");
+  let parcelable = new MyParcelable(1, 'aaa');
   let data = rpc.MessageSequence.create();
   data.writeParcelable(parcelable);
-  let ret = new MyParcelable(0, "");
+  let ret = new MyParcelable(0, '');
   data.readParcelable(ret);
 } catch (error) {
   let e: BusinessError = error as BusinessError;
@@ -1683,7 +1674,7 @@ try {
   let data = rpc.MessageSequence.create();
   let byteArrayVar = [1, 2, 3, 4, 5];
   // Write the byte array to the MessageSequence Object
-  data.writeByteArray(ByteArrayVar);
+  data.writeByteArray(byteArrayVar);
 } catch (error) {
   let e: BusinessError = error as BusinessError;
   hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
@@ -1723,12 +1714,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let data = rpc.MessageSequence.create();
-  let ByteArrayVar = [1, 2, 3, 4, 5];
+  let byteArrayVar = [1, 2, 3, 4, 5];
   // Write the byte array to the MessageSequence Object
-  data.writeByteArray(ByteArrayVar);
+  data.writeByteArray(byteArrayVar);
   let array: Array<number> = new Array(5);
   data.readByteArray(array);
-  hilog.info(0x0000, 'testTag', 'readByteArray is  ' + array);
+  hilog.info(0x0000, 'testTag', 'readByteArray is ' + array);
 } catch (error) {
   let e: BusinessError = error as BusinessError;
   hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
@@ -1767,11 +1758,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let data = rpc.MessageSequence.create();
-  let ByteArrayVar = [1, 2, 3, 4, 5];
+  let byteArrayVar = [1, 2, 3, 4, 5];
   // Write the byte array to the MessageSequence Object
-  data.writeByteArray(ByteArrayVar);
+  data.writeByteArray(byteArrayVar);
   let array = data.readByteArray();
-  hilog.info(0x0000, 'testTag', 'readByteArray is  ' + array);
+  hilog.info(0x0000, 'testTag', 'readByteArray is ' + array);
 } catch (error) {
   let e: BusinessError = error as BusinessError;
   hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
@@ -1857,7 +1848,7 @@ try {
   data.writeShortArray([11, 12, 13]);
   let array: Array<number> = new Array(3);
   data.readShortArray(array);
-  hilog.info(0x0000, 'testTag', 'readShortArray is  ' + array);
+  hilog.info(0x0000, 'testTag', 'readShortArray is ' + array);
 } catch (error) {
   let e: BusinessError = error as BusinessError;
   hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
@@ -1987,7 +1978,7 @@ try {
   data.writeIntArray([100, 111, 112]);
   let array: Array<number> = new Array(3);
   data.readIntArray(array);
-  hilog.info(0x0000, 'testTag', 'readIntArray is  ' + array);
+  hilog.info(0x0000, 'testTag', 'readIntArray is ' + array);
 } catch (error) {
   let e: BusinessError = error as BusinessError;
   hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
@@ -2685,6 +2676,7 @@ Writes a string array to this **MessageSequence** object.
 
 - This method and the [readStringArray](#readstringarray9) method must be used in pairs.
 - The length of the array to be read must match the length of the array that was written.
+- The length of a single element in the array is in the range of [0, 40960).
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -2712,7 +2704,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let data = rpc.MessageSequence.create();
-  data.writeStringArray(["abc", "def"]);
+  data.writeStringArray(['abc', 'def']);
 } catch (error) {
   let e: BusinessError = error as BusinessError;
   hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
@@ -2727,8 +2719,7 @@ readStringArray(dataIn: string[]): void
 Reads the string array from this **MessageSequence** object and writes it to the created empty array.
 
 - An empty array must be created in advance, and its length must be the same as that of the array written.
-- After the read operation, the **dataIn** array will be filled with the read byte data.
-- The read pointer advances by the corresponding number of bytes.
+- After the read operation, the **dataIn** array will be filled with the read string data.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -2756,7 +2747,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let data = rpc.MessageSequence.create();
-  data.writeStringArray(["abc", "def"]);
+  data.writeStringArray(['abc', 'def']);
   let array: Array<string> = new Array(2);
   data.readStringArray(array);
   hilog.info(0x0000, 'testTag', 'readStringArray is ' + array);
@@ -2774,7 +2765,6 @@ readStringArray(): string[]
 Reads the string array from this **MessageSequence** object.
 
 - This API returns a newly created array. It is not necessary to pre-allocate the array.
-- The length of a single element in the array ranges from 0 to 40959 bytes.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -2801,7 +2791,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let data = rpc.MessageSequence.create();
-  data.writeStringArray(["abc", "def"]);
+  data.writeStringArray(['abc', 'def']);
   let array = data.readStringArray();
   hilog.info(0x0000, 'testTag', 'readStringArray is ' + array);
 } catch (error) {
@@ -2903,20 +2893,20 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 let proxy: rpc.IRemoteObject | undefined;
 let connect: common.ConnectOptions = {
   onConnect: (elementName, remoteProxy) => {
-    hilog.info(0x0000, 'testTag', 'js onConnect called');
+    hilog.info(0x0000, 'testTag', 'connection succeeded');
     proxy = remoteProxy;
   },
   onDisconnect: (elementName) => {
-    hilog.info(0x0000, 'testTag', 'onDisconnect');
+    hilog.info(0x0000, 'testTag', 'disconnection succeeded');
   },
   onFailed: () => {
-    hilog.info(0x0000, 'testTag', 'onFailed');
+    hilog.error(0x0000, 'testTag', 'connection failed');
   }
 };
 let want: Want = {
-  // Obtain the package name and ability name on the server.
-  bundleName: "com.ohos.server",
-  abilityName: "com.ohos.server.EntryAbility",
+  // Obtain the bundle name and ability name on the server.
+  bundleName: 'com.ohos.server',
+  abilityName: 'com.ohos.server.EntryAbility',
 };
 
 // Use this method to connect to the ability for the FA model.
@@ -2934,7 +2924,7 @@ The proxy object in the **onConnect** callback can be assigned a value only afte
 import { rpc } from '@kit.IPCKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
-  
+
 try {
   let option = new rpc.MessageOption();
   let data = rpc.MessageSequence.create();
@@ -3020,9 +3010,9 @@ class MyParcelable implements rpc.Parcelable {
 }
 
 try {
-  let parcelable = new MyParcelable(1, "aaa");
-  let parcelable2 = new MyParcelable(2, "bbb");
-  let parcelable3 = new MyParcelable(3, "ccc");
+  let parcelable = new MyParcelable(1, 'aaa');
+  let parcelable2 = new MyParcelable(2, 'bbb');
+  let parcelable3 = new MyParcelable(3, 'ccc');
   let a = [parcelable, parcelable2, parcelable3];
   let data = rpc.MessageSequence.create();
   data.writeParcelableArray(a);
@@ -3084,13 +3074,13 @@ class MyParcelable implements rpc.Parcelable {
 }
 
 try {
-  let parcelable = new MyParcelable(1, "aaa");
-  let parcelable2 = new MyParcelable(2, "bbb");
-  let parcelable3 = new MyParcelable(3, "ccc");
+  let parcelable = new MyParcelable(1, 'aaa');
+  let parcelable2 = new MyParcelable(2, 'bbb');
+  let parcelable3 = new MyParcelable(3, 'ccc');
   let a = [parcelable, parcelable2, parcelable3];
   let data = rpc.MessageSequence.create();
   data.writeParcelableArray(a);
-  let b = [new MyParcelable(0, ""), new MyParcelable(0, ""), new MyParcelable(0, "")];
+  let b = [new MyParcelable(0, ''), new MyParcelable(0, ''), new MyParcelable(0, '')];
   data.readParcelableArray(b);
 } catch (error) {
   let e: BusinessError = error as BusinessError;
@@ -3144,7 +3134,7 @@ class TestRemoteObject extends rpc.RemoteObject {
 }
 
 try {
-  let a = [new TestRemoteObject("testObject1"), new TestRemoteObject("testObject2"), new TestRemoteObject("testObject3")];
+  let a = [new TestRemoteObject('testObject1'), new TestRemoteObject('testObject2'), new TestRemoteObject('testObject3')];
   let data = rpc.MessageSequence.create();
   data.writeRemoteObjectArray(a);
 } catch (error) {
@@ -3199,7 +3189,7 @@ class TestRemoteObject extends rpc.RemoteObject {
 }
 
 try {
-  let a = [new TestRemoteObject("testObject1"), new TestRemoteObject("testObject2"), new TestRemoteObject("testObject3")];
+  let a = [new TestRemoteObject('testObject1'), new TestRemoteObject('testObject2'), new TestRemoteObject('testObject3')];
   let data = rpc.MessageSequence.create();
   data.writeRemoteObjectArray(a);
   let b: Array<rpc.IRemoteObject> = new Array(3);
@@ -3253,7 +3243,7 @@ class TestRemoteObject extends rpc.RemoteObject {
 }
 
 try {
-  let a = [new TestRemoteObject("testObject1"), new TestRemoteObject("testObject2"), new TestRemoteObject("testObject3")];
+  let a = [new TestRemoteObject('testObject1'), new TestRemoteObject('testObject2'), new TestRemoteObject('testObject3')];
   let data = rpc.MessageSequence.create();
   let b = data.readRemoteObjectArray();
   hilog.info(0x0000, 'testTag', 'readRemoteObjectArray is ' + b);
@@ -3300,7 +3290,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let filePath = "path/to/file"; 
+  let filePath = 'path/to/file';
   let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
   rpc.MessageSequence.closeFileDescriptor(file.fd);
 } catch (error) {
@@ -3355,7 +3345,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let filePath = "path/to/file"; 
+  let filePath = 'path/to/file';
   let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
   rpc.MessageSequence.dupFileDescriptor(file.fd);
 } catch (error) {
@@ -3389,7 +3379,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let sequence = rpc.MessageSequence.create();
-  let filePath = "path/to/file";
+  let filePath = 'path/to/file';
   let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
   let containFD = sequence.containFileDescriptors();
   hilog.info(0x0000, 'testTag', 'sequence after write fd containFd result is ' + containFD);
@@ -3443,7 +3433,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let sequence = rpc.MessageSequence.create();
-  let filePath = "path/to/file";
+  let filePath = 'path/to/file';
   let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
   sequence.writeFileDescriptor(file.fd);
 } catch (error) {
@@ -3491,7 +3481,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let sequence = rpc.MessageSequence.create();
-  let filePath = "path/to/file";
+  let filePath = 'path/to/file';
   let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
   sequence.writeFileDescriptor(file.fd);
   let readFD = sequence.readFileDescriptor();
@@ -3544,7 +3534,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let sequence = rpc.MessageSequence.create();
-  let ashmem = rpc.Ashmem.create("ashmem", 1024);
+  let ashmem = rpc.Ashmem.create('ashmem', 1024);
   // Write data to ashmem.
   let buffer = new ArrayBuffer(1024);
   let int32View = new Int32Array(buffer);
@@ -3605,7 +3595,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let sequence = rpc.MessageSequence.create();
-  let ashmem = rpc.Ashmem.create("ashmem", 1024);
+  let ashmem = rpc.Ashmem.create('ashmem', 1024);
   // Write data to ashmem.
   let buffer = new ArrayBuffer(1024);
   let int32View = new Int32Array(buffer);
@@ -3907,7 +3897,7 @@ Writes data of the ArrayBuffer type to this **MessageSequence** object.
   | Name   | Type                     | Mandatory| Description                       |
   | --------- | ------------------------- | ---- | --------------------------- |
   | buf       | ArrayBuffer               | Yes  | ArrayBuffer data to be written. The data is formatted and written based on the TypedArray type specified by **typeCode**.  |
-  | typeCode  | [TypeCode](#typecode12)   | Yes  | TypedArray type of the ArrayBuffer data.<br>The underlying write mode is determined based on the enum value of **TypeCode** passed by the service.|
+  | typeCode  | [TypeCode](#typecode12)   | Yes  | TypedArray type of the ArrayBuffer data. The underlying write mode is determined based on the enum value of **TypeCode** passed by the service.|
 
 **Error codes**
 
@@ -3957,7 +3947,7 @@ Reads data of the ArrayBuffer type from this **MessageSequence**.
 
   | Name  | Type                    | Mandatory| Description                  |
   | -------- | ----------------------- | ---- | ------------------------|
-  | typeCode | [TypeCode](#typecode12) | Yes  | TypedArray type of the ArrayBuffer data.<br>The underlying read mode is determined based on the enum value of **TypeCode** passed by the service. |
+  | typeCode | [TypeCode](#typecode12) | Yes  | Specifies which TypedArray type is used to access and operate on the ArrayBuffer data. (The underlying read/write method is determined based on the enumeration value passed by the service logic. The correct enumeration value must be provided; mismatched read and write enumeration values may cause data errors.) |
 
 **Return value**
 
@@ -4116,7 +4106,7 @@ class TestRemoteObject extends rpc.RemoteObject {
 
 try {
   let data = rpc.MessageParcel.create();
-  let testRemoteObject = new TestRemoteObject("testObject");
+  let testRemoteObject = new TestRemoteObject('testObject');
   data.writeRemoteObject(testRemoteObject);
 } catch (error) {
   hilog.error(0x0000, 'testTag', 'error ' + error);
@@ -4161,7 +4151,7 @@ class TestRemoteObject extends rpc.RemoteObject {
 
 try {
   let data = rpc.MessageParcel.create();
-  let testRemoteObject = new TestRemoteObject("testObject");
+  let testRemoteObject = new TestRemoteObject('testObject');
   data.writeRemoteObject(testRemoteObject);
   let proxy = data.readRemoteObject();
   hilog.info(0x0000, 'testTag', 'readRemoteObject is ' + proxy);
@@ -4203,7 +4193,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
   let data = rpc.MessageParcel.create();
-  let result = data.writeInterfaceToken("aaa");
+  let result = data.writeInterfaceToken('aaa');
   hilog.info(0x0000, 'testTag', 'RpcServer: writeInterfaceToken is ' + result);
 } catch (error) {
   hilog.error(0x0000, 'testTag', 'error ' + error);
@@ -4237,7 +4227,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
   let data = rpc.MessageParcel.create();
-  let result = data.writeInterfaceToken("aaa");
+  let result = data.writeInterfaceToken('aaa');
   let interfaceToken = data.readInterfaceToken();
   hilog.info(0x0000, 'testTag', 'RpcServer: interfaceToken is ' + interfaceToken);
 } catch (error) {
@@ -4567,7 +4557,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 try {
   let data = rpc.MessageParcel.create();
   data.writeInt(12);
-  data.writeString("parcel");
+  data.writeString('parcel');
   let number = data.readInt();
   hilog.info(0x0000, 'testTag', 'number is ' + number);
   data.rewindRead(0);
@@ -5356,7 +5346,7 @@ class MySequenceable implements rpc.Sequenceable {
 }
 
 try {
-  let sequenceable = new MySequenceable(1, "aaa");
+  let sequenceable = new MySequenceable(1, 'aaa');
   let data = rpc.MessageParcel.create();
   let result = data.writeSequenceable(sequenceable);
   hilog.info(0x0000, 'testTag', 'writeSequenceable is ' + result);
@@ -5416,11 +5406,11 @@ class MySequenceable implements rpc.Sequenceable {
 }
 
 try {
-  let sequenceable = new MySequenceable(1, "aaa");
+  let sequenceable = new MySequenceable(1, 'aaa');
   let data = rpc.MessageParcel.create();
   let result = data.writeSequenceable(sequenceable);
   hilog.info(0x0000, 'testTag', 'writeSequenceable is ' + result);
-  let ret = new MySequenceable(0, "");
+  let ret = new MySequenceable(0, '');
   let result2 = data.readSequenceable(ret);
   hilog.info(0x0000, 'testTag', 'readSequenceable is ' + result2);
 } catch (error) {
@@ -5461,8 +5451,8 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
   let data = rpc.MessageParcel.create();
-  let ByteArrayVar = [1, 2, 3, 4, 5];
-  let result = data.writeByteArray(ByteArrayVar);
+  let byteArrayVar = [1, 2, 3, 4, 5];
+  let result = data.writeByteArray(byteArrayVar);
   hilog.info(0x0000, 'testTag', 'writeByteArray is ' + result);
 } catch (error) {
   hilog.error(0x0000, 'testTag', 'error ' + error);
@@ -5496,8 +5486,8 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
   let data = rpc.MessageParcel.create();
-  let ByteArrayVar = [1, 2, 3, 4, 5];
-  let result = data.writeByteArray(ByteArrayVar);
+  let byteArrayVar = [1, 2, 3, 4, 5];
+  let result = data.writeByteArray(byteArrayVar);
   let array: Array<number> = new Array(5);
   data.readByteArray(array);
   hilog.info(0x0000, 'testTag', 'readByteArray is ' + array);
@@ -5533,8 +5523,8 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
   let data = rpc.MessageParcel.create();
-  let ByteArrayVar = [1, 2, 3, 4, 5];
-  let result = data.writeByteArray(ByteArrayVar);
+  let byteArrayVar = [1, 2, 3, 4, 5];
+  let result = data.writeByteArray(byteArrayVar);
   hilog.info(0x0000, 'testTag', 'writeByteArray is ' + result);
   let array = data.readByteArray();
   hilog.info(0x0000, 'testTag', 'readByteArray is ' + array);
@@ -6292,7 +6282,7 @@ try {
   hilog.info(0x0000, 'testTag', 'writeCharArray is ' + result);
   let array: Array<number> = new Array(3);
   data.readCharArray(array);
-  hilog.info(0x0000, 'testTag', 'writeCharArray is ' + result);
+  hilog.info(0x0000, 'testTag', 'readCharArray is ' + array);
 } catch (error) {
   hilog.error(0x0000, 'testTag', 'error ' + error);
 }
@@ -6367,7 +6357,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
   let data = rpc.MessageParcel.create();
-  let result = data.writeStringArray(["abc", "def"]);
+  let result = data.writeStringArray(['abc', 'def']);
   hilog.info(0x0000, 'testTag', 'writeStringArray is ' + result);
 } catch (error) {
   hilog.error(0x0000, 'testTag', 'error ' + error);
@@ -6401,7 +6391,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
   let data = rpc.MessageParcel.create();
-  let result = data.writeStringArray(["abc", "def"]);
+  let result = data.writeStringArray(['abc', 'def']);
   hilog.info(0x0000, 'testTag', 'writeStringArray is ' + result);
   let array: Array<string> = new Array(2);
   data.readStringArray(array);
@@ -6438,7 +6428,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
   let data = rpc.MessageParcel.create();
-  let result = data.writeStringArray(["abc", "def"]);
+  let result = data.writeStringArray(['abc', 'def']);
   hilog.info(0x0000, 'testTag', 'writeStringArray is ' + result);
   let array = data.readStringArray();
   hilog.info(0x0000, 'testTag', 'readStringArray is ' + array);
@@ -6476,7 +6466,7 @@ class TestRemoteObject extends rpc.RemoteObject {
     super(descriptor);
   }
 
-onRemoteRequest(code: number, data: rpc.MessageParcel, reply: rpc.MessageParcel, option: rpc.MessageOption): boolean {
+  onRemoteRequest(code: number, data: rpc.MessageParcel, reply: rpc.MessageParcel, option: rpc.MessageOption): boolean {
     if (code === 1) {
       hilog.info(0x0000, 'testTag', 'RpcServer: onRemoteRequest called');
       reply.writeNoException();
@@ -6518,20 +6508,20 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 let proxy: rpc.IRemoteObject | undefined;
 let connect: common.ConnectOptions = {
   onConnect: (elementName, remoteProxy) => {
-    hilog.info(0x0000, 'testTag', 'js onConnect called');
+    hilog.info(0x0000, 'testTag', 'connection succeeded');
     proxy = remoteProxy;
   },
   onDisconnect: (elementName) => {
-    hilog.info(0x0000, 'testTag', 'onDisconnect');
+    hilog.info(0x0000, 'testTag', 'disconnection succeeded');
   },
   onFailed: () => {
-    hilog.info(0x0000, 'testTag', 'onFailed');
+    hilog.error(0x0000, 'testTag', 'connection failed');
   }
 };
 let want: Want = {
-  // Obtain the package name and ability name on the server.
-  bundleName: "com.ohos.server",
-  abilityName: "com.ohos.server.EntryAbility",
+  // Obtain the bundle name and ability name on the server.
+  bundleName: 'com.ohos.server',
+  abilityName: 'com.ohos.server.EntryAbility',
 };
 
 // Use this method to connect to the ability for the FA model.
@@ -6549,7 +6539,7 @@ let connectionId = context.connectServiceExtensionAbility(want, connect);
 import { rpc } from '@kit.IPCKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
-try { 
+try {
   let option = new rpc.MessageOption();
   let data = rpc.MessageParcel.create();
   let reply = rpc.MessageParcel.create();
@@ -6575,7 +6565,7 @@ try {
       reply.reclaim();
     });
   }
-} catch (error) { 
+} catch (error) {
   hilog.error(0x0000, 'testTag', 'error ' + error);
 }
 ```
@@ -6631,9 +6621,9 @@ class MySequenceable implements rpc.Sequenceable {
 }
 
 try {
-  let sequenceable = new MySequenceable(1, "aaa");
-  let sequenceable2 = new MySequenceable(2, "bbb");
-  let sequenceable3 = new MySequenceable(3, "ccc");
+  let sequenceable = new MySequenceable(1, 'aaa');
+  let sequenceable2 = new MySequenceable(2, 'bbb');
+  let sequenceable3 = new MySequenceable(3, 'ccc');
   let a = [sequenceable, sequenceable2, sequenceable3];
   let data = rpc.MessageParcel.create();
   let result = data.writeSequenceableArray(a);
@@ -6688,14 +6678,14 @@ class MySequenceable implements rpc.Sequenceable {
 }
 
 try {
-  let sequenceable = new MySequenceable(1, "aaa");
-  let sequenceable2 = new MySequenceable(2, "bbb");
-  let sequenceable3 = new MySequenceable(3, "ccc");
+  let sequenceable = new MySequenceable(1, 'aaa');
+  let sequenceable2 = new MySequenceable(2, 'bbb');
+  let sequenceable3 = new MySequenceable(3, 'ccc');
   let a = [sequenceable, sequenceable2, sequenceable3];
   let data = rpc.MessageParcel.create();
   let result = data.writeSequenceableArray(a);
   hilog.info(0x0000, 'testTag', 'writeSequenceableArray is ' + result);
-  let b = [new MySequenceable(0, ""), new MySequenceable(0, ""), new MySequenceable(0, "")];
+  let b = [new MySequenceable(0, ''), new MySequenceable(0, ''), new MySequenceable(0, '')];
   data.readSequenceableArray(b);
 } catch (error) {
   hilog.error(0x0000, 'testTag', 'error ' + error);
@@ -6745,7 +6735,7 @@ class TestRemoteObject extends rpc.RemoteObject {
 }
 
 try {
-  let a = [new TestRemoteObject("testObject1"), new TestRemoteObject("testObject2"), new TestRemoteObject("testObject3")];
+  let a = [new TestRemoteObject('testObject1'), new TestRemoteObject('testObject2'), new TestRemoteObject('testObject3')];
   let data = rpc.MessageParcel.create();
   let result = data.writeRemoteObjectArray(a);
   hilog.info(0x0000, 'testTag', 'writeRemoteObjectArray is ' + result);
@@ -6791,8 +6781,8 @@ class TestRemoteObject extends rpc.RemoteObject {
 }
 
 try {
-  let a = [new TestRemoteObject("testObject1"), new TestRemoteObject("testObject2"),
-    new TestRemoteObject("testObject3")];
+  let a = [new TestRemoteObject('testObject1'), new TestRemoteObject('testObject2'),
+    new TestRemoteObject('testObject3')];
   let data = rpc.MessageParcel.create();
   data.writeRemoteObjectArray(a);
   let b: Array<rpc.IRemoteObject> = new Array(3);
@@ -6840,8 +6830,8 @@ class TestRemoteObject extends rpc.RemoteObject {
 }
 
 try {
-  let a = [new TestRemoteObject("testObject1"), new TestRemoteObject("testObject2"),
-    new TestRemoteObject("testObject3")];
+  let a = [new TestRemoteObject('testObject1'), new TestRemoteObject('testObject2'),
+    new TestRemoteObject('testObject3')];
   let data = rpc.MessageParcel.create();
   let result = data.writeRemoteObjectArray(a);
   hilog.info(0x0000, 'testTag', 'readRemoteObjectArray is ' + result);
@@ -6879,7 +6869,7 @@ import { fileIo } from '@kit.CoreFileKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
-  let filePath = "path/to/file";
+  let filePath = 'path/to/file';
   let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
   rpc.MessageParcel.closeFileDescriptor(file.fd);
 } catch (error) {
@@ -6920,7 +6910,7 @@ import { fileIo } from '@kit.CoreFileKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
-  let filePath = "path/to/file";
+  let filePath = 'path/to/file';
   let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
   rpc.MessageParcel.dupFileDescriptor(file.fd);
 } catch (error) {
@@ -6956,7 +6946,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
   let parcel = new rpc.MessageParcel();
-  let filePath = "path/to/file";
+  let filePath = 'path/to/file';
   let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
   let writeResult = parcel.writeFileDescriptor(file.fd);
   hilog.info(0x0000, 'testTag', 'parcel writeFd result is ' + writeResult);
@@ -7001,7 +6991,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
   let parcel = new rpc.MessageParcel();
-  let filePath = "path/to/file";
+  let filePath = 'path/to/file';
   let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
   let writeResult = parcel.writeFileDescriptor(file.fd);
   hilog.info(0x0000, 'testTag', 'parcel writeFd result is ' + writeResult);
@@ -7038,7 +7028,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
   let parcel = new rpc.MessageParcel();
-  let filePath = "path/to/file";
+  let filePath = 'path/to/file';
   let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
   parcel.writeFileDescriptor(file.fd);
   let readFD = parcel.readFileDescriptor();
@@ -7081,7 +7071,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
   let parcel = new rpc.MessageParcel();
-  let ashmem = rpc.Ashmem.createAshmem("ashmem", 1024);
+  let ashmem = rpc.Ashmem.createAshmem('ashmem', 1024);
   let isWriteSuccess = parcel.writeAshmem(ashmem);
   hilog.info(0x0000, 'testTag', 'write ashmem to result is ' + isWriteSuccess);
 } catch (error) {
@@ -7116,7 +7106,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
   let parcel = new rpc.MessageParcel();
-  let ashmem = rpc.Ashmem.createAshmem("ashmem", 1024);
+  let ashmem = rpc.Ashmem.createAshmem('ashmem', 1024);
   let isWriteSuccess = parcel.writeAshmem(ashmem);
   hilog.info(0x0000, 'testTag', 'write ashmem to result is ' + isWriteSuccess);
   let readAshmem = parcel.readAshmem();
@@ -7298,10 +7288,10 @@ class MyParcelable implements rpc.Parcelable {
 }
 
 try {
-  let parcelable = new MyParcelable(1, "aaa");
+  let parcelable = new MyParcelable(1, 'aaa');
   let data = rpc.MessageSequence.create();
   data.writeParcelable(parcelable);
-  let ret = new MyParcelable(0, "");
+  let ret = new MyParcelable(0, '');
   data.readParcelable(ret);
 } catch (error) {
   hilog.error(0x0000, 'testTag', 'error ' + error);
@@ -7355,10 +7345,10 @@ class MyParcelable implements rpc.Parcelable {
 }
 
 try {
-  let parcelable = new MyParcelable(1, "aaa");
+  let parcelable = new MyParcelable(1, 'aaa');
   let data = rpc.MessageSequence.create();
   data.writeParcelable(parcelable);
-  let ret = new MyParcelable(0, "");
+  let ret = new MyParcelable(0, '');
   data.readParcelable(ret);
 } catch (error) {
   hilog.error(0x0000, 'testTag', 'error ' + error);
@@ -7426,11 +7416,11 @@ class MySequenceable implements rpc.Sequenceable {
 }
 
 try {
-  let sequenceable = new MySequenceable(1, "aaa");
+  let sequenceable = new MySequenceable(1, 'aaa');
   let data = rpc.MessageParcel.create();
   let result = data.writeSequenceable(sequenceable);
   hilog.info(0x0000, 'testTag', 'writeSequenceable is ' + result);
-  let ret = new MySequenceable(0, "");
+  let ret = new MySequenceable(0, '');
   let result2 = data.readSequenceable(ret);
   hilog.info(0x0000, 'testTag', 'readSequenceable is ' + result2);
 } catch (error) {
@@ -7489,11 +7479,11 @@ class MySequenceable implements rpc.Sequenceable {
 }
 
 try {
-  let sequenceable = new MySequenceable(1, "aaa");
+  let sequenceable = new MySequenceable(1, 'aaa');
   let data = rpc.MessageParcel.create();
   let result = data.writeSequenceable(sequenceable);
   hilog.info(0x0000, 'testTag', 'writeSequenceable is ' + result);
-  let ret = new MySequenceable(0, "");
+  let ret = new MySequenceable(0, '');
   let result2 = data.readSequenceable(ret);
   hilog.info(0x0000, 'testTag', 'readSequenceable is ' + result2);
 } catch (error) {
@@ -7531,7 +7521,7 @@ class TestAbility extends rpc.RemoteObject {
     return this;
   }
 }
-let remoteObject = new TestAbility("testObject").asObject();
+let remoteObject = new TestAbility('testObject').asObject();
 ```
 
 **Example**
@@ -7551,20 +7541,20 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 let proxy: rpc.IRemoteObject | undefined;
 let connect: common.ConnectOptions = {
   onConnect: (elementName, remoteProxy) => {
-    hilog.info(0x0000, 'testTag', 'js onConnect called');
+    hilog.info(0x0000, 'testTag', 'connection succeeded');
     proxy = remoteProxy;
   },
   onDisconnect: (elementName) => {
-    hilog.info(0x0000, 'testTag', 'onDisconnect');
+    hilog.info(0x0000, 'testTag', 'disconnection succeeded');
   },
   onFailed: () => {
-    hilog.info(0x0000, 'testTag', 'onFailed');
+    hilog.error(0x0000, 'testTag', 'connection failed');
   }
 };
 let want: Want  = {
-  // Obtain the package name and ability name on the server.
-  bundleName: "com.ohos.server",
-  abilityName: "com.ohos.server.EntryAbility",
+  // Obtain the bundle name and ability name on the server.
+  bundleName: 'com.ohos.server',
+  abilityName: 'com.ohos.server.EntryAbility',
 };
 
 // Use this method to connect to the ability for the FA model.
@@ -7814,7 +7804,7 @@ Sends a **MessageParcel** message to the remote process in synchronous or asynch
 
 sendMessageRequest(code: number, data: MessageSequence, reply: MessageSequence, options: MessageOption, callback: AsyncCallback&lt;RequestResult&gt;): void
 
-Sends a **MessageSequence** message to the remote process in synchronous or asynchronous mode. If asynchronous mode is set in **options**, a callback will be called immediately, and the reply message is empty. The specific response needs to be obtained from the callback on the service side. If synchronous mode is set in **options**, a callback will be invoked when the response to **sendRequest** is returned, and the reply message contains the returned information.
+Sends a **MessageSequence** message to the remote process in synchronous or asynchronous mode. If asynchronous mode is set in **options**, a callback will be called immediately, and the reply message is empty. The specific response needs to be obtained from the callback on the service side. If synchronous mode is set in **options**, a callback will be invoked when the response to **sendMessageRequest** is returned, and the reply message contains the returned information.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -8074,20 +8064,20 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 let proxy: rpc.IRemoteObject | undefined;
 let connect: common.ConnectOptions = {
   onConnect: (elementName, remoteProxy) => {
-    hilog.info(0x0000, 'testTag', 'js onConnect called');
+    hilog.info(0x0000, 'testTag', 'connection succeeded');
     proxy = remoteProxy;
   },
   onDisconnect: (elementName) => {
-    hilog.info(0x0000, 'testTag', 'onDisconnect');
+    hilog.info(0x0000, 'testTag', 'disconnection succeeded');
   },
   onFailed: () => {
-    hilog.info(0x0000, 'testTag', 'onFailed');
+    hilog.error(0x0000, 'testTag', 'connection failed');
   }
 };
 let want: Want = {
-  // Obtain the package name and ability name on the server.
-  bundleName: "com.ohos.server",
-  abilityName: "com.ohos.server.EntryAbility",
+  // Obtain the bundle name and ability name on the server.
+  bundleName: 'com.ohos.server',
+  abilityName: 'com.ohos.server.EntryAbility',
 };
 
 // Use this method to connect to the ability for the FA model.
@@ -8111,7 +8101,7 @@ try {
   let data = rpc.MessageParcel.create();
   let reply = rpc.MessageParcel.create();
   data.writeInt(1);
-  data.writeString("hello");
+  data.writeString('hello');
   if (proxy != undefined) {
     let ret: boolean = proxy.sendRequest(1, data, reply, option);
     if (ret) {
@@ -8178,20 +8168,20 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 let proxy: rpc.IRemoteObject | undefined;
 let connect: common.ConnectOptions = {
   onConnect: (elementName, remoteProxy) => {
-    hilog.info(0x0000, 'testTag', 'js onConnect called');
+    hilog.info(0x0000, 'testTag', 'connection succeeded');
     proxy = remoteProxy;
   },
   onDisconnect: (elementName) => {
-    hilog.info(0x0000, 'testTag', 'onDisconnect');
+    hilog.info(0x0000, 'testTag', 'disconnection succeeded');
   },
   onFailed: () => {
-    hilog.info(0x0000, 'testTag', 'onFailed');
+    hilog.error(0x0000, 'testTag', 'connection failed');
   }
 };
 let want: Want = {
-  // Obtain the package name and ability name on the server.
-  bundleName: "com.ohos.server",
-  abilityName: "com.ohos.server.EntryAbility",
+  // Obtain the bundle name and ability name on the server.
+  bundleName: 'com.ohos.server',
+  abilityName: 'com.ohos.server.EntryAbility',
 };
 
 // Use this method to connect to the ability for the FA model.
@@ -8214,7 +8204,7 @@ try {
   let data = rpc.MessageSequence.create();
   let reply = rpc.MessageSequence.create();
   data.writeInt(1);
-  data.writeString("hello");
+  data.writeString('hello');
   if (proxy != undefined) {
     proxy.sendMessageRequest(1, data, reply, option)
     .then((result: rpc.RequestResult) => {
@@ -8284,20 +8274,20 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 let proxy: rpc.IRemoteObject | undefined;
 let connect: common.ConnectOptions = {
   onConnect: (elementName, remoteProxy) => {
-    hilog.info(0x0000, 'testTag', 'js onConnect called');
+    hilog.info(0x0000, 'testTag', 'connection succeeded');
     proxy = remoteProxy;
   },
   onDisconnect: (elementName) => {
-    hilog.info(0x0000, 'testTag', 'onDisconnect');
+    hilog.info(0x0000, 'testTag', 'disconnection succeeded');
   },
   onFailed: () => {
-    hilog.info(0x0000, 'testTag', 'onFailed');
+    hilog.error(0x0000, 'testTag', 'connection failed');
   }
 };
 let want: Want = {
-  // Obtain the package name and ability name on the server.
-  bundleName: "com.ohos.server",
-  abilityName: "com.ohos.server.EntryAbility",
+  // Obtain the bundle name and ability name on the server.
+  bundleName: 'com.ohos.server',
+  abilityName: 'com.ohos.server.EntryAbility',
 };
 
 // Use this method to connect to the ability for the FA model.
@@ -8321,7 +8311,7 @@ try {
   let data = rpc.MessageParcel.create();
   let reply = rpc.MessageParcel.create();
   data.writeInt(1);
-  data.writeString("hello");
+  data.writeString('hello');
   if (proxy != undefined) {
     let a = proxy.sendRequest(1, data, reply, option) as Object;
     let b = a as Promise<rpc.SendRequestResult>;
@@ -8442,20 +8432,20 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 let proxy: rpc.IRemoteObject | undefined;
 let connect: common.ConnectOptions = {
   onConnect: (elementName, remoteProxy) => {
-    hilog.info(0x0000, 'testTag', 'js onConnect called');
+    hilog.info(0x0000, 'testTag', 'connection succeeded');
     proxy = remoteProxy;
   },
   onDisconnect: (elementName) => {
-    hilog.info(0x0000, 'testTag', 'onDisconnect');
+    hilog.info(0x0000, 'testTag', 'disconnection succeeded');
   },
   onFailed: () => {
-    hilog.info(0x0000, 'testTag', 'onFailed');
+    hilog.error(0x0000, 'testTag', 'connection failed');
   }
 };
 let want: Want = {
-  // Obtain the package name and ability name on the server.
-  bundleName: "com.ohos.server",
-  abilityName: "com.ohos.server.EntryAbility",
+  // Obtain the bundle name and ability name on the server.
+  bundleName: 'com.ohos.server',
+  abilityName: 'com.ohos.server.EntryAbility',
 };
 
 // Use this method to connect to the ability for the FA model.
@@ -8477,7 +8467,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 if (proxy != undefined) {
   try {
-    let broker: rpc.IRemoteBroker = proxy.getLocalInterface("testObject");
+    let broker: rpc.IRemoteBroker = proxy.getLocalInterface('testObject');
     hilog.info(0x0000, 'testTag', 'getLocalInterface is ' + broker);
   } catch (error) {
     let e: BusinessError = error as BusinessError;
@@ -8528,20 +8518,20 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 let proxy: rpc.IRemoteObject | undefined;
 let connect: common.ConnectOptions = {
   onConnect: (elementName, remoteProxy) => {
-    hilog.info(0x0000, 'testTag', 'js onConnect called');
+    hilog.info(0x0000, 'testTag', 'connection succeeded');
     proxy = remoteProxy;
   },
   onDisconnect: (elementName) => {
-    hilog.info(0x0000, 'testTag', 'onDisconnect');
+    hilog.info(0x0000, 'testTag', 'disconnection succeeded');
   },
   onFailed: () => {
-    hilog.info(0x0000, 'testTag', 'onFailed');
+    hilog.error(0x0000, 'testTag', 'connection failed');
   }
 };
 let want: Want = {
-  // Obtain the package name and ability name on the server.
-  bundleName: "com.ohos.server",
-  abilityName: "com.ohos.server.EntryAbility",
+  // Obtain the bundle name and ability name on the server.
+  bundleName: 'com.ohos.server',
+  abilityName: 'com.ohos.server.EntryAbility',
 };
 
 // Use this method to connect to the ability for the FA model.
@@ -8561,7 +8551,7 @@ import { rpc } from '@kit.IPCKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 if (proxy != undefined) {
-  let broker: rpc.IRemoteBroker = proxy.queryLocalInterface("testObject");
+  let broker: rpc.IRemoteBroker = proxy.queryLocalInterface('testObject');
   hilog.info(0x0000, 'testTag', 'queryLocalInterface is ' + broker);
 }
 ```
@@ -8607,20 +8597,20 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 let proxy: rpc.IRemoteObject | undefined;
 let connect: common.ConnectOptions = {
   onConnect: (elementName, remoteProxy) => {
-    hilog.info(0x0000, 'testTag', 'js onConnect called');
+    hilog.info(0x0000, 'testTag', 'connection succeeded');
     proxy = remoteProxy;
   },
   onDisconnect: (elementName) => {
-    hilog.info(0x0000, 'testTag', 'onDisconnect');
+    hilog.info(0x0000, 'testTag', 'disconnection succeeded');
   },
   onFailed: () => {
-    hilog.info(0x0000, 'testTag', 'onFailed');
+    hilog.error(0x0000, 'testTag', 'connection failed');
   }
 };
 let want: Want = {
-  // Obtain the package name and ability name on the server.
-  bundleName: "com.ohos.server",
-  abilityName: "com.ohos.server.EntryAbility",
+  // Obtain the bundle name and ability name on the server.
+  bundleName: 'com.ohos.server',
+  abilityName: 'com.ohos.server.EntryAbility',
 };
 
 // Use this method to connect to the ability for the FA model.
@@ -8698,20 +8688,20 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 let proxy: rpc.IRemoteObject | undefined;
 let connect: common.ConnectOptions = {
   onConnect: (elementName, remoteProxy) => {
-    hilog.info(0x0000, 'testTag', 'js onConnect called');
+    hilog.info(0x0000, 'testTag', 'connection succeeded');
     proxy = remoteProxy;
   },
   onDisconnect: (elementName) => {
-    hilog.info(0x0000, 'testTag', 'onDisconnect');
+    hilog.info(0x0000, 'testTag', 'disconnection succeeded');
   },
   onFailed: () => {
-    hilog.info(0x0000, 'testTag', 'onFailed');
+    hilog.error(0x0000, 'testTag', 'connection failed');
   }
 };
 let want: Want = {
-  // Obtain the package name and ability name on the server.
-  bundleName: "com.ohos.server",
-  abilityName: "com.ohos.server.EntryAbility",
+  // Obtain the bundle name and ability name on the server.
+  bundleName: 'com.ohos.server',
+  abilityName: 'com.ohos.server.EntryAbility',
 };
 
 // Use this method to connect to the ability for the FA model.
@@ -8782,20 +8772,20 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 let proxy: rpc.IRemoteObject | undefined;
 let connect: common.ConnectOptions = {
   onConnect: (elementName, remoteProxy) => {
-    hilog.info(0x0000, 'testTag', 'js onConnect called');
+    hilog.info(0x0000, 'testTag', 'connection succeeded');
     proxy = remoteProxy;
   },
   onDisconnect: (elementName) => {
-    hilog.info(0x0000, 'testTag', 'onDisconnect');
+    hilog.info(0x0000, 'testTag', 'disconnection succeeded');
   },
   onFailed: () => {
-    hilog.info(0x0000, 'testTag', 'onFailed');
+    hilog.error(0x0000, 'testTag', 'connection failed');
   }
 };
 let want: Want = {
-  // Obtain the package name and ability name on the server.
-  bundleName: "com.ohos.server",
-  abilityName: "com.ohos.server.EntryAbility",
+  // Obtain the bundle name and ability name on the server.
+  bundleName: 'com.ohos.server',
+  abilityName: 'com.ohos.server.EntryAbility',
 };
 
 // Use this method to connect to the ability for the FA model.
@@ -8874,20 +8864,20 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 let proxy: rpc.IRemoteObject | undefined;
 let connect: common.ConnectOptions = {
   onConnect: (elementName, remoteProxy) => {
-    hilog.info(0x0000, 'testTag', 'js onConnect called');
+    hilog.info(0x0000, 'testTag', 'connection succeeded');
     proxy = remoteProxy;
   },
   onDisconnect: (elementName) => {
-    hilog.info(0x0000, 'testTag', 'onDisconnect');
+    hilog.info(0x0000, 'testTag', 'disconnection succeeded');
   },
   onFailed: () => {
-    hilog.info(0x0000, 'testTag', 'onFailed');
+    hilog.error(0x0000, 'testTag', 'connection failed');
   }
 };
 let want: Want = {
-  // Obtain the package name and ability name on the server.
-  bundleName: "com.ohos.server",
-  abilityName: "com.ohos.server.EntryAbility",
+  // Obtain the bundle name and ability name on the server.
+  bundleName: 'com.ohos.server',
+  abilityName: 'com.ohos.server.EntryAbility',
 };
 
 // Use this method to connect to the ability for the FA model.
@@ -8958,20 +8948,20 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 let proxy: rpc.IRemoteObject | undefined;
 let connect: common.ConnectOptions = {
   onConnect: (elementName, remoteProxy) => {
-    hilog.info(0x0000, 'testTag', 'js onConnect called');
+    hilog.info(0x0000, 'testTag', 'connection succeeded');
     proxy = remoteProxy;
   },
   onDisconnect: (elementName) => {
-    hilog.info(0x0000, 'testTag', 'onDisconnect');
+    hilog.info(0x0000, 'testTag', 'disconnection succeeded');
   },
   onFailed: () => {
-    hilog.info(0x0000, 'testTag', 'onFailed');
+    hilog.error(0x0000, 'testTag', 'connection failed');
   }
 };
 let want: Want = {
-  // Obtain the package name and ability name on the server.
-  bundleName: "com.ohos.server",
-  abilityName: "com.ohos.server.EntryAbility",
+  // Obtain the bundle name and ability name on the server.
+  bundleName: 'com.ohos.server',
+  abilityName: 'com.ohos.server.EntryAbility',
 };
 
 // Use this method to connect to the ability for the FA model.
@@ -9037,20 +9027,20 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 let proxy: rpc.IRemoteObject | undefined;
 let connect: common.ConnectOptions = {
   onConnect: (elementName, remoteProxy) => {
-    hilog.info(0x0000, 'testTag', 'js onConnect called');
+    hilog.info(0x0000, 'testTag', 'connection succeeded');
     proxy = remoteProxy;
   },
   onDisconnect: (elementName) => {
-    hilog.info(0x0000, 'testTag', 'onDisconnect');
+    hilog.info(0x0000, 'testTag', 'disconnection succeeded');
   },
   onFailed: () => {
-    hilog.info(0x0000, 'testTag', 'onFailed');
+    hilog.error(0x0000, 'testTag', 'connection failed');
   }
 };
 let want: Want = {
-  // Obtain the package name and ability name on the server.
-  bundleName: "com.ohos.server",
-  abilityName: "com.ohos.server.EntryAbility",
+  // Obtain the bundle name and ability name on the server.
+  bundleName: 'com.ohos.server',
+  abilityName: 'com.ohos.server.EntryAbility',
 };
 
 // Use this method to connect to the ability for the FA model.
@@ -9106,20 +9096,20 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 let proxy: rpc.IRemoteObject | undefined;
 let connect: common.ConnectOptions = {
   onConnect: (elementName, remoteProxy) => {
-    hilog.info(0x0000, 'testTag', 'js onConnect called');
+    hilog.info(0x0000, 'testTag', 'connection succeeded');
     proxy = remoteProxy;
   },
   onDisconnect: (elementName) => {
-    hilog.info(0x0000, 'testTag', 'onDisconnect');
+    hilog.info(0x0000, 'testTag', 'disconnection succeeded');
   },
   onFailed: () => {
-    hilog.info(0x0000, 'testTag', 'onFailed');
+    hilog.error(0x0000, 'testTag', 'connection failed');
   }
 };
 let want: Want = {
-  // Obtain the package name and ability name on the server.
-  bundleName: "com.ohos.server",
-  abilityName: "com.ohos.server.EntryAbility",
+  // Obtain the bundle name and ability name on the server.
+  bundleName: 'com.ohos.server',
+  abilityName: 'com.ohos.server.EntryAbility',
 };
 
 // Use this method to connect to the ability for the FA model.
@@ -9243,7 +9233,7 @@ try {
   let option = new rpc.MessageOption();
   let result = option.isAsync();
 } catch (error) {
-  hilog.info(0x0000, 'testTag', 'error ' + error);
+  hilog.error(0x0000, 'testTag', 'error ' + error);
 }
 ```
 
@@ -9273,7 +9263,7 @@ try {
   let option = new rpc.MessageOption();
   option.setAsync(true);
 } catch (error) {
-  hilog.info(0x0000, 'testTag', 'error ' + error);
+  hilog.error(0x0000, 'testTag', 'error ' + error);
 }
 ```
 
@@ -9690,7 +9680,7 @@ class TestRemoteObject extends rpc.RemoteObject {
   }
 }
 try {
-  let remoteObject = new TestRemoteObject("aaa");
+  let remoteObject = new TestRemoteObject('aaa');
   rpc.IPCSkeleton.flushCmdBuffer(remoteObject);
 } catch (error) {
   let e: BusinessError = error as BusinessError;
@@ -9741,13 +9731,11 @@ class TestRemoteObject extends rpc.RemoteObject {
   }
 }
 try {
-  let remoteObject = new TestRemoteObject("aaa");
+  let remoteObject = new TestRemoteObject('aaa');
   let ret = rpc.IPCSkeleton.flushCommands(remoteObject);
   hilog.info(0x0000, 'testTag', 'RpcServer: flushCommands result: ' + ret);
 } catch (error) {
-  let e: BusinessError = error as BusinessError;
-  hilog.error(0x0000, 'testTag', 'proxy flushCmdBuffer fail, errorCode ' + e.code);
-  hilog.error(0x0000, 'testTag', 'proxy flushCmdBuffer fail, errorMessage ' + e.message);
+  hilog.error(0x0000, 'testTag', 'proxy flushCmdBuffer fail, error ' + error);
 }
 ```
 
@@ -9789,7 +9777,7 @@ class Stub extends rpc.RemoteObject {
 
 static restoreCallingIdentity(identity: string): void
 
-Restores the UID and PID to those of the remote user. This API is a static method. It is usually called after **resetCallingIdentity**, and the UID and PID of the remote user returned by **resetCallingIdentity** are required. This API is supported only in the IPC context [onRemoteMessageRequest](#onremotemessagerequest9); otherwise, it returns directly.
+Restores the UID and PID of the remote user. This API is a static method. It is usually called after **resetCallingIdentity**, and the UID and PID of the remote user returned by **resetCallingIdentity** are required. This API is supported only in the IPC context [onRemoteMessageRequest](#onremotemessagerequest9); otherwise, it returns directly.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -9941,7 +9929,7 @@ Sends a **MessageParcel** message to the remote process in synchronous or asynch
 import { rpc } from '@kit.IPCKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
-class testRemoteObject extends rpc.RemoteObject {
+class TestRemoteObject extends rpc.RemoteObject {
   onRemoteRequest(code: number, data: rpc.MessageParcel, reply: rpc.MessageParcel,
     option: rpc.MessageOption): boolean {
     // Process services based on the actual service logic.
@@ -9949,12 +9937,12 @@ class testRemoteObject extends rpc.RemoteObject {
   }
 }
 try {
-  let testRemoteObject = new TestRemoteObject("testObject");
+  let testRemoteObject = new TestRemoteObject('testObject');
   let option = new rpc.MessageOption();
   let data = rpc.MessageParcel.create();
   let reply = rpc.MessageParcel.create();
   data.writeInt(1);
-  data.writeString("hello");
+  data.writeString('hello');
   let ret: boolean = testRemoteObject.sendRequest(1, data, reply, option);
   if (ret) {
     hilog.info(0x0000, 'testTag', 'sendRequest got result');
@@ -10019,12 +10007,12 @@ class TestRemoteObject extends rpc.RemoteObject {
   }
 }
 try {
-  let testRemoteObject = new TestRemoteObject("testObject");
+  let testRemoteObject = new TestRemoteObject('testObject');
   let option = new rpc.MessageOption();
   let data = rpc.MessageSequence.create();
   let reply = rpc.MessageSequence.create();
   data.writeInt(1);
-  data.writeString("hello");
+  data.writeString('hello');
   testRemoteObject.sendMessageRequest(1, data, reply, option)
     .then((result: rpc.RequestResult) => {
       if (result.errCode === 0) {
@@ -10092,12 +10080,12 @@ class TestRemoteObject extends rpc.RemoteObject {
   }
 }
 try {
-  let testRemoteObject = new TestRemoteObject("testObject");
+  let testRemoteObject = new TestRemoteObject('testObject');
   let option = new rpc.MessageOption();
   let data = rpc.MessageParcel.create();
   let reply = rpc.MessageParcel.create();
   data.writeInt(1);
-  data.writeString("hello");
+  data.writeString('hello');
   let a = testRemoteObject.sendRequest(1, data, reply, option) as Object;
   let b = a as Promise<rpc.SendRequestResult>;
   b.then((result: rpc.SendRequestResult) => {
@@ -10148,7 +10136,7 @@ For details about the error codes, see [RPC Error Codes](errorcode-rpc.md).
   | -------- | -------- |
   | 401      | Parameter error. Possible causes: <br> 1.The number of parameters is incorrect; <br> 2.The parameter type does not match; <br> 3.Failed to obtain the passed object instance. |
 
-### sendRequest<sup>(deprecated)</sup> 
+### sendRequest<sup>(deprecated)</sup>
 
 sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: MessageOption, callback: AsyncCallback&lt;SendRequestResult&gt;): void
 
@@ -10386,13 +10374,13 @@ class TestRemoteObject extends rpc.RemoteObject {
   }
 
   onRemoteRequest(code: number, data: rpc.MessageParcel, reply: rpc.MessageParcel, option: rpc.MessageOption): boolean {
-     if (code === 1) {
-        hilog.info(0x0000, 'testTag', 'RpcServer: sync onRemoteMessageRequest is called');
-        return true;
-     } else {
-        hilog.error(0x0000, 'testTag', 'RpcServer: unknown code: ' + code);
-        return false;
-     }
+    if (code === 1) {
+      hilog.info(0x0000, 'testTag', 'RpcServer: sync onRemoteMessageRequest is called');
+      return true;
+    } else {
+      hilog.error(0x0000, 'testTag', 'RpcServer: unknown code: ' + code);
+      return false;
+    }
   }
     // Only onRemoteMessageRequest is executed.
   onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
@@ -10488,7 +10476,7 @@ class TestRemoteObject extends rpc.RemoteObject {
   }
 }
 try {
-  let testRemoteObject = new TestRemoteObject("testObject");
+  let testRemoteObject = new TestRemoteObject('testObject');
   hilog.info(0x0000, 'testTag', 'RpcServer: getCallingUid: ' + testRemoteObject.getCallingUid());
 } catch (error) {
   hilog.error(0x0000, 'testTag', 'error: ' + error);
@@ -10526,7 +10514,7 @@ class TestRemoteObject extends rpc.RemoteObject {
   }
 }
 try {
-  let testRemoteObject = new TestRemoteObject("testObject");
+  let testRemoteObject = new TestRemoteObject('testObject');
   hilog.info(0x0000, 'testTag', 'RpcServer: getCallingPid: ' + testRemoteObject.getCallingPid());
 } catch (error) {
   hilog.error(0x0000, 'testTag', 'error: ' + error);
@@ -10579,8 +10567,8 @@ class TestRemoteObject extends rpc.RemoteObject {
   }
 }
 try {
-  let testRemoteObject = new TestRemoteObject("testObject");
-  testRemoteObject.getLocalInterface("testObject");
+  let testRemoteObject = new TestRemoteObject('testObject');
+  testRemoteObject.getLocalInterface('testObject');
 } catch (error) {
   let e: BusinessError = error as BusinessError;
   hilog.error(0x0000, 'testTag', 'errorCode ' + e.code);
@@ -10630,8 +10618,8 @@ class TestRemoteObject extends rpc.RemoteObject {
   }
 }
 try {
-  let testRemoteObject = new TestRemoteObject("testObject");
-  testRemoteObject.queryLocalInterface("testObject");
+  let testRemoteObject = new TestRemoteObject('testObject');
+  testRemoteObject.queryLocalInterface('testObject');
 } catch (error) {
   hilog.error(0x0000, 'testTag', 'error: ' + error);
 }
@@ -10677,7 +10665,7 @@ class TestRemoteObject extends rpc.RemoteObject {
   }
 }
 try {
-  let testObject = new TestRemoteObject("ipcTest");
+  let testObject = new TestRemoteObject('ipcTest');
   let descriptor = testObject.getDescriptor();
   hilog.info(0x0000, 'testTag', 'RpcServer: descriptor is ' + descriptor);
 } catch (error) {
@@ -10724,7 +10712,7 @@ class TestRemoteObject extends rpc.RemoteObject {
 }
 
 try {
-  let testRemoteObject = new TestRemoteObject("testObject");
+  let testRemoteObject = new TestRemoteObject('testObject');
   let descriptor = testRemoteObject.getInterfaceDescriptor();
   hilog.info(0x0000, 'testTag', 'RpcServer: descriptor is: ' + descriptor);
 } catch (error) {
@@ -10785,7 +10773,7 @@ class TestRemoteObject extends rpc.RemoteObject {
     // Implement the method logic based on service requirements.
   }
 }
-let testRemoteObject = new TestRemoteObject("testObject");
+let testRemoteObject = new TestRemoteObject('testObject');
 ```
 
 ### attachLocalInterface<sup>(deprecated)</sup>
@@ -10833,7 +10821,7 @@ class TestRemoteObject extends rpc.RemoteObject {
     return true;
   }
 }
-let testRemoteObject = new TestRemoteObject("testObject");
+let testRemoteObject = new TestRemoteObject('testObject');
 ```
 
 ## Ashmem<sup>8+</sup>
@@ -10845,7 +10833,7 @@ The shared memory applies only to cross-process communication within the local d
 - Large data transmission: When transmitting large amounts of data (such as images or files), shared memory can be used to improve efficiency.
 - Cross-process data sharing: Multiple processes need to share access to the same block of memory data.
 - Transmission efficiency: Transmitting large data via shared memory avoids serialization overhead and improves transmission efficiency.
-- Memory reuse: Multiple processes can share access to the same memory, avoiding data duplication.
+- Memory overcommitment: Multiple processes can share access to the same memory, avoiding data duplication.
 - Improved transmission performance: The shared memory mechanism significantly improves the efficiency of large data transmission.
 - Reduced memory usage: Avoiding multiple data copies helps save memory resources.
 
@@ -10899,7 +10887,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let ashmem = rpc.Ashmem.create("ashmem", 1024*1024);
+  let ashmem = rpc.Ashmem.create('ashmem', 1024*1024);
   hilog.info(0x0000, 'testTag', 'create ashmem: ' + ashmem);
   let size = ashmem.getAshmemSize();
   hilog.info(0x0000, 'testTag',  'size is ' + size);
@@ -10943,7 +10931,7 @@ import { rpc } from '@kit.IPCKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
-  let ashmem = rpc.Ashmem.createAshmem("ashmem", 1024*1024);
+  let ashmem = rpc.Ashmem.createAshmem('ashmem', 1024*1024);
   hilog.info(0x0000, 'testTag', 'create ashmem: ' + ashmem);
   let size = ashmem.getAshmemSize();
   hilog.info(0x0000, 'testTag',  'size is ' + size);
@@ -10988,7 +10976,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let ashmem = rpc.Ashmem.create("ashmem", 1024*1024);
+  let ashmem = rpc.Ashmem.create('ashmem', 1024*1024);
   let ashmem2 = rpc.Ashmem.create(ashmem);
   let size = ashmem2.getAshmemSize();
   hilog.info(0x0000, 'testTag', 'size is ' + size);
@@ -11031,7 +11019,7 @@ import { rpc } from '@kit.IPCKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
-  let ashmem = rpc.Ashmem.create("ashmem", 1024*1024);
+  let ashmem = rpc.Ashmem.create('ashmem', 1024*1024);
   let ashmem2 = rpc.Ashmem.createAshmemFromExisting(ashmem);
   let size = ashmem2.getAshmemSize();
   hilog.info(0x0000, 'testTag', 'size is ' + size);
@@ -11059,7 +11047,7 @@ import { rpc } from '@kit.IPCKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
-  let ashmem = rpc.Ashmem.create("ashmem", 1024*1024);
+  let ashmem = rpc.Ashmem.create('ashmem', 1024*1024);
   ashmem.closeAshmem();
 } catch (error) {
   hilog.error(0x0000, 'testTag', 'error is ' + error);
@@ -11081,7 +11069,7 @@ import { rpc } from '@kit.IPCKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
-  let ashmem = rpc.Ashmem.create("ashmem", 1024*1024);
+  let ashmem = rpc.Ashmem.create('ashmem', 1024*1024);
   ashmem.unmapAshmem();
 } catch (error) {
   hilog.error(0x0000, 'testTag', 'error is ' + error);
@@ -11109,7 +11097,7 @@ import { rpc } from '@kit.IPCKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
-  let ashmem = rpc.Ashmem.create("ashmem", 1024*1024);
+  let ashmem = rpc.Ashmem.create('ashmem', 1024*1024);
   let size = ashmem.getAshmemSize();
   hilog.info(0x0000, 'testTag', ' size is ' + size);
 } catch (error) {
@@ -11148,7 +11136,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let ashmem = rpc.Ashmem.create("ashmem", 1024*1024);
+  let ashmem = rpc.Ashmem.create('ashmem', 1024*1024);
   ashmem.mapTypedAshmem(rpc.Ashmem.PROT_READ | rpc.Ashmem.PROT_WRITE);
 } catch (error) {
   let e: BusinessError = error as BusinessError;
@@ -11189,7 +11177,7 @@ import { rpc } from '@kit.IPCKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
-  let ashmem = rpc.Ashmem.create("ashmem", 1024*1024);
+  let ashmem = rpc.Ashmem.create('ashmem', 1024*1024);
   let mapReadAndWrite = ashmem.mapAshmem(rpc.Ashmem.PROT_READ | rpc.Ashmem.PROT_WRITE);
   hilog.info(0x0000, 'testTag', 'map ashmem result is ' + mapReadAndWrite);
 } catch (error) {
@@ -11221,7 +11209,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let ashmem = rpc.Ashmem.create("ashmem", 1024*1024);
+  let ashmem = rpc.Ashmem.create('ashmem', 1024*1024);
   ashmem.mapReadWriteAshmem();
 } catch (error) {
   let e: BusinessError = error as BusinessError;
@@ -11256,7 +11244,7 @@ import { rpc } from '@kit.IPCKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
-  let ashmem = rpc.Ashmem.create("ashmem", 1024*1024);
+  let ashmem = rpc.Ashmem.create('ashmem', 1024*1024);
   let mapResult = ashmem.mapReadAndWriteAshmem();
   hilog.info(0x0000, 'testTag', 'map ashmem result is ' + mapResult);
 } catch (error) {
@@ -11288,7 +11276,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let ashmem = rpc.Ashmem.create("ashmem", 1024*1024);
+  let ashmem = rpc.Ashmem.create('ashmem', 1024*1024);
   ashmem.mapReadonlyAshmem();
 } catch (error) {
   let e: BusinessError = error as BusinessError;
@@ -11323,7 +11311,7 @@ import { rpc } from '@kit.IPCKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
-  let ashmem = rpc.Ashmem.create("ashmem", 1024*1024);
+  let ashmem = rpc.Ashmem.create('ashmem', 1024*1024);
   let mapResult = ashmem.mapReadOnlyAshmem();
   hilog.info(0x0000, 'testTag', 'Ashmem mapReadOnlyAshmem result is ' + mapResult);
 } catch (error) {
@@ -11362,7 +11350,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let ashmem = rpc.Ashmem.create("ashmem", 1024*1024);
+  let ashmem = rpc.Ashmem.create('ashmem', 1024*1024);
   ashmem.setProtectionType(rpc.Ashmem.PROT_READ);
 } catch (error) {
   let e: BusinessError = error as BusinessError;
@@ -11403,11 +11391,10 @@ import { rpc } from '@kit.IPCKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
-  let ashmem = rpc.Ashmem.create("ashmem", 1024*1024);
+  let ashmem = rpc.Ashmem.create('ashmem', 1024*1024);
   let result = ashmem.setProtection(rpc.Ashmem.PROT_READ);
   hilog.info(0x0000, 'testTag', 'Ashmem setProtection result is ' + result);
 } catch (error) {
-  let e: BusinessError = error as BusinessError;
   hilog.error(0x0000, 'testTag', 'error ' + error);
 }
 ```
@@ -11455,7 +11442,7 @@ try {
     int32View[i] = i * 2 + 1;
   }
   let size = buffer.byteLength;
-  let ashmem = rpc.Ashmem.create("ashmem", 1024*1024);
+  let ashmem = rpc.Ashmem.create('ashmem', 1024*1024);
   ashmem.mapReadWriteAshmem();
   ashmem.writeDataToAshmem(buffer, size, 0);
 } catch (error) {
@@ -11505,10 +11492,10 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let ashmem = rpc.Ashmem.create("ashmem", 1024*1024);
+  let ashmem = rpc.Ashmem.create('ashmem', 1024*1024);
   ashmem.mapReadWriteAshmem();
-  let ByteArrayVar = [1, 2, 3, 4, 5];
-  ashmem.writeAshmem(ByteArrayVar, 5, 0);
+  let byteArrayVar = [1, 2, 3, 4, 5];
+  ashmem.writeAshmem(byteArrayVar, 5, 0);
 } catch (error) {
   let e: BusinessError = error as BusinessError;
   hilog.error(0x0000, 'testTag', 'Rpc write to ashmem fail, errorCode ' + e.code);
@@ -11552,11 +11539,11 @@ import { rpc } from '@kit.IPCKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
-  let ashmem = rpc.Ashmem.create("ashmem", 1024*1024);
+  let ashmem = rpc.Ashmem.create('ashmem', 1024*1024);
   let mapResult = ashmem.mapReadAndWriteAshmem();
   hilog.info(0x0000, 'testTag', 'RpcTest map ashmem result is ' + mapResult);
-  let ByteArrayVar = [1, 2, 3, 4, 5];
-  let writeResult = ashmem.writeToAshmem(ByteArrayVar, 5, 0);
+  let byteArrayVar = [1, 2, 3, 4, 5];
+  let writeResult = ashmem.writeToAshmem(byteArrayVar, 5, 0);
   hilog.info(0x0000, 'testTag', 'write to Ashmem result is ' + writeResult);
 } catch (error) {
   hilog.error(0x0000, 'testTag', 'error is ' + error);
@@ -11611,7 +11598,7 @@ try {
     int32View[i] = i * 2 + 1;
   }
   let size = buffer.byteLength;
-  let ashmem = rpc.Ashmem.create("ashmem", 1024*1024);
+  let ashmem = rpc.Ashmem.create('ashmem', 1024*1024);
   ashmem.mapReadWriteAshmem();
   ashmem.writeDataToAshmem(buffer, size, 0);
   let readResult = ashmem.readDataFromAshmem(size, 0);
@@ -11669,10 +11656,10 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let ashmem = rpc.Ashmem.create("ashmem", 1024*1024);
+  let ashmem = rpc.Ashmem.create('ashmem', 1024*1024);
   ashmem.mapReadWriteAshmem();
-  let ByteArrayVar = [1, 2, 3, 4, 5];
-  ashmem.writeAshmem(ByteArrayVar, 5, 0);
+  let byteArrayVar = [1, 2, 3, 4, 5];
+  ashmem.writeAshmem(byteArrayVar, 5, 0);
   let readResult = ashmem.readAshmem(5, 0);
   hilog.info(0x0000, 'testTag', 'read from Ashmem result is ' + readResult);
 } catch (error) {
@@ -11717,11 +11704,11 @@ import { rpc } from '@kit.IPCKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
-  let ashmem = rpc.Ashmem.create("ashmem", 1024*1024);
+  let ashmem = rpc.Ashmem.create('ashmem', 1024*1024);
   let mapResult = ashmem.mapReadAndWriteAshmem();
   hilog.info(0x0000, 'testTag', 'RpcTest map ashmem result is ' + mapResult);
-  let ByteArrayVar = [1, 2, 3, 4, 5];
-  let writeResult = ashmem.writeToAshmem(ByteArrayVar, 5, 0);
+  let byteArrayVar = [1, 2, 3, 4, 5];
+  let writeResult = ashmem.writeToAshmem(byteArrayVar, 5, 0);
   hilog.info(0x0000, 'testTag', 'write to Ashmem result is ' + writeResult);
   let readResult = ashmem.readFromAshmem(5, 0);
   hilog.info(0x0000, 'testTag', 'read to Ashmem result is ' + readResult);
