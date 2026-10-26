@@ -10,7 +10,7 @@ Declares interfaces for shared memory and named semaphores in group-specific dir
 
 **System capability**: SystemCapability.Base
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 **Related module**: [MuslGroupIPC](capi-muslgroupipc.md)
 
@@ -39,7 +39,7 @@ Creates or opens a named semaphore in the directory selected by gid.<br> When O_
 
 **System capability**: SystemCapability.Base
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 **Parameters**:
 
@@ -67,7 +67,7 @@ Removes the name of a group-scoped semaphore.<br> This function is a POSIX statu
 
 **System capability**: SystemCapability.Base
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 **Parameters**:
 
@@ -94,7 +94,7 @@ Creates or opens a shared memory object in the directory selected by gid.<br> Th
 
 **System capability**: SystemCapability.Base
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 **Parameters**:
 
@@ -123,7 +123,7 @@ Removes the name of a group-scoped shared memory object.<br> This function is a 
 
 **System capability**: SystemCapability.Base
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 **Parameters**:
 

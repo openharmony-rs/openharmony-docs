@@ -72,6 +72,7 @@ The file declares the APIs used to create an OH_AVScreenCapture instance.
 | [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_PauseScreenCapture(struct OH_AVScreenCapture *capture)](#oh_avscreencapture_pausescreencapture) | Pause screen capture |
 | [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_ResumeScreenCapture(struct OH_AVScreenCapture *capture)](#oh_avscreencapture_resumescreencapture) | Resume screen capture |
 | [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForMicAEC(OH_AVScreenCapture_CaptureStrategy *strategy, bool enable)](#oh_avscreencapture_strategyformicaec) | Specifies whether to enable the echo cancellation function when the microphone is enabled. |
+| [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForHDRCapture(OH_AVScreenCapture_CaptureStrategy *strategy, bool enable)](#oh_avscreencapture_strategyforhdrcapture) | Specifies whether to output images in HDR vivid format. |
 
 ## Function description
 
@@ -281,7 +282,7 @@ Obtains a video buffer. The application can call this function to obtain informa
 
 | Type | Description |
 | -- | -- |
-| [OH_NativeBuffer*](../../apis-arkgraphics2d/c-apis/capi-nativewindow-oh-nativebuffer.md) | OH_NativeBuffer object if the operation is successful. The application can call the APIs provided by the OH_NativeBuffer object to obtain information such as the video buffer and resolution. |
+| [OH_NativeBuffer*](capi-avscreencapture-oh-nativebuffer.md) | OH_NativeBuffer object if the operation is successful. The application can call the APIs provided by the OH_NativeBuffer object to obtain information such as the video buffer and resolution. |
 
 ### OH_AVScreenCapture_ReleaseAudioBuffer()
 
@@ -1478,7 +1479,7 @@ Specifies whether to enable the echo cancellation function when the microphone i
 
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 **Parameters**:
 
@@ -1486,6 +1487,33 @@ Specifies whether to enable the echo cancellation function when the microphone i
 | -- | -- |
 | [OH_AVScreenCapture_CaptureStrategy](capi-avscreencapture-oh-avscreencapture-capturestrategy.md) *strategy | [in] Pointer to an OH_AVScreenCapture_CaptureStrategy instance |
 | bool enable | [in] Enables or disables the AEC capability when the microphone is captured. The default value is false, indicating that echo cancellation is disabled. If this parameter is set to true, the echo cancellation function of the microphone is enabled. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| [OH_AVSCREEN_CAPTURE_ErrCode](capi-native-avscreen-capture-errors-h.md#oh_avscreen_capture_errcode) | <ul><li>[AV_SCREEN_CAPTURE_ERR_OK](capi-native-avscreen-capture-errors-h.md#oh_avscreen_capture_errcode) : indicates that the operation is successful.</li> <li>[AV_SCREEN_CAPTURE_ERR_INVALID_VAL](capi-native-avscreen-capture-errors-h.md#oh_avscreen_capture_errcode): The input parameter **strategy** is nullptr or the value of **enable** is invalid.</li></ul> |
+
+### OH_AVScreenCapture_StrategyForHDRCapture()
+
+```c
+OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForHDRCapture(OH_AVScreenCapture_CaptureStrategy *strategy, bool enable)
+```
+
+**Description**
+
+Specifies whether to output images in HDR vivid format.
+
+**System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
+
+**Since**: 26.1.0
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| [OH_AVScreenCapture_CaptureStrategy](capi-avscreencapture-oh-avscreencapture-capturestrategy.md) *strategy | [in] Pointer to an OH_AVScreenCapture_CaptureStrategy instance |
+| bool enable | [in] Indicates whether to output HDR VIVID images. The default value is false, indicating that only images in SRD format are output. If this parameter is set to true, the output image is in the HDR VIVID format. |
 
 **Returns**:
 

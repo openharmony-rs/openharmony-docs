@@ -6,7 +6,7 @@ typedef struct ArkUI_PickerIndicatorDivider {...} ArkUI_PickerIndicatorDivider
 
 ## 概述
 
-用于定义分割线样式指示器的样式参数，支持自定义分割线的线宽、颜色以及与容器侧边的距离， 适用于需要美化Picker控件分割线外观的场景。开发者可通过配置该结构体实现个性化分割线效果， 提升UI界面的美观度和用户体验。
+用于定义分割线样式指示器的样式参数，支持自定义分割线的线宽、颜色以及与容器侧边的距离，适用于需要美化Picker控件分割线外观的场景。开发者可通过配置该结构体实现个性化分割线效果，提升UI界面的美观度和用户体验。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -22,9 +22,9 @@ typedef struct ArkUI_PickerIndicatorDivider {...} ArkUI_PickerIndicatorDivider
 
 | 名称 | 描述 |
 | -- | -- |
-| float strokeWidth | 分割线的线宽。 <br> 默认值：0 <br> 单位：vp <br> 取值范围：[0, 选中项高度的一半（即20vp）]。 <br> 小于0时设置失败，大于选中项高度的一半时使用默认值0。不支持百分比类型。 |
-| uint32_t dividerColor | 分割线的颜色。 <br> 默认值：0（表示全透明颜色，分割线不可见） <br> 格式要求：0xARGB格式，例如0xFF1122FF。未设置颜色时使用默认值。 |
-| float startMargin | 分割线与Picker容器侧边起始端的距离。 <br> 默认值：0 <br> 单位：vp <br> 取值范围：startMargin与endMargin之和不得超过Picker容器的宽度。 <br> 小于0时设置失败。startMargin与endMargin之和超过容器宽度时使用默认值0。不支持百分比类型。 |
-| float endMargin | 分割线与Picker容器侧边结束端的距离。 <br> 默认值：0 <br> 单位：vp <br> 取值范围：startMargin与endMargin之和不得超过Picker容器的宽度。 <br> 小于0时设置失败。startMargin与endMargin之和超过容器宽度时使用默认值0。不支持百分比类型。 |
+| float strokeWidth |  |
+| uint32_t dividerColor |  |
+| float startMargin |  |
+| float endMargin |  |
 
 

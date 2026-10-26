@@ -6,7 +6,7 @@ Provides group-scoped shared memory and named semaphore interfaces.
 
 **System capability**: SystemCapability.Base
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 ## Files
 

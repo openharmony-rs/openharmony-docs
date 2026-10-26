@@ -10,7 +10,7 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
@@ -40,7 +40,7 @@
 | -- | -- | -- |
 | [typedef void (\*OH_ArkUI_NativeModule_UIInfoCollectionInteractionJsonCallback)(const OH_ArkUI_NativeModule_UIJsonWrapper *json, void *userData)](#oh_arkui_nativemodule_uiinfocollectioninteractionjsoncallback) | OH_ArkUI_NativeModule_UIInfoCollectionInteractionJsonCallback | 定义接收感知到的交互事件的回调类型。<br> 回调通过借用的[OH_ArkUI_NativeModule_UIJsonWrapper](capi-arkui-nativemodule-oh-arkui-nativemodule-uijsonwrapper.md)对象接收事件数据， 不取得该对象的所有权。对象仅在本次回调执行期间有效，回调不得保留或销毁该对象。 事件数据中的所有位置坐标均相对于屏幕（显示器），单位为物理像素（px）。 事件数据顶层始终包含schemaVersion字段。 顶层结构为{ "schemaVersion": 1, "type": "<event type>", ... }。<br> 各事件类型对应的字段见下方列表。 - 点击手势或点击事件：id、point、count、fingers。 - 长按手势：id、point、actualDuration（毫秒）、action（"end"）。 - 拖动手势：id、point、direction、action（"start" \| "end" \| "cancel"）。 - 捏合手势：id、point（由[x, y]组成的数组）、fingers、action（"start" \| "end" \| "cancel"）； 仅在"end"时包含scale字段。 - 旋转手势：id、point（由[x, y]组成的数组）、fingers、action（"start" \| "end" \| "cancel"）； 仅在"end"时包含angle字段，单位为度。 - 滑动手势：id、downPoint（由[x, y]组成的数组）、upPoint（由[x, y]组成的数组）、 direction、speed、actualSpeed。 - 拖拽事件：action（"start" \| "end"）；"start"时包含id、point、hostName、actualDuration； "end"时包含point、dropResult（"success" \| "fail"）、id（目标节点ID，仅在成功时包含）、hostName。 - 触摸事件：action（"down" \| "up"）、fingerId、point；"down"时还包含id（命中节点ID）。 |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_UIInfoCollectionRegisterInteractionObserver(ArkUI_ContextHandle uiContext, uint32_t eventMask, uint32_t *registerID, OH_ArkUI_NativeModule_UIInfoCollectionInteractionJsonCallback callback, void *userData)](#oh_arkui_nativemodule_uiinfocollectionregisterinteractionobserver) | - | 注册UI交互事件观察者。<br> 观察者仅接收eventMask指定类型的事件回调。同一个UI实例可以注册多个观察者。 使用相同的callback和userData组合重复注册，会创建一个新的独立观察者，并分配新的注册ID。<br> 不再使用观察者时，必须调用[OH_ArkUI_NativeModule_UIInfoCollectionUnregisterInteractionObserver](capi-ui-info-collection-h.md#oh_arkui_nativemodule_uiinfocollectionunregisterinteractionobserver) 注销回调。 |
-| [ArkUI_ErrorCode OH_ArkUI_NativeModule_UIInfoCollectionUnregisterInteractionObserver(uint32_t registerID)](#oh_arkui_nativemodule_uiinfocollectionunregisterinteractionobserver) | - | 注销交互事件观察者。<br> 本次调用完成后，不再调用对应的回调函数。<br> 本函数是线程安全的，可以从任意线程调用，且不会阻塞调用方，但不具备异步信号安全性。 |
+| [ArkUI_ErrorCode OH_ArkUI_NativeModule_UIInfoCollectionUnregisterInteractionObserver(uint32_t registerID)](#oh_arkui_nativemodule_uiinfocollectionunregisterinteractionobserver) | - | 注销交互事件观察者。<br> 本次调用完成后，不再调用对应的回调函数。<br> 该函数不是线程安全的，不能在非主线程中调用。 |
 | [typedef void (\*OH_ArkUI_NativeModule_UIAgentJsonCallback)(ArkUI_ContextHandle context, uint64_t requestId, ArkUI_ErrorCode errorCode, OH_ArkUI_NativeModule_UIJsonWrapper *json, void *userData)](#oh_arkui_nativemodule_uiagentjsoncallback) | OH_ArkUI_NativeModule_UIAgentJsonCallback | 定义异步JSON树采集请求完成时调用的回调函数类型。<br> 每个被接受的请求均在UI线程上触发且仅触发一次回调。 仅当errorCode为ARKUI_ERROR_CODE_NO_ERROR时，回调才会接收非NULL的JSON对象并取得其所有权。 调用方必须调用OH_ArkUI_NativeModule_UIJsonWrapperDestroy释放该对象。 |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_UIAgentTreeRequestCreate(OH_ArkUI_NativeModule_UIAgentTreeType treeType, OH_ArkUI_NativeModule_UIAgentTreeRequest **request)](#oh_arkui_nativemodule_uiagenttreerequestcreate) | - | 创建UI树采集请求。 |
 | [void OH_ArkUI_NativeModule_UIAgentTreeRequestDestroy(OH_ArkUI_NativeModule_UIAgentTreeRequest *request)](#oh_arkui_nativemodule_uiagenttreerequestdestroy) | - | 销毁UI树采集请求对象。<br> 传入NULL时不执行任何操作。 |
@@ -70,10 +70,10 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| void (*OH_ArkUI_NativeModule_UIInfoCollectionInteractionJsonCallback)( const OH_ArkUI_NativeModule_UIJsonWrapper *json, void *userData) | 定义接收感知到的交互事件的回调类型。<br> 回调通过借用的[OH_ArkUI_NativeModule_UIJsonWrapper](capi-arkui-nativemodule-oh-arkui-nativemodule-uijsonwrapper.md)对象接收事件数据， 不取得该对象的所有权。对象仅在本次回调执行期间有效，回调不得保留或销毁该对象。 事件数据中的所有位置坐标均相对于屏幕（显示器），单位为物理像素（px）。 事件数据顶层始终包含schemaVersion字段。 顶层结构为{ "schemaVersion": 1, "type": "<event type>", ... }。<br> 各事件类型对应的字段见下方列表。 - 点击手势或点击事件：id、point、count、fingers。 - 长按手势：id、point、actualDuration（毫秒）、action（"end"）。 - 拖动手势：id、point、direction、action（"start" \| "end" \| "cancel"）。 - 捏合手势：id、point（由[x, y]组成的数组）、fingers、action（"start" \| "end" \| "cancel"）； 仅在"end"时包含scale字段。 - 旋转手势：id、point（由[x, y]组成的数组）、fingers、action（"start" \| "end" \| "cancel"）； 仅在"end"时包含angle字段，单位为度。 - 滑动手势：id、downPoint（由[x, y]组成的数组）、upPoint（由[x, y]组成的数组）、 direction、speed、actualSpeed。 - 拖拽事件：action（"start" \| "end"）；"start"时包含id、point、hostName、actualDuration； "end"时包含point、dropResult（"success" \| "fail"）、id（目标节点ID，仅在成功时包含）、hostName。 - 触摸事件：action（"down" \| "up"）、fingerId、point；"down"时还包含id（命中节点ID）。<br>**起始版本：** 26.2.0<br>**系统能力：** SystemCapability.ArkUI.ArkUI.Full |
-| void (*OH_ArkUI_NativeModule_UIAgentJsonCallback)(ArkUI_ContextHandle context, uint64_t requestId, ArkUI_ErrorCode errorCode, OH_ArkUI_NativeModule_UIJsonWrapper *json, void *userData) | 定义异步JSON树采集请求完成时调用的回调函数类型。<br> 每个被接受的请求均在UI线程上触发且仅触发一次回调。 仅当errorCode为ARKUI_ERROR_CODE_NO_ERROR时，回调才会接收非NULL的JSON对象并取得其所有权。 调用方必须调用OH_ArkUI_NativeModule_UIJsonWrapperDestroy释放该对象。<br>**起始版本：** 26.2.0<br>**系统能力：** SystemCapability.ArkUI.ArkUI.Full |
-| void (*OH_ArkUI_NativeModule_UIContentChangeEventCallback)( const OH_ArkUI_NativeModule_UIContentChangeEvent* event, void* userData) | 定义已注册的ArkUI状态变化事件触发时调用的回调函数类型。<br> 回调在注册时指定的UI上下文所关联的UI线程上执行。 事件快照不可修改，且仅在本次回调返回前有效。 ArkUI仅借用userData，不取得其所有权，也不会访问或释放其指向的数据。<br>**起始版本：** 26.2.0<br>**系统能力：** SystemCapability.ArkUI.ArkUI.Full |
-| void (*OH_ArkUI_NativeModule_ImageCollectionCallback)(ArkUI_ErrorCode errorCode, OH_ArkUI_NativeModule_ImageCollection* collection, void* userData) | 定义用于返回ArkUI节点图像采集结果的回调函数类型。<br> 对于每个被接受的请求，框架都会在UI线程上调用且仅调用一次此回调。每个非<b>NULL</b>的 <b>collection</b>都会转移给调用方。即使部分结果项失败，也会返回集合。 调用方必须调用<b>OH_ArkUI_NativeModule_ImageCollectionDestroy</b>释放每个非<b>NULL</b>集合。<br> 框架将<b>userData</b>原样传回，不会解引用该指针，也不会复制或释放其指向的对象。 调用方必须保证该对象在回调结束使用前一直有效。<br>**起始版本：** 26.2.0<br>**系统能力：** SystemCapability.ArkUI.ArkUI.Full |
+| void (*OH_ArkUI_NativeModule_UIInfoCollectionInteractionJsonCallback)( const OH_ArkUI_NativeModule_UIJsonWrapper *json, void *userData) | 定义接收感知到的交互事件的回调类型。<br> 回调通过借用的[OH_ArkUI_NativeModule_UIJsonWrapper](capi-arkui-nativemodule-oh-arkui-nativemodule-uijsonwrapper.md)对象接收事件数据， 不取得该对象的所有权。对象仅在本次回调执行期间有效，回调不得保留或销毁该对象。 事件数据中的所有位置坐标均相对于屏幕（显示器），单位为物理像素（px）。 事件数据顶层始终包含schemaVersion字段。 顶层结构为{ "schemaVersion": 1, "type": "<event type>", ... }。<br> 各事件类型对应的字段见下方列表。 - 点击手势或点击事件：id、point、count、fingers。 - 长按手势：id、point、actualDuration（毫秒）、action（"end"）。 - 拖动手势：id、point、direction、action（"start" \| "end" \| "cancel"）。 - 捏合手势：id、point（由[x, y]组成的数组）、fingers、action（"start" \| "end" \| "cancel"）； 仅在"end"时包含scale字段。 - 旋转手势：id、point（由[x, y]组成的数组）、fingers、action（"start" \| "end" \| "cancel"）； 仅在"end"时包含angle字段，单位为度。 - 滑动手势：id、downPoint（由[x, y]组成的数组）、upPoint（由[x, y]组成的数组）、 direction、speed、actualSpeed。 - 拖拽事件：action（"start" \| "end"）；"start"时包含id、point、hostName、actualDuration； "end"时包含point、dropResult（"success" \| "fail"）、id（目标节点ID，仅在成功时包含）、hostName。 - 触摸事件：action（"down" \| "up"）、fingerId、point；"down"时还包含id（命中节点ID）。<br>**起始版本：** 26.1.0<br>**系统能力：** SystemCapability.ArkUI.ArkUI.Full |
+| void (*OH_ArkUI_NativeModule_UIAgentJsonCallback)(ArkUI_ContextHandle context, uint64_t requestId, ArkUI_ErrorCode errorCode, OH_ArkUI_NativeModule_UIJsonWrapper *json, void *userData) | 定义异步JSON树采集请求完成时调用的回调函数类型。<br> 每个被接受的请求均在UI线程上触发且仅触发一次回调。 仅当errorCode为ARKUI_ERROR_CODE_NO_ERROR时，回调才会接收非NULL的JSON对象并取得其所有权。 调用方必须调用OH_ArkUI_NativeModule_UIJsonWrapperDestroy释放该对象。<br>**起始版本：** 26.1.0<br>**系统能力：** SystemCapability.ArkUI.ArkUI.Full |
+| void (*OH_ArkUI_NativeModule_UIContentChangeEventCallback)( const OH_ArkUI_NativeModule_UIContentChangeEvent* event, void* userData) | 定义已注册的ArkUI状态变化事件触发时调用的回调函数类型。<br> 回调在注册时指定的UI上下文所关联的UI线程上执行。 事件快照不可修改，且仅在本次回调返回前有效。 ArkUI仅借用userData，不取得其所有权，也不会访问或释放其指向的数据。<br>**起始版本：** 26.1.0<br>**系统能力：** SystemCapability.ArkUI.ArkUI.Full |
+| void (*OH_ArkUI_NativeModule_ImageCollectionCallback)(ArkUI_ErrorCode errorCode, OH_ArkUI_NativeModule_ImageCollection* collection, void* userData) | 定义用于返回ArkUI节点图像采集结果的回调函数类型。<br> 对于每个被接受的请求，框架都会在UI线程上调用且仅调用一次此回调。每个非<b>NULL</b>的 <b>collection</b>都会转移给调用方。即使部分结果项失败，也会返回集合。 调用方必须调用<b>OH_ArkUI_NativeModule_ImageCollectionDestroy</b>释放每个非<b>NULL</b>集合。<br> 框架将<b>userData</b>原样传回，不会解引用该指针，也不会复制或释放其指向的对象。 调用方必须保证该对象在回调结束使用前一直有效。<br>**起始版本：** 26.1.0<br>**系统能力：** SystemCapability.ArkUI.ArkUI.Full |
 
 ## 枚举类型说明
 
@@ -89,20 +89,20 @@ enum OH_ArkUI_NativeModule_UIInfoCollection_InteractionEventType
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_NONE = 0 | 无事件。<br>**起始版本：** 26.2.0 |
-| OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_TAP = 1 << 0 | 点击手势。<br>**起始版本：** 26.2.0 |
-| OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_CLICK = 1 << 1 | 点击事件。<br>**起始版本：** 26.2.0 |
-| OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_LONG_PRESS = 1 << 2 | 长按手势。<br>**起始版本：** 26.2.0 |
-| OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_PAN = 1 << 3 | 拖动手势。<br>**起始版本：** 26.2.0 |
-| OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_PINCH = 1 << 4 | 捏合手势。<br>**起始版本：** 26.2.0 |
-| OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_ROTATION = 1 << 5 | 旋转手势。<br>**起始版本：** 26.2.0 |
-| OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_SWIPE = 1 << 6 | 滑动手势。<br>**起始版本：** 26.2.0 |
-| OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_DRAG = 1 << 7 | 统一拖拽事件。<br>**起始版本：** 26.2.0 |
-| OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_TOUCH = 1 << 8 | 原始触摸按下或抬起事件。<br>**起始版本：** 26.2.0 |
+| OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_NONE = 0 | 无事件。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_TAP = 1 << 0 | 点击手势。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_CLICK = 1 << 1 | 点击事件。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_LONG_PRESS = 1 << 2 | 长按手势。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_PAN = 1 << 3 | 拖动手势。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_PINCH = 1 << 4 | 捏合手势。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_ROTATION = 1 << 5 | 旋转手势。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_SWIPE = 1 << 6 | 滑动手势。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_DRAG = 1 << 7 | 统一拖拽事件。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_TOUCH = 1 << 8 | 原始触摸按下或抬起事件。<br>**起始版本：** 26.1.0 |
 
 ### OH_ArkUI_NativeModule_UIAgentTreeType
 
@@ -116,12 +116,12 @@ enum OH_ArkUI_NativeModule_UIAgentTreeType
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_ARKUI_NATIVE_MODULE_UI_AGENT_TREE_FULL = 0 | 采集完整UI树，包括不可见、透明、离屏及被遮挡的节点。<br>**起始版本：** 26.2.0 |
-| OH_ARKUI_NATIVE_MODULE_UI_AGENT_TREE_VISIBLE = 1 | 采集经过可见性、裁剪、离屏和遮挡过滤后的可见UI树。<br>**起始版本：** 26.2.0 |
+| OH_ARKUI_NATIVE_MODULE_UI_AGENT_TREE_FULL = 0 | 采集完整UI树，包括不可见、透明、离屏及被遮挡的节点。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_NATIVE_MODULE_UI_AGENT_TREE_VISIBLE = 1 | 采集经过可见性、裁剪、离屏和遮挡过滤后的可见UI树。<br>**起始版本：** 26.1.0 |
 
 ### OH_ArkUI_NativeModule_UIContentChangeEventCategory
 
@@ -135,14 +135,14 @@ enum OH_ArkUI_NativeModule_UIContentChangeEventCategory
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_ARKUI_NATIVEMODULE_EVENT_CATEGORY_PAGE = 1U << 0 | 页面切换事件，包括Navigation、Router、Swiper和Tabs的切换事件。<br>**起始版本：** 26.2.0 |
-| OH_ARKUI_NATIVEMODULE_EVENT_CATEGORY_SCROLL = 1U << 1 | 滚动事件。<br>**起始版本：** 26.2.0 |
-| OH_ARKUI_NATIVEMODULE_EVENT_CATEGORY_OVERLAY = 1U << 2 | 浮层事件，例如模态、菜单或弹窗事件。<br>**起始版本：** 26.2.0 |
-| OH_ARKUI_NATIVEMODULE_EVENT_CATEGORY_ALL = ~0U | 所有受支持的事件类别。<br>**起始版本：** 26.2.0 |
+| OH_ARKUI_NATIVEMODULE_EVENT_CATEGORY_PAGE = 1U << 0 | 页面切换事件，包括Navigation、Router、Swiper和Tabs的切换事件。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_NATIVEMODULE_EVENT_CATEGORY_SCROLL = 1U << 1 | 滚动事件。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_NATIVEMODULE_EVENT_CATEGORY_OVERLAY = 1U << 2 | 浮层事件，例如模态、菜单或弹窗事件。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_NATIVEMODULE_EVENT_CATEGORY_ALL = ~0U | 所有受支持的事件类别。<br>**起始版本：** 26.1.0 |
 
 ### OH_ArkUI_NativeModule_UIContentChangeIgnoreType
 
@@ -156,13 +156,13 @@ enum OH_ArkUI_NativeModule_UIContentChangeIgnoreType
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_ARKUI_NATIVEMODULE_CONTENTCHANGE_IGNORE_SCROLLBY = 1U << 0 | 按指定偏移量滚动（scrollBy）的事件。<br>**起始版本：** 26.2.0 |
-| OH_ARKUI_NATIVEMODULE_CONTENTCHANGE_IGNORE_SCROLLTO = 1U << 1 | 滚动到指定位置（scrollTo）的事件。<br>**起始版本：** 26.2.0 |
-| OH_ARKUI_NATIVEMODULE_CONTENTCHANGE_IGNORE_TOAST = 1U << 2 | Toast提示事件。<br>**起始版本：** 26.2.0 |
+| OH_ARKUI_NATIVEMODULE_CONTENTCHANGE_IGNORE_SCROLLBY = 1U << 0 | 按指定偏移量滚动（scrollBy）的事件。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_NATIVEMODULE_CONTENTCHANGE_IGNORE_SCROLLTO = 1U << 1 | 滚动到指定位置（scrollTo）的事件。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_NATIVEMODULE_CONTENTCHANGE_IGNORE_TOAST = 1U << 2 | Toast提示事件。<br>**起始版本：** 26.1.0 |
 
 ### OH_ArkUI_NativeModule_UIContentChangeEventType
 
@@ -176,22 +176,22 @@ enum OH_ArkUI_NativeModule_UIContentChangeEventType
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_ARKUI_NATIVEMODULE_EVENT_PAGE_CHANGE_START = 0 | 页面切换开始。<br>**起始版本：** 26.2.0 |
-| OH_ARKUI_NATIVEMODULE_EVENT_PAGE_CHANGE_END = 1 | 页面切换结束。<br>**起始版本：** 26.2.0 |
-| OH_ARKUI_NATIVEMODULE_EVENT_SCROLL_START = 2 | 滚动开始。<br>**起始版本：** 26.2.0 |
-| OH_ARKUI_NATIVEMODULE_EVENT_SCROLL_END = 3 | 滚动交互及其后续的惯性滚动均已结束。<br>**起始版本：** 26.2.0 |
-| OH_ARKUI_NATIVEMODULE_EVENT_OVERLAY_SHOW = 4 | 浮层显示完成。<br>**起始版本：** 26.2.0 |
-| OH_ARKUI_NATIVEMODULE_EVENT_OVERLAY_HIDE = 5 | 浮层消失完成。<br>**起始版本：** 26.2.0 |
-| OH_ARKUI_NATIVEMODULE_EVENT_SWIPER_START = 6 | Swiper切换开始。<br>**起始版本：** 26.2.0 |
-| OH_ARKUI_NATIVEMODULE_EVENT_SWIPER_END = 7 | Swiper切换完成；如果存在过渡动画，则该动画也已完成。<br>**起始版本：** 26.2.0 |
-| OH_ARKUI_NATIVEMODULE_EVENT_SWIPER_CANCEL = 8 | Swiper切换中断，并回弹到起始索引。<br>**起始版本：** 26.2.0 |
-| OH_ARKUI_NATIVEMODULE_EVENT_TABS_START = 9 | Tabs切换开始事件。<br>**起始版本：** 26.2.0 |
-| OH_ARKUI_NATIVEMODULE_EVENT_TABS_END = 10 | Tabs切换结束事件。<br>**起始版本：** 26.2.0 |
-| OH_ARKUI_NATIVEMODULE_EVENT_TABS_CANCEL = 11 | Tabs切换开始后被取消，并回弹到切换开始时的索引。<br>**起始版本：** 26.2.0 |
+| OH_ARKUI_NATIVEMODULE_EVENT_PAGE_CHANGE_START = 0 | 页面切换开始。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_NATIVEMODULE_EVENT_PAGE_CHANGE_END = 1 | 页面切换结束。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_NATIVEMODULE_EVENT_SCROLL_START = 2 | 滚动开始。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_NATIVEMODULE_EVENT_SCROLL_END = 3 | 滚动交互及其后续的惯性滚动均已结束。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_NATIVEMODULE_EVENT_OVERLAY_SHOW = 4 | 浮层显示完成。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_NATIVEMODULE_EVENT_OVERLAY_HIDE = 5 | 浮层消失完成。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_NATIVEMODULE_EVENT_SWIPER_START = 6 | Swiper切换开始。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_NATIVEMODULE_EVENT_SWIPER_END = 7 | Swiper切换完成；如果存在过渡动画，则该动画也已完成。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_NATIVEMODULE_EVENT_SWIPER_CANCEL = 8 | Swiper切换中断，并回弹到起始索引。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_NATIVEMODULE_EVENT_TABS_START = 9 | Tabs切换开始事件。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_NATIVEMODULE_EVENT_TABS_END = 10 | Tabs切换结束事件。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_NATIVEMODULE_EVENT_TABS_CANCEL = 11 | Tabs切换开始后被取消，并回弹到切换开始时的索引。<br>**起始版本：** 26.1.0 |
 
 
 ## 函数说明
@@ -208,7 +208,7 @@ typedef void (*OH_ArkUI_NativeModule_UIInfoCollectionInteractionJsonCallback)(co
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **参数：**
 
@@ -229,7 +229,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIInfoCollectionRegisterInteractionObserve
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **参数：**
 
@@ -255,11 +255,11 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIInfoCollectionUnregisterInteractionObser
 
 **描述：**
 
-注销交互事件观察者。<br> 本次调用完成后，不再调用对应的回调函数。<br> 本函数是线程安全的，可以从任意线程调用，且不会阻塞调用方，但不具备异步信号安全性。
+注销交互事件观察者。<br> 本次调用完成后，不再调用对应的回调函数。<br> 该函数不是线程安全的，不能在非主线程中调用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **参数：**
 
@@ -285,7 +285,7 @@ typedef void (*OH_ArkUI_NativeModule_UIAgentJsonCallback)(ArkUI_ContextHandle co
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **资源释放：** ui_json_wrapper/OH_ArkUI_NativeModule_UIJsonWrapperDestroy {json}.
 
@@ -311,7 +311,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIAgentTreeRequestCreate(OH_ArkUI_NativeMo
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **资源释放：** OH_ArkUI_NativeModule_UIAgentTreeRequestDestroy {request}
 
@@ -340,7 +340,7 @@ void OH_ArkUI_NativeModule_UIAgentTreeRequestDestroy(OH_ArkUI_NativeModule_UIAge
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **参数：**
 
@@ -360,7 +360,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIAgentTreeRequestSetFilterPureLayoutNodes
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **参数：**
 
@@ -387,7 +387,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIAgentTreeRequestSetFilterOccludedNodes(O
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **参数：**
 
@@ -414,7 +414,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIAgentTreeRequestSetOcclusionOpacityThres
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **参数：**
 
@@ -441,7 +441,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIAgentTreeRequestSetInteractionInfo(OH_Ar
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **参数：**
 
@@ -468,7 +468,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIAgentTreeRequestSetAccessibilityInfo(OH_
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **参数：**
 
@@ -495,7 +495,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIAgentTreeRequestSetCollectVisualProperti
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **参数：**
 
@@ -522,7 +522,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIAgentTreeRequestSetCollectFunctionalProp
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **参数：**
 
@@ -549,7 +549,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIAgentGetTreeJson(ArkUI_ContextHandle con
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **资源释放：** ui_json_wrapper/OH_ArkUI_NativeModule_UIJsonWrapperDestroy {json}
 
@@ -580,7 +580,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIAgentGetTreeJsonAsync(ArkUI_ContextHandl
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **参数：**
 
@@ -611,7 +611,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIAgentGetPageText(ArkUI_ContextHandle uiC
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **资源释放：** ui_json_wrapper/OH_ArkUI_NativeModule_UIJsonWrapperDestroy {pageText}
 
@@ -640,7 +640,7 @@ typedef void (*OH_ArkUI_NativeModule_UIContentChangeEventCallback)(const OH_ArkU
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **参数：**
 
@@ -661,7 +661,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_RegisterUIContentChangeEvent(ArkUI_Context
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **参数：**
 
@@ -693,7 +693,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UnRegisterUIContentChangeEvent(ArkUI_Conte
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **参数：**
 
@@ -720,7 +720,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIContentChangeEventGetType(const OH_ArkUI
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **参数：**
 
@@ -747,7 +747,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIContentChangeEventGetTimestamp(const OH_
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **参数：**
 
@@ -774,7 +774,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIContentChangeEventGetContext(const OH_Ar
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **参数：**
 
@@ -801,7 +801,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIContentChangeEventGetContentChangeEventJ
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **参数：**
 
@@ -828,7 +828,7 @@ typedef void (*OH_ArkUI_NativeModule_ImageCollectionCallback)(ArkUI_ErrorCode er
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **资源释放：** OH_ArkUI_NativeModule_ImageCollectionDestroy {collection}
 
@@ -852,7 +852,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_GetImagesByNodeIdAsync(ArkUI_ContextHandle
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **参数：**
 
@@ -882,7 +882,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_ImageCollectionTakeItemByNodeId(OH_ArkUI_N
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **资源释放：** multimedia/image_framework/image/OH_PixelmapNative_Destroy {outPixelmap}
 
@@ -913,7 +913,7 @@ void OH_ArkUI_NativeModule_ImageCollectionDestroy(OH_ArkUI_NativeModule_ImageCol
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **参数：**
 

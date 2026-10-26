@@ -6865,7 +6865,7 @@ Sets the image text tag in the image style.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 **Parameters**:
 
@@ -6892,7 +6892,7 @@ Obtains the image text tag in the image style.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 **Parameters**:
 

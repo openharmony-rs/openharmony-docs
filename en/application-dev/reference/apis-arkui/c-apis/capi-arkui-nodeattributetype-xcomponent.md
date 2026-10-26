@@ -80,6 +80,6 @@ NODE_XCOMPONENT_BUFFER_QUEUE_SIZE = MAX_NODE_SCOPE_NUM * ARKUI_NODE_XCOMPONENT +
 
 Defines the buffer queue size for the <b><XComponent></b> component. This attribute can be set, reset, and obtained as required through APIs. Only takes effect for XComponent of type SURFACE or TEXTURE.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>value[0].i32: Buffer queue size. The value ranges from 2 to 5. The default value is <b>5</b>.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>value[0].i32: Buffer queue size.</li> </ul>
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 

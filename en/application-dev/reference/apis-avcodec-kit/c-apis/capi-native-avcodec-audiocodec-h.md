@@ -473,7 +473,7 @@ Sets the decryption information.
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): The operation is successful. <br>[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode): The OH_AVCodec instance is nullptr or invalid, or the mediaKeySystemInfo instance is nullptr or invalid. <br>[AV_ERR_INVALID_STATE](capi-native-averrors-h.md#oh_averrcode): The codec service is unavailable. <br>[AV_ERR_NO_MEMORY](capi-native-averrors-h.md#oh_averrcode): Memory allocation fails. |
+| OH_AVErrCode | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): The operation is successful. <br>[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode): The OH_AVCodec instance is nullptr or invalid, or the mediaKeySession instance is nullptr or invalid. <br>[AV_ERR_INVALID_STATE](capi-native-averrors-h.md#oh_averrcode): The codec service is unavailable. <br>[AV_ERR_NO_MEMORY](capi-native-averrors-h.md#oh_averrcode): Memory allocation fails. |
 
 ### OH_AudioCodec_QueryInputBuffer()
 

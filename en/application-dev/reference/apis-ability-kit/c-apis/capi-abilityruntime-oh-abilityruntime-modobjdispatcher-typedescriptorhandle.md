@@ -6,7 +6,7 @@ struct OH_AbilityRuntime_ModObjDispatcher_TypeDescriptorHandle
 
 ## Overview
 
-Defines a pointer to OH_AbilityRuntime_ModularObjectDispatcher_TypeDescriptor.
+Defines the type descriptor handle of the ModularObject dispatcher. The handle points to the access interface of the type library metadata, and can be used to query information such as interfaces, methods, enums, and structs defined by remote services. It can be obtained through [OH_AbilityRuntime_ModObjDispatcher_GetTypeDescriptor](capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_gettypedescriptor). After use, it must be released through [OH_AbilityRuntime_TypeDescriptor_Release](capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_release).
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 

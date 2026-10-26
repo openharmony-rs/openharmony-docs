@@ -648,7 +648,7 @@ int32_t OH_GetDiskSN(char *diskSn)
 
 **需要权限：** ohos.permission.ACCESS_DISK_PHY_INFO
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **参数：**
 
@@ -674,7 +674,7 @@ const char *OH_GetOdid(void)
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **返回值：**
 

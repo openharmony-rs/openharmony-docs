@@ -665,18 +665,18 @@ enum OH_ArkUI_LinearGradientBlurDirection
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_ARKUI_LINEAR_GRADIENT_BLUR_DIRECTION_LEFT = 0 | 线性渐变模糊从右到左。<br>**起始版本：** 26.2.0 |
-| OH_ARKUI_LINEAR_GRADIENT_BLUR_DIRECTION_TOP = 1 | 线性渐变模糊从下到上。<br>**起始版本：** 26.2.0 |
-| OH_ARKUI_LINEAR_GRADIENT_BLUR_DIRECTION_RIGHT = 2 | 线性渐变模糊从左到右。<br>**起始版本：** 26.2.0 |
-| OH_ARKUI_LINEAR_GRADIENT_BLUR_DIRECTION_BOTTOM = 3 | 线性渐变模糊从上到下。<br>**起始版本：** 26.2.0 |
-| OH_ARKUI_LINEAR_GRADIENT_BLUR_DIRECTION_LEFT_TOP = 4 | 线性渐变模糊从右下到左上。<br>**起始版本：** 26.2.0 |
-| OH_ARKUI_LINEAR_GRADIENT_BLUR_DIRECTION_LEFT_BOTTOM = 5 | 线性渐变模糊从右上到左下。<br>**起始版本：** 26.2.0 |
-| OH_ARKUI_LINEAR_GRADIENT_BLUR_DIRECTION_RIGHT_TOP = 6 | 线性渐变模糊从左下到右上。<br>**起始版本：** 26.2.0 |
-| OH_ARKUI_LINEAR_GRADIENT_BLUR_DIRECTION_RIGHT_BOTTOM = 7 | 线性渐变模糊从左上到右下。<br>**起始版本：** 26.2.0 |
+| OH_ARKUI_LINEAR_GRADIENT_BLUR_DIRECTION_LEFT = 0 | 线性渐变模糊从右到左。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_LINEAR_GRADIENT_BLUR_DIRECTION_TOP = 1 | 线性渐变模糊从下到上。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_LINEAR_GRADIENT_BLUR_DIRECTION_RIGHT = 2 | 线性渐变模糊从左到右。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_LINEAR_GRADIENT_BLUR_DIRECTION_BOTTOM = 3 | 线性渐变模糊从上到下。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_LINEAR_GRADIENT_BLUR_DIRECTION_LEFT_TOP = 4 | 线性渐变模糊从右下到左上。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_LINEAR_GRADIENT_BLUR_DIRECTION_LEFT_BOTTOM = 5 | 线性渐变模糊从右上到左下。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_LINEAR_GRADIENT_BLUR_DIRECTION_RIGHT_TOP = 6 | 线性渐变模糊从左下到右上。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_LINEAR_GRADIENT_BLUR_DIRECTION_RIGHT_BOTTOM = 7 | 线性渐变模糊从左上到右下。<br>**起始版本：** 26.1.0 |
 
 
 ## 函数说明
@@ -2529,7 +2529,7 @@ OH_ArkUI_LinearGradientBlurOptions* OH_ArkUI_NativeModule_LinearGradientBlurOpti
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **资源释放：** 调用者不再使用该对象时，需要调用[OH_ArkUI_NativeModule_LinearGradientBlurOptions_Destroy](capi-native-type-visual-h.md#oh_arkui_nativemodule_lineargradientbluroptions_destroy)释放该对象。
 
@@ -2551,7 +2551,7 @@ void OH_ArkUI_NativeModule_LinearGradientBlurOptions_Destroy(OH_ArkUI_LinearGrad
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **参数：**
 
@@ -2571,7 +2571,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_LinearGradientBlurOptions_SetBlurRadius(OH
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **参数：**
 
@@ -2598,7 +2598,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_LinearGradientBlurOptions_GetBlurRadius(co
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **参数：**
 
@@ -2625,7 +2625,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_LinearGradientBlurOptions_SetFractionStops
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **参数：**
 
@@ -2653,7 +2653,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_LinearGradientBlurOptions_GetFractionStops
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **参数：**
 
@@ -2682,7 +2682,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_LinearGradientBlurOptions_SetDirection(OH_
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **参数：**
 
@@ -2709,7 +2709,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_LinearGradientBlurOptions_GetDirection(con
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **参数：**
 

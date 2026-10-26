@@ -10,7 +10,7 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
@@ -51,12 +51,12 @@ enum OH_ArkUI_NativeModule_UIJsonFormat
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_ARKUI_NATIVE_MODULE_UI_JSON_COMPACT = 0 | 输出不含多余空白字符的规范JSON。<br>**起始版本：** 26.2.0 |
-| OH_ARKUI_NATIVE_MODULE_UI_JSON_PRETTY = 1 | 输出带有两个空格缩进和换行符的JSON。<br>**起始版本：** 26.2.0 |
+| OH_ARKUI_NATIVE_MODULE_UI_JSON_COMPACT = 0 | 输出不含多余空白字符的规范JSON。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_NATIVE_MODULE_UI_JSON_PRETTY = 1 | 输出带有两个空格缩进和换行符的JSON。<br>**起始版本：** 26.1.0 |
 
 
 ## 函数说明
@@ -73,7 +73,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIJsonWrapperCreate(const char *data, uint
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **资源释放：** ui_json_wrapper/OH_ArkUI_NativeModule_UIJsonWrapperDestroy {outOwned}
 
@@ -103,7 +103,7 @@ const char *OH_ArkUI_NativeModule_UIJsonWrapperGetData(const OH_ArkUI_NativeModu
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **参数：**
 
@@ -129,7 +129,7 @@ uint32_t OH_ArkUI_NativeModule_UIJsonWrapperGetSize(const OH_ArkUI_NativeModule_
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **参数：**
 
@@ -155,7 +155,7 @@ void OH_ArkUI_NativeModule_UIJsonWrapperDestroy(OH_ArkUI_NativeModule_UIJsonWrap
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **参数：**
 

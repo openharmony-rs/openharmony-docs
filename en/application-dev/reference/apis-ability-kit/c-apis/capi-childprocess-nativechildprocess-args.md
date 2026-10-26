@@ -22,7 +22,7 @@ The struct describes the parameters passed to the child process.
 
 | Name | Description |
 | -- | -- |
-| char* entryParams |  |
-| struct NativeChildProcess_FdList fdList |  |
+| char* entryParams | Pointer to the entry parameters. The size cannot exceed 150 KB.<br>**Since**: 13 |
+| struct NativeChildProcess_FdList fdList | List of file descriptors passed to the child process.<br>**Since**: 13 |
 
 

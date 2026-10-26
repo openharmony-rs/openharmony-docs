@@ -39,6 +39,7 @@ Provides type definitions for <b>NativeNode</b> APIs.
 | [ArkUI_NodeAdapterEventType](#arkui_nodeadaptereventtype) | ArkUI_NodeAdapterEventType | Enumerates node adapter event types. |
 | [ArkUI_NodeContentEventType](#arkui_nodecontenteventtype) | ArkUI_NodeContentEventType | Enumerates the event types of NodeContent. |
 | [ArkUI_InspectorErrorCode](#arkui_inspectorerrorcode) | ArkUI_InspectorErrorCode | Enumerates inspector error codes. |
+| [OH_ArkUI_AdoptPolicy](#oh_arkui_adoptpolicy) | OH_ArkUI_AdoptPolicy | Enumerates the policy for adopting a child node. |
 
 ### Macro
 
@@ -181,6 +182,8 @@ ArkUI_NodeAdapterHandle handle, uint32_t startPosition, uint32_t itemCount)](#oh
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_SetChildMountPolicy(ArkUI_NodeHandle node, OH_ArkUI_NodeMountPolicy policy)](#oh_arkui_nativemodule_setchildmountpolicy) | - | Sets the child node mounting policy for a target node. |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_GetChildMountPolicy(ArkUI_NodeHandle node, OH_ArkUI_NodeMountPolicy* policy)](#oh_arkui_nativemodule_getchildmountpolicy) | - | Obtains the current child node mounting policy of a target node. The default child node mounting policy of a target node is OH_ARKUI_NODE_MOUNT_POLICY_SINGLE_IF_RENDER_NODE. |
 | [ArkUI_ErrorCode OH_ArkUI_NodeUtils_SetUiDvsyncSwitch(ArkUI_ContextHandle context, bool enable)](#oh_arkui_nodeutils_setuidvsyncswitch) | - | Sets the UI Dvsync switch.<br> When enabled, the system responds to Vsync requests more promptly and executes rendering tasks more frequently. It is typically enabled at the start of an animation in a self-rendering framework and disabled when the animation ends, to ensure smoother animation effects while preventing frequent Vsync requests from affecting other functionalities. Calling this function on a non-UI thread will cause the application to exit. |
+| [int32_t OH_ArkUI_NativeModule_AdoptChildWithPolicy(ArkUI_NodeHandle node, ArkUI_NodeHandle child, OH_ArkUI_AdoptPolicy policy)](#oh_arkui_nativemodule_adoptchildwithpolicy) | - | Adopts the target node as an affiliated node. The adopted node must not have an existing parent. This API is not used to add a node as a child node. Instead, it only allows the node to receive lifecycle callbacks of the corresponding child node. Configure the render position of the overlay node of the adopted node by policy. |
+| [int32_t OH_ArkUI_NativeModule_SetAdoptedChildOverlayPositionCompensation(ArkUI_NodeHandle adoptedChild, const ArkUI_PointF* compensationOffset, const ArkUI_Matrix4* compensationTransform)](#oh_arkui_nativemodule_setadoptedchildoverlaypositioncompensation) | - | Sets the position compensation from an adopted child to its adopt parent. The compensation represents the aggregate effect of the pure rendering node tree between them. First, the translation is performed using compensationOffset, and then the transformation is performed using compensationTransform. Compensation only takes effect if the child node has been adopted using the following policy [OH_ARKUI_NATIVE_MODULE_ADOPT_POLICY_OVERLAY_POSITION_FOLLOWS_ADOPT_PARENT_CHAIN](capi-native-node-h.md#oh_arkui_adoptpolicy). |
 
 ### Variable
 
@@ -333,6 +336,24 @@ Enumerates inspector error codes.
 | -- | -- |
 | ARKUI_INSPECTOR_NATIVE_RESULT_SUCCESSFUL = 0 | &nbsp;Operation successful. |
 | ARKUI_INSPECTOR_NATIVE_RESULT_BAD_PARAMETER = -1 | &nbsp;Parameter error. |
+
+### OH_ArkUI_AdoptPolicy
+
+```c
+enum OH_ArkUI_AdoptPolicy
+```
+
+**Description**
+
+Enumerates the policy for adopting a child node.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Since**: 26.1.0
+
+| Enum item | Description |
+| -- | -- |
+| OH_ARKUI_NATIVE_MODULE_ADOPT_POLICY_OVERLAY_POSITION_FOLLOWS_ADOPT_PARENT_CHAIN = 0 |  |
 
 
 ## Function description
@@ -3682,6 +3703,62 @@ Sets the UI Dvsync switch.<br> When enabled, the system responds to Vsync reques
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | Returns the result. <ul><li>ARKUI_ERROR_CODE_NO_ERROR The operation is successful. </li><li>RKUI_ERROR_CODE_CAPI_INIT_ERROR Failed to initialize the CAPI. </li><li>ARKUI_ERROR_CODE_PARAM_INVALID The function parameter is invalid.</li></ul> |
+| ArkUI_ErrorCode | Returns the result. <ul><li>ARKUI_ERROR_CODE_NO_ERROR The operation is successful. </li><li>ARKUI_ERROR_CODE_CAPI_INIT_ERROR Failed to initialize the CAPI. </li><li>ARKUI_ERROR_CODE_PARAM_INVALID The function parameter is invalid.</li></ul> |
+
+### OH_ArkUI_NativeModule_AdoptChildWithPolicy()
+
+```c
+int32_t OH_ArkUI_NativeModule_AdoptChildWithPolicy(ArkUI_NodeHandle node, ArkUI_NodeHandle child, OH_ArkUI_AdoptPolicy policy)
+```
+
+**Description**
+
+Adopts the target node as an affiliated node. The adopted node must not have an existing parent. This API is not used to add a node as a child node. Instead, it only allows the node to receive lifecycle callbacks of the corresponding child node. Configure the render position of the overlay node of the adopted node by policy.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Since**: 26.1.0
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | [in] **ArkUI_NodeHandle** pointer, which specifies the parent node of the node to be adopted. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) child | [in] **ArkUI_NodeHandle** pointer, which specifies the child node to be adopted. |
+| [OH_ArkUI_AdoptPolicy](capi-native-node-h.md#oh_arkui_adoptpolicy) policy | [in] Rendering position policy of overlay nodes of adopted node. Valid values correspond to [OH_ArkUI_AdoptPolicy](capi-native-node-h.md#oh_arkui_adoptpolicy). |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| int32_t | Result code. <ul><li>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>Returns ARKUI_ERROR_CODE_CAPI_INIT_ERROR if C API initialization failed.</li> <li>Returns ARKUI_ERROR_CODE_NODE_HAS_PARENT if the adopted node already has a parent node.</li> <li>Returns ARKUI_ERROR_CODE_NODE_CAN_NOT_BE_ADOPTED if the node cannot be adopted as an affiliated node.</li> <li>Returns ARKUI_ERROR_CODE_NODE_CAN_NOT_ADOPT_TO if the node cannot adopt other affiliated nodes.</li></ul> |
+
+### OH_ArkUI_NativeModule_SetAdoptedChildOverlayPositionCompensation()
+
+```c
+int32_t OH_ArkUI_NativeModule_SetAdoptedChildOverlayPositionCompensation(ArkUI_NodeHandle adoptedChild, const ArkUI_PointF* compensationOffset, const ArkUI_Matrix4* compensationTransform)
+```
+
+**Description**
+
+Sets the position compensation from an adopted child to its adopt parent. The compensation represents the aggregate effect of the pure rendering node tree between them. First, the translation is performed using compensationOffset, and then the transformation is performed using compensationTransform. Compensation only takes effect if the child node has been adopted using the following policy [OH_ARKUI_NATIVE_MODULE_ADOPT_POLICY_OVERLAY_POSITION_FOLLOWS_ADOPT_PARENT_CHAIN](capi-native-node-h.md#oh_arkui_adoptpolicy).
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Since**: 26.1.0
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) adoptedChild | [in] The adopted node that require location compensation. |
+| const ArkUI_PointF* compensationOffset | [in] x/y offset compensation, in px. |
+| const ArkUI_Matrix4* compensationTransform | [in] Aggregation transformation compensation. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| int32_t | Result code. <ul><li>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>Returns ARKUI_ERROR_CODE_CAPI_INIT_ERROR if C API initialization failed.</li> <li>Returns ARKUI_ERROR_CODE_PARAM_INVALID if the parameter is invalid.</li> <li>Returns ARKUI_ERROR_CODE_NODE_IS_NOT_IN_ADOPTED_CHILDREN if the child is not adopted with the required policy.</li></ul> |
 
 

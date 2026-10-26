@@ -55,8 +55,8 @@ void (*runJavaScript)(const char* webTag, const ArkWeb_JavaScriptObject* javascr
 
 | Parameter | Description |
 | -- | -- |
-| const char* webTag | Name of the **Web** component. |
-|  const [ArkWeb_JavaScriptObject](capi-web-arkweb-javascriptobject.md)* javascriptObject | JavaScript object to inject. |
+| const char* webTag | [in] Name of the **Web** component. |
+|  const [ArkWeb_JavaScriptObject](capi-web-arkweb-javascriptobject.md)* javascriptObject | [in] JavaScript object to inject. |
 
 ### registerJavaScriptProxy()
 
@@ -70,8 +70,8 @@ void (*registerJavaScriptProxy)(const char* webTag, const ArkWeb_ProxyObject* pr
 
 | Parameter | Description |
 | -- | -- |
-| const char* webTag | Name of the **Web** component. |
-|  const [ArkWeb_ProxyObject](capi-web-arkweb-proxyobject.md)* proxyObject | Pointer to the proxy object to register. The object will be injected into the window object and its methods can be called through JavaScript. |
+| const char* webTag | [in] Name of the **Web** component. |
+|  const [ArkWeb_ProxyObject](capi-web-arkweb-proxyobject.md)* proxyObject | [in] Pointer to the proxy object to register. The object will be injected into the window object and its methods can be called through JavaScript. |
 
 ### deleteJavaScriptRegister()
 
@@ -85,8 +85,8 @@ void (*deleteJavaScriptRegister)(const char* webTag, const char* objName)
 
 | Parameter | Description |
 | -- | -- |
-| const char* webTag | Name of the **Web** component. |
-|  const char* objName | Name of the JavaScript object. |
+| const char* webTag | [in] Name of the **Web** component. |
+|  const char* objName | [in] Name of the JavaScript object. |
 
 ### refresh()
 
@@ -100,7 +100,7 @@ void (*refresh)(const char* webTag)
 
 | Parameter | Description |
 | -- | -- |
-| const char* webTag | Name of the **Web** component. |
+| const char* webTag | [in] Name of the **Web** component. |
 
 ### registerAsyncJavaScriptProxy()
 
@@ -114,8 +114,8 @@ void (*registerAsyncJavaScriptProxy)(const char* webTag, const ArkWeb_ProxyObjec
 
 | Parameter | Description |
 | -- | -- |
-| const char* webTag | Name of the **Web** component. |
-|  const [ArkWeb_ProxyObject](capi-web-arkweb-proxyobject.md)* proxyObject | Object to be registered. |
+| const char* webTag | [in] Name of the **Web** component. |
+|  const [ArkWeb_ProxyObject](capi-web-arkweb-proxyobject.md)* proxyObject | [in] Object to be registered. |
 
 ### createWebMessagePorts()
 

@@ -58,7 +58,7 @@ Declares the APIs of **NativeKeyEvent** for obtaining the type, key code, key va
 
 | Name | Description |
 | -- | -- |
-| ArkUI_KeyIntension OH_ArkUI_KeyIntention | Defines the correctly spelled alias for the key event intention type.<br> The original type name [ArkUI_KeyIntension](capi-native-key-event-h.md#arkui_keyintension) is retained for compatibility.<br>**Since**: 26.2.0<br>**System capability**: SystemCapability.ArkUI.ArkUI.Full |
+| ArkUI_KeyIntension OH_ArkUI_KeyIntention | Defines the correctly spelled alias for the key event intention type.<br> The original type name [ArkUI_KeyIntension](capi-native-key-event-h.md#arkui_keyintension) is retained for compatibility.<br>**Since**: 26.1.0<br>**System capability**: SystemCapability.ArkUI.ArkUI.Full |
 
 ## Enum type description
 
@@ -325,7 +325,7 @@ Creates a key event that can be dispatched by [OH_ArkUI_KeyEvent_Dispatch](capi-
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 **Resource release**: arkui/OH_ArkUI_KeyEvent_Destroy {event}
 
@@ -353,7 +353,7 @@ Destroys a key event created by [OH_ArkUI_KeyEvent_Create](capi-native-key-event
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 **Parameters**:
 
@@ -379,7 +379,7 @@ Sets the type of a key event created by [OH_ArkUI_KeyEvent_Create](capi-native-k
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 **Parameters**:
 
@@ -406,7 +406,7 @@ Sets the key code of a key event created by [OH_ArkUI_KeyEvent_Create](capi-nati
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 **Parameters**:
 
@@ -433,7 +433,7 @@ Sets the key text of a key event created by [OH_ArkUI_KeyEvent_Create](capi-nati
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 **Parameters**:
 
@@ -460,7 +460,7 @@ Sets the input device type of a key event created by [OH_ArkUI_KeyEvent_Create](
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 **Parameters**:
 
@@ -487,7 +487,7 @@ Sets the device ID of a key event created by [OH_ArkUI_KeyEvent_Create](capi-nat
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 **Parameters**:
 
@@ -514,7 +514,7 @@ Sets the Unicode value of a key event created by [OH_ArkUI_KeyEvent_Create](capi
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 **Parameters**:
 
@@ -541,7 +541,7 @@ Sets the occurrence time of a key event created by [OH_ArkUI_KeyEvent_Create](ca
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 **Parameters**:
 
@@ -568,7 +568,7 @@ Sets all pressed keys of a key event created by [OH_ArkUI_KeyEvent_Create](capi-
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 **Parameters**:
 
@@ -596,7 +596,7 @@ Sets the intention code of a key event created by [OH_ArkUI_KeyEvent_Create](cap
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 **Parameters**:
 
@@ -623,7 +623,7 @@ Sets the NumLock state of a key event created by [OH_ArkUI_KeyEvent_Create](capi
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 **Parameters**:
 
@@ -650,7 +650,7 @@ Sets the CapsLock state of a key event created by [OH_ArkUI_KeyEvent_Create](cap
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 **Parameters**:
 
@@ -677,7 +677,7 @@ Sets the ScrollLock state of a key event created by [OH_ArkUI_KeyEvent_Create](c
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 **Parameters**:
 

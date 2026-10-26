@@ -219,7 +219,7 @@
 | [Input_Result OH_Input_UnregisterDeviceListeners()](#oh_input_unregisterdevicelisteners) | - | 取消注册所有的设备热插拔的监听。 |
 | [Input_Result OH_Input_GetFunctionKeyState(int32_t keyCode, int32_t *state)](#oh_input_getfunctionkeystate) | - | 获取功能键状态。 |
 | [Input_Result OH_Input_QueryMaxTouchPoints(int32_t *count)](#oh_input_querymaxtouchpoints) | - | 查询设备支持的最大触屏报点数。 |
-| [Input_Result OH_Input_GetPointerLocation(int32_t *displayId, double *displayX, double *displayY)](#oh_input_getpointerlocation) | - | 获取当前屏幕上鼠标的坐标点。 <br>从API版本26.0.0开始，非焦点应用持有ohos.permission.INPUT_DEVICE_CONFIGURATOR权限，可调用该接口。 <br>从API版本26.2.0开始，在PC设备上，应用不再有焦点或权限要求。 |
+| [Input_Result OH_Input_GetPointerLocation(int32_t *displayId, double *displayX, double *displayY)](#oh_input_getpointerlocation) | - | 获取当前屏幕上鼠标的坐标点。 <br>从API版本26.0.0开始，非焦点应用持有ohos.permission.INPUT_DEVICE_CONFIGURATOR权限，可调用该接口。 <br>从API版本26.1.0开始，在PC设备上，应用不再有焦点或权限要求。 |
 | [struct Input_CursorInfo* OH_Input_CursorInfo_Create()](#oh_input_cursorinfo_create) | - | 创建鼠标光标信息对象。通过调用[OH_Input_CursorInfo_Destroy](capi-oh-input-manager-h.md#oh_input_cursorinfo_destroy)销毁鼠标光标信息对象。 |
 | [void OH_Input_CursorInfo_Destroy(Input_CursorInfo** cursorInfo)](#oh_input_cursorinfo_destroy) | - | 销毁鼠标光标信息对象。 |
 | [Input_Result OH_Input_CursorInfo_IsVisible(Input_CursorInfo* cursorInfo, bool* visible)](#oh_input_cursorinfo_isvisible) | - | 获取指定鼠标光标信息对象对应的光标显示状态。 |
@@ -3388,7 +3388,7 @@ Input_Result OH_Input_AddKeyEventMonitor(Input_KeyEventCallback callback)
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
-**需要权限：** ohos.permission.INPUT_MONITORING
+**需要权限：** ohos.permission.INPUT_MONITORING or ohos.permission.INPUT_RECORDING [since 26.1.0]
 
 **起始版本：** 12
 
@@ -3416,7 +3416,7 @@ Input_Result OH_Input_AddMouseEventMonitor(Input_MouseEventCallback callback)
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
-**需要权限：** ohos.permission.INPUT_MONITORING
+**需要权限：** ohos.permission.INPUT_MONITORING or ohos.permission.INPUT_RECORDING [since 26.1.0]
 
 **起始版本：** 12
 
@@ -3444,7 +3444,7 @@ Input_Result OH_Input_AddTouchEventMonitor(Input_TouchEventCallback callback)
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
-**需要权限：** ohos.permission.INPUT_MONITORING
+**需要权限：** ohos.permission.INPUT_MONITORING or ohos.permission.INPUT_RECORDING [since 26.1.0]
 
 **起始版本：** 12
 
@@ -3472,7 +3472,7 @@ Input_Result OH_Input_AddAxisEventMonitorForAll(Input_AxisEventCallback callback
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
-**需要权限：** ohos.permission.INPUT_MONITORING
+**需要权限：** ohos.permission.INPUT_MONITORING or ohos.permission.INPUT_RECORDING [since 26.1.0]
 
 **起始版本：** 12
 
@@ -3500,7 +3500,7 @@ Input_Result OH_Input_AddAxisEventMonitor(InputEvent_AxisEventType axisEventType
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
-**需要权限：** ohos.permission.INPUT_MONITORING
+**需要权限：** ohos.permission.INPUT_MONITORING or ohos.permission.INPUT_RECORDING [since 26.1.0]
 
 **起始版本：** 12
 
@@ -3529,7 +3529,7 @@ Input_Result OH_Input_RemoveKeyEventMonitor(Input_KeyEventCallback callback)
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
-**需要权限：** ohos.permission.INPUT_MONITORING
+**需要权限：** ohos.permission.INPUT_MONITORING [since 12 - 26.0.1]
 
 **起始版本：** 12
 
@@ -3557,7 +3557,7 @@ Input_Result OH_Input_RemoveMouseEventMonitor(Input_MouseEventCallback callback)
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
-**需要权限：** ohos.permission.INPUT_MONITORING
+**需要权限：** ohos.permission.INPUT_MONITORING [since 12 - 26.0.1]
 
 **起始版本：** 12
 
@@ -3585,7 +3585,7 @@ Input_Result OH_Input_RemoveTouchEventMonitor(Input_TouchEventCallback callback)
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
-**需要权限：** ohos.permission.INPUT_MONITORING
+**需要权限：** ohos.permission.INPUT_MONITORING [since 12 - 26.0.1]
 
 **起始版本：** 12
 
@@ -3613,7 +3613,7 @@ Input_Result OH_Input_RemoveAxisEventMonitorForAll(Input_AxisEventCallback callb
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
-**需要权限：** ohos.permission.INPUT_MONITORING
+**需要权限：** ohos.permission.INPUT_MONITORING [since 12 - 26.0.1]
 
 **起始版本：** 12
 
@@ -3641,7 +3641,7 @@ Input_Result OH_Input_RemoveAxisEventMonitor(InputEvent_AxisEventType axisEventT
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
-**需要权限：** ohos.permission.INPUT_MONITORING
+**需要权限：** ohos.permission.INPUT_MONITORING [since 12 - 26.0.1]
 
 **起始版本：** 12
 
@@ -4546,7 +4546,7 @@ Input_Result OH_Input_GetPointerLocation(int32_t *displayId, double *displayX, d
 
 **描述：**
 
-获取当前屏幕上鼠标的坐标点。 <br>从API版本26.0.0开始，非焦点应用持有ohos.permission.INPUT_DEVICE_CONFIGURATOR权限，可调用该接口。 <br>从API版本26.2.0开始，在PC设备上，应用不再有焦点或权限要求。
+获取当前屏幕上鼠标的坐标点。 <br>从API版本26.0.0开始，非焦点应用持有ohos.permission.INPUT_DEVICE_CONFIGURATOR权限，可调用该接口。 <br>从API版本26.1.0开始，在PC设备上，应用不再有焦点或权限要求。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 

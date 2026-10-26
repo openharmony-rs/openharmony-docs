@@ -2,7 +2,7 @@
 
 ## Overview
 
-Declares the native ability wrapper APIs.
+Provides the NativeAbility data information APIs for obtaining the Ability instance ID, Ability name, and napi_env.<br> **File to include:** <AbilityKit/ability_runtime/native_ability_wrapper.h>
 
 **Library**: libability_runtime.so
 
@@ -18,15 +18,15 @@ Declares the native ability wrapper APIs.
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [AbilityRuntime_NativeAbilityWrapper](capi-abilityruntime-abilityruntime-nativeabilitywrapper.md) | AbilityRuntime_NativeAbilityWrapper | Defines the AbilityRuntime_NativeAbilityWrapper structure type. |
+| [AbilityRuntime_NativeAbilityWrapper](capi-abilityruntime-abilityruntime-nativeabilitywrapper.md) | AbilityRuntime_NativeAbilityWrapper | Defines the AbilityRuntime_NativeAbilityWrapper struct type, which is used to encapsulate the information about UIAbility. |
 
 ### Function
 
 | Name | Description |
 | -- | -- |
-| [AbilityRuntime_ErrorCode OH_AbilityRuntime_GetAbilityInstanceId(const AbilityRuntime_NativeAbilityWrapper* nativeAbilityWrapper, char* buffer, const int32_t bufferSize)](#oh_abilityruntime_getabilityinstanceid) | Get ability instance ID from NativeAbilityWrapper. |
-| [AbilityRuntime_ErrorCode OH_AbilityRuntime_GetAbilityName(const AbilityRuntime_NativeAbilityWrapper *nativeAbilityWrapper, char *buffer, const int32_t bufferSize, int32_t *writeLength)](#oh_abilityruntime_getabilityname) | Get ability name from NativeAbilityWrapper. |
-| [AbilityRuntime_ErrorCode OH_AbilityRuntime_GetEnv(const AbilityRuntime_NativeAbilityWrapper* nativeAbilityWrapper, napi_env* env)](#oh_abilityruntime_getenv) | Get napi_env from NativeAbilityWrapper. |
+| [AbilityRuntime_ErrorCode OH_AbilityRuntime_GetAbilityInstanceId(const AbilityRuntime_NativeAbilityWrapper* nativeAbilityWrapper, char* buffer, const int32_t bufferSize)](#oh_abilityruntime_getabilityinstanceid) | Obtains the Ability instance ID from the NativeAbility data information. |
+| [AbilityRuntime_ErrorCode OH_AbilityRuntime_GetAbilityName(const AbilityRuntime_NativeAbilityWrapper *nativeAbilityWrapper, char *buffer, const int32_t bufferSize, int32_t *writeLength)](#oh_abilityruntime_getabilityname) | Obtains the ability name from the NativeAbility data information. |
+| [AbilityRuntime_ErrorCode OH_AbilityRuntime_GetEnv(const AbilityRuntime_NativeAbilityWrapper* nativeAbilityWrapper, napi_env* env)](#oh_abilityruntime_getenv) | Obtains the napi_env from the NativeAbility data information. |
 
 ## Function description
 
@@ -38,7 +38,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetAbilityInstanceId(const AbilityRun
 
 **Description**
 
-Get ability instance ID from NativeAbilityWrapper.
+Obtains the Ability instance ID from the NativeAbility data information.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -66,7 +66,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetAbilityName(const AbilityRuntime_N
 
 **Description**
 
-Get ability name from NativeAbilityWrapper.
+Obtains the ability name from the NativeAbility data information.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -95,7 +95,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetEnv(const AbilityRuntime_NativeAbi
 
 **Description**
 
-Get napi_env from NativeAbilityWrapper.
+Obtains the napi_env from the NativeAbility data information.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 

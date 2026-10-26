@@ -6,7 +6,7 @@ typedef struct ArkUI_MotionPathOptions ArkUI_MotionPathOptions
 
 ## 概述
 
-Defines the motion path options for path animation.
+定义路径动画的运动路径配置项，用于配置组件在动画过程中沿指定路径运动的轨迹及相关参数，使组件能够按照预设的运动路径进行位移动画。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -14,5 +14,5 @@ Defines the motion path options for path animation.
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
-**所在头文件：** [native_type.h](capi-native-type-h.md)
+**所在头文件：** [native_type_visual.h](capi-native-type-visual-h.md)
 

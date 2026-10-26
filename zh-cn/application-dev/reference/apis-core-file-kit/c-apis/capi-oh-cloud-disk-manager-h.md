@@ -197,7 +197,7 @@ enum OH_CloudDisk_CallbackType
 | OH_CLOUD_DISK_CALLBACK_TYPE_FETCH_DATA = 0 | 获取云端文件数据，用于水合。<br>**起始版本：** 26.0.1 |
 | OH_CLOUD_DISK_CALLBACK_TYPE_CANCEL_FETCH_DATA = 1 | 取消获取云端文件数据。<br>**起始版本：** 26.0.1 |
 | OH_CLOUD_DISK_CALLBACK_TYPE_DEHYDRATE = 2 | 请求脱水授权。<br>**起始版本：** 26.0.1 |
-| OH_CLOUD_DISK_CALLBACK_TYPE_FETCH_RANGE_DATA = 3 | 获取指定范围数据，用于读取。<br>**起始版本：** 26.2.0 |
+| OH_CLOUD_DISK_CALLBACK_TYPE_FETCH_RANGE_DATA = 3 | 获取指定范围数据，用于读取。<br>**起始版本：** 26.1.0 |
 
 ### OH_CloudDisk_HydratePriority
 

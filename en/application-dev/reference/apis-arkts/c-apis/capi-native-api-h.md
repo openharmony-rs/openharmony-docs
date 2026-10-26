@@ -219,8 +219,9 @@ NAPI_EXTERN napi_status napi_queue_async_work_with_qos(napi_env env, napi_async_
 | [NAPI_EXTERN napi_status napi_get_property_with_callsite_info(napi_env env, napi_value object, napi_value key, napi_callsite_info info, napi_value* result, bool* hit)](#napi_get_property_with_callsite_info) | - | Uses callsite info to quickly get an object property value. When the IC hits (the object has the same hidden class), it skips the regular hash table lookup and prototype chain traversal. The info parameter can be NULL, in which case the behavior is equivalent to napi_get_property. |
 | [NAPI_EXTERN napi_status napi_set_property_with_callsite_info(napi_env env, napi_value object, napi_value key, napi_value value, napi_callsite_info info, bool* hit)](#napi_set_property_with_callsite_info) | - | Uses callsite info to quickly set an object property value. When the IC hits (the object has the same hidden class), it skips the regular property setting process. The info parameter can be NULL, in which case the behavior is equivalent to napi_set_property. |
 | [NAPI_EXTERN napi_status napi_get_global_handle_count(napi_env env, size_t* count)](#napi_get_global_handle_count) | - | To obtain the count of global object in current ArkTS runtime thread. |
-| [napi_status napi_open_microtask_scope(napi_env env, napi_microtask_scope* scope)](#napi_open_microtask_scope) | - | Creates a microtask scope in the current ArkTS runtime. Within this scope, microtask execution is paused. |
-| [napi_status napi_close_microtask_scope(napi_env env, napi_microtask_scope scope)](#napi_close_microtask_scope) | - | To destroy the microtask scope in current ArkTS runtime. After the scope is destroyed, microtasks will be triggered to execute immediately. |
+| [NAPI_EXTERN napi_status napi_open_microtask_scope(napi_env env, napi_microtask_scope* scope)](#napi_open_microtask_scope) | - | Creates a microtask scope in the current ArkTS runtime. Within this scope, microtask execution is paused. |
+| [NAPI_EXTERN napi_status napi_close_microtask_scope(napi_env env, napi_microtask_scope scope)](#napi_close_microtask_scope) | - | To destroy the microtask scope in current ArkTS runtime. After the scope is destroyed, microtasks will be triggered to execute immediately. |
+| [NAPI_EXTERN void napi_shared_module_register(napi_module* mod)](#napi_shared_module_register) | - | To register a native sendable module which will be utilized in different threads of a process. |
 
 ### Variable
 
@@ -5485,7 +5486,7 @@ To obtain the count of global object in current ArkTS runtime thread.
 ### napi_open_microtask_scope()
 
 ```c
-napi_status napi_open_microtask_scope(napi_env env, napi_microtask_scope* scope)
+NAPI_EXTERN napi_status napi_open_microtask_scope(napi_env env, napi_microtask_scope* scope)
 ```
 
 **Description**
@@ -5498,7 +5499,7 @@ Creates a microtask scope in the current ArkTS runtime. Within this scope, micro
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 **Parameters**:
 
@@ -5511,12 +5512,12 @@ Creates a microtask scope in the current ArkTS runtime. Within this scope, micro
 
 | Type | Description |
 | -- | -- |
-| napi_status | Returns the function execution status. <ul><li>napi_ok If the function executed successfully.</li> <li>napi_invalid_arg If env or scope is nullptr.</li> <li>napi_pending_exception If there is an uncaught exception.</li></ul> |
+| NAPI_EXTERN napi_status | Returns the function execution status. <ul><li>napi_ok If the function executed successfully.</li> <li>napi_invalid_arg If env or scope is nullptr.</li> <li>napi_pending_exception If there is an uncaught exception.</li></ul> |
 
 ### napi_close_microtask_scope()
 
 ```c
-napi_status napi_close_microtask_scope(napi_env env, napi_microtask_scope scope)
+NAPI_EXTERN napi_status napi_close_microtask_scope(napi_env env, napi_microtask_scope scope)
 ```
 
 **Description**
@@ -5529,7 +5530,7 @@ To destroy the microtask scope in current ArkTS runtime. After the scope is dest
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 **Parameters**:
 
@@ -5542,6 +5543,26 @@ To destroy the microtask scope in current ArkTS runtime. After the scope is dest
 
 | Type | Description |
 | -- | -- |
-| napi_status | Returns the function execution status. <ul><li>napi_ok If the function executed successfully.</li> <li>napi_invalid_arg If env or scope is nullptr.</li> <li>napi_pending_exception If there is an uncaught exception.</li></ul> |
+| NAPI_EXTERN napi_status | Returns the function execution status. <ul><li>napi_ok If the function executed successfully.</li> <li>napi_invalid_arg If env or scope is nullptr.</li> <li>napi_pending_exception If there is an uncaught exception.</li></ul> |
+
+### napi_shared_module_register()
+
+```c
+NAPI_EXTERN void napi_shared_module_register(napi_module* mod)
+```
+
+**Description**
+
+To register a native sendable module which will be utilized in different threads of a process.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Napi
+
+**Since**: 26.1.0
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| napi_module* mod | [in] Native module of type 'napi_module' to be registered. |
 
 

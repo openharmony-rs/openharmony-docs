@@ -612,7 +612,7 @@ Sets whether to defer the initialization of the ArkWeb kernel. If this method is
 
 | Parameter | Description |
 | -- | -- |
-| bool lazy | - Controls whether to delay the initialization of the web engine. |
+| bool lazy | [in] - Controls whether to delay the initialization of the web engine. |
 
 ### OH_NativeArkWeb_IsActiveWebEngineEvergreen()
 

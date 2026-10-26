@@ -43,6 +43,8 @@ The file declares the metadata output concepts.
 | [bool OH_MetadataOutput_IsLockMetadataObjectTrackingSupported(const Camera_MetadataOutput* metadataOutput)](#oh_metadataoutput_islockmetadataobjecttrackingsupported) | - | Checks whether the lock metadata object tracking is supported. |
 | [Camera_ErrorCode OH_MetadataOutput_LockMetadataObjectTracking(Camera_MetadataOutput* metadataOutput, Camera_Point* pointOfInterest)](#oh_metadataoutput_lockmetadataobjecttracking) | - | Lock metadata object tracking, can be unlocked by [OH_MetadataOutput_UnlockMetadataObjectTracking](capi-metadata-output-h.md#oh_metadataoutput_unlockmetadataobjecttracking). |
 | [Camera_ErrorCode OH_MetadataOutput_UnlockMetadataObjectTracking(Camera_MetadataOutput* metadataOutput)](#oh_metadataoutput_unlockmetadataobjecttracking) | - | Unlock metadata object tracking. |
+| [Camera_ErrorCode OH_MetadataOutput_SetInFrameMetadataForEncoderEnabled(Camera_MetadataOutput* metadataOutput, bool enable)](#oh_metadataoutput_setinframemetadataforencoderenabled) | - | Enable or disable in frame metadata delivery for encoder. |
+| [bool OH_MetadataOutput_IsInFrameMetadataForEncoderSupported(const Camera_MetadataOutput* metadataOutput)](#oh_metadataoutput_isinframemetadataforencodersupported) | - | Check if in frame metdata for encoder is supported. |
 
 ### Variable
 
@@ -529,5 +531,58 @@ Unlock metadata object tracking.
 | Type | Description |
 | -- | -- |
 | [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful. <br>**CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect. <br>**CAMERA_SESSION_NOT_CONFIG**: The capture session is not configured. <br>**CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal. |
+
+### OH_MetadataOutput_SetInFrameMetadataForEncoderEnabled()
+
+```c
+Camera_ErrorCode OH_MetadataOutput_SetInFrameMetadataForEncoderEnabled(Camera_MetadataOutput* metadataOutput, bool enable)
+```
+
+**Description**
+
+Enable or disable in frame metadata delivery for encoder.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+**Since**: 26.0.1
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| [Camera_MetadataOutput](capi-oh-camera-camera-metadataoutput.md)* metadataOutput | [in] Pointer to a MetadataOutput instance. |
+| bool enable | [in] Whether to enable delivery of in frame metadata for encoder. **true** to enable, **false** otherwise. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful. <br>**CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect. <br>**CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal. |
+
+### OH_MetadataOutput_IsInFrameMetadataForEncoderSupported()
+
+```c
+bool OH_MetadataOutput_IsInFrameMetadataForEncoderSupported(const Camera_MetadataOutput* metadataOutput)
+```
+
+**Description**
+
+Check if in frame metdata for encoder is supported.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+**Since**: 26.0.1
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| [const Camera_MetadataOutput](capi-oh-camera-camera-metadataoutput.md)* metadataOutput | [in] Pointer to a MetadataOutput instance. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| bool | **true** if supported, **false** otherwise. |
 
 

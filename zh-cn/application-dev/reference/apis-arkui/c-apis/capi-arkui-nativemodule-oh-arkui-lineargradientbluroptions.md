@@ -10,7 +10,7 @@ typedef struct OH_ArkUI_LinearGradientBlurOptions OH_ArkUI_LinearGradientBlurOpt
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 

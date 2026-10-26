@@ -10,7 +10,7 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
@@ -33,7 +33,7 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| void (*OH_ArkUI_NativeModule_UIEventInjectionCallback)( OH_ArkUI_NativeModule_UIEventInjection_ResultCode result, void *userData) | 注入完成回调。<br> 用于通知命令的派发结果和组件对命令的即时处理结果，不等待组件延迟效果或渲染完成。 每个已受理请求在注入函数返回后，在原UI线程恰好回调一次。不同UI线程上的回调不保证全局串行执行。<br>**起始版本：** 26.2.0<br>**系统能力：** SystemCapability.ArkUI.ArkUI.Full |
+| void (*OH_ArkUI_NativeModule_UIEventInjectionCallback)( OH_ArkUI_NativeModule_UIEventInjection_ResultCode result, void *userData) | 注入完成回调。<br> 用于通知命令的派发结果和组件对命令的即时处理结果，不等待组件延迟效果或渲染完成。 每个已受理请求在注入函数返回后，在原UI线程恰好回调一次。不同UI线程上的回调不保证全局串行执行。<br>**起始版本：** 26.1.0<br>**系统能力：** SystemCapability.ArkUI.ArkUI.Full |
 
 ## 枚举类型说明
 
@@ -49,14 +49,14 @@ enum OH_ArkUI_NativeModule_UIEventInjection_ResultCode
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_ARKUI_NATIVE_MODULE_UI_EVENT_INJECTION_RESULT_SUCCESS = 0 | 注入的命令执行成功。<br>**起始版本：** 26.2.0 |
-| OH_ARKUI_NATIVE_MODULE_UI_EVENT_INJECTION_RESULT_TARGET_NOT_FOUND = 1 | 未找到能够响应注入命令的组件或目标。<br> 例如，点击坐标未命中任何组件，或无法定位执行模式所需的目标。<br>**起始版本：** 26.2.0 |
-| OH_ARKUI_NATIVE_MODULE_UI_EVENT_INJECTION_RESULT_COMMAND_NOT_SUPPORTED = 2 | 当前UI上下文无法执行该命令。<br> 命令结构有效，但当前UI状态不支持该命令的类型或执行模式。<br>**起始版本：** 26.2.0 |
-| OH_ARKUI_NATIVE_MODULE_UI_EVENT_INJECTION_RESULT_INTERRUPTED_BY_USER = 3 | 注入的命令被用户操作中断。<br>**起始版本：** 26.2.0 |
+| OH_ARKUI_NATIVE_MODULE_UI_EVENT_INJECTION_RESULT_SUCCESS = 0 | 注入的命令执行成功。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_NATIVE_MODULE_UI_EVENT_INJECTION_RESULT_TARGET_NOT_FOUND = 1 | 未找到能够响应注入命令的组件或目标。<br> 例如，点击坐标未命中任何组件，或无法定位执行模式所需的目标。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_NATIVE_MODULE_UI_EVENT_INJECTION_RESULT_COMMAND_NOT_SUPPORTED = 2 | 当前UI上下文无法执行该命令。<br> 命令结构有效，但当前UI状态不支持该命令的类型或执行模式。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_NATIVE_MODULE_UI_EVENT_INJECTION_RESULT_INTERRUPTED_BY_USER = 3 | 注入的命令被用户操作中断。<br>**起始版本：** 26.1.0 |
 
 
 ## 函数说明
@@ -73,7 +73,7 @@ typedef void (*OH_ArkUI_NativeModule_UIEventInjectionCallback)(OH_ArkUI_NativeMo
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **参数：**
 
@@ -94,7 +94,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIEventInjectCompositeCommand(ArkUI_Contex
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **参数：**
 

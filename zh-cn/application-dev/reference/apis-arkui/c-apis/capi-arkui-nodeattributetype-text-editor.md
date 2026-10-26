@@ -392,7 +392,7 @@ NODE_TEXT_EDITOR_TYPE = 22031
 
 设置TextEditor组件的文本编辑器类型，支持属性设置、属性重置和属性获取。 **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32：文本编辑器类型，数据类型[OH_ArkUI_TextEditorType](capi-rich-editor-h.md#oh_arkui_texteditortype)，默认值为OH_ARKUI_TEXT_EDITOR_TYPE_NORMAL。</li> </ul> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32：文本编辑器类型，数据类型[OH_ArkUI_TextEditorType](capi-rich-editor-h.md#oh_arkui_texteditortype)。</li> </ul>
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 ### NODE_TEXT_EDITOR_SHOW_PASSWORD_ICON
 
@@ -404,7 +404,7 @@ NODE_TEXT_EDITOR_SHOW_PASSWORD_ICON = 22032
 
 设置密码输入模式下是否在文本末尾显示密码图标，支持属性设置、属性重置和属性获取。 **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32：是否在文本末尾显示密码图标，true表示显示密码图标，false表示不显示。</li> </ul> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32：是否在文本末尾显示密码图标，1表示显示密码图标，0表示不显示。</li> </ul>
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 ### NODE_TEXT_EDITOR_PASSWORD_ICON
 
@@ -416,7 +416,7 @@ NODE_TEXT_EDITOR_PASSWORD_ICON = 22033
 
 设置TextEditor组件的密码图标，支持属性设置和属性重置。 **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].string：显示密码图标时的图片资源。</li> <li>.value[1].string：隐藏密码图标时的图片资源。</li> </ul> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].string：显示密码图标时的图片资源。</li> <li>.value[1].string：隐藏密码图标时的图片资源。</li> </ul>
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 ### NODE_TEXT_EDITOR_ENABLE_AUTO_FILL
 
@@ -428,7 +428,7 @@ NODE_TEXT_EDITOR_ENABLE_AUTO_FILL = 22034
 
 设置TextEditor组件是否启用自动填充，支持属性设置、属性重置和属性获取。 **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32：是否启用自动填充，默认值0。0表示不启用，1表示启用。</li> </ul> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32：是否启用自动填充。1表示启用，0表示不启用。</li> </ul>
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 ### NODE_TEXT_EDITOR_CONTENT_TYPE
 
@@ -440,7 +440,7 @@ NODE_TEXT_EDITOR_CONTENT_TYPE = 22035
 
 设置TextEditor组件的自动填充类型，支持属性设置、属性重置和属性获取。 **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32：参数类型[ArkUI_TextInputContentType](capi-text-input-h.md#arkui_textinputcontenttype)，用于自动填充场景指定内容类型。具体枚举值及适用场景请参考[ArkUI_TextInputContentType](capi-text-input-h.md#arkui_textinputcontenttype)枚举说明。</li> </ul> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32：自动填充内容类型枚举[ArkUI_TextInputContentType](capi-text-input-h.md#arkui_textinputcontenttype)，用于确定自动填充的内容类型。</li> </ul>
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 ### NODE_TEXT_EDITOR_PASSWORD_RULES
 
@@ -452,7 +452,7 @@ NODE_TEXT_EDITOR_PASSWORD_RULES = 22036
 
 定义生成密码的规则。在触发自动填充时，所设置的密码规则会透传给密码保险箱，用于新密码的生成。支持属性设置、属性重置和属性获取。 **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.string：定义生成密码的规则，用于在触发自动填充时透传给密码保险箱以控制新密码的生成。</li> </ul> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.string：定义生成密码的规则。</li> </ul>
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 ### NODE_TEXT_EDITOR_ENABLE_FILL_ANIMATION
 
@@ -464,7 +464,7 @@ NODE_TEXT_EDITOR_ENABLE_FILL_ANIMATION = 22037
 
 设置TextEditor组件是否启用自动填充动效，支持属性设置、属性重置和属性获取。 **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32：是否启用自动填充动效。1表示启用，0表示不启用。默认值1。</li> </ul> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32：是否启用自动填充动效。1表示启用，0表示不启用。</li> </ul>
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 ### NODE_TEXT_EDITOR_SHOW_UNDERLINE
 
@@ -476,7 +476,7 @@ NODE_TEXT_EDITOR_SHOW_UNDERLINE = 22038
 
 设置TextEditor组件是否显示下划线，支持属性设置、属性重置和属性获取。 **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32：是否显示下划线，0表示不显示，1表示显示。默认值为0。</li> </ul> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32：是否显示下划线。1表示显示，0表示不显示。</li> </ul>
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 ### NODE_TEXT_EDITOR_UNDERLINE_COLOR
 
@@ -488,7 +488,7 @@ NODE_TEXT_EDITOR_UNDERLINE_COLOR = 22039
 
 开启下划线时，支持配置下划线颜色，支持属性设置、属性重置和属性获取。 <br>需先设置NODE_TEXT_EDITOR_SHOW_UNDERLINE属性为1以开启下划线后，本属性设置才生效。 **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].u32：typing下划线颜色，表示键入时的下划线颜色，0xARGB类型。</li> <li>.value[1].u32：normal下划线颜色，表示非特殊状态时下划线颜色，0xARGB类型。</li> <li>.value[2].u32：error下划线颜色，表示错误时下划线颜色，0xARGB类型。</li> <li>.value[3].u32：disable下划线颜色，表示禁用时下划线颜色，0xARGB类型。</li> </ul> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].u32：typing下划线颜色，表示键入时的下划线颜色，0xARGB类型。</li> <li>.value[1].u32：normal下划线颜色，表示非特殊状态时下划线颜色，0xARGB类型。</li> <li>.value[2].u32：error下划线颜色，表示错误时下划线颜色，0xARGB类型。</li> <li>.value[3].u32：disable下划线颜色，表示禁用时下划线颜色，0xARGB类型。</li> </ul>
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 ### NODE_TEXT_EDITOR_CARET_STYLE
 
@@ -500,7 +500,7 @@ NODE_TEXT_EDITOR_CARET_STYLE = 22040
 
 设置TextEditor组件的光标宽度，支持属性设置、属性重置和属性获取。 **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].f32：光标宽度，单位vp。</li> </ul> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].f32：光标宽度，单位vp。</li> </ul>
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 ### NODE_TEXT_EDITOR_SELECT_ALL
 
@@ -512,7 +512,7 @@ NODE_TEXT_EDITOR_SELECT_ALL = 22041
 
 设置TextEditor组件在初始状态时是否全选文本，支持属性设置、属性重置和属性获取。 <br>仅在首次获焦并完成布局阶段时触发全选。窗口恢复获焦时不执行全选。 **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32：是否全选文本，默认值为0。1表示会全选文本，0表示不会全选文本。</li> </ul> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32：是否全选文本。1表示会全选文本，0表示不会全选文本。</li> </ul>
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 ### NODE_TEXT_EDITOR_BLUR_ON_SUBMIT
 
@@ -524,7 +524,7 @@ NODE_TEXT_EDITOR_BLUR_ON_SUBMIT = 22042
 
 设置TextEditor组件在提交时是否失焦，支持属性设置、属性重置和属性获取。 <br>仅在EnterKeyType为NEW_LINE时按Enter键生效：设置为1时关闭键盘并失焦，不插入换行；设置为0时插入换行，不失焦。 **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32：是否在提交时失焦，默认值为0。1表示提交时失焦，0表示提交时不失焦。</li> </ul> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32：是否在提交时失焦。1表示提交时失焦，0表示提交时不失焦。</li> </ul>
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 ### NODE_TEXT_EDITOR_CONTENT_RECT
 
@@ -536,7 +536,7 @@ NODE_TEXT_EDITOR_CONTENT_RECT = 22043
 
 获取TextEditor组件编辑内容区域的位置和大小，仅支持属性获取。 **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].f32：编辑内容区域的x轴偏移。</li> <li>.value[1].f32：编辑内容区域的y轴偏移。</li> <li>.value[2].f32：编辑内容区域的宽度。</li> <li>.value[3].f32：编辑内容区域的高度。</li> </ul>
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 ### NODE_TEXT_EDITOR_SELECTION_MENU_HIDDEN
 
@@ -548,7 +548,7 @@ NODE_TEXT_EDITOR_SELECTION_MENU_HIDDEN = 22044
 
 设置TextEditor组件是否隐藏选择菜单，支持属性设置、属性重置和属性获取。 <br>设置为1时，长按、双击或右击时不弹出选择菜单，但不影响选区手柄。 **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32：是否隐藏选择菜单，默认值为0。1表示隐藏，0表示不隐藏。</li> </ul> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32：是否隐藏选择菜单。1表示隐藏，0表示不隐藏。</li> </ul>
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 ### NODE_TEXT_EDITOR_ENABLE_SKIP_PREVIEW_LONG_PRESS
 
@@ -560,7 +560,7 @@ NODE_TEXT_EDITOR_ENABLE_SKIP_PREVIEW_LONG_PRESS = 22045
 
 设置TextEditor组件是否跳过长按预览态直接进入编辑态，支持属性设置、属性重置和属性获取。 <br>设置为1时，长按后直接进入编辑态（键盘弹出、光标闪烁），跳过预览态。双击行为不受影响。 **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32：是否跳过长按预览态，默认值为0。1表示跳过预览态，0表示不跳过。</li> </ul> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32：是否跳过长按预览态。1表示跳过预览态，0表示不跳过。</li> </ul>
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 ### NODE_TEXT_EDITOR_CANCEL_BUTTON
 
@@ -572,7 +572,7 @@ NODE_TEXT_EDITOR_CANCEL_BUTTON = 22046
 
 设置TextEditor组件的清除按钮样式属性，支持属性设置，属性重置和属性获取。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32：按钮样式[ArkUI_CancelButtonStyle](capi-text-input-h.md#arkui_cancelbuttonstyle)，默认值为ARKUI_CANCELBUTTON_STYLE_INPUT，表示清除按钮输入样式。</li> <li>.value[1]?.f32：图标大小数值，单位为vp。取值范围：[0, +∞)。传入负数时不生效。不传入时使用系统默认图标大小。</li> <li>.value[2]?.u32：按钮图标颜色数值，0xargb格式，形如 0xFFFF0000 表示红色。不传入时使用系统默认图标颜色。</li> <li>?.string：按钮图标地址，入参内容为图片本地地址，例如 /pages/icon.png。不传入时使用系统默认清除图标。</li> </ul><br> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32：按钮样式[ArkUI_CancelButtonStyle](capi-text-input-h.md#arkui_cancelbuttonstyle)。</li> <li>.value[1].f32：图标大小数值，单位为vp。</li> <li>.value[2].u32：按钮图标颜色数值，0xargb格式。</li> <li>.string：按钮图标地址。</li> </ul>
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 ### NODE_TEXT_EDITOR_SHOW_COUNTER
 
@@ -584,7 +584,7 @@ NODE_TEXT_EDITOR_SHOW_COUNTER = 22047
 
 设置TextEditor组件输入的字符数超过阈值时是否显示计数器并设置计数器样式，支持属性设置，属性重置和属性获取接口。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32：是否开启计数器。值为1表示开启计数器，值为0表示不开启计数器。</li> <li>.value[1]?.f32：可输入字符数占最大字符限制的百分比值，超过此值时显示计数器，取值范围[1, 100]，小数时向下取整，若超出取值范围，则接口属性设置不生效。默认值-1，即始终显示计数器。</li> <li>.value[2]?.i32：输入字符超出限制时高亮边框，1表示高亮边框，0表示不高亮边框。默认值1。</li> <li>.object：计数器配置，配置属性为文本输入框未达到最大字符数时计数器的颜色以及超出最大字符数时计数器的颜色。参数类型为 [ArkUI_ShowCounterConfig](capi-arkui-nativemodule-arkui-showcounterconfig.md)。</li> </ul><br> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32：是否开启计数器。0表示不开启计数器，1表示开启计数器。</li> <li>.value[1].f32：可输入字符数占最大字符限制的百分比值，超过此值时显示计数器，取值范围[1, 100]。</li> <li>.value[2].i32：输入字符超出限制时高亮边框。0表示不高亮边框，1表示高亮边框。</li> <li>.object：计数器配置，配置属性为文本输入框未达到最大字符数时计数器的颜色以及超出最大字符数时计数器的颜色。参数类型为 [ArkUI_ShowCounterConfig](capi-arkui-nativemodule-arkui-showcounterconfig.md)。</li> </ul>
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 ### NODE_TEXT_EDITOR_INPUT_FILTER
 
@@ -596,6 +596,6 @@ NODE_TEXT_EDITOR_INPUT_FILTER = 22048
 
 设置TextEditor组件的输入过滤正则表达式，支持属性设置、属性重置和属性获取。 <br>该属性仅在spanString模式下生效（包含单行和多行模式）。 <br>当同时设置inputFilter和maxLength时，过滤优先级为：先inputFilter过滤，再maxLength截断。 <br>正则表达式变更时，已有内容会被静默重新过滤（与TextInput行为一致）。 <br>非字符内容（ImageSpan/SymbolSpan/BuilderSpan）在正则匹配时被视为\uFFFC字符。 **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.string：输入过滤的正则表达式字符串。仅允许匹配正则白名单的字符输入。空字符串等效于不设置过滤。</li> </ul> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.string：当前设置的输入过滤正则表达式字符串。</li> </ul>
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 

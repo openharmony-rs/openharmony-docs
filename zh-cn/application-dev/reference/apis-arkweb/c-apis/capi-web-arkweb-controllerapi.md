@@ -55,8 +55,8 @@ void (*runJavaScript)(const char* webTag, const ArkWeb_JavaScriptObject* javascr
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char* webTag | Web组件名称。 |
-|  const [ArkWeb_JavaScriptObject](capi-web-arkweb-javascriptobject.md)* javascriptObject | 注入的JavaScript对象。 |
+| const char* webTag | [in] Web组件名称。 |
+|  const [ArkWeb_JavaScriptObject](capi-web-arkweb-javascriptobject.md)* javascriptObject | [in] 注入的JavaScript对象。 |
 
 ### registerJavaScriptProxy()
 
@@ -70,8 +70,8 @@ void (*registerJavaScriptProxy)(const char* webTag, const ArkWeb_ProxyObject* pr
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char* webTag | Web组件名称。 |
-|  const [ArkWeb_ProxyObject](capi-web-arkweb-proxyobject.md)* proxyObject | 要注册的代理对象，该对象将被注入到window对象中，并可通过JavaScript调用其方法。 |
+| const char* webTag | [in] Web组件名称。 |
+|  const [ArkWeb_ProxyObject](capi-web-arkweb-proxyobject.md)* proxyObject | [in] 要注册的代理对象，该对象将被注入到window对象中，并可通过JavaScript调用其方法。 |
 
 ### deleteJavaScriptRegister()
 
@@ -85,8 +85,8 @@ void (*deleteJavaScriptRegister)(const char* webTag, const char* objName)
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char* webTag | Web组件名称。 |
-|  const char* objName | JavaScript对象名称。 |
+| const char* webTag | [in] Web组件名称。 |
+|  const char* objName | [in] JavaScript对象名称。 |
 
 ### refresh()
 
@@ -100,7 +100,7 @@ void (*refresh)(const char* webTag)
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char* webTag | Web组件名称。 |
+| const char* webTag | [in] Web组件名称。 |
 
 ### registerAsyncJavaScriptProxy()
 
@@ -114,8 +114,8 @@ void (*registerAsyncJavaScriptProxy)(const char* webTag, const ArkWeb_ProxyObjec
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char* webTag | Web组件名称。 |
-|  const [ArkWeb_ProxyObject](capi-web-arkweb-proxyobject.md)* proxyObject | 注册的对象。 |
+| const char* webTag | [in] Web组件名称。 |
+|  const [ArkWeb_ProxyObject](capi-web-arkweb-proxyobject.md)* proxyObject | [in] 注册的对象。 |
 
 ### createWebMessagePorts()
 

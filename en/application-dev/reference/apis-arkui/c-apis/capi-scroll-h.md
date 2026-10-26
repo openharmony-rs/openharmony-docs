@@ -315,7 +315,7 @@ Enumerates the fast scroll modes for scrolling to a specified index.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 | Enum item | Description |
 | -- | -- |

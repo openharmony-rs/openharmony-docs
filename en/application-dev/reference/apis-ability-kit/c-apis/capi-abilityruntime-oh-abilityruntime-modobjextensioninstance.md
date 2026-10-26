@@ -6,7 +6,7 @@ typedef struct OH_AbilityRuntime_ModObjExtensionInstance OH_AbilityRuntime_ModOb
 
 ## Overview
 
-Defines the struct for OH_AbilityRuntime_ModObjExtensionInstance.
+Defines the OH_AbilityRuntime_ModularObjectExtensionInstance struct, whose type alias is OH_AbilityRuntime_ModObjExtensionInstance, representing an instance of ModularObjectExtensionAbility.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 

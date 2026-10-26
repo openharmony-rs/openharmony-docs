@@ -10,7 +10,7 @@ Defines an opaque, immutable JSON data object.<br> The object holds a JSON strin
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
