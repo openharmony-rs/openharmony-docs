@@ -729,14 +729,14 @@ ArkWeb Native侧需先获取API结构体，才能调用结构体里的Native API
   cmake_minimum_required(VERSION 3.5.0)
   project(NDKPostMessage)
   
-  set(NATIVERENDER_ROOT_PATH &#36;{CMAKE_CURRENT_SOURCE_DIR})
+  set(NATIVERENDER_ROOT_PATH ${CMAKE_CURRENT_SOURCE_DIR})
   
   if(DEFINED PACKAGE_FIND_FILE)
-      include(&#36;{PACKAGE_FIND_FILE})
+      include(${PACKAGE_FIND_FILE})
   endif()
   
-  include_directories(&#36;{NATIVERENDER_ROOT_PATH}
-                      &#36;{NATIVERENDER_ROOT_PATH}/include)
+  include_directories(${NATIVERENDER_ROOT_PATH}
+                      ${NATIVERENDER_ROOT_PATH}/include)
   
   add_library(entry SHARED hello.cpp)
   
