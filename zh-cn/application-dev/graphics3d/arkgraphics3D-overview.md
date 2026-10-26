@@ -1,3 +1,11 @@
+---
+kits: ["ArkGraphics3D Kit / 方舟3D图形"]
+description: "介绍。"
+keywords: [3D, component3D, gltf, scene]
+doctype: guide
+status: active
+---
+
 # ArkGraphics 3D简介
 <!--Kit: ArkGraphics 3D-->
 <!--Subsystem: Graphics-->

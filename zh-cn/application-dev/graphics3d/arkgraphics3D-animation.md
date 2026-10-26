@@ -1,3 +1,11 @@
+---
+kits: ["ArkGraphics3D Kit / 方舟3D图形"]
+description: "介绍。"
+keywords: [3D, component3D, gltf, scene]
+doctype: guide
+status: active
+---
+
 # 场景动画控制与管理
 <!--Kit: ArkGraphics 3D-->
 <!--Subsystem: Graphics-->
