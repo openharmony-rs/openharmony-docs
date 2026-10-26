@@ -1888,7 +1888,7 @@ cleanBundleCacheFiles(bundleName: string, appIndex: number): Promise\<void>
 | 参数名     | 类型   | 必填 | 说明                                       |
 | ---------- | ------ | ---- | ------------------------------------------ |
 | bundleName | string | 是   | 表示要清理其缓存数据的应用程序的bundleName。 |
-| appIndex | number | 是   | 表示要清理其缓存数据的应用程序的分身应用索引，取值范围0~5。<br>appIndex为0时，表示清理主应用缓存数据。appIndex大于0时，表示清理指定分身应用缓存数据。 |
+| appIndex | number | 是   | 表示要清理其缓存数据的应用程序的分身应用索引。<br>appIndex为0时，表示清理主应用缓存数据。appIndex大于0时，表示清理指定分身应用缓存数据。 |
 
 **返回值：**
 
@@ -2307,7 +2307,7 @@ setAbilityEnabled(info: AbilityInfo, appIndex: number, isEnabled: boolean): Prom
 | 参数名    | 类型        | 必填 | 说明                                  |
 | -------- | ----------- | ---- | ------------------------------------- |
 | info     | [AbilityInfo](js-apis-bundleManager-abilityInfo.md) | 是   | 需要被设置的组件。                   |
-| appIndex   | number    | 是   | 表示分身应用的索引，取值范围0~5。<br> appIndex为0时，表示设置主应用组件的禁用或启用状态。appIndex大于0时，表示设置指定分身应用组件的禁用或启用状态。            |
+| appIndex   | number    | 是   | 表示分身应用的索引。<br> appIndex为0时，表示设置主应用组件的禁用或启用状态。appIndex大于0时，表示设置指定分身应用组件的禁用或启用状态。            |
 | isEnabled| boolean     | 是   | 值为true表示启用，值为false表示禁用。 |
 
 **返回值：**
@@ -2550,7 +2550,7 @@ isApplicationEnabled(bundleName: string, appIndex: number): Promise\<boolean>
 | 参数名      | 类型   | 必填 | 说明                       |
 | ---------- | ------ | ---- | -------------------------- |
 | bundleName | string | 是   | 表示应用程序的bundleName。  |
-| appIndex   | number  | 是   | 表示分身应用的索引，取值范围0~5。<br> appIndex为0时，表示获取主应用的禁用或启用状态。appIndex大于0时，表示获取指定分身应用的禁用或启用状态。            |
+| appIndex   | number  | 是   | 表示分身应用的索引。<br> appIndex为0时，表示获取主应用的禁用或启用状态。appIndex大于0时，表示获取指定分身应用的禁用或启用状态。            |
 
 **返回值：**
 
@@ -2788,7 +2788,7 @@ isAbilityEnabled(info: AbilityInfo, appIndex: number): Promise\<boolean>
 | 参数名 | 类型        | 必填 | 说明                        |
 | ---- | ----------- | ---- | --------------------------- |
 | info | [AbilityInfo](js-apis-bundleManager-abilityInfo.md) | 是   | 表示关于检查ability的信息。 |
-| appIndex   | number  | 是   | 表示分身应用的索引，取值范围0~5。 <br> appIndex为0时，表示获取主应用组件的禁用或启用状态。appIndex大于0时，表示获取指定分身应用组件的禁用或启用状态。           |
+| appIndex   | number  | 是   | 表示分身应用的索引，<br> appIndex为0时，表示获取主应用组件的禁用或启用状态。appIndex大于0时，表示获取指定分身应用组件的禁用或启用状态。           |
 
 **返回值：**
 
