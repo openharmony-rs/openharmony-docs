@@ -391,7 +391,7 @@
   ```
 
 * Node-API侧编译配置`entry/src/main/cpp/CMakeLists.txt`
-
+  <!-- @[cmake_lists](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebJsInteraction/NdkJsBridgeEX/entry/src/main/cpp/CMakeLists.txt) -->
   ```c++
   # the minimum version of CMake.
   cmake_minimum_required(VERSION 3.4.1)
@@ -1132,7 +1132,7 @@ ArkWeb Native侧需要先获取API结构体，才能调用结构体里的Native 
   ```
 
 * Node-API侧编译配置`entry/src/main/cpp/CMakeLists.txt`
-
+  <!-- @[cmake_lists](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebJsInteraction/NdkJsBridge/entry/src/main/cpp/CMakeLists.txt) -->
   ```c++
   # the minimum version of CMake.
   cmake_minimum_required(VERSION 3.4.1)

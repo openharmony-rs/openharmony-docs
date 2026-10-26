@@ -721,7 +721,7 @@ ArkWeb Native侧需先获取API结构体，才能调用结构体里的Native API
   ```
 
 * Node-API侧编译配置
-
+  <!-- @[cmake_lists](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebJsBridge/entry/src/main/cpp/CMakeLists.txt) -->
   ```c++
   # entry/src/main/cpp/CMakeLists.txt
   # the minimum version of CMake.
