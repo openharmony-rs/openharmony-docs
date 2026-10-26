@@ -281,7 +281,7 @@ int OH_IPCSkeleton_SetCallingIdentity(const char *identity)
 
 Sets the caller credential information to the IPC context. This function restores the identity credential of the IPC context to that of the original caller. This function must be called in the IPC request processing context. This function is applicable to scenarios where the normal permission needs to be restored after temporary permission elevation. For example, the caller identity is restored after the protected resource access is complete on the server, or the caller permission status is restored after the permission delegation operation is complete.
 
-- After this function is called, the identity credentials of the IPC context are restored to the caller credentials previously saved by [OH_IPCSkeleton_ResetCallingIdentity()](oh_ipcskeleton_resetcallingidentity).
+- After this function is called, the identity credentials of the IPC context are restored to the caller credentials previously saved by [OH_IPCSkeleton_ResetCallingIdentity()](#oh_ipcskeleton_resetcallingidentity).
 - This function should be called immediately after the operation that requires the server identity is complete.
 - Identity credentials must be properly managed to prevent credential leaks.
 
