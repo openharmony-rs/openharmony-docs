@@ -107,9 +107,9 @@
        await this.GetMainPixelmap(context, picture);
        Logger.info(TAG_LOG, 'picture GetMainPixelmap X');
      
-       Logger.info(TAG_LOG, 'picture Release E');
-       await this.Release(picture);
-       Logger.info(TAG_LOG, 'picture Release X');
+       Logger.info(TAG_LOG, 'picture releasePicture E');
+       await this.releasePicture(picture);
+       Logger.info(TAG_LOG, 'picture releasePicture X');
      }
      
      async packToFileFromPixelMap(context : Context, pixelMap : image.PixelMap) {
@@ -184,8 +184,8 @@
      }
      
      // 释放资源。
-     async release(pictureObj : image.Picture) {
-       let funcName = 'Release';
+     async releasePicture(pictureObj : image.Picture) {
+       let funcName = 'releasePicture';
        if (pictureObj != null) {
          pictureObj.release();
          if (pictureObj.getMainPixelmap() == null) {
