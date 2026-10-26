@@ -1092,7 +1092,7 @@ static napi_value UnmarkPlaceholderFile(napi_env env, napi_callback_info info)
 | CloudDisk_ErrorCode OH_CloudDisk_UnregisterCallbackTable(const CloudDisk_SyncFolderPath syncFolderPath) | 注销回调表，注销后不再接收相关回调通知。<br>**说明**：从API版本26.0.1开始，支持该接口。 |
 | CloudDisk_ErrorCode OH_CloudDisk_Execute(const OH_CloudDisk_CallbackReqHead reqHead, OH_CloudDisk_CallbackContext reqContext, OH_CloudDisk_CallbackResponse rsp) | 网盘接入方应用响应水合取数或取消取数回调请求。取数据回调类型需在rsp参数中携带响应数据，取消取数据回调类型不需要携带响应数据。<br>**说明**：从API版本26.0.1开始，支持该接口。 |
 | CloudDisk_ErrorCode OH_CloudDisk_HydratePlaceholder(const CloudDisk_SyncFolderPath *syncFolderPath, const CloudDisk_PathInfo *filePath, OH_CloudDisk_CallbackType type, OH_CloudDisk_HydratePriority priority) | 触发占位符水合或取消水合。开始水合前需已注册回调表。<br>**说明**：从API版本26.0.1开始，支持该接口。 |
-| CloudDisk_ErrorCode OH_CloudDisk_DehydrateFile(const CloudDisk_SyncFolderPath *syncFolderPath, const CloudDisk_PathInfo *filePath) | 将普通文件脱水为占位符文件。目标不能是未水合的占位符文件且未在水合中。<br>**说明**：从API版本26.0.1开始，支持该接口。 |
+| CloudDisk_ErrorCode OH_CloudDisk_DehydrateFile(const CloudDisk_SyncFolderPath *syncFolderPath, const CloudDisk_PathInfo *filePath) | 将完全水合的占位符文件脱水为未水合的占位符文件，目标不能处于水合进行中。<br>**说明**：从API版本26.0.1开始，支持该接口。 |
 
 ### 示例代码
 
@@ -1386,11 +1386,11 @@ static napi_value HydratePlaceholder(napi_env env, napi_callback_info info)
 
 **脱水**
 
-用户或应用需要释放本地存储空间、且文件内容仍保留在云侧时，可调用OH_CloudDisk_DehydrateFile()接口将已水合的普通文件脱水回占位符文件。
+用户或应用需要释放本地存储空间、且文件内容仍保留在云侧时，可调用OH_CloudDisk_DehydrateFile()接口将完全水合的占位符文件脱水为未水合状态。
 
 > **注意：**
 >
-> 目标不能是未水合的占位符文件且未在水合中，否则返回错误码。
+> 目标须为已水合的占位符文件且未在水合中，否则返回错误码。
 
 <!-- @[dehydrate_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/CloudDisk/entry/src/main/cpp/napi_init.cpp) -->
 
