@@ -68378,14 +68378,14 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/common/sample_callback.cpp",
 				"functions":[
 					{
-						"end_line":311,
+						"end_line":314,
 						"name":"SampleCallback::OnCodecError",
 						"start_line":301
 					},
 					{
-						"end_line":344,
+						"end_line":348,
 						"name":"SampleCallback::OnCodecFormatChange",
-						"start_line":313
+						"start_line":316
 					},
 					{
 						"end_line":362,
@@ -68510,7 +68510,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/common/sample_callback.cpp",
 				"functions":[
 					{
-						"end_line":311,
+						"end_line":314,
 						"name":"SampleCallback::OnCodecError",
 						"start_line":301
 					},
@@ -68530,14 +68530,14 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/sample/recorder/Recorder.cpp",
 				"functions":[
 					{
-						"end_line":825,
+						"end_line":690,
 						"name":"Recorder::AudioEncInputThread",
-						"start_line":804
+						"start_line":665
 					},
 					{
-						"end_line":917,
+						"end_line":768,
 						"name":"Recorder::AudioEncOutputThread",
-						"start_line":877
+						"start_line":747
 					}
 				]
 			}
@@ -68603,9 +68603,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/sample/recorder/Recorder.cpp",
 				"functions":[
 					{
-						"end_line":917,
+						"end_line":768,
 						"name":"Recorder::AudioEncOutputThread",
-						"start_line":877
+						"start_line":747
 					}
 				]
 			}
@@ -68660,7 +68660,7 @@
 						"start_line":139
 					},
 					{
-						"end_line":205,
+						"end_line":197,
 						"name":"AudioDecoder::GetOutputBuffer",
 						"start_line":164
 					},
@@ -68700,7 +68700,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/sample/player/output/audio/AudioOutputPump.cpp",
 				"functions":[
 					{
-						"end_line":166,
+						"end_line":164,
 						"name":"AudioOutputPump::ProcessSyncOutput",
 						"start_line":143
 					}
@@ -68758,7 +68758,7 @@
 						"start_line":229
 					},
 					{
-						"end_line":191,
+						"end_line":183,
 						"name":"AudioEncoder::GetOutputBuffer",
 						"start_line":153
 					},
@@ -68788,9 +68788,9 @@
 						"start_line":919
 					},
 					{
-						"end_line":1003,
+						"end_line":836,
 						"name":"Recorder::AudioEncOutputSyncThread",
-						"start_line":956
+						"start_line":807
 					}
 				]
 			}
