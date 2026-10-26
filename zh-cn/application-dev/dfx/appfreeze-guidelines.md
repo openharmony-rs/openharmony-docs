@@ -105,7 +105,7 @@ DevEco Studio会收集设备/data/log/faultlog/faultlogger/路径下的进程崩
 
 **方式二：通过HiAppEvent接口订阅**
 
-HiAppEvent给开发者提供了故障订阅接口，详见[HiAppEvent介绍](hiappevent-intro.md)。参考[订阅应用冻屏事件（ArkTS）](hiappevent-watcher-freeze-events-arkts.md)或[订阅应用冻屏事件（C/C++）](hiappevent-watcher-freeze-events-ndk.md)完成应用冻屏事件订阅，并通过事件的[external_log](hiappevent-watcher-freeze-events.md#事件字段说明)字段读取故障日志文件内容。
+HiAppEvent给开发者提供了故障订阅接口，详见[HiAppEvent介绍](hiappevent-intro.md)。参考[订阅应用冻屏事件（ArkTS）](hiappevent-watcher-freeze-events-arkts.md)或[订阅应用冻屏事件（C/C++）](hiappevent-watcher-freeze-events-ndk.md)完成应用冻屏事件订阅，并通过事件中的external_log字段（详见[params字段说明](hiappevent-watcher-freeze-events.md#params字段说明)的表格介绍）读取故障日志文件内容。
 
 **方式三：通过hdc获取日志，需打开开发者选项**
 
@@ -669,7 +669,7 @@ DisplayPowerInfo:powerState:AWAKE
 
 **方式一：通过HiAppEvent接口订阅**
 
-从<!--RP3-->OpenHarmony 6.1.0.125以上<!--RP3End-->的系统版本开始，系统默认将AppFreeze增强日志内容合并到APP_FREEZE事件的[external_log](hiappevent-watcher-freeze-events.md#事件字段说明)指向的日志结尾。
+从<!--RP3-->OpenHarmony 6.1.0.125以上<!--RP3End-->的系统版本开始，系统默认将AppFreeze增强日志内容合并到APP_FREEZE事件的external_log字段（详见[params字段说明](hiappevent-watcher-freeze-events.md#params字段说明)的表格介绍）指向的日志结尾。
 
 如果开发者需要单独的AppFreeze增强日志文件，可以在AppScope/app.json5文件中配置如下环境变量：
 
@@ -684,7 +684,7 @@ DisplayPowerInfo:powerState:AWAKE
 
 HiAppEvent给开发者提供了故障订阅接口，开发者可以使用HiAppEvent监听应用冻屏事件，获取文件内容，详见[应用冻屏事件介绍](hiappevent-watcher-freeze-events.md)。参考[订阅应用冻屏事件（ArkTS）](hiappevent-watcher-freeze-events-arkts.md)或[订阅应用冻屏事件（C/C++）](hiappevent-watcher-freeze-events-ndk.md)完成应用冻屏事件订阅。
 
-开发者可以通过事件的[external_log](hiappevent-watcher-freeze-events.md#事件字段说明)字段读取应用冻屏事件生成的故障文件和应用冻屏事件的增强日志文件。增强日志文件的命名与应用冻屏事件生成的故障文件名称格式相同。
+开发者可以通过事件的external_log字段读取应用冻屏事件生成的故障文件和应用冻屏事件的增强日志文件。增强日志文件的命名与应用冻屏事件生成的故障文件名称格式相同。
 
 external_log是字符串数组，第一个元素为应用冻屏事件生成的故障文件路径；第二个元素为应用冻屏事件生成的增强日志文件路径。
 
