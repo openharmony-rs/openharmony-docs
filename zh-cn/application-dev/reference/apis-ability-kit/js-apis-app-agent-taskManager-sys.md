@@ -10,7 +10,7 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 26.2.0开始支持。
+> 本模块首批接口从API version 26.1.0 开始支持。
 >
 > 本模块接口均为系统接口。
 
@@ -34,7 +34,7 @@ import { taskManager } from '@kit.AbilityKit';
 
 表示任务优先级。任务启动后，系统按照该优先级对归属到任务的进程进行管理。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **系统能力**：SystemCapability.Ability.AgentRuntime.Core
 
@@ -60,7 +60,7 @@ startTask(taskId: string, priority?: TaskPriority): Promise&lt;void&gt;
 > - 任务创建者进程退出后，其创建的任务由系统自动结束。
 > - 任务信息仅保存在内存中，设备重启后任务自动结束。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **系统能力**：SystemCapability.Ability.AgentRuntime.Core
 
@@ -124,7 +124,7 @@ finishTask(taskId: string): Promise&lt;void&gt;
 >
 > 仅创建该任务的应用可结束该任务，其他应用调用本接口将返回错误码16000302。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **系统能力**：SystemCapability.Ability.AgentRuntime.Core
 
@@ -135,7 +135,7 @@ finishTask(taskId: string): Promise&lt;void&gt;
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- |
+| -------- | -------- | -------- | -------- |
 | taskId | string | 是 | 任务ID。 |
 
 **返回值：**
