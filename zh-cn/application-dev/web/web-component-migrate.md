@@ -102,7 +102,7 @@ export class MyNodeController extends NodeController {
       let frameNode : FrameNode | null = this.builderNode.getFrameNode();
       if (frameNode?.getParent() != null) {
         // 挂载自定义节点前判断该节点是否已经被挂载
-        hilog.error(0x0000, 'testTag', '%{public}s', 'The frameNode is already attached');
+        hilog.warn(0x0000, 'testTag', '%{public}s', 'The frameNode is already attached');
         return;
       }
       this.rootNode = this.builderNode.getFrameNode();
