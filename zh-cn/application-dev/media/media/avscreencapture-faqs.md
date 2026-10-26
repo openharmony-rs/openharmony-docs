@@ -7,9 +7,11 @@
 <!--Tester: @xdlinc-->
 <!--Adviser: @zzs911-->
 
-## 实例数量超出限制时，录屏启动报错AV_SCREEN_CAPTURE_ERR_OPERATE_NOT_PERMIT
+## 录屏启动报错AV_SCREEN_CAPTURE_ERR_OPERATE_NOT_PERMIT
 
-实例数量超出规格限制，当前规格为每种数据格式最多两个实例。建议释放多余实例后再使用新实例。
+### 实例数量超出规格限制，无法启动录屏。
+
+实例数量超出规格限制，当前规格为每种数据格式最多两个实例。
 
 可能原因：录屏过程中，点击“不允许”、在通知栏停止录屏和通话打断录屏后，未释放资源。
 
@@ -21,11 +23,11 @@
 
 2. 单应用单模式（存为文件或存为码流）可创建实例上限2个，典型场景：在线上会议共享屏幕时，需要同步录制会议内容。
 
-## 通话中未设置保持录屏策略时，无法启动录屏报错AV_SCREEN_CAPTURE_ERR_OPERATE_NOT_PERMIT
+### 通话中未设置保持录屏策略时，无法启动录屏。
 
 从API version 20开始，如需在通话中保持录屏，可使用[OH_AVScreenCapture_StrategyForKeepCaptureDuringCall()](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforkeepcaptureduringcall)设置“蜂窝通话时保持录屏”策略。
 
-## 录屏超过规格限制时，无法启动录屏报错AV_SCREEN_CAPTURE_ERR_OPERATE_NOT_PERMIT
+### 录屏超过规格限制时，无法启动录屏。
 
 录屏写文件模式启动时会对视频编码参数进行规格校验，超出以下限制将导致启动失败。
 
