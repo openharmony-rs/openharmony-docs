@@ -41,6 +41,10 @@
   - 音乐场景：暂停
   - 视频场景：暂停
 
+  > **说明：**
+  > 
+  > 若应用已激活音频会话，在暂停播放后不再继续使用音频会话时，应调用[deactivateAudioSession](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#deactivateaudiosession12)停用音频会话。
+
 - **REASON_OVERRODE**：用户强制选择设备。
 
   **触发场景：**

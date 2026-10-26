@@ -103,6 +103,10 @@ AudioSession激活成功后，应用新起的音频流将会按照修改后的�
 
 2. 超时（DEACTIVATED_TIMEOUT）：若AudioSession处于激活状态，但该应用没有音频流在运行状态，则AudioSession会在规定时间后被超时停用。
 
+> **注意：**
+> 
+> 音频会话停用事件（AudioSessionDeactivatedEvent）仅用于通知音频会话的停用，不能反映单个音频流的中断状态。监听音频流的中断事件，请使用播放流的[on('audioInterrupt')](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#onaudiointerrupt9)或录音流的[on('audioInterrupt')](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#onaudiointerrupt10)。
+
 ### 开发步骤
 
 1. 指定音频会话策略（AudioSessionStrategy）并激活音频会话。
