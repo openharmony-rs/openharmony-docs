@@ -296,9 +296,10 @@
 
 数据提供方需要在module.json5中的proxyData节点定义过程数据的标识，读写权限和基本信息， 配置方法可参考[配置文件](../quick-start/module-configuration-file.md)。
 
-> 注意：
+> **注意：**
 >
 > - 该步骤可选。
+>
 > - 不配置proxyData时，托管数据不允许其他应用访问。
 
 **表3** module.json5中proxyData节点对应的属性字段
@@ -396,11 +397,14 @@
 
 数据提供方调用接口以动态开启静默访问功能。此接口与data_share_config.json文件中isSilentProxyEnable字段配合使用。支持的配置可参考[data_share_config.json配置](./share-data-by-datashareextensionability-sys.md)。
 
-> 注意：
+> **注意：**
 >
 > - 该步骤为可选，可以不配置data_share_config.json文件中isSilentProxyEnable字段，默认值为true，表示开启静默访问功能。
+>
 > - 校验静默访问是否开启，会优先校验enableSilentProxy/disableSilentProxy接口设置的开关状态，其次会校验data_share_config.json文件中isSilentProxyEnable字段。
+>
 > - 不调用enableSilentProxy/disableSilentProxy接口时，优先会校验data_share_config.json文件中isSilentProxyEnable字段。
+>
 > - 不调用enableSilentProxy/disableSilentProxy接口，也不配置data_share_config.json文件中isSilentProxyEnable字段时，默认静默访问是开启的。
 
 1. 导入基础依赖包。
