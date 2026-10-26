@@ -922,7 +922,9 @@ const complexComputedPropertyObj = {
        console.info(message);
      }
    }
+   ```
 
+   ``` TypeScript
    // b.ts
    import { MyLog as Log } from './a'
 
