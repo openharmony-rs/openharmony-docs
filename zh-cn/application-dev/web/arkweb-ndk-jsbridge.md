@@ -375,14 +375,14 @@
   cmake_minimum_required(VERSION 3.5.0)
   project(NDKJSBridge)
   
-  set(NATIVERENDER_ROOT_PATH &#36;{CMAKE_CURRENT_SOURCE_DIR})
+  set(NATIVERENDER_ROOT_PATH ${CMAKE_CURRENT_SOURCE_DIR})
   
   if(DEFINED PACKAGE_FIND_FILE)
-      include(&#36;{PACKAGE_FIND_FILE})
+      include(${PACKAGE_FIND_FILE})
   endif()
   
-  include_directories(&#36;{NATIVERENDER_ROOT_PATH}
-                      &#36;{NATIVERENDER_ROOT_PATH}/include)
+  include_directories(${NATIVERENDER_ROOT_PATH}
+                      ${NATIVERENDER_ROOT_PATH}/include)
   
   add_library(entry SHARED hello.cpp jsbridge_object.cpp)
   
@@ -1117,14 +1117,14 @@ ArkWeb Native侧需要先获取API结构体，才能调用结构体里的Native 
   cmake_minimum_required(VERSION 3.5.0)
   project(NDKJSBridge)
   
-  set(NATIVERENDER_ROOT_PATH &#36;{CMAKE_CURRENT_SOURCE_DIR})
+  set(NATIVERENDER_ROOT_PATH ${CMAKE_CURRENT_SOURCE_DIR})
   
   if(DEFINED PACKAGE_FIND_FILE)
-      include(&#36;{PACKAGE_FIND_FILE})
+      include(${PACKAGE_FIND_FILE})
   endif()
   
-  include_directories(&#36;{NATIVERENDER_ROOT_PATH}
-                      &#36;{NATIVERENDER_ROOT_PATH}/include)
+  include_directories(${NATIVERENDER_ROOT_PATH}
+                      ${NATIVERENDER_ROOT_PATH}/include)
   
   add_library(entry SHARED hello.cpp jsbridge_object.cpp)
   
