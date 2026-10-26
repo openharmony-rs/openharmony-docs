@@ -203,7 +203,7 @@ struct Index {
 
 ### 锁屏状态下启动应用（PC/2in1）
 
-在PC/2in1设备上，当锁屏状态下收到来电通知、日程提醒等事件时，其他应用可能需要通过调用[startAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability)等接口拉起目标应用。若目标应用需要在锁屏状态下被启动，需要申请权限[ohos.permission.START_WINDOW_BELOW_LOCK_SCREEN](../security/AccessToken/permissions-for-all.md#ohospermissionstart_window_below_lock_screen)，否则无法拉起该应用。
+在PC/2in1设备上，当锁屏状态下收到来电通知、日程提醒等事件时，其他应用可能需要通过调用[startAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability)等接口拉起目标应用。若目标应用需在锁屏状态下被启动，需申请权限[ohos.permission.START_WINDOW_BELOW_LOCK_SCREEN](../security/AccessToken/permissions-for-all.md#ohospermissionstart_window_below_lock_screen)，否则无法拉起该应用。
 
 该权限允许应用在PC/2in1设备的锁屏状态下被启动至前台，设备解锁后应用窗口保持前台状态。需在[module.json5配置文件](../quick-start/module-configuration-file.md)的requestPermissions标签中声明该权限，具体请参考[声明权限](../security/AccessToken/declare-permissions.md)。
 
