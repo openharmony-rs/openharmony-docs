@@ -25,11 +25,11 @@
 
 1. 在录屏过程中因为状态改变导致的录屏停止，需要在[OH_AVScreenCapture_SetStateCallback()](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_setstatecallback)（状态回调）中，对录屏资源进行异步释放。
 
-录屏会话限制策略：
+   录屏会话限制策略：
 
-- 客户端应用数量上限4个，比如会议屏幕共享、会议投屏、后台听歌识曲、系统录屏同时存在。
+   - 客户端应用数量上限4个，比如会议屏幕共享、会议投屏、后台听歌识曲、系统录屏同时存在。
 
-- 单应用单模式（存为文件或存为码流）可创建实例上限2个，典型场景：在线上会议共享屏幕时，需要同步录制会议内容。
+   - 单应用单模式（存为文件或存为码流）可创建实例上限2个。 典型场景：在线上会议共享屏幕时，需要同步录制会议内容。
 
 2. 从API version 20开始，如需在通话中保持录屏，可使用[OH_AVScreenCapture_StrategyForKeepCaptureDuringCall()](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforkeepcaptureduringcall)设置“蜂窝通话时保持录屏”策略。
 
