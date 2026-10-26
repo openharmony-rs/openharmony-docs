@@ -584,7 +584,7 @@ avSession.startAVPlayback("com.example.myapplication", "121278").then(() => {
 
 ## avSession.startAVPlaybackForAudioZone
  
-startAVPlaybackForAudioZone(userId: number, bundleName: string, assetId: string, info?: CommandInfo, extraInfo?: ExtraInfo): Promise<void>
+startAVPlaybackForAudioZone(userId: number, bundleName: string, assetId: string, info?: CommandInfo, extraInfo?: ExtraInfo): Promise\<void\>
  
 启动指定用户所在音区的媒体播放应用程序。使用Promise异步回调。
 
@@ -605,8 +605,8 @@ startAVPlaybackForAudioZone(userId: number, bundleName: string, assetId: string,
 | userId       | int            | 是   | 指定用户UserId。 |
 | bundleName   | string         | 是   | 指定应用包名。   |
 | assetId      | string         | 是   | 指定媒体ID。    |
-| info         | \<[CommandInfo](arkts-apis-avsession-i.md#commandinfo22)\>    | 否   | 发送到会话的命令信息。 |
-| extraInfo | \<[ExtraInfo](arkts-apis-avsession-t.md#extrainfo18)\>    |  否  |  冷启动扩展信息。 |
+| info         |   [CommandInfo](arkts-apis-avsession-i.md#commandinfo22)    | 否   | 发送到会话的命令信息。 |
+| extraInfo |  [ExtraInfo](arkts-apis-avsession-t.md#extrainfo18)    |  否  |  冷启动扩展信息。 |
  
 **返回值：**
  
