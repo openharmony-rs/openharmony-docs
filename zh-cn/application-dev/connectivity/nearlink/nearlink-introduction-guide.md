@@ -19,7 +19,7 @@
 
 ### 支持的设备
 
-星闪服务适用于Phone、PC/2in1、TV、Tablet和Wearable设备。
+星闪服务适用于Phone、PC/2in1、Tablet、TV、Car、Wearable、Lite Wearable
 
 ### 支持的国家/地区
 
