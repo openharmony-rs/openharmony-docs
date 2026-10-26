@@ -7718,7 +7718,7 @@ inputMethodEngine.getInputMethodAbility()
 
 ArkTS-Dyn: getLeftRichText(length: number): Promise&lt;InputMethodRichText&gt;
 
-ArkTS-Sta: getLeftRichText(length: int): Promise&lt;InputMethodRichText | null&gt;
+ArkTS-Sta: getLeftRichText(length: int): Promise&lt;InputMethodRichText&gt;
 
 获取光标前指定长度的富文本内容。使用Promise异步回调。
 
@@ -7792,19 +7792,15 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let length: int = 5;
 inputClient?.getLeftRichText(length).then((richText) => {
-  if (richText === null) {
-    console.info('getLeftRichText: result is null');
-  } else {
-    let plainText: string = richText.getString();
-    console.info(`Succeeded in getting left rich text, plainText: ${plainText}`);
-    let spans: Array<inputMethodEngine.RichTextSpan> = richText.getSpans();
-    for (let i = 0; i < spans.length; i++) {
-      let span: inputMethodEngine.RichTextSpan = spans[i];
-      let type: inputMethodEngine.SpanType = span.getType();
-      let content: string = span.getContent();
-      let range: inputMethodEngine.Range = span.getRange();
-      console.info(`span[${i}]: type=${type}, content=${content}, range={start:${range.start}, end:${range.end}}`);
-    }
+  let plainText: string = richText.getString();
+  console.info(`Succeeded in getting left rich text, plainText: ${plainText}`);
+  let spans: Array<inputMethodEngine.RichTextSpan> = richText.getSpans();
+  for (let i = 0; i < spans.length; i++) {
+    let span: inputMethodEngine.RichTextSpan = spans[i];
+    let type: inputMethodEngine.SpanType = span.getType();
+    let content: string = span.getContent();
+    let range: inputMethodEngine.Range = span.getRange();
+    console.info(`span[${i}]: type=${type}, content=${content}, range={start:${range.start}, end:${range.end}}`);
   }
 }).catch((err: Object) => {
   let error = err as BusinessError;
@@ -7915,7 +7911,7 @@ try {
 
 ArkTS-Dyn: getRightRichText(length: number): Promise&lt;InputMethodRichText&gt;
 
-ArkTS-Sta: getRightRichText(length: int): Promise&lt;InputMethodRichText | null&gt;
+ArkTS-Sta: getRightRichText(length: int): Promise&lt;InputMethodRichText&gt;
 
 获取光标后指定长度的富文本内容。使用Promise异步回调。
 
@@ -7989,19 +7985,15 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let length: int = 5;
 inputClient?.getRightRichText(length).then((richText) => {
-  if (richText === null) {
-    console.info('getRightRichText: result is null');
-  } else {
-    let plainText: string = richText.getString();
-    console.info(`Succeeded in getting right rich text, plainText: ${plainText}`);
-    let spans: Array<inputMethodEngine.RichTextSpan> = richText.getSpans();
-    for (let i = 0; i < spans.length; i++) {
-      let span: inputMethodEngine.RichTextSpan = spans[i];
-      let type: inputMethodEngine.SpanType = span.getType();
-      let content: string = span.getContent();
-      let range: inputMethodEngine.Range = span.getRange();
-      console.info(`span[${i}]: type=${type}, content=${content}, range={start:${range.start}, end:${range.end}}`);
-    }
+  let plainText: string = richText.getString();
+  console.info(`Succeeded in getting right rich text, plainText: ${plainText}`);
+  let spans: Array<inputMethodEngine.RichTextSpan> = richText.getSpans();
+  for (let i = 0; i < spans.length; i++) {
+    let span: inputMethodEngine.RichTextSpan = spans[i];
+    let type: inputMethodEngine.SpanType = span.getType();
+    let content: string = span.getContent();
+    let range: inputMethodEngine.Range = span.getRange();
+    console.info(`span[${i}]: type=${type}, content=${content}, range={start:${range.start}, end:${range.end}}`);
   }
 }).catch((err: Object) => {
   let error = err as BusinessError;
