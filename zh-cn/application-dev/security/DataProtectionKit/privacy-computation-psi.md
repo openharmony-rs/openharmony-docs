@@ -17,6 +17,7 @@ PSI协议（隐私集合求交，Private Set Intersection）用于在不显示�
 1. 接口所需模块导入。
 
    <!-- @[import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/PrivacyComputation/entry/src/main/ets/operations/psi.ets) -->
+
    ``` TypeScript
    import { privacyComputation } from '@kit.DataProtectionKit';
    ```
@@ -26,6 +27,7 @@ PSI协议（隐私集合求交，Private Set Intersection）用于在不显示�
    构造[TargetElement](../../reference/apis-data-protection-kit/js-apis-privacyComputation.md#targetelement)（目标元素原始数据与哈希算法）和[PrivacyProtocol](../../reference/apis-data-protection-kit/js-apis-privacyComputation.md#privacyprotocol)（协议类型设为PSI_PROTOCOL），调用[genPrivacyTarget](../../reference/apis-data-protection-kit/js-apis-privacyComputation.md#privacycomputationgenprivacytarget)生成隐私目标。
 
    <!-- @[genPrivacyTarget](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/PrivacyComputation/entry/src/main/ets/operations/psi.ets) -->
+
    ``` TypeScript
    const targetElement: privacyComputation.TargetElement = {
      elemData: new Uint8Array([0x01, 0x02, 0x03]),
@@ -43,6 +45,7 @@ PSI协议（隐私集合求交，Private Set Intersection）用于在不显示�
    构造[Element](../../reference/apis-data-protection-kit/js-apis-privacyComputation.md#element)数组（数据集元素，包含键与哈希算法），连同隐私目标和协议配置，调用[privacySearch](../../reference/apis-data-protection-kit/js-apis-privacyComputation.md#privacycomputationprivacysearch)执行隐私搜索。
 
    <!-- @[privacySearch](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/PrivacyComputation/entry/src/main/ets/operations/psi.ets) -->
+
    ``` TypeScript
    const elements: privacyComputation.Element[] = [
      { elemKey: new Uint8Array([0x01, 0x02, 0x03]), hashAlg: privacyComputation.HashAlg.SHA256 },
@@ -57,6 +60,7 @@ PSI协议（隐私集合求交，Private Set Intersection）用于在不显示�
    将[privacySearch](../../reference/apis-data-protection-kit/js-apis-privacyComputation.md#privacycomputationprivacysearch)返回的结果传入[getSearchResult](../../reference/apis-data-protection-kit/js-apis-privacyComputation.md#privacycomputationgetsearchresult)，解密得到[SearchResult](../../reference/apis-data-protection-kit/js-apis-privacyComputation.md#searchresult)。matchedResult指示目标元素是否存在于数据集中。
 
    <!-- @[getSearchResult](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/PrivacyComputation/entry/src/main/ets/operations/psi.ets) -->
+
    ``` TypeScript
    const result: privacyComputation.SearchResult =
      await privacyComputation.getSearchResult(searchResult, privacyProtocol);
