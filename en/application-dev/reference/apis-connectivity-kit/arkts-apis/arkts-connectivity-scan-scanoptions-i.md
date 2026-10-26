@@ -32,7 +32,7 @@ Scan duration, in seconds. The value range is The value should be an integer.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-ScanOptions-duration?: int--><!--Device-ScanOptions-duration?: int-End-->
 
@@ -48,11 +48,11 @@ NearLink radio frame type. The default value is **FRAME_TYPE_1**.
 
 **Type:** [nearlinkConstant.FrameType](arkts-connectivity-nearlinkconstant-frametype-e.md)
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-ScanOptions-frameType?: nearlinkConstant.FrameType--><!--Device-ScanOptions-frameType?: nearlinkConstant.FrameType-End-->
 
@@ -72,7 +72,7 @@ Scan mode. The default value is **'SCAN_MODE_LOW_POWER'**.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-ScanOptions-scanMode?: ScanMode--><!--Device-ScanOptions-scanMode?: ScanMode-End-->
 

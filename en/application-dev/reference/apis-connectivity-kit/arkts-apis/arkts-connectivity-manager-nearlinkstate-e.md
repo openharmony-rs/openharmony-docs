@@ -24,7 +24,7 @@ NearLink is turned off.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-NearlinkState-STATE_OFF = 3--><!--Device-NearlinkState-STATE_OFF = 3-End-->
 
@@ -42,7 +42,7 @@ NearLink is turned on.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-NearlinkState-STATE_ON = 1--><!--Device-NearlinkState-STATE_ON = 1-End-->
 
@@ -60,7 +60,7 @@ NearLink is being turned off.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-NearlinkState-STATE_TURNING_OFF = 2--><!--Device-NearlinkState-STATE_TURNING_OFF = 2-End-->
 
@@ -78,7 +78,7 @@ NearLink is being turned on.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-NearlinkState-STATE_TURNING_ON = 0--><!--Device-NearlinkState-STATE_TURNING_ON = 0-End-->
 

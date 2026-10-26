@@ -590,6 +590,45 @@ async function testResumeRecording() {
 }
 ```
 
+## setCaptureArea
+
+```TypeScript
+setCaptureArea(displayId: number, area: RectangleRegion): Promise<void>
+```
+
+Used to specify the actual recording area in screen recording mode.
+
+You can configure the area before starting screen recording or update the area during screen recording.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AVScreenCaptureRecorder-setCaptureArea(displayId: int, area: RectangleRegion): Promise<void>--><!--Device-AVScreenCaptureRecorder-setCaptureArea(displayId: int, area: RectangleRegion): Promise<void>-End-->
+
+**System capability:** SystemCapability.Multimedia.Media.AVScreenCapture
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| displayId | number | Yes | Specifies the screen ID of the recording area. <br>The value should be an integer. Value constraint: The value must be an existing screen ID in the current system. |
+| area | [RectangleRegion](arkts-media-media-rectangleregion-i.md) | Yes | Rectangular area definition for recording. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;void&gt; | Promise that returns no value. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [5400102](../../apis-media-kit/errorcode-media.md#5400102-unsupported-operation) | Operation not allowed. Return by promise. |
+| [5400105](../../apis-media-kit/errorcode-media.md#5400105-play-service-dead) | Service died. Return by promise. |
+| [5400108](../../apis-media-kit/errorcode-media.md#5400108-parameter-value-out-of-range) | The parameter check failed, parameter value out of range. |
+
 ## setContentAutoRotation
 
 ```TypeScript

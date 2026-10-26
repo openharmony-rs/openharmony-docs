@@ -84,6 +84,12 @@ Creates a list container.
 
 ## Summary
 
+### Classes
+
+| Name | Description |
+| --- | --- |
+| [ListScroller](arkts-arkui-list-comp-listscroller-c.md) | Implements the scroll controller of the **List** component. A **List** component is bound to a **ListScroller** on a one-to-one basis. |
+
 ### Interfaces
 
 | Name | Description |

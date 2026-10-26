@@ -627,7 +627,7 @@ getY(): number
 ## autoHideComponentUniqueIds
 
 ```TypeScript
-autoHideComponentUniqueIds?: number[]
+autoHideComponentUniqueIds?: number | number[]
 ```
 
 设置拖拽过程中需要自动隐藏的组件uniqueId，支持传入单个uniqueId或数组。
@@ -640,7 +640,7 @@ autoHideComponentUniqueIds?: number[]
 
 开发者应在[onDragEnd](arkts-arkui-common-comp-commonmethod-c.md#ondragend)或[onDrop](arkts-arkui-common-comp-commonmethod-c.md#ondrop-1)中恢复组件显示状态。
 
-**类型：** number[]
+**类型：** number &#124; number[]
 
 **起始版本：** 26.0.0
 

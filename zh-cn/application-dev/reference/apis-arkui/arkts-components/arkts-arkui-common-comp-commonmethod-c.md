@@ -2039,7 +2039,7 @@ Menu control
 bindPopup(show: boolean, popup: PopupOptions | CustomPopupOptions): T
 ```
 
-Popup control <p><strong>NOTE</strong>: <br>The popup can be displayed only after the entire page is fully constructed. Therefore, to avoid incorrect display positions and shapes, do not set this parameter to true while the page is still being constructed. </p>
+Popup控制。<p><strong>NOTE</strong>: <br>The popup can be displayed only after the entire page is fully constructed. Therefore, to avoid incorrect display positions and shapes, do not set this parameter to true while the page is still being constructed. </p>
 
 **起始版本：** 11
 
@@ -2104,7 +2104,7 @@ bindSheet(isShow: boolean, builder: CustomBuilder, options?: SheetOptions): T
 bindTips(message: TipsMessageType, options?: TipsOptions): T
 ```
 
-Tips control
+Tips控制。
 
 **起始版本：** 19
 
@@ -8407,6 +8407,68 @@ shadow(options: Optional<ShadowOptions | ShadowStyle>): T
 | 类型 | 说明 |
 | --- | --- |
 | T | 返回当前组件，用于链式调用。 |
+
+## shadowClipMode
+
+```TypeScript
+shadowClipMode(mode: ShadowClipMode | undefined): T
+```
+
+设置[阴影](#shadow-1)不填充时的裁切方式。仅在 [ShadowOptions#fill](arkts-arkui-common-comp-shadowoptions-i.md#fill) 设为 **false** 时生效。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-CommonMethod-shadowClipMode(mode: ShadowClipMode | undefined): T--><!--Device-CommonMethod-shadowClipMode(mode: ShadowClipMode | undefined): T-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| mode | [ShadowClipMode](../arkts-apis/arkts-arkui-shadowclipmode-e.md) &#124; undefined | 是 | 阴影裁切方式。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| T | 当前组件。 |
+
+## shadowShape
+
+```TypeScript
+shadowShape(shape: CircleShape | EllipseShape | PathShape | RectShape | undefined): T
+```
+
+设置组件的阴影形状。阴影按指定形状渲染。
+
+此接口与 [shadow](#shadow-1) 属性配合使用。组件大小变化时阴影形状会重新计算。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-CommonMethod-shadowShape(shape: CircleShape | EllipseShape | PathShape | RectShape | undefined): T--><!--Device-CommonMethod-shadowShape(shape: CircleShape | EllipseShape | PathShape | RectShape | undefined): T-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| shape | [CircleShape](arkts-arkui-common-comp-circleshape-t.md) &#124; [EllipseShape](arkts-arkui-common-comp-ellipseshape-t.md) &#124; [PathShape](arkts-arkui-common-comp-pathshape-t.md) &#124; [RectShape](arkts-arkui-common-comp-rectshape-t.md) &#124; undefined | 是 | 阴影形状。当值类型为 [CircleShape](arkts-arkui-common-comp-circleshape-t.md)、[EllipseShape](arkts-arkui-common-comp-ellipseshape-t.md)、[PathShape](arkts-arkui-common-comp-pathshape-t.md) 或 [RectShape](arkts-arkui-common-comp-rectshape-t.md) 时，阴影渲染为对应形状。当值为 **undefined** 时，清除阴影形状。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| T | 当前组件。 |
 
 ## sharedTransition
 

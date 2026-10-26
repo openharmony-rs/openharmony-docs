@@ -104,5 +104,5 @@ import { drawing } from '@kit.ArkGraphics2D';
 
 | Name | Description |
 | --- | --- |
-| [AtlasInterpolationMode](arkts-arkgraphics2d-drawing-atlasinterpolationmode-e-sys.md) | Defines the interpolation mode for sprite sheet frame animation. |
+| [AtlasInterpolationMode](arkts-arkgraphics2d-drawing-atlasinterpolationmode-e-sys.md) | Interpolation mode enum for sprite sheet frame animation. |
 <!--DelEnd-->

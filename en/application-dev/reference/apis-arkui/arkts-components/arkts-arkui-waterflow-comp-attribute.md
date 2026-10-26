@@ -469,11 +469,11 @@ behavior, including the semantics of **syncLoad**.
 3. After the real item has been created, it is re-laid out under the normal layout constraints of
 the water flow item and replaces the placeholder, keeping the scroll anchor.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-WaterFlowAttribute-scrollPlaceholder(provider?: PlaceholderProvider): WaterFlowAttribute--><!--Device-WaterFlowAttribute-scrollPlaceholder(provider?: PlaceholderProvider): WaterFlowAttribute-End-->
 
@@ -495,11 +495,11 @@ Sets the scroll snap strategy used after user scrolling in the WaterFlow.
 
 Supports top-down, segmented, and sliding-window layouts. START, CENTER, and END align items with the start, center, and end of the viewport along the scrolling axis. A custom provider calculates the approach distance and absolute final scroll target in vp. Targets are constrained to the legal scroll range. No snapping is enabled by default. NONE or undefined clears the strategy and restores the default scrolling behavior.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-WaterFlowAttribute-scrollSnapStrategy(strategy?: ScrollSnapAlign | ScrollSnapOffsetProvider): WaterFlowAttribute--><!--Device-WaterFlowAttribute-scrollSnapStrategy(strategy?: ScrollSnapAlign | ScrollSnapOffsetProvider): WaterFlowAttribute-End-->
 

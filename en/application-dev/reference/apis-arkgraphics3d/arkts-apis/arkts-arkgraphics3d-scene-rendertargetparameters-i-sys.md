@@ -8,7 +8,7 @@ render target parameters object, used to decribe render target
 
 **Inheritance/Implementation:** RenderTargetParameters extends [SceneResourceParameters](arkts-arkgraphics3d-scene-sceneresourceparameters-i.md)
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 <!--Device-unnamed-export interface RenderTargetParameters extends SceneResourceParameters--><!--Device-unnamed-export interface RenderTargetParameters extends SceneResourceParameters-End-->
 
@@ -26,7 +26,7 @@ the size of render target
 
 **Type:** [Vec2](arkts-arkgraphics3d-scenetypes-vec2-i.md)
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 

@@ -44,6 +44,12 @@ Tabs(options?: TabsOptions)
 
 ## 汇总
 
+### 类
+
+| 名称 | 说明 |
+| --- | --- |
+| [TabsController](arkts-arkui-tabs-comp-tabscontroller-c.md) | Tabs组件的控制器，用于控制Tabs组件进行页签切换。不支持一个TabsController控制多个Tabs组件。 |
+
 ### 接口
 
 | 名称 | 说明 |
@@ -2182,9 +2188,9 @@ struct TabsFloatingStyleExample {
 
 ### 示例25（设置侧边页签栏样式）
 
-本示例展示了通过[barStyle](#barstyle)接口设置页签栏的显示样式，包括固定底部页签栏样式、固定侧边页签栏样式、自适应侧边页签栏样式；通过[sidebarPosition](#sidebarposition)接口设置侧边页签栏的显示位置；通过[sidebarHeader](#sidebarheader)接口在侧边页签栏头部设置自定义内容；通过[sidebarSearchable](#sidebarsearchable)接口开启侧边页签栏的搜索功能；通过[onBarDisplayModeChange](#onbardisplaymodechange)接口注册显示模式切换的监听函数。
+本示例展示了通过[barStyle](#barstyle)接口设置页签栏的显示样式，包括固定底部页签栏样式、固定侧边页签栏样式、自适应侧边页签栏样式。通过[sidebarPosition](#sidebarposition)接口设置侧边页签栏的显示位置，通过[sidebarHeader](#sidebarheader)接口在侧边页签栏头部设置自定义内容，通过[sidebarFooter](#sidebarfooter)接口在侧边页签栏页签列表尾部设置随页签列表滚动的自定义内容，通过[sidebarBottomBar](#sidebarbottombar)接口在侧边页签栏固定底部设置自定义内容。通过[sidebarSearchable](#sidebarsearchable)接口开启侧边页签栏的搜索功能，通过[onBarDisplayModeChange](#onbardisplaymodechange)接口注册显示模式切换的监听函数。
 
-从API版本26.2.0开始，新增barStyle、sidebarPosition、sidebarHeader、sidebarSearchable、onBarDisplayModeChange接口。
+从API版本26.0.1开始，新增barStyle、sidebarPosition、sidebarHeader、sidebarSearchable、onBarDisplayModeChange接口。从API版本26.1.0开始，新增sidebarFooter、sidebarBottomBar接口。
 
 
 
@@ -2198,12 +2204,40 @@ function TestHeaderBuilder() {
     Stack({alignContent: Alignment.Center}) {
     }
     .width(64)
-    .height(64)
+    .height(32)
     .backgroundColor('#ff2787d9')
   }
   .width('100%')
-  .height(128)
-  .border({width: 1, color: '#ffd9d9d9' })
+  .height(64)
+  .border({width: 1, color: '#ffd9d9d9'})
+}
+
+@Builder
+function TestFooterBuilder() {
+  Stack({alignContent: Alignment.Center}) {
+    Stack({alignContent: Alignment.Center}) {
+    }
+    .width(64)
+    .height(16)
+    .backgroundColor('#ff2787d9')
+  }
+  .width('100%')
+  .height(24)
+  .border({width: 1, color: '#ffd9d9d9'})
+}
+
+@Builder
+function TestBottomBarBuilder() {
+  Stack({alignContent: Alignment.Center}) {
+    Stack({alignContent: Alignment.Center}) {
+    }
+    .width(64)
+    .height(32)
+    .backgroundColor('#ff2787d9')
+  }
+  .width('100%')
+  .height(64)
+  .border({width: 1, color: '#ffd9d9d9'})
 }
 
 @Entry
@@ -2275,6 +2309,10 @@ struct TabsSidebarExample {
       .sidebarPosition(BarPosition.Start)
       // 设置侧边页签栏头部内容
       .sidebarHeader(new ComponentContent(this.getUIContext(), wrapBuilder(TestHeaderBuilder)))
+      // 设置侧边页签栏页签列表尾部内容
+      .sidebarFooter(new ComponentContent(this.getUIContext(), wrapBuilder(TestFooterBuilder)))
+      // 设置侧边页签栏固定底部内容
+      .sidebarBottomBar(new ComponentContent(this.getUIContext(), wrapBuilder(TestBottomBarBuilder)))
       // 设置侧边页签栏搜索选项
       .sidebarSearchable({
         placeholder: 'Search tabs',
@@ -2298,7 +2336,7 @@ struct TabsSidebarExample {
 
 本示例展示了如何通过[sidebarDisplayStyle](#sidebardisplaystyle)接口设置Tabs的侧边栏展示模式，切换嵌入模式（EMBED）和推挤模式（DISPLACE）。
 
-从API版本26.2.0开始，新增sidebarDisplayStyle接口。
+从API版本26.0.1开始，新增sidebarDisplayStyle接口。
 
 
 
@@ -2382,7 +2420,7 @@ struct TabsSideBarDemo {
 
 通过[sidebarSelectedBoardColor](#sidebarselectedboardcolor)接口设置侧边页签栏中选中页签的背板颜色。
 
-从API版本26.2.0开始，新增sidebarWidth、sidebarBackgroundColor、sidebarBackgroundBlurStyle、sidebarSelectedTextColor、sidebarSelectedIconColor、sidebarUnselectedTextColor、sidebarUnselectedIconColor、sidebarSelectedBoardColor接口。
+从API版本26.0.1开始，新增sidebarWidth、sidebarBackgroundColor、sidebarBackgroundBlurStyle、sidebarSelectedTextColor、sidebarSelectedIconColor、sidebarUnselectedTextColor、sidebarUnselectedIconColor、sidebarSelectedBoardColor接口。
 
 
 
@@ -2450,7 +2488,7 @@ struct TabsSidebarContentStyleExample {
 
 通过[minContentWidth](#mincontentwidth)接口设置内容区的最小宽度。
 
-从API版本26.2.0开始，新增sidebarDivider、minSidebarWidth、maxSidebarWidth、minContentWidth接口。
+从API版本26.0.1开始，新增sidebarDivider、minSidebarWidth、maxSidebarWidth、minContentWidth接口。
 
 
 
@@ -2507,7 +2545,7 @@ struct TabsSidebarDraggableExample {
 
 本示例展示了通过[barDisplayModeBreakpoint](#bardisplaymodebreakpoint)接口实现自定义显示模式断点的功能。
 
-从API版本26.2.0开始，新增barDisplayModeBreakpoint接口。
+从API版本26.0.1开始，新增barDisplayModeBreakpoint接口。
 
 ```TypeScript
 // xxx.ets

@@ -448,6 +448,24 @@ Example: 6.1.1.120
 
 **System capability:** SystemCapability.Startup.SystemInfo
 
+## installTime
+
+```TypeScript
+const installTime: string
+```
+
+Obtains the system installation UTC timestamp. Example: 1790784000000.
+
+**Type:** string
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-deviceInfo-const installTime: string--><!--Device-deviceInfo-const installTime: string-End-->
+
+**System capability:** SystemCapability.Startup.SystemInfo
+
 ## kernelVersion
 
 ```TypeScript

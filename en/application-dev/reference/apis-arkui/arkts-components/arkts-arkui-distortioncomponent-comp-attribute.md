@@ -6,6 +6,8 @@ declare class DistortionComponentAttribute extends CommonMethod<DistortionCompon
 
 Defines the DistortionComponent attribute functions
 
+The universal events are supported.
+
 **Inheritance/Implementation:** DistortionComponentAttribute extends CommonMethod&lt;DistortionComponentAttribute&gt;
 
 **Since:** 26.0.0

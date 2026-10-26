@@ -39,3 +39,16 @@ function setExternalStorageInterceptEnable(enable: boolean): void
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
 | [9200010](../errorcode-enterpriseDeviceManager.md#9200010-策略冲突) | A conflict policy has been configured. |
 | [9200016](../errorcode-enterpriseDeviceManager.md#9200016-服务超时) | Service timeout. |
+
+**示例**
+
+```TypeScript
+import { usbManager } from '@kit.MDMKit';
+
+try {
+  usbManager.setExternalStorageInterceptEnable(true);
+  console.info(`Succeeded in setting external storage intercept enable.`);
+} catch (err) {
+  console.error(`Failed to set external storage intercept enable. Code: ${err.code}, message: ${err.message}`);
+}
+```

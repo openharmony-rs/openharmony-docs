@@ -31,7 +31,7 @@ Restriction:
 - This interface supports only PC devices. When a non-PC device invokes this interface, error code 801 is  
 returned.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Required permissions:** ohos.permission.GET_AUDIO_ADAPTER_INFO
 
@@ -45,7 +45,7 @@ returned.
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;Array&lt;[SoundCardInfo](arkts-audio-audio-soundcardinfo-i-sys.md)&gt;&gt; | Promise used to return the sound card information list. |
+| Promise&lt;Array&lt;[SoundCardInfo](arkts-audio-audio-soundcardinfo-i.md)&gt;&gt; | Promise used to return the sound card information list. |
 
 **Error codes:**
 

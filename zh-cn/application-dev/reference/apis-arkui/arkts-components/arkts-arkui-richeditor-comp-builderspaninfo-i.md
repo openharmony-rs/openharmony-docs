@@ -10,7 +10,7 @@ declare interface BuilderSpanInfo
 > 
 > 当**RichEditor**组件使用[RichEditorStyledStringOptions](arkts-arkui-richeditor-comp-richeditorstyledstringoptions-i.md)构造时，不支持此接口。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 <!--Device-unnamed-declare interface BuilderSpanInfo--><!--Device-unnamed-declare interface BuilderSpanInfo-End-->
 
@@ -26,11 +26,11 @@ id?: string
 
 **类型：** string
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-BuilderSpanInfo-id?: string--><!--Device-BuilderSpanInfo-id?: string-End-->
 
@@ -46,11 +46,11 @@ BuilderSpan在文本内容中的当前偏移位置。该值由框架维护，随
 
 **类型：** number
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-BuilderSpanInfo-offset?: number--><!--Device-BuilderSpanInfo-offset?: number-End-->
 

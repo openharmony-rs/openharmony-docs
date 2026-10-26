@@ -58,9 +58,19 @@
     - [AtManager](arkts-ability-abilityaccessctrl-atmanager-i.md)
     <!--Del-->
     - [AtManager（系统接口）](arkts-ability-abilityaccessctrl-atmanager-i-sys.md)<!--DelEnd-->
+    <!--Del-->
+    - [AutomationControlControllerInfo（系统接口）](arkts-ability-abilityaccessctrl-automationcontrolcontrollerinfo-i-sys.md)<!--DelEnd-->
+    <!--Del-->
+    - [AutomationControlTargetParam（系统接口）](arkts-ability-abilityaccessctrl-automationcontroltargetparam-i-sys.md)<!--DelEnd-->
+    <!--Del-->
+    - [AutomationControlTargetResult（系统接口）](arkts-ability-abilityaccessctrl-automationcontroltargetresult-i-sys.md)<!--DelEnd-->
     - [PermissionStateChangeInfo](arkts-ability-abilityaccessctrl-permissionstatechangeinfo-i.md)
     <!--Del-->
     - [PermissionStatusInfo（系统接口）](arkts-ability-abilityaccessctrl-permissionstatusinfo-i-sys.md)<!--DelEnd-->
+    <!--Del-->
+    - [AutomationControlSetResult（系统接口）](arkts-ability-abilityaccessctrl-automationcontrolsetresult-e-sys.md)<!--DelEnd-->
+    <!--Del-->
+    - [AutomationControlStatus（系统接口）](arkts-ability-abilityaccessctrl-automationcontrolstatus-e-sys.md)<!--DelEnd-->
     - [GrantStatus](arkts-ability-abilityaccessctrl-grantstatus-e.md)
     <!--Del-->
     - [PermissionRequestToggleStatus（系统接口）](arkts-ability-abilityaccessctrl-permissionrequesttogglestatus-e-sys.md)<!--DelEnd-->
@@ -76,21 +86,31 @@
   <!--Del-->
   - [generateControllerDevicePackage（系统接口）](arkts-ability-abilitytoolaccessctrl-generatecontrollerdevicepackage-f-sys.md)<!--DelEnd-->
   <!--Del-->
+  - [generateTaskChallenge（系统接口）](arkts-ability-abilitytoolaccessctrl-generatetaskchallenge-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [generateTaskIdentity（系统接口）](arkts-ability-abilitytoolaccessctrl-generatetaskidentity-f-sys.md)<!--DelEnd-->
+  <!--Del-->
   - [getRemoteGrantStatus（系统接口）](arkts-ability-abilitytoolaccessctrl-getremotegrantstatus-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [grantToolPermissionsByUser（系统接口）](arkts-ability-abilitytoolaccessctrl-granttoolpermissionsbyuser-f-sys.md)<!--DelEnd-->
+  - [queryControlAppStatus](arkts-ability-abilitytoolaccessctrl-querycontrolappstatus-f.md)
+  - [requestControlAppPermissionFromUser](arkts-ability-abilitytoolaccessctrl-requestcontrolapppermissionfromuser-f.md)
   <!--Del-->
   - [requestToolPermissions（系统接口）](arkts-ability-abilitytoolaccessctrl-requesttoolpermissions-f-sys.md)<!--DelEnd-->
   - [requestToolTicket](arkts-ability-abilitytoolaccessctrl-requesttoolticket-f.md)
+  <!--Del-->
+  - [revokeTaskIdentity（系统接口）](arkts-ability-abilitytoolaccessctrl-revoketaskidentity-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [updateRemoteGrantStatus（系统接口）](arkts-ability-abilitytoolaccessctrl-updateremotegrantstatus-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [verifyControlledDevicePackage（系统接口）](arkts-ability-abilitytoolaccessctrl-verifycontrolleddevicepackage-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [verifyControllerDevicePackage（系统接口）](arkts-ability-abilitytoolaccessctrl-verifycontrollerdevicepackage-f-sys.md)<!--DelEnd-->
+  - [AppInfo](arkts-ability-abilitytoolaccessctrl-appinfo-i.md)
   <!--Del-->
   - [AuthStatusInfo（系统接口）](arkts-ability-abilitytoolaccessctrl-authstatusinfo-i-sys.md)<!--DelEnd-->
   - [CliCmdInfo](arkts-ability-abilitytoolaccessctrl-clicmdinfo-i.md)
+  - [ControlAppStatusResult](arkts-ability-abilitytoolaccessctrl-controlappstatusresult-i.md)
   <!--Del-->
   - [OperationInfo（系统接口）](arkts-ability-abilitytoolaccessctrl-operationinfo-i-sys.md)<!--DelEnd-->
   - [PermissionInfo](arkts-ability-abilitytoolaccessctrl-permissioninfo-i.md)
@@ -111,13 +131,20 @@
   <!--Del-->
   - [RemoteUserAuthResults（系统接口）](arkts-ability-abilitytoolaccessctrl-remoteuserauthresults-i-sys.md)<!--DelEnd-->
   <!--Del-->
+  - [TaskIdentity（系统接口）](arkts-ability-abilitytoolaccessctrl-taskidentity-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [TaskIdentityInfo（系统接口）](arkts-ability-abilitytoolaccessctrl-taskidentityinfo-i-sys.md)<!--DelEnd-->
+  <!--Del-->
   - [TicketInfo（系统接口）](arkts-ability-abilitytoolaccessctrl-ticketinfo-i-sys.md)<!--DelEnd-->
-  - [TicketOpions](arkts-ability-abilitytoolaccessctrl-ticketopions-i.md)
+  - [TicketParams](arkts-ability-abilitytoolaccessctrl-ticketparams-i.md)
   - [TicketQueryResult](arkts-ability-abilitytoolaccessctrl-ticketqueryresult-i.md)
   <!--Del-->
   - [UserAuthResult（系统接口）](arkts-ability-abilitytoolaccessctrl-userauthresult-i-sys.md)<!--DelEnd-->
   <!--Del-->
   - [AuthStatus（系统接口）](arkts-ability-abilitytoolaccessctrl-authstatus-e-sys.md)<!--DelEnd-->
+  - [ControlAppStatus](arkts-ability-abilitytoolaccessctrl-controlappstatus-e.md)
+  <!--Del-->
+  - [ExecuteType（系统接口）](arkts-ability-abilitytoolaccessctrl-executetype-e-sys.md)<!--DelEnd-->
   <!--Del-->
   - [OperationType（系统接口）](arkts-ability-abilitytoolaccessctrl-operationtype-e-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -318,6 +345,8 @@
 - [@ohos.app.ability.appMemoryOptimizer（应用内存优化器）](arkts-ability-app-ability-appmemoryoptimizer.md)
   - [evictFilePages](arkts-ability-appmemoryoptimizer-evictfilepages-f.md)
   - [evictModuleFilePages](arkts-ability-appmemoryoptimizer-evictmodulefilepages-f.md)
+- [@ohos.app.ability.AppProcessStateObserver](arkts-ability-app-ability-appprocessstateobserver.md)
+  - [AppProcessStateObserver](arkts-ability-app-ability-appprocessstateobserver-appprocessstateobserver-i.md)
 - [@ohos.app.ability.appRecovery（应用故障恢复）](arkts-ability-app-ability-apprecovery.md)
   - [enableAppRecovery](arkts-ability-apprecovery-enableapprecovery-f.md)
   - [restartApp](arkts-ability-apprecovery-restartapp-f.md)
@@ -556,6 +585,8 @@
   - [ReturnMode](arkts-ability-insightintent-returnmode-e.md)
 - [@ohos.app.ability.InsightIntentContext（意图执行上下文）](arkts-ability-app-ability-insightintentcontext.md)
   - [InsightIntentContext](arkts-ability-app-ability-insightintentcontext-insightintentcontext-c.md)
+  <!--Del-->
+  - [InsightIntentContext（系统接口）](arkts-ability-app-ability-insightintentcontext-insightintentcontext-c-sys.md)<!--DelEnd-->
 - [@ohos.app.ability.InsightIntentDecorator（意图装饰器定义）](arkts-ability-app-ability-insightintentdecorator.md)
   - [@InsightIntentEntity](arkts-ability-app-ability-insightintentdecorator-insightintententity-d.md)
   - [@InsightIntentEntry](arkts-ability-app-ability-insightintentdecorator-insightintententry-d.md)

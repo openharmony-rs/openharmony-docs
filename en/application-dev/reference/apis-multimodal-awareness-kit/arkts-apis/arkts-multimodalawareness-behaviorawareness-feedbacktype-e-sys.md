@@ -6,7 +6,7 @@ export enum FeedbackType
 
 User feedback event status type enum after an event is pushed.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 <!--Device-behaviorAwareness-export enum FeedbackType--><!--Device-behaviorAwareness-export enum FeedbackType-End-->
 
@@ -22,7 +22,7 @@ ACCEPT = 0
 
 Accept event.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -40,7 +40,7 @@ EDIT = 3
 
 Edit event.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -58,7 +58,7 @@ IGNORE = 1
 
 Ignore event.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -76,7 +76,7 @@ NOT_PUSHED = 4
 
 Event not pushed.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -94,7 +94,7 @@ REJECT = 2
 
 Reject event.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 

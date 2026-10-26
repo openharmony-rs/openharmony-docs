@@ -6,7 +6,7 @@ export enum ActionType
 
 Action type enum.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 <!--Device-behaviorAwareness-export enum ActionType--><!--Device-behaviorAwareness-export enum ActionType-End-->
 
@@ -22,7 +22,7 @@ AIRPLANE_MODE = 'airplaneMode'
 
 Airplane mode.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -40,7 +40,7 @@ APP_CLOSE = 'appClose'
 
 Close app.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -58,7 +58,7 @@ APP_OPEN = 'appOpen'
 
 Open app.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -76,7 +76,7 @@ BLUETOOTH = 'bluetooth'
 
 Bluetooth.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -94,7 +94,7 @@ DARK_MODE = 'darkMode'
 
 Dark mode.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -112,7 +112,7 @@ EYE_PROTECT_MODE = 'eyeProtectMode'
 
 Eye protection mode.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -130,7 +130,7 @@ MOBILE_DATA = 'mobileData'
 
 Mobile data.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -148,7 +148,7 @@ NFC = 'nfc'
 
 NFC.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -166,7 +166,7 @@ PERSONAL_HOTSPOT = 'personalHotspot'
 
 Personal hotspot.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -184,7 +184,7 @@ POWER_SAVING = 'powerSaving'
 
 Power saving mode.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -202,7 +202,7 @@ REBOOT = 'reboot'
 
 Reboot.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -220,7 +220,7 @@ ROTATION_LOCK = 'rotationLock'
 
 Rotation lock.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -238,7 +238,7 @@ SCREEN_BRIGHTNESS = 'screenBrightness'
 
 Screen brightness.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -256,7 +256,7 @@ SHUTDOWN = 'shutdown'
 
 Shutdown.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -274,7 +274,7 @@ SOUND_MODE = 'soundMode'
 
 Sound mode.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -292,7 +292,7 @@ VOLUME = 'volume'
 
 Volume.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -310,7 +310,7 @@ WIFI = 'wifi'
 
 Wi-Fi.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 

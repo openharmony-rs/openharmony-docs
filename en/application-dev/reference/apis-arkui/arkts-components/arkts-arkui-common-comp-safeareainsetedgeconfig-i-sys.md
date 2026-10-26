@@ -6,7 +6,7 @@ declare interface SafeAreaInsetEdgeConfig
 
 Defines custom content and layout settings for one safe area inset edge.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 <!--Device-unnamed-declare interface SafeAreaInsetEdgeConfig--><!--Device-unnamed-declare interface SafeAreaInsetEdgeConfig-End-->
 
@@ -24,11 +24,11 @@ Alignment of the content along the attachment edge. Default value: `SafeAreaInse
 
 **Type:** [SafeAreaInsetAlignment](arkts-arkui-common-comp-safeareainsetalignment-e-sys.md)
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-SafeAreaInsetEdgeConfig-alignment?: SafeAreaInsetAlignment--><!--Device-SafeAreaInsetEdgeConfig-alignment?: SafeAreaInsetAlignment-End-->
 
@@ -48,11 +48,11 @@ Each edge builder must produce one root component, either a built-in or custom c
 
 **Type:** [CustomBuilder](arkts-arkui-common-comp-custombuilder-t.md)
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-SafeAreaInsetEdgeConfig-content: CustomBuilder--><!--Device-SafeAreaInsetEdgeConfig-content: CustomBuilder-End-->
 
@@ -70,11 +70,11 @@ Gap between the inset content and the component content, measured inward from th
 
 **Type:** LengthMetrics
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-SafeAreaInsetEdgeConfig-spacing?: LengthMetrics--><!--Device-SafeAreaInsetEdgeConfig-spacing?: LengthMetrics-End-->
 

@@ -106,25 +106,3 @@ function on(type: 'checkNotification', checkRequest: NotificationCheckRequest,
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
-
-<!--Del-->
-**示例**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try{
-  notificationManager.on('checkNotification',{
-    contentType: notificationManager.ContentType.NOTIFICATION_CONTENT_LIVE_VIEW,
-    slotType: notificationManager.SlotType.LIVE_VIEW ,
-    extraInfoKeys: ['event'],
-  },
-    async (checkInfo)=>{
-      return { code: 1, message: 'INVALID_PARAMETERS'};
-  },);
-} catch (err) {
-  console.error(`notificationManager.on failed, code is ${err.code}, message is ${err.message}`);
-}
-```
-
-<!--DelEnd-->

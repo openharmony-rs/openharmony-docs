@@ -298,11 +298,11 @@ List of significant dates such as birthdays and anniversaries of the contact.
 
 **Type:** [SignificantDate](arkts-contacts-contact-significantdate-c.md)[]
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-Contact-significantDates?: SignificantDate[]--><!--Device-Contact-significantDates?: SignificantDate[]-End-->
 
@@ -356,7 +356,7 @@ List of important dates such as birthdays and anniversaries of the contact.
 
 **Since:** 7
 
-**Deprecated since:** 26.2.0
+**Deprecated since:** 26.1.0
 
 **Substitutes:** [significantDates](#significantdates)
 

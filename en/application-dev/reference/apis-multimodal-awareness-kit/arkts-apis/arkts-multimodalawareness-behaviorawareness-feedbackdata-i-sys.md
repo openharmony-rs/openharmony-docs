@@ -6,7 +6,7 @@ export interface FeedbackData
 
 Feedback data.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 <!--Device-behaviorAwareness-export interface FeedbackData--><!--Device-behaviorAwareness-export interface FeedbackData-End-->
 
@@ -30,7 +30,7 @@ Feedback timestamp . Unit: milliseconds.
 
 **Type:** number
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -50,7 +50,7 @@ Feedback Type.
 
 **Type:** [FeedbackType](arkts-multimodalawareness-behaviorawareness-feedbacktype-e-sys.md)
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -70,7 +70,7 @@ Awareness event ID.
 
 **Type:** string
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 

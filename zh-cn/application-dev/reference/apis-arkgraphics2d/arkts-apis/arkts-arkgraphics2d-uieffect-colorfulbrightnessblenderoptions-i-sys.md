@@ -6,7 +6,7 @@ interface ColorfulBrightnessBlenderOptions
 
 基于保持色相的提亮压暗混合器的可选增强配置项，作为createColorfulBrightnessBlender的options参数传入。它在常规参数BrightnessBlenderParam之外，可进一步针对提亮或压暗方向、色彩增强强度、输入色彩影响度、与背景的对比度以及HDR开关进行精细调整，不传时各项采用默认值。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 <!--Device-uiEffect-interface ColorfulBrightnessBlenderOptions--><!--Device-uiEffect-interface ColorfulBrightnessBlenderOptions-End-->
 
@@ -32,11 +32,11 @@ darkenWeight?: number
 
 **默认值：** 1
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**卡片能力：** 从API版本26.2.0开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本26.1.0开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-ColorfulBrightnessBlenderOptions-darkenWeight?: double--><!--Device-ColorfulBrightnessBlenderOptions-darkenWeight?: double-End-->
 
@@ -56,11 +56,11 @@ hdrEnabled?: boolean
 
 **默认值：** false
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**卡片能力：** 从API版本26.2.0开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本26.1.0开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-ColorfulBrightnessBlenderOptions-hdrEnabled?: boolean--><!--Device-ColorfulBrightnessBlenderOptions-hdrEnabled?: boolean-End-->
 
@@ -80,11 +80,11 @@ lumaDiff?: number
 
 **默认值：** 0
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**卡片能力：** 从API版本26.2.0开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本26.1.0开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-ColorfulBrightnessBlenderOptions-lumaDiff?: double--><!--Device-ColorfulBrightnessBlenderOptions-lumaDiff?: double-End-->
 
@@ -104,11 +104,11 @@ tintedColorPercent?: number
 
 **默认值：** 1
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**卡片能力：** 从API版本26.2.0开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本26.1.0开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-ColorfulBrightnessBlenderOptions-tintedColorPercent?: double--><!--Device-ColorfulBrightnessBlenderOptions-tintedColorPercent?: double-End-->
 
@@ -128,11 +128,11 @@ vibrancyStrength?: number
 
 **默认值：** 0
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**卡片能力：** 从API版本26.2.0开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本26.1.0开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-ColorfulBrightnessBlenderOptions-vibrancyStrength?: double--><!--Device-ColorfulBrightnessBlenderOptions-vibrancyStrength?: double-End-->
 

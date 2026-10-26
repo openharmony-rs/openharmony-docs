@@ -95,6 +95,22 @@ Creates a **Canvas** component that does not cache commands using **CanvasParams
 
 ## Summary
 
+### Classes
+
+| Name | Description |
+| --- | --- |
+| [CanvasGradient](arkts-arkui-canvas-comp-canvasgradient-c.md) | A gradient object that allows multiple color breakpoints to be set through the **addColorStop** method, achieving smooth color transitions. It is suitable for canvas filling and stroking scenarios. |
+| [CanvasPath](arkts-arkui-canvas-comp-canvaspath-c.md) | Path object, which provides basic methods for drawing paths. For details about the path-related APIs, see the description in **CanvasRenderingContext2D**. |
+| [CanvasRenderer](arkts-arkui-canvas-comp-canvasrenderer-c.md) | After the **CanvasRenderingContext2D** object is bound to the **Canvas** component, you can draw shapes, texts, and images on the **Canvas** component. |
+| [CanvasRenderingContext2D](arkts-arkui-canvas-comp-canvasrenderingcontext2d-c.md) | **CanvasRenderingContext2D** is the 2D drawing context object of the **Canvas** component, used for custom drawing on the **Canvas** component. It supports drawing shapes (rectangles, circles, ellipses, paths, etc.), text, images, gradients, shadows, and many other drawing types, and is suitable for scenarios such as data visualization, game development, image editing, and custom UI drawing. With this object, developers can flexibly control the drawing process to achieve complex 2D graphic effects. |
+| [DrawingRenderingContext](arkts-arkui-canvas-comp-drawingrenderingcontext-c.md) | **DrawingRenderingContext** provides a rendering context for drawing rectangles, text, images, and other objects on a canvas. |
+| [ImageBitmap](arkts-arkui-canvas-comp-imagebitmap-c.md) | An **ImageBitmap** object stores pixel data rendered on a canvas. Since API version 11, when an application creates a [worker thread](../../../arkts-utils/worker-introduction.md), it can use **postMessage** to transfer the **ImageBitmap** instance to the worker thread for drawing, and use **onmessage** to receive the drawing results sent by the worker thread for display. |
+| [ImageData](arkts-arkui-canvas-comp-imagedata-c.md) | The **ImageData** object stores pixel data rendered on a canvas, supporting reading, modifying, and manipulating pixels. It is suitable for scenarios such as image processing, pixel-level editing, and special effect filters. With **ImageData**, you can precisely control each pixel of an image, implement custom image processing algorithms, and provide flexible pixel-level data access for canvas drawing. |
+| [OffscreenCanvas](arkts-arkui-canvas-comp-offscreencanvas-c.md) | The **OffscreenCanvas** component is used to draw custom graphics. |
+| [OffscreenCanvasRenderingContext2D](arkts-arkui-canvas-comp-offscreencanvasrenderingcontext2d-c.md) | Use **OffscreenCanvasRenderingContext2D** to draw shapes, images, and text offscreen onto a canvas. Offscreen drawing is a process where content to draw is first drawn into a buffer, then converted into an image, and finally drawn onto the canvas at once. Offscreen drawing uses the CPU for rendering, which is relatively slow. Therefore, avoid using offscreen drawing in scenarios that require high rendering speed. |
+| [Path2D](arkts-arkui-canvas-comp-path2d-c.md) | A path object that supports path description and combination through its APIs, and can be drawn through the **stroke** or **fill** API of **Canvas**. **Path2D** supports path reuse, combination of multiple paths, and creation of paths based on SVG path strings. It is suitable for scenarios where the same path needs to be drawn multiple times, complex graphics need to be dynamically combined, or graphics need to be drawn based on SVG path data. |
+| [RenderingContextSettings](arkts-arkui-canvas-comp-renderingcontextsettings-c.md) | Configures the settings of a **CanvasRenderingContext2D** object, including whether to enable anti-aliasing. |
+
 ### Interfaces
 
 | Name | Description |

@@ -4,7 +4,7 @@
 export enum AttachState
 ```
 
-Device attach states.
+设备连接状态的枚举
 
 **起始版本：** 20
 

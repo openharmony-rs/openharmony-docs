@@ -92,7 +92,7 @@ Indicates whether vibration intensity adjustment is supported. The value **true*
 
 **Type:** boolean
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 

@@ -406,7 +406,7 @@ Creates an OS account. This API uses a promise to return the result.
 | [12300007](../errorcode-account.md#12300007-account-count-reached-the-limit) | The number of accounts has reached the upper limit. |
 | [12300015](../errorcode-account.md#12300015-duplicate-short-name) | The short name already exists.<br>**Applicable version:** 12 and later |
 | [12300023](../errorcode-account.md#12300023-accounts-of-a-specified-type-reached-the-limit) | The number of accounts of the specified type has reached the upper limit.<br>**Applicable version:** 24 and later |
-| 12300024 | The specified OS account ID already exists. Suggested solutions: Use a different ID, or remove the existing OS account with the same ID and try again.<br>**Applicable version:** 26.2.0 and later |
+| 12300024 | The specified OS account ID already exists. Suggested solutions: Use a different ID, or remove the existing OS account with the same ID and try again.<br>**Applicable version:** 26.1.0 and later |
 
 <!--Del-->
 **Examples**
@@ -555,7 +555,7 @@ Creates an OS account and associates it with the specified domain account. This 
 | [12300007](../errorcode-account.md#12300007-account-count-reached-the-limit) | The number of accounts has reached the upper limit. |
 | [12300015](../errorcode-account.md#12300015-duplicate-short-name) | The short name already exists.<br>**Applicable version:** 12 and later |
 | [12300023](../errorcode-account.md#12300023-accounts-of-a-specified-type-reached-the-limit) | The number of accounts of the specified type has reached the upper limit.<br>**Applicable version:** 24 and later |
-| 12300024 | The specified OS account ID already exists. Suggested solutions: Use a different ID, or remove the existing OS account with the same ID and try again.<br>**Applicable version:** 26.2.0 and later |
+| 12300024 | The specified OS account ID already exists. Suggested solutions: Use a different ID, or remove the existing OS account with the same ID and try again.<br>**Applicable version:** 26.1.0 and later |
 
 <!--Del-->
 **Examples**

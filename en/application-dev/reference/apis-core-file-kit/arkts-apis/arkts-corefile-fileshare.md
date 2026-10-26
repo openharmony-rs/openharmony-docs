@@ -34,12 +34,15 @@ import { fileShare } from '@kit.CoreFileKit';
 | [checkPathPermission](arkts-corefile-fileshare-checkpathpermission-f-sys.md#checkpathpermission-1) | Check permissions for the path. |
 | [getPersistentPolicy](arkts-corefile-fileshare-getpersistentpolicy-f-sys.md#getpersistentpolicy-1) | Get all persistence permissions for the application. |
 | [getSharedDirectoryInfo](arkts-corefile-fileshare-getshareddirectoryinfo-f-sys.md#getshareddirectoryinfo-1) | Gets the shared sandbox directories of applications |
+| [getStatusByPermission](arkts-corefile-fileshare-getstatusbypermission-f-sys.md#getstatusbypermission-1) | Get the status of URIs permission for applications. |
+| [grantPermissionByUser](arkts-corefile-fileshare-grantpermissionbyuser-f-sys.md#grantpermissionbyuser-1) | Grant the URIs permission by user. |
 | [grantSharedDirectoryPermission](arkts-corefile-fileshare-grantshareddirectorypermission-f-sys.md#grantshareddirectorypermission-1) | Provides a permission grant for application-shared directories |
 | [grantUriPermission](arkts-corefile-fileshare-granturipermission-f-sys.md#granturipermission-1) | Provides grant uri permission for app |
 | [grantUriPermission](arkts-corefile-fileshare-granturipermission-f-sys.md#granturipermission-2) | Provides grant uri permission for app |
 | [grantUriPermission](arkts-corefile-fileshare-granturipermission-f-sys.md#granturipermission-3) | Grant URI permissions for an application. |
 | [revokePermission](arkts-corefile-fileshare-revokepermission-f-sys.md#revokepermission-2) | Revoke all persistence permissions for the application. |
 | [revokePermission](arkts-corefile-fileshare-revokepermission-f-sys.md#revokepermission-3) | Revoke persistence permissions for the URI. |
+| [revokePermissionByUser](arkts-corefile-fileshare-revokepermissionbyuser-f-sys.md#revokepermissionbyuser-1) | Revoke the URIs permission by user. |
 | [revokeSharedDirectoryPermission](arkts-corefile-fileshare-revokeshareddirectorypermission-f-sys.md#revokeshareddirectorypermission-1) | Revokes permission for application-shared directories |
 <!--DelEnd-->
 
@@ -56,6 +59,7 @@ import { fileShare } from '@kit.CoreFileKit';
 
 | Name | Description |
 | --- | --- |
+| [PermissionStatusInfo](arkts-corefile-fileshare-permissionstatusinfo-i-sys.md) | Indicates the URI permission status information of the application. |
 | [SharedDirectoryInfo](arkts-corefile-fileshare-shareddirectoryinfo-i-sys.md) | The directory information shared with the system by the application. |
 <!--DelEnd-->
 
@@ -63,6 +67,7 @@ import { fileShare } from '@kit.CoreFileKit';
 
 | Name | Description |
 | --- | --- |
+| [GrantStatus](arkts-corefile-fileshare-grantstatus-e.md) | Enumerates the status of the URI permission granted by user. |
 | [OperationMode](arkts-corefile-fileshare-operationmode-e.md) | Enumerates the uri operate mode types. |
 | [PolicyErrorCode](arkts-corefile-fileshare-policyerrorcode-e.md) | Enumerates the error code of the permission policy for the URI operation. |
 | [PolicyType](arkts-corefile-fileshare-policytype-e.md) | Indicates the policy type of the path. |

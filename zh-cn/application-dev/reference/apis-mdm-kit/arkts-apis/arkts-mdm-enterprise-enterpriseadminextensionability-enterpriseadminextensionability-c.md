@@ -1205,6 +1205,18 @@ onUnmountExternalStorageDevice(deviceInfo: common.ExternalStorageDeviceInfo): vo
 | --- | --- | --- | --- |
 | deviceInfo | [common.ExternalStorageDeviceInfo](arkts-mdm-common-externalstoragedeviceinfo-i.md) | 是 | 未挂载的外部存储设备信息。 |
 
+**示例**
+
+```TypeScript
+import { EnterpriseAdminExtensionAbility, common } from '@kit.MDMKit';
+
+export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
+  onUnmountExternalStorageDevice(deviceInfo: common.ExternalStorageDeviceInfo): void {
+    console.info(`Succeeded in calling onUnmountExternalStorageDevice callback, deviceInfo:${JSON.stringify(deviceInfo)}`);
+  }
+}
+```
+
 ## context
 
 ```TypeScript

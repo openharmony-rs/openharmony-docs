@@ -32,7 +32,7 @@ Relinquishes the [master-process](../../../application-models/ability-terminolog
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | [16000118](../errorcode-ability.md#16000118-process-is-not-the-master-process) | Not a master process. |
 | [16000119](../errorcode-ability.md#16000119-pending-request-exists) | Cannot exit because there is an unfinished request. |
 

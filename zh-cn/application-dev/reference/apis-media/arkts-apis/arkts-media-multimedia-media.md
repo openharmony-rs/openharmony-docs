@@ -92,6 +92,7 @@
 | [PlaybackInfo](arkts-media-media-playbackinfo-i.md) | 提供播放统计数据信息。 |
 | [PlaybackStrategy](arkts-media-media-playbackstrategy-i.md) | 播放策略，播放器首选播放设置。 |
 | [Range](arkts-media-media-range-i.md) | 包含上下限的范围。 |
+| [RectangleRegion](arkts-media-media-rectangleregion-i.md) | 矩形区域的配置接口。矩形区域的位置从左上角开始，大小定义为矩形的长宽数据。 |
 | [SeiMessage](arkts-media-media-seimessage-i.md) | 描述 SEI 消息的信息。 |
 | [SubtitleInfo](arkts-media-media-subtitleinfo-i.md) | 提供字幕信息。当订阅了字幕更新事件时，关于外部字幕的信息会通过回调返回。可以同步到AVPlayer#timeUpdate事件报告的时间 |
 | [TrackSelectionFilter](arkts-media-media-trackselectionfilter-i.md) | Describes the filter conditions for track selection. |
@@ -112,7 +113,6 @@
 | [AVPlayer](arkts-media-media-avplayer-i-sys.md) | 播放管理类，用于管理和播放媒体资源。支持音视频播放、播放控制（播放、暂停、停止、跳转、倍速等）、状态管理和事件监听。在调用AVPlayer的方法前，需要先通过[createAVPlayer()](arkts-media-media-createavplayer-f.md#createavplayer-1)构建一个AVPlayer实例。 |
 | [AVRecorder](arkts-media-media-avrecorder-i-sys.md) | AVRecorder是音视频录制管理类，用于音视频录制的全流程管理，支持音频录制、视频录制及音视频混合录制，可灵活配置编码参数、添加水印、设置元数据、监听录制状态和错误事件等。适用于录制音视频并保存到文件的场景，包括需要在音频流打断期间保持录制连续性、实时监控音频振幅等场景。在调用AVRecorder的方法前，需要先调用[createAVRecorder](arkts-media-media-createavrecorder-f.md)接口构建一个AVRecorder实例。典型录制流程：[createAVRecorder](arkts-media-media-createavrecorder-f.md) → [prepare](arkts-media-media-avrecorder-i.md#prepare-2) → [getInputSurface](arkts-media-media-avrecorder-i.md#getinputsurface)（纯视频/音视频录制时） → [start](arkts-media-media-avrecorder-i.md#start) → [pause](arkts-media-media-avrecorder-i.md#pause)/[resume](arkts-media-media-avrecorder-i.md#resume) → [stop](arkts-media-media-avrecorder-i.md#stop) → [release](arkts-media-media-avrecorder-i.md#release)。 |
 | [AVRecorderConfig](arkts-media-media-avrecorderconfig-i-sys.md) | 表示音视频录制的参数设置。<br>通过audioSourceType和videoSourceType区分纯音频录制、纯视频录制或音视频录制。纯音频录制时，仅需要设置audioSourceType；纯视频录制时，仅需要设置videoSourceType；音视频录制时，audioSourceType和videoSourceType均需要设置。 |
-| [AVRecorderProfile](arkts-media-media-avrecorderprofile-i-sys.md) | 音视频录制配置参数。 |
 | [AVScreenCaptureStrategy](arkts-media-media-avscreencapturestrategy-i-sys.md) | 录屏策略。 |
 | [PixelMapParams](arkts-media-media-pixelmapparams-i-sys.md) | 获取视频缩略图时，输出缩略图的格式参数。 |
 | [PlaybackStrategy](arkts-media-media-playbackstrategy-i-sys.md) | 播放策略，播放器首选播放设置。 |
@@ -128,7 +128,7 @@
 | 名称 | 说明 |
 | --- | --- |
 | [AVDownloadTaskState](arkts-media-media-avdownloadtaskstate-t.md) | 离线下载任务状态枚举。 |
-| [AVPlayerState](arkts-media-media-avplayerstate-t.md) | [AVPlayer](arkts-media-multimedia-media.md)的状态机，可通过state属性主动获取当前状态，也可通过监听[stateChange](arkts-media-media-avplayer-i.md#onstatechange)事件上报当前状态，状态机之间的切换规则，可参考[音频播放开发指导](../../../media/media/using-avplayer-for-playback.md)。 |
+| [AVPlayerState](arkts-media-media-avplayerstate-t.md) | [AVPlayer](arkts-media-media-avplayer-i.md)的状态机，可通过state属性主动获取当前状态，也可通过监听[stateChange](arkts-media-media-avplayer-i.md#onstatechange)事件上报当前状态，状态机之间的切换规则，可参考[音频播放开发指导](../../../media/media/using-avplayer-for-playback.md)。 |
 | [AVRecorderState](arkts-media-media-avrecorderstate-t.md) | 音视频录制的状态机。可通过state属性获取当前状态。 |
 | [OnAdsEventAdsStartedHandle](arkts-media-media-onadseventadsstartedhandle-t.md) | 广告内容播放开始事件回调方法。 |
 | [OnAdsEventLoadingErrorHandle](arkts-media-media-onadseventloadingerrorhandle-t.md) | 广告媒体资源加载失败事件回调方法。 |
@@ -170,6 +170,7 @@
 | [AVImageQueryOptions](arkts-media-media-avimagequeryoptions-e.md) | 需要获取的缩略图时间点与视频帧的对应关系。 |
 | [AVMetricsEventType](arkts-media-media-avmetricseventtype-e.md) | 表示媒体服务支持的指标事件的枚举。 |
 | [AVMimeTypes](arkts-media-media-avmimetypes-e.md) | 媒体MIME类型，通过[setMimeType](arkts-media-media-mediasource-i.md#setmimetype)设置。 |
+| [AVScreenCaptureAutoPauseCaptureScene](arkts-media-media-avscreencaptureautopausecapturescene-e.md) | 自动暂停屏幕录制的场景枚举定义。 |
 | [AVScreenCaptureFillMode](arkts-media-media-avscreencapturefillmode-e.md) | 进行屏幕录制时视频填充模式的枚举。 |
 | [AVScreenCaptureRecordPreset](arkts-media-media-avscreencapturerecordpreset-e.md) | 进行屏幕录制时的编码、封装格式参数的枚举。 |
 | [AVScreenCaptureStateCode](arkts-media-media-avscreencapturestatecode-e.md) | 屏幕录制的状态回调。 |
@@ -183,6 +184,7 @@
 | [MediaDescriptionKey](arkts-media-media-mediadescriptionkey-e.md) | 媒体信息描述枚举。 |
 | [MediaType](arkts-media-media-mediatype-e.md) | 媒体类型枚举。 |
 | [PickerMode](arkts-media-media-pickermode-e.md) | 表示屏幕录制Picker模式的枚举。 |
+| [PlaybackCommand](arkts-media-media-playbackcommand-e.md) | 可执行的播控指令枚举定义，用于应用在Prepare()完成后，查询该片源是否可以执行对应的播放控制操作； |
 | [PlaybackInfoKey](arkts-media-media-playbackinfokey-e.md) | 播放信息描述枚举。 |
 | [PlaybackMetricsKey](arkts-media-media-playbackmetricskey-e.md) | 表示播放器指标信息的枚举。 |
 | [PlaybackSpeed](arkts-media-media-playbackspeed-e.md) | 视频播放的倍速枚举，可通过setSpeed方法作为参数传递下去。 |

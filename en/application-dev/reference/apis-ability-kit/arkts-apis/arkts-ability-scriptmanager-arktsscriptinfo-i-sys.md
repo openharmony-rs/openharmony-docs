@@ -28,11 +28,11 @@ Tool call ID passed by the caller, used to associate this arkTS script invocatio
 
 **Type:** string
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 <!--Device-ArkTSScriptInfo-readonly toolCallId?: string--><!--Device-ArkTSScriptInfo-readonly toolCallId?: string-End-->
 

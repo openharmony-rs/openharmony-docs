@@ -15,11 +15,11 @@ function createColorfulBrightnessBlender(brightnessBlenderParam: BrightnessBlend
 
 Creates a ColorfulBrightnessBlender instance to add a hue-preserving brightening and darkening effect to a component. This effect preserves hue by reconstructing it channel by channel when brightening or darkening the foreground, and can enhance saturation to avoid the desaturation issue of common brightening/darkening.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 26.2.0.
+**Widget capability:** This API can be used in ArkTS widgets since API version 26.1.0.
 
 <!--Device-uiEffect-function createColorfulBrightnessBlender(brightnessBlenderParam: BrightnessBlenderParam,    options?: ColorfulBrightnessBlenderOptions): ColorfulBrightnessBlender--><!--Device-uiEffect-function createColorfulBrightnessBlender(brightnessBlenderParam: BrightnessBlenderParam,    options?: ColorfulBrightnessBlenderOptions): ColorfulBrightnessBlender-End-->
 

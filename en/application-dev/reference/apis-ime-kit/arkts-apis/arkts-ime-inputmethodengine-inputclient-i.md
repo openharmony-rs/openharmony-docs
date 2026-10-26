@@ -816,6 +816,154 @@ let text: string = inputClient.getForwardSync(length);
 console.info(`Succeeded in getting forward, text: ${text}`);
 ```
 
+## getLeftRichText
+
+```TypeScript
+getLeftRichText(length: number): Promise<InputMethodRichText>
+```
+
+Obtains the rich text of the specified length before the cursor. This API uses a promise to return the result. <br> <br>  
+> **NOTE:** <br> <br>
+> If the edit box currently bound to the input method application is an ArkUI rich text component, the rich text content is returned. If the bound component is not an ArkUI rich text component, this API is bridged to the plain text implementation. <br> <br>
+> The maximum total size of the richtext that can be obtained is 128KB. Exceeding this limit causes the request to fail.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-InputClient-getLeftRichText(length: int): Promise<InputMethodRichText>--><!--Device-InputClient-getLeftRichText(length: int): Promise<InputMethodRichText>-End-->
+
+**System capability:** SystemCapability.MiscServices.InputMethodFramework
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| length | number | Yes | Text length, which cannot be less than 0. <br>The value must be an integer within [0,4096]. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;[InputMethodRichText](arkts-ime-inputmethodengine-inputmethodrichtext-i.md)&gt; | Promise used to return the rich text of the specified length before the cursor. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [12800003](../errorcode-inputmethod-framework.md#12800003-input-method-client-error) | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
+
+## getLeftRichTextSync
+
+```TypeScript
+getLeftRichTextSync(length: number): InputMethodRichText
+```
+
+Obtains the rich text of the specified length before the cursor. <br> <br>  
+> **NOTE:** <br> <br>
+> If the edit box currently bound to the input method application is an ArkUI rich text component, the rich text content is returned. If the bound component is not an ArkUI rich text component, this API is bridged to the plain text implementation. <br> <br>
+> The maximum total size of the richtext that can be obtained is 128KB. Exceeding this limit causes the request to fail.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-InputClient-getLeftRichTextSync(length: int): InputMethodRichText--><!--Device-InputClient-getLeftRichTextSync(length: int): InputMethodRichText-End-->
+
+**System capability:** SystemCapability.MiscServices.InputMethodFramework
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| length | number | Yes | Text length, which cannot be less than 0. <br>The value must be an integer within [0,4096]. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| [InputMethodRichText](arkts-ime-inputmethodengine-inputmethodrichtext-i.md) | Rich text of the specified length before the cursor. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [12800003](../errorcode-inputmethod-framework.md#12800003-input-method-client-error) | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
+
+## getRightRichText
+
+```TypeScript
+getRightRichText(length: number): Promise<InputMethodRichText>
+```
+
+Obtains the rich text of the specified length after the cursor. This API uses a promise to return the result. <br> <br>  
+> **NOTE:** <br> <br>
+> If the edit box currently bound to the input method application is an ArkUI rich text component, the rich text content is returned. If the bound component is not an ArkUI rich text component, this API is bridged to the plain text implementation. <br> <br>
+> The maximum total size of the richtext that can be obtained is 128KB. Exceeding this limit causes the request to fail.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-InputClient-getRightRichText(length: int): Promise<InputMethodRichText>--><!--Device-InputClient-getRightRichText(length: int): Promise<InputMethodRichText>-End-->
+
+**System capability:** SystemCapability.MiscServices.InputMethodFramework
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| length | number | Yes | Text length, which cannot be less than 0. <br>The value must be an integer within [0,4096]. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;[InputMethodRichText](arkts-ime-inputmethodengine-inputmethodrichtext-i.md)&gt; | Promise used to return the rich text of the specified length after the cursor. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [12800003](../errorcode-inputmethod-framework.md#12800003-input-method-client-error) | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
+
+## getRightRichTextSync
+
+```TypeScript
+getRightRichTextSync(length: number): InputMethodRichText
+```
+
+Obtains the rich text of the specified length after the cursor. <br> <br>  
+> **NOTE:** <br> <br>
+> If the edit box currently bound to the input method application is an ArkUI rich text component, the rich text content is returned. If the bound component is not an ArkUI rich text component, this API is bridged to the plain text implementation. <br> <br>
+> The maximum total size of the richtext that can be obtained is 128KB. Exceeding this limit causes the request to fail.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-InputClient-getRightRichTextSync(length: int): InputMethodRichText--><!--Device-InputClient-getRightRichTextSync(length: int): InputMethodRichText-End-->
+
+**System capability:** SystemCapability.MiscServices.InputMethodFramework
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| length | number | Yes | Text length, which cannot be less than 0. <br>The value must be an integer within [0,4096]. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| [InputMethodRichText](arkts-ime-inputmethodengine-inputmethodrichtext-i.md) | Rich text of the specified length after the cursor. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [12800003](../errorcode-inputmethod-framework.md#12800003-input-method-client-error) | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
+
 ## getTextIndexAtCursor
 
 ```TypeScript

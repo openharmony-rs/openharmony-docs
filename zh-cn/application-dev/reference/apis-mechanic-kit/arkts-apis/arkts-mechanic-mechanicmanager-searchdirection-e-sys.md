@@ -4,7 +4,7 @@
 export enum SearchDirection
 ```
 
-Search direction.
+系统默认的搜索方向
 
 **起始版本：** 21
 
@@ -20,7 +20,7 @@ Search direction.
 DEFAULT = 0
 ```
 
-System Default Direction.
+系统默认方向
 
 **起始版本：** 21
 
@@ -36,7 +36,7 @@ System Default Direction.
 LEFTWARD = 1
 ```
 
-Leftward direction. Also indicates clockwise direction.
+左向，即顺时针方向。
 
 **起始版本：** 21
 
@@ -52,7 +52,7 @@ Leftward direction. Also indicates clockwise direction.
 RIGHTWARD = 2
 ```
 
-Rightward direction. Also indicates the counterclockwise direction.
+右向，即逆时针方向。
 
 **起始版本：** 21
 

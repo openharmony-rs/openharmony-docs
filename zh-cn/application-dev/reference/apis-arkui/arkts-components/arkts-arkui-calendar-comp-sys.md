@@ -39,6 +39,14 @@ Calendar(value: {
 ## 汇总
 
 <!--Del-->
+### 类（系统接口）
+
+| 名称 | 说明 |
+| --- | --- |
+| [CalendarController](arkts-arkui-calendar-comp-calendarcontroller-c-sys.md) | 日历控制器。 |
+<!--DelEnd-->
+
+<!--Del-->
 ### 接口（系统接口）
 
 | 名称 | 说明 |

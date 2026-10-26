@@ -252,13 +252,13 @@ ChipGroupV2Items变更回调方法。
 
 **类型：** Callback&lt;[ChipGroupV2Items](arkts-arkui-arkui-advanced-chipgroupv2-chipgroupv2items-c.md)&gt;
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **装饰器类型：** @Event
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-ChipGroupV2-onItemsChange?: Callback<ChipGroupV2Items>--><!--Device-ChipGroupV2-onItemsChange?: Callback<ChipGroupV2Items>-End-->
 

@@ -6,7 +6,7 @@ interface CleanupSize
 
 Rom收益
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 <!--Device-photoAccessHelper-interface CleanupSize--><!--Device-photoAccessHelper-interface CleanupSize-End-->
 
@@ -30,7 +30,7 @@ intervalIndex: number
 
 **类型：** number
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -50,7 +50,7 @@ Rom收益。单位为：字节。取值限定为整数。
 
 **类型：** number
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

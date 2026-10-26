@@ -1,5 +1,25 @@
 # @ohos.arkui.advanced.ArcSlider
 
+The **ArcSlider** component is designed for circular screens on wearables to quickly adjust settings,
+ such as the volume and brightness.
+
+> **NOTE**
+ >
+ > - This component is supported on Phone, PC/2in1, Tablet, TV, and Wearable devices. In API version 22 and earlier,
+ > using it on Phone, PC/2in1, Tablet, or TV generates a compilation warning, but the component can run normally.
+
+## Child Components
+
+Not supported
+
+## Attributes
+
+The universal attributes are not supported.
+
+## Events
+
+The universal events are not supported.
+
 ## Modules to Import
 
 ```TypeScript
@@ -21,7 +41,7 @@ import { ArcSlider, ArcSliderPosition, ArcSliderOptions, ArcSliderOptionsConstru
 
 | Name | Description |
 | --- | --- |
-| [ArcSlider](arkts-arkui-arkui-advanced-arcslider-arcslider-s.md) | The **ArcSlider** component is designed for circular screens on wearables to quickly adjust settings, such as the volume and brightness. |
+| [ArcSlider](arkts-arkui-arkui-advanced-arcslider-arcslider-s.md) | Creates an **ArcSlider** instance. The input parameter is the arc slider configuration options. |
 
 ### Interfaces
 

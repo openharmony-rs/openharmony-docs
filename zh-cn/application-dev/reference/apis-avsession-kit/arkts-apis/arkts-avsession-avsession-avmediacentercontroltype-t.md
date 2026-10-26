@@ -1,8 +1,7 @@
 # AVMediaCenterControlType
 
 ```TypeScript
-type AVMediaCenterControlType = 'playNext' | 'playPrevious' | 'fastForward' | 'rewind' | 'setSpeed' | 'setLoopMode'
-    'toggleFavorite'
+type AVMediaCenterControlType = 'playNext' | 'playPrevious' | 'fastForward' | 'rewind' | 'setSpeed' | 'setLoopMode' | 'toggleFavorite'
 ```
 
 应用可选择设置优先级的播控组件类型

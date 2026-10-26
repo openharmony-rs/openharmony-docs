@@ -61,6 +61,28 @@ Gets the identifier of the media source.
 | --- | --- |
 | string | Identifier of the media source. Empty string means call failed. |
 
+## getTrackSelectionFilter
+
+```TypeScript
+getTrackSelectionFilter(): TrackSelectionFilter | undefined
+```
+
+Obtains the configured audio and video feature filtering values.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-MediaSource-getTrackSelectionFilter(): TrackSelectionFilter | undefined--><!--Device-MediaSource-getTrackSelectionFilter(): TrackSelectionFilter | undefined-End-->
+
+**System capability:** SystemCapability.Multimedia.Media.Core
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| [TrackSelectionFilter](arkts-media-media-trackselectionfilter-i.md) &#124; undefined | If the TrackSelectionFilter object exists, the TrackSelectionFilter object is returned. Otherwise, the TrackSelectionFilter object is returned. |
+
 ## setMediaResourceLoaderDelegate
 
 ```TypeScript
@@ -144,3 +166,47 @@ Sets the MIME type to help the player process extended media sources.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | mimeType | [AVMimeTypes](arkts-media-media-avmimetypes-e.md) | Yes | MIME type. |
+
+## setRetrieveKey
+
+```TypeScript
+setRetrieveKey(key: string): void
+```
+
+Sets the matching character string of the MediaSource during retrieval. After a resource corresponding to the MediaSource is cached to the local host, the resource is played again, The CDN path may change. As a result, the matching fails. You can set the matching character string to solve this problem.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-MediaSource-setRetrieveKey(key: string): void--><!--Device-MediaSource-setRetrieveKey(key: string): void-End-->
+
+**System capability:** SystemCapability.Multimedia.Media.Core
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| key | string | Yes | Key value set for the MediaSource to match in the loacl cache. |
+
+## setTrackSelectionFilter
+
+```TypeScript
+setTrackSelectionFilter(filter: TrackSelectionFilter): void
+```
+
+Set the audio and video feature filtering items of the MediaSource, After the user defines the audio and video filtering items of the MediaSource, When playing or downloading MediaSource data offline, Preferentially perform a corresponding operation in the filtering feature.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-MediaSource-setTrackSelectionFilter(filter: TrackSelectionFilter): void--><!--Device-MediaSource-setTrackSelectionFilter(filter: TrackSelectionFilter): void-End-->
+
+**System capability:** SystemCapability.Multimedia.Media.Core
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| filter | [TrackSelectionFilter](arkts-media-media-trackselectionfilter-i.md) | Yes | Specifies the audio and video features of the pre-downloaded streaming media. |

@@ -21,7 +21,7 @@ import { AppStorageV2, PersistenceV2, Type, UIUtils, ConnectOptions, Binding, Mu
 ## addMonitor
 
 ```TypeScript
-static addMonitor(target: object, path: string[], monitorCallback: MonitorCallback, options?: MonitorOptions): void
+static addMonitor(target: object, path: string | string[], monitorCallback: MonitorCallback, options?: MonitorOptions): void
 ```
 
 给状态管理V2的状态变量动态添加监听方法，详见[addMonitor/clearMonitor](../../../ui/state-management/arkts-new-addMonitor-clearMonitor.md)。
@@ -41,7 +41,7 @@ static addMonitor(target: object, path: string[], monitorCallback: MonitorCallba
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | target | object | 是 | 目标对象，仅支持[@ComponentV2](../../../ui/state-management/arkts-create-custom-components.md#componentv2)和[@ObservedV2](../../../ui/state-management/arkts-new-observedV2-and-trace.md)实例。<br>对于不支持的类型，会抛出运行时错误，错误码见表格。 |
-| path | string[] | 是 | 添加监听的变量名路径。可指定一个路径或者传入string数组用于一次性指定多个监听的变量路径。<br>仅支持string和string数组，对于不支持的类型，会抛出运行时错误，错误码见表格。 |
+| path | string &#124; string[] | 是 | 添加监听的变量名路径。可指定一个路径或者传入string数组用于一次性指定多个监听的变量路径。<br>仅支持string和string数组，对于不支持的类型，会抛出运行时错误，错误码见表格。 |
 | monitorCallback | [MonitorCallback](arkts-arkui-monitorcallback-t.md) | 是 | 给对应的状态变量注册的监听函数，即path路径对应的状态变量改变时，会回调对应的函数。<br>对于不支持的类型，会抛出运行时错误，错误码见表格。 |
 | options | [MonitorOptions](arkts-arkui-arkui-statemanagement-monitoroptions-i.md) | 否 | 监听函数的配置项，具体可见[MonitorOptions](arkts-arkui-arkui-statemanagement-monitoroptions-i.md)。默认为异步回调。 |
 
@@ -278,7 +278,7 @@ export struct School {
 ## clearMonitor
 
 ```TypeScript
-static clearMonitor(target: object, path: string[], monitorCallback?: MonitorCallback) : void
+static clearMonitor(target: object, path: string | string[], monitorCallback?: MonitorCallback) : void
 ```
 
 删除通过[addMonitor](#addmonitor)给状态管理V2的状态变量添加的监听方法，详见[addMonitor/clearMonitor](../../../ui/state-management/arkts-new-addMonitor-clearMonitor.md)。
@@ -298,7 +298,7 @@ static clearMonitor(target: object, path: string[], monitorCallback?: MonitorCal
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | target | object | 是 | 目标对象，仅支持[@ComponentV2](../../../ui/state-management/arkts-create-custom-components.md#componentv2)和[@ObservedV2](../../../ui/state-management/arkts-new-observedV2-and-trace.md)实例。<br>对于不支持的类型，会抛出运行时错误，错误码见表格。 |
-| path | string[] | 是 | 删除监听的变量名路径。可指定一个路径或者传入string数组用于一次性指定删除多个状态变量的监听函数。<br>仅支持string和数组，对于不支持的类型，会抛出运行时错误，错误码见表格。 |
+| path | string &#124; string[] | 是 | 删除监听的变量名路径。可指定一个路径或者传入string数组用于一次性指定删除多个状态变量的监听函数。<br>仅支持string和数组，对于不支持的类型，会抛出运行时错误，错误码见表格。 |
 | monitorCallback | [MonitorCallback](arkts-arkui-monitorcallback-t.md) | 否 | 指定被删除的监听函数。<br>当开发者不传此参数时，将删除path对应变量注册的所有监听函数。<br>对于不支持的类型，会抛出运行时错误，错误码见表格。 |
 
 **错误码：**

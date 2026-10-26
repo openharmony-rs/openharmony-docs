@@ -40,6 +40,12 @@ DatePicker(options?: DatePickerOptions)
 
 ## 汇总
 
+### 类
+
+| 名称 | 说明 |
+| --- | --- |
+| [DatePickerDialog](arkts-arkui-datepicker-comp-datepickerdialog-c.md) | 根据指定的日期范围创建日期滑动选择器并展示在弹窗上。该组件适用于需要用户快速选择日期的应用场景，如日程安排、活动安排、生日设置等。使用该组件可以简化开发流程，提供统一的日期选择用户体验，并支持多种自定义选项以满足不同需求。 |
+
 ### 接口
 
 | 名称 | 说明 |

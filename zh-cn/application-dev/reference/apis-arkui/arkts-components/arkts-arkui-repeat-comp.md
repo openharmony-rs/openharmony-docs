@@ -11,6 +11,7 @@ Repeat基于数组类型数据来进行循环渲染，一般与滚动容器组�
 | 名称 | 说明 |
 | --- | --- |
 | [RepeatItem](arkts-arkui-repeat-comp-repeatitem-i.md) | 数据项类型。 |
+| [RepeatOptions](arkts-arkui-repeat-comp-repeatoptions-i.md) | 创建Repeat组件时的配置项。 |
 | [TemplateOptions](arkts-arkui-repeat-comp-templateoptions-i.md) | 当cachedCount值被设置为当前template在容器组件显示区域的最大节点数量时，Repeat会做到最大程度的复用。当容器组件显示区域内没有当前template的节点时，缓存池不会释放，同时应用内存增大。开发者需要根据应用对内存占用和组件复用效率的需求自行调整，推荐cachedCount值设置为容器组件显示区域内节点个数。需要注意，不建议设置cachedCount小于2，这会导致在快速滑动场景下频繁创建新的节点，从而造成性能劣化。 |
 | [VirtualScrollOptions](arkts-arkui-repeat-comp-virtualscrolloptions-i.md) | 配置懒加载模式下期望加载的数据项总数、复用能力、数据精准懒加载能力。从API版本26.0.0开始，支持配置内存优化策略。 |
 
@@ -82,9 +83,9 @@ struct MemoryOptimizeDemo {
 
 ### 示例2（主动清理缓存池）
 
-以下示例中，通过[RepeatOptions](#repeatoptions)的controller属性绑定了[RepeatController](#repeatcontroller)。点击Scroll按钮，使列表跳转，旧组件进入缓存池。然后点击Clear按钮，主动清理Repeat缓存池中的组件。
+以下示例中，通过[RepeatOptions](arkts-arkui-repeat-comp-repeatoptions-i.md)的controller属性绑定了[RepeatController](#repeatcontroller)。点击Scroll按钮，使列表跳转，旧组件进入缓存池。然后点击Clear按钮，主动清理Repeat缓存池中的组件。
 
-从API版本26.2.0开始，Repeat接口新增options参数。
+从API版本26.1.0开始，Repeat接口新增options参数。
 
 ```TypeScript
 @ComponentV2

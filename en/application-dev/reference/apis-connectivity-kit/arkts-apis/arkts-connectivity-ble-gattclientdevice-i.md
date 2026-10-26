@@ -1382,7 +1382,7 @@ Refreshes the service cache of a connected BLE peripheral device.
 
 The cached services of the peer device are cleared and rediscovered after the refresh. The promise is resolved when the refresh request is delivered to the service, and the rediscovery proceeds asynchronously. Call getServices to obtain the refreshed service list.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH
 

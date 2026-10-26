@@ -32,7 +32,7 @@ Indicates the device address. The length must be 17, The value consists of hexad
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-PairingStateParam-address: string--><!--Device-PairingStateParam-address: string-End-->
 
@@ -52,7 +52,7 @@ Indicates the previous pairing state.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-PairingStateParam-preState: PairingState--><!--Device-PairingStateParam-preState: PairingState-End-->
 
@@ -72,7 +72,7 @@ Indicates the pairing state reason.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-PairingStateParam-reason: PairingReason--><!--Device-PairingStateParam-reason: PairingReason-End-->
 
@@ -92,7 +92,7 @@ Indicates reason message. This field is intended for log information only and sh
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-PairingStateParam-reasonMsg?: string--><!--Device-PairingStateParam-reasonMsg?: string-End-->
 
@@ -112,7 +112,7 @@ Indicates the current pairing state.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-PairingStateParam-state: PairingState--><!--Device-PairingStateParam-state: PairingState-End-->
 

@@ -31,6 +31,7 @@ import { bundleManager } from '@kit.MDMKit';
 | [addInstallationAllowedAppDistributionTypes](arkts-mdm-bundlemanager-addinstallationallowedappdistributiontypes-f.md#addinstallationallowedappdistributiontypes-1) | Adds the distribution type of the application that can be installed. Only applications of the distribution type that is added to [AppDistributionType](arkts-mdm-bundlemanager-appdistributiontype-e.md) can be installed on the current device. |
 | [getAllowedInstallBundlesSync](arkts-mdm-bundlemanager-getallowedinstallbundlessync-f.md#getallowedinstallbundlessync-1) | Obtains the applications that can be installed by the current or specified user. |
 | [getAllowedInstallBundlesSync](arkts-mdm-bundlemanager-getallowedinstallbundlessync-f.md#getallowedinstallbundlessync-2) | Obtains the applications that can be installed by the current or specified user. |
+| [getDefaultApplicationBundleName](arkts-mdm-bundlemanager-getdefaultapplicationbundlename-f.md#getdefaultapplicationbundlename-1) | Obtains the bundle name of the default application for the specified type. |
 | [getDisallowedInstallBundlesSync](arkts-mdm-bundlemanager-getdisallowedinstallbundlessync-f.md#getdisallowedinstallbundlessync-1) | Obtains the applications that cannot be installed by the current or specified user. |
 | [getDisallowedInstallBundlesSync](arkts-mdm-bundlemanager-getdisallowedinstallbundlessync-f.md#getdisallowedinstallbundlessync-2) | Obtains the applications that cannot be installed by the current or specified user. |
 | [getDisallowedUninstallBundlesSync](arkts-mdm-bundlemanager-getdisalloweduninstallbundlessync-f.md#getdisalloweduninstallbundlessync-1) | Obtains the bundles that cannot be uninstalled by the current or specified user. |
@@ -47,6 +48,7 @@ import { bundleManager } from '@kit.MDMKit';
 | [removeDisallowedInstallBundlesSync](arkts-mdm-bundlemanager-removedisallowedinstallbundlessync-f.md#removedisallowedinstallbundlessync-1) | Removes the applications that cannot be installed by the current or specified user. |
 | [removeDisallowedUninstallBundlesSync](arkts-mdm-bundlemanager-removedisalloweduninstallbundlessync-f.md#removedisalloweduninstallbundlessync-1) | Removes the applications that cannot be uninstalled by the current or specified user through the specified device administrator application. |
 | [removeInstallationAllowedAppDistributionTypes](arkts-mdm-bundlemanager-removeinstallationallowedappdistributiontypes-f.md#removeinstallationallowedappdistributiontypes-1) | Removes the distribution type of an application. If only some distribution types in the array are removed, the current device can install applications of the remaining distribution types in the array, but cannot install applications of the distribution types not included in [AppDistributionType](arkts-mdm-bundlemanager-appdistributiontype-e.md). |
+| [setDefaultApplication](arkts-mdm-bundlemanager-setdefaultapplication-f.md#setdefaultapplication-1) | Sets the default application for the specified type. |
 | [uninstall](arkts-mdm-bundlemanager-uninstall-f.md#uninstall-5) | Uninstalls a specified bundle of the current or specified user. The **isKeepData** parameter specifies whether to retain the bundle data. This API uses a promise to return the result. After the API is successfully called, the application is uninstalled, and the data is retained or deleted based on the **isKeepData** parameter. |
 
 <!--Del-->
@@ -106,3 +108,4 @@ import { bundleManager } from '@kit.MDMKit';
 | --- | --- |
 | [AppDistributionType](arkts-mdm-bundlemanager-appdistributiontype-e.md) | Defines the distribution type of the application signing certificate. For details, please refer to the **appDistributionType** attribute of [ApplicationInfo](../../apis-ability-kit/arkts-apis/arkts-ability-applicationinfo-i.md). |
 | [BundleInfoGetFlag](arkts-mdm-bundlemanager-bundleinfogetflag-e.md) | Enumerates the bundle flags, which indicate the type of bundle information to obtain. |
+| [DefaultApplicationType](arkts-mdm-bundlemanager-defaultapplicationtype-e.md) | Enumerates the default application types. |

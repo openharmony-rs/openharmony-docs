@@ -65,16 +65,13 @@ let formInstanceFilter: formInfo.FormProviderFilter = {
   moduleName: "entry"
 }
 try {
-  formObserver.getRunningFormInfosByFilter(formInstanceFilter,
-    (error: BusinessError, data: formInfo.RunningFormInfo[]) => {
-      if (error) {
-        console.error(`error, code: ${error.code}, message: ${error.message}`);
-      } else {
-        data.forEach(item => {
-          console.info(`formObserver getRunningFormInfosByFilter success, formId: ${item.formId}`);
-        });
-      }
+  formObserver.getRunningFormInfosByFilter(formInstanceFilter).then((data: formInfo.RunningFormInfo[]) => {
+    data.forEach(item => {
+      console.info(`formObserver getRunningFormInfosByFilter success, formId: ${item.formId}`);
     });
+  }).catch((error: BusinessError) => {
+    console.error(`error, code: ${error.code}, message: ${error.message}`);
+  });
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
@@ -127,6 +124,30 @@ function getRunningFormInfosByFilter(
 <!--Del-->
 **示例**
 
-参见 [getRunningFormInfosByFilter](#getrunningforminfosbyfilter)
+```TypeScript
+import { formInfo, formObserver } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let formInstanceFilter: formInfo.FormProviderFilter = {
+  bundleName: "com.example.formprovide",
+  abilityName: "EntryFormAbility",
+  formName: "widget",
+  moduleName: "entry"
+}
+try {
+  formObserver.getRunningFormInfosByFilter(formInstanceFilter,
+    (error: BusinessError, data: formInfo.RunningFormInfo[]) => {
+      if (error) {
+        console.error(`error, code: ${error.code}, message: ${error.message}`);
+      } else {
+        data.forEach(item => {
+          console.info(`formObserver getRunningFormInfosByFilter success, formId: ${item.formId}`);
+        });
+      }
+    });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
 
 <!--DelEnd-->

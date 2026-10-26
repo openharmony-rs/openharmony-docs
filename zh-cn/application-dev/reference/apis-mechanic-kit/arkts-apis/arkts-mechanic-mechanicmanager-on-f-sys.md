@@ -12,7 +12,7 @@ import { mechanicManager } from '@kit.MechanicKit';
 function on(type: 'rotationAxesStatusChange', callback: Callback<RotationAxesStateChangeInfo>): void
 ```
 
-Register a listener for axis state changes. The status of the rotation axis changes dynamically, which needs to be monitored.
+注册旋转轴状态变化事件的回调监听。使用callback异步回调。
 
 **起始版本：** 20
 

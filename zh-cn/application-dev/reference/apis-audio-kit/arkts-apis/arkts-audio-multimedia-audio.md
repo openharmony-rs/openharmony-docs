@@ -83,6 +83,7 @@ import { audio } from '@kit.AudioKit';
 | [DeviceChangeAction](arkts-audio-audio-devicechangeaction-i.md) | 描述设备连接状态变化和设备信息。 |
 | [InterruptEvent](arkts-audio-audio-interruptevent-i.md) | 音频中断时，应用接收的中断事件。 |
 | [MicStateChangeEvent](arkts-audio-audio-micstatechangeevent-i.md) | 麦克风状态变化时，应用接收到的事件。 |
+| [SoundCardInfo](arkts-audio-audio-soundcardinfo-i.md) | 描述声卡信息。 |
 | [StreamVolumeEvent](arkts-audio-audio-streamvolumeevent-i.md) | 音频流音量变化时，应用接收到的事件。 |
 | [SystemRecordControllerConfig](arkts-audio-audio-systemrecordcontrollerconfig-i.md) | 系统录音控制面板的配置信息。 |
 | [VolumeEvent](arkts-audio-audio-volumeevent-i.md) | 音量改变时，应用接收的事件。 |
@@ -132,7 +133,6 @@ import { audio } from '@kit.AudioKit';
 | [AudioVolumeGroupManager](arkts-audio-audio-audiovolumegroupmanager-i-sys.md) | 管理音频组音量，支持设置和调节指定音量流、控制静音状态、设置铃声模式等。适用于需要对特定音量组进行独立管理、实现铃声模式切换、调节系统音量的场景。在调用AudioVolumeGroupManager的接口前，需要先通过[getVolumeGroupManager](arkts-audio-audio-audiovolumemanager-i.md#getvolumegroupmanager)创建实例。 |
 | [AudioVolumeManager](arkts-audio-audio-audiovolumemanager-i-sys.md) | 音量管理，提供音量组信息查询、应用级音量控制、系统音量百分比管理等功能。适用于需要对音量进行精细化控制、监听音量变化、管理应用级音量的场景。在使用AudioVolumeManager的接口前，需要使用[getVolumeManager](arkts-audio-audio-audiomanager-i.md#getvolumemanager)获取AudioVolumeManager实例。 |
 | [InterruptResult](arkts-audio-audio-interruptresult-i-sys.md) | 音频中断结果。 |
-| [SoundCardInfo](arkts-audio-audio-soundcardinfo-i-sys.md) | 描述声卡信息。 |
 | [SystemRecordControllerChangeInfo](arkts-audio-audio-systemrecordcontrollerchangeinfo-i-sys.md) | 系统录音控制面板状态变更时携带的信息，包含使能状态、应用UID和期望的音频源类型。用于[onSystemRecordControllerEnabledChange](../../../reference/apis-audio-kit/js-apis-audio-sys.md#onsystemrecordcontrollerenabledchange)和[offSystemRecordControllerEnabledChange](../../../reference/apis-audio-kit/js-apis-audio-sys.md#offsystemrecordcontrollerenabledchange)的回调参数。 |
 | [SystemVolumeFilter](arkts-audio-audio-systemvolumefilter-i-sys.md) | 描述系统音量过滤器。 |
 | [TonePlayer](arkts-audio-audio-toneplayer-i-sys.md) | 提供播放和管理DTMF（Dual Tone Multi Frequency，双音多频）音调的方法，包括各种系统监听音调、专有音调，如拨号音、通话回铃音等。在调用TonePlayer的接口前，需要先通过[createTonePlayer](arkts-audio-audio-createtoneplayer-f-sys.md#createtoneplayer-1)创建实例。 |
@@ -210,6 +210,7 @@ import { audio } from '@kit.AudioKit';
 | [NoiseReductionMode](arkts-audio-audio-noisereductionmode-e.md) | 表示录音降噪模式的枚举。 |
 | [OutputDeviceChangeRecommendedAction](arkts-audio-audio-outputdevicechangerecommendedaction-e.md) | 表示输出设备变更后推荐操作的枚举。常见场景示例：耳机设备和外放设备之间进行切换。当佩戴耳机时，从外放设备切换到耳机设备，系统会推荐继续播放，提示应用无需停止当前播放。当摘下耳机设备切换到外放设备时，系统会推荐停止播放。 |
 | [PlaybackCaptureStartState](arkts-audio-audio-playbackcapturestartstate-e.md) | 表示调用[requestPlaybackCaptureStart](arkts-audio-audio-audiocapturer-i.md#requestplaybackcapturestart)后异步返回的内录启动状态的枚举。 |
+| [SoundCardType](arkts-audio-audio-soundcardtype-e.md) | 枚举声卡类型。 |
 | [SourceType](arkts-audio-audio-sourcetype-e.md) | 枚举，音源类型。 |
 | [StreamUsage](arkts-audio-audio-streamusage-e.md) | 枚举，音频流使用类型。 |
 | [ActiveDeviceType](arkts-audio-audio-activedevicetype-e.md) | 表示活跃设备类型的枚举。 |

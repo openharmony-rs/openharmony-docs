@@ -37,3 +37,20 @@ function subscribe(events: MechEventType[], callback: Callback<MechEvent>): void
 | [33300001](../errorcode-mechanic.md#33300001-系统错误) | Service exception. |
 | [33300002](../errorcode-mechanic.md#33300002-设备未连接) | Device not connected. |
 | [33300003](../errorcode-mechanic.md#33300003-功能不支持) | Feature not supported. |
+
+<!--Del-->
+**示例**
+
+```TypeScript
+let eventsSet: Set<mechanicManager.MechEventType> = new Set();
+let events = Array.from(eventsSet);
+try {
+  mechanicManager.subscribe(events, (event: mechanicManager.MechEvent) => {
+    console.info('subscribe callback');
+  });
+} catch (e) {
+  console.error(`Code is ${e.code}, message is ${e.message}`);
+}
+```
+
+<!--DelEnd-->

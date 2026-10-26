@@ -32,7 +32,7 @@ NearLink address of a remote device. The address format is **11:22:33:AA:BB:FF**
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-ConnectionResult-address: string--><!--Device-ConnectionResult-address: string-End-->
 
@@ -52,7 +52,7 @@ Negotiated packet size of data to be sent and received, in bytes. The value rang
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-ConnectionResult-mtu: int--><!--Device-ConnectionResult-mtu: int-End-->
 
@@ -72,7 +72,7 @@ Connection state with a remote device.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-ConnectionResult-state: ConnectionState--><!--Device-ConnectionResult-state: ConnectionState-End-->
 
@@ -92,7 +92,7 @@ NearLink service UUID, which is a string of 36 characters. The value consists of
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-ConnectionResult-uuid: string--><!--Device-ConnectionResult-uuid: string-End-->
 

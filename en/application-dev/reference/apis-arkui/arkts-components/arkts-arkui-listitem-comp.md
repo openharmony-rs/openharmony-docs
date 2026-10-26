@@ -69,6 +69,12 @@ Creates a **ListItem** component.
 
 ## Summary
 
+### Classes
+
+| Name | Description |
+| --- | --- |
+| [ListItemSwipeActionManager](arkts-arkui-listitem-comp-listitemswipeactionmanager-c.md) | Implements the swipe action menu manager for list items. |
+
 ### Interfaces
 
 | Name | Description |

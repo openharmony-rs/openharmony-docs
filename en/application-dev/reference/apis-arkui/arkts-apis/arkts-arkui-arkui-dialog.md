@@ -5,7 +5,7 @@ Provides unified dialog APIs.
 ## Modules to Import
 
 ```TypeScript
-import { dialog, DialogBaseAlignment, DialogButtonOrientation, DialogState, DialogResult, DialogDismissal, DialogBaseController } from '@kit.ArkUI';
+import { dialog, DialogBaseAlignment, DialogButtonOrientation, DialogState, DialogResult, DialogDismissal, DialogBaseController, HandednessFollowMode } from '@kit.ArkUI';
 ```
 
 ## Summary
@@ -36,3 +36,4 @@ import { dialog, DialogBaseAlignment, DialogButtonOrientation, DialogState, Dial
 | [DialogBaseAlignment](arkts-arkui-arkui-dialog-dialogbasealignment-e.md) | The alignment of dialog. |
 | [DialogButtonOrientation](arkts-arkui-arkui-dialog-dialogbuttonorientation-e.md) | The arrangement of buttons in dialog. |
 | [DialogState](arkts-arkui-arkui-dialog-dialogstate-e.md) | Enum for dialog state. |
+| [HandednessFollowMode](arkts-arkui-arkui-dialog-handednessfollowmode-e.md) | Indicates how a dialog follows the handedness. |

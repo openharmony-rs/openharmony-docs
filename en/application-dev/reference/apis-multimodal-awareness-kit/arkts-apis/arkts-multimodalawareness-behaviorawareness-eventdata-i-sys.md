@@ -6,7 +6,7 @@ export interface EventData
 
 Event event data.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 <!--Device-behaviorAwareness-export interface EventData--><!--Device-behaviorAwareness-export interface EventData-End-->
 
@@ -30,7 +30,7 @@ Scenario Attributes.
 
 **Type:** [TimeAttributes](arkts-multimodalawareness-behaviorawareness-timeattributes-i-sys.md) &#124; [LocationAttributes](arkts-multimodalawareness-behaviorawareness-locationattributes-i-sys.md) &#124; [SystemEventAttributes](arkts-multimodalawareness-behaviorawareness-systemeventattributes-i-sys.md)
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -50,7 +50,7 @@ Event ID.
 
 **Type:** string
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -70,7 +70,7 @@ Event type.
 
 **Type:** [EventType](arkts-multimodalawareness-behaviorawareness-eventtype-e-sys.md)
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -90,7 +90,7 @@ Event Name.
 
 **Type:** string
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -110,7 +110,7 @@ Additional Parameters. Default value: Default behavior without additional parame
 
 **Type:** Record&lt;string, string &#124; number &#124; boolean&gt;
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -130,7 +130,7 @@ Occurrence timestamp. Unit: milliseconds.
 
 **Type:** number
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 

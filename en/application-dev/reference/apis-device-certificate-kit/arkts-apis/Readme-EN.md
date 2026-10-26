@@ -169,6 +169,7 @@
   - [AuthorizeRequest](arkts-devicecertificate-certificatemanagerdialog-authorizerequest-i.md)
   - [CertificateDialogProperty](arkts-devicecertificate-certificatemanagerdialog-certificatedialogproperty-i.md)
   - [CertReference](arkts-devicecertificate-certificatemanagerdialog-certreference-i.md)
+  - [InstallCertificateRequest](arkts-devicecertificate-certificatemanagerdialog-installcertificaterequest-i.md)
   - [UkeyAuthDialogInfo](arkts-devicecertificate-certificatemanagerdialog-ukeyauthdialoginfo-i.md)
   - [UkeyAuthRequest](arkts-devicecertificate-certificatemanagerdialog-ukeyauthrequest-i.md)
   - [AbilityType](arkts-devicecertificate-certificatemanagerdialog-abilitytype-e.md)

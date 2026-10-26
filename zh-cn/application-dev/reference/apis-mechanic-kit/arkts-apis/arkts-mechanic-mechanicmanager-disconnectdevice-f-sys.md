@@ -45,3 +45,19 @@ function disconnectDevice(mechId: number): Promise<Result>
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
 | [33300001](../errorcode-mechanic.md#33300001-系统错误) | Service exception. |
+
+<!--Del-->
+**示例**
+
+```TypeScript
+let mechId: number = 0;
+try {
+  mechanicManager.disconnectDevice(mechId).then((result: mechanicManager.Result) => {
+    console.info(`'result:' ${result}`);
+  });
+} catch (e) {
+  console.error(`Code is ${e.code}, message is ${e.message}`);
+}
+```
+
+<!--DelEnd-->

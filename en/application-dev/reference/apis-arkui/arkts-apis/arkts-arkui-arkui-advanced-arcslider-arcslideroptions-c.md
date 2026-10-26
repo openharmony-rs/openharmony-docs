@@ -52,7 +52,7 @@ Callback triggered when the progress value of the arc slider changes.
 
 Default value: no callback when not passed in.
 
-**Decorator:*
+**Decorator**: @Trace
 
 **Since:** 18
 
@@ -74,7 +74,7 @@ Callback triggered when the arc slider is enlarged or shrunk.
 
 Default value: no callback when not passed in.
 
-**Decorator:*
+**Decorator**: @Trace
 
 **Since:** 18
 
@@ -96,7 +96,7 @@ Callback triggered when the arc slider is touched.
 
 Default value: no callback when not passed in.
 
-**Decorator:*
+**Decorator**: @Trace
 
 **Since:** 18
 

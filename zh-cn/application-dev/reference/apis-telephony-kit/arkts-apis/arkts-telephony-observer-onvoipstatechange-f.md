@@ -35,6 +35,24 @@ VoIP通话状态更新时的回调。此回调在以下情况下被调用第三�
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
-| [8800001](../errorcode-telephony.md#8800001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8800002](../errorcode-telephony.md#8800002-服务连接失败) | Service connection failed. |
 | [8800003](../errorcode-telephony.md#8800003-系统内部错误) | System internal error. |
+
+**示例**
+
+```TypeScript
+import { observer } from '@kit.TelephonyKit';
+
+let callback: (data: observer.VoIPCallStateInfo) => void = (data: observer.VoIPCallStateInfo) => {
+  console.info(`onVoIPStateChange, appName: ${data.appName}, contactName: ${data.contactName}, ` +
+    `callType: ${data.callType}, callState: ${data.callState} ` +
+    `isVoiceAnswerSupported: ${data.isVoiceAnswerSupported}`);
+}
+
+// 订阅三方VoIP通话状态变化
+try {
+  observer.onVoIPStateChange(callback);
+} catch (err) {
+  console.error(`observer.onVoIPStateChange failed: ${JSON.stringify(err)}`);
+}
+```

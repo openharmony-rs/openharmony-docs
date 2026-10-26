@@ -108,6 +108,12 @@ XComponent(value: { id: string; type: string; libraryname?: string; controller?:
 
 ## 汇总
 
+### 类
+
+| 名称 | 说明 |
+| --- | --- |
+| [XComponentController](arkts-arkui-xcomponent-comp-xcomponentcontroller-c.md) | XComponent组件的控制器，可以将此对象绑定至XComponent组件，然后通过控制器来调用组件方法。 |
+
 ### 接口
 
 | 名称 | 说明 |
@@ -432,6 +438,8 @@ struct Index {
 > 
 > 本示例画图逻辑具体实现（和nativeRender相关的函数实现）可以参考[ArkTS XComponent示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/ArkTSXComponent)。
 
+
+
 ```TypeScript
 // xxx.ets
 import nativeRender from 'libnativerender.so'; // 开发者自己实现的so，详见上述说明。
@@ -522,6 +530,48 @@ struct Index {
     }
     .width('100%')
     .height('100%')
+  }
+}
+```
+
+### 示例6（设置XComponent的buffer队列大小）
+
+该示例通过[bufferQueueCount](#bufferqueuecount)属性设置XComponent的buffer队列大小，并演示运行时的动态切换：在相机预览、投屏等对显示时延敏感的场景下，可减小buffer队列，以降低画面从生产到上屏的时延并减少内存占用；在视频播放等对流畅性要求较高的场景下，可保持默认值以获得更充裕的渲染缓冲。
+
+从API版本26.1.0开始，新增bufferQueueCount属性。
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  @State isLowLatency: boolean = false;
+  @State queueSize: number = 5; // buffer队列大小，默认值为5。
+  xComponentController: XComponentController = new XComponentController();
+
+  build() {
+    Column({ space: 20 }) {
+      XComponent({ type: XComponentType.SURFACE, controller: this.xComponentController })
+        // 根据场景设置buffer队列大小。取值范围：[2, 5]；大于5的值按5处理，小于2的值按2处理。
+        // 队列越小显示时延越低，队列越大渲染缓冲越充裕。
+        .bufferQueueCount(this.queueSize)
+        .width('90%')
+        .height('40%')
+
+      Row({ space: 8 }) {
+        Toggle({ type: ToggleType.Switch, isOn: this.isLowLatency })
+          .onChange((isOn: boolean) => {
+            this.isLowLatency = isOn;
+            // 支持运行时动态修改buffer队列大小。
+            // 说明：在buffer轮转过程中修改buffer队列大小，可能引起丢帧。
+            this.queueSize = isOn ? 2 : 5;
+          })
+        Text(this.isLowLatency ? '低时延模式（buffer队列大小：2）' : '标准模式（buffer队列大小：5）')
+      }
+    }
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
   }
 }
 ```

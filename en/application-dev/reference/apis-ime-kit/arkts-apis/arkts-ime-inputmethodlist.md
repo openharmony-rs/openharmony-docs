@@ -58,11 +58,11 @@ The **@ohos.inputMethodList** module is a UI control module oriented to system a
 
 ## Attributes
 
-<br><br>The [universal attributes](../../apis-arkui/arkts-components/arkts-arkui-common-comp.md) are not supported.<br><br>
+<br><br>The [universal attributes](../../apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md) are not supported.<br><br>
 
 ## Events
 
-<br><br>The [universal events](../../apis-arkui/arkts-components/arkts-arkui-common-comp.md) are not supported.
+<br><br>The [universal events](../../apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md) are not supported.
 
 ## Modules to Import
 

@@ -1,5 +1,11 @@
 # @ohos.arkui.advanced.DatePickerComponent
 
+DatePickerComponent组件用于选择日期（年月日）和时间（时分秒）。
+
+## 子组件
+
+无
+
 ## 导入模块
 
 ```TypeScript
@@ -22,7 +28,7 @@ import { DatePickerComponent, DatePickerComponentOptions, DisplayMode, DateMode,
 
 | 名称 | 说明 |
 | --- | --- |
-| [DatePickerComponent](arkts-arkui-arkui-advanced-datepickercomponent-datepickercomponent-s.md) | DatePickerComponent组件用于选择日期（年月日）和时间（时分秒）。 |
+| [DatePickerComponent](arkts-arkui-arkui-advanced-datepickercomponent-datepickercomponent-s.md) | 定义日期时间选择器组件。 |
 
 ### 枚举
 

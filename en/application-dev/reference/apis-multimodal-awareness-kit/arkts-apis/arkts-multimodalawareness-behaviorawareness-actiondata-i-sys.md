@@ -6,7 +6,7 @@ export interface ActionData
 
 Operation action data.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 <!--Device-behaviorAwareness-export interface ActionData--><!--Device-behaviorAwareness-export interface ActionData-End-->
 
@@ -30,7 +30,7 @@ Action ID (specific prefix format).
 
 **Type:** string
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -50,7 +50,7 @@ Action Type.
 
 **Type:** [ActionType](arkts-multimodalawareness-behaviorawareness-actiontype-e-sys.md)
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -70,7 +70,7 @@ Scenario Attributes.
 
 **Type:** [SystemActionAttributes](arkts-multimodalawareness-behaviorawareness-systemactionattributes-i-sys.md)
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -90,7 +90,7 @@ Action Name.
 
 **Type:** string
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -110,7 +110,7 @@ Additional Parameters. Default value: Default behavior: no additional parameters
 
 **Type:** Record&lt;string, string &#124; number &#124; boolean&gt;
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 

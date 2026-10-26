@@ -40,7 +40,7 @@ EFFECT_IME_STRENGTH1 = 'haptic.grade.normal.strength1'
 
 输入法键盘的振动效果。强度为1（最小强度）。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -56,7 +56,7 @@ EFFECT_IME_STRENGTH2 = 'haptic.grade.normal.strength2'
 
 输入法键盘的振动效果。强度为2。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -72,7 +72,7 @@ EFFECT_IME_STRENGTH3 = 'haptic.grade.normal.strength3'
 
 输入法键盘的振动效果。强度为3（中等强度）。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -88,7 +88,7 @@ EFFECT_IME_STRENGTH4 = 'haptic.grade.normal.strength4'
 
 输入法键盘的振动效果。强度为4。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -104,7 +104,7 @@ EFFECT_IME_STRENGTH5 = 'haptic.grade.normal.strength5'
 
 输入法键盘的振动效果。强度为5（最大强度）。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

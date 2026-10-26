@@ -38,6 +38,12 @@ TextArea(value?: TextAreaOptions)
 
 ## 汇总
 
+### 类
+
+| 名称 | 说明 |
+| --- | --- |
+| [TextAreaController](arkts-arkui-textarea-comp-textareacontroller-c.md) | TextArea组件的控制器继承自[TextContentControllerBase](arkts-arkui-common-comp-textcontentcontrollerbase-c.md)，涉及的接口有[getTextContentRect](arkts-arkui-common-comp-textcontentcontrollerbase-c.md#gettextcontentrect)、[getTextContentLineCount](arkts-arkui-common-comp-textcontentcontrollerbase-c.md#gettextcontentlinecount)、[getCaretOffset](arkts-arkui-common-comp-textcontentcontrollerbase-c.md#getcaretoffset)、[addText](arkts-arkui-common-comp-textcontentcontrollerbase-c.md#addtext)、[deleteText](arkts-arkui-common-comp-textcontentcontrollerbase-c.md#deletetext)、[getSelection](arkts-arkui-common-comp-textcontentcontrollerbase-c.md#getselection)、[clearPreviewText](arkts-arkui-common-comp-textcontentcontrollerbase-c.md#clearpreviewtext)、[setStyledPlaceholder](arkts-arkui-common-comp-textcontentcontrollerbase-c.md#setstyledplaceholder)、[deleteBackward](arkts-arkui-common-comp-textcontentcontrollerbase-c.md#deletebackward)、[scrollToVisible](arkts-arkui-common-comp-textcontentcontrollerbase-c.md#scrolltovisible)<!--Del-->以及系统接口[getText](arkts-arkui-common-comp-textcontentcontrollerbase-c-sys.md#gettext)<!--DelEnd-->。 |
+
 ### 接口
 
 | 名称 | 说明 |

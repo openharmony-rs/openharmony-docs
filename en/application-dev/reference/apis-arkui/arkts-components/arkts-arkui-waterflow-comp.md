@@ -91,6 +91,13 @@ Creates a **WaterFlow** component.
 
 ## Summary
 
+### Classes
+
+| Name | Description |
+| --- | --- |
+| [SectionOptions](arkts-arkui-waterflow-comp-sectionoptions-c.md) | Describes the configuration of the water flow item section. |
+| [WaterFlowSections](arkts-arkui-waterflow-comp-waterflowsections-c.md) | Describes the water flow item sections. |
+
 ### Interfaces
 
 | Name | Description |

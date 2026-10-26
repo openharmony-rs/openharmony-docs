@@ -52,6 +52,15 @@ Creates a **Swiper** component.
 
 ## Summary
 
+### Classes
+
+| Name | Description |
+| --- | --- |
+| [DigitIndicator](arkts-arkui-swiper-comp-digitindicator-c.md) | A constructor used to create a **DigitIndicator** object. It inherits from [Indicator](arkts-arkui-swiper-comp-indicator-c.md). |
+| [DotIndicator](arkts-arkui-swiper-comp-dotindicator-c.md) | A constructor used to create a **DotIndicator** object. It inherits from [Indicator](arkts-arkui-swiper-comp-indicator-c.md). |
+| [Indicator](arkts-arkui-swiper-comp-indicator-c.md) | Sets the distance between the indicator and the **Swiper** component. Because the indicator has a default interaction area with a height of 32 vp, the displayed part cannot be completely stuck to the bottom. To achieve a completely bottom-aligned effect, use the [IndicatorComponent](arkts-arkui-indicatorcomponent-comp.md#indicatorcomponentinterface) component to adjust the position more flexibly. |
+| [SwiperController](arkts-arkui-swiper-comp-swipercontroller-c.md) | Implements the controller for the **Swiper** component. Bind this object to a **Swiper** component to control page turning and other functionalities. |
+
 ### Interfaces
 
 | Name | Description |

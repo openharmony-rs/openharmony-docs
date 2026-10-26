@@ -8,7 +8,7 @@ Defines a contact's event.
 
 **Since:** 7
 
-**Deprecated since:** 26.2.0
+**Deprecated since:** 26.1.0
 
 **Substitutes:** [SignificantDate](arkts-contacts-contact-significantdate-c.md)
 
@@ -34,7 +34,7 @@ Custom event type, the default value is **0**.
 
 **Since:** 7
 
-**Deprecated since:** 26.2.0
+**Deprecated since:** 26.1.0
 
 **Substitutes:** [DATE_TYPE_OTHER](arkts-contacts-contact-significantdatetype-e.md#date_type_other)
 
@@ -56,7 +56,7 @@ Anniversary event type, the default value is **1**.
 
 **Since:** 7
 
-**Deprecated since:** 26.2.0
+**Deprecated since:** 26.1.0
 
 **Substitutes:** [DATE_TYPE_ANNIVERSARY](arkts-contacts-contact-significantdatetype-e.md#date_type_anniversary)
 
@@ -78,7 +78,7 @@ Birthday event, the default value is **3**.
 
 **Since:** 7
 
-**Deprecated since:** 26.2.0
+**Deprecated since:** 26.1.0
 
 **Substitutes:** [DATE_TYPE_BIRTHDAY](arkts-contacts-contact-significantdatetype-e.md#date_type_birthday)
 
@@ -100,7 +100,7 @@ Other event type, the default value is **2**.
 
 **Since:** 7
 
-**Deprecated since:** 26.2.0
+**Deprecated since:** 26.1.0
 
 **Substitutes:** [DATE_TYPE_OTHER](arkts-contacts-contact-significantdatetype-e.md#date_type_other)
 
@@ -122,7 +122,7 @@ Event date.
 
 **Since:** 7
 
-**Deprecated since:** 26.2.0
+**Deprecated since:** 26.1.0
 
 **Substitutes:** [dateValue](arkts-contacts-contact-significantdate-c.md#datevalue)
 
@@ -144,7 +144,7 @@ Invalid event type, the default value is **-1**.
 
 **Since:** 7
 
-**Deprecated since:** 26.2.0
+**Deprecated since:** 26.1.0
 
 **Substitutes:** [DATE_TYPE_OTHER](arkts-contacts-contact-significantdatetype-e.md#date_type_other)
 
@@ -166,7 +166,7 @@ Event type.
 
 **Since:** 7
 
-**Deprecated since:** 26.2.0
+**Deprecated since:** 26.1.0
 
 **Substitutes:** [dateType](arkts-contacts-contact-significantdate-c.md#datetype)
 
@@ -188,7 +188,7 @@ Name of the Event type.
 
 **Since:** 7
 
-**Deprecated since:** 26.2.0
+**Deprecated since:** 26.1.0
 
 **Substitutes:** [dateName](arkts-contacts-contact-significantdate-c.md#datename)
 

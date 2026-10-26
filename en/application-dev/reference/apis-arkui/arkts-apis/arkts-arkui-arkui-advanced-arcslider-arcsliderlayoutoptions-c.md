@@ -78,7 +78,7 @@ Whether to reverse the sliding direction of the arc slider. The value **false** 
 
 Default value: **true**, meaning sliding from bottom to top.
 
-**Decorator:*
+**Decorator**: @Trace
 
 **Type:** boolean
 

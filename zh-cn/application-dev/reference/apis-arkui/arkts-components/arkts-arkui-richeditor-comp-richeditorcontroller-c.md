@@ -130,11 +130,11 @@ addRichEditorBuilderSpan(value: RichEditorBuilderSpan, info?: BuilderSpanInfo): 
 > 
 > - 撤销/重做不会还原BuilderSpan对象。通过撤销还原时，被移除的BuilderSpan会降级为空格文本Span。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-RichEditorController-addRichEditorBuilderSpan(value: RichEditorBuilderSpan, info?: BuilderSpanInfo): number--><!--Device-RichEditorController-addRichEditorBuilderSpan(value: RichEditorBuilderSpan, info?: BuilderSpanInfo): number-End-->
 
@@ -323,11 +323,11 @@ getRichEditorBuilderSpans(value?: RichEditorRange): Array<BuilderSpanInfo>
 > 
 > - 返回的[BuilderSpanInfo](arkts-arkui-richeditor-comp-builderspaninfo-i.md)中的**offset**字段反映当前实际偏移位置，随文本内容变化动态更新。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-RichEditorController-getRichEditorBuilderSpans(value?: RichEditorRange): Array<BuilderSpanInfo>--><!--Device-RichEditorController-getRichEditorBuilderSpans(value?: RichEditorRange): Array<BuilderSpanInfo>-End-->
 

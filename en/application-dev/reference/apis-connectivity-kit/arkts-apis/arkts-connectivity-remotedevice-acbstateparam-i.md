@@ -32,7 +32,7 @@ Device address, indicating that the logical link connection status with the devi
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-AcbStateParam-address: string--><!--Device-AcbStateParam-address: string-End-->
 
@@ -52,7 +52,7 @@ Current logical link connection status.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-AcbStateParam-state: AcbState--><!--Device-AcbStateParam-state: AcbState-End-->
 

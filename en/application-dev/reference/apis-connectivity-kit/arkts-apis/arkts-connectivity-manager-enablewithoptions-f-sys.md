@@ -14,13 +14,13 @@ function enableWithOptions(options?: EnableOptions): void
 
 Enables NearLink with the specified options. Before calling this API, you may call [isNearLinkSupported](arkts-connectivity-manager-isnearlinksupported-f.md) to check whether the device supports NearLink.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Required permissions:** ohos.permission.ACCESS_NEARLINK and ohos.permission.MANAGE_NEARLINK
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-manager-function enableWithOptions(options?: EnableOptions): void--><!--Device-manager-function enableWithOptions(options?: EnableOptions): void-End-->
 

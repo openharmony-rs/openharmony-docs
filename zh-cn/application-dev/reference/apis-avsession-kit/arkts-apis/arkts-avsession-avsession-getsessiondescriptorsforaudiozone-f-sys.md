@@ -14,7 +14,7 @@ function getSessionDescriptorsForAudioZone(userId: number): Promise<Array<Readon
 
 获取根据userid查询对应音区的会话
 
-**起始版本：** 26.0.0
+**起始版本：** 26.0.1
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
 
@@ -30,7 +30,7 @@ function getSessionDescriptorsForAudioZone(userId: number): Promise<Array<Readon
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| userId | number | 是 | 用户userid |
+| userId | number | 是 | 用户userid。<br>取值限定为整数。 |
 
 **返回值：**
 
@@ -44,4 +44,4 @@ function getSessionDescriptorsForAudioZone(userId: number): Promise<Array<Readon
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | permission denied |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
+| 6700101 | Session service is not running. |

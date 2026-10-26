@@ -6,7 +6,7 @@ export interface TaskInfo
 
 Represents the background load task information, which is used to register task.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 <!--Device-backgroundLoader-export interface TaskInfo--><!--Device-backgroundLoader-export interface TaskInfo-End-->
 
@@ -28,7 +28,7 @@ Ability name in the bundle.
 
 **Type:** string
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -46,7 +46,7 @@ Id of the background load task.
 
 **Type:** number
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 

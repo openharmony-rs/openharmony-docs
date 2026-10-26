@@ -41,6 +41,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   const vibratorInfoList: vibrator.VibratorInfo[] = vibrator.getVibratorInfoSync({ deviceId: 1, vibratorId: 3 });
   console.info(`vibratorInfoList: ${JSON.stringify(vibratorInfoList)}`);
+  if (vibratorInfoList.length > 0 && vibratorInfoList[0].isSupportIntensity) {
+    console.info('intensity adjustment is supported');
+  }
 } catch (error) {
   let e: BusinessError = error as BusinessError;
   console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);

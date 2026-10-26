@@ -58,3 +58,71 @@ function startContinuousTask(context: Context, request: ContinuousTaskRequest): 
 | [9800006](../errorcode-backgroundTaskMgr.md#9800006-长时任务通知信息校验失败) | Notification verification failed for a continuous task. |
 | [9800007](../errorcode-backgroundTaskMgr.md#9800007-长时任务信息存储失败) | Continuous task storage failed. |
 | [9800008](../errorcode-backgroundTaskMgr.md#9800008-请求的长时任务不支持此设备类型) | The requested continuous task is not supported on this device type. |
+
+**示例**
+
+```TypeScript
+import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { UIAbility, wantAgent, WantAgent } from '@kit.AbilityKit';
+// 在原子化服务中，请删除WantAgent导入
+
+export default class EntryAbility extends UIAbility {
+  continuousTaskId: number | undefined = -1;
+  onCreate() {
+    let wantAgentInfo: wantAgent.WantAgentInfo = {
+      // 请开发者替换为实际被拉起应用的bundleName和abilityName
+      wants: [
+        {
+          bundleName: 'com.example.myapplication',
+          abilityName: 'EntryAbility'
+        }
+      ],
+      // 设置点击通知后的动作类型
+      actionType: wantAgent.OperationType.START_ABILITY,
+      // 开发者自定义的请求码，用于标识将被执行的动作
+      requestCode: 0,
+      // 设置点击通知后的动作执行属性
+      wantAgentFlags: [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
+    };
+
+    let progress: backgroundTaskManager.ProgressInfo = {
+      title: '通知标题', // 必填
+      fileName: '通知内容', // 必填
+      progressValue: 20, // 应用更新进度值，自定义
+      isMute: false, // 通知进度达到100时是否静音，自定义
+    };
+
+    try {
+      // 通过wantAgent模块下getWantAgent方法获取WantAgent对象
+      // 在原子化服务中，请使用wantAgent.getWantAgent(wantAgentInfo).then((wantAgentObj: object) => {替换下面一行代码
+      wantAgent.getWantAgent(wantAgentInfo).then((wantAgentObj: WantAgent) => {
+        try {
+          // 如果要合并通知，主类型和子类型都必须相同，combinedTaskNotification为true，continuousTaskId必须存在且合法
+          // 申请主类型为MODE_DATA_TRANSFER的长时任务
+          let modeList: Array<number> = [backgroundTaskManager.BackgroundTaskMode.MODE_DATA_TRANSFER];
+          let subModeList: Array<number> = [backgroundTaskManager.BackgroundTaskSubmode.SUBMODE_LIVE_VIEW_NOTIFICATION];
+          // 创建长时任务请求对象
+          let continuousTaskRequest = new backgroundTaskManager.ContinuousTaskRequest();
+          continuousTaskRequest.backgroundTaskModes =  modeList;
+          continuousTaskRequest.backgroundTaskSubmodes = subModeList;
+          continuousTaskRequest.wantAgent = wantAgentObj;
+          continuousTaskRequest.combinedTaskNotification = false;
+          continuousTaskRequest.continuousTaskId = this.continuousTaskId;
+          continuousTaskRequest.progressInfo = progress;
+          backgroundTaskManager.startContinuousTask(this.context, continuousTaskRequest).then((res: number) => {
+            console.info(`Operation startContinuousTask succeeded. continuousTaskId is ${res}`);
+            this.continuousTaskId = res ?? -1;
+          }).catch((error: BusinessError) => {
+            console.error(`Operation startContinuousTask failed. code is ${error.code} message is ${error.message}`);
+          });
+        } catch (error) {
+          console.error(`Operation startContinuousTask failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+        }
+      });
+    } catch (error) {
+      console.error(`Operation getWantAgent failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+    }
+  }
+};
+```

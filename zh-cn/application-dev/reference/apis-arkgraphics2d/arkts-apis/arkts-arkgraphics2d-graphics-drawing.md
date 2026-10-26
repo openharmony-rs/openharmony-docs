@@ -66,7 +66,7 @@ import { drawing } from '@kit.ArkGraphics2D';
 
 | 名称 | 说明 |
 | --- | --- |
-| [AtlasImage](arkts-arkgraphics2d-drawing-atlasimage-i-sys.md) | 定义精灵图序列帧动画的图集帧参数。 |
+| [AtlasImage](arkts-arkgraphics2d-drawing-atlasimage-i-sys.md) | 定义精灵图集序列帧动画的图集帧参数。 |
 <!--DelEnd-->
 
 ### 枚举
@@ -104,5 +104,5 @@ import { drawing } from '@kit.ArkGraphics2D';
 
 | 名称 | 说明 |
 | --- | --- |
-| [AtlasInterpolationMode](arkts-arkgraphics2d-drawing-atlasinterpolationmode-e-sys.md) | 定义精灵图序列帧动画的插值模式。 |
+| [AtlasInterpolationMode](arkts-arkgraphics2d-drawing-atlasinterpolationmode-e-sys.md) | 精灵图集序列帧动画的插值模式枚举。 |
 <!--DelEnd-->

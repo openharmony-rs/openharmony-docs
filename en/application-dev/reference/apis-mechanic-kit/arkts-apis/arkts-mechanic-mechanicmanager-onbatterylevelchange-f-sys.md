@@ -14,7 +14,7 @@ function onBatteryLevelChange(mechId: number, callback: Callback<BatteryLevelInf
 
 Subscribes to device battery level change information. Before calling this method, ensure that the device is connected.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 

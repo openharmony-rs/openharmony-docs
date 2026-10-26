@@ -6,7 +6,7 @@ declare interface WebContextMenuOptions
 
 定义上下文菜单项的选项。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 <!--Device-unnamed-declare interface WebContextMenuOptions--><!--Device-unnamed-declare interface WebContextMenuOptions-End-->
 
@@ -22,7 +22,7 @@ enable?: boolean
 
 **类型：** boolean
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

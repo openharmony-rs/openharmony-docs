@@ -80,6 +80,7 @@
   - [ImmersiveEffect(system api)](arkts-ime-inputmethodengine-immersiveeffect-i-sys.md)<!--DelEnd-->
   - [InputClient](arkts-ime-inputmethodengine-inputclient-i.md)
   - [InputMethodAbility](arkts-ime-inputmethodengine-inputmethodability-i.md)
+  - [InputMethodRichText](arkts-ime-inputmethodengine-inputmethodrichtext-i.md)
   - [KeyboardArea](arkts-ime-inputmethodengine-keyboardarea-i.md)
   - [KeyboardController](arkts-ime-inputmethodengine-keyboardcontroller-i.md)
   - [KeyboardDelegate](arkts-ime-inputmethodengine-keyboarddelegate-i.md)
@@ -92,6 +93,7 @@
   - [PanelInfo](arkts-ime-inputmethodengine-panelinfo-i.md)
   - [PanelRect](arkts-ime-inputmethodengine-panelrect-i.md)
   - [Range](arkts-ime-inputmethodengine-range-i.md)
+  - [RichTextSpan](arkts-ime-inputmethodengine-richtextspan-i.md)
   - [SystemPanelInsets](arkts-ime-inputmethodengine-systempanelinsets-i.md)
   - [WindowInfo](arkts-ime-inputmethodengine-windowinfo-i.md)
   - [InputMethodEngine](arkts-ime-inputmethodengine-inputmethodengine-i.md)
@@ -111,6 +113,7 @@
   - [PanelType](arkts-ime-inputmethodengine-paneltype-e.md)
   - [RequestKeyboardReason](arkts-ime-inputmethodengine-requestkeyboardreason-e.md)
   - [SecurityMode](arkts-ime-inputmethodengine-securitymode-e.md)
+  - [SpanType](arkts-ime-inputmethodengine-spantype-e.md)
   - [Constants](arkts-ime-inputmethodengine-con.md)
 - [@ohos.InputMethodExtensionAbility(InputMethodExtensionAbility)](arkts-ime-inputmethodextensionability.md)
   - [InputMethodExtensionAbility](arkts-ime-inputmethodextensionability-c.md)

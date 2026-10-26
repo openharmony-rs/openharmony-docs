@@ -6,6 +6,12 @@ declare struct SegmentButton
 
 创建页签类分段按钮或胶囊类分段按钮。
 
+> **说明：** 
+> 
+> - 分段按钮不支持[通用属性](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md)。分段按钮以当前区域内的最大可用宽度作为组件宽度，并根据按钮数量将宽度平均分配给各按钮。分段按钮高度自适应按钮内容（文字和图片），最小高度为28vp。
+> 
+> - 使用**@Prop**装饰的属性为可选参数，仅在与**@Require**装饰器一起使用时，才必须在构造时传入。
+
 **起始版本：** 11
 
 **装饰器类型：** @Component
@@ -13,18 +19,6 @@ declare struct SegmentButton
 <!--Device-unnamed-declare struct SegmentButton--><!--Device-unnamed-declare struct SegmentButton-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## 子组件
-
-无
-
-## 属性
-
-不支持[通用属性](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md)。
-
-## 事件
-
-不支持[通用事件](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md)。
 
 ## 导入模块
 

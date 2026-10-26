@@ -6,7 +6,7 @@ declare interface BuilderDecoratorConfig
 
 Defining BuilderDecoratorConfig interface
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 <!--Device-unnamed-declare interface BuilderDecoratorConfig--><!--Device-unnamed-declare interface BuilderDecoratorConfig-End-->
 
@@ -22,13 +22,13 @@ Enables placeholder feature. Set to true to enable placeholder feature, set to f
 
 **Type:** boolean
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 26.2.0.
+**Widget capability:** This API can be used in ArkTS widgets since API version 26.1.0.
 
 <!--Device-BuilderDecoratorConfig-isPlaceholder: boolean--><!--Device-BuilderDecoratorConfig-isPlaceholder: boolean-End-->
 

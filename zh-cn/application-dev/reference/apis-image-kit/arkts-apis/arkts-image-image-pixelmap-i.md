@@ -265,8 +265,8 @@ function applyCropSync(pixelMap: image.PixelMap) {
   try {
     pixelMap.applyCropSync(region);
     console.info('Succeeded in cropping the PixelMap.');
-  } catch (e) {
-    const err = e as BusinessError;
+  } catch (error) {
+    const err = error as BusinessError;
     console.error(`Failed to crop the PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }
@@ -383,8 +383,8 @@ function applyFlipSync(pixelMap: image.PixelMap) {
   try {
     pixelMap.applyFlipSync(horizontal, vertical);
     console.info('Succeeded in flipping the PixelMap.');
-  } catch (e) {
-    const err = e as BusinessError;
+  } catch (error) {
+    const err = error as BusinessError;
     console.error(`Failed to flip the PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }
@@ -509,8 +509,8 @@ function applyRotateSync(pixelMap: image.PixelMap) {
   try {
     pixelMap.applyRotateSync(angle);
     console.info('Succeeded in rotating the PixelMap.');
-  } catch (e) {
-    const err = e as BusinessError;
+  } catch (error) {
+    const err = error as BusinessError;
     console.error(`Failed to rotate the PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }
@@ -637,8 +637,8 @@ function applyScaleSync(pixelMap: image.PixelMap) {
   try {
     pixelMap.applyScaleSync(scaleX, scaleY, image.AntiAliasingLevel.LOW);
     console.info('Succeeded in scaling the PixelMap.');
-  } catch (e) {
-    const err = e as BusinessError;
+  } catch (error) {
+    const err = error as BusinessError;
     console.error(`Failed to scale the PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }
@@ -763,8 +763,8 @@ function applyTranslateSync(pixelMap: image.PixelMap) {
   try {
     pixelMap.applyTranslateSync(translateX, translateY);
     console.info('Succeeded in translating the PixelMap.');
-  } catch (e) {
-    const err = e as BusinessError;
+  } catch (error) {
+    const err = error as BusinessError;
     console.error(`Failed to translate the PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }
@@ -861,8 +861,8 @@ function cloneSync(pixelMap: image.PixelMap) {
   try {
     let clonedPixelMap: image.PixelMap = pixelMap.cloneSync();
     console.info('Succeeded in cloning the PixelMap.');
-  } catch (e) {
-    const err = e as BusinessError;
+  } catch (error) {
+    const err = error as BusinessError;
     console.error(`Failed to clone the PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }
@@ -1067,8 +1067,8 @@ function createAlphaPixelmapSync(pixelMap: image.PixelMap) {
       return;
     }
     console.info('Succeeded in creating alpha PixelMap.');
-  } catch (e) {
-    const err = e as BusinessError;
+  } catch (error) {
+    const err = error as BusinessError;
     console.error(`Failed to create alpha PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }
@@ -1199,8 +1199,8 @@ function createCroppedAndScaledPixelMapSync(pixelMap: image.PixelMap) {
   try {
     const croppedAndScaled = pixelMap.createCroppedAndScaledPixelMapSync(region, scaleX, scaleY, image.AntiAliasingLevel.HIGH);
     console.info('Succeeded in creating cropped and scaled PixelMap.');
-  } catch (e) {
-    const err = e as BusinessError;
+  } catch (error) {
+    const err = error as BusinessError;
     console.error(`Failed to create cropped and scaled PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }
@@ -1311,8 +1311,8 @@ function createScaledPixelMapSync(pixelMap: image.PixelMap) {
   try {
     let scaledPixelMap = pixelMap.createScaledPixelMapSync(scaleX, scaleY, image.AntiAliasingLevel.LOW);
     console.info('Succeeded in creating scaled PixelMap.');
-  } catch (e) {
-    const err = e as BusinessError;
+  } catch (error) {
+    const err = error as BusinessError;
     console.error(`Failed to create scaled PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }
@@ -1456,8 +1456,8 @@ function cropSync(pixelMap: image.PixelMap) {
   try {
     pixelMap.cropSync(region);
     console.info('Succeeded in cropping the PixelMap.');
-  } catch (e) {
-    const err = e as BusinessError;
+  } catch (error) {
+    const err = error as BusinessError;
     console.error(`Failed to crop the PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }
@@ -1570,8 +1570,8 @@ function extractAlphaPixelMapSync(pixelMap: image.PixelMap) {
   try {
     const alphaMap = pixelMap.extractAlphaPixelMapSync();
     console.info('Succeeded in creating alpha PixelMap.');
-  } catch (e) {
-    const err = e as BusinessError;
+  } catch (error) {
+    const err = error as BusinessError;
     console.error(`Failed to create alpha PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }
@@ -1721,8 +1721,8 @@ function flipSync(pixelMap: image.PixelMap) {
   try {
     pixelMap.flipSync(horizontal, vertical);
     console.info('Succeeded in flipping the PixelMap.');
-  } catch (e) {
-    const err = e as BusinessError;
+  } catch (error) {
+    const err = error as BusinessError;
     console.error(`Failed to flip the PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }
@@ -1797,8 +1797,8 @@ function getColorSpace(pixelMap: image.PixelMap) {
   try {
     const csm = pixelMap.getColorSpace();
     console.info(`Succeeded in getting color space: ${csm.getColorSpaceName()}.`);
-  } catch (e) {
-    const err = e as BusinessError;
+  } catch (error) {
+    const err = error as BusinessError;
     console.error(`Failed to get color space. Code: ${err.code}, message: ${err.message}`);
   }
 }
@@ -1953,8 +1953,8 @@ function getImageInfoSync(pixelMap: image.PixelMap) {
   try {
     let imageInfo: image.ImageInfo = pixelMap.getImageInfoSync();
     console.info(`Succeeded in obtaining information of the PixelMap with size ${imageInfo.size} and pixel format ${imageInfo.pixelFormat}.`);
-  } catch (e) {
-    const err = e as BusinessError;
+  } catch (error) {
+    const err = error as BusinessError;
     console.error(`Failed to obtain information of the PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }
@@ -2017,8 +2017,8 @@ function getMetadata(context: Context) {
     try {
       let staticMetadata = pixelMap.getMetadata(image.HdrMetadataKey.HDR_STATIC_METADATA);
       console.info('Succeeded in getting the metadata.');
-    } catch (e) {
-      const err = e as BusinessError;
+    } catch (error) {
+      const err = error as BusinessError;
       console.error(`Failed to get the metadata. Code: ${err.code}, message: ${err.message}`);
     }
   } else {
@@ -2094,8 +2094,8 @@ function getUniqueId(pixelMap: image.PixelMap) {
   try {
     const uniqueId: number = pixelMap.getUniqueId();
     console.info(`Succeeded in getting the unique ID: ${uniqueId}.`);
-  } catch (e) {
-    const err = e as BusinessError;
+  } catch (error) {
+    const err = error as BusinessError;
     console.error(`Failed to get the unique ID. Code: ${err.code}, message: ${err.message}`);
   }
 }
@@ -2358,8 +2358,8 @@ function opacitySync(pixelMap: image.PixelMap) {
   try {
     pixelMap.opacitySync(rate);
     console.info('Succeeded in setting opacity.');
-  } catch (e) {
-    const err = e as BusinessError;
+  } catch (error) {
+    const err = error as BusinessError;
     console.error(`Failed to set opacity. Code: ${err.code}, message: ${err.message}`);
   }
 }
@@ -2472,8 +2472,8 @@ function readAllPixelsToBufferSync(pixelMap: image.PixelMap) {
   try {
     pixelMap.readAllPixelsToBufferSync(readBuffer);
     console.info('Succeeded in reading pixel data from the PixelMap to readBuffer.');
-  } catch (e) {
-    const err = e as BusinessError;
+  } catch (error) {
+    const err = error as BusinessError;
     console.error(`Failed to read pixel data. Code: ${err.code}, message: ${err.message}`);
   }
 }
@@ -2681,8 +2681,8 @@ function readPixelsSync(pixelMap: image.PixelMap) {
   try {
     pixelMap.readPixelsSync(area);
     console.info('Succeeded in reading the image data from the specified area.');
-  } catch (e) {
-    const err = e as BusinessError;
+  } catch (error) {
+    const err = error as BusinessError;
     console.error(`Failed to read the image data from the specified area. Code: ${err.code}, message: ${err.message}`);
   }
 }
@@ -2851,8 +2851,8 @@ function readPixelsToAreaSyncRGBA(pixelMap: image.PixelMap) {
     pixelMap.readPixelsToAreaSync(area);
     console.info('Succeeded in reading pixel data from the specified area of the PixelMap to area.pixels.');
     console.info('BGRA data: ', new Uint8Array(area.pixels));
-  } catch (e) {
-    const err = e as BusinessError;
+  } catch (error) {
+    const err = error as BusinessError;
     console.error(`Failed to read pixel data. Code: ${err.code}, message: ${err.message}`);
   }
 }
@@ -2873,8 +2873,8 @@ function readPixelsToAreaSyncYUV(pixelMap: image.PixelMap) {
     pixelMap.readPixelsToAreaSync(area);
     console.info('Succeeded in reading pixel data from the specified area of the PixelMap to area.pixels.');
     console.info('YUV data: ', new Uint8Array(area.pixels));
-  } catch (e) {
-    const err = e as BusinessError;
+  } catch (error) {
+    const err = error as BusinessError;
     console.error(`Failed to read pixel data. Code: ${err.code}, message: ${err.message}`);
   }
 }
@@ -3020,8 +3020,8 @@ function readPixelsToBufferSync(pixelMap: image.PixelMap) {
   try {
     pixelMap.readPixelsToBufferSync(readBuffer);
     console.info('Succeeded in reading image pixel data.');
-  } catch (e) {
-    const err = e as BusinessError;
+  } catch (error) {
+    const err = error as BusinessError;
     console.error(`Failed to read image pixel data. Code: ${err.code}, message: ${err.message}`);
   }
 }
@@ -3268,8 +3268,8 @@ function rotateSync(pixelMap: image.PixelMap) {
   try {
     pixelMap.rotateSync(angle);
     console.info('Succeeded in rotating the PixelMap.');
-  } catch (e) {
-    const err = e as BusinessError;
+  } catch (error) {
+    const err = error as BusinessError;
     console.error(`Failed to rotate the PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }
@@ -3482,8 +3482,8 @@ function scaleSync(pixelMap: image.PixelMap) {
   try {
     pixelMap.scaleSync(scaleX, scaleY);
     console.info('Succeeded in scaling the PixelMap.');
-  } catch (e) {
-    const err = e as BusinessError;
+  } catch (error) {
+    const err = error as BusinessError;
     console.error(`Failed to scale the PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }
@@ -3536,8 +3536,8 @@ function scaleSync(pixelMap: image.PixelMap) {
   try {
     pixelMap.scaleSync(scaleX, scaleY, image.AntiAliasingLevel.LOW);
     console.info('Succeeded in scaling the PixelMap.');
-  } catch (e) {
-    const err = e as BusinessError;
+  } catch (error) {
+    const err = error as BusinessError;
     console.error(`Failed to scale the PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }
@@ -3582,8 +3582,8 @@ function setColorSpace(pixelMap: image.PixelMap) {
   try {
     pixelMap.setColorSpace(csm);
     console.info('Succeeded in setting color space.');
-  } catch (e) {
-    const err = e as BusinessError;
+  } catch (error) {
+    const err = error as BusinessError;
     console.error(`Failed to set color space. Code: ${err.code}, message: ${err.message}`);
   }
 }
@@ -3630,8 +3630,8 @@ function setMemoryNameSync(pixelMap: image.PixelMap) {
   try {
     pixelMap.setMemoryNameSync("PixelMapName Test");
     console.info('Succeeded in setting memory name.');
-  } catch (e) {
-    const err = e as BusinessError;
+  } catch (error) {
+    const err = error as BusinessError;
     console.error(`Failed to set memory name. Code: ${err.code}, message: ${err.message}`);
   }
 }
@@ -3816,8 +3816,8 @@ function setOpacitySync(pixelMap: image.PixelMap) {
   try {
     pixelMap.setOpacitySync(opacity);
     console.info('Succeeded in setting opacity.');
-  } catch (e) {
-    const err = e as BusinessError;
+  } catch (error) {
+    const err = error as BusinessError;
     console.error(`Failed to set opacity. Code: ${err.code}, message: ${err.message}`);
   }
 }
@@ -4099,8 +4099,8 @@ function translateSync(pixelMap: image.PixelMap) {
   try {
     pixelMap.translateSync(translateX, translateY);
     console.info('Succeeded in translating the PixelMap.');
-  } catch (e) {
-    const err = e as BusinessError;
+  } catch (error) {
+    const err = error as BusinessError;
     console.error(`Failed to translate the PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }
@@ -4268,6 +4268,57 @@ function writeAllPixelsFromBuffer(pixelMap: image.PixelMap) {
 }
 ```
 
+## writeAllPixelsFromBuffer
+
+```TypeScript
+writeAllPixelsFromBuffer(src: ArrayBuffer, sourcePixelFormat: PixelMapFormat): Promise<void>
+```
+
+将缓冲区内指定像素格式的像素数据写入整个PixelMap。支持的源像素格式为BGRA_8888、RGBA_8888、RGB_888、RGB_565和RGBA_F16。使用Promise异步回调。
+
+> **说明：** 
+> 
+> - 本接口支持被以下像素格式的PixelMap调用：BGRA_8888、RGBA_8888、ARGB_8888、RGB_888、RGB_565、RGBA_F16、RGBA_1010102。
+> - 如需写入与当前PixelMap像素格式相同的源数据（包括YUV格式），请使用[writeAllPixelsFromBuffer](#writeallpixelsfrombuffer)。
+> - 如需写入具有自定义行跨距或偏移量的源数据，请使用[writePixelsFromArea](#writepixelsfromarea)。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-PixelMap-writeAllPixelsFromBuffer(src: ArrayBuffer, sourcePixelFormat: PixelMapFormat): Promise<void>--><!--Device-PixelMap-writeAllPixelsFromBuffer(src: ArrayBuffer, sourcePixelFormat: PixelMapFormat): Promise<void>-End-->
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| src | ArrayBuffer | 是 | 源像素数据的缓冲区，该缓冲区内的像素数据会被拷贝至PixelMap。缓冲区内的像素数据必须是整个PixelMap的像素数据，且不包含内存对齐填充字节。所需的最小缓冲区大小可通过[getPixelBytesNumber](#getpixelbytesnumber)接口获取。 |
+| sourcePixelFormat | [PixelMapFormat](arkts-image-image-pixelmapformat-e.md) | 是 | 源数据的像素格式。支持的值为BGRA_8888、RGBA_8888、RGB_888、RGB_565和RGBA_F16。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [7600104](../errorcode-image.md#7600104-获取图像数据失败) | Failed to get image data. Possible cause: Internal data is corrupted. Please check the logs for detailed information. |
+| [7600105](../errorcode-image.md#7600105-pixelmap已被释放) | The PixelMap has been released. |
+| [7600106](../errorcode-image.md#7600106-pixelmap已被传递至另一个线程) | The PixelMap has been passed to another thread. |
+| [7600201](../errorcode-image.md#7600201-不支持的操作) | Unsupported operation because the PixelMap is not editable or is locked. |
+| [7600203](../errorcode-image.md#7600203-不支持的转换) | Unsupported conversion. Possible cause: Conversion between the source pixel format and the PixelMap pixel format is not supported. |
+| [7600206](../errorcode-image.md#7600206-无效参数) | Invalid parameter. Possible causes: 1. The source buffer is too small. 2. sourcePixelFormat is not supported. |
+| [7600302](../errorcode-image.md#7600302-内存拷贝失败) | Failed to copy or convert the pixel data. |
+
+**示例**
+
+参见 [writeAllPixelsFromBuffer](#writeallpixelsfrombuffer)
+
 ## writeAllPixelsFromBufferSync
 
 ```TypeScript
@@ -4324,12 +4375,57 @@ function writeAllPixelsFromBufferSync(pixelMap: image.PixelMap) {
   try {
     pixelMap.writeAllPixelsFromBufferSync(writeBuffer);
     console.info('Succeeded in writing pixel data from writeBuffer to the PixelMap.');
-  } catch (e) {
-    const err = e as BusinessError;
+  } catch (error) {
+    const err = error as BusinessError;
     console.error(`Failed to write pixel data. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
+
+## writeAllPixelsFromBufferSync
+
+```TypeScript
+writeAllPixelsFromBufferSync(src: ArrayBuffer, sourcePixelFormat: PixelMapFormat): void
+```
+
+将缓冲区内指定像素格式的像素数据写入整个PixelMap。支持的源像素格式为BGRA_8888、RGBA_8888、RGB_888、RGB_565和RGBA_F16。同步返回结果。
+
+> **说明：** 
+> 
+> - 本接口支持被以下像素格式的PixelMap调用：BGRA_8888、RGBA_8888、ARGB_8888、RGB_888、RGB_565、RGBA_F16、RGBA_1010102。
+> - 如需写入与当前PixelMap像素格式相同的源数据（包括YUV格式），请使用[writeAllPixelsFromBufferSync](#writeallpixelsfrombuffersync)。
+> - 如需写入具有自定义行跨距或偏移量的源数据，请使用[writePixelsFromAreaSync](#writepixelsfromareasync)。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-PixelMap-writeAllPixelsFromBufferSync(src: ArrayBuffer, sourcePixelFormat: PixelMapFormat): void--><!--Device-PixelMap-writeAllPixelsFromBufferSync(src: ArrayBuffer, sourcePixelFormat: PixelMapFormat): void-End-->
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| src | ArrayBuffer | 是 | 源像素数据的缓冲区，该缓冲区内的像素数据会被拷贝至PixelMap。缓冲区内的像素数据必须是整个PixelMap的像素数据，且不包含内存对齐填充字节。所需的最小缓冲区大小可通过[getPixelBytesNumber](#getpixelbytesnumber)接口获取。 |
+| sourcePixelFormat | [PixelMapFormat](arkts-image-image-pixelmapformat-e.md) | 是 | 源数据的像素格式。支持的值为BGRA_8888、RGBA_8888、RGB_888、RGB_565和RGBA_F16。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [7600104](../errorcode-image.md#7600104-获取图像数据失败) | Failed to get image data. Possible cause: Internal data is corrupted. Please check the logs for detailed information. |
+| [7600105](../errorcode-image.md#7600105-pixelmap已被释放) | The PixelMap has been released. |
+| [7600106](../errorcode-image.md#7600106-pixelmap已被传递至另一个线程) | The PixelMap has been passed to another thread. |
+| [7600201](../errorcode-image.md#7600201-不支持的操作) | Unsupported operation because the PixelMap is not editable or is locked. |
+| [7600203](../errorcode-image.md#7600203-不支持的转换) | Unsupported conversion. Possible cause: Conversion between the source pixel format and the PixelMap pixel format is not supported. |
+| [7600206](../errorcode-image.md#7600206-无效参数) | Invalid parameter. Possible causes: 1. The source buffer is too small. 2. sourcePixelFormat is not supported. |
+| [7600302](../errorcode-image.md#7600302-内存拷贝失败) | Failed to copy or convert the pixel data. |
+
+**示例**
+
+参见 [writeAllPixelsFromBufferSync](#writeallpixelsfrombuffersync)
 
 ## writeBufferToPixels
 
@@ -4481,8 +4577,8 @@ function writeBufferToPixelsSync(pixelMap: image.PixelMap) {
   try {
     pixelMap.writeBufferToPixelsSync(color);
     console.info('Succeeded in writing data from the buffer to the PixelMap.');
-  } catch (e) {
-    const err = e as BusinessError;
+  } catch (error) {
+    const err = error as BusinessError;
     console.error(`Failed to write data from the buffer to the PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }
@@ -4763,6 +4859,58 @@ function writePixelsFromAreaYUV(pixelMap: image.PixelMap) {
 }
 ```
 
+## writePixelsFromArea
+
+```TypeScript
+writePixelsFromArea(area: PositionArea, sourcePixelFormat: PixelMapFormat): Promise<void>
+```
+
+将缓冲区内指定像素格式的像素数据写入PixelMap的指定区域。支持的源像素格式为BGRA_8888、RGBA_8888、RGB_888、RGB_565和RGBA_F16。使用Promise异步回调。
+
+所需的最小缓冲区大小计算公式为：PositionArea.offset + (PositionArea.region.size.height - 1) * PositionArea.stride + PositionArea.region.size.width * sourcePixelFormat的每像素字节数。其中PositionArea.stride的值必须大于或等于PositionArea.region.size.width乘以sourcePixelFormat的每像素字节数。
+
+> **说明：** 
+> 
+> - 本接口支持被以下像素格式的PixelMap调用：BGRA_8888、RGBA_8888、ARGB_8888、RGB_888、RGB_565、RGBA_F16、RGBA_1010102。
+> - 如需将YUV格式的像素数据写入同一YUV格式的PixelMap，请使用[writePixelsFromArea](#writepixelsfromarea)。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-PixelMap-writePixelsFromArea(area: PositionArea, sourcePixelFormat: PixelMapFormat): Promise<void>--><!--Device-PixelMap-writePixelsFromArea(area: PositionArea, sourcePixelFormat: PixelMapFormat): Promise<void>-End-->
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| area | [PositionArea](arkts-image-image-positionarea-i.md) | 是 | 写入的区域数据。<br>数据将从[PositionArea](arkts-image-image-positionarea-i.md).pixels拷贝至[PositionArea](arkts-image-image-positionarea-i.md).region指定的区域。 |
+| sourcePixelFormat | [PixelMapFormat](arkts-image-image-pixelmapformat-e.md) | 是 | 源数据的像素格式。支持的值为BGRA_8888、RGBA_8888、RGB_888、RGB_565和RGBA_F16。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [7600104](../errorcode-image.md#7600104-获取图像数据失败) | Failed to get image data. Possible cause: Internal data is corrupted. Please check the logs for detailed information. |
+| [7600105](../errorcode-image.md#7600105-pixelmap已被释放) | The PixelMap has been released. |
+| [7600106](../errorcode-image.md#7600106-pixelmap已被传递至另一个线程) | The PixelMap has been passed to another thread. |
+| [7600201](../errorcode-image.md#7600201-不支持的操作) | Unsupported operation because the PixelMap is not editable or is locked. |
+| [7600203](../errorcode-image.md#7600203-不支持的转换) | Unsupported conversion. Possible cause: Conversion between the source pixel format and the PixelMap pixel format is not supported. |
+| [7600206](../errorcode-image.md#7600206-无效参数) | Invalid parameter. Possible causes: 1. PositionArea.pixels is too small. 2. PositionArea.region is out of range.         3. PositionArea.offset or PositionArea.stride is invalid. 4. sourcePixelFormat is not supported. |
+| [7600302](../errorcode-image.md#7600302-内存拷贝失败) | Failed to copy or convert the pixel data. |
+
+**示例**
+
+参见 [writePixelsFromArea](#writepixelsfromarea)
+
 ## writePixelsFromAreaSync
 
 ```TypeScript
@@ -4835,8 +4983,8 @@ function writePixelsFromAreaSyncRGBA(pixelMap: image.PixelMap) {
   try {
     pixelMap.writePixelsFromAreaSync(area);
     console.info('Succeeded in writing pixel data from area.pixels to the specified area of the PixelMap.');
-  } catch (e) {
-    const err = e as BusinessError;
+  } catch (error) {
+    const err = error as BusinessError;
     console.error(`Failed to write pixel data. Code: ${err.code}, message: ${err.message}`);
   }
 }
@@ -4864,12 +5012,58 @@ function writePixelsFromAreaSyncYUV(pixelMap: image.PixelMap) {
   try {
     pixelMap.writePixelsFromAreaSync(area);
     console.info('Succeeded in writing pixel data from area.pixels to the specified area of the PixelMap.');
-  } catch (e) {
-    const err = e as BusinessError;
+  } catch (error) {
+    const err = error as BusinessError;
     console.error(`Failed to write pixel data. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
+
+## writePixelsFromAreaSync
+
+```TypeScript
+writePixelsFromAreaSync(area: PositionArea, sourcePixelFormat: PixelMapFormat): void
+```
+
+将缓冲区内指定像素格式的像素数据写入PixelMap的指定区域。支持的源像素格式为BGRA_8888、RGBA_8888、RGB_888、RGB_565和RGBA_F16。同步返回结果。
+
+所需的最小缓冲区大小计算公式为：PositionArea.offset + (PositionArea.region.size.height - 1) * PositionArea.stride + PositionArea.region.size.width * sourcePixelFormat的每像素字节数。其中PositionArea.stride的值必须大于或等于PositionArea.region.size.width乘以sourcePixelFormat的每像素字节数。
+
+> **说明：** 
+> 
+> - 本接口支持被以下像素格式的PixelMap调用：BGRA_8888、RGBA_8888、ARGB_8888、RGB_888、RGB_565、RGBA_F16、RGBA_1010102。
+> - 如需将YUV格式的像素数据写入同一YUV格式的PixelMap，请使用[writePixelsFromAreaSync](#writepixelsfromareasync)。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-PixelMap-writePixelsFromAreaSync(area: PositionArea, sourcePixelFormat: PixelMapFormat): void--><!--Device-PixelMap-writePixelsFromAreaSync(area: PositionArea, sourcePixelFormat: PixelMapFormat): void-End-->
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| area | [PositionArea](arkts-image-image-positionarea-i.md) | 是 | 写入的区域数据。<br>数据将从[PositionArea](arkts-image-image-positionarea-i.md).pixels拷贝至[PositionArea](arkts-image-image-positionarea-i.md).region指定的区域。 |
+| sourcePixelFormat | [PixelMapFormat](arkts-image-image-pixelmapformat-e.md) | 是 | 源数据的像素格式。支持的值为BGRA_8888、RGBA_8888、RGB_888、RGB_565和RGBA_F16。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [7600104](../errorcode-image.md#7600104-获取图像数据失败) | Failed to get image data. Possible cause: Internal data is corrupted. Please check the logs for detailed information. |
+| [7600105](../errorcode-image.md#7600105-pixelmap已被释放) | The PixelMap has been released. |
+| [7600106](../errorcode-image.md#7600106-pixelmap已被传递至另一个线程) | The PixelMap has been passed to another thread. |
+| [7600201](../errorcode-image.md#7600201-不支持的操作) | Unsupported operation because the PixelMap is not editable or is locked. |
+| [7600203](../errorcode-image.md#7600203-不支持的转换) | Unsupported conversion. Possible cause: Conversion between the source pixel format and the PixelMap pixel format is not supported. |
+| [7600206](../errorcode-image.md#7600206-无效参数) | Invalid parameter. Possible causes: 1. PositionArea.pixels is too small. 2. PositionArea.region is out of range.         3. PositionArea.offset or PositionArea.stride is invalid. 4. sourcePixelFormat is not supported. |
+| [7600302](../errorcode-image.md#7600302-内存拷贝失败) | Failed to copy or convert the pixel data. |
+
+**示例**
+
+参见 [writePixelsFromAreaSync](#writepixelsfromareasync)
 
 ## writePixelsSync
 
@@ -4930,8 +5124,8 @@ function writePixelsSync(pixelMap: image.PixelMap) {
   try {
     pixelMap.writePixelsSync(area);
     console.info('Succeeded in writing pixels into the specified area.');
-  } catch (e) {
-    const err = e as BusinessError;
+  } catch (error) {
+    const err = error as BusinessError;
     console.error(`Failed to write pixels into the specified area. Code: ${err.code}, message: ${err.message}`);
   }
 }

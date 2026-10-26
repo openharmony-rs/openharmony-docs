@@ -4,6 +4,8 @@
 export declare struct ExceptionPrompt
 ```
 
+异常提示，适用于有异常需要提示异常内容的情况。
+
 **起始版本：** 11
 
 **装饰器类型：** @Component

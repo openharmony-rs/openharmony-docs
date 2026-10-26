@@ -80,6 +80,8 @@ import { BackPressActionProposal, BaseGestureHandlingProposal, ClickActionPropos
 | Name | Description |
 | --- | --- |
 | [BackgroundLuminanceSamplingConfigs](arkts-arkui-arkui-uicontext-backgroundluminancesamplingconfigs-i-sys.md) | Defines the background luminance sampling parameter configuration. |
+| [ModalUIExtensionCallback](arkts-arkui-arkui-uicontext-modaluiextensioncallback-i-sys.md) | Lifecycle callbacks for a modal UIExtension. |
+| [ModalUIExtensionOptions](arkts-arkui-arkui-uicontext-modaluiextensionoptions-i-sys.md) | Options for creating a modal UIExtension. |
 <!--DelEnd-->
 
 ### Types

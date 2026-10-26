@@ -9,7 +9,17 @@ The segment button component includes tab-style segment buttons and capsule-styl
  mirroring, custom rounded corners, and property animation, making it suitable for scenarios where you need to quickly
  build a segmented selection interface that complies with design specifications.
 
+## Child Components
 
+None
+
+## Attributes
+
+The [universal attributes](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md) are not supported.
+
+## Events
+
+The [universal events](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md) are not supported.
 
 ## Modules to Import
 

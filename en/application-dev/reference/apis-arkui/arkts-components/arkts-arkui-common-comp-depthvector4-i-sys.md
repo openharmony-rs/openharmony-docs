@@ -20,7 +20,7 @@ declare interface DepthVector4
 w: number
 ```
 
-W component.
+W component of the depth space vector. This value has no unit.
 
 **Type:** number
 
@@ -42,7 +42,7 @@ W component.
 x: number
 ```
 
-X component.
+X component of the depth space vector. This value has no unit.
 
 **Type:** number
 
@@ -66,7 +66,7 @@ X component.
 y: number
 ```
 
-Y component.
+Y component of the depth space vector. This value has no unit.
 
 **Type:** number
 
@@ -88,7 +88,7 @@ Y component.
 z: number
 ```
 
-Z component.
+Z component of the depth space vector. This value has no unit.
 
 **Type:** number
 

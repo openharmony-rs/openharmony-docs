@@ -1,12 +1,10 @@
 # RelativeTimeFormatPart
 
 ```TypeScript
-type RelativeTimeFormatPart =
-        | {
+type RelativeTimeFormatPart = | {
               type: "literal";
               value: string;
-          }
-        | {
+          } | {
               type: Exclude<NumberFormatPartTypes, "literal">;
               value: string;
               unit: RelativeTimeFormatUnitSingular;

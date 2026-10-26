@@ -36,7 +36,7 @@ FORM_EDIT_COLOR_MODE_KEY = 'ohos.extra.param.key.form_edit_color_mode'
 
 Indicates the key specifying the color mode of the form edit ability, which is represented as want: {"parameters": {FORM_EDIT_COLOR_MODE_KEY: -1}} Value: -1 for automatic, 0 for dark mode, 1 for light mode.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 

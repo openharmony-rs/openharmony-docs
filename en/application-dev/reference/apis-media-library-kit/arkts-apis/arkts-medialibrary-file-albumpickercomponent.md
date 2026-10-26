@@ -81,7 +81,7 @@ struct PickerDemo {
     Stack() {
       AlbumPickerComponent({
         albumPickerOptions: this.albumPickerOptions,
-        onAlbumClick:(albumInfo: AlbumInfo): boolean => this.onAlbumClick(albumInfo),
+        onAlbumClick: (albumInfo: AlbumInfo): boolean => this.onAlbumClick(albumInfo),
         onEmptyAreaClick: this.emptyAreaClickCallback,
       }).height('100%').width('100%')
     }

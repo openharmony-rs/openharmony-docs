@@ -97,8 +97,8 @@ addSubtitleFromFd(fd: number, offset?: number, length?: number): Promise<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | fd | number | 是 | 资源句柄，通过[resourceManager.getRawFd](../../apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-resourcemanager-i.md#getrawfd-1)获取。 |
-| offset | number | 否 | 资源偏移量，需要基于预置资源的信息输入，非法值会造成字幕频资源解析错误，默认值:0。 |
-| length | number | 否 | 资源长度，默认值为文件中从偏移量开始的剩余字节，需要基于预置资源的信息输入，非法值会造成字幕频资源解析错误，默认值:0。 |
+| offset | number | 否 | 资源偏移量，需要基于预置资源的信息输入，非法值会造成字幕资源解析错误，默认值:0。单位为字节（Byte）。 |
+| length | number | 否 | 资源长度，默认值为文件中从偏移量开始的剩余字节，需要基于预置资源的信息输入，非法值会造成字幕资源解析错误，默认值:0。单位为字节（Byte）。 |
 
 **返回值：**
 
@@ -326,6 +326,42 @@ async function test() {
   await player.advanceToPrevMediaSource();
 }
 ```
+
+## checkSupportPlaybackCommand
+
+```TypeScript
+checkSupportPlaybackCommand(command: PlaybackCommand): Promise<boolean>
+```
+
+查询当前播放源下是否可以执行指定的播控命令。该函数必须在Prepare()执行成功后才能被调用。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-AVPlayer-checkSupportPlaybackCommand(command: PlaybackCommand): Promise<boolean>--><!--Device-AVPlayer-checkSupportPlaybackCommand(command: PlaybackCommand): Promise<boolean>-End-->
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| command | [PlaybackCommand](arkts-media-media-playbackcommand-e.md) | 是 | 需要查询的播控指令的枚举值。<br>取值约束：请参阅枚举回放命令。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;boolean&gt; | Promise用于返回结果。**true**表示可以执行该命令。**false**表示不允许执行该命令。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [5400102](../../apis-media-kit/errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. If this function is invoked before Prepare(), it is returned. |
 
 ## clearPlaybackList
 
@@ -2130,7 +2166,7 @@ on(type: 'seekDone', callback: Callback<number>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'seekDone' | 是 | seek生效的事件回调类型，支持的事件：'seekDone'，除SEEK_CONTINUOUS外的[SeekMode](arkts-media-media-seekmode-e.md)每次调用seek后都会回调此事件。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | 是 | 回调函数。seek生效的事件回调方法，只会上报用户请求的time位置。<br>**视频播放：** [SeekMode](arkts-media-media-seekmode-e.md)会造成实际跳转位置与用户设置产生偏差，精准位置需要通过currentTime获取，事件回调的time仅代表完成用户某一次请求。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | 是 | 回调函数。seek生效的事件回调方法，只会上报用户请求的time位置，单位为（ms）。<br>**视频播放：** [SeekMode](arkts-media-media-seekmode-e.md)会造成实际跳转位置与用户设置产生偏差，精准位置需要通过currentTime获取，事件回调的time仅代表完成用户某一次请求。 |
 
 **示例**
 
@@ -2278,7 +2314,7 @@ on(type: 'timeUpdate', callback: Callback<number>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'timeUpdate' | 是 | 时间更新的回调类型，支持的事件：'timeUpdate'。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | 是 | 回调函数。返回当前时间。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | 是 | 回调函数。返回当前时间，单位为（ms）。 |
 
 ## on('durationUpdate')
 
@@ -2305,7 +2341,7 @@ on(type: 'durationUpdate', callback: Callback<number>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'durationUpdate' | 是 | 时长更新的回调类型，支持的事件：'durationUpdate'。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | 是 | 回调函数。返回资源时长。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | 是 | 回调函数。返回资源时长，单位为（ms）。 |
 
 **示例**
 
@@ -2502,7 +2538,7 @@ async function test(){
 on(type: 'error', callback: ErrorCallback): void
 ```
 
-监听[AVPlayer](arkts-media-multimedia-media.md)的错误事件，该事件仅用于错误提示，不需要用户停止播控动作。如果此时[AVPlayerState](arkts-media-media-avplayerstate-t.md)也切至error状态，用户需要通过[reset()](#reset-1)或者[release()](#release-1)退出播放操作。若调用[reset()](#reset-1)方法后，播放状态仍为error状态，建议直接调用[release()](#release-1)方法，退出播放操作。
+监听[AVPlayer](arkts-media-media-avplayer-i.md)的错误事件，该事件仅用于错误提示，不需要用户停止播控动作。如果此时[AVPlayerState](arkts-media-media-avplayerstate-t.md)也切至error状态，用户需要通过[reset()](#reset-1)或者[release()](#release-1)退出播放操作。若调用[reset()](#reset-1)方法后，播放状态仍为error状态，建议直接调用[release()](#release-1)方法，退出播放操作。
 
 **起始版本：** 9
 

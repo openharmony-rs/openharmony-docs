@@ -416,7 +416,7 @@ function ImportSceneTest() {
 static load(uri? : ResourceStr): Promise<Scene>
 ```
 
-通过传入的资源路径加载资源，使用Promise异步回调。调用后，应该在Scene使用完毕时调用destroy释放资源，否则可能导致资源泄漏。
+通过传入的资源路径加载资源，使用Promise异步回调。调用后，应该在Scene使用完毕时调用[destroy](#destroy)释放资源，否则可能导致资源泄漏。
 
 **起始版本：** 12
 

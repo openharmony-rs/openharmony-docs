@@ -58,9 +58,19 @@
     - [AtManager](arkts-ability-abilityaccessctrl-atmanager-i.md)
     <!--Del-->
     - [AtManager(system api)](arkts-ability-abilityaccessctrl-atmanager-i-sys.md)<!--DelEnd-->
+    <!--Del-->
+    - [AutomationControlControllerInfo(system api)](arkts-ability-abilityaccessctrl-automationcontrolcontrollerinfo-i-sys.md)<!--DelEnd-->
+    <!--Del-->
+    - [AutomationControlTargetParam(system api)](arkts-ability-abilityaccessctrl-automationcontroltargetparam-i-sys.md)<!--DelEnd-->
+    <!--Del-->
+    - [AutomationControlTargetResult(system api)](arkts-ability-abilityaccessctrl-automationcontroltargetresult-i-sys.md)<!--DelEnd-->
     - [PermissionStateChangeInfo](arkts-ability-abilityaccessctrl-permissionstatechangeinfo-i.md)
     <!--Del-->
     - [PermissionStatusInfo(system api)](arkts-ability-abilityaccessctrl-permissionstatusinfo-i-sys.md)<!--DelEnd-->
+    <!--Del-->
+    - [AutomationControlSetResult(system api)](arkts-ability-abilityaccessctrl-automationcontrolsetresult-e-sys.md)<!--DelEnd-->
+    <!--Del-->
+    - [AutomationControlStatus(system api)](arkts-ability-abilityaccessctrl-automationcontrolstatus-e-sys.md)<!--DelEnd-->
     - [GrantStatus](arkts-ability-abilityaccessctrl-grantstatus-e.md)
     <!--Del-->
     - [PermissionRequestToggleStatus(system api)](arkts-ability-abilityaccessctrl-permissionrequesttogglestatus-e-sys.md)<!--DelEnd-->
@@ -76,21 +86,31 @@
   <!--Del-->
   - [generateControllerDevicePackage(system api)](arkts-ability-abilitytoolaccessctrl-generatecontrollerdevicepackage-f-sys.md)<!--DelEnd-->
   <!--Del-->
+  - [generateTaskChallenge(system api)](arkts-ability-abilitytoolaccessctrl-generatetaskchallenge-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [generateTaskIdentity(system api)](arkts-ability-abilitytoolaccessctrl-generatetaskidentity-f-sys.md)<!--DelEnd-->
+  <!--Del-->
   - [getRemoteGrantStatus(system api)](arkts-ability-abilitytoolaccessctrl-getremotegrantstatus-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [grantToolPermissionsByUser(system api)](arkts-ability-abilitytoolaccessctrl-granttoolpermissionsbyuser-f-sys.md)<!--DelEnd-->
+  - [queryControlAppStatus](arkts-ability-abilitytoolaccessctrl-querycontrolappstatus-f.md)
+  - [requestControlAppPermissionFromUser](arkts-ability-abilitytoolaccessctrl-requestcontrolapppermissionfromuser-f.md)
   <!--Del-->
   - [requestToolPermissions(system api)](arkts-ability-abilitytoolaccessctrl-requesttoolpermissions-f-sys.md)<!--DelEnd-->
   - [requestToolTicket](arkts-ability-abilitytoolaccessctrl-requesttoolticket-f.md)
+  <!--Del-->
+  - [revokeTaskIdentity(system api)](arkts-ability-abilitytoolaccessctrl-revoketaskidentity-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [updateRemoteGrantStatus(system api)](arkts-ability-abilitytoolaccessctrl-updateremotegrantstatus-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [verifyControlledDevicePackage(system api)](arkts-ability-abilitytoolaccessctrl-verifycontrolleddevicepackage-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [verifyControllerDevicePackage(system api)](arkts-ability-abilitytoolaccessctrl-verifycontrollerdevicepackage-f-sys.md)<!--DelEnd-->
+  - [AppInfo](arkts-ability-abilitytoolaccessctrl-appinfo-i.md)
   <!--Del-->
   - [AuthStatusInfo(system api)](arkts-ability-abilitytoolaccessctrl-authstatusinfo-i-sys.md)<!--DelEnd-->
   - [CliCmdInfo](arkts-ability-abilitytoolaccessctrl-clicmdinfo-i.md)
+  - [ControlAppStatusResult](arkts-ability-abilitytoolaccessctrl-controlappstatusresult-i.md)
   <!--Del-->
   - [OperationInfo(system api)](arkts-ability-abilitytoolaccessctrl-operationinfo-i-sys.md)<!--DelEnd-->
   - [PermissionInfo](arkts-ability-abilitytoolaccessctrl-permissioninfo-i.md)
@@ -111,13 +131,20 @@
   <!--Del-->
   - [RemoteUserAuthResults(system api)](arkts-ability-abilitytoolaccessctrl-remoteuserauthresults-i-sys.md)<!--DelEnd-->
   <!--Del-->
+  - [TaskIdentity(system api)](arkts-ability-abilitytoolaccessctrl-taskidentity-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [TaskIdentityInfo(system api)](arkts-ability-abilitytoolaccessctrl-taskidentityinfo-i-sys.md)<!--DelEnd-->
+  <!--Del-->
   - [TicketInfo(system api)](arkts-ability-abilitytoolaccessctrl-ticketinfo-i-sys.md)<!--DelEnd-->
-  - [TicketOpions](arkts-ability-abilitytoolaccessctrl-ticketopions-i.md)
+  - [TicketParams](arkts-ability-abilitytoolaccessctrl-ticketparams-i.md)
   - [TicketQueryResult](arkts-ability-abilitytoolaccessctrl-ticketqueryresult-i.md)
   <!--Del-->
   - [UserAuthResult(system api)](arkts-ability-abilitytoolaccessctrl-userauthresult-i-sys.md)<!--DelEnd-->
   <!--Del-->
   - [AuthStatus(system api)](arkts-ability-abilitytoolaccessctrl-authstatus-e-sys.md)<!--DelEnd-->
+  - [ControlAppStatus](arkts-ability-abilitytoolaccessctrl-controlappstatus-e.md)
+  <!--Del-->
+  - [ExecuteType(system api)](arkts-ability-abilitytoolaccessctrl-executetype-e-sys.md)<!--DelEnd-->
   <!--Del-->
   - [OperationType(system api)](arkts-ability-abilitytoolaccessctrl-operationtype-e-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -316,6 +343,8 @@
 - [@ohos.app.ability.appMemoryOptimizer(Application Memory Optimizer)](arkts-ability-app-ability-appmemoryoptimizer.md)
   - [evictFilePages](arkts-ability-appmemoryoptimizer-evictfilepages-f.md)
   - [evictModuleFilePages](arkts-ability-appmemoryoptimizer-evictmodulefilepages-f.md)
+- [@ohos.app.ability.AppProcessStateObserver](arkts-ability-app-ability-appprocessstateobserver.md)
+  - [AppProcessStateObserver](arkts-ability-app-ability-appprocessstateobserver-appprocessstateobserver-i.md)
 - [@ohos.app.ability.appRecovery(Application Recovery)](arkts-ability-app-ability-apprecovery.md)
   - [enableAppRecovery](arkts-ability-apprecovery-enableapprecovery-f.md)
   - [restartApp](arkts-ability-apprecovery-restartapp-f.md)

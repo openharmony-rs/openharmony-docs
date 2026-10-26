@@ -26,6 +26,13 @@ Creates an **ArcSwiper** component.
 
 ## Summary
 
+### Classes
+
+| Name | Description |
+| --- | --- |
+| [ArcDotIndicator](arkts-arkui-arcswiper-comp-arcdotindicator-c.md) | Describes the properties and behavior of the arc dot navigation indicator. |
+| [ArcSwiperController](arkts-arkui-arcswiper-comp-arcswipercontroller-c.md) | Implements the controller of the **ArcSwiper** component. You can bind this object to the **ArcSwiper** component and use it to control page switching. |
+
 ### Interfaces
 
 | Name | Description |

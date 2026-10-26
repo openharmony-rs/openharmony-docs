@@ -57,7 +57,7 @@ export function promoteCurrentToCandidateMasterProcess(insertToHead: boolean): P
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | [16000115](../errorcode-ability.md#16000115-当前进程不支持设置为备选主控进程) | The current process cannot be set as a candidate master process. |
 
 **示例**

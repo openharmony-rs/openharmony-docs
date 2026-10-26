@@ -18,43 +18,6 @@ declare class InsightIntentContext
 import { InsightIntentContext } from '@kit.AbilityKit';
 ```
 
-## getInsightIntentExecutionInfo
-
-```TypeScript
-getInsightIntentExecutionInfo(instanceId: number): Promise<insightIntent.InsightIntentExecutionInfo>
-```
-
-获取意图执行信息。
-
-**起始版本：** 26.2.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
-
-<!--Device-InsightIntentContext-getInsightIntentExecutionInfo(instanceId: int): Promise<insightIntent.InsightIntentExecutionInfo>--><!--Device-InsightIntentContext-getInsightIntentExecutionInfo(instanceId: int): Promise<insightIntent.InsightIntentExecutionInfo>-End-->
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| instanceId | number | 是 | 意图实例ID，来自InsightIntentEntryExecutor.context.instanceId。<br>该值应为整数。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise&lt;[insightIntent.InsightIntentExecutionInfo](arkts-ability-insightintent-insightintentexecutioninfo-i.md)&gt; | Promise对象，用于返回意图执行信息。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [16000003](../errorcode-ability.md#16000003-指定的id不存在) | The specified ID does not exist. |
-| [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. Possible causes: 1. Connect to system service failed; 2.Send restart message to system service failed; 3.System service failed to communicate with dependency module. |
-
 ## setReturnModeForUIAbilityForeground
 
 ```TypeScript
@@ -371,6 +334,26 @@ export default class IntentExecutorImpl extends InsightIntentExecutor {
   }
 }
 ```
+
+## insightIntentExecutionInfo
+
+```TypeScript
+readonly insightIntentExecutionInfo?: insightIntent.InsightIntentExecutionInfo
+```
+
+表示意图执行信息。
+
+**类型：** [insightIntent.InsightIntentExecutionInfo](arkts-ability-insightintent-insightintentexecutioninfo-i.md)
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-InsightIntentContext-readonly insightIntentExecutionInfo?: insightIntent.InsightIntentExecutionInfo--><!--Device-InsightIntentContext-readonly insightIntentExecutionInfo?: insightIntent.InsightIntentExecutionInfo-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 ## instanceId
 

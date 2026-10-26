@@ -1,7 +1,11 @@
 # ArkTS API<!--arkts-securityguardkit-->
 
 <!--Del-->
-- [@ohos.security.securityGuard（本模块提供设备风险管理平台能力。）](arkts-securityguard-security-securityguard.md)<!--DelEnd-->
+- [@ohos.security.securityGuard（This module provides the capabilities to security guard.）](arkts-securityguard-security-securityguard.md)<!--DelEnd-->
+  <!--Del-->
+  - [createAuthProvider（系统接口）](arkts-securityguard-securityguard-createauthprovider-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [destroyAuthProvider（系统接口）](arkts-securityguard-securityguard-destroyauthprovider-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [getModelResult（系统接口）](arkts-securityguard-securityguard-getmodelresult-f-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -19,6 +23,20 @@
   <!--Del-->
   - [updatePolicyFile（系统接口）](arkts-securityguard-securityguard-updatepolicyfile-f-sys.md)<!--DelEnd-->
   <!--Del-->
+  - [AuthClientInfo（系统接口）](arkts-securityguard-securityguard-authclientinfo-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [AuthClientStatus（系统接口）](arkts-securityguard-securityguard-authclientstatus-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [AuthEventInfo（系统接口）](arkts-securityguard-securityguard-autheventinfo-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [AuthProvider（系统接口）](arkts-securityguard-securityguard-authprovider-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [AuthProviderCallback（系统接口）](arkts-securityguard-securityguard-authprovidercallback-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [AuthResult（系统接口）](arkts-securityguard-securityguard-authresult-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [ClientAuthResult（系统接口）](arkts-securityguard-securityguard-clientauthresult-i-sys.md)<!--DelEnd-->
+  <!--Del-->
   - [CollectorRule（系统接口）](arkts-securityguard-securityguard-collectorrule-i-sys.md)<!--DelEnd-->
   <!--Del-->
   - [ModelResult（系统接口）](arkts-securityguard-securityguard-modelresult-i-sys.md)<!--DelEnd-->
@@ -34,3 +52,5 @@
   - [SecurityEventInfo（系统接口）](arkts-securityguard-securityguard-securityeventinfo-i-sys.md)<!--DelEnd-->
   <!--Del-->
   - [SecurityEventRule（系统接口）](arkts-securityguard-securityguard-securityeventrule-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [AuthStrategy（系统接口）](arkts-securityguard-securityguard-authstrategy-e-sys.md)<!--DelEnd-->

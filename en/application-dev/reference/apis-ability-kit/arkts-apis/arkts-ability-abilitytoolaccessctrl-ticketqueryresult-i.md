@@ -6,7 +6,7 @@ interface TicketQueryResult
 
 Ticket query result.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 <!--Device-abilityToolAccessCtrl-interface TicketQueryResult--><!--Device-abilityToolAccessCtrl-interface TicketQueryResult-End-->
 
@@ -28,7 +28,7 @@ Permission result list.
 
 **Type:** [PermissionInfo](arkts-ability-abilitytoolaccessctrl-permissioninfo-i.md)[]
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
@@ -46,7 +46,7 @@ Ticket information.
 
 **Type:** string
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 

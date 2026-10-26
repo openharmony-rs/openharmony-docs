@@ -114,6 +114,26 @@ Whether the developer is allowed to modify the auto-startup status of this appli
 
 **System API:** This is a system API.
 
+## isDirectBoot
+
+```TypeScript
+isDirectBoot?: boolean
+```
+
+The app is started when the device is powered on and before the user unlocks the device.
+
+**Type:** boolean
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AutoStartupInfo-isDirectBoot?: boolean--><!--Device-AutoStartupInfo-isDirectBoot?: boolean-End-->
+
+**System capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+**System API:** This is a system API.
+
 ## moduleName
 
 ```TypeScript

@@ -4,7 +4,7 @@
 declare class SaveButtonAttribute extends SecurityComponentMethod<SaveButtonAttribute>
 ```
 
-Universal attributes are not supported. This component supports the attributes listed below, as well as [universal attributes of security components](../arkts-apis/arkts-arkui-securitycomponent.md#security_component). Only the following events are supported.
+Universal attributes are not supported. This component supports the attributes listed below, as well as [universal attributes of security components](../arkts-apis/arkts-arkui-securitycomponentmethod-c.md). Only the following events are supported.
 
 **Inheritance/Implementation:** SaveButtonAttribute extends SecurityComponentMethod&lt;SaveButtonAttribute&gt;
 
@@ -120,7 +120,7 @@ Sets the icon of the **SaveButton** component.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| icon | [Resource](../arkts-apis/arkts-arkui-resource-t.md) | Yes | Custom icon resource information. Only data sources of the Resource type are supported. <br>Images in the following formats are supported: PNG, JPG, JPEG, BMP, SVG, WebP, GIF, and HEIF. For details about the supported image formats, see [Image](arkts-arkui-image-comp.md). If the resource is not an image resource or the format is not supported, the icon is displayed as blank. <br>Since API version 26.0.0, data sources of the Resource type in Symbol format are supported. <br>If the app does not have the **ohos.permission.CUSTOMIZE_SAVE_BUTTON** permission, the custom icon does not take effect and the save button uses the default style. |
+| icon | [Resource](../arkts-apis/arkts-arkui-resource-t.md) | Yes | Custom icon resource information. Only data sources of the Resource type are supported. <br>Images in the following formats are supported: PNG, JPG, JPEG, BMP, SVG, WebP, GIF, and HEIF. For details about the supported image formats, see [Image](arkts-arkui-image-comp.md#image). If the resource is not an image resource or the format is not supported, the icon is displayed as blank. <br>Since API version 26.0.0, data sources of the Resource type in Symbol format are supported. <br>If the app does not have the **ohos.permission.CUSTOMIZE_SAVE_BUTTON** permission, the custom icon does not take effect and the save button uses the default style. |
 
 ## setText
 

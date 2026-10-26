@@ -14,6 +14,54 @@ UIAbilityContext是需要保存状态的[UIAbility](arkts-ability-app-ability-ui
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
+## backToCallerAppWithResult
+
+```TypeScript
+backToCallerAppWithResult(abilityResult: AbilityResult, requestCode: string): Promise<void>
+```
+
+当通过[startAbilityForResult](#startabilityforresult-1)、[openLink](#openlink)或[openAtomicService](#openatomicservice)拉起目标方UIAbility，且需要目标方返回结果时，目标方可以通过该接口将结果返回并拉起调用方。与[terminateSelfWithResult](#terminateselfwithresult-1)不同的是，本接口在返回时不会销毁当前UIAbility。使用Promise异步回调。
+
+> **说明：** 
+> 
+> - 如果调用方位于后台，还需要具备ohos.permission.START_ABILITIES_FROM_BACKGROUND（该权限仅系统应用可申请）。更多的组件启动规则详见[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
+
+**起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.START_ABILITIES_FROM_BACKGROUND
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-UIAbilityContext-backToCallerAppWithResult(abilityResult: AbilityResult, requestCode: string): Promise<void>--><!--Device-UIAbilityContext-backToCallerAppWithResult(abilityResult: AbilityResult, requestCode: string): Promise<void>-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| abilityResult | [AbilityResult](arkts-ability-abilityresult-i.md) | 是 | 包含目标方返回给拉起方的结果。 |
+| requestCode | string | 是 | 通过[startAbilityForResult](#startabilityforresult-1)、[openLink](#openlink)或[openAtomicService](#openatomicservice)拉起目标方Ability且需要目标方返回结果时，系统生成的用于标识本次调用的requestCode。该值可以通过want中的[CALLER_REQUEST_CODE](arkts-ability-app-ability-wantconstant.md)字段获取。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [16000009](../errorcode-ability.md#16000009-wukong模式不允许启动停止ability) | An ability cannot be started or stopped in Wukong mode. |
+| [16000011](../errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
+| [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. Possible causes: 1.Connect to system service failed; 2.System service failed to communicate with dependency module. |
+| [16000074](../errorcode-ability.md#16000074-返回结果时requestcode对应的调用方不存在) | The caller does not exist. |
+| [16000075](../errorcode-ability.md#16000075-不支持返回结果时拉起调用方) | BackToCaller is not supported. |
+
 ## connectAppServiceExtensionAbility
 
 ```TypeScript
@@ -4087,9 +4135,9 @@ backToCallerAbilityWithResult(abilityResult: AbilityResult, requestCode: string)
 
 **起始版本：** 12
 
-**废弃版本：** 26.2.0
+**废弃版本：** 26.1.0
 
-**替代接口：** backToCallerAppWithResult(abilityResult: AbilityResult, requestCode: string)
+**替代接口：** [backToCallerAppWithResult](#backtocallerappwithresult)(abilityResult: AbilityResult, requestCode: string)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

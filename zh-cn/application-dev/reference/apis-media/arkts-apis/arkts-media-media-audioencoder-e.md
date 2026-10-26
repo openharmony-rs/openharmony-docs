@@ -6,7 +6,6 @@ enum AudioEncoder
 
 
 > **说明：** 
-> 
 > 从API version 6开始支持，从API version 8开始废弃，建议使用[CodecMimeType](arkts-media-media-codecmimetype-e.md)替代。
 
 表示音频编码格式的枚举。

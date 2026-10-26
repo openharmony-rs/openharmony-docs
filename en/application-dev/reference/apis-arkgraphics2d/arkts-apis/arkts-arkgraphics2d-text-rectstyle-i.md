@@ -28,11 +28,11 @@ Rectangle border color. Default value: The default value is white.
 
 **Type:** [common2D.Color](arkts-arkgraphics2d-common2d-color-i.md)
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-RectStyle-borderColor?: common2D.Color--><!--Device-RectStyle-borderColor?: common2D.Color-End-->
 
@@ -48,11 +48,11 @@ Rectangle border width. Unit: Pixel. Default value: The default value is 0.
 
 **Type:** number
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-RectStyle-borderWidth?: double--><!--Device-RectStyle-borderWidth?: double-End-->
 

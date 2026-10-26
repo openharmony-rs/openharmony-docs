@@ -49,7 +49,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   // For example, deviceId is 12345678. You can use queryDevices() to obtain the deviceId.
-  deviceManager.unbindDevice(12345678, (error : BusinessError, data : number) => {
+  deviceManager.unbindDevice(12345678, (error: BusinessError, data: number) => {
     if (error) {
       console.error(`unbindDevice async fail. Code is ${error.code}, message is ${error.message}`);
       return;
@@ -110,9 +110,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   // For example, deviceId is 12345678. You can use queryDevices() to obtain the deviceId.
-  deviceManager.unbindDevice(12345678).then((data : number) => {
+  deviceManager.unbindDevice(12345678).then((data: number) => {
     console.info(`unbindDevice success, Device_Id is ${data}.`);
-  }, (error : BusinessError) => {
+  }, (error: BusinessError) => {
     console.error(`unbindDevice async fail. Code is ${error.code}, message is ${error.message}`);
   });
 } catch (error) {

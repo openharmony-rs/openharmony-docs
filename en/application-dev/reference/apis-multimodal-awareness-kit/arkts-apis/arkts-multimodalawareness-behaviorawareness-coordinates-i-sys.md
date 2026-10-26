@@ -6,7 +6,7 @@ export interface Coordinates
 
 Geographic coordinates.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 <!--Device-behaviorAwareness-export interface Coordinates--><!--Device-behaviorAwareness-export interface Coordinates-End-->
 
@@ -30,7 +30,7 @@ Latitude. Unit: degree. Value range: [-90,90].
 
 **Type:** number
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -50,7 +50,7 @@ Longitude. Unit: degree. Value range: [-180,180].
 
 **Type:** number
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 

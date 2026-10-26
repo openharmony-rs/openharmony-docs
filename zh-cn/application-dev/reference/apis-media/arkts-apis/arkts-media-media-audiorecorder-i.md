@@ -35,7 +35,6 @@ on(type: 'prepare' | 'start' | 'pause' | 'resume' | 'stop' | 'release' | 'reset'
 开始订阅音频录制事件。
 
 > **说明：** 
-> 
 > 从API version 6开始支持，从API version 9开始废弃，建议使用
 > [AVRecorder.on('stateChange')](arkts-media-media-avrecorder-i.md#onstatechange)
 > 替代。
@@ -66,7 +65,6 @@ on(type: 'error', callback: ErrorCallback): void
 开始订阅音频录制错误事件，当上报error错误事件后，用户需处理error事件，退出录制操作。
 
 > **说明：** 
-> 
 > 从API version 6开始支持，从API version 9开始废弃，建议使用
 > [AVRecorder.on('error')](arkts-media-media-avrecorder-i.md#onerror)
 > 替代。
@@ -97,7 +95,6 @@ pause(): void
 暂停录制，需要在'start'事件成功触发后，才能调用pause方法。
 
 > **说明：** 
-> 
 > 从API version 6开始支持，从API version 9开始废弃，建议使用
 > [AVRecorder.pause](arkts-media-media-avrecorder-i.md#pause-1)替代。
 
@@ -120,7 +117,6 @@ prepare(config: AudioRecorderConfig): void
 录制准备，根据传入的配置参数初始化录制资源（包括编码器、采样率、声道数等），完成录制前的准备工作。
 
 > **说明：** 
-> 
 > 从API version 6开始支持，从API version 9开始废弃，建议使用
 > [AVRecorder.prepare](arkts-media-media-avrecorder-i.md#prepare-1)
 > 替代。
@@ -158,7 +154,6 @@ release(): void
 释放录音资源。
 
 > **说明：** 
-> 
 > 从API version 6开始支持，从API version 9开始废弃，建议使用
 > [AVRecorder.release](arkts-media-media-avrecorder-i.md#release-1)替代。
 
@@ -183,7 +178,6 @@ reset(): void
 进行重置录音之前，需要先调用stop()停止录音。重置录音之后，需要调用prepare()设置录音参数项，才能再次进行录音。
 
 > **说明：** 
-> 
 > 从API version 6开始支持，从API version 9开始废弃，建议使用
 > [AVRecorder.reset](arkts-media-media-avrecorder-i.md#reset-1)替代。
 
@@ -206,7 +200,6 @@ resume(): void
 恢复录制，需要在'pause'事件成功触发后，才能调用resume方法。
 
 > **说明：** 
-> 
 > 从API version 6开始支持，从API version 9开始废弃，建议使用
 > [AVRecorder.resume](arkts-media-media-avrecorder-i.md#resume-1)替代。
 
@@ -229,7 +222,6 @@ start(): void
 开始录制，需在'prepare'事件成功触发后，才能调用start方法。
 
 > **说明：** 
-> 
 > 从API version 6开始支持，从API version 9开始废弃，建议使用
 > [AVRecorder.start](arkts-media-media-avrecorder-i.md#start-1)替代。
 
@@ -252,7 +244,6 @@ stop(): void
 停止录音。
 
 > **说明：** 
-> 
 > 从API version 6开始支持，从API version 9开始废弃，建议使用
 > [AVRecorder.stop](arkts-media-media-avrecorder-i.md#stop-1)替代。
 

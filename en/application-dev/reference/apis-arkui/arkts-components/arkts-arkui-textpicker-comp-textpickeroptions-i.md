@@ -51,7 +51,7 @@ beyond the number of columns are ignored; columns without a specified width even
 ## range
 
 ```TypeScript
-range: string[] | string[][]  | Resource | TextPickerRangeContent[] | TextCascadePickerRangeContent[]
+range: string[] | string[][] | Resource | TextPickerRangeContent[] | TextCascadePickerRangeContent[]
 ```
 
 Data selection list of the picker. It cannot be set to an empty array. If it is set to an empty array, nothing is displayed; if it dynamically changes to an empty array, the current normal value remains displayed.
@@ -84,7 +84,7 @@ Data selection list of the picker. It cannot be set to an empty array. If it is 
 ## selected
 
 ```TypeScript
-selected?: number[]
+selected?: number | number[]
 ```
 
 Sets the index of the selected item in the data selection list. The index starts from 0.
@@ -104,7 +104,7 @@ levels.
 
 **Atomic service API:** This API is supported in atomic services since API version 11.
 
-**Type:** number[]
+**Type:** number &#124; number[]
 
 **Default:** 0
 
@@ -121,7 +121,7 @@ levels.
 ## value
 
 ```TypeScript
-value?: ResourceStr[]
+value?: ResourceStr | ResourceStr[]
 ```
 
 Sets the value of the selected item. Its priority is lower than that of selected.
@@ -144,7 +144,7 @@ the same as the number of levels.
 
 **Atomic service API:** This API is supported in atomic services since API version 11.
 
-**Type:** [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md)[]
+**Type:** [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) &#124; [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md)[]
 
 **Default:** 
 - API versions 8 to 9: value of the first item

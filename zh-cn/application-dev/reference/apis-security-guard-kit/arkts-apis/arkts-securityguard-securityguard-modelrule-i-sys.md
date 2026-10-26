@@ -4,7 +4,7 @@
 interface ModelRule
 ```
 
-安全模型规则。
+Provides the ModelRule type.
 
 **起始版本：** 12
 
@@ -26,7 +26,7 @@ import { securityGuard } from '@kit.SecurityGuardKit';
 modelName: string
 ```
 
-安全模型名称。
+The security model rule
 
 **类型：** string
 
@@ -44,7 +44,7 @@ modelName: string
 param?: string
 ```
 
-额外模型参数。
+The model param.
 
 **类型：** string
 

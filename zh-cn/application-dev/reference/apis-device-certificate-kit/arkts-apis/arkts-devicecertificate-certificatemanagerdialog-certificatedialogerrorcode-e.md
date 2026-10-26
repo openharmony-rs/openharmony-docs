@@ -157,3 +157,19 @@ ERROR_PARAMETER_VALIDATION_FAILED = 29700006
 <!--Device-CertificateDialogErrorCode-ERROR_PARAMETER_VALIDATION_FAILED = 29700006--><!--Device-CertificateDialogErrorCode-ERROR_PARAMETER_VALIDATION_FAILED = 29700006-End-->
 
 **系统能力：** SystemCapability.Security.CertificateManagerDialog
+
+## ERROR_PASSWORD_IS_INCORRECT
+
+```TypeScript
+ERROR_PASSWORD_IS_INCORRECT = 29700008
+```
+
+密码不正确。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-CertificateDialogErrorCode-ERROR_PASSWORD_IS_INCORRECT = 29700008--><!--Device-CertificateDialogErrorCode-ERROR_PASSWORD_IS_INCORRECT = 29700008-End-->
+
+**系统能力：** SystemCapability.Security.CertificateManagerDialog

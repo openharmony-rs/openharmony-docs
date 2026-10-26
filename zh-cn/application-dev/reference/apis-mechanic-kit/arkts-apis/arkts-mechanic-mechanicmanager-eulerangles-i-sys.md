@@ -4,7 +4,7 @@
 export interface EulerAngles
 ```
 
-Absolute euler angles relative to the home position.
+相对于初始位置的绝对欧拉角
 
 **起始版本：** 20
 

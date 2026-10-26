@@ -1132,11 +1132,11 @@ sidebarBottomBar(bottomBar: Optional<ComponentContent>)
 
 Sets the bottom bar content of the sidebar tab bar.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-TabsAttribute-sidebarBottomBar(bottomBar: Optional<ComponentContent>): TabsAttribute--><!--Device-TabsAttribute-sidebarBottomBar(bottomBar: Optional<ComponentContent>): TabsAttribute-End-->
 
@@ -1204,11 +1204,11 @@ sidebarFooter(footer: Optional<ComponentContent>)
 
 Sets the footer content of the sidebar tab bar.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-TabsAttribute-sidebarFooter(footer: Optional<ComponentContent>): TabsAttribute--><!--Device-TabsAttribute-sidebarFooter(footer: Optional<ComponentContent>): TabsAttribute-End-->
 
@@ -1444,11 +1444,11 @@ topBarFloatingStyle(style: Optional<TopFloatingTabBarStyle>)
 
 Enable top floating style for bar. This is effective only when **barStyle** is set to **TabBarStyle.TOP** or **TabBarStyle.TOP_ADAPTABLE**.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-TabsAttribute-topBarFloatingStyle(style: Optional<TopFloatingTabBarStyle>): TabsAttribute--><!--Device-TabsAttribute-topBarFloatingStyle(style: Optional<TopFloatingTabBarStyle>): TabsAttribute-End-->
 

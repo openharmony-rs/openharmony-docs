@@ -4,7 +4,7 @@
 export interface RotationAngles
 ```
 
-The rotion angles, relative to the current position. @typedef RotationAngles
+相对当前位置的旋转角度@typedef RotationAngles
 
 **起始版本：** 20
 

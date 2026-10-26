@@ -28,9 +28,11 @@ import { adminManager } from '@kit.MDMKit';
 | [disableDeviceAdmin](arkts-mdm-adminmanager-disabledeviceadmin-f.md#disabledeviceadmin-1) | [SDA](../../../mdm/mdm-kit-term.md#super-device-admin-sda超级设备管理员)应用通过该接口可以解除激活其他[DA](../../../mdm/mdm-kit-term.md#device-admin-da普通设备管理员)应用，使用Promise异步回调。调用成功后，指定的DA应用将被解除激活，不再具备设备管理能力。该接口仅支持超级设备管理应用调用。 |
 | [enableDeviceAdmin](arkts-mdm-adminmanager-enabledeviceadmin-f.md#enabledeviceadmin-1) | [SDA](../../../mdm/mdm-kit-term.md#super-device-admin-sda超级设备管理员)应用通过该接口可以激活其他[DA](../../../mdm/mdm-kit-term.md#device-admin-da普通设备管理员)应用，使用Promise异步回调。调用成功后，指定的DA应用将被激活并具备设备管理能力。该接口仅支持超级设备管理应用调用。 |
 | [enableSelfDeviceAdmin](arkts-mdm-adminmanager-enableselfdeviceadmin-f.md#enableselfdeviceadmin-1) | 在企业设备中，MDM应用没有预置激活的场景下，MDM应用可以通过该接口实现自激活。该接口仅支持激活MDM应用自身，不支持激活其他MDM应用；支持的激活类型包括超级设备管理应用和普通设备管理应用。 |
+| [getAdminInfos](arkts-mdm-adminmanager-getadmininfos-f.md#getadmininfos-1) | 查询管理员信息 |
 | [getDelegatedBundleNames](arkts-mdm-adminmanager-getdelegatedbundlenames-f.md#getdelegatedbundlenames-1) | 查询可以访问某个委托策略的被委托应用，输出被委托应用列表。 |
 | [getDelegatedPolicies](arkts-mdm-adminmanager-getdelegatedpolicies-f.md#getdelegatedpolicies-1) | 查询被委托应用可访问的策略列表。 |
 | [isByodAdmin](arkts-mdm-adminmanager-isbyodadmin-f.md#isbyodadmin-1) | 根据企业设备管理扩展组件查询当前应用是否被激活为BYOD设备管理应用。 |
+| [isSelfSuperAdmin](arkts-mdm-adminmanager-isselfsuperadmin-f.md#isselfsuperadmin-1) | 查询自身是否是超级管理员应用 |
 | [setDelegatedPolicies](arkts-mdm-adminmanager-setdelegatedpolicies-f.md#setdelegatedpolicies-1) | 委托其他应用来设置设备的管控策略。被委托的其他应用需申请委托策略对应接口所需权限。 |
 | [startAdminProvision](arkts-mdm-adminmanager-startadminprovision-f.md#startadminprovision-1) | 设备管理应用拉起BYOD管理员激活页面进行激活。 |
 | [subscribeManagedEventSync](arkts-mdm-adminmanager-subscribemanagedeventsync-f.md#subscribemanagedeventsync-1) | 订阅系统管理事件。调用成功后，当已订阅的系统管理事件发生时，设备管理应用将收到相应的通知。 |
@@ -71,6 +73,12 @@ import { adminManager } from '@kit.MDMKit';
 | [unsubscribeManagedEvent](arkts-mdm-adminmanager-unsubscribemanagedevent-f-sys.md#unsubscribemanagedevent-2) | 取消订阅系统管理事件。使用Promise异步回调。 |
 <!--DelEnd-->
 
+### 接口
+
+| 名称 | 说明 |
+| --- | --- |
+| [AdminInfo](arkts-mdm-adminmanager-admininfo-i.md) | 企业管理员应用信息 |
+
 <!--Del-->
 ### 接口（系统接口）
 
@@ -92,6 +100,5 @@ import { adminManager } from '@kit.MDMKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [AdminType](arkts-mdm-adminmanager-admintype-e-sys.md) | 设备管理应用的类型。 |
 | [RunningMode](arkts-mdm-adminmanager-runningmode-e-sys.md) | 设备管理的运行模式。 |
 <!--DelEnd-->

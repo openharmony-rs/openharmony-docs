@@ -8,7 +8,7 @@ interface FileEntity extends IntentEntity
 
 **继承/实现关系：** FileEntity extends [IntentEntity](arkts-ability-insightintent-intententity-i.md)
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 <!--Device-insightIntent-interface FileEntity extends IntentEntity--><!--Device-insightIntent-interface FileEntity extends IntentEntity-End-->
 
@@ -30,11 +30,11 @@ entityId: 'OHOS_FILE_ENTITY'
 
 **类型：** 'OHOS_FILE_ENTITY'
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-FileEntity-entityId: 'OHOS_FILE_ENTITY'--><!--Device-FileEntity-entityId: 'OHOS_FILE_ENTITY'-End-->
 
@@ -50,11 +50,11 @@ URI列表。
 
 **类型：** Array&lt;string&gt;
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-FileEntity-uris: Array<string>--><!--Device-FileEntity-uris: Array<string>-End-->
 

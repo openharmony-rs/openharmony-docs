@@ -1,5 +1,18 @@
 # @ohos.arkui.advanced.Popup
 
+The **Popup** component is a component used to display bubbles of specific styles.
+ It supports flexible combinations of icons, text, and buttons, and is suitable for scenarios such as
+ notification prompts, information confirmation, and warning alerts. Via customizable style options,
+ it can quickly implement a consistent popup interaction experience.
+
+> **NOTE**
+ >
+ > - It is recommended to use this component together with the custom popup feature in Popup Control.
+
+## Child Components
+
+Not supported
+
 ## Modules to Import
 
 ```TypeScript

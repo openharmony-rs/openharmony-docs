@@ -483,9 +483,7 @@ try {
   let ret = rpc.IPCSkeleton.flushCommands(remoteObject);
   hilog.info(0x0000, 'testTag', 'RpcServer: flushCommands result: ' + ret);
 } catch (error) {
-  let e: BusinessError = error as BusinessError;
-  hilog.error(0x0000, 'testTag', 'proxy flushCmdBuffer fail, errorCode ' + e.code);
-  hilog.error(0x0000, 'testTag', 'proxy flushCmdBuffer fail, errorMessage ' + e.message);
+  hilog.error(0x0000, 'testTag', 'proxy flushCmdBuffer fail, error ' + error);
 }
 ```
 

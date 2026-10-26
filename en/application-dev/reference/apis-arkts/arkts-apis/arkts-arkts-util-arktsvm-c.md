@@ -81,7 +81,7 @@ Gets the number of global handles currently in use by the ArkTS VM on the callin
 > while napi_create_strong_sendable_reference and napi_delete_strong_sendable_reference do not affect the
 > count.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 

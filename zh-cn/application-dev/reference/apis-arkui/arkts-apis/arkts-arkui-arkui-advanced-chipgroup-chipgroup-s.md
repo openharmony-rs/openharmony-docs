@@ -8,7 +8,12 @@ export declare struct ChipGroup
 
 > **说明：** 
 > 
-> - 如果ChipGroup设置[通用属性](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md)或[通用事件](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md)，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到ChipGroup本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议ChipGroup设置通用属性和通用事件。
+> 1. 对于**selectedIndexes**和**multiple**接口，当**multiple**设置为**false**时，若未传入
+> **selectedIndexes**，默认选中第一个Chip。若传入的**selectedIndexes**包含多个元素，默认选中第一个索引处的Chip。
+> 
+> 2. 使用**suffix**接口时，必须导入**IconGroupSuffix**接口。若未传入，**suffix**为空。
+> 
+> 3. 图标填充颜色（**fillColor**和**activatedFillColor**）应与字体颜色（**fontColor**）保持一致。若需要不同的颜色，请在传入[ChipGroupItemOptions](arkts-arkui-arkui-advanced-chipgroup-chipgroupitemoptions-i.md)时使用**prefixSymbol**。
 
 **起始版本：** 12
 
@@ -218,11 +223,11 @@ onItemsChange?: Callback<ChipGroupItemOptions[]>
 
 **类型：** Callback&lt;[ChipGroupItemOptions](arkts-arkui-arkui-advanced-chipgroup-chipgroupitemoptions-i.md)[]&gt;
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-ChipGroup-onItemsChange?: Callback<ChipGroupItemOptions[]>--><!--Device-ChipGroup-onItemsChange?: Callback<ChipGroupItemOptions[]>-End-->
 

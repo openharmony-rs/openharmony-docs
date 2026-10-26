@@ -6,7 +6,7 @@ declare interface OnZoomChangeEvent
 
 Describes the browser zoom factor change information of the web page.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 <!--Device-unnamed-declare interface OnZoomChangeEvent--><!--Device-unnamed-declare interface OnZoomChangeEvent-End-->
 
@@ -22,7 +22,7 @@ Browser zoom factor of the page after the change.
 
 **Type:** number
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -40,7 +40,7 @@ Browser zoom factor of the page before the change.
 
 **Type:** number
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 

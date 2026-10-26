@@ -24,7 +24,7 @@ Connected.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-AcbState-CONNECTED = 1--><!--Device-AcbState-CONNECTED = 1-End-->
 
@@ -42,7 +42,7 @@ Disconnected.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-AcbState-DISCONNECTED = 0--><!--Device-AcbState-DISCONNECTED = 0-End-->
 
@@ -60,7 +60,7 @@ Connected, with link encrypted.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-AcbState-ENCRYPTED = 2--><!--Device-AcbState-ENCRYPTED = 2-End-->
 

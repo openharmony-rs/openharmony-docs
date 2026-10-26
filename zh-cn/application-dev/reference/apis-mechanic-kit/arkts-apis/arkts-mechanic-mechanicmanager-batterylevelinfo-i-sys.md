@@ -6,7 +6,7 @@ export interface BatteryLevelInfo
 
 设备电池电量信息
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 <!--Device-mechanicManager-export interface BatteryLevelInfo--><!--Device-mechanicManager-export interface BatteryLevelInfo-End-->
 
@@ -30,7 +30,7 @@ batteryLevel: number
 
 **类型：** number
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -50,7 +50,7 @@ isCharging: boolean
 
 **类型：** boolean
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -70,7 +70,7 @@ ID of the mechanical device. ID of the mechanical device. ID of the mechanical d
 
 **类型：** number
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

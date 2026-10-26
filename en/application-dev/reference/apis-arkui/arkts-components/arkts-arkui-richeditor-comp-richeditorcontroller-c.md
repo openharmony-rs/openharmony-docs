@@ -133,11 +133,11 @@ Adds a custom layout (BuilderSpan) in **RichEditor**, providing identity recogni
 > 
 > - Undo/redo does not restore BuilderSpan objects. When restored via undo, removed BuilderSpans degrade to whitespace text Spans.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-RichEditorController-addRichEditorBuilderSpan(value: RichEditorBuilderSpan, info?: BuilderSpanInfo): number--><!--Device-RichEditorController-addRichEditorBuilderSpan(value: RichEditorBuilderSpan, info?: BuilderSpanInfo): number-End-->
 
@@ -326,11 +326,11 @@ Obtains the identity and position information of BuilderSpans within the specifi
 > 
 > - The **offset** field in the returned [BuilderSpanInfo](arkts-arkui-richeditor-comp-builderspaninfo-i.md) reflects the current actual offset position and is dynamically updated as text content changes.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-RichEditorController-getRichEditorBuilderSpans(value?: RichEditorRange): Array<BuilderSpanInfo>--><!--Device-RichEditorController-getRichEditorBuilderSpans(value?: RichEditorRange): Array<BuilderSpanInfo>-End-->
 

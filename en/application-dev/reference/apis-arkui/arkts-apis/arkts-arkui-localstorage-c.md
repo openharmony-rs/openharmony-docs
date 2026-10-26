@@ -679,8 +679,8 @@ Obtains the [LocalStorage](../../../ui/state-management/arkts-localstorage.md) i
 > **NOTE:** 
 
 > Since API version 12, you can use
-> [getSharedLocalStorage](arkts-arkui-arkui-uicontext-uicontext-c.md#getsharedlocalstorage) in [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) to specify the
-> **LocalStorage** instance in the UI execution context.
+> [getSharedLocalStorage](arkts-arkui-arkui-uicontext-uicontext-c.md#getsharedlocalstorage) in
+> [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) to specify the **LocalStorage** instance in the UI execution context.
 
 **Since:** 10
 

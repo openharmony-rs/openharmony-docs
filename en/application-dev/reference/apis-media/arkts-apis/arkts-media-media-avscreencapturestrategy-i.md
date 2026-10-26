@@ -17,6 +17,24 @@ Provides the media AVScreenCaptureStrategy definition.
 ```TypeScript
 ```
 
+## contentAutoPauseScenes
+
+```TypeScript
+contentAutoPauseScenes?: Array<AVScreenCaptureAutoPauseCaptureScene>
+```
+
+Sets the set of scenes that automatically pause screen content capture. When the capture session is running, if any of the scenarios in the scenario set occurs, the system automatically pauses the collection of screen content. You can use the OH_AVScreenCapture_ResumeScreenCapture() function to restore the data. image content acquisition is not automatically paused by default. Default value: If this parameter is not set. <br>You can use the OH_AVScreenCapture_ResumeScreenCapture() function to restore data.
+
+**Type:** Array&lt;[AVScreenCaptureAutoPauseCaptureScene](arkts-media-media-avscreencaptureautopausecapturescene-e.md)&gt;
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AVScreenCaptureStrategy-contentAutoPauseScenes?: Array<AVScreenCaptureAutoPauseCaptureScene>--><!--Device-AVScreenCaptureStrategy-contentAutoPauseScenes?: Array<AVScreenCaptureAutoPauseCaptureScene>-End-->
+
+**System capability:** SystemCapability.Multimedia.Media.AVScreenCapture
+
 ## enableAEC
 
 ```TypeScript
@@ -27,7 +45,7 @@ Specifies whether to enable echo detection and echo cancellation when microphone
 
 **Type:** boolean
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -48,6 +66,24 @@ Indicates whether to enable B-frame encoding, which is used to reduce the size o
 **Since:** 20
 
 <!--Device-AVScreenCaptureStrategy-enableBFrame?: boolean--><!--Device-AVScreenCaptureStrategy-enableBFrame?: boolean-End-->
+
+**System capability:** SystemCapability.Multimedia.Media.AVScreenCapture
+
+## enableHDR
+
+```TypeScript
+enableHDR?: boolean
+```
+
+Sets whether to output videos in HDR vivid format. Default value: The default value is false, indicating that videos in SDR format are output.
+
+**Type:** boolean
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AVScreenCaptureStrategy-enableHDR?: boolean--><!--Device-AVScreenCaptureStrategy-enableHDR?: boolean-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVScreenCapture
 

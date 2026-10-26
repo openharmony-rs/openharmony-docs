@@ -35,3 +35,23 @@ function registerExternalLogManager(logMngr: ExternalLogManager): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [11106001](../errorcode-hiappevent.md#11106001-注册external_log日志管理者失败) | State error. Possible causes: 1. Log manager already registered; |
+
+**示例**
+
+```TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// 定义ExternalLogManager实现
+let myLogManager: hiAppEvent.ExternalLogManager = {
+  onCapacityReached(container: hiAppEvent.ExternalLogContainer): void {
+  }
+};
+
+// 注册管理者，当external_log目录达到阈值时，回调onCapacityReached
+try {
+  hiAppEvent.registerExternalLogManager(myLogManager);
+  hilog.info(0x0000, 'hiAppEvent', '[App] ExternalLogManager 注册成功');
+} catch (e) {
+  hilog.info(0x0000, 'hiAppEvent', `[App] 注册失败: ${e.code}, ${e.message}`);
+}
+```

@@ -4,7 +4,7 @@
 interface AVCastController
 ```
 
-在投播建立后，调用[avSession.AVSession.getAVCastController](arkts-avsession-avsession-avsession-i.md#getavcastcontroller)后，返回会话控制器实例。控制器可查看会话ID，并可完成对会话发送命令及事件，获取会话元数据，播放状态信息等操作。
+在投播建立后，调用[avSession.getAVCastController](arkts-avsession-avsession-getavcastcontroller-f-sys.md)后，返回会话控制器实例。控制器可查看会话ID，并可完成对会话发送命令及事件，获取会话元数据，播放状态信息等操作。
 
 > **说明：** 
 > 
@@ -46,7 +46,7 @@ getAVPlaybackState(callback: AsyncCallback<AVPlaybackState>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 
 **示例**
 
@@ -86,7 +86,7 @@ getAVPlaybackState(): Promise<AVPlaybackState>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 
 **示例**
 
@@ -122,7 +122,7 @@ getCurrentItem(callback: AsyncCallback<AVQueueItem>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 
 **示例**
 
@@ -162,7 +162,7 @@ getCurrentItem(): Promise<AVQueueItem>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 
 **示例**
 
@@ -206,7 +206,7 @@ getRecommendedResolutionLevel(decoderType: DecoderType): Promise<ResolutionLevel
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 
 **示例**
 
@@ -245,7 +245,7 @@ getSupportedDecoders(): Promise<Array<DecoderType>>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 
 **示例**
 
@@ -286,7 +286,7 @@ getSupportedHdrCapabilities(): Promise<Array<hdrCapability.HDRFormat>>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 
 **示例**
 
@@ -329,7 +329,7 @@ getSupportedPlaySpeeds(): Promise<Array<number>>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 
 **示例**
 
@@ -446,7 +446,7 @@ off(type: 'playbackStateChange', callback?: (state: AVPlaybackState) => void): v
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 
 **示例**
 
@@ -481,7 +481,7 @@ off(type: 'mediaItemChange'): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 
 **示例**
 
@@ -516,7 +516,7 @@ off(type: 'playNext'): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 
 **示例**
 
@@ -551,7 +551,7 @@ off(type: 'playPrevious'): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 
 **示例**
 
@@ -578,14 +578,14 @@ off(type: 'requestPlay', callback?: Callback<AVQueueItem>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'requestPlay' | 是 | 取消对应的监听事件，支持事件`'requestPlay'`。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[AVQueueItem](arkts-avsession-avsession-avqueueitem-i.md)&gt; | 否 | 回调函数，参数AVQueueItem是当前正在播放的媒体内容。当监听事件取消成功，err为undefined，否则返回错误对象。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[AVQueueItem](arkts-avsession-avsession-avqueueitem-i.md)&gt; | 否 | Used to handle 'requestPlay' command |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 
 **示例**
 
@@ -612,14 +612,14 @@ off(type: 'endOfStream', callback?: Callback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'endOfStream' | 是 | 取消对应的监听事件，支持事件`'endOfStream'`。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | 否 | Used to handle 'endOfStream' command |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 
 **示例**
 
@@ -654,7 +654,7 @@ off(type: 'seekDone'): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 
 **示例**
 
@@ -682,8 +682,8 @@ off(type: 'validCommandChange', callback?: Callback<Array<AVCastControlCommandTy
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'validCommandChange' | 是 | 取消对应的监听事件，支持事件`'validCommandChange'`。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;Array&lt;[AVCastControlCommandType](arkts-avsession-avsession-avcastcontrolcommandtype-t.md)&gt;&gt; | 否 | 回调函数。参数commands是有效命令的集合。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| type | 'validCommandChange' | 是 | 'validCommandChange' |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;Array&lt;[AVCastControlCommandType](arkts-avsession-avsession-avcastcontrolcommandtype-t.md)&gt;&gt; | 否 | The callback used to handle the changes. The callback function provides an array of AVCastControlCommandType. |
 
 **错误码：**
 
@@ -724,7 +724,7 @@ off(type: 'videoSizeChange'): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 
 **示例**
 
@@ -765,7 +765,7 @@ off(type: 'error'): void
 | [5400104](../../apis-media-kit/errorcode-media.md#5400104-操作超时) | Time out. |
 | [5400105](../../apis-media-kit/errorcode-media.md#5400105-播放服务死亡) | Service died. |
 | [5400106](../../apis-media-kit/errorcode-media.md#5400106-不支持的规格) | Unsupported format. |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 
 **示例**
 
@@ -800,7 +800,7 @@ off(type: 'castControlGenericError', callback?: ErrorCallback): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter check failed. 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 
 **示例**
 
@@ -835,7 +835,7 @@ off(type: 'castControlIoError', callback?: ErrorCallback): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter check failed. 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 
 **示例**
 
@@ -870,7 +870,7 @@ off(type: 'castControlParsingError', callback?: ErrorCallback): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter check failed. 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 
 **示例**
 
@@ -905,7 +905,7 @@ off(type: 'castControlDecodingError', callback?: ErrorCallback): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter check failed. 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 
 **示例**
 
@@ -940,7 +940,7 @@ off(type: 'castControlAudioRendererError', callback?: ErrorCallback): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter check failed. 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 
 **示例**
 
@@ -975,7 +975,7 @@ off(type: 'castControlDrmError', callback?: ErrorCallback): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter check failed. 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 
 **示例**
 
@@ -1011,7 +1011,7 @@ off(type: 'keyRequest', callback?: KeyRequestCallback): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 
 **示例**
 
@@ -1046,7 +1046,7 @@ off(type: 'customDataChange', callback?: Callback<Record<string, Object>>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 
 **示例**
 
@@ -1087,7 +1087,7 @@ on(type: 'playbackStateChange', filter: Array<keyof AVPlaybackState> | 'all', ca
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 
 **示例**
 
@@ -1132,7 +1132,7 @@ on(type: 'mediaItemChange', callback: Callback<AVQueueItem>): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 
 **示例**
 
@@ -1172,7 +1172,7 @@ on(type: 'playNext', callback: Callback<void>): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 
 **示例**
 
@@ -1212,7 +1212,7 @@ on(type: 'playPrevious', callback: Callback<void>): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 
 **示例**
 
@@ -1250,7 +1250,7 @@ on(type: 'requestPlay', callback: Callback<AVQueueItem>): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 
 **示例**
 
@@ -1288,7 +1288,7 @@ on(type: 'endOfStream', callback: Callback<void>): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 
 **示例**
 
@@ -1328,7 +1328,7 @@ on(type: 'seekDone', callback: Callback<number>): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 
 **示例**
 
@@ -1360,7 +1360,7 @@ on(type: 'validCommandChange', callback: Callback<Array<AVCastControlCommandType
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'validCommandChange' | 是 | 事件回调类型，支持事件`'validCommandChange'`：当检测到会话的合法命令发生改变时，触发该事件。 |
+| type | 'validCommandChange' | 是 | 'validCommandChange' |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;Array&lt;[AVCastControlCommandType](arkts-avsession-avsession-avcastcontrolcommandtype-t.md)&gt;&gt; | 是 | 回调函数。参数commands是有效命令的集合。 |
 
 **错误码：**
@@ -1408,7 +1408,7 @@ on(type: 'videoSizeChange', callback: (width: number, height: number) => void): 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 
 **示例**
 
@@ -1462,7 +1462,7 @@ on(type: 'error', callback: ErrorCallback): void
 | [5400104](../../apis-media-kit/errorcode-media.md#5400104-操作超时) | Time out. |
 | [5400105](../../apis-media-kit/errorcode-media.md#5400105-播放服务死亡) | Service died. |
 | [5400106](../../apis-media-kit/errorcode-media.md#5400106-不支持的规格) | Unsupported format. |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 
 **示例**
 
@@ -1503,7 +1503,7 @@ on(type: 'castControlGenericError', callback: ErrorCallback): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter check failed. 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 | [6611000](../errorcode-avsession.md#6611000-投播控制器出现未知错误) | The error code for cast control is unspecified. |
 | [6611001](../errorcode-avsession.md#6611001-远端设备出现未知错误) | An unspecified error occurs in the remote player. |
 | [6611002](../errorcode-avsession.md#6611002-加载位置超过投播视频的总进度) | The playback position falls behind the live window. |
@@ -1558,7 +1558,7 @@ on(type: 'castControlIoError', callback: ErrorCallback): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter check failed. 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 | [6612000](../errorcode-avsession.md#6612000-未知的输入输出错误) | An unspecified input/output error occurs. |
 | [6612001](../errorcode-avsession.md#6612001-网络连接失败) | Network connection failure. |
 | [6612002](../errorcode-avsession.md#6612002-网络超时) | Network timeout. |
@@ -1616,7 +1616,7 @@ on(type: 'castControlParsingError', callback: ErrorCallback): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter check failed. 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 | [6613000](../errorcode-avsession.md#6613000-未知解析错误) | Unspecified error related to content parsing. |
 | [6613001](../errorcode-avsession.md#6613001-非法类型) | Parsing error associated with media container format bit streams. |
 | [6613002](../errorcode-avsession.md#6613002-相关媒体清单的解析错误) | Parsing error associated with the media manifest. |
@@ -1662,7 +1662,7 @@ on(type: 'castControlDecodingError', callback: ErrorCallback): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter check failed. 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 | [6614000](../errorcode-avsession.md#6614000-未知的解码错误) | Unspecified decoding error. |
 | [6614001](../errorcode-avsession.md#6614001-解码器初始化失败) | Decoder initialization failed. |
 | [6614002](../errorcode-avsession.md#6614002-解码器查询失败) | Decoder query failed. |
@@ -1709,7 +1709,7 @@ on(type: 'castControlAudioRendererError', callback: ErrorCallback): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter check failed. 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 | [6615000](../errorcode-avsession.md#6615000-音频渲染器相关的未知错误) | Unspecified errors related to the audio renderer. |
 | [6615001](../errorcode-avsession.md#6615001-音频渲染器初始化异常) | Initializing the audio renderer failed. |
 | [6615002](../errorcode-avsession.md#6615002-音频渲染器写数据异常) | The audio renderer fails to write data. |
@@ -1753,7 +1753,7 @@ on(type: 'castControlDrmError', callback: ErrorCallback): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter check failed. 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 | [6616000](../errorcode-avsession.md#6616000-drm相关的未知错误) | Unspecified error related to DRM. |
 | [6616001](../errorcode-avsession.md#6616001-设备不支持所选的drm保护方案) | The chosen DRM protection scheme is not supported by the device. |
 | [6616002](../errorcode-avsession.md#6616002-调配设备时出现故障) | Device provisioning failed. |
@@ -1805,7 +1805,7 @@ on(type: 'keyRequest', callback: KeyRequestCallback): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 
 **示例**
 
@@ -1843,7 +1843,7 @@ on(type: 'customDataChange', callback: Callback<Record<string, Object>>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 
 **示例**
 
@@ -1879,8 +1879,8 @@ prepare(item: AVQueueItem, callback: AsyncCallback<void>): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
-| [6600109](../errorcode-avsession.md#6600109-远端会话不存在) | The remote connection is not established |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
+| [6600109](../errorcode-avsession.md#6600109-远端会话不存在) | The remote connection is not established. |
 
 **示例**
 
@@ -1945,8 +1945,8 @@ prepare(item: AVQueueItem): Promise<void>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
-| [6600109](../errorcode-avsession.md#6600109-远端会话不存在) | The remote connection is not established |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
+| [6600109](../errorcode-avsession.md#6600109-远端会话不存在) | The remote connection is not established. |
 
 **示例**
 
@@ -2010,7 +2010,7 @@ processMediaKeyResponse(assetId: string, response: Uint8Array): Promise<void>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 
 **示例**
 
@@ -2131,9 +2131,9 @@ sendControlCommand(command: AVCastControlCommand, callback: AsyncCallback<void>)
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
-| [6600105](../errorcode-avsession.md#6600105-无效会话命令) | Invalid session command |
-| [6600109](../errorcode-avsession.md#6600109-远端会话不存在) | The remote connection is not established |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
+| [6600105](../errorcode-avsession.md#6600105-无效会话命令) | Invalid session command. |
+| [6600109](../errorcode-avsession.md#6600109-远端会话不存在) | The remote connection is not established. |
 
 **示例**
 
@@ -2181,9 +2181,9 @@ sendControlCommand(command: AVCastControlCommand): Promise<void>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
-| [6600105](../errorcode-avsession.md#6600105-无效会话命令) | Invalid session command |
-| [6600109](../errorcode-avsession.md#6600109-远端会话不存在) | The remote connection is not established |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
+| [6600105](../errorcode-avsession.md#6600105-无效会话命令) | Invalid session command. |
+| [6600109](../errorcode-avsession.md#6600109-远端会话不存在) | The remote connection is not established. |
 
 **示例**
 
@@ -2228,7 +2228,7 @@ sendCustomData(data: Record<string, Object>): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
 
 **示例**
 
@@ -2272,8 +2272,8 @@ start(item: AVQueueItem, callback: AsyncCallback<void>): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
-| [6600109](../errorcode-avsession.md#6600109-远端会话不存在) | The remote connection is not established |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
+| [6600109](../errorcode-avsession.md#6600109-远端会话不存在) | The remote connection is not established. |
 
 **示例**
 
@@ -2345,8 +2345,8 @@ start(item: AVQueueItem): Promise<void>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
-| [6600109](../errorcode-avsession.md#6600109-远端会话不存在) | The remote connection is not established |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
+| [6600109](../errorcode-avsession.md#6600109-远端会话不存在) | The remote connection is not established. |
 
 **示例**
 
@@ -2375,38 +2375,3 @@ avCastController.start(playItem).then(() => {
   console.error(`Failed to start, code: ${err.code}, message: ${err.message}`);
 });
 ```
-
-## update
-
-```TypeScript
-update(item: AVQueueItem): Promise<void>
-```
-
-更新投播媒体信息
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-AVCastController-update(item: AVQueueItem): Promise<void>--><!--Device-AVCastController-update(item: AVQueueItem): Promise<void>-End-->
-
-**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| item | [AVQueueItem](arkts-avsession-avsession-avqueueitem-i.md) | 是 | 媒体信息item |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise&lt;void&gt; | 通过promise回调成功 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
-| [6600109](../errorcode-avsession.md#6600109-远端会话不存在) | The remote connection is not established |

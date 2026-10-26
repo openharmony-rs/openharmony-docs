@@ -12,7 +12,7 @@ import { securityGuard } from '@kit.SecurityGuardKit';
 function stopSecurityEventCollector(rule: CollectorRule): void
 ```
 
-停止采集事件。
+stop the collector.
 
 **起始版本：** 12
 
@@ -28,7 +28,7 @@ function stopSecurityEventCollector(rule: CollectorRule): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| rule | [CollectorRule](arkts-securityguard-securityguard-collectorrule-i-sys.md) | 是 | 采集规则。 |
+| rule | [CollectorRule](arkts-securityguard-securityguard-collectorrule-i-sys.md) | 是 | rule of collect security event information. |
 
 **错误码：**
 

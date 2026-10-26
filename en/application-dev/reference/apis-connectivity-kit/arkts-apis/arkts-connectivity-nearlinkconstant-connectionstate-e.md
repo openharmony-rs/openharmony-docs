@@ -24,7 +24,7 @@ Connected.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-ConnectionState-STATE_CONNECTED = 1--><!--Device-ConnectionState-STATE_CONNECTED = 1-End-->
 
@@ -42,7 +42,7 @@ Connecting.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-ConnectionState-STATE_CONNECTING = 0--><!--Device-ConnectionState-STATE_CONNECTING = 0-End-->
 
@@ -60,7 +60,7 @@ Disconnected.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-ConnectionState-STATE_DISCONNECTED = 3--><!--Device-ConnectionState-STATE_DISCONNECTED = 3-End-->
 
@@ -78,7 +78,7 @@ Disconnecting.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-ConnectionState-STATE_DISCONNECTING = 2--><!--Device-ConnectionState-STATE_DISCONNECTING = 2-End-->
 

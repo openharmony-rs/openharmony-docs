@@ -69,6 +69,13 @@ WaterFlow(options?: WaterFlowOptions)
 
 ## 汇总
 
+### 类
+
+| 名称 | 说明 |
+| --- | --- |
+| [SectionOptions](arkts-arkui-waterflow-comp-sectionoptions-c.md) | FlowItem分组配置信息。 |
+| [WaterFlowSections](arkts-arkui-waterflow-comp-waterflowsections-c.md) | 瀑布流分组信息。 |
+
 ### 接口
 
 | 名称 | 说明 |
@@ -1557,6 +1564,55 @@ struct Index {
       .height(300)
       NodeContainer(this.myNodeController)
     }.width('100%')
+  }
+}
+```
+
+### 示例12（设置滚动吸附对齐）
+
+本示例使用[scrollSnapStrategy](#scrollsnapstrategy)设置尾部吸附（ScrollSnapAlign.END）。滚动结束时，目标FlowItem的底边与视口底边对齐。示例采用SLIDING_WINDOW布局模式，包含100个高度不同的FlowItem。
+
+从API版本26.1.0开始，新增scrollSnapStrategy接口。
+
+WaterFlowDataSource说明及完整代码参考[示例1（使用基本瀑布流）](#示例1使用基本瀑布流)。
+
+```TypeScript
+// Index.ets
+import { WaterFlowDataSource } from './WaterFlowDataSource';
+
+@Entry
+@Component
+struct WaterFlowSnapExample {
+  private dataSource: WaterFlowDataSource = new WaterFlowDataSource();
+
+  build() {
+    Column({ space: 10 }) {
+      Text('WaterFlow End Snapping')
+        .fontSize(20)
+      WaterFlow({ layoutMode: WaterFlowLayoutMode.SLIDING_WINDOW }) {
+        LazyForEach(this.dataSource, (item: number) => {
+          FlowItem() {
+            Text(item.toString())
+              .fontSize(20)
+              .width('100%')
+              .height('100%')
+              .textAlign(TextAlign.Center)
+          }
+          .width('100%')
+          .height(80 + (item % 4) * 20)
+          .backgroundColor(0xF9CF93)
+          .borderRadius(8)
+        }, (item: number) => item.toString())
+      }
+      .columnsTemplate('1fr 1fr')
+      .columnsGap(10)
+      .rowsGap(20)
+      .width('100%')
+      .height(400)
+      .scrollSnapStrategy(ScrollSnapAlign.END)
+    }
+    .width('100%')
+    .padding(16)
   }
 }
 ```

@@ -55,7 +55,7 @@ function addPrinterToCups(printerUri: string, printerName: string, printerMake: 
 import { print } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// printerUri 可通过 discoverUsbPrinters 接口返回的 PrinterInformation 获取
+// printerUri可通过discoverUsbPrinters接口返回的PrinterInformation获取
 let printerUri : string = 'testPrinterUri';
 let printerName : string = 'testPrinterName';
 let printerMake : string = 'testPrinterMake';

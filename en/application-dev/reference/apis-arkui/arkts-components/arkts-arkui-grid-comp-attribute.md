@@ -1086,11 +1086,11 @@ including the semantics of **syncLoad**.
 3. After the real item has been created, it is re-laid out under the normal layout constraints of
 GridItem and replaces the placeholder, keeping the scroll anchor.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-GridAttribute-scrollPlaceholder(provider?: PlaceholderProvider): GridAttribute--><!--Device-GridAttribute-scrollPlaceholder(provider?: PlaceholderProvider): GridAttribute-End-->
 
@@ -1112,11 +1112,11 @@ Sets the two-stage scroll snap strategy of the Grid.
 
 START, CENTER, and END align items with the start, center, and end of the viewport along the scrolling axis. A custom provider calculates the approach distance and final target through its two callbacks. NONE or undefined clears the strategy and restores the default scrolling behavior. Snapping is disabled for unsupported layouts. Targets are constrained to the legal scroll range.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-GridAttribute-scrollSnapStrategy(strategy?: ScrollSnapAlign | ScrollSnapOffsetProvider): GridAttribute--><!--Device-GridAttribute-scrollSnapStrategy(strategy?: ScrollSnapAlign | ScrollSnapOffsetProvider): GridAttribute-End-->
 

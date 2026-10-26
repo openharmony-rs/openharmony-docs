@@ -81,6 +81,66 @@ struct MyStateSample {
 
 <!--DelEnd-->
 
+## closeModalUIExtension
+
+```TypeScript
+closeModalUIExtension(sessionId: number): void
+```
+
+Closes a modal UIExtension.
+
+If a transition effect was specified when the modal UIExtension was created, its exit transition is played before the UIExtension is closed. Invalid, closed, or closing session IDs are silently ignored.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UIContext-closeModalUIExtension(sessionId: number): void--><!--Device-UIContext-closeModalUIExtension(sessionId: number): void-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**System API:** This is a system API.
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| sessionId | number | Yes | Session ID returned by [createModalUIExtension](#createmodaluiextension). |
+
+## createModalUIExtension
+
+```TypeScript
+createModalUIExtension(want: Want, options?: ModalUIExtensionOptions, callback?: ModalUIExtensionCallback): number
+```
+
+Creates and displays a modal UIExtension.
+
+The returned session ID can be passed to [closeModalUIExtension](#closemodaluiextension) to close the modal UIExtension. If no **transition** is specified, the UIExtension is displayed without an animation.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UIContext-createModalUIExtension(want: Want, options?: ModalUIExtensionOptions, callback?: ModalUIExtensionCallback): number--><!--Device-UIContext-createModalUIExtension(want: Want, options?: ModalUIExtensionOptions, callback?: ModalUIExtensionCallback): number-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**System API:** This is a system API.
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| want | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | Yes | Want used to start the UIExtensionAbility. |
+| options | [ModalUIExtensionOptions](arkts-arkui-arkui-uicontext-modaluiextensionoptions-i-sys.md) | No | Options used to create the modal UIExtension. |
+| callback | [ModalUIExtensionCallback](arkts-arkui-arkui-uicontext-modaluiextensioncallback-i-sys.md) | No | Lifecycle callbacks for the modal UIExtension. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| number | Session ID of the modal UIExtension. Returns 0 if creation fails. |
+
 ## freezeUINode
 
 ```TypeScript

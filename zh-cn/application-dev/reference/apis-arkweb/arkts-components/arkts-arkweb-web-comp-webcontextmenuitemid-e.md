@@ -6,7 +6,7 @@ declare enum WebContextMenuItemId
 
 枚举上下文菜单项的ID。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 <!--Device-unnamed-declare enum WebContextMenuItemId--><!--Device-unnamed-declare enum WebContextMenuItemId-End-->
 
@@ -20,7 +20,7 @@ MENU_COPY_LINK = 11
 
 复制指向高亮文本的链接菜单项。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

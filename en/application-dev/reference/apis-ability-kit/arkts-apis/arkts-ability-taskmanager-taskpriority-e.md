@@ -6,7 +6,7 @@ export enum TaskPriority
 
 Enumerates the task priorities.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 <!--Device-taskManager-export enum TaskPriority--><!--Device-taskManager-export enum TaskPriority-End-->
 
@@ -20,7 +20,7 @@ HIGH = 300
 
 High priority.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -36,7 +36,7 @@ LOW = 100
 
 Low priority.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -52,7 +52,7 @@ MEDIUM = 200
 
 Medium priority.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 

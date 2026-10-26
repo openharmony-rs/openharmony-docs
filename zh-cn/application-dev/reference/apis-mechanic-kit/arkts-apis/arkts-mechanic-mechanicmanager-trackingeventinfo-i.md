@@ -4,7 +4,7 @@
 export interface TrackingEventInfo
 ```
 
-Tracking event callback info.
+跟踪事件信息
 
 **起始版本：** 20
 

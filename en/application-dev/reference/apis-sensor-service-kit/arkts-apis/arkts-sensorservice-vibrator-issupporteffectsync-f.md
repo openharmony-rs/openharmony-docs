@@ -50,6 +50,8 @@ try {
   // Check whether the preset 'haptic.notice.success' is supported.
   let ret = vibrator.isSupportEffectSync('haptic.notice.success');
   console.info(`The query result is ${ret}`);
+  let imeRet = vibrator.isSupportEffectSync(vibrator.HapticFeedback.EFFECT_IME_STRENGTH1);
+  console.info(`IME strength1 supported: ${imeRet}`);
 } catch (error) {
   let e: BusinessError = error as BusinessError;
   console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);

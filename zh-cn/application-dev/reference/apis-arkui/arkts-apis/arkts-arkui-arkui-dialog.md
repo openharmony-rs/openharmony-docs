@@ -5,7 +5,7 @@
 ## 导入模块
 
 ```TypeScript
-import { dialog, DialogBaseAlignment, DialogButtonOrientation, DialogState, DialogResult, DialogDismissal, DialogBaseController } from '@kit.ArkUI';
+import { dialog, DialogBaseAlignment, DialogButtonOrientation, DialogState, DialogResult, DialogDismissal, DialogBaseController, HandednessFollowMode } from '@kit.ArkUI';
 ```
 
 ## 汇总
@@ -36,3 +36,4 @@ import { dialog, DialogBaseAlignment, DialogButtonOrientation, DialogState, Dial
 | [DialogBaseAlignment](arkts-arkui-arkui-dialog-dialogbasealignment-e.md) | 对话框的对齐方式。 |
 | [DialogButtonOrientation](arkts-arkui-arkui-dialog-dialogbuttonorientation-e.md) | 对话框中按钮的排列。 |
 | [DialogState](arkts-arkui-arkui-dialog-dialogstate-e.md) | Dialog状态的枚举。 |
+| [HandednessFollowMode](arkts-arkui-arkui-dialog-handednessfollowmode-e.md) | 表示对话框跟随惯用手的方式。 |

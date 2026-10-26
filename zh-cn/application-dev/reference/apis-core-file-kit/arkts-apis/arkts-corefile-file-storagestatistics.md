@@ -40,6 +40,7 @@ import { storageStatistics } from '@kit.CoreFileKit';
 | [getAllExtBundleStats](arkts-corefile-storagestatistics-getallextbundlestats-f-sys.md#getallextbundlestats-1) | 获取指定用户下所有系统应用或系统服务的空间占用详情。使用Promise异步回调。 |
 | [getBundleStats](arkts-corefile-storagestatistics-getbundlestats-f-sys.md#getbundlestats-1) | 异步获取应用存储数据的空间大小（单位为Byte），以callback方式返回。 |
 | [getBundleStats](arkts-corefile-storagestatistics-getbundlestats-f-sys.md#getbundlestats-2) | 异步获取应用存储数据的空间大小（单位为Byte），以Promise方式返回。 |
+| [getBundleStats](arkts-corefile-storagestatistics-getbundlestats-f-sys.md#getbundlestats-3) | 异步获取应用存储数据的空间大小（单位为Byte），使用Promise异步回调。 |
 | [getExtBundleStats](arkts-corefile-storagestatistics-getextbundlestats-f-sys.md#getextbundlestats-1) | 获取指定用户、指定系统应用包名或系统服务名称的空间占用详情。使用Promise异步回调。 |
 | [getFreeSizeOfVolume](arkts-corefile-storagestatistics-getfreesizeofvolume-f-sys.md#getfreesizeofvolume-1) | 异步获取外置存储设备中指定卷设备的可用空间大小（单位为Byte），以callback方式返回。 |
 | [getFreeSizeOfVolume](arkts-corefile-storagestatistics-getfreesizeofvolume-f-sys.md#getfreesizeofvolume-2) | 异步获取外置存储设备中指定卷设备的可用空间大小（单位为Byte），以Promise方式返回。 |
@@ -67,7 +68,16 @@ import { storageStatistics } from '@kit.CoreFileKit';
 
 | 名称 | 说明 |
 | --- | --- |
+| [BundleStatsOptions](arkts-corefile-storagestatistics-bundlestatsoptions-i-sys.md) | 获取应用存储空间信息的选项。 |
 | [ExtBundleStats](arkts-corefile-storagestatistics-extbundlestats-i-sys.md) | 系统应用或系统服务的空间占用详情。 |
 | [StorageStats](arkts-corefile-storagestatistics-storagestats-i-sys.md) |  |
 | [UserdataDirInfo](arkts-corefile-storagestatistics-userdatadirinfo-i-sys.md) | 用户设备中/data目录下的空间占用详情。 |
+<!--DelEnd-->
+
+<!--Del-->
+### 枚举（系统接口）
+
+| 名称 | 说明 |
+| --- | --- |
+| [GetBundleStatsFlag](arkts-corefile-storagestatistics-getbundlestatsflag-e-sys.md) | 枚举，应用存储空间统计信息的标志。 |
 <!--DelEnd-->

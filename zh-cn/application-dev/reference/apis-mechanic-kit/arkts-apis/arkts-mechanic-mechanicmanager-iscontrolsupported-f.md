@@ -30,7 +30,7 @@ function isControlSupported(mechDeviceType?: MechDeviceType): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | Returns whether control is supported. |
+| boolean | 当前设备是否支持某类设备的机械体设备控制。true表示支持，false表示不支持。 |
 
 **示例**
 

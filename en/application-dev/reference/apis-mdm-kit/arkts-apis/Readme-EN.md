@@ -68,8 +68,6 @@
   <!--Del-->
   - [EnterpriseInfo(system api)](arkts-mdm-adminmanager-enterpriseinfo-i-sys.md)<!--DelEnd-->
   - [AdminType](arkts-mdm-adminmanager-admintype-e.md)
-  <!--Del-->
-  - [AdminType(system api)](arkts-mdm-adminmanager-admintype-e-sys.md)<!--DelEnd-->
   - [ManagedEvent](arkts-mdm-adminmanager-managedevent-e.md)
   - [Policy](arkts-mdm-adminmanager-policy-e.md)
   <!--Del-->
@@ -171,6 +169,7 @@
   - [addDisallowedUninstallBundlesSync](arkts-mdm-bundlemanager-adddisalloweduninstallbundlessync-f.md)
   - [addInstallationAllowedAppDistributionTypes](arkts-mdm-bundlemanager-addinstallationallowedappdistributiontypes-f.md)
   - [getAllowedInstallBundlesSync](arkts-mdm-bundlemanager-getallowedinstallbundlessync-f.md)
+  - [getDefaultApplicationBundleName](arkts-mdm-bundlemanager-getdefaultapplicationbundlename-f.md)
   - [getDisallowedInstallBundlesSync](arkts-mdm-bundlemanager-getdisallowedinstallbundlessync-f.md)
   - [getDisallowedUninstallBundlesSync](arkts-mdm-bundlemanager-getdisalloweduninstallbundlessync-f.md)
   - [getInstallationAllowedAppDistributionTypes](arkts-mdm-bundlemanager-getinstallationallowedappdistributiontypes-f.md)
@@ -182,6 +181,7 @@
   - [removeDisallowedInstallBundlesSync](arkts-mdm-bundlemanager-removedisallowedinstallbundlessync-f.md)
   - [removeDisallowedUninstallBundlesSync](arkts-mdm-bundlemanager-removedisalloweduninstallbundlessync-f.md)
   - [removeInstallationAllowedAppDistributionTypes](arkts-mdm-bundlemanager-removeinstallationallowedappdistributiontypes-f.md)
+  - [setDefaultApplication](arkts-mdm-bundlemanager-setdefaultapplication-f.md)
   <!--Del-->
   - [addAllowedInstallBundles(system api)](arkts-mdm-bundlemanager-addallowedinstallbundles-f-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -214,6 +214,7 @@
   - [SignatureInfo](arkts-mdm-bundlemanager-signatureinfo-i.md)
   - [AppDistributionType](arkts-mdm-bundlemanager-appdistributiontype-e.md)
   - [BundleInfoGetFlag](arkts-mdm-bundlemanager-bundleinfogetflag-e.md)
+  - [DefaultApplicationType](arkts-mdm-bundlemanager-defaultapplicationtype-e.md)
 - [@ohos.enterprise.common(Common Module)](arkts-mdm-enterprise-common.md)
   - [isFeatureSupported](arkts-mdm-common-isfeaturesupported-f.md)
   - [ApplicationInstance](arkts-mdm-common-applicationinstance-i.md)
@@ -248,12 +249,16 @@
   - [Operation](arkts-mdm-devicecontrol-operation-e.md)
 - [@ohos.enterprise.deviceInfo(Device Information Management)](arkts-mdm-enterprise-deviceinfo.md)
   - [getDeviceInfo](arkts-mdm-deviceinfo-getdeviceinfo-f.md)
+  - [getPatchInfo](arkts-mdm-deviceinfo-getpatchinfo-f.md)
   <!--Del-->
   - [getDeviceName(system api)](arkts-mdm-deviceinfo-getdevicename-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [getDeviceSerial(system api)](arkts-mdm-deviceinfo-getdeviceserial-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [getDisplayVersion(system api)](arkts-mdm-deviceinfo-getdisplayversion-f-sys.md)<!--DelEnd-->
+  - [PatchDescription](arkts-mdm-deviceinfo-patchdescription-i.md)
+  - [PatchDescriptionBody](arkts-mdm-deviceinfo-patchdescriptionbody-i.md)
+  - [PatchInfo](arkts-mdm-deviceinfo-patchinfo-i.md)
 - [@ohos.enterprise.deviceSettings(Device Settings Management)](arkts-mdm-enterprise-devicesettings.md)
   - [addHiddenSettingsMenu](arkts-mdm-devicesettings-addhiddensettingsmenu-f.md)
   - [getHiddenSettingsMenu](arkts-mdm-devicesettings-gethiddensettingsmenu-f.md)
@@ -309,6 +314,7 @@
   - [getGlobalProxySync](arkts-mdm-networkmanager-getglobalproxysync-f.md)
   - [getIpAddressSync](arkts-mdm-networkmanager-getipaddresssync-f.md)
   - [getMacSync](arkts-mdm-networkmanager-getmacsync-f.md)
+  - [getSharedList](arkts-mdm-networkmanager-getsharedlist-f.md)
   - [isNetworkInterfaceDisabledSync](arkts-mdm-networkmanager-isnetworkinterfacedisabledsync-f.md)
   <!--Del-->
   - [listIptablesFilterRules(system api)](arkts-mdm-networkmanager-listiptablesfilterrules-f-sys.md)<!--DelEnd-->
@@ -344,8 +350,10 @@
   - [DomainFilterRule](arkts-mdm-networkmanager-domainfilterrule-i.md)
   - [FirewallRule](arkts-mdm-networkmanager-firewallrule-i.md)
   - [InterfaceConfig](arkts-mdm-networkmanager-interfaceconfig-i.md)
+  - [PathSharedData](arkts-mdm-networkmanager-pathshareddata-i.md)
   <!--Del-->
   - [RemoveFilterRule(system api)](arkts-mdm-networkmanager-removefilterrule-i-sys.md)<!--DelEnd-->
+  - [UserPathInfo](arkts-mdm-networkmanager-userpathinfo-i.md)
   - [Action](arkts-mdm-networkmanager-action-e.md)
   <!--Del-->
   - [AddMethod(system api)](arkts-mdm-networkmanager-addmethod-e-sys.md)<!--DelEnd-->
@@ -396,6 +404,7 @@
   - [getDeviceSecurityLevelPolicy](arkts-mdm-securitymanager-getdevicesecuritylevelpolicy-f.md)
   - [getDisallowedPermissions](arkts-mdm-securitymanager-getdisallowedpermissions-f.md)
   - [getExternalSourceExtensionsPolicy](arkts-mdm-securitymanager-getexternalsourceextensionspolicy-f.md)
+  - [getPasswordLastChangedTime](arkts-mdm-securitymanager-getpasswordlastchangedtime-f.md)
   - [getPasswordPolicy](arkts-mdm-securitymanager-getpasswordpolicy-f.md)
   <!--Del-->
   - [getPasswordPolicy(system api)](arkts-mdm-securitymanager-getpasswordpolicy-f-sys.md)<!--DelEnd-->
@@ -463,6 +472,7 @@
   - [getOtaUpdatePolicy](arkts-mdm-systemmanager-getotaupdatepolicy-f.md)
   - [getUpdateAuthData](arkts-mdm-systemmanager-getupdateauthdata-f.md)
   - [getUpdateResult](arkts-mdm-systemmanager-getupdateresult-f.md)
+  - [getVolumeDegree](arkts-mdm-systemmanager-getvolumedegree-f.md)
   - [isActivationLockDisabled](arkts-mdm-systemmanager-isactivationlockdisabled-f.md)
   - [isOtaUpdateNonceEnable](arkts-mdm-systemmanager-isotaupdatenonceenable-f.md)
   - [notifyUpdatePackages](arkts-mdm-systemmanager-notifyupdatepackages-f.md)
@@ -478,6 +488,7 @@
   - [setNTPServer](arkts-mdm-systemmanager-setntpserver-f.md)
   - [setOtaUpdateNonceEnable](arkts-mdm-systemmanager-setotaupdatenonceenable-f.md)
   - [setOtaUpdatePolicy](arkts-mdm-systemmanager-setotaupdatepolicy-f.md)
+  - [setVolumeDegree](arkts-mdm-systemmanager-setvolumedegree-f.md)
   - [startCollectLog](arkts-mdm-systemmanager-startcollectlog-f.md)
   - [startExactTimer](arkts-mdm-systemmanager-startexacttimer-f.md)
   - [stopExactTimer](arkts-mdm-systemmanager-stopexacttimer-f.md)
@@ -493,6 +504,7 @@
   - [SystemUpdateInfo](arkts-mdm-systemmanager-systemupdateinfo-i.md)
   - [UpdatePackageInfo](arkts-mdm-systemmanager-updatepackageinfo-i.md)
   - [UpdateResult](arkts-mdm-systemmanager-updateresult-i.md)
+  - [AudioVolumeType](arkts-mdm-systemmanager-audiovolumetype-e.md)
   - [KeyAction](arkts-mdm-systemmanager-keyaction-e.md)
   - [KeyCode](arkts-mdm-systemmanager-keycode-e.md)
   - [KeyPolicy](arkts-mdm-systemmanager-keypolicy-e.md)

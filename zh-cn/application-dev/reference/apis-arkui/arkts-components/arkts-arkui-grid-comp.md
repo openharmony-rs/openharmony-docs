@@ -2415,6 +2415,8 @@ export class RectGridDataSource implements IDataSource {
 }
 ```
 
+
+
 ```TypeScript
 // xxx.ets
 import { RectGridDataSource, Rects } from './RectGridDataSource';
@@ -2550,6 +2552,58 @@ struct GridOnMoveExample {
     list[8].rectSize = [2, 1] // 2行1列
     list[13].rectSize = [1, 4]  // 1行4列
     this.numbers = new RectGridDataSource(list);
+  }
+}
+```
+
+### 示例23（设置滚动吸附对齐）
+
+本示例通过[scrollSnapStrategy](#scrollsnapstrategy)接口设置ScrollSnapAlign.CENTER，使item在滚动结束时自动对齐到视口中央。
+
+从API版本26.1.0开始，新增scrollSnapStrategy接口。
+
+GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
+
+```TypeScript
+// xxx.ets
+// 设置ScrollSnapAlign.CENTER，使item在滚动结束时自动对齐到视口中央
+import { GridDataSource } from './GridDataSource';
+
+@Entry
+@Component
+struct GridSnapExample {
+  numbers: GridDataSource = new GridDataSource([]);
+  scroller: Scroller = new Scroller();
+
+  aboutToAppear() {
+    let list: string[] = [];
+    for (let i = 0; i < 50; i++) {
+      list.push(i.toString());
+    }
+    this.numbers = new GridDataSource(list);
+  }
+
+  build() {
+    Column({ space: 5 }) {
+      Text('Grid').fontColor(0x000000).fontSize(16).width('90%')
+      Grid(this.scroller) {
+        LazyForEach(this.numbers, (item: string) => {
+          GridItem() {
+            Text(item)
+              .fontSize(20)
+              .backgroundColor(0xF9CF93)
+              .width('100%')
+              .height(150)
+              .textAlign(TextAlign.Center)
+          }
+        }, (index: number) => index.toString())
+      }
+      .columnsTemplate('1fr 1fr')
+      .columnsGap(10)
+      .rowsGap(20)
+      .height(400)
+      .scrollSnapStrategy(ScrollSnapAlign.CENTER)
+    }.width('100%').margin({ top: 5 })
   }
 }
 ```

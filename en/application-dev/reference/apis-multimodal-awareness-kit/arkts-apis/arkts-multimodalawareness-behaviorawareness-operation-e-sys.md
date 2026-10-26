@@ -6,7 +6,7 @@ export enum Operation
 
 Operation target enum.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 <!--Device-behaviorAwareness-export enum Operation--><!--Device-behaviorAwareness-export enum Operation-End-->
 
@@ -22,7 +22,7 @@ OFF = 'off'
 
 Turn off.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -40,7 +40,7 @@ ON = 'on'
 
 Turn on.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -58,7 +58,7 @@ TOGGLE = 'toggle'
 
 Toggle.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 

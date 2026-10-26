@@ -26,6 +26,12 @@ Set the options.
 
 ## Summary
 
+### Classes
+
+| Name | Description |
+| --- | --- |
+| [MovingPhotoViewController](arkts-medialibrary-movingphotoview-comp-movingphotoviewcontroller-c.md) | Defines the MovingPhotoView controller. |
+
 ### Interfaces
 
 | Name | Description |

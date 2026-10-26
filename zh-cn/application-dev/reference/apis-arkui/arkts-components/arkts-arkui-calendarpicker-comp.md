@@ -40,6 +40,12 @@ CalendarPicker(options?: CalendarOptions)
 
 ## 汇总
 
+### 类
+
+| 名称 | 说明 |
+| --- | --- |
+| [CalendarPickerDialog](arkts-arkui-calendarpicker-comp-calendarpickerdialog-c.md) | 点击日期弹出日历选择器弹窗，可在弹窗内选择日期。适用于需要在应用中进行日期选择的场景，如日程管理、预订系统、表单填写等。 |
+
 ### 接口
 
 | 名称 | 说明 |
@@ -126,6 +132,8 @@ struct CalendarPickerExample {
 
 从API version 19开始，新增了[markToday](#marktoday19)接口，[CalendarOptions](#calendaroptions对象说明)中新增了disabledDateRange属性。
 
+
+
 ```TypeScript
 // xxx.ets
 @Entry
@@ -148,6 +156,39 @@ struct CalendarPickerExample {
           console.info(`CalendarPicker onChange: ${value.toString()}`);
         })
     }.alignItems(HorizontalAlign.End).width('100%')
+  }
+}
+```
+
+### 示例4（设置每周起始日）
+
+该示例通过firstDayOfWeek设置日历选择器每周的起始日为周一。
+
+从API版本26.1.0开始，新增了[firstDayOfWeek](#firstdayofweek)接口。
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct CalendarPickerExample {
+  private selectedDate: Date = new Date('2025-01-15');
+
+  build() {
+    Column() {
+      Column() {
+        Text('日历日期选择器').fontSize(30)
+        CalendarPicker({ hintRadius: 10, selected: this.selectedDate })
+          .edgeAlign(CalendarAlign.CENTER)
+          .firstDayOfWeek(CalendarFirstDayOfWeek.MON)
+          .textStyle({ color: '#ff182431', font: { size: 20, weight: FontWeight.Normal } })
+          .margin(10)
+          .onChange((value) => {
+            console.info(`CalendarPicker onChange: ${value.toString()}`);
+          })
+      }.alignItems(HorizontalAlign.Center).width("100%")
+    }
+    .width('100%')
+    .margin({ top: 100 })
   }
 }
 ```

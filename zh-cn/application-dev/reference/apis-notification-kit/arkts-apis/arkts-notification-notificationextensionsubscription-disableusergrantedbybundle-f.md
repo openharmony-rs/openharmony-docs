@@ -14,7 +14,7 @@ function disableUserGrantedByBundle(bundle: GrantedBundleInfo): Promise<void>
 
 关闭本应用中“已获取的本机通知”列表中指定应用的开关状态。使用promise异步回调。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **需要权限：** ohos.permission.SUBSCRIBE_NOTIFICATION
 
@@ -45,3 +45,17 @@ function disableUserGrantedByBundle(bundle: GrantedBundleInfo): Promise<void>
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. Possible cause: 1.IPC communication failed. 2.Memory operation error. 3.Database operation failed. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 | [1600022](../errorcode-notification.md#1600022-无效的包信息) | The specified bundle is invaild. |
+
+**示例**
+
+```TypeScript
+let bundle: notificationExtensionSubscription.GrantedBundleInfo = {
+  bundleName: 'com.example.myapplication',
+  appIndex: 0
+};
+notificationExtensionSubscription.disableUserGrantedByBundle(bundle).then(() => {
+  console.info(`disableUserGrantedByBundle successfully`);
+}).catch((err: BusinessError) => {
+  console.error(`disableUserGrantedByBundle fail, code is ${err.code}, message is ${err.message}`);
+});
+```

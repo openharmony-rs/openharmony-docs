@@ -46,6 +46,12 @@ Initial configuration options of the component.
 
 ## Summary
 
+### Classes
+
+| Name | Description |
+| --- | --- |
+| [SelectionContainerController](arkts-arkui-selectioncontainer-comp-selectioncontainercontroller-c.md) | Provides the controller of the **SelectionContainer** component. |
+
 ### Interfaces
 
 | Name | Description |

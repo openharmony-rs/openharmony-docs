@@ -56,8 +56,8 @@ function createPixelMapFromSurfaceSync(surfaceId: string) {
   try {
     let pixelMap: image.PixelMap = image.createPixelMapFromSurfaceSync(surfaceId, region);
     console.info('Succeeded in creating the PixelMap from Surface.');
-  } catch (e) {
-    const err = e as BusinessError;
+  } catch (error) {
+    const err = error as BusinessError;
     console.error(`Failed to create the PixelMap from Surface. Code: ${err.code}, message: ${err.message}`);
   }
 }
@@ -112,8 +112,8 @@ function createPixelMapFromSurfaceSync(surfaceId: string) {
   try {
     let pixelMap: image.PixelMap = image.createPixelMapFromSurfaceSync(surfaceId);
     console.info('Succeeded in creating the PixelMap from Surface.');
-  } catch (e) {
-    const err = e as BusinessError;
+  } catch (error) {
+    const err = error as BusinessError;
     console.error(`Failed to create the PixelMap from Surface. Code: ${err.code}, message: ${err.message}`);
   }
 }

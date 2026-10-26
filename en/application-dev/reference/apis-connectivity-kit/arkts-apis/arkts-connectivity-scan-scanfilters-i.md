@@ -32,7 +32,7 @@ Device address. By default, this field is not used if it is not set. The address
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-ScanFilters-address?: string--><!--Device-ScanFilters-address?: string-End-->
 
@@ -52,7 +52,7 @@ Device name. The value contains 0 to 30 characters. By default, this field is no
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-ScanFilters-deviceName?: string--><!--Device-ScanFilters-deviceName?: string-End-->
 
@@ -72,7 +72,7 @@ Manufacturer data. By default, this field is not used if it is not set. **manufa
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-ScanFilters-manufacturerData?: ArrayBuffer--><!--Device-ScanFilters-manufacturerData?: ArrayBuffer-End-->
 
@@ -92,7 +92,7 @@ Manufacturer data mask. By default, this field is not used if it is not set. Thi
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-ScanFilters-manufacturerDataMask?: ArrayBuffer--><!--Device-ScanFilters-manufacturerDataMask?: ArrayBuffer-End-->
 
@@ -112,7 +112,7 @@ Manufacturer ID. The value range is [1, 65535]. By default, this field is not us
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-ScanFilters-manufacturerId?: int--><!--Device-ScanFilters-manufacturerId?: int-End-->
 
@@ -132,7 +132,7 @@ RSSI threshold, in dBm. The value range is this threshold will be filtered out. 
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-ScanFilters-rssi?: int--><!--Device-ScanFilters-rssi?: int-End-->
 

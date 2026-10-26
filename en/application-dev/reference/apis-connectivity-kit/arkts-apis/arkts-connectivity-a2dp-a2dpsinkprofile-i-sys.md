@@ -59,6 +59,21 @@ Initiate an a2dp sink connection to a remote device.
 | 2904000 | The a2dp sink service is not running. |
 | 2904002 | The connection is rejected due to the connection policy. For example connection limit restrictions. |
 
+<!--Del-->
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+try {
+    let a2dpSink = a2dp.createA2dpSnkProfile();
+    a2dpSink.connect('XX:XX:XX:XX:XX:XX');
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
+<!--DelEnd-->
+
 ## disconnect
 
 ```TypeScript
@@ -96,6 +111,21 @@ Disconnect the a2dp sink connection with the remote device.
 | 2900004 | Profile not supported. |
 | 2900099 | Internal system error. For example, IPC error. Detailed error messages can be used to assist in locating the problem. |
 | 2904000 | The a2dp sink service is not running. |
+
+<!--Del-->
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+try {
+    let a2dpSink = a2dp.createA2dpSnkProfile();
+    a2dpSink.disconnect('XX:XX:XX:XX:XX:XX');
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
+<!--DelEnd-->
 
 ## getPlayingState
 
@@ -140,3 +170,18 @@ Obtain the playing state of device.
 | 2900004 | Profile not supported. |
 | 2900099 | Internal system error. For example, IPC error. Detailed error messages can be used to assist in locating the problem. |
 | 2904001 | The a2dp sink not connected. |
+
+<!--Del-->
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+try {
+    let a2dpSink = a2dp.createA2dpSnkProfile();
+    let state = a2dpSink.getPlayingState('XX:XX:XX:XX:XX:XX');
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
+<!--DelEnd-->

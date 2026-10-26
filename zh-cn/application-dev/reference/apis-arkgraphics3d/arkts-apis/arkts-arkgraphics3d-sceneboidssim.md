@@ -1,5 +1,15 @@
 # SceneBoidsSim
 
+本模块提供ArkGraphics 3D中群组模拟动画的类型及操作方法。
+ 群组模拟动画是通过分离、对齐、凝聚等规则驱动群体中的个体，使其展现出类似自然界中鸟群、鱼群运动特征的计算机动画方法。
+
+> **说明：**
+ >
+ > 使用本模块的接口前，
+ > 需先通过[RenderContext.loadPlugin](arkts-arkgraphics3d-scene-rendercontext-i.md#loadplugin)加载群组模拟插件[BoidsSimPlugin](arkts-arkgraphics3d-sceneboidssim-boidssimplugin-c-sys.md)。
+
+
+
 ## 汇总
 
 <!--Del-->

@@ -65,9 +65,10 @@ Starts a **photoPicker** page for the user to select one or more images or video
 **Examples**
 
 ```TypeScript
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-async function example01(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+async function openBindSheet01() {
   try {
     let photoSelectOptions = new photoAccessHelper.PhotoSelectOptions();
     photoSelectOptions.MIMEType = photoAccessHelper.PhotoViewMIMETypes.IMAGE_TYPE;
@@ -127,9 +128,10 @@ Starts a **photoPicker** page for the user to select one or more images or video
 **Examples**
 
 ```TypeScript
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-async function example02(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+async function openBindSheet02() {
   try {
     let photoSelectOptions = new photoAccessHelper.PhotoSelectOptions();
     photoSelectOptions.MIMEType = photoAccessHelper.PhotoViewMIMETypes.IMAGE_TYPE;
@@ -189,9 +191,10 @@ Starts a **photoPicker** page for the user to select one or more images or video
 **Examples**
 
 ```TypeScript
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-async function example03(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+async function openBindSheet03() {
   try {
     let photoPicker = new photoAccessHelper.PhotoViewPicker();
     photoPicker.select((err: BusinessError, photoSelectResult: photoAccessHelper.PhotoSelectResult) => {

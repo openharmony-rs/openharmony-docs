@@ -18,7 +18,7 @@ Enumerates the material types in a scene. The material type defines how material
 UNLIT_SHADOW_ALPHA = 100
 ```
 
-Draws only shadows. When the Blend property of the material is enabled, the material is blended with the background to simulate a transparent material effect.
+Draws only shadows. When the [Blend](arkts-arkgraphics3d-sceneresources-blend-i.md) property of the material is enabled, the material is blended with the background to simulate a transparent material effect.
 
 **Since:** 23
 

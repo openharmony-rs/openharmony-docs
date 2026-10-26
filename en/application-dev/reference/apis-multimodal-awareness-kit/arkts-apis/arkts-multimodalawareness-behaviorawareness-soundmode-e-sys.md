@@ -6,7 +6,7 @@ export enum SoundMode
 
 Sound mode enum.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 <!--Device-behaviorAwareness-export enum SoundMode--><!--Device-behaviorAwareness-export enum SoundMode-End-->
 
@@ -22,7 +22,7 @@ RING = 'ring'
 
 Ring mode.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -40,7 +40,7 @@ SILENT = 'silent'
 
 Silent mode.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -58,7 +58,7 @@ VIBRATE = 'vibrate'
 
 Vibrate mode.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 

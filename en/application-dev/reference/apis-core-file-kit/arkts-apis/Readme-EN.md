@@ -432,6 +432,10 @@
   <!--Del-->
   - [getSharedDirectoryInfo(system api)](arkts-corefile-fileshare-getshareddirectoryinfo-f-sys.md)<!--DelEnd-->
   <!--Del-->
+  - [getStatusByPermission(system api)](arkts-corefile-fileshare-getstatusbypermission-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [grantPermissionByUser(system api)](arkts-corefile-fileshare-grantpermissionbyuser-f-sys.md)<!--DelEnd-->
+  <!--Del-->
   - [grantSharedDirectoryPermission(system api)](arkts-corefile-fileshare-grantshareddirectorypermission-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [grantUriPermission(system api)](arkts-corefile-fileshare-granturipermission-f-sys.md)<!--DelEnd-->
@@ -440,12 +444,17 @@
   <!--Del-->
   - [revokePermission(system api)](arkts-corefile-fileshare-revokepermission-f-sys.md)<!--DelEnd-->
   <!--Del-->
+  - [revokePermissionByUser(system api)](arkts-corefile-fileshare-revokepermissionbyuser-f-sys.md)<!--DelEnd-->
+  <!--Del-->
   - [revokeSharedDirectoryPermission(system api)](arkts-corefile-fileshare-revokeshareddirectorypermission-f-sys.md)<!--DelEnd-->
   - [PathPolicyInfo](arkts-corefile-fileshare-pathpolicyinfo-i.md)
+  <!--Del-->
+  - [PermissionStatusInfo(system api)](arkts-corefile-fileshare-permissionstatusinfo-i-sys.md)<!--DelEnd-->
   - [PolicyErrorResult](arkts-corefile-fileshare-policyerrorresult-i.md)
   - [PolicyInfo](arkts-corefile-fileshare-policyinfo-i.md)
   <!--Del-->
   - [SharedDirectoryInfo(system api)](arkts-corefile-fileshare-shareddirectoryinfo-i-sys.md)<!--DelEnd-->
+  - [GrantStatus](arkts-corefile-fileshare-grantstatus-e.md)
   - [OperationMode](arkts-corefile-fileshare-operationmode-e.md)
   - [PolicyErrorCode](arkts-corefile-fileshare-policyerrorcode-e.md)
   - [PolicyType](arkts-corefile-fileshare-policytype-e.md)

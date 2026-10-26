@@ -47,6 +47,12 @@ Creates a **Tabs** container.
 
 ## Summary
 
+### Classes
+
+| Name | Description |
+| --- | --- |
+| [TabsController](arkts-arkui-tabs-comp-tabscontroller-c.md) | Defines the controller of the **Tabs** component, used to control the **Tabs** component to perform tab switching. A single **TabsController** cannot control multiple **Tabs** components. |
+
 ### Interfaces
 
 | Name | Description |

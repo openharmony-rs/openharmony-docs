@@ -601,6 +601,45 @@ async function testResumeRecording() {
 }
 ```
 
+## setCaptureArea
+
+```TypeScript
+setCaptureArea(displayId: number, area: RectangleRegion): Promise<void>
+```
+
+用于屏幕录制模式下指定实际录制的区域。
+
+可在启动录屏前配置，也可以在录屏过程中更新区域。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AVScreenCaptureRecorder-setCaptureArea(displayId: int, area: RectangleRegion): Promise<void>--><!--Device-AVScreenCaptureRecorder-setCaptureArea(displayId: int, area: RectangleRegion): Promise<void>-End-->
+
+**系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| displayId | number | 是 | 指定录制区域的屏幕ID。<br>取值应为整数。取值约束：该值必须是当前系统中已存在的屏幕ID。 |
+| area | [RectangleRegion](arkts-media-media-rectangleregion-i.md) | 是 | 录制的矩形区域定义 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [5400102](../../apis-media-kit/errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
+| [5400105](../../apis-media-kit/errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
+| [5400108](../../apis-media-kit/errorcode-media.md#5400108-参数超过取值范围) | The parameter check failed, parameter value out of range. |
+
 ## setContentAutoRotation
 
 ```TypeScript

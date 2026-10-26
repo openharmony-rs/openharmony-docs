@@ -12,7 +12,7 @@ import { securityGuard } from '@kit.SecurityGuardKit';
 function reportSecurityEvent(securityEvent: SecurityEvent): void
 ```
 
-安全事件上报接口。
+Report security information to the security guard.
 
 **起始版本：** 12
 
@@ -28,7 +28,7 @@ function reportSecurityEvent(securityEvent: SecurityEvent): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| securityEvent | [SecurityEvent](arkts-securityguard-securityguard-securityevent-i-sys.md) | 是 | 表示要上报的事件信息。 |
+| securityEvent | [SecurityEvent](arkts-securityguard-securityguard-securityevent-i-sys.md) | 是 | indicates the information to be reported. |
 
 **错误码：**
 

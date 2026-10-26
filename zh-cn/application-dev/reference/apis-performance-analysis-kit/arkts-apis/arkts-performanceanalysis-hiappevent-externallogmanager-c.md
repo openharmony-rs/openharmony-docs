@@ -41,3 +41,16 @@ onCapacityReached(container: ExternalLogContainer): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | container | [ExternalLogContainer](arkts-performanceanalysis-hiappevent-externallogcontainer-c.md) | 是 | 包含所有外部日志文件的容器 |
+
+**示例**
+
+```TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// 定义ExternalLogManager实现
+let myLogManager: hiAppEvent.ExternalLogManager = {
+  onCapacityReached(container: hiAppEvent.ExternalLogContainer): void {
+    hilog.info(0x0000, 'testTag', `[MyLogManager] 容量达到阈值`);
+  }
+};
+```

@@ -563,6 +563,25 @@ isAutoAuxiliaryPhotoDeliverySupported(auxPhotoType: CameraAuxiliaryPhotoType): b
 | --- | --- |
 | [7400115](../errorcode-camera.md#7400115-参数超出范围) | Parameter out of the range. The auxPhotoType value is invalid. Check the CameraAuxiliaryPhotoType enum for valid values. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { camera } from '@kit.CameraKit';
+
+function isAutoAuxiliaryPhotoDeliverySupported(photoOutput: camera.PhotoOutput): boolean {
+  let isSupported: boolean = false;
+  try {
+    isSupported = photoOutput.isAutoAuxiliaryPhotoDeliverySupported(camera.CameraAuxiliaryPhotoType.OXYGEN);
+  } catch (error) {
+    // 失败返回错误码error.code并处理。
+    let err = error as BusinessError;
+    console.error(`The isAutoAuxiliaryPhotoDeliverySupported call failed. error code: ${err.code}`);
+  }
+  return isSupported;
+}
+```
+
 ## isAutoExtendedGainmapDeliverySupported
 
 ```TypeScript
@@ -1636,6 +1655,24 @@ setAutoAuxiliaryPhotosDeliveryEnabled(auxPhotoTypes: CameraAuxiliaryPhotoType[],
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Check if the camera device supports the required auxiliary photo types by using capability query APIs. |
 | [7400115](../errorcode-camera.md#7400115-参数超出范围) | Parameter out of the range. The auxPhotoType value is invalid. Check the CameraAuxiliaryPhotoType enum for valid values. |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { camera } from '@kit.CameraKit';
+
+function setAutoAuxiliaryPhotosDeliveryEnabled(photoOutput: camera.PhotoOutput): void {
+  try {
+    photoOutput.setAutoAuxiliaryPhotosDeliveryEnabled(
+      [camera.CameraAuxiliaryPhotoType.OXYGEN, camera.CameraAuxiliaryPhotoType.PIGMENTATION], true);
+  } catch (error) {
+    // 失败返回错误码error.code并处理。
+    let err = error as BusinessError;
+    console.error(`The setAutoAuxiliaryPhotosDeliveryEnabled call failed. error code: ${err.code}`);
+  }
+}
+```
 
 ## setMovingPhotoVideoCodecType
 

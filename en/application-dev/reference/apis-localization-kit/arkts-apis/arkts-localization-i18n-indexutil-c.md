@@ -57,11 +57,11 @@ getBilingualIndex(text: string): string
 
 Obtains the bilingual index of the text object.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-IndexUtil-getBilingualIndex(text: string): string--><!--Device-IndexUtil-getBilingualIndex(text: string): string-End-->
 
@@ -87,11 +87,11 @@ getBilingualIndexList(mode?: BilingualIndexMode): Array<string>
 
 Obtains the bilingual index list of the current locale.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-IndexUtil-getBilingualIndexList(mode?: BilingualIndexMode): Array<string>--><!--Device-IndexUtil-getBilingualIndexList(mode?: BilingualIndexMode): Array<string>-End-->
 
@@ -187,7 +187,7 @@ static isBilingualIndexSupported(locale: Intl.Locale): boolean
 
 Checks whether the specified locale supports bilingual index.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 

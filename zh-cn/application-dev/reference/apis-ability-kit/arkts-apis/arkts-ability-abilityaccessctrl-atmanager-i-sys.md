@@ -18,6 +18,88 @@ interface AtManager
 import { abilityAccessCtrl, Context, PermissionRequestResult, Permissions } from '@kit.AbilityKit';
 ```
 
+## getAutomationControlControllers
+
+```TypeScript
+getAutomationControlControllers(targetTokenID: number): Promise<Array<AutomationControlControllerInfo>>
+```
+
+查询对目标应用有自动化控制能力的控制方应用。返回控制方应用信息列表。
+
+**起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.GET_SENSITIVE_PERMISSIONS
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AtManager-getAutomationControlControllers(targetTokenID: int): Promise<Array<AutomationControlControllerInfo>>--><!--Device-AtManager-getAutomationControlControllers(targetTokenID: int): Promise<Array<AutomationControlControllerInfo>>-End-->
+
+**系统能力：** SystemCapability.Security.AccessToken
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| targetTokenID | number | 是 | 目标被控制应用的Token ID。<br>取值限定为整数。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;Array&lt;[AutomationControlControllerInfo](arkts-ability-abilityaccessctrl-automationcontrolcontrollerinfo-i-sys.md)&gt;&gt; | Promise用于返回控制方应用的列表，这些应用可对指定的目标应用进行自动化控制。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. Interface caller does not have permission "ohos.permission.GET_SENSITIVE_PERMISSIONS". |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. Interface caller is not a system application. |
+| [12100002](../errorcode-access-token.md#12100002-tokenid不存在) | The specified target tokenID does not exist, or the corresponding process is not an application process. |
+| [12100007](../errorcode-access-token.md#12100007-系统服务工作异常) | Service exception. |
+
+## getAutomationControlTargets
+
+```TypeScript
+getAutomationControlTargets(controllerTokenID: number): Promise<Array<AutomationControlTargetResult>>
+```
+
+查询指定应用的自动化控制目标应用的信息。返回目标应用列表及其状态。
+
+**起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.GET_SENSITIVE_PERMISSIONS
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AtManager-getAutomationControlTargets(controllerTokenID: int): Promise<Array<AutomationControlTargetResult>>--><!--Device-AtManager-getAutomationControlTargets(controllerTokenID: int): Promise<Array<AutomationControlTargetResult>>-End-->
+
+**系统能力：** SystemCapability.Security.AccessToken
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| controllerTokenID | number | 是 | 控制方应用的Token ID。<br>取值限定为整数。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;Array&lt;[AutomationControlTargetResult](arkts-ability-abilityaccessctrl-automationcontroltargetresult-i-sys.md)&gt;&gt; | Promise用于返回目标应用及其自动化控制状态。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. Interface caller does not have permission "ohos.permission.GET_SENSITIVE_PERMISSIONS". |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. Interface caller is not a system application. |
+| [12100002](../errorcode-access-token.md#12100002-tokenid不存在) | The specified controller tokenID does not exist, or the corresponding process is not an application process. |
+| [12100007](../errorcode-access-token.md#12100007-系统服务工作异常) | Service exception. |
+
 ## getPermissionFlags
 
 ```TypeScript
@@ -1148,6 +1230,53 @@ atManager.revokeUserGrantedPermission(tokenID, 'ohos.permission.READ_AUDIO', per
 ```
 
 <!--DelEnd-->
+
+## setAutomationControlStatus
+
+```TypeScript
+setAutomationControlStatus(
+      controllerTokenID: number,
+      targetList: Array<AutomationControlTargetParam>
+    ): Promise<Array<AutomationControlSetResult>>
+```
+
+设置控制方应用对目标应用的自动化控制开关，返回每个目标应用的结果。该开关状态包含允许和禁止。
+
+**起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.GRANT_SENSITIVE_PERMISSIONS
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AtManager-setAutomationControlStatus(      controllerTokenID: int,      targetList: Array<AutomationControlTargetParam>    ): Promise<Array<AutomationControlSetResult>>--><!--Device-AtManager-setAutomationControlStatus(      controllerTokenID: int,      targetList: Array<AutomationControlTargetParam>    ): Promise<Array<AutomationControlSetResult>>-End-->
+
+**系统能力：** SystemCapability.Security.AccessToken
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| controllerTokenID | number | 是 | 控制方应用的身份标识，参数值大于0。<br>取值限定为整数。 |
+| targetList | Array&lt;[AutomationControlTargetParam](arkts-ability-abilityaccessctrl-automationcontroltargetparam-i-sys.md)&gt; | 是 | 被控制目标应用列表及其自动化控制开关状态。<br>最大长度为1024且不能为空。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;Array&lt;[AutomationControlSetResult](arkts-ability-abilityaccessctrl-automationcontrolsetresult-e-sys.md)&gt;&gt; | Promise用于返回每个目标应用的结果。与targetList的顺序相同。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. Interface caller does not have permission "ohos.permission.GRANT_SENSITIVE_PERMISSIONS". |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. Interface caller is not a system application. |
+| [12100001](../errorcode-access-token.md#12100001-入参错误) | Invalid parameter. The controllerTokenID is 0, or the targetList is empty or exceeds 1024 entries. |
+| [12100002](../errorcode-access-token.md#12100002-tokenid不存在) | The specified controller tokenID does not exist, or the corresponding process is not an application process. |
+| [12100006](../errorcode-access-token.md#12100006-指定操作不允许) | The application specified by the controller tokenID is not allowed to perform automation control operations. |
+| [12100007](../errorcode-access-token.md#12100007-系统服务工作异常) | Service exception. |
 
 ## setPermissionRequestToggleStatus
 

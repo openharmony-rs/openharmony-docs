@@ -6,10 +6,6 @@ export declare struct ProgressButton
 
 Creates a **ProgressButton** component.
 
-> **NOTE:** 
-> 
-> - If the **ProgressButton** component has [universal attributes](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md) or [universal events](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md) configured, the compiler toolchain automatically generates an additional \_\_Common\_\_ node and mounts the universal attributes and universal events on this node rather than the **ProgressButton** component itself. As a result, the configured universal attributes and universal events may fail to take effect or behave as intended. For this reason, avoid using universal attributes and events with the **ProgressButton** component.
-
 **Since:** 10
 
 **Decorator:** @Component

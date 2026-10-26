@@ -6,7 +6,7 @@ export enum LocationStatusType
 
 Location status type enum. Used to distinguish entering or exiting a geofence.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 <!--Device-behaviorAwareness-export enum LocationStatusType--><!--Device-behaviorAwareness-export enum LocationStatusType-End-->
 
@@ -22,7 +22,7 @@ ENTER = 'enter'
 
 Enter geofence.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -40,7 +40,7 @@ EXIT = 'exit'
 
 Exit geofence.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 

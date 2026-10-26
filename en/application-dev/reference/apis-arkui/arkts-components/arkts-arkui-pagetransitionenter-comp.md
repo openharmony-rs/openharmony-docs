@@ -48,6 +48,12 @@ Invoked on a per-frame basis until the entrance animation is complete, with the 
 
 ## Summary
 
+### Classes
+
+| Name | Description |
+| --- | --- |
+| [CommonTransition](arkts-arkui-pagetransitionenter-comp-commontransition-c.md) | Defines the common transition animation for page transitions, which is inherited and used by [PageTransitionEnter](#pagetransitionenter) and [PageTransitionExit](arkts-arkui-pagetransitionenter-comp-con.md#pagetransitionexit). It must be configured in the **pageTransition()** function. Both **slide** and **translate** involve position movement: **slide** is suitable for scenarios that require sliding in and out along a preset direction (left/right/up /down/**START**\/**END)** and is simple to use; **translate** is suitable for scenarios that require a custom translation distance and offers higher flexibility. When **slide** and **translate** are set simultaneously, **slide** takes effect by default. **scale** and **opacity** set the scale and opacity effects respectively, and can be combined with the effects above. |
+
 ### Interfaces
 
 | Name | Description |

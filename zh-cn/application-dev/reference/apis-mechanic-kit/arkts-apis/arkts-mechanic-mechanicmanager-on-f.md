@@ -12,7 +12,7 @@ import { mechanicManager } from '@kit.MechanicKit';
 function on(type: 'attachStateChange', callback: Callback<AttachStateChangeInfo>): void
 ```
 
-Subscribes to device attachment state change events.
+注册连接状态变化事件的回调监听，等待连接状态变化。使用callback异步回调。
 
 **起始版本：** 20
 
@@ -36,6 +36,12 @@ Subscribes to device attachment state change events.
 **示例**
 
 ```TypeScript
+// 判断当前设备是否支持对特定设备类型的机械体设备控制（isControlSupported()接口API起始版本：26.0.0）
+let isSupported: boolean = mechanicManager.isControlSupported();
+if (!isSupported) {
+  console.info('The control function is not supported.');
+  return;
+}
 // 定义连接状态变化回调函数，result为设备连接状态变化信息
 let callback = (result: mechanicManager.AttachStateChangeInfo) => {
   console.info(`'callback result:' ${result}`);
@@ -56,7 +62,7 @@ console.info('Succeeded in registering callback.');
 function on(type: 'trackingStateChange', callback: Callback<TrackingEventInfo>): void
 ```
 
-Subscribes to tracking events.
+注册跟踪状态变化事件的回调监听。使用callback异步回调。
 
 **起始版本：** 20
 
@@ -80,6 +86,12 @@ Subscribes to tracking events.
 **示例**
 
 ```TypeScript
+// 判断当前设备是否支持对特定设备类型的机械体设备控制（isControlSupported()接口API起始版本：26.0.0）
+let isSupported: boolean = mechanicManager.isControlSupported();
+if (!isSupported) {
+  console.info('The control function is not supported.');
+  return;
+}
 // 定义跟踪状态变化回调函数，result为跟踪事件信息
 let callback = (result: mechanicManager.TrackingEventInfo) => {
   console.info(`'callback result:' ${result}`);

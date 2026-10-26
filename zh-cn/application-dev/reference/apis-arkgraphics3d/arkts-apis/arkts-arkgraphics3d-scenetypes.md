@@ -1,5 +1,9 @@
 # SceneTypes
 
+本模块提供ArkGraphics 3D中常用的数据类型。
+
+
+
 ## 汇总
 
 ### 类

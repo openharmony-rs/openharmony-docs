@@ -118,8 +118,7 @@
   <!--Del-->
   - [InterruptResult(system api)](arkts-audio-audio-interruptresult-i-sys.md)<!--DelEnd-->
   - [MicStateChangeEvent](arkts-audio-audio-micstatechangeevent-i.md)
-  <!--Del-->
-  - [SoundCardInfo(system api)](arkts-audio-audio-soundcardinfo-i-sys.md)<!--DelEnd-->
+  - [SoundCardInfo](arkts-audio-audio-soundcardinfo-i.md)
   - [StreamVolumeEvent](arkts-audio-audio-streamvolumeevent-i.md)
   <!--Del-->
   - [SystemRecordControllerChangeInfo(system api)](arkts-audio-audio-systemrecordcontrollerchangeinfo-i-sys.md)<!--DelEnd-->

@@ -64,6 +64,26 @@ Preferences实例的名称。名称长度需大于零且小于等于255字节，
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
+## sharedMapSize
+
+```TypeScript
+sharedMapSize?: number
+```
+
+初始缓存文件大小，单位为KB。为可选参数。表示当前Preferences实例的初始跨进程共享缓存文件大小，仅在存储模式设置为**GSKV**时生效。取值可以为0或[256, 1112784]范围内的值。不指定此参数时，系统按需自动初始化缓存文件。设置为0时，初始缓存文件大小为0，该Preferences实例的缓存文件不会增长，且不支持跨进程访问。设置为大于0的有效值时，初始缓存文件大小为配置值，该Preferences实例的缓存文件大小仍会按需增长。配置值可在Preferences实例断开连接后重新连接时动态切换。单位：KB。取值约束：值可以为0。取值范围：[256,1112784]。默认值：1112784。
+
+**类型：** number
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-Options-sharedMapSize?: long--><!--Device-Options-sharedMapSize?: long-End-->
+
+**系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
+
 ## storageType
 
 ```TypeScript

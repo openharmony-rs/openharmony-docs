@@ -98,7 +98,7 @@ ERR_CODE_CAST_CONTROL_DECODING_FAILED = 6614003
 ERR_CODE_CAST_CONTROL_DECODING_FORMAT_EXCEEDS_CAPABILITIES = 6614004
 ```
 
-所需解码的内容格式超出设备能力导致失败。
+设备的能力无法解码当前格式。
 
 **起始版本：** 13
 
@@ -738,7 +738,7 @@ ERR_CODE_CAST_CONTROL_PARSING_MANIFEST_MALFORMED = 6613002
 ERR_CODE_CAST_CONTROL_PARSING_MANIFEST_UNSUPPORTED = 6613004
 ```
 
-媒体清单中不支持此功能。
+媒体清单中不支持的特性。
 
 **起始版本：** 13
 
@@ -1030,8 +1030,6 @@ ERR_CODE_REMOTE_CONNECTION_NOT_EXIST = 6600109
 ERR_CODE_SERVICE_EXCEPTION = 6600101
 ```
 
-会话服务端异常。
-
 **起始版本：** 10
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
@@ -1039,6 +1037,22 @@ ERR_CODE_SERVICE_EXCEPTION = 6600101
 <!--Device-AVSessionErrorCode-ERR_CODE_SERVICE_EXCEPTION = 6600101--><!--Device-AVSessionErrorCode-ERR_CODE_SERVICE_EXCEPTION = 6600101-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+## ERR_CODE_SERVICE_NOT_RUNNING
+
+```TypeScript
+ERR_CODE_SERVICE_NOT_RUNNING = 6700101
+```
+
+会话服务未运行。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AVSessionErrorCode-ERR_CODE_SERVICE_NOT_RUNNING = 6700101--><!--Device-AVSessionErrorCode-ERR_CODE_SERVICE_NOT_RUNNING = 6700101-End-->
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Manager
 
 ## ERR_CODE_SESSION_INACTIVE
 

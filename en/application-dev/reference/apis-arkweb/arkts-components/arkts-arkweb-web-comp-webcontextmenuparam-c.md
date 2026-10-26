@@ -291,7 +291,7 @@ Obtains a Text Fragment link URL that points to the currently highlighted text o
 
 Use this API in the **onContextMenuShow** event callback. Before calling this API, you are advised to call shouldOfferLinkToText() to check whether the current selection supports link generation. If the selection does not support link generation, an empty string is returned.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -359,7 +359,7 @@ Checks whether the current web page has a Text Fragment highlight. Use this API 
 
 Use this API in the **onContextMenuShow** event callback. The result is consistent with the Chromium **GetExistingSelectors** behavior.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -383,7 +383,7 @@ Checks whether the currently selected text can be used to generate a Text Fragme
 
 Use this API in the **onContextMenuShow** event callback to determine whether to display a "Copy Link to Highlight" menu item. The result is consistent with the Chromium **ShouldOfferLinkToText** behavior.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 

@@ -38,6 +38,14 @@ TabContent()
 
 ## 汇总
 
+### 类
+
+| 名称 | 说明 |
+| --- | --- |
+| [BottomTabBarStyle](arkts-arkui-tabcontent-comp-bottomtabbarstyle-c.md) | 底部页签和侧边页签样式。 |
+| [SubTabBarStyle](arkts-arkui-tabcontent-comp-subtabbarstyle-c.md) | 子页签样式。打开后在切换页签时会播放跳转动画。 |
+| [TabBarSymbol](arkts-arkui-tabcontent-comp-tabbarsymbol-c.md) | 页签内symbol图标样式对象。 |
+
 ### 接口
 
 | 名称 | 说明 |
@@ -1457,7 +1465,7 @@ struct TabsIndicatorExample {
 
 该示例通过[tabBarVisibility](#tabbarvisibility)属性，设置页签在不同样式的页签栏中的可见性。
 
-从API版本26.2.0开始，TabContent新增了[tabBarVisibility](#tabbarvisibility)属性。
+从API版本26.0.1开始，TabContent新增了[tabBarVisibility](#tabbarvisibility)属性。
 
 
 

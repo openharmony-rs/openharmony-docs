@@ -188,6 +188,28 @@ Whether the device needs to enter the idle state to trigger deferred task schedu
 
 **System capability:** SystemCapability.ResourceSchedule.WorkScheduler
 
+## isPerformanceSensitive
+
+```TypeScript
+isPerformanceSensitive?: boolean
+```
+
+Whether the task is performance-sensitive. This parameter has strict restrictions, and the system will limit the running duration, running frequency, and total running duration of the entire system.  
+- **true**: Indicates that the task is performance-sensitive.  
+When this parameter is set to true, the isCharging and isDeepIdle parameters must be set to true. For a periodic task, the repeatCycleTime parameter must be greater than or equal to 24 hours.  
+- **false**: Indicates that the task is not performance-sensitive.  
+Default value: false.
+
+**Type:** boolean
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WorkInfo-isPerformanceSensitive?: boolean--><!--Device-WorkInfo-isPerformanceSensitive?: boolean-End-->
+
+**System capability:** SystemCapability.ResourceSchedule.WorkScheduler
+
 ## isPersisted
 
 ```TypeScript

@@ -244,7 +244,7 @@ When this attribute is not explicitly called or is reset, the caret uses the pag
 > 
 > - The exact color value **#00000000** is reserved as the reset sentinel. After reset, the CSS `caret-color` value is used. If the CSS value is **auto** or not set, the built-in default color is used.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -909,9 +909,9 @@ flingSpeedLimit(speedLimit: number)
 
 Sets the maximum fling speed for the Web component.
 
-The value configured through this TypeScript API takes precedence over values configured through other APIs.
+The value configured through this TypeScript API takes precedence over the front-end viewport max-fling-speed-x/y.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -923,7 +923,7 @@ The value configured through this TypeScript API takes precedence over values co
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| speedLimit | number | Yes | Maximum fling speed, in vp/s. If the value is less than or equal to 0, `NaN`, `+Infinity`, or `-Infinity`, the default value is used: 9000 vp/s on PCs and 17000 vp/s on non-PC devices. |
+| speedLimit | number | Yes | Maximum fling speed, in vp/s. If a value outside this range is passed, the default value is used: 9000 vp/s on PCs and 17000 vp/s on non-PC devices. <br>Value range: (0, +∞). |
 
 ## forceDarkAccess
 
@@ -1845,7 +1845,7 @@ Registers a callback to be invoked when the context menu item status is updated 
 
 The shouldOfferLinkToText() method returns a synchronous initial value, while this callback provides the asynchronous final value. The two are complementary.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -2482,6 +2482,10 @@ onMonitoredBlankScreen(callback: OnMonitorBlankScreenCallback)
 ```
 
 Registers a callback for blank screen monitoring attribution. The callback is triggered when the Web component monitors a blank screen and completes root cause attribution.
+
+> **NOTE:** 
+> 
+> - This method must be used with [enableBlankScreenMonitor](#enableblankscreenmonitor).Otherwise, the blank screen monitor is disabled by default, and this callback is not triggered.
 
 **Since:** 26.0.1
 
@@ -3477,7 +3481,7 @@ onZoomChange(callback: OnZoomChangeCallback)
 
 The callback is triggered when the browser zoom factor of the page changes.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 

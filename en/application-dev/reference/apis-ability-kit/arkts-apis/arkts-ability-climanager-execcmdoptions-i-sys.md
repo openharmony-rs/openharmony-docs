@@ -92,7 +92,7 @@ Indicates the task ID for task attribution. The value must be the task ID specif
 
 **Type:** string
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 

@@ -101,11 +101,11 @@ Whether to enable video encoding policy to quality stable encoding.
 
 **Type:** boolean
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-AVTranscoderConfig-enableStableQualityMode?: boolean--><!--Device-AVTranscoderConfig-enableStableQualityMode?: boolean-End-->
 
@@ -139,11 +139,11 @@ Set the quality parameter in StableQualityMode. The value range is [0, 51]. A sm
 
 **Type:** number
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-AVTranscoderConfig-sqrFactor?: int--><!--Device-AVTranscoderConfig-sqrFactor?: int-End-->
 

@@ -43,3 +43,20 @@ function doAction(mechId: number, actionType: ActionType): Promise<Result>
 | [33300001](../errorcode-mechanic.md#33300001-系统错误) | Service exception. |
 | [33300002](../errorcode-mechanic.md#33300002-设备未连接) | Device not connected. |
 | [33300003](../errorcode-mechanic.md#33300003-功能不支持) | Feature not supported. |
+
+<!--Del-->
+**示例**
+
+```TypeScript
+let mechId: number = 0;
+let actionType = mechanicManager.ActionType.HEAD_UP;
+try {
+  mechanicManager.doAction(mechId, actionType).then((result: mechanicManager.Result) => {
+    console.info(`'result:' ${result}`);
+  });
+} catch (e) {
+  console.error(`Code is ${e.code}, message is ${e.message}`);
+}
+```
+
+<!--DelEnd-->

@@ -6,7 +6,7 @@ class SignificantDate
 
 Defines a contact's significant date.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 <!--Device-contact-class SignificantDate--><!--Device-contact-class SignificantDate-End-->
 
@@ -28,11 +28,11 @@ Name of the Significant Date type.
 
 **Type:** string
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-SignificantDate-dateName?: string--><!--Device-SignificantDate-dateName?: string-End-->
 
@@ -48,11 +48,11 @@ Type of the Significant Date.
 
 **Type:** [SignificantDateType](arkts-contacts-contact-significantdatetype-e.md)
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-SignificantDate-dateType: SignificantDateType--><!--Device-SignificantDate-dateType: SignificantDateType-End-->
 
@@ -68,11 +68,11 @@ Value of the Significant Date.
 
 **Type:** string
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-SignificantDate-dateValue: string--><!--Device-SignificantDate-dateValue: string-End-->
 

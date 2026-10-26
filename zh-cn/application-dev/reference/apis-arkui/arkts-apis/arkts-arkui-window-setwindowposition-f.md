@@ -57,3 +57,24 @@ function setWindowPosition(list: Array<WindowPositionParams>): Promise<void>
 | [1300004](../errorcode-window.md#1300004-无权限操作) | Unauthorized operation. Possible cause: Invalid window type. Only main windows are supported. |
 | [1300008](../errorcode-window.md#1300008-显示设备异常) | The display device is abnormal. Possible cause: The window to be adjusted or the target main window specified by insertAfter is on a virtual screen. |
 | [1300016](../errorcode-window.md#1300016-参数校验错误) | Parameter error. Possible cause: The windowPositions list exceeds the maximum size of 50. |
+
+**示例**
+
+```TypeScript
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let list: Array<window.WindowPositionParams> = [{
+  windowId: 1,
+  insertAfter: 2,
+}];
+try {
+  window.setWindowPosition(list).then(() => {
+    console.info('Succeeded in adjusting the window position.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to adjust the window position. Cause code: ${err.code}, message: ${err.message}`);
+  });
+} catch (err) {
+  console.error(`Failed to adjust the window position. Cause info: ${JSON.stringify(err)}`);
+}
+```

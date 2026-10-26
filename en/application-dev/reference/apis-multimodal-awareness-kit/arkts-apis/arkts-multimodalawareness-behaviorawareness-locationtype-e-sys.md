@@ -6,7 +6,7 @@ export enum LocationType
 
 Location type enum.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 <!--Device-behaviorAwareness-export enum LocationType--><!--Device-behaviorAwareness-export enum LocationType-End-->
 
@@ -22,7 +22,7 @@ COMPANY = 'company'
 
 Company.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -40,7 +40,7 @@ CUSTOM = 'custom'
 
 Custom.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -58,7 +58,7 @@ HOME = 'home'
 
 Home.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 

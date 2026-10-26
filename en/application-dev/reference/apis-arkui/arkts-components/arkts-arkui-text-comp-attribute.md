@@ -1682,13 +1682,13 @@ strokeColor(color: Optional<ResourceColor>)
 
 Sets the text stroke color.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 26.2.0.
+**Widget capability:** This API can be used in ArkTS widgets since API version 26.1.0.
 
 <!--Device-TextAttribute-strokeColor(color: Optional<ResourceColor>): TextAttribute--><!--Device-TextAttribute-strokeColor(color: Optional<ResourceColor>): TextAttribute-End-->
 
@@ -1708,11 +1708,11 @@ strokeJoinStyle(strokeJoinStyle: StrokeJoinStyle | undefined)
 
 Sets the join style of the text stroke.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-TextAttribute-strokeJoinStyle(strokeJoinStyle: StrokeJoinStyle | undefined): TextAttribute--><!--Device-TextAttribute-strokeJoinStyle(strokeJoinStyle: StrokeJoinStyle | undefined): TextAttribute-End-->
 
@@ -1732,13 +1732,13 @@ strokeWidth(width: Optional<LengthMetrics>)
 
 Sets the text stroke width.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 26.2.0.
+**Widget capability:** This API can be used in ArkTS widgets since API version 26.1.0.
 
 <!--Device-TextAttribute-strokeWidth(width: Optional<LengthMetrics>): TextAttribute--><!--Device-TextAttribute-strokeWidth(width: Optional<LengthMetrics>): TextAttribute-End-->
 

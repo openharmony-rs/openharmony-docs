@@ -22,6 +22,42 @@ This API inherits from [CommonOptions](arkts-arkui-arkui-advanced-datepickercomp
 import { DatePickerComponent, DatePickerComponentOptions, DisplayMode, DateMode, TimeFormat, DatePickerComponentResult } from '@kit.ArkUI';
 ```
 
+## hideYear
+
+```TypeScript
+hideYear?: boolean
+```
+
+Whether to enable the "hide year" option.
+
+- **true**: A "----" option is appended after the [end](arkts-arkui-arkui-advanced-datepickercomponent-commonoptions-c.md) year. The user can select "----" to  
+indicate that the specific year is not relevant. This is applicable to scenarios that do not require a specific year, such as birthdays and anniversaries.  
+- **false**: The "----" option is not displayed. The year column shows only the specific years within the  
+range of [start](arkts-arkui-arkui-advanced-datepickercomponent-commonoptions-c.md) and [end](arkts-arkui-arkui-advanced-datepickercomponent-commonoptions-c.md).
+
+**NOTE:** 
+
+1. This attribute takes effect only when [displayMode](arkts-arkui-arkui-advanced-datepickercomponent-datepickercomponentoptions-c.md) is  
+**DisplayMode.DATE** or **DisplayMode.DATE_TIME** and [mode](arkts-arkui-arkui-advanced-datepickercomponent-dateoptions-c.md) is **DateMode.DATE** or **DateMode.YEAR_AND_MONTH**.
+2. When this attribute is **true**, the user can still scroll to select a specific year. The "----" option and
+specific years can be switched freely.
+3. This attribute supports runtime dynamic switching. When the value changes, the year column is updated
+accordingly.
+
+Default value: false.
+
+**Type:** boolean
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+<!--Device-DateOptions-hideYear?: boolean--><!--Device-DateOptions-hideYear?: boolean-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
 ## lunar
 
 ```TypeScript

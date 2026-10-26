@@ -120,6 +120,26 @@ Remote device information.
 
 **System API:** This is a system API.
 
+## taskIdentity
+
+```TypeScript
+taskIdentity?: TaskIdentity
+```
+
+Task identity.
+
+**Type:** [TaskIdentity](arkts-ability-abilitytoolaccessctrl-taskidentity-i-sys.md)
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-PermissionQuery-taskIdentity?: TaskIdentity--><!--Device-PermissionQuery-taskIdentity?: TaskIdentity-End-->
+
+**System capability:** SystemCapability.Security.Asset
+
+**System API:** This is a system API.
+
 ## ticketExpireTimeMs
 
 ```TypeScript

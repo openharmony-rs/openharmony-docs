@@ -38,7 +38,7 @@ FORM_EDIT_COLOR_MODE_KEY = 'ohos.extra.param.key.form_edit_color_mode'
 
 指定卡片编辑能力的深浅模式，-1是自动，0是深色模式，1是浅色模式
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

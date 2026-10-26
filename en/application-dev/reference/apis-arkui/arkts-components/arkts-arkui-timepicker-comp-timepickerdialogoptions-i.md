@@ -220,6 +220,28 @@ fixed even in accessibility and large-font modes. In addition, even if the butto
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
+## adaptToHandedness
+
+```TypeScript
+adaptToHandedness?: HandednessFollowMode
+```
+
+Whether and how the dialog adapts to the handedness. FOLLOW_ANCHOR: the dialog is offset towards the position of the component that triggers it (the last interacted component); falls back to the current layout when no trigger component exists. FOLLOW_GRIP_HAND: the dialog is offset towards the grip hand (the hand holding the device, distinguished from the operating hand) reported by the awareness platform; falls back to the current layout when unavailable.
+
+**Type:** [HandednessFollowMode](../arkts-apis/arkts-arkui-arkui-dialog-handednessfollowmode-e.md)
+
+**Default:** HandednessFollowMode.NONE
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+<!--Device-TimePickerDialogOptions-adaptToHandedness?: HandednessFollowMode--><!--Device-TimePickerDialogOptions-adaptToHandedness?: HandednessFollowMode-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
 ## alignment
 
 ```TypeScript

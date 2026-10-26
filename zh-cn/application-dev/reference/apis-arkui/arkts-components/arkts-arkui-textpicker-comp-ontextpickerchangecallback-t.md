@@ -1,7 +1,7 @@
 # OnTextPickerChangeCallback
 
 ```TypeScript
-declare type OnTextPickerChangeCallback = (selectItem: string[], index: number[]) => void
+declare type OnTextPickerChangeCallback = (selectItem: string | string[], index: number | number[]) => void
 ```
 
 定义触发onChange事件的回调类型。
@@ -20,5 +20,5 @@ declare type OnTextPickerChangeCallback = (selectItem: string[], index: number[]
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| selectItem | string[] | 是 | 当前选中项的文本。多列数据选择器的selectItem为数组类型。<br>**说明：** <br>当选择器内容为文本或图文混排时，selectItem值为选中项中的文本值；当选择器内容为图片时，selectItem值为空。 |
-| index | number[] | 是 | 当前选中项的索引值，索引从0开始。多列数据选择器的index为数组类型。 |
+| selectItem | string &#124; string[] | 是 | 当前选中项的文本。多列数据选择器的selectItem为数组类型。<br>**说明：** <br>当选择器内容为文本或图文混排时，selectItem值为选中项中的文本值；当选择器内容为图片时，selectItem值为空。 |
+| index | number &#124; number[] | 是 | 当前选中项的索引值，索引从0开始。多列数据选择器的index为数组类型。 |

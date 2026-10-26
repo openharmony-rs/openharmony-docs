@@ -24,7 +24,7 @@ CONNECTION_FAIL_ACB_CONNECTION = 4
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-ConnectionReason-CONNECTION_FAIL_ACB_CONNECTION = 4--><!--Device-ConnectionReason-CONNECTION_FAIL_ACB_CONNECTION = 4-End-->
 
@@ -42,7 +42,7 @@ CONNECTION_FAIL_CONNECTION_NUM_LIMITED = 7
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-ConnectionReason-CONNECTION_FAIL_CONNECTION_NUM_LIMITED = 7--><!--Device-ConnectionReason-CONNECTION_FAIL_CONNECTION_NUM_LIMITED = 7-End-->
 
@@ -60,7 +60,7 @@ CONNECTION_FAIL_NO_AVAILABLE_SERVICE = 6
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-ConnectionReason-CONNECTION_FAIL_NO_AVAILABLE_SERVICE = 6--><!--Device-ConnectionReason-CONNECTION_FAIL_NO_AVAILABLE_SERVICE = 6-End-->
 
@@ -78,7 +78,7 @@ CONNECTION_FAIL_SERVICE_DISCOVERY = 5
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-ConnectionReason-CONNECTION_FAIL_SERVICE_DISCOVERY = 5--><!--Device-ConnectionReason-CONNECTION_FAIL_SERVICE_DISCOVERY = 5-End-->
 
@@ -96,7 +96,7 @@ CONNECTION_FAILURE = 1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-ConnectionReason-CONNECTION_FAILURE = 1--><!--Device-ConnectionReason-CONNECTION_FAILURE = 1-End-->
 
@@ -114,7 +114,7 @@ CONNECTION_LOCAL_DISCONNECT = 2
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-ConnectionReason-CONNECTION_LOCAL_DISCONNECT = 2--><!--Device-ConnectionReason-CONNECTION_LOCAL_DISCONNECT = 2-End-->
 
@@ -132,7 +132,7 @@ CONNECTION_REMOTE_DISCONNECT = 3
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-ConnectionReason-CONNECTION_REMOTE_DISCONNECT = 3--><!--Device-ConnectionReason-CONNECTION_REMOTE_DISCONNECT = 3-End-->
 
@@ -150,7 +150,7 @@ CONNECTION_SUCCESS = 0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-ConnectionReason-CONNECTION_SUCCESS = 0--><!--Device-ConnectionReason-CONNECTION_SUCCESS = 0-End-->
 

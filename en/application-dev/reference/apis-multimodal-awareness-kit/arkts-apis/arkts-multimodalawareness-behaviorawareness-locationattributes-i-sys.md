@@ -6,7 +6,7 @@ export interface LocationAttributes
 
 Location-based scenario attributes.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 <!--Device-behaviorAwareness-export interface LocationAttributes--><!--Device-behaviorAwareness-export interface LocationAttributes-End-->
 
@@ -30,7 +30,7 @@ Geographic coordinates.
 
 **Type:** [Coordinates](arkts-multimodalawareness-behaviorawareness-coordinates-i-sys.md)
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -50,7 +50,7 @@ Discriminator field, fixed as 'location'.
 
 **Type:** 'location'
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -70,7 +70,7 @@ Location name.
 
 **Type:** string
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -90,7 +90,7 @@ Location type.
 
 **Type:** [LocationType](arkts-multimodalawareness-behaviorawareness-locationtype-e-sys.md)
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 

@@ -6,7 +6,7 @@ export enum PatternType
 
 Perception pattern type.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 <!--Device-behaviorAwareness-export enum PatternType--><!--Device-behaviorAwareness-export enum PatternType-End-->
 
@@ -22,7 +22,7 @@ EVENT_PATTERN = 'eventPattern'
 
 Event sequence pattern: perception mode that triggers action combinations based on events.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -40,7 +40,7 @@ LOCATION_PATTERN = 'locationPattern'
 
 Location pattern: perception mode that triggers action combinations based on geographic location.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -58,7 +58,7 @@ TIME_PATTERN = 'timePattern'
 
 Time pattern: perception mode that triggers actions based on time.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 

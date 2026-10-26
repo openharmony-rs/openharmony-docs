@@ -56,21 +56,25 @@ class RunningLockTest {
 
     public static holdRunningLock(): void {
         if (RunningLockTest.recordLock) {
-            RunningLockTest.recordLock.hold(500);
-            console.info('hold running lock success');
+            try {
+                RunningLockTest.recordLock.hold(500);
+                console.info('hold running lock success');
+            } catch(err) {
+                console.error(`Failed to hold running lock. Code: ${err.code}, message: ${err.message}`);
+            }
         } else {
-            runningLock.create('running_lock_test', runningLock.RunningLockType.PROXIMITY_SCREEN_CONTROL, (err: Error, lock: runningLock.RunningLock) => {
-                if (typeof err === 'undefined') {
+            runningLock.create('running_lock_test', runningLock.RunningLockType.PROXIMITY_SCREEN_CONTROL, (err: BusinessError, lock: runningLock.RunningLock) => {
+                if (err) {
+                    console.error(`Failed to create running lock. Code: ${err.code}, message: ${err.message}`);
+                } else {
                     console.info('create running lock: ' + lock);
                     RunningLockTest.recordLock = lock;
                     try {
                         lock.hold(500);
                         console.info('hold running lock success');
                     } catch(err) {
-                        console.error('hold running lock failed, err: ' + err);
+                        console.error(`Failed to hold running lock. Code: ${err.code}, message: ${err.message}`);
                     }
-                } else {
-                    console.error('create running lock failed, err: ' + err);
                 }
             });
         }
@@ -110,14 +114,14 @@ class RunningLockTest {
             let isHolding = RunningLockTest.recordLock.isHolding();
             console.info('check running lock holding status: ' + isHolding);
         } else {
-            runningLock.create('running_lock_test', runningLock.RunningLockType.PROXIMITY_SCREEN_CONTROL, (err: Error, lock: runningLock.RunningLock) => {
-                if (typeof err === 'undefined') {
+            runningLock.create('running_lock_test', runningLock.RunningLockType.PROXIMITY_SCREEN_CONTROL, (err: BusinessError, lock: runningLock.RunningLock) => {
+                if (err) {
+                    console.error(`Failed to create running lock. Code: ${err.code}, message: ${err.message}`);
+                } else {
                     console.info('create running lock: ' + lock);
                     RunningLockTest.recordLock = lock;
                     let isHolding = lock.isHolding();
                     console.info('check running lock holding status: ' + isHolding);
-                } else {
-                    console.error('create running lock failed, err: ' + err);
                 }
             });
         }
@@ -156,21 +160,25 @@ class RunningLockTest {
 
     public static unholdRunningLock(): void {
         if (RunningLockTest.recordLock) {
-            RunningLockTest.recordLock.unhold();
-            console.info('unhold running lock success');
+            try {
+                RunningLockTest.recordLock.unhold();
+                console.info('unhold running lock success');
+            } catch(err) {
+                console.error(`Failed to unhold running lock. Code: ${err.code}, message: ${err.message}`);
+            }
         } else {
-            runningLock.create('running_lock_test', runningLock.RunningLockType.PROXIMITY_SCREEN_CONTROL, (err: Error, lock: runningLock.RunningLock) => {
-                if (typeof err === 'undefined') {
+            runningLock.create('running_lock_test', runningLock.RunningLockType.PROXIMITY_SCREEN_CONTROL, (err: BusinessError, lock: runningLock.RunningLock) => {
+                if (err) {
+                    console.error(`Failed to create running lock. Code: ${err.code}, message: ${err.message}`);
+                } else {
                     console.info('create running lock: ' + lock);
                     RunningLockTest.recordLock = lock;
                     try {
                         lock.unhold();
                         console.info('unhold running lock success');
                     } catch(err) {
-                        console.error('unhold running lock failed, err: ' + err);
+                        console.error(`Failed to unhold running lock. Code: ${err.code}, message: ${err.message}`);
                     }
-                } else {
-                    console.error('create running lock failed, err: ' + err);
                 }
             });
         }
@@ -210,8 +218,8 @@ runningLock.createRunningLock('running_lock_test', runningLock.RunningLockType.B
     let isUsed = lock.isUsed();
     console.info('check running lock used status: ' + isUsed);
 })
-.catch((err: Error) => {
-    console.error('check running lock used status failed, err: ' + err);
+.catch((err: BusinessError) => {
+    console.error(`Failed to check running lock used status. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -249,8 +257,8 @@ runningLock.createRunningLock('running_lock_test', runningLock.RunningLockType.B
     lock.lock(500);
     console.info('create running lock and lock success');
 })
-.catch((err: Error) => {
-    console.error('create running lock failed, err: ' + err);
+.catch((err: BusinessError) => {
+    console.error(`Failed to create running lock. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -282,7 +290,7 @@ runningLock.createRunningLock('running_lock_test', runningLock.RunningLockType.B
     lock.unlock();
     console.info('create running lock and unlock success');
 })
-.catch((err: Error) => {
-    console.error('create running lock failed, err: ' + err);
+.catch((err: BusinessError) => {
+    console.error(`Failed to create running lock. Code: ${err.code}, message: ${err.message}`);
 });
 ```

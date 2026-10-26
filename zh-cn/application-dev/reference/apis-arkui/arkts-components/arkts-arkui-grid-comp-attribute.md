@@ -1075,11 +1075,11 @@ scrollSnapStrategy(strategy?: ScrollSnapAlign | ScrollSnapOffsetProvider)
 
 START、CENTER、END分别将item对齐到滚动轴方向视口的起始、中间和末尾位置。自定义提供方通过calculateApproachOffset计算趋近距离，通过calculateSnapOffset计算最终目标。设置为NONE或undefined时清除策略，恢复默认滚动行为。不支持的布局不启用吸附。吸附目标受合法滚动范围限制。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-GridAttribute-scrollSnapStrategy(strategy?: ScrollSnapAlign | ScrollSnapOffsetProvider): GridAttribute--><!--Device-GridAttribute-scrollSnapStrategy(strategy?: ScrollSnapAlign | ScrollSnapOffsetProvider): GridAttribute-End-->
 

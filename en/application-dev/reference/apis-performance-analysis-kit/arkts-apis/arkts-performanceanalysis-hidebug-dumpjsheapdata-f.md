@@ -21,7 +21,7 @@ Dumps VM heap data.
 
 **Since:** 9
 
-**Deprecated since:** 26.2.0
+**Deprecated since:** 26.1.0
 
 **Substitutes:** [dumpJsRawHeapData](arkts-performanceanalysis-hidebug-dumpjsrawheapdata-f.md)
 
@@ -39,7 +39,7 @@ Dumps VM heap data.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | The parameter check failed, Parameter type error. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. |
 
 **Examples**
 
@@ -70,7 +70,7 @@ Dumps VM heap data and clears the nodeId cache.
 
 **Since:** 24
 
-**Deprecated since:** 26.2.0
+**Deprecated since:** 26.1.0
 
 **Substitutes:** [dumpJsRawHeapData](arkts-performanceanalysis-hidebug-dumpjsrawheapdata-f.md)
 

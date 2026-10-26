@@ -56,8 +56,7 @@ The integrity check verifies the digital signature of the **AuthToken** to ensur
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-import { userAccessCtrl } from '@kit.UserAuthenticationKit';
-import { userAuth } from '@kit.UserAuthenticationKit';
+import { userAccessCtrl, userAuth } from '@kit.UserAuthenticationKit';
 
 try {
   const rand = cryptoFramework.createRandom();
@@ -81,33 +80,34 @@ try {
     authTrustLevel: userAuth.AuthTrustLevel.ATL3,
   };
   const widgetParam: userAuth.WidgetParam = {
-    title: 'Enter password',
+    title: 'Input the password',
   };
 
   const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
   console.info('get userAuth instance successfully.');
-  // The authentication result is returned by onResult() only after the authentication is started by start() of UserAuthInstance.
+  // You need to call the start() API of UserAuthInstance to start authentication before you can obtain the authentication result through onResult.
   userAuthInstance.on('result', {
     onResult: (result) => {
-        if (!result.token) {
-            console.error('userAuthInstance callback result.token is null');
-            return;
-        }
-        try {
-          // Initiate a request for verifying the AuthToken.
-          userAccessCtrl.verifyAuthToken(result.token, allowableDuration)
-              .then((retAuthToken: userAccessCtrl.AuthToken) => {
-                  Object.keys(retAuthToken).forEach((key) => {
-                      // Process the service logic.
-                      console.info(`retAuthToken key:${key}`);
-                  })
-              }).catch ((error: BusinessError) => {
-                  console.error(`verify authToken failed. Code is ${error?.code}, message is ${error?.message}`);
-              })
-        } catch (error) {
-          const err: BusinessError = error as BusinessError;
-          console.error(`verify authToken failed. Code is ${err?.code}, message is ${err?.message}`);
-        }
+      if (!result.token) {
+        console.error('Failed to get auth token.');
+        return;
+      }
+      try {
+        // Initiate an AuthToken verification request.
+        userAccessCtrl.verifyAuthToken(result.token, allowableDuration)
+          .then((retAuthToken: userAccessCtrl.AuthToken) => {
+            Object.keys(retAuthToken).forEach((key) => {
+              // Process the service logic.
+              console.info(`retAuthToken key: ${key}`);
+            });
+          })
+          .catch((error: BusinessError) => {
+            console.error(`Failed to verify authToken. Code: ${error?.code}, message: ${error?.message}`);
+          });
+      } catch (error) {
+        const err: BusinessError = error as BusinessError;
+        console.error(`Failed to verify authToken. Code: ${err?.code}, message: ${err?.message}`);
+      }
     }
   });
   console.info('auth on successfully.');
@@ -116,7 +116,7 @@ try {
   console.info('auth start successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`auth failed. Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`Failed to auth. Code: ${err?.code}, message: ${err?.message}`);
 }
 ```
 

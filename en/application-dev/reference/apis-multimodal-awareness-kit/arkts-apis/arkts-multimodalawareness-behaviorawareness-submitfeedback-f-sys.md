@@ -14,7 +14,7 @@ export function submitFeedback(feedback: FeedbackData): Promise<void>
 
 Submit user feedback. The service side sends the user feedback to the MSDP.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 

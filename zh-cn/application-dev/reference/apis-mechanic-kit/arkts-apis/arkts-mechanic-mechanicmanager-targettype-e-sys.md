@@ -4,7 +4,7 @@
 export enum TargetType
 ```
 
-Target type.
+目标人脸信息的枚举
 
 **起始版本：** 21
 
@@ -20,7 +20,7 @@ Target type.
 HUMAN_FACE = 0
 ```
 
-human Face type.
+目标人脸信息
 
 **起始版本：** 21
 

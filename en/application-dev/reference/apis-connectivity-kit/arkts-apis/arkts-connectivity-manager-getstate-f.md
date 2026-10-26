@@ -18,7 +18,7 @@ Queries the NearLink status. Before calling this API, you may call [isNearLinkSu
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-manager-function getState(): NearlinkState--><!--Device-manager-function getState(): NearlinkState-End-->
 

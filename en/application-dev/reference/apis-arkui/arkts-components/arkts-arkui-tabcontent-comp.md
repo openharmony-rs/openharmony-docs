@@ -40,6 +40,14 @@ Creates the **TabContent** component, which represents the content associated wi
 
 ## Summary
 
+### Classes
+
+| Name | Description |
+| --- | --- |
+| [BottomTabBarStyle](arkts-arkui-tabcontent-comp-bottomtabbarstyle-c.md) | Implements the bottom and side tab style. |
+| [SubTabBarStyle](arkts-arkui-tabcontent-comp-subtabbarstyle-c.md) | Implements the subtab style. A transition animation is played when the user switches between tabs. |
+| [TabBarSymbol](arkts-arkui-tabcontent-comp-tabbarsymbol-c.md) | Represents a tab bar symbol style object. |
+
 ### Interfaces
 
 | Name | Description |

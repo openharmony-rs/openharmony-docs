@@ -70,11 +70,11 @@ When template is of the **ItemFillPolicy** type, the number of columns is determ
 
 For example, the **ItemFillPolicy.BREAKPOINT_DEFAULT** component displays two columns when the component width falls within the sm or smaller breakpoint range, three columns for the md breakpoint range, and five columns for the lg or larger breakpoint range, with each column being 1 fr.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-LazyVGridLayoutAttribute-columnsTemplate(template: string | ItemFillPolicy): LazyVGridLayoutAttribute--><!--Device-LazyVGridLayoutAttribute-columnsTemplate(template: string | ItemFillPolicy): LazyVGridLayoutAttribute-End-->
 

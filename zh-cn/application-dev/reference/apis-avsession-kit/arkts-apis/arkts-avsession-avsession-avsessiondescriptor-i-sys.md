@@ -44,11 +44,11 @@ outputDevice: OutputDeviceInfo
 userId?: number
 ```
 
-当前会话所属的userId
+当前会话所属的userId。取值限定为整数。
 
 **类型：** number
 
-**起始版本：** 26.0.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

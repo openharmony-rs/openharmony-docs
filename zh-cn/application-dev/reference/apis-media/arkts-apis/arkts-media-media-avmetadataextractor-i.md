@@ -82,7 +82,7 @@ fetchAlbumCover(callback: AsyncCallback<image.PixelMap>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [5400102](../../apis-media-kit/errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by callback. |
+| [5400102](../../apis-media-kit/errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Returned by callback. |
 | [5400106](../../apis-media-kit/errorcode-media.md#5400106-不支持的规格) | Unsupported format. Returned by callback. |
 
 **示例**

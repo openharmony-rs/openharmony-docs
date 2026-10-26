@@ -27,6 +27,7 @@ import { systemTimer } from '@kit.BasicServicesKit';
 | [createTimer](arkts-basicservices-systemtimer-createtimer-f-sys.md#createtimer-2) | 创建定时器，使用Promise异步回调返回定时器的ID。 |
 | [destroyTimer](arkts-basicservices-systemtimer-destroytimer-f-sys.md#destroytimer-1) | 销毁定时器，使用callback异步回调。 |
 | [destroyTimer](arkts-basicservices-systemtimer-destroytimer-f-sys.md#destroytimer-2) | 销毁定时器，使用Promise进行异步回调。 |
+| [setPowerOnTimerEnabled](arkts-basicservices-systemtimer-setpowerontimerenabled-f-sys.md#setpowerontimerenabled-1) | Sets the enabled state of the power-on timers that match the conditions specified in **options**. This API uses a promise to return the result. |
 | [startTimer](arkts-basicservices-systemtimer-starttimer-f-sys.md#starttimer-1) | 开启定时器，使用callback异步回调。 |
 | [startTimer](arkts-basicservices-systemtimer-starttimer-f-sys.md#starttimer-2) | 开启定时器，使用Promise进行异步回调。 |
 | [stopTimer](arkts-basicservices-systemtimer-stoptimer-f-sys.md#stoptimer-1) | 该方法停止定时器，并使用callback进行异步回调。 |
@@ -38,6 +39,7 @@ import { systemTimer } from '@kit.BasicServicesKit';
 
 | 名称 | 说明 |
 | --- | --- |
+| [PowerOnTimerEnabledOptions](arkts-basicservices-systemtimer-powerontimerenabledoptions-i-sys.md) | Defines the options for [setPowerOnTimerEnabled](arkts-basicservices-systemtimer-setpowerontimerenabled-f-sys.md). |
 | [TimerOptions](arkts-basicservices-systemtimer-timeroptions-i-sys.md) | 创建系统定时器的初始化选项。 |
 <!--DelEnd-->
 

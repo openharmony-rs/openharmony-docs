@@ -8,7 +8,7 @@ render target object, used for offscreen rendering
 
 **Inheritance/Implementation:** RenderTarget extends [Image](arkts-arkgraphics3d-sceneresources-image-i.md)
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 <!--Device-unnamed-export interface RenderTarget extends Image--><!--Device-unnamed-export interface RenderTarget extends Image-End-->
 
@@ -24,7 +24,7 @@ getPixelMap(): Promise<image.PixelMap>
 
 get a pixel map object from RenderTarget
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 

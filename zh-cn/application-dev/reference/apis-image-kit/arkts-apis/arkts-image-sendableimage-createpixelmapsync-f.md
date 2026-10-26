@@ -65,8 +65,8 @@ function createPixelMapSync() {
       return;
     }
     console.info('Succeeded in creating the PixelMap.');
-  } catch (e) {
-    const err = e as BusinessError;
+  } catch (error) {
+    const err = error as BusinessError;
     console.error(`Failed to create the PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }

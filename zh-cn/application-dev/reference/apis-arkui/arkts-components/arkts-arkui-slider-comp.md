@@ -34,6 +34,12 @@ Slider(options?: SliderOptions)
 
 ## 汇总
 
+### 类
+
+| 名称 | 说明 |
+| --- | --- |
+| [ColorMetricsLinearGradient](arkts-arkui-slider-comp-colormetricslineargradient-c.md) | 滑轨轨道的线性渐变背景颜色。 |
+
 ### 接口
 
 | 名称 | 说明 |

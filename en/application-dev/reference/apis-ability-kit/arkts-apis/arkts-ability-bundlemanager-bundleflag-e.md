@@ -38,7 +38,7 @@ Used to obtain the bundle information of the application that has only a home sc
 
 **System API**: This flag can be used only in system APIs.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 <!--Device-BundleFlag-GET_BUNDLE_INFO_ONLY_WITH_LAUNCHER_ABILITY = 0x00001000--><!--Device-BundleFlag-GET_BUNDLE_INFO_ONLY_WITH_LAUNCHER_ABILITY = 0x00001000-End-->
 

@@ -443,7 +443,7 @@ try {
 ## inNumber
 
 ```TypeScript
-inNumber(field: string, valueList: number[] | number[]): Query
+inNumber(field: string, valueList: number[]): Query
 ```
 
 构造一个Query对象以查询具有指定字段的条目，其值在指定的值列表中。
@@ -468,7 +468,7 @@ inNumber(field: string, valueList: number[] | number[]): Query
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | field | string | 是 | 表示指定字段，不能包含'^'。包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。 |
-| valueList | number[] &#124; number[] | 是 | 表示指定的值列表。 |
+| valueList | number[] | 是 | 表示指定的值列表。 |
 
 **返回值：**
 
@@ -977,7 +977,7 @@ try {
 ## notInNumber
 
 ```TypeScript
-notInNumber(field: string, valueList: number[] | number[]): Query
+notInNumber(field: string, valueList: number[]): Query
 ```
 
 构造一个Query对象以查询具有指定字段的条目，该字段的值不在指定的值列表中。
@@ -1002,7 +1002,7 @@ notInNumber(field: string, valueList: number[] | number[]): Query
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | field | string | 是 | 表示指定字段，不能包含'^'。包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。 |
-| valueList | number[] &#124; number[] | 是 | 表示指定的值列表。 |
+| valueList | number[] | 是 | 表示指定的值列表。 |
 
 **返回值：**
 

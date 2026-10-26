@@ -383,7 +383,7 @@ gradientHeight(height: Optional<Dimension>)
 ## onChange
 
 ```TypeScript
-onChange(callback: (value: string[], index: number[]) => void)
+onChange(callback: (value: string | string[], index: number | number[]) => void)
 ```
 
 滑动TextPicker文本内容后，选项归位至选中项位置时，触发该回调。当用户滑动选择器导致选中项变化时触发，不能通过修改双向绑定的状态变量（如selected）来触发。当显示文本或图片加文本列表时，value值为选中项中的文本值，当显示图片列表时，value值为空。
@@ -404,7 +404,7 @@ onChange(callback: (value: string[], index: number[]) => void)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | (value: string[], index: number[]) =&gt; void | 是 | 选项归位至选中项位置时触发的回调。回调返回选中项的文本和索引值。 |
+| callback | (value: string &#124; string[], index: number &#124; number[]) =&gt; void | 是 | 选项归位至选中项位置时触发的回调。回调返回选中项的文本和索引值。 |
 
 ## onChange
 
@@ -557,7 +557,7 @@ selectedBackgroundStyle(style: Optional<PickerBackgroundStyle>)
 ## selectedIndex
 
 ```TypeScript
-selectedIndex(value: number[])
+selectedIndex(value: number | number[])
 ```
 
 设置选中项在数据选择列表中的索引值，优先级高于[TextPickerOptions](arkts-arkui-textpicker-comp-textpickeroptions-i.md)中的"value"属性。单列数据选择器使用number类型。多列数据选择器使用number[]类型。
@@ -576,12 +576,12 @@ selectedIndex(value: number[])
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number[] | 是 | 选中项在数据选择列表中的索引值，索引从0开始。<br>默认值：0 <br>当value的值为负数或者超过数据选择列表的最大索引值时，使用默认值。<br> |
+| value | number &#124; number[] | 是 | 选中项在数据选择列表中的索引值，索引从0开始。<br>默认值：0 <br>当value的值为负数或者超过数据选择列表的最大索引值时，使用默认值。<br> |
 
 ## selectedIndex
 
 ```TypeScript
-selectedIndex(index: Optional<number[]>)
+selectedIndex(index: Optional<number | number[]>)
 ```
 
 设置选中项在数据选择列表中的索引值，优先级高于[TextPickerOptions](arkts-arkui-textpicker-comp-textpickeroptions-i.md)中的"value"属性。单列数据选择器使用number类型，多列数据选择器使用number[]类型。与[selectedIndex<sup>10+</sup>] [selectedIndex](#selectedindex-1)相比，index参数新增了对undefined类型的支持。
@@ -600,7 +600,7 @@ selectedIndex(index: Optional<number[]>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;number[]&gt; | 是 | 选中项在数据选择列表中的索引值，索引从0开始。<br>默认值：0 <br>当index的值为undefined时，使用[TextPickerOptions](arkts-arkui-textpicker-comp-textpickeroptions-i.md)中的selected值。<br>当index的值为负数或者超过数据选择列表的最大索引值时，使用默认值。<br> |
+| index | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;number &#124; number[]&gt; | 是 | 选中项在数据选择列表中的索引值，索引从0开始。<br>默认值：0 <br>当index的值为undefined时，使用[TextPickerOptions](arkts-arkui-textpicker-comp-textpickeroptions-i.md)中的selected值。<br>当index的值为负数或者超过数据选择列表的最大索引值时，使用默认值。<br> |
 
 ## selectedTextStyle
 

@@ -1,5 +1,16 @@
 # SceneBoidsSim
 
+This module provides types and operation methods for Boids simulation animation in ArkGraphics 3D.
+ Boids simulation animation is a computer animation method that drives individuals in a group through rules such as separation,
+ alignment, and cohesion, making them exhibit movement characteristics similar to flocks of birds or schools of fish in nature.
+
+> **NOTE**
+ >
+ > Before using the APIs of this module, you need to load the Boids simulation plugin [BoidsSimPlugin](arkts-arkgraphics3d-sceneboidssim-boidssimplugin-c-sys.md)
+ > through [RenderContext.loadPlugin](arkts-arkgraphics3d-scene-rendercontext-i.md#loadplugin).
+
+
+
 ## Summary
 
 <!--Del-->

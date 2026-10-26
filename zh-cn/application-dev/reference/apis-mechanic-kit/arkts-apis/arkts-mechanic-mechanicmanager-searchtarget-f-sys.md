@@ -12,7 +12,7 @@ import { mechanicManager } from '@kit.MechanicKit';
 function searchTarget(target: TargetInfo, params: SearchParams): Promise<SearchResult>
 ```
 
-Searching for a specified target.
+旋转机械体一周搜索目标。使用Promise异步回调。
 
 **起始版本：** 21
 

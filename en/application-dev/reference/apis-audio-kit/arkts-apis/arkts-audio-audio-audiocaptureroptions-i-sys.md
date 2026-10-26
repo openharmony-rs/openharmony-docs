@@ -28,7 +28,7 @@ The token ID of the application that actually uses the audio capturer stream, us
 
 **Type:** number
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 

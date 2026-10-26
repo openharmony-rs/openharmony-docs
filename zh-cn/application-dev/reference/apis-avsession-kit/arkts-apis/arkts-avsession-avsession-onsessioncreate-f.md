@@ -12,7 +12,7 @@ import { avSession } from '@kit.AVSessionKit';
 function onSessionCreate(callback: Callback<AVSessionDescriptor>): void
 ```
 
-Register session create callback
+注册会话创建回调
 
 **起始版本：** 23
 
@@ -26,7 +26,7 @@ Register session create callback
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[AVSessionDescriptor](arkts-avsession-avsession-avsessiondescriptor-i.md)&gt; | 是 | 会话创建回调函数 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[AVSessionDescriptor](arkts-avsession-avsession-avsessiondescriptor-i.md)&gt; | 是 | Used to handle ('sessionCreate' command) |
 
 **错误码：**
 

@@ -18,6 +18,88 @@ Program access control management class, providing capabilities such as permissi
 import { abilityAccessCtrl, Context, PermissionRequestResult, Permissions } from '@kit.AbilityKit';
 ```
 
+## getAutomationControlControllers
+
+```TypeScript
+getAutomationControlControllers(targetTokenID: number): Promise<Array<AutomationControlControllerInfo>>
+```
+
+Queries the controller apps that have automation control over a target app. Returns the list of controller app information.
+
+**Since:** 26.1.0
+
+**Required permissions:** ohos.permission.GET_SENSITIVE_PERMISSIONS
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AtManager-getAutomationControlControllers(targetTokenID: int): Promise<Array<AutomationControlControllerInfo>>--><!--Device-AtManager-getAutomationControlControllers(targetTokenID: int): Promise<Array<AutomationControlControllerInfo>>-End-->
+
+**System capability:** SystemCapability.Security.AccessToken
+
+**System API:** This is a system API.
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| targetTokenID | number | Yes | Token ID of the target app. <br>The value should be an integer. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;Array&lt;[AutomationControlControllerInfo](arkts-ability-abilityaccessctrl-automationcontrolcontrollerinfo-i-sys.md)&gt;&gt; | Promise used to return the list of controller apps that have automation control over the specified target app. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. Interface caller does not have permission "ohos.permission.GET_SENSITIVE_PERMISSIONS". |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application. Interface caller is not a system application. |
+| [12100002](../errorcode-access-token.md#12100002-tokenid-not-exist) | The specified target tokenID does not exist, or the corresponding process is not an application process. |
+| [12100007](../errorcode-access-token.md#12100007-system-service-not-working-properly) | Service exception. |
+
+## getAutomationControlTargets
+
+```TypeScript
+getAutomationControlTargets(controllerTokenID: number): Promise<Array<AutomationControlTargetResult>>
+```
+
+Queries the automation control target apps for a controller app. After the call is successful, the list of target apps and their status is returned.
+
+**Since:** 26.1.0
+
+**Required permissions:** ohos.permission.GET_SENSITIVE_PERMISSIONS
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AtManager-getAutomationControlTargets(controllerTokenID: int): Promise<Array<AutomationControlTargetResult>>--><!--Device-AtManager-getAutomationControlTargets(controllerTokenID: int): Promise<Array<AutomationControlTargetResult>>-End-->
+
+**System capability:** SystemCapability.Security.AccessToken
+
+**System API:** This is a system API.
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| controllerTokenID | number | Yes | Token ID of the controller app. <br>The value should be an integer. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;Array&lt;[AutomationControlTargetResult](arkts-ability-abilityaccessctrl-automationcontroltargetresult-i-sys.md)&gt;&gt; | Promise used to return the target apps and their automation control status. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. Interface caller does not have permission "ohos.permission.GET_SENSITIVE_PERMISSIONS". |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application. Interface caller is not a system application. |
+| [12100002](../errorcode-access-token.md#12100002-tokenid-not-exist) | The specified controller tokenID does not exist, or the corresponding process is not an application process. |
+| [12100007](../errorcode-access-token.md#12100007-system-service-not-working-properly) | Service exception. |
+
 ## getPermissionFlags
 
 ```TypeScript
@@ -1135,6 +1217,53 @@ atManager.revokeUserGrantedPermission(tokenID, 'ohos.permission.READ_AUDIO', per
 ```
 
 <!--DelEnd-->
+
+## setAutomationControlStatus
+
+```TypeScript
+setAutomationControlStatus(
+      controllerTokenID: number,
+      targetList: Array<AutomationControlTargetParam>
+    ): Promise<Array<AutomationControlSetResult>>
+```
+
+Sets the automation control status for a controller app over target apps. After the call is successful, the result for each target app is returned. The status accepts DISABLED (0, deny) and ENABLED (1, allow).
+
+**Since:** 26.1.0
+
+**Required permissions:** ohos.permission.GRANT_SENSITIVE_PERMISSIONS
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AtManager-setAutomationControlStatus(      controllerTokenID: int,      targetList: Array<AutomationControlTargetParam>    ): Promise<Array<AutomationControlSetResult>>--><!--Device-AtManager-setAutomationControlStatus(      controllerTokenID: int,      targetList: Array<AutomationControlTargetParam>    ): Promise<Array<AutomationControlSetResult>>-End-->
+
+**System capability:** SystemCapability.Security.AccessToken
+
+**System API:** This is a system API.
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| controllerTokenID | number | Yes | Token ID of the controller app. <br>The value should be an integer. |
+| targetList | Array&lt;[AutomationControlTargetParam](arkts-ability-abilityaccessctrl-automationcontroltargetparam-i-sys.md)&gt; | Yes | List of target apps and their automation control status. <br>The maximum length is 1024 and cannot be empty. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;Array&lt;[AutomationControlSetResult](arkts-ability-abilityaccessctrl-automationcontrolsetresult-e-sys.md)&gt;&gt; | Promise used to return the result for each target app, in the same order as targetList. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. Interface caller does not have permission "ohos.permission.GRANT_SENSITIVE_PERMISSIONS". |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application. Interface caller is not a system application. |
+| [12100001](../errorcode-access-token.md#12100001-invalid-parameters) | Invalid parameter. The controllerTokenID is 0, or the targetList is empty or exceeds 1024 entries. |
+| [12100002](../errorcode-access-token.md#12100002-tokenid-not-exist) | The specified controller tokenID does not exist, or the corresponding process is not an application process. |
+| [12100006](../errorcode-access-token.md#12100006-operation-not-allowed) | The application specified by the controller tokenID is not allowed to perform automation control operations. |
+| [12100007](../errorcode-access-token.md#12100007-system-service-not-working-properly) | Service exception. |
 
 ## setPermissionRequestToggleStatus
 

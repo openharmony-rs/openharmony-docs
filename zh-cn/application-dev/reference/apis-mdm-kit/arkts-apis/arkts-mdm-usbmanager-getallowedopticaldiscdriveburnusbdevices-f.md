@@ -44,3 +44,16 @@ function getAllowedOpticalDiscDriveBurnUsbDevices(queryPolicy?: common.QueryPoli
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
 | [9200016](../errorcode-enterpriseDeviceManager.md#9200016-服务超时) | Service timeout. |
+
+**示例**
+
+```TypeScript
+import { usbManager, common } from '@kit.MDMKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+usbManager.getAllowedOpticalDiscDriveBurnUsbDevices(common.QueryPolicy.SELF).then((result: Array<usbManager.UsbDevice>) => {
+  console.info(`Succeeded in getting allowed optical disc drive burn USB devices. Result: ${JSON.stringify(result)}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to get allowed optical disc drive burn USB devices. Code is ${err.code}, message is ${err.message}`);
+});
+```

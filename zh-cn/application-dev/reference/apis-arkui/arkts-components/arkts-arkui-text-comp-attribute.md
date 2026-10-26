@@ -1659,13 +1659,13 @@ strokeColor(color: Optional<ResourceColor>)
 
 设置文本描边的颜色。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
-**卡片能力：** 从API版本26.2.0开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本26.1.0开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-TextAttribute-strokeColor(color: Optional<ResourceColor>): TextAttribute--><!--Device-TextAttribute-strokeColor(color: Optional<ResourceColor>): TextAttribute-End-->
 
@@ -1685,11 +1685,11 @@ strokeJoinStyle(strokeJoinStyle: StrokeJoinStyle | undefined)
 
 设置文本描边拐角样式。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-TextAttribute-strokeJoinStyle(strokeJoinStyle: StrokeJoinStyle | undefined): TextAttribute--><!--Device-TextAttribute-strokeJoinStyle(strokeJoinStyle: StrokeJoinStyle | undefined): TextAttribute-End-->
 
@@ -1709,13 +1709,13 @@ strokeWidth(width: Optional<LengthMetrics>)
 
 设置文本描边的宽度。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
-**卡片能力：** 从API版本26.2.0开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本26.1.0开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-TextAttribute-strokeWidth(width: Optional<LengthMetrics>): TextAttribute--><!--Device-TextAttribute-strokeWidth(width: Optional<LengthMetrics>): TextAttribute-End-->
 

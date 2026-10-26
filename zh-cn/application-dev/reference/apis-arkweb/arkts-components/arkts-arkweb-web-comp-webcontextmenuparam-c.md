@@ -289,7 +289,7 @@ getTextFragmentGeneratedLink(): string
 
 建议在**onContextMenuShow**事件回调中使用此接口。调用此接口前，建议先调用shouldOfferLinkToText()检查当前选中文本是否支持链接生成。若选中文本不支持链接生成，返回空字符串。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -302,6 +302,10 @@ getTextFragmentGeneratedLink(): string
 | 类型 | 说明 |
 | --- | --- |
 | string | 包含**#:~:text=**片段、符合W3C Text Fragments规范的Text Fragment链接URL。若当前选中文本不支持链接生成，返回空字符串。 |
+
+**示例**
+
+示例代码请参考[onContextMenuUpdate](./arkts-basic-components-web-events.md#oncontextmenuupdate)。
 
 ## getUnfilteredLinkUrl
 
@@ -357,7 +361,7 @@ isOverTextFragment(): boolean
 
 建议在**onContextMenuShow**事件回调中使用此接口。结果与Chromium的**GetExistingSelectors**行为一致。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -371,6 +375,10 @@ isOverTextFragment(): boolean
 | --- | --- |
 | boolean | **true**表示当前页面存在Text Fragment高亮；**false**表示不存在。 |
 
+**示例**
+
+Text Fragment相关接口使用示例请参考[onContextMenuUpdate](./arkts-basic-components-web-events.md#oncontextmenuupdate)。
+
 ## shouldOfferLinkToText
 
 ```TypeScript
@@ -381,7 +389,7 @@ shouldOfferLinkToText(): boolean
 
 建议在**onContextMenuShow**事件回调中使用此接口，以决定是否显示"复制指向高亮的链接"菜单项。结果与Chromium的**ShouldOfferLinkToText**行为一致。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -394,6 +402,10 @@ shouldOfferLinkToText(): boolean
 | 类型 | 说明 |
 | --- | --- |
 | boolean | **true**表示当前选中文本可用于生成Text Fragment链接；**false**表示不可用。 |
+
+**示例**
+
+示例代码请参考[onContextMenuUpdate](./arkts-basic-components-web-events.md#oncontextmenuupdate)。
 
 ## x
 

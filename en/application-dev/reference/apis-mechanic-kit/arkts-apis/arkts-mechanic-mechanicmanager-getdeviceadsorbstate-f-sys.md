@@ -14,7 +14,7 @@ function getDeviceAdsorbState(mechId: number): AdsorbState
 
 Obtains the adsorb state of a device. Before calling this method, ensure that the device is connected.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 

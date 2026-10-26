@@ -3,6 +3,15 @@
 ChipGroup组件提供操作块群组能力，支持单选或多选模式，可自定义样式、图标和间距，支持选中状态管理和事件回调。
  适用于文件分类、资源筛选、标签选择、内容分组等多种场景，帮助开发者快速实现选择功能，提供统一的视觉和交互体验。
 
+> **说明：**
+ >
+ > - 如果ChipGroup设置[通用属性](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md)或[通用事件](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md)，
+ > 编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到ChipGroup本身。
+ > 这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议ChipGroup设置通用属性和通用事件。
+
+## 子组件
+
+无
 
 ## 导入模块
 
@@ -102,6 +111,9 @@ struct Index {
         onChange: (activatedChipsIndex: Array<number>) => {
           console.info('chips on clicked, activated index ' + activatedChipsIndex);
         },
+        onItemsChange: (items: ChipGroupItemOptions[]) => {
+          console.info('chip items changed');
+        },
       })
     }
   }
@@ -195,6 +207,9 @@ struct Index {
         chipGroupPadding: { top: 10, bottom: 10 },
         onChange: (activatedChipsIndex: Array<number>) => {
           console.info('chips on clicked, activated index ' + activatedChipsIndex);
+        },
+        onItemsChange: (items: ChipGroupItemOptions[]) => {
+          console.info('chip items changed');
         },
         // 自定义builder，在组件最右侧显示自定义的内容。
         suffix: this.ChipGroupSuffix
@@ -295,6 +310,9 @@ struct Index {
         chipGroupPadding: { top: 10, bottom: 10 },
         onChange: (activatedChipsIndex: Array<number>) => {
           console.info('chips on clicked, activated index ' + activatedChipsIndex);
+        },
+        onItemsChange: (items: ChipGroupItemOptions[]) => {
+          console.info('chip items changed');
         },
         // 自定义builder，在组件最右侧显示自定义的内容。
         suffix: this.ChipGroupSuffix

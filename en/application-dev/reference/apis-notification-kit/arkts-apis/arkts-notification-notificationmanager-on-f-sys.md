@@ -110,25 +110,3 @@ This API can be properly called on devices other than wearables. If it is called
 | [1600001](../errorcode-notification.md#1600001-internal-error) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-marshalling-or-unmarshalling-error) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-failed-to-connect-to-the-notification-service) | Failed to connect to the service. |
-
-<!--Del-->
-**Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try{
-  notificationManager.on('checkNotification',{
-    contentType: notificationManager.ContentType.NOTIFICATION_CONTENT_LIVE_VIEW,
-    slotType: notificationManager.SlotType.LIVE_VIEW ,
-    extraInfoKeys: ['event'],
-  },
-    async (checkInfo)=>{
-      return { code: 1, message: 'INVALID_PARAMETERS'};
-  },);
-} catch (err) {
-  console.error(`notificationManager.on failed, code is ${err.code}, message is ${err.message}`);
-}
-```
-
-<!--DelEnd-->

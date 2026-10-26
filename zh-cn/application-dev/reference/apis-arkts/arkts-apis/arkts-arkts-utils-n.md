@@ -35,4 +35,5 @@ import { ArkTSUtils } from '@kit.ArkTS';
 
 | 名称 | 说明 |
 | --- | --- |
+| [Atomics](arkts-arkts-utils-atomics-c.md) | 为以ArkTS ArrayBuffer为底层缓冲区的整数TypedArray提供原子操作。与ECMAScript内置Atomics对象不同，此类通过utils模块提供，仅包含面向ArkTS TypedArray的静态方法。 |
 | [SendableLruCache](arkts-arkts-utils-sendablelrucache-c.md) | SendableLruCache在缓存空间不足时，会用新数据替换近期最少使用的数据。此设计基于资源访问的考虑：近期访问的数据可能在不久的将来再次访问，因此最少访问的数据价值最小，应优先移出缓存。SendableLruCache支持Sendable（可跨线程安全共享的）特性，可保存Sendable对象，确保跨线程安全访问。 |

@@ -6,12 +6,6 @@ export declare struct ProgressButtonV2
 
 创建ProgressButtonV2组件。
 
-设备行为差异：该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
-
-> **说明：** 
-> 
-> - 如果ProgressButtonV2设置[通用属性](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md)或[通用事件](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md)，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到ProgressButtonV2本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议ProgressButtonV2设置通用属性和通用事件。
-
 **起始版本：** 18
 
 **装饰器类型：** @ComponentV2

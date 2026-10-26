@@ -244,7 +244,7 @@ caretColor(value: ResourceColor)
 > 
 > - 精确颜色值 **#00000000** 保留为重置哨兵值。重置后使用网页CSS `caret-color`；CSS为 **auto** 或未设置时使用内置默认颜色。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -527,7 +527,7 @@ enableAutoFill(value: boolean)
 enableBlankScreenMonitor(enable: boolean)
 ```
 
-设置是否开启白屏监控。开启白屏监控后，监测到白屏时会触发onMonitoredBlankScreen回调。
+设置是否开启白屏监控。开启白屏监控后，监测到白屏时会触发回调onMonitoredBlankScreen。
 
 **起始版本：** 26.0.1
 
@@ -902,9 +902,9 @@ flingSpeedLimit(speedLimit: number)
 
 设置Web组件惯性滚动的最大速度。
 
-通过该TypeScript API配置的值优先于通过其他API配置的值生效。
+通过该TypeScript API配置的值优先于通过前端viewport max-fling-speed-x/y接口设置的值。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -916,7 +916,7 @@ flingSpeedLimit(speedLimit: number)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| speedLimit | number | 是 | 惯性滚动最大速度，单位vp/s。当值小于等于0、`NaN`、`+Infinity`或`-Infinity`时，使用默认值：PC设备为9000 vp/s，非PC设备为17000 vp/s。 |
+| speedLimit | number | 是 | 惯性滚动的速度上限，单位为vp/s。取值范围为(0, +∞)。传入范围外的值时使用默认值：PC设备默认9000 vp/s，非PC设备默认17000 vp/s。 |
 
 ## forceDarkAccess
 
@@ -1835,7 +1835,7 @@ onContextMenuUpdate(callback: OnContextMenuUpdateCallback)
 
 shouldOfferLinkToText()方法返回同步初始值，此回调提供异步最终值，两者互补。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2471,7 +2471,11 @@ onMicrophoneCaptureStateChange(callback: OnMicrophoneCaptureStateChangeCallback)
 onMonitoredBlankScreen(callback: OnMonitorBlankScreenCallback)
 ```
 
-注册白屏监控归因回调。Web组件监测到白屏并完成根因归因时，触发该回调。
+Web组件监测到白屏并完成根因归因时触发此回调。
+
+> **说明：** 
+> 
+> - 需配合enableBlankScreenMonitor使用。未开启白屏监控时，不会触发本回调。
 
 **起始版本：** 26.0.1
 
@@ -2485,7 +2489,7 @@ onMonitoredBlankScreen(callback: OnMonitorBlankScreenCallback)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [OnMonitorBlankScreenCallback](arkts-arkweb-web-comp-onmonitorblankscreencallback-t.md) | 是 | 白屏监控归因回调。 |
+| callback | [OnMonitorBlankScreenCallback](arkts-arkweb-web-comp-onmonitorblankscreencallback-t.md) | 是 | 监测到白屏并完成根因归因时触发。事件对象包含页面URL、白屏根因、归因详情等诊断信息。 |
 
 ## onNativeEmbedGestureEvent
 
@@ -3484,7 +3488,7 @@ onZoomChange(callback: OnZoomChangeCallback)
 
 当网页的浏览器级缩放倍率变化时触发。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

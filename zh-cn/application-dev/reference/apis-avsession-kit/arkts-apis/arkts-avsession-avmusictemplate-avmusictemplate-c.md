@@ -1585,7 +1585,7 @@ reportExecuteAction(actionType: string, params: string): Promise<void>
 | --- | --- |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported.function reportExecuteAction can not work correctly due to limited device capabilities. |
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
-| [35000011](../errorcode-avmusictemplate.md#35000011-数据写入错误数据无效) | Thr data write error, data is invalid. |
+| [35000011](../errorcode-avmusictemplate.md#35000011-数据写入错误数据无效) | The data write error, data is invalid. |
 
 ## setCurrentSingle
 
@@ -1621,7 +1621,7 @@ setCurrentSingle(single: Single): Promise<void>
 | --- | --- |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported.function setCurrentSingle can not work correctly due to limited device capabilities. |
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
-| [35000011](../errorcode-avmusictemplate.md#35000011-数据写入错误数据无效) | Thr data write error, data is invalid. |
+| [35000011](../errorcode-avmusictemplate.md#35000011-数据写入错误数据无效) | The data write error, data is invalid. |
 
 ## setCustomElements
 
@@ -1660,7 +1660,7 @@ setCustomElements(actionType: ActionType, customType: CustomType,
 | --- | --- |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported.function setCustomElements can not work correctly due to limited device capabilities. |
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
-| [35000011](../errorcode-avmusictemplate.md#35000011-数据写入错误数据无效) | Thr data write error, data is invalid. |
+| [35000011](../errorcode-avmusictemplate.md#35000011-数据写入错误数据无效) | The data write error, data is invalid. |
 
 ## setDialogCommand
 
@@ -1697,7 +1697,7 @@ setDialogCommand(type: DialogControlType, dialogInfo: DialogInfo): Promise<void>
 | --- | --- |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported.function setDialogCommand can not work correctly due to limited device capabilities. |
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
-| [35000011](../errorcode-avmusictemplate.md#35000011-数据写入错误数据无效) | Thr data write error, data is invalid. |
+| [35000011](../errorcode-avmusictemplate.md#35000011-数据写入错误数据无效) | The data write error, data is invalid. |
 
 ## setDownloadMediaEntityStatus
 
@@ -1733,7 +1733,7 @@ setDownloadMediaEntityStatus(single: MediaEntity): Promise<void>
 | --- | --- |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported.function setDownloadMediaEntityStatus can not work correctly due to limited device capabilities. |
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
-| [35000011](../errorcode-avmusictemplate.md#35000011-数据写入错误数据无效) | Thr data write error, data is invalid. |
+| [35000011](../errorcode-avmusictemplate.md#35000011-数据写入错误数据无效) | The data write error, data is invalid. |
 
 ## setExtensionAbility
 
@@ -1769,7 +1769,7 @@ setExtensionAbility(want: WantAgent): Promise<void>
 | --- | --- |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | capability not supported. |
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
-| [35000011](../errorcode-avmusictemplate.md#35000011-数据写入错误数据无效) | Thr data write error, data is invalid. |
+| [35000011](../errorcode-avmusictemplate.md#35000011-数据写入错误数据无效) | The data write error, data is invalid. |
 
 ## setMediaEntities
 
@@ -1805,7 +1805,7 @@ setMediaEntities(entities: MediaEntity[]): Promise<void>
 | --- | --- |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported.function setMediaEntities can not work correctly due to limited device capabilities. |
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
-| [35000011](../errorcode-avmusictemplate.md#35000011-数据写入错误数据无效) | Thr data write error, data is invalid. |
+| [35000011](../errorcode-avmusictemplate.md#35000011-数据写入错误数据无效) | The data write error, data is invalid. |
 
 ## setPlaylist
 
@@ -1841,7 +1841,7 @@ setPlaylist(playlist: PageMediaEntity): Promise<void>
 | --- | --- |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported.function setPlaylist can not work correctly due to limited device capabilities. |
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
-| [35000011](../errorcode-avmusictemplate.md#35000011-数据写入错误数据无效) | Thr data write error, data is invalid. |
+| [35000011](../errorcode-avmusictemplate.md#35000011-数据写入错误数据无效) | The data write error, data is invalid. |
 
 ## setSettings
 
@@ -1877,7 +1877,7 @@ setSettings(settingItems: SettingItem[]): Promise<void>
 | --- | --- |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported.function setSettings can not work correctly due to limited device capabilities. |
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
-| [35000011](../errorcode-avmusictemplate.md#35000011-数据写入错误数据无效) | Thr data write error, data is invalid. |
+| [35000011](../errorcode-avmusictemplate.md#35000011-数据写入错误数据无效) | The data write error, data is invalid. |
 
 ## setTabContent
 
@@ -1914,7 +1914,7 @@ setTabContent(tabId: string, tabContent: MediaTabContent): Promise<void>
 | --- | --- |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported.function setTabContent can not work correctly due to limited device capabilities. |
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
-| [35000011](../errorcode-avmusictemplate.md#35000011-数据写入错误数据无效) | Thr data write error, data is invalid. |
+| [35000011](../errorcode-avmusictemplate.md#35000011-数据写入错误数据无效) | The data write error, data is invalid. |
 
 ## setUserInfo
 
@@ -1950,7 +1950,7 @@ setUserInfo(userInfo: UserInfo): Promise<void>
 | --- | --- |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported.function setUserInfo can not work correctly due to limited device capabilities. |
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
-| [35000011](../errorcode-avmusictemplate.md#35000011-数据写入错误数据无效) | Thr data write error, data is invalid. |
+| [35000011](../errorcode-avmusictemplate.md#35000011-数据写入错误数据无效) | The data write error, data is invalid. |
 
 ## startTemplate
 

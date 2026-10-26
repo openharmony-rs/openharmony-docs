@@ -14,7 +14,7 @@ function unregisterTask(taskInfo: TaskInfo): void
 
 取消注册后台加载任务。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **需要权限：** ohos.permission.KEEP_BACKGROUND_RUNNING
 

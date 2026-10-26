@@ -4,11 +4,7 @@
 export declare struct SplitLayout
 ```
 
-The **SplitLayout** component provides common page layout styles, mainly used to display combined layouts of images, titles, and content containers. It is suitable for split display scenarios that require adaptation to different screen sizes (such as detail pages, settings pages, etc.). It supports adaptation to different screen widths (three layouts: ≤ 600 vp, &gt; 600 vp and ≤ 840 vp, &gt; 840 vp), addressing the need to display different layout styles on devices of different sizes, improving page adaptability and user experience.
-
-> **NOTE:** 
-> 
-> - **SplitLayout** does not support setting [universal attributes](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md) or [universal events](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md). If set, the build toolchain will generate an additional \_\_Common\_\_ node and attach the universal attributes or universal events to \_\_Common\_\_ instead of directly applying them to **SplitLayout** itself, causing the configured attributes or events to not take effect.
+The **SplitLayout** component is a split layout component that supports adaptive layout and displays different layout styles at different widths.
 
 **Since:** 10
 

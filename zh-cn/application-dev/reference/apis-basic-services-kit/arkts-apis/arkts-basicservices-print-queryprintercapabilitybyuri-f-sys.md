@@ -54,7 +54,7 @@ function queryPrinterCapabilityByUri(printerUri: string, printerId: string): Pro
 import { print } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// printerUri 可通过 discoverUsbPrinters 接口返回的 PrinterInformation 获取
+// printerUri可通过discoverUsbPrinters接口返回的PrinterInformation获取
 let printerUri : string = 'testPrinterUri';
 let printerId : string = 'testPrinterId';
 print.queryPrinterCapabilityByUri(printerUri, printerId).then((capabilities: print.PrinterCapabilities) => {

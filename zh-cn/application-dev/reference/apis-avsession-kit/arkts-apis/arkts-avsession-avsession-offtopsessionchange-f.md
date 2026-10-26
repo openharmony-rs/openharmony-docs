@@ -12,7 +12,7 @@ import { avSession } from '@kit.AVSessionKit';
 function offTopSessionChange(callback?: Callback<AVSessionDescriptor>): void
 ```
 
-Unregister top session changed callback
+Top会话变化回调监听
 
 **起始版本：** 23
 

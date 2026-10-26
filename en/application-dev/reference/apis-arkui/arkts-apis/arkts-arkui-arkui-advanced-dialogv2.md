@@ -1,5 +1,31 @@
 # @ohos.arkui.advanced.DialogV2
 
+The dialog box is a modal window that commands attention while retaining the current context.
+ It is frequently used to draw the user's attention to vital information or prompt the user to complete a specific
+ task.
+ As all modal windows, this component requires the user to interact before exiting.
+
+This component is implemented based on
+ [state management V2](../../../ui/state-management/arkts-state-management-overview.md#state-management-v2).
+ Compared with
+ [state management V1](../../../ui/state-management/arkts-state-management-overview.md#state-management-v1),
+ V2 offers a higher level of observation and management over data objects beyond the component level.
+ You can now more easily manage dialog box data and states with greater flexibility, leading to faster UI updates.
+
+> **NOTE**
+ >
+ > - If the **DialogV2** component has universal attributes and universal events
+ > configured,
+ > the compiler toolchain automatically generates an additional \_\_Common\_\_ node and mounts the universal
+ > attributes and universal events
+ > on this node rather than the **DialogV2** component itself. As a result, the configured universal attributes and
+ > universal events may fail to take effect or behave as intended.
+ > For this reason, avoid using universal attributes and events with the **DialogV2** component.
+
+## Child Components
+
+Not supported
+
 ## Modules to Import
 
 ```TypeScript
@@ -18,13 +44,13 @@ import { AlertDialogV2, AdvancedDialogV2Button, AdvancedDialogV2ButtonOptions, A
 
 | Name | Description |
 | --- | --- |
-| [AlertDialogV2](arkts-arkui-arkui-advanced-dialogv2-alertdialogv2-s.md) | The dialog box is a modal window that commands attention while retaining the current context. It is frequently used to draw the user's attention to vital information or prompt the user to complete a specific task. As all modal windows, this component requires the user to interact before exiting. |
-| [ConfirmDialogV2](arkts-arkui-arkui-advanced-dialogv2-confirmdialogv2-s.md) | The dialog box is a modal window that commands attention while retaining the current context. It is frequently used to draw the user's attention to vital information or prompt the user to complete a specific task. As all modal windows, this component requires the user to interact before exiting. |
-| [CustomContentDialogV2](arkts-arkui-arkui-advanced-dialogv2-customcontentdialogv2-s.md) | The dialog box is a modal window that commands attention while retaining the current context. It is frequently used to draw the user's attention to vital information or prompt the user to complete a specific task. As all modal windows, this component requires the user to interact before exiting. |
-| [LoadingDialogV2](arkts-arkui-arkui-advanced-dialogv2-loadingdialogv2-s.md) | The dialog box is a modal window that commands attention while retaining the current context. It is frequently used to draw the user's attention to vital information or prompt the user to complete a specific task. As all modal windows, this component requires the user to interact before exiting. |
-| [PopoverDialogV2](arkts-arkui-arkui-advanced-dialogv2-popoverdialogv2-s.md) | The dialog box is a modal window that commands attention while retaining the current context. It is frequently used to draw the user's attention to vital information or prompt the user to complete a specific task. As all modal windows, this component requires the user to interact before exiting. |
-| [SelectDialogV2](arkts-arkui-arkui-advanced-dialogv2-selectdialogv2-s.md) | The dialog box is a modal window that commands attention while retaining the current context. It is frequently used to draw the user's attention to vital information or prompt the user to complete a specific task. As all modal windows, this component requires the user to interact before exiting. |
-| [TipsDialogV2](arkts-arkui-arkui-advanced-dialogv2-tipsdialogv2-s.md) | The dialog box is a modal window that commands attention while retaining the current context. It is frequently used to draw the user's attention to vital information or prompt the user to complete a specific task. As all modal windows, this component requires the user to interact before exiting. |
+| [AlertDialogV2](arkts-arkui-arkui-advanced-dialogv2-alertdialogv2-s.md) | Displays an alert dialog box to prompt the user to confirm an action that is irreversible and may cause serious consequences, such as deletion, reset, editing cancellation, and stop. |
+| [ConfirmDialogV2](arkts-arkui-arkui-advanced-dialogv2-confirmdialogv2-s.md) | Displays an error dialog box that informs the user of an operational error (for example, a network error or low battery level) or an incorrect operation (for example, fingerprint enrollment). |
+| [CustomContentDialogV2](arkts-arkui-arkui-advanced-dialogv2-customcontentdialogv2-s.md) | Displays a dialog box that contains custom content and operation area. |
+| [LoadingDialogV2](arkts-arkui-arkui-advanced-dialogv2-loadingdialogv2-s.md) | Displays a loading dialog box to inform the user of the operation progress. |
+| [PopoverDialogV2](arkts-arkui-arkui-advanced-dialogv2-popoverdialogv2-s.md) | Displays a popover dialog box that is positioned relative to the target component. This dialog box can contain a variety of content types, including: TipsDialogV2, SelectDialogV2, ConfirmDialogV2, AlertDialogV2, LoadingDialogV2, and CustomContentDialogV2. |
+| [SelectDialogV2](arkts-arkui-arkui-advanced-dialogv2-selectdialogv2-s.md) | Displays a dialog box from which the user can select items presented in a list or grid. |
+| [TipsDialogV2](arkts-arkui-arkui-advanced-dialogv2-tipsdialogv2-s.md) | Displays an image-attached confirmation dialog box. |
 
 ### Interfaces
 

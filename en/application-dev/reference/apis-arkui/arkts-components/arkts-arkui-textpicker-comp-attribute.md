@@ -383,7 +383,7 @@ Sets the height of the fade effect applied to the top and bottom edges of the co
 ## onChange
 
 ```TypeScript
-onChange(callback: (value: string[], index: number[]) => void)
+onChange(callback: (value: string | string[], index: number | number[]) => void)
 ```
 
 Triggered when the options settle at the selected item position after the text content of TextPicker is scrolled. It is triggered when the user scrolls the picker and the selected item changes. It cannot be triggered by modifying the two-way bound state variable (such as selected). When a text list or an image-plus-text list is displayed, the value is the text value of the selected item. When an image list is displayed, the value is empty.
@@ -404,7 +404,7 @@ This callback is triggered only after the scroll animation completes. To obtain 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | (value: string[], index: number[]) =&gt; void | Yes | Callback invoked when the text picker snaps to the selected item. The callback returns the text and index of the selected item. |
+| callback | (value: string &#124; string[], index: number &#124; number[]) =&gt; void | Yes | Callback invoked when the text picker snaps to the selected item. The callback returns the text and index of the selected item. |
 
 ## onChange
 
@@ -557,7 +557,7 @@ Sets the background style of selected items.
 ## selectedIndex
 
 ```TypeScript
-selectedIndex(value: number[])
+selectedIndex(value: number | number[])
 ```
 
 Sets the index of the selected item or items in the data list. This setting takes precedence over the **value** property in [TextPickerOptions](arkts-arkui-textpicker-comp-textpickeroptions-i.md). Use the number type for single-column pickers. Use the number[] type for multi-column pickers.
@@ -576,12 +576,12 @@ Sets the index of the selected item or items in the data list. This setting take
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | number[] | Yes | Index of the selected item in the data selection list. The index starts from 0. <br>Default value: **0** <br>If the value is negative or exceeds the maximum index of the data selection list, the default value is used. <br> |
+| value | number &#124; number[] | Yes | Index of the selected item in the data selection list. The index starts from 0. <br>Default value: **0** <br>If the value is negative or exceeds the maximum index of the data selection list, the default value is used. <br> |
 
 ## selectedIndex
 
 ```TypeScript
-selectedIndex(index: Optional<number[]>)
+selectedIndex(index: Optional<number | number[]>)
 ```
 
 Sets the index of the selected item or items in the data list. This setting takes precedence over the **value** property in [TextPickerOptions](arkts-arkui-textpicker-comp-textpickeroptions-i.md). Use the number type for single-column pickers. Use the number[] type for multi-column pickers. Compared with [selectedIndex<sup>10+</sup>](#selectedindex-1), this API supports the **undefined** type for the **index** parameter.
@@ -600,7 +600,7 @@ Sets the index of the selected item or items in the data list. This setting take
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| index | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;number[]&gt; | Yes | Index of the selected item in the data selection list. The index starts from 0. <br>Default value: **0** <br>If the value of **index** is **undefined**, the value of **selected** in [TextPickerOptions](arkts-arkui-textpicker-comp-textpickeroptions-i.md) is used. <br>If the value of **index** is a negative number or exceeds the maximum index value of the data selection list, the default value is used. <br> |
+| index | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;number &#124; number[]&gt; | Yes | Index of the selected item in the data selection list. The index starts from 0. <br>Default value: **0** <br>If the value of **index** is **undefined**, the value of **selected** in [TextPickerOptions](arkts-arkui-textpicker-comp-textpickeroptions-i.md) is used. <br>If the value of **index** is a negative number or exceeds the maximum index value of the data selection list, the default value is used. <br> |
 
 ## selectedTextStyle
 

@@ -24,7 +24,7 @@ High power consumption mode.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-TxPowerMode-ADV_TX_POWER_HIGH = 3--><!--Device-TxPowerMode-ADV_TX_POWER_HIGH = 3-End-->
 
@@ -42,7 +42,7 @@ Low power consumption mode.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-TxPowerMode-ADV_TX_POWER_LOW = 1--><!--Device-TxPowerMode-ADV_TX_POWER_LOW = 1-End-->
 
@@ -60,7 +60,7 @@ Medium power consumption mode.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-TxPowerMode-ADV_TX_POWER_MEDIUM = 2--><!--Device-TxPowerMode-ADV_TX_POWER_MEDIUM = 2-End-->
 

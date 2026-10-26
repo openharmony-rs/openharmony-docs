@@ -24,7 +24,7 @@ import { mechanicManager } from '@kit.MechanicKit';
 mechInfo: MechInfo
 ```
 
-Mechanical device information.
+机械体设备信息
 
 **类型：** [MechInfo](arkts-mechanic-mechanicmanager-mechinfo-i.md)
 

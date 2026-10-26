@@ -48,7 +48,7 @@ HUKS_EXT_CRYPTO_TAG_TYPE_UINT = 2 << 28
 
 The tag value is an unsigned integer.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 

@@ -4,7 +4,7 @@
 interface SecurityEventRule
 ```
 
-用户获取安全数据的规则。
+Provides the conditions of querySecurityEvent.
 
 **起始版本：** 12
 
@@ -26,7 +26,7 @@ import { securityGuard } from '@kit.SecurityGuardKit';
 beginTime?: string
 ```
 
-需要获取数据的起始时间，格式为YYYYMMDDHHMMSS。
+The begin time, format is YYYYMMDDHHMMSS.
 
 **类型：** string
 
@@ -44,7 +44,7 @@ beginTime?: string
 endTime?: string
 ```
 
-需要获取数据的终止时间，格式为YYYYMMDDHHMMSS。
+The end time, format is YYYYMMDDHHMMSS.
 
 **类型：** string
 
@@ -62,7 +62,7 @@ endTime?: string
 eventId: number
 ```
 
-需要获取的安全事件ID。
+The security event ids.
 
 **类型：** number
 
@@ -80,7 +80,7 @@ eventId: number
 param?: string
 ```
 
-额外查询参数。
+The query condition.
 
 **类型：** string
 

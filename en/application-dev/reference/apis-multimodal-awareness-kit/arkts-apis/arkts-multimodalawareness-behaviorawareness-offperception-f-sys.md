@@ -18,7 +18,7 @@ The service cancels the subscription relationship on the MSDP.
 
 If a callback is passed, only the subscriptions that match the callback are canceled. If no callback is passed, all subscriptions under the current package are canceled.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 

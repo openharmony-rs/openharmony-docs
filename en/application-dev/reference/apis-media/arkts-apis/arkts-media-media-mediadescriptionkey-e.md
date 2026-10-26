@@ -268,6 +268,24 @@ Track name. The corresponding key value type is string.
 
 **System capability:** SystemCapability.Multimedia.Media.Core
 
+## MD_KEY_TRACK_PLAYABLE
+
+```TypeScript
+MD_KEY_TRACK_PLAYABLE = 'is_playable'
+```
+
+Key for obtaining whether the track can be played normally
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+<!--Device-MediaDescriptionKey-MD_KEY_TRACK_PLAYABLE = 'is_playable'--><!--Device-MediaDescriptionKey-MD_KEY_TRACK_PLAYABLE = 'is_playable'-End-->
+
+**System capability:** SystemCapability.Multimedia.Media.Core
+
 ## MD_KEY_TRACK_REFERENCE_TYPE
 
 ```TypeScript

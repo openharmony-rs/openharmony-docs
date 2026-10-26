@@ -313,7 +313,7 @@
   - [SegmentButtonItemTuple](arkts-arkui-segmentbuttonitemtuple-t.md)
   - [BorderRadiusMode](arkts-arkui-arkui-advanced-segmentbutton-borderradiusmode-e.md)
   - [SegmentButtonInteractionMode](arkts-arkui-arkui-advanced-segmentbutton-segmentbuttoninteractionmode-e.md)
-- [@ohos.arkui.advanced.SegmentButtonV2(api/@ohos.arkui.advanced.SegmentedButton.d.ts)](arkts-arkui-arkui-advanced-segmentbuttonv2.md)
+- [@ohos.arkui.advanced.SegmentButtonV2](arkts-arkui-arkui-advanced-segmentbuttonv2.md)
   - [SegmentButtonV2Item](arkts-arkui-arkui-advanced-segmentbuttonv2-segmentbuttonv2item-c.md)
   - [SegmentButtonV2Items](arkts-arkui-arkui-advanced-segmentbuttonv2-segmentbuttonv2items-c.md)
   - [CapsuleSegmentButtonV2](arkts-arkui-arkui-advanced-segmentbuttonv2-capsulesegmentbuttonv2-s.md)
@@ -449,6 +449,7 @@
   - [DialogBaseAlignment](arkts-arkui-arkui-dialog-dialogbasealignment-e.md)
   - [DialogButtonOrientation](arkts-arkui-arkui-dialog-dialogbuttonorientation-e.md)
   - [DialogState](arkts-arkui-arkui-dialog-dialogstate-e.md)
+  - [HandednessFollowMode](arkts-arkui-arkui-dialog-handednessfollowmode-e.md)
 - [@ohos.arkui.dragController(DragController)](arkts-arkui-arkui-dragcontroller.md)
   - [createDragAction](arkts-arkui-dragcontroller-createdragaction-f.md)
   - [executeDrag](arkts-arkui-dragcontroller-executedrag-f.md)
@@ -683,6 +684,10 @@
   - [BackgroundLuminanceSamplingConfigs(system api)](arkts-arkui-arkui-uicontext-backgroundluminancesamplingconfigs-i-sys.md)<!--DelEnd-->
   - [GestureObserverConfigs](arkts-arkui-arkui-uicontext-gestureobserverconfigs-i.md)
   - [GestureTriggerInfo](arkts-arkui-arkui-uicontext-gesturetriggerinfo-i.md)
+  <!--Del-->
+  - [ModalUIExtensionCallback(system api)](arkts-arkui-arkui-uicontext-modaluiextensioncallback-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [ModalUIExtensionOptions(system api)](arkts-arkui-arkui-uicontext-modaluiextensionoptions-i-sys.md)<!--DelEnd-->
   - [OrderOverlayOptions](arkts-arkui-arkui-uicontext-orderoverlayoptions-i.md)
   - [OverlayManagerOptions](arkts-arkui-arkui-uicontext-overlaymanageroptions-i.md)
   - [PageInfo](arkts-arkui-arkui-uicontext-pageinfo-i.md)
@@ -1483,6 +1488,7 @@
   - [ResponseRegionSupportedTool](arkts-arkui-responseregionsupportedtool-e.md)
   - [ResponseType](arkts-arkui-responsetype-e.md)
   - [ScrollSource](arkts-arkui-scrollsource-e.md)
+  - [ShadowClipMode](arkts-arkui-shadowclipmode-e.md)
   - [SharedTransitionEffectType](arkts-arkui-sharedtransitioneffecttype-e.md)
   - [SmartGestureAction](arkts-arkui-smartgestureaction-e.md)
   - [TextAlign](arkts-arkui-textalign-e.md)

@@ -6,7 +6,7 @@ export enum PerceptionDomain
 
 Perceived domain type. It is used to distinguish different perception domains, and each domain has an independent payload structure.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 <!--Device-behaviorAwareness-export enum PerceptionDomain--><!--Device-behaviorAwareness-export enum PerceptionDomain-End-->
 
@@ -22,7 +22,7 @@ HABIT_AWARENESS = 'habitAwareness'
 
 Habit awareness domain type capability. Used to recognize user daily usage habits, such as app usage habits, device operation habits, etc.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 

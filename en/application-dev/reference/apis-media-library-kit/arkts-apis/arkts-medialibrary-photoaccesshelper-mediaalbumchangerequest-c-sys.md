@@ -20,6 +20,41 @@ Provides APIs for managing the media album change request.
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
 ```
 
+## absorbAlbum
+
+```TypeScript
+absorbAlbum(album: Album): void
+```
+
+Absorbs the specified album into the current album. After the absorption, the current album inherits the information and assets of the input album, and the input album is deleted.
+
+**Since:** 26.1.0
+
+**Required permissions:** ohos.permission.WRITE_IMAGEVIDEO
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-MediaAlbumChangeRequest-absorbAlbum(album: Album): void--><!--Device-MediaAlbumChangeRequest-absorbAlbum(album: Album): void-End-->
+
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**System API:** This is a system API.
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| album | [Album](arkts-medialibrary-photoaccesshelper-album-i.md) | Yes | Album to be absorbed. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
+| [23800151](../errorcode-medialibrary.md#23800151-failed-to-verify-scene-parameters) | The scenario parameter verification fails. Possible causes: <br>1. The input album is not a source album or auser album; <br>2. The type of the input album does not match that of the current album; <br>3. The current album is not hidden; <br>4. This operation is not supported for this album type. |
+| [23800301](../errorcode-medialibrary.md#23800301-system-internal-error) | Internal system error.It is recommended to retry and check the logs. Possible causes: <br>1. Database corrupted; <br>2. The file system is abnormal; <br>3. The input album is not allowed to be absorbed. |
+
 ## createAlbumRequest
 
 ```TypeScript

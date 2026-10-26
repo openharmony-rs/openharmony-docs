@@ -1,7 +1,8 @@
 # @Extend
 
 ```TypeScript
-declare const Extend: MethodDecorator & ((value: any) => MethodDecorator)
+declare const Extend: MethodDecorator
+  & ((value: any) => MethodDecorator) & ExtendVersionDecorator
 ```
 
 The @Extend decorator is used to extend the styles of specified components. It supports defining multiple style attributes in a unified manner within the decorated function, and enables flexible style reuse through parameter passing. This is suitable for scenarios where the same styles need to be applied to multiple components, reducing style code duplication.
@@ -14,6 +15,6 @@ The @Extend decorator is used to extend the styles of specified components. It s
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
-<!--Device-unnamed-declare const Extend: MethodDecorator & ((value: any) => MethodDecorator)--><!--Device-unnamed-declare const Extend: MethodDecorator & ((value: any) => MethodDecorator)-End-->
+<!--Device-unnamed-declare const Extend: MethodDecorator  & ((value: any) => MethodDecorator) & ExtendVersionDecorator--><!--Device-unnamed-declare const Extend: MethodDecorator  & ((value: any) => MethodDecorator) & ExtendVersionDecorator-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

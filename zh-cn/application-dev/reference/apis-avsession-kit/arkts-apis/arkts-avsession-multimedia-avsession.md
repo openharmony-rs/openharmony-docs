@@ -25,11 +25,17 @@ import { avSession } from '@kit.AVSessionKit';
 | [getAVSession](arkts-avsession-avsession-getavsession-f.md#getavsession-1) | 获取会话对象。使用Promise异步回调。 |
 | [isDesktopLyricSupported](arkts-avsession-avsession-isdesktoplyricsupported-f.md#isdesktoplyricsupported-1) | 设备是否支持桌面歌词功能。使用Promise异步回调。 |
 | [offSessionCreate](arkts-avsession-avsession-offsessioncreate-f.md#offsessioncreate-1) | Unregister session create callback |
-| [offSessionDestroy](arkts-avsession-avsession-offsessiondestroy-f.md#offsessiondestroy-1) | Unregister session destroy callback |
-| [offTopSessionChange](arkts-avsession-avsession-offtopsessionchange-f.md#offtopsessionchange-1) | Unregister top session changed callback |
-| [onSessionCreate](arkts-avsession-avsession-onsessioncreate-f.md#onsessioncreate-1) | Register session create callback |
-| [onSessionDestroy](arkts-avsession-avsession-onsessiondestroy-f.md#onsessiondestroy-1) | Register session destroy callback |
+| [offSessionCreateForAudioZone](arkts-avsession-avsession-offsessioncreateforaudiozone-f.md#offsessioncreateforaudiozone-1) | 取消注册特定音区的会话创建回调。 |
+| [offSessionDestroy](arkts-avsession-avsession-offsessiondestroy-f.md#offsessiondestroy-1) | 取消会话销毁回调监听 |
+| [offSessionDestroyForAudioZone](arkts-avsession-avsession-offsessiondestroyforaudiozone-f.md#offsessiondestroyforaudiozone-1) | 取消注册特定音区的会话销毁回调。 |
+| [offTopSessionChange](arkts-avsession-avsession-offtopsessionchange-f.md#offtopsessionchange-1) | Top会话变化回调监听 |
+| [offTopSessionChangeForAudioZone](arkts-avsession-avsession-offtopsessionchangeforaudiozone-f.md#offtopsessionchangeforaudiozone-1) | 取消注册特定音区的top会话更改回调。 |
+| [onSessionCreate](arkts-avsession-avsession-onsessioncreate-f.md#onsessioncreate-1) | 注册会话创建回调 |
+| [onSessionCreateForAudioZone](arkts-avsession-avsession-onsessioncreateforaudiozone-f.md#onsessioncreateforaudiozone-1) | 为特定音区注册会话创建回调。 |
+| [onSessionDestroy](arkts-avsession-avsession-onsessiondestroy-f.md#onsessiondestroy-1) | 会话销毁监听回调 |
+| [onSessionDestroyForAudioZone](arkts-avsession-avsession-onsessiondestroyforaudiozone-f.md#onsessiondestroyforaudiozone-1) | 注册特定音区的会话销毁回调。 |
 | [onTopSessionChange](arkts-avsession-avsession-ontopsessionchange-f.md#ontopsessionchange-1) | Register top session changed callback |
+| [onTopSessionChangeForAudioZone](arkts-avsession-avsession-ontopsessionchangeforaudiozone-f.md#ontopsessionchangeforaudiozone-1) | 注册特定音区的top会话更改回调。 |
 
 <!--Del-->
 ### 函数（系统接口）
@@ -59,7 +65,6 @@ import { avSession } from '@kit.AVSessionKit';
 | [off('deviceLogEvent')](arkts-avsession-avsession-off-f-sys.md#offdevicelogevent) | 取消监听日志事件的回调。 |
 | [off('deviceStateChanged')](arkts-avsession-avsession-off-f-sys.md#offdevicestatechanged) | 取消投播设备连接状态的监听。 |
 | [offActiveSessionChanged](arkts-avsession-avsession-offactivesessionchanged-f-sys.md#offactivesessionchanged-1) | 取消允许在系统控制入口显示的会话变更事件监听，取消后将不再对该事件进行监听。使用callback异步回调。 |
-| [offAudioZoneSessionChange](arkts-avsession-avsession-offaudiozonesessionchange-f-sys.md#offaudiozonesessionchange-1) | 取消注册音区对应的会话变化监听 |
 | [offSystemCommonEvent](arkts-avsession-avsession-offsystemcommonevent-f-sys.md#offsystemcommonevent-1) | 取消注册通用事件回调监听 |
 | [on('sessionCreate')](arkts-avsession-avsession-on-f-sys.md#onsessioncreate) | 会话的创建事件监听。 使用callback异步回调。 |
 | [on('sessionDestroy')](arkts-avsession-avsession-on-f-sys.md#onsessiondestroy) | 会话的销毁事件监听。使用callback异步回调。 |
@@ -71,7 +76,6 @@ import { avSession } from '@kit.AVSessionKit';
 | [on('deviceLogEvent')](arkts-avsession-avsession-on-f-sys.md#ondevicelogevent) | 监听日志事件的回调。 |
 | [on('deviceStateChanged')](arkts-avsession-avsession-on-f-sys.md#ondevicestatechanged) | 投播设备连接状态的回调函数。 |
 | [onActiveSessionChanged](arkts-avsession-avsession-onactivesessionchanged-f-sys.md#onactivesessionchanged-1) | 允许在系统控制入口显示的会话变更的监听事件。使用callback异步回调。 |
-| [onAudioZoneSessionChange](arkts-avsession-avsession-onaudiozonesessionchange-f-sys.md#onaudiozonesessionchange-1) | 注册音区会话变化回调 |
 | [onSystemCommonEvent](arkts-avsession-avsession-onsystemcommonevent-f-sys.md#onsystemcommonevent-1) | 监听系统通用事件命令回调 |
 | [sendSystemAVKeyEvent](arkts-avsession-avsession-sendsystemavkeyevent-f-sys.md#sendsystemavkeyevent-1) | 发送按键事件给置顶会话。结果通过callback异步回调方式返回。 |
 | [sendSystemAVKeyEvent](arkts-avsession-avsession-sendsystemavkeyevent-f-sys.md#sendsystemavkeyevent-2) | 发送按键事件给置顶会话。结果通过Promise异步回调方式返回。 |
@@ -82,6 +86,7 @@ import { avSession } from '@kit.AVSessionKit';
 | [setDiscoverable](arkts-avsession-avsession-setdiscoverable-f-sys.md#setdiscoverable-2) | 设置设备是否可被发现，用于投播接收端。结果通过Promise异步回调方式返回。 |
 | [startAVPlayback](arkts-avsession-avsession-startavplayback-f-sys.md#startavplayback-1) | 启动媒体播放应用程序。结果通过Promise异步回调方式返回。 |
 | [startAVPlayback](arkts-avsession-avsession-startavplayback-f-sys.md#startavplayback-2) | 携带启动参数的冷启动应用播放接口 |
+| [startAVPlaybackForAudioZone](arkts-avsession-avsession-startavplaybackforaudiozone-f-sys.md#startavplaybackforaudiozone-1) | 使用特定音频区域的命令信息启动媒体播放应用程序。 |
 | [startCastDeviceDiscovery](arkts-avsession-avsession-startcastdevicediscovery-f-sys.md#startcastdevicediscovery-1) | 开始设备搜索发现。结果通过callback异步回调方式返回。 |
 | [startCastDeviceDiscovery](arkts-avsession-avsession-startcastdevicediscovery-f-sys.md#startcastdevicediscovery-2) | 指定过滤条件，开始设备搜索发现。结果通过callback异步回调方式返回。 |
 | [startCastDeviceDiscovery](arkts-avsession-avsession-startcastdevicediscovery-f-sys.md#startcastdevicediscovery-3) | 开始设备搜索发现。结果通过Promise异步回调方式返回。 |
@@ -108,7 +113,7 @@ import { avSession } from '@kit.AVSessionKit';
 | [AudioCapabilities](arkts-avsession-avsession-audiocapabilities-i.md) | 表示投播设备支持的音频能力。 |
 | [AVCallState](arkts-avsession-avsession-avcallstate-i.md) | 通话状态相关属性。 |
 | [AVCastControlCommand](arkts-avsession-avsession-avcastcontrolcommand-i.md) | 投播控制器接受的命令的对象描述。 |
-| [AVCastController](arkts-avsession-avsession-avcastcontroller-i.md) | 在投播建立后，调用[avSession.AVSession.getAVCastController](arkts-avsession-avsession-avsession-i.md#getavcastcontroller)后，返回会话控制器实例。控制器可查看会话ID，并可完成对会话发送命令及事件，获取会话元数据，播放状态信息等操作。 |
+| [AVCastController](arkts-avsession-avsession-avcastcontroller-i.md) | 在投播建立后，调用[avSession.getAVCastController](arkts-avsession-avsession-getavcastcontroller-f-sys.md)后，返回会话控制器实例。控制器可查看会话ID，并可完成对会话发送命令及事件，获取会话元数据，播放状态信息等操作。 |
 | [AVCastPickerOptions](arkts-avsession-avsession-avcastpickeroptions-i.md) | 拉起的投播组件包含的配置属性。 |
 | [AVControlCommand](arkts-avsession-avsession-avcontrolcommand-i.md) | 会话接受的命令的对象描述。 |
 | [AVMediaDescription](arkts-avsession-avsession-avmediadescription-i.md) | 播放列表媒体元数据的相关属性。 |
@@ -132,8 +137,9 @@ import { avSession } from '@kit.AVSessionKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [AVCastController](arkts-avsession-avsession-avcastcontroller-i-sys.md) | 在投播建立后，调用[avSession.AVSession.getAVCastController](arkts-avsession-avsession-avsession-i.md#getavcastcontroller)后，返回会话控制器实例。控制器可查看会话ID，并可完成对会话发送命令及事件，获取会话元数据，播放状态信息等操作。 |
+| [AVCastController](arkts-avsession-avsession-avcastcontroller-i-sys.md) | 在投播建立后，调用[avSession.getAVCastController](arkts-avsession-avsession-getavcastcontroller-f-sys.md)后，返回会话控制器实例。控制器可查看会话ID，并可完成对会话发送命令及事件，获取会话元数据，播放状态信息等操作。 |
 | [AVQueueInfo](arkts-avsession-avsession-avqueueinfo-i-sys.md) | 歌单（歌曲列表）的相关属性。 |
+| [AVSessionController](arkts-avsession-avsession-avsessioncontroller-i-sys.md) | AVSessionController控制器可查看会话ID，并可完成对会话发送命令及事件，获取会话元数据，播放状态信息等操作。 |
 | [AVSessionDescriptor](arkts-avsession-avsession-avsessiondescriptor-i-sys.md) | 会话的相关描述信息。 |
 | [DeviceInfo](arkts-avsession-avsession-deviceinfo-i-sys.md) | 播放设备的相关信息。 |
 | [DeviceState](arkts-avsession-avsession-devicestate-i-sys.md) | 投播设备的连接状态。 |
@@ -149,9 +155,10 @@ import { avSession } from '@kit.AVSessionKit';
 | [AVControlCommandType](arkts-avsession-avsession-avcontrolcommandtype-t.md) | The type of control command |
 | [AVMediaCenterControlType](arkts-avsession-avsession-avmediacentercontroltype-t.md) | 应用可选择设置优先级的播控组件类型 |
 | [AVSessionType](arkts-avsession-avsession-avsessiontype-t.md) | 当前会话支持的会话类型。 |
+| [EventProcess](arkts-avsession-avsession-eventprocess-t.md) | The general process funcation with an event and arguments. |
 | [ExtraInfo](arkts-avsession-avsession-extrainfo-t.md) | 媒体提供方设置的自定义媒体数据包对象。 |
 | [KeyRequestCallback](arkts-avsession-avsession-keyrequestcallback-t.md) | 许可证请求事件的回调函数。 |
-| [NoParamCallback](arkts-avsession-avsession-noparamcallback-t.md) | 定义无参数的回调函数类型。 |
+| [NoParamCallback](arkts-avsession-avsession-noparamcallback-t.md) | 设置是否抢占当前AVSession对象。在应用内多个模块复用一个会话时使用该接口进行抢占。 |
 | [TwoParamCallback](arkts-avsession-avsession-twoparamcallback-t.md) | 定义包含两个参数的回调类型。 |
 
 ### 枚举

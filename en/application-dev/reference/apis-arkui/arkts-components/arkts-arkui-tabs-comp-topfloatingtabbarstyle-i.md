@@ -6,7 +6,7 @@ interface TopFloatingTabBarStyle
 
 Provides an interface for the options for the top floating tab bar style.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 <!--Device-unnamed-interface TopFloatingTabBarStyle--><!--Device-unnamed-interface TopFloatingTabBarStyle-End-->
 
@@ -22,11 +22,11 @@ The width of the left and right margins of the bar. It cannot be set in precenta
 
 **Type:** [Length](../arkts-apis/arkts-arkui-length-t.md)
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-TopFloatingTabBarStyle-barSideMargin?: Length--><!--Device-TopFloatingTabBarStyle-barSideMargin?: Length-End-->
 
@@ -42,11 +42,11 @@ The distance between the bar and the top of the bar. It cannot be set in precent
 
 **Type:** [Length](../arkts-apis/arkts-arkui-length-t.md)
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-TopFloatingTabBarStyle-barTopMargin?: Length--><!--Device-TopFloatingTabBarStyle-barTopMargin?: Length-End-->
 
@@ -62,11 +62,11 @@ The bar width.
 
 **Type:** [Length](../arkts-apis/arkts-arkui-length-t.md)
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-TopFloatingTabBarStyle-barWidth?: Length--><!--Device-TopFloatingTabBarStyle-barWidth?: Length-End-->
 
@@ -82,11 +82,11 @@ The color of the mask.
 
 **Type:** [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-TopFloatingTabBarStyle-maskColor?: ResourceColor--><!--Device-TopFloatingTabBarStyle-maskColor?: ResourceColor-End-->
 
@@ -102,11 +102,11 @@ The height of the mask.
 
 **Type:** [Length](../arkts-apis/arkts-arkui-length-t.md)
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-TopFloatingTabBarStyle-maskHeight?: Length--><!--Device-TopFloatingTabBarStyle-maskHeight?: Length-End-->
 
@@ -122,11 +122,11 @@ The maximum width of the bar. It cannot be set in precentage.
 
 **Type:** [Length](../arkts-apis/arkts-arkui-length-t.md)
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-TopFloatingTabBarStyle-maxWidth?: Length--><!--Device-TopFloatingTabBarStyle-maxWidth?: Length-End-->
 
@@ -142,11 +142,11 @@ The offset of the bar.
 
 **Type:** Position &#124; Edges &#124; [LocalizedEdges](../arkts-apis/arkts-arkui-localizededges-i.md)
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-TopFloatingTabBarStyle-offset?: Position | Edges | LocalizedEdges--><!--Device-TopFloatingTabBarStyle-offset?: Position | Edges | LocalizedEdges-End-->
 

@@ -36,6 +36,12 @@ PatternLock(controller?: PatternLockController)
 
 ## 汇总
 
+### 类
+
+| 名称 | 说明 |
+| --- | --- |
+| [PatternLockController](arkts-arkui-patternlock-comp-patternlockcontroller-c.md) | PatternLock组件的控制器，用于重置组件状态和设置图案密码状态。 |
+
 ### 接口
 
 | 名称 | 说明 |

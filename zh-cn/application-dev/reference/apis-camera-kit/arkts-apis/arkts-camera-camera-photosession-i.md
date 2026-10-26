@@ -5,8 +5,6 @@ interface PhotoSession extends Session, Flash, AutoExposure, WhiteBalance, Focus
       AutoDeviceSwitch, Macro, ManualExposure, ManualFocus, ManualIso, OIS, Aperture
 ```
 
-PhotoSession继承自[Session](arkts-camera-camera-session-i.md)、[Flash](arkts-camera-camera-flash-i.md)、[AutoExposure](arkts-camera-camera-autoexposure-i.md)、[WhiteBalance](arkts-camera-camera-whitebalance-i.md)、[Focus](arkts-camera-camera-focus-i.md)、[Zoom](arkts-camera-camera-zoom-i.md)、[ColorManagement](arkts-camera-camera-colormanagement-i.md)、[AutoDeviceSwitch](arkts-camera-camera-autodeviceswitch-i.md)、[Macro](arkts-camera-camera-macro-i.md)、[ManualExposure](../../../reference/apis-camera-kit/arkts-apis-camera-ManualExposure.md)、[ManualFocus](../../../reference/apis-camera-kit/arkts-apis-camera-ManualFocus.md)、[ManualIso](../../../reference/apis-camera-kit/arkts-apis-camera-ManualIso.md)、[OIS](../../../reference/apis-camera-kit/arkts-apis-camera-OIS.md)、[Aperture](../../../reference/apis-camera-kit/arkts-apis-camera-Aperture.md)。
-
 普通拍照模式会话类，提供了对闪光灯、曝光、白平衡、对焦、变焦、色彩空间、微距、手动曝光、手动对焦、手动ISO、光学防抖及光圈的操作。
 
 默认的拍照模式，用于拍摄标准照片。支持多种照片格式和分辨率，适合大多数日常拍摄场景。

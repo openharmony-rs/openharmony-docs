@@ -20,11 +20,11 @@ ABOUT_TO_APPEAR = 10
 
 The outer custom component of the **NavDestination** component is about to appear.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-NavDestinationState-ABOUT_TO_APPEAR = 10--><!--Device-NavDestinationState-ABOUT_TO_APPEAR = 10-End-->
 
@@ -38,11 +38,11 @@ ABOUT_TO_DISAPPEAR = 11
 
 The outer custom component of the **NavDestination** component is about to disappear.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-NavDestinationState-ABOUT_TO_DISAPPEAR = 11--><!--Device-NavDestinationState-ABOUT_TO_DISAPPEAR = 11-End-->
 

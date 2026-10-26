@@ -10,7 +10,7 @@ You can define file entities by implementing this interface. The child class mus
 
 **Inheritance/Implementation:** FileEntity extends [IntentEntity](arkts-ability-insightintent-intententity-i.md)
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 <!--Device-insightIntent-interface FileEntity extends IntentEntity--><!--Device-insightIntent-interface FileEntity extends IntentEntity-End-->
 
@@ -36,7 +36,7 @@ This parameter supports only FLAG_AUTH_READ_URI_PERMISSION, FLAG_AUTH_WRITE_URI_
 
 **Type:** number
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 

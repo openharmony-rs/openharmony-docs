@@ -4,7 +4,7 @@
 export enum Result
 ```
 
-Rotation execution results.
+旋转执行结果的枚举
 
 **起始版本：** 20
 
@@ -20,7 +20,7 @@ Rotation execution results.
 COMPLETED = 0
 ```
 
-Rotation completed.
+执行完成
 
 **起始版本：** 20
 
@@ -36,7 +36,7 @@ Rotation completed.
 INTERRUPTED = 1
 ```
 
-Rotation was interrupted.
+执行被打断
 
 **起始版本：** 20
 
@@ -52,7 +52,7 @@ Rotation was interrupted.
 LIMITED = 2
 ```
 
-Device reached limitation.
+执行受最大旋转角度限制
 
 **起始版本：** 20
 
@@ -68,7 +68,7 @@ Device reached limitation.
 SYSTEM_ERROR = 100
 ```
 
-Rotation failed due to system error.
+系统错误
 
 **起始版本：** 20
 
@@ -116,7 +116,7 @@ TERMINATE_OBSTACLE  = 4
 TIMEOUT = 3
 ```
 
-Rotation time out.
+执行超时
 
 **起始版本：** 20
 

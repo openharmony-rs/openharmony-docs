@@ -42,6 +42,23 @@ getFilePath(): string
 | --- | --- |
 | string | 文件路径 |
 
+**示例**
+
+```TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// 定义 ExternalLogManager 实现
+let myLogManager: hiAppEvent.ExternalLogManager = {
+  onCapacityReached(container: hiAppEvent.ExternalLogContainer): void {
+    // 获取所有日志信息详情
+    let allLogs: Set<hiAppEvent.ExternalLogWrapper> = container.getAllLogs();
+    for (const log of Array.from(allLogs)) {
+      hilog.info(0x0000, 'hiAppEvent', `[MyLogManager] 文件: ${log.getFilePath()}`);
+    }
+  }
+};
+```
+
 ## getGenerationTime
 
 ```TypeScript
@@ -65,6 +82,23 @@ getGenerationTime(): number
 | 类型 | 说明 |
 | --- | --- |
 | number | 生成时间 |
+
+**示例**
+
+```TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// 定义 ExternalLogManager 实现
+let myLogManager: hiAppEvent.ExternalLogManager = {
+  onCapacityReached(container: hiAppEvent.ExternalLogContainer): void {
+    // 获取所有日志信息详情
+    let allLogs: Set<hiAppEvent.ExternalLogWrapper> = container.getAllLogs();
+    for (const log of Array.from(allLogs)) {
+      hilog.info(0x0000, 'hiAppEvent', `[MyLogManager] 时间: ${log.getGenerationTime()}`);
+    }
+  }
+};
+```
 
 ## getSizeInKb
 
@@ -90,6 +124,23 @@ getSizeInKb(): number
 | --- | --- |
 | number | 文件大小，单位为kb |
 
+**示例**
+
+```TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// 定义 ExternalLogManager 实现
+let myLogManager: hiAppEvent.ExternalLogManager = {
+  onCapacityReached(container: hiAppEvent.ExternalLogContainer): void {
+    // 获取所有日志信息详情
+    let allLogs: Set<hiAppEvent.ExternalLogWrapper> = container.getAllLogs();
+    for (const log of Array.from(allLogs)) {
+      hilog.info(0x0000, 'hiAppEvent', `[MyLogManager] 大小: ${log.getSizeInKb()}KB,`);
+    }
+  }
+};
+```
+
 ## getSysEvent
 
 ```TypeScript
@@ -113,3 +164,20 @@ getSysEvent(): string
 | 类型 | 说明 |
 | --- | --- |
 | string | 系统事件的字符串形式 |
+
+**示例**
+
+```TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// 定义 ExternalLogManager 实现
+let myLogManager: hiAppEvent.ExternalLogManager = {
+  onCapacityReached(container: hiAppEvent.ExternalLogContainer): void {
+    // 获取所有日志信息详情
+    let allLogs: Set<hiAppEvent.ExternalLogWrapper> = container.getAllLogs();
+    for (const log of Array.from(allLogs)) {
+      hilog.info(0x0000, 'hiAppEvent', `[MyLogManager] 事件: ${log.getSysEvent()}`);
+    }
+  }
+};
+```

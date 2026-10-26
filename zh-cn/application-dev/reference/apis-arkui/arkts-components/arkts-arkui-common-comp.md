@@ -71,6 +71,45 @@ Common()
 | [@Track](arkts-arkui-common-comp-track-d.md#track) | @Track用于状态管理V1中，通过装饰class对象的指定属性实现属性级精准观测。当被@Track装饰的属性发生变化时，系统仅更新依赖该属性的UI组件，从而减少不必要的UI重渲染。适用于class对象包含较多属性，需要减少冗余UI刷新、优化渲染性能的场景。 |
 | [@Watch](arkts-arkui-common-comp-watch-d.md#watch) | @Watch装饰器用于状态管理V1中，监听状态变量的变化，并在变量变化时触发指定回调函数。适用于状态变量变化时需要自动执行联动逻辑、数据同步或计算衍生值的场景。 |
 
+### 类
+
+| 名称 | 说明 |
+| --- | --- |
+| [BaseCustomComponent](arkts-arkui-common-comp-basecustomcomponent-c.md) | 自定义组件基类，它是从类CustomComponent迁移过来的。 |
+| [ChildrenMainSize](arkts-arkui-common-comp-childrenmainsize-c.md) | 维护List组件或ListItemGroup组件的子组件在主轴方向的大小信息，仅支持一对一绑定到List组件或ListItemGroup组件。 |
+| [CommonMethod](arkts-arkui-common-comp-commonmethod-c.md) | CommonMethod. |
+| [CommonShapeMethod](arkts-arkui-common-comp-commonshapemethod-c.md) | CommonShapeMethod |
+| [ContentTransitionEffect](arkts-arkui-common-comp-contenttransitioneffect-c.md) | 定义内容切换时的过渡效果。 |
+| [CustomComponent](arkts-arkui-common-comp-customcomponent-c.md) | 自定义组件 |
+| [CustomComponentV2](arkts-arkui-common-comp-customcomponentv2-c.md) | 自定义组件V2 |
+| [CustomEnvKey](arkts-arkui-common-comp-customenvkey-c.md) | 自定义环境变量的Key的类型。 |
+| [DrawModifier](arkts-arkui-common-comp-drawmodifier-c.md) | DrawModifier可设置遮罩层（drawOverlay<sup>23+</sup>）、前景（drawForeground<sup>20+</sup>）、内容前景（drawFront）、内容（drawContent）和内容背景（drawBehind）的绘制方法，还提供主动触发重绘的方法[invalidate](arkts-arkui-common-comp-drawmodifier-c.md#invalidate)。每个DrawModifier实例只能设置到一个组件上，禁止重复设置。 |
+| [DynamicNode](arkts-arkui-common-comp-dynamicnode-c.md) | Define DynamicNode. |
+| [LayoutPolicy](arkts-arkui-common-comp-layoutpolicy-c.md) | 用于组件宽度和高度的布局策略。提供matchParent、wrapContent、fixAtIdealSize三种布局策略选项，分别用于组件自适应父组件布局、根据内容自适应但不超过父组件尺寸、根据内容自适应且可超过父组件尺寸的场景。 |
+| [MutableBuilder](arkts-arkui-common-comp-mutablebuilder-c.md) | `MutableBuilder`继承自[WrappedBuilder](arkts-arkui-common-comp-wrappedbuilder-c.md)，用于封装[全局`@Builder`](../../../ui/state-management/arkts-builder.md#全局自定义构建函数)，并支持在运行时切换构建函数。需要根据状态或条件动态替换全局`@Builder`内容时，建议使用[mutableBuilder](../../../ui/state-management/arkts-mutableBuilder.md)函数创建`MutableBuilder`对象。其`builder`属性方法只能在自定义组件的`build`函数或`@Builder`装饰的函数内部被调用。 |
+| [ProgressMask](arkts-arkui-common-comp-progressmask-c.md) | ProgressMask用于设置遮罩的进度、最大值和颜色。 |
+| [RawInputEventWrapper](arkts-arkui-common-comp-rawinputeventwrapper-c.md) | 原始输入事件包装器类。 |
+| [ReadonlyEnvKey](arkts-arkui-common-comp-readonlyenvkey-c.md) | 定义只读系统环境键。 |
+| [ReadonlySystemEnvKey](arkts-arkui-common-comp-readonlysystemenvkey-c.md) | 定义只读的系统环境变量Key，继承自[SystemEnvKey\<T\>](arkts-arkui-common-comp-systemenvkey-c.md)。 |
+| [ScrollableCommonMethod](arkts-arkui-common-comp-scrollablecommonmethod-c.md) | CommonScrollableMethod |
+| [ScrollResult](arkts-arkui-common-comp-scrollresult-c.md) | [OnWillScrollCallback](arkts-arkui-common-comp-onwillscrollcallback-t.md)返回值对象。 |
+| [SystemEnvKey](arkts-arkui-common-comp-systemenvkey-c.md) | 系统环境变量Key对应的类型。 |
+| [TextContentControllerBase](arkts-arkui-common-comp-textcontentcontrollerbase-c.md) | TextInput、TextArea、Search的基础控制器。 |
+| [TouchResult](arkts-arkui-common-comp-touchresult-c.md) | 自定义事件分发结果，开发者通过返回结果来影响事件分发。 |
+| [TouchTestInfo](arkts-arkui-common-comp-touchtestinfo-c.md) | 当前屏幕触点所在组件的坐标系、id和尺寸相关信息。 |
+| [TransitionEffect](arkts-arkui-common-comp-transitioneffect-c.md) | TransitionEffect以函数的形式指定转场效果。 |
+| [WrappedBuilder](arkts-arkui-common-comp-wrappedbuilder-c.md) | `WrappedBuilder`是`@Builder`函数的包装类，用于封装全局`@Builder`函数及其参数，实现按引用传递和动态调用。 |
+| [WritableEnvKey](arkts-arkui-common-comp-writableenvkey-c.md) | 定义可写的系统环境变量Key集合，用于通过@Env装饰器获取对应的系统环境变量。可通过[WithEnv](arkts-arkui-withenv-comp-attribute.md#withenv)中的env方法设置局部环境变量值以影响后代组件渲染，具体示例请参见[示例2（设置局部布局方向）](../../../reference/apis-arkui/arkui-ts/ts-container-with-env.md#示例2设置局部布局方向)。 |
+| [WritableSystemEnvKey](arkts-arkui-common-comp-writablesystemenvkey-c.md) | 定义可写的系统环境变量Key，继承自[SystemEnvKey\<T\>](arkts-arkui-common-comp-systemenvkey-c.md)。 |
+
+<!--Del-->
+### 类（系统接口）
+
+| 名称 | 说明 |
+| --- | --- |
+| [View](arkts-arkui-common-comp-view-c-sys.md) | 自定义组件 |
+<!--DelEnd-->
+
 ### 接口
 
 | 名称 | 说明 |
@@ -4767,9 +4806,9 @@ struct SheetMaterialExample {
 
 ### 示例11（半模态设置标题栏悬浮模式）
 
-该示例通过titleBarHoverMode属性设置半模态标题栏为STACK堆叠模式，标题栏悬浮在内容区上方。
+该示例通过titleBarHoverMode属性演示不同半模态标题栏悬浮模式（[SheetTitleBarHoverMode](arkts-arkui-common-comp-sheettitlebarhovermode-e.md)）的效果。
 
-从API版本26.0.1开始，[SheetOptions](arkts-arkui-common-comp-sheetoptions-i.md)新增titleBarHoverMode属性。
+从API版本26.0.1开始，[SheetOptions](arkts-arkui-common-comp-sheetoptions-i.md)新增titleBarHoverMode属性。从API版本26.1.0开始，SheetTitleBarHoverMode中新增[SAFE_AREA_PADDING](arkts-arkui-common-comp-sheettitlebarhovermode-e.md)枚举值。
 
 
 
@@ -4777,8 +4816,10 @@ struct SheetMaterialExample {
 // xxx.ets
 @Entry
 @Component
-struct SheetMaterialExample {
-  @State isShow: boolean = false;
+struct SheetTitleBarHoverModeDemo {
+  @State isShowStandard: boolean = false;
+  @State isShowStack: boolean = false;
+  @State isShowSafeAreaPadding: boolean = false;
 
   @Builder
   myBuilder() {
@@ -4814,16 +4855,38 @@ struct SheetMaterialExample {
   build() {
     Stack() {
       Column() {
-        Button('拉起半模态')
+        Button('STANDARD')
           .onClick(() => {
-            this.isShow = true;
+            this.isShowStandard = true;
           })
           .fontSize(20)
           .margin(10)
-          .bindSheet($$this.isShow, this.myBuilder(), {
+          .bindSheet($$this.isShowStandard, this.myBuilder(), {
             height: SheetSize.MEDIUM,
-            title: { title: '标题' },
+            title: { title: 'title standard' },
+            titleBarHoverMode: SheetTitleBarHoverMode.STANDARD,
+          })
+        Button('STACK')
+          .onClick(() => {
+            this.isShowStack = true;
+          })
+          .fontSize(20)
+          .margin(10)
+          .bindSheet($$this.isShowStack, this.myBuilder(), {
+            height: SheetSize.MEDIUM,
+            title: { title: 'title stack' },
             titleBarHoverMode: SheetTitleBarHoverMode.STACK,
+          })
+        Button('SAFE_AREA_PADDING')
+          .onClick(() => {
+            this.isShowSafeAreaPadding = true;
+          })
+          .fontSize(20)
+          .margin(10)
+          .bindSheet($$this.isShowSafeAreaPadding, this.myBuilder(), {
+            height: SheetSize.MEDIUM,
+            title: { title: 'title safeArea' },
+            titleBarHoverMode: SheetTitleBarHoverMode.SAFE_AREA_PADDING,
           })
       }
       .justifyContent(FlexAlign.Center)
@@ -15198,6 +15261,8 @@ struct ScrollExample {
 
 ListDataSource说明及完整代码参考[示例1（添加滚动事件）](./ts-container-list.md#示例1添加滚动事件)。
 
+
+
 ```TypeScript
 // xxx.ets
 import { ListDataSource } from './ListDataSource';
@@ -15243,6 +15308,80 @@ struct ListExample {
           this.scrollBarMargin = { start: LengthMetrics.vp(15), end: LengthMetrics.vp(100) };
         }).margin({ top: 200, left: 20 })
     }.width('100%').height('100%').backgroundColor(0xDCDCDC).padding({ top: 5 })
+  }
+}
+```
+
+### 示例5（设置鼠标左键按下拖动滚动）
+
+该示例通过设置[enableScrollWithMouse](arkts-arkui-common-comp-scrollablecommonmethod-c.md#enablescrollwithmouse)属性（从API版本26.0.0开始新增），实现了鼠标左键按下拖动滚动的效果。属性初始值设置为undefined，表示使用默认效果。
+
+ListDataSource说明及完整代码参考[示例1（添加滚动事件）](./ts-container-list.md#示例1添加滚动事件)。
+
+```TypeScript
+// xxx.ets
+import { ListDataSource } from './ListDataSource';
+
+@Entry
+@Component
+struct Index {
+  private verticalData: ListDataSource = new ListDataSource([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+  private horizontalData: ListDataSource = new ListDataSource([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+  @State verticalMouseScroll: boolean | undefined = undefined;
+  @State horizontalMouseScroll: boolean | undefined = undefined;
+
+  build() {
+    Column({ space: 12 }) {
+      Button(`enableScrollWithMouse(vertical): ${this.verticalMouseScroll}`)
+        .onClick(() => {
+          this.verticalMouseScroll = !this.verticalMouseScroll;
+        }).margin({ top: 40 })
+
+      List({ space: 10 }) {
+        LazyForEach(this.verticalData, (item: number) => {
+          ListItem() {
+            Text(item.toString())
+              .width('100%')
+              .height(80)
+              .fontSize(16)
+              .textAlign(TextAlign.Center)
+              .borderRadius(10)
+              .backgroundColor(0xFFFFFF)
+          }
+        }, (item: number) => item.toString())
+      }
+      .listDirection(Axis.Vertical)
+      .enableScrollWithMouse(this.verticalMouseScroll)
+      .height(190)
+      .width('90%')
+
+      Button(`enableScrollWithMouse(horizontal): ${this.horizontalMouseScroll}`)
+        .onClick(() => {
+          this.horizontalMouseScroll = !this.horizontalMouseScroll;
+        }).margin({ top: 40 })
+
+      List({ space: 10 }) {
+        LazyForEach(this.horizontalData, (item: number) => {
+          ListItem() {
+            Text(item.toString())
+              .width(160)
+              .height(80)
+              .fontSize(16)
+              .textAlign(TextAlign.Center)
+              .borderRadius(10)
+              .backgroundColor(0xFFFFFF)
+          }
+        }, (item: number) => item.toString())
+      }
+      .listDirection(Axis.Horizontal)
+      .enableScrollWithMouse(this.horizontalMouseScroll)
+      .height(100)
+      .width('90%')
+    }
+    .width('100%')
+    .height('100%')
+    .backgroundColor(0xDCDCDC)
+    .padding({ top: 12, bottom: 12 })
   }
 }
 ```

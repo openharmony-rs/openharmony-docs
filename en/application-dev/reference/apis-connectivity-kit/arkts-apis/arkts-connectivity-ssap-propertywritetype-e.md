@@ -24,7 +24,7 @@ Property write request that requires a response from the server.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-PropertyWriteType-WRITE = 1--><!--Device-PropertyWriteType-WRITE = 1-End-->
 
@@ -42,7 +42,7 @@ Property write request that does not require a response from the server.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-PropertyWriteType-WRITE_NO_RESPONSE = 2--><!--Device-PropertyWriteType-WRITE_NO_RESPONSE = 2-End-->
 

@@ -50,6 +50,30 @@ TapGesture(event: (event: GestureEvent) => void)
 
 ## 汇总
 
+### 类
+
+| 名称 | 说明 |
+| --- | --- |
+| [EventTargetInfo](arkts-arkui-tapgesture-comp-eventtargetinfo-c.md) | 手势识别器对应组件的信息。 |
+| [GestureGroupHandler](arkts-arkui-tapgesture-comp-gesturegrouphandler-c.md) | 手势组处理器对象类型。 |
+| [GestureHandler](arkts-arkui-tapgesture-comp-gesturehandler-c.md) | 手势处理器的基础类型。 |
+| [GestureRecognizer](arkts-arkui-tapgesture-comp-gesturerecognizer-c.md) | 手势识别器对象。 |
+| [LongPressGestureHandler](arkts-arkui-tapgesture-comp-longpressgesturehandler-c.md) | 长按手势处理器对象类型。 |
+| [LongPressRecognizer](arkts-arkui-tapgesture-comp-longpressrecognizer-c.md) | 长按手势识别器对象，继承于[GestureRecognizer](arkts-arkui-tapgesture-comp-gesturerecognizer-c.md)。 |
+| [PanGestureHandler](arkts-arkui-tapgesture-comp-pangesturehandler-c.md) | 滑动手势处理器对象类型。 |
+| [PanGestureOptions](arkts-arkui-tapgesture-comp-pangestureoptions-c.md) | 定义PanGesture配置参数选项。 |
+| [PanRecognizer](arkts-arkui-tapgesture-comp-panrecognizer-c.md) | 手势识别器对象。 |
+| [PinchGestureHandler](arkts-arkui-tapgesture-comp-pinchgesturehandler-c.md) | 捏合手势处理器对象类型。 |
+| [PinchRecognizer](arkts-arkui-tapgesture-comp-pinchrecognizer-c.md) | 捏合手势识别器对象，继承于[GestureRecognizer](arkts-arkui-tapgesture-comp-gesturerecognizer-c.md)。 |
+| [RotationGestureHandler](arkts-arkui-tapgesture-comp-rotationgesturehandler-c.md) | 旋转手势处理器对象类型。 |
+| [RotationRecognizer](arkts-arkui-tapgesture-comp-rotationrecognizer-c.md) | 旋转手势识别器对象，继承于[GestureRecognizer](arkts-arkui-tapgesture-comp-gesturerecognizer-c.md)。 |
+| [ScrollableTargetInfo](arkts-arkui-tapgesture-comp-scrollabletargetinfo-c.md) | 手势识别器对应的滚动类容器组件的信息，继承于[EventTargetInfo](arkts-arkui-tapgesture-comp-eventtargetinfo-c.md)。 |
+| [SwipeGestureHandler](arkts-arkui-tapgesture-comp-swipegesturehandler-c.md) | 快滑手势处理器对象类型。 |
+| [SwipeRecognizer](arkts-arkui-tapgesture-comp-swiperecognizer-c.md) | 快滑手势识别器对象，继承于[GestureRecognizer](arkts-arkui-tapgesture-comp-gesturerecognizer-c.md)。 |
+| [TapGestureHandler](arkts-arkui-tapgesture-comp-tapgesturehandler-c.md) | 点击手势处理器对象类型。 |
+| [TapRecognizer](arkts-arkui-tapgesture-comp-taprecognizer-c.md) | 点击手势识别器对象，继承自[GestureRecognizer](arkts-arkui-tapgesture-comp-gesturerecognizer-c.md)。 |
+| [TouchRecognizer](arkts-arkui-tapgesture-comp-touchrecognizer-c.md) | 触摸识别器对象。 |
+
 ### 接口
 
 | 名称 | 说明 |

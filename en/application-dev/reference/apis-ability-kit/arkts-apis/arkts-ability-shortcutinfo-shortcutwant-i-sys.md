@@ -22,7 +22,7 @@ Action to take when starting the shortcut, consistent with the **action** field 
 
 **Type:** string
 
-**Since:** 26.0.1
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -42,7 +42,7 @@ How the shortcut Want object will be handled. The value is of the enumeration ty
 
 **Type:** number
 
-**Since:** 26.0.1
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -62,7 +62,7 @@ URI to be matched when starting the shortcut, consistent with the **uri** field 
 
 **Type:** string
 
-**Since:** 26.0.1
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 

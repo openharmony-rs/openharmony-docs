@@ -6,7 +6,7 @@ enum AutoConnectPolicy
 
 Enumerates the auto-connection policies when NearLink is enabled.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 <!--Device-manager-enum AutoConnectPolicy--><!--Device-manager-enum AutoConnectPolicy-End-->
 
@@ -22,11 +22,11 @@ AUTO_CONN_EXCEPT_AUDIO_DEVICES = 1
 
 All paired devices except audio devices are automatically reconnected after NearLink is enabled.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-AutoConnectPolicy-AUTO_CONN_EXCEPT_AUDIO_DEVICES = 1--><!--Device-AutoConnectPolicy-AUTO_CONN_EXCEPT_AUDIO_DEVICES = 1-End-->
 
@@ -42,11 +42,11 @@ AUTO_CONN_EXCEPT_USER_DISCONNECTED_DEVICES = 2
 
 All paired devices except those disconnected by the user are automatically reconnected after NearLink is enabled.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-AutoConnectPolicy-AUTO_CONN_EXCEPT_USER_DISCONNECTED_DEVICES = 2--><!--Device-AutoConnectPolicy-AUTO_CONN_EXCEPT_USER_DISCONNECTED_DEVICES = 2-End-->
 
@@ -62,11 +62,11 @@ AUTO_CONN_GENERAL = 0
 
 All paired devices are automatically reconnected after NearLink is enabled.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-AutoConnectPolicy-AUTO_CONN_GENERAL = 0--><!--Device-AutoConnectPolicy-AUTO_CONN_GENERAL = 0-End-->
 

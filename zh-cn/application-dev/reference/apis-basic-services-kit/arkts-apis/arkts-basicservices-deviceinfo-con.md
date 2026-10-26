@@ -444,6 +444,24 @@ const incrementalVersion: string
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
+## installTime
+
+```TypeScript
+const installTime: string
+```
+
+获取系统安装UTC时间戳。例如：1790784000000。
+
+**类型：** string
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-deviceInfo-const installTime: string--><!--Device-deviceInfo-const installTime: string-End-->
+
+**系统能力：** SystemCapability.Startup.SystemInfo
+
 ## kernelVersion
 
 ```TypeScript

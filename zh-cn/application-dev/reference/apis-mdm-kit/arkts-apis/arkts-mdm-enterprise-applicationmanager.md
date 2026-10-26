@@ -64,6 +64,7 @@ import { applicationManager } from '@kit.MDMKit';
 | [isAppKioskAllowed](arkts-mdm-applicationmanager-isappkioskallowed-f.md#isappkioskallowed-1) | 查询某应用是否允许在Kiosk模式下运行。 |
 | [isModifyAutoStartAppsDisallowed](arkts-mdm-applicationmanager-ismodifyautostartappsdisallowed-f.md#ismodifyautostartappsdisallowed-1) | 查询指定用户是否禁止取消应用自启动。 |
 | [isModifyKeepAliveAppsDisallowed](arkts-mdm-applicationmanager-ismodifykeepaliveappsdisallowed-f.md#ismodifykeepaliveappsdisallowed-1) | 查询应用是否禁止取消保活。 |
+| [publishFormToDesktop](arkts-mdm-applicationmanager-publishformtodesktop-f.md#publishformtodesktop-1) | 卡片加桌。 |
 | [queryBundleStatsInfos](arkts-mdm-applicationmanager-querybundlestatsinfos-f.md#querybundlestatsinfos-1) | 查询指定用户账户在给定时间段内，各应用在前台运行的累计时长统计信息。查询的最小粒度是天，调用时需要传入起始时间（startTime）、结束时间（endTime）以及目标用户账户ID（accountId）。请求参数startTime和endTime为毫秒级时间戳，支持调用方传入自定义值，startTime默认取当天的00:00:00.000，endTime默认取当天的24:00:00.000（即次日零点）。请求参数接口返回BundleStatsInfo数组，每个元素包含一个应用的包名，其分身索引值及其对应时间段内的前台使用时长（毫秒级时间戳）。若startTime为0，则表示从设备首次开机的时间开始查询。若起始时间晚于结束时间，接口将返回错误码9200012。 |
 | [queryTrafficStats](arkts-mdm-applicationmanager-querytrafficstats-f.md#querytrafficstats-1) | 查询当前用户下指定应用在特定时间段内使用流量情况。使用Promise异步回调。 |
 | [releaseExemptionResource](arkts-mdm-applicationmanager-releaseexemptionresource-f.md#releaseexemptionresource-1) | 释放指定应用的备用资源豁免。 |
@@ -105,6 +106,7 @@ import { applicationManager } from '@kit.MDMKit';
 | --- | --- |
 | [BundleStatsInfo](arkts-mdm-applicationmanager-bundlestatsinfo-i.md) | 应用包统计信息。 |
 | [DockInfo](arkts-mdm-applicationmanager-dockinfo-i.md) | 快捷栏中的应用信息。 |
+| [FormInfo](arkts-mdm-applicationmanager-forminfo-i.md) | 卡片信息 |
 | [WindowStateInfo](arkts-mdm-applicationmanager-windowstateinfo-i.md) | 应用窗口状态信息。 |
 
 ### 枚举

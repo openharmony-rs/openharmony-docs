@@ -4,8 +4,6 @@
 export declare struct AlertDialog
 ```
 
-AlertDialog({controller: CustomDialogController, primaryTitle?: ResourceStr, secondaryTitle?: ResourceStr, content: ResourceStr, primaryButton?: ButtonOptions, secondaryButton?: ButtonOptions, theme?: Theme | CustomTheme, themeColorMode?: ThemeColorMode})
-
 Defines an alert dialog box used to warn the user when triggering an irreversible operation that will have serious consequences (such as deletion, reset, cancel editing, stop, etc.).
 
 **Since:** 10

@@ -1,12 +1,12 @@
 # QueryParamObject
 
 ```TypeScript
-export type QueryParamObject = Record<string, QueryParamValue[]>
+export type QueryParamObject = Record<string, QueryParamValue | QueryParamValue[]>
 ```
 
 用于构造URL查询参数的键值对象类型。
 
-**类型：** Record&lt;string, [QueryParamValue](arkts-network-http-queryparamvalue-t.md)[]&gt;
+**类型：** Record&lt;string, [QueryParamValue](arkts-network-http-queryparamvalue-t.md) | [QueryParamValue](arkts-network-http-queryparamvalue-t.md)[]&gt;
 
 **起始版本：** 26.0.0
 

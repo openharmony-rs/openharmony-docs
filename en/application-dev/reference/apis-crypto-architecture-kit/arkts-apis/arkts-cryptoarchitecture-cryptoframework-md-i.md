@@ -53,7 +53,7 @@ Generates a message digest. This API uses an asynchronous callback to return the
 | Error Code ID | Error Message |
 | --- | --- |
 | [17620001](../errorcode-crypto-framework.md#17620001-memory-operation-failed) | Memory operation failed. |
-| [17620004](../errorcode-crypto-framework.md#17620004-invalid-function-call) | Invalid function call. XOF(Extendable-Output Function) digest algorithms, such as SHAKE128 and SHAKE256, do not support this API.<br>**Applicable version:** 26.2.0 and later |
+| [17620004](../errorcode-crypto-framework.md#17620004-invalid-function-call) | Invalid function call. XOF(Extendable-Output Function) digest algorithms, such as SHAKE128 and SHAKE256, do not support this API.<br>**Applicable version:** 26.1.0 and later |
 | [17630001](../errorcode-crypto-framework.md#17630001-cryptographic-operation-error) | Crypto operation error. |
 
 **Examples**
@@ -105,7 +105,7 @@ Generates a message digest. This API uses a promise to return the result.
 | --- | --- |
 | [17620001](../errorcode-crypto-framework.md#17620001-memory-operation-failed) | Memory operation failed. |
 | [17630001](../errorcode-crypto-framework.md#17630001-cryptographic-operation-error) | Crypto operation error. |
-| [17620004](../errorcode-crypto-framework.md#17620004-invalid-function-call) | Invalid function call. XOF digest algorithms, such as SHAKE128 and SHAKE256, do not support this API.<br>**Applicable version:** 26.2.0 and later |
+| [17620004](../errorcode-crypto-framework.md#17620004-invalid-function-call) | Invalid function call. XOF digest algorithms, such as SHAKE128 and SHAKE256, do not support this API.<br>**Applicable version:** 26.1.0 and later |
 
 **Examples**
 
@@ -241,7 +241,7 @@ Generates a message digest. This API returns the result synchronously.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [17620001](../errorcode-crypto-framework.md#17620001-memory-operation-failed) | Memory operation failed. |
 | [17620002](../errorcode-crypto-framework.md#17620002-failed-to-obtain-the-native-object-or-convert-parameters) | Failed to obtain the native object or convert parameters. |
-| [17620004](../errorcode-crypto-framework.md#17620004-invalid-function-call) | Invalid function call. XOF digest algorithms, such as SHAKE128 and SHAKE256, do not support this API.<br>**Applicable version:** 26.2.0 and later |
+| [17620004](../errorcode-crypto-framework.md#17620004-invalid-function-call) | Invalid function call. XOF digest algorithms, such as SHAKE128 and SHAKE256, do not support this API.<br>**Applicable version:** 26.1.0 and later |
 | [17630001](../errorcode-crypto-framework.md#17630001-cryptographic-operation-error) | Crypto operation error. |
 
 **Examples**
@@ -364,7 +364,7 @@ Obtains the message digest length, in bytes.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [17620004](../errorcode-crypto-framework.md#17620004-invalid-function-call) | Invalid function call. XOF digest algorithms, such as SHAKE128 and SHAKE256, do not support this API.<br>**Applicable version:** 26.2.0 and later |
+| [17620004](../errorcode-crypto-framework.md#17620004-invalid-function-call) | Invalid function call. XOF digest algorithms, such as SHAKE128 and SHAKE256, do not support this API.<br>**Applicable version:** 26.1.0 and later |
 | [17630001](../errorcode-crypto-framework.md#17630001-cryptographic-operation-error) | Crypto operation error. |
 
 **Examples**
@@ -390,11 +390,11 @@ Squeezes the output for XOF algorithms such as SHAKE128 and SHAKE256. This API u
 > 
 > Currently, this API and [squeezeSync](#squeezesync) can be called only once in total per **Md** instance.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-Md-squeeze(len: int): Promise<DataBlob>--><!--Device-Md-squeeze(len: int): Promise<DataBlob>-End-->
 
@@ -435,11 +435,11 @@ Squeezes the output for XOF algorithms such as SHAKE128 and SHAKE256. This API r
 
 <br><br>**NOTE:** <br>It is recommended to prioritize the use of asynchronous API, [squeeze](#squeeze). Synchronous API may take a long time and block the main thread due to system busyness, high load, and other reasons. Therefore, it is advised to invoke synchronous API within a child thread to avoid blocking the main thread.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-Md-squeezeSync(len: int): DataBlob--><!--Device-Md-squeezeSync(len: int): DataBlob-End-->
 

@@ -7,6 +7,15 @@ ChipV2是提供丰富样式和交互能力的操作块组件，支持前缀图�
  [状态管理（V1）](../../../ui/state-management/arkts-state-management-overview.md#状态管理v1)，状态管理（V2）增强了对数据对象的深度观察与管理能力，不再局限于组
  件层级。借助状态管理（V2），开发者可以更灵活地控制组件的数据和状态，实现更高效的用户界面刷新。
 
+> **说明：**
+ >
+ > - 如果ChipV2设置[通用属性](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md)或[通用事件](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md)，
+ > 编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到ChipV2本身。
+ > 这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议ChipV2设置通用属性和通用事件。
+
+## 子组件
+
+无
 
 ## 导入模块
 

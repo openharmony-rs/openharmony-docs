@@ -35,6 +35,5 @@ Callback when the VoIP call state is updated. This callback is invoked when a th
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [8800001](../errorcode-telephony.md#8800001-input-parameter-value-out-of-range) | Invalid parameter value. |
 | [8800002](../errorcode-telephony.md#8800002-service-connection-error) | Service connection failed. |
 | [8800003](../errorcode-telephony.md#8800003-system-internal-error) | System internal error. |

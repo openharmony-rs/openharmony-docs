@@ -48,7 +48,7 @@ $selectedIndexes: OnSelectedIndexesChange
 build(): void
 ```
 
-Sets the build function of the segmented button.
+多选胶囊型分段按钮构造方法。
 
 **起始版本：** 18
 

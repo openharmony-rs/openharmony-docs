@@ -6,7 +6,7 @@ export interface TaskStopInfo
 
 Represents the background load task stop information, which is used to ON_STOP function.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 <!--Device-backgroundLoader-export interface TaskStopInfo--><!--Device-backgroundLoader-export interface TaskStopInfo-End-->
 
@@ -28,7 +28,7 @@ Ability name in the bundle.
 
 **Type:** string
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -46,7 +46,7 @@ Stop code.
 
 **Type:** [StopCode](arkts-backgroundtasks-backgroundloader-stopcode-e.md)
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -64,7 +64,7 @@ Stop message.
 
 **Type:** string
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -82,7 +82,7 @@ Id of the background load task.
 
 **Type:** number
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 

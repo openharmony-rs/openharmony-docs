@@ -20,7 +20,7 @@ Disconnects from the remote device. This method is called to disconnect from the
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-dataTransfer-function disconnect(params: ConnectionParams): Promise<void>--><!--Device-dataTransfer-function disconnect(params: ConnectionParams): Promise<void>-End-->
 

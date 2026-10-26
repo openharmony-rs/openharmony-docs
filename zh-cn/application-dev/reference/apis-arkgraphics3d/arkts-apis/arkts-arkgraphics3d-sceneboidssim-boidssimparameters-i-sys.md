@@ -10,9 +10,9 @@ export interface BoidsSimParameters
 > 
 > 模拟帧是指群组模拟中按固定时间步长执行的更新周期，类似Unity中的FixedUpdate。默认时间步长为16ms（约62.5FPS），模拟通过累积真实时间并按固定步长消耗来驱动。
 > 下文部分参数的默认值基于该时间步长计算：
-> - maxVelocityMag： 0.01 / 0.016 ≈ 0.625（m/s）。
-> - maxAccelerationMag： maxVelocityMag / 0.016 ≈ 39.06（m/s²）。
-> - maxTurnRate： π × 0.75 × 0.016 ≈ 0.0377（rad/模拟帧）。
+> - **maxVelocityMag：** 0.01 / 0.016 ≈ 0.625（m/s）。
+> - **maxAccelerationMag：** maxVelocityMag / 0.016 ≈ 39.06（m/s²）。
+> - **maxTurnRate：** π × 0.75 × 0.016 ≈ 0.0377（rad/模拟帧）。
 
 **起始版本：** 26.0.0
 

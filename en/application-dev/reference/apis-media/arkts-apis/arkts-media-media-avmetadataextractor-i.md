@@ -78,7 +78,7 @@ Obtains the cover of the audio album. This API uses an asynchronous callback to 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [5400102](../../apis-media-kit/errorcode-media.md#5400102-unsupported-operation) | Operation not allowed. Return by callback. |
+| [5400102](../../apis-media-kit/errorcode-media.md#5400102-unsupported-operation) | Operation not allowed. Returned by callback. |
 | [5400106](../../apis-media-kit/errorcode-media.md#5400106-format-not-supported) | Unsupported format. Returned by callback. |
 
 **Examples**

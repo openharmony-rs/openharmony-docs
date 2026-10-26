@@ -14,7 +14,7 @@ function subscribeNotification(priorityStrategy?: number): Promise<void>
 
 Subscribes to notifications based on the priority strategy. This API uses a promise to return the result.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Required permissions:** ohos.permission.NOTIFICATION_SYSTEM_SUBSCRIBER
 

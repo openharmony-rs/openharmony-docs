@@ -12,6 +12,14 @@ Used in scenarios where the Web component needs to custom-handle file upload req
 
 For sample code, see [onShowFileSelector](arkts-arkweb-web-comp-attribute.md#onshowfileselector).
 
+> **NOTE:** 
+> 
+> - The initial APIs of this component are supported since API version 8.Updates will be marked with a superscript to indicate their earliest API version.
+> 
+> - The initial APIs of this class are supported since API version 9.
+> 
+> - The sample effect is subject to the actual device.
+
 **Since:** 9
 
 <!--Device-unnamed-declare class FileSelectorParam--><!--Device-unnamed-declare class FileSelectorParam-End-->
@@ -61,6 +69,14 @@ getAcceptType(): Array<string>
 ```
 
 Obtains the file filtering type.
+
+> **NOTE:** 
+> 
+> Correspondence with getMimeTypes and getAcceptableFileTypes: getAcceptType and getMimeTypes correspond to the
+> accept attribute of the HTML input tag, and getAcceptableFileTypes corresponds to the types attribute of the
+> options parameter of the HTML showOpenFilePicker, showDirectoryPicker, and showSaveFilePicker interfaces.
+> According to HTML specifications, the accept attribute and the types attribute are mutually exclusive and should
+> not be used at the same time.
 
 **Since:** 9
 

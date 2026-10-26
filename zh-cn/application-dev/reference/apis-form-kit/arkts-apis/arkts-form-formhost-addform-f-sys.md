@@ -50,3 +50,36 @@ You can use this method to create a theme form.
 | [16500050](../errorcode-form.md#16500050-进程间通信失败) | IPC connection error. |
 | [16500060](../errorcode-form.md#16500060-连接服务失败) | Service connection error. |
 | [16501000](../errorcode-form.md#16501000-内部功能错误) | An internal functional error occurred. |
+
+<!--Del-->
+**示例**
+
+```TypeScript
+import { formHost, formInfo } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let want: Want = {
+    'bundleName': 'com.huawei.hmsapp.thememanager',
+    'abilityName': 'ThemeFaCardUIExtAbility',
+    'parameters': {
+      'ohos.extra.param.key.form_dimension': 4,
+      'ohos.extra.param.key.form_is_theme': true,
+      'ohos.extra.param.key.form_location': 0,
+      'ohos.extra.param.key.module_name': 'entry',
+      'ohos.extra.param.key.form_name': 'widget',
+      'themeFormId': '0',
+      'themeId': '2181824853'
+    }
+  };
+  formHost.addForm(want).then((data: formInfo.RunningFormInfo) => {
+    console.info(`formHost addForm, formId: ${data.formId}`);
+  }).catch((error: BusinessError) => {
+    console.error(`formHost addForm error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+<!--DelEnd-->

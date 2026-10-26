@@ -157,7 +157,7 @@ Disables the delayed process exit feature for the current process. This API uses
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | [16000050](../errorcode-ability.md#16000050-internal-error) | Internal error. Possible causes: Fail to connect system service. |
 | [16000150](../errorcode-ability.md#16000150-failed-to-send-request) | The current process has no UIAbility, and this API cannot be called. |
 
@@ -209,7 +209,7 @@ Enables delayed exit of the current process. This API uses a Promise asynchronou
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | [16000050](../errorcode-ability.md#16000050-internal-error) | Internal error. Possible causes: Fail to connect system service. |
 | [16000150](../errorcode-ability.md#16000150-failed-to-send-request) | The current process has no UIAbility, and this API cannot be called. |
 
@@ -1133,6 +1133,35 @@ export default class MyAbility extends UIAbility {
 }
 ```
 
+## offAppProcessStateChange
+
+```TypeScript
+offAppProcessStateChange(observer?: AppProcessStateObserver): void
+```
+
+Unregisters the listener for process state changes within the application. It can be called only on the main thread.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ApplicationContext-offAppProcessStateChange(observer?: AppProcessStateObserver): void--><!--Device-ApplicationContext-offAppProcessStateChange(observer?: AppProcessStateObserver): void-End-->
+
+**System capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| observer | [AppProcessStateObserver](arkts-ability-app-ability-appprocessstateobserver-appprocessstateobserver-i.md) | No | Observer registered by calling [ApplicationContext.onAppProcessStateChange](#onappprocessstatechange). If a defined observer is passed in, the listener for that observer is unregistered. If no value is passed in, all the listeners registered by current process are unregistered. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [16000050](../errorcode-ability.md#16000050-internal-error) | Connect to system server failed. |
+| [16300004](../errorcode-ability.md#16300004-observer-does-not-exist) | If the observer does not exist |
+
 ## offSystemConfigurationUpdated
 
 ```TypeScript
@@ -1491,6 +1520,35 @@ export default class MyAbility extends UIAbility {
 }
 ```
 
+## onAppProcessStateChange
+
+```TypeScript
+onAppProcessStateChange(observer: AppProcessStateObserver): void
+```
+
+Registers a listener for process state changes within the application, including process creation and termination. It can be called only on the main thread.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ApplicationContext-onAppProcessStateChange(observer: AppProcessStateObserver): void--><!--Device-ApplicationContext-onAppProcessStateChange(observer: AppProcessStateObserver): void-End-->
+
+**System capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| observer | [AppProcessStateObserver](arkts-ability-app-ability-appprocessstateobserver-appprocessstateobserver-i.md) | Yes | Observer triggered when a process is created or destroyed within the application. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [16000050](../errorcode-ability.md#16000050-internal-error) | Connect to system server failed. |
+| 16000165 | The number of registered observers for the current application has reached the upper limit. |
+
 ## onSystemConfigurationUpdated
 
 ```TypeScript
@@ -1812,6 +1870,46 @@ struct Index {
 }
 ```
 
+## setFont
+
+```TypeScript
+setFont(font: string, enableAnimation: boolean): void
+```
+
+Sets the font for this application. This API can be called only on the main thread.
+
+> **NOTE:** 
+> 
+> Before calling this API, ensure that the window has been created and the page corresponding to the UIAbility has
+> been loaded (using the
+> [loadContent](../../apis-arkui/arkts-apis/arkts-arkui-window-windowstage-i.md#loadcontent-1) API in the
+> [onWindowStageCreate()](arkts-ability-app-ability-uiability-uiability-c.md#onwindowstagecreate) lifecycle).
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ApplicationContext-setFont(font: string, enableAnimation: boolean): void--><!--Device-ApplicationContext-setFont(font: string, enableAnimation: boolean): void-End-->
+
+**System capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| font | string | Yes | Font, which can be registered by calling UIContext.registerFont. |
+| enableAnimation | boolean | Yes | Whether using animation during this setting, using animation if true or not using animation if false. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [16000011](../errorcode-ability.md#16000011-context-does-not-exist) | The context does not exist. |
+
+**Examples**
+
+See [setFont](#setfont)
+
 ## setFontSizeScale
 
 ```TypeScript
@@ -1958,7 +2056,7 @@ This API can be properly called only on phones and 2-in-1 devices. If it is call
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | [16000011](../errorcode-ability.md#16000011-context-does-not-exist) | The context does not exist. |
 | [16000050](../errorcode-ability.md#16000050-internal-error) | Internal error. |
 
@@ -2016,7 +2114,7 @@ During the delayed exit of the current process, starts a UIAbility of the curren
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | [16000001](../errorcode-ability.md#16000001-ability-name-does-not-exist) | The specified ability does not exist. |
 | [16000008](../errorcode-ability.md#16000008-crowdtesting-application-expires) | The crowdtesting application expires. |
 | [16000009](../errorcode-ability.md#16000009-ability-start-or-stop-failure-in-wukong-mode) | An ability cannot be started or stopped in Wukong mode. |

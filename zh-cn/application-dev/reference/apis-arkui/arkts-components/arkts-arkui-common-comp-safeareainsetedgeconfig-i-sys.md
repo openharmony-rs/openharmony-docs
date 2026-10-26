@@ -6,7 +6,7 @@ declare interface SafeAreaInsetEdgeConfig
 
 单个边缘内容及其布局配置。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 <!--Device-unnamed-declare interface SafeAreaInsetEdgeConfig--><!--Device-unnamed-declare interface SafeAreaInsetEdgeConfig-End-->
 
@@ -24,11 +24,11 @@ alignment?: SafeAreaInsetAlignment
 
 **类型：** [SafeAreaInsetAlignment](arkts-arkui-common-comp-safeareainsetalignment-e-sys.md)
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-SafeAreaInsetEdgeConfig-alignment?: SafeAreaInsetAlignment--><!--Device-SafeAreaInsetEdgeConfig-alignment?: SafeAreaInsetAlignment-End-->
 
@@ -48,11 +48,11 @@ content: CustomBuilder
 
 **类型：** [CustomBuilder](arkts-arkui-common-comp-custombuilder-t.md)
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-SafeAreaInsetEdgeConfig-content: CustomBuilder--><!--Device-SafeAreaInsetEdgeConfig-content: CustomBuilder-End-->
 
@@ -70,11 +70,11 @@ spacing?: LengthMetrics
 
 **类型：** LengthMetrics
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-SafeAreaInsetEdgeConfig-spacing?: LengthMetrics--><!--Device-SafeAreaInsetEdgeConfig-spacing?: LengthMetrics-End-->
 

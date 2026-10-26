@@ -681,9 +681,13 @@
   <!--Del-->
   - [destroyTimer（系统接口）](arkts-basicservices-systemtimer-destroytimer-f-sys.md)<!--DelEnd-->
   <!--Del-->
+  - [setPowerOnTimerEnabled（系统接口）](arkts-basicservices-systemtimer-setpowerontimerenabled-f-sys.md)<!--DelEnd-->
+  <!--Del-->
   - [startTimer（系统接口）](arkts-basicservices-systemtimer-starttimer-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [stopTimer（系统接口）](arkts-basicservices-systemtimer-stoptimer-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [PowerOnTimerEnabledOptions（系统接口）](arkts-basicservices-systemtimer-powerontimerenabledoptions-i-sys.md)<!--DelEnd-->
   <!--Del-->
   - [TimerOptions（系统接口）](arkts-basicservices-systemtimer-timeroptions-i-sys.md)<!--DelEnd-->
   <!--Del-->

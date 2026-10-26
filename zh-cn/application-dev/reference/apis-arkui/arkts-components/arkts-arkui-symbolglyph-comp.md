@@ -38,6 +38,19 @@ SymbolGlyph(value?: Resource)
 
 ## 汇总
 
+### 类
+
+| 名称 | 说明 |
+| --- | --- |
+| [AppearSymbolEffect](arkts-arkui-symbolglyph-comp-appearsymboleffect-c.md) | AppearSymbolEffect继承自父类SymbolEffect。 |
+| [BounceSymbolEffect](arkts-arkui-symbolglyph-comp-bouncesymboleffect-c.md) | BounceSymbolEffect继承自父类SymbolEffect。 |
+| [DisappearSymbolEffect](arkts-arkui-symbolglyph-comp-disappearsymboleffect-c.md) | DisappearSymbolEffect继承自父类SymbolEffect。 |
+| [HierarchicalSymbolEffect](arkts-arkui-symbolglyph-comp-hierarchicalsymboleffect-c.md) | HierarchicalSymbolEffect继承自父类SymbolEffect。 |
+| [PulseSymbolEffect](arkts-arkui-symbolglyph-comp-pulsesymboleffect-c.md) | PulseSymbolEffect继承自父类SymbolEffect，脉冲动效。 |
+| [ReplaceSymbolEffect](arkts-arkui-symbolglyph-comp-replacesymboleffect-c.md) | ReplaceSymbolEffect继承自父类SymbolEffect。 |
+| [ScaleSymbolEffect](arkts-arkui-symbolglyph-comp-scalesymboleffect-c.md) | ScaleSymbolEffect继承自父类SymbolEffect。 |
+| [SymbolEffect](arkts-arkui-symbolglyph-comp-symboleffect-c.md) | 定义SymbolEffect类。 |
+
 ### 枚举
 
 | 名称 | 说明 |

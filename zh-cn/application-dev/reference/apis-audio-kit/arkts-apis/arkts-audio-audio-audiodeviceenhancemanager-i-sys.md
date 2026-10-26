@@ -44,7 +44,7 @@ getSoundCardInfo(): Promise<SoundCardInfo>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[SoundCardInfo](arkts-audio-audio-soundcardinfo-i-sys.md)&gt; | Promise对象，返回内置声卡信息。 |
+| Promise&lt;[SoundCardInfo](arkts-audio-audio-soundcardinfo-i.md)&gt; | Promise对象，返回内置声卡信息。 |
 
 **错误码：**
 

@@ -170,6 +170,28 @@ acceptButtonStyle?: PickerDialogButtonStyle
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+## adaptToHandedness
+
+```TypeScript
+adaptToHandedness?: HandednessFollowMode
+```
+
+是否以及如何使对话框适配惯用手。FOLLOW_ANCHOR：对话框向触发它的组件（最近交互的组件）的位置偏移；当不存在触发组件时，回退到当前布局。FOLLOW_GRIP_HAND：对话框向感知平台上报的握持手（握持设备的手，区别于操作手）偏移；当不可用时，回退到当前布局。
+
+**类型：** [HandednessFollowMode](../arkts-apis/arkts-arkui-arkui-dialog-handednessfollowmode-e.md)
+
+**默认值：** HandednessFollowMode.NONE
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-CalendarDialogOptions-adaptToHandedness?: HandednessFollowMode--><!--Device-CalendarDialogOptions-adaptToHandedness?: HandednessFollowMode-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 ## backgroundBlurStyle
 
 ```TypeScript
@@ -343,11 +365,11 @@ firstDayOfWeek?: CalendarFirstDayOfWeek
 
 **默认值：** CalendarFirstDayOfWeek.LOCAL
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-CalendarDialogOptions-firstDayOfWeek?: CalendarFirstDayOfWeek--><!--Device-CalendarDialogOptions-firstDayOfWeek?: CalendarFirstDayOfWeek-End-->
 

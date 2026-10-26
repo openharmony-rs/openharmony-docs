@@ -6,7 +6,7 @@ declare interface SafeAreaInsetOptions
 
 Defines the complete inset configuration for all four edges of a component.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 <!--Device-unnamed-declare interface SafeAreaInsetOptions--><!--Device-unnamed-declare interface SafeAreaInsetOptions-End-->
 
@@ -24,11 +24,11 @@ Configuration of the content attached to the physical bottom edge. Default value
 
 **Type:** [SafeAreaInsetEdgeConfig](arkts-arkui-common-comp-safeareainsetedgeconfig-i-sys.md)
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-SafeAreaInsetOptions-bottom?: SafeAreaInsetEdgeConfig--><!--Device-SafeAreaInsetOptions-bottom?: SafeAreaInsetEdgeConfig-End-->
 
@@ -46,11 +46,11 @@ Configuration of the content attached to the logical end edge: right in a left-t
 
 **Type:** [SafeAreaInsetEdgeConfig](arkts-arkui-common-comp-safeareainsetedgeconfig-i-sys.md)
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-SafeAreaInsetOptions-end?: SafeAreaInsetEdgeConfig--><!--Device-SafeAreaInsetOptions-end?: SafeAreaInsetEdgeConfig-End-->
 
@@ -68,11 +68,11 @@ Configuration of the content attached to the logical start edge: left in a left-
 
 **Type:** [SafeAreaInsetEdgeConfig](arkts-arkui-common-comp-safeareainsetedgeconfig-i-sys.md)
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-SafeAreaInsetOptions-start?: SafeAreaInsetEdgeConfig--><!--Device-SafeAreaInsetOptions-start?: SafeAreaInsetEdgeConfig-End-->
 
@@ -90,11 +90,11 @@ Configuration of the content attached to the physical top edge. Default value: `
 
 **Type:** [SafeAreaInsetEdgeConfig](arkts-arkui-common-comp-safeareainsetedgeconfig-i-sys.md)
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-SafeAreaInsetOptions-top?: SafeAreaInsetEdgeConfig--><!--Device-SafeAreaInsetOptions-top?: SafeAreaInsetEdgeConfig-End-->
 

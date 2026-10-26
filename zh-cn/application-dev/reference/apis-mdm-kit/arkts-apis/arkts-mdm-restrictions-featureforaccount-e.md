@@ -80,6 +80,22 @@ FINGERPRINT = 3
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+## FREE_WINDOW
+
+```TypeScript
+FREE_WINDOW = 14
+```
+
+自由多窗模式是一种支持用户在移动设备上进行多任务处理的交互方式。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-FeatureForAccount-FREE_WINDOW = 14--><!--Device-FeatureForAccount-FREE_WINDOW = 14-End-->
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
 ## MTP_CLIENT
 
 ```TypeScript

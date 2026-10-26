@@ -4,7 +4,7 @@
 export declare struct DatePickerComponent
 ```
 
-DatePickerComponent组件用于选择日期（年月日）和时间（时分秒）。
+定义日期时间选择器组件。
 
 **起始版本：** 26.0.0
 
@@ -13,10 +13,6 @@ DatePickerComponent组件用于选择日期（年月日）和时间（时分秒�
 <!--Device-unnamed-export declare struct DatePickerComponent--><!--Device-unnamed-export declare struct DatePickerComponent-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## 子组件
-
-无
 
 ## 导入模块
 

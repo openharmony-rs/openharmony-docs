@@ -6,7 +6,7 @@ declare interface OnZoomChangeEvent
 
 描述网页浏览器级缩放倍率变化的信息。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 <!--Device-unnamed-declare interface OnZoomChangeEvent--><!--Device-unnamed-declare interface OnZoomChangeEvent-End-->
 
@@ -22,7 +22,7 @@ newZoomFactor: number
 
 **类型：** number
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -40,7 +40,7 @@ oldZoomFactor: number
 
 **类型：** number
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -24,7 +24,7 @@ Pairing type that does not require a passkey. Users do not need to check the pai
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-PairingType-NO_PASSKEY_CONFIRMATION = 0--><!--Device-PairingType-NO_PASSKEY_CONFIRMATION = 0-End-->
 
@@ -42,7 +42,7 @@ Pairing type with authentication based on digit comparison. Users must ensure th
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-PairingType-PAIRING_TYPE_NUMBER_COMPARE = 2--><!--Device-PairingType-PAIRING_TYPE_NUMBER_COMPARE = 2-End-->
 
@@ -60,7 +60,7 @@ Pairing type with passcode authentication. Users need to enter the pairing code 
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-PairingType-PAIRING_TYPE_PASSCODE = 1--><!--Device-PairingType-PAIRING_TYPE_PASSCODE = 1-End-->
 

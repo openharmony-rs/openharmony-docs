@@ -192,7 +192,7 @@ selectIcon(value: boolean | ResourceStr | SymbolGlyphModifier)
 subMenuBuilder(builder: CustomBuilder)
 ```
 
-Create the submenu for custom menu item.
+设置子菜单内容构建器。
 
 **起始版本：** 26.0.0
 

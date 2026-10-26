@@ -101,6 +101,5 @@ import { adminManager } from '@kit.MDMKit';
 
 | Name | Description |
 | --- | --- |
-| [AdminType](arkts-mdm-adminmanager-admintype-e-sys.md) | Enumerates the types of device administrator applications. |
 | [RunningMode](arkts-mdm-adminmanager-runningmode-e-sys.md) | Represents the running mode of a device administrator application. |
 <!--DelEnd-->

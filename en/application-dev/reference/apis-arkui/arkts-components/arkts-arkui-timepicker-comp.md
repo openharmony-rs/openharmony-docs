@@ -40,6 +40,12 @@ Creates a sliding picker, which uses a 24-hour time range by default. It is suit
 
 ## Summary
 
+### Classes
+
+| Name | Description |
+| --- | --- |
+| [TimePickerDialog](arkts-arkui-timepicker-comp-timepickerdialog-c.md) | * A time picker dialog box is a dialog box that allows users to select a time from the 24-hour range through scrolling. This component is applicable to scenarios where users need to select a time, such as setting an alarm clock, scheduling, or booking a time. This component provides intuitive time selection interaction, supports switching between the 12-hour format and 24-hour format, and allows you to customize the style and layout, helping your app quickly implement the time selection function and improving user experience. |
+
 ### Interfaces
 
 | Name | Description |

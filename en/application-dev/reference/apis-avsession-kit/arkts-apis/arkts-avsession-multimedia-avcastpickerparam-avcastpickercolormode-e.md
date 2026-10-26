@@ -15,23 +15,23 @@ Definition of color mode of picker
 ## AUTO
 
 ```TypeScript
-AUTO
+AUTO = 0
 ```
 
-Auto mode that follows the system definition.
+Auto mode which follows the definition of system.
 
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
-<!--Device-AVCastPickerColorMode-AUTO--><!--Device-AVCastPickerColorMode-AUTO-End-->
+<!--Device-AVCastPickerColorMode-AUTO = 0--><!--Device-AVCastPickerColorMode-AUTO = 0-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVCast
 
 ## DARK
 
 ```TypeScript
-DARK
+DARK = 1
 ```
 
 Dark mode.
@@ -40,14 +40,14 @@ Dark mode.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
-<!--Device-AVCastPickerColorMode-DARK--><!--Device-AVCastPickerColorMode-DARK-End-->
+<!--Device-AVCastPickerColorMode-DARK = 1--><!--Device-AVCastPickerColorMode-DARK = 1-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVCast
 
 ## LIGHT
 
 ```TypeScript
-LIGHT
+LIGHT = 2
 ```
 
 Light mode.
@@ -56,6 +56,6 @@ Light mode.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
-<!--Device-AVCastPickerColorMode-LIGHT--><!--Device-AVCastPickerColorMode-LIGHT-End-->
+<!--Device-AVCastPickerColorMode-LIGHT = 2--><!--Device-AVCastPickerColorMode-LIGHT = 2-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVCast

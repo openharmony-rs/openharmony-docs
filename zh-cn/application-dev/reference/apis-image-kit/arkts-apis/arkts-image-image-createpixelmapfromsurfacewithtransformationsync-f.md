@@ -58,8 +58,8 @@ function createPixelMapFromSurfaceWithTransformationSync(surfaceId: string, tran
   try {
     const pixelMap: image.PixelMap = image.createPixelMapFromSurfaceWithTransformationSync(surfaceId, transformEnabled);
     console.info('Succeeded in creating the PixelMap from Surface.');
-  } catch (e) {
-    const err = e as BusinessError;
+  } catch (error) {
+    const err = error as BusinessError;
     console.error(`Failed to create the PixelMap from Surface. Code: ${err.code}, message: ${err.message}`);
   }
 }

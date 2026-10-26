@@ -399,11 +399,11 @@ Applies the default safe area immersive strategy on the current page. This API a
 > 
 > - Dynamic update is not supported. This API takes effect only when called before the first layout process starts on the current page. If it is called after the page enters the first layout process, the applied strategies remain unchanged and this API does not take effect.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-UIContext-applyDefaultImmersiveStrategy(...types: ImmersiveStrategy[]): void--><!--Device-UIContext-applyDefaultImmersiveStrategy(...types: ImmersiveStrategy[]): void-End-->
 
@@ -2706,11 +2706,11 @@ getPlaceholderRegister(): PlaceholderRegister
 
 Obtains the **PlaceholderRegister** object of this UI instance.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-UIContext-getPlaceholderRegister(): PlaceholderRegister--><!--Device-UIContext-getPlaceholderRegister(): PlaceholderRegister-End-->
 
@@ -3415,11 +3415,11 @@ isTransPageEnabled(): boolean
 
 Checks whether the transPages configuration is currently enabled.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-UIContext-isTransPageEnabled(): boolean--><!--Device-UIContext-isTransPageEnabled(): boolean-End-->
 
@@ -3439,11 +3439,11 @@ isWindowInfoInitialized(): boolean
 
 Checks whether the window information has been initialized.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-UIContext-isWindowInfoInitialized(): boolean--><!--Device-UIContext-isWindowInfoInitialized(): boolean-End-->
 
@@ -4763,11 +4763,11 @@ setTransPageEnabled(enabled: boolean): void
 
 Enables or disables the transPages configuration of the easy split (parallel view). When disabled, transition pages configured in transPages will participate in the right-push-left behavior instead of being fixed on the right side. This interface only takes effect in displace mode (shopping mode). The change takes effect on the next route transition, not on the current page. Default value is true (consistent with static configuration behavior).
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-UIContext-setTransPageEnabled(enabled: boolean): void--><!--Device-UIContext-setTransPageEnabled(enabled: boolean): void-End-->
 

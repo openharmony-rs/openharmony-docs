@@ -1,8 +1,7 @@
 # EventType (System API)
 
 ```TypeScript
-type EventType =
-    'beginWakeUp' | 'endWakeUp' | 'beginScreenOn' | 'endScreenOn' | 'beginScreenOff' | 'endScreenOff' | 'unlockScreen' | 'lockScreen' | 'beginExitAnimation' | 'beginSleep' | 'endSleep' | 'changeUser' | 'screenlockEnabled' | 'serviceRestart' | 'strongAuthChanged' | 'screenLockDisabledChanged' | 'unlockPolicyChanged'
+type EventType ='beginWakeUp' | 'endWakeUp' | 'beginScreenOn' | 'endScreenOn' | 'beginScreenOff' | 'endScreenOff' | 'unlockScreen' | 'lockScreen' | 'beginExitAnimation' | 'beginSleep' | 'endSleep' | 'changeUser' | 'screenlockEnabled' | 'serviceRestart' | 'strongAuthChanged' | 'screenLockDisabledChanged' | 'unlockPolicyChanged'
 ```
 
 Indicates the system event type related to the screen lock management service. Added unlockPolicyChanged.

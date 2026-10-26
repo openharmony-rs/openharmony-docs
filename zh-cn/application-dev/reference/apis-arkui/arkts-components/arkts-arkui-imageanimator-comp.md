@@ -42,7 +42,7 @@ ImageAnimator()
 
 ### 示例1（播放Resource动画）
 
-通过ImageAnimator组件播放Resource动画。
+通过ImageAnimator组件播放Resource动画。从API版本26.0.1开始支持[interpolation](arkts-arkui-image-comp-attribute.md#interpolation)接口。
 
 
 
@@ -81,6 +81,7 @@ struct ImageAnimatorExample {
         .reverse(this.reverse)
         .fillMode(FillMode.None)
         .iterations(this.iterations)
+        .interpolation(ImageInterpolation.Low)
         .width(340)
         .height(240)
         .margin({ top: 100 })

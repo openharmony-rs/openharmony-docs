@@ -4,14 +4,12 @@
 
 > **说明：**
  >
- > - 该组件从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
- >
- > - 该组件仅可在Stage模型下使用。
- >
- > - 如果Dialog设置[通用属性](../arkts-components/arkts-arkui-common-comp.md)和[通用事件](../arkts-components/arkts-arkui-common-comp.md)，编译工具链会额外生
+ > - 如果Dialog设置通用属性和通用事件，编译工具链会额外生
  > 成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到Dialog本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议Dialog设置通用属性和通用事件。
 
+## 子组件
 
+无
 
 ## 导入模块
 
@@ -31,7 +29,7 @@ import { AlertDialog, ButtonOptions, ConfirmDialog, LoadingDialog, SelectDialog,
 
 | 名称 | 说明 |
 | --- | --- |
-| [AlertDialog](arkts-arkui-arkui-advanced-dialog-alertdialog-s.md) | 操作确认类弹出框，用于在触发一个将产生严重后果的不可逆操作（如删除、重置、取消编辑、停止等）时进行确认。 |
+| [AlertDialog](arkts-arkui-arkui-advanced-dialog-alertdialog-s.md) | 警告类弹出框，用于在触发一个将产生严重后果的不可逆操作（如删除、重置、取消编辑、停止等）时进行警告。 |
 | [ConfirmDialog](arkts-arkui-arkui-advanced-dialog-confirmdialog-s.md) | 信息确认类弹出框，用于在操作未正确执行（如网络错误、电池电量过低），或未正确操作时（如指纹录入）反馈错误或提示信息。 |
 | [CustomContentDialog](arkts-arkui-arkui-advanced-dialog-customcontentdialog-s.md) | 自定义内容区弹出框，同时支持定义操作区按钮样式。 |
 | [LoadingDialog](arkts-arkui-arkui-advanced-dialog-loadingdialog-s.md) | 进度加载类弹出框，用于显示操作执行中的提示信息。 |

@@ -66,7 +66,7 @@ ID of the OS account to create. If this parameter is not specified, the system a
 
 **Type:** number
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 

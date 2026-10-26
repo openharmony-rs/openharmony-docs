@@ -4400,9 +4400,9 @@ struct SheetMaterialExample {
 
 ### 示例11（半模态设置标题栏悬浮模式）
 
-该示例通过titleBarHoverMode属性设置半模态标题栏为STACK堆叠模式，标题栏悬浮在内容区上方。
+该示例通过titleBarHoverMode属性演示不同半模态标题栏悬浮模式（[SheetTitleBarHoverMode](arkts-arkui-common-comp-sheettitlebarhovermode-e.md)）的效果。
 
-从API版本26.0.1开始，[SheetOptions](arkts-arkui-common-comp-sheetoptions-i.md)新增titleBarHoverMode属性。
+从API版本26.0.1开始，[SheetOptions](arkts-arkui-common-comp-sheetoptions-i.md)新增titleBarHoverMode属性。从API版本26.1.0开始，SheetTitleBarHoverMode中新增[SAFE_AREA_PADDING](arkts-arkui-common-comp-sheettitlebarhovermode-e.md)枚举值。
 
 
 
@@ -4410,8 +4410,10 @@ struct SheetMaterialExample {
 // xxx.ets
 @Entry
 @Component
-struct SheetMaterialExample {
-  @State isShow: boolean = false;
+struct SheetTitleBarHoverModeDemo {
+  @State isShowStandard: boolean = false;
+  @State isShowStack: boolean = false;
+  @State isShowSafeAreaPadding: boolean = false;
 
   @Builder
   myBuilder() {
@@ -4447,16 +4449,38 @@ struct SheetMaterialExample {
   build() {
     Stack() {
       Column() {
-        Button('拉起半模态')
+        Button('STANDARD')
           .onClick(() => {
-            this.isShow = true;
+            this.isShowStandard = true;
           })
           .fontSize(20)
           .margin(10)
-          .bindSheet($$this.isShow, this.myBuilder(), {
+          .bindSheet($$this.isShowStandard, this.myBuilder(), {
             height: SheetSize.MEDIUM,
-            title: { title: '标题' },
+            title: { title: 'title standard' },
+            titleBarHoverMode: SheetTitleBarHoverMode.STANDARD,
+          })
+        Button('STACK')
+          .onClick(() => {
+            this.isShowStack = true;
+          })
+          .fontSize(20)
+          .margin(10)
+          .bindSheet($$this.isShowStack, this.myBuilder(), {
+            height: SheetSize.MEDIUM,
+            title: { title: 'title stack' },
             titleBarHoverMode: SheetTitleBarHoverMode.STACK,
+          })
+        Button('SAFE_AREA_PADDING')
+          .onClick(() => {
+            this.isShowSafeAreaPadding = true;
+          })
+          .fontSize(20)
+          .margin(10)
+          .bindSheet($$this.isShowSafeAreaPadding, this.myBuilder(), {
+            height: SheetSize.MEDIUM,
+            title: { title: 'title safeArea' },
+            titleBarHoverMode: SheetTitleBarHoverMode.SAFE_AREA_PADDING,
           })
       }
       .justifyContent(FlexAlign.Center)
@@ -14831,6 +14855,8 @@ struct ScrollExample {
 
 ListDataSource说明及完整代码参考[示例1（添加滚动事件）](./ts-container-list.md#示例1添加滚动事件)。
 
+
+
 ```TypeScript
 // xxx.ets
 import { ListDataSource } from './ListDataSource';
@@ -14876,6 +14902,80 @@ struct ListExample {
           this.scrollBarMargin = { start: LengthMetrics.vp(15), end: LengthMetrics.vp(100) };
         }).margin({ top: 200, left: 20 })
     }.width('100%').height('100%').backgroundColor(0xDCDCDC).padding({ top: 5 })
+  }
+}
+```
+
+### 示例5（设置鼠标左键按下拖动滚动）
+
+该示例通过设置[enableScrollWithMouse](arkts-arkui-common-comp-scrollablecommonmethod-c.md#enablescrollwithmouse)属性（从API版本26.0.0开始新增），实现了鼠标左键按下拖动滚动的效果。属性初始值设置为undefined，表示使用默认效果。
+
+ListDataSource说明及完整代码参考[示例1（添加滚动事件）](./ts-container-list.md#示例1添加滚动事件)。
+
+```TypeScript
+// xxx.ets
+import { ListDataSource } from './ListDataSource';
+
+@Entry
+@Component
+struct Index {
+  private verticalData: ListDataSource = new ListDataSource([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+  private horizontalData: ListDataSource = new ListDataSource([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+  @State verticalMouseScroll: boolean | undefined = undefined;
+  @State horizontalMouseScroll: boolean | undefined = undefined;
+
+  build() {
+    Column({ space: 12 }) {
+      Button(`enableScrollWithMouse(vertical): ${this.verticalMouseScroll}`)
+        .onClick(() => {
+          this.verticalMouseScroll = !this.verticalMouseScroll;
+        }).margin({ top: 40 })
+
+      List({ space: 10 }) {
+        LazyForEach(this.verticalData, (item: number) => {
+          ListItem() {
+            Text(item.toString())
+              .width('100%')
+              .height(80)
+              .fontSize(16)
+              .textAlign(TextAlign.Center)
+              .borderRadius(10)
+              .backgroundColor(0xFFFFFF)
+          }
+        }, (item: number) => item.toString())
+      }
+      .listDirection(Axis.Vertical)
+      .enableScrollWithMouse(this.verticalMouseScroll)
+      .height(190)
+      .width('90%')
+
+      Button(`enableScrollWithMouse(horizontal): ${this.horizontalMouseScroll}`)
+        .onClick(() => {
+          this.horizontalMouseScroll = !this.horizontalMouseScroll;
+        }).margin({ top: 40 })
+
+      List({ space: 10 }) {
+        LazyForEach(this.horizontalData, (item: number) => {
+          ListItem() {
+            Text(item.toString())
+              .width(160)
+              .height(80)
+              .fontSize(16)
+              .textAlign(TextAlign.Center)
+              .borderRadius(10)
+              .backgroundColor(0xFFFFFF)
+          }
+        }, (item: number) => item.toString())
+      }
+      .listDirection(Axis.Horizontal)
+      .enableScrollWithMouse(this.horizontalMouseScroll)
+      .height(100)
+      .width('90%')
+    }
+    .width('100%')
+    .height('100%')
+    .backgroundColor(0xDCDCDC)
+    .padding({ top: 12, bottom: 12 })
   }
 }
 ```

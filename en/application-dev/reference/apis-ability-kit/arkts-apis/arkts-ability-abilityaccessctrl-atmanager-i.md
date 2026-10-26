@@ -205,11 +205,11 @@ isPermissionSupported(permissionName: Permissions): boolean
 
 Checks whether the specified permission is supported on the current device. This API returns the result synchronously and can be called before requesting permissions to decide whether to show the authorization dialog.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-AtManager-isPermissionSupported(permissionName: Permissions): boolean--><!--Device-AtManager-isPermissionSupported(permissionName: Permissions): boolean-End-->
 

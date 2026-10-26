@@ -175,21 +175,22 @@ QR code or barcode.
 **Examples**
 
 ```TypeScript
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+async function example() {
   try {
     let recommendOptions: photoAccessHelper.RecommendationOptions = {
       recommendationType: photoAccessHelper.RecommendationType.ID_CARD
-    }
+    };
     let options: photoAccessHelper.PhotoSelectOptions = {
       MIMEType: photoAccessHelper.PhotoViewMIMETypes.IMAGE_TYPE,
       maxSelectNumber: 1,
       recommendationOptions: recommendOptions
-    }
+    };
     let photoPicker = new photoAccessHelper.PhotoViewPicker();
-    photoPicker.select(options).then((PhotoSelectResult: photoAccessHelper.PhotoSelectResult) => {
-      console.info('PhotoViewPicker.select successfully, PhotoSelectResult uri: ' + JSON.stringify(PhotoSelectResult));
+    photoPicker.select(options).then((photoSelectResult: photoAccessHelper.PhotoSelectResult) => {
+      console.info('PhotoViewPicker.select successfully, photoSelectResult uri: ' + JSON.stringify(photoSelectResult));
     }).catch((err: BusinessError) => {
       console.error(`PhotoViewPicker.select failed with err: ${err.code}, ${err.message}`);
     });

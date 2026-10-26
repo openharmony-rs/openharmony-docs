@@ -6,7 +6,7 @@ declare enum CalendarFirstDayOfWeek
 
 日历选择器每周起始日的枚举类型。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 <!--Device-unnamed-declare enum CalendarFirstDayOfWeek--><!--Device-unnamed-declare enum CalendarFirstDayOfWeek-End-->
 
@@ -20,11 +20,11 @@ FRI = 5
 
 周五。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-CalendarFirstDayOfWeek-FRI = 5--><!--Device-CalendarFirstDayOfWeek-FRI = 5-End-->
 
@@ -38,11 +38,11 @@ LOCAL = 0
 
 跟随系统区域变化。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-CalendarFirstDayOfWeek-LOCAL = 0--><!--Device-CalendarFirstDayOfWeek-LOCAL = 0-End-->
 
@@ -56,11 +56,11 @@ MON = 1
 
 周一。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-CalendarFirstDayOfWeek-MON = 1--><!--Device-CalendarFirstDayOfWeek-MON = 1-End-->
 
@@ -74,11 +74,11 @@ SAT = 6
 
 周六。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-CalendarFirstDayOfWeek-SAT = 6--><!--Device-CalendarFirstDayOfWeek-SAT = 6-End-->
 
@@ -92,11 +92,11 @@ SUN = 7
 
 周日。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-CalendarFirstDayOfWeek-SUN = 7--><!--Device-CalendarFirstDayOfWeek-SUN = 7-End-->
 
@@ -110,11 +110,11 @@ THU = 4
 
 周四。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-CalendarFirstDayOfWeek-THU = 4--><!--Device-CalendarFirstDayOfWeek-THU = 4-End-->
 
@@ -128,11 +128,11 @@ TUE = 2
 
 周二。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-CalendarFirstDayOfWeek-TUE = 2--><!--Device-CalendarFirstDayOfWeek-TUE = 2-End-->
 
@@ -146,11 +146,11 @@ WED = 3
 
 周三。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-CalendarFirstDayOfWeek-WED = 3--><!--Device-CalendarFirstDayOfWeek-WED = 3-End-->
 

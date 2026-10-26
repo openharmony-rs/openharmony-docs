@@ -16,4 +16,4 @@ Enumerates the page update types. A page update event is triggered by the access
 | --- | --- |
 | 'pageContentUpdate' | Page content updated. |
 | 'pageStateUpdate' | Page state updated. |
-| 'pageStatePreUpdate' | Indicates that the page status is about to be updated.<br>**Since:** 26.2.0 |
+| 'pageStatePreUpdate' | Indicates that the page status is about to be updated.<br>**Since:** 26.1.0 |

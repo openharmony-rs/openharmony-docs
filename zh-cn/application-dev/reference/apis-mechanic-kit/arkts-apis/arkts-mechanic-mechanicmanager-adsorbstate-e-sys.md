@@ -6,7 +6,7 @@ export enum AdsorbState
 
 手机吸附状态
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 <!--Device-mechanicManager-export enum AdsorbState--><!--Device-mechanicManager-export enum AdsorbState-End-->
 
@@ -22,7 +22,7 @@ ADSORBED = 0
 
 吸附态
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -40,7 +40,7 @@ UNADSORBED = 1
 
 设备未被吸附
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -58,7 +58,7 @@ UNKNOWN = -1
 
 未知状态
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

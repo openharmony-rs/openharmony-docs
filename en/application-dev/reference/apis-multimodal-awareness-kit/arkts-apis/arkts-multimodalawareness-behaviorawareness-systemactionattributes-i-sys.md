@@ -6,7 +6,7 @@ export interface SystemActionAttributes
 
 System control scenario attributes.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 <!--Device-behaviorAwareness-export interface SystemActionAttributes--><!--Device-behaviorAwareness-export interface SystemActionAttributes-End-->
 
@@ -30,7 +30,7 @@ Adjustment direction.
 
 **Type:** [AdjustmentDirection](arkts-multimodalawareness-behaviorawareness-adjustmentdirection-e-sys.md)
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -50,7 +50,7 @@ Application name.
 
 **Type:** string
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -70,7 +70,7 @@ Discriminator field, fixed as 'systemAction'.
 
 **Type:** 'systemAction'
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -90,7 +90,7 @@ Operation target (on/off/toggle).
 
 **Type:** [Operation](arkts-multimodalawareness-behaviorawareness-operation-e-sys.md)
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -110,7 +110,7 @@ Application package name.
 
 **Type:** string
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -130,7 +130,7 @@ Sound mode.
 
 **Type:** [SoundMode](arkts-multimodalawareness-behaviorawareness-soundmode-e-sys.md)
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -150,7 +150,7 @@ Absolute value indicates the fixed value of the brightness or volume. Unit: Perc
 
 **Type:** number
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 

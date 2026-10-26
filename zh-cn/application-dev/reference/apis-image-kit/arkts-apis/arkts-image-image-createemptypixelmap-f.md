@@ -66,8 +66,8 @@ function createEmptyPixelMap() {
   try {
     const pixelMap = image.createEmptyPixelMap(config);
     console.info('Succeeded in creating the empty PixelMap.');
-  } catch (e) {
-    const err = e as BusinessError;
+  } catch (error) {
+    const err = error as BusinessError;
     console.error(`Failed to create the empty PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }

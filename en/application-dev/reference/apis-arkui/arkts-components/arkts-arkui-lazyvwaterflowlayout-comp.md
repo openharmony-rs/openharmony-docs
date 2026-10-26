@@ -22,6 +22,12 @@ Construct the lazy vertical waterflow attribute.
 
 ## Summary
 
+### Classes
+
+| Name | Description |
+| --- | --- |
+| [LazyWaterFlowLayoutAttribute](arkts-arkui-lazyvwaterflowlayout-comp-lazywaterflowlayoutattribute-c.md) | Defines the lazy waterflow layout attribute. |
+
 ## Examples
 
 ### Example 1: Implementing Lazy-Loading Waterfall Layout

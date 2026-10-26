@@ -721,13 +721,13 @@ struct HeatDistortionExample {
 mapColorByBrightness(colors: Array<Color>, positions: Array<number>): Filter
 ```
 
-Performs color gradient mapping on the image based on its brightness. The mapping is based on the input colors and their corresponding brightness anchor positions. Darker areas of the image correspond to smaller brightness values; for example, black areas are the darkest with a brightness value of 0.0, while white areas are the brightest with a brightness value of 1.0. The color mapping is cyclic; for example, given 5 colors sorted by brightness anchor position in ascending order, the color mapping sequence is 1-->2-->3-->4-->5-->1.
+Maps the brightness distribution of an image to a specified color gradient effect based on the input color array and corresponding brightness anchor positions. The color mapping is cyclic; for example, given 5 colors sorted by brightness anchor position in ascending order, the color mapping sequence is the 1st, 2nd, 3rd, 4th, 5th, and then cycles back to the 1st.
 
 > **NOTE:** 
 > 
 > It is recommended to use as a foreground filter.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -741,8 +741,8 @@ Performs color gradient mapping on the image based on its brightness. The mappin
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| colors | Array&lt;Color&gt; | Yes | The colors to apply. Each color value must be greater than or equal to 0.0, with a recommended range of [0, 1]. Values less than 0 have no effect. Color values greater than 1.0 are treated as 1.0. The array length range is [1, 5]. When the length is less than 1, the effect does not take effect; when the length is 1, a solid color effect is applied; when the length is greater than 5, the effect applies the first 5 colors. |
-| positions | Array&lt;number&gt; | Yes | The brightness anchor positions corresponding to each color. The array length must be equal to the length of colors; otherwise, the effect does not take effect. The value range is [0.0, 1.0], and values outside the range are clamped to the boundary values. |
+| colors | Array&lt;Color&gt; | Yes | The color array to apply. Each component value of each color (including alpha) participates in the mapping, and must be greater than or equal to 0.0, with a recommended range of [0.0, 1.0]. When the value is less than 0.0, no effect is applied; when the value is greater than 1.0, 1.0 is used. The array length ranges from 1 to 5. When the array length is less than 1, no effect is applied; when the array length is 1, a solid color effect is applied; when the array length is greater than 5, the effect only applies the first 5 colors. |
+| positions | Array&lt;number&gt; | Yes | The brightness anchor position corresponding to each color. A smaller brightness value corresponds to a darker area in the image, where 0.0 represents the darkest (black) and 1.0 represents the brightest (white). The value range is [0.0, 1.0], and values outside the range are clamped to the boundary values. The array length must match the length of the colors array; if they do not match, no effect is applied. |
 
 **Return value:**
 

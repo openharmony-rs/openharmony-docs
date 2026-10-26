@@ -10,7 +10,6 @@ For details about the audio and video recording demo, see [Audio Recording](../.
 
 > **NOTE:** 
 > 
-> 
 > To use the camera to record videos, the camera module is required. For details about how to use the APIs
 > provided by the camera module, see [Camera Management](../../apis-camera-kit/arkts-apis/arkts-camera-multimedia-camera.md).
 
@@ -299,7 +298,7 @@ This API can be called only after [prepare()](#prepare-1) is called.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [5400102](../../apis-media-kit/errorcode-media.md#5400102-unsupported-operation) | Operate not permit. Return by callback. |
+| [5400102](../../apis-media-kit/errorcode-media.md#5400102-unsupported-operation) | Operation not allowed. Return by callback. |
 | [5400103](../../apis-media-kit/errorcode-media.md#5400103-io-error) | IO error. Return by callback. |
 | [5400105](../../apis-media-kit/errorcode-media.md#5400105-play-service-dead) | Service died. Return by callback. |
 
@@ -346,7 +345,7 @@ This API can be called only after [prepare()](#prepare-2) is called.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [5400102](../../apis-media-kit/errorcode-media.md#5400102-unsupported-operation) | Operate not permit. Return by promise. |
+| [5400102](../../apis-media-kit/errorcode-media.md#5400102-unsupported-operation) | Operation not allowed. Return by promise. |
 | [5400103](../../apis-media-kit/errorcode-media.md#5400103-io-error) | IO error. Return by promise. |
 | [5400105](../../apis-media-kit/errorcode-media.md#5400105-play-service-dead) | Service died. Return by promise. |
 
@@ -491,7 +490,7 @@ This API can be called only after the [prepare()](#prepare-1) API is called.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [5400102](../../apis-media-kit/errorcode-media.md#5400102-unsupported-operation) | Operate not permit. Return by callback. |
+| [5400102](../../apis-media-kit/errorcode-media.md#5400102-unsupported-operation) | Operation not allowed. Return by callback. |
 | [5400103](../../apis-media-kit/errorcode-media.md#5400103-io-error) | IO error. Return by callback. |
 | [5400105](../../apis-media-kit/errorcode-media.md#5400105-play-service-dead) | Service died. Return by callback. |
 
@@ -542,7 +541,7 @@ This API can be called only after the [prepare()](#prepare-2) API is called.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [5400102](../../apis-media-kit/errorcode-media.md#5400102-unsupported-operation) | Operate not permit. Return by promise. |
+| [5400102](../../apis-media-kit/errorcode-media.md#5400102-unsupported-operation) | Operation not allowed. Return by promise. |
 | [5400103](../../apis-media-kit/errorcode-media.md#5400103-io-error) | IO error. Return by promise. |
 | [5400105](../../apis-media-kit/errorcode-media.md#5400105-play-service-dead) | Service died. Return by promise. |
 
@@ -894,7 +893,7 @@ This API can be called only after the [start()](#start-1) API is called. You can
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [5400102](../../apis-media-kit/errorcode-media.md#5400102-unsupported-operation) | Operate not permit. Return by callback. |
+| [5400102](../../apis-media-kit/errorcode-media.md#5400102-unsupported-operation) | Operation not allowed. Return by callback. |
 | [5400103](../../apis-media-kit/errorcode-media.md#5400103-io-error) | IO error. Return by callback. |
 | [5400105](../../apis-media-kit/errorcode-media.md#5400105-play-service-dead) | Service died. Return by callback. |
 
@@ -940,7 +939,7 @@ This API can be called only after the [start()](#start) API is called. You can c
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [5400102](../../apis-media-kit/errorcode-media.md#5400102-unsupported-operation) | Operate not permit. Return by promise. |
+| [5400102](../../apis-media-kit/errorcode-media.md#5400102-unsupported-operation) | Operation not allowed. Return by promise. |
 | [5400103](../../apis-media-kit/errorcode-media.md#5400103-io-error) | IO error. Return by promise. |
 | [5400105](../../apis-media-kit/errorcode-media.md#5400105-play-service-dead) | Service died. Return by promise. |
 
@@ -986,7 +985,7 @@ Sets audio and video recording parameters. This API uses an asynchronous callbac
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. Return by callback. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
-| [5400102](../../apis-media-kit/errorcode-media.md#5400102-unsupported-operation) | Operate not permit. Return by callback. |
+| [5400102](../../apis-media-kit/errorcode-media.md#5400102-unsupported-operation) | Operation not allowed. Return by callback. |
 | [5400105](../../apis-media-kit/errorcode-media.md#5400105-play-service-dead) | Service died. Return by callback. |
 
 **Examples**
@@ -1064,7 +1063,7 @@ Sets audio and video recording parameters. This API uses a promise to return the
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. Return by promise. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
-| [5400102](../../apis-media-kit/errorcode-media.md#5400102-unsupported-operation) | Operate not permit. Return by promise. |
+| [5400102](../../apis-media-kit/errorcode-media.md#5400102-unsupported-operation) | Operation not allowed. Return by promise. |
 | [5400105](../../apis-media-kit/errorcode-media.md#5400105-play-service-dead) | Service died. Return by promise. |
 
 **Examples**
@@ -1301,7 +1300,7 @@ This API can be called only after the [pause()](#pause-1) API is called.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [5400102](../../apis-media-kit/errorcode-media.md#5400102-unsupported-operation) | Operate not permit. Return by callback. |
+| [5400102](../../apis-media-kit/errorcode-media.md#5400102-unsupported-operation) | Operation not allowed. Return by callback. |
 | [5400103](../../apis-media-kit/errorcode-media.md#5400103-io-error) | IO error. Return by callback. |
 | [5400105](../../apis-media-kit/errorcode-media.md#5400105-play-service-dead) | Service died. Return by callback. |
 
@@ -1347,7 +1346,7 @@ This API can be called only after the [pause()](#pause) API is called.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [5400102](../../apis-media-kit/errorcode-media.md#5400102-unsupported-operation) | Operate not permit. Return by promise. |
+| [5400102](../../apis-media-kit/errorcode-media.md#5400102-unsupported-operation) | Operation not allowed. Return by promise. |
 | [5400103](../../apis-media-kit/errorcode-media.md#5400103-io-error) | IO error. Return by promise. |
 | [5400105](../../apis-media-kit/errorcode-media.md#5400105-play-service-dead) | Service died. Return by promise. |
 
@@ -1485,7 +1484,7 @@ For audio-only recording, this API can be called only after the [prepare()](#pre
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [5400102](../../apis-media-kit/errorcode-media.md#5400102-unsupported-operation) | Operate not permit. Return by callback. |
+| [5400102](../../apis-media-kit/errorcode-media.md#5400102-unsupported-operation) | Operation not allowed. Return by callback. |
 | [5400103](../../apis-media-kit/errorcode-media.md#5400103-io-error) | IO error. Return by callback. |
 | [5400105](../../apis-media-kit/errorcode-media.md#5400105-play-service-dead) | Service died. Return by callback. |
 
@@ -1531,7 +1530,7 @@ For audio-only recording, this API can be called only after the [prepare()](#pre
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [5400102](../../apis-media-kit/errorcode-media.md#5400102-unsupported-operation) | Operate not permit. Return by promise. |
+| [5400102](../../apis-media-kit/errorcode-media.md#5400102-unsupported-operation) | Operation not allowed. Return by promise. |
 | [5400103](../../apis-media-kit/errorcode-media.md#5400103-io-error) | IO error. Return by promise. |
 | [5400105](../../apis-media-kit/errorcode-media.md#5400105-play-service-dead) | Service died. Return by promise. |
 
@@ -1576,7 +1575,7 @@ For audio-only recording, you can call [prepare()](#prepare-1) again for re -rec
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [5400102](../../apis-media-kit/errorcode-media.md#5400102-unsupported-operation) | Operate not permit. Return by callback. |
+| [5400102](../../apis-media-kit/errorcode-media.md#5400102-unsupported-operation) | Operation not allowed. Return by callback. |
 | [5400103](../../apis-media-kit/errorcode-media.md#5400103-io-error) | IO error. Return by callback. |
 | [5400105](../../apis-media-kit/errorcode-media.md#5400105-play-service-dead) | Service died. Return by callback. |
 
@@ -1624,7 +1623,7 @@ For audio-only recording, you can call [prepare()](#prepare-2) again for re-reco
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [5400102](../../apis-media-kit/errorcode-media.md#5400102-unsupported-operation) | Operate not permit. Return by promise. |
+| [5400102](../../apis-media-kit/errorcode-media.md#5400102-unsupported-operation) | Operation not allowed. Return by promise. |
 | [5400103](../../apis-media-kit/errorcode-media.md#5400103-io-error) | IO error. Return by promise. |
 | [5400105](../../apis-media-kit/errorcode-media.md#5400105-play-service-dead) | Service died. Return by promise. |
 

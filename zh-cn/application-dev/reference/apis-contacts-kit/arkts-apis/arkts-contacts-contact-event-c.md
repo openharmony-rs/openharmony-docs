@@ -8,7 +8,7 @@ class Event
 
 **起始版本：** 7
 
-**废弃版本：** 26.2.0
+**废弃版本：** 26.1.0
 
 **替代接口：** [SignificantDate](arkts-contacts-contact-significantdate-c.md)
 
@@ -34,7 +34,7 @@ static readonly CUSTOM_LABEL: 0
 
 **起始版本：** 7
 
-**废弃版本：** 26.2.0
+**废弃版本：** 26.1.0
 
 **替代接口：** [DATE_TYPE_OTHER](arkts-contacts-contact-significantdatetype-e.md#date_type_other)
 
@@ -56,7 +56,7 @@ static readonly EVENT_ANNIVERSARY: 1
 
 **起始版本：** 7
 
-**废弃版本：** 26.2.0
+**废弃版本：** 26.1.0
 
 **替代接口：** [DATE_TYPE_ANNIVERSARY](arkts-contacts-contact-significantdatetype-e.md#date_type_anniversary)
 
@@ -78,7 +78,7 @@ static readonly EVENT_BIRTHDAY: 3
 
 **起始版本：** 7
 
-**废弃版本：** 26.2.0
+**废弃版本：** 26.1.0
 
 **替代接口：** [DATE_TYPE_BIRTHDAY](arkts-contacts-contact-significantdatetype-e.md#date_type_birthday)
 
@@ -100,7 +100,7 @@ static readonly EVENT_OTHER: 2
 
 **起始版本：** 7
 
-**废弃版本：** 26.2.0
+**废弃版本：** 26.1.0
 
 **替代接口：** [DATE_TYPE_OTHER](arkts-contacts-contact-significantdatetype-e.md#date_type_other)
 
@@ -122,7 +122,7 @@ eventDate: string
 
 **起始版本：** 7
 
-**废弃版本：** 26.2.0
+**废弃版本：** 26.1.0
 
 **替代接口：** [dateValue](arkts-contacts-contact-significantdate-c.md#datevalue)
 
@@ -144,7 +144,7 @@ static readonly INVALID_LABEL_ID: -1
 
 **起始版本：** 7
 
-**废弃版本：** 26.2.0
+**废弃版本：** 26.1.0
 
 **替代接口：** [DATE_TYPE_OTHER](arkts-contacts-contact-significantdatetype-e.md#date_type_other)
 
@@ -166,7 +166,7 @@ labelId?: number
 
 **起始版本：** 7
 
-**废弃版本：** 26.2.0
+**废弃版本：** 26.1.0
 
 **替代接口：** [dateType](arkts-contacts-contact-significantdate-c.md#datetype)
 
@@ -188,7 +188,7 @@ labelName?: string
 
 **起始版本：** 7
 
-**废弃版本：** 26.2.0
+**废弃版本：** 26.1.0
 
 **替代接口：** [dateName](arkts-contacts-contact-significantdate-c.md#datename)
 

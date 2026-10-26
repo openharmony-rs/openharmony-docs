@@ -24,6 +24,13 @@ ArcSwiper(controller?: ArcSwiperController)
 
 ## 汇总
 
+### 类
+
+| 名称 | 说明 |
+| --- | --- |
+| [ArcDotIndicator](arkts-arkui-arcswiper-comp-arcdotindicator-c.md) | 提供弧形圆点指示器属性及功能。 |
+| [ArcSwiperController](arkts-arkui-arcswiper-comp-arcswipercontroller-c.md) | ArcSwiper容器组件的控制器，可以将此对象绑定至ArcSwiper组件，可以通过它控制翻页。 |
+
 ### 接口
 
 | 名称 | 说明 |

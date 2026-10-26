@@ -28,7 +28,7 @@ Indicates whether to hide the stop button in the live window for a background ta
 
 **Type:** boolean
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 

@@ -486,7 +486,7 @@ Used by the JSON.stringify method to enable the transformation of an object's da
 ## toLocaleDateString
 
 ```TypeScript
-toLocaleDateString(locales?: string[], options?: Intl.DateTimeFormatOptions): string
+toLocaleDateString(locales?: string | string[], options?: Intl.DateTimeFormatOptions): string
 ```
 
 Converts a date to a string by using the current or specified locale.
@@ -497,13 +497,13 @@ Converts a date to a string by using the current or specified locale.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| locales | string[] | No |  |
+| locales | string &#124; string[] | No |  |
 | options | [Intl.DateTimeFormatOptions](arkts-intl-datetimeformatoptions-i.md) | No |  |
 
 ## toLocaleString
 
 ```TypeScript
-toLocaleString(locales?: string[], options?: Intl.DateTimeFormatOptions): string
+toLocaleString(locales?: string | string[], options?: Intl.DateTimeFormatOptions): string
 ```
 
 Converts a date and time to a string by using the current or specified locale.
@@ -514,13 +514,13 @@ Converts a date and time to a string by using the current or specified locale.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| locales | string[] | No |  |
+| locales | string &#124; string[] | No |  |
 | options | [Intl.DateTimeFormatOptions](arkts-intl-datetimeformatoptions-i.md) | No |  |
 
 ## toLocaleTimeString
 
 ```TypeScript
-toLocaleTimeString(locales?: string[], options?: Intl.DateTimeFormatOptions): string
+toLocaleTimeString(locales?: string | string[], options?: Intl.DateTimeFormatOptions): string
 ```
 
 Converts a time to a string by using the current or specified locale.
@@ -531,7 +531,7 @@ Converts a time to a string by using the current or specified locale.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| locales | string[] | No |  |
+| locales | string &#124; string[] | No |  |
 | options | [Intl.DateTimeFormatOptions](arkts-intl-datetimeformatoptions-i.md) | No |  |
 
 ## toString

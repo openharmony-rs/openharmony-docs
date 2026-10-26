@@ -4,7 +4,7 @@
 interface AtlasImage
 ```
 
-定义精灵图序列帧动画的图集帧参数。
+定义精灵图集序列帧动画的图集帧参数。
 
 **起始版本：** 26.0.1
 
@@ -26,7 +26,7 @@ import { drawing } from '@kit.ArkGraphics2D';
 atlasImage: image.PixelMap
 ```
 
-精灵图集图片。通过image模块创建，为PixelMap实例。
+精灵图集图片。
 
 **类型：** [image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)
 
@@ -70,7 +70,7 @@ cols: number
 frameHeight: number
 ```
 
-单帧的高度。取值范围为[1, 8192]，超出范围的值将在内部被截断。
+单帧的高度，单位为px。取值范围为[1, 8192]，超出范围的值将在内部被截断。
 
 **类型：** number
 
@@ -114,7 +114,7 @@ frameIndex: number
 frameWidth: number
 ```
 
-单帧的宽度。取值范围为[1, 8192]，超出范围的值将在内部被截断。
+单帧的宽度，单位为px。取值范围为[1, 8192]，超出范围的值将在内部被截断。
 
 **类型：** number
 
@@ -154,7 +154,7 @@ mode: AtlasInterpolationMode
 padding: number
 ```
 
-帧之间的间距，用于防止帧边界处的纹理渗透。取值范围为[0, 64]，超出范围的值将在内部被截断。
+帧之间的间距，单位为px，用于防止帧边界处的纹理渗透。取值范围为[0, 64]，超出范围的值将在内部被截断。
 
 **类型：** number
 

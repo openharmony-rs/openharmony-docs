@@ -1,12 +1,12 @@
 # KVObject
 
 ```TypeScript
-type KVObject = { [key: string]: number | string | boolean | [] | KVObject }
+type KVObject = { [key: string]: number | string | boolean | [] | KVObject}
 ```
 
 以键值对形式存储信息，符合JSON格式。
 
-**类型：** { [key: string]: number | string | boolean | [] | KVObject }
+**类型：** { [key: string]: number | string | boolean | [] | KVObject}
 
 **起始版本：** 8
 

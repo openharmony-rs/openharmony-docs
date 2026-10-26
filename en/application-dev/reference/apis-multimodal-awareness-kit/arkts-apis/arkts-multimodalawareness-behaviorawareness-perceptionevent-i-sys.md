@@ -6,7 +6,7 @@ export interface PerceptionEvent<T = BehaviorAwarenessPayload>
 
 Aware event data. Events generated after MSDP convergent awareness clustering are pushed to the service side.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 <!--Device-behaviorAwareness-export interface PerceptionEvent<T = BehaviorAwarenessPayload>--><!--Device-behaviorAwareness-export interface PerceptionEvent<T = BehaviorAwarenessPayload>-End-->
 
@@ -30,7 +30,7 @@ Confidence.The value 0 indicates no confidence, and the value 100 indicates comp
 
 **Type:** number
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -50,7 +50,7 @@ Perceived domain type.
 
 **Type:** [PerceptionDomain](arkts-multimodalawareness-behaviorawareness-perceptiondomain-e-sys.md)
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -70,7 +70,7 @@ Generate the timestamp. Unit: milliseconds.
 
 **Type:** number
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -90,7 +90,7 @@ Domain-specific data.
 
 **Type:** T
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -110,7 +110,7 @@ Unique ID of an awareness event.
 
 **Type:** string
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 

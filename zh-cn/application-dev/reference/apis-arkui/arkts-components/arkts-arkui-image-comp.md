@@ -171,6 +171,12 @@ Image(src: PixelMap | ResourceStr | DrawableDescriptor,
 
 ## 汇总
 
+### 类
+
+| 名称 | 说明 |
+| --- | --- |
+| [ColorContent](arkts-arkui-image-comp-colorcontent-c.md) | 指定颜色填充内容。 |
+
 ### 接口
 
 | 名称 | 说明 |

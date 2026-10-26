@@ -4,8 +4,6 @@
 export declare struct LoadingDialog
 ```
 
-LoadingDialog({Controller: CustomDialogController, content?: ResourceStr, theme?: Theme | CustomTheme, themeColorMode?: ThemeColorMode})
-
 Displays a loading dialog box to inform the user of the operation progress.
 
 **Since:** 10

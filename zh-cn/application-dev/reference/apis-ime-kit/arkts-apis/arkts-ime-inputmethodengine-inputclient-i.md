@@ -838,6 +838,146 @@ let text: string = inputClient.getForwardSync(length);
 console.info(`Succeeded in getting forward, text: ${text}`);
 ```
 
+## getLeftRichText
+
+```TypeScript
+getLeftRichText(length: number): Promise<InputMethodRichText>
+```
+
+获取光标前指定长度的富文本。该接口使用promise返回结果。<br> <br>  
+> **注意** <br> <br> &gt;如果输入法应用当前绑定的编辑框是ArkUI富文本组件，则富文本返回内容。如果绑定的组件不是ArkUI富文本组件，则会桥接到文本实现。<br> <br> &gt;最大可获取的富文本总长度为128KB，超过这个限制将请求失败。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-InputClient-getLeftRichText(length: int): Promise<InputMethodRichText>--><!--Device-InputClient-getLeftRichText(length: int): Promise<InputMethodRichText>-End-->
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| length | number | 是 | 文本长度，不能小于0。<br>取值应为[0,4096]内的整数。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;[InputMethodRichText](arkts-ime-inputmethodengine-inputmethodrichtext-i.md)&gt; | Promise用于返回指定长度的光标前富文本。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [12800003](../errorcode-inputmethod-framework.md#12800003-客户端应用异常) | 输入法客户端错误。可能原因：1.编辑框没有焦点。2.当前输入法应用没有绑定编辑框。3.ipc由于传输数据量过大或其他原因导致失败。 |
+
+## getLeftRichTextSync
+
+```TypeScript
+getLeftRichTextSync(length: number): InputMethodRichText
+```
+
+获取光标前指定长度的富文本。<br> <br>  
+> **注意** <br> <br> &gt;如果输入法应用当前绑定的编辑框是ArkUI富文本组件，则富文本返回内容。如果绑定的组件不是ArkUI富文本组件，则会桥接到文本实现。<br> <br> &gt;最大可获取的富文本总长度为128KB，超过这个限制将请求失败。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-InputClient-getLeftRichTextSync(length: int): InputMethodRichText--><!--Device-InputClient-getLeftRichTextSync(length: int): InputMethodRichText-End-->
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| length | number | 是 | 文本长度，不能小于0。<br>取值应为[0,4096]内的整数。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| [InputMethodRichText](arkts-ime-inputmethodengine-inputmethodrichtext-i.md) | 光标前指定长度的富文本。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [12800003](../errorcode-inputmethod-framework.md#12800003-客户端应用异常) | 输入法客户端错误。可能原因：1.编辑框没有焦点。2.当前输入法应用没有绑定编辑框。3.ipc由于传输数据量过大或其他原因导致失败。 |
+
+## getRightRichText
+
+```TypeScript
+getRightRichText(length: number): Promise<InputMethodRichText>
+```
+
+获取光标后指定长度的富文本。该接口使用promise返回结果。<br> <br>  
+> **注意** <br> <br> &gt;如果输入法应用当前绑定的编辑框是ArkUI富文本组件，则富文本返回内容。如果绑定的组件不是ArkUI富文本组件，则会桥接到文本实现。<br> <br> &gt;最大可获取的富文本总长度为128KB，超过这个限制将请求失败。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-InputClient-getRightRichText(length: int): Promise<InputMethodRichText>--><!--Device-InputClient-getRightRichText(length: int): Promise<InputMethodRichText>-End-->
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| length | number | 是 | 文本长度，不能小于0。<br>取值应为[0,4096]内的整数。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;[InputMethodRichText](arkts-ime-inputmethodengine-inputmethodrichtext-i.md)&gt; | Promise用于返回指定长度的光标后富文本。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [12800003](../errorcode-inputmethod-framework.md#12800003-客户端应用异常) | 输入法客户端错误。可能原因：1.编辑框没有焦点。2.当前输入法应用没有绑定编辑框。3.ipc由于传输数据量过大或其他原因导致失败。 |
+
+## getRightRichTextSync
+
+```TypeScript
+getRightRichTextSync(length: number): InputMethodRichText
+```
+
+获取光标后指定长度的富文本。<br> <br>  
+> **注意** <br> <br> &gt;如果输入法应用当前绑定的编辑框是ArkUI富文本组件，则富文本返回内容。如果绑定的组件不是ArkUI富文本组件，则会桥接到文本实现。<br> <br> &gt;最大可获取的富文本总长度为128KB，超过这个限制将请求失败。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-InputClient-getRightRichTextSync(length: int): InputMethodRichText--><!--Device-InputClient-getRightRichTextSync(length: int): InputMethodRichText-End-->
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| length | number | 是 | 文本长度，不能小于0。<br>取值应为[0,4096]内的整数。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| [InputMethodRichText](arkts-ime-inputmethodengine-inputmethodrichtext-i.md) | 光标后指定长度的富文本。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [12800003](../errorcode-inputmethod-framework.md#12800003-客户端应用异常) | 输入法客户端错误。可能原因：1.编辑框没有焦点。2.当前输入法应用没有绑定编辑框。3.ipc由于传输数据量过大或其他原因导致失败。 |
+
 ## getTextIndexAtCursor
 
 ```TypeScript

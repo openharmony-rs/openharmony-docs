@@ -37,7 +37,7 @@ elementId?: number
 ## eventType
 
 ```TypeScript
-eventType: accessibility.EventType | accessibility.WindowUpdateTypeTouchGuideType | GestureType | PageUpdateType
+eventType: accessibility.EventType | accessibility.WindowUpdateType | TouchGuideType | GestureType | PageUpdateType
 ```
 
 具体事件类型，用于标识当前无障碍事件的类别。

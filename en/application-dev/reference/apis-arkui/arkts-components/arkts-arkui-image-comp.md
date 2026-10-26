@@ -178,6 +178,12 @@ Obtains an image. The [ImageAIOptions](../arkts-apis/arkts-arkui-imageaioptions-
 
 ## Summary
 
+### Classes
+
+| Name | Description |
+| --- | --- |
+| [ColorContent](arkts-arkui-image-comp-colorcontent-c.md) | Defines the content for color filling. |
+
 ### Interfaces
 
 | Name | Description |

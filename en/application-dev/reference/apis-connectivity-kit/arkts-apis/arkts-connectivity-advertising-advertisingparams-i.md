@@ -32,7 +32,7 @@ Advertising data packet.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-AdvertisingParams-advertisingData: AdvertisingData--><!--Device-AdvertisingParams-advertisingData: AdvertisingData-End-->
 
@@ -52,7 +52,7 @@ Advertising settings.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-AdvertisingParams-advertisingSettings: AdvertisingSettings--><!--Device-AdvertisingParams-advertisingSettings: AdvertisingSettings-End-->
 

@@ -275,11 +275,11 @@ enableScrollWithKeyboard(enabled: boolean | undefined): T
 
 Sets whether to enable scrolling with keyboard arrow keys. When enabled, the component will scroll in response to arrow key presses when focused but not in active focus state.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-ScrollableCommonMethod-enableScrollWithKeyboard(enabled: boolean | undefined): T--><!--Device-ScrollableCommonMethod-enableScrollWithKeyboard(enabled: boolean | undefined): T-End-->
 
@@ -319,7 +319,7 @@ Set whether to support scrolling by dragging with the left mouse button pressed.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enabled | boolean &#124; undefined | Yes | Whether to support scrolling by dragging with the left mouse button pressed. <br>Default value: For API versions earlier than 26.2.0,the defalut value is false. For API versions 26.2.0 and later, the defalut value is true when the scrollable component scrolls horizontally,false otherwise. |
+| enabled | boolean &#124; undefined | Yes | Whether to support scrolling by dragging with the left mouse button pressed. <br>Default value: For API versions earlier than 26.1.0,the defalut value is false. For API versions 26.1.0 and later, the defalut value is true when the scrollable component scrolls horizontally,false otherwise. |
 
 **Return value:**
 

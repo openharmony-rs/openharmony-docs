@@ -15,12 +15,12 @@ Represents the selection result of a **TextPicker** component.
 ## index
 
 ```TypeScript
-index: number[]
+index: number | number[]
 ```
 
 Index of the selected item in the range. The index is zero-based. (For a multi-column picker, **index** is of the array type.)
 
-**Type:** number[]
+**Type:** number &#124; number[]
 
 **Since:** 8
 
@@ -35,7 +35,7 @@ Index of the selected item in the range. The index is zero-based. (For a multi-c
 ## value
 
 ```TypeScript
-value: string[]
+value: string | string[]
 ```
 
 Text of the selected item.
@@ -48,7 +48,7 @@ For an image list, **value** is empty.
 
 The value must be within the range defined by the **range** attribute and cannot contain the escape character (\).
 
-**Type:** string[]
+**Type:** string &#124; string[]
 
 **Since:** 8
 

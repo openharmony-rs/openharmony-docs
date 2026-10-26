@@ -23,6 +23,8 @@ import { securityGuard } from '@kit.SecurityGuardKit';
 
 | Name | Description |
 | --- | --- |
+| [createAuthProvider](arkts-securityguard-securityguard-createauthprovider-f-sys.md#createauthprovider-1) | Creates an **AuthProvider** session. A maximum of one **AuthProvider** instance is allowed in a process, and a maximum of 16 instances are allowed globally. After the creation succeeds, the **onClientStatusChanged** callback will be used to receive information about existing clients. |
+| [destroyAuthProvider](arkts-securityguard-securityguard-destroyauthprovider-f-sys.md#destroyauthprovider-1) | Destroys an **AuthProvider** session. |
 | [getModelResult](arkts-securityguard-securityguard-getmodelresult-f-sys.md#getmodelresult-1) | Request security model result from security guard. |
 | [off('securityEventOccur')](arkts-securityguard-securityguard-off-f-sys.md#offsecurityeventoccur) | Unsubscribe the security event. |
 | [on('securityEventOccur')](arkts-securityguard-securityguard-on-f-sys.md#onsecurityeventoccur) | Subscribe the security event. |
@@ -38,6 +40,13 @@ import { securityGuard } from '@kit.SecurityGuardKit';
 
 | Name | Description |
 | --- | --- |
+| [AuthClientInfo](arkts-securityguard-securityguard-authclientinfo-i-sys.md) | Defines the client session information. |
+| [AuthClientStatus](arkts-securityguard-securityguard-authclientstatus-i-sys.md) | Defines the client session status. |
+| [AuthEventInfo](arkts-securityguard-securityguard-autheventinfo-i-sys.md) | Defines the authorization event information. |
+| [AuthProvider](arkts-securityguard-securityguard-authprovider-i-sys.md) | Authorization service provider class, which is created by the **createAuthProvider** factory function. |
+| [AuthProviderCallback](arkts-securityguard-securityguard-authprovidercallback-i-sys.md) | Represents the **AuthProvider** callback, which is passed when **createAuthProvider** is called. |
+| [AuthResult](arkts-securityguard-securityguard-authresult-i-sys.md) | Represents the authorization results of all clients. |
+| [ClientAuthResult](arkts-securityguard-securityguard-clientauthresult-i-sys.md) | Represents the authorization result of a single client. |
 | [CollectorRule](arkts-securityguard-securityguard-collectorrule-i-sys.md) | Provides the conditions of Collector. |
 | [ModelResult](arkts-securityguard-securityguard-modelresult-i-sys.md) | Provides the ModelResult type. |
 | [ModelRule](arkts-securityguard-securityguard-modelrule-i-sys.md) | Provides the ModelRule type. |
@@ -46,4 +55,12 @@ import { securityGuard } from '@kit.SecurityGuardKit';
 | [SecurityEvent](arkts-securityguard-securityguard-securityevent-i-sys.md) | Provides the SecurityEvent type, including the event id, version info, report content. |
 | [SecurityEventInfo](arkts-securityguard-securityguard-securityeventinfo-i-sys.md) | Provides the conditions of on/off. |
 | [SecurityEventRule](arkts-securityguard-securityguard-securityeventrule-i-sys.md) | Provides the conditions of querySecurityEvent. |
+<!--DelEnd-->
+
+<!--Del-->
+### Enums(System API)
+
+| Name | Description |
+| --- | --- |
+| [AuthStrategy](arkts-securityguard-securityguard-authstrategy-e-sys.md) | Enumerates authorization policies. |
 <!--DelEnd-->

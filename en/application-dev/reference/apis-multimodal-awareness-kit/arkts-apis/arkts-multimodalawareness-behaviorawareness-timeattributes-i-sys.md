@@ -6,7 +6,7 @@ export interface TimeAttributes
 
 Time-based scenario attributes.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 <!--Device-behaviorAwareness-export interface TimeAttributes--><!--Device-behaviorAwareness-export interface TimeAttributes-End-->
 
@@ -30,7 +30,7 @@ Day of the month. Unit: day. The value must be an integer within [1,31]. Default
 
 **Type:** number
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -50,7 +50,7 @@ Day of the week. The value must be an integer within [1,7]. Default value: The d
 
 **Type:** number
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -70,7 +70,7 @@ Discriminator field, fixed as 'time'.
 
 **Type:** 'time'
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -90,7 +90,7 @@ Recurrence type.
 
 **Type:** [RecurrenceType](arkts-multimodalawareness-behaviorawareness-recurrencetype-e-sys.md)
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -110,7 +110,7 @@ Time point (HH:mm format, e.g. "08:30").
 
 **Type:** string
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
