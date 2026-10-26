@@ -995,7 +995,7 @@ struct Index {
 
 ![zh-cn\_image\_toolbar\_example01](figures/image-toolbar-example01.png)
 
-### 示例4（高级工具栏放置位置与分割线）
+### 示例4（高级工具栏放置位置与分组展示）
 
 该示例通过设置advancedToolBarModifier启用高级工具栏功能，使用AdvancedToolbarV2Item配置placement（LEADING/MAIN/TRAILING）、displayPriority、isShowSeparator，展示子项在不同区域的放置效果及分割线。
 
