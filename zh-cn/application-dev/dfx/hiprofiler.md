@@ -1306,7 +1306,7 @@ CONFIG
 
 ### 抓取chromium/cef/electron框架V8 JS堆内存分配栈和PartitionAlloc分配器内存调用栈
 
-从API版本26.1.0开始，支持抓取chromium/cef/electron框架V8 JS堆内存分配栈和PartitionAlloc分配器内存调用栈。对com.example.insight_test_stage进程的堆内存分配操作进行抓栈，并开启fp回栈、离线符号化、统计模式、跨语言回栈、异步栈抓取、启动模式、文件缓存模式，通过restrace_tag抓取chromium/cef/electron框架V8 JS堆内存分配栈和PartitionAlloc分配器内存跟踪数据。
+从API版本26.1.0开始，支持抓取chromium/cef/electron框架V8 JS堆内存分配栈和PartitionAlloc分配器内存调用栈。可通过如下方式对com.example.insight_test_stage进程的堆内存分配操作进行抓栈，并开启fp回栈、离线符号化、统计模式、跨语言回栈、异步栈抓取、启动模式、文件缓存模式，通过restrace_tag抓取chromium/cef/electron框架V8 JS堆内存分配栈和PartitionAlloc分配器内存跟踪数据。
 
 ```shell
 $ hiprofiler_cmd \
