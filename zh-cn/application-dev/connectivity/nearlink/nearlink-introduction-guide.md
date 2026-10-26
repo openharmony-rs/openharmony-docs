@@ -17,7 +17,13 @@
 
 ## 约束与限制
 
+### 支持的设备
+
 星闪服务适用于Phone、PC/2in1、TV、Tablet和Wearable设备。
+
+### 支持的国家/地区
+
+请参见版本说明中[各设备支持的国家/地区](https://developer.huawei.com/consumer/cn/doc/harmonyos-releases/sdk-supported-regions)。
 
 <!--RP1-->
 
