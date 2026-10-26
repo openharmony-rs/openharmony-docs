@@ -123,9 +123,9 @@ Stage模型下主窗口的生命周期状态包括前台状态（SHOWN）、前�
 
 ### 恢复应用主窗口至前台（PC/2in1）
 
-在PC/2in1设备上，应用主窗口进入后台状态后，可通过调用[restore()](../reference/apis-arkui/arkts-apis-window-Window.md#restore14)接口将主窗口恢复到前台显示，并恢复到进入后台状态之前的大小和位置。若主窗口已处于前台状态，调用该接口仅抬升主窗口层级。
+在PC/2in1设备上，当应用主窗口处于后台状态时，若收到事件需要将主窗口恢复到前台显示，可调用[restore()](../reference/apis-arkui/arkts-apis-window-Window.md#restore14)接口，并恢复到进入后台状态之前的大小和位置。若主窗口已处于前台状态，调用该接口仅抬升主窗口层级。
 
-对于已将应用图标添加到状态栏的应用，可通过[statusBarManager.on('statusBarIconClick')](https://developer.huawei.com/consumer/cn/doc/doccenter-references/api/statusbar-extension-manager#statusbarmanageronstatusbariconclick)接口监听状态栏图标点击事件，在用户点击状态栏图标时调用[restore()](../reference/apis-arkui/arkts-apis-window-Window.md#restore14)接口恢复应用主窗口。应用接入状态栏的详细操作请参考[应用接入状态栏](https://developer.huawei.com/consumer/cn/doc/doccenter-capabilities/statusbar-extension-guide)。
+例如，已将应用图标添加到状态栏的应用，可通过监听状态栏图标点击事件，在用户点击状态栏图标时调用[restore()](../reference/apis-arkui/arkts-apis-window-Window.md#restore14)接口恢复应用主窗口。
 
 > **说明：**
 > 
@@ -203,7 +203,7 @@ struct Index {
 
 ### 锁屏状态下启动应用（PC/2in1）
 
-在PC/2in1设备上，如果应用需要在锁屏状态下被启动，需要申请权限[ohos.permission.START_WINDOW_BELOW_LOCK_SCREEN](../security/AccessToken/permissions-for-all.md#ohospermissionstart_window_below_lock_screen)。
+在PC/2in1设备上，当锁屏状态下收到来电通知、日程提醒等事件时，其他应用可能需要通过调用[startAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability)等接口拉起目标应用。若目标应用需要在锁屏状态下被启动，需要申请权限[ohos.permission.START_WINDOW_BELOW_LOCK_SCREEN](../security/AccessToken/permissions-for-all.md#ohospermissionstart_window_below_lock_screen)，否则无法拉起该应用。
 
 该权限允许应用在PC/2in1设备的锁屏状态下被启动至前台，设备解锁后应用窗口保持前台状态。需在[module.json5配置文件](../quick-start/module-configuration-file.md)的requestPermissions标签中声明该权限，具体请参考[声明权限](../security/AccessToken/declare-permissions.md)。
 
@@ -216,7 +216,6 @@ struct Index {
 ``` JSON5
 {
   "module": {
-    // ···
     "requestPermissions": [
       {
         "name": "ohos.permission.START_WINDOW_BELOW_LOCK_SCREEN"
