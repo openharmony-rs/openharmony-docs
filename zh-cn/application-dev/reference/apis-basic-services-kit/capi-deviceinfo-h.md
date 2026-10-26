@@ -592,6 +592,16 @@ int32_t OH_GetDiskSN(char *diskSn)
 
 获取磁盘序列号。
 
+**需要权限：** ohos.permission.ACCESS_DISK_PHY_INFO
+
+**参数：**
+
+| 参数名 | 类型 | 说明 |
+| -- | -- | -- |
+| diskSn | char* | 输出参数，用于返回磁盘序列号。 |
+
+**起始版本：** 26.1.0
+
 **起始版本：** 26.1.0
 
 **返回：**
