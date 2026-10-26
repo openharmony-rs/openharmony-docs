@@ -49187,6 +49187,26 @@
 						"end_line":1500,
 						"name":"dehydrate_file",
 						"start_line":1461
+					},
+					{
+						"end_line":2338,
+						"name":"get_placeholder_state",
+						"start_line":2284
+					},
+					{
+						"end_line":1524,
+						"name":"get_placeholder_custom_info",
+						"start_line":1473
+					},
+					{
+						"end_line":1394,
+						"name":"mark_file_as_placeholder",
+						"start_line":1355
+					},
+					{
+						"end_line":1441,
+						"name":"unmark_placeholder_file",
+						"start_line":1402
 					}
 				]
 			}
