@@ -1185,7 +1185,7 @@ addDeviceConfig(config: WifiDeviceConfig): Promise&lt;number&gt;
 
 添加网络配置。使用Promise异步回调。
 
-类似地，还可以通过[addCandidateConfig](#wifimanageraddcandidateconfig)配合[connectToCandidateConfig(settings: ConnectSettings): Promise](#wifimanagerconnecttocandidateconfig)接口，设置[ConnectSettings](#connectsettings)中addNetworkToSystem为true，实现添加候选网络到系统网络的功能。
+类似地，还可以通过[addCandidateConfig](#wifimanageraddcandidateconfig)配合[connectToCandidateConfig](#wifimanagerconnecttocandidateconfig)接口，设置[ConnectSettings](#connectsettings)中addNetworkToSystem为true，实现添加候选网络到系统网络的功能。
 
 **需要权限：** ohos.permission.SET_WIFI_INFO 和 ohos.permission.SET_WIFI_CONFIG
 
@@ -1241,7 +1241,7 @@ addDeviceConfig(config: WifiDeviceConfig, callback: AsyncCallback&lt;number&gt;)
 
 添加网络配置。使用callback异步回调。
 
-可以通过[addCandidateConfig](#wifimanageraddcandidateconfig)配合[connectToCandidateConfig(settings: ConnectSettings): Promise](#wifimanagerconnecttocandidateconfig)接口，设置[ConnectSettings](#connectsettings)中addNetworkToSystem为true，实现添加候选网络到系统网络的功能。
+可以通过[addCandidateConfig](#wifimanageraddcandidateconfig)配合[connectToCandidateConfig](#wifimanagerconnecttocandidateconfig)接口，设置[ConnectSettings](#connectsettings)中addNetworkToSystem为true，实现添加候选网络到系统网络的功能。
 
 **需要权限：** ohos.permission.SET_WIFI_INFO 和 ohos.permission.SET_WIFI_CONFIG
 
