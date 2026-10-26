@@ -690,7 +690,7 @@ async function testSetContentAutoRotation() {
 
 ## setCaptureArea
 
-setCaptureArea(area: RectangleRegion): Promise\<void>
+setCaptureArea(displayId: number, area: RectangleRegion): Promise\<void>
 
 用于在屏幕录制模式下指定实际录制的区域。使用Promise异步回调。
 
@@ -698,10 +698,10 @@ setCaptureArea(area: RectangleRegion): Promise\<void>
 
 > **说明：**
 >
-> - 录制区域以当前录制屏幕的左上角为原点计算，单位为像素（px）。录制的屏幕可由[AVScreenCaptureRecordConfig](arkts-apis-media-i.md#avscreencapturerecordconfig12)中的displayId指定，默认为主屏。
+> - 录制区域以displayId对应屏幕的左上角为原点计算，单位为像素（px）。displayId为0时表示主屏。
 > - 设置的区域中，left和top不能为负数，width和height必须大于0，且区域必须在屏幕范围内、不能跨屏。区域设置失败时，仍按上一次设置的区域进行录制。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -711,6 +711,7 @@ setCaptureArea(area: RectangleRegion): Promise\<void>
 
 | 参数名 | 类型                                                     | 必填 | 说明                                                         |
 | ------ | -------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| displayId | number | 是   | 屏幕ID，表示录制区域所属的屏幕。取值需大于或等于0，0表示主屏。 |
 | area   | [RectangleRegion](arkts-apis-media-i.md#rectangleregion) | 是   | 录制的矩形区域。各字段的取值范围和约束请参考[RectangleRegion](arkts-apis-media-i.md#rectangleregion)。 |
 
 **返回值：**
@@ -741,12 +742,13 @@ async function testSetCaptureArea() {
 
   // 其余流程。
 
-  // 指定录制区域，区域左上角坐标为(0, 0)，宽度为640px，高度为480px。
+  // 指定屏幕ID和录制区域，区域左上角坐标为(0, 0)，宽度为640px，高度为480px。
+  let displayId: number = 0;
   let area: media.RectangleRegion = { left: 0, top: 0, width: 640, height: 480 };
 
   // 调用setCaptureArea方法。
   if (avScreenCaptureRecorder) {
-    avScreenCaptureRecorder.setCaptureArea(area).then(() => {
+    avScreenCaptureRecorder.setCaptureArea(displayId, area).then(() => {
       console.info('Succeeded in setting capture area.');
     }).catch((err: BusinessError) => {
       console.error(`Failed to set capture area. Code: ${err.code}, message: ${err.message}`);
