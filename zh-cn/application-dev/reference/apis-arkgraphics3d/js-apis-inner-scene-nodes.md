@@ -494,7 +494,11 @@ function printNodeTreeInRelativePath(node: Node | null): void {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| range<sup>26+</sup> | number | 否 | 是 | 点光源影响的最大距离，超过该范围光强为0。单位为世界坐标系下的场景单位（比如cm、m、km等），取值大于0。若未设置此参数或取值小于等于0，系统自动计算一个安全值。 |
+| range<sup>26+</sup> | number | 否 | 是 | 点光源影响的最大距离，超过该范围光强为0。单位为世界坐标系下的场景单位（比如cm、m、km等），取值大于0。若未设置此参数或取值小于等于0，系统自动计算一个经验值。 |
+
+> **注意：**
+>
+> 点光源不支持阴影投射，设置[Light](#light)的shadowEnabled属性不生效。
 
 ## RectLight
 
@@ -509,6 +513,10 @@ function printNodeTreeInRelativePath(node: Node | null): void {
 | width<sup>26+</sup> | number | 否 | 是 | 矩形发光面的宽度。单位为世界坐标系下的场景单位（比如cm、m、km等），取值大于0，若未设置，默认为1。 |
 | height<sup>26+</sup> | number | 否 | 是 | 矩形发光面的高度。单位为世界坐标系下的场景单位（比如cm、m、km等），取值大于0，若未设置，默认为1。 |
 | twoSided<sup>26+</sup> | boolean | 否 | 是 | 矩形光源是否从矩形的两侧发光。若未设置，默认为false。 |
+
+> **注意：**
+>
+> 矩形面光源不支持阴影投射，设置[Light](#light)的shadowEnabled属性不生效。此外，矩形面光源功耗较高、性能开销较大，建议优先使用[DirectionalLight](#directionallight)等其他光源类型近似想要的渲染效果。
 
 ## Camera
 
