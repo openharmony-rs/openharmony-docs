@@ -33,4 +33,4 @@
 
 2. 从API版本20开始，如需在通话中保持录屏，可使用[OH_AVScreenCapture_StrategyForKeepCaptureDuringCall()](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforkeepcaptureduringcall)设置“蜂窝通话时保持录屏”策略。
 
-3. 录屏写文件模式启动时会对视频编码参数进行规格校验，超出以下限制将导致启动失败。视频码率（videoBitrate）的取值范围为[1, 30000000]，单位为比特每秒（bit/s）。检查并调整录屏配置参数，确保视频码率在1到30000000范围内。
+3. 录屏写文件模式启动时会对视频编码参数进行规格校验。视频码率（videoBitrate）的取值范围为[1, 30000000]，单位为比特每秒（bit/s），如果超出此限制将导致启动失败，请重新检查并调整录屏配置参数。
