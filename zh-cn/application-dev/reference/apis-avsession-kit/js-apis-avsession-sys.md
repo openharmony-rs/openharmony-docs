@@ -595,7 +595,7 @@ startAVPlaybackForAudioZone(userId: number, bundleName: string, assetId: string,
  
 **系统能力：** SystemCapability.Multimedia.AVSession.Manager
 
- **模型约束：** 此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
  
 **系统接口：** 该接口为系统接口。
  
