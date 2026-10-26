@@ -92,7 +92,7 @@
    ``` TypeScript
    try {
      const buffer = new ArrayBuffer(bufferSize);
-     const readLen = fileIo.readSync(file.fd, buffer);
+     const readLen = fileIo.readSync(fileObj.fd, buffer);
      console.info('readSync data to file succeed and buffer size is:' + readLen);
      return { data: buffer, length: readLen };
    } catch (error) {
