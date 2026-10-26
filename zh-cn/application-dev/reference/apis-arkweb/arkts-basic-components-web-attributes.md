@@ -1256,7 +1256,7 @@ ArkTS-Sta: caretColor(value: ResourceColor | undefined): this
 
 | 类型 | 说明 |
 | ------ | ------ |
-| ArkTS-Dyn: WebAttribute<br>ArkTS-Sta: this | 返回当前Web组件。 |
+| ArkTS-Sta: this | 返回当前Web组件。 |
 
 **示例：**
 
