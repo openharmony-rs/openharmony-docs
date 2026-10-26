@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "介绍OpenHarmony中C/C++标准库的核心机制，涵盖C++兼容性（libc++.so与libc++_shared.so隔离）、musl libc动态链接器命名空间隔离、rpath机制、信号使用规则及全球化支持等内容，帮助开发者在NDK开发中避免ABI兼容性和库加载等问题。"
+keywords: [C/C++标准库, musl libc, 动态链接器, 命名空间隔离, rpath, C++兼容性, libc++_shared.so, ABI兼容性, symbol-version]
+doctype: guide
+status: active
+---
+
 # C/C++标准库机制概述
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
