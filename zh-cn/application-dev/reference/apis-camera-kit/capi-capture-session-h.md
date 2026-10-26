@@ -3468,9 +3468,9 @@ typedef void (*OH_CaptureSession_OnCameraDeviceSwitchRequest)(void* userContext,
 
 | 参数项 | 描述 |
 | -- | -- |
-| void* userContext | 输出参数，指向自定义上下文的指针。 |
-| [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* userSession | 输出参数，指向Camera_CaptureSession实例的指针。 |
-| [Camera_Device](capi-oh-camera-camera-device.md)* userDevice | 输出参数，指向Camera_Device实例的指针。|
+| void* userContext | 指向注册回调时指定的自定义上下文的指针。 |
+| [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* userSession | 指向Camera_CaptureSession实例的指针。 |
+| [Camera_Device](capi-oh-camera-camera-device.md)* userDevice | 指向Camera_Device实例的指针。 |
 
 ### OH_CaptureSession_RegisterCameraDeviceSwitchRequestCallback()
 
