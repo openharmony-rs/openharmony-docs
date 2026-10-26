@@ -111,7 +111,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   let photoAssetList: Array<photoAccessHelper.PhotoAsset> = await fetchResult.getAllObjects();
   let assetsChangeRequest: photoAccessHelper.MediaAssetsChangeRequest = new photoAccessHelper.MediaAssetsChangeRequest(photoAssetList);
   assetsChangeRequest.setFavorite(true);
-  phAccessHelper.applyChanges(assetsChangeRequest).then(() => {
+  phAccessHelper.applyChanges(assetsChangeRequest as Object as photoAccessHelper.MediaChangeRequest).then(() => {
     console.info('apply setFavorite successfully');
   }).catch((err: BusinessError) => {
     console.error(`apply setFavorite failed with error: ${err.code}, ${err.message}`);
