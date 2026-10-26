@@ -241,7 +241,7 @@
      // 获取已完成的surface截图。
      let shotPixel = BlurAnimateUtil.getSurfaceShot();
      // 后置。
-     if (this.curPosition === 0) {
+     if (this.curPosition === 1) {
        Logger.info(TAG, 'showBlurAnim BACK');
        // 直板机后置截图旋转补偿90°。
        await shotPixel.rotate(BlurAnimateUtil.IMG_ROTATE_ANGLE_90);

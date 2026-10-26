@@ -134,7 +134,7 @@
      {
          OH_LOG_INFO(LOG_APP, " RegisterBufferCb start");
          if (cb == nullptr) {
-             OH_LOG_INFO(LOG_APP, " RegisterBufferCb invalid error");
+             OH_LOG_ERROR(LOG_APP, " RegisterBufferCb invalid error");
              return CAMERA_INVALID_ARGUMENT;
          }
          g_bufferCb = cb;
@@ -225,6 +225,7 @@
          }
      }
      
+     
      void OnPhotoAvailable(Camera_PhotoOutput *photoOutput, OH_PhotoNative *photo)
      {
          OH_LOG_INFO(LOG_APP, "OnPhotoAvailable start!");
@@ -271,7 +272,7 @@
          OH_LOG_INFO(LOG_APP, "NDKCamera::PhotoOutputRegisterPhotoAvailableCallback start!");
          Camera_ErrorCode ret = OH_PhotoOutput_RegisterPhotoAvailableCallback(photoOutput_, OnPhotoAvailable);
          if (ret != CAMERA_OK) {
-             OH_LOG_INFO(LOG_APP, "NDKCamera::PhotoOutputRegisterPhotoAvailableCallback failed.");
+             OH_LOG_ERROR(LOG_APP, "NDKCamera::PhotoOutputRegisterPhotoAvailableCallback failed.");
          }
          OH_LOG_INFO(LOG_APP, "NDKCamera::PhotoOutputRegisterPhotoAvailableCallback return with ret code: %{public}d!",
              ret_);

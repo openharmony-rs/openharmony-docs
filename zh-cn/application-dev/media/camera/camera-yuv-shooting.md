@@ -103,13 +103,13 @@
      
      async mediaLibSavePhotoSingle(context: Context, imageObj: image.Image | image.Picture) {
        let picture: image.Picture = imageObj as image.Picture;
-       Logger.info(TAG_LOG, 'picture GetMainPixelmap E');
-       await this.GetMainPixelmap(context, picture);
-       Logger.info(TAG_LOG, 'picture GetMainPixelmap X');
+       Logger.info(TAG_LOG, 'picture getMainPixelmap E');
+       await this.getMainPixelmap(context, picture);
+       Logger.info(TAG_LOG, 'picture getMainPixelmap X');
      
-       Logger.info(TAG_LOG, 'picture Release E');
-       await this.Release(picture);
-       Logger.info(TAG_LOG, 'picture Release X');
+       Logger.info(TAG_LOG, 'picture releasePicture E');
+       await this.releasePicture(picture);
+       Logger.info(TAG_LOG, 'picture releasePicture X');
      }
      
      async packToFileFromPixelMap(context : Context, pixelMap : image.PixelMap) {
@@ -155,7 +155,7 @@
      }
      
      // 获取拍照的主图的pixelMap。
-     async GetMainPixelmap(context: Context, pictureObj : image.Picture) {
+     async getMainPixelmap(context: Context, pictureObj : image.Picture) {
        let funcName = 'getMainPixelmap';
        if (pictureObj != null) {
          let mainPixelmap: image.PixelMap = pictureObj.getMainPixelmap();
@@ -169,7 +169,7 @@
            this.callback(mainPixelmap, '');
            mainPixelmap.getImageInfo().then((imageInfo: image.ImageInfo) => {
              if (imageInfo != null) {
-               Logger.info(TAG_LOG, 'GetMainPixelmap information height:' + imageInfo.size.height + ' width:' + imageInfo.size.width +
+               Logger.info(TAG_LOG, 'getMainPixelmap information height:' + imageInfo.size.height + ' width:' + imageInfo.size.width +
                  ' pixelFormat:' + imageInfo.pixelFormat + ' isHdr:' + imageInfo.isHdr);
              }
            }).catch((error: BusinessError) => {
@@ -184,8 +184,8 @@
      }
      
      // 释放资源。
-     async Release(pictureObj : image.Picture) {
-       let funcName = 'Release';
+     async releasePicture(pictureObj : image.Picture) {
+       let funcName = 'releasePicture';
        if (pictureObj != null) {
          pictureObj.release();
          if (pictureObj.getMainPixelmap() == null) {
