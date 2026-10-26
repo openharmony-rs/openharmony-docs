@@ -10096,6 +10096,90 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
+### absorbAlbum
+
+absorbAlbum(album: Album): void
+
+将指定相册融合到当前相册。融合后，当前相册继承输入相册的信息和资产，输入相册被删除。该融合操作需通过[applyChanges](arkts-apis-photoAccessHelper-PhotoAccessHelper.md#applychanges11)提交生效。
+
+**起始版本：** 26.1.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.WRITE_IMAGEVIDEO
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| album | [Album](#album) | 是    | 待融合的相册。融合后，当前相册继承输入相册的信息和资产，输入相册被删除。当前相册必须处于隐藏状态。输入相册必须是来源相册或用户相册，且其类型须与当前相册匹配。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800151 | The scenario parameter verification fails. Possible causes: <br>1. The input album is not a source album or a user album;<br>2. The type of the input album does not match that of the current album;<br>3. The current album is not hidden;<br>4. This operation is not supported for this album type. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: <br>1. Database corrupted;<br>2. The file system is abnormal;<br>3. The input album is not allowed to be absorbed. |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+import { dataSharePredicates } from '@kit.ArkData';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  try {
+    console.info('absorbAlbum Example')
+    // 查询隐藏空相册。
+    let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+    predicates.equalTo(photoAccessHelper.AlbumKeys.HIDDEN, 1);
+    let fetchOptions: photoAccessHelper.FetchOptions = {
+      // 此处需要将HIDDEN字段添加到fetchColumns中，才能获取到相册的隐藏状态类型。
+      fetchColumns: [photoAccessHelper.AlbumKeys.HIDDEN],
+      predicates: predicates
+    };
+    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> =
+      await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.USER,
+          photoAccessHelper.AlbumSubtype.USER_GENERIC, fetchOptions);
+    let album: photoAccessHelper.Album = await fetchResult.getFirstObject();
+    if (album === undefined) {
+      console.error('album is undefined');
+      return;
+    }
+  // 查询非隐藏相册（与隐藏空相册类型相同）。
+    let predicatesTarget: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+    let fetchOptionsTarget: photoAccessHelper.FetchOptions = {
+      // 此处需要将HIDDEN字段添加到fetchColumns中，才能获取到相册的隐藏状态类型。
+      fetchColumns: [photoAccessHelper.AlbumKeys.HIDDEN],
+      predicates: predicatesTarget
+    };
+    let fetchResultTarget: photoAccessHelper.FetchResult<photoAccessHelper.Album> =
+      await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.USER,
+          photoAccessHelper.AlbumSubtype.USER_GENERIC, fetchOptionsTarget);
+    let target: photoAccessHelper.Album = await fetchResultTarget.getFirstObject();
+    if (target === undefined) {
+      console.error('target is undefined');
+      return;
+    }
+
+    let changeRequest: photoAccessHelper.MediaAlbumChangeRequest = new photoAccessHelper.MediaAlbumChangeRequest(album);
+    changeRequest.absorbAlbum(target);
+    await phAccessHelper.applyChanges(changeRequest);
+  } catch (err) {
+    console.error(`absorbAlbum failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
 ### moveAssets<sup>11+</sup>
 
 moveAssets(assets: Array&lt;PhotoAsset&gt;, targetAlbum: Album): void
@@ -13758,6 +13842,7 @@ async function example(context: Context) {
 | IS_REMOVED_ATTR | 'is_removed' | 相册是否已删除。<br>- 现支持人像相册。<br>- 值为1表示该相册已删除。<br>- 值为0表示该相册未删除或已恢复。 |
 | FRIEND_ID_ATTR | 'friend_id' | 相册亲友圈信息操作属性。<br>**起始版本：** 26.0.1 |
 | CONTACT_INFO_ATTR | 'contact_info' | 相册联系人信息操作属性。<br>**起始版本：** 26.0.1 |
+| HIDDEN_ATTR | 'hidden' | 相册隐藏信息操作属性。<br>**起始版本：** 26.1.0 |
 
 ## AlbumOperationType
 
