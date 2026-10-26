@@ -481,7 +481,6 @@ ToolBarV2SymbolGlyphOptions定义Symbol图标的属性。
 | isShowText               | boolean                                           | 否   | 是   | 是否显示子项的文本内容。设置为false时，工具栏中不渲染content指定的文本，但content仍用于溢出菜单识别。适用于纯图标子项仍需在溢出菜单中通过文本识别的场景。<br />默认值：true。<br />装饰器类型：@Trace                                   |
 | isShowOverflowMenu       | boolean                                           | 否   | 是   | 是否在该子项中显示工具栏的溢出菜单。<br />默认值：false。<br />装饰器类型：@Trace                                                                                                                                     |
 | groupID                  | string                                            | 否   | 是   | 分组标识。具有相同非空groupID的子项将作为一个可视分组渲染。分组级别的配置从数组中携带该groupID的第一个子项读取。<br />默认值：undefined。<br />装饰器类型：@Trace                                                              |
-| groupStyle              | ToolbarV2ItemGroupStyle                           | 否   | 是   | 该子项所属分组的样式配置。仅数组中携带给定groupID的第一个子项（按数组顺序）的值生效；后续相同groupID子项的值将被忽略。<br />默认值：undefined。<br />装饰器类型：@Trace                                                  |
 
 ### constructor
 
@@ -527,8 +526,7 @@ AdvancedToolbarV2Item的构造函数。
 | isShowSeparator          | boolean                                           | 否   | 是   | 是否在该子项后显示分割线。为true时在该子项后渲染分割线（工具栏最后一个子项后不显示）。<br />默认值：false。                                                                                                            |
 | isShowText               | boolean                                           | 否   | 是   | 是否显示子项的文本内容。设置为false时，工具栏中不渲染content指定的文本，但content仍用于无障碍和溢出菜单识别。适用于纯图标子项仍需在溢出菜单中通过文本识别的场景。<br />默认值：true。                                                |
 | isShowOverflowMenu       | boolean                                           | 否   | 是   | 是否在该子项中显示工具栏的溢出菜单。<br />默认值：false。                                                                                                                                                              |
-| groupID                  | string                                            | 否   | 是   | 分组标识。具有相同非空groupID的子项将作为一个可视分组渲染。<br />默认值：undefined。                                                                                                                                   |
-| groupStyle              | ToolbarV2ItemGroupStyle                           | 否   | 是   | 该子项所属分组的样式配置。仅数组中携带给定groupID的第一个子项（按数组顺序）的值生效；后续相同groupID子项的值将被忽略。<br />默认值：undefined。                                                                      |
+| groupID                  | string                                            | 否   | 是   | 分组标识。具有相同非空groupID的子项将作为一个可视分组渲染。<br />默认值：undefined。                                                                                                                                   |                                                                 |
 
 ## AdvancedToolBarV2Modifier
 
@@ -1003,47 +1001,49 @@ struct Index {
 
 ```ts
 import {
-  AdvancedToolbarV2Item,
-  AdvancedToolBarV2Modifier,
-  ToolbarV2ItemPlacement,
-  ToolBarV2ItemText,
-  ToolBarV2ItemImage,
-  ToolBarV2ItemState,
-  ToolBarV2,
-  LengthMetrics,
+  AdvancedToolbarV2Item, AdvancedToolBarV2Modifier, ToolbarV2ItemPlacement, ToolBarV2ItemText,
+  ToolBarV2ItemImage, ToolBarV2ItemState, ToolBarV2, LengthMetrics
 } from '@kit.ArkUI';
 
 @Entry
 @ComponentV2
 struct Index {
   @Local toolbarList: AdvancedToolbarV2Item[] = [];
-  // 设置主轴长度，并启用高级工具栏功能
   private advancedToolBarModifier: AdvancedToolBarV2Modifier =
-    new AdvancedToolBarV2Modifier().mainAxisLength(LengthMetrics.percent(100));
+    new AdvancedToolBarV2Modifier().mainAxisLength(LengthMetrics.vp(350));
 
   aboutToAppear() {
-    // 前导半区：放置在主内容之前的主要操作
+    // 分组一：具有相同groupID的子项构成一个可视分组
+    // 中间区域（默认）：主内容区域显示的主要操作
     this.toolbarList.push(
       new AdvancedToolbarV2Item({
         content: new ToolBarV2ItemText({ text: '复制' }),
         icon: new ToolBarV2ItemImage({ src: $r('sys.media.ohos_ic_public_copy') }),
+        groupID: 'group1',
+        action: () => {
+        },
+      })
+    );
+    this.toolbarList.push(
+      new AdvancedToolbarV2Item({
+        content: new ToolBarV2ItemText({ text: '粘贴' }),
+        icon: new ToolBarV2ItemImage({ src: $r('sys.media.ohos_ic_public_paste') }),
+        groupID: 'group1',
+        action: () => {
+        },
+      })
+    );
+    // 前导半区：放置在主内容之前的操作
+    this.toolbarList.push(
+      new AdvancedToolbarV2Item({
+        content: new ToolBarV2ItemText({ text: '全选' }),
+        icon: new ToolBarV2ItemImage({ src: $r('sys.media.ohos_ic_public_select_all') }),
         placement: ToolbarV2ItemPlacement.LEADING,
         action: () => {
         },
       })
     );
-    // 中间区域（默认）：主内容区域显示的主要操作
-    this.toolbarList.push(
-      new AdvancedToolbarV2Item({
-        content: new ToolBarV2ItemText({ text: '粘贴' }),
-        icon: new ToolBarV2ItemImage({ src: $r('sys.media.ohos_ic_public_paste') }),
-        placement: ToolbarV2ItemPlacement.MAIN,
-        state: ToolBarV2ItemState.ACTIVATE,
-        action: () => {
-        },
-      })
-    );
-    // 尾随半区：放置在主内容之后的次要操作
+    // 尾随半区：放置在主内容之后的操作
     this.toolbarList.push(
       new AdvancedToolbarV2Item({
         content: new ToolBarV2ItemText({ text: '分享' }),
@@ -1065,9 +1065,11 @@ struct Index {
           })
         }
       }
-      .backgroundColor(Color.Blue)
+      .backgroundColor('#F0FAFF')
       .align(Alignment.Bottom)
-      .width('100%').height('100%')
+      .width('100%')
+      .height('50%')
+      .padding({ bottom: 10 })
     }
   }
 }
@@ -1077,19 +1079,12 @@ struct Index {
 
 ### 示例5（高级工具栏垂直布局与纯图标项）
 
-该示例通过AdvancedToolBarV2Modifier设置direction为Axis.Vertical实现垂直布局，配合crossAxisLength指定交叉轴宽度；子项设置isShowText为false呈现纯图标样式，并通过activatedBackgroundColor设置激活态背景色（仅纯图标项生效），通过itemSize指定子项尺寸。
+该示例通过AdvancedToolBarV2Modifier设置direction为Axis.Vertical实现垂直布局，配合crossAxisLength指定交叉轴宽度；子项设置isShowText为false呈现纯图标样式。
 
 ```ts
 import {
-  AdvancedToolbarV2Item,
-  AdvancedToolBarV2Modifier,
-  ToolbarV2ItemPlacement,
-  ToolBarV2ItemText,
-  ToolBarV2ItemImage,
-  ToolBarV2ItemState,
-  ToolBarV2,
-  LengthMetrics,
-  ColorMetrics,
+  AdvancedToolbarV2Item, AdvancedToolBarV2Modifier, ToolbarV2ItemPlacement, ToolBarV2ItemText,
+  ToolBarV2ItemImage, ToolBarV2ItemState, ToolBarV2, LengthMetrics
 } from '@kit.ArkUI';
 
 @Entry
@@ -1100,21 +1095,18 @@ struct Index {
   private advancedToolBarModifier: AdvancedToolBarV2Modifier =
     new AdvancedToolBarV2Modifier()
       .direction(Axis.Vertical)
-      .crossAxisLength(LengthMetrics.vp(56))
-      .mainAxisLength(LengthMetrics.percent(100));
+      .crossAxisLength(LengthMetrics.vp(40))
+      .mainAxisLength(LengthMetrics.vp(300));
 
   aboutToAppear() {
     this.toolbarList.push(
       new AdvancedToolbarV2Item({
         content: new ToolBarV2ItemText({ text: '复制' }),
         icon: new ToolBarV2ItemImage({ src: $r('sys.media.ohos_ic_public_copy') }),
-        placement: ToolbarV2ItemPlacement.MAIN,
-        // 纯图标项：不显示文本，但content仍用于溢出菜单识别
+        // 纯图标项：不显示文本
         isShowText: false,
-        // 子项尺寸（宽×高），单位vp
-        itemSize: { width: 48, height: 48 },
-        // 激活态背景色（仅纯图标项生效）
         state: ToolBarV2ItemState.ACTIVATE,
+        groupID: "toolbar",
         action: () => {
         },
       })
@@ -1123,9 +1115,8 @@ struct Index {
       new AdvancedToolbarV2Item({
         content: new ToolBarV2ItemText({ text: '粘贴' }),
         icon: new ToolBarV2ItemImage({ src: $r('sys.media.ohos_ic_public_paste') }),
-        placement: ToolbarV2ItemPlacement.MAIN,
         isShowText: false,
-        itemSize: { width: 48, height: 48 },
+        groupID: "toolbar",
         action: () => {
         },
       })
@@ -1134,9 +1125,8 @@ struct Index {
       new AdvancedToolbarV2Item({
         content: new ToolBarV2ItemText({ text: '全选' }),
         icon: new ToolBarV2ItemImage({ src: $r('sys.media.ohos_ic_public_select_all') }),
-        placement: ToolbarV2ItemPlacement.MAIN,
         isShowText: false,
-        itemSize: { width: 48, height: 48 },
+        groupID: "toolbar",
         action: () => {
         },
       })
@@ -1145,8 +1135,7 @@ struct Index {
       new AdvancedToolbarV2Item({
         content: new ToolBarV2ItemText({ text: '分享' }),
         icon: new ToolBarV2ItemImage({ src: $r('sys.media.ohos_ic_public_share') }),
-        placement: ToolbarV2ItemPlacement.MAIN,
-        itemSize: { width: 48, height: 48 },
+        groupID: "toolbar",
         action: () => {
         },
       })
@@ -1154,113 +1143,22 @@ struct Index {
   }
 
   build() {
-    Row() {
-      Stack() {
-        Column() {
-          ToolBarV2({
-            advancedToolBarModifier: this.advancedToolBarModifier,
-            toolBarList: this.toolbarList,
-          })
-        }
+    Stack() {
+      Column() {
+        ToolBarV2({
+          advancedToolBarModifier: this.advancedToolBarModifier,
+          toolBarList: this.toolbarList,
+        })
       }
-      .backgroundColor(Color.Blue)
-      .align(Alignment.End)
-      .width('100%').height('100%')
     }
+    .backgroundColor('#F0FAFF')
+    .padding({ right: 10 })
+    .align(Alignment.End)
+    .width('100%')
+    .height('50%')
   }
 }
 ```
 
 ![zh-cn\_image\_toolbar\_example05](figures/image-toolbar-example05.png)
 
-### 示例6（高级工具栏分组）
-
-该示例通过groupID将子项划分为多个可视分组（相同groupID的子项构成一组）。
-
-```ts
-import {
-  AdvancedToolbarV2Item,
-  AdvancedToolBarV2Modifier,
-  ToolbarV2ItemPlacement,
-  ToolBarV2ItemText,
-  ToolBarV2ItemImage,
-  ToolBarV2ItemState,
-  ToolBarV2,
-  LengthMetrics,
-} from '@kit.ArkUI';
-
-@Entry
-@ComponentV2
-struct Index {
-  @Local toolbarList: AdvancedToolbarV2Item[] = [];
-  private advancedToolBarModifier: AdvancedToolBarV2Modifier =
-    new AdvancedToolBarV2Modifier().mainAxisLength(LengthMetrics.percent(100));
-
-  aboutToAppear() {
-    // 分组一：具有相同groupID的子项构成一个可视分组
-    this.toolbarList.push(
-      new AdvancedToolbarV2Item({
-        id: 'group1_copy',
-        content: new ToolBarV2ItemText({ text: '复制' }),
-        icon: new ToolBarV2ItemImage({ src: $r('sys.media.ohos_ic_public_copy') }),
-        groupID: 'group1',
-        placement: ToolbarV2ItemPlacement.MAIN,
-        action: () => {
-        },
-      })
-    );
-    this.toolbarList.push(
-      new AdvancedToolbarV2Item({
-        id: 'group1_paste',
-        content: new ToolBarV2ItemText({ text: '粘贴' }),
-        icon: new ToolBarV2ItemImage({ src: $r('sys.media.ohos_ic_public_paste') }),
-        groupID: 'group1',
-        placement: ToolbarV2ItemPlacement.MAIN,
-        action: () => {
-        },
-      })
-    );
-    // 分组二
-    this.toolbarList.push(
-      new AdvancedToolbarV2Item({
-        id: 'group2_select',
-        content: new ToolBarV2ItemText({ text: '全选' }),
-        icon: new ToolBarV2ItemImage({ src: $r('sys.media.ohos_ic_public_select_all') }),
-        groupID: 'group2',
-        placement: ToolbarV2ItemPlacement.MAIN,
-        action: () => {
-        },
-      })
-    );
-    this.toolbarList.push(
-      new AdvancedToolbarV2Item({
-        id: 'group2_share',
-        content: new ToolBarV2ItemText({ text: '分享' }),
-        icon: new ToolBarV2ItemImage({ src: $r('sys.media.ohos_ic_public_share') }),
-        groupID: 'group2',
-        placement: ToolbarV2ItemPlacement.MAIN,
-        action: () => {
-        },
-      })
-    );
-  }
-
-  build() {
-    Row() {
-      Stack() {
-        Column() {
-          ToolBarV2({
-            advancedToolBarModifier: this.advancedToolBarModifier,
-            toolBarList: this.toolbarList,
-          })
-        }
-      }
-      .backgroundColor(Color.Blue)
-      .align(Alignment.Bottom)
-      .width('100%').height('100%')
-    }
-  }
-}
-```
-
-![zh-cn\_image\_toolbar\_example06](figures/image-toolbar-example06.png)
