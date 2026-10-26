@@ -8,6 +8,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 - [AVCodec Kit简介](avcodec-kit-intro.md)
+- [AVCodec Kit指南配套示例代码](avcodec-kit-samples.md)
 - [AVCodec支持的格式](avcodec-support-formats.md)
 - 音视频编解码<!--audio-video-codec-->
   - [获取支持的编解码能力](obtain-supported-codecs.md)
