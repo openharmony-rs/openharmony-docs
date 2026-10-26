@@ -18,7 +18,7 @@ The peripheral access capability of this module requires the combination of mult
 
 >  **NOTE**
 > 
-> The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version. To call the APIs of this module, you need to request **ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER** for querying, binding, and unbinding) or **ohos.permission.ACCESS_DDK_DRIVERS** for the binding and unbinding APIs of the new version.
+> The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version. To call the APIs of this module, you need to request **ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER** for querying, binding, and unbinding or **ohos.permission.ACCESS_DDK_DRIVERS** for the binding and unbinding APIs of the new version.
 
 ## Modules to Import
 

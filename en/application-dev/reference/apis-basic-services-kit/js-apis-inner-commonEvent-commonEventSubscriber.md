@@ -5,7 +5,7 @@
 <!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=54656b3da3e41e2ba7f2b57573523f0dbf41c1e3 translatedAt=2026-10-08T09:14:45.662Z pushedAt=2026-10-09T03:03:08.715Z -->
+<!-- md-trans-meta sourceCommit=097d84c08b6dd34c7fea7675d84d753092b8a960 translatedAt=2026-10-23T03:09:01.954Z pushedAt=2026-10-23T11:09:41.890Z nl=1 -->
 
 > **NOTE**
 >
@@ -38,11 +38,24 @@ let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
 subscriber = commonEventManager.createSubscriberSync(subscribeInfo);
 ```
 
+> **Constraints and invalidation behaviors:**
+>
+> - The data processing and process control methods (**getCode**, **getData**, **getAbortCommonEvent**, **setCode**, **setData**, **setCodeAndData**, **abortCommonEvent**, **clearAbortCommonEvent**, **finishCommonEvent**, and their corresponding sync methods) of this class are valid only when the **onReceiveEvent** callback of the subscribed [ordered common event](../../basic-services/common-event/common-event-glossary.md#ordered-common-event) is being executed.
+> - When this API is called in the callback for receiving unordered common events, after the event is unsubscribed from, or in other contexts, no error is reported, but the call does not take effect:
+>   - The get methods (**getCode**, **getData**, **getAbortCommonEvent**, and their corresponding sync methods) return default values (**0**, empty string, and **false**), which cannot be distinguished from the actual data.
+>   - The set and process control methods (**setCode**, **setData**, **setCodeAndData**, **abortCommonEvent**, **clearAbortCommonEvent**, **finishCommonEvent**, and their corresponding sync methods) return success silently, but the settings do not take effect.
+> - The preceding invalid calls are recorded only in system logs, and the app cannot detect them through return values or error codes.
+> - The processing duration of an ordered common event for each subscriber is limited to 10 seconds. If the processing times out, the system automatically ends the processing for the current subscriber and delivers the event to the subscriber with the next highest priority. After that, the **setCode**, **setData**, **setCodeAndData**, and **finishCommonEvent** methods called by the current subscriber will no longer take effect.
+
 ### getCode
 
 getCode(callback: AsyncCallback\<number>): void
 
 Obtains the result code of an ordered common event. This API uses an asynchronous callback to return the result.
+
+> **NOTE**
+>
+> This API can be called only in the callback for receiving ordered common events. No error is reported when this API is called in the callback for receiving unordered common events or after the event is unsubscribed from. Instead, the default value **0** is returned through the callback or promise.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -82,6 +95,10 @@ getCode(): Promise\<number>
 
 Obtains the result code of an ordered common event. This API uses a promise to return the result.
 
+> **NOTE**
+>
+> This API can be called only in the callback for receiving ordered common events. No error is reported when this API is called in the callback for receiving unordered common events or after the event is unsubscribed from. Instead, the default value **0** is returned.
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.Notification.CommonEvent
@@ -110,6 +127,10 @@ getCodeSync(): number
 
 Obtains the result code of an ordered common event synchronously.
 
+> **NOTE**
+>
+> This API can be called only in the callback for receiving ordered common events. No error is reported when this API is called in the callback for receiving unordered common events or after the event is unsubscribed from. Instead, the default value **0** is returned.
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.Notification.CommonEvent
@@ -134,6 +155,11 @@ console.info(`Succeeded in getting code, code is ${JSON.stringify(code)}`);
 setCode(code: number, callback: AsyncCallback\<void>): void
 
 Sets the result code and data of an ordered common event. This API uses an asynchronous callback to return the result.
+
+> **NOTE**
+>
+> - This API can be called only in the callback for receiving ordered common events. No error is reported when this API is called in the callback for receiving unordered common events or after the event is unsubscribed from. However, the setting does not take effect.
+> - The maximum processing duration of an ordered common event for each subscriber is 10 seconds. If the call times out, the system automatically delivers the event to the subscriber with the next highest priority, and the configured data will not be used.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -173,6 +199,11 @@ subscriber.setCode(1, (err: BusinessError) => {
 setCode(code: number): Promise\<void>
 
 Sets the result code and data of an ordered common event. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> - This API can be called only in the callback for receiving ordered common events. No error is reported when this API is called in the callback for receiving unordered common events or after the event is unsubscribed from. However, the setting does not take effect.
+> - The maximum processing duration of an ordered common event for each subscriber is 10 seconds. If the call times out, the system automatically delivers the event to the subscriber with the next highest priority, and the configured data will not be used.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -216,6 +247,11 @@ setCodeSync(code: number): void
 
 Sets the result code of an ordered common event synchronously.
 
+> **NOTE**
+>
+> - This API can be called only in the callback for receiving ordered common events. No error is reported when this API is called in the callback for receiving unordered common events or after the event is unsubscribed from. However, the setting does not take effect.
+> - The maximum processing duration of an ordered common event for each subscriber is 10 seconds. If the call times out, the system automatically delivers the event to the subscriber with the next highest priority, and the configured data will not be used.
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.Notification.CommonEvent
@@ -252,6 +288,10 @@ try {
 getData(callback: AsyncCallback\<string>): void
 
 Obtains the result code of an ordered common event. This API uses an asynchronous callback to return the result.
+
+> **NOTE**
+>
+> This API can be called only in the callback for receiving ordered common events. No error is reported when this API is called in the callback for receiving unordered common events or after the event is unsubscribed from. Instead, an empty string is returned through the callback or promise by default.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -292,6 +332,10 @@ getData(): Promise\<string>
 
 Obtains the result code of an ordered common event. This API uses a promise to return the result.
 
+> **NOTE**
+>
+> This API can be called only in the callback for receiving ordered common events. No error is reported when this API is called in the callback for receiving unordered common events or after the event is unsubscribed from. Instead, an empty string is returned through the callback or promise by default.
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.Notification.CommonEvent
@@ -320,6 +364,10 @@ getDataSync(): string
 
 Obtains the result code of an ordered common event synchronously.
 
+> **NOTE**
+>
+> This API can be called only in the callback for receiving ordered common events. No error is reported when this API is called in the callback for receiving unordered common events or after the event is unsubscribed from. Instead, an empty string is returned.
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.Notification.CommonEvent
@@ -344,6 +392,11 @@ console.info(`Succeeded in getting data, data is ${data}`);
 setData(data: string, callback: AsyncCallback\<void>): void
 
 Sets the result code and data of an ordered common event. This API uses an asynchronous callback to return the result.
+
+> **NOTE**
+>
+> - This API can be called only in the callback for receiving ordered common events. No error is reported when this API is called in the callback for receiving unordered common events or after the event is unsubscribed from. However, the setting does not take effect.
+> - The maximum processing duration of an ordered common event for each subscriber is 10 seconds. If the call times out, the system automatically delivers the event to the subscriber with the next highest priority, and the configured data will not be used.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -383,6 +436,11 @@ subscriber.setData('publish_data_changed', (err: BusinessError) => {
 setData(data: string): Promise\<void>
 
 Sets the result code and data of an ordered common event. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> - This API can be called only in the callback for receiving ordered common events. No error is reported when this API is called in the callback for receiving unordered common events or after the event is unsubscribed from. However, the setting does not take effect.
+> - The maximum processing duration of an ordered common event for each subscriber is 10 seconds. If the call times out, the system automatically delivers the event to the subscriber with the next highest priority, and the configured data will not be used.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -426,6 +484,11 @@ setDataSync(data: string): void
 
 Sets the result code of an ordered common event synchronously.
 
+> **NOTE**
+>
+> - This API can be called only in the callback for receiving ordered common events. No error is reported when this API is called in the callback for receiving unordered common events or after the event is unsubscribed from. However, the setting does not take effect.
+> - The maximum processing duration of an ordered common event for each subscriber is 10 seconds. If the call times out, the system automatically delivers the event to the subscriber with the next highest priority, and the configured data will not be used.
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.Notification.CommonEvent
@@ -462,6 +525,11 @@ try {
 setCodeAndData(code: number, data: string, callback: AsyncCallback\<void\>): void
 
 Sets the result code and data of an ordered common event. This API uses an asynchronous callback to return the result.
+
+> **NOTE**
+>
+> - This API can be called only in the callback for receiving ordered common events. No error is reported when this API is called in the callback for receiving unordered common events or after the event is unsubscribed from. However, the setting does not take effect.
+> - The maximum processing duration of an ordered common event for each subscriber is 10 seconds. If the call times out, the system automatically delivers the event to the subscriber with the next highest priority, and the configured data will not be used.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -502,6 +570,11 @@ subscriber.setCodeAndData(1, 'publish_data_changed', (err: BusinessError) => {
 setCodeAndData(code: number, data: string): Promise\<void>
 
 Sets the result code and data of an ordered common event. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> - This API can be called only in the callback for receiving ordered common events. No error is reported when this API is called in the callback for receiving unordered common events or after the event is unsubscribed from. However, the setting does not take effect.
+> - The maximum processing duration of an ordered common event for each subscriber is 10 seconds. If the call times out, the system automatically delivers the event to the subscriber with the next highest priority, and the configured data will not be used.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -546,6 +619,11 @@ setCodeAndDataSync(code: number, data: string): void
 
 Sets the result code of an ordered common event synchronously.
 
+> **NOTE**
+>
+> - This API can be called only in the callback for receiving ordered common events. No error is reported when this API is called in the callback for receiving unordered common events or after the event is unsubscribed from. However, the setting does not take effect.
+> - The maximum processing duration of an ordered common event for each subscriber is 10 seconds. If the call times out, the system automatically delivers the event to the subscriber with the next highest priority, and the configured data will not be used.
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.Notification.CommonEvent
@@ -585,6 +663,10 @@ isOrderedCommonEvent(callback: AsyncCallback\<boolean>): void
 
 Checks whether the current common event is an ordered common event. This API uses an asynchronous callback to return the result.
 
+> **NOTE**
+>
+> This API can accurately reflect the current common event only when it is called in the callback for receiving common events (**onReceiveEvent**). No error is reported when this API is called after the event is unsubscribed from. Instead, **false** is returned through the callback or promise.
+
 **System capability**: SystemCapability.Notification.CommonEvent
 
 **Parameters**
@@ -621,6 +703,10 @@ isOrderedCommonEvent(): Promise\<boolean>
 
 Checks whether the current common event is an ordered common event. This API uses a promise to return the result.
 
+> **NOTE**
+>
+> This API can accurately reflect the current common event only when it is called in the callback for receiving common events (**onReceiveEvent**). No error is reported when this API is called after the event is unsubscribed from. Instead, **false** is returned.
+
 **System capability**: SystemCapability.Notification.CommonEvent
 
 **Return value**
@@ -647,6 +733,10 @@ isOrderedCommonEventSync(): boolean
 
 Checks whether the current common event is an ordered common event synchronously.
 
+> **NOTE**
+>
+> This API can accurately reflect the current common event only when it is called in the callback for receiving common events (**onReceiveEvent**). No error is reported when this API is called after the event is unsubscribed from. Instead, **false** is returned through the callback or promise.
+
 **System capability**: SystemCapability.Notification.CommonEvent
 
 **Return value**
@@ -669,6 +759,10 @@ console.info(`isOrderedCommonEventSync ${JSON.stringify(isOrdered)}`);
 isStickyCommonEvent(callback: AsyncCallback\<boolean>): void
 
 Checks whether the current common event is a sticky common event. This API uses an asynchronous callback to return the result.
+
+> **NOTE**
+>
+> This API can accurately reflect the current common event only when it is called in the callback for receiving common events (**onReceiveEvent**). No error is reported when this API is called outside the callback or after the event is unsubscribed from. However, the result returned through the callback or promise is unreliable.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -706,6 +800,10 @@ isStickyCommonEvent(): Promise\<boolean>
 
 Checks whether the current common event is a sticky common event. This API uses a promise to return the result.
 
+> **NOTE**
+>
+> This API can accurately reflect the current common event only when it is called in the callback for receiving common events (**onReceiveEvent**). No error is reported when this API is called outside the callback or after the event is unsubscribed from. However, the return value is unreliable.
+
 **System capability**: SystemCapability.Notification.CommonEvent
 
 **Return value**
@@ -732,6 +830,10 @@ isStickyCommonEventSync(): boolean
 
 Checks whether the current common event is a sticky common event synchronously.
 
+> **NOTE**
+>
+> This API can accurately reflect the current common event only when it is called in the callback for receiving common events (**onReceiveEvent**). No error is reported when this API is called outside the callback or after the event is unsubscribed from. However, the return value is unreliable.
+
 **System capability**: SystemCapability.Notification.CommonEvent
 
 **Return value**
@@ -754,6 +856,10 @@ console.info(`isStickyCommonEventSync ${JSON.stringify(isSticky)}`);
 abortCommonEvent(callback: AsyncCallback\<void>): void
 
 Aborts an ordered common event. This API is used with [finishCommonEvent](#finishcommonevent9). After the abort, the common event is not sent to the next subscriber. This API uses an asynchronous callback to return the result.
+
+> **NOTE**
+>
+> This API can be called only in the callback for receiving ordered common events. No error is reported when this API is called in the callback for receiving unordered common events or after the event is unsubscribed from. However, the setting does not take effect.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -798,6 +904,10 @@ abortCommonEvent(): Promise\<void>
 
 Aborts an ordered common event. This API is used with [finishCommonEvent](#finishcommonevent9). After the abort, the common event is not sent to the next subscriber. This API uses a promise to return the result.
 
+> **NOTE**
+>
+> This API can be called only in the callback for receiving ordered common events. No error is reported when this API is called in the callback for receiving unordered common events or after the event is unsubscribed from. However, the setting does not take effect.
+
 **System capability**: SystemCapability.Notification.CommonEvent
 
 **Return value**
@@ -829,6 +939,10 @@ abortCommonEventSync(): void
 
 Aborts an ordered common event synchronously. This API is used with [finishCommonEvent](#finishcommonevent9). After the abort, the common event is not sent to the next subscriber.
 
+> **NOTE**
+>
+> This API can be called only in the callback for receiving ordered common events. No error is reported when this API is called in the callback for receiving unordered common events or after the event is unsubscribed from. However, the setting does not take effect.
+
 **System capability**: SystemCapability.Notification.CommonEvent
 
 **Example**
@@ -849,6 +963,10 @@ subscriber.finishCommonEvent().then(() => {
 clearAbortCommonEvent(callback: AsyncCallback\<void>): void
 
 Clears the abort state of an ordered common event. Use this API together with [finishCommonEvent](#finishcommonevent9), and the common event can be passed to the next subscriber. This API uses an asynchronous callback to return the result.
+
+> **NOTE**
+>
+> This API can be called only in the callback for receiving ordered common events. No error is reported when this API is called in the callback for receiving unordered common events or after the event is unsubscribed from. However, the setting does not take effect.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -893,6 +1011,10 @@ clearAbortCommonEvent(): Promise\<void>
 
 Clears the abort state of an ordered common event. Use this API together with [finishCommonEvent](#finishcommonevent9), and the common event can be passed to the next subscriber. This API uses a promise to return the result.
 
+> **NOTE**
+>
+> This API can be called only in the callback for receiving ordered common events. No error is reported when this API is called in the callback for receiving unordered common events or after the event is unsubscribed from. However, the setting does not take effect.
+
 **System capability**: SystemCapability.Notification.CommonEvent
 
 **Return value**
@@ -924,6 +1046,10 @@ clearAbortCommonEventSync(): void
 
 Clears the abort state of an ordered common event synchronously. Use this API together with [finishCommonEvent](#finishcommonevent9), and the common event can be passed to the next subscriber.
 
+> **NOTE**
+>
+> This API can be called only in the callback for receiving ordered common events. No error is reported when this API is called in the callback for receiving unordered common events or after the event is unsubscribed from. However, the setting does not take effect.
+
 **System capability**: SystemCapability.Notification.CommonEvent
 
 **Example**
@@ -944,6 +1070,10 @@ subscriber.finishCommonEvent().then(() => {
 getAbortCommonEvent(callback: AsyncCallback\<boolean>): void
 
 Checks whether this ordered common event should be aborted. This API uses an asynchronous callback to return the result.
+
+> **NOTE**
+>
+> This API can be called only in the callback for receiving ordered common events. No error is reported when this API is called in the callback for receiving unordered common events or after the event is unsubscribed from. Instead, the default value **false** is returned through the callback or promise.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -981,6 +1111,10 @@ getAbortCommonEvent(): Promise\<boolean>
 
 Checks whether this ordered common event should be aborted. This API uses a promise to return the result.
 
+> **NOTE**
+>
+> This API can be called only in the callback for receiving ordered common events. No error is reported when this API is called in the callback for receiving unordered common events or after the event is unsubscribed from. Instead, the default value **false** is returned.
+
 **System capability**: SystemCapability.Notification.CommonEvent
 
 **Return value**
@@ -1006,6 +1140,10 @@ subscriber.getAbortCommonEvent().then((abortEvent: boolean) => {
 getAbortCommonEventSync(): boolean
 
 Checks whether an ordered common event is aborted synchronously.
+
+> **NOTE**
+>
+> This API can be called only in the callback for receiving ordered common events. No error is reported when this API is called in the callback for receiving unordered common events or after the event is unsubscribed from. Instead, the default value **false** is returned.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -1121,6 +1259,11 @@ finishCommonEvent(callback: AsyncCallback\<void>): void
 
 Finishes this ordered common event. This API uses an asynchronous callback to return the result.
 
+> **NOTE**
+>
+> - This API can be called only in the callback for receiving ordered common events. No error is reported when this API is called in the callback for receiving unordered common events or after the event is unsubscribed from. However, the call does not take effect.
+> - The maximum processing duration of an ordered common event for each subscriber is 10 seconds. If the processing times out, the system automatically ends the processing for the current subscriber and delivers the event to the subscriber with the next highest priority. The current subscriber will not be notified of the timeout. After that, calling this API will not report an error, but the call will not take effect.
+
 **System capability**: SystemCapability.Notification.CommonEvent
 
 **Parameters**
@@ -1156,6 +1299,11 @@ subscriber.finishCommonEvent((err: BusinessError) => {
 finishCommonEvent(): Promise\<void>
 
 Finishes this ordered common event. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> - This API can be called only in the callback for receiving ordered common events. No error is reported when this API is called in the callback for receiving unordered common events or after the event is unsubscribed from. However, the call does not take effect.
+> - The maximum processing duration of an ordered common event for each subscriber is 10 seconds. If the processing times out, the system automatically ends the processing for the current subscriber and delivers the event to the subscriber with the next highest priority. The current subscriber will not be notified of the timeout. After that, calling this API will not report an error, but the call will not take effect.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 

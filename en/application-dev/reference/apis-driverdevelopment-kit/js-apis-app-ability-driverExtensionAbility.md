@@ -294,7 +294,7 @@ type DriverExtensionContext = _DriverExtensionContext;
 | ArkUI | [@ohos.screenshot (Screenshot)](../apis-arkui/js-apis-screenshot.md)  |
 |<!--DelRow-->ArkUI | [@ohos.window (Window) (System API)](../apis-arkui/js-apis-window-sys.md)  |
 |<!--DelRow-->AVSession Kit| [@ohos.multimedia.avsession (AVSession Management) (System API)](../apis-avsession-kit/js-apis-avsession-sys.md)  |
-| Background Tasks Kit| [@ohos.reminderAgent (Agent-powered Reminder)](..//apis-backgroundtasks-kit/js-apis-reminderAgent.md) |
+| Background Tasks Kit| [@ohos.reminderAgent (Agent-powered Reminder)](../apis-backgroundtasks-kit/js-apis-reminderAgent.md) |
 | Background Tasks Kit| [@ohos.reminderAgentManager (Agent-Powered Reminders)](../apis-backgroundtasks-kit/js-apis-reminderAgentManager.md) |
 | Background Tasks Kit| [@ohos.resourceschedule.backgroundTaskManager (Background Task Management)](../apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md) | 
 |<!--DelRow-->Background Tasks Kit| [@ohos.resourceschedule.usageStatistics (Device Usage Statistics) (System API)](../apis-backgroundtasks-kit/js-apis-resourceschedule-deviceUsageStatistics-sys.md) |
