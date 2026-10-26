@@ -203,7 +203,7 @@ int OH_PreferencesOption_SetSharedMapSize(OH_PreferencesOption *option, int32_t 
 
 设置Preferences配置选项[OH_PreferencesOption](capi-preferences-oh-preferencesoption.md)实例对象的共享缓存文件大小。此参数仅在GSKV存储模式下生效，XML存储模式下不生效。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 
 **参数：**
@@ -229,7 +229,7 @@ int32_t OH_PreferencesOption_GetSharedMapSize(OH_PreferencesOption *option)
 
 获取Preferences配置选项[OH_PreferencesOption](capi-preferences-oh-preferencesoption.md)实例对象的共享缓存文件大小。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 
 **参数：**
