@@ -736,12 +736,6 @@ caretColor(value: ResourceColor): WebAttribute
 | ------ | ---- | ---- | ---- |
 | value | [ResourceColor](../apis-arkui/arkui-ts/ts-types.md#resourcecolor) | 是 | 网页文本输入光标及选择手柄的颜色。非零颜色覆盖网页CSS光标色；字符串`#00000000`、`undefined`或`null`重置颜色覆盖。 |
 
-**返回值：**
-
-| 类型 | 说明 |
-| ------ | ------ |
-| WebAttribute | 返回当前Web组件。 |
-
 **示例：**
 
 点击按钮设置颜色后，点击网页输入框观察光标，或长按选择文字观察手柄。点击重置按钮后，输入光标恢复网页CSS指定的蓝色，选择手柄恢复当前主题颜色。
