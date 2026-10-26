@@ -99,11 +99,7 @@ execCmd(cmd: string, execCmdOptions?: ExecCmdOptions): Promise\<CliSessionInfo\>
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**需要权限**：ohos.permission.EXEC_CLI_TOOL（系统应用可配置）或 ohos.permission.EXEC_PUBLIC_CLI_TOOL
-
-> **说明：**
->
-> - 三方应用请申请ohos.permission.EXEC_PUBLIC_CLI_TOOL权限。<!--Del-->ohos.permission.EXEC_CLI_TOOL权限仅系统应用可申请。<!--DelEnd-->
+**需要权限**：ohos.permission.EXEC_CLI_TOOL（仅系统应用可配置）或 ohos.permission.EXEC_PUBLIC_CLI_TOOL
 
 **系统能力**：SystemCapability.Ability.AgentRuntime.Core
 
@@ -309,11 +305,7 @@ querySession(sessionId: string): Promise\<CliSessionInfo\>
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**需要权限**：<!--Del-->ohos.permission.EXEC_CLI_TOOL（系统应用可配置）或 <!--DelEnd-->ohos.permission.EXEC_PUBLIC_CLI_TOOL
-
-> **说明：**
->
-> - 三方应用请申请ohos.permission.EXEC_PUBLIC_CLI_TOOL权限。<!--Del-->ohos.permission.EXEC_CLI_TOOL权限仅系统应用可申请。<!--DelEnd-->
+**需要权限**：ohos.permission.EXEC_CLI_TOOL（仅系统应用可配置）或ohos.permission.EXEC_PUBLIC_CLI_TOOL
 
 **系统能力**：SystemCapability.Ability.AgentRuntime.Core
 
