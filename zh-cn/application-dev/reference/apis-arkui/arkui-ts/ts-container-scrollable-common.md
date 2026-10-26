@@ -539,7 +539,7 @@ enableScrollWithMouse(enabled: boolean | undefined): T
 
 | 参数名 | 类型   | 必填 | 说明                                          |
 | ------ | ------ | ---- | --------------------------------------------- |
-| enabled  | boolean \| undefined | 是   | 是否支持鼠标左键按下拖动滚动。<br/>true：支持鼠标左键按下拖动滚动。<br/>false：不支持鼠标左键按下拖动滚动。<br/>undefined：不支持鼠标左键按下拖动滚动。 |
+| enabled  | boolean \| undefined | 是   | 是否支持鼠标左键按下拖动滚动。<br/>true：支持鼠标左键按下拖动滚动。<br/>false：不支持鼠标左键按下拖动滚动。<br/>undefined：首次设置为undefined时，使用默认值false。非首次设置为undefined时，保持上一次设置的效果不变。 |
 
 **返回值：**
 
