@@ -673,7 +673,7 @@ createMediaSourceWithFd(fdSrc: AVFileDescriptor): MediaSource | undefined
 ```ts
 import { common } from '@kit.AbilityKit';
 
-async function test() {
+async test() {
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   let fdSrc = await context.resourceManager.getRawFd('xxx.mp4');
   let mediaSource : media.MediaSource | undefined = media.createMediaSourceWithFd(fdSrc);
@@ -712,7 +712,7 @@ createMediaSourceWithDataSource(dataSrc: AVDataSrcDescriptor): MediaSource | und
 import { common } from '@kit.AbilityKit';
 import { fileIo as fs, ReadOptions } from '@kit.CoreFileKit';
 
-async function test() {
+async test() {
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   let fileDescriptor = await context.resourceManager.getRawFd('xxx.mp4');
   let file = fs.openSync("xxx.mp4");
