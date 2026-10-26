@@ -122,8 +122,98 @@ ZOrder值越大，窗口越靠前显示，能够覆盖ZOrder值较小的窗口�
 
 ## 相关实践
 
-### 模态
+### 使用模态子窗实现关键操作确认
 
-### 实现应用多窗口置顶
+删除、支付、退出登录等关键操作通常需要用户二次确认，且确认完成前应阻断页面其他操作。此时可创建模态子窗承载确认弹窗：模态子窗的层级高于所属主窗口及普通子窗，弹出后其遮蔽范围内的窗口不可交互，直至子窗关闭。
 
+开发步骤：
+
+1. 通过主窗口调用[createSubWindowWithOptions()](../reference/apis-arkui/arkts-apis-window-Window.md#createsubwindowwithoptions12)创建子窗，并在[SubWindowOptions](../reference/apis-arkui/arkts-apis-window-i.md#subwindowoptions11)中设置isModal为true：
+   - modalityType为WINDOW_MODALITY时，仅遮蔽父窗口，适合单页面内的操作确认；
+   - modalityType为APPLICATION_MODALITY时，遮蔽当前应用的所有窗口，适合全局性阻断（仅自由多窗模式设备支持）。
+2. 调用loadContent()加载确认弹窗页面，调用showWindow()显示子窗。
+3. 用户确认或取消后，调用destroy()销毁子窗，被遮蔽窗口恢复交互。
+
+```ts
+// 示例：弹出删除确认模态子窗
+import { window } from '@kit.ArkUI';
+import { common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function showDeleteConfirm(context: common.UIAbilityContext): Promise<void> {
+  let mainWindow = context.windowStage.getMainWindowSync();
+  let options: window.SubWindowOptions = {
+    title: '删除确认',
+    decorEnabled: false,
+    isModal: true,
+    modalityType: window.ModalityType.WINDOW_MODALITY
+  };
+  try {
+    let subWindow = await mainWindow.createSubWindowWithOptions('deleteConfirm', options);
+    subWindow.loadContent('pages/DeleteConfirm', (err: BusinessError) => {
+      if (err.code) {
+        console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
+        return;
+      }
+      subWindow.showWindow();
+    });
+  } catch (exception) {
+    console.error(`Failed to create the subwindow. Cause code: ${exception.code}, message: ${exception.message}`);
+  }
+}
+```
+
+> **说明：**
+>
+> - 模态子窗的默认层级高于普通子窗和文本菜单子窗，无需额外调用[setSubWindowZLevel()](../reference/apis-arkui/arkts-apis-window-Window.md#setsubwindowzlevel18)调整层级。
+> - 独立子窗设置模态属性不生效。
+> - 如需中途取消模态，可调用[setSubWindowModal()](../reference/apis-arkui/arkts-apis-window-Window.md#setsubwindowmodal12)传入false。
+
+### 实现应用主窗口置顶
+
+视频通话、实时导航等场景中，应用主窗口需要常驻显示、不被其他应用窗口遮挡，可通过[setWindowTopmost()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowtopmost14)实现置顶。
+
+开发步骤：
+
+1. 在module.json5中声明权限ohos.permission.WINDOW_TOPMOST。
+2. 调用[isInFreeWindowMode()](../reference/apis-arkui/arkts-apis-window-Window.md#isinfreewindowmode22)确认当前处于[自由窗口](window-terminology.md#freeform-window自由窗口)状态（置顶仅在该状态下生效）；必要时注册[on('freeWindowModeChange')](../reference/apis-arkui/arkts-apis-window-Window.md#onfreewindowmodechange22)监听窗口模式变化。
+3. 需要置顶时调用setWindowTopmost(true)，不再需要时调用setWindowTopmost(false)取消置顶。
+
+```ts
+// 示例：设置主窗口置顶
+import { window } from '@kit.ArkUI';
+import { common } from '@kit.AbilityKit';
+
+async function setTopmost(context: common.UIAbilityContext, isTopmost: boolean): Promise<void> {
+  let mainWindow = context.windowStage.getMainWindowSync();
+  if (!mainWindow.isInFreeWindowMode()) {
+    console.info('The window is not in free window mode, topmost is not supported.');
+    return;
+  }
+  try {
+    await mainWindow.setWindowTopmost(isTopmost);
+    console.info('Succeeded in setting window topmost.');
+  } catch (exception) {
+    console.error(`Failed to set window topmost. Cause code: ${exception.code}, message: ${exception.message}`);
+  }
+}
+```
+
+```json
+// module.json5
+{
+  "module": {
+    "requestPermissions": [
+      {
+        "name": "ohos.permission.WINDOW_TOPMOST"
+      }
+    ]
+  }
+}
+```
+
+> **说明：**
+>
+> - 置顶主窗口仅高于其他应用的普通主窗口，仍低于系统窗口（如输入法窗口、全局悬浮窗、系统Toast窗口）。
+> - 建议在页面中提供明显的置顶/取消置顶入口，避免长期置顶干扰用户的多任务操作。
 
