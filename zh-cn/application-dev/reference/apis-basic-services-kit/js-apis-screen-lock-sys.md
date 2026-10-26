@@ -24,7 +24,7 @@ import { screenLock } from '@kit.BasicServicesKit';
 
 type EventType = beginWakeUp | endWakeUp | beginScreenOn | endScreenOn | beginScreenOff | endScreenOff | unlockScreen |
 lockScreen | beginExitAnimation | beginSleep | endSleep | changeUser | screenlockEnabled | serviceRestart |
-strongAuthChanged | screenLockDisabledChanged
+strongAuthChanged | screenLockDisabledChanged | unlockPolicyChanged
 
 定义系统事件类型。
 
@@ -50,6 +50,7 @@ strongAuthChanged | screenLockDisabledChanged
 | serviceRestart     | 表示锁屏服务进行重启。   |
 | strongAuthChanged  | 表示锁屏增强认证状态变化时候的事件类型。       |
 | screenLockDisabledChanged     | 表示锁屏被禁用、启用状态变化时候的事件类型。   |
+| unlockPolicyChanged     | 表示锁屏解锁策略变化时候的事件类型。<br> **起始版本：** 26.0.0   |
 
 ## SystemEvent<sup>9+</sup>
 
@@ -63,6 +64,58 @@ strongAuthChanged | screenLockDisabledChanged
 | --------- | ------ | ---- | ---- | ------------- |
 | eventType   | [EventType](#eventtype9) | 否   | 否   | 系统事件类型。 |
 | params | string | 否   | 否   | 系统事件参数。 |
+
+## StrongAuthReasonFlags<sup>12+</sup>
+
+表示请求强认证的原因标志位。
+
+**系统能力：** SystemCapability.MiscServices.ScreenLock
+
+**系统接口**：此接口为系统接口。
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| NONE | 0x00000000 | 表示无强认证。 |
+| AFTER_BOOT | 0x00000001 | 表示开机后强认证。 |
+| AFTER_TIMEOUT | 0x00000002 | 表示超时强认证。 |
+| ACTIVE_REQUEST | 0x00000004 | 表示主动请求强认证。 |
+| POLICY_RESTRICTION | 0x00000008 | 表示策略限制请求强认证。 |
+
+## AuthState<sup>12+</sup>
+
+表示锁屏认证状态的枚举。
+
+**系统能力：** SystemCapability.MiscServices.ScreenLock
+
+**系统接口**：此接口为系统接口。
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| NOT_AUTHED | 0 | 表示锁屏未认证。 |
+| PRE_AUTHED_BY_CREDENTIAL | 1 | 表示锁屏通过凭据预认证。 |
+| PRE_AUTHED_BY_FINGERPRINT | 2 | 表示锁屏通过指纹预认证。 |
+| PRE_AUTHED_BY_FACE | 3 | 表示锁屏通过人脸预认证。 |
+| AUTHED_BY_CREDENTIAL | 4 | 表示锁屏通过凭据认证。 |
+| AUTHED_BY_FINGERPRINT | 5 | 表示锁屏通过指纹认证。 |
+| AUTHED_BY_FACE | 6 | 表示锁屏通过人脸认证。 |
+
+## UnlockPolicy
+
+表示解锁屏幕所使用的锁屏认证策略。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.MiscServices.ScreenLock
+
+**系统接口**：此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| DEFAULT | 0 | 表示使用默认系统认证方式解锁锁屏。 |
+| EXTENDED_AUTH_ONLY | 1 | 表示仅使用扩展认证方式解锁锁屏。 |
+| EXTENDED_AUTH_AND_SYSTEM | 2 | 表示使用扩展认证和系统认证方式解锁锁屏。 |
 
 ## screenLock.isLocked<sup>9+</sup>
 
@@ -78,7 +131,7 @@ isLocked(): boolean
 
 | 类型    | 说明                                              |
 | ------- | ------------------------------------------------- |
-| boolean | 返回true表示屏幕已锁屏；返回false表示屏幕未锁屏。 |
+| boolean | 表示屏幕是否锁屏，返回true表示屏幕已锁屏；返回false表示屏幕未锁屏。 |
 
 **错误码**：
 
@@ -119,7 +172,7 @@ unlock(callback: AsyncCallback&lt;boolean&gt;): void
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 202  | permission verification failed, application which is not a system application uses system API.         |
 | 13200002  | the screenlock management service is abnormal.         |
-| 13200003  | illegal use.         |
+| 13200003  | Invalid use.         |
 
 **示例：** 
 
@@ -137,7 +190,7 @@ unlock(callback: AsyncCallback&lt;boolean&gt;): void
 
 > **说明：**
 >
-> 在 api11 中 增加错误码`13200003 illegal use` 。
+> 在 api11 中 增加错误码`13200003 Invalid use` 。
 
 ## screenLock.unlock<sup>9+</sup>
 
@@ -163,7 +216,7 @@ unlock(): Promise&lt;boolean&gt;
 | -------- | ---------------------------------------- |
 | 202  | permission verification failed, application which is not a system application uses system API.         |
 | 13200002  | the screenlock management service is abnormal.         |
-| 13200003  | illegal use.         |
+| 13200003  | Invalid use.       |
 
 **示例：** 
 
@@ -179,7 +232,7 @@ unlock(): Promise&lt;boolean&gt;
 
 > **说明：**
 >
-> 在 api11 中 增加错误码`13200003 illegal use` 。
+> 在 api11 中 增加错误码`13200003 Invalid use` 。
 
 ## screenLock.lock<sup>9+</sup>
 
@@ -286,7 +339,7 @@ onSystemEvent(callback: Callback&lt;SystemEvent&gt;): boolean
 
 | 类型    | 说明                                              |
 | ------- | ------------------------------------------------- |
-| boolean | 返回true表示锁屏相关系统事件注册成功；返回false表示锁屏相关系统事件注册失败。 |
+| boolean | 表示锁屏相关系统事件注册是否成功，返回true表示锁屏相关系统事件注册成功；返回false表示锁屏相关系统事件注册失败。 |
 
 **错误码**：
 
@@ -406,4 +459,361 @@ sendScreenLockEvent(event: String, parameter: number): Promise&lt;boolean&gt;
     console.error(`Failed to send screenlock event, Code: ${err.code}, message: ${err.message}`);
   });
   ```
+
+## screenLock.requestStrongAuth<sup>12+</sup>
+
+requestStrongAuth(reasonFlag: StrongAuthReasonFlags, userId: int): Promise&lt;void&gt;
+
+为指定用户请求强认证。
+
+**系统能力：** SystemCapability.MiscServices.ScreenLock
+
+**需要权限：** ohos.permission.ACCESS_SCREEN_LOCK
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | -------- |
+| reasonFlag | [StrongAuthReasonFlags](#strongauthreasonflags12) | 是 | 强认证原因标志位。 |
+| userId | int | 是 | 用户ID。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[锁屏服务错误码](errorcode-screenlock.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 201 | permission denied. |
+| 202 | permission verification failed. A non-system application calls a system API. |
+| 13200002 | the screenlock management service is abnormal. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+screenLock.requestStrongAuth(screenLock.StrongAuthReasonFlags.AFTER_BOOT, 100).then(() => {
+  console.info('Succeeded in requesting strong auth.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to request strong auth, Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+## screenLock.getStrongAuth<sup>12+</sup>
+
+getStrongAuth(userId: int): int
+
+获取指定用户的强认证原因标志位。
+
+**系统能力：** SystemCapability.MiscServices.ScreenLock
+
+**需要权限：** ohos.permission.ACCESS_SCREEN_LOCK
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | -------- |
+| userId | int | 是 | 用户ID。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| int | 强认证原因标志位。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[锁屏服务错误码](errorcode-screenlock.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 201 | permission denied. |
+| 202 | permission verification failed. A non-system application calls a system API. |
+| 13200002 | the screenlock management service is abnormal. |
+
+**示例：**
+
+```ts
+let strongAuth = screenLock.getStrongAuth(100);
+console.info(`Strong auth flags: ${strongAuth}`);
+```
+
+## screenLock.setScreenLockDisabled<sup>12+</sup>
+
+setScreenLockDisabled(disable: boolean, userId: int): Promise&lt;boolean&gt;
+
+为指定用户禁用或启用锁屏。仅在未设置密码时生效。
+
+**系统能力：** SystemCapability.MiscServices.ScreenLock
+
+**需要权限：** ohos.permission.ACCESS_SCREEN_LOCK
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | -------- |
+| disable | boolean | 是 | 表示是否禁用锁屏，true表示禁用锁屏，false表示启用锁屏。 |
+| userId | int | 是 | 用户ID。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示设置成功；返回false表示设置失败。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[锁屏服务错误码](errorcode-screenlock.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 201 | permission denied. |
+| 202 | permission verification failed, application which is not a system application uses system API. |
+| 13200002 | the screenlock management service is abnormal. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+screenLock.setScreenLockDisabled(true, 100).then((result: boolean) => {
+  console.info(`Succeeded in setting screen lock disabled. result: ${result}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to set screen lock disabled, Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+## screenLock.isScreenLockDisabled<sup>12+</sup>
+
+isScreenLockDisabled(userId: int): boolean
+
+查询指定用户的锁屏是否被禁用。
+
+**系统能力：** SystemCapability.MiscServices.ScreenLock
+
+**需要权限：** ohos.permission.ACCESS_SCREEN_LOCK
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | -------- |
+| userId | int | 是 | 用户ID。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| boolean | 表示锁屏是否被禁用，返回true表示锁屏已禁用；返回false表示锁屏未禁用。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[锁屏服务错误码](errorcode-screenlock.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 201 | permission denied. |
+| 202 | permission verification failed, application which is not a system application uses system API. |
+| 13200002 | the screenlock management service is abnormal. |
+
+**示例：**
+
+```ts
+let isDisabled = screenLock.isScreenLockDisabled(100);
+console.info(`Screen lock disabled: ${isDisabled}`);
+```
+
+## screenLock.setScreenLockAuthState<sup>12+</sup>
+
+setScreenLockAuthState(state: AuthState, userId: int, authToken: Uint8Array): Promise&lt;boolean&gt;
+
+为指定用户设置锁屏认证状态。
+
+**系统能力：** SystemCapability.MiscServices.ScreenLock
+
+**需要权限：** ohos.permission.ACCESS_SCREEN_LOCK_INNER
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | -------- |
+| state | [AuthState](#authstate12) | 是 | 锁屏认证状态。 |
+| userId | int | 是 | 用户ID。 |
+| authToken | Uint8Array | 是 | 该状态对应的认证令牌。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示设置成功；返回false表示设置失败。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[锁屏服务错误码](errorcode-screenlock.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 201 | permission denied. |
+| 202 | permission verification failed, application which is not a system application uses system API. |
+| 13200002 | the screenlock management service is abnormal. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let authToken = new Uint8Array([1, 2, 3, 4]);
+screenLock.setScreenLockAuthState(screenLock.AuthState.AUTHED_BY_CREDENTIAL, 100, authToken).then((result: boolean) => {
+  console.info(`Succeeded in setting screen lock auth state. result: ${result}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to set screen lock auth state, Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+## screenLock.getScreenLockAuthState<sup>12+</sup>
+
+getScreenLockAuthState(userId: int): AuthState
+
+获取指定用户的锁屏认证状态。
+
+**系统能力：** SystemCapability.MiscServices.ScreenLock
+
+**需要权限：** ohos.permission.ACCESS_SCREEN_LOCK
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | -------- |
+| userId | int | 是 | 用户ID。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| [AuthState](#authstate12) | 锁屏认证状态。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[锁屏服务错误码](errorcode-screenlock.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 201 | permission denied. |
+| 202 | permission verification failed, application which is not a system application uses system API. |
+| 13200002 | the screenlock management service is abnormal. |
+
+**示例：**
+
+```ts
+let authState = screenLock.getScreenLockAuthState(100);
+console.info(`Screen lock auth state: ${authState}`);
+```
+
+## screenLock.isDeviceLocked<sup>20+</sup>
+
+isDeviceLocked(userId: int): boolean
+
+查询设备是否已锁屏且需要身份认证才能解锁。
+
+**系统能力：** SystemCapability.MiscServices.ScreenLock
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | -------- |
+| userId | int | 是 | 用户ID。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| boolean | 表示设备是否锁屏，返回true表示设备已锁屏；返回false表示设备未锁屏。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[锁屏服务错误码](errorcode-screenlock.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 202 | permission verification failed, application which is not a system application uses system API. |
+| 13200002 | The screenlock management service is abnormal. |
+| 13200004 | The userId is not same as the caller, and is not allowed for the caller. |
+
+**示例：**
+
+```ts
+let isDeviceLocked = screenLock.isDeviceLocked(100);
+console.info(`Device locked: ${isDeviceLocked}`);
+```
+
+## screenLock.getUnlockPolicy
+
+getUnlockPolicy(userId: int): UnlockPolicy
+
+获取解锁屏幕所使用的认证策略。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.MiscServices.ScreenLock
+
+**需要权限：** ohos.permission.ACCESS_SCREEN_LOCK
+
+**系统接口**：此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | -------- |
+| userId | int | 是 | 用户ID。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| [UnlockPolicy](#unlockpolicy) | 解锁策略。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[锁屏服务错误码](errorcode-screenlock.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission denied. |
+| 202 | permission verification failed: applications that are not system applications cannot use system API. |
+| 13200002 | The screen lock management service is abnormal. |
+| 13200004 | The userId is not the same as the caller, and the caller is not authorized. |
+
+**示例：**
+
+```ts
+let unlockPolicy = screenLock.getUnlockPolicy(100);
+console.info(`Unlock policy: ${unlockPolicy}`);
+```
 
