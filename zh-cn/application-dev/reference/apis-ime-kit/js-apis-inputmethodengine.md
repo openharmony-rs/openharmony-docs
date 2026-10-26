@@ -7812,7 +7812,7 @@ inputClient?.getLeftRichText(length).then((richText) => {
 
 ArkTS-Dyn: getLeftRichTextSync(length: number): InputMethodRichText
 
-ArkTS-Sta: getLeftRichTextSync(length: int): InputMethodRichText | null
+ArkTS-Sta: getLeftRichTextSync(length: int): InputMethodRichText
 
 获取光标前指定长度的富文本内容。
 
@@ -7886,20 +7886,16 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let length: int = 5;
-  let richText: inputMethodEngine.InputMethodRichText | null = inputClient!.getLeftRichTextSync(length);
-  if (richText === null) {
-    console.info('getLeftRichTextSync: result is null');
-  } else {
-    let plainText: string = richText.getString();
-    console.info(`Succeeded in getting left rich text sync, plainText: ${plainText}`);
-    let spans: Array<inputMethodEngine.RichTextSpan> = richText.getSpans();
-    for (let i = 0; i < spans.length; i++) {
-      let span: inputMethodEngine.RichTextSpan = spans[i];
-      let type: inputMethodEngine.SpanType = span.getType();
-      let content: string = span.getContent();
-      let range: inputMethodEngine.Range = span.getRange();
-      console.info(`span[${i}]: type=${type}, content=${content}, range={start:${range.start}, end:${range.end}}`);
-    }
+  let richText: inputMethodEngine.InputMethodRichText = inputClient!.getLeftRichTextSync(length);
+  let plainText: string = richText.getString();
+  console.info(`Succeeded in getting left rich text sync, plainText: ${plainText}`);
+  let spans: Array<inputMethodEngine.RichTextSpan> = richText.getSpans();
+  for (let i = 0; i < spans.length; i++) {
+    let span: inputMethodEngine.RichTextSpan = spans[i];
+    let type: inputMethodEngine.SpanType = span.getType();
+    let content: string = span.getContent();
+    let range: inputMethodEngine.Range = span.getRange();
+    console.info(`span[${i}]: type=${type}, content=${content}, range={start:${range.start}, end:${range.end}}`);
   }
 } catch (err) {
   let error: BusinessError = err as BusinessError;
@@ -8005,7 +8001,7 @@ inputClient?.getRightRichText(length).then((richText) => {
 
 ArkTS-Dyn: getRightRichTextSync(length: number): InputMethodRichText
 
-ArkTS-Sta: getRightRichTextSync(length: int): InputMethodRichText | null
+ArkTS-Sta: getRightRichTextSync(length: int): InputMethodRichText
 
 获取光标后指定长度的富文本内容。
 
@@ -8079,20 +8075,16 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let length: int = 5;
-  let richText: inputMethodEngine.InputMethodRichText | null = inputClient!.getRightRichTextSync(length);
-  if (richText === null) {
-    console.info('getRightRichTextSync: result is null');
-  } else {
-    let plainText: string = richText.getString();
-    console.info(`Succeeded in getting right rich text sync, plainText: ${plainText}`);
-    let spans: Array<inputMethodEngine.RichTextSpan> = richText.getSpans();
-    for (let i = 0; i < spans.length; i++) {
-      let span: inputMethodEngine.RichTextSpan = spans[i];
-      let type: inputMethodEngine.SpanType = span.getType();
-      let content: string = span.getContent();
-      let range: inputMethodEngine.Range = span.getRange();
-      console.info(`span[${i}]: type=${type}, content=${content}, range={start:${range.start}, end:${range.end}}`);
-    }
+  let richText: inputMethodEngine.InputMethodRichText = inputClient!.getRightRichTextSync(length);
+  let plainText: string = richText.getString();
+  console.info(`Succeeded in getting right rich text sync, plainText: ${plainText}`);
+  let spans: Array<inputMethodEngine.RichTextSpan> = richText.getSpans();
+  for (let i = 0; i < spans.length; i++) {
+    let span: inputMethodEngine.RichTextSpan = spans[i];
+    let type: inputMethodEngine.SpanType = span.getType();
+    let content: string = span.getContent();
+    let range: inputMethodEngine.Range = span.getRange();
+    console.info(`span[${i}]: type=${type}, content=${content}, range={start:${range.start}, end:${range.end}}`);
   }
 } catch (err) {
   let error: BusinessError = err as BusinessError;
