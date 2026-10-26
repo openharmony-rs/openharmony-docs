@@ -619,7 +619,7 @@ startBackgroundRunning(context: Context, request: ContinuousTaskRequest): Promis
 | 9800005 | Continuous task verification failed. |
 | 9800006 | Notification verification failed for a continuous task. |
 | 9800007 | Continuous task storage failed. |
-| 9800008 | The requested continuous task is not supported on this device type.<br/>**起始版本：** 26.0.1 |
+| 9800008 | The requested continuous task is not supported on this device type.<br>适用版本：26.0.1 |
 
 **示例：**
 
@@ -1091,7 +1091,7 @@ updateBackgroundRunning(context: Context, request: ContinuousTaskRequest): Promi
 | 9800005 | Continuous task verification failed. |
 | 9800006 | Notification verification failed for a continuous task. |
 | 9800007 | Continuous task storage failed. |
-| 9800008 | The requested continuous task is not supported on this device type.<br/>**起始版本：** 26.0.1 |
+| 9800008 | The requested continuous task is not supported on this device type.<br>适用版本：26.0.1 |
 
 **示例：**
 
@@ -1770,7 +1770,6 @@ export default class EntryAbility extends UIAbility {
 | SYSTEM_CANCEL_USER_UNAUTHORIZED           | 14   | 申请特殊场景类型长时任务，但是用户未授权。  |
 | SYSTEM_CANCEL_NOT_USE_NEARLINK           | 15   | 申请NEARLINK类型长时任务，但是未使用星闪相关业务。<br/>**起始版本：** 26.0.1  |
 | SYSTEM_CANCEL_NOT_USE_USB                 | 16   | 申请USB类型长时任务，但是未检测到USB设备。<br/>**起始版本：** 26.0.1  |
-| SYSTEM_CANCEL_USB_ALREADY_OCCUPIED        | 17   | 申请USB类型长时任务，但是USB设备已经被占用。<br/>**起始版本：** 26.0.1  |
 
 ## BackgroundSubMode<sup>16+</sup>
 
@@ -1845,7 +1844,6 @@ export default class EntryAbility extends UIAbility {
 | SYSTEM_SUSPEND_NEARLINK_DATA_NOT_EXIST           | 18   | 申请星闪类型长时任务，但是一段时间没有星闪数据流。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | SYSTEM_SUSPEND_USER_UNAUTHORIZED           | 19   | 申请特殊类型长时任务，但是用户未授权。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | SYSTEM_SUSPEND_USB_NOT_USED                | 20   | 申请USB类型长时任务，但是未使用USB设备。<br/>**起始版本：** 26.0.1<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| SYSTEM_SUSPEND_USB_ALREADY_OCCUPIED        | 21   | 申请USB类型长时任务，但是USB设备已经被占用。<br/>**起始版本：** 26.0.1<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## ContinuousTaskActiveInfo<sup>20+</sup>
 
