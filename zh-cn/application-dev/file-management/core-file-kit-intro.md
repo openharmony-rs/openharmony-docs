@@ -108,6 +108,10 @@ Core File Kit常见的使用场景：
     - UserFileManager：内卡文件管理服务，基于File Access ExtensionAbility框架实现，用于管理内置存储设备上的文件。
     - ExternalFileManager：外卡文件管理服务，基于File Access ExtensionAbility框架实现，用于管理外置存储设备上的文件。
 
+<!--RP6--><!--RP6End-->
+
+<!--RP5--><!--RP5End-->
+
 ## 与相关Kit的关系
 
 Ability Kit：Core File Kit中用户文件访问框架依赖Ability Kit提供的Extension基础能力，并受Ability Kit服务调度管理。
@@ -117,5 +121,3 @@ Ability Kit：Core File Kit中用户文件访问框架依赖Ability Kit提供的
 针对Core File Kit开发，有以下相关实例可供参考：
 
 - [文件管理（ArkTS）（Full SDK）（API10）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SystemFeature/FileManagement/FileManager)
-
-<!--RP5--><!--RP5End-->
