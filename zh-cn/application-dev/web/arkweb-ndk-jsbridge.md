@@ -369,22 +369,23 @@
 
 * Node-API侧编译配置`entry/src/main/cpp/CMakeLists.txt`
   <!-- @[cmake_lists](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebJsInteraction/NdkJsBridgeEX/entry/src/main/cpp/CMakeLists.txt) -->
-  ```c++
+  
+  ``` Text
   # the minimum version of CMake.
-  cmake_minimum_required(VERSION 3.4.1)
+  cmake_minimum_required(VERSION 3.5.0)
   project(NDKJSBridge)
-
-  set(NATIVERENDER_ROOT_PATH ${CMAKE_CURRENT_SOURCE_DIR})
-
+  
+  set(NATIVERENDER_ROOT_PATH &#36;{CMAKE_CURRENT_SOURCE_DIR})
+  
   if(DEFINED PACKAGE_FIND_FILE)
-      include(${PACKAGE_FIND_FILE})
+      include(&#36;{PACKAGE_FIND_FILE})
   endif()
-
-  include_directories(${NATIVERENDER_ROOT_PATH}
-                      ${NATIVERENDER_ROOT_PATH}/include)
-
+  
+  include_directories(&#36;{NATIVERENDER_ROOT_PATH}
+                      &#36;{NATIVERENDER_ROOT_PATH}/include)
+  
   add_library(entry SHARED hello.cpp jsbridge_object.cpp)
-
+  
   find_library(
       # Sets the name of the path variable.
       hilog-lib
@@ -392,7 +393,7 @@
       # you want CMake to locate.
       hilog_ndk.z
   )
-
+  
   target_link_libraries(entry PUBLIC libace_napi.z.so ${hilog-lib} libohweb.so)
   ```
 
