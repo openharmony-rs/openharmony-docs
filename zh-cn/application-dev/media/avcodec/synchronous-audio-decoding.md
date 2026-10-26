@@ -463,12 +463,12 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
        CodecBufferInfo bufferInfo;
        int32_t errCode = decoder_.GetOutputBuffer(bufferInfo, CODEC_BUFFER_TIMEOUT_US);
        if (errCode == AVCODEC_SAMPLE_ERR_END) {
-           // 同步解码器已在GetOutputBuffer()内归还EOS索引，此处不能重复释放。
+           // 同步解码器已在 GetOutputBuffer() 内归还 EOS 索引，此处不能重复释放。
            AVCODEC_SAMPLE_LOGI("Audio decoder reached EOS");
            return false;
        }
        if (errCode == AVCODEC_SAMPLE_ERR_ERROR) {
-           // 查询成功但读取属性失败时，封装层可能仍留下已取得的Buffer；仅在指针有效时归还。
+           // 查询成功但读取属性失败时，封装层可能仍留下已取得的 Buffer；仅在指针有效时归还。
            (void)ReleaseOutputBuffer(bufferInfo, "get audio output buffer failed");
            MarkPlaybackFailed("Audio decoder output failed");
            return false;

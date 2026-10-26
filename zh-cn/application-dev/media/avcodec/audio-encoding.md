@@ -457,12 +457,12 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    {
        while (true) {
            CHECK_AND_BREAK_LOG(isStarted_, "Work done, thread out");
-
+   
            std::shared_ptr<CodecBufferInfo> bufferInfo = audioEncContext_->outputBufferQueue.Dequeue();
            std::shared_lock<std::shared_mutex> codecLock(audioEncContext_->codecMutex);
            CHECK_AND_BREAK_LOG(isStarted_, "Work done, thread out");
            CHECK_AND_CONTINUE_LOG(bufferInfo != nullptr, "Buffer queue is empty, continue");
-
+   
            audioEncContext_->outputFrameCount++;
            AVCODEC_SAMPLE_LOGW(
                "Audio Out buffer count: %{public}u, size: %{public}d, flag: %{public}u, pts: %{public}" PRId64,
@@ -470,7 +470,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
            const bool isEosBuffer = (bufferInfo->attr.flags & AVCODEC_BUFFER_FLAGS_EOS) != 0;
            int32_t writeRet = AVCODEC_SAMPLE_ERR_OK;
            if (!isEosBuffer && bufferInfo->attr.size > 0) {
-               // AAC只编码一次；同一输出Buffer依次写入两个Muxer，之后仍按原索引归还。
+               // AAC 只编码一次；同一输出 Buffer 依次写入两个 Muxer，之后仍按原索引归还。
                writeRet = muxer_->WriteSample(muxer_->GetAudioTrackId(), bufferInfo->buffer, bufferInfo->attr);
                if (writeRet == AVCODEC_SAMPLE_ERR_OK && secondaryMuxer_ != nullptr) {
                    writeRet = secondaryMuxer_->WriteSample(secondaryMuxer_->GetAudioTrackId(), bufferInfo->buffer,

@@ -275,7 +275,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    {
        while (true) {
            CHECK_AND_BREAK_LOG(isStarted_, "Audio encoder sync thread out");
-           // 收到EOS后停止提交新输入，但输出线程仍会继续排空已编码样本。
+           // 收到 EOS 后停止提交新输入，但输出线程仍会继续排空已编码样本。
            if (isEos_.load()) {
                AVCODEC_SAMPLE_LOGI("Audio input thread received EOS signal, stopping input");
                break;
@@ -293,7 +293,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
            auto buffer = audioEncoder_->GetInputBuffer(bufferInfo, TIMEOUT_US);
            if (buffer == nullptr) {
                if (bufferInfo.bufferIndex != std::numeric_limits<uint32_t>::max()) {
-                   // Query已成功但Get失败时，索引可能仍由应用持有；结束会话交由codec回收。
+                   // Query 已成功但 Get 失败时，索引可能仍由应用持有；结束会话交由 codec 回收。
                    AbortRecording("Synchronous audio input buffer retrieval failed");
                    break;
                }
@@ -421,7 +421,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
            const bool isEosBuffer = (bufferInfo.attr.flags & AVCODEC_BUFFER_FLAGS_EOS) != 0;
            int32_t writeRet = AVCODEC_SAMPLE_ERR_OK;
            if (!isEosBuffer && bufferInfo.attr.size > 0) {
-               // Muxer写入不接管Buffer；两个目标写完后仍需显式归还原索引。
+               // Muxer 写入不接管 Buffer；两个目标写完后仍需显式归还原索引。
                writeRet = muxer_->WriteSample(muxer_->GetAudioTrackId(), bufferInfo.buffer, bufferInfo.attr);
                if (writeRet == AVCODEC_SAMPLE_ERR_OK && secondaryMuxer_ != nullptr) {
                    writeRet = secondaryMuxer_->WriteSample(secondaryMuxer_->GetAudioTrackId(), bufferInfo.buffer,
@@ -441,7 +441,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
                break;
            }
        }
-       // 同步模式仍由视频线程触发释放；音频先结束时，视频仍在使用Muxer。
+       // 同步模式仍由视频线程触发释放；音频先结束时，视频仍在使用 Muxer。
        AVCODEC_SAMPLE_LOGI("Audio output thread exited, waiting for video thread to trigger release");
    }
    ```
