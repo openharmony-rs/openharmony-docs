@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "归纳JSVM-API使用规范，涵盖HandleScope生命周期管理、多引擎实例隔离、多线程加锁、参数获取、异常处理与上下文绑定等规则，帮助规避崩溃与内存泄漏。"
+keywords: [JSVM-API, 使用规范, 生命周期管理, HandleScope, 多引擎实例, 多线程共享, OH_JSVM_GetCbInfo, 异常处理, 上下文绑定]
+doctype: guide
+status: active
+---
+
 # JSVM-API使用规范
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
@@ -345,13 +353,13 @@ static JSVM_Value GetArgvDemo2(napi_env env, JSVM_CallbackInfo info) {
 
     // 绑定NativeFunction到JSVM中，省略
     std::string sourcecodestr = R"JS(
-        // console.log需用户实现
+        // consoleinfo需用户实现
         try {
             // 调用Native函数
             NativeFunction()
         } catch (e) {
             // 处理Native中产生的异常
-            consolelog(e.message)
+            consoleinfo(e.message)
         }
     )JS";
     JSVM_Value sourcecodevalue = nullptr;
@@ -420,13 +428,13 @@ OH_JSVM_CreateStringLatin1(env, "FunctionNameInJSContext", JSVM_AUTO_LENGTH, &ke
 OH_JSVM_SetProperty(env, global, key, JSFunc);
 // 在JS中调用函数
 std::string sourcecodestr = R"JS(
-    // console.log需用户实现
+    // consoleinfo需用户实现
     FunctionNameInJSContext() // 调用成功
-    consolelog(FunctionNameInJSContext.name) // 打印 "NativeFunction"
+    consoleinfo(FunctionNameInJSContext.name) // 打印 "NativeFunction"
     try {
         NativeFunction() // 无法找到该函数，抛出异常
     } catch (e) {
-        consolelog(e.message)
+        consoleinfo(e.message)
     }
 )JS";
 ```

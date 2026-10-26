@@ -22,6 +22,8 @@ Repeat基于数组类型数据来进行循环渲染，一般与滚动容器组�
 
 Repeat\<T\>(arr: Array\<T\>)
 
+**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -46,7 +48,9 @@ Repeat\<T\>(arr: RepeatArray\<T\>, options?: RepeatOptions)
 >
 > 从API version 18开始，Repeat数据源支持RepeatArray类型。
 >
-> 从API版本26.2.0开始，Repeat支持传入[RepeatOptions](#repeatoptions)，用于绑定控制器[RepeatController](#repeatcontroller)。
+> 从API版本26.1.0开始，Repeat支持传入[RepeatOptions](#repeatoptions)，用于绑定控制器[RepeatController](#repeatcontroller)。
+
+**卡片能力：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -57,7 +61,7 @@ Repeat\<T\>(arr: RepeatArray\<T\>, options?: RepeatOptions)
 | 参数名 | 类型       | 必填 | 说明      |
 | ------ | ---------- | -------- | -------- |
 | arr    | [RepeatArray\<T\>](#repeatarrayt18) | 是 | 数据源，为`RepeatArray<T>`类型的数组，由开发者决定数据类型。 |
-| options    | [RepeatOptions](#repeatoptions) | 否 | 创建Repeat组件时的配置项，用于绑定控制器。不传入时使用默认配置（不绑定控制器）。<br>**起始版本：** 26.2.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。 |
+| options    | [RepeatOptions](#repeatoptions) | 否 | 创建Repeat组件时的配置项，用于绑定控制器。不传入时使用默认配置（不绑定控制器）。<br>**起始版本：** 26.1.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。 |
 
 ## 属性
 
@@ -253,11 +257,11 @@ Repeat数据源参数联合类型。
 
 创建Repeat组件时的配置项。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -274,11 +278,11 @@ Repeat组件的控制器。通过[RepeatOptions](#repeatoptions)中的controller
 > 1. controller仅在Repeat创建时绑定，不支持动态修改。
 > 2. 一个控制器只能控制一个Repeat组件。若将控制器绑定到另一个Repeat，则之前的绑定自动失效，控制器仅控制最后绑定的组件。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -288,11 +292,11 @@ constructor()
 
 RepeatController的构造函数。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -302,11 +306,11 @@ clearCache(): void
 
 清理该控制器绑定的Repeat组件懒加载模式下缓存池中的组件。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -558,7 +562,7 @@ struct MemoryOptimizeDemo {
 
 以下示例中，通过[RepeatOptions](#repeatoptions)的controller属性绑定了[RepeatController](#repeatcontroller)。点击Scroll按钮，使列表跳转，旧组件进入缓存池。然后点击Clear按钮，主动清理Repeat缓存池中的组件。
 
-从API版本26.2.0开始，Repeat接口新增options参数。
+从API版本26.1.0开始，Repeat接口新增options参数。
 
 ```ts
 @ComponentV2

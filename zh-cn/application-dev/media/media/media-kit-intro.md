@@ -1,3 +1,11 @@
+---
+kits: ["Media Kit / 媒体服务"]
+description: "Media Kit（媒体服务）能力总览，介绍AVPlayer、SoundPool、AVRecorder、AVScreenCapture、AVMetadataExtractor、AVImageGenerator、AVTranscoder等模块，涵盖播放、录制、元数据获取、缩略图、转码及各自支持的格式与协议。"
+keywords: [Media Kit, 媒体服务, AVPlayer, SoundPool, AVRecorder, AVScreenCapture, AVTranscoder, 轻量媒体引擎, HDR]
+doctype: guide
+status: active
+---
+
 # Media Kit简介
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
@@ -329,7 +337,7 @@ AVTranscoder主要用于将已压缩编码的视频文件按照指定参数转�
 
    | 封装格式  | 视频编码类型   | 音频编码类型   |
    | -------- | :------------------| :---------------- |
-   | mp4      | AVC（H.264）<!--RP7--><!--RP7End-->、HEVC（H.265） | AAC、MPEG（MP3） |
+   | mp4      | AVC（H.264）<!--RP7--><!--RP7End--> | AAC、MPEG（MP3） |
 
 - 支持的目标音频格式：
 

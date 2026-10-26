@@ -9079,7 +9079,7 @@ Allows an application to access data on the external storage card of the dashcam
 
 **Supported devices**: cars
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 ## ohos.permission.AUTH_MODEL_DOWNLOAD
 
@@ -9491,7 +9491,7 @@ Allows an application to specify the actual entity using the audio and activate 
 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs | wearables | cars
 
-**Valid since**: 26.2.0
+**Valid since**: 26.1.0
 
 ## ohos.permission.ALLOW_INSTALL_DEBUG_HAP
 
@@ -9519,7 +9519,7 @@ Allows an application to access authentication event management framework to rep
 
 **Supported devices**: PCs/2-in-1 devices
 
-**Valid since**: 26.2.0
+**Valid since**: 26.1.0
 
 ## ohos.permission.SET_DSL_MODE
 
@@ -9533,7 +9533,7 @@ Allows an application to modify the device security level (DSL) configuration.
 
 **Supported devices**: PCs/2-in-1 devices | tablets
 
-**Valid since**: 26.2.0
+**Valid since**: 26.1.0
 
 ## ohos.permission.vehicle.INNER_NETWORK
 
@@ -9547,7 +9547,7 @@ Allows an application to access the vehicle's internal networks.
 
 **Supported devices**: cars
 
-**Valid since**: 26.2.0
+**Valid since**: 26.1.0
 
 ## ohos.permission.vehicle.LOGIN_TSP
 
@@ -9757,4 +9757,4 @@ Allows a system application to connect an agent in the background.
 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets |  TVs | wearables | cars
 
-**Valid since**: 26.2.0
+**Valid since**: 26.1.0

@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍如何使用JSVM-API创建和解析Promise以处理JS异步操作，涵盖延迟对象的兑现、拒绝与回调注册，适用于异步任务开发场景。"
+keywords: [OH_JSVM_CreatePromise, OH_JSVM_ResolveDeferred, OH_JSVM_RejectDeferred, OH_JSVM_IsPromise, OH_JSVM_PromiseRegisterHandler, 异步操作, Promise, 延迟对象, 异步任务]
+doctype: guide
+status: active
+---
+
 # 使用JSVM-API接口处理异步操作
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
@@ -89,7 +97,7 @@ JSVM OH_JSVM_IsPromise success:0
 
 ### OH_JSVM_CreatePromise
 
-OH_JSVM_CreatePromise用于创建一个Promise对象。
+OH_JSVM_CreatePromise用于创建一个Promise对象。代码示例见[下一节](#oh_jsvm_resolvedeferred--oh_jsvm_rejectdeferred)。
 
 ### OH_JSVM_ResolveDeferred & OH_JSVM_RejectDeferred
 

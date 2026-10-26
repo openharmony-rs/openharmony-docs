@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "提供批量数据写数据库场景的开发指导：频繁数据库操作使用TaskPool处理，大容量数据操作借助Sendable对象引用传递避免序列化开销，并覆盖复杂类实例对象的Sendable改造与批量落库实现。"
+keywords: [批量数据库操作, TaskPool, Sendable, 大容量数据, 数据库写入, relationalStore, 引用传递, 序列化开销]
+doctype: guide
+status: active
+---
+
 # 批量数据写数据库场景
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->

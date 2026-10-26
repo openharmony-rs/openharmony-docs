@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "详解-keep-property-name、-keep-global-name等ArkGuard保留选项的作用与配置方法，通过白名单避免原始名称访问失效。"
+keywords: [混淆, 保留选项, 白名单, -keep-property-name, -keep-global-name, -keep-file-name, 通配符, 混淆助手]
+doctype: guide
+status: active
+---
+
 # ArkGuard混淆保留选项
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->

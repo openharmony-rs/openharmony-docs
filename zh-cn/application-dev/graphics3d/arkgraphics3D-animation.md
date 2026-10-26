@@ -3,7 +3,7 @@
 <!--Subsystem: Graphics-->
 <!--Owner: @jason_stark-->
 <!--Designer: @zdustc-->
-<!--Tester: @zhangyue283-->
+<!--Tester: @dongchao01-->
 <!--Adviser: @ge-yafang-->
 
 动画（animation）：3D场景中重要的资源类型，用于控制场景中各种元素的运动。例如，要让场景中的人物完成走路动作，逐帧计算并设置人物每个关节的旋转角是难以实现的。因此，针对这类复杂的动画需求，3D场景资源的制作者会预先制作好动画，在模型文件中保存动画的关键帧数据以及关键帧之间的插值器类型。

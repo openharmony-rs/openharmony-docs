@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "汇总JSVM-API常见问题与解法，覆盖程序崩溃和接口执行失败两类，如返回值未初始化、回调结构体生命周期不当、HandleScope层数不匹配、销毁环境后仍调用接口等典型问题的定位方法。"
+keywords: [JSVM-API, 常见问题, 程序崩溃, 调用栈, JSVM_PENDING_EXCEPTION, HandleScope, OH_JSVM_DestroyEnv, 异常清理, 问题定位]
+doctype: faq
+status: active
+---
+
 # JSVM-API常见问题
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
@@ -79,7 +87,7 @@
 4. Q：在虚拟机引擎实例中创建JS类型实例崩溃（如`OH_JSVM_CreateDouble`），调用栈如下：
 
    ```txt
-   #00 pc 0000000001d209e4/system/lib64/ndk/libjsvm.so(v8::base::0S::Abort()+28)
+   #00 pc 0000000001d209e4/system/lib64/ndk/libjsvm.so(v8::base::OS::Abort()+28)
    #01 pc 0000000001408480/system/lib64/ndk/libjsvm.so(v8::Utils::ReportApiFailure(char const*,char const*)+124)
    #02 pc 00000000015c99b8/system/lib64/ndk/libjsvm.so(v8::internal::HandleScope::Extend(v8::internal::Isolate*)+200)
    ```

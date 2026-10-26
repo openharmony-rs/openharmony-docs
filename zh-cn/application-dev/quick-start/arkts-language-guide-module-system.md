@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "介绍ArkTS基于ES模块的import/export语法体系，涵盖静态导入、类型导入、动态导入、模块路径与模块组织方式，并说明不支持CommonJS等限制。"
+keywords: [ArkTS, 模块系统, import, export, 静态导入, 动态导入, 类型导入, 模块路径, ES模块]
+doctype: guide
+status: active
+---
+
 # 模块系统
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->

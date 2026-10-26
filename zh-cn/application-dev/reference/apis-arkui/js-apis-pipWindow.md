@@ -34,12 +34,12 @@ isPiPEnabled(): boolean
 
 | 类型       | 说明                                  |
 |----------|-------------------------------------|
-| boolean  | 当前系统是否支持画中画功能。true表示支持，false则表示不支持。 |
+| boolean  | 当前设备是否支持画中画功能。true表示支持，false则表示不支持。 |
 
 **示例：**
 
 ```ts
-let enable: boolean = PiPWindow.isPiPEnabled(); // 获取当前系统是否支持画中画功能
+let enable: boolean = PiPWindow.isPiPEnabled(); // 获取当前设备是否支持画中画功能
 console.info('isPiPEnabled:' + enable);
 ```
 

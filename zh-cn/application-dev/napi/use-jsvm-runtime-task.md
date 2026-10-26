@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "以多引擎为典型场景，演示创建多个独立JS运行时环境执行JS代码，并按CoreID管理各引擎的调用与销毁全过程。"
+keywords: [OH_JSVM_CreateVM, OH_JSVM_CreateEnv, OH_JSVM_DestroyEnv, OH_JSVM_DestroyVM, OH_JSVM_PumpMessageLoop, 多引擎, JS运行时环境, CoreID, 引擎销毁]
+doctype: guide
+status: active
+---
+
 # 使用JSVM-API接口创建多个引擎执行JS代码并销毁
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
@@ -142,7 +150,7 @@ static JSVM_Value AssertEqual(JSVM_Env env, JSVM_CallbackInfo info)
     if (isStrictEquals) {
         OH_LOG_INFO(LOG_APP, "JSVM API TEST RESULT: PASS");
     } else {
-        OH_LOG_INFO(LOG_APP, "JSVM API TEST RESULT: FAILED");
+        OH_LOG_ERROR(LOG_APP, "JSVM API TEST RESULT: FAILED");
     }
     return nullptr;
 }

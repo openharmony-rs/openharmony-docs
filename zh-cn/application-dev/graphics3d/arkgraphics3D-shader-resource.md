@@ -3,7 +3,7 @@
 <!--Subsystem: Graphics-->
 <!--Owner: @jason_stark-->
 <!--Designer: @zdustc-->
-<!--Tester: @zhangyue283-->
+<!--Tester: @dongchao01-->
 <!--Adviser: @ge-yafang-->
 
 ArkGraphics 3D中支持的.shader文件基于JSON格式，书写.shader文件时需符合JSON语法要求。文件包含以下部分：

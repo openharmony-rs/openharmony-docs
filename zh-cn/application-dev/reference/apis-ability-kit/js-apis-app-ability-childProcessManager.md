@@ -229,7 +229,7 @@ startArkChildProcess(srcEntry: string, args: ChildProcessArgs, options?: ChildPr
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
-| 801 | Capability not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 16000050 | Internal error. |
 | 16000061  | Operation not supported. |
 | 16000062  | The number of child processes exceeds the upper limit. <br>适用版本：13+ |
@@ -347,7 +347,7 @@ startNativeChildProcess(entryPoint: string, args: ChildProcessArgs, options?: Ch
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
-| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 16000050 | Internal error. |
 | 16000061  | Operation not supported. |
 | 16000062  | The number of child processes exceeds the upper limit. |
@@ -376,7 +376,7 @@ void Main(NativeChildProcess_Args args)
         char *fdName = current->fdName;
         int32_t fd = current->fd;
         current = current->next;
-        // 业务逻辑..
+        // 业务逻辑...
     }
 }
 } // extern "C"

@@ -38,7 +38,7 @@
 
 需注意本模块遵循典型的"创建—使用—释放"生命周期：
 
-- **订阅侧对象**：`CommonEvent_SubscribeInfo`→`CommonEvent_Subscriber`。创建后订阅生效，取消订阅后需依次销毁订阅者和订阅信息，避免内存泄漏。
+- **订阅侧对象**：`CommonEvent_SubscribeInfo`→`CommonEvent_Subscriber`。创建后订阅生效。建议先调用`OH_CommonEvent_UnSubscribe`完成退订，再依次销毁订阅者和订阅信息，避免内存泄漏。
 - **发布侧对象**：`CommonEvent_PublishInfo`与`CommonEvent_Parameters`。发布完成后需分别销毁，二者相互独立。
 
 
@@ -174,6 +174,8 @@ typedef void (*CommonEvent_ReceiveCallback)(const CommonEvent_RcvData *data)
 **描述**
 
 提供CommonEvent_ReceiveCallback回调函数声明。
+
+回调参数data及其所有字段指针（包括event、data、bundleName以及parameters及其内部数据）仅在回调函数执行期间有效，回调函数返回后由系统立即销毁。不可在回调外部保存这些指针或异步使用；如需在回调外使用相关数据，必须在回调内完成数据拷贝。
 
 **起始版本：** 12
 
@@ -316,6 +318,10 @@ void OH_CommonEvent_DestroySubscriber(CommonEvent_Subscriber* subscriber)
 **描述**
 
 释放订阅者。
+
+建议先调用[OH_CommonEvent_UnSubscribe](#oh_commonevent_unsubscribe)完成退订，再销毁订阅者。若销毁仍处于订阅状态的订阅者，系统会先自动退订，再销毁句柄。
+
+销毁后继续使用该句柄（如传入[OH_CommonEvent_SetCodeToSubscriber](#oh_commonevent_setcodetosubscriber)等其他接口）时，调用被系统安全忽略，接口返回值与参数无效的返回值相同（如false、0、NULL或COMMONEVENT_ERR_INVALID_PARAMETER）。
 
 **起始版本：** 12
 
@@ -499,7 +505,7 @@ const CommonEvent_Parameters* OH_CommonEvent_GetParametersFromRcvData(const Comm
 
 | 类型 | 说明 |
 | -- | -- |
-| const [CommonEvent_Parameters](#变量)* | 返回公共事件附加信息。 |
+| const [CommonEvent_Parameters](#变量)* | 返回公共事件附加信息。该指针仅在[CommonEvent_ReceiveCallback](#commonevent_receivecallback)回调执行期间有效，回调返回后由系统自动释放：调用者无需释放，且禁止对其调用[OH_CommonEvent_DestroyParameters](#oh_commonevent_destroyparameters)（回调执行期间该调用会被系统检测到并安全忽略，回调返回后使用该指针属于未定义行为）；如需在回调外使用，请在回调内完成数据拷贝。 |
 
 ### OH_CommonEvent_CreatePublishInfo()
 
@@ -703,7 +709,9 @@ void OH_CommonEvent_DestroyParameters(CommonEvent_Parameters* param)
 
 **描述**
 
-销毁公共事件附加信息对象。
+销毁公共事件附加信息对象，并统一释放通过[OH_CommonEvent_GetIntArrayFromParameters](#oh_commonevent_getintarrayfromparameters)等Get*ArrayFromParameters系列接口获取的数组内存，调用者无需单独释放这些数组。
+
+本接口仅用于销毁调用者通过[OH_CommonEvent_CreateParameters](#oh_commonevent_createparameters)创建的对象。禁止对从[CommonEvent_RcvData](capi-oh-commonevent-commonevent-rcvdata.md)回调数据中获取的附加信息对象调用本接口：该对象由框架持有、在回调返回后自动释放；回调执行期间对此类对象调用本接口会被系统检测到并安全忽略，回调返回后该对象已被释放，继续使用该指针属于未定义行为，如需在回调外使用请在回调内完成数据拷贝。
 
 **起始版本：** 18
 
@@ -813,7 +821,7 @@ int32_t OH_CommonEvent_GetIntArrayFromParameters(const CommonEvent_Parameters* p
 | -- | -- |
 | const [CommonEvent_Parameters](#变量)* para | 公共事件附加信息。 |
 | const char* key | 数据键。 |
-| int** array | 输出参数，用于接收查询到的int数组数据。该数组内存由函数内部分配，调用者无需预先分配。 |
+| int** array | 输出参数，用于接收查询到的int数组数据。该数组内存由函数内部分配，调用者无需预先分配。<br>         数组内存由框架统一管理：若para为调用者通过[OH_CommonEvent_CreateParameters](#oh_commonevent_createparameters)创建的附加信息，数组随[OH_CommonEvent_DestroyParameters](#oh_commonevent_destroyparameters)统一释放，调用者不可单独释放；若para来自[CommonEvent_RcvData](capi-oh-commonevent-commonevent-rcvdata.md)回调数据（接收路径），在回调内通过本接口取出的数组内存随回调返回由框架自动释放，如需在回调外使用数组内容，请在回调内完成数据拷贝。 |
 
 **返回：**
 
@@ -922,7 +930,7 @@ int32_t OH_CommonEvent_GetLongArrayFromParameters(const CommonEvent_Parameters* 
 | -- | -- |
 | const [CommonEvent_Parameters](#变量)* para | 公共事件附加信息。 |
 | const char* key | 数据键。 |
-| long** array | 输出参数，用于接收查询到的long数组数据。该数组内存由函数内部分配，调用者无需预先分配。 |
+| long** array | 输出参数，用于接收查询到的long数组数据。该数组内存由函数内部分配，调用者无需预先分配。<br>         数组内存由框架统一管理：若para为调用者通过[OH_CommonEvent_CreateParameters](#oh_commonevent_createparameters)创建的附加信息，数组随[OH_CommonEvent_DestroyParameters](#oh_commonevent_destroyparameters)统一释放，调用者不可单独释放；若para来自[CommonEvent_RcvData](capi-oh-commonevent-commonevent-rcvdata.md)回调数据（接收路径），在回调内通过本接口取出的数组内存随回调返回由框架自动释放，如需在回调外使用数组内容，请在回调内完成数据拷贝。 |
 
 **返回：**
 
@@ -1031,7 +1039,7 @@ int32_t OH_CommonEvent_GetBoolArrayFromParameters(const CommonEvent_Parameters* 
 | -- | -- |
 | const [CommonEvent_Parameters](#变量)* para | 公共事件附加信息。 |
 | const char* key | 数据键。 |
-| bool** array | 输出参数，用于接收查询到的bool数组数据。该数组内存由函数内部分配，调用者无需预先分配。 |
+| bool** array | 输出参数，用于接收查询到的bool数组数据。该数组内存由函数内部分配，调用者无需预先分配。<br>         数组内存由框架统一管理：若para为调用者通过[OH_CommonEvent_CreateParameters](#oh_commonevent_createparameters)创建的附加信息，数组随[OH_CommonEvent_DestroyParameters](#oh_commonevent_destroyparameters)统一释放，调用者不可单独释放；若para来自[CommonEvent_RcvData](capi-oh-commonevent-commonevent-rcvdata.md)回调数据（接收路径），在回调内通过本接口取出的数组内存随回调返回由框架自动释放，如需在回调外使用数组内容，请在回调内完成数据拷贝。 |
 
 **返回：**
 
@@ -1140,7 +1148,7 @@ int32_t OH_CommonEvent_GetCharArrayFromParameters(const CommonEvent_Parameters* 
 | -- | -- |
 | const [CommonEvent_Parameters](#变量)* para | 公共事件附加信息。 |
 | const char* key | 数据键。 |
-| char** array | 输出参数，用于接收查询到的char数组数据。该数组内存由函数内部分配，调用者无需预先分配。 |
+| char** array | 输出参数，用于接收查询到的char数组数据。该数组内存由函数内部分配，调用者无需预先分配。<br>         数组内存由框架统一管理：若para为调用者通过[OH_CommonEvent_CreateParameters](#oh_commonevent_createparameters)创建的附加信息，数组随[OH_CommonEvent_DestroyParameters](#oh_commonevent_destroyparameters)统一释放，调用者不可单独释放；若para来自[CommonEvent_RcvData](capi-oh-commonevent-commonevent-rcvdata.md)回调数据（接收路径），在回调内通过本接口取出的数组内存随回调返回由框架自动释放，如需在回调外使用数组内容，请在回调内完成数据拷贝。 |
 
 **返回：**
 
@@ -1249,7 +1257,7 @@ int32_t OH_CommonEvent_GetDoubleArrayFromParameters(const CommonEvent_Parameters
 | -- | -- |
 | const [CommonEvent_Parameters](#变量)* para | 公共事件附加信息。 |
 | const char* key | 数据键。 |
-| double** array | 输出参数，用于接收查询到的double数组数据。该数组内存由函数内部分配，调用者无需预先分配。 |
+| double** array | 输出参数，用于接收查询到的double数组数据。该数组内存由函数内部分配，调用者无需预先分配。<br>         数组内存由框架统一管理：若para为调用者通过[OH_CommonEvent_CreateParameters](#oh_commonevent_createparameters)创建的附加信息，数组随[OH_CommonEvent_DestroyParameters](#oh_commonevent_destroyparameters)统一释放，调用者不可单独释放；若para来自[CommonEvent_RcvData](capi-oh-commonevent-commonevent-rcvdata.md)回调数据（接收路径），在回调内通过本接口取出的数组内存随回调返回由框架自动释放，如需在回调外使用数组内容，请在回调内完成数据拷贝。 |
 
 **返回：**
 
@@ -1384,7 +1392,7 @@ bool OH_CommonEvent_FinishCommonEvent(CommonEvent_Subscriber* subscriber)
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | 返回true表示操作成功；返回false表示操作失败。 |
+| bool | 返回true表示操作成功；返回false表示操作失败，可能原因包括：<br>- subscriber为空。<br>- 订阅者未订阅或已退订。<br>- 当前公共事件非有序公共事件。<br>- 当前订阅者已结束对本次有序公共事件的处理。<br>- IPC请求失败。<br>         注意：返回true仅表示请求已受理，实际由服务端异步处理生效；若当前订阅者对本次有序公共事件的处理已超时（每个订阅者的处理时长上限为10秒），即使返回true，本次操作也不会生效。 |
 
 ### OH_CommonEvent_GetAbortCommonEvent()
 
@@ -1434,7 +1442,7 @@ bool OH_CommonEvent_AbortCommonEvent(CommonEvent_Subscriber* subscriber)
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | 返回true表示操作成功；返回false表示操作失败。 |
+| bool | 返回true表示操作请求已受理；返回false表示操作失败，可能原因包括：<br>- subscriber为空。<br>- 订阅者未订阅或已退订。<br>- 当前公共事件非有序公共事件。<br>- 当前订阅者已结束对本次有序公共事件的处理。<br>- IPC请求失败。<br>         注意：返回true仅表示请求已受理，实际由服务端异步处理生效；若当前订阅者对本次有序公共事件的处理已超时（每个订阅者的处理时长上限为10秒），即使返回true，本次操作也不会生效。 |
 
 ### OH_CommonEvent_ClearAbortCommonEvent()
 
@@ -1459,7 +1467,7 @@ bool OH_CommonEvent_ClearAbortCommonEvent(CommonEvent_Subscriber* subscriber)
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | 返回true表示操作成功；返回false表示操作失败。 |
+| bool | 返回true表示操作请求已受理；返回false表示操作失败，可能原因包括：<br>- subscriber为空。<br>- 订阅者未订阅或已退订。<br>- 当前公共事件非有序公共事件。<br>- 当前订阅者已结束对本次有序公共事件的处理。<br>- IPC请求失败。<br>         注意：返回true仅表示请求已受理，实际由服务端异步处理生效；若当前订阅者对本次有序公共事件的处理已超时（每个订阅者的处理时长上限为10秒），即使返回true，本次操作也不会生效。 |
 
 ### OH_CommonEvent_GetCodeFromSubscriber()
 
@@ -1510,7 +1518,7 @@ bool OH_CommonEvent_SetCodeToSubscriber(CommonEvent_Subscriber* subscriber, int3
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | 返回true表示操作成功；返回false表示操作失败。 |
+| bool | 返回true表示操作请求已受理；返回false表示操作失败，可能原因包括：<br>- subscriber为空。<br>- 订阅者未订阅或已退订。<br>- 当前公共事件非有序公共事件。<br>- 当前订阅者已结束对本次有序公共事件的处理。<br>- IPC请求失败。<br>         注意：返回true仅表示请求已受理，实际由服务端异步处理生效；若当前订阅者对本次有序公共事件的处理已超时（每个订阅者的处理时长上限为10秒），即使返回true，本次操作也不会生效。 |
 
 ### OH_CommonEvent_GetDataFromSubscriber()
 
@@ -1562,6 +1570,6 @@ bool OH_CommonEvent_SetDataToSubscriber(CommonEvent_Subscriber* subscriber, cons
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | 返回true表示操作成功；返回false表示操作失败。 |
+| bool | 返回true表示操作请求已受理；返回false表示操作失败，可能原因包括：<br>- subscriber为空。<br>- 订阅者未订阅或已退订。<br>- 当前公共事件非有序公共事件。<br>- 当前订阅者已结束对本次有序公共事件的处理。<br>- IPC请求失败。<br>         注意：返回true仅表示请求已受理，实际由服务端异步处理生效；若当前订阅者对本次有序公共事件的处理已超时（每个订阅者的处理时长上限为10秒），即使返回true，本次操作也不会生效。 |
 
 

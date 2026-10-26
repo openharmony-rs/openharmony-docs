@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍自定义Native Transferable对象的多线程操作：使用Node-API的napi_coerce_to_native_binding_object接口创建NativeBinding对象，实现共享与转移两种模式，适用于ArkTS数据写入C++数据库等绑定场景。"
+keywords: [Native Transferable, NativeBinding对象, 共享模式, 转移模式, napi_coerce_to_native_binding_object, Node-API, C++数据库, 多线程]
+doctype: guide
+status: active
+---
+
 # 自定义Native Transferable对象的多线程操作场景
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->

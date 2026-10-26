@@ -115,7 +115,7 @@
 
 7. 播放自定义振动序列。
 
-   <!-- @[vibrator_capi_vibrate_in_custom_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Vibrator/VibratorCapiSamples/entry/src/main/cpp/oh_vibrator_capi.cpp) --> 
+   <!-- @[vibrator_capi_vibrate_in_custom_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Vibrator/VibratorCapiSamples/entry/src/main/cpp/oh_vibrator_capi.cpp) -->
    
    ``` C++
    static napi_value PlayVibrationCustom(napi_env env, napi_callback_info info)
@@ -154,7 +154,7 @@
        int32_t ret = OH_Vibrator_PlayVibrationCustom(fileDescription, vibrateAttribute);
        bool isSuccess = ((ret == 0) || (ret == UNSUPPORTED));
        if (!isSuccess) {
-           OH_LOG_Print(LOG_APP, LOG_INFO, VIBRATOR_LOG_DOMAIN, TAG, "Vibratecustom fail");
+           OH_LOG_Print(LOG_APP, LOG_ERROR, VIBRATOR_LOG_DOMAIN, TAG, "Vibratecustom fail");
        } else {
            OH_LOG_Print(LOG_APP, LOG_INFO, VIBRATOR_LOG_DOMAIN, TAG, "Vibratecustom successful");
        }

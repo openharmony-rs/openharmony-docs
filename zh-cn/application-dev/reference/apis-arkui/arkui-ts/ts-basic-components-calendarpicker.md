@@ -150,9 +150,9 @@ firstDayOfWeek(value: CalendarFirstDayOfWeek)
 
 设置日历选择器每周的起始日。未通过该接口设置时，默认为CalendarFirstDayOfWeek.LOCAL（跟随系统区域变化）。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -265,9 +265,9 @@ onChange(callback: Optional\<Callback\<Date>>)
 
 日历选择器每周起始日的枚举类型。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -389,7 +389,7 @@ struct CalendarPickerExample {
 
 该示例通过firstDayOfWeek设置日历选择器每周的起始日为周一。
 
-从API版本26.2.0开始，新增了[firstDayOfWeek](#firstdayofweek)接口。
+从API版本26.1.0开始，新增了[firstDayOfWeek](#firstdayofweek)接口。
 
 ```ts
 // xxx.ets

@@ -1236,10 +1236,11 @@ onZoomChange(callback: OnZoomChangeCallback)
 > **说明：**
 >
 > - 通过[setZoomFactor](./arkts-apis-webview-WebviewController.md#setzoomfactor)设置，或[zoomControlAccess](./arkts-basic-components-web-attributes.md#zoomcontrolaccess22)为`true`时通过Ctrl组合键或鼠标滚轮/触摸板缩放，均会触发该回调。
+> - 在同一浏览数据上下文中，其他同Host Web组件改变页面缩放倍率后，如果当前Web组件的实际倍率随之变化，也会触发该回调。
 > - 页面缩放会缩放文字、图片并重新布局页面；CSS `zoom`不会触发该回调，捏合缩放导致的页面显示比例变化由[onScaleChange](#onscalechange9)通知。
-> - 同一Web组件加载另一网页后恢复相同倍率不会重复触发回调。
+> - 当前Web组件导航至其他Host时，若实际倍率发生变化则触发回调；实际倍率不变时不会重复触发。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2399,7 +2400,7 @@ onContextMenuUpdate(callback: OnContextMenuUpdateCallback)
 
 在单次上下文菜单会话期间，此回调可能被多次调用，每个被内核异步更新状态的菜单项各触发一次。回调绑定于Web组件生命周期，组件销毁时自动释放。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

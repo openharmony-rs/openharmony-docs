@@ -1448,7 +1448,7 @@ NODE_LINEAR_GRADIENT_BLUR = 129
 
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **参数：**
 
