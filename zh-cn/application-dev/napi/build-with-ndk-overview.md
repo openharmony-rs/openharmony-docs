@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "概述OpenHarmony NDK工程的构建体系，介绍ohos.toolchain.cmake工具链脚本的常用配置参数（OHOS_STL、OHOS_ARCH、OHOS_PLATFORM）及其对Clang交叉编译命令的影响，帮助开发者理解从源码构建和使用预构建库两种方式的基础概念。"
+keywords: [NDK工程构建, ohos.toolchain.cmake, OHOS_STL, OHOS_ARCH, OHOS_PLATFORM, 交叉编译, CMake, 预构建库, libc++_shared]
+doctype: guide
+status: active
+---
+
 # NDK工程构建概述
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->

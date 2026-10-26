@@ -1,8 +1,17 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "介绍OpenMP（Open Multi-Processing）跨平台共享内存多线程并发编程API的基本概念、组成结构和适用场景（科学计算、图像处理、机器学习等），说明OpenHarmony中OpenMP库基于llvm 15.0.4实现，帮助开发者了解OpenMP并行编程的基础知识。"
+keywords: [OpenMP, 多线程并发, 共享内存, 并行编程, pragma指令, llvm, 多核并行, 计算密集型, 数据并行]
+doctype: guide
+status: active
+---
+
+
 # OpenMP简介
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @rePeek-->
-<!--Designer: @ychen3--->
+<!--Owner: @da_wei_li11-->
+<!--Designer: @liyiming13-->
 <!--Tester: @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
 
