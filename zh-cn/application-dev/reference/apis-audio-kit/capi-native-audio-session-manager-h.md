@@ -1,7 +1,7 @@
 # native_audio_session_manager.h
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @funny_sunix-->
+<!--Owner: @LauJianghu-->
 <!--Designer: @hao-liangfei-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
@@ -97,6 +97,7 @@ enum OH_AudioSession_Scene
 | AUDIO_SESSION_SCENE_MEDIA = 0 | 媒体音频会话场景。 |
 | AUDIO_SESSION_SCENE_GAME = 1 | 游戏音频会话场景。 |
 | AUDIO_SESSION_SCENE_VOICE_COMMUNICATION = 2 | VoIP语音通话音频会话场景。 |
+| AUDIO_SESSION_SCENE_VOICE_MESSAGE = 3 | 语音消息音频会话场景。<br>**起始版本：** 26.0.1 |
 
 ### OH_AudioSession_StateChangeHint
 
@@ -509,7 +510,7 @@ OH_AudioCommon_Result OH_AudioSessionManager_SetDefaultOutputDevice(OH_AudioSess
  
  
  >**说明：**  
- > - 本接口适用范围如下：当设置的[OH_AudioSession_Scene](capi-native-audio-session-manager-h.md#oh_audiosession_scene)为VoIP场景时，激活AudioSession后立即生效；如果[OH_AudioSession_Scene](capi-native-audio-session-manager-h.md#oh_audiosession_scene)为非VoIP场景，激活AudioSession时不会生效，直到启动播放的[OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage)为语音消息、VoIP语音通话或VoIP视频通话时才生效。支持听筒、扬声器和系统默认设备。 
+ > - 本接口适用范围如下：当设置的[OH_AudioSession_Scene](capi-native-audio-session-manager-h.md#oh_audiosession_scene)为VoIP或语音消息场景时，激活AudioSession后立即生效；如果[OH_AudioSession_Scene](capi-native-audio-session-manager-h.md#oh_audiosession_scene)为其他场景，激活AudioSession时不会生效，直到启动播放的[OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage)为语音消息、VoIP语音通话或VoIP视频通话时才生效。支持听筒、扬声器和系统默认设备。
  > - 本接口允许在[OH_AudioSessionManager](capi-ohaudio-oh-audiosessionmanager.md)创建后随时调用。系统记录应用设置的默认本机内置发声设备，但只有激活AudioSession后才能生效。应用启动播放时，若外接设备如蓝牙耳机或有线耳机已接入，系统优先从外接设备发声；否则，系统遵循应用设置的默认本机内置发声设备。 
  
  
