@@ -616,7 +616,7 @@ startBackgroundRunning(context: Context, request: ContinuousTaskRequest): Promis
 | 9800005 | Continuous task verification failed. |
 | 9800006 | Notification verification failed for a continuous task. |
 | 9800007 | Continuous task storage failed. |
-| 9800008 | The requested continuous task is not supported on this device type.<br/>**起始版本：** 26.0.1 |
+| 9800008 | The requested continuous task is not supported on this device type.<br>适用版本：26.0.1 |
 
 **示例：**
 
@@ -1085,7 +1085,7 @@ updateBackgroundRunning(context: Context, request: ContinuousTaskRequest): Promi
 | 9800005 | Continuous task verification failed. |
 | 9800006 | Notification verification failed for a continuous task. |
 | 9800007 | Continuous task storage failed. |
-| 9800008 | The requested continuous task is not supported on this device type.<br/>**起始版本：** 26.0.1 |
+| 9800008 | The requested continuous task is not supported on this device type.<br>适用版本：26.0.1 |
 
 **示例：**
 
