@@ -71,8 +71,7 @@ TabSegmentButtonV2({
   buttonPadding?: LengthMetrics, 
   languageDirection?: Direction,
   enableStateAnimation?: boolean,
-  backgroundSystemMaterial?: uiMaterial.Material,
-  interactionMode?: SegmentButtonV2InteractionMode
+  backgroundSystemMaterial?: uiMaterial.Material
 })
 ```
 
@@ -117,8 +116,7 @@ TabSegmentButtonV2({
 | itemSelectedSymbolFontColor      | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | No   | @Param             | Color of the HM Symbol type icon for the selected option in the segmented button.<br>Default value: `$r('sys.color.font_primary')`<br>When the value is **undefined**, the default value is used.<br>**NOTE**<br>When **items** sets the **symbolModifier**/**fontColor** attribute, **itemSelectedSymbolFontColor** does not take effect.<br>When **backgroundSystemMaterial** is set to a system material with automatic color inversion, this attribute uses a special system resource that supports color inversion, and the color automatically adapts to the inverted color of the material background.<br>This member is read-only and cannot be changed.<br>**Atomic service API:** This API can be used in atomic services since API version 18. |
 | languageDirection                | [Direction](ts-appendix-enums.md#direction)                  | No   | @Param             | Layout direction of the segmented button.<br>Default value: **Direction.Auto**<br>If the value is out of range, the default value is used.<br>This member is read-only and cannot be changed.<br>**Atomic service API:** This API can be used in atomic services since API version 18. |
 | enableStateAnimation<sup>24+</sup>             | boolean                                                      | No   | @Param             | Whether to enable the attribute animation of the segmented button when the **selectedIndex** value is modified through a variable.<br>The value **true** enables the attribute animation of the segmented button. When this attribute is not configured or the value is **false**, the attribute animation of the segmented button is disabled and the default switching animation effect of the component is used.<br>Default value: **false**<br>This member is read-only and cannot be changed.<br>**Atomic service API:** This API can be used in atomic services since API version 24.<br>**Model restriction:** This API can be used only in the stage model. |
-| backgroundSystemMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material)    | No | @Param | System material of the background of the segmented button component. Different system materials have different attribute effects. After a material is passed in, the animation effect of **SegmentButtonV2** changes.<br>When a system material is used, the background of the selected item follows the finger by default. The selected index remains unchanged during dragging and is updated when the drag ends. Since API version 26.2.0, you can use **interactionMode** to select the drag mode while retaining the original material feedback.<br>Default value: no material effect. <br>This member is read-only and cannot be changed.<br>**Since:** 26.0.0 <br>**Atomic service API:** This API can be used in atomic services since API version 26.0.0. <br>**Model restriction:** This API can be used only in the stage model.|
-| interactionMode<sup>26.2.0+</sup> | [SegmentButtonV2InteractionMode](#segmentbuttonv2interactionmode2620) | No | @Param | Drag interaction mode of the segmented button.<br>Default value: **undefined**<br>If this property is not set, is **undefined**, or is invalid, following drag is used when **backgroundSystemMaterial** is configured, and normal drag is used otherwise.<br>Changing the drag mode does not change the original material appearance, background scaling and slight displacement, selected-item deformation, or configured light effects. Following drag without **backgroundSystemMaterial** does not add material effects.<br>Dragging does not trigger **onItemClicked**.<br>Selection updates are reported through **$selectedIndex**. The parent component must update **selectedIndex**, or use **!!** for two-way binding.<br>This member is read-only and cannot be changed.<br>**Since:** 26.2.0<br>**Atomic service API:** This API can be used in atomic services since API version 26.2.0.<br>**Model restriction:** This API can be used only in the stage model. |
+| backgroundSystemMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material)    | No | @Param | System material of the background of the segmented button component. Different system materials have different attribute effects. After a material is passed in, the animation effect of **SegmentButtonV2** changes.<br>When a system material is used, the segmented button supports the capability of the background of the selected item following the finger drag. The index of the selected item remains unchanged during the drag and is updated when the drag ends.<br>Default value: no material effect. <br>This member is read-only and cannot be changed.<br>**Since:** 26.0.0 <br>**Atomic service API:** This API can be used in atomic services since API version 26.0.0. <br>**Model restriction:** This API can be used only in the stage model.|
 
 > **NOTE**
 >
@@ -161,8 +159,7 @@ CapsuleSegmentButtonV2({
   buttonPadding?: LengthMetrics,
   languageDirection?: Direction,
   enableStateAnimation?: boolean,
-  backgroundSystemMaterial?: uiMaterial.Material,
-  interactionMode?: SegmentButtonV2InteractionMode
+  backgroundSystemMaterial?: uiMaterial.Material
 })
 ```
 
@@ -207,8 +204,7 @@ CapsuleSegmentButtonV2({
 | itemSelectedSymbolFontColor      | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | No   | @Param             | HM Symbol-type icon color of the selected option in the segmented button.<br>Default value: `$r('sys.color.font_on_primary')`<br>When the value is **undefined**, the default value is used.<br>**Note:**<br>When **items** sets the **symbolModifier**/**fontColor** attribute, **itemSelectedSymbolFontColor** does not take effect.<br>When **backgroundSystemMaterial** is set to a system material with automatic color inversion, this attribute uses a special system resource that supports color inversion, and the color automatically adapts to the inverted color of the material background.<br>This member is read-only and cannot be changed.<br>**Atomic service API:** This API can be used in atomic services since API version 18. |
 | languageDirection                | [Direction](ts-appendix-enums.md#direction)                  | No   | @Param             | Layout direction of the segmented button.<br>Default value: **Direction.Auto**<br>If the value is out of range, the default value is used.<br>This member is read-only and cannot be changed.<br>**Atomic service API:** This API can be used in atomic services since API version 18. |
 | enableStateAnimation<sup>24+</sup>             | boolean                                                      | No   | @Param             | Whether to enable the attribute animation of the segmented button when the **selectedIndex** value is modified through a variable.<br>The value **true** means to enable the attribute animation of the segmented button; when this attribute is not configured or the value is **false**, the attribute animation of the segmented button is not enabled, and the default transition animation effect of the component is used.<br>Default value: **false**<br>This member is read-only and cannot be changed.<br>**Atomic service API:** This API can be used in atomic services since API version 24.<br>**Model restriction:** This API can be used only in the stage model. |
-| backgroundSystemMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material)    | No | @Param | System material of the background of the segmented button component. Different system materials have different attribute effects. After a material is passed in, the animation effect of **SegmentButtonV2** changes.<br>When a system material is used, the background of the selected item follows the finger by default. The selected index remains unchanged during dragging and is updated when the drag ends. Since API version 26.2.0, you can use **interactionMode** to select the drag mode while retaining the original material feedback.<br>Default value: no material effect. <br>This member is read-only and cannot be changed.<br>**Since:** 26.0.0 <br>**Atomic service API:** This API can be used in atomic services since API version 26.0.0.  <br>**Model restriction:** This API can be used only in the stage model.|
-| interactionMode<sup>26.2.0+</sup> | [SegmentButtonV2InteractionMode](#segmentbuttonv2interactionmode2620) | No | @Param | Drag interaction mode of the segmented button.<br>Default value: **undefined**<br>If this property is not set, is **undefined**, or is invalid, following drag is used when **backgroundSystemMaterial** is configured, and normal drag is used otherwise.<br>Changing the drag mode does not change the original material appearance, background scaling and slight displacement, selected-item deformation, or configured light effects. Following drag without **backgroundSystemMaterial** does not add material effects.<br>Dragging does not trigger **onItemClicked**.<br>Selection updates are reported through **$selectedIndex**. The parent component must update **selectedIndex**, or use **!!** for two-way binding.<br>This member is read-only and cannot be changed.<br>**Since:** 26.2.0<br>**Atomic service API:** This API can be used in atomic services since API version 26.2.0.<br>**Model restriction:** This API can be used only in the stage model. |
+| backgroundSystemMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material)    | No | @Param | System material of the background of the segmented button component. Different system materials have different attribute effects. After a material is passed in, the animation effect of **SegmentButtonV2** changes.<br>When a system material is used, the segmented button supports the capability of the background of the selected item following the finger drag. The index of the selected item remains unchanged during the drag and is updated when the drag ends.<br>Default value: no material effect. <br>This member is read-only and cannot be changed.<br>**Since:** 26.0.0 <br>**Atomic service API:** This API can be used in atomic services since API version 26.0.0.  <br>**Model restriction:** This API can be used only in the stage model.|
 
 > **NOTE**
 >
@@ -461,25 +457,6 @@ Defines a callback invoked when the selected segmented button items change.
 | Name         | Type    | Mandatory| Description                  |
 | --------------- | -------- | ---- | ---------------------- |
 | selectedIndexes | number[] | Yes | Indexes of the selected items in the segmented button. The first item is numbered 0, and subsequent items are numbered in ascending order. |
-
-## SegmentButtonV2InteractionMode<sup>26.2.0+</sup>
-
-Defines the drag interaction modes of single-selection segmented buttons.
-
-**Since**: 26.2.0
-
-**Atomic service API**: This API can be used in atomic services since API version 26.2.0.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Model restriction**: This API can be used only in the stage model.
-
-**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
-
-| Name | Value | Description |
-| --- | --- | --- |
-| FOLLOWING_DRAG | 0 | Following drag. When dragging from the currently selected item, the background of the selected item continuously follows the finger. The selected index remains unchanged during dragging. When the finger is released, a selection update is reported through **$selectedIndex**. Enabling this mode does not add material deformation or light effects when **backgroundSystemMaterial** is not configured. |
-| NORMAL_DRAG | 1 | Normal drag. When dragging from the currently selected item, the background of the selected item transitions between item positions, and selection updates are reported through **$selectedIndex** as the finger moves across items. When **backgroundSystemMaterial** is configured, the original material feedback, including configured light effects, is retained. |
 
 ## Example
 
