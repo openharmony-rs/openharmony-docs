@@ -994,7 +994,7 @@ ArkWeb内核需要本地播放器的状态信息来更新到网页（例如：�
   }
   ```
 
-- 应用侧代码，视频播放示例, ./PlayerDemo.ets。Xcomponent创建方法请参考[自定义渲染(XComponent)](../ui/napi-xcomponent-guidelines.md)。
+- 应用侧代码，视频播放示例, ./PlayerDemo.ets。XComponent创建方法请参考[自定义渲染(XComponent)](../ui/napi-xcomponent-guidelines.md)。
 
 <!-- @[Video Playback Sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/App_takeovers_web_media/entry/src/main/ets/pages/PlayerDemo.ets) -->
 
