@@ -1,7 +1,7 @@
 ---
 kits: ["ArkGraphics3D Kit / 方舟3D图形"]
-description: "介绍。"
-keywords: [3D, component3D, gltf, scene]
+description: "介绍基于JPEG、PNG、KTX格式创建3D纹理图片资源的能力，演示通过SceneResourceFactory.createImage()加载图片并绑定到Shader材质的BASE_COLOR_Image输入属性，实现模型表面贴图替换。"
+keywords: [ArkGraphics 3D, 3D渲染, 纹理, 贴图]
 doctype: guide
 status: active
 ---
