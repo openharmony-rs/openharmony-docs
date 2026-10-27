@@ -82,7 +82,7 @@
     {
         napi_status status = napi_delete_reference(env_, wrapper_);
         if (status != napi_ok) {
-            OH_LOG_INFO(LOG_APP, "Failed to delete reference, return code: %{public}d", status);
+            OH_LOG_ERROR(LOG_APP, "Failed to delete reference, return code: %{public}d", status);
         }
     }
 
