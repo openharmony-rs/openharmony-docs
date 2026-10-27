@@ -137,5 +137,5 @@ Wi-Fi STA模式（Station Mode，站点模式）是无线设备作为客户端�
      console.error(`WiFi Connection failed. ${error.message}`);
    }
    ```
-6. Wi-Fi连接状态值，详情请参考[ConnState](../../reference/apis-connectivity-kit/arkts-apis/arkts-connectivity-wifimanager-connstate-e.md#connstate)。
+6. Wi-Fi连接状态值，详情请参考ConnState。
 7. 错误码详情请参见[WIFI错误码](../../reference/apis-connectivity-kit/errorcode-wifi.md)。

@@ -1229,7 +1229,7 @@ error: install failed due to grant request permissions failed.<br>
 
 根据报错描述中的权限名称在[应用权限列表](../security/AccessToken/app-permissions.md)中排查权限是否存在。
 
-* 如果不存在，需要查看需要该权限的API接口的文档说明，以确保权限支持申请。例如：[setDevicePairingConfirmation](../reference/apis-connectivity-kit/arkts-apis/arkts-connectivity-connection-setdevicepairingconfirmation-f.md#setdevicepairingconfirmation)接口所需权限中，ohos.permission.MANAGE_BLUETOOTH仅系统应用支持申请，此时请更换为ohos.permission.ACCESS_BLUETOOTH权限。
+* 如果不存在，需要查看需要该权限的API接口的文档说明，以确保权限支持申请。例如：setDevicePairingConfirmation接口所需权限中，ohos.permission.MANAGE_BLUETOOTH仅系统应用支持申请，此时请更换为ohos.permission.ACCESS_BLUETOOTH权限。
 
 * 如果存在，请查看对应的权限文档的要求，申请权限，同时请关注权限是否支持申请。例如：[受限开放权限](../security/AccessToken/restricted-permissions.md)请参考文档<!--RP2-->[申请受限权限](../security/AccessToken/declare-permissions-in-acl.md)<!--RP2End-->。[企业类应用可用权限](../security/AccessToken/permissions-for-enterprise-apps.md)仅企业类应用支持申请，三方应用不支持。
 
@@ -2598,7 +2598,7 @@ error: Failed to install the HAP because an enterprise normal/MDM bundle cannot 
 
 **可能原因**
 
-当前设备不允许安装<!--RP5-->[Profile签名文件](../security/app-provision-structure.md)<!--RP5End-->中如下两种类型的应用：enterprise_mdm（企业MDM应用）、enterprise_normal（普通企业应用）。Profile签名文件类型的取值及含义请参考[ApplicationInfo.appDistributionType](../reference/apis-ability-kit/arkts-apis/arkts-ability-applicationinfo-i-sys.md#applicationinfo)。
+当前设备不允许安装<!--RP5-->[Profile签名文件](../security/app-provision-structure.md)<!--RP5End-->中如下两种类型的应用：enterprise_mdm（企业MDM应用）、enterprise_normal（普通企业应用）。Profile签名文件类型的取值及含义请参考ApplicationInfo.appDistributionType。
 
 **处理步骤**
 

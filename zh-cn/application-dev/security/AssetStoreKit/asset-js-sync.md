@@ -58,7 +58,7 @@
 
 ### 接口介绍
 
-通过API文档查看查询关键资产同步结果接口[asset.querySyncResult](../../reference/apis-asset-store-kit/c-apis/capi-asset-api-h.md#ohassetquerysyncresult)。
+通过API文档查看查询关键资产同步结果接口asset.querySyncResult。
 
 在查询关键资产同步结果时，关键资产属性的内容（AssetMap）参数如下表所示。
 

@@ -33,7 +33,7 @@
    ],
    ```
    
-2. 子类型配置文件`input_method_config.json`需要放在应用资源目录的profile文件夹中，格式如下，字段释义参照[InputMethodSubtype](../reference/apis-ime-kit/arkts-apis/arkts-ime-inputmethodsubtype-i.md#inputmethodsubtype)；开发者需要严格按照配置文件格式及字段进行子类型信息配置，locale字段的配置参照[i18n-locale-culture](.././internationalization/i18n-locale-culture.md#实现原理)。
+2. 子类型配置文件`input_method_config.json`需要放在应用资源目录的profile文件夹中，格式如下，字段释义参照InputMethodSubtype；开发者需要严格按照配置文件格式及字段进行子类型信息配置，locale字段的配置参照[i18n-locale-culture](.././internationalization/i18n-locale-culture.md#实现原理)。
 
    ``` JSON5
    {
@@ -75,7 +75,7 @@
 
 ## 输入法子类型相关信息的获取
 
-1. 开发者可以通过调用[getCurrentInputMethodSubtype](../reference/apis-ime-kit/arkts-apis/arkts-ime-inputmethod-getcurrentinputmethodsubtype-f-sys.md#getcurrentinputmethodsubtype)获取当前输入法应用的当前子类型。
+1. 开发者可以通过调用getCurrentInputMethodSubtype获取当前输入法应用的当前子类型。
 
 2. 开发者可以通过调用[listCurrentInputMethodSubtype](../reference/apis-ime-kit/arkts-apis/arkts-ime-inputmethod-inputmethodsetting-i.md#listcurrentinputmethodsubtype)获取当前输入法应用的所有子类型。
 
@@ -84,6 +84,6 @@
 
 ## 输入法子类型的切换
 
-1. 开发者可以通过调用[switchCurrentInputMethodSubtype](../reference/apis-ime-kit/arkts-apis/arkts-ime-inputmethod-switchcurrentinputmethodsubtype-f.md#switchcurrentinputmethodsubtype)切换当前输入法应用的子类型。
+1. 开发者可以通过调用switchCurrentInputMethodSubtype切换当前输入法应用的子类型。
 
-2. 开发者可以通过调用[switchCurrentInputMethodAndSubtype](../reference/apis-ime-kit/arkts-apis/arkts-ime-inputmethod-switchcurrentinputmethodandsubtype-f.md#switchcurrentinputmethodandsubtype)切换至指定输入法应用的指定子类型。
+2. 开发者可以通过调用switchCurrentInputMethodAndSubtype切换至指定输入法应用的指定子类型。

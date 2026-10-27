@@ -11,7 +11,7 @@
 
 ![image](figures/dialogLevelorder.png)
 
-对于一个多页面应用，基本树结构如下所示。多个Page页面之间使用[Router](../reference/apis-arkui/arkts-apis/arkts-arkui-router.md)的接口进行跳转。[NavBar](../reference/apis-arkui/arkts-components/arkts-arkui-navigation-comp-navbar-t.md#navbar)和NavDestination组成的页面可以通过Navigation接口进行跳转。
+对于一个多页面应用，基本树结构如下所示。多个Page页面之间使用[Router](../reference/apis-arkui/arkts-apis/arkts-arkui-router.md)的接口进行跳转。NavBar和NavDestination组成的页面可以通过Navigation接口进行跳转。
 
 ![pageLevelMode1](figures/pageLevelMode1.png)
 
@@ -60,7 +60,7 @@
 >
 > 系统弹窗由系统弹出，出于安全考虑，不支持自定义样式。
 >
-> 系统弹窗出现时，调用非系统弹窗的显示接口（例如：[promptAction](../reference/apis-arkui/arkts-apis/arkts-arkui-promptaction.md)的[openCustomDialog](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-promptaction-c.md#opencustomdialog)、[CustomDialogController](../reference/apis-arkui/arkts-apis/arkts-arkui-customdialogcontroller-c.md#customdialogcontroller)的[open](../reference/apis-arkui/arkts-apis/arkts-arkui-customdialogcontroller-c.md#open)等），禁止该类弹窗显示。
+> 系统弹窗出现时，调用非系统弹窗的显示接口（例如：[promptAction](../reference/apis-arkui/arkts-apis/arkts-arkui-promptaction.md)的[openCustomDialog](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-promptaction-c.md#opencustomdialog)、CustomDialogController的[open](../reference/apis-arkui/arkts-apis/arkts-arkui-customdialogcontroller-c.md#open)等），禁止该类弹窗显示。
 
 ## 使用场景
 

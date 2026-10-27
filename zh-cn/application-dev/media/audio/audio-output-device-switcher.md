@@ -20,7 +20,7 @@
 
 ## 实现媒体流输出设备路由切换
 
-应用可以通过使用[AVCastPicker](../../reference/apis-avsession-kit/arkts-apis/arkts-avsession-multimedia-avcastpicker-avcastpicker-s.md#avcastpicker)组件为用户提供选择设备的入口。
+应用可以通过使用AVCastPicker组件为用户提供选择设备的入口。
 
 该组件集成了设备发现、连接、认证等能力，可嵌入应用界面。用户点击后，系统自动识别并展示当前可切换的设备列表，支持在扬声器、耳机、智能音箱等输出设备间自由切换。
 
@@ -59,7 +59,7 @@
 
 **音频流级设置接口**
 
-从API version 12开始，应用可使用AudioRenderer的[setDefaultOutputDevice](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiorenderer-i.md#setdefaultoutputdevice)设置默认设备为听筒和扬声器，调用前需要先获取[AudioRenderer](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-createaudiorenderer-f.md#createaudiorenderer)实例，设置默认设备的生命周期跟随音频流。调用`setDefaultOutputDevice`设置音频输出设备后，如需取消，可将参数设为`audio.DeviceType.DEFAULT`，将音频输出设备选择权交还给系统。
+从API version 12开始，应用可使用AudioRenderer的[setDefaultOutputDevice](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiorenderer-i.md#setdefaultoutputdevice)设置默认设备为听筒和扬声器，调用前需要先获取AudioRenderer实例，设置默认设备的生命周期跟随音频流。调用`setDefaultOutputDevice`设置音频输出设备后，如需取消，可将参数设为`audio.DeviceType.DEFAULT`，将音频输出设备选择权交还给系统。
 
    > **说明：**
    >
@@ -159,7 +159,7 @@
    > - 本接口仅对媒体流生效，作用于应用内所有媒体流，通话流不受影响。应用需处于前台且有正在运行的媒体流，否则设置不生效且应用退出后自动清除。
    > - 本接口设置的输出设备与[实现媒体流输出设备路由切换](#实现媒体流输出设备路由切换)设置的输出设备会相互覆盖（后调用者会覆盖先调用者设置的输出设备）。
    > - 本接口设置的输出设备不会覆盖通过[设置默认输出设备](#设置默认输出设备)设置的输出设备。
-   > - 应用可通过监听[CurrentOutputDeviceChangedEvent](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-currentoutputdevicechangedevent-i.md#currentoutputdevicechangedevent)事件获取当前输出设备信息，以确认设置的输出设备是否生效。
+   > - 应用可通过监听CurrentOutputDeviceChangedEvent事件获取当前输出设备信息，以确认设置的输出设备是否生效。
    > - 在无内置扬声器的设备（如智慧屏）上调用本接口将输出设备切换为扬声器不会生效，但接口调用仍会返回成功，不会抛出错误或触发错误回调。
 
 ### 开发步骤

@@ -18,7 +18,7 @@
 >
 > 沉浸光感开启后，
 > - 指定弹窗类组件（AlertDialog、[ActionSheet](../reference/apis-arkui/arkts-apis/arkts-arkui-actionsheet.md)、CustomDialog、[CalendarPickerDialog](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-dialog.md)、[DatePickerDialog](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-dialog.md)、[TimePickerDialog](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-dialog.md)、[TextPickerDialog](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-dialog.md)、[SelectionMenu](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-selectionmenu-selectionmenu-f.md)、AlphabetIndexer弹窗、[Text](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-text-t.md)设置[copyOption](../reference/apis-arkui/arkts-components/arkts-arkui-text-comp-attribute.md#copyoption)后长按或双击触发的文本菜单）的沉浸光感效果可在全页面生效。
-> - 指定弹窗类接口（[PromptAction](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-promptaction-c.md)、[ArkUI_NativeDialog](../reference/apis-arkui/c-apis/capi-arkui-nativemodule-arkui-nativedialog.md)、[@ohos.promptAction (弹窗)](../reference/apis-arkui/arkts-apis/arkts-arkui-promptaction.md)、[Popup控制](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-popup.md)、Tips控制、[菜单控制](../reference/apis-arkui/arkui-js/js-components-basic-menu.md)、[半模态转场](../reference/apis-arkui/arkui-js/js-components-common-transition.md)）的沉浸光感效果可在全页面生效。
+> - 指定弹窗类接口（[PromptAction](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-promptaction-c.md)、[ArkUI_NativeDialog](../reference/apis-arkui/c-apis/capi-arkui-nativemodule-arkui-nativedialog.md)、[@ohos.promptAction (弹窗)](../reference/apis-arkui/arkts-apis/arkts-arkui-promptaction.md)、[Popup控制](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-popup.md)、Tips控制、菜单控制、半模态转场）的沉浸光感效果可在全页面生效。
 > - [Slider](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-slider-t.md)、[Toggle](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-toggle-t.md)、[Select](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-select-t.md)的沉浸光感效果可在全页面生效。
 > - 其他组件仅在Navigation/NavDestination标题栏或横向Tabs中barPosition为BarPosition.End的底部TabBar中生效。在其他区域中设置沉浸光感效果不生效。
  
@@ -173,7 +173,7 @@ Stack() {
 
 ## 控制自动反色的作用范围
 
-自动反色（[colorInvert](../reference/apis-arkui/arkts-apis/arkts-arkui-uimaterial-immersiveoptions-i.md#immersiveoptions)）会对材质子树中通过资源接口设置的颜色逐个计算反色。子树越大、参与反色的组件越多，计算量越高。应控制反色的作用范围，避免在包含大量文本、图标的大范围内整体开启反色。
+自动反色（colorInvert）会对材质子树中通过资源接口设置的颜色逐个计算反色。子树越大、参与反色的组件越多，计算量越高。应控制反色的作用范围，避免在包含大量文本、图标的大范围内整体开启反色。
 
 ```ts
 // 正例：缩小反色范围，仅对需要保证可读性的局部区域开启
@@ -219,7 +219,7 @@ setInterval(() => {
 
 ## 避免重复叠加阴影
 
-沉浸式系统材质默认已通过[applyShadow](../reference/apis-arkui/arkts-apis/arkts-arkui-uimaterial-immersiveoptions-i.md#immersiveoptions)提供阴影，再额外设置通用[shadow](../reference/apis-arkui/arkts-apis/arkts-arkui-actionsheetoptions-i.md#shadow)属性既与材质效果冲突，又造成重复绘制开销。如需自定义阴影，应将applyShadow置为false后再使用shadow，避免重复叠加阴影造成额外开销。
+沉浸式系统材质默认已通过applyShadow提供阴影，再额外设置通用[shadow](../reference/apis-arkui/arkts-apis/arkts-arkui-actionsheetoptions-i.md#shadow)属性既与材质效果冲突，又造成重复绘制开销。如需自定义阴影，应将applyShadow置为false后再使用shadow，避免重复叠加阴影造成额外开销。
 
 ```ts
 // 正例：如需自定义阴影，先关闭沉浸式系统材质自带阴影（applyShadow:false）

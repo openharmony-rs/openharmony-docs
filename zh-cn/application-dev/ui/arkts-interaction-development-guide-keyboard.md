@@ -41,7 +41,7 @@ onKeyEventDispatch(event: Callback<KeyEvent, boolean>): T
 上述四种方法的区别仅在于触发的时机（见[按键事件数据流](#按键事件数据流)）。其中onKeyPreIme的返回值决定了该按键事件后续是否会被继续分发给页面快捷键、输入法、onKeyEventDispatch和onKeyEvent。
 
 
-当绑定方法的组件处于获焦状态下，外设键盘的按键事件会触发该方法，回调参数为KeyEvent，可由该参数获得当前按键事件的按键行为（[KeyType](../reference/apis-arkui/arkts-apis/arkts-arkui-keytype-e.md#keytype)）、键码（[KeyCode](../reference/apis-input-kit/arkts-apis/arkts-input-multimodalinput-keycode-keycode-e.md#keycode)）、按键英文名称（keyText）、事件来源设备类型（[KeySource](../reference/apis-arkui/arkts-apis/arkts-arkui-keysource-e.md#keysource)）、事件来源设备id（deviceId）、元键按压状态（metaKey）、时间戳（timestamp）、阻止冒泡设置（stopPropagation）。
+当绑定方法的组件处于获焦状态下，外设键盘的按键事件会触发该方法，回调参数为KeyEvent，可由该参数获得当前按键事件的按键行为（KeyType）、键码（KeyCode）、按键英文名称（keyText）、事件来源设备类型（KeySource）、事件来源设备id（deviceId）、元键按压状态（metaKey）、时间戳（timestamp）、阻止冒泡设置（stopPropagation）。
 
 <!-- @[listen_response_key_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/device/OnKey.ets) -->
 

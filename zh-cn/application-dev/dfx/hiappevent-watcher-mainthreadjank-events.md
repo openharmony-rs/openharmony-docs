@@ -37,7 +37,7 @@ setEventConfig接口不提供主线程超时结束自动停止采样栈的功能
 
 | 接口名 | 描述 |
 | -------- | -------- |
-| [setEventConfig(name: string, config: Record&lt;string, ParamType>): Promise&lt;void>](../reference/apis-performance-analysis-kit/c-apis/capi-hiappevent-h.md#ohhiappeventseteventconfig) | 设置主线程采样栈参数接口。 |
+| setEventConfig(name: string, config: Record&lt;string, ParamType>): Promise&lt;void> | 设置主线程采样栈参数接口。 |
 
 ### setEventConfig接口参数设置说明
 
@@ -132,11 +132,11 @@ setEventConfig接口不提供主线程超时结束自动停止采样栈的功能
 
 | 接口名 | 描述 |
 | -------- | -------- |
-| [configEventPolicy(policy: EventPolicy): Promise&lt;void>](../reference/apis-performance-analysis-kit/arkts-apis/arkts-performanceanalysis-hiappevent-configeventpolicy-f.md#configeventpolicy) | 设置主线程采样栈参数接口。支持超时卡顿结束自动停止采样。 |
+| configEventPolicy(policy: EventPolicy): Promise&lt;void> | 设置主线程采样栈参数接口。支持超时卡顿结束自动停止采样。 |
 
 ### configEventPolicy接口参数设置说明
 
-开发者可以使用上述hiappevent提供的接口，在[EventPolicy](../reference/apis-performance-analysis-kit/arkts-apis/arkts-performanceanalysis-hiappevent-eventpolicy-i.md#eventpolicy) 中配置采样栈接口的参数。
+开发者可以使用上述hiappevent提供的接口，在EventPolicy 中配置采样栈接口的参数。
 
 | 名称       | 类型    | 只读 | 可选 | 说明                                         |
 | ---------- | ------- | ---- | ---- | ------------------------------------------ |
@@ -210,7 +210,7 @@ setEventConfig接口不提供主线程超时结束自动停止采样栈的功能
 
 | 接口名 | 描述 |
 | -------- | -------- |
-| [int OH_HiAppEvent_SetEventConfig(const char\* name, HiAppEvent_Config\* config)](../reference/apis-performance-analysis-kit/arkts-apis/arkts-performanceanalysis-hiappevent-seteventconfig-f.md#seteventconfig) | 设置主线程采样栈参数接口。 |
+| int OH_HiAppEvent_SetEventConfig(const char\* name, HiAppEvent_Config\* config) | 设置主线程采样栈参数接口。 |
 
 ### OH_HiAppEvent_SetEventConfig接口参数设置说明
 

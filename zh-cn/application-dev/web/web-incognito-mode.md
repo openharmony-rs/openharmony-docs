@@ -10,7 +10,7 @@
 
 ## 开启隐私模式
 
-开发者在创建Web组件时，可以将可选参数[incognitoMode](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-weboptions-i.md#weboptions)设置为true，来开启Web组件的隐私模式。
+开发者在创建Web组件时，可以将可选参数incognitoMode设置为true，来开启Web组件的隐私模式。
 
 - 创建隐私模式的[Web组件](../reference/apis-arkweb/c-apis/capi-web.md)。
   <!-- @[create_a_web_component_in_privacy_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/IncognitoMode_one.ets) -->

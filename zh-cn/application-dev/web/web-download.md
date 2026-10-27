@@ -152,7 +152,7 @@ struct WebComponent {
 }
 ```
 
-使用[DocumentViewPicker()](../reference/apis-core-file-kit/arkts-apis/arkts-corefile-picker-documentviewpicker-c.md#documentviewpicker)获取当前示例的默认下载目录，将该目录设置为下载目录。
+使用DocumentViewPicker()获取当前示例的默认下载目录，将该目录设置为下载目录。
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';

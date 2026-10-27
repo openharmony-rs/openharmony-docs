@@ -79,9 +79,9 @@
 
 | 名称 | 类 | 功能 |
 | -------- | -------- | -------- |
-| X.509证书 | [X509Cert](../../reference/apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-x509cert-i.md#x509cert) | 提供X.509证书的解析、序列化、X.509证书签名验证、证书相关的信息查询等功能。 |
-| 证书扩展域段 | [CertExtension](../../reference/apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-certextension-i.md#certextension) | 提供X.509证书中扩展域段的获取，如是否CA，CRL分发点等字段。 |
-| X.509证书吊销列表 | [X509CRL](../../reference/apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-x509crl-i.md#x509crl) | 提供X.509证书吊销列表的解析、序列化、信息查询等功能。 |
-| 证书链校验器 | [CertChainValidator](../../reference/apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-certchainvalidator-i.md#certchainvalidator) | 提供证书链校验（不包括证书有效期的校验）、证书链算法名称查询的功能。 |
-| 证书和证书吊销列表集合 | [CertCRLCollection](../../reference/apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-certcrlcollection-i.md#certcrlcollection) | 提供证书和证书吊销列表集合的查询功能。 |
-| X.509证书链 | [X509CertChain](../../reference/apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-x509certchain-i.md#x509certchain) | 提供证书链校验、证书列表获取的功能。 |
+| X.509证书 | X509Cert | 提供X.509证书的解析、序列化、X.509证书签名验证、证书相关的信息查询等功能。 |
+| 证书扩展域段 | CertExtension | 提供X.509证书中扩展域段的获取，如是否CA，CRL分发点等字段。 |
+| X.509证书吊销列表 | X509CRL | 提供X.509证书吊销列表的解析、序列化、信息查询等功能。 |
+| 证书链校验器 | CertChainValidator | 提供证书链校验（不包括证书有效期的校验）、证书链算法名称查询的功能。 |
+| 证书和证书吊销列表集合 | CertCRLCollection | 提供证书和证书吊销列表集合的查询功能。 |
+| X.509证书链 | X509CertChain | 提供证书链校验、证书列表获取的功能。 |

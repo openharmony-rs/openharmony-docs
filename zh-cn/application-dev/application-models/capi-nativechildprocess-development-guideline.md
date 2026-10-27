@@ -481,7 +481,7 @@
 
 ## 获取Native子进程退出信息
 
-从API version 20开始，支持父进程通过注册回调函数监听子进程，获取子进程异常退出信息，以便父进程做后续优化处理。这里支持监听的子进程必须为OH_Ability_StartNativeChildProcess、OH_Ability_StartNativeChildProcessWithConfigs或[startNativeChildProcess](../reference/apis-ability-kit/arkts-apis/arkts-ability-childprocessmanager-startnativechildprocess-f.md#startnativechildprocess)接口创建的子进程。
+从API version 20开始，支持父进程通过注册回调函数监听子进程，获取子进程异常退出信息，以便父进程做后续优化处理。这里支持监听的子进程必须为OH_Ability_StartNativeChildProcess、OH_Ability_StartNativeChildProcessWithConfigs或startNativeChildProcess接口创建的子进程。
 
 1. 添加动态库文件和头文件引用。
 

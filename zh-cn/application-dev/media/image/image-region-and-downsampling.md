@@ -65,7 +65,7 @@
 - **JPEG、PNG、HEIF格式**：解码过程中采用下采样策略，按最优采样率解码，解码效率更高。
 - **其他格式**：先完整解码原图，再缩放至期望尺寸。
 
-参数详情请参考[DecodingOptions](../../reference/apis-image-kit/arkts-apis/arkts-image-image-decodingoptions-i-sys.md#decodingoptions)。
+参数详情请参考DecodingOptions。
 
 ### 开发步骤
 
@@ -105,7 +105,7 @@
 
 **推荐使用CROP_FIRST**：先裁剪再缩放可精确控制裁剪区域，保证不同格式解码效果一致。
 
-参数详情请参考[CropAndScaleStrategy](../../reference/apis-image-kit/arkts-apis/arkts-image-image-cropandscalestrategy-e.md#cropandscalestrategy)。
+参数详情请参考CropAndScaleStrategy。
 
 ### 开发步骤
 

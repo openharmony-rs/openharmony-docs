@@ -39,12 +39,12 @@
 
 从API version 22开始，应用可以在启动过程中识别并判断当前进程的预加载状态。
 
-当应用被预加载后，开发者可以在[AbilityStage](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-abilitystage.md)的[onCreate](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-abilitystage-abilitystage-c.md#oncreate)生命周期回调中，通过调用[application.getAppPreloadType()](../reference/apis-ability-kit/arkts-apis/arkts-ability-application-getapppreloadtype-f.md#getapppreloadtype)获取当前进程的预加载类型（返回值为[AppPreloadType](../reference/apis-ability-kit/arkts-apis/arkts-ability-application-apppreloadtype-e.md#apppreloadtype)）。从而判断本次启动是否由预加载触发，并明确应用当前正处于哪一个预加载阶段。
+当应用被预加载后，开发者可以在[AbilityStage](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-abilitystage.md)的[onCreate](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-abilitystage-abilitystage-c.md#oncreate)生命周期回调中，通过调用application.getAppPreloadType()获取当前进程的预加载类型（返回值为AppPreloadType）。从而判断本次启动是否由预加载触发，并明确应用当前正处于哪一个预加载阶段。
 
 > **说明：**
 >
-> - 只有在进程首次执行[AbilityStage](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-abilitystage.md)的[onCreate](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-abilitystage-abilitystage-c.md#oncreate)完成之前调用[application.getAppPreloadType()](../reference/apis-ability-kit/arkts-apis/arkts-ability-application-getapppreloadtype-f.md#getapppreloadtype)接口，才可以返回真实的预加载类型。
-> - AbilityStage创建完成后，应用的预加载数据将被清除，此时调用[application.getAppPreloadType()](../reference/apis-ability-kit/arkts-apis/arkts-ability-application-getapppreloadtype-f.md#getapppreloadtype)将返回UNSPECIFIED，无法获取到真实的预加载类型。
+> - 只有在进程首次执行[AbilityStage](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-abilitystage.md)的[onCreate](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-abilitystage-abilitystage-c.md#oncreate)完成之前调用application.getAppPreloadType()接口，才可以返回真实的预加载类型。
+> - AbilityStage创建完成后，应用的预加载数据将被清除，此时调用application.getAppPreloadType()将返回UNSPECIFIED，无法获取到真实的预加载类型。
 
 ```ts
 import { AbilityStage, application } from '@kit.AbilityKit';

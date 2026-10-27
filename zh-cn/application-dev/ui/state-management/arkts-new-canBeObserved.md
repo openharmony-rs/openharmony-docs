@@ -44,7 +44,7 @@ let result: ObservedResult = UIUtils.canBeObserved(new User()); // 正确用法
 
 ## 对象可被观察场景
 
-可被观察对象调用canBeObserved接口，返回的[ObservedResult](../../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-statemanagement-observedresult-i.md#observedresult)结果对象中`reason`的值包含以下情况：
+可被观察对象调用canBeObserved接口，返回的ObservedResult结果对象中`reason`的值包含以下情况：
 
 | reason值 | 说明 |
 | ---- | ---- |

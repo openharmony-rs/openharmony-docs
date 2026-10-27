@@ -27,7 +27,7 @@
 
 2. 初始化密钥属性集。
 
-3. 调用[generateKeyItem](../../reference/apis-universal-keystore-kit/c-apis/capi-native-huks-api-h.md#ohhuksgeneratekeyitem)生成密钥，具体请参考[密钥生成](huks-key-generation-overview.md)。
+3. 调用generateKeyItem生成密钥，具体请参考[密钥生成](huks-key-generation-overview.md)。
 
 除此之外，开发者也可以参考[密钥导入](huks-key-import-overview.md)，导入已有的密钥。
 
@@ -37,11 +37,11 @@
 
 2. 指定待签名的明文数据。
 
-3. 获取属性参数[HuksOptions](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huks-huksoptions-i.md#huksoptions)，包括两个字段properties和inData。inData传入明文数据，properties使用[HuksParam](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huks-huksparam-i.md#huksparam)设置算法参数配置。
+3. 获取属性参数HuksOptions，包括两个字段properties和inData。inData传入明文数据，properties使用HuksParam设置算法参数配置。
 
-4. 调用[initSession](../../reference/apis-universal-keystore-kit/c-apis/capi-native-huks-api-h.md#ohhuksinitsession)初始化密钥会话，并获取会话的句柄handle。
+4. 调用initSession初始化密钥会话，并获取会话的句柄handle。
 
-5. 调用[finishSession](../../reference/apis-universal-keystore-kit/c-apis/capi-native-huks-api-h.md#ohhuksfinishsession)结束密钥会话，获取签名signature。
+5. 调用finishSession结束密钥会话，获取签名signature。
 
 **验签**
 
@@ -49,17 +49,17 @@
 
 2. 获取待验证的签名signature。
 
-3. 获取属性参数[HuksOptions](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huks-huksoptions-i.md#huksoptions)，包括两个字段properties和inData。inData传入签名signature，properties使用[HuksParam](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huks-huksparam-i.md#huksparam)设置算法参数配置。
+3. 获取属性参数HuksOptions，包括两个字段properties和inData。inData传入签名signature，properties使用HuksParam设置算法参数配置。
 
-4. 调用[initSession](../../reference/apis-universal-keystore-kit/c-apis/capi-native-huks-api-h.md#ohhuksinitsession)初始化密钥会话，并获取会话的句柄handle。
+4. 调用initSession初始化密钥会话，并获取会话的句柄handle。
 
-5. 调用[updateSession](../../reference/apis-universal-keystore-kit/c-apis/capi-native-huks-api-h.md#ohhuksupdatesession)更新密钥会话。
+5. 调用updateSession更新密钥会话。
 
-6. 调用[finishSession](../../reference/apis-universal-keystore-kit/c-apis/capi-native-huks-api-h.md#ohhuksfinishsession)结束密钥会话，验证签名。
+6. 调用finishSession结束密钥会话，验证签名。
 
 **删除密钥**
 
-当密钥废弃不用时，需要调用[deleteKeyItem](../../reference/apis-universal-keystore-kit/c-apis/capi-native-huks-api-h.md#ohhuksdeletekeyitem)删除密钥，具体请参考[密钥删除](huks-delete-key-arkts.md)。
+当密钥废弃不用时，需要调用deleteKeyItem删除密钥，具体请参考[密钥删除](huks-delete-key-arkts.md)。
 ## 开发案例
 
 ### ECC256/SHA256

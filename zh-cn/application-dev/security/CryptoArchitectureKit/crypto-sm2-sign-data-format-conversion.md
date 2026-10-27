@@ -12,7 +12,7 @@
 开发者可指定SM2签名数据，将其转换成DER格式签名数据。反之，也可以从DER格式签名数据中取出具体的SM2签名数据。
 
 **指定签名参数，转换为DER格式**
-1. 构造[EccSignatureSpec](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-eccsignaturespec-i.md#eccsignaturespec)对象，用于指定SM2签名参数。
+1. 构造EccSignatureSpec对象，用于指定SM2签名参数。
 
 2. 调用[genEccSignature](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-signatureutils-c.md#geneccsignature)，将EccSignatureSpec对象传入，转换为DER格式的SM2签名数据。
 

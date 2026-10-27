@@ -66,7 +66,7 @@
 
 通过注册[controlCenterEffectStatusChange](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-videosession-i.md#oncontrolcentereffectstatuschange)的回调函数获取控制器中各效果的使能状态。
 
-当控制器中某效果使能状态发生变化时，callback返回[ControlCenterStatusInfo](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-controlcenterstatusinfo-i.md#controlcenterstatusinfo)参数。
+当控制器中某效果使能状态发生变化时，callback返回ControlCenterStatusInfo参数。
 
 ```ts
 import { camera } from '@kit.CameraKit';

@@ -9,7 +9,7 @@
 图片接收类ImageReceiver用于获取组件SurfaceId，接收最新的图片和读取下一张图片，以及释放ImageReceiver实例。
 
 > **说明：**
-> Receiver作为消费者，需要有对应的生产者提供数据才能实现完整功能。常见的生产者是相机的拍照流或预览流。ImageReceiver只作为图片的接收方、消费者，在ImageReceiver设置的size、format等属性实际上并不会生效，图片createImageReceiver时传入的参数不产生实际影响。图片属性需要在发送方、生产者进行设置，如在使用[createpreviewoutput](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-cameramanager-i.md#createpreviewoutput)创建相机预览流时配置[profile](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-profile-i.md#profile)。
+> Receiver作为消费者，需要有对应的生产者提供数据才能实现完整功能。常见的生产者是相机的拍照流或预览流。ImageReceiver只作为图片的接收方、消费者，在ImageReceiver设置的size、format等属性实际上并不会生效，图片createImageReceiver时传入的参数不产生实际影响。图片属性需要在发送方、生产者进行设置，如在使用[createpreviewoutput](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-cameramanager-i.md#createpreviewoutput)创建相机预览流时配置profile。
 
 ImageReceiver可以接收相机预览流中的图片，实现[双路预览](../camera/camera-dual-channel-preview.md)。
 
@@ -106,7 +106,7 @@ ImageReceiver可以接收相机预览流中的图片，实现[双路预览](../c
    }
    ```
 
-通过[image.Component](../../reference/apis-image-kit/arkts-apis/arkts-image-image-component-i.md#component)解析图片的buffer数据。
+通过image.Component解析图片的buffer数据。
 
 > **注意：**
 > 需要确认图像的宽（width）是否与行距（rowStride）一致，如果不一致可参考以下方式一和方式二进行预处理。

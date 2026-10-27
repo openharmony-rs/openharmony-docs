@@ -12,7 +12,7 @@
 播放的全流程包含：创建AVPlayer，设置回调监听函数，设置播放资源，设置播放参数（音量/倍速/焦点模式），播放控制（播放/暂停/跳转/停止），重置，销毁播放器实例。
 
 
-在进行应用开发的过程中，开发者可以通过AVPlayer的信息监听回调函数[OH_AVPlayerOnInfoCallback](../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md#callback)和错误监听回调函数[OH_AVPlayerOnErrorCallback](../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-base-errorcallback-i.md#errorcallback)主动获取播放过程信息。如果应用在音频播放器处于错误状态时执行操作，系统可能会抛出异常或生成其他未定义的行为。
+在进行应用开发的过程中，开发者可以通过AVPlayer的信息监听回调函数OH_AVPlayerOnInfoCallback和错误监听回调函数OH_AVPlayerOnErrorCallback主动获取播放过程信息。如果应用在音频播放器处于错误状态时执行操作，系统可能会抛出异常或生成其他未定义的行为。
 
 **图1** 播放状态变化示意图  
 ![Playback status change](figures/playback-status-change-ndk.png)
@@ -27,7 +27,7 @@
 - 应用在播放过程中，若播放的媒体数据涉及音频，根据系统音频管理策略（参考[处理音频焦点事件](../audio/audio-playback-concurrency.md)），可能会被其他应用打断，建议通过OH_AVPlayer_SetOnInfoCallback()主动监听音频打断事件[AV_INFO_TYPE_INTERRUPT_EVENT](../../reference/apis-media-kit/c-apis/capi-avplayer-base-h.md#avplayeroninfotype)，根据其内容提示，做出相应的处理，避免出现应用状态与预期效果不一致的问题。
 - 面对设备同时连接多个音频输出设备的情况，建议通过OH_AVPlayer_SetOnInfoCallback()主动监听音频输出设备改变事件[AV_INFO_TYPE_AUDIO_OUTPUT_DEVICE_CHANGE](../../reference/apis-media-kit/c-apis/capi-avplayer-base-h.md#avplayeroninfotype)，从而做出相应处理。
 - 应用在播放过程中，系统内部可能异常，如网络数据下载失败、媒体服务死亡不可用等，建议通过OH_AVPlayer_SetOnErrorCallback()接口设置错误监听回调函数，根据不同错误类型，做出相应处理，避免出现播放异常。
-- 使用OH_AVPlayer_SetOnInfoCallback()、OH_AVPlayer_SetOnErrorCallback()接口分别设置信息监听回调函数[OH_AVPlayerOnInfoCallback](../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md#callback)和错误监听回调函数[OH_AVPlayerOnErrorCallback](../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-base-errorcallback-i.md#errorcallback)。当应用成功设置信息监听回调函数[OH_AVPlayerOnInfoCallback](../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md#callback)后，不再执行通过OH_AVPlayer_SetPlayerCallback()设置的信息监听回调函数OH_AVPlayerOnInfo；当应用成功设置错误监听回调函数[OH_AVPlayerOnErrorCallback](../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-base-errorcallback-i.md#errorcallback)后，不再执行通过OH_AVPlayer_SetPlayerCallback()设置的错误监听回调函数OH_AVPlayerOnError。
+- 使用OH_AVPlayer_SetOnInfoCallback()、OH_AVPlayer_SetOnErrorCallback()接口分别设置信息监听回调函数OH_AVPlayerOnInfoCallback和错误监听回调函数OH_AVPlayerOnErrorCallback。当应用成功设置信息监听回调函数OH_AVPlayerOnInfoCallback后，不再执行通过OH_AVPlayer_SetPlayerCallback()设置的信息监听回调函数OH_AVPlayerOnInfo；当应用成功设置错误监听回调函数OH_AVPlayerOnErrorCallback后，不再执行通过OH_AVPlayer_SetPlayerCallback()设置的错误监听回调函数OH_AVPlayerOnError。
 
 ## 开发步骤及注意事项
 在CMake脚本中链接动态库：
@@ -66,19 +66,19 @@ target_link_libraries(sample PUBLIC libhilog_ndk.z.so)
 
 3. 设置资源：调用OH_AVPlayer_SetURLSource()，设置属性url，AVPlayer进入[AV_INITIALIZED](../../reference/apis-media-kit/c-apis/capi-avplayer-base-h.md#avplayerstate)状态。
 
-4. （可选）设置音频流类型：调用[OH_AVPlayer_SetAudioRendererInfo()](../../reference/apis-media-kit/arkts-apis/arkts-media-media-avplayer-i.md#audiorendererinfo)，设置AVPlayer音频流类型。
+4. （可选）设置音频流类型：调用OH_AVPlayer_SetAudioRendererInfo()，设置AVPlayer音频流类型。
 
-5. （可选）设置音频打断模式：调用[OH_AVPlayer_SetAudioInterruptMode()](../../reference/apis-media-kit/arkts-apis/arkts-media-media-avplayer-i.md#audiointerruptmode)，设置AVPlayer音频流打断模式。
+5. （可选）设置音频打断模式：调用OH_AVPlayer_SetAudioInterruptMode()，设置AVPlayer音频流打断模式。
 
-6. 准备播放：调用[OH_AVPlayer_Prepare()](../../reference/apis-media-kit/arkts-apis/arkts-media-media-avplayer-i.md#prepare)，AVPlayer进入[AV_PREPARED](../../reference/apis-media-kit/c-apis/capi-avplayer-base-h.md#avplayerstate)状态，此时可以获取时长，设置音量。
+6. 准备播放：调用OH_AVPlayer_Prepare()，AVPlayer进入[AV_PREPARED](../../reference/apis-media-kit/c-apis/capi-avplayer-base-h.md#avplayerstate)状态，此时可以获取时长，设置音量。
 
-7. （可选）设置音频音效模式：调用[OH_AVPlayer_SetAudioEffectMode()](../../reference/apis-media-kit/arkts-apis/arkts-media-media-avplayer-i.md#audioeffectmode)，设置AVPlayer音频音效模式。
+7. （可选）设置音频音效模式：调用OH_AVPlayer_SetAudioEffectMode()，设置AVPlayer音频音效模式。
 
-8. 音频播控：播放[OH_AVPlayer_Play()](../../reference/apis-media-kit/arkts-apis/arkts-media-media-avplayer-i.md#play)，暂停[OH_AVPlayer_Pause()](../../reference/apis-media-kit/arkts-apis/arkts-media-media-avplayer-i.md#pause)，跳转[OH_AVPlayer_Seek()](../../reference/apis-media-kit/arkts-apis/arkts-media-media-avplayer-i.md#seek)，停止[OH_AVPlayer_Stop()](../../reference/apis-media-kit/arkts-apis/arkts-media-media-avplayer-i.md#stop)等操作。
+8. 音频播控：播放OH_AVPlayer_Play()，暂停OH_AVPlayer_Pause()，跳转OH_AVPlayer_Seek()，停止OH_AVPlayer_Stop()等操作。
 
-9. （可选）更换资源：调用[OH_AVPlayer_Reset()](../../reference/apis-media-kit/arkts-apis/arkts-media-media-avplayer-i.md#reset)重置资源，AVPlayer重新进入[AV_IDLE](../../reference/apis-media-kit/c-apis/capi-avplayer-base-h.md#avplayerstate)状态，允许更换资源url。
+9. （可选）更换资源：调用OH_AVPlayer_Reset()重置资源，AVPlayer重新进入[AV_IDLE](../../reference/apis-media-kit/c-apis/capi-avplayer-base-h.md#avplayerstate)状态，允许更换资源url。
 
-10. 退出播放：调用[OH_AVPlayer_Release()](../../reference/apis-media-kit/arkts-apis/arkts-media-media-avplayer-i.md#release)销毁实例，AVPlayer进入[AV_RELEASED](../../reference/apis-media-kit/c-apis/capi-avplayer-base-h.md#avplayerstate)状态，退出播放。之后再操作AVPlayer实例则行为未知，可能导致应用进程崩溃，应用闪退。
+10. 退出播放：调用OH_AVPlayer_Release()销毁实例，AVPlayer进入[AV_RELEASED](../../reference/apis-media-kit/c-apis/capi-avplayer-base-h.md#avplayerstate)状态，退出播放。之后再操作AVPlayer实例则行为未知，可能导致应用进程崩溃，应用闪退。
 
 ## 运行完整示例
 

@@ -14,7 +14,7 @@
 
 ## 开发步骤
 
-接口具体说明请参考[getDisplayCountry](../reference/apis-localization-kit/arkts-apis/arkts-localization-i18n-getdisplaycountry-f.md#getdisplaycountry)和[getDisplayLanguage](../reference/apis-localization-kit/arkts-apis/arkts-localization-i18n-getdisplaylanguage-f.md#getdisplaylanguage)的API文档。
+接口具体说明请参考getDisplayCountry和getDisplayLanguage的API文档。
 
 1. 导入模块。
 

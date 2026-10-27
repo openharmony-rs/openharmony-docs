@@ -75,7 +75,7 @@
   }
   ```
 
-- 应用在使用[startAbility()](../reference/apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md#startability-2)接口拉起主窗口时可通过[StartOptions](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-startoptions-startoptions-c-sys.md#startoptions)指定主窗口尺寸限制。  
+- 应用在使用[startAbility()](../reference/apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md#startability-2)接口拉起主窗口时可通过StartOptions指定主窗口尺寸限制。  
 
   minWindowWidth：窗口的最小宽度，单位为vp。
 
@@ -315,13 +315,13 @@
 >
 >   1. 应用通过[setWindowLimits()](../reference/apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#setwindowlimits)设置自由窗口尺寸限制。
 >
->   2. 应用使用[startAbility()](../reference/apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md#startability-2)接口拉起主窗口时通过[StartOptions](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-startoptions-startoptions-c-sys.md#startoptions)指定自由窗口尺寸限制。
+>   2. 应用使用[startAbility()](../reference/apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md#startability-2)接口拉起主窗口时通过StartOptions指定自由窗口尺寸限制。
 >
 >   3. 使用[module.json5配置文件](../quick-start/module-configuration-file.md#配置文件标签)中的[abilities标签](../quick-start/module-configuration-file.md#abilities标签)限制自由窗口的最大和最小尺寸。
 >
 >   4. 默认系统限制（对于不同产品和窗口类型，windowLimits系统默认限制存在差异）。
 > 
-> - 自由窗口状态下，主窗口可通过[setAspectRatio(ratio: number)](../reference/apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#setaspectratio)设置窗口内容布局的比例，如果先设置了[WindowLimits](../reference/apis-arkui/arkts-apis/arkts-arkui-window-windowlimits-i.md#windowlimits)，后设置的ratio与其冲突，会返回错误码401；如果先设置了ratio，后设置的[WindowLimits](../reference/apis-arkui/arkts-apis/arkts-arkui-window-windowlimits-i.md#windowlimits)与其冲突，窗口的宽高比可能会不跟随设置的宽高比（ratio）。
+> - 自由窗口状态下，主窗口可通过[setAspectRatio(ratio: number)](../reference/apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#setaspectratio)设置窗口内容布局的比例，如果先设置了WindowLimits，后设置的ratio与其冲突，会返回错误码401；如果先设置了ratio，后设置的WindowLimits与其冲突，窗口的宽高比可能会不跟随设置的宽高比（ratio）。
 
 ## 调整布局避让标题栏和窗口三键
 

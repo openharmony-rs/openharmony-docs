@@ -435,7 +435,7 @@ export struct CustomListStyle {
 
 ![zh-cn_image_0000001511740544](figures/zh-cn_image_0000001511740544.gif)
 
-在使用List组件时，可通过scrollBar属性控制列表滚动条的显示。scrollBar的取值类型为[BarState](../reference/apis-arkui/arkts-apis/arkts-arkui-barstate-e.md#barstate)，当取值为BarState.Auto表示按需显示滚动条。此时，当触摸到滚动条区域时显示控件，可上下拖拽滚动条快速浏览内容，拖拽时会变粗。若不进行任何操作，2秒后滚动条自动消失。
+在使用List组件时，可通过scrollBar属性控制列表滚动条的显示。scrollBar的取值类型为BarState，当取值为BarState.Auto表示按需显示滚动条。此时，当触摸到滚动条区域时显示控件，可上下拖拽滚动条快速浏览内容，拖拽时会变粗。若不进行任何操作，2秒后滚动条自动消失。
 
 scrollBar属性API version 9及以下版本默认值为BarState.Off，从API version 10版本开始默认值为BarState.Auto。
 <!-- @[add_a_scrollbar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/CustomListStyle.ets) -->
@@ -866,7 +866,7 @@ ListItem() {
 
 > **说明：** 
 >
-> 页面的下拉刷新操作推荐使用[Refresh](../reference/apis-arkui/arkui-js/js-components-container-refresh.md)组件实现。
+> 页面的下拉刷新操作推荐使用Refresh组件实现。
 
 <!--RP1--><!--RP1End-->
 
@@ -1611,7 +1611,7 @@ List(
 
 ## 设置边缘滑动效果
 
-边缘滑动效果是指当用户滑动滚动组件至边缘后，继续滑动时触发的交互效果。当前List支持通过[edgeEffect](../reference/apis-arkui/arkts-components/arkts-arkui-list-comp-attribute.md#edgeeffect)属性设置三种边缘滑动效果，分别为弹簧效果（即回弹效果）、阴影效果、无效果。具体效果说明请参见[EdgeEffect](../reference/apis-arkui/arkts-apis/arkts-arkui-edgeeffect-e.md#edgeeffect)的枚举说明。
+边缘滑动效果是指当用户滑动滚动组件至边缘后，继续滑动时触发的交互效果。当前List支持通过[edgeEffect](../reference/apis-arkui/arkts-components/arkts-arkui-list-comp-attribute.md#edgeeffect)属性设置三种边缘滑动效果，分别为弹簧效果（即回弹效果）、阴影效果、无效果。具体效果说明请参见EdgeEffect的枚举说明。
 
 当List组件的内容区大于等于一屏时，List的边缘滑动效果默认为回弹效果，如下图所示。
 
@@ -1704,7 +1704,7 @@ ListItem() {
 >
 >- 建议使用列表项数据中不会随位置变化的唯一标识（例如消息ID）记录选择结果，不建议仅使用当前下标，避免动态增删数据后选中项错位。
 >- 当业务需要在退出编辑模式后保留选择结果时，可在[onEditModeChange](../reference/apis-arkui/arkts-components/arkts-arkui-list-comp-attribute.md#oneditmodechange)回调中保存选择结果。
->- 使用[LazyForEach](../ui/rendering-control/arkts-rendering-control-lazyforeach.md)时，数据源发生变化后应通过[DataChangeListener](../reference/apis-arkui/arkts-components/arkts-arkui-lazyforeach-comp-datachangelistener-i.md#datachangelistener)通知组件刷新，确保滑动多选过程中列表项状态与数据源一致。
+>- 使用[LazyForEach](../ui/rendering-control/arkts-rendering-control-lazyforeach.md)时，数据源发生变化后应通过DataChangeListener通知组件刷新，确保滑动多选过程中列表项状态与数据源一致。
 
 <!--RP2-->
 ## 相关实例

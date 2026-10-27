@@ -12,10 +12,10 @@
 |[上下文菜单](./web-menu.md#上下文菜单)|超链接、图片、文字|手势长按、鼠标右键|支持通过菜单组件自定义|
 |[自定义菜单](./web-menu.md#自定义菜单)|图片|手势长按|支持通过菜单组件自定义|
 ## 文本选中菜单
-Web组件的文本选中菜单是一种通过自定义元素实现的上下文交互组件，当用户选中文本时会动态显示，提供复制、分享、标注等语义化操作，具备标准化功能与良好可扩展性，是移动端文本操作的核心功能之一。文本选中菜单在用户长按选中文本或编辑状态下长按出现单手柄时弹出，菜单项横向排列。系统提供默认的菜单实现。应用可通过[editMenuOptions](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-attribute.md#editmenuoptions)接口对文本选中菜单进行自定义操作。
+Web组件的文本选中菜单是一种通过自定义元素实现的上下文交互组件，当用户选中文本时会动态显示，提供复制、分享、标注等语义化操作，具备标准化功能与良好可扩展性，是移动端文本操作的核心功能之一。文本选中菜单在用户长按选中文本或编辑状态下长按出现单手柄时弹出，菜单项横向排列。系统提供默认的菜单实现。应用可通过editMenuOptions接口对文本选中菜单进行自定义操作。
 1. 通过onCreateMenu方法自定义菜单项，通过操作Array<TextMenuItem>数组可对显示菜单项进行增减操作，在TextMenuItem中定义菜单项名称、图标、ID等内容。
 2. 通过onMenuItemClick方法处理菜单项点击事件，当返回false时会执行系统默认逻辑。
-3. 创建一个[EditMenuOptions](../reference/apis-arkui/arkts-apis/arkts-arkui-atomicservice-atomicservicesearch-searchparams-i.md#editmenuoptions)对象，包含onCreateMenu和onMenuItemClick两个方法，通过Web组件的[editMenuOptions](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-attribute.md#editmenuoptions)接口与Web组件绑定。
+3. 创建一个[EditMenuOptions](../reference/apis-arkui/arkts-apis/arkts-arkui-atomicservice-atomicservicesearch-searchparams-i.md#editmenuoptions)对象，包含onCreateMenu和onMenuItemClick两个方法，通过Web组件的editMenuOptions接口与Web组件绑定。
 
 <!-- @[web_textMenuItem](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebTextMenuItem.ets) --> 
 
@@ -106,11 +106,11 @@ struct WebComponent {
   ```
   ![editMenuOption](./figures/editMenuOption.gif)
 ## 上下文菜单
-上下文菜单是用户通过特定操作（如右键点击或长按富文本）触发的快捷菜单，用于提供与当前操作对象或界面元素相关的功能选项。菜单项纵向排列。系统未提供默认实现，若应用未实现，则不显示上下文菜单。应用需要创建一个[Menu](../reference/apis-arkui/arkui-js/js-components-basic-menu.md)组件并与Web组件绑定，在菜单弹出时可通过Web组件的[onContextMenuShow](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-attribute.md#oncontextmenushow)回调接口获取上下文菜单的详细信息，包括点击位置的HTML元素信息及点击位置信息。
+上下文菜单是用户通过特定操作（如右键点击或长按富文本）触发的快捷菜单，用于提供与当前操作对象或界面元素相关的功能选项。菜单项纵向排列。系统未提供默认实现，若应用未实现，则不显示上下文菜单。应用需要创建一个Menu组件并与Web组件绑定，在菜单弹出时可通过Web组件的onContextMenuShow回调接口获取上下文菜单的详细信息，包括点击位置的HTML元素信息及点击位置信息。
 
-1. [Menu](../reference/apis-arkui/arkui-js/js-components-basic-menu.md)组件作为弹出的菜单，包含所有菜单项行为与样式。
+1. Menu组件作为弹出的菜单，包含所有菜单项行为与样式。
 2. 使用bindPopup方法将Menu组件与Web组件绑定。当上下文菜单弹出时，将显示创建的Menu组件。
-3. 在onContextMenuShow回调中获取上下文菜单事件信息[onContextMenuShowEvent](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-oncontextmenushowevent-i.md#oncontextmenushowevent)。其中param为WebContextMenuParam类型，包含点击位置对应HTML元素信息和位置信息，result为WebContextMenuResult类型，提供常见的菜单能力。
+3. 在onContextMenuShow回调中获取上下文菜单事件信息onContextMenuShowEvent。其中param为WebContextMenuParam类型，包含点击位置对应HTML元素信息和位置信息，result为WebContextMenuResult类型，提供常见的菜单能力。
 
 <!-- @[web_ContextMenu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebContextMenu.ets) --> 
 
@@ -257,17 +257,17 @@ struct WebComponent {
 
 ### 关闭上下文菜单
 
-`onContextMenuShow`触发后，应用需要结束本次菜单操作。上述示例在`onContextMenuShow`回调中通过`event.result`获取上下文菜单结果对象并保存至`this.result`，然后在`bindPopup`的`onStateChange`中监听弹窗关闭，调用`this.result!.closeContextMenu()`关闭Web上下文菜单。仅将弹窗状态设为不显示，不能替代调用[closeContextMenu](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-webcontextmenuresult-c.md#closecontextmenu)。若重复长按图片时回调只触发一次，先检查上一次菜单关闭时是否调用了该接口；若菜单已关闭，再检查网页是否拦截了`contextmenu`事件。
+`onContextMenuShow`触发后，应用需要结束本次菜单操作。上述示例在`onContextMenuShow`回调中通过`event.result`获取上下文菜单结果对象并保存至`this.result`，然后在`bindPopup`的`onStateChange`中监听弹窗关闭，调用`this.result!.closeContextMenu()`关闭Web上下文菜单。仅将弹窗状态设为不显示，不能替代调用closeContextMenu。若重复长按图片时回调只触发一次，先检查上一次菜单关闭时是否调用了该接口；若菜单已关闭，再检查网页是否拦截了`contextmenu`事件。
 
 ## 自定义菜单
 自定义菜单赋予开发者灵活控制菜单触发时机与视觉呈现的能力，使应用能够根据用户操作场景动态匹配功能入口，显著简化开发过程中的界面适配工作，同时让交互体验更贴近用户直觉。
 
-开发者可通过[bindSelectionMenu](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-attribute.md#bindselectionmenu)接口实现自定义菜单功能。目前，已额外支持通过长按图片、链接和文本，触发自定义菜单及自定义文本菜单。
+开发者可通过bindSelectionMenu接口实现自定义菜单功能。目前，已额外支持通过长按图片、链接和文本，触发自定义菜单及自定义文本菜单。
 
 图片处于选中态时，落在选区内的点击可能用于处理选区或菜单，页面的`click`事件可能不会触发。若应用需要在图片被选中时提供操作入口，可通过下方的`bindSelectionMenu`为图片配置菜单项；若需要响应页面的普通点击，应先退出选中态，再点击图片。
 
-1. 创建[Menu](../reference/apis-arkui/arkui-js/js-components-basic-menu.md)组件作为菜单弹窗。
-2. 通过Web组件的[bindSelectionMenu](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-attribute.md#bindselectionmenu)方法绑定MenuBuilder菜单弹窗。将[WebElementType](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-webelementtype-e.md#webelementtype)设置为WebElementType.IMAGE，[responseType](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-webresponsetype-e.md#webresponsetype)设置为WebResponseType.LONG_PRESS，表示长按图片时弹出菜单。在[options](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-selectionmenuoptionsext-i.md#selectionmenuoptionsext)中定义菜单显示回调onAppear、菜单消失回调onDisappear、预览窗口preview和菜单类型menuType。
+1. 创建Menu组件作为菜单弹窗。
+2. 通过Web组件的bindSelectionMenu方法绑定MenuBuilder菜单弹窗。将WebElementType设置为WebElementType.IMAGE，responseType设置为WebResponseType.LONG_PRESS，表示长按图片时弹出菜单。在options中定义菜单显示回调onAppear、菜单消失回调onDisappear、预览窗口preview和菜单类型menuType。
 
 <!-- @[web_BindSelectionMenu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebBindSelectionMenu.ets) -->
 
@@ -731,8 +731,8 @@ struct WebComponent {
 ![emptyEditMenuOption](./figures/web-menu-savePic.gif)
 
 ## Web菜单获取选中文本
-Web组件的[editMenuOptions](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-attribute.md#editmenuoptions)接口中没有提供获取选中文本的方式。开发者可通过[javaScriptProxy](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-attribute.md#javascriptproxy)获取到JavaScript的选中文本，实现自定义菜单的逻辑。
-1. 创建SelectClass类，通过[javaScriptProxy](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-attribute.md#javascriptproxy)将SelectClass对象注册到Web组件中。
+Web组件的editMenuOptions接口中没有提供获取选中文本的方式。开发者可通过javaScriptProxy获取到JavaScript的选中文本，实现自定义菜单的逻辑。
+1. 创建SelectClass类，通过javaScriptProxy将SelectClass对象注册到Web组件中。
 2. 在HTML侧注册选区变更监听器，在选区变更时通过SelectClass对象将选区设置到ArkTS侧。
 
 <!-- @[web_EditMenuOptions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebEditMenuOptions.ets) -->
@@ -833,7 +833,7 @@ struct WebComponent {
 
 ## 常见问题
 ### 如何禁用长按选择时弹出菜单
-可通过[editMenuOptions](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-attribute.md#editmenuoptions)接口将系统默认菜单全部过滤，此时无菜单项，则不会显示菜单。
+可通过editMenuOptions接口将系统默认菜单全部过滤，此时无菜单项，则不会显示菜单。
 
 <!-- @[web_Disable_long_press](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebDisableLongPress.ets) --> 
 
@@ -889,7 +889,7 @@ struct WebComponent {
 可排查是否通过JavaScript的[selection-api](https://www.w3.org/TR/selection-api/)对选区进行了操作，目前通过这种方式改变选区会导致文本选中菜单不显示。
 
 ### 如何修改文本选中菜单的样式
-从API version 21开始，应用可通过[bindSelectionMenu](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-attribute.md#bindselectionmenu)接口，实现自定义文本选中菜单。
+从API version 21开始，应用可通过bindSelectionMenu接口，实现自定义文本选中菜单。
 
 **示例代码**
 

@@ -8,7 +8,7 @@
 
 ASON工具与JS提供的JSON工具类似，JSON用于进行JS对象的序列化（stringify）、反序列化（parse）。ASON则提供了[Sendable对象](arkts-sendable.md)的序列化、反序列化能力。使用ASON.stringify方法可将对象转换为字符串，使用ASON.parse方法可将字符串转换为Sendable对象，从而实现对象在并发任务间的高性能引用传递。
 
-ASON.stringify方法还支持将Map和Set对象转换为字符串，可转换的Map和Set类型包括：Map、Set、[collections.Map](../reference/apis-arkts/arkts-apis/arkts-arkts-collections-map-c.md)、[collections.Set](../reference/apis-arkts/arkts-apis/arkts-arkts-collections-set-c.md)、[HashMap](../reference/apis-arkts/arkts-apis/arkts-arkts-util-hashmap-hashmap-c.md#hashmap)、[HashSet](../reference/apis-arkts/arkts-apis/arkts-arkts-util-hashset-hashset-c.md#hashset)。
+ASON.stringify方法还支持将Map和Set对象转换为字符串，可转换的Map和Set类型包括：Map、Set、[collections.Map](../reference/apis-arkts/arkts-apis/arkts-arkts-collections-map-c.md)、[collections.Set](../reference/apis-arkts/arkts-apis/arkts-arkts-collections-set-c.md)、HashMap、HashSet。
 
 > **说明：**
 >

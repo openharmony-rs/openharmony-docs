@@ -999,7 +999,7 @@ on(type: 'discoverFailure', callback: Callback<{ reason: number; }>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'discoverFailure' | 是 | 注册设备发现失败回调，以便在发现周边设备失败时通知应用，固定为discoverFailure。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;{ reason: number; }&gt; | 是 | 注册设备发现失败的回调方法，返回设备发现失败的原因。回调参数reason为整数类型，表示发现失败的错误原因码，具体取值可参见[设备管理错误码](../../../reference/apis-distributedservice-kit/errorcode-device-manager.md)。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;{ reason: number; }&gt; | 是 | 注册设备发现失败的回调方法，返回设备发现失败的原因。回调参数reason为整数类型，表示发现失败的错误原因码，具体取值可参见设备管理错误码。 |
 
 **错误码：**
 

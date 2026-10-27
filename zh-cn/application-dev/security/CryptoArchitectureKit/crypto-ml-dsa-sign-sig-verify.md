@@ -11,9 +11,9 @@
 
 **签名**
 
-1. 调用[cryptoFramework.createAsyKeyGenerator](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-createasykeygenerator-f.md#createasykeygenerator)、[AsyKeyGenerator.generateKeyPair](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-asykeygenerator-i.md#generatekeypair-1)，生成非对称密钥算法为ML-DSA的密钥对（KeyPair）。
+1. 调用cryptoFramework.createAsyKeyGenerator、[AsyKeyGenerator.generateKeyPair](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-asykeygenerator-i.md#generatekeypair-1)，生成非对称密钥算法为ML-DSA的密钥对（KeyPair）。
 
-2. 调用[cryptoFramework.createSign](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-createsign-f.md#createsign)，指定字符串参数'ML-DSA'，创建非对称密钥类型为ML-DSA的Sign实例，用于完成签名操作。
+2. 调用cryptoFramework.createSign，指定字符串参数'ML-DSA'，创建非对称密钥类型为ML-DSA的Sign实例，用于完成签名操作。
 
 3. （可选）调用[Sign.setSignSpec](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-sign-i.md#setsignspec)，设置ML-DSA签名参数，如确定性签名（ML_DSA_DETERMINISTIC_BOOL）、外部μ哈希模式（ML_DSA_MU_BOOL）或上下文字符串（ML_DSA_CONTEXT_UINT8ARR），当设置外部μ哈希模式（ML_DSA_MU_BOOL）为true时，上下文字符串（ML_DSA_CONTEXT_UINT8ARR）无效。
 
@@ -25,7 +25,7 @@
 
 **验签**
 
-1. 调用[cryptoFramework.createVerify](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-createverify-f.md#createverify)，指定字符串参数'ML-DSA'，创建非对称密钥类型为ML-DSA的Verify实例，用于完成验签操作。
+1. 调用cryptoFramework.createVerify，指定字符串参数'ML-DSA'，创建非对称密钥类型为ML-DSA的Verify实例，用于完成验签操作。
 
 2. （可选）调用[Verify.setVerifySpec](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-verify-i.md#setverifyspec)，设置ML-DSA验签参数，如外部μ哈希模式（ML_DSA_MU_BOOL）或上下文字符串（ML_DSA_CONTEXT_UINT8ARR）。验签的参数应当与签名的参数保持一致，验签时无需设置确定性签名（ML_DSA_DETERMINISTIC_BOOL）。
 

@@ -18,7 +18,7 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 
 **指定密文参数，生成标准ASN.1密文**
 
-1. 调用[OH_CryptoSm2CiphertextSpec_Create](../../reference/apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-colorspacemanager-create-f.md#create)，创建空的SM2密文规格对象。
+1. 调用OH_CryptoSm2CiphertextSpec_Create，创建空的SM2密文规格对象。
 
 2. 调用OH_CryptoSm2CiphertextSpec_SetItem，设置密文的各个参数（C1.x、C1.y、C2、C3）。
 
@@ -93,7 +93,7 @@ OH_Crypto_ErrCode doTestGenCipherTextBySpec()
 
 **从标准ASN.1密文中获取密文参数**
 
-1. 调用[OH_CryptoSm2CiphertextSpec_Create](../../reference/apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-colorspacemanager-create-f.md#create)，从ASN.1格式密文创建SM2密文规格对象。
+1. 调用OH_CryptoSm2CiphertextSpec_Create，从ASN.1格式密文创建SM2密文规格对象。
 
 2. 调用OH_CryptoSm2CiphertextSpec_GetItem，获取密文中的各个参数（C1.x、C1.y、C2、C3）。
 

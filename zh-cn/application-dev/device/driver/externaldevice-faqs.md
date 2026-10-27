@@ -57,7 +57,7 @@
 
 ### 解决措施
 
-目前，`ohos.permission.ACCESS_DDK_DRIVERS`权限在应用市场的申请和运营流程正在维护中，涉及工程中使用了[bindDriverWithDeviceId](../../reference/apis-driver-development-kit/arkts-apis/arkts-driverdevelopment-devicemanager-binddriverwithdeviceid-f.md#binddriverwithdeviceid)、[unbindDriverWithDeviceId](../../reference/apis-driver-development-kit/arkts-apis/arkts-driverdevelopment-devicemanager-unbinddriverwithdeviceid-f.md#unbinddriverwithdeviceid)接口的，可以替换为[bindDeviceDriver](../../reference/apis-driver-development-kit/arkts-apis/arkts-driverdevelopment-devicemanager-binddevicedriver-f.md#binddevicedriver)、[unbindDevice](../../reference/apis-driver-development-kit/arkts-apis/arkts-driverdevelopment-devicemanager-unbinddevice-f.md#unbinddevice)接口，接口的业务功能完全一致。
+目前，`ohos.permission.ACCESS_DDK_DRIVERS`权限在应用市场的申请和运营流程正在维护中，涉及工程中使用了bindDriverWithDeviceId、unbindDriverWithDeviceId接口的，可以替换为bindDeviceDriver、unbindDevice接口，接口的业务功能完全一致。
 
 ## 使用基于缓冲区发送数据的DDK接口时，未按照指定的offset和bufferLength发送
 

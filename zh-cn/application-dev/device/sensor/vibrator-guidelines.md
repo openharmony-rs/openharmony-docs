@@ -39,9 +39,9 @@
 
 | 名称         | 说明                                                         |
 | ------------ | ------------------------------------------------------------ |
-| 固定时长振动 | 传入一个固定时长，马达按照默认强度和频率触发振动，振动效果描述请参考[VibrateTime](../../reference/apis-sensor-service-kit/arkts-apis/arkts-sensorservice-vibrator-vibratetime-i.md#vibratetime)。 |
-| 预置振动     | 系统中的[EffectId](../../reference/apis-sensor-service-kit/arkts-apis/arkts-sensorservice-vibrator-effectid-e.md#effectid)，这些效果适用于某些固定场景，比如效果"haptic.clock.timer"通常用于用户调整计时器时的振感反馈，振动效果描述请参考[VibratePreset](../../reference/apis-sensor-service-kit/arkts-apis/arkts-sensorservice-vibrator-vibratepreset-i.md#vibratepreset)。 |
-| 自定义振动   | 自定义振动提供给用户设计自己所需振动效果的能力，用户可通过自定义振动配置文件，并遵循相应规则编排所需振动形式，使能更加开放的振感交互体验，效果描述请参考[VibrateFromFile](../../reference/apis-sensor-service-kit/arkts-apis/arkts-sensorservice-vibrator-vibratefromfile-i.md#vibratefromfile)。 |
+| 固定时长振动 | 传入一个固定时长，马达按照默认强度和频率触发振动，振动效果描述请参考VibrateTime。 |
+| 预置振动     | 系统中的EffectId，这些效果适用于某些固定场景，比如效果"haptic.clock.timer"通常用于用户调整计时器时的振感反馈，振动效果描述请参考VibratePreset。 |
+| 自定义振动   | 自定义振动提供给用户设计自己所需振动效果的能力，用户可通过自定义振动配置文件，并遵循相应规则编排所需振动形式，使能更加开放的振感交互体验，效果描述请参考VibrateFromFile。 |
 
 自定义振动配置文件为Json格式，在形式上如下所示：
 

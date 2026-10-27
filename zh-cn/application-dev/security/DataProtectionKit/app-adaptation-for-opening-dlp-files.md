@@ -110,7 +110,7 @@ DLP文件所涉及的重要模块及其交互，如下图所示。文件所有�
 
      2.1 设置[Want](../../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md)参数，指定action为"ohos.want.action.viewData"，uri为需要打开的DLP文件的URI，在parameters中设置fileName的name值为DLP文件的文件名。
 
-    2.2 获取[UIAbilityContext](../../reference/apis-ability-kit/arkts-apis/arkts-ability-common-uiabilitycontext-t.md#uiabilitycontext)的context。
+    2.2 获取UIAbilityContext的context。
 
     2.3 调用context的[startAbility](../../reference/apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md#startability)方法传入want参数，打开dlp文件。
 
@@ -205,7 +205,7 @@ DLP文件所涉及的重要模块及其交互，如下图所示。文件所有�
 
     3.1.1 首先要有一个DLP权限应用有读写权限的（比如文件管理的文档目录下）。
 
-    3.1.2 以无边框形式打开DLP权限管理应用。此方法只能在UIAbility上下文中调用。调用[startDLPManagerForResult](../../reference/apis-data-protection-kit/arkts-apis/arkts-dataprotection-dlppermission-startdlpmanagerforresult-f.md#startdlpmanagerforresult)，拉起DLP管理应用的设置权限页面，输入相关的授权账号信息，点击保存，在拉起的filepicker中选择DLP文件的保存路径，保存DLP文件。
+    3.1.2 以无边框形式打开DLP权限管理应用。此方法只能在UIAbility上下文中调用。调用startDLPManagerForResult，拉起DLP管理应用的设置权限页面，输入相关的授权账号信息，点击保存，在拉起的filepicker中选择DLP文件的保存路径，保存DLP文件。
 
     <!-- @[dlp_generateDlpFiles](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
     
@@ -243,7 +243,7 @@ DLP文件所涉及的重要模块及其交互，如下图所示。文件所有�
     
     使用该接口的前置条件：链接DLP凭据服务器。
 
-    3.2.1 如果当前的账号是DLP文档的创建者，则该用户拥有修改这个DLP文件权限或者解除这个DLP文档权限还原为普通文件的能力，调用[startDLPManagerForResult](../../reference/apis-data-protection-kit/arkts-apis/arkts-dataprotection-dlppermission-startdlpmanagerforresult-f.md#startdlpmanagerforresult)，拉起DLP管理应用的设置权限页面，在该页面中选择更改加密进行权限修改或者解除加密；如果当前账号拥有DLP文档只读或者编辑权限，调用以下代码则可以查看当前用户权限内容。
+    3.2.1 如果当前的账号是DLP文档的创建者，则该用户拥有修改这个DLP文件权限或者解除这个DLP文档权限还原为普通文件的能力，调用startDLPManagerForResult，拉起DLP管理应用的设置权限页面，在该页面中选择更改加密进行权限修改或者解除加密；如果当前账号拥有DLP文档只读或者编辑权限，调用以下代码则可以查看当前用户权限内容。
 
     <!-- @[dlp_startDLPManagerForResult](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
     
@@ -279,7 +279,7 @@ DLP文件所涉及的重要模块及其交互，如下图所示。文件所有�
 
     使用该接口的前置条件：由demo应用打开DLP文件。
    
-    在应用中调用[isInSandbox](../../reference/apis-data-protection-kit/arkts-apis/arkts-dataprotection-dlppermission-isinsandbox-f.md#isinsandbox)接口判断当前是否是DLP沙箱分身，如果是DLP沙箱分身则可以结合调用接口查询权限的结果进行对应功能按钮的置灰或屏蔽。比如：如果只有只读权限，则编辑保存入口可以置灰，如果是只读或者编辑权限，则修改权限入口可以置灰。
+    在应用中调用isInSandbox接口判断当前是否是DLP沙箱分身，如果是DLP沙箱分身则可以结合调用接口查询权限的结果进行对应功能按钮的置灰或屏蔽。比如：如果只有只读权限，则编辑保存入口可以置灰，如果是只读或者编辑权限，则修改权限入口可以置灰。
 
     <!-- @[dlp_isInSandBox](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
     
@@ -301,7 +301,7 @@ DLP文件所涉及的重要模块及其交互，如下图所示。文件所有�
 
 5. 应用根据DLP文件的权限对界面进行适配。
 
-    DLP沙箱分身中可以调用[getDLPPermissionInfo](../../reference/apis-data-protection-kit/arkts-apis/arkts-dataprotection-dlppermission-getdlppermissioninfo-f.md#getdlppermissioninfo)方法查询当前系统登录的域账号用户对本DLP文件的用户权限和操作权限，不同用户权限可以对应不同的对文档的操作权限。沙箱限制可见[数据防泄露（DLP）简介](dlp-guidelines.md)。
+    DLP沙箱分身中可以调用getDLPPermissionInfo方法查询当前系统登录的域账号用户对本DLP文件的用户权限和操作权限，不同用户权限可以对应不同的对文档的操作权限。沙箱限制可见[数据防泄露（DLP）简介](dlp-guidelines.md)。
    
      使用该接口的前置条件：由demo应用打开DLP文件。
 
@@ -323,11 +323,11 @@ DLP文件所涉及的重要模块及其交互，如下图所示。文件所有�
     }
     ```
 
-    getDLPPermissionInfo返回的data为[DLPPermissionInfo](../../reference/apis-data-protection-kit/arkts-apis/arkts-dataprotection-dlppermission-dlppermissioninfo-i.md#dlppermissioninfo)类型，其中dlpFileAccess表示用户权限，flags表示操作权限的按位组合的结果。可以根据返回的flags字段对照[ActionFlagType](../../reference/apis-data-protection-kit/arkts-apis/arkts-dataprotection-dlppermission-actionflagtype-e.md#actionflagtype)判断DLP沙箱分身是否具有对应的操作权限，可以用于界面按钮置灰操作等。
+    getDLPPermissionInfo返回的data为DLPPermissionInfo类型，其中dlpFileAccess表示用户权限，flags表示操作权限的按位组合的结果。可以根据返回的flags字段对照ActionFlagType判断DLP沙箱分身是否具有对应的操作权限，可以用于界面按钮置灰操作等。
 
 6. 获取当前可支持DLP方案的文件扩展名类型列表。
 
-    [getDLPSupportedFileTypes](../../reference/apis-data-protection-kit/arkts-apis/arkts-dataprotection-dlppermission-getdlpsupportedfiletypes-f.md#getdlpsupportedfiletypes)用于应用判断当前文件能否生成进行加密。
+    getDLPSupportedFileTypes用于应用判断当前文件能否生成进行加密。
 
     <!-- @[dlp_getDLPSupportedFileTypes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
     
@@ -349,7 +349,7 @@ DLP文件所涉及的重要模块及其交互，如下图所示。文件所有�
 
     使用该接口的前置条件：需要dlp文件进行判断。
 
-    [isDLPFile](../../reference/apis-data-protection-kit/arkts-apis/arkts-dataprotection-dlppermission-isdlpfile-f.md#isdlpfile)用于判断当前打开文件是否是DLP文件。
+    isDLPFile用于判断当前打开文件是否是DLP文件。
 
     <!-- @[dlp_isCurrentDlpFile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
     
@@ -391,7 +391,7 @@ DLP文件所涉及的重要模块及其交互，如下图所示。文件所有�
     
     8.1 普通应用未启动，无法感知到DLP沙箱分身打开的DLP文件。
 
-    仅有DLP沙箱分身有打开DLP文件场景：普通应用启动时，可以通过[getDLPFileAccessRecords](../../reference/apis-data-protection-kit/arkts-apis/arkts-dataprotection-dlppermission-getdlpfileaccessrecords-f.md#getdlpfileaccessrecords)接口获取到历史通过本应用的DLP沙箱分身打开的DLP文件。
+    仅有DLP沙箱分身有打开DLP文件场景：普通应用启动时，可以通过getDLPFileAccessRecords接口获取到历史通过本应用的DLP沙箱分身打开的DLP文件。
 
     使用该接口的前置条件：由demo应用打开DLP文件。
 
@@ -463,7 +463,7 @@ DLP文件所涉及的重要模块及其交互，如下图所示。文件所有�
   
     设置保留沙箱接口，只有当再次调用取消保留沙箱接口并关闭DLP沙箱分身才会触发沙箱的卸载。
 
-    9.1 调用接口[setRetentionState](../../reference/apis-data-protection-kit/arkts-apis/arkts-dataprotection-dlppermission-setretentionstate-f.md#setretentionstate)设置保留沙箱，传入参数为本沙箱内打开的dlp文件的URI列表，该接口只允许在沙箱中调用。
+    9.1 调用接口setRetentionState设置保留沙箱，传入参数为本沙箱内打开的dlp文件的URI列表，该接口只允许在沙箱中调用。
 
     <!-- @[dlp_setRetentionState](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
     
@@ -485,7 +485,7 @@ DLP文件所涉及的重要模块及其交互，如下图所示。文件所有�
     }
     ```
 
-   9.2 调用接口[cancelRetentionState](../../reference/apis-data-protection-kit/arkts-apis/arkts-dataprotection-dlppermission-cancelretentionstate-f.md#cancelretentionstate)取消保留沙箱。
+   9.2 调用接口cancelRetentionState取消保留沙箱。
 
     <!-- @[dlp_cancelRetentionState](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
     
@@ -507,7 +507,7 @@ DLP文件所涉及的重要模块及其交互，如下图所示。文件所有�
     }
     ```
 
-    9.3. 调用接口[getRetentionSandboxList](../../reference/apis-data-protection-kit/arkts-apis/arkts-dataprotection-dlppermission-getretentionsandboxlist-f.md#getretentionsandboxlist)获取保留沙箱记录。
+    9.3. 调用接口getRetentionSandboxList获取保留沙箱记录。
 
     使用该接口的前置条件：由demo应用打开DLP文件。
 
@@ -550,7 +550,7 @@ DLP文件所涉及的重要模块及其交互，如下图所示。文件所有�
 
     10.1 设置配置信息。
 
-    把需要保存的配置信息转成string类型，调用[setSandboxAppConfig](../../reference/apis-data-protection-kit/arkts-apis/arkts-dataprotection-dlppermission-setsandboxappconfig-f.md#setsandboxappconfig)接口设置配置信息。
+    把需要保存的配置信息转成string类型，调用setSandboxAppConfig接口设置配置信息。
 
     <!-- @[dlp_setSandboxAppConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
     
@@ -573,7 +573,7 @@ DLP文件所涉及的重要模块及其交互，如下图所示。文件所有�
 
     10.2 清理配置信息。
 
-    调用[cleanSandboxAppConfig](../../reference/apis-data-protection-kit/arkts-apis/arkts-dataprotection-dlppermission-cleansandboxappconfig-f.md#cleansandboxappconfig)接口清理该应用的所有配置信息。
+    调用cleanSandboxAppConfig接口清理该应用的所有配置信息。
 
     该接口只允许普通应用中调用。
 
@@ -599,7 +599,7 @@ DLP文件所涉及的重要模块及其交互，如下图所示。文件所有�
 
     10.3. 获取配置信息。
 
-    调用[getSandboxAppConfig](../../reference/apis-data-protection-kit/arkts-apis/arkts-dataprotection-dlppermission-getsandboxappconfig-f.md#getsandboxappconfig)查询该应用的所有配置信息。
+    调用getSandboxAppConfig查询该应用的所有配置信息。
 
     普通应用和DLP沙箱分身都可以调用。
 
@@ -626,7 +626,7 @@ DLP文件所涉及的重要模块及其交互，如下图所示。文件所有�
 
     使用该接口的前置条件：链接DLP凭据服务器。
 
-    [isDLPFeatureProvided](../../reference/apis-data-protection-kit/arkts-apis/arkts-dataprotection-dlppermission-isdlpfeatureprovided-f.md#isdlpfeatureprovided)用于查询当前系统是否提供DLP特性。
+    isDLPFeatureProvided用于查询当前系统是否提供DLP特性。
     
     <!-- @[dlp_isDLPFeature](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
     
@@ -764,7 +764,7 @@ DLP文件所涉及的重要模块及其交互，如下图所示。文件所有�
 
 13. 获取dlp文件原始名。
 
-    [getOriginalFileName](../../reference/apis-data-protection-kit/arkts-apis/arkts-dataprotection-dlppermission-getoriginalfilename-f.md#getoriginalfilename)用于获取dlp文件原始名。
+    getOriginalFileName用于获取dlp文件原始名。
 
     <!-- @[dlp_getOriginalFileName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
     
@@ -786,7 +786,7 @@ DLP文件所涉及的重要模块及其交互，如下图所示。文件所有�
 
 14. 获取dlp文件的后缀名。
 
-    [getDLPSuffix](../../reference/apis-data-protection-kit/arkts-apis/arkts-dataprotection-dlppermission-getdlpsuffix-f.md#getdlpsuffix)用于获取dlp文件的后缀名。
+    getDLPSuffix用于获取dlp文件的后缀名。
 
     <!-- @[dlp_getDLPSuffix](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
     

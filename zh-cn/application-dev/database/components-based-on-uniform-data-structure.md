@@ -12,7 +12,7 @@
 
 ## 内容卡片控件
 
-在需要展示内容（标题、描述、图片、应用信息）并在点击后跳转至对应来源时，可以使用内容卡片快速地展示信息。开发者只需要调用[ContentFormCard](../reference/apis-arkdata/arkts-apis/arkts-arkdata-data-udmfcomponents-contentformcard-s.md#contentformcard)接口，传入[ContentForm](../reference/apis-arkdata/arkts-apis/arkts-arkdata-uniformdatastruct-contentform-i.md#contentform)数据、卡片宽高、点击事件回调函数即可获得良好的展示效果。
+在需要展示内容（标题、描述、图片、应用信息）并在点击后跳转至对应来源时，可以使用内容卡片快速地展示信息。开发者只需要调用ContentFormCard接口，传入ContentForm数据、卡片宽高、点击事件回调函数即可获得良好的展示效果。
 
 从API version 20开始，支持使用内容卡片控件[UdmfComponents](../reference/apis-arkdata/arkts-apis/arkts-arkdata-data-udmfcomponents.md)。
 

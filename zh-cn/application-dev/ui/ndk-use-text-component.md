@@ -126,7 +126,7 @@ Manager::nodeAPI_->setAttribute(text2, NODE_FONT_WEIGHT, &textWeightItem);
 
 | 属性 | 说明 |
 |------|------|
-| [NODE_TEXT_DECORATION](../reference/apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-text-decoration-i.md#decoration) | 设置文本装饰线。 |
+| NODE_TEXT_DECORATION | 设置文本装饰线。 |
 | NODE_TEXT_TEXT_SHADOW | 设置文字阴影效果。 |
 - 设置文本装饰线。
   <!-- @[text_decoration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/native_node_sample/entry/src/main/cpp/TextMaker.cpp) -->

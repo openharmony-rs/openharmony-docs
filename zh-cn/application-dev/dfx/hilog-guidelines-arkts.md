@@ -47,9 +47,9 @@ HiLog中定义了DEBUG、INFO、WARN、ERROR、FATAL五种日志级别，并提�
 
 - **tag**：用于指定日志标识，可以为任意字符串，建议标识调用所在的类或者业务行为。tag最多为31字节，超出后会截断。不建议使用中文字符，可能出现乱码或者对齐问题。
 
-- **level**：用于指定日志级别。取值见[LogLevel](../reference/apis-performance-analysis-kit/arkts-apis/arkts-performanceanalysis-hilog-loglevel-e.md#loglevel)。
+- **level**：用于指定日志级别。取值见LogLevel。
 
-- **prefer**：用于指定偏好策略。取值见[PreferStrategy](../reference/apis-performance-analysis-kit/arkts-apis/arkts-performanceanalysis-hilog-preferstrategy-e.md#preferstrategy)。
+- **prefer**：用于指定偏好策略。取值见PreferStrategy。
 
 - **format**：格式字符串，用于日志的格式化输出。日志打印的格式化参数需按照“%{private flag}specifier”的格式打印。
 

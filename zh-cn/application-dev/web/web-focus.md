@@ -64,7 +64,7 @@ Web组件焦点、焦点链和走焦的详情说明请参考[ArkUI焦点基础�
 - autofocus样式：设置了autofocus样式的元素网页完成加载时默认获焦。若该元素支持文本输入，则输入框会有光标闪烁，但不会弹出软键盘。如需自动弹出软键盘，可参考[软键盘自动弹出](web-docking-softkeyboard.md#软键盘自动弹出)。
 
 
-- 菜单弹出：ArkUI的overlay属性类型组件默认抢焦，在与此类组件结合的Web组件场景中（[Menu](../reference/apis-arkui/arkui-js/js-components-basic-menu.md)、[DatePicker](../reference/apis-arkui/c-apis/capi-arkui-nodeeventtype-datepicker.md)、[TimePicker](../reference/apis-arkui/c-apis/capi-arkui-nodeeventtype-timepicker.md)、下拉框、弹窗等），Web组件均会失焦。
+- 菜单弹出：ArkUI的overlay属性类型组件默认抢焦，在与此类组件结合的Web组件场景中（Menu、[DatePicker](../reference/apis-arkui/c-apis/capi-arkui-nodeeventtype-datepicker.md)、[TimePicker](../reference/apis-arkui/c-apis/capi-arkui-nodeeventtype-timepicker.md)、下拉框、弹窗等），Web组件均会失焦。
 
 ## Web组件与ArkUI组件焦点控制
 

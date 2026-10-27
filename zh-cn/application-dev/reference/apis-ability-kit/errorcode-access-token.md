@@ -41,7 +41,7 @@ Invalid Parameter. Error message: messageInfo.
 
 **处理步骤**
 
-检查入参，修正参数值为有效值，有效值请参考[@ohos.abilityAccessCtrl (程序访问控制管理)](js-apis-abilityAccessCtrl.md)中对应接口的参数说明。
+检查入参，修正参数值为有效值，有效值请参考@ohos.abilityAccessCtrl (程序访问控制管理)中对应接口的参数说明。
 
 <!--Del-->
 ## 12100002 tokenId不存在
@@ -126,8 +126,8 @@ The API is not used in pair with others.
 - 订阅权限使用状态变更事件：[privacyManager.on](js-apis-privacyManager-sys.md#privacymanageron)
 - 取消订阅权限使用状态变更事件：[privacyManager.off](js-apis-privacyManager-sys.md#privacymanageroff)
 <!--DelEnd-->
-- 订阅自身权限状态变更事件：[on](js-apis-abilityAccessCtrl.md#on18)
-- 取消订阅自身权限状态变更事件：[off](js-apis-abilityAccessCtrl.md#off18)
+- 订阅自身权限状态变更事件：on
+- 取消订阅自身权限状态变更事件：off
 
 
 ## 12100005 监听器数量超过限制
@@ -327,9 +327,9 @@ Unexpected permission.
 
 **可能原因**
 
-1. 调用[requestPermissionOnSetting](js-apis-abilityAccessCtrl.md#requestpermissiononsetting12)再次弹出权限设置弹窗时，传入了manual_settings授权方式的权限。
+1. 调用requestPermissionOnSetting再次弹出权限设置弹窗时，传入了manual_settings授权方式的权限。
 2. 授权或取消授权时，传入了非user_grant和manual_settings授权方式的权限。
-3. 调用[openPermissionOnSetting](js-apis-abilityAccessCtrl.md#openpermissiononsetting22)拉起跳转设置页弹窗时，传入了非manual_settings授权方式的权限。
+3. 调用openPermissionOnSetting拉起跳转设置页弹窗时，传入了非manual_settings授权方式的权限。
 
 **处理步骤**
 

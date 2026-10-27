@@ -115,13 +115,13 @@ The authentication type is not supported.
 
 **可能原因**
 
-1. 传入的认证类型参数无效，例如调用[getAvailableStatus](js-apis-useriam-userauth.md#userauthgetavailablestatus9)接口时传入的authType参数不在支持的范围内（PIN、FACE、FINGERPRINT等）。
+1. 传入的认证类型参数无效，例如调用getAvailableStatus接口时传入的authType参数不在支持的范围内（PIN、FACE、FINGERPRINT等）。
 2. 传入的认证类型参数在本设备上不支持，例如在没有部署指纹传感器的设备上发起指纹认证。
 
 **处理步骤**
 
 1. 请检查传入的认证类型参数是否正确，确保参数值在支持的范围内。
-2. 发起认证之前，调用[getAvailableStatus](js-apis-useriam-userauth.md#userauthgetavailablestatus9)预先检查设备是否支持指定的认证类型，如果设备不支持某种认证类型，建议切换到其他支持的认证类型。
+2. 发起认证之前，调用getAvailableStatus预先检查设备是否支持指定的认证类型，如果设备不支持某种认证类型，建议切换到其他支持的认证类型。
 
 ## 12500006 认证信任等级不支持
 
@@ -135,7 +135,7 @@ The authentication trust level is not supported.
 
 **可能原因**
 
-1. 调用[getAvailableStatus](js-apis-useriam-userauth.md#userauthgetavailablestatus9)或[getUserAuthInstance](js-apis-useriam-userauth.md#userauthgetuserauthinstance10)接口时，传入的authTrustLevel参数不在有效范围内（应为ATL1（10000）、ATL2（20000）、ATL3（30000）或ATL4（40000））。
+1. 调用getAvailableStatus或getUserAuthInstance接口时，传入的authTrustLevel参数不在有效范围内（应为ATL1（10000）、ATL2（20000）、ATL3（30000）或ATL4（40000））。
 2. 当前设备的认证能力无法达到指定的认证信任等级，例如在2D人脸认证设备上发起ATL4等级的人脸认证。
 3. 用户注册的凭据安全等级低于请求的认证信任等级，如4位PIN密码只能达到ATL3，无法满足ATL4要求。
 
@@ -211,7 +211,7 @@ Authentication is locked out.
 **处理步骤**
 
 1. 提示用户认证已锁定，需等待锁定解除后才能继续认证。
-2. 可通过[getAuthLockState](js-apis-useriam-userauth.md#userauthgetauthlockstate22)接口查询当前锁定状态，包括剩余锁定时间和剩余尝试次数。
+2. 可通过getAuthLockState接口查询当前锁定状态，包括剩余锁定时间和剩余尝试次数。
 3. 如果是临时锁定，提示用户等待锁定时间到期后重新尝试。
 4. 如果是永久锁定，提示用户使用密码解锁后才能继续使用生物认证。
 5. 建议用户在锁定解除后使用正确的凭据进行认证，避免再次触发锁定。
@@ -228,7 +228,7 @@ The type of credential has not been enrolled.
 
 **可能原因**
 
-1. 调用userAuth模块的[getAvailableStatus](js-apis-useriam-userauth.md#userauthgetavailablestatus9)接口检查认证能力时，传入的authType参数为FACE或FINGERPRINT，但用户未在设备上录入人脸或指纹凭据。
+1. 调用userAuth模块的getAvailableStatus接口检查认证能力时，传入的authType参数为FACE或FINGERPRINT，但用户未在设备上录入人脸或指纹凭据。
 2. 调用start接口发起认证时，请求的认证类型对应的凭据未录入，如发起指纹认证但用户未录入指纹。
 3. 用户曾录入的凭据已被删除，如用户在设置中删除了已注册的人脸或指纹。
 4. 新用户账号未录入任何认证凭据。
@@ -237,7 +237,7 @@ The type of credential has not been enrolled.
 
 1. 检查用户是否已录入该类型的认证凭据。
 2. 如果用户未录入，引导用户前往系统设置录入相应凭据（人脸、指纹或PIN）。
-3. 可通过[getEnrolledState](js-apis-useriam-userauth.md#userauthgetenrolledstate12)接口查询凭据注册状态。
+3. 可通过getEnrolledState接口查询凭据注册状态。
 4. 如果用户拒绝录入，建议切换到其他已录入的认证类型。
 5. 提示用户录入凭据后才能使用相应的认证功能。
 

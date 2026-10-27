@@ -9,7 +9,7 @@
 
 ## 概述
 
-[Context](../reference/apis-ability-kit/arkts-apis/arkts-ability-featureability-context-t.md)是应用中对象的上下文，其提供了应用的一些基础信息，例如[resourceManager](../reference/apis-localization-kit/arkts-apis/arkts-localization-resourcemanager.md)（资源管理）、[applicationInfo](../reference/apis-ability-kit/arkts-apis/arkts-ability-bundlemanager-applicationinfo-t.md)（当前应用信息）、[area](../reference/apis-ability-kit/arkts-apis/arkts-ability-contextconstant-areamode-e.md#areamode)（文件分区）等。
+[Context](../reference/apis-ability-kit/arkts-apis/arkts-ability-featureability-context-t.md)是应用中对象的上下文，其提供了应用的一些基础信息，例如[resourceManager](../reference/apis-localization-kit/arkts-apis/arkts-localization-resourcemanager.md)（资源管理）、[applicationInfo](../reference/apis-ability-kit/arkts-apis/arkts-ability-bundlemanager-applicationinfo-t.md)（当前应用信息）、area（文件分区）等。
 
 ## 不同类型Context的对比
 
@@ -25,8 +25,8 @@
 
   | Context类型 | 说明 | 获取方式 | 使用场景 |
   | -------- | -------- | -------- | -------- |
-  | [ApplicationContext](../reference/apis-ability-kit/arkts-apis/arkts-ability-common-applicationcontext-t.md) | 应用的全局上下文，提供应用级别的信息和能力。| - 从API version 14开始，可以直接使用[getApplicationContext](../reference/apis-ability-kit/arkts-apis/arkts-ability-application-getapplicationcontext-f.md#getapplicationcontext)获取。<br>- API version 14以前版本，只能使用其他Context实例的[getApplicationContext](../reference/apis-ability-kit/arkts-apis/arkts-ability-application-getapplicationcontext-f.md#getapplicationcontext)方法获取。 | - [获取当前应用的基本信息](#获取基本信息)。<br>- [获取应用级别的文件路径](#获取应用文件路径)。<br>- [获取和修改加密分区](#获取和修改加密分区)。<br>- [监听应用前后台变化](#监听应用前后台变化)。 |
-  | [AbilityStageContext](../reference/apis-ability-kit/arkts-apis/arkts-ability-common-abilitystagecontext-t.md) | 模块级别的上下文，提供模块级别的信息和能力。| - 如果需要获取当前AbilityStage的Context，可以直接通过AbilityStage实例获取context属性。<br> - 如果需要获取同一应用中其他Module的Context，可以通过[createModuleContext](../reference/apis-ability-kit/arkts-apis/arkts-ability-application-createmodulecontext-f-sys.md#createmodulecontext)方法。 | - 获取当前模块的基本信息。<br>- [获取模块级别的文件路径](#获取应用文件路径)。|
+  | [ApplicationContext](../reference/apis-ability-kit/arkts-apis/arkts-ability-common-applicationcontext-t.md) | 应用的全局上下文，提供应用级别的信息和能力。| - 从API version 14开始，可以直接使用getApplicationContext获取。<br>- API version 14以前版本，只能使用其他Context实例的getApplicationContext方法获取。 | - [获取当前应用的基本信息](#获取基本信息)。<br>- [获取应用级别的文件路径](#获取应用文件路径)。<br>- [获取和修改加密分区](#获取和修改加密分区)。<br>- [监听应用前后台变化](#监听应用前后台变化)。 |
+  | [AbilityStageContext](../reference/apis-ability-kit/arkts-apis/arkts-ability-common-abilitystagecontext-t.md) | 模块级别的上下文，提供模块级别的信息和能力。| - 如果需要获取当前AbilityStage的Context，可以直接通过AbilityStage实例获取context属性。<br> - 如果需要获取同一应用中其他Module的Context，可以通过createModuleContext方法。 | - 获取当前模块的基本信息。<br>- [获取模块级别的文件路径](#获取应用文件路径)。|
   | [UIAbilityContext (UIAbility上下文)](../reference/apis-ability-kit/arkts-apis/arkts-ability-common-uiabilitycontext-t.md) | UIAbility组件对应的上下文，提供UIAbility对外的信息和能力。| - 通过UIAbility实例直接获取context属性。<br>- 在UIAbility的窗口中加载的UI组件实例，需要使用@ohos.arkui.UIContext提供的[getHostContext](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#gethostcontext)方法。 | - 获取当前UIAbility的基本信息。<br>- 启动其他应用或原子化服务、连接/断连系统应用创建的ServiceExtensionAbility等。<br>- 销毁自身的UIAbility。 |
   | [ExtensionContext](../reference/apis-ability-kit/arkts-apis/arkts-ability-common-extensioncontext-t.md) | ExtensionAbility组件对应的上下文，每种类型的ExtensionContext提供不同的信息和能力。| 通过ExtensionAbility实例直接获取Context属性。 | 不同类型的ExtensionAbility对应的Context提供的能力不同。以输入法上下文InputMethodExtensionContext为例，主要提供如下能力：<br>- 获取InputMethodExtensionAbility的基本信息。<br>- 销毁当前输入法。|
   | [UIContext](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md) | ArkUI的UI实例上下文，提供UI操作相关的能力。与上述其他类型的Context无直接关系。 | - 在UI组件内获取UIContext，直接使用组件内置的[getUIContext](../reference/apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#getuicontext)方法。<br>- 在存在Window实例的情况下，使用@ohos.window提供的[getUIContext](../reference/apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#getuicontext)方法。 | 主要用于UI实例中UI相关操作，例如：<br>- 获取当前UI实例的字体。<br>- 显示不同类型的弹框。<br>- 设置软键盘弹出时UI避让模式。 |
@@ -71,7 +71,7 @@ export default class MyAbilityStage extends AbilityStage {
 
 ### 获取本应用中其他Module的Context（模块级别的上下文）
 
-调用[createModuleContext](../reference/apis-ability-kit/arkts-apis/arkts-ability-application-createmodulecontext-f-sys.md#createmodulecontext)方法，获取本应用中其他Module的Context。获取到其他Module的Context之后，即可获取到相应Module的资源信息。
+调用createModuleContext方法，获取本应用中其他Module的Context。获取到其他Module的Context之后，即可获取到相应Module的资源信息。
 
 <!-- @[createModuleContext_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/pages/CreateModuleContext.ets) -->
 
@@ -439,13 +439,13 @@ export default class EntryAbility extends UIAbility {
 
 应用文件加密是一种保护数据安全的方法，可以使得文件在未经授权访问的情况下得到保护。在不同的场景下，应用需要不同程度的文件保护。
 
-在实际应用中，开发者需要根据不同场景的需求选择合适的加密分区，从而保护应用数据的安全。通过合理使用不同级别的加密分区，可以有效提升应用数据的安全性。关于不同分区的权限说明，详见[ContextConstant](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-contextconstant.md)的[AreaMode](../reference/apis-ability-kit/arkts-apis/arkts-ability-contextconstant-areamode-e.md#areamode)。
+在实际应用中，开发者需要根据不同场景的需求选择合适的加密分区，从而保护应用数据的安全。通过合理使用不同级别的加密分区，可以有效提升应用数据的安全性。关于不同分区的权限说明，详见[ContextConstant](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-contextconstant.md)的AreaMode。
 
 - EL1：对于私有文件，如闹铃、壁纸等，应用可以将这些文件放到设备级加密分区（EL1）中，以保证在用户输入密码前就可以被访问。
 - EL2：对于更敏感的文件，如个人隐私信息等，应用可以将这些文件放到更高级别的加密分区（EL2）中，以保证更高的安全性。
 - EL3：对于应用中的记录步数、文件下载、音乐播放，需要在锁屏时读写和创建新文件，放在（EL3）的加密分区比较合适。
 - EL4：对于用户安全信息相关的文件，锁屏时不需要读写文件、也不能创建文件，放在（EL4）的加密分区更合适。
-- EL5：对于用户隐私敏感数据文件，锁屏后默认不可读写，如果锁屏后需要读写文件，则锁屏前可以调用[acquireAccess](../reference/apis-ability-kit/arkts-apis/arkts-ability-screenlockfilemanager-acquireaccess-f-sys.md#acquireaccess)接口申请继续读写文件，或者锁屏后也需要创建新文件且可读写，放在（EL5）的应用级加密分区更合适。
+- EL5：对于用户隐私敏感数据文件，锁屏后默认不可读写，如果锁屏后需要读写文件，则锁屏前可以调用acquireAccess接口申请继续读写文件，或者锁屏后也需要创建新文件且可读写，放在（EL5）的应用级加密分区更合适。
 
 要实现获取和设置当前加密分区，可以通过读写[Context](../reference/apis-ability-kit/arkts-apis/arkts-ability-featureability-context-t.md)的`area`属性来实现。
 

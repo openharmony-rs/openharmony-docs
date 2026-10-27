@@ -266,7 +266,7 @@
 
 ### 自定义样式实现
 
-自定义样式通过设置[CustomBuilder](../../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-custombuilder-t.md#custombuilder)类型的参数[customPicker](../../reference/apis-avsession-kit/arkts-apis/arkts-avsession-multimedia-avcastpicker-avcastpicker-s.md#avcastpicker)实现。
+自定义样式通过设置CustomBuilder类型的参数customPicker实现。
 
 实现自定义样式的步骤与实现默认样式基本相同，开发者可参考[默认样式实现](#默认样式实现)，完成创建AVSession、实现音频播放等步骤。
 
@@ -396,7 +396,7 @@
 
 ### 自定义样式实现
 
-自定义样式通过设置[AVInputCastPicker](../../reference/apis-avsession-kit/arkts-apis/arkts-avsession-multimedia-avinputcastpicker-avinputcastpicker-s.md#avinputcastpicker)中的参数customPicker实现。
+自定义样式通过设置AVInputCastPicker中的参数customPicker实现。
 
 1. 创建自定义AVInputCastPicker，需要新增自定义参数。
 

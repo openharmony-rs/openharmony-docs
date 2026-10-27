@@ -268,7 +268,7 @@ struct ObservabilityV2Page {
 
 状态管理V1存在下面两类同步方式：
   - 同步对象(sync peer)：如\@State和[\@Link](./arkts-link.md)、[\@Provide](./arkts-provide-and-consume.md)和[\@Consume](./arkts-provide-and-consume.md)。开发者可以通过DevEco Studio的ArkUI Inspector来查看数据源和同步对象之间是否存在同步关系，具体见[状态管理Inspector调试能力](../ui-inspector-profiler.md#状态管理inspector调试能力)。
-  - 依赖其所属组件的更新函数：如\@State通知\@Prop变化、\@State通知\@ObjectLink变化。开发者可以使用断点调试工具，或者[getHash](../../reference/apis-arkts/arkts-apis/arkts-arkts-util-gethash-f.md#gethash)来判断数据源和同步对象是否为同一个对象的引用(hashcode并不固定，以开发者自己打印的为准)。
+  - 依赖其所属组件的更新函数：如\@State通知\@Prop变化、\@State通知\@ObjectLink变化。开发者可以使用断点调试工具，或者getHash来判断数据源和同步对象是否为同一个对象的引用(hashcode并不固定，以开发者自己打印的为准)。
 
 **状态管理V2**
 

@@ -52,7 +52,7 @@
 
 ![EventResponseChain](figures/EventResponseChain.png)
 
-通过[hitTestBehavior](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#hittestbehavior)属性可以设置组件的触摸测试模式。在本示例中，所有组件的触摸测试模式均设置为[HitTestMode](../reference/apis-arkui/arkts-apis/arkts-arkui-hittestmode-e.md#hittestmode).Default。如果用户点按的动作发生在组件5上，则响应链收集过程如下：
+通过[hitTestBehavior](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#hittestbehavior)属性可以设置组件的触摸测试模式。在本示例中，所有组件的触摸测试模式均设置为HitTestMode.Default。如果用户点按的动作发生在组件5上，则响应链收集过程如下：
 
 1. 系统检测到触摸点落在组件5上，组件5被收集。
 
@@ -221,6 +221,6 @@ stopPropagation可终止冒泡。如下图所示，以Touch事件为例，当一
 
 ## Cancel事件
 
-当处理基础事件时，会发现存在多种具有Cancel类型的事件，如[TouchType](../reference/apis-arkui/arkts-apis/arkts-arkui-touchtype-e.md#touchtype).Cancel、[MouseAction](../reference/apis-arkui/arkts-apis/arkts-arkui-mouseaction-e.md#mouseaction).CANCEL等。系统在特定场景下发送此类事件，例如在拖拽操作中，当通过手指或鼠标拖动一个支持拖拽（onDragStart）的对象时，由于拖拽动作需达到一定位移阈值才能触发，因此在触发[onDragStart](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#ondragstart)之前，应用将正常接收到Touch或Mouse事件。一旦拖拽动作开始，系统将发送Cancel事件，告知应用普通基础事件已结束。
+当处理基础事件时，会发现存在多种具有Cancel类型的事件，如TouchType.Cancel、MouseAction.CANCEL等。系统在特定场景下发送此类事件，例如在拖拽操作中，当通过手指或鼠标拖动一个支持拖拽（onDragStart）的对象时，由于拖拽动作需达到一定位移阈值才能触发，因此在触发[onDragStart](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#ondragstart)之前，应用将正常接收到Touch或Mouse事件。一旦拖拽动作开始，系统将发送Cancel事件，告知应用普通基础事件已结束。
 
 Cancel的含义与Up相同，均表示事件处理结束。若在处理Up/Release的场景中，亦应同时处理Cancel。

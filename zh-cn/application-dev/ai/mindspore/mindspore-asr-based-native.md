@@ -32,7 +32,7 @@
 
 ### 编写播放音频代码
 
-调用[@ohos.multimedia.media](../../reference/apis-media-kit/arkts-apis/arkts-media-multimedia-media.md)、[@ohos.multimedia.audio](../../reference/apis-audio-kit/arkts-apis/arkts-audio-multimedia-audio.md)，实现播放音频的功能。
+调用@ohos.multimedia.media、[@ohos.multimedia.audio](../../reference/apis-audio-kit/arkts-apis/arkts-audio-multimedia-audio.md)，实现播放音频的功能。
 
 <!-- @[player_asr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR/entry/src/main/ets/pages/player.ets) --> 
 

@@ -12,7 +12,7 @@ PersistenceV2是应用程序中的可选单例对象。此对象的作用是持�
 
 PersistenceV2提供状态变量持久化能力，开发者可以通过connect或者globalConnect绑定同一个key，在状态变量变化和应用冷启动时，实现持久化能力。
 
-在阅读本文档前，建议提前阅读：[\@ComponentV2](./arkts-create-custom-components.md#componentv2)，[\@ObservedV2和\@Trace](./arkts-new-observedV2-and-trace.md)，配合阅读：[PersistenceV2-API文档](../../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-statemanagement-persistencev2-c.md#persistencev2)。
+在阅读本文档前，建议提前阅读：[\@ComponentV2](./arkts-create-custom-components.md#componentv2)，[\@ObservedV2和\@Trace](./arkts-new-observedV2-and-trace.md)，配合阅读：PersistenceV2-API文档。
 
 >**说明：**
 >
@@ -32,7 +32,7 @@ PersistenceV2可以和UI组件同步，且可以在应用业务逻辑中被访�
 
 PersistenceV2支持应用的[主线程](../../application-models/thread-model-stage.md)内多个UIAbility实例间的状态共享。
 
-PersistenceV2继承自[AppStorageV2](../../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-statemanagement-appstoragev2-c.md#appstoragev2)，支持通过[connect](../../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-statemanagement-appstoragev2-c.md#connect)创建或获取存储的数据。
+PersistenceV2继承自AppStorageV2，支持通过[connect](../../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-statemanagement-appstoragev2-c.md#connect)创建或获取存储的数据。
 
 ## 使用说明
 - globalConnect：创建或获取存储的数据。
@@ -46,7 +46,7 @@ PersistenceV2继承自[AppStorageV2](../../reference/apis-arkui/arkts-apis/arkts
 - save：手动持久化数据。
 - notifyOnError：响应序列化或反序列化失败的回调。将数据存入磁盘时，需要对数据进行序列化；当某个key序列化失败时，错误是不可预知的；可调用该接口捕获异常。
 
-以上接口详细描述请参考[PersistenceV2-API文档](../../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-statemanagement-persistencev2-c.md#persistencev2)和[AppStorageV2-API文档](../../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-statemanagement-appstoragev2-c.md#appstoragev2)。
+以上接口详细描述请参考PersistenceV2-API文档和AppStorageV2-API文档。
 
 ## 使用限制
 
@@ -440,7 +440,7 @@ PersistenceV2继承自[AppStorageV2](../../reference/apis-arkui/arkts-apis/arkts
 12. globalConnect仅支持设置EL1-EL5加密级别，否则会抛出运行时异常，从API version 23开始，将返回错误码[140106](../../reference/apis-arkui/errorcode-stateManagement.md#140106-使用persistencev2存储数据到不支持的加密级别)，示例见[使用globalConnect存储数据](#使用globalconnect存储数据)。
 
 13. 当存储数据的结构与当前数据的结构不一致时，可能会导致反序列化失败。在API版本26.0.0以前，开发者无法获取旧的序列化数据，进而无法判断自己的数据结构有哪些改变。
-    - 从API版本26.0.0开始，[PersistenceErrorCallback](../../reference/apis-arkui/arkts-apis/arkts-arkui-persistenceerrorcallback-t.md#persistenceerrorcallback)支持传入oldValue参数，开发者可通过该参数获取存于磁盘的旧的序列化数据，具体用例可见[通过notifyOnError获取旧的序列化数据](#通过notifyonerror获取旧的序列化数据)。
+    - 从API版本26.0.0开始，PersistenceErrorCallback支持传入oldValue参数，开发者可通过该参数获取存于磁盘的旧的序列化数据，具体用例可见[通过notifyOnError获取旧的序列化数据](#通过notifyonerror获取旧的序列化数据)。
 
 14. 在API版本26.2.0前，不支持在使用globalConnect持久化的类中使用[\@Computed](./arkts-new-computed.md)函数。\@Computed为只读属性，不支持赋值操作，因此会导致反序列化失败。从API版本26.2.0开始，通过在ConnectOptions中配置ignoreReadOnlyProperties为true，可以在globalConnect持久化的类中使用\@Computed函数。ignoreReadOnlyProperties默认为false，设为true时，PersistenceV2会跳过只读的属性（如\@Computed函数），避免反序列化失败。
 

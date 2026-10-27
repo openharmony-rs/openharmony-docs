@@ -6,17 +6,17 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-Web组件嵌套滚动的典型应用场景为，在页面中，多个独立区域需进行滚动，当用户滚动Web区域内容时，可联动其他滚动区域，实现上下左右全方位滑动页面的嵌套滚动体验。内嵌于可滚动容器（[Grid](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-grid-t.md)、[List](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-list-t.md)、[Scroll](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-scroll-t.md)、[Swiper](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-swiper-t.md)、[Tabs](../reference/apis-arkui/arkui-js/js-components-container-tabs.md)、[WaterFlow](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-waterflow-t.md)、[Refresh](../reference/apis-arkui/arkui-js/js-components-container-refresh.md)、[bindSheet](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindsheet)）中的Web组件，接收到滑动手势事件后，需要设置ArkUI的[NestedScrollMode](../reference/apis-arkui/arkts-apis/arkts-arkui-nestedscrollmode-e.md#nestedscrollmode)枚举属性，实现Web组件与ArkUI可滚动容器的嵌套滚动。
+Web组件嵌套滚动的典型应用场景为，在页面中，多个独立区域需进行滚动，当用户滚动Web区域内容时，可联动其他滚动区域，实现上下左右全方位滑动页面的嵌套滚动体验。内嵌于可滚动容器（[Grid](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-grid-t.md)、[List](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-list-t.md)、[Scroll](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-scroll-t.md)、[Swiper](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-swiper-t.md)、Tabs、[WaterFlow](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-waterflow-t.md)、Refresh、[bindSheet](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindsheet)）中的Web组件，接收到滑动手势事件后，需要设置ArkUI的NestedScrollMode枚举属性，实现Web组件与ArkUI可滚动容器的嵌套滚动。
 
 Web组件嵌套滚动可通过[方案1：使用nestedScroll属性实现嵌套滚动](#使用nestedscroll属性实现嵌套滚动)或[方案2：滚动偏移量由滚动父组件统一派发](#滚动偏移量由滚动父组件统一派发)两个方案实现，方案的选择应取决于应用嵌套滚动的具体业务场景。如果只是简单的Web组件与其他父组件联动滚动建议通过方案1实现；如果应用需要自定义控制Web组件和其他滚动组件滚动，以及一些复杂场景建议使用方案2。
 
 > **说明：**
 >
-> 如果Web组件用到了全量展开的场景（layoutMode为`WebLayoutMode.FIT_CONTENT`），需要显式指明渲染模式(`RenderMode.SYNC_RENDER`)，详见[layoutMode](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-attribute.md#layoutmode)。
+> 如果Web组件用到了全量展开的场景（layoutMode为`WebLayoutMode.FIT_CONTENT`），需要显式指明渲染模式(`RenderMode.SYNC_RENDER`)，详见layoutMode。
 
 ## 使用nestedScroll属性实现嵌套滚动
 
-使用Web组件[nestedScroll](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-attribute.md#nestedscroll)属性来设置上下左右四个方向，或者设置向前、向后两个方向的嵌套滚动模式，实现与父组件的滚动联动，同时也允许在过程中动态改变嵌套滚动的模式。
+使用Web组件nestedScroll属性来设置上下左右四个方向，或者设置向前、向后两个方向的嵌套滚动模式，实现与父组件的滚动联动，同时也允许在过程中动态改变嵌套滚动的模式。
 
 **完整代码**
 
@@ -178,7 +178,7 @@ struct NestedScroll {
     ```ts
     this.webController.scrollBy(0, offset)
     ```
-8. 设置Web组件[bypassVsyncCondition](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-attribute.md#bypassvsynccondition)为WebBypassVsyncCondition.SCROLLBY_FROM_ZERO_OFFSET，加快Web组件首帧滚动绘制。
+8. 设置Web组件bypassVsyncCondition为WebBypassVsyncCondition.SCROLLBY_FROM_ZERO_OFFSET，加快Web组件首帧滚动绘制。
     ```ts
     .bypassVsyncCondition(WebBypassVsyncCondition.SCROLLBY_FROM_ZERO_OFFSET)
     ```

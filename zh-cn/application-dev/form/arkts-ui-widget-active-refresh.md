@@ -9,7 +9,7 @@
 本文主要提供主动刷新的开发指导，刷新流程请参考[主动刷新概述](./arkts-ui-widget-interaction-overview.md#主动刷新)。
 
 ## 卡片提供方主动刷新卡片内容
-卡片提供方可以通过[updateForm](../reference/apis-form-kit/arkts-apis/arkts-form-formprovider-updateform-depr-f.md#updateform)接口进行主动刷新。推荐与卡片生命周期回调[onFormEvent](../reference/apis-form-kit/arkts-apis/arkts-form-app-form-formextensionability-formextensionability-c.md#onformevent)、[onUpdateForm](../reference/apis-form-kit/arkts-apis/arkts-form-app-form-formextensionability-formextensionability-c.md#onupdateform)、[onAddForm](../reference/apis-form-kit/arkts-apis/arkts-form-app-form-formextensionability-formextensionability-c.md#onaddform)接口搭配使用。
+卡片提供方可以通过updateForm接口进行主动刷新。推荐与卡片生命周期回调[onFormEvent](../reference/apis-form-kit/arkts-apis/arkts-form-app-form-formextensionability-formextensionability-c.md#onformevent)、[onUpdateForm](../reference/apis-form-kit/arkts-apis/arkts-form-app-form-formextensionability-formextensionability-c.md#onupdateform)、[onAddForm](../reference/apis-form-kit/arkts-apis/arkts-form-app-form-formextensionability-formextensionability-c.md#onaddform)接口搭配使用。
 
 ### 开发步骤
 下面给出一个示例，实现如下功能：卡片添加至桌面后，点击卡片上的刷新按钮，刷新卡片信息。
@@ -194,7 +194,7 @@
 ![WidgetPrinciple](figures/主动刷新结果.gif)
 
 ## 卡片提供方批量请求刷新卡片内容
-从API version 22开始，支持卡片提供方批量请求刷新卡片内容。卡片提供方可以通过[reloadForms](../reference/apis-form-kit/arkts-apis/arkts-form-formprovider-reloadforms-f.md#reloadforms)和[reloadAllForms](../reference/apis-form-kit/arkts-apis/arkts-form-formprovider-reloadallforms-f.md#reloadallforms)接口在应用主进程中通知FormExtension进程进行批量更新，仅支持在[UIAbility](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability.md)中调用。
+从API version 22开始，支持卡片提供方批量请求刷新卡片内容。卡片提供方可以通过reloadForms和reloadAllForms接口在应用主进程中通知FormExtension进程进行批量更新，仅支持在[UIAbility](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability.md)中调用。
 
 ### 开发步骤
 下面给出一个示例，实现如下功能：添加应用的多张卡片至桌面后，点击应用UIAbility中的刷新按钮，批量刷新卡片信息。
@@ -366,7 +366,7 @@
 <!--Del-->
 ## 卡片使用方主动刷新卡片内容（仅对系统应用开放）
 
-由于定时、定点刷新存在时间限制，卡片使用方可以通过调用[requestForm](../reference/apis-form-kit/arkts-apis/arkts-form-formhost-requestform-depr-f-sys.md#requestform)接口向卡片管理服务请求主动触发卡片的刷新。卡片管理服务触发卡片提供方FormExtensionAbility中的[onUpdateForm](../reference/apis-form-kit/arkts-apis/arkts-form-app-form-formextensionability-formextensionability-c.md#onupdateform)生命周期回调，回调中可以使用[updateForm](../reference/apis-form-kit/arkts-apis/arkts-form-formprovider-updateform-depr-f.md#updateform)接口刷新卡片内容。
+由于定时、定点刷新存在时间限制，卡片使用方可以通过调用[requestForm](../reference/apis-form-kit/arkts-apis/arkts-form-formhost-requestform-depr-f-sys.md#requestform)接口向卡片管理服务请求主动触发卡片的刷新。卡片管理服务触发卡片提供方FormExtensionAbility中的[onUpdateForm](../reference/apis-form-kit/arkts-apis/arkts-form-app-form-formextensionability-formextensionability-c.md#onupdateform)生命周期回调，回调中可以使用updateForm接口刷新卡片内容。
 
    <!-- @[FormUpdate_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormUpdateDemo/entry/src/main/ets/pages/Index.ets) -->
    

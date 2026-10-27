@@ -18,7 +18,7 @@ Access to script at 'xxx' from origin 'xxx' has been blocked by CORS policy: Cro
 
 - 方法一
 
-  开发者应使用http或https协议替代file或resource协议，使Web组件成功访问跨域资源。替代的URL域名为自定义构造，仅供个人或组织使用，避免与互联网上的实际域名冲突。同时，开发者需使用Web组件的[onInterceptRequest](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-attribute.md#oninterceptrequest)方法，对本地资源进行拦截和相应的替换。
+  开发者应使用http或https协议替代file或resource协议，使Web组件成功访问跨域资源。替代的URL域名为自定义构造，仅供个人或组织使用，避免与互联网上的实际域名冲突。同时，开发者需使用Web组件的onInterceptRequest方法，对本地资源进行拦截和相应的替换。
 
   以下结合示例说明如何使用http或者https等协议解决本地资源跨域访问失败的问题。其中，index.html和js/script.js置于工程中的rawfile目录下。当使用resource协议访问index.html时，js/script.js将因跨域而被拦截，无法加载。在示例中，使用https:\//www\.example.com/域名替换了原本的resource协议，同时利用onInterceptRequest接口替换资源，使得js/script.js可以成功加载，从而解决了跨域拦截的问题。
 
@@ -111,7 +111,7 @@ Access to script at 'xxx' from origin 'xxx' has been blocked by CORS policy: Cro
 
 - 方法二
 
-  通过[setPathAllowingUniversalAccess](../reference/apis-arkweb/arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#setpathallowinguniversalaccess)设置一个路径列表。当使用file协议访问该列表中的资源时，允许进行跨域访问本地文件。此外，一旦设置了路径列表，file协议将仅限于访问列表内的资源（此时，[fileAccess](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-attribute.md#fileaccess)的行为将会被此接口行为覆盖）。
+  通过[setPathAllowingUniversalAccess](../reference/apis-arkweb/arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#setpathallowinguniversalaccess)设置一个路径列表。当使用file协议访问该列表中的资源时，允许进行跨域访问本地文件。此外，一旦设置了路径列表，file协议将仅限于访问列表内的资源（此时，fileAccess的行为将会被此接口行为覆盖）。
   
   setPathAllowingUniversalAccess放开目录的跨域访问限制是一个高风险操作。基于最小权限原则，当前el1，el2放开的路径是固定的，路径列表中的路径应符合以下任一路径格式：
 
@@ -136,7 +136,7 @@ Access to script at 'xxx' from origin 'xxx' has been blocked by CORS policy: Cro
      * /data/storage/el2/base/temp
      * /data/storage/el2/base/haps/entry/temp/example
 
-     当路径列表中的任一路径不满足上述条件时，系统将抛出异常码401，并判定路径列表设置失败。如果路径列表设置为空，file协议的可访问范围将遵循[fileAccess](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-attribute.md#fileaccess)规则，具体示例如下。
+     当路径列表中的任一路径不满足上述条件时，系统将抛出异常码401，并判定路径列表设置失败。如果路径列表设置为空，file协议的可访问范围将遵循fileAccess规则，具体示例如下。
 
      <!-- @[cors_loccross_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebCompSecPriv/entry/src/main/ets/pages/LocCrossOriginResAccSol_two.ets) -->    
      

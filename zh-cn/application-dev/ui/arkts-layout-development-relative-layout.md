@@ -557,9 +557,9 @@ struct RelativeAlignRulesExample {
 
 ## 多个组件形成链
 
-链的形成依赖于组件之间的关联关系。以组件A和组件B构成的最简水平链为例，其依赖关系为：锚点1 <-- 组件A <---> 组件B --> 锚点2，即A具有left锚点，B具有right锚点，同时A的right锚点与B的[HorizontalAlign](../reference/apis-arkui/arkts-apis/arkts-arkui-horizontalalign-e.md#horizontalalign).Start对齐，B的left锚点与A的[HorizontalAlign](../reference/apis-arkui/arkts-apis/arkts-arkui-horizontalalign-e.md#horizontalalign).End对齐。
+链的形成依赖于组件之间的关联关系。以组件A和组件B构成的最简水平链为例，其依赖关系为：锚点1 <-- 组件A <---> 组件B --> 锚点2，即A具有left锚点，B具有right锚点，同时A的right锚点与B的HorizontalAlign.Start对齐，B的left锚点与A的HorizontalAlign.End对齐。
 * 链的方向和格式在链头组件的[chainMode](../reference/apis-arkui/arkts-apis/arkts-arkui-securitycomponentmethod-c.md#chainmode)接口中声明；链内元素的bias属性全部失效，链头元素的bias属性作为整个链的bias生效。链头是指在满足成链规则时链的第一个组件（在水平方向上，从左边开始，镜像语言中从右边开始；在垂直方向上，从上边开始）。
-* 如果链内所有元素的size超出链的锚点约束，超出部分将被均匀分配到链的两侧。在[PACKED](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-chainstyle-e.md#chainstyle)链中，可以通过Bias设置超出部分的分布。
+* 如果链内所有元素的size超出链的锚点约束，超出部分将被均匀分配到链的两侧。在PACKED链中，可以通过Bias设置超出部分的分布。
 
 在以下示例代码中，通过alignRules和chainMode将九个在容器内的Row组件分为三组水平链式排列。组件row1、组件row2和组件row3顶部对齐，水平方向成SPREAD链，链内组件在锚点间均匀分布。组件row4、组件row5、组件row6垂直方向基于容器居中，水平方向成SPREAD_INSIDE链，链内除首尾2个组件对齐锚点外，其他组件在链中均匀分布。组件row7、组件row8、组件row9底部对齐，水平方向组成PACKED链，链内组件无间隙。
 

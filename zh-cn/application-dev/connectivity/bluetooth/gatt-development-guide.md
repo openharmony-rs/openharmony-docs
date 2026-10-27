@@ -46,7 +46,7 @@ try {
 ```
 
 **2. 订阅连接状态变化事件**<br>
-通过订阅连接状态变化事件，可以获取实时的GATT连接状态。整个连接过程会涉及多种状态的跃迁，其中[STATE_CONNECTED](../../reference/apis-connectivity-kit/arkts-apis/arkts-connectivity-constant-profileconnectionstate-e.md#profileconnectionstate)表示已连接，[STATE_DISCONNECTED](../../reference/apis-connectivity-kit/arkts-apis/arkts-connectivity-constant-profileconnectionstate-e.md#profileconnectionstate)表示已断连。
+通过订阅连接状态变化事件，可以获取实时的GATT连接状态。整个连接过程会涉及多种状态的跃迁，其中STATE_CONNECTED表示已连接，STATE_DISCONNECTED表示已断连。
 ```ts
 // 此处是伪代码
 let device = 'XX:XX:XX:XX:XX:XX';
@@ -342,7 +342,7 @@ try {
 ```
 
 **3. 订阅连接状态变化事件**<br>
-通过订阅连接状态变化事件，可以获取实时的GATT连接状态以及客户端的设备地址。整个连接过程涉及多种状态的跃迁，其中[STATE_CONNECTED](../../reference/apis-connectivity-kit/arkts-apis/arkts-connectivity-constant-profileconnectionstate-e.md#profileconnectionstate)表示已连接，[STATE_DISCONNECTED](../../reference/apis-connectivity-kit/arkts-apis/arkts-connectivity-constant-profileconnectionstate-e.md#profileconnectionstate)表示已断连。
+通过订阅连接状态变化事件，可以获取实时的GATT连接状态以及客户端的设备地址。整个连接过程涉及多种状态的跃迁，其中STATE_CONNECTED表示已连接，STATE_DISCONNECTED表示已断连。
 ```ts
 function ServerConnectStateChanged(state: ble.BLEConnectionChangeState) {
   console.info('bluetooth connect state changed');
@@ -365,7 +365,7 @@ try {
 通过订阅特征值读取或写入事件，获取客户端的操作请求，相关API请参考[on('characteristicRead')](../../reference/apis-connectivity-kit/arkts-apis/arkts-connectivity-ble-gattserver-i.md#oncharacteristicread)和[on('characteristicWrite')](../../reference/apis-connectivity-kit/arkts-apis/arkts-connectivity-ble-gattserver-i.md#oncharacteristicwrite)。
 
 - 收到读取特征值请求时，需要调用[sendResponse](../../reference/apis-connectivity-kit/arkts-apis/arkts-connectivity-ble-gattserver-i.md#sendresponse)进行回复对应特征值的数据内容。
-- 收到写入特征值请求时，可保存客户端写入的特征值数据内容。根据写入请求[CharacteristicWriteRequest](../../reference/apis-connectivity-kit/arkts-apis/arkts-connectivity-ble-characteristicwriterequest-i.md#characteristicwriterequest)的needRsp判断是否需要调用[sendResponse](../../reference/apis-connectivity-kit/arkts-apis/arkts-connectivity-ble-gattserver-i.md#sendresponse)进行回复。
+- 收到写入特征值请求时，可保存客户端写入的特征值数据内容。根据写入请求CharacteristicWriteRequest的needRsp判断是否需要调用[sendResponse](../../reference/apis-connectivity-kit/arkts-apis/arkts-connectivity-ble-gattserver-i.md#sendresponse)进行回复。
 ```ts
 let gattServer: ble.GattServer = ble.createGattServer();
 let arrayBufferCCC = new ArrayBuffer(2);
@@ -432,7 +432,7 @@ gattServer.on('characteristicWrite', writeCharacteristicReq);
 通过订阅描述符读取或写入事件，获取客户端的操作请求，相关API请参考[on('descriptorRead')](../../reference/apis-connectivity-kit/arkts-apis/arkts-connectivity-ble-gattserver-i.md#ondescriptorread)和[on('descriptorWrite')](../../reference/apis-connectivity-kit/arkts-apis/arkts-connectivity-ble-gattserver-i.md#ondescriptorwrite)。
 
 - 收到读取描述符请求时，需要调用[sendResponse](../../reference/apis-connectivity-kit/arkts-apis/arkts-connectivity-ble-gattserver-i.md#sendresponse)进行回复对应描述符的数据内容。
-- 收到写入描述符请求时，可保存客户端写入的描述符数据内容。根据写入请求[DescriptorWriteRequest](../../reference/apis-connectivity-kit/arkts-apis/arkts-connectivity-ble-descriptorwriterequest-i.md#descriptorwriterequest)的needRsp判断是否需要调用[sendResponse](../../reference/apis-connectivity-kit/arkts-apis/arkts-connectivity-ble-gattserver-i.md#sendresponse)进行回复。
+- 收到写入描述符请求时，可保存客户端写入的描述符数据内容。根据写入请求DescriptorWriteRequest的needRsp判断是否需要调用[sendResponse](../../reference/apis-connectivity-kit/arkts-apis/arkts-connectivity-ble-gattserver-i.md#sendresponse)进行回复。
 ```ts
 let gattServer: ble.GattServer = ble.createGattServer();
 
@@ -500,7 +500,7 @@ gattServer.on('descriptorWrite', writeDescriptorReq);
 **4.3 发送特征值变化通知或指示**<br>
 当服务端的特征值数据内容发生变化时，可以通过通知或者指示主动知会到客户端，相关API请参考[notifyCharacteristicChanged](../../reference/apis-connectivity-kit/arkts-apis/arkts-connectivity-ble-gattserver-i.md#notifycharacteristicchanged)。
 
-发送通知时，不需要客户端回复确认；发送指示时，需要客户端回复确认。应用根据[NotifyCharacteristic](../../reference/apis-connectivity-kit/arkts-apis/arkts-connectivity-ble-notifycharacteristic-i.md#notifycharacteristic)的confirm参数决定发送哪种类型。
+发送通知时，不需要客户端回复确认；发送指示时，需要客户端回复确认。应用根据NotifyCharacteristic的confirm参数决定发送哪种类型。
 
 - 该特征值需包含蓝牙标准协议定义的Client Characteristic Configuration描述符UUID（00002902-0000-1000-8000-00805f9b34fb），才支持通知或者指示能力。
 - 使用通知或者指示能力需要使能。客户端可以通过[setCharacteristicChangeNotification](../../reference/apis-connectivity-kit/arkts-apis/arkts-connectivity-ble-gattclientdevice-i.md#setcharacteristicchangenotification)或[setCharacteristicChangeIndication](../../reference/apis-connectivity-kit/arkts-apis/arkts-connectivity-ble-gattclientdevice-i.md#setcharacteristicchangeindication)使能该能力，应用根据实际场景选择一种方式即可。

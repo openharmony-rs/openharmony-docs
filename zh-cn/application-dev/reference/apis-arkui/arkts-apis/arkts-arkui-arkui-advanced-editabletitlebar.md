@@ -265,7 +265,7 @@ struct Index1 {
 
 在获焦状态下，该示例通过设置标题栏属性leftIconDefaultFocus使左侧图标默认获焦。
 
-从API version 18开始，在[EditableTitleBar](#editabletitlebar-1)中新增leftIconDefaultFocus接口。
+从API version 18开始，在EditableTitleBar中新增leftIconDefaultFocus接口。
 
 
 

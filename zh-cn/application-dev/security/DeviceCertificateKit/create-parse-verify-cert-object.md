@@ -16,11 +16,11 @@
    import { cert } from '@kit.DeviceCertificateKit';
    ```
 
-2. 基于已有的X.509证书数据，调用[cert.createX509Cert](../../reference/apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-createx509cert-f.md#createx509cert)创建证书对象。
+2. 基于已有的X.509证书数据，调用cert.createX509Cert创建证书对象。
 
 3. 解析证书的字段信息。
 
-   此处以获取证书版本、证书序列号、证书颁发者名称、证书主体名称、证书对象的字符串类型数据为例，更多字段信息获取接口请查看API参考文档[X509Cert](../../reference/apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-x509cert-i.md#x509cert)。
+   此处以获取证书版本、证书序列号、证书颁发者名称、证书主体名称、证书对象的字符串类型数据为例，更多字段信息获取接口请查看API参考文档X509Cert。
 
 4. 调用[X509Cert.getPublicKey](../../reference/apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-x509cert-i.md#getpublickey)获取证书中的公钥，并调用[X509Cert.verify](../../reference/apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-x509cert-i.md#verify)校验签名。示例为自验签场景，因此获取的是本证书中的公钥。应用须结合自身场景获取用于验签的公钥。
 

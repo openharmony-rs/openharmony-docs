@@ -156,7 +156,7 @@ void GamePad::LeftThumbstick_OnAxisEvent(const struct GamePad_AxisEvent *axisEve
 | Dpad_RightButton | 2015 | 
 
 > **说明：**<br/>
-> 非标准按键的按键值请参见[KeyCode](../reference/apis-input-kit/arkts-apis/arkts-input-multimodalinput-keycode-keycode-e.md#keycode)。
+> 非标准按键的按键值请参见KeyCode。
 
 以LeftShoulder按键事件为例。
 

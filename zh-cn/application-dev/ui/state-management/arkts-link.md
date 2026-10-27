@@ -7,7 +7,7 @@
 <!--Adviser: @zhang_yixin13-->
 
 
-子组件中被[\@Link](../../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-link-d.md#link)装饰的变量与其父组件中对应的数据源建立双向数据绑定。
+子组件中被\@Link装饰的变量与其父组件中对应的数据源建立双向数据绑定。
 
 在阅读\@Link文档前，建议先熟悉[\@State](./arkts-state.md)的基本用法。最佳实践请参考[状态管理最佳实践](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-status-management)。常见问题请参考[状态管理常见问题](./arkts-state-management-faq.md)。
 
@@ -28,7 +28,7 @@
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | 装饰器参数                                                   | 无。                                                           |
 | 同步类型                                                     | 双向同步。<br/>父组件状态变量与子组件\@Link建立双向同步，当其中一方改变时，另一方也会同步更新。 |
-| 允许装饰的变量类型                                           |Object、class、string、number、boolean、enum类型，以及这些类型的数组。<br/>API version 10开始支持[Date类型](#装饰date类型变量)。<br/>API version 11及以上支持[Map](#装饰map类型变量)、[Set](#装饰set类型变量)类型、undefined和null类型、ArkUI框架定义的联合类型[Length](../../reference/apis-arkui/arkts-apis/arkts-arkui-length-t.md#length)、[ResourceStr](../../reference/apis-arkui/arkts-apis/arkts-arkui-resourcestr-t.md#resourcestr)、[ResourceColor](../../reference/apis-arkui/arkts-apis/arkts-arkui-graphics-colormetrics-c.md#resourcecolor)类型以及这些类型的联合类型，示例见[Link支持联合类型实例](#link支持联合类型实例)。<br/>支持类型的场景请参考[观察变化](#观察变化)。|
+| 允许装饰的变量类型                                           |Object、class、string、number、boolean、enum类型，以及这些类型的数组。<br/>API version 10开始支持[Date类型](#装饰date类型变量)。<br/>API version 11及以上支持[Map](#装饰map类型变量)、[Set](#装饰set类型变量)类型、undefined和null类型、ArkUI框架定义的联合类型Length、ResourceStr、[ResourceColor](../../reference/apis-arkui/arkts-apis/arkts-arkui-graphics-colormetrics-c.md#resourcecolor)类型以及这些类型的联合类型，示例见[Link支持联合类型实例](#link支持联合类型实例)。<br/>支持类型的场景请参考[观察变化](#观察变化)。|
 | 不允许装饰的变量类型 | 不支持装饰Function类型。      |
 | 被装饰变量的初始值                                           | 禁止本地初始化。                                         |
 

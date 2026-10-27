@@ -117,7 +117,7 @@
    >
    > 在相机设备输入之前需要先完成相机管理，详细开发步骤请参考[相机管理(C/C++)](native-camera-device-management.md)。
 
-4. 通过OH_CameraManager_GetSupportedSceneModes()方法，获取当前相机设备支持的模式列表，列表中存储了相机设备支持的所有模式[Camera_SceneMode](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-scenemode-e-sys.md#scenemode)。
+4. 通过OH_CameraManager_GetSupportedSceneModes()方法，获取当前相机设备支持的模式列表，列表中存储了相机设备支持的所有模式Camera_SceneMode。
 
    ```c++
    bool IsSupportedSceneMode(Camera_Device camera, Camera_SceneMode sceneMode)
@@ -139,7 +139,7 @@
    }
    ```
 
-5. 通过OH_CameraManager_GetSupportedCameraOutputCapabilityWithSceneMode()方法，获取当前设备在当前模式下支持的所有输出流，如预览流、拍照流等。输出流在[Camera_OutputCapability](../../reference/apis-camera-kit/c-apis/capi-oh-camera-camera-outputcapability.md)中的各个profile字段中。根据相机设备指定模式[Camera_SceneMode](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-scenemode-e-sys.md#scenemode)的不同，需要向Session中添加对应类型的输出流，请参考会话管理[开发步骤](./native-camera-session-management.md#开发步骤)中的第6步。
+5. 通过OH_CameraManager_GetSupportedCameraOutputCapabilityWithSceneMode()方法，获取当前设备在当前模式下支持的所有输出流，如预览流、拍照流等。输出流在[Camera_OutputCapability](../../reference/apis-camera-kit/c-apis/capi-oh-camera-camera-outputcapability.md)中的各个profile字段中。根据相机设备指定模式Camera_SceneMode的不同，需要向Session中添加对应类型的输出流，请参考会话管理[开发步骤](./native-camera-session-management.md#开发步骤)中的第6步。
 
 
    ```c++

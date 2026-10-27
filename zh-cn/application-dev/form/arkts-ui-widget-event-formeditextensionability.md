@@ -21,7 +21,7 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
     - FormEditDemo：该字段为卡片宿主应用的应用名称，通过[app.json5](../quick-start/app-configuration-file.md#配置文件标签)配置文件中的label字段配置。
     - widget：该字段为卡片名称，通过卡片form_config.json配置文件中的[name](./arkts-ui-widget-configuration.md#配置文件字段说明)字段配置。
     - “完成”按钮：编辑完成之后，点击按钮可退出半模态卡片编辑页面。
-3. 在卡片编辑区，点击“切换到：上海”按钮后，卡片提供方可以通过[updateForm](../reference/apis-form-kit/arkts-apis/arkts-form-formprovider-updateform-depr-f.md#updateform)接口更新卡片信息，并在预览区显示。
+3. 在卡片编辑区，点击“切换到：上海”按钮后，卡片提供方可以通过updateForm接口更新卡片信息，并在预览区显示。
 4. 在卡片编辑区，点击“进入二级编辑页”按钮，此时卡片通过FormEditExtensionContext提供的[startSecondPage](../reference/apis-form-kit/arkts-apis/arkts-form-formeditextensioncontext-c.md#startsecondpage)方法，将卡片提供方的二级编辑页信息传递给桌面，桌面拉起对应页面，即进入二级编辑页。二级编辑页主要用于实现复杂的编辑布局，是否需要二级编辑页请开发者根据实际需求添加。
 5. 编辑完成之后退出编辑页。
 ### 开发步骤
@@ -210,7 +210,7 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
        ]
    }
    ```
-3. 实现一级编辑页布局，通过[updateForm](../reference/apis-form-kit/arkts-apis/arkts-form-formprovider-updateform-depr-f.md#updateform)接口去刷新被编辑卡片的信息和预览卡片信息，通过[startSecondPage](../reference/apis-form-kit/arkts-apis/arkts-form-formeditextensioncontext-c.md#startsecondpage)方法去拉起二级编辑页。
+3. 实现一级编辑页布局，通过updateForm接口去刷新被编辑卡片的信息和预览卡片信息，通过[startSecondPage](../reference/apis-form-kit/arkts-apis/arkts-form-formeditextensioncontext-c.md#startsecondpage)方法去拉起二级编辑页。
    - 一级编辑页布局实现如下。
    <!-- @[FormEditDemo_FormEditExtension](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditDemo/entry/src/main/ets/pages/FormEditExtension.ets) --> 
    
@@ -644,7 +644,7 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
 ![WidgetProject](figures/全屏编辑页操作流程.png)
 1. 长按卡片弹出菜单。桌面通过[formConfigAbility](./arkts-ui-widget-configuration.md#配置文件字段说明)字段判断卡片是否支持卡片编辑能力来决定是否显示编辑按钮。
 2. 点击“编辑”菜单项进入全屏编辑页。桌面通过formConfigAbility字段的信息拉起卡片编辑页。
-3. 点击“切换到：上海”按钮编辑卡片内容。提供方通过[updateForm](../reference/apis-form-kit/arkts-apis/arkts-form-formprovider-updateform-depr-f.md#updateform)接口去更新编辑卡片的信息。
+3. 点击“切换到：上海”按钮编辑卡片内容。提供方通过updateForm接口去更新编辑卡片的信息。
 ### 开发步骤
 下面给出示例，实现如下功能：长按卡片弹出编辑菜单，点击“编辑”菜单项进入全屏编辑页，修改卡片内容。
 1. [创建卡片](./arkts-ui-widget-creation.md)。
@@ -773,7 +773,7 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
    }
    ```
 
-3. 新增FormEditIndex.ets文件实现全屏编辑页布局，通过[updateForm](../reference/apis-form-kit/arkts-apis/arkts-form-formprovider-updateform-depr-f.md#updateform)接口去刷新被编辑卡片的信息。
+3. 新增FormEditIndex.ets文件实现全屏编辑页布局，通过updateForm接口去刷新被编辑卡片的信息。
    <!-- @[FormEditUIAbility_FormEditIndex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditUIAbility/entry/src/main/ets/pages/FormEditIndex.ets) -->
    
    ``` TypeScript

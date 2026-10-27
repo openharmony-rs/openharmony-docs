@@ -12,7 +12,7 @@ AppStorage是与应用进程绑定的全局UI状态存储中心，由UI框架在
 
 作为应用的“中枢”，AppStorage是[持久化数据PersistentStorage](arkts-persiststorage.md)和[环境变量Environment](arkts-environment.md)与UI交互的中转桥梁。其核心价值在于为开发者提供跨ability的大范围UI状态数据共享能力。
 
-AppStorage提供了API接口，允许开发者在自定义组件外手动触发AppStorage对应属性的增、删、改、查操作。建议配合[AppStorage API文档](../../reference/apis-arkui/arkts-apis/arkts-arkui-appstorage-c.md#appstorage)阅读。最佳实践请参考[状态管理最佳实践](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-status-management)。
+AppStorage提供了API接口，允许开发者在自定义组件外手动触发AppStorage对应属性的增、删、改、查操作。建议配合AppStorage API文档阅读。最佳实践请参考[状态管理最佳实践](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-status-management)。
 
 > **说明：**
 >
@@ -30,7 +30,7 @@ AppStorage中的属性可以被双向同步，并具有不同的功能，比如�
 
 ## \@StorageProp
 
-[\@StorageProp](../../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-storageprop-d.md#storageprop)与AppStorage中对应的属性建立单向数据同步。
+\@StorageProp与AppStorage中对应的属性建立单向数据同步。
 
 > **说明：**
 >
@@ -82,7 +82,7 @@ AppStorage中的属性可以被双向同步，并具有不同的功能，比如�
 
 ## \@StorageLink
 
-[\@StorageLink](../../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-storagelink-d.md#storagelink)与AppStorage中对应的属性建立双向数据同步。
+\@StorageLink与AppStorage中对应的属性建立双向数据同步。
 
 > **说明：**
 >
@@ -839,7 +839,7 @@ export struct TapImage {
 }
 ```
 
-相比借助@StorageLink的双向同步机制实现事件通知，开发者可以使用[emit](../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-emitter-emit-f.md#emit)订阅某个事件并接收事件回调的方式来减少开销，增强代码的可读性。
+相比借助@StorageLink的双向同步机制实现事件通知，开发者可以使用emit订阅某个事件并接收事件回调的方式来减少开销，增强代码的可读性。
 
 > **说明：**
 >

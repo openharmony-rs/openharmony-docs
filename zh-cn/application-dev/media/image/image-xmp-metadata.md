@@ -121,7 +121,7 @@ XMP路径由以下语法构件组合而成。在使用[getTag](../../reference/a
 
 > **说明：**
 >
-> - 使用标准命名空间（如`xmp`、`dc`、`exif`等）时，无需额外注册。Image Kit支持但不限于[常量](../../reference/apis-image-kit/arkts-apis/arkts-image-image-con.md#常量)中定义的标准命名空间。
+> - 使用标准命名空间（如`xmp`、`dc`、`exif`等）时，无需额外注册。Image Kit支持但不限于常量中定义的标准命名空间。
 > - 使用自定义命名空间时，需要先通过[registerXMPNamespace](../../reference/apis-image-kit/arkts-apis/arkts-image-image-xmpmetadata-c.md#registerxmpnamespace)完成注册。
 
 **示例：**

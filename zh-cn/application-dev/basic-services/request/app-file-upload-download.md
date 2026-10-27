@@ -10,7 +10,7 @@
 
 > **说明：**
 >
-> · 使用上传下载模块，优先推荐使用[request.agent.create](../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-agent-create-f.md#create)创建上传下载任务。
+> · 使用上传下载模块，优先推荐使用request.agent.create创建上传下载任务。
 >
 > · 使用上传下载模块，需[声明权限](../../security/AccessToken/declare-permissions.md)：ohos.permission.INTERNET。
 >
@@ -235,7 +235,7 @@ async requestAgentDownload(url: string, fileName: string, callback: (progress: n
 ```
 
 ## 下载网络资源文件至用户文件
-开发者可以使用[ohos.request](../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-request.md)的[request.agent.create](../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-agent-create-f.md#create)接口下载网络资源文件到指定的用户文件目录。
+开发者可以使用[ohos.request](../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-request.md)的request.agent.create接口下载网络资源文件到指定的用户文件目录。
 
 > **说明：**
 >
@@ -245,7 +245,7 @@ async requestAgentDownload(url: string, fileName: string, callback: (progress: n
 
 ### 下载文档类文件
 
-开发者可以通过调用[DocumentViewPicker](../../reference/apis-core-file-kit/arkts-apis/arkts-corefile-picker-documentviewpicker-c.md#documentviewpicker)的[save()](../../reference/apis-core-file-kit/arkts-apis/arkts-corefile-picker-audioviewpicker-c.md#save)接口保存文件并获得用户文件的uri，将此uri作为[Config](../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-agent-config-i.md#config)的saveas字段值进行下载。
+开发者可以通过调用DocumentViewPicker的[save()](../../reference/apis-core-file-kit/arkts-apis/arkts-corefile-picker-audioviewpicker-c.md#save)接口保存文件并获得用户文件的uri，将此uri作为Config的saveas字段值进行下载。
 
 <!-- @[doc_user_file_download](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/userFile/DocumentDownload.ets)-->
 
@@ -316,7 +316,7 @@ async docFileAgentTask(url: string, fileName: string, callback: (progress: numbe
 
 ### 下载音频类文件
 
-开发者可以通过调用[AudioViewPicker](../../reference/apis-core-file-kit/arkts-apis/arkts-corefile-picker-audioviewpicker-c.md#audioviewpicker)的[save()](../../reference/apis-core-file-kit/arkts-apis/arkts-corefile-picker-audioviewpicker-c.md#save)接口保存文件并获得用户文件的uri，将此uri作为[Config](../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-agent-config-i.md#config)的saveas字段值进行下载。
+开发者可以通过调用AudioViewPicker的[save()](../../reference/apis-core-file-kit/arkts-apis/arkts-corefile-picker-audioviewpicker-c.md#save)接口保存文件并获得用户文件的uri，将此uri作为Config的saveas字段值进行下载。
 
 <!-- @[audio_user_file_download](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/userFile/AudioDownload.ets)-->
 
@@ -381,7 +381,7 @@ async audioFileAgentTask(url: string, fileName: string, callback: (progress: num
 
 ### 下载图片或视频类文件
 
-开发者可以通过调用PhotoAccessHelper[模块描述](../../reference/apis-media-library-kit/arkts-apis/arkts-medialibrary-file-photoaccesshelper.md)的[createAsset()](../../reference/apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoaccesshelper-i.md#createasset-2)接口创建媒体文件并获取用户文件的URI，将其作为[Config](../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-agent-config-i.md#config)的saveas字段值进行下载。
+开发者可以通过调用PhotoAccessHelper[模块描述](../../reference/apis-media-library-kit/arkts-apis/arkts-medialibrary-file-photoaccesshelper.md)的[createAsset()](../../reference/apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoaccesshelper-i.md#createasset-2)接口创建媒体文件并获取用户文件的URI，将其作为Config的saveas字段值进行下载。
 
 需要权限：[ohos.permission.WRITE_IMAGEVIDEO](../../security/AccessToken/restricted-permissions.md#ohospermissionwrite_imagevideo)
 
@@ -488,7 +488,7 @@ async mediaFileAgentTask(url: string, callback: (progress: number, isSuccess: bo
 
 ## 添加任务速度限制与超时限制
 
-开发者可以使用[ohos.request (上传下载)](../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-request.md)模块中的接口上传本地文件或下载网络资源文件。为方便对任务速度及时长进行限制，分别在API version 18中增加了[setMaxSpeed](../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-agent-task-i.md#setmaxspeed)接口，支持用户设置任务的最高速度限制；在API version 20的[request.agent.create](../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-agent-create-f.md#create)接口中增加了最低限速及超时参数，支持用户自定义最低速度限制以及超时时间。
+开发者可以使用[ohos.request (上传下载)](../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-request.md)模块中的接口上传本地文件或下载网络资源文件。为方便对任务速度及时长进行限制，分别在API version 18中增加了[setMaxSpeed](../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-agent-task-i.md#setmaxspeed)接口，支持用户设置任务的最高速度限制；在API version 20的request.agent.create接口中增加了最低限速及超时参数，支持用户自定义最低速度限制以及超时时间。
 
 以下是对下载任务进行速度限制与超时限制的方式的示例代码演示：
 
@@ -605,7 +605,7 @@ async speedLimitDownload(url: string, fileName: string, callback: (progress: num
 
 ### 功能介绍
 
-通过在下载任务的配置[request.agent.Notification](../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-agent-notification-i.md#notification)中设置wantAgent参数，开发者可以指定用户点击通知后要跳转的应用页面及相关参数。当用户点击正在进行或已完成的下载任务通知时，系统会根据wantAgent参数启动指定的应用能力。
+通过在下载任务的配置request.agent.Notification中设置wantAgent参数，开发者可以指定用户点击通知后要跳转的应用页面及相关参数。当用户点击正在进行或已完成的下载任务通知时，系统会根据wantAgent参数启动指定的应用能力。
 
 ### 示例代码
 

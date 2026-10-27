@@ -36,7 +36,7 @@ let audioSpatializationManager = audioManager.getSpatializationManager();
 
 ### 查询设备是否支持空间音频渲染能力
 
-应用开发者可以使用[AudioDeviceDescriptor](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiodevicedescriptor-i-sys.md#audiodevicedescriptor)的spatializationSupported属性获取指定设备是否具有空间音频渲染的能力，需要通过音频框架中其他接口来获取当前已连接设备或当前发声设备的AudioDeviceDescriptor。例如，可以使用[getRoutingManager](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiomanager-i.md#getroutingmanager)创建的AudioRoutingManager实例的[getDevicesSync](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audioroutingmanager-i.md#getdevicessync)接口获取。
+应用开发者可以使用AudioDeviceDescriptor的spatializationSupported属性获取指定设备是否具有空间音频渲染的能力，需要通过音频框架中其他接口来获取当前已连接设备或当前发声设备的AudioDeviceDescriptor。例如，可以使用[getRoutingManager](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiomanager-i.md#getroutingmanager)创建的AudioRoutingManager实例的[getDevicesSync](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audioroutingmanager-i.md#getdevicessync)接口获取。
 
 <!-- @[check_spacesound](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) -->
 

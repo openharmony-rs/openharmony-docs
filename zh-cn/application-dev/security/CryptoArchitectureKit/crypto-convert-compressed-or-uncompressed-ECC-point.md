@@ -15,7 +15,7 @@ ECC的算法规格请查看[非对称密钥生成和转换规格：ECC](crypto-k
 
 ## 指定非压缩点数据转换为压缩点数据
 
-1. 指定Uint8Array类型的ECC非压缩点数据，调用[ECCKeyUtil.convertPoint](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-ecckeyutil-c.md#convertpoint)，构造[Point](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-point-i.md#point)对象，用于生成点数据。
+1. 指定Uint8Array类型的ECC非压缩点数据，调用[ECCKeyUtil.convertPoint](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-ecckeyutil-c.md#convertpoint)，构造Point对象，用于生成点数据。
 
 2. 调用[ECCKeyUtil.getEncodedPoint](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-ecckeyutil-c.md#getencodedpoint)，获取压缩点数据。
 
@@ -38,10 +38,10 @@ function eccPointUncompressedToCompressed() {
 
 ## 指定压缩点数据获取密钥对象
 
-1. 指定Uint8Array类型的ECC压缩点数据，调用[ECCKeyUtil.convertPoint](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-ecckeyutil-c.md#convertpoint)，得到[Point](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-point-i.md#point)对象，用于密钥对象生成。
+1. 指定Uint8Array类型的ECC压缩点数据，调用[ECCKeyUtil.convertPoint](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-ecckeyutil-c.md#convertpoint)，得到Point对象，用于密钥对象生成。
 2. 调用[ECCKeyUtil.genECCCommonParamsSpec](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-ecckeyutil-c.md#genecccommonparamsspec)，指定曲线名'NID_brainpoolP256r1'，生成ECC的非对称公共密钥参数。
-3. 构造[ECCPubKeySpec](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-eccpubkeyspec-i.md#eccpubkeyspec)对象，用于指定ECC算法中公钥包含的参数。ECCPubKeySpec是AsyKeySpec的子类。需要通过参数algName指定算法'ECC'；指定密钥参数类型[AsyKeySpecType.PUBLIC_KEY_SPEC](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-asykeyspectype-e.md#asykeyspectype)，参数pk指定为得到的point对象。
-4. 通过得到的公钥参数，调用[createAsyKeyGeneratorBySpec](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-createasykeygeneratorbyspec-f.md#createasykeygeneratorbyspec)，创建非对称密钥生成器（AsyKeyGeneratorBySpec）。
+3. 构造ECCPubKeySpec对象，用于指定ECC算法中公钥包含的参数。ECCPubKeySpec是AsyKeySpec的子类。需要通过参数algName指定算法'ECC'；指定密钥参数类型AsyKeySpecType.PUBLIC_KEY_SPEC，参数pk指定为得到的point对象。
+4. 通过得到的公钥参数，调用createAsyKeyGeneratorBySpec，创建非对称密钥生成器（AsyKeyGeneratorBySpec）。
 5. 调用[AsyKeyGeneratorBySpec.generatePubKey](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-asykeygeneratorbyspec-i.md#generatepubkey)，得到指定的公钥。
 6. 调用[ECCKeyUtil.getEncodedPoint](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-ecckeyutil-c.md#getencodedpoint)，得到非压缩点数据。
 7. 调用[PubKey.getAsyKeySpec](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-prikey-i.md#getasykeyspec)，获取ECC算法中公钥pk的x坐标。

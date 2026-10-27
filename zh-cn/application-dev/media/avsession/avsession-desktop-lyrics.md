@@ -10,7 +10,7 @@
 
 ## 具体步骤
 
-1. 调用[isDesktopLyricSupported](../../reference/apis-avsession-kit/arkts-apis/arkts-avsession-avsession-isdesktoplyricsupported-f.md#isdesktoplyricsupported)接口判断系统/设备是否支持歌词组件能力，返回true时表示支持歌词组件能力。
+1. 调用isDesktopLyricSupported接口判断系统/设备是否支持歌词组件能力，返回true时表示支持歌词组件能力。
 
 2. 创建[AVSession实例](../avsession/avsession-access-scene.md#创建不同类型的会话)，通过[设置元数据信息](../avsession/avsession-access-scene.md#设置元数据信息)填入LRC格式的歌词数据，包含时间标签及对应的歌词文本。不符合LRC格式的歌词数据，系统可能存在解析异常导致无法展示歌词内容。
 

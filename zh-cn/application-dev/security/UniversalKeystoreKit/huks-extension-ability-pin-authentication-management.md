@@ -21,9 +21,9 @@ PIN码作用如下：
 
 HUKS提供以下PIN码认证状态管理能力：
 
-- **查询认证状态**：从API版本22开始，可通过[getUkeyPinAuthState](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huksexternalcrypto-getukeypinauthstate-f.md#getukeypinauthstate)查询当前PIN码认证状态。
+- **查询认证状态**：从API版本22开始，可通过getUkeyPinAuthState查询当前PIN码认证状态。
 
-- **清除认证状态**：从API版本26.0.0开始，可通过[clearUkeyPinAuthState](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huksexternalcrypto-clearukeypinauthstate-f.md#clearukeypinauthstate)清除指定资源的PIN码认证状态。
+- **清除认证状态**：从API版本26.0.0开始，可通过clearUkeyPinAuthState清除指定资源的PIN码认证状态。
 <!--Del-->
       
 - **PIN认证**：从API版本22开始，可通过[authUkeyPin](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huksexternalcrypto-authukeypin-f-sys.md#authukeypin)发起验证PIN码请求。
@@ -43,7 +43,7 @@ HUKS提供以下PIN码认证状态管理能力：
 
 1. 通过[获取资源ID](huks-extension-ability-general-operation.md#获取资源id)操作，得到resourceId，并传入该resourceId进行打开资源，可参考[打开关闭资源](huks-extension-ability-general-operation.md#打开关闭资源)。
 
-2. 调用查询认证状态接口[getUkeyPinAuthState](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huksexternalcrypto-getukeypinauthstate-f.md#getukeypinauthstate)验证PIN码。
+2. 调用查询认证状态接口getUkeyPinAuthState验证PIN码。
 
 3. 操作执行完后，关闭资源，可参考[打开关闭资源](huks-extension-ability-general-operation.md#打开关闭资源)。
 
@@ -187,7 +187,7 @@ static napi_value GetUkeyPinAuthState(napi_env env, napi_callback_info info)
 
 1. 通过[获取资源ID](huks-extension-ability-general-operation.md#获取资源id)操作，得到resourceId，并传入该resourceId进行打开资源，可参考[打开关闭资源](huks-extension-ability-general-operation.md#打开关闭资源)。
 
-2. 调用[clearUkeyPinAuthState](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huksexternalcrypto-clearukeypinauthstate-f.md#clearukeypinauthstate)清除PIN码认证状态。
+2. 调用clearUkeyPinAuthState清除PIN码认证状态。
 
 3. 操作执行完后，关闭资源，可参考[打开关闭资源](huks-extension-ability-general-operation.md#打开关闭资源)。
 

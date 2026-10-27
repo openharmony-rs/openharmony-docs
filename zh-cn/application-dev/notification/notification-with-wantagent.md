@@ -20,8 +20,8 @@
 
 | **接口名** | **描述** |
 | -------- | -------- |
-| [publish](../reference/apis-notification-kit/arkts-apis/arkts-notification-notificationmanager-publish-f-sys.md#publish)(request: NotificationRequest): Promise\<void\>       | 发布通知。  |
-| [getWantAgent](../reference/apis-ability-kit/arkts-apis/arkts-ability-wantagent-getwantagent-depr-f.md#getwantagent)(info:&nbsp;WantAgentInfo,&nbsp;callback:&nbsp;AsyncCallback&lt;WantAgent&gt;):&nbsp;void | 创建WantAgent。 |
+| publish(request: NotificationRequest): Promise\<void\>       | 发布通知。  |
+| getWantAgent(info:&nbsp;WantAgentInfo,&nbsp;callback:&nbsp;AsyncCallback&lt;WantAgent&gt;):&nbsp;void | 创建WantAgent。 |
 
 ## 开发步骤
 
@@ -88,7 +88,7 @@
    };
    ```
 
-3. 调用[getWantAgent()](../reference/apis-ability-kit/arkts-apis/arkts-ability-wantagent-getwantagent-depr-f.md#getwantagent)方法进行创建WantAgent。
+3. 调用getWantAgent()方法进行创建WantAgent。
 
    <!-- @[create_get_agent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/AddWantAgent.ets) -->
    

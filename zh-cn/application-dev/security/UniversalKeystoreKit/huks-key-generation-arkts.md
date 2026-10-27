@@ -17,14 +17,14 @@
 1. 指定密钥别名，密钥别名命名规范参考[密钥生成介绍及算法规格](huks-key-generation-overview.md)。
 
 2. 初始化密钥属性集。
-   - 通过[HuksParam](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huks-huksparam-i.md#huksparam)封装密钥属性，搭配Array组成密钥属性集，并赋值给[HuksOptions](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huks-huksoptions-i.md#huksoptions)中的properties字段。
-   - 密钥属性集中必须包含[HuksKeyAlg](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huks-hukskeyalg-e.md#hukskeyalg)、[HuksKeySize](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huks-hukskeysize-e.md#hukskeysize)、[HuksKeyPurpose](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huks-hukskeypurpose-e.md#hukskeypurpose)属性，即必传TAG：HUKS_TAG_ALGORITHM、HUKS_TAG_PURPOSE、HUKS_TAG_KEY_SIZE。
+   - 通过HuksParam封装密钥属性，搭配Array组成密钥属性集，并赋值给HuksOptions中的properties字段。
+   - 密钥属性集中必须包含HuksKeyAlg、HuksKeySize、HuksKeyPurpose属性，即必传TAG：HUKS_TAG_ALGORITHM、HUKS_TAG_PURPOSE、HUKS_TAG_KEY_SIZE。
    
    > **注意：**
    >
    > 一个密钥只能有一类PURPOSE，并且生成密钥时指定的用途要与使用时的方式一致，否则会导致异常。
 
-3. 调用[generateKeyItem](../../reference/apis-universal-keystore-kit/c-apis/capi-native-huks-api-h.md#ohhuksgeneratekeyitem)，传入密钥别名和密钥属性集，生成密钥。
+3. 调用generateKeyItem，传入密钥别名和密钥属性集，生成密钥。
 
 > **说明：**
 >

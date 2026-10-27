@@ -266,7 +266,7 @@ Stack() {
 .onTouch(() => {})
 .gesture(TapGesture({count: 1}))
 ```
-从API version 20开始，[HitTestMode](../reference/apis-arkui/arkts-apis/arkts-arkui-hittestmode-e.md#hittestmode).BLOCK_DESCENDANTS自身不响应触摸测试，并且所有的后代（孩子，孙子等）也不响应触摸测试，不会影响祖先节点的触摸测试。
+从API version 20开始，HitTestMode.BLOCK_DESCENDANTS自身不响应触摸测试，并且所有的后代（孩子，孙子等）也不响应触摸测试，不会影响祖先节点的触摸测试。
 
 若组件C未设置[hitTestBehavior](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#hittestbehavior)，点击组件B和组件D的重叠区域时，组件A、组件C和组件D都会触发[onTouch](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-arcbutton-arcbuttonoptions-c.md#ontouch)事件，同时组件D的点击手势也会被触发。
 
@@ -334,7 +334,7 @@ Column() {
 此时，单击组件B区域范围，组件A和组件B的点击手势均会触发。
 
 ### OverlayManager的事件透传
-[OverlayManager](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-overlaymanager-c.md)事件机制，默认优先被[WrappedBuilder](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-wrappedbuilder-c.md#wrappedbuilder)内组件先接收，不会向下传递。
+[OverlayManager](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-overlaymanager-c.md)事件机制，默认优先被WrappedBuilder内组件先接收，不会向下传递。
 
 若希望OverlayManager下方的页面也能感应到事件，可采用hitTestBehavior(HitTestMode.Transparent)来传递事件，参考以下伪代码。
 

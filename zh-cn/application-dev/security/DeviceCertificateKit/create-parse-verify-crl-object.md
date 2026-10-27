@@ -17,11 +17,11 @@
    import { cryptoFramework } from '@kit.CryptoArchitectureKit';
    ```
 
-2. 基于已有的CRL数据，调用[cert.createX509CRL](../../reference/apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-createx509crl-depr-f.md#createx509crl)创建X.509证书吊销列表的对象。
+2. 基于已有的CRL数据，调用cert.createX509CRL创建X.509证书吊销列表的对象。
 
 3. 解析证书吊销列表信息。
 
-   此处以获取证书吊销列表版本、证书吊销列表类型、证书吊销列表颁发者名称、证书吊销列表对象的字符串类型数据为例，更多字段信息获取接口请查看API参考文档[X509CRL11+](../../reference/apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-x509crl-i.md#x509crl)。
+   此处以获取证书吊销列表版本、证书吊销列表类型、证书吊销列表颁发者名称、证书吊销列表对象的字符串类型数据为例，更多字段信息获取接口请查看API参考文档X509CRL11+。
 
 4. 基于已有公钥信息，创建PublicKey公钥对象。
 
@@ -29,7 +29,7 @@
 
 5. 调用[X509CRL.verify](../../reference/apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-x509cert-i.md#verify)校验签名合法性。
 
-6. 基于已有的X.509证书数据，调用[cert.createX509Cert](../../reference/apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-createx509cert-f.md#createx509cert)创建证书对象。
+6. 基于已有的X.509证书数据，调用cert.createX509Cert创建证书对象。
 
 7. 调用[X509CRL.isRevoked](../../reference/apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-x509crl-depr-i.md#isrevoked)判断X.509证书是否已被吊销。
 

@@ -404,31 +404,31 @@ struct CrossLanguage {
 
 仅以下节点类型支持跨语言设置节点属性。Native侧需要使用OH_ArkUI_NodeUtils_GetAttachedNodeHandleById获取待修改属性的节点，不支持对OH_ArkUI_GetNodeHandleFromNapiValue获取的目标节点跨语言设置属性。
 
-| ArkTS侧[TypedFrameNode](../reference/apis-arkui/arkts-apis/arkts-arkui-framenode-typedframenode-i.md#typedframenode)类型 | Native侧[ArkUI_NodeType](../reference/apis-arkgraphics3d/arkts-apis/arkts-arkgraphics3d-scenenodes-node-i.md#nodetype)类型 | ArkTS属性获取接口 | ArkTS控制器获取/绑定接口 |
+| ArkTS侧TypedFrameNode类型 | Native侧[ArkUI_NodeType](../reference/apis-arkgraphics3d/arkts-apis/arkts-arkgraphics3d-scenenodes-node-i.md#nodetype)类型 | ArkTS属性获取接口 | ArkTS控制器获取/绑定接口 |
 | -------- | -------- | -------- | -------- |
 | [Button](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-composelistitem-operateitem-c.md#button) | ARKUI_NODE_BUTTON | getAttribute | NA |
 | [Checkbox](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-composelistitem-operateitem-c.md#checkbox) | ARKUI_NODE_CHECKBOX | getAttribute | NA |
 | [Radio](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-composelistitem-operateitem-c.md#radio) | ARKUI_NODE_RADIO | getAttribute | NA |
-| [Slider](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-slider-t.md#slider) | ARKUI_NODE_SLIDER | getAttribute | NA |
+| Slider | ARKUI_NODE_SLIDER | getAttribute | NA |
 | [Toggle](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-composelistitemv2-operateitemv2-c.md#toggle) | ARKUI_NODE_TOGGLE | getAttribute | NA |
 | [Progress](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-arcslider-arcslidervalueoptions-c.md#progress) | ARKUI_NODE_PROGRESS | getAttribute | NA |
-| [LoadingProgress](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-loadingprogress-t.md#loadingprogress) | ARKUI_NODE_LOADING_PROGRESS | getAttribute | NA |
+| LoadingProgress | ARKUI_NODE_LOADING_PROGRESS | getAttribute | NA |
 | [Image](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-composelistitem-operateitem-c.md#image) | ARKUI_NODE_IMAGE | getAttribute | NA |
-| [XComponent](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-xcomponent-t.md#xcomponent) | ARKUI_NODE_XCOMPONENT | getAttribute | getController |
+| XComponent | ARKUI_NODE_XCOMPONENT | getAttribute | getController |
 | [Column](../reference/apis-arkui/arkts-apis/arkts-arkui-flexdirection-e.md#column) | ARKUI_NODE_COLUMN | getAttribute | NA |
 | [Row](../reference/apis-arkui/arkts-apis/arkts-arkui-flexdirection-e.md#row) | ARKUI_NODE_ROW | getAttribute | NA |
-| [Stack](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-stack-t.md#stack) | ARKUI_NODE_STACK | getAttribute | NA |
-| [Flex](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-flex-t.md#flex) | ARKUI_NODE_FLEX | getAttribute | NA |
-| [RelativeContainer](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-relativecontainer-t.md#relativecontainer) | ARKUI_NODE_RELATIVE_CONTAINER | getAttribute | NA |
-| [Swiper](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-swiper-t.md#swiper) | ARKUI_NODE_SWIPER | getAttribute | bindController |
+| Stack | ARKUI_NODE_STACK | getAttribute | NA |
+| Flex | ARKUI_NODE_FLEX | getAttribute | NA |
+| RelativeContainer | ARKUI_NODE_RELATIVE_CONTAINER | getAttribute | NA |
+| Swiper | ARKUI_NODE_SWIPER | getAttribute | bindController |
 | [Scroll](../reference/apis-arkui/arkts-apis/arkts-arkui-maxlinesmode-e.md#scroll) | ARKUI_NODE_SCROLL | getAttribute | bindController |
 | [List](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-counter-countertype-e.md#list) | ARKUI_NODE_LIST | getAttribute | bindController |
-| [ListItem](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-listitem-t.md#listitem) | ARKUI_NODE_LIST_ITEM | getAttribute | NA |
-| [ListItemGroup](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-listitemgroup-t.md#listitemgroup) | ARKUI_NODE_LIST_ITEM_GROUP | getAttribute | NA |
-| [WaterFlow](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-waterflow-t.md#waterflow) | ARKUI_NODE_WATER_FLOW | getAttribute | bindController |
-| [FlowItem](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-flowitem-t.md#flowitem) | ARKUI_NODE_FLOW_ITEM | getAttribute | NA |
-| [Grid](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-grid-t.md#grid) | ARKUI_NODE_GRID | getAttribute | bindController |
-| [GridItem](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-griditem-t.md#griditem) | ARKUI_NODE_GRID_ITEM | getAttribute | NA |
+| ListItem | ARKUI_NODE_LIST_ITEM | getAttribute | NA |
+| ListItemGroup | ARKUI_NODE_LIST_ITEM_GROUP | getAttribute | NA |
+| WaterFlow | ARKUI_NODE_WATER_FLOW | getAttribute | bindController |
+| FlowItem | ARKUI_NODE_FLOW_ITEM | getAttribute | NA |
+| Grid | ARKUI_NODE_GRID | getAttribute | bindController |
+| GridItem | ARKUI_NODE_GRID_ITEM | getAttribute | NA |
 | [Text](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-chip-labeloptions-i.md#text) | ARKUI_NODE_TEXT | getAttribute | bindController |
-| [TextInput](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-textinput-t.md#textinput) | ARKUI_NODE_TEXT_INPUT | getAttribute | bindController |
-| [TextArea](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-textarea-t.md#textarea) | ARKUI_NODE_TEXT_AREA | getAttribute | bindController |
+| TextInput | ARKUI_NODE_TEXT_INPUT | getAttribute | bindController |
+| TextArea | ARKUI_NODE_TEXT_AREA | getAttribute | bindController |

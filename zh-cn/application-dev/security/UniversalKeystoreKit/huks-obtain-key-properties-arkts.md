@@ -18,9 +18,9 @@ HUKS提供了接口供业务获取指定密钥的相关属性。在获取指定�
 
 1. 指定待查询的密钥别名keyAlias，密钥别名最大长度为128字节。
 
-2. 调用接口[getKeyItemProperties](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huks-getkeyitemproperties-f.md#getkeyitemproperties)，传入参数keyAlias和options。options为预留参数，当前可传入空。
+2. 调用接口getKeyItemProperties，传入参数keyAlias和options。options为预留参数，当前可传入空。
 
-3. 返回值为[HuksReturnResult](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huks-huksreturnresult-i.md#huksreturnresult)类型对象，获取的属性集在properties字段中。
+3. 返回值为HuksReturnResult类型对象，获取的属性集在properties字段中。
 
 <!-- @[obtaining_key_attribute_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/OtherOperations/GetKeyAttributes/entry/src/main/ets/pages/GetKeyAttributes.ets) -->
 

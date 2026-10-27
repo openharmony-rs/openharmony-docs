@@ -10,7 +10,7 @@
 
 播放的全流程包含：创建AVPlayer、设置回调监听函数、设置播放资源、设置播放参数（音量/倍速/焦点模式）、设置播放窗口、播放控制（播放/暂停/跳转/停止）、重置、销毁播放器实例。
 
-在进行应用开发的过程中，开发者可以通过AVPlayer的信息监听回调函数[OH_AVPlayerOnInfoCallback](../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md#callback)和错误监听回调函数[OH_AVPlayerOnErrorCallback](../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-base-errorcallback-i.md#errorcallback)主动获取播放过程信息。如果应用在视频播放器处于错误状态时执行操作，系统会抛出异常或生成其他未定义的行为。
+在进行应用开发的过程中，开发者可以通过AVPlayer的信息监听回调函数OH_AVPlayerOnInfoCallback和错误监听回调函数OH_AVPlayerOnErrorCallback主动获取播放过程信息。如果应用在视频播放器处于错误状态时执行操作，系统会抛出异常或生成其他未定义的行为。
 
 状态的详细说明请参考[AVPlayerState](../../reference/apis-media-kit/c-apis/capi-avplayer-base-h.md#avplayerstate)。当播放处于prepared/playing/paused/completed状态时，播放引擎处于工作状态，这需要占用系统较多的运行内存。当客户端暂时不使用播放器时，调用reset()或release()回收内存资源，合理利用资源。
 
@@ -101,7 +101,7 @@
    LOG("OH_AVPlayer_SetURLSource ret:%{public}d", ret);
    ```
 
-4. （可选）设置智能追帧：直播场景下调用[OH_AVPlayer_SetPlaybackStrategy()](../../reference/apis-media-kit/arkts-apis/arkts-media-media-avplayer-i.md#setplaybackstrategy)，设置AVPlayer启用智能追帧。
+4. （可选）设置智能追帧：直播场景下调用OH_AVPlayer_SetPlaybackStrategy()，设置AVPlayer启用智能追帧。
 
    <!-- @[OH_AVPlayer_SetPlaybackStrategy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->
    
@@ -118,7 +118,7 @@
    }
    ```
 
-5. （可选）设置音频流类型：调用[OH_AVPlayer_SetAudioRendererInfo()](../../reference/apis-media-kit/arkts-apis/arkts-media-media-avplayer-i.md#audiorendererinfo)，设置AVPlayer音频流类型。
+5. （可选）设置音频流类型：调用OH_AVPlayer_SetAudioRendererInfo()，设置AVPlayer音频流类型。
 
    <!-- @[OH_AVPlayer_SetAudioRendererInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->
    
@@ -130,7 +130,7 @@
    LOG("OH_AVPlayer_SetAudioRendererInfo ret:%{public}d", ret);
    ```
 
-6. （可选）设置音频打断模式：调用[OH_AVPlayer_SetAudioInterruptMode()](../../reference/apis-media-kit/arkts-apis/arkts-media-media-avplayer-i.md#audiointerruptmode)，设置AVPlayer音频流打断模式。
+6. （可选）设置音频打断模式：调用OH_AVPlayer_SetAudioInterruptMode()，设置AVPlayer音频流打断模式。
 
    <!-- @[OH_AVPlayer_SetAudioInterruptMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->
    
@@ -151,7 +151,7 @@
    LOG("OH_AVPlayer_SetVideoSurface ret:%{public}d", ret);
    ```
 
-8. 准备播放：调用[OH_AVPlayer_Prepare()](../../reference/apis-media-kit/arkts-apis/arkts-media-media-avplayer-i.md#prepare)，AVPlayer进入[AVPlayerState](../../reference/apis-media-kit/c-apis/capi-avplayer-base-h.md#avplayerstate).AV_PREPARED（准备）状态，此时可以获取时长，设置音量。
+8. 准备播放：调用OH_AVPlayer_Prepare()，AVPlayer进入[AVPlayerState](../../reference/apis-media-kit/c-apis/capi-avplayer-base-h.md#avplayerstate).AV_PREPARED（准备）状态，此时可以获取时长，设置音量。
 
    <!-- @[OH_AVPlayer_Prepare](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->
    
@@ -163,7 +163,7 @@
    }
    ```
 
-9. （可选）设置音频音效模式：调用[OH_AVPlayer_SetAudioEffectMode()](../../reference/apis-media-kit/arkts-apis/arkts-media-media-avplayer-i.md#audioeffectmode)，设置AVPlayer音频音效模式。
+9. （可选）设置音频音效模式：调用OH_AVPlayer_SetAudioEffectMode()，设置AVPlayer音频音效模式。
 
    <!-- @[OH_AVPlayer_SetAudioEffectMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->
    
@@ -173,7 +173,7 @@
    LOG("OH_AVPlayer_SetAudioEffectMode ret:%{public}d", ret);
    ```
 
-10. 播放控制：包含播放[OH_AVPlayer_Play()](../../reference/apis-media-kit/arkts-apis/arkts-media-media-avplayer-i.md#play)、暂停[OH_AVPlayer_Pause()](../../reference/apis-media-kit/arkts-apis/arkts-media-media-avplayer-i.md#pause)、跳转[OH_AVPlayer_Seek()](../../reference/apis-media-kit/arkts-apis/arkts-media-media-avplayer-i.md#seek)、停止[OH_AVPlayer_Stop()](../../reference/apis-media-kit/arkts-apis/arkts-media-media-avplayer-i.md#stop)等操作。
+10. 播放控制：包含播放OH_AVPlayer_Play()、暂停OH_AVPlayer_Pause()、跳转OH_AVPlayer_Seek()、停止OH_AVPlayer_Stop()等操作。
 
     <!-- @[OH_AVPlayer_Play](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->
     
@@ -271,7 +271,7 @@
     }
     ```
 
-11. （可选）更换资源：调用[OH_AVPlayer_Reset()](../../reference/apis-media-kit/arkts-apis/arkts-media-media-avplayer-i.md#reset)重置资源，AVPlayer重新进入[AVPlayerState](../../reference/apis-media-kit/c-apis/capi-avplayer-base-h.md#avplayerstate).AV_IDLE（空闲）状态，允许更换资源URL。
+11. （可选）更换资源：调用OH_AVPlayer_Reset()重置资源，AVPlayer重新进入[AVPlayerState](../../reference/apis-media-kit/c-apis/capi-avplayer-base-h.md#avplayerstate).AV_IDLE（空闲）状态，允许更换资源URL。
 
     <!-- @[OH_AVPlayer_Reset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->
     
@@ -291,7 +291,7 @@
     }
     ```
 
-12. 退出播放：调用[OH_AVPlayer_Release()](../../reference/apis-media-kit/arkts-apis/arkts-media-media-avplayer-i.md#release)销毁实例，AVPlayer进入[AVPlayerState](../../reference/apis-media-kit/c-apis/capi-avplayer-base-h.md#avplayerstate).AV_RELEASED（释放）状态，退出播放。如果后续再操作AVPlayer实例，则行为未知，可能导致应用进程崩溃，应用异常退出等情况。
+12. 退出播放：调用OH_AVPlayer_Release()销毁实例，AVPlayer进入[AVPlayerState](../../reference/apis-media-kit/c-apis/capi-avplayer-base-h.md#avplayerstate).AV_RELEASED（释放）状态，退出播放。如果后续再操作AVPlayer实例，则行为未知，可能导致应用进程崩溃，应用异常退出等情况。
 
     <!-- @[OH_AVPlayer_Release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->
     

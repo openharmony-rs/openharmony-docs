@@ -13,7 +13,7 @@
 
 **指定密文参数，生成标准ASN.1密文**
 
-1. 构造[SM2CipherTextSpec](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-sm2ciphertextspec-i.md#sm2ciphertextspec)对象，用于指定SM2密文参数。如果开发者使用的不是国密标准的ASN.1格式密文，需自行提取所需要的参数。
+1. 构造SM2CipherTextSpec对象，用于指定SM2密文参数。如果开发者使用的不是国密标准的ASN.1格式密文，需自行提取所需要的参数。
 
 2. 调用[genCipherTextBySpec](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-sm2cryptoutil-c.md#genciphertextbyspec)，将SM2CipherTextSpec对象传入，生成符合国密标准的ASN.1格式的SM2密文。
 

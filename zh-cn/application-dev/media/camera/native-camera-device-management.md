@@ -36,7 +36,7 @@
    )
    ```
 
-3. 通过[OH_Camera_GetCameraManager()](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-getcameramanager-f.md#getcameramanager)方法，获取cameraManager对象。
+3. 通过OH_Camera_GetCameraManager()方法，获取cameraManager对象。
 
    ```c++
    Camera_ErrorCode CreateCameraManager(Camera_Manager** cameraManager)

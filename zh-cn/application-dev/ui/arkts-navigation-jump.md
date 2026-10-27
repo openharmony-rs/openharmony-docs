@@ -101,7 +101,7 @@ export struct PageOne {
 
 Navigation根容器和子页面以及路由表配置完成后，即可通过调用[NavPathStack](../reference/apis-arkui/arkts-apis/arkts-arkui-atomicservice-atomicservicenavigation-atomicservicenavigation-s.md#navpathstack)的API来实现页面之间的跳转。上文提到在一个Navigation容器中，只有一个NavPathStack对象，那么在子页面里执行路由操作就需要获取此NavPathStack对象，有两种方式：
 
- - 方式一：使用[AppStorage](../reference/apis-arkui/arkts-apis/arkts-arkui-appstorage-c.md#appstorage)存储与获取。
+ - 方式一：使用AppStorage存储与获取。
 
     <!-- @[AppStorageSetStack](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/animation/NavigationPage.ets) -->
     
@@ -414,7 +414,7 @@ NavDestination组件中可以通过设置[onResult](../reference/apis-arkui/arkt
 
 ### 路由拦截
 
-NavPathStack提供了[setInterception](../reference/apis-arkui/arkts-components/arkts-arkui-navigation-comp-navpathstack-c.md#setinterception)方法，用于设置Navigation页面跳转拦截回调。该方法需要传入一个[NavigationInterception](../reference/apis-arkui/arkts-components/arkts-arkui-navigation-comp-navigationinterception-i.md#navigationinterception)对象，该对象包含多个回调函数，如willShow、didShow等，不同回调函数的调用时机不同，可根据业务需要选择拦截时机。
+NavPathStack提供了[setInterception](../reference/apis-arkui/arkts-components/arkts-arkui-navigation-comp-navpathstack-c.md#setinterception)方法，用于设置Navigation页面跳转拦截回调。该方法需要传入一个NavigationInterception对象，该对象包含多个回调函数，如willShow、didShow等，不同回调函数的调用时机不同，可根据业务需要选择拦截时机。
 
 > **说明：**
 >

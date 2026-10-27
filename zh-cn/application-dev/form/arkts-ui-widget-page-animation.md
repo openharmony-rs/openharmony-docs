@@ -6,7 +6,7 @@
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
-ArkTS卡片开放了使用动画效果的能力，支持[显式动画](../reference/apis-arkui/errorcode-animation.md)、属性动画、[组件内转场](../reference/apis-arkui/c-apis/capi-arkui-nodeattributetype-scrollable-container-component.md)能力。ArkTS卡片使用动画效果时具有以下限制：
+ArkTS卡片开放了使用动画效果的能力，支持显式动画、属性动画、[组件内转场](../reference/apis-arkui/c-apis/capi-arkui-nodeattributetype-scrollable-container-component.md)能力。ArkTS卡片使用动画效果时具有以下限制：
 
 **表1** 动效参数限制
 

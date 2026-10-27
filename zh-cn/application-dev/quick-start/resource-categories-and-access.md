@@ -65,7 +65,7 @@ resources
 | --------- | ---------------------------------------- | ---------------------------------------- |
 | element | 表示元素资源，以下每一类数据都采用相应的JSON文件来表征（目录下仅支持文件类型）。<br/>-&nbsp;boolean，布尔型。<br/>-&nbsp;color，颜色。<br/>-&nbsp;float，浮点型，范围是`-2^128到2^128`。<br/>-&nbsp;intarray，整型数组。<br/>-&nbsp;integer，整型，范围是`-2^31到2^31-1`。<br/>-&nbsp;plural，复数形式。<br/>-&nbsp;strarray，字符串数组。<br/>-&nbsp;string，字符串，单个字符串最大长度为65535字节，超长字符串建议转换为文本文件存放在rawfile目录下。若想在字符串中添加占位符并对其进行格式化，请参考[getStringSync](../reference/apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-resourcemanager-i.md#getstringsync)接口。<!--Del--><br/>-&nbsp;pattern，样式（仅支持系统应用使用）。<!--DelEnd--><!--Del--><br/>-&nbsp;theme，主题（仅支持系统应用使用）。<!--DelEnd-->| element目录中的文件名称建议与下面的文件名保持一致。每个文件中只能包含同一类型的数据。<br/>-&nbsp;boolean.json<br/>-&nbsp;color.json<br/>-&nbsp;float.json<br/>-&nbsp;intarray.json<br/>-&nbsp;integer.json<br/>-&nbsp;plural.json<br/>-&nbsp;strarray.json<br/>-&nbsp;string.json<!--Del--><br/>-&nbsp;pattern.json<!--DelEnd--><!--Del--><br/>-&nbsp;theme.json<!--DelEnd--> |
 | media   | 表示媒体资源，包括图片、音频、视频等非文本格式的文件（目录下只支持文件类型）。<br/>图片和音视频的类型说明见表3和表4。              | 文件名可自定义，例如：icon.png。                     |
-| profile  | 表示自定义配置文件，其文件内容可通过包管理接口[bundleManager.getProfileByAbility](../reference/apis-ability-kit/arkts-apis/arkts-ability-bundlemanager-getprofilebyability-f.md#getprofilebyability)获取（目录下只支持json文件类型）。       | 文件名可自定义，例如：test_profile.json。           |
+| profile  | 表示自定义配置文件，其文件内容可通过包管理接口bundleManager.getProfileByAbility获取（目录下只支持json文件类型）。       | 文件名可自定义，例如：test_profile.json。           |
 
 **媒体资源类型说明**
 
@@ -427,7 +427,7 @@ string资源配置attr属性示例如下，其中string1字符串被标记为不
 
 **方式二：** 通过createModuleContext访问跨HAP/HSP包资源。根据业务逻辑需要对资源文件数据进行处理，比如图片编解码、字符串拼接处理，适合少量数据的使用。
 
-通过[createModuleContext(context, moduleName)](../reference/apis-ability-kit/arkts-apis/arkts-ability-application-createmodulecontext-f-sys.md#createmodulecontext)接口创建同应用中不同module的上下文，获取resourceManager对象后，调用不同[资源管理](../reference/apis-localization-kit/arkts-apis/arkts-localization-resourcemanager.md)接口，通过资源ID值或资源名称访问各类资源。
+通过createModuleContext(context, moduleName)接口创建同应用中不同module的上下文，获取resourceManager对象后，调用不同[资源管理](../reference/apis-localization-kit/arkts-apis/arkts-localization-resourcemanager.md)接口，通过资源ID值或资源名称访问各类资源。
 
 **方式三：** HSP导出资源给其他模块使用。跨包访问HSP内资源时，推荐实现一个资源管理类，以封装对外导出的资源，其他模块无需感知HSP内部的资源名称。当HSP内部的资源名称发生变化时，其他模块不受影响。
 
@@ -534,9 +534,9 @@ Image($r('sys.media.ohos_app_icon'))
 
 | 接口名                                                       | 描述                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [getOverrideResourceManager](../reference/apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-resourcemanager-i.md#getoverrideresourcemanager)(configuration?: [Configuration](../reference/apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-configuration-c.md#configuration)) : [ResourceManager](../reference/apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-resourcemanager-i.md#resourcemanager) | 获取可以加载指定配置的资源的资源管理对象，使用同步方式返回。 |
-| [getOverrideConfiguration](../reference/apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-resourcemanager-i.md#getoverrideconfiguration)() : [Configuration](../reference/apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-configuration-c.md#configuration) | 获取指定的配置，使用同步方式返回。                             |
-| [updateOverrideConfiguration](../reference/apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-resourcemanager-i.md#updateoverrideconfiguration)(configuration: [Configuration](../reference/apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-configuration-c.md#configuration)) : void | 更新指定的配置。                                               |
+| [getOverrideResourceManager](../reference/apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-resourcemanager-i.md#getoverrideresourcemanager)(configuration?: Configuration) : ResourceManager | 获取可以加载指定配置的资源的资源管理对象，使用同步方式返回。 |
+| [getOverrideConfiguration](../reference/apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-resourcemanager-i.md#getoverrideconfiguration)() : Configuration | 获取指定的配置，使用同步方式返回。                             |
+| [updateOverrideConfiguration](../reference/apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-resourcemanager-i.md#updateoverrideconfiguration)(configuration: Configuration) : void | 更新指定的配置。                                               |
 
 **示例**
 

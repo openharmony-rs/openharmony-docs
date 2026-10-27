@@ -27,7 +27,7 @@ CameraPicker的相机交互界面由系统提供，在用户点击拍摄和确�
    import { fileIo, fileUri } from '@kit.CoreFileKit';
    ```
 
-2. 配置[PickerProfile](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camerapicker-pickerprofile-c.md#pickerprofile)。
+2. 配置PickerProfile。
 
    > **说明：**
    >
@@ -54,7 +54,7 @@ CameraPicker的相机交互界面由系统提供，在用户点击拍摄和确�
    }
    ```
 
-   fileIo接口调用方法请参考：[createRandomAccessFileSync](../../reference/apis-core-file-kit/arkts-apis/arkts-corefile-file-fs-createrandomaccessfilesync-f.md#createrandomaccessfilesync)和[getUriFromPath](../../reference/apis-core-file-kit/arkts-apis/arkts-corefile-fileuri-geturifrompath-f.md#geturifrompath)。
+   fileIo接口调用方法请参考：createRandomAccessFileSync和getUriFromPath。
 
 3. 调用picker拍摄接口获取拍摄的结果。
 

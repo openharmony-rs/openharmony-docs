@@ -28,7 +28,7 @@
 
 1. 定义并发函数，实现业务逻辑。
 
-2. 创建任务[Task](../reference/apis-arkts/arkts-apis/arkts-arkts-taskpool-task-c.md#task)，通过[execute()](../reference/apis-arkts/arkts-apis/arkts-arkts-taskpool-asyncrunner-c.md#execute)接口执行该任务。
+2. 创建任务Task，通过[execute()](../reference/apis-arkts/arkts-apis/arkts-arkts-taskpool-asyncrunner-c.md#execute)接口执行该任务。
 
 3. 对任务返回的结果进行操作。
 

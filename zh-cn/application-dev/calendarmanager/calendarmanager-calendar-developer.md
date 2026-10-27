@@ -9,9 +9,9 @@
 
 日历账户‌用于存储和管理个人或团队的日程，通过日历账户，用户可以方便地查看、编辑和共享日程信息。
 
-日历管理器[CalendarManager](../reference/apis-calendar-kit/arkts-apis/arkts-calendar-calendarmanager-calendarmanager-i.md#calendarmanager)用于管理日历账户[Calendar](../reference/apis-calendar-kit/arkts-apis/arkts-calendar-calendarmanager-calendar-i.md#calendar)。日历账户主要包含账户信息[CalendarAccount](../reference/apis-calendar-kit/arkts-apis/arkts-calendar-calendarmanager-calendaraccount-i.md#calendaraccount)和配置信息[CalendarConfig](../reference/apis-calendar-kit/arkts-apis/arkts-calendar-calendarmanager-calendarconfig-i.md#calendarconfig)。
+日历管理器CalendarManager用于管理日历账户Calendar。日历账户主要包含账户信息CalendarAccount和配置信息CalendarConfig。
 
-开发者可以创建属于应用特有的日历账户，还可以对日历账户进行新增、删除、更新和查询。此外，每个日程[Event](../reference/apis-calendar-kit/arkts-apis/arkts-calendar-calendarmanager-event-i.md#event)归属于某一个特定的日历账户，可以通过日历账户对该账户下面的日程进行管理，具体相关指导可见[日程管理](calendarmanager-event-developer.md)。
+开发者可以创建属于应用特有的日历账户，还可以对日历账户进行新增、删除、更新和查询。此外，每个日程Event归属于某一个特定的日历账户，可以通过日历账户对该账户下面的日程进行管理，具体相关指导可见[日程管理](calendarmanager-event-developer.md)。
 
 ## 接口说明
 

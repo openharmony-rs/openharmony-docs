@@ -52,7 +52,7 @@ struct AnimatablePropertyExample {
 
 ## 使用自定义数据类型改变图形形状
 
-该示例中通过[@AnimatableExtend装饰器](../ui/state-management/arkts-animatable-extend.md)定义了可动画属性接口animatablePoints，通过传入自定义的数据类型修改不可动画属性[points](../reference/apis-arkui/arkts-components/arkts-arkui-polyline-comp-attribute.md#points)的值，实现了改变[Polyline](../reference/apis-arkui/arkui-js/js-components-svg-polyline.md)组件形状的动画。由于系统不支持Polyline组件points属性的动画，因此需要通过实现[AnimatableArithmetic\<T>接口](../ui/state-management/arkts-animatable-extend.md#animatablearithmetict接口说明)中加法、减法、乘法和判断相等函数，为该属性的参数定义做动画插值的方法。在动画过程中，系统侧根据定义的数据插值方法计算每帧的数据值，回调到[@AnimatableExtend装饰器](../ui/state-management/arkts-animatable-extend.md)修饰的自定义可动画属性接口，进而设置points属性，为points属性产生动画。
+该示例中通过[@AnimatableExtend装饰器](../ui/state-management/arkts-animatable-extend.md)定义了可动画属性接口animatablePoints，通过传入自定义的数据类型修改不可动画属性[points](../reference/apis-arkui/arkts-components/arkts-arkui-polyline-comp-attribute.md#points)的值，实现了改变Polyline组件形状的动画。由于系统不支持Polyline组件points属性的动画，因此需要通过实现[AnimatableArithmetic\<T>接口](../ui/state-management/arkts-animatable-extend.md#animatablearithmetict接口说明)中加法、减法、乘法和判断相等函数，为该属性的参数定义做动画插值的方法。在动画过程中，系统侧根据定义的数据插值方法计算每帧的数据值，回调到[@AnimatableExtend装饰器](../ui/state-management/arkts-animatable-extend.md)修饰的自定义可动画属性接口，进而设置points属性，为points属性产生动画。
 
 <!-- @[Animation_AnimatableProperty](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animatableProperty/template2/Index.ets) -->
 

@@ -497,7 +497,7 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 允许应用固化对端蓝牙设备MAC对应的虚拟地址。
 
-通过BLE扫描、BR扫描或连接监听获取到对端蓝牙设备MAC对应的虚拟地址，申请该权限且调用[access.addPersistentDeviceId](../../reference/apis-connectivity-kit/arkts-apis/arkts-connectivity-access-addpersistentdeviceid-f.md#addpersistentdeviceid)方法后，可保持该虚拟地址长时间存储，即使是开/关/重启蓝牙也不发生变化。
+通过BLE扫描、BR扫描或连接监听获取到对端蓝牙设备MAC对应的虚拟地址，申请该权限且调用access.addPersistentDeviceId方法后，可保持该虚拟地址长时间存储，即使是开/关/重启蓝牙也不发生变化。
 
 <!--RP36--><!--RP36End-->
 

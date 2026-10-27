@@ -72,7 +72,7 @@
 
 3. 获取SurfaceId。
 
-   系统提供的OH_AVRecorder_Create()接口可以创建一个录像AVRecorder实例，通过该实例的[OH_AVRecorder_GetInputSurface()](../../reference/apis-media-kit/arkts-apis/arkts-media-media-avrecorder-i.md#getinputsurface)方法获取SurfaceId。
+   系统提供的OH_AVRecorder_Create()接口可以创建一个录像AVRecorder实例，通过该实例的OH_AVRecorder_GetInputSurface()方法获取SurfaceId。
 
 4. 创建录像输出流。
 

@@ -68,7 +68,7 @@
 
 ### 监听应用的启动和退出
     
-应用需要先申请[ohos.permission.RUNNING_STATE_OBSERVER](../security/AccessToken/permissions-for-enterprise-apps.md#ohospermissionrunning_state_observer)权限，然后使用[on('applicationState')](../reference/apis-ability-kit/arkts-apis/arkts-ability-appmanager-on-f-sys.md#onapplicationstate)方法可以监听全部应用的状态；使用[on('applicationState')](../reference/apis-ability-kit/arkts-apis/arkts-ability-appmanager-on-f-sys.md#onapplicationstate)方法可以监听指定应用的状态。通过实现`ApplicationStateObserver`接口中的[onAppStarted()](../reference/apis-ability-kit/arkts-apis/arkts-ability-applicationstateobserver-c.md#onappstarted)方法，可以监听应用的启动。通过实现`ApplicationStateObserver`接口中的[onAppStopped()](../reference/apis-ability-kit/arkts-apis/arkts-ability-applicationstateobserver-c.md#onappstopped)方法，可以监听应用的退出。
+应用需要先申请[ohos.permission.RUNNING_STATE_OBSERVER](../security/AccessToken/permissions-for-enterprise-apps.md#ohospermissionrunning_state_observer)权限，然后使用on('applicationState')方法可以监听全部应用的状态；使用on('applicationState')方法可以监听指定应用的状态。通过实现`ApplicationStateObserver`接口中的[onAppStarted()](../reference/apis-ability-kit/arkts-apis/arkts-ability-applicationstateobserver-c.md#onappstarted)方法，可以监听应用的启动。通过实现`ApplicationStateObserver`接口中的[onAppStopped()](../reference/apis-ability-kit/arkts-apis/arkts-ability-applicationstateobserver-c.md#onappstopped)方法，可以监听应用的退出。
 
 ### 监听应用前后台变化
     

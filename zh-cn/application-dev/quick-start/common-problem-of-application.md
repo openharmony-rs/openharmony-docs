@@ -10,7 +10,7 @@
 
 * 通过调用接口获取。
 
-可以调用[bundleManager.getBundleInfoForSelf](../reference/apis-ability-kit/arkts-apis/arkts-ability-bundlemanager-getbundleinfoforself-f.md#getbundleinfoforself)获取自身的BundleInfo应用包信息，应用包信息中包含signatureInfo签名信息，签名信息中包含指纹信息，使用哈希算法SHA-256生成。
+可以调用bundleManager.getBundleInfoForSelf获取自身的BundleInfo应用包信息，应用包信息中包含signatureInfo签名信息，签名信息中包含指纹信息，使用哈希算法SHA-256生成。
 
 <!-- @[get_fingerprint](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/CommonProblemOfApplication/entry/src/main/ets/pages/GetFingerprint.ets) -->
 
@@ -58,7 +58,7 @@ appIdentifier是<!--RP1-->[Profile签名文件](../security/app-provision-struct
 
 ## 如何获取应用信息中的appIdentifier
 
-* 可以调用[bundleManager.getBundleInfoForSelf](../reference/apis-ability-kit/arkts-apis/arkts-ability-bundlemanager-getbundleinfoforself-f.md#getbundleinfoforself)获取自身的BundleInfo应用包信息，应用包信息中包含signatureInfo签名信息，签名信息中包含appIdentifier信息。
+* 可以调用bundleManager.getBundleInfoForSelf获取自身的BundleInfo应用包信息，应用包信息中包含signatureInfo签名信息，签名信息中包含appIdentifier信息。
 
 <!-- @[get_app_identifier](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/CommonProblemOfApplication/entry/src/main/ets/pages/GetAppIdentifier.ets) -->
 
@@ -98,7 +98,7 @@ appId是应用的唯一标识，由包名、下划线和证书公钥的Base64编
 
 ## 如何获取应用信息中的appId
 
-* 可以调用[bundleManager.getBundleInfoForSelf](../reference/apis-ability-kit/arkts-apis/arkts-ability-bundlemanager-getbundleinfoforself-f.md#getbundleinfoforself)获取自身的BundleInfo应用包信息，应用包信息中包含signatureInfo签名信息，签名信息中包含appId信息。
+* 可以调用bundleManager.getBundleInfoForSelf获取自身的BundleInfo应用包信息，应用包信息中包含signatureInfo签名信息，签名信息中包含appId信息。
 
 <!-- @[get_app_id](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/CommonProblemOfApplication/entry/src/main/ets/pages/GetAppId.ets) -->
 
@@ -147,4 +147,4 @@ bm dump -n ohos.app.hap.myapplication |grep uid
 ```
 ![alt text](figures/get_uid.png)
 
-* 可以调用[bundleManager.getBundleInfoForSelf](../reference/apis-ability-kit/arkts-apis/arkts-ability-bundlemanager-getbundleinfoforself-f.md#getbundleinfoforself)获取自身的BundleInfo应用包信息，示例代码可以参考[如何获取应用信息中的appId](#如何获取应用信息中的appid)，取值方式为bundleInfo.appInfo.uid。<!--RP3--><!--RP3End-->
+* 可以调用bundleManager.getBundleInfoForSelf获取自身的BundleInfo应用包信息，示例代码可以参考[如何获取应用信息中的appId](#如何获取应用信息中的appid)，取值方式为bundleInfo.appInfo.uid。<!--RP3--><!--RP3End-->

@@ -17,14 +17,14 @@
 <br>
 > **说明：**
 >
-> - 为了保证应用的运行效率，大部分API调用都是异步的，对于异步调用的API均提供了callback和Promise两种方式，以下示例均采用Promise函数，更多方式可以查阅[@ohos.net.statistics (流量管理)](../reference/apis-network-kit/arkts-apis/arkts-network-net-statistics.md)。
+> - 为了保证应用的运行效率，大部分API调用都是异步的，对于异步调用的API均提供了callback和Promise两种方式，以下示例均采用Promise函数，更多方式可以查阅@ohos.net.statistics (流量管理)。
 > - 上行流量是指由终端设备向网络侧发送的数据量，下行流量是指由网络侧向终端设备发起传输的数据量。
 
 以下分别介绍具体开发方式。
 
 ## 开发步骤
 
-1. 导入[statistics](../reference/apis-network-kit/arkts-apis/arkts-network-net-statistics.md)、[socket](../reference/apis-network-kit/arkts-apis/arkts-network-net-socket.md)以及错误码模块。
+1. 导入statistics、socket以及错误码模块。
 
    <!-- @[flow_management_case_module_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/FlowManagement_case/entry/src/main/ets/pages/Index.ets) -->
    
@@ -35,7 +35,7 @@
    ```
 2. 获取指定网卡流量数据。
 
-   分别调用[getIfaceRxBytes](../reference/apis-network-kit/arkts-apis/arkts-network-statistics-getifacerxbytes-f.md#getifacerxbytes)和[getIfaceTxBytes](../reference/apis-network-kit/arkts-apis/arkts-network-statistics-getifacetxbytes-f.md#getifacetxbytes)接口传入网卡名获取指定网卡从最近一次开机至今的下行和上行流量数据。
+   分别调用getIfaceRxBytes和getIfaceTxBytes接口传入网卡名获取指定网卡从最近一次开机至今的下行和上行流量数据。
 
    <!-- @[flow_management_getIfaceRxBytes_and_getIfaceTxBytes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/FlowManagement_case/entry/src/main/ets/pages/Index.ets) -->
    
@@ -63,7 +63,7 @@
    ```
 3. 获取蜂窝流量数据。
 
-    分别调用[getCellularRxBytes](../reference/apis-network-kit/arkts-apis/arkts-network-statistics-getcellularrxbytes-f.md#getcellularrxbytes)和[getCellularTxBytes](../reference/apis-network-kit/arkts-apis/arkts-network-statistics-getcellulartxbytes-f.md#getcellulartxbytes)接口获取从最近一次开机至今的蜂窝下行和上行流量数据。
+    分别调用getCellularRxBytes和getCellularTxBytes接口获取从最近一次开机至今的蜂窝下行和上行流量数据。
 
    <!-- @[flow_management_getCellularRxBytes_and_getCellularTxBytes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/FlowManagement_case/entry/src/main/ets/pages/Index.ets) -->
    
@@ -83,7 +83,7 @@
    ```
 4. 获取所有网卡流量数据。
 
-    分别调用[getAllRxBytes](../reference/apis-network-kit/arkts-apis/arkts-network-statistics-getallrxbytes-f.md#getallrxbytes)和[getAllTxBytes](../reference/apis-network-kit/arkts-apis/arkts-network-statistics-getalltxbytes-f.md#getalltxbytes)接口获取所有网卡从最近一次开机到现在的下行和上行流量数据。
+    分别调用getAllRxBytes和getAllTxBytes接口获取所有网卡从最近一次开机到现在的下行和上行流量数据。
 
    <!-- @[flow_management_getAllRxBytes_and_getAllTxBytes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/FlowManagement_case/entry/src/main/ets/pages/Index.ets) -->
    
@@ -103,7 +103,7 @@
    ```
 5. 获取指定应用流量数据。
 
-    分别调用[getUidRxBytes](../reference/apis-network-kit/arkts-apis/arkts-network-statistics-getuidrxbytes-f.md#getuidrxbytes)和[getUidTxBytes](../reference/apis-network-kit/arkts-apis/arkts-network-statistics-getuidtxbytes-f.md#getuidtxbytes)接口，传入UID获取指定应用从最近一次开机至今的下行和上行流量数据。<br>
+    分别调用getUidRxBytes和getUidTxBytes接口，传入UID获取指定应用从最近一次开机至今的下行和上行流量数据。<br>
     此处仅以应用UID为20010038为例，实际调用时需修改为真实UID。
    ```ts
     let UID = 20010038;
@@ -128,7 +128,7 @@
    ```
 6. 获取指定Socket流量数据。
 
-    分别调用[getSockfdRxBytes](../reference/apis-network-kit/arkts-apis/arkts-network-statistics-getsockfdrxbytes-f.md#getsockfdrxbytes)和[getSockfdTxBytes](../reference/apis-network-kit/arkts-apis/arkts-network-statistics-getsockfdtxbytes-f.md#getsockfdtxbytes)接口，传入Socket FD获取指定Socket的下行和上行流量数据。
+    分别调用getSockfdRxBytes和getSockfdTxBytes接口，传入Socket FD获取指定Socket的下行和上行流量数据。
 
    <!-- @[flow_management_getSockfdRxBytes_and_getSockfdTxBytes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/FlowManagement_case/entry/src/main/ets/pages/Index.ets) -->
    

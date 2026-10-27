@@ -32,7 +32,7 @@
 
 ### 示例1（BuilderNode中鼠标事件）
 
-该示例演示了在自定义组件中截获鼠标事件并进行坐标转换的完整流程。组件通过[onMouse](../arkui-ts/ts-universal-mouse-key.md#onmouse)回调读取本地x/y，再结合FrameNode.getPositionToParent()得到的偏移量，调用vp2px将相对坐标转换为像素坐标，更新[MouseEvent](../arkui-ts/ts-universal-mouse-key.md#mouseevent对象说明)的windowX/windowY、displayX/displayY。最后通过rootNode.postInputEvent(event)将转换后的鼠标事件分发给子节点进行处理。
+该示例演示了在自定义组件中截获鼠标事件并进行坐标转换的完整流程。组件通过onMouse回调读取本地x/y，再结合FrameNode.getPositionToParent()得到的偏移量，调用vp2px将相对坐标转换为像素坐标，更新MouseEvent的windowX/windowY、displayX/displayY。最后通过rootNode.postInputEvent(event)将转换后的鼠标事件分发给子节点进行处理。
 
 
 
@@ -174,7 +174,7 @@ struct MyComponent {
 
 ### 示例2（BuilderNode中触摸事件）
 
-该示例演示了在自定义组件中截获触摸事件并对触点坐标进行转换的完整流程。在[onTouch](../arkui-ts/ts-universal-events-touch.md#ontouch)回调中，遍历[TouchEvent](../arkui-ts/ts-universal-events-touch.md#touchevent对象说明)的changedTouches和touches数组，对每个触点的x/y加上组件偏移量并调用vp2px转换为像素，更新各自的windowX/windowY、displayX/displayY。最后同样通过rootNode.postInputEvent(event)将转换后的触摸事件分发给子节点处理。
+该示例演示了在自定义组件中截获触摸事件并对触点坐标进行转换的完整流程。在onTouch回调中，遍历TouchEvent的changedTouches和touches数组，对每个触点的x/y加上组件偏移量并调用vp2px转换为像素，更新各自的windowX/windowY、displayX/displayY。最后同样通过rootNode.postInputEvent(event)将转换后的触摸事件分发给子节点处理。
 
 
 
@@ -288,7 +288,7 @@ struct MyComponent {
 
 ### 示例3（BuilderNode中轴事件）
 
-该示例演示了在自定义组件中截获滚轮或触控板轴事件并进行坐标转换的完整流程。在[onAxisEvent](../arkui-ts/ts-universal-events-axis.md#onaxisevent)回调中，先获取事件的相对x/y，再加上组件偏移量后调用vp2px转换为像素，更新AxisEvent的windowX/windowY、displayX/displayY，最后通过rootNode.postInputEvent(event)将转换后的轴事件分发给子节点进行处理。
+该示例演示了在自定义组件中截获滚轮或触控板轴事件并进行坐标转换的完整流程。在onAxisEvent回调中，先获取事件的相对x/y，再加上组件偏移量后调用vp2px转换为像素，更新AxisEvent的windowX/windowY、displayX/displayY，最后通过rootNode.postInputEvent(event)将转换后的轴事件分发给子节点进行处理。
 
 
 
@@ -388,7 +388,7 @@ struct MyComponent {
 
 ### 示例4（BuilderNode共享localStorage）
 
-该示例演示了如何通过BuilderNode的build方法传入外部[localStorage](../arkui-ts/ts-state-management.md#localstorage9)，此时挂载在BuilderNode的所有自定义组件共享该localStorage。
+该示例演示了如何通过BuilderNode的build方法传入外部localStorage，此时挂载在BuilderNode的所有自定义组件共享该localStorage。
 
 ```TypeScript
 import { NodeController, BuilderNode, FrameNode, UIContext } from '@kit.ArkUI';
@@ -1514,7 +1514,7 @@ struct DefaultConsumer {
 
 从API version 22版本开始支持。
 
-该示例演示了在自定义组件中截获鼠标事件并进行坐标转换的完整流程。组件通过[onMouse](../arkui-ts/ts-universal-mouse-key.md#onmouse)回调读取本地x/y坐标，再结合FrameNode.getPositionToParent()得到的偏移量，调用[vp2px](./arkts-apis-uicontext-uicontext.md#vp2px12)将相对坐标转换为像素坐标，更新[MouseEvent](../arkui-ts/ts-universal-mouse-key.md#mouseevent对象说明)的windowX/windowY、displayX/displayY。最后通过rootNode.postInputEvent将转换后的鼠标事件分发给子节点进行处理。
+该示例演示了在自定义组件中截获鼠标事件并进行坐标转换的完整流程。组件通过onMouse回调读取本地x/y坐标，再结合FrameNode.getPositionToParent()得到的偏移量，调用vp2px将相对坐标转换为像素坐标，更新MouseEvent的windowX/windowY、displayX/displayY。最后通过rootNode.postInputEvent将转换后的鼠标事件分发给子节点进行处理。
 
 
 
@@ -1660,7 +1660,7 @@ struct MyComponent {
 
 从API version 22版本开始支持。
 
-该示例演示了在自定义组件中截获触摸事件并对触点坐标进行转换的完整流程。在[onTouch](../arkui-ts/ts-universal-events-touch.md#ontouch)回调中，遍历[TouchEvent](../arkui-ts/ts-universal-events-touch.md#touchevent对象说明)的changedTouches和touches数组，对每个触点的x/y坐标加上组件偏移量并调用[vp2px](./arkts-apis-uicontext-uicontext.md#vp2px12)转换为像素，更新各自的windowX/windowY、displayX/displayY。最后同样通过rootNode.postInputEvent将转换后的触摸事件分发给子节点处理。
+该示例演示了在自定义组件中截获触摸事件并对触点坐标进行转换的完整流程。在onTouch回调中，遍历TouchEvent的changedTouches和touches数组，对每个触点的x/y坐标加上组件偏移量并调用vp2px转换为像素，更新各自的windowX/windowY、displayX/displayY。最后同样通过rootNode.postInputEvent将转换后的触摸事件分发给子节点处理。
 
 
 
@@ -1774,7 +1774,7 @@ struct MyComponent {
 
 从API version 22版本开始支持。
 
-该示例演示了在自定义组件中截获滚轮或触控板轴事件并进行坐标转换的完整流程。在[onAxisEvent](../arkui-ts/ts-universal-events-axis.md#onaxisevent)回调中，先获取事件的相对x/y坐标，再加上组件偏移量后调用[vp2px](./arkts-apis-uicontext-uicontext.md#vp2px12)转换为像素，更新AxisEvent的windowX/windowY、displayX/displayY，最后通过rootNode.postInputEvent将转换后的轴事件分发给子节点进行处理。
+该示例演示了在自定义组件中截获滚轮或触控板轴事件并进行坐标转换的完整流程。在onAxisEvent回调中，先获取事件的相对x/y坐标，再加上组件偏移量后调用vp2px转换为像素，更新AxisEvent的windowX/windowY、displayX/displayY，最后通过rootNode.postInputEvent将转换后的轴事件分发给子节点进行处理。
 
 
 
@@ -1875,7 +1875,7 @@ struct MyComponent {
 
 从API version 24开始，新增postInputEventWithStrategy接口。
 
-该示例演示了在自定义组件中截获鼠标事件并进行坐标转换的完整流程。组件通过[onMouse](../arkui-ts/ts-universal-mouse-key.md#onmouse)回调读取当前触点坐标x/y，再结合FrameNode.getPositionToParent得到的偏移量，调用[vp2px](./arkts-apis-uicontext-uicontext.md#vp2px12)将相对坐标转换为像素坐标，更新[MouseEvent](../arkui-ts/ts-universal-mouse-key.md#mouseevent对象说明)的windowX/windowY、displayX/displayY。选择不同的手势竞争策略[CompetitionStrategy](../arkui-ts/ts-appendix-enums.md#competitionstrategy24)，最后通过rootNode.postInputEventWithStrategy将转换后的鼠标事件分发给子节点进行处理。
+该示例演示了在自定义组件中截获鼠标事件并进行坐标转换的完整流程。组件通过onMouse回调读取当前触点坐标x/y，再结合FrameNode.getPositionToParent得到的偏移量，调用vp2px将相对坐标转换为像素坐标，更新MouseEvent的windowX/windowY、displayX/displayY。选择不同的手势竞争策略CompetitionStrategy，最后通过rootNode.postInputEventWithStrategy将转换后的鼠标事件分发给子节点进行处理。
 
 ```TypeScript
 import { NodeController, BuilderNode, FrameNode, PromptAction, UIContext, InputEventType } from '@kit.ArkUI';
@@ -2131,7 +2131,7 @@ struct MyComponent {
 
 从API version 24开始，新增postInputEventWithStrategy接口。
 
-该示例演示了在自定义组件中截获触摸事件并对触点坐标进行转换的完整流程。在[onTouch](../arkui-ts/ts-universal-events-touch.md#ontouch)回调中，遍历[TouchEvent](../arkui-ts/ts-universal-events-touch.md#touchevent对象说明)的changedTouches和touches数组，对每个触点的x/y加上组件偏移量并调用[vp2px](./arkts-apis-uicontext-uicontext.md#vp2px12)转换为像素，更新每个触点的windowX/windowY、displayX/displayY。选择不同的手势竞争策略[CompetitionStrategy](../arkui-ts/ts-appendix-enums.md#competitionstrategy24)，最后同样通过rootNode.postInputEventWithStrategy将转换后的触摸事件分发给子节点处理。
+该示例演示了在自定义组件中截获触摸事件并对触点坐标进行转换的完整流程。在onTouch回调中，遍历TouchEvent的changedTouches和touches数组，对每个触点的x/y加上组件偏移量并调用vp2px转换为像素，更新每个触点的windowX/windowY、displayX/displayY。选择不同的手势竞争策略CompetitionStrategy，最后同样通过rootNode.postInputEventWithStrategy将转换后的触摸事件分发给子节点处理。
 
 ```TypeScript
 import { NodeController, BuilderNode, FrameNode, PromptAction, UIContext, InputEventType } from '@kit.ArkUI';
@@ -2418,7 +2418,7 @@ struct MyComponent {
 
 从API version 24开始，新增postInputEventWithStrategy接口。
 
-该示例演示了在自定义组件中截获滚轮或触控板轴事件并进行坐标转换的完整流程。在[onAxisEvent](../arkui-ts/ts-universal-events-axis.md#onaxisevent)回调中，先获取事件的相对x/y，再加上组件偏移量后调用[vp2px](./arkts-apis-uicontext-uicontext.md#vp2px12)转换为像素，更新AxisEvent的windowX/windowY、displayX/displayY，选择不同的手势竞争策略[CompetitionStrategy](../arkui-ts/ts-appendix-enums.md#competitionstrategy24)，最后通过rootNode.postInputEventWithStrategy将转换后的轴事件分发给子节点进行处理。
+该示例演示了在自定义组件中截获滚轮或触控板轴事件并进行坐标转换的完整流程。在onAxisEvent回调中，先获取事件的相对x/y，再加上组件偏移量后调用vp2px转换为像素，更新AxisEvent的windowX/windowY、displayX/displayY，选择不同的手势竞争策略CompetitionStrategy，最后通过rootNode.postInputEventWithStrategy将转换后的轴事件分发给子节点进行处理。
 
 ```TypeScript
 import { NodeController, BuilderNode, FrameNode, UIContext, PromptAction, InputEventType } from '@kit.ArkUI';

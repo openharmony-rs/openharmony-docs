@@ -9,7 +9,7 @@
 当用户需要分享图片、视频等文件时，开发者可以通过特定接口拉起系统图库，让用户自行选择待分享的资源，完成分享。此接口本身无需申请权限，目前适用于界面UIAbility，使用窗口组件触发。具体使用方式如下：
 
 > **注意：**
-> Media Library Kit提供图片和视频的管理能力，当需要读取和保存音频文件时，请使用[AudioViewPicker（音频选择器对象）](../../reference/apis-core-file-kit/arkts-apis/arkts-corefile-picker-audioviewpicker-c.md#audioviewpicker)。
+> Media Library Kit提供图片和视频的管理能力，当需要读取和保存音频文件时，请使用AudioViewPicker（音频选择器对象）。
 
 1. 导入选择器模块和文件管理模块。
    <!-- @[PickerMediaLibrary_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Picker/PickerMediaLibrarySample/entry/src/main/ets/common/utils/MediaLibraryPickerUtils.ets) -->  
@@ -29,7 +29,7 @@
 
 3. 配置可选的媒体文件类型和媒体文件的最大数目。
 
-   以下示例以图片选择为例，媒体文件类型请参见[PhotoViewMIMETypes](../../reference/apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoviewmimetypes-e.md#photoviewmimetypes)。
+   以下示例以图片选择为例，媒体文件类型请参见PhotoViewMIMETypes。
 
    <!-- @[PickerMediaLibrary_configOptions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Picker/PickerMediaLibrarySample/entry/src/main/ets/pages/Index.ets) -->
    
@@ -39,7 +39,7 @@
    photoSelectOptions.isPhotoTakingSupported = true;
    ```
 
-4. 创建图库选择器实例，调用[PhotoViewPicker.select](../../reference/apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoviewpicker-c.md#select)接口拉起图库界面进行文件选择。文件选择成功后，返回[PhotoSelectResult](../../reference/apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoselectresult-c.md#photoselectresult)结果集。
+4. 创建图库选择器实例，调用[PhotoViewPicker.select](../../reference/apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoviewpicker-c.md#select)接口拉起图库界面进行文件选择。文件选择成功后，返回PhotoSelectResult结果集。
 
    <!-- @[PickerMediaLibrary_select](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Picker/PickerMediaLibrarySample/entry/src/main/ets/pages/Index.ets) -->  
    

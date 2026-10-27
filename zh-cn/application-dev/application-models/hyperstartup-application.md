@@ -218,7 +218,7 @@ export class AppAbilityStage extends AbilityStage {
 
 云推开关是一种通过云端在线配置、动态开启或关闭应用特定功能的机制。
 
-借助[setHyperSnapEnabled()](../reference/apis-ability-kit/arkts-apis/arkts-ability-hypersnapmanager-sethypersnapenabled-f.md#sethypersnapenabled)，应用可以根据需要关闭快启功能，直至云推开关重新开启。
+借助setHyperSnapEnabled()，应用可以根据需要关闭快启功能，直至云推开关重新开启。
 
 云推开关的基本规格：
 
@@ -270,7 +270,7 @@ export class AppAbilityStage extends AbilityStage {
 
 ## 通过应用主动重置快启初始化结果
 
-系统对外提供了[requestRebuildHyperSnap()](../reference/apis-ability-kit/arkts-apis/arkts-ability-hypersnapmanager-requestrebuildhypersnap-f.md#requestrebuildhypersnap)接口，该接口支持应用在自己的业务逻辑中主动调用，清理当前快启初始化结果，在满足条件时重新进行快启初始化。
+系统对外提供了requestRebuildHyperSnap()接口，该接口支持应用在自己的业务逻辑中主动调用，清理当前快启初始化结果，在满足条件时重新进行快启初始化。
 
 ```TypeScript
 export class LauncherAbility extends UIAbility {

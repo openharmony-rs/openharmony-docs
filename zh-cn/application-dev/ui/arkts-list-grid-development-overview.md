@@ -52,7 +52,7 @@ List适合单列和多列宽度相同的场景，如通讯录、音乐列表、�
 |业务场景| List | Grid | WaterFlow | ArcList |
 |---------|---------|---------|---------|---------|
 |滚动通用能力|支持|支持|支持|支持|
-|项目分组|[ListItemGroup](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-listitemgroup-t.md)|GridLayoutOptions|[WaterFlowSections](../reference/apis-arkui/arkts-components/arkts-arkui-waterflow-comp-waterflowsections-c.md#waterflowsections)|不支持|
+|项目分组|[ListItemGroup](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-listitemgroup-t.md)|GridLayoutOptions|WaterFlowSections|不支持|
 |指定项目吸顶|支持通过[sticky](../reference/apis-arkui/arkts-components/arkts-arkui-list-comp-attribute.md#sticky)属性实现吸顶|不支持|不支持|不支持|
 |项目拖拽排序|支持拖拽排序，包括内置动画和拖动到边缘自动滚动|仅所有项目都占1行1列时支持内置动画[supportAnimation](../reference/apis-arkui/arkts-components/arkts-arkui-grid-comp-attribute.md#supportanimation)，且不支持拖动到边缘自动滚动|不支持|不支持|
 |项目横滑|支持通过[swipeAction](../reference/apis-arkui/arkts-components/arkts-arkui-arclist-comp-arclistitemattribute-c.md#swipeaction)属性实现横滑|不支持|不支持|不支持|

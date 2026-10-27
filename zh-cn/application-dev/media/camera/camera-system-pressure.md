@@ -16,7 +16,7 @@
 
 当系统压力发生变化时，callback返回SystemPressureLevel参数。
 
-参数的具体内容可参考相机管理器回调接口实例[SystemPressureLevel](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-systempressurelevel-e.md#systempressurelevel)。
+参数的具体内容可参考相机管理器回调接口实例SystemPressureLevel。
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';

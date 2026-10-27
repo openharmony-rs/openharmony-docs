@@ -23,7 +23,7 @@
 
 1. [申请权限](prerequisites.md#申请权限)：ohos.permission.ACCESS_BIOMETRIC。
 
-2. 指定用户认证相关参数[AuthParam](../../reference/apis-user-authentication-kit/arkts-apis/arkts-userauthentication-userauth-authparam-i-sys.md#authparam)（包括挑战值、认证类型[UserAuthType](../../reference/apis-user-authentication-kit/arkts-apis/arkts-userauthentication-userauth-userauthtype-e-sys.md#userauthtype)列表和认证等级[AuthTrustLevel](../../reference/apis-user-authentication-kit/arkts-apis/arkts-userauthentication-useraccessctrl-authtoken-i-sys.md#authtrustlevel)），获取认证对象[UserAuthInstance](../../reference/apis-user-authentication-kit/arkts-apis/arkts-userauthentication-userauth-userauthinstance-i.md#userauthinstance)，并调用[UserAuthInstance.start](../../reference/apis-user-authentication-kit/arkts-apis/arkts-userauthentication-userauth-authinstance-i.md#start)发起认证。此步骤详细说明可参考[发起认证](start-authentication.md)。
+2. 指定用户认证相关参数AuthParam（包括挑战值、认证类型UserAuthType列表和认证等级AuthTrustLevel），获取认证对象UserAuthInstance，并调用[UserAuthInstance.start](../../reference/apis-user-authentication-kit/arkts-apis/arkts-userauthentication-userauth-authinstance-i.md#start)发起认证。此步骤详细说明可参考[发起认证](start-authentication.md)。
 
 3. 使用已经成功发起认证的UserAuthInstance对象调用[UserAuthInstance.cancel](../../reference/apis-user-authentication-kit/arkts-apis/arkts-userauthentication-userauth-authinstance-i.md#cancel)接口取消本次认证。
 

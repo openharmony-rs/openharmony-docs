@@ -263,7 +263,7 @@ uinput -M -c 0 -i 500 -c 0
 ### 查询鼠标光标信息
 查询当前鼠标光标信息。
 
-如果鼠标光标处于显示状态，将输出鼠标光标显示状态及[PointerStyle](../reference/apis-input-kit/arkts-apis/arkts-input-pointer-pointerstyle-e.md#pointerstyle)。若传入`filePath`参数且鼠标光标为应用自定义光标（样式枚举值为-100），会将鼠标光标样式图以二进制形式保存到指定文件中。需要自行创建`filePath`文件。若未传入`filePath`参数，将不会保存样式图。当鼠标光标处于隐藏状态时，不会输出样式信息，也不会保存样式图。
+如果鼠标光标处于显示状态，将输出鼠标光标显示状态及PointerStyle。若传入`filePath`参数且鼠标光标为应用自定义光标（样式枚举值为-100），会将鼠标光标样式图以二进制形式保存到指定文件中。需要自行创建`filePath`文件。若未传入`filePath`参数，将不会保存样式图。当鼠标光标处于隐藏状态时，不会输出样式信息，也不会保存样式图。
 
 **命令**
 ```bash

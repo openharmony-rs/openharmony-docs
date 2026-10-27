@@ -31,7 +31,7 @@
 
 ## 应用接入规范
 
-- 当应用需要在后台播放媒体类型（流类型为STREAM_USAGE_MUSIC、STREAM_USAGE_MOVIE和STREAM_USAGE_AUDIOBOOK）和游戏类型（流类型为STREAM_USAGE_GAME）时，必须接入AVSession和申请长时任务。流类型请参考[选择合适的播放流类型](../audio/using-right-streamusage-for-playback.md)，长时任务支持的类型请参考[BackgroundMode](../../reference/apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-backgroundtaskmanager-backgroundmode-depr-e-sys.md#backgroundmode)。
+- 当应用需要在后台播放媒体类型（流类型为STREAM_USAGE_MUSIC、STREAM_USAGE_MOVIE和STREAM_USAGE_AUDIOBOOK）和游戏类型（流类型为STREAM_USAGE_GAME）时，必须接入AVSession和申请长时任务。流类型请参考[选择合适的播放流类型](../audio/using-right-streamusage-for-playback.md)，长时任务支持的类型请参考BackgroundMode。
 
 - 除了上述播放类型，针对用户可感知的其他播放任务，如果应用需要在后台长时间运行该任务，必须申请AUDIO_PLAYBACK类型长时任务。
 
@@ -49,7 +49,7 @@
   同时需要注意正确处理音频焦点，系统预设了默认的音频焦点策略，根据音频流的类型及启动的先后顺序，对所有播放和录制音频流进行统一管理。在应用播放或录制音频的过程中，若有其他音频流申请焦点，系统会根据焦点策略进行焦点处理。若判定本音频流的焦点有变化，系统会自动执行一些必要操作（如暂停、继续、降低音量、恢复音量等），并通过音频焦点事件（InterruptEvent）通知应用。详细内容请参考[处理音频焦点变化](../audio/audio-playback-concurrency.md#处理音频焦点变化)。<br>
   开发指导请参考[使用AudioRenderer开发音频播放功能(ArkTS)](../audio/using-audiorenderer-for-playback.md)。
 
-- AVPlayer：使用AVPlayer可以实现端到端播放原始媒体资源。如果要实现后台播放或熄屏播放，需要接入AVSession和申请长时任务，避免播放被系统强制中断。[AVPlayer](../../reference/apis-media-kit/arkts-apis/arkts-media-media-avplayer-i.md)可通过audioInterruptMode属性设置焦点管理策略，该策略默认使用SHARE_MODE共享焦点模式。<br>
+- AVPlayer：使用AVPlayer可以实现端到端播放原始媒体资源。如果要实现后台播放或熄屏播放，需要接入AVSession和申请长时任务，避免播放被系统强制中断。AVPlayer可通过audioInterruptMode属性设置焦点管理策略，该策略默认使用SHARE_MODE共享焦点模式。<br>
   开发指导请参考[使用AVPlayer播放音频(ArkTS)](../media/using-avplayer-for-playback.md)。
 
 ### 接入AVSession
@@ -93,7 +93,7 @@ AVSession的接入开发请参考指南[应用接入AVSession场景介绍](avses
 
 > **注意事项**
 >
-> 1. 对于[AVSessionType](../../reference/apis-avsession-kit/arkts-apis/arkts-avsession-avsession-avsessiontype-t.md#avsessiontype)为audio类型的应用，系统默认值为ENABLE_BACKGROUND_PLAY，[AVSessionType](../../reference/apis-avsession-kit/arkts-apis/arkts-avsession-avsession-avsessiontype-t.md#avsessiontype)为video类型的应用，系统默认值为DISABLE_BACKGROUND_PLAY。
+> 1. 对于AVSessionType为audio类型的应用，系统默认值为ENABLE_BACKGROUND_PLAY，AVSessionType为video类型的应用，系统默认值为DISABLE_BACKGROUND_PLAY。
 >
 > 2. 音视频应用在退至后台前应设置正确的后台播放模式，以确保退至后台时系统实况窗展示正确。如果应用内提供了类似“是否支持后台播放”的开关，应用设置的后台播放模式务必与应用内的开关状态保持一致。
 

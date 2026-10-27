@@ -13,7 +13,7 @@
 > <!--RP1--><!--RP1End-->
 > - 沉浸光感开启后：
 >   - 指定弹窗类组件（AlertDialog、[ActionSheet](../reference/apis-arkui/arkts-apis/arkts-arkui-actionsheet.md)、CustomDialog、[CalendarPickerDialog](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-dialog.md)、[DatePickerDialog](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-dialog.md)、[TimePickerDialog](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-dialog.md)、[TextPickerDialog](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-dialog.md)、[SelectionMenu](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-selectionmenu-selectionmenu-f.md)、AlphabetIndexer弹窗、[Text](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-text-t.md)设置[copyOption](../reference/apis-arkui/arkts-components/arkts-arkui-text-comp-attribute.md#copyoption)后长按或双击触发的文本菜单）的沉浸光感效果可在全页面生效。
->   - 指定弹窗类接口（[PromptAction](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-promptaction-c.md)、[ArkUI_NativeDialog](../reference/apis-arkui/c-apis/capi-arkui-nativemodule-arkui-nativedialog.md)、[@ohos.promptAction (弹窗)](../reference/apis-arkui/arkts-apis/arkts-arkui-promptaction.md)、[Popup控制](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-popup.md)、Tips控制、[菜单控制](../reference/apis-arkui/arkui-js/js-components-basic-menu.md)、[半模态转场](../reference/apis-arkui/arkui-js/js-components-common-transition.md)）的沉浸光感效果可在全页面生效。
+>   - 指定弹窗类接口（[PromptAction](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-promptaction-c.md)、[ArkUI_NativeDialog](../reference/apis-arkui/c-apis/capi-arkui-nativemodule-arkui-nativedialog.md)、[@ohos.promptAction (弹窗)](../reference/apis-arkui/arkts-apis/arkts-arkui-promptaction.md)、[Popup控制](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-popup.md)、Tips控制、菜单控制、半模态转场）的沉浸光感效果可在全页面生效。
 >   - [Slider](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-slider-t.md)、[Toggle](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-toggle-t.md)、[Select](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-select-t.md)的沉浸光感效果可在全页面生效。
 >   - 其他组件仅在Navigation/NavDestination标题栏或横向Tabs中barPosition为BarPosition.End的底部TabBar中生效。在其他区域中设置沉浸光感效果不生效。
 > - 沉浸式系统材质反色、材质赋色、交互形变与点光源、阴影开关等个性化配置，具体请参见[沉浸式系统材质视效](arkts-immersive-light-sense-common-capability.md)。
@@ -24,8 +24,8 @@
 
 | 开启方式 | 支持的组件 | 说明 |
 | --- | --- | --- |
-| 应用级开启 | 组件清单详见[MaterialState](../reference/apis-arkui/arkts-apis/arkts-arkui-uimaterial-materialstate-e.md#materialstate)。 | 支持通过如下两种方式开启：<br/> 1. 通过[module.json5](../quick-start/module-configuration-file.md)统一配置，为支持沉浸光感的组件，批量开启或全局禁用沉浸光感，具体开启方法请参考表格下方内容。<br/>2. module.json5未配置该字段时即为default模式，开发者的应用从API版本26.0.0之前升级至API版本26.0.0及以上，在未主动设置沉浸光感的情况下，组件默认开启沉浸光感，无需任何配置。 |
-| 组件级开启 | 支持设置沉浸式系统材质的组件 | 支持通过如下三种方式开启：<br/> 1. 通过通用属性[systemMaterial](../reference/apis-arkui/arkts-apis/arkts-arkui-actionsheetoptions-i.md#systemmaterial)设置。<br/>2. 弹窗类组件通过options参数中的systemMaterial字段设置，例如Toast的[ShowToastOptions](../reference/apis-arkui/arkts-apis/arkts-arkui-promptaction-showtoastoptions-i.md#showtoastoptions)、自定义弹窗的CustomDialogControllerOptions等。<br/>3. 组件专属接口设置，例如Select下拉菜单的menuSystemMaterial、Navigation标题栏的[systemMaterial](../reference/apis-arkui/arkts-components/arkts-arkui-navigation-comp-navigationtitleoptions-i.md#navigationtitleoptions)等。<br/>各组件详细适配方法请参考[组件适配沉浸光感](arkts-immersive-light-sense-component-adaptation.md)。 |
+| 应用级开启 | 组件清单详见MaterialState。 | 支持通过如下两种方式开启：<br/> 1. 通过[module.json5](../quick-start/module-configuration-file.md)统一配置，为支持沉浸光感的组件，批量开启或全局禁用沉浸光感，具体开启方法请参考表格下方内容。<br/>2. module.json5未配置该字段时即为default模式，开发者的应用从API版本26.0.0之前升级至API版本26.0.0及以上，在未主动设置沉浸光感的情况下，组件默认开启沉浸光感，无需任何配置。 |
+| 组件级开启 | 支持设置沉浸式系统材质的组件 | 支持通过如下三种方式开启：<br/> 1. 通过通用属性[systemMaterial](../reference/apis-arkui/arkts-apis/arkts-arkui-actionsheetoptions-i.md#systemmaterial)设置。<br/>2. 弹窗类组件通过options参数中的systemMaterial字段设置，例如Toast的ShowToastOptions、自定义弹窗的CustomDialogControllerOptions等。<br/>3. 组件专属接口设置，例如Select下拉菜单的menuSystemMaterial、Navigation标题栏的systemMaterial等。<br/>各组件详细适配方法请参考[组件适配沉浸光感](arkts-immersive-light-sense-component-adaptation.md)。 |
 
 应用级开启通过配置文件统一设置应用的沉浸光感开关。在[module.json5](../quick-start/module-configuration-file.md)中，将[metadata](../quick-start/module-configuration-file.md#metadata标签)参数的name字段配置为"ohos.arkui.UIMaterial.state"，value字段为default或enable时开启，字段为disable时关闭。该配置仅在entry类型的module中生效。
 
@@ -50,7 +50,7 @@
 ```
 
 
-开发者可以通过[uiMaterial.getMaterialInfo()](../reference/apis-arkui/arkts-apis/arkts-arkui-uimaterial-getmaterialinfo-f.md#getmaterialinfo)获取当前应用的沉浸式系统材质配置状态[MaterialState](../reference/apis-arkui/arkts-apis/arkts-arkui-uimaterial-materialstate-e.md#materialstate)，MaterialState中的[DEFAULT](../reference/apis-arkui/arkts-apis/arkts-arkui-uimaterial-materialstate-e.md#materialstate)、[ENABLE](../reference/apis-arkui/arkts-apis/arkts-arkui-uimaterial-materialstate-e.md#materialstate)和[DISABLE](../reference/apis-arkui/arkts-apis/arkts-arkui-uimaterial-materialstate-e.md#materialstate)，分别对应module.json5配置文件中default、enable和disable三个value值。
+开发者可以通过uiMaterial.getMaterialInfo()获取当前应用的沉浸式系统材质配置状态MaterialState，MaterialState中的DEFAULT、ENABLE和DISABLE，分别对应module.json5配置文件中default、enable和disable三个value值。
 
 > **说明：**
 >

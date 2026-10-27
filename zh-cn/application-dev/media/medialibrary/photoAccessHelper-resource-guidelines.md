@@ -19,10 +19,10 @@
 
 根据特定条件查询媒体资源，如类型、日期、相册等。
 
-应用通过调用[PhotoAccessHelper.getAssets](../../reference/apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoaccesshelper-i.md#getassets-1)获取媒体资源，并传入[FetchOptions](../../reference/apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-fetchoptions-i.md#fetchoptions)对象指定检索条件。如无特别说明，文档中涉及的待获取的资源均视为已经预置且在数据库中存在相应数据。如出现获取资源为空的情况，请确认文件是否已预置，数据库中是否存在该文件的数据。
+应用通过调用[PhotoAccessHelper.getAssets](../../reference/apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoaccesshelper-i.md#getassets-1)获取媒体资源，并传入FetchOptions对象指定检索条件。如无特别说明，文档中涉及的待获取的资源均视为已经预置且在数据库中存在相应数据。如出现获取资源为空的情况，请确认文件是否已预置，数据库中是否存在该文件的数据。
 
 > **注意：**
-> 使用[PhotoAccessHelper.PhotoKeys](../../reference/apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photokeys-e-sys.md#photokeys).URI做查询条件时，仅支持使用[DataSharePredicates.equalTo](../../reference/apis-arkdata/arkts-apis/arkts-arkdata-datasharepredicates-datasharepredicates-c.md#equalto)的方式。
+> 使用PhotoAccessHelper.PhotoKeys.URI做查询条件时，仅支持使用[DataSharePredicates.equalTo](../../reference/apis-arkdata/arkts-apis/arkts-arkdata-datasharepredicates-datasharepredicates-c.md#equalto)的方式。
 
 如果只想获取某个位置的对象（如第一个、最后一个、指定索引等），可以通过[FetchResult](../../reference/apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-fetchresult-i.md)中的接口获取。
 

@@ -24,7 +24,7 @@ TaskPool支持在宿主线程提交任务到任务队列，系统选择合适的
 
 - 从API version 11开始，跨并发实例传递带方法的实例对象时，该类必须使用[@Sendable装饰器](arkts-sendable.md#sendable装饰器)标注，且仅支持在.ets文件中使用。如果不考虑使用@Sendable装饰器标注，可以考虑worker方法，请参见[Worker同步调用宿主线程的接口](worker-invoke-mainthread-interface.md)。
 
-- 任务函数（[LongTask](../reference/apis-arkts/arkts-apis/arkts-arkts-taskpool-longtask-c.md#longtask)除外）的CPU执行时长不能超过3分钟（通过Task的cpuDuration属性获取）。异步I/O等待时间不计入此限制，可通过ioDuration属性获取。否则，若因任务逻辑导致阻塞，使任务无法完成，将导致该线程后续无法调度其他任务。当所有线程均被超时占用时，后续提交的任务将无法正常调度执行。需要注意的是，这里的3分钟限制仅统计TaskPool线程的​​同步执行时长​​，不包含异步操作（如Promise或async/await）的等待时长。例如，数据库的插入、删除、更新等操作，如果是异步操作，仅计入CPU实际处理时长（如SQL解析），网络传输或磁盘I/O等待时长不计入；如果是同步操作，整个操作时长（含I/O阻塞时间）均计入限制。开发者可通过[Task](../reference/apis-arkts/arkts-apis/arkts-arkts-taskpool-task-c.md#task)的属性ioDuration、cpuDuration获取执行当前任务的异步IO耗时和CPU耗时。
+- 任务函数（LongTask除外）的CPU执行时长不能超过3分钟（通过Task的cpuDuration属性获取）。异步I/O等待时间不计入此限制，可通过ioDuration属性获取。否则，若因任务逻辑导致阻塞，使任务无法完成，将导致该线程后续无法调度其他任务。当所有线程均被超时占用时，后续提交的任务将无法正常调度执行。需要注意的是，这里的3分钟限制仅统计TaskPool线程的​​同步执行时长​​，不包含异步操作（如Promise或async/await）的等待时长。例如，数据库的插入、删除、更新等操作，如果是异步操作，仅计入CPU实际处理时长（如SQL解析），网络传输或磁盘I/O等待时长不计入；如果是同步操作，整个操作时长（含I/O阻塞时间）均计入限制。开发者可通过Task的属性ioDuration、cpuDuration获取执行当前任务的异步IO耗时和CPU耗时。
 
 
 
@@ -488,7 +488,7 @@ struct Index {
 
 - 该线程空闲时长达到30秒。
 
-- 该线程上未执行长时任务（[LongTask](../reference/apis-arkts/arkts-apis/arkts-arkts-taskpool-longtask-c.md#longtask)）。
+- 该线程上未执行长时任务（LongTask）。
 
 - 该线程上没有业务申请且未释放的句柄，例如Timer (定时器)。
 

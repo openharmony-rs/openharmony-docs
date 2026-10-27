@@ -171,7 +171,7 @@ struct Index {
 
 ## 原子化服务主动重启
 
-从API version 20开始，系统为原子化服务（Atomic Service）提供了专用的重启接口[restartSelfAtomicService()](../reference/apis-ability-kit/arkts-apis/arkts-ability-abilitymanager-restartselfatomicservice-f.md#restartselfatomicservice)，用于触发原子化服务更新并重启当前原子化服务。重启过程中不会保留当前原子化服务窗口，也不会触发旧Ability的onDestroy生命周期回调。
+从API version 20开始，系统为原子化服务（Atomic Service）提供了专用的重启接口restartSelfAtomicService()，用于触发原子化服务更新并重启当前原子化服务。重启过程中不会保留当前原子化服务窗口，也不会触发旧Ability的onDestroy生命周期回调。
 
 存在以下约束限制：
 - 仅支持以独立窗口方式拉起原子化服务。

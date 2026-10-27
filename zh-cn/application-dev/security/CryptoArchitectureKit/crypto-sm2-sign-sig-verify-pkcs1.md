@@ -11,11 +11,11 @@
 
 **签名**
 
-1. 调用[cryptoFramework.createAsyKeyGenerator](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-createasykeygenerator-f.md#createasykeygenerator)、[AsyKeyGenerator.generateKeyPair](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-asykeygenerator-i.md#generatekeypair-1)，生成非对称密钥算法为SM2、密钥长度为256位的密钥对（KeyPair）。
+1. 调用cryptoFramework.createAsyKeyGenerator、[AsyKeyGenerator.generateKeyPair](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-asykeygenerator-i.md#generatekeypair-1)，生成非对称密钥算法为SM2、密钥长度为256位的密钥对（KeyPair）。
    
    如何生成SM2非对称密钥，开发者可参考下文示例，并结合[非对称密钥生成和转换规格：SM2](crypto-key-generation-conversion.md#sm2)和[随机生成非对称密钥对](crypto-generate-asym-key-pair-randomly.md)理解，参考文档与当前示例可能存在入参差异，请在阅读时注意区分。
 
-2. 调用[cryptoFramework.createSign](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-createsign-f.md#createsign)，指定字符串参数'SM2_256|SM3'，创建非对称密钥类型为SM2_256、摘要算法为SM3的Sign实例，用于完成签名操作。
+2. 调用cryptoFramework.createSign，指定字符串参数'SM2_256|SM3'，创建非对称密钥类型为SM2_256、摘要算法为SM3的Sign实例，用于完成签名操作。
 
 3. 调用[Sign.init](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-cipher-i.md#init-3)，使用私钥（PriKey）初始化Sign实例。
 
@@ -25,7 +25,7 @@
 
 **验签**
 
-1. 调用[cryptoFramework.createVerify](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-createverify-f.md#createverify)，指定字符串参数'SM2_256|SM3'，创建非对称密钥类型为SM2_256、摘要算法为SM3的Verify实例，用于完成验签操作。
+1. 调用cryptoFramework.createVerify，指定字符串参数'SM2_256|SM3'，创建非对称密钥类型为SM2_256、摘要算法为SM3的Verify实例，用于完成验签操作。
 
 2. 调用[Verify.init](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-cipher-i.md#init)，使用公钥（PubKey）初始化Verify实例。
 

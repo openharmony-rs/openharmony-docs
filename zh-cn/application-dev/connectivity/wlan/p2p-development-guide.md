@@ -231,6 +231,6 @@ P2P模式，主要提供了WLAN设备的一种点对点连接技术，它可以�
 1. import需要的Wi-Fi模块。
 2. 开启设备的Wi-Fi。
 3. 需要SystemCapability.Communication.WiFi.P2P系统能力。
-4. 通过[wifiP2pLinkedInfo.connectState](../../reference/apis-connectivity-kit/arkts-apis/arkts-connectivity-wifimanager-p2pconnectstate-e.md#p2pconnectstate)获取P2P连接状态，确保连接状态为CONNECTED。
-5. 通过[wifiP2pGroupInfo.goIpAddress](../../reference/apis-connectivity-kit/arkts-apis/arkts-connectivity-wifimanager-wifip2pgroupinfo-i.md#wifip2pgroupinfo)获取群组IP地址，以便Socket通信。
+4. 通过wifiP2pLinkedInfo.connectState获取P2P连接状态，确保连接状态为CONNECTED。
+5. 通过wifiP2pGroupInfo.goIpAddress获取群组IP地址，以便Socket通信。
 6. Socket通信请参考[使用Socket访问网络](../../../application-dev/network/socket-connection.md)。

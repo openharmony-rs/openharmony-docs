@@ -15,11 +15,11 @@ RC4为流密码算法，无需分组模式与填充。
 
 **加密**
 
-1. 调用[cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-createsymkeygenerator-f.md#createsymkeygenerator)、[SymKeyGenerator.generateSymKey](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-symkeygenerator-i.md#generatesymkey-1)或[SymKeyGenerator.convertKey](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-asykeygenerator-i.md#convertkey-1)，生成密钥算法为RC4、密钥长度在8位～4096位范围内（如RC4_128）的对称密钥（SymKey）。
+1. 调用cryptoFramework.createSymKeyGenerator、[SymKeyGenerator.generateSymKey](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-symkeygenerator-i.md#generatesymkey-1)或[SymKeyGenerator.convertKey](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-asykeygenerator-i.md#convertkey-1)，生成密钥算法为RC4、密钥长度在8位～4096位范围内（如RC4_128）的对称密钥（SymKey）。
    
    如何生成RC4对称密钥，开发者可参考下文示例，并结合[对称密钥生成和转换规格：RC4](crypto-key-generation-conversion.md#rc4)和[指定二进制数据转换对称密钥](crypto-convert-binary-data-to-sym-key.md)理解，参考文档与当前示例可能存在入参差异，请在阅读时注意区分。
 
-2. 调用[cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-createcipher-f.md#createcipher)，指定字符串参数（如'RC4'），创建对称密钥类型为RC4的Cipher实例，用于完成加密操作。
+2. 调用cryptoFramework.createCipher，指定字符串参数（如'RC4'），创建对称密钥类型为RC4的Cipher实例，用于完成加密操作。
 
 3. 调用[Cipher.init](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-cipher-i.md#init-1)，设置模式为加密（cryptoFramework.CryptoMode.ENCRYPT_MODE），指定加密密钥（SymKey），初始化加密Cipher实例。RC4为流密码，无IV等加解密参数时传入null。
 
@@ -27,7 +27,7 @@ RC4为流密码算法，无需分组模式与填充。
 
 **解密**
 
-1. 调用[cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-createcipher-f.md#createcipher)，指定字符串参数（如'RC4'），创建对称密钥类型为RC4的Cipher实例，用于完成解密操作。
+1. 调用cryptoFramework.createCipher，指定字符串参数（如'RC4'），创建对称密钥类型为RC4的Cipher实例，用于完成解密操作。
 
 2. 调用[Cipher.init](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-cipher-i.md#init-1)，设置模式为解密（cryptoFramework.CryptoMode.DECRYPT_MODE），指定解密密钥（SymKey）初始化解密Cipher实例。无加解密参数时传入null。
 

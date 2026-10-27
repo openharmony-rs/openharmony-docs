@@ -30,7 +30,7 @@ XML解析及转换需要确保传入的XML数据符合XML标准格式。
    import { convertxml } from '@kit.ArkTS';
    ```
 
-2. 输入待转换的XML，设置转换选项。支持的转换选项及含义，请参见[ConvertOptions](../reference/apis-arkts/arkts-apis/arkts-arkts-xml-convertoptions-i.md#convertoptions)。
+2. 输入待转换的XML，设置转换选项。支持的转换选项及含义，请参见ConvertOptions。
 
    > **说明：**
    >

@@ -64,11 +64,11 @@ export default class EntryAbility extends UIAbility {
 
 [UIAbility](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability.md)实例创建完成之后，在进入前台之前，系统会创建一个WindowStage。WindowStage创建完成后会进入[onWindowStageCreate()](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md#onwindowstagecreate)回调，开发者可以在该回调中进行UI加载、WindowStage的事件订阅。
 
-在onWindowStageCreate()回调中通过[loadContent()](../reference/apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#loadcontent)方法设置应用要加载的页面，并根据需要调用on('windowStageEvent')方法订阅WindowStage生命周期状态（[WindowStageEventType](../reference/apis-arkui/arkts-apis/arkts-arkui-window-windowstageeventtype-e.md#windowstageeventtype)）变化事件（获焦/失焦、切到前台/切到后台、前台可交互/前台不可交互）。
+在onWindowStageCreate()回调中通过[loadContent()](../reference/apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#loadcontent)方法设置应用要加载的页面，并根据需要调用on('windowStageEvent')方法订阅WindowStage生命周期状态（WindowStageEventType）变化事件（获焦/失焦、切到前台/切到后台、前台可交互/前台不可交互）。
 
 > **说明：**
 > 
-> - 不同开发场景下WindowStage生命周期状态（[WindowStageEventType](../reference/apis-arkui/arkts-apis/arkts-arkui-window-windowstageeventtype-e.md#windowstageeventtype)）变化事件的时序可能存在差异，具体请见[窗口生命周期](../windowmanager/window-lifecycle.md)。
+> - 不同开发场景下WindowStage生命周期状态（WindowStageEventType）变化事件的时序可能存在差异，具体请见[窗口生命周期](../windowmanager/window-lifecycle.md)。
 > - 对于不同类型的产品，当应用主窗口从前台进入后台时，UIAbility生命周期的变化也会存在差异。详见[不同设备UIAbility生命周期的差异化行为](../windowmanager/window-lifecycle.md#不同设备uiability生命周期的差异化行为)。
 
   <!-- @[onWindowStageCreate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLifecycle/entry/src/main/ets/entryability/EntryAbility.ets) -->
@@ -297,7 +297,7 @@ export default class EntryAbility extends UIAbility {
 
 **问题现象**
 
-在[Scenarios](../reference/apis-ability-kit/arkts-apis/arkts-ability-contextconstant-scenarios-e.md#scenarios)相关的场景下启动UIAbility时，若该UIAbility实例已存在，系统会非预期触发[onNewWant()](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md#onnewwant)生命周期回调，导致回调中传入的want参数也为非预期。若应用使用了该非预期want参数，可能引起非预期的页面变化。
+在Scenarios相关的场景下启动UIAbility时，若该UIAbility实例已存在，系统会非预期触发[onNewWant()](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md#onnewwant)生命周期回调，导致回调中传入的want参数也为非预期。若应用使用了该非预期want参数，可能引起非预期的页面变化。
 
 **解决措施**
 
@@ -314,7 +314,7 @@ export default class EntryAbility extends UIAbility {
 
 1. 在onCreate()生命周期回调中，通过按位或运算符（`|`）组合三种场景的标志位。
 
-    标志位定义在[contextConstant.Scenarios](../reference/apis-ability-kit/arkts-apis/arkts-ability-contextconstant-scenarios-e.md#scenarios)中：
+    标志位定义在contextConstant.Scenarios中：
     - `SCENARIO_MOVE_MISSION_TO_FRONT`（0x00000001）
     - `SCENARIO_SHOW_ABILITY`（0x00000002）
     - `SCENARIO_BACK_TO_CALLER_ABILITY_WITH_RESULT`（0x00000004）

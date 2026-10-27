@@ -340,11 +340,11 @@ export class GlobalStaticSnapshot {
 
 为了确保截图内容符合预期，应该了解代码对界面状态的修改时机，并注意给系统预留处理时间，这通常可以通过增加一定延时来实现。
 
-尽管可以通过inspector上的[ComponentObserver](../reference/apis-arkui/arkts-apis/arkts-arkui-inspector-componentobserver-i.md#componentobserver)感知应用组件绘制（draw）送显通知，但需要注意的是，ComponentObserver的组件绘制通知并不意味着系统已经真正将绘制指令执行，这取决于图形系统服务的负载情况。
+尽管可以通过inspector上的ComponentObserver感知应用组件绘制（draw）送显通知，但需要注意的是，ComponentObserver的组件绘制通知并不意味着系统已经真正将绘制指令执行，这取决于图形系统服务的负载情况。
 
 **明确等待绘制完成**
 
-影响截图预期的主要因素是截图时机与系统服务执行绘制指令的时间差。在发起截图调用时，应用侧之前提交的所有绘制指令可能尚未被图形服务真正执行。为此，可以通过指定[SnapshotOptions](../reference/apis-arkui/arkts-apis/arkts-arkui-componentsnapshot-snapshotoptions-i.md#snapshotoptions)参数中的waitUntilRenderFinished为true，来确保系统在执行截图请求时等待所有之前的绘制指令均执行完毕，从而截取到更完整的内容。
+影响截图预期的主要因素是截图时机与系统服务执行绘制指令的时间差。在发起截图调用时，应用侧之前提交的所有绘制指令可能尚未被图形服务真正执行。为此，可以通过指定SnapshotOptions参数中的waitUntilRenderFinished为true，来确保系统在执行截图请求时等待所有之前的绘制指令均执行完毕，从而截取到更完整的内容。
 
 > **说明：**
 >
@@ -367,4 +367,4 @@ export class GlobalStaticSnapshot {
 请不要截取过大尺寸的图片，截图不建议超过屏幕尺寸大小。当要截取的图片目标长宽超过底层限制时，截图会返回失败，不同设备的底层限制并不相同。可以通过控制SnapshotOptions中的scale参数，减小采样精度，这可以在很大程度上节省内存，并大幅度提高截图的效率。
 
 ### 使用其他能力对自渲染场景实现截图
-尽管截图只需传入一个组件根节点即可实现对其下所有组件进行截图，但当子组件中存在[Video](../reference/apis-arkui/errorcode-video.md)、[XComponent](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-xcomponent-t.md)或[Web](../reference/apis-arkweb/c-apis/capi-web.md)组件时，这并不是推荐的截图方式。建议直接使用[image.createPixelMapFromSurface](../reference/apis-image-kit/arkts-apis/arkts-image-image-createpixelmapfromsurface-f.md#createpixelmapfromsurface)接口来实现。
+尽管截图只需传入一个组件根节点即可实现对其下所有组件进行截图，但当子组件中存在[Video](../reference/apis-arkui/errorcode-video.md)、[XComponent](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-xcomponent-t.md)或[Web](../reference/apis-arkweb/c-apis/capi-web.md)组件时，这并不是推荐的截图方式。建议直接使用image.createPixelMapFromSurface接口来实现。

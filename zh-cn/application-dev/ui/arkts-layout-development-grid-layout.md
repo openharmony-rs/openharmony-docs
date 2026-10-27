@@ -38,7 +38,7 @@
 | md   | [600,&nbsp;840) | 中等宽度类型设备。 |
 | lg   | [840,&nbsp;+∞)  | 大宽度类型设备。  |
 
-在GridRow栅格组件中，允许开发者使用[BreakPoints](../reference/apis-arkui/arkts-components/arkts-arkui-gridrow-comp-breakpoints-i.md#breakpoints)自定义修改断点的取值范围，最多支持6个断点，除了默认的4个断点外，还可以启用xl和xxl断点，支持6种不同尺寸（xs，sm，md，lg，xl，xxl）设备的布局设置。
+在GridRow栅格组件中，允许开发者使用BreakPoints自定义修改断点的取值范围，最多支持6个断点，除了默认的4个断点外，还可以启用xl和xxl断点，支持6种不同尺寸（xs，sm，md，lg，xl，xxl）设备的布局设置。
 
 | 断点名称 | 设备描述      |
 | ---- | --------- |
@@ -49,7 +49,7 @@
 | xl   | 特大宽度类型设备。 |
 | xxl  | 超大宽度类型设备。 |
 
-- 开发者可根据实际使用场景，通过一个单调递增数组设置断点位置。由于栅格容器默认支持4个断点，在不设置断点位置时，系统为默认断点配置的单调递增数组为["320vp", "600vp", "840vp"]。开发者使用[BreakPoints](../reference/apis-arkui/arkts-components/arkts-arkui-gridrow-comp-breakpoints-i.md#breakpoints)最多可支持6个断点，因此此单调递增数组最大长度为5。
+- 开发者可根据实际使用场景，通过一个单调递增数组设置断点位置。由于栅格容器默认支持4个断点，在不设置断点位置时，系统为默认断点配置的单调递增数组为["320vp", "600vp", "840vp"]。开发者使用BreakPoints最多可支持6个断点，因此此单调递增数组最大长度为5。
 
   假设传入的数组是[n0, n1, n2, n3, n4]，则各个断点取值如下：
 
@@ -68,7 +68,7 @@
   breakpoints: {value: ['320vp', '600vp', '840vp', '1440vp']} // 表示xs、sm、md、lg、xl共5个断点被使用，小于320vp为xs，320vp-600vp为sm，  600vp-840vp为md，840vp-1440vp为lg，大于1440vp为xl。
   ```
 
-- 栅格容器通过监听窗口或容器的尺寸变化进行断点，通过[reference](../reference/apis-arkui/arkts-components/arkts-arkui-gridrow-comp-breakpoints-i.md#breakpoints)设置断点切换参考物。考虑到应用可能以非全屏窗口的形式显示，以应用窗口宽度为参照物更为通用。
+- 栅格容器通过监听窗口或容器的尺寸变化进行断点，通过reference设置断点切换参考物。考虑到应用可能以非全屏窗口的形式显示，以应用窗口宽度为参照物更为通用。
 
   例如，通过断点设置将应用宽度分成6个区间，通过columns配置各断点下栅格容器的栅格列数。
 
@@ -165,7 +165,7 @@ GridRow中通过columns设置栅格布局的总列数。
     ![gridLayoutColumns2](figures/gridLayoutColumns2.png)
 
 
-columns支持number和[GridRowColumnOption](../reference/apis-arkui/arkts-components/arkts-arkui-gridrow-comp-gridrowcolumnoption-i.md#gridrowcolumnoption)两种类型，可按两种方式设置栅格布局的总列数。
+columns支持number和GridRowColumnOption两种类型，可按两种方式设置栅格布局的总列数。
 - 当columns类型为number时，栅格布局在任何尺寸设备下都被分为同一列数。下面分别设置栅格布局列数为4和8，子元素占一列，效果如下：
 
   <!-- @[GridLayoutColumnsToFour_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/gridlayout/GridLayoutColumnsToFour.ets) -->
@@ -240,7 +240,7 @@ columns支持number和[GridRowColumnOption](../reference/apis-arkui/arkts-compon
 
     ![gridLayoutColumnsToEight](figures/gridLayoutColumnsToEight.png)
 
-- 当columns类型为[GridRowColumnOption](../reference/apis-arkui/arkts-components/arkts-arkui-gridrow-comp-gridrowcolumnoption-i.md#gridrowcolumnoption)时，支持下面6种不同尺寸（xs，sm，md，lg，xl，xxl）设备的栅格列数设置，不同尺寸的设备支持配置不同的栅格列数。
+- 当columns类型为GridRowColumnOption时，支持下面6种不同尺寸（xs，sm，md，lg，xl，xxl）设备的栅格列数设置，不同尺寸的设备支持配置不同的栅格列数。
 
   <!-- @[GridLayoutColumnOption_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/gridlayout/GridLayoutColumnOption.ets) -->
   
@@ -281,7 +281,7 @@ columns支持number和[GridRowColumnOption](../reference/apis-arkui/arkts-compon
 
     ![gridRow2](figures/gridRow2.gif)
 
-  仅部分设置sm、md的栅格列数，未配置的xs、lg、xl、xxl设备根据栅格列数补全（见[GridRowColumnOption](../reference/apis-arkui/arkts-components/arkts-arkui-gridrow-comp-gridrowcolumnoption-i.md#gridrowcolumnoption)）取默认值。
+  仅部分设置sm、md的栅格列数，未配置的xs、lg、xl、xxl设备根据栅格列数补全（见GridRowColumnOption）取默认值。
 
 
 ### 排列方向
@@ -326,7 +326,7 @@ GridRow中通过gutter属性设置子元素在水平和垂直方向的间距。
 
     ![zh-cn_image_0000001511740476](figures/zh-cn_image_0000001511740476.png)
 
-- 当gutter类型为[GutterOption](../reference/apis-arkui/arkts-components/arkts-arkui-gridrow-comp-gutteroption-i.md#gutteroption)时，单独设置栅格子组件水平垂直边距，x属性为水平方向间距，y为垂直方向间距。
+- 当gutter类型为GutterOption时，单独设置栅格子组件水平垂直边距，x属性为水平方向间距，y为垂直方向间距。
 
 
     <!-- @[GridLayoutGutterOption_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/gridlayout/GridLayoutGutterOption.ets) -->
@@ -400,7 +400,7 @@ GridRow中通过gutter属性设置子元素在水平和垂直方向的间距。
 
 子组件占栅格布局的列数，决定了子组件的宽度。默认值为1。
 
-span支持number和[GridColColumnOption](../reference/apis-arkui/arkts-components/arkts-arkui-gridcol-comp-gridcolcolumnoption-i.md#gridcolcolumnoption)两种类型，可按两种方式设置栅格子组件占栅格容器的列数。
+span支持number和GridColColumnOption两种类型，可按两种方式设置栅格子组件占栅格容器的列数。
 - 当span类型为number时，子组件在所有尺寸设备下占用的列数相同。
 
 
@@ -434,7 +434,7 @@ span支持number和[GridColColumnOption](../reference/apis-arkui/arkts-component
 
     ![gridColSpanToNumber](figures/gridColSpanToNumber.png)
 
-- 当span类型为GridColColumnOption时，支持6种不同尺寸（xs，sm，md，lg，xl，xxl）设备中子组件所占列数设置，不同尺寸的设备下子组件支持配置不同列数。若仅部分设置sm、md的列数，未配置的xs、lg、xl、xxl设备根据列数补全（见[GridColColumnOption](../reference/apis-arkui/arkts-components/arkts-arkui-gridcol-comp-gridcolcolumnoption-i.md#gridcolcolumnoption)）取默认值。
+- 当span类型为GridColColumnOption时，支持6种不同尺寸（xs，sm，md，lg，xl，xxl）设备中子组件所占列数设置，不同尺寸的设备下子组件支持配置不同列数。若仅部分设置sm、md的列数，未配置的xs、lg、xl、xxl设备根据列数补全（见GridColColumnOption）取默认值。
 
 
     <!-- @[GridColSpanToOption_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/gridlayout/GridColSpanToOption.ets) -->

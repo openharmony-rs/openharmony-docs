@@ -50,9 +50,9 @@
      // ...
    }
    ```
-3. 使用[蓝牙模块](../connectivity/connectivity-kit-intro.md#蓝牙简介)接口与穿戴设备配对（蓝牙处于配对状态）并获取地址，然后通过[subscribe](../reference/apis-notification-kit/arkts-apis/arkts-notification-notificationextensionsubscription-subscribe-f.md#subscribe)/[unsubscribe](../reference/apis-notification-kit/arkts-apis/arkts-notification-notificationextensionsubscription-unsubscribe-f.md#unsubscribe)接口订阅或取消订阅通知。
+3. 使用[蓝牙模块](../connectivity/connectivity-kit-intro.md#蓝牙简介)接口与穿戴设备配对（蓝牙处于配对状态）并获取地址，然后通过subscribe/unsubscribe接口订阅或取消订阅通知。
 
-4. 实现[NotificationSubscriberExtensionAbility](../reference/apis-notification-kit/arkts-apis/arkts-notification-application-notificationsubscriberextensionability.md)后，还需要在合适的时机调用[openSubscriptionSettingsWithResult](../reference/apis-notification-kit/arkts-apis/arkts-notification-notificationextensionsubscription-opensubscriptionsettingswithresult-f.md#opensubscriptionsettingswithresult)接口，打开通知扩展订阅设置页面，引导用户授予获取本机通知的权限，该页面以半模态弹窗显示，并在弹窗关闭时返回授权的结果。建议在设备管理页面提供一个[通知授权](notification-glossary.md#notification-authorization通知授权)的按钮，用户点击按钮则调用[openSubscriptionSettingsWithResult](../reference/apis-notification-kit/arkts-apis/arkts-notification-notificationextensionsubscription-opensubscriptionsettingswithresult-f.md#opensubscriptionsettingswithresult)接口。
+4. 实现[NotificationSubscriberExtensionAbility](../reference/apis-notification-kit/arkts-apis/arkts-notification-application-notificationsubscriberextensionability.md)后，还需要在合适的时机调用openSubscriptionSettingsWithResult接口，打开通知扩展订阅设置页面，引导用户授予获取本机通知的权限，该页面以半模态弹窗显示，并在弹窗关闭时返回授权的结果。建议在设备管理页面提供一个[通知授权](notification-glossary.md#notification-authorization通知授权)的按钮，用户点击按钮则调用openSubscriptionSettingsWithResult接口。
 
 5. 在应用的module.json5文件中配置extensionAbilities。
    <!--@[quick_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/ThirdpartyWearableDemo/entry/src/main/module.json5)-->

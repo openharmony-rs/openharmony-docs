@@ -13,7 +13,7 @@
 
 1. 导入[证书模块](../../reference/apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-security-cert.md)。
 
-2. 基于现有的PKCS #12文件数据，调用[cert.createTrustAnchorsWithKeyStore](../../reference/apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-createtrustanchorswithkeystore-f.md#createtrustanchorswithkeystore)创建[X509TrustAnchor](../../reference/apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-x509trustanchor-i.md#x509trustanchor)数组对象，并返回结果。
+2. 基于现有的PKCS #12文件数据，调用cert.createTrustAnchorsWithKeyStore创建X509TrustAnchor数组对象，并返回结果。
 
 <!-- @[trust_array_constructed_from_p12_file_during_validation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateAlgorithmLibrary/entry/src/main/ets/pages/CreateTrustanchorFromP12.ets) -->
 

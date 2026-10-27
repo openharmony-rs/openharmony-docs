@@ -20,7 +20,7 @@
    import { common } from '@kit.AbilityKit';
    ```
 
-2. 通过[getCameraManager](../../reference/apis-camera-kit/c-apis/capi-camera-h.md#ohcameragetcameramanager)方法，获取cameraManager对象。
+2. 通过getCameraManager方法，获取cameraManager对象。
 
    Context获取方式请参考：[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
@@ -67,7 +67,7 @@
 
 在相机应用开发过程中，可以随时监听相机状态，包括新相机的出现、相机的移除、相机的可用状态。在回调函数中，通过相机ID、相机状态这两个参数进行监听，如当有新相机出现时，可以将新相机加入到应用的备用相机中。
 
-  通过注册cameraStatus事件，通过回调返回监听结果，callback返回CameraStatusInfo参数，参数的具体内容可参考相机管理器回调接口实例[CameraStatusInfo](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-camerastatusinfo-i.md#camerastatusinfo)。
+  通过注册cameraStatus事件，通过回调返回监听结果，callback返回CameraStatusInfo参数，参数的具体内容可参考相机管理器回调接口实例CameraStatusInfo。
 
 ```ts
 function onCameraStatusChange(cameraManager: camera.CameraManager): void {

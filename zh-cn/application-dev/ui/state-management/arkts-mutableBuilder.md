@@ -53,7 +53,7 @@ struct Index {
 
 ## 接口说明
 
-mutableBuilder是一个模板函数，返回一个[MutableBuilder](../../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-mutablebuilder-f.md#mutablebuilder-1)对象。相比[WrappedBuilder](../../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-wrappedbuilder-c.md#wrappedbuilder)，MutableBuilder可以实现动态切换全局@Builder。
+mutableBuilder是一个模板函数，返回一个[MutableBuilder](../../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-mutablebuilder-f.md#mutablebuilder-1)对象。相比WrappedBuilder，MutableBuilder可以实现动态切换全局@Builder。
 ```ts
 declare function mutableBuilder<Args extends Object[]>(builder: BuilderCallback): MutableBuilder<Args>;
 ```

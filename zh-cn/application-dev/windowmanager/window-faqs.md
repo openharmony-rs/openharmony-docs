@@ -10,7 +10,7 @@
 
 **解决措施**
 
-应用A调用on('windowStageEvent')接口监听[WindowStageEvent.ACTIVE](../reference/apis-arkui/arkts-apis/arkts-arkui-window-windowstageeventtype-e.md#windowstageeventtype)事件后调用[startAbility](../reference/apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md#startability)接口拉起应用B。
+应用A调用on('windowStageEvent')接口监听WindowStageEvent.ACTIVE事件后调用[startAbility](../reference/apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md#startability)接口拉起应用B。
 
 **代码示例**
 
@@ -94,7 +94,7 @@ export default class EntryAbility extends UIAbility {
 
 ## 如何获取软键盘高度
 
-固定态软键盘为一种特定的避让区域类型，[AvoidAreaType](../reference/apis-arkui/arkts-apis/arkts-arkui-window-avoidareatype-e.md#avoidareatype)中对应为固定态软键盘（TYPE_KEYBOARD）类型，可以通过[getWindowAvoidArea()](../reference/apis-arkui/arkts-apis/arkts-arkui-uiextension-windowproxy-i.md#getwindowavoidarea)和[on('avoidAreaChange')](../reference/apis-arkui/arkts-apis/arkts-arkui-uiextension-windowproxy-i.md#onavoidareachange)动态监听软键盘避让区高度的变化。
+固定态软键盘为一种特定的避让区域类型，AvoidAreaType中对应为固定态软键盘（TYPE_KEYBOARD）类型，可以通过getWindowAvoidArea()和[on('avoidAreaChange')](../reference/apis-arkui/arkts-apis/arkts-arkui-uiextension-windowproxy-i.md#onavoidareachange)动态监听软键盘避让区高度的变化。
 
 另外，开发者也可以通过[on('keyboardHeightChange')](../reference/apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#onkeyboardheightchange)接口监听软键盘的占用高度。与避让区域不同的是，此接口回调仅返回软键盘的高度数值（number），而[on('avoidAreaChange')](../reference/apis-arkui/arkts-apis/arkts-arkui-uiextension-windowproxy-i.md#onavoidareachange)回调会返回整个软键盘区域（[Rect](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-drawabledescriptor-hdrcompositionconfig-i.md#rect)）。
 
@@ -231,9 +231,9 @@ export default class EntryAbility extends UIAbility {
 
 ## 如何获取状态栏高度
 
-状态栏为一种特定的避让区域类型，[AvoidAreaType](../reference/apis-arkui/arkts-apis/arkts-arkui-window-avoidareatype-e.md#avoidareatype)中对应为系统栏（TYPE_SYSTEM）类型。
+状态栏为一种特定的避让区域类型，AvoidAreaType中对应为系统栏（TYPE_SYSTEM）类型。
 
-主窗口全屏时，可以通过[getWindowAvoidArea()](../reference/apis-arkui/arkts-apis/arkts-arkui-uiextension-windowproxy-i.md#getwindowavoidarea)获取到包含状态栏的避让区域[AvoidArea](../reference/apis-arkui/arkts-apis/arkts-arkui-floatview-floatviewproperties-i.md#avoidarea)，间接获取到状态栏的高度。
+主窗口全屏时，可以通过getWindowAvoidArea()获取到包含状态栏的避让区域[AvoidArea](../reference/apis-arkui/arkts-apis/arkts-arkui-floatview-floatviewproperties-i.md#avoidarea)，间接获取到状态栏的高度。
 
 示例代码如下所示：
 
@@ -261,7 +261,7 @@ export default class EntryAbility extends UIAbility {
 
 ## 如何设置窗口背景透明
 
-可以通过调用[setWindowBackgroundColor](../reference/apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#setwindowbackgroundcolor)接口，传入'\#00XXXXXX'（其中X代表任意十六进制数字）或者透明的[ColorMetrics](../reference/apis-arkui/arkts-apis/arkts-arkui-graphics-colormetrics-c-sys.md#colormetrics)实现窗口背景透明。
+可以通过调用[setWindowBackgroundColor](../reference/apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#setwindowbackgroundcolor)接口，传入'\#00XXXXXX'（其中X代表任意十六进制数字）或者透明的ColorMetrics实现窗口背景透明。
 
 > **说明：**
 > 
@@ -340,7 +340,7 @@ struct OrientationTestView {
 
 - [最佳实践：横竖屏切换](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-landscape-and-portrait-development)
 
-- [Orientation](../reference/apis-arkui/arkts-apis/arkts-arkui-display-orientation-e.md#orientation)
+- Orientation
 
 ## 如何保持屏幕为横屏/竖屏，不随传感器旋转
 
@@ -350,7 +350,7 @@ struct OrientationTestView {
 
 ## 如何获取设备的横竖屏状态
 
-先通过[display.getDefaultDisplaySync()](../reference/apis-arkui/arkts-apis/arkts-arkui-display-getdefaultdisplaysync-f.md#getdefaultdisplaysync)获取当前默认的Display实例对象。
+先通过display.getDefaultDisplaySync()获取当前默认的Display实例对象。
 
 再通过该实例对象获取对应的[Orientation](../reference/apis-arkui/arkts-apis/arkts-arkui-display-display-i.md#orientation)属性，以判断当前设备的横竖屏状态。
 
@@ -471,7 +471,7 @@ module.json5配置示例如下：
 
 - 使用[metadata](window-config-m.md)标签配置，name为'ohos.ability.window.supportWindowModeInFreeMultiWindow'，该字段配置仅在自由多窗下生效。
 
-- 在启动UIAbility时，通过[StartOptions](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-startoptions-startoptions-c-sys.md#startoptions)中的supportWindowModes字段指定窗口是否显示最大化/窗口化/分屏按键。
+- 在启动UIAbility时，通过StartOptions中的supportWindowModes字段指定窗口是否显示最大化/窗口化/分屏按键。
 
 - 在启动后，可通过调用[setSupportedWindowModes()](../reference/apis-arkui/arkts-apis/arkts-arkui-window-windowstage-i.md#setsupportedwindowmodes)接口动态修改当前主窗口支持的窗口模式。
 
@@ -479,7 +479,7 @@ module.json5配置示例如下：
 > 
 > 自由多窗下的可支持窗口模式可以采用多种方法进行配置，配置优先级为：
 >
-> 通过[setSupportedWindowModes](../reference/apis-arkui/arkts-apis/arkts-arkui-window-windowstage-i.md#setsupportedwindowmodes)接口配置 &gt; 通过StartAbility配置[StartOption](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-startoptions-startoptions-c-sys.md#startoptions)中的SupportWindowMode &gt; 使用metadata配置 &gt; 配置module.json5中[abilities](../quick-start/module-configuration-file.md#abilities标签)标签下的SupportWindowMode属性。
+> 通过[setSupportedWindowModes](../reference/apis-arkui/arkts-apis/arkts-arkui-window-windowstage-i.md#setsupportedwindowmodes)接口配置 &gt; 通过StartAbility配置StartOption中的SupportWindowMode &gt; 使用metadata配置 &gt; 配置module.json5中[abilities](../quick-start/module-configuration-file.md#abilities标签)标签下的SupportWindowMode属性。
 
 ## 如何判断当前窗口是否为自由悬浮窗口模式
 
@@ -551,7 +551,7 @@ module.json5配置示例如下：
 
 ## 如何设置全局悬浮窗背景色为透明
 
-可以通过调用[setWindowBackgroundColor](../reference/apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#setwindowbackgroundcolor)接口，传入'\#00XXXXXX'（其中X代表任意十六进制数字）或者透明的[ColorMetrics](../reference/apis-arkui/arkts-apis/arkts-arkui-graphics-colormetrics-c-sys.md#colormetrics)实现窗口背景透明。
+可以通过调用[setWindowBackgroundColor](../reference/apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#setwindowbackgroundcolor)接口，传入'\#00XXXXXX'（其中X代表任意十六进制数字）或者透明的ColorMetrics实现窗口背景透明。
 
 ## 如何判断应用被部分遮挡或完全遮挡
 
@@ -643,7 +643,7 @@ struct Index {
 
 ## resize、moveWindowTo等接口有什么位置/大小限制
 
-当调用[resize()](../reference/apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#resize)接口调整窗口大小时，窗口尺寸大小范围会受到[WindowLimits](../reference/apis-arkui/arkts-apis/arkts-arkui-window-windowlimits-i.md#windowlimits)限制，具体尺寸限制范围可以通过[getWindowLimits](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/arkts-apis-window-window#getwindowlimits11)接口进行查询。
+当调用[resize()](../reference/apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#resize)接口调整窗口大小时，窗口尺寸大小范围会受到WindowLimits限制，具体尺寸限制范围可以通过[getWindowLimits](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/arkts-apis-window-window#getwindowlimits11)接口进行查询。
 
 调用[moveWindowTo()](../reference/apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#movewindowto)接口调整窗口位置对窗口位置无限制。
 
@@ -673,7 +673,7 @@ struct Index {
 - 窗口级水印：可通过[setWaterMarkFlag()](../reference/apis-arkui/arkts-apis/arkts-arkui-uiextension-windowproxy-i-sys.md#setwatermarkflag)为当前窗口添加或删除安全水印标志。
 <!--DelEnd-->
 
-- 进程级水印：可通过[setWatermarkImageForAppWindows()](../reference/apis-arkui/arkts-apis/arkts-arkui-window-setwatermarkimageforappwindows-f.md#setwatermarkimageforappwindows)设置或取消应用进程级水印，针对当前应用进程的窗口生效，包括后续该进程新创建的窗口。
+- 进程级水印：可通过setWatermarkImageForAppWindows()设置或取消应用进程级水印，针对当前应用进程的窗口生效，包括后续该进程新创建的窗口。
 
 <!--Del-->
 - 屏幕级水印：可通过[window.setWaterMarkImage](../reference/apis-arkui/arkts-apis/arkts-arkui-window-setwatermarkimage-f-sys.md#setwatermarkimage)设置和取消屏幕级水印。
@@ -681,13 +681,13 @@ struct Index {
 
 ## 如何将创建的窗口移动到扩展屏
 
-- 应用可通过主动调用[moveWindowToGlobal()](../reference/apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#movewindowtoglobal)接口将当前窗口移动到扩展屏幕，通过配置接口参数中的[MoveConfiguration](../reference/apis-arkui/arkts-apis/arkts-arkui-window-moveconfiguration-i.md#moveconfiguration)指定当前窗口期望移动的目标屏幕。
+- 应用可通过主动调用[moveWindowToGlobal()](../reference/apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#movewindowtoglobal)接口将当前窗口移动到扩展屏幕，通过配置接口参数中的MoveConfiguration指定当前窗口期望移动的目标屏幕。
 
 - 应用也可调用[startMoving()](../reference/apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#startmoving)接口通过鼠标或触摸点拖拽将当前窗口移动到目标屏幕上。该接口仅在[onTouch](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-arcbutton-arcbuttonoptions-c.md#ontouch)事件（其中，事件类型必须为TouchType.Down）的回调方法中调用才会有移动效果，成功调用此接口后，窗口将跟随鼠标或触摸点移动。
 
 ## 子窗口背景如何实现半透明效果
 
-子窗口可以调用[setWindowBackgroundColor](../reference/apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#setwindowbackgroundcolor)接口，传入'\#XXYYYYYY'（其中XX代表任意十六进制且不为0数值，Y表示任意十六进制数字）或者半透明的[ColorMetrics](../reference/apis-arkui/arkts-apis/arkts-arkui-graphics-colormetrics-c-sys.md#colormetrics)。
+子窗口可以调用[setWindowBackgroundColor](../reference/apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#setwindowbackgroundcolor)接口，传入'\#XXYYYYYY'（其中XX代表任意十六进制且不为0数值，Y表示任意十六进制数字）或者半透明的ColorMetrics。
 
 示例代码如下所示：
 
@@ -732,15 +732,15 @@ windowClass.loadContent("pages/page2", storage, (err: BusinessError) => {
 
 **问题现象**
 
-当使用[getLastWindow()](../reference/apis-arkui/arkts-apis/arkts-arkui-window-getlastwindow-f.md#getlastwindow)获取应用最顶层窗口时，获取到了正在销毁的子窗。
+当使用getLastWindow()获取应用最顶层窗口时，获取到了正在销毁的子窗。
 
 **产生原因**
 
-当使用[destroyWindow()](../reference/apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#destroywindow)销毁子窗时，未等待其销毁完成即调用[getLastWindow()](../reference/apis-arkui/arkts-apis/arkts-arkui-window-getlastwindow-f.md#getlastwindow)，导致获取到了正在销毁的子窗。
+当使用[destroyWindow()](../reference/apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#destroywindow)销毁子窗时，未等待其销毁完成即调用getLastWindow()，导致获取到了正在销毁的子窗。
 
 **解决措施**
 
-在使用[getLastWindow()](../reference/apis-arkui/arkts-apis/arkts-arkui-window-getlastwindow-f.md#getlastwindow)获取应用最顶层窗口前，应确保子窗销毁、窗口创建等操作已完成。
+在使用getLastWindow()获取应用最顶层窗口前，应确保子窗销毁、窗口创建等操作已完成。
 
 **示例代码**
 
@@ -791,7 +791,7 @@ try {
 
 **问题现象**
 
-因为历史问题，主窗场景调用[getWindowProperties()](../reference/apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#getwindowproperties)获取到的窗口类型即[WindowType](../reference/apis-arkui/arkts-apis/arkts-arkui-window-systemwindowoptions-i-sys.md#windowtype)为TYPE_SYSTEM_ALERT而不是TYPE_MAIN。
+因为历史问题，主窗场景调用[getWindowProperties()](../reference/apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#getwindowproperties)获取到的窗口类型即WindowType为TYPE_SYSTEM_ALERT而不是TYPE_MAIN。
 
 **解决措施**
 
@@ -803,7 +803,7 @@ try {
 
 **问题现象**
 
-在[on('windowSizeChange')](../reference/apis-arkui/arkts-apis/arkts-arkui-uiextension-windowproxy-i.md#onwindowsizechange)、[on('windowRectChange')](../reference/apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#onwindowrectchange)等窗口属性变化监听回调中，通过[getWindowAvoidArea()](../reference/apis-arkui/arkts-apis/arkts-arkui-uiextension-windowproxy-i.md#getwindowavoidarea)接口获取到的避让区域数据不准确。
+在[on('windowSizeChange')](../reference/apis-arkui/arkts-apis/arkts-arkui-uiextension-windowproxy-i.md#onwindowsizechange)、[on('windowRectChange')](../reference/apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#onwindowrectchange)等窗口属性变化监听回调中，通过getWindowAvoidArea()接口获取到的避让区域数据不准确。
 
 **产生原因**
 

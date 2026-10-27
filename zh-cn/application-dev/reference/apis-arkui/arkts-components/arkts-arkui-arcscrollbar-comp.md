@@ -44,7 +44,7 @@ ArcScrollBar的构造函数。
 
 ## 示例
 
-该示例通过ArcScrollBar与[Scroll](ts-container-scroll.md)组件联动，设置了弧形外置滚动条。
+该示例通过ArcScrollBar与Scroll组件联动，设置了弧形外置滚动条。
 
 ```TypeScript
 import { ArcScrollBar } from '@kit.ArkUI';

@@ -19,7 +19,7 @@
    import { cert } from '@kit.DeviceCertificateKit';
    ```
 
-2. 基于已有的证书数据，调用[cert.createX509CertChain](../../reference/apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-createx509certchain-f.md#createx509certchain)创建X.509证书链对象，并返回结果。
+2. 基于已有的证书数据，调用cert.createX509CertChain创建X.509证书链对象，并返回结果。
 
 3. 调用[x509CertChain.validate](../../reference/apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-certchainvalidator-i.md#validate)设置校验参数trustSystemCa为true，使用系统预置CA证书校验证书链并返回结果。
 

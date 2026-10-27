@@ -59,7 +59,7 @@
 | 监听窗口焦点变化 | 监听窗口焦点变化，以在窗口失焦时控制后台行为，如暂停动画、释放资源等。 | [on('windowEvent')](../reference/apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#onwindowevent) |
 | 监听窗口激活态变化 | 监听窗口激活态变化，用于动态调整UI样式，如标题栏颜色、边框等。 | [on('windowHighlightChange')](../reference/apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#onwindowhighlightchange) |
 | 设置窗口是否可获焦 | 控制某个窗口是否参与焦点竞争。例如横幅消息通知，设置不可获焦，不打断用户输入法输入 | [setWindowFocusable()](../reference/apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#setwindowfocusable) |
-| 在同应用内转移窗口焦点 | 进行应用内部多个窗口之间的焦点切换，确保流畅的焦点导航体验。例如，多窗口界面切换编辑窗口等。 | [shiftAppWindowFocus()](../reference/apis-arkui/arkts-apis/arkts-arkui-window-shiftappwindowfocus-f.md#shiftappwindowfocus) |
+| 在同应用内转移窗口焦点 | 进行应用内部多个窗口之间的焦点切换，确保流畅的焦点导航体验。例如，多窗口界面切换编辑窗口等。 | shiftAppWindowFocus() |
 | 判断窗口是否获焦 | 进行窗口获焦状态的判断，可用于防止非活跃窗口执行敏感操作。 | [isFocused()](../reference/apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#isfocused) |
 | 设置窗口是否独占激活 | 设置窗口为独占激活时，可用于聚焦窗口操作，提升用户注意力。<br/>设置窗口为非独占激活时，可用于多标签页设计，支持多个窗口同时保持高亮。 | [setExclusivelyHighlighted()](../reference/apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#setexclusivelyhighlighted) |
 | 查询窗口是否为激活态 | 判断当前窗口是否处于视觉高亮，可用于UI状态同步等场景。 | [isWindowHighlighted()](../reference/apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#iswindowhighlighted) |

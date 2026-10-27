@@ -37,7 +37,7 @@
 
 - 每次执行需要目标权限的操作时，应用都必须检查自己是否已经具有该权限。
   
-  如需检查用户是否已向您的应用授予特定权限，可以使用[checkAccessToken()](../../reference/apis-ability-kit/arkts-apis/arkts-ability-abilityaccessctrl-atmanager-i.md#checkaccesstoken)函数。此方法会返回[PERMISSION_GRANTED](../../reference/apis-ability-kit/arkts-apis/arkts-ability-abilityaccessctrl-grantstatus-e.md#grantstatus)或[PERMISSION_DENIED](../../reference/apis-ability-kit/arkts-apis/arkts-ability-abilityaccessctrl-grantstatus-e.md#grantstatus)。具体示例可参考下文。
+  如需检查用户是否已向您的应用授予特定权限，可以使用[checkAccessToken()](../../reference/apis-ability-kit/arkts-apis/arkts-ability-abilityaccessctrl-atmanager-i.md#checkaccesstoken)函数。此方法会返回PERMISSION_GRANTED或PERMISSION_DENIED。具体示例可参考下文。
 
 - 每次访问受目标权限保护的接口之前，都需要使用[requestPermissionsFromUser()](../../reference/apis-ability-kit/arkts-apis/arkts-ability-abilityaccessctrl-atmanager-i.md#requestpermissionsfromuser)接口请求相应的权限。
 

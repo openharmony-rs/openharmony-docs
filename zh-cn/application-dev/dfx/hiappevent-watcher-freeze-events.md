@@ -32,15 +32,15 @@
 
 | 接口名 | 描述 |
 | -------- | -------- |
-| [configEventPolicy](../reference/apis-performance-analysis-kit/arkts-apis/arkts-performanceanalysis-hiappevent-configeventpolicy-f.md#configeventpolicy) (policy: EventPolicy): Promise&lt;void>| 设置应用冻屏事件策略参数接口，支持开启应用冻屏事件的页面切换日志采集。 |
+| configEventPolicy (policy: EventPolicy): Promise&lt;void>| 设置应用冻屏事件策略参数接口，支持开启应用冻屏事件的页面切换日志采集。 |
 
 ### configEventPolicy接口参数设置说明
 
-开发者可以通过设置[EventPolicy](../reference/apis-performance-analysis-kit/arkts-apis/arkts-performanceanalysis-hiappevent-eventpolicy-i.md#eventpolicy) 的参数来开启应用冻屏事件的页面切换日志采集。
+开发者可以通过设置EventPolicy 的参数来开启应用冻屏事件的页面切换日志采集。
 
 | 名称       | 类型    | 只读 | 可选 | 说明                                         |
 | ---------- | ------- | ---- | ---- | ------------------------------------------ |
-| appFreezePolicy | [AppFreezePolicy](../reference/apis-performance-analysis-kit/arkts-apis/arkts-performanceanalysis-hiappevent-appfreezepolicy-i.md#appfreezepolicy) | 否 | 是   | 应用冻屏事件配置策略。 |
+| appFreezePolicy | AppFreezePolicy | 否 | 是   | 应用冻屏事件配置策略。 |
 
 **参数设置示例**
 
@@ -190,4 +190,4 @@ hiAppEvent.configEventPolicy(policy).then(() => {
 
 ### 参数设置说明
 
-开发者可以通过该接口订阅name为hiAppEvent.event.APP_FREEZE的应用冻屏事件，具体使用详见[hiAppEvent.setEventParam](../reference/apis-performance-analysis-kit/arkts-apis/arkts-performanceanalysis-hiappevent-seteventparam-f.md#seteventparam)。
+开发者可以通过该接口订阅name为hiAppEvent.event.APP_FREEZE的应用冻屏事件，具体使用详见hiAppEvent.setEventParam。

@@ -61,7 +61,7 @@ struct Index {
 
 设置LabelStyle有两种方式，其中：
 - 直接设置LabelStyle。此时font属性中的weight默认值为FontWeight.Medium，对应数值500。
-- 通过[AttributeModifier](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-attributemodifier-i.md#attributemodifier)接口设置。此时font属性中的weight默认值为400，与LabelStyle对象说明中的默认值存在差异。
+- 通过AttributeModifier接口设置。此时font属性中的weight默认值为400，与LabelStyle对象说明中的默认值存在差异。
 
 **解决措施**
 

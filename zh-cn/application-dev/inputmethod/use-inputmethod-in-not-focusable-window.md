@@ -70,7 +70,7 @@
    }
    ```
 
-2. 当用户点击子窗中的输入框组件时，可以先通过[setWindowFocusable](../reference/apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#setwindowfocusable)将子窗设置为可获焦，然后通过[shiftAppWindowFocus](../reference/apis-arkui/arkts-apis/arkts-arkui-window-shiftappwindowfocus-f.md#shiftappwindowfocus)将焦点窗口从主窗切换为子窗，即可在子窗的输入框中正常使用输入法。
+2. 当用户点击子窗中的输入框组件时，可以先通过[setWindowFocusable](../reference/apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#setwindowfocusable)将子窗设置为可获焦，然后通过shiftAppWindowFocus将焦点窗口从主窗切换为子窗，即可在子窗的输入框中正常使用输入法。
 
    ```ts
    // SubWindowIndex.ets实现子窗的布局内容

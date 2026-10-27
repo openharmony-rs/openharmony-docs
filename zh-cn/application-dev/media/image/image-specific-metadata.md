@@ -16,7 +16,7 @@
 | ---------- | ------------ | -------- | ----------- | -------- |
 | GIF | GIF_METADATA | [GifMetadata](../../reference/apis-image-kit/arkts-apis/arkts-image-image-gifmetadata-c.md) | 26.0.0 | 帧延迟时长、循环次数、画布尺寸等。 |
 | HEIFS | HEIFS_METADATA | [HeifsMetadata](../../reference/apis-image-kit/arkts-apis/arkts-image-image-heifsmetadata-c.md) | 23 | 画布高度、画布宽度、未钳制延迟时长等。 |
-| DNG | DNG_METADATA | [DngMetadata](../../reference/apis-image-kit/arkts-apis/arkts-image-image-dngmetadata-c.md#dngmetadata) | 24 | DNG版本号、相机型号、CFA参数、黑白电平、色彩校正矩阵等。 |
+| DNG | DNG_METADATA | DngMetadata | 24 | DNG版本号、相机型号、CFA参数、黑白电平、色彩校正矩阵等。 |
 | WebP | WEBP_METADATA | [WebPMetadata](../../reference/apis-image-kit/arkts-apis/arkts-image-image-webpmetadata-c.md) | 24 | 画布尺寸、帧延迟时长、循环次数等。 |
 | PNG | PNG_METADATA | [PngMetadata](../../reference/apis-image-kit/arkts-apis/arkts-image-image-pngmetadata-c.md) | 26.0.0 | 像素密度、描述、版权等。 |
 | JFIF | JFIF_METADATA | [JfifMetadata](../../reference/apis-image-kit/arkts-apis/arkts-image-image-jfifmetadata-c.md) | 26.0.0 | 像素密度、渐进编码等。 |
@@ -81,7 +81,7 @@
    }
    ```
 
-   使用[readImageMetadataByType](../../reference/apis-image-kit/arkts-apis/arkts-image-image-imagesource-i.md#readimagemetadatabytype)接口，通过指定[MetadataType](../../reference/apis-image-kit/arkts-apis/arkts-image-image-metadatatype-e.md#metadatatype)枚举值读取对应格式的专有元数据。以读取GIF元数据为例：
+   使用[readImageMetadataByType](../../reference/apis-image-kit/arkts-apis/arkts-image-image-imagesource-i.md#readimagemetadatabytype)接口，通过指定MetadataType枚举值读取对应格式的专有元数据。以读取GIF元数据为例：
 
    <!-- @[read_imageMetadataByType](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->  
    

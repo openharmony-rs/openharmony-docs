@@ -13,7 +13,7 @@
 
 ## 开发步骤
 
-接口具体使用方法和说明请参考[IndexUtil](../reference/apis-localization-kit/arkts-apis/arkts-localization-i18n-indexutil-c.md#indexutil)的API文档。
+接口具体使用方法和说明请参考IndexUtil的API文档。
 
 1. 导入模块。
 

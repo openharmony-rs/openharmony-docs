@@ -175,7 +175,7 @@ API version 19及后续版本的新增字段，均以**竖线+字段**的方式�
 
 ### 字段为空情况说明
 
-如果用户态trace格式中间字段对应接口参数传入内容为空，用户态trace格式将保留`|`分隔符，如果尾部字段为空，用户态trace格式将不保留`|`分隔符。以[hiTraceMeter.startAsyncTrace()](../reference/apis-performance-analysis-kit/arkts-apis/arkts-performanceanalysis-hitracemeter-startasynctrace-f.md#startasynctrace)和[hiTraceMeter.startSyncTrace()](../reference/apis-performance-analysis-kit/arkts-apis/arkts-performanceanalysis-hitracemeter-startsynctrace-f.md#startsynctrace)接口的`自定义聚类名称`和`自定义键值对`参数为例，对应的格式参考如下。
+如果用户态trace格式中间字段对应接口参数传入内容为空，用户态trace格式将保留`|`分隔符，如果尾部字段为空，用户态trace格式将不保留`|`分隔符。以hiTraceMeter.startAsyncTrace()和hiTraceMeter.startSyncTrace()接口的`自定义聚类名称`和`自定义键值对`参数为例，对应的格式参考如下。
 
 - 开始同步trace打点。
 

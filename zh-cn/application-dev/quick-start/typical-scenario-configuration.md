@@ -109,4 +109,4 @@
 
 ## 隐藏快捷方式
 
-可以通过[setShortcutVisibleForSelf](../reference/apis-ability-kit/arkts-apis/arkts-ability-shortcutmanager-setshortcutvisibleforself-f.md#setshortcutvisibleforself)接口隐藏或展示快捷方式。
+可以通过setShortcutVisibleForSelf接口隐藏或展示快捷方式。

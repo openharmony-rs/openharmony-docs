@@ -26,7 +26,7 @@ Phone、Tablet和TV设备支持`SystemCapability.Multimedia.Audio.PlaybackCaptur
 4. 启动成功后，通过音频数据回调处理内录PCM数据。
 5. 停止采集，取消监听并释放音频采集器资源。
 
-ArkTS开发建议搭配[AudioCapturer](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiocapturer-i.md)、[AudioCapturerOptions](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiocaptureroptions-i-sys.md#audiocaptureroptions)和[AudioPlaybackCaptureMode](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audioplaybackcapturemode-e-sys.md#audioplaybackcapturemode)的API说明阅读。
+ArkTS开发建议搭配[AudioCapturer](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiocapturer-i.md)、AudioCapturerOptions和AudioPlaybackCaptureMode的API说明阅读。
 
 C/C++开发建议搭配OH_AudioStreamBuilderStruct、OH_AudioCapturerStruct和OH_AudioStream_PlaybackCaptureMode的API说明阅读。
 
@@ -56,7 +56,7 @@ C/C++开发建议搭配OH_AudioStreamBuilderStruct、OH_AudioCapturerStruct和OH
 
 2. 配置音频采集参数并创建AudioCapturer实例。
 
-   创建AudioCapturer时，通过[AudioCapturerOptions](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiocaptureroptions-i-sys.md#audiocaptureroptions)中的`playbackCaptureMode`配置内录模式。该字段支持[AudioPlaybackCaptureMode](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audioplaybackcapturemode-e-sys.md#audioplaybackcapturemode)枚举值、按位或组合。未配置`playbackCaptureMode`时，AudioCapturer按普通音频采集器创建。
+   创建AudioCapturer时，通过AudioCapturerOptions中的`playbackCaptureMode`配置内录模式。该字段支持AudioPlaybackCaptureMode枚举值、按位或组合。未配置`playbackCaptureMode`时，AudioCapturer按普通音频采集器创建。
 
    当前支持的内录模式如下：
 
@@ -125,7 +125,7 @@ C/C++开发建议搭配OH_AudioStreamBuilderStruct、OH_AudioCapturerStruct和OH
 
 4. 调用[requestPlaybackCaptureStart()](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiocapturer-i.md#requestplaybackcapturestart)请求启动内录。
 
-   该接口为非阻塞接口，系统会继续处理用户授权检查和内录流启动，最终结果通过[PlaybackCaptureStartState](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-playbackcapturestartstate-e.md#playbackcapturestartstate)返回。
+   该接口为非阻塞接口，系统会继续处理用户授权检查和内录流启动，最终结果通过PlaybackCaptureStartState返回。
 
    示例通过递增`playbackCaptureRequestId`标识每次启动请求。回调返回时同时校验采集器实例和请求ID，避免旧请求回调修改当前内录状态。等待授权期间，应用应继续处理其他业务，避免同步阻塞当前线程。
 
@@ -159,7 +159,7 @@ C/C++开发建议搭配OH_AudioStreamBuilderStruct、OH_AudioCapturerStruct和OH
    });
    ```
 
-   启动结果请参考[PlaybackCaptureStartState](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-playbackcapturestartstate-e.md#playbackcapturestartstate)。如果启动结果不是`STATE_SUCCESS`，应用应根据业务提示用户，并及时释放已创建的AudioCapturer实例。应用主动停止内录流后，还应忽略旧请求返回的异步回调。
+   启动结果请参考PlaybackCaptureStartState。如果启动结果不是`STATE_SUCCESS`，应用应根据业务提示用户，并及时释放已创建的AudioCapturer实例。应用主动停止内录流后，还应忽略旧请求返回的异步回调。
 
 5. 调用[stop](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiocapturer-i.md#stop)停止采集，并调用[release](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiocapturer-i.md#release)释放AudioCapturer资源。
 
@@ -418,5 +418,5 @@ C/C++开发建议搭配OH_AudioStreamBuilderStruct、OH_AudioCapturerStruct和OH
 
 播放端可以通过配置自身音频流的隐私属性，控制是否允许其他应用录制。系统建立内录采集链路时，会过滤标记为隐私保护的播放流，因此通话内容、账号信息或其他隐私内容不会被内录采集。该配置属于播放端能力，不需要内录应用额外处理。
 
-- 使用ArkTS API开发时，播放端可通过[AudioRendererOptions](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiorendereroptions-i-sys.md#audiorendereroptions)中的`privacyType`控制播放流是否允许被其他应用录制。
+- 使用ArkTS API开发时，播放端可通过AudioRendererOptions中的`privacyType`控制播放流是否允许被其他应用录制。
 - 使用C API开发时，播放端可通过OH_AudioStreamBuilder_SetRendererPrivacy()控制播放流是否允许被其他应用录制。

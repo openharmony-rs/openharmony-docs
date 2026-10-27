@@ -102,7 +102,7 @@ Emitter通过维护一个内部事件队列，来进行任务分发。应用需�
     > **说明：**
     >
     > - 当不需要订阅某个事件时，需要及时取消订阅避免造成内存泄漏。
-    > - 使用[off](../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-emitter-off-f.md#off)接口取消某个事件订阅后，已通过[emit](../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-emitter-emit-f.md#emit)接口发布但尚未被执行的事件将被取消。
+    > - 使用off接口取消某个事件订阅后，已通过emit接口发布但尚未被执行的事件将被取消。
 
    <!-- @[emitter_off](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/Emitter/entry/src/main/ets/pages/Index.ets) -->
    

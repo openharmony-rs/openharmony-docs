@@ -13,7 +13,7 @@
 
 系统默认对异常的处理方式为进程退出，如果应用使用过程中产生了用户数据，直接退出可能会导致用户工作中断，数据丢失。
 
-如果应用在[AbilityStage](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-abilitystage-abilitystage-c.md#abilitystage)中使能[应用恢复功能](#应用恢复接口功能介绍)，并对临时数据进行保存，应用非预期退出后的下一次启动会恢复先前的状态和数据，给用户更连贯的使用体验。这里状态包括应用的页面栈以及onSaveState接口中保存的数据。
+如果应用在AbilityStage中使能[应用恢复功能](#应用恢复接口功能介绍)，并对临时数据进行保存，应用非预期退出后的下一次启动会恢复先前的状态和数据，给用户更连贯的使用体验。这里状态包括应用的页面栈以及onSaveState接口中保存的数据。
 
 API版本9上的应用恢复接口支持单UIAbility的Stage模型应用开发。支持JsError故障时的状态保存与自动重启。
 
@@ -75,7 +75,7 @@ API版本10开始支持应用卡死时的状态保存。JsError故障时，onSav
 
 - 故障查询指的是[faultLogger](../reference/apis-performance-analysis-kit/arkts-apis/arkts-performanceanalysis-faultlogger.md)通过其查询接口获取当前的故障信息。
 
-下图中并没有标记faultLogger的调用时机，开发者可以根据应用启动时传入的[LastExitReason](../reference/apis-ability-kit/arkts-apis/arkts-ability-abilityconstant-lastexitreason-e.md#lastexitreason)来决定是否调用faultLogger查询上次的故障信息。
+下图中并没有标记faultLogger的调用时机，开发者可以根据应用启动时传入的LastExitReason来决定是否调用faultLogger查询上次的故障信息。
 
 ![20221106203527](figures/20221106203527.png)
 
@@ -91,9 +91,9 @@ API版本10开始支持应用卡死时的状态保存。JsError故障时，onSav
 
 | 故障名称 | 故障监听 | 状态保存 | 自动重启 | 日志查询 |
 | -------- | -------- | -------- | -------- | -------- |
-| [JS_CRASH](../reference/apis-performance-analysis-kit/arkts-apis/arkts-performanceanalysis-faultlogger-faulttype-e.md#faulttype) | 支持 | 支持 | 支持 | 支持 |
-| [APP_FREEZE](../reference/apis-performance-analysis-kit/arkts-apis/arkts-performanceanalysis-faultlogger-faulttype-e.md#faulttype) | API18及以上支持 | 支持 | 支持 | 支持 |
-| [CPP_CRASH](../reference/apis-performance-analysis-kit/arkts-apis/arkts-performanceanalysis-faultlogger-faulttype-e.md#faulttype) | 不支持 | 不支持 | API24及以上支持 | 支持 |
+| JS_CRASH | 支持 | 支持 | 支持 | 支持 |
+| APP_FREEZE | API18及以上支持 | 支持 | 支持 | 支持 |
+| CPP_CRASH | 不支持 | 不支持 | API24及以上支持 | 支持 |
 
 这里状态保存指的是故障时状态保存，对于应用卡死场景，开发者可以采用定时保存状态或者在UIAbility切入后台后自动保存的方式最大限度地保护用户数据。
 
@@ -280,7 +280,7 @@ export default class EntryAbility extends UIAbility {
 
 **故障UIAbility的重启恢复标记**
 
-发生故障的UIAbility再次重新启动时，在调用onCreate生命周期里，参数want的parameters成员会有[ABILITY_RECOVERY_RESTART](../reference/apis-ability-kit/arkts-apis/arkts-ability-wantconstant-params-e-sys.md#params)标记数据，并且值为true。
+发生故障的UIAbility再次重新启动时，在调用onCreate生命周期里，参数want的parameters成员会有ABILITY_RECOVERY_RESTART标记数据，并且值为true。
 
 ```ts
 import { AbilityConstant, UIAbility, Want, wantConstant } from '@kit.AbilityKit';

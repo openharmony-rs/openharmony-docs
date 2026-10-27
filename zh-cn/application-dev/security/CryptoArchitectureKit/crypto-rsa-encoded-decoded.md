@@ -9,15 +9,15 @@
 
 **编码**
 
-1. 调用[cryptoFramework.createAsyKeyGenerator](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-createasykeygenerator-f.md#createasykeygenerator)、[AsyKeyGenerator.generateKeyPair](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-asykeygenerator-i.md#generatekeypair-1)，生成RSA密钥类型为RSA1024、素数个数为2的非对称密钥对（KeyPair）。KeyPair对象中包括公钥PubKey、私钥PriKey。
+1. 调用cryptoFramework.createAsyKeyGenerator、[AsyKeyGenerator.generateKeyPair](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-asykeygenerator-i.md#generatekeypair-1)，生成RSA密钥类型为RSA1024、素数个数为2的非对称密钥对（KeyPair）。KeyPair对象中包括公钥PubKey、私钥PriKey。
 
    如何生成RSA非对称密钥对，开发者可参考下文示例，并结合[非对称密钥生成和转换规格：RSA](crypto-key-generation-conversion.md#rsa)和[随机生成非对称密钥对](crypto-generate-asym-key-pair-randomly.md)理解，参考文档与当前示例可能存在入参差异，请在阅读时注意区分。
 
-2. 传入参数[KeyEncodingConfig](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-keyencodingconfig-i.md#keyencodingconfig)，参数PKCS1/PKCS8，调用[prikey.getEncodedPem](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-prikey-i.md#getencodedpem)生成编码后的私钥字符串。
+2. 传入参数KeyEncodingConfig，参数PKCS1/PKCS8，调用[prikey.getEncodedPem](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-prikey-i.md#getencodedpem)生成编码后的私钥字符串。
 
 **解码**
 
-1. 调用[cryptoFramework.createAsyKeyGenerator](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-createasykeygenerator-f.md#createasykeygenerator)生成RSA非对称密钥生成器asyKeyGenerator。
+1. 调用cryptoFramework.createAsyKeyGenerator生成RSA非对称密钥生成器asyKeyGenerator。
 
    如何生成RSA非对称密钥对，开发者可参考下文示例，并结合[非对称密钥生成和转换规格：RSA](crypto-key-generation-conversion.md#rsa)。
 

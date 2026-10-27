@@ -80,9 +80,9 @@
 
 ### 注册设备流程
 
-调用[bindDevice](../../reference/apis-connectivity-kit/arkts-apis/arkts-connectivity-partneragent-binddevice-f.md#binddevice)接口注册设备，注册过的设备才会触发伙伴设备Extension拉起流程。
+调用bindDevice接口注册设备，注册过的设备才会触发伙伴设备Extension拉起流程。
 
-- 注册前需要调用接口[isDeviceControlEnabled](../../reference/apis-connectivity-kit/arkts-apis/arkts-connectivity-partneragent-isdevicecontrolenabled-f.md#isdevicecontrolenabled)判断当前设备的互通功能是否打开。
+- 注册前需要调用接口isDeviceControlEnabled判断当前设备的互通功能是否打开。
 
 - 该设备在注册前需要保证与本机蓝牙处于配对状态。
 
@@ -127,9 +127,9 @@ if (isEnabled == false) {
 
 ### 解注册设备流程
 
-当伙伴设备应用不再需要被系统保持可唤醒状态，调用应用解注册设备接口[unbindDevice](../../reference/apis-connectivity-kit/arkts-apis/arkts-connectivity-partneragent-unbinddevice-f.md#unbinddevice)
+当伙伴设备应用不再需要被系统保持可唤醒状态，调用应用解注册设备接口unbindDevice
 
-- 解注册前需要调用接口建议调用[isDeviceBound](../../reference/apis-connectivity-kit/arkts-apis/arkts-connectivity-partneragent-isdevicebound-f.md#isdevicebound)接口判断设备注册状态，已注册设备再进行解注册。
+- 解注册前需要调用接口建议调用isDeviceBound接口判断设备注册状态，已注册设备再进行解注册。
 
 - 解注册后，应用的PartnerAgentExtensionAbility进程将不再接收此设备的发现和下线状态通知。
 

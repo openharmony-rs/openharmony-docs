@@ -89,7 +89,7 @@ struct WebComponent {
 
 ### Cache
 
-使用[cacheMode](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-attribute.md#cachemode)配置页面资源的缓存模式，Web组件为开发者提供四种缓存模式，分别为：
+使用cacheMode配置页面资源的缓存模式，Web组件为开发者提供四种缓存模式，分别为：
 
 - Default：优先使用未过期的缓存。如果缓存不存在，则从网络获取。
 
@@ -156,7 +156,7 @@ struct WebComponent {
 
 ### DOM Storage
 
-DOM Storage包含了Session Storage和Local Storage两类。Session Storage为临时数据，其存储与释放跟随会话生命周期；Local Storage为持久化数据，保存在应用目录下。两者的数据均通过Key-Value的形式存储，在访问需要客户端存储的页面时使用。开发者可以通过Web组件的属性接口[domStorageAccess](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-attribute.md#domstorageaccess)进行使能配置，示例如下：
+DOM Storage包含了Session Storage和Local Storage两类。Session Storage为临时数据，其存储与释放跟随会话生命周期；Local Storage为持久化数据，保存在应用目录下。两者的数据均通过Key-Value的形式存储，在访问需要客户端存储的页面时使用。开发者可以通过Web组件的属性接口domStorageAccess进行使能配置，示例如下：
 
 
 <!-- @[enable_configuration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/ets/pages/DomStorage.ets) -->

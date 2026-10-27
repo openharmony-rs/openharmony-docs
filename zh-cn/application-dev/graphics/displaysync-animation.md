@@ -6,7 +6,7 @@
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
 
-在应用开发中，属性动画和[显式动画](../reference/apis-arkui/errorcode-animation.md)能够使用可选参数[ExpectedFrameRateRange](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-animateparam-i.md#expectedframeraterange)，为不同的动画配置不同的期望绘制帧率。
+在应用开发中，属性动画和显式动画能够使用可选参数[ExpectedFrameRateRange](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-animateparam-i.md#expectedframeraterange)，为不同的动画配置不同的期望绘制帧率。
 
 ## 请求属性动画的绘制帧率
 定义文本组件的属性动画，请求绘制帧率为60，范例如下：

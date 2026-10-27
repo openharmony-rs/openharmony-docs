@@ -288,7 +288,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 ### 监听输出设备变化
 
-应用可以通过注册[CurrentOutputDeviceChangedEvent](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-currentoutputdevicechangedevent-i.md#currentoutputdevicechangedevent)监听输出设备的连接状态变化。
+应用可以通过注册CurrentOutputDeviceChangedEvent监听输出设备的连接状态变化。
 
 > **说明：**
 > 

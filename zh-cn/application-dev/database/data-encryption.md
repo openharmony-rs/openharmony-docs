@@ -122,7 +122,7 @@
 
 ## 关系型数据库加密
 
-关系型数据库，通过[StoreConfig](../reference/apis-arkdata/arkts-apis/arkts-arkdata-rdb-storeconfig-i.md#storeconfig)中encrypt属性来设置是否加密。encrypt参数为true时表示加密；为false时表示不加密；默认值为false。
+关系型数据库，通过StoreConfig中encrypt属性来设置是否加密。encrypt参数为true时表示加密；为false时表示不加密；默认值为false。
 
 当encrypt为true时，支持开发者通过ArkTS API中的可选属性cryptoParam设置自定义的加密/解密密钥和算法等参数。
 

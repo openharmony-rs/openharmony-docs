@@ -14,7 +14,7 @@
  > - 自定义组件中通常会持有一个由[createAnimator](arkts-arkui-arkui-uicontext-uicontext-c.md#createanimator)接口返回的
  > [AnimatorResult](arkts-arkui-animator-animatorresult-i.md)对象，以确保动画对象在动画过程中不被析构，该对象通过回调捕获了自定义组件对象，因此需要在自定义组件销毁时的
  > aboutToDisappear生命周期中释放动画对象，以避免因循环依赖导致内存泄漏。详细示例可参考：
- > [基于ArkTS扩展的声明式开发范式](../../../reference/apis-arkui/js-apis-animator.md#基于arkts扩展的声明式开发范式)。
+ > 基于ArkTS扩展的声明式开发范式。
  >
  > - Animator对象析构或主动调用[cancel](arkts-arkui-animator-animatorresult-i.md#cancel)、[finish](arkts-arkui-animator-animatorresult-i.md#finish)方法时，都会触发一次额外的
  > [onFrame](arkts-arkui-animator-animatorresult-i.md#onframe)，返回值是动画终点值。因此，如果在动画过程中调用

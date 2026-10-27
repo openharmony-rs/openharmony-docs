@@ -12,7 +12,7 @@
 
 ## 读取或监听应用内音频流状态变化
 
-参考[使用AudioCapturer开发音频录制功能(ArkTS)](using-audiocapturer-for-recording.md)或[audio.createAudioCapturer](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-createaudiocapturer-f.md#createaudiocapturer)，先完成AudioCapturer的创建，再通过以下两种方法查看音频流状态的变化。
+参考[使用AudioCapturer开发音频录制功能(ArkTS)](using-audiocapturer-for-recording.md)或audio.createAudioCapturer，先完成AudioCapturer的创建，再通过以下两种方法查看音频流状态的变化。
 
 - 方法1：直接查看AudioCapturer的属性state：
 
@@ -34,7 +34,7 @@
   });
   ```
 
-获取state后可根据[AudioState](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiostate-e.md#audiostate)来进行相应的操作，比如显示录制结束的提示等。
+获取state后可根据AudioState来进行相应的操作，比如显示录制结束的提示等。
 
 ## 读取或监听所有录制流的变化
 
@@ -47,7 +47,7 @@
 可根据业务场景，任选其中一种方法进行判断：
 
 - 查询当前采集器和输入设备电平：如果需要主动查询当前是否有输入设备正在采集声音，可联合使用[getCurrentAudioCapturerInfoArray](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiostreammanager-i.md#getcurrentaudiocapturerinfoarray)和[getMaxAmplitudeForInputDevice](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiovolumegroupmanager-i.md#getmaxamplitudeforinputdevice)。先调用`getCurrentAudioCapturerInfoArray`获取当前音频采集器信息，再遍历每个采集器使用的输入设备并调用`getMaxAmplitudeForInputDevice`获取音频流最大电平值，取值范围为[0, 1]。当最大电平值大于0时，说明该设备采集到声音，设备正在录音，可判断麦克风正在被占用。
-- 判断指定录制请求是否可启动：如果需要在启动录音前判断指定音源类型的录制请求是否可以启动，可调用[isRecordingAvailable](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiostreammanager-i.md#isrecordingavailable)，传入业务要使用的[AudioCapturerInfo](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiocapturerinfo-i.md#audiocapturerinfo)。如果返回`true`，表明可以使用麦克风进行录制；如果返回`false`，表明麦克风可能已被占用。示例代码可参考[isRecordingAvailable](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiostreammanager-i.md#isrecordingavailable)。
+- 判断指定录制请求是否可启动：如果需要在启动录音前判断指定音源类型的录制请求是否可以启动，可调用[isRecordingAvailable](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiostreammanager-i.md#isrecordingavailable)，传入业务要使用的AudioCapturerInfo。如果返回`true`，表明可以使用麦克风进行录制；如果返回`false`，表明麦克风可能已被占用。示例代码可参考[isRecordingAvailable](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiostreammanager-i.md#isrecordingavailable)。
 
 > **说明：**
 >

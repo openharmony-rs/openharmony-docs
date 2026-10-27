@@ -17,7 +17,7 @@ FaultLogExtensionAbility的原理机制如下图所示：
 
 ![工作机制说明](figures/fault_log_extension_ability_1.PNG)
 
-1. 主进程启动后，在主进程中添加事件观察者A和事件观察者B，其中A包含正常实现的回调处理函数以及事件订阅过滤条件[appEventFilter](../reference/apis-performance-analysis-kit/arkts-apis/arkts-performanceanalysis-hiappevent-appeventfilter-i.md#appeventfilter)，应用发生故障后正常重启会由A的回调处理HiAppEvent事件；B的回调处理函数为空实现，仅用于生成需要保存的事件订阅过滤条件。
+1. 主进程启动后，在主进程中添加事件观察者A和事件观察者B，其中A包含正常实现的回调处理函数以及事件订阅过滤条件appEventFilter，应用发生故障后正常重启会由A的回调处理HiAppEvent事件；B的回调处理函数为空实现，仅用于生成需要保存的事件订阅过滤条件。
 2. 事件观察者A和B的事件订阅过滤条件会被保存到应用沙箱中。当应用移除事件观察者时，应用沙箱中保存的相应观察者的事件订阅过滤条件也会被删除。
 3. 应用业务运行过程中发生崩溃事件或应用冻屏事件。
 4. 系统服务感知到应用故障后，采集应用故障信息。

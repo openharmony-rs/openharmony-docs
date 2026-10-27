@@ -12,7 +12,7 @@
 
 SoundPool当前支持播放解码后1MB以下的音频资源，解码后大小超过1MB的长音频将截取前面的1MB大小数据进行播放，这相当于44.1kHz的16bit位深的立体声下约5.6秒的音频时长（在较低采样率或单声道配置下，持续时间会相应延长）。
 
-本开发指导将以SoundPool进行一次低时延播放音频的过程为例，向开发者讲解如何使用SoundPool。详细的API声明请参考[SoundPool (音频池)](../../reference/apis-media-kit/arkts-apis/arkts-media-media-soundpool-t.md)。
+本开发指导将以SoundPool进行一次低时延播放音频的过程为例，向开发者讲解如何使用SoundPool。详细的API声明请参考SoundPool (音频池)。
 
 过程包括：创建SoundPool实例，加载音频资源（包括资源的解封装与解码），设置播放参数（循环模式/播放优先级等），播放控制（播放/停止），释放资源。
 
@@ -26,7 +26,7 @@ SoundPool当前支持播放解码后1MB以下的音频资源，解码后大小�
 
 ## 开发步骤及注意事项
 
-1. 调用[createSoundPool](../../reference/apis-media-kit/arkts-apis/arkts-media-media-createsoundpool-f.md#createsoundpool)方法创建SoundPool实例。
+1. 调用createSoundPool方法创建SoundPool实例。
 
    ```ts
    import { media } from '@kit.MediaKit';
@@ -45,7 +45,7 @@ SoundPool当前支持播放解码后1MB以下的音频资源，解码后大小�
    this.soundPool = await media.createSoundPool(14, audioRendererInfo); // 最大播放的流数为14。
    ```
 
-2. 调用[on('loadComplete')](../../reference/apis-media-kit/arkts-apis/arkts-media-soundpool-soundpool-i.md#onloadcomplete)方法，用于监听“资源加载完成”。
+2. 调用on('loadComplete')方法，用于监听“资源加载完成”。
 
    ```ts
    private soundId: number = 0;
@@ -83,7 +83,7 @@ SoundPool当前支持播放解码后1MB以下的音频资源，解码后大小�
 
 5. 调用load方法进行音频资源加载。
 
-    可以传入URI或fd加载资源，此处使用传入fd的方式为例，更多方法请参考[load](../../reference/apis-media-kit/arkts-apis/arkts-media-soundpool-soundpool-i.md#load)。
+    可以传入URI或fd加载资源，此处使用传入fd的方式为例，更多方法请参考load。
 
     当系统加载完毕音频资源文件的时候，会通过loadComplete回调，通知用户资源加载完成，请在收到回调之后，再进行后续的play操作。
 

@@ -17,19 +17,19 @@
 
 - 在密钥管理扩展场景下，keyAlias即为resourceId，即已执行过打开资源操作，且keyAlias中包含的providerName、abilityName、bundleName内容一致。
 
-- 调用时均需指定[HUKS_TAG_KEY_CLASS](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huks-hukstag-e.md#hukstag)为[HUKS_KEY_CLASS_EXTENSION](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huks-hukskeyclasstype-e.md#hukskeyclasstype)，表示该密钥由密钥管理扩展服务实现方管理，密钥用途等参数由密钥管理扩展服务实现方根据业务场景自行处理，**HUKS不做额外校验**。
+- 调用时均需指定HUKS_TAG_KEY_CLASS为HUKS_KEY_CLASS_EXTENSION，表示该密钥由密钥管理扩展服务实现方管理，密钥用途等参数由密钥管理扩展服务实现方根据业务场景自行处理，**HUKS不做额外校验**。
 
 ## 密钥生成（ArkTS）
 
 在密钥管理扩展场景下，HUKS支持在密钥管理扩展服务中生成密钥对。生成的密钥存储在服务中，私钥不会离开服务提供方，公钥可通过导出接口获取。密钥用途等参数由密钥管理扩展服务提供方根据业务场景自行处理，HUKS不做额外校验。
 
-应用通过调用HUKS的[generateKeyItem](../../reference/apis-universal-keystore-kit/c-apis/capi-native-huks-api-h.md#ohhuksgeneratekeyitem)接口发起密钥生成请求，请求被转发到CryptoExtensionAbility的[onGenerateKeyItem](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-security-cryptoextensionability-cryptoextensionability-c.md#ongeneratekeyitem)接口完成密钥生成。
+应用通过调用HUKS的generateKeyItem接口发起密钥生成请求，请求被转发到CryptoExtensionAbility的[onGenerateKeyItem](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-security-cryptoextensionability-cryptoextensionability-c.md#ongeneratekeyitem)接口完成密钥生成。
 
 ### 开发步骤
 
 1. 通过[获取资源ID](huks-extension-ability-general-operation.md#获取资源id)操作，得到resourceId，并传入该resourceId进行打开资源，可参考[打开关闭资源](huks-extension-ability-general-operation.md#打开关闭资源)。
 
-2. 调用[generateKeyItem](../../reference/apis-universal-keystore-kit/c-apis/capi-native-huks-api-h.md#ohhuksgeneratekeyitem)生成密钥对。建议传入算法类型、密钥长度、密钥用途等参数。密钥参数中需指定[HUKS_TAG_KEY_CLASS](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huks-hukstag-e.md#hukstag)为[HUKS_KEY_CLASS_EXTENSION](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huks-hukskeyclasstype-e.md#hukskeyclasstype)，表示该密钥由密钥管理扩展服务管理。
+2. 调用generateKeyItem生成密钥对。建议传入算法类型、密钥长度、密钥用途等参数。密钥参数中需指定HUKS_TAG_KEY_CLASS为HUKS_KEY_CLASS_EXTENSION，表示该密钥由密钥管理扩展服务管理。
 
 3. 操作执行完后，关闭资源，可参考[打开关闭资源](huks-extension-ability-general-operation.md#打开关闭资源)。
 
@@ -134,13 +134,13 @@ async function extensionKeyGeneration(): Promise<void> {
 
 - 当传入的keyAlias和wrappingKeyAlias不一致时，默认将证书导入到keyAlias所标识的资源中。
 
-应用通过调用HUKS的[importWrappedKeyItem](../../reference/apis-universal-keystore-kit/c-apis/capi-native-huks-api-h.md#ohhuksimportwrappedkeyitem)接口发起密钥安全导入请求，请求被转发到CryptoExtensionAbility的[onImportWrappedKeyItem](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-security-cryptoextensionability-cryptoextensionability-c.md#onimportwrappedkeyitem)接口完成密钥安全导入。
+应用通过调用HUKS的importWrappedKeyItem接口发起密钥安全导入请求，请求被转发到CryptoExtensionAbility的[onImportWrappedKeyItem](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-security-cryptoextensionability-cryptoextensionability-c.md#onimportwrappedkeyitem)接口完成密钥安全导入。
 
 ### 开发步骤
 
 1. 通过[获取资源ID](huks-extension-ability-general-operation.md#获取资源id)操作，得到resourceId，并传入该resourceId进行打开资源，可参考[打开关闭资源](huks-extension-ability-general-operation.md#打开关闭资源)。
 
-2. 调用[importWrappedKeyItem](../../reference/apis-universal-keystore-kit/c-apis/capi-native-huks-api-h.md#ohhuksimportwrappedkeyitem)导入加密封装的密钥对。密钥参数中需指定[HUKS_TAG_KEY_CLASS](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huks-hukstag-e.md#hukstag)为[HUKS_KEY_CLASS_EXTENSION](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huks-hukskeyclasstype-e.md#hukskeyclasstype)，表示该密钥由密钥管理扩展服务管理。
+2. 调用importWrappedKeyItem导入加密封装的密钥对。密钥参数中需指定HUKS_TAG_KEY_CLASS为HUKS_KEY_CLASS_EXTENSION，表示该密钥由密钥管理扩展服务管理。
 
 3. 操作执行完后，关闭资源，可参考[打开关闭资源](huks-extension-ability-general-operation.md#打开关闭资源)。
 
@@ -213,13 +213,13 @@ async function extensionKeyImport(): Promise<void> {
 
 在密钥管理扩展场景下，HUKS支持从密钥管理扩展服务中导出指定密钥的公钥。导出的公钥可用于证书申请、密钥协商、PIN加密等场景。
 
-应用通过调用HUKS的[exportKeyItem](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huks-exportkeyitem-f.md#exportkeyitem)接口发起公钥导出请求，请求被转发到CryptoExtensionAbility的[onExportKeyItem](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-security-cryptoextensionability-cryptoextensionability-c.md#onexportkeyitem)接口完成公钥导出。
+应用通过调用HUKS的exportKeyItem接口发起公钥导出请求，请求被转发到CryptoExtensionAbility的[onExportKeyItem](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-security-cryptoextensionability-cryptoextensionability-c.md#onexportkeyitem)接口完成公钥导出。
 
 ### 开发步骤
 
 1. 通过[获取资源ID](huks-extension-ability-general-operation.md#获取资源id)操作，得到resourceId，并传入该resourceId进行打开资源，可参考[打开关闭资源](huks-extension-ability-general-operation.md#打开关闭资源)。
 
-2. 调用[exportKeyItem](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huks-exportkeyitem-f.md#exportkeyitem)导出公钥，密钥参数中需指定[HUKS_TAG_KEY_CLASS](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huks-hukstag-e.md#hukstag)为[HUKS_KEY_CLASS_EXTENSION](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huks-hukskeyclasstype-e.md#hukskeyclasstype)，表示该密钥由外部密钥管理扩展管理。
+2. 调用exportKeyItem导出公钥，密钥参数中需指定HUKS_TAG_KEY_CLASS为HUKS_KEY_CLASS_EXTENSION，表示该密钥由外部密钥管理扩展管理。
 
 3. 操作执行完后，关闭资源，可参考[打开关闭资源](huks-extension-ability-general-operation.md#打开关闭资源)。
 

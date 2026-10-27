@@ -59,7 +59,7 @@
 
 - rect是要裁剪的矩形区域。
 
-- clipOp是裁剪方式，包括交集（INTERSECT）和差集（DIFFERENCE），具体可见[ClipOp](../reference/apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-drawing-clipop-e.md#clipop)。
+- clipOp是裁剪方式，包括交集（INTERSECT）和差集（DIFFERENCE），具体可见ClipOp。
 
 - doAntiAlias表示是否需要抗锯齿处理，如果为true则启用抗锯齿功能，在绘制图形时会对图形的边缘像素进行半透明的模糊处理，如果为false则不开启。
 

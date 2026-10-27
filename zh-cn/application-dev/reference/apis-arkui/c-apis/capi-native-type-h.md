@@ -55,7 +55,7 @@
 | [ArkUI_SwiperArrow](#arkui_swiperarrow) | ArkUI_SwiperArrow | Enumerates arrow styles of the navigation point indicator. |
 | [ArkUI_SwiperNestedScrollMode](#arkui_swipernestedscrollmode) | ArkUI_SwiperNestedScrollMode | Nested scrolling mode for Swiper components and parent components. |
 | [ArkUI_PageFlipMode](#arkui_pageflipmode) | ArkUI_PageFlipMode | Enumerates the page flipping modes using the mouse wheel for the <b>Swiper</b> component. |
-| [ArkUI_SwiperAnimationMode](#arkui_swiperanimationmode) | ArkUI_SwiperAnimationMode | Enumerates the animation modes for [NODE_SWIPER_INDEX](capi-native-node-h.md#arkui_nodeattributetype). |
+| [ArkUI_SwiperAnimationMode](#arkui_swiperanimationmode) | ArkUI_SwiperAnimationMode | Enumerates the animation modes for NODE_SWIPER_INDEX. |
 | [ArkUI_AccessibilityMode](#arkui_accessibilitymode) | ArkUI_AccessibilityMode | 定义无障碍辅助服务模式。 |
 | [ArkUI_AnimationPlayMode](#arkui_animationplaymode) | ArkUI_AnimationPlayMode | Enumerates the animation playback modes. |
 | [ArkUI_AdaptiveColor](#arkui_adaptivecolor) | ArkUI_AdaptiveColor | Enumerates the adaptive color modes. |
@@ -622,7 +622,7 @@ enum ArkUI_SwiperAnimationMode
 
 **描述：**
 
-Enumerates the animation modes for [NODE_SWIPER_INDEX](capi-native-node-h.md#arkui_nodeattributetype).
+Enumerates the animation modes for NODE_SWIPER_INDEX.
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

@@ -29,7 +29,7 @@
 
 2. 获取相机设备完整输出能力。
 
-   通过[getSupportedFullOutputCapability](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-cameramanager-i.md#getsupportedfulloutputcapability)方法，获取当前相机设备支持的所有输出流的能力，包含预览流、拍照流、录像流等。输出流在[CameraOutputCapability](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-cameraoutputcapability-i-sys.md#cameraoutputcapability)中的各个profile字段中，其中拍照流支持YUV格式。
+   通过[getSupportedFullOutputCapability](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-cameramanager-i.md#getsupportedfulloutputcapability)方法，获取当前相机设备支持的所有输出流的能力，包含预览流、拍照流、录像流等。输出流在CameraOutputCapability中的各个profile字段中，其中拍照流支持YUV格式。
 
    <!-- @[get_full_outputCapability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/YUVPhotoSample/camera/src/main/ets/cameramanagers/PhotoManager.ets) -->
    
@@ -48,9 +48,9 @@
 
 3. 创建拍照输出流。
 
-   通过[CameraOutputCapability](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-cameraoutputcapability-i-sys.md#cameraoutputcapability)中的photoProfiles属性，可获取当前设备支持的拍照输出流。
+   通过CameraOutputCapability中的photoProfiles属性，可获取当前设备支持的拍照输出流。
 
-   通过[createPhotoOutput](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-cameramanager-i.md#createphotooutput)方法传入支持的某一个输出流[Profile](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-profile-i.md#profile)，创建拍照输出流。
+   通过[createPhotoOutput](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-cameramanager-i.md#createphotooutput)方法传入支持的某一个输出流Profile，创建拍照输出流。
 
    通过[getSupportedFullOutputCapability](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-cameramanager-i.md#getsupportedfulloutputcapability)获取相机支持的完整输出能力cameraOutputCapability，参考步骤2。在cameraOutputCapability的photoProfiles中选择支持YUV格式的Profile，作为创建拍照输出流的参数photoProfile。
 
@@ -294,7 +294,7 @@
 
    通过PhotoOutput中的[getPhotoRotation](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-photooutput-i.md#getphotorotation)方法，可以获取拍照旋转角度。
 
-   通过geoLocationManager中的[geoLocationManager.getCurrentLocation](../../reference/apis-location-kit/arkts-apis/arkts-location-geolocationmanager-getcurrentlocation-f.md#getcurrentlocation)方法，可以获取图片地理位置信息。使用方法可参考[capture](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-photooutput-i.md#capture-3)示例。
+   通过geoLocationManager中的geoLocationManager.getCurrentLocation方法，可以获取图片地理位置信息。使用方法可参考[capture](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-photooutput-i.md#capture-3)示例。
 
    <!-- @[capture_photo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/YUVPhotoSample/camera/src/main/ets/cameramanagers/PhotoManager.ets) -->
    
@@ -339,7 +339,7 @@
   }
   ```
 
-- 通过注册固定的captureEnd回调函数监听拍照结束结果，当photoOutput创建成功时，即可监听。该事件返回结果为拍照完全结束后的相关信息[CaptureEndInfo](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-captureendinfo-i.md#captureendinfo)。
+- 通过注册固定的captureEnd回调函数监听拍照结束结果，当photoOutput创建成功时，即可监听。该事件返回结果为拍照完全结束后的相关信息CaptureEndInfo。
 
   <!-- @[set_capture_end_cb](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/YUVPhotoSample/camera/src/main/ets/cameramanagers/PhotoManager.ets) -->
   
@@ -379,7 +379,7 @@
   }
   ```
 
-- 通过注册固定的error回调函数获取监听拍照输出流的错误结果。回调返回拍照输出接口使用错误时的对应错误码，错误码类型参见[CameraErrorCode](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-cameraerrorcode-e-sys.md#cameraerrorcode)。
+- 通过注册固定的error回调函数获取监听拍照输出流的错误结果。回调返回拍照输出接口使用错误时的对应错误码，错误码类型参见CameraErrorCode。
 
   <!-- @[set_photo_error_cb](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/YUVPhotoSample/camera/src/main/ets/cameramanagers/PhotoManager.ets) -->
   

@@ -139,7 +139,7 @@
    })
    ```
 
-3. 使用on()方法订阅分布式数据变化，如需关闭订阅分布式数据变化，调用[off('dataChange')](../reference/apis-arkdata/arkts-apis/arkts-arkdata-datashare-datasharehelper-i-sys.md#offdatachange)关闭。示例代码如下所示：
+3. 使用on()方法订阅分布式数据变化，如需关闭订阅分布式数据变化，调用off('dataChange')关闭。示例代码如下所示：
 
    <!-- @[kv_store12](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
    

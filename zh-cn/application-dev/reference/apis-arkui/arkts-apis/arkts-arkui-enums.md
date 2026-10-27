@@ -33,7 +33,7 @@
 | [CopyOptions](arkts-arkui-copyoptions-e.md) | 剪贴板复制范围。 |
 | [CrownAction](arkts-arkui-crownaction-e.md) | 旋转表冠动作。 |
 | [CrownSensitivity](arkts-arkui-crownsensitivity-e.md) | 旋转表冠灵敏度。 |
-| [Curve](arkts-arkui-curve-e.md) | 插值曲线，动效请参考<!--RP1-->[贝塞尔曲线](../../../../design/ux-design/animation-attributes.md)<!--RP1End-->。 |
+| [Curve](arkts-arkui-curve-e.md) | 插值曲线，动效请参考<!--RP1-->贝塞尔曲线<!--RP1End-->。 |
 | [DialogButtonStyle](arkts-arkui-dialogbuttonstyle-e.md) | 弹窗按钮的样式。 |
 | [DialogDisplayMode](arkts-arkui-dialogdisplaymode-e.md) | 弹窗在子窗口中的显示模式。 |
 | [Direction](arkts-arkui-direction-e.md) | 定义元素水平布局的方向。 |

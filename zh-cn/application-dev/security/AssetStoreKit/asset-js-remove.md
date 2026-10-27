@@ -9,7 +9,7 @@
 
 ## 接口介绍
 
-开发者可以查阅API文档，获取关键资产删除接口的详细说明：异步接口[remove(query: AssetMap)](../../reference/apis-asset-store-kit/c-apis/capi-asset-api-h.md#ohassetremove)、同步接口[removeSync(query: AssetMap)](../../reference/apis-asset-store-kit/arkts-apis/arkts-assetstore-asset-removesync-f.md#removesync)。
+开发者可以查阅API文档，获取关键资产删除接口的详细说明：异步接口remove(query: AssetMap)、同步接口removeSync(query: AssetMap)。
 
 在删除关键资产时，关键资产属性的内容（AssetMap）参数如下表所示：
 
@@ -20,10 +20,10 @@
 | 属性名称（Tag）        | 属性内容（Value）                                             | 是否必选  | 说明                                             |
 | --------------------- | ------------------------------------------------------------ | -------- | ------------------------------------------------ |
 | ALIAS                 | 类型为Uint8Array，长度为1-256字节。                            | 可选     | 关键资产别名，每条关键资产的唯一索引。            |
-| ACCESSIBILITY         | 类型为number，取值范围详见[Accessibility](../../reference/apis-asset-store-kit/arkts-apis/arkts-assetstore-asset-accessibility-e.md#accessibility)。 | 可选     | 基于锁屏状态的访问控制。                                     |
+| ACCESSIBILITY         | 类型为number，取值范围详见Accessibility。 | 可选     | 基于锁屏状态的访问控制。                                     |
 | REQUIRE_PASSWORD_SET  | 类型为boolean。                                                   | 可选     | 是否仅在设置了锁屏密码的情况下，可访问关键资产。为true时表示删除仅用户设置了锁屏密码才允许访问的关键资产；为false时表示删除无论用户是否设置锁屏密码，均可访问的关键资产。     |
-| AUTH_TYPE             | 类型为number，取值范围详见[AuthType](../../reference/apis-asset-store-kit/arkts-apis/arkts-assetstore-asset-authtype-e-sys.md#authtype)。 | 可选     | 访问关键资产所需的用户认证类型。                   |
-| SYNC_TYPE             | 类型为number，取值范围详见[SyncType](../../reference/apis-asset-store-kit/arkts-apis/arkts-assetstore-asset-synctype-e.md#synctype)。 | 可选     | 关键资产支持的同步类型。                           |
+| AUTH_TYPE             | 类型为number，取值范围详见AuthType。 | 可选     | 访问关键资产所需的用户认证类型。                   |
+| SYNC_TYPE             | 类型为number，取值范围详见SyncType。 | 可选     | 关键资产支持的同步类型。                           |
 | IS_PERSISTENT         | 类型为boolean。                                                   | 可选     | 在应用卸载时是否需要保留关键资产。为true时表示删除应用卸载后会被保留的关键资产；为false时表示删除应用卸载后会被删除的关键资产。               |
 | DATA_LABEL_CRITICAL_1 | 类型为Uint8Array，长度为1-2048字节。                        | 可选     | 关键资产附属信息，内容由业务自定义且有完整性保护。<br/>**说明：** 在API version 12及之前版本，长度为1-512字节。 |
 | DATA_LABEL_CRITICAL_2 | 类型为Uint8Array，长度为1-2048字节。                        | 可选     | 关键资产附属信息，内容由业务自定义且有完整性保护。<br/>**说明：** 在API version 12及之前版本，长度为1-512字节。 |

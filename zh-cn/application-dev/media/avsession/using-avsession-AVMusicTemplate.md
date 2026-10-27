@@ -26,7 +26,7 @@
 
 媒体应用接入音频模板的基本步骤如下所示：
 
-1. 在进程启动时，调用接口[createAVMusicTemplate](../../reference/apis-avsession-kit/arkts-apis/arkts-avsession-avmusictemplate-createavmusictemplate-f.md#createavmusictemplate)创建音频模板实例（每个媒体应用创建一个音频模板实例，无需重复创建）并初始化音频模板。
+1. 在进程启动时，调用接口createAVMusicTemplate创建音频模板实例（每个媒体应用创建一个音频模板实例，无需重复创建）并初始化音频模板。
 
    以下示例代码仅展示创建AVMusicTemplate对象的接口调用，应用在真正使用时，需要参考接口@ohos.backgroundTaskManager (后台任务管理)确保AVMusicTemplate对象实例在应用后台播放业务活动期间一直存在，避免被系统回收、释放，导致后台发声时被系统管控。
 

@@ -7,7 +7,7 @@
 <!--Adviser: @HelloCrease-->
 <!--deprecated_code_no_check-->
 
-如果ServiceAbility需要与PageAbility或其他应用的ServiceAbility进行交互，则须创建用于连接的Connection。ServiceAbility支持其他Ability通过[connectAbility()](../reference/apis-ability-kit/arkts-apis/arkts-ability-featureability-connectability-f.md#connectability)方法与其进行连接。PageAbility的connectAbility()方法定义在[featureAbility](../reference/apis-ability-kit/arkts-apis/arkts-ability-ability-featureability.md)中，ServiceAbility的connectAbility()方法定义在[particleAbility](../reference/apis-ability-kit/arkts-apis/arkts-ability-ability-particleability.md)中。连接ServiceAbility的规则详见[组件启动规则](component-startup-rules-fa.md)章节。在使用connectAbility()处理回调时，需要传入目标Service的[Want](../reference/apis-ability-kit/arkts-apis/arkts-ability-want.md)与[IAbilityConnection](../reference/apis-ability-kit/arkts-apis/arkts-ability-ability-connectoptions-t.md)的实例。[IAbilityConnection](../reference/apis-ability-kit/arkts-apis/arkts-ability-ability-connectoptions-t.md)提供了以下方法供开发者实现。
+如果ServiceAbility需要与PageAbility或其他应用的ServiceAbility进行交互，则须创建用于连接的Connection。ServiceAbility支持其他Ability通过connectAbility()方法与其进行连接。PageAbility的connectAbility()方法定义在[featureAbility](../reference/apis-ability-kit/arkts-apis/arkts-ability-ability-featureability.md)中，ServiceAbility的connectAbility()方法定义在[particleAbility](../reference/apis-ability-kit/arkts-apis/arkts-ability-ability-particleability.md)中。连接ServiceAbility的规则详见[组件启动规则](component-startup-rules-fa.md)章节。在使用connectAbility()处理回调时，需要传入目标Service的[Want](../reference/apis-ability-kit/arkts-apis/arkts-ability-want.md)与[IAbilityConnection](../reference/apis-ability-kit/arkts-apis/arkts-ability-ability-connectoptions-t.md)的实例。[IAbilityConnection](../reference/apis-ability-kit/arkts-apis/arkts-ability-ability-connectoptions-t.md)提供了以下方法供开发者实现。
 
 
   **表1** IAbilityConnection接口说明
@@ -96,7 +96,7 @@ struct PageServiceAbility {
 ```
 
 
-同时，Service侧也需要在[onConnect()](../reference/apis-ability-kit/arkts-apis/arkts-ability-connectoptions-connectoptions-i.md#onconnect)时返回[IRemoteObject](../reference/apis-ipc-kit/arkts-apis/arkts-ipc-rpc-iremoteobject-c.md#iremoteobject)，从而定义与Service进行通信的接口。onConnect()需要返回一个IRemoteObject对象。系统提供了IRemoteObject的默认实现，开发者可以通过继承[rpc.RemoteObject](../reference/apis-ipc-kit/arkts-apis/arkts-ipc-rpc-remoteobject-c.md#remoteobject)来创建自定义的实现类。
+同时，Service侧也需要在onConnect()时返回IRemoteObject，从而定义与Service进行通信的接口。onConnect()需要返回一个IRemoteObject对象。系统提供了IRemoteObject的默认实现，开发者可以通过继承rpc.RemoteObject来创建自定义的实现类。
 
 
 Service侧把自身的实例返回给调用侧的示例代码如下：

@@ -56,7 +56,7 @@
 
 1. 使用关系型数据库实现数据持久化，需要获取一个RdbStore，其中包括建库、建表、升降级等操作。推荐使用事务接口保证数据库升级流程原子性。</br>
 
-   通过[getRdbStore()](../reference/apis-arkdata/arkts-apis/arkts-arkdata-relationalstore-getrdbstore-f.md#getrdbstore)接口获取RdbStore实例，用户可以根据自己的需求配置RdbStore的参数。若需要使用全文检索（FTS）功能，可通过[isTokenizerSupported()](../reference/apis-arkdata/arkts-apis/arkts-arkdata-relationalstore-istokenizersupported-f.md#istokenizersupported)接口判断当前平台是否支持所需的分词器。为保证数据库升级流程的原子性，通过[createTransaction()](../reference/apis-arkdata/arkts-apis/arkts-arkdata-relationalstore-rdbstore-i.md#createtransaction)接口创建事务对象并开始事务，再通过[execute()](../reference/apis-arkdata/arkts-apis/arkts-arkdata-relationalstore-rdbstore-i.md#execute)接口执行建表和升降级等SQL语句。
+   通过getRdbStore()接口获取RdbStore实例，用户可以根据自己的需求配置RdbStore的参数。若需要使用全文检索（FTS）功能，可通过isTokenizerSupported()接口判断当前平台是否支持所需的分词器。为保证数据库升级流程的原子性，通过[createTransaction()](../reference/apis-arkdata/arkts-apis/arkts-arkdata-relationalstore-rdbstore-i.md#createtransaction)接口创建事务对象并开始事务，再通过[execute()](../reference/apis-arkdata/arkts-apis/arkts-arkdata-relationalstore-rdbstore-i.md#execute)接口执行建表和升降级等SQL语句。
 
    示例代码如下所示：
    
@@ -493,7 +493,7 @@
 
 8. 删除数据库。
 
-   调用[deleteRdbStore()](../reference/apis-arkdata/arkts-apis/arkts-arkdata-relationalstore-deleterdbstore-f.md#deleterdbstore)接口删除数据库及数据库相关文件。示例代码如下：
+   调用deleteRdbStore()接口删除数据库及数据库相关文件。示例代码如下：
 
    Stage模型示例：
    <!--@[persistence_delete_store](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)--> 

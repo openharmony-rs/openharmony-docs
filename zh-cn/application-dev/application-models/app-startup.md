@@ -24,7 +24,7 @@ AppStartup提供了一种简单高效的应用启动方式，可以支持任务�
 
 ![app-startup-auto](figures/app-startup-auto.png)
 
-开发者也可以在AbilityStage创建完后调用[startupManager.run](../reference/apis-ability-kit/arkts-apis/arkts-ability-startupmanager-run-f.md#run)方法，执行手动模式的启动任务。
+开发者也可以在AbilityStage创建完后调用startupManager.run方法，执行手动模式的启动任务。
 
 **图3** 启动框架手动模式执行时机
 
@@ -520,7 +520,7 @@ export default class StartupTask_001 extends StartupTask {
 AppStartup分别提供了自动和手动两种方式来执行启动任务，entry模块中默认采用自动模式，开发者可以根据需要修改为手动模式，HSP与HAR只能配置为手动模式。
 
 - 自动模式：当AbilityStage完成创建后，自动执行启动任务。
-- 手动模式：在UIAbility完成创建后手动调用，来执行启动任务与so预加载任务。对于某些使用频率不高的模块，不需要应用最开始启动时就进行初始化。开发者可以选择将该部分启动任务修改为手动模式，在应用启动完成后调用[startupManager.run](../reference/apis-ability-kit/arkts-apis/arkts-ability-startupmanager-run-f.md#run)方法来执行启动任务与so预加载任务。
+- 手动模式：在UIAbility完成创建后手动调用，来执行启动任务与so预加载任务。对于某些使用频率不高的模块，不需要应用最开始启动时就进行初始化。开发者可以选择将该部分启动任务修改为手动模式，在应用启动完成后调用startupManager.run方法来执行启动任务与so预加载任务。
 
 下面以UIAbility的onCreate生命周期中为例，介绍如何采用手动模式来启动任务，示例代码如下。
 

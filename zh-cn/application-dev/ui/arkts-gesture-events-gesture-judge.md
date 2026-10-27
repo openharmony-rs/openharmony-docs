@@ -1011,7 +1011,7 @@ struct Index {
 | ------- | -------------- |
 | [onGestureCollectIntercept](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#ongesturecollectintercept) | 在当前节点及更高优先级节点上的事件和手势被收集完成后触发该回调。回调返回干预策略，控制后续收集流程。 |
 | [getUniqueId](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-basecustomcomponent-c.md#getuniqueid) | 通过识别器的[getEventTargetInfo()](../reference/apis-arkui/arkts-components/arkts-arkui-tapgesture-comp-gesturerecognizer-c.md#geteventtargetinfo)获取的组件信息对象上调用，返回当前组件的唯一数字ID，可用于与其他组件的唯一ID进行比对。 |
-| [isHostBelongsTo](../reference/apis-arkui/arkts-components/arkts-arkui-tapgesture-comp-gesturerecognizer-c.md#ishostbelongsto) | 判断当前手势或触摸识别器绑定的节点是否为指定组件的后代节点。传入组件的唯一ID，返回布尔值。该接口在[GestureRecognizer](../reference/apis-arkui/arkts-components/arkts-arkui-tapgesture-comp-gesturerecognizer-c.md#gesturerecognizer)和[TouchRecognizer](../reference/apis-arkui/arkts-components/arkts-arkui-tapgesture-comp-touchrecognizer-c.md#touchrecognizer)上均可调用。 |
+| [isHostBelongsTo](../reference/apis-arkui/arkts-components/arkts-arkui-tapgesture-comp-gesturerecognizer-c.md#ishostbelongsto) | 判断当前手势或触摸识别器绑定的节点是否为指定组件的后代节点。传入组件的唯一ID，返回布尔值。该接口在GestureRecognizer和TouchRecognizer上均可调用。 |
 
 下面通过示例介绍如何实现自定义干预事件和手势的收集结果。示例中构建了如下组件树。
 

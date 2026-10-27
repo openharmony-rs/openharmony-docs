@@ -23,8 +23,8 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [addSlot](arkts-notification-notification-addslot-depr-f.md#addslot-3) | 创建指定类型的通知通道（callback形式）。 |
-| [addSlot](arkts-notification-notification-addslot-depr-f.md#addslot-4) | 创建指定类型的通知通道（Promise形式）。 |
+| addSlot | 创建指定类型的通知通道（callback形式）。 |
+| addSlot | 创建指定类型的通知通道（Promise形式）。 |
 | [cancel](arkts-notification-notification-cancel-depr-f.md#cancel-1) | 取消与指定通知ID相匹配的已发布通知（callback形式）。 |
 | [cancel](arkts-notification-notification-cancel-depr-f.md#cancel-2) | 通过通知ID和通知标签取消已发布的通知（callback形式）。 |
 | [cancel](arkts-notification-notification-cancel-depr-f.md#cancel-3) | 取消与指定通知ID相匹配的已发布通知，label可以指定也可以不指定（Promise形式）。 |

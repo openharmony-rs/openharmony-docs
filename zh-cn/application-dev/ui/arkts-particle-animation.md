@@ -6,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-[粒子动画](../reference/apis-arkui/errorcode-animation.md)是通过在限定区域内随机生成大量粒子的运动，进而组合成的动画效果，通过Particle组件来实现。动画的基本构成元素为单个粒子，这些粒子可以表现为圆点或图片等形式。开发者能够通过对粒子在颜色、透明度、大小、速度、加速度、自旋角度等多个维度上的动态变化做动画，以营造特定的氛围，例如模拟下雪场景时，飘舞的雪花实际上是由一个个雪花粒子的动画效果所构成。
+粒子动画是通过在限定区域内随机生成大量粒子的运动，进而组合成的动画效果，通过Particle组件来实现。动画的基本构成元素为单个粒子，这些粒子可以表现为圆点或图片等形式。开发者能够通过对粒子在颜色、透明度、大小、速度、加速度、自旋角度等多个维度上的动态变化做动画，以营造特定的氛围，例如模拟下雪场景时，飘舞的雪花实际上是由一个个雪花粒子的动画效果所构成。
 
 粒子动画的简单实现如下所示。
 ```ts
@@ -66,7 +66,7 @@ Particle(...).width(300).height(300).emitter(this.emitterProperties) // 动态�
 
 ## 设置粒子颜色
 
-可以通过[range](../reference/apis-arkui/arkts-components/arkts-arkui-particle-comp-particlecolorpropertyoptions-i.md#particlecolorpropertyoptions)来确定粒子的初始颜色范围，而[distributionType](../reference/apis-arkui/arkts-components/arkts-arkui-particle-comp-particlecolorpropertyoptions-i.md#particlecolorpropertyoptions)则用于指定粒子初始颜色随机值的分布方式，具体可选择均匀分布或者高斯（正态）分布。
+可以通过range来确定粒子的初始颜色范围，而distributionType则用于指定粒子初始颜色随机值的分布方式，具体可选择均匀分布或者高斯（正态）分布。
 
 ```ts
 // ...
@@ -82,7 +82,7 @@ color: {
 
 ## 粒子的生命周期
 
-粒子的生命周期（Lifecycle）是粒子从生成至消亡的整个过程，用于确定粒子的存活时间长度。粒子的生命周期可通过设置[EmitterParticleOptions](../reference/apis-arkui/arkts-components/arkts-arkui-particle-comp-emitterparticleoptions-i.md#emitterparticleoptions)的lifetime和lifetimeRange属性来指定。
+粒子的生命周期（Lifecycle）是粒子从生成至消亡的整个过程，用于确定粒子的存活时间长度。粒子的生命周期可通过设置EmitterParticleOptions的lifetime和lifetimeRange属性来指定。
 
 ```ts
 // ...

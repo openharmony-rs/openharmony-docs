@@ -9,7 +9,7 @@
 
 ArkUI提供了LazyColumnLayout、LazyVGridLayout、LazyVWaterFlowLayout三种预置懒加载布局容器，分别支持垂直线性布局、垂直网格布局和垂直瀑布流布局。当这些预置布局容器无法满足业务需求时，可以使用[LazyDynamicLayout](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-components-arklazydynamiclayout-lazydynamiclayout-f.md)组件配合自定义布局算法实现灵活的懒加载布局。
 
-LazyDynamicLayout是一个支持懒加载的动态布局容器，允许开发者通过自定义布局算法[LazyLayoutAlgorithm](../reference/apis-arkui/arkts-apis/arkts-arkui-lazylayoutalgorithm-i.md#lazylayoutalgorithm)实现任意布局模式。该组件仅对父可滚动组件可视区域内的子组件进行创建和布局，减少首帧渲染时间和内存开销。
+LazyDynamicLayout是一个支持懒加载的动态布局容器，允许开发者通过自定义布局算法LazyLayoutAlgorithm实现任意布局模式。该组件仅对父可滚动组件可视区域内的子组件进行创建和布局，减少首帧渲染时间和内存开销。
 
 从API版本26.0.0开始，支持LazyDynamicLayout组件。
 
@@ -36,15 +36,15 @@ LazyDynamicLayout适用于以下典型场景。
    
    - 在List组件下，当List设置了[lanes](../reference/apis-arkui/arkts-components/arkts-arkui-list-comp-attribute.md#lanes)、[chainAnimation](../reference/apis-arkui/arkts-components/arkts-arkui-arclist-comp-attribute.md#chainanimation)、[scrollSnapAlign](../reference/apis-arkui/arkts-components/arkts-arkui-list-comp-attribute.md#scrollsnapalign)属性中的任意一个时，该组件的懒加载功能会失效。
    
-   - 在Scroll、List、WaterFlow组件下使用时，Scroll、List、WaterFlow的滚动方向（水平或垂直）必须和该组件布局方向相同，若布局方向不同会导致应用崩溃。该组件布局方向通过[LazyCustomLayoutAlgorithm](../reference/apis-arkui/arkts-apis/arkts-arkui-lazylayoutalgorithm-lazycustomlayoutalgorithm-c.md#lazycustomlayoutalgorithm)的构造函数参数axis成员设置。
+   - 在Scroll、List、WaterFlow组件下使用时，Scroll、List、WaterFlow的滚动方向（水平或垂直）必须和该组件布局方向相同，若布局方向不同会导致应用崩溃。该组件布局方向通过LazyCustomLayoutAlgorithm的构造函数参数axis成员设置。
 
    - 通过FlowItem、LazyColumnLayout、自定义组件或NodeContainer封装使用时，懒加载行为取决于其上层滚动组件（如WaterFlow、Scroll或List）的配置条件。
 
-3. 当布局算法为[LazyCustomLayoutAlgorithm](../reference/apis-arkui/arkts-apis/arkts-arkui-lazylayoutalgorithm-lazycustomlayoutalgorithm-c.md#lazycustomlayoutalgorithm)时，LazyDynamicLayout组件[FrameNode](../reference/apis-arkui/arkts-apis/arkts-arkui-framenode-c.md#framenode)的[setMeasuredSize](../reference/apis-arkui/arkts-apis/arkts-arkui-framenode-c.md#setmeasuredsize)方法优先级高于尺寸设置和边框设置属性，子组件[FrameNode](../reference/apis-arkui/arkts-apis/arkts-arkui-framenode-c.md#framenode)的[measure](../reference/apis-arkui/arkts-apis/arkts-arkui-framenode-c.md#measure)和[layout](../reference/apis-arkui/arkts-apis/arkts-arkui-framenode-c.md#layout)方法优先级高于[ignoreLayoutSafeArea](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#ignorelayoutsafearea)属性。
+3. 当布局算法为LazyCustomLayoutAlgorithm时，LazyDynamicLayout组件FrameNode的[setMeasuredSize](../reference/apis-arkui/arkts-apis/arkts-arkui-framenode-c.md#setmeasuredsize)方法优先级高于尺寸设置和边框设置属性，子组件FrameNode的[measure](../reference/apis-arkui/arkts-apis/arkts-arkui-framenode-c.md#measure)和[layout](../reference/apis-arkui/arkts-apis/arkts-arkui-framenode-c.md#layout)方法优先级高于[ignoreLayoutSafeArea](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#ignorelayoutsafearea)属性。
 
 ## 自定义布局算法开发步骤
 
-自定义布局算法需要继承[LazyCustomLayoutAlgorithm](../reference/apis-arkui/arkts-apis/arkts-arkui-lazylayoutalgorithm-lazycustomlayoutalgorithm-c.md#lazycustomlayoutalgorithm)类，并实现onMeasure和onLayout方法。以下以LazyColumnLayoutAlgorithm为例，介绍自定义布局算法的开发步骤。
+自定义布局算法需要继承LazyCustomLayoutAlgorithm类，并实现onMeasure和onLayout方法。以下以LazyColumnLayoutAlgorithm为例，介绍自定义布局算法的开发步骤。
 
 ### 创建布局算法类
 
@@ -95,7 +95,7 @@ export class LazyColumnLayoutAlgorithm extends LazyCustomLayoutAlgorithm {
   private anchorChildRelativePos: number = 0;        // 锚点位置（正向距内容顶部，反向距内容底部）
 ```
 
-定义内边距变量用于存储容器的内边距信息。通过[getUserConfigPadding](../reference/apis-arkui/arkts-apis/arkts-arkui-framenode-c.md#getuserconfigpadding)方法获取用户设置的padding属性值，该方法返回的[LengthMetrics](../reference/apis-arkui/arkts-apis/arkts-arkui-graphics-lengthmetrics-c.md#lengthmetrics)类型需要转换为像素值。
+定义内边距变量用于存储容器的内边距信息。通过[getUserConfigPadding](../reference/apis-arkui/arkts-apis/arkts-arkui-framenode-c.md#getuserconfigpadding)方法获取用户设置的padding属性值，该方法返回的LengthMetrics类型需要转换为像素值。
 
 ``` TypeScript
 private updatePadding(self: FrameNode, constraint: LayoutConstraint): void {
@@ -210,7 +210,7 @@ onMeasure(self: FrameNode, constraint: LayoutConstraint, helper?: LazyLayoutHelp
 
 2. 处理空子元素或非懒加载布局。
 
-    首先获取子组件总数，使用[ChildrenCountMode](../reference/apis-arkui/arkts-apis/arkts-arkui-framenode-childrencountmode-e.md#childrencountmode).ALL_NOT_EXPAND避免全量加载导致懒加载失效。如果子组件数量为0，清空测量状态并设置容器高度为垂直内边距（topPadding + bottomPadding）。如果helper参数为undefined，表示不支持懒加载（如在List多列模式下），需要全量测量所有子组件。
+    首先获取子组件总数，使用ChildrenCountMode.ALL_NOT_EXPAND避免全量加载导致懒加载失效。如果子组件数量为0，清空测量状态并设置容器高度为垂直内边距（topPadding + bottomPadding）。如果helper参数为undefined，表示不支持懒加载（如在List多列模式下），需要全量测量所有子组件。
 
 3. 处理布局参数变化保持滚动稳定。
 
@@ -326,7 +326,7 @@ onMeasure(self: FrameNode, constraint: LayoutConstraint, helper?: LazyLayoutHelp
 
     - 获取子组件。
 
-        通过[getChild](../reference/apis-arkui/arkts-apis/arkts-arkui-framenode-c.md#getchild)方法获取指定索引的子组件[FrameNode](../reference/apis-arkui/arkts-apis/arkts-arkui-framenode-c.md#framenode)。必须传入[ExpandMode.LAZY_NOT_EXPAND](../reference/apis-arkui/arkts-apis/arkts-arkui-framenode-expandmode-e.md#expandmode)参数，避免全量加载导致懒加载失效。
+        通过[getChild](../reference/apis-arkui/arkts-apis/arkts-arkui-framenode-c.md#getchild)方法获取指定索引的子组件FrameNode。必须传入ExpandMode.LAZY_NOT_EXPAND参数，避免全量加载导致懒加载失效。
 
         <!-- @[lazy_custom_layout_get_child_not_expand](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyCustomLayout/LazyColumnLayoutAlgorithm.ets) -->
         
@@ -371,7 +371,7 @@ onMeasure(self: FrameNode, constraint: LayoutConstraint, helper?: LazyLayoutHelp
 
     - 调用子组件measure函数和获取测量大小。
 
-        调用子组件[FrameNode](../reference/apis-arkui/arkts-apis/arkts-arkui-framenode-c.md#framenode)的[measure](../reference/apis-arkui/arkts-apis/arkts-arkui-framenode-c.md#measure)方法，传入测量约束，触发子组件测量流程。测量完成后，通过[getMeasuredSize](../reference/apis-arkui/arkts-apis/arkts-arkui-framenode-c.md#getmeasuredsize)方法获取子组件的测量大小。
+        调用子组件FrameNode的[measure](../reference/apis-arkui/arkts-apis/arkts-arkui-framenode-c.md#measure)方法，传入测量约束，触发子组件测量流程。测量完成后，通过[getMeasuredSize](../reference/apis-arkui/arkts-apis/arkts-arkui-framenode-c.md#getmeasuredsize)方法获取子组件的测量大小。
 
     **完整测量流程示例**
 
@@ -488,8 +488,8 @@ onMeasure(self: FrameNode, constraint: LayoutConstraint, helper?: LazyLayoutHelp
 
     | 接口 | 说明 |
     |------|------|
-    | [getChildrenCount](../reference/apis-arkui/arkts-apis/arkts-arkui-framenode-c.md#getchildrencount) | 获取子组件总数。使用[ChildrenCountMode](../reference/apis-arkui/arkts-apis/arkts-arkui-framenode-childrencountmode-e.md#childrencountmode).ALL_NOT_EXPAND避免获取子组件总数时全量加载导致懒加载失效。 |
-    | [getChild](../reference/apis-arkui/arkts-apis/arkts-arkui-framenode-c.md#getchild) | 获取指定索引的子组件[FrameNode](../reference/apis-arkui/arkts-apis/arkts-arkui-framenode-c.md#framenode)。使用[ExpandMode.LAZY_NOT_EXPAND](../reference/apis-arkui/arkts-apis/arkts-arkui-framenode-expandmode-e.md#expandmode)避免获取子组件时全量加载导致懒加载失效。 |
+    | [getChildrenCount](../reference/apis-arkui/arkts-apis/arkts-arkui-framenode-c.md#getchildrencount) | 获取子组件总数。使用ChildrenCountMode.ALL_NOT_EXPAND避免获取子组件总数时全量加载导致懒加载失效。 |
+    | [getChild](../reference/apis-arkui/arkts-apis/arkts-arkui-framenode-c.md#getchild) | 获取指定索引的子组件FrameNode。使用ExpandMode.LAZY_NOT_EXPAND避免获取子组件时全量加载导致懒加载失效。 |
     | [getViewStart](../reference/apis-arkui/arkts-apis/arkts-arkui-lazylayoutalgorithm-lazylayouthelper-c.md#getviewstart) | 获取可视区域的起始位置（相对于LazyDynamicLayout内容区域顶部）。 |
     | [getViewEnd](../reference/apis-arkui/arkts-apis/arkts-arkui-lazylayoutalgorithm-lazylayouthelper-c.md#getviewend) | 获取可视区域的结束位置。 |
     | [getLazyLayoutDirection](../reference/apis-arkui/arkts-apis/arkts-arkui-lazylayoutalgorithm-lazylayouthelper-c.md#getlazylayoutdirection) | 获取当前布局方向。FORWARD表示正向布局（从上到下），BACKWARD表示反向布局（从下到上）。 |

@@ -115,7 +115,7 @@
 
 - **默认单位**
 
-  表示长度的入参单位默认为vp，即入参为number类型、以及[Length](../reference/apis-arkui/arkts-apis/arkts-arkui-length-t.md#length)和[Dimension](../reference/apis-arkui/arkts-apis/arkts-arkui-dimension-t.md#dimension)类型中的number单位为vp。
+  表示长度的入参单位默认为vp，即入参为number类型、以及Length和Dimension类型中的number单位为vp。
 
 - **异常值处理**
 

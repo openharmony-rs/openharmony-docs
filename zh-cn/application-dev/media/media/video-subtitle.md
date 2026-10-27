@@ -12,9 +12,9 @@
 
 ## 开发步骤及注意事项
 
-详细的API说明请参考[AVPlayer](../../reference/apis-media-kit/arkts-apis/arkts-media-media-avplayer-i.md)
+详细的API说明请参考AVPlayer
 
-1. 调用[addSubtitleFromFd](../../reference/apis-media-kit/arkts-apis/arkts-media-media-avplayer-i.md#addsubtitlefromfd)，使用视频播放的AVPlayer实例设置外挂字幕资源。
+1. 调用addSubtitleFromFd，使用视频播放的AVPlayer实例设置外挂字幕资源。
 
    ```ts
     import { media } from '@kit.MediaKit';
@@ -34,7 +34,7 @@
     this.avPlayer.addSubtitleFromFd(fileDescriptorSub?.fd, fileDescriptorSub?.offset, fileDescriptorSub?.length);
    ```
 
-2. 调用[on('subtitleUpdate')](../../reference/apis-media-kit/arkts-apis/arkts-media-media-avplayer-i.md#onsubtitleupdate)接口，注册字幕回调函数。
+2. 调用on('subtitleUpdate')接口，注册字幕回调函数。
 
    ```ts
     import { media } from '@kit.MediaKit';

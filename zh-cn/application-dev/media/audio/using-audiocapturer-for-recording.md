@@ -14,7 +14,7 @@ AudioCapturer是音频采集器，用于录制PCM（Pulse Code Modulation）音�
 
 下图展示了AudioCapturer的状态变化，在创建实例后，调用对应的方法可以进入指定的状态实现对应的行为。需要注意的是，在确定的状态执行不合适的方法可能导致AudioCapturer发生错误，建议开发者在调用状态转换的方法前进行状态检查，避免程序运行产生预期以外的结果。
 
-使用[on('stateChange')](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiocapturer-i.md#onstatechange)方法可以监听AudioCapturer的状态变化，每个状态对应值与说明见[AudioState](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiostate-e.md#audiostate)。
+使用[on('stateChange')](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiocapturer-i.md#onstatechange)方法可以监听AudioCapturer的状态变化，每个状态对应值与说明见AudioState。
 
 当音频流处于工作状态（非released状态）时，会占用系统的音频流资源。由于系统对音频流数量有限制，所以当客户端暂时不使用音频流时，调用release()回收音频资源，做好资源利用，避免后续创建音频流失败。
 
@@ -28,11 +28,11 @@ AudioCapturer是音频采集器，用于录制PCM（Pulse Code Modulation）音�
 
 完整示例展示了使用AudioCapturer完成录音，并在录音完成后播放所录制音频的实现。
 
-1. 配置音频采集参数并创建AudioCapturer实例，音频采集参数的详细信息可以查看[AudioCapturerOptions](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiocaptureroptions-i-sys.md#audiocaptureroptions)。
+1. 配置音频采集参数并创建AudioCapturer实例，音频采集参数的详细信息可以查看AudioCapturerOptions。
 
    > **说明：**
    >
-   > 当设置Mic音频源（即[SourceType](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-sourcetype-e-sys.md#sourcetype)为SOURCE_TYPE_MIC、SOURCE_TYPE_VOICE_RECOGNITION、SOURCE_TYPE_VOICE_COMMUNICATION、SOURCE_TYPE_VOICE_MESSAGE、SOURCE_TYPE_LIVE（从API version 20开始支持））时，需要申请麦克风权限ohos.permission.MICROPHONE，申请方式参考：[向用户申请授权](../../security/AccessToken/request-user-authorization.md)。
+   > 当设置Mic音频源（即SourceType为SOURCE_TYPE_MIC、SOURCE_TYPE_VOICE_RECOGNITION、SOURCE_TYPE_VOICE_COMMUNICATION、SOURCE_TYPE_VOICE_MESSAGE、SOURCE_TYPE_LIVE（从API version 20开始支持））时，需要申请麦克风权限ohos.permission.MICROPHONE，申请方式参考：[向用户申请授权](../../security/AccessToken/request-user-authorization.md)。
 
    <!-- @[create_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->
    
@@ -520,6 +520,6 @@ try {
 
 ### 回声消除功能
 
-回声消除功能可在支持的设备上有效消除录音过程中的回声干扰，提升音频采集质量。开发者可通过指定特定的Mic音频源[SourceType](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-sourcetype-e-sys.md#sourcetype)（SOURCE_TYPE_VOICE_COMMUNICATION、SOURCE_TYPE_LIVE）来启用该功能，系统将会自动对采集的音频信号进行回声消除处理。
+回声消除功能可在支持的设备上有效消除录音过程中的回声干扰，提升音频采集质量。开发者可通过指定特定的Mic音频源SourceType（SOURCE_TYPE_VOICE_COMMUNICATION、SOURCE_TYPE_LIVE）来启用该功能，系统将会自动对采集的音频信号进行回声消除处理。
 
-在启用前，建议先调用[isAcousticEchoCancelerSupported](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiostreammanager-i.md#isacousticechocancelersupported)接口（从API version 20开始支持）查询当前设备对音频输入源类型[SourceType](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-sourcetype-e-sys.md#sourcetype)是否支持回声消除功能，以确保功能的可用性。若支持，则可在创建音频录制构造器时设置相应的Mic音频源，从而激活回声消除处理流程。
+在启用前，建议先调用[isAcousticEchoCancelerSupported](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiostreammanager-i.md#isacousticechocancelersupported)接口（从API version 20开始支持）查询当前设备对音频输入源类型SourceType是否支持回声消除功能，以确保功能的可用性。若支持，则可在创建音频录制构造器时设置相应的Mic音频源，从而激活回声消除处理流程。

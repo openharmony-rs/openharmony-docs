@@ -57,7 +57,7 @@ Web组件提供了应用接管网页中媒体播放的能力，用来支持应�
 
 ### 开启接管网页媒体播放
 
-需要先通过[enableNativeMediaPlayer](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-attribute.md#enablenativemediaplayer)接口开启接管网页媒体播放的功能。
+需要先通过enableNativeMediaPlayer接口开启接管网页媒体播放的功能。
 
   ```ts
   // xxx.ets

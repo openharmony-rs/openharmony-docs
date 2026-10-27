@@ -194,7 +194,7 @@ PixelMap申请像素内存的计算规则如下所示。
 pixels_size(像素内存大小) = stride(图片像素存储宽度) * height(图片像素高度)
 ```
 
-对于原始像素内存超过2GB且支持下采样的图片，建议开发者使用[createPixelMap](../../reference/apis-image-kit/arkts-apis/arkts-image-image-imagesource-i.md#createpixelmap)或[createPixelMapUsingAllocator](../../reference/apis-image-kit/arkts-apis/arkts-image-image-imagesource-i.md#createpixelmapusingallocator)接口，并在[DecodingOptions](../../reference/apis-image-kit/arkts-apis/arkts-image-image-decodingoptions-i-sys.md#decodingoptions)中设置desiredSize（期望输出大小）进行下采样解码。
+对于原始像素内存超过2GB且支持下采样的图片，建议开发者使用[createPixelMap](../../reference/apis-image-kit/arkts-apis/arkts-image-image-imagesource-i.md#createpixelmap)或[createPixelMapUsingAllocator](../../reference/apis-image-kit/arkts-apis/arkts-image-image-imagesource-i.md#createpixelmapusingallocator)接口，并在DecodingOptions中设置desiredSize（期望输出大小）进行下采样解码。
 
 从API version 21开始，对于支持下采样解码的图片，设置desiredSize（期望输出大小）后，解码器将以基准梯度为1/8的最优下采样率计算PixelMap的像素内存，即按照7/8、6/8、...、1/8的采样率，逐次递减取一个清晰度最高的采样数。
 

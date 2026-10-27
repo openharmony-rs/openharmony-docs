@@ -17,7 +17,7 @@
 
 ## 开发步骤
 
-接口具体使用方法和说明请参考[System](../reference/apis-localization-kit/arkts-apis/arkts-localization-i18n-system-c-sys.md#system)的API接口文档。
+接口具体使用方法和说明请参考System的API接口文档。
 
 1. 导入模块。
 

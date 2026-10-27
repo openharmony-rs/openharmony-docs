@@ -26,11 +26,11 @@ Web页面加载失败问题复杂多样，本文详细列举常见问题的排�
 * 开启相关权限：
     | 名称   | 说明  |                       
     | ----   | -------------------------------- |
-    | [domStorageAccess](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-attribute.md#domstorageaccess) | 设置是否开启文档对象模型存储接口（DOM Storage API）权限，若不开启，无法使用localStorage存储数据，任何调用localStorage的代码都将失效，依赖本地存储的功能会异常。 |
-    | [fileAccess](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-attribute.md#fileaccess) | 设置是否开启应用中文件系统的访问。‌若不开启，文件读写功能完全被阻断，依赖文件读写的模块会遇到访问被拒绝的错误。 | 
-    | [imageAccess](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-attribute.md#imageaccess) | 设置是否允许自动加载图片资源。 | 
-    | [onlineImageAccess](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-attribute.md#onlineimageaccess) | 设置是否允许从网络加载图片资源（通过HTTP和HTTPS访问的资源）。 |
-    | [javaScriptAccess](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-attribute.md#javascriptaccess) | 设置是否允许执行JavaScript脚本。 | 
+    | domStorageAccess | 设置是否开启文档对象模型存储接口（DOM Storage API）权限，若不开启，无法使用localStorage存储数据，任何调用localStorage的代码都将失效，依赖本地存储的功能会异常。 |
+    | fileAccess | 设置是否开启应用中文件系统的访问。‌若不开启，文件读写功能完全被阻断，依赖文件读写的模块会遇到访问被拒绝的错误。 | 
+    | imageAccess | 设置是否允许自动加载图片资源。 | 
+    | onlineImageAccess | 设置是否允许从网络加载图片资源（通过HTTP和HTTPS访问的资源）。 |
+    | javaScriptAccess | 设置是否允许执行JavaScript脚本。 | 
 
     <!-- @[OpenPermissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebWriteScreenIssue/entry/src/main/ets/pages/OpenPermissions.ets) -->
     
@@ -65,7 +65,7 @@ Web页面加载失败问题复杂多样，本文详细列举常见问题的排�
   
     **方法一：**
 
-      开发者应使用HTTP或HTTPS协议替代file或resource协议，确保Web组件能够成功访问跨域资源。替代的URL域名应为自定义构造，仅限于个人或组织使用，以防止与互联网上的实际域名冲突。此外，开发者需要利用Web组件的[onInterceptRequest](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-attribute.md#oninterceptrequest)方法，对本地资源进行拦截和相应替换。
+      开发者应使用HTTP或HTTPS协议替代file或resource协议，确保Web组件能够成功访问跨域资源。替代的URL域名应为自定义构造，仅限于个人或组织使用，以防止与互联网上的实际域名冲突。此外，开发者需要利用Web组件的onInterceptRequest方法，对本地资源进行拦截和相应替换。
 
       以下结合示例说明如何使用HTTP或HTTPS等协议解决本地资源跨域访问失败的问题。其中，index.html和js/script.js文件置于工程的rawfile目录下。当使用resource协议访问index.html时，js/script.js文件因跨域而被拦截，无法加载。在示例中，使用https:\//www\.example.com/域名替换了原有的resource协议，同时利用onInterceptRequest接口替换资源，确保js/script.js文件可以成功加载，从而解决跨域拦截问题。
     ```ts
@@ -153,7 +153,7 @@ Web页面加载失败问题复杂多样，本文详细列举常见问题的排�
 
     **方法二（解决本地资源跨域问题）：**
 
-    通过[setPathAllowingUniversalAccess](../reference/apis-arkweb/arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#setpathallowinguniversalaccess)设置一个路径列表。当使用file协议访问该列表中的资源时，允许进行跨域访问本地文件。此外，一旦设置了路径列表，file协议将仅限于访问列表内的资源（此时，[fileAccess](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-attribute.md#fileaccess)的行为将会被此接口行为覆盖）。
+    通过[setPathAllowingUniversalAccess](../reference/apis-arkweb/arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#setpathallowinguniversalaccess)设置一个路径列表。当使用file协议访问该列表中的资源时，允许进行跨域访问本地文件。此外，一旦设置了路径列表，file协议将仅限于访问列表内的资源（此时，fileAccess的行为将会被此接口行为覆盖）。
     
     setPathAllowingUniversalAccess放开目录的跨域访问限制是一个高风险操作。基于最小权限原则，当前el1，el2放开的路径是固定的，路径列表中的路径应符合以下任一路径格式：
 
@@ -178,7 +178,7 @@ Web页面加载失败问题复杂多样，本文详细列举常见问题的排�
        * /data/storage/el2/base/temp
        * /data/storage/el2/base/haps/entry/temp/example
 
-    当路径列表中的任一路径不满足上述条件时，系统将抛出异常码401，并判定路径列表设置失败。如果路径列表设置为空，file协议的可访问范围将遵循[fileAccess](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-attribute.md#fileaccess)规则，具体示例如下。
+    当路径列表中的任一路径不满足上述条件时，系统将抛出异常码401，并判定路径列表设置失败。如果路径列表设置为空，file协议的可访问范围将遵循fileAccess规则，具体示例如下。
 
     <!-- @[SetPath](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebWriteScreenIssue/entry2/src/main/ets/pages/SetPath.ets) -->
     
@@ -275,11 +275,11 @@ Web页面加载失败问题复杂多样，本文详细列举常见问题的排�
 
 | 名称   | 说明                                                       |                       
 | ----   |----------------------------------------------------------|
-| [onErrorReceive](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-attribute.md#onerrorreceive) | 资源加载失败会上报该回调，比如访问内核不支持的scheme，会报302(UNKNOWN_URL_SCHEME)。 |
-| [onHttpErrorReceive](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-attribute.md#onhttperrorreceive) | 服务器返回HTTP错误码，这类问题通常需要与服务器进行联调。                           | 
-| [onHttpAuthRequest](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-attribute.md#onhttpauthrequest) | 服务器返回407需要端侧提供用户名密码认证，如果不正确处理，可能会导致加载异常、白屏。              | 
-| [onClientAuthenticationRequest](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-attribute.md#onclientauthenticationrequest) | 服务器向端侧请求证书，如果不正确处理，会导致页面加载异常。                            | 
-| [onSslErrorEvent](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-attribute.md#onsslerrorevent) | 证书错误，需要应用根据证书错误信息进行排查，证书是否配置有误，或证书是否过期。                  | 
+| onErrorReceive | 资源加载失败会上报该回调，比如访问内核不支持的scheme，会报302(UNKNOWN_URL_SCHEME)。 |
+| onHttpErrorReceive | 服务器返回HTTP错误码，这类问题通常需要与服务器进行联调。                           | 
+| onHttpAuthRequest | 服务器返回407需要端侧提供用户名密码认证，如果不正确处理，可能会导致加载异常、白屏。              | 
+| onClientAuthenticationRequest | 服务器向端侧请求证书，如果不正确处理，会导致页面加载异常。                            | 
+| onSslErrorEvent | 证书错误，需要应用根据证书错误信息进行排查，证书是否配置有误，或证书是否过期。                  | 
 
 
 ## 网页User-Agent适配问题定位

@@ -18,7 +18,7 @@
 
 2. 卡片能力增强
 
-    - 新增了动效的能力：ArkTS卡片开放了属性动画和[显式动画](../reference/apis-arkui/errorcode-animation.md)的能力，使卡片的交互更加友好。
+    - 新增了动效的能力：ArkTS卡片开放了属性动画和显式动画的能力，使卡片的交互更加友好。
     - 新增了自定义绘制的能力：ArkTS卡片开放了[Canvas](../reference/apis-arkui/errorcode-canvas.md)画布组件的能力，卡片可以使用自定义绘制的能力构建更多样的显示和交互效果。
     - 允许卡片中运行逻辑代码：开放逻辑代码运行能力后，部分业务逻辑可以在卡片内部实现，拓宽了业务适用场景。
 
@@ -91,7 +91,7 @@ ArkTS卡片支持在UI内运行逻辑代码，相较于JS卡片具备了更加�
 
 - 不支持Hot Reload热重载。
 
-- 不支持[setTimeout](../reference/apis-arkui/arkts-apis/arkts-arkui-global-settimeout-f.md#settimeout)。
+- 不支持setTimeout。
 
 - DevEco Studio的相关约束请参考[使用约束](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-service-widget#section1181172254318)。
 

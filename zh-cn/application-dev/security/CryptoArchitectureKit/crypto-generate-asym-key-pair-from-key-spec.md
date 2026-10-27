@@ -15,17 +15,17 @@
 
 对应的算法规格请查看[非对称密钥生成和转换规格：RSA](crypto-key-generation-conversion.md#rsa)。
 
-1. 构造[RSACommonParamsSpec](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-rsacommonparamsspec-i.md#rsacommonparamsspec)对象，用于指定RSA算法中公私钥包含的公共参数（n）。
+1. 构造RSACommonParamsSpec对象，用于指定RSA算法中公私钥包含的公共参数（n）。
    
    RSACommonParamsSpec是AsyKeySpec的子类。需要通过参数algName指定算法'RSA'；指定密钥参数类型AsyKeySpecType.COMMON_PARAMS_SPEC，表示是公私钥中包含的公共参数。
 
    使用密钥参数生成密钥时，bigint类型参数需采用大端字节序输入，且值应为正数以满足数学运算要求。
 
-2. 创建[RSAPubKeySpec](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-rsapubkeyspec-i.md#rsapubkeyspec)对象，用于指定RSA算法中公钥包含的参数（n, pk）。
+2. 创建RSAPubKeySpec对象，用于指定RSA算法中公钥包含的参数（n, pk）。
    
    RSAPubKeySpec是AsyKeySpec的子类。通过参数algName指定算法'RSA'；指定密钥参数类型AsyKeySpecType.PUBLIC_KEY_SPEC，表示是公钥中包含的参数。
 
-3. 调用[cryptoFramework.createAsyKeyGeneratorBySpec](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-createasykeygeneratorbyspec-f.md#createasykeygeneratorbyspec)，将RSAPubKeySpec对象传入，创建非对称密钥生成器（AsyKeyGeneratorBySpec）。
+3. 调用cryptoFramework.createAsyKeyGeneratorBySpec，将RSAPubKeySpec对象传入，创建非对称密钥生成器（AsyKeyGeneratorBySpec）。
 
 4. 调用[AsyKeyGeneratorBySpec.generatePubKey](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-asykeygeneratorbyspec-i.md#generatepubkey)，获得指定的公钥（PubKey）。
 
@@ -188,13 +188,13 @@
 
 对应的算法规格请查看[非对称密钥生成和转换规格：ECC](crypto-key-generation-conversion.md#ecc)。
 
-1. 构造[ECCCommonParamsSpec](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-ecccommonparamsspec-i.md#ecccommonparamsspec)对象，用于指定ECC算法中公私钥包含的公共参数。
+1. 构造ECCCommonParamsSpec对象，用于指定ECC算法中公私钥包含的公共参数。
 
    ECCCommonParamsSpec是AsyKeySpec的子类。需要通过参数algName指定算法'ECC'；指定密钥参数类型AsyKeySpecType.COMMON_PARAMS_SPEC，表示是公私钥中包含的公共参数。
 
    使用密钥参数生成密钥时，bigint类型参数需采用大端字节序输入，且值应为正数以满足数学运算要求。
 
-2. 调用[cryptoFramework.createAsyKeyGeneratorBySpec](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-createasykeygeneratorbyspec-f.md#createasykeygeneratorbyspec)，将ECCCommonParamsSpec对象传入，创建非对称密钥生成器（AsyKeyGeneratorBySpec）。
+2. 调用cryptoFramework.createAsyKeyGeneratorBySpec，将ECCCommonParamsSpec对象传入，创建非对称密钥生成器（AsyKeyGeneratorBySpec）。
 
 3. 调用[AsyKeyGeneratorBySpec.generateKeyPair](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-asykeygenerator-i.md#generatekeypair)，得到随机生成的密钥对（KeyPair）。
 
@@ -414,13 +414,13 @@
 
 对应的算法规格请查看[非对称密钥生成和转换规格：SM2](crypto-key-generation-conversion.md#sm2)。
 
-1. 构造[ECCCommonParamsSpec](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-ecccommonparamsspec-i.md#ecccommonparamsspec)对象，用于指定非对称公共密钥参数。根据[genECCCommonParamsSpec](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-ecckeyutil-c.md#genecccommonparamsspec)接口传入相应的NID字符串名称生成相应的非对称公共密钥参数。
+1. 构造ECCCommonParamsSpec对象，用于指定非对称公共密钥参数。根据[genECCCommonParamsSpec](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-ecckeyutil-c.md#genecccommonparamsspec)接口传入相应的NID字符串名称生成相应的非对称公共密钥参数。
 
    使用密钥参数生成密钥时，bigint类型参数需采用大端字节序输入，且值应为正数以满足数学运算要求。
 
-2. 创建[ECCKeyPairSpec](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-ecckeypairspec-i.md#ecckeypairspec)对象，并且algName设置为SM2，用于指定SM2算法中密钥对包含的参数。
+2. 创建ECCKeyPairSpec对象，并且algName设置为SM2，用于指定SM2算法中密钥对包含的参数。
 
-3. 调用[cryptoFramework.createAsyKeyGeneratorBySpec](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-createasykeygeneratorbyspec-f.md#createasykeygeneratorbyspec)，将ECCKeyPairSpec对象传入，创建非对称密钥生成器。
+3. 调用cryptoFramework.createAsyKeyGeneratorBySpec，将ECCKeyPairSpec对象传入，创建非对称密钥生成器。
 
 4. 调用[AsyKeyGeneratorBySpec.generateKeyPair](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-asykeygenerator-i.md#generatekeypair)，得到各项数据与密钥参数一致的密钥对（KeyPair）。
 

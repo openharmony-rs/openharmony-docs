@@ -12,9 +12,9 @@
 
 ## 开发步骤及注意事项
 
-详细的API说明请参考[AVMetadataExtractor](../../reference/apis-media-kit/arkts-apis/arkts-media-media-avmetadataextractor-i.md)。
+详细的API说明请参考AVMetadataExtractor。
 
-1. 使用[createAVMetadataExtractor()](../../reference/apis-media-kit/arkts-apis/arkts-media-media-createavmetadataextractor-f.md#createavmetadataextractor)创建实例。
+1. 使用createAVMetadataExtractor()创建实例。
    ```ts
    import { media } from '@kit.MediaKit';
    // 创建AVMetadataExtractor对象。
@@ -82,7 +82,7 @@
      fileIo.closeSync(fd);
      ```
 
-   - 如果设置[setUrlSource](../../reference/apis-media-kit/arkts-apis/arkts-media-media-avmetadataextractor-i.md#seturlsource)，必须正确设置setUrlSource中的url和headers属性，确保正确访问url。
+   - 如果设置setUrlSource，必须正确设置setUrlSource中的url和headers属性，确保正确访问url。
      ```ts
      import { media } from '@kit.MediaKit';
 
@@ -96,7 +96,7 @@
      avMetadataExtractor.setUrlSource(url, headers);
      ```
 
-   - 不同AVMetadataExtractor或者[AVImageGenerator](../../reference/apis-media-kit/arkts-apis/arkts-media-media-avimagegenerator-i.md)实例，如果需要操作同一资源，需要多次打开文件描述符，不要共用同一文件描述符。
+   - 不同AVMetadataExtractor或者AVImageGenerator实例，如果需要操作同一资源，需要多次打开文件描述符，不要共用同一文件描述符。
      ```ts
      import { common } from '@kit.AbilityKit';
      import { fileIo } from '@kit.CoreFileKit';
@@ -111,7 +111,7 @@
      avMetadataExtractor.fdSrc = fileIo.openSync(rootPath + testFilename); // 设置fdSrc属性。
      ```
 
-3. 获取元数据：调用fetchMetadata()，可以获取到一个[AVMetadata](../../reference/apis-media-kit/arkts-apis/arkts-media-media-avmetadata-i-sys.md#avmetadata)对象，通过访问该对象的各个属性，可以获取到元数据。
+3. 获取元数据：调用fetchMetadata()，可以获取到一个AVMetadata对象，通过访问该对象的各个属性，可以获取到元数据。
    ```ts
    // 获取元数据（callback模式）。
    avMetadataExtractor.fetchMetadata((error, metadata) => {

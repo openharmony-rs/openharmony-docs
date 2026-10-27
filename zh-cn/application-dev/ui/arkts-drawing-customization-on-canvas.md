@@ -7,7 +7,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 
-[Canvas](../reference/apis-arkui/errorcode-canvas.md)提供画布组件，用于自定义绘制图形，开发者使用[CanvasRenderingContext2D](../reference/apis-arkui/arkui-js/js-components-canvas-canvasrenderingcontext2d.md)对象和[OffscreenCanvasRenderingContext2D](../reference/apis-arkui/arkui-js/js-offscreencanvasrenderingcontext2d.md)对象在Canvas组件上进行绘制，绘制对象可以是基础形状、文本、图片等。
+[Canvas](../reference/apis-arkui/errorcode-canvas.md)提供画布组件，用于自定义绘制图形，开发者使用CanvasRenderingContext2D对象和OffscreenCanvasRenderingContext2D对象在Canvas组件上进行绘制，绘制对象可以是基础形状、文本、图片等。
 
 
 ## 使用画布组件绘制自定义图形
@@ -15,7 +15,7 @@
 可以由以下三种形式在画布绘制自定义图形：
 
 
-- 使用[CanvasRenderingContext2D](../reference/apis-arkui/arkui-js/js-components-canvas-canvasrenderingcontext2d.md)对象在Canvas画布上绘制。
+- 使用CanvasRenderingContext2D对象在Canvas画布上绘制。
 
 
 <!-- @[canvasRenderingContext2D_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomCanvas/entry/src/main/ets/pages/canvas/CanvasRenderingContext2D.ets) -->
@@ -51,10 +51,10 @@ struct CanvasExample1 {
   ![2023022793003](figures/2023022793003.jpg)
 
 - 离屏绘制是指将需要绘制的内容先绘制在缓存区，再将其转换成图片，一次性绘制到Canvas上，加快了绘制速度。过程为：
-  1. 通过[transferToImageBitmap](../reference/apis-arkui/arkts-components/arkts-arkui-canvas-comp-offscreencanvasrenderingcontext2d-c.md#transfertoimagebitmap)方法将离屏画布最近渲染的图像创建为一个[ImageBitmap](../reference/apis-arkui/arkui-js/js-components-canvas-imagebitmap.md)对象。
-  2. 通过[CanvasRenderingContext2D](../reference/apis-arkui/arkui-js/js-components-canvas-canvasrenderingcontext2d.md)对象的[transferFromImageBitmap](../reference/apis-arkui/arkts-components/arkts-arkui-canvas-comp-canvasrenderer-c.md#transferfromimagebitmap)方法显示给定的ImageBitmap对象。
+  1. 通过[transferToImageBitmap](../reference/apis-arkui/arkts-components/arkts-arkui-canvas-comp-offscreencanvasrenderingcontext2d-c.md#transfertoimagebitmap)方法将离屏画布最近渲染的图像创建为一个ImageBitmap对象。
+  2. 通过CanvasRenderingContext2D对象的[transferFromImageBitmap](../reference/apis-arkui/arkts-components/arkts-arkui-canvas-comp-canvasrenderer-c.md#transferfromimagebitmap)方法显示给定的ImageBitmap对象。
 
-    具体使用参考[OffscreenCanvasRenderingContext2D](../reference/apis-arkui/arkui-js/js-offscreencanvasrenderingcontext2d.md)对象。
+    具体使用参考OffscreenCanvasRenderingContext2D对象。
 
 
 <!-- @[offScreenDrawing_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomCanvas/entry/src/main/ets/pages/canvas/OffScreenDrawing.ets) -->
@@ -109,7 +109,7 @@ import lottie from '@ohos/lottie'
 
 ## 初始化画布组件
 
-onReady(event: () =&gt; void)是Canvas组件初始化完成时的事件回调，调用该事件后，可获取Canvas组件的确定宽度[width](../reference/apis-arkui/arkui-js/js-components-canvas-canvasrenderingcontext2d.md#属性)和高度[height](../reference/apis-arkui/arkui-js/js-components-canvas-canvasrenderingcontext2d.md#属性)，进一步使用CanvasRenderingContext2D对象和OffscreenCanvasRenderingContext2D对象调用相关API进行图形绘制。
+onReady(event: () =&gt; void)是Canvas组件初始化完成时的事件回调，调用该事件后，可获取Canvas组件的确定宽度width和高度height，进一步使用CanvasRenderingContext2D对象和OffscreenCanvasRenderingContext2D对象调用相关API进行图形绘制。
 
 
 <!-- @[initCanvasComponent_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomCanvas/entry/src/main/ets/pages/canvas/InitCanvasComponent.ets) -->
@@ -131,7 +131,7 @@ Canvas(this.context)
 
 ## 画布组件绘制方式
 
-在Canvas组件的事件回调[onReady](../reference/apis-arkui/arkts-components/arkts-arkui-canvas-comp-attribute.md#onready)()被调用之后，开发者可以直接使用Canvas组件进行绘制。或者可以脱离Canvas组件和onReady()生命周期，单独定义[Path2D](../reference/apis-arkui/arkui-js/js-components-canvas-path2d.md)对象构造理想的路径，并在onReady()调用之后使用Canvas组件进行绘制。
+在Canvas组件的事件回调[onReady](../reference/apis-arkui/arkts-components/arkts-arkui-canvas-comp-attribute.md#onready)()被调用之后，开发者可以直接使用Canvas组件进行绘制。或者可以脱离Canvas组件和onReady()生命周期，单独定义Path2D对象构造理想的路径，并在onReady()调用之后使用Canvas组件进行绘制。
 
 - 通过CanvasRenderingContext2D对象直接调用相关API进行绘制。
 
@@ -154,7 +154,7 @@ Canvas(this.context)
 
   ![2023022793719(1)](figures/2023022793719.jpg)
 
-- 先单独定义path2D对象构造理想的路径，再通过调用CanvasRenderingContext2D对象和OffscreenCanvasRenderingContext2D对象的[stroke](../reference/apis-arkui/arkts-components/arkts-arkui-canvas-comp-canvasrenderer-c.md#stroke-1)接口或者[fill](../reference/apis-arkui/arkts-components/arkts-arkui-canvas-comp-canvasrenderer-c.md#fill-1)接口进行绘制，具体使用可以参考[Path2D](../reference/apis-arkui/arkui-js/js-components-canvas-path2d.md)对象。
+- 先单独定义path2D对象构造理想的路径，再通过调用CanvasRenderingContext2D对象和OffscreenCanvasRenderingContext2D对象的[stroke](../reference/apis-arkui/arkts-components/arkts-arkui-canvas-comp-canvasrenderer-c.md#stroke-1)接口或者[fill](../reference/apis-arkui/arkts-components/arkts-arkui-canvas-comp-canvasrenderer-c.md#fill-1)接口进行绘制，具体使用可以参考Path2D对象。
 
 
 <!-- @[definePath2d_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomCanvas/entry/src/main/ets/pages/canvas/CanvasComponentDrawingMethod.ets) -->
@@ -287,7 +287,7 @@ struct CanvasComponentTextBorder {
 
 - 使用自定义字体绘制文本。
 
-  从API version 20开始，可以通过[getGlobalInstance](../reference/apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-text-fontcollection-c.md#getglobalinstance)获取应用全局字体管理器的实例，然后使用[loadFontSync](../reference/apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-text-fontcollection-c.md#loadfontsync)接口从设置的路径中加载自定义字体并通过[font](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-font-c.md#font)（设置文本绘制中的字体样式）接口设置文本绘制中的字体样式，接着通过[fillText](../reference/apis-arkui/arkts-components/arkts-arkui-canvas-comp-canvasrenderer-c.md#filltext)（绘制填充类文本）、[strokeText](../reference/apis-arkui/arkts-components/arkts-arkui-canvas-comp-canvasrenderer-c.md#stroketext)（绘制描边类文本）等接口进行文本绘制。
+  从API version 20开始，可以通过[getGlobalInstance](../reference/apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-text-fontcollection-c.md#getglobalinstance)获取应用全局字体管理器的实例，然后使用[loadFontSync](../reference/apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-text-fontcollection-c.md#loadfontsync)接口从设置的路径中加载自定义字体并通过font（设置文本绘制中的字体样式）接口设置文本绘制中的字体样式，接着通过[fillText](../reference/apis-arkui/arkts-components/arkts-arkui-canvas-comp-canvasrenderer-c.md#filltext)（绘制填充类文本）、[strokeText](../reference/apis-arkui/arkts-components/arkts-arkui-canvas-comp-canvasrenderer-c.md#stroketext)（绘制描边类文本）等接口进行文本绘制。
 
 
 <!-- @[canvasComponentCustomFontsDrawText_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomCanvas/entry/src/main/ets/pages/canvas/CanvasComponentCustomFontsDrawText.ets) -->
@@ -327,7 +327,7 @@ struct CustomFont {
 
 - 绘制图片和图像像素信息处理。
 
-  可以通过[drawImage](../reference/apis-arkui/arkts-components/arkts-arkui-canvas-comp-canvasrenderer-c.md#drawimage)（图像绘制）、[putImageData](../reference/apis-arkui/arkts-components/arkts-arkui-canvas-comp-canvasrenderer-c.md#putimagedata)（使用[ImageData](../reference/apis-arkui/arkui-js/js-components-canvas-imagedata.md)数据填充新的矩形区域）等接口绘制图片，通过[createImageData](../reference/apis-arkui/arkts-components/arkts-arkui-canvas-comp-canvasrenderer-c.md#createimagedata)（创建新的ImageData 对象）、[getPixelMap](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-drawabledescriptor-drawabledescriptor-c.md#getpixelmap)（以当前canvas指定区域内的像素创建[PixelMap](../reference/apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)对象）、[getImageData](../reference/apis-arkui/arkts-components/arkts-arkui-canvas-comp-canvasrenderer-c.md#getimagedata)（以当前canvas指定区域内的像素创建ImageData对象）等接口进行图像像素信息处理。
+  可以通过[drawImage](../reference/apis-arkui/arkts-components/arkts-arkui-canvas-comp-canvasrenderer-c.md#drawimage)（图像绘制）、[putImageData](../reference/apis-arkui/arkts-components/arkts-arkui-canvas-comp-canvasrenderer-c.md#putimagedata)（使用ImageData数据填充新的矩形区域）等接口绘制图片，通过[createImageData](../reference/apis-arkui/arkts-components/arkts-arkui-canvas-comp-canvasrenderer-c.md#createimagedata)（创建新的ImageData 对象）、[getPixelMap](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-drawabledescriptor-drawabledescriptor-c.md#getpixelmap)（以当前canvas指定区域内的像素创建[PixelMap](../reference/apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)对象）、[getImageData](../reference/apis-arkui/arkts-components/arkts-arkui-canvas-comp-canvasrenderer-c.md#getimagedata)（以当前canvas指定区域内的像素创建ImageData对象）等接口进行图像像素信息处理。
 
 
 <!-- @[CanvasComponentDrawingPictureAndImagePixel_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomCanvas/entry/src/main/ets/pages/canvas/CanvasComponentDrawingPictureAndImagePixel.ets) -->
@@ -372,7 +372,7 @@ struct CanvasComponentDrawingPictureAndImagePixel {
 
 - 其他方法。
 
-  Canvas中还提供其他类型的方法。渐变（[CanvasGradient](../reference/apis-arkui/arkui-js/js-components-canvas-canvasgradient.md)对象）相关的方法：[createLinearGradient](../reference/apis-arkui/arkts-components/arkts-arkui-canvas-comp-canvasrenderer-c.md#createlineargradient)（创建一个线性渐变色）、[createRadialGradient](../reference/apis-arkui/arkts-components/arkts-arkui-canvas-comp-canvasrenderer-c.md#createradialgradient)（创建一个径向渐变色）等。
+  Canvas中还提供其他类型的方法。渐变（CanvasGradient对象）相关的方法：[createLinearGradient](../reference/apis-arkui/arkts-components/arkts-arkui-canvas-comp-canvasrenderer-c.md#createlineargradient)（创建一个线性渐变色）、[createRadialGradient](../reference/apis-arkui/arkts-components/arkts-arkui-canvas-comp-canvasrenderer-c.md#createradialgradient)（创建一个径向渐变色）等。
 
 
 <!-- @[canvasComponentOtherMethods_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomCanvas/entry/src/main/ets/pages/canvas/CanvasComponentOtherMethods.ets) -->

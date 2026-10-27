@@ -303,7 +303,7 @@ SymbolSpan可作为[Text](../reference/apis-arkui/arkts-apis/arkts-arkui-typenod
 
   ![BounceSymbolEffect](figures/symbolGlyph_bounceSymbolEffect_trigger.gif)
 
-- 从API version 20开始，支持通过设置symbolEffect属性为[ReplaceSymbolEffect](../reference/apis-arkui/arkts-components/arkts-arkui-symbolglyph-comp-replacesymboleffect-c.md#replacesymboleffect)，设置ReplaceEffectType为ReplaceEffectType.SLASH_OVERLAY，可以指定SymbolGlyph的禁用动画效果及其播放触发条件。
+- 从API version 20开始，支持通过设置symbolEffect属性为ReplaceSymbolEffect，设置ReplaceEffectType为ReplaceEffectType.SLASH_OVERLAY，可以指定SymbolGlyph的禁用动画效果及其播放触发条件。
 
   <!-- @[symbol_disable_effect_new](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolCustomIconAnimation.ets) -->
   
@@ -333,7 +333,7 @@ SymbolSpan可作为[Text](../reference/apis-arkui/arkts-apis/arkts-arkui-typenod
 
   ![symbolGlyph_symbolEffect_disable](figures/symbolGlyph_symbolEffect_disable.gif)
 
-- 从API version 20开始，支持通过设置symbolEffect属性为[ReplaceSymbolEffect](../reference/apis-arkui/arkts-components/arkts-arkui-symbolglyph-comp-replacesymboleffect-c.md#replacesymboleffect)，设置ReplaceEffectType为ReplaceEffectType.CROSS_FADE，可以指定SymbolGlyph的快速替换动画效果及其播放触发条件。
+- 从API version 20开始，支持通过设置symbolEffect属性为ReplaceSymbolEffect，设置ReplaceEffectType为ReplaceEffectType.CROSS_FADE，可以指定SymbolGlyph的快速替换动画效果及其播放触发条件。
 
   <!-- @[symbol_quick_replacement_new](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolCustomIconAnimation.ets) -->
   

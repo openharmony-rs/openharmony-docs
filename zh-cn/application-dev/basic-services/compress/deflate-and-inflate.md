@@ -67,7 +67,7 @@
 
 ### Zip文件的压缩与解压
 
-采用接口[zlib.compressFile()](../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-zlib-compressfile-f.md#compressfile)将文件data.txt压缩并归档到data.zip中，采用接口[zlib.decompressFile()](../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-zlib-decompressfile-f.md#decompressfile)将data.zip解压到应用沙箱目录下，示例代码如下。
+采用接口zlib.compressFile()将文件data.txt压缩并归档到data.zip中，采用接口zlib.decompressFile()将data.zip解压到应用沙箱目录下，示例代码如下。
   
   <!-- @[deflate_and_inflate_002](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/DeflateAndInflate/entry/src/main/ets/pages1/Index.ets) -->
   

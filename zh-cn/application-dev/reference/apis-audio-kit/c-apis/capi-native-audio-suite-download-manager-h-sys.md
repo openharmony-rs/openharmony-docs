@@ -122,7 +122,7 @@ int32_t OH_AudioSuite_RegisterDownloadCallback(OH_AudioSuite_DownloadManager *do
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanager-sys.md) *downloadManager | 下载管理器句柄。 |
-| [const OH_AudioSuite_DownloadCallback](capi-native-audio-suite-download-manager-h.md#oh_audiosuite_downloadcallback) *callback | 接收下载状态更新的回调函数。 |
+| const OH_AudioSuite_DownloadCallback *callback | 接收下载状态更新的回调函数。 |
 
 **返回值：**
 
@@ -151,7 +151,7 @@ int32_t OH_AudioSuite_UnregisterDownloadCallback(OH_AudioSuite_DownloadManager *
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanager-sys.md) *downloadManager | 下载管理器句柄。 |
-| [const OH_AudioSuite_DownloadCallback](capi-native-audio-suite-download-manager-h.md#oh_audiosuite_downloadcallback) *callback | 注销的回调函数。 |
+| const OH_AudioSuite_DownloadCallback *callback | 注销的回调函数。 |
 
 **返回值：**
 

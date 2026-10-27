@@ -18,13 +18,13 @@ API 22开始支持本地证书链吊销状态校验时仅校验终端实体证�
    ```ts
    import { cert } from '@kit.DeviceCertificateKit';
    ```
-2. 调用[cert.createX509CertChain](../../reference/apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-createx509certchain-f.md#createx509certchain)创建证书链对象。
+2. 调用cert.createX509CertChain创建证书链对象。
 
-3. 调用[cert.createX509Cert](../../reference/apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-createx509cert-f.md#createx509cert)创建X.509证书对象。
+3. 调用cert.createX509Cert创建X.509证书对象。
 
-4. 调用[cert.createX509CRL](../../reference/apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-createx509crl-depr-f.md#createx509crl)创建X.509证书吊销列表对象。
+4. 调用cert.createX509CRL创建X.509证书吊销列表对象。
 
-5. 构造[cert.CertChainValidationParameters](../../reference/apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-certchainvalidationparameters-i.md#certchainvalidationparameters)证书链校验参数对象。
+5. 构造cert.CertChainValidationParameters证书链校验参数对象。
 
 6. 调用[cert.validate](../../reference/apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-certchainvalidator-i.md#validate)，传入证书链校验参数，进行证书链校验。
 
@@ -129,11 +129,11 @@ async function doTestLeafCertCrlCheck() {
    ```ts
    import { cert } from '@kit.DeviceCertificateKit';
    ```
-2. 调用[cert.createX509CertChain](../../reference/apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-createx509certchain-f.md#createx509certchain)创建证书链对象。
+2. 调用cert.createX509CertChain创建证书链对象。
 
-3. 调用[cert.createX509Cert](../../reference/apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-createx509cert-f.md#createx509cert)创建X.509证书对象。
+3. 调用cert.createX509Cert创建X.509证书对象。
 
-4. 构造[cert.CertChainValidationParameters](../../reference/apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-certchainvalidationparameters-i.md#certchainvalidationparameters)证书链校验参数。
+4. 构造cert.CertChainValidationParameters证书链校验参数。
 
 5. 调用[cert.validate](../../reference/apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-certchainvalidator-i.md#validate)，传入证书链校验参数，进行证书链校验。
 
@@ -228,9 +228,9 @@ async function doTestCaCheck() {
    ```ts
    import { cert } from '@kit.DeviceCertificateKit';
    ```
-2. 调用[cert.createX509CertChain](../../reference/apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-createx509certchain-f.md#createx509certchain)创建证书链对象。
+2. 调用cert.createX509CertChain创建证书链对象。
 
-3. 调用[cert.createX509Cert](../../reference/apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-createx509cert-f.md#createx509cert)创建X.509证书对象。构造 `cert.CertChainValidationParameters` 证书链校验参数，配置 `revocationCheckParam` 为 `RevocationCheckOptions.REVOCATION_CHECK_OPTION_IGNORE_NETWORK_ERROR`，以忽略网络不可达的情况。
+3. 调用cert.createX509Cert创建X.509证书对象。构造 `cert.CertChainValidationParameters` 证书链校验参数，配置 `revocationCheckParam` 为 `RevocationCheckOptions.REVOCATION_CHECK_OPTION_IGNORE_NETWORK_ERROR`，以忽略网络不可达的情况。
 
 4. 调用[cert.validate](../../reference/apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-certchainvalidator-i.md#validate)，传入证书链校验参数，进行证书链校验。
 

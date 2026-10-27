@@ -89,7 +89,7 @@ struct ComponentPage {
 
 ## 布局回调
 
-通过[@ohos.arkui.inspector (布局回调)](../reference/apis-arkui/arkts-apis/arkts-arkui-inspector.md)提供注册组件布局和组件绘制完成的回调通知能力。
+通过@ohos.arkui.inspector (布局回调)提供注册组件布局和组件绘制完成的回调通知能力。
 
 下述示例，展示了布局回调的基本用法。
 
@@ -152,9 +152,9 @@ struct ImageExample {
 ## 组件标识属性的扩展能力
 
 通过getInspectorByKey、getInspectorTree、sendEventByKey提供组件标识属性扩展能力，具体如下：
-- [getInspectorByKey](../reference/apis-arkui/arkts-apis/arkts-arkui-global-getinspectorbykey-f.md#getinspectorbykey)，获取指定id的组件的所有属性。
-- [getInspectorTree](../reference/apis-arkui/arkts-apis/arkts-arkui-global-getinspectortree-f.md#getinspectortree)，获取组件树及组件属性。
-- [sendEventByKey](../reference/apis-arkui/arkts-apis/arkts-arkui-global-sendeventbykey-f.md#sendeventbykey)，给指定id的组件发送事件。
+- getInspectorByKey，获取指定id的组件的所有属性。
+- getInspectorTree，获取组件树及组件属性。
+- sendEventByKey，给指定id的组件发送事件。
 
 下述示例，展示了getInspectorByKey、getInspectorTree和sendEventByKey的基本用法。
 

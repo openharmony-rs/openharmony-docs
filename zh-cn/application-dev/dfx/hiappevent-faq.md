@@ -182,4 +182,4 @@ HiAppEvent remove file:/data/storage/el2/log/hiappevent/APP_CRASH_1751081104816_
 
 **接口参考链接**
 
-[hiAppEvent.addWatcher](../reference/apis-performance-analysis-kit/c-apis/capi-hiappevent-h.md#ohhiappeventaddwatcher)。
+hiAppEvent.addWatcher。

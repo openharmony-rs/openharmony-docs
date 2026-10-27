@@ -65,7 +65,7 @@
 
 ## 使用说明
 
-- 组件通用方法`attributeModifier`支持传入一个实现`AttributeModifier<T>`接口的实例，`T`必须指定为组件对应的Attribute类型，或者是[通用属性](../reference/apis-arkui/arkui-js-lite/js-lite-common-attributes.md)（CommonAttribute）。
+- 组件通用方法`attributeModifier`支持传入一个实现`AttributeModifier<T>`接口的实例，`T`必须指定为组件对应的Attribute类型，或者是通用属性（CommonAttribute）。
 - 在组件首次初始化或者关联的状态变量发生变化时，如果传入的实例实现了对应接口，会触发`applyNormalAttribute`。
 - 回调[applyNormalAttribute](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-attributemodifier-i.md#applynormalattribute)时，会传入组件属性对象，通过该对象可以设置当前组件的属性/事件。
 - 暂未支持的属性/事件，执行时会抛异常。
@@ -336,33 +336,33 @@ AttributeModifier可以分离UI与样式，支持参数传递及业务逻辑编�
   | CommonAttribute | [accessibilityText](../reference/apis-arkui/arkts-apis/arkts-arkui-accessibilityspanoptions-i.md#accessibilitytext)     | -   | -  |
   | CommonAttribute | [accessibilityDescription](../reference/apis-arkui/arkts-apis/arkts-arkui-accessibilityspanoptions-i.md#accessibilitydescription)     | -   | -  |
   | CommonAttribute | [animation](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-marqueedynamicsyncscenetype-e.md#animation)                | Method not implemented.   | 不支持animation相关属性。                 |
-  | CommonAttribute | [attributeModifier](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-attributemodifier-i.md#attributemodifier)        | -                         | attributeModifier不支持嵌套使用，不生效。 |
+  | CommonAttribute | attributeModifier        | -                         | attributeModifier不支持嵌套使用，不生效。 |
   | CommonAttribute | [backgroundFilter](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundfilter)         | is not callable           | -                                         |
   | CommonAttribute | [compositingFilter](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#compositingfilter)        | is not callable           | -                                         |
-  | CommonAttribute | [drawModifier](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-drawmodifier-c.md#drawmodifier)             | is not callable           | 不支持modifier相关的属性。                |
+  | CommonAttribute | drawModifier             | is not callable           | 不支持modifier相关的属性。                |
   | CommonAttribute | [foregroundFilter](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#foregroundfilter)         | is not callable           | -                                         |
   | CommonAttribute    | [freeze](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#freeze)                   | is not callable           | -                                         |
   | CommonAttribute    | [gesture](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-swiperdynamicsyncscenetype-e.md#gesture)                   | Method not implemented.   | 不支持gesture相关的属性。                 |
-  | CommonAttribute | [gestureModifier](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-gesturemodifier-i.md#gesturemodifier)          | is not callable           | 不支持modifier相关的属性。                |
+  | CommonAttribute | gestureModifier          | is not callable           | 不支持modifier相关的属性。                |
   | CommonAttribute | [onAccessibilityHover](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#onaccessibilityhover)      | is not callable           | -                                         |
   | CommonAttribute | [onDigitalCrown](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#ondigitalcrown)            | is not callable.          | -                                       |
   | CommonAttribute | [parallelGesture](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#parallelgesture)          | Method not implemented.   | 不支持gesture相关的属性。                 |
   | CommonAttribute | [priorityGesture](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#prioritygesture)          | Method not implemented.   | 不支持gesture相关的属性。                 |
   | CommonAttribute   | [reuseId](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-statemanagement-ireusableinfo-i.md#reuseid)                  | Method not implemented.   | -                                         |
-  | CommonAttribute | [stateStyles](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-statestyles-i.md#statestyles)              | Method not implemented.   | 不支持stateStyles相关的属性。             |
-  | CommonAttribute | [useSizeType](../reference/apis-arkui/arkui-js/js-components-grid-col.md#属性)            | Method not implemented.   | 不支持已废弃属性。                        |
-  | CommonAttribute | [visualEffect](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-visualeffect-t.md#visualeffect)             | is not callable           | -                                         |
+  | CommonAttribute | stateStyles              | Method not implemented.   | 不支持stateStyles相关的属性。             |
+  | CommonAttribute | useSizeType            | Method not implemented.   | 不支持已废弃属性。                        |
+  | CommonAttribute | visualEffect             | is not callable           | -                                         |
   | CommonAttribute | [bindContextMenu](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu) | Method not implemented. | 不支持入参为CustomBuilder。 |
   | CommonAttribute | [bindContentCover](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindcontentcover) | Method not implemented. | 不支持入参为CustomBuilder。 |
   | CommonAttribute | [bindSheet](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindsheet) | Method not implemented. | 不支持入参为CustomBuilder。 |
-  | CommonAttribute | [dragPreview](../reference/apis-arkui/arkts-apis/arkts-arkui-dragcontroller-dragpreview-c.md#dragpreview) | Builder is not supported. | 不支持入参为CustomBuilder。 |
+  | CommonAttribute | dragPreview | Builder is not supported. | 不支持入参为CustomBuilder。 |
   | CommonAttribute | [bindPopup](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindpopup) | Method not implemented. | 不支持入参为CustomBuilder。 |
   | CommonAttribute | [accessibilityVirtualNode](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#accessibilityvirtualnode) | is not callable | 不支持入参为CustomBuilder。 |
   | CommonAttribute | [chainWeight](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#chainweight) | - | - |
   | CheckboxGroup |  [contentModifier](../reference/apis-arkui/arkts-components/arkts-arkui-checkboxgroup-comp-attribute.md#contentmodifier)| - | - |
   | CommonAttribute  | [backgroundImage](../reference/apis-arkui/arkts-apis/arkts-arkui-atomicservice-interstitialdialogaction-dialogoptions-i.md#backgroundimage) | - | - |
   | CommonAttribute  | [onClick](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-arcbutton-arcbuttonoptions-c.md#onclick) | - | - |
-  | CommonAttribute  | [toolbar](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-toolbar-toolbar-s.md#toolbar) | - | - |
+  | CommonAttribute  | toolbar | - | - |
   | CommonAttribute  | [accessibilityGroup](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#accessibilitygroup) | - | - |
   | CommonAttribute  | [reuse](../reference/apis-arkui/arkts-apis/arkts-arkui-buildernode-c.md#reuse) | - | - |
   | CommonAttribute  | [onGestureRecognizerJudgeBegin](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#ongesturerecognizerjudgebegin) | - | - |
@@ -411,7 +411,7 @@ AttributeModifier可以分离UI与样式，支持参数传递及业务逻辑编�
   | CommonAttribute | [accessibilityChecked](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#accessibilitychecked)     | 13 | 20  |
   | CommonAttribute | [accessibilitySelected](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#accessibilityselected)    | 13 | 20 |
   | CommonAttribute | [background](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-dialog-buttonoptions-c.md#background) | 10 | 20|
-  | CommonAttribute  | [visualEffect](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-visualeffect-t.md#visualeffect) | 12 | 20 |
+  | CommonAttribute  | visualEffect | 12 | 20 |
   | CommonAttribute | [onDragStart](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#ondragstart) | 8 | 13 |
   | CommonAttribute  | [onVisibleAreaApproximateChange](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#onvisibleareaapproximatechange) | 17     | 23     |
   | CommonAttribute  | [onVisibleAreaChange](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#onvisibleareachange) | 9     | 20     |
@@ -439,7 +439,7 @@ AttributeModifier可以分离UI与样式，支持参数传递及业务逻辑编�
   | Gauge  | [privacySensitive](../reference/apis-arkui/arkts-components/arkts-arkui-gauge-comp-attribute.md#privacysensitive) | 12 | 20 |
   | Image  | [enableAnalyzer](../reference/apis-arkui/arkts-components/arkts-arkui-image-comp-attribute.md#enableanalyzer) | 11 | 12 |
   | Image  | [resizable](../reference/apis-arkui/arkts-apis/arkts-arkui-imageattachment-c.md#resizable) | 11 | 20 |
-  | List  | [OnScrollVisibleContentChangeCallback](../reference/apis-arkui/arkts-components/arkts-arkui-list-comp-onscrollvisiblecontentchangecallback-t.md#onscrollvisiblecontentchangecallback) | 12 | 14 |
+  | List  | OnScrollVisibleContentChangeCallback | 12 | 14 |
   | List  | [onItemDragStart](../reference/apis-arkui/arkts-components/arkts-arkui-list-comp-attribute.md#onitemdragstart) | 8 | 14 |
   | NavDestination | [title](../reference/apis-arkui/arkts-components/arkts-arkui-navdestination-comp-attribute.md#title) | 9 | 12 |
   | NavDestination | [mode](../reference/apis-arkui/arkts-apis/arkts-arkui-uiobserver-navdestinationinfo-i.md#mode) | 11 | 12 |
@@ -447,16 +447,16 @@ AttributeModifier可以分离UI与样式，支持参数传递及业务逻辑编�
   | NavDestination | [menus<sup>12+</sup>](../reference/apis-arkui/arkts-components/arkts-arkui-navdestination-comp-attribute.md#menus) | 12 | 14 |
   | NavDestination | [toolbarConfiguration](../reference/apis-arkui/arkts-components/arkts-arkui-navdestination-comp-attribute.md#toolbarconfiguration) | 13 | 20 |
   | NavDestination | [onReady](../reference/apis-arkui/arkts-components/arkts-arkui-navdestination-comp-attribute.md#onready) | 11 | 20 |
-  | NavDestination | [onWillAppear](../reference/apis-arkui/arkts-apis/arkts-arkui-uiobserver-navdestinationstate-e.md#onwillappear) | 12 | 20 |
-  | NavDestination | [onWillDisappear](../reference/apis-arkui/arkts-apis/arkts-arkui-uiobserver-navdestinationstate-e.md#onwilldisappear) | 12 | 20 |
-  | NavDestination | [onWillShow](../reference/apis-arkui/arkts-apis/arkts-arkui-uiobserver-navdestinationstate-e.md#onwillshow) | 12 | 20 |
-  | NavDestination | [onWillHide](../reference/apis-arkui/arkts-apis/arkts-arkui-uiobserver-navdestinationstate-e.md#onwillhide) | 12 | 20 |
+  | NavDestination | onWillAppear | 12 | 20 |
+  | NavDestination | onWillDisappear | 12 | 20 |
+  | NavDestination | onWillShow | 12 | 20 |
+  | NavDestination | onWillHide | 12 | 20 |
   | NavDestination | [systemBarStyle](../reference/apis-arkui/arkts-components/arkts-arkui-navdestination-comp-attribute.md#systembarstyle) | 12 | 20 |
   | NavDestination | [onResult](../reference/apis-arkui/arkts-components/arkts-arkui-navdestination-comp-attribute.md#onresult) | 15 | 22 |
   | NavDestination | [bindToScrollable](../reference/apis-arkui/arkts-components/arkts-arkui-navdestination-comp-attribute.md#bindtoscrollable) | 14 | 22 |
   | NavDestination | [bindToNestedScrollable](../reference/apis-arkui/arkts-components/arkts-arkui-navdestination-comp-attribute.md#bindtonestedscrollable) | 14 | 22 |
-  | NavDestination | [onActive](../reference/apis-arkui/arkts-apis/arkts-arkui-uiobserver-navdestinationstate-e.md#onactive) | 17 | 22 |
-  | NavDestination | [onInactive](../reference/apis-arkui/arkts-apis/arkts-arkui-uiobserver-navdestinationstate-e.md#oninactive) | 17 | 22 |
+  | NavDestination | onActive | 17 | 22 |
+  | NavDestination | onInactive | 17 | 22 |
   | NavDestination | [onNewParam](../reference/apis-arkui/arkts-components/arkts-arkui-navdestination-comp-attribute.md#onnewparam) | 19 | 22 |
   | Navigation | [title](../reference/apis-arkui/arkts-apis/arkts-arkui-atomicservice-atomicservicenavigation-atomicservicenavigation-s.md#title) | 8 | 12 |
   | Navigation | [toolbarConfiguration](../reference/apis-arkui/arkts-components/arkts-arkui-navigation-comp-attribute.md#toolbarconfiguration) | 10 | 20 |

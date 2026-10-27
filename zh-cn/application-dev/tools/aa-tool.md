@@ -550,7 +550,7 @@ aa send-memory-level -p <processId> -l <memoryLevel>
 | -------- | -------- |
 | -h/--help | 帮助信息。 |
 | -p | 必选参数，进程pid。 |
-| -l | 必选参数，内存使用级别，具体值参考[AbilityConstant.MemoryLevel](../reference/apis-ability-kit/arkts-apis/arkts-ability-abilityconstant-memorylevel-e.md#memorylevel)。 |
+| -l | 必选参数，内存使用级别，具体值参考AbilityConstant.MemoryLevel。 |
 
 **返回值**：
 

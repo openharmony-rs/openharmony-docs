@@ -18,9 +18,9 @@ CryptoExtensionAbility作为Stage模型中扩展组件[ExtensionAbility](../../a
 
 1. 接口实现：继承CryptoExtensionAbility，根据业务需要实现[核心能力实现](#核心能力实现)中的回调接口，封装对底层外部密钥管理后端的调用。
 
-2. 注册到HUKS：在密钥管理扩展设备/服务可用时调用[registerProvider](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huksexternalcrypto-registerprovider-f.md#registerprovider)将CryptoExtensionAbility注册到HUKS。注册成功后，HUKS和证书管理将对应的密钥管理扩展能力开放给应用。
+2. 注册到HUKS：在密钥管理扩展设备/服务可用时调用registerProvider将CryptoExtensionAbility注册到HUKS。注册成功后，HUKS和证书管理将对应的密钥管理扩展能力开放给应用。
 
-3. 注销下线：在设备拔出、服务停止等不可用场景下调用[unregisterProvider](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huksexternalcrypto-unregisterprovider-f.md#unregisterprovider)注销已注册的能力，避免资源残留。
+3. 注销下线：在设备拔出、服务停止等不可用场景下调用unregisterProvider注销已注册的能力，避免资源残留。
 
 ## 接入能力
 
@@ -36,7 +36,7 @@ CryptoExtensionAbility作为Stage模型中扩展组件[ExtensionAbility](../../a
 
 ### 可用性检测与注册/注销时机
 
-密钥管理扩展应用需根据接入的设备/服务形态，检测其可用性。当设备或服务可用时调用[registerProvider](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huksexternalcrypto-registerprovider-f.md#registerprovider)接口注册CryptoExtensionAbility，不可用时调用[unregisterProvider](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huksexternalcrypto-unregisterprovider-f.md#unregisterprovider)接口注销CryptoExtensionAbility，可参考[CryptoExtensionAbility注册与注销](huks-extension-registration-and-unregistration-arkts-ndk.md)。
+密钥管理扩展应用需根据接入的设备/服务形态，检测其可用性。当设备或服务可用时调用registerProvider接口注册CryptoExtensionAbility，不可用时调用unregisterProvider接口注销CryptoExtensionAbility，可参考[CryptoExtensionAbility注册与注销](huks-extension-registration-and-unregistration-arkts-ndk.md)。
 
 检测机制因设备形态而异：
 - UKey物理设备：监听USB插拔事件。
@@ -59,7 +59,7 @@ CryptoExtensionAbility作为Stage模型中扩展组件[ExtensionAbility](../../a
 从API版本26.0.0开始，OpenHarmony中支持两类ExtensionAbility配合使用：CryptoExtensionAbility处理密码学操作，UIExtensionAbility处理需要定制化的UI交互的流程（如PIN输入框、证书选择界面）。密钥管理扩展应用可根据实际业务需要，在注册Provider时同步关联UIExtensionAbility。
 
 - 数量限制：1个CryptoExtensionAbility最多关联**10个**UIExtensionAbility，超出时registerProvider返回HUKS_ERR_CODE_EXCEED_LIMIT。
-- 字段说明：通过[HUKS_EXT_CRYPTO_TAG_ABILITY_INFO](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huksexternalcrypto-huksexternalcryptotag-e.md#huksexternalcryptotag)传入JSON字符串，其中abilityName字段对应module.json5中UIExtensionAbility的name字段，最大长度为128字节，index字段对应resourceId，最大长度为512字节，用于将UIExtensionAbility路由到具体资源。
+- 字段说明：通过HUKS_EXT_CRYPTO_TAG_ABILITY_INFO传入JSON字符串，其中abilityName字段对应module.json5中UIExtensionAbility的name字段，最大长度为128字节，index字段对应resourceId，最大长度为512字节，用于将UIExtensionAbility路由到具体资源。
 - 典型场景：自定义PIN输入框、自定义证书选择界面、自定义用户确认对话框等。
 
 ## 核心能力实现
@@ -76,8 +76,8 @@ CryptoExtensionAbility接口按职责可分为7个能力域，部分能力域在
 > **说明：**
 >
 > 1. CryptoExtensionAbility所有接口的params中都会携带调用方身份信息（通过HUKS_EXT_CRYPTO_TAG_UID标识）。密钥管理扩展应用可基于业务需要决定是否使用，例如在句柄管理、会话管理、认证管理等场景下基于UID进行隔离与校验。
-> 2. 接口函数的resultCode不支持自定义，必须按[HuksCryptoExtensionResultCode](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-security-cryptoextensionability-hukscryptoextensionresultcode-e.md#hukscryptoextensionresultcode)枚举定义的错误码返回，否则可能导致异常。
-> 3. 从API版本26.0.0开始，厂商如需传递自定义的细粒度错误信息，可通过返回值的errInfo字段传入，errInfo为[HuksExternalErrorInfo](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huksexternalcrypto-huksexternalerrorinfo-i.md#huksexternalerrorinfo)类型。上层应用可通过[huksExternalCrypto.getErrorInfo](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huksexternalcrypto-geterrorinfo-f.md#geterrorinfo)接口获取。
+> 2. 接口函数的resultCode不支持自定义，必须按HuksCryptoExtensionResultCode枚举定义的错误码返回，否则可能导致异常。
+> 3. 从API版本26.0.0开始，厂商如需传递自定义的细粒度错误信息，可通过返回值的errInfo字段传入，errInfo为HuksExternalErrorInfo类型。上层应用可通过huksExternalCrypto.getErrorInfo接口获取。
 
 ### 句柄管理
 
@@ -134,7 +134,7 @@ CryptoExtensionAbility接口按职责可分为7个能力域，部分能力域在
 
 ### 证书查询与导入
 
-密钥管理扩展应用可支持按证书用途[HUKS_EXT_CRYPTO_TAG_PURPOSE](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huksexternalcrypto-huksexternalcryptotag-e.md#huksexternalcryptotag)查询、枚举和导入证书。如未指定，密钥管理扩展应用需设置合理默认值（如签名用途的证书）。
+密钥管理扩展应用可支持按证书用途HUKS_EXT_CRYPTO_TAG_PURPOSE查询、枚举和导入证书。如未指定，密钥管理扩展应用需设置合理默认值（如签名用途的证书）。
 
 - 证书用途过滤：通过`HUKS_EXT_CRYPTO_TAG_PURPOSE`参数指定，建议支持以下取值：
   - `0`：默认用途
@@ -147,7 +147,7 @@ CryptoExtensionAbility接口按职责可分为7个能力域，部分能力域在
 
 - 证书枚举：[onEnumCertificates](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-security-cryptoextensionability-cryptoextensionability-c.md#onenumcertificates)枚举当前CryptoExtensionAbility下的所有证书。
 
-- 返回结构：通过result.certs返回，元素类型为Array<[HuksCryptoExtensionCertInfo](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-security-cryptoextensionability-hukscryptoextensioncertinfo-i.md#hukscryptoextensioncertinfo)>。
+- 返回结构：通过result.certs返回，元素类型为Array<HuksCryptoExtensionCertInfo>。
 
 - 证书导入（从API版本26.0.0起支持）：通过[onImportCertificate](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-security-cryptoextensionability-cryptoextensionability-c.md#onimportcertificate)接口将证书导入密钥管理扩展服务。
 
@@ -174,7 +174,7 @@ CryptoExtensionAbility接口按职责可分为7个能力域，部分能力域在
 
 - 接口职责：密钥管理扩展应用根据上层应用传入的业务标识，返回对应的resourceId，使上层应用后续可通过openResource等接口访问该资源。
 
-- 实现要点：上层应用调用时会在params中携带Ability名称、Bundle名称、业务标识（通过[HUKS_EXT_CRYPTO_TAG_RESOURCE_INFO](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huksexternalcrypto-huksexternalcryptotag-e.md#huksexternalcryptotag)传入）等参数。密钥管理扩展应用需基于业务标识区分上层应用要访问的资源，并将该业务标识映射为对应的resourceId。业务标识的具体形态由密钥管理扩展应用根据底层资源管理方式自行定义。
+- 实现要点：上层应用调用时会在params中携带Ability名称、Bundle名称、业务标识（通过HUKS_EXT_CRYPTO_TAG_RESOURCE_INFO传入）等参数。密钥管理扩展应用需基于业务标识区分上层应用要访问的资源，并将该业务标识映射为对应的resourceId。业务标识的具体形态由密钥管理扩展应用根据底层资源管理方式自行定义。
 
 - 返回结构：成功时通过result.resourceId字段返回资源ID，标识密钥管理扩展服务中的某个具体资源，可供上层应用用于后续 openResource等接口的入参。
 

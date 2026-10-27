@@ -106,13 +106,13 @@ OH_AudioStreamBuilder_Destroy(builder);
    OH_AudioStreamBuilder_SetRendererInfo(builder, AUDIOSTREAM_USAGE_MUSIC);
    ```
 
-   注意，播放的音频数据要通过回调接口写入，开发者要实现回调接口，从API version 12开始支持使用OH_AudioStreamBuilder_SetRendererWriteDataCallback设置数据回调函数。数据回调函数的声明请查看[OH_AudioRenderer_OnWriteDataCallback](../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md#callback)。
+   注意，播放的音频数据要通过回调接口写入，开发者要实现回调接口，从API version 12开始支持使用OH_AudioStreamBuilder_SetRendererWriteDataCallback设置数据回调函数。数据回调函数的声明请查看OH_AudioRenderer_OnWriteDataCallback。
 
 3. 设置音频回调函数。
 
    多音频并发处理可参考文档[处理音频焦点事件](audio-playback-concurrency.md)，仅接口语言差异。
 
-   - 从API version 12开始**推荐**使用[OH_AudioRenderer_OnWriteDataCallback](../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md#callback)用于写入音频数据。
+   - 从API version 12开始**推荐**使用OH_AudioRenderer_OnWriteDataCallback用于写入音频数据。
 
      > **注意：**
      > 

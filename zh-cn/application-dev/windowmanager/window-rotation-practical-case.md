@@ -101,7 +101,7 @@ struct Index {
 
 ## 实现屏幕方向和窗口的orientation的相互转换
 
-目前存在屏幕[orientation](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-fullscreenlaunchcomponent.md#属性)、屏幕[rotation](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-fullscreenlaunchcomponent.md#属性)和窗口[orientation](../reference/apis-arkui/arkts-apis/arkts-arkui-window-rotationchangeinfo-i.md#rotationchangeinfo)概念，它们之间存在关联，但并不相同，可以参考[display.Orientation与display.rotation的关系](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-multi-device-window-direction#section5175174443718)。
+目前存在屏幕[orientation](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-fullscreenlaunchcomponent.md#属性)、屏幕[rotation](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-fullscreenlaunchcomponent.md#属性)和窗口orientation概念，它们之间存在关联，但并不相同，可以参考[display.Orientation与display.rotation的关系](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-multi-device-window-direction#section5175174443718)。
 
 在多设备、多形态的场景下（例如折叠屏手机、平板、外接显示器），屏幕的rotation（物理角度）和屏幕的orientation（逻辑横竖状态）并不总是一一对应。
 
@@ -127,11 +127,11 @@ struct Index {
 
 若开发者想准确知道当前窗口方向从而选择旋转策略（比如视频播放页面锁定当前方向），推荐获取到[display.rotation](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-fullscreenlaunchcomponent.md#属性)或[display.orientation](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-fullscreenlaunchcomponent.md#属性)后，再使用[convertOrientationAndRotation()](../reference/apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#convertorientationandrotation)将屏幕方向转化为窗口方向，具体示例如下：
 
-1. 获取目标屏幕方向。调用[getDefaultDisplaySync()](../reference/apis-arkui/arkts-apis/arkts-arkui-display-getdefaultdisplaysync-f.md#getdefaultdisplaysync)获取目标屏幕的Display对象，再通过其[display.orientation](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-fullscreenlaunchcomponent.md#属性)属性获取屏幕方向。
+1. 获取目标屏幕方向。调用getDefaultDisplaySync()获取目标屏幕的Display对象，再通过其[display.orientation](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-fullscreenlaunchcomponent.md#属性)属性获取屏幕方向。
 
-2. 将屏幕方向转换为窗口方向。调用[convertOrientationAndRotation()](../reference/apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#convertorientationandrotation)可以把屏幕方向[display.orientation](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-fullscreenlaunchcomponent.md#属性)转换为窗口方向[orientation](../reference/apis-arkui/arkts-apis/arkts-arkui-window-rotationchangeinfo-i.md#rotationchangeinfo)。
+2. 将屏幕方向转换为窗口方向。调用[convertOrientationAndRotation()](../reference/apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#convertorientationandrotation)可以把屏幕方向[display.orientation](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-fullscreenlaunchcomponent.md#属性)转换为窗口方向orientation。
 
-3. 将窗口方向转换为旋转策略。窗口方向还需要进一步转换为系统可识别的旋转策略窗口[Orientation](../reference/apis-arkui/arkts-apis/arkts-arkui-display-orientation-e.md#orientation)，才能传给setPreferredOrientation()。
+3. 将窗口方向转换为旋转策略。窗口方向还需要进一步转换为系统可识别的旋转策略窗口Orientation，才能传给setPreferredOrientation()。
 
 4. 调用[setPreferredOrientation()](../reference/apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#setpreferredorientation)接口设置旋转策略锁定显示方向。
 

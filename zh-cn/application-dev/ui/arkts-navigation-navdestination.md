@@ -84,23 +84,23 @@ NavDestination提供了两种类型。
 
 ## 页面生命周期
 
-页面生命周期承载在NavDestination组件上，可分为三类：自定义组件生命周期、通用组件生命周期和NavDestination生命周期[事件](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-composelistitem.md#事件)。其中，[aboutToAppear](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-statemanagement-customcomponentlifecycleobserver-i.md#abouttoappear)和[aboutToDisappear](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-statemanagement-customcomponentlifecycleobserver-i.md#abouttodisappear)是自定义组件的生命周期（NavDestination外层包含的自定义组件），[onAppear](../reference/apis-arkui/arkts-apis/arkts-arkui-uiobserver-navdestinationstate-e.md#onappear)和[onDisAppear](../reference/apis-arkui/arkts-apis/arkts-arkui-uiobserver-navdestinationstate-e.md#ondisappear)是组件的通用生命周期。剩下的生命周期为NavDestination独有。
+页面生命周期承载在NavDestination组件上，可分为三类：自定义组件生命周期、通用组件生命周期和NavDestination生命周期[事件](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-composelistitem.md#事件)。其中，[aboutToAppear](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-statemanagement-customcomponentlifecycleobserver-i.md#abouttoappear)和[aboutToDisappear](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-statemanagement-customcomponentlifecycleobserver-i.md#abouttodisappear)是自定义组件的生命周期（NavDestination外层包含的自定义组件），onAppear和onDisAppear是组件的通用生命周期。剩下的生命周期为NavDestination独有。
 
 生命周期时序如下图所示：
 
 ![navigation_lifecycle](figures/navigation_lifecycle.png)
 
 - **[aboutToAppear](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-statemanagement-customcomponentlifecycleobserver-i.md#abouttoappear)**：在创建自定义组件后，执行其build()函数之前执行（NavDestination创建之前），允许在该方法中改变状态变量，更改将在后续执行build()函数中生效。
-- **[onWillAppear](../reference/apis-arkui/arkts-apis/arkts-arkui-uiobserver-navdestinationstate-e.md#onwillappear)**：NavDestination创建后，挂载到组件树之前执行，在该方法中更改状态变量会在当前帧显示生效。
-- **[onAppear](../reference/apis-arkui/arkts-apis/arkts-arkui-uiobserver-navdestinationstate-e.md#onappear)**：通用生命周期事件，NavDestination组件挂载到组件树时执行。
-- **[onWillShow](../reference/apis-arkui/arkts-apis/arkts-arkui-uiobserver-navdestinationstate-e.md#onwillshow)**：NavDestination组件布局显示之前执行，此时页面不可见（应用切换到前台不会执行）。
-- **[onShown](../reference/apis-arkui/arkts-apis/arkts-arkui-uiobserver-navdestinationstate-e.md#onshown)**：NavDestination组件布局显示之后执行，此时页面已完成布局。
-- **[onActive](../reference/apis-arkui/arkts-apis/arkts-arkui-uiobserver-navdestinationstate-e.md#onactive)**：NavDestination处于激活态（处于栈顶可操作，且上层无特殊组件遮挡）执行。
-- **[onWillHide](../reference/apis-arkui/arkts-apis/arkts-arkui-uiobserver-navdestinationstate-e.md#onwillhide)**：NavDestination组件执行隐藏之前执行（应用切换到后台不会执行）。
-- **[onInactive](../reference/apis-arkui/arkts-apis/arkts-arkui-uiobserver-navdestinationstate-e.md#oninactive)**：NavDestination组件处于非激活态（处于非栈顶不可操作，或处于栈顶时上层有特殊组件遮挡）执行。
-- **[onHidden](../reference/apis-arkui/arkts-apis/arkts-arkui-uiobserver-navdestinationstate-e.md#onhidden)**：NavDestination组件执行隐藏后执行（非栈顶页面push进栈，栈顶页面pop出栈或应用切换到后台）。
-- **[onWillDisappear](../reference/apis-arkui/arkts-apis/arkts-arkui-uiobserver-navdestinationstate-e.md#onwilldisappear)**：NavDestination组件即将销毁之前执行，如果有转场动画，会在动画前执行（栈顶页面pop出栈）。
-- **[onDisAppear](../reference/apis-arkui/arkts-apis/arkts-arkui-uiobserver-navdestinationstate-e.md#ondisappear)**：通用生命周期事件，NavDestination组件从组件树上卸载销毁时执行。
+- **onWillAppear**：NavDestination创建后，挂载到组件树之前执行，在该方法中更改状态变量会在当前帧显示生效。
+- **onAppear**：通用生命周期事件，NavDestination组件挂载到组件树时执行。
+- **onWillShow**：NavDestination组件布局显示之前执行，此时页面不可见（应用切换到前台不会执行）。
+- **onShown**：NavDestination组件布局显示之后执行，此时页面已完成布局。
+- **onActive**：NavDestination处于激活态（处于栈顶可操作，且上层无特殊组件遮挡）执行。
+- **onWillHide**：NavDestination组件执行隐藏之前执行（应用切换到后台不会执行）。
+- **onInactive**：NavDestination组件处于非激活态（处于非栈顶不可操作，或处于栈顶时上层有特殊组件遮挡）执行。
+- **onHidden**：NavDestination组件执行隐藏后执行（非栈顶页面push进栈，栈顶页面pop出栈或应用切换到后台）。
+- **onWillDisappear**：NavDestination组件即将销毁之前执行，如果有转场动画，会在动画前执行（栈顶页面pop出栈）。
+- **onDisAppear**：通用生命周期事件，NavDestination组件从组件树上卸载销毁时执行。
 - **[aboutToDisappear](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-statemanagement-customcomponentlifecycleobserver-i.md#abouttodisappear)**：自定义组件析构销毁之前执行，不允许在该方法中改变状态变量。
 
 此外还有两个特殊生命周期：
@@ -114,7 +114,7 @@ NavDestination提供了两种类型。
 
 - 页面信息查询：
 
-  自定义组件提供[queryNavDestinationInfo](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-basecustomcomponent-c.md#querynavdestinationinfo)方法，可以在NavDestination内部查询到当前所属页面的信息，返回值为[NavDestinationInfo](../reference/apis-arkui/arkts-apis/arkts-arkui-uiobserver-navdestinationinfo-i.md#navdestinationinfo)，若查询不到则返回undefined。
+  自定义组件提供[queryNavDestinationInfo](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-basecustomcomponent-c.md#querynavdestinationinfo)方法，可以在NavDestination内部查询到当前所属页面的信息，返回值为NavDestinationInfo，若查询不到则返回undefined。
 
   <!-- @[MyComponent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/observer/template1/Index.ets) -->
   
@@ -146,5 +146,5 @@ NavDestination提供了两种类型。
   
   通过observer.on('navDestinationUpdate')提供的注册接口可以注册NavDestination生命周期变化的监听。
 
-  也可以通过[observer.on('navDestinationSwitch')](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-uiobserver-c.md#onnavdestinationswitch)注册页面切换的状态回调。该回调能在页面发生路由切换时拿到对应的页面信息[NavDestinationSwitchInfo](../reference/apis-arkui/arkts-apis/arkts-arkui-uiobserver-navdestinationswitchinfo-i.md#navdestinationswitchinfo)，并提供了[UIAbilityContext (UIAbility上下文)](../reference/apis-ability-kit/arkts-apis/arkts-ability-common-uiabilitycontext-t.md)和[UIContext](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md)不同范围的监听。
+  也可以通过[observer.on('navDestinationSwitch')](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-uiobserver-c.md#onnavdestinationswitch)注册页面切换的状态回调。该回调能在页面发生路由切换时拿到对应的页面信息NavDestinationSwitchInfo，并提供了[UIAbilityContext (UIAbility上下文)](../reference/apis-ability-kit/arkts-apis/arkts-ability-common-uiabilitycontext-t.md)和[UIContext](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md)不同范围的监听。
   

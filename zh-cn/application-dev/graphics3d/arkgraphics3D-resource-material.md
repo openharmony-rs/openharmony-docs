@@ -35,7 +35,7 @@ ArkGraphics 3D中的材质类型通过[MaterialType](../reference/apis-arkgraphi
 
 
 ### 通用属性
-所有材质均具备以下基础属性（如materialType、shadowReceiver、blend等）可通过设置[Material](../reference/apis-arkgraphics3d/arkts-apis/arkts-arkgraphics3d-sceneresources-material-i.md#material)类型对象实现，用于控制材质的类型及其渲染基础行为：
+所有材质均具备以下基础属性（如materialType、shadowReceiver、blend等）可通过设置Material类型对象实现，用于控制材质的类型及其渲染基础行为：
 
 - materialType：材质类型，标识该材质是标准PBR材质还是基于Shader的自定义材质。
 
@@ -66,7 +66,7 @@ ArkGraphics 3D中的材质类型通过[MaterialType](../reference/apis-arkgraphi
   适用场景：以线框模式渲染3D物体的网格，可直观显示模型的建模结构。
 
 ### PBR材质属性
-符合glTF标准的基于物理渲染（PBR）的金属-粗糙度材质，通过设置[MetallicRoughnessMaterial](../reference/apis-arkgraphics3d/arkts-apis/arkts-arkgraphics3d-sceneresources-metallicroughnessmaterial-i.md#metallicroughnessmaterial)实现，其中各项属性采用[MaterialProperty](../reference/apis-arkgraphics3d/arkts-apis/arkts-arkgraphics3d-sceneresources-materialproperty-i.md#materialproperty)类型封装，支持绑定纹理和设置因子（factor）值。具体属性包括：
+符合glTF标准的基于物理渲染（PBR）的金属-粗糙度材质，通过设置MetallicRoughnessMaterial实现，其中各项属性采用MaterialProperty类型封装，支持绑定纹理和设置因子（factor）值。具体属性包括：
 
 - baseColor：基础颜色和透明度，包含纹理及对应因子，用于定义材质表面的主色调。
 

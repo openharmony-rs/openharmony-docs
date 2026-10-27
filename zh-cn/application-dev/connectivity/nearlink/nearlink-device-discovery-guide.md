@@ -166,7 +166,7 @@
     import { util } from '@kit.ArkTS';
     ```
 
-2. 订阅扫描结果。为避免重复订阅，先调用[offDeviceFound()](../../reference/apis-connectivity-kit/arkts-apis/arkts-connectivity-scan-offdevicefound-f.md#offdevicefound)取消已有订阅，再调用[onDeviceFound()](../../reference/apis-connectivity-kit/arkts-apis/arkts-connectivity-scan-ondevicefound-f.md#ondevicefound)订阅扫描结果，当扫描到设备时将触发回调。回调中调用的parseScanResult解析方法在步骤3中定义。
+2. 订阅扫描结果。为避免重复订阅，先调用offDeviceFound()取消已有订阅，再调用onDeviceFound()订阅扫描结果，当扫描到设备时将触发回调。回调中调用的parseScanResult解析方法在步骤3中定义。
 
     <!-- @[scan_on_device_found](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/ScanConfigPage.ets) -->
     

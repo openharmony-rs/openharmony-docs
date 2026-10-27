@@ -14,7 +14,7 @@ ArkUI提供轻量的UI元素复用机制[\@Builder](../../reference/apis-arkui/a
 
 @Builder装饰器和[@Component装饰器](./arkts-create-custom-components.md#component)在功能和使用方式上的主要差异：
 
-1. @Builder装饰器用于封装可复用的UI结构，通过提取重复的布局代码提高开发效率。该装饰器严格禁止在其内部定义[状态变量](./arkts-state-management-glossary.md#state-variables状态变量)或使用[自定义组件的生命周期函数](../../reference/apis-arkui/arkui-js-lite/js-lite-framework-lifecycle.md)，必须通过参数传递或者访问所属组件的状态变量完成数据交互。
+1. @Builder装饰器用于封装可复用的UI结构，通过提取重复的布局代码提高开发效率。该装饰器严格禁止在其内部定义[状态变量](./arkts-state-management-glossary.md#state-variables状态变量)或使用自定义组件的生命周期函数，必须通过参数传递或者访问所属组件的状态变量完成数据交互。
 
 2. 在ArkUI框架中，@Component装饰器作为封装复杂UI组件的核心机制，允许开发者通过组合多个基础组件来构建可复用的复合界面。该装饰器不仅支持内部状态变量的定义，还能完整管理组件的生命周期。
 
@@ -463,7 +463,7 @@ struct ParentSample {
 
 ### 将@Builder装饰的函数当作CustomBuilder类型使用
 
-当参数类型为[CustomBuilder](../../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-custombuilder-t.md#custombuilder)时，可以传入定义的`@Builder`函数。因为`CustomBuilder`实际上是`(() => any)`或`void`类型，而`@Builder`也是`Function`类型。所以通过传入`@Builder`可以实现特定效果。
+当参数类型为CustomBuilder时，可以传入定义的`@Builder`函数。因为`CustomBuilder`实际上是`(() => any)`或`void`类型，而`@Builder`也是`Function`类型。所以通过传入`@Builder`可以实现特定效果。
 
 全局`@Builder`函数当作`CustomBuilder`类型传递时需要绑定this上下文，开发者可以直接调用全局`@Builder`函数，编译工具链会自动生成绑定this上下文的代码。
 

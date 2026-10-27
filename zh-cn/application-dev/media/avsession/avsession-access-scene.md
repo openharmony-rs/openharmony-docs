@@ -31,7 +31,7 @@ AVSession会对后台音频播放、VoIP通话进行约束。因此，长音频�
 
 ## 创建不同类型的会话
 
-AVSession在构造方法中支持不同的类型参数，由 [AVSessionType](../../reference/apis-avsession-kit/arkts-apis/arkts-avsession-avsession-avsessiontype-t.md#avsessiontype) 定义，不同的类型代表了不同场景的控制能力，对于播控中心来说，会展示不同的控制模板。
+AVSession在构造方法中支持不同的类型参数，由 AVSessionType 定义，不同的类型代表了不同场景的控制能力，对于播控中心来说，会展示不同的控制模板。
 
 - audio类型，播控中心的控制样式为：收藏、上一首、播放/暂停、下一首、循环模式。
 
@@ -83,7 +83,7 @@ struct Index {
 
 当应用需要实现后台播放等功能时，需要使用[BackgroundTasks Kit](../../task-management/background-task-overview.md)（后台任务管理）的能力，申请对应的长时任务，避免进入挂起（Suspend）状态。
 
-对媒体类播放来说，需要申请[AUDIO_PLAYBACK BackgroundMode](../../reference/apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-backgroundtaskmanager-backgroundmode-depr-e-sys.md#backgroundmode)的长时任务。
+对媒体类播放来说，需要申请AUDIO_PLAYBACK BackgroundMode的长时任务。
 
 
 ## 设置元数据信息
@@ -92,7 +92,7 @@ struct Index {
 
 ### 元数据信息
 
-元数据信息[AVMetadata](../../reference/apis-avsession-kit/arkts-apis/arkts-avsession-avsession-avmetadata-i.md#avmetadata)包括：当前媒体的ID（assetId）、上一首媒体的ID（previousAssetId）、下一首媒体的ID（nextAssetId）、标题（title）、专辑作者（author）、艺术家（artist）、专辑名称（album）、词作者（writer）、媒体图片（mediaImage）和媒体时长（duration）等。
+元数据信息AVMetadata包括：当前媒体的ID（assetId）、上一首媒体的ID（previousAssetId）、下一首媒体的ID（nextAssetId）、标题（title）、专辑作者（author）、艺术家（artist）、专辑名称（album）、词作者（writer）、媒体图片（mediaImage）和媒体时长（duration）等。
 
 <!-- @[setAVMetadata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/SetAVMetadata.ets) -->
 
@@ -146,7 +146,7 @@ struct Index {
 
 ### 设置歌词字段信息
 
-元数据信息[AVMetadata](../../reference/apis-avsession-kit/arkts-apis/arkts-avsession-avsession-avmetadata-i.md#avmetadata)中包含歌词字段，应用可以通过设置歌词字段来满足某些场景的歌词内容展示，当前支持设置两种歌词字段：
+元数据信息AVMetadata中包含歌词字段，应用可以通过设置歌词字段来满足某些场景的歌词内容展示，当前支持设置两种歌词字段：
 
 - lyric字段：播放资源的完整歌词内容，系统播控中心页面会根据该字段信息展示歌词内容。应用需将歌词内容拼接为一个字符串传入。
 
@@ -211,7 +211,7 @@ struct Index {
 
 ### 设置进度条信息
 
-元数据信息[AVMetadata](../../reference/apis-avsession-kit/arkts-apis/arkts-avsession-avsession-avmetadata-i.md#avmetadata)中包含播放资源时长duration字段（单位为ms），应用如果希望在系统播控中心界面展示播放资源的进度条，需要在duration字段中填写正确的资源播放时长信息。
+元数据信息AVMetadata中包含播放资源时长duration字段（单位为ms），应用如果希望在系统播控中心界面展示播放资源的进度条，需要在duration字段中填写正确的资源播放时长信息。
 
 <!-- @[settingTheProgressBar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/SettingTheProgressBar.ets) -->
 
@@ -305,7 +305,7 @@ struct Index {
 
 ### 媒体资源金标
 
-元数据信息[AVMetadata](../../reference/apis-avsession-kit/arkts-apis/arkts-avsession-avsession-avmetadata-i.md#avmetadata)中提供了displayTags字段用于展示媒体资源金标（应用音频音源的标识）。应用设置displayTags字段信息后，系统的播控中心界面会同步展示，当前系统只支持展示Audio Vivid标识。
+元数据信息AVMetadata中提供了displayTags字段用于展示媒体资源金标（应用音频音源的标识）。应用设置displayTags字段信息后，系统的播控中心界面会同步展示，当前系统只支持展示Audio Vivid标识。
 
 <!-- @[displayTagsOfMediaAssets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/DisplayTagsOfMediaAssets.ets) -->  
 
@@ -360,7 +360,7 @@ struct Index {
 
 ### 播放状态信息
 
-播放状态信息[AVPlaybackState](../../reference/apis-avsession-kit/arkts-apis/arkts-avsession-avsession-avplaybackstate-i.md#avplaybackstate)包括：当前媒体的播放状态（state）、播放位置（position，包含elapsedTime已播放时长和updateTime更新时间戳）、播放倍速（speed）、缓冲时间（bufferedTime）、循环模式（loopMode）、是否收藏（isFavorite）、正在播放的媒体ID（activeItemId）、自定义媒体数据（extras）等。
+播放状态信息AVPlaybackState包括：当前媒体的播放状态（state）、播放位置（position，包含elapsedTime已播放时长和updateTime更新时间戳）、播放倍速（speed）、缓冲时间（bufferedTime）、循环模式（loopMode）、是否收藏（isFavorite）、正在播放的媒体ID（activeItemId）、自定义媒体数据（extras）等。
 
 <!-- @[settingGeneralStateInformation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/SettingGeneralStateInformation.ets) -->  
 
@@ -856,7 +856,7 @@ struct Index {
 
   通过AVSession注册[on('handleKeyEvent')](../../reference/apis-avsession-kit/arkts-apis/arkts-avsession-avsession-avsession-i.md#onhandlekeyevent)命令。该回调接口会直接转发媒体按键事件[KeyEvent](../../reference/apis-input-kit/arkts-apis/arkts-input-multimodalinput-keyevent.md)。应用需要自行识别按键事件的类型，并响应事件实现对应的功能。目前支持转发的按键事件类型如下：
 
-  | 按键类型([KeyCode](../../reference/apis-input-kit/arkts-apis/arkts-input-multimodalinput-keycode-keycode-e.md#keycode)) | 功能说明   |
+  | 按键类型(KeyCode) | 功能说明   |
   | ------  | -------------------------|
   | KEYCODE_MEDIA_PLAY_PAUSE    | 多媒体键：播放/暂停 |
   | KEYCODE_MEDIA_STOP    | 多媒体键：停止 |

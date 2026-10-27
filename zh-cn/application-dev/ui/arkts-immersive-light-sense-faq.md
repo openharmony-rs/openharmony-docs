@@ -23,7 +23,7 @@
 
 沉浸光感开启后，
 - 指定弹窗类组件（AlertDialog、[ActionSheet](../reference/apis-arkui/arkts-apis/arkts-arkui-actionsheet.md)、CustomDialog、[CalendarPickerDialog](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-dialog.md)、[DatePickerDialog](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-dialog.md)、[TimePickerDialog](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-dialog.md)、[TextPickerDialog](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-dialog.md)、[SelectionMenu](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-selectionmenu-selectionmenu-f.md)、AlphabetIndexer弹窗、[Text](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-text-t.md)设置[copyOption](../reference/apis-arkui/arkts-components/arkts-arkui-text-comp-attribute.md#copyoption)后长按或双击触发的文本菜单）的沉浸光感效果可在全页面生效。
-- 指定弹窗类接口（[PromptAction](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-promptaction-c.md)、[ArkUI_NativeDialog](../reference/apis-arkui/c-apis/capi-arkui-nativemodule-arkui-nativedialog.md)、[@ohos.promptAction (弹窗)](../reference/apis-arkui/arkts-apis/arkts-arkui-promptaction.md)、[Popup控制](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-popup.md)、Tips控制、[菜单控制](../reference/apis-arkui/arkui-js/js-components-basic-menu.md)、[半模态转场](../reference/apis-arkui/arkui-js/js-components-common-transition.md)）的沉浸光感效果可在全页面生效。
+- 指定弹窗类接口（[PromptAction](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-promptaction-c.md)、[ArkUI_NativeDialog](../reference/apis-arkui/c-apis/capi-arkui-nativemodule-arkui-nativedialog.md)、[@ohos.promptAction (弹窗)](../reference/apis-arkui/arkts-apis/arkts-arkui-promptaction.md)、[Popup控制](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-popup.md)、Tips控制、菜单控制、半模态转场）的沉浸光感效果可在全页面生效。
 - [Slider](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-slider-t.md)、[Toggle](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-toggle-t.md)、[Select](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-select-t.md)的沉浸光感效果可在全页面生效。
 - 其他组件仅在Navigation/NavDestination标题栏或横向Tabs中barPosition为BarPosition.End的底部TabBar中生效。在其他区域中设置沉浸光感效果不生效。
 
@@ -226,25 +226,25 @@ Button('Click Me')
 **解决措施**
 
 - 使用较厚的材质样式（如REGULAR、THICK或ULTRA_THICK），降低材质透明度以减少折射效果。
-- 为材质层添加[materialColor](../reference/apis-arkui/arkts-apis/arkts-arkui-uimaterial-immersiveoptions-i.md#immersiveoptions)赋色，通过叠加一层半透明颜色降低折射的可见程度。
+- 为材质层添加materialColor赋色，通过叠加一层半透明颜色降低折射的可见程度。
 
 ## materialColor传入不透明颜色后材质效果消失
 
 **问题现象**
 
-为沉浸式系统材质的[materialColor](../reference/apis-arkui/arkts-apis/arkts-arkui-uimaterial-immersiveoptions-i.md#immersiveoptions)参数传入颜色后，组件的材质效果完全消失，仅显示纯色背景。
+为沉浸式系统材质的materialColor参数传入颜色后，组件的材质效果完全消失，仅显示纯色背景。
 
 **可能原因**
 
-[materialColor](../reference/apis-arkui/arkts-apis/arkts-arkui-uimaterial-immersiveoptions-i.md#immersiveoptions)参数的作用是为材质滤镜[materialFilter](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#materialfilter)再混合一层纯色效果。该颜色需要带有一定的透明度值，如果传入纯不透明颜色（如`Color.Red`或`'#FFFF0000'`），会遮挡材质滤镜效果。
+materialColor参数的作用是为材质滤镜[materialFilter](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#materialfilter)再混合一层纯色效果。该颜色需要带有一定的透明度值，如果传入纯不透明颜色（如`Color.Red`或`'#FFFF0000'`），会遮挡材质滤镜效果。
 
 **解决措施**
 
-为[materialColor](../reference/apis-arkui/arkts-apis/arkts-arkui-uimaterial-immersiveoptions-i.md#immersiveoptions)传入带有透明度的颜色值。
+为materialColor传入带有透明度的颜色值。
 
 > **说明：**
 >
-> [materialColor](../reference/apis-arkui/arkts-apis/arkts-arkui-uimaterial-immersiveoptions-i.md#immersiveoptions)参数对所有档位的算力设备均生效。在高算力和中算力设备上，该参数为材质滤镜再混合一层纯色效果；在低算力设备上，该参数作为背景色[backgroundColor](../reference/apis-arkui/arkts-apis/arkts-arkui-actionsheetoptions-i.md#backgroundcolor)属性值。
+> materialColor参数对所有档位的算力设备均生效。在高算力和中算力设备上，该参数为材质滤镜再混合一层纯色效果；在低算力设备上，该参数作为背景色[backgroundColor](../reference/apis-arkui/arkts-apis/arkts-arkui-actionsheetoptions-i.md#backgroundcolor)属性值。
 
 **代码示例**
 
@@ -270,7 +270,7 @@ new uiMaterial.ImmersiveMaterial({
 
 **可能原因**
 
-沉浸式系统材质的效果会根据设备算力档位自动适配。在高算力和中算力设备上，影响材质滤镜[materialFilter](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#materialfilter)效果和阴影效果；在低算力设备上，仅影响背景色、边框颜色、边框宽度和阴影效果。此外，材质样式[style](../reference/apis-arkui/arkts-apis/arkts-arkui-uimaterial-immersiveoptions-i.md#immersiveoptions)和自动反色[colorInvert](../reference/apis-arkui/arkts-apis/arkts-arkui-uimaterial-immersiveoptions-i.md#immersiveoptions)参数仅在高算力和中算力设备上生效，在低算力设备上设置这两个参数不会产生视觉效果差异。
+沉浸式系统材质的效果会根据设备算力档位自动适配。在高算力和中算力设备上，影响材质滤镜[materialFilter](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#materialfilter)效果和阴影效果；在低算力设备上，仅影响背景色、边框颜色、边框宽度和阴影效果。此外，材质样式style和自动反色colorInvert参数仅在高算力和中算力设备上生效，在低算力设备上设置这两个参数不会产生视觉效果差异。
 
 **解决措施**
 
@@ -280,7 +280,7 @@ new uiMaterial.ImmersiveMaterial({
 
 **问题现象**
 
-为沉浸式系统材质开启了[colorInvert](../reference/apis-arkui/arkts-apis/arkts-arkui-uimaterial-immersiveoptions-i.md#immersiveoptions)自动反色功能，但组件内文字的颜色并未随背景色自动适配。
+为沉浸式系统材质开启了colorInvert自动反色功能，但组件内文字的颜色并未随背景色自动适配。
 
 **可能原因**
 
@@ -289,7 +289,7 @@ new uiMaterial.ImmersiveMaterial({
 - 设备算力档位需为高算力或中算力，低算力设备上自动反色不产生视觉效果差异。
 - 材质样式需要为THIN或ULTRA_THIN，在REGULAR、THICK、ULTRA_THICK样式下不生效。
 - 系统沉浸光感的强弱配置影响反色触发阈值，沉浸式系统材质越薄、系统沉浸光感设置越强，越容易触发自动反色。
-- 自动反色仅对通过资源接口设置的颜色值生效，包括[Text](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-text-t.md)组件的[fontColor](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-popup-popuptextoptions-i.md#fontcolor)、[Button](../reference/apis-arkui/arkts-apis/arkts-arkui-prompt-button-i.md)组件的[fontColor](../reference/apis-arkui/arkts-apis/arkts-arkui-alertdialogbuttonbaseoptions-i.md#fontcolor)、[SymbolGlyph](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-symbolglyph-t.md)组件的[fontColor](../reference/apis-arkui/arkts-components/arkts-arkui-symbolglyph-comp-attribute.md#fontcolor)、[Image](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-image-t.md)组件的[fillColor](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-chipv2-chipv2imageicon-c.md#fillcolor)、TextInput、TextArea、Chip、ChipGroup、SegmentButton、Swiper等组件的颜色属性，完整生效属性清单请参见[colorInvert](../reference/apis-arkui/arkts-apis/arkts-arkui-uimaterial-immersiveoptions-i.md#immersiveoptions)参数说明。使用代码中硬编码的颜色值（如`Color.White`、`'#FFFFFFFF'`）不会触发自动反色。
+- 自动反色仅对通过资源接口设置的颜色值生效，包括[Text](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-text-t.md)组件的[fontColor](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-popup-popuptextoptions-i.md#fontcolor)、[Button](../reference/apis-arkui/arkts-apis/arkts-arkui-prompt-button-i.md)组件的[fontColor](../reference/apis-arkui/arkts-apis/arkts-arkui-alertdialogbuttonbaseoptions-i.md#fontcolor)、[SymbolGlyph](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-symbolglyph-t.md)组件的[fontColor](../reference/apis-arkui/arkts-components/arkts-arkui-symbolglyph-comp-attribute.md#fontcolor)、[Image](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-image-t.md)组件的[fillColor](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-chipv2-chipv2imageicon-c.md#fillcolor)、TextInput、TextArea、Chip、ChipGroup、SegmentButton、Swiper等组件的颜色属性，完整生效属性清单请参见colorInvert参数说明。使用代码中硬编码的颜色值（如`Color.White`、`'#FFFFFFFF'`）不会触发自动反色。
 
 **解决措施**
 
@@ -305,12 +305,12 @@ new uiMaterial.ImmersiveMaterial({
 
 **可能原因**
 
-当沉浸式系统材质的[applyShadow](../reference/apis-arkui/arkts-apis/arkts-arkui-uimaterial-immersiveoptions-i.md#immersiveoptions)参数为true（默认值）时，材质中的阴影效果固定生效，优先于[shadow](../reference/apis-arkui/arkts-apis/arkts-arkui-actionsheetoptions-i.md#shadow)通用属性，此时自定义的shadow设置不会生效；当该参数为false时，[shadow](../reference/apis-arkui/arkts-apis/arkts-arkui-actionsheetoptions-i.md#shadow)通用属性生效，材质的阴影效果不生效。
+当沉浸式系统材质的applyShadow参数为true（默认值）时，材质中的阴影效果固定生效，优先于[shadow](../reference/apis-arkui/arkts-apis/arkts-arkui-actionsheetoptions-i.md#shadow)通用属性，此时自定义的shadow设置不会生效；当该参数为false时，[shadow](../reference/apis-arkui/arkts-apis/arkts-arkui-actionsheetoptions-i.md#shadow)通用属性生效，材质的阴影效果不生效。
 
 **解决措施**
 
 - 如需使用沉浸式系统材质自带的阴影效果，无需额外设置shadow属性。
-- 如需使用自定义的shadow通用属性，将[applyShadow](../reference/apis-arkui/arkts-apis/arkts-arkui-uimaterial-immersiveoptions-i.md#immersiveoptions)设置为false。
+- 如需使用自定义的shadow通用属性，将applyShadow设置为false。
 
 **代码示例**
 
@@ -334,7 +334,7 @@ new uiMaterial.ImmersiveMaterial({
 
 **解决措施**
 
-将[systemMaterial](../reference/apis-arkui/arkts-apis/arkts-arkui-actionsheetoptions-i.md#systemmaterial)放在其他样式属性（如背景色、边框、阴影等）之后设置。通过组件options参数（如Toast的[ShowToastOptions](../reference/apis-arkui/arkts-apis/arkts-arkui-promptaction-showtoastoptions-i.md#showtoastoptions)、Popup的PopupOptions等）设置沉浸式系统材质时则无需关注设置顺序。
+将[systemMaterial](../reference/apis-arkui/arkts-apis/arkts-arkui-actionsheetoptions-i.md#systemmaterial)放在其他样式属性（如背景色、边框、阴影等）之后设置。通过组件options参数（如Toast的ShowToastOptions、Popup的PopupOptions等）设置沉浸式系统材质时则无需关注设置顺序。
 
 **代码示例**
 
@@ -356,11 +356,11 @@ Column() {
 
 **问题现象**
 
-在[DEFAULT](../reference/apis-arkui/arkts-apis/arkts-arkui-uimaterial-materialstate-e.md#materialstate)模式下，[Dialog](arkts-base-dialog-overview.md)、[Toast](arkts-create-toast.md)等组件未呈现沉浸式系统材质的视觉效果。
+在DEFAULT模式下，[Dialog](arkts-base-dialog-overview.md)、[Toast](arkts-create-toast.md)等组件未呈现沉浸式系统材质的视觉效果。
 
 **可能原因**
 
-[DEFAULT](../reference/apis-arkui/arkts-apis/arkts-arkui-uimaterial-materialstate-e.md#materialstate)是沉浸式系统材质的默认开启模式，在该模式下，[Dialog](arkts-base-dialog-overview.md)、[Toast](arkts-create-toast.md)、AlphabetIndexer等组件仅在未设置背景色、模糊参数和阴影参数时才会默认开启沉浸式系统材质。如果开发者主动为这些组件设置了[backgroundColor](../reference/apis-arkui/arkts-apis/arkts-arkui-actionsheetoptions-i.md#backgroundcolor)、[backgroundBlurStyle](../reference/apis-arkui/arkts-apis/arkts-arkui-actionsheetoptions-i.md#backgroundblurstyle)或[shadow](../reference/apis-arkui/arkts-apis/arkts-arkui-actionsheetoptions-i.md#shadow)等属性，沉浸式系统材质不会默认开启。
+DEFAULT是沉浸式系统材质的默认开启模式，在该模式下，[Dialog](arkts-base-dialog-overview.md)、[Toast](arkts-create-toast.md)、AlphabetIndexer等组件仅在未设置背景色、模糊参数和阴影参数时才会默认开启沉浸式系统材质。如果开发者主动为这些组件设置了[backgroundColor](../reference/apis-arkui/arkts-apis/arkts-arkui-actionsheetoptions-i.md#backgroundcolor)、[backgroundBlurStyle](../reference/apis-arkui/arkts-apis/arkts-arkui-actionsheetoptions-i.md#backgroundblurstyle)或[shadow](../reference/apis-arkui/arkts-apis/arkts-arkui-actionsheetoptions-i.md#shadow)等属性，沉浸式系统材质不会默认开启。
 
 **解决措施**
 

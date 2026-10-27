@@ -16,7 +16,7 @@
 
 当系统压力发生变化时，callback返回Camera_SystemPressureLevel参数。
 
-参数的具体内容可参考相机管理器回调接口实例[Camera_SystemPressureLevel](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-systempressurelevel-e.md#systempressurelevel)。
+参数的具体内容可参考相机管理器回调接口实例Camera_SystemPressureLevel。
 
 <!-- @[system_pressure_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
 

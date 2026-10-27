@@ -232,7 +232,7 @@ export struct WaterFlowDynamicSwitchover {
 
 ![](figures/waterflow-sections1.png)
 
-如果能够将不同部分的子节点整合到一个数据源中，那么通过设置[WaterFlowSections](../reference/apis-arkui/arkts-components/arkts-arkui-waterflow-comp-waterflowsections-c.md#waterflowsections)，可以在一个 WaterFlow 容器内实现混合布局。与嵌套滚动相比，这种方法可以简化滚动事件处理等应用逻辑。
+如果能够将不同部分的子节点整合到一个数据源中，那么通过设置WaterFlowSections，可以在一个 WaterFlow 容器内实现混合布局。与嵌套滚动相比，这种方法可以简化滚动事件处理等应用逻辑。
 
 每个瀑布流分组可以分别设置自己的列数、行间距、列间距、margin和子节点总数，如下代码可以实现上述效果：
 

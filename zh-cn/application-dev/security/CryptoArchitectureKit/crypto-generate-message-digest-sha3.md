@@ -19,7 +19,7 @@
 
 ### 摘要算法（一次性传入）
 
-1. 调用[cryptoFramework.createMd](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-createmd-f.md#createmd)，指定摘要算法SHA3-256，生成摘要实例（Md）。
+1. 调用cryptoFramework.createMd，指定摘要算法SHA3-256，生成摘要实例（Md）。
 
 2. 调用[Md.update](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-cipher-i.md#update)，传入自定义消息，进行摘要更新计算。单次update长度没有限制。
 
@@ -73,7 +73,7 @@
 
 ### 分段摘要算法
 
-1. 调用[cryptoFramework.createMd](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-createmd-f.md#createmd)，指定摘要算法SHA3-256，生成摘要实例（Md）。
+1. 调用cryptoFramework.createMd，指定摘要算法SHA3-256，生成摘要实例（Md）。
 
 2. 传入自定义消息，将一次传入数据量设置为20字节，多次调用[Md.update](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-cipher-i.md#update)，进行摘要更新计算。
 

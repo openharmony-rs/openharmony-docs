@@ -30,7 +30,7 @@
 | flags | number | 否 | 表示处理方式，文件打开场景请参考表3。                                                                                                                                                                                       |
 | action | string | 是 | 表示要执行的通用操作。文件打开场景固定值：'ohos.want.action.viewData' ，表示查看数据的操作。                                                                                                                                                                                      |
 
-**表2** [parameters](../reference/apis-ability-kit/arkts-apis/arkts-ability-wantconstant-params-e-sys.md#params)相关参数说明
+**表2** parameters相关参数说明
 
 
 | 参数名称                              | 类型    | 说明                                                                                                                                                                |
@@ -39,7 +39,7 @@
 | ohos.ability.params.showDefaultPicker | boolean | 表示是否强制展示文件打开方式的选择弹框，缺省为false。<br>- false：表示由系统策略或默认应用设置决定直接拉起文件打开应用还是展示弹框。<br>- true：表示始终展示弹框。                                                                            |
 | showCaller                            | boolean | 表示调用方本身作为目标方应用匹配成功时，是否在打开文件的应用选择弹框中展示，缺省为false。<br>- false：不展示。<br>- true：展示。                                                                            |
 
-**表3** [flags](../reference/apis-ability-kit/arkts-apis/arkts-ability-wantconstant-flags-depr-e-sys.md#flags)相关参数说明
+**表3** flags相关参数说明
 
 | 参数名称                       | 值         | 说明                       |
 |--------------------------------|------------|----------------------------|

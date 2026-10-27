@@ -15,7 +15,7 @@
 
 沉浸光感包含[沉浸式系统材质](#沉浸式系统材质)与[沉浸式空间动效](#沉浸式空间动效)两部分能力，前者为组件赋予轻盈通透的质感、在内容之上建立清晰的视觉层次，后者为弹窗和菜单的弹出过程增添灵动自然的动态表现。
 
-沉浸光感会根据设备算力和用户在系统中设置的沉浸光感效果，自适应地调整沉浸式系统材质和沉浸式空间动效的表现程度，其中算力档位由设备定义且固定，可通过获取材质等级接口（[uiMaterial.getGlobalMaterialLevel](../reference/apis-arkui/arkts-apis/arkts-arkui-uimaterial-getglobalmateriallevel-f.md#getglobalmateriallevel)）查询<!--RP1--><!--RP1End-->。沉浸式系统材质还会随系统深浅色模式自动切换效果，确保应用在不同使用环境下都能呈现最佳效果。
+沉浸光感会根据设备算力和用户在系统中设置的沉浸光感效果，自适应地调整沉浸式系统材质和沉浸式空间动效的表现程度，其中算力档位由设备定义且固定，可通过获取材质等级接口（uiMaterial.getGlobalMaterialLevel）查询<!--RP1--><!--RP1End-->。沉浸式系统材质还会随系统深浅色模式自动切换效果，确保应用在不同使用环境下都能呈现最佳效果。
 
 ## 关键技术
 
@@ -48,7 +48,7 @@
 沉浸光感生效范围请参考[开启沉浸光感](arkts-immersive-light-sense-enable.md)。<br/>
 沉浸光感开启后，
 - 指定弹窗类组件（AlertDialog、[ActionSheet](../reference/apis-arkui/arkts-apis/arkts-arkui-actionsheet.md)、CustomDialog、[CalendarPickerDialog](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-dialog.md)、[DatePickerDialog](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-dialog.md)、[TimePickerDialog](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-dialog.md)、[TextPickerDialog](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-dialog.md)、[SelectionMenu](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-selectionmenu-selectionmenu-f.md)、AlphabetIndexer弹窗、[Text](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-text-t.md)设置[copyOption](../reference/apis-arkui/arkts-components/arkts-arkui-text-comp-attribute.md#copyoption)后长按或双击触发的文本菜单）的沉浸光感效果可在全页面生效。
-- 指定弹窗类接口（[PromptAction](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-promptaction-c.md)、[ArkUI_NativeDialog](../reference/apis-arkui/c-apis/capi-arkui-nativemodule-arkui-nativedialog.md)、[@ohos.promptAction (弹窗)](../reference/apis-arkui/arkts-apis/arkts-arkui-promptaction.md)、[Popup控制](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-popup.md)、Tips控制、[菜单控制](../reference/apis-arkui/arkui-js/js-components-basic-menu.md)、[半模态转场](../reference/apis-arkui/arkui-js/js-components-common-transition.md)）的沉浸光感效果可在全页面生效。
+- 指定弹窗类接口（[PromptAction](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-promptaction-c.md)、[ArkUI_NativeDialog](../reference/apis-arkui/c-apis/capi-arkui-nativemodule-arkui-nativedialog.md)、[@ohos.promptAction (弹窗)](../reference/apis-arkui/arkts-apis/arkts-arkui-promptaction.md)、[Popup控制](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-popup.md)、Tips控制、菜单控制、半模态转场）的沉浸光感效果可在全页面生效。
 - [Slider](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-slider-t.md)、[Toggle](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-toggle-t.md)、[Select](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-select-t.md)的沉浸光感效果可在全页面生效。
 - 其他组件仅在Navigation/NavDestination标题栏或横向Tabs中barPosition为BarPosition.End的底部TabBar中生效。在其他区域中设置沉浸光感效果不生效。
 

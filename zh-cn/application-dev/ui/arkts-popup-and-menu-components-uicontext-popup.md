@@ -37,7 +37,7 @@
     new ComponentContent(this.uiContext, wrapBuilder(buildText), new Params(this.message, this.promptActionClass));
   ```
    
-   如果在wrapBuilder中包含其他组件（例如：[Popup](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-popup-popup-f.md)、[Chip](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-chip-chip-f.md)组件），则应在创建ComponentContent时设置[nestingBuilderSupported](../reference/apis-arkui/arkts-apis/arkts-arkui-buildernode-buildoptions-i.md#buildoptions)属性为true。
+   如果在wrapBuilder中包含其他组件（例如：[Popup](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-popup-popup-f.md)、[Chip](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-chip-chip-f.md)组件），则应在创建ComponentContent时设置nestingBuilderSupported属性为true。
    
   <!-- @[build_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/globalpopupsindependentofuicomponents/PopupBuildText.ets) -->
   
@@ -94,7 +94,7 @@
 
 ### 绑定组件信息
    
-   通过调用openPopup接口弹出气泡，需要提供绑定组件的信息[TargetInfo](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-targetinfo-i.md#targetinfo)。若未传入有效的target，气泡将无法弹出。
+   通过调用openPopup接口弹出气泡，需要提供绑定组件的信息TargetInfo。若未传入有效的target，气泡将无法弹出。
    
    目前有两种设置target的方式。
    

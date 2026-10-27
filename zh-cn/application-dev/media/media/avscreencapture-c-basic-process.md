@@ -304,7 +304,7 @@ void SetCallback(struct OH_AVScreenCapture *capture)
 
 ### 启动录屏
 
-启动录屏[OH_AVScreenCapture_StartScreenCapture](../../reference/apis-arkui/arkts-apis/arkts-arkui-screenshot-capture-f.md#capture)后，开始采集原始码流，通过回调OH_AVScreenCapture_OnBufferAvailable来监听当前是否有码流的产生，通过回调OH_AVScreenCapture_OnStateChange来监听启动状态的变更。
+启动录屏OH_AVScreenCapture_StartScreenCapture后，开始采集原始码流，通过回调OH_AVScreenCapture_OnBufferAvailable来监听当前是否有码流的产生，通过回调OH_AVScreenCapture_OnStateChange来监听启动状态的变更。
 
 在回调接口中，可以调用获取音频码流OH_AVScreenCapture_AcquireAudioBuffer和获取视频码流OH_AVScreenCapture_AcquireVideoBuffer的接口来获取录屏的原始码流。
 
@@ -391,7 +391,7 @@ void OnBufferAvailable(OH_AVScreenCapture *capture, OH_AVBuffer *buffer, OH_AVSc
 
 ### 停止录屏
 
-调用[OH_AVScreenCapture_StopScreenCapture](../../reference/apis-arkui/arkts-apis/arkts-arkui-screenshot-capture-f.md#capture)后应用会停止录屏或屏幕共享，释放麦克风。
+调用OH_AVScreenCapture_StopScreenCapture后应用会停止录屏或屏幕共享，释放麦克风。
 
 <!-- @[screenCapture_stopScreenCapture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
 

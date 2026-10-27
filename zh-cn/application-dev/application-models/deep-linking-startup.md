@@ -106,7 +106,7 @@ export default class DeepAbility extends UIAbility {
 
 ### 使用openLink实现应用跳转
 
-在[openLink()](../reference/apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md#openlink)接口的link字段中传入目标应用的URL信息，并将options字段中的[appLinkingOnly](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-openlinkoptions-openlinkoptions-i.md#openlinkoptions)配置为`false`。
+在[openLink()](../reference/apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md#openlink)接口的link字段中传入目标应用的URL信息，并将options字段中的appLinkingOnly配置为`false`。
 
 
 示例代码如下：
@@ -198,7 +198,7 @@ struct DeepStartIndex {
 
 ### 使用Web组件实现应用跳转
 
-Web组件可以在[onLoadIntercept()](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-attribute.md#onloadintercept)的回调函数中实现应用跳转。
+Web组件可以在onLoadIntercept()的回调函数中实现应用跳转。
 
 示例代码如下：
 

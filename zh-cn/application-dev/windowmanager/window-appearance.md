@@ -272,7 +272,7 @@ struct SliderDemo {
 
 开发者可根据业务场景，选择设置应用内容区域背景色，或设置包含标题栏在内的窗口容器背景色，以实现页面背景透明、窗口整体配色统一等效果。
 
-- 可使用[setWindowBackgroundColor()](../reference/apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#setwindowbackgroundcolor)接口调整窗口内容区域的背景色，主要影响窗口内承载UI内容的部分。可传入不区分大小写的十六进制RGB或ARGB颜色，调整背景颜色。从API version 18开始，支持传入[ColorMetrics](../reference/apis-arkui/arkts-apis/arkts-arkui-graphics-colormetrics-c-sys.md#colormetrics)类型。
+- 可使用[setWindowBackgroundColor()](../reference/apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#setwindowbackgroundcolor)接口调整窗口内容区域的背景色，主要影响窗口内承载UI内容的部分。可传入不区分大小写的十六进制RGB或ARGB颜色，调整背景颜色。从API version 18开始，支持传入ColorMetrics类型。
 
 - 可使用[setWindowContainerColor()](../reference/apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#setwindowcontainercolor)接口设置PC/2in1或Tablet设备上的主窗口容器区域的背景色，窗口容器背景色会覆盖整个窗口区域，包括标题栏和内容区域。如果处于非[自由窗口](window-terminology.md#freeform-window自由窗口)状态下，效果等同于[setWindowBackgroundColor()](../reference/apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#setwindowbackgroundcolor)。该接口不支持将非焦点态下的主窗口背景设置为透明。
 

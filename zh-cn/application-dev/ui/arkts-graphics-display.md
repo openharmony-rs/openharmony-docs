@@ -373,7 +373,7 @@ DrawableDescriptor是ArkUI提供的一种高级图片抽象机制，它通过将
 
 ## 显示矢量图
 
-Image组件可显示矢量图（SVG格式的图片），SVG标签文档请参考[SVG标签说明](../reference/apis-arkui/arkui-js/js-components-svg.md)。
+Image组件可显示矢量图（SVG格式的图片），SVG标签文档请参考SVG标签说明。
 
 如果SVG图片没有原始大小，需要给Image组件设置宽高，否则不显示。SVG图片不支持通过`<image>`标签引用SVG格式和gif格式的本地其他图片。
 
@@ -593,7 +593,7 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
 
 ### 设置图片重复样式
 
-通过objectRepeat属性设置图片的重复样式方式，重复样式请参考[ImageRepeat](../reference/apis-arkui/arkts-apis/arkts-arkui-imagerepeat-e.md#imagerepeat)枚举说明。
+通过objectRepeat属性设置图片的重复样式方式，重复样式请参考ImageRepeat枚举说明。
 
 
   <!-- @[image_repetitionstyle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/SetImageRepetitionStyle.ets) -->    

@@ -61,7 +61,7 @@
    }
    ```
 
-3. ImageReceiver接收预览流图像数据获取图像格式请参考[Image](../../reference/apis-image-kit/arkts-apis/arkts-image-image-image-i.md)中的format参数，[PixelMap](../../reference/apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)格式请参考[PixelMapFormat](../../reference/apis-image-kit/arkts-apis/arkts-image-image-pixelmapformat-e.md#pixelmapformat)。
+3. ImageReceiver接收预览流图像数据获取图像格式请参考[Image](../../reference/apis-image-kit/arkts-apis/arkts-image-image-image-i.md)中的format参数，[PixelMap](../../reference/apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)格式请参考PixelMapFormat。
 
    ```ts
    // Image格式与PixelMap格式映射关系。
@@ -84,8 +84,8 @@
 
    > **说明：**
    >
-   > - 在通过[createPixelMap](../../reference/apis-image-kit/arkts-apis/arkts-image-image-createpixelmap-f.md#createpixelmap)接口创建[PixelMap](../../reference/apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)实例时，设置的Size、srcPixelFormat等属性必须和相机预览输出流previewProfile中配置的Size、Format属性保持一致，ImageReceiver图片像素格式请参考[PixelMapFormat](../../reference/apis-image-kit/arkts-apis/arkts-image-image-pixelmapformat-e.md#pixelmapformat)，相机预览输出流previewProfile输出格式请参考[CameraFormat](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-cameraformat-e-sys.md#cameraformat)。
-   > - 由于不同设备产品差异性，应用开发者在创建相机预览输出流前，必须先通过[getSupportedOutputCapability](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-cameramanager-i.md#getsupportedoutputcapability)方法获取当前设备支持的预览输出流previewProfile，再根据实际业务需求选择[CameraFormat](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-cameraformat-e-sys.md#cameraformat)和[Size](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-depthprofile-i-sys.md#size)适合的预览输出流previewProfile。
+   > - 在通过createPixelMap接口创建[PixelMap](../../reference/apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)实例时，设置的Size、srcPixelFormat等属性必须和相机预览输出流previewProfile中配置的Size、Format属性保持一致，ImageReceiver图片像素格式请参考PixelMapFormat，相机预览输出流previewProfile输出格式请参考CameraFormat。
+   > - 由于不同设备产品差异性，应用开发者在创建相机预览输出流前，必须先通过[getSupportedOutputCapability](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-cameramanager-i.md#getsupportedoutputcapability)方法获取当前设备支持的预览输出流previewProfile，再根据实际业务需求选择CameraFormat和Size适合的预览输出流previewProfile。
 > - ImageReceiver接收预览流图像数据实际format格式由应用开发者在创建相机预览输出流时，根据实际业务需求选择的previewProfile中format格式参数影响，详细步骤请参考[创建预览流获取数据](camera-dual-channel-preview.md#创建预览流获取数据)。
 
    <!-- @[onImageArrival](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/DualPreview/camera/src/main/ets/cameramanagers/ImageReceiverManager.ets) -->
@@ -115,7 +115,7 @@
    }
    ```
 
-   通过 [image.Component](../../reference/apis-image-kit/arkts-apis/arkts-image-image-component-i.md#component) 解析图片buffer数据参考：
+   通过 image.Component 解析图片buffer数据参考：
 
    > **注意：**
    >

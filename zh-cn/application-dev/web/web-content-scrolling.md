@@ -58,7 +58,7 @@
 
 ## 点击状态栏回顶
 
-当Web页面处于非顶部状态或向下抛滑时，此时若需返回Web页面顶部，可以使用[backToTop](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-attribute.md#backtotop)方法，开启后通过点击状态栏，打断抛滑并将Web页面滚动到页面顶部。
+当Web页面处于非顶部状态或向下抛滑时，此时若需返回Web页面顶部，可以使用backToTop方法，开启后通过点击状态栏，打断抛滑并将Web页面滚动到页面顶部。
 
 + 示例代码：
   ```ts

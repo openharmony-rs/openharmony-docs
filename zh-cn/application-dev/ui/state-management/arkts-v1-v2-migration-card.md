@@ -22,7 +22,7 @@
 
 ## 卡片数据接收机制差异
 
-卡片UI（widget页面）运行在系统的卡片渲染服务进程中，与卡片提供方应用（FormExtensionAbility）相互独立。两者之间的数据交互只能通过[updateForm](../../reference/apis-form-kit/arkts-apis/arkts-form-formprovider-updateform-depr-f.md#updateform)接口实现：卡片提供方调用updateForm推送数据，卡片UI接收数据后刷新界面。
+卡片UI（widget页面）运行在系统的卡片渲染服务进程中，与卡片提供方应用（FormExtensionAbility）相互独立。两者之间的数据交互只能通过updateForm接口实现：卡片提供方调用updateForm推送数据，卡片UI接收数据后刷新界面。
 
 V1与V2在数据接收上的核心差异在于匹配规则：
 

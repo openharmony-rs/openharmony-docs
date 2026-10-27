@@ -12,11 +12,11 @@
 
 目前，系统中一些组件已默认支持与表冠的交互，例如，旋转手表表冠后，滚动条会根据表冠的旋转方向滚动。
 
-当前，默认支持表冠事件的组件包括： [Slider](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-slider-t.md)、[DatePicker](../reference/apis-arkui/c-apis/capi-arkui-nodeeventtype-datepicker.md)、[TextPicker](../reference/apis-arkui/c-apis/capi-arkui-nodeeventtype-textpicker.md)、 [TimePicker](../reference/apis-arkui/c-apis/capi-arkui-nodeeventtype-timepicker.md)、[Scroll](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-scroll-t.md)、[List](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-list-t.md)、[Grid](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-grid-t.md)、[WaterFlow](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-waterflow-t.md)、ArcList、[Refresh](../reference/apis-arkui/arkui-js/js-components-container-refresh.md)和[Swiper](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-swiper-t.md)。
+当前，默认支持表冠事件的组件包括： [Slider](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-slider-t.md)、[DatePicker](../reference/apis-arkui/c-apis/capi-arkui-nodeeventtype-datepicker.md)、[TextPicker](../reference/apis-arkui/c-apis/capi-arkui-nodeeventtype-textpicker.md)、 [TimePicker](../reference/apis-arkui/c-apis/capi-arkui-nodeeventtype-timepicker.md)、[Scroll](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-scroll-t.md)、[List](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-list-t.md)、[Grid](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-grid-t.md)、[WaterFlow](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-waterflow-t.md)、ArcList、Refresh和[Swiper](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-swiper-t.md)。
 
 此外，应用也可以自行通过[onDigitalCrown](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#ondigitalcrown)接口感知表冠事件的上报。
 
-其中，event参数提供表冠事件的时间戳、旋转角速度、旋转角度和[表冠动作](../reference/apis-arkui/arkts-apis/arkts-arkui-crownaction-e.md#crownaction)信息。
+其中，event参数提供表冠事件的时间戳、旋转角速度、旋转角度和表冠动作信息。
 
 >  **说明：**
 >

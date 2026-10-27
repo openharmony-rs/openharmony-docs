@@ -145,7 +145,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 管理应用音量的接口由AudioVolumeManager提供，在使用之前，需要使用[getVolumeManager](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiomanager-i.md#getvolumemanager)获取AudioVolumeManager实例。
 
-当[音量模式](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiovolumemode-e.md#audiovolumemode)设置为APP_INDIVIDUAL时，可通过下面示例接口设置、查询应用音量。
+当音量模式设置为APP_INDIVIDUAL时，可通过下面示例接口设置、查询应用音量。
 
 ### 调节应用音量
 
@@ -239,9 +239,9 @@ audioVolumeManager.off('appVolumeChangeForUid', appVolumeChangeForUidCallback);
 
 ## 音频流音量
 
-应用可使用[AVPlayer](../../reference/apis-media-kit/arkts-apis/arkts-media-media-createavplayer-f.md#createavplayer)的[setVolume](../../reference/apis-media-kit/arkts-apis/arkts-media-media-avplayer-i.md#setvolume)或[AudioRenderer](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-createaudiorenderer-f.md#createaudiorenderer)的[setVolume](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiorenderer-i.md#setvolume)设置音频流音量。
+应用可使用AVPlayer的setVolume或AudioRenderer的[setVolume](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiorenderer-i.md#setvolume)设置音频流音量。
 
-使用[AudioRenderer](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-createaudiorenderer-f.md#createaudiorenderer)的[setVolume](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiorenderer-i.md#setvolume)和[getVolume](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiorenderer-i.md#getvolume)接口分别完成音频流音量的设置和获取。
+使用AudioRenderer的[setVolume](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiorenderer-i.md#setvolume)和[getVolume](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiorenderer-i.md#getvolume)接口分别完成音频流音量的设置和获取。
 
 示例代码如下所示：
 

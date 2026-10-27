@@ -11,7 +11,7 @@
 **权限说明**
 
 - 通过Picker获取的URI默认只具备**临时读写权限**，临时授权在应用退出后台自动失效。
-- 如果设置[autoCreateEmptyFile](../reference/apis-core-file-kit/arkts-apis/arkts-corefile-picker-documentsaveoptions-c-sys.md#documentsaveoptions)参数为false，获取的URI除了具备**临时读写权限**外，还具备**临时创建和删除权限**。
+- 如果设置autoCreateEmptyFile参数为false，获取的URI除了具备**临时读写权限**外，还具备**临时创建和删除权限**。
 - 获取持久化权限需要通过[FilePicker设置永久授权](file-persistPermission.md#通过picker获取临时授权并进行授权持久化)方式获取。
 - 使用Picker对音频、图片、视频、文档类文件的保存操作**无需申请权限**。
 
@@ -33,7 +33,7 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
 
 ## 保存图片或视频类文件
 
-[PhotoViewPicker](../reference/apis-core-file-kit/arkts-apis/arkts-corefile-picker-photoviewpicker-c.md#photoviewpicker)在后续版本不再演进，建议使用[Media Library Kit（媒体文件管理服务）中能力来保存媒体库资源](../media/medialibrary/photoAccessHelper-savebutton.md)。
+PhotoViewPicker在后续版本不再演进，建议使用[Media Library Kit（媒体文件管理服务）中能力来保存媒体库资源](../media/medialibrary/photoAccessHelper-savebutton.md)。
 
 如果开发场景无法调用安全控件进行图片、视频保存，可使用相册管理模块[PhotoAccessHelper.showAssetsCreationDialog](../reference/apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoaccesshelper-i.md#showassetscreationdialog)接口进行保存操作。
 
@@ -48,7 +48,7 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
    import { common } from '@kit.AbilityKit';
    ```
 
-2. 根据实际业务需求配置文件保存选项[DocumentSaveOptions](../reference/apis-core-file-kit/arkts-apis/arkts-corefile-picker-documentsaveoptions-c-sys.md#documentsaveoptions)。以下代码仅列举各选项的配置参考。
+2. 根据实际业务需求配置文件保存选项DocumentSaveOptions。以下代码仅列举各选项的配置参考。
 
    ```ts
    // 创建文件管理器选项实例。
@@ -63,7 +63,7 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
    documentSaveOptions.autoCreateEmptyFile = false;
    ```
 
-3. 创建文件选择器[DocumentViewPicker](../reference/apis-core-file-kit/arkts-apis/arkts-corefile-picker-documentviewpicker-c.md#documentviewpicker)实例。调用[save()](../reference/apis-core-file-kit/arkts-apis/arkts-corefile-picker-audioviewpicker-c.md#save)接口拉起FilePicker界面进行文件保存。
+3. 创建文件选择器DocumentViewPicker实例。调用[save()](../reference/apis-core-file-kit/arkts-apis/arkts-corefile-picker-audioviewpicker-c.md#save)接口拉起FilePicker界面进行文件保存。
 
    <!--@[save_file_picker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/SavingUserFiles/entry/src/main/ets/pages/Index.ets)-->
 
@@ -125,7 +125,7 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
    audioSaveOptions.newFileNames = ['AudioViewPicker01.mp3'];
    ```
 
-3. 创建[音频选择器AudioViewPicker](../reference/apis-core-file-kit/arkts-apis/arkts-corefile-picker-audioviewpicker-c.md#audioviewpicker)实例。调用[save()](../reference/apis-core-file-kit/arkts-apis/arkts-corefile-picker-audioviewpicker-c.md#save)接口拉起FilePicker界面进行文件保存。
+3. 创建音频选择器AudioViewPicker实例。调用[save()](../reference/apis-core-file-kit/arkts-apis/arkts-corefile-picker-audioviewpicker-c.md#save)接口拉起FilePicker界面进行文件保存。
 
    <!--@[audio_save_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/SavingUserFiles/entry/src/main/ets/pages/Index.ets)-->
 

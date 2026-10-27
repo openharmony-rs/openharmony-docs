@@ -10,14 +10,14 @@
 
 ## ArkTS接口异常处理
 
-ArkTS接口调用时，如果传入的参数不符合要求，或者底层执行过程中出现不可恢复的错误，系统会返回或抛出[BusinessError](../../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-base-businesserror-i.md#businesserror)异常，又或者在异步场景中返回一个[Promise](../../../arkts-utils/async-concurrency-overview.md#promise)的rejected状态。如果开发者忽略了异常处理，可能会出现功能问题或数据丢失，甚至直接导致应用崩溃。
+ArkTS接口调用时，如果传入的参数不符合要求，或者底层执行过程中出现不可恢复的错误，系统会返回或抛出BusinessError异常，又或者在异步场景中返回一个[Promise](../../../arkts-utils/async-concurrency-overview.md#promise)的rejected状态。如果开发者忽略了异常处理，可能会出现功能问题或数据丢失，甚至直接导致应用崩溃。
 
 典型的ArkTS接口形态及API示例和处理方法如下所示。
 
 | 接口形态          | 示例API                                                                                                       | 处理方式                                    |
 | ------------- | ---------------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
 | **Promise异步接口** | `getImageInfo(): Promise<ImageInfo>`、`modifyImageProperty(key: PropertyKey, value: string): Promise<void>` | 使用`await`+`try/catch`，或`promise.catch`捕获`BusinessError`。|
-| **AsyncCallback异步接口**       | `getImageInfo(callback: AsyncCallback<ImageInfo>): void`                                        | 使用回调函数[AsyncCallback](../../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md#asynccallback)的参数获取`BusinessError`。             |
+| **AsyncCallback异步接口**       | `getImageInfo(callback: AsyncCallback<ImageInfo>): void`                                        | 使用回调函数AsyncCallback的参数获取`BusinessError`。             |
 | **同步接口**       | `getImageInfoSync(): ImageInfo`                                                                              | 使用`try/catch`捕获同步`BusinessError`。    |
 
 1. AsyncCallback异步接口示例。

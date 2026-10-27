@@ -13,7 +13,7 @@
 
 ### 浏览器使用系统ArkWeb能力并自定义客户端
 
-1. 端侧应用调用证书管理能力，拉起证书选择弹框，等待用户选择证书，获得[keyUri](../../reference/apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-certificatemanagerdialog-certreference-i.md#certreference)作为resourceId。
+1. 端侧应用调用证书管理能力，拉起证书选择弹框，等待用户选择证书，获得keyUri作为resourceId。
 
 2. 端侧应用监听PIN认证回调，处理事件，调用证书管理能力拉起PIN认证弹窗。
 
@@ -21,18 +21,18 @@
 
 ### 浏览器使用自定义Web组件并自定义客户端
 
-1. 端侧应用调用证书管理能力，拉起证书选择弹框，等待用户选择证书，将[keyUri](../../reference/apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-certificatemanagerdialog-certreference-i.md#certreference)作为resourceId，透传到Web组件。
+1. 端侧应用调用证书管理能力，拉起证书选择弹框，等待用户选择证书，将keyUri作为resourceId，透传到Web组件。
 
-2. Web组件通过证书管理获取对应证书的数据，并且通过[keyUri](../../reference/apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-certificatemanagerdialog-certreference-i.md#certreference)作为resourceId调用HUKS的打开资源接口，并查询PIN认证状态。
+2. Web组件通过证书管理获取对应证书的数据，并且通过keyUri作为resourceId调用HUKS的打开资源接口，并查询PIN认证状态。
 
 3. 根据认证结果，进行处理：
 
    - 如果未认证，需要让端侧应用拉起PIN认证，此时端侧应用收到认证请求并处理事件，调用证书管理能力拉起PIN认证弹窗，获得认证结果后返回给Web组件，接着执行已认证的流程。
-   - 如果已认证，Web组件可以直接调用HUKS的三段式接口[initSession](../../reference/apis-universal-keystore-kit/c-apis/capi-native-huks-api-h.md#ohhuksinitsession)/[updateSession](../../reference/apis-universal-keystore-kit/c-apis/capi-native-huks-api-h.md#ohhuksupdatesession)/[finishSession](../../reference/apis-universal-keystore-kit/c-apis/capi-native-huks-api-h.md#ohhuksfinishsession)进行签名。
+   - 如果已认证，Web组件可以直接调用HUKS的三段式接口initSession/updateSession/finishSession进行签名。
 
 > **注意**
 >
-> 如果要调用底层Extension的三段式能力，需要确保传入参数包含OH_HUKS_TAG_KEY_CLASS，且值为[OH_HUKS_KEY_CLASS_EXTENSION](../../reference/apis-arkts/arkts-apis/arkts-arkts-util-type-e.md#type)。
+> 如果要调用底层Extension的三段式能力，需要确保传入参数包含OH_HUKS_TAG_KEY_CLASS，且值为OH_HUKS_KEY_CLASS_EXTENSION。
 
 ## 实践举例
 
