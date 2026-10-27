@@ -337,7 +337,7 @@
 
 ### schema文件名及路径要求
 
-schema文件名及路径不支持自定义，否则使用单版本表模式进行数据同步将读取不到对应文件，设置分布式表也会失败。
+schema 文件名及路径不支持自定义。若自定义，使用单版本表模式进行数据同步时将无法读取对应文件，创建分布式表也会失败。
 
 - 文件名：`sync_schema.json`
 - 文件路径：`../entry/src/main/resources/rawfile/arkdata/schema/sync_schema.json`
