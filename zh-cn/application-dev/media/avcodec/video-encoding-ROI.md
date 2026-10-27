@@ -162,7 +162,7 @@ Surface模式下，相机将视频帧输出到OH_NativeImage的Surface上，开�
    **ArkTS示例：**
 
    <!-- @[roi_enable_in_frame_metadata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/ROISample/entry/src/main/ets/controller/CameraController.ets) -->
-
+   
    ``` TypeScript
    if (metadataOutput.isInFrameMetadataForEncoderSupported()) {
      metadataOutput.setInFrameMetadataForEncoderEnabled(true);
@@ -176,7 +176,7 @@ Surface模式下，相机将视频帧输出到OH_NativeImage的Surface上，开�
    以下示例中的`metadataOutput_`为已创建并加入相机会话的元数据输出对象。
 
    <!-- @[roi_enable_in_frame_metadata_native](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/ROISample/entry/src/main/cpp/capbilities/camera/NativeCamera.cpp) -->
-
+   
    ``` C++
    Camera_ErrorCode NativeCamera::EnableInFrameMetadata()
    {
