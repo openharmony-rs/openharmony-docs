@@ -794,13 +794,15 @@ async function getPersistentPolicyExample() {
 
 ## GrantStatus
 
-枚举，用户授权的URI权限状态。
+枚举用户授予的URI权限的状态。
 
-**ArkTS-Dyn起始版本：** 26.2.0
+**ArkTS-Dyn起始版本：** 26.1.0
 
-**ArkTS-Sta起始版本：** 26.2.0
+**ArkTS-Sta起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.FileManagement.AppFileService.FolderAuthorization
 
@@ -813,9 +815,9 @@ async function getPersistentPolicyExample() {
 
 应用的URI权限状态信息。
 
-**ArkTS-Dyn起始版本：** 26.2.0
+**ArkTS-Dyn起始版本：** 26.1.0
 
-**ArkTS-Sta起始版本：** 26.2.0
+**ArkTS-Sta起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -835,11 +837,11 @@ ArkTS-Dyn: grantPermissionByUser(tokenID: number, policies: Array&lt;PolicyInfo&
 
 ArkTS-Sta: grantPermissionByUser(tokenID: int, policies: Array&lt;PolicyInfo&gt;): Promise&lt;void&gt;
 
-由用户授权目标应用的URI权限，使用Promise异步回调。授权成功后可通过[getStatusByPermission](#filesharegetstatusbypermission)查询到GRANTED状态。
+用户授予URIs权限，使用Promise异步回调。授权成功后可通过[getStatusByPermission](#filesharegetstatusbypermission)查询到GRANTED状态。
 
-**ArkTS-Dyn起始版本：** 26.2.0
+**ArkTS-Dyn起始版本：** 26.1.0
 
-**ArkTS-Sta起始版本：** 26.2.0
+**ArkTS-Sta起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -868,9 +870,9 @@ ArkTS-Sta: grantPermissionByUser(tokenID: int, policies: Array&lt;PolicyInfo&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission verification failed. |
-| 202 | The caller is not a system application. |
-| 801 | Capability not supported. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
 | 13900001 | Operation not permitted. |
 | 13900011 | Out of memory. |
 | 13900020 | Invalid tokenID. |
@@ -884,7 +886,7 @@ import { fileShare } from '@kit.CoreFileKit';
 
 async function grantPermissionByUserExample() {
   try {
-    let tokenID = 537688848; // 系统应用可以通过bundleManager.getApplicationInfo获取，普通应用可以通过bundleManager.getBundleInfoForSelf获取。
+    let tokenID = 537688848; // 系统应用可以通过bundleManager.getApplicationInfo获取。
     let policyInfo: fileShare.PolicyInfo = {
       uri: 'file://docs/storage/Users/currentUser/Documents/1.txt',
       operationMode: fileShare.OperationMode.READ_MODE,
@@ -909,7 +911,7 @@ import { fileShare } from '@kit.CoreFileKit';
 async function grantPermissionByUserExample() {
   let tokenID = 537688848; // 系统应用可以通过bundleManager.getApplicationInfo获取。
   let policyInfo: fileShare.PolicyInfo = {
-    uri: 'file://docs/storage/Users/currentUser/Documents/1.txt',
+    uri: 'file://docs/storage/Users/currentUser/Images',
     operationMode: fileShare.OperationMode.READ_MODE,
   };
   let policies: Array<fileShare.PolicyInfo> = [policyInfo];
@@ -929,11 +931,11 @@ ArkTS-Dyn: getStatusByPermission(tokenIDList: Array&lt;number&gt;): Promise&lt;A
 
 ArkTS-Sta: getStatusByPermission(tokenIDList: Array&lt;int&gt;): Promise&lt;Array&lt;PermissionStatusInfo&gt;&gt;
 
-获取应用的URI权限状态，使用Promise异步回调。
+获取URIs权限的状态，使用Promise异步回调。
 
-**ArkTS-Dyn起始版本：** 26.2.0
+**ArkTS-Dyn起始版本：** 26.1.0
 
-**ArkTS-Sta起始版本：** 26.2.0
+**ArkTS-Sta起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -947,7 +949,7 @@ ArkTS-Sta: getStatusByPermission(tokenIDList: Array&lt;int&gt;): Promise&lt;Arra
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| tokenIDList | ArkTS-Dyn: Array&lt;number&gt; <br> ArkTS-Sta: Array&lt;int&gt; | 是 | 目标应用的访问令牌标识数组，数组元素为整数。 |
+| tokenIDList | ArkTS-Dyn: Array&lt;number&gt; <br> ArkTS-Sta: Array&lt;int&gt; | 是 | 目标应用的访问令牌标识数组，数组元素为整数，tokenIDList数组大小上限为500。 |
 
 **返回值：**
 
@@ -961,9 +963,9 @@ ArkTS-Sta: getStatusByPermission(tokenIDList: Array&lt;int&gt;): Promise&lt;Arra
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission verification failed. |
-| 202 | The caller is not a system application. |
-| 801 | Capability not supported. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
 | 13900001 | Operation not permitted. |
 | 13900011 | Out of memory. |
 | 13900020 | Invalid tokenID. |
@@ -977,7 +979,7 @@ import { fileShare } from '@kit.CoreFileKit';
 
 async function getStatusByPermissionExample() {
   try {
-    let tokenIDList: Array<number> = [537688848, 537688849]; // 系统应用可以通过bundleManager.getApplicationInfo获取，普通应用可以通过bundleManager.getBundleInfoForSelf获取。
+    let tokenIDList: Array<number> = [537688848, 537688849]; // 系统应用可以通过bundleManager.getApplicationInfo获取。
     fileShare.getStatusByPermission(tokenIDList).then((result: Array<fileShare.PermissionStatusInfo>) => {
       for (let info of result) {
         console.info(`tokenID=${info.tokenID}, grantStatus=${info.grantStatus}, uri=${info.policyInfo.uri}`);
@@ -1016,11 +1018,11 @@ ArkTS-Dyn: revokePermissionByUser(tokenID: number, policies: Array&lt;PolicyInfo
 
 ArkTS-Sta: revokePermissionByUser(tokenID: int, policies: Array&lt;PolicyInfo&gt;): Promise&lt;void&gt;
 
-由用户撤销目标应用的URI权限，使用Promise异步回调。撤销成功后可通过[getStatusByPermission](#filesharegetstatusbypermission)查询到DENIED状态。
+用户撤销URIs权限，使用Promise异步回调。撤销成功后可通过[getStatusByPermission](#filesharegetstatusbypermission)查询到DENIED状态。
 
-**ArkTS-Dyn起始版本：** 26.2.0
+**ArkTS-Dyn起始版本：** 26.1.0
 
-**ArkTS-Sta起始版本：** 26.2.0
+**ArkTS-Sta起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1049,9 +1051,9 @@ ArkTS-Sta: revokePermissionByUser(tokenID: int, policies: Array&lt;PolicyInfo&gt
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission verification failed. |
-| 202 | The caller is not a system application. |
-| 801 | Capability not supported. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
 | 13900001 | Operation not permitted. |
 | 13900011 | Out of memory. |
 | 13900020 | Invalid tokenID. |
@@ -1065,9 +1067,9 @@ import { fileShare } from '@kit.CoreFileKit';
 
 async function revokePermissionByUserExample() {
   try {
-    let tokenID = 537688848; // 系统应用可以通过bundleManager.getApplicationInfo获取，普通应用可以通过bundleManager.getBundleInfoForSelf获取。
+    let tokenID = 537688848; // 系统应用可以通过bundleManager.getApplicationInfo获取。
     let policyInfo: fileShare.PolicyInfo = {
-      uri: 'file://docs/storage/Users/currentUser/Documents/1.txt',
+      uri: 'file://docs/storage/Users/currentUser/Images',
       operationMode: fileShare.OperationMode.READ_MODE,
     };
     let policies: Array<fileShare.PolicyInfo> = [policyInfo];
