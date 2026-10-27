@@ -64520,6 +64520,26 @@
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/AVCodec/ROISample/entry/src/main/cpp/recorder/Recorder.cpp",
 				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/AVCodec/ROISample/entry/src/main/ets/controller/CameraController.ets",
+				"functions":[
+					{
+						"end_line":175,
+						"name":"roi_enable_in_frame_metadata",
+						"start_line":169
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/AVCodec/ROISample/entry/src/main/cpp/capbilities/camera/NativeCamera.cpp",
+				"functions":[
+					{
+						"end_line":193,
+						"name":"roi_enable_in_frame_metadata_native",
+						"start_line":179
+					}
+				]
 			}
 		]
 	},
