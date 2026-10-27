@@ -568,7 +568,7 @@ ArkTS-Sta: enableScrollWithMouse(enabled: boolean | undefined): this
 
 | 参数名 | 类型   | 必填 | 说明                                          |
 | ------ | ------ | ---- | --------------------------------------------- |
-| enabled  | ArkTS-Dyn: boolean&nbsp;\|&nbsp;undefined<br/>ArkTS-Sta: boolean&nbsp; \| undefined | 是   | 是否支持鼠标左键按下拖动滚动。<br/>true：支持鼠标左键按下拖动滚动。<br/>false：不支持鼠标左键按下拖动滚动。<br/>undefined：<br/>-ArkTS-Dyn：首次设置为undefined时，使用默认值。非首次设置为undefined时，保持上一次设置的效果不变。<br/>-ArkTS-Sta：值为undefined时，按默认值处理。<br/>默认值：API版本26.1.0之前为false。从API版本26.1.0开始，当可滚动组件水平滚动时为true，否则为false。 |
+| enabled  | boolean&nbsp; \| undefined | 是   | 是否支持鼠标左键按下拖动滚动。<br/>true：支持鼠标左键按下拖动滚动。<br/>false：不支持鼠标左键按下拖动滚动。<br/>undefined：<br/>-ArkTS-Dyn：首次设置为undefined时，使用默认值。非首次设置为undefined时，保持上一次设置的效果不变。<br/>-ArkTS-Sta：使用默认值。<br/>默认值：API版本26.1.0之前为false。从API版本26.1.0开始，当可滚动组件水平滚动时为true，否则为false。 |
 
 **返回值：**
 
