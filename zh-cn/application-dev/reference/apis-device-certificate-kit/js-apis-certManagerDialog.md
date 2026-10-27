@@ -713,7 +713,7 @@ openUkeyAuthDialog(context: common.Context, ukeyAuthRequest: UkeyAuthRequest): P
 | 801      | Capability not supported because the certificate management application hap is not preinstalled in the system.                                 |
 | 29700001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.           |
 | 29700002 | The user cancels the authentication operation or operation timed out.                                                                             |
-| 29700003 | The authentication operation failed, such as: The USB key certificate does not exist. The USB key status is abnormal, please ask the user to check the status of the Ukey. The Ukey authentication dialog box cannot be opened concurrently, please try again later. |
+| 29700003 | The authentication operation failed, such as: The USB key certificate does not exist. The USB key status is abnormal, Please ask the user to check the status of the Ukey. The Ukey authentication dialog box cannot be opened concurrently. Please try again later. |
 | 29700006 | Indicates that the input parameters validation failed. For example, the parameter format is incorrect or the value range is invalid. |
 
 **示例**：
@@ -822,7 +822,7 @@ openAuthDialogForUkeyProvider(dialogInfo: UkeyAuthDialogInfo, ukeyAuthRequest: U
 | 801      | Capability not supported because the certificate management application hap is not preinstalled in the system.                                 |
 | 29700001 | The certificate manager service processing failed. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 29700002 | The user cancels the authentication operation.                                                                                                   |
-| 29700003 | The authentication operation failed, such as: The USB key certificate does not exist. The USB key status is abnormal, please ask the user to check the status of the Ukey. |
+| 29700003 | The authentication operation failed, such as: The USB key certificate does not exist. The USB key status is abnormal, Please ask the user to check the status of the Ukey. |
 | 29700005 | The operation does not comply with the device security policy. Only the PC/2in1 device can open the dialog box of the UkeyAuthExtensionAbility type.  |
 | 29700006 | Indicates that the input parameters validation failed. For example, the parameter format is incorrect or the value range is invalid.            |
 | 29700009 | The operation in the Ukey authentication dialog box timed out.                                                                                  |
