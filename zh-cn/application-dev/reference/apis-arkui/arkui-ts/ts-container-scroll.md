@@ -1225,7 +1225,7 @@ getScrollState(): ScrollState
 
 > **说明：**
 >
-> 在[ArcList](ts-container-arclist.md)、设置了[scrollSnapAlign](ts-container-list.md#scrollsnapalign10枚举说明)的List和设置了[scrollSnap](#scrollsnap)的Scroll中通过鼠标滚轮滚动时，本接口均返回[Fling](ts-container-list.md#scrollstate枚举说明)。
+> 在[ArcList](ts-container-arclist.md)、设置了[scrollSnapAlign](ts-container-list.md#scrollsnapalign10枚举说明)的List和设置了[scrollSnap](#scrollsnap10)的Scroll中通过鼠标滚轮滚动时，本接口均返回[Fling](ts-container-list.md#scrollstate枚举说明)。
 
 **起始版本：** 26.1.0
 
