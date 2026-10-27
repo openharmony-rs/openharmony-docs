@@ -712,7 +712,7 @@ verticalScrollBarAccess(verticalScrollBar: boolean)
 
 ## caretColor
 
-caretColor(value: ResourceColor): WebAttribute
+caretColor(value: ResourceColor)
 
 设置Web组件网页文本输入光标及文本选择手柄的颜色。
 
