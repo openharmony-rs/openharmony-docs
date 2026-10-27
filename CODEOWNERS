@@ -5273,7 +5273,7 @@ zh-cn/application-dev/security/UniversalKeystoreKit/huks-extension-ability-signi
 zh-cn/application-dev/security/UniversalKeystoreKit/huks-extension-ability-support-dev.md @wutiantian-gitee @HighLowWorld @zengyawen
 zh-cn/application-dev/security/UniversalKeystoreKit/huks-extension-ability-support-overview.md @wutiantian-gitee @HighLowWorld @zengyawen
 zh-cn/application-dev/security/UniversalKeystoreKit/huks-extension-key-generation-import-export.md @wutiantian-gitee @HighLowWorld @zengyawen
-zh-cn/application-dev/security/UniversalKeystoreKit/huks-extension-registration-and-unregistration-arkts-ndk.md @wutiantian-gitee @HighLowWorld @zengyawen
+zh-cn/application-dev/security/UniversalKeystoreKit/huks-extension-registration-and-unregistration-arkts.md @wutiantian-gitee @HighLowWorld @zengyawen
 zh-cn/application-dev/security/UniversalKeystoreKit/huks-external-hardware-key-management-overview.md @wutiantian-gitee @HighLowWorld @zengyawen
 zh-cn/application-dev/security/UniversalKeystoreKit/huks-group-key-arkts.md @wutiantian-gitee @HighLowWorld @zengyawen
 zh-cn/application-dev/security/UniversalKeystoreKit/huks-group-key-ndk.md @wutiantian-gitee @HighLowWorld @zengyawen
