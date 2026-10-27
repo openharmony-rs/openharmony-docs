@@ -123,7 +123,7 @@ Stage模型下主窗口的生命周期状态包括前台状态（SHOWN）、前�
 
 ### 恢复应用主窗口至前台（PC/2in1）
 
-在PC/2in1设备上，当应用主窗口处于后台状态时，若收到事件需要将主窗口恢复到前台显示，可调用[restore()](../reference/apis-arkui/arkts-apis-window-Window.md#restore14)接口，并恢复到进入后台状态之前的大小和位置。若主窗口已处于前台状态，调用该接口仅抬升主窗口层级。
+在PC/2in1设备上，当应用主窗口处于后台状态时，若收到事件需要将主窗口恢复到前台显示，可调用[restore()](../reference/apis-arkui/arkts-apis-window-Window.md#restore14)接口将其恢复到进入后台状态之前的大小和位置。若主窗口已处于前台状态，调用该接口仅抬升主窗口层级。
 
 例如，已将应用图标添加到状态栏的应用，可通过监听状态栏图标点击事件，在用户点击状态栏图标时调用[restore()](../reference/apis-arkui/arkts-apis-window-Window.md#restore14)接口恢复应用主窗口。
 
@@ -211,16 +211,93 @@ struct Index {
 > 
 > 在开发跨设备应用时，建议通过[canIUse()](../reference/common/js-apis-syscap.md#caniuse)接口判断当前设备是否支持该权限所对应的系统能力，避免在不支持的设备上产生非预期行为。
 
-示例代码如下：
+以StartAbilityBelowLockScreenSample通过startAbility拉起BelowLockScreenTargetSample为例，模拟锁屏状态下其他应用拉起目标应用的场景。
 
-``` JSON5
-{
-  "module": {
-    "requestPermissions": [
-      {
-        "name": "ohos.permission.START_WINDOW_BELOW_LOCK_SCREEN"
-      }
-    ]
+拉起方StartAbilityBelowLockScreenSample点击按钮后延时5秒，通过startAbility拉起目标应用。示例代码如下：
+
+<!-- @[StartAbilityBelowLockScreen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/StartAbilityBelowLockScreenSample/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+startTargetAbility(): void {
+  if (!this.context) {
+    hilog.error(DOMAIN, TAG, '%{public}s', 'Context is not available.');
+    return;
   }
+  hilog.info(DOMAIN, TAG, '%{public}s', 'Start to delay 5 seconds before startAbility.');
+  // 设置延时函数，延时5秒钟后拉起目标应用，模拟设备进入锁屏状态后响应事件需要拉起目标应用的场景
+  setTimeout(() => {
+    const want: Want = {
+      deviceId: '',
+      bundleName: TARGET_BUNDLE_NAME,
+      abilityName: TARGET_ABILITY_NAME,
+      moduleName: 'entry'
+    };
+    try {
+      this.context.startAbility(want, (err: BusinessError) => {
+        if (err.code) {
+          hilog.error(DOMAIN, TAG, 'Failed to startAbility. Code: %{public}s, message: %{public}s',
+            `${err.code}`, `${err.message}`);
+          return;
+        }
+        hilog.info(DOMAIN, TAG, '%{public}s', 'Succeeded in starting target ability.');
+      });
+    } catch (error) {
+      const err: BusinessError = error as BusinessError;
+      hilog.error(DOMAIN, TAG, 'Failed to startAbility. Code: %{public}s, message: %{public}s',
+        `${err.code}`, `${err.message}`);
+    }
+  }, 5000);
+}
+
+build() {
+  Column() {
+    Text($r('app.string.start_ability_text'))
+      .id('startAbilityText')
+      .fontSize(24)
+    Button($r('app.string.start_ability_button'))
+      .id('startAbilityButton')
+      .fontSize(20)
+      .onClick(() => {
+        // 点击按钮后，需在5秒内手动锁屏，5秒后自动拉起目标应用
+        hilog.info(DOMAIN, TAG, '%{public}s', 'Click: Start ability below lock screen');
+        this.startTargetAbility();
+      })
+      .margin({ top: 20 })
+  }
+  .justifyContent(FlexAlign.Center)
+  .alignItems(HorizontalAlign.Center)
+  .height('100%')
+  .width('100%')
 }
 ```
+
+目标应用BelowLockScreenTargetSample在onWindowStageCreate中延时3秒加载页面内容，并在module.json5中声明[ohos.permission.START_WINDOW_BELOW_LOCK_SCREEN](../security/AccessToken/permissions-for-all.md#ohospermissionstart_window_below_lock_screen)权限。示例代码如下：
+
+<!-- @[BelowLockScreenTargetSample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/BelowLockScreenTargetSample/entry/src/main/ets/entryability/EntryAbility.ets) -->
+
+``` TypeScript
+onWindowStageCreate(windowStage: window.WindowStage): void {
+  hilog.info(DOMAIN, TAG, '%{public}s', 'Ability onWindowStageCreate');
+  hilog.info(DOMAIN, TAG, '%{public}s', 'Delay 3 seconds before loadContent.');
+  // 设置延时函数，延时3秒钟后加载页面内容，模拟锁屏状态下被拉起时的数据加载过程
+  setTimeout(() => {
+    windowStage.loadContent('pages/Index', (err) => {
+      if (err.code) {
+        hilog.error(DOMAIN, TAG, 'Failed to load the content. Cause: %{public}s', JSON.stringify(err));
+        return;
+      }
+      hilog.info(DOMAIN, TAG, '%{public}s', 'Succeeded in loading the content.');
+    });
+  }, 3000);
+}
+```
+
+点击拉起方应用按钮后立即锁屏，等待8秒后解锁，可看到目标应用已显示在屏幕上。
+
+示例效果如下：
+
+**图1** 解锁状态下启动
+![StartAbilityOnUnlocked](figures/StartAbilityOnUnlocked.gif)
+
+**图2** 锁屏状态下启动
+![StartAbilityBelowLockScreen](figures/StartAbilityBelowLockScreen.gif)
