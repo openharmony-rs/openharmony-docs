@@ -206,7 +206,6 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
    #include <multimedia/player_framework/native_avcodec_videoencoder.h>
    #include <multimedia/player_framework/native_avcapability.h>
    #include <multimedia/player_framework/native_avcodec_base.h>
-   #include <multimedia/player_framework/native_avformat.h>
    #include <multimedia/player_framework/native_avbuffer.h>
    #include <fstream>
    ```
@@ -263,6 +262,15 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
    示例如下所示：
 
    ```c++
+   // 设置OH_AVCodecOnError 回调函数，编码异常。
+   void SampleCallback::OnCodecError(OH_AVCodec *codec, int32_t errorCode, void *userData)
+   {
+       (void)codec;
+       (void)errorCode;
+       (void)userData;
+       AVCODEC_SAMPLE_LOGE("On codec error, error code: %{public}d", errorCode);
+   }
+
    
    ```
 
@@ -317,11 +325,18 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
    ```
 
    ```c++
-   // 配置异步回调，调用 OH_VideoEncoder_RegisterCallback()接口。
-   OH_AVCodecCallback cb = {&OnError, &OnStreamChanged, &OnNeedInputBuffer, &OnNewOutputBuffer};
-   OH_AVErrCode ret = OH_VideoEncoder_RegisterCallback(videoEnc, cb, nullptr); // nullptr:开发者执行回调所依赖的数据userData为空。
-   if (ret != AV_ERR_OK) {
-       // 异常处理。
+   // 配置异步回调，调用OH_VideoEncoder_RegisterCallback()接口。
+   // 注册回调包括：编码器运行错误OH_AVCodecOnError、码流信息变化OH_AVCodecOnStreamChanged、
+   // 输入回调OH_AVCodecOnNeedInputBuffer、输出回调OH_AVCodecOnNewOutputBuffer。
+   int32_t VideoEncoder::SetCallback(CodecUserData *codecUserData)
+   {
+       int32_t ret = OH_VideoEncoder_RegisterCallback(encoder_,
+       {SampleCallback::OnCodecError, SampleCallback::OnCodecFormatChange,
+           SampleCallback::OnNeedInputBuffer, SampleCallback::OnNewOutputBuffer},
+           codecUserData);
+       CHECK_AND_RETURN_RET_LOG(ret == AV_ERR_OK, AVCODEC_SAMPLE_ERR_ERROR, "Set callback failed, ret: %{public}d", ret);
+
+       return AVCODEC_SAMPLE_ERR_OK;
    }
    ```
 
