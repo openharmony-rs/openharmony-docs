@@ -979,7 +979,7 @@ When this function is called:
 - The string content (including the null terminator '\0') is written to the current write position of the [OHIPCParcel](capi-ohipcparcel.md) object.
 - The write position is automatically advanced by (string length + 1) bytes.
 - The string data is serialized and stored in the **Parcel** object. No manual memory management is required by the caller.
-- The length of the string to be written is subject to the size limit of serialized data for IPC, which contains a maximum of 204,800 bytes. Fpr details, see [OH_IPCParcel_Create()](#oh_ipcparcel_create).
+- The length of the string to be written is subject to the size limit of serialized data for IPC, which contains a maximum of 204,800 bytes. For details, see [OH_IPCParcel_Create()](#oh_ipcparcel_create).
 - The **str** parameter must not be NULL. Otherwise, a parameter error is returned.
 - Encoding note: The string must be encoded in valid UTF-8 or ASCII.
 
