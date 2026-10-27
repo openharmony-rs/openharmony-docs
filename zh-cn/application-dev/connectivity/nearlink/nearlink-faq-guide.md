@@ -73,9 +73,9 @@
 
 应用不宜将扫描到的地址作为长期标识持久化使用。需要长期识别设备时，应结合设备名称、配对关系等信息综合判断，已配对设备的地址可通过manager.[getPairedDevices()](../../reference/apis-connectivity-kit/js-apis-nearlink-manager.md#managergetpaireddevices)获取。随机地址不影响设备连接：可通过扫描获取的当前地址发起连接（如[SSAP连接](nearlink-ssap-connection-guide.md)、[端口数据传输](nearlink-data-transfer-guide.md)）。
 
-## 什么是帧类型（FrameType）
+## 什么是帧类型
 
-星闪设备通过空口发送数据时，会按一定格式将数据打包成无线帧后发送。帧类型（FrameType）用于指定无线帧的发送格式，不同帧类型的传输能力和适用场景不同。
+星闪设备通过空口发送数据时，会按一定格式将数据打包成无线帧后发送。帧类型（Frame Type）用于指定无线帧的发送格式，不同帧类型的传输能力和适用场景不同。
 
 当前支持以下两种帧类型：
 
@@ -86,7 +86,6 @@
 
 - 广播与扫描需使用相同的帧类型才能互相发现。例如外围设备使用FRAME_TYPE_4广播时，中心设备的扫描参数也需配置为FRAME_TYPE_4。
 - 使用FRAME_TYPE_4前，先调用[isFrameType4Supported()](../../reference/apis-connectivity-kit/js-apis-nearlink-manager.md#managerisframetype4supported)查询设备是否支持；在不支持的设备上启动广播、扫描或发起连接将返回[801 API功能在部分设备不支持](../../reference/errorcode-universal.md#801-api功能在部分设备不支持)错误码。
-- 未配置frameType时，按FRAME_TYPE_1处理。
 
 ## 星闪数据传输方式如何选择
 
