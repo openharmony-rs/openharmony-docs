@@ -104,7 +104,7 @@
      photoOutput.on('photoAvailable', (errCode: BusinessError, photo: camera.Photo): void => {
        console.info('getPhoto start');
        if (errCode || photo === undefined) {
-         console.error('getPhoto failed, err: ${errCode}');
+         console.error(`getPhoto failed, err: ${errCode}`);
          return;
        }
          // 如需要在图库中看到所保存的图片、视频资源，请使用用户无感的安全控件创建媒体资源。
