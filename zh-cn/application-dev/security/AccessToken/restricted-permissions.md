@@ -1780,13 +1780,11 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 ## ohos.permission.DISABLE_SCREEN_PRIVACY_PROTECTION
 
-允许应用在录屏时默认关闭屏幕隐私保护。
+允许应用录制受屏幕隐私保护的内容。
 
 获取此权限后，应用在录屏时可正常录制被屏幕隐私保护默认屏蔽的界面元素，如系统的状态通知、输入法等。 
 
-**申请条件**：应用需申请[ohos.permission.CUSTOM_SCREEN_RECORDING](#ohos.permission.CUSTOM_SCREEN_RECORDING)（用户授权后不再弹出隐私告警弹窗），才可以申请此权限。
-
-<!--RP117--><!--RP117End-->
+**申请条件：** 应用需申请ohos.permission.CUSTOM_SCREEN_RECORDING（用户授权后不再弹出隐私告警弹窗），才可以申请此权限。
 
 **权限级别**：normal
 
