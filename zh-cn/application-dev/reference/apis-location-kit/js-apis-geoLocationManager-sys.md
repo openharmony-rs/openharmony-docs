@@ -291,7 +291,7 @@ Wi-Fi指纹信息。
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | timeInterval | number | 否 | 否 | 表示模拟位置上报的时间间隔，单位是秒。 <br>**系统接口**：此接口为系统接口。|
-| locations | Array&lt;[Location](#location)&gt; | 否 | 否 | 表示模拟位置数组。 <br>**系统接口**：此接口为系统接口。|
+| locations | Array&lt;[Location](js-apis-geoLocationManager.md#location)&gt; | 否 | 否 | 表示模拟位置数组。 <br>**系统接口**：此接口为系统接口。|
 
 ## LocatingRequiredDataConfig<sup>10+</sup>
 
