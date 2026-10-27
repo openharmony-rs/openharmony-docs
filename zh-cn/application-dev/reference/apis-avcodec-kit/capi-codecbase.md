@@ -1,18 +1,18 @@
 # CodecBase
- 
+
 <!--Kit: AVCodec Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @mr-chencxy-->
 <!--Designer: @dpy2650--->
 <!--Tester: @baotianhao-->
 <!--Adviser: @w_Machine_cc-->
- 
+
 ## 概述
- 
+
 CodecBase模块提供用于音视频封装、解封装、编解码基础功能的变量、属性以及函数，包括编解码器基础结构体、异步回调机制、MIME类型定义、媒体描述键、用户自定义数据源以及视频特定配置等。本模块是AVCodec Kit的基础模块，为视频编码器、视频解码器、音频编码器、音频解码器、封装器、解封装器等模块提供通用的类型定义和属性键。
- 
+
 本模块提供的主要能力包括：
- 
+
 - **编解码器基础结构体**：定义编解码器实例 `OH_AVCodec` 和图形接口 `OHNativeWindow`，是音视频编解码操作的核心对象。
 - **异步回调机制**：提供错误回调、流变化回调、输入缓冲区回调、输出缓冲区回调等函数指针类型，以及回调集合结构体 `OH_AVCodecCallback`，用于处理编解码过程中的异步事件。
 - **用户自定义数据源**：支持通过回调函数 `OH_AVDataSourceReadAt` 和结构体 `OH_AVDataSource` 自定义媒体数据读取方式。
@@ -20,24 +20,24 @@ CodecBase模块提供用于音视频封装、解封装、编解码基础功能�
 - **媒体描述键**：提供统一的键名常量（`OH_MD_KEY_*`）用于配置和查询媒体参数，涵盖视频分辨率、帧率、码率、档次、像素格式、色彩空间，音频采样率、声道数、声道布局，编解码特性（分层编码、长期参考帧、B帧、低时延），以及媒体元数据（标题、艺术家、专辑等）。
 - **视频 ROI 配置**：支持感兴趣区域（ROI）编码配置，包括ROI区域坐标、量化参数偏移、语义标签等，并提供ROI字符串解析与格式化函数。
 - **音频声道布局**：定义音频声道集合和声道布局枚举。
- 
+
 适用场景包括：音视频编解码、媒体封装与解封装、媒体数据处理等需要使用通用编解码基础类型和属性键的场景。
- 
+
 **系统能力：** SystemCapability.Multimedia.Media.CodecBase
- 
+
 **起始版本：** 9
- 
+
 ## 文件汇总
- 
+
 | 名称 | 描述 |
 | -- | -- |
 | [avcodec_audio_channel_layout.h](capi-avcodec-audio-channel-layout-h.md) | 音频编解码声道布局枚举的声明。 |
 | [native_avcodec_base.h](capi-native-avcodec-base-h.md) | 声明用于音视频封装、解封装、编解码基础功能的Native API。 |
- 
+
 ## 媒体编解码格式
- 
+
 用于描述媒体编解码格式的名字如下表。类型是常量字符串。
- 
+
 | 名称                                                         | 描述                                                   |
 | ------------------------------------------------------------ | ------------------------------------------------------ |
 | OH_AVCODEC_MIMETYPE_AUDIO_AAC | AAC音频编解码器的MIME类型。                            |
@@ -92,21 +92,21 @@ CodecBase模块提供用于音视频封装、解封装、编解码基础功能�
 | OH_AVCODEC_MIMETYPE_IMAGE_BMP | BMP图片编码的MIME类型，仅用于封装BMP封面时使用。       |
 | OH_AVCODEC_MIMETYPE_SUBTITLE_WEBVTT |WEBVTT字幕解封装器的MIME类型。                         |
 | OH_AVCODEC_MIMETYPE_SUBTITLE_SRT |SRT字幕解封装器的MIME类型。                         |
- 
+
 ## 媒体数据键值对
- 
+
 用于描述媒体数据的键值对查找表如下。键的类型是常量字符串，值的类型可以是int32_t/int64_t/float/double/char */uint8_t *。
- 
+
 使用以下key的主要接口是[OH_AVFormat](capi-core-oh-avformat.md)，通过以下key可以进行参数配置或查询。
- 
+
 ### 能力查询专有的键值对
- 
+
 | 名称                                                         | 描述                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | OH_FEATURE_PROPERTY_KEY_VIDEO_ENCODER_MAX_LTR_FRAME_COUNT     | 在视频编码中获取长期参考帧（LTR）的最大个数的键，值类型为int32_t。 |
- 
+
 ### 音视频公共的键值对
- 
+
 | 名称                                                         | 描述                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | OH_MD_KEY_CODEC_CONFIG           | 编解码器特定数据的键，视频中表示传递SPS/PPS，音频中表示传递extraData，值类型为uint8_t\*。该键是可选的。 <!--Del-->（视频编解码此功能暂未支持）<!--DelEnd--> |
@@ -116,9 +116,9 @@ CodecBase模块提供用于音视频封装、解封装、编解码基础功能�
 | OH_MD_KEY_PROFILE                     | 编码档次，值类型为int32_t，请参见[OH_AVCProfile](capi-native-avcodec-base-h.md#oh_avcprofile)，[OH_HEVCProfile](capi-native-avcodec-base-h.md#oh_hevcprofile)，[OH_AACProfile](capi-native-avcodec-base-h.md#oh_aacprofile)。该键是可选的。 |
 | OH_MD_KEY_MAX_INPUT_SIZE        | 设置解码输入码流大小最大值的键，值类型为int32_t。该键是可选的。           |
 | OH_MD_KEY_ENABLE_SYNC_MODE   | 使能音视频编解码同步模式的键，值类型为int32_t，1表示使能，0表示不使能。该键是可选的配置项，默认不配置则表示不使能同步模式，在Configure阶段使用。 |
- 
+
 ### 视频专有的键值对
- 
+
 | 名称                                                         | 描述                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | OH_ED_KEY_TIME_STAMP               | 表示surfacebuffer时间戳的键，值类型为int64_t。该键是可选的。（API14废弃） |
@@ -182,9 +182,9 @@ CodecBase模块提供用于音视频封装、解封装、编解码基础功能�
 | OH_MD_KEY_VIDEO_DECODER_OUTPUT_IN_DECODING_ORDER | 解码器输出模式的键值。值类型为int32_t，取值为0或1。1表示解码器按解码顺序输出帧；0表示解码器按显示顺序输出帧，默认值为0。该键是可选的，仅用于视频解码，且仅可在Configure阶段使用。设置该键前，可通过[OH_AVCapability_IsFeatureSupported](capi-native-avcapability-h.md#oh_avcapability_isfeaturesupported)接口和枚举值[OH_AVCapabilityFeature](capi-native-avcapability-h.md#oh_avcapabilityfeature).VIDEO_DECODER_OUTPUT_IN_DECODING_ORDER查询是否支持该特性。如果视频解码不支持该特性，通过[OH_VideoDecoder_Configure](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_configure)接口设置该键将返回AV_ERR_INVALID_VAL。<br>**起始版本：** 26.0.0 |
 | OH_MD_KEY_VIDEO_ENCODER_MAX_FRAME_DELAY_COUNT | 视频编码器在输出压缩帧前允许缓存的最大帧数的键值。值类型为int32_t，取值范围为[1，5]。该键是可选的，仅用于视频编码，且仅可在Configure阶段使用。取值在[1，5]区间内时可正常生效；若超出该范围（小于1或大于5），调用[OH_VideoEncoder_Configure](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_configure)接口会返回AV_ERR_INVALID_VAL。<br>**起始版本：** 26.0.0 |
 | OH_MD_KEY_VIDEO_ENCODER_REPEAT_HEADER_BEFORE_SYNC_FRAMES | 码流同步帧前置参数集的键值。值类型为int32_t，取值为0或1，1表示使能，0表示不使能，默认值为0。该键是可选的，仅用于视频编码，且仅可在Configure阶段使用。开启后，编码器会在每个同步帧前插入前置参数集数据（例如H.264/H.265格式对应的SPS、PPS）。<br>**起始版本：** 26.0.0 |
- 
+
 ### 音频专有的键值对
- 
+
 | 名称                                                         | 描述                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | OH_MD_KEY_AUDIO_SAMPLE_FORMAT | 音频原始格式的键，值类型为int32_t。请参见[OH_BitsPerSample](capi-native-avcodec-base-h.md#oh_bitspersample)。|
@@ -209,9 +209,9 @@ CodecBase模块提供用于音视频封装、解封装、编解码基础功能�
 | OH_MD_KEY_AUDIO_MAX_INPUT_BUFFER_SIZE | 设置或查询音频编解码器最大输入缓冲区大小的键，值类型为int32_t，单位为字节。实际缓冲区大小受编解码器实现限制，超出上限的值不生效。该键是可选的。 |
 | OH_MD_KEY_AUDIO_ENCODER_PTS_MODE | 配置音频编码器输出PTS模式的键，值类型为int32_t，请参见[OH_AudioEncoderPTSMode](capi-native-avcodec-base-h.md#oh_audioencoderptsmode)。该键是可选的，不设置时默认为OH_AUDIO_ENCODER_PTS_MODE_DEFAULT。 |
 | OH_MD_KEY_AUDIO_ENCODER_ENABLE_SAMPLE_FORMAT_CONVERT | 使能音频编码器采样格式转换的键，值类型为int32_t，1表示使能，0表示不使能，默认值为0。使能后支持的输入采样格式为：SAMPLE_U8、SAMPLE_S16LE、SAMPLE_S24LE、SAMPLE_S32LE、SAMPLE_F32LE。该键是可选的。 |
- 
+
 ### 封装/解封装专有的键值对
- 
+
 | 名称                                                         | 描述                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | OH_MD_KEY_VIDEO_IS_HDR_VIVID | 媒体文件中的视频轨是否为HDR Vivid的键，支持封装和解封装，值类型为int32_t。该键是可选的。  |
