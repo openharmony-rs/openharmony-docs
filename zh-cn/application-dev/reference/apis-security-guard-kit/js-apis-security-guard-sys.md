@@ -644,7 +644,7 @@ async function updatePolicy(): Promise<void> {
 | eventId | number | 否 | 否 | 事件类型ID。 |
 | version | string | 否 | 否 | 事件版本号。 |
 | content | string | 否 | 否 | 事件内容，JSON字符串格式。 |
-| clientStatus | Array&lt;[AuthClientStatus](#authclientstatus)&gt; | 否 | 是 | 客户端会话状态列表，用于标记降级客户端。降级的客户端仅上报通知，不参与从严聚合。 |
+| clientStatus | [AuthClientStatus](#authclientstatus)[] | 否 | 是 | 客户端会话状态列表，用于标记降级客户端。降级的客户端仅上报通知，不参与从严聚合。 |
 
 ## AuthClientStatus
 
