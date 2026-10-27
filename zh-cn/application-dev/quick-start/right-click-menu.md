@@ -299,5 +299,3 @@ resources/base/profile路径下的menu.json配置文件示例如下：
 ```
 
 效果图如下。
-
-![right-click-demo](figures/right_click_demo.png)

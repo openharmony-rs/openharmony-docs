@@ -263,8 +263,6 @@ get varName(): T {
    }
    ```
 
-   ![computed-faq-1](./figures/arkts-computed-faq-1.gif)
-
 ## 使用场景
 ### 当被计算的属性变化时，\@Computed装饰的getter访问器只会被求解一次
 1. 在自定义组件中使用计算属性。

@@ -39,7 +39,6 @@
  
 <!-- @[material_scope_adapt](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsImmersiveLightSense/entry/src/main/ets/pages/MaterialScopeAdaptExample.ets) -->
 
-
 ``` TypeScript
 import { CircleShape, TitleBarType, uiMaterial } from '@kit.ArkUI';
 
@@ -129,7 +128,6 @@ struct MaterialScopeAdaptExample {
   }
 }
 ```
-
 
 ![material_example](./figures/material_example.JPG)
 
@@ -368,7 +366,6 @@ DEFAULT是沉浸式系统材质的默认开启模式，在该模式下，[Dialog
 - 在ENABLE模式下，沉浸式系统材质样式的优先级高于组件本身设置的背景色、模糊、阴影和边框样式，且更多组件会默认开启沉浸式系统材质。
 - 如需在保留现有属性的同时使用沉浸式系统材质，通过[systemMaterial](../reference/apis-arkui/arkts-apis/arkts-arkui-actionsheetoptions-i.md#systemmaterial)属性主动设置。
 
-
 ## 材质渲染区域与组件可视区域不一致
 
 **问题现象**
@@ -384,8 +381,6 @@ DEFAULT是沉浸式系统材质的默认开启模式，在该模式下，[Dialog
   ![materialDrawingInstructions](figures/material-drawing-instruction-2.jpg)
 
 - Progress组件可视区域为胶囊形，材质渲染区域为100\*40的矩形。
-
-  ![materialDrawingInstructions](figures/material-drawing-instruction-4.jpg)
 
 **可能原因**
 

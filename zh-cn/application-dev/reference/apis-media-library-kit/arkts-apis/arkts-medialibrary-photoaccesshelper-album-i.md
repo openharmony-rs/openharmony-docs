@@ -48,7 +48,7 @@ commitModify(callback: AsyncCallback<void>): void
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| 13900020 | Invalid parameter. Possible causes: <br>1.The current album object is invalid, the Album is not a valid instance obtained from photoAccessHelper.getAlbums() or createAlbum(); <br>2.The album is not a user album, only user albums support this operation; <br>3.The album name exceeds the length limit or contains invalid characters; <br>4.The number of parameters is invalid; <br>5.The callback parameter must be of type AsyncCallback<void>. |
+| 13900020 | Invalid parameter. Possible causes: <br>1.The current album object is invalid, the Album is not a valid instance obtained from photoAccessHelper.getAlbums() or createAlbum(); <br>2.The album is not a user album, only user albums support this operation; <br>3.The album name exceeds the length limit or contains invalid characters; <br>4.The number of parameters is invalid; <br>5.The callback parameter must be of type AsyncCallback&lt;void&gt;. |
 | 14000011 | MediaLibrary inner fail. Possible causes: <br>1.The context parameter is invalid or not properly initialized, please pass a valid Context obtained from the application context; <br>2.The server returned an error during commitModify, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please retry and check logs. |
 
 **示例**

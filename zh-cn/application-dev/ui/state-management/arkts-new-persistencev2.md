@@ -476,7 +476,6 @@ PersistenceV2继承自AppStorageV2，支持通过[connect](../../reference/apis-
     }
     ```
 
-    ![persistencev2-ignorereadonlyproperties](./figures/persistencev2-ignorereadonlyproperties.png)
   
 
 15. 在使用globalConnect持久化[集合类型](#globalconnect支持的集合类型)（如`Array`、`Map`、`Set`、`collections.Array`、`collections.Map`、`collections.Set`）时，若容器内部元素类型为基础类型（如`number`、`string`、`boolean`），则不应声明`defaultSubCreator`，否则会导致编辑、编译报错。

@@ -816,8 +816,6 @@ SnapshotTime: 2021-01-01-20-05-58.549685
 
 以9级`async/await`嵌套调用为例，整个过程如下图所示：调用方发起调用后，每层异步函数执行至`await`处挂起，待其Promise决议后由运行时（事件循环）恢复执行，随后调用下一层异步函数，如此逐层嵌套，直至最深层multiAsync9。每层`await`都会产生一个新的Promise节点，运行时会逐层保存该层的提交者调用栈。multiAsync9恢复执行后调用`APPFREEZE()`触发主线程阻塞，日志中保留的正是该层的提交者调用栈。
 
-![Promise异步嵌套调用过程](figures/promise_async_nested_call.png)
-
 AppFreeze日志文件路径为`/data/log/faultlog/freeze_ext`，以下是一份AppFreeze故障日志中`SubmitterStacktrace`字段的核心内容。
 
 ```text

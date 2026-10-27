@@ -645,7 +645,7 @@ ChipV2尺寸。
 
 默认值：ChipV2Size.NORMAL
 
-SizeT<LengthMetrics>类型参数不支持百分比设置，异常值按默认值处理。
+SizeT&lt;LengthMetrics&gt;类型参数不支持百分比设置，异常值按默认值处理。
 
 **说明：** [适老化](../../../ui/arkui-support-for-aging-adaptation.md)在size指定具体宽高时不生效，size设置为{ height: 0, width: 0 }除外。
 

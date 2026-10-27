@@ -59,7 +59,7 @@ function openCustomDialog(options: CustomDialogOptions): Promise<number>
 
 **示例**
 
-openCustomDialog(options: CustomDialogOptions): Promise<number>
+openCustomDialog(options: CustomDialogOptions): Promise&lt;number&gt;
 
 打开自定义弹窗。通过Promise返回结果。
 

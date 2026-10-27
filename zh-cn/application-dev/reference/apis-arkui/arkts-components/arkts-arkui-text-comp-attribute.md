@@ -657,7 +657,7 @@ fontFeature(value: string)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | string | 是 | 文字特性效果，格式为：normal &#124; <feature-tag-value>。<feature-tag-value>的格式为：<string> [<integer> &#124; on &#124; off]，多个之间用','隔开。例如："ss01" on。 |
+| value | string | 是 | 文字特性效果，格式为：normal &#124; &lt;feature-tag-value&gt;。&lt;feature-tag-value&gt;的格式为：&lt;string&gt; [&lt;integer&gt; &#124; on &#124; off]，多个之间用','隔开。例如："ss01" on。 |
 
 ## fontSize
 

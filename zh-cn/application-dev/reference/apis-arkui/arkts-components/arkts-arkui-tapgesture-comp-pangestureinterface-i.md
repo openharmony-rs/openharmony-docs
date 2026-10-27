@@ -20,7 +20,7 @@ interface PanGestureInterface extends GestureInterface<PanGestureInterface>
 (value?: { fingers?: number; direction?: PanDirection; distance?: number } | PanGestureOptions): PanGestureInterface
 ```
 
-创建滑动手势对象。继承自[GestureInterface<T>](arkts-arkui-tapgesture-comp-gestureinterface-i.md)。
+创建滑动手势对象。继承自[GestureInterface&lt;T&gt;](arkts-arkui-tapgesture-comp-gestureinterface-i.md)。
 
 **起始版本：** 7
 

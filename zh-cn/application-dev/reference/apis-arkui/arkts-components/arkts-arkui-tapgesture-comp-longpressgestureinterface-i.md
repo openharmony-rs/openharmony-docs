@@ -24,7 +24,7 @@ interface LongPressGestureInterface extends GestureInterface<LongPressGestureInt
 (value?: { fingers?: number; repeat?: boolean; duration?: number }): LongPressGestureInterface
 ```
 
-创建长按手势对象。继承自[GestureInterface<T>](arkts-arkui-tapgesture-comp-gestureinterface-i.md)。
+创建长按手势对象。继承自[GestureInterface&lt;T&gt;](arkts-arkui-tapgesture-comp-gestureinterface-i.md)。
 
 当组件默认支持可拖拽时，如Text、TextInput、TextArea、HyperLink、Image和RichEditor等组件。长按手势与拖拽会出现冲突，事件优先级如下：
 
