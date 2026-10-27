@@ -153,7 +153,7 @@ The keystore file password is incorrect.
 
 **处理步骤**
 
-检查传入的密钥库文件密码是否正确。
+传入正确的密钥库文件密码。
 
 ## 29700009 证书管理对话框操作超时
 
