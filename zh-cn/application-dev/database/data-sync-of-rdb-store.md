@@ -97,7 +97,6 @@
    import { distributedDeviceManager } from '@kit.DistributedServiceKit';
    import { hilog } from '@kit.PerformanceAnalysisKit';
    import { common } from '@kit.AbilityKit';
-   import { UIContext } from '@kit.ArkUI';
    const DOMAIN = 0x0000;
    ```
 
@@ -119,8 +118,7 @@
        securityLevel: relationalStore.SecurityLevel.S3 // 数据库安全级别
      };
      // 打开数据库并设置分布式表
-     const context = new UIContext().getHostContext() as common.UIAbilityContext;
-     relationalStore.getRdbStore(context, STORE_CONFIG).then(async (rdbStore: relationalStore.RdbStore) => {
+     relationalStore.getRdbStore(context!, STORE_CONFIG).then(async (rdbStore: relationalStore.RdbStore) => {
        store = rdbStore;
        await store.executeSql('CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL, AGE INTEGER, SALARY REAL, CODES BLOB)');
        // 将已创建的表设置分布式表。
@@ -576,8 +574,7 @@
        enableCloud: false,
        tableType: relationalStore.DistributedTableType.SINGLE_VERSION
      }
-     const context = new UIContext().getHostContext() as common.UIAbilityContext;
-     relationalStore.getRdbStore(context, STORE_CONFIG).then(async (rdbStore: relationalStore.RdbStore) => {
+     relationalStore.getRdbStore(context!, STORE_CONFIG).then(async (rdbStore: relationalStore.RdbStore) => {
        store = rdbStore;
        await store.executeSql('CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL UNIQUE, AGE INTEGER, SALARY REAL, CODES BLOB)');
        await store.executeSql('CREATE TABLE IF NOT EXISTS EMPLOYEE2 (NAME TEXT NOT NULL UNIQUE, AGE INTEGER, SALARY REAL, CODES BLOB, PRIMARY KEY (NAME))');
