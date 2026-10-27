@@ -44,13 +44,13 @@ ArkWeb拖拽不同于ArkUI的组件级拖拽，主要针对网页内容的拖拽
 <!-- @[DragArkTSPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebDragInteraction/entry/src/main/ets/pages/DragArkTSPage.ets) -->  
 
 ``` TypeScript
-import { webview } from '@kit.ArkWeb'
+import { webview } from '@kit.ArkWeb';
 import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
 
 @Entry
 @Component
 struct DragDrop {
-  private controller: webview.WebviewController = new webview.WebviewController()
+  private controller: webview.WebviewController = new webview.WebviewController();
   @State ports: Array<webview.WebMessagePort> = []
   @State dragData: Array<unifiedDataChannel.UnifiedRecord> = []
 
@@ -72,7 +72,7 @@ struct DragDrop {
         this.controller.postMessage('__init_port__', [this.ports[0]], '*');
       })// onDrop 可做简单逻辑，例如暂存一些关键数据
         .onDrop((dragEvent: DragEvent) => {
-          console.info('ETS onDrop!')
+          console.info('ETS onDrop!');
           let data: UnifiedData = dragEvent.getData();
           if(!data) {
             return false;
@@ -90,7 +90,7 @@ struct DragDrop {
               }
             }
           }
-          return true
+          return true;
         })
     }
 
