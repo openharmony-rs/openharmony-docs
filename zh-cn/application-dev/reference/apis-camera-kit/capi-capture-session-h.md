@@ -3455,7 +3455,7 @@ Camera_ErrorCode OH_CaptureSession_UnlockFocusTracking(Camera_CaptureSession* se
 ### OH_CaptureSession_OnCameraDeviceSwitchRequest()
 
 ```c
-typedef void (*OH_CaptureSession_OnCameraDeviceSwitchRequest)(void* userContext, Camera_CaptureSession* userSession, Camera_Device* userDevice)
+typedef void (*OH_CaptureSession_OnCameraDeviceSwitchRequest)(void *userContext, Camera_CaptureSession *userSession, Camera_Device *userDevice)
 ```
 
 **描述**
@@ -3464,18 +3464,20 @@ typedef void (*OH_CaptureSession_OnCameraDeviceSwitchRequest)(void* userContext,
 
 **起始版本：** 26.0.1
 
+**资源释放：** 调用[OH_CaptureSession_Release](#oh_capturesession_release)释放userSession，调用[OH_CameraManager_DeleteCameraDevices](capi-camera-manager-h.md#oh_cameramanager_deletecameradevices)释放userDevice。
+
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| void* userContext | 指向注册回调时指定的自定义上下文的指针。 |
-| [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* userSession | 指向Camera_CaptureSession实例的指针。 |
-| [Camera_Device](capi-oh-camera-camera-device.md)* userDevice | 指向Camera_Device实例的指针。 |
+| void* userContext | [出参]指向注册回调时指定的自定义上下文的指针。 |
+| [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* userSession | [出参]指向Camera_CaptureSession实例的指针。 |
+| [Camera_Device](capi-oh-camera-camera-device.md)* userDevice | [出参]指向Camera_Device实例的指针。 |
 
 ### OH_CaptureSession_RegisterCameraDeviceSwitchRequestCallback()
 
 ```c
-Camera_ErrorCode OH_CaptureSession_RegisterCameraDeviceSwitchRequestCallback(const Camera_CaptureSession* session, void* context, OH_CaptureSession_OnCameraDeviceSwitchRequest callback)
+Camera_ErrorCode OH_CaptureSession_RegisterCameraDeviceSwitchRequestCallback(const Camera_CaptureSession *session, void *context, OH_CaptureSession_OnCameraDeviceSwitchRequest callback)
 ```
 
 **描述**
@@ -3484,13 +3486,15 @@ Camera_ErrorCode OH_CaptureSession_RegisterCameraDeviceSwitchRequestCallback(con
 
 **起始版本：** 26.0.1
 
+**参考：** [OH_CaptureSession_OnCameraDeviceSwitchRequest](#oh_capturesession_oncameradeviceswitchrequest)
+
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例。 |
-| void* context | 指向注册回调时指定的自定义上下文的指针。 |
-| [OH_CaptureSession_OnCameraDeviceSwitchRequest](capi-capture-session-h.md#oh_capturesession_oncameradeviceswitchrequest) callback | 表示要注册的镜头切换请求回调。 |
+| const [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | [入参]Camera_CaptureSession实例。 |
+| void* context | [入参]指向自定义上下文的指针。 |
+| [OH_CaptureSession_OnCameraDeviceSwitchRequest](capi-capture-session-h.md#oh_capturesession_oncameradeviceswitchrequest) callback | [入参]表示要注册的镜头切换请求回调。 |
 
 **返回：**
 
@@ -3501,7 +3505,7 @@ Camera_ErrorCode OH_CaptureSession_RegisterCameraDeviceSwitchRequestCallback(con
 ### OH_CaptureSession_UnregisterCameraDeviceSwitchRequestCallback()
 
 ```c
-Camera_ErrorCode OH_CaptureSession_UnregisterCameraDeviceSwitchRequestCallback(const Camera_CaptureSession* session, void* context, OH_CaptureSession_OnCameraDeviceSwitchRequest callback)
+Camera_ErrorCode OH_CaptureSession_UnregisterCameraDeviceSwitchRequestCallback(const Camera_CaptureSession *session, void *context, OH_CaptureSession_OnCameraDeviceSwitchRequest callback)
 ```
 
 **描述**
@@ -3510,13 +3514,15 @@ Camera_ErrorCode OH_CaptureSession_UnregisterCameraDeviceSwitchRequestCallback(c
 
 **起始版本：** 26.0.1
 
+**参考：** [OH_CaptureSession_OnCameraDeviceSwitchRequest](#oh_capturesession_oncameradeviceswitchrequest)
+
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例。 |
-| void* context | 指向注册回调时指定的自定义上下文的指针。 |
-| [OH_CaptureSession_OnCameraDeviceSwitchRequest](capi-capture-session-h.md#oh_capturesession_oncameradeviceswitchrequest) callback | 表示要注销的镜头切换请求回调。 |
+| const [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | [入参]Camera_CaptureSession实例。 |
+| void* context | [入参]指向注册回调时调用方指定的自定义上下文的指针。 |
+| [OH_CaptureSession_OnCameraDeviceSwitchRequest](capi-capture-session-h.md#oh_capturesession_oncameradeviceswitchrequest) callback | [入参]表示要注销的镜头切换请求回调。 |
 
 **返回：**
 
