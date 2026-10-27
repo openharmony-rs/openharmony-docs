@@ -41,8 +41,4 @@ Device Certificate Kit不具备生成或签发证书及证书吊销列表的能�
 
 <!--RP2--><!--RP2End-->
 
-**支持的国家/地区**
- 
-请参见版本说明中[各设备支持的国家/地区](https://developer.huawei.com/consumer/cn/doc/harmonyos-releases/sdk-supported-regions)。
-
 <!--RP1--><!--RP1End-->
