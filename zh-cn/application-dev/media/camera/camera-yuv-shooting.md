@@ -85,7 +85,7 @@
      - 将处理完的pixelMap通过回调回传，做图片显示或通过安全控件写文件保存图片。
      - 使用完后解注册单段式拍照回调函数。
 
-     <!-- @[set_photo_cb_single](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/YUVPhotoSample/camera/src/main/ets/cameramanagers/PhotoManager.ets) -->
+     <!-- @[set_photo_cb_single](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/YUVPhotoSample/camera/src/main/ets/cameramanagers/PhotoManager.ets) -->    
      
      ``` TypeScript
      setPhotoOutputCbSingle(photoOutput: camera.PhotoOutput, context: Context) {
