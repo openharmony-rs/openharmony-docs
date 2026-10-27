@@ -137,7 +137,7 @@ No available certificate for authorization.
 
 安装有效证书凭据。
 
-## 29700008 密码错误
+## 29700008 密码不正确
 
 **错误信息**
 
@@ -145,7 +145,7 @@ The keystore file password is incorrect.
 
 **错误描述**
 
-密码错误。
+密码不正确。
 
 **可能原因**
 
