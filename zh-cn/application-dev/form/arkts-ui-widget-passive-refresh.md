@@ -335,3 +335,38 @@
     ]
   }
   ```
+
+<--Del-->
+- 账号变更刷新：<!--Del-->从API版本18开始仅系统应用支持，<!--DelEnd-->API版本26.0.0开始支持在账号变更变化的场景下调用[onUpdateForm](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonupdateform)的生命周期回调函数自动刷新卡片内容。可以在[form_config.json](arkts-ui-widget-configuration.md)配置文件的 `metadata` 配置 `{"name": "enableAccountSwitchRefresh", "value": "true"}`。
+ 
+  ```json
+  {
+    "forms": [
+      {
+        "name": "UpdateDuration",
+        "description": "$string:widget_updateduration_desc",
+        "src": "./ets/updateduration/pages/UpdateDurationCard.ets",
+        "uiSyntax": "arkts",
+        "window": {
+          "designWidth": 720,
+          "autoDesignWidth": true
+        },
+        "isDefault": true,
+        "updateEnabled": true,
+        "scheduledUpdateTime": "10:30",
+        "updateDuration": 2,
+        "defaultDimension": "2*2",
+        "supportDimensions": [
+          "2*2"
+        ],
+        "metadata": [
+          {
+            "name": "enableAccountSwitchRefresh",
+            "value": "true"
+          }
+        ]
+      }
+    ]
+  }
+  ```
+<!--DelEnd-->
