@@ -51,7 +51,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    dataShare.createDataProxyHandle().then((dataProxyHandle) => {
+    dataShare.createDataProxyHandle().then(async (dataProxyHandle) => {
       console.info("createDataProxyHandle succeed");
     }).catch((err: BusinessError) => {
       console.error(`Failed to create DataProxyHandle. Code: ${err.code}, message: ${err.message}`);
@@ -544,6 +544,8 @@ putValue(uri: string, key: number, value: ValueType, config: DataProxyConfig): P
 **示例：**
 
 ```ts
+import { ValueType } from '@kit.ArkData';
+
 const config: dataShare.DataProxyConfig = {
   type: dataShare.DataProxyType.SHARED_CONFIG,
 };
@@ -610,6 +612,8 @@ removeValue(uri: string, key: number, config: DataProxyConfig): Promise&lt;void&
 **示例：**
 
 ```ts
+import { ValueType } from '@kit.ArkData';
+
 const config: dataShare.DataProxyConfig = {
   type: dataShare.DataProxyType.SHARED_CONFIG,
 };
@@ -675,6 +679,8 @@ getValues(uri: string, config: DataProxyConfig): Promise&lt;ValueType[]&gt;
 **示例：**
 
 ```ts
+import { ValueType } from '@kit.ArkData';
+
 const config: dataShare.DataProxyConfig = {
   type: dataShare.DataProxyType.SHARED_CONFIG,
 };
