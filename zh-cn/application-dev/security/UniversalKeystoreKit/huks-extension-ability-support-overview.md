@@ -76,7 +76,7 @@ CryptoExtensionAbility可以隔离底层硬件（UKey驱动）厂商实现差异
 | 拉起方 | 上层应用。 | 上层应用或UKey驱动应用。 |
 | 拉起接口 | [openUkeyAuthDialog()](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenukeyauthdialog22) | [openUkeyAuthDialog()](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenukeyauthdialog22)或[openAuthDialogForUkeyProvider()](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthdialogforukeyprovider) |
 | 上下文依赖 | 依赖调用方持有上下文信息。 | 依赖上下文（上层应用拉起）或不依赖上下文（UKey驱动应用拉起）。 |
-| 弹窗行为 | 普通应用窗口，支持前后台切换，可被切到后台。 | 模系统弹窗，在用户完成交互前整个系统进入模态状态，无法切到后台或关闭。 |
+| 弹窗行为 | 普通应用窗口，支持前后台切换，可被切到后台。 | 模态系统弹窗，在用户完成交互前整个系统进入模态状态，无法切到后台或关闭。 |
 
 ## 核心能力实现
 
