@@ -320,14 +320,14 @@ void AudioSessionStateChangedCallback(OH_AudioSession_StateChangedEvent event)
 
 从API version 24开始，应用可以通过[OH_AudioSessionManager_SetBehavior](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setbehavior)接口设置音频会话行为参数，在特定场景下获得更优的音频焦点体验。
 
-| 枚举值 | API版本 | 使用场景 |
+| 枚举值 | API版本 | 推荐使用场景 |
 | -------- | -------- | -------- |
-| [OH_AudioSession_BehaviorFlags](../../reference/apis-audio-kit/capi-native-audio-session-base-h.md#oh_audiosession_behaviorflags).MUTE_WHEN_INTERRUPTED | 24 | 该枚举值用于直播类音频被打断场景。 |
-| [OH_AudioSession_BehaviorFlags](../../reference/apis-audio-kit/capi-native-audio-session-base-h.md#oh_audiosession_behaviorflags).PAUSE_WHEN_INTERRUPTED | 26.0.0 | 该枚举值用于媒体类音频被其他短时媒体音频（如有声广告）打断后需要恢复播放的场景。 |
+| [OH_AudioSession_BehaviorFlags](../../reference/apis-audio-kit/capi-native-audio-session-base-h.md#oh_audiosession_behaviorflags).MUTE_WHEN_INTERRUPTED | 24 | 直播类音频被打断场景。 |
+| [OH_AudioSession_BehaviorFlags](../../reference/apis-audio-kit/capi-native-audio-session-base-h.md#oh_audiosession_behaviorflags).PAUSE_WHEN_INTERRUPTED | 26.0.0 | 媒体类音频被其他短时媒体音频（如有声广告）打断后需要恢复播放的场景。 |
 
-当用户观看直播时，若其他应用启动音频流（如键盘录音转文字）打断直播，默认会导致直播的音频和画面暂停，影响观看体验。设置[OH_AudioSession_BehaviorFlags](../../reference/apis-audio-kit/capi-native-audio-session-base-h.md#oh_audiosession_behaviorflags).MUTE_WHEN_INTERRUPTED会话行为后，直播在被打断时将保持静音播放而非暂停，避免画面中断，打断结束后会自动解除静音。
+在用户观看直播的场景中，当其他应用启动音频流（如键盘录音转文字）打断直播时，会导致直播的音频和画面暂停，影响用户的观看体验。直播应用设置[OH_AudioSession_BehaviorFlags](../../reference/apis-audio-kit/capi-native-audio-session-base-h.md#oh_audiosession_behaviorflags).MUTE_WHEN_INTERRUPTED会话行为后，直播在被打断时会保持静音播放而非暂停，避免画面中断，打断结束后会自动解除静音。
 
-当媒体类音频被其他短时媒体音频打断后，系统默认不会通知应用恢复播放。设置[OH_AudioSession_BehaviorFlags](../../reference/apis-audio-kit/capi-native-audio-session-base-h.md#oh_audiosession_behaviorflags).PAUSE_WHEN_INTERRUPTED会话行为，应用被打断后系统会通知应用恢复播放。在媒体打断媒体的场景下，该行为受打断时长限制：打断时长在限制时间内，系统会通知应用恢复播放，超出限制时间不再通知恢复播放。
+在媒体音频被其他短时媒体音频打断的场景中，系统不会通知应用恢复播放。当应用设置[OH_AudioSession_BehaviorFlags](../../reference/apis-audio-kit/capi-native-audio-session-base-h.md#oh_audiosession_behaviorflags).PAUSE_WHEN_INTERRUPTED会话行为后，系统会通知应用恢复播放，避免被短时媒体音频打断不恢复。若打断时长超出规定时间（即打断方为长时媒体音频），该接口将不会生效。
 
 > **注意：**
 >
