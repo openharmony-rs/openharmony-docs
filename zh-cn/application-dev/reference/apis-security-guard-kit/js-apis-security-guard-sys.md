@@ -675,7 +675,7 @@ async function updatePolicy(): Promise<void> {
 | ---- | ---- | ---- | ---- | ---- |
 | clientId | string | 否 | 否 | 客户端会话唯一标识。 |
 | bundleName | string | 否 | 否 | 应用Bundle名称。 |
-| subscribedEvents | Array&lt;number&gt; | 否 | 否 | 客户端订阅的事件类型ID列表。阻断服务提供者可据此过滤关心的事件。 |
+| subscribedEvents | number[] | 否 | 否 | 客户端订阅的事件类型ID列表。阻断服务提供者可据此过滤关心的事件。 |
 | defaultTimeoutStrategy | [AuthStrategy](#authstrategy) | 否 | 否 | 客户端响应超时时的默认阻断策略。 |
 | defaultTimeoutMs | number | 否 | 否 | 客户端响应超时时间，单位毫秒。当前默认设置为400。 |
 
