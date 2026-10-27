@@ -44,18 +44,18 @@
    let mediaKeySystem: drm.MediaKeySystem
    let mediaKeySession: drm.MediaKeySession
    let drmInfoArr: drm.MediaKeySystemInfo[] = mediaKeySystemInfo
-   drmInfoArr.forEach((drmInfo: drm.MediaKeySystemInfo) => {
-     console.info('drmInfoArr - uuid: ' + drmInfo.uuid)
-     console.info('drmInfoArr - pssh: ' + drmInfo.pssh)
+   for (let i = 0; i < drmInfoArr.length; i++) {
+     console.info('drmInfoArr - uuid: ' + drmInfoArr[i].uuid)
+     console.info('drmInfoArr - pssh: ' + drmInfoArr[i].pssh)
      let description: drm.MediaKeySystemDescription[] = drm.getMediaKeySystems();
      let solutionName: string = "com.clearplay.drm"
      for (let item of description) {
-       if (drmInfo.uuid == item.uuid) {
+       if (drmInfoArr[i].uuid == item.uuid) {
          solutionName = item.name
          }
        }
        // 实际开发中应从播放内容的轨道信息（如AVPlayer.getTrackDescription()）或已知媒体源获取mimeType。
-       // drm.MediaKeySystemInfo不包含mimeType字段，无法直接从drmInfo获取。
+       // drm.MediaKeySystemInfo不包含mimeType字段，无法直接从drmInfoArr[i]获取。
        let mimeType: string = "video/mp4";
        let isSupported: boolean = drm.isMediaKeySystemSupported(solutionName, mimeType);
        if (isSupported) {
@@ -69,7 +69,7 @@
 
    ```ts
    // 媒体密钥请求与处理。
-   let initData: Uint8Array = new Uint8Array(drmInfo.pssh);
+   let initData: Uint8Array = new Uint8Array(drmInfoArr[i].pssh);
    const optionsData: drm.OptionsData[] = [{
      name: "optionalDataName",
      value: "optionalDataValue"
