@@ -13,7 +13,7 @@
 
 开发者可以根据界面设计和交互需求，对窗口外观进行定制。例如：
 
-- 通过设置窗口掩码，将子窗或全局悬浮窗显示为异形窗口。
+- 通过设置窗口掩码，将子窗或[全局悬浮窗](global-floating-window-guide.md)显示为异形窗口。
 
 - 通过设置窗口边缘阴影的模糊半径，调整子窗或全局悬浮窗的阴影效果。<!--Del-->系统应用还可设置窗口边缘阴影的颜色和偏移量。<!--DelEnd-->
 
@@ -23,7 +23,7 @@
 
 ## 异形窗口
 
-异形窗口为非常规形状的窗口，掩码用于描述异形窗口的形状。仅应用子窗和全局悬浮窗可设置为异形窗口。
+异形窗口为非常规形状的窗口，掩码用于描述异形窗口的形状。仅子窗和全局悬浮窗可设置为异形窗口。
 
 可通过[setWindowMask()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowmask12)或[setWindowMaskWithAlpha()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowmaskwithalpha)接口设置异形窗口的掩码，以定义窗口的可见区域。
 
@@ -51,60 +51,7 @@
      - 子窗的阴影和圆角消失。
      - 子窗矩形区域的左上部分变为透明不可交互，通过点击“Create Test Window”按钮，事件透传到该按钮，创建出绿色的测试窗口。
 
-<!-- @[setWindowMaskSample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/EventDistribution/setWindowMask/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-import { window } from '@kit.ArkUI';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-@Entry
-@Component
-struct Index {
-  // ...
-  private windowMaskSub: window.Window | undefined = undefined;
-
-  // ...
-  setWindowMask(window: window.Window) {
-    let windowMask: Uint8Array = new Uint8Array(this.winWidth * this.winHeight);
-    for (let i = 0; i < this.winHeight; i++) {
-      for (let k = 0; k < this.winWidth; k++) {
-        if ((i + k) < (this.winHeight + this.winWidth) / 2) {
-          windowMask[i * this.winWidth + k] = 0;
-        } else {
-          windowMask[i * this.winWidth + k] = 255;
-        }
-      }
-    }
-    window.setWindowMaskWithAlpha(windowMask, this.winWidth, this.winHeight);
-  }
-
-  build() {
-    Row() {
-      Scroll(){
-        Column() {
-          // ...
-          Row() {
-            Button('setWindowMask for Sub Window')
-              .width('90%')
-              .type(ButtonType.Capsule)
-              .margin({
-                top: 10
-              }).fontSize(18)
-              .onClick(() => {
-                if(this.windowMaskSub) {
-                  this.setWindowMask(this.windowMaskSub);
-                }
-              })
-          }
-        }
-        .width('100%')
-      }
-    }
-    .height('100%')
-  }
-
-}
-```
+<!-- @[setWindowMaskSample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/EventDistribution/setWindowMask/entry/src/main/ets/pages/Index.ets) --> 
 
 ![setWindowMaskWithAlphaDemo](figures/setWindowMaskWithAlphaDemo.gif)
 
