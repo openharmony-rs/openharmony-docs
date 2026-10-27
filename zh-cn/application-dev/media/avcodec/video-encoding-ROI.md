@@ -135,6 +135,7 @@ Surface模式下，相机将视频帧输出到OH_NativeImage的Surface上，开�
    
    add_library(recorder SHARED recorder/RecorderNative.cpp
                                recorder/Recorder.cpp
+                               capbilities/camera/NativeCamera.cpp
                                capbilities/codec/Muxer.cpp
                                capbilities/codec/VideoEncoder.cpp
                                capbilities/codec/AudioCapturer.cpp
@@ -146,7 +147,7 @@ Surface模式下，相机将视频帧输出到OH_NativeImage的Surface上，开�
                                common/RoiQueue.cpp
    )
    
-   target_link_libraries(recorder PUBLIC ${BASE_LIBRARY} player)
+   target_link_libraries(recorder PUBLIC ${BASE_LIBRARY} player libohcamera.so)
    ```
 
    > **说明：**
