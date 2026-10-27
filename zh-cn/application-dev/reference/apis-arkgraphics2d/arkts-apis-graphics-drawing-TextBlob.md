@@ -480,7 +480,7 @@ ArkTS-Sta: bounds(): common2D.Rect | undefined
 
 | 类型                                               | 说明                   |
 | -------------------------------------------------- | ---------------------- |
-| ArkTS-Dyn: [common2D.Rect](js-apis-graphics-common2D.md#rect)<br/>ArkTS-Sta: [common2D.Rect](js-apis-graphics-common2D.md#rect) \| undefined | 文字边界框的矩形区域。创建失败时返回undefined。 |
+| ArkTS-Dyn: [common2D.Rect](js-apis-graphics-common2D.md#rect)<br/>ArkTS-Sta: [common2D.Rect](js-apis-graphics-common2D.md#rect) \| undefined | 文字边界框的矩形区域。获取失败时返回undefined。 |
 
 **示例：**
 
