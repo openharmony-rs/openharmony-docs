@@ -316,7 +316,6 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
        AVCODEC_SAMPLE_LOGI("On codec format change");
        auto *codecUserData = static_cast<CodecUserData *>(userData);
 
-       std::unique_lock<std::shared_mutex> codecLock(codecUserData->codecMutex);
        // 可通过format获取到变化后的视频宽、高等。
        OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_PIC_WIDTH, &codecUserData->width);
        OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_PIC_HEIGHT, &codecUserData->height);
