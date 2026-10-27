@@ -65,6 +65,44 @@ struct Scene1Static {
 应用侧代码
 <!-- @[complex_dynamic_web_pages](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebPageHeight/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+@Component
+struct Scene2JsBridge {
+  controller: webview.WebviewController = new webview.WebviewController();
+  @State heightText: ResourceStr = $r('app.string.waiting_for_height');
+  @State jsbObj: TestClass = new TestClass(this.controller);
+
+  aboutToAppear(): void {
+    this.jsbObj.onGetHeight = (h: string) => {
+      this.heightText = h + ' px';
+    };
+  }
+
+  build() {
+    Column() {
+      Text('getPageHeight: ' + this.heightText)
+        .width('100%')
+        .padding(12)
+        .fontSize(16)
+        .backgroundColor('#f5f5f5')
+        .textAlign(TextAlign.Center)
+
+      Web({ src: $rawfile('scene2_index.html'), controller: this.controller })
+        .layoutWeight(1)
+        .javaScriptAccess(true)
+        .javaScriptProxy({
+          object: this.jsbObj,
+          name: "jsbObj",
+          methodList: ["notifyToGet"],
+          controller: this.controller
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
 ### 加载普通网页
 
 普通网页可以通过load事件，在网页的所有资源都完全加载完成后触发。
