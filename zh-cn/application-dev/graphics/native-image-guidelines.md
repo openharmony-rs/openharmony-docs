@@ -241,6 +241,7 @@ libnative_buffer.so
     
     传入image获取生产者端NativeWindow，image为使用OH_NativeImage_Create创建的OH_NativeImage实例。
     <!-- @[nativeimage_acquire_nativewindow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeImage/entry/src/main/cpp/render/native_render.cpp) -->
+    
     ``` C++
     nativeWindow_ = OH_NativeImage_AcquireNativeWindow(image);
     ```
