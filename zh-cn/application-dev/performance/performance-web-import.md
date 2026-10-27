@@ -896,9 +896,9 @@ runJS.html作为应用前端页面：
 
 JSBridge优化方案适用于ArkWeb应用侧与前端网页通信场景，开发者可根据应用架构选择合适的业务通信机制：
 
-1.应用使用ArkTS语言开发，推荐使用ArkWeb在ArkTS提供的runJavaScriptExt接口实现应用侧至前端页面的通信，同时使用registerJavaScriptProxy实现前端页面至应用侧的通信。
+1. 应用使用ArkTS语言开发，推荐使用ArkWeb在ArkTS提供的runJavaScriptExt接口实现应用侧至前端页面的通信，同时使用registerJavaScriptProxy实现前端页面至应用侧的通信。
 
-2.应用使用ArkTS、C++语言混合开发，或本身应用结构较贴近于小程序架构，自带C++侧环境，推荐使用ArkWeb在NDK侧提供的OH_NativeArkWeb_RunJavaScript及OH_NativeArkWeb_RegisterJavaScriptProxy接口实现JSBridge功能。
+2. 应用使用ArkTS、C++语言混合开发，或本身应用结构较贴近于小程序架构，自带C++侧环境，推荐使用ArkWeb在NDK侧提供的OH_NativeArkWeb_RunJavaScript及OH_NativeArkWeb_RegisterJavaScriptProxy接口实现JSBridge功能。
 
 > 说明
 > 开发者需根据当前业务区分是否存在C++侧环境（较为显著标志点为当前应用是否使用了Node API技术进行开发，若是则该应用具备C++侧环境）。
@@ -1325,7 +1325,7 @@ struct Index {
 ![](figures/web_js_pre_compile.png)
 
 
-> 说明
+> **说明：**
 >
 > 当需要更新本地已经生成的编译字节码时，修改cacheOptions参数中的responseHeaders中的E-Tag或Last-Modified响应头对应的值，再次调用接口即可。
 
@@ -1440,7 +1440,8 @@ struct Index {
 
 2. 在Web组件运行前，向Web组件注册自定义协议。
 
-   > 说明
+   > **说明：**
+   >
    > 不得与Web内核内置协议相同。
    
    ```typescript
@@ -1457,7 +1458,8 @@ struct Index {
 
 3. 拦截自定义协议的JavaScript，设置ResponseData和ResponseDataID。ResponseData为JS内容，ResponseDataID用于区分JS内容是否发生变更。
 
-   > 说明
+   > **说明：**
+   >
    > 若JS内容变更，ResponseDataID需要一起变更。
 
    ```typescript
@@ -1716,7 +1718,7 @@ struct Index {
 
 资源拦截替换加速在原本的资源拦截替换接口基础上新增支持了ArrayBuffer格式的入参，开发者无需在应用侧进行ArrayBuffer到String格式的转换，可直接使用ArrayBuffer格式的数据进行拦截替换。
 
-> 说明
+> **说明：**
 >
 > 本方案与原本的资源拦截替换接口在使用上没有任何区别，开发者仅需在调用WebResourceResponse.setResponseData()接口时传入ArrayBuffer格式的数据即可。
 
