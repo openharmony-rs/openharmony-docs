@@ -11447,7 +11447,7 @@ enableAutoReload(enable: boolean): void
 > - 自动重新加载不会影响[onOverrideErrorPage](./arkts-basic-components-web-events.md#onoverrideerrorpage20)回调。
 > - 当触发自动重新加载时，每次重试时[onErrorReceive](./arkts-basic-components-web-events.md#onerrorreceive)回调都会被重新调用。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -11499,7 +11499,7 @@ isAutoReloadEnabled(): boolean
 
 获取是否启用错误页面的自动重载。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

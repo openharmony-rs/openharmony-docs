@@ -11533,7 +11533,7 @@ When enabled, the Web component automatically retries loading on network errors 
 > - Auto-reload does not affect the [onOverrideErrorPage](./arkts-basic-components-web-events.md#onoverrideerrorpage20) callback.
 > - When auto-reload is triggered, the [onErrorReceive](./arkts-basic-components-web-events.md#onerrorreceive) callback will be invoked again for each retry attempt.
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -11585,7 +11585,7 @@ isAutoReloadEnabled(): boolean
 
 Returns whether automatic reload for error pages is enabled.
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 **System capability**: SystemCapability.Web.Webview.Core
 
