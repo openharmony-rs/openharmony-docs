@@ -252,13 +252,13 @@ async createStructAndOperateMembers(xmpMetadata: image.XMPMetadata): Promise<voi
 ``` TypeScript
 async setAndGetQualifierValue(xmpMetadata: image.XMPMetadata): Promise<void> {
   try {
-    // 设置主标签 book:bookTitle
+    // 设置主标签 book:bookTitle。
     await xmpMetadata.setValue('book:bookTitle', image.XMPTagType.STRING, 'My Book Title');
-    // 为主标签添加限定符 book:lastUpdated
+    // 为主标签添加限定符 book:lastUpdated。
     await xmpMetadata.setValue('book:bookTitle/?book:lastUpdated', image.XMPTagType.STRING, '2024-01-15');
     console.info('Succeeded in setting tag and qualifier.');
 
-    // 获取限定符的值
+    // 获取限定符的值。
     let qualifierTag: image.XMPTag | null = await xmpMetadata.getTag('book:bookTitle/?book:lastUpdated');
     console.info(`book:bookTitle/?book:lastUpdated: ${qualifierTag?.value}`);
   } catch (error) {
