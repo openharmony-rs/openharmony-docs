@@ -65,7 +65,8 @@ enum Preferences_StorageType
 | --------------------------- | ------------------------------------------------------------ |
 | PREFERENCES_STORAGE_XML = 0 | XML存储模式，对数据的操作发生在内存中，调用[OH_Preferences_Close](capi-oh-preferences-h.md#oh_preferences_close)时落盘，不支持多进程。 |
 | PREFERENCES_STORAGE_GSKV    | GSKV存储模式，对数据的操作实时落盘，可支持多进程。             |
- 
+
+
 ## 函数说明
 
 ### OH_PreferencesOption_Create()
