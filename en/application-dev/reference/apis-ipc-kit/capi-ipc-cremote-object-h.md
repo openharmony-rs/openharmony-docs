@@ -444,7 +444,7 @@ int OH_IPCRemoteProxy_RemoveDeathRecipient(OHIPCRemoteProxy *proxy, OHIPCDeathRe
 
 Unsubscribes from the death of the **OHIPCRemoteStub** object for an [OHIPCRemoteProxy](capi-ohipcparcel-ohipcremoteproxy.md) object. This function is commonly used to unregister the death event listener when the remote object's death events no longer need to be monitored, or to remove the old death listener when switching to another service instance.
 
-- If a listener object is no longer needed, call OH_IPCDeathRecipient_Destroy()](#oh_ipcdeathrecipient_destroy) to destroy it.
+- If a listener object is no longer needed, call [OH_IPCDeathRecipient_Destroy()](#oh_ipcdeathrecipient_destroy) to destroy it.
 - If the object is not destroyed, memory leaks may occur.
 
 **System capability**: SystemCapability.Communication.IPC.Core
