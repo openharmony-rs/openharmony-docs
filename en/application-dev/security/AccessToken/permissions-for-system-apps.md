@@ -9758,3 +9758,17 @@ Allows a system application to connect an agent in the background.
 **Supported devices**: phones | PCs/2-in-1 devices | tablets |  TVs | wearables | cars
 
 **Valid since**: 26.1.0
+
+## ohos.permission.USE_ULTRA_FAST_AUDIO_STREAM
+ 
+Allow the app to create a specified ultra-low-latency audio mode when creating an audio playback or recording stream, enabling the resulting audio stream to achieve lower overall latency than normal mode during playback or recording.
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+**Certificate-based authorization**: true
+ 
+**Supported devices**: 2in1 | phone | tablet
+ 
+**Valid since**: 26.1.0

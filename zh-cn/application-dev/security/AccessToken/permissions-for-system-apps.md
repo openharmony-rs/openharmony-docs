@@ -9813,3 +9813,17 @@
 **支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable | Car
 
 **起始版本**：26.1.0
+
+## ohos.permission.USE_ULTRA_FAST_AUDIO_STREAM
+ 
+允许应用在创建音频播放流或音频录制流时，创建指定超低时延音频模式，从而使得创建出来的音频流在播放或录制时，整体时延低于普通模式。
+ 
+**权限级别**：system_basic
+ 
+**授权方式**：系统授权（system_grant）
+ 
+**是否支持证书授权**：true
+ 
+**支持设备**：2in1 | phone | tablet
+ 
+**起始版本**：26.1.0
