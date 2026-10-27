@@ -2847,8 +2847,6 @@ struct Index {
  
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
  
-### 属性
- 
 | 名称                  | 类型                                                             | 只读 | 可选 | 说明             |
 |----------------------|--------------------------------------------------------------------|------|------|-------------------|
 | accessibilityFocused | boolean | 是 | 是 | 表示元素是否因无障碍目的获得焦点。true表示已获得焦点，false表示未获得焦点。<br>默认值为false。|
@@ -2859,7 +2857,7 @@ struct Index {
 | componentType | string | 是  | 是  | 元素所属组件的类型。默认值为空。<br>例如：<br>- 按钮Button类型的元素，该属性值为'Button'。<br>- 图片Image类型的元素，该属性值为'Image'。|
 | accessibilityDescription | string | 是  | 是  | 元素的描述信息。|
 | editable | boolean | 是 | 是 | 元素是否可编辑。true表示可编辑，false表示不可编辑。<br>默认值为false。|
-| error | string | 否  | 是  | 当元素处于错误状态时显示的错误文本。|
+| error | string | 是  | 是  | 当元素处于错误状态时显示的错误文本。|
 | focusable | boolean | 是 | 是 | 元素是否可获得焦点。true表示可获得焦点，false表示不可获得焦点。<br>默认值为false。|
 | hintText | string | 是  | 是  | 输入框无输入时的提示文本。|
 | identifier | string | 是  | 是  | 开发者自行设置的元素标识字段。|
@@ -2900,8 +2898,6 @@ struct Index {
 **模型约束：** 此接口仅可在Stage模型下使用。
  
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
- 
-### 属性
  
 | 名称                  | 类型                                                             | 只读 | 可选 | 说明             |
 |----------------------|--------------------------------------------------------------------|------|------|-------------------|
