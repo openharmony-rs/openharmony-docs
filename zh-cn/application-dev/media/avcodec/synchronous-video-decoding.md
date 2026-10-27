@@ -144,10 +144,6 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
    };
    ```
 
-   > **说明：**
-   >
-   > 上述代码中的“回调buffer”为示例工程原文注释（该结构为同步/异步模式共用）。同步模式下无回调函数，buffer通过OH_VideoDecoder_QueryInputBuffer、OH_VideoDecoder_GetInputBuffer、OH_VideoDecoder_GetOutputBuffer等接口查询获取，CodecBufferInfo即用于保存该buffer及其索引、属性信息。
-
 ### Surface模式
 
 参考以下示例代码，可以完成Surface模式下视频解码的全流程，实现同步模式的数据轮转。此处以输入H.264码流文件，解码送显输出为例。
