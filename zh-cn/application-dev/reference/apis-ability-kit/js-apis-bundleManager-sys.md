@@ -77,7 +77,7 @@ import { bundleManager } from '@kit.AbilityKit';
 | 名称           | 值   | 说明            |
 | -------------- | ---- | --------------- |
 | INTENT_PROFILE  | 1    | 意图框架配置文件。    |
-| CLOUD_PROFILE  | 8    | [端云同步](../apis-core-file-kit/js-apis-file-cloudsync.md)配置文件。<br>**模型约束**: 此接口仅可在Stage模型下使用。<br>**起始版本:** 26.0.0    |
+| CLOUD_PROFILE  | 8    | [端云同步](../apis-core-file-kit/js-apis-file-cloudsync.md)配置文件。<br>**模型约束**: 此接口仅可在Stage模型下使用。<br>**起始版本：** 26.0.0    |
 
 ## AppDistributionType<sup>12+</sup>
 
@@ -5261,7 +5261,6 @@ enableDynamicIcon(bundleName: string, moduleName: string): Promise\<void>;
 | -------- | --------------------------------------|
 | 201 | Permission denied. |
 | 202 | Permission denied, non-system app called system api. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 17700001 | The specified bundleName is not found. |
 | 17700002 | The specified moduleName is not found. |
 | 17700304 | Failed to enable the dynamic icon. |
@@ -5454,7 +5453,6 @@ disableDynamicIcon(bundleName: string, option?: BundleOptions): Promise\<void>
 | -------- | --------------------------------------|
 | 201 | Permission denied. |
 | 202 | Permission denied, non-system app called system api. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 17700001 | The specified bundleName is not found. |
 | 17700004 | The specified user ID is not found. |
 | 17700061 | AppIndex not in valid range. |
@@ -6191,7 +6189,6 @@ getDynamicIconInfo(bundleName: string): Promise\<Array\<DynamicIconInfo>>
 | -------- | --------------------------------------|
 | 201 | Permission denied. |
 | 202 | Permission denied, non-system app called system api. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 17700001 | The specified bundleName is not found. |
 | 17700306 | Failed to obtain the dynamic icon. |
 
@@ -6306,7 +6303,6 @@ setAbilityFileTypesForSelf(moduleName: string, abilityName: string, fileTypes: A
 | -------- | --------------------------------------|
 | 201 | Permission denied. |
 | 202 | Permission denied, non-system app called system api. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 17700002 | The specified moduleName is not found. |
 | 17700003 | The specified abilityName is not found. |
 | 17700351 | Invalid fileTypes. Possible causes:1. The array length exceeds 1024; 2. The array contains an empty item; 3. An item exceeds 512 characters; 4. The array contains wildcard or general.object. |
@@ -6365,7 +6361,6 @@ recoverBackupBundleData(bundleName: string, userId: number, appIndex: number): P
 | -------- | --------------------------------------|
 | 201 | Permission denied. |
 | 202 | Permission denied, non-system app called system api. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 17700001 | The specified bundleName is not found. |
 | 17700004 | The specified user ID is not found.     |
 | 17700061 | AppIndex not in valid range. |
@@ -6428,7 +6423,6 @@ removeBackupBundleData(bundleName: string, userId: number, appIndex: number): Pr
 | -------- | --------------------------------------|
 | 201 | Permission denied. |
 | 202 | Permission denied, non-system app called system api. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 17700001 | The specified bundleName is not found. |
 | 17700004 | The specified user ID is not found.     |
 | 17700061 | AppIndex not in valid range. |
@@ -6498,7 +6492,6 @@ isApplicationDisableForbidden(bundleName: string, userId: number, appIndex: numb
 | -------- | --------------------------------------|
 | 201 | Permission denied. |
 | 202 | Permission denied. Non-system APP calling system API. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 17700001 | The specified bundle is not found. |
 | 17700004 | The specified user ID is not found.     |
 | 17700061 | The specified app index is invalid. |

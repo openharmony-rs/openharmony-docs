@@ -749,7 +749,6 @@ getProfileByExtensionAbilitySync(moduleName: string, extensionAbilityName: strin
 | 17700002 | The specified moduleName is not existed.                      |
 | 17700003 | The specified extensionAbilityName not existed.            |
 | 17700024 | Failed to get the profile because there is no profile in the HAP. |
-| 17700029 | The specified ability is disabled.                            |
 
 **示例：**
 
@@ -1536,7 +1535,6 @@ getSignatureInfo(uid: number): SignatureInfo
 | 错误码ID | 错误信息            |
 | -------- | ---------------------|
 | 201 | Permission denied. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 17700021 | The uid is not found. |
 
 **示例：**
@@ -1592,7 +1590,6 @@ getAbilityInfo(uri: string, abilityFlags: number): Promise\<Array\<AbilityInfo>>
 | 错误码ID | 错误信息                             |
 | -------- | ------------------------------------- |
 | 201 | Permission denied. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 17700003 | The ability is not found.    |
 
 **示例：**
@@ -1807,7 +1804,6 @@ getApplicationLabel(bundleName: string, appIndex: number): Promise\<string>
 | 错误码ID |    错误信息                   |
 |----------|-------------------------|
 | 201 | Permission denied. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 17700001 | The specified bundle is not found. |
 | 17700061 | The specified app index is invalid. |
 
@@ -1866,7 +1862,6 @@ getInstalledBundleList(bundleFlags: number): Promise<Array\<BundleInfo>>
 | 错误码ID | 错误信息                         |
 | -------- | ---------------------------------- |
 | 201 | Permission denied. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 
 **示例：**
 
@@ -2024,7 +2019,6 @@ getBundleInstallStatus(bundleName: string): BundleInstallStatus
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 
 **示例：**
 
