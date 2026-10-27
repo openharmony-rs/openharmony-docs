@@ -472,7 +472,7 @@ struct Index {
                 '});',
               (error, result) => {
                 if (error) {
-                  console.error(`run JavaScript error, ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`)
+                  console.error(`run JavaScript error, ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
                   return;
                 }
               });
