@@ -22,7 +22,6 @@
 
 对合作设备集合的管理。合作设备集合是由一组合作设备成员组成的、提供特定服务的统一整体。
 
-
 ## S
 
 ### SparkLink Service Access Protocol (SSAP)；星闪服务交互协议
