@@ -9,7 +9,7 @@
 
 ## 功能介绍
 
-从API版本12开始，多模为应用提供了按键、输入事件（鼠标、触屏和轴事件）监听能力。使用场景例如：
+从API version 12开始，多模为应用提供了按键、输入事件（鼠标、触屏和轴事件）监听能力。使用场景例如：
 
 - 录屏类应用：应用开启录屏期间，监听设备的按键、鼠标、触摸和轴事件。
 - 输入录制、自动化测试类应用（从API版本26.1.0开始，仅PC/2in1形态支持）：用户完成授权后，应用可在任意时刻监听设备的按键、鼠标、触摸和轴事件，监听不随录屏状态变化而中断。
@@ -45,7 +45,7 @@ target_link_libraries(entry PUBLIC libohinput.so)
 
 应用需要在module.json5中声明所需权限，详细的配置方法参考[声明权限文档](../../security/AccessToken/declare-permissions.md)。两种权限的授权方式不同，申请说明如下。
 
-- **ohos.permission.INPUT_MONITORING**（系统授权）：面向录屏类应用，应用开启录屏期间可监听设备的按键、鼠标、触摸和轴事件。该权限需要通过ACL方式申请，具体请参考[申请受限权限](../../security/AccessToken/declare-permissions-in-a-cl.md)。
+- **ohos.permission.INPUT_MONITORING**（系统授权）：面向录屏类应用，应用开启录屏期间可监听设备的按键、鼠标、触摸和轴事件。该权限需要通过ACL方式申请，具体请参考[申请受限权限](../../security/AccessToken/declare-permissions-in-acl.md)。
 
     ```json
     "requestPermissions": [
