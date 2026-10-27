@@ -1516,7 +1516,7 @@ getScrollState(): ScrollState
 
 > **说明：**
 >
-> 通过鼠标滚轮滚动设置了[scrollSnapAlign](ts-container-list.md#scrollsnapalign10枚举说明)的List时，限位吸附动画滚动期间返回[Fling](ts-container-list.md#scrollstate枚举说明)。
+> 通过鼠标滚轮滚动[ArcList](ts-container-arclist.md)、设置了[scrollSnapAlign](ts-container-list.md#scrollsnapalign10枚举说明)的List或设置了[scrollSnap](#scrollsnap)的Scroll时，均返回[Fling](ts-container-list.md#scrollstate枚举说明)。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
