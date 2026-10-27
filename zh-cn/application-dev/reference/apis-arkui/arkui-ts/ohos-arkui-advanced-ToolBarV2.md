@@ -436,7 +436,7 @@ ToolBarV2SymbolGlyphOptions定义Symbol图标的属性。
 
 工具栏子项放置位置枚举。
 
-**原子化服务API：** 从API version 26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -460,7 +460,7 @@ ToolBarV2SymbolGlyphOptions定义Symbol图标的属性。
 
 **装饰器类型：** @ObservedV2
 
-**原子化服务API：** 从API version 26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -487,7 +487,7 @@ constructor(options: AdvancedToolbarV2ItemOptions)
 
 AdvancedToolbarV2Item的构造函数。
 
-**原子化服务API：** 从API version 26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -507,7 +507,7 @@ AdvancedToolbarV2Item的构造函数。
 >
 > 继承自[ToolBarV2ItemOptions](#toolbarv2itemoptions)的字段（content、action、icon、state、accessibilityText、accessibilityDescription、accessibilityLevel）请参见[ToolBarV2ItemOptions](#toolbarv2itemoptions)，以下为AdvancedToolbarV2ItemOptions新增字段。
 
-**原子化服务API：** 从API version 26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -532,7 +532,7 @@ AdvancedToolBarV2Modifier是ToolBarV2的高级modifier，将布局属性、样�
 
 **装饰器类型：** @ObservedV2
 
-**原子化服务API：** 从API version 26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -546,7 +546,7 @@ mainAxisLength(value: LengthMetrics): AdvancedToolBarV2Modifier
 
 水平方向：控制宽度。垂直方向：控制高度。
 
-**原子化服务API：** 从API version 26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -572,7 +572,7 @@ crossAxisLength(value: LengthMetrics): AdvancedToolBarV2Modifier
 
 水平方向：控制高度。垂直方向：控制宽度。未设置时交叉轴按内容自适应。
 
-**原子化服务API：** 从API version 26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -598,7 +598,7 @@ direction(value: Axis): AdvancedToolBarV2Modifier
 
 Horizontal：子项按行排列（默认）。Vertical：子项按列排列。
 
-**原子化服务API：** 从API version 26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
