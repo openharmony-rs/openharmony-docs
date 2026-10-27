@@ -301,7 +301,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
        CHECK_AND_BREAK_LOG(isStarted_, "Decoder input thread out");
        std::unique_lock<std::mutex> lock(videoDecContext_->inputMutex);
        CodecBufferInfo bufferInfo;
-       auto buffer = videoDecoder_->GetInputBuffer(bufferInfo, CODEC_BUFFER_TIMEOUT_US);
+       int32_t ret = videoDecoder_->GetInputBuffer(bufferInfo, CODEC_BUFFER_TIMEOUT_US);
        // ...
        ret = videoDecoder_->PushInputBuffer(bufferInfo);
        if (ret != AVCODEC_SAMPLE_ERR_OK) {
@@ -316,17 +316,18 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
    <!-- @[decoder_sync_get_inputbuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp)-->
 
    ```c++
-   OH_AVBuffer *VideoDecoder::GetInputBuffer(CodecBufferInfo &info, int64_t timeoutUs)
+   int32_t VideoDecoder::GetInputBuffer(CodecBufferInfo &info, int64_t timeoutUs)
    {
-       CHECK_AND_RETURN_RET_LOG(decoder_ != nullptr, nullptr, "Decoder is null");
+       info.buffer = nullptr;
+       CHECK_AND_RETURN_RET_LOG(decoder_ != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Decoder is null");
        int32_t ret = OH_VideoDecoder_QueryInputBuffer(decoder_, &info.bufferIndex, timeoutUs);
        switch (ret) {
            case AV_ERR_OK: {
                OH_AVBuffer *buffer = OH_VideoDecoder_GetInputBuffer(decoder_, info.bufferIndex);
-               CHECK_AND_RETURN_RET_LOG(buffer != nullptr, nullptr, "Input buffer is null");
+               CHECK_AND_RETURN_RET_LOG(buffer != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Input buffer is null");
                info.buffer = buffer;
-               return buffer;
            /**
+               // 示例：调用方将待解码帧的数据与属性写入 Buffer。
                uint8_t *addr = OH_AVBuffer_GetAddr(buffer);
                CHECK_AND_RETURN_RET_LOG(addr != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Input buffer addr is null");
                // buffer数据填充。
@@ -350,19 +351,20 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
                OH_AVErrCode setBufferRet = OH_AVBuffer_SetBufferAttr(buffer, &attrInfo);
                if (setBufferRet != AV_ERR_OK) {
                    // 异常处理。
-                   return false;
                }
            **/
+               return AVCODEC_SAMPLE_ERR_OK;
            }
            case AV_ERR_TRY_AGAIN_LATER: {
                AVCODEC_SAMPLE_LOGE("Get input buffer timeout.");
-               return nullptr;
+               return AVCODEC_SAMPLE_ERR_AGAIN;
            }
            default: {
-               return nullptr;
+               AVCODEC_SAMPLE_LOGE("Query input buffer failed, ret: %{public}d", ret);
+               return AVCODEC_SAMPLE_ERR_ERROR;
            }
        }
-       return nullptr;
+       return AVCODEC_SAMPLE_ERR_ERROR;
    }
    ```
 
@@ -391,9 +393,35 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
    <!-- @[decoder_sync_output_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/sample/player/output/video/PlayerVideoOutput.cpp)-->
 
    ```c++
-   while (isStarted_ && ret == AVCODEC_SAMPLE_ERR_AGAIN) {
+   while (isStarted_) {
+       // ...
        std::unique_lock<std::mutex> lock(videoDecContext_->outputMutex);
-       ret = videoDecoder_->GetOutputBuffer(bufferInfo, CODEC_BUFFER_TIMEOUT_US);
+       CodecBufferInfo bufferInfo;
+       const int32_t ret = videoDecoder_->GetOutputBuffer(bufferInfo, CODEC_BUFFER_TIMEOUT_US);
+       lock.unlock();
+       if (!isStarted_) {
+           if (ret == AVCODEC_SAMPLE_ERR_OK &&
+               videoDecoder_->FreeOutputBuffer(bufferInfo, false) != AVCODEC_SAMPLE_ERR_OK) {
+               playbackFailed_ = true;
+           }
+           break;
+       }
+       CHECK_AND_CONTINUE_LOG(ret != AVCODEC_SAMPLE_ERR_AGAIN, "Get output buffer timeout, retry");
+       if (ret != AVCODEC_SAMPLE_ERR_OK) {
+           AVCODEC_SAMPLE_LOGE("Get video output buffer failed, ret: %{public}d", ret);
+           playbackFailed_ = true;
+           isStarted_ = false;
+           break;
+       }
+       if (bufferInfo.attr.flags & AVCODEC_BUFFER_FLAGS_EOS) {
+           if (videoDecoder_->FreeOutputBuffer(bufferInfo, false) != AVCODEC_SAMPLE_ERR_OK) {
+               playbackFailed_ = true;
+               isStarted_ = false;
+           }
+           AVCODEC_SAMPLE_LOGI("Catch EOS, video output thread out");
+           break;
+       }
+       // ...
    }
    ```
 
@@ -409,21 +437,13 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
        switch (ret) {
            case AV_ERR_OK: {
                OH_AVBuffer *buffer = OH_VideoDecoder_GetOutputBuffer(decoder_, info.bufferIndex);
-               if (buffer == nullptr) {
-                   const int32_t freeRet = OH_VideoDecoder_FreeOutputBuffer(decoder_, info.bufferIndex);
-                   AVCODEC_SAMPLE_LOGE("Output buffer is null, free ret: %{public}d", freeRet);
-                   return AVCODEC_SAMPLE_ERR_ERROR;
-               }
+               CHECK_AND_RETURN_RET_LOG(buffer != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Output buffer is null");
                OH_AVErrCode getBufferRet = OH_AVBuffer_GetBufferAttr(buffer, &info.attr);
-               if (getBufferRet != AV_ERR_OK) {
-                   const int32_t freeRet = OH_VideoDecoder_FreeOutputBuffer(decoder_, info.bufferIndex);
-                   AVCODEC_SAMPLE_LOGE("Get buffer attr error, ret: %{public}d, free ret: %{public}d",
-                       getBufferRet, freeRet);
-                   return AVCODEC_SAMPLE_ERR_ERROR;
-               }
+               CHECK_AND_RETURN_RET_LOG(getBufferRet == AV_ERR_OK, AVCODEC_SAMPLE_ERR_ERROR,
+                   "Get buffer attr error, ret: %{public}d", getBufferRet);
                info.buffer = buffer;
-               return AVCODEC_SAMPLE_ERR_OK;
                // 开发者可根据业务需要，对输出数据进行送显/保存/释放处理。
+               return AVCODEC_SAMPLE_ERR_OK;
            }
            case AV_ERR_TRY_AGAIN_LATER: {
                AVCODEC_SAMPLE_LOGD("Get output buffer timeout.");
@@ -764,7 +784,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
        CHECK_AND_BREAK_LOG(isStarted_, "Decoder input thread out");
        std::unique_lock<std::mutex> lock(videoDecContext_->inputMutex);
        CodecBufferInfo bufferInfo;
-       auto buffer = videoDecoder_->GetInputBuffer(bufferInfo, CODEC_BUFFER_TIMEOUT_US);
+       int32_t ret = videoDecoder_->GetInputBuffer(bufferInfo, CODEC_BUFFER_TIMEOUT_US);
        // ...
        ret = videoDecoder_->PushInputBuffer(bufferInfo);
        if (ret != AVCODEC_SAMPLE_ERR_OK) {
@@ -779,17 +799,18 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
    <!-- @[decoder_sync_get_inputbuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp)-->
 
    ```c++
-   OH_AVBuffer *VideoDecoder::GetInputBuffer(CodecBufferInfo &info, int64_t timeoutUs)
+   int32_t VideoDecoder::GetInputBuffer(CodecBufferInfo &info, int64_t timeoutUs)
    {
-       CHECK_AND_RETURN_RET_LOG(decoder_ != nullptr, nullptr, "Decoder is null");
+       info.buffer = nullptr;
+       CHECK_AND_RETURN_RET_LOG(decoder_ != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Decoder is null");
        int32_t ret = OH_VideoDecoder_QueryInputBuffer(decoder_, &info.bufferIndex, timeoutUs);
        switch (ret) {
            case AV_ERR_OK: {
                OH_AVBuffer *buffer = OH_VideoDecoder_GetInputBuffer(decoder_, info.bufferIndex);
-               CHECK_AND_RETURN_RET_LOG(buffer != nullptr, nullptr, "Input buffer is null");
+               CHECK_AND_RETURN_RET_LOG(buffer != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Input buffer is null");
                info.buffer = buffer;
-               return buffer;
            /**
+               // 示例：调用方将待解码帧的数据与属性写入 Buffer。
                uint8_t *addr = OH_AVBuffer_GetAddr(buffer);
                CHECK_AND_RETURN_RET_LOG(addr != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Input buffer addr is null");
                // buffer数据填充。
@@ -813,19 +834,20 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
                OH_AVErrCode setBufferRet = OH_AVBuffer_SetBufferAttr(buffer, &attrInfo);
                if (setBufferRet != AV_ERR_OK) {
                    // 异常处理。
-                   return false;
                }
            **/
+               return AVCODEC_SAMPLE_ERR_OK;
            }
            case AV_ERR_TRY_AGAIN_LATER: {
                AVCODEC_SAMPLE_LOGE("Get input buffer timeout.");
-               return nullptr;
+               return AVCODEC_SAMPLE_ERR_AGAIN;
            }
            default: {
-               return nullptr;
+               AVCODEC_SAMPLE_LOGE("Query input buffer failed, ret: %{public}d", ret);
+               return AVCODEC_SAMPLE_ERR_ERROR;
            }
        }
-       return nullptr;
+       return AVCODEC_SAMPLE_ERR_ERROR;
    }
    ```
 
@@ -854,9 +876,35 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
    <!-- @[decoder_sync_output_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/sample/player/output/video/PlayerVideoOutput.cpp)-->
 
    ```c++
-   while (isStarted_ && ret == AVCODEC_SAMPLE_ERR_AGAIN) {
+   while (isStarted_) {
+       // ...
        std::unique_lock<std::mutex> lock(videoDecContext_->outputMutex);
-       ret = videoDecoder_->GetOutputBuffer(bufferInfo, CODEC_BUFFER_TIMEOUT_US);
+       CodecBufferInfo bufferInfo;
+       const int32_t ret = videoDecoder_->GetOutputBuffer(bufferInfo, CODEC_BUFFER_TIMEOUT_US);
+       lock.unlock();
+       if (!isStarted_) {
+           if (ret == AVCODEC_SAMPLE_ERR_OK &&
+               videoDecoder_->FreeOutputBuffer(bufferInfo, false) != AVCODEC_SAMPLE_ERR_OK) {
+               playbackFailed_ = true;
+           }
+           break;
+       }
+       CHECK_AND_CONTINUE_LOG(ret != AVCODEC_SAMPLE_ERR_AGAIN, "Get output buffer timeout, retry");
+       if (ret != AVCODEC_SAMPLE_ERR_OK) {
+           AVCODEC_SAMPLE_LOGE("Get video output buffer failed, ret: %{public}d", ret);
+           playbackFailed_ = true;
+           isStarted_ = false;
+           break;
+       }
+       if (bufferInfo.attr.flags & AVCODEC_BUFFER_FLAGS_EOS) {
+           if (videoDecoder_->FreeOutputBuffer(bufferInfo, false) != AVCODEC_SAMPLE_ERR_OK) {
+               playbackFailed_ = true;
+               isStarted_ = false;
+           }
+           AVCODEC_SAMPLE_LOGI("Catch EOS, video output thread out");
+           break;
+       }
+       // ...
    }
    ```
 
@@ -872,21 +920,13 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
        switch (ret) {
            case AV_ERR_OK: {
                OH_AVBuffer *buffer = OH_VideoDecoder_GetOutputBuffer(decoder_, info.bufferIndex);
-               if (buffer == nullptr) {
-                   const int32_t freeRet = OH_VideoDecoder_FreeOutputBuffer(decoder_, info.bufferIndex);
-                   AVCODEC_SAMPLE_LOGE("Output buffer is null, free ret: %{public}d", freeRet);
-                   return AVCODEC_SAMPLE_ERR_ERROR;
-               }
+               CHECK_AND_RETURN_RET_LOG(buffer != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Output buffer is null");
                OH_AVErrCode getBufferRet = OH_AVBuffer_GetBufferAttr(buffer, &info.attr);
-               if (getBufferRet != AV_ERR_OK) {
-                   const int32_t freeRet = OH_VideoDecoder_FreeOutputBuffer(decoder_, info.bufferIndex);
-                   AVCODEC_SAMPLE_LOGE("Get buffer attr error, ret: %{public}d, free ret: %{public}d",
-                       getBufferRet, freeRet);
-                   return AVCODEC_SAMPLE_ERR_ERROR;
-               }
+               CHECK_AND_RETURN_RET_LOG(getBufferRet == AV_ERR_OK, AVCODEC_SAMPLE_ERR_ERROR,
+                   "Get buffer attr error, ret: %{public}d", getBufferRet);
                info.buffer = buffer;
-               return AVCODEC_SAMPLE_ERR_OK;
                // 开发者可根据业务需要，对输出数据进行送显/保存/释放处理。
+               return AVCODEC_SAMPLE_ERR_OK;
            }
            case AV_ERR_TRY_AGAIN_LATER: {
                AVCODEC_SAMPLE_LOGD("Get output buffer timeout.");

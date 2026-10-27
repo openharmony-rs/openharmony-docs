@@ -128,7 +128,6 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
 
 3. 解码输入输出队列。
 
-   <!-- @[codec_buffer_queue](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/common/codec_buffer.h)-->
 
    ```c++
    // 回调buffer输入输出队列。
@@ -165,7 +164,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
                bufferQueue_.pop();
            }
        }
-       // ...
+
    private:
        std::mutex mutex_;
        std::condition_variable cond_;
@@ -649,22 +648,21 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
     /**
        *
        * // 示例：将数据写入 Buffer，设置属性后送入解码器。
-       * uint8_t *addr = OH_AVBuffer_GetAddr(buffer);
+       * uint8_t *addr = OH_AVBuffer_GetAddr(bufferInfo->buffer);
        * CHECK_AND_RETURN_RET_LOG(addr != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Input buffer addr is null");
-       * int32_t capacity = OH_AVBuffer_GetCapacity(buffer);
+       * int32_t capacity = OH_AVBuffer_GetCapacity(bufferInfo->buffer);
        * if (size > capacity) {
        *     // 异常处理。
        * }
        * memcpy(addr, frameData, size);
-       * OH_AVCodecBufferAttr info;
-       * info.size = size;
-       * info.offset = offset;
-       * info.pts = pts;
-       * info.flags = flags;
-       * OH_AVErrCode setBufferRet = OH_AVBuffer_SetBufferAttr(buffer, &info);
+       * OH_AVCodecBufferAttr attrInfo;
+       * attrInfo.size = size;
+       * attrInfo.offset = offset;
+       * attrInfo.pts = pts;
+       * attrInfo.flags = flags;
+       * OH_AVErrCode setBufferRet = OH_AVBuffer_SetBufferAttr(bufferInfo->buffer, &attrInfo);
        * if (setBufferRet != AV_ERR_OK) {
        *     // 异常处理。
-       *     return false;
        * }
        *
        */
@@ -1243,22 +1241,21 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
     /**
        *
        * // 示例：将数据写入 Buffer，设置属性后送入解码器。
-       * uint8_t *addr = OH_AVBuffer_GetAddr(buffer);
+       * uint8_t *addr = OH_AVBuffer_GetAddr(bufferInfo->buffer);
        * CHECK_AND_RETURN_RET_LOG(addr != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Input buffer addr is null");
-       * int32_t capacity = OH_AVBuffer_GetCapacity(buffer);
+       * int32_t capacity = OH_AVBuffer_GetCapacity(bufferInfo->buffer);
        * if (size > capacity) {
        *     // 异常处理。
        * }
        * memcpy(addr, frameData, size);
-       * OH_AVCodecBufferAttr info;
-       * info.size = size;
-       * info.offset = offset;
-       * info.pts = pts;
-       * info.flags = flags;
-       * OH_AVErrCode setBufferRet = OH_AVBuffer_SetBufferAttr(buffer, &info);
+       * OH_AVCodecBufferAttr attrInfo;
+       * attrInfo.size = size;
+       * attrInfo.offset = offset;
+       * attrInfo.pts = pts;
+       * attrInfo.flags = flags;
+       * OH_AVErrCode setBufferRet = OH_AVBuffer_SetBufferAttr(bufferInfo->buffer, &attrInfo);
        * if (setBufferRet != AV_ERR_OK) {
        *     // 异常处理。
-       *     return false;
        * }
        *
        */
@@ -1318,20 +1315,29 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
     <!-- @[decoder_outputFile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/sample/player/output/video/PlayerVideoPresentation.cpp)-->
 
     ```c++
-    const OH_AVPixelFormat pixelFormat = GetOutputPixelFormat(info, videoDecContext_.get());
     if (outputFile_ == nullptr) {
-        auto time = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
+        const auto time = std::chrono::duration_cast<std::chrono::microseconds>(
+            std::chrono::system_clock::now().time_since_epoch()).count();
         if (info.output.outputFilePath.empty()) {
             info.output.outputFilePath = "/data/storage/el2/base/haps/entry/files/VideoDecoderOut_"s +
                 ToString(pixelFormat) + "_" + std::to_string(info.video.videoWidth) + "_" +
                 std::to_string(info.video.videoHeight) + "_" + std::to_string(time) + ".yuv";
         }
-        outputFile_ = std::make_unique<std::ofstream>(info.output.outputFilePath, std::ios::out | std::ios::trunc);
+        dumpStarted_ = std::chrono::steady_clock::now();
+        outputFile_ = std::make_unique<std::ofstream>(info.output.outputFilePath,
+            std::ios::out | std::ios::binary | std::ios::trunc);
+        dumpSession_.Open(info.output.outputFilePath, "sessionId=" + info.output.sessionId +
+            "\nmime=" + info.video.videoCodecMime +
+            "\nmaxMiB=" + std::to_string(info.output.dumpMaxMiB) +
+            "\nmaxSeconds=" + std::to_string(info.output.dumpMaxSeconds));
         if (!outputFile_->is_open()) {
+            dumpSession_.Stop("open_failed");
+            info.output.enableVideoDump = false;
             outputFile_ = nullptr;
             AVCODEC_SAMPLE_LOGE("Output file open failed");
             return;
         }
+        // ...
     }
     ```
 
@@ -1365,7 +1371,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
         bufferAddr += (videoDecContext_->heightStride - videoDecContext_->height) * stride;
         for (int32_t row = 0; row < videoDecContext_->height / YUV420_SAMPLE_RATIO; row++) {
             outputFile_->write(reinterpret_cast<char *>(bufferAddr), videoWidth);
-            bufferAddr += videoWidth;
+            bufferAddr += stride;
         }
     }
     ```
