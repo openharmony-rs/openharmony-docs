@@ -312,11 +312,11 @@ let caCert: Uint8Array = new Uint8Array([
 try {
   certificateManagerDialog.openInstallCertificateDialog(context, certificateType, certificateScope, caCert)
     .then((uri: string) => {
-    console.info('Succeeded in opening install certificate');
-  }).catch((error: Error) => {
-    let err = error as BusinessError;
-    console.error(`Failed to open install certificate dialog. Code: ${err.code}, message: ${err.message}`);
-  });
+      console.info('Succeeded in opening install certificate');
+    }).catch((error: Error) => {
+      let err = error as BusinessError;
+      console.error(`Failed to open install certificate dialog. Code: ${err.code}, message: ${err.message}`);
+    });
 } catch (error) {
   console.error(`Failed to open install certificate dialog. Code: ${error.code}, message: ${error.message}`);
 }
@@ -399,11 +399,11 @@ let request: certificateManagerDialog.InstallCertificateRequest = {
 try {
   certificateManagerDialog.openInstallCertificateDialog(context, request)
     .then((uri: string) => {
-    console.info('Succeeded in opening install certificate');
-  }).catch((error: Error) => {
-    let err = error as BusinessError;
-    console.error(`Failed to open install certificate dialog. Code: ${err.code}, message: ${err.message}`);
-  });
+      console.info('Succeeded in opening install certificate');
+    }).catch((error: Error) => {
+      let err = error as BusinessError;
+      console.error(`Failed to open install certificate dialog. Code: ${err.code}, message: ${err.message}`);
+    });
 } catch (error) {
   console.error(`Failed to open install certificate dialog. Code: ${error.code}, message: ${error.message}`);
 }
