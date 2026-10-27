@@ -103,9 +103,9 @@
      
      async mediaLibSavePhotoSingle(context: Context, imageObj: image.Image | image.Picture) {
        let picture: image.Picture = imageObj as image.Picture;
-       Logger.info(TAG_LOG, 'picture GetMainPixelmap E');
-       await this.GetMainPixelmap(context, picture);
-       Logger.info(TAG_LOG, 'picture GetMainPixelmap X');
+       Logger.info(TAG_LOG, 'picture getMainPixelmap E');
+       await this.getMainPixelmap(context, picture);
+       Logger.info(TAG_LOG, 'picture getMainPixelmap X');
      
        Logger.info(TAG_LOG, 'picture releasePicture E');
        await this.releasePicture(picture);
