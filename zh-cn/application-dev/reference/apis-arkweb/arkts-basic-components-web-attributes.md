@@ -1224,9 +1224,9 @@ ArkTS-Sta示例：
 
 ## caretColor
 
-ArkTS-Dyn: caretColor(value: ResourceColor): WebAttribute
+ArkTS-Dyn: caretColor(value: ResourceColor)
 
-ArkTS-Sta: caretColor(value: ResourceColor | undefined): this
+ArkTS-Sta: caretColor(value: ResourceColor | undefined)
 
 设置Web组件网页文本输入光标及文本选择手柄的颜色。
 
@@ -1251,12 +1251,6 @@ ArkTS-Sta: caretColor(value: ResourceColor | undefined): this
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
 | value | ArkTS-Dyn: [ResourceColor](../apis-arkui/arkui-ts/ts-types.md#resourcecolor)<br>ArkTS-Sta: [ResourceColor](../apis-arkui/arkui-ts/ts-types.md#resourcecolor) \| undefined | 是 | 网页文本输入光标及选择手柄的颜色。非零颜色覆盖网页CSS光标色；字符串`#00000000`重置颜色覆盖。<br>ArkTS-Dyn：传入undefined或null时重置。<br>ArkTS-Sta：传入undefined时重置。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| ------ | ------ |
-| ArkTS-Sta: this | 返回当前Web组件。 |
 
 **示例：**
 
