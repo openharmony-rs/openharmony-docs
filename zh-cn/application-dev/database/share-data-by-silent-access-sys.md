@@ -155,7 +155,7 @@
    | scope | 数据库所在范围。<br>1.module表示数据库位于本模块下。<br>2.application表示数据库位于本应用下。 | 否    |
    | allowLists          | 包括appIdentifier和onlyMain。<br>allowLists中配置被允许访问的应用列表，最多配置256个授权信息。在跨应用数据访问时通过该配置校验数据访问方是否在数据提供方配置的列表内，若不在则拒绝访问。若无allowLists配置则不做白名单校验。不管是否配置allowLists，在[表1](#数据提供方应用的开发)中的读写权限依然会被正常校验。<br>**-appIdentifier：** 字符串，应用的唯一标识，由云端统一分配。数据提供方自行向访问方获取。<br>appIdentifier信息可参考[SignatureInfo](../reference/apis-ability-kit/js-apis-bundleManager-bundleInfo.md#signatureinfo)。 <br>**-onlyMain：** 布尔值，控制是否仅支持主应用。true: 只允许主应用访问，分身应用不可访问。false: 主应用和分身应用均可访问。该功能仅支持静默访问。 | 否   |
    | accountIsolation          | 表示数据是否区分账号。布尔值，true表示数据区分账号，即不同账号访问不同数据；false表示数据不区分账号，即不同账号访问相同数据。不配置时默认为false。<br>搭载OpenHarmony 7.0.0及以上版本的设备，可正常配置使用此参数。仅支持Car设备。<br>针对低于该版本的设备，此参数配置不生效。 | 否   |
-   | accessStatistics          | 静默访问统计打点配置，包含enable和reportInterval字段。<br>**-enable：** 布尔值，是否启用静默访问统计打点，默认为false。开启后，系统按上报周期统计该URI被各访问方应用通过静默访问方式调用（新增、修改、删除或查询）的次数，并周期性通过HiSysEvent上报DATA_SHARE_ACCESS_STATISTIC事件（domain为DISTDATAMGR），事件中包含访问方应用标识及各接口调用计数，URI经过匿名化处理。未启用时不产生统计开销。<br>**-reportInterval：** 上报周期，单位小时，默认为24，取值范围为[1, 48]，配置低于1或超过48时按默认值24处理。统计按URI粒度独立进行，上报周期从该URI首次被访问时开始计算。<br>搭载OpenHarmony 7.1.0及以上版本的设备，可正常配置使用此参数。针对低于该版本的设备，此参数配置不生效。 | 否   |
+   | accessStatistics          | 静默访问统计打点配置，包含enable和reportInterval字段。<br>**-enable：** 布尔值，是否启用静默访问统计打点，默认为false。开启后，系统按上报周期统计该URI被各访问方应用通过静默访问方式调用（新增、修改、删除或查询）的次数，并周期性通过HiSysEvent上报DATA_SHARE_ACCESS_STATISTIC事件（domain为DISTDATAMGR），事件中包含访问方应用标识及各接口调用计数，URI经过匿名化处理。未启用时不产生统计开销。<br>**-reportInterval：** 上报周期，单位为小时，默认值为24，取值范围为[1, 48]，配置低于1或超过48时按默认值24处理。统计按URI粒度独立进行，上报周期从该URI首次被访问时开始计算。<br>搭载OpenHarmony 7.1.0及以上版本的设备，可正常配置使用此参数。针对低于该版本的设备，此参数配置不生效。 | 否   |
 
    **my_config.json配置样例**
 
