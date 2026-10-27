@@ -155,7 +155,7 @@ struct Index {
                 hilog.error(0xFF00, '[Sample_pasteboard]', 'All permissions denied');
                 return;
               }
-              // 授权成功
+              // 授权成功。
             } catch (err) {
               hilog.error(0xFF00, '[Sample_pasteboard]', 'Failed to request permissions from user.');
               return;
