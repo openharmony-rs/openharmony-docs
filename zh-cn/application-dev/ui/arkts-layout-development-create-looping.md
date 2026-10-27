@@ -94,7 +94,7 @@ autoPlay为true时，会自动切换播放子组件，子组件与子组件之�
 
 ## 导航点样式
 
-Swiper提供了默认的导航点样式和导航点箭头样式，导航点默认显示在Swiper下方居中位置，开发者也可以通过[indicator](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-arcswiper-arcswiperattribute-c.md#indicator)属性自定义导航点的位置和样式，导航点箭头默认不显示。
+Swiper提供了默认的导航点样式和导航点箭头样式，导航点默认显示在Swiper下方居中位置，开发者也可以通过indicator属性自定义导航点的位置和样式，导航点箭头默认不显示。
 
 通过indicator属性，开发者可以设置导航点相对于Swiper组件上下左右四个方位的位置，同时也可以设置每个导航点的尺寸、颜色、蒙层和被选中导航点的颜色。
 
@@ -292,7 +292,7 @@ export struct SwiperPageSwitchMethod {
 
 ## 轮播方向
 
-Swiper支持水平和垂直方向上进行轮播，主要通过[vertical](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-arcswiper-arcswiperattribute-c.md#vertical)属性控制。
+Swiper支持水平和垂直方向上进行轮播，主要通过vertical属性控制。
 
 当vertical为true时，表示在垂直方向上进行轮播；为false时，表示在水平方向上进行轮播。vertical默认值为false。
 
@@ -377,7 +377,7 @@ Swiper() {
 
 ## 自定义切换动画
 
-Swiper支持通过[customContentTransition](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-arcswiper-arcswiperattribute-c.md#customcontenttransition)设置自定义切换动画，可以在回调中对视窗内所有页面逐帧设置透明度、缩放比例、位移、渲染层级等属性实现自定义切换动画。
+Swiper支持通过customContentTransition设置自定义切换动画，可以在回调中对视窗内所有页面逐帧设置透明度、缩放比例、位移、渲染层级等属性实现自定义切换动画。
 
 <!-- @[customize_transition_animations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/swiper/SwiperCustomAnimation.ets) -->
 

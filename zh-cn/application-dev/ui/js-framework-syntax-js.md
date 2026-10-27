@@ -86,8 +86,8 @@ JS文件用来定义HML页面的业务逻辑，支持ECMA规范的JavaScript语�
   | $refs    | Object          | 持有注册过ref&nbsp;属性的DOM元素或子组件实例的对象。示例见[获取DOM元素](#获取dom元素)。 |
   | private  | Object          | 页面的数据模型，private下的数据属性只能由当前页面修改。      |
   | public   | Object          | 页面的数据模型，public下的数据属性的行为与data保持一致。     |
-  | props    | Array/Object    | props用于组件之间的通信，可以通过&lt;tag&nbsp;xxxx='value'&gt;方式传递给组件；props名称必须用小写，不能以$或_开头，不要使用保留字for,&nbsp;if,&nbsp;show,&nbsp;tid。目前props的数据类型不支持Function。示例见[Props](../reference/apis-arkui/arkui-js/js-components-custom-props.md#props)。 |
-  | computed | Object          | 用于在读取或设置进行预先处理，计算属性的结果会被缓存。计算属性名不能以$或_开头，不要使用保留字。示例见[computed](../reference/apis-arkui/arkui-js/js-components-custom-props.md#computed)。 |
+  | props    | Array/Object    | props用于组件之间的通信，可以通过&lt;tag&nbsp;xxxx='value'&gt;方式传递给组件；props名称必须用小写，不能以$或_开头，不要使用保留字for,&nbsp;if,&nbsp;show,&nbsp;tid。目前props的数据类型不支持Function。示例见Props。 |
+  | computed | Object          | 用于在读取或设置进行预先处理，计算属性的结果会被缓存。计算属性名不能以$或_开头，不要使用保留字。示例见computed。 |
 
 ## 方法
 
@@ -130,7 +130,7 @@ JS文件用来定义HML页面的业务逻辑，支持ECMA规范的JavaScript语�
 - 事件方法
   | 方法   | 参数                                                         | 描述                                                         |
   | ------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-  | $watch | data:&nbsp;string,&nbsp;callback:&nbsp;string&nbsp;\|&nbsp;Function | 观察data中的属性变化，如果属性值改变，触发绑定的事件。示例见[\$watch感知数据改变](../reference/apis-arkui/arkui-js/js-components-custom-props.md#watch感知数据改变)。<br/>用法：<br/>this.$watch('key',&nbsp;callback)：通过监听key属性值的变化，触发callback事件。 |
+  | $watch | data:&nbsp;string,&nbsp;callback:&nbsp;string&nbsp;\|&nbsp;Function | 观察data中的属性变化，如果属性值改变，触发绑定的事件。示例见\$watch感知数据改变。<br/>用法：<br/>this.$watch('key',&nbsp;callback)：通过监听key属性值的变化，触发callback事件。 |
 
 - 页面方法
   | 方法                    | 参数                               | 描述                              |
@@ -144,7 +144,7 @@ JS文件用来定义HML页面的业务逻辑，支持ECMA规范的JavaScript语�
   | position       | number                  | -      | 指定滚动位置。                                               |
   | id             | string                  | -      | 指定需要滚动到的元素id。                                     |
   | duration       | number                  | 300    | 指定滚动时长，单位为毫秒。                                   |
-  | timingFunction | string                  | ease   | 指定滚动动画曲线，可选值参考<br/>[动画样式animation-timing-function](../reference/apis-arkui/arkui-js/js-components-common-animation.md)。 |
+  | timingFunction | string                  | ease   | 指定滚动动画曲线，可选值参考<br/>动画样式animation-timing-function。 |
   | complete       | ()&nbsp;=&gt;&nbsp;void | -      | 指定滚动完成后需要执行的回调函数。                           |
 
   示例：

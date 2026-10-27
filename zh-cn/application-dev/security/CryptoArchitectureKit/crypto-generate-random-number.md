@@ -41,7 +41,7 @@
 
 ## 开发步骤
 
-1. 调用[cryptoFramework.createRandom](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-createrandom-f.md#createrandom)，生成随机数实例。
+1. 调用cryptoFramework.createRandom，生成随机数实例。
 
 2. （可选）设置DataBlob数据，调用[Random.setSeed](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-random-i.md#setseed)，为随机数生成池设置种子。
 

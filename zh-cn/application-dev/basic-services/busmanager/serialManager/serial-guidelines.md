@@ -92,8 +92,8 @@
 
 | 接口名 | 描述 |
 |--------|------|
-| [SerialPort.getSerialPortList](../../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-serial-getserialportlist-f.md#getserialportlist)(): Promise&lt;[SerialPort](../../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-serial-serialport-i.md#serialport)[]&gt; | 查询串口设备列表，返回[SerialPort](../../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-serial-serialport-i.md#serialport)对象数组。使用Promise异步回调。 |
-| [SerialPort.open](../../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-serial-serialport-i.md#open)(config?: [SerialConfigs](../../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-serial-serialconfigs-i.md#serialconfigs)): Promise&lt;void&gt; | 打开串口设备。首次打开时系统会弹窗请求用户授权访问目标串口，用户拒绝则抛出35700007错误码。授权在USB虚拟串口拔出、系统切换用户、整机重启后失效，需重新授权。使用Promise异步回调。 |
+| SerialPort.getSerialPortList(): Promise&lt;SerialPort[]&gt; | 查询串口设备列表，返回SerialPort对象数组。使用Promise异步回调。 |
+| [SerialPort.open](../../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-serial-serialport-i.md#open)(config?: SerialConfigs): Promise&lt;void&gt; | 打开串口设备。首次打开时系统会弹窗请求用户授权访问目标串口，用户拒绝则抛出35700007错误码。授权在USB虚拟串口拔出、系统切换用户、整机重启后失效，需重新授权。使用Promise异步回调。 |
 | [SerialPort.close](../../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-serial-serialport-i.md#close)(): Promise&lt;void&gt; | 关闭串口设备。使用Promise异步回调。 |
 | [SerialPort.write](../../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-serial-serialport-i.md#write)(data: Uint8Array, timeout?: number): Promise&lt;number&gt; | 向串口设备发送数据，每次发送数据长度范围：(0, 4096]。使用Promise异步回调。 |
 | [SerialPort.onDataRead](../../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-serial-serialport-i.md#ondataread)(callback: Callback&lt;Uint8Array&gt;): void | 监听串口接收数据事件。使用callback异步回调返回接收到的数据。调用[close](../../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-serial-serialport-i.md#close)后，所有回调将被清除。 |
@@ -108,14 +108,14 @@
 | [SerialPort.onDisconnect](../../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-serial-serialport-i.md#ondisconnect)(callback: Callback&lt;void&gt;): void | 监听串口断开事件。使用callback异步回调。 |
 | [SerialPort.offDisconnect](../../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-serial-serialport-i.md#offdisconnect)(callback?: Callback&lt;void&gt;): void | 取消监听串口断开事件。 |
 
-[SerialConfigs](../../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-serial-serialconfigs-i.md#serialconfigs)配置参数说明：
+SerialConfigs配置参数说明：
 
 | 参数名 | 类型 | 必填 | 默认值 | 描述 |
 |--------|------|------|--------|------|
 | baudRate | number | 否 | 115200 | 波特率。 |
-| dataBits | [DataBits](../../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-serial-databits-e.md#databits) | 否 | DataBits.EIGHT | 数据位。 |
+| dataBits | DataBits | 否 | DataBits.EIGHT | 数据位。 |
 | stopBits | [StopBits](../../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-serial-serialconfigs-i.md#stopbits) | 否 | StopBits.ONE | 停止位。 |
-| parity | [Parity](../../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-serial-parity-e.md#parity) | 否 | Parity.NONE | 校验位。 |
+| parity | Parity | 否 | Parity.NONE | 校验位。 |
 | rtscts | boolean | 否 | false | 检查是否启用RTS/CTS硬件自动流控。true表示启用，false表示未启用。 |
 | xon | boolean | 否 | false | 检查是否启用XON软件流控。true表示启用，false表示未启用。 |
 | xoff | boolean | 否 | false | 检查是否启用XOFF软件流控。true表示启用，false表示未启用。 |

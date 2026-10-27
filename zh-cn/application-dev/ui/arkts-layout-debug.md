@@ -8,7 +8,7 @@ UI显示异常问题主要是通过分析UI布局信息来定位。当前分析U
 
 **组件树**
 
-从API version 9开始，可以使用[getInspectorTree](../reference/apis-arkui/arkts-apis/arkts-arkui-global-getinspectortree-f.md#getinspectortree)接口获取组件树及其属性。
+从API version 9开始，可以使用getInspectorTree接口获取组件树及其属性。
 
 **单个节点**
 

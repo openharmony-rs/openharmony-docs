@@ -35,9 +35,9 @@ abstract class Content {
 | -------- | -------- |
 |OH_ArkUI_NodeContent_RegisterCallback(ArkUI_NodeContentHandle content, ArkUI_NodeContentCallback callback)|向管理器Content上注册事件。|
 |OH_ArkUI_NodeContentEvent_GetEventType(ArkUI_NodeContentEvent* event)|获取Content上触发的事件类型。|
-|[OH_ArkUI_NodeContent_AddNode(ArkUI_NodeContentHandle content, ArkUI_NodeHandle node)](../../reference/apis-arkgraphics3d/arkts-apis/arkts-arkgraphics3d-scenenodes-node-i.md#node)|在Content上添加子组件。|
-|[OH_ArkUI_NodeContent_InsertNode(ArkUI_NodeContentHandle content, ArkUI_NodeHandle node, int32_t position)](../../reference/apis-arkgraphics3d/arkts-apis/arkts-arkgraphics3d-scenenodes-node-i.md#node)|在Content上插入子组件。|
-|[OH_ArkUI_NodeContent_RemoveNode(ArkUI_NodeContentHandle content, ArkUI_NodeHandle node)](../../reference/apis-arkgraphics3d/arkts-apis/arkts-arkgraphics3d-scenenodes-node-i.md#node)|在Content上移除子组件。|
+|OH_ArkUI_NodeContent_AddNode(ArkUI_NodeContentHandle content, ArkUI_NodeHandle node)|在Content上添加子组件。|
+|OH_ArkUI_NodeContent_InsertNode(ArkUI_NodeContentHandle content, ArkUI_NodeHandle node, int32_t position)|在Content上插入子组件。|
+|OH_ArkUI_NodeContent_RemoveNode(ArkUI_NodeContentHandle content, ArkUI_NodeHandle node)|在Content上移除子组件。|
 |OH_ArkUI_GetNodeContentFromNapiValue(napi_env env, napi_value value, ArkUI_NodeContentHandle* content)|获取ArkTS侧创建的NodeContent对象，映射到Native侧的ArkUI_NodeContentHandle。|
 |OH_ArkUI_NodeContentEvent_GetNodeContentHandle(ArkUI_NodeContentEvent* event)|获取触发上下树事件的Content对象。|
 |OH_ArkUI_NodeContent_SetUserData(ArkUI_NodeContentHandle content, void* userData)|在Content上设置用户自定义属性。|

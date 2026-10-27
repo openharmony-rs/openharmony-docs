@@ -12,13 +12,13 @@
 
 ## 音频流输出设备信息
 
-在AudioRenderer的[on('outputDeviceChangeWithInfo')](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiorenderer-i.md#onoutputdevicechangewithinfo)或AudioSessionManager的[on('currentOutputDeviceChanged')](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiosessionmanager-i.md#oncurrentoutputdevicechanged)返回的音频流设备变更信息中，包含当前音频流输出设备信息，以数组形式发送，一般该列表仅包含一个设备信息，具体可参考[AudioDeviceDescriptors](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiodevicedescriptors-t.md#audiodevicedescriptors)（设备信息列表）。
+在AudioRenderer的[on('outputDeviceChangeWithInfo')](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiorenderer-i.md#onoutputdevicechangewithinfo)或AudioSessionManager的[on('currentOutputDeviceChanged')](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiosessionmanager-i.md#oncurrentoutputdevicechanged)返回的音频流设备变更信息中，包含当前音频流输出设备信息，以数组形式发送，一般该列表仅包含一个设备信息，具体可参考AudioDeviceDescriptors（设备信息列表）。
 
 ## 音频流输出设备变更原因
 
 > **说明：**
 > 
-> 当发生下述四种情况（[AudioStreamDeviceChangeReason](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiostreamdevicechangereason-e.md#audiostreamdevicechangereason)）时，系统将向应用发送设备变更回调。
+> 当发生下述四种情况（AudioStreamDeviceChangeReason）时，系统将向应用发送设备变更回调。
 
 - **REASON_NEW_DEVICE_AVAILABLE**：新设备可用。
 

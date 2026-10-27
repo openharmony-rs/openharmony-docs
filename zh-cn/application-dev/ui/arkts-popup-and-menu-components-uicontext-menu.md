@@ -40,7 +40,7 @@
     new ComponentContent(this.getUIContext(), wrapBuilder(buildText), this.message, { nestingBuilderSupported: true });
   ```
    
-   如果在wrapBuilder中包含其他组件（例如：[Popup](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-popup-popup-f.md)、[Chip](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-chip-chip-f.md)组件），则应在创建ComponentContent时设置[nestingBuilderSupported](../reference/apis-arkui/arkts-apis/arkts-arkui-buildernode-buildoptions-i.md#buildoptions)属性为true。
+   如果在wrapBuilder中包含其他组件（例如：[Popup](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-popup-popup-f.md)、[Chip](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-chip-chip-f.md)组件），则应在创建ComponentContent时设置nestingBuilderSupported属性为true。
    
  <!-- @[build_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/globalmenusindependentofuicomponents/GlobalOpenMenu.ets) -->
  
@@ -99,7 +99,7 @@
 
 ### 绑定组件信息
    
-   通过调用openMenu接口弹出菜单，需要提供绑定组件的信息[TargetInfo](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-targetinfo-i.md#targetinfo)。若未传入有效的target，菜单将无法弹出。
+   通过调用openMenu接口弹出菜单，需要提供绑定组件的信息TargetInfo。若未传入有效的target，菜单将无法弹出。
    
    目前有两种设置target的方式。
    
@@ -157,7 +157,7 @@
 
 ### 设置弹出菜单样式
    
-   通过调用openMenu接口弹出菜单，可以设置[MenuOptions](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-menuoptions-i.md#menuoptions)中的属性调整菜单样式。title属性不生效。preview参数仅支持设置[MenuPreviewMode](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-menupreviewmode-e.md#menupreviewmode)类型。
+   通过调用openMenu接口弹出菜单，可以设置MenuOptions中的属性调整菜单样式。title属性不生效。preview参数仅支持设置MenuPreviewMode类型。
    
   <!-- @[menu_options](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/globalmenusindependentofuicomponents/GlobalOpenMenu.ets) -->
   
@@ -167,7 +167,7 @@
 
 ## 更新菜单样式
 
-从API version 18开始，通过[updateMenu](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-promptaction-c.md#updatemenu)可以更新菜单的样式。支持全量更新和增量更新其菜单样式，不支持更新[MenuOptions](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-menuoptions-i.md#menuoptions)中的showInSubWindow、preview、previewAnimationOptions、transition、onAppear、aboutToAppear、onDisappear、aboutToDisappear、onWillAppear、onDidAppear、onWillDisappear和onDidDisappear属性。
+从API version 18开始，通过[updateMenu](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-promptaction-c.md#updatemenu)可以更新菜单的样式。支持全量更新和增量更新其菜单样式，不支持更新MenuOptions中的showInSubWindow、preview、previewAnimationOptions、transition、onAppear、aboutToAppear、onDisappear、aboutToDisappear、onWillAppear、onDidAppear、onWillDisappear和onDidDisappear属性。
    
 <!-- @[update_menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/globalmenusindependentofuicomponents/GlobalOpenMenu.ets) -->
 

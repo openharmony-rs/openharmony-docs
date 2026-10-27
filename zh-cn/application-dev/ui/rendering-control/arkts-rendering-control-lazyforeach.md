@@ -36,7 +36,7 @@
 
 ### 设置数据源
 
-为了管理[DataChangeListener](../../reference/apis-arkui/arkts-components/arkts-arkui-lazyforeach-comp-datachangelistener-i.md#datachangelistener)监听器和通知LazyForEach更新数据，开发者需要使用如下方法：首先实现LazyForEach提供的[IDataSource](../../reference/apis-arkui/arkts-components/arkts-arkui-lazyforeach-comp-idatasource-i.md#idatasource)接口，将其作为LazyForEach的数据源，然后管理监听器和更新数据。
+为了管理DataChangeListener监听器和通知LazyForEach更新数据，开发者需要使用如下方法：首先实现LazyForEach提供的IDataSource接口，将其作为LazyForEach的数据源，然后管理监听器和更新数据。
 
 为实现基本的数据管理和监听能力，开发者需要实现`IDataSource`的[totalCount](../../reference/apis-arkui/arkts-components/arkts-arkui-lazyforeach-comp-idatasource-i.md#totalcount)、[getData](../../reference/apis-arkui/arkts-components/arkts-arkui-lazyforeach-comp-idatasource-i.md#getdata)、[registerDataChangeListener](../../reference/apis-arkui/arkts-components/arkts-arkui-lazyforeach-comp-idatasource-i.md#registerdatachangelistener)和[unregisterDataChangeListener](../../reference/apis-arkui/arkts-components/arkts-arkui-lazyforeach-comp-idatasource-i.md#unregisterdatachangelistener)方法，具体请参考[BasicDataSource示例代码](#basicdatasource示例代码)。当数据源变化时，通过调用监听器的接口通知LazyForEach更新，具体请参考[数据更新](#数据更新)。
 

@@ -232,7 +232,7 @@ export struct MyComponent {
 
 2. 迁移数据源。
 
-   LazyForEach使用专用的数据结构[IDataSource](../../reference/apis-arkui/arkts-components/arkts-arkui-lazyforeach-comp-idatasource-i.md#idatasource)作为数据源。迁移至Repeat后，不再使用IDataSource作为数据源，而是使用状态管理V2装饰的数组作为数据源。
+   LazyForEach使用专用的数据结构IDataSource作为数据源。迁移至Repeat后，不再使用IDataSource作为数据源，而是使用状态管理V2装饰的数组作为数据源。
 
    ``` TypeScript
    // 迁移前 - LazyForEach
@@ -359,7 +359,7 @@ export struct MyComponent {
 
 **LazyForEach示例**
 
-当LazyForEach的数据源发生变化时，开发者需要根据数据源的变化情况调用[DataChangeListener](../../reference/apis-arkui/arkts-components/arkts-arkui-lazyforeach-comp-datachangelistener-i.md#datachangelistener)对应的接口，通知LazyForEach做相应的更新。主要的数据操作包括：添加数据、删除数据、交换数据、修改单个数据、修改多个数据、精准批量修改数据。
+当LazyForEach的数据源发生变化时，开发者需要根据数据源的变化情况调用DataChangeListener对应的接口，通知LazyForEach做相应的更新。主要的数据操作包括：添加数据、删除数据、交换数据、修改单个数据、修改多个数据、精准批量修改数据。
 
 示例2演示了主要的数据操作。
 
@@ -1265,7 +1265,7 @@ Repeat本身具备组件复用能力，同时也支持与状态管理V2的[@Reus
 1. 直接使用Repeat自身的复用能力。
 2. 使用\@ReusableV2装饰器提供的复用能力。
 
-需要注意的是，Repeat默认启用自身的复用能力，且优先级高于\@ReusableV2装饰器。若要使用\@ReusableV2装饰器，必须先手动关闭Repeat自身的复用能力，即Repeat中[VirtualScrollOptions](../../reference/apis-arkui/arkts-components/arkts-arkui-repeat-comp-virtualscrolloptions-i.md#virtualscrolloptions)的reusable属性设置为false（\@ReusableV2装饰器从API version 18开始支持，Repeat从API version 18开始支持关闭自身复用能力）。
+需要注意的是，Repeat默认启用自身的复用能力，且优先级高于\@ReusableV2装饰器。若要使用\@ReusableV2装饰器，必须先手动关闭Repeat自身的复用能力，即Repeat中VirtualScrollOptions的reusable属性设置为false（\@ReusableV2装饰器从API version 18开始支持，Repeat从API version 18开始支持关闭自身复用能力）。
 
 **示例7 - 迁移方案1：使用Repeat自身的复用能力**
 

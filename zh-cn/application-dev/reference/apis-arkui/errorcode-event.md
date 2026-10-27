@@ -22,7 +22,7 @@ Component does not support prevent function.
 
 **可能原因**
 
-所使用的组件不支持[preventDefault](./arkui-ts/ts-universal-events-touch.md#touchevent对象说明)方法。
+所使用的组件不支持preventDefault方法。
 
 **处理步骤**
 

@@ -101,7 +101,7 @@ struct ParentComponent {
 
 ### \@Entry
 
-[\@Entry](../../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-entry-d.md#entry)装饰的自定义组件将作为[UI页面](../arkts-router-to-navigation.md#页面结构)的入口。在单个UI页面中，仅允许存在一个由@Entry装饰的自定义组件作为页面的入口。
+\@Entry装饰的自定义组件将作为[UI页面](../arkts-router-to-navigation.md#页面结构)的入口。在单个UI页面中，仅允许存在一个由@Entry装饰的自定义组件作为页面的入口。
 
   > **说明：**
   >
@@ -154,7 +154,7 @@ struct ParentComponent {
   >
   > 从API version 9开始，该装饰器支持在ArkTS卡片中使用。
   > 
-  > 从API version 11开始，\@Component可以接受一个[ComponentOptions参数](../../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-componentoptions-i.md#componentoptions)。
+  > 从API version 11开始，\@Component可以接受一个ComponentOptions参数。
   >
   > 从API version 11开始，该装饰器支持在原子化服务中使用。
 
@@ -169,7 +169,7 @@ struct ParentComponent {
 
 ### \@ComponentV2
 
-[@ComponentV2](../../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-componentv2-d.md#componentv2)装饰的struct为V2自定义组件，可以使用[状态管理V2版本](./arkts-state-management-overview.md#状态管理v2)装饰器的能力。
+@ComponentV2装饰的struct为V2自定义组件，可以使用[状态管理V2版本](./arkts-state-management-overview.md#状态管理v2)装饰器的能力。
 >  **说明：**
 >
 > \@ComponentV2装饰器从API version 12开始支持。
@@ -183,7 +183,7 @@ struct ParentComponent {
 - 在\@ComponentV2装饰的自定义组件中，开发者仅可以使用全新的状态变量装饰器，包括[\@Local](arkts-new-local.md)、[\@Param](arkts-new-param.md)、[\@Once](arkts-new-once.md)、[\@Event](arkts-new-event.md)、[\@Provider](arkts-new-provider-and-consumer.md)、[\@Consumer](arkts-new-provider-and-consumer.md)等。
 - \@ComponentV2装饰的自定义组件暂不支持[LocalStorage](arkts-localstorage.md)等现有自定义组件的能力。
 - 无法同时使用\@ComponentV2与\@Component装饰同一个struct结构。
-- \@ComponentV2支持一个可选的[ComponentOptions参数](../../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-componentoptions-i.md#componentoptions)，来实现[组件冻结](arkts-custom-components-freezeV2.md)。
+- \@ComponentV2支持一个可选的ComponentOptions参数，来实现[组件冻结](arkts-custom-components-freezeV2.md)。
 
 - 一个简单的\@ComponentV2装饰的自定义组件应具有以下部分：
 

@@ -73,7 +73,7 @@ The specified ability name is not found.
 
 1. 输入的abilityName有误。
 2. 系统中对应的应用不存在该abilityName对应的ability。
-3. 调用[bundleManager.getProfileByAbility](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetprofilebyability)、[bundleManager.getProfileByExtensionAbility](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetprofilebyextensionability) 等通过abilityName、moduleName组合查询的接口时，对应的应用没有安装moduleName对应的模块，对应模块下的ability也不存在。
+3. 调用bundleManager.getProfileByAbility、bundleManager.getProfileByExtensionAbility 等通过abilityName、moduleName组合查询的接口时，对应的应用没有安装moduleName对应的模块，对应模块下的ability也不存在。
 
 **处理步骤**
 
@@ -361,7 +361,7 @@ The specified uid is invalid.
 
 **错误描述**
 
-调用bundleManager模块中的[getBundleNameByUid](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundlenamebyuid14)时，指定的uid无效。
+调用bundleManager模块中的getBundleNameByUid时，指定的uid无效。
 
 **可能原因**
 
@@ -984,7 +984,7 @@ The specified link is invalid.
 
 **错误描述**
 
-调用bundleManager模块中的[canOpenLink](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagercanopenlink12)时，指定的link无效。
+调用bundleManager模块中的canOpenLink时，指定的link无效。
 
 **可能原因**
 
@@ -1002,7 +1002,7 @@ The scheme of the specified link is not in the querySchemes.
 
 **错误描述**
 
-调用bundleManager模块中的[canOpenLink](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagercanopenlink12)时，指定link的scheme未在querySchemes字段下配置。
+调用bundleManager模块中的canOpenLink时，指定link的scheme未在querySchemes字段下配置。
 
 **可能原因**
 
@@ -1247,7 +1247,7 @@ The launch want is not found.
 
 **错误描述**
 
-调用[bundleManager.getLaunchWant](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetlaunchwant13)接口时，应用的启动组件Want信息不存在。
+调用bundleManager.getLaunchWant接口时，应用的启动组件Want信息不存在。
 
 **可能原因**
 

@@ -53,7 +53,7 @@
 
 - [自由窗口](freeform-window-overview.md#自由窗口)状态下：
 
-  - 应用调用[startAbility()](../reference/apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md#startability-1)时，配置[StartOptions](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-startoptions-startoptions-c-sys.md#startoptions)中的windowMode为AbilityConstant.WindowMode.WINDOW_MODE_FULLSCREEN。
+  - 应用调用[startAbility()](../reference/apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md#startability-1)时，配置StartOptions中的windowMode为AbilityConstant.WindowMode.WINDOW_MODE_FULLSCREEN。
 
   - 应用调用[maximize()](../reference/apis-arkui/arkts-apis/arkts-arkui-window-rectchangereason-e.md#maximize)接口，使用window.MaximizePresentation.ENTER_IMMERSIVE或window.MaximizePresentation.ENTER_IMMERSIVE_DISABLE_TITLE_AND_DOCK_HOVER枚举入参。
 
@@ -213,7 +213,7 @@
 
 **触发方式：**
 
-- 应用在前台调用[startAbility()](../reference/apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md#startability-1)时，配置[StartOptions](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-startoptions-startoptions-c-sys.md#startoptions)中的windowMode为WINDOW_MODE_SPLIT_PRIMARY或WINDOW_MODE_SPLIT_SECONDARY（新拉起的应用主窗在[自由窗口](freeform-window-overview.md#自由窗口)下进入待分屏状态，在非[自由窗口](freeform-window-overview.md#自由窗口)下与调用方应用主窗形成分屏）。
+- 应用在前台调用[startAbility()](../reference/apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md#startability-1)时，配置StartOptions中的windowMode为WINDOW_MODE_SPLIT_PRIMARY或WINDOW_MODE_SPLIT_SECONDARY（新拉起的应用主窗在[自由窗口](freeform-window-overview.md#自由窗口)下进入待分屏状态，在非[自由窗口](freeform-window-overview.md#自由窗口)下与调用方应用主窗形成分屏）。
 
 - 用户触发：[自由窗口](freeform-window-overview.md#自由窗口)状态下，可通过点击窗口系统标题栏三键区域、拖拽窗口到分屏热区的方式触发。非[自由窗口](freeform-window-overview.md#自由窗口)状态下，可通过分屏手势、点击顶部横条切换的方式触发。
 
@@ -272,9 +272,9 @@
 
 ### 通过startAbility()接口配置
 
-应用调用[startAbility()](../reference/apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md#startability-1)时可通过[StartOptions](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-startoptions-startoptions-c-sys.md#startoptions)中的supportWindowMode参数，指定启动时窗口支持的模式。
+应用调用[startAbility()](../reference/apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md#startability-1)时可通过StartOptions中的supportWindowMode参数，指定启动时窗口支持的模式。
 
-**支持的模式值**（详见[bundleManager.SupportWindowMode](../reference/apis-ability-kit/arkts-apis/arkts-ability-bundlemanager-supportwindowmode-e.md#supportwindowmode)）：
+**支持的模式值**（详见bundleManager.SupportWindowMode）：
 
 | 配置值 | 模式 | 说明 |
 | -------- | -------- | -------- |

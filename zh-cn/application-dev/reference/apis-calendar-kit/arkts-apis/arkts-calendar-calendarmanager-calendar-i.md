@@ -4,7 +4,7 @@
 export interface Calendar
 ```
 
-下列API示例中需先通过[createCalendar()](arkts-calendar-calendarmanager-calendarmanager-i.md#createcalendar-2)、[getCalendar()](arkts-calendar-calendarmanager-calendarmanager-i.md#getcalendar-3)中任一方法获取Calendar对象，再通过此对象调用对应方法，对该Calendar下的日程进行创建、删除、修改、查询等操作。
+下列API示例中需先通过createCalendar()、getCalendar()中任一方法获取Calendar对象，再通过此对象调用对应方法，对该Calendar下的日程进行创建、删除、修改、查询等操作。
 
 **起始版本：** 10
 

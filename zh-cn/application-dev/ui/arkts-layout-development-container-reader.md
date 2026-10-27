@@ -226,7 +226,7 @@ ContainerReader的主要接口包括ContainerReader和breakpointConfig。
 
 - ContainerReader接口
 
-   ContainerReader是实现容器断点的核心组件，其使用要求如下。[ContainerReaderInfo](../reference/apis-arkui/arkts-components/arkts-arkui-containerreader-comp-containerreaderinfo-i.md#containerreaderinfo)所有参数都必须通过状态变量进行双向绑定。ContainerReader通过双向绑定机制，将后端计算的尺寸和断点值实时更新到状态变量中。不能通过改变此处[ContainerReaderInfo](../reference/apis-arkui/arkts-components/arkts-arkui-containerreader-comp-containerreaderinfo-i.md#containerreaderinfo)的size来试图设置ContainerReader尺寸。在使用状态变量时需要添加[!!](state-management/arkts-new-binding.md)后缀，触发双向绑定更新。
+   ContainerReader是实现容器断点的核心组件，其使用要求如下。ContainerReaderInfo所有参数都必须通过状态变量进行双向绑定。ContainerReader通过双向绑定机制，将后端计算的尺寸和断点值实时更新到状态变量中。不能通过改变此处ContainerReaderInfo的size来试图设置ContainerReader尺寸。在使用状态变量时需要添加[!!](state-management/arkts-new-binding.md)后缀，触发双向绑定更新。
 
 
 - breakpointConfig属性

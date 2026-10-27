@@ -44,15 +44,15 @@ Admin组件被激活后有独立的进程，支持系统状态变更回调。与
 
 - onAdminEnabled：当MDM应用的Admin组件被激活时的事件回调。
 - onAdminDisabled：当MDM应用的Admin组件被取消激活时的事件回调。
-- onAppStart：应用启动的事件回调，回调的参数中包含应用包名。需要通过[adminManager.subscribeManagedEventSync](../reference/apis-mdm-kit/arkts-apis/arkts-mdm-adminmanager-subscribemanagedeventsync-f.md#subscribemanagedeventsync)接口注册MANAGED_EVENT_APP_START事件才能收到此回调。
-- onAppStop：应用停止的事件回调，回调的参数中包含应用包名。需要通过[adminManager.subscribeManagedEventSync](../reference/apis-mdm-kit/arkts-apis/arkts-mdm-adminmanager-subscribemanagedeventsync-f.md#subscribemanagedeventsync)接口注册MANAGED_EVENT_APP_STOP事件才能收到此回调。
-- onBundleAdded：应用安装事件回调，回调的参数中包含应用包名和用户ID。需要通过[adminManager.subscribeManagedEventSync](../reference/apis-mdm-kit/arkts-apis/arkts-mdm-adminmanager-subscribemanagedeventsync-f.md#subscribemanagedeventsync)接口注册MANAGED_EVENT_BUNDLE_ADDED事件才能收到此回调。
-- onBundleRemoved：应用卸载事件回调，回调的参数中包含应用包名和用户ID。需要通过[adminManager.subscribeManagedEventSync](../reference/apis-mdm-kit/arkts-apis/arkts-mdm-adminmanager-subscribemanagedeventsync-f.md#subscribemanagedeventsync)接口注册MANAGED_EVENT_BUNDLE_REMOVED事件才能收到此回调。
-- 更多事件回调请参考[ManagedEvent](../reference/apis-mdm-kit/arkts-apis/arkts-mdm-adminmanager-managedevent-e.md#managedevent)。
+- onAppStart：应用启动的事件回调，回调的参数中包含应用包名。需要通过adminManager.subscribeManagedEventSync接口注册MANAGED_EVENT_APP_START事件才能收到此回调。
+- onAppStop：应用停止的事件回调，回调的参数中包含应用包名。需要通过adminManager.subscribeManagedEventSync接口注册MANAGED_EVENT_APP_STOP事件才能收到此回调。
+- onBundleAdded：应用安装事件回调，回调的参数中包含应用包名和用户ID。需要通过adminManager.subscribeManagedEventSync接口注册MANAGED_EVENT_BUNDLE_ADDED事件才能收到此回调。
+- onBundleRemoved：应用卸载事件回调，回调的参数中包含应用包名和用户ID。需要通过adminManager.subscribeManagedEventSync接口注册MANAGED_EVENT_BUNDLE_REMOVED事件才能收到此回调。
+- 更多事件回调请参考ManagedEvent。
 
 ### Admin组件激活规格的差异
 
-Admin组件有不同的激活方式，可以通过不同的接口，例如<!--Del-->[adminManager.enableAdmin](../reference/apis-mdm-kit/arkts-apis/arkts-mdm-adminmanager-enableadmin-f-sys.md#enableadmin)，<!--DelEnd-->[adminManager.enableDeviceAdmin](../reference/apis-mdm-kit/arkts-apis/arkts-mdm-adminmanager-enabledeviceadmin-f.md#enabledeviceadmin)，[adminManager.startAdminProvision](../reference/apis-mdm-kit/arkts-apis/arkts-mdm-adminmanager-startadminprovision-f.md#startadminprovision)，激活后所具备的能力也有不同。详情如下表所示：
+Admin组件有不同的激活方式，可以通过不同的接口，例如<!--Del-->[adminManager.enableAdmin](../reference/apis-mdm-kit/arkts-apis/arkts-mdm-adminmanager-enableadmin-f-sys.md#enableadmin)，<!--DelEnd-->adminManager.enableDeviceAdmin，adminManager.startAdminProvision，激活后所具备的能力也有不同。详情如下表所示：
 
 | 特性                   | SDA                 | DA                 | BDA       |
 | ------------------------| --------------------| -------------------|------------ | 
@@ -64,7 +64,7 @@ Admin组件有不同的激活方式，可以通过不同的接口，例如<!--De
 >
 > 1. BDA与其他Admin角色不能同时存在。
 >
-> 2. SDA和DA同时存在的数量加起来最多10个。SDA具备管理其他DA应用的能力（激活/去激活），而DA仅能对设备进行管控，无法管理其他DA应用。当MDM应用激活为SDA时，具备管控其他DA的能力，可以通过调用[adminManager.enableDeviceAdmin](../reference/apis-mdm-kit/arkts-apis/arkts-mdm-adminmanager-enabledeviceadmin-f.md#enabledeviceadmin)接口激活其他DA应用，或调用[adminManager.disableDeviceAdmin](../reference/apis-mdm-kit/arkts-apis/arkts-mdm-adminmanager-disabledeviceadmin-f.md#disabledeviceadmin)接口去激活其他DA应用。
+> 2. SDA和DA同时存在的数量加起来最多10个。SDA具备管理其他DA应用的能力（激活/去激活），而DA仅能对设备进行管控，无法管理其他DA应用。当MDM应用激活为SDA时，具备管控其他DA的能力，可以通过调用adminManager.enableDeviceAdmin接口激活其他DA应用，或调用adminManager.disableDeviceAdmin接口去激活其他DA应用。
 
 ## 管控接口授权原理
 

@@ -38,7 +38,7 @@ ArkTS卡片创建完成，在开发卡片过程中，支持对卡片进行[实�
 ![WidgetModules](figures/WidgetModules.png)
 - [FormExtensionAbility](../reference/apis-form-kit/arkts-apis/arkts-form-app-form-formextensionability.md)：卡片扩展模块，提供卡片创建、销毁、刷新等生命周期回调。
 
-- [FormExtensionContext](../reference/apis-form-kit/arkts-apis/arkts-form-formextensioncontext.md)：FormExtensionAbility的上下文环境，提供FormExtensionAbility具有的接口和能力。
+- FormExtensionContext：FormExtensionAbility的上下文环境，提供FormExtensionAbility具有的接口和能力。
 
 - [formProvider](../reference/apis-form-kit/arkts-apis/arkts-form-app-form-formprovider.md)：提供了获取卡片信息、更新卡片、设置卡片更新时间等能力。
 

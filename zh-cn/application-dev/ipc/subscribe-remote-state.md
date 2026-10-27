@@ -8,7 +8,7 @@
 
 IPC/RPC提供了订阅远端Stub对象状态的机制。当远端Stub对象死亡时，可以自动触发本端Proxy注册的死亡通知。这种死亡通知订阅需要调用指定接口[registerDeathRecipient](../reference/apis-ipc-kit/arkts-apis/arkts-ipc-rpc-iremoteobject-c.md#registerdeathrecipient)完成。不再需要订阅时，也需要调用指定接口[unregisterDeathRecipient](../reference/apis-ipc-kit/arkts-apis/arkts-ipc-rpc-iremoteobject-c.md#unregisterdeathrecipient)取消订阅。
 
-使用这种订阅机制的用户需要继承死亡通知类[DeathRecipient](../reference/apis-ipc-kit/arkts-apis/arkts-ipc-rpc-deathrecipient-i.md#deathrecipient)，并实现[onRemoteDied](../reference/apis-ipc-kit/arkts-apis/arkts-ipc-rpc-deathrecipient-i.md#onremotedied)方法清理资源。该方法会在远端Stub对象所在进程退出或当前RPC通信依赖的软总线连接断开时被回调。
+使用这种订阅机制的用户需要继承死亡通知类DeathRecipient，并实现[onRemoteDied](../reference/apis-ipc-kit/arkts-apis/arkts-ipc-rpc-deathrecipient-i.md#onremotedied)方法清理资源。该方法会在远端Stub对象所在进程退出或当前RPC通信依赖的软总线连接断开时被回调。
 
 > **注意：**
 > - 首先，Proxy订阅Stub死亡通知，若在订阅期间Stub状态正常，则在不再需要时取消订阅。 

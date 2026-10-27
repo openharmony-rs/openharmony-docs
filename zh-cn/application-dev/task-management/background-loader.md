@@ -15,10 +15,10 @@
 
 应用通过本模块注册后台加载任务后，由系统的后台加载任务管理模块在空闲时段统一调度执行，应用本身无法决定任务的具体触发时机。其基本工作流程如下：
 
-1. 应用在主UIAbility的[onCreate](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md#oncreate)生命周期中，通过[Callee](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-callee-i.md#callee)注册[ON_START](../reference/apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-resourceschedule-backgroundloader.md#常量)和[ON_STOP](../reference/apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-resourceschedule-backgroundloader.md#常量)回调函数，用于接收系统触发的任务开始与停止事件。Callee回调随主UIAbility生命周期存在，随其销毁自动释放，无需手动注销。
-2. 应用调用[registerTask](../reference/apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-backgroundloader-registertask-f.md#registertask)接口注册后台加载任务，任务信息通过[TaskInfo](../reference/apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-backgroundloader-taskinfo-i.md#taskinfo)（包含目标abilityName和taskId）指定。注册后，应用还可通过[getTaskInfo](../reference/apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-backgroundloader-gettaskinfo-f.md#gettaskinfo)查询任务信息，或通过[unregisterTask](../reference/apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-backgroundloader-unregistertask-f.md#unregistertask)取消注册。
+1. 应用在主UIAbility的[onCreate](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md#oncreate)生命周期中，通过Callee注册[ON_START](../reference/apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-resourceschedule-backgroundloader.md#常量)和[ON_STOP](../reference/apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-resourceschedule-backgroundloader.md#常量)回调函数，用于接收系统触发的任务开始与停止事件。Callee回调随主UIAbility生命周期存在，随其销毁自动释放，无需手动注销。
+2. 应用调用registerTask接口注册后台加载任务，任务信息通过TaskInfo（包含目标abilityName和taskId）指定。注册后，应用还可通过getTaskInfo查询任务信息，或通过unregisterTask取消注册。
 3. 系统后台加载任务管理模块统一决策何时执行后台加载任务，应用无法对触发时机进行干预。
-4. 系统在决策满足时拉起应用并触发ON_START回调，应用在ON_START回调中执行预先加载逻辑（如数据请求、缓存写入等），完成后调用[finishTask](../reference/apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-backgroundloader-finishtask-f.md#finishtask)接口通知系统任务结束，任务停止时系统触发ON_STOP回调。
+4. 系统在决策满足时拉起应用并触发ON_START回调，应用在ON_START回调中执行预先加载逻辑（如数据请求、缓存写入等），完成后调用finishTask接口通知系统任务结束，任务停止时系统触发ON_STOP回调。
 5. 任务执行受约束：单次执行最长30秒；执行期间禁止音频播放、音频录制、定位、操作闪光灯等可感知行为；若应用多次超时或存在可感知操作，系统将禁用该应用后续的后台加载任务调度。
 
 ![backgroundloader](figures/backgroundloader.png)
@@ -36,11 +36,11 @@
 
 后台加载任务的开发步骤分为三步：
 
-1. **实现后台加载任务回调能力：** 定义[ON_START](../reference/apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-resourceschedule-backgroundloader.md#常量)和[ON_STOP](../reference/apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-resourceschedule-backgroundloader.md#常量)回调函数，并注册到应用主UIAbility的[Callee](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-callee-i.md#callee)中。
+1. **实现后台加载任务回调能力：** 定义[ON_START](../reference/apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-resourceschedule-backgroundloader.md#常量)和[ON_STOP](../reference/apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-resourceschedule-backgroundloader.md#常量)回调函数，并注册到应用主UIAbility的Callee中。
 
-2. **注册、取消注册及查询后台加载任务：** 调用[registerTask](../reference/apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-backgroundloader-registertask-f.md#registertask)接口注册任务，可通过[unregisterTask](../reference/apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-backgroundloader-unregistertask-f.md#unregistertask)取消注册，通过[getTaskInfo](../reference/apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-backgroundloader-gettaskinfo-f.md#gettaskinfo)查询任务信息。
+2. **注册、取消注册及查询后台加载任务：** 调用registerTask接口注册任务，可通过unregisterTask取消注册，通过getTaskInfo查询任务信息。
 
-3. **完成后台加载任务：** 在ON_START回调中执行加载逻辑后，调用[finishTask](../reference/apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-backgroundloader-finishtask-f.md#finishtask)接口通知系统任务完成。
+3. **完成后台加载任务：** 在ON_START回调中执行加载逻辑后，调用finishTask接口通知系统任务完成。
 
 ### 实现后台加载任务回调能力
 
@@ -53,7 +53,7 @@
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
 
-3. 在应用主UIAbility的[onCreate](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md#oncreate)生命周期中，通过[Callee](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-callee-i.md#callee)注册ON_START和ON_STOP回调函数。Callee回调注册随主UIAbility生命周期存在，随其销毁自动释放，无需手动注销。
+3. 在应用主UIAbility的[onCreate](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md#oncreate)生命周期中，通过Callee注册ON_START和ON_STOP回调函数。Callee回调注册随主UIAbility生命周期存在，随其销毁自动释放，无需手动注销。
 
    <!-- @[backgroundLoader_register_callee](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/BackgroundLoader/entry/src/main/ets/entryability/EntryAbility.ets) -->
    
@@ -70,7 +70,7 @@
 
 ### 注册后台加载任务
 
-若未声明ohos.permission.KEEP_BACKGROUND_RUNNING权限，调用将抛出201错误；系统服务异常时抛出9700003错误；taskInfo参数不合法时抛出9700004错误。错误码详情请参见[workScheduler错误码](../reference/apis-backgroundtasks-kit/errorcode-workScheduler.md)。
+若未声明ohos.permission.KEEP_BACKGROUND_RUNNING权限，调用将抛出201错误；系统服务异常时抛出9700003错误；taskInfo参数不合法时抛出9700004错误。错误码详情请参见workScheduler错误码。
 
 1. 注册后台加载任务。
 

@@ -18,25 +18,25 @@
 \@Env是响应式系统环境变量装饰器，其功能包括：
 
 根据入参读取相应的环境变量信息，详情见[\@Env支持参数](#env支持参数)。目前支持以下几种环境变量：
-  - [SystemProperties.BREAK_POINT](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-systemproperties-e.md#systemproperties)，用于获取窗口不同宽高阈值下对应的断点值信息。
-  - [SystemProperties.WINDOW_SIZE<sup>23+</sup>](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-systemproperties-e.md#systemproperties)，用于获取窗口的大小信息，单位为vp。
-  - [SystemProperties.WINDOW_SIZE_PX<sup>23+</sup>](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-systemproperties-e.md#systemproperties)，用于获取窗口的大小信息，单位为px。
-  - [SystemProperties.WINDOW_AVOID_AREA<sup>23+</sup>](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-systemproperties-e.md#systemproperties)，用于获取窗口的避让区域信息，单位为vp。
-  - [SystemProperties.WINDOW_AVOID_AREA_PX<sup>23+</sup>](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-systemproperties-e.md#systemproperties)，用于获取窗口的避让区域信息，单位为px。
+  - SystemProperties.BREAK_POINT，用于获取窗口不同宽高阈值下对应的断点值信息。
+  - SystemProperties.WINDOW_SIZE<sup>23+</sup>，用于获取窗口的大小信息，单位为vp。
+  - SystemProperties.WINDOW_SIZE_PX<sup>23+</sup>，用于获取窗口的大小信息，单位为px。
+  - SystemProperties.WINDOW_AVOID_AREA<sup>23+</sup>，用于获取窗口的避让区域信息，单位为vp。
+  - SystemProperties.WINDOW_AVOID_AREA_PX<sup>23+</sup>，用于获取窗口的避让区域信息，单位为px。
   - [ReadonlyEnvKey.WINDOW_DISPLAY_ID](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-fullscreenlaunchcomponent.md#属性)，用于获取窗口所在屏幕的ID，从API版本26.0.0开始支持。
   - [ReadonlyEnvKey.WINDOW_SYSTEM_DENSITY](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-fullscreenlaunchcomponent.md#属性)，用于获取窗口所在屏幕的系统显示大小缩放系数，从API版本26.0.0开始支持。
   - [ReadonlyEnvKey.WINDOW_IS_FOCUSED](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-fullscreenlaunchcomponent.md#属性)，用于获取当前自定义组件所在窗口是否处于获焦状态，从API版本26.0.0开始支持。
   - [ReadonlyEnvKey.WINDOW_IS_HIGHLIGHTED](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-fullscreenlaunchcomponent.md#属性)，用于获取当前自定义组件所在窗口是否处于高亮状态，从API版本26.0.0开始支持。
-  - [WritableEnvKey.FONT_SCALE](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-writableenvkey-c.md#writableenvkey)，用于为后代组件提供局部字体缩放比例，从API版本26.0.0开始支持。
-  - [WritableEnvKey.DIRECTION](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-writableenvkey-c.md#writableenvkey)，用于为后代组件提供布局方向，从API版本26.0.0开始支持。
-  - 系统环境变量改变时，通知\@Env装饰的变量更新，并触发\@Env关联组件刷新，以实现界面内容的同步更新，\@Env的参数为WritableEnvKey.FONT_SCALE和WritableEnvKey.DIRECTION时，父组件可通过[WithEnv](../reference/apis-arkui/errorcode-env.md)中的[.env](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-env-d.md#env)方法向子组件中的\@Env传值。
+  - WritableEnvKey.FONT_SCALE，用于为后代组件提供局部字体缩放比例，从API版本26.0.0开始支持。
+  - WritableEnvKey.DIRECTION，用于为后代组件提供布局方向，从API版本26.0.0开始支持。
+  - 系统环境变量改变时，通知\@Env装饰的变量更新，并触发\@Env关联组件刷新，以实现界面内容的同步更新，\@Env的参数为WritableEnvKey.FONT_SCALE和WritableEnvKey.DIRECTION时，父组件可通过[WithEnv](../reference/apis-arkui/errorcode-env.md)中的.env方法向子组件中的\@Env传值。
   - \@Env装饰的变量不允许开发者初始化。
     - 当\@Env装饰的类型是复杂类型时，\@Env会返回给开发者可观察的环境变量类（由[\@ObservedV2](./state-management/arkts-new-observedV2-and-trace.md)装饰，且其属性由[\@Trace](./state-management/arkts-new-observedV2-and-trace.md)装饰）的实例。开发者如果想监听环境变量的变化，可以使用[addMonitor](./state-management/arkts-new-addMonitor-clearMonitor.md)，具体示例见[在\@ComponentV2中使用\@Env](#在componentv2中使用env)。
     - 当\@Env装饰的类型是简单类型时，开发者可以在\@Component中使用[\@Watch](state-management/arkts-watch.md)，在\@ComponentV2中使用\@Monitor监听变化，具体示例见[\@Watch与\@Monitor监听\@Env装饰的变量](#watch与monitor监听env装饰的变量)。
 
 ## \@Env支持参数
 
-@Env支持的参数请参考[SystemProperties枚举类型说明](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-systemproperties-e.md#systemproperties) \| SystemEnvKey\<T\>类型说明。
+@Env支持的参数请参考SystemProperties枚举类型说明 \| SystemEnvKey\<T\>类型说明。
 
 ## \@Env和Environment能力对比
 \@Env和[Environment](./state-management/arkts-environment.md)都是系统环境变量相关，但两者能力有较大的不同，具体能力对比见下表。
@@ -44,7 +44,7 @@
 | 能力 | \@Env |Environment|
 | ------------------ | ------------------ | ------------------ |
 |起始API version|从API version 22开始支持。|从API version 7开始支持。|
-|支持参数|[SystemProperties的枚举值](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-systemproperties-e.md#systemproperties)。<br/>API版本26.0.0之后支持[SystemProperties](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-systemproperties-e.md#systemproperties)\|SystemEnvKey\<T\>类型说明| 支持`languageCode`等参数，详情见[Environment内置参数](./state-management/arkts-environment.md#environment内置参数)。|
+|支持参数|SystemProperties的枚举值。<br/>API版本26.0.0之后支持SystemProperties\|SystemEnvKey\<T\>类型说明| 支持`languageCode`等参数，详情见[Environment内置参数](./state-management/arkts-environment.md#environment内置参数)。|
 |使用形式|\@Env为装饰器，可声明在\@Component或\@ComponentV2中，获取对应参数的环境变量信息。<br/>API版本26.0.0之后，开发者可通过WithEnv的env接口设置SystemEnvKey\<T\>类型参数的系统环境变量。|通过[envProp](../reference/apis-arkui/arkts-apis/arkts-arkui-environment-c.md#envprop)等接口获取当前应用的环境变量，并存入[AppStorage](./state-management/arkts-appstorage.md)中，开发者可通过AppStorage的接口访问系统环境变量的值，具体例子见[从ui中访问environment参数](./state-management/arkts-environment.md#从ui中访问environment参数)。|
 |是否有响应式能力|有，当系统环境变量变化时，会通知\@Env装饰的环境变量的改变，并通知\@Env关联组件刷新。|无，系统环境变量变化时，不会通知Environment改变。|
 
@@ -88,7 +88,7 @@
   }
   ```
 
-- \@Env当前支持[SystemProperties的枚举值](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-systemproperties-e.md#systemproperties)和SystemEnvKey\<T\>类型。若使用不支持的参数，将触发编译时报错。
+- \@Env当前支持SystemProperties的枚举值和SystemEnvKey\<T\>类型。若使用不支持的参数，将触发编译时报错。
     ```ts
     import { uiObserver } from '@kit.ArkUI';
 

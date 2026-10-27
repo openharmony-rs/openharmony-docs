@@ -115,7 +115,7 @@ struct ListExample {
 
 ### WaterFlow
 
-开发者可以通过[WaterFlowSections](../../reference/apis-arkui/arkts-components/arkts-arkui-waterflow-comp-waterflowsections-c.md#waterflowsections)来设置WaterFlow瀑布流分组信息。
+开发者可以通过WaterFlowSections来设置WaterFlow瀑布流分组信息。
 
 需要注意的是，数组arr的长度需要与WaterFlowSections的所有SectionOptions的itemsCount总和一致，否则WaterFlow无法处理，导致UI不刷新。
 
@@ -297,7 +297,7 @@ struct WaterFlowSample {
 
 ### attributeModifier
 
-开发者可以通过[attributeModifier](../../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-attributemodifier-i.md#attributemodifier)动态设置组件的属性方法。
+开发者可以通过attributeModifier动态设置组件的属性方法。
 
 V1：
 

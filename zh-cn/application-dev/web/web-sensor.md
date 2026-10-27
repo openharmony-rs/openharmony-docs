@@ -39,11 +39,11 @@
     ]
 ```
 
-Web组件在对接运动和方向传感器时，需配置[onPermissionRequest](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-attribute.md#onpermissionrequest)接口，通过该接口接收权限请求通知。
+Web组件在对接运动和方向传感器时，需配置onPermissionRequest接口，通过该接口接收权限请求通知。
 
 ## 开发步骤
 
-1. 应用侧代码中，Web组件配置[onPermissionRequest](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-attribute.md#onpermissionrequest)接口，可通过PermissionRequest的[getAccessibleResource](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-permissionrequest-c.md#getaccessibleresource)接口获取请求权限的资源类型，当资源类型为TYPE_SENSOR时，进行传感器授权处理。
+1. 应用侧代码中，Web组件配置onPermissionRequest接口，可通过PermissionRequest的getAccessibleResource接口获取请求权限的资源类型，当资源类型为TYPE_SENSOR时，进行传感器授权处理。
 
    ```ts
    import { UIContext } from '@kit.ArkUI';

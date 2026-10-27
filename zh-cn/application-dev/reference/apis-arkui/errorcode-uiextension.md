@@ -23,7 +23,7 @@ Failed to start the UIExtension ability.
 **可能原因**
 
 1. Want参数配置错误；
-2. type类型不一致，具体请参考EmbeddedComponent组件[接口](arkui-ts/ts-container-embedded-component.md#接口)；
+2. type类型不一致，具体请参考EmbeddedComponent组件接口；
 3. 提供方应用未安装。
 
 **处理步骤**
@@ -214,7 +214,7 @@ Start UIExtensionAbility failed, please check the want of UIExtensionAbility.
 **可能原因**
 
 1. Want参数配置错误；
-2. type类型不一致，具体请参考EmbeddedComponent组件[接口](arkui-ts/ts-container-embedded-component.md#接口)；
+2. type类型不一致，具体请参考EmbeddedComponent组件接口；
 3. 提供方应用未安装；
 4. 设备类型不支持。
 

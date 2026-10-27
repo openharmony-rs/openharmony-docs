@@ -14,7 +14,7 @@
 
  - DriverExtensionAbility
 
-    DriverExtensionAbility (驱动扩展能力)是Driver类型的ExtensionAbility组件，提供驱动相关扩展框架能力。对于部分设备，支持插入外接的硬件模块来扩展设备能力， 此时可以以应用方式安装该硬件模块的驱动程序。DriverExtensionAbility (驱动扩展能力)可以通过[@ohos.driver.deviceManager (外设管理)](../../reference/apis-driverdevelopment-kit/errorcode-deviceManager.md)提供的接口被应用绑定，并根据应用的请求信息在后台处理相关事务。
+    DriverExtensionAbility (驱动扩展能力)是Driver类型的ExtensionAbility组件，提供驱动相关扩展框架能力。对于部分设备，支持插入外接的硬件模块来扩展设备能力， 此时可以以应用方式安装该硬件模块的驱动程序。DriverExtensionAbility (驱动扩展能力)可以通过@ohos.driver.deviceManager (外设管理)提供的接口被应用绑定，并根据应用的请求信息在后台处理相关事务。
     
     每个类型的ExtensionAbility都有自己的Context，DriverExtensionAbility通过[DriverExtensionContext (定义驱动扩展的上下文)](../../reference/apis-driver-development-kit/arkts-apis/arkts-driverdevelopment-driverextensioncontext-t.md)提供相关能力。
 

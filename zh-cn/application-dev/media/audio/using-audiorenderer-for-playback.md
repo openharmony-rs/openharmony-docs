@@ -18,7 +18,7 @@ AudioRenderer是音频渲染器，用于播放PCM（Pulse Code Modulation）音�
 
 在进行应用开发的过程中，建议开发者通过[on('stateChange')](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiorenderer-i.md#onstatechange)方法订阅AudioRenderer的状态变更。因为针对AudioRenderer的某些操作，仅在音频播放器在固定状态时才能执行。如果应用在音频播放器处于错误状态时执行操作，系统可能会抛出异常或生成其他未定义的行为。
 
-- prepared状态：通过调用[audio.createAudioRenderer](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-createaudiorenderer-f.md#createaudiorenderer)方法进入到该状态。
+- prepared状态：通过调用audio.createAudioRenderer方法进入到该状态。
 - running状态：正在进行音频数据播放，可以在prepared状态通过调用[start](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiorenderer-i.md#start)方法进入此状态，也可以在paused状态和stopped状态通过调用[start](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiorenderer-i.md#start)方法进入此状态。
 - paused状态：在running状态可以通过调用[pause](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiorenderer-i.md#pause)方法暂停音频数据的播放并进入paused状态，暂停播放之后可以通过调用[start](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiorenderer-i.md#start)方法继续音频数据播放。
 - stopped状态：在paused/running状态可以通过[stop](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiorenderer-i.md#stop)方法停止音频数据的播放。
@@ -34,7 +34,7 @@ AudioRenderer是音频渲染器，用于播放PCM（Pulse Code Modulation）音�
 
 以下各步骤示例为代码片段，可通过示例代码右下方链接获取[完整示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioRendererSampleJS)。
 
-1. 配置音频渲染参数并创建AudioRenderer实例，音频渲染参数的详细信息可以查看[AudioRendererOptions](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiorendereroptions-i-sys.md#audiorendereroptions)。
+1. 配置音频渲染参数并创建AudioRenderer实例，音频渲染参数的详细信息可以查看AudioRendererOptions。
 
    <!-- @[create_audiorender](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) -->  
    
@@ -233,7 +233,7 @@ AudioRenderer是音频渲染器，用于播放PCM（Pulse Code Modulation）音�
 
 重采样：根据输入输出音频采样率的差异，进行上采样（通过插值增加样点数）或下采样（通过抽取减少样点数）。
 
-AudioRenderer支持枚举类型[AudioSamplingRate](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiosamplingrate-e.md#audiosamplingrate)中定义的所有采样率。
+AudioRenderer支持枚举类型AudioSamplingRate中定义的所有采样率。
 
 若通过AudioRenderer设置的输入音频采样率与设备输出采样率不一致，系统会将输入音频重采样为设备输出采样率。
 

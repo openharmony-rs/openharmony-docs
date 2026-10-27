@@ -9,7 +9,7 @@
 
 [ExtensionAbility](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-extensionability.md)组件是一种面向特定场景的应用组件。每一个具体场景对应一个不同类型的ExtensionAbility，例如用于卡片场景的[FormExtensionAbility](../reference/apis-form-kit/arkts-apis/arkts-form-app-form-formextensionability.md)，用于输入法场景的InputMethodExtensionAbility，用于延时任务场景的WorkSchedulerExtensionAbility等。开发者通过使用不同类型的ExtensionAbility组件，可以扩展和丰富应用功能，更好地与其他应用或系统开展交互。
 
-不同类型ExtensionAbility组件均由系统定义，且通常由相应的系统服务统一管理（例如InputMethodExtensionAbility组件由输入法管理服务统一管理）。开发者不能直接继承ExtensionAbility组件，只能使用（包括实现或访问）已定义的[ExtensionAbilityType](../reference/apis-ability-kit/arkts-apis/arkts-ability-bundlemanager-extensionabilitytype-e.md#extensionabilitytype)。
+不同类型ExtensionAbility组件均由系统定义，且通常由相应的系统服务统一管理（例如InputMethodExtensionAbility组件由输入法管理服务统一管理）。开发者不能直接继承ExtensionAbility组件，只能使用（包括实现或访问）已定义的ExtensionAbilityType。
 
 ## ExtensionAbility类型说明
 
@@ -50,7 +50,7 @@
 | [PartnerAgentExtensionAbility](../reference/apis-connectivity-kit/arkts-apis/arkts-connectivity-fusionconnectivity-partneragentextensionability.md) | 基于蓝牙通信技术，提供设备发现与设备下线的通知功能。 | 是 | 否 |
 | PhotoEditorExtensionAbility | 照片编辑扩展能力，提供给应用实现图片编辑的功能。 | 是 | 否 |
 |<!--DelRow-->[AutoFillExtensionAbility](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-autofillextensionability.md)| 自动填充扩展能力，提供自动填充和保存功能。 | 否 | 否 |
-| [VpnExtensionAbility](../reference/apis-network-kit/arkts-apis/arkts-network-app-ability-vpnextensionability.md) | VPN扩展能力，提供三方VPN创建、销毁等生命周期回调。 | 是 | 否 |
+| VpnExtensionAbility | VPN扩展能力，提供三方VPN创建、销毁等生命周期回调。 | 是 | 否 |
 | [FormEditExtensionAbility](../reference/apis-form-kit/arkts-apis/arkts-form-app-form-formeditextensionability.md) | 卡片编辑扩展能力，提供卡片页面编辑能力，支持实现用户自定义卡片内容的功能，例如：编辑联系人卡片、修改卡片中展示的联系人、编辑天气卡片等。 | 是 | 否 |
 | [LiveFormExtensionAbility](../reference/apis-form-kit/arkts-apis/arkts-form-app-form-liveformextensionability.md) | 卡片动效扩展能力，提供卡片动效能力，例如卡片破框动效，丰富信息提醒、浅层交互功能，显著提升用户体验。 | 是 | 否 |
 |<!--DelRow-->[UIServiceExtensionAbility](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiserviceextensionability.md)| UI服务扩展能力，在PC/2in1上提供带前台窗口的服务。 | 否 | 否 |

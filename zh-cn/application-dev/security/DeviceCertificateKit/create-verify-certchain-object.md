@@ -17,7 +17,7 @@
    import { cert } from '@kit.DeviceCertificateKit';
    ```
 
-2. 基于已有的证书数据，调用[cert.createX509CertChain](../../reference/apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-createx509certchain-f.md#createx509certchain)创建X.509证书链对象，并返回结果。
+2. 基于已有的证书数据，调用cert.createX509CertChain创建X.509证书链对象，并返回结果。
 
 3. 调用[x509CertChain.getCertList](../../reference/apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-x509certchain-i.md#getcertlist)获取证书链中的X.509证书列表。
 

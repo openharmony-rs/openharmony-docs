@@ -8,7 +8,7 @@
 
 ## 场景介绍
 
-当需要发布某个公共事件时，可以通过[publish()](../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-commoneventmanager-publish-f.md#publish)方法发布事件。发布的公共事件可以携带数据，供订阅者解析并进行下一步处理。
+当需要发布某个公共事件时，可以通过publish()方法发布事件。发布的公共事件可以携带数据，供订阅者解析并进行下一步处理。
 
 > **须知：**
 > 已发出的粘性公共事件后来订阅者也可以接收到，其他公共事件都需要先订阅再接收，订阅参考[公共事件订阅章节](common-event-subscription.md)。
@@ -16,7 +16,7 @@
 
 ## 接口说明
 
-详细接口见[commonEventManager.publish](../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-commoneventmanager-publish-f.md#publish)。
+详细接口见commonEventManager.publish。
 
 | 接口名                                                       | 接口描述                     |
 | ------------------------------------------------------------ | ---------------------------- |

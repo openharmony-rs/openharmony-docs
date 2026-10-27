@@ -10,7 +10,7 @@ RichEditor是支持图文混排和文本交互式编辑的组件，通常用于�
 
 对于仅需图文展示而不需要编辑的场景，建议使用[Text](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-text-t.md)组件。
 
-对于需要大量展示HTML格式内容的场景，建议使用[RichText](../reference/apis-arkui/arkui-js/js-components-basic-richtext.md)组件。
+对于需要大量展示HTML格式内容的场景，建议使用RichText组件。
 
 ## 组件构成
 
@@ -33,7 +33,7 @@ RichEditor是支持图文混排和文本交互式编辑的组件，通常用于�
 
 ### 基于属性字符串的RichEditor组件
 
-使用RichEditor(options: [RichEditorStyledStringOptions](../reference/apis-arkui/arkts-components/arkts-arkui-richeditor-comp-richeditorstyledstringoptions-i.md#richeditorstyledstringoptions))接口可以创建基于属性字符串（[StyledString/MutableStyledString](arkts-styled-string.md)）进行内容管理的RichEditor组件。这种构建方式开发者可以通过在应用侧持有属性字符串对象来管理数据，通过修改属性字符串对象的内容、样式，再传递给组件，即可实现对富文本组件内容的更新。
+使用RichEditor(options: RichEditorStyledStringOptions)接口可以创建基于属性字符串（[StyledString/MutableStyledString](arkts-styled-string.md)）进行内容管理的RichEditor组件。这种构建方式开发者可以通过在应用侧持有属性字符串对象来管理数据，通过修改属性字符串对象的内容、样式，再传递给组件，即可实现对富文本组件内容的更新。
 
 相比于使用controller提供的接口进行内容样式更新，使用起来更加灵活便捷。同时属性字符串对象可以设置到各类支持属性字符串的文本组件中，可以快速实现内容的迁移。
 
@@ -88,7 +88,7 @@ struct CreateRichEditor {
 
 ### 基于Span的RichEditor组件
 
-使用RichEditor(value: [RichEditorOptions](../reference/apis-arkui/arkts-components/arkts-arkui-richeditor-comp-richeditoroptions-i.md#richeditoroptions))接口可以创建基于Span进行内容管理的RichEditor组件，通常用于复杂内容场景，开发者通过[RichEditorController](../reference/apis-arkui/arkts-components/arkts-arkui-richeditor-comp-richeditorcontroller-c.md#richeditorcontroller)提供的接口实现内容、样式的管理。
+使用RichEditor(value: RichEditorOptions)接口可以创建基于Span进行内容管理的RichEditor组件，通常用于复杂内容场景，开发者通过RichEditorController提供的接口实现内容、样式的管理。
 
 <!-- @[richEditor_create_span](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/CreateRichEditor.ets) --> 
 
@@ -248,7 +248,7 @@ build() {
 
 此接口可用于自定义复杂组件的嵌入，例如在组件内加入自定义图表。
 
-该接口内可通过[RichEditorBuilderSpanOptions](../reference/apis-arkui/arkts-components/arkts-arkui-richeditor-comp-richeditorbuilderspanoptions-i-sys.md#richeditorbuilderspanoptions)设置在组件中添加builder的位置，省略或者为异常值时，则添加builder到所有内容的最后位置。
+该接口内可通过RichEditorBuilderSpanOptions设置在组件中添加builder的位置，省略或者为异常值时，则添加builder到所有内容的最后位置。
 
 <!-- @[richEditor_addBuilder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/AddBuilderDecoratorContent.ets) -->
 
@@ -602,7 +602,7 @@ build() {
 
 ![RichEditor_decoration](figures/RichEditor_decoration.jpg)
 
-从API version 20开始，支持通过[DecorationOptions](../reference/apis-arkui/arkts-apis/arkts-arkui-decorationoptions-i.md#decorationoptions)中的enableMultiType设置多装饰线，比如同时设置下划线和中划线。
+从API version 20开始，支持通过DecorationOptions中的enableMultiType设置多装饰线，比如同时设置下划线和中划线。
 
 此接口适用于复杂业务场景，满足文本装饰的多样化需求。在文档协作过程中，多人编辑时，可以通过使用不同的装饰线组合来区分文本状态，从而提高协作效率。
 
@@ -658,7 +658,7 @@ Button($r('app.string.Demo_SetStyledStringButton'))
 
 ### 设置垂直居中
 
-从API version 20开始，支持通过[textVerticalAlign](../reference/apis-arkui/arkts-apis/arkts-arkui-textverticalalign-e.md#textverticalalign)属性设置文本段落在垂直方向的对齐方式。
+从API version 20开始，支持通过textVerticalAlign属性设置文本段落在垂直方向的对齐方式。
 
 此接口可用于优化多元素排版，使组件内容与图片、图标等在垂直方向对齐时，整体布局更协调。
 
@@ -805,7 +805,7 @@ build() {
 
 通过[onDidChange](../reference/apis-arkui/arkts-components/arkts-arkui-richeditor-comp-attribute.md#ondidchange)添加图文变化后可触发的回调。此回调适用于内容保存与同步，例如在用户完成内容编辑后，可使用该回调自动将最新内容保存至本地或同步至服务器。此外，它还适用于内容状态更新与渲染，例如在待办事项列表应用中，用户编辑富文本格式的待办事项描述后，可使用该回调更新待办事项在列表中的显示样式。
 
-使用[RichEditorStyledStringOptions](../reference/apis-arkui/arkts-components/arkts-arkui-richeditor-comp-richeditorstyledstringoptions-i.md#richeditorstyledstringoptions)构建的RichEditor组件不支持上述两种回调。
+使用RichEditorStyledStringOptions构建的RichEditor组件不支持上述两种回调。
 
 <!-- @[richEditor_eventChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/AddEvent.ets) -->
 
@@ -878,7 +878,7 @@ build() {
 
 这两种回调机制适用于文本上屏过程的业务逻辑处理。例如：在用户输入的文本上屏前，利用回调提供联想词汇，在用户完成输入后，执行自动化纠错或格式转换。两种回调的时序依次为：aboutToIMEInput、onDidIMEInput。
 
-使用[RichEditorStyledStringOptions](../reference/apis-arkui/arkts-components/arkts-arkui-richeditor-comp-richeditorstyledstringoptions-i.md#richeditorstyledstringoptions)构建的组件不支持上述两种回调功能。
+使用RichEditorStyledStringOptions构建的组件不支持上述两种回调功能。
 
 <!-- @[richEditor_eventInput](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/AddEvent.ets) --> 
 
@@ -1295,7 +1295,7 @@ build() {
 
 ### 管理选中菜单项
 
-当富文本选择区域变化后显示菜单之前触发[onPrepareMenu](../reference/apis-arkui/arkui-js/js-components-common-animation.md#属性)回调，可在该回调中进行菜单数据设置。
+当富文本选择区域变化后显示菜单之前触发onPrepareMenu回调，可在该回调中进行菜单数据设置。
 
 <!-- @[richEditor_prepareMenu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets) -->
 

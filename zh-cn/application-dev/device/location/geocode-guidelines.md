@@ -22,9 +22,9 @@
 
 | 接口名 | 功能描述 | 
 | -------- | -------- |
-| [isGeocoderAvailable(): boolean](../../reference/apis-location-kit/arkts-apis/arkts-location-geolocationmanager-isgeocoderavailable-f.md#isgeocoderavailable) | 判断地理编码与逆地理编码服务是否可用。 | 
-| [getAddressesFromLocation(request: ReverseGeoCodeRequest, callback: AsyncCallback&lt;Array&lt;GeoAddress&gt;&gt;): void](../../reference/apis-location-kit/arkts-apis/arkts-location-geolocationmanager-getaddressesfromlocation-f.md#getaddressesfromlocation) | 调用逆地理编码服务，将坐标转换为地理描述，使用callback回调异步返回结果。 | 
-| [getAddressesFromLocationName(request: GeoCodeRequest, callback: AsyncCallback&lt;Array&lt;GeoAddress&gt;&gt;): void](../../reference/apis-location-kit/arkts-apis/arkts-location-geolocationmanager-getaddressesfromlocationname-f.md#getaddressesfromlocationname) | 调用地理编码服务，将地理描述转换为具体坐标，使用callback回调异步返回结果。 | 
+| isGeocoderAvailable(): boolean | 判断地理编码与逆地理编码服务是否可用。 | 
+| getAddressesFromLocation(request: ReverseGeoCodeRequest, callback: AsyncCallback&lt;Array&lt;GeoAddress&gt;&gt;): void | 调用逆地理编码服务，将坐标转换为地理描述，使用callback回调异步返回结果。 | 
+| getAddressesFromLocationName(request: GeoCodeRequest, callback: AsyncCallback&lt;Array&lt;GeoAddress&gt;&gt;): void | 调用地理编码服务，将地理描述转换为具体坐标，使用callback回调异步返回结果。 | 
 
 ## 开发步骤
 
@@ -50,7 +50,7 @@
       ```
 
 3. 获取转化结果。
-   - 调用getAddressesFromLocation，把经纬度坐标转化为地理编码（即位置信息）。应用可以获得与此坐标匹配的[GeoAddress](../../reference/apis-location-kit/arkts-apis/arkts-location-geolocationmanager-geoaddress-i-sys.md#geoaddress)（地理编码地址信息）列表，应用可以根据实际使用需求，读取相应的参数数据。
+   - 调用getAddressesFromLocation，把经纬度坐标转化为地理编码（即位置信息）。应用可以获得与此坐标匹配的GeoAddress（地理编码地址信息）列表，应用可以根据实际使用需求，读取相应的参数数据。
      
       ```ts
       let reverseGeocodeRequest:geoLocationManager.ReverseGeoCodeRequest = {"latitude": 31.12, "longitude": 121.11, "maxItems": 1};
@@ -84,6 +84,6 @@
       }
       ```
 
-      应用可以获得与位置信息相匹配的[GeoAddress](../../reference/apis-location-kit/arkts-apis/arkts-location-geolocationmanager-geoaddress-i-sys.md#geoaddress)（地理编码地址信息）列表，其中包含对应的坐标数据。
+      应用可以获得与位置信息相匹配的GeoAddress（地理编码地址信息）列表，其中包含对应的坐标数据。
 
-      如果需要查询的位置信息可能出现多地重名的请求，可以设置[GeoCodeRequest](../../reference/apis-location-kit/arkts-apis/arkts-location-geolocationmanager-geocoderequest-i.md#geocoderequest)，通过设置一个经纬度范围，以高效地获取期望的准确结果。
+      如果需要查询的位置信息可能出现多地重名的请求，可以设置GeoCodeRequest，通过设置一个经纬度范围，以高效地获取期望的准确结果。

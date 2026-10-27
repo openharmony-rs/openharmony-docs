@@ -16,14 +16,14 @@
 
 Navigation标题栏支持通过应用级开启、组件级开启方式开启沉浸光感。
 
-应用级开启：应用级开关处于[ENABLE](../reference/apis-arkui/arkts-apis/arkts-arkui-uimaterial-materialstate-e.md#materialstate)模式下，Navigation标题栏默认开启沉浸光感，沉浸式系统材质样式默认取值为ULTRA_THIN；在非ENABLE模式下，沉浸光感不生效。
+应用级开启：应用级开关处于ENABLE模式下，Navigation标题栏默认开启沉浸光感，沉浸式系统材质样式默认取值为ULTRA_THIN；在非ENABLE模式下，沉浸光感不生效。
  
-组件级开启：Navigation标题栏支持通过[NavigationTitleOptions](../reference/apis-arkui/arkts-components/arkts-arkui-navigation-comp-navigationtitleoptions-i.md#navigationtitleoptions)中的systemMaterial字段设置沉浸光感效果。
+组件级开启：Navigation标题栏支持通过NavigationTitleOptions中的systemMaterial字段设置沉浸光感效果。
  
 - 推荐将沉浸光感限定在顶部标题栏等需要凸显的局部区域，控制使用面积与层数，详见[沉浸光感功耗优化](arkts-immersive-light-sense-constraints.md)。
 - 沉浸光感针对标题栏生效的范围是：返回键、非自定义Menu。
-- systemMaterial为undefined时，[MaterialState](../reference/apis-arkui/arkts-apis/arkts-arkui-uimaterial-materialstate-e.md#materialstate)开关配置为DEFAULT时标题栏无材质效果；配置为ENABLE时标题栏生效系统默认的沉浸式材质效果。
-- 建议设置沉浸光感时，使用[barStyle](../reference/apis-arkui/arkts-components/arkts-arkui-navigation-comp-navigationtitleoptions-i.md#navigationtitleoptions)为STACK样式，以便Navigation内容区延伸至标题栏区域，获得沉浸光感的最佳体验。
+- systemMaterial为undefined时，MaterialState开关配置为DEFAULT时标题栏无材质效果；配置为ENABLE时标题栏生效系统默认的沉浸式材质效果。
+- 建议设置沉浸光感时，使用barStyle为STACK样式，以便Navigation内容区延伸至标题栏区域，获得沉浸光感的最佳体验。
  
 组件开启沉浸光感的效果请参见[示例20（设置systemMaterial开启标题栏材质效果）](../reference/apis-arkui/arkts-components/arkts-arkui-navigation-comp.md#示例20设置systemmaterial开启标题栏材质效果)。
  
@@ -31,9 +31,9 @@ Navigation标题栏支持通过应用级开启、组件级开启方式开启沉�
 
 底部页签支持通过应用级开启、组件级开启方式开启沉浸光感。
 
-应用级开启：应用级开关处于[ENABLE](../reference/apis-arkui/arkts-apis/arkts-arkui-uimaterial-materialstate-e.md#materialstate)模式下，底部页签不会默认开启沉浸光感；设置[barFloatingStyle](../reference/apis-arkui/arkts-components/arkts-arkui-tabs-comp-attribute.md#barfloatingstyle)属性并生效底部页签的悬浮样式时，底部页签默认开启沉浸光感，沉浸式系统材质样式默认取值为THIN。
+应用级开启：应用级开关处于ENABLE模式下，底部页签不会默认开启沉浸光感；设置[barFloatingStyle](../reference/apis-arkui/arkts-components/arkts-arkui-tabs-comp-attribute.md#barfloatingstyle)属性并生效底部页签的悬浮样式时，底部页签默认开启沉浸光感，沉浸式系统材质样式默认取值为THIN。
  
-组件级开启：底部页签支持通过[barFloatingStyle](../reference/apis-arkui/arkts-components/arkts-arkui-tabs-comp-attribute.md#barfloatingstyle)属性中[FloatingTabBarStyle](../reference/apis-arkui/arkts-components/arkts-arkui-tabs-comp-floatingtabbarstyle-i.md#floatingtabbarstyle)的systemMaterial字段，设置TabBar背板的沉浸光感效果。
+组件级开启：底部页签支持通过[barFloatingStyle](../reference/apis-arkui/arkts-components/arkts-arkui-tabs-comp-attribute.md#barfloatingstyle)属性中FloatingTabBarStyle的systemMaterial字段，设置TabBar背板的沉浸光感效果。
  
 - 悬浮样式仅在[barOverlap](../reference/apis-arkui/arkts-apis/arkts-arkui-atomicservice-atomicservicetabs-atomicservicetabs-s.md#baroverlap)为true、[vertical](../reference/apis-arkui/arkts-components/arkts-arkui-tabs-comp-attribute.md#vertical)为false、[barPosition](../reference/apis-arkui/arkts-components/arkts-arkui-tabs-comp-attribute.md#barposition)为BarPosition.End时生效，三个条件需同时满足，否则systemMaterial设置不生效。
 - 设置悬浮材质后，不建议再通过[barBackgroundColor](../reference/apis-arkui/arkts-apis/arkts-arkui-atomicservice-atomicservicetabs-atomicservicetabs-s.md#barbackgroundcolor)、[barBackgroundBlurStyle](../reference/apis-arkui/arkts-components/arkts-arkui-tabs-comp-attribute.md#barbackgroundblurstyle)为TabBar设置背景色或背景模糊，避免遮挡材质效果。
@@ -45,7 +45,7 @@ Navigation标题栏支持通过应用级开启、组件级开启方式开启沉�
 
 索引条提示弹窗支持通过应用级开启、组件级开启方式开启沉浸光感。
 
-应用级开启：应用级开关处于[ENABLE](../reference/apis-arkui/arkts-apis/arkts-arkui-uimaterial-materialstate-e.md#materialstate)模式下，索引条提示弹窗默认开启沉浸光感，沉浸式系统材质样式默认取值为THICK。
+应用级开启：应用级开关处于ENABLE模式下，索引条提示弹窗默认开启沉浸光感，沉浸式系统材质样式默认取值为THICK。
  
 组件级开启：索引条参数[popupBackground](../reference/apis-arkui/arkts-components/arkts-arkui-alphabetindexer-comp-attribute.md#popupbackground)和[popupBackgroundBlurStyle](../reference/apis-arkui/arkts-components/arkts-arkui-alphabetindexer-comp-attribute.md#popupbackgroundblurstyle)均未主动设置（或参数value传入undefined）时，提示弹窗默认开启沉浸光感，默认材质样式为THICK。
  
@@ -62,9 +62,9 @@ Navigation标题栏支持通过应用级开启、组件级开启方式开启沉�
 
 Toast支持通过应用级开启、组件级开启方式开启沉浸光感。
 
-应用级开启：应用级开关处于[ENABLE](../reference/apis-arkui/arkts-apis/arkts-arkui-uimaterial-materialstate-e.md#materialstate)模式下，Toast默认开启沉浸光感，沉浸式系统材质样式默认取值为THICK。
+应用级开启：应用级开关处于ENABLE模式下，Toast默认开启沉浸光感，沉浸式系统材质样式默认取值为THICK。
 
-组件级开启：Toast支持通过[ShowToastOptions](../reference/apis-arkui/arkts-apis/arkts-arkui-promptaction-showtoastoptions-i.md#showtoastoptions)中的systemMaterial字段设置沉浸光感效果。如果未主动设置背景色、背景模糊等自定义样式属性且未设置systemMaterial字段，弹出框沉浸式系统材质样式ImmersiveStyle默认取值为ImmersiveStyle.THICK。
+组件级开启：Toast支持通过ShowToastOptions中的systemMaterial字段设置沉浸光感效果。如果未主动设置背景色、背景模糊等自定义样式属性且未设置systemMaterial字段，弹出框沉浸式系统材质样式ImmersiveStyle默认取值为ImmersiveStyle.THICK。
 
 组件开启沉浸光感的效果请参见[showToast](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-promptaction-c.md#showtoast)。
 
@@ -72,7 +72,7 @@ Toast支持通过应用级开启、组件级开启方式开启沉浸光感。
 
 Popup和Tips支持通过组件级开启方式开启沉浸光感。
 
-应用级开启：应用级开关处于[ENABLE](../reference/apis-arkui/arkts-apis/arkts-arkui-uimaterial-materialstate-e.md#materialstate)模式下，气泡提示不会默认开启沉浸光感。
+应用级开启：应用级开关处于ENABLE模式下，气泡提示不会默认开启沉浸光感。
 
 组件级开启：气泡支持通过PopupOptions中的systemMaterial字段设置沉浸光感效果；悬浮提示通过TipsOptions中的systemMaterial字段设置。
 
@@ -82,9 +82,9 @@ Popup和Tips支持通过组件级开启方式开启沉浸光感。
 
 菜单支持通过应用级开启、组件级开启方式开启沉浸光感。
 
-应用级开启：应用级开关处于[ENABLE](../reference/apis-arkui/arkts-apis/arkts-arkui-uimaterial-materialstate-e.md#materialstate)模式下，菜单默认开启沉浸光感，沉浸式系统材质样式默认取值为THICK。
+应用级开启：应用级开关处于ENABLE模式下，菜单默认开启沉浸光感，沉浸式系统材质样式默认取值为THICK。
 
-组件级开启：菜单支持通过[ContextMenuOptions](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-contextmenuoptions-i-sys.md#contextmenuoptions)中的systemMaterial字段设置沉浸光感效果。
+组件级开启：菜单支持通过ContextMenuOptions中的systemMaterial字段设置沉浸光感效果。
 
 组件开启沉浸光感的效果请参见[示例24（设置菜单的沉浸光感）](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp.md#示例24设置菜单的沉浸光感)。
 
@@ -92,9 +92,9 @@ Popup和Tips支持通过组件级开启方式开启沉浸光感。
 
 弹出框支持通过应用级开启、组件级开启方式开启沉浸光感。
 
-应用级开启：应用级开关处于[ENABLE](../reference/apis-arkui/arkts-apis/arkts-arkui-uimaterial-materialstate-e.md#materialstate)模式下，弹出框默认开启沉浸光感，沉浸式系统材质样式默认取值为ULTRA_THICK。
+应用级开启：应用级开关处于ENABLE模式下，弹出框默认开启沉浸光感，沉浸式系统材质样式默认取值为ULTRA_THICK。
 
-组件级开启：弹出框支持通过弹出框options参数中的systemMaterial字段设置沉浸光感效果，如CustomDialogControllerOptions、AlertDialogParam、ActionSheetOptions、[SheetOptions](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-sheetoptions-i-sys.md#sheetoptions)等。如果未主动设置背景色、背景模糊等自定义样式属性且未设置systemMaterial字段，弹出框沉浸式系统材质样式ImmersiveStyle默认取值为ImmersiveStyle.ULTRA_THICK。
+组件级开启：弹出框支持通过弹出框options参数中的systemMaterial字段设置沉浸光感效果，如CustomDialogControllerOptions、AlertDialogParam、ActionSheetOptions、SheetOptions等。如果未主动设置背景色、背景模糊等自定义样式属性且未设置systemMaterial字段，弹出框沉浸式系统材质样式ImmersiveStyle默认取值为ImmersiveStyle.ULTRA_THICK。
 
 - 大面积的弹出框开启沉浸光感效果，会带来更多的动效绘制开销，不建议开启。详见[控制弹窗尺寸](arkts-immersive-light-sense-constraints.md#控制弹窗尺寸)中的尺寸建议。
 - [CalendarPicker](../reference/apis-arkui/c-apis/capi-arkui-nodeeventtype-calendarpicker.md)组件拉起的弹出框目前暂不支持开启沉浸光感效果，通过通用属性设置的沉浸光感效果会体现在CalendarPicker组件本身。
@@ -104,19 +104,19 @@ Popup和Tips支持通过组件级开启方式开启沉浸光感。
 
 ## 按钮与选择类组件
 
-按钮与选择类组件包括Button、Select、Toggle、Slider、ChipGroup/ChipGroupV2和SegmentButton/SegmentButtonV2，是内嵌于内容流中的交互元素，用户通过它们进行选择和操作。沉浸光感为选择类组件提供了细腻的交互反馈与通透的视觉质感：沉浸式系统材质通常使用较薄的材质样式（ULTRA_THIN或THIN），在保持组件背景通透的同时，通过[ImmersiveOptions](../reference/apis-arkui/arkts-apis/arkts-arkui-uimaterial-immersiveoptions-i.md#immersiveoptions)中的交互形变（interactive）和点光源（lightEffect）为按压、触摸等操作提供灵动的视觉反馈，替代组件默认的按压态和悬浮态效果。
+按钮与选择类组件包括Button、Select、Toggle、Slider、ChipGroup/ChipGroupV2和SegmentButton/SegmentButtonV2，是内嵌于内容流中的交互元素，用户通过它们进行选择和操作。沉浸光感为选择类组件提供了细腻的交互反馈与通透的视觉质感：沉浸式系统材质通常使用较薄的材质样式（ULTRA_THIN或THIN），在保持组件背景通透的同时，通过ImmersiveOptions中的交互形变（interactive）和点光源（lightEffect）为按压、触摸等操作提供灵动的视觉反馈，替代组件默认的按压态和悬浮态效果。
 
 ### 按钮（Button）
 
 按钮支持通过组件级开启方式开启沉浸光感。
 
-应用级开启：应用级开关处于[ENABLE](../reference/apis-arkui/arkts-apis/arkts-arkui-uimaterial-materialstate-e.md#materialstate)模式下，按钮不会默认开启沉浸光感。
+应用级开启：应用级开关处于ENABLE模式下，按钮不会默认开启沉浸光感。
 
 组件级开启：按钮支持通过[systemMaterial](../reference/apis-arkui/arkts-apis/arkts-arkui-actionsheetoptions-i.md#systemmaterial)属性为[Button](../reference/apis-arkui/arkts-apis/arkts-arkui-prompt-button-i.md)组件设置沉浸光感效果。
 
 - 本组件沉浸光感效果仅在Navigation/NavDestination标题栏或横向Tabs中barPosition为BarPosition.End的底部TabBar中生效。在其他区域中设置沉浸光感效果不生效。
 - 材质样式为THIN或ULTRA_THIN时，[fontColor](../reference/apis-arkui/arkts-apis/arkts-arkui-alertdialogbuttonbaseoptions-i.md#fontcolor)使用系统预定义的可反色颜色资源，可随材质自动反色。
-- 当沉浸光感启用了光感交互反馈效果（[lightEffect](../reference/apis-arkui/arkts-apis/arkts-arkui-uimaterial-immersiveoptions-i.md#immersiveoptions)）时，按钮默认的点击态和悬浮态视觉反馈不再展示，由材质的光感交互反馈效果替代。
+- 当沉浸光感启用了光感交互反馈效果（lightEffect）时，按钮默认的点击态和悬浮态视觉反馈不再展示，由材质的光感交互反馈效果替代。
 - 配置沉浸光感但未设置[buttonStyle](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-dialog-buttonoptions-c.md#buttonstyle)、[backgroundColor](../reference/apis-arkui/arkts-apis/arkts-arkui-actionsheetoptions-i.md#backgroundcolor)等颜色相关属性且未设置材质颜色时，默认生效Button主题色的材质样式。
 
 组件开启沉浸光感的效果请参见[示例9（设置按钮的沉浸光感效果）](../reference/apis-arkui/arkts-components/arkts-arkui-button-comp.md#示例9设置按钮的沉浸光感效果)。
@@ -125,12 +125,12 @@ Popup和Tips支持通过组件级开启方式开启沉浸光感。
 
 下拉按钮支持通过应用级开启、组件级开启方式开启沉浸光感。
 
-应用级开启：应用级开关处于[ENABLE](../reference/apis-arkui/arkts-apis/arkts-arkui-uimaterial-materialstate-e.md#materialstate)模式下，下拉按钮与下拉菜单默认开启沉浸光感。下拉按钮沉浸式系统材质样式默认取值为ULTRA_THIN，并默认开启交互形变（[interactive](../reference/apis-arkui/arkts-apis/arkts-arkui-uimaterial-immersiveoptions-i.md#immersiveoptions)）与光感交互反馈（[lightEffect](../reference/apis-arkui/arkts-apis/arkts-arkui-uimaterial-immersiveoptions-i.md#immersiveoptions)）；下拉菜单沉浸式系统材质样式默认取值为THICK。
+应用级开启：应用级开关处于ENABLE模式下，下拉按钮与下拉菜单默认开启沉浸光感。下拉按钮沉浸式系统材质样式默认取值为ULTRA_THIN，并默认开启交互形变（interactive）与光感交互反馈（lightEffect）；下拉菜单沉浸式系统材质样式默认取值为THICK。
 
 组件级开启：下拉按钮支持通过[systemMaterial](../reference/apis-arkui/arkts-apis/arkts-arkui-actionsheetoptions-i.md#systemmaterial)属性设置沉浸光感效果；下拉菜单通过独立的menuSystemMaterial接口设置沉浸光感效果。
 
 - 下拉按钮与下拉菜单的沉浸光感相互独立，可分别开启或关闭；如需单独关闭沉浸光感，应设置[uiMaterial.Material.empty](../reference/apis-arkui/arkts-apis/arkts-arkui-uimaterial-material-c.md#empty)，而非将systemMaterial设置为undefined。
-- 当下拉按钮的沉浸光感启用了光感交互反馈效果（[lightEffect](../reference/apis-arkui/arkts-apis/arkts-arkui-uimaterial-immersiveoptions-i.md#immersiveoptions)）时，下拉按钮默认的按压态和悬浮态视觉反馈不再展示，由材质的光感交互反馈效果替代。
+- 当下拉按钮的沉浸光感启用了光感交互反馈效果（lightEffect）时，下拉按钮默认的按压态和悬浮态视觉反馈不再展示，由材质的光感交互反馈效果替代。
 
 组件开启沉浸光感的效果请参见示例11（设置Select和下拉菜单沉浸光感效果）。
 
@@ -138,7 +138,7 @@ Popup和Tips支持通过组件级开启方式开启沉浸光感。
 
 开关支持通过应用级开启、组件级开启方式开启沉浸光感。
 
-应用级开启：应用级开关处于[ENABLE](../reference/apis-arkui/arkts-apis/arkts-arkui-uimaterial-materialstate-e.md#materialstate)模式下，Toggle默认开启沉浸光感。
+应用级开启：应用级开关处于ENABLE模式下，Toggle默认开启沉浸光感。
 
 组件级开启：开关支持通过[systemMaterial](../reference/apis-arkui/arkts-apis/arkts-arkui-actionsheetoptions-i.md#systemmaterial)属性设置沉浸光感效果。
 
@@ -153,7 +153,7 @@ Popup和Tips支持通过组件级开启方式开启沉浸光感。
 
 滑动条支持通过应用级开启、组件级开启方式开启沉浸光感。
 
-应用级开启：应用级开关处于[ENABLE](../reference/apis-arkui/arkts-apis/arkts-arkui-uimaterial-materialstate-e.md#materialstate)模式下，滑动条默认开启沉浸光感。
+应用级开启：应用级开关处于ENABLE模式下，滑动条默认开启沉浸光感。
 
 组件级开启：滑动条支持通过[systemMaterial](../reference/apis-arkui/arkts-apis/arkts-arkui-actionsheetoptions-i.md#systemmaterial)属性设置沉浸光感效果。
 
@@ -166,7 +166,7 @@ Popup和Tips支持通过组件级开启方式开启沉浸光感。
 
 子页签支持通过应用级开启、组件级开启方式开启沉浸光感。
 
-应用级开启：应用级开关处于[ENABLE](../reference/apis-arkui/arkts-apis/arkts-arkui-uimaterial-materialstate-e.md#materialstate)模式下，子页签默认开启沉浸光感，沉浸式系统材质样式默认取值为ULTRA_THIN。
+应用级开启：应用级开关处于ENABLE模式下，子页签默认开启沉浸光感，沉浸式系统材质样式默认取值为ULTRA_THIN。
  
 组件级开启：子页签支持通过[ChipGroup](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-chipgroup-chipgroup-s.md)、[ChipGroupV2](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-chipgroupv2-chipgroupv2-s.md)的backgroundSystemMaterial、selectedBackgroundSystemMaterial（选中状态）和iconBackgroundSystemMaterial（图标）字段设置沉浸光感效果。
 
@@ -179,12 +179,12 @@ Popup和Tips支持通过组件级开启方式开启沉浸光感。
 
 分段按钮支持通过应用级开启、组件级开启方式开启沉浸光感。
 
-应用级开启：应用级开关处于[ENABLE](../reference/apis-arkui/arkts-apis/arkts-arkui-uimaterial-materialstate-e.md#materialstate)模式下，分段按钮默认开启沉浸光感，沉浸式系统材质样式默认取值为THIN。
+应用级开启：应用级开关处于ENABLE模式下，分段按钮默认开启沉浸光感，沉浸式系统材质样式默认取值为THIN。
  
 组件级开启：[SegmentButton](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-segmentbutton-segmentbutton-s.md)支持通过SegmentButtonOptions中的backgroundSystemMaterial字段设置沉浸光感效果；[SegmentButtonV2](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-segmentbuttonv2.md)通过各类分段按钮options参数中的backgroundSystemMaterial字段设置。
  
 - 本组件沉浸光感效果仅在Navigation/NavDestination标题栏或横向Tabs中barPosition为BarPosition.End的底部TabBar中生效。在其他区域中设置沉浸光感效果不生效。
-- SegmentButton的胶囊类多选分段按钮（[SegmentButtonOptions](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-segmentbutton-segmentbuttonoptions-c.md#segmentbuttonoptions)的type为“capsule”且[SegmentButtonOptions](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-segmentbutton-segmentbuttonoptions-c.md#segmentbuttonoptions)的multiply为true）不支持backgroundSystemMaterial，设置后不生效。MultiCapsuleSegmentButtonV2不支持沉浸光感。
+- SegmentButton的胶囊类多选分段按钮（SegmentButtonOptions的type为“capsule”且SegmentButtonOptions的multiply为true）不支持backgroundSystemMaterial，设置后不生效。MultiCapsuleSegmentButtonV2不支持沉浸光感。
 - 分段按钮开启沉浸光感后，支持选中项背景跟随手指拖拽，否则不支持跟随手指拖拽。
 - 设置自动反色时，即colorInvert为true，如果SegmentButton中的fontColor、selectedFontColor，或SegmentButtonV2中的itemFontColor、itemSelectedFontColor、itemIconFillColor、itemSelectedIconFillColor等使用支持反色的系统资源，颜色自动适配到材质背景色的反色。
  

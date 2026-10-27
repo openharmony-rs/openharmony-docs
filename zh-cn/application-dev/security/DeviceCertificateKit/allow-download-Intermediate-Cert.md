@@ -19,9 +19,9 @@
    import { cert } from '@kit.DeviceCertificateKit';
    ```
 
-2. 基于已有的证书数据，调用[cert.createX509Cert](../../reference/apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-createx509cert-f.md#createx509cert)创建X.509证书对象，并返回结果。
+2. 基于已有的证书数据，调用cert.createX509Cert创建X.509证书对象，并返回结果。
 
-3. 调用[cert.buildX509CertChain](../../reference/apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-buildx509certchain-f.md#buildx509certchain)创建X.509证书链对象，将validationParameters的allowDownloadIntermediateCa参数设置为true，开启允许校验过程中从网络下载缺失的中间CA。
+3. 调用cert.buildX509CertChain创建X.509证书链对象，将validationParameters的allowDownloadIntermediateCa参数设置为true，开启允许校验过程中从网络下载缺失的中间CA。
 
 > **说明**
 >

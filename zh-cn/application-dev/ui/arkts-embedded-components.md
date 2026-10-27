@@ -34,7 +34,7 @@ EmbeddedComponent组件主要用于实现跨模块、跨进程的嵌入式界面
 
 - 属性限制
 
-  EmbeddedComponent组件支持[通用属性](../reference/apis-arkui/arkui-js-lite/js-lite-common-attributes.md)，且宽高默认值和最小值均为10vp；
+  EmbeddedComponent组件支持通用属性，且宽高默认值和最小值均为10vp；
   
   不支持如下与宽高相关的属性：
   
@@ -106,7 +106,7 @@ export struct Embedded {
 
 - 多进程权限检测
 
-  在应用启动时，建议检测当前设备是否具备多进程权限（设备范围及约束说明参见[使用约束](../reference/apis-arkui/arkts-components/arkts-arkui-abilitycomponent-comp-sys.md#使用约束)）。如果不具备，应提供明确的错误提示。
+  在应用启动时，建议检测当前设备是否具备多进程权限（设备范围及约束说明参见使用约束）。如果不具备，应提供明确的错误提示。
 
 - 异常处理
 

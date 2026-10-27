@@ -8,7 +8,7 @@
 
 为了实现更好的转场效果，推荐使用[Navigation转场动画](./arkts-navigation-animation.md)和[模态转场](arkts-modal-transition.md)。
 
-两个页面间发生跳转，一个页面消失，另一个页面出现，这时可以配置各自页面的页面转场参数实现自定义的页面转场效果。[页面间转场](../reference/apis-arkui/errorcode-animation.md)效果写在pageTransition函数中，通过[PageTransitionEnter](../reference/apis-arkui/arkts-components/arkts-arkui-pagetransitionenter-comp.md#pagetransitionenter)和[PageTransitionExit](../reference/apis-arkui/arkts-components/arkts-arkui-pagetransitionenter-comp-con.md#pagetransitionexit)指定页面进入和退出的动画效果。
+两个页面间发生跳转，一个页面消失，另一个页面出现，这时可以配置各自页面的页面转场参数实现自定义的页面转场效果。页面间转场效果写在pageTransition函数中，通过PageTransitionEnter和PageTransitionExit指定页面进入和退出的动画效果。
 
 pageTransition的函数为：
 

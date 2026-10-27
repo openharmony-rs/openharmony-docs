@@ -39,7 +39,7 @@ GSKV是从API version 18起提供的一种存储模式，数据以二进制的�
 
 - 如果Value值为string类型，请使用UTF-8编码格式，可以为空，不为空时长度不超过16MB。
 
-- 当调用[removePreferencesFromCache](../reference/apis-arkdata/arkts-apis/arkts-arkdata-preferences-removepreferencesfromcache-f.md#removepreferencesfromcache)或者[deletePreferences](../reference/apis-arkdata/c-apis/capi-oh-preferences-h.md#ohpreferencesdeletepreferences)后，订阅的数据变更会主动取消订阅，重新[getPreferences](../reference/apis-arkdata/arkts-apis/arkts-arkdata-preferences-getpreferences-f.md#getpreferences)后需要重新订阅数据变更。
+- 当调用removePreferencesFromCache或者deletePreferences后，订阅的数据变更会主动取消订阅，重新getPreferences后需要重新订阅数据变更。
 
 - 不允许deletePreferences与其他接口多线程、多进程并发调用，否则可能会发生不可预期行为。
 
@@ -55,7 +55,7 @@ GSKV是从API version 18起提供的一种存储模式，数据以二进制的�
 
 ### GSKV模式约束限制
 
-- GSKV模式不支持跨平台，使用该模式前需调用[isStorageTypeSupported](../reference/apis-arkdata/c-apis/capi-oh-preferences-h.md#ohpreferencesisstoragetypesupported)接口判断当前平台是否支持该模式。
+- GSKV模式不支持跨平台，使用该模式前需调用isStorageTypeSupported接口判断当前平台是否支持该模式。
 
 
 

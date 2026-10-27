@@ -27,7 +27,7 @@
 
 ### 音量控制
 
-播放流类型决定了音频流所属的音量类型（[AudioVolumeType](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiovolumetype-e-sys.md#audiovolumetype)）。各类音量类型（如媒体、铃声、闹钟、通话等）拥有独立的音量值，在用户界面上可独立调节，相互之间不会影响。
+播放流类型决定了音频流所属的音量类型（AudioVolumeType）。各类音量类型（如媒体、铃声、闹钟、通话等）拥有独立的音量值，在用户界面上可独立调节，相互之间不会影响。
 
 常见的播放流类型与音量类型的对应关系为：
 
@@ -61,11 +61,11 @@
 
 应用可采用多种方式实现音频播放，不同场景下设置播放流类型的方法如下：
 
-- [使用AudioRenderer开发音频播放功能(ArkTS)](using-audiorenderer-for-playback.md)：调用[createAudioRenderer](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-createaudiorenderer-f.md#createaudiorenderer)时，通过AudioRendererOptions中的AudioRendererInfo.usage指定StreamUsage。
+- [使用AudioRenderer开发音频播放功能(ArkTS)](using-audiorenderer-for-playback.md)：调用createAudioRenderer时，通过AudioRendererOptions中的AudioRendererInfo.usage指定StreamUsage。
 - [推荐使用OHAudio开发音频播放功能(C/C++)](using-ohaudio-for-playback.md)：调用OH_AudioStreamBuilder_SetRendererInfo时，传入OH_AudioStream_Usage。
 - [使用AVPlayer播放音频(ArkTS)](../media/using-avplayer-for-playback.md)：通过AVPlayer的audioRendererInfo属性设置AudioRendererInfo.usage。该属性只允许在initialized状态下设置。应用未主动设置时，媒体源包含视频的usage默认值为STREAM_USAGE_MOVIE，否则为STREAM_USAGE_MUSIC。
-- [使用AVPlayer播放音频(C/C++)](../media/using-ndk-avplayer-for-playback.md)：调用[OH_AVPlayer_SetAudioRendererInfo](../../reference/apis-media-kit/arkts-apis/arkts-media-media-avplayer-i.md#audiorendererinfo)时，传入OH_AudioStream_Usage。
-- [使用SoundPool播放短音频(ArkTS)](../media/using-soundpool-for-playback.md)：调用[createSoundPool](../../reference/apis-media-kit/arkts-apis/arkts-media-media-createsoundpool-f.md#createsoundpool)时，传入StreamUsage。
+- [使用AVPlayer播放音频(C/C++)](../media/using-ndk-avplayer-for-playback.md)：调用OH_AVPlayer_SetAudioRendererInfo时，传入OH_AudioStream_Usage。
+- [使用SoundPool播放短音频(ArkTS)](../media/using-soundpool-for-playback.md)：调用createSoundPool时，传入StreamUsage。
 
 ## 使用不同播放通路
 

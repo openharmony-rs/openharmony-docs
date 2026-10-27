@@ -10,7 +10,7 @@
 
 carAwareness（车辆感知）模块面向车载应用提供基于摄像头的环境与动作感知能力。
 
-详细的接口介绍请参考[@ohos.multimodalAwareness.carAwareness (车辆感知)](../../reference/apis-multimodalawareness-kit/errorcode-carAwareness.md)。
+详细的接口介绍请参考@ohos.multimodalAwareness.carAwareness (车辆感知)。
 
 ## 隔空手势感知开发指导
 

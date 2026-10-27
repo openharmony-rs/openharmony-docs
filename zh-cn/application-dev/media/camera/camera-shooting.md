@@ -31,7 +31,7 @@
 
 2. 创建拍照输出流。
 
-   通过[CameraOutputCapability](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-cameraoutputcapability-i-sys.md#cameraoutputcapability)中的photoProfiles属性，可获取当前设备支持的拍照输出流。通过[createPhotoOutput](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-cameramanager-i.md#createphotooutput)方法传入支持的某一个输出流[Profile](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-profile-i.md#profile)创建拍照输出流。
+   通过CameraOutputCapability中的photoProfiles属性，可获取当前设备支持的拍照输出流。通过[createPhotoOutput](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-cameramanager-i.md#createphotooutput)方法传入支持的某一个输出流Profile创建拍照输出流。
 
    <!-- @[camera_getPhotoOutput](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
    
@@ -193,7 +193,7 @@
 
    > **说明：**
    >
-   > 图片地理位置信息[Location](../../reference/apis-location-kit/arkts-apis/arkts-location-geolocationmanager-getcurrentlocation-f.md#getcurrentlocation)，使用方法可参考[capture](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-photooutput-i.md#capture-3)示例。
+   > 图片地理位置信息Location，使用方法可参考[capture](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-photooutput-i.md#capture-3)示例。
 
 
    <!-- @[camera_capture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
@@ -245,10 +245,10 @@
 
 ### 画质优先策略
 
-在使用单段式拍照时，支持设置速度优先和画质优先两种画质优先策略类型，并且分别对应着不同的[PhotoQualityPrioritization](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-photoqualityprioritization-e.md#photoqualityprioritization)枚举类型。 
+在使用单段式拍照时，支持设置速度优先和画质优先两种画质优先策略类型，并且分别对应着不同的PhotoQualityPrioritization枚举类型。 
 
-- [SPEED](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-photoqualityprioritization-e.md#photoqualityprioritization)对应着速度优先，表示降低画质来提升拍照的速度。如果开发者在进行单段式拍照时没有设置明确的画质优先策略，**单段式拍照就默认为速度优先状态**。 
-- [HIGH_QUALITY](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-photoqualityprioritization-e.md#photoqualityprioritization)对应着画质优先，表示通过较长的耗时来得到画质更高的图片。 
+- SPEED对应着速度优先，表示降低画质来提升拍照的速度。如果开发者在进行单段式拍照时没有设置明确的画质优先策略，**单段式拍照就默认为速度优先状态**。 
+- HIGH_QUALITY对应着画质优先，表示通过较长的耗时来得到画质更高的图片。 
 
 ### 如何正确设置画质优先策略
 
@@ -440,7 +440,7 @@
   });
   ```
 
-- 通过注册固定的captureEnd回调函数获取监听拍照结束结果，photoOutput创建成功时即可监听，该事件返回结果为拍照完全结束后的相关信息[CaptureEndInfo](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-captureendinfo-i.md#captureendinfo)。
+- 通过注册固定的captureEnd回调函数获取监听拍照结束结果，photoOutput创建成功时即可监听，该事件返回结果为拍照完全结束后的相关信息CaptureEndInfo。
 
 
   <!-- @[capture_end](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
@@ -466,7 +466,7 @@
   });
   ```
 
-- 通过注册固定的error回调函数获取监听拍照输出流的错误结果。回调返回拍照输出接口使用错误时的对应错误码，错误码类型参见[CameraErrorCode](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-cameraerrorcode-e-sys.md#cameraerrorcode)。
+- 通过注册固定的error回调函数获取监听拍照输出流的错误结果。回调返回拍照输出接口使用错误时的对应错误码，错误码类型参见CameraErrorCode。
 
   <!-- @[photoOutput_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
   

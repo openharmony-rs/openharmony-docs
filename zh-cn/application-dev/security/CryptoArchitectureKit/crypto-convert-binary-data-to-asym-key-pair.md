@@ -21,11 +21,11 @@
 
 对应的算法规格请查看[非对称密钥生成和转换规格：RSA](crypto-key-generation-conversion.md#rsa)。
 
-1. 获取RSA公钥或私钥二进制数据，封装成[DataBlob](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-datablob-i.md#datablob)对象。
+1. 获取RSA公钥或私钥二进制数据，封装成DataBlob对象。
 
    公钥和私钥可单独传入，此处示例传入公钥。
 
-2. 调用[cryptoFramework.createAsyKeyGenerator](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-createasykeygenerator-f.md#createasykeygenerator)，指定字符串参数'RSA1024'，创建RSA密钥类型为RSA1024、素数个数为2的非对称密钥生成器（AsyKeyGenerator）。
+2. 调用cryptoFramework.createAsyKeyGenerator，指定字符串参数'RSA1024'，创建RSA密钥类型为RSA1024、素数个数为2的非对称密钥生成器（AsyKeyGenerator）。
 
    生成RSA非对称密钥时，默认素数为2，此处省略了参数PRIMES_2。
 
@@ -94,11 +94,11 @@
 
 查看[非对称密钥生成和转换规格：ECC](crypto-key-generation-conversion.md#ecc)。
 
-1. 获取ECC公钥或私钥二进制数据，封装成[DataBlob](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-datablob-i.md#datablob)对象。
+1. 获取ECC公钥或私钥二进制数据，封装成DataBlob对象。
 
    公钥和私钥可以只传入其中一个，此处示例以传入公钥和私钥为例。
 
-2. 调用[cryptoFramework.createAsyKeyGenerator](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-createasykeygenerator-f.md#createasykeygenerator)，指定字符串参数'ECC256'，创建密钥算法为ECC、密钥长度为256位的非对称密钥生成器（AsyKeyGenerator）。
+2. 调用cryptoFramework.createAsyKeyGenerator，指定字符串参数'ECC256'，创建密钥算法为ECC、密钥长度为256位的非对称密钥生成器（AsyKeyGenerator）。
 
 3. 调用[AsyKeyGenerator.convertKey](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-asykeygenerator-i.md#convertkey-3)，传入公钥二进制和私钥二进制，生成非对称密钥对象（KeyPair）。
 
@@ -167,9 +167,9 @@
 
 查看[非对称密钥生成和转换规格：ECC](crypto-key-generation-conversion.md#ecc)。
 
-获取ECC公钥或私钥二进制数据，封装成[DataBlob](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-datablob-i.md#datablob)对象再转为ECC密钥格式。示例如下：
+获取ECC公钥或私钥二进制数据，封装成DataBlob对象再转为ECC密钥格式。示例如下：
 
-1. 调用[cryptoFramework.createAsyKeyGenerator](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-createasykeygenerator-f.md#createasykeygenerator)，指定字符串参数'ECC256'，创建密钥算法为ECC、密钥长度为256位的非对称密钥生成器（AsyKeyGenerator）。
+1. 调用cryptoFramework.createAsyKeyGenerator，指定字符串参数'ECC256'，创建密钥算法为ECC、密钥长度为256位的非对称密钥生成器（AsyKeyGenerator）。
 
 2. 调用[PubKey.getEncoded](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-key-i.md#getencoded)获取公钥数据字节流，调用[PriKey.getEncodedDer](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-prikey-i.md#getencodedder) 并设置参数为'PKCS8'，获取私钥数据的字节流。由此分别获取密钥对象的二进制数据。
 
@@ -211,11 +211,11 @@ async function main() {
 
 查看[非对称密钥生成和转换规格：SM2](crypto-key-generation-conversion.md#sm2)。
 
-1. 获取SM2公钥或私钥的二进制数据，封装成[DataBlob](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-datablob-i.md#datablob)对象。
+1. 获取SM2公钥或私钥的二进制数据，封装成DataBlob对象。
 
    公钥和私钥可以只传入其中一个，示例以传入公钥和私钥为例。
 
-2. 调用[cryptoFramework.createAsyKeyGenerator](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-createasykeygenerator-f.md#createasykeygenerator)，指定字符串参数'SM2_256'，创建密钥算法为SM2、密钥长度为256位的非对称密钥生成器（AsyKeyGenerator）。
+2. 调用cryptoFramework.createAsyKeyGenerator，指定字符串参数'SM2_256'，创建密钥算法为SM2、密钥长度为256位的非对称密钥生成器（AsyKeyGenerator）。
 
 3. 调用[AsyKeyGenerator.convertKey](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-asykeygenerator-i.md#convertkey-3)，传入公钥和私钥的二进制数据，生成非对称密钥对象（KeyPair）。
 

@@ -98,11 +98,11 @@ dataObject['parents']['mom'] = "amy"; // 不支持的修改
 
 ### 资产同步机制
 
-在分布式数据对象中，可以使用资产类型[Asset](../reference/apis-arkdata/arkts-apis/arkts-arkdata-commontype-asset-i.md#asset)来描述本地实体资产文件，分布式数据对象跨设备同步时，该文件会和数据一起同步到其他设备上。
+在分布式数据对象中，可以使用资产类型Asset来描述本地实体资产文件，分布式数据对象跨设备同步时，该文件会和数据一起同步到其他设备上。
 
-在API version 20之前版本，仅支持资产类型，不支持资产类型数组[Assets](../reference/apis-arkdata/arkts-apis/arkts-arkdata-commontype-assets-t.md#assets)。如需同步多个资产，可将每个资产作为分布式数据对象的一个根属性实现。
+在API version 20之前版本，仅支持资产类型，不支持资产类型数组Assets。如需同步多个资产，可将每个资产作为分布式数据对象的一个根属性实现。
 
-从API version 20开始，支持资产类型数组[Assets](../reference/apis-arkdata/arkts-apis/arkts-arkdata-commontype-assets-t.md#assets)的同步。
+从API version 20开始，支持资产类型数组Assets的同步。
 
 ## 约束限制
 <!--RP5-->

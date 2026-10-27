@@ -15,11 +15,11 @@
 
 2. 初始化参数集。
 
-   [HuksOptions](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huks-huksoptions-i.md#huksoptions)中的properties字段中的参数必须包含[HUKS_TAG_ATTESTATION_CHALLENGE](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huks-hukstag-e.md#hukstag)属性，可选参数包含[HUKS_TAG_ATTESTATION_ID_VERSION_INFO](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huks-hukstag-e.md#hukstag)，[HUKS_TAG_ATTESTATION_ID_ALIAS](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huks-hukstag-e.md#hukstag)属性。
+   HuksOptions中的properties字段中的参数必须包含HUKS_TAG_ATTESTATION_CHALLENGE属性，可选参数包含HUKS_TAG_ATTESTATION_ID_VERSION_INFO，HUKS_TAG_ATTESTATION_ID_ALIAS属性。
 
 3. 生成非对称密钥，具体请参考[密钥生成](huks-key-generation-overview.md)。
 
-4. 将密钥别名与参数集作为参数传入[anonAttestKeyItem](../../reference/apis-universal-keystore-kit/c-apis/capi-native-huks-api-h.md#ohhuksanonattestkeyitem)方法中，即可证明密钥。
+4. 将密钥别名与参数集作为参数传入anonAttestKeyItem方法中，即可证明密钥。
 
 ## 开发案例
 <!-- @[anonymous_key_proof](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/AnonymousKeyProof/entry/src/main/ets/pages/AnonymousKeyProof.ets) -->

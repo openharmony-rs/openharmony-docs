@@ -11,7 +11,7 @@
 对于采用ArkTS开发的应用，提供了应用内组件的主题换肤功能，支持局部的深浅色切换及动态换肤。目前，该功能只支持设置应用内主题换肤，暂不支持在UIAbility或窗口层面进行主题设置，同时也不支持C-API和Node-API。
 
 ## 自定义主题色
-当应用需要使用换肤功能时，应自定义主题颜色。[CustomTheme](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-theme-customtheme-i.md#customtheme)用于自定义主题色的内容，其属性可选，仅需对需要修改的token字段赋值，其余token将继承系统默认颜色值，可参考[系统默认的token颜色值](#系统缺省token色值)。请参照以下示例自定义主题色：
+当应用需要使用换肤功能时，应自定义主题颜色。CustomTheme用于自定义主题色的内容，其属性可选，仅需对需要修改的token字段赋值，其余token将继承系统默认颜色值，可参考[系统默认的token颜色值](#系统缺省token色值)。请参照以下示例自定义主题色：
 
   <!-- @[app_theme](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ThemeSkinning/entry/src/main/ets/pages/Theme1/AppTheme.ets) -->
   
@@ -33,7 +33,7 @@
   ```
 
 ## 设置应用内组件自定义主题色
-- 若在页面入口处设置应用内组件自定义主题色，需确保在页面build前执行[ThemeControl](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-theme-themecontrol-c.md#themecontrol).[setDefaultTheme](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-theme-themecontrol-c.md#setdefaulttheme)。
+- 若在页面入口处设置应用内组件自定义主题色，需确保在页面build前执行ThemeControl.[setDefaultTheme](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-theme-themecontrol-c.md#setdefaulttheme)。
 
   示例代码中，[onWillApplyTheme](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-basecustomcomponent-c.md#onwillapplytheme)回调函数用于使自定义组件获取当前生效的Theme对象。
 
@@ -159,7 +159,7 @@
     }
     ```
 
-- 若在UIAbility中设置应用内组件自定义主题色，需在onWindowStageCreate()方法的windowStage.[loadContent](../reference/apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#loadcontent)的完成时回调中调用[ThemeControl](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-theme-themecontrol-c.md#themecontrol).[setDefaultTheme](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-theme-themecontrol-c.md#setdefaulttheme)，设置应用内组件的自定义主题色。
+- 若在UIAbility中设置应用内组件自定义主题色，需在onWindowStageCreate()方法的windowStage.[loadContent](../reference/apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#loadcontent)的完成时回调中调用ThemeControl.[setDefaultTheme](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-theme-themecontrol-c.md#setdefaulttheme)，设置应用内组件的自定义主题色。
 
     <!-- @[entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ThemeSkinning/entry/src/main/ets/entryability/EntryAbility.ets) -->
     
@@ -411,4 +411,4 @@ dark.json数据示例：
 | theme.colors.interactiveSelect             | 通用选择交互式颜色 | #33000000 |![](figures/33000000.png "#33000000")| #33ffffff |![](figures/33ffffff.png "#33ffffff")|
 | theme.colors.interactiveClick              | 通用点击交互式颜色 | #19000000 |![](figures/19000000.png "#19000000")| #19ffffff |![](figures/19ffffff.png "#19ffffff")|
 
-各个token色值可影响的组件可参考[Colors](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-theme-colors-i.md#colors)接口说明。
+各个token色值可影响的组件可参考Colors接口说明。

@@ -10,7 +10,7 @@
 
 MetadataBinding（元数据绑定）指由第三方应用提供[鸿蒙App Linking链接](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/applinking-introduction)，系统将当前用户浏览的内容与鸿蒙App Linking链接进行关联并保存的功能。
 
-详细的接口介绍请参考[@ohos.multimodalAwareness.metadataBinding (元数据绑定)](../../reference/apis-multimodalawareness-kit/errorcode-metadataBinding.md)。
+详细的接口介绍请参考@ohos.multimodalAwareness.metadataBinding (元数据绑定)。
 
 ## 场景介绍
 
@@ -27,7 +27,7 @@ MetadataBinding（元数据绑定）指由第三方应用提供[鸿蒙App Linkin
 
 | 接口名                                                       | 描述                                   |
 | ------------------------------------------------------------ | -------------------------------------- |
-| [submitMetadata](../../reference/apis-multimodal-awareness-kit/arkts-apis/arkts-multimodalawareness-metadatabinding-submitmetadata-f.md#submitmetadata)(metadata: string): void; | 第三方应用将待编码的鸿蒙App Linking链接传递给多模态融合感知服务，该服务决定适当时机将内容传递给调用编码接口的系统应用。 |
+| submitMetadata(metadata: string): void; | 第三方应用将待编码的鸿蒙App Linking链接传递给多模态融合感知服务，该服务决定适当时机将内容传递给调用编码接口的系统应用。 |
 | [on](../../reference/apis-multimodal-awareness-kit/arkts-apis/arkts-multimodalawareness-metadatabinding-on-f.md#onoperationsubmitmetadata)(type: 'operationSubmitMetadata', bundleName: string, callback: Callback&lt;number&gt;): void; | 订阅系统事件以获取编码内容，应用注册回调，事件发生时回传编码内容。|
 | [off](../../reference/apis-multimodal-awareness-kit/arkts-apis/arkts-multimodalawareness-metadatabinding-off-f.md#offoperationsubmitmetadata)(type: 'operationSubmitMetadata', bundleName: string, callback?: Callback&lt;number&gt;): void; | 取消订阅系统获取编码内容的事件。取消注册回调接口。|
   

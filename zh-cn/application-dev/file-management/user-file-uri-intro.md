@@ -35,9 +35,9 @@ URI类型可以归纳为文档类URI和媒体文件URI两类
 
 ### 文档类URI获取方式
 
-1. 通过[DocumentViewPicker](../reference/apis-core-file-kit/arkts-apis/arkts-corefile-picker-documentviewpicker-c.md#documentviewpicker)接口选择或保存文件，返回选择或保存的文件URI。
+1. 通过DocumentViewPicker接口选择或保存文件，返回选择或保存的文件URI。
 
-2. 通过[AudioViewPicker](../reference/apis-core-file-kit/arkts-apis/arkts-corefile-picker-audioviewpicker-c.md#audioviewpicker)接口选择或保存文件，返回选择或保存的文件URI。
+2. 通过AudioViewPicker接口选择或保存文件，返回选择或保存的文件URI。
 
 ### 文档类URI的使用方式
 
@@ -82,7 +82,7 @@ URI类型可以归纳为文档类URI和媒体文件URI两类
 
 2. 通过[photoAccessHelper](../reference/apis-media-library-kit/arkts-apis/arkts-medialibrary-file-photoaccesshelper.md)模块中的[getAssets](../reference/apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoaccesshelper-i.md#getassets)或[createAsset](../reference/apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoaccesshelper-i.md#createasset)接口获取媒体文件对应文件的URI。
 
-3. 通过Picker的[AudioViewPicker](../reference/apis-core-file-kit/arkts-apis/arkts-corefile-picker-audioviewpicker-c.md#audioviewpicker)选择和保存音乐文件资源，返回选择和保存后的音乐文件的URI。
+3. 通过Picker的AudioViewPicker选择和保存音乐文件资源，返回选择和保存后的音乐文件的URI。
 
 ### 媒体文件URI的使用方式
 
@@ -91,7 +91,7 @@ normal等级的应用使用此类URI可以通过[photoAccessHelper](../reference
 system_basic等级及以上的应用使用此类URI的方式除了上述通过photoAccessHelper模块外还可以通过userFileManager模块进行进一步处理，接口详细使用方式见接口文档。
 <!--DelEnd-->
 
-若normal等级的应用不想申请权限也可以通过临时授权的方式使用PhotoAccessHelper的[PhotoViewPicker](../reference/apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoviewpicker-c.md)得到的URI使用[photoAccessHelper.getAssets](../reference/apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoaccesshelper-i.md#getassets)接口获取对应URI的PhotoAsset对象。通过此方式获取的PhotoAsset对象可调用[getThumbnail](../reference/apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoasset-i.md#getthumbnail)方法获取缩略图，并通过[get](../reference/apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoasset-i.md#get)接口方法读取[PhotoKeys](../reference/apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photokeys-e-sys.md#photokeys)中的部分信息。
+若normal等级的应用不想申请权限也可以通过临时授权的方式使用PhotoAccessHelper的[PhotoViewPicker](../reference/apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoviewpicker-c.md)得到的URI使用[photoAccessHelper.getAssets](../reference/apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoaccesshelper-i.md#getassets)接口获取对应URI的PhotoAsset对象。通过此方式获取的PhotoAsset对象可调用[getThumbnail](../reference/apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoasset-i.md#getthumbnail)方法获取缩略图，并通过[get](../reference/apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoasset-i.md#get)接口方法读取PhotoKeys中的部分信息。
 
 以下为PhotoKeys中支持临时授权方式可以读取的信息：
 

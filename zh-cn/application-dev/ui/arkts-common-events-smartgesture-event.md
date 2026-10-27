@@ -22,7 +22,7 @@
 
 * 操作意图（OperateIntention）：用户底层操作的语义分类，即用户做了什么动作。取值范围为TAP（敲一敲）、SLIDE_FORWARD（划一划）、BACK_PRESS（翻腕），详见[OperateIntention](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-basegesturehandlingproposal-c.md#operateintention)。操作意图是系统推断执行动作的输入依据。
 
-* 执行动作（SmartGestureAction）：系统根据操作意图推断的最终执行动作，即系统打算做什么。取值范围为CLICK（点击）、SELECT（选中）、SCROLL_FORWARD（滚动）、PAGE_FORWARD（翻页）、BACK_PRESS（返回）、NONE（无动作），详见[SmartGestureAction](../reference/apis-arkui/arkts-apis/arkts-arkui-smartgestureaction-e.md#smartgestureaction)。同一操作意图可对应不同执行动作，例如敲一敲（TAP）仅对应点击（CLICK），而划一划（SLIDE_FORWARD）可对应选中（SELECT）、滚动（SCROLL_FORWARD）或翻页（PAGE_FORWARD），系统会根据当前页面结构和目标组件自动推断最合适的执行动作。
+* 执行动作（SmartGestureAction）：系统根据操作意图推断的最终执行动作，即系统打算做什么。取值范围为CLICK（点击）、SELECT（选中）、SCROLL_FORWARD（滚动）、PAGE_FORWARD（翻页）、BACK_PRESS（返回）、NONE（无动作），详见SmartGestureAction。同一操作意图可对应不同执行动作，例如敲一敲（TAP）仅对应点击（CLICK），而划一划（SLIDE_FORWARD）可对应选中（SELECT）、滚动（SCROLL_FORWARD）或翻页（PAGE_FORWARD），系统会根据当前页面结构和目标组件自动推断最合适的执行动作。
 
 * 动作处理（ActionProposal）：开发者通过监听回调返回的具体操作方案，用于覆写系统默认动作。每种执行动作对应一个动作处理类，具体如下：
   - [ClickActionProposal](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-clickactionproposal-c.md)：点击动作处理，触发目标组件的onClick事件。遵循"先选中再点击"语义，若目标组件尚未被选中，敲一敲会先建立选中态，下次敲一敲才触发点击。

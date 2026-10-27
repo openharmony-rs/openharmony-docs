@@ -102,7 +102,7 @@
 
 窗口与系统界面元素显示的交叉区域称为**避让区域**，应用内通过布局避让，将关键显示组件避开避让区域显示，从而达到沉浸式效果。
 
-系统支持的避让区域类型通过枚举[AvoidAreaType](../reference/apis-arkui/arkts-apis/arkts-arkui-window-avoidareatype-e.md#avoidareatype)表示。
+系统支持的避让区域类型通过枚举AvoidAreaType表示。
 
 ### 避让区域AvoidArea的计算方式
 
@@ -199,7 +199,7 @@ interface Rect {
 
    此处以获取并监听状态栏、底部导航区域、挖孔区为例。
 
-   - 可以通过使用[getWindowAvoidArea()](../reference/apis-arkui/arkts-apis/arkts-arkui-uiextension-windowproxy-i.md#getwindowavoidarea)接口获取当前窗口避让区域。使用[on('avoidAreaChange')](../reference/apis-arkui/arkts-apis/arkts-arkui-uiextension-windowproxy-i.md#onavoidareachange)接口监听避让区域的动态变化。
+   - 可以通过使用getWindowAvoidArea()接口获取当前窗口避让区域。使用[on('avoidAreaChange')](../reference/apis-arkui/arkts-apis/arkts-arkui-uiextension-windowproxy-i.md#onavoidareachange)接口监听避让区域的动态变化。
 
      常见的触发避让区域回调的场景如下：应用窗口在全屏模式、悬浮模式、分屏模式之间的切换；应用窗口旋转；多折叠设备在屏幕折叠态和展开态之间的切换；应用窗口在多设备之间的流转。
 

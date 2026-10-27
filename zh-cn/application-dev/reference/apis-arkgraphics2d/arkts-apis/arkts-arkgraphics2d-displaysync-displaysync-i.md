@@ -181,7 +181,7 @@ backDisplaySync?.start()
 
 > 说明：
 > 
-> start接口会将DisplaySync关联到UI上下文和窗口。若在非UI页面或异步回调中调用[start](#start)，可能获取到错误的UI上下文，导致[start](#start)功能异常，进而导致回调函数无法执行以及期望帧率范围无法生效。此时可使用[runScopedTask](../apis-arkui/arkts-apis-uicontext-uicontext.md#runscopedtask)接口指定UI上下文，确保[start](#start)在正确的上下文中执行。
+> start接口会将DisplaySync关联到UI上下文和窗口。若在非UI页面或异步回调中调用[start](#start)，可能获取到错误的UI上下文，导致[start](#start)功能异常，进而导致回调函数无法执行以及期望帧率范围无法生效。此时可使用runScopedTask接口指定UI上下文，确保[start](#start)在正确的上下文中执行。
 
 ```TypeScript
 import { displaySync } from '@kit.ArkGraphics2D';

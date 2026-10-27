@@ -10,7 +10,7 @@
 
 AppStorageV2提供应用级全局共享状态变量的能力，开发者可以通过connect绑定同一个key，进行跨UIAbility的数据共享。
 
-在阅读本文档前，建议提前阅读：[\@ComponentV2](./arkts-create-custom-components.md#componentv2)，[\@ObservedV2和\@Trace](./arkts-new-observedV2-and-trace.md)，配合阅读：[AppStorageV2-API文档](../../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-statemanagement-appstoragev2-c.md#appstoragev2)。
+在阅读本文档前，建议提前阅读：[\@ComponentV2](./arkts-create-custom-components.md#componentv2)，[\@ObservedV2和\@Trace](./arkts-new-observedV2-and-trace.md)，配合阅读：AppStorageV2-API文档。
 
 >**说明：**
 >
@@ -49,7 +49,7 @@ AppStorageV2支持应用的[主线程](../../application-models/thread-model-sta
 
 - keys：返回所有AppStorageV2中的key。
 
-以上接口详细描述请参考状态管理API文档中的[AppStorageV2](../../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-statemanagement-appstoragev2-c.md#appstoragev2)。
+以上接口详细描述请参考状态管理API文档中的AppStorageV2。
 
 
 ## 使用限制

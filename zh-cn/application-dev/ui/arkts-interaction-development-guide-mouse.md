@@ -8,7 +8,7 @@
 
 ![mouse](figures/device_mouse.png)
 
-鼠标设备是PC/2in1、Tablet类型设备必不可少的输入设备，其特点是可以通过按键达成点击或滑动操作，也可以通过滚轮触发滑动，另外还有一些按键，这些分别通过MouseEvent及[AxisEvent](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-axisevent-i.md#axisevent)上报给应用。
+鼠标设备是PC/2in1、Tablet类型设备必不可少的输入设备，其特点是可以通过按键达成点击或滑动操作，也可以通过滚轮触发滑动，另外还有一些按键，这些分别通过MouseEvent及AxisEvent上报给应用。
 
 >**说明：**
 >
@@ -31,7 +31,7 @@ onMouse(event: (event?: MouseEvent) => void)
 鼠标事件回调。每当鼠标指针在绑定该API的组件内产生行为（MouseAction）时，触发事件回调，参数为MouseEvent对象，表示触发此次的鼠标事件。该事件支持自定义冒泡设置，默认父子冒泡。常用于开发者自定义的鼠标行为逻辑处理。
 
 
-开发者可以通过回调中的MouseEvent对象获取触发事件的坐标（displayX/displayY/windowX/windowY/x/y）、按键（[MouseButton](../reference/apis-arkui/arkts-apis/arkts-arkui-mousebutton-e.md#mousebutton)）、行为（[MouseAction](../reference/apis-arkui/arkts-apis/arkts-arkui-mouseaction-e.md#mouseaction)）、时间戳（[BaseEvent](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-baseevent-i.md#baseevent)的`timestamp`属性）、交互组件的区域（[EventTarget](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-eventtarget-i.md#eventtarget)）、事件来源（SourceType）等。MouseEvent的回调函数stopPropagation用于设置当前事件是否阻止冒泡。
+开发者可以通过回调中的MouseEvent对象获取触发事件的坐标（displayX/displayY/windowX/windowY/x/y）、按键（MouseButton）、行为（MouseAction）、时间戳（BaseEvent的`timestamp`属性）、交互组件的区域（EventTarget）、事件来源（SourceType）等。MouseEvent的回调函数stopPropagation用于设置当前事件是否阻止冒泡。
 
 > **说明：**
 >
@@ -355,12 +355,12 @@ struct ListExample {
 
 ## 处理滚轮
 
-鼠标的滚轮是一种可以产生纵向滚动量的输入设备，当用户滚动鼠标滚轮时，系统会产生纵向轴事件上报，应用可在组件上通过[onAxisEvent](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#onaxisevent)接口接收轴事件，轴事件中上报的坐标，为鼠标光标所在的位置，而滚轮上报的角度变化可从[BaseEvent](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-baseevent-i.md#baseevent)的axisVertical获得。
+鼠标的滚轮是一种可以产生纵向滚动量的输入设备，当用户滚动鼠标滚轮时，系统会产生纵向轴事件上报，应用可在组件上通过[onAxisEvent](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#onaxisevent)接口接收轴事件，轴事件中上报的坐标，为鼠标光标所在的位置，而滚轮上报的角度变化可从BaseEvent的axisVertical获得。
 
-鼠标滚轮轴事件的上报，每次都以[AxisAction](../reference/apis-arkui/arkts-apis/arkts-arkui-axisaction-e.md#axisaction).BEGIN类型开始，当停止滚动时以[AxisAction](../reference/apis-arkui/arkts-apis/arkts-arkui-axisaction-e.md#axisaction).END结束，慢速滚动时，会产生多段的BEGIN、END上报。当你处理axisVertical时，应确保理解它的数值含义与单位，其有以下特点：
+鼠标滚轮轴事件的上报，每次都以AxisAction.BEGIN类型开始，当停止滚动时以AxisAction.END结束，慢速滚动时，会产生多段的BEGIN、END上报。当你处理axisVertical时，应确保理解它的数值含义与单位，其有以下特点：
 - 上报的数值单位为角度，为单次变化量，非总量。
 - 上报数值大小受系统设置中对滚轮放大倍数设置的影响。
-- 系统设置中的放大倍数通过[AxisEvent](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-axisevent-i.md#axisevent)中的scrollStep告知。
+- 系统设置中的放大倍数通过AxisEvent中的scrollStep告知。
 - 向前滚动，上报数值为负，向后滚动，上报数值为正。
 
 如果使用滚动类组件，对于滚轮的响应，系统内部已实现，不需要额外处理。

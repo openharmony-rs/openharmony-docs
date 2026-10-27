@@ -198,9 +198,9 @@
 
 ## 设置应用内UIAbility组件启动淡入淡出动效
 
-在使用[startAbility()](../reference/apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md#startability-2)接口拉起同一应用内其他UIAbility组件时，可以通过[StartOptions](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-startoptions.md)中[WindowCreateParams](../reference/apis-arkui/arkts-apis/arkts-arkui-window-windowcreateparams-i-sys.md#windowcreateparams)配置窗口的启动动画。
+在使用[startAbility()](../reference/apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md#startability-2)接口拉起同一应用内其他UIAbility组件时，可以通过[StartOptions](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-startoptions.md)中WindowCreateParams配置窗口的启动动画。
 
-目前支持将窗口启动动画配置为淡入淡出动效[FADE_IN_OUT](../reference/apis-arkui/arkts-apis/arkts-arkui-window-animationtype-e-sys.md#animationtype)。
+目前支持将窗口启动动画配置为淡入淡出动效FADE_IN_OUT。
 
 示例代码如下：
 

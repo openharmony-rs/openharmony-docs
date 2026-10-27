@@ -144,7 +144,7 @@ export struct OnlineVideo {
 
 ## 添加属性
 
-Video组件[属性](../reference/apis-arkui/arkui-js/js-components-media-video.md#属性)主要用于设置视频的播放形式。例如设置视频播放是否静音、播放是否显示控制条等。
+Video组件属性主要用于设置视频的播放形式。例如设置视频播放是否静音、播放是否显示控制条等。
 
 
 <!-- @[attribute_video](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/VideoPlayer/entry/src/main/ets/pages/AttributeVideo.ets) -->  
@@ -177,7 +177,7 @@ export struct AttributeVideo {
 
 ## 事件调用
 
-  Video组件回调事件主要包括播放开始、播放暂停、播放结束、播放失败、播放停止、视频准备和操作进度条等事件，除此之外，Video组件也支持通用事件的调用，如点击、触摸等事件的调用。详细事件请参考[事件说明](../reference/apis-arkui/arkui-js/js-components-media-video.md#事件)。
+  Video组件回调事件主要包括播放开始、播放暂停、播放结束、播放失败、播放停止、视频准备和操作进度条等事件，除此之外，Video组件也支持通用事件的调用，如点击、触摸等事件的调用。详细事件请参考事件说明。
 
 <!-- @[event_call](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/VideoPlayer/entry/src/main/ets/pages/EventCall.ets) -->  
 
@@ -215,7 +215,7 @@ struct EventCall {
 
 ## Video控制器使用
 
-Video控制器主要用于控制视频的状态，包括播放、暂停、停止以及设置进度等，详细使用请参考[VideoController使用说明](../reference/apis-arkui/arkts-components/arkts-arkui-video-comp-videocontroller-c.md#videocontroller)。
+Video控制器主要用于控制视频的状态，包括播放、暂停、停止以及设置进度等，详细使用请参考VideoController使用说明。
 
 - 默认控制器
 

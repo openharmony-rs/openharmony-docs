@@ -41,9 +41,9 @@
 
 - 在数据传输时，若应用使用[@ohos.request (上传下载)](../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-request.md)托管给系统，即使申请DATA_TRANSFER的后台任务，应用退后台时还是会被挂起。
 
-- 在数据传输时，应用需要更新进度，如果进度长时间（首次更新超过10分钟）未更新，数据传输的长时任务会被取消。更新进度的通知类型必须为实况窗，具体实现可参考[startBackgroundRunning()](../reference/apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-backgroundtaskmanager-startbackgroundrunning-depr-f.md#startbackgroundrunning)中的示例。
+- 在数据传输时，应用需要更新进度，如果进度长时间（首次更新超过10分钟）未更新，数据传输的长时任务会被取消。更新进度的通知类型必须为实况窗，具体实现可参考startBackgroundRunning()中的示例。
 
-- 从API版本26.0.1开始，可使用[updateDataTransferProgress()](../reference/apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-backgroundtaskmanager-updatedatatransferprogress-f.md#updatedatatransferprogress)接口更新包含数据传输类型的长时任务通知。可选择通知是否带进度环，以及进度环为100时是否响铃。
+- 从API版本26.0.1开始，可使用updateDataTransferProgress()接口更新包含数据传输类型的长时任务通知。可选择通知是否带进度环，以及进度环为100时是否响铃。
 
 关于AUDIO_PLAYBACK（音视频播放）说明：
 
@@ -68,15 +68,15 @@
 1. 主动注册长时任务暂停监听的事件以避免蓝牙断连之后长时任务被系统直接取消，可参考[on('continuousTaskSuspend')](../reference/apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-backgroundtaskmanager-on-f.md#oncontinuoustasksuspend)，这样在蓝牙断连时系统不会立即取消长时任务，而是将其标记为暂停态。
 2. 为保证在蓝牙断连之后能及时恢复连接，在蓝牙连接之后通过[on('connectionStateChange')](../reference/apis-connectivity-kit/arkts-apis/arkts-connectivity-ble-gattserver-i.md#onconnectionstatechange)订阅蓝牙连接状态变化的事件，断连之后通过[startScan](../reference/apis-connectivity-kit/arkts-apis/arkts-connectivity-ble-blescanner-i.md#startscan)主动发起BLE蓝牙扫描，订阅BLE设备扫描结果上报[on('BLEDeviceFind')](../reference/apis-connectivity-kit/arkts-apis/arkts-connectivity-ble-blescanner-i.md#onbledevicefind)事件，检测设备是否重回连接范围。
 3. 成功扫描到设备之后，应用需要通过[connect](../reference/apis-connectivity-kit/arkts-apis/arkts-connectivity-ble-gattclientdevice-i.md#connect)主动恢复蓝牙连接，使系统检测到蓝牙恢复连接后重新激活暂停的长时任务，实现重新保活。
-4. 从API版本26.0.0开始，[BR](../connectivity/bluetooth/terminology.md#br)蓝牙断开连接后一定时间内（具体时长受系统负载影响，最长可达十分钟），可通过[onAclStateChange](../reference/apis-connectivity-kit/arkts-apis/arkts-connectivity-connection-onaclstatechange-f.md#onaclstatechange)接口感知ACL连接状态变化，实现重新保活。
+4. 从API版本26.0.0开始，[BR](../connectivity/bluetooth/terminology.md#br)蓝牙断开连接后一定时间内（具体时长受系统负载影响，最长可达十分钟），可通过onAclStateChange接口感知ACL连接状态变化，实现重新保活。
 
 关于MODE_NEARLINK（星闪业务）说明： 
 
 如果应用仅申请了星闪长时任务，因设备远离等原因导致星闪断连，系统将取消应用的星闪长时任务。为确保星闪接续使用体验，在断连后的1-10分钟内（具体时长受系统负载影响），系统允许满足如下条件的应用在恢复连接时重新保活，实现在后台长时间运行。 
  
 1. 主动注册长时任务暂停监听的事件以避免星闪断连之后长时任务被系统直接取消，可参考[on('continuousTaskSuspend')](../reference/apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-backgroundtaskmanager-on-f.md#oncontinuoustasksuspend)，这样在星闪断连时系统不会立即取消长时任务，而是将其标记为暂停态。 
-2. 为保证在星闪断连之后能及时恢复连接，本端设备应用在星闪连接之后通过[onDeviceFound](../reference/apis-connectivity-kit/arkts-apis/arkts-connectivity-scan-ondevicefound-f.md#ondevicefound)订阅星闪扫描结果，断连之后，本端设备通过[startScan](../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-scan-startscan-f.md#startscan)主动发起星闪扫描，对端设备则通过[startAdvertising](../reference/apis-connectivity-kit/arkts-apis/arkts-connectivity-advertising-startadvertising-f.md#startadvertising)发送星闪广播。 
-3. 本端设备成功扫描到对端设备之后，需要通过[connect](../reference/apis-connectivity-kit/arkts-apis/arkts-connectivity-ssap-client-i.md#connect)向对端设备发起连接。如无其他业务扫描需求，本端设备可使用[stopScan](../reference/apis-connectivity-kit/arkts-apis/arkts-connectivity-scan-stopscan-f.md#stopscan)停止星闪扫描。
+2. 为保证在星闪断连之后能及时恢复连接，本端设备应用在星闪连接之后通过onDeviceFound订阅星闪扫描结果，断连之后，本端设备通过startScan主动发起星闪扫描，对端设备则通过startAdvertising发送星闪广播。 
+3. 本端设备成功扫描到对端设备之后，需要通过[connect](../reference/apis-connectivity-kit/arkts-apis/arkts-connectivity-ssap-client-i.md#connect)向对端设备发起连接。如无其他业务扫描需求，本端设备可使用stopScan停止星闪扫描。
 
 关于长时任务通知说明：
 
@@ -87,7 +87,7 @@
 **申请限制：** Stage模型中，长时任务仅支持UIAbility申请；FA模型中，长时任务仅支持ServiceAbility申请。长时任务支持设备当前应用申请，也支持跨设备或跨应用申请，跨设备或跨应用仅对系统应用开放。
 
 **数量限制：**
-- 从API version 21开始，支持一个UIAbility同一时刻申请多个长时任务，最多可申请10个，具体实现可参考[startBackgroundRunning()](../reference/apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-backgroundtaskmanager-startbackgroundrunning-depr-f.md#startbackgroundrunning)。对于API version 20及之前版本，一个UIAbility（FA模型则为ServiceAbility）同一时刻仅支持申请一个长时任务，即在一个长时任务结束后才能继续申请。如果一个应用同时需要申请多个长时任务，需要创建多个UIAbility。
+- 从API version 21开始，支持一个UIAbility同一时刻申请多个长时任务，最多可申请10个，具体实现可参考startBackgroundRunning()。对于API version 20及之前版本，一个UIAbility（FA模型则为ServiceAbility）同一时刻仅支持申请一个长时任务，即在一个长时任务结束后才能继续申请。如果一个应用同时需要申请多个长时任务，需要创建多个UIAbility。
 - 如果一个应用创建了多个UIAbility，一个UIAbility申请长时任务后，整个应用下的所有进程均不会被挂起。
 
 **运行限制：**
@@ -110,7 +110,7 @@
 >
 > 后台播放音频的应用，在停止长时任务的同时，需要暂停或停止音频流，否则应用会被系统强制终止。
 >
-> 若应用后台录音被[打断](../media/audio/audio-playback-concurrency.md)，系统会自行检测和停止长时任务；若重启录音，需要再次申请长时任务。在此场景下，需要调用[setWillMuteWhenInterrupted](../reference/apis-media-kit/arkts-apis/arkts-media-media-avrecorder-i.md#setwillmutewheninterrupted)接口，设置当前录制音频流启用静音打断模式。
+> 若应用后台录音被[打断](../media/audio/audio-playback-concurrency.md)，系统会自行检测和停止长时任务；若重启录音，需要再次申请长时任务。在此场景下，需要调用setWillMuteWhenInterrupted接口，设置当前录制音频流启用静音打断模式。
 
 ## 接口说明
 
@@ -120,10 +120,10 @@
 
 | 接口名 | 描述 |
 | -------- | -------- |
-| [startBackgroundRunning(context: Context, bgMode: BackgroundMode, wantAgent: WantAgent): Promise&lt;void&gt;](../reference/apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-backgroundtaskmanager-startbackgroundrunning-depr-f.md#startbackgroundrunning) | 申请长时任务，本接口一个UIAbility同一时刻仅支持申请一个长时任务，即在一个长时任务结束后才能继续申请。 |
-| [stopBackgroundRunning(context: Context): Promise&lt;void&gt;](../reference/apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-backgroundtaskmanager-stopbackgroundrunning-depr-f.md#stopbackgroundrunning)  | 取消长时任务。 |
-| [startBackgroundRunning(context: Context, request: ContinuousTaskRequest): Promise&lt;ContinuousTaskNotification&gt;](../reference/apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-backgroundtaskmanager-startbackgroundrunning-depr-f.md#startbackgroundrunning) | 申请多个长时任务。本接口支持一个UIAbility同一时刻申请多个长时任务，最多可申请10个。 |
-| [stopBackgroundRunning(context: Context, continuousTaskId: number): Promise&lt;void&gt;](../reference/apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-backgroundtaskmanager-stopbackgroundrunning-depr-f.md#stopbackgroundrunning) | 取消指定Id的长时任务。 |
+| startBackgroundRunning(context: Context, bgMode: BackgroundMode, wantAgent: WantAgent): Promise&lt;void&gt; | 申请长时任务，本接口一个UIAbility同一时刻仅支持申请一个长时任务，即在一个长时任务结束后才能继续申请。 |
+| stopBackgroundRunning(context: Context): Promise&lt;void&gt;  | 取消长时任务。 |
+| startBackgroundRunning(context: Context, request: ContinuousTaskRequest): Promise&lt;ContinuousTaskNotification&gt; | 申请多个长时任务。本接口支持一个UIAbility同一时刻申请多个长时任务，最多可申请10个。 |
+| stopBackgroundRunning(context: Context, continuousTaskId: number): Promise&lt;void&gt; | 取消指定Id的长时任务。 |
 
 ## 开发步骤
 
@@ -186,7 +186,7 @@
    
    从API version 15开始，支持通过[on('continuousTaskCancel')](../reference/apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-backgroundtaskmanager-on-f.md#oncontinuoustaskcancel)实现监听长时任务取消功能。
    
-   从API version 16开始，支持通过[BackgroundSubMode](../reference/apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-backgroundtaskmanager-backgroundsubmode-e.md#backgroundsubmode)实现蓝牙车钥匙功能。
+   从API version 16开始，支持通过BackgroundSubMode实现蓝牙车钥匙功能。
 
    <!-- @[continuous_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/ContinuousTask/entry/src/main/ets/pages/audioPlayback/AudioPlaybackIndex.ets) -->
    
@@ -362,7 +362,7 @@
    
    从API version 15开始，支持通过[on('continuousTaskCancel')](../reference/apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-backgroundtaskmanager-on-f.md#oncontinuoustaskcancel)实现监听长时任务取消功能。
    
-   从API version 16开始，支持通过[BackgroundSubMode](../reference/apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-backgroundtaskmanager-backgroundsubmode-e.md#backgroundsubmode)实现蓝牙车钥匙功能。
+   从API version 16开始，支持通过BackgroundSubMode实现蓝牙车钥匙功能。
 
    <!-- @[continuous_task_await](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/ContinuousTask/entry/src/main/ets/pages/audioPlayback/IndexAsyncAndAwait.ets) -->
    

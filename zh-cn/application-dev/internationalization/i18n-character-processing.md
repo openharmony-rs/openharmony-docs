@@ -77,7 +77,7 @@
   let normalizedText = normalizer.normalize('\u1E9B\u0323'); // normalizedText = 'ẛ̣'
   ```
 
-- 获取文本的可换行点：使用[BreakIterator](../reference/apis-localization-kit/arkts-apis/arkts-localization-i18n-breakiterator-c.md#breakiterator)类的接口可以根据设定的区域获取文本的可换行点。示例代码如下：
+- 获取文本的可换行点：使用BreakIterator类的接口可以根据设定的区域获取文本的可换行点。示例代码如下：
 
   <!-- @[set_text_line_break_settings](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/CharacterProcessing.ets) -->
   

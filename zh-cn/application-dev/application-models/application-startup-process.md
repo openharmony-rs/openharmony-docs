@@ -64,7 +64,7 @@
 
 **建议在此回调中：**
 
-- 读取并解析启动参数[Want](../reference/apis-ability-kit/arkts-apis/arkts-ability-want.md)与[LaunchParam](../reference/apis-ability-kit/arkts-apis/arkts-ability-abilityconstant-launchparam-i.md#launchparam)，根据启动原因（如入口图标、Deep Linking、应用间跳转）分流业务。
+- 读取并解析启动参数[Want](../reference/apis-ability-kit/arkts-apis/arkts-ability-want.md)与LaunchParam，根据启动原因（如入口图标、Deep Linking、应用间跳转）分流业务。
 - 执行该UIAbility实例级别的一次性初始化，如全局状态初始化、权限预检查、监听注册。
 
 **不建议在此回调中：**

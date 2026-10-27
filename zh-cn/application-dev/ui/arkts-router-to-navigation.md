@@ -99,7 +99,7 @@ struct PageOne {
 }
 ```
 
-而基于Navigation的路由页面分为导航页和子页，导航页又叫[Navbar](../reference/apis-arkui/arkts-components/arkts-arkui-navigation-comp-navbar-t.md#navbar)，是Navigation包含的子组件，子页是NavDestination包含的子组件。
+而基于Navigation的路由页面分为导航页和子页，导航页又叫Navbar，是Navigation包含的子组件，子页是NavDestination包含的子组件。
 
 以下为Navigation导航页的示例。
 
@@ -487,7 +487,7 @@ Navigation作为路由容器组件，其内部的页面切换动画本质上属�
 
 页面和页面之间跳转的时候需要进行共享元素过渡动画，Router可以通过通用属性`sharedTransition`来实现共享元素转场，具体可以参考如下链接：
 
-[共享元素转场](../reference/apis-arkui/arkui-js/js-components-create-elements.md)。
+共享元素转场。
 
 Navigation也提供了共享元素一镜到底的转场能力，需要配合`geometryTransition`属性，在子页面（NavDestination）之间切换时，可以实现共享元素转场，具体可参考[Navigation共享元素转场动画](./arkts-navigation-animation.md#共享元素转场)。
 
@@ -670,7 +670,7 @@ Navigation作为路由组件，默认支持跨包跳转。
 基本实现跟上述Router动态路由类似。
 1. 开发者自定义路由管理模块，各个提供路由页面的模块均依赖此模块；
 2. 构建Navigation组件时，将NavPathStack注入路由管理模块，路由管理模块对NavPathStack进行封装，对外提供路由能力；
-3. 各个路由页面不再提供组件，转为提供[@Builder](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-selectionmenu-editormenuoptions-i.md#builder)封装的构建函数，并再通过[WrappedBuilder](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-wrappedbuilder-c.md#wrappedbuilder)封装后，实现全局封装；
+3. 各个路由页面不再提供组件，转为提供[@Builder](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-selectionmenu-editormenuoptions-i.md#builder)封装的构建函数，并再通过WrappedBuilder封装后，实现全局封装；
 4. 各个路由页面将模块名称、路由名称、WrappedBuilder封装后构建函数注册到路由模块；
 5. 当路由需要跳转到指定路由时，路由模块完成对指定路由模块的动态导入，并完成路由跳转。
 

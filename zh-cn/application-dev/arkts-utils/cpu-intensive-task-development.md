@@ -24,7 +24,7 @@ CPU密集型任务是指需要占用系统资源进行大量计算的任务，�
 
 2. 对数据进行分段，并通过任务组发起关联任务调度。
 
-   创建[TaskGroup](../reference/apis-arkts/arkts-apis/arkts-arkts-taskpool-taskgroup-c.md#taskgroup)，通过[addTask()](../reference/apis-arkts/arkts-apis/arkts-arkts-taskpool-taskgroup-c.md#addtask)添加对应的任务，然后通过[execute()](../reference/apis-arkts/arkts-apis/arkts-arkts-taskpool-asyncrunner-c.md#execute)执行任务组，并指定为[HIGH](../reference/apis-arkts/arkts-apis/arkts-arkts-taskpool-configs-i.md#priority)优先级。在当前任务组所有任务结束后，会将直方图处理结果同时返回。
+   创建TaskGroup，通过[addTask()](../reference/apis-arkts/arkts-apis/arkts-arkts-taskpool-taskgroup-c.md#addtask)添加对应的任务，然后通过[execute()](../reference/apis-arkts/arkts-apis/arkts-arkts-taskpool-asyncrunner-c.md#execute)执行任务组，并指定为[HIGH](../reference/apis-arkts/arkts-apis/arkts-arkts-taskpool-configs-i.md#priority)优先级。在当前任务组所有任务结束后，会将直方图处理结果同时返回。
 
 3. 汇总处理结果数组。
 
@@ -96,7 +96,7 @@ struct Index {
 
    ![newWorker](figures/newWorker.png)
 
-2. 在宿主线程中首先调用ThreadWorker的[constructor()](../reference/apis-arkts/arkts-apis/arkts-arkts-worker-restrictedworker-c-sys.md#constructor)方法创建Worker对象；然后通过注册onmessage()回调接收Worker线程发送过来的消息；最后通过调用[postMessage()](../reference/apis-arkts/arkts-apis/arkts-arkts-worker-dedicatedworkerglobalscope-i.md#postmessage)方法向Worker线程发送消息。
+2. 在宿主线程中首先调用ThreadWorker的constructor()方法创建Worker对象；然后通过注册onmessage()回调接收Worker线程发送过来的消息；最后通过调用[postMessage()](../reference/apis-arkts/arkts-apis/arkts-arkts-worker-dedicatedworkerglobalscope-i.md#postmessage)方法向Worker线程发送消息。
 
    例如，向Worker线程发送训练和预测的消息，并接收Worker线程发送回来的消息。
 

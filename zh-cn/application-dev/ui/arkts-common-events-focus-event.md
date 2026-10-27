@@ -79,7 +79,7 @@ export struct FocusActiveExample {
 
 **层级页面**
 
-层级页面是焦点框架中特定容器组件的统称，涵盖普通页面、[全屏模态](../reference/apis-arkui/arkui-js/js-components-common-transition.md)页面、[半模态](../reference/apis-arkui/arkui-js/js-components-common-transition.md)页面、[Dialog](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-dialog.md)、[Menu](../reference/apis-arkui/arkui-js/js-components-basic-menu.md)、[Popup](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-popup.md)、[NavBar](../reference/apis-arkui/arkts-components/arkts-arkui-navigation-comp-navbar-t.md#navbar)、NavDestination等。这些组件通常具有以下关键特性：
+层级页面是焦点框架中特定容器组件的统称，涵盖普通页面、全屏模态页面、半模态页面、[Dialog](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-dialog.md)、Menu、[Popup](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-popup.md)、NavBar、NavDestination等。这些组件通常具有以下关键特性：
 
 - 视觉层级独立性：从视觉呈现上看，这些组件独立于其他页面内容，并通常位于其上方，形成视觉上的层级差异。
 - 焦点跟随：此类组件在首次创建并展示之后，会立即将应用内焦点抢占。
@@ -610,7 +610,7 @@ enabled(value: boolean)
 visibility(value: Visibility)
 ```
 
-设置组件可见性属性[visibility](../reference/apis-arkui/arkts-apis/arkts-arkui-visibility-e.md#visibility)为`Visibility.None`或`Visibility.Hidden`，则组件不可见，无法获焦。
+设置组件可见性属性visibility为`Visibility.None`或`Visibility.Hidden`，则组件不可见，无法获焦。
 
 ```ts
 focusOnTouch(value: boolean)
@@ -931,7 +931,7 @@ export struct DefaultFocus {
 
 **defaultFocus与FocusPriority的区别**
 
-[defaultFocus](../reference/apis-arkui/arkts-apis/arkts-arkui-actionsheetbuttonoptions-i.md#defaultfocus)是用于指定[层级页面](#基础概念)首次展示时的默认获焦节点，[FocusPriority](../reference/apis-arkui/arkts-apis/arkts-arkui-focuspriority-e.md#focuspriority)是用于指定某个容器首次获焦时其子节点的获焦优先级。上述两个属性在某些场景同时配置时行为未定义，例如下面的场景，[层级页面](#基础概念)首次展示无法同时满足defaultFocus获焦和高优先级组件获焦。
+[defaultFocus](../reference/apis-arkui/arkts-apis/arkts-arkui-actionsheetbuttonoptions-i.md#defaultfocus)是用于指定[层级页面](#基础概念)首次展示时的默认获焦节点，FocusPriority是用于指定某个容器首次获焦时其子节点的获焦优先级。上述两个属性在某些场景同时配置时行为未定义，例如下面的场景，[层级页面](#基础概念)首次展示无法同时满足defaultFocus获焦和高优先级组件获焦。
 
 示例
 
@@ -984,7 +984,7 @@ export struct FocusScopePriorityPrevious {
 
 > **说明：**
 >
-> 最终绘制焦点激活态的组件的[zIndex](../reference/apis-arkui/arkts-apis/arkts-arkui-componentutils-imageitem-i-sys.md#zindex)默认会被抬升至INT_MAX，如果该组件已经配置了zIndex，则不做zIndex调整。该组件不再绘制焦点激活态时，例如组件失焦或是退出走焦态，zIndex恢复为默认层级。
+> 最终绘制焦点激活态的组件的zIndex默认会被抬升至INT_MAX，如果该组件已经配置了zIndex，则不做zIndex调整。该组件不再绘制焦点激活态时，例如组件失焦或是退出走焦态，zIndex恢复为默认层级。
 >
 
 ```ts
@@ -1615,40 +1615,40 @@ export struct FocusScopeIdExample {
 | DataPanel | 是       | false        |
 | [DatePicker](../reference/apis-arkui/c-apis/capi-arkui-nodeeventtype-datepicker.md) | 是       | true         |
 | [Divider](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-divider-t.md) | 是       | false        |
-| [Ellipse](../reference/apis-arkui/arkui-js/js-components-svg-ellipse.md)                 | 否       | false        |
+| Ellipse                 | 否       | false        |
 | Gauge | 是       | false        |
 | [Image](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-image-t.md) | 是       | false        |
 | [ImageAnimator](../reference/apis-arkui/c-apis/capi-arkui-nodeattributetype-imageanimator.md) | 否       | false        |
 | ImageSpan                 | 否       | false        |
 | Indicator | 是       | true        |
-| [Line](../reference/apis-arkui/arkui-js/js-components-svg-line.md)                 | 否       | false        |
+| Line                 | 否       | false        |
 | [LoadingProgress](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-loadingprogress-t.md) | 是       | true        |
 | [Marquee](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-marquee-t.md) | 否       | false        |
-| [Menu](../reference/apis-arkui/arkui-js/js-components-basic-menu.md) | 是       | true         |
+| Menu | 是       | true         |
 | MenuItem | 是       | true         |
 | MenuItemGroup | 否       | false         |
 | [MultiNavigation](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-multinavigation-multinavigation-s.md) | 否       | false         |
 | Navigation | 是       | true       |
 | NavRouter | 否       | false        |
 | NavDestination | 是       | true        |
-| [Path](../reference/apis-arkui/arkui-js/js-components-svg-path.md) | 否       | false        |
+| Path | 否       | false        |
 | PatternLock | 是       | true        |
-| [Polygon](../reference/apis-arkui/arkui-js/js-components-svg-polygon.md)                 | 否       | false        |
-| [Polyline](../reference/apis-arkui/arkui-js/js-components-svg-polyline.md)                 | 否       | false        |
+| Polygon                 | 否       | false        |
+| Polyline                 | 否       | false        |
 | [Progress](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-progress-t.md) | 是       | true        |
 | [QRCode](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-qrcode-t.md) | 是       | true        |
 | [Radio](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-radio-t.md) | 是       | true         |
 | [Rating](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-rating-t.md) | 是       | true         |
 | [Rect](../reference/apis-arkui/arkts-apis/arkts-arkui-display-rect-i.md) | 否       | false        |
 | RichEditor | 是       | true         |
-| [RichText](../reference/apis-arkui/arkui-js/js-components-basic-richtext.md) | 否       | false        |
+| RichText | 否       | false        |
 | ScrollBar | 否       | false        |
 | [Search](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-search-t.md) | 是       | true         |
 | [Select](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-select-t.md) | 是       | true         |
 | [Shape](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-shape.md) | 否       | false        |
 | [Slider](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-slider-t.md) | 是       | true         |
-| [Span](../reference/apis-arkui/arkui-js/js-components-basic-span.md) | 否       | false        |
-| [Stepper](../reference/apis-arkui/arkui-js/js-components-container-stepper.md) | 是       | true         |
+| Span | 否       | false        |
+| Stepper | 是       | true         |
 | StepperItem | 是       | true         |
 | SymbolSpan | 否       | false         |
 | [SymbolGlyph](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-symbolglyph-t.md) | 否       | false         |
@@ -1685,7 +1685,7 @@ export struct FocusScopeIdExample {
 | [ListItem](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-listitem-t.md) | 是     | true         |
 | [ListItemGroup](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-listitemgroup-t.md) | 是     | true         |
 | Navigator | 是     | true         |
-| [Refresh](../reference/apis-arkui/arkui-js/js-components-container-refresh.md) | 是     | true        |
+| Refresh | 是     | true        |
 | [RelativeContainer](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-relativecontainer-t.md) | 否     | false         |
 | [Row](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-row-t.md) | 是    | true         |
 | RowSplit | 是     | true         |
@@ -1693,7 +1693,7 @@ export struct FocusScopeIdExample {
 | SideBarContainer | 是     | true         |
 | [Stack](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-stack-t.md) | 是     | true         |
 | [Swiper](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-swiper-t.md) | 是     | true         |
-| [Tabs](../reference/apis-arkui/arkui-js/js-components-container-tabs.md) | 是     | true         |
+| Tabs | 是     | true         |
 | TabContent | 否     | false         |
 | [WaterFlow](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-waterflow-t.md)         | 否     | false         |
 | [WithTheme](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-theme.md)         | 是     | true         |

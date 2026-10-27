@@ -14,7 +14,7 @@
 
 ## 插队机制
 
-- Worker线程向宿主线程发送消息时，支持插队操作，并支持按优先级[Priority](../reference/apis-arkts/arkts-apis/arkts-arkts-worker-priority-e.md#priority)发送。
+- Worker线程向宿主线程发送消息时，支持插队操作，并支持按优先级Priority发送。
 - 可通过将消息插入到对应优先级消息队列的头部，实现插队操作。
 - 优先级越高的消息越早被宿主线程处理。处理顺序取决于优先级调度规则：IMMEDIATE > HIGH > LOW > IDLE。
   | 优先级 | 值 | 说明 |

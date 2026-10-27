@@ -35,9 +35,9 @@ HUKS在密钥管理扩展场景下提供一组“通用操作”接口，覆盖�
 
 1. 通过[获取资源ID](#获取资源id)，得到resourceId。
 
-2. 调用[openResource](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huksexternalcrypto-openresource-f.md#openresource)打开资源。
+2. 调用openResource打开资源。
 
-3. 操作执行完后，调用[closeResource](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huksexternalcrypto-closeresource-f.md#closeresource)关闭资源。
+3. 操作执行完后，调用closeResource关闭资源。
 
 **C++接口**
 
@@ -46,7 +46,7 @@ HUKS在密钥管理扩展场景下提供一组“通用操作”接口，覆盖�
    target_link_libraries(entry PUBLIC libhuks_ndk.z.so libhuks_external_crypto.z.so)
    ```
 
-2. 通过证书管理系统能力提供的openAuthorizeDialog获取[keyUri](../../reference/apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-certificatemanagerdialog-certreference-i.md#certreference)，并将其作为resourceId。
+2. 通过证书管理系统能力提供的openAuthorizeDialog获取keyUri，并将其作为resourceId。
 
 3. 初始化参数集：通过OH_Huks_InitExternalCryptoParamSet、OH_Huks_AddExternalCryptoParams、OH_Huks_BuildExternalCryptoParamSet构造参数集paramSet。
 
@@ -184,7 +184,7 @@ static napi_value CloseResource(napi_env env, napi_callback_info info)
 
 ## 获取资源ID
 
-在密钥管理扩展场景下，资源ID用于标识密钥管理扩展服务中的具体资源（如UKey设备、容器、密钥等）。从API版本26.0.0开始，应用可通过[getResourceId](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huksexternalcrypto-getresourceid-f.md#getresourceid)获取资源ID，并使用该资源ID执行密钥生成与导入导出、通用查询、PIN码认证及清除PIN码认证状态等后续操作。
+在密钥管理扩展场景下，资源ID用于标识密钥管理扩展服务中的具体资源（如UKey设备、容器、密钥等）。从API版本26.0.0开始，应用可通过getResourceId获取资源ID，并使用该资源ID执行密钥生成与导入导出、通用查询、PIN码认证及清除PIN码认证状态等后续操作。
 
 ### 获取途径
 
@@ -194,7 +194,7 @@ static napi_value CloseResource(napi_env env, napi_callback_info info)
 
 适用于浏览器双向SSL认证等需要用户选择证书的场景。
 
-通过openAuthorizeDialog（由证书管理提供）展示证书列表，由用户选择证书。返回的[keyUri](../../reference/apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-certificatemanagerdialog-certreference-i.md#certreference)即为resourceId，每个证书链对应1个resourceId。
+通过openAuthorizeDialog（由证书管理提供）展示证书列表，由用户选择证书。返回的keyUri即为resourceId，每个证书链对应1个resourceId。
 
 **通过getResourceId接口获取**
 
@@ -207,11 +207,11 @@ static napi_value CloseResource(napi_env env, napi_callback_info info)
 1. 传入提供者名称（providerName），建议包含厂商信息，全局唯一，长度最大为128字节。
 
 2. 构造必选参数：
-   - 通过[HUKS_EXT_CRYPTO_TAG_ABILITY_NAME](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huksexternalcrypto-huksexternalcryptotag-e.md#huksexternalcryptotag)传入CryptoExtensionAbility名称。
-   - 通过[HUKS_EXT_CRYPTO_TAG_BUNDLE_NAME](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huksexternalcrypto-huksexternalcryptotag-e.md#huksexternalcryptotag)传入应用包名，包名长度为7-127。
-   - 通过[HUKS_EXT_CRYPTO_TAG_RESOURCE_INFO](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huksexternalcrypto-huksexternalcryptotag-e.md#huksexternalcryptotag)传入厂商自定义的资源信息。
+   - 通过HUKS_EXT_CRYPTO_TAG_ABILITY_NAME传入CryptoExtensionAbility名称。
+   - 通过HUKS_EXT_CRYPTO_TAG_BUNDLE_NAME传入应用包名，包名长度为7-127。
+   - 通过HUKS_EXT_CRYPTO_TAG_RESOURCE_INFO传入厂商自定义的资源信息。
 
-3. 调用[getResourceId](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huksexternalcrypto-getresourceid-f.md#getresourceid)获取resourceId。
+3. 调用getResourceId获取resourceId。
 
 ### 开发示例
 
@@ -254,7 +254,7 @@ async function getResourceId(): Promise<string> {
 
 ## 查询
 
-从API版本22开始，huksExternalCrypto提供查询[getProperty](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huksexternalcrypto-getproperty-f.md#getproperty)接口。从密钥管理扩展服务中获取通用属性信息，完成属性查询操作。
+从API版本22开始，huksExternalCrypto提供查询getProperty接口。从密钥管理扩展服务中获取通用属性信息，完成属性查询操作。
 
 ### 规格说明
 
@@ -264,7 +264,7 @@ async function getResourceId(): Promise<string> {
 
 - propertyId需要与密钥管理扩展约定调用规则，长度为1-100字节。建议采用GM/T 0016-2023标准中定义的SKF函数名称。
 
-- 输出参数通过[HUKS_EXT_CRYPTO_TAG_EXTRA_DATA](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huksexternalcrypto-huksexternalcryptotag-e.md#huksexternalcryptotag)携带，应用可以提取查询的属性数据，并按照和密钥管理扩展服务实现方的约定，解析数据。
+- 输出参数通过HUKS_EXT_CRYPTO_TAG_EXTRA_DATA携带，应用可以提取查询的属性数据，并按照和密钥管理扩展服务实现方的约定，解析数据。
 
 ### 开发步骤
 
@@ -274,7 +274,7 @@ async function getResourceId(): Promise<string> {
 
 2. 构造propertyId和可选输入参数。
 
-3. 调用[getProperty](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huksexternalcrypto-getproperty-f.md#getproperty)获取属性信息。
+3. 调用getProperty获取属性信息。
 
 **C++接口**
 
@@ -431,7 +431,7 @@ static napi_value GetProperty(napi_env env, napi_callback_info info)
 
 ## 属性设置
 
-从API版本22开始，huksExternalCrypto提供设置属性[setProperty](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huksexternalcrypto-setproperty-f.md#setproperty)的接口。
+从API版本22开始，huksExternalCrypto提供设置属性setProperty的接口。
 
 ### 规格说明
 
@@ -447,7 +447,7 @@ static napi_value GetProperty(napi_env env, napi_callback_info info)
 
 2. 构造propertyId和可选输入参数。
 
-3. 调用[setProperty](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huksexternalcrypto-setproperty-f.md#setproperty)设置属性值。
+3. 调用setProperty设置属性值。
 
 ### 开发示例
 
@@ -470,13 +470,13 @@ async function setProperty(resourceId: string, propertyId: string): Promise<void
 
 ## 获取错误信息
 
-从API版本26.0.0开始，huksExternalCrypto提供[getErrorInfo](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huksexternalcrypto-geterrorinfo-f.md#geterrorinfo)接口，用于获取最近一次密钥管理扩展操作的详细错误信息。
+从API版本26.0.0开始，huksExternalCrypto提供getErrorInfo接口，用于获取最近一次密钥管理扩展操作的详细错误信息。
 
 该错误信息由密钥管理扩展（[CryptoExtensionAbility](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-security-cryptoextensionability.md)）返回，可用于辅助定位问题。
 
 ### 规格说明
 
-getErrorInfo接口返回值类型为[HuksExternalErrorInfo](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huksexternalcrypto-huksexternalerrorinfo-i.md#huksexternalerrorinfo)，其中errno字段为密钥管理扩展服务写入的详细错误码，errorDesc为密钥管理扩展服务写入的详细错误信息，最大长度为256字节，超出部分截断后返回。
+getErrorInfo接口返回值类型为HuksExternalErrorInfo，其中errno字段为密钥管理扩展服务写入的详细错误码，errorDesc为密钥管理扩展服务写入的详细错误信息，最大长度为256字节，超出部分截断后返回。
 
 **错误信息更新规则：**
 
@@ -496,7 +496,7 @@ getErrorInfo接口返回值类型为[HuksExternalErrorInfo](../../reference/apis
 
 1. 调用密钥管理扩展接口（如authUkeyPin、getProperty等）。
 
-2. 操作失败后，调用[getErrorInfo](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-huksexternalcrypto-geterrorinfo-f.md#geterrorinfo)获取Extension错误信息。
+2. 操作失败后，调用getErrorInfo获取Extension错误信息。
 
 ### 开发示例
 

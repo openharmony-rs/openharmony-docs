@@ -90,7 +90,7 @@ HDF扩展驱动框架为扩展外设驱动开发，提供稳定统一的外设�
 | 名称 | 作用 | 
 | --------- | --------- |
 | PerformanceAnalysisKit | 引入[hilog](../../reference/apis-performance-analysis-kit/arkts-apis/arkts-performanceanalysis-hilog.md)用于日志打印。| 
-| BasicServicesKit       | 引入[BusinessError](../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-base-businesserror-i.md#businesserror)用于捕获错误信息。 |
+| BasicServicesKit       | 引入BusinessError用于捕获错误信息。 |
 | IPCKit                 | 引入[rpc](../../reference/apis-ipc-kit/arkts-apis/arkts-ipc-rpc.md)用于驱动与客户端IPC（Inter-Process Communication）通信。|
 | AbilityKit             | 引入[@ohos.application.Want (Want)](../../reference/apis-ability-kit/arkts-apis/arkts-ability-want.md)用于生命周期管理。|
 

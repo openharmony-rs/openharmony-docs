@@ -10,7 +10,7 @@
 
 ## 文本显示（Text/Span）常见问题
 
-以下内容介绍了使用[Text](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-text-t.md)和[Span](../reference/apis-arkui/arkui-js/js-components-basic-span.md)组件进行文本显示时可能遇到的常见问题，包括文本截断、添加标签、显示表情等场景的处理方法。
+以下内容介绍了使用[Text](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-text-t.md)和Span组件进行文本显示时可能遇到的常见问题，包括文本截断、添加标签、显示表情等场景的处理方法。
 
 ### Text组件尾部省略号后为什么还有一段空白，没有占满组件宽度
 
@@ -136,7 +136,7 @@
 
 **解决措施一**
 
-如果标签和中间的长文本需在同一行显示，开发者可能会考虑使用[Span](../reference/apis-arkui/arkui-js/js-components-basic-span.md)实现，但是Span不支持设置尺寸。此时，可以在[弹性布局 (Flex)](./arkts-layout-development-flex-layout.md)或者[Row](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-row-t.md)中放置标签和长文本，并为长文本设置[textOverflow](../reference/apis-arkui/arkts-apis/arkts-arkui-textoverflow-e.md#textoverflow)属性，以确保文本超长时能够自适应截断，显示在一行之内。
+如果标签和中间的长文本需在同一行显示，开发者可能会考虑使用Span实现，但是Span不支持设置尺寸。此时，可以在[弹性布局 (Flex)](./arkts-layout-development-flex-layout.md)或者[Row](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-row-t.md)中放置标签和长文本，并为长文本设置textOverflow属性，以确保文本超长时能够自适应截断，显示在一行之内。
 
 实现步骤：
 
@@ -267,7 +267,7 @@ emoji表情有时以表情符号的形式表示，如何将表情符号转换为
 
 **解决措施**
 
-使用正则表达式解析表情符号，再将表情符号与图片资源建立映射，通过[Span](../reference/apis-arkui/arkui-js/js-components-basic-span.md)和ImageSpan同时展示表情和文字。
+使用正则表达式解析表情符号，再将表情符号与图片资源建立映射，通过Span和ImageSpan同时展示表情和文字。
 
   <!-- @[Displayed_Together](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/DisplayedTogether.ets) -->
   
@@ -382,7 +382,7 @@ Text组件中内容过多，超出父组件容器[Column](../reference/apis-arku
 
 **解决措施一**
 
-Text文本是自动折行的，当没有限制Text高度[height](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-shape-shapesize-i.md#height)时，Text高度在文本的行数增加时自动调整。可以通过设置[maxLines](../reference/apis-arkui/arkts-components/arkts-arkui-text-comp-attribute.md#maxlines)属性限制文本的最大行数，如果有多余的文本默认会被截断。也可以通过[textOverflow](../reference/apis-arkui/arkts-apis/arkts-arkui-textoverflow-e.md#textoverflow)属性来指定截断方式。
+Text文本是自动折行的，当没有限制Text高度[height](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-shape-shapesize-i.md#height)时，Text高度在文本的行数增加时自动调整。可以通过设置[maxLines](../reference/apis-arkui/arkts-components/arkts-arkui-text-comp-attribute.md#maxlines)属性限制文本的最大行数，如果有多余的文本默认会被截断。也可以通过textOverflow属性来指定截断方式。
 
 以下示例展示了限制Text组件不超过三行的场景。
 
@@ -467,7 +467,7 @@ Text文本是自动折行的，当没有限制Text高度[height](../reference/ap
 
 **解决措施**
 
-若希望由selection触发自定义菜单，可将TextResponseType设置为DEFAULT。同时，在[Menu](../reference/apis-arkui/arkui-js/js-components-basic-menu.md)组件上通过配置font属性，即可自定义菜单的字体大小，灵活适配界面设计需求。
+若希望由selection触发自定义菜单，可将TextResponseType设置为DEFAULT。同时，在Menu组件上通过配置font属性，即可自定义菜单的字体大小，灵活适配界面设计需求。
   <!-- @[How_To_Set_Custom_Selection_Menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/faq/HowToSetCustomSelectionMenu.ets) -->
 
   ``` TypeScript
@@ -585,7 +585,7 @@ export struct HowToDisableTextLongPressExample {
 
 当TextInput组件处于选中状态并显示操作手柄时，选中区域和操作手柄可能不在同一图层渲染。其中，选中区域与输入框在同一图层，而操作手柄则在更高的图层上。因此，当输入框被其他元素遮挡时，选中区域也会被遮挡，但操作手柄仍然可见。
 
-TextInput被遮挡时，如果通过[TextInputController](../reference/apis-arkui/arkts-components/arkts-arkui-textinput-comp-textinputcontroller-c.md#textinputcontroller)设置焦点和选中区域会出现上述现象。涉及的选中区域设置接口包括[selectAll](../reference/apis-arkui/arkts-components/arkts-arkui-textinput-comp-attribute.md#selectall)和[setTextSelection](../reference/apis-arkui/arkts-components/arkts-arkui-textinput-comp-textinputcontroller-c.md#settextselection)。建议检查应用代码中以下接口的调用时机，在输入框被遮挡后避免设置选中区域。
+TextInput被遮挡时，如果通过TextInputController设置焦点和选中区域会出现上述现象。涉及的选中区域设置接口包括[selectAll](../reference/apis-arkui/arkts-components/arkts-arkui-textinput-comp-attribute.md#selectall)和[setTextSelection](../reference/apis-arkui/arkts-components/arkts-arkui-textinput-comp-textinputcontroller-c.md#settextselection)。建议检查应用代码中以下接口的调用时机，在输入框被遮挡后避免设置选中区域。
 
 | 组件      | 接口              |
 |-----------|-------------------|

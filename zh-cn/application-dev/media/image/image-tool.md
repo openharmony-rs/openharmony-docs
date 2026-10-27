@@ -12,7 +12,7 @@ Exif（Exchangeable image file format）是专门为数码相机的照片设定�
 
 在图库、相机、图片编辑等应用中，开发者可以读取图片的拍摄时间、方向、焦距、地理位置等Exif信息，也可以在需要时修改部分Exif信息。例如，当摄像机的手动镜头参数无法自动写入Exif信息，或者因相机断电导致拍摄时间错误时，可手动修正对应的Exif数据。
 
-系统目前仅支持读取和修改部分Exif信息，具体支持范围请参见[PropertyKey](../../reference/apis-image-kit/arkts-apis/arkts-image-image-propertykey-e-sys.md#propertykey)。不同图片格式对Exif信息的读写支持情况如下。
+系统目前仅支持读取和修改部分Exif信息，具体支持范围请参见PropertyKey。不同图片格式对Exif信息的读写支持情况如下。
 
 | 图片格式 | 读取Exif信息 | 修改Exif信息 |
 | -------- | -------- | -------- |

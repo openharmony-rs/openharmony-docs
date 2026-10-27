@@ -17,9 +17,9 @@ HMAC使用指定的摘要算法，以共享密钥和消息作为输入，生成�
 
 ### HMAC（一次性传入）
 
-1. 调用[cryptoFramework.createMac](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-createmac-f.md#createmac)，指定摘要算法SHA256，生成消息认证码实例（Mac）。
+1. 调用cryptoFramework.createMac，指定摘要算法SHA256，生成消息认证码实例（Mac）。
 
-2. 调用[cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-createsymkeygenerator-f.md#createsymkeygenerator)、[SymKeyGenerator.convertKey](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-asykeygenerator-i.md#convertkey-1)，生成密钥算法为HMAC的对称密钥（SymKey）。
+2. 调用cryptoFramework.createSymKeyGenerator、[SymKeyGenerator.convertKey](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-asykeygenerator-i.md#convertkey-1)，生成密钥算法为HMAC的对称密钥（SymKey）。
 
    详细开发指导请参考[指定二进制数据生成对称密钥](crypto-convert-binary-data-to-sym-key.md)。
 
@@ -100,9 +100,9 @@ HMAC使用指定的摘要算法，以共享密钥和消息作为输入，生成�
 
 ### 分段HMAC
 
-1. 调用[cryptoFramework.createMac](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-createmac-f.md#createmac)，指定摘要算法SHA256，生成消息认证码实例（Mac）。
+1. 调用cryptoFramework.createMac，指定摘要算法SHA256，生成消息认证码实例（Mac）。
 
-2. 调用[cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-createsymkeygenerator-f.md#createsymkeygenerator)和[SymKeyGenerator.convertKey](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-asykeygenerator-i.md#convertkey-1)，生成密钥算法为HMAC的对称密钥（SymKey）。
+2. 调用cryptoFramework.createSymKeyGenerator和[SymKeyGenerator.convertKey](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-asykeygenerator-i.md#convertkey-1)，生成密钥算法为HMAC的对称密钥（SymKey）。
 
    生成对称密钥的开发指导，请参考[指定二进制数据生成对称密钥](crypto-convert-binary-data-to-sym-key.md)。
 
@@ -197,9 +197,9 @@ HMAC使用指定的摘要算法，以共享密钥和消息作为输入，生成�
 
 
 ### HMAC（HmacSpec作为参数传入）
-1. 调用[cryptoFramework.createMac](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-createmac-f.md#createmac)，指定消息认证码算法HMAC，指定摘要算法SHA256，生成消息认证码实例（Mac）。
+1. 调用cryptoFramework.createMac，指定消息认证码算法HMAC，指定摘要算法SHA256，生成消息认证码实例（Mac）。
 
-2. 调用[cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-createsymkeygenerator-f.md#createsymkeygenerator)和[SymKeyGenerator.convertKey](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-asykeygenerator-i.md#convertkey-1)，生成密钥算法为HMAC的对称密钥（SymKey）。
+2. 调用cryptoFramework.createSymKeyGenerator和[SymKeyGenerator.convertKey](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-asykeygenerator-i.md#convertkey-1)，生成密钥算法为HMAC的对称密钥（SymKey）。
 
    参考[指定二进制数据生成对称密钥](crypto-convert-binary-data-to-sym-key.md)。
 

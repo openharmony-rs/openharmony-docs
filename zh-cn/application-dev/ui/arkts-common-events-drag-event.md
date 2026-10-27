@@ -11,8 +11,8 @@
 ## 基本概念
 
 * 拖拽操作：在可响应拖出的组件上长按并滑动以触发拖拽行为，当用户释放手指或鼠标时，拖拽操作即告结束。
-* 拖拽背景（背板）：用户拖动数据时的形象化表示。开发者可以通过[onDragStart](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#ondragstart)的[CustomBuilder](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-custombuilder-t.md#custombuilder)或[DragItemInfo](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-dragiteminfo-i.md#dragiteminfo)进行设置，也可以通过[dragPreview](../reference/apis-arkui/arkts-apis/arkts-arkui-dragcontroller-dragpreview-c.md#dragpreview)通用属性进行自定义。
-* 拖拽内容：被拖动的数据，使用UDMF统一API [UnifiedData](../reference/apis-arkdata/arkts-apis/arkts-arkdata-unifieddatachannel-unifieddata-c.md#unifieddata) 进行封装，确保数据的一致性和安全性。
+* 拖拽背景（背板）：用户拖动数据时的形象化表示。开发者可以通过[onDragStart](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#ondragstart)的CustomBuilder或DragItemInfo进行设置，也可以通过dragPreview通用属性进行自定义。
+* 拖拽内容：被拖动的数据，使用UDMF统一API UnifiedData 进行封装，确保数据的一致性和安全性。
 * 拖出对象：触发拖拽操作并提供数据的组件，通常具有响应拖拽的特性。
 * 拖入目标：可接收并处理拖动数据的组件，能够根据拖入的数据执行相应的操作。
 * 拖拽点：鼠标或手指与屏幕的接触位置，用于判断是否进入组件范围。判定依据是接触点是否位于组件的范围内。
@@ -39,20 +39,20 @@
 
 | **回调事件** | **说明**|
 | ---------------- | ------------------------|
-| [onDragStart](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#ondragstart) | 拖出的组件产生拖出动作时，该回调触发。<br>该回调可以感知拖拽行为的发起，开发者可以在onDragStart方法中设置拖拽过程中传递的数据，并自定义拖拽的背板图像。建议开发者采用[DragItemInfo](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-dragiteminfo-i.md#dragiteminfo)中的pixelMap字段来返回背板图像，避免使用[CustomBuilder](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-custombuilder-t.md#custombuilder)，因为后者可能会带来额外的性能开销。|
+| [onDragStart](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#ondragstart) | 拖出的组件产生拖出动作时，该回调触发。<br>该回调可以感知拖拽行为的发起，开发者可以在onDragStart方法中设置拖拽过程中传递的数据，并自定义拖拽的背板图像。建议开发者采用DragItemInfo中的pixelMap字段来返回背板图像，避免使用CustomBuilder，因为后者可能会带来额外的性能开销。|
 | [onDragEnter](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#ondragenter) | 当拖拽操作的拖拽点进入组件的范围时，如果该组件监听了[onDrop](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#ondrop)事件，此回调将会被触发。|
-| [onDragMove](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#ondragmove) | 当拖拽点在组件范围内移动时，如果该组件监听了onDrop事件，此回调将会被触发。<br>在这一过程中，可以通过调用[DragEvent](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-dragevent-i-sys.md#dragevent)中的setResult方法来影响系统在部分场景下的外观表现：<br>1. 设置DragResult.DROP\_ENABLED，组件允许落入。<br>2. 设置DragResult.DROP\_DISABLED，组件不允许落入。|
+| [onDragMove](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#ondragmove) | 当拖拽点在组件范围内移动时，如果该组件监听了onDrop事件，此回调将会被触发。<br>在这一过程中，可以通过调用DragEvent中的setResult方法来影响系统在部分场景下的外观表现：<br>1. 设置DragResult.DROP\_ENABLED，组件允许落入。<br>2. 设置DragResult.DROP\_DISABLED，组件不允许落入。|
 | [onDragLeave](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#ondragleave) | 当拖拽点移出组件范围时，如果该组件监听了onDrop事件，此回调将会被触发。<br>在以下两种情况下，系统默认不会触发onDragLeave事件：<br>1. 父组件移动到子组件。<br>2. 目标组件与当前组件布局有重叠。<br>API version 12开始可通过[UIContext](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md)中的[setDragEventStrictReportingEnabled](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-dragcontroller-c.md#setdrageventstrictreportingenabled)方法严格触发onDragLeave事件。|
 | [onDrop](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#ondrop) | 当用户在组件范围内释放拖拽操作时，此回调会被触发。开发者需在此回调中通过DragEvent的setResult方法来设置拖拽结果，否则在拖出方组件的onDragEnd方法中，通过getResult方法获取的将只是默认的处理结果DragResult.DRAG\_FAILED。<br>此回调是开发者干预系统默认拖入处理行为的关键点，系统会优先执行开发者定义的onDrop回调。通过在onDrop回调中调用setResult方法，开发者可以告知系统如何处理被拖拽的数据。<br>1. 设置 DragResult.DRAG\_SUCCESSFUL，数据完全由开发者自己处理，系统不进行处理。<br>2. 设置DragResult.DRAG\_FAILED，数据不再由系统继续处理。<br>3. 设置DragResult.DRAG\_CANCELED，系统也不需要进行数据处理。<br>4. 设置DragResult.DROP\_ENABLED或DragResult.DROP\_DISABLED会被忽略，等同于设置DragResult.DRAG\_SUCCESSFUL。|
 | [onDragEnd](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#ondragend) | 当用户释放拖拽时，拖拽活动终止，发起拖出动作的组件将触发该回调函数。|
 | [onPreDrag](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#onpredrag) | 当触发拖拽事件的不同阶段时，绑定此事件的组件会触发该回调函数。<br>开发者可利用此方法，在拖拽开始前的不同阶段，根据PreDragStatus枚举准备相应数据。<br>1. ACTION\_DETECTING\_STATUS：拖拽手势启动阶段。按下50ms时触发。<br>2. READY\_TO\_TRIGGER\_DRAG\_ACTION：拖拽准备完成，可发起拖拽阶段。按下500ms时触发。<br>3. PREVIEW\_LIFT\_STARTED：拖拽浮起动效发起阶段。按下800ms时触发。<br>4. PREVIEW\_LIFT\_FINISHED：拖拽浮起动效结束阶段。浮起动效完全结束时触发。<br>5. PREVIEW\_LANDING\_STARTED：拖拽落回动效发起阶段。落回动效发起时触发。<br>6. PREVIEW\_LANDING\_FINISHED：拖拽落回动效结束阶段。落回动效结束时触发。<br>7. ACTION\_CANCELED\_BEFORE\_DRAG：拖拽浮起落位动效中断。已满足READY_TO_TRIGGER_DRAG_ACTION状态后，未达到动效阶段，手指抬起时触发。<br>8. PREPARING\_FOR_DRAG\_DETECTION<sup>18+</sup>：拖拽准备阶段，正在为拖拽检测做准备。按下350ms时触发。|
-| [onDragSpringLoading](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#ondragspringloading) | 当拖拽对象悬停在绑定此事件的组件上时，触发回调通知。此时只有一个目标可以成为响应方，并且子组件始终具有更高的响应优先级。<br>开发者可以通过[SpringLoadingContext](../reference/apis-arkui/arkts-apis/arkts-arkui-dragcontroller-springloadingcontext-c.md#springloadingcontext)配置回调的上下文信息，包括当前悬停检测的状态、一次悬停检测中的回调通知次数、拖拽信息和配置信息等。<br>从API version 20开始，支持调用该接口。|
+| [onDragSpringLoading](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#ondragspringloading) | 当拖拽对象悬停在绑定此事件的组件上时，触发回调通知。此时只有一个目标可以成为响应方，并且子组件始终具有更高的响应优先级。<br>开发者可以通过SpringLoadingContext配置回调的上下文信息，包括当前悬停检测的状态、一次悬停检测中的回调通知次数、拖拽信息和配置信息等。<br>从API version 20开始，支持调用该接口。|
 
 ## 拖拽事件
 
-拖拽回调函数可以接收[DragEvent](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-dragevent-i-sys.md#dragevent)对象。通过该对象发出拖拽事件，其中包含了拖拽行为的详细信息，以及拖出时组件向系统提供的数据等。
+拖拽回调函数可以接收DragEvent对象。通过该对象发出拖拽事件，其中包含了拖拽行为的详细信息，以及拖出时组件向系统提供的数据等。
 
-通过[DragEvent](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-dragevent-i-sys.md#dragevent)支持的get方法可以获取拖拽行为的详细信息。下表展示了在相应的拖拽回调中，这些get方法是否能够返回有效数据。
+通过DragEvent支持的get方法可以获取拖拽行为的详细信息。下表展示了在相应的拖拽回调中，这些get方法是否能够返回有效数据。
 | 回调事件 | onDragStart | onDragEnter | onDragMove | onDragLeave | onDrop | onDragEnd |
 | - | - | - | - | - | - | - |
 | getData         |—|—|—|—| 支持 |—|
@@ -71,7 +71,7 @@
 | getGlobalDisplayX/Y | 支持 | 支持 | 支持 | 支持 | 支持 |—|
 | behavior        |—|—|—|—|—| 支持 |
 
-[DragEvent](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-dragevent-i-sys.md#dragevent)支持相关set方法向系统传递信息，这些信息部分会影响系统对UI或数据的处理方式。下表列出了set方法应该在回调的哪个阶段执行才会被系统接收并处理。
+DragEvent支持相关set方法向系统传递信息，这些信息部分会影响系统对UI或数据的处理方式。下表列出了set方法应该在回调的哪个阶段执行才会被系统接收并处理。
 | 回调事件 | onDragStart | onDragEnter | onDragMove | onDragLeave | onDrop |
 | - | - | - | - | - | - |
 | useCustomDropAnimation |—|—|—|—| 支持 |
@@ -82,7 +82,7 @@
 
 ## 拖拽背板图
 
-在拖拽移动过程中显示的背板图并非组件本身，而是表示用户拖动的数据，开发者可将其设定为任意可显示的图像。具体而言，onDragStart回调中返回的[CustomBuilder](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-custombuilder-t.md#custombuilder)或[DragItemInfo](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-dragiteminfo-i.md#dragiteminfo)的pixelMap字段可以用于设置拖拽移动过程中的背板图，而浮起图则默认采用组件本身的截图。[dragPreview](../reference/apis-arkui/arkts-apis/arkts-arkui-dragcontroller-dragpreview-c.md#dragpreview)属性中设定的CustomBuilder或DragItemInfo的pixelMap字段可以用于配置浮起和拖拽过程的背板图。若开发者未配置背板图，系统将自动采用组件本身的截图作为拖拽和浮起时的背板图。
+在拖拽移动过程中显示的背板图并非组件本身，而是表示用户拖动的数据，开发者可将其设定为任意可显示的图像。具体而言，onDragStart回调中返回的CustomBuilder或DragItemInfo的pixelMap字段可以用于设置拖拽移动过程中的背板图，而浮起图则默认采用组件本身的截图。dragPreview属性中设定的CustomBuilder或DragItemInfo的pixelMap字段可以用于配置浮起和拖拽过程的背板图。若开发者未配置背板图，系统将自动采用组件本身的截图作为拖拽和浮起时的背板图。
 
 拖拽背板图当前支持设置透明度、圆角、阴影和模糊，具体用法见拖拽控制。
 
@@ -241,7 +241,7 @@
      uniformTypeDescriptor.UniformDataType.PLAIN_TEXT])
    ```
 
-   在实现onDrop回调的情况下，还可以在onDragMove中设置DragResult为DROP_ENABLED，并将[DragBehavior](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-dragbehavior-e.md#dragbehavior)设置为COPY或MOVE，以此来控制角标中的加号是否显示。当设置为COPY时，角标显示加号；设置为MOVE时，角标不显示加号。
+   在实现onDrop回调的情况下，还可以在onDragMove中设置DragResult为DROP_ENABLED，并将DragBehavior设置为COPY或MOVE，以此来控制角标中的加号是否显示。当设置为COPY时，角标显示加号；设置为MOVE时，角标不显示加号。
 
    <!-- @[set_drag_behavior_move](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) --> 
    
@@ -553,7 +553,7 @@ export struct DefaultDrag {
 
 2. 优化多选拖拽性能。
 
-   在多选拖拽操作中，当多选触发聚拢动画效果时，系统会截取当前屏幕内显示的选中组件图像。如果选中组件数量过多，可能会造成较高的性能消耗。为了优化性能，多选拖拽功能支持从[dragPreview](../reference/apis-arkui/arkts-apis/arkts-arkui-dragcontroller-dragpreview-c.md#dragpreview)中获取截图，用以实现聚拢动画效果，从而有效节省系统资源。
+   在多选拖拽操作中，当多选触发聚拢动画效果时，系统会截取当前屏幕内显示的选中组件图像。如果选中组件数量过多，可能会造成较高的性能消耗。为了优化性能，多选拖拽功能支持从dragPreview中获取截图，用以实现聚拢动画效果，从而有效节省系统资源。
 
    <!-- @[dragPreview_Start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridEts.ets) -->
    
@@ -613,7 +613,7 @@ export struct DefaultDrag {
 
 3. 多选显示效果。
 
-    通过[stateStyles](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-statestyles-i.md#statestyles)可以设置选中态和非选中态的显示效果，方便区分。
+    通过stateStyles可以设置选中态和非选中态的显示效果，方便区分。
 
     <!-- @[grid_styles_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridEts.ets) --> 
     
@@ -1075,7 +1075,7 @@ export struct DropAnimationExample {
 
 4. 数据准备未完成时设置主动阻塞拖拽。
 
-   在发起拖拽时，应判断数据是否已准备完成。若数据未准备完成，则需向系统发出[WAITING](../reference/apis-arkui/arkts-apis/arkts-arkui-dragcontroller-dragstartrequeststatus-e.md#dragstartrequeststatus)信号。此时，若手指做出移动手势，背板图将停留在原地，直至应用发出READY信号或超出主动阻塞的最大限制时间（5s）。若数据已准备完成，则可直接将数据设置到[dragEvent](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-dragevent-i-sys.md#dragevent)中。此外，在使用主动阻塞功能时，需保存当前的dragEvent，并在数据准备完成时进行数据设置；在非主动阻塞场景下，不建议保存当前的dragEvent。
+   在发起拖拽时，应判断数据是否已准备完成。若数据未准备完成，则需向系统发出WAITING信号。此时，若手指做出移动手势，背板图将停留在原地，直至应用发出READY信号或超出主动阻塞的最大限制时间（5s）。若数据已准备完成，则可直接将数据设置到dragEvent中。此外，在使用主动阻塞功能时，需保存当前的dragEvent，并在数据准备完成时进行数据设置；在非主动阻塞场景下，不建议保存当前的dragEvent。
 
    <!-- @[gridExample_onDragStart](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridExamples.ets) -->
    

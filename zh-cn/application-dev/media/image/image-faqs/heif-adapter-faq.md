@@ -44,7 +44,7 @@ ArkWeb图片上传可参考：[使用Web组件上传文件](../../../web/web-fil
 
 **解决措施**
 
-如果应用需要获取HEIF原图，应显式声明应用支持HEIF图片。通过[PhotoViewPicker](../../../reference/apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoviewpicker-c.md)获取图片时，可在[PhotoSelectOptions](../../../reference/apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoselectoptions-c-sys.md#photoselectoptions)中配置`assetCompatibleCapability`，并通过`preferredCompatibleMode`指定首选兼容模式。
+如果应用需要获取HEIF原图，应显式声明应用支持HEIF图片。通过[PhotoViewPicker](../../../reference/apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoviewpicker-c.md)获取图片时，可在PhotoSelectOptions中配置`assetCompatibleCapability`，并通过`preferredCompatibleMode`指定首选兼容模式。
 
 - `assetCompatibleCapability.supportedHighResolution`是`AssetCompatibleCapability`的必填字段，表示应用支持高分辨率资产。
 - `assetCompatibleCapability.supportedMimeType`用于声明应用支持的MIME类型（从API版本26.0.0开始支持），配置`image/heic`表示应用支持HEIF图片。
@@ -81,9 +81,9 @@ async function selectHeifOriginalWithPhotoViewPicker(): Promise<photoAccessHelpe
 }
 ```
 
-获取到[photoAccessHelper.PhotoSelectResult](../../../reference/apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoselectresult-c.md#photoselectresult)结果后，应用可使用`photoSelectResult.photoUris`读取返回URI。
+获取到photoAccessHelper.PhotoSelectResult结果后，应用可使用`photoSelectResult.photoUris`读取返回URI。
 
-如果应用不通过PhotoViewPicker选择图片，而是通过[PhotoAccessHelper](../../../reference/apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoaccesshelper-i.md)查询、打开或批量处理媒体资产。例如网盘、备份、内容归档等应用场景，可使用[setAssetCompatibleCapability](../../../reference/apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoaccesshelper-i-sys.md#setassetcompatiblecapability)接口配置[AssetCompatibleCapability](../../../reference/apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-assetcompatiblecapability-i.md#assetcompatiblecapability)，声明应用支持`image/heic`。配置后再通过`getAssets`等接口访问资产。
+如果应用不通过PhotoViewPicker选择图片，而是通过[PhotoAccessHelper](../../../reference/apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoaccesshelper-i.md)查询、打开或批量处理媒体资产。例如网盘、备份、内容归档等应用场景，可使用setAssetCompatibleCapability接口配置AssetCompatibleCapability，声明应用支持`image/heic`。配置后再通过`getAssets`等接口访问资产。
 
 以打开结果集中的第一条资产为例，实际业务可通过`predicates`添加筛选条件定位目标资产。
 
@@ -134,9 +134,9 @@ async function openFirstPhotoAssetFd(
 
 **可能原因**
 
-应用根据URI后缀、文件后缀名或媒体库[PhotoKeys](../../../reference/apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photokeys-e-sys.md#photokeys)记录的`MEDIA_SUFFIX`作为图片文件格式的依据。文件真实格式应以其二进制数据内容为准。
+应用根据URI后缀、文件后缀名或媒体库PhotoKeys记录的`MEDIA_SUFFIX`作为图片文件格式的依据。文件真实格式应以其二进制数据内容为准。
 
-应用根据媒体库[PhotoKeys](../../../reference/apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photokeys-e-sys.md#photokeys)记录的SIZE作为文件大小，但最终获取到的图片文件由于经过兼容性转换，导致文件体积发生了变化。如果此时直接按照原图大小使用该图片文件，由于HEIF图片通常比JPG图片体积更小，仅读取JPG文件的一部分就认为文件结束，会导致图片显示不完整。
+应用根据媒体库PhotoKeys记录的SIZE作为文件大小，但最终获取到的图片文件由于经过兼容性转换，导致文件体积发生了变化。如果此时直接按照原图大小使用该图片文件，由于HEIF图片通常比JPG图片体积更小，仅读取JPG文件的一部分就认为文件结束，会导致图片显示不完整。
 
 **解决措施**
 

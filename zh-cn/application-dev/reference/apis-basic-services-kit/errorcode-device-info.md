@@ -25,4 +25,4 @@ The operation on the system permission is denied.
 
 **处理步骤**
 
-在配置文件中添加相应的权限，例如：{"name": "ohos.permission.sec.ACCESS_UDID"}。不同字段可能需要不同权限，请参考[@ohos.deviceInfo (设备信息)](js-apis-device-info.md)。
+在配置文件中添加相应的权限，例如：{"name": "ohos.permission.sec.ACCESS_UDID"}。不同字段可能需要不同权限，请参考@ohos.deviceInfo (设备信息)。

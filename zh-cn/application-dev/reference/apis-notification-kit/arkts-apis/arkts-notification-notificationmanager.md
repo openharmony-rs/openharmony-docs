@@ -37,8 +37,8 @@ import { notificationManager } from '@kit.NotificationKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [addSlot](arkts-notification-notificationmanager-addslot-f.md#addslot-3) | 创建指定类型的通知渠道。使用callback异步回调。 |
-| [addSlot](arkts-notification-notificationmanager-addslot-f.md#addslot-4) | 创建指定类型的通知渠道。使用Promise异步回调。 |
+| addSlot | 创建指定类型的通知渠道。使用callback异步回调。 |
+| addSlot | 创建指定类型的通知渠道。使用Promise异步回调。 |
 | [cancel](arkts-notification-notificationmanager-cancel-f.md#cancel-1) | 根据指定的通知ID取消已发布的通知。使用callback异步回调。 |
 | [cancel](arkts-notification-notificationmanager-cancel-f.md#cancel-2) | 根据通知ID和标签取消已发布的通知。使用callback异步回调。 |
 | [cancel](arkts-notification-notificationmanager-cancel-f.md#cancel-3) | 根据通知ID和标签label取消已发布的通知。使用Promise异步回调。 |
@@ -54,12 +54,12 @@ import { notificationManager } from '@kit.NotificationKit';
 | [getNotificationParameters](arkts-notification-notificationmanager-getnotificationparameters-f.md#getnotificationparameters-1) | 获取通知[NotificationRequest](arkts-notification-notificationrequest-i.md)中wantAgent字段的部分信息。使用Promise异步回调。 |
 | [getNotificationSetting](arkts-notification-notificationmanager-getnotificationsetting-f.md#getnotificationsetting-1) | 获取应用的通知设置，包括锁屏通知、横幅通知、桌面角标、振动、铃声等开关状态。使用Promise异步回调。 |
 | [getSlot](arkts-notification-notificationmanager-getslot-f.md#getslot-1) | 获取指定类型的通知渠道。使用callback异步回调。 |
-| [getSlot](arkts-notification-notificationmanager-getslot-f.md#getslot-3) | 获取指定类型的通知渠道。使用Promise异步回调。 |
+| getSlot | 获取指定类型的通知渠道。使用Promise异步回调。 |
 | [getSlots](arkts-notification-notificationmanager-getslots-f.md#getslots-1) | 获取当前应用的所有通知渠道。使用callback异步回调。 |
 | [getSlots](arkts-notification-notificationmanager-getslots-f.md#getslots-2) | 获取当前应用的所有通知渠道。使用Promise异步回调。 |
 | [isGeofenceEnabled](arkts-notification-notificationmanager-isgeofenceenabled-f.md#isgeofenceenabled-1) | 检查地理围栏功能是否已启用。使用Promise异步回调。 |
-| [isNotificationEnabled](arkts-notification-notificationmanager-isnotificationenabled-f.md#isnotificationenabled-3) | 查询当前应用通知授权状态。使用callback异步回调。 |
-| [isNotificationEnabled](arkts-notification-notificationmanager-isnotificationenabled-f.md#isnotificationenabled-4) | 查询当前应用通知授权状态。使用Promise异步回调。 |
+| isNotificationEnabled | 查询当前应用通知授权状态。使用callback异步回调。 |
+| isNotificationEnabled | 查询当前应用通知授权状态。使用Promise异步回调。 |
 | [isNotificationEnabledSync](arkts-notification-notificationmanager-isnotificationenabledsync-f.md#isnotificationenabledsync-1) | 同步查询当前应用通知授权状态。 |
 | [isSupportTemplate](arkts-notification-notificationmanager-issupporttemplate-f.md#issupporttemplate-1) | 在使用[通知模板](arkts-notification-notificationtemplate-i.md)发布通知前，可以通过该接口查询是否支持对应的通知模板。使用callback异步回调。 |
 | [isSupportTemplate](arkts-notification-notificationmanager-issupporttemplate-f.md#issupporttemplate-2) | 在使用[通知模板](arkts-notification-notificationtemplate-i.md)发布通知前，可以通过该接口查询是否支持对应的通知模板。使用Promise异步回调。 |

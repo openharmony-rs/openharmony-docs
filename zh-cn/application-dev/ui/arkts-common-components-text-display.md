@@ -9,7 +9,7 @@
 
 Text是文本组件，用于展示用户视图，如显示文章的文字内容。该组件支持绑定自定义文本选择菜单，用户可根据需要选择不同功能。此外，还可以扩展自定义菜单，丰富可用选项，进一步提升用户体验。Span则用于展示行内文本。  
 
-具体用法请参考[Text](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-text-t.md)和[Span](../reference/apis-arkui/arkui-js/js-components-basic-span.md)组件的API文档。
+具体用法请参考[Text](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-text-t.md)和Span组件的API文档。
 
 常见问题请参考[文本显示（Text/Span）常见问题](./arkts-text-faq.md#文本显示textspan常见问题)。
 
@@ -146,7 +146,7 @@ Text组件支持创建自定义文本样式，以下为修改文本样式的主�
 
 下面对常用的接口进行举例说明。
 
-- 通过[textAlign](../reference/apis-arkui/arkts-apis/arkts-arkui-textalign-e.md#textalign)属性设置文本对齐样式。
+- 通过textAlign属性设置文本对齐样式。
 
   <!-- @[custom_text_align](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/CustomTextStyle.ets) -->
   
@@ -173,7 +173,7 @@ Text组件支持创建自定义文本样式，以下为修改文本样式的主�
 
   ![text-styled](figures/text-styled.png)
 
-- 通过[textOverflow](../reference/apis-arkui/arkts-apis/arkts-arkui-textoverflow-e.md#textoverflow)属性控制文本超长处理，textOverflow需配合[maxLines](../reference/apis-arkui/arkts-components/arkts-arkui-text-comp-attribute.md#maxlines)一起使用（默认情况下文本自动折行）。从API version 18开始，文本超长时设置跑马灯的方式展示时，支持设置跑马灯的配置项，比如开关、步长、循环次数、方向等。
+- 通过textOverflow属性控制文本超长处理，textOverflow需配合[maxLines](../reference/apis-arkui/arkts-components/arkts-arkui-text-comp-attribute.md#maxlines)一起使用（默认情况下文本自动折行）。从API version 18开始，文本超长时设置跑马灯的方式展示时，支持设置跑马灯的配置项，比如开关、步长、循环次数、方向等。
 
   <!-- @[custom_text_overflow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/CustomTextStyle.ets) -->
   
@@ -417,7 +417,7 @@ Text组件支持创建自定义文本样式，以下为修改文本样式的主�
 
   ![radio-styled](figures/radio-styled.png)
 
-- 通过[textCase](../reference/apis-arkui/arkts-apis/arkts-arkui-textcase-e.md#textcase)属性设置文本大小写。
+- 通过textCase属性设置文本大小写。
 
   <!-- @[custom_the_text_by_text_case](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/CustomTextStyle.ets) -->
   
@@ -659,7 +659,7 @@ Text组件支持创建自定义文本样式，以下为修改文本样式的主�
 
   ![Text_shader_style](figures/Text_shader_style.png)
 
-- 从API version 20开始，Text组件支持通过[textVerticalAlign](../reference/apis-arkui/arkts-apis/arkts-arkui-textverticalalign-e.md#textverticalalign)属性实现文本段落在垂直方向的对齐。以下示例展示了如何通过textVerticalAlign属性设置文本垂直居中对齐效果。
+- 从API version 20开始，Text组件支持通过textVerticalAlign属性实现文本段落在垂直方向的对齐。以下示例展示了如何通过textVerticalAlign属性设置文本垂直居中对齐效果。
 
     <!-- @[text_VerticalAlign](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextLayout.ets) -->
     
@@ -680,7 +680,7 @@ Text组件支持创建自定义文本样式，以下为修改文本样式的主�
 
 ## 添加文本Span子组件
 
-[Span](../reference/apis-arkui/arkui-js/js-components-basic-span.md)只能作为[Text](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-text-t.md)和RichEditor组件的子组件显示文本内容。可以在一个Text内添加多个Span来显示一段信息，例如产品说明书、承诺书等。
+Span只能作为[Text](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-text-t.md)和RichEditor组件的子组件显示文本内容。可以在一个Text内添加多个Span来显示一段信息，例如产品说明书、承诺书等。
 
 ### 创建Span
 
@@ -935,7 +935,7 @@ Text组件需要设置[copyOption](../reference/apis-arkui/arkts-components/arkt
 
     ![text_editmenuoptions](figures/text_editmenuoptions.gif)
 
-- 从API version 20开始，当文本选择区域变化后显示菜单之前触发[onPrepareMenu](../reference/apis-arkui/arkui-js/js-components-common-animation.md#属性)回调，可在该回调中进行菜单数据设置，提供系统菜单自定义刷新能力。
+- 从API version 20开始，当文本选择区域变化后显示菜单之前触发onPrepareMenu回调，可在该回调中进行菜单数据设置，提供系统菜单自定义刷新能力。
 
   <!-- @[Prepare_Menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/PrepareMenu.ets) -->  
   
@@ -1268,7 +1268,7 @@ Text组件通过[enableDataDetector](../reference/apis-arkui/arkts-components/ar
 
 >  **说明：**
 >
->  从API version 20开始，支持在文本选择菜单与鼠标右键菜单中显示实体识别选项。当[enableDataDetector](../reference/apis-arkui/arkts-components/arkts-arkui-text-comp-attribute.md#enabledatadetector)设置为true，且[copyOption](../reference/apis-arkui/arkts-components/arkts-arkui-text-comp-attribute.md#copyoption)设置为CopyOptions.LocalDevice时，该功能生效。菜单选项包括[TextMenuItemId](../reference/apis-arkui/arkts-apis/arkts-arkui-textmenuitemid-c.md#textmenuitemid)中的url(打开链接)、email(新建邮件)、phoneNumber(呼叫)、address(导航至该位置)、dateTime(新建日程提醒)。
+>  从API version 20开始，支持在文本选择菜单与鼠标右键菜单中显示实体识别选项。当[enableDataDetector](../reference/apis-arkui/arkts-components/arkts-arkui-text-comp-attribute.md#enabledatadetector)设置为true，且[copyOption](../reference/apis-arkui/arkts-components/arkts-arkui-text-comp-attribute.md#copyoption)设置为CopyOptions.LocalDevice时，该功能生效。菜单选项包括TextMenuItemId中的url(打开链接)、email(新建邮件)、phoneNumber(呼叫)、address(导航至该位置)、dateTime(新建日程提醒)。
 >
 >  该功能生效时，需选中范围内，包括一个完整的AI实体，才能展示对应的选项。
 
@@ -1357,7 +1357,7 @@ Text组件通过设置[bindSelectionMenu](../reference/apis-arkui/arkts-componen
 
 ### 在子窗口中显示文本菜单
 
-Text组件通过设置[TextMenuShowMode](../reference/apis-arkui/arkts-apis/arkts-arkui-textmenushowmode-e.md#textmenushowmode)控制文本菜单在哪个窗口中渲染。主窗口模式下，菜单节点挂载到主窗口根节点，菜单可能被页面内容遮挡、受页面滚动影响；子窗口模式下，菜单节点挂载到独立子窗口的根节点，菜单浮在主窗口之上，不受页面布局影响。
+Text组件通过设置TextMenuShowMode控制文本菜单在哪个窗口中渲染。主窗口模式下，菜单节点挂载到主窗口根节点，菜单可能被页面内容遮挡、受页面滚动影响；子窗口模式下，菜单节点挂载到独立子窗口的根节点，菜单浮在主窗口之上，不受页面布局影响。
 
   <!-- @[set_menu_options_with_textmenushowmode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextMenuShowSubWindow.ets) -->
   
@@ -1464,7 +1464,7 @@ Text组件通过设置[TextMenuShowMode](../reference/apis-arkui/arkts-apis/arkt
 
 ### 配置跨节点文本拼接方式
 
-跨节点选中涉及多个Text组件时，复制到剪贴板的文本需按视觉顺序拼接。通过[textJoinStyle](../reference/apis-arkui/arkts-components/arkts-arkui-selectioncontainer-comp-attribute.md#textjoinstyle)可设置拼接方式：[SelectionContainerTextJoinStyle](../reference/apis-arkui/arkts-components/arkts-arkui-selectioncontainer-comp-selectioncontainertextjoinstyle-e.md#selectioncontainertextjoinstyle).NEWLINE在不同文本节点间插入换行符，.DIRECT直接拼接不添加分隔符。
+跨节点选中涉及多个Text组件时，复制到剪贴板的文本需按视觉顺序拼接。通过[textJoinStyle](../reference/apis-arkui/arkts-components/arkts-arkui-selectioncontainer-comp-attribute.md#textjoinstyle)可设置拼接方式：SelectionContainerTextJoinStyle.NEWLINE在不同文本节点间插入换行符，.DIRECT直接拼接不添加分隔符。
 
   <!-- @[cross_node_join_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/SelectionContainerJoinStyle.ets) -->
   
@@ -1653,7 +1653,7 @@ Text组件通过设置[TextMenuShowMode](../reference/apis-arkui/arkts-apis/arkt
 
 ### 扩展系统菜单选项
 
-若需在保留系统菜单项的基础上增加自定义选项，可通过[editMenuOptions](../reference/apis-arkui/arkts-components/arkts-arkui-selectioncontainer-comp-attribute.md#editmenuoptions)实现。该方式支持添加自定义菜单项、移除指定系统菜单项，并在[onMenuItemClick](../reference/apis-arkui/arkts-components/arkts-arkui-selectioncontainer-comp-onmenuitemclickwithtextcallback-t.md#onmenuitemclickwithtextcallback)回调中通过返回值拦截或放行系统默认行为。
+若需在保留系统菜单项的基础上增加自定义选项，可通过[editMenuOptions](../reference/apis-arkui/arkts-components/arkts-arkui-selectioncontainer-comp-attribute.md#editmenuoptions)实现。该方式支持添加自定义菜单项、移除指定系统菜单项，并在onMenuItemClick回调中通过返回值拦截或放行系统默认行为。
 
   <!-- @[cross_node_extend_menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/SelectionContainerExtendMenu.ets) -->
   
@@ -1774,7 +1774,7 @@ Text组件通过设置[TextMenuShowMode](../reference/apis-arkui/arkts-apis/arkt
 
 ### 通过控制器关闭菜单与清除选中
 
-在页面跳转、弹窗遮盖等场景下，需主动关闭选择菜单或清除选中状态。可通过[SelectionContainerController](../reference/apis-arkui/arkts-components/arkts-arkui-selectioncontainer-comp-selectioncontainercontroller-c.md#selectioncontainercontroller)的[closeSelectionMenu](../reference/apis-arkui/arkts-components/arkts-arkui-selectioncontainer-comp-selectioncontainercontroller-c.md#closeselectionmenu)关闭菜单，通过[clearTextSelection](../reference/apis-arkui/arkts-components/arkts-arkui-selectioncontainer-comp-selectioncontainercontroller-c.md#cleartextselection)清除选中态。
+在页面跳转、弹窗遮盖等场景下，需主动关闭选择菜单或清除选中状态。可通过SelectionContainerController的[closeSelectionMenu](../reference/apis-arkui/arkts-components/arkts-arkui-selectioncontainer-comp-selectioncontainercontroller-c.md#closeselectionmenu)关闭菜单，通过[clearTextSelection](../reference/apis-arkui/arkts-components/arkts-arkui-selectioncontainer-comp-selectioncontainercontroller-c.md#cleartextselection)清除选中态。
 
   <!-- @[cross_node_controller](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/SelectionContainerControllerDemo.ets) -->
   
@@ -1845,7 +1845,7 @@ Text组件通过设置[TextMenuShowMode](../reference/apis-arkui/arkts-apis/arkt
 
 ## 实现热搜榜
 
-该示例通过[maxLines](../reference/apis-arkui/arkts-components/arkts-arkui-text-comp-attribute.md#maxlines)、[textOverflow](../reference/apis-arkui/arkts-apis/arkts-arkui-textoverflow-e.md#textoverflow)、[textAlign](../reference/apis-arkui/arkts-apis/arkts-arkui-textalign-e.md#textalign)、[constraintSize](../reference/apis-arkui/arkts-apis/arkts-arkui-securitycomponentmethod-c.md#constraintsize)属性展示了热搜榜的效果。
+该示例通过[maxLines](../reference/apis-arkui/arkts-components/arkts-arkui-text-comp-attribute.md#maxlines)、textOverflow、textAlign、[constraintSize](../reference/apis-arkui/arkts-apis/arkts-arkui-securitycomponentmethod-c.md#constraintsize)属性展示了热搜榜的效果。
 
   <!-- @[the_text_fact_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextHotSearch.ets) -->
   

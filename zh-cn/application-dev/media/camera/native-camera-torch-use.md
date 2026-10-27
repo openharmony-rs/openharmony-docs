@@ -10,7 +10,7 @@
 
 在使用相机应用并操作手电筒功能时，存在以下几种情况说明：
 
-- 当使用后置相机并设置闪光灯模式[Camera_FlashMode](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-flashmode-e.md#flashmode)关闭时，手电筒功能无法启用。
+- 当使用后置相机并设置闪光灯模式Camera_FlashMode关闭时，手电筒功能无法启用。
 - 当使用前置相机时，手电筒可以正常启用并保持常亮状态。
 - 从前置相机切换至后置相机时，如果手电筒原本处于开启状态，它将会被自动关闭。
 

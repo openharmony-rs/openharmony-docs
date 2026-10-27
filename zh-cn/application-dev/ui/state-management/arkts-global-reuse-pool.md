@@ -24,7 +24,7 @@
 
 - 单个复用池可以为多个子组件提供服务，减少复用池的数量并提高复用率。
 - 开发者可以选择组件类的所有实例共享单个复用池（[shared](#复用池所有权模式)）还是每个实例拥有自己的池（[perInstance](#复用池所有权模式)）。
-- [IReusableInfo](../../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-statemanagement-ireusableinfo-i.md#ireusableinfo)接口允许应用程序查询和限制缓存组件的数量，包括`reuseId`等信息。
+- IReusableInfo接口允许应用程序查询和限制缓存组件的数量，包括`reuseId`等信息。
 - [preRender](../../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-statemanagement-ireusepool-i.md#prerender)接口允许提前创建可复用组件并将其放入复用池，加快初始渲染速度。
 - 复用组件在被回收或创建时，如果通过遍历父组件未找到匹配的全局复用池，则该组件会使用父组件中的默认复用池进行回收和复用。
 
@@ -221,12 +221,12 @@ struct ChildComponentB {
 
 | 接口 | 说明 |
 | --- | ----------- |
-| [UIUtils.getCustomComponentContext(this).getReusePool()](../../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-statemanagement-customcomponentcontext-i.md#getreusepool) | 获取当前组件的[IReusePool](../../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-statemanagement-ireusepool-i.md#ireusepool)。如果该组件或其上层组件未配置全局复用池，则返回`undefined`。 |
+| [UIUtils.getCustomComponentContext(this).getReusePool()](../../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-statemanagement-customcomponentcontext-i.md#getreusepool) | 获取当前组件的IReusePool。如果该组件或其上层组件未配置全局复用池，则返回`undefined`。 |
 | [IReusePool.getReusableInfo(reusableComp, reuseId?)](../../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-statemanagement-ireusepool-i.md#getreusableinfo) | 检索池中给定可复用组件类型的回收实例信息。支持按reuseId查询。 |
 | [IReusePool.preRender(builder, n)](../../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-statemanagement-ireusepool-i.md#prerender) | 调度空闲任务以预创建可复用组件并在首次使用前将其放入复用池。 |
-| [IReusableInfo](../../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-statemanagement-ireusableinfo-i.md#ireusableinfo).count | 池中当前回收的组件数（只读）。 |
-| [IReusableInfo](../../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-statemanagement-ireusableinfo-i.md#ireusableinfo).maxCount | 允许的最大回收组件数。设置此项可控制缓存大小。 |
-| [IReusableInfo](../../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-statemanagement-ireusableinfo-i.md#ireusableinfo).reuseId | 全局复用池基于reuseId分区存放复用组件，该分区对应的reuseId（只读）。 |
+| IReusableInfo.count | 池中当前回收的组件数（只读）。 |
+| IReusableInfo.maxCount | 允许的最大回收组件数。设置此项可控制缓存大小。 |
+| IReusableInfo.reuseId | 全局复用池基于reuseId分区存放复用组件，该分区对应的reuseId（只读）。 |
 
 ## 使用限制
 

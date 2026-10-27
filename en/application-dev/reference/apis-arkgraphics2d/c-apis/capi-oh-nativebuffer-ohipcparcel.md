@@ -1,4 +1,4 @@
-# OHIPCParcel
+# OHIPCParcel(NativeBuffer)
 
 ```c
 typedef struct OHIPCParcel OHIPCParcel

@@ -138,9 +138,9 @@ atm dump [-h] [-d [-p <permission-name>]] [-t [-i <token-id>] [-b <bundle-name>]
 | -d                                     | 必选参数，查询系统中所有的权限定义。                               | 
 | -d&nbsp;-p \<permission-name\>              | 可选参数，通过权限名，查询权限定义。                              | 
 | -t                                     | 必选参数，查询系统中所有进程的tokenId。                             | 
-| -t&nbsp;-i \<token-id\>                     | 可选参数，通过进程的tokenId，查询该进程的基本信息以及对应的[GrantStatus](../reference/apis-ability-kit/arkts-apis/arkts-ability-abilityaccessctrl-grantstatus-e.md#grantstatus)。             | 
-| -t&nbsp;-b \<bundle-name\>                  |  可选参数，通过应用进程的包名bundle-name，查询该应用的基本信息以及对应的[GrantStatus](../reference/apis-ability-kit/arkts-apis/arkts-ability-abilityaccessctrl-grantstatus-e.md#grantstatus)。     | 
-| -t&nbsp;-n \<process-name\>                 |  可选参数，通过进程名process-name，查询该进程的基本信息以及对应的[GrantStatus](../reference/apis-ability-kit/arkts-apis/arkts-ability-abilityaccessctrl-grantstatus-e.md#grantstatus)。  |
+| -t&nbsp;-i \<token-id\>                     | 可选参数，通过进程的tokenId，查询该进程的基本信息以及对应的GrantStatus。             | 
+| -t&nbsp;-b \<bundle-name\>                  |  可选参数，通过应用进程的包名bundle-name，查询该应用的基本信息以及对应的GrantStatus。     | 
+| -t&nbsp;-n \<process-name\>                 |  可选参数，通过进程名process-name，查询该进程的基本信息以及对应的GrantStatus。  |
 | -t&nbsp;-p \<permission-name\>                 |  可选参数，通过权限名，查询申请该权限的应用进程的tokenId。<br>**说明**：从API版本26.0.0开始，支持该参数。  |
 | <!--DelRow-->-r                        |  必选参数，查询系统内的所有PermissionUsedResponse。                           | 
 | <!--DelRow-->-r&nbsp;-i \<token-id\>        | 可选参数，通过应用进程的tokenId，查询该应用的PermissionUsedResponse。        | 

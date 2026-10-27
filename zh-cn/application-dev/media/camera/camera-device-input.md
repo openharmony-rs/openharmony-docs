@@ -50,7 +50,7 @@
    }
    ```
 
-3. 通过[getSupportedSceneModes](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-cameramanager-i.md#getsupportedscenemodes)方法，获取当前相机设备支持的模式列表，列表中存储了相机设备支持的所有模式[SceneMode](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-scenemode-e-sys.md#scenemode)。
+3. 通过[getSupportedSceneModes](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-cameramanager-i.md#getsupportedscenemodes)方法，获取当前相机设备支持的模式列表，列表中存储了相机设备支持的所有模式SceneMode。
 
     ```ts
     function getSupportedSceneMode(cameraDevice: camera.CameraDevice, cameraManager: camera.CameraManager): Array<camera.SceneMode> {
@@ -68,7 +68,7 @@
     }
     ```
 
-4. 通过[getSupportedOutputCapability](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-cameramanager-i.md#getsupportedoutputcapability)方法，获取当前相机设备支持的所有输出流，如预览流、拍照流、录像流等。输出流在[CameraOutputCapability](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-cameraoutputcapability-i-sys.md#cameraoutputcapability)中的各个profile字段中，根据相机设备指定模式[SceneMode](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-scenemode-e-sys.md#scenemode)的不同，需要添加不同类型的输出流。
+4. 通过[getSupportedOutputCapability](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-cameramanager-i.md#getsupportedoutputcapability)方法，获取当前相机设备支持的所有输出流，如预览流、拍照流、录像流等。输出流在CameraOutputCapability中的各个profile字段中，根据相机设备指定模式SceneMode的不同，需要添加不同类型的输出流。
 
    ```ts
    async function getSupportedOutputCapability(cameraDevice: camera.CameraDevice, cameraManager: camera.CameraManager, sceneMode: camera.SceneMode): Promise<camera.CameraOutputCapability | undefined> {

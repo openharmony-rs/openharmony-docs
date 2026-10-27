@@ -195,7 +195,7 @@ struct WebComponent {
 
    ![arkui-keyboardavoid](figures/arkui-keyboardavoid.png)
 
-2. 在UIContext的键盘避让模式为Offset模式时，应用可通过[WebKeyboardAvoidMode()](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-webkeyboardavoidmode-e.md#webkeyboardavoidmode)设置ArkWeb组件的键盘避让模式。Web组件的[WebKeyboardAvoidMode()](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-webkeyboardavoidmode-e.md#webkeyboardavoidmode)接口优先级高于W3C侧virtualKeyboard.overlayContent。
+2. 在UIContext的键盘避让模式为Offset模式时，应用可通过WebKeyboardAvoidMode()设置ArkWeb组件的键盘避让模式。Web组件的WebKeyboardAvoidMode()接口优先级高于W3C侧virtualKeyboard.overlayContent。
 
    - RESIZE_VISUAL：仅调整可视视口的大小，而不调整布局视口的大小。
    - RESIZE_CONTENT：调整可视视口和布局视口的大小。
@@ -276,7 +276,7 @@ struct WebComponent {
 
 ## 拦截系统软键盘与自定义软键盘输入
 
-应用可以通过监听[onInterceptKeyboardAttach](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-attribute.md#oninterceptkeyboardattach)回调，在软键盘拉起前，控制软键盘的显示，包括系统默认软键盘、带有特定Enter键的软键盘，或完全自定义软键盘。借助这一功能，开发者能够实现对软键盘的灵活管理。
+应用可以通过监听onInterceptKeyboardAttach回调，在软键盘拉起前，控制软键盘的显示，包括系统默认软键盘、带有特定Enter键的软键盘，或完全自定义软键盘。借助这一功能，开发者能够实现对软键盘的灵活管理。
 
 - 使用系统默认软键盘
 - 使用带有定制Enter键的系统软键盘

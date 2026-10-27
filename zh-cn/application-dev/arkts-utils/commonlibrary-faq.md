@@ -247,7 +247,7 @@ if (!hashSet.has(value)) {
 
 ## 解析包含大量数字键的JSON字符串
 
-当需要将包含大量数字键的JSON字符串转换为Sendable对象时，可以使用[JSON.parseSendable](../reference/apis-arkts/arkts-apis/arkts-arkts-json-parsesendable-f.md#parsesendable)接口进行处理。
+当需要将包含大量数字键的JSON字符串转换为Sendable对象时，可以使用JSON.parseSendable接口进行处理。
 
 ```ts
 import { JSON, lang } from '@kit.ArkTS';

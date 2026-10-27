@@ -18,7 +18,7 @@
 **图1** 延迟任务实现原理  
 ![WorkScheduler](figures/WorkScheduler.png)
 
-应用调用延迟任务接口添加、删除、查询延迟任务，延迟任务管理模块会根据任务设置的条件（通过[WorkInfo](../reference/apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-workscheduler-workinfo-i.md#workinfo)参数设置，包括网络类型、充电类型、存储状态等）和系统状态（包括内存、功耗、设备温度、用户使用习惯等）统一决策调度时机。
+应用调用延迟任务接口添加、删除、查询延迟任务，延迟任务管理模块会根据任务设置的条件（通过WorkInfo参数设置，包括网络类型、充电类型、存储状态等）和系统状态（包括内存、功耗、设备温度、用户使用习惯等）统一决策调度时机。
 
 当满足调度条件或调度结束时，系统会回调应用WorkSchedulerExtensionAbility中 onWorkStart() 或 onWorkStop() 的方法，同时会为应用单独创建一个Extension扩展进程用以承载WorkSchedulerExtensionAbility，并给WorkSchedulerExtensionAbility一定的活动周期，开发者可以在对应回调方法中实现自己的任务逻辑。
 
@@ -51,18 +51,18 @@
 
 **表2** 延迟任务主要接口
 
-以下是延迟任务开发使用的相关接口，更多接口及使用方式请见[延迟任务调度](../reference/apis-backgroundtasks-kit/errorcode-workScheduler.md)文档。
+以下是延迟任务开发使用的相关接口，更多接口及使用方式请见延迟任务调度文档。
 | 接口名 | 接口描述 |
 | -------- | -------- |
-| [startWork(work: WorkInfo): void](../reference/apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-workscheduler-startwork-f.md#startwork) | 申请延迟任务。 |
-| [stopWork(work: WorkInfo, needCancel?: boolean): void](../reference/apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-workscheduler-stopwork-f.md#stopwork) | 取消延迟任务。 |
-| [getWorkStatus(workId: number, callback: AsyncCallback&lt;WorkInfo&gt;): void](../reference/apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-workscheduler-getworkstatus-f.md#getworkstatus) | 获取延迟任务状态（Callback形式）。 |
-| [getWorkStatus(workId: number): Promise&lt;WorkInfo&gt;](../reference/apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-workscheduler-getworkstatus-f.md#getworkstatus) | 获取延迟任务状态（Promise形式）。 |
-| [obtainAllWorks(callback: AsyncCallback&lt;Array&lt;WorkInfo&gt;&gt;): void](../reference/apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-workscheduler-obtainallworks-f.md#obtainallworks) | 获取所有延迟任务（Callback形式）。 |
-| [obtainAllWorks(): Promise&lt;Array&lt;WorkInfo&gt;&gt;](../reference/apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-workscheduler-obtainallworks-f.md#obtainallworks)  | 获取所有延迟任务（Promise形式）。 |
-| [stopAndClearWorks(): void](../reference/apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-workscheduler-stopandclearworks-f.md#stopandclearworks) | 停止并清除任务。 |
-| [isLastWorkTimeOut(workId: number, callback: AsyncCallback\<boolean>): void](../reference/apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-workscheduler-islastworktimeout-f.md#islastworktimeout) | 获取上次任务是否超时（针对RepeatWork，Callback形式）。 |
-| [isLastWorkTimeOut(workId: number): Promise&lt;boolean&gt;](../reference/apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-workscheduler-islastworktimeout-f.md#islastworktimeout) | 获取上次任务是否超时（针对RepeatWork，Promise形式）。 |
+| startWork(work: WorkInfo): void | 申请延迟任务。 |
+| stopWork(work: WorkInfo, needCancel?: boolean): void | 取消延迟任务。 |
+| getWorkStatus(workId: number, callback: AsyncCallback&lt;WorkInfo&gt;): void | 获取延迟任务状态（Callback形式）。 |
+| getWorkStatus(workId: number): Promise&lt;WorkInfo&gt; | 获取延迟任务状态（Promise形式）。 |
+| obtainAllWorks(callback: AsyncCallback&lt;Array&lt;WorkInfo&gt;&gt;): void | 获取所有延迟任务（Callback形式）。 |
+| obtainAllWorks(): Promise&lt;Array&lt;WorkInfo&gt;&gt;  | 获取所有延迟任务（Promise形式）。 |
+| stopAndClearWorks(): void | 停止并清除任务。 |
+| isLastWorkTimeOut(workId: number, callback: AsyncCallback\<boolean>): void | 获取上次任务是否超时（针对RepeatWork，Callback形式）。 |
+| isLastWorkTimeOut(workId: number): Promise&lt;boolean&gt; | 获取上次任务是否超时（针对RepeatWork，Promise形式）。 |
 
 **表3** 延迟任务回调接口
 

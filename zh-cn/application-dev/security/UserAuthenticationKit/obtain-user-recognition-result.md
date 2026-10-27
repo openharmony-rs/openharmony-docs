@@ -11,7 +11,7 @@
 
 ## 接口说明
 
-具体参数、返回值、错误码等描述，请参考[UserRecognitionMgr](../../reference/apis-user-authentication-kit/arkts-apis/arkts-userauthentication-userauth-userrecognitionmgr-i.md#userrecognitionmgr)。
+具体参数、返回值、错误码等描述，请参考UserRecognitionMgr。
 
 | 接口名称 | 功能描述 |
 | -------- | -------- |
@@ -26,7 +26,7 @@
 
    该权限授权方式为system_grant，在module.json5中声明即可获取。
 
-2. 调用[getUserRecognitionMgr](../../reference/apis-user-authentication-kit/arkts-apis/arkts-userauthentication-userauth-getuserrecognitionmgr-f.md#getuserrecognitionmgr)获取实例。
+2. 调用getUserRecognitionMgr获取实例。
 
 3. 调用[getUserRecognitionResult](../../reference/apis-user-authentication-kit/arkts-apis/arkts-userauthentication-userauth-userrecognitionmgr-i.md#getuserrecognitionresult)获取最新识别结果，或调用[onUserRecognitionChange](../../reference/apis-user-authentication-kit/arkts-apis/arkts-userauthentication-userauth-userrecognitionmgr-i.md#onuserrecognitionchange)订阅变化事件。
 

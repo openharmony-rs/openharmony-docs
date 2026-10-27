@@ -294,7 +294,7 @@ HiAppEvent eventInfo.params.test_data=100
 
 [@ohos.faultLogger (故障日志获取)](../reference/apis-performance-analysis-kit/arkts-apis/arkts-performanceanalysis-faultlogger.md)接口从API version 18开始废弃使用，不再维护。后续版本推荐使用[@ohos.hiviewdfx.hiAppEvent](../reference/apis-performance-analysis-kit/arkts-apis/arkts-performanceanalysis-hiappevent.md)订阅崩溃事件。该章节指导开发者从Faultlogger接口迁移至hiAppEvent接口，来订阅崩溃事件。
 
-在Faultlogger的[FaultType](../reference/apis-performance-analysis-kit/arkts-apis/arkts-performanceanalysis-faultlogger-faulttype-e.md#faulttype)里定义的CPP_CRASH和JS_CRASH都属于崩溃故障类型。
+在Faultlogger的FaultType里定义的CPP_CRASH和JS_CRASH都属于崩溃故障类型。
 
 在hiAppEvent的hiAppEvent.addWatcher接口中设置事件名称为hiAppEvent.event.APP_CRASH、事件领域为hiAppEvent.domain.OS，可以订阅崩溃事件。
 
@@ -306,7 +306,7 @@ HiAppEvent eventInfo.params.test_data=100
 | CPP_CRASH | NativeCrash |
 | JS_CRASH | JsError |
 
-[FaultLogInfo](../reference/apis-performance-analysis-kit/arkts-apis/arkts-performanceanalysis-faultlogger-faultloginfo-i.md#faultloginfo)与[hiAppEvent.AppEventInfo.params](./hiappevent-watcher-crash-events.md#params字段说明)的对应关系如下：
+FaultLogInfo与[hiAppEvent.AppEventInfo.params](./hiappevent-watcher-crash-events.md#params字段说明)的对应关系如下：
 | Faultlogger.FaultLogInfo | hiAppEvent.AppEventInfo.params | 说明 |
 | --- | --- | --- |
 | pid | pid | 无 |
@@ -318,7 +318,7 @@ HiAppEvent eventInfo.params.test_data=100
 | reason | external_log文件内容中的Reason字段 | 无 |
 | summary | external_log文件内容中的一部分 | CPP_CRASH的summary对应external_log文件内容中的Fault thread info字段；JS_CRASH的summary对应external_log文件内容中的Error name、Error message、 Stacktrace、HybridStack字段。 |
 
-使用callback回调的[FaultLogger.query](../reference/apis-performance-analysis-kit/arkts-apis/arkts-performanceanalysis-faultlogger-query-f.md#query)和使用Promise回调的[FaultLogger.query](../reference/apis-performance-analysis-kit/arkts-apis/arkts-performanceanalysis-faultlogger-query-f.md#query)都可以使用[hiAppEvent.addWatcher](../reference/apis-performance-analysis-kit/c-apis/capi-hiappevent-h.md#ohhiappeventaddwatcher)实现相同功能。
+使用callback回调的FaultLogger.query和使用Promise回调的FaultLogger.query都可以使用hiAppEvent.addWatcher实现相同功能。
 
 查阅[开发步骤](#开发步骤)和[验证观察者是否订阅到崩溃事件](#验证观察者是否订阅到崩溃事件)，了解使用hiAppEvent订阅崩溃事件（ArkTS）的具体步骤。
 <!--RP1-->

@@ -14,13 +14,13 @@
 
 ## 场景介绍
 
-应用通过HTTP发起一个数据请求，支持常见的GET、POST、OPTIONS、HEAD、PUT、DELETE、TRACE、CONNECT方法。当前提供了2种HTTP请求方式，若请求发送或接收的数据量较少，可使用[HttpRequest.request](../reference/apis-network-kit/arkts-apis/arkts-network-http-httprequest-i.md#request)，若是大文件的上传或者下载，且关注数据发送和接收进度，可使用HTTP请求流式传输[HttpRequest.requestInStream](../reference/apis-network-kit/arkts-apis/arkts-network-http-httprequest-i.md#requestinstream)。从API version 22开始，若是需要在"HTTP请求-响应"生命周期中的关键节点插入自定义逻辑，可以使用[HTTP拦截器](#http拦截器)。
+应用通过HTTP发起一个数据请求，支持常见的GET、POST、OPTIONS、HEAD、PUT、DELETE、TRACE、CONNECT方法。当前提供了2种HTTP请求方式，若请求发送或接收的数据量较少，可使用HttpRequest.request，若是大文件的上传或者下载，且关注数据发送和接收进度，可使用HTTP请求流式传输HttpRequest.requestInStream。从API version 22开始，若是需要在"HTTP请求-响应"生命周期中的关键节点插入自定义逻辑，可以使用[HTTP拦截器](#http拦截器)。
 
 <!--RP1-->
 
 <!--RP1End-->
 
-当前HTTP请求支持的场景如下，以下功能对应的选项可以在HTTP请求的[HttpRequestOptions](../reference/apis-network-kit/arkts-apis/arkts-network-http-httprequestoptions-i.md#httprequestoptions)中进行设置：
+当前HTTP请求支持的场景如下，以下功能对应的选项可以在HTTP请求的HttpRequestOptions中进行设置：
 
 | 功能分类     | 功能名称                           |功能描述                      | 开始支持的版本         |
 | ----------- | -----------------------------------|-----------------------------|------------------------|
@@ -46,7 +46,7 @@
 | 证书验证     | 设置跳过SSL证书校验                     | 可以设置跳过SSL证书校验流程。 | API version 18    |
 | 证书验证     | 设置证书校验的版本和加密套件             | 自定义证书校验版本和加密套件。 |  API version 18  |
 | 证书验证     | 设置安全连接期间的服务器身份验证配置信息        | 设置安全连接期间的服务器身份验证配置。 |  API version 18   |
-| 代理设置     | 设置SOCKS5代理        | 设置SOCKS5代理，默认不使用SOCKS5代理，若正确配置了[Socks5Proxy](../reference/apis-network-kit/arkts-apis/arkts-network-connection-socks5proxy-i.md#socks5proxy)自定义SOCKS5代理，则HttpProxy不生效。 |  API version 26.0.0   |
+| 代理设置     | 设置SOCKS5代理        | 设置SOCKS5代理，默认不使用SOCKS5代理，若正确配置了Socks5Proxy自定义SOCKS5代理，则HttpProxy不生效。 |  API version 26.0.0   |
 
 ## 发起HTTP数据请求
 
@@ -69,7 +69,7 @@
 
 2. 创建HttpRequest对象
 
-    调用[createHttp()](../reference/apis-network-kit/arkts-apis/arkts-network-http-createhttp-f.md#createhttp)方法，创建HttpRequest对象。
+    调用createHttp()方法，创建HttpRequest对象。
 
     <!-- @[HTTP_case_create_http_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->
     
@@ -81,7 +81,7 @@
 
 3. 订阅HTTP响应头事件
 
-    调用该对象的[on()](../reference/apis-network-kit/arkts-apis/arkts-network-http-httprequest-i.md#onheadersreceive)方法，订阅HTTP响应头事件，此接口会比request请求先返回。可以根据业务需要订阅此消息。
+    调用该对象的on()方法，订阅HTTP响应头事件，此接口会比request请求先返回。可以根据业务需要订阅此消息。
 
    <!-- @[HTTP_case_http_request_on_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->
    
@@ -96,7 +96,7 @@
 
 4. 发起HTTP请求，解析服务器响应事件
 
-    调用该对象的[request()](../reference/apis-network-kit/arkts-apis/arkts-network-connection-httprequest-t.md#httprequest)方法，传入HTTP请求的url地址和可选参数，发起网络请求，按照实际业务需要，解析返回结果。
+    调用该对象的request()方法，传入HTTP请求的url地址和可选参数，发起网络请求，按照实际业务需要，解析返回结果。
 
    <!-- @[HTTP_case_http_request_request_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->
    
@@ -186,7 +186,7 @@
 
 5. 取消订阅HTTP响应头事件
 
-    调用该对象的[off()](../reference/apis-network-kit/arkts-apis/arkts-network-http-httprequest-i.md#offheadersreceive)方法，取消订阅HTTP响应头事件。
+    调用该对象的off()方法，取消订阅HTTP响应头事件。
 
     ```ts
     // 在不需要该回调信息时，需要取消订阅HTTP响应头事件，该方法调用的时机，可以参考步骤4中的示例代码。
@@ -194,7 +194,7 @@
     ```
 6. 调用destroy()方法销毁
 
-    当该请求使用完毕时，调用[destroy()](../reference/apis-network-kit/arkts-apis/arkts-network-http-httprequest-i.md#destroy)方法销毁。
+    当该请求使用完毕时，调用destroy()方法销毁。
 
     ```ts
     // 当该请求使用完毕时，调用destroy方法主动销毁，该方法调用的时机，可以参考步骤4中的示例代码。
@@ -219,7 +219,7 @@ HTTP流式传输是指在处理HTTP响应时，可以一次只处理响应内容
 
 2. 创建HTTP流式传输HttpRequest对象
 
-    调用[createHttp()](../reference/apis-network-kit/arkts-apis/arkts-network-http-createhttp-f.md#createhttp)方法，创建HttpRequest对象。
+    调用createHttp()方法，创建HttpRequest对象。
 
     <!-- @[request_in_stream_create_http_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->
     
@@ -305,7 +305,7 @@ HTTP流式传输是指在处理HTTP响应时，可以一次只处理响应内容
 
 5. 取消步骤3中订阅HTTP流式响应事件，并调用destroy()方法销毁流式HTTP请求
 
-    调用该对象的[off()](../reference/apis-network-kit/arkts-apis/arkts-network-http-httprequest-i.md#offdatareceive)方法，取消订阅步骤3中的事件，并且当该请求使用完毕时，调用[destroy()](../reference/apis-network-kit/arkts-apis/arkts-network-http-httprequest-i.md#destroy)方法销毁，该方法调用的时机，可以参考步骤4中的示例代码。
+    调用该对象的off()方法，取消订阅步骤3中的事件，并且当该请求使用完毕时，调用destroy()方法销毁，该方法调用的时机，可以参考步骤4中的示例代码。
 
    <!-- @[request_in_stream_destroy_request_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->
    
@@ -662,17 +662,17 @@ struct Index {
  
 1. 配置应用信任证书（具体配置方法可参考[网络连接安全配置](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/network-connection-security-configuration#%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5%E5%AE%89%E5%85%A8%E9%85%8D%E7%BD%AE-1)）。
 2. 配置请求级CA证书：
-   - 通过[httprequestoptions](../reference/apis-network-kit/arkts-apis/arkts-network-http-httprequestoptions-i.md#httprequestoptions)的caPath和caData字段配置HTTPS请求CA证书。
-   - 通过[websocketrequestoptions](../reference/apis-network-kit/arkts-apis/arkts-network-websocket-websocketrequestoptions-i.md#websocketrequestoptions)的caPath字段配置WebSocket请求CA证书。
-   - 通过[tlssecureoptions](../reference/apis-network-kit/arkts-apis/arkts-network-socket-tlssecureoptions-i.md#tlssecureoptions)的ca字段指定TLS请求CA证书。
+   - 通过httprequestoptions的caPath和caData字段配置HTTPS请求CA证书。
+   - 通过websocketrequestoptions的caPath字段配置WebSocket请求CA证书。
+   - 通过tlssecureoptions的ca字段指定TLS请求CA证书。
 3. 配置跳过证书校验：
-   - HTTPS：通过[remoteValidation](../reference/apis-network-kit/arkts-apis/arkts-network-http-httprequestoptions-i.md#remotevalidation) = 'skip' 配置。
-   - WebSocket：通过[websocketrequestoptions](../reference/apis-network-kit/arkts-apis/arkts-network-websocket-websocketrequestoptions-i.md#websocketrequestoptions)的skipServerCertVerification = true 配置。
-   - TLSSocket：通过[tlsconnectoptions](../reference/apis-network-kit/arkts-apis/arkts-network-socket-tlsconnectoptions-i.md#tlsconnectoptions)的skipRemoteValidation = true 配置。
+   - HTTPS：通过remoteValidation = 'skip' 配置。
+   - WebSocket：通过websocketrequestoptions的skipServerCertVerification = true 配置。
+   - TLSSocket：通过tlsconnectoptions的skipRemoteValidation = true 配置。
 
  **调试参考**
  
-   - 通过API校验指定证书是否可信：可参考[networkSecurity.certVerification](../reference/apis-network-kit/arkts-apis/arkts-network-networksecurity-certverification-f.md#certverification)。
+   - 通过API校验指定证书是否可信：可参考networkSecurity.certVerification。
    - 通过openssl命令校验域名服务器证书链是否被系统信任：`hdc shell openssl s_client -connect 主机名:端口 -CApath /etc/security/certificates -brief`。若出现`Verification: OK`说明证书链可信。将`-brief`替换为`-trace -showcerts`可以打印详细的TLS握手信息。
 
 
@@ -924,7 +924,7 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
     import { hilog } from '@kit.PerformanceAnalysisKit';
     ```
 
-2.  调用[createHttp()](../reference/apis-network-kit/arkts-apis/arkts-network-http-createhttp-f.md#createhttp)方法，创建HttpRequest对象。
+2.  调用createHttp()方法，创建HttpRequest对象。
 
      <!-- @[HTTP_interceptor_case_creat_request](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
      
@@ -933,7 +933,7 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
      let httpRequest: http.HttpRequest = http.createHttp();
      ```
 
-3.  调用[HttpInterceptorChain()](../reference/apis-network-kit/arkts-apis/arkts-network-http-httpinterceptorchain-c.md#httpinterceptorchain)方法，创建拦截器链对象。
+3.  调用HttpInterceptorChain()方法，创建拦截器链对象。
 
     <!-- @[HTTP_interceptor_case_chain](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
     
@@ -1035,7 +1035,7 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
     }
     ```
 
-5.  调用[addChain()](../reference/apis-network-kit/arkts-apis/arkts-network-http-httpinterceptorchain-c.md#addchain)方法，将需要的拦截器实例加入到拦截器链中。
+5.  调用addChain()方法，将需要的拦截器实例加入到拦截器链中。
 
     <!-- @[HTTP_interceptor_case_addChain](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
     
@@ -1048,7 +1048,7 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
     ]);
     ```
 
-6.  调用[apply()](../reference/apis-network-kit/arkts-apis/arkts-network-http-httpinterceptorchain-c.md#apply)方法，将当前配置好的拦截器链附加到httpRequest中。
+6.  调用apply()方法，将当前配置好的拦截器链附加到httpRequest中。
 
     <!-- @[HTTP_interceptor_case_apply](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
     
@@ -1070,7 +1070,7 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
     };
     ```
 
-8.  调用该对象的[request()](../reference/apis-network-kit/arkts-apis/arkts-network-http-httprequest-i.md#request-1)方法，传入HTTP请求的URL地址和可选参数，发起网络请求，按照实际业务需要，解析服务器响应事件。
+8.  调用该对象的request()方法，传入HTTP请求的URL地址和可选参数，发起网络请求，按照实际业务需要，解析服务器响应事件。
 
     <!-- @[HTTP_interceptor_case_request](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
     
@@ -1088,7 +1088,7 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
     });
     ```
 
-9.  调用[destroy()](../reference/apis-network-kit/arkts-apis/arkts-network-http-httprequest-i.md#destroy)方法销毁http请求。
+9.  调用destroy()方法销毁http请求。
 
     <!-- @[HTTP_interceptor_case_request_destroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
     

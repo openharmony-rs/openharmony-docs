@@ -16,13 +16,13 @@
 
 从API版本26.0.0开始，增加支持AVIF、AVIS格式。
 
-部分格式的解码能力依赖于具体的设备硬件，建议在调用前使用[image.getImageSourceSupportedFormats](../../reference/apis-image-kit/arkts-apis/arkts-image-image-getimagesourcesupportedformats-f.md#getimagesourcesupportedformats)接口，动态查询当前设备上的解码能力。
+部分格式的解码能力依赖于具体的设备硬件，建议在调用前使用image.getImageSourceSupportedFormats接口，动态查询当前设备上的解码能力。
 
 从API version 22开始，支持对专业相机拍摄的CR2、CR3、ARW、NEF、RAF、NRW、ORF、RW2、PEF、SRW格式图片内嵌的预览图（通常为JPEG格式）进行解码。该解码能力不受运行设备类型限制。
 
 ## 设置解码输出像素格式
 
-图片解码像素格式是指将图片解码为PixelMap后采用的数据存储格式。使用[createPixelMap](../../reference/apis-image-kit/arkts-apis/arkts-image-image-imagesource-i.md#createpixelmap)和[createPixelMapUsingAllocator](../../reference/apis-image-kit/arkts-apis/arkts-image-image-imagesource-i.md#createpixelmapusingallocator)解码图片时，通过设置[DecodingOptions](../../reference/apis-image-kit/arkts-apis/arkts-image-image-decodingoptions-i-sys.md#decodingoptions)中的desiredPixelFormat可指定期望的输出像素格式[PixelMapFormat](../../reference/apis-image-kit/arkts-apis/arkts-image-image-pixelmapformat-e.md#pixelmapformat)。
+图片解码像素格式是指将图片解码为PixelMap后采用的数据存储格式。使用[createPixelMap](../../reference/apis-image-kit/arkts-apis/arkts-image-image-imagesource-i.md#createpixelmap)和[createPixelMapUsingAllocator](../../reference/apis-image-kit/arkts-apis/arkts-image-image-imagesource-i.md#createpixelmapusingallocator)解码图片时，通过设置DecodingOptions中的desiredPixelFormat可指定期望的输出像素格式PixelMapFormat。
 
 不同像素格式在内存占用、透明度支持以及后续显示和图像处理场景中存在差异。当应用需要控制解码后的图像数据格式时，可设置desiredPixelFormat。
 

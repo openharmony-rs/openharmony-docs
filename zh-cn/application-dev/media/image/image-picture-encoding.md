@@ -25,7 +25,7 @@
    import { resourceManager } from '@kit.LocalizationKit';
    ```
 
-2. 设置编码选项[PackingOption](../../reference/apis-image-kit/arkts-apis/arkts-image-image-packingoption-i-sys.md#packingoption)。
+2. 设置编码选项PackingOption。
    
    > **说明：**
    >

@@ -132,4 +132,4 @@ function openInstallCertificateDialog(context: common.Context, request: InstallC
 
 **示例**
 
-参见 [openInstallCertificateDialog](#openinstallcertificatedialog)
+参见 openInstallCertificateDialog

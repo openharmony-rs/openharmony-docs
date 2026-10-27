@@ -12,7 +12,7 @@ AudioLoopback是音频返听器，可将音频以更低时延的方式实时传�
 
 常用于K歌类应用，将录制的人声和背景音乐实时传送到耳机中，使用户通过反馈即时进行调整，获得更好的使用体验。
 
-当启用音频返听时，系统会创建低时延渲染器与低时延采集器，实现低时延耳返功能。采集的音频直接通过内部路由返回到渲染器。对于渲染器，其音频焦点策略与[STREAM_USAGE_MUSIC](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiointerrupt-i.md#streamusage)相匹配。对于采集器，其音频焦点策略与[SOURCE_TYPE_MIC](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-sourcetype-e-sys.md#sourcetype)相匹配。
+当启用音频返听时，系统会创建低时延渲染器与低时延采集器，实现低时延耳返功能。采集的音频直接通过内部路由返回到渲染器。对于渲染器，其音频焦点策略与[STREAM_USAGE_MUSIC](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiointerrupt-i.md#streamusage)相匹配。对于采集器，其音频焦点策略与SOURCE_TYPE_MIC相匹配。
 
 输入/输出设备由系统自动选择。如果当前输入/输出不支持低时延，则音频返听无法启用。在运行过程中，如果音频焦点被另一个音频流抢占，或输入/输出设备切换到不支持低时延的设备，系统会自动禁用音频返听。
 
@@ -38,13 +38,13 @@ AudioLoopback是音频返听器，可将音频以更低时延的方式实时传�
 
 ![AudioLoopback status change](figures/audioloopback-status-change.png)
 
-使用[on('statusChange')](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audioloopback-i.md#onstatuschange)方法可以监听AudioLoopback的状态变化，每个状态对应值与说明见[AudioLoopbackStatus](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audioloopbackstatus-e.md#audioloopbackstatus)。
+使用[on('statusChange')](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audioloopback-i.md#onstatuschange)方法可以监听AudioLoopback的状态变化，每个状态对应值与说明见AudioLoopbackStatus。
 
 ### 开发步骤及注意事项
 
   以下各步骤示例为片段代码，可通过示例代码右下方链接获取[完整示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS)。
 
-1. 查询返听能力并创建AudioLoopback实例。关于音频返听模式，请查看[AudioLoopbackMode](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audioloopbackmode-e.md#audioloopbackmode)。
+1. 查询返听能力并创建AudioLoopback实例。关于音频返听模式，请查看AudioLoopbackMode。
 
    > **说明：**
    > 
@@ -179,7 +179,7 @@ AudioLoopback是音频返听器，可将音频以更低时延的方式实时传�
    > 
    > - 在启用返听前设置混响模式，混响模式将在启用返听成功后生效。
    > - 在启用返听后设置混响模式，混响模式将立即生效。
-   > - 启用返听前未设置混响模式，启用返听时将采用默认混响模式[THEATER](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audioloopbackreverbpreset-e.md#audioloopbackreverbpreset)。
+   > - 启用返听前未设置混响模式，启用返听时将采用默认混响模式THEATER。
 
    <!-- @[set_ReverbPreset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioLoopback.ets) -->      
    
@@ -208,7 +208,7 @@ AudioLoopback是音频返听器，可将音频以更低时延的方式实时传�
 
    > **注意：**
    > 
-   > 若未设置混响模式，查询得到将是默认混响模式[THEATER](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audioloopbackreverbpreset-e.md#audioloopbackreverbpreset)。
+   > 若未设置混响模式，查询得到将是默认混响模式THEATER。
 
    <!-- @[get_ReverbPreset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioLoopback.ets) -->
    
@@ -226,7 +226,7 @@ AudioLoopback是音频返听器，可将音频以更低时延的方式实时传�
    > 
    > - 在启用返听前设置均衡器类型，均衡器类型将在启用返听成功后生效。
    > - 在启用返听后设置均衡器类型，均衡器类型将立即生效。
-   > - 启用返听前未设置均衡器类型，启用返听时将采用默认均衡器类型[FULL](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audioloopbackequalizerpreset-e.md#audioloopbackequalizerpreset)。
+   > - 启用返听前未设置均衡器类型，启用返听时将采用默认均衡器类型FULL。
 
    <!-- @[set_EqualizerPreset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioLoopback.ets) -->
    
@@ -255,7 +255,7 @@ AudioLoopback是音频返听器，可将音频以更低时延的方式实时传�
 
     > **注意：**
     > 
-    > 若未设置均衡器类型，查询得到将是默认均衡器类型[FULL](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audioloopbackequalizerpreset-e.md#audioloopbackequalizerpreset)。
+    > 若未设置均衡器类型，查询得到将是默认均衡器类型FULL。
 
     <!-- @[get_EqualizerPreset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioLoopback.ets) -->    
     

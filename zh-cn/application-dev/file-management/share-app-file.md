@@ -10,7 +10,7 @@
 
 ## 通过拉起文件处理类应用进行文件分享(startAbility)
 
-基于[文件选择器(startAbility)](../application-models/file-processing-apps-startup.md)的分享方式，应用可分享单个文件，通过[ohos.app.ability.wantConstant的wantConstant.Flags接口](../reference/apis-ability-kit/arkts-apis/arkts-ability-wantconstant-flags-depr-e-sys.md#flags)以只读或读写权限授权给其他应用。被分享应用可通过fileIo.open打开URI，并进行读写操作。
+基于[文件选择器(startAbility)](../application-models/file-processing-apps-startup.md)的分享方式，应用可分享单个文件，通过ohos.app.ability.wantConstant的wantConstant.Flags接口以只读或读写权限授权给其他应用。被分享应用可通过fileIo.open打开URI，并进行读写操作。
 
 ## 应用可分享目录
 
@@ -35,7 +35,7 @@
 > **注意**
 >
 > 1. 因URI处理涉及编解码，系统无法保证应用自行拼接的URI地址的可用性。
-> 2. 推荐使用系统提供的接口获取URI，如[getUriFromPath()接口](../reference/apis-core-file-kit/arkts-apis/arkts-corefile-fileuri-geturifrompath-f.md#geturifrompath)。
+> 2. 推荐使用系统提供的接口获取URI，如getUriFromPath()接口。
 
 ## 相关实例
 

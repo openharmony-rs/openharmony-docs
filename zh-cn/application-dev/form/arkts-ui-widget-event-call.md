@@ -88,7 +88,7 @@
 
 3. 创建指定的UIAbility
     
-    在UIAbility中监听call事件，根据监听到的method参数中的方法名称调用对应方法，并通过[rpc.MessageSequence](../reference/apis-ipc-kit/arkts-apis/arkts-ipc-rpc-messagesequence-c.md#messagesequence)获取参数。UIAbility中监听的方法与步骤2中调用的方法需保持一致。
+    在UIAbility中监听call事件，根据监听到的method参数中的方法名称调用对应方法，并通过rpc.MessageSequence获取参数。UIAbility中监听的方法与步骤2中调用的方法需保持一致。
 
     <!-- @[widget_event_call_card_entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgeteventcallentryability/WidgetEventCallEntryAbility.ets) --> 
     

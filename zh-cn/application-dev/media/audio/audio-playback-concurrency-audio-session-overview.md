@@ -39,7 +39,7 @@
 
 后台音乐播放器正在播放，前台应用（如短视频）开始播放音频。
 
-解决方案：后台应用请求音频焦点（通过会话机制或焦点机制），后台播放器收到中断回调，根据[`InterruptHint`](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-interrupthint-e.md#interrupthint)判断执行`INTERRUPT_HINT_PAUSE`或`INTERRUPT_HINT_DUCK`。当前台应用释放焦点后，后台播放器收到`INTERRUPT_HINT_RESUME`，继续播放。
+解决方案：后台应用请求音频焦点（通过会话机制或焦点机制），后台播放器收到中断回调，根据`InterruptHint`判断执行`INTERRUPT_HINT_PAUSE`或`INTERRUPT_HINT_DUCK`。当前台应用释放焦点后，后台播放器收到`INTERRUPT_HINT_RESUME`，继续播放。
 
 焦点特点：后台应用被动接收中断事件，根据`InterruptHint`响应（暂停/停止/压低音量），应用无法主动声明策略，适用于传统应用或简单播放场景。
 
@@ -122,7 +122,7 @@
 |--|-------|-------|---------|------|
 | 默认场景 | 播放音乐 | 以静音状态开始播放音视频。 | 应用B启动时抢占焦点，应用A被打断无法恢复。 | - |
 | 方案一 | 无需适配 | 使用[setSilentModeAndMixWithOthers](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiorenderer-i.md#setsilentmodeandmixwithothers)开启静音并发播放模式。 | 应用B以静音状态开始播放，静音状态期间不抢占焦点，不影响应用A。<br>应用B解除静音后按正常策略申请焦点。 | 适用于使用AudioRenderer播放音频的场景。 |
-| 方案二 | 无需适配 | 使用[setMediaMuted](../../reference/apis-media-kit/arkts-apis/arkts-media-media-avplayer-i.md#setmediamuted)开启静音播放。 | 应用B以静音状态开始播放，静音状态期间不抢占焦点，不影响应用A。<br>应用B解除静音后按正常策略申请焦点。 | 适用于使用AVPlayer播放音频的场景。 |
+| 方案二 | 无需适配 | 使用setMediaMuted开启静音播放。 | 应用B以静音状态开始播放，静音状态期间不抢占焦点，不影响应用A。<br>应用B解除静音后按正常策略申请焦点。 | 适用于使用AVPlayer播放音频的场景。 |
 | 方案三 | 无需适配 | 使用[OH_AudioRenderer_SetSilentModeAndMixWithOthers](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiorenderer-i.md#setsilentmodeandmixwithothers)开启静音并发播放模式。 | 应用B以静音状态开始播放，静音状态期间不抢占焦点，不影响应用A。<br>应用B解除静音后按正常策略申请焦点。 | 适用于使用OHAudio播放音频的场景。 |
 
 ### 场景7：直播被后启动应用打断，无法恢复

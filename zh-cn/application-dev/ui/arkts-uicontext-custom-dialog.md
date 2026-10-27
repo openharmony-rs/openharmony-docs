@@ -6,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-在广告、中奖、警告、软件更新等与用户交互响应操作的场景下，可以使用UIContext中获取到的PromptAction对象提供的[openCustomDialog](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-promptaction-c.md#opencustomdialog)接口来实现自定义弹出框。相较于[CustomDialogController](../reference/apis-arkui/arkts-apis/arkts-arkui-customdialogcontroller-c.md#customdialogcontroller)优势点在于页面解耦，支持动态刷新[update](../reference/apis-arkui/arkts-apis/arkts-arkui-componentcontent-c.md#update)。
+在广告、中奖、警告、软件更新等与用户交互响应操作的场景下，可以使用UIContext中获取到的PromptAction对象提供的[openCustomDialog](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-promptaction-c.md#opencustomdialog)接口来实现自定义弹出框。相较于CustomDialogController优势点在于页面解耦，支持动态刷新[update](../reference/apis-arkui/arkts-apis/arkts-arkui-componentcontent-c.md#update)。
 
 > **说明：**
 > 
@@ -16,7 +16,7 @@
 > 
 > 本文介绍通过入参形式为ComponentContent创建自定义弹出框，传builder形式的弹出框使用方法可参考[openCustomDialog](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-promptaction-c.md#opencustomdialog)。
 
-弹出框（openCustomDialog）默认为模态弹窗且有蒙层，不可与蒙层下方控件进行交互（不支持点击和手势等向下透传）。可以通过配置[promptAction.BaseDialogOptions](../reference/apis-arkui/arkts-apis/arkts-arkui-promptaction-basedialogoptions-i-sys.md#basedialogoptions)类型中的isModal属性来实现模态和非模态弹窗，详细说明可参考[弹窗的种类](arkts-dialog-overview.md#弹窗的种类)。
+弹出框（openCustomDialog）默认为模态弹窗且有蒙层，不可与蒙层下方控件进行交互（不支持点击和手势等向下透传）。可以通过配置promptAction.BaseDialogOptions类型中的isModal属性来实现模态和非模态弹窗，详细说明可参考[弹窗的种类](arkts-dialog-overview.md#弹窗的种类)。
 
 当isModal为true时，弹出框为模态弹窗，且弹窗周围的蒙层区不支持透传。isModal为false时，弹出框为非模态弹窗，且弹窗周围的蒙层区可以透传。因此如果需要同时允许弹出框的交互和弹出框外页面的交互行为，需要将弹出框设置为非模态。
 
@@ -97,7 +97,7 @@ this.contentNode.update(new Params('update'))
 
 ## 更新自定义弹出框的属性
 
-通过updateCustomDialog可以动态更新弹出框的属性。目前支持更新弹出框的对齐方式、基于对齐方式的偏移量、是否点击蒙层自动关闭以及蒙层颜色，对应的属性分别为[BaseDialogOptions](../reference/apis-arkui/arkts-apis/arkts-arkui-promptaction-basedialogoptions-i-sys.md#basedialogoptions)中的alignment、offset、autoCancel和maskColor。
+通过updateCustomDialog可以动态更新弹出框的属性。目前支持更新弹出框的对齐方式、基于对齐方式的偏移量、是否点击蒙层自动关闭以及蒙层颜色，对应的属性分别为BaseDialogOptions中的alignment、offset、autoCancel和maskColor。
 
 更新属性时，未设置的属性会恢复为默认值。例如，初始设置{ alignment: DialogAlignment.Top, offset: { dx: 0, dy: 50 } }，更新时设置{ alignment: DialogAlignment.Bottom }，则初始设置的offset: { dx: 0, dy: 50 }不会保留，会恢复为默认值。
 
@@ -117,7 +117,7 @@ PromptActionClassNew.ctx.getPromptAction().updateCustomDialog(PromptActionClassN
 
 ## 为弹出框内容和蒙层设置不同的动画效果
 
-当弹出框出现时，内容与蒙层显示动效一致。若开发者希望为弹出框内容及蒙层设定不同动画效果，从API version 19开始，可通过[BaseDialogOptions](../reference/apis-arkui/arkts-apis/arkts-arkui-promptaction-basedialogoptions-i-sys.md#basedialogoptions)中dialogTransition和maskTransition属性单独配置弹窗内容与蒙层的动画。具体的动画效果请参考[组件内转场 (transition)](../reference/apis-arkui/c-apis/capi-arkui-nodeattributetype-scrollable-container-component.md)。
+当弹出框出现时，内容与蒙层显示动效一致。若开发者希望为弹出框内容及蒙层设定不同动画效果，从API version 19开始，可通过BaseDialogOptions中dialogTransition和maskTransition属性单独配置弹窗内容与蒙层的动画。具体的动画效果请参考[组件内转场 (transition)](../reference/apis-arkui/c-apis/capi-arkui-nodeattributetype-scrollable-container-component.md)。
 
 > **说明：** 
 >
@@ -198,7 +198,7 @@ export struct CustomDialogComponentWithTransition {
 
 ## 设置弹出框避让软键盘的距离
 
-为显示弹出框的独立性，弹出框弹出时会与周边进行避让，包括状态栏、导航条以及键盘等留有间距。故当软键盘弹出时，默认情况下，弹出框会自动避开软键盘，并与之保持16vp的距离。从API version 15开始，开发者可以利用[BaseDialogOptions](../reference/apis-arkui/arkts-apis/arkts-arkui-promptaction-basedialogoptions-i-sys.md#basedialogoptions)中的keyboardAvoidMode和keyboardAvoidDistance这两个配置项，来设置弹出框在软键盘弹出时的行为，包括是否需要避开软键盘以及与软键盘之间的距离。
+为显示弹出框的独立性，弹出框弹出时会与周边进行避让，包括状态栏、导航条以及键盘等留有间距。故当软键盘弹出时，默认情况下，弹出框会自动避开软键盘，并与之保持16vp的距离。从API version 15开始，开发者可以利用BaseDialogOptions中的keyboardAvoidMode和keyboardAvoidDistance这两个配置项，来设置弹出框在软键盘弹出时的行为，包括是否需要避开软键盘以及与软键盘之间的距离。
 
 设置软键盘间距时，需要将keyboardAvoidMode值设为KeyboardAvoidMode.DEFAULT。
 

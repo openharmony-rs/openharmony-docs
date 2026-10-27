@@ -105,7 +105,7 @@ struct TabKeyFocusShowKeyboard {
 
 4. 页面发生切换。
 
-5. 通过输入框的[TextInputController](../reference/apis-arkui/arkts-components/arkts-arkui-textinput-comp-textinputcontroller-c.md#textinputcontroller)退出编辑态。
+5. 通过输入框的TextInputController退出编辑态。
 
 6. 焦点从输入框转移到另一个不需要软键盘的组件。
 
@@ -277,9 +277,9 @@ struct PageChangeDestination {
 
 ### 通过输入框的TextInputController退出编辑态
 
-通过输入框的[TextInputController](../reference/apis-arkui/arkts-components/arkts-arkui-textinput-comp-textinputcontroller-c.md#textinputcontroller)调用[stopEditing](../reference/apis-arkui/arkts-components/arkts-arkui-textinput-comp-textinputcontroller-c.md#stopediting)方法后，软键盘会自动收起。
+通过输入框的TextInputController调用[stopEditing](../reference/apis-arkui/arkts-components/arkts-arkui-textinput-comp-textinputcontroller-c.md#stopediting)方法后，软键盘会自动收起。
 
-以下示例展示了如何通过[TextInputController](../reference/apis-arkui/arkts-components/arkts-arkui-textinput-comp-textinputcontroller-c.md#textinputcontroller)收起软键盘。
+以下示例展示了如何通过TextInputController收起软键盘。
 
 <!-- @[textInputController_CloseKeyboard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/manageKeyBoard/TextInputControllerCloseKeyboard.ets) --> 
 

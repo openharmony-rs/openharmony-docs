@@ -15,7 +15,7 @@
 - 当前不支持动态属性设置。
 - 当前不支持设置ArkUI通用属性[expandSafeArea](../../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#expandsafearea)。
 - 该组件长按触发播放时组件区域放大为1.1倍。
-- 该组件使用[AVPlayer](../../reference/apis-media-kit/arkts-apis/arkts-media-media-avplayer-i.md)进行播放，同时开启的AVPlayer个数不建议超过3个，超过3个可能会出现视频播放卡顿现象。
+- 该组件使用AVPlayer进行播放，同时开启的AVPlayer个数不建议超过3个，超过3个可能会出现视频播放卡顿现象。
 
 ## 开发步骤
 

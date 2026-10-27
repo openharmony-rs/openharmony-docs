@@ -36,7 +36,7 @@ Radio({ value: 'Radio2', group: 'radioGroup' })
 
 ## 添加事件
 
-除支持[通用事件](../reference/apis-arkui/arkui-js-lite/js-lite-common-events.md)外，Radio还用于选中后触发某些操作，可以绑定onChange事件来响应选中操作后的自定义行为。
+除支持通用事件外，Radio还用于选中后触发某些操作，可以绑定onChange事件来响应选中操作后的自定义行为。
 
 <!-- @[click_radio_event_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/radio/RadioButton.ets) -->
 

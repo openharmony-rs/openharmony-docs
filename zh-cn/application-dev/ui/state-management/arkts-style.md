@@ -6,7 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @BIYynNe-->
 
-如果每个组件的样式都需要单独设置，开发过程中会产生大量重复的样式设置代码。虽然可以复制粘贴，但为了保持代码简洁、便于后续维护，ArkUI提供了可以提炼公共样式进行复用的装饰器[\@Styles](../../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-styles-d.md#styles)。
+如果每个组件的样式都需要单独设置，开发过程中会产生大量重复的样式设置代码。虽然可以复制粘贴，但为了保持代码简洁、便于后续维护，ArkUI提供了可以提炼公共样式进行复用的装饰器\@Styles。
 
 \@Styles装饰器可以将多条样式设置提炼成一个方法，直接在组件声明的位置调用。通过\@Styles装饰器可以快速定义并复用自定义样式。
 
@@ -20,7 +20,7 @@
 
 ## 装饰器使用说明
 
-- 当前\@Styles仅支持[通用属性](../../reference/apis-arkui/arkui-js-lite/js-lite-common-attributes.md)和[通用事件](../../reference/apis-arkui/arkui-js-lite/js-lite-common-events.md)。
+- 当前\@Styles仅支持通用属性和通用事件。
 
 - \@Styles可以定义在组件内或全局，在全局定义时需在方法名前面添加function关键字，组件内定义时则不需要添加function关键字。请参考用例[组件内\@Styles和全局\@Styles的用法](#组件内styles和全局styles的用法)。
 

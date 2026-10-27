@@ -28,7 +28,7 @@ HiAppEvent是系统为应用开发者提供的事件订阅和事件打点机制�
 
 - 事件参数：指定事件的参数，每个事件可以包含一组参数，建议设置为事件属性或事件发生的上下文信息，以便于描述事件的详细信息。
 
-**事件订阅**：通过HiAppEvent的接口[addWatcher](../reference/apis-performance-analysis-kit/c-apis/capi-hiappevent-h.md#ohhiappeventaddwatcher)，开发者可以注册监听自己关注的系统事件或应用事件。目的是当订阅的事件发生后，接收事件的回调信息并进行处理。
+**事件订阅**：通过HiAppEvent的接口addWatcher，开发者可以注册监听自己关注的系统事件或应用事件。目的是当订阅的事件发生后，接收事件的回调信息并进行处理。
 
 ## 实现原理
 
@@ -42,7 +42,7 @@ HiAppEvent是系统为应用开发者提供的事件订阅和事件打点机制�
 
 ### 应用事件订阅机制
 
-应用调用addWatcher接口订阅关注的应用事件后，还需在应用事件发生时，调用[write](../reference/apis-performance-analysis-kit/c-apis/capi-hiappevent-h.md#ohhiappeventwrite)接口进行打点，用来记录应用事件。
+应用调用addWatcher接口订阅关注的应用事件后，还需在应用事件发生时，调用write接口进行打点，用来记录应用事件。
 
 HiAppEvent通过事件领域和事件名称关联应用事件，并通过addWatcher接口设置的回调方式将事件回调给应用。
 

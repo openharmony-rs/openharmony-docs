@@ -50,7 +50,7 @@ HiDumper命令行工具使用常见问题汇总在[常见问题](#常见问题)�
 | [--zip](#导出信息压缩存储) | 保存命令输出到 /data/log/hidumper 下的压缩文件，压缩格式为 ZIP。 |
 | [--ipc [pid]/-a --start-stat/stat/--stop-stat](#获取进程间通信信息) | 统计一段时间进程IPC信息。如果使用-a，则统计所有进程IPC数据。使用--start-stat开始统计，使用--stat获取统计数据，使用--stop-stat结束统计。 |
 | [--mem-smaps pid [-v]](#查询进程内存) | 获取pid内存统计信息，数据来源于/proc/pid/smaps，使用-v指定更多详细信息。（仅支持导出[debug版本应用](performance-analysis-kit-terminology.md#debug版本应用)）<br />**说明**：从API version 20开始，支持该参数。 |
-| [--mem-jsheap pid [-T tid] [--gc] [--leakobj] [--raw] [--clean] [--single]](#查询虚拟机堆内存) | 必选参数pid。触发ArkTS应用JS线程的gc和堆内存快照导出。文件命名格式为：<!--RP1-->jsheap-进程号-JS线程号-时间戳<!--RP1End-->，文件内容为JSON结构的JS堆快照。<br>指定线程tid时，仅触发该线程的gc和堆内存快照导出。<br>指定--gc时，仅触发gc，不导出快照。<br>指定--leakobj时，应用开启泄漏检测可获取泄漏对象列表。<br>指定--raw时，堆快照以rawheap格式导出。<br>指定--clean时，快照导出后触发清理nodeId节点信息。<br>指定--single时，按进程导出一份快照，只支持rawheap格式，需配合--raw命令使用。<br>**说明**：<br>使用该命令时，应用应处于前台亮屏状态。<br>从API version 19开始，支持--raw参数。<br>从API version 24开始，支持--clean参数。<br>从API版本26.0.0开始，支持--single参数。<br>从API版本26.0.0开始，[release版本应用](performance-analysis-kit-terminology.md#release版本应用)支持此命令，但需同时满足[profileable标签](../quick-start/app-configuration-file.md#配置文件标签)、enterprise类型的[appDistributionType](../reference/apis-ability-kit/arkts-apis/arkts-ability-applicationinfo-i-sys.md#applicationinfo)且开发者模式打开。 |
+| [--mem-jsheap pid [-T tid] [--gc] [--leakobj] [--raw] [--clean] [--single]](#查询虚拟机堆内存) | 必选参数pid。触发ArkTS应用JS线程的gc和堆内存快照导出。文件命名格式为：<!--RP1-->jsheap-进程号-JS线程号-时间戳<!--RP1End-->，文件内容为JSON结构的JS堆快照。<br>指定线程tid时，仅触发该线程的gc和堆内存快照导出。<br>指定--gc时，仅触发gc，不导出快照。<br>指定--leakobj时，应用开启泄漏检测可获取泄漏对象列表。<br>指定--raw时，堆快照以rawheap格式导出。<br>指定--clean时，快照导出后触发清理nodeId节点信息。<br>指定--single时，按进程导出一份快照，只支持rawheap格式，需配合--raw命令使用。<br>**说明**：<br>使用该命令时，应用应处于前台亮屏状态。<br>从API version 19开始，支持--raw参数。<br>从API version 24开始，支持--clean参数。<br>从API版本26.0.0开始，支持--single参数。<br>从API版本26.0.0开始，[release版本应用](performance-analysis-kit-terminology.md#release版本应用)支持此命令，但需同时满足[profileable标签](../quick-start/app-configuration-file.md#配置文件标签)、enterprise类型的appDistributionType且开发者模式打开。 |
 | <!--DelRow-->[--mem-cjheap pid [--gc]](#查询虚拟机堆内存) | pid为必选参数。触发仓颉应用gc和堆内存快照导出。如果指定--gc，只触发gc不做快照导出。<br>**说明**：<br>使用该命令时，应用应处于前台亮屏状态。<br>从API version 20开始，支持该参数。 |
 | <!--RP13-->[--mem-heap pid ARG [--leakobj]](#查询虚拟机堆内存) | 导出指定类型的内存快照信息。ARG用于指定快照类型，当前支持--native和--kotlin类型。<br>指定--leakobj，只触发打印可疑内存泄漏点不做快照导出，仅配合--native参数使用。<br>**说明**：<br>使用该命令时，应用应处于前台亮屏状态。<br>从API版本26.0.0开始，支持--leakobj参数以及--kotlin类型的快照导出。<!--RP13End--> |
 
@@ -495,8 +495,8 @@ hdc shell "bm dump -n com.example.myapplication | grep appProvisionType"
 
     具体使用步骤为：
 
-    1. 应用调用[jsLeakWatcher.enable](../reference/apis-performance-analysis-kit/arkts-apis/arkts-performanceanalysis-jsleakwatcher-enable-f.md#enable)接口。
-    2. 应用调用[jsLeakWatcher.watch](../reference/apis-performance-analysis-kit/arkts-apis/arkts-performanceanalysis-jsleakwatcher-watch-f.md#watch)接口。
+    1. 应用调用jsLeakWatcher.enable接口。
+    2. 应用调用jsLeakWatcher.watch接口。
     3. 执行hidumper --mem-jsheap [pid] --leakobj命令，导出虚拟机堆内存和泄漏对象信息。
 
   使用样例：
@@ -1819,7 +1819,7 @@ hidumper --mem命令与HiDebug接口内存获取功能详细对比参考下表�
 | hidumper --mem | 命令行获取**所有进程**的内存使用情况 | 系统节点：/proc/pid/smaps_rollup | 是 |
 | hidumper --mem [pid] | 命令行获取**单个进程**的内存使用情况 | 系统节点：/proc/pid/smaps | 是 |
 | hidumper --mem-smaps [pid] | 命令行获取**单个进程**的详细内存使用情况 | 系统节点：/proc/pid/smaps_rollup | 否 |
-| [hidebug.getAppNativeMemInfo](../reference/apis-performance-analysis-kit/c-apis/capi-hidebug-h.md#ohhidebuggetappnativememinfo) | 获取**应用自身**的内存使用情况 | 系统节点：/proc/pid/smaps_rollup | 否 |
+| hidebug.getAppNativeMemInfo | 获取**应用自身**的内存使用情况 | 系统节点：/proc/pid/smaps_rollup | 否 |
 
 若想通过Hidebug获取图形内存，请参考[HiDebug能力概述](hidebug-guidelines.md)中的相关说明。
 

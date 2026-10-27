@@ -79,7 +79,7 @@ WebSocket 证书不存在。
 
 1. 检查CA证书路径是否有效。
 
-2. 如指定了[WebSocketRequestOptions](./js-apis-webSocket.md#websocketrequestoptions).clientCert，请检查证书路径与私钥路径是否有效。
+2. 如指定了WebSocketRequestOptions.clientCert，请检查证书路径与私钥路径是否有效。
 
 
 ## 2302003 Websocket 连接已经存在

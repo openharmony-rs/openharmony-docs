@@ -8,11 +8,11 @@
 
 属性字符串StyledString/MutableStyledString（其中MutableStyledString继承自StyledString，下文统称为StyledString），可用于在字符或段落级别上设置文本样式。将StyledString应用到文本组件上，可以采用多种方式修改文本，包括调整字号、添加字体颜色、使文本具备可点击性，以及通过自定义方式绘制文本等。具体使用方法请参考[属性字符串](../reference/apis-arkui/arkts-apis/arkts-arkui-styledstring.md)的API文档。
 
-属性字符串提供多种类型样式对象，涵盖各种常见的文本样式格式，例如文本装饰线样式、文本行高样式、文本阴影样式等。也可以自行创建[CustomSpan](../reference/apis-arkui/arkts-apis/arkts-arkui-styledstringkey-e.md#customspan)，以应用自定义样式。 
+属性字符串提供多种类型样式对象，涵盖各种常见的文本样式格式，例如文本装饰线样式、文本行高样式、文本阴影样式等。也可以自行创建CustomSpan，以应用自定义样式。 
 
 ## 创建并应用StyledString和MutableStyledString
 
-  可以通过[TextController](../reference/apis-arkui/arkts-components/arkts-arkui-text-comp-textcontroller-c.md#textcontroller)提供的[setStyledString](../reference/apis-arkui/arkts-components/arkts-arkui-text-comp-textcontroller-c.md#setstyledstring)方法，将属性字符串附加到文本组件，并推荐在[onPageShow](../reference/apis-arkui/arkts-apis/arkts-arkui-uiobserver-routerpagestate-e.md#onpageshow)或者文本组件的[onAppear](../reference/apis-arkui/arkts-apis/arkts-arkui-uiobserver-navdestinationstate-e.md#onappear)回调中触发绑定。
+  可以通过TextController提供的[setStyledString](../reference/apis-arkui/arkts-components/arkts-arkui-text-comp-textcontroller-c.md#setstyledstring)方法，将属性字符串附加到文本组件，并推荐在onPageShow或者文本组件的onAppear回调中触发绑定。
   > **说明：**
   >
   > 在[aboutToAppear](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-statemanagement-customcomponentlifecycleobserver-i.md#abouttoappear)中调用setStyledString方法时，由于该方法运行阶段组件尚未完成创建并成功挂载节点树，因此无法在页面初始化时显示属性字符串。
@@ -58,7 +58,7 @@
 
 ## 设置文本样式
 
-属性字符串目前提供了多种Style对象，包括[TextStyle](../reference/apis-arkui/arkts-apis/arkts-arkui-alertdialogparam-i.md#textstyle)、[TextShadowStyle](../reference/apis-arkui/arkts-apis/arkts-arkui-textshadowstyle-c.md#textshadowstyle)、[DecorationStyle](../reference/apis-arkui/arkts-apis/arkts-arkui-decorationstyle-c.md#decorationstyle)、[BaselineOffsetStyle](../reference/apis-arkui/arkts-apis/arkts-arkui-baselineoffsetstyle-c.md#baselineoffsetstyle)、[LineHeightStyle](../reference/apis-arkui/arkts-apis/arkts-arkui-lineheightstyle-c.md#lineheightstyle)、[LetterSpacingStyle](../reference/apis-arkui/arkts-apis/arkts-arkui-letterspacingstyle-c.md#letterspacingstyle)，用于设置文本的各类样式。
+属性字符串目前提供了多种Style对象，包括[TextStyle](../reference/apis-arkui/arkts-apis/arkts-arkui-alertdialogparam-i.md#textstyle)、TextShadowStyle、DecorationStyle、BaselineOffsetStyle、LineHeightStyle、LetterSpacingStyle，用于设置文本的各类样式。
 
 - 创建及应用文本字体样式对象（TextStyle）
 
@@ -347,7 +347,7 @@
 
 ## 设置段落样式
 
-可通过[ParagraphStyle](../reference/apis-arkui/arkts-apis/arkts-arkui-styledstringkey-e.md#paragraphstyle)设置段落样式布局。下图显示了如何分割文本中的段落，段落之间以换行符`\n`分隔。
+可通过ParagraphStyle设置段落样式布局。下图显示了如何分割文本中的段落，段落之间以换行符`\n`分隔。
 
 ![paragraphs](figures/styledstringParagraphs.png)
 
@@ -513,7 +513,7 @@
 
 ## 支持将属性字符串转换成Paragraph
 
-可通过[getParagraphs](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-measureutils-c.md#getparagraphs)将属性字符串根据文本布局选项转换成对应的[Paragraph](../reference/apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-text-paragraph-c.md#paragraph)数组。
+可通过[getParagraphs](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-measureutils-c.md#getparagraphs)将属性字符串根据文本布局选项转换成对应的Paragraph数组。
 
 - 以下示例展示了通过getParagraphs方法将属性字符串转换为Paragraph对象，进而通过Paragraph对象实现文本测算功能。当内容超出最大显示行数的时候，截断文本显示并展示“...全文”的效果。
 
@@ -732,9 +732,9 @@
 
 ## 使用图片
 
-可通过[ImageAttachment](../reference/apis-arkui/arkts-apis/arkts-arkui-imageattachment-c.md#imageattachment)来添加图片。
+可通过ImageAttachment来添加图片。
 
-以下示例展示了如何将图片和文本附加到同一个[MutableStyledString](../reference/apis-arkui/arkts-apis/arkts-arkui-mutablestyledstring-c.md#mutablestyledstring)对象上，并实现图文混排。
+以下示例展示了如何将图片和文本附加到同一个MutableStyledString对象上，并实现图文混排。
 
 > **说明：**
 >
@@ -920,7 +920,7 @@
 
 ## 设置事件
 
-可通过[GestureStyle](../reference/apis-arkui/arkts-apis/arkts-arkui-gesturestyle-c.md#gesturestyle)设置onClick、onLongPress事件来使文本响应点击、长按事件。
+可通过GestureStyle设置onClick、onLongPress事件来使文本响应点击、长按事件。
 
 除了初始化属性字符串对象即初始样式对象，亦可通过[setStyle](../reference/apis-arkui/arkts-apis/arkts-arkui-mutablestyledstring-c.md#setstyle)接口再叠加新样式或更新已有样式，同时需要在附加的文本组件controller上主动触发更新绑定的属性字符串。
 
@@ -1254,7 +1254,7 @@ struct StyledStringHtml {
 
 ## 场景示例
 
-该示例通过[ParagraphStyle](../reference/apis-arkui/arkts-apis/arkts-arkui-styledstringkey-e.md#paragraphstyle)、[LineHeightStyle](../reference/apis-arkui/arkts-apis/arkts-arkui-lineheightstyle-c.md#lineheightstyle)、[TextStyle](../reference/apis-arkui/arkts-apis/arkts-arkui-alertdialogparam-i.md#textstyle)对象展示了会员过期提示的效果。
+该示例通过ParagraphStyle、LineHeightStyle、[TextStyle](../reference/apis-arkui/arkts-apis/arkts-arkui-alertdialogparam-i.md#textstyle)对象展示了会员过期提示的效果。
 
 <!-- @[styledStringSceneExample_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringSceneExample.ets) -->
 

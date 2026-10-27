@@ -15,12 +15,12 @@
 
 ## 接口说明
 
-接口详情参见[API参考](../reference/apis-ability-kit/arkts-apis/arkts-ability-abilityconstant-launchparam-i.md#launchparam)。
+接口详情参见API参考。
 
 | **接口名**  | **描述** |
 | -------- | -------- |
-| [LaunchParam](../reference/apis-ability-kit/arkts-apis/arkts-ability-abilityconstant-launchparam-i.md#launchparam)       | 启动参数。此接口的lastExitReason、lastExitMessage、lastExitDetailInfo成员记录Ability上次异常退出的信息。  |
-| [LastExitDetailInfo](../reference/apis-ability-kit/arkts-apis/arkts-ability-abilityconstant-lastexitdetailinfo-i.md#lastexitdetailinfo)       | 从API version 18开始，记录Ability所在进程上次退出时的关键运行信息。 |
+| LaunchParam       | 启动参数。此接口的lastExitReason、lastExitMessage、lastExitDetailInfo成员记录Ability上次异常退出的信息。  |
+| LastExitDetailInfo       | 从API version 18开始，记录Ability所在进程上次退出时的关键运行信息。 |
 
 ## 开发步骤
 

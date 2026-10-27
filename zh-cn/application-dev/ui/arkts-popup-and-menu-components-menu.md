@@ -6,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-Menu是菜单接口，一般用于鼠标右键弹窗、点击弹窗等。具体用法请参考[菜单控制](../reference/apis-arkui/arkui-js/js-components-basic-menu.md)。
+Menu是菜单接口，一般用于鼠标右键弹窗、点击弹窗等。具体用法请参考菜单控制。
 
 使用[bindContextMenu](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu)并设置预览图，菜单弹出时有蒙层，此时为模态。
 
@@ -152,7 +152,7 @@ Button('click for Menu')
 
 ## 菜单弹出时振动效果
 
-菜单从API version 18开始支持振动效果。菜单弹出时，默认不振动。若希望菜单弹出时有振动效果，可以通过[ContextMenuOptions](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-contextmenuoptions-i-sys.md#contextmenuoptions)的hapticFeedbackMode属性，设置菜单弹出时的振动模式。
+菜单从API version 18开始支持振动效果。菜单弹出时，默认不振动。若希望菜单弹出时有振动效果，可以通过ContextMenuOptions的hapticFeedbackMode属性，设置菜单弹出时的振动模式。
 
 - 只有一级菜单可配置弹出时振动效果。
 - 仅当应用具备ohos.permission.VIBRATE权限，且用户启用了触感反馈时才会生效。开启触控反馈时，需要在工程的module.json5中配置[声明权限](../security/AccessToken/declare-permissions.md)的requestPermissions字段开启振动权限，配置如下：
@@ -177,7 +177,7 @@ Button('click for Menu')
 
 ## 菜单支持避让中轴
 
-从API version 18起，菜单支持中轴避让功能。从API version 20开始，在2in1设备上默认启用（仅在窗口处于瀑布模式时产生避让）。开发者可通过[ContextMenuOptions](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-contextmenuoptions-i-sys.md#contextmenuoptions)中的enableHoverMode属性，控制菜单是否启用中轴避让。
+从API version 18起，菜单支持中轴避让功能。从API version 20开始，在2in1设备上默认启用（仅在窗口处于瀑布模式时产生避让）。开发者可通过ContextMenuOptions中的enableHoverMode属性，控制菜单是否启用中轴避让。
 
 > **说明：**
 > - 如果菜单的点击位置在中轴区域，则菜单不会避让。
@@ -261,7 +261,7 @@ export struct SupportAvoidCentralAxisMenuExample {
 
 ## 控制子窗菜单的事件透传
 
-当菜单在子窗口中弹出时，默认情况下，菜单周围的事件会传递至所在窗口。从API version 20开始，开发者可通过[ContextMenuOptions](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-contextmenuoptions-i-sys.md#contextmenuoptions)的modalMode属性设置子菜单弹出时的模态模式，以控制菜单周围事件是否传递。将modalMode设置为ModalMode.TARGET_WINDOW时，菜单周围的事件将不再传递，菜单下方的控件也不会响应事件。
+当菜单在子窗口中弹出时，默认情况下，菜单周围的事件会传递至所在窗口。从API version 20开始，开发者可通过ContextMenuOptions的modalMode属性设置子菜单弹出时的模态模式，以控制菜单周围事件是否传递。将modalMode设置为ModalMode.TARGET_WINDOW时，菜单周围的事件将不再传递，菜单下方的控件也不会响应事件。
 
 <!-- @[eventTrans_menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/EventTransSubWindowMenu.ets) -->
 
@@ -303,12 +303,12 @@ export struct EventTransSubWindowMenuExample {
 
 ## 基于绑定组件指定位置弹出菜单
 
-菜单从API version 20开始支持基于绑定组件在指定位置弹出。通过设置水平与垂直偏移量，控制菜单相对于绑定组件左上角的弹出位置。与单独使用offset接口不同，此方法可使菜单覆盖显示在绑定组件上。需要指定弹出位置时，可使用[ContextMenuOptions](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-contextmenuoptions-i-sys.md#contextmenuoptions)的anchorPosition属性进行设置。
+菜单从API version 20开始支持基于绑定组件在指定位置弹出。通过设置水平与垂直偏移量，控制菜单相对于绑定组件左上角的弹出位置。与单独使用offset接口不同，此方法可使菜单覆盖显示在绑定组件上。需要指定弹出位置时，可使用ContextMenuOptions的anchorPosition属性进行设置。
 
 > **说明：**
 >- 当菜单处于预览状态时，设定的定位偏移量将无法生效。
->- 预设的[placement](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-contextmenuoptions-i-sys.md#contextmenuoptions)对齐参数将不再生效。
->- 叠加[offset](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-contextmenuoptions-i-sys.md#contextmenuoptions)参数的偏移量，最终确定菜单的精确显示位置。
+>- 预设的placement对齐参数将不再生效。
+>- 叠加offset参数的偏移量，最终确定菜单的精确显示位置。
 >- 当水平与垂直偏移量均设为负值时，菜单以绑定组件左下角为基准点进行显示。
 >- 当水平或垂直偏移量存在负值时，组件将以绑定组件的左上角为定位基准点，通过叠加偏移量参数实现反向偏移。
 

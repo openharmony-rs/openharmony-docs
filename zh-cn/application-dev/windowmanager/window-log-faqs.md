@@ -73,11 +73,11 @@ total window num: 12
 | 字段 | 含义 | 说明 |
 |------|------|------|
 | WindowName | 窗口名称 | 应用窗口名称（如note0表示备忘录应用），系统窗口名称（如SystemUi_StatusBar表示系统状态栏）。 |
-| DisplayId | 显示设备ID | 屏幕设备的唯一标识，0表示主屏幕，多屏场景下可通过[getAllDisplays()](../reference/apis-arkui/arkts-apis/arkts-arkui-display-getalldisplays-f.md#getalldisplays)查询所有屏幕的DisplayId。 |
+| DisplayId | 显示设备ID | 屏幕设备的唯一标识，0表示主屏幕，多屏场景下可通过getAllDisplays()查询所有屏幕的DisplayId。 |
 | Pid | 进程ID | 创建该窗口的应用进程ID，如18299。 |
 | WinId | 窗口唯一标识符 | 窗口ID，用于唯一标识一个窗口实例，如13。 |
-| Type | 窗口类型 | 应用窗口：1表示应用主窗口，2表示应用子窗口；系统窗口：值为2000+。该值是系统内部标识，不直接对应[WindowType](../reference/apis-arkui/arkts-apis/arkts-arkui-window-systemwindowoptions-i-sys.md#windowtype)枚举值。 |
-| Mode | 窗口模式 | 1表示全屏模式。该值是系统内部标识，不完全对应[WindowMode](../reference/apis-ability-kit/arkts-apis/arkts-ability-abilityconstant-windowmode-e-sys.md#windowmode)枚举值。 |
+| Type | 窗口类型 | 应用窗口：1表示应用主窗口，2表示应用子窗口；系统窗口：值为2000+。该值是系统内部标识，不直接对应WindowType枚举值。 |
+| Mode | 窗口模式 | 1表示全屏模式。该值是系统内部标识，不完全对应WindowMode枚举值。 |
 | Flag | 状态标志位 | 状态标识值。当前该字段为预留字段，无实际意义。 |
 | ZOrd | 窗口层级（Z序） | 数值越大层级越高，如4比2层级高，-1表示隐藏层级。 |
 | Orientation | 窗口方向 | 窗口方向标识值。当前该字段为预留字段，无实际意义。 |
@@ -144,11 +144,11 @@ TouchHotAreas: [ 0, 0, 720, 1280 ]
 | 字段 | 含义         | 取值说明                                                                                                                                |
 |------|------------|-------------------------------------------------------------------------------------------------------------------------------------|
 | WindowName | 窗口名称       | 应用自定义的窗口名称。如note0：表示为备忘录应用窗口；SystemUi_StatusBar：表示为系统状态栏窗口。                                                                         |
-| DisplayId | 显示设备ID     | 显示设备标识。0：表示为主屏幕；其他值：表示为其他屏幕。多屏场景可通过[getAllDisplays()](../reference/apis-arkui/arkts-apis/arkts-arkui-display-getalldisplays-f.md#getalldisplays)查询所有屏幕信息。   |
+| DisplayId | 显示设备ID     | 显示设备标识。0：表示为主屏幕；其他值：表示为其他屏幕。多屏场景可通过getAllDisplays()查询所有屏幕信息。   |
 | WinId | 窗口唯一标识符    | 窗口ID，用于唯一标识该窗口实例，如13：表示为窗口ID。                                                                                                       |
 | Pid | 进程ID       | 创建该窗口的应用进程ID，如18299：表示为应用进程ID。                                                                                                      |
 | Type | 窗口类型       | 窗口类型标识。1：表示为应用主窗口；2：表示为应用子窗口；2000+：表示为系统窗口。                                                                                         |
-| Mode | 窗口模式       | 窗口模式标识。1：表示为全屏模式。该值是系统内部标识，不完全对应[WindowMode](../reference/apis-ability-kit/arkts-apis/arkts-ability-abilityconstant-windowmode-e-sys.md#windowmode)枚举值。 |
+| Mode | 窗口模式       | 窗口模式标识。1：表示为全屏模式。该值是系统内部标识，不完全对应WindowMode枚举值。 |
 | Flag | 状态标志位      | 状态标识值。当前该字段为预留字段，无实际意义。                                                                                                             |
 | Orientation | 窗口方向       | 窗口方向标识值。当前该字段为预留字段，无实际意义。                                                                                                           |
 | IsStartingWindow | 是否显示启动页    | 执行命令时当前窗口显示的内容。true：表示当前窗口显示的是[应用启动页](launch-page-overview.md)；false：表示当前窗口显示的是正常应用窗口内容。 |

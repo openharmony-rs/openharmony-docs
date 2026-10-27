@@ -143,7 +143,7 @@ struct Page {
   }
 }
 ```
-- addMonitor设置[isSynchronous](../../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-statemanagement-monitoroptions-i.md#monitoroptions)仅第一次有效，即其不能被更改，如果开发者更改`isSynchronous`，则会打印错误日志。
+- addMonitor设置isSynchronous仅第一次有效，即其不能被更改，如果开发者更改`isSynchronous`，则会打印错误日志。
 
 <!-- @[AddMonitorIsSynchronous](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AddMonitorClearMonitorSample/entry/src/main/ets/pages/AddMonitorIsSynchronous.ets) -->
 

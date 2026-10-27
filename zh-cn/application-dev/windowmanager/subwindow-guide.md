@@ -20,7 +20,7 @@
 
 1. 通过[createSubWindow()](../reference/apis-arkui/arkts-apis/arkts-arkui-window-windowstage-i.md#createsubwindow)接口或[createSubWindowWithOptions()](../reference/apis-arkui/arkts-apis/arkts-arkui-window-windowstage-i.md#createsubwindowwithoptions)创建应用子窗口。子窗口创建后默认为[沉浸式布局](immersive-window-feature.md#沉浸式布局)。
 
-   API版本26.0.0开始，支持在使用[createSubWindowWithOptions()](../reference/apis-arkui/arkts-apis/arkts-arkui-window-windowstage-i.md#createsubwindowwithoptions)创建子窗时设置[SubWindowOptions](../reference/apis-arkui/arkts-apis/arkts-arkui-window-extensionwindowconfig-i-sys.md#subwindowoptions)中的zLevelAboveParentLoosened为true，此时创建的子窗称为独立子窗。
+   API版本26.0.0开始，支持在使用[createSubWindowWithOptions()](../reference/apis-arkui/arkts-apis/arkts-arkui-window-windowstage-i.md#createsubwindowwithoptions)创建子窗时设置SubWindowOptions中的zLevelAboveParentLoosened为true，此时创建的子窗称为独立子窗。
 
    独立子窗在[自由窗口](freeform-window-overview.md#自由窗口)状态下，不跟随主窗前后台的切换，仅跟随主窗一起销毁，独立子窗与主窗可通过点击调整层级。
 

@@ -165,7 +165,7 @@ NavBar的内容区可以通过两种方式指定：
   }
   ```
 
- - 方式二：从API version 20开始，使用[Navigation](../reference/apis-arkui/arkts-components/arkts-arkui-navigation-comp.md#navigation)将某个NavDestination直接指定为导航栏内容，此方法需要配置路由表，配置方式请参考[路由表](./arkts-navigation-cross-package.md#路由表能力对比)。
+ - 方式二：从API version 20开始，使用Navigation将某个NavDestination直接指定为导航栏内容，此方法需要配置路由表，配置方式请参考[路由表](./arkts-navigation-cross-package.md#路由表能力对比)。
 
 ## NavPathStack（导航控制器）
 
@@ -217,7 +217,7 @@ NavPathStack也支持开发者继承并复写相关路由操作方法。NavPathS
 
 ## 菜单栏
 
-菜单栏位于组件的顶部，开发者可以通过[menus](../reference/apis-arkui/arkts-apis/arkts-arkui-atomicservice-atomicservicenavigation-atomicservicenavigation-s.md#menus)属性设置Navigation的菜单栏。menus支持Array&lt;[NavigationMenuItem](../reference/apis-arkui/arkts-components/arkts-arkui-navigation-comp-navigationmenuitem-i.md#navigationmenuitem)&gt;和[CustomBuilder](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-custombuilder-t.md#custombuilder)两种参数类型。使用Array&lt;[NavigationMenuItem](../reference/apis-arkui/arkts-components/arkts-arkui-navigation-comp-navigationmenuitem-i.md#navigationmenuitem)&gt;类型时，竖屏最多支持显示3个图标，横屏最多支持显示5个图标，多余的图标会被放入自动生成的更多图标。NavDestination同样支持[menus](../reference/apis-arkui/arkts-components/arkts-arkui-navdestination-comp-attribute.md#menus)属性用于设置菜单栏。
+菜单栏位于组件的顶部，开发者可以通过[menus](../reference/apis-arkui/arkts-apis/arkts-arkui-atomicservice-atomicservicenavigation-atomicservicenavigation-s.md#menus)属性设置Navigation的菜单栏。menus支持Array&lt;NavigationMenuItem&gt;和CustomBuilder两种参数类型。使用Array&lt;NavigationMenuItem&gt;类型时，竖屏最多支持显示3个图标，横屏最多支持显示5个图标，多余的图标会被放入自动生成的更多图标。NavDestination同样支持[menus](../reference/apis-arkui/arkts-components/arkts-arkui-navdestination-comp-attribute.md#menus)属性用于设置菜单栏。
 
 **图6** 设置了3个图标的菜单栏
 

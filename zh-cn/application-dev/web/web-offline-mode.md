@@ -359,7 +359,7 @@ struct Index2 {
 >
 > 1. 预渲染Web页面时，需要明确加载的资源。
 > 2. 由于该方案会将不可见的后台Web设置为Active状态，建议不要预渲染包含自动播放音视频的页面。应用开发者请自行检查和管理页面行为。
-> 3. 预渲染的网页会在后台不断进行渲染，建议在预渲染完成后立即停止渲染，以防止发热和功耗问题。可以参考以下示例，使用 [onFirstMeaningfulPaint](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-attribute.md#onfirstmeaningfulpaint) 来确定停止时机，该接口适用于http和https网页。
+> 3. 预渲染的网页会在后台不断进行渲染，建议在预渲染完成后立即停止渲染，以防止发热和功耗问题。可以参考以下示例，使用 onFirstMeaningfulPaint 来确定停止时机，该接口适用于http和https网页。
 
 <!-- @[entry_ability_window_stage_created_after_specified_page_loaded](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry/src/main/ets/entryability/EntryAbility.ets) -->
 

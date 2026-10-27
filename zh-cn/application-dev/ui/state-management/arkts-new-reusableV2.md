@@ -6,7 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-为了降低反复创建销毁自定义组件带来的性能开销，开发者可以使用[\@ReusableV2](../../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-reusablev2-d.md#reusablev2)装饰[\@ComponentV2](./arkts-create-custom-components.md#componentv2)装饰的自定义组件，达成组件复用的效果。
+为了降低反复创建销毁自定义组件带来的性能开销，开发者可以使用\@ReusableV2装饰[\@ComponentV2](./arkts-create-custom-components.md#componentv2)装饰的自定义组件，达成组件复用的效果。
 
 在阅读本文前，建议提前阅读：[\@Reusable装饰器：V1组件复用](./arkts-reusable.md)。
 
@@ -712,7 +712,7 @@ struct ReusableV2Component {
 
 [Repeat](../rendering-control/arkts-new-rendering-control-repeat.md)组件懒加载场景中，将会优先使用Repeat组件的缓存池，正常滑动场景、更新场景不涉及组件的回收与复用。当Repeat的缓存池需要扩充时将会向自定义组件要求新的子组件，此时如果复用池中有可复用的节点，将会进行复用。
 
-通过配置Repeat组件[VirtualScrollOptions](../../reference/apis-arkui/arkts-components/arkts-arkui-repeat-comp-virtualscrolloptions-i.md#virtualscrolloptions)的reusable属性为false，可以关闭Repeat组件自身的复用能力。此时，滑动场景、更新场景均会触发@ReusableV2的回收与复用。
+通过配置Repeat组件VirtualScrollOptions的reusable属性为false，可以关闭Repeat组件自身的复用能力。此时，滑动场景、更新场景均会触发@ReusableV2的回收与复用。
 
 下面的例子中，先点击`Change condition`会让3个节点进入复用池，而后向下滑动List组件时，可以观察到日志输出`ReusableV2Component aboutToReuse`，表明Repeat可以使用自定义组件的复用池填充自己的缓存池。
 

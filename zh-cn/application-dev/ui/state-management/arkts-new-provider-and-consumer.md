@@ -6,7 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-[\@Provider](../../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-provider-d.md#provider)和[\@Consumer](../../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-consumer-d.md#consumer)用于跨组件层级数据双向同步，可以使得开发者不用拘泥于组件层级。
+\@Provider和\@Consumer用于跨组件层级数据双向同步，可以使得开发者不用拘泥于组件层级。
 
 \@Provider和\@Consumer属于状态管理V2装饰器，所以只能在[\@ComponentV2](./arkts-create-custom-components.md#componentv2)中才能使用，在[\@Component](./arkts-create-custom-components.md)中使用会编译报错。
 
@@ -18,7 +18,7 @@
 >
 > 从API version 12开始，\@Provider和\@Consumer装饰器支持在原子化服务中使用。
 >
-> 从API version 23开始，通过配置[BuilderNode](../../reference/apis-arkui/arkts-apis/arkts-arkui-buildernode.md)的[BuildOptions](../../reference/apis-arkui/arkts-apis/arkts-arkui-buildernode-buildoptions-i.md#buildoptions)参数`enableProvideConsumeCrossing`为true，使得\@Provider和\@Consumer支持跨[BuilderNode](../../reference/apis-arkui/arkts-apis/arkts-arkui-buildernode.md)双向同步。在BuilderNode挂载到自定义组件节点树之后，\@Consumer会重新获取最近的\@Provider数据，与之建立双向同步关系。具体可见[\@Consumer在跨BuilderNode场景下和\@Provider建立双向同步](#consumer在跨buildernode场景下和provider建立双向同步过程)。
+> 从API version 23开始，通过配置[BuilderNode](../../reference/apis-arkui/arkts-apis/arkts-arkui-buildernode.md)的BuildOptions参数`enableProvideConsumeCrossing`为true，使得\@Provider和\@Consumer支持跨[BuilderNode](../../reference/apis-arkui/arkts-apis/arkts-arkui-buildernode.md)双向同步。在BuilderNode挂载到自定义组件节点树之后，\@Consumer会重新获取最近的\@Provider数据，与之建立双向同步关系。具体可见[\@Consumer在跨BuilderNode场景下和\@Provider建立双向同步](#consumer在跨buildernode场景下和provider建立双向同步过程)。
 >
 > 从API version 23开始，\@Provider和\@Consumer装饰器支持在ArkTS卡片中使用。
 

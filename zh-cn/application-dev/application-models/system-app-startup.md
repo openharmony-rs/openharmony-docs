@@ -46,7 +46,7 @@
     - 拉起日历权限设置弹窗
  
 
-- **通知管理：** 当应用通过[requestEnableNotification()](../reference/apis-notification-kit/arkts-apis/arkts-notification-notificationmanager-requestenablenotification-f.md#requestenablenotification)接口拉起通知授权弹框时，如果用户拒绝授权，将无法使用该接口再次拉起弹框，需要调用[openNotificationSettingsWithResult()](../reference/apis-notification-kit/arkts-apis/arkts-notification-notificationmanager-opennotificationsettingswithresult-f.md#opennotificationsettingswithresult)接口，支持拉起通知管理弹窗。
+- **通知管理：** 当应用通过requestEnableNotification()接口拉起通知授权弹框时，如果用户拒绝授权，将无法使用该接口再次拉起弹框，需要调用openNotificationSettingsWithResult()接口，支持拉起通知管理弹窗。
 - **网络管理：** 当应用需要通过WLAN连接网络时，可以通过openNetworkManagerSettings()接口拉起WLAN设置弹窗。
 
 
@@ -55,7 +55,7 @@
 
 
 ### 电话
-[Telephony Kit](../telephony/telephony-overview.md)提供[makeCall()](../reference/apis-telephony-kit/arkts-apis/arkts-telephony-call-makecall-f.md#makecall)接口，支持跳转到拨号界面，并显示待拨出的号码。
+[Telephony Kit](../telephony/telephony-overview.md)提供makeCall()接口，支持跳转到拨号界面，并显示待拨出的号码。
 
 ### 日历
 [Calendar Kit](../calendarmanager/calendarmanager-overview.md)提供[addEvent](../reference/apis-calendar-kit/arkts-apis/arkts-calendar-calendarmanager-calendar-i.md#addevent)接口，用于创建日程。

@@ -12,7 +12,7 @@
 
 ## 读取或监听应用内音频流状态变化
 
-参考[使用AudioRenderer开发音频播放功能(ArkTS)](using-audiorenderer-for-playback.md)或[audio.createAudioRenderer](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-createaudiorenderer-f.md#createaudiorenderer)，先完成AudioRenderer的创建，再通过以下两种方法查看音频流状态的变化。
+参考[使用AudioRenderer开发音频播放功能(ArkTS)](using-audiorenderer-for-playback.md)或audio.createAudioRenderer，先完成AudioRenderer的创建，再通过以下两种方法查看音频流状态的变化。
 
 - 方法1：直接查看AudioRenderer的属性state：
 
@@ -38,7 +38,7 @@
       });
   ```
 
-获取state后可对照[AudioState](../../reference/apis-audio-kit/arkts-apis/arkts-audio-audio-audiostate-e.md#audiostate)来进行相应的操作，比如更改暂停播放按钮的显示等。
+获取state后可对照AudioState来进行相应的操作，比如更改暂停播放按钮的显示等。
 
 ## 读取或监听所有音频流的变化
 

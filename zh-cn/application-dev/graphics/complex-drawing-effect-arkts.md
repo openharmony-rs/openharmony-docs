@@ -23,7 +23,7 @@
 
 混合模式可以用于画笔或画刷，它定义了如何将源像素（要绘制的内容）与目标像素（已存在于画布上的内容）进行组合。
 
-可以使用setBlendMode()接口将混合模式应用于画刷或画笔中，该接口需要接受一个参数BlendMode，即混合模式的类型，具体可参考[BlendMode](../reference/apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-drawing-blendmode-e.md#blendmode)。
+可以使用setBlendMode()接口将混合模式应用于画刷或画笔中，该接口需要接受一个参数BlendMode，即混合模式的类型，具体可参考BlendMode。
 
 关键示例和效果示意图如下所示：
 
@@ -383,7 +383,7 @@ canvas.detachPen();
 
 可使用createBlurMaskFilter()接口创建想要设置具有模糊效果的蒙版滤波器。接口接受2个参数，分别为：
 
-- blurType：用于指定要应用的模糊类型，详细分类请参考[BlurType](../reference/apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-drawing-blurtype-e.md#blurtype)。
+- blurType：用于指定要应用的模糊类型，详细分类请参考BlurType。
 
 - sigma：用于指定要应用的高斯模糊的标准差，标准差必须大于0。
 

@@ -53,7 +53,7 @@ struct WebComponent {
 
 ## 页面跳转
 
-当点击页面中的链接需要跳转到应用内其他页面时，可以通过使用Web组件的[onLoadIntercept()](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-attribute.md#onloadintercept)接口来实现。
+当点击页面中的链接需要跳转到应用内其他页面时，可以通过使用Web组件的onLoadIntercept()接口来实现。
 
 在下面的示例中，应用首页Index.ets加载前端页面route.html，在route.html页面点击“个人中心”超链接，可跳转到应用的ProfilePage.ets页面。
 

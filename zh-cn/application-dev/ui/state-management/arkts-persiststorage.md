@@ -10,7 +10,7 @@
 PersistentStorage是应用程序中的可选单例对象。此对象的作用是持久化存储选定的AppStorage属性，以确保这些属性在应用程序重新启动时的值与应用程序关闭时的值相同。
 
 
-PersistentStorage提供状态变量持久化的能力，但是需要注意，其持久化和读回UI的能力都需要依赖AppStorage。在阅读本文档前，建议提前阅读：[AppStorage](./arkts-appstorage.md)，[PersistentStorage API文档](../../reference/apis-arkui/arkts-apis/arkts-arkui-persistentstorage-c-sys.md#persistentstorage)。
+PersistentStorage提供状态变量持久化的能力，但是需要注意，其持久化和读回UI的能力都需要依赖AppStorage。在阅读本文档前，建议提前阅读：[AppStorage](./arkts-appstorage.md)，PersistentStorage API文档。
 
 ## 概述
 

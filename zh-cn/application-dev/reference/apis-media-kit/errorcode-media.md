@@ -54,7 +54,7 @@ Operation not allowed.
 
 ### 触发场景1：调用load加载音频失败-传入无效的资源
 
-调用[load](js-apis-inner-multimedia-soundPool.md#load)返回错误码`5400102`时，根据系统日志按照以下场景进行排查。
+调用load返回错误码`5400102`时，根据系统日志按照以下场景进行排查。
 
 **判断依据**
 
@@ -803,7 +803,7 @@ Super resolution not enabled.
 
 **可能原因**
 
-若没有通过[PlaybackStrategy](./arkts-apis-media-i.md#playbackstrategy12)使能超分，则每次调用超分相关接口时会返回该错误码。
+若没有通过PlaybackStrategy使能超分，则每次调用超分相关接口时会返回该错误码。
 
 **处理步骤**
 

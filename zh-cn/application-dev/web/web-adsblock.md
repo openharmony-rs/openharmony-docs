@@ -31,7 +31,7 @@ ArkWeb为应用提供广告过滤功能，支持通过云端推送默认的easyl
 
 - 新增[AdsBlockManager](../reference/apis-arkweb/arkts-apis/arkts-arkweb-webview-adsblockmanager-c.md)全局单例类，提供自定义广告过滤配置、控制网站级特性开关的能力。
 
-- Web实例上提供了[onAdsBlocked()](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-attribute.md#onadsblocked)回调通知方法，支持将拦截信息通知到上层应用。
+- Web实例上提供了onAdsBlocked()回调通知方法，支持将拦截信息通知到上层应用。
 
 - [AdsBlockManager](../reference/apis-arkweb/arkts-apis/arkts-arkweb-webview-adsblockmanager-c.md)接口[setAdsBlockRules()](../reference/apis-arkweb/arkts-apis/arkts-arkweb-webview-adsblockmanager-c.md#setadsblockrules)接口仅能设置一份自定义配置，此配置会持久化，应用冷启动无需重新配置，可避免每次冷启动配置规则都触发广告过滤配置的编译解析。
 
@@ -221,7 +221,7 @@ struct WebComponent {
 如果Web组件未通过[enableAdsBlock()](../reference/apis-arkweb/arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#enableadsblock)接口开启广告过滤功能，上述接口设置在此Web组件中将不起作用。
 
 ### 收集广告过滤的信息
-在Web组件的广告过滤开关开启后，访问的网页如果发生了广告过滤，会通过Web组件的[onAdsBlocked()](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-attribute.md#onadsblocked)回调接口通知到应用，应用可根据需要进行过滤信息的收集和统计。
+在Web组件的广告过滤开关开启后，访问的网页如果发生了广告过滤，会通过Web组件的onAdsBlocked()回调接口通知到应用，应用可根据需要进行过滤信息的收集和统计。
 <!-- @[collect_information_about_ad_filtering](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebCompSecPriv/entry/src/main/ets/pages/CollectingAdsBlockingInformation.ets) -->
 
 ``` TypeScript

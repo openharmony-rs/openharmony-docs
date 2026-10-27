@@ -75,7 +75,7 @@
     }
     ```
   
-- 在UIAbility的onCreate或者onNewWant生命周期中可以通过入参want获取卡片的formID和传递过来的参数信息，然后调用[updateForm](../reference/apis-form-kit/arkts-apis/arkts-form-formprovider-updateform-depr-f.md#updateform)接口刷新卡片。
+- 在UIAbility的onCreate或者onNewWant生命周期中可以通过入参want获取卡片的formID和传递过来的参数信息，然后调用updateForm接口刷新卡片。
   
     <!-- @[widget_event_router_entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetevententryability/WidgetEventRouterEntryAbility.ts) --> 
     
@@ -199,7 +199,7 @@
     }
     ```
   
-- 在UIAbility的onCreate生命周期中监听call事件所需的方法，然后在对应方法中调用[updateForm](../reference/apis-form-kit/arkts-apis/arkts-form-formprovider-updateform-depr-f.md#updateform)接口刷新卡片。
+- 在UIAbility的onCreate生命周期中监听call事件所需的方法，然后在对应方法中调用updateForm接口刷新卡片。
   
     <!-- @[widget_callee_entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetcalleeentryability/WidgetCalleeEntryAbility.ts) -->
     

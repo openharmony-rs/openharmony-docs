@@ -1099,8 +1099,8 @@ DMA内存不存在。
 
 重新创建使用DMA内存的PixelMap，并使用新对象调用原接口。根据输入数据选择创建方式：
 
-- 解码图片：从API版本15开始，可调用[createPixelMapUsingAllocator](arkts-apis-image-ImageSource.md#createpixelmapusingallocator15)，将allocatorType设置为image.AllocatorType.DMA；C接口调用[OH_ImageSourceNative_CreatePixelmapUsingAllocator()](capi-image-source-native-h.md#oh_imagesourcenative_createpixelmapusingallocator)，将allocator设置为IMAGE_ALLOCATOR_TYPE_DMA。
-- 从像素数据创建：从API版本20开始，可调用[image.createPixelMapUsingAllocator](arkts-apis-image-f.md#imagecreatepixelmapusingallocator20)，将allocatorType设置为image.AllocatorType.DMA；C接口调用[OH_PixelmapNative_CreatePixelmapUsingAllocator()](capi-pixelmap-native-h.md#oh_pixelmapnative_createpixelmapusingallocator)，将allocator设置为IMAGE_ALLOCATOR_MODE_DMA。
+- 解码图片：从API版本15开始，可调用createPixelMapUsingAllocator，将allocatorType设置为image.AllocatorType.DMA；C接口调用OH_ImageSourceNative_CreatePixelmapUsingAllocator()，将allocator设置为IMAGE_ALLOCATOR_TYPE_DMA。
+- 从像素数据创建：从API版本20开始，可调用image.createPixelMapUsingAllocator，将allocatorType设置为image.AllocatorType.DMA；C接口调用OH_PixelmapNative_CreatePixelmapUsingAllocator()，将allocator设置为IMAGE_ALLOCATOR_MODE_DMA。
 
 关于DMA内存的更多说明，请参见[图片解码内存优化(ArkTS)](../../media/image/image-allocator-type.md)和[图片解码内存优化(C/C++)](../../media/image/image-allocator-type-c.md)。
 

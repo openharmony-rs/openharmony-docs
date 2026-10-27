@@ -28,9 +28,9 @@
 
 | 接口名 | 接口描述 |
 | -------- | -------- |
-| [createSubscriber](../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-commoneventmanager-createsubscriber-f.md#createsubscriber)(subscribeInfo:&nbsp;CommonEventSubscribeInfo,&nbsp;callback:&nbsp;AsyncCallback&lt;CommonEventSubscriber&gt;):&nbsp;void | 创建订阅者对象（callback）。 |
-| [createSubscriber](../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-commoneventmanager-createsubscriber-f.md#createsubscriber)(subscribeInfo:&nbsp;CommonEventSubscribeInfo):&nbsp;Promise&lt;CommonEventSubscriber&gt; | 创建订阅者对象（promise）。 |
-| [subscribe](../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-commoneventmanager-subscribe-f.md#subscribe)(subscriber:&nbsp;CommonEventSubscriber,&nbsp;callback:&nbsp;AsyncCallback&lt;CommonEventData&gt;):&nbsp;void | 订阅公共事件。 |
+| createSubscriber(subscribeInfo:&nbsp;CommonEventSubscribeInfo,&nbsp;callback:&nbsp;AsyncCallback&lt;CommonEventSubscriber&gt;):&nbsp;void | 创建订阅者对象（callback）。 |
+| createSubscriber(subscribeInfo:&nbsp;CommonEventSubscribeInfo):&nbsp;Promise&lt;CommonEventSubscriber&gt; | 创建订阅者对象（promise）。 |
+| subscribe(subscriber:&nbsp;CommonEventSubscriber,&nbsp;callback:&nbsp;AsyncCallback&lt;CommonEventData&gt;):&nbsp;void | 订阅公共事件。 |
 
 
 ## 开发步骤

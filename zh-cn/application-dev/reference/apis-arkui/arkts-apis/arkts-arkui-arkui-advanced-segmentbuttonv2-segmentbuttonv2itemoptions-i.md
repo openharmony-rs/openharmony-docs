@@ -154,7 +154,7 @@ iconModifier?: ImageModifier
 
 默认值：undefined
 
-**类型：** [ImageModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
+**类型：** ImageModifier
 
 **起始版本：** 18
 
@@ -198,7 +198,7 @@ symbolModifier?: SymbolGlyphModifier
 
 默认值：undefined
 
-**类型：** [SymbolGlyphModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
+**类型：** SymbolGlyphModifier
 
 **起始版本：** 18
 
@@ -242,7 +242,7 @@ textModifier?: TextModifier
 
 默认值：undefined
 
-**类型：** [TextModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
+**类型：** TextModifier
 
 **起始版本：** 18
 

@@ -54,7 +54,7 @@ HCE应用开发者根据业务需要，可以选择实现前台刷卡或者后�
 3. 如果选择Other类型，该HCE应用不会出现在系统设置页面的NFC"默认付款应用"里，但是多个HCE应用如果都声明了相同的Other类型的AID时，会出现冲突的可能。
 4. HCE应用后台刷卡的实现，不需要调用接口start和stop。
 5. HCE应用后台刷卡建议使用单独专用的HceAbility实现，以减少[onCreate](../../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md#oncreate)函数耗时。
-6. HceAbility的OnCreate函数中除了[hceService.on](../../reference/apis-connectivity-kit/arkts-apis/arkts-connectivity-access-on-f.md#on)外，尽量减少其它操作。
+6. HceAbility的OnCreate函数中除了hceService.on外，尽量减少其它操作。
 7. HceAbility的OnCreate函数中hceService.on要同步执行，不能异步执行，以免影响HCE通信时序。
 
 > **注意：**

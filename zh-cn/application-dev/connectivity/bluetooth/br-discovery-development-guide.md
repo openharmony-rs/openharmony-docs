@@ -93,8 +93,8 @@ try {
 
 ### 设置本机蓝牙扫描模式
 本机蓝牙扫描模式用于控制本机设备是否可以被周边其他蓝牙设备扫描到或连接上。非系统应用一般不用关注这个模式，系统设置应用会决定如何设置。
-- 系统设置应用打开蓝牙后，若系统蓝牙设置界面在前台，会将本机蓝牙扫描模式设置为可被扫描和可被连接，即[SCAN_MODE_CONNECTABLE_GENERAL_DISCOVERABLE](../../reference/apis-connectivity-kit/arkts-apis/arkts-connectivity-connection-scanmode-e.md#scanmode)。
-- 系统设置应用打开蓝牙后，若系统蓝牙设置界面在后台，会将本机蓝牙扫描模式设置为可被连接，即[SCAN_MODE_CONNECTABLE](../../reference/apis-connectivity-kit/arkts-apis/arkts-connectivity-connection-scanmode-e.md#scanmode)。
+- 系统设置应用打开蓝牙后，若系统蓝牙设置界面在前台，会将本机蓝牙扫描模式设置为可被扫描和可被连接，即SCAN_MODE_CONNECTABLE_GENERAL_DISCOVERABLE。
+- 系统设置应用打开蓝牙后，若系统蓝牙设置界面在后台，会将本机蓝牙扫描模式设置为可被连接，即SCAN_MODE_CONNECTABLE。
 
 ```ts
 try {

@@ -8,7 +8,7 @@
 
 ## 场景介绍
 
-通过[OH_CommonEvent_CreateSubscriber](../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-commonevent-createsubscriber-depr-f.md#createsubscriber)创建的订阅者可以对某个公共事件进行订阅，如果有订阅的事件发布那么订阅了这个事件的订阅者将会收到该事件及其传递的参数，也可以通过订阅者对象进一步处理有序公共事件。
+通过OH_CommonEvent_CreateSubscriber创建的订阅者可以对某个公共事件进行订阅，如果有订阅的事件发布那么订阅了这个事件的订阅者将会收到该事件及其传递的参数，也可以通过订阅者对象进一步处理有序公共事件。
 
 ## 接口说明
 
@@ -16,11 +16,11 @@
 
 | 接口名                               | 描述                                                             |
 | ------------------------------------ | ---------------------------------------------------------------- |
-|[CommonEvent_SubscribeInfo* OH_CommonEvent_CreateSubscribeInfo(const char* events[], int32_t eventsNum)](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_createsubscribeinfo)|创建订阅者信息。|
+|CommonEvent_SubscribeInfo* OH_CommonEvent_CreateSubscribeInfo(const char* events[], int32_t eventsNum)|创建订阅者信息。|
 |void OH_CommonEvent_DestroySubscribeInfo(CommonEvent_SubscribeInfo* info)|销毁订阅者信息。|
-|[CommonEvent_Subscriber* OH_CommonEvent_CreateSubscriber(const CommonEvent_SubscribeInfo* info, CommonEvent_ReceiveCallback callback)](../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-commonevent-createsubscriber-depr-f.md#createsubscriber)| 创建订阅者。|
+|CommonEvent_Subscriber* OH_CommonEvent_CreateSubscriber(const CommonEvent_SubscribeInfo* info, CommonEvent_ReceiveCallback callback)| 创建订阅者。|
 |void OH_CommonEvent_DestroySubscriber(CommonEvent_Subscriber* subscriber)|销毁订阅者。|
-|[CommonEvent_ErrCode OH_CommonEvent_Subscribe(const CommonEvent_Subscriber* subscriber)](../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-commonevent-subscribe-depr-f.md#subscribe)|订阅事件。|
+|CommonEvent_ErrCode OH_CommonEvent_Subscribe(const CommonEvent_Subscriber* subscriber)|订阅事件。|
 |bool OH_CommonEvent_AbortCommonEvent(CommonEvent_Subscriber* subscriber)|中止当前的有序公共事件。|
 |bool OH_CommonEvent_ClearAbortCommonEvent(CommonEvent_Subscriber* subscriber)|取消当前有序公共事件的中止状态。|
 |bool OH_CommonEvent_FinishCommonEvent(CommonEvent_Subscriber* subscriber)|结束对当前有序公共事件的处理。|
@@ -159,7 +159,7 @@
    ```
 
 
-   通过[OH_CommonEvent_CreateSubscriber](../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-commonevent-createsubscriber-depr-f.md#createsubscriber)创建订阅者，传入订阅者信息[CommonEvent_SubscribeInfo](../../reference/apis-basic-services-kit/c-apis/capi-oh-commonevent-h.md#结构体)和步骤4公共事件回调函数OnReceive。
+   通过OH_CommonEvent_CreateSubscriber创建订阅者，传入订阅者信息[CommonEvent_SubscribeInfo](../../reference/apis-basic-services-kit/c-apis/capi-oh-commonevent-h.md#结构体)和步骤4公共事件回调函数OnReceive。
 
    <!-- @[event_subscriber_create_and_destroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/NativeCommonEvent/entry/src/main/cpp/common_event_subscribe.cpp) -->
    
@@ -181,7 +181,7 @@
 
 5. 订阅事件。
 
-   通过[OH_CommonEvent_Subscribe](../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-commonevent-subscribe-depr-f.md#subscribe)订阅事件。
+   通过OH_CommonEvent_Subscribe订阅事件。
 
    <!-- @[event_subscriber_subscriber](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/NativeCommonEvent/entry/src/main/cpp/common_event_subscribe.cpp) -->
    

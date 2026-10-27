@@ -19,7 +19,7 @@
 
 2. 初始化密钥属性集。用于删除时指定密钥的属性，删除单个密钥或者非群组密钥，可传空。
 
-3. 调用接口[deleteKeyItem](../../reference/apis-universal-keystore-kit/c-apis/capi-native-huks-api-h.md#ohhuksdeletekeyitem)，删除密钥。
+3. 调用接口deleteKeyItem，删除密钥。
 
 <!-- @[key_deletions_arkts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyDeletion/entry/src/main/ets/pages/KeyDeletion.ets) -->
 

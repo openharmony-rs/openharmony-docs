@@ -216,7 +216,7 @@
   ```
 
 ### 多窗口截图
-可通过调用[getMainWindowSnapshot()](../reference/apis-arkui/arkts-apis/arkts-arkui-window-getmainwindowsnapshot-f.md#getmainwindowsnapshot)接口，针对一个或多个主窗（通过windowId指定）进行截图。  
+可通过调用getMainWindowSnapshot()接口，针对一个或多个主窗（通过windowId指定）进行截图。  
 
   <!--@[SnapshotMore_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/snapshot/entry/src/main/ets/pages/Index.ets) -->
   
@@ -352,15 +352,15 @@
 
 屏幕截图相关接口的使用及示例如下所示：
 
-- [screenshot.pick()](../reference/apis-arkui/arkts-apis/arkts-arkui-screenshot-pick-f.md#pick)接口仅支持获取主屏的屏幕截图，允许区域截屏，用户通过手势交互选择屏幕任意区域。
+- screenshot.pick()接口仅支持获取主屏的屏幕截图，允许区域截屏，用户通过手势交互选择屏幕任意区域。
 
-- [screenshot.capture()](../reference/apis-arkui/arkts-apis/arkts-arkui-screenshot-capture-f.md#capture)接口可以通过设置不同的displayId针对不同屏幕进行截图，且只能截取全屏。
+- screenshot.capture()接口可以通过设置不同的displayId针对不同屏幕进行截图，且只能截取全屏。
 
 - 监听屏幕截图：注册屏幕截图监听后，每当有截屏发生时，都会触发注册的回调函数。
 
   - [on('screenshot')](../reference/apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#onscreenshot)接口只能监听截屏动作，无法区分具体的截屏事件类型。对控制中心截屏、hdc命令截屏、screenshot.capture()接口截屏生效。
 
-  - [on('screenshotAppEvent')](../reference/apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#onscreenshotappevent)接口可以监听截屏动作，并能返回触发的截屏事件类型[ScreenshotEventType](../reference/apis-arkui/arkts-apis/arkts-arkui-window-screenshoteventtype-e.md#screenshoteventtype)。比如系统截屏成功或中止、滚动截屏开始或结束等。
+  - [on('screenshotAppEvent')](../reference/apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#onscreenshotappevent)接口可以监听截屏动作，并能返回触发的截屏事件类型ScreenshotEventType。比如系统截屏成功或中止、滚动截屏开始或结束等。
 
   - 当不需要再对屏幕截图进行监听时，可通过对应off接口（[off('screenshot')](../reference/apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#offscreenshot)/[off('screenshotAppEvent')](../reference/apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#offscreenshotappevent)）关闭监听。
 

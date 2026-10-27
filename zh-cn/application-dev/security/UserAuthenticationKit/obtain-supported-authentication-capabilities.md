@@ -11,7 +11,7 @@
 
 ## 接口说明
 
-具体参数、返回值、错误码等描述，请参考对应的[userAuth.getAvailableStatus](../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-userauth-c-sys.md#getavailablestatus)。
+具体参数、返回值、错误码等描述，请参考对应的userAuth.getAvailableStatus。
 
 | 接口名称 | 功能描述 | 
 | -------- | -------- |
@@ -21,7 +21,7 @@
 
 1. [申请权限](prerequisites.md#申请权限)：ohos.permission.ACCESS_BIOMETRIC。
 
-2. 指定认证类型（[UserAuthType](../../reference/apis-user-authentication-kit/arkts-apis/arkts-userauthentication-userauth-userauthtype-e-sys.md#userauthtype)）和认证等级（[AuthTrustLevel](../../reference/apis-user-authentication-kit/arkts-apis/arkts-userauthentication-useraccessctrl-authtoken-i-sys.md#authtrustlevel)），调用[getAvailableStatus](../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-userauth-c-sys.md#getavailablestatus)接口查询当前的设备是否支持相应的认证能力。
+2. 指定认证类型（UserAuthType）和认证等级（AuthTrustLevel），调用getAvailableStatus接口查询当前的设备是否支持相应的认证能力。
 
    认证可信等级的详细介绍请参见[认证可信等级划分原则](../../security/UserAuthenticationKit/user-authentication-overview.md#生物认证可信等级划分原则)。
 

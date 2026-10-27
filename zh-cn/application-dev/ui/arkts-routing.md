@@ -330,7 +330,7 @@ this.getUIContext().getRouter().back();
 
   这种方式不仅可以返回到指定页面，还可以在返回的同时传递自定义参数信息。这些参数信息可以在目标页面中通过调用[getParams](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-router-c.md#getparams)方法进行获取和解析。
 
-在目标页面中，在需要获取参数的位置调用[getParams](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-router-c.md#getparams)方法即可，例如在[onPageShow](../reference/apis-arkui/arkts-apis/arkts-arkui-uiobserver-routerpagestate-e.md#onpageshow)生命周期回调中：
+在目标页面中，在需要获取参数的位置调用[getParams](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-router-c.md#getparams)方法即可，例如在onPageShow生命周期回调中：
 
 > **说明：**
 > 
@@ -366,9 +366,9 @@ struct Home {
 
 [router](../reference/apis-arkui/arkts-apis/arkts-arkui-router.md)页面生命周期，即被[\@Entry](state-management/arkts-create-custom-components.md#entry)装饰的组件生命周期，提供以下生命周期接口，其中onPageShow和onPageHide的生命周期时序图可参考Router切换Navigation中的[生命周期](./arkts-router-to-navigation.md#生命周期)：
 
-- [onPageShow](../reference/apis-arkui/arkts-apis/arkts-arkui-uiobserver-routerpagestate-e.md#onpageshow)：页面每次显示时触发一次，包括路由过程、应用进入前台等场景。
+- onPageShow：页面每次显示时触发一次，包括路由过程、应用进入前台等场景。
 
-- [onPageHide](../reference/apis-arkui/arkts-apis/arkts-arkui-uiobserver-routerpagestate-e.md#onpagehide)：页面每次隐藏时触发一次，包括路由过程、应用进入后台等场景。
+- onPageHide：页面每次隐藏时触发一次，包括路由过程、应用进入后台等场景。
 
 - [onBackPress](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-overlaymanageroptions-i.md#onbackpress)：当用户点击返回按钮时触发。
 
@@ -467,7 +467,7 @@ struct Page {
 
 ## 自定义转场
 
-router自定义转场可以通过[pageTransition](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-basecustomcomponent-c.md#pagetransition)实现，具体参考[页面间转场 (pageTransition)](../reference/apis-arkui/errorcode-animation.md)。
+router自定义转场可以通过[pageTransition](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-basecustomcomponent-c.md#pagetransition)实现，具体参考页面间转场 (pageTransition)。
 
 ## 页面返回前增加一个询问框
 

@@ -46,7 +46,7 @@
 
 ## 开发步骤
 
-1. 调用[cryptoFramework.createRandom](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-createrandom-f.md#createrandom)，生成随机数实例。
+1. 调用cryptoFramework.createRandom，生成随机数实例。
 
 2. 调用[cryptoFramework.enableHardwareEntropy](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-random-i.md#enablehardwareentropy)，开启硬件熵源。
 

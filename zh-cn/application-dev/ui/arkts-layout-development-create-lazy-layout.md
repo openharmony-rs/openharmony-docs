@@ -44,7 +44,7 @@ ArkUI提供了[Scroll](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-s
 
 ## 约束与限制
 
-1. 三种懒加载布局容器的高度默认自适应内容，不建议设置会固定或约束组件垂直方向尺寸的属性，设置后会导致显示异常或无法正常滚动。涉及的属性包括[height](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-shape-shapesize-i.md#height)、[size](../reference/apis-arkui/arkts-apis/arkts-arkui-componentutils-size-i.md#size)中的height、[constraintSize](../reference/apis-arkui/arkts-apis/arkts-arkui-securitycomponentmethod-c.md#constraintsize)中的minHeight/maxHeight、[aspectRatio](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#aspectratio)、[layoutWeight](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#layoutweight)，以及[height](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-shape-shapesize-i.md#height)取[LayoutPolicy](../reference/apis-arkui/arkts-apis/arkts-arkui-customspanmeasureinfo-i.md#layoutpolicy)值的场景。
+1. 三种懒加载布局容器的高度默认自适应内容，不建议设置会固定或约束组件垂直方向尺寸的属性，设置后会导致显示异常或无法正常滚动。涉及的属性包括[height](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-shape-shapesize-i.md#height)、size中的height、[constraintSize](../reference/apis-arkui/arkts-apis/arkts-arkui-securitycomponentmethod-c.md#constraintsize)中的minHeight/maxHeight、[aspectRatio](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#aspectratio)、[layoutWeight](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#layoutweight)，以及[height](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-shape-shapesize-i.md#height)取[LayoutPolicy](../reference/apis-arkui/arkts-apis/arkts-arkui-customspanmeasureinfo-i.md#layoutpolicy)值的场景。
 
 2. 三种懒加载布局容器均需要配合可滚动父组件使用，不同容器支持的父组件范围有所差异。
 
@@ -186,7 +186,7 @@ LazyVWaterFlowLayout() {
 
 columnsTemplate还支持通过repeat关键字自动计算列数，格式为`'repeat(auto-fit/auto-fill/auto-stretch, track-size)'`，其中repeat、auto-fit、auto-fill、auto-stretch为关键字，track-size为列宽，支持px、vp、%等单位，默认单位为vp，也支持无单位的有效数字。track-size至少包含一个有效列宽。
 
-LazyVWaterFlowLayout组件的columnsTemplate属性还支持设置为[ItemFillPolicy](../reference/apis-arkui/arkts-apis/arkts-arkui-itemfillpolicy-i.md#itemfillpolicy)类型的枚举值，此时会根据内容区宽度对应的[栅格容器断点](./arkts-layout-development-grid-layout.md#栅格容器断点)类型自动确定列数。例如，设置为ItemFillPolicy.BREAKPOINT_DEFAULT，内容区宽度属于sm及更小的断点区间时LazyVWaterFlowLayout显示2列，属于md断点区间时显示3列，属于lg及更大的断点区间时显示5列，且每列均为1fr。从API版本26.2.0开始，LazyVGridLayout组件的[columnsTemplate](../reference/apis-arkui/arkts-components/arkts-arkui-grid-comp-attribute.md#columnstemplate-1)属性同样支持设置为ItemFillPolicy类型，断点与列数的对应关系与LazyVWaterFlowLayout一致。断点判断使用的内容区宽度：内容区宽度 = 组件宽度 − 左右内边距（[padding](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-chip-chipoptions-i.md#padding)）− 占用布局的左右边框（[border](../reference/apis-arkui/arkts-apis/arkts-arkui-illuminatedtype-e-sys.md#border)）宽度。
+LazyVWaterFlowLayout组件的columnsTemplate属性还支持设置为ItemFillPolicy类型的枚举值，此时会根据内容区宽度对应的[栅格容器断点](./arkts-layout-development-grid-layout.md#栅格容器断点)类型自动确定列数。例如，设置为ItemFillPolicy.BREAKPOINT_DEFAULT，内容区宽度属于sm及更小的断点区间时LazyVWaterFlowLayout显示2列，属于md断点区间时显示3列，属于lg及更大的断点区间时显示5列，且每列均为1fr。从API版本26.2.0开始，LazyVGridLayout组件的[columnsTemplate](../reference/apis-arkui/arkts-components/arkts-arkui-grid-comp-attribute.md#columnstemplate-1)属性同样支持设置为ItemFillPolicy类型，断点与列数的对应关系与LazyVWaterFlowLayout一致。断点判断使用的内容区宽度：内容区宽度 = 组件宽度 − 左右内边距（[padding](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-chip-chipoptions-i.md#padding)）− 占用布局的左右边框（border）宽度。
 
 | 模式 | 示例 | 说明 |
 |------|------|------|

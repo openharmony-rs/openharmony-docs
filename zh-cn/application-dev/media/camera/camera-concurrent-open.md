@@ -55,7 +55,7 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
    }
    ```
 
-3. 获取对应的并发能力集。通过[getCameraConcurrentInfos](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-cameramanager-i.md#getcameraconcurrentinfos)获取相机的输出并发能力信息数组[CameraConcurrentInfo](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-cameraconcurrentinfo-i.md#cameraconcurrentinfo)，数组内部包含相机在对应并发模式下支持的模式和输出能力，**在多摄同开场景下设置的模式和输出能力必须在并发能力集的范围之内**。若[getCameraConcurrentInfos](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-cameramanager-i.md#getcameraconcurrentinfos)接口返回空数组，则表明当前设备不支持并发功能。
+3. 获取对应的并发能力集。通过[getCameraConcurrentInfos](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-cameramanager-i.md#getcameraconcurrentinfos)获取相机的输出并发能力信息数组CameraConcurrentInfo，数组内部包含相机在对应并发模式下支持的模式和输出能力，**在多摄同开场景下设置的模式和输出能力必须在并发能力集的范围之内**。若[getCameraConcurrentInfos](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-cameramanager-i.md#getcameraconcurrentinfos)接口返回空数组，则表明当前设备不支持并发功能。
 
    ```ts
    function getSupportedOutputCapabilityFn(cameraManager: camera.CameraManager, curCameraDeviceFront: camera.CameraDevice, curCameraDeviceBack: camera.CameraDevice)

@@ -24,7 +24,7 @@ function publish(request: NotificationRequest, callback: AsyncCallback<void>): v
 
 **参见：**
 
-[isNotificationEnabled](arkts-notification-notificationmanager-isnotificationenabled-f.md#isnotificationenabled-3) 获取指定应用的通知使能状态。
+isNotificationEnabled 获取指定应用的通知使能状态。
 
 [cancel](arkts-notification-notificationmanager-cancel-f.md#cancel-2) 根据通知ID和标签label取消已发布的通知。
 

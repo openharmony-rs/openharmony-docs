@@ -73,7 +73,7 @@
 
 4. 获取相机设备完整输出能力。
 
-   通过OH_CameraManager_GetSupportedFullCameraOutputCapabilityWithSceneMode()方法，获取当前设备支持的所有输出流的能力，包含预览流、拍照流、录像流等。输出流在CameraOutputCapability中的各个profile字段中，其中拍照流支持YUV格式。根据相机设备指定模式[Camera_SceneMode](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-scenemode-e-sys.md#scenemode)的不同，需要添加不同类型的输出流。
+   通过OH_CameraManager_GetSupportedFullCameraOutputCapabilityWithSceneMode()方法，获取当前设备支持的所有输出流的能力，包含预览流、拍照流、录像流等。输出流在CameraOutputCapability中的各个profile字段中，其中拍照流支持YUV格式。根据相机设备指定模式Camera_SceneMode的不同，需要添加不同类型的输出流。
 
    <!-- @[get_full_outputCapability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKYUVPhotoSample/entry/src/main/cpp/camera_manager.cpp) -->
    

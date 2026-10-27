@@ -10,7 +10,7 @@
 LocalStorage是页面级的UI状态存储，通过\@Entry装饰器接收的参数可以在页面内共享同一个LocalStorage实例。LocalStorage支持[UIAbility](../../application-models/uiability-overview.md)实例内多个页面间状态共享。
 
 
-本文仅介绍LocalStorage使用场景和相关的装饰器：[\@LocalStorageProp](../../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-localstorageprop-d.md#localstorageprop)和[\@LocalStorageLink](../../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-localstoragelink-d.md#localstoragelink)。
+本文仅介绍LocalStorage使用场景和相关的装饰器：\@LocalStorageProp和\@LocalStorageLink。
 
 
 在阅读本文档前，需要开发者对状态管理框架有基本的了解。建议提前阅读：[状态管理概述](./arkts-state-management-overview.md)。
@@ -28,7 +28,7 @@ LocalStorage是ArkTS为构建页面级别状态变量提供存储的内存内的
 
 - 应用程序可以创建多个LocalStorage实例，LocalStorage实例可以在页面内共享，也可以通过[getSharedLocalStorage](../../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#getsharedlocalstorage)接口，实现UIAbility内跨页面共享。跨UIAbility共享数据推荐使用[AppStorage](./arkts-appstorage.md)。
 
-- 组件树的根节点，即被[\@Entry](../../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-entry-d.md#entry)装饰的[\@Component](./arkts-create-custom-components.md#component)，可以被分配一个LocalStorage实例，此组件的所有子组件实例将自动获得对该LocalStorage实例的访问权限。
+- 组件树的根节点，即被\@Entry装饰的[\@Component](./arkts-create-custom-components.md#component)，可以被分配一个LocalStorage实例，此组件的所有子组件实例将自动获得对该LocalStorage实例的访问权限。
 
 - \@Component装饰的组件既可以自动继承来自父组件的LocalStorage实例，也可以传入指定的LocalStorage的实例，详见：[自定义组件接收LocalStorage实例](#自定义组件接收localstorage实例)。
 

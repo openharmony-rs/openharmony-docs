@@ -10,7 +10,7 @@
 
 | 接口 | 说明 |
 | -------- | -------- |
-| [linearGradient](../reference/apis-arkui/arkts-apis/arkts-arkui-keyboardgradientmode-e-sys.md#lineargradient) | 为当前组件添加线性渐变的颜色渐变效果。 |
+| linearGradient | 为当前组件添加线性渐变的颜色渐变效果。 |
 | [sweepGradient](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#sweepgradient) | 为当前组件添加角度渐变的颜色渐变效果。 |
 | [radialGradient](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#radialgradient) | 为当前组件添加径向渐变的颜色渐变效果。 |
 

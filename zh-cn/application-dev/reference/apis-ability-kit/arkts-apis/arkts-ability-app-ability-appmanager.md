@@ -29,7 +29,7 @@ import { appManager } from '@kit.AbilityKit';
 | [isRamConstrainedDevice](arkts-ability-appmanager-isramconstraineddevice-f.md#isramconstraineddevice-2) | 查询当前设备是否为RAM受限设备（内存资源严重受限的设备）。使用callback异步回调。 |
 | [isRunningInStabilityTest](arkts-ability-appmanager-isrunninginstabilitytest-f.md#isrunninginstabilitytest-1) | 查询当前系统是否处于稳定性测试场景。使用callback异步回调。 |
 | [isRunningInStabilityTest](arkts-ability-appmanager-isrunninginstabilitytest-f.md#isrunninginstabilitytest-2) | 查询当前系统是否处于稳定性测试场景。使用Promise异步回调。 |
-| [killProcessesByBundleName](arkts-ability-appmanager-killprocessesbybundlename-f.md#killprocessesbybundlename-2) | 终止指定应用包名的应用进程。使用Promise异步回调。 |
+| killProcessesByBundleName | 终止指定应用包名的应用进程。使用Promise异步回调。 |
 | [off('applicationState')](arkts-ability-appmanager-off-f.md#offapplicationstate) | 注销应用状态监听器。使用callback异步回调。 |
 | [off('applicationState')](arkts-ability-appmanager-off-f.md#offapplicationstate) | 注销应用状态监听器。使用Promise异步回调。 |
 | [on('applicationState')](arkts-ability-appmanager-on-f.md#onapplicationstate) | 注册所有应用程序的状态监听器。 |

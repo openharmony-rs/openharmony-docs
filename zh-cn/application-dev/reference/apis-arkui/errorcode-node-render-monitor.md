@@ -22,7 +22,7 @@ The count of nodes monitoring render state is over the limitation.
 
 **可能原因**
 
-调用[on('nodeRenderState')](arkts-apis-uicontext-uiobserver.md#onnoderenderstate20)接口注册节点渲染状态监听时，单个UI实例中注册的监听节点数超过限制。
+调用on('nodeRenderState')接口注册节点渲染状态监听时，单个UI实例中注册的监听节点数超过限制。
 
 **处理步骤**
 

@@ -123,7 +123,7 @@ PageAbility生命周期回调与生命周期状态的关系如下图所示。
     export default new Test()
     ```
 
-2. Index.ets页面提供一个"terminateSelf"按钮，点击后调用[featureAbility.terminateSelf](../reference/apis-ability-kit/arkts-apis/arkts-ability-featureability-terminateself-f.md#terminateself)接口关闭Ability，从而触发`onDestroy`生命周期回调。
+2. Index.ets页面提供一个"terminateSelf"按钮，点击后调用featureAbility.terminateSelf接口关闭Ability，从而触发`onDestroy`生命周期回调。
 
     <!--code_no_check-->
     ```ts

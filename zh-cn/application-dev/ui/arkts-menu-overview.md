@@ -18,8 +18,8 @@
 ## 规格约束
 
 * [bindMenu](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindmenu)通过调用isShow参数或[bindContextMenu](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu)调用isShown参数弹出时，需要等待页面全部构建完成才能展示。因此isShow或isShown不能在页面构建中设置为true，否则会导致menu弹窗显示位置及形状错误。
-* openMenu的弹出需要传入有效的[TargetInfo](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-targetinfo-i.md#targetinfo)，否则无法弹出菜单。
-* 其他规格约束，具体可参考[菜单控制](../reference/apis-arkui/arkui-js/js-components-basic-menu.md)、[openMenu](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-promptaction-c.md#openmenu)说明。
+* openMenu的弹出需要传入有效的TargetInfo，否则无法弹出菜单。
+* 其他规格约束，具体可参考菜单控制、[openMenu](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-promptaction-c.md#openmenu)说明。
 
 
 ## 生命周期

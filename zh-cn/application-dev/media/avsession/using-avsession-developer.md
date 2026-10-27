@@ -341,7 +341,7 @@
    >
    > 媒体会话提供方在注册相关固定播控命令事件监听时，监听的事件会在媒体会话控制方的getValidCommands()方法中体现，即媒体会话控制方会认为对应的方法有效，进而根据需要触发相应的事件。为了保证媒体会话控制方下发的播控命令可以被正常执行，媒体会话提供方请勿进行无逻辑的空实现监听。
 
-   Session侧的固定播控命令主要包括播放、暂停、上一首、下一首等基础操作命令，详细介绍请参见[AVControlCommand](../../reference/apis-avsession-kit/arkts-apis/arkts-avsession-avsession-avcontrolcommand-i.md#avcontrolcommand)。
+   Session侧的固定播控命令主要包括播放、暂停、上一首、下一首等基础操作命令，详细介绍请参见AVControlCommand。
 
    控制场景包括：播控中心点击、播控中心通知栏移除、蓝牙耳机佩戴、蓝牙耳机/有线耳机按键、语音助手控制等。
      

@@ -16,7 +16,7 @@ function createExactTimer(config: ExactTimerConfig): Promise<number>
 
 > **说明：** 
 > 
-> 该接口需要和[systemManager.destroyTimer](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-systemtimer-destroytimer-f-sys.md)配合使用。否则，
+> 该接口需要和systemManager.destroyTimer配合使用。否则，
 > 内存泄漏。禁用或删除管理应用程序时，EDM服务会自动销毁管理员创建的所有计时器。
 
 **起始版本：** 26.0.1

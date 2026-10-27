@@ -511,10 +511,10 @@
 
 ### 画质优先策略
 
-在使用单段式拍照时，支持设置速度优先和画质优先两种画质优先策略类型，并且分别对应着不同的[Camera_PhotoQualityPrioritization](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-photoqualityprioritization-e.md#photoqualityprioritization)枚举类型。 
+在使用单段式拍照时，支持设置速度优先和画质优先两种画质优先策略类型，并且分别对应着不同的Camera_PhotoQualityPrioritization枚举类型。 
 
-- [CAMERA_PHOTO_QUALITY_PRIORITIZATION_SPEED](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-photoqualityprioritization-e.md#photoqualityprioritization)对应着速度优先，表示降低画质来提升拍照的速度。如果开发者在进行单段式拍照时没有设置明确的画质优先策略，**单段式拍照就默认为速度优先状态**。 
-- [CAMERA_PHOTO_QUALITY_PRIORITIZATION_HIGH_QUALITY](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-photoqualityprioritization-e.md#photoqualityprioritization)对应着画质优先，表示通过较长的耗时来得到画质更高的图片。 
+- CAMERA_PHOTO_QUALITY_PRIORITIZATION_SPEED对应着速度优先，表示降低画质来提升拍照的速度。如果开发者在进行单段式拍照时没有设置明确的画质优先策略，**单段式拍照就默认为速度优先状态**。 
+- CAMERA_PHOTO_QUALITY_PRIORITIZATION_HIGH_QUALITY对应着画质优先，表示通过较长的耗时来得到画质更高的图片。 
 
 ### 如何正确设置画质优先策略
 

@@ -266,7 +266,7 @@ const workerFA3: worker.ThreadWorker = new worker.ThreadWorker('ThreadFile/worke
     import { ErrorEvent, MessageEvents, worker } from '@kit.ArkTS';
     ```
 
-3. 在宿主线程中，通过调用ThreadWorker的[constructor()](../reference/apis-arkts/arkts-apis/arkts-arkts-worker-restrictedworker-c-sys.md#constructor)方法创建Worker对象，并注册回调函数。
+3. 在宿主线程中，通过调用ThreadWorker的constructor()方法创建Worker对象，并注册回调函数。
       <!-- @[create_manager_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/WorkerIntroduction/entry/src/main/ets/managers/Index.ets) -->
       
       ``` TypeScript

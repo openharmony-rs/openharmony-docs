@@ -55,7 +55,7 @@ Drawing的显示方式主要包括以下两种：
 
 ## 与Canvas画布组件的关系
 
-[Canvas组件](../reference/apis-arkui/errorcode-canvas.md)也具有自绘制的能力，目前有[CanvasRenderingContext2D](../reference/apis-arkui/arkui-js/js-components-canvas-canvasrenderingcontext2d.md)/[OffscreenCanvasRenderingContext2D](../reference/apis-arkui/arkui-js/js-offscreencanvasrenderingcontext2d.md)和DrawingRenderingContext两套API，应用使用两套绘制API绘制的内容都可以在绑定的Canvas组件上显示。
+[Canvas组件](../reference/apis-arkui/errorcode-canvas.md)也具有自绘制的能力，目前有CanvasRenderingContext2D/OffscreenCanvasRenderingContext2D和DrawingRenderingContext两套API，应用使用两套绘制API绘制的内容都可以在绑定的Canvas组件上显示。
 
 其中CanvasRenderingContext2D按照W3C标准封装了ArkGraphics 2D中Native Drawing的相关接口，可以方便快速复用Web应用的绘制逻辑，因此非常适用于Web应用和游戏、快速原型设计、数据可视化、在线绘图板、教学工具或创意应用等场景。
 

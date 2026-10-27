@@ -139,7 +139,7 @@ System error.
 
 1. 系统服务重启、跨进程调用异常等系统处理异常。
 2. 接口参数、应用权限或对象状态校验异常。对于自API版本20起新增的音频API，6800301错误码不包含本语义的信息。接口是否可能涉及此问题，以接口文档声明的错误码说明为准。
-3. 音频焦点抢占失败。仅有需要激活音频焦点的音频流启动类接口（如AudioRenderer的[start](arkts-apis-audio-AudioRenderer.md#start8)接口、AudioCapturer的[start](arkts-apis-audio-AudioCapturer.md#start8)接口），可能由于音频焦点抢占失败返回此错误码，其他不涉及焦点激活的接口不会因该原因返回此错误码。
+3. 音频焦点抢占失败。仅有需要激活音频焦点的音频流启动类接口（如AudioRenderer的start接口、AudioCapturer的start接口），可能由于音频焦点抢占失败返回此错误码，其他不涉及焦点激活的接口不会因该原因返回此错误码。
 
 **处理步骤**
 
@@ -151,7 +151,7 @@ System error.
 
 ### 调用createAudioCapturer创建AudioCapturer失败-音频流类型异常
 
-调用[createAudioCapturer](arkts-apis-audio-f.md#audiocreateaudiocapturer8)返回错误码`6800301`时，根据系统日志按照以下场景进行排查。
+调用createAudioCapturer返回错误码`6800301`时，根据系统日志按照以下场景进行排查。
 
 **判断依据**
 
@@ -169,7 +169,7 @@ System error.
 
 **处理步骤**
 
-根据[SourceType](arkts-apis-audio-e.md#sourcetype8)检查`source`的取值。
+根据SourceType检查`source`的取值。
 
 ### 调用createAudioCapturer创建AudioCapturer失败-音频流参数异常
 
@@ -193,16 +193,16 @@ System error.
 
 **处理步骤**
 
-1. 根据[AudioStreamInfo](arkts-apis-audio-i.md#audiostreaminfo8)检查采样率、采样格式、编码类型、声道数和声道布局。
+1. 根据AudioStreamInfo检查采样率、采样格式、编码类型、声道数和声道布局。
 2. 由于`channelLayout`参数中隐含了声道数信息，需要确保声道布局的声道数和`channels`的值匹配。当`channelLayout`为`CH_LAYOUT_UNKNOWN(0x0)`时，不参与匹配校验。如需明确的声道布局，请根据`channels`显式设置对应布局。
 
 ### 调用createAudioCapturer创建AudioCapturer失败-麦克风未授权
 
-调用[createAudioCapturer](arkts-apis-audio-f.md#audiocreateaudiocapturer8)返回错误码`6800301`时，根据系统日志按照以下场景依次排查。
+调用createAudioCapturer返回错误码`6800301`时，根据系统日志按照以下场景依次排查。
 
 **判断依据**
 
-使用Mic音频源（即[SourceType](arkts-apis-audio-e.md#sourcetype8)为`SOURCE_TYPE_MIC`、`SOURCE_TYPE_VOICE_RECOGNITION`、`SOURCE_TYPE_VOICE_COMMUNICATION`、`SOURCE_TYPE_VOICE_MESSAGE`或`SOURCE_TYPE_LIVE`）创建AudioCapturer失败，系统日志提示麦克风未授权。各音频源的权限要求请参考[使用AudioCapturer开发音频录制功能](../../media/audio/using-audiocapturer-for-recording.md)。
+使用Mic音频源（即SourceType为`SOURCE_TYPE_MIC`、`SOURCE_TYPE_VOICE_RECOGNITION`、`SOURCE_TYPE_VOICE_COMMUNICATION`、`SOURCE_TYPE_VOICE_MESSAGE`或`SOURCE_TYPE_LIVE`）创建AudioCapturer失败，系统日志提示麦克风未授权。各音频源的权限要求请参考[使用AudioCapturer开发音频录制功能](../../media/audio/using-audiocapturer-for-recording.md)。
 
 系统音频服务进程可能出现以下一条或多条日志：
 
@@ -227,7 +227,7 @@ audio_server: [CreateAudioProcessInner]Create audio process failed, no permissio
 
 ### 调用start启动AudioCapturer失败-AudioCapturer状态异常
 
-AudioCapturer创建成功，但调用[start](arkts-apis-audio-AudioCapturer.md#start8)返回错误码`6800301`时，根据系统日志按照以下场景排查。
+AudioCapturer创建成功，但调用start返回错误码`6800301`时，根据系统日志按照以下场景排查。
 
 **判断依据**
 
@@ -250,8 +250,8 @@ AudioCapturer创建成功，但调用[start](arkts-apis-audio-AudioCapturer.md#s
 
 **处理步骤**
 
-1. 调用`start()`前检查[AudioState](arkts-apis-audio-e.md#audiostate8)。只有AudioCapturer处于`STATE_PREPARED`、`STATE_PAUSED`或`STATE_STOPPED`状态时才启动采集。
-2. 通过[on('stateChange')](arkts-apis-audio-AudioCapturer.md#onstatechange8)监听状态变化，避免重复启动，避免在实例释放后继续操作。
+1. 调用`start()`前检查AudioState。只有AudioCapturer处于`STATE_PREPARED`、`STATE_PAUSED`或`STATE_STOPPED`状态时才启动采集。
+2. 通过on('stateChange')监听状态变化，避免重复启动，避免在实例释放后继续操作。
 3. 按照“创建实例 -> 注册回调 -> 启动录制 -> 停止录制 -> 释放资源”的顺序调用。完整状态检查请参考使用AudioCapturer开发音频录制功能中的[完整示例](../../media/audio/using-audiocapturer-for-recording.md#完整示例)。
 
 ### 调用start启动AudioCapturer失败-激活音频焦点失败
@@ -302,7 +302,7 @@ AudioCapturer创建成功，但调用[start](arkts-apis-audio-AudioCapturer.md#s
 
 **判断依据**
 
-从API版本26.0.0开始，调用[activateAudioSession](../apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#activateaudiosession12)、[deactivateAudioSession](../apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#deactivateaudiosession12)、[clearSelectedMediaInputDevice](../apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#clearselectedmediainputdevice21)会返回错误码`6800301`。调用对应接口时，应用捕获到的错误信息如下：
+从API版本26.0.0开始，调用activateAudioSession、deactivateAudioSession、clearSelectedMediaInputDevice会返回错误码`6800301`。调用对应接口时，应用捕获到的错误信息如下：
 
 - "System error. Activate audio session fail."
 - "System error. Deactivate audio session fail."

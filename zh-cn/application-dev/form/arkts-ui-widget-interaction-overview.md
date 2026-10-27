@@ -10,7 +10,7 @@
 
 ## 卡片数据交互
 
-ArkTS卡片管理服务支持卡片提供方（例如：应用）和卡片之间的数据交互。卡片通过[postCardAction](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-postcardaction-f.md#postcardaction-1)传递数据给卡片提供方，卡片提供方则通过[updateForm](../reference/apis-form-kit/arkts-apis/arkts-form-formprovider-updateform-depr-f.md#updateform)接口传递数据给卡片。卡片提供方将数据提供给卡片后，可以用于卡片页面刷新等。
+ArkTS卡片管理服务支持卡片提供方（例如：应用）和卡片之间的数据交互。卡片通过[postCardAction](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-postcardaction-f.md#postcardaction-1)传递数据给卡片提供方，卡片提供方则通过updateForm接口传递数据给卡片。卡片提供方将数据提供给卡片后，可以用于卡片页面刷新等。
 
 由于卡片提供方和卡片为相互独立的进程，两者间的数据共享只能通过[LocalStorageProp](../ui/state-management/arkts-localstorage.md#localstorageprop)传递，不能使用getContext方法。因此卡片提供方推送数据后，卡片UI需要通过LocalStorageProp接收数据，且接收数据时，卡片数据会被转换成string类型。
 
@@ -26,7 +26,7 @@ ArkTS卡片管理服务支持卡片提供方（例如：应用）和卡片之间
 
 ![updateForm](figures/updateForm.PNG)
 
-卡片提供方应用运行过程中，如果识别到有要更新卡片数据的诉求，可以主动通过formProvider提供的[updateForm](../reference/apis-form-kit/arkts-apis/arkts-form-formprovider-updateform-depr-f.md#updateform)接口更新卡片。
+卡片提供方应用运行过程中，如果识别到有要更新卡片数据的诉求，可以主动通过formProvider提供的updateForm接口更新卡片。
 
 **图2 卡片使用方主动刷新卡片流程图**
 

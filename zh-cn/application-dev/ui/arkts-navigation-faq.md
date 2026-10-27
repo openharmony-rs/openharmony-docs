@@ -24,7 +24,7 @@
 
 **解决措施**
 
-在[onWillAppear](../reference/apis-arkui/arkts-apis/arkts-arkui-uiobserver-navdestinationstate-e.md#onwillappear)、[onWillDisappear](../reference/apis-arkui/arkts-apis/arkts-arkui-uiobserver-navdestinationstate-e.md#onwilldisappear)生命周期执行背景色动画，示例如下：
+在onWillAppear、onWillDisappear生命周期执行背景色动画，示例如下：
 
 <!-- @[DialogNavDesAnimation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/animation/DialogNavDestination.ets) -->
 
@@ -133,7 +133,7 @@ this.stack.pushPath({ name: 'animation-BasicNavDestination' }, { launchMode: Lau
 
 ## 跳转动画是否有结束回调
 
-当前系统动画并没有提供动画结束回调，仅自定义转场动画提供了结束回调，需要自行实现[自定义转场动画](./arkts-navigation-animation.md#自定义转场)，相关接口：[NavDestinationTransition](../reference/apis-arkui/arkts-components/arkts-arkui-navdestination-comp-navdestinationtransition-i.md#navdestinationtransition)、 [NavigationAnimatedTransition](../reference/apis-arkui/arkts-components/arkts-arkui-navigation-comp-navigationanimatedtransition-i.md#navigationanimatedtransition)。
+当前系统动画并没有提供动画结束回调，仅自定义转场动画提供了结束回调，需要自行实现[自定义转场动画](./arkts-navigation-animation.md#自定义转场)，相关接口：NavDestinationTransition、 NavigationAnimatedTransition。
 
 ## 如何实现Navigation和NavDestination之间的共享元素转场
 
@@ -149,7 +149,7 @@ NavDestination的共享元素转场需要配合geometryTransition接口实现，
 
 ## 给NavDestination设置zIndex后跳转动画异常
 
-[zIndex](../reference/apis-arkui/arkts-apis/arkts-arkui-componentutils-imageitem-i-sys.md#zindex)用于修改组件显示层级，给NavDestination设置该属性会覆盖系统设置的层级，导致动画被打乱。因此不建议给NavDestination设置zIndex。
+zIndex用于修改组件显示层级，给NavDestination设置该属性会覆盖系统设置的层级，导致动画被打乱。因此不建议给NavDestination设置zIndex。
 
 此外也不建议设置如：[transition](../reference/apis-arkui/arkts-apis/arkts-arkui-actionsheetoptions-i.md#transition)、geometryTransition、[sharedTransition](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#sharedtransition)、animation等特殊属性，可能与系统默认动画产生冲突。如果有业务需要设置这些属性，建议将这些属性设置在NavDestination的内容节点上，也可以达到相同效果。
 

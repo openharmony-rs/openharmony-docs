@@ -29,7 +29,7 @@
 
 1. 创建全局悬浮窗。  
 
-   通过[window.createWindow()](../reference/apis-arkui/arkts-apis/arkts-arkui-window-createwindow-f.md#createwindow)接口创建全局悬浮窗类型（TYPE_FLOAT）的窗口。
+   通过window.createWindow()接口创建全局悬浮窗类型（TYPE_FLOAT）的窗口。
 
    <!-- @[floating_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) -->  
    

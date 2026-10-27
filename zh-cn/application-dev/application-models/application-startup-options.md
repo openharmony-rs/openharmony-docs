@@ -155,7 +155,7 @@ struct SetWindowDisplayModeAbility {
 
 1. 在启动UIAbility之前，需要先导入相关的模块。
 2. 创建Want对象，指定要启动的UIAbility信息。UIAbilityContext的获取方式参见[获取UIAbility的上下文信息](uiability-usage.md#获取uiability的上下文信息)。
-3. 从API版本26.0.0开始，支持通过StartOptions的splitRatio字段设置窗口分配比例。splitRatio的说明参见[StartOptions](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-startoptions.md)和[SplitRatioPreference](../reference/apis-arkui/arkts-apis/arkts-arkui-window-splitratiopreference-e.md#splitratiopreference)。
+3. 从API版本26.0.0开始，支持通过StartOptions的splitRatio字段设置窗口分配比例。splitRatio的说明参见[StartOptions](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-startoptions.md)和SplitRatioPreference。
 4. 调用startAbility()接口，启动目标UIAbility。
 
 <!-- @[startOptions_setSplitRatioAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/StartOptions/SetSplitRatioAbility/src/main/ets/pages/Index.ets) --> 
@@ -766,7 +766,7 @@ export default class HideSplashScreenAbility extends UIAbility {
 
 1. 在启动UIAbility之前，需要先导入相关的模块。
 2. 创建Want对象，指定要启动的UIAbility信息。UIAbilityContext的获取方式参见[获取UIAbility的上下文信息](uiability-usage.md#获取uiability的上下文信息)。
-3. 配置StartOptions的windowCreateParams，设置窗口参数。窗口参数配置详见[WindowCreateParams](../reference/apis-arkui/arkts-apis/arkts-arkui-window-windowcreateparams-i-sys.md#windowcreateparams)。
+3. 配置StartOptions的windowCreateParams，设置窗口参数。窗口参数配置详见WindowCreateParams。
 4. 调用startAbility()接口，启动目标UIAbility。
 
 <!-- @[startOptions_bgColor_and_windowParam](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/StartOptions/SetBackgroundColor/src/main/ets/setbackgroundcolorability/SetBackgroundColorAbility.ets) --> 

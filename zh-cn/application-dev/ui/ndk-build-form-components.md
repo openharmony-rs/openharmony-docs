@@ -47,7 +47,7 @@ Button组件用于创建可点击的按钮，支持多种按钮类型和样式�
 
 ### 设置Button类型
 
-Button组件支持通过设置NODE_BUTTON_TYPE属性实现不同的按钮类型，包括普通按钮、胶囊按钮、圆形按钮和圆角矩形按钮。按钮类型对应枚举请参考[ArkUI_ButtonType](../reference/apis-arkui/arkts-components/arkts-arkui-button-comp-buttontype-e.md#buttontype)。
+Button组件支持通过设置NODE_BUTTON_TYPE属性实现不同的按钮类型，包括普通按钮、胶囊按钮、圆形按钮和圆角矩形按钮。按钮类型对应枚举请参考ArkUI_ButtonType。
 
 下述示例将按钮类型设置为ARKUI_BUTTON_TYPE_CIRCLE圆形按钮。
 
@@ -111,7 +111,7 @@ std::shared_ptr<NativeModule::ArkUIBaseNode> CreateSliderExample()
 
 ### 设置Slider样式
 
-Slider支持两种样式，通过[ARKUI_SliderStyle](../reference/apis-arkui/arkts-components/arkts-arkui-slider-comp-sliderstyle-e.md#sliderstyle)枚举定义：
+Slider支持两种样式，通过ARKUI_SliderStyle枚举定义：
 
 - ARKUI_SLIDER_STYLE_OUT_SET：滑块在滑动条外（默认值）。
 - ARKUI_SLIDER_STYLE_IN_SET：滑块在滑动条内。

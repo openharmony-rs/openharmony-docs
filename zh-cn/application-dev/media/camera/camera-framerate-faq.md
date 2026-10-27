@@ -38,4 +38,4 @@
    - 当录像流为范围帧率时，预览流设置相同范围帧率。
    - 当录像流为固定帧率时，预览流设置固定帧率且为录像帧率的约数。
 
-   可通过[CameraOutputCapability](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-cameraoutputcapability-i-sys.md#cameraoutputcapability)（ArkTS）或者OH_CameraManager_GetSupportedCameraOutputCapability.videoProfiles（C/C++）选择满足业务需求的录像输出流，确保帧率符合预期。
+   可通过CameraOutputCapability（ArkTS）或者OH_CameraManager_GetSupportedCameraOutputCapability.videoProfiles（C/C++）选择满足业务需求的录像输出流，确保帧率符合预期。

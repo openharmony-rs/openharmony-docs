@@ -17,15 +17,15 @@
    import { cert } from '@kit.DeviceCertificateKit';
    ```
 
-2. 基于已有的证书数据，调用[cert.createX509Cert](../../reference/apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-createx509cert-f.md#createx509cert)创建X.509证书的对象。
+2. 基于已有的证书数据，调用cert.createX509Cert创建X.509证书的对象。
 
-3. 基于已有的CRL数据，调用[cert.createX509CRL](../../reference/apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-createx509crl-depr-f.md#createx509crl)创建X.509证书吊销列表的对象。
+3. 基于已有的CRL数据，调用cert.createX509CRL创建X.509证书吊销列表的对象。
 
-4. 调用[cert.createCertCRLCollection](../../reference/apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-createcertcrlcollection-f.md#createcertcrlcollection)创建[CertCRLCollection](../../reference/apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-certcrlcollection-i.md#certcrlcollection)的对象，并返回相应的结果。
+4. 调用cert.createCertCRLCollection创建CertCRLCollection的对象，并返回相应的结果。
 
-5. 调用[CertCRLCollection.selectCerts](../../reference/apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-certcrlcollection-i.md#selectcerts)查找所有与[X509CertMatchParameters](../../reference/apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-x509certmatchparameters-i.md#x509certmatchparameters)匹配的证书对象数组，并返回结果。
+5. 调用[CertCRLCollection.selectCerts](../../reference/apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-certcrlcollection-i.md#selectcerts)查找所有与X509CertMatchParameters匹配的证书对象数组，并返回结果。
 
-6. 调用[CertCRLCollection.selectCRLs](../../reference/apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-certcrlcollection-i.md#selectcrls)查找所有与[X509CRLMatchParameters](../../reference/apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-x509crlmatchparameters-i.md#x509crlmatchparameters)匹配的证书吊销列表数组，并返回结果。
+6. 调用[CertCRLCollection.selectCRLs](../../reference/apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-certcrlcollection-i.md#selectcrls)查找所有与X509CRLMatchParameters匹配的证书吊销列表数组，并返回结果。
 
 <!-- @[certificate_collection_and_certificate_revocation_list_collection_object_creation_and_acquisition](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateAlgorithmLibrary/entry/src/main/ets/pages/CreateGetCertCrlObject.ets) -->
 

@@ -81,7 +81,7 @@ function removeAllSlots(): Promise<void>
 
 [addSlot](arkts-notification-notificationmanager-addslot-f.md) 创建通知频道。
 
-[getSlot](arkts-notification-notificationmanager-getslot-f.md#getslot-3) 获取指定类型的通知渠道。
+getSlot 获取指定类型的通知渠道。
 
 [removeSlot](arkts-notification-notificationmanager-removeslot-f.md#removeslot-2) 删除指定类型的通知渠道。
 

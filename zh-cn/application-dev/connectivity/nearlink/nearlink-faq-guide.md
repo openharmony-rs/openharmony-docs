@@ -17,7 +17,7 @@
 >
 > 自定义服务必须使用自定义UUID，禁止使用标准UUID。
 
-自定义服务的[ssap.Service.serviceUuid](../../reference/apis-connectivity-kit/arkts-apis/arkts-connectivity-ssap-service-i-sys.md#service)、[ssap.Property.serviceUuid](../../reference/apis-connectivity-kit/arkts-apis/arkts-connectivity-ssap-property-i.md#property)等用于标识服务及服务成员的UUID字段，取值必须为128比特的自定义UUID；使用标准UUID时，接口将返回[36100044 禁止使用星闪标准服务UUID](../../reference/apis-connectivity-kit/errorcode-nearlink-service.md#36100044-禁止使用星闪标准服务uuid)错误。
+自定义服务的ssap.Service.serviceUuid、ssap.Property.serviceUuid等用于标识服务及服务成员的UUID字段，取值必须为128比特的自定义UUID；使用标准UUID时，接口将返回[36100044 禁止使用星闪标准服务UUID](../../reference/apis-connectivity-kit/errorcode-nearlink-service.md#36100044-禁止使用星闪标准服务uuid)错误。
 
 
 ## 事件订阅类接口的权限要求问题
@@ -71,7 +71,7 @@
 
 扫描结果（scan.ScanResults.address）中返回的设备地址是随机地址：系统为保护设备隐私，不直接暴露设备的真实地址，而是将其转换为随机地址后上报，并维护真实地址与随机地址的映射关系。同一设备的随机地址在映射保留周期内保持不变（已配对设备的映射长期保留），映射被清理后重新扫描会生成新的随机地址。
 
-应用不宜将扫描到的地址作为长期标识持久化使用。需要长期识别设备时，应结合设备名称、配对关系等信息综合判断，已配对设备的地址可通过manager.[getPairedDevices()](../../reference/apis-connectivity-kit/arkts-apis/arkts-connectivity-manager-getpaireddevices-f.md#getpaireddevices)获取。随机地址不影响设备连接：可通过扫描获取的当前地址发起连接（如[SSAP连接](nearlink-ssap-connection-guide.md)、[端口数据传输](nearlink-data-transfer-guide.md)）。
+应用不宜将扫描到的地址作为长期标识持久化使用。需要长期识别设备时，应结合设备名称、配对关系等信息综合判断，已配对设备的地址可通过manager.getPairedDevices()获取。随机地址不影响设备连接：可通过扫描获取的当前地址发起连接（如[SSAP连接](nearlink-ssap-connection-guide.md)、[端口数据传输](nearlink-data-transfer-guide.md)）。
 
 ## 星闪数据传输方式如何选择
 
@@ -92,4 +92,4 @@
 
 连续多次调用writeData()可能会导致发送队列拥塞，从而发送失败。
 
-您可以通过设置数据发送间隔来解决连续传输数据时失败的问题。使用[setInterval()](../../reference/apis-arkui/arkts-apis/arkts-arkui-global-setinterval-f.md#setinterval)设置函数调用的时间间隔，建议的数据发送时间间隔为10ms。
+您可以通过设置数据发送间隔来解决连续传输数据时失败的问题。使用setInterval()设置函数调用的时间间隔，建议的数据发送时间间隔为10ms。

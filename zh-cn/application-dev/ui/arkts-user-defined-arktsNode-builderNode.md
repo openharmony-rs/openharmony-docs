@@ -35,7 +35,7 @@ BuilderNode仅可作为叶子节点进行使用。如有更新需要，建议通
 > 
 > - 如果BuilderNode通过getFrameNode将节点挂载在另一个FrameNode上，或者将其作为子节点挂载在NodeContainer节点上。则节点中使用父组件的布局约束进行布局。
 > 
-> - 如果BuilderNode的FrameNode通过[getRenderNode](../reference/apis-arkui/arkts-apis/arkts-arkui-framenode-c.md#getrendernode)形式将自己的节点挂载在RenderNode节点上，由于其FrameNode未上树，其大小默认为0，需要通过构造函数中的[selfIdealSize](../reference/apis-arkui/arkts-apis/arkts-arkui-buildernode-renderoptions-i.md#renderoptions)显式指定布局约束大小，才能正常显示。
+> - 如果BuilderNode的FrameNode通过[getRenderNode](../reference/apis-arkui/arkts-apis/arkts-arkui-framenode-c.md#getrendernode)形式将自己的节点挂载在RenderNode节点上，由于其FrameNode未上树，其大小默认为0，需要通过构造函数中的selfIdealSize显式指定布局约束大小，才能正常显示。
 > 
 > - BuilderNode的预加载并不会减少组件的创建时间。Web组件创建的时候需要在内核中加载资源，预创建不能减少Web组件的创建时间，但是可以让内核进行预加载，减少正式使用时候内核的加载耗时。
 
@@ -55,7 +55,7 @@ BuilderNode对象为一个模板类，需要在创建的时候指定类型。该
 >
 > build中对于@Builder嵌套@Builder进行使用的场景，需要保证嵌套的参数与build中提供的入参一致。
 > 
-> 对于@Builder嵌套@Builder进行使用的场景，如果入参类型不一致，则要求增加[BuildOptions](../reference/apis-arkui/arkts-apis/arkts-arkui-buildernode-buildoptions-i.md#buildoptions)字段作为[build](../reference/apis-arkui/arkts-apis/arkts-arkui-buildernode-c.md#build)的入参。
+> 对于@Builder嵌套@Builder进行使用的场景，如果入参类型不一致，则要求增加BuildOptions字段作为[build](../reference/apis-arkui/arkts-apis/arkts-arkui-buildernode-c.md#build)的入参。
 > 
 > 需要操作BuilderNode中的对象时，需要保证其引用不被回收。当BuilderNode对象被虚拟机回收之后，它的FrameNode、RenderNode对象也会与后端节点解引用。即从BuilderNode中获取的FrameNode对象不对应任何一个节点。
 
@@ -125,7 +125,7 @@ BuilderNode的根节点直接作为[NodeController](../reference/apis-arkui/arkt
 
 将BuilderNode与RenderNode进行结合使用。
 
-BuilderNode的RenderNode挂载其它RenderNode下时，需要明确定义[RenderOptions](../reference/apis-arkui/arkts-apis/arkts-arkui-buildernode-renderoptions-i.md#renderoptions)的selfIdealSize属性的大小作为BuilderNode的布局约束。不建议通过该方式挂载节点。
+BuilderNode的RenderNode挂载其它RenderNode下时，需要明确定义RenderOptions的selfIdealSize属性的大小作为BuilderNode的布局约束。不建议通过该方式挂载节点。
 
   <!-- @[Main_RenderNode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/RenderNode.ets) -->
   
@@ -414,7 +414,7 @@ BuilderNode中提供了[postTouchEvent](../reference/apis-arkui/arkts-apis/arkts
 
 若传入的Builder的根节点为语法节点（if/else/foreach/…）或自定义组件，将额外生成一个FrameNode，在节点树中显示为“BuilderProxyNode”，这会导致树结构变化，影响某些测试的传递过程。
 
-在以下示例中，Column和Row绑定了触摸事件，同时Column设置了[hitTestBehavior](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#hittestbehavior)属性为[HitTestMode.Transparent](../reference/apis-arkui/arkts-apis/arkts-arkui-hittestmode-e.md#hittestmode)。然而，由于生成了BuilderProxyNode，且BuilderProxyNode无法设置属性，因此在触摸Column时，Column的触摸测试无法传递到Row上。
+在以下示例中，Column和Row绑定了触摸事件，同时Column设置了[hitTestBehavior](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#hittestbehavior)属性为HitTestMode.Transparent。然而，由于生成了BuilderProxyNode，且BuilderProxyNode无法设置属性，因此在触摸Column时，Column的触摸测试无法传递到Row上。
 
 ![BuilderNode_BuilderProxyNode_1](figures/BuilderNode_BuilderProxyNode_1.png)
 
@@ -1495,7 +1495,7 @@ API version 16及之后版本，BuilderNode在新页面被复用时，会自动�
 
 ArkUI支持[自定义组件冻结](./state-management/arkts-custom-components-freeze.md)，该功能冻结非激活状态组件的刷新能力。当组件处于非激活状态时，即便其绑定状态变量发生变化，也不会触发组件UI的重新渲染，从而减少复杂UI场景的刷新负载。
 
-从API version 20开始，BuilderNode节点可以通过[inheritFreezeOptions](../reference/apis-arkui/arkts-apis/arkts-arkui-buildernode-c.md#inheritfreezeoptions)接口继承父自定义组件（即从该BuilderNode节点向上查找的第一个自定义组件）的冻结策略。当BuilderNode节点继承父自定义组件的冻结策略时，若父自定义组件的冻结策略设置为开启组件冻结（即[freezeWhenInactive](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-componentoptions-i.md#componentoptions)选项设为true），则BuilderNode节点在不活跃时将会冻结，当切换至活跃状态时解冻，并使用缓存的数据更新节点。
+从API version 20开始，BuilderNode节点可以通过[inheritFreezeOptions](../reference/apis-arkui/arkts-apis/arkts-arkui-buildernode-c.md#inheritfreezeoptions)接口继承父自定义组件（即从该BuilderNode节点向上查找的第一个自定义组件）的冻结策略。当BuilderNode节点继承父自定义组件的冻结策略时，若父自定义组件的冻结策略设置为开启组件冻结（即freezeWhenInactive选项设为true），则BuilderNode节点在不活跃时将会冻结，当切换至活跃状态时解冻，并使用缓存的数据更新节点。
 
 BuilderNode节点只有通过以下方式上下树时，才会根据该节点是否继承父自定义组件的冻结策略，来更新自己的冻结策略：
 
@@ -1505,7 +1505,7 @@ BuilderNode节点只有通过以下方式上下树时，才会根据该节点是
 | [NodeContent](../reference/apis-arkui/arkts-apis/arkts-arkui-nodecontent.md) | [addFrameNode](../reference/apis-arkui/arkts-apis/arkts-arkui-nodecontent-c.md#addframenode)、[removeFrameNode](../reference/apis-arkui/arkts-apis/arkts-arkui-nodecontent-c.md#removeframenode) |
 | [NodeController](../reference/apis-arkui/arkts-apis/arkts-arkui-nodecontroller.md) | [makeNode](../reference/apis-arkui/arkts-apis/arkts-arkui-nodecontroller-c.md#makenode) |
 | [RenderNode](../reference/apis-arkui/arkts-apis/arkts-arkui-rendernode.md) | [appendChild](../reference/apis-arkui/arkts-apis/arkts-arkui-rendernode-c.md#appendchild)、[insertChildAfter](../reference/apis-arkui/arkts-apis/arkts-arkui-rendernode-c.md#insertchildafter)、[removeChild](../reference/apis-arkui/arkts-apis/arkts-arkui-rendernode-c.md#removechild)、[clearChildren](../reference/apis-arkui/arkts-apis/arkts-arkui-rendernode-c.md#clearchildren) |
-| [NodeAdapter](../reference/apis-arkui/arkts-apis/arkts-arkui-framenode-nodeadapter-c.md#nodeadapter) | 节点通过LazyForEach方式上下树时 |
+| NodeAdapter | 节点通过LazyForEach方式上下树时 |
 
 > **说明：**
 >

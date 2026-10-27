@@ -6,16 +6,16 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @zhang_yixin13-->
 
-[\@CustomEnv](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-customenv-d.md#customenv)可用于获取自定义环境变量。开发者可通过[WithEnv](../reference/apis-arkui/errorcode-env.md)组件的[.customEnv](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-customenv-d.md#customenv)接口设置自定义环境变量，在子组件中通过[\@CustomEnv](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-customenv-d.md#customenv)装饰器读取相同CustomEnvKey\<S\>对应的变量值。该机制实现了组件树间的数据透传，使父子组件能基于环境变量进行联动，同时保持代码解耦。
+\@CustomEnv可用于获取自定义环境变量。开发者可通过[WithEnv](../reference/apis-arkui/errorcode-env.md)组件的.customEnv接口设置自定义环境变量，在子组件中通过\@CustomEnv装饰器读取相同CustomEnvKey\<S\>对应的变量值。该机制实现了组件树间的数据透传，使父子组件能基于环境变量进行联动，同时保持代码解耦。
 
 >**说明：**
 >
-> 从API版本26.0.0开始，[\@CustomEnv](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-customenv-d.md#customenv)支持在[\@Component](./state-management/arkts-create-custom-components.md#component)和[\@ComponentV2](./state-management/arkts-create-custom-components.md#componentv2)中使用。
+> 从API版本26.0.0开始，\@CustomEnv支持在[\@Component](./state-management/arkts-create-custom-components.md#component)和[\@ComponentV2](./state-management/arkts-create-custom-components.md#componentv2)中使用。
 >
 > 从API版本26.0.0开始，该装饰器支持在原子化服务中使用。
 
 ## 概述
-[\@CustomEnv](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-customenv-d.md#customenv)是响应式自定义环境变量装饰器，其功能包括：
+\@CustomEnv是响应式自定义环境变量装饰器，其功能包括：
 - 根据入参读取相应的自定义环境变量信息，详情见[\@CustomEnv使用方法](#customenv使用方法)。
 - 自定义环境变量改变时，通知\@CustomEnv装饰的变量更新，并触发\@CustomEnv关联组件刷新，以实现界面内容的更新。
 - 使用\@CustomEnv装饰的变量具有只读特性，不允许开发者在初始化后对\@CustomEnv装饰的变量做整体赋值。如需更新该变量的值，必须通过父组件的WithEnv组件配合`.customEnv()`方法进行更新。尝试对\@CustomEnv变量赋值将导致编译错误。
@@ -27,7 +27,7 @@
 
 | \@CustomEnv装饰器 | 说明 |
 | ------------------- | ------------------------------------------------------------ |
-| 装饰器参数 | [\@CustomEnv](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-customenv-d.md#customenv)装饰器的入参必须为CustomEnvKey\<S\>类型。 |
+| 装饰器参数 | \@CustomEnv装饰器的入参必须为CustomEnvKey\<S\>类型。 |
 | 可装饰的变量类型 | string、number、boolean、enum等基本类型以及Object、class等对象类型和Array、Date、Map、Set等内置类型。支持null、undefined以及联合类型。 |
 | 装饰变量的初始值 | 必须本地初始化，不允许外部传入初始化。 |
 

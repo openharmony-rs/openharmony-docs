@@ -31,7 +31,7 @@
   ```
 
 
-- 绘制组件单独使用，用于在页面上绘制指定的图形。有7种绘制类型，分别为[Circle](../reference/apis-arkui/arkts-apis/arkts-arkui-graphics-circle-i.md)（圆形）、[Ellipse](../reference/apis-arkui/arkui-js/js-components-svg-ellipse.md)（椭圆形）、[Line](../reference/apis-arkui/arkui-js/js-components-svg-line.md)（直线）、[Polyline](../reference/apis-arkui/arkui-js/js-components-svg-polyline.md)（折线）、[Polygon](../reference/apis-arkui/arkui-js/js-components-svg-polygon.md)（多边形）、[Path](../reference/apis-arkui/arkui-js/js-components-svg-path.md)（路径）、[Rect](../reference/apis-arkui/arkts-apis/arkts-arkui-display-rect-i.md)（矩形）。以Circle的接口调用为例：
+- 绘制组件单独使用，用于在页面上绘制指定的图形。有7种绘制类型，分别为[Circle](../reference/apis-arkui/arkts-apis/arkts-arkui-graphics-circle-i.md)（圆形）、Ellipse（椭圆形）、Line（直线）、Polyline（折线）、Polygon（多边形）、Path（路径）、[Rect](../reference/apis-arkui/arkts-apis/arkts-arkui-display-rect-i.md)（矩形）。以Circle的接口调用为例：
 
   ```ts
   Circle(value?: { width?: string | number, height?: string | number })
@@ -571,7 +571,7 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
 
 >  **说明：**
 >
-> [backgroundColor](../reference/apis-arkui/arkts-apis/arkts-arkui-actionsheetoptions-i.md#backgroundcolor)、[linearGradient](../reference/apis-arkui/arkts-apis/arkts-arkui-keyboardgradientmode-e-sys.md#lineargradient)等通用属性作用于组件的背景区域，而不会在组件具体的内容区域生效。
+> [backgroundColor](../reference/apis-arkui/arkts-apis/arkts-arkui-actionsheetoptions-i.md#backgroundcolor)、linearGradient等通用属性作用于组件的背景区域，而不会在组件具体的内容区域生效。
 
 
   <!-- @[circle_example_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/CircleExample.ets) --> 

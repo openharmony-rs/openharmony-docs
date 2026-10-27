@@ -9,7 +9,7 @@
 
 从API version 20开始，在应用发起身份认证时，可通过接口调整认证过程，以及感知认证过程。
 
-调整认证过程：应用发起认证时通过[AuthParam](../../reference/apis-user-authentication-kit/arkts-apis/arkts-userauthentication-userauth-authparam-i-sys.md#authparam)参数的skipLockedBiometricAuth属性控制是否跳过已禁用的生物认证。
+调整认证过程：应用发起认证时通过AuthParam参数的skipLockedBiometricAuth属性控制是否跳过已禁用的生物认证。
 
 感知认证过程：通过[on('authTip')](../../reference/apis-user-authentication-kit/arkts-apis/arkts-userauthentication-userauth-userauthinstance-i.md#onauthtip)接口注册回调来获取认证过程中控件的拉起和退出提示，以及认证过程中用户的每一次认证失败结果。正确的顺序为先通过on注册回调，再通过[start](../../reference/apis-user-authentication-kit/arkts-apis/arkts-userauthentication-userauth-authinstance-i.md#start)发起认证，start成功发起认证后on注册的回调才会收到信息。
 
@@ -27,11 +27,11 @@
 
 1. [申请权限](prerequisites.md#申请权限)：ohos.permission.ACCESS_BIOMETRIC。
 
-2. 指定用户认证相关参数[AuthParam](../../reference/apis-user-authentication-kit/arkts-apis/arkts-userauthentication-userauth-authparam-i-sys.md#authparam)（包括挑战值、认证类型[UserAuthType](../../reference/apis-user-authentication-kit/arkts-apis/arkts-userauthentication-userauth-userauthtype-e-sys.md#userauthtype)列表和认证等级[AuthTrustLevel](../../reference/apis-user-authentication-kit/arkts-apis/arkts-userauthentication-useraccessctrl-authtoken-i-sys.md#authtrustlevel)）、配置认证控件界面[WidgetParam](../../reference/apis-user-authentication-kit/arkts-apis/arkts-userauthentication-userauth-widgetparam-i-sys.md#widgetparam)，调用[getUserAuthInstance](../../reference/apis-user-authentication-kit/arkts-apis/arkts-userauthentication-userauth-getuserauthinstance-f.md#getuserauthinstance)获取认证对象。
+2. 指定用户认证相关参数AuthParam（包括挑战值、认证类型UserAuthType列表和认证等级AuthTrustLevel）、配置认证控件界面WidgetParam，调用getUserAuthInstance获取认证对象。
 
 3. 调用[UserAuthInstance.on('authTip')](../../reference/apis-user-authentication-kit/arkts-apis/arkts-userauthentication-userauth-userauthinstance-i.md#onauthtip)接口订阅身份认证过程中的提示信息。
 
-4. 调用[UserAuthInstance.start](../../reference/apis-user-authentication-kit/arkts-apis/arkts-userauthentication-userauth-authinstance-i.md#start)接口发起认证，通过[AuthTipCallback](../../reference/apis-user-authentication-kit/arkts-apis/arkts-userauthentication-userauth-authtipcallback-t.md#authtipcallback)回调返回认证中间状态[AuthTipInfo](../../reference/apis-user-authentication-kit/arkts-apis/arkts-userauthentication-userauth-authtipinfo-i.md#authtipinfo)。
+4. 调用[UserAuthInstance.start](../../reference/apis-user-authentication-kit/arkts-apis/arkts-userauthentication-userauth-authinstance-i.md#start)接口发起认证，通过AuthTipCallback回调返回认证中间状态AuthTipInfo。
 
 5. 认证成功后，调用[UserAuthInstance.off('authTip')](../../reference/apis-user-authentication-kit/arkts-apis/arkts-userauthentication-userauth-userauthinstance-i.md#offauthtip)接口取消订阅认证过程中的提示信息。
 

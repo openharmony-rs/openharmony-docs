@@ -384,7 +384,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
 
     如需配置fts（Full-Text Search，即全文搜索引擎）动态库，可使用OH_Rdb_SetPlugins()接口进行配置。
     
-    使用约束详见[StoreConfig](../reference/apis-arkdata/arkts-apis/arkts-arkdata-rdb-storeconfig-i.md#storeconfig)中pluginLibs配置项。
+    使用约束详见StoreConfig中pluginLibs配置项。
 
     <!--@[rdb_OH_Rdb_SetPlugins](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)-->
 

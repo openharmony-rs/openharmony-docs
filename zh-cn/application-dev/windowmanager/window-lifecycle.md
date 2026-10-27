@@ -61,13 +61,13 @@ Stage模型下主窗口的生命周期状态包括前台状态（SHOWN）、前�
 
 - API version 20之前，可通过调用on('windowStageEvent')注册WindowStage生命周期变化的监听，通过调用off('windowStageEvent')注销WindowStage生命周期变化的监听。
 
-  - 此时返回的生命周期状态为[WindowStageEventType](../reference/apis-arkui/arkts-apis/arkts-arkui-window-windowstageeventtype-e.md#windowstageeventtype)：包含**SHOWN**（前台状态）、**ACTIVE**（获焦状态）、**INACTIVE**（失焦状态）、**HIDDEN**（后台状态）、**RESUMED**（前台可交互状态）、**PAUSED**（前台不可交互状态）6种状态。
+  - 此时返回的生命周期状态为WindowStageEventType：包含**SHOWN**（前台状态）、**ACTIVE**（获焦状态）、**INACTIVE**（失焦状态）、**HIDDEN**（后台状态）、**RESUMED**（前台可交互状态）、**PAUSED**（前台不可交互状态）6种状态。
 
   - 本接口无法保证生命周期状态切换间的顺序，对于关注状态间的切换顺序的情况下不建议使用。
 
 - （推荐）从API version 20开始，可通过调用on('windowStageLifecycleEvent')注册WindowStage生命周期变化的监听，通过调用接口off('windowStageLifecycleEvent')注销WindowStage生命周期变化的监听。
 
-  - 此时返回的生命周期状态为[WindowStageLifeCycleEventType](../reference/apis-arkui/arkts-apis/arkts-arkui-window-windowstagelifecycleeventtype-e.md#windowstagelifecycleeventtype)：包含**SHOWN**（前台状态）、**RESUMED**（前台可交互状态）、**PAUSED**（前台不可交互状态）、**HIDDEN**（后台状态）4种状态。
+  - 此时返回的生命周期状态为WindowStageLifeCycleEventType：包含**SHOWN**（前台状态）、**RESUMED**（前台可交互状态）、**PAUSED**（前台不可交互状态）、**HIDDEN**（后台状态）4种状态。
 
   - 对于WindowStage获焦失焦状态推荐使用[on('windowEvent')](../reference/apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#onwindowevent)进行监听。
 
@@ -98,7 +98,7 @@ Stage模型下主窗口的生命周期状态包括前台状态（SHOWN）、前�
 
 | 接口名 | 典型场景 |
 | -------- | -------- |
-| [createWindow()](../reference/apis-arkui/arkts-apis/arkts-arkui-window-createwindow-f.md#createwindow) | 创建一个全局悬浮窗、模态窗口或系统窗，用作弹窗等场景。 |
+| createWindow() | 创建一个全局悬浮窗、模态窗口或系统窗，用作弹窗等场景。 |
 | [createSubWindow()](../reference/apis-arkui/arkts-apis/arkts-arkui-window-windowstage-i.md#createsubwindow) | 创建一个子窗口，用作二级页面等场景。 |
 | [createSubWindowWithOptions()](../reference/apis-arkui/arkts-apis/arkts-arkui-window-windowstage-i.md#createsubwindowwithoptions) | 创建一个子窗口，用作二级页面或弹窗等场景。 |
 | [destroyWindow()](../reference/apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#destroywindow) | 销毁当前窗口，例如关闭弹窗、退出应用等场景。 |

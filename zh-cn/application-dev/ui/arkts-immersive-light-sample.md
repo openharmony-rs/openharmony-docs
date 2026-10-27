@@ -86,7 +86,7 @@
    }
    ```
 
-2. 针对跳转的目标页面，通过[NavigationTitleOptions](../reference/apis-arkui/arkts-components/arkts-arkui-navigation-comp-navigationtitleoptions-i.md#navigationtitleoptions)为对应的页签页面标题栏区域开启沉浸光感。建议将Navigation组件的BarStyle设置为STACK模式，使内容区显示在标题栏下方，从而实现透底的效果。下面代码实现以下效果：标题栏以及标题栏子组件开启沉浸光感。上滑时搜索框隐藏，分类列表保留并突出显示。分类列表项开启沉浸光感，提升用户交互体验和内容曝光率。
+2. 针对跳转的目标页面，通过NavigationTitleOptions为对应的页签页面标题栏区域开启沉浸光感。建议将Navigation组件的BarStyle设置为STACK模式，使内容区显示在标题栏下方，从而实现透底的效果。下面代码实现以下效果：标题栏以及标题栏子组件开启沉浸光感。上滑时搜索框隐藏，分类列表保留并突出显示。分类列表项开启沉浸光感，提升用户交互体验和内容曝光率。
    <!-- @[explore_home_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImmersiveLightSense/entry/src/main/ets/pages/immersiveLightSense/ExploreHomePage.ets) -->
    ```TypeScript
    @ComponentV2

@@ -69,7 +69,7 @@ Web组件支持智能防跟踪功能，即当跟踪型网站作为第三方插�
   }
   ```
 
-- 通过[onIntelligentTrackingPreventionResult](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-attribute.md#onintelligenttrackingpreventionresult)接口将被拦截的跟踪型域名及其触发网站的域名回调给应用。
+- 通过onIntelligentTrackingPreventionResult接口将被拦截的跟踪型域名及其触发网站的域名回调给应用。
   <!-- @[retrieve_blocked_and_visited_domain_names](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebCompSecPriv/entry/src/main/ets/pages/OnIntTrackPreventResult.ets) -->
   
   ``` TypeScript

@@ -100,7 +100,7 @@ TextInput()
 ![text_input_type_email](figures/text_input_type_email.PNG)
 
 ## 设置输入框样式
-可以通过style、placeholder、backgroundColor、contentType等属性设置输入框样式。更丰富的样式可以结合[通用属性](../reference/apis-arkui/arkui-js-lite/js-lite-common-attributes.md)实现。
+可以通过style、placeholder、backgroundColor、contentType等属性设置输入框样式。更丰富的样式可以结合通用属性实现。
 
 ### 设置输入框多态样式
 
@@ -334,7 +334,7 @@ TextArea({ text: $r('app.string.show_selected_menu') })
 ![TextArea_select_menu](figures/TextArea_select_menu.jpg)
 
 ### 系统菜单中自定义菜单项
-从API version 12开始，该示例通过[editMenuOptions](../reference/apis-arkui/arkts-components/arkts-arkui-textinput-comp-attribute.md#editmenuoptions)接口实现了文本设置自定义菜单扩展项的文本内容、图标以及回调的功能；从API version 20开始，可以在[onPrepareMenu](../reference/apis-arkui/arkui-js/js-components-common-animation.md#属性)回调中，进行菜单数据的设置。
+从API version 12开始，该示例通过[editMenuOptions](../reference/apis-arkui/arkts-components/arkts-arkui-textinput-comp-attribute.md#editmenuoptions)接口实现了文本设置自定义菜单扩展项的文本内容、图标以及回调的功能；从API version 20开始，可以在onPrepareMenu回调中，进行菜单数据的设置。
 
 <!-- @[editMenu_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SelectMenu.ets) -->
 
@@ -509,7 +509,7 @@ struct DisableMenuItem {
 
 ### 在子窗口中显示文本菜单
 
-TextInput组件通过设置[TextMenuShowMode](../reference/apis-arkui/arkts-apis/arkts-arkui-textmenushowmode-e.md#textmenushowmode)控制文本菜单在哪个窗口中渲染。主窗口模式下，菜单节点挂载到主窗口根节点，菜单可能被页面内容遮挡、受页面滚动影响；子窗口模式下，菜单节点挂载到独立子窗口的根节点，菜单浮在主窗口之上，不受页面布局影响。
+TextInput组件通过设置TextMenuShowMode控制文本菜单在哪个窗口中渲染。主窗口模式下，菜单节点挂载到主窗口根节点，菜单可能被页面内容遮挡、受页面滚动影响；子窗口模式下，菜单节点挂载到独立子窗口的根节点，菜单浮在主窗口之上，不受页面布局影响。
 
 <!-- @[set_menu_options_with_textmenushowmode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/TextMenuShowSubWindow.ets) -->
 
@@ -575,7 +575,7 @@ struct KeyboardAvoid {
 
 ### 光标避让
 
-[keyBoardAvoidMode](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-keyboardavoidmode-e.md#keyboardavoidmode)枚举中的OFFSET和RESIZE在键盘抬起后，不支持二次避让。如果想要支持光标位置在点击或者通过接口设置变化后发生二次避让，可以考虑使用OFFSET_WITH_CARET和RESIZE_CARET替换原有的OFFSET和RESIZE模式。<br>
+keyBoardAvoidMode枚举中的OFFSET和RESIZE在键盘抬起后，不支持二次避让。如果想要支持光标位置在点击或者通过接口设置变化后发生二次避让，可以考虑使用OFFSET_WITH_CARET和RESIZE_CARET替换原有的OFFSET和RESIZE模式。<br>
 
 对于滚动容器更推荐使用RESIZE_WITH_CARET，非滚动容器应该使用OFFSET_WITH_CARET。
 

@@ -25,7 +25,7 @@ Repeat根据容器组件的**显示区域和预加载区域**加载子组件。�
 > **说明：**
 > 
 > Repeat与[LazyForEach](./arkts-rendering-control-lazyforeach.md)组件的区别：
-> - Repeat直接监听状态变量的变化，而LazyForEach需要开发者实现[IDataSource](../../reference/apis-arkui/arkts-components/arkts-arkui-lazyforeach-comp-idatasource-i.md#idatasource)接口，手动管理子组件内容/索引的修改。
+> - Repeat直接监听状态变量的变化，而LazyForEach需要开发者实现IDataSource接口，手动管理子组件内容/索引的修改。
 > - Repeat还增强了节点复用能力，提高了长列表滑动和数据更新的渲染性能。
 > - Repeat增加了渲染模板（template）的能力，在同一个数组中，根据开发者自定义的模板类型（template type）渲染不同的子组件。
 >
@@ -255,7 +255,7 @@ Repeat加载子节点具有懒加载和全量加载两种模式。开发者可�
 
 Repeat具有节点复用能力。Repeat子组件从组件树中移除时，会被存入缓存池中。后续创建新子组件时，会优先复用池中的节点。懒加载模式和全量加载模式下的复用流程细节存在差异，下文中将分别进行说明。
 
-Repeat组件默认开启节点复用功能。从API version 18开始，在懒加载模式下，可以通过配置`reusable`字段选择是否启用复用功能。为了提高渲染性能，建议开发者保持节点复用。代码示例见[VirtualScrollOptions](../../reference/apis-arkui/arkts-components/arkts-arkui-repeat-comp-virtualscrolloptions-i.md#virtualscrolloptions)。
+Repeat组件默认开启节点复用功能。从API version 18开始，在懒加载模式下，可以通过配置`reusable`字段选择是否启用复用功能。为了提高渲染性能，建议开发者保持节点复用。代码示例见VirtualScrollOptions。
 
 从API version 18开始，Repeat支持懒加载模式下[缓存池自定义组件冻结](../state-management/arkts-custom-components-freezeV2.md#repeat)。
 
@@ -401,7 +401,7 @@ struct ChildItem {
 
 当数据源总长度较长，或数据项加载耗时较长时，可使用Repeat数据精准懒加载特性，避免在初始化时加载所有数据。Repeat数据精准懒加载特性从API version 19开始支持。
 
-开发者可以设置`.virtualScroll()`的`totalCount`属性值或`onTotalCount`自定义方法用于计算期望加载的数据项总数，设置`onLazyLoading`属性实现数据精准懒加载，实现在节点首次渲染时加载对应的数据。详细说明和注意事项见[VirtualScrollOptions](../../reference/apis-arkui/arkts-components/arkts-arkui-repeat-comp-virtualscrolloptions-i.md#virtualscrolloptions)。
+开发者可以设置`.virtualScroll()`的`totalCount`属性值或`onTotalCount`自定义方法用于计算期望加载的数据项总数，设置`onLazyLoading`属性实现数据精准懒加载，实现在节点首次渲染时加载对应的数据。详细说明和注意事项见VirtualScrollOptions。
 
 **示例1**
 

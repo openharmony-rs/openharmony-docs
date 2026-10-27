@@ -16,7 +16,7 @@ OpenHarmony提供了分布式增强连接能力，实现跨设备互联，完成
 
 在设备互联过程中，发现对端的蓝牙地址并建立物理链路；在多设备互联场景下，通过特有的多通道合并算法，在保证设备间交互能力的前提下，减少实际物理链路的个数，达到设备间可用连接数增大、降低干扰提升通信的稳定性的效果。
 
-两个设备的交互实现如下，在使用[linkEnhance](../reference/apis-distributedservice-kit/errorcode-link-enhance.md)能力后，当两端同时发起连接时，会自动识别合并底层多余物理链路，减少实际物理链路的个数，减少蓝牙链路资源的消耗，增加可用连接数量。
+两个设备的交互实现如下，在使用linkEnhance能力后，当两端同时发起连接时，会自动识别合并底层多余物理链路，减少实际物理链路的个数，减少蓝牙链路资源的消耗，增加可用连接数量。
 
 ![linkEnhance-process](figures/linkEnhance-process.png)
 
@@ -50,7 +50,7 @@ OpenHarmony提供了分布式增强连接能力，实现跨设备互联，完成
 
 ## 接口说明
 
-常用接口说明如下表。更多接口的详细介绍参考@ohos.distributedsched.linkEnhance[增强连接](../reference/apis-distributedservice-kit/errorcode-link-enhance.md)。
+常用接口说明如下表。更多接口的详细介绍参考@ohos.distributedsched.linkEnhance增强连接。
 
 | 接口名                                      | 功能描述                                                                                               |
 | ------------------------------------------ | ------------------------------------------------------------------------------------------------------ |

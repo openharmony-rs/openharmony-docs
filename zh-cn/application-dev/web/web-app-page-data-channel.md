@@ -186,4 +186,4 @@
 ```
 
 ### onControllerAttached与javaScriptOnDocumentStart的执行顺序是什么？
-[javaScriptOnDocumentStart](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-attribute.md#javascriptondocumentstart)在[onControllerAttached](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-attribute.md#oncontrollerattached)之后执行。 
+javaScriptOnDocumentStart在onControllerAttached之后执行。 

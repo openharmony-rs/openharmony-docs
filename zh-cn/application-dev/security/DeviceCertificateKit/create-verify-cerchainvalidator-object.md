@@ -22,11 +22,11 @@
    import { cert } from '@kit.DeviceCertificateKit';
    ```
 
-2. 调用[cert.createCertChainValidator](../../reference/apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-createcertchainvalidator-f.md#createcertchainvalidator)创建证书链校验器对象。
+2. 调用cert.createCertChainValidator创建证书链校验器对象。
 
-3. 基于已有的证书数据，创建证书链数据对象[CertChainData](../../reference/apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-certchaindata-i.md#certchaindata)。
+3. 基于已有的证书数据，创建证书链数据对象CertChainData。
    
-   证书算法库框架提供了证书链校验器对象可用于校验证书链，以验证信任链根源，但待校验的证书链数据对象应符合证书链数据对象的数据结构定义[CertChainData](../../reference/apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-certchaindata-i.md#certchaindata)。
+   证书算法库框架提供了证书链校验器对象可用于校验证书链，以验证信任链根源，但待校验的证书链数据对象应符合证书链数据对象的数据结构定义CertChainData。
 
 4. 调用[CertChainValidator.validate](../../reference/apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-certchainvalidator-i.md#validate)校验证书链数据。
 

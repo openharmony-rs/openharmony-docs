@@ -12,7 +12,7 @@
 
 从API版本26.0.0开始，增加支持AVIF、AVIS格式。
 
-部分格式的解码能力依赖于具体的设备硬件，建议在调用前使用[image.getImageSourceSupportedFormats](../../reference/apis-image-kit/arkts-apis/arkts-image-image-getimagesourcesupportedformats-f.md#getimagesourcesupportedformats)接口，动态查询当前设备上的解码能力。
+部分格式的解码能力依赖于具体的设备硬件，建议在调用前使用image.getImageSourceSupportedFormats接口，动态查询当前设备上的解码能力。
 
 > **说明：**
 >

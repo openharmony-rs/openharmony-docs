@@ -81,7 +81,7 @@ function requestEnableNotification(context: UIAbilityContext, callback: AsyncCal
 
 **参见：**
 
-[isNotificationEnabled](arkts-notification-notificationmanager-isnotificationenabled-f.md#isnotificationenabled-3) 查询当前应用通知授权状态。
+isNotificationEnabled 查询当前应用通知授权状态。
 
 [openNotificationSettings](arkts-notification-notificationmanager-opennotificationsettings-f.md#opennotificationsettings-1) 拉起当前应用的通知设置界面。
 
@@ -207,7 +207,7 @@ function requestEnableNotification(context: UIAbilityContext): Promise<void>
 
 **参见：**
 
-[isNotificationEnabled](arkts-notification-notificationmanager-isnotificationenabled-f.md#isnotificationenabled-3) 查询当前应用通知授权状态。
+isNotificationEnabled 查询当前应用通知授权状态。
 
 [openNotificationSettings](arkts-notification-notificationmanager-opennotificationsettings-f.md#opennotificationsettings-1) 拉起当前应用的通知设置界面。
 

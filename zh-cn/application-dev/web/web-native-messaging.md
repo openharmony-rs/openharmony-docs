@@ -51,7 +51,7 @@
 - **流程：**
 1. **浏览器扩展**调用runtime.connectNative接口传入应用包名，来创建NativeMessaging连接。
 2. **浏览器应用**调用[dataShare](../database/share-config.md)获取应用配置信息，包括WebNativeMessagingExtension的名称，和限制访问规则（是否允许某个扩展访问该WebNativeMessagingExtension）。
-3. **浏览器应用**创建两组pipe作为收发双向通道，调用[WebNativeMessagingExtensionManager.connectNative](../reference/apis-arkweb/arkts-apis/arkts-arkweb-webnativemessagingextensionmanager-connectnative-f.md#connectnative)接口，拉起WebNativeMessagingExtension并创建一条NativeMessaging连接，并将pipe的收发文件描述符作为参数传输过去。
+3. **浏览器应用**创建两组pipe作为收发双向通道，调用WebNativeMessagingExtensionManager.connectNative接口，拉起WebNativeMessagingExtension并创建一条NativeMessaging连接，并将pipe的收发文件描述符作为参数传输过去。
 4. **应用**WebNativeMessagingExtensionAbility被拉起，[WebNativeMessagingExtensionAbility.onConnectNative](../reference/apis-arkweb/arkts-apis/arkts-arkweb-web-webnativemessagingextensionability-webnativemessagingextensionability-c.md#onconnectnative)生命周期回调触发，获取pipe的文件描述符。
 5. **应用**监听读端的文件描述符，获取浏览器扩展发过来的消息指令，并通过写端的文件描述符发送回去。
 6. **应用**使用[WebNativeMessagingExtensionContext.startAbility](../reference/apis-arkweb/arkts-apis/arkts-arkweb-web-webnativemessagingextensioncontext-webnativemessagingextensioncontext-c.md#startability)拉起本应用的UIAbility图形界面。
@@ -368,7 +368,7 @@ function sendMessageToNative() {
      }
    }
    ```
-2. 调用[webNativeMessagingExtensionManager.connectNative](../reference/apis-arkweb/arkts-apis/arkts-arkweb-webnativemessagingextensionmanager-connectnative-f.md#connectnative)创建NativeMessaging连接，如WebNativeMessagingExtensionAbility尚未运行，该接口则会拉起ExtensionAbility并触发。
+2. 调用webNativeMessagingExtensionManager.connectNative创建NativeMessaging连接，如WebNativeMessagingExtensionAbility尚未运行，该接口则会拉起ExtensionAbility并触发。
    ```ts
    import { UIAbility, Want, common } from '@kit.AbilityKit';
    import { webNativeMessagingExtensionManager } from '@kit.ArkWeb'
@@ -409,7 +409,7 @@ function sendMessageToNative() {
    }
    ```
 
-3. 需要销毁NativeMessaging连接时，调用[webNativeMessagingExtensionManager.disconnectNative](../reference/apis-arkweb/arkts-apis/arkts-arkweb-webnativemessagingextensionmanager-disconnectnative-f.md#disconnectnative)。
+3. 需要销毁NativeMessaging连接时，调用webNativeMessagingExtensionManager.disconnectNative。
    ```ts
    import { webNativeMessagingExtensionManager } from '@kit.ArkWeb'
 

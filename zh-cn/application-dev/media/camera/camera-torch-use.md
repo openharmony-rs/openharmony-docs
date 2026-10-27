@@ -10,7 +10,7 @@
 
 在使用相机应用并操作手电筒功能时，存在以下几种情况说明：
 
-- 当使用后置相机并设置闪光灯模式[FlashMode](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-flashmode-e.md#flashmode)关闭时，手电筒功能无法启用。
+- 当使用后置相机并设置闪光灯模式FlashMode关闭时，手电筒功能无法启用。
 - 当使用前置相机时，手电筒可以正常启用并保持常亮状态。
 - 从前置相机切换至后置相机时，如果手电筒原本处于开启状态，它将会被自动关闭。
 
@@ -41,7 +41,7 @@
     }
     ```
 
-3. 通过[CameraManager](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-cameramanager-i.md)中的[isTorchModeSupported](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-cameramanager-i.md#istorchmodesupported)方法，检测是否支持指定的手电筒模式[TorchMode](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-torchmode-e.md#torchmode)。
+3. 通过[CameraManager](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-cameramanager-i.md)中的[isTorchModeSupported](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-cameramanager-i.md#istorchmodesupported)方法，检测是否支持指定的手电筒模式TorchMode。
 
     ```ts
     function isTorchModeSupported(cameraManager: camera.CameraManager, torchMode: camera.TorchMode) : boolean {
@@ -74,7 +74,7 @@
 
 在相机应用开发过程中，可以随时监听手电筒状态，包括手电筒打开、手电筒关闭、手电筒不可用、手电筒恢复可用。手电筒状态发生变化，可通过回调函数获取状态的变化。
 
-注册torchStatusChange事件后，回调会返回监听结果，callback返回TorchStatusInfo参数，参数的具体内容可参考相机管理器回调接口实例[TorchStatusInfo](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-torchstatusinfo-i.md#torchstatusinfo)。
+注册torchStatusChange事件后，回调会返回监听结果，callback返回TorchStatusInfo参数，参数的具体内容可参考相机管理器回调接口实例TorchStatusInfo。
 
 
 ```ts

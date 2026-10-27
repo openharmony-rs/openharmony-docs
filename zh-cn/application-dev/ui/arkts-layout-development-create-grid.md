@@ -72,7 +72,7 @@ Grid() {
 
 >**说明：**
 >
->当Grid组件设置了rowsTemplate或columnsTemplate时，Grid的layoutDirection、maxCount、minCount、cellLength属性不生效，属性说明可参考[Grid-属性](../reference/apis-arkui/arkui-js/js-components-grid-col.md#属性)。
+>当Grid组件设置了rowsTemplate或columnsTemplate时，Grid的layoutDirection、maxCount、minCount、cellLength属性不生效，属性说明可参考Grid-属性。
 
 
 ### 设置子组件所占行列数
@@ -437,7 +437,7 @@ GridItem() {
 >
 >- 建议使用网格项数据中不会随位置变化的唯一标识（例如文件ID）记录选择结果，不建议仅使用当前下标，避免动态增删数据后选中项错位。
 >- 当业务需要在退出编辑模式后保留选择结果时，可在[onEditModeChange](../reference/apis-arkui/arkts-components/arkts-arkui-grid-comp-attribute.md#oneditmodechange)回调中保存选择结果。
->- 使用[LazyForEach](../ui/rendering-control/arkts-rendering-control-lazyforeach.md)时，数据源发生变化后应通过[DataChangeListener](../reference/apis-arkui/arkts-components/arkts-arkui-lazyforeach-comp-datachangelistener-i.md#datachangelistener)通知组件刷新，确保滑动多选过程中网格项状态与数据源一致。
+>- 使用[LazyForEach](../ui/rendering-control/arkts-rendering-control-lazyforeach.md)时，数据源发生变化后应通过DataChangeListener通知组件刷新，确保滑动多选过程中网格项状态与数据源一致。
 
 ## 性能优化
 

@@ -48,7 +48,7 @@ ArkWeb是多进程模型，分为应用进程、Web渲染进程、Web GPU进程�
 
 1. 可通过[setRenderProcessMode](../reference/apis-arkweb/arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#setrenderprocessmode)设置渲染子进程的模式，从而控制渲染过程的单进程或多进程状态。
 
-   移动设备默认为单进程渲染，而2in1设备则默认采用多进程渲染。通过调用[getRenderProcessMode](../reference/apis-arkweb/arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#getrenderprocessmode)可查询当前的渲染子进程模式，其中枚举值0表示单进程模式，枚举值1对应多进程模式。若setRenderProcessMode接口传入的值不在[RenderProcessMode](../reference/apis-arkweb/arkts-apis/arkts-arkweb-webview-renderprocessmode-e.md#renderprocessmode)枚举值范围内，系统将自动采用多进程渲染模式作为默认设置。
+   移动设备默认为单进程渲染，而2in1设备则默认采用多进程渲染。通过调用[getRenderProcessMode](../reference/apis-arkweb/arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#getrenderprocessmode)可查询当前的渲染子进程模式，其中枚举值0表示单进程模式，枚举值1对应多进程模式。若setRenderProcessMode接口传入的值不在RenderProcessMode枚举值范围内，系统将自动采用多进程渲染模式作为默认设置。
 
     <!-- @[setRenderProcessMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWeb/entry/src/main/ets/pages/SetRenderProcessMode.ets) -->
     
@@ -107,7 +107,7 @@ ArkWeb是多进程模型，分为应用进程、Web渲染进程、Web GPU进程�
     }
     ```
 
-3. 可通过[onRenderExited](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-attribute.md#onrenderexited)来监听渲染进程的退出事件，从而获知退出的具体原因（如内存OOM、crash或正常退出等）。由于多个Web组件可能共用同一个渲染进程，因此，每当渲染进程退出时，每个受此影响的Web组件均会触发相应的回调。
+3. 可通过onRenderExited来监听渲染进程的退出事件，从而获知退出的具体原因（如内存OOM、crash或正常退出等）。由于多个Web组件可能共用同一个渲染进程，因此，每当渲染进程退出时，每个受此影响的Web组件均会触发相应的回调。
 
     <!-- @[onRenderExited](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWeb/entry/src/main/ets/pages/OnRenderExited.ets) -->
     
@@ -132,7 +132,7 @@ ArkWeb是多进程模型，分为应用进程、Web渲染进程、Web GPU进程�
     }
     ```
 
-4. 可通过[onRenderProcessNotResponding](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-attribute.md#onrenderprocessnotresponding)、[onRenderProcessResponding](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-attribute.md#onrenderprocessresponding)来监听渲染进程的无响应状态。
+4. 可通过onRenderProcessNotResponding、onRenderProcessResponding来监听渲染进程的无响应状态。
 
    当Web组件无法处理输入事件，或未能在预期时间内导航至新URL时，系统会判定网页进程为无响应状态，并触发onRenderProcessNotResponding回调。在网页进程持续无响应期间，该回调可能反复触发，直至进程恢复至正常运行状态，此时将触发onRenderProcessResponding回调。
 

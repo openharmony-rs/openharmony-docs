@@ -22,7 +22,7 @@ PKCS #7是用于存储签名或加密数据的标准语法。CMS（Cryptographic
    ```ts
    import { cert } from '@kit.DeviceCertificateKit';
    ```
-2. 调用[cert.createCmsGenerator](../../reference/apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-createcmsgenerator-f.md#createcmsgenerator)创建cmsGenerator对象。
+2. 调用cert.createCmsGenerator创建cmsGenerator对象。
 
 3. 调用[cmsGenerator.addSigner](../../reference/apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-cmsgenerator-i.md#addsigner)添加签名者信息。
 

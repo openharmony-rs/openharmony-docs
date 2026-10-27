@@ -6,7 +6,7 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-[Web](../reference/apis-arkweb/c-apis/capi-web.md)组件支持在网页中预览PDF。但受限于性能表现，部分场景存在掉帧现象。若对流畅度有要求，建议使用[PdfView](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/pdf-arkts-pdfview-component)，或第三方解析库[PDF.js](https://github.com/mozilla/pdf.js)。应用通过[WebOptions](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-weboptions-i.md#weboptions)的src参数和[loadUrl()](../reference/apis-arkweb/arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#loadurl)接口加载PDF文档。具体场景包括：网络PDF文档、应用沙箱内PDF文档和本地PDF文档。
+[Web](../reference/apis-arkweb/c-apis/capi-web.md)组件支持在网页中预览PDF。但受限于性能表现，部分场景存在掉帧现象。若对流畅度有要求，建议使用[PdfView](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/pdf-arkts-pdfview-component)，或第三方解析库[PDF.js](https://github.com/mozilla/pdf.js)。应用通过WebOptions的src参数和[loadUrl()](../reference/apis-arkweb/arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#loadurl)接口加载PDF文档。具体场景包括：网络PDF文档、应用沙箱内PDF文档和本地PDF文档。
 
 若涉及网络文档获取，需在module.json5中配置网络访问权限。添加方法请参考[在配置文件中声明权限](../security/AccessToken/declare-permissions.md#在配置文件中声明权限)。
 
@@ -51,13 +51,13 @@ struct WebComponent {
 }
 ```
 
-PDF预览页面会根据用户操作使用`window.localStorage`记录侧导航栏的展开状态，因此需要开启文档对象模型存储[domStorageAccess](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-attribute.md#domstorageaccess)权限:
+PDF预览页面会根据用户操作使用`window.localStorage`记录侧导航栏的展开状态，因此需要开启文档对象模型存储domStorageAccess权限:
 
   ```ts
   Web().domStorageAccess(true)
   ```
 
-在创建[Web](../reference/apis-arkweb/c-apis/capi-web.md)组件时，指定默认加载的PDF文档。默认PDF文档加载完成后，若需变更Web组件显示的PDF文档，通过调用[loadUrl()](../reference/apis-arkweb/arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#loadurl)接口加载指定的PDF文档。[WebOptions](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-weboptions-i.md#weboptions)的第一个参数变量src不能通过状态变量（例如：[@State](../ui/state-management/arkts-state.md)）动态更改地址，如需更改，请通过[loadUrl()](../reference/apis-arkweb/arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#loadurl)重新加载。
+在创建[Web](../reference/apis-arkweb/c-apis/capi-web.md)组件时，指定默认加载的PDF文档。默认PDF文档加载完成后，若需变更Web组件显示的PDF文档，通过调用[loadUrl()](../reference/apis-arkweb/arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#loadurl)接口加载指定的PDF文档。WebOptions的第一个参数变量src不能通过状态变量（例如：[@State](../ui/state-management/arkts-state.md)）动态更改地址，如需更改，请通过[loadUrl()](../reference/apis-arkweb/arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#loadurl)重新加载。
 
 包含三种PDF文档加载预览场景：
 - 预览加载网络PDF文档。
@@ -69,7 +69,7 @@ PDF预览页面会根据用户操作使用`window.localStorage`记录侧导航�
   })
     .domStorageAccess(true)
   ```
-- 预览加载应用沙箱内PDF文档需要开启文件系统的[fileAccess](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-attribute.md#fileaccess)权限。
+- 预览加载应用沙箱内PDF文档需要开启文件系统的fileAccess权限。
 
   ```ts
   Web({ 

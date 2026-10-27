@@ -24,7 +24,7 @@
 ## 概述
 
 组件冻结的工作原理是：
-1. 开发者通过设置[freezeWhenInactive](../../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-componentoptions-i.md#componentoptions)属性，即可激活组件冻结机制。
+1. 开发者通过设置freezeWhenInactive属性，即可激活组件冻结机制。
 2. 启用后，系统将仅对处于激活状态的自定义组件进行更新，这使得UI框架可以尽量缩小更新范围，仅限于用户可见范围内（激活状态）的自定义组件，从而提高复杂UI场景下的刷新效率。
 3. 当之前处于inactive状态的自定义组件重新变为active状态时，状态管理框架会对其执行必要的刷新操作，确保UI的正确展示。
 
@@ -35,7 +35,7 @@
 1. [页面路由](../../reference/apis-arkui/arkts-apis/arkts-arkui-router.md)：当前栈顶页面为active状态，非栈顶不可见页面为inactive状态。
 2. TabContent：只有当前显示的TabContent中的自定义组件处于active状态，其余则为inactive。
 3. LazyForEach：仅当前显示的LazyForEach中的自定义组件为active状态，而缓存节点的组件则为inactive状态。
-4. Navigation：当前显示的NavDestination中的自定义组件为active状态，而其他未显示的NavDestination组件则为inactive状态。需要注意，本文档中涉及的“激活（active）/非激活（inactive）”是指组件冻结的激活/非激活状态，和NavDestination组件中的[onActive](../../reference/apis-arkui/arkts-apis/arkts-arkui-uiobserver-navdestinationstate-e.md#onactive)和[onInactive](../../reference/apis-arkui/arkts-apis/arkts-arkui-uiobserver-navdestinationstate-e.md#oninactive)不同。
+4. Navigation：当前显示的NavDestination中的自定义组件为active状态，而其他未显示的NavDestination组件则为inactive状态。需要注意，本文档中涉及的“激活（active）/非激活（inactive）”是指组件冻结的激活/非激活状态，和NavDestination组件中的onActive和onInactive不同。
 5. 组件复用：进入复用池的组件为inactive状态，从复用池上树的节点为active状态。
 6. 混用场景：对于以上场景的组合使用，例如TabContent下面使用LazyForEach，切换Tab时，API version 17及以下，LazyForEach中的所有节点都会被设置为active状态，而从API version 18开始，只有LazyForEach的屏上节点会被设置为active状态，其余则为inactive状态。
 

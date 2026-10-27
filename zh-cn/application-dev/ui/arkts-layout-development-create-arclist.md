@@ -242,7 +242,7 @@ export struct ArcListContents {
 
 ### 自定义弧形列表标题
 
-可以通过[header](../reference/apis-arkui/arkts-components/arkts-arkui-arclist-comp-arklistoptions-i.md#arklistoptions)参数为弧形列表添加自定义标题。
+可以通过header参数为弧形列表添加自定义标题。
 
 1. 首先，需要构造自定义标题组件customHeader。
 
@@ -259,7 +259,7 @@ export struct ArcListContents {
    }
    ```
 
-2. 由于[header](../reference/apis-arkui/arkts-components/arkts-arkui-arclist-comp-arklistoptions-i.md#arklistoptions)参数的类型是[ComponentContent](../reference/apis-arkui/arkts-apis/arkts-arkui-componentcontent.md)，所以需要对自定义标题组件进行封装。
+2. 由于header参数的类型是[ComponentContent](../reference/apis-arkui/arkts-apis/arkts-arkui-componentcontent.md)，所以需要对自定义标题组件进行封装。
 
    <!-- @[componentContent_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListStyles.ets) -->
    
@@ -268,7 +268,7 @@ export struct ArcListContents {
    arcListHeader: ComponentContent<Object> = new ComponentContent(this.context, wrapBuilder(customHeader));
    ```
 
-3. 最后，通过[header](../reference/apis-arkui/arkts-components/arkts-arkui-arclist-comp-arklistoptions-i.md#arklistoptions)参数将arcListHeader设置到弧形列表中。
+3. 最后，通过header参数将arcListHeader设置到弧形列表中。
 
    <!-- @[arcListHeader_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListStyles.ets) -->
    
@@ -328,7 +328,7 @@ ArcListItem() {
 
 当列表项的高度超过屏幕高度时，弧形列表能够沿垂直方向滚动。若用户需要快速定位，可拖动滚动条以迅速滑动列表，如图6所示。
 
-在使用ArcList组件时，可以通过[scrollBar](../reference/apis-arkui/arkts-components/arkts-arkui-arclist-comp-attribute.md#scrollbar)属性来控制弧形列表滚动条的显示。scrollBar的取值类型为[BarState](../reference/apis-arkui/arkts-apis/arkts-arkui-barstate-e.md#barstate)，当设置为BarState.Auto时，表示滚动条将按需显示。在这种模式下，当用户触摸到滚动条区域时，滚动条会显示出来，支持上下拖拽以快速浏览内容，且在拖拽过程中滚动条会变粗。若用户不进行任何操作，滚动条将在2秒后自动消失。此外，还可以通过[scrollBarWidth](../reference/apis-arkui/arkts-components/arkts-arkui-arclist-comp-attribute.md#scrollbarwidth)属性来设置滚动条在按压状态下的宽度，以及通过[scrollBarColor](../reference/apis-arkui/arkts-components/arkts-arkui-arclist-comp-attribute.md#scrollbarcolor)属性来设置滚动条的颜色。
+在使用ArcList组件时，可以通过[scrollBar](../reference/apis-arkui/arkts-components/arkts-arkui-arclist-comp-attribute.md#scrollbar)属性来控制弧形列表滚动条的显示。scrollBar的取值类型为BarState，当设置为BarState.Auto时，表示滚动条将按需显示。在这种模式下，当用户触摸到滚动条区域时，滚动条会显示出来，支持上下拖拽以快速浏览内容，且在拖拽过程中滚动条会变粗。若用户不进行任何操作，滚动条将在2秒后自动消失。此外，还可以通过[scrollBarWidth](../reference/apis-arkui/arkts-components/arkts-arkui-arclist-comp-attribute.md#scrollbarwidth)属性来设置滚动条在按压状态下的宽度，以及通过[scrollBarColor](../reference/apis-arkui/arkts-components/arkts-arkui-arclist-comp-attribute.md#scrollbarcolor)属性来设置滚动条的颜色。
 
 <!-- @[arcListBuiltInScrollBar_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/arcListBuiltInScrollerBar.ets) -->
 
@@ -357,7 +357,7 @@ ArcList({ header: this.arcListHeader }) {
    private arcListScroller: Scroller = new Scroller();
    ```
 
-2. 然后，弧形列表通过[scroller](../reference/apis-arkui/arkts-components/arkts-arkui-arclist-comp-arklistoptions-i.md#arklistoptions)参数绑定滚动控制器。
+2. 然后，弧形列表通过scroller参数绑定滚动控制器。
 
    <!-- @[bind_arcList_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListAcrScrollBar.ets) -->
    
@@ -368,7 +368,7 @@ ArcList({ header: this.arcListHeader }) {
    }
    ```
 
-3. 最后，弧形滚动条通过[scroller](../reference/apis-arkui/arkts-components/arkts-arkui-arcscrollbar-comp-arcscrollbaroptions-i.md#arcscrollbaroptions)参数绑定滚动控制器。
+3. 最后，弧形滚动条通过scroller参数绑定滚动控制器。
 
    <!-- @[bind_arcScrollBar_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListAcrScrollBar.ets) -->
    
@@ -393,7 +393,7 @@ ArcList({ header: this.arcListHeader }) {
 
 在列表滚动时，根据列表此时所在的索引值位置centerIndex，重新计算字母索引条对应字母的位置indexerIndex。由于ArcAlphabetIndexer组件通过[selected](../reference/apis-arkui/arkts-components/arkts-arkui-alphabetindexer-comp-alphabetindexeroptions-i.md#selected)属性设置了选中项索引值，当indexerIndex变化时会触发ArcAlphabetIndexer组件重新渲染，从而显示为选中对应字母的状态。
 
-在选中索引项时，根据此时选中项的索引值index，重新计算列表联系人对应的位置，然后通过列表绑定的滚动控制器arcListScroller的[scrollToIndex](../reference/apis-arkui/arkts-components/arkts-arkui-scroll-comp-scroller-c.md#scrolltoindex)方法控制列表跳转到对应的联系人位置。弧形列表ArcList可通过[scroller](../reference/apis-arkui/arkts-components/arkts-arkui-arclist-comp-arklistoptions-i.md#arklistoptions)参数绑定[Scroller](../reference/apis-arkui/arkts-apis/arkts-arkui-scrollsource-e.md#scroller)（滚动控制器）。
+在选中索引项时，根据此时选中项的索引值index，重新计算列表联系人对应的位置，然后通过列表绑定的滚动控制器arcListScroller的[scrollToIndex](../reference/apis-arkui/arkts-components/arkts-arkui-scroll-comp-scroller-c.md#scrolltoindex)方法控制列表跳转到对应的联系人位置。弧形列表ArcList可通过scroller参数绑定[Scroller](../reference/apis-arkui/arkts-apis/arkts-arkui-scrollsource-e.md#scroller)（滚动控制器）。
 
 
 <!-- @[arcAlphabetIndexer_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListArcIndexerBar.ets) -->

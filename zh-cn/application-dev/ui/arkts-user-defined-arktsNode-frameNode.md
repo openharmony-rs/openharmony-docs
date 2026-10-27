@@ -371,13 +371,13 @@ struct Index {
 >
 > 当前FrameNode如果不可修改，抛出异常信息。
 >
-> 目标父节点为[typeNode](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-n.md#typenode)时会校验子组件类型或个数，不满足抛出异常信息，限制情况请查看[typeNode](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-n.md#typenode)描述。
+> 目标父节点为typeNode时会校验子组件类型或个数，不满足抛出异常信息，限制情况请查看typeNode描述。
 >
 > 当前不支持对无组件类型的命令式节点进行移动。
 >
-> 当前仅支持以下类型的[TypedFrameNode](../reference/apis-arkui/arkts-apis/arkts-arkui-framenode-typedframenode-i.md#typedframenode)进行移动操作：[Stack](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-stack-t.md#stack)、[XComponent](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-xcomponent-t.md#xcomponent)。对于其他类型的节点，移动操作不会生效。
+> 当前仅支持以下类型的TypedFrameNode进行移动操作：Stack、XComponent。对于其他类型的节点，移动操作不会生效。
 >
-> 当前仅支持根节点为以下类型组件的[BuilderNode](../reference/apis-arkui/arkts-apis/arkts-arkui-buildernode-c.md#buildernode)进行移动操作：[Stack](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-stack-t.md)、[XComponent](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-xcomponent-t.md)、[EmbeddedComponent](../reference/apis-arkui/c-apis/capi-arkui-nodeattributetype-embeddedcomponent.md)。对于其他类型的组件，移动操作不会生效。
+> 当前仅支持根节点为以下类型组件的BuilderNode进行移动操作：[Stack](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-stack-t.md)、[XComponent](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-xcomponent-t.md)、[EmbeddedComponent](../reference/apis-arkui/c-apis/capi-arkui-nodeattributetype-embeddedcomponent.md)。对于其他类型的组件，移动操作不会生效。
 
 <!-- @[frameNodeMoveTo_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FrameNode/entry/src/main/ets/pages/framenode/FrameNodeMoveTo.ets) --> 
 
@@ -442,7 +442,7 @@ struct Index {
 
 ## 设置节点通用属性和事件回调
 
-FrameNode提供了[commonAttribute](../reference/apis-arkui/arkts-apis/arkts-arkui-framenode-c.md#commonattribute)和[commonEvent](../reference/apis-arkui/arkts-apis/arkts-arkui-framenode-c.md#commonevent)两个对象用于设置节点的[通用属性](../reference/apis-arkui/arkui-js-lite/js-lite-common-attributes.md)和设置事件回调。
+FrameNode提供了[commonAttribute](../reference/apis-arkui/arkts-apis/arkts-arkui-framenode-c.md#commonattribute)和[commonEvent](../reference/apis-arkui/arkts-apis/arkts-arkui-framenode-c.md#commonevent)两个对象用于设置节点的通用属性和设置事件回调。
 
 > **说明：**
 > 
@@ -823,7 +823,7 @@ FrameNode提供了查询接口用于返回实体节点的基础信息。具体�
 > 
 >    - 节点信息：[getId](../reference/apis-arkui/arkts-apis/arkts-arkui-framenode-c.md#getid)，[getUniqueId](../reference/apis-arkui/arkts-apis/arkts-arkui-framenode-c.md#getuniqueid)，[getNodeType](../reference/apis-arkui/arkts-apis/arkts-arkui-framenode-c.md#getnodetype)，[getOpacity](../reference/apis-arkui/arkts-apis/arkts-arkui-framenode-c.md#getopacity)，[isVisible](../reference/apis-arkui/arkts-apis/arkts-arkui-framenode-c.md#isvisible)，[isClipToFrame](../reference/apis-arkui/arkts-apis/arkts-arkui-framenode-c.md#iscliptoframe)，[isAttached](../reference/apis-arkui/arkts-apis/arkts-arkui-framenode-c.md#isattached)，[getInspectorInfo](../reference/apis-arkui/arkts-apis/arkts-arkui-framenode-c.md#getinspectorinfo)，[getCustomProperty](../reference/apis-arkui/arkts-apis/arkts-arkui-framenode-c.md#getcustomproperty)
 >
-> 2. 无法获取UINode类型节点，例如：JsView节点、[Span](../reference/apis-arkui/arkui-js/js-components-basic-span.md)、ContainerSpan、ContentSlot、ForEach、LazyForEach、if/else组件等。
+> 2. 无法获取UINode类型节点，例如：JsView节点、Span、ContainerSpan、ContentSlot、ForEach、LazyForEach、if/else组件等。
 
 ## 获取节点位置偏移信息
 
@@ -959,7 +959,7 @@ struct Index {
 ```
 ## 通过typeNode创建具体类型的FrameNode节点
 
-通过[typeNode](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-n.md#typenode)创建具体类型的FrameNode节点，可以根据属性获取接口来检索用户设置的属性信息。
+通过typeNode创建具体类型的FrameNode节点，可以根据属性获取接口来检索用户设置的属性信息。
 
 <!-- @[frameNodeTypeNode_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FrameNode/entry/src/main/ets/pages/framenode/FrameNodeTypeNode.ets) -->   
 
@@ -1474,7 +1474,7 @@ struct Index {
 ```
 ## FrameNode的数据懒加载能力
 
-提供[NodeAdapter](../reference/apis-arkui/arkts-apis/arkts-arkui-framenode-nodeadapter-c.md#nodeadapter)对象替代ArkTS侧的LazyForEach功能，提供自定义节点的数据懒加载功能，实现按需迭代数据。
+提供NodeAdapter对象替代ArkTS侧的LazyForEach功能，提供自定义节点的数据懒加载功能，实现按需迭代数据。
 
 > **说明：**
 >
@@ -1696,7 +1696,7 @@ struct Index {
 ```
 ## 查询LazyForEach中的FrameNode节点信息
 
-如果FrameNode子节点中包含LazyForEach节点，[getChild](../reference/apis-arkui/arkts-apis/arkts-arkui-framenode-c.md#getchild)接口支持指定子节点展开模式[ExpandMode](../reference/apis-arkui/arkts-apis/arkts-arkui-framenode-expandmode-e.md#expandmode)，以不同展开模式获取子节点。
+如果FrameNode子节点中包含LazyForEach节点，[getChild](../reference/apis-arkui/arkts-apis/arkts-arkui-framenode-c.md#getchild)接口支持指定子节点展开模式ExpandMode，以不同展开模式获取子节点。
 
 当前支持如下子节点展开模式：
 

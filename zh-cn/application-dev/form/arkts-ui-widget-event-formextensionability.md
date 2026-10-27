@@ -84,7 +84,7 @@
     import { hilog } from '@kit.PerformanceAnalysisKit';
     ``` 
 
-- 在FormExtensionAbility的onFormEvent生命周期中调用[updateForm](../reference/apis-form-kit/arkts-apis/arkts-form-formprovider-updateform-depr-f.md#updateform)接口刷新卡片。
+- 在FormExtensionAbility的onFormEvent生命周期中调用updateForm接口刷新卡片。
   
     <!-- @[update_form_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/entryformability/EntryFormAbility.ts) --> 
     

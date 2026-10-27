@@ -18,7 +18,7 @@ Something not supported in attributeModifier scenario.
 
 **错误描述**
 
-部分接口不支持通过[attributeModifier](./arkui-ts/ts-universal-attributes-attribute-modifier.md#attributemodifier)设置，具体请参考[属性或事件对attributeModifier的支持情况](../../ui/arkts-user-defined-extension-attributeModifier.md#属性或事件对attributemodifier的支持情况)。
+部分接口不支持通过attributeModifier设置，具体请参考[属性或事件对attributeModifier的支持情况](../../ui/arkts-user-defined-extension-attributeModifier.md#属性或事件对attributemodifier的支持情况)。
 
 **可能原因**
 

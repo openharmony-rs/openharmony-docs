@@ -25,7 +25,7 @@
 
 ## 实现原理
 
-开发者可以通过[formProvider.requestOverflow](../reference/apis-form-kit/arkts-apis/arkts-form-formprovider-requestoverflow-f.md#requestoverflow)接口触发互动卡片动效，例如在用户点击时触发，典型时序图如下。
+开发者可以通过formProvider.requestOverflow接口触发互动卡片动效，例如在用户点击时触发，典型时序图如下。
 
 **图3** 点击触发互动卡片动效时序图
 
@@ -42,7 +42,7 @@
 ## 约束和限制
 
 ### 支持的场景
-1. 当前互动卡片动效只有在[FormLocation](../reference/apis-form-kit/arkts-apis/arkts-form-forminfo-formlocation-e-sys.md#formlocation)为“DESKTOP”的单张卡片上面才能生效。
+1. 当前互动卡片动效只有在FormLocation为“DESKTOP”的单张卡片上面才能生效。
 2. 由于性能功耗影响只支持部分机型，在不支持的机型会报[801](../reference/errorcode-universal.md#801-api功能在部分设备不支持)错误码。
 
 ### 请求参数约束
@@ -70,15 +70,15 @@
 
 因此，以A点为原点，向右为X轴正方向，向下为Y轴正方向，图5中E点的合法坐标可以是（-20，-20），EF边长合法值可以是200vp，EH边长合法值可以是200vp。
 
-互动卡片可以通过调用[formProvider.getFormRect](../reference/apis-form-kit/arkts-apis/arkts-form-formprovider-getformrect-f.md#getformrect)接口获取卡片在窗口中的尺寸及相对坐标位置信息。卡片提供方以此计算动效申请范围，坐标计算时，以上图A点为（0，0）点，计算矩形EFGH对应参数，单位为vp。
+互动卡片可以通过调用formProvider.getFormRect接口获取卡片在窗口中的尺寸及相对坐标位置信息。卡片提供方以此计算动效申请范围，坐标计算时，以上图A点为（0，0）点，计算矩形EFGH对应参数，单位为vp。
 
-调用[formProvider.requestOverflow](../reference/apis-form-kit/arkts-apis/arkts-form-formprovider-requestoverflow-f.md#requestoverflow)接口时，[overflowInfo](../reference/apis-form-kit/arkts-apis/arkts-form-forminfo-overflowinfo-i.md#overflowinfo)中描述的互动卡片动效渲染区域（矩形EFGH）需要满足：
+调用formProvider.requestOverflow接口时，overflowInfo中描述的互动卡片动效渲染区域（矩形EFGH）需要满足：
 1. 包含了卡片（矩形ABCD）的全部区域。
 2. 不超过矩形IJKL（矩形IJKL完整包含矩形EFGH）。<!--Del-->仅三方应用生效，系统应用不作限制。<!--DelEnd-->
 
 ### 功耗约束
 1. 设备进入省电模式时，互动卡片不响应动效请求。
-2. 当设备热档位进入HOT时，不再响应非点击触发的动效请求；当热档位进入OVERHEATED时，不再响应所有动效请求。具体可参考[热档位信息](../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-thermal-thermallevel-e.md#thermallevel)。
+2. 当设备热档位进入HOT时，不再响应非点击触发的动效请求；当热档位进入OVERHEATED时，不再响应所有动效请求。具体可参考热档位信息。
 
 ### 动效请求约束
 1. 同一时刻，全局只有一个卡片执行互动卡片动效。
@@ -100,9 +100,9 @@
 | [onLiveFormDestroy(liveFormInfo: LiveFormInfo): void](../reference/apis-form-kit/arkts-apis/arkts-form-app-form-liveformextensionability-liveformextensionability-c.md#onliveformdestroy)                                                    | 互动卡片界面对象销毁、资源清理的回调函数。  |
 | [LiveFormExtensionContext](../reference/apis-form-kit/arkts-apis/arkts-form-liveformextensioncontext.md)                  | LiveFormExtensionAbility的上下文，继承自ExtensionContext。 |
 | [startAbilityByLiveForm(want: Want): Promise&lt;void&gt;](../reference/apis-form-kit/arkts-apis/arkts-form-liveformextensioncontext-c.md#startabilitybyliveform)| 拉起互动卡片提供方（应用）的页面。 |
-| [formProvider.requestOverflow(formId: string, overflowInfo: formInfo.OverflowInfo): Promise&lt;void&gt;](../reference/apis-form-kit/arkts-apis/arkts-form-formprovider-requestoverflow-f.md#requestoverflow) | 卡片提供方发起互动卡片动效请求。   |
-| [formProvider.cancelOverflow(formId: string): Promise&lt;void&gt;](../reference/apis-form-kit/arkts-apis/arkts-form-formprovider-canceloverflow-f.md#canceloverflow)                                        | 卡片提供方发起取消互动卡片动效请求。 |
-| [formProvider.getFormRect(formId: string): Promise&lt;formInfo.Rect&gt;](../reference/apis-form-kit/arkts-apis/arkts-form-formprovider-getformrect-f.md#getformrect)                                        | 卡片提供方查询卡片位置、尺寸。 |
+| formProvider.requestOverflow(formId: string, overflowInfo: formInfo.OverflowInfo): Promise&lt;void&gt; | 卡片提供方发起互动卡片动效请求。   |
+| formProvider.cancelOverflow(formId: string): Promise&lt;void&gt;                                        | 卡片提供方发起取消互动卡片动效请求。 |
+| formProvider.getFormRect(formId: string): Promise&lt;formInfo.Rect&gt;                                        | 卡片提供方查询卡片位置、尺寸。 |
 
 ## 开发流程
 
@@ -410,7 +410,7 @@
 
 1. 触发互动卡片动效
 
-    互动卡片通过调用[formProvider.requestOverflow](../reference/apis-form-kit/arkts-apis/arkts-form-formprovider-requestoverflow-f.md#requestoverflow)接口触发动效，调用时需要明确：（1）动效申请范围。（2）动效持续时间。（3）是否使用系统提供的默认切换动效。具体可参考[formInfo.OverflowInfo](../reference/apis-form-kit/arkts-apis/arkts-form-forminfo-overflowinfo-i.md#overflowinfo)。其中，互动卡片可以通过调用[formProvider.getFormRect](../reference/apis-form-kit/arkts-apis/arkts-form-formprovider-getformrect-f.md#getformrect)接口获取卡片尺寸和在窗口内的位置信息。卡片提供方以此计算动效申请范围，单位为vp。计算规则具体请参考[互动卡片请求参数约束](#请求参数约束)。
+    互动卡片通过调用formProvider.requestOverflow接口触发动效，调用时需要明确：（1）动效申请范围。（2）动效持续时间。（3）是否使用系统提供的默认切换动效。具体可参考formInfo.OverflowInfo。其中，互动卡片可以通过调用formProvider.getFormRect接口获取卡片尺寸和在窗口内的位置信息。卡片提供方以此计算动效申请范围，单位为vp。计算规则具体请参考[互动卡片请求参数约束](#请求参数约束)。
 
     <!-- @[liveform_EntryFormAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormLiveDemo/entry/src/main/ets/entryformability/EntryFormAbility.ets) -->
     
@@ -520,6 +520,6 @@
     ```
 
 ## 实现效果
-以下是按照本文档代码示例开发而成的效果demo，demo执行动效时，点击按钮，将调用 [formProvider.cancelOverflow](../reference/apis-form-kit/arkts-apis/arkts-form-formprovider-canceloverflow-f.md#canceloverflow) 接口，打断当前破框动效，卡片切换为非激活态。
+以下是按照本文档代码示例开发而成的效果demo，demo执行动效时，点击按钮，将调用 formProvider.cancelOverflow 接口，打断当前破框动效，卡片切换为非激活态。
 
 ![live-form-base-demo.gif](figures/live-form-base-demo.gif)

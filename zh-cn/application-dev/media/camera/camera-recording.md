@@ -18,7 +18,7 @@
 
 1. 导入media模块。
 
-   创建录像输出流的SurfaceId以及录像输出的数据，都需要用到系统提供的media接口[@ohos.multimedia.media (媒体服务)](../../reference/apis-media-kit/arkts-apis/arkts-media-multimedia-media.md)能力，导入media接口的方法如下。
+   创建录像输出流的SurfaceId以及录像输出的数据，都需要用到系统提供的media接口@ohos.multimedia.media (媒体服务)能力，导入media接口的方法如下。
 
    ```ts
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -28,7 +28,7 @@
 
 2. 创建Surface。
 
-   系统提供的media接口可以创建一个录像[AVRecorder](../../reference/apis-media-kit/arkts-apis/arkts-media-media-avrecorder-i.md)实例，通过该实例的[getInputSurface](../../reference/apis-media-kit/arkts-apis/arkts-media-media-avrecorder-i.md#getinputsurface)方法获取SurfaceId，与录像输出流做关联，处理录像输出流输出的数据。
+   系统提供的media接口可以创建一个录像AVRecorder实例，通过该实例的getInputSurface方法获取SurfaceId，与录像输出流做关联，处理录像输出流输出的数据。
 
    <!-- @[camera_video_getVideoSurface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
    
@@ -44,17 +44,17 @@
 
 3. 创建录像输出流。
 
-   通过[CameraOutputCapability](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-cameraoutputcapability-i-sys.md#cameraoutputcapability)中的videoProfiles属性，可获取当前设备支持的录像输出流。然后，定义创建录像的参数，通过[createVideoOutput](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-cameramanager-i.md#createvideooutput)方法创建录像输出流。
+   通过CameraOutputCapability中的videoProfiles属性，可获取当前设备支持的录像输出流。然后，定义创建录像的参数，通过[createVideoOutput](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-cameramanager-i.md#createvideooutput)方法创建录像输出流。
 
    > **说明：**
    >
    > 1.预览流与录像输出流的分辨率的宽高比要保持一致，如示例代码中宽高比为640:480 = 4:3，则需要预览流中的分辨率的宽高比也为4:3，如分辨率选择640:480，或960:720，或1440:1080，以此类推。
    >
-   > 2.在设置预览输出流的分辨率宽高前，需要先通过[AVRecorderProfile](../../reference/apis-media-kit/arkts-apis/arkts-media-media-avrecorderprofile-i-sys.md#avrecorderprofile)查询视频帧支持可配置的宽高范围。
+   > 2.在设置预览输出流的分辨率宽高前，需要先通过AVRecorderProfile查询视频帧支持可配置的宽高范围。
    >
    > 3.获取录像旋转角度的方法：通过[VideoOutput](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-videooutput-i.md)中的[getVideoRotation](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-videooutput-i.md#getvideorotation)方法获取rotation实际的值。
    >
-   > 4.录像输出流帧率通过[CameraOutputCapability](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-cameraoutputcapability-i-sys.md#cameraoutputcapability)中的videoProfiles属性，选择[VideoProfile](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-videoprofile-i.md#videoprofile)中[frameRateRange](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-frameraterange-i.md#frameraterange)满足实际业务需求的录像输出流videoProfile。
+   > 4.录像输出流帧率通过CameraOutputCapability中的videoProfiles属性，选择VideoProfile中frameRateRange满足实际业务需求的录像输出流videoProfile。
 
    <!-- @[camera_video_createAVRecorder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->    
    
@@ -85,7 +85,7 @@
    >
    > - 部分设备前置镜头录像分辨率若选择3280*2160，录像模式下可能会出现视频倒置的情况，建议在[commitConfig](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-capturesession-i.md#commitconfig)后设置视频防抖[setVideoStabilizationMode](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-stabilization-i.md#setvideostabilizationmode)，避免该问题发生。
 
-   先通过videoOutput的[start](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-videooutput-i.md#start-1)方法启动录像输出流，再通过avRecorder的[start](../../reference/apis-media-kit/arkts-apis/arkts-media-media-avrecorder-i.md#start)方法开始录像。
+   先通过videoOutput的[start](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-videooutput-i.md#start-1)方法启动录像输出流，再通过avRecorder的start方法开始录像。
 
    <!-- @[camera_video_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->    
    
@@ -106,7 +106,7 @@
 
 5. 停止录像。
 
-   先通过avRecorder的[stop](../../reference/apis-media-kit/arkts-apis/arkts-media-media-avrecorder-i.md#stop)方法停止录像，再通过videoOutput的[stop](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-videooutput-i.md#stop-1)方法停止录像输出流。
+   先通过avRecorder的stop方法停止录像，再通过videoOutput的[stop](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-videooutput-i.md#stop-1)方法停止录像输出流。
 
    <!-- @[camera_video_stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->    
    
@@ -164,7 +164,7 @@
   });
   ```
 
-- 通过注册固定的error回调函数获取监听录像输出错误结果，callback返回预览输出接口使用错误时对应的错误码，错误码类型参见[CameraErrorCode](../../reference/apis-camera-kit/arkts-apis/arkts-camera-camera-cameraerrorcode-e-sys.md#cameraerrorcode)。
+- 通过注册固定的error回调函数获取监听录像输出错误结果，callback返回预览输出接口使用错误时对应的错误码，错误码类型参见CameraErrorCode。
 
   <!-- @[camera_video_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->   
   

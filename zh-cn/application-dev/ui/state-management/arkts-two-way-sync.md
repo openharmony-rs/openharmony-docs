@@ -25,15 +25,15 @@
   | [DatePicker](../../reference/apis-arkui/c-apis/capi-arkui-nodeeventtype-datepicker.md) | selected        | 10          |
   | [TimePicker](../../reference/apis-arkui/c-apis/capi-arkui-nodeeventtype-timepicker.md) | selected        | 10          |
   | MenuItem | selected        | 10          |
-  | [Panel](../../reference/apis-arkui/arkui-js/js-components-container-panel.md)         | mode            | 10          |
+  | Panel         | mode            | 10          |
   | [Radio](../../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-radio-t.md)  | checked         | 10          |
   | [Rating](../../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-rating-t.md) | rating          | 10          |
   | [Search](../../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-search-t.md) | value           | 10          |
   | SideBarContainer | showSideBar     | 10          |
   | [Slider](../../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-slider-t.md) | value           | 10          |
-  | [Stepper](../../reference/apis-arkui/arkui-js/js-components-container-stepper.md) | index           | 10          |
+  | Stepper | index           | 10          |
   | [Swiper](../../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-swiper-t.md)       | index       | 10          |
-  | [Tabs](../../reference/apis-arkui/arkui-js/js-components-container-tabs.md)           | index           | 10          |
+  | Tabs           | index           | 10          |
   | [TextArea](../../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-textarea-t.md) | text            | 10          |
   | [TextInput](../../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-textinput-t.md) | text            | 10          |
   | [TextPicker](../../reference/apis-arkui/c-apis/capi-arkui-nodeeventtype-textpicker.md) | selected、value | 10          |
@@ -42,7 +42,7 @@
   | [Select](../../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-select-t.md) | selected、value | 10          |
   | [BindSheet](../../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindsheet) | isShow | 10          |
   | [BindContentCover](../../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindcontentcover) | isShow | 10          |
-  | [Refresh](../../reference/apis-arkui/arkui-js/js-components-container-refresh.md) | refreshing | 8 |
+  | Refresh | refreshing | 8 |
   | [GridItem](../../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-griditem-t.md) | selected | 10 |
   | [ListItem](../../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-listitem-t.md) | selected | 10 |
 

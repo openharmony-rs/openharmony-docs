@@ -6,7 +6,7 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-应用可以通过[onInterceptRequest](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-attribute.md#oninterceptrequest)拦截Web组件发起的网络请求，也可以通过SchemeHandler来拦截Web组件发起的网络请求。SchemeHandler提供了ArkTS与NDK两套接口。
+应用可以通过onInterceptRequest拦截Web组件发起的网络请求，也可以通过SchemeHandler来拦截Web组件发起的网络请求。SchemeHandler提供了ArkTS与NDK两套接口。
 
 > **注意：**
 >

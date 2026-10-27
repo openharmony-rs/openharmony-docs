@@ -23,11 +23,11 @@
 
 ### 货币和单位格式化
 
-货币和单位的格式化基于数字格式化，在创建货币和单位格式化对象时，将数字的显示风格分别设置为“currency(货币)”和“unit(单位)”。同样，对货币和度量衡进行格式化时也支持通过[Intl.NumberFormatOptions](../reference/apis-arkdata/arkts-apis/arkts-arkdata-distributeddata-options-i.md#options)设置不同的格式。
+货币和单位的格式化基于数字格式化，在创建货币和单位格式化对象时，将数字的显示风格分别设置为“currency(货币)”和“unit(单位)”。同样，对货币和度量衡进行格式化时也支持通过Intl.NumberFormatOptions设置不同的格式。
 
 ### 度量衡转换
 
-度量衡包括长度单位、面积单位、体积单位和容量单位等，通过[I18NUtil](../reference/apis-localization-kit/arkts-apis/arkts-localization-i18n-i18nutil-c.md#i18nutil)类的[unitConvert](../reference/apis-localization-kit/arkts-apis/arkts-localization-i18n-i18nutil-c.md#unitconvert)接口实现度量衡转换和格式化。
+度量衡包括长度单位、面积单位、体积单位和容量单位等，通过I18NUtil类的[unitConvert](../reference/apis-localization-kit/arkts-apis/arkts-localization-i18n-i18nutil-c.md#unitconvert)接口实现度量衡转换和格式化。
 
 **格式化风格**
 

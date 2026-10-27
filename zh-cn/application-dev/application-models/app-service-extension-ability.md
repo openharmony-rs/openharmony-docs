@@ -302,7 +302,7 @@ AppServiceExtensionAbility组件当前仅支持2in1设备。
 
 客户端可以通过[connectAppServiceExtensionAbility()](../reference/apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md#connectappserviceextensionability)连接服务端（在Want对象中指定连接的目标服务），服务端的[onConnect()](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-appserviceextensionability-appserviceextensionability-c.md#onconnect)就会被调用，并在该回调方法中接收到客户端传递过来的[Want](../reference/apis-ability-kit/arkts-apis/arkts-ability-want.md)对象。
 
-服务端的AppServiceExtensionAbility组件会在onConnect()中返回[IRemoteObject](../reference/apis-ipc-kit/arkts-apis/arkts-ipc-rpc-iremoteobject-c.md#iremoteobject)对象给客户端[ConnectOptions](../reference/apis-ability-kit/arkts-apis/arkts-ability-ability-connectoptions-t.md)的[onConnect()](../reference/apis-ability-kit/arkts-apis/arkts-ability-connectoptions-connectoptions-i.md#onconnect)方法。开发者通过该IRemoteObject定义通信接口，实现客户端与服务端的RPC交互。多个客户端可以同时连接到同一个后台服务，客户端完成与服务端的交互后，客户端需要通过调用[disconnectAppServiceExtensionAbility()](../reference/apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md#disconnectappserviceextensionability)来断开连接。如果所有连接到某个后台服务的客户端均已断开连接，则系统会销毁该服务。
+服务端的AppServiceExtensionAbility组件会在onConnect()中返回IRemoteObject对象给客户端[ConnectOptions](../reference/apis-ability-kit/arkts-apis/arkts-ability-ability-connectoptions-t.md)的onConnect()方法。开发者通过该IRemoteObject定义通信接口，实现客户端与服务端的RPC交互。多个客户端可以同时连接到同一个后台服务，客户端完成与服务端的交互后，客户端需要通过调用[disconnectAppServiceExtensionAbility()](../reference/apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md#disconnectappserviceextensionability)来断开连接。如果所有连接到某个后台服务的客户端均已断开连接，则系统会销毁该服务。
 
 - 使用[connectAppServiceExtensionAbility()](../reference/apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md#connectappserviceextensionability)建立与后台服务的连接。示例中的context的获取方式请参见[获取UIAbility的上下文信息](uiability-usage.md#获取uiability的上下文信息)。
 
@@ -431,7 +431,7 @@ AppServiceExtensionAbility组件当前仅支持2in1设备。
 
 ### 客户端与服务端通信
 
-客户端在[onConnect()](../reference/apis-ability-kit/arkts-apis/arkts-ability-connectoptions-connectoptions-i.md#onconnect)中获取到[rpc.IRemoteObject](../reference/apis-ipc-kit/arkts-apis/arkts-ipc-rpc-iremoteobject-c.md#iremoteobject)对象后便可与服务端进行通信。
+客户端在onConnect()中获取到rpc.IRemoteObject对象后便可与服务端进行通信。
 
 **客户端**：使用[sendMessageRequest](../reference/apis-ipc-kit/arkts-apis/arkts-ipc-rpc-iremoteobject-c.md#sendmessagerequest)接口向服务端发送消息。
 

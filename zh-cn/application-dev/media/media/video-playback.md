@@ -20,7 +20,7 @@
 
 ![Playback status change](figures/video-playback-status-change.png)
 
-状态的详细说明请参考[AVPlayerState](../../reference/apis-media-kit/arkts-apis/arkts-media-media-avplayerstate-t.md#avplayerstate)。当播放处于prepared / playing / paused / completed状态时，播放引擎处于工作状态，这需要占用系统较多的运行内存。当客户端暂时不使用播放器时，调用reset()或release()回收内存资源，做好资源释放。
+状态的详细说明请参考AVPlayerState。当播放处于prepared / playing / paused / completed状态时，播放引擎处于工作状态，这需要占用系统较多的运行内存。当客户端暂时不使用播放器时，调用reset()或release()回收内存资源，做好资源释放。
 
 ## 开发建议
 
@@ -28,12 +28,12 @@
 
 - 如果要实现后台播放或熄屏播放，需要接入[AVSession（媒体会话）](../avsession/avsession-access-scene.md)和[申请长时任务](../../task-management/continuous-task.md)，避免播放被系统强制中断。
 - 应用在播放过程中，若播放的媒体数据涉及音频，根据系统音频管理策略（参考[处理音频焦点事件](../audio/audio-playback-concurrency.md)），可能会被其他应用打断，建议应用主动监听音频打断事件，根据其内容提示，做出相应的处理，避免出现应用状态与预期效果不一致的问题。
-- 面对设备同时连接多个音频输出设备的情况，应用可以通过[on('audioOutputDeviceChangeWithInfo')](../../reference/apis-media-kit/arkts-apis/arkts-media-media-avplayer-i.md#onaudiooutputdevicechangewithinfo)监听音频输出设备的变化，从而做出相应处理。
+- 面对设备同时连接多个音频输出设备的情况，应用可以通过on('audioOutputDeviceChangeWithInfo')监听音频输出设备的变化，从而做出相应处理。
 - 如果需要访问在线媒体资源，需要申请 ohos.permission.INTERNET 权限。
 
 ## 开发步骤及注意事项
 
-详细的API说明请参考[AVPlayer](../../reference/apis-media-kit/arkts-apis/arkts-media-media-avplayer-i.md)。
+详细的API说明请参考AVPlayer。
 
 1. 调用createAVPlayer()创建AVPlayer实例，初始化进入idle状态。
 

@@ -27,10 +27,10 @@ import { audio } from '@kit.AudioKit';
 | 名称 | 说明 |
 | --- | --- |
 | [createAudioCapturer](arkts-audio-audio-createaudiocapturer-f.md#createaudiocapturer-1) | 创建音频采集器。使用callback异步回调。 |
-| [createAudioCapturer](arkts-audio-audio-createaudiocapturer-f.md#createaudiocapturer-3) | 创建音频采集器。使用Promise异步回调。 |
+| createAudioCapturer | 创建音频采集器。使用Promise异步回调。 |
 | [createAudioLoopback](arkts-audio-audio-createaudioloopback-f.md#createaudioloopback-1) | 创建音频返听器。使用Promise异步回调。 |
 | [createAudioRenderer](arkts-audio-audio-createaudiorenderer-f.md#createaudiorenderer-1) | 创建音频渲染器。使用callback异步回调。 |
-| [createAudioRenderer](arkts-audio-audio-createaudiorenderer-f.md#createaudiorenderer-3) | 创建音频渲染器。使用Promise异步回调。 |
+| createAudioRenderer | 创建音频渲染器。使用Promise异步回调。 |
 | [getAudioManager](arkts-audio-audio-getaudiomanager-f.md#getaudiomanager-1) | 获取音频管理器。 |
 
 <!--Del-->

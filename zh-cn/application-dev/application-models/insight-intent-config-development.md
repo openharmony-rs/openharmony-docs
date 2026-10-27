@@ -12,7 +12,7 @@
 
 1. 通过[insight_intent.json配置文件](#insight_intentjson配置文件说明)定义意图，声明意图执行器的代码路径、绑定的Ability组件等意图信息。
 
-2. 通过[InsightIntentExecutor](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-insightintentexecutor-insightintentexecutor-c.md#insightintentexecutor)实现意图执行逻辑。
+2. 通过InsightIntentExecutor实现意图执行逻辑。
 
 不同Ability组件类型需要配置的字段与需要实现的意图执行器，如下所示：
 
@@ -24,7 +24,7 @@
 | 卡片(FormExtensionAbility) | 需要在`insight_intent.json`文件中配置"form"字段。 | 无需单独执行器。 |
 
 ## 接口说明
-意图执行器实现需要继承[InsightIntentExecutor](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-insightintentexecutor-insightintentexecutor-c.md#insightintentexecutor)，实现[onExecuteInUIAbilityForegroundMode](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-insightintentexecutor-insightintentexecutor-c.md#onexecuteinuiabilityforegroundmode)等方法。开发者响应意图执行通过onExecuteInUIAbilityForegroundMode等接口实现，在不同的意图执行模式下，接口的触发时机也不同。针对不同意图执行模式的意图回调执行时机见各个回调的API说明。
+意图执行器实现需要继承InsightIntentExecutor，实现[onExecuteInUIAbilityForegroundMode](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-insightintentexecutor-insightintentexecutor-c.md#onexecuteinuiabilityforegroundmode)等方法。开发者响应意图执行通过onExecuteInUIAbilityForegroundMode等接口实现，在不同的意图执行模式下，接口的触发时机也不同。针对不同意图执行模式的意图回调执行时机见各个回调的API说明。
 
 ## 开发步骤
 ### 意图绑定UIAbility组件

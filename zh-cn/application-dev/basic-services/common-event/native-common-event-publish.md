@@ -8,7 +8,7 @@
 
 ## 场景介绍
 
-当需要发布某个公共事件时，可以通过[OH_CommonEvent_Publish](../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-commonevent-publish-depr-f.md#publish)和OH_CommonEvent_PublishWithInfo方法发布事件。发布的公共事件可以携带数据，供订阅者解析并进行下一步处理。
+当需要发布某个公共事件时，可以通过OH_CommonEvent_Publish和OH_CommonEvent_PublishWithInfo方法发布事件。发布的公共事件可以携带数据，供订阅者解析并进行下一步处理。
 
 ## 接口说明
 
@@ -17,7 +17,7 @@
 | 接口名                               | 描述                                                             |
 | ------------------------------------ | ---------------------------------------------------------------- |
 |[struct CommonEvent_PublishInfo](../../reference/apis-basic-services-kit/c-apis/capi-oh-commonevent-commonevent-publishinfo.md)|发布公共事件时使用的公共事件属性对象。|
-|[CommonEvent_ErrCode OH_CommonEvent_Publish(const char* event)](../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-commonevent-publish-depr-f.md#publish)|发布公共事件。|
+|CommonEvent_ErrCode OH_CommonEvent_Publish(const char* event)|发布公共事件。|
 |CommonEvent_ErrCode OH_CommonEvent_PublishWithInfo(const char* event, const CommonEvent_PublishInfo* info)| 发布带有指定属性的公共事件。 |
 |CommonEvent_PublishInfo* OH_CommonEvent_CreatePublishInfo(bool ordered)|创建公共事件属性对象。|
 |void OH_CommonEvent_DestroyPublishInfo(CommonEvent_PublishInfo* info)|销毁公共事件属性对象。|
@@ -186,7 +186,7 @@
 
 4. 发布公共事件。
 
-   - 通过[OH_CommonEvent_Publish](../../reference/apis-basic-services-kit/arkts-apis/arkts-basicservices-commonevent-publish-depr-f.md#publish)发布不携带信息的公共事件。
+   - 通过OH_CommonEvent_Publish发布不携带信息的公共事件。
 
      > **说明：**
      >

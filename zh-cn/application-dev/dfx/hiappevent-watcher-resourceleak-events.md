@@ -72,11 +72,11 @@ hiAppEvent.setEventConfig(hiAppEvent.event.RESOURCE_OVERLIMIT, configParams);
 
 | 接口名 | 描述 |
 | -------- | -------- |
-| [configEventPolicy](../reference/apis-performance-analysis-kit/arkts-apis/arkts-performanceanalysis-hiappevent-configeventpolicy-f.md#configeventpolicy) (policy: EventPolicy): Promise&lt;void>| 设置资源泄漏事件策略参数接口，支持开启资源泄漏事件的页面切换日志采集、设置资源泄漏事件的日志和回调事件规格。 |
+| configEventPolicy (policy: EventPolicy): Promise&lt;void>| 设置资源泄漏事件策略参数接口，支持开启资源泄漏事件的页面切换日志采集、设置资源泄漏事件的日志和回调事件规格。 |
 
 ### configEventPolicy接口参数设置说明
 
-开发者可以通过设置[EventPolicy](../reference/apis-performance-analysis-kit/arkts-apis/arkts-performanceanalysis-hiappevent-eventpolicy-i.md#eventpolicy) 的参数来开启资源泄漏事件的页面切换日志采集以及设置资源泄漏事件的日志和回调事件规格。
+开发者可以通过设置EventPolicy 的参数来开启资源泄漏事件的页面切换日志采集以及设置资源泄漏事件的日志和回调事件规格。
 
 | 名称       | 类型    | 只读 | 可选 | 说明                                         |
 | ---------- | ------- | ---- | ---- | ------------------------------------------ |

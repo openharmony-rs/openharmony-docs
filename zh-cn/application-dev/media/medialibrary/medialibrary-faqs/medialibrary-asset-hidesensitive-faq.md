@@ -85,7 +85,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 ## 附录
 
-地理位置信息字段说明，具体字段说明和使用方式请参考Image Kit中的[PropertyKey](../../../reference/apis-image-kit/arkts-apis/arkts-image-image-propertykey-e-sys.md#propertykey)。
+地理位置信息字段说明，具体字段说明和使用方式请参考Image Kit中的PropertyKey。
 
 | 名称  |  说明 |
 | ----- | ---- |

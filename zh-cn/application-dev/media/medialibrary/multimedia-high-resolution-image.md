@@ -68,7 +68,7 @@ API version 24开始提供AssetCompatibleCapability接口，支持配置应用�
 
 如果应用需要获取高像素原图，应显式声明应用具备处理高像素图片的能力，并在后续处理流程中做好降采样、区域解码和内存管理。
 
-通过PhotoPicker获取图片时，可在[PhotoSelectOptions](../../reference/apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoselectoptions-c-sys.md#photoselectoptions)中配置`assetCompatibleCapability`以声明具备高像素原图的处理能力。
+通过PhotoPicker获取图片时，可在PhotoSelectOptions中配置`assetCompatibleCapability`以声明具备高像素原图的处理能力。
 
 ```typescript
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
@@ -92,7 +92,7 @@ async function pickerExample(): Promise<void> {
 }
 ```
 
-对于网盘、备份等需要按高像素原图处理媒体文件的应用，可使用[setAssetCompatibleCapability](../../reference/apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoaccesshelper-i-sys.md#setassetcompatiblecapability)接口配置[AssetCompatibleCapability](../../reference/apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-assetcompatiblecapability-i.md#assetcompatiblecapability)。
+对于网盘、备份等需要按高像素原图处理媒体文件的应用，可使用setAssetCompatibleCapability接口配置AssetCompatibleCapability。
 
 ```typescript
 import { dataSharePredicates } from '@kit.ArkData';

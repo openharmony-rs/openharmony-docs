@@ -10,7 +10,7 @@
 
 ## 获取相册管理模块实例
 
-应用需要通过上下文[Context](../../application-models/application-context-stage.md)和接口[getPhotoAccessHelper](../../reference/apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-getphotoaccesshelper-f-sys.md#getphotoaccesshelper)，获取相册管理模块实例，用于访问和修改相册中的媒体数据信息，如图片和视频。
+应用需要通过上下文[Context](../../application-models/application-context-stage.md)和接口getPhotoAccessHelper，获取相册管理模块实例，用于访问和修改相册中的媒体数据信息，如图片和视频。
 
 **开发步骤**
 

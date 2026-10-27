@@ -21,15 +21,15 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
 
 根据用户文件的常见类型，选择器（FilePicker）分别提供以下选项：
 
-- [PhotoViewPicker](../reference/apis-core-file-kit/arkts-apis/arkts-corefile-picker-photoviewpicker-c.md#photoviewpicker)：适用于图片或视频类型文件的选择与保存（该接口在后续版本不再演进）。请使用PhotoAccessHelper的[PhotoViewPicker](../reference/apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoviewpicker-c.md)来选择图片文件。请使用[安全控件保存媒体库资源](../media/medialibrary/photoAccessHelper-savebutton.md)。
+- PhotoViewPicker：适用于图片或视频类型文件的选择与保存（该接口在后续版本不再演进）。请使用PhotoAccessHelper的[PhotoViewPicker](../reference/apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoviewpicker-c.md)来选择图片文件。请使用[安全控件保存媒体库资源](../media/medialibrary/photoAccessHelper-savebutton.md)。
 
-- [DocumentViewPicker](../reference/apis-core-file-kit/arkts-apis/arkts-corefile-picker-documentviewpicker-c.md#documentviewpicker)：适用于文件类型文件的选择与保存。DocumentViewPicker对接的选择资源来自于FilePicker，负责文件类型的资源管理，文件类型不区分后缀，比如浏览器下载的图片、文档等，都属于文件类型。
+- DocumentViewPicker：适用于文件类型文件的选择与保存。DocumentViewPicker对接的选择资源来自于FilePicker，负责文件类型的资源管理，文件类型不区分后缀，比如浏览器下载的图片、文档等，都属于文件类型。
 
-- [AudioViewPicker](../reference/apis-core-file-kit/arkts-apis/arkts-corefile-picker-audioviewpicker-c.md#audioviewpicker)：适用于音频类型文件的选择与保存。AudioViewPicker目前对接的选择资源来自于AudioPicker。
+- AudioViewPicker：适用于音频类型文件的选择与保存。AudioViewPicker目前对接的选择资源来自于AudioPicker。
 
 ## 选择图片或视频类文件
 
-[PhotoViewPicker](../reference/apis-core-file-kit/arkts-apis/arkts-corefile-picker-photoviewpicker-c.md#photoviewpicker)在后续版本不再演进，请使用PhotoAccessHelper的[PhotoViewPicker](../reference/apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoviewpicker-c.md)来选择图片文件。
+PhotoViewPicker在后续版本不再演进，请使用PhotoAccessHelper的[PhotoViewPicker](../reference/apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoviewpicker-c.md)来选择图片文件。
 
 ## 选择文档类文件
 
@@ -42,7 +42,7 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
 
-2. 需根据实际业务需求配置[文档选择选项](../reference/apis-core-file-kit/arkts-apis/arkts-corefile-picker-documentselectoptions-c-sys.md#documentselectoptions)。以下代码仅例举各选项的配置参考。
+2. 需根据实际业务需求配置文档选择选项。以下代码仅例举各选项的配置参考。
 
    ```ts
    const documentSelectOptions = new picker.DocumentSelectOptions();
@@ -69,7 +69,7 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
    documentSelectOptions.allowsMulFolderSelection = false;
    ```
 
-3. 创建文件选择器[DocumentViewPicker](../reference/apis-core-file-kit/arkts-apis/arkts-corefile-picker-documentviewpicker-c.md#documentviewpicker)实例。调用[select()](../reference/apis-core-file-kit/arkts-apis/arkts-corefile-picker-audioviewpicker-c.md#select)接口拉起FilePicker应用界面进行文件选择。
+3. 创建文件选择器DocumentViewPicker实例。调用[select()](../reference/apis-core-file-kit/arkts-apis/arkts-corefile-picker-audioviewpicker-c.md#select)接口拉起FilePicker应用界面进行文件选择。
 
    <!--@[picker_select](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/SelectingUserFiles/entry/src/main/ets/pages/Index.ets)-->        
    
@@ -136,7 +136,7 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
    const audioSelectOptions = new picker.AudioSelectOptions();
    ```
 
-3. 创建音频选择器[AudioViewPicker](../reference/apis-core-file-kit/arkts-apis/arkts-corefile-picker-audioviewpicker-c.md#audioviewpicker)实例。调用[select()](../reference/apis-core-file-kit/arkts-apis/arkts-corefile-picker-audioviewpicker-c.md#select)接口拉起AudioPicker应用界面进行文件选择。
+3. 创建音频选择器AudioViewPicker实例。调用[select()](../reference/apis-core-file-kit/arkts-apis/arkts-corefile-picker-audioviewpicker-c.md#select)接口拉起AudioPicker应用界面进行文件选择。
 
    <!--@[audio_select_picker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/SelectingUserFiles/entry/src/main/ets/pages/Index.ets)-->        
    

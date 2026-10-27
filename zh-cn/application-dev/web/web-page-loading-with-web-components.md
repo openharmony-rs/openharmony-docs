@@ -136,7 +136,7 @@ struct WebComponent {
 
 加载沙箱路径下的本地页面文件。
 
-1. 通过构造的单例对象GlobalContext获取沙箱路径。需要开启应用中文件系统的访问[fileAccess](../reference/apis-arkweb/arkts-components/arkts-arkweb-web-comp-attribute.md#fileaccess)权限。
+1. 通过构造的单例对象GlobalContext获取沙箱路径。需要开启应用中文件系统的访问fileAccess权限。
    <!-- @[after_load_complete_call_to_change_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/LoadPages/entry/src/main/ets/pages/GlobalContext.ets) -->
    
    ``` TypeScript

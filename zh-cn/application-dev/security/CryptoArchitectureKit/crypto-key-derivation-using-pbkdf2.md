@@ -11,9 +11,9 @@
 
 ## 开发步骤
 
-1. 构造[PBKDF2Spec](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-pbkdf2spec-i.md#pbkdf2spec)对象，作为密钥派生参数进行密钥派生。
+1. 构造PBKDF2Spec对象，作为密钥派生参数进行密钥派生。
 
-   PBKDF2Spec是[KdfSpec](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-kdfspec-i.md#kdfspec)的子类，需要指定：
+   PBKDF2Spec是KdfSpec的子类，需要指定：
 
    - algName：指定算法'PBKDF2'。
    - password：用于生成派生密钥的原始密码。
@@ -23,7 +23,7 @@
    - iterations：重复运算的次数，需要为正整数。
    - keySize：目标密钥的字节长度，需要为正整数。
 
-2. 调用[cryptoFramework.createKdf](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-createkdf-f.md#createkdf)，指定字符串参数'PBKDF2|SHA256'，创建密钥派生算法为PBKDF2、HMAC函数摘要算法为SHA256的密钥派生函数对象（Kdf）。
+2. 调用cryptoFramework.createKdf，指定字符串参数'PBKDF2|SHA256'，创建密钥派生算法为PBKDF2、HMAC函数摘要算法为SHA256的密钥派生函数对象（Kdf）。
 
 3. 输入PBKDF2Spec对象，调用[Kdf.generateSecret](../../reference/apis-crypto-architecture-kit/arkts-apis/arkts-cryptoarchitecture-cryptoframework-kdf-i.md#generatesecret)进行密钥派生。
 

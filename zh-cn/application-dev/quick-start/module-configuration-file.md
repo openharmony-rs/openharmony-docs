@@ -424,7 +424,7 @@ abilities示例：
 | host | 标识URI的主机地址部分，该标签只有当scheme配置时才生效。常见的方式：<br/>-&nbsp;域名方式，如example.com。<br/>-&nbsp;IP地址方式，如10.10.10.1。<br/>**说明：**<br/>从API 18开始，该标签在参与隐式Want匹配时不区分大小写。 | 字符串 | 该标签可缺省，缺省值为空。 |
 | port | 标识URI的端口部分。如http默认端口为80，https默认端口是443，ftp默认端口是21。该标签只有当scheme和host都配置时才生效。 | 字符串 | 该标签可缺省，缺省值为空。 |
 | path&nbsp;\|&nbsp;pathStartWith&nbsp;\|&nbsp;pathRegex | 标识URI的路径部分，path、pathStartWith和pathRegex配置时三选一。path标识URI与want中的路径部分全匹配，pathStartWith标识URI与want中的路径部分允许前缀匹配，pathRegex标识URI与want中的路径部分允许正则匹配。该标签只有当scheme和host都配置时才生效。 | 字符串 | 该标签可缺省，缺省值为空。 |
-| type | 标识与Want相匹配的数据类型，使用MIME（Multipurpose&nbsp;Internet&nbsp;Mail&nbsp;Extensions）类型规范和[UniformDataType](../reference/apis-arkdata/arkts-apis/arkts-arkdata-uniformtypedescriptor-uniformdatatype-e.md#uniformdatatype)类型规范。可以与scheme同时配置，也可以单独配置。 | 字符串 | 该标签可缺省，缺省值为空。 |
+| type | 标识与Want相匹配的数据类型，使用MIME（Multipurpose&nbsp;Internet&nbsp;Mail&nbsp;Extensions）类型规范和UniformDataType类型规范。可以与scheme同时配置，也可以单独配置。 | 字符串 | 该标签可缺省，缺省值为空。 |
 | utd | 标识与Want相匹配的标准化数据类型，具体请参考[@ohos.data.uniformTypeDescriptor (标准化数据定义与描述)](../reference/apis-arkdata/arkts-apis/arkts-arkdata-data-uniformtypedescriptor.md)，适用于分享等场景。 | 字符串 | 该标签可缺省，缺省值为空。 |
 | maxFileSupported | 对于指定类型的文件，标识一次能接收或打开的最大数量，适用于分享等场景，需要与utd配合使用。| 整数 | 该标签可缺省，缺省值为0。|
 | linkFeature | 标识URI提供的功能类型（如文件打开、分享、导航等），用于实现应用间跳转。取值为长度不超过127字节的字符串，不支持中文。同一Bundle中声明的linkFeature数量不能超过150个。详情见[linkFeature标签说明](../application-models/app-uri-config.md#linkfeature标签说明)。 | 字符串 | 该标签可缺省，缺省值为空。|
@@ -562,7 +562,7 @@ extensionAbilities示例：
 |staticSubscriber|静态广播的ExtensionAbility，三方应用配置不生效，当前配置仅在系统应用中有效。|
 |fileShare|文件共享的ExtensionAbility。<!--Del-->|
 |sysPicker/camera|拉起相机picker的ExtensionAbility。<!--DelEnd-->|
-|vpn|为开发者提供[@ohos.app.ability.VpnExtensionAbility (三方VPN能力)](../reference/apis-network-kit/arkts-apis/arkts-network-app-ability-vpnextensionability.md)的ExtensionAbility。|
+|vpn|为开发者提供@ohos.app.ability.VpnExtensionAbility (三方VPN能力)的ExtensionAbility。|
 |wallpaper|壁纸的ExtensionAbility。|
 |backup|数据备份的ExtensionAbility。|
 |enterpriseAdmin|[企业设备管理](../mdm/mdm-kit-admin.md)的ExtensionAbility。企业设备管理应用必须拥有此类型的ExtensionAbility。|
@@ -1227,7 +1227,7 @@ hnpPackages示例：
 
 | 属性名称 | 含义 | 数据类型 | 是否可缺省 |
 | -------- | -------- | -------- | -------- |
-| startWindowType | 标识当前UIAbility组件是否隐藏启动页。<br/>当前仅支持在2in1设备或平板设备的自由多窗模式下使用。<br/>不同取值含义如下：<br/>\- "REQUIRED_SHOW"：强制显示启动页。不受[Ability管理服务（即StartOptions中hideStartWindow标签）](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-startoptions-startoptions-c-sys.md#startoptions)的影响。<br/>\- "REQUIRED_HIDE"：强制隐藏启动页。不受[Ability管理服务（即StartOptions中hideStartWindow标签）](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-startoptions-startoptions-c-sys.md#startoptions)的影响。<br/>\- "OPTIONAL_SHOW"：可选显示，默认行为为显示启动页，如果[Ability管理服务（即StartOptions中hideStartWindow标签）](../reference/apis-ability-kit/arkts-apis/arkts-ability-app-ability-startoptions-startoptions-c-sys.md#startoptions)设置隐藏启动页，则隐藏启动页。<br/>\- 如未配置该标签，默认取值为"REQUIRED_SHOW"，即强制显示启动页。<br/>从API version 20开始支持该标签。 | 字符串 | 可缺省，缺省值为REQUIRED_SHOW。 |
+| startWindowType | 标识当前UIAbility组件是否隐藏启动页。<br/>当前仅支持在2in1设备或平板设备的自由多窗模式下使用。<br/>不同取值含义如下：<br/>\- "REQUIRED_SHOW"：强制显示启动页。不受Ability管理服务（即StartOptions中hideStartWindow标签）的影响。<br/>\- "REQUIRED_HIDE"：强制隐藏启动页。不受Ability管理服务（即StartOptions中hideStartWindow标签）的影响。<br/>\- "OPTIONAL_SHOW"：可选显示，默认行为为显示启动页，如果Ability管理服务（即StartOptions中hideStartWindow标签）设置隐藏启动页，则隐藏启动页。<br/>\- 如未配置该标签，默认取值为"REQUIRED_SHOW"，即强制显示启动页。<br/>从API version 20开始支持该标签。 | 字符串 | 可缺省，缺省值为REQUIRED_SHOW。 |
 | startWindowAppIcon | 标识当前UIAbility组件启动页面图标资源文件的索引，取值为长度不超过255字节的字符串。<br/><!--RP12-->从API version 20开始支持该标签。<!--RP12End-->| 字符串 | 可缺省，缺省值为空。 |
 | startWindowIllustration | 标识当前UIAbility组件启动页面插画资源文件的索引，取值为长度不超过255字节的字符串。<br/><!--RP12-->从API version 20开始支持该标签。<!--RP12End--> | 字符串 | 可缺省，缺省值为空。 |
 | startWindowBrandingImage | 标识当前UIAbility组件启动页面品牌标识资源文件的索引，取值为长度不超过255字节的字符串。<br/><!--RP12-->从API version 20开始支持该标签。<!--RP12End--> | 字符串 | 可缺省，缺省值为空。 |
