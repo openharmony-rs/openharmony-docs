@@ -916,36 +916,34 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
-**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
-
 | 名称                      | 类型                                     | 只读 | 可选 | 说明                                                   |
 | ------------- | ---------------------------------------------------- | -- | -- | --------------------------------------------------------- |
-| decoration    | [Decoration](#decoration)                            | 否 | 是 | 装饰线设置，默认不使用装饰线。             |
-| color         | [common2D.Color](js-apis-graphics-common2D.md#color) | 否 | 是 | 文字颜色，默认为白色。                         |
-| fontWeight    | [FontWeight](#fontweight)                            | 否 | 是 | 字重，默认为W400。 在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，仅系统字体中的可变字体支持字重调节；从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，系统字体与三方注册字体中的可变字体均支持字重调节。非可变字体设置字重值小于semi-bold（即W600）时字体粗细无变化，设置字重值大于等于semi-bold（即W600）时可能会触发伪加粗效果。                         |
-| fontWidth<sup>21+</sup>     | [FontWidth](#fontwidth)                              | 否 | 是 | 字体宽度，默认为NORMAL。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。                          |
-| fontStyle     | [FontStyle](#fontstyle)                              | 否 | 是 | 字体样式，默认为常规样式。                          |
-| baseline      | [TextBaseline](#textbaseline)                        | 否 | 是 | 文本基线类型，默认为ALPHABETIC。               |
-| fontFamilies  | Array\<string>                                       | 否 | 是 | 字体家族名称列表，默认为空，匹配系统字体。使用自定义字体时，需将加载字体时指定的名称填入此列表中。当与fontTypefaces同时设置时，fontTypefaces优先级更高，fontFamilies不生效。                    |
+| decoration    | [Decoration](#decoration)                            | 否 | 是 | 装饰线设置，默认不使用装饰线。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
+| color         | [common2D.Color](js-apis-graphics-common2D.md#color) | 否 | 是 | 文字颜色，默认为白色。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
+| fontWeight    | [FontWeight](#fontweight)                            | 否 | 是 | 字重，默认为W400。 在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，仅系统字体中的可变字体支持字重调节；从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，系统字体与三方注册字体中的可变字体均支持字重调节。非可变字体设置字重值小于semi-bold（即W600）时字体粗细无变化，设置字重值大于等于semi-bold（即W600）时可能会触发伪加粗效果。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
+| fontWidth<sup>21+</sup>     | [FontWidth](#fontwidth)                              | 否 | 是 | 字体宽度，默认为NORMAL。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
+| fontStyle     | [FontStyle](#fontstyle)                              | 否 | 是 | 字体样式，默认为常规样式。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
+| baseline      | [TextBaseline](#textbaseline)                        | 否 | 是 | 文本基线类型，默认为ALPHABETIC。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
+| fontFamilies  | Array\<string>                                       | 否 | 是 | 字体家族名称列表，默认为空，匹配系统字体。使用自定义字体时，需将加载字体时指定的名称填入此列表中。当与fontTypefaces同时设置时，fontTypefaces优先级更高，fontFamilies不生效。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
 | fontTypefaces | Array\<[drawing.Typeface](arkts-apis-graphics-drawing-Typeface.md)> | 否 | 是 | 指定排版字体对象数组，用于优先使用指定的字体对象进行文本塑形，跳过字体匹配流程。当数组中某个字体对象无法塑形部分文字时，未能塑形的文字将使用系统字体进行塑形。默认为空数组，表示不指定字体对象，使用默认字体匹配流程。<br/>当fontTypefaces与[TextStyle](#textstyle).fontFamilies同时设置时，fontTypefaces优先级更高。<br>**起始版本：** 26.0.0<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| fontSize      | number                                               | 否 | 是 | 字体大小，浮点数，默认为14.0，单位为物理像素px。  |
-| letterSpacing | number                                               | 否 | 是 | 字符间距，正数拉开字符距离，如果为负数则拉近字符距离，浮点数，单位为物理像素px，默认为0.0。|
-| wordSpacing   | number                                               | 否 | 是 | 单词间距，浮点数，单位为物理像素px，默认为0.0。                 |
-| heightScale   | number                                               | 否 | 是 | 行高缩放倍数，浮点数，默认为1.0，heightOnly为true时生效。              |
-| heightOnly    | boolean                                              | 否 | 是 | true表示根据字体大小和heightScale设置文本框的高度，false表示根据行高和行距设置文本框高度，默认为false。 |
-| halfLeading   | boolean                                              | 否 | 是 | true表示将行间距平分至行的顶部与底部，false则不平分，默认为false。|
-| ellipsis      | string                                               | 否 | 是 | 省略号文本，表示省略号生效后使用该字段值替换省略号部分，默认为空字符串，即使用系统默认省略号…（U+2026）。与ParagraphStyle的tab属性共同配置时，tab属性无效。 |
-| ellipsisMode  | [EllipsisMode](#ellipsismode)                        | 否 | 是 | 省略号类型，默认为END，行尾省略号。                       |
-| locale        | string                                               | 否 | 是 | 语言类型，例如'en-Latn'代表英文(拉丁文字)，'zh-Hans'代表简体中文，'zh-Hant'代表繁体中文。支持language-script格式的两段式语言标签，language遵循ISO 639-1规范，script遵循ISO 15924规范。未指定locale或者设置为空字符串或为undefined时，默认locale为'zh-Hans'。 |
-| baselineShift | number                                               | 否 | 是 | 文本基线的垂直偏移距离，浮点数，单位为物理像素px，默认为0.0。 |
-| fontFeatures  | Array\<[FontFeature](#fontfeature)>                  | 否 | 是 | 文本字体特征数组。当需要启用或禁用特定字体特性（如连字、字距调整等）时传入。|
-| fontVariations| Array\<[FontVariation](#fontvariation)>              | 否 | 是 | 可变字体属性数组。当需要调整可变字体的可变轴参数（如字重轴、字宽轴等）时传入。|
-| textShadows   | Array\<[TextShadow](#textshadow)>                    | 否 | 是 | 文本阴影数组。当需要为文本添加阴影效果时传入。|
-| backgroundRect| [RectStyle](#rectstyle)                              | 否 | 是 | 文本矩形框样式。当需要为文本添加背景矩形框（如设置背景色、圆角等）时传入。|
-| badgeType<sup>20+</sup>   | [TextBadgeType](#textbadgetype20) | 否   | 是   | 设置文本排版时是否使能上标或下标。TEXT_SUPERSCRIPT表示使能上标，TEXT_SUBSCRIPT表示使能下标，默认值为TEXT_BADGE_NONE表示不使能。|
-| lineHeightMaximum<sup>21+</sup> | number | 否   | 是   | 行高上限，单位为物理像素px。若同时应用行高缩放，行高上限在[TextStyle](#textstyle).heightScale大于0时生效。取值为正数浮点数，默认值为Number.MAX_VALUE。 |
-| lineHeightMinimum<sup>21+</sup> | number | 否 | 是 | 行高下限，单位为物理像素px。若同时应用行高缩放，行高下限在[TextStyle](#textstyle).heightScale大于0时生效。取值范围为非负浮点数，默认值为0。 |
-| lineHeightStyle<sup>21+</sup> | [LineHeightStyle](#lineheightstyle21) | 否 | 是 | 行高缩放基数样式。默认为FONT_SIZE。 |
+| fontSize      | number                                               | 否 | 是 | 字体大小，浮点数，默认为14.0，单位为物理像素px。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
+| letterSpacing | number                                               | 否 | 是 | 字符间距，正数拉开字符距离，如果为负数则拉近字符距离，浮点数，单位为物理像素px，默认为0.0。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
+| wordSpacing   | number                                               | 否 | 是 | 单词间距，浮点数，单位为物理像素px，默认为0.0。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
+| heightScale   | number                                               | 否 | 是 | 行高缩放倍数，浮点数，默认为1.0，heightOnly为true时生效。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
+| heightOnly    | boolean                                              | 否 | 是 | true表示根据字体大小和heightScale设置文本框的高度，false表示根据行高和行距设置文本框高度，默认为false。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
+| halfLeading   | boolean                                              | 否 | 是 | true表示将行间距平分至行的顶部与底部，false则不平分，默认为false。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
+| ellipsis      | string                                               | 否 | 是 | 省略号文本，表示省略号生效后使用该字段值替换省略号部分，默认为空字符串，即使用系统默认省略号…（U+2026）。与ParagraphStyle的tab属性共同配置时，tab属性无效。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
+| ellipsisMode  | [EllipsisMode](#ellipsismode)                        | 否 | 是 | 省略号类型，默认为END，行尾省略号。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
+| locale        | string                                               | 否 | 是 | 语言类型，例如'en-Latn'代表英文(拉丁文字)，'zh-Hans'代表简体中文，'zh-Hant'代表繁体中文。支持language-script格式的两段式语言标签，language遵循ISO 639-1规范，script遵循ISO 15924规范。未指定locale或者设置为空字符串或为undefined时，默认locale为'zh-Hans'。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
+| baselineShift | number                                               | 否 | 是 | 文本基线的垂直偏移距离，浮点数，单位为物理像素px，默认为0.0。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
+| fontFeatures  | Array\<[FontFeature](#fontfeature)>                  | 否 | 是 | 文本字体特征数组。当需要启用或禁用特定字体特性（如连字、字距调整等）时传入。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
+| fontVariations| Array\<[FontVariation](#fontvariation)>              | 否 | 是 | 可变字体属性数组。当需要调整可变字体的可变轴参数（如字重轴、字宽轴等）时传入。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
+| textShadows   | Array\<[TextShadow](#textshadow)>                    | 否 | 是 | 文本阴影数组。当需要为文本添加阴影效果时传入。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
+| backgroundRect| [RectStyle](#rectstyle)                              | 否 | 是 | 文本矩形框样式。当需要为文本添加背景矩形框（如设置背景色、圆角等）时传入。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
+| badgeType<sup>20+</sup>   | [TextBadgeType](#textbadgetype20) | 否   | 是   | 设置文本排版时是否使能上标或下标。TEXT_SUPERSCRIPT表示使能上标，TEXT_SUBSCRIPT表示使能下标，默认值为TEXT_BADGE_NONE表示不使能。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
+| lineHeightMaximum<sup>21+</sup> | number | 否   | 是   | 行高上限，单位为物理像素px。若同时应用行高缩放，行高上限在[TextStyle](#textstyle).heightScale大于0时生效。取值为正数浮点数，默认值为Number.MAX_VALUE。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
+| lineHeightMinimum<sup>21+</sup> | number | 否 | 是 | 行高下限，单位为物理像素px。若同时应用行高缩放，行高下限在[TextStyle](#textstyle).heightScale大于0时生效。取值范围为非负浮点数，默认值为0。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
+| lineHeightStyle<sup>21+</sup> | [LineHeightStyle](#lineheightstyle21) | 否 | 是 | 行高缩放基数样式。默认为FONT_SIZE。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
 | fontEdging<sup>24+</sup> | [drawing.FontEdging](arkts-apis-graphics-drawing-e.md#fontedging12) | 否 | 是 | 绘制文本的边缘处理方式，默认值为ANTI_ALIAS。<br>**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ## StrutStyle
