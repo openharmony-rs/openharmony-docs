@@ -213,7 +213,7 @@ struct Index {
 
 以StartAbilityBelowLockScreenSample通过startAbility拉起BelowLockScreenTargetSample为例，模拟锁屏状态下其他应用拉起目标应用的场景。
 
-拉起方StartAbilityBelowLockScreenSample点击按钮后延时5秒，通过startAbility拉起目标应用。示例代码如下：
+StartAbilityBelowLockScreenSample点击按钮后延时5秒，通过startAbility拉起BelowLockScreenTargetSample。示例代码如下：
 
 <!-- @[StartAbilityBelowLockScreen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/StartAbilityBelowLockScreenSample/entry/src/main/ets/pages/Index.ets) -->
 
@@ -271,7 +271,7 @@ build() {
 }
 ```
 
-目标应用BelowLockScreenTargetSample在onWindowStageCreate中延时3秒加载页面内容，并在module.json5中声明[ohos.permission.START_WINDOW_BELOW_LOCK_SCREEN](../security/AccessToken/permissions-for-all.md#ohospermissionstart_window_below_lock_screen)权限。示例代码如下：
+BelowLockScreenTargetSample在onWindowStageCreate中延时3秒加载页面内容，并在module.json5中声明[ohos.permission.START_WINDOW_BELOW_LOCK_SCREEN](../security/AccessToken/permissions-for-all.md#ohospermissionstart_window_below_lock_screen)权限。示例代码如下：
 
 <!-- @[BelowLockScreenTargetSample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/BelowLockScreenTargetSample/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
@@ -292,7 +292,7 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
 }
 ```
 
-点击拉起方应用按钮后立即锁屏，等待8秒后解锁，可看到目标应用已显示在屏幕上。
+点击StartAbilityBelowLockScreenSample的按钮后立刻锁屏，等待8秒后解锁，可看到BelowLockScreenTargetSample已显示在屏幕上。
 
 示例效果如下：
 
