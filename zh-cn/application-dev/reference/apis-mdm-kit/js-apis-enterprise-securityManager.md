@@ -2780,6 +2780,63 @@ try {
 }
 ```
 
+## securityManager.getPasswordLastChangedTime
+
+getPasswordLastChangedTime(accountId: number): number
+
+根据系统账号ID获取用户最近一次修改锁屏密码的时间，以同步方式返回。账号ID指系统账号ID（首用户为100，子用户依次递增），非三方应用账号；密码指设备锁屏密码（口令），不包含指纹、人脸等其他认证凭据。企业可以通过该接口查询最近一次修改密码的时间，用于密码策略审计和合规性检查。
+
+**起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名    | 类型   | 必填 | 说明                                                         |
+| --------- | ------ | ---- | ------------------------------------------------------------ |
+| accountId | number | 是   | 用户ID，指定具体用户，取值范围：大于等于0。accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。 |
+
+**返回值：**
+
+| 类型   | 说明                               |
+| ------ | ---------------------------------- |
+| number | 最近一次修改密码的时间戳，单位为毫秒 (ms) 。返回值为Unix时间戳（自1970-01-01 00:00:00 UTC起算的毫秒数），应用需结合时区设置将其转换为本地时间。如果用户从未设置锁屏密码或已关闭锁屏密码，接口返回错误码9200016。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200006  | The specified account ID is invalid. |
+| 9200016  | Service timeout. |
+
+**示例：**
+
+```ts
+import { securityManager } from '@kit.MDMKit';
+
+// 需根据实际情况进行替换
+let accountId: number = 100;
+try {
+  let result: number = securityManager.getPasswordLastChangedTime(accountId);
+  console.info(`Succeeded in getting password last changed time, result: ${result}`);
+  // result为Unix时间戳（毫秒），需结合时区设置转换为本地时间。
+  // 例如一个小时前修改的密码，当前UTC时间为2026-08-27 16:01:36，则返回值为1787842896000，表示UTC时间2026-08-27 15:01:36。
+  let date: Date = new Date(result);
+  console.info(`Password last changed time: ${date.toLocaleString()}`);
+} catch (err) {
+  console.error(`Failed to get password last changed time. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## CertBlob
 
 证书信息。
