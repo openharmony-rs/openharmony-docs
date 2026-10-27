@@ -6,7 +6,7 @@ typedef struct OH_AbilityRuntime_ModObjExtensionContextHandle OH_AbilityRuntime_
 
 ## Overview
 
-Defines a pointer type to OH_AbilityRuntime_ModObjExtensionContextHandle.
+Represents the handle to the ModularObjectExtensionAbility context.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 

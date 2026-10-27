@@ -219,7 +219,7 @@ Provides functions such as input event injection, key state query, device hot sw
 | [Input_Result OH_Input_UnregisterDeviceListeners()](#oh_input_unregisterdevicelisteners) | - | Unregisters all listeners for device hot swap events. |
 | [Input_Result OH_Input_GetFunctionKeyState(int32_t keyCode, int32_t *state)](#oh_input_getfunctionkeystate) | - | Obtains the function key status. |
 | [Input_Result OH_Input_QueryMaxTouchPoints(int32_t *count)](#oh_input_querymaxtouchpoints) | - | Queries the maximum number of touch points supported by the device. |
-| [Input_Result OH_Input_GetPointerLocation(int32_t *displayId, double *displayX, double *displayY)](#oh_input_getpointerlocation) | - | Obtains the coordinates of the mouse pointer on the current screen. <br>Since API version 26.0.0, non-focused applications that have the ohos.permission.INPUT_DEVICE_CONFIGURATOR permission can call this API. <br>Since API version 26.2.0, on PC devices, there are no longer focus or permission requirements for applications. |
+| [Input_Result OH_Input_GetPointerLocation(int32_t *displayId, double *displayX, double *displayY)](#oh_input_getpointerlocation) | - | Obtains the coordinates of the mouse pointer on the current screen. <br>Since API version 26.0.0, non-focused applications that have the ohos.permission.INPUT_DEVICE_CONFIGURATOR permission can call this API. <br>Since API version 26.1.0, on PC devices, there are no longer focus or permission requirements for applications. |
 | [struct Input_CursorInfo* OH_Input_CursorInfo_Create()](#oh_input_cursorinfo_create) | - | Creates a mouse pointer information object. You can call [OH_Input_CursorInfo_Destroy](capi-oh-input-manager-h.md#oh_input_cursorinfo_destroy) to destroy a mouse pointer information object. |
 | [void OH_Input_CursorInfo_Destroy(Input_CursorInfo** cursorInfo)](#oh_input_cursorinfo_destroy) | - | Destroys the mouse pointer information object. |
 | [Input_Result OH_Input_CursorInfo_IsVisible(Input_CursorInfo* cursorInfo, bool* visible)](#oh_input_cursorinfo_isvisible) | - | Obtains the pointer visible status of the specified mouse pointer information object. |
@@ -3388,7 +3388,7 @@ Adds a listener for key events. Only the initial addition takes effect. Subseque
 
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
-**Required permission**: ohos.permission.INPUT_MONITORING
+**Required permission**: ohos.permission.INPUT_MONITORING or ohos.permission.INPUT_RECORDING [since 26.1.0]
 
 **Since**: 12
 
@@ -3416,7 +3416,7 @@ Adds a listener for mouse events, including mouse click and movement events, but
 
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
-**Required permission**: ohos.permission.INPUT_MONITORING
+**Required permission**: ohos.permission.INPUT_MONITORING or ohos.permission.INPUT_RECORDING [since 26.1.0]
 
 **Since**: 12
 
@@ -3444,7 +3444,7 @@ Adds a listener for touch input events.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
-**Required permission**: ohos.permission.INPUT_MONITORING
+**Required permission**: ohos.permission.INPUT_MONITORING or ohos.permission.INPUT_RECORDING [since 26.1.0]
 
 **Since**: 12
 
@@ -3472,7 +3472,7 @@ Adds a listener for all types of axis events, which are defined in [InputEvent_A
 
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
-**Required permission**: ohos.permission.INPUT_MONITORING
+**Required permission**: ohos.permission.INPUT_MONITORING or ohos.permission.INPUT_RECORDING [since 26.1.0]
 
 **Since**: 12
 
@@ -3500,7 +3500,7 @@ Adds a listener for the specified type of axis events, which are defined in [Inp
 
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
-**Required permission**: ohos.permission.INPUT_MONITORING
+**Required permission**: ohos.permission.INPUT_MONITORING or ohos.permission.INPUT_RECORDING [since 26.1.0]
 
 **Since**: 12
 
@@ -3529,7 +3529,7 @@ Removes the listener for key events.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
-**Required permission**: ohos.permission.INPUT_MONITORING
+**Required permission**: ohos.permission.INPUT_MONITORING [since 12 - 26.0.1]
 
 **Since**: 12
 
@@ -3557,7 +3557,7 @@ Removes the listener for mouse events.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
-**Required permission**: ohos.permission.INPUT_MONITORING
+**Required permission**: ohos.permission.INPUT_MONITORING [since 12 - 26.0.1]
 
 **Since**: 12
 
@@ -3585,7 +3585,7 @@ Removes the listener for touch events.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
-**Required permission**: ohos.permission.INPUT_MONITORING
+**Required permission**: ohos.permission.INPUT_MONITORING [since 12 - 26.0.1]
 
 **Since**: 12
 
@@ -3613,7 +3613,7 @@ Removes the listener for all types of axis events.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
-**Required permission**: ohos.permission.INPUT_MONITORING
+**Required permission**: ohos.permission.INPUT_MONITORING [since 12 - 26.0.1]
 
 **Since**: 12
 
@@ -3641,7 +3641,7 @@ Removes the listener for the specified type of axis events, which are defined in
 
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
-**Required permission**: ohos.permission.INPUT_MONITORING
+**Required permission**: ohos.permission.INPUT_MONITORING [since 12 - 26.0.1]
 
 **Since**: 12
 
@@ -4546,7 +4546,7 @@ Input_Result OH_Input_GetPointerLocation(int32_t *displayId, double *displayX, d
 
 **Description**
 
-Obtains the coordinates of the mouse pointer on the current screen. <br>Since API version 26.0.0, non-focused applications that have the ohos.permission.INPUT_DEVICE_CONFIGURATOR permission can call this API. <br>Since API version 26.2.0, on PC devices, there are no longer focus or permission requirements for applications.
+Obtains the coordinates of the mouse pointer on the current screen. <br>Since API version 26.0.0, non-focused applications that have the ohos.permission.INPUT_DEVICE_CONFIGURATOR permission can call this API. <br>Since API version 26.1.0, on PC devices, there are no longer focus or permission requirements for applications.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 

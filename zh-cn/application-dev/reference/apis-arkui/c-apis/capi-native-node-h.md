@@ -24,7 +24,7 @@ Provides type definitions for <b>NativeNode</b> APIs.
 | [ArkUI_NativeNodeAPI_1](capi-arkui-nativemodule-arkui-nativenodeapi-1.md) | ArkUI_NativeNodeAPI_1 | ArkUI提供的Native侧Node类型接口集合。<br> Node模块相关接口需要在主线程上调用。 |
 | [OH_ArkUI_TextEditorChangeEvent](capi-arkui-nativemodule-oh-arkui-texteditorchangeevent.md) | OH_ArkUI_TextEditorChangeEvent | 定义TextEditor组件文本内容变化事件的结构体，用于在文本内容变化时通知用户，支持获取变化前后的内容等信息，适用于需要在文本内容变化前进行拦截或校验的场景，例如输入拦截、内容过滤、变更确认等。 |
 | [ArkUI_NodeCustomEvent](capi-arkui-nativemodule-arkui-nodecustomevent.md) | ArkUI_NodeCustomEvent | Defines the general structure of a custom component event. |
-| [ArkUI_NodeAdapterHandle](capi-arkui-nativemodule-arkui-nodeadapterhandle.md) | ArkUI_NodeAdapterHandle | Defines the component adapter, which is used for lazy loading of elements of scrollable components. |
+| [ArkUI_NodeAdapterHandle](capi-arkui-nativemodule-arkui-nodeadapterhandle.md) | ArkUI_NodeAdapterHandle | 定义组件适配器对象，用于滚动类组件的元素懒加载，适用于需要按需加载大量滚动内容的场景，可避免一次性创建全部元素，降低内存占用并提升滑动性能。 |
 | [ArkUI_NodeAdapterEvent](capi-arkui-nativemodule-arkui-nodeadapterevent.md) | ArkUI_NodeAdapterEvent | Defines the component adapter event. |
 | [ArkUI_NodeContentEvent](capi-arkui-nativemodule-arkui-nodecontentevent.md) | ArkUI_NodeContentEvent | Defines the general structure of a node content event. |
 
@@ -40,6 +40,7 @@ Provides type definitions for <b>NativeNode</b> APIs.
 | [ArkUI_NodeAdapterEventType](#arkui_nodeadaptereventtype) | ArkUI_NodeAdapterEventType | Enumerates component adapter events. |
 | [ArkUI_NodeContentEventType](#arkui_nodecontenteventtype) | ArkUI_NodeContentEventType | Defines the node content event type. |
 | [ArkUI_InspectorErrorCode](#arkui_inspectorerrorcode) | ArkUI_InspectorErrorCode | Enumerates the inspector error codes. |
+| [OH_ArkUI_AdoptPolicy](#oh_arkui_adoptpolicy) | OH_ArkUI_AdoptPolicy | 枚举接纳子节点的策略。 |
 
 ### 宏定义
 
@@ -179,6 +180,8 @@ ArkUI_NodeAdapterHandle handle, uint32_t startPosition, uint32_t itemCount)](#oh
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_SetChildMountPolicy(ArkUI_NodeHandle node, OH_ArkUI_NodeMountPolicy policy)](#oh_arkui_nativemodule_setchildmountpolicy) | - | Set the subnode mounting policy of the target node. |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_GetChildMountPolicy(ArkUI_NodeHandle node, OH_ArkUI_NodeMountPolicy* policy)](#oh_arkui_nativemodule_getchildmountpolicy) | - | 获取目标节点当前的子节点挂载策略。目标节点的默认子节点挂载策略为OH_ARKUI_NODE_MOUNT_POLICY_SINGLE_IF_RENDER_NODE。 |
 | [ArkUI_ErrorCode OH_ArkUI_NodeUtils_SetUiDvsyncSwitch(ArkUI_ContextHandle context, bool enable)](#oh_arkui_nodeutils_setuidvsyncswitch) | - | 设置UI Dvsync开关。开启后系统会更及时地响应Vsync请求，更频繁执行渲染任务。通常在自渲染框架中动效开始时使能，结束后关闭，以确保动画效果更加流畅，同时避免频繁的Vsync影响其他业务。在非UI线程上调用此函数将导致应用退出。 |
+| [int32_t OH_ArkUI_NativeModule_AdoptChildWithPolicy(ArkUI_NodeHandle node, ArkUI_NodeHandle child, OH_ArkUI_AdoptPolicy policy)](#oh_arkui_nativemodule_adoptchildwithpolicy) | - | 当前节点接纳目标节点为附属节点。被接纳的节点不能已有父节点。调用该接口实际上不会将其添加为子节点。 而是仅允许其接收对应子节点的生命周期回调。通过策略配置被接纳节点的浮层节点渲染位置。 |
+| [int32_t OH_ArkUI_NativeModule_SetAdoptedChildOverlayPositionCompensation(ArkUI_NodeHandle adoptedChild, const ArkUI_PointF* compensationOffset, const ArkUI_Matrix4* compensationTransform)](#oh_arkui_nativemodule_setadoptedchildoverlaypositioncompensation) | - | 设置从被接纳的子节点到接纳其的父节点件的位置补偿。此补偿代表了它们之间的纯渲染节点树的总体影响。首先通过 compensationOffset平移 然后通过CompensationTransform 进行变换。补偿只有当子节点已通过以下策略被接纳时才生效： [OH_ARKUI_NATIVE_MODULE_ADOPT_POLICY_OVERLAY_POSITION_FOLLOWS_ADOPT_PARENT_CHAIN](capi-native-node-h.md#oh_arkui_adoptpolicy)。 |
 
 ### 变量
 
@@ -353,6 +356,24 @@ Enumerates the inspector error codes.
 | -- | -- |
 | ARKUI_INSPECTOR_NATIVE_RESULT_SUCCESSFUL = 0 | &nbsp;Success. |
 | ARKUI_INSPECTOR_NATIVE_RESULT_BAD_PARAMETER = -1 | &nbsp;Invalid parameter. |
+
+### OH_ArkUI_AdoptPolicy
+
+```c
+enum OH_ArkUI_AdoptPolicy
+```
+
+**描述：**
+
+枚举接纳子节点的策略。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 26.1.0
+
+| 枚举项 | 描述 |
+| -- | -- |
+| OH_ARKUI_NATIVE_MODULE_ADOPT_POLICY_OVERLAY_POSITION_FOLLOWS_ADOPT_PARENT_CHAIN = 0 |  |
 
 
 ## 函数说明
@@ -3608,6 +3629,62 @@ ArkUI_ErrorCode OH_ArkUI_NodeUtils_SetUiDvsyncSwitch(ArkUI_ContextHandle context
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果。<ul><li>ARKUI_ERROR_CODE_NO_ERROR成功。</li><li>RKUI_ERROR_CODE_CAPI_INIT_ERROR如果CAPI初始化错误。</li><li>ARKUI_ERROR_CODE_PARAM_INVALID函数参数异常。</li></ul> |
+| ArkUI_ErrorCode | 返回结果。<ul><li>ARKUI_ERROR_CODE_NO_ERROR成功。</li><li>ARKUI_ERROR_CODE_CAPI_INIT_ERROR如果CAPI初始化错误。</li><li>ARKUI_ERROR_CODE_PARAM_INVALID函数参数异常。</li></ul> |
+
+### OH_ArkUI_NativeModule_AdoptChildWithPolicy()
+
+```c
+int32_t OH_ArkUI_NativeModule_AdoptChildWithPolicy(ArkUI_NodeHandle node, ArkUI_NodeHandle child, OH_ArkUI_AdoptPolicy policy)
+```
+
+**描述：**
+
+当前节点接纳目标节点为附属节点。被接纳的节点不能已有父节点。调用该接口实际上不会将其添加为子节点。 而是仅允许其接收对应子节点的生命周期回调。通过策略配置被接纳节点的浮层节点渲染位置。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | [in] ArkUI_NodeHandle指针, 指定待接纳节点的父节点。 |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) child | [in] ArkUI_NodeHandle指针, 指定被接纳的子节点。 |
+| [OH_ArkUI_AdoptPolicy](capi-native-node-h.md#oh_arkui_adoptpolicy) policy | [in] 被接纳节点的浮层节点渲染位置策略。有效值对应[OH_ArkUI_AdoptPolicy](capi-native-node-h.md#oh_arkui_adoptpolicy)。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 返回值. <ul><li>如果操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。</li> <li>如果CAPI初始化失败，返回ARKUI_ERROR_CODE_CAPI_INIT_ERROR。</li> <li>如果被接纳的节点已有父节点，返回ARKUI_ERROR_CODE_NODE_HAS_PARENT。</li> <li>如果节点无法被接纳为附属节点，返回ARKUI_ERROR_CODE_NODE_CAN_NOT_BE_ADOPTED。</li> <li>如果节点无法接纳其他附属节点，返回ARKUI_ERROR_CODE_NODE_CAN_NOT_ADOPT_TO。</li></ul> |
+
+### OH_ArkUI_NativeModule_SetAdoptedChildOverlayPositionCompensation()
+
+```c
+int32_t OH_ArkUI_NativeModule_SetAdoptedChildOverlayPositionCompensation(ArkUI_NodeHandle adoptedChild, const ArkUI_PointF* compensationOffset, const ArkUI_Matrix4* compensationTransform)
+```
+
+**描述：**
+
+设置从被接纳的子节点到接纳其的父节点件的位置补偿。此补偿代表了它们之间的纯渲染节点树的总体影响。首先通过 compensationOffset平移 然后通过CompensationTransform 进行变换。补偿只有当子节点已通过以下策略被接纳时才生效： [OH_ARKUI_NATIVE_MODULE_ADOPT_POLICY_OVERLAY_POSITION_FOLLOWS_ADOPT_PARENT_CHAIN](capi-native-node-h.md#oh_arkui_adoptpolicy)。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) adoptedChild | [in] 需要进行位置补偿的被接纳节点. |
+| const ArkUI_PointF* compensationOffset | [in] x/y 偏移量补偿（以像素为单位）. |
+| const ArkUI_Matrix4* compensationTransform | [in] 聚合变换补偿. |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 返回值. <ul><li>如果操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。</li> <li>如果CAPI初始化失败，返回ARKUI_ERROR_CODE_CAPI_INIT_ERROR。</li> <li>如果参数异常，返回 ARKUI_ERROR_CODE_PARAM_INVALID。</li> <li>如果节点没有按要求的策略被接纳，返回 ARKUI_ERROR_CODE_NODE_IS_NOT_IN_ADOPTED_CHILDREN。</li></ul> |
 
 

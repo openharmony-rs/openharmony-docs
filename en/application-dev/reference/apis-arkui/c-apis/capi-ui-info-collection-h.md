@@ -10,7 +10,7 @@ Declares the APIs used by in-app intelligent agents and UI automation to observe
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
@@ -40,7 +40,7 @@ Declares the APIs used by in-app intelligent agents and UI automation to observe
 | -- | -- | -- |
 | [typedef void (\*OH_ArkUI_NativeModule_UIInfoCollectionInteractionJsonCallback)(const OH_ArkUI_NativeModule_UIJsonWrapper *json, void *userData)](#oh_arkui_nativemodule_uiinfocollectioninteractionjsoncallback) | OH_ArkUI_NativeModule_UIInfoCollectionInteractionJsonCallback | Callback type for receiving a sensed interaction event.<br> The callback carries a borrowed [OH_ArkUI_NativeModule_UIJsonWrapper](capi-arkui-nativemodule-oh-arkui-nativemodule-uijsonwrapper.md) object that holds the event payload. The object is valid only within the callback invocation; the callback must not retain or destroy it. All positional coordinates in the payload are relative to the screen (display), in physical pixels (px). The payload always includes a top-level schemaVersion field. Its top-level structure is { "schemaVersion": 1, "type": "<event type>", ... }.<br> The event-specific fields are listed below. - Tap or click: id, point, count, fingers. - Long press: id, point, actualDuration (milliseconds), action ("end"). - Pan: id, point, direction, action ("start" \| "end" \| "cancel"). - Pinch: id, point (array of [x, y]), fingers, action ("start" \| "end" \| "cancel"); scale is present only on "end". - Rotation: id, point (array of [x, y]), fingers, action ("start" \| "end" \| "cancel"); angle (degrees) is present only on "end". - Swipe: id, downPoint (array of [x, y]), upPoint (array of [x, y]), direction, speed, actualSpeed. - Drag: action ("start" \| "end"); "start" carries id, point, hostName, actualDuration; "end" carries point, dropResult ("success" \| "fail"), id (target, present only on success), hostName. - Touch: action ("down" \| "up"), fingerId, point; "down" also carries id (hit node ID). |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_UIInfoCollectionRegisterInteractionObserver(ArkUI_ContextHandle uiContext, uint32_t eventMask, uint32_t *registerID, OH_ArkUI_NativeModule_UIInfoCollectionInteractionJsonCallback callback, void *userData)](#oh_arkui_nativemodule_uiinfocollectionregisterinteractionobserver) | - | Registers an observer for UI interaction events.<br> The observer receives callbacks only for the event types included in eventMask. Multiple observers can be registered for the same UI instance. Registering the same callback and userData pair again creates an additional independent observer with a new registration ID.<br> Remember to unregister the callback by [OH_ArkUI_NativeModule_UIInfoCollectionUnregisterInteractionObserver](capi-ui-info-collection-h.md#oh_arkui_nativemodule_uiinfocollectionunregisterinteractionobserver) when it's not used anymore. |
-| [ArkUI_ErrorCode OH_ArkUI_NativeModule_UIInfoCollectionUnregisterInteractionObserver(uint32_t registerID)](#oh_arkui_nativemodule_uiinfocollectionunregisterinteractionobserver) | - | Unregisters an interaction observer.<br> After this call completes, the associated callback is no longer invoked.<br> This function is thread-safe, can be called from any thread, does not block the caller, and is not async-signal-safe. |
+| [ArkUI_ErrorCode OH_ArkUI_NativeModule_UIInfoCollectionUnregisterInteractionObserver(uint32_t registerID)](#oh_arkui_nativemodule_uiinfocollectionunregisterinteractionobserver) | - | Unregisters an interaction observer.<br> After this call completes, the associated callback is no longer invoked.<br> This function is not thread-safe and can not be called in non-main threads. |
 | [typedef void (\*OH_ArkUI_NativeModule_UIAgentJsonCallback)(ArkUI_ContextHandle context, uint64_t requestId, ArkUI_ErrorCode errorCode, OH_ArkUI_NativeModule_UIJsonWrapper *json, void *userData)](#oh_arkui_nativemodule_uiagentjsoncallback) | OH_ArkUI_NativeModule_UIAgentJsonCallback | Defines the callback invoked after an asynchronous JSON tree request completes.<br> The callback is invoked exactly once on the UI thread for each accepted request. The callback receives ownership of a non-NULL JSON object only when errorCode is ARKUI_ERROR_CODE_NO_ERROR. The caller must release the object by calling OH_ArkUI_NativeModule_UIJsonWrapperDestroy. |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_UIAgentTreeRequestCreate(OH_ArkUI_NativeModule_UIAgentTreeType treeType, OH_ArkUI_NativeModule_UIAgentTreeRequest **request)](#oh_arkui_nativemodule_uiagenttreerequestcreate) | - | Create a UI tree collection request. |
 | [void OH_ArkUI_NativeModule_UIAgentTreeRequestDestroy(OH_ArkUI_NativeModule_UIAgentTreeRequest *request)](#oh_arkui_nativemodule_uiagenttreerequestdestroy) | - | Destroys the UI tree collection request object.<br> Passing NULL has no effect. |
@@ -70,10 +70,10 @@ Declares the APIs used by in-app intelligent agents and UI automation to observe
 
 | Name | Description |
 | -- | -- |
-| void (*OH_ArkUI_NativeModule_UIInfoCollectionInteractionJsonCallback)( const OH_ArkUI_NativeModule_UIJsonWrapper *json, void *userData) | Callback type for receiving a sensed interaction event.<br> The callback carries a borrowed [OH_ArkUI_NativeModule_UIJsonWrapper](capi-arkui-nativemodule-oh-arkui-nativemodule-uijsonwrapper.md) object that holds the event payload. The object is valid only within the callback invocation; the callback must not retain or destroy it. All positional coordinates in the payload are relative to the screen (display), in physical pixels (px). The payload always includes a top-level schemaVersion field. Its top-level structure is { "schemaVersion": 1, "type": "<event type>", ... }.<br> The event-specific fields are listed below. - Tap or click: id, point, count, fingers. - Long press: id, point, actualDuration (milliseconds), action ("end"). - Pan: id, point, direction, action ("start" \| "end" \| "cancel"). - Pinch: id, point (array of [x, y]), fingers, action ("start" \| "end" \| "cancel"); scale is present only on "end". - Rotation: id, point (array of [x, y]), fingers, action ("start" \| "end" \| "cancel"); angle (degrees) is present only on "end". - Swipe: id, downPoint (array of [x, y]), upPoint (array of [x, y]), direction, speed, actualSpeed. - Drag: action ("start" \| "end"); "start" carries id, point, hostName, actualDuration; "end" carries point, dropResult ("success" \| "fail"), id (target, present only on success), hostName. - Touch: action ("down" \| "up"), fingerId, point; "down" also carries id (hit node ID).<br>**Since**: 26.2.0<br>**System capability**: SystemCapability.ArkUI.ArkUI.Full |
-| void (*OH_ArkUI_NativeModule_UIAgentJsonCallback)(ArkUI_ContextHandle context, uint64_t requestId, ArkUI_ErrorCode errorCode, OH_ArkUI_NativeModule_UIJsonWrapper *json, void *userData) | Defines the callback invoked after an asynchronous JSON tree request completes.<br> The callback is invoked exactly once on the UI thread for each accepted request. The callback receives ownership of a non-NULL JSON object only when errorCode is ARKUI_ERROR_CODE_NO_ERROR. The caller must release the object by calling OH_ArkUI_NativeModule_UIJsonWrapperDestroy.<br>**Since**: 26.2.0<br>**System capability**: SystemCapability.ArkUI.ArkUI.Full |
-| void (*OH_ArkUI_NativeModule_UIContentChangeEventCallback)( const OH_ArkUI_NativeModule_UIContentChangeEvent* event, void* userData) | Defines the callback invoked for a registered ArkUI state change event.<br> The callback runs on the user interface thread associated with the registered context. The event snapshot is immutable and valid only until this callback returns. ArkUI borrows but does not access or release userData.<br>**Since**: 26.2.0<br>**System capability**: SystemCapability.ArkUI.ArkUI.Full |
-| void (*OH_ArkUI_NativeModule_ImageCollectionCallback)(ArkUI_ErrorCode errorCode, OH_ArkUI_NativeModule_ImageCollection* collection, void* userData) | Defines the callback used to return the result of collecting images of ArkUI nodes.<br> The framework invokes this callback exactly once on the UI thread for each accepted request. Every non-<b>NULL</b> <b>collection</b> is transferred to the caller. A collection is also returned for partial item failure. The caller must release each non-<b>NULL</b> collection by calling <b>OH_ArkUI_NativeModule_ImageCollectionDestroy</b>.<br> The framework returns <b>userData</b> unchanged without dereferencing, copying, or releasing the object it points to. The caller must keep that object valid until the callback has finished using it.<br>**Since**: 26.2.0<br>**System capability**: SystemCapability.ArkUI.ArkUI.Full |
+| void (*OH_ArkUI_NativeModule_UIInfoCollectionInteractionJsonCallback)( const OH_ArkUI_NativeModule_UIJsonWrapper *json, void *userData) | Callback type for receiving a sensed interaction event.<br> The callback carries a borrowed [OH_ArkUI_NativeModule_UIJsonWrapper](capi-arkui-nativemodule-oh-arkui-nativemodule-uijsonwrapper.md) object that holds the event payload. The object is valid only within the callback invocation; the callback must not retain or destroy it. All positional coordinates in the payload are relative to the screen (display), in physical pixels (px). The payload always includes a top-level schemaVersion field. Its top-level structure is { "schemaVersion": 1, "type": "<event type>", ... }.<br> The event-specific fields are listed below. - Tap or click: id, point, count, fingers. - Long press: id, point, actualDuration (milliseconds), action ("end"). - Pan: id, point, direction, action ("start" \| "end" \| "cancel"). - Pinch: id, point (array of [x, y]), fingers, action ("start" \| "end" \| "cancel"); scale is present only on "end". - Rotation: id, point (array of [x, y]), fingers, action ("start" \| "end" \| "cancel"); angle (degrees) is present only on "end". - Swipe: id, downPoint (array of [x, y]), upPoint (array of [x, y]), direction, speed, actualSpeed. - Drag: action ("start" \| "end"); "start" carries id, point, hostName, actualDuration; "end" carries point, dropResult ("success" \| "fail"), id (target, present only on success), hostName. - Touch: action ("down" \| "up"), fingerId, point; "down" also carries id (hit node ID).<br>**Since**: 26.1.0<br>**System capability**: SystemCapability.ArkUI.ArkUI.Full |
+| void (*OH_ArkUI_NativeModule_UIAgentJsonCallback)(ArkUI_ContextHandle context, uint64_t requestId, ArkUI_ErrorCode errorCode, OH_ArkUI_NativeModule_UIJsonWrapper *json, void *userData) | Defines the callback invoked after an asynchronous JSON tree request completes.<br> The callback is invoked exactly once on the UI thread for each accepted request. The callback receives ownership of a non-NULL JSON object only when errorCode is ARKUI_ERROR_CODE_NO_ERROR. The caller must release the object by calling OH_ArkUI_NativeModule_UIJsonWrapperDestroy.<br>**Since**: 26.1.0<br>**System capability**: SystemCapability.ArkUI.ArkUI.Full |
+| void (*OH_ArkUI_NativeModule_UIContentChangeEventCallback)( const OH_ArkUI_NativeModule_UIContentChangeEvent* event, void* userData) | Defines the callback invoked for a registered ArkUI state change event.<br> The callback runs on the user interface thread associated with the registered context. The event snapshot is immutable and valid only until this callback returns. ArkUI borrows but does not access or release userData.<br>**Since**: 26.1.0<br>**System capability**: SystemCapability.ArkUI.ArkUI.Full |
+| void (*OH_ArkUI_NativeModule_ImageCollectionCallback)(ArkUI_ErrorCode errorCode, OH_ArkUI_NativeModule_ImageCollection* collection, void* userData) | Defines the callback used to return the result of collecting images of ArkUI nodes.<br> The framework invokes this callback exactly once on the UI thread for each accepted request. Every non-<b>NULL</b> <b>collection</b> is transferred to the caller. A collection is also returned for partial item failure. The caller must release each non-<b>NULL</b> collection by calling <b>OH_ArkUI_NativeModule_ImageCollectionDestroy</b>.<br> The framework returns <b>userData</b> unchanged without dereferencing, copying, or releasing the object it points to. The caller must keep that object valid until the callback has finished using it.<br>**Since**: 26.1.0<br>**System capability**: SystemCapability.ArkUI.ArkUI.Full |
 
 ## Enum type description
 
@@ -89,20 +89,20 @@ Enumerates the observable UI interaction event types.<br> The values are bit fla
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 | Enum item | Description |
 | -- | -- |
-| OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_NONE = 0 | No event.<br>**Since**: 26.2.0 |
-| OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_TAP = 1 << 0 | Tap gesture.<br>**Since**: 26.2.0 |
-| OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_CLICK = 1 << 1 | Click.<br>**Since**: 26.2.0 |
-| OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_LONG_PRESS = 1 << 2 | Long press gesture.<br>**Since**: 26.2.0 |
-| OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_PAN = 1 << 3 | Pan gesture.<br>**Since**: 26.2.0 |
-| OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_PINCH = 1 << 4 | Pinch gesture.<br>**Since**: 26.2.0 |
-| OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_ROTATION = 1 << 5 | Rotation gesture.<br>**Since**: 26.2.0 |
-| OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_SWIPE = 1 << 6 | Swipe gesture.<br>**Since**: 26.2.0 |
-| OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_DRAG = 1 << 7 | Unified drag and drop.<br>**Since**: 26.2.0 |
-| OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_TOUCH = 1 << 8 | Raw touch down or up.<br>**Since**: 26.2.0 |
+| OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_NONE = 0 | No event.<br>**Since**: 26.1.0 |
+| OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_TAP = 1 << 0 | Tap gesture.<br>**Since**: 26.1.0 |
+| OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_CLICK = 1 << 1 | Click.<br>**Since**: 26.1.0 |
+| OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_LONG_PRESS = 1 << 2 | Long press gesture.<br>**Since**: 26.1.0 |
+| OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_PAN = 1 << 3 | Pan gesture.<br>**Since**: 26.1.0 |
+| OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_PINCH = 1 << 4 | Pinch gesture.<br>**Since**: 26.1.0 |
+| OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_ROTATION = 1 << 5 | Rotation gesture.<br>**Since**: 26.1.0 |
+| OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_SWIPE = 1 << 6 | Swipe gesture.<br>**Since**: 26.1.0 |
+| OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_DRAG = 1 << 7 | Unified drag and drop.<br>**Since**: 26.1.0 |
+| OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_TOUCH = 1 << 8 | Raw touch down or up.<br>**Since**: 26.1.0 |
 
 ### OH_ArkUI_NativeModule_UIAgentTreeType
 
@@ -116,12 +116,12 @@ Enumeration of the collection type of the UI tree.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 | Enum item | Description |
 | -- | -- |
-| OH_ARKUI_NATIVE_MODULE_UI_AGENT_TREE_FULL = 0 | Collects the full UI tree, including invisible, transparent, off-screen, and blocked nodes.<br>**Since**: 26.2.0 |
-| OH_ARKUI_NATIVE_MODULE_UI_AGENT_TREE_VISIBLE = 1 | Collects the visible tree after visibility, clipping, off-screen, and occlusion filtering.<br>**Since**: 26.2.0 |
+| OH_ARKUI_NATIVE_MODULE_UI_AGENT_TREE_FULL = 0 | Collects the full UI tree, including invisible, transparent, off-screen, and blocked nodes.<br>**Since**: 26.1.0 |
+| OH_ARKUI_NATIVE_MODULE_UI_AGENT_TREE_VISIBLE = 1 | Collects the visible tree after visibility, clipping, off-screen, and occlusion filtering.<br>**Since**: 26.1.0 |
 
 ### OH_ArkUI_NativeModule_UIContentChangeEventCategory
 
@@ -135,14 +135,14 @@ UI Content Change Event Type Enumeration
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 | Enum item | Description |
 | -- | -- |
-| OH_ARKUI_NATIVEMODULE_EVENT_CATEGORY_PAGE = 1U << 0 | Page switch events, including Navigation, Router, Swiper, and Tabs switchover events.<br>**Since**: 26.2.0 |
-| OH_ARKUI_NATIVEMODULE_EVENT_CATEGORY_SCROLL = 1U << 1 | Scroll events.<br>**Since**: 26.2.0 |
-| OH_ARKUI_NATIVEMODULE_EVENT_CATEGORY_OVERLAY = 1U << 2 | Overlay events, such as events for modals, menus, or popups.<br>**Since**: 26.2.0 |
-| OH_ARKUI_NATIVEMODULE_EVENT_CATEGORY_ALL = ~0U | All supported event categories.<br>**Since**: 26.2.0 |
+| OH_ARKUI_NATIVEMODULE_EVENT_CATEGORY_PAGE = 1U << 0 | Page switch events, including Navigation, Router, Swiper, and Tabs switchover events.<br>**Since**: 26.1.0 |
+| OH_ARKUI_NATIVEMODULE_EVENT_CATEGORY_SCROLL = 1U << 1 | Scroll events.<br>**Since**: 26.1.0 |
+| OH_ARKUI_NATIVEMODULE_EVENT_CATEGORY_OVERLAY = 1U << 2 | Overlay events, such as events for modals, menus, or popups.<br>**Since**: 26.1.0 |
+| OH_ARKUI_NATIVEMODULE_EVENT_CATEGORY_ALL = ~0U | All supported event categories.<br>**Since**: 26.1.0 |
 
 ### OH_ArkUI_NativeModule_UIContentChangeIgnoreType
 
@@ -156,13 +156,13 @@ UI Content Change Event Ignore Enumeration
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 | Enum item | Description |
 | -- | -- |
-| OH_ARKUI_NATIVEMODULE_CONTENTCHANGE_IGNORE_SCROLLBY = 1U << 0 | Scroll by events.<br>**Since**: 26.2.0 |
-| OH_ARKUI_NATIVEMODULE_CONTENTCHANGE_IGNORE_SCROLLTO = 1U << 1 | Scroll to events.<br>**Since**: 26.2.0 |
-| OH_ARKUI_NATIVEMODULE_CONTENTCHANGE_IGNORE_TOAST = 1U << 2 | Toast events.<br>**Since**: 26.2.0 |
+| OH_ARKUI_NATIVEMODULE_CONTENTCHANGE_IGNORE_SCROLLBY = 1U << 0 | Scroll by events.<br>**Since**: 26.1.0 |
+| OH_ARKUI_NATIVEMODULE_CONTENTCHANGE_IGNORE_SCROLLTO = 1U << 1 | Scroll to events.<br>**Since**: 26.1.0 |
+| OH_ARKUI_NATIVEMODULE_CONTENTCHANGE_IGNORE_TOAST = 1U << 2 | Toast events.<br>**Since**: 26.1.0 |
 
 ### OH_ArkUI_NativeModule_UIContentChangeEventType
 
@@ -176,22 +176,22 @@ Enumerates ArkUI state change event types.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 | Enum item | Description |
 | -- | -- |
-| OH_ARKUI_NATIVEMODULE_EVENT_PAGE_CHANGE_START = 0 | Start of page change.<br>**Since**: 26.2.0 |
-| OH_ARKUI_NATIVEMODULE_EVENT_PAGE_CHANGE_END = 1 | End of page change<br>**Since**: 26.2.0 |
-| OH_ARKUI_NATIVEMODULE_EVENT_SCROLL_START = 2 | Start of scrolling events<br>**Since**: 26.2.0 |
-| OH_ARKUI_NATIVEMODULE_EVENT_SCROLL_END = 3 | A scroll interaction and any following inertial scrolling have ended.<br>**Since**: 26.2.0 |
-| OH_ARKUI_NATIVEMODULE_EVENT_OVERLAY_SHOW = 4 | An overlay has finished appearing.<br>**Since**: 26.2.0 |
-| OH_ARKUI_NATIVEMODULE_EVENT_OVERLAY_HIDE = 5 | An overlay has finished disappearing.<br>**Since**: 26.2.0 |
-| OH_ARKUI_NATIVEMODULE_EVENT_SWIPER_START = 6 | A Swiper transition has started.<br>**Since**: 26.2.0 |
-| OH_ARKUI_NATIVEMODULE_EVENT_SWIPER_END = 7 | A Swiper transition has completed, including its transition animation, if any.<br>**Since**: 26.2.0 |
-| OH_ARKUI_NATIVEMODULE_EVENT_SWIPER_CANCEL = 8 | The Swiper transition is interrupted, and Swiper springs back to the starting index.<br>**Since**: 26.2.0 |
-| OH_ARKUI_NATIVEMODULE_EVENT_TABS_START = 9 | Tabs Start Event<br>**Since**: 26.2.0 |
-| OH_ARKUI_NATIVEMODULE_EVENT_TABS_END = 10 | Tabs End Event<br>**Since**: 26.2.0 |
-| OH_ARKUI_NATIVEMODULE_EVENT_TABS_CANCEL = 11 | Cancel the event after the Tabs switch starts. Rebound to the index after the start<br>**Since**: 26.2.0 |
+| OH_ARKUI_NATIVEMODULE_EVENT_PAGE_CHANGE_START = 0 | Start of page change.<br>**Since**: 26.1.0 |
+| OH_ARKUI_NATIVEMODULE_EVENT_PAGE_CHANGE_END = 1 | End of page change<br>**Since**: 26.1.0 |
+| OH_ARKUI_NATIVEMODULE_EVENT_SCROLL_START = 2 | Start of scrolling events<br>**Since**: 26.1.0 |
+| OH_ARKUI_NATIVEMODULE_EVENT_SCROLL_END = 3 | A scroll interaction and any following inertial scrolling have ended.<br>**Since**: 26.1.0 |
+| OH_ARKUI_NATIVEMODULE_EVENT_OVERLAY_SHOW = 4 | An overlay has finished appearing.<br>**Since**: 26.1.0 |
+| OH_ARKUI_NATIVEMODULE_EVENT_OVERLAY_HIDE = 5 | An overlay has finished disappearing.<br>**Since**: 26.1.0 |
+| OH_ARKUI_NATIVEMODULE_EVENT_SWIPER_START = 6 | A Swiper transition has started.<br>**Since**: 26.1.0 |
+| OH_ARKUI_NATIVEMODULE_EVENT_SWIPER_END = 7 | A Swiper transition has completed, including its transition animation, if any.<br>**Since**: 26.1.0 |
+| OH_ARKUI_NATIVEMODULE_EVENT_SWIPER_CANCEL = 8 | The Swiper transition is interrupted, and Swiper springs back to the starting index.<br>**Since**: 26.1.0 |
+| OH_ARKUI_NATIVEMODULE_EVENT_TABS_START = 9 | Tabs Start Event<br>**Since**: 26.1.0 |
+| OH_ARKUI_NATIVEMODULE_EVENT_TABS_END = 10 | Tabs End Event<br>**Since**: 26.1.0 |
+| OH_ARKUI_NATIVEMODULE_EVENT_TABS_CANCEL = 11 | Cancel the event after the Tabs switch starts. Rebound to the index after the start<br>**Since**: 26.1.0 |
 
 
 ## Function description
@@ -208,7 +208,7 @@ Callback type for receiving a sensed interaction event.<br> The callback carries
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 **Parameters**:
 
@@ -229,7 +229,7 @@ Registers an observer for UI interaction events.<br> The observer receives callb
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 **Parameters**:
 
@@ -255,11 +255,11 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIInfoCollectionUnregisterInteractionObser
 
 **Description**
 
-Unregisters an interaction observer.<br> After this call completes, the associated callback is no longer invoked.<br> This function is thread-safe, can be called from any thread, does not block the caller, and is not async-signal-safe.
+Unregisters an interaction observer.<br> After this call completes, the associated callback is no longer invoked.<br> This function is not thread-safe and can not be called in non-main threads.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 **Parameters**:
 
@@ -285,7 +285,7 @@ Defines the callback invoked after an asynchronous JSON tree request completes.<
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 **Resource release**: ui_json_wrapper/OH_ArkUI_NativeModule_UIJsonWrapperDestroy {json}.
 
@@ -311,7 +311,7 @@ Create a UI tree collection request.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 **Resource release**: OH_ArkUI_NativeModule_UIAgentTreeRequestDestroy {request}
 
@@ -340,7 +340,7 @@ Destroys the UI tree collection request object.<br> Passing NULL has no effect.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 **Parameters**:
 
@@ -360,7 +360,7 @@ Sets whether pure layout nodes are filtered from the returned tree.<br> Filterin
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 **Parameters**:
 
@@ -387,7 +387,7 @@ Sets whether fully occluded nodes are filtered from the returned tree.<br> Filte
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 **Parameters**:
 
@@ -414,7 +414,7 @@ Sets the minimum final opacity for a node to participate as an occluder.<br> The
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 **Parameters**:
 
@@ -441,7 +441,7 @@ Sets whether additional interaction information is collected.<br> Collection is 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 **Parameters**:
 
@@ -468,7 +468,7 @@ Sets whether additional accessibility information is collected.<br> Collection i
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 **Parameters**:
 
@@ -495,7 +495,7 @@ Sets whether advanced visual properties are collected.<br> Collection is disable
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 **Parameters**:
 
@@ -522,7 +522,7 @@ Sets whether advanced functional properties are collected.<br> Collection is dis
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 **Parameters**:
 
@@ -549,7 +549,7 @@ Collects a UI tree synchronously and returns it as JSON.<br> This function must 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 **Resource release**: ui_json_wrapper/OH_ArkUI_NativeModule_UIJsonWrapperDestroy {json}
 
@@ -580,7 +580,7 @@ Initiate an asynchronous UI tree collection request. Receive the collection thro
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 **Parameters**:
 
@@ -611,7 +611,7 @@ Synchronously collects the text on the current ArkUI page and outputs the text i
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 **Resource release**: ui_json_wrapper/OH_ArkUI_NativeModule_UIJsonWrapperDestroy {pageText}
 
@@ -640,7 +640,7 @@ Defines the callback invoked for a registered ArkUI state change event.<br> The 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 **Parameters**:
 
@@ -661,7 +661,7 @@ Registers to the selected ArkUI state change event categories for a user interfa
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 **Parameters**:
 
@@ -693,7 +693,7 @@ Unregisters an active ArkUI state change event subscription from a user interfac
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 **Parameters**:
 
@@ -720,7 +720,7 @@ Obtains the event type from an ArkUI state change event snapshot.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 **Parameters**:
 
@@ -747,7 +747,7 @@ Obtains the monotonic timestamp of an ArkUI state change event snapshot.<br> The
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 **Parameters**:
 
@@ -774,7 +774,7 @@ Obtains the user interface context associated with an ArkUI state change event s
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 **Parameters**:
 
@@ -801,7 +801,7 @@ Obtains the content change event details as a JSON wrapper from an ArkUI state c
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 **Parameters**:
 
@@ -828,7 +828,7 @@ Defines the callback used to return the result of collecting images of ArkUI nod
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 **Resource release**: OH_ArkUI_NativeModule_ImageCollectionDestroy {collection}
 
@@ -852,7 +852,7 @@ Asynchronously collects images for specified ArkUI node IDs.<br> The framework a
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 **Parameters**:
 
@@ -882,7 +882,7 @@ Consumes the result for a specified node ID.<br> For a successful image result, 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 **Resource release**: multimedia/image_framework/image/OH_PixelmapNative_Destroy {outPixelmap}
 
@@ -913,7 +913,7 @@ Destroys an image collection and releases <b>PixelMap</b> instances that have no
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 **Parameters**:
 

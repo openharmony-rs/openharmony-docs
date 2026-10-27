@@ -224,7 +224,7 @@ Enumerates the cloud disk callback types.
 | OH_CLOUD_DISK_CALLBACK_TYPE_FETCH_DATA = 0 | Fetch cloud file data for hydration.<br>**Since**: 26.0.1 |
 | OH_CLOUD_DISK_CALLBACK_TYPE_CANCEL_FETCH_DATA = 1 | Cancel fetching cloud file data.<br>**Since**: 26.0.1 |
 | OH_CLOUD_DISK_CALLBACK_TYPE_DEHYDRATE = 2 | Request authorization for dehydrate.<br>**Since**: 26.0.1 |
-| OH_CLOUD_DISK_CALLBACK_TYPE_FETCH_RANGE_DATA = 3 | Fetch range data for read.<br>**Since**: 26.2.0 |
+| OH_CLOUD_DISK_CALLBACK_TYPE_FETCH_RANGE_DATA = 3 | Fetch range data for read.<br>**Since**: 26.1.0 |
 
 ### OH_CloudDisk_HydratePriority
 

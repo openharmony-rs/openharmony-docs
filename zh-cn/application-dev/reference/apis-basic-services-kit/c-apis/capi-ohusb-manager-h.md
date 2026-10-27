@@ -39,11 +39,11 @@ Declares the C APIs for USB device management.
 | -- | -- | -- |
 | [OH_UsbManager_ErrorCode OH_UsbManager_GetUsbDeviceList(OH_UsbManager_UsbDevice **devices, uint32_t *deviceCount)](#oh_usbmanager_getusbdevicelist) | - | 获取所有已连接USB设备的列表。调用者必须调用[OH_UsbManager_FreeUsbDeviceList](capi-ohusb-manager-h.md#oh_usbmanager_freeusbdevicelist) <br>释放返回的数组。 |
 | [void OH_UsbManager_FreeUsbDeviceList(OH_UsbManager_UsbDevice *devices, uint32_t deviceCount)](#oh_usbmanager_freeusbdevicelist) | - | 释放之前由[OH_UsbManager_GetUsbDeviceList](capi-ohusb-manager-h.md#oh_usbmanager_getusbdevicelist)返回的设备数组。<br> <br>调用后该指针失效，不得再使用。传入null或数量为0是安全的空操作。 |
-| [OH_UsbManager_ErrorCode OH_UsbManager_ConnectDevice(const OH_UsbManager_UsbDevice *device, OH_UsbManager_UsbPipe *pipe)](#oh_usbmanager_connectdevice) | - | 连接USB设备并打开用于通信的管道。返回的管道必须通过调用 <br>[OH_UsbManager_ClosePipe](capi-ohusb-manager-h.md#oh_usbmanager_closepipe)关闭，以避免资源泄漏。<br> <br>仅需要设备结构体中的busNum和devAddress字段；其他字段将被忽略。 |
+| [OH_UsbManager_ErrorCode OH_UsbManager_ConnectDevice(const OH_UsbManager_UsbDevice *device, OH_UsbManager_UsbPipe *pipe)](#oh_usbmanager_connectdevice) | - | 连接USB设备并打开用于通信的管道。返回的管道必须通过调用 <br>[OH_UsbManager_ClosePipe](capi-ohusb-manager-h.md#oh_usbmanager_closepipe)关闭，以避免资源泄漏。<br> <br>仅需要设备结构体中的**busNum**和**devAddress**字段；其他字段将被忽略。 |
 | [OH_UsbManager_ErrorCode OH_UsbManager_HasPermission(const char *deviceName, bool *result)](#oh_usbmanager_haspermission) | - | 检查应用是否有权限访问指定设备。 |
 | [typedef void (\*OH_UsbManager_PermissionCallback)(OH_UsbManager_ErrorCode errorCode, bool result, void *userContext)](#oh_usbmanager_permissioncallback) | OH_UsbManager_PermissionCallback | 定义用于返回[OH_UsbManager_RequestPermission](capi-ohusb-manager-h.md#oh_usbmanager_requestpermission)结果的 <br>回调类型。 |
 | [OH_UsbManager_ErrorCode OH_UsbManager_RequestPermission(const char *deviceName, OH_UsbManager_PermissionCallback callback, void *userContext)](#oh_usbmanager_requestpermission) | - | 异步请求访问指定USB设备的权限。这可能触发系统弹窗询问用户是否授权。 <br>函数立即返回，结果通过回调传递。 |
-| [OH_UsbManager_ErrorCode OH_UsbManager_GetFileDescriptor(const OH_UsbManager_UsbPipe *pipe, int32_t *fd)](#oh_usbmanager_getfiledescriptor) | - | 获取已打开USB设备管道的文件描述符。该fd可用于基于ioctl的 <br>低层USB传输。 |
+| [OH_UsbManager_ErrorCode OH_UsbManager_GetFileDescriptor(const OH_UsbManager_UsbPipe *pipe, int32_t *fd)](#oh_usbmanager_getfiledescriptor) | - | 获取已打开USB设备管道的文件描述符。该fd可用于基于ioctl的 <br>底层USB传输。 |
 | [OH_UsbManager_ErrorCode OH_UsbManager_ClosePipe(const OH_UsbManager_UsbPipe *pipe)](#oh_usbmanager_closepipe) | - | 关闭USB设备管道并释放底层资源。该管道必须从[OH_UsbManager_ConnectDevice](capi-ohusb-manager-h.md#oh_usbmanager_connectdevice) <br>获取。 |
 
 ### 变量
@@ -158,7 +158,7 @@ OH_UsbManager_ErrorCode OH_UsbManager_ConnectDevice(const OH_UsbManager_UsbDevic
 
 **描述：**
 
-连接USB设备并打开用于通信的管道。返回的管道必须通过调用 <br>[OH_UsbManager_ClosePipe](capi-ohusb-manager-h.md#oh_usbmanager_closepipe)关闭，以避免资源泄漏。<br> <br>仅需要设备结构体中的busNum和devAddress字段；其他字段将被忽略。
+连接USB设备并打开用于通信的管道。返回的管道必须通过调用 <br>[OH_UsbManager_ClosePipe](capi-ohusb-manager-h.md#oh_usbmanager_closepipe)关闭，以避免资源泄漏。<br> <br>仅需要设备结构体中的**busNum**和**devAddress**字段；其他字段将被忽略。
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -262,7 +262,7 @@ OH_UsbManager_ErrorCode OH_UsbManager_GetFileDescriptor(const OH_UsbManager_UsbP
 
 **描述：**
 
-获取已打开USB设备管道的文件描述符。该fd可用于基于ioctl的 <br>低层USB传输。
+获取已打开USB设备管道的文件描述符。该fd可用于基于ioctl的 <br>底层USB传输。
 
 **系统能力：** SystemCapability.USB.USBManager
 

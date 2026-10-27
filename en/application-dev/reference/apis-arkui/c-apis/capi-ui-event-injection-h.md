@@ -10,7 +10,7 @@ Declares the APIs used by in-app intelligent agents and UI automation to inject 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
@@ -33,7 +33,7 @@ Declares the APIs used by in-app intelligent agents and UI automation to inject 
 
 | Name | Description |
 | -- | -- |
-| void (*OH_ArkUI_NativeModule_UIEventInjectionCallback)( OH_ArkUI_NativeModule_UIEventInjection_ResultCode result, void *userData) | Callback for injection completion.<br> Reports the results of command dispatch and immediate component handling, without waiting for deferred effects or rendering. Each accepted request receives exactly one callback on the originating UI thread after the injection function returns. Callbacks on different UI threads are not globally serialized.<br>**Since**: 26.2.0<br>**System capability**: SystemCapability.ArkUI.ArkUI.Full |
+| void (*OH_ArkUI_NativeModule_UIEventInjectionCallback)( OH_ArkUI_NativeModule_UIEventInjection_ResultCode result, void *userData) | Callback for injection completion.<br> Reports the results of command dispatch and immediate component handling, without waiting for deferred effects or rendering. Each accepted request receives exactly one callback on the originating UI thread after the injection function returns. Callbacks on different UI threads are not globally serialized.<br>**Since**: 26.1.0<br>**System capability**: SystemCapability.ArkUI.ArkUI.Full |
 
 ## Enum type description
 
@@ -49,14 +49,14 @@ Enumerates the result codes of UI event injection.<br> This enumeration is share
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 | Enum item | Description |
 | -- | -- |
-| OH_ARKUI_NATIVE_MODULE_UI_EVENT_INJECTION_RESULT_SUCCESS = 0 | The injected command was executed successfully.<br>**Since**: 26.2.0 |
-| OH_ARKUI_NATIVE_MODULE_UI_EVENT_INJECTION_RESULT_TARGET_NOT_FOUND = 1 | No component or target could be found to respond to the injected command.<br> For example, the click coordinates do not hit any component, or the target required by the execution mode cannot be located.<br>**Since**: 26.2.0 |
-| OH_ARKUI_NATIVE_MODULE_UI_EVENT_INJECTION_RESULT_COMMAND_NOT_SUPPORTED = 2 | The command cannot be executed in the current UI context.<br> The command is structurally valid, but its type or execution mode is not supported by the current UI state.<br>**Since**: 26.2.0 |
-| OH_ARKUI_NATIVE_MODULE_UI_EVENT_INJECTION_RESULT_INTERRUPTED_BY_USER = 3 | The injected command was interrupted by a user operation.<br>**Since**: 26.2.0 |
+| OH_ARKUI_NATIVE_MODULE_UI_EVENT_INJECTION_RESULT_SUCCESS = 0 | The injected command was executed successfully.<br>**Since**: 26.1.0 |
+| OH_ARKUI_NATIVE_MODULE_UI_EVENT_INJECTION_RESULT_TARGET_NOT_FOUND = 1 | No component or target could be found to respond to the injected command.<br> For example, the click coordinates do not hit any component, or the target required by the execution mode cannot be located.<br>**Since**: 26.1.0 |
+| OH_ARKUI_NATIVE_MODULE_UI_EVENT_INJECTION_RESULT_COMMAND_NOT_SUPPORTED = 2 | The command cannot be executed in the current UI context.<br> The command is structurally valid, but its type or execution mode is not supported by the current UI state.<br>**Since**: 26.1.0 |
+| OH_ARKUI_NATIVE_MODULE_UI_EVENT_INJECTION_RESULT_INTERRUPTED_BY_USER = 3 | The injected command was interrupted by a user operation.<br>**Since**: 26.1.0 |
 
 
 ## Function description
@@ -73,7 +73,7 @@ Callback for injection completion.<br> Reports the results of command dispatch a
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 **Parameters**:
 
@@ -94,7 +94,7 @@ Injects a control command into a target UI node asynchronously.<br> This API pro
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 **Parameters**:
 

@@ -2,7 +2,7 @@
 
 ## 概述
 
-Defines the error code for the native module.
+定义ArkUI Native API的错误码枚举值，用于表示接口调用结果或失败原因。
 
 **库：** libace_ndk.z.so
 
@@ -78,14 +78,14 @@ enum ArkUI_ErrorCode
 | ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE = 106406 | 当前渲染节点从FrameNode中获取。错误码的详细介绍请参见106406 当前渲染节点从FrameNode中获取。<br>**起始版本：** 22 |
 | ARKUI_ERROR_CODE_RENDER_HAS_INVALID_FRAME_NODE = 106407 | 当前渲染节点从FrameNode中获取且该FrameNode已被取消接纳为附属节点或销毁。错误码的详细介绍请参见 106407 当前渲染节点从FrameNode中获取且该FrameNode已被取消接纳为附属节点或销毁。<br>**起始版本：** 22 |
 | ARKUI_ERROR_CODE_RENDER_NOT_ADOPTED_NODE = 106408 | 当前节点不处于被接纳状态。错误码的详细介绍请参见106408 当前节点不处于被接纳状态。<br>**起始版本：** 22 |
-| ARKUI_ERROR_CODE_COMMAND_UNFINISHED = 106409 | 上一次命令未完成。<br>**起始版本：** 26.2.0 |
-| ARKUI_ERROR_CODE_NODE_NOT_FOUND = 106410 | 未找到目标节点。<br>**起始版本：** 26.2.0 |
-| ARKUI_ERROR_CODE_RESULT_TOO_LARGE = 106411 | 结果数据过大。<br>**起始版本：** 26.2.0 |
-| ARKUI_ERROR_CODE_RESOURCE_EXHAUSTED = 106412 | 资源已耗尽。<br>**起始版本：** 26.2.0 |
-| ARKUI_ERROR_CODE_DUPLICATE_NODE_ID = 106413 | 节点ID重复。<br>**起始版本：** 26.2.0 |
-| ARKUI_ERROR_CODE_COLLECTION_PARTIAL_FAILED = 106414 | 部分集合项失败。<br>**起始版本：** 26.2.0 |
-| ARKUI_ERROR_CODE_COLLECTION_ITEM_NOT_FOUND = 106415 | 集合项未找到。<br>**起始版本：** 26.2.0 |
-| ARKUI_ERROR_CODE_COLLECTION_ITEM_ALREADY_TAKEN = 106416 | 集合项已被取出使用。<br>**起始版本：** 26.2.0 |
+| ARKUI_ERROR_CODE_COMMAND_UNFINISHED = 106409 | 上一次命令未完成。<br>**起始版本：** 26.1.0 |
+| ARKUI_ERROR_CODE_NODE_NOT_FOUND = 106410 | 未找到目标节点。<br>**起始版本：** 26.1.0 |
+| ARKUI_ERROR_CODE_RESULT_TOO_LARGE = 106411 | 结果数据过大。<br>**起始版本：** 26.1.0 |
+| ARKUI_ERROR_CODE_RESOURCE_EXHAUSTED = 106412 | 资源已耗尽。<br>**起始版本：** 26.1.0 |
+| ARKUI_ERROR_CODE_DUPLICATE_NODE_ID = 106413 | 节点ID重复。<br>**起始版本：** 26.1.0 |
+| ARKUI_ERROR_CODE_COLLECTION_PARTIAL_FAILED = 106414 | 部分集合项失败。<br>**起始版本：** 26.1.0 |
+| ARKUI_ERROR_CODE_COLLECTION_ITEM_NOT_FOUND = 106415 | 集合项未找到。<br>**起始版本：** 26.1.0 |
+| ARKUI_ERROR_CODE_COLLECTION_ITEM_ALREADY_TAKEN = 106416 | 集合项已被取出使用。<br>**起始版本：** 26.1.0 |
 | ARKUI_ERROR_CODE_FOCUS_NON_FOCUSABLE = 150001 | 当前节点无法获得焦点。错误码的详细介绍请参见150001 节点无法获得焦点。<br>**起始版本：** 15 |
 | ARKUI_ERROR_CODE_FOCUS_NON_FOCUSABLE_ANCESTOR = 150002 | 当前节点对应的祖先节点中存在无法获焦节点。错误码的详细介绍请参见150002 祖先节点无法获得焦点。<br>**起始版本：** 15 |
 | ARKUI_ERROR_CODE_FOCUS_NON_EXISTENT = 150003 | 当前节点不存在。错误码的详细介绍请参见150003 节点不存在。<br>**起始版本：** 15 |

@@ -184,8 +184,8 @@ typedef void (*ArkWeb_OnComponentCallback)(const char* webTag, void* userData)
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char* webTag | Web组件名称。 |
-| void* userData | 用户自定义的数据。 |
+| const char* webTag | [in] Web组件名称。 |
+| void* userData | [in] 用户自定义的数据。 |
 
 ### ArkWeb_OnScrollCallback()
 

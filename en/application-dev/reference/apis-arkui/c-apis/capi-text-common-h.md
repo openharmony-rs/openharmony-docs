@@ -425,7 +425,7 @@ Enumerates the join styles of a text stroke.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 | Enum item | Description |
 | -- | -- |

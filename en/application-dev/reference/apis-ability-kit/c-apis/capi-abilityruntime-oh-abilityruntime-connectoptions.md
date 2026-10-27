@@ -6,7 +6,7 @@ typedef struct OH_AbilityRuntime_ConnectOptions OH_AbilityRuntime_ConnectOptions
 
 ## Overview
 
-Defines the OH_AbilityRuntime_ConnectOptions structure type.
+Defines the OH_AbilityRuntime_ConnectOptions struct, which is used to configure the callback options when connecting to an ExtensionAbility, including the callbacks for successful connection, disconnection, and connection failure.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 

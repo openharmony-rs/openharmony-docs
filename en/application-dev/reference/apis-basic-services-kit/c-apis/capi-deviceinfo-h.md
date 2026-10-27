@@ -648,7 +648,7 @@ Obtains the Disk Serial Number.
 
 **Required permission**: ohos.permission.ACCESS_DISK_PHY_INFO
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 **Parameters**:
 
@@ -674,7 +674,7 @@ Obtains the Open device identifier.
 
 **System capability**: SystemCapability.Startup.SystemInfo
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 **Returns**:
 

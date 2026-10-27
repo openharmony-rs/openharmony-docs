@@ -10,7 +10,7 @@ Declares the ArkUI image acquisition result structure.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 

@@ -50,9 +50,9 @@ Registers a callback listener for the Controller attached event. Note: This call
 
 | Parameter | Description |
 | -- | -- |
-| const char* webTag | Name of the **Web** component. |
-|  [ArkWeb_OnComponentCallback](capi-arkweb-type-h.md#arkweb_oncomponentcallback) callback | Callback of **onControllerAttached**. |
-|  void* userData | User-defined data. |
+| const char* webTag | [in] Name of the **Web** component. |
+|  [ArkWeb_OnComponentCallback](capi-arkweb-type-h.md#arkweb_oncomponentcallback) callback | [in] Callback of **onControllerAttached**. |
+|  void* userData | [in] User-defined data. |
 
 ### onPageBegin()
 
@@ -68,9 +68,9 @@ This callback is triggered when the web page starts loading. It is triggered onl
 
 | Parameter | Description |
 | -- | -- |
-| const char* webTag | Name of the **Web** component. |
-|  [ArkWeb_OnComponentCallback](capi-arkweb-type-h.md#arkweb_oncomponentcallback) callback | Callback invoked when the web page starts loading, used to handle the business logic at the beginning of the page load. |
-|  void* userData | Pointer to the user-defined data. This data is passed to the callback when the callback is triggered, and can be used to save context information or state data. |
+| const char* webTag | [in] Name of the **Web** component. |
+|  [ArkWeb_OnComponentCallback](capi-arkweb-type-h.md#arkweb_oncomponentcallback) callback | [in] Callback invoked when the web page starts loading, used to handle the business logic at the beginning of the page load. |
+|  void* userData | [in] Pointer to the user-defined data. This data is passed to the callback when the callback is triggered, and can be used to save context information or state data. |
 
 ### onPageEnd()
 
@@ -86,9 +86,9 @@ This callback is triggered when the web page finishes loading. It is triggered o
 
 | Parameter | Description |
 | -- | -- |
-| const char* webTag | Name of the **Web** component. |
-|  [ArkWeb_OnComponentCallback](capi-arkweb-type-h.md#arkweb_oncomponentcallback) callback | Callback triggered when page load completes, used to handle business logic after page load completes. |
-|  void* userData | User-defined data pointer. This data is passed to the callback function when the callback is triggered, and can be used to save context information or state data. |
+| const char* webTag | [in] Name of the **Web** component. |
+|  [ArkWeb_OnComponentCallback](capi-arkweb-type-h.md#arkweb_oncomponentcallback) callback | [in] Callback triggered when page load completes, used to handle business logic after page load completes. |
+|  void* userData | [in] User-defined data pointer. This data is passed to the callback function when the callback is triggered, and can be used to save context information or state data. |
 
 ### onDestroy()
 
@@ -104,8 +104,8 @@ Triggered when this **Web** component is destroyed.
 
 | Parameter | Description |
 | -- | -- |
-| const char* webTag | Name of the **Web** component. |
-|  [ArkWeb_OnComponentCallback](capi-arkweb-type-h.md#arkweb_oncomponentcallback) callback | Callback of **onDestroy**. |
-|  void* userData | Pointer to the user-defined data. |
+| const char* webTag | [in] Name of the **Web** component. |
+|  [ArkWeb_OnComponentCallback](capi-arkweb-type-h.md#arkweb_oncomponentcallback) callback | [in] Callback of **onDestroy**. |
+|  void* userData | [in] Pointer to the user-defined data. |
 
 

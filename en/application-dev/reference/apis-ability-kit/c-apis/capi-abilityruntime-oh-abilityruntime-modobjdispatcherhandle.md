@@ -6,7 +6,7 @@ typedef struct OH_AbilityRuntime_ModObjDispatcherHandle OH_AbilityRuntime_ModObj
 
 ## Overview
 
-Defines a pointer to OH_AbilityRuntime_ModularObjectDispatcher.
+Handle to a ModularObject dispatcher. This handle points to a ModularObject dispatcher instance. It can be created by [OH_AbilityRuntime_ModObjDispatcher_CreateMainServiceInstance](capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_createmainserviceinstance) or [OH_AbilityRuntime_ModObjDispatcher_CreateSubInstance](capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_createsubinstance), and must be released by [OH_AbilityRuntime_ModObjDispatcher_Release](capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_release) after use.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 

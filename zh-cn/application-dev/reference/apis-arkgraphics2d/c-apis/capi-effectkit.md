@@ -12,5 +12,5 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| [effect_types.h](capi-effect-types-h.md) | 声明滤镜效果的数据类型，用于定义滤镜效果的矩阵、状态码和平铺模式等， 支持创建自定义滤镜效果、处理图像着色器平铺等场景。 |
-| [effect_filter.h](capi-effect-filter-h.md) | 声明滤镜效果的接口。支持创建和管理多种滤镜效果，包括毛玻璃模糊、亮度调节、灰度转换、颜色反转等， 支持通过自定义矩阵实现丰富的图像处理效果，适用于图像编辑、照片美化、视觉特效等场景。<br> 必须成对调用[OH_Filter_CreateEffect](capi-effect-filter-h.md#oh_filter_createeffect)和[OH_Filter_Release](capi-effect-filter-h.md#oh_filter_release)，确保资源正确释放。 本文件接口均不支持多线程调用。 |
+| [effect_types.h](capi-effect-types-h.md) | 声明滤镜效果的数据类型，用于定义滤镜效果的矩阵、状态码和平铺模式等， 支持创建自定义滤镜效果、处理图像着色器平铺等场景。 <br>本文档定义的状态码类型用于相关接口的状态返回，具体接口的状态码使用说明请参见对应接口文档。 |
+| [effect_filter.h](capi-effect-filter-h.md) | 声明滤镜效果的接口。用于创建和管理多种滤镜效果，包括毛玻璃模糊、亮度调节、灰度转换、颜色反转等， 支持通过自定义矩阵实现丰富的图像处理效果，适用于图像编辑、照片美化、视觉特效等场景。<br> 必须成对调用[OH_Filter_CreateEffect](capi-effect-filter-h.md#oh_filter_createeffect)和[OH_Filter_Release](capi-effect-filter-h.md#oh_filter_release)，确保资源正确释放。 <br>本文件接口均不支持多线程调用。 |

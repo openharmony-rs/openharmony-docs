@@ -2,7 +2,7 @@
 
 ## 概述
 
-Defines the common types for the native module.
+提供NativeModule公共的类型定义。
 
 **库：** libace_ndk.z.so
 
@@ -34,14 +34,9 @@ Defines the common types for the native module.
 | [ArkUI_HostWindowInfo](capi-arkui-nativemodule-arkui-hostwindowinfo.md) | ArkUI_HostWindowInfo | 定义窗口属性的HostWindowInfo类信息。 |
 | [ArkUI_ActiveChildrenInfo](capi-arkui-nativemodule-arkui-activechildreninfo.md) | ArkUI_ActiveChildrenInfo | 定义ArkUI_ActiveChildrenInfo结构体，用于保存内部活跃状态为true的 FrameNode子节点信息，支持查询子节点数量和按下标获取子节点。 该结构体实例由OH_ArkUI_NodeUtils_GetActiveChildrenInfo生成，使用完毕后 必须调用OH_ArkUI_ActiveChildrenInfo_Destroy销毁。 |
 | [ArkUI_CrossLanguageOption](capi-arkui-nativemodule-arkui-crosslanguageoption.md) | ArkUI_CrossLanguageOption | 定义跨语言配置 项，用于配置目标节点的跨语言访问能力，例如是否允许跨语言修改属性；从API version 26.0.0开始，还可配置节点树跨语言操作状态。 |
-| [ArkUI_Matrix4](capi-arkui-nativemodule-arkui-matrix4.md) | ArkUI_Matrix4 | Defines the matrix4 object. |
 | [ArkUI_SelectedDragPreviewStyle](capi-arkui-nativemodule-arkui-selecteddragpreviewstyle.md) | ArkUI_SelectedDragPreviewStyle | 定义选中状态下文本拖拽预览样式，适用于需要在文本拖拽过程中展示选中状态预览效果的场景，可提升用户的拖拽交互体验。 |
 | [ArkUI_SystemFontStyleEvent](capi-arkui-nativemodule-arkui-systemfontstyleevent.md) | ArkUI_SystemFontStyleEvent | 系统字体样式变更事件定义，用于在系统字体大小或字体粗细发生变化时，向已注册的系统字体样式变更回调传递事件信息。 |
 | [ArkUI_ContentTransitionEffect](capi-arkui-nativemodule-arkui-contenttransitioneffect.md) | ArkUI_ContentTransitionEffect | 设置与内容转场效果相关的类型和参数。 |
-| [ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md) | ArkUI_MotionPathOptions | Defines the motion path options for path animation. |
-| [ArkUI_Matrix4ScaleOptions](capi-arkui-nativemodule-arkui-matrix4scaleoptions.md) | ArkUI_Matrix4ScaleOptions | Defines the scale options for matrix scaling. |
-| [ArkUI_Matrix4RotationOptions](capi-arkui-nativemodule-arkui-matrix4rotationoptions.md) | ArkUI_Matrix4RotationOptions | Defines the rotation options for matrix rotating. |
-| [ArkUI_Matrix4TranslationOptions](capi-arkui-nativemodule-arkui-matrix4translationoptions.md) | ArkUI_Matrix4TranslationOptions | Defines the translation options for matrix translating. |
 | [OH_ArkUI_LinearGradientOptions](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md) | OH_ArkUI_LinearGradientOptions | 定义线性渐变效果选项，用于描述UI组件的线性颜色渐变配置，支持设置渐变方向、角度和颜色配置，帮助开发者实现灵活的线性渐变效果，提升UI视觉呈现能力，适用于需要为组件应用线性渐变样式的场景。 |
 | [OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md) | OH_ArkUI_RadialGradientOptions | 定义径向渐变选项，适用于UI组件中实现径向渐变效果的场景，可帮助开发者丰富界面的视觉层次。 |
 
@@ -61,11 +56,11 @@ Defines the common types for the native module.
 | [ArkUI_SwiperNestedScrollMode](#arkui_swipernestedscrollmode) | ArkUI_SwiperNestedScrollMode | Nested scrolling mode for Swiper components and parent components. |
 | [ArkUI_PageFlipMode](#arkui_pageflipmode) | ArkUI_PageFlipMode | Enumerates the page flipping modes using the mouse wheel for the <b>Swiper</b> component. |
 | [ArkUI_SwiperAnimationMode](#arkui_swiperanimationmode) | ArkUI_SwiperAnimationMode | Enumerates the animation modes for [NODE_SWIPER_INDEX](capi-native-node-h.md#arkui_nodeattributetype). |
-| [ArkUI_AccessibilityMode](#arkui_accessibilitymode) | ArkUI_AccessibilityMode | Enumerates the accessibility modes. |
+| [ArkUI_AccessibilityMode](#arkui_accessibilitymode) | ArkUI_AccessibilityMode | 定义无障碍辅助服务模式。 |
 | [ArkUI_AnimationPlayMode](#arkui_animationplaymode) | ArkUI_AnimationPlayMode | Enumerates the animation playback modes. |
 | [ArkUI_AdaptiveColor](#arkui_adaptivecolor) | ArkUI_AdaptiveColor | Enumerates the adaptive color modes. |
 | [ArkUI_ColorMode](#arkui_colormode) | ArkUI_ColorMode | Enumerates the color modes. |
-| [ArkUI_SystemColorMode](#arkui_systemcolormode) | ArkUI_SystemColorMode | Enumerates the system color modes. |
+| [ArkUI_SystemColorMode](#arkui_systemcolormode) | ArkUI_SystemColorMode | 定义系统深浅色模式。 |
 | [ArkUI_BlurStyle](#arkui_blurstyle) | ArkUI_BlurStyle | Enumerates the blur styles. |
 | [ArkUI_BlurStyleActivePolicy](#arkui_blurstyleactivepolicy) | ArkUI_BlurStyleActivePolicy | Enumerates the activation policies for the background blur effect. |
 | [ArkUI_BlendMode](#arkui_blendmode) | ArkUI_BlendMode | Enumerates the blend modes. |
@@ -76,16 +71,16 @@ Defines the common types for the native module.
 | [ArkUI_LinearGradientDirection](#arkui_lineargradientdirection) | ArkUI_LinearGradientDirection | Enumerates the gradient directions. |
 | [ArkUI_TransitionEdge](#arkui_transitionedge) | ArkUI_TransitionEdge | Enumerates the slide-in and slide-out positions of the component from the screen edge during transition. |
 | [ArkUI_BlendApplyType](#arkui_blendapplytype) | ArkUI_BlendApplyType | Defines how the specified blend mode is applied. |
-| [ArkUI_FinishCallbackType](#arkui_finishcallbacktype) | ArkUI_FinishCallbackType | Enumerates the animation onFinish callback types. |
+| [ArkUI_FinishCallbackType](#arkui_finishcallbacktype) | ArkUI_FinishCallbackType | 在动画中定义[OH_ArkUI_AnimatorOption_RegisterOnFinishCallback](capi-native-animate-h.md#oh_arkui_animatoroption_registeronfinishcallback)回调的类型。 |
 | [ArkUI_LengthMetricUnit](#arkui_lengthmetricunit) | ArkUI_LengthMetricUnit | Enumerates the component units. |
 | [ArkUI_RenderFit](#arkui_renderfit) | ArkUI_RenderFit | Enumerates the render fit. |
 | [ArkUI_SwiperIndicatorType](#arkui_swiperindicatortype) | ArkUI_SwiperIndicatorType | Define the navigation indicator type of the swiper. |
 | [ArkUI_AnimationStatus](#arkui_animationstatus) | ArkUI_AnimationStatus | Defines the playback status for the image animator. |
 | [ArkUI_AnimationFillMode](#arkui_animationfillmode) | ArkUI_AnimationFillMode | Defines the status before and after execution of the animation in the current playback direction. |
-| [ArkUI_AccessibilityCheckedState](#arkui_accessibilitycheckedstate) | ArkUI_AccessibilityCheckedState | Defines the state type for the accessibility checkbox. |
+| [ArkUI_AccessibilityCheckedState](#arkui_accessibilitycheckedstate) | ArkUI_AccessibilityCheckedState | 定义无障碍复选框状态类型枚举值。 |
 | [ArkUI_AnimationDirection](#arkui_animationdirection) | ArkUI_AnimationDirection | Enumerates the animation playback modes. |
-| [ArkUI_AccessibilityActionType](#arkui_accessibilityactiontype) | ArkUI_AccessibilityActionType | Define accessible action types. |
-| [ArkUI_NavDestinationState](#arkui_navdestinationstate) | ArkUI_NavDestinationState | Defines the state of the NavDestination component. |
+| [ArkUI_AccessibilityActionType](#arkui_accessibilityactiontype) | ArkUI_AccessibilityActionType | 定义无障碍操作类型。 |
+| [ArkUI_NavDestinationState](#arkui_navdestinationstate) | ArkUI_NavDestinationState | 定义NavDestination组件的状态，用于描述NavDestination在导航过程中的生命周期状态变化。 |
 | [ArkUI_RouterPageState](#arkui_routerpagestate) | ArkUI_RouterPageState | Define the state of Router Page. |
 | [ArkUI_SafeAreaType](#arkui_safeareatype) | ArkUI_SafeAreaType | 定义扩展安全区域的枚举值。 |
 | [ArkUI_KeyboardAvoidMode](#arkui_keyboardavoidmode) | ArkUI_KeyboardAvoidMode | defines the enumerated value of the customDialog's keyboard avoid mode. |
@@ -94,7 +89,7 @@ Defines the common types for the native module.
 | [ArkUI_EdgeDirection](#arkui_edgedirection) | ArkUI_EdgeDirection | 定义矩形边方向。 |
 | [ArkUI_CornerDirection](#arkui_cornerdirection) | ArkUI_CornerDirection | 定义角度方向。 |
 | [ArkUI_MenuPolicy](#arkui_menupolicy) | ArkUI_MenuPolicy | Menu pop-up strategy. |
-| [ArkUI_RenderStrategy](#arkui_renderstrategy) | ArkUI_RenderStrategy | Enumerates the graphics rendering strategy. |
+| [ArkUI_RenderStrategy](#arkui_renderstrategy) | ArkUI_RenderStrategy | 定义图形渲染策略。 |
 | [OH_ArkUI_CrossLanguageOperatingStatus](#oh_arkui_crosslanguageoperatingstatus) | OH_ArkUI_CrossLanguageOperatingStatus | Enumerates the tree operating status for the cross-language option. |
 | [OH_ArkUI_NodeMountPolicy](#oh_arkui_nodemountpolicy) | OH_ArkUI_NodeMountPolicy | Enumeration of the policy for mounting child node to the target node. |
 
@@ -251,16 +246,6 @@ Defines the common types for the native module.
 | [void OH_ArkUI_SelectionOptions_Dispose(ArkUI_SelectionOptions* options)](#oh_arkui_selectionoptions_dispose) | Dispose selection options object. |
 | [void OH_ArkUI_SelectionOptions_SetMenuPolicy(ArkUI_SelectionOptions* options, ArkUI_MenuPolicy menuPolicy)](#oh_arkui_selectionoptions_setmenupolicy) | Sets the menu policy for selection options. |
 | [ArkUI_MenuPolicy OH_ArkUI_SelectionOptions_GetMenuPolicy(ArkUI_SelectionOptions* options)](#oh_arkui_selectionoptions_getmenupolicy) | Gets the menu policy of selection options. |
-| [ArkUI_MotionPathOptions* OH_ArkUI_MotionPathOptions_Create()](#oh_arkui_motionpathoptions_create) | Create an object of the motion path options for path animation. In the newly created ArkUI_MotionPathOptions, the "path" value is an empty string, the "from" value is 0, the "to" value is 1, and the "rotatable" value is false. |
-| [void OH_ArkUI_MotionPathOptions_Dispose(ArkUI_MotionPathOptions* options)](#oh_arkui_motionpathoptions_dispose) | Dispose the ArkUI_MotionPathOptions object. |
-| [ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_SetPath(ArkUI_MotionPathOptions* options, const char* svgPath)](#oh_arkui_motionpathoptions_setpath) | Sets the the motion path for the animation using an SVG path string. The path supports using "start" and "end" as placeholders for the starting and ending points, for example: "Mstart.x start.y L50 50 Lend.x end.y Z". Refer to the SVG path format for the path string. When set to an empty string, it is equivalent to not setting a path animation. |
-| [ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_GetPath(const ArkUI_MotionPathOptions* options, char* svgPathBuffer, const int32_t bufferSize, int32_t* writeLength)](#oh_arkui_motionpathoptions_getpath) | Gets the motion path string in the ArkUI_MotionPathOptions object. |
-| [ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_SetFrom(ArkUI_MotionPathOptions* options, const float from)](#oh_arkui_motionpathoptions_setfrom) | Sets the starting progress in the ArkUI_MotionPathOptions. Progress refers to the ratio of the length of the path that has been traveled to the total length of the entire path. The value range is [0.0, 1.0], and the "from" value should be less than or equal to the "to" value; otherwise, an ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE error code will be returned. |
-| [ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_GetFrom(const ArkUI_MotionPathOptions* options, float* from)](#oh_arkui_motionpathoptions_getfrom) | Gets the starting progress in the ArkUI_MotionPathOptions object. |
-| [ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_SetTo(ArkUI_MotionPathOptions* options, const float to)](#oh_arkui_motionpathoptions_setto) | Sets the endpoint progress in the ArkUI_MotionPathOptions. Progress refers to the ratio of the length of the path that has been traveled to the total length of the entire path. The value range is [0.0, 1.0], and the "from" value should be less than or equal to the "to" value; otherwise, an ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE error code will be returned. |
-| [ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_GetTo(const ArkUI_MotionPathOptions* options, float* to)](#oh_arkui_motionpathoptions_getto) | Gets the endpoint progress in the ArkUI_MotionPathOptions object. |
-| [ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_SetRotatable(ArkUI_MotionPathOptions* options, const bool rotatable)](#oh_arkui_motionpathoptions_setrotatable) | Sets the rotatable parameter in the ArkUI_MotionPathOptions. It indicates whether to rotate along the path. True means rotating along the path, while false means not rotating along the path. |
-| [ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_GetRotatable(const ArkUI_MotionPathOptions* options, bool* rotatable)](#oh_arkui_motionpathoptions_getrotatable) | Gets the rotatable parameter in the ArkUI_MotionPathOptions. |
 | [ArkUI_SelectedDragPreviewStyle* OH_ArkUI_SelectedDragPreviewStyle_Create()](#oh_arkui_selecteddragpreviewstyle_create) | Create a configuration object for selected drag preview style. |
 | [void OH_ArkUI_SelectedDragPreviewStyle_Dispose(ArkUI_SelectedDragPreviewStyle* config)](#oh_arkui_selecteddragpreviewstyle_dispose) | Dispose a configuration object for selected drag preview style. |
 | [void OH_ArkUI_SelectedDragPreviewStyle_SetColor(ArkUI_SelectedDragPreviewStyle* config, uint32_t color)](#oh_arkui_selecteddragpreviewstyle_setcolor) | 设置选中态拖拽文本预览样式的背景色。 |
@@ -322,20 +307,6 @@ Defines the common types for the native module.
 | [ArkUI_ErrorCode OH_ArkUI_TextEditorParagraphStyle_SetTextDirection(OH_ArkUI_TextEditorParagraphStyle* style, ArkUI_TextDirection textDirection)](#oh_arkui_texteditorparagraphstyle_settextdirection) | 设置段落样式的文本方向。 |
 | [ArkUI_ErrorCode OH_ArkUI_TextEditorParagraphStyle_GetTextDirection(OH_ArkUI_TextEditorParagraphStyle* style, ArkUI_TextDirection* textDirection)](#oh_arkui_texteditorparagraphstyle_gettextdirection) | 获取段落样式的文本方向。 |
 | [ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_SetTypingParagraphStyle(OH_ArkUI_TextEditorStyledStringController* controller, OH_ArkUI_TextEditorParagraphStyle* style)](#oh_arkui_texteditorstyledstringcontroller_settypingparagraphstyle) | 通过属性字符串控制器设置预设段落样式。 |
-| [OH_ArkUI_ShadowOptions* OH_ArkUI_ShadowOptions_Create()](#oh_arkui_shadowoptions_create) | 创建一个阴影选项对象。当该对象不再使用时，请调用[OH_ArkUI_ShadowOptions_Destroy](capi-native-type-h.md#oh_arkui_shadowoptions_destroy)销毁。 |
-| [void OH_ArkUI_ShadowOptions_Destroy(OH_ArkUI_ShadowOptions* options)](#oh_arkui_shadowoptions_destroy) | 销毁阴影选项对象。 |
-| [ArkUI_ErrorCode OH_ArkUI_ShadowOptions_SetRadius(OH_ArkUI_ShadowOptions* options, float radius)](#oh_arkui_shadowoptions_setradius) | 设置阴影选项的模糊半径。 |
-| [ArkUI_ErrorCode OH_ArkUI_ShadowOptions_GetRadius(OH_ArkUI_ShadowOptions* options, float* radius)](#oh_arkui_shadowoptions_getradius) | 获取阴影选项的模糊半径。 |
-| [ArkUI_ErrorCode OH_ArkUI_ShadowOptions_SetType(OH_ArkUI_ShadowOptions* options, ArkUI_ShadowType type)](#oh_arkui_shadowoptions_settype) | 设置阴影选项的阴影类型。 |
-| [ArkUI_ErrorCode OH_ArkUI_ShadowOptions_GetType(OH_ArkUI_ShadowOptions* options, ArkUI_ShadowType* type)](#oh_arkui_shadowoptions_gettype) | 获取阴影选项的阴影类型。 |
-| [ArkUI_ErrorCode OH_ArkUI_ShadowOptions_SetColor(OH_ArkUI_ShadowOptions* options, uint32_t color)](#oh_arkui_shadowoptions_setcolor) | 设置阴影选项的阴影颜色。 |
-| [ArkUI_ErrorCode OH_ArkUI_ShadowOptions_GetColor(OH_ArkUI_ShadowOptions* options, uint32_t* color)](#oh_arkui_shadowoptions_getcolor) | 获取阴影选项的阴影颜色。 |
-| [ArkUI_ErrorCode OH_ArkUI_ShadowOptions_SetOffsetX(OH_ArkUI_ShadowOptions* options, float offsetX)](#oh_arkui_shadowoptions_setoffsetx) | 设置阴影在x轴上的偏移量。 |
-| [ArkUI_ErrorCode OH_ArkUI_ShadowOptions_GetOffsetX(OH_ArkUI_ShadowOptions* options, float* offsetX)](#oh_arkui_shadowoptions_getoffsetx) | 获取阴影在x轴上的偏移量。 |
-| [ArkUI_ErrorCode OH_ArkUI_ShadowOptions_SetOffsetY(OH_ArkUI_ShadowOptions* options, float offsetY)](#oh_arkui_shadowoptions_setoffsety) | 设置阴影在y轴上的偏移量。 |
-| [ArkUI_ErrorCode OH_ArkUI_ShadowOptions_GetOffsetY(OH_ArkUI_ShadowOptions* options, float* offsetY)](#oh_arkui_shadowoptions_getoffsety) | 获取阴影在y轴上的偏移量。 |
-| [ArkUI_ErrorCode OH_ArkUI_ShadowOptions_SetFill(OH_ArkUI_ShadowOptions* options, bool isFill)](#oh_arkui_shadowoptions_setfill) | 设置是否用阴影填充组件内部。 |
-| [ArkUI_ErrorCode OH_ArkUI_ShadowOptions_GetFill(OH_ArkUI_ShadowOptions* options, bool* isFill)](#oh_arkui_shadowoptions_getfill) | 获取是否用阴影填充组件内部。 |
 | [ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_SetFontColor(OH_ArkUI_TextEditorTextStyle* style, uint32_t color)](#oh_arkui_texteditortextstyle_setfontcolor) | 设置文本样式的字体颜色。 |
 | [ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_GetFontColor(OH_ArkUI_TextEditorTextStyle* style, uint32_t* color)](#oh_arkui_texteditortextstyle_getfontcolor) | 获取文本样式的字体颜色。 |
 | [ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_SetFontSize(OH_ArkUI_TextEditorTextStyle* style, float size)](#oh_arkui_texteditortextstyle_setfontsize) | 设置文本样式的字体大小。 |
@@ -386,53 +357,6 @@ Defines the common types for the native module.
 | [ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_ScrollToVisible(const OH_ArkUI_TextEditorStyledStringController* controller, int32_t start, int32_t end)](#oh_arkui_texteditorstyledstringcontroller_scrolltovisible) | 通过属性字符串控制器使指定起始索引至结束索引范围内的内容滚动至可视区域。 |
 | [ArkUI_ErrorCode OH_ArkUI_PickerIndicatorStyle_ConfigureBackground(ArkUI_PickerIndicatorStyle* style, ArkUI_PickerIndicatorBackground* background)](#oh_arkui_pickerindicatorstyle_configurebackground) | Set the parameters of background style. |
 | [ArkUI_ErrorCode OH_ArkUI_PickerIndicatorStyle_ConfigureDivider(ArkUI_PickerIndicatorStyle* style, ArkUI_PickerIndicatorDivider* divider)](#oh_arkui_pickerindicatorstyle_configuredivider) | Set the parameters of divider style. |
-| [ArkUI_Matrix4ScaleOptions* OH_ArkUI_Matrix4ScaleOptions_Create()](#oh_arkui_matrix4scaleoptions_create) | Create an object of ArkUI_Matrix4ScaleOptions. In the newly created options, the default values for the scaling coefficients in the x, y and z directions are 1, and the default values for centerX, centerY are 0. |
-| [void OH_ArkUI_Matrix4ScaleOptions_Dispose(ArkUI_Matrix4ScaleOptions* options)](#oh_arkui_matrix4scaleoptions_dispose) | Disposes the ArkUI_Matrix4ScaleOptions object. |
-| [ArkUI_ErrorCode OH_ArkUI_Matrix4ScaleOptions_SetX(ArkUI_Matrix4ScaleOptions* options, const float scaleX)](#oh_arkui_matrix4scaleoptions_setx) | Set the scaling factor in the x direction in ArkUI_Matrix4ScaleOptions. |
-| [ArkUI_ErrorCode OH_ArkUI_Matrix4ScaleOptions_GetX(const ArkUI_Matrix4ScaleOptions* options, float* scaleX)](#oh_arkui_matrix4scaleoptions_getx) | Get the scaling factor in the x direction in ArkUI_Matrix4ScaleOptions. If the value of x is never set, its default value is 1. |
-| [ArkUI_ErrorCode OH_ArkUI_Matrix4ScaleOptions_SetY(ArkUI_Matrix4ScaleOptions* options, const float scaleY)](#oh_arkui_matrix4scaleoptions_sety) | Set the scaling factor in the y direction in ArkUI_Matrix4ScaleOptions. |
-| [ArkUI_ErrorCode OH_ArkUI_Matrix4ScaleOptions_GetY(const ArkUI_Matrix4ScaleOptions* options, float* scaleY)](#oh_arkui_matrix4scaleoptions_gety) | Get the scaling factor in the y direction in ArkUI_Matrix4ScaleOptions. If the value of y is never set, its default value is 1. |
-| [ArkUI_ErrorCode OH_ArkUI_Matrix4ScaleOptions_SetZ(ArkUI_Matrix4ScaleOptions* options, const float scaleZ)](#oh_arkui_matrix4scaleoptions_setz) | Set the scaling factor in the z direction in ArkUI_Matrix4ScaleOptions. |
-| [ArkUI_ErrorCode OH_ArkUI_Matrix4ScaleOptions_GetZ(const ArkUI_Matrix4ScaleOptions* options, float* scaleZ)](#oh_arkui_matrix4scaleoptions_getz) | Get the scaling factor in the z direction in ArkUI_Matrix4ScaleOptions. If the value of z is never set, its default value is 1. |
-| [ArkUI_ErrorCode OH_ArkUI_Matrix4ScaleOptions_SetCenterX(ArkUI_Matrix4ScaleOptions* options, const float centerX)](#oh_arkui_matrix4scaleoptions_setcenterx) | Set x offset relative to the transformation center. 0 means no additional x-direction offset from the transformation center. The unit is px. |
-| [ArkUI_ErrorCode OH_ArkUI_Matrix4ScaleOptions_GetCenterX(const ArkUI_Matrix4ScaleOptions* options, float* centerX)](#oh_arkui_matrix4scaleoptions_getcenterx) | Get the value of centerX from the options, which represents the x-direction offset relative to the transformation center. The unit is px. If the value of centerX is never set, its default value is 0. |
-| [ArkUI_ErrorCode OH_ArkUI_Matrix4ScaleOptions_SetCenterY(ArkUI_Matrix4ScaleOptions* options, const float centerY)](#oh_arkui_matrix4scaleoptions_setcentery) | Set y offset relative to the transformation center. 0 means no additional y-direction offset from the transformation center. The unit is px. |
-| [ArkUI_ErrorCode OH_ArkUI_Matrix4ScaleOptions_GetCenterY(const ArkUI_Matrix4ScaleOptions* options, float* centerY)](#oh_arkui_matrix4scaleoptions_getcentery) | Get the value of centerY from the options, which represents the y-direction offset relative to the transformation center. The unit is px. If the value of centerY is never set, its default value is 0. |
-| [ArkUI_Matrix4RotationOptions* OH_ArkUI_Matrix4RotationOptions_Create()](#oh_arkui_matrix4rotationoptions_create) | Create an object of ArkUI_Matrix4RotationOptions. In the newly created options, the x, y, and z values in the direction vector specifying the rotation axis are undetermined; The default values for centerX, centerY are 0; The default value for angle is 0. If none of x, y, z are specified, it is equivalent to x=0, y=0, z=1, which means rotation around the z-axis. Once any one of x, y, z is specified, the remaining unspecified values are equivalent to 0. |
-| [void OH_ArkUI_Matrix4RotationOptions_Dispose(ArkUI_Matrix4RotationOptions* options)](#oh_arkui_matrix4rotationoptions_dispose) | Disposes the ArkUI_Matrix4RotationOptions object. |
-| [ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_SetX(ArkUI_Matrix4RotationOptions* options, const float x)](#oh_arkui_matrix4rotationoptions_setx) | Set the value of the direction vector for the x-axis direction in ArkUI_Matrix4RotationOptions. |
-| [ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_GetX(const ArkUI_Matrix4RotationOptions* options, float* x)](#oh_arkui_matrix4rotationoptions_getx) | Get the value of the direction vector for the x-axis direction in ArkUI_Matrix4RotationOptions. If the value of x is never set, its value will be undefined, so the function will return ARKUI_ERROR_CODE_PARAM_INVALID. |
-| [ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_SetY(ArkUI_Matrix4RotationOptions* options, const float y)](#oh_arkui_matrix4rotationoptions_sety) | Set the value of the direction vector for the y-axis direction in ArkUI_Matrix4RotationOptions. |
-| [ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_GetY(const ArkUI_Matrix4RotationOptions* options, float* y)](#oh_arkui_matrix4rotationoptions_gety) | Get the value of the direction vector for the y-axis direction in ArkUI_Matrix4RotationOptions. If the value of y is never set, its value will be undefined, so the function will return ARKUI_ERROR_CODE_PARAM_INVALID. |
-| [ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_SetZ(ArkUI_Matrix4RotationOptions* options, const float z)](#oh_arkui_matrix4rotationoptions_setz) | Set the value of the direction vector for the z-axis direction in ArkUI_Matrix4RotationOptions. |
-| [ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_GetZ(const ArkUI_Matrix4RotationOptions* options, float* z)](#oh_arkui_matrix4rotationoptions_getz) | Get the value of the direction vector for the z-axis direction in ArkUI_Matrix4RotationOptions. If the value of z is never set, its value will be undefined, so the function will return ARKUI_ERROR_CODE_PARAM_INVALID. |
-| [ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_SetAngle(ArkUI_Matrix4RotationOptions* options, const float angle)](#oh_arkui_matrix4rotationoptions_setangle) | Set the value of the rotation angle in ArkUI_Matrix4RotationOptions. The unit is degree. |
-| [ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_GetAngle(const ArkUI_Matrix4RotationOptions* options, float* angle)](#oh_arkui_matrix4rotationoptions_getangle) | Get the value of the rotation angle in ArkUI_Matrix4RotationOptions. The unit is degree. If the value of angle is never set, its default value is 0. |
-| [ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_SetCenterX(ArkUI_Matrix4RotationOptions* options, const float centerX)](#oh_arkui_matrix4rotationoptions_setcenterx) | Set x offset relative to the transformation center. 0 means no additional x-direction offset from the transformation center. The unit is px. |
-| [ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_GetCenterX(const ArkUI_Matrix4RotationOptions* options, float* centerX)](#oh_arkui_matrix4rotationoptions_getcenterx) | Get the value of centerX from the options, which represents the x-direction offset relative to the transformation center. The unit is px. If the value of centerX is never set, its default value is 0. |
-| [ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_SetCenterY(ArkUI_Matrix4RotationOptions* options, const float centerY)](#oh_arkui_matrix4rotationoptions_setcentery) | Set y offset relative to the transformation center. 0 means no additional y-direction offset from the transformation center. The unit is px. |
-| [ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_GetCenterY(const ArkUI_Matrix4RotationOptions* options, float* centerY)](#oh_arkui_matrix4rotationoptions_getcentery) | Get the value of centerY from the options, which represents the y-direction offset relative to the transformation center. The unit is px. If the value of centerY is never set, its default value is 0. |
-| [ArkUI_Matrix4TranslationOptions* OH_ArkUI_Matrix4TranslationOptions_Create()](#oh_arkui_matrix4translationoptions_create) | Create an object of ArkUI_Matrix4TranslationOptions. In the newly created options, the default values for x, y and z are 0. |
-| [void OH_ArkUI_Matrix4TranslationOptions_Dispose(ArkUI_Matrix4TranslationOptions* options)](#oh_arkui_matrix4translationoptions_dispose) | Disposes the ArkUI_Matrix4TranslationOptions object. |
-| [ArkUI_ErrorCode OH_ArkUI_Matrix4TranslationOptions_SetX(ArkUI_Matrix4TranslationOptions* options, const float x)](#oh_arkui_matrix4translationoptions_setx) | Set the translation value in the x-axis direction. The unit is px. If the value of x is never set, its default value is 0. |
-| [ArkUI_ErrorCode OH_ArkUI_Matrix4TranslationOptions_GetX(const ArkUI_Matrix4TranslationOptions* options, float* x)](#oh_arkui_matrix4translationoptions_getx) | Get the translation value in the x-axis direction from ArkUI_Matrix4TranslationOptions. |
-| [ArkUI_ErrorCode OH_ArkUI_Matrix4TranslationOptions_SetY(ArkUI_Matrix4TranslationOptions* options, const float y)](#oh_arkui_matrix4translationoptions_sety) | Set the translation value in the y-axis direction. The unit is px. If the value of y is never set, its default value is 0. |
-| [ArkUI_ErrorCode OH_ArkUI_Matrix4TranslationOptions_GetY(const ArkUI_Matrix4TranslationOptions* options, float* y)](#oh_arkui_matrix4translationoptions_gety) | Get the translation value in the y-axis direction from ArkUI_Matrix4TranslationOptions. |
-| [ArkUI_ErrorCode OH_ArkUI_Matrix4TranslationOptions_SetZ(ArkUI_Matrix4TranslationOptions* options, const float z)](#oh_arkui_matrix4translationoptions_setz) | Set the translation value in the z-axis direction. The unit is px. If the value of z is never set, its default value is 0. |
-| [ArkUI_ErrorCode OH_ArkUI_Matrix4TranslationOptions_GetZ(const ArkUI_Matrix4TranslationOptions* options, float* z)](#oh_arkui_matrix4translationoptions_getz) | Get the translation value in the z-axis direction from ArkUI_Matrix4TranslationOptions. |
-| [ArkUI_Matrix4* OH_ArkUI_Matrix4_CreateIdentity()](#oh_arkui_matrix4_createidentity) | Create an identity matrix4 object. |
-| [ArkUI_Matrix4* OH_ArkUI_Matrix4_CreateByElements(const float* elements)](#oh_arkui_matrix4_createbyelements) | Specify each element of the matrix to create a matrix4 object. |
-| [void OH_ArkUI_Matrix4_Dispose(ArkUI_Matrix4* matrix)](#oh_arkui_matrix4_dispose) | Disposes a matrix4 object. |
-| [ArkUI_Matrix4* OH_ArkUI_Matrix4_Copy(const ArkUI_Matrix4* matrix)](#oh_arkui_matrix4_copy) | Create a copy of the matrix4 object. |
-| [ArkUI_ErrorCode OH_ArkUI_Matrix4_Invert(ArkUI_Matrix4* matrix)](#oh_arkui_matrix4_invert) | Perform an inverse matrix transformation on the input matrix. If the matrix is invertible, this function will modify the input matrix; otherwise, the matrix will remain unchanged and an error code will be returned. |
-| [ArkUI_ErrorCode OH_ArkUI_Matrix4_Combine(ArkUI_Matrix4* oriMatrix, const ArkUI_Matrix4* anotherMatrix)](#oh_arkui_matrix4_combine) | Combine another matrix with the original matrix, and storing the resulting matrix in oriMatrix. The resulting matrix is equivalent to first applying the transformation of oriMatrix and then applying the transformation of anotherMatrix. This function will alter the oriMatrix object. |
-| [ArkUI_ErrorCode OH_ArkUI_Matrix4_Translate(ArkUI_Matrix4* matrix, const ArkUI_Matrix4TranslationOptions* translate)](#oh_arkui_matrix4_translate) | Apply a tranlation transformation to the original matrix to obtain the translated matrix. Each translation transformation is applied cumulatively. This function will alter the input matrix object. |
-| [ArkUI_ErrorCode OH_ArkUI_Matrix4_Scale(ArkUI_Matrix4* matrix, const ArkUI_Matrix4ScaleOptions* scale)](#oh_arkui_matrix4_scale) | Apply a scale transformation to the original matrix to obtain the scaled matrix. Each scale transformation is applied cumulatively. This function will alter the input matrix object. |
-| [ArkUI_ErrorCode OH_ArkUI_Matrix4_Rotate(ArkUI_Matrix4* matrix, const ArkUI_Matrix4RotationOptions* rotate)](#oh_arkui_matrix4_rotate) | Apply a rotation transformation to the original matrix to obtain the rotated matrix. Each rotation transformation is applied cumulatively. This function will alter the input matrix object. |
-| [ArkUI_ErrorCode OH_ArkUI_Matrix4_Skew(ArkUI_Matrix4* matrix, const float skewX, const float skewY)](#oh_arkui_matrix4_skew) | Apply a skew transformation to the original matrix to obtain the skewed matrix. Each skew transformation is applied cumulatively. This function will alter the input matrix object. |
-| [ArkUI_ErrorCode OH_ArkUI_Matrix4_TransformPoint(const ArkUI_Matrix4* matrix, const ArkUI_PointF* oriPoint, ArkUI_PointF* result)](#oh_arkui_matrix4_transformpoint) | Calculate the new coordinate position of a point after it has been transformed by a matrix. The calculated transformed coordinate point will be filled into the ArkUI_PointF structure pointed to by result. |
-| [ArkUI_ErrorCode OH_ArkUI_Matrix4_SetPolyToPoly(ArkUI_Matrix4* matrix, const ArkUI_PointF* src, const ArkUI_PointF* dst, const uint32_t pointCount)](#oh_arkui_matrix4_setpolytopoly) | Map the vertex coordinates of one polygon to the vertex coordinates of another polygon, and calculate the required matrix. The resulting matrix will be filled into the object pointed to by matrix. |
-| [ArkUI_ErrorCode OH_ArkUI_Matrix4_GetElements(const ArkUI_Matrix4* matrix, float* result)](#oh_arkui_matrix4_getelements) | Obtain the 16 elements of the matrix and fill them into the array pointed to by result. The array pointed to by result must have space for 16 float elements. |
 | [void OH_ArkUI_CrossLanguageOption_SetTreeOperatingStatus(ArkUI_CrossLanguageOption* option, OH_ArkUI_CrossLanguageOperatingStatus status)](#oh_arkui_crosslanguageoption_settreeoperatingstatus) | Sets the tree operating status for the cross-language option. |
 | [OH_ArkUI_CrossLanguageOperatingStatus OH_ArkUI_CrossLanguageOption_GetTreeOperatingStatus(ArkUI_CrossLanguageOption* option)](#oh_arkui_crosslanguageoption_gettreeoperatingstatus) | Gets the tree operating status of the cross-language option. |
 | [OH_ArkUI_LinearGradientOptions* OH_ArkUI_LinearGradientOptions_Create()](#oh_arkui_lineargradientoptions_create) | Creates a linear gradient options object. The returned object must be released by calling <b>OH_ArkUI_LinearGradientOptions_Destroy</b>. |
@@ -718,7 +642,7 @@ enum ArkUI_AccessibilityMode
 
 **描述：**
 
-Enumerates the accessibility modes.
+定义无障碍辅助服务模式。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -726,10 +650,10 @@ Enumerates the accessibility modes.
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_ACCESSIBILITY_MODE_AUTO = 0 | Whether the component can be identified by the accessibility service is dependent on the component. |
-| ARKUI_ACCESSIBILITY_MODE_ENABLED | The component can be identified by the accessibility service. |
-| ARKUI_ACCESSIBILITY_MODE_DISABLED | The component cannot be identified by the accessibility service. |
-| ARKUI_ACCESSIBILITY_MODE_DISABLED_FOR_DESCENDANTS | The component and all its child components cannot be identified by the accessibility service. |
+| ARKUI_ACCESSIBILITY_MODE_AUTO = 0 | 根据组件不同会转换为“enabled”或者“disabled”。 |
+| ARKUI_ACCESSIBILITY_MODE_ENABLED | 当前组件可被无障碍辅助服务所识别。 |
+| ARKUI_ACCESSIBILITY_MODE_DISABLED | 当前组件不可被无障碍辅助服务所识别。 |
+| ARKUI_ACCESSIBILITY_MODE_DISABLED_FOR_DESCENDANTS | 当前组件及其所有子组件不可被无障碍辅助服务所识别。 |
 
 ### ArkUI_AnimationPlayMode
 
@@ -799,7 +723,7 @@ enum ArkUI_SystemColorMode
 
 **描述：**
 
-Enumerates the system color modes.
+定义系统深浅色模式。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -807,8 +731,8 @@ Enumerates the system color modes.
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_SYSTEM_COLOR_MODE_LIGHT = 0 | Light color mode. |
-| ARKUI_SYSTEM_COLOR_MODE_DARK | Dark color mode. |
+| ARKUI_SYSTEM_COLOR_MODE_LIGHT = 0 | 浅色模式。 |
+| ARKUI_SYSTEM_COLOR_MODE_DARK | 深色模式。 |
 
 ### ArkUI_BlurStyle
 
@@ -1066,7 +990,7 @@ enum ArkUI_FinishCallbackType
 
 **描述：**
 
-Enumerates the animation onFinish callback types.
+在动画中定义[OH_ArkUI_AnimatorOption_RegisterOnFinishCallback](capi-native-animate-h.md#oh_arkui_animatoroption_registeronfinishcallback)回调的类型。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1074,8 +998,8 @@ Enumerates the animation onFinish callback types.
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_FINISH_CALLBACK_REMOVED = 0 | The callback is invoked when the entire animation is removed once it has finished. |
-| ARKUI_FINISH_CALLBACK_LOGICALLY | The callback is invoked when the animation logically enters the falling state, though it may still be in its long tail state. |
+| ARKUI_FINISH_CALLBACK_REMOVED = 0 | 当整个动画结束并立即删除时，将触发回调。 |
+| ARKUI_FINISH_CALLBACK_LOGICALLY | 当动画在逻辑上已完成，但可能仍处于其长尾状态时，将触发回调。长尾状态是指动画即将完全停止前的 残余变化过程，此时动画的数值变化已非常微小，接近目标值。 |
 
 ### ArkUI_LengthMetricUnit
 
@@ -1200,7 +1124,7 @@ enum ArkUI_AccessibilityCheckedState
 
 **描述：**
 
-Defines the state type for the accessibility checkbox.
+定义无障碍复选框状态类型枚举值。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1208,8 +1132,8 @@ Defines the state type for the accessibility checkbox.
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_ACCESSIBILITY_UNCHECKED = 0 | The Checkbox unchecked. |
-| ARKUI_ACCESSIBILITY_CHECKED | The Checkbox checked. |
+| ARKUI_ACCESSIBILITY_UNCHECKED = 0 | 复选框未被选中。 |
+| ARKUI_ACCESSIBILITY_CHECKED | 复选框被选中。 |
 
 ### ArkUI_AnimationDirection
 
@@ -1240,7 +1164,7 @@ enum ArkUI_AccessibilityActionType
 
 **描述：**
 
-Define accessible action types.
+定义无障碍操作类型。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1248,11 +1172,11 @@ Define accessible action types.
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_ACCESSIBILITY_ACTION_CLICK = 1 << 0 | click action. |
-| ARKUI_ACCESSIBILITY_ACTION_LONG_CLICK = 1 << 1 | long click action. |
-| ARKUI_ACCESSIBILITY_ACTION_CUT = 1 << 2 | cut action. |
-| ARKUI_ACCESSIBILITY_ACTION_COPY = 1 << 3 | copy action. |
-| ARKUI_ACCESSIBILITY_ACTION_PASTE = 1 << 4 | paste action. |
+| ARKUI_ACCESSIBILITY_ACTION_CLICK = 1 << 0 | 点击操作。 |
+| ARKUI_ACCESSIBILITY_ACTION_LONG_CLICK = 1 << 1 | 长按操作。 |
+| ARKUI_ACCESSIBILITY_ACTION_CUT = 1 << 2 | 剪切操作。 |
+| ARKUI_ACCESSIBILITY_ACTION_COPY = 1 << 3 | 复制操作。 |
+| ARKUI_ACCESSIBILITY_ACTION_PASTE = 1 << 4 | 粘贴操作。 |
 
 ### ArkUI_NavDestinationState
 
@@ -1262,7 +1186,7 @@ enum ArkUI_NavDestinationState
 
 **描述：**
 
-Defines the state of the NavDestination component.
+定义NavDestination组件的状态，用于描述NavDestination在导航过程中的生命周期状态变化。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1270,17 +1194,17 @@ Defines the state of the NavDestination component.
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_NAV_DESTINATION_STATE_ON_SHOW = 0 | The NavDestination show. |
-| ARKUI_NAV_DESTINATION_STATE_ON_HIDE = 1 | The NavDestination hide. |
-| ARKUI_NAV_DESTINATION_STATE_ON_APPEAR = 2 | The NavDestination is mounted to the component tree. |
-| ARKUI_NAV_DESTINATION_STATE_ON_DISAPPEAR = 3 | The NavDestination removed from the component tree. |
-| ARKUI_NAV_DESTINATION_STATE_ON_WILL_SHOW = 4 | Before the NavDestination show. |
-| ARKUI_NAV_DESTINATION_STATE_ON_WILL_HIDE = 5 | Before the NavDestination hide. |
-| ARKUI_NAV_DESTINATION_STATE_ON_WILL_APPEAR = 6 | Before the NavDestination mount to the component tree. |
-| ARKUI_NAV_DESTINATION_STATE_ON_WILL_DISAPPEAR = 7 | Before the NavDestination removed from the component tree. |
+| ARKUI_NAV_DESTINATION_STATE_ON_SHOW = 0 | NavDestination组件显示。 |
+| ARKUI_NAV_DESTINATION_STATE_ON_HIDE = 1 | NavDestination组件隐藏。 |
+| ARKUI_NAV_DESTINATION_STATE_ON_APPEAR = 2 | NavDestination挂载到组件树上。 |
+| ARKUI_NAV_DESTINATION_STATE_ON_DISAPPEAR = 3 | NavDestination从组件树上卸载。 |
+| ARKUI_NAV_DESTINATION_STATE_ON_WILL_SHOW = 4 | NavDestination组件显示之前。 |
+| ARKUI_NAV_DESTINATION_STATE_ON_WILL_HIDE = 5 | NavDestination组件隐藏之前。 |
+| ARKUI_NAV_DESTINATION_STATE_ON_WILL_APPEAR = 6 | NavDestination挂载到组件树之前。 |
+| ARKUI_NAV_DESTINATION_STATE_ON_WILL_DISAPPEAR = 7 | NavDestination从组件树上卸载之前。 |
 | ARKUI_NAV_DESTINATION_STATE_ON_ACTIVE = 8 |  |
 | ARKUI_NAV_DESTINATION_STATE_ON_INACTIVE = 9 |  |
-| ARKUI_NAV_DESTINATION_STATE_ON_BACK_PRESS = 100 | The NavDestination returns from the component. |
+| ARKUI_NAV_DESTINATION_STATE_ON_BACK_PRESS = 100 | NavDestination组件接收到返回操作时触发，例如用户点击返回键或调用返回导航接口。 |
 
 ### ArkUI_RouterPageState
 
@@ -1454,7 +1378,7 @@ enum ArkUI_RenderStrategy
 
 **描述：**
 
-Enumerates the graphics rendering strategy.
+定义图形渲染策略。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1462,8 +1386,8 @@ Enumerates the graphics rendering strategy.
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_RENDERSTRATEGY_FAST = 0 | The current component and its child components will be drawn directly onto the screen canvas. |
-| ARKUI_RENDERSTRATEGY_OFFSCREEN | The current component and its child components will first be drawn onto an off-screen canvas, then undergo some graphic rendering operations, and finally be drawn onto the main canvas. |
+| ARKUI_RENDERSTRATEGY_FAST = 0 | 在线绘制模式。当前组件及其子组件将直接绘制到屏幕画布上。 |
+| ARKUI_RENDERSTRATEGY_OFFSCREEN | 离屏绘制模式。当前组件及其子组件将先绘制到离屏画布上，再经过一些图形渲染处理， 最终绘制到主画布上。 |
 
 ### OH_ArkUI_CrossLanguageOperatingStatus
 
@@ -5065,264 +4989,6 @@ Gets the menu policy of selection options.
 | -- | -- |
 | [ArkUI_MenuPolicy](capi-native-type-h.md#arkui_menupolicy) | Returns the menu policy. |
 
-### OH_ArkUI_MotionPathOptions_Create()
-
-```c
-ArkUI_MotionPathOptions* OH_ArkUI_MotionPathOptions_Create()
-```
-
-**描述：**
-
-Create an object of the motion path options for path animation. In the newly created ArkUI_MotionPathOptions, the "path" value is an empty string, the "from" value is 0, the "to" value is 1, and the "rotatable" value is false.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 23
-
-**返回值：**
-
-| 类型 | 说明 |
-| -- | -- |
-| [ArkUI_MotionPathOptions*](capi-arkui-nativemodule-arkui-motionpathoptions.md) | A pointer to the ArkUI_MotionPathOptions. |
-
-### OH_ArkUI_MotionPathOptions_Dispose()
-
-```c
-void OH_ArkUI_MotionPathOptions_Dispose(ArkUI_MotionPathOptions* options)
-```
-
-**描述：**
-
-Dispose the ArkUI_MotionPathOptions object.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 23
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md)* options | Pointer to the ArkUI_MotionPathOptions object to be disposed. |
-
-### OH_ArkUI_MotionPathOptions_SetPath()
-
-```c
-ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_SetPath(ArkUI_MotionPathOptions* options, const char* svgPath)
-```
-
-**描述：**
-
-Sets the the motion path for the animation using an SVG path string. The path supports using "start" and "end" as placeholders for the starting and ending points, for example: "Mstart.x start.y L50 50 Lend.x end.y Z". Refer to the SVG path format for the path string. When set to an empty string, it is equivalent to not setting a path animation.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 23
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md)* options | Pointer to the ArkUI_MotionPathOptions object. |
-| const char* svgPath | The motion path for the path animation. |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
-
-### OH_ArkUI_MotionPathOptions_GetPath()
-
-```c
-ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_GetPath(const ArkUI_MotionPathOptions* options, char* svgPathBuffer, const int32_t bufferSize, int32_t* writeLength)
-```
-
-**描述：**
-
-Gets the motion path string in the ArkUI_MotionPathOptions object.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 23
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [const ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md)* options | Pointer to the ArkUI_MotionPathOptions object. |
-| char* svgPathBuffer | Buffer pointer to the motion path string. |
-| const int32_t bufferSize | The buffer size of the svgPathBuffer parameter. |
-| int32_t* writeLength | Indicates the string length actually written to the buffer when returning ARKUI_ERROR_CODE_NO_ERROR. Indicates the minimum buffer size that can accommodate the target when ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR is returned. |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. Returns ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR if the buffer size is less than the minimum buffer size. |
-
-### OH_ArkUI_MotionPathOptions_SetFrom()
-
-```c
-ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_SetFrom(ArkUI_MotionPathOptions* options, const float from)
-```
-
-**描述：**
-
-Sets the starting progress in the ArkUI_MotionPathOptions. Progress refers to the ratio of the length of the path that has been traveled to the total length of the entire path. The value range is [0.0, 1.0], and the "from" value should be less than or equal to the "to" value; otherwise, an ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE error code will be returned.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 23
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md)* options | Pointer to the ArkUI_MotionPathOptions object. |
-| const float from | The starting progress in the ArkUI_MotionPathOptions. |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. Returns ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE if the "from" value is out of range or the "from" value is greater than the "to" value. |
-
-### OH_ArkUI_MotionPathOptions_GetFrom()
-
-```c
-ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_GetFrom(const ArkUI_MotionPathOptions* options, float* from)
-```
-
-**描述：**
-
-Gets the starting progress in the ArkUI_MotionPathOptions object.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 23
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [const ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md)* options | Pointer to the ArkUI_MotionPathOptions object. |
-| float* from | The starting progress in the ArkUI_MotionPathOptions. |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
-
-### OH_ArkUI_MotionPathOptions_SetTo()
-
-```c
-ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_SetTo(ArkUI_MotionPathOptions* options, const float to)
-```
-
-**描述：**
-
-Sets the endpoint progress in the ArkUI_MotionPathOptions. Progress refers to the ratio of the length of the path that has been traveled to the total length of the entire path. The value range is [0.0, 1.0], and the "from" value should be less than or equal to the "to" value; otherwise, an ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE error code will be returned.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 23
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md)* options | Pointer to the ArkUI_MotionPathOptions object. |
-| const float to | The endpoint progress in the ArkUI_MotionPathOptions. |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. Returns ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE if the "to" value is out of range or the "to" value is less than the "from" value. |
-
-### OH_ArkUI_MotionPathOptions_GetTo()
-
-```c
-ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_GetTo(const ArkUI_MotionPathOptions* options, float* to)
-```
-
-**描述：**
-
-Gets the endpoint progress in the ArkUI_MotionPathOptions object.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 23
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [const ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md)* options | Pointer to the ArkUI_MotionPathOptions object. |
-| float* to | The endpoint progress in the ArkUI_MotionPathOptions. |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
-
-### OH_ArkUI_MotionPathOptions_SetRotatable()
-
-```c
-ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_SetRotatable(ArkUI_MotionPathOptions* options, const bool rotatable)
-```
-
-**描述：**
-
-Sets the rotatable parameter in the ArkUI_MotionPathOptions. It indicates whether to rotate along the path. True means rotating along the path, while false means not rotating along the path.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 23
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md)* options | Pointer to the ArkUI_MotionPathOptions object. |
-| const bool rotatable | The rotatable parameter in the ArkUI_MotionPathOptions. |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
-
-### OH_ArkUI_MotionPathOptions_GetRotatable()
-
-```c
-ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_GetRotatable(const ArkUI_MotionPathOptions* options, bool* rotatable)
-```
-
-**描述：**
-
-Gets the rotatable parameter in the ArkUI_MotionPathOptions.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 23
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [const ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md)* options | Pointer to the ArkUI_MotionPathOptions object. |
-| bool* rotatable | The rotatable parameter in the ArkUI_MotionPathOptions. |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
-
 ### OH_ArkUI_SelectedDragPreviewStyle_Create()
 
 ```c
@@ -6960,370 +6626,6 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_SetTypingParagraphStyl
 | -- | -- |
 | [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
-### OH_ArkUI_ShadowOptions_Create()
-
-```c
-OH_ArkUI_ShadowOptions* OH_ArkUI_ShadowOptions_Create()
-```
-
-**描述：**
-
-创建一个阴影选项对象。当该对象不再使用时，请调用[OH_ArkUI_ShadowOptions_Destroy](capi-native-type-h.md#oh_arkui_shadowoptions_destroy)销毁。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 24
-
-**返回值：**
-
-| 类型 | 说明 |
-| -- | -- |
-| OH_ArkUI_ShadowOptions* | 指向[OH_ArkUI_ShadowOptions](capi-arkui-nativemodule-oh-arkui-shadowoptions.md)对象的指针。 |
-
-### OH_ArkUI_ShadowOptions_Destroy()
-
-```c
-void OH_ArkUI_ShadowOptions_Destroy(OH_ArkUI_ShadowOptions* options)
-```
-
-**描述：**
-
-销毁阴影选项对象。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 24
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| OH_ArkUI_ShadowOptions* options | 指向[OH_ArkUI_ShadowOptions](capi-arkui-nativemodule-oh-arkui-shadowoptions.md)对象的指针。 |
-
-### OH_ArkUI_ShadowOptions_SetRadius()
-
-```c
-ArkUI_ErrorCode OH_ArkUI_ShadowOptions_SetRadius(OH_ArkUI_ShadowOptions* options, float radius)
-```
-
-**描述：**
-
-设置阴影选项的模糊半径。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 24
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| OH_ArkUI_ShadowOptions* options | 指向[OH_ArkUI_ShadowOptions](capi-arkui-nativemodule-oh-arkui-shadowoptions.md)对象的指针。 |
-| float radius | 阴影的模糊半径，单位为vp。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
-
-### OH_ArkUI_ShadowOptions_GetRadius()
-
-```c
-ArkUI_ErrorCode OH_ArkUI_ShadowOptions_GetRadius(OH_ArkUI_ShadowOptions* options, float* radius)
-```
-
-**描述：**
-
-获取阴影选项的模糊半径。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 24
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| OH_ArkUI_ShadowOptions* options | 指向[OH_ArkUI_ShadowOptions](capi-arkui-nativemodule-oh-arkui-shadowoptions.md)对象的指针。 |
-| float* radius | 阴影的模糊半径，单位为vp。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
-
-### OH_ArkUI_ShadowOptions_SetType()
-
-```c
-ArkUI_ErrorCode OH_ArkUI_ShadowOptions_SetType(OH_ArkUI_ShadowOptions* options, ArkUI_ShadowType type)
-```
-
-**描述：**
-
-设置阴影选项的阴影类型。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 24
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| OH_ArkUI_ShadowOptions* options | 指向[OH_ArkUI_ShadowOptions](capi-arkui-nativemodule-oh-arkui-shadowoptions.md)对象的指针。 |
-| [ArkUI_ShadowType](capi-native-type-h.md#arkui_shadowtype) type | 阴影类型[ArkUI_ShadowType](capi-native-type-h.md#arkui_shadowtype)。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
-
-### OH_ArkUI_ShadowOptions_GetType()
-
-```c
-ArkUI_ErrorCode OH_ArkUI_ShadowOptions_GetType(OH_ArkUI_ShadowOptions* options, ArkUI_ShadowType* type)
-```
-
-**描述：**
-
-获取阴影选项的阴影类型。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 24
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| OH_ArkUI_ShadowOptions* options | 指向[OH_ArkUI_ShadowOptions](capi-arkui-nativemodule-oh-arkui-shadowoptions.md)对象的指针。 |
-| [ArkUI_ShadowType](capi-native-type-h.md#arkui_shadowtype)* type | 阴影类型[ArkUI_ShadowType](capi-native-type-h.md#arkui_shadowtype)。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
-
-### OH_ArkUI_ShadowOptions_SetColor()
-
-```c
-ArkUI_ErrorCode OH_ArkUI_ShadowOptions_SetColor(OH_ArkUI_ShadowOptions* options, uint32_t color)
-```
-
-**描述：**
-
-设置阴影选项的阴影颜色。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 24
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| OH_ArkUI_ShadowOptions* options | 指向[OH_ArkUI_ShadowOptions](capi-arkui-nativemodule-oh-arkui-shadowoptions.md)对象的指针。 |
-| uint32_t color | 阴影颜色，0xARGB格式。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
-
-### OH_ArkUI_ShadowOptions_GetColor()
-
-```c
-ArkUI_ErrorCode OH_ArkUI_ShadowOptions_GetColor(OH_ArkUI_ShadowOptions* options, uint32_t* color)
-```
-
-**描述：**
-
-获取阴影选项的阴影颜色。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 24
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| OH_ArkUI_ShadowOptions* options | 指向[OH_ArkUI_ShadowOptions](capi-arkui-nativemodule-oh-arkui-shadowoptions.md)对象的指针。 |
-| uint32_t* color | 阴影颜色，0xARGB格式。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
-
-### OH_ArkUI_ShadowOptions_SetOffsetX()
-
-```c
-ArkUI_ErrorCode OH_ArkUI_ShadowOptions_SetOffsetX(OH_ArkUI_ShadowOptions* options, float offsetX)
-```
-
-**描述：**
-
-设置阴影在x轴上的偏移量。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 24
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| OH_ArkUI_ShadowOptions* options | 指向[OH_ArkUI_ShadowOptions](capi-arkui-nativemodule-oh-arkui-shadowoptions.md)对象的指针。 |
-| float offsetX | 阴影在x轴上的偏移量，单位为vp。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
-
-### OH_ArkUI_ShadowOptions_GetOffsetX()
-
-```c
-ArkUI_ErrorCode OH_ArkUI_ShadowOptions_GetOffsetX(OH_ArkUI_ShadowOptions* options, float* offsetX)
-```
-
-**描述：**
-
-获取阴影在x轴上的偏移量。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 24
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| OH_ArkUI_ShadowOptions* options | 指向[OH_ArkUI_ShadowOptions](capi-arkui-nativemodule-oh-arkui-shadowoptions.md)对象的指针。 |
-| float* offsetX | 阴影在x轴上的偏移量，单位为vp。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
-
-### OH_ArkUI_ShadowOptions_SetOffsetY()
-
-```c
-ArkUI_ErrorCode OH_ArkUI_ShadowOptions_SetOffsetY(OH_ArkUI_ShadowOptions* options, float offsetY)
-```
-
-**描述：**
-
-设置阴影在y轴上的偏移量。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 24
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| OH_ArkUI_ShadowOptions* options | 指向[OH_ArkUI_ShadowOptions](capi-arkui-nativemodule-oh-arkui-shadowoptions.md)对象的指针。 |
-| float offsetY | 阴影在y轴上的偏移量，单位为vp。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
-
-### OH_ArkUI_ShadowOptions_GetOffsetY()
-
-```c
-ArkUI_ErrorCode OH_ArkUI_ShadowOptions_GetOffsetY(OH_ArkUI_ShadowOptions* options, float* offsetY)
-```
-
-**描述：**
-
-获取阴影在y轴上的偏移量。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 24
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| OH_ArkUI_ShadowOptions* options | 指向[OH_ArkUI_ShadowOptions](capi-arkui-nativemodule-oh-arkui-shadowoptions.md)对象的指针。 |
-| float* offsetY | 阴影在y轴上的偏移量，单位为vp。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
-
-### OH_ArkUI_ShadowOptions_SetFill()
-
-```c
-ArkUI_ErrorCode OH_ArkUI_ShadowOptions_SetFill(OH_ArkUI_ShadowOptions* options, bool isFill)
-```
-
-**描述：**
-
-设置是否用阴影填充组件内部。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 24
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| OH_ArkUI_ShadowOptions* options | 指向[OH_ArkUI_ShadowOptions](capi-arkui-nativemodule-oh-arkui-shadowoptions.md)对象的指针。 |
-| bool isFill | 是否用阴影填充组件内部。true表示用阴影填充组件内部，false表示不用阴影填充组件内部。默认值为false。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
-
-### OH_ArkUI_ShadowOptions_GetFill()
-
-```c
-ArkUI_ErrorCode OH_ArkUI_ShadowOptions_GetFill(OH_ArkUI_ShadowOptions* options, bool* isFill)
-```
-
-**描述：**
-
-获取是否用阴影填充组件内部。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 24
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| OH_ArkUI_ShadowOptions* options | 指向[OH_ArkUI_ShadowOptions](capi-arkui-nativemodule-oh-arkui-shadowoptions.md)对象的指针。 |
-| bool* isFill | 是否用阴影填充组件内部。true表示用阴影填充组件内部，false表示不用阴影填充组件内部。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 返回结果码。<br>若操作成功，返回ARKUI_ERROR_CODE_NO_ERROR。<br>若参数异常，返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
-
 ### OH_ArkUI_TextEditorTextStyle_SetFontColor()
 
 ```c
@@ -8707,1220 +8009,6 @@ Set the parameters of divider style.
 | 类型 | 说明 |
 | -- | -- |
 | [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns ARKUI_ERROR_CODE_NO_ERROR if success. Returns ARKUI_ERROR_CODE_PARAM_INVALID The parameters set need to be consistent with the type of the created instance. If they are not consistent, this error code will be returned. This interface only takes effect when the type is "divider". |
-
-### OH_ArkUI_Matrix4ScaleOptions_Create()
-
-```c
-ArkUI_Matrix4ScaleOptions* OH_ArkUI_Matrix4ScaleOptions_Create()
-```
-
-**描述：**
-
-Create an object of ArkUI_Matrix4ScaleOptions. In the newly created options, the default values for the scaling coefficients in the x, y and z directions are 1, and the default values for centerX, centerY are 0.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 24
-
-**返回值：**
-
-| 类型 | 说明 |
-| -- | -- |
-| [ArkUI_Matrix4ScaleOptions*](capi-arkui-nativemodule-arkui-matrix4scaleoptions.md) | Returns a pointer to the newly created ArkUI_Matrix4ScaleOptions. |
-
-### OH_ArkUI_Matrix4ScaleOptions_Dispose()
-
-```c
-void OH_ArkUI_Matrix4ScaleOptions_Dispose(ArkUI_Matrix4ScaleOptions* options)
-```
-
-**描述：**
-
-Disposes the ArkUI_Matrix4ScaleOptions object.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 24
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [ArkUI_Matrix4ScaleOptions](capi-arkui-nativemodule-arkui-matrix4scaleoptions.md)* options | Pointer to the ArkUI_Matrix4ScaleOptions instance to be destroyed. |
-
-### OH_ArkUI_Matrix4ScaleOptions_SetX()
-
-```c
-ArkUI_ErrorCode OH_ArkUI_Matrix4ScaleOptions_SetX(ArkUI_Matrix4ScaleOptions* options, const float scaleX)
-```
-
-**描述：**
-
-Set the scaling factor in the x direction in ArkUI_Matrix4ScaleOptions.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 24
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [ArkUI_Matrix4ScaleOptions](capi-arkui-nativemodule-arkui-matrix4scaleoptions.md)* options | Pointer to the ArkUI_Matrix4ScaleOptions object. |
-| const float scaleX | The scaling factor in the x direction. Value range: (-∞, +∞). |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
-
-### OH_ArkUI_Matrix4ScaleOptions_GetX()
-
-```c
-ArkUI_ErrorCode OH_ArkUI_Matrix4ScaleOptions_GetX(const ArkUI_Matrix4ScaleOptions* options, float* scaleX)
-```
-
-**描述：**
-
-Get the scaling factor in the x direction in ArkUI_Matrix4ScaleOptions. If the value of x is never set, its default value is 1.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 24
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [const ArkUI_Matrix4ScaleOptions](capi-arkui-nativemodule-arkui-matrix4scaleoptions.md)* options | Pointer to the ArkUI_Matrix4ScaleOptions object. |
-| float* scaleX | The scaling factor in the x direction. |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
-
-### OH_ArkUI_Matrix4ScaleOptions_SetY()
-
-```c
-ArkUI_ErrorCode OH_ArkUI_Matrix4ScaleOptions_SetY(ArkUI_Matrix4ScaleOptions* options, const float scaleY)
-```
-
-**描述：**
-
-Set the scaling factor in the y direction in ArkUI_Matrix4ScaleOptions.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 24
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [ArkUI_Matrix4ScaleOptions](capi-arkui-nativemodule-arkui-matrix4scaleoptions.md)* options | Pointer to the ArkUI_Matrix4ScaleOptions object. |
-| const float scaleY | The scaling factor in the y direction. Value range: (-∞, +∞). |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
-
-### OH_ArkUI_Matrix4ScaleOptions_GetY()
-
-```c
-ArkUI_ErrorCode OH_ArkUI_Matrix4ScaleOptions_GetY(const ArkUI_Matrix4ScaleOptions* options, float* scaleY)
-```
-
-**描述：**
-
-Get the scaling factor in the y direction in ArkUI_Matrix4ScaleOptions. If the value of y is never set, its default value is 1.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 24
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [const ArkUI_Matrix4ScaleOptions](capi-arkui-nativemodule-arkui-matrix4scaleoptions.md)* options | Pointer to the ArkUI_Matrix4ScaleOptions object. |
-| float* scaleY | The scaling factor in the y direction. |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
-
-### OH_ArkUI_Matrix4ScaleOptions_SetZ()
-
-```c
-ArkUI_ErrorCode OH_ArkUI_Matrix4ScaleOptions_SetZ(ArkUI_Matrix4ScaleOptions* options, const float scaleZ)
-```
-
-**描述：**
-
-Set the scaling factor in the z direction in ArkUI_Matrix4ScaleOptions.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 24
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [ArkUI_Matrix4ScaleOptions](capi-arkui-nativemodule-arkui-matrix4scaleoptions.md)* options | Pointer to the ArkUI_Matrix4ScaleOptions object. |
-| const float scaleZ | The scaling factor in the z direction. Value range: (-∞, +∞). |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
-
-### OH_ArkUI_Matrix4ScaleOptions_GetZ()
-
-```c
-ArkUI_ErrorCode OH_ArkUI_Matrix4ScaleOptions_GetZ(const ArkUI_Matrix4ScaleOptions* options, float* scaleZ)
-```
-
-**描述：**
-
-Get the scaling factor in the z direction in ArkUI_Matrix4ScaleOptions. If the value of z is never set, its default value is 1.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 24
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [const ArkUI_Matrix4ScaleOptions](capi-arkui-nativemodule-arkui-matrix4scaleoptions.md)* options | Pointer to the ArkUI_Matrix4ScaleOptions object. |
-| float* scaleZ | The scaling factor in the z direction. |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
-
-### OH_ArkUI_Matrix4ScaleOptions_SetCenterX()
-
-```c
-ArkUI_ErrorCode OH_ArkUI_Matrix4ScaleOptions_SetCenterX(ArkUI_Matrix4ScaleOptions* options, const float centerX)
-```
-
-**描述：**
-
-Set x offset relative to the transformation center. 0 means no additional x-direction offset from the transformation center. The unit is px.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 24
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [ArkUI_Matrix4ScaleOptions](capi-arkui-nativemodule-arkui-matrix4scaleoptions.md)* options | Pointer to the ArkUI_Matrix4ScaleOptions object. |
-| const float centerX | The x offset relative to the transformation center. Value range: (-∞, +∞). |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
-
-### OH_ArkUI_Matrix4ScaleOptions_GetCenterX()
-
-```c
-ArkUI_ErrorCode OH_ArkUI_Matrix4ScaleOptions_GetCenterX(const ArkUI_Matrix4ScaleOptions* options, float* centerX)
-```
-
-**描述：**
-
-Get the value of centerX from the options, which represents the x-direction offset relative to the transformation center. The unit is px. If the value of centerX is never set, its default value is 0.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 24
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [const ArkUI_Matrix4ScaleOptions](capi-arkui-nativemodule-arkui-matrix4scaleoptions.md)* options | Pointer to the ArkUI_Matrix4ScaleOptions object. |
-| float* centerX | The x-direction offset relative to the transformation center. |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
-
-### OH_ArkUI_Matrix4ScaleOptions_SetCenterY()
-
-```c
-ArkUI_ErrorCode OH_ArkUI_Matrix4ScaleOptions_SetCenterY(ArkUI_Matrix4ScaleOptions* options, const float centerY)
-```
-
-**描述：**
-
-Set y offset relative to the transformation center. 0 means no additional y-direction offset from the transformation center. The unit is px.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 24
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [ArkUI_Matrix4ScaleOptions](capi-arkui-nativemodule-arkui-matrix4scaleoptions.md)* options | Pointer to the ArkUI_Matrix4ScaleOptions object. |
-| const float centerY | The y offset relative to the transformation center. Value range: (-∞, +∞). |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
-
-### OH_ArkUI_Matrix4ScaleOptions_GetCenterY()
-
-```c
-ArkUI_ErrorCode OH_ArkUI_Matrix4ScaleOptions_GetCenterY(const ArkUI_Matrix4ScaleOptions* options, float* centerY)
-```
-
-**描述：**
-
-Get the value of centerY from the options, which represents the y-direction offset relative to the transformation center. The unit is px. If the value of centerY is never set, its default value is 0.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 24
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [const ArkUI_Matrix4ScaleOptions](capi-arkui-nativemodule-arkui-matrix4scaleoptions.md)* options | Pointer to the ArkUI_Matrix4ScaleOptions object. |
-| float* centerY | The y-direction offset relative to the transformation center. |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
-
-### OH_ArkUI_Matrix4RotationOptions_Create()
-
-```c
-ArkUI_Matrix4RotationOptions* OH_ArkUI_Matrix4RotationOptions_Create()
-```
-
-**描述：**
-
-Create an object of ArkUI_Matrix4RotationOptions. In the newly created options, the x, y, and z values in the direction vector specifying the rotation axis are undetermined; The default values for centerX, centerY are 0; The default value for angle is 0. If none of x, y, z are specified, it is equivalent to x=0, y=0, z=1, which means rotation around the z-axis. Once any one of x, y, z is specified, the remaining unspecified values are equivalent to 0.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 24
-
-**返回值：**
-
-| 类型 | 说明 |
-| -- | -- |
-| [ArkUI_Matrix4RotationOptions*](capi-arkui-nativemodule-arkui-matrix4rotationoptions.md) | Returns a pointer to the newly created ArkUI_Matrix4RotationOptions. |
-
-### OH_ArkUI_Matrix4RotationOptions_Dispose()
-
-```c
-void OH_ArkUI_Matrix4RotationOptions_Dispose(ArkUI_Matrix4RotationOptions* options)
-```
-
-**描述：**
-
-Disposes the ArkUI_Matrix4RotationOptions object.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 24
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [ArkUI_Matrix4RotationOptions](capi-arkui-nativemodule-arkui-matrix4rotationoptions.md)* options | Pointer to the ArkUI_Matrix4RotationOptions instance to be destroyed. |
-
-### OH_ArkUI_Matrix4RotationOptions_SetX()
-
-```c
-ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_SetX(ArkUI_Matrix4RotationOptions* options, const float x)
-```
-
-**描述：**
-
-Set the value of the direction vector for the x-axis direction in ArkUI_Matrix4RotationOptions.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 24
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [ArkUI_Matrix4RotationOptions](capi-arkui-nativemodule-arkui-matrix4rotationoptions.md)* options | Pointer to the ArkUI_Matrix4RotationOptions object. |
-| const float x | The value of the direction vector for the x-axis direction. Value range: (-∞, +∞). |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
-
-### OH_ArkUI_Matrix4RotationOptions_GetX()
-
-```c
-ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_GetX(const ArkUI_Matrix4RotationOptions* options, float* x)
-```
-
-**描述：**
-
-Get the value of the direction vector for the x-axis direction in ArkUI_Matrix4RotationOptions. If the value of x is never set, its value will be undefined, so the function will return ARKUI_ERROR_CODE_PARAM_INVALID.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 24
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [const ArkUI_Matrix4RotationOptions](capi-arkui-nativemodule-arkui-matrix4rotationoptions.md)* options | Pointer to the ArkUI_Matrix4RotationOptions object. |
-| float* x | The value of the direction vector for the x-axis direction. |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
-
-### OH_ArkUI_Matrix4RotationOptions_SetY()
-
-```c
-ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_SetY(ArkUI_Matrix4RotationOptions* options, const float y)
-```
-
-**描述：**
-
-Set the value of the direction vector for the y-axis direction in ArkUI_Matrix4RotationOptions.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 24
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [ArkUI_Matrix4RotationOptions](capi-arkui-nativemodule-arkui-matrix4rotationoptions.md)* options | Pointer to the ArkUI_Matrix4RotationOptions object. |
-| const float y | The value of the direction vector for the y-axis direction. Value range: (-∞, +∞). |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
-
-### OH_ArkUI_Matrix4RotationOptions_GetY()
-
-```c
-ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_GetY(const ArkUI_Matrix4RotationOptions* options, float* y)
-```
-
-**描述：**
-
-Get the value of the direction vector for the y-axis direction in ArkUI_Matrix4RotationOptions. If the value of y is never set, its value will be undefined, so the function will return ARKUI_ERROR_CODE_PARAM_INVALID.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 24
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [const ArkUI_Matrix4RotationOptions](capi-arkui-nativemodule-arkui-matrix4rotationoptions.md)* options | Pointer to the ArkUI_Matrix4RotationOptions object. |
-| float* y | The value of the direction vector for the y-axis direction. |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
-
-### OH_ArkUI_Matrix4RotationOptions_SetZ()
-
-```c
-ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_SetZ(ArkUI_Matrix4RotationOptions* options, const float z)
-```
-
-**描述：**
-
-Set the value of the direction vector for the z-axis direction in ArkUI_Matrix4RotationOptions.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 24
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [ArkUI_Matrix4RotationOptions](capi-arkui-nativemodule-arkui-matrix4rotationoptions.md)* options | Pointer to the ArkUI_Matrix4RotationOptions object. |
-| const float z | The value of the direction vector for the z-axis direction. Value range: (-∞, +∞). |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
-
-### OH_ArkUI_Matrix4RotationOptions_GetZ()
-
-```c
-ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_GetZ(const ArkUI_Matrix4RotationOptions* options, float* z)
-```
-
-**描述：**
-
-Get the value of the direction vector for the z-axis direction in ArkUI_Matrix4RotationOptions. If the value of z is never set, its value will be undefined, so the function will return ARKUI_ERROR_CODE_PARAM_INVALID.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 24
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [const ArkUI_Matrix4RotationOptions](capi-arkui-nativemodule-arkui-matrix4rotationoptions.md)* options | Pointer to the ArkUI_Matrix4RotationOptions object. |
-| float* z | The value of the direction vector for the z-axis direction. |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
-
-### OH_ArkUI_Matrix4RotationOptions_SetAngle()
-
-```c
-ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_SetAngle(ArkUI_Matrix4RotationOptions* options, const float angle)
-```
-
-**描述：**
-
-Set the value of the rotation angle in ArkUI_Matrix4RotationOptions. The unit is degree.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 24
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [ArkUI_Matrix4RotationOptions](capi-arkui-nativemodule-arkui-matrix4rotationoptions.md)* options | Pointer to the ArkUI_Matrix4RotationOptions object. |
-| const float angle | The value of the rotation angle in ArkUI_Matrix4RotationOptions. Value range: (-∞, +∞). |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
-
-### OH_ArkUI_Matrix4RotationOptions_GetAngle()
-
-```c
-ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_GetAngle(const ArkUI_Matrix4RotationOptions* options, float* angle)
-```
-
-**描述：**
-
-Get the value of the rotation angle in ArkUI_Matrix4RotationOptions. The unit is degree. If the value of angle is never set, its default value is 0.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 24
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [const ArkUI_Matrix4RotationOptions](capi-arkui-nativemodule-arkui-matrix4rotationoptions.md)* options | Pointer to the ArkUI_Matrix4RotationOptions object. |
-| float* angle | The value of the rotation angle in ArkUI_Matrix4RotationOptions. |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
-
-### OH_ArkUI_Matrix4RotationOptions_SetCenterX()
-
-```c
-ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_SetCenterX(ArkUI_Matrix4RotationOptions* options, const float centerX)
-```
-
-**描述：**
-
-Set x offset relative to the transformation center. 0 means no additional x-direction offset from the transformation center. The unit is px.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 24
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [ArkUI_Matrix4RotationOptions](capi-arkui-nativemodule-arkui-matrix4rotationoptions.md)* options | Pointer to the ArkUI_Matrix4RotationOptions object. |
-| const float centerX | The x offset relative to the transformation center. Value range: (-∞, +∞). |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
-
-### OH_ArkUI_Matrix4RotationOptions_GetCenterX()
-
-```c
-ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_GetCenterX(const ArkUI_Matrix4RotationOptions* options, float* centerX)
-```
-
-**描述：**
-
-Get the value of centerX from the options, which represents the x-direction offset relative to the transformation center. The unit is px. If the value of centerX is never set, its default value is 0.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 24
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [const ArkUI_Matrix4RotationOptions](capi-arkui-nativemodule-arkui-matrix4rotationoptions.md)* options | Pointer to the ArkUI_Matrix4RotationOptions object. |
-| float* centerX | The x-direction offset relative to the transformation center. |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
-
-### OH_ArkUI_Matrix4RotationOptions_SetCenterY()
-
-```c
-ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_SetCenterY(ArkUI_Matrix4RotationOptions* options, const float centerY)
-```
-
-**描述：**
-
-Set y offset relative to the transformation center. 0 means no additional y-direction offset from the transformation center. The unit is px.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 24
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [ArkUI_Matrix4RotationOptions](capi-arkui-nativemodule-arkui-matrix4rotationoptions.md)* options | Pointer to the ArkUI_Matrix4RotationOptions object. |
-| const float centerY | The y offset relative to the transformation center. Value range: (-∞, +∞). |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
-
-### OH_ArkUI_Matrix4RotationOptions_GetCenterY()
-
-```c
-ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_GetCenterY(const ArkUI_Matrix4RotationOptions* options, float* centerY)
-```
-
-**描述：**
-
-Get the value of centerY from the options, which represents the y-direction offset relative to the transformation center. The unit is px. If the value of centerY is never set, its default value is 0.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 24
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [const ArkUI_Matrix4RotationOptions](capi-arkui-nativemodule-arkui-matrix4rotationoptions.md)* options | Pointer to the ArkUI_Matrix4RotationOptions object. |
-| float* centerY | The y-direction offset relative to the transformation center. |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
-
-### OH_ArkUI_Matrix4TranslationOptions_Create()
-
-```c
-ArkUI_Matrix4TranslationOptions* OH_ArkUI_Matrix4TranslationOptions_Create()
-```
-
-**描述：**
-
-Create an object of ArkUI_Matrix4TranslationOptions. In the newly created options, the default values for x, y and z are 0.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 24
-
-**返回值：**
-
-| 类型 | 说明 |
-| -- | -- |
-| [ArkUI_Matrix4TranslationOptions*](capi-arkui-nativemodule-arkui-matrix4translationoptions.md) | Returns a pointer to the newly created ArkUI_Matrix4TranslationOptions. |
-
-### OH_ArkUI_Matrix4TranslationOptions_Dispose()
-
-```c
-void OH_ArkUI_Matrix4TranslationOptions_Dispose(ArkUI_Matrix4TranslationOptions* options)
-```
-
-**描述：**
-
-Disposes the ArkUI_Matrix4TranslationOptions object.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 24
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [ArkUI_Matrix4TranslationOptions](capi-arkui-nativemodule-arkui-matrix4translationoptions.md)* options | Pointer to the ArkUI_Matrix4TranslationOptions instance to be destroyed. |
-
-### OH_ArkUI_Matrix4TranslationOptions_SetX()
-
-```c
-ArkUI_ErrorCode OH_ArkUI_Matrix4TranslationOptions_SetX(ArkUI_Matrix4TranslationOptions* options, const float x)
-```
-
-**描述：**
-
-Set the translation value in the x-axis direction. The unit is px. If the value of x is never set, its default value is 0.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 24
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [ArkUI_Matrix4TranslationOptions](capi-arkui-nativemodule-arkui-matrix4translationoptions.md)* options | Pointer to the ArkUI_Matrix4TranslationOptions object. |
-| const float x | The translation value in the x-axis direction. Value range: (-∞, +∞). |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
-
-### OH_ArkUI_Matrix4TranslationOptions_GetX()
-
-```c
-ArkUI_ErrorCode OH_ArkUI_Matrix4TranslationOptions_GetX(const ArkUI_Matrix4TranslationOptions* options, float* x)
-```
-
-**描述：**
-
-Get the translation value in the x-axis direction from ArkUI_Matrix4TranslationOptions.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 24
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [const ArkUI_Matrix4TranslationOptions](capi-arkui-nativemodule-arkui-matrix4translationoptions.md)* options | Pointer to the ArkUI_Matrix4TranslationOptions object. |
-| float* x | The translation value in the x-axis direction. |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
-
-### OH_ArkUI_Matrix4TranslationOptions_SetY()
-
-```c
-ArkUI_ErrorCode OH_ArkUI_Matrix4TranslationOptions_SetY(ArkUI_Matrix4TranslationOptions* options, const float y)
-```
-
-**描述：**
-
-Set the translation value in the y-axis direction. The unit is px. If the value of y is never set, its default value is 0.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 24
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [ArkUI_Matrix4TranslationOptions](capi-arkui-nativemodule-arkui-matrix4translationoptions.md)* options | Pointer to the ArkUI_Matrix4TranslationOptions object. |
-| const float y | The translation value in the y-axis direction. Value range: (-∞, +∞). |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
-
-### OH_ArkUI_Matrix4TranslationOptions_GetY()
-
-```c
-ArkUI_ErrorCode OH_ArkUI_Matrix4TranslationOptions_GetY(const ArkUI_Matrix4TranslationOptions* options, float* y)
-```
-
-**描述：**
-
-Get the translation value in the y-axis direction from ArkUI_Matrix4TranslationOptions.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 24
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [const ArkUI_Matrix4TranslationOptions](capi-arkui-nativemodule-arkui-matrix4translationoptions.md)* options | Pointer to the ArkUI_Matrix4TranslationOptions object. |
-| float* y | The translation value in the y-axis direction. |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
-
-### OH_ArkUI_Matrix4TranslationOptions_SetZ()
-
-```c
-ArkUI_ErrorCode OH_ArkUI_Matrix4TranslationOptions_SetZ(ArkUI_Matrix4TranslationOptions* options, const float z)
-```
-
-**描述：**
-
-Set the translation value in the z-axis direction. The unit is px. If the value of z is never set, its default value is 0.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 24
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [ArkUI_Matrix4TranslationOptions](capi-arkui-nativemodule-arkui-matrix4translationoptions.md)* options | Pointer to the ArkUI_Matrix4TranslationOptions object. |
-| const float z | The translation value in the z-axis direction. Value range: (-∞, +∞). |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
-
-### OH_ArkUI_Matrix4TranslationOptions_GetZ()
-
-```c
-ArkUI_ErrorCode OH_ArkUI_Matrix4TranslationOptions_GetZ(const ArkUI_Matrix4TranslationOptions* options, float* z)
-```
-
-**描述：**
-
-Get the translation value in the z-axis direction from ArkUI_Matrix4TranslationOptions.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 24
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [const ArkUI_Matrix4TranslationOptions](capi-arkui-nativemodule-arkui-matrix4translationoptions.md)* options | Pointer to the ArkUI_Matrix4TranslationOptions object. |
-| float* z | The translation value in the z-axis direction. |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
-
-### OH_ArkUI_Matrix4_CreateIdentity()
-
-```c
-ArkUI_Matrix4* OH_ArkUI_Matrix4_CreateIdentity()
-```
-
-**描述：**
-
-Create an identity matrix4 object.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 24
-
-**返回值：**
-
-| 类型 | 说明 |
-| -- | -- |
-| [ArkUI_Matrix4*](capi-arkui-nativemodule-arkui-matrix4.md) | Returns the created identity matrix4 object. |
-
-### OH_ArkUI_Matrix4_CreateByElements()
-
-```c
-ArkUI_Matrix4* OH_ArkUI_Matrix4_CreateByElements(const float* elements)
-```
-
-**描述：**
-
-Specify each element of the matrix to create a matrix4 object.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 24
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| const float* elements | Pointer to the array of expected matrix element data. The length of array should be greater than or equal to 16. The parameter must not be null. |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -- | -- |
-| [ArkUI_Matrix4*](capi-arkui-nativemodule-arkui-matrix4.md) | Returns the newly created matrix4 object. If the pointer of elements is null, the function will return null. |
-
-### OH_ArkUI_Matrix4_Dispose()
-
-```c
-void OH_ArkUI_Matrix4_Dispose(ArkUI_Matrix4* matrix)
-```
-
-**描述：**
-
-Disposes a matrix4 object.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 24
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [ArkUI_Matrix4](capi-arkui-nativemodule-arkui-matrix4.md)* matrix | Pointer to the matrix4 object to be disposed. |
-
-### OH_ArkUI_Matrix4_Copy()
-
-```c
-ArkUI_Matrix4* OH_ArkUI_Matrix4_Copy(const ArkUI_Matrix4* matrix)
-```
-
-**描述：**
-
-Create a copy of the matrix4 object.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 24
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [const ArkUI_Matrix4](capi-arkui-nativemodule-arkui-matrix4.md)* matrix | Pointer to the original matrix4 object. |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -- | -- |
-| [ArkUI_Matrix4*](capi-arkui-nativemodule-arkui-matrix4.md) | Returns the newly created matrix4 object. |
-
-### OH_ArkUI_Matrix4_Invert()
-
-```c
-ArkUI_ErrorCode OH_ArkUI_Matrix4_Invert(ArkUI_Matrix4* matrix)
-```
-
-**描述：**
-
-Perform an inverse matrix transformation on the input matrix. If the matrix is invertible, this function will modify the input matrix; otherwise, the matrix will remain unchanged and an error code will be returned.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 24
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [ArkUI_Matrix4](capi-arkui-nativemodule-arkui-matrix4.md)* matrix | Pointer to the matrix4 object to be inverted. |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if the matrix is not invertible. |
-
-### OH_ArkUI_Matrix4_Combine()
-
-```c
-ArkUI_ErrorCode OH_ArkUI_Matrix4_Combine(ArkUI_Matrix4* oriMatrix, const ArkUI_Matrix4* anotherMatrix)
-```
-
-**描述：**
-
-Combine another matrix with the original matrix, and storing the resulting matrix in oriMatrix. The resulting matrix is equivalent to first applying the transformation of oriMatrix and then applying the transformation of anotherMatrix. This function will alter the oriMatrix object.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 24
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [ArkUI_Matrix4](capi-arkui-nativemodule-arkui-matrix4.md)* oriMatrix | Pointer to the original matrix4 object. |
-| [const ArkUI_Matrix4](capi-arkui-nativemodule-arkui-matrix4.md)* anotherMatrix | Pointer to another matrix object to be combined. |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
-
-### OH_ArkUI_Matrix4_Translate()
-
-```c
-ArkUI_ErrorCode OH_ArkUI_Matrix4_Translate(ArkUI_Matrix4* matrix, const ArkUI_Matrix4TranslationOptions* translate)
-```
-
-**描述：**
-
-Apply a tranlation transformation to the original matrix to obtain the translated matrix. Each translation transformation is applied cumulatively. This function will alter the input matrix object.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 24
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [ArkUI_Matrix4](capi-arkui-nativemodule-arkui-matrix4.md)* matrix | Pointer to the matrix4 object to be translated. |
-| [const ArkUI_Matrix4TranslationOptions](capi-arkui-nativemodule-arkui-matrix4translationoptions.md)* translate | Pointer to the translation options. |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
-
-### OH_ArkUI_Matrix4_Scale()
-
-```c
-ArkUI_ErrorCode OH_ArkUI_Matrix4_Scale(ArkUI_Matrix4* matrix, const ArkUI_Matrix4ScaleOptions* scale)
-```
-
-**描述：**
-
-Apply a scale transformation to the original matrix to obtain the scaled matrix. Each scale transformation is applied cumulatively. This function will alter the input matrix object.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 24
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [ArkUI_Matrix4](capi-arkui-nativemodule-arkui-matrix4.md)* matrix | Pointer to the matrix4 object to be scaled. |
-| [const ArkUI_Matrix4ScaleOptions](capi-arkui-nativemodule-arkui-matrix4scaleoptions.md)* scale | Pointer to the scale options. |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
-
-### OH_ArkUI_Matrix4_Rotate()
-
-```c
-ArkUI_ErrorCode OH_ArkUI_Matrix4_Rotate(ArkUI_Matrix4* matrix, const ArkUI_Matrix4RotationOptions* rotate)
-```
-
-**描述：**
-
-Apply a rotation transformation to the original matrix to obtain the rotated matrix. Each rotation transformation is applied cumulatively. This function will alter the input matrix object.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 24
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [ArkUI_Matrix4](capi-arkui-nativemodule-arkui-matrix4.md)* matrix | Pointer to the matrix4 object to be rotated. |
-| [const ArkUI_Matrix4RotationOptions](capi-arkui-nativemodule-arkui-matrix4rotationoptions.md)* rotate | Pointer to the rotation options. |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
-
-### OH_ArkUI_Matrix4_Skew()
-
-```c
-ArkUI_ErrorCode OH_ArkUI_Matrix4_Skew(ArkUI_Matrix4* matrix, const float skewX, const float skewY)
-```
-
-**描述：**
-
-Apply a skew transformation to the original matrix to obtain the skewed matrix. Each skew transformation is applied cumulatively. This function will alter the input matrix object.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 24
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [ArkUI_Matrix4](capi-arkui-nativemodule-arkui-matrix4.md)* matrix | Pointer to the matrix4 object to be skewed. It must not be null. |
-| const float skewX | Skew coefficient in the x direction. |
-| const float skewY | Skew coefficient in the y direction. |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
-
-### OH_ArkUI_Matrix4_TransformPoint()
-
-```c
-ArkUI_ErrorCode OH_ArkUI_Matrix4_TransformPoint(const ArkUI_Matrix4* matrix, const ArkUI_PointF* oriPoint, ArkUI_PointF* result)
-```
-
-**描述：**
-
-Calculate the new coordinate position of a point after it has been transformed by a matrix. The calculated transformed coordinate point will be filled into the ArkUI_PointF structure pointed to by result.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 24
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [const ArkUI_Matrix4](capi-arkui-nativemodule-arkui-matrix4.md)* matrix | Pointer to the matrix4 object. |
-| const ArkUI_PointF* oriPoint | Pointer to the original coordinate point. |
-| ArkUI_PointF* result | Pointer to the result point. It must not be null. |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
-
-### OH_ArkUI_Matrix4_SetPolyToPoly()
-
-```c
-ArkUI_ErrorCode OH_ArkUI_Matrix4_SetPolyToPoly(ArkUI_Matrix4* matrix, const ArkUI_PointF* src, const ArkUI_PointF* dst, const uint32_t pointCount)
-```
-
-**描述：**
-
-Map the vertex coordinates of one polygon to the vertex coordinates of another polygon, and calculate the required matrix. The resulting matrix will be filled into the object pointed to by matrix.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 24
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [ArkUI_Matrix4](capi-arkui-nativemodule-arkui-matrix4.md)* matrix | Pointer to the original matrix4 object. The result matrix will be filled into the object pointed to by it. It must not be null. |
-| const ArkUI_PointF* src | Pointer to the array of original polygon coordinate points. The array should be at least as long as pointCount. |
-| const ArkUI_PointF* dst | Pointer to the array of polygon coordinate points after mapping. The array should be at least as long as pointCount. |
-| const uint32_t pointCount | The number of polygon points, which must be one of the values 0, 1, 2, 3, or 4. |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
-
-### OH_ArkUI_Matrix4_GetElements()
-
-```c
-ArkUI_ErrorCode OH_ArkUI_Matrix4_GetElements(const ArkUI_Matrix4* matrix, float* result)
-```
-
-**描述：**
-
-Obtain the 16 elements of the matrix and fill them into the array pointed to by result. The array pointed to by result must have space for 16 float elements.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 24
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [const ArkUI_Matrix4](capi-arkui-nativemodule-arkui-matrix4.md)* matrix | Pointer to the original matrix4 object. |
-| float* result | Pointer to an array that can hold 16 floating-point numbers. It must not be null. |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
 
 ### OH_ArkUI_CrossLanguageOption_SetTreeOperatingStatus()
 

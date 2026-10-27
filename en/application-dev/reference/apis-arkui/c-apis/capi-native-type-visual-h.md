@@ -665,18 +665,18 @@ Enumerates the gradient directions for linear gradient blur.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 | Enum item | Description |
 | -- | -- |
-| OH_ARKUI_LINEAR_GRADIENT_BLUR_DIRECTION_LEFT = 0 | Linear gradient blur from right to left.<br>**Since**: 26.2.0 |
-| OH_ARKUI_LINEAR_GRADIENT_BLUR_DIRECTION_TOP = 1 | Linear gradient blur from bottom to top.<br>**Since**: 26.2.0 |
-| OH_ARKUI_LINEAR_GRADIENT_BLUR_DIRECTION_RIGHT = 2 | Linear gradient blur from left to right.<br>**Since**: 26.2.0 |
-| OH_ARKUI_LINEAR_GRADIENT_BLUR_DIRECTION_BOTTOM = 3 | Linear gradient blur from top to bottom.<br>**Since**: 26.2.0 |
-| OH_ARKUI_LINEAR_GRADIENT_BLUR_DIRECTION_LEFT_TOP = 4 | Linear gradient blur from lower right to upper left.<br>**Since**: 26.2.0 |
-| OH_ARKUI_LINEAR_GRADIENT_BLUR_DIRECTION_LEFT_BOTTOM = 5 | Linear gradient blur from upper right to lower left.<br>**Since**: 26.2.0 |
-| OH_ARKUI_LINEAR_GRADIENT_BLUR_DIRECTION_RIGHT_TOP = 6 | Linear gradient blur from lower left to upper right.<br>**Since**: 26.2.0 |
-| OH_ARKUI_LINEAR_GRADIENT_BLUR_DIRECTION_RIGHT_BOTTOM = 7 | Linear gradient blur from upper left to lower right.<br>**Since**: 26.2.0 |
+| OH_ARKUI_LINEAR_GRADIENT_BLUR_DIRECTION_LEFT = 0 | Linear gradient blur from right to left.<br>**Since**: 26.1.0 |
+| OH_ARKUI_LINEAR_GRADIENT_BLUR_DIRECTION_TOP = 1 | Linear gradient blur from bottom to top.<br>**Since**: 26.1.0 |
+| OH_ARKUI_LINEAR_GRADIENT_BLUR_DIRECTION_RIGHT = 2 | Linear gradient blur from left to right.<br>**Since**: 26.1.0 |
+| OH_ARKUI_LINEAR_GRADIENT_BLUR_DIRECTION_BOTTOM = 3 | Linear gradient blur from top to bottom.<br>**Since**: 26.1.0 |
+| OH_ARKUI_LINEAR_GRADIENT_BLUR_DIRECTION_LEFT_TOP = 4 | Linear gradient blur from lower right to upper left.<br>**Since**: 26.1.0 |
+| OH_ARKUI_LINEAR_GRADIENT_BLUR_DIRECTION_LEFT_BOTTOM = 5 | Linear gradient blur from upper right to lower left.<br>**Since**: 26.1.0 |
+| OH_ARKUI_LINEAR_GRADIENT_BLUR_DIRECTION_RIGHT_TOP = 6 | Linear gradient blur from lower left to upper right.<br>**Since**: 26.1.0 |
+| OH_ARKUI_LINEAR_GRADIENT_BLUR_DIRECTION_RIGHT_BOTTOM = 7 | Linear gradient blur from upper left to lower right.<br>**Since**: 26.1.0 |
 
 
 ## Function description
@@ -2528,7 +2528,7 @@ Creates a linear gradient blur options object.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 **Resource release**: OH_ArkUI_NativeModule_LinearGradientBlurOptions_Destroy {return}
 
@@ -2550,7 +2550,7 @@ Destroys a linear gradient blur options object.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 **Parameters**:
 
@@ -2570,7 +2570,7 @@ Sets the blur radius for the linear gradient blur options.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 **Parameters**:
 
@@ -2597,7 +2597,7 @@ Obtains the blur radius of linear gradient blur options.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 **Parameters**:
 
@@ -2624,7 +2624,7 @@ Sets the fraction stops for the linear gradient blur options.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 **Parameters**:
 
@@ -2652,7 +2652,7 @@ Obtains the fraction stops of linear gradient blur options.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 **Parameters**:
 
@@ -2681,7 +2681,7 @@ Sets the gradient blur direction for the linear gradient blur options.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 **Parameters**:
 
@@ -2708,7 +2708,7 @@ Obtains the gradient blur direction of linear gradient blur options.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 **Parameters**:
 

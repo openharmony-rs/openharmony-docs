@@ -2,7 +2,7 @@
 
 ## 概述
 
-Provides ArkUI event definitions on the native side.
+提供ArkUI在Native侧的输入事件定义，支持触摸、鼠标、轴和按键事件，以及事件属性获取、 事件冒泡控制和事件克隆处理，用于Native组件识别和处理用户输入。
 
 **库：** libace_ndk.z.so
 
@@ -32,17 +32,17 @@ Provides ArkUI event definitions on the native side.
 | [ArkUI_CrownEvent_Action](#arkui_crownevent_action) | ArkUI_CrownEvent_Action | 定义表冠事件的阶段。 |
 | [ArkUI_CoastingAxisEventPhase](#arkui_coastingaxiseventphase) | ArkUI_CoastingAxisEventPhase | 定义惯性滚动轴事件的阶段。 |
 | [ArkUI_CompetitionStrategy](#arkui_competitionstrategy) | ArkUI_CompetitionStrategy | 事件的注入方和被注入方间手势识别结果是否为竞争场景的策略。该策略决定了事件的注入方如何与被注入方的手势处理逻辑交互，非竞争场景会同时触发手势，竞争场景只触发其中一个。 |
-| [anonymous0](#anonymous0) | - | Defines the action types of the input event. |
-| [anonymous1](#anonymous1) | - | Defines the tool type of the touch event. |
-| [anonymous2](#anonymous2) | - | Defines the source type of the touch event. |
+| [anonymous0](#anonymous0) | - | 定义输入事件的行为类型。 |
+| [anonymous1](#anonymous1) | - | 产生输入事件的工具类型定义。 |
+| [anonymous2](#anonymous2) | - | 产生输入事件的来源类型定义。 |
 | [HitTestMode](#hittestmode) | HitTestMode | 定义触摸测试类型的枚举值。 |
-| [anonymous3](#anonymous3) | - | Define the action types of the mouse event. |
-| [anonymous4](#anonymous4) | - | Define the button type for mouse events. |
+| [anonymous3](#anonymous3) | - | 定义鼠标事件的行为类型。 |
+| [anonymous4](#anonymous4) | - | 定义鼠标事件的按键类型。 |
 | [ArkUI_ModifierKeyName](#arkui_modifierkeyname) | ArkUI_ModifierKeyName | 定义modifier按键。 |
-| [anonymous5](#anonymous5) | - | Defines an enum for the axis types for focus axis events. |
-| [anonymous6](#anonymous6) | - | Enumerates the axis types for axis events. |
+| [anonymous5](#anonymous5) | - | 定义焦点轴事件的轴类型。 |
+| [anonymous6](#anonymous6) | - | 定义轴事件的轴类型。 |
 | [ArkUI_InteractionHand](#arkui_interactionhand) | ArkUI_InteractionHand | 定义触摸事件是左手还是右手。 |
-| [anonymous7](#anonymous7) | - | Enumerates the action types for axis events. |
+| [anonymous7](#anonymous7) | - | 定义轴事件的操作类型。 |
 | [ArkUI_TouchTestStrategy](#arkui_touchteststrategy) | ArkUI_TouchTestStrategy | 定义触摸测试策略。 |
 
 ### 函数
@@ -244,9 +244,9 @@ enum ArkUI_CrownEvent_Action
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_CROWNEVENT_ACTION_UNKNOWN = 0 | Unknown phase of the crown event. |
-| ARKUI_CROWNEVENT_ACTION_UPDATE = 1 | The crown event is updated. |
-| ARKUI_CROWNEVENT_ACTION_END = 2 | The crown event ends. |
+| ARKUI_CROWNEVENT_ACTION_UNKNOWN = 0 | 未知的表冠事件阶段。 |
+| ARKUI_CROWNEVENT_ACTION_UPDATE = 1 | 表冠事件更新。 |
+| ARKUI_CROWNEVENT_ACTION_END = 2 | 表冠事件结束。 |
 
 ### ArkUI_CoastingAxisEventPhase
 
@@ -296,7 +296,7 @@ enum anonymous0
 
 **描述：**
 
-Defines the action types of the input event.
+定义输入事件的行为类型。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -304,10 +304,10 @@ Defines the action types of the input event.
 
 | 枚举项 | 描述 |
 | -- | -- |
-| UI_TOUCH_EVENT_ACTION_CANCEL = 0 | Cancellation of touch. |
-| UI_TOUCH_EVENT_ACTION_DOWN = 1 | Pressing of a touch point. |
-| UI_TOUCH_EVENT_ACTION_MOVE = 2 | Moving of a touch point. |
-| UI_TOUCH_EVENT_ACTION_UP = 3 | Lifting of a touch point. |
+| UI_TOUCH_EVENT_ACTION_CANCEL = 0 | 触摸取消。 |
+| UI_TOUCH_EVENT_ACTION_DOWN = 1 | 触摸按下。 |
+| UI_TOUCH_EVENT_ACTION_MOVE = 2 | 触摸移动。 |
+| UI_TOUCH_EVENT_ACTION_UP = 3 | 触摸抬起。 |
 
 ### anonymous1
 
@@ -317,7 +317,7 @@ enum anonymous1
 
 **描述：**
 
-Defines the tool type of the touch event.
+产生输入事件的工具类型定义。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -325,12 +325,12 @@ Defines the tool type of the touch event.
 
 | 枚举项 | 描述 |
 | -- | -- |
-| UI_INPUT_EVENT_TOOL_TYPE_UNKNOWN = 0 | Unknown tool type. |
-| UI_INPUT_EVENT_TOOL_TYPE_FINGER = 1 | Finger. |
-| UI_INPUT_EVENT_TOOL_TYPE_PEN = 2 | Pen. |
-| UI_INPUT_EVENT_TOOL_TYPE_MOUSE = 3 | Mouse. |
-| UI_INPUT_EVENT_TOOL_TYPE_TOUCHPAD = 4 | TouchPad. |
-| UI_INPUT_EVENT_TOOL_TYPE_JOYSTICK = 5 | JoyStick. |
+| UI_INPUT_EVENT_TOOL_TYPE_UNKNOWN = 0 | 不支持的工具类型。 |
+| UI_INPUT_EVENT_TOOL_TYPE_FINGER = 1 | 手指。 |
+| UI_INPUT_EVENT_TOOL_TYPE_PEN = 2 | 触控笔。 |
+| UI_INPUT_EVENT_TOOL_TYPE_MOUSE = 3 | 鼠标。 |
+| UI_INPUT_EVENT_TOOL_TYPE_TOUCHPAD = 4 | 触控板。 |
+| UI_INPUT_EVENT_TOOL_TYPE_JOYSTICK = 5 | 操纵杆。 |
 
 ### anonymous2
 
@@ -340,7 +340,7 @@ enum anonymous2
 
 **描述：**
 
-Defines the source type of the touch event.
+产生输入事件的来源类型定义。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -348,11 +348,11 @@ Defines the source type of the touch event.
 
 | 枚举项 | 描述 |
 | -- | -- |
-| UI_INPUT_EVENT_SOURCE_TYPE_UNKNOWN = 0 | Unknown source type. |
-| UI_INPUT_EVENT_SOURCE_TYPE_MOUSE = 1 | Mouse. |
-| UI_INPUT_EVENT_SOURCE_TYPE_TOUCH_SCREEN = 2 | Touchscreen. |
-| UI_INPUT_EVENT_SOURCE_TYPE_KEY = 4 | The key type.<br>**起始版本：** 22 |
-| UI_INPUT_EVENT_SOURCE_TYPE_JOYSTICK = 5 | The joystick type.<br>**起始版本：** 22 |
+| UI_INPUT_EVENT_SOURCE_TYPE_UNKNOWN = 0 | 未知输入源。 |
+| UI_INPUT_EVENT_SOURCE_TYPE_MOUSE = 1 | 鼠标。 |
+| UI_INPUT_EVENT_SOURCE_TYPE_TOUCH_SCREEN = 2 | 触摸屏。 |
+| UI_INPUT_EVENT_SOURCE_TYPE_KEY = 4 | 按键。<br>**起始版本：** 22 |
+| UI_INPUT_EVENT_SOURCE_TYPE_JOYSTICK = 5 | 手柄。<br>**起始版本：** 22 |
 
 ### HitTestMode
 
@@ -385,7 +385,7 @@ enum anonymous3
 
 **描述：**
 
-Define the action types of the mouse event.
+定义鼠标事件的行为类型。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -393,10 +393,10 @@ Define the action types of the mouse event.
 
 | 枚举项 | 描述 |
 | -- | -- |
-| UI_MOUSE_EVENT_ACTION_UNKNOWN = 0 | Unknown action. |
-| UI_MOUSE_EVENT_ACTION_PRESS = 1 | The mouse button is pressed. |
-| UI_MOUSE_EVENT_ACTION_RELEASE = 2 | The mouse button is released. |
-| UI_MOUSE_EVENT_ACTION_MOVE = 3 | The mouse cursor moves. |
+| UI_MOUSE_EVENT_ACTION_UNKNOWN = 0 | 无效行为。 |
+| UI_MOUSE_EVENT_ACTION_PRESS = 1 | 鼠标按键按下。 |
+| UI_MOUSE_EVENT_ACTION_RELEASE = 2 | 鼠标按键松开。 |
+| UI_MOUSE_EVENT_ACTION_MOVE = 3 | 鼠标移动。 |
 | UI_MOUSE_EVENT_ACTION_CANCEL = 13 |  |
 
 ### anonymous4
@@ -407,7 +407,7 @@ enum anonymous4
 
 **描述：**
 
-Define the button type for mouse events.
+定义鼠标事件的按键类型。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -415,12 +415,12 @@ Define the button type for mouse events.
 
 | 枚举项 | 描述 |
 | -- | -- |
-| UI_MOUSE_EVENT_BUTTON_NONE = 0 | No button. |
-| UI_MOUSE_EVENT_BUTTON_LEFT = 1 | Left button. |
-| UI_MOUSE_EVENT_BUTTON_RIGHT = 2 | Right button. |
-| UI_MOUSE_EVENT_BUTTON_MIDDLE = 3 | Middle button. |
-| UI_MOUSE_EVENT_BUTTON_BACK = 4 | Back button on the left of the mouse. |
-| UI_MOUSE_EVENT_BUTTON_FORWARD = 5 | Forward button on the left of the mouse. |
+| UI_MOUSE_EVENT_BUTTON_NONE = 0 | 无按键。 |
+| UI_MOUSE_EVENT_BUTTON_LEFT = 1 | 鼠标左键。 |
+| UI_MOUSE_EVENT_BUTTON_RIGHT = 2 | 鼠标右键。 |
+| UI_MOUSE_EVENT_BUTTON_MIDDLE = 3 | 鼠标中键。 |
+| UI_MOUSE_EVENT_BUTTON_BACK = 4 | 鼠标左侧后退键。 |
+| UI_MOUSE_EVENT_BUTTON_FORWARD = 5 | 鼠标左侧前进键。 |
 
 ### ArkUI_ModifierKeyName
 
@@ -451,7 +451,7 @@ enum anonymous5
 
 **描述：**
 
-Defines an enum for the axis types for focus axis events.
+定义焦点轴事件的轴类型。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -459,14 +459,14 @@ Defines an enum for the axis types for focus axis events.
 
 | 枚举项 | 描述 |
 | -- | -- |
-| UI_FOCUS_AXIS_EVENT_ABS_X = 0 | Game controller X-axis. |
-| UI_FOCUS_AXIS_EVENT_ABS_Y = 1 | Game controller Y-axis. |
-| UI_FOCUS_AXIS_EVENT_ABS_Z = 2 | Game controller Z-axis. |
-| UI_FOCUS_AXIS_EVENT_ABS_RZ = 3 | Game controller RZ-axis. |
-| UI_FOCUS_AXIS_EVENT_ABS_GAS = 4 | Game controller GAS-axis. |
-| UI_FOCUS_AXIS_EVENT_ABS_BRAKE = 5 | Game controller BRAKE-axis. |
-| UI_FOCUS_AXIS_EVENT_ABS_HAT0X = 6 | Game controller HAT0X-axis. |
-| UI_FOCUS_AXIS_EVENT_ABS_HAT0Y = 7 | Game controller HAT0Y-axiS. |
+| UI_FOCUS_AXIS_EVENT_ABS_X = 0 | 游戏手柄X轴。 |
+| UI_FOCUS_AXIS_EVENT_ABS_Y = 1 | 游戏手柄Y轴。 |
+| UI_FOCUS_AXIS_EVENT_ABS_Z = 2 | 游戏手柄Z轴。 |
+| UI_FOCUS_AXIS_EVENT_ABS_RZ = 3 | 游戏手柄RZ轴。 |
+| UI_FOCUS_AXIS_EVENT_ABS_GAS = 4 | 游戏手柄GAS轴。 |
+| UI_FOCUS_AXIS_EVENT_ABS_BRAKE = 5 | 游戏手柄BRAKE轴。 |
+| UI_FOCUS_AXIS_EVENT_ABS_HAT0X = 6 | 游戏手柄HAT0X轴。 |
+| UI_FOCUS_AXIS_EVENT_ABS_HAT0Y = 7 | 游戏手柄HAT0Y轴。 |
 | UI_FOCUS_AXIS_EVENT_ABS_RX = 8 |  |
 | UI_FOCUS_AXIS_EVENT_ABS_RY = 9 |  |
 | UI_FOCUS_AXIS_EVENT_ABS_THROTTLE = 10 |  |
@@ -487,7 +487,7 @@ enum anonymous6
 
 **描述：**
 
-Enumerates the axis types for axis events.
+定义轴事件的轴类型。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -495,9 +495,9 @@ Enumerates the axis types for axis events.
 
 | 枚举项 | 描述 |
 | -- | -- |
-| UI_AXIS_TYPE_VERTICAL_AXIS = 0 | Vertical scroll axis. |
-| UI_AXIS_TYPE_HORIZONTAL_AXIS = 1 | Horizontal scroll axis. |
-| UI_AXIS_TYPE_PINCH_AXIS = 2 | Pinch axis. |
+| UI_AXIS_TYPE_VERTICAL_AXIS = 0 | 垂直滚动轴。 |
+| UI_AXIS_TYPE_HORIZONTAL_AXIS = 1 | 水平滚动轴。 |
+| UI_AXIS_TYPE_PINCH_AXIS = 2 | 捏合轴。 |
 
 ### ArkUI_InteractionHand
 
@@ -527,7 +527,7 @@ enum anonymous7
 
 **描述：**
 
-Enumerates the action types for axis events.
+定义轴事件的操作类型。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -535,11 +535,11 @@ Enumerates the action types for axis events.
 
 | 枚举项 | 描述 |
 | -- | -- |
-| UI_AXIS_EVENT_ACTION_NONE = 0 | The axis event is abnormal. |
-| UI_AXIS_EVENT_ACTION_BEGIN = 1 | The axis event begins. |
-| UI_AXIS_EVENT_ACTION_UPDATE = 2 | The axis event is updated. |
-| UI_AXIS_EVENT_ACTION_END = 3 | The axis event ends. |
-| UI_AXIS_EVENT_ACTION_CANCEL = 4 | The axis event is canceled. |
+| UI_AXIS_EVENT_ACTION_NONE = 0 | 轴事件异常。 |
+| UI_AXIS_EVENT_ACTION_BEGIN = 1 | 轴事件开始。 |
+| UI_AXIS_EVENT_ACTION_UPDATE = 2 | 轴事件更新。 |
+| UI_AXIS_EVENT_ACTION_END = 3 | 轴事件结束。 |
+| UI_AXIS_EVENT_ACTION_CANCEL = 4 | 轴事件取消。 |
 
 ### ArkUI_TouchTestStrategy
 
@@ -602,7 +602,7 @@ int32_t OH_ArkUI_UIInputEvent_GetAction(const ArkUI_UIInputEvent* event)
 
 > **说明：**
 >
-> 1. For axis events, use [OH_ArkUI_AxisEvent_GetAxisAction](capi-ui-input-event-h.md#oh_arkui_axisevent_getaxisaction) to obtain the action type, which returns UI_AXIS_EVENT_ACTION_XXX. 2. For key events, use [OH_ArkUI_KeyEvent_GetType](capi-native-key-event-h.md#oh_arkui_keyevent_gettype) instead.
+> 1. 对于轴事件，请使用[OH_ArkUI_AxisEvent_GetAxisAction](capi-ui-input-event-h.md#oh_arkui_axisevent_getaxisaction)获取action类型， 返回值为UI_AXIS_EVENT_ACTION_XXX。 2. 对于按键事件，请使用[OH_ArkUI_KeyEvent_GetType](capi-native-key-event-h.md#oh_arkui_keyevent_gettype)获取。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -632,7 +632,7 @@ int32_t OH_ArkUI_UIInputEvent_GetSourceType(const ArkUI_UIInputEvent* event)
 
 > **说明：**
 >
-> For key events, obtaining the source type is not supported, and in such cases, the API will return an <b>unknown</b> value.
+> 对于按键事件，不支持获取输入源类型，此时接口将返回<b>unknown</b>值。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -662,7 +662,7 @@ int32_t OH_ArkUI_UIInputEvent_GetToolType(const ArkUI_UIInputEvent* event)
 
 > **说明：**
 >
-> For key events, obtaining the tool type is not supported, and in such cases, the API will return an <b>unknown</b> value.
+> 对于按键事件，不支持获取输入工具类型，此时接口将返回<b>unknown</b>值。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1422,7 +1422,7 @@ int32_t OH_ArkUI_PointerEvent_GetRollAngle(const ArkUI_UIInputEvent* event, doub
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>Returns ARKUI_ERROR_CODE_NO_ERROR 成功。<br>Returns ARKUI_ERROR_CODE_PARAM_INVALID 函数参数异常。 |
+| int32_t | 错误码。<br>返回ARKUI_ERROR_CODE_NO_ERROR表示成功。<br>返回ARKUI_ERROR_CODE_PARAM_INVALID表示函数参数异常。 |
 
 ### OH_ArkUI_PointerEvent_GetTouchAreaWidth()
 
@@ -1490,7 +1490,7 @@ int32_t OH_ArkUI_PointerEvent_GetInteractionHand(const ArkUI_UIInputEvent *event
 
 > **说明：**
 >
-> The value is not available immediately upon press. Until the system infers the result, this API will return <b>NONE</b>. Do not rely on the return value for critical functionality.
+> 该值并非在按下时就能实时获取，在系统完成结果推断之前，皆默认返回<b>NONE</b>， 因此请不要将按下阶段的返回值作为最终识别结果。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1521,7 +1521,7 @@ int32_t OH_ArkUI_PointerEvent_GetInteractionHandByIndex(const ArkUI_UIInputEvent
 
 > **说明：**
 >
-> The value is not available immediately upon press. Until the system infers the result, this API will return <b>NONE</b>. Do not rely on the return value for critical functionality.
+> 该值并非在按下时就能实时获取，在系统完成结果推断之前，皆默认返回<b>NONE</b>， 因此请不要将按下阶段的返回值作为最终识别结果。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2051,7 +2051,7 @@ double OH_ArkUI_AxisEvent_GetHorizontalAxisValue(const ArkUI_UIInputEvent* event
 
 > **说明：**
 >
-> 1. The reported value is in px and represents the incremental scroll amount, not the total scroll amount. 2. The reported value does not include the user's scroll step configuration. 3. The sign of the value indicates the direction: positive for swiping right and negative for swiping left. 4. The direction is affected by the system settings for natural scrolling.
+> 1. 上报的数值单位为px，表示单次滚动增量，非滚动总量。 2. 上报的数值不受用户配置的滚动步长的影响。 3. 数值的正负代表方向，双指从左往右滑动时上报数值为负数，双指从右往左滑动时上报数值为正数。 4. 方向会受系统设置中“自然滚动”配置的影响。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

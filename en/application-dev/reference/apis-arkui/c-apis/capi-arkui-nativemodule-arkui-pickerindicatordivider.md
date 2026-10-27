@@ -6,7 +6,7 @@ typedef struct ArkUI_PickerIndicatorDivider {...} ArkUI_PickerIndicatorDivider
 
 ## Overview
 
-Defines the style parameter of the divider-style indicator.
+Defines the style parameter of the divider-style indicator. This struct supports customizing the stroke width of the divider, color of the divider, and distance between the divider and the container edges. It applies to scenarios where the appearance of the **Picker** control's divider needs to be beautified. You can configure this struct to achieve personalized divider effects, improving the aesthetics of the UI and the user experience.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

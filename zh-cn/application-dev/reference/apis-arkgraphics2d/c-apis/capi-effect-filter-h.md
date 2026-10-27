@@ -2,7 +2,9 @@
 
 ## 概述
 
-声明滤镜效果的接口。支持创建和管理多种滤镜效果，包括毛玻璃模糊、亮度调节、灰度转换、颜色反转等， 支持通过自定义矩阵实现丰富的图像处理效果，适用于图像编辑、照片美化、视觉特效等场景。<br> 必须成对调用[OH_Filter_CreateEffect](capi-effect-filter-h.md#oh_filter_createeffect)和[OH_Filter_Release](capi-effect-filter-h.md#oh_filter_release)，确保资源正确释放。 本文件接口均不支持多线程调用。
+声明滤镜效果的接口。用于创建和管理多种滤镜效果，包括毛玻璃模糊、亮度调节、灰度转换、颜色反转等， 支持通过自定义矩阵实现丰富的图像处理效果，适用于图像编辑、照片美化、视觉特效等场景。<br> 必须成对调用[OH_Filter_CreateEffect](capi-effect-filter-h.md#oh_filter_createeffect)和[OH_Filter_Release](capi-effect-filter-h.md#oh_filter_release)，确保资源正确释放。 <br>本文件接口均不支持多线程调用。
+
+**引用文件：** <native_effect/effect_filter.h>
 
 **库：** libnative_effect.so
 
@@ -50,8 +52,8 @@ EffectErrorCode OH_Filter_CreateEffect(OH_PixelmapNative* pixelmap, OH_Filter** 
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_PixelmapNative](capi-effectkit-oh-pixelmapnative.md)* pixelmap | [in] 作为滤镜效果处理源图像的位图对象。不能为NULL。 |
-| [OH_Filter](capi-effectkit-oh-filter.md)** filter | [out] 用来接收滤镜的二级指针。不能为NULL。 |
+| [OH_PixelmapNative](capi-effectkit-oh-pixelmapnative.md)* pixelmap | [入参] 作为滤镜效果处理源图像的位图对象。不能为NULL。 |
+| [OH_Filter](capi-effectkit-oh-filter.md)** filter | [出参] 用来接收滤镜的二级指针。不能为NULL。 |
 
 **返回值：**
 
@@ -77,7 +79,7 @@ EffectErrorCode OH_Filter_Release(OH_Filter* filter)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_Filter](capi-effectkit-oh-filter.md)* filter | [in] 被释放的对象指针。不能为NULL。 |
+| [OH_Filter](capi-effectkit-oh-filter.md)* filter | [入参] 被释放的对象指针。不能为NULL。 |
 
 **返回值：**
 
@@ -103,8 +105,8 @@ EffectErrorCode OH_Filter_Blur(OH_Filter* filter, float radius)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_Filter](capi-effectkit-oh-filter.md)* filter | [in] 滤镜指针，需要通过OH_Filter_CreateEffect创建并添加滤镜效果。不能为NULL。 |
-| float radius | [in] 毛玻璃效果的模糊半径，取值范围为[0, +∞)，单位为像素。 值为0时不产生模糊效果；值越大，模糊效果越强；值越小，模糊效果越弱。 |
+| [OH_Filter](capi-effectkit-oh-filter.md)* filter | [入参] 滤镜指针，需要通过OH_Filter_CreateEffect创建并添加滤镜效果。不能为NULL。 |
+| float radius | [入参] 毛玻璃效果的模糊半径，取值范围为[0, +∞)，单位为像素。 值为0时不产生模糊效果；值越大，模糊效果越强；值越小，模糊效果越弱。 |
 
 **返回值：**
 
@@ -130,9 +132,9 @@ EffectErrorCode OH_Filter_BlurWithTileMode(OH_Filter* filter, float radius, Effe
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_Filter](capi-effectkit-oh-filter.md)* filter | [in] 滤镜指针，需要通过OH_Filter_CreateEffect创建并添加滤镜效果。不能为NULL。 |
-| float radius | [in] 毛玻璃效果的模糊半径，取值范围为[0, +∞)，单位为像素。 参数值为0时不产生模糊效果。值越大模糊效果越强。 |
-| [EffectTileMode](capi-effect-types-h.md#effecttilemode) tileMode | [in] 着色器效果平铺模式，不同模式决定图像边缘区域的不同处理方式， 支持可选的具体模式可见[EffectTileMode](capi-effect-types-h.md#effecttilemode)枚举。 |
+| [OH_Filter](capi-effectkit-oh-filter.md)* filter | [入参] 滤镜指针，需要通过OH_Filter_CreateEffect创建并添加滤镜效果。不能为NULL。 |
+| float radius | [入参] 毛玻璃效果的模糊半径，取值范围为[0, +∞)，单位为像素。 参数值为0时不产生模糊效果。值越大模糊效果越强。 |
+| [EffectTileMode](capi-effect-types-h.md#effecttilemode) tileMode | [入参] 着色器效果平铺模式，不同模式决定图像边缘区域的不同处理方式， 支持可选的具体模式可见[EffectTileMode](capi-effect-types-h.md#effecttilemode)枚举。 |
 
 **返回值：**
 
@@ -158,8 +160,8 @@ EffectErrorCode OH_Filter_Brighten(OH_Filter* filter, float brightness)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_Filter](capi-effectkit-oh-filter.md)* filter | [in] 滤镜指针，需要通过OH_Filter_CreateEffect创建并添加滤镜效果。不能为NULL。 |
-| float brightness | [in] 提亮效果的亮度值，取值范围为[0, 1]。取值为0时图像保持不变，取值为1时图像全白。 |
+| [OH_Filter](capi-effectkit-oh-filter.md)* filter | [入参] 滤镜指针，需要通过OH_Filter_CreateEffect创建并添加滤镜效果。不能为NULL。 |
+| float brightness | [入参] 提亮效果的亮度值，取值范围为[0, 1]。取值为0时图像保持不变，取值为1时图像全白。 |
 
 **返回值：**
 
@@ -185,7 +187,7 @@ EffectErrorCode OH_Filter_GrayScale(OH_Filter* filter)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_Filter](capi-effectkit-oh-filter.md)* filter | [in] 滤镜指针，需要通过OH_Filter_CreateEffect创建并添加滤镜效果。不能为NULL。 |
+| [OH_Filter](capi-effectkit-oh-filter.md)* filter | [入参] 滤镜指针，需要通过OH_Filter_CreateEffect创建并添加滤镜效果。不能为NULL。 |
 
 **返回值：**
 
@@ -211,7 +213,7 @@ EffectErrorCode OH_Filter_Invert(OH_Filter* filter)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_Filter](capi-effectkit-oh-filter.md)* filter | [in] 滤镜指针，需要通过OH_Filter_CreateEffect创建并添加滤镜效果。不能为NULL。 |
+| [OH_Filter](capi-effectkit-oh-filter.md)* filter | [入参] 滤镜指针，需要通过OH_Filter_CreateEffect创建并添加滤镜效果。不能为NULL。 |
 
 **返回值：**
 
@@ -237,8 +239,8 @@ EffectErrorCode OH_Filter_SetColorMatrix(OH_Filter* filter, OH_Filter_ColorMatri
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_Filter](capi-effectkit-oh-filter.md)* filter | [in] 滤镜指针，需要通过OH_Filter_CreateEffect创建并添加滤镜效果。不能为NULL。 |
-| [OH_Filter_ColorMatrix](capi-effectkit-oh-filter-colormatrix.md)* matrix | [in] 用来创建滤镜的自定义矩阵[OH_Filter_ColorMatrix](capi-effectkit-oh-filter-colormatrix.md)。不能为NULL。 |
+| [OH_Filter](capi-effectkit-oh-filter.md)* filter | [入参] 滤镜指针，需要通过OH_Filter_CreateEffect创建并添加滤镜效果。不能为NULL。 |
+| [OH_Filter_ColorMatrix](capi-effectkit-oh-filter-colormatrix.md)* matrix | [入参] 用来创建滤镜的自定义矩阵[OH_Filter_ColorMatrix](capi-effectkit-oh-filter-colormatrix.md)。不能为NULL。 |
 
 **返回值：**
 
@@ -264,8 +266,8 @@ EffectErrorCode OH_Filter_GetEffectPixelMap(OH_Filter* filter, OH_PixelmapNative
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_Filter](capi-effectkit-oh-filter.md)* filter | [in] 用来创建位图的滤镜指针，需要通过OH_Filter_CreateEffect创建并添加滤镜效果。不能为NULL。 |
-| [OH_PixelmapNative](capi-effectkit-oh-pixelmapnative.md)** pixelmap | [out] 用来接收位图的二级指针。不能为NULL。 |
+| [OH_Filter](capi-effectkit-oh-filter.md)* filter | [入参] 用来创建位图的滤镜指针，需要通过OH_Filter_CreateEffect创建并添加滤镜效果。不能为NULL。 |
+| [OH_PixelmapNative](capi-effectkit-oh-pixelmapnative.md)** pixelmap | [出参] 用来接收位图的二级指针。不能为NULL。 |
 
 **返回值：**
 

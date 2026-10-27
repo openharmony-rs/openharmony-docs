@@ -126,7 +126,7 @@ NODE_SCROLL_OFFSET
 
 **描述：**
 
-设置Scroll组件滑动到指定位置，支持属性设置，属性重置和属性获取。 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].f32 水平滑动偏移，单位为vp。取值范围：[0, +∞)，设置为小于0的值时按0处理。值为0时滚动到起始位置，值大于0时滚动到指定偏移位置。</li> <li>.value[1].f32 垂直滑动偏移，单位为vp。取值范围：[0, +∞)，设置为小于0的值时按0处理。值为0时滚动到起始位置，值大于0时滚动到指定偏移位置。</li> <li>.value[2]?.i32 可选值，滚动时长，单位为毫秒，默认值1000。滚动时长大于0或使能默认弹簧动效时，滚动带动画效果。</li> <li>.value[3]?.i32 可选值，滚动曲线，参数类型[ArkUI_AnimationCurve](capi-native-type-h.md#arkui_animationcurve)。默认值为[ARKUI_CURVE_EASE](capi-native-type-h.md#arkui_animationcurve)。</li> <li>.value[4]?.i32 可选值，是否使能默认弹簧动效，默认值为0不使能。</li> <li>.value[5]?.i32 可选值，设置动画滚动到边界是否转换为越界回弹动画，默认值为0不转换越界回弹动画。</li> <li>.value[6]?.i32 可选值，设置滚动是否可以停留在越界位置，默认值为0不停留在越界位置。该参数从API version 20开始支持。</li> </ul><br> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].f32 水平滑动偏移，单位为vp。</li> <li>.value[1].f32 垂直滑动偏移，单位为vp。</li> </ul>
+设置Scroll组件滑动到指定位置，支持属性设置，属性重置和属性获取。 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].f32 水平滑动偏移，单位为vp。取值范围：[0, +∞)，设置为小于0的值时按0处理。值为0时滚动到起始位置，值大于0时滚动到指定偏移位置。</li> <li>.value[1].f32 垂直滑动偏移，单位为vp。取值范围：[0, +∞)，设置为小于0的值时按0处理。值为0时滚动到起始位置，值大于0时滚动到指定偏移位置。</li> <li>.value[2]?.i32 可选值，滚动时长，单位为毫秒，默认值1000。滚动时长大于0或使能默认弹簧动效时，滚动带动画效果。</li> <li>.value[3]?.i32 可选值，滚动曲线，参数类型[ArkUI_AnimationCurve](capi-native-type-visual-h.md#arkui_animationcurve)。默认值为[ARKUI_CURVE_EASE](capi-native-type-visual-h.md#arkui_animationcurve)。</li> <li>.value[4]?.i32 可选值，是否使能默认弹簧动效，默认值为0不使能。</li> <li>.value[5]?.i32 可选值，设置动画滚动到边界是否转换为越界回弹动画，默认值为0不转换越界回弹动画。</li> <li>.value[6]?.i32 可选值，设置滚动是否可以停留在越界位置，默认值为0不停留在越界位置。该参数从API version 20开始支持。</li> </ul><br> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].f32 水平滑动偏移，单位为vp。</li> <li>.value[1].f32 垂直滑动偏移，单位为vp。</li> </ul>
 
 **起始版本：** 12
 
@@ -342,7 +342,7 @@ NODE_SCROLL_ENABLE_SCROLL_WITH_MOUSE = 1002027
 
 **描述：**
 
-是否支持鼠标左键进行滚动。此属性可以设置、重置和根据需要通过API获取。 <br>设置属性的 [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) 参数的格式和返回值**ArkUI_AttributeItem**如下所示。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32: 是否支持鼠标左键滚动。0：不支持；1：支持。 API26.2.0版本之前，默认值为0。从API版本26.2.0开始，当可滚动组件水平滚动时，默认值为1，否则为0。</li> </ul><br> **返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32: 是否支持鼠标左键进行滚动。0：不支持；1：支持。</li> </ul>
+是否支持鼠标左键进行滚动。此属性可以设置、重置和根据需要通过API获取。 <br>设置属性的 [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) 参数的格式和返回值**ArkUI_AttributeItem**如下所示。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32: 是否支持鼠标左键滚动。0：不支持；1：支持。 API26.1.0版本之前，默认值为0。从API版本26.1.0开始，当可滚动组件水平滚动时，默认值为1，否则为0。</li> </ul><br> **返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32: 是否支持鼠标左键进行滚动。0：不支持；1：支持。</li> </ul>
 
 **起始版本：** 26.0.0
 
@@ -380,7 +380,7 @@ NODE_SCROLL_STATE = 1002030
 
 获取当前滚动状态。 该属性可以根据需要通过API获取。<br> **返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32：当前滚动状态。参数类型为[ArkUI_ScrollState](capi-scroll-h.md#arkui_scrollstate)。</li> </ul>
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 ### NODE_SCROLL_ENABLE_SCROLL_WITH_KEYBOARD
 
@@ -392,7 +392,7 @@ NODE_SCROLL_ENABLE_SCROLL_WITH_KEYBOARD = 1002031
 
 设置滚动组件是否支持键盘方向键滚动。开启后，滚动组件在获焦且未激活焦点态时会响应键盘方向键滚动。支持属性设置、属性重置和属性获取接口。 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32是否支持键盘方向键滚动，0：不支持键盘方向键滚动，1：支持键盘方向键滚动。默认值：1。</li> </ul><br> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32是否支持键盘方向键滚动，0：不支持键盘方向键滚动，1：支持键盘方向键滚动。</li> </ul>
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 ### NODE_LIST_DIRECTION
 
@@ -462,7 +462,7 @@ NODE_LIST_SCROLL_TO_INDEX
 
 **描述：**
 
-滑动到指定index。开启平滑滚动动效时，会对经过的所有item进行加载和布局计算，当大量加载item时会导致性能问题。 作为属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32 要滑动到的目标元素在当前容器中的索引值。传入-1时，指滑动到当前容器的最后一个元素。</li> <li>.value[1]?.i32 设置滑动到列表项在列表中的索引值时是否有动效，1表示有动效，0表示没有动效。默认值：0。</li> <li>.value[2]?.i32 指定滑动到的元素与当前容器的对齐方式，参数类型[ArkUI_ScrollAlignment](capi-scroll-h.md#arkui_scrollalignment)，默认值：[ARKUI_SCROLL_ALIGNMENT_START](capi-scroll-h.md#arkui_scrollalignment)。 </li> <li>.value[3]?.f32 额外偏移量，默认值：0，单位：vp。正数表示向末尾端额外偏移，负数表示向起始端额外偏移。该参数从API version 15开始支持。</li> <li>.value[4]?.i32 快速滚动模式，用于滚动到指定索引。参数类型为[OH_ArkUI_FastScrollMode](capi-scroll-h.md#oh_arkui_fastscrollmode)，默认为<b>OH_ARKUI_FAST_SCROLL_MODE_NONE</b>。 仅当.value[1]?.i32为1时有效，从API版本26.2.0开始支持。</li> </ul>
+滑动到指定index。开启平滑滚动动效时，会对经过的所有item进行加载和布局计算，当大量加载item时会导致性能问题。 作为属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32 要滑动到的目标元素在当前容器中的索引值。传入-1时，指滑动到当前容器的最后一个元素。</li> <li>.value[1]?.i32 设置滑动到列表项在列表中的索引值时是否有动效，1表示有动效，0表示没有动效。默认值：0。</li> <li>.value[2]?.i32 指定滑动到的元素与当前容器的对齐方式，参数类型[ArkUI_ScrollAlignment](capi-scroll-h.md#arkui_scrollalignment)，默认值：[ARKUI_SCROLL_ALIGNMENT_START](capi-scroll-h.md#arkui_scrollalignment)。 </li> <li>.value[3]?.f32 额外偏移量，默认值：0，单位：vp。正数表示向末尾端额外偏移，负数表示向起始端额外偏移。该参数从API version 15开始支持。</li> <li>.value[4]?.i32 快速滚动模式，用于滚动到指定索引。参数类型为[OH_ArkUI_FastScrollMode](capi-scroll-h.md#oh_arkui_fastscrollmode)，默认为<b>OH_ARKUI_FAST_SCROLL_MODE_NONE</b>。 仅当.value[1]?.i32为1时有效，从API版本26.1.0开始支持。</li> </ul>
 
 **起始版本：** 12
 

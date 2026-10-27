@@ -116,6 +116,6 @@ NODE_CALENDAR_PICKER_FIRST_DAY_OF_WEEK = 16008
 
 Defines the first day of the week for the calendar picker. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>value[0].i32: first day of the week. The value range is [0, 7]. <b>0</b>: follows the system region. <b>1</b>: Monday. <b>2</b>: Tuesday. <b>3</b>: Wednesday. <b>4</b>: Thursday. <b>5</b>: Friday. <b>6</b>: Saturday. <b>7</b>: Sunday. The default value is <b>0</b> (follows the system region).</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>value[0].i32: first day of the week.</li> </ul>
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 

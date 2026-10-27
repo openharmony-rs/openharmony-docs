@@ -403,5 +403,6 @@ Enumerates the key codes.
 | OH_INPUT_KEYCODE_PTZ_SHUTTER_RIGHT = 3241 | PTZ shutter right<br>**Since**: 26.0.1 |
 | OH_INPUT_KEYCODE_PTZ_APERTURE_LEFT = 3242 | PTZ aperture left<br>**Since**: 26.0.1 |
 | OH_INPUT_KEYCODE_PTZ_APERTURE_RIGHT = 3243 | PTZ aperture right<br>**Since**: 26.0.1 |
+| OH_INPUT_KEYCODE_DESKTOP = 3245 | Return to desktop<br>**Since**: 26.1.0 |
 
 

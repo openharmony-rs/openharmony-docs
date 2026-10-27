@@ -2,7 +2,9 @@
 
 ## Overview
 
-Declares the APIs for filter effects. It supports creating and managing various filter effects, including frosted glass blur, brightness adjustment, grayscale conversion, and color inversion. It also supports implementing rich image processing effects through custom matrices, applicable to scenarios such as image editing, photo beautification, and visual effects.<br> You must call [OH_Filter_CreateEffect](capi-effect-filter-h.md#oh_filter_createeffect) and [OH_Filter_Release](capi-effect-filter-h.md#oh_filter_release) in pairs to ensure that resources are properly released. None of the APIs in this file support multi-threaded calls.
+Declares the APIs for filter effects. It supports creating and managing various filter effects, including frosted glass blur, brightness adjustment, grayscale conversion, and color inversion. It also supports implementing rich image processing effects through custom matrices, applicable to scenarios such as image editing, photo beautification, and visual effects.<br> You must call [OH_Filter_CreateEffect](capi-effect-filter-h.md#oh_filter_createeffect) and [OH_Filter_Release](capi-effect-filter-h.md#oh_filter_release) in pairs to ensure that resources are properly released. <br>None of the APIs in this file support multi-threaded calls.
+
+**Include**: <native_effect/effect_filter.h>
 
 **Library**: libnative_effect.so
 

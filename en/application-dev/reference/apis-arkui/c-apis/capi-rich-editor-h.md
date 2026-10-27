@@ -145,21 +145,21 @@ Enumerates the text editor input types.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 | Enum item | Description |
 | -- | -- |
-| OH_ARKUI_TEXT_EDITOR_TYPE_NORMAL = 0 | Normal input mode.<br>**Since**: 26.2.0 |
-| OH_ARKUI_TEXT_EDITOR_TYPE_NUMBER = 2 | Number input mode.<br>**Since**: 26.2.0 |
-| OH_ARKUI_TEXT_EDITOR_TYPE_PHONE_NUMBER = 3 | Phone number input mode.<br>**Since**: 26.2.0 |
-| OH_ARKUI_TEXT_EDITOR_TYPE_EMAIL = 5 | Email address input mode.<br>**Since**: 26.2.0 |
-| OH_ARKUI_TEXT_EDITOR_TYPE_PASSWORD = 7 | Password input mode.<br>**Since**: 26.2.0 |
-| OH_ARKUI_TEXT_EDITOR_TYPE_NUMBER_PASSWORD = 8 | Numeric password input mode.<br>**Since**: 26.2.0 |
-| OH_ARKUI_TEXT_EDITOR_TYPE_SCREEN_LOCK_PASSWORD = 9 | Lock screen password input mode.<br>**Since**: 26.2.0 |
-| OH_ARKUI_TEXT_EDITOR_TYPE_USER_NAME = 10 | Username input mode.<br>**Since**: 26.2.0 |
-| OH_ARKUI_TEXT_EDITOR_TYPE_NEW_PASSWORD = 11 | New password input mode.<br>**Since**: 26.2.0 |
-| OH_ARKUI_TEXT_EDITOR_TYPE_NUMBER_DECIMAL = 12 | Number input mode with a decimal point.<br>**Since**: 26.2.0 |
-| OH_ARKUI_TEXT_EDITOR_TYPE_ONE_TIME_CODE = 14 | One time code input mode.<br>**Since**: 26.2.0 |
+| OH_ARKUI_TEXT_EDITOR_TYPE_NORMAL = 0 | Normal input mode.<br>**Since**: 26.1.0 |
+| OH_ARKUI_TEXT_EDITOR_TYPE_NUMBER = 2 | Number input mode.<br>**Since**: 26.1.0 |
+| OH_ARKUI_TEXT_EDITOR_TYPE_PHONE_NUMBER = 3 | Phone number input mode.<br>**Since**: 26.1.0 |
+| OH_ARKUI_TEXT_EDITOR_TYPE_EMAIL = 5 | Email address input mode.<br>**Since**: 26.1.0 |
+| OH_ARKUI_TEXT_EDITOR_TYPE_PASSWORD = 7 | Password input mode.<br>**Since**: 26.1.0 |
+| OH_ARKUI_TEXT_EDITOR_TYPE_NUMBER_PASSWORD = 8 | Numeric password input mode.<br>**Since**: 26.1.0 |
+| OH_ARKUI_TEXT_EDITOR_TYPE_SCREEN_LOCK_PASSWORD = 9 | Lock screen password input mode.<br>**Since**: 26.1.0 |
+| OH_ARKUI_TEXT_EDITOR_TYPE_USER_NAME = 10 | Username input mode.<br>**Since**: 26.1.0 |
+| OH_ARKUI_TEXT_EDITOR_TYPE_NEW_PASSWORD = 11 | New password input mode.<br>**Since**: 26.1.0 |
+| OH_ARKUI_TEXT_EDITOR_TYPE_NUMBER_DECIMAL = 12 | Number input mode with a decimal point.<br>**Since**: 26.1.0 |
+| OH_ARKUI_TEXT_EDITOR_TYPE_ONE_TIME_CODE = 14 | One time code input mode.<br>**Since**: 26.1.0 |
 
 
 ## Function description

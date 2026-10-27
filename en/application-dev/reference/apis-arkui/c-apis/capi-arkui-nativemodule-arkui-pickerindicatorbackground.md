@@ -6,7 +6,7 @@ typedef struct ArkUI_PickerIndicatorBackground {...} ArkUI_PickerIndicatorBackgr
 
 ## Overview
 
-Defines the style parameter of the background-style indicator of the selected item.
+Defines the style parameter of the background-style indicator of the selected item. The background-style indicator highlights the selected item with a background color and rounded corners, including the background color and corner radius of the selected item.<br>Usage scenarios:
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

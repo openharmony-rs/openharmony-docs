@@ -428,6 +428,6 @@ NODE_LINEAR_GRADIENT_BLUR = 129
 
 Defines the linear gradient blur attribute, which can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.object: linear gradient blur options object. The parameter type is [OH_ArkUI_LinearGradientBlurOptions](capi-arkui-nativemodule-oh-arkui-lineargradientbluroptions.md)*.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.object: linear gradient blur options object. The type is [OH_ArkUI_LinearGradientBlurOptions](capi-arkui-nativemodule-oh-arkui-lineargradientbluroptions.md)*. The object is an internal static object; do not release it by calling [OH_ArkUI_NativeModule_LinearGradientBlurOptions_Destroy](capi-native-type-visual-h.md#oh_arkui_nativemodule_lineargradientbluroptions_destroy). When the attribute is not set or has been reset, the returned object contains default values (blurRadius = 0, fractionStops = {0.0, 0.0, 0.0, 1.0}, direction = [OH_ARKUI_LINEAR_GRADIENT_BLUR_DIRECTION_BOTTOM](capi-native-type-visual-h.md#oh_arkui_lineargradientblurdirection)).</li> </ul>
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 

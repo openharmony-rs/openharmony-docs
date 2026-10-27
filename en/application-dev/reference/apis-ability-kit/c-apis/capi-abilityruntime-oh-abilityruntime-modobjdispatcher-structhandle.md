@@ -6,7 +6,7 @@ typedef struct OH_AbilityRuntime_ModObjDispatcher_StructHandle OH_AbilityRuntime
 
 ## Overview
 
-Defines a pointer to OH_AbilityRuntime_ModularObjectDispatcher_Struct.
+Struct handle. The handle points to a struct instance with named fields, and the field types are defined by the type library metadata. It can be created by [OH_AbilityRuntime_ModObjDispatcher_StructCreate](capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_structcreate) and must be released by [OH_AbilityRuntime_ModObjDispatcher_StructRelease](capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_structrelease) after use.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 

@@ -10,7 +10,7 @@ Declares the shared JSON data object for APIs such as UI perception and control.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
@@ -51,12 +51,12 @@ Enumerated type of the JSON output format.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 | Enum item | Description |
 | -- | -- |
-| OH_ARKUI_NATIVE_MODULE_UI_JSON_COMPACT = 0 | Produces canonical JSON without unnecessary whitespace.<br>**Since**: 26.2.0 |
-| OH_ARKUI_NATIVE_MODULE_UI_JSON_PRETTY = 1 | Generates JSON with double-space indentation and line breaks.<br>**Since**: 26.2.0 |
+| OH_ARKUI_NATIVE_MODULE_UI_JSON_COMPACT = 0 | Produces canonical JSON without unnecessary whitespace.<br>**Since**: 26.1.0 |
+| OH_ARKUI_NATIVE_MODULE_UI_JSON_PRETTY = 1 | Generates JSON with double-space indentation and line breaks.<br>**Since**: 26.1.0 |
 
 
 ## Function description
@@ -73,7 +73,7 @@ Creates a JSON data object from a caller-provided JSON string.<br> The provided 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 **Resource release**: ui_json_wrapper/OH_ArkUI_NativeModule_UIJsonWrapperDestroy {outOwned}
 
@@ -103,7 +103,7 @@ Obtains the JSON string held by the object.<br> The returned string is read-only
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 **Parameters**:
 
@@ -129,7 +129,7 @@ Obtains the byte length of the JSON string.<br> The returned length excludes the
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 **Parameters**:
 
@@ -155,7 +155,7 @@ Destroys a JSON data object and releases its resources.<br> Passing NULL has no 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 **Parameters**:
 

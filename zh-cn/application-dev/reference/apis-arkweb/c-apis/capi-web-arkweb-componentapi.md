@@ -50,9 +50,9 @@ void (*onControllerAttached)(const char* webTag, ArkWeb_OnComponentCallback call
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char* webTag |  Web组件名称。 |
-|  [ArkWeb_OnComponentCallback](capi-arkweb-type-h.md#arkweb_oncomponentcallback) callback | onControllerAttached的回调函数。 |
-|  void* userData | 用户自定义数据。 |
+| const char* webTag | [in] Web组件名称。 |
+|  [ArkWeb_OnComponentCallback](capi-arkweb-type-h.md#arkweb_oncomponentcallback) callback | [in] onControllerAttached的回调函数。 |
+|  void* userData | [in] 用户自定义数据。 |
 
 ### onPageBegin()
 
@@ -68,9 +68,9 @@ void (*onPageBegin)(const char* webTag, ArkWeb_OnComponentCallback callback, voi
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char* webTag |  Web组件名称。 |
-|  [ArkWeb_OnComponentCallback](capi-arkweb-type-h.md#arkweb_oncomponentcallback) callback | 网页开始加载时触发的回调函数，用于处理页面加载开始时的业务逻辑。 |
-|  void* userData | 用户自定义数据指针，该数据会在回调触发时传递给回调函数，可用于保存上下文信息或状态数据。 |
+| const char* webTag | [in] Web组件名称。 |
+|  [ArkWeb_OnComponentCallback](capi-arkweb-type-h.md#arkweb_oncomponentcallback) callback | [in] 网页开始加载时触发的回调函数，用于处理页面加载开始时的业务逻辑。 |
+|  void* userData | [in] 用户自定义数据指针，该数据会在回调触发时传递给回调函数，可用于保存上下文信息或状态数据。 |
 
 ### onPageEnd()
 
@@ -86,9 +86,9 @@ void (*onPageEnd)(const char* webTag, ArkWeb_OnComponentCallback callback, void*
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char* webTag |  Web组件名称。 |
-|  [ArkWeb_OnComponentCallback](capi-arkweb-type-h.md#arkweb_oncomponentcallback) callback | 网页加载完成时触发的回调函数，用于处理页面加载完成后的业务逻辑。 |
-|  void* userData | 用户自定义数据指针，该数据会在回调触发时传递给回调函数，可用于保存上下文信息或状态数据。 |
+| const char* webTag | [in] Web组件名称。 |
+|  [ArkWeb_OnComponentCallback](capi-arkweb-type-h.md#arkweb_oncomponentcallback) callback | [in] 网页加载完成时触发的回调函数，用于处理页面加载完成后的业务逻辑。 |
+|  void* userData | [in] 用户自定义数据指针，该数据会在回调触发时传递给回调函数，可用于保存上下文信息或状态数据。 |
 
 ### onDestroy()
 
@@ -104,8 +104,8 @@ void (*onDestroy)(const char* webTag, ArkWeb_OnComponentCallback callback, void*
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char* webTag |  Web组件名称。 |
-|  [ArkWeb_OnComponentCallback](capi-arkweb-type-h.md#arkweb_oncomponentcallback) callback | onDestroy的回调函数。 |
-|  void* userData | 用户自定义数据指针。 |
+| const char* webTag | [in] Web组件名称。 |
+|  [ArkWeb_OnComponentCallback](capi-arkweb-type-h.md#arkweb_oncomponentcallback) callback | [in] onDestroy的回调函数。 |
+|  void* userData | [in] 用户自定义数据指针。 |
 
 

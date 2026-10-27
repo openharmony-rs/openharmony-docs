@@ -6,7 +6,7 @@ struct OH_Filter_ColorMatrix {...}
 
 ## 概述
 
-定义用于创建滤镜效果的矩阵，矩阵维度为4x5，元素取值范围为浮点数。
+定义用于创建滤镜效果的矩阵，矩阵维度为4x5，元素类型为浮点数。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 

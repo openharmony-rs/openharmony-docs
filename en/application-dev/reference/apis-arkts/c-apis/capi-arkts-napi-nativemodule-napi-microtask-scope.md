@@ -10,7 +10,7 @@ Microtask scope provides a scope to pause the execution of microtasks in the run
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 **Related module**: [ArkTS_Napi_NativeModule](capi-arkts-napi-nativemodule.md)
 

@@ -184,8 +184,8 @@ Callback for receiving Web component event notifications. It is used to receive 
 
 | Parameter | Description |
 | -- | -- |
-| const char* webTag | Name of the **Web** component. |
-| void* userData | Pointer to user-defined data. |
+| const char* webTag | [in] Name of the **Web** component. |
+| void* userData | [in] Pointer to user-defined data. |
 
 ### ArkWeb_OnScrollCallback()
 

@@ -18,7 +18,7 @@ Declares the connection options for extension ability, including callbacks for c
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [OH_AbilityRuntime_ConnectOptions](capi-abilityruntime-oh-abilityruntime-connectoptions.md) | OH_AbilityRuntime_ConnectOptions | Defines the OH_AbilityRuntime_ConnectOptions structure type. |
+| [OH_AbilityRuntime_ConnectOptions](capi-abilityruntime-oh-abilityruntime-connectoptions.md) | OH_AbilityRuntime_ConnectOptions | Defines the OH_AbilityRuntime_ConnectOptions struct, which is used to configure the callback options when connecting to an ExtensionAbility, including the callbacks for successful connection, disconnection, and connection failure. |
 
 ### Function
 

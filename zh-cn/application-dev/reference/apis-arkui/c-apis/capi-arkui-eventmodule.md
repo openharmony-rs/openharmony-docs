@@ -12,4 +12,4 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| [ui_input_event.h](capi-ui-input-event-h.md) | Provides ArkUI event definitions on the native side. |
+| [ui_input_event.h](capi-ui-input-event-h.md) | 提供ArkUI在Native侧的输入事件定义，支持触摸、鼠标、轴和按键事件，以及事件属性获取、 事件冒泡控制和事件克隆处理，用于Native组件识别和处理用户输入。 |

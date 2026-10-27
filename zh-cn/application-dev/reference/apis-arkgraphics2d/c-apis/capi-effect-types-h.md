@@ -2,7 +2,9 @@
 
 ## 概述
 
-声明滤镜效果的数据类型，用于定义滤镜效果的矩阵、状态码和平铺模式等， 支持创建自定义滤镜效果、处理图像着色器平铺等场景。
+声明滤镜效果的数据类型，用于定义滤镜效果的矩阵、状态码和平铺模式等， 支持创建自定义滤镜效果、处理图像着色器平铺等场景。 <br>本文档定义的状态码类型用于相关接口的状态返回，具体接口的状态码使用说明请参见对应接口文档。
+
+**引用文件：** <native_effect/effect_types.h>
 
 **库：** libnative_effect.so
 
@@ -18,7 +20,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [OH_Filter_ColorMatrix](capi-effectkit-oh-filter-colormatrix.md) | - | 定义用于创建滤镜效果的矩阵，矩阵维度为4x5，元素取值范围为浮点数。 |
+| [OH_Filter_ColorMatrix](capi-effectkit-oh-filter-colormatrix.md) | - | 定义用于创建滤镜效果的矩阵，矩阵维度为4x5，元素类型为浮点数。 |
 | [OH_Filter](capi-effectkit-oh-filter.md) | OH_Filter | 滤镜结构体，用于配合effectKit模块相关接口实现滤镜效果处理。 |
 | [OH_PixelmapNative](capi-effectkit-oh-pixelmapnative.md) | OH_PixelmapNative | 声明由图像框架定义的像素图对象。 |
 
@@ -26,7 +28,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [EffectErrorCode](#effecterrorcode) | EffectErrorCode | 定义滤镜效果的状态码。 |
+| [EffectErrorCode](#effecterrorcode) | EffectErrorCode | 定义滤镜效果的状态码。这些状态码在使用滤镜效果相关接口时返回，开发者应根据 返回的状态码判断操作结果并进行相应处理。具体接口的状态码使用说明请参见对应接口文档。 |
 | [EffectTileMode](#effecttilemode) | EffectTileMode | 定义着色器效果平铺模式的枚举。 |
 
 ## 枚举类型说明
@@ -39,7 +41,7 @@ enum EffectErrorCode
 
 **描述：**
 
-定义滤镜效果的状态码。
+定义滤镜效果的状态码。这些状态码在使用滤镜效果相关接口时返回，开发者应根据 返回的状态码判断操作结果并进行相应处理。具体接口的状态码使用说明请参见对应接口文档。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 

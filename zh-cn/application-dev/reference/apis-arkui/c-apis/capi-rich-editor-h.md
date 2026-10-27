@@ -145,21 +145,21 @@ enum OH_ArkUI_TextEditorType
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_ARKUI_TEXT_EDITOR_TYPE_NORMAL = 0 | 普通输入模式。<br>**起始版本：** 26.2.0 |
-| OH_ARKUI_TEXT_EDITOR_TYPE_NUMBER = 2 | 数字输入模式。<br>**起始版本：** 26.2.0 |
-| OH_ARKUI_TEXT_EDITOR_TYPE_PHONE_NUMBER = 3 | 电话号码输入模式。<br>**起始版本：** 26.2.0 |
-| OH_ARKUI_TEXT_EDITOR_TYPE_EMAIL = 5 | 邮箱地址输入模式。<br>**起始版本：** 26.2.0 |
-| OH_ARKUI_TEXT_EDITOR_TYPE_PASSWORD = 7 | 密码输入模式。<br>**起始版本：** 26.2.0 |
-| OH_ARKUI_TEXT_EDITOR_TYPE_NUMBER_PASSWORD = 8 | 数字密码输入模式。<br>**起始版本：** 26.2.0 |
-| OH_ARKUI_TEXT_EDITOR_TYPE_SCREEN_LOCK_PASSWORD = 9 | 锁屏密码输入模式。<br>**起始版本：** 26.2.0 |
-| OH_ARKUI_TEXT_EDITOR_TYPE_USER_NAME = 10 | 用户名输入模式。<br>**起始版本：** 26.2.0 |
-| OH_ARKUI_TEXT_EDITOR_TYPE_NEW_PASSWORD = 11 | 新密码输入模式。<br>**起始版本：** 26.2.0 |
-| OH_ARKUI_TEXT_EDITOR_TYPE_NUMBER_DECIMAL = 12 | 带小数点的数字输入模式。<br>**起始版本：** 26.2.0 |
-| OH_ARKUI_TEXT_EDITOR_TYPE_ONE_TIME_CODE = 14 | 一次性验证码输入模式。<br>**起始版本：** 26.2.0 |
+| OH_ARKUI_TEXT_EDITOR_TYPE_NORMAL = 0 | 普通输入模式。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_TEXT_EDITOR_TYPE_NUMBER = 2 | 数字输入模式。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_TEXT_EDITOR_TYPE_PHONE_NUMBER = 3 | 电话号码输入模式。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_TEXT_EDITOR_TYPE_EMAIL = 5 | 邮箱地址输入模式。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_TEXT_EDITOR_TYPE_PASSWORD = 7 | 密码输入模式。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_TEXT_EDITOR_TYPE_NUMBER_PASSWORD = 8 | 数字密码输入模式。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_TEXT_EDITOR_TYPE_SCREEN_LOCK_PASSWORD = 9 | 锁屏密码输入模式。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_TEXT_EDITOR_TYPE_USER_NAME = 10 | 用户名输入模式。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_TEXT_EDITOR_TYPE_NEW_PASSWORD = 11 | 新密码输入模式。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_TEXT_EDITOR_TYPE_NUMBER_DECIMAL = 12 | 带小数点的数字输入模式。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_TEXT_EDITOR_TYPE_ONE_TIME_CODE = 14 | 一次性验证码输入模式。<br>**起始版本：** 26.1.0 |
 
 
 ## 函数说明

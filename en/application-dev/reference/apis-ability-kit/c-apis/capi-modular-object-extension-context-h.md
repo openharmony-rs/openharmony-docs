@@ -2,7 +2,7 @@
 
 ## Overview
 
-Declares the modular object extension context.
+Declares the context APIs of ModularObjectExtensionAbility, including starting a UIAbility, destroying the ModularObjectExtensionAbility itself, and creating and destroying IPC objects.<br> **File to include:** <AbilityKit/ability_runtime/modular_object_extension_context.h>
 
 **Library**: libability_runtime.so
 
@@ -18,7 +18,7 @@ Declares the modular object extension context.
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [OH_AbilityRuntime_ModObjExtensionContextHandle](capi-abilityruntime-oh-abilityruntime-modobjextensioncontexthandle.md) | OH_AbilityRuntime_ModObjExtensionContextHandle | Defines a pointer type to OH_AbilityRuntime_ModObjExtensionContextHandle. |
+| [OH_AbilityRuntime_ModObjExtensionContextHandle](capi-abilityruntime-oh-abilityruntime-modobjextensioncontexthandle.md) | OH_AbilityRuntime_ModObjExtensionContextHandle | Represents the handle to the ModularObjectExtensionAbility context. |
 
 ### Function
 

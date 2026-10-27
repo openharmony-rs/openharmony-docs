@@ -2942,7 +2942,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetContentModifierOnDraw(ArkUI_RenderContentMod
 | -- | -- |
 | rkUI_RenderContentModifierHandle modifier | 目标内容修改器。 |
 | void* userData | 要传递给回调的自定义数据。 |
-| void (*callback)(ArkUI_DrawContext* context | The draw event receiver callback. |
+| void (*callback)(ArkUI_DrawContext* context | 表示绘制事件接收回调。其中context表示绘制上下文；userData表示调用本接口时传入的自定义数据。 |
 
 **返回值：**
 

@@ -6,7 +6,7 @@ typedef struct ARKUI_TextPickerCascadeRangeContent {...} ARKUI_TextPickerCascade
 
 ## Overview
 
-Defines a multi-column cascade picker.
+Defines a multi-column text cascade picker, which describes the hierarchical data structure of the multi- column text cascade picker. This struct forms a tree structure through children members to support multi-level cascade selection. It is suitable for scenarios that require displaying hierarchical data such as province/city/ district and year/month/day, and can simplify the development of the multi-level text cascade picker.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

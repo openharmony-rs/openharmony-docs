@@ -692,7 +692,7 @@ NODE_TEXT_STROKE_WIDTH = 1057
 
 Sets the text stroke width. <br>This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].f32: text stroke width, in vp. The default value is <b>0</b>, indicating no stroke. A value less than <b>0</b> indicates solid text; a value greater than <b>0</b> indicates outlined text. Percentage values are not supported.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].f32: text stroke width, in vp.</li> </ul>
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 ### NODE_TEXT_STROKE_COLOR
 
@@ -704,7 +704,7 @@ NODE_TEXT_STROKE_COLOR = 1058
 
 Sets the text stroke color. <br>This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].u32: text stroke color, in 0xARGB format. The default value is the text font color. Invalid values are treated as the default value.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].u32: text stroke color, in 0xARGB format.</li> </ul>
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 ### NODE_TEXT_STROKE_JOIN_STYLE
 
@@ -716,7 +716,7 @@ NODE_TEXT_STROKE_JOIN_STYLE = 1059
 
 Sets the join style of the text stroke. <br>This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: text stroke join style. The parameter type is [OH_ArkUI_StrokeJoinStyle](capi-text-common-h.md#oh_arkui_strokejoinstyle). The default value is <b>OH_ARKUI_STROKE_JOIN_STYLE_MITER_JOIN</b>.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: text stroke join style. The parameter type is [OH_ArkUI_StrokeJoinStyle](capi-text-common-h.md#oh_arkui_strokejoinstyle).</li> </ul>
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 ### NODE_SPAN_CONTENT
 
@@ -738,7 +738,7 @@ NODE_SPAN_TEXT_BACKGROUND_STYLE
 
 **Description**
 
-Text background style. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].u32: color of the text background, in 0xARGB format, for example, <b>0xFFFF0000</b> indicating red. The second parameter indicates the rounded corners of the text background. Two setting modes are available: 1: .value[1].f32: radius of the four corners, in vp. 2: .value[1].f32: radius of the upper left corner, in vp.</li> <li>.value[2].f32: radius of the upper right corner, in vp.</li> <li>.value[3].f32: radius of the lower left corner, in vp.</li> <li>.value[4].f32: radius of the lower right corner, in vp.</li> <li>.value[5]?.f32: border width of the text background, in vp. Optional. The default value is <b>0</b>. This parameter is supported since API version 26.2.0.</li> <li>.value[6]?.u32: border color of the text background, in 0xARGB format. Optional. The default value is <b>0x00000000</b> (transparent). This parameter is supported since API version 26.2.0.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].u32: color of the text background, in 0xARGB format.</li> <li>.value[1].f32: radius of the upper left corner, in vp.</li> <li>.value[2].f32: radius of the upper right corner, in vp.</li> <li>.value[3].f32: radius of the lower left corner, in vp.</li> <li>.value[4].f32: radius of the lower right corner, in vp.</li> <li>.value[5].f32: border width of the text background, in vp. This parameter is supported since API version 26.2.0.</li> <li>.value[6].u32: border color of the text background, in 0xARGB format. This parameter is supported since API version 26.2.0.</li> </ul>
+Text background style. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].u32: color of the text background, in 0xARGB format, for example, <b>0xFFFF0000</b> indicating red. The second parameter indicates the rounded corners of the text background. Two setting modes are available: 1: .value[1].f32: radius of the four corners, in vp. 2: .value[1].f32: radius of the upper left corner, in vp.</li> <li>.value[2].f32: radius of the upper right corner, in vp.</li> <li>.value[3].f32: radius of the lower left corner, in vp.</li> <li>.value[4].f32: radius of the lower right corner, in vp.</li> <li>.value[5]?.f32: border width of the text background, in vp. Optional. The default value is <b>0</b>. This parameter is supported since API version 26.1.0.</li> <li>.value[6]?.u32: border color of the text background, in 0xARGB format. Optional. The default value is <b>0x00000000</b> (transparent). This parameter is supported since API version 26.1.0.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].u32: color of the text background, in 0xARGB format.</li> <li>.value[1].f32: radius of the upper left corner, in vp.</li> <li>.value[2].f32: radius of the upper right corner, in vp.</li> <li>.value[3].f32: radius of the lower left corner, in vp.</li> <li>.value[4].f32: radius of the lower right corner, in vp.</li> <li>.value[5].f32: border width of the text background, in vp. This parameter is supported since API version 26.1.0.</li> <li>.value[6].u32: border color of the text background, in 0xARGB format. This parameter is supported since API version 26.1.0.</li> </ul>
 
 **Since**: 12
 
