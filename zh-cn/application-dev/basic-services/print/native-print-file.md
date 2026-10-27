@@ -2,15 +2,15 @@
 
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Print-->
-<!--Owner: @guoshengbang-->
+<!--Owner: @Zouhaifeng1-->
 <!--Designer: @baozewei-->
-<!--Tester: @guoshengbang-->
+<!--Tester: @baozewei-->
 <!--Adviser: @fang-jinxu-->
 
 OpenHarmony提供以下两种文件打印方式：
 
-- [系统预览打印](#系统预览打印)：应用通过接口拉起系统打印预览界面，适合未实现打印预览能力的应用。
-- [直接打印](#直接打印)：应用指定打印机、打印文件和打印选项后直接下发任务，适合已实现打印预览能力的应用。API 24及以上还可以在下发任务时注册[状态回调](#状态回调打印)。
+- [系统预览打印](#通过接口拉起系统打印预览界面下发任务)：应用通过接口拉起系统打印预览界面，适合未实现打印预览能力的应用。
+- [直接打印](#通过打印接口直接下发打印任务)：应用指定打印机、打印文件和打印选项后直接下发任务，适合已实现打印预览能力的应用。API 24及以上还可以在下发任务时注册[状态回调](#状态回调打印)。
 
 > **说明：**
 >
@@ -319,7 +319,7 @@ napi_value NativeConnectPrinter(napi_env env, napi_callback_info info)
   }
 ```
 
-## 系统预览打印
+## 通过接口拉起系统打印预览界面下发任务
 
 系统预览打印通过`OH_Print_StartPrintByNative()`拉起系统打印界面。**本示例的系统预览仅支持 PDF**，请选择内置 `printDemo.pdf`；选择 JPEG 时，页面提示改选 PDF，不会替换用户所选文件。布局回调需要向系统提供的文件描述符写入 PDF，本示例直接复制已有 PDF，没有实现 JPEG 转 PDF。
 
@@ -453,7 +453,7 @@ napi_value NativeStartPrintByNative(napi_env env, napi_callback_info info)
   }
 ```
 
-## 直接打印
+## 通过打印接口直接下发打印任务
 
 直接打印需要使用已连接的打印机ID、文件描述符、纸张ID、分辨率、份数、颜色、单双面、方向、质量、边距和文档格式构造`Print_PrintJob`。此入口与状态回调打印均演示 JPEG / PDF 文件，格式由所选文件对应的 MIME 类型传入。
 
