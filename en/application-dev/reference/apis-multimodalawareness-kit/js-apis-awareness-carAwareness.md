@@ -30,15 +30,8 @@ Enumerates the capability types supported by car awareness.
 | Name | Value | Description |
 | ---- | ---- | ---- |
 | SPATIAL_MOTION | 'SpatialMotion' | Spatial motion capability, which supports recognizing the user's air gestures for operating the screen. |
-| SPATIAL_POINT | 'SpatialPoint' | Spatial point capability, which supports recognizing the in-car components pointed to by the user.<br>**System API:** This enum member is a system API. |
-| SPATIAL_GESTURE | 'SpatialGesture' | Spatial gesture capability, which supports recognizing the user's specific postures and actions.<br>**System API:** This enum member is a system API. |
 | REALTIME_WEATHER | 'RealTimeWeather' | Real-time weather capability, which supports recognizing the weather conditions of the environment where the car is currently located. |
 | REFUELING | 'Refueling' | Refueling capability, which supports recognizing the start and end states of car refueling. |
-| CAR_STATUS | 'CarStatus' | Car status capability, which supports obtaining vehicle-related status information.<br>**System API:** This enum member is a system API. |
-| HABIT_RECOMMENDATION | 'HabitRecommendation' | Habit recommendation capability, which supports generating recommendations based on user habits.<br>**System API:** This enum member is a system API. |
-| SPATIAL_DRAW | 'SpatialDraw' | Spatial draw capability, which supports identifying the users' air gestures during mid-air drawing.<br>**System API:** This enum member is a system API. |
-| GESTURE_CLOSEDOOR | 'GestureCloseDoor' | Gesture close door capability, which supports recognizing user's hand action for closing the doors.<br>**System API:** This enum member is a system API. |
-| OCCUPANT_SENSE | 'OccupantSense' | Occupant sense capability, which supports recognizing position and classification of in-car occupants.<br>**System API:** This enum member is a system API. |
 
 ## SpatialMotionInfo
 
