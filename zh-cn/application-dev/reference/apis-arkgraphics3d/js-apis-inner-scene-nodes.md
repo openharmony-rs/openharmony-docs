@@ -440,8 +440,8 @@ function printNodeTreeInRelativePath(node: Node | null): void {
 | ---- | ---- | ---- |
 | DIRECTIONAL | 1 | 平行光类型。 |
 | SPOT | 2 | 聚光灯类型。 |
-| POINT | 3 | 点光源类型。 |
-| RECT | 4 | 矩形光类型。 |
+| POINT | 3 | 点光源类型。 **起始版本：** 26.1.0<br>**模型约束：** 此接口仅可在Stage模型下使用。|
+| RECT | 4 | 矩形光类型。  **起始版本：** 26.1.0<br>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ## Light
 
@@ -490,11 +490,15 @@ function printNodeTreeInRelativePath(node: Node | null): void {
 
 点光源从空间中的单个点向所有方向均匀发射光，强度随着距离光源位置的增加而衰减。
 
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| range<sup>26+</sup> | number | 否 | 是 | 点光源影响的最大距离，超过该范围光强为0。单位为世界坐标系下的场景单位（比如cm、m、km等），取值大于0。若未设置此参数或取值小于等于0，系统自动计算一个经验值。 |
+| range | number | 否 | 是 | 点光源影响的最大距离，超过该范围光强为0。单位为世界坐标系下的场景单位（比如cm、m、km等），取值大于0。若未设置此参数或取值小于等于0，系统自动计算一个经验值。 |
 
 > **注意：**
 >
@@ -506,13 +510,17 @@ function printNodeTreeInRelativePath(node: Node | null): void {
 
 矩形光源从矩形区域发射光，模拟柔和的区域照明效果，强度随着距离的增加而衰减。
 
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| width<sup>26+</sup> | number | 否 | 是 | 矩形发光面的宽度。单位为世界坐标系下的场景单位（比如cm、m、km等），取值大于0，若未设置，默认为1。 |
-| height<sup>26+</sup> | number | 否 | 是 | 矩形发光面的高度。单位为世界坐标系下的场景单位（比如cm、m、km等），取值大于0，若未设置，默认为1。 |
-| twoSided<sup>26+</sup> | boolean | 否 | 是 | 矩形光源是否从矩形的两侧发光。若未设置，默认为false。 |
+| width | number | 否 | 是 | 矩形发光面的宽度。单位为世界坐标系下的场景单位（比如cm、m、km等），取值大于0，若未设置，默认为1。 |
+| height | number | 否 | 是 | 矩形发光面的高度。单位为世界坐标系下的场景单位（比如cm、m、km等），取值大于0，若未设置，默认为1。 |
+| twoSided | boolean | 否 | 是 | 矩形光源是否从矩形的两侧发光。若未设置，默认为false。 |
 
 > **注意：**
 >
