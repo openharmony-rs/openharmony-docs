@@ -35997,7 +35997,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/DeviceCertificateKit/CertificateAlgorithmLibrary/entry/src/main/ets/pages/CreateCmsDecapsulationObject.ets",
 				"functions":[
 					{
-						"end_line":101,
+						"end_line":100,
 						"name":"create-cms-decapsulation-object",
 						"start_line":16
 					}
@@ -40374,7 +40374,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/BinaryDataConvertAsymmetricKeyPairArkTS/entry/src/main/ets/pages/pkcs8ecc/PKCS8ECC.ets",
 				"functions":[
 					{
-						"end_line":43,
+						"end_line":44,
 						"name":"pkcs8_convert_ecc_pri_keypair",
 						"start_line":16
 					}
@@ -55041,7 +55041,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/KemEncapsulateDecapsulate/entry/src/main/ets/pages/Await.ets",
 				"functions":[
 					{
-						"end_line":39,
+						"end_line":40,
 						"name":"kem_encapsulate_decapsulate_await_test",
 						"start_line":16
 					}
@@ -55051,7 +55051,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/KemEncapsulateDecapsulate/entry/src/main/ets/pages/Sync.ets",
 				"functions":[
 					{
-						"end_line":38,
+						"end_line":39,
 						"name":"kem_encapsulate_decapsulate_sync_test",
 						"start_line":16
 					}
