@@ -1,3 +1,11 @@
+---
+kits: ["AVSession Kit / 音视频播控服务"]
+description: "从API version 23开始介绍媒体应用通过音频模板接入播控中心的开发流程，涵盖创建音频模板实例、注册事件监听、主动同步应用数据及注销监听释放资源等步骤。"
+keywords: [音频模板, AVMusicTemplate, 播控中心接入, createAVMusicTemplate, 事件监听注册, 用户信息同步, Car设备, 媒体应用接入]
+doctype: guide
+status: active
+---
+
 # 使用音频模板
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->

@@ -1,3 +1,11 @@
+---
+kits: ["AVSession Kit / 音视频播控服务"]
+description: "结合典型案例介绍音视频应用接入AVSession的展示与控制场景，涵盖会话类型选择、后台任务创建、元数据与播放状态设置、控制命令处理及蓝牙按键适配等完整接入流程。"
+keywords: [接入AVSession, 会话类型, AVSessionType, 元数据设置, 播放状态, 控制命令, 进度条控制, 蓝牙按键适配, 媒体通知]
+doctype: guide
+status: active
+---
+
 # 应用接入AVSession场景介绍
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->

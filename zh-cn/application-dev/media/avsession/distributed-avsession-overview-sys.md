@@ -1,3 +1,11 @@
+---
+kits: ["AVSession Kit / 音视频播控服务"]
+description: "介绍分布式媒体会话的能力范围和交互过程，说明系统投播与应用投播两种场景，以及分布式媒体会话与分布式音频播放之间的关系，帮助开发者理解跨设备投播机制。"
+keywords: [分布式媒体会话, 投播, 系统投播, 应用投播, 远端设备, 跨设备播放, 分布式音频播放, 媒体会话同步]
+doctype: guide
+status: active
+---
+
 # 分布式媒体会话概述（仅对系统应用开放）
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->

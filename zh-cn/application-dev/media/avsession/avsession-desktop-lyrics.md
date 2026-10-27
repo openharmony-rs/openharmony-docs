@@ -1,3 +1,11 @@
+---
+kits: ["AVSession Kit / 音视频播控服务"]
+description: "从API version 23开始介绍应用接入系统桌面歌词组件的开发步骤，涵盖歌词组件能力判断、启用、显示隐藏、锁定解锁及状态变化监听等操作。"
+keywords: [歌词组件, 桌面歌词, enableDesktopLyric, LRC格式歌词, 歌词显示, 歌词锁定, setDesktopLyricVisible, 歌词组件监听]
+doctype: guide
+status: active
+---
+
 # 应用接入歌词组件
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->

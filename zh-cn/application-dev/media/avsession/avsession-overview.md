@@ -1,3 +1,11 @@
+---
+kits: ["AVSession Kit / 音视频播控服务"]
+description: "AVSession Kit（音视频播控服务）是系统提供的音视频统一播控服务，用于管理系统中所有音视频行为，帮助开发者快速构建跨应用、跨设备的音视频统一展示和控制能力，并提供规范化的后台播放管理。"
+keywords: [AVSession Kit, 音视频播控服务, 媒体会话, 播控中心, 后台播放, 投播, 媒体会话提供方, 媒体会话控制方, 分布式媒体会话]
+doctype: guide
+status: active
+---
+
 # AVSession Kit简介
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->

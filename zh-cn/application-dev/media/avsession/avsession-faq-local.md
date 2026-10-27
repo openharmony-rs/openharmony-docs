@@ -1,3 +1,11 @@
+---
+kits: ["AVSession Kit / 音视频播控服务"]
+description: "汇总音视频应用在本地媒体会话接入AVSession Kit过程中遇到的典型问题及其定位与解决方法，涵盖创建AVSession失败和应用退至后台后被强制暂停等常见问题。"
+keywords: [常见问题, 创建AVSession失败, 后台播放暂停, 会话销毁, 后台播放模式, 错误码, 问题定位, BackgroundPlayMode]
+doctype: faq
+status: active
+---
+
 # 本地媒体会话常见问题
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
