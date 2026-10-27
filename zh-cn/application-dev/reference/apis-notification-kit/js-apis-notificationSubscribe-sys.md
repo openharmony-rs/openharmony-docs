@@ -13,6 +13,8 @@
 > 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 本模块接口均为系统接口。
+>
+> 在Worker线程中订阅时，需在线程退出前调用unsubscribe取消订阅：若线程环境已销毁而未取消订阅，系统会自动取消订阅，在取消订阅生效前服务端投递的事件将被丢弃，不会触发订阅者回调；调用unsubscribe后，尚未派发的在途事件也会被丢弃，不会触发订阅者回调。
 
 ## 导入模块
 
@@ -394,7 +396,7 @@ unsubscribe(subscriber: NotificationSubscriber, callback: AsyncCallback\<void\>)
 
 **系统能力**：SystemCapability.Notification.Notification
 
-**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+**需要权限**：对于API版本9-19，需要申请ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
 
@@ -447,7 +449,7 @@ unsubscribe(subscriber: NotificationSubscriber): Promise\<void\>
 
 **系统能力**：SystemCapability.Notification.Notification
 
-**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+**需要权限**：对于API版本9-19，需要申请ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
 

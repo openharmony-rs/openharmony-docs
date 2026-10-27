@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "针对HAP、HAR、HSP三种包类型的用途与构建流程差异，分别给出字节码混淆选项与白名单配置建议，帮助开发者在多包工程中正确启用混淆并保障功能正常。"
+keywords: [混淆, 字节码混淆, 混淆建议, HAP, HAR, HSP, 包类型, 白名单, 顶层作用域混淆]
+doctype: guide
+status: active
+---
+
 # 不同包类型的字节码混淆建议
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->

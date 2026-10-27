@@ -1,9 +1,17 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "概述方舟字节码作为ArkTS/TS/JS编译后二进制产物的定位，并索引字节码文件格式、基本原理、函数命名规则及编译期自定义修改等子主题，帮助开发者快速进入字节码学习。"
+keywords: [方舟字节码, 字节码概述, 字节码文件格式, 字节码基本原理, 函数命名规则, 编译期修改字节码, abc]
+doctype: guide
+status: active
+---
+
 # 方舟字节码概述
 
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @jokerxd-liu; @zmw1-->
-<!--Designer: @huyunhui1; @oatuwwutao-->
+<!--Owner: @jokerxd-liu-->
+<!--Designer: @huyunhui1; @zmw1; @oatuwwutao-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
 

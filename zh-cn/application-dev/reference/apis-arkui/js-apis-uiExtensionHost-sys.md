@@ -1,8 +1,8 @@
 # @ohos.uiExtensionHost (系统接口)
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @Pakoo007-->
-<!--Designer: @stupidb-->
+<!--Owner: @JUGaaab-->
+<!--Designer: @CheryHome-->
 <!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
 
@@ -336,6 +336,10 @@ createSubWindowWithOptions(name: string, subWindowOptions: window.SubWindowOptio
 
 创建该UIExtensionHostWindowProxy实例下的子窗口，使用Promise异步回调。
 
+当组件（EmbeddedComponent或UIExtensionComponent）的宿主为系统窗口时，创建的子窗称为系统子窗，该系统子窗仅支持[getWindowAvoidArea](arkts-apis-window-Window.md#getwindowavoidarea9)、[on('avoidAreaChange)](arkts-apis-window-Window.md#onavoidareachange9)、[off('avoidAreaChange)](arkts-apis-window-Window.md#offavoidareachange9)、[on('windowSizeChange)](arkts-apis-window-Window.md#onwindowsizechange7)、[off('windowSizeChange)](arkts-apis-window-Window.md#offwindowsizechange7)、[on('windowRectChange)](arkts-apis-window-Window.md#onwindowrectchange12)、[off('windowRectChange)](arkts-apis-window-Window.md#offwindowrectchange12)接口。
+- 在OpenHarmony 7.1之前，宿主窗口为系统窗口时，该接口在Phone设备可正常调用，在其他设备中返回1300002错误码。
+- 从OpenHarmony 7.1开始，宿主窗口为系统窗口时，该接口在Phone、Tablet、PC/2in1和TV设备可正常调用，在其他设备中返回1300002错误码。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -420,6 +424,10 @@ export default class EntryAbility extends UIExtensionAbility {
 createSubWindowWithOptions(name: string, subWindowConfig: window.SubWindowOptions, followCreatorLifecycle: boolean): Promise&lt;window.Window&gt;
 
 创建该UIExtensionHostWindowProxy实例下的子窗口，可通过设置followCreatorLifecycle，决定子窗口是否跟随组件（EmbeddedComponent或UIExtensionComponent）的生命周期，使用Promise异步回调。
+
+当组件（EmbeddedComponent或UIExtensionComponent）的宿主为系统窗口时，创建的子窗称为系统子窗，该系统子窗仅支持[getWindowAvoidArea](arkts-apis-window-Window.md#getwindowavoidarea9)、[on('avoidAreaChange)](arkts-apis-window-Window.md#onavoidareachange9)、[off('avoidAreaChange)](arkts-apis-window-Window.md#offavoidareachange9)、[on('windowSizeChange)](arkts-apis-window-Window.md#onwindowsizechange7)、[off('windowSizeChange)](arkts-apis-window-Window.md#offwindowsizechange7)、[on('windowRectChange)](arkts-apis-window-Window.md#onwindowrectchange12)、[off('windowRectChange)](arkts-apis-window-Window.md#offwindowrectchange12)接口。
+- 在OpenHarmony 7.1之前，宿主窗口为系统窗口时，该接口在Phone设备可正常调用，在其他设备中返回1300002错误码。
+- 从OpenHarmony 7.1开始，宿主窗口为系统窗口时，该接口在Phone、Tablet、PC/2in1和TV设备可正常调用，在其他设备中返回1300002错误码。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -636,7 +644,7 @@ export default class EntryAbility extends UIExtensionAbility {
 | ------------------------------ | ----------- | --------------- | ----------------- | -------------------------------- |
 | uiExtensionHostWindowProxyRect | [window.Rect](arkts-apis-window-i.md#rect7) | 否 | 否 |UIExtensionComponent的位置和宽高。 |
 
-## 完整示例
+## 示例
 
 本示例展示文档中主要API在UIExtensionAbility中的基础使用方式，示例应用需采用系统签名，且`bundleName`为"com.example.uiextensiondemo"， 被拉起的`UIExtensionAbility`为"ExampleUIExtensionAbility"。
 

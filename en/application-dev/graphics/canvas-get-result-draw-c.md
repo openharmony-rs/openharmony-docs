@@ -3,9 +3,10 @@
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=e9822af7ec3a94c23ad1d8c8d885b05d29e1f7ba translatedAt=2026-10-19T01:15:19.645Z pushedAt=2026-10-19T03:37:09.575Z -->
 
 ## Overview
 
@@ -18,13 +19,13 @@ In C/C++, you can obtain a canvas in either of the following ways: obtaining a c
 
 ## Available APIs
 
-The following table lists the APIs for creating a canvas. For details, see [drawing_canvas.h](../reference/apis-arkgraphics2d/capi-drawing-canvas-h.md).
+The following table lists the commonly used APIs for creating a canvas. For details about their usage and parameters, see [drawing_canvas.h](../reference/apis-arkgraphics2d/capi-drawing-canvas-h.md) and [drawing_surface.h](../reference/apis-arkgraphics2d/capi-drawing-surface-h.md).
 
 | API| Description|
 | -------- | -------- |
-| OH_Drawing_Canvas\* OH_Drawing_CanvasCreate (void) | Creates a canvas object.|
-| void OH_Drawing_CanvasBind (OH_Drawing_Canvas\*, OH_Drawing_Bitmap\*) | Binds a bitmap to a canvas so that the content drawn on the canvas is output to the bitmap.|
-| OH_Drawing_Canvas\* OH_Drawing_SurfaceGetCanvas (OH_Drawing_Surface \*) | Obtains a canvas from a surface object.|
+| OH_Drawing_Canvas\* OH_Drawing_CanvasCreate(void) | Creates a canvas object. |
+| void OH_Drawing_CanvasBind(OH_Drawing_Canvas\* canvas, OH_Drawing_Bitmap\* bitmap) | Binds a bitmap to a canvas so that the content drawn on the canvas is output to the bitmap. |
+| OH_Drawing_Canvas\* OH_Drawing_SurfaceGetCanvas(OH_Drawing_Surface\* surface) | Obtains a canvas from a surface object. |
 
 
 ## Obtaining a Canvas That Can Be Directly Displayed
@@ -54,7 +55,7 @@ You can obtain a canvas that can be directly displayed via XComponent.
    #include <native_drawing/drawing_surface.h>
    ```
 
-3. Obtain the **BufferHandle** object from the **NativeWindow** corresponding to XComponent. For details about **NativeWindow** APIs, see [_native_window](../reference/apis-arkgraphics2d/capi-nativewindow.md).
+3. Obtain the BufferHandle object from the NativeWindow corresponding to the XComponent. For NativeWindow-related APIs, see [NativeWindow](../reference/apis-arkgraphics2d/capi-nativewindow.md).
 
    <!-- @[ndk_graphics_draw_get_buffer_handle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
    
@@ -200,7 +201,7 @@ A pixel map is a unified data structure used to represent images in the system. 
    ```
 
 
-3. You need to create a pixel map object by calling **OH_Drawing_PixelMapGetFromOhPixelMapNative()** (for details, see [Drawing Images](pixelmap-drawing-c.md)), and create a canvas by calling **OH_Drawing_CanvasCreateWithPixelMap()** based on the pixel map object.
+3. You need to create a pixelmap object by calling **OH_Drawing_PixelMapGetFromOhPixelMapNative()** (for details, see [Drawing Images](pixelmap-drawing-c.md)), and draw the pixel map object onto the canvas by calling **OH_Drawing_CanvasDrawPixelMapRect()**.
 
    <!-- @[ndk_graphics_draw_image](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
    
@@ -226,7 +227,7 @@ A pixel map is a unified data structure used to represent images in the system. 
            pixels[i * RGBA_SIZE + 2] = 0xFF; // Assign a value to the blue channel while keeping other channels at 0. The color is displayed in blue.
        }
    }
-   // Set the pixel map format (length, width, color type, and alpha type).
+   // Set the pixelmap format (width, height, color type, alpha type).
    OH_Pixelmap_InitializationOptions *createOps = nullptr;
    OH_PixelmapInitializationOptions_Create(&createOps);
    OH_PixelmapInitializationOptions_SetWidth(createOps, width);
@@ -243,10 +244,15 @@ A pixel map is a unified data structure used to represent images in the system. 
    OH_Drawing_Rect *dst = OH_Drawing_RectCreate(value200_, value200_, value800_, value600_);
    // Sampling option object.
    OH_Drawing_SamplingOptions* samplingOptions = OH_Drawing_SamplingOptionsCreate(
-       OH_Drawing_FilterMode::FILTER_MODE_LINEAR, OH_Drawing_MipmapMode::MIPMAP_MODE_LINEAR);
+       FILTER_MODE_LINEAR, MIPMAP_MODE_LINEAR);
    // Draw the pixel map.
    OH_Drawing_CanvasDrawPixelMapRect(canvas, pixelMap, src, dst, samplingOptions);
    OH_PixelmapNative_Release(pixelMapNative);
+   OH_PixelmapInitializationOptions_Release(createOps);
+   OH_Drawing_PixelMapDissolve(pixelMap);
+   OH_Drawing_RectDestroy(src);
+   OH_Drawing_RectDestroy(dst);
+   OH_Drawing_SamplingOptionsDestroy(samplingOptions);
    delete[] pixels;
    ```
 
@@ -267,7 +273,7 @@ A pixel map is a unified data structure used to represent images in the system. 
    OH_Drawing_Rect *dst = OH_Drawing_RectCreate(value200_, value200_, value800_, value600_);
    // Sampling option object.
    OH_Drawing_SamplingOptions* samplingOptions = OH_Drawing_SamplingOptionsCreate(
-       OH_Drawing_FilterMode::FILTER_MODE_LINEAR, OH_Drawing_MipmapMode::MIPMAP_MODE_LINEAR);
+       FILTER_MODE_LINEAR, MIPMAP_MODE_LINEAR);
    // Draw the pixel map.
    OH_Drawing_CanvasDrawPixelMapRect(canvas, pixelMap, src, dst, samplingOptions);
    ```
@@ -302,7 +308,7 @@ A GPU backend canvas is a canvas that is drawn based on the GPU. The parallel co
 
 3. Initialize the EGL context.
 
-   Initialize context-related parameters.
+   Initialize context-related parameters:
    <!-- @[ndk_graphics_draw_initialize_egl_context_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.h) -->
    
    ``` C
@@ -377,7 +383,7 @@ A GPU backend canvas is a canvas that is drawn based on the GPU. The parallel co
            return -1;
        }
    
-       SAMPLE_LOGE("Init success.");
+       SAMPLE_LOGI("Init success.");
        return 0;
    }
    ```

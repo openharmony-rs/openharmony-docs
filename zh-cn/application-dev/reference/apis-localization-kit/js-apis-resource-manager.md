@@ -292,8 +292,8 @@ try {
 | DEVICE_TYPE_TABLET   | 0x01 | 平板。   |
 | DEVICE_TYPE_CAR      | 0x02 | 车机。   |
 | DEVICE_TYPE_TV       | 0x04 | 智慧屏。  |
-| DEVICE_TYPE_WEARABLE | 0x06 | 智能手表。   |
-| DEVICE_TYPE_2IN1<sup>11+</sup>     | 0x07 | PC/2in1。   |
+| DEVICE_TYPE_WEARABLE | 0x06 | 智能穿戴。   |
+| DEVICE_TYPE_2IN1<sup>11+</sup>     | 0x07 | 2in1。   |
 <!--RP1End-->
 
 ## ScreenDensity

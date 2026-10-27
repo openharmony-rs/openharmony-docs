@@ -131,11 +131,11 @@ tabBarVisibility(visibility: TabVisibility, displayMode?: TabBarDisplayMode)
 > - 当visibility为TabVisibility.HIDDEN且不设置displayMode时，该页签在两种显示模式中均不显示。
 > - 隐藏的页签内容仍可通过TabsController.changeIndex()或修改index状态变量切换显示。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -838,11 +838,11 @@ badge(badgeStyle: TabBarBadgeStyle): BottomTabBarStyle
 
 Tab页签可见性枚举。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2331,7 +2331,7 @@ struct TabsIndicatorExample {
 
 该示例通过[tabBarVisibility](#tabbarvisibility)属性，设置页签在不同样式的页签栏中的可见性。
 
-从API版本26.2.0开始，TabContent新增了[tabBarVisibility](#tabbarvisibility)属性。
+从API版本26.0.1开始，TabContent新增了[tabBarVisibility](#tabbarvisibility)属性。
 
 ```ts
 // xxx.ets

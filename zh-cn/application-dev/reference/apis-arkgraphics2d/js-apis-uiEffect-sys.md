@@ -4,7 +4,7 @@
 <!--Subsystem: Graphics-->
 <!--Owner: @hanamaru-->
 <!--Designer: @chensiyi_CE-->
-<!--Tester: @zhaoxiaoguang2-->
+<!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
 
 本模块提供组件效果的一些基础能力，包括模糊、提亮等。效果被分为Filter和VisualEffect大类，同类效果可以级联在一个效果大类的实例下。使用该模块可以快速实现复杂的视觉效果，无需开发者掌握底层的图像处理算法，降低了开发复杂度，提升了用户体验。在实际开发中，模糊可用于背景虚化，提亮可用于亮屏显示等。
@@ -166,7 +166,7 @@ createColorfulBrightnessBlender(brightnessBlenderParam: BrightnessBlenderParam, 
 
 创建[ColorfulBrightnessBlender](#colorfulbrightnessblender)实例，用于给组件添加基于保持色相的提亮压暗效果。该效果在对前景提亮或压暗时通过逐通道重建保持色相、并可增强饱和度，避免普通提亮压暗的去色问题。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -383,7 +383,7 @@ filter.distort(-0.5);
 
 
 ### radiusGradientBlur<sup>19+</sup>
-radiusGradientBlur(value: number, options: LinearGradientBlurOptions): Filter
+radiusGradientBlur(radius: number, gradientParam: LinearGradientBlurOptions): Filter
 
 为组件内容添加半径线性渐变模糊效果。
 
@@ -394,8 +394,8 @@ radiusGradientBlur(value: number, options: LinearGradientBlurOptions): Filter
 **参数：**
 | 参数名         | 类型                  | 必填 | 说明                       |
 | ------------- | --------------------- | ---- | ------------------------- |
-| value  | number         | 是   | 模糊半径，单位为px，模糊半径越大越模糊。取值范围为[0, 128]。模糊半径设置为0时不模糊；模糊半径设置小于0的值时，按值为0处理；设置大于128的值时，按值为128处理。|
-| options  | [LinearGradientBlurOptions](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#lineargradientbluroptions12)         | 是   | 线性渐变参数，包含两个部分fractionStops和direction。|
+| radius  | number         | 是   | 模糊半径，单位为px，模糊半径越大越模糊。取值范围为[0, 128]。模糊半径设置为0时不模糊；模糊半径设置小于0的值时，按值为0处理；设置大于128的值时，按值为128处理。|
+| gradientParam  | [LinearGradientBlurOptions](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#lineargradientbluroptions12)         | 是   | 线性渐变参数，包含两个部分fractionStops和direction。|
 
 **返回值：**
 
@@ -729,7 +729,7 @@ struct DisplacementDistortExample {
 ```
 
 ### maskDispersion<sup>20+</sup>
-maskDispersion(dispersionMask: Mask, alpha: number, rFactor?: [number, number], gFactor?: [number, number], bFactor?: [number, number]): Filter
+maskDispersion(dispersionMap: Mask, alpha: number, rFactor?: [number, number], gFactor?: [number, number], bFactor?: [number, number]): Filter
 
 为组件内容添加由置换贴图控制的色散效果，模拟光线通过棱镜时的色散现象。典型应用场景包括炫彩特效、棱镜折射模拟等。
 
@@ -740,7 +740,7 @@ maskDispersion(dispersionMask: Mask, alpha: number, rFactor?: [number, number], 
 **参数：**
 | 参数名         | 类型                  | 必填 | 说明                       |
 | ------------- | --------------------- | ---- | ------------------------- |
-| dispersionMask  | [Mask](#mask20)         | 是   | 置换贴图，用于控制色散的强度、方向和透明度。建议使用PixelMapMask类型的置换贴图，可通过自定义图片纹理实现对色散区域和强度的精细控制。可通过[createPixelMapMask](#createpixelmapmask20)方法创建Mask实例。|
+| dispersionMap  | [Mask](#mask20)         | 是   | 置换贴图，用于控制色散的强度、方向和透明度。建议使用PixelMapMask类型的置换贴图，可通过自定义图片纹理实现对色散区域和强度的精细控制。可通过[createPixelMapMask](#createpixelmapmask20)方法创建Mask实例。|
 | alpha  | number         | 是   | 色散整体透明度，透明度越小效果越透明。取值范围为[0, 1.0]。透明度设置为0时色散效果不生效；透明度设置小于0的值时，按值为0处理；设置大于1.0的值时，按值为1.0处理。|
 | rFactor  | [number, number]         | 否   | X/Y方向上R通道的色散基础偏移。当需要自定义红色通道的色散强度和方向时传入此参数，偏移越大红色色散效果越明显。不传入时默认值为[0.0, 0.0]，无R通道色散偏移。每个方向上的取值范围为[-1.0, 1.0]，超出范围自动截断。|
 | gFactor  | [number, number]         | 否   | X/Y方向上G通道的色散基础偏移。当需要自定义绿色通道的色散强度和方向时传入此参数。不传入时默认值为[0.0, 0.0]，无G通道色散偏移。取值范围同rFactor，为[-1.0, 1.0]，超出范围自动截断。|
@@ -1273,6 +1273,68 @@ struct example {
 }
 ```
 
+### mapColorByBrightness
+
+mapColorByBrightness(colors: Array\<Color\>, positions: Array\<number\>): Filter
+
+根据输入的颜色数组和对应的亮度锚点位置，将图片的亮度分布映射为指定的颜色渐变效果。颜色映射为循环方式，如输入5个颜色并按亮度锚点位置从小到大排序，则颜色映射顺序依次为第1个、第2个、第3个、第4个、第5个，然后循环回到第1个。
+
+> **说明：**
+>
+> 建议作为前景滤镜使用。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名      | 类型                       | 必填 | 说明                                                                                                                          |
+| ----------- | -------------------------- | ---- | ----------------------------------------------------------------------------------------------------------------------------- |
+| colors      | Array\<[Color](#color20)\>   | 是   | 应用的颜色数组。每个颜色的各分量值（包括alpha）均参与映射，且必须大于等于0.0，推荐使用范围为[0.0, 1.0]。小于0.0时无效果。大于1.0时按1.0处理。数组长度范围为1到5，数组长度小于1时无效果；数组长度为1时为纯色效果；数组长度大于5时，效果仅应用前5个颜色。 |
+| positions   | Array\<number\>              | 是   | 每个颜色对应的亮度锚点位置。亮度值越小对应图片中越暗的区域，0.0对应最暗（黑色），1.0对应最亮（白色）。取值范围为[0.0, 1.0]，超出范围时按边界值处理。数组长度必须与colors数组的长度一致，不一致时无效果。           |
+
+**返回值：**
+
+| 类型              | 说明                               |
+| ----------------- | ---------------------------------- |
+| [Filter](#filter) | 返回挂载了颜色亮度映射效果的Filter。 |
+
+**示例：**
+
+```ts
+import { uiEffect } from '@kit.ArkGraphics2D';
+
+@Entry
+@Component
+struct Index {
+  @State colors: Array<uiEffect.Color> = [
+    { red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0 },
+    { red: 1.0, green: 0.1, blue: 0.1, alpha: 1.0 },
+    { red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0 }
+  ];
+  @State positions: Array<number> = [0.0, 0.5, 1.0];
+
+  build() {
+    RelativeContainer() {
+      Stack() {
+        Image($r("app.media.startIcon"))
+          .width(200)
+          .height(200)
+          // 根据图片的明暗程度进行颜色渐变映射
+          .foregroundFilter(uiEffect.createFilter().mapColorByBrightness(this.colors, this.positions))
+      }
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
 ## TileMode
 像素填充模式枚举。
 
@@ -1759,7 +1821,7 @@ type Blender = BrightnessBlender | HdrBrightnessBlender | HdrDarkenBlender | Col
 | [BrightnessBlender](#brightnessblender) | 具有提亮效果的混合器。 |
 | [HdrBrightnessBlender](#hdrbrightnessblender20)<sup>20+</sup> | 具有提亮效果的混合器（支持HDR）。 |
 | [HdrDarkenBlender](#hdrdarkenblender) | 具有压暗效果的混合器（支持HDR）。<br> **起始版本：** 26.0.0 |
-| [ColorfulBrightnessBlender](#colorfulbrightnessblender) | 具有提亮压暗效果的混合器（保持色相）。<br> **起始版本：** 26.2.0 |
+| [ColorfulBrightnessBlender](#colorfulbrightnessblender) | 具有提亮压暗效果的混合器（保持色相）。<br> **起始版本：** 26.1.0 |
 
 ## BrightnessBlender
 提亮混合器，用于将提亮效果添加到指定的组件上。在调用BrightnessBlender前，需要先通过[createBrightnessBlender](#uieffectcreatebrightnessblender)创建一个BrightnessBlender实例。
@@ -1809,7 +1871,7 @@ type Blender = BrightnessBlender | HdrBrightnessBlender | HdrDarkenBlender | Col
 
 基于保持色相的提亮压暗混合器，用于将该提亮压暗效果添加到指定的组件上。该效果在对前景提亮或压暗时通过逐通道重建保持色相、并可增强饱和度，避免普通提亮压暗的去色问题；同时依据亮度差阈值保证前景与背景的对比度。在调用ColorfulBrightnessBlender前，需要先通过[createColorfulBrightnessBlender](#uieffectcreatecolorfulbrightnessblender)创建一个ColorfulBrightnessBlender实例。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2718,6 +2780,8 @@ struct AtlasFrameMaskDemo {
 ## BrightnessBlenderParam
 BrightnessBlender的参数列表，用于配置提亮效果的各项属性，包括灰度调整系数、饱和度和混合比例等参数。
 
+**卡片能力：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **系统接口：** 此接口为系统接口。
@@ -2737,7 +2801,7 @@ BrightnessBlender的参数列表，用于配置提亮效果的各项属性，包
 
 基于保持色相的提亮压暗混合器的可选增强配置项，作为[createColorfulBrightnessBlender](#uieffectcreatecolorfulbrightnessblender)的options参数传入。它在常规参数[BrightnessBlenderParam](#brightnessblenderparam)之外，可进一步针对提亮或压暗方向、色彩增强强度、输入色彩影响度、与背景的对比度以及HDR开关进行精细调整，不传时各项采用默认值。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

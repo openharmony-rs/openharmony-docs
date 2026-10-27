@@ -1,85 +1,65 @@
-# Video Encoding
+# Asynchronous Video Encoding
 
 <!--Kit: AVCodec Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @zhanghongran-->
+<!--Owner: @rchdlee-->
 <!--Designer: @dpy2650--->
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
 
-You can call native APIs to perform video encoding, which compresses video data into a video stream.
+Video encoding is an important part of multimedia processing that compresses uncompressed video data into a video stream, reducing the size of raw video data for storage or transmission. It supports synchronous and asynchronous modes, which differ primarily in how buffers are obtained. Choose the API calling mode that suits your application.
+
+This document describes video encoding in asynchronous mode. For synchronous mode, see [Synchronous Video Encoding](synchronous-video-encoding.md). Depending on how data is supplied before encoding, the encoder provides surface and buffer input modes for different scenarios.
+
+- Surface mode
+
+  The encoder obtains input data through [NativeWindow](../../reference/apis-arkgraphics2d/capi-nativewindow-nativewindow.md), which can connect to other modules, such as the camera module. This mode is suitable for direct connections to data sources such as cameras and screen recording.
+
+- Buffer mode
+
+  The encoder obtains input data through pre-allocated shared memory. You must copy raw video data into this shared memory. This mode is suitable for encoding raw video data from files or memory.
+
+| Difference | Surface Mode | Buffer Mode |
+| --- | --- | --- |
+| Configuration | Before calling **OH_VideoEncoder_Prepare**, call **OH_VideoEncoder_GetSurface** to obtain the OHNativeWindow for transferring video data. | - |
+| Data input | Input frames are obtained through the OHNativeWindow. Data is usually written directly by a producer module, such as the camera. | Obtain shared memory buffer information through the **OnNeedInputBuffer** callback and call **OH_VideoEncoder_PushInputBuffer** to submit data. |
+| End of input | Call **OH_VideoEncoder_NotifyEndOfStream** to notify the encoder that input has ended. | When submitting the last frame, set the input buffer's **flags** field to **AVCODEC_BUFFER_FLAGS_EOS** to notify the encoder that input has ended. |
+
+For the video encoding formats supported by AVCodec, see [Video Encoding](avcodec-support-formats.md#video-encoding).
 
 For details about the implementation, see [Samples](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Media/AVCodec).
 
-For details about the supported encoding capabilities, see [AVCodec Supported Formats](avcodec-support-formats.md#video-encoding).
-
-<!--RP1--><!--RP1End-->
-
-The following table lists the video encoding capabilities supported:
-
-<!--RP4-->
-|          Capability                      |                              How to Use                                           |
-| --------------------------------------- | ---------------------------------------------------------------------------------- |
-| Layered encoding<br> Setting the LTR frame and reference frame                     | For details, see [Temporally Scalable Video Coding](video-encoding-temporal-scalability.md).       |
-| Repeat encoding of historical frames                   | For details, see [OH_MD_KEY_VIDEO_ENCODER_REPEAT_PREVIOUS_FRAME_AFTER](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#variables) and<br> [OH_MD_KEY_VIDEO_ENCODER_REPEAT_PREVIOUS_MAX_COUNT](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#variables).   |
-<!--RP4End-->
-
-## Constraints
-
-1. The buffer mode does not support 10-bit image data.
-2. Due to limited hardware encoder resources, you must call **OH_VideoEncoder_Destroy** to destroy every encoder instance when it is no longer needed.
-3. If **flush()**, **reset()**, **stop()**, or **destroy()** is executed in a non-callback thread, the execution result is returned after all callbacks are executed.
-4. Once **Flush**, **Reset**, or **Stop** is called, the system reclaims the OH_AVBuffer. Therefore, do not continue to operate the OH_AVBuffer obtained through the previous callback function.
-5. The buffer mode and surface mode use the same APIs. Therefore, the surface mode is described as an example.
-6. In buffer mode, after obtaining the pointer to an OH_AVBuffer instance through the callback function **OH_AVCodecOnNeedInputBuffer**, call **OH_VideoEncoder_PushInputBuffer** to notify the system that the buffer has been fully utilized. In this way, the system will proceed with encoding the data contained in the buffer. If the OH_NativeBuffer instance is obtained through **OH_AVBuffer_GetNativeBuffer** and its lifecycle extends beyond that of the OH_AVBuffer pointer instance, you mut perform data duplication. In this case, you should manage the lifecycle of the newly generated OH_NativeBuffer object to ensure that the object can be correctly used and released.
-<!--RP14--><!--RP14End-->
-
-## Surface Input and Buffer Input
-
-1. Surface input and buffer input differ in data sources.
-
-2. They are applicable to different scenarios.
-    - Surface input indicates that the OHNativeWindow is used to transfer passed-in data. It supports connection with other modules, such as the camera module.
-    - Buffer input refers to a pre-allocated memory area. You need to copy original data to this memory area. It is more applicable to scenarios such as reading video data from files.
-
-3. The two also differ slightly in the API calling modes:
-    - In buffer mode, call **OH_VideoEncoder_PushInputBuffer** to input data. In surface mode, before the encoder is ready, call **OH_VideoEncoder_GetSurface** to obtain the OHNativeWindow for video data transmission.
-    - In buffer mode, you can use **attr** in **OH_AVBuffer** to pass in the End of Stream (EOS) flag, and the encoder stops when it reads the last frame. In surface mode, call **OH_VideoEncoder_NotifyEndOfStream** to notify the encoder of EOS.
-
-4. Data transfer performance in surface mode is better than that in buffer mode.
-
-For details about the development procedure, see [Surface Mode](#surface-mode) and [Buffer Mode](#buffer-mode).
-
 ## State Machine Interaction
 
-The following figure shows the interaction between states.
+1. Initialized state.
+   - A newly created encoder instance is in the Initialized state.
+   - Call **OH_VideoEncoder_Reset** in any state to return to the Initialized state.
+2. Configured state.
+   - In the Initialized state, call **OH_VideoEncoder_Configure** to configure the encoder. After successful configuration, the encoder enters the Configured state.
+3. Prepared state.
+   - In the Configured state, call **OH_VideoEncoder_Prepare** to enter the Prepared state.
+   - In the Executing state, call **OH_VideoEncoder_Stop** to return to the Prepared state.
+4. Executing state.
+   - In the Prepared state, call **OH_VideoEncoder_Start** to enter the Executing state.
+   - The Executing state has three substates: Running, Flushed, and End-of-Stream.
+     - Running: Call **OH_VideoEncoder_Start** to enter this substate.
+     - Flushed: Call **OH_VideoEncoder_Flush** to enter this substate.
+     - End-of-Stream: The encoder enters this substate when it receives an input buffer with its **flags** field set to **AVCODEC_BUFFER_FLAGS_EOS** from [OH_AVCodecBufferFlags](../../reference/apis-avcodec-kit/capi-native-avbuffer-info-h.md#oh_avcodecbufferflags), or when **OH_VideoEncoder_NotifyEndOfStream** is called. In this state, the encoder does not accept new input, but continues to generate output until the last frame is output.
+5. Error state.
+   - In rare cases, the encoder enters the Error state when an error occurs. APIs return an error code, or an exception is reported through the **OH_AVCodecOnError** callback.
+   - In the Error state, call **OH_VideoEncoder_Reset** to return to the Initialized state, or call **OH_VideoEncoder_Destroy** to enter the final Released state.
+6. Released state.
+   - When the encoder is no longer needed, call **OH_VideoEncoder_Destroy** to destroy the instance and enter the Released state.
+
+**Figure 1** State machine interaction
 
 ![Invoking relationship of state](figures/state-invocation.png)
 
-1. An encoder enters the Initialized state in either of the following ways:
-   - When an encoder instance is initially created, the encoder enters the Initialized state.
-   - When **OH_VideoEncoder_Reset** is called in any state, the encoder returns to the Initialized state.
-
-2. When the encoder is in the Initialized state, you can call **OH_VideoEncoder_Configure** to configure the encoder. After the configuration, the encoder enters the Configured state.
-3. When the encoder is in the Configured state, you can call **OH_VideoEncoder_Prepare()** to switch it to the Prepared state.
-4. When the encoder is in the Prepared state, you can call **OH_VideoEncoder_Start** to switch it to the Executing state.
-   - When the encoder is in the Executing state, you can call **OH_VideoEncoder_Stop** to switch it back to the Prepared state.
-
-5. In rare cases, the encoder may encounter an error and enter the Error state. If this is the case, an invalid value can be returned or an exception can be thrown through a queue operation.
-   - When the encoder is in the Error state, you can either call **OH_VideoEncoder_Reset** to switch it to the Initialized state or call **OH_VideoEncoder_Destroy** to switch it to the Released state.
-
-6. The Executing state has three substates: Flushed, Running, and End-of-Stream.
-   - After **OH_VideoEncoder_Start** is called, the encoder enters the Running substate immediately.
-   - When the encoder is in the Executing state, you can call **OH_VideoEncoder_Flush** to switch it to the Flushed substate.
-   - After all data to be processed is transferred to the encoder, the [AVCODEC_BUFFER_FLAGS_EOS](../../reference/apis-avcodec-kit/capi-native-avbuffer-info-h.md#oh_avcodecbufferflags) flag is added to the last input buffer in the input buffers queue. Once this flag is detected, the encoder transits to the End-of-Stream substate. In this state, the encoder does not accept new inputs, but continues to generate outputs until it reaches the tail frame.
-
-7. When the encoder is no longer needed, you must call **OH_VideoEncoder_Destroy** to destroy the encoder instance, which then transitions to the Released state.
-
 ## How to Develop
 
-Read the [API reference](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md).
+For detailed API descriptions, see [native_avcodec_videoencoder.h](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md).
 
-The figure below shows the call relationship of video encoding.
+**Figure 2** Video encoding call relationship
 
 - The dotted line indicates an optional operation.
 
@@ -98,7 +78,6 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 > **NOTE**
 >
 > The word **sample** in the preceding code snippet is only an example. Use the actual project directory name.
->
 
 ### Defining the Basic Structure
 
@@ -178,7 +157,7 @@ The sample code provided in this section adheres to the C++17 standard and is fo
 
 4. Configure global variables.
 
-    These global variables are for reference only. They can be encapsulated into an object based on service requirements.
+   These global variables are for reference only. They can be encapsulated into an object based on service requirements.
 
     ```c++
     // Video frame width.
@@ -203,7 +182,7 @@ The sample code provided in this section adheres to the C++17 standard and is fo
 
 ### Surface Mode
 
-The following walks you through how to implement the entire video encoding process in surface mode and implement data rotation in asynchronous mode. In this example, surface data is input and encoded into a H.264 stream.
+The following walks you through how to implement the entire video encoding process in surface mode with asynchronous buffer processing. In this example, surface data is input and encoded into a H.264 stream.
 
 1. Add the header files.
 
@@ -218,13 +197,13 @@ The following walks you through how to implement the entire video encoding proce
 
 2. Create an encoder instance.
 
-    You can create an encoder by name or MIME type. In the code snippet below, the following variables are used:
+   You can create an encoder by name or MIME type. In the code snippet below, the following variables are used:
 
-    - **videoEnc**: pointer to the video encoder instance.
-    - **capability**: pointer to the encoder's capability.
-    - **OH_AVCODEC_MIMETYPE_VIDEO_AVC**: AVC video codec.
+   - **videoEnc**: pointer to the video encoder instance.
+   - **capability**: pointer to the codec capability query instance.
+   - **OH_AVCODEC_MIMETYPE_VIDEO_AVC**: AVC video codec.
 
-    The following is an example:
+   The following is an example:
 
     ```c++
     // Create an encoder by name. If your application has special requirements, for example, expecting an encoder that supports a certain resolution, you can call OH_AVCodec_GetCapability to query the capability first.
@@ -236,23 +215,22 @@ The following walks you through how to implement the entire video encoding proce
     ```
 
     ```c++
-    // Create an encoder by MIME type. Only specific codecs recommended by the system can be created in this way.
-    // Only hardware encoders can be created.
+    // Create an encoder by MIME type.
     OH_AVCodec *videoEnc = OH_VideoEncoder_CreateByMime(OH_AVCODEC_MIMETYPE_VIDEO_AVC);
     ```
 
 3. Call **OH_VideoEncoder_RegisterCallback()** to register the callback functions.
 
-    Register the **OH_AVCodecCallback** struct that defines the following callback function pointers:
+   Register the **OH_AVCodecCallback** struct that defines the following callback function pointers:
 
-    - **OH_AVCodecOnError**, a callback used to report a codec operation error. For details about the error codes, see [OH_AVCodecOnError](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_avcodeconerror).
-    - **OH_AVCodecOnStreamChanged**, a callback used to report a codec stream change, for example, format change.
-    - **OH_AVCodecOnNeedInputBuffer**, a callback used to report input data required. This callback does not take effect, since you input data through the obtained surface.
-    - **OH_AVCodecOnNewOutputBuffer**, a callback used to report output data generated, which means that encoding is complete.
+   - **OH_AVCodecOnError**, a callback used to report a codec operation error. For details about the error codes, see [OH_AVCodecOnError](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_avcodeconerror).
+   - **OH_AVCodecOnStreamChanged**, a callback used to report a codec stream change, for example, format change.
+   - **OH_AVCodecOnNeedInputBuffer**, a callback used to report input data required. This callback does not take effect, since you input data through the obtained surface.
+   - **OH_AVCodecOnNewOutputBuffer**, a callback used to report output data generated, which means that encoding is complete.
 
-    <!--RP2--><!--RP2End-->
+   <!--RP2--><!--RP2End-->
 
-    The following is an example:
+   The following is an example:
 
     ```c++
     // Set the OH_AVCodecOnError callback function, which is used to report a codec operation error.
@@ -264,8 +242,8 @@ The following walks you through how to implement the entire video encoding proce
         (void)userData;
     }
     ```
-    
-    <!--RP12-->
+
+   <!--RP12-->
     ```c++
     // Set the OH_AVCodecOnStreamChanged callback function, which is used to report an encoding stream change.
     static void OnStreamChanged(OH_AVCodec *codec, OH_AVFormat *format, void *userData)
@@ -280,7 +258,7 @@ The following walks you through how to implement the entire video encoding proce
         }
     }
     ```
-    <!--RP12End-->
+   <!--RP12End-->
 
     ```c++
     // Set the OH_AVCodecOnNeedInputBuffer callback function, which is used to send an input frame to the data queue.
@@ -313,15 +291,14 @@ The following walks you through how to implement the entire video encoding proce
     }
     ```
 
-    > **NOTE**
-    > In the callback functions, pay attention to multi-thread synchronization for operations on the data queue.
-    >
+   > **NOTE**
+   > In the callback functions, pay attention to multi-thread synchronization for operations on the data queue.
 
-4. (Optional) Call **OH_VideoEncoder_RegisterParameterCallback()** to register the frame-specific parameter callback function.
+4. (Optional) Call **OH_VideoEncoder_RegisterParameterCallback()** to register the frame-specific parameter callback before calling **OH_VideoEncoder_Configure**.
 
-    For details, see [Temporally Scalable Video Coding](video-encoding-temporal-scalability.md).
+   For details, see [Temporally Scalable Video Coding](video-encoding-temporal-scalability.md).
 
-    <!--RP7-->
+   <!--RP7-->
     ```c++
     // 4.1 Implement the OH_VideoEncoder_OnNeedInputParameter callback function.
     static void OnNeedInputParameter(OH_AVCodec *codec, uint32_t index, OH_AVFormat *parameter, void *userData)
@@ -334,17 +311,17 @@ The following walks you through how to implement the entire video encoding proce
     OH_VideoEncoder_OnNeedInputParameter inParaCb = OnNeedInputParameter;
     OH_VideoEncoder_RegisterParameterCallback(videoEnc, inParaCb, nullptr); // nullptr: userData on which the callback depends is empty.
     ```
-    <!--RP7End-->
+   <!--RP7End-->
 
 5. Call **OH_VideoEncoder_Configure()** to configure the encoder.
 
-    For details about the configurable options, see [Video Dedicated Key-Value Paris](../../reference/apis-avcodec-kit/capi-codecbase.md#media-data-key-value-pairs).
+   For details about the configurable options, see the video-specific key-value pairs in [Media Data Key-Value Pairs](../../reference/apis-avcodec-kit/capi-codecbase.md#media-data-key-value-pairs).
 
-    For details about the parameter verification rules, see [OH_VideoEncoder_Configure()](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_configure).
+   For details about the parameter verification rules, see [OH_VideoEncoder_Configure()](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_configure).
 
-    The parameter value ranges can be obtained through the capability query interface. For details, see [Obtaining Supported Codecs](obtain-supported-codecs.md).
+   The parameter value ranges can be obtained through the capability query interface. For details, see [Obtaining Supported Codecs](obtain-supported-codecs.md).
 
-    Currently, the following options must be configured for all supported formats: video frame width, video frame height, and video pixel format.
+   Currently, the following options must be configured for all supported formats: video frame width, video frame height, and video pixel format.
 
     ```c++
     // Configure the video frame rate.
@@ -395,7 +372,8 @@ The following walks you through how to implement the entire video encoding proce
         OH_AVFormat_SetLongValue(format.get(), OH_MD_KEY_MAX_BITRATE, maxBitRate);
         OH_AVFormat_SetIntValue(format.get(), OH_MD_KEY_SQR_FACTOR, sqrFactor);
     } else if (rateMode == static_cast<int32_t>(OH_BitrateMode::BITRATE_MODE_CBR) ||
-               rateMode == static_cast<int32_t>(OH_BitrateMode::BITRATE_MODE_VBR)){
+               rateMode == static_cast<int32_t>(OH_BitrateMode::BITRATE_MODE_VBR) ||
+               rateMode == static_cast<int32_t>(OH_BitrateMode::BITRATE_MODE_CBR_HIGH_QUALITY)){
         OH_AVFormat_SetLongValue(format.get(), OH_MD_KEY_BITRATE, bitRate);
     }
     OH_AVFormat_SetIntValue(format.get(), OH_MD_KEY_VIDEO_ENCODE_BITRATE_MODE, rateMode);
@@ -405,13 +383,12 @@ The following walks you through how to implement the entire video encoding proce
     }
     ```
 
-    > **NOTE**
-    > If an optional parameter is incorrectly configured, the error code **AV_ERR_INVALID_VAL** is returned. However, **OH_VideoEncoder_Configure()** does not fail. Instead, its execution continues with the default value.
-    >
+   > **NOTE**
+   > If an optional parameter is incorrectly configured, the error code **AV_ERR_INVALID_VAL** is returned. However, **OH_VideoEncoder_Configure()** does not fail. Instead, its execution continues with the default value.
 
 6. Obtain a surface.
 
-    Obtain the OHNativeWindow in surface mode. The surface must be obtained before **OH_VideoEncoder_Prepare** is called.
+   Obtain the OHNativeWindow in surface mode. The surface must be obtained before **OH_VideoEncoder_Prepare** is called.
 
     ```c++
     // Obtain the surface used for data input.
@@ -423,11 +400,11 @@ The following walks you through how to implement the entire video encoding proce
     // Use the OHNativeWindow* variable to obtain the address of the data to be filled through the producer interface.
     ```
 
-    For details about how to use the OHNativeWindow* variable-type, see [OHNativeWindow](../../reference/apis-arkgraphics2d/capi-nativewindow.md).
+   For details about how to use the OHNativeWindow* variable-type, see [OHNativeWindow](../../reference/apis-arkgraphics2d/capi-nativewindow.md).
 
-7. Call **OH_VideoEncoder_Prepare()** to prepare internal resources for the encoder.
+7. Call **OH_VideoEncoder_Prepare()** to prepare the encoder.
 
-     
+   This API prepares data before the encoder starts running.
 
     ```c++
     OH_AVErrCode ret = OH_VideoEncoder_Prepare(videoEnc);
@@ -454,7 +431,7 @@ The following walks you through how to implement the entire video encoding proce
 
 9. (Optional) Call **OH_VideoEncoder_SetParameter()** to dynamically configure encoder parameters during running.
 
-    <!--RP8-->
+   <!--RP8-->
     ```c++
     auto format = std::shared_ptr<OH_AVFormat>(OH_AVFormat_Create(), OH_AVFormat_Destroy);
     if (format == nullptr) {
@@ -474,7 +451,7 @@ The following walks you through how to implement the entire video encoding proce
         // Handle exceptions.
     }
     ```
-    <!--RP8End-->
+   <!--RP8End-->
 
 10. Write the image to encode.
 
@@ -507,8 +484,8 @@ The following walks you through how to implement the entire video encoding proce
 12. Call **OH_VideoEncoder_NotifyEndOfStream()** to notify the encoder of EOS.
 
     ```c++
-    // In surface mode, you only need to call this API to notify the encoder of EOS.
-    // In buffer mode, you need to set the AVCODEC_BUFFER_FLAGS_EOS flag and then call OH_VideoEncoder_PushInputBuffer to notify the encoder of EOS.
+    // In surface mode, this API is the only way to notify the encoder that input has ended.
+    // Do not use the buffer-mode approach of setting AVCODEC_BUFFER_FLAGS_EOS and calling OH_VideoEncoder_PushInputBuffer.
     OH_AVErrCode ret = OH_VideoEncoder_NotifyEndOfStream(videoEnc);
     if (ret != AV_ERR_OK) {
         // Handle exceptions.
@@ -623,8 +600,7 @@ The following walks you through how to implement the entire video encoding proce
     > **NOTE**
     >
     > 1. This API cannot be called in the callback function.
-    > 2. After the call, you must set a null pointer to the encoder to prevent program errors caused by wild pointers.
-    >
+    > 2. After this step, set **videoEnc** to **nullptr** to prevent program errors caused by a dangling pointer.
 
     ```c++
     std::unique_lock<std::shared_mutex> lock(codecMutex);
@@ -645,7 +621,7 @@ The following walks you through how to implement the entire video encoding proce
 
 ### Buffer Mode
 
-The following walks you through how to implement the entire video encoding process in buffer mode and implement data rotation in asynchronous mode. It uses the YUV file input and H.264 encoding format as an example.
+The following walks you through how to implement the entire video encoding process in buffer mode with asynchronous buffer processing. It uses the YUV file input and H.264 encoding format as an example.
 
 1. Add the header files.
 
@@ -660,7 +636,7 @@ The following walks you through how to implement the entire video encoding proce
 
 2. Create an encoder instance.
 
-    The procedure is the same as that in surface mode and is not described here.
+   The procedure is the same as that in surface mode and is not described here.
 
     ```c++
     // Create an encoder by name. If your application has special requirements, for example, expecting an encoder that supports a certain resolution, you can call OH_AVCodec_GetCapability to query the capability first.
@@ -670,28 +646,27 @@ The following walks you through how to implement the entire video encoding proce
     ```
 
     ```c++
-    // Create an encoder by MIME type. Only specific codecs recommended by the system can be created in this way.
-    // If multiple codecs need to be created, create hardware encoder instances first. If the hardware resources are insufficient, create software encoder instances.
+    // Create an encoder by MIME type.
     OH_AVCodec *videoEnc = OH_VideoEncoder_CreateByMime(OH_AVCODEC_MIMETYPE_VIDEO_AVC);
     ```
 
 3. Call **OH_VideoEncoder_RegisterCallback()** to register the callback functions.
 
-    Register the **OH_AVCodecCallback** struct that defines the following callback function pointers:
-    - **OH_AVCodecOnError**, a callback used to report a codec operation error. For details about the error codes, see [OH_AVCodecOnError](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_avcodeconerror).
-    - **OH_AVCodecOnStreamChanged**, a callback used to report a codec stream change, for example, format change.
-    - **OH_AVCodecOnNeedInputBuffer**, a callback used to report input data required, which means that the encoder is ready for receiving YUV/RGB data.
-    - **OH_AVCodecOnNewOutputBuffer**, a callback used to report output data generated, which means that encoding is complete.
+   Register the **OH_AVCodecCallback** struct that defines the following callback function pointers:
+   - **OH_AVCodecOnError**, a callback used to report a codec operation error. For details about the error codes, see [OH_AVCodecOnError](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_avcodeconerror).
+   - **OH_AVCodecOnStreamChanged**, a callback used to report a codec stream change, for example, format change.
+   - **OH_AVCodecOnNeedInputBuffer**, a callback used to report input data required, which means that the encoder is ready for receiving YUV/RGB data.
+   - **OH_AVCodecOnNewOutputBuffer**, a callback used to report output data generated, which means that encoding is complete.
 
-    You need to process the callback functions to ensure that the encoder runs properly.
+   You need to process the callback functions to ensure that the encoder runs properly.
 
-    <!--RP2--><!--RP2End-->
+   <!--RP2--><!--RP2End-->
 
-    <!--RP9-->
+   <!--RP9-->
     ```c++
     bool isFirstFrame = true;
     ```
-    <!--RP9End-->
+   <!--RP9End-->
 
     ```c++
     // Implement the OH_AVCodecOnError callback function.
@@ -739,7 +714,7 @@ The following walks you through how to implement the entire video encoding proce
     }
     ```
 
-    <!--RP10-->
+   <!--RP10-->
     ```c++
     // Implement the OH_AVCodecOnNewOutputBuffer callback function.
     static void OnNewOutputBuffer(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)
@@ -749,7 +724,7 @@ The following walks you through how to implement the entire video encoding proce
         outQueue.Enqueue(std::make_shared<CodecBufferInfo>(index, buffer));
     }
     ```
-    <!--RP10End-->
+   <!--RP10End-->
 
     ```c++
     // Call OH_VideoEncoder_RegisterCallback() to register the callback functions.
@@ -760,14 +735,13 @@ The following walks you through how to implement the entire video encoding proce
     }
     ```
 
-    > **NOTE**
-    >
-    > In the callback functions, pay attention to multi-thread synchronization for operations on the data queue.
-    >
+   > **NOTE**
+   >
+   > In the callback functions, pay attention to multi-thread synchronization for operations on the data queue.
 
 4. Call **OH_VideoEncoder_Configure()** to configure the encoder.
 
-    The procedure is the same as that in surface mode and is not described here.
+   The procedure is the same as that in surface mode and is not described here.
 
     ```c++
     auto format = std::shared_ptr<OH_AVFormat>(OH_AVFormat_Create(), OH_AVFormat_Destroy);
@@ -785,9 +759,9 @@ The following walks you through how to implement the entire video encoding proce
     }
     ```
 
-5. Call **OH_VideoEncoder_Prepare()** to prepare internal resources for the encoder.
+5. Call **OH_VideoEncoder_Prepare()** to prepare the encoder.
 
-     
+   This API prepares data before the encoder starts running.
 
     ```c++
     OH_AVErrCode ret = OH_VideoEncoder_Prepare(videoEnc);
@@ -796,9 +770,9 @@ The following walks you through how to implement the entire video encoding proce
     }
     ```
 
-6. Call **OH_VideoEncoder_Start()** to start the encoder.
+6. Call **OH_VideoEncoder_Start()** to start the encoder and enter the Executing state.
 
-    As soon as the encoder starts, the callback functions will be triggered to respond to events. Therefore, you must configure the input file and output file first.
+   As soon as the encoder starts, the callback functions will be triggered to respond to events. Therefore, you must configure the input file and output file first.
 
     ```c++
     // Configure the paths of the input and output files.
@@ -834,19 +808,19 @@ The following walks you through how to implement the entire video encoding proce
         // Handle exceptions.
     }
     ```
-    <!--RP11End-->
+   <!--RP11End-->
 
 8. Call **OH_VideoEncoder_PushInputBuffer()** to push the image to the input queue for encoding.
 
-    In the code snippet below, the following variables are used:
-    - **widthStride**: width stride of the obtained buffer data.
-    - **heightStride**: height stride of the obtained buffer data.
-    
-    The member variables of **bufferInfo** are as follows:
-    - **buffer**: parameter passed by the callback function **OnNeedInputBuffer**. You can obtain the pointer to the shared memory address by calling [OH_AVBuffer_GetAddr](../../reference/apis-avcodec-kit/capi-native-avbuffer-h.md#oh_avbuffer_getaddr).
-    - **index**: parameter passed by the callback function **OnNeedInputBuffer**, which uniquely corresponds to the buffer.
-    - **isValid**: whether the buffer instance stored in **bufferInfo** is valid.
-    
+   In the code snippet below, the following variables are used:
+   - **widthStride**: width stride of the obtained buffer data.
+   - **heightStride**: height stride of the obtained buffer data.
+
+   The member variables of **bufferInfo** are as follows:
+   - **buffer**: parameter passed by the callback function **OnNeedInputBuffer**. You can obtain the pointer to the shared memory address by calling [OH_AVBuffer_GetAddr](../../reference/apis-avcodec-kit/capi-native-avbuffer-h.md#oh_avbuffer_getaddr).
+   - **index**: parameter passed by the callback function **OnNeedInputBuffer**, which uniquely corresponds to the buffer.
+   - **isValid**: whether the buffer instance stored in **bufferInfo** is valid.
+
 
     ```c++
     std::shared_ptr<CodecBufferInfo> bufferInfo = inQueue.Dequeue();
@@ -904,24 +878,26 @@ The following walks you through how to implement the entire video encoding proce
     }
     ```
 
-    Offset the stride. The following uses an NV12 image as an example,
+   Stride offset processing removes padding regions from image memory. Memory layouts differ between pixel formats, so adapt the processing to the image format.
 
-    presenting the image layout of **width**, **height**, **wStride**, and **hStride**.
+   The following NV12 example illustrates stride offset processing. The figure below shows the layout of **width**, **height**, **wStride**, and **hStride**.
 
-    - **OH_MD_KEY_WIDTH** corresponds to **width**.
-    - **OH_MD_KEY_HEIGHT** corresponds to **height**.
-    - **OH_MD_KEY_VIDEO_STRIDE** corresponds to **wStride**.
-    - **OH_MD_KEY_VIDEO_SLICE_HEIGHT** corresponds to **hStride**.
+   - **OH_MD_KEY_WIDTH** corresponds to **width**.
+   - **OH_MD_KEY_HEIGHT** corresponds to **height**.
+   - **OH_MD_KEY_VIDEO_STRIDE** corresponds to **wStride**.
+   - **OH_MD_KEY_VIDEO_SLICE_HEIGHT** corresponds to **hStride**.
 
-    ![copy by line](figures/copy-by-line-encoder.png)
+   **Figure 3** NV12 image layout
 
-    Add the header files.
+   ![copy by line](figures/copy-by-line-encoder.png)
+
+   Add the header files.
 
     ```c++
     #include <string.h>
     ```
 
-    The sample code is as follows:
+   The sample code is as follows:
 
     ```c++
     struct Rect // Width and height of the source buffer. You can set them as required.
@@ -949,8 +925,8 @@ The following walks you through how to implement the entire video encoding proce
     uint8_t* src = new uint8_t[srcRect.hStride * srcRect.wStride * 3 / 2]; // Pointer to the source memory area.
     uint8_t* dstTemp = dst;
     uint8_t* srcTemp = src;
-    rect.height = ((rect.height + 1) / 2)  * 2 // This ensures the height is always even.
-    rect.width = ((rect.width + 1) / 2)  * 2 // This ensures the width is always even.
+    rect.height = ((rect.height + 1) / 2)  * 2; // This ensures the height is always even.
+    rect.width = ((rect.width + 1) / 2)  * 2; // This ensures the width is always even.
 
     // Y: Copy the source data in the Y region to the target data in another region.
     for (int32_t i = 0; i < rect.height; ++i) {
@@ -978,20 +954,31 @@ The following walks you through how to implement the entire video encoding proce
     src = nullptr;
     ```
 
-    When processing buffer data (before pushing data) during hardware encoding, you must copy the image data after width and height alignment to the input callback AVBuffer.
+   When processing buffer data (before pushing data) during hardware encoding, you must copy the image data after width and height alignment to the input callback AVBuffer.
 
-    Generally, copy the image width, height, stride, and pixel format to ensure correct processing of the data to encode.
+   Generally, obtain the image width, height, stride, and pixel format to ensure correct processing of the data to encode.
 
-    For details, see step 3 in [Buffer Mode](#buffer-mode).
+   For details, see step 3 in [Buffer Mode](#buffer-mode), which registers callbacks through **OH_VideoEncoder_RegisterCallback** to obtain the width, height, stride, and pixel format.
+
+   The following figures show common image format layouts:
+
+   **Figure 4** YUVI420 image layout
+
+   ![copy by line](figures/copy-yuv-encoder.png)
+
+   **Figure 5** RGBA1010102 image layout
+
+   ![copy by line](figures/copy-rgb-encoder.png)
+
 
 9. Notify the encoder of EOS.
 
-    During encoding, once the last frame of data is sent to the input buffer for encoding, set the flag of bufferInfo to AVCODEC_BUFFER_FLAGS_EOS to notify the encoder that the input is complete.
+   During encoding, once the last frame of data is sent to the input buffer for encoding, set the flag of bufferInfo to AVCODEC_BUFFER_FLAGS_EOS to notify the encoder that the input is complete.
 
-    In the following example, the member variables of **bufferInfo** are as follows:
-    - **index**: parameter passed by the callback function **OnNeedInputBuffer**, which uniquely corresponds to the buffer.
-    - **buffer**: parameter passed by the callback function **OnNeedInputBuffer**. You can obtain the pointer to the shared memory address by calling [OH_AVBuffer_GetAddr](../../reference/apis-avcodec-kit/capi-native-avbuffer-h.md#oh_avbuffer_getaddr).
-    - **isValid**: whether the buffer instance stored in **bufferInfo** is valid.
+   In the following example, the member variables of **bufferInfo** are as follows:
+   - **index**: parameter passed by the callback function **OnNeedInputBuffer**, which uniquely corresponds to the buffer.
+   - **buffer**: parameter passed by the callback function **OnNeedInputBuffer**. You can obtain the pointer to the shared memory address by calling [OH_AVBuffer_GetAddr](../../reference/apis-avcodec-kit/capi-native-avbuffer-h.md#oh_avbuffer_getaddr).
+   - **isValid**: whether the buffer instance stored in **bufferInfo** is valid.
 
     ```c++
     std::shared_ptr<CodecBufferInfo> bufferInfo = inQueue.Dequeue();
@@ -1049,3 +1036,21 @@ The following walks you through how to implement the entire video encoding proce
     ```
 
 The subsequent processes (including refreshing, resetting, stopping, and destroying the encoder) are the same as those in surface mode. For details, see steps 14–17 in [Surface Mode](#surface-mode).
+
+## Precautions
+
+1. Buffer mode does not support 10-bit image data.
+2. Hardware encoder resources are limited. Call **OH_VideoEncoder_Destroy** to destroy each encoder instance and release its resources when it is no longer needed.
+3. Call **Flush**, **Reset**, **Stop**, and **Destroy** from a non-callback thread. These APIs block until all triggered callbacks have completed, and then return the execution result.
+4. Calling **Flush**, **Reset**, or **Stop** causes the system to reclaim OH_AVBuffer instances. Do not continue to operate on OH_AVBuffer instances obtained through earlier callbacks.
+5. In buffer mode, after obtaining an OH_AVBuffer pointer through **OH_AVCodecOnNeedInputBuffer**, call **OH_VideoEncoder_PushInputBuffer** to notify the system that you have finished using the instance so that the system can encode its data. If you call **OH_AVBuffer_GetNativeBuffer** to obtain an OH_NativeBuffer whose lifetime extends beyond that of the current OH_AVBuffer, copy the data manually and manage the lifetime of the newly created OH_NativeBuffer to ensure that it is used and released correctly.
+<!--RP14--><!--RP14End-->
+
+## Supported Video Encoding Capabilities
+
+<!--RP4-->
+| Capability | Description |
+| --- | --- |
+| Layered encoding, LTR frames, and reference frames | For details, see [Temporally Scalable Video Coding](video-encoding-temporal-scalability.md). |
+| Repeat encoding of historical frames | For details, see **OH_MD_KEY_VIDEO_ENCODER_REPEAT_PREVIOUS_FRAME_AFTER** and **OH_MD_KEY_VIDEO_ENCODER_REPEAT_PREVIOUS_MAX_COUNT** under [Variables](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#variables) in **native_avcodec_base.h**. |
+<!--RP4End-->

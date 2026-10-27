@@ -1,7 +1,7 @@
 # 支持鼠标输入事件
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -16,7 +16,7 @@
 > - 例如当我们需要开发单击[Button](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md)跳转页面的功能、且需要支持手指点击和鼠标左键点击，那么只绑定一个点击事件（[onClick](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#onclick)）就可以实现该效果；
 > - 若需要针对手指和鼠标左键的点击实现不一样的效果，可以在onClick回调中，使用回调参数中的source字段判断当前触发事件的来源是手指还是鼠标。
 
-此外，对PC/2in1、Tablet类型设备上没有针对鼠标操作适配的应用，系统会提供兜底方案，将鼠标左键的点击和滑动，以及滚轮事件转换为触摸事件。并且对开发者开放了通过配置文件自行控制是否转换事件的能力。
+此外，针对PC/2in1、Tablet类型设备上没有适配鼠标操作的应用，可以通过配置文件自行控制是否转换事件，将鼠标左键的点击、滑动以及滚轮事件，转换为触摸事件，将鼠标右键事件转换为长按事件。
 
 ## 处理鼠标移动
 
@@ -501,67 +501,110 @@ struct MouseWheel {
 ![ListAxis](figures/listAxis.gif)
 
 ## 鼠标事件转换
-如果开发者在开发应用时，只考虑实现了触控操作场景，没有针对PC/2in1、Tablet设备使用鼠标操作的场景做适配，会导致出现应用在使用鼠标操作时发生实际行为与预期不一致、甚至无法操作的情况。针对该场景，系统提供兜底方案，会默认将鼠标左键事件、轴事件转换成触摸事件发送给应用，从而达到类似手机上的操作体验。
 
-此外，如果开发者期望控制上述转换行为，系统开放了自定义配置能力，开发者可以通过在应用中新增配置文件的方式来控制是否将鼠标事件转换成触摸事件。
+如果开发者在开发应用时，只考虑实现触控操作场景，没有针对PC/2in1、Tablet设备使用鼠标操作的场景做适配，会导致应用使用鼠标操作时实际行为与预期不一致、甚至无法操作。针对该场景，开发者可以通过在应用中新增配置文件，控制是否将鼠标左键的点击、滑动以及滚轮事件转换为触摸事件，或鼠标右键事件转换为长按事件，从而解决上述问题。
 
-### 开发步骤
-**1. 增加配置文件**
-
-在应用的entry/src/main/resources/base/profile目录下创建配置文件easy_go.json（示例文件名，可自行命名）。在[module.json5](../quick-start/module-configuration-file.md)配置文件中添加easyGo字段，并指向引用的easy_go.json配置文件。
+### 增加配置文件
+在应用的entry/src/main/resources/base/profile目录下创建配置文件easy_go.json（示例文件名，可自行命名）。在[module.json5](../quick-start/module-configuration-file.md)配置文件中添加easyGo字段，并指向引用的easy_go.json配置文件。easy_go.json是一个标准的Object类型JSON文件，整体结构分为两层。第一层配置[鼠标事件转换生效的设备类型](#配置鼠标左键或轴事件转触摸)；第二层可在对应设备类型下配置[鼠标左键或轴事件转触摸](#配置鼠标左键或轴事件转触摸)、[鼠标右键转长按](#配置鼠标右键转长按)的相关参数。
 
 ![easy_go](figures/easy_go.png)
 
-**2. 增加事件转换配置**
+### 配置生效设备类型
 
-在easy_go.json配置文件中，配置事件转换的相关属性。
+通过easy_go.json第一层的配置，选择鼠标事件转换生效的设备类型。
 
-### 配置内容说明
-easy_go.json是一个标准的Object类型JSON文件，整体结构分为两层。第一层配置设备类型；第二层配置对应设备类型下的鼠标事件转换模式。
-
-**1. 设备类型**
-
-第一层配置，设置鼠标事件转换在不同设备类型下的表现。
 ``` json
-{ 
+{
   "common": {},
   "phone": {},
   "2in1": {},
   "tablet": {}
 }
 ```
-| 枚举值 | 说明 | 可选 |
-| --- | --- | --- |
-| common | 通用设备配置，为所有设备类型提供基础默认配置。 | 否 |
-| phone | Phone类型设备上生效的配置，配置后common配置在Phone类型设备上不再生效。 | 是 |
-| 2in1 | PC/2in1类型设备上生效的配置，配置后common配置在PC/2in1类型设备上不再生效。 | 是 |
-| tablet | Tablet类型设备上生效的配置，配置后common配置在Tablet类型设备上不再生效。 | 是 |
 
-**2. 多模态输入选项**
+| 枚举值 | 说明                                                         | 可选 |
+| ------ | ------------------------------------------------------------ | ---- |
+| common | 通用设备配置，为所有设备类型提供基础默认配置。               | 否   |
+| phone  | Phone类型设备上生效的配置，配置后common配置在Phone类型设备上不再生效。 | 是   |
+| 2in1   | PC/2in1类型设备上生效的配置，配置后common配置在PC/2in1类型设备上不再生效。 | 是   |
+| tablet | Tablet类型设备上生效的配置，配置后common配置在Tablet类型设备上不再生效。 | 是   |
 
-第二层配置multiModalInputOptions字段，设置事件输入选项。内部字段说明如下：
-| 字段名 | 说明 | 可选 |
-| --- | --- | --- |
-| mouse2TouchEventMode | 配置鼠标事件转触摸事件模式。 | 是 |
+### 配置鼠标左键或轴事件转触摸
 
-mouse2TouchEventMode可配置字段说明：
+通过配置easy_go.json第二层multiModalInputOptions字段，将对应设备类型下的鼠标左键事件、轴事件转换成触摸事件发送给应用，从而达到类似手机上点击和滑动的效果。
 
-| 枚举值 | 说明 |
-| --- | --- |
-| all | 表示鼠标事件全部都转换成触摸事件。 |
-| xcomponentAndWebOnly | 表示鼠标事件在XComponent和Web组件里需要转换成触摸事件。 |
-| disabled | 表示鼠标事件全部都不转换成触摸事件。 |
+在PC/2in1设备上，配置为鼠标左键事件不转换成触摸事件，示例如下。
 
-**3. 配置示例**
-
-在PC/2in1设备上，配置为鼠标事件不转换成触摸事件，示例如下：
 ``` json
 {
   "common": {},
   "2in1": {
-    "multiModalInputOptions": {
-      "mouse2TouchEventMode": "disabled"
+      "multiModalInputOptions": {
+         "mouse2TouchEventMode": "disabled"
+      }
+  }
+}
+```
+
+第一层的2in1表示在PC/2in1类型的设备上鼠标左键事件或轴事件可转换成触摸事件。2in1第二层的multiModalInputOptions字段，用来设置事件输入选项。内部字段说明如下。
+
+| 字段名              | 类型 | 说明                         | 可选 |
+| -------------------- | ---- | ---------------------------- | ---- |
+| mouse2TouchEventMode | string | 配置鼠标左键事件转触摸事件模式。 | 是   |
+
+mouse2TouchEventMode可配置字段说明。
+
+| 枚举值               | 说明                                                    |
+| -------------------- | ------------------------------------------------------- |
+| "all"                  | 表示鼠标左键事件全部都转换成触摸事件。                      |
+| "xcomponentAndWebOnly" | 表示鼠标左键事件在XComponent和Web组件里需要转换成触摸事件。 |
+| "disabled"             | 表示鼠标左键事件全部都不转换成触摸事件。                    |
+
+### 配置鼠标右键转长按
+
+从API版本26.0.1开始，支持contextMenuOptions字段。通过配置easy_go.json第二层contextMenuOptions字段，可以将对应设备类型下的鼠标右键事件转换成长按事件发送给应用，从而达到类似手机上手指长按的效果。
+
+在PC/2in1设备上，配置所有ArkUI组件的鼠标右键事件转换成长按事件，示例如下。
+
+``` json
+{
+  "common": {},
+  "2in1": {
+    "contextMenuOptions": {
+      "rightMouse2LongPress": true,
+      "needTransferComponent": ["All"]
     }
   }
 }
 ```
+
+第一层的2in1表示在PC/2in1类型的设备上鼠标右键可转换成长按事件。2in1第二层的contextMenuOptions字段，用来配置鼠标右键转换长按事件生效规则。因为只有PC/2in1设备和Tablet设备支持右键转长按，所以common和phone的第二层不可配置contextMenuOptions字段。contextMenuOptions内部字段说明如下。
+
+| 字段名              | 类型 | 说明                         | 可选 |
+| -------------------- | ---- | ---------------------------- | ---- |
+| rightMouse2LongPress | boolean | 是否启用右键转长按策略。取值范围：true表示启用右键转长按策略，右键点击事件将被转换为长按事件；false表示不启用，右键点击事件将按系统默认行为处理。当取值为false时，needTransferComponent配置不生效。 | 否   |
+| needTransferComponent | string[] | 指定生效组件列表，决定哪些组件上的右键事件会被转换为长按事件。数组可为空，为空时表示不转换任何组件的右键事件。数组元素必须为下方枚举值之一。不配置时默认为空数组。needTransferComponent为空数组时，即使rightMouse2LongPress为true，也不会转换任何组件的右键事件。 | 是   |
+
+needTransferComponent数组中可选枚举类型说明。
+| 枚举值            | 说明           |
+| ----------------- | -------------- |
+| "TextInput"         | 文本输入框     |
+| "TextArea"          | 多行文本输入框 |
+| "RichEditor"        | 富文本编辑器   |
+| "RichText"          | 富文本         |
+| "Text"              | 文本           |
+| "RenderNode"        | 渲染节点       |
+| "XComponent"        | 自绘制组件     |
+| "Image"             | 图片           |
+| "RelativeContainer" | 相对布局容器   |
+| "All"               | 所有ArkUI组件   |
+
+needTransferComponent字段额外说明。
+| 规则               | 说明                                                         |
+| ------------------ | ------------------------------------------------------------ |
+| 全部生效           | 设置`"needTransferComponent": ["All"]`表示所有ArkUI组件均生效。|
+| 大小写敏感         | 组件名称区分大小写，必须严格按照上述列表填写，否则编译时会报错。|
+| 不允许重复         | 组件列表中不允许出现重复的组件名，否则编译时会报错。|
+| All与其他组件共存 | 当列表中同时包含具体组件名和"All"时，具体组件名将被忽略，等价于仅配置"All"。建议仅使用"All"以简化配置。|
+| 合法值             | 列表中的值只能是上述9种组件名+"All"（共10种），填写其它值编译会报错。|
+ 

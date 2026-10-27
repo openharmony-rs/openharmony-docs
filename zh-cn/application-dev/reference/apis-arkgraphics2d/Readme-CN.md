@@ -2,9 +2,9 @@
 
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphic-->
-<!--Owner: @hangmengxin; @oh_wangxk; @gmiao522-->
-<!--Designer: @wanyanglan; @liumingxiang-->
-<!--Tester: @nobuggers; @yhl0101-->
+<!--Owner: @hangmengxin; @oh_wangxk-->
+<!--Designer: @wanyanglan; @KejiePeng-->
+<!--Tester: @nobuggers; @yhl0101; @LiTongguan2026-->
 <!--Adviser: @ge-yafang-->
 
 - ArkTS API<!--arkgraphics-arkts-->

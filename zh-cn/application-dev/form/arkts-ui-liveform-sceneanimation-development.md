@@ -68,7 +68,7 @@
 
 （2）IA两点水平相距39.5vp，垂直相距39.5vp。
 
-因此，以A点为原点，向右为X轴正方向，向下为Y轴正方向，图5中E点的合法坐标可以是（-20，-20），EF边长合法值可以是200vp，EH边长合法值可以是200vp。
+因此，以A点为原点，向右为X轴正方向，向下为Y轴正方向，图6中E点的合法坐标可以是（-20，-20），EF边长合法值可以是200vp，EH边长合法值可以是200vp。
 
 互动卡片可以通过调用[formProvider.getFormRect](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formprovidergetformrect20)接口获取卡片在窗口中的尺寸及相对坐标位置信息。卡片提供方以此计算动效申请范围，坐标计算时，以上图A点为（0，0）点，计算矩形EFGH对应参数，单位为vp。
 

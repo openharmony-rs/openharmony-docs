@@ -48,6 +48,8 @@ getDevices(): Array&lt;Readonly&lt;USBDevice&gt;&gt;
 > **说明：**
 >
 > 三方应用无法通过`getDevices()`接口直接获取`serial`字段的设备序列号信息（该字段对三方应用不可用）。如需获取序列号，需要在申请设备访问权限后，自行发起控制传输获取。
+>
+> 如果设备已通过企业设备管理（EDM）限制策略管控USB（如禁用USB能力、设置USB设备可用名单、禁用特定USB设备类型等），获取的设备列表可能为空或仅包含被允许的设备。具体情况请参考[@ohos.enterprise.restrictions (限制类策略)](../apis-mdm-kit/js-apis-enterprise-restrictions.md)和[@ohos.enterprise.usbManager (USB管理)](../apis-mdm-kit/js-apis-enterprise-usbManager.md)。
 
 **系统能力：**  SystemCapability.USB.USBManager
 

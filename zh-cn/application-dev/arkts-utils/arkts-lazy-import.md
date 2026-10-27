@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍ArkTS延迟加载（lazy import）特性，使文件在冷启动阶段不被加载而按需加载，缩短冷启动时间，适用于优化应用启动性能场景。"
+keywords: [ArkTS, lazy import, 延迟加载, 冷启动, 性能优化, 按需加载, 启动性能, 模块加载]
+doctype: guide
+status: active
+---
+
 # 延迟加载 (lazy import)
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
@@ -43,11 +51,15 @@ function useModules(): void{
     let xx = a;
     let yy = c;
 }
+```
 
+```typescript
 // mod1.ets
 export let a = "mod1 executed"
 console.info(a);
+```
 
+```typescript
 // mod2.ets
 export let c = "mod2 executed"
 console.info(c);
@@ -186,11 +198,15 @@ import type lazy { obj } from "./mod";    // 不支持，编译器、应用编�
 export let a = "Variable A from mod1";
 export let b = "Variable B from mod1";
 console.info("mod1 executed");
+```
 
+```typescript
 // mod2.ets
 export let c = "Variable C from mod2";
 console.info("mod2 executed");
+```
 
+```typescript
 // main.ets
 import lazy { a } from "./mod1";    // 从"mod1"内获取a对象，标记为延迟加载
 import { c } from "./mod2";
@@ -565,7 +581,9 @@ export function func() {
 ```javascript
 // A.ets
 export let A = "A";
+```
 
+```javascript
 // Index.ets
 import { A } from "./A";
 
@@ -615,7 +633,9 @@ struct Index {
 ```javascript
 // A.ets
 export let A = "A";
+```
 
+```javascript
 // Index.ets
 import lazy { A } from "./A"; // 此处添加lazy关键字，标记该文件可延迟加载
 

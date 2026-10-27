@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-Album extends [AbsAlbum](arkts-apis-photoAccessHelper-AbsAlbum.md).
+Album继承自[AbsAlbum](arkts-apis-photoAccessHelper-AbsAlbum.md)。
 
 实体相册。
 

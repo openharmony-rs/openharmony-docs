@@ -3,7 +3,7 @@
 <!--Subsystem: Graphics-->
 <!--Owner: @jason_stark-->
 <!--Designer: @zdustc-->
-<!--Tester: @zhangyue283-->
+<!--Tester: @dongchao01-->
 <!--Adviser: @ge-yafang-->
 
 图片（Image）：3D渲染中的二维纹理资源，本质为存储像素数据的内存缓冲区（buffer）。它提供物体表面渲染所需的数据，包括基础颜色、法线、金属度、粗糙度和环境遮蔽等贴图，也可作为材质或自定义着色器的纹理输入，最终决定物体表面的外观。

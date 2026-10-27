@@ -369,8 +369,8 @@ tid               thread name                   arkts_heap(KB)
 
 使用样例：
 
-```txt
-$ hidumper --mem-smaps 3456  # 3456 为目标可调试应用进程号
+```shell
+$ hidumper --mem-smaps 3456  -> 3456 为目标可调试应用进程号
 
 -------------------------------[memory]-------------------------------
 
@@ -393,11 +393,10 @@ Size        Rss         Pss         Clean       Dirty       Clean       Dirty   
 
 可使用hidumper --mem-smaps pid -v命令获取指定进程的详细内存使用情况，该命令会直接打印进程的所有内存信息，不会对相同内存信息做二次处理。
 
-
 使用样例：
 
-```txt
-$ hidumper --mem-smaps 3456 -v   # 3456 为目标可调试应用进程号
+```shell
+$ hidumper --mem-smaps 3456 -v  -> 3456 为目标可调试应用进程号
 
 -------------------------------[memory]-------------------------------
                                     Shared      Shared      Private     Private
@@ -1695,49 +1694,129 @@ hdc shell "hidumper -s WindowManagerService -a '-w 5 -inspector'"
 | ID: 2100001
 | compid:
 | text:
+| accessibilityText:
+| accessibilityGroup: 0
+| accessibilityLevel: auto
+| accessibilityCustomRole:
 | top: 72.000000
 | left: 0.000000
 | width: 0.000000
 | height: 0.000000
 | visible: 1
+| debugLine:
 | clickable: 0
+| longclickable: 0
 | checkable: 0
+| scrollable: 0
+| checked: 0
+| hint:
+| childTree: -1
+| accessibilitySelected: 0
+| accessibilityRole:
 |-> Column childSize:1
 | ID: 128
 | compid:
 | text:
+| accessibilityText:
+| accessibilityGroup: 0
+| accessibilityLevel: auto
+| accessibilityCustomRole:
 | top: 72.000000
 | left: 0.000000
 | width: 720.000000
 | height: 1136.000000
 | visible: 1
+| debugLine:
 | clickable: 0
+| longclickable: 0
 | checkable: 0
+| scrollable: 0
+| checked: 0
+| hint:
+| childTree: -1
+| accessibilitySelected: 0
+| accessibilityRole:
 |-> GridContainer childSize:1
 | ID: 129
 | compid:
 | text:
+| accessibilityText:
+| accessibilityGroup: 0
+| accessibilityLevel: auto
+| accessibilityCustomRole:
 | top: 72.000000
 | left: 0.000000
 | width: 720.000000
 | height: 1136.000000
 | visible: 1
+| debugLine:
 | clickable: 0
+| longclickable: 0
 | checkable: 0
+| scrollable: 0
+| checked: 0
+| hint:
+| childTree: -1
+| accessibilitySelected: 0
+| accessibilityRole:
 |-> Column childSize:2
 | ID: 130
 | compid:
 | text:
+| accessibilityText:
+| accessibilityGroup: 1
+|     accessibilityOptions:
+|         accessibilityTextPreferred: 0
+|         stateControllerByType:
+|         stateControllerByInspector:
+|         actionControllerByType:
+|         actionControllerByInspector:
+| accessibilityLevel: yes
+| accessibilityCustomRole:
 | top: 72.000000
 | left: 0.000000
 | width: 720.000000
 | height: 180.000000
 | visible: 1
+| debugLine:
 | clickable: 0
+| longclickable: 0
 | checkable: 0
+| scrollable: 0
+| checked: 0
+| hint:
+| childTree: -1
+| accessibilitySelected: 0
+| accessibilityRole:
 
 ......
 ```
+
+上述样例中，各字段的含义如下：
+
+| 字段 | 说明 |
+| -------- | -------- |
+| ID | 节点的无障碍ID，由系统自动分配。 |
+| compid | 组件的唯一标识，为[id](../reference/apis-arkui/arkui-ts/ts-universal-attributes-component-id.md#id)属性设置的值，未设置时为空。 |
+| text | 组件的文本内容，字符串；启用无障碍分组时为按[accessibilityGroup](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitygroup)规则拼接的合并文本，多项文本以", "分隔。 |
+| accessibilityText | 无障碍文本，对应[accessibilityText](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitytext)属性，未设置时为空。 |
+| accessibilityGroup | 是否启用无障碍分组，对应[accessibilityGroup](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitygroup)属性。0表示未启用（默认），1表示启用。 |
+| accessibilityOptions | 无障碍分组配置选项，仅accessibilityGroup为1时输出，对应[AccessibilityOptions](../reference/apis-arkui/arkui-ts/ts-types.md#accessibilityoptions14对象说明)。其中accessibilityTextPreferred对应accessibilityPreferred，当accessibilityPreferred为false时为0，否则为1；stateControllerByType、actionControllerByType为角色字符串（如button），分别对应stateControllerRoleType、actionControllerRoleType；stateControllerByInspector、actionControllerByInspector为组件id字符串，分别对应stateControllerId、actionControllerId；未设置时为空。<br>**说明**：从API版本26.0.1开始，输出此字段。 |
+| accessibilityLevel | 无障碍重要性，对应[accessibilityLevel](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitylevel)属性。取值为auto（默认）、yes、no、no-hide-descendants。 |
+| accessibilityCustomRole | 无障碍组件类型（如button），为[accessibilityRole](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilityrole18)属性设置的类型，未设置时为空。<br>**说明**：从API version 18开始，输出此字段。 |
+| top/left | 组件左上角的坐标位置，单位vp，由组件相对窗口的位置叠加窗口在屏幕上的偏移计算得到。 |
+| width/height | 组件的宽和高，单位vp。 |
+| visible | 组件是否可见。1表示可见，0表示不可见。 |
+| debugLine | 组件创建所在的代码行信息，同[getInspectorInfo](../reference/apis-arkui/js-apis-arkui-frameNode.md#getinspectorinfo12)的$debugLine，仅debug编译场景下有值，否则为空。<br>**说明**：从API版本26.0.0开始，输出此字段。 |
+| clickable | 组件是否可点击。1表示绑定了点击事件，0表示未绑定。 |
+| longclickable | 组件是否可长按。1表示绑定了长按事件，0表示未绑定。 |
+| checkable | 组件是否支持选中。1表示支持（如单选框、多选框、开关等），0表示不支持。 |
+| scrollable | 组件是否可滚动。1表示支持（如Scroll、List等滚动容器），0表示不支持。 |
+| checked | 组件是否被选中。1表示选中，0表示未选中，参见[accessibilityChecked](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitychecked13)属性。 |
+| hint | 组件的提示文本，如输入框的placeholder文本，无为空。 |
+| childTree | 子无障碍树ID，Web、XComponent、卡片等内部使用独立无障碍树的组件为其树ID，无子树时为-1。 |
+| accessibilitySelected | 组件是否被单选选中。1表示选中，0表示未选中，对应[accessibilitySelected](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilityselected13)属性。<br>**说明**：从API版本26.0.1开始，输出此字段。 |
+| accessibilityRole | 组件的无障碍角色，通过C API属性[NODE_ACCESSIBILITY_ROLE](../reference/apis-arkui/capi-native-node-h-nodeattributetype-accessibility.md#node_accessibility_role)设置，未设置时为空。<br>**说明**：从API版本26.0.1开始，输出此字段。 |
 
 ### 获取期望应用路由栈信息
 

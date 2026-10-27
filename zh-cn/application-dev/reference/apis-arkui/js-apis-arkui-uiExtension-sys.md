@@ -1,8 +1,8 @@
 # @ohos.arkui.uiExtension (uiExtension)(系统接口)
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @Pakoo007-->
-<!--Designer: @stupidb-->
+<!--Owner: @JUGaaab-->
+<!--Designer: @CheryHome-->
 <!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
 

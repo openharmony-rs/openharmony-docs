@@ -2,10 +2,11 @@
 
 <!--Kit: AVCodec Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @zhanghongran-->
+<!--Owner: @rchdlee-->
 <!--Designer: @dpy2650--->
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=d8da44d9389782cf4839d2e77f3518c20aa1b228 translatedAt=2026-10-22T04:06:21.855Z pushedAt=2026-10-22T13:26:18.096Z nl=1 -->
 
 Starting from API version 20, video encoding in synchronous mode is supported.
 
@@ -15,7 +16,7 @@ For details about the implementation, see [Samples](https://gitcode.com/openharm
 
 For details about the supported encoding capabilities, see [AVCodec Supported Formats](avcodec-support-formats.md#video-encoding).
 
-For details about the restrictions, supported capabilities, and state machine call relationships of video encoding, see [Video Encoding](video-encoding.md).
+For details about the restrictions, supported capabilities, and state machine call relationships of video encoding, see [Asynchronous Video Encoding](video-encoding.md).
 
 ## When to Use
 
@@ -25,10 +26,6 @@ Asynchronous mode is generally recommended for most use cases. Synchronous mode 
 ## How to Develop
 
 Read [VideoEncoder](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md) for the API reference.
-
-- The dotted line indicates an optional operation.
-
-- The solid line indicates a mandatory operation.
 
 ![Call relationship of synchronous video encoding](figures/synchronous-video-encode.png)
 
@@ -65,7 +62,7 @@ The sample code provided in this section adheres to the C++17 standard and is fo
    #include <shared_mutex>
    ```
    
-2. These global variables are for reference only. They can be encapsulated into an object based on service requirements.
+2. Define global variables. The following values are examples. Obtain the corresponding value ranges through capability query APIs and configure the parameters accordingly.
 
    ```c++
    // Video frame width.
@@ -86,7 +83,6 @@ The sample code provided in this section adheres to the C++17 standard and is fo
    bool outputDone = false;
    // Encoding input.
    bool inputDone = false;
-   std::unique_ptr<std::ifstream> inFile_;
    ```
 
 ### Surface Mode
@@ -149,7 +145,7 @@ The following walks you through how to implement the entire video encoding proce
 
    In the code snippet below, the following variables are used:
 
-   **nativeWindow**: For details about how to obtain the native window, see step 6 in [Surface Mode](video-encoding.md#surface-mode).
+   **nativeWindow**: For details about how to obtain the native window, see step 6 in [Surface Mode](video-encoding.md#surface-mode) of asynchronous video encoding.
 
    ```c++
    // Obtain the surface used for data input.
@@ -159,9 +155,9 @@ The following walks you through how to implement the entire video encoding proce
    }
    ```
 
-4. Call **OH_VideoEncoder_Prepare()** to prepare internal resources for the encoder.
+4. Call **OH_VideoEncoder_Prepare()** to prepare the encoder.
 
-    
+   This API prepares data before the encoder starts running.
 
    ```c++
    OH_AVErrCode ret = OH_VideoEncoder_Prepare(videoEnc);
@@ -173,7 +169,7 @@ The following walks you through how to implement the entire video encoding proce
 5. Call **OH_VideoEncoder_Start()** to start the encoder.
 
    ```c++
-   // Configure the paths of the input and output files.
+   // Configure the path of the file to be encoded. You can specify an accessible directory such as the application sandbox path.
    std::string_view outputFilePath = "/*yourpath*.h264";
    std::unique_ptr<std::ofstream> outputFile = std::make_unique<std::ofstream>();
    if (outputFile != nullptr) {
@@ -215,7 +211,7 @@ The following walks you through how to implement the entire video encoding proce
                    return false;
                }
                if (info.flags & AVCODEC_BUFFER_FLAGS_EOS) {
-                   outputDone = 1;
+                   outputDone = true;
                }
 
                // Write the encoded frame data (specified by buffer) to the output file.
@@ -411,9 +407,9 @@ The following walks you through how to implement the entire video encoding proce
     > 1. To enable video encoding in synchronous mode, **OH_MD_KEY_ENABLE_SYNC_MODE** must be set to **1**.
     > 2. To use synchronous mode, do not call **OH_VideoEncoder_RegisterCallback** or **OH_VideoEncoder_RegisterParameterCallback** in prior to **OH_VideoEncoder_Configure**. Otherwise, the encoder will run in asynchronous mode instead.
 
-3. Call **OH_VideoEncoder_Prepare()** to prepare internal resources for the encoder.
+3. Call **OH_VideoEncoder_Prepare()** to prepare the encoder.
 
-     
+    This API prepares data before the encoder starts running.
 
     ```c++
     ret = OH_VideoEncoder_Prepare(videoEnc);
@@ -427,7 +423,7 @@ The following walks you through how to implement the entire video encoding proce
     Configure the input and output files.
 
     ```c++
-    // Configure the paths of the input and output files.
+    // Configure the path of the file to be encoded. You can specify an accessible directory such as the application sandbox path.
     std::string_view inputFilePath = "/*yourpath*.yuv";
     std::string_view outputFilePath = "/*yourpath*.h264";
     std::unique_ptr<std::ifstream> inputFile = std::make_unique<std::ifstream>();
@@ -490,7 +486,7 @@ The following walks you through how to implement the entire video encoding proce
                     // Process the file stream and obtain the frame length, and then write the data to encode to the buffer of the specified index.
                     uint8_t *addr = OH_AVBuffer_GetAddr(buffer);
                     if (addr == nullptr) {
-                       // Handle exceptions.
+                       // Handle exceptions. 
                        return false;
                     }
                     if (inputFile != nullptr && inputFile->is_open()) {
@@ -521,8 +517,8 @@ The following walks you through how to implement the entire video encoding proce
                     // Handle exceptions.
                     return false;
                 }
-                if (inFile_->eof()) {
-                    inputDone = 1;
+                if (inputFile->eof()) {
+                    inputDone = true;
                 }
                 break;
             }
@@ -571,14 +567,14 @@ The following walks you through how to implement the entire video encoding proce
                 // Write the encoded frame data (specified by buffer) to the output file.
                 uint8_t *addr = OH_AVBuffer_GetAddr(buffer);
                 if (addr == nullptr) {
-                   // Handle exceptions.
+                   // Handle exceptions. 
                    return false;
                 }
                 if (outputFile != nullptr && outputFile->is_open()) {
                     outputFile->write(reinterpret_cast<char *>(addr), info.size);
                 }
                 if (info.flags & AVCODEC_BUFFER_FLAGS_EOS) {
-                    outputDone = 1;
+                    outputDone = true;
                 }
                 // Free the output buffer. index is the index of the buffer.
                 OH_AVErrCode freeOutputRet = OH_VideoEncoder_FreeOutputBuffer(videoEnc, index);
