@@ -220,6 +220,8 @@ libnative_buffer.so
 
 
 2. **创建OH_NativeImage实例**。
+
+    创建nativeImage_为OH_NativeImage实例，将作为OH_NativeImage_AcquireNativeWindow的入参。
     <!-- @[nativeimage_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeImage/entry/src/main/cpp/render/render_engine.cpp) -->
     
     ``` C++
@@ -229,8 +231,9 @@ libnative_buffer.so
     ```
 
 3. **获取对应的数据生产者端NativeWindow**。
+    
+    传入image获取生产者端NativeWindow，image为使用OH_NativeImage_Create创建的OH_NativeImage实例。
     <!-- @[nativeimage_acquire_nativewindow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeImage/entry/src/main/cpp/render/native_render.cpp) -->
-    说明：OH_NativeImage_AcquireNativeWindow的入参image即为步骤2中通过OH_NativeImage_Create创建并赋值给nativeImage_的OH_NativeImage实例，二者指向同一对象。示例中两处变量名不同，是因为步骤2与步骤3的代码分别摘自示例工程中的render_engine.cpp与native_render.cpp两个源文件，命名风格不同；变量名仅为标识符，可由开发者自行命名，不影响接口功能。
     ``` C++
     nativeWindow_ = OH_NativeImage_AcquireNativeWindow(image);
     ```
