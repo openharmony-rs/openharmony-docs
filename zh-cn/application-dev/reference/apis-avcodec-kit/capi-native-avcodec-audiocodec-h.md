@@ -491,7 +491,7 @@ OH_AVErrCode OH_AudioCodec_SetDecryptionConfig(OH_AVCodec *codec, MediaKeySessio
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | 指向OH_AVCodec实例的指针。 |
-| [MediaKeySession](../apis-drm-kit/capi-drm-mediakeysession.md) *mediaKeySession | 带有解密功能的媒体秘钥会话实例。 |
+| [MediaKeySession](../apis-drm-kit/capi-drm-mediakeysession.md) *mediaKeySession | 带有解密功能的媒体密钥会话实例。 |
 | bool secureAudio | 是否使用安全解码器。使用安全解码器为true,否则为false。<br> 注意：当前音频解密尚不支持使用安全解码器。 |
 
 **返回：**
