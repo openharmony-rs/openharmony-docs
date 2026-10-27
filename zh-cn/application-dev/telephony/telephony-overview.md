@@ -23,10 +23,6 @@ Telephony Kit（蜂窝通信服务）提供一系列API帮助开发者开发通�
 
 在调用电话服务API前，请确保使用的硬件设备有可以独立蜂窝通信的Modem和SIM卡。
 
-### 支持国家/地区
-
-请参见版本说明中[各设备支持的国家/地区](https://developer.huawei.com/consumer/cn/doc/harmonyos-releases/sdk-supported-regions)。
-
 <!--RP1-->
 
 <!--RP1End-->
