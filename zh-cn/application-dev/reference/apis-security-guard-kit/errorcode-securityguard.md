@@ -15,11 +15,11 @@
 
 **错误信息**
 
-internal system error.
+Internal system error.
 
 **错误描述**
 
-调用阻断服务相关接口（[createAuthProvider](js-apis-security-guard-sys.md#securityguardcreateauthprovider)、[destroyAuthProvider](js-apis-security-guard-sys.md#securityguarddestroyauthprovider)、[requestAuthResult](js-apis-security-guard-sys.md#requestauthresult)）时，系统内部发生错误，无法完成对应操作。
+调用阻断服务相关接口（[createAuthProvider](js-apis-security-guard-sys.md#securityguardcreateauthprovider)()、[destroyAuthProvider](js-apis-security-guard-sys.md#securityguarddestroyauthprovider)()、[requestAuthResult](js-apis-security-guard-sys.md#requestauthresult)()）时，系统内部发生错误，无法完成对应操作。
 
 **可能原因**
 
@@ -28,9 +28,8 @@ internal system error.
 
 **处理步骤**
 
-1. 检查系统服务是否正常运行，必要时重启设备后重试。
-2. 确认 Provider 实例仍有效：若已调用 [destroyAuthProvider](js-apis-security-guard-sys.md#securityguarddestroyauthprovider) 销毁实例，需重新调用 [createAuthProvider](js-apis-security-guard-sys.md#securityguardcreateauthprovider) 创建后再使用。
-3. 若问题持续，请收集日志并联系系统框架维护人员。
+1. 检查系统服务是否正常运行，若未正常运行等待一段时间后未恢复，可重启设备后重试。
+2. 确认Provider实例仍有效：若已调用[destroyAuthProvider](js-apis-security-guard-sys.md#securityguarddestroyauthprovider)销毁实例，需重新调用[createAuthProvider](js-apis-security-guard-sys.md#securityguardcreateauthprovider)创建后再使用。
 
 ## 27000002 同进程阻断服务提供者实例数达上限
 
@@ -48,8 +47,7 @@ Provider count of the current process has reached the upper limit.
 
 **处理步骤**
 
-1. 复用当前进程已有的 Provider 实例，避免重复创建。
-2. 若确需新建实例，先调用 [destroyAuthProvider](js-apis-security-guard-sys.md#securityguarddestroyauthprovider) 销毁已有实例，再调用 [createAuthProvider](js-apis-security-guard-sys.md#securityguardcreateauthprovider) 创建。
+1. 若确需新建实例，先调用 [destroyAuthProvider](js-apis-security-guard-sys.md#securityguarddestroyauthprovider) 销毁已有实例，再调用 [createAuthProvider](js-apis-security-guard-sys.md#securityguardcreateauthprovider) 创建。
 
 ## 27000003 全局阻断服务提供者实例数达上限
 
@@ -74,7 +72,7 @@ Global provider count has reached the upper limit.
 
 **错误信息**
 
-concurrent request count has reached the upper limit.
+Concurrent request count has reached the upper limit.
 
 **错误描述**
 

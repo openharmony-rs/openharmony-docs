@@ -739,6 +739,14 @@ onClientStatusChanged: (clientInfos: Array&lt;AuthClientInfo&gt;) => void
 | ------ | ---- | ---- | ---- |
 | clientInfos | Array&lt;[AuthClientInfo](#authclientinfo)&gt; | 是 | 全量客户端会话信息列表。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 202 | non-system application uses the system API |
+
 **示例：**
 
 ```ts
@@ -805,8 +813,8 @@ requestAuthResult(event: AuthEventInfo): Promise&lt;AuthResult&gt;
 | -------- | -------- |
 | 201 | check permission fail |
 | 202 | non-system application uses the system API |
-| 27000001 | internal system error. |
-| 27000004 | concurrent request count has reached the upper limit. |
+| 27000001 | Internal system error. |
+| 27000004 | Concurrent request count has reached the upper limit. |
 
 **示例：**
 
@@ -839,7 +847,7 @@ async function requestAuthResult(): Promise<void> {
 
 createAuthProvider(callback: AuthProviderCallback, serviceId: string): AuthProvider
 
-创建阻断服务提供者会话。同一进程最多1个Provider实例，全局最多16个。
+创建阻断服务提供者会话。同一进程只能创建1个Provider实例，全局最多16个。
 
 **起始版本：** 26.1.0
 
@@ -870,7 +878,7 @@ createAuthProvider(callback: AuthProviderCallback, serviceId: string): AuthProvi
 | -------- | -------- |
 | 201 | check permission fail |
 | 202 | non-system application uses the system API |
-| 27000001 | internal system error. |
+| 27000001 | Internal system error. |
 | 27000002 | Provider count of the current process has reached the upper limit. |
 | 27000003 | Global provider count has reached the upper limit. |
 
@@ -930,7 +938,7 @@ destroyAuthProvider(provider: AuthProvider): void
 | -------- | -------- |
 | 201 | check permission fail |
 | 202 | non-system application uses the system API |
-| 27000001 | internal system error. |
+| 27000001 | Internal system error. |
 
 **示例：**
 
