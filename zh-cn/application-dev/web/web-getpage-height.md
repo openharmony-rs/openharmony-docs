@@ -206,3 +206,40 @@ struct Scene2JsBridge {
 
 应用侧代码
 <!-- @[jsb_cannot_be_used](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebPageHeight/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+@Component
+struct Scene3SetTimeout {
+  controller: webview.WebviewController = new webview.WebviewController();
+  @State heightText: ResourceStr = $r('app.string.waiting_for_height');
+
+  build() {
+    Column() {
+      Text('getPageHeight: ' + this.heightText)
+        .width('100%')
+        .padding(12)
+        .fontSize(16)
+        .backgroundColor('#f5f5f5')
+        .textAlign(TextAlign.Center)
+
+      Web({ src: $rawfile('scene3_index.html'), controller: this.controller })
+        .layoutWeight(1)
+        .onPageEnd(() => {
+          this.heightText = $r('app.string.scene3_on_page_end');
+          setTimeout(() => {
+            try {
+              const h: number = this.controller.getPageHeight();
+              console.info(`page height: onPageEnd: setTimeout: ${h}`);
+              this.heightText = String(h) + ' px';
+            } catch (err) {
+              console.error(`page height: onPageEnd setTimeout error: ${JSON.stringify(err)}`);
+              this.heightText = $r('app.string.get_height_failed');
+            }
+          }, 2000)
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
