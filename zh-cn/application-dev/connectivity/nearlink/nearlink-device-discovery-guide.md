@@ -54,18 +54,7 @@
     }
     ```
 
-3. 构造用户需要的广播参数及数据。广播中携带的服务UUID必须为自定义UUID，参见[星闪常见问题 > 标准UUID与自定义UUID有什么区别](nearlink-faq-guide.md#标准uuid与自定义uuid有什么区别)。
-
-    > **说明：**
-    >
-    > 无线帧是星闪设备通过空口发送的一次数据包，帧类型决定这个数据包的发送格式。当前支持以下两种帧类型：
-    > - FRAME_TYPE_1（基础帧）：使用GFSK波形发送，不对数据做信道编码，实现简单、功耗低，适用于低功耗、低成本的基础交互场景。
-    > - FRAME_TYPE_4（扩展覆盖帧）：使用PSK调制并对数据做极化码信道编码，相当于给数据加上纠错保护；控制信息采用更抗干扰的BPSK调制，以较低的传输速率换取更强的纠错与抗噪能力，信号较弱时仍能正确还原数据，因此可覆盖更远的距离。适用于对覆盖有要求的扩展覆盖场景（如设备间距离超出常规覆盖范围时）；智能家居、智能制造等领域中此类场景较常见。该帧类型依赖设备芯片支持。
-    >
-    > 使用帧类型时需注意：
-    > - 广播与扫描需使用相同的帧类型才能互相发现。例如外围设备使用FRAME_TYPE_4广播时，中心设备的扫描参数也需配置为FRAME_TYPE_4。
-    > - 使用FRAME_TYPE_4前，先调用[isFrameType4Supported](../../reference/apis-connectivity-kit/js-apis-nearlink-manager.md#managerisframetype4supported)查询设备是否支持；在不支持的设备上启动广播将返回801错误码。
-    > - 未配置frameType时，按FRAME_TYPE_1处理。
+3. 构造用户需要的广播参数及数据。广播中携带的服务UUID必须为自定义UUID，参见[星闪常见问题 > 标准UUID与自定义UUID有什么区别](nearlink-faq-guide.md#标准uuid与自定义uuid有什么区别)。广播参数中的frameType用于指定帧类型，默认值为FRAME_TYPE_1；如需使用扩展覆盖帧，参见[星闪常见问题 > 什么是帧类型](nearlink-faq-guide.md#什么是帧类型frametype)。
 
     <!-- @[advertising_build_params](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/AdvertisingPage.ets) -->
     
@@ -178,10 +167,6 @@
     ```
 
 2. 订阅扫描结果。为避免重复订阅，先调用[offDeviceFound()](../../reference/apis-connectivity-kit/js-apis-nearlink-scan.md#scanoffdevicefound)取消已有订阅，再调用[onDeviceFound()](../../reference/apis-connectivity-kit/js-apis-nearlink-scan.md#scanondevicefound)订阅扫描结果，当扫描到设备时将触发回调。回调中调用的parseScanResult解析方法在步骤3中定义。
-
-    > **说明：**
-    >
-    > 扫描结果中的frameType表示该广播包使用的无线帧类型（帧类型说明见[发起星闪广播](#发起星闪广播)的说明）；若结果中未返回该字段，则按FRAME_TYPE_1处理。
 
     <!-- @[scan_on_device_found](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/ScanConfigPage.ets) -->
     
@@ -359,11 +344,7 @@
     }
     ```
 
-5. 启动星闪扫描。其中filters为第4步配置的扫描过滤器，scanOptions为扫描参数。
-
-    > **说明：**
-    >
-    > 扫描参数的frameType需与广播侧一致，否则无法发现设备（帧类型说明见[发起星闪广播](#发起星闪广播)的说明）。扫描FRAME_TYPE_4的广播前，先确认设备支持；在不支持的设备上启动扫描将返回801错误码。
+5. 启动星闪扫描。其中filters为第4步配置的扫描过滤器，scanOptions为扫描参数。扫描参数中的frameType需与广播侧一致，否则无法发现设备（参见[星闪常见问题 > 什么是帧类型](nearlink-faq-guide.md#什么是帧类型frametype)）。
 
     <!-- @[scan_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/ScanConfigPage.ets) -->
     
