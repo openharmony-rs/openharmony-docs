@@ -42,6 +42,12 @@
 2. 获取全局字体集实例。
 
    <!-- @[arkts_custom_font_font_collection](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/CustomFont/entry/src/main/ets/pages/Index.ets) --> 
+   
+   ``` TypeScript
+   // 获取全局字体集实例
+   let fontCollection = text.FontCollection.getGlobalInstance()
+   const familyName = "myFamilyName"
+   ```
 
 3. 注册自定义字体。有以下两种方式：
 
