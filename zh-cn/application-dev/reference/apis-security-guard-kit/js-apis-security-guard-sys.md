@@ -644,7 +644,7 @@ async function updatePolicy(): Promise<void> {
 | eventId | number | 否 | 否 | 事件类型ID。 |
 | version | string | 否 | 否 | 事件版本号。 |
 | content | string | 否 | 否 | 事件内容，JSON字符串格式。 |
-| clientStatus | Array&lt;[AuthClientStatus](#authclientstatus)&gt; | 否 | 是 | 客户端会话状态列表，用于标记降级客户端。降级的客户端仅上报通知，不参与从严聚合。 |
+| clientStatus | [AuthClientStatus](#authclientstatus)[] | 否 | 是 | 客户端会话状态列表，用于标记降级客户端。降级的客户端仅上报通知，不参与从严聚合。 |
 
 ## AuthClientStatus
 
@@ -675,9 +675,9 @@ async function updatePolicy(): Promise<void> {
 | ---- | ---- | ---- | ---- | ---- |
 | clientId | string | 否 | 否 | 客户端会话唯一标识。 |
 | bundleName | string | 否 | 否 | 应用Bundle名称。 |
-| subscribedEvents | Array&lt;number&gt; | 否 | 否 | 客户端订阅的事件类型ID列表。阻断服务提供者可据此过滤关心的事件。 |
+| subscribedEvents | number[] | 否 | 否 | 客户端订阅的事件类型ID列表。阻断服务提供者可据此过滤关心的事件。 |
 | defaultTimeoutStrategy | [AuthStrategy](#authstrategy) | 否 | 否 | 客户端响应超时时的默认阻断策略。 |
-| defaultTimeoutMs | number | 否 | 否 | 客户端响应超时时间，单位毫秒。当前默认设置为400。 |
+| defaultTimeoutMs | number | 否 | 否 | 客户端响应超时时间，单位为毫秒。当前默认设置为400。 |
 
 ## ClientAuthResult
 
@@ -709,7 +709,7 @@ async function updatePolicy(): Promise<void> {
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
 | mergedAuthStrategy | [AuthStrategy](#authstrategy) | 否 | 否 | 所有客户端聚合后的阻断策略。 |
-| clientAuthResult | Array&lt;[ClientAuthResult](#clientauthresult)&gt; | 否 | 否 | 各客户端的阻断结果列表。 |
+| clientAuthResult | [ClientAuthResult](#clientauthresult)[] | 否 | 否 | 各客户端的阻断结果列表。 |
 
 ## AuthProviderCallback
 
