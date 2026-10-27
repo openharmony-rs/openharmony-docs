@@ -75,6 +75,9 @@ onQuery: (events: Array\<SecurityEvent\>) => void
 | ------ | ---- | ---- | ---- |
 | events | Array\<[SecurityEvent](#securityevent)\> | 是 | 本批次查询到的安全事件列表。 |
 
+**示例：**
+请参考[onError接口](#onerror)的示例。
+
 ### onComplete
 
 onComplete: () => void
@@ -84,6 +87,9 @@ onComplete: () => void
 **系统能力：** SystemCapability.Security.SecurityGuard
 
 **系统接口：** 此接口为系统接口。
+
+**示例：**
+请参考[onError接口](#onerror)的示例。
 
 ### onError
 
@@ -389,7 +395,7 @@ on(type: 'securityEventOccur', securityEventInfo: SecurityEventInfo, callback: C
 - type必须为字符串`'securityEventOccur'`。
 - 参数个数必须为3个。
 - 同一callback重复订阅会被忽略，不会抛错。
-- 订阅成功后需在适当时机调用[off](#securityguardoff)()取消订阅。
+- 订阅成功后需在适当时机调用[off](#securityguardoffsecurityeventoccur)()取消订阅。
 
 **需要权限：** ohos.permission.QUERY_SECURITY_EVENT
 

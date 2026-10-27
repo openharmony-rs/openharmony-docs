@@ -55,18 +55,20 @@ target_link_libraries(entry PUBLIC libace_napi.z.so)
 
 模块级build-profile.json5中externalNativeOptions参数是NDK工程C/C++文件编译配置的入口，可以通过path指定CMake脚本路径、arguments配置CMake参数、cppFlags配置C++编译器参数、abiFilters配置编译架构等。
 ```json
-"apiType": "stageMode",
-"buildOption": {
-  "arkOptions": {
-   },
-  "externalNativeOptions": {
-    "path": "./src/main/cpp/CMakeLists.txt",
-    "arguments": "",
-    "cppFlags": "",
-    "abiFilters": [
-       "arm64-v8a",
-       "x86_64"
-    ],
+{
+  "apiType": "stageMode",
+  "buildOption": {
+    "arkOptions": {
+    },
+    "externalNativeOptions": {
+      "path": "./src/main/cpp/CMakeLists.txt",
+      "arguments": "",
+      "cppFlags": "",
+      "abiFilters": [
+         "arm64-v8a",
+         "x86_64"
+      ]
+    }
   }
 }
 ```

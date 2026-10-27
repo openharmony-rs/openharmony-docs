@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍Node-API其他实用接口，包括获取模块加载路径、比较ArkTS值严格相等、处理异步操作和实现事件循环等辅助功能，帮助开发者进行Node-API辅助开发。"
+keywords: [Node-API, 实用接口, 模块加载路径, 严格相等, node_api_get_module_file_name, Libuv, 事件循环]
+doctype: guide
+status: active
+---
+
 # 使用Node-API其他实用接口
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->

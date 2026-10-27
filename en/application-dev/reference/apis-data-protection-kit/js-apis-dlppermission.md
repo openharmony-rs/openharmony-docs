@@ -1039,7 +1039,7 @@ This API starts the DLP manager application to configure file permissions and re
 >
 > This API can be called only by domain accounts.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction**: This API can be used only in the stage model.
 

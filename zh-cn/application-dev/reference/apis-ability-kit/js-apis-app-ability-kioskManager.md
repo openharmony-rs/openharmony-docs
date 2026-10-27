@@ -50,7 +50,7 @@ enterKioskMode(context: UIAbilityContext): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 |---------|---------|
-| 801 | Capability not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 16000050 | Failed to connect to the system service. |
 | 16000110 | The current application is not in Kiosk app list and cannot enter Kiosk mode. |
 | 16000111 | The system is already in Kiosk mode and cannot enter Kiosk mode again. |
@@ -118,7 +118,7 @@ exitKioskMode(context: UIAbilityContext): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 |---------|---------|
-| 801 | Capability not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 16000050 | Failed to connect to the system service. |
 | 16000110 | The current application is not in Kiosk app list and cannot enter Kiosk mode. |
 | 16000112 | The current application is not in Kiosk mode and cannot exit Kiosk mode. |

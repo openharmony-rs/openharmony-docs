@@ -1120,3 +1120,27 @@ NODE_CALENDAR_PICKER_MARK_TODAY = 16007
 | 类型 | 说明 |
 | -- | -- |
 | .value[0].i32 | 日历选择器在系统当前日期时，是否保持高亮显示。 |
+
+## NODE_CALENDAR_PICKER_FIRST_DAY_OF_WEEK
+
+```c
+NODE_CALENDAR_PICKER_FIRST_DAY_OF_WEEK = 16008
+```
+
+设置日历选择器每周的起始日，支持属性设置，属性重置和属性获取接口。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.1.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .value[0].i32 | 日历选择器每周的起始日。取值范围：[0, 7]。<br>0：跟随系统区域变化。1：周一。2：周二。3：周三。4：周四。5：周五。6：周六。7：周日。默认值：0（跟随系统区域变化）。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .value[0].i32 | 日历选择器每周的起始日。 |

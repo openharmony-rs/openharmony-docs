@@ -23,7 +23,7 @@ import { formHost } from '@kit.FormKit';
 
 deleteForm(formId: string, callback: AsyncCallback&lt;void&gt;): void
 
-删除指定的卡片。调用此方法后，应用程序将无法使用该卡片，卡片管理器服务不再保留有关该卡片的信息。使用callback异步回调。
+删除指定的卡片。调用此方法后，应用程序将无法使用该卡片，卡片管理服务不再保留有关该卡片的信息。使用callback异步回调。
 
 **需要权限：** ohos.permission.REQUIRE_FORM
 
@@ -75,7 +75,7 @@ try {
 
 deleteForm(formId: string): Promise&lt;void&gt;
 
-删除指定的卡片。调用此方法后，应用程序将无法使用该卡片，卡片管理器服务不再保留有关该卡片的信息。使用Promise异步回调。
+删除指定的卡片。调用此方法后，应用程序将无法使用该卡片，卡片管理服务不再保留有关该卡片的信息。使用Promise异步回调。
 
 **需要权限：** ohos.permission.REQUIRE_FORM
 
@@ -130,7 +130,7 @@ try {
 
 releaseForm(formId: string, callback: AsyncCallback&lt;void&gt;): void
 
-释放指定的卡片。调用此方法后，应用程序将无法使用该卡片，但卡片管理器服务仍然保留有关该卡片的缓存信息和存储信息。使用callback异步回调。
+释放指定的卡片。调用此方法后，应用程序将无法使用该卡片，但卡片管理服务仍然保留有关该卡片的缓存信息和存储信息。使用callback异步回调。
 
 **需要权限：** ohos.permission.REQUIRE_FORM
 
@@ -180,7 +180,7 @@ try {
 
 releaseForm(formId: string, isReleaseCache: boolean, callback: AsyncCallback&lt;void&gt;): void
 
-释放指定的卡片。调用此方法后，应用程序将无法使用该卡片，卡片管理器服务保留有关该卡片的存储信息，可以选择是否保留缓存信息。使用callback异步回调。
+释放指定的卡片。调用此方法后，应用程序将无法使用该卡片，卡片管理服务保留有关该卡片的存储信息，可以选择是否保留缓存信息。使用callback异步回调。
 
 **需要权限：** ohos.permission.REQUIRE_FORM
 
@@ -231,7 +231,7 @@ try {
 
 releaseForm(formId: string, isReleaseCache?: boolean): Promise&lt;void&gt;
 
-释放指定的卡片。调用此方法后，应用程序将无法使用该卡片，卡片管理器服务保留有关该卡片的存储信息，可以选择是否保留缓存信息。使用Promise异步回调。
+释放指定的卡片。调用此方法后，应用程序将无法使用该卡片，卡片管理服务保留有关该卡片的存储信息，可以选择是否保留缓存信息。使用Promise异步回调。
 
 **需要权限：** ohos.permission.REQUIRE_FORM
 
@@ -2881,6 +2881,76 @@ try {
 }
 ```
 
+## formHost.addForm<sup>12+</sup>
+
+addForm(want: Want): Promise&lt;formInfo.RunningFormInfo&gt;
+
+添加主题卡片。使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**需要权限：** ohos.permission.REQUIRE_FORM
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明    |
+| ------ | ------ | ---- | ------- |
+| want | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 查询卡片状态时携带的want信息。需要包含bundle名、ability名、module名、卡片名、卡片规格等。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;[formInfo.RunningFormInfo](js-apis-app-form-formInfo.md#runningforminfo20)&gt; | Promise对象。返回符合条件的卡片信息，包括卡片名称、尺寸等。 |
+
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[卡片错误码](errorcode-form.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permissions denied. |
+| 202 | The application is not a system application. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
+| 16500050 | IPC connection error. |
+| 16500060 | Service connection error. |
+| 16501000 | An internal functional error occurred. |
+
+**示例：**
+
+```ts
+import { formHost, formInfo } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let want: Want = {
+    'bundleName': 'com.huawei.hmsapp.thememanager',
+    'abilityName': 'ThemeFaCardUIExtAbility',
+    'parameters': {
+      'ohos.extra.param.key.form_dimension': 4,
+      'ohos.extra.param.key.form_is_theme': true,
+      'ohos.extra.param.key.form_location': 0,
+      'ohos.extra.param.key.module_name': 'entry',
+      'ohos.extra.param.key.form_name': 'widget',
+      'themeFormId': '0',
+      'themeId': '2181824853'
+    }
+  };
+  formHost.addForm(want).then((data: formInfo.RunningFormInfo) => {
+    console.info(`formHost addForm, formId: ${data.formId}`);
+  }).catch((error: BusinessError) => {
+    console.error(`formHost addForm error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
 ## formHost.on('formOverflow')<sup>20+</sup>
 
 on(type: 'formOverflow', callback: Callback&lt;formInfo.OverflowRequest&gt;): void
@@ -2958,7 +3028,7 @@ try {
   });
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
-}   
+}
 ```
 
 ## formHost.on('changeSceneAnimationState')<sup>20+</sup>
@@ -3179,6 +3249,88 @@ try {
   formHost.updateFormSize(formId, newDimension, newRect);
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+## formHost.on('getLiveFormStatus')<sup>20+</sup>
+
+on(type: 'getLiveFormStatus', callback: formInfo.GetLiveFormStatusCallback): void
+
+订阅所有实时卡片的运行状态查询事件。使用callback异步回调。
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明                                                   |
+| ------ | ------ | ---- |------------------------------------------------------|
+| type | string | 是   | 事件回调类型，支持的事件为'getLiveFormStatus'，表示在线卡片状态查询。|
+| callback |[formInfo.GetLiveFormStatusCallback](js-apis-app-form-formInfo-sys.md#getliveformstatuscallback20) | 是 | 回调函数，卡片使用方对查询请求进行处理，返回所有实时卡片的运行状态。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 202 | The application is not a system application. |
+
+**示例：**
+
+```ts
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  formHost.on('getLiveFormStatus', (): Record<string, string> => {
+    // 卡片使用方需要对查询请求进行处理，计算并返回状态信息
+    return { "status": "active" };
+  });
+} catch (error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+}
+```
+
+## formHost.off('getLiveFormStatus')<sup>20+</sup>
+
+off(type: 'getLiveFormStatus', callback?: formInfo.GetLiveFormStatusCallback): void
+
+取消订阅所有实时卡片的运行状态查询事件。使用callback异步回调。
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明                                                   |
+| ------ | ------ | ---- |------------------------------------------------------|
+| type | string | 是   | 事件回调类型，支持的事件为'getLiveFormStatus'，表示卡片位置尺寸查询。|
+| callback |[formInfo.GetLiveFormStatusCallback](js-apis-app-form-formInfo-sys.md#getliveformstatuscallback20) | 是 | 回调函数，对应已订阅卡片位置尺寸查询请求。缺省时，表示注销所有实时卡片的运行状态查询事件回调。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 202 | The application is not a system application. |
+
+**示例：**
+
+```ts
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  formHost.off('getLiveFormStatus', (): Record<string, string> => {
+    // 卡片使用方需要对查询请求进行处理，计算并返回状态信息
+    return { "status": "inactive" };
+  });
+} catch (error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
 }
 ```
 

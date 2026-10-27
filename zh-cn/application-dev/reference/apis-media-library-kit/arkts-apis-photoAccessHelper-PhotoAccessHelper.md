@@ -79,7 +79,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
         console.info('photoAsset.displayName : ' + photoAsset.displayName);
       }
     } else {
-      console.error(`fetchResult fail with error: ${err.code}, ${err.message}`);
+      console.error(`failed to fetchResult`);
     }
   });
 }
@@ -2107,7 +2107,7 @@ onSinglePhotoAlbumChange(album: Album, callback: Callback&lt;AlbumChangeInfos&gt
 | 参数名   | 类型                   | 必填 | 说明      |
 |-----------|-------------------------|-----------|-----------------|
 | album | Album | 是 | 注册单个监听的媒体相册。注册完成后，当该相册发生变化时，通过callback返回变更信息。|
-| callback  | Callback&lt;[AlbumChangeInfos](arkts-apis-photoAccessHelper-i.md#albumchangeinfos20)&gt; | 是 | 返回变更的媒体相册信息[PhotoAssetChangeInfos](arkts-apis-photoAccessHelper-i.md#photoassetchangeinfos20)。<br>**注意：**<br>该接口可以注册多个不同的callback监听。|
+| callback  | Callback&lt;[AlbumChangeInfos](arkts-apis-photoAccessHelper-i.md#albumchangeinfos20)&gt; | 是 | 返回变更的媒体相册信息。<br>**注意：**<br>该接口可以注册多个不同的callback监听。|
 
 **错误码：**
 

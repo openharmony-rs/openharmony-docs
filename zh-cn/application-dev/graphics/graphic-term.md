@@ -1,10 +1,18 @@
+---
+kits: ["ArkGraphics 2D / 方舟2D图形服务"]
+description: "提供ArkGraphics 2D中核心术语的定义与解释，涵盖混合模式、画笔画刷、字体字形、图像滤波、着色器等图形绘制相关概念。"
+keywords: [混合模式, 画笔, 画刷, 字型, 字形, 图像滤波, 着色器, 字块]
+doctype: glossary
+status: active
+---
+
 # ArkGraphics 2D术语
 
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @oh_wangxk; @goumiao; @hangmengxin-->
-<!--Designer: @liumingxiang; @wanyanglan-->
-<!--Tester: @yhl0101; @nobuggers-->
+<!--Owner: @oh_wangxk; @hangmengxin-->
+<!--Designer: @KejiePeng; @wanyanglan-->
+<!--Tester: @LiTongguan2026; @nobuggers; @yhl0101-->
 <!--Adviser: @ge-yafang-->
 
 ## B

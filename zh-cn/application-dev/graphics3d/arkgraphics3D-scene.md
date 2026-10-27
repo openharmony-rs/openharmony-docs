@@ -3,7 +3,7 @@
 <!--Subsystem: Graphics-->
 <!--Owner: @jason_stark-->
 <!--Designer: @zdustc-->
-<!--Tester: @zhangyue283-->
+<!--Tester: @dongchao01-->
 <!--Adviser: @ge-yafang-->
 
 一个3D场景通常由光源、相机、模型三个关键部分组成。
@@ -47,7 +47,7 @@ glTF模型中引用的纹理图片支持以下格式：
    
    ``` TypeScript
    if (this.scene == null) {
-     // 加载模型，并将 gltf 文件放在相关路径下。加载时使用实际路径。
+     // 加载模型，并将 glTF 文件放在相关路径下。加载时使用实际路径。
      // 从 .gltf 切换为 .glb；内容相同，格式不同
      Scene.load($rawfile('gltf/DamagedHelmet/glTF/DamagedHelmet.glb'))
        .then(async (result: Scene) => {

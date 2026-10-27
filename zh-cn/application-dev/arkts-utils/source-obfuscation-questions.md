@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "汇总ArkGuard源码混淆的常见问题，涵盖功能异常排查步骤、典型报错案例及解决方案，以及运行后无crash信息但功能异常时的定位方法。"
+keywords: [ArkGuard, 混淆, 源码混淆, 常见问题, 功能异常, 排查步骤, 典型报错, crash, 白名单]
+doctype: faq
+status: active
+---
+
 # ArkGuard混淆常见问题
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->

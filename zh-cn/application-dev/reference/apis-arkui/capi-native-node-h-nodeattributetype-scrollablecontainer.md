@@ -686,7 +686,7 @@ NODE_SCROLL_ENABLE_SCROLL_WITH_MOUSE = 1002027
 
 | 参数项        | 描述                                                         |
 | ------------- | ------------------------------------------------------------ |
-| .value[0].i32 | 是否支持鼠标左键按下拖动滚动，0：不支持鼠标左键按下拖动滚动，1：支持鼠标左键按下拖动滚动。默认值：0。 |
+| .value[0].i32 | 是否支持鼠标左键按下拖动滚动，0：不支持鼠标左键按下拖动滚动，1：支持鼠标左键按下拖动滚动。API版本26.1.0之前，默认值为0。从API版本26.1.0开始，当可滚动组件水平滚动时，默认值为1，否则为0。 |
 
 **返回：**
 
@@ -741,6 +741,47 @@ NODE_SCROLL_BAR_HEIGHT = 1002029
 | 类型 | 说明 |
 | -- | -- |
 | .value[0].f32 | 滚动条滑轨高度，单位：vp。 |
+
+## NODE_SCROLL_STATE
+
+```c
+NODE_SCROLL_STATE = 1002030
+```
+
+获取当前滚动状态。<br>
+该属性可以根据需要通过[getAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#getattribute)获取。<br>
+作为属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.1.0
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .value[0].i32 | 当前滚动状态。参数类型为[ArkUI_ScrollState](capi-scroll-h.md#arkui_scrollstate)。 |
+
+## NODE_SCROLL_ENABLE_SCROLL_WITH_KEYBOARD
+
+```c
+NODE_SCROLL_ENABLE_SCROLL_WITH_KEYBOARD = 1002031
+```
+
+设置滚动组件是否支持键盘方向键滚动。开启后，滚动组件在获焦且未激活焦点态时会响应键盘方向键滚动。支持属性设置、属性重置和属性获取接口。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项        | 描述                                                         |
+| ------------- | ------------------------------------------------------------ |
+| .value[0].i32 | 是否支持键盘方向键滚动，0：不支持键盘方向键滚动，1：支持键盘方向键滚动。默认值：1。 |
+
+**返回：**
+
+| 类型          | 说明                                                         |
+| ------------- | ------------------------------------------------------------ |
+| .value[0].i32 | 是否支持键盘方向键滚动，0：不支持键盘方向键滚动，1：支持键盘方向键滚动。 |
 
 ## NODE_LIST_DIRECTION
 
@@ -872,8 +913,13 @@ List组件Adapter缓存数量，支持属性设置，属性重置和属性获取
 NODE_LIST_SCROLL_TO_INDEX = 1003005
 ```
 
-滑动到指定index。开启平滑滚动动效时，会对经过的所有item进行加载和布局计算，当大量加载item时会导致性能问题。<br>
+滑动到指定index。开启平滑滚动动效且未启用快速滚动优化时，会对经过的所有item进行加载和布局计算，当大量加载item时会导致性能问题。从API版本26.1.0开始，可通过.value[4]?.i32设置快速滚动模式，减少中间子组件的创建或测量开销。<br>
 作为属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+> **说明：**
+>
+> - 多列List中同时存在ListItem和ListItemGroup时，应使用OH_ARKUI_FAST_SCROLL_MODE_SKIP_MEASURE。使用OH_ARKUI_FAST_SCROLL_MODE_SKIP_CREATE_AND_MEASURE会导致List布局和滚动异常。
+> - 快速滚动模式不改变目标索引、对齐方式和额外偏移量的含义；未开启动效时，仍按原有方式跳转。
 
 **起始版本：** 12
 
@@ -886,6 +932,7 @@ NODE_LIST_SCROLL_TO_INDEX = 1003005
 | .value[1]?.i32 | 设置滑动到列表项在列表中的索引值时是否有动效，1表示有动效，0表示没有动效。默认值：0。 |
 | .value[2]?.i32 | 指定滑动到的元素与当前容器的对齐方式，参数类型[ArkUI_ScrollAlignment](capi-scroll-h.md#arkui_scrollalignment)，默认值：[ARKUI_SCROLL_ALIGNMENT_START](capi-scroll-h.md#arkui_scrollalignment)。 |
 | .value[3]?.f32 | 额外偏移量，默认值：0，单位：vp。正数表示向末尾端额外偏移，负数表示向起始端额外偏移。该参数从API version 15开始支持。 |
+| .value[4]?.i32 | 快速滚动模式，参数类型为[OH_ArkUI_FastScrollMode](capi-scroll-h.md#oh_arkui_fastscrollmode)。仅当.value[1]?.i32为1（开启动效）时生效。<br/>设置为OH_ARKUI_FAST_SCROLL_MODE_SKIP_MEASURE时，跳过中间子组件的测量；设置为OH_ARKUI_FAST_SCROLL_MODE_SKIP_CREATE_AND_MEASURE时，跳过中间子组件的创建和测量。<br/>默认值：OH_ARKUI_FAST_SCROLL_MODE_NONE，与不设置此参数时的行为相同。<br/>取值范围：0、1、2。超出此范围时，按OH_ARKUI_FAST_SCROLL_MODE_NONE处理，不启用快速滚动优化，其余滚动参数仍按原有规则生效。该参数从API版本26.1.0开始支持。 |
 
 ## NODE_LIST_ALIGN_LIST_ITEM
 

@@ -1,3 +1,11 @@
+---
+kits: ["NDK / Native Development Kit"]
+description: "介绍使用Node-API的napi_load_module_with_info接口进行模块加载，可在新创建的ArkTS运行时环境中使用，通过指定module_info参数实现跨bundle的模块加载。"
+keywords: [Node-API, 模块加载, napi_load_module_with_info, ArkTS运行时, module_info, 跨bundle, 动态加载]
+doctype: guide
+status: active
+---
+
 # 使用Node-API接口进行模块加载
 <!--Kit: NDK-->
 <!--Subsystem: arkcompiler-->

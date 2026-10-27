@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍使用Node-API接口创建和获取string值，支持多种字符编码方案（ASCII、UTF-8、UTF-16、Latin-1），适用于Node-API模块与ArkTS之间的字符串交互场景。"
+keywords: [Node-API, string, 字符串, napi_create_string, UTF-8, UTF-16, ASCII, 字符编码, 字符串转换]
+doctype: guide
+status: active
+---
+
 # 使用Node-API接口创建和获取string值
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->

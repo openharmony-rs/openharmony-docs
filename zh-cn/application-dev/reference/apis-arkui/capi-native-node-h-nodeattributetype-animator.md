@@ -1411,7 +1411,7 @@ NODE_SYSTEM_MATERIAL = 127
 
 | 类型 | 说明 |
 | -- | -- |
-| .object | 系统材质对象。参数类型为[ArkUI_ImmersiveMaterialHandle](capi-arkui-nativemodule-arkui-immersivematerialhandle.md)。返回值中的ArkUI_ImmersiveMaterialHandle对象是指向静态成员的指针，因此无需也禁止通过[OH_ArkUI_NativeModule_ImmersiveMaterial_Destroy](capi-native-material-h.md#oh_arkui_nativemodule_immersivematerial_destroy)释放返回对象。 |
+| .object | 系统材质对象。参数类型为[ArkUI_ImmersiveMaterialHandle](capi-arkui-nativemodule-arkui-immersivematerialhandle.md)。返回值中的ArkUI_ImmersiveMaterialHandle对象是指向静态成员的指针，因此禁止调用[OH_ArkUI_NativeModule_ImmersiveMaterial_Destroy](capi-native-material-h.md#oh_arkui_nativemodule_immersivematerial_destroy)释放返回对象。 |
 
 ## NODE_TRANSFORM_3D
 
@@ -1437,3 +1437,27 @@ NODE_TRANSFORM_3D = 128
 | 类型 | 说明 |
 | -- | -- |
 | .value[0...15].f32 | 16个浮点数，表示当前3D变换矩阵。 |
+
+## NODE_LINEAR_GRADIENT_BLUR
+
+```c
+NODE_LINEAR_GRADIENT_BLUR = 129
+```
+
+定义线性渐变模糊属性，支持属性设置，属性重置和属性获取接口。
+
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .object | 线性渐变模糊选项对象。参数类型为[OH_ArkUI_LinearGradientBlurOptions](capi-arkui-nativemodule-oh-arkui-lineargradientbluroptions.md)*。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .object | 线性渐变模糊选项对象。参数类型为[OH_ArkUI_LinearGradientBlurOptions](capi-arkui-nativemodule-oh-arkui-lineargradientbluroptions.md)*。返回值中的OH_ArkUI_LinearGradientBlurOptions对象是指向静态成员的指针，因此禁止调用[OH_ArkUI_NativeModule_LinearGradientBlurOptions_Destroy](capi-native-type-visual-h.md#oh_arkui_nativemodule_lineargradientbluroptions_destroy)释放返回对象。当属性未设置或已重置时，返回的对象包含默认值（blurRadius = 0，fractionStops = {0.0, 0.0, 0.0, 1.0}，direction = [OH_ARKUI_LINEAR_GRADIENT_BLUR_DIRECTION_BOTTOM](capi-native-type-visual-h.md#oh_arkui_lineargradientblurdirection)）。 |

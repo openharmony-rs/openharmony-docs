@@ -65,6 +65,8 @@ Use the **RunningLockType.BACKGROUND_USER_IDLE** running lock. The following is 
 
 2. Import the related modules.
 
+   <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/powermgr/RunningLock/entry/src/main/ets/pages/Index.ets) -->
+   
    ``` TypeScript
    // Import the runningLock and commonEventManager modules.
    import { runningLock } from '@kit.BasicServicesKit';
@@ -72,13 +74,14 @@ Use the **RunningLockType.BACKGROUND_USER_IDLE** running lock. The following is 
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
 
-3. Develop the common event utility class and running lock utility class.
+3. Develop the common event utility class(CommonEventHelper.ets) and running lock utility class(RunningLockUtil.ets).
 
+   <!-- @[common_event_utility_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/powermgr/RunningLock/entry/src/main/ets/pages/CommonEventHelper.ets) -->
+   
    ``` TypeScript
-   // CommonEventHelper.ets
    import { commonEventManager } from '@kit.BasicServicesKit';
    import { BusinessError } from '@kit.BasicServicesKit';
-
+   
    type SubscriberInfo = commonEventManager.CommonEventSubscribeInfo;
    type Subscriber = commonEventManager.CommonEventSubscriber;
    type EventData = commonEventManager.CommonEventData;
@@ -107,7 +110,7 @@ Use the **RunningLockType.BACKGROUND_USER_IDLE** running lock. The following is 
          return undefined;
        }
      }
-     
+   
      // Unsubscribe from a common event based on the input listener.
      public static async unsubscribeSystemCommonEvent(subscriber: Subscriber | undefined): Promise<boolean> {
        try {
@@ -127,21 +130,22 @@ Use the **RunningLockType.BACKGROUND_USER_IDLE** running lock. The following is 
      }
    }
    ```
+
+   <!-- @[running_lock_utility_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/powermgr/RunningLock/entry/src/main/ets/pages/RunningLockUtil.ets) -->
    
    ``` TypeScript
-   // RunningLockUtil.ets
    import { runningLock } from '@kit.BasicServicesKit';
-
+   
    // Running lock utility class, which is used to create, hold, and release a lock.
    export class RunningLockUtil {
      // Save the running lock object.
      public static recordLock: runningLock.RunningLock | undefined;
-
+   
      public static holdRunningLock(): void {
        // Use the isSupport API to check whether the current device supports the specified lock type.
        if (!runningLock.isSupported(runningLock.RunningLockType.BACKGROUND_USER_IDLE)) {
-           console.error('type BACKGROUND_USER_IDLE is not support in the device.');
-           return;
+         console.error('type BACKGROUND_USER_IDLE is not support in the device.');
+         return;
        }
        if (RunningLockUtil.recordLock) {
          try {
@@ -156,7 +160,7 @@ Use the **RunningLockType.BACKGROUND_USER_IDLE** running lock. The following is 
          RunningLockUtil.createRunningLockAndHold();
        }
      }
-
+   
      private static async createRunningLockAndHold(): Promise<void> {
        try {
          const lock = await runningLock.create(
@@ -191,17 +195,19 @@ Use the **RunningLockType.BACKGROUND_USER_IDLE** running lock. The following is 
    }
    ```
 
-4. Implement idle tasks of the background system required by services.
+4. Implement idle tasks of the background system required by services(UserIdleTask.ets).
+
+   <!-- @[Implement_Background_Idle_Tasks](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/powermgr/RunningLock/entry/src/main/ets/pages/UserIdleTask.ets) -->
+   
    ``` TypeScript
-   // UserIdleTask.ets
    import { CommonEventHelper } from './CommonEventHelper';
    import { RunningLockUtil } from './RunningLockUtil';
    import { commonEventManager } from '@kit.BasicServicesKit';
    
    // Idle task class. For details, see the following steps.
-   class UserIdleTask {
+   export class UserIdleTask {
      private static subscriber: Nullable<commonEventManager.CommonEventSubscriber> = undefined;
-     
+   
      // 1. Initialize the common event listening and other service processes. This example only completes the listening.
      public async init(): Promise<void> {
        if (UserIdleTask.subscriber === undefined) {
@@ -217,7 +223,7 @@ Use the **RunningLockType.BACKGROUND_USER_IDLE** running lock. The following is 
          );
        }
      }
-     
+   
      // 2. Execute the task after the lock is held. After the task is complete, release the lock.
      public runUserIdleTask(): void {
        RunningLockUtil.holdRunningLock();
@@ -225,7 +231,7 @@ Use the **RunningLockType.BACKGROUND_USER_IDLE** running lock. The following is 
        console.info('background user idle task run');
        RunningLockUtil.unholdRunningLock();
      }
-     
+   
      // 3. Implement the callback function for receiving the common event of entering or exiting the forced sleep mode.
      private onReceiveEvent(data: commonEventManager.CommonEventData): void {
        if (data?.event === commonEventManager.Support.COMMON_EVENT_ENTER_FORCE_SLEEP) {

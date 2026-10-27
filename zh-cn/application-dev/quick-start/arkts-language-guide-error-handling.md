@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "讲解ArkTS错误处理机制，涵盖try-catch-finally异常捕获、throw抛出错误、异步代码错误处理、错误恢复策略及断言函数的使用。"
+keywords: [ArkTS, 错误处理, try-catch-finally, throw, Error对象, 异步错误处理, 错误恢复, 断言函数]
+doctype: guide
+status: active
+---
+
 # 错误处理
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->

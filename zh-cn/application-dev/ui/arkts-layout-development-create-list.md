@@ -675,7 +675,7 @@ export struct StickyHeaderList {
 
 ![list18](figures/list18.gif)
 
-List组件初始化时，可以通过scroller参数绑定一个[Scroller](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#scroller)对象，进行列表的滚动控制。例如，用户在新闻应用中，点击新闻页面底部的返回顶部按钮时，就可以通过Scroller对象的scrollToIndex方法使列表滚动到指定的列表项索引位置。
+List组件初始化时，可以通过scroller参数绑定一个[Scroller](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#scroller)对象，进行列表的滚动控制。例如，用户在新闻应用中，点击新闻页面底部的返回顶部按钮时，就可以通过Scroller对象的scrollToIndex()方法使列表滚动到指定的列表项索引位置。
 
 首先，需要创建一个Scroller的对象listScroller。
 
@@ -1143,8 +1143,8 @@ ListItem() {
          if (isSelected) {
            this.selectedItems.push(new ToDo(this.toDoItem.name)); // this.selectedItems为勾选时，记录选中的列表项，可根据实际场景构造
          } else {
-            let index = this.selectedItems.findIndex(selectedItem => selectedItem.name === this.toDoItem.name);
-            if (index !== -1) {
+           let index = this.selectedItems.findIndex(selectedItem => selectedItem.name === this.toDoItem.name);
+           if (index !== -1) {
              this.selectedItems.splice(index, 1); // 取消勾选时，则将此项从selectedItems中删除
            }
          }
@@ -1686,7 +1686,7 @@ List({ space: 10 }) {
 
 ### 记录列表项选择结果
 
-在ListItem上配置[selectable](../reference/apis-arkui/arkui-ts/ts-container-listitem.md#selectable8)、[selected](../reference/apis-arkui/arkui-ts/ts-container-listitem.md#selected10)和[onSelect](../reference/apis-arkui/arkui-ts/ts-container-listitem.md#onselect8)。selectable用于设置列表项是否允许被选择，selected用于设置列表项当前是否被选中。滑动多选过程中，组件会触发onSelect回调，应用可以在回调中记录每个列表项的最新选择结果。
+在ListItem上配置[selectable](../reference/apis-arkui/arkui-ts/ts-container-listitem.md#selectable8)、[selected](../reference/apis-arkui/arkui-ts/ts-container-listitem.md#selected10)和[onSelect](../reference/apis-arkui/arkui-ts/ts-container-listitem.md#onselect8)。selectable用于设置列表项是否允许被选择，selected用于设置列表项当前是否被选中。滑动多选过程中，组件会触发onSelect()回调，应用可以在回调中记录每个列表项的最新选择结果。
 <!-- @[Add_list_item_select](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/ListSwipeSelect.ets) -->
 
 ``` TypeScript

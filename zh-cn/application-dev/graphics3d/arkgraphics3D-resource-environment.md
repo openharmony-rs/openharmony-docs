@@ -3,7 +3,7 @@
 <!--Subsystem: Graphics-->
 <!--Owner: @jason_stark-->
 <!--Designer: @zdustc-->
-<!--Tester: @zhangyue283-->
+<!--Tester: @dongchao01-->
 <!--Adviser: @ge-yafang-->
 
 环境（Environment）：用于定义3D场景背景，可基于图片创建。它将环境贴图映射到立方体或球体表面（如等距柱状投影），以模拟真实环境背景；同时提供基于图像的光照（Image-Based Lighting，IBL），通过间接漫反射等方式影响物体环境光照，使物体更自然地融入场景，提升渲染真实感。

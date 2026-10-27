@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍如何通过OH_JSVM_CreateCodeCache生成并复用代码缓存，避免重复解析编译JS脚本以加速编译，并说明cache的完整性、兼容性、一致性校验规格。"
+keywords: [OH_JSVM_CreateCodeCache, OH_JSVM_CompileScript, OH_JSVM_RunScript, 代码缓存, 加速编译, cache校验, 编译性能]
+doctype: guide
+status: active
+---
+
 # 使用code cache加速编译
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->

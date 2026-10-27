@@ -91,9 +91,9 @@ struct WebComponent {
 
 使用[cacheMode](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#cachemode)配置页面资源的缓存模式，Web组件为开发者提供四种缓存模式，分别为：
 
-- Default：优先使用未过期的缓存。如果缓存不存在，则从网络获取。
-
-- None：加载资源使用缓存。如果缓存中无该资源，则从网络中获取。
+- Default：优先使用未过期缓存来加载资源。如果缓存不存在，则从网络获取。
+ 
+- None：优先使用（含过期的）缓存来加载资源。如果缓存中无该资源，则从网络中获取。
 
 - Online：加载资源不使用缓存。全部从网络中获取。
 

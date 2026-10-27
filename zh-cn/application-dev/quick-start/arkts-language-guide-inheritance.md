@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "讲解ArkTS通过extends实现的单继承机制，涵盖成员继承、方法重写、继承中的构造函数、原型链及implements子句的注意事项。"
+keywords: [ArkTS, 继承, extends, 方法重写, super, 构造函数, 原型链, implements, 代码复用]
+doctype: guide
+status: active
+---
+
 # 继承
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->

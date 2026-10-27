@@ -1982,7 +1982,7 @@ connection.clearCustomDnsRules().then(() => {
 
 setPacFileUrl(pacFileUrl: string): void
 
-设置PAC脚本（Proxy Auto-Configuration Script，代理自动配置脚本）的URL地址，并启动PAC代理能力，比如：http://127.0.0.1:21998/PacProxyScript.pac 。可通过调用[findProxyForUrl](#connectionfindproxyforurl20)解析URL地址来获取代理信息。
+设置PAC脚本（Proxy Auto-Configuration Script，代理自动配置脚本）的URL地址，并启动PAC代理能力，比如：`http://127.0.0.1:21998/PacProxyScript.pac`。可通过调用[findProxyForUrl](#connectionfindproxyforurl20)解析URL地址来获取代理信息。
 
 >**说明：** 
 >
@@ -3866,7 +3866,7 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 | 名称    | 类型   | 只读|可选 |说明                      |
 | ------ | ------ | --- |---|------------------------- |
 | netHandle            | [NetHandle](#nethandle)               | 否 | 否   |网络句柄。   |
-| blocked              | boolean                               | 否 | 否   | 标识当前网络是否是堵塞状态。true：标识当前网络是堵塞状态；false：标识当前网络不是堵塞状态。 |
+| blocked              | boolean                               | 否 | 否   | 标识当前网络是否是阻塞状态。true：标识当前网络是阻塞状态；false：标识当前网络不是阻塞状态。 |
 
 ## ConnectionProperties
 

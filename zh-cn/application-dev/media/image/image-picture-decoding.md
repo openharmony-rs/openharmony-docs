@@ -164,7 +164,7 @@ Picture和PixelMap是两种不同的图片解码对象，适用于不同的场�
    <!-- @[create_picture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
    
    ``` TypeScript
-   async createPicture(imageSource : image.ImageSource | undefined, isReturnAux: Boolean)
+   async createPicture(imageSource : image.ImageSource | undefined, isReturnAux: boolean)
      : Promise<image.PixelMap | undefined | image.Picture> {
      // 配置解码选项参数。
      let options: image.DecodingOptionsForPicture = {

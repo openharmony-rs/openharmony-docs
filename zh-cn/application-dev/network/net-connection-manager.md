@@ -342,13 +342,12 @@ function socketTest() {
                   }
                 }
               });
+            // 获取netHandle对应的网络的连接信息。需在获取到有效netHandle后调用。
+            connection.getConnectionProperties(netHandleInfo).then((data: connection.ConnectionProperties) => {
+              hilog.info(0x0000, 'testTag', 'getConnectionProperties get data: ' + JSON.stringify(data));
+            })
           }
         });
-    
-        // 获取netHandle对应的网络的连接信息。
-        connection.getConnectionProperties(netHandleInfo).then((data: connection.ConnectionProperties) => {
-          hilog.info(0x0000, 'testTag', 'getConnectionProperties get data: ' + JSON.stringify(data));
-        })
       // ...
     ```
     
@@ -456,7 +455,7 @@ function socketTest() {
     import { hilog } from '@kit.PerformanceAnalysisKit';
     // ...
           // 使用默认网络解析主机名以获取所有IP地址
-          connection.getAddressesByName('xxxx').then((data: connection.NetAddress[]) => {
+          connection.getAddressesByName('www.example.com').then((data: connection.NetAddress[]) => {
             hilog.info(0x0000, 'testTag', 'Successfully retrieved default network IP address: ' + JSON.stringify(data));
             // ...
           })

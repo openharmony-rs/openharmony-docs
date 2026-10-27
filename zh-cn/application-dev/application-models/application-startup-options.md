@@ -503,7 +503,7 @@ export default class HideStartedUIAbilityAbility extends UIAbility {
   // ...
 
   onForeground(): void {
-    // Ability has brought to foreground
+    // Ability切到前台
     hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onForeground');
 
     let want: Want = {
@@ -579,7 +579,7 @@ export default class SetBackgroundColorAbility extends UIAbility {
   // ...
 
   async onForeground(): Promise<void> {
-    // Ability has brought to foreground
+    // Ability切到前台
     hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onForeground');
 
     let want: Want = {
@@ -658,7 +658,7 @@ export default class GetLaunchResultAbility extends UIAbility {
   // ...
 
   onForeground(): void {
-    // Ability has brought to foreground
+    // Ability切到前台
     hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onForeground');
 
     let want: Want = {
@@ -729,7 +729,7 @@ export default class HideSplashScreenAbility extends UIAbility {
   // ...
 
   onForeground(): void {
-    // Ability has brought to foreground
+    // Ability切到前台
     hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onForeground');
 
     let want: Want = {
@@ -785,7 +785,7 @@ export default class SetBackgroundColorAbility extends UIAbility {
   // ...
 
   async onForeground(): Promise<void> {
-    // Ability has brought to foreground
+    // Ability切到前台
     hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onForeground');
 
     let want: Want = {

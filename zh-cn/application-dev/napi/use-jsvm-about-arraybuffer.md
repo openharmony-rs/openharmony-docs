@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍如何使用JSVM-API创建ArrayBuffer二进制缓冲区，获取底层数据指针与长度，执行Detach分离操作并判断分离状态。"
+keywords: [OH_JSVM_CreateArraybuffer, OH_JSVM_GetArraybufferInfo, OH_JSVM_DetachArraybuffer, OH_JSVM_IsArraybuffer, OH_JSVM_IsDetachedArraybuffer, ArrayBuffer, 二进制数据缓冲区, TypedArray, DataView]
+doctype: guide
+status: active
+---
+
 # 使用JSVM-API接口进行ArrayBuffer相关开发
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
@@ -145,6 +153,8 @@ JSVM IsArrayBuffer: 1
 
 调用 ArrayBuffer 对象的 Detach 操作。
 
+示例代码与OH_JSVM_IsDetachedArraybuffer合并展示，请参考下文[OH_JSVM_IsDetachedArraybuffer](#oh_jsvm_isdetachedarraybuffer)中的`DetachArraybuffer`方法。
+
 ### OH_JSVM_IsDetachedArraybuffer
 
 检查给定的 ArrayBuffer 是否已被分离。
@@ -187,7 +197,7 @@ static JSVM_Value IsDetachedArraybuffer(JSVM_Env env, JSVM_CallbackInfo info)
         OH_LOG_ERROR(LOG_APP, "JSVM IsDetachedArraybuffer: failed");
     } else {
         OH_LOG_INFO(LOG_APP, "JSVM IsDetachedArraybuffer: success");
-        OH_LOG_INFO(LOG_APP, "JSVM IsArrayBuffer: %{public}d", result);
+        OH_LOG_INFO(LOG_APP, "JSVM IsDetachedArraybuffer: %{public}d", result);
     }
     JSVM_Value isDetached = nullptr;
     OH_JSVM_GetBoolean(env, result, &isDetached);
@@ -216,7 +226,7 @@ isDetachedArraybuffer(arrayBuffer);
 ```txt
 JSVM DetachArraybuffer: success
 JSVM IsDetachedArraybuffer: success
-JSVM IsArrayBuffer: 1
+JSVM IsDetachedArraybuffer: 1
 ```
 
 ### OH_JSVM_CreateArraybuffer

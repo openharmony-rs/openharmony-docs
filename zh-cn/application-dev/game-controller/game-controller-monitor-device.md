@@ -48,15 +48,19 @@ Game Controller Kit提供设备上下线事件监听和查询在线设备信息�
 
 ### 链接动态库
 
-```c
+<!-- @[link_game_controller_libs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/GameControllerKit/NdkGameControllerDemo/entry/src/main/cpp/CMakeLists.txt) -->
+
+``` Text
 target_link_libraries(entry PUBLIC libohgame_controller.z.so)
 ```
 
 
 ### 导入模块
 
-```c
-#include <GameControllerKit/game_device.h>
+<!-- @[header_include_game_device](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/GameControllerKit/NdkGameControllerDemo/entry/src/main/cpp/device_api.cpp) -->
+
+``` C++
+#include "GameControllerKit/game_device.h"
 ```
 
 
@@ -64,21 +68,22 @@ target_link_libraries(entry PUBLIC libohgame_controller.z.so)
 
 调用[OH_GameDevice_RegisterDeviceMonitor](../reference/apis-game-controller-kit/capi-game-device-h.md#oh_gamedevice_registerdevicemonitor)接口注册设备状态变化监听，获取设备上下线的回调通知。
 
-```c
-napi_value DeviceApi::RegisterDeviceMonitor(napi_env env, napi_callback_info info) {
-    napi_value result;
+<!-- @[register_device_monitor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/GameControllerKit/NdkGameControllerDemo/entry/src/main/cpp/device_api.cpp) -->
+
+``` C++
+int32_t DeviceApi::RegisterDeviceMonitor()
+{
     GameController_ErrorCode errorCode = OH_GameDevice_RegisterDeviceMonitor(DeviceApi::OnDeviceChanged);
     if (errorCode != GameController_ErrorCode::GAME_CONTROLLER_SUCCESS) {
         OH_LOG_ERROR(LOG_APP, "RegisterDeviceMonitor Failed, %{public}d", errorCode);
-        napi_create_double(env, errorCode, &result);
-        return result;
+        return static_cast<int32_t>(errorCode);
     }
     OH_LOG_INFO(LOG_APP, "RegisterDeviceMonitor Success");
-    napi_create_double(env, 0, &result);
-    return result;
+    return 0;
 }
 
-void DeviceApi::OnDeviceChanged(const struct GameDevice_DeviceEvent *deviceEvent) {
+void DeviceApi::OnDeviceChanged(const struct GameDevice_DeviceEvent *deviceEvent)
+{
     GameDevice_StatusChangedType type;
     OH_GameDevice_DeviceEvent_GetChangedType(deviceEvent, &type);
     GameDevice_DeviceInfo *deviceInfo;
@@ -95,18 +100,18 @@ void DeviceApi::OnDeviceChanged(const struct GameDevice_DeviceEvent *deviceEvent
 
 如果不再需要订阅，可以调用[OH_GameDevice_UnregisterDeviceMonitor](../reference/apis-game-controller-kit/capi-game-device-h.md#oh_gamedevice_unregisterdevicemonitor)接口取消设备状态变化事件的监听。
 
-```c
-napi_value DeviceApi::UnregisterDeviceMonitor(napi_env env, napi_callback_info info) {
-    napi_value result;
+<!-- @[unregister_device_monitor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/GameControllerKit/NdkGameControllerDemo/entry/src/main/cpp/device_api.cpp) -->
+
+``` C++
+int32_t DeviceApi::UnregisterDeviceMonitor()
+{
     GameController_ErrorCode errorCode = OH_GameDevice_UnregisterDeviceMonitor();
     if (errorCode != GameController_ErrorCode::GAME_CONTROLLER_SUCCESS) {
         OH_LOG_ERROR(LOG_APP, "UnregisterDeviceMonitor Failed, %{public}d", errorCode);
-        napi_create_double(env, errorCode, &result);
-        return result;
+        return static_cast<int32_t>(errorCode);
     }
     OH_LOG_INFO(LOG_APP, "UnregisterDeviceMonitor Success");
-    napi_create_double(env, 0, &result);
-    return result;
+    return 0;
 }
 ```
 
@@ -115,64 +120,75 @@ napi_value DeviceApi::UnregisterDeviceMonitor(napi_env env, napi_callback_info i
 
 调用[OH_GameDevice_GetAllDeviceInfos](../reference/apis-game-controller-kit/capi-game-device-h.md#oh_gamedevice_getalldeviceinfos)接口，查询所有在线游戏设备的信息。
 
-```c
-GameController_ErrorCode DeviceApi::DoQueryAllDeviceInfos() {
-    GameDevice_AllDeviceInfos *gameDevice_AllDeviceInfos;
-    // 查询所有在线设备
-    GameController_ErrorCode errorCode = OH_GameDevice_GetAllDeviceInfos(&gameDevice_AllDeviceInfos);
+<!-- @[query_all_device_infos](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/GameControllerKit/NdkGameControllerDemo/entry/src/main/cpp/device_api.cpp) -->
+
+``` C++
+GameController_ErrorCode DeviceApi::DoQueryAllDeviceInfos()
+{
+    GameDevice_AllDeviceInfos *gameDeviceAllDeviceInfos;
+    
+    // Query all online devices.
+    GameController_ErrorCode errorCode = OH_GameDevice_GetAllDeviceInfos(&gameDeviceAllDeviceInfos);
     if (errorCode != GameController_ErrorCode::GAME_CONTROLLER_SUCCESS) {
         OH_LOG_ERROR(LOG_APP, "GetAllDeviceInfos Failed, %{public}d", errorCode);
+        Log::GetInstance()->PrintLog("GetAllDeviceInfos Failed, errorCode: " + std::to_string(errorCode));
         return errorCode;
     }
-    // 依次获取设备信息
+    
+    // Obtain device info one by one.
     int count;
-    OH_GameDevice_AllDeviceInfos_GetCount(gameDevice_AllDeviceInfos, &count);
+    OH_GameDevice_AllDeviceInfos_GetCount(gameDeviceAllDeviceInfos, &count);
     Log::GetInstance()->PrintLog("GetAllDeviceInfos Success, the count is " + std::to_string(count));
     for (int idx = 0; idx < count; idx++) {
         GameDevice_DeviceInfo *deviceInfo;
-        errorCode = OH_GameDevice_AllDeviceInfos_GetDeviceInfo(gameDevice_AllDeviceInfos, idx, &deviceInfo);
+        errorCode = OH_GameDevice_AllDeviceInfos_GetDeviceInfo(gameDeviceAllDeviceInfos, idx, &deviceInfo);
         if (errorCode != GameController_ErrorCode::GAME_CONTROLLER_SUCCESS) {
             OH_LOG_ERROR(LOG_APP, "OH_GameDevice_AllDeviceInfos_GetDeviceInfo Failed, %{public}d", errorCode);
+            Log::GetInstance()->PrintLog("OH_GameDevice_AllDeviceInfos_GetDeviceInfo Failed, errorCode: " +
+                                         std::to_string(errorCode));
+            OH_GameDevice_DestroyAllDeviceInfos(&gameDeviceAllDeviceInfos);
             return errorCode;
         }
         std::string temp = GetDeviceInfoStringForPrint(deviceInfo);
-        Log::GetInstance()->PrintLog("AllDeviceInfos[" + std::to_string(idx) + "]" + temp);
+        Log::GetInstance()->PrintLog("AllDeviceInfos[" + std::to_string(idx) + "] " + temp);
         OH_LOG_INFO(LOG_APP, "AllDeviceInfos[%{public}d] DeviceInfo: %{public}s", idx, temp.c_str());
         OH_GameDevice_DestroyDeviceInfo(&deviceInfo);
     }
-    // 销毁指向设备查询结果的指针
-    OH_GameDevice_DestroyAllDeviceInfos(&gameDevice_AllDeviceInfos);
+    
+    // Destroy the pointer to the device query result.
+    OH_GameDevice_DestroyAllDeviceInfos(&gameDeviceAllDeviceInfos);
     OH_LOG_INFO(LOG_APP, "GetAllDeviceInfos Success");
     return errorCode;
 }
 
-std::string DeviceApi::GetDeviceInfoStringForPrint(GameDevice_DeviceInfo *deviceInfo) {
-    // 获取设备信息
+std::string DeviceApi::GetDeviceInfoStringForPrint(GameDevice_DeviceInfo *deviceInfo)
+{
+    // Obtain device info
     std::string log;
-    char *deviceId = NULL;
+    char *deviceId = nullptr;
     OH_GameDevice_DeviceInfo_GetDeviceId(deviceInfo, &deviceId);
     log.append("deviceId:").append(deviceId);
     free(deviceId);
-    char *name = NULL;
+    char *name = nullptr;
     OH_GameDevice_DeviceInfo_GetName(deviceInfo, &name);
-    log.append(",name:").append(name);
+    log.append(", name:").append(name);
     free(name);
     int vendor;
     OH_GameDevice_DeviceInfo_GetVendor(deviceInfo, &vendor);
-    log.append(",vendor:").append(std::to_string(vendor));
+    log.append(", vendor:").append(std::to_string(vendor));
     int product;
     OH_GameDevice_DeviceInfo_GetProduct(deviceInfo, &product);
-    log.append(",product:").append(std::to_string(product));
+    log.append(", product:").append(std::to_string(product));
     int version;
     OH_GameDevice_DeviceInfo_GetVersion(deviceInfo, &version);
-    log.append(",version:").append(std::to_string(version));
-    char *physicalAddress = NULL;
+    log.append(", version:").append(std::to_string(version));
+    char *physicalAddress = nullptr;
     OH_GameDevice_DeviceInfo_GetPhysicalAddress(deviceInfo, &physicalAddress);
-    log.append(",physicalAddress:").append(physicalAddress);
+    log.append(", physicalAddress:").append(physicalAddress);
     free(physicalAddress);
     GameDevice_DeviceType type;
     OH_GameDevice_DeviceInfo_GetDeviceType(deviceInfo, &type);
-    log.append(",type:").append(std::to_string(type));
+    log.append(", type:").append(std::to_string(type));
     return log;
 }
 ```

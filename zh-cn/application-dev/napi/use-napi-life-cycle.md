@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍使用Node-API接口进行生命周期相关开发，包括scope管理napi_value生命周期、napi_ref引用管理延长对象生命周期、垃圾回收回调等，避免内存泄漏和use-after-free。"
+keywords: [Node-API, 生命周期, napi_value, napi_ref, handle_scope, 作用域管理, 引用管理, 垃圾回收, escapable_scope]
+doctype: guide
+status: active
+---
+
 # 使用Node-API接口进行生命周期相关开发
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
@@ -60,7 +68,7 @@ import testNapi from 'libentry.so';
 
 ### napi_open_handle_scope、napi_close_handle_scope
 
-通过接口napi_open_handle_scope创建一个上下文环境，并使用napi_close_handle_scope进行关闭。这组接口用于管理ArkTS对象的生命周期，确保在Node-API模块代码处理ArkTS对象时能够正确地管理其句柄，以避免出现对象错误回收的问题。  
+通过接口napi_open_handle_scope创建一个napi_handle_scope，并使用napi_close_handle_scope进行关闭。这组接口用于管理ArkTS对象的生命周期，确保在Node-API模块代码处理ArkTS对象时能够正确地管理其句柄，以避免出现对象错误回收的问题。  
 
 需要注意的是，接口仅支持单层嵌套的scope结构。在任何时刻，只有一个scope处于活动状态，所有新创建的handles都将与该scope相关联。scope必须按照与打开顺序相反的顺序关闭。此外，在native方法中创建的所有scope必须在该方法返回之前被关闭。
 
@@ -123,7 +131,6 @@ static napi_value HandleScope(napi_env env, napi_callback_info info)
 
 接口声明
 
-index.d.ts
 <!-- @[napi_open_close_handle_scope_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ``` TypeScript
@@ -226,7 +233,6 @@ static napi_value EscapableHandleScopeTest(napi_env env, napi_callback_info info
 
 接口声明
 
-index.d.ts
 <!-- @[napi_open_close_escapable_handle_scope_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ``` TypeScript
@@ -336,8 +342,6 @@ static napi_value GetWeakReferenceValue(napi_env env, napi_callback_info info)
 
 接口声明
 
-// index.d.ts
-
 ``` TypeScript
 export const createWeakReference: () => void;
 
@@ -351,7 +355,7 @@ try {
     testNapi.createWeakReference();
     hilog.info(0x0000, 'testTag', 'reference test: %{public}s', testNapi.getWeakReferenceValue());
 } catch (error) {
-    hilog.error(0x0000, 'testTag', `调用错误：${error.message}`);
+    hilog.error(0x0000, 'testTag', `call error: ${error.message}`);
 }
 ```
 
@@ -425,8 +429,6 @@ static napi_value CleanupStrongReference(napi_env env, napi_callback_info info) 
 ```
 
 接口声明
-
-// index.d.ts
 
 ``` TypeScript
 export const createStrongReference: () => void;
@@ -593,7 +595,6 @@ static napi_value DeleteReference(napi_env env, napi_callback_info info)
 
 接口声明
 
-// index.d.ts
 <!-- @[napi_create_delete_reference_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ``` TypeScript
@@ -665,7 +666,6 @@ static napi_value GetGlobalHandleCount(napi_env env, napi_callback_info info)
 
 接口声明
 
-// index.d.ts
 <!-- @[napi_get_global_handle_count](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ``` TypeScript

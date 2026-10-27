@@ -6,7 +6,8 @@
 <!--Designer: @guxinggang; @liweilu1-->
 <!--Tester: @wangbeibei; @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=b4558baf2653dbc4e06627859cd656768663a602 translatedAt=2026-06-23T07:33:02.850Z pushedAt=2026-06-23T09:25:46.751Z -->
+
+The **PhotoAccessHelper** interface provides access management capabilities for image and video resources. It allows you to obtain, create, and delete media assets, manage albums, and listen for asset changes.
 
 > **NOTE**
 >
@@ -45,10 +46,11 @@ In API version 13 and earlier versions, if the caller does not have the required
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 201     | Permission denied.         |
-| 13900020     | Invalid argument.         |
-| 14000011       | System inner fail.         |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. <br> Applicable versions: 12+ |
+| 13900012     | Permission denied. <br> Applicable versions: 10 to 11        |
+| 13900020 | Invalid parameter. Possible causes:<br>1. System internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs<br>2. The number of arguments is invalid.<br>3. The argument list is empty.<br>4. The object is not a valid instance.<br>5. PhotoAccessHelper object is not a valid instance obtained through the proper API.<br>6. The callback parameter type does not match, expected AsyncCallback.<br>7. Invalid fetchColumns: contains unknown column name. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. The FetchOptions parameter is invalid, the predicates property is not a valid data predicates object.<br>2. The predicates in FetchOptions contain invalid content or operations, please check if the predicates are valid.<br>3. The fetchColumns in FetchOptions contain invalid column names, please refer to PhotoKeys for valid column names.<br>4. Database query failed, possible causes: <br>(1) Database exception; <br>(2) IPC timeout. Please retry and check logs.<br>5. Query returned an empty result set. |
 
 **Example**
 
@@ -66,6 +68,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   };
 
   phAccessHelper.getAssets(fetchOptions, async (err, fetchResult) => {
+    if (err) {
+      console.error(`fetchResult fail with error: ${err.code}, ${err.message}`);
+      return;
+    }
     if (fetchResult !== undefined) {
       console.info('fetchResult success');
       let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
@@ -113,7 +119,8 @@ In API version 13 and earlier versions, if the caller does not have the required
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201     | Permission denied.         |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.<br> Applicable versions: 20+  |
+| 13900012     | Permission denied. <br> Applicable versions: 10 to 19        |
 | 13900020     | Invalid argument.         |
 | 14000011       | System inner fail.         |
 
@@ -177,8 +184,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201   | Permission denied.         |
-| 14000011       | Internal system error.         |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. Failed to check predicates property.<br>2. Failed to get predicates property.<br>3. The object is not a valid instance.<br>4. The predicates parameter is invalid, not of predicates type.<br>5. Invalid predicate, please check the predicates in FetchOptions content or operation.<br>6. Failed to parse fetchColumns array.<br>7. Failed to create boolean result.<br>8. Sandbox query failed: internal error.<br>9. File operation failed.<br>10. Failed to parse arguments for getBurstAssets. |
 
 **Example**
 
@@ -243,10 +250,11 @@ In API version 13 and earlier versions, if the caller does not have the required
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 201     | Permission denied.         |
-| 13900020     | Invalid argument.         |
-| 14000011       | System inner fail.         |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. <br> Applicable versions: 11+   |
+| 13900012     | Permission denied. <br> Applicable version: 10        |
+| 13900020 | Invalid parameter. Possible causes:<br>1. System internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs.<br>2. The number of arguments is invalid.<br>3. The argument list is empty.<br>4. The object is not a valid instance.<br>5. PhotoAccessHelper object is not a valid instance obtained through the proper API.<br>6. The callback parameter type does not match, expected AsyncCallback.<br>7. Failed to get the photoType parameter, please check the parameter type.<br>8. The photoType parameter is not a valid number type.<br>9. Invalid file type, must be IMAGE or VIDEO.<br>10. Failed to parse the extension parameter, please check if it is a valid string.<br>11. Failed to get the options parameter type, please check if it is an object.<br>12. Failed to parse CreateOptions, please check the options parameter.<br>13. Server returned an invalid argument error.<br>14. Failed to get the photoType parameter. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. The photoType parameter is not a valid PhotoType enum value, must be IMAGE or VIDEO.<br>2. The extension parameter is not a valid string, please check if it is a valid file extension.<br>3. The options parameter is invalid, please check if it is a valid CreateOptions object.<br>4. Failed to create the asset, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs. |
 
 **Example**
 
@@ -301,10 +309,11 @@ In API version 13 and earlier versions, if the caller does not have the required
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 201     | Permission denied.         |
-| 13900020     | Invalid argument.         |
-| 14000011       | System inner fail.         |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. <br> Applicable versions: 11+  |
+| 13900012     | Permission denied. <br> Applicable version: 10        |
+| 13900020 | Invalid parameter. Possible causes:<br>1. System internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs<br>2. The number of arguments is invalid.<br>3. The argument list is empty.<br>4. The object is not a valid instance.<br>5. PhotoAccessHelper object is not a valid instance obtained through the proper API.<br>6. The callback parameter type does not match, expected AsyncCallback.<br>7. Failed to get the photoType parameter, please check the parameter type.<br>8. The photoType parameter is not a valid number type.<br>9. Invalid file type, must be IMAGE or VIDEO.<br>10. Failed to parse the extension parameter, please check if it is a valid string.<br>11. Failed to get parameter type, please check the parameter.<br>12. Failed to get the photoType parameter.<br>13. Server returned an invalid argument error. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. The photoType parameter is not a valid PhotoType enum value, must be IMAGE or VIDEO.<br>2. The extension parameter is not a valid string, please check if it is a valid file extension.<br>3. Failed to create the asset, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs. |
 
 **Example**
 
@@ -362,10 +371,11 @@ In API version 13 and earlier versions, if the caller does not have the required
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 201     | Permission denied.         |
-| 13900020     | Invalid argument.         |
-| 14000011       | System inner fail.         |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. <br> Applicable versions: 11+ |
+| 13900012     | Permission denied. <br> Applicable version: 10        |
+| 13900020 | Invalid parameter. Possible causes:<br>1. System internal error. Possible: (1) File system exception; (2) IPC timeout. Please retry and check logs<br>2. The number of arguments is invalid.<br>3. The argument list is empty.<br>4. The object is not a valid instance.<br>5. PhotoAccessHelper object is not a valid instance obtained through the proper API.<br>6. The callback parameter type does not match, expected AsyncCallback.<br>7. Failed to get the photoType parameter, please check the parameter type.<br>8. The photoType parameter is not a valid number type.<br>9. Invalid file type, must be IMAGE or VIDEO.<br>10. Failed to parse the extension parameter, please check if it is a valid string.<br>11. Failed to get the options parameter type, please check if it is an object.<br>12. Failed to parse CreateOptions, please check the options parameter.<br>13. Server returned an invalid argument error.<br>14. Failed to get the photoType parameter. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. The photoType parameter is not a valid PhotoType enum value, must be IMAGE or VIDEO.<br>2. The extension parameter is not a valid string, please check if it is a valid file extension.<br>3. The options parameter is invalid, please check if it is a valid CreateOptions object.<br>4. Failed to create the asset, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs. |
 
 **Example**
 
@@ -410,7 +420,7 @@ If you do not have the **ohos.permission.WRITE_IMAGEVIDEO** permission, you can 
 | Name  | Type                    | Mandatory| Description                     |
 | -------- | ------------------------ | ---- | ------------------------- |
 | photoType  | [PhotoType](arkts-apis-photoAccessHelper-e.md#phototype)        | Yes  | Type of the file to be created. For example, **IMAGE** or **VIDEO**.             |
-| extension  | string        | Yes  | File name extension. For example, **'jpg'**.             |
+| extension  | string        | Yes  | File name extension. For example, **jpg**, **png**, or **mp4**.|
 | title | string | No  | Title of the image or video resource.    |
 
 **Return value**
@@ -425,9 +435,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 23800151 | The scenario parameter verification fails.Possible causes: 1. The extension format is unsupported. 2. Title contains unsupported character, such as . .. \ / : * ? " ' ` < > \| { } [ ]. 3. The title is an empty string 4. The total length of title and extension is more than 255. |
-| 23800301 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2.The file system is abnormal; 3. The IPC request timed out. |
+| 23800301 | MediaLibrary inner fail. Possible causes:<br>Server returned an invalid argument error. |
 
 **Example**
 
@@ -478,10 +488,11 @@ In API version 13 and earlier versions, if the caller does not have the required
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 201     | Permission denied.         |
-| 13900020     | Invalid argument.         |
-| 14000011       | System inner fail.         |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. <br> Applicable versions: 12+|
+| 13900012     | Permission denied. <br> Applicable versions: 10 to 11        |
+| 13900020 | Invalid parameter. Possible causes:<br>1. The number of parameters is invalid, expected 0 to 4 parameters.<br>2. The callback parameter must be of type AsyncCallback.<br>3. The type parameter must be a number.<br>4. The type must be a valid AlbumType (USER, SYSTEM, SMART, or SOURCE).<br>5. The subtype parameter must be a number.<br>6. The subtype must be a valid AlbumSubtype.<br>7. The fetchColumns contain invalid column names. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. The type parameter is not a valid number, must be a valid AlbumType enum value.<br>2. The subtype parameter is not a valid number, must be a valid AlbumSubtype enum value.<br>3. The FetchOptions parameter is invalid, the predicates contain invalid content or the fetchColumns contain unknown column names.<br>4. System internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs.<br>5. The query result is empty, the IPC or database query returned no albums (not caused by permission or system app errors). |
 
 **Example**
 
@@ -539,14 +550,13 @@ Before the operation, ensure that the albums to obtain exist.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](../apis-core-file-kit/errorcode-filemanagement.md).
 
-In API version 13 and earlier versions, if the caller does not have the required permission, error code 13900012 is returned. Starting from API version 14, the same situation raises error code 201.
-
 | ID| Error Message|
 | -------- | ---------------------------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 201     | Permission denied.         |
-| 13900020     | Invalid argument.         |
-| 14000011       | System inner fail.         |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.  <br> Applicable versions: 12+ |
+| 13900012     | Permission denied. <br> Applicable versions: 10 to 11        |
+| 13900020 | Invalid parameter. Possible causes:<br>1. The number of parameters is invalid, expected 0 to 4 parameters.<br>2. The callback parameter must be of type AsyncCallback.<br>3. The type parameter must be a number.<br>4. The type must be a valid AlbumType (USER, SYSTEM, SMART, or SOURCE).<br>5. The subtype parameter must be a number.<br>6. The subtype must be a valid AlbumSubtype. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. The type parameter is not a valid number, must be a valid AlbumType enum value.<br>2. The subtype parameter is not a valid number, must be a valid AlbumSubtype enum value.<br>3. The query result is empty, the IPC or database query returned no albums (not caused by permission or system app errors).<br>4. System internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs. |
 
 **Example**
 
@@ -606,10 +616,11 @@ If error code 13900012 is returned, follow the instructions provided in [Before 
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 201     | Permission denied.         |
-| 13900020     | Invalid argument.         |
-| 14000011       | System inner fail.         |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. <br> Applicable versions: 12+|
+| 13900012     | Permission denied. <br> Applicable versions: 10 to 11        |
+| 13900020 | Invalid parameter. Possible causes:<br>1. The number of parameters is invalid, expected 0 to 4 parameters.<br>2. The callback parameter must be of type AsyncCallback.<br>3. The type parameter must be a number.<br>4. The type must be a valid AlbumType (USER, SYSTEM, SMART, or SOURCE).<br>5. The subtype parameter must be a number.<br>6. The subtype must be a valid AlbumSubtype.<br>7. The fetchColumns contain invalid column names. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. The type parameter is not a valid number, must be a valid AlbumType enum value.<br>2. The subtype parameter is not a valid number, must be a valid AlbumSubtype enum value.<br>3. The FetchOptions parameter is invalid, the predicates contain invalid content or the fetchColumns contain unknown column names.<br>4. System internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs.<br>5. The query result is empty, the IPC or database query returned no albums (not caused by permission or system app errors). |
 
 **Example**
 
@@ -666,9 +677,9 @@ If error code 13900012 is returned, follow the instructions provided in [Before 
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 13900012     | Permission denied.         |
-| 13900020     | Invalid argument.         |
+| 13900020 | Invalid parameter. Possible causes:<br>1. The number of parameters is invalid, expected 3 parameters.<br>2. The uri parameter must be a string.<br>3. The forChildUris parameter must be a boolean.<br>4. The callback parameter must be a function.<br>5. The uri string extraction failed.<br>6. The forChildUris boolean value extraction failed.<br>7. The callback is already registered for this uri, duplicate registration is not allowed.<br>8. The object is not a valid instance. |
 
 **Example**
 
@@ -676,6 +687,7 @@ For details about how to create a phAccessHelper instance, see the example provi
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context) {
   console.info('registerChangeDemo');
@@ -688,7 +700,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
   let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
   if (photoAsset !== undefined) {
     console.info('photoAsset.displayName : ' + photoAsset.displayName);
-  }
+    } else {
+      console.error('photoAsset is undefined');
+      return;
+    }
   let onCallback1 = (changeData: photoAccessHelper.ChangeData) => {
       console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
     // file had changed, do something.
@@ -710,7 +725,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 unRegisterChange(uri: string, callback?: Callback&lt;ChangeData&gt;): void
 
-Unregisters listening for the specified URI. Multiple callbacks can be registered for a URI for listening. You can use this API to unregister the listening of the specified callbacks or all callbacks.
+Unregisters a listener for the specified URI. Multiple listeners can be registered for a URI. If multiple listeners are registered, you can unregister a specific listener by specifying **callback**. Alternatively, you can unregister all of them without specifying **callback**.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -729,9 +744,9 @@ If error code 13900012 is returned, follow the instructions provided in [Before 
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 13900012     | Permission denied.         |
-| 13900020     | Invalid argument.         |
+| 13900020 | Invalid parameter. Possible causes:<br>1. The number of parameters is invalid, expected 1 or 2 parameters.<br>2. The uri parameter must be a string.<br>3. The uri string extraction failed.<br>4. The callback parameter must be a function.<br>5. The object is not a valid instance. |
 
 **Example**
 
@@ -751,7 +766,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
   let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
   if (photoAsset !== undefined) {
     console.info('photoAsset.displayName : ' + photoAsset.displayName);
-  }
+    } else {
+      console.error('photoAsset is undefined');
+      return;
+    }
   let onCallback1 = (changeData: photoAccessHelper.ChangeData) => {
     console.info('onCallback1 on');
   }
@@ -800,9 +818,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201   | Permission denied.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 14000011  | System inner fail.     |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. The mediaChangeRequest parameter is not a valid MediaChangeRequest object.<br>2. Server returned an error during applyChanges, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs.<br>3. The resource change operation for the current request type is not supported. |
 
 **Example**
 
@@ -830,9 +848,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 13900020     | Invalid argument.         |
-| 14000011       | System inner fail.         |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 13900020 | Invalid parameter. Possible causes:<br>1. The number of parameters exceeds the maximum limit.<br>2. The current object is invalid.<br>3. The PhotoAccessHelper object is not a valid object. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. PhotoAccessHelper has been released, no need to release again.<br>2. System internal error, possible causes: <br>(1) Database exception; <br>(2) IPC timeout. Please retry and check logs. |
 
 **Example**
 
@@ -873,9 +891,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 13900020     | Invalid argument.         |
-| 14000011       | System inner fail.         |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 13900020 | Invalid parameter. Possible causes:<br>1. The number of parameters exceeds the maximum limit.<br>2. The current object is invalid.<br>3. The PhotoAccessHelper object is not a valid object. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. PhotoAccessHelper has been released, no need to release again.<br>2. System internal error, possible causes: <br>(1) Database exception; <br>(2) IPC timeout. Please retry and check logs. |
 
 **Example**
 
@@ -903,7 +921,9 @@ The dialog box must display the application name, but this cannot be directly ob
 
 > **NOTE**
 >
-> If the passed URI is a sandbox path, images or videos can be saved but cannot be previewed.
+> - If the passed URI is a sandbox path, images or videos can be saved but cannot be previewed.
+> - The difference between **showAssetsCreationDialog** and **showAssetsCreationDialogEx** is that **showAssetsCreationDialog** uses **PhotoCreationConfig** for configuration, while **showAssetsCreationDialogEx** uses **CreationSetting**.
+> - The difference between **showAssetsCreationDialog** and **showSingleAssetCreationDialogEx** is that **showAssetsCreationDialog** allows you to save images in batches (up to 100 images), while **showSingleAssetCreationDialogEx** allows you to save only a single asset. Use this API for batch saving. If you need to control the image display mode when saving a single asset, use **showSingleAssetCreationDialogEx**.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -930,14 +950,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ---------------------------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011 |  Internal system error. |
+| 23800301 | MediaLibrary inner fail. Possible causes:<br>1. Internal error in dialog, please retry.<br>2. Dialog result missing required parameters, system internal error.<br>3. Callback processing failed, system internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs. |
 
 **Example**
 
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData';
-
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   console.info('ShowAssetsCreationDialogDemo.');
 
@@ -957,7 +976,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     let desFileUris: Array<string> = await phAccessHelper.showAssetsCreationDialog(srcFileUris, photoCreationConfigs);
     console.info('showAssetsCreationDialog success, data is ' + desFileUris);
   } catch (err) {
-    console.error('showAssetsCreationDialog failed, errCode is ' + err.code + ', errMsg is ' + err.message);
+    console.error(`showAssetsCreationDialog failed. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -970,9 +989,10 @@ Displays a dialog box for the user to confirm whether to save the images or vide
 
 > **NOTE**
 >
+> - The difference between **showAssetsCreationDialogEx** and **showAssetsCreationDialog** is that **showAssetsCreationDialogEx** uses **CreationSetting** for configuration, while **showAssetsCreationDialog** uses **PhotoCreationConfig** for configuration.
 > - If the user agrees, the list of created URIs with the save permission granted is returned. The list is permanently valid and supports image or video writing. If the user rejects, an empty list is returned.
-> - The application name and icon need to be displayed in the dialog box. The name and icon need to be configured in the **label** and **icon** items in the **abilities** tag of the [module.json5 configuration file](../../../application-dev/quick-start/module-configuration-file.md).
-> - When the passed URI is a sandbox path, images or videos can be saved properly, but the preview is not displayed.
+> - The app name needs to be displayed in the dialog box. You need to configure the **label** and **icon** items in the **abilities** tag of the [module.json5 configuration file](../../../application-dev/quick-start/module-configuration-file.md).
+> - If the passed URI is a sandbox path, images or videos can be saved but cannot be previewed.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -1006,8 +1026,6 @@ For details about the error codes, see [Media Library Error Codes](errorcode-med
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts 
-import { dataSharePredicates } from '@kit.ArkData';
-
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) { 
   console.info('ShowAssetsCreationDialogExDemo.'); 
 
@@ -1016,17 +1034,17 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     let srcFileUris: Array<string> = [
       'file://fileUriDemo1' // The URI here is an example only.
     ];
-    let photoCreationConfigs: Array<photoAccessHelper.CreationSetting> = [
+    let creationConfigs: Array<photoAccessHelper.CreationSetting> = [
       {
         title: 'test2', // Optional.
         fileNameExtension: 'jpg',
         photoType: photoAccessHelper.PhotoType.IMAGE
       }
     ];
-    let desFileUris: Array<string> = await phAccessHelper.showAssetsCreationDialogEx(srcFileUris, photoCreationConfigs);
+    let desFileUris: Array<string> = await phAccessHelper.showAssetsCreationDialogEx(srcFileUris, creationConfigs);
     console.info('showAssetsCreationDialogEx success, data is ' + desFileUris);
   } catch (err) {
-    console.error('showAssetsCreationDialogEx failed, errCode is ' + err.code + ', errMsg is ' + err.message);
+    console.error(`showAssetsCreationDialogEx failed. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -1039,6 +1057,7 @@ Displays a dialog box for the user to confirm whether to save an image or video.
 
 > **NOTE**
 >
+> - The difference between **showAssetsCreationDialog** and **showAssetsCreationDialog** is that **showSingleAssetCreationDialogEx** can only save a single asset, while **showAssetsCreationDialog** can save images in batches (up to 100 images). If you need to save a single asset and control the image display mode, use **showSingleAssetCreationDialogEx**.
 > - If the user agrees to save the images or videos, this API returns a URI that has been created and granted with the save permission (this URI is permanent), and the application can use this URI to write the image or video. If the user declines to save the image or video, this API returns an empty string.
 > - The dialog box must display the application name, but this cannot be directly obtained. Therefore, before calling this API, ensure that the **label** and **icon** items are configured in the **abilities** tag in the [module.json5 configuration file](../../../application-dev/quick-start/module-configuration-file.md). Note that the icon is not affected by the **icon** item in the **abilities** tag and cannot be modified.
 > - If the passed URI is a sandbox path, images or videos can be saved but cannot be previewed.
@@ -1061,7 +1080,7 @@ Displays a dialog box for the user to confirm whether to save an image or video.
 
 | Type                                   | Description             |
 | --------------------------------------- | ----------------- |
-| Promise&lt;string&gt; | Promise used to return the URI of the media library file to the application. The URIs are granted with the permission for the application to write data. If the URIs fail to be generated, a batch creation error code will be returned.<br>The return values are as follows:<br>- **-3006**: Invalid characters, which are not allowed.<br>-**-2004**: The image type does not match the file name extension.<br>-**-203**: Invalid file operation.|
+| Promise&lt;string&gt; | Promise used to return the URIs of media library files. In normal cases, available media library URIs are returned. The app is granted with permissions for the URIs and is allowed to write data. If the URIs fail to be generated, a batch creation error code will be returned.<br>The return values are as follows:<br>- **-3006**: Invalid characters, which are not allowed.<br>-**-2004**: The image type does not match the file name extension.<br>-**-203**: Invalid file operation.|
 
 **Error codes**
 
@@ -1069,15 +1088,15 @@ For details about the error codes, see [Media Library Error Codes](errorcode-med
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 23800301 |Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. Internal error in dialog, please retry.<br>2. Dialog result missing required parameters, system internal error.<br>3. Dialog operation failed, please retry.<br>4. Callback processing failed, system internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs. |
+| 23800301 | MediaLibrary inner fail. Possible causes:<br>1. Internal error in dialog, please retry.<br>2. Dialog result missing required parameters, system internal error.<br>3. Callback processing failed, system internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs. |
 
 **Example**
 
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData';
-
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   console.info('ShowSingleAssetCreationDialogExDemo.');
 
@@ -1093,7 +1112,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     let desFileUri: string = await phAccessHelper.showSingleAssetCreationDialogEx(srcFileUri, photoCreationConfig, isImageFullyDisplayed);
     console.info('showSingleAssetCreationDialogEx success, data is ' + desFileUri);
   } catch (err) {
-    console.error('showSingleAssetCreationDialogEx failed, errCode is ' + err.code + ', errMsg is ' + err.message);
+    console.error(`showSingleAssetCreationDialogEx failed. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -1102,9 +1121,13 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 createAssetWithShortTermPermission(photoCreationConfig: PhotoCreationConfig): Promise&lt;string&gt;
 
-Creates an asset with a temporary permission of the given period. When this API is called by an application for the first time, a dialog box will be displayed for the user to confirm whether to save the asset. If the user agrees to save the asset, the asset instance will be created and the file URI granted with the save permission will be returned. The application can write the asset based on the URI.
+When an app calls this API for the first time, a confirmation dialog box is displayed. After the user agrees to save the asset, the URI of the created asset that has the save permission is returned. The app can use the URI to write the image or video.
 
-Within 5 minutes after the user agrees to save the asset, if the same application calls this API again, the authorized URI can be automatically returned without the need to display the confirmation dialog box. Exiting the application will terminate the authorization, and the user need to re-trigger the dialog box for authorization confirmation when the application is re-launched.
+Within 5 minutes after the user agrees to save the asset, if the same application calls this API again, the authorized URI can be automatically returned without the need to display the confirmation dialog box. Exiting the app will terminate the authorization, and the user need to re-trigger the dialog box for authorization confirmation when the app is re-launched.
+
+> **NOTE**
+>
+> The difference between **createAssetWithShortTermPermission** and **createAssetWithShortTermPermissionEx** is that **createAssetWithShortTermPermission** uses **PhotoCreationConfig** for configuration, while **createAssetWithShortTermPermissionEx** uses **CreationSetting**.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -1114,13 +1137,13 @@ Within 5 minutes after the user agrees to save the asset, if the same applicatio
 
 | Name  | Type                                                                  | Mandatory| Description                     |
 | -------- |----------------------------------------------------------------------| ---- | ------------------------- |
-| photoCreationConfig | [PhotoCreationConfig](arkts-apis-photoAccessHelper-i.md#photocreationconfig12); | Yes| Configuration for saving a media asset (image or video) to the media library, including the file name.<br>**NOTE**<br>If a **subtype** option is passed, the configuration does not take effect. Only DEFAULT images can be saved.|
+| photoCreationConfig | [PhotoCreationConfig](arkts-apis-photoAccessHelper-i.md#photocreationconfig12) | Yes| Configuration for saving a media asset (image or video) to the media library, including the file name.<br>**NOTE**<br>If a **subtype** option is passed, the configuration does not take effect. Only DEFAULT images can be saved.|
 
 **Return value**
 
 | Type                                   | Description             |
 | --------------------------------------- | ----------------- |
-| Promise&lt;string&gt; | Promise used to return the URI of the asset saved. The URIs are granted with the permission for the application to write data. If the URIs fail to be generated, a batch creation error code will be returned.<br>The error code **-3006** means that there are invalid characters; **-2004** means that the image type does not match the file name extension; **-203** means that the file operation is abnormal.|
+| Promise&lt;string&gt; | Promise used to return the URIs of media library files. The URIs are granted with the permission for the application to write data. If the URIs fail to be generated, a batch creation error code will be returned.<br>The error code **-3006** means that there are invalid characters; **-2004** means that the image type does not match the file name extension; **-203** means that the file operation is abnormal.|
 
 **Error codes**
 
@@ -1128,7 +1151,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201 | Permission denied |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011 |  Internal system error |
 
@@ -1168,7 +1191,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
         fileIo.closeSync(srcFile);
         fileIo.closeSync(resultFile);
     } catch (err) {
-        console.error('createAssetWithShortTermPermission failed, errCode is ' + err.code + ', errMsg is ' + err.message);
+        console.error(`createAssetWithShortTermPermission failed. Code: ${err.code}, message: ${err.message}`);
     }
     
 }
@@ -1182,8 +1205,9 @@ Displays the dialog box for the first time for the user to confirm whether to sa
 
 > **NOTE**
 >
-> - After the user agrees to save the asset, the API returns the URI of the created asset that has the save permission. The application can use the URI to write the image or video.
-> - Within 5 minutes after the user agrees to save the asset, if the same application calls this API again, the system directly returns the authorized URI for the application to save the image or video without displaying a confirmation dialog box. Exiting the application will terminate the authorization, and the user need to re-trigger the dialog box for authorization confirmation when the application is re-launched.
+> - The difference between **createAssetWithShortTermPermissionEx** and **createAssetWithShortTermPermission** is that **createAssetWithShortTermPermissionEx** uses **CreationSetting** for configuration, while **createAssetWithShortTermPermission** uses **PhotoCreationConfig**.
+> - After the user agrees to save the asset, the API returns the URI of the created asset that has the save permission. The app can use the URI to write the image or video.
+> - Within 5 minutes after the user agrees to save the asset, if the same app calls this API again, the system directly returns the authorized URI for the app to save the image or video without displaying a confirmation dialog box. Exiting the app will terminate the authorization, and the user need to re-trigger the dialog box for authorization confirmation when the app is re-launched.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -1201,7 +1225,7 @@ Displays the dialog box for the first time for the user to confirm whether to sa
 
 | Type                                   | Description             |
 | --------------------------------------- | ----------------- |
-| Promise&lt;string&gt; | Promise used to return the URI of the media library file to the application. The application can use the returned URI to write data.|
+| Promise&lt;string&gt; | Promise used to return the URIs of media library files. The application can use the returned URI to write data.|
 
 **Error codes**
 
@@ -1209,7 +1233,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201 | Permission denied |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 14000011 |  Internal system error |
 
 ## requestPhotoUrisReadPermission<sup>14+</sup>
@@ -1217,6 +1241,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 requestPhotoUrisReadPermission(srcFileUris: Array&lt;string&gt;): Promise&lt;Array&lt;string&gt;&gt;
 
 <!--RP1--><!--RP1End-->Grants the read permission for unauthorized URIs, returning a list of URIs that have been created and granted the permission.
+
+> **NOTE**
+>
+> The difference between **requestPhotoUrisReadPermission** and **requestPhotoUrisReadPermissionEx** is that **requestPhotoUrisReadPermission** returns only the list of URIs granted the permission, while **requestPhotoUrisReadPermissionEx** returns a **RequestReadPermissionResult** object that contains both the list of URIs granted the permission and the list of invalid URIs, helping you identify invalid URIs. Since API version 23, you are advised to use **requestPhotoUrisReadPermissionEx** to obtain a more complete authorization result.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
@@ -1241,15 +1269,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | ---------------------------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 14000011 |  Internal system error |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. Internal error in dialog, please retry.<br>2. Dialog result missing required parameters, system internal error.<br>3. Dialog operation failed, please retry.<br>4. Callback processing failed, system internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs. |
 
 **Example**
 
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData';
-
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context) {
   console.info('requestPhotoUrisReadPermissionDemo.');
 
@@ -1261,7 +1287,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
     let desFileUris: Array<string> = await phAccessHelper.requestPhotoUrisReadPermission(srcFileUris);
     console.info('requestPhotoUrisReadPermission success, data is ' + desFileUris);
   } catch (err) {
-    console.error('requestPhotoUrisReadPermission failed, errCode is ' + err.code + ', errMsg is ' + err.message);
+    console.error(`requestPhotoUrisReadPermission failed. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -1270,12 +1296,12 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 requestPhotoUrisReadPermissionEx(srcFileUris: Array&lt;string&gt;): Promise&lt;RequestReadPermissionResult&gt;
 
-Grants the read permission for unauthorized URIs. This API uses a promise to return the authorization result.
+Grants the read permission for unauthorized URIs. This API uses a promise to return the result.
 
 It contains the list of URIs that have been created and granted the save permission and the list of invalid URIs.
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
-
+  
 ​**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -1298,14 +1324,13 @@ For details about the error codes, see [Media Library Error Codes](errorcode-med
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 23800301 |  Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+| 23800301 |  Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **Example**
 
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData';
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context) {
@@ -1319,12 +1344,12 @@ console.info('requestPhotoUrisReadPermissionExDemo.');
     let requestReadPermissionResult: photoAccessHelper.RequestReadPermissionResult = await phAccessHelper.requestPhotoUrisReadPermissionEx(srcFileUris);
     console.info('requestPhotoUrisReadPermissionEx success, data is ' + requestReadPermissionResult);
   } catch (err) {
-    console.error('requestPhotoUrisReadPermissionEx failed, errCode is ' + err.code + ', errMsg is ' + err.message);
+    console.error(`requestPhotoUrisReadPermissionEx failed. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
 
-## getSupportedPhotoFormats<sup>18+</sup>
+## getSupportedPhotoFormats<sup>18+</sup> 
 
 getSupportedPhotoFormats(photoType: PhotoType): Promise&lt;Array&lt;string&gt;&gt;
 
@@ -1351,7 +1376,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | ---------------------------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 14000011 | Internal system error. It is recommended to retry and check the logs. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. invalid photoType.<br>2. Failed to create string.<br>3. Failed to set element. |
 
 **Example**
 
@@ -1384,7 +1409,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, phot
 }
 ```
 
-## on('photoChange')<sup>20+</sup>
+## on('photoChange')<sup>20+</sup> 
 
 on(type: 'photoChange', callback: Callback&lt;PhotoAssetChangeInfos&gt;): void
 
@@ -1407,9 +1432,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201 | Permission denied. |
-| 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The type is not fixed at 'photoChange'; 2. The same callback is registered repeatedly. |
-| 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 23800151 | Invalid parameter. Possible causes:<br>1. Scenario parameter verification failed.<br>2. Invalid parameter. |
+| 23800301 | MediaLibrary inner fail. Possible causes:<br>1. Data service initialization failed, possible causes: <br>(1) Database exception; <br>(2) IPC timeout. Please check if the context is properly initialized and retry<br>2. System internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs. |
 
 **Example**
 
@@ -1427,6 +1452,7 @@ let onCallback2 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
   // file had changed, do something.
 }
 
+// Register photoChange to listen for media asset changes. You can register multiple callbacks.
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context){
   console.info('onPhotoChangeDemo.');
 
@@ -1441,7 +1467,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 }
 ```
 
-## off('photoChange')<sup>20+</sup>
+## off('photoChange')<sup>20+</sup> 
 
 off(type: 'photoChange', callback?: Callback&lt;PhotoAssetChangeInfos&gt;): void
 
@@ -1464,9 +1490,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The type is not fixed at 'photoChange'; 2. The same callback is unregistered repeatedly. |
-| 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+| 23800301 | MediaLibrary inner fail. Possible causes:<br>1. Data service initialization failed, possible causes: <br>(1) Database exception; <br>(2) IPC timeout. Please check if the context is properly initialized and retry<br>2. System internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs. |
 
 **Example**
 
@@ -1484,6 +1510,7 @@ let onCallback2 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
   // file had changed, do something.
 }
 
+// After registering the photoChange listener, cancel the specified listener to demonstrate how to cancel the listener.
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context){
   console.info('offPhotoChangeDemo.');
 
@@ -1501,7 +1528,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 }
 ```
 
-## on('photoAlbumChange')<sup>20+</sup>
+## on('photoAlbumChange')<sup>20+</sup> 
 
 on(type: 'photoAlbumChange', callback: Callback&lt;AlbumChangeInfos&gt;): void
 
@@ -1524,9 +1551,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201 | Permission denied. |
-| 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The type is not fixed at 'photoAlbumChange'; 2. The same callback is registered repeatedly. |
-| 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 23800151 | Invalid parameter. Possible causes:<br>1. Scenario parameter verification failed.<br>2. Invalid parameter. |
+| 23800301 | MediaLibrary inner fail. Possible causes:<br>1. Data service initialization failed, possible causes: <br>(1) Database exception; <br>(2) IPC timeout. Please check if the context is properly initialized and retry<br>2. System internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs. |
 
 **Example**
 
@@ -1544,6 +1571,7 @@ let onCallback2 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
   // file had changed, do something.
 }
 
+// Register photoAlbumChange to listen for album changes. You can register multiple callbacks.
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context){
   console.info('onPhotoAlbumChangeDemo.');
 
@@ -1558,7 +1586,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 }
 ```
 
-## off('photoAlbumChange')<sup>20+</sup>
+## off('photoAlbumChange')<sup>20+</sup> 
 
 off(type: 'photoAlbumChange', callback?: Callback&lt;AlbumChangeInfos&gt;): void
 
@@ -1581,9 +1609,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The type is not fixed at 'photoAlbumChange'; 2. The same callback is unregistered repeatedly. |
-| 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+| 23800301 | MediaLibrary inner fail. Possible causes:<br>1. Data service initialization failed, possible causes: <br>(1) Database exception; <br>(2) IPC timeout. Please check if the context is properly initialized and retry<br>2. System internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs. |
 
 **Example**
 
@@ -1601,6 +1629,7 @@ let onCallback2 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
   // file had changed, do something.
 }
 
+// After registering the photoAlbumChange listener, cancel the specified listener to demonstrate how to cancel the listener.
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context){
   console.info('onPhotoAlbumChangeDemo.');
 
@@ -1622,7 +1651,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 getPhotoPickerComponentDefaultAlbumName(): Promise&lt;string&gt;
 
-Obtains the name of the album that the **PhotoPickerComponent** shows by default. The name string is localized to match the current system language. This API uses a promise to return the result.
+Obtains the name of the album that the photo picker component shows by default. The album name is returned in the language specified by the system language setting. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -1636,7 +1665,7 @@ Obtains the name of the album that the **PhotoPickerComponent** shows by default
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](../apis-core-file-kit/errorcode-filemanagement.md).
+For details about the error codes, see [Media Library Error Codes](errorcode-medialibrary.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -1689,10 +1718,10 @@ If error code 13900012 is returned, follow the instructions provided in [Before 
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 13900012     | Permission denied.         |
-| 13900020     | Invalid argument.         |
-| 14000011       | System inner fail.         |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 13900012 | Permission denied. Possible causes:<br>1. Not have ohos.permission.WRITE_IMAGEVIDEO.<br>2. User deny. |
+| 13900020 | Invalid parameter. Possible causes:<br>1. The context parameter is invalid, failed to convert to AbilityContext.<br>2. Failed to create the dialog, system internal error, please retry. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. The delete operation failed, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs.<br>2. The uriList parameter contains invalid URIs, please check if each URI is a valid file URI obtained from a valid query result.<br>3. The UI extension component reported an error, please retry. |
 
 **Example**
 
@@ -1708,22 +1737,26 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     fetchColumns: [],
     predicates: predicates
   };
+  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> | undefined = undefined;
   try {
-    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
+    fetchResult = await phAccessHelper.getAssets(fetchOptions);
     let asset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
     if (asset === undefined) {
       console.error('asset not exist');
       return;
     }
     phAccessHelper.createDeleteRequest([asset.uri], (err) => {
-      if (err === undefined) {
-        console.info('createDeleteRequest successfully');
-      } else {
+      if (err) {
         console.error(`createDeleteRequest failed with error: ${err.code}, ${err.message}`);
+      } else {
+        console.info('createDeleteRequest successfully');
       }
     });
   } catch (err) {
     console.error(`fetch failed, error: ${err.code}, ${err.message}`);
+  } finally {
+    // Release resources after use.
+    fetchResult?.close();
   }
 }
 ```
@@ -1752,7 +1785,7 @@ Creates a dialog box for deleting media files. This API uses a promise to return
 
 | Type                                   | Description             |
 | --------------------------------------- | ----------------- |
-| Promise&lt;void&gt;| Promise that returns no value.|
+| Promise&lt;void&gt;|  Promise that returns no value.|
 
 **Error codes**
 
@@ -1762,10 +1795,10 @@ If error code 13900012 is returned, follow the instructions provided in [Before 
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 13900012     | Permission denied.         |
-| 13900020     | Invalid argument.         |
-| 14000011       | System inner fail.         |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 13900012 | Permission denied. Possible causes:<br>1. Not have ohos.permission.WRITE_IMAGEVIDEO.<br>2. User deny. |
+| 13900020 | Invalid parameter. Possible causes:<br>1. The context parameter is invalid, failed to convert to AbilityContext.<br>2. Failed to create the dialog, system internal error, please retry. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. The delete operation failed, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs.<br>2. The uriList parameter contains invalid URIs, please check if each URI is a valid file URI obtained from a valid query result.<br>3. The UI extension component reported an error, please retry. |
 
 **Example**
 
@@ -1781,8 +1814,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     fetchColumns: [],
     predicates: predicates
   };
+  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> | undefined = undefined;
   try {
-    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
+    fetchResult = await phAccessHelper.getAssets(fetchOptions);
     let asset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
     if (asset === undefined) {
       console.error('asset not exist');
@@ -1792,6 +1826,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     console.info('createDeleteRequest successfully');
   } catch (err) {
     console.error(`createDeleteRequest failed with error: ${err.code}, ${err.message}`);
+  } finally {
+    // Release resources after use.
+    fetchResult?.close();
   }
 }
 ```
@@ -1871,8 +1908,8 @@ For details about the error codes, see [Media Library Error Codes](errorcode-med
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 23800151     | The lpath is invalid, such as null, undefined and empty. |
-| 23800301     | Internal system error. You are advised to retry and check the logs. Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+| 23800151 | Invalid parameter. Possible causes:<br>1. The number of parameters is not 1.<br>2. The value is not a string or the string fails to be read.<br>3. The lpath is an empty string or its length exceeds the maximum limit <br>(255).<br>4. The lpath is not in the allowed list of MEDIA_DIRS (excluding /DCIM/Camera, /Pictures/Screenshots, and /Pictures/Screenrecords).<br>5. The IPC call returns a server error code. |
+| 23800301 | MediaLibrary inner fail. Possible causes:<br>1. System internal error, failed to create boolean value, please retry.<br>2. The IPC call returns a server error code.<br>3. Failed to initialize error Field / Failed to initialize data Field. |
 
 **Example**
 
@@ -1883,7 +1920,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   console.info('getAlbumIdByLpath');
 
   try {
-      let albumId: number = await phAccessHelper.getAlbumIdByLpath('testLpath');
+      let albumId: number = await phAccessHelper.getAlbumIdByLpath('/DCIM/Camera');
       console.info('requestFile:: albumId: ', albumId);
 
       console.info('getAlbumIdByLpath completed.');
@@ -1894,7 +1931,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
-## onSinglePhotoChange<sup>23+</sup>
+## onSinglePhotoChange<sup>23+</sup> 
 
 onSinglePhotoChange(asset: PhotoAsset, callback: Callback&lt;PhotoAssetChangeInfos&gt;): void
 
@@ -1917,9 +1954,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201 | Permission denied. |
-| 23800151 | The scenario parameter verification fails. Possible causes: 1. The same callback is registered repeatedly. 2. Asset has been removed. 3. The uri of the asset invalid.|
-| 23800301 | Internal system error. You are advised to retry and check the logs. Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 23800151 | Invalid parameter. Possible causes:<br>1. One or two parameters are required.<br>2. Invalid parameter.<br>3. The first parameter is not an object or the second parameter is not a function.<br>4. The object is not a valid instance to get asset object.<br>5. The PhotoAsset is not a valid PhotoAsset object.<br>6. Check whether it is a hidden or recycled album.<br>7. Check whether it is not a MEDIA_TYPE_IMAGE or MEDIA_TYPE_VIDEO.<br>8. Ordinary assets invalid.<br>9. Registration has reached the limit.<br>10. Failed to create a reference for the callback.<br>11. The listener for this resource has been registered with the same callback.<br>12. Failed to get photo asset from parameter.<br>13. Failed to get file asset instance.<br>14. Failed to get fileId from photo asset. |
+| 23800301 | MediaLibrary inner fail. Possible causes:<br>1. Data service initialization failed, possible causes: <br>(1) Database exception; <br>(2) IPC timeout. Please check if the context is properly initialized and retry<br>2. System internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs. |
 
 **Example**
 
@@ -1937,6 +1974,7 @@ let onCallback2 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
   // Operations performed when the callback is triggered.
 }
 
+// After obtaining albums and assets, register a listener for changes to a single asset to demonstrate how to use onSinglePhotoChange.
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context){
   console.info('onSinglePhotoChangeDemo.');
   let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
@@ -1964,9 +2002,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 }
 ```
 
-## offSinglePhotoChange<sup>23+</sup>
+## offSinglePhotoChange<sup>23+</sup> 
 
-offSinglePhotoChange(asset?: PhotoAsset, callback?: Callback&lt;PhotoAssetChangeInfos&gt;): void;
+offSinglePhotoChange(asset?: PhotoAsset, callback?: Callback&lt;PhotoAssetChangeInfos&gt;): void
 
 Unregisters the listener for a single asset. Note the following:
 
@@ -1993,9 +2031,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201 | Permission denied. |
-| 23800151 | The scenario parameter verification fails. Possible causes: 1. The same callback is unregistered repeatedly. 2. The uri of the asset invalid. |
-| 23800301 | Internal system error. You are advised to retry and check the logs.Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 23800151 | Invalid parameter. Possible causes:<br>1. The object is not a valid instance.<br>2. The parameter type is invalid.<br>3. System internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs. |
+| 23800301 | MediaLibrary inner fail. Possible causes:<br>1. Data service initialization failed, possible causes: <br>(1) Database exception; <br>(2) IPC timeout. Please check if the context is properly initialized and retry<br>2. System internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs. |
 
 **Example**
 
@@ -2017,6 +2055,7 @@ let onCallback3 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
   // Operations performed when the callback is triggered.
 }
 
+// After obtaining albums and assets, register a listener for changes to a single asset and demonstrate how to cancel the listener in different ways.
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context){
   console.info('onSinglePhotoChangeDemo.');
   let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
@@ -2053,9 +2092,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 }
 ```
 
-## onSinglePhotoAlbumChange<sup>23+</sup>
+## onSinglePhotoAlbumChange<sup>23+</sup> 
 
-onSinglePhotoAlbumChange(album: Album, callback: Callback&lt;AlbumChangeInfos&gt;): void;
+onSinglePhotoAlbumChange(album: Album, callback: Callback&lt;AlbumChangeInfos&gt;): void
 
 Registers a listener for changes of a single common asset. This API uses an asynchronous callback to return the result.
 
@@ -2076,9 +2115,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201 | Permission denied. |
-| 23800151 | The scenario parameter verification fails. Possible causes: 1. The same callback is registered repeatedly. 2. Album has been removed. 3. The uri of the album invalid.|
-| 23800301 | Internal system error. You are advised to retry and check the logs. Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 23800151 | Invalid parameter. Possible causes:<br>1. One or two parameters are required.<br>2. Invalid parameter.<br>3. Album object is not a valid object.<br>4. The PhotoAsset is not a valid PhotoAsset object.<br>5. Check whether it is a hidden or recycled album.<br>6. Ordinary album invalid.<br>7. Failed to get URI from photo album.<br>8. Registration has reached the limit (>= 50).<br>9. Failed to create a reference for the callback.<br>10. The listener for this resource has been registered with the same callback. |
+| 23800301 | MediaLibrary inner fail. Possible causes:<br>1. Data service initialization failed, possible causes: <br>(1) Database exception; <br>(2) IPC timeout. Please check if the context is properly initialized and retry<br>2. System internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs. |
 
 **Example**
 
@@ -2096,6 +2135,7 @@ let onCallback2 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
   // Operations performed when the callback is triggered.
 }
 
+// After obtaining albums, register a listener for changes to a single album to demonstrate how to use onSinglePhotoAlbumChange.
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context){
   console.info('onSinglePhotoAlbumChangeDemo.');
   let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
@@ -2121,7 +2161,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 }
 ```
 
-## offSinglePhotoAlbumChange<sup>23+</sup>
+## offSinglePhotoAlbumChange<sup>23+</sup> 
 
 offSinglePhotoAlbumChange(album?: Album, callback?: Callback&lt;AlbumChangeInfos&gt;): void
 
@@ -2150,9 +2190,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201 | Permission denied. |
-| 23800151 | The scenario parameter verification fails. Possible causes: 1.The same callback is unregistered repeatedly. 2. The uri of the album invalid.|
-| 23800301 | Internal system error. You are advised to retry and check the logs. Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 23800151 | Invalid parameter. Possible causes:<br>1. One or two parameters are required.<br>2. Invalid parameter.<br>3. The first parameter is not an object or the second parameter is not a function.<br>4. Object is not a valid object.<br>5. Album object is not a valid object.<br>6. Ordinary album invalid.<br>7. Failed to create callback reference.<br>8. No observer has ever been registered.<br>9. Observer list is empty. |
+| 23800301 | MediaLibrary inner fail. Possible causes:<br>1. Data service initialization failed, possible causes: <br>(1) Database exception; <br>(2) IPC timeout. Please check if the context is properly initialized and retry<br>2. System internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs. |
 
 **Example**
 
@@ -2174,6 +2214,7 @@ let onCallback3 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
   // Operations performed when the callback is triggered.
 }
 
+// After obtaining albums, register a listener for changes to a single album and demonstrate how to cancel the listener in different ways.
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context){
   console.info('onSinglePhotoChangeDemo.');
   let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
@@ -2237,8 +2278,8 @@ For details about the error codes, see [Media Library Error Codes](errorcode-med
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 23800151 | The capability is invalid. |
-| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+| 23800151 | Invalid parameter. Possible causes:<br>1. The number of parameters is invalid, expected 1 or 2 parameters.<br>2. The bundleName parameter must be a non-empty string.<br>3. The config parameter must be an object.<br>4. The supportedHighResolution attribute must be a boolean.<br>5. The supportedMimeType attribute must be an array of strings.<br>6. The supportedMimeType array contains unsupported MIME types, only image/jpeg and image/png are supported.<br>7. The supportedMimeTypes array size exceeds the limit (max 2 after deduplication).<br>8. System internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs. |
+| 23800301 | MediaLibrary inner fail. Possible causes:<br>1. Parameter is not an array type.<br>2. Failed to get array length.<br>3. Server returned an invalid argument error. |
 
 **Example**
 
@@ -2339,7 +2380,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 23800151 | Scenario-specific parameters are incorrect. Possible causes are as follows: 1. The input parameter is null or undefined. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
@@ -2358,15 +2399,18 @@ class MediaLibraryExample {
 
   onMediaLibraryAvailability = async () => {
     try {
+      // Define the callback function for media library availability changes.
       this.handleMediaLibraryChange = (
         changeData: photoAccessHelper.MediaLibraryAvailability
       ) => {
+        // Obtain the availability of the media library and the reason why it is unavailable.
         const availabilityStatus = changeData.availabilityStatus;
         const unavailabilityReason = changeData.unavailabilityReason;
-        console.info(`Media library status change: status=${availabilityStatus}, reason=${unavailabilityReason}`);
+        console.info(`Media library status changed: status=${availabilityStatus}, reason=${unavailabilityReason}`);
       };
+      // Register a listener for media library availability.
       this.helper.onMediaLibraryAvailability(this.handleMediaLibraryChange);
-      console.info('Media library listener registered successfully');
+      console.info('Media library listener registered successfully.');
     } catch (err) {
       console.error(`onMediaLibraryAvailability failed::${(err as BusinessError).code}, ${(err as BusinessError).message} !`);
     }
@@ -2400,7 +2444,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **Example**
@@ -2418,9 +2462,10 @@ class MediaLibraryExample {
 
   offMediaLibraryAvailability = async () => {
     try {
+      // Register a listener for the media library availability and then unregister it to demonstrate how to cancel the listener.
       this.helper.onMediaLibraryAvailability(this.handleMediaLibraryChange);
       this.helper.offMediaLibraryAvailability(this.handleMediaLibraryChange);
-      console.info('Media library listener unregistered successfully');
+      console.info('Media library listener unregistered successfully.');
     } catch (err) {
       console.error(`offMediaLibraryAvailability failed::${(err as BusinessError).code}, ${(err as BusinessError).message} !`);
     }

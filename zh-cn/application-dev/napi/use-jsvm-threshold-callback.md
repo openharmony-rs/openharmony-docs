@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍如何获取VM原始堆快照用于内存分析与泄漏定位，并注册堆内存阈值回调在堆使用量达到阈值时触发监控逻辑。"
+keywords: [OH_JSVM_TakeRawHeapSnapshot, OH_JSVM_SetHeapThresholdCallback, OH_JSVM_ClearHeapThresholdCallback, 堆快照, 堆内存阈值, 阈值回调, 内存泄漏定位, 堆内存监控]
+doctype: guide
+status: active
+---
+
 # 使用JSVM-API获取堆快照及监控堆内存阈值
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
