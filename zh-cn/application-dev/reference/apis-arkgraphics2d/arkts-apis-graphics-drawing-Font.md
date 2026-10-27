@@ -1018,7 +1018,7 @@ getWidths(glyphs: Array\<number>): Array\<number>
 
 | 类型   | 说明             |
 | ------ | ---------------- |
-| Array\<number> | 返回字形宽度数组，浮点数。单位为物理像素px。 |
+| Array\<number> | 返回字形宽度数组，浮点数。单位为物理像素px。获取失败时返回undefined。 |
 
 **错误码：**
 
@@ -1305,7 +1305,7 @@ createPathForGlyph(index: number): Path
 
 | 类型   | 说明             |
 | ------ | ---------------- |
-| [Path](arkts-apis-graphics-drawing-Path.md) | 返回指定字形的路径轮廓。 |
+| [Path](arkts-apis-graphics-drawing-Path.md) | 返回指定字形的路径轮廓。获取失败时返回undefined。 |
 
 **示例：**
 
