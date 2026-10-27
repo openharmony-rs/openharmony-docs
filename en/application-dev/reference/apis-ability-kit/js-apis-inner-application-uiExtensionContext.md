@@ -49,7 +49,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------- |
-| 201 | The application does not have permission to call the interface. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -140,7 +140,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------- |
-| 201 | The application does not have permission to call the interface. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000004 | Cannot start an invisible component. |
@@ -237,7 +237,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------- |
-| 201 | The application does not have permission to call the interface. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -332,7 +332,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------- |
-| 201 | The application does not have permission to call the interface. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -425,7 +425,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------- |
-| 201 | The application does not have permission to call the interface. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000004 | Cannot start an invisible component. |
@@ -526,7 +526,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------- |
-| 201 | The application does not have permission to call the interface. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -627,7 +627,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------- |
-| 201 | The application does not have permission to call the interface. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -1215,7 +1215,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------- |
-| 201 | The application does not have permission to call the interface. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -1332,9 +1332,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                                                                   |
 | -------- | ----------------------------------------------------------------------------------------------------------- |
-| 201 | The application does not have permission to call the interface. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801 | Capability not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 16000001 | The specified ability does not exist.                                                                       |
 | 16000002 | Incorrect ability type.                                                                                     |
 | 16000004 | Cannot start an invisible component.                                                                      |
@@ -1419,9 +1419,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                |
 | -------- | ---------------------------------- |
-| 201      | The application does not have permission to call the interface.        |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.        |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801      | Capability not supported.                                              |
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.                                              |
 | 16000001 | The specified ability does not exist.                                  |
 | 16000002 | Incorrect ability type.                                                |
 | 16000004 | Cannot start an invisible component.                                 |

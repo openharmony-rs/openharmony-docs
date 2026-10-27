@@ -1481,7 +1481,7 @@ setSupportedProcessCache(isSupported : boolean): void
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 801      | Capability not supported.|
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 16000011 | The context does not exist. |
 | 16000050 | Internal error. |
 
@@ -1715,7 +1715,7 @@ enableDelayedProcessExit(): Promise\<void>
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 801      | Capability not supported.                                    |
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.                                    |
 | 16000050 | Internal error. Possible causes: Fail to connect system service. |
 | 16000150 | The current process has no UIAbility, and this API cannot be called. |
 
@@ -1767,7 +1767,7 @@ disableDelayedProcessExit(): Promise\<void>
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 801      | Capability not supported.                                    |
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.                                    |
 | 16000050 | Internal error. Possible causes: Fail to connect system service. |
 | 16000150 | The current process has no UIAbility, and this API cannot be called. |
 
@@ -1823,7 +1823,7 @@ startSelfUIAbility(want: Want): Promise\<void>
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 801      | Capability not supported.                                    |
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.                                    |
 | 16000001 | The specified ability does not exist.                        |
 | 16000008 | The crowdtesting application expires.                        |
 | 16000009 | An ability cannot be started or stopped in Wukong mode.      |
