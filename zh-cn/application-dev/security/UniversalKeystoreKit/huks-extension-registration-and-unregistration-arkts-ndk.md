@@ -235,7 +235,7 @@ static napi_value RegisterProvider(napi_env env, napi_callback_info info)
 
 1. 构造注册参数，包含[HUKS_EXT_CRYPTO_TAG_ABILITY_NAME](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag)字段，值为Ability名称的UTF-8字节流。
 
-2. 构造UIExtensionAbility注册参数，包含[HUKS_EXT_CRYPTO_TAG_ABILITY_INFO](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag)字段。
+2. 构造定制化认证UI注册参数，包含[HUKS_EXT_CRYPTO_TAG_ABILITY_INFO](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag)字段。
 
 3. 调用[registerProvider](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptoregisterprovider)接口，需捕获BusinessError处理失败。
 
@@ -257,11 +257,6 @@ interface AbilityInfo {
   index: string;
   abilityType?: number; // 从API版本26.0.1开始：0=UIAbility, 1=UkeyAuthExtensionAbility，不传则默认0
 }
-
-const abilityInfoList: AbilityInfo[] = [
-  { abilityName: 'UiAbility1', index: '' },
-  { abilityName: 'UiAbility2', index: 'string2' },
-];
 
 // 注册Provider并注册自定义PIN弹窗UIAbility
 async function registerProvider(): Promise<void> {
@@ -300,7 +295,7 @@ async function testRegisterProvider(): Promise<void> {
 }
 ```
 
-**注册UkeyAuthExtensionAbility（自定义UI框）**
+**注册UkeyAuthExtensionAbility（定制化认证UI）**
 
 从API版本26.0.1开始，开发者可注册UkeyAuthExtensionAbility，使用自行实现的UI布局。注册时abilityType字段需设置为1。
 
@@ -321,7 +316,7 @@ interface AbilityInfo {
   abilityType?: number; // 从API版本26.0.1开始：0=UIAbility, 1=UkeyAuthExtensionAbility，不传则默认0
 }
 
-// 注册Provider并注册UkeyAuthExtensionAbility（自定义UI框）
+// 注册Provider并注册UkeyAuthExtensionAbility（定制化认证UI）
 async function registerProviderWithUkeyAuthExtension(): Promise<void> {
   const providerName = "testProvider";
   const extProperties: Array<huksExternalCrypto.HuksExternalCryptoParam> = [
