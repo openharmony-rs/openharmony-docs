@@ -61,7 +61,7 @@ Global provider count has reached the upper limit.
 
 **可能原因**
 
-系统全局最多允许16个Provider实例。当全局Provider实例数达到该上限时，新进程创建Provider将触发此错误。
+系统全局最多允许存在16个Provider实例。当全局Provider实例数达到该上限时，新进程创建Provider将触发此错误。
 
 **处理步骤**
 
