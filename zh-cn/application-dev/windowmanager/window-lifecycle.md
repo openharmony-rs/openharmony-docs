@@ -138,48 +138,66 @@ Stage模型下主窗口的生命周期状态包括前台状态（SHOWN）、前�
 <!-- @[WindowRestore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/WindowRestoreSample/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
-minimizeAndRestore() {
-  if (!this.mainWindow) {
-    hilog.error(DOMAIN, TAG, '%{public}s', 'Main window is not available.');
-    return;
-  }
-  try {
-    // 调用minimize()接口，使主窗进入后台状态
-    this.mainWindow.minimize();
-    // 设置延时函数，延时5秒钟后对主窗进行恢复
-    setTimeout(() => {
-      // 调用restore()接口，将主窗口恢复到前台显示
-      this.mainWindow?.restore().then(() => {
-        hilog.info(DOMAIN, TAG, '%{public}s', 'Succeeded in restoring the window.');
-      }).catch((err: BusinessError) => {
-        hilog.error(DOMAIN, TAG, 'Failed to restore the window. Code: %{public}s, message: %{public}s',
-          `${err.code}`, `${err.message}`);
-      });
-    }, 5000);
-  } catch (error) {
-    const err: BusinessError = error as BusinessError;
-    hilog.error(DOMAIN, TAG, 'Failed to minimize and restore the window. Code: %{public}s, message: %{public}s',
-      `${err.code}`, `${err.message}`);
-  }
-}
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-build() {
-  Column() {
-    Text($r('app.string.minimize_text'))
-      .id('minimizeText')
-      .fontSize(17)
-    Button($r('app.string.minimize_button'))
-      .id('minimizeButton')
-      .onClick(() => {
-        hilog.info(DOMAIN, TAG, '%{public}s', 'Click: Minimize and restore');
-        this.minimizeAndRestore();
-      })
-      .margin({ top: 20 })
+const DOMAIN: number = 0xFF00;
+const TAG: string = '[Sample_WindowRestore]';
+
+@Entry
+@Component
+struct Index {
+  mainWindow: window.Window | undefined;
+
+  aboutToAppear() {
+    // 在EntryAbility.ets中通过windowStage.getMainWindowSync()保存主窗
+    this.mainWindow = AppStorage.get('mainWindow_Restore') as window.Window;
   }
-  .justifyContent(FlexAlign.Center)
-  .alignItems(HorizontalAlign.Center)
-  .height('100%')
-  .width('100%')
+
+  minimizeAndRestore() {
+    if (!this.mainWindow) {
+      hilog.error(DOMAIN, TAG, '%{public}s', 'Main window is not available.');
+      return;
+    }
+    try {
+      // 调用minimize()接口，使主窗进入后台状态
+      this.mainWindow.minimize();
+      // 设置延时函数，延时5秒钟后对主窗进行恢复
+      setTimeout(() => {
+        // 调用restore()接口，将主窗口恢复到前台显示
+        this.mainWindow?.restore().then(() => {
+          hilog.info(DOMAIN, TAG, '%{public}s', 'Succeeded in restoring the window.');
+        }).catch((err: BusinessError) => {
+          hilog.error(DOMAIN, TAG, 'Failed to restore the window. Code: %{public}s, message: %{public}s',
+            `${err.code}`, `${err.message}`);
+        });
+      }, 5000);
+    } catch (error) {
+      const err: BusinessError = error as BusinessError;
+      hilog.error(DOMAIN, TAG, 'Failed to minimize and restore the window. Code: %{public}s, message: %{public}s',
+        `${err.code}`, `${err.message}`);
+    }
+  }
+
+  build() {
+    Column() {
+      Text($r('app.string.minimize_text'))
+        .id('minimizeText')
+        .fontSize(17)
+      Button($r('app.string.minimize_button'))
+        .id('minimizeButton')
+        .onClick(() => {
+          hilog.info(DOMAIN, TAG, '%{public}s', 'Click: Minimize and restore');
+          this.minimizeAndRestore();
+        })
+        .margin({ top: 20 })
+    }
+    .justifyContent(FlexAlign.Center)
+    .alignItems(HorizontalAlign.Center)
+    .height('100%')
+    .width('100%')
+  }
 }
 ```
 
@@ -200,55 +218,72 @@ build() {
 <!-- @[StartAbilityBelowLockScreen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/StartAbilityBelowLockScreenSample/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
-startTargetAbility(): void {
-  if (!this.context) {
-    hilog.error(DOMAIN, TAG, '%{public}s', 'Context is not available.');
-    return;
-  }
-  hilog.info(DOMAIN, TAG, '%{public}s', 'Start to delay 5 seconds before startAbility.');
-  // 设置延时函数，延时5秒钟后拉起目标应用，模拟响应事件拉起目标应用
-  setTimeout(() => {
-    const want: Want = {
-      deviceId: '',
-      bundleName: TARGET_BUNDLE_NAME,
-      abilityName: TARGET_ABILITY_NAME,
-      moduleName: 'entry'
-    };
-    try {
-      this.context.startAbility(want, (err: BusinessError) => {
-        if (err.code) {
-          hilog.error(DOMAIN, TAG, 'Failed to startAbility. Code: %{public}s, message: %{public}s',
-            `${err.code}`, `${err.message}`);
-          return;
-        }
-        hilog.info(DOMAIN, TAG, '%{public}s', 'Succeeded in starting target ability.');
-      });
-    } catch (error) {
-      const err: BusinessError = error as BusinessError;
-      hilog.error(DOMAIN, TAG, 'Failed to startAbility. Code: %{public}s, message: %{public}s',
-        `${err.code}`, `${err.message}`);
-    }
-  }, 5000);
-}
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { common, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-build() {
-  Column() {
-    Text($r('app.string.start_ability_text'))
-      .id('startAbilityText')
-      .fontSize(24)
-    Button($r('app.string.start_ability_button'))
-      .id('startAbilityButton')
-      .fontSize(20)
-      .onClick(() => {
-        hilog.info(DOMAIN, TAG, '%{public}s', 'Click: Start ability below lock screen');
-        this.startTargetAbility();
-      })
-      .margin({ top: 20 })
+const DOMAIN: number = 0xFF00;
+const TAG: string = '[Sample_StartAbilityBelowLockScreen]';
+
+// 目标应用的bundleName和abilityName
+const TARGET_BUNDLE_NAME: string = 'com.samples.belowlockscreentarget';
+const TARGET_ABILITY_NAME: string = 'EntryAbility';
+
+@Entry
+@Component
+struct Index {
+  private context: common.UIAbilityContext = AppStorage.get('context') as common.UIAbilityContext;
+
+  startTargetAbility(): void {
+    if (!this.context) {
+      hilog.error(DOMAIN, TAG, '%{public}s', 'Context is not available.');
+      return;
+    }
+    hilog.info(DOMAIN, TAG, '%{public}s', 'Start to delay 5 seconds before startAbility.');
+    // 设置延时函数，延时5秒钟后拉起目标应用，模拟响应事件拉起目标应用
+    setTimeout(() => {
+      const want: Want = {
+        deviceId: '',
+        bundleName: TARGET_BUNDLE_NAME,
+        abilityName: TARGET_ABILITY_NAME,
+        moduleName: 'entry'
+      };
+      try {
+        this.context.startAbility(want, (err: BusinessError) => {
+          if (err.code) {
+            hilog.error(DOMAIN, TAG, 'Failed to startAbility. Code: %{public}s, message: %{public}s',
+              `${err.code}`, `${err.message}`);
+            return;
+          }
+          hilog.info(DOMAIN, TAG, '%{public}s', 'Succeeded in starting target ability.');
+        });
+      } catch (error) {
+        const err: BusinessError = error as BusinessError;
+        hilog.error(DOMAIN, TAG, 'Failed to startAbility. Code: %{public}s, message: %{public}s',
+          `${err.code}`, `${err.message}`);
+      }
+    }, 5000);
   }
-  .justifyContent(FlexAlign.Center)
-  .alignItems(HorizontalAlign.Center)
-  .height('100%')
-  .width('100%')
+
+  build() {
+    Column() {
+      Text($r('app.string.start_ability_text'))
+        .id('startAbilityText')
+        .fontSize(24)
+      Button($r('app.string.start_ability_button'))
+        .id('startAbilityButton')
+        .fontSize(20)
+        .onClick(() => {
+          hilog.info(DOMAIN, TAG, '%{public}s', 'Click: Start ability below lock screen');
+          this.startTargetAbility();
+        })
+        .margin({ top: 20 })
+    }
+    .justifyContent(FlexAlign.Center)
+    .alignItems(HorizontalAlign.Center)
+    .height('100%')
+    .width('100%')
+  }
 }
 ```
 
