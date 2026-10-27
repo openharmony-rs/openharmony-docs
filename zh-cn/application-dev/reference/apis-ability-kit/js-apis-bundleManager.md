@@ -521,7 +521,7 @@ getProfileByAbilitySync(moduleName: string, abilityName: string, metadataName?: 
 | ------------ | ------ | ---- | -------------------------- |
 | moduleName   | string | 是   | 表示Module名称。   |
 | abilityName  | string | 是   | 表示UIAbility组件的名称。  |
-| metadataName | string | 否   | 表示UIAbility组件的元信息名称，即module.json5配置文件中[abilities标签](../../quick-start/module-configuration-file.md#abilities标签)下的metadata标签的name。不填写时默认值为空，表示不指定元信息名称，将返回该Ability对应模块下所有配置文件的json格式字符串。 |
+| metadataName | string | 否   | 表示UIAbility组件的元信息名称，即module.json5配置文件中[abilities标签](../../quick-start/module-configuration-file.md#abilities标签)下的metadata标签的name。不填写时默认值为空，表示不指定元信息名称，将返回该Ability对应模块下所有配置文件的json格式字符串数组。 |
 
 **返回值：**
 
@@ -658,7 +658,7 @@ getProfileByExtensionAbility(moduleName: string, extensionAbilityName: string, m
 | -------------------- | ------ | ---- | ---------------------------------- |
 | moduleName           | string | 是   | 表示Module名称。           |
 | extensionAbilityName | string | 是   | 表示ExtensionAbility组件的名称。 |
-| metadataName         | string | 否   | 表示ExtensionAbility组件的元信息名称，即module.json5配置文件中[extensionAbilities标签](../../quick-start/module-configuration-file.md#extensionabilities标签)下的metadata标签的name。不填写时默认值为空，表示不指定元信息名称，将返回该ExtensionAbility对应模块下所有配置文件的json格式字符串。         |
+| metadataName         | string | 否   | 表示ExtensionAbility组件的元信息名称，即module.json5配置文件中[extensionAbilities标签](../../quick-start/module-configuration-file.md#extensionabilities标签)下的metadata标签的name。不填写时默认值为空，表示不指定元信息名称，将返回该ExtensionAbility对应模块下所有配置文件的json格式字符串数组。         |
 
 **返回值：**
 
@@ -731,7 +731,7 @@ getProfileByExtensionAbilitySync(moduleName: string, extensionAbilityName: strin
 | -------------------- | ------ | ---- | ---------------------------------- |
 | moduleName           | string | 是   | 表示Module名称。           |
 | extensionAbilityName | string | 是   | 表示ExtensionAbility组件的名称。 |
-| metadataName         | string | 否   | 表示ExtensionAbility组件的元信息名称，即module.json5配置文件中[extensionAbilities标签](../../quick-start/module-configuration-file.md#extensionabilities标签)下的metadata标签的name。不填写时默认值为空，表示不指定元信息名称，将返回该ExtensionAbility对应模块下所有配置文件的json格式字符串。 |
+| metadataName         | string | 否   | 表示ExtensionAbility组件的元信息名称，即module.json5配置文件中[extensionAbilities标签](../../quick-start/module-configuration-file.md#extensionabilities标签)下的metadata标签的name。不填写时默认值为空，表示不指定元信息名称，将返回该ExtensionAbility对应模块下所有配置文件的json格式字符串数组。 |
 
 **返回值：**
 
@@ -944,7 +944,7 @@ getBundleInfo(bundleName: string, bundleFlags: number, userId: number, callback:
 | ----------- | ------ | ---- | ---------------------------- |
 | bundleName  | string | 是   | 表示要查询的应用Bundle名称。 |
 | [bundleFlags](#bundleflag) | number | 是   | 指定返回的BundleInfo所包含的信息。|
-| userId      | number | 是   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，取值范围：大于等于0  |
+| userId      | number | 是   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，取值范围：大于等于0的整数。 |
 | callback | AsyncCallback\<[BundleInfo](js-apis-bundleManager-bundleInfo.md)> | 是 | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的指定应用BundleInfo；否则为错误对象。 |
 
 **错误码：**
@@ -1183,7 +1183,7 @@ getBundleInfoSync(bundleName: string, bundleFlags: number, userId: number): Bund
 | ----------- | ------ | ---- | -------------------------------------------------------- |
 | bundleName  | string | 是   | 表示要查询的应用Bundle名称。                                 |
 | [bundleFlags](#bundleflag) | number | 是   | 指定返回的BundleInfo所包含的信息。 |
-| userId      | number | 是   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。 取值范围：大于等于0。             |
+| userId      | number | 是   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。 取值范围：大于等于0的整数。             |
 
 **返回值：**
 
@@ -2280,9 +2280,9 @@ Skill信息。
 | ------------------------------------------------------------ | -------------- |
 | [_Skill.Skill](js-apis-bundleManager-skill.md#skill-1) |Skill信息。 |
 
-## SkillUri<sup>12+</sup>
+## SkillUrl<sup>12+</sup>
 
-type SkillUri = _Skill.SkillUri
+type SkillUrl = _Skill.SkillUri
 
 SkillUri信息。
 
@@ -2294,7 +2294,7 @@ SkillUri信息。
 | ------------------------------------------------------------ | -------------- |
 | [_Skill.SkillUri](js-apis-bundleManager-skill.md#skilluri) |SkillUri信息。 |
 
-## AppCloneIdentity<sup>14+</sup>
+## AppCloneIdentity<sup>15+</sup>
 
 type AppCloneIdentity = _BundleInfo.AppCloneIdentity
 
