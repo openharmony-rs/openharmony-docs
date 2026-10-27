@@ -62,7 +62,7 @@
          mediaKeySystem = drm.createMediaKeySystem(solutionName);
          mediaKeySession = mediaKeySystem.createMediaKeySession();
      }
-   })
+   }
    ```
 
 5. 调用[generateMediaKeyRequest](../../reference/apis-drm-kit/arkts-apis-drm-MediaKeySession.md#generatemediakeyrequest)生成媒体密钥请求，并调用[processMediaKeyResponse](../../reference/apis-drm-kit/arkts-apis-drm-MediaKeySession.md#processmediakeyresponse)处理媒体密钥响应。
