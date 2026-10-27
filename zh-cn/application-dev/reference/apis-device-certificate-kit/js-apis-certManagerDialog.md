@@ -338,7 +338,7 @@ openInstallCertificateDialog(context: common.Context, request: InstallCertificat
 
 **设备行为差异：**
 1. 入参request.certType为CA_CERT时，该接口在PC/2in1设备中可以正常调用，在其他设备中会返回29700004错误码。可以通过[supportsCACertDialog](#certificatemanagerdialogsupportscacertdialog)来判断本设备是否支持打开CA证书安装对话框。
-2. 入参request.certType为CREDENTIAL_USER或CREDENTIAL_SYSTEM时，在PC/2in1、phone和tablet设备中可以正常调用。
+2. 入参request.certType为CREDENTIAL_USER或CREDENTIAL_SYSTEM时，在PC/2in1、Phone和Tablet设备中可以正常调用。
 
 **参数**：
 
@@ -351,7 +351,7 @@ openInstallCertificateDialog(context: common.Context, request: InstallCertificat
 
 | 类型                                        | 说明                 |
 | ------------------------------------------- | -------------------- |
-| Promise\<string> | Promise对象。表示返回证书URI的结果，值最多包含256字节。 |
+| Promise\<string> | Promise对象，返回证书URI的结果，值最多包含256字节。 |
 
 **错误码：**
 
