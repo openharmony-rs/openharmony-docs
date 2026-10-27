@@ -132,9 +132,9 @@ DRM Kit提供MediaKeySystem实现DRM证书管理、DRM许可证管理功能，�
 
       ```ts
       mediaKeySession.on('keysChange', (keyInfo : drm.KeysInfo[], newKeyAvailable:boolean) => {
-          keyInfo.forEach((info: drm.KeysInfo) => {
-              console.info('keysChange' + 'info:' + info.keyId + ' extraInfo:' + info.value);
-          });
+          for(let i = 0; i < keyInfo.length; i++){
+              console.info('keysChange' + 'info:' + keyInfo[i].keyId + ' extraInfo:' + keyInfo[i].value);
+          }
       });
       ```
 
