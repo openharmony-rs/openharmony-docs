@@ -37,7 +37,7 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| ArkUI_KeyIntension OH_ArkUI_KeyIntention | 按键事件意图类型的别名。<br> 原类型名[ArkUI_KeyIntension](#arkui_keyintension)将保留以兼容已有接口。<br>**起始版本：** 26.2.0 |
+| ArkUI_KeyIntension OH_ArkUI_KeyIntention | 按键事件意图类型的别名。<br> 原类型名[ArkUI_KeyIntension](#arkui_keyintension)将保留以兼容已有接口。<br>**起始版本：** 26.1.0 |
 
 ### 函数
 
@@ -631,7 +631,7 @@ ArkUI_ErrorCode OH_ArkUI_KeyEvent_Create(ArkUI_UIInputEvent** event)
 
 创建可通过[OH_ArkUI_KeyEvent_Dispatch](#oh_arkui_keyevent_dispatch)分发的按键事件。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 
 **参数：**
@@ -658,7 +658,7 @@ ArkUI_ErrorCode OH_ArkUI_KeyEvent_Destroy(ArkUI_UIInputEvent** event)
 
 当event不为空且event指向的事件指针为空时，函数执行成功。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 
 **参数：**
@@ -683,7 +683,7 @@ ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetType(ArkUI_UIInputEvent* event, ArkUI_KeyEv
 
 设置通过[OH_ArkUI_KeyEvent_Create](#oh_arkui_keyevent_create)创建的按键事件类型。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 
 **参数：**
@@ -709,7 +709,7 @@ ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetKeyCode(ArkUI_UIInputEvent* event, int32_t 
 
 设置通过[OH_ArkUI_KeyEvent_Create](#oh_arkui_keyevent_create)创建的按键事件键码。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 
 **参数：**
@@ -737,7 +737,7 @@ ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetKeyText(ArkUI_UIInputEvent* event, const ch
 
 本函数会复制keyText。函数返回后，调用方可以释放或复用原字符串。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 
 **参数：**
@@ -763,7 +763,7 @@ ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetKeySource(ArkUI_UIInputEvent* event, ArkUI_
 
 设置通过[OH_ArkUI_KeyEvent_Create](#oh_arkui_keyevent_create)创建的按键事件输入设备类型。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 
 **参数：**
@@ -789,7 +789,7 @@ ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetDeviceId(ArkUI_UIInputEvent* event, int32_t
 
 设置通过[OH_ArkUI_KeyEvent_Create](#oh_arkui_keyevent_create)创建的按键事件设备ID。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 
 **参数：**
@@ -815,7 +815,7 @@ ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetUnicode(ArkUI_UIInputEvent* event, uint32_t
 
 设置通过[OH_ArkUI_KeyEvent_Create](#oh_arkui_keyevent_create)创建的按键事件Unicode码值。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 
 **参数：**
@@ -841,7 +841,7 @@ ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetEventTime(ArkUI_UIInputEvent* event, int64_
 
 设置通过[OH_ArkUI_KeyEvent_Create](#oh_arkui_keyevent_create)创建的按键事件发生时间。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 
 **参数：**
@@ -869,7 +869,7 @@ ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetPressedKeys(ArkUI_UIInputEvent* event, cons
 
 本函数会复制pressedKeyCodes。函数返回后，调用方可以释放或复用原数组。将pressedKeyCodes传入空指针、length传入0可以清空已按下的按键。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 
 **参数：**
@@ -896,7 +896,7 @@ ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetKeyIntentionCode(ArkUI_UIInputEvent* event,
 
 设置通过[OH_ArkUI_KeyEvent_Create](#oh_arkui_keyevent_create)创建的按键事件意图码。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 
 **参数：**
@@ -922,7 +922,7 @@ ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetNumLockOn(ArkUI_UIInputEvent* event, bool i
 
 设置通过[OH_ArkUI_KeyEvent_Create](#oh_arkui_keyevent_create)创建的按键事件中数字键盘锁定键（NumLock）的状态。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 
 **参数：**
@@ -948,7 +948,7 @@ ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetCapsLockOn(ArkUI_UIInputEvent* event, bool 
 
 设置通过[OH_ArkUI_KeyEvent_Create](#oh_arkui_keyevent_create)创建的按键事件中大写字母锁定键（CapsLock）的状态。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 
 **参数：**
@@ -974,7 +974,7 @@ ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetScrollLockOn(ArkUI_UIInputEvent* event, boo
 
 设置通过[OH_ArkUI_KeyEvent_Create](#oh_arkui_keyevent_create)创建的按键事件中滚动锁定键（ScrollLock）的状态。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 
 **参数：**

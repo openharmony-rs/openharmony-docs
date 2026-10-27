@@ -493,7 +493,7 @@ type OnZoomChangeCallback = (zoomChangeInfo: OnZoomChangeEvent) => void
 
 页面缩放倍率变化时所调用的回调函数类型。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -511,7 +511,7 @@ type OnContextMenuUpdateCallback = (menuItemId: WebContextMenuItemId, options?: 
 
 上下文菜单项状态更新的回调类型。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

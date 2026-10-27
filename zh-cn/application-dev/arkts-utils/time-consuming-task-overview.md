@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍耗时任务并发场景的分类与处理策略：图片视频编解码、压缩解压、JSON解析、模型运算、网络下载、数据库操作等典型业务按CPU密集型、I/O密集型、同步任务归类，应放入子线程避免卡顿掉帧。"
+keywords: [耗时任务, CPU密集型, I/O密集型, 同步任务, 视频编解码, 压缩解压, JSON解析, 网络下载, 数据库操作]
+doctype: guide
+status: active
+---
+
 # 耗时任务并发场景简介
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->

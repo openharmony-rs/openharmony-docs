@@ -539,7 +539,7 @@ enableScrollWithMouse(enabled: boolean | undefined): T
 
 | 参数名 | 类型   | 必填 | 说明                                          |
 | ------ | ------ | ---- | --------------------------------------------- |
-| enabled  | boolean \| undefined | 是   | 是否支持鼠标左键按下拖动滚动。<br/>true：支持鼠标左键按下拖动滚动。<br/>false：不支持鼠标左键按下拖动滚动。<br/>undefined：使用默认值。<br/>默认值：API版本26.2.0之前为false。从API版本26.2.0开始，当可滚动组件水平滚动时为true，否则为false。 |
+| enabled  | boolean \| undefined | 是   | 是否支持鼠标左键按下拖动滚动。<br/>true：支持鼠标左键按下拖动滚动。<br/>false：不支持鼠标左键按下拖动滚动。<br/>undefined：首次设置为undefined时，使用默认值。非首次设置为undefined时，保持上一次设置的效果不变。<br/>默认值：API版本26.1.0之前为false。从API版本26.1.0开始，当可滚动组件水平滚动时为true，否则为false。 |
 
 **返回值：**
 
@@ -553,11 +553,11 @@ enableScrollWithKeyboard(enabled: boolean | undefined): T
 
 设置滚动组件是否支持键盘方向键滚动。开启后，滚动组件在获焦且未激活焦点态时会响应键盘方向键滚动。未通过该接口设置时，默认支持键盘方向键滚动。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1451,7 +1451,7 @@ type OnVisibleIndexesChangeCallback = (start: number, end: number) => void
 - 两个回调均在UI线程同步调用，应仅用于计算，不应修改组件布局或应用状态。
 - 回调不提供item的位置和尺寸，开发者需要自行记录或计算这些信息。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 ### calculateApproachOffset
 
@@ -1459,11 +1459,11 @@ calculateApproachOffset(velocity: number, decayOffset: number): number
 
 用于计算惯性阶段滚动距离的回调，在惯性滚动开始时调用一次。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1486,11 +1486,11 @@ calculateSnapOffset(velocity: number): number
 
 用于计算最终吸附位置的回调，在惯性阶段结束、限位动画开始前调用一次。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1814,10 +1814,10 @@ struct Index {
 }
 ```
 
-API版本26.2.0之前，enableScrollWithMouse属性的默认值为false，效果图如下：
+API版本26.1.0之前，enableScrollWithMouse属性的默认值为false，效果图如下：
 
 ![enableScrollWithMouse_before](figures/enableScrollWithMouse_before.gif)
 
-从API版本26.2.0开始，当可滚动组件水平滚动时，enableScrollWithMouse属性的默认值为true，否则为false，效果图如下：
+从API版本26.1.0开始，当可滚动组件水平滚动时，enableScrollWithMouse属性的默认值为true，否则为false，效果图如下：
 
 ![enableScrollWithMouse_after](figures/enableScrollWithMouse_after.gif)

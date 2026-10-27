@@ -14,7 +14,7 @@ typedef struct ContentEmbed_Object* ContentEmbed_ObjectHandle
 
 ## Overview
 
-Defines the **ContentEmbed_Object** struct. When the client connects to the server, the system creates an instance of this object, calls back the [OH_ContentEmbed_Extension_OnObjectAttachFunc](capi-content-embed-extension-h.md#oh_contentembed_extension_onobjectattachfunc) function registered by [OH_ContentEmbed_Extension_RegisterOnObjectAttachFunc](capi-content-embed-extension-h.md#oh_contentembed_extension_registeronobjectattachfunc), and passes the instance pointer of this type.
+Defines the pointer type of the **ContentEmbed_Object** object. When the client connects to the server, the system creates an instance of this object, calls back the [OH_ContentEmbed_Extension_OnObjectAttachFunc](capi-content-embed-extension-h.md#oh_contentembed_extension_onobjectattachfunc) function registered by [OH_ContentEmbed_Extension_RegisterOnObjectAttachFunc](capi-content-embed-extension-h.md#oh_contentembed_extension_registeronobjectattachfunc), and passes the instance pointer of this type.
 
 **Since**: 24
 

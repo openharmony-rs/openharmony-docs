@@ -219,7 +219,7 @@ promiseSuccess.then((res) => {
   hilog.info(0x0000, 'Node-API', 'get_resolve_deferred resolve %{public}s', res);
   // ...
 }).catch((err: Error) => {
-  hilog.info(0x0000, 'Node-API', 'get_resolve_deferred reject %{public}s', err);
+  hilog.error(0x0000, 'Node-API', 'get_resolve_deferred reject %{public}s', err);
   // ...
 })
 // Promise状态为false时设置reject，返回结果在catch函数中获得
@@ -229,7 +229,7 @@ promiseFail.then((res) => {
   hilog.info(0x0000, 'Node-API', 'get_resolve_deferred resolve %{public}s', res);
   // ...
 }).catch((err: Error) => {
-  hilog.info(0x0000, 'Node-API', 'get_resolve_deferred reject %{public}s', err);
+  hilog.error(0x0000, 'Node-API', 'get_resolve_deferred reject %{public}s', err);
   // ...
 })
 ```

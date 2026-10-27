@@ -596,7 +596,7 @@ startBackgroundRunning(context: Context, request: ContinuousTaskRequest): Promis
 | 参数名       | 类型                                 | 必填   | 说明                                       |
 | --------- | ---------------------------------- | ---- | ---------------------------------------- |
 | context   | [Context](../apis-ability-kit/js-apis-inner-application-context.md)                            | 是    | 应用运行的上下文。 <br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 <br> **说明：** Stage模型中，仅支持UIAbility申请；FA模型中，仅支持ServiceAbility申请。|
-| request   | [ContinuousTaskRequest](#continuoustaskrequest21) | 是    | 长时任务请求信息，包括长时任务主类型、子类型等。|
+| request   | [ContinuousTaskRequest](#continuoustaskrequest21) | 是    | 长时任务请求信息，包括长时任务主类型、子类型等。<br> **说明：** 在本接口中使用[ProgressInfo](#progressinfo)属性不生效，如果需要该属性实现更新通知功能，请使用[startContinuousTask()](#backgroundtaskmanagerstartcontinuoustask)接口代替。 |
 
 **返回值：**
 
@@ -616,7 +616,7 @@ startBackgroundRunning(context: Context, request: ContinuousTaskRequest): Promis
 | 9800005 | Continuous task verification failed. |
 | 9800006 | Notification verification failed for a continuous task. |
 | 9800007 | Continuous task storage failed. |
-| 9800008 | The requested continuous task is not supported on this device type.<br/>**起始版本：** 26.0.1 |
+| 9800008 | The requested continuous task is not supported on this device type.<br>适用版本：26.0.1+ |
 
 **示例：**
 
@@ -1065,7 +1065,7 @@ updateBackgroundRunning(context: Context, request: ContinuousTaskRequest): Promi
 | 参数名       | 类型                                 | 必填   | 说明                                       |
 | --------- | ---------------------------------- | ---- | ---------------------------------------- |
 | context   | [Context](../apis-ability-kit/js-apis-inner-application-context.md)                            | 是    | 应用运行的上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 <br> **说明：** Stage模型中，仅支持UIAbility申请；FA模型中，仅支持ServiceAbility申请。 |
-| request   | [ContinuousTaskRequest](#continuoustaskrequest21) | 是    | 长时任务请求信息，包括待更新的长时任务ID等。 |
+| request   | [ContinuousTaskRequest](#continuoustaskrequest21) | 是    | 长时任务请求信息，包括待更新的长时任务ID等。<br> **说明：** 在本接口中使用[ProgressInfo](#progressinfo)属性报错，错误码为[9800006](errorcode-backgroundTaskMgr.md#9800006-长时任务通知信息校验失败)。如果需要该属性实现更新通知功能，请使用[startContinuousTask()](#backgroundtaskmanagerstartcontinuoustask)接口代替。 |
 
 **返回值：**
 
@@ -1085,7 +1085,7 @@ updateBackgroundRunning(context: Context, request: ContinuousTaskRequest): Promi
 | 9800005 | Continuous task verification failed. |
 | 9800006 | Notification verification failed for a continuous task. |
 | 9800007 | Continuous task storage failed. |
-| 9800008 | The requested continuous task is not supported on this device type.<br/>**起始版本：** 26.0.1 |
+| 9800008 | The requested continuous task is not supported on this device type.<br>适用版本：26.0.1+ |
 
 **示例：**
 
@@ -1896,7 +1896,7 @@ export default class EntryAbility extends UIAbility {
 | wantAgent | [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md#wantagent) | 否    | 否    | 通知参数，用于指定点击长时任务通知后跳转的界面。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 | combinedTaskNotification | boolean   | 否    | 是    | 是否合并通知，true表示合并，false表示不合并，默认为false。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**说明：** 该属性在[updateBackgroundRunning](#backgroundtaskmanagerupdatebackgroundrunning21)接口中不生效，如需在已有任务上合并通知，请重新申请该任务，并在申请时设置为支持合并。|
 | continuousTaskId | number   | 否    | 是    | 长时任务ID，默认值为-1。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 <br/>**说明：** 如果combinedTaskNotification取值为true，则该值为必填项，且必须是存在的ID。<br/>作为[updateBackgroundRunning](#backgroundtaskmanagerupdatebackgroundrunning21)接口入参时，该属性必填，且必须是存在的ID。<br/>可以通过[getAllContinuousTasks](#backgroundtaskmanagergetallcontinuoustasks20-1)接口查看当前所有长时任务信息。   |
-| progressInfo | [ProgressInfo](#progressinfo)   | 否    | 是    | 长时任务通知进度信息。<br/>**起始版本：** 26.0.1<br/> **模型约束：** 此接口仅可在Stage模型下使用。<br/>**说明：** 该属性仅在通过[startcontinuoustask()](#backgroundtaskmanagerstartcontinuoustask)接口申请长时任务，且长时任务类型包含数据传输类型[MODE_DATA_TRANSFER](#backgroundtaskmode21)时生效。<br/>在[updateBackgroundRunning()](#backgroundtaskmanagerupdatebackgroundrunning21)接口中不允许使用该属性。<!--RP1--><!--RP1End--> |
+| progressInfo | [ProgressInfo](#progressinfo)   | 否    | 是    | 长时任务通知进度信息。<br/>**起始版本：** 26.0.1<br/> **模型约束：** 此接口仅可在Stage模型下使用。<br/>**说明：** 该属性仅在通过[startcontinuoustask()](#backgroundtaskmanagerstartcontinuoustask)接口申请长时任务，且长时任务类型包含数据传输类型[MODE_DATA_TRANSFER](#backgroundtaskmode21)时生效。<br/>在[updateBackgroundRunning()](#backgroundtaskmanagerupdatebackgroundrunning21)接口中使用该属性报错，错误码为[9800006](errorcode-backgroundTaskMgr.md#9800006-长时任务通知信息校验失败)。<!--RP1--><!--RP1End--> |
 
 ### isModeSupported<sup>21+</sup>
 

@@ -93,7 +93,9 @@ edgeLight(params: EdgeLightParams | undefined): T
 >
 > - 仅设置edgeLight不会产生边缘流光效果，需结合[animateTo](../arkts-apis-uicontext-uicontext.md#animateto)更改position参数达到流光效果。可参考[示例4（设置组件边缘流光效果）](#示例4设置组件边缘流光效果)。
 >
-> - 当position参数以对角线方式变更时（如从TOP_LEFT变更到BOTTOM_RIGHT），边缘流光将沿倾斜角45°的方式运行。
+> - 流光效果只沿控件原始边缘绘制；若控件经过裁剪（如clip形状），不会沿裁剪后的边缘呈现流光。
+>
+> - position参数建议设置成中心对称方向（如从TOP_LEFT变更到BOTTOM_RIGHT，从LEFT变更到RIGHT），边缘流光将沿控件的边缘运行。参考示例：[示例4（设置组件边缘流光效果）](#示例4设置组件边缘流光效果)。
 
 **起始版本：** 26.0.0
 
@@ -130,7 +132,7 @@ edgeLight(params: EdgeLightParams | undefined): T
 | 名称     | 类型                                                       | 只读 | 可选 | 说明                                                    |
 | -------- | --------------------------------------------------------- | ---- | ---- |------------------------------------------------------- |
 | position | [EdgeLightPosition](./ts-appendix-enums-sys.md#edgelightposition枚举说明)          | 否   | 否   | 边缘流光位置。                                           |
-| length   | [Length](ts-types.md#length)                              | 否   | 否   | 沿流动方向的边缘流光的投影长度（不支持百分比，传入百分比时不生效）。<br>取值范围：[0, +∞)<br>单位：vp<br>**说明：**<br>length为0时，无边缘流光投影效果。<br>设置小于0的值时，按值为0处理。 |
+| length   | [Length](ts-types.md#length)                              | 否   | 否   | 边缘流光沿流动方向延伸的长度。<br>该参数不支持百分比，传入百分比时不生效。<br>取值范围：[0, +∞)<br>单位：vp<br>**说明：**<br>length为0时，无边缘流光效果。<br>设置小于0的值时，按值为0处理。 |
 | intensity | number                                                   | 否   | 是   | 边缘流光效果的发光强度。<br>取值范围：[0, 1]<br>默认值：1<br>**说明：**<br>值为0时，流光效果完全不可见。<br>值为1时，流光效果达到最大亮度。<br>设置大于1的值时，按值为1处理。<br>设置小于0的值时，按值为0处理。 |
 | color    | [ResourceColor](ts-types.md#resourcecolor)                | 否   | 是   | 边缘流光颜色。<br>默认值：#FFFFFF，显示为白色。 |
 | thickness | [Length](ts-types.md#length)                             | 否   | 是   | 边缘流光线条粗细（不支持百分比，传入百分比时不生效）。<br>取值范围：[0, +∞)<br>单位：vp<br>默认值：0<br>**说明：**<br>thickness为0时，边缘流光线条不可见。<br>设置小于0的值时，按值为0处理。 |
@@ -354,29 +356,45 @@ struct Index {
 ```ts
 // xxx.ets
 import { curves } from '@kit.ArkUI';
+
 @Entry
 @Component
 struct Index {
-  @State animate: boolean = false;
-  @State edgeLightPosition: EdgeLightPosition = EdgeLightPosition.TOP_LEFT;
+  // 对称方向流光：起点 - 终点（TOP_LEFT↔BOTTOM_RIGHT、TOP_RIGHT↔BOTTOM_LEFT、TOP↔BOTTOM、LEFT↔RIGHT）
+  private fromNames: string[] = ['TOP_LEFT', 'TOP_RIGHT', 'TOP', 'LEFT'];
+  private toNames: string[] = ['BOTTOM_RIGHT', 'BOTTOM_LEFT', 'BOTTOM', 'RIGHT'];
+  private fromPositions: EdgeLightPosition[] = [EdgeLightPosition.TOP_LEFT, EdgeLightPosition.TOP_RIGHT,
+    EdgeLightPosition.TOP, EdgeLightPosition.LEFT];
+  private toPositions: EdgeLightPosition[] = [EdgeLightPosition.BOTTOM_RIGHT, EdgeLightPosition.BOTTOM_LEFT,
+    EdgeLightPosition.BOTTOM, EdgeLightPosition.RIGHT];
+  @State current: EdgeLightPosition = EdgeLightPosition.TOP_LEFT;
+  @State hopIndex: number = 0;
+  @State label: string = 'TOP_LEFT - BOTTOM_RIGHT';
+
   build() {
     Column() {
-      Column()
+      Button(this.label)
         .height(300)
         .width(300)
         .backgroundColor(Color.Gray)
         .borderRadius(20)
         .edgeLight({
-          position: this.edgeLightPosition,
+          position: this.current,
           length: 90,
           intensity: 1,
           color: Color.White,
           thickness: 2
         })
         .onClick(() => {
-          this.getUIContext()?.animateTo({ curve: curves.springMotion(), duration: 3000}, () => {
-            this.animate = !this.animate;
-            this.edgeLightPosition = this.animate ? EdgeLightPosition.BOTTOM_RIGHT : EdgeLightPosition.TOP_LEFT;
+          // 每点击一次，流光沿一组对称方向从起点移动到终点，并更新按钮文字
+          const index: number = this.hopIndex % this.fromNames.length;
+          const nextIndex: number = (index + 1) % this.fromNames.length;
+          // 先将流光定位到本组对称方向起点，再动画流动到终点
+          this.current = this.fromPositions[index];
+          this.getUIContext()?.animateTo({ curve: curves.springMotion(1), duration: 3000 }, () => {
+            this.current = this.toPositions[index];
+            this.label = `${this.fromNames[index]} - ${this.toNames[index]}`;
+            this.hopIndex = nextIndex;
           })
         })
     }

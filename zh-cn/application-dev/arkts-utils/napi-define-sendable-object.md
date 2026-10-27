@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍自定义Native Sendable对象的多线程操作：通过napi_define_sendable_class在Native侧定义Sendable类，获得并发实例间引用传递的高效通信能力，适用于子线程读取数据库大对象返回宿主线程等场景。"
+keywords: [Native Sendable, napi_define_sendable_class, Sendable类, Node-API, 自定义对象, 引用传递, 线程间数据共享, 多线程]
+doctype: guide
+status: active
+---
+
 # 自定义Native Sendable对象的多线程操作场景
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->

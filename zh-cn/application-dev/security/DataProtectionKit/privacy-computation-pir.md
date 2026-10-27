@@ -16,7 +16,9 @@ PIR协议（隐私信息检索，Private Information Retrieval）适用于在不
 
 1. 接口所需模块导入。
 
-   ```ts
+   <!-- @[import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/PrivacyComputation/entry/src/main/ets/operations/pir.ets) -->
+   
+   ``` TypeScript
    import { privacyComputation } from '@kit.DataProtectionKit';
    ```
 
@@ -24,7 +26,9 @@ PIR协议（隐私信息检索，Private Information Retrieval）适用于在不
 
    构造[TargetElement](../../reference/apis-data-protection-kit/js-apis-privacyComputation.md#targetelement)（目标元素原始数据与哈希算法）和[PrivacyProtocol](../../reference/apis-data-protection-kit/js-apis-privacyComputation.md#privacyprotocol)（协议类型设为PIR_PROTOCOL），调用[genPrivacyTarget](../../reference/apis-data-protection-kit/js-apis-privacyComputation.md#privacycomputationgenprivacytarget)生成隐私目标。
 
-   ```ts
+   <!-- @[genPrivacyTarget](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/PrivacyComputation/entry/src/main/ets/operations/pir.ets) -->
+   
+   ``` TypeScript
    const targetElement: privacyComputation.TargetElement = {
      elemData: new Uint8Array([0x01, 0x02, 0x03]),
      hashAlg: privacyComputation.HashAlg.SHA256
@@ -40,8 +44,10 @@ PIR协议（隐私信息检索，Private Information Retrieval）适用于在不
 
    构造[Element](../../reference/apis-data-protection-kit/js-apis-privacyComputation.md#element)数组（数据集元素，包含键、哈希算法与附加值elemValue），连同隐私目标和协议配置，调用[privacySearch](../../reference/apis-data-protection-kit/js-apis-privacyComputation.md#privacycomputationprivacysearch)执行隐私搜索。elemValue为命中时返回的附加值，仅在PIR协议中使用。
 
-   ```ts
-   const elements: Array<privacyComputation.Element> = [
+   <!-- @[privacySearch](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/PrivacyComputation/entry/src/main/ets/operations/pir.ets) -->
+   
+   ``` TypeScript
+   const elements: privacyComputation.Element[] = [
      {
        elemKey: new Uint8Array([0x01, 0x02, 0x03]),
        hashAlg: privacyComputation.HashAlg.SHA256,
@@ -61,7 +67,9 @@ PIR协议（隐私信息检索，Private Information Retrieval）适用于在不
 
    将[privacySearch](../../reference/apis-data-protection-kit/js-apis-privacyComputation.md#privacycomputationprivacysearch)返回的结果传入[getSearchResult](../../reference/apis-data-protection-kit/js-apis-privacyComputation.md#privacycomputationgetsearchresult)，解密得到[SearchResult](../../reference/apis-data-protection-kit/js-apis-privacyComputation.md#searchresult)。matchedResult指示是否命中；命中时attachedValues返回匹配元素的附加值。
 
-   ```ts
+   <!-- @[getSearchResult](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/PrivacyComputation/entry/src/main/ets/operations/pir.ets) -->
+   
+   ``` TypeScript
    const result: privacyComputation.SearchResult =
      await privacyComputation.getSearchResult(searchResult, privacyProtocol);
    console.info('matched: ' + result.matchedResult);

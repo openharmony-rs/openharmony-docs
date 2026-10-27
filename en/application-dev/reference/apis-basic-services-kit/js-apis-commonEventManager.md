@@ -5,7 +5,7 @@
 <!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=54656b3da3e41e2ba7f2b57573523f0dbf41c1e3 translatedAt=2026-10-08T09:10:55.351Z pushedAt=2026-10-09T03:03:08.707Z -->
+<!-- md-trans-meta sourceCommit=097d84c08b6dd34c7fea7675d84d753092b8a960 translatedAt=2026-10-23T03:08:07.829Z pushedAt=2026-10-23T09:46:54.468Z nl=1 -->
 
 This module provides APIs to publish, subscribe to, and unsubscribe from common events. This module provides a system-level event notification mechanism that allows an app to send notifications to other apps that have subscribed to the event when the system status changes (such as power-on completion, battery level change, and screen on/off) or a custom service event occurs. This mechanism enables transferring information across components and apps.
 
@@ -35,6 +35,10 @@ The event communication of this module involves three processes: subscription, p
 1. Set **isOrdered** to **true** using **CommonEventPublishData** and call **publish** to publish ordered events. Events are delivered in sequence based on the subscriber priority.
 2. The subscriber with a higher priority receives the event first, who can modify the code and data in the callback using methods such as **setCodeAndData** for subsequent subscribers to receive.
 3. After the processing is complete, call **finishCommonEvent** to deliver the event to the subscriber with the next highest priority. To stop delivering the event, call **abortCommonEvent** to mark the event as aborted.
+
+> **Description**
+>
+> The processing duration of an ordered common event for each subscriber is limited (the timeout interval is 10 seconds). If a subscriber does not call [finishCommonEvent](js-apis-inner-commonEvent-commonEventSubscriber.md#finishcommonevent9) within the timeout interval after receiving an ordered common event, the system considers that the subscriber has completed the processing and automatically delivers the event to the subscriber with the next highest priority. In this case, the system does not send a timeout notification to the current subscriber. After that, the **setCode**, **setData**, **setCodeAndData**, and **finishCommonEvent** APIs called by the subscriber will no longer take effect.
 
 > **NOTE**
 >

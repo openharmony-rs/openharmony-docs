@@ -29,7 +29,7 @@ typedef struct OH_UsbManager_UsbDevice {...} OH_UsbManager_UsbDevice
 | -- | -- |
 | uint8_t busNum | USB设备的总线编号。<br>**起始版本：** 26.0.1 |
 | uint8_t devAddress | 设备在总线上的地址。<br>**起始版本：** 26.0.1 |
-| const char *name | 设备名称，格式为<总线编号>-<设备地址>。<br>**起始版本：** 26.0.1 |
+| const char *name | 设备名称，格式为\<总线编号\>-\<设备地址\>。<br>**起始版本：** 26.0.1 |
 | const char *manufacturerName | 制造商名称。<br>**起始版本：** 26.0.1 |
 | const char *productName | 产品名称。<br>**起始版本：** 26.0.1 |
 | const char *version | 设备版本。<br>**起始版本：** 26.0.1 |

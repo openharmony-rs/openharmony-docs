@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍通过use shared指令声明的共享模块机制：模块内对象在编译期确定布局，可在并发实例间共享访问，适用于全局配置等进程单例场景，并说明共享模块的约束限制与使用示例。"
+keywords: [共享模块, use shared, Sendable, 进程单例, 全局配置, 并发实例共享, 编译期布局]
+doctype: guide
+status: active
+---
+
 # 共享模块
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
@@ -61,7 +69,7 @@
 
 - 共享模块可以引用其他共享模块或非共享模块，引用和被引用场景没有限制。
 
-- 仅支持使用静态加载、[动态加载](arkts-dynamic-import.md)、[napi_load_module](../reference/native-lib/napi.md#napi_load_module)或[napi_load_module_with_info](../reference/native-lib/napi.md#napi_load_module_with_info)加载共享模块。其中，动态加载从API version 26.2.0开始支持。
+- 仅支持使用静态加载、[动态加载](arkts-dynamic-import.md)、[napi_load_module](../reference/native-lib/napi.md#napi_load_module)或[napi_load_module_with_info](../reference/native-lib/napi.md#napi_load_module_with_info)加载共享模块。其中，动态加载从API version 26.1.0开始支持。
 
   支持静态加载：
 

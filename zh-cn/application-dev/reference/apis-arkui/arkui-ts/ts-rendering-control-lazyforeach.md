@@ -46,7 +46,7 @@ LazyForEach从提供的数据源中按需迭代数据，并在每次迭代过程
 >
 > 从API版本26.0.0开始，LazyForEach支持传入[LazyForEachOptions](#lazyforeachoptions)，用于使能自定义组件冻结和配置内存优化策略、资源释放策略。
 >
-> 从API版本26.2.0开始，LazyForEachOptions新增[controller](#lazyforeachoptions)属性，用于绑定控制器[LazyForEachController](#lazyforeachcontroller)。
+> 从API版本26.1.0开始，LazyForEachOptions新增[controller](#lazyforeachoptions)属性，用于绑定控制器[LazyForEachController](#lazyforeachcontroller)。
 
 **起始版本：** 26.0.0
 
@@ -582,7 +582,7 @@ type DataOperation = DataAddOperation | DataDeleteOperation | DataChangeOperatio
 | customComponentFreezeMode   | [LazyForEachCustomComponentFreezeMode](#lazyforeachcustomcomponentfreezemode) | 否 | 是   | 选择是否使能自定义组件冻结。仅在LazyForEach下直接使用自定义组件时生效，其他情况不适用。<br>默认为[AUTO](#lazyforeachcustomcomponentfreezemode)。        |
 | releaseStrategy  | [LazyForEachReleaseStrategy](#lazyforeachreleasestrategy)   | 否 | 是   | 为LazyForEach配置资源释放策略。<br>默认使用[BATCH](#lazyforeachreleasestrategy)，批量释放节点。           |
 | memoryOptimizationStrategy   | [LazyForEachMemOptStrategy](#lazyforeachmemoptstrategy) | 否 | 是   | LazyForEach的内存优化策略。该参数在创建LazyForEach时设定，不支持动态修改。<br>默认值：[DEFAULT](#lazyforeachmemoptstrategy) |
-| controller   | [LazyForEachController](#lazyforeachcontroller) | 否 | 是   | 绑定到LazyForEach组件上的控制器。绑定后，需要清理缓存时可调用[clearCache](#clearcache)清理LazyForEach组件预加载的子组件。该控制器仅在创建LazyForEach时绑定，不支持动态修改。<br>默认值：undefined，即不绑定控制器。<br>**起始版本：** 26.2.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。 |
+| controller   | [LazyForEachController](#lazyforeachcontroller) | 否 | 是   | 绑定到LazyForEach组件上的控制器。绑定后，需要清理缓存时可调用[clearCache](#clearcache)清理LazyForEach组件预加载的子组件。该控制器仅在创建LazyForEach时绑定，不支持动态修改。<br>默认值：undefined，即不绑定控制器。<br>**起始版本：** 26.1.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。 |
 
 ## LazyForEachCustomComponentFreezeMode
 
@@ -650,11 +650,11 @@ LazyForEach组件的控制器。通过[LazyForEachOptions](#lazyforeachoptions)�
 > 1. controller仅在LazyForEach创建时绑定，不支持动态修改。
 > 2. 一个控制器只能控制一个LazyForEach组件。若将控制器绑定到另一个LazyForEach，则之前的绑定自动失效，控制器仅控制最后绑定的组件。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -664,11 +664,11 @@ constructor()
 
 LazyForEachController的构造函数。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -678,11 +678,11 @@ clearCache(): void
 
 清理该控制器绑定的LazyForEach组件预加载的子组件。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -759,7 +759,7 @@ struct MemoryOptimizeDemo {
 
 以下示例中，通过[LazyForEachOptions](#lazyforeachoptions)的controller属性绑定了[LazyForEachController](#lazyforeachcontroller)，点击Clear按钮时主动清理LazyForEach预加载的子组件。
 
-从API版本26.2.0开始，LazyForEachOptions新增controller属性。
+从API版本26.1.0开始，LazyForEachOptions新增controller属性。
 
 BasicDataSource代码见LazyForEach开发者指南末尾BasicDataSource示例代码：[string类型数组的BasicDataSource代码](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md#string类型数组的basicdatasource代码)。
 

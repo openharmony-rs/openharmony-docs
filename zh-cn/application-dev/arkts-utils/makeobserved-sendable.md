@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍ArkUI数据更新场景下Sendable对象的使用：由于状态装饰器与Sendable装饰器不能同时修饰，通过makeObserved将子线程获取的Sendable数据转换为可观测对象以触发UI更新，并说明可观测数据不能回传子线程的限制。"
+keywords: [makeObserved, Sendable可观测对象, ArkUI数据更新, UI状态管理, 子线程数据同步, 数据观测]
+doctype: guide
+status: active
+---
+
 # ArkUI数据更新场景
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->

@@ -26,12 +26,12 @@ ArkUI提供轻量的UI元素复用机制[\@Builder](../../reference/apis-arkui/a
 >
 > 从API version 11开始，该装饰器支持在原子化服务中使用。
 >
-> 从API版本26.2.0开始，\@Builder支持传入配置项。
+> 从API版本26.1.0开始，\@Builder支持传入配置项。
 
 
 ## 装饰器使用说明
 
-\@Builder装饰器有两种使用方式，分别是定义在自定义组件内部的[私有自定义构建函数](#私有自定义构建函数)和定义在全局的[全局自定义构建函数](#全局自定义构建函数)。从API版本26.2.0开始，全局自定义构建函数还支持传入配置项，详见[占位构建函数](#占位构建函数)。
+\@Builder装饰器有两种使用方式，分别是定义在自定义组件内部的[私有自定义构建函数](#私有自定义构建函数)和定义在全局的[全局自定义构建函数](#全局自定义构建函数)。从API版本26.1.0开始，全局自定义构建函数还支持传入配置项，详见[占位构建函数](#占位构建函数)。
 
 ### 私有自定义构建函数
 
@@ -111,7 +111,7 @@ struct BuilderSample {
 
 > **说明：**
 >
-> 从API版本26.2.0开始，\@Builder支持传入[BuilderDecoratorConfig](../../reference/apis-arkui/arkui-ts/ts-universal-builder-dynamic.md#builderdecoratorconfig)配置项。
+> 从API版本26.1.0开始，\@Builder支持传入[BuilderDecoratorConfig](../../reference/apis-arkui/arkui-ts/ts-universal-builder-dynamic.md#builderdecoratorconfig)配置项。
 
 传入配置项的\@Builder可以将\@Builder函数声明为占位构建函数，用于在可滚动组件（如[Grid](../../reference/apis-arkui/arkui-ts/ts-container-grid.md)、[List](../../reference/apis-arkui/arkui-ts/ts-container-list.md)、[WaterFlow](../../reference/apis-arkui/arkui-ts/ts-container-waterflow.md)）创建真实列表项期间展示占位内容：可滚动组件先渲染占位内容，真实列表项创建完成后再替换占位内容。占位构建函数需经[wrapBuilder](../../reference/apis-arkui/arkui-ts/ts-universal-wrapBuilder.md#wrapbuilder)包装后，通过`placeholderRegister`的`register`方法注册，并通过可滚动组件的`scrollPlaceholder`属性引用。
 
