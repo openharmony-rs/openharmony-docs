@@ -181,6 +181,7 @@ setWindowBackgroundColor(color: string): Promise&lt;void&gt;
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 16500050 | An IPC connection error happened.                            |
+| 16501026 | Invalid color value.                           |
 
 **示例：**
 
