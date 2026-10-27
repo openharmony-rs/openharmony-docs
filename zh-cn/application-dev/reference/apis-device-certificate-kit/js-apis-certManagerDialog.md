@@ -87,9 +87,9 @@ import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 | ERROR_NOT_COMPLY_SECURITY_POLICY<sup>18+</sup>  | 29700005      | 表示该操作不符合设备安全策略。<br>例如设备不允许用户管理GLOBAL_USER的CA证书。<br/>**ArkTS-Dyn起始版本**：18<br/>**ArkTS-Sta起始版本**：23 |
 | ERROR_PARAMETER_VALIDATION_FAILED<sup>22+</sup>  | 29700006      | 表示输入参数校验失败。<br>例如参数格式不正确或取值范围无效。<br/>**ArkTS-Dyn起始版本**：22<br/>**ArkTS-Sta起始版本**：23 |
 | ERROR_NO_AVAILABLE_CERTIFICATE<sup>22+</sup>  | 29700007      | 表示没有可用证书。<br/>**ArkTS-Dyn起始版本**：22<br/>**ArkTS-Sta起始版本**：23 |
-| ERROR_PASSWORD_IS_INCORRECT  | 29700008      | 表示密码不正确。<br>**ArkTS-Dyn起始版本** 26.1.0<br/>**ArkTS-Sta起始版本**：26.1.0 |
-| ERROR_OPERATION_TIMEOUT  | 29700009      | 表示证书管理对话框操作超时。<br>**ArkTS-Dyn起始版本** 26.0.1<br/>**ArkTS-Sta起始版本**：26.0.1 |
-| ERROR_NOT_CONCURRENT_SUPPORT  | 29700010      | 表示API不支持并发调用。<br>**ArkTS-Dyn起始版本** 26.0.1<br/>**ArkTS-Sta起始版本**：26.0.1 |
+| ERROR_PASSWORD_IS_INCORRECT  | 29700008      | 表示密码不正确。<br>**ArkTS-Dyn起始版本**：26.1.0<br/>**ArkTS-Sta起始版本**：26.1.0 |
+| ERROR_OPERATION_TIMEOUT  | 29700009      | 表示证书管理对话框操作超时。<br>**ArkTS-Dyn起始版本**：26.0.1<br/>**ArkTS-Sta起始版本**：26.0.1 |
+| ERROR_NOT_CONCURRENT_SUPPORT  | 29700010      | 表示API不支持并发调用。<br>**ArkTS-Dyn起始版本**：26.0.1<br/>**ArkTS-Sta起始版本**：26.0.1 |
 
 ## CertificateDialogProperty<sup>18+</sup>
 
@@ -139,8 +139,8 @@ USB Key PIN码认证请求。
 | 名称              | 类型    | 只读 | 可选 | 说明                         |
 | ----------------- | ------- | ---- | ---- | ---------------------------- |
 | keyUri | string   | 否   | 否   | 表示USB Key证书凭据的唯一标识符，长度限制256字节以内。该参数值可通过调用[openAuthorizeDialog](#certificatemanagerdialogopenauthorizedialog22)接口返回的CertReference中获取。 |
-| customData | Uint8Array   | 否   | 是   | 表示传入Ukey鉴权对话框的自定义数据，最大长度2048字节。一般情况下，该字段仅在调用[openAuthDialogForUkeyProvider](#certificatemanagerdialogopenauthdialogforukeyprovider)接口时需要提供。<br>**ArkTS-Dyn起始版本** 26.0.1<br/>**ArkTS-Sta起始版本**：26.0.1 |
-| timeoutDuration | number   | 否   | 是   | 表示Ukey认证对话框的操作超时时间，单位为秒。取值范围为[180, 600]内的整数，默认值为300。<br>**ArkTS-Dyn起始版本** 26.0.1<br/>**ArkTS-Sta起始版本**：26.0.1 |
+| customData | Uint8Array   | 否   | 是   | 表示传入Ukey鉴权对话框的自定义数据，最大长度2048字节。一般情况下，该字段仅在调用[openAuthDialogForUkeyProvider](#certificatemanagerdialogopenauthdialogforukeyprovider)接口时需要提供。<br>**ArkTS-Dyn起始版本**： 26.0.1<br/>**ArkTS-Sta起始版本**：26.0.1 |
+| timeoutDuration | number   | 否   | 是   | 表示Ukey认证对话框的操作超时时间，单位为秒。取值范围为[180, 600]内的整数，默认值为300。<br>**ArkTS-Dyn起始版本**：26.0.1<br/>**ArkTS-Sta起始版本**：26.0.1 |
 
 ## AuthorizeRequest<sup>22+</sup>
 
@@ -166,7 +166,7 @@ USB Key PIN码认证请求。
 
 表示Ukey认证对话框的Ability类型。
 
-**ArkTS-Dyn起始版本** 26.0.1
+**ArkTS-Dyn起始版本**：26.0.1
 
 **ArkTS-Sta起始版本**：26.0.1
 
@@ -182,7 +182,7 @@ USB Key PIN码认证请求。
 
 表示需要打开的Ukey认证对话框信息。
 
-**ArkTS-Dyn起始版本** 26.0.1
+**ArkTS-Dyn起始版本**：26.0.1
 
 **ArkTS-Sta起始版本**：26.0.1
 
@@ -199,7 +199,7 @@ USB Key PIN码认证请求。
 
 安装证书对话框的请求参数。
 
-**ArkTS-Dyn起始版本** 26.1.0
+**ArkTS-Dyn起始版本**：26.1.0
 
 **ArkTS-Sta起始版本**：26.1.0
 
@@ -363,7 +363,7 @@ openInstallCertificateDialog(context: common.Context, request: InstallCertificat
 
 打开证书管理安装证书对话框。证书安装成功后，返回证书的唯一标识符，应用可以使用该标识符来使用证书。使用Promise异步回调。
 
-**ArkTS-Dyn起始版本** 26.1.0
+**ArkTS-Dyn起始版本**：26.1.0
 
 **ArkTS-Sta起始版本**：26.1.0
 
@@ -854,7 +854,7 @@ openAuthDialogForUkeyProvider(dialogInfo: UkeyAuthDialogInfo, ukeyAuthRequest: U
 
 打开USB Key证书凭据的Ukey认证对话框，用于实现支付、证书更新等场景下的自定义对话框功能。该接口仅供UKey驱动应用调用，Ukey认证对话框需由UKey驱动应用通过[UkeyAuthExtensionAbility](js-apis-UkeyAuthExtensionAbility.md)实现。使用Promise异步回调。
 
-**ArkTS-Dyn起始版本** 26.0.1
+**ArkTS-Dyn起始版本**：26.0.1
 
 **ArkTS-Sta起始版本**：26.0.1
 
