@@ -70,7 +70,7 @@ type Transformer = (this: Object, key: string, value: Object) => Object | undefi
 | 名称 | 类型 | 只读 | 可选 | 说明            |
 | ------ | ------ | ---- | ---- | --------------- |
 | bigIntMode   | [BigIntMode](#bigintmode) | 否 | 否 | 定义处理BigInt的模式。|
-| parseReturnType   | [ParseReturnType](#parsereturntype) | 否 | 是 | 定义解析返回结果的类型，省略时默认为OBJECT。仅对[JSON.parseSendable](#jsonparsesendable)生效；[JSON.parse](#jsonparse)会忽略该字段。API版本26.0.1新增。|
+| parseReturnType   | [ParseReturnType](#parsereturntype) | 否 | 是 | 定义解析返回结果的类型，省略时默认为OBJECT。仅对[JSON.parseSendable](#jsonparsesendable)生效；[JSON.parse](#jsonparse)会忽略该字段。<br>**起始版本：** 26.0.1<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。|
 
 ## JSON.parse
 
