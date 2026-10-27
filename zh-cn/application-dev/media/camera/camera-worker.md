@@ -159,12 +159,12 @@
      }
    }
    
-   workerPort.onmessageerror = (e: MessageEvents) => {
-    console.error(`onmessage error is called, ${e}`);
+   workerPort.onmessageerror = (error: MessageEvents) => {
+    console.error(`onmessage error is called, ${error}`);
    }
    
-   workerPort.onerror = (e: ErrorEvent) => {
-    console.error(`onerror is called, ${e}`);
+   workerPort.onerror = (error: ErrorEvent) => {
+    console.error(`onerror is called, ${error}`);
    }
    ```
 

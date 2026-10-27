@@ -513,7 +513,7 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
       session?.setFocusMode(focusMode);
     }
 
-    // 设置防抖
+    // 设置防抖。
     function setStabilizationFn(session: camera.VideoSession, stabilizationMode: camera.VideoStabilizationMode)
     {
       try {
@@ -524,7 +524,7 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
       }
     }
 
-    // 设置色彩空间
+    // 设置色彩空间。
     function setColorSpaceFn(session: camera.PhotoSession | camera.VideoSession, color: colorSpaceManager.ColorSpace) 
     {
       try {
