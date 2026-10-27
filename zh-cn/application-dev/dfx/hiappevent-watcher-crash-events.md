@@ -160,6 +160,7 @@ let policy: hiAppEvent.EventPolicy = {
     logFileCutoffSzBytes: 102400, // 截断崩溃日志到100KB。从API版本26.0.0开始支持该参数
     simplifyVmaPrinting: true, // 使能精简打印maps。从API版本26.0.0开始支持该参数
     collectMinidump: true // native崩溃场景，使能minidump。从API版本26.0.0开始支持该参数
+    publishOnNextLaunch: true // 使能固定在重启后收到事件回调。从API版本26.1.0开始支持该参数
   }
 };
 hiAppEvent.configEventPolicy(policy).then(() => {
