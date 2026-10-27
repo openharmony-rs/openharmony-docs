@@ -77,7 +77,7 @@ import { bundleManager } from '@kit.AbilityKit';
 | 名称           | 值   | 说明            |
 | -------------- | ---- | --------------- |
 | INTENT_PROFILE  | 1    | 意图框架配置文件。    |
-| CLOUD_PROFILE  | 8    | [端云同步](../apis-core-file-kit/js-apis-file-cloudsync.md)配置文件。<br>**模型约束**: 此接口仅可在Stage模型下使用。    |
+| CLOUD_PROFILE  | 8    | [端云同步](../apis-core-file-kit/js-apis-file-cloudsync.md)配置文件。<br>**模型约束**: 此接口仅可在Stage模型下使用。<br>**起始版本**: 26.0.0。    |
 
 ## AppDistributionType<sup>12+</sup>
 
