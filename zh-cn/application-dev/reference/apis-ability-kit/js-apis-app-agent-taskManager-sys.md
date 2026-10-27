@@ -15,7 +15,9 @@
 
 任务结束后，系统撤销对该任务归属进程施加的资源管理，进程的调度状态恢复。任务信息仅保存在内存中，设备重启后任务自动结束。
 
-**起始版本：** 26.1.0
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
 
 > **说明：**
 >
@@ -31,7 +33,9 @@ import { taskManager } from '@kit.AbilityKit';
 
 表示任务优先级。任务启动后，系统按照该优先级对归属到任务的进程进行管理。
 
-**起始版本：** 26.1.0
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
 
 **系统能力**：SystemCapability.Ability.AgentRuntime.Core
 
@@ -57,7 +61,9 @@ startTask(taskId: string, priority?: TaskPriority): Promise&lt;void&gt;
 > - 任务创建者进程退出后，其创建的任务由系统自动结束。
 > - 任务信息仅保存在内存中，设备重启后任务自动结束。
 
-**起始版本：** 26.1.0
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
 
 **系统能力**：SystemCapability.Ability.AgentRuntime.Core
 
@@ -121,7 +127,9 @@ finishTask(taskId: string): Promise&lt;void&gt;
 >
 > 仅创建该任务的应用可结束该任务，其他应用调用本接口将返回错误码16000302。
 
-**起始版本：** 26.1.0
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
 
 **系统能力**：SystemCapability.Ability.AgentRuntime.Core
 
