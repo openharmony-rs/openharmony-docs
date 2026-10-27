@@ -225,6 +225,7 @@
          }
      }
      
+     
      void OnPhotoAvailable(Camera_PhotoOutput *photoOutput, OH_PhotoNative *photo)
      {
          OH_LOG_INFO(LOG_APP, "OnPhotoAvailable start!");
