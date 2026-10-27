@@ -415,7 +415,7 @@ let myParagraphStyle: text.ParagraphStyle = {
 
 ### 示例一（装饰线、字体特征）
 
-<!-- @[arkts_complex_style_example1_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample1.ets) -->
+<!-- @[arkts_complex_style_example1_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample1.ets) --> 
 
 ``` TypeScript
 import { NodeController, FrameNode, RenderNode, DrawContext } from '@kit.ArkUI'
@@ -482,7 +482,7 @@ class MyRenderNode extends RenderNode {
 
 // 创建一个MyRenderNode对象
 const textNode = new MyRenderNode();
-// 定义newNode的像素格式
+// 定义textNode的像素格式
 textNode.frame = {
   x: 0,
   y: 0,
@@ -574,7 +574,7 @@ struct Font08 {
 ### 示例二（可变字体、文本阴影、占位符）
 这里以可变字体、文本阴影、占位符三个特性为例，呈现多样式文本的绘制与显示。
 
-<!-- @[arkts_complex_style_example2_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample2.ets) -->
+<!-- @[arkts_complex_style_example2_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample2.ets) --> 
 
 ``` TypeScript
 import { NodeController, FrameNode, RenderNode, DrawContext } from '@kit.ArkUI'
@@ -658,7 +658,7 @@ class MyRenderNode extends RenderNode {
 
 // 创建一个MyRenderNode对象
 const textNode = new MyRenderNode();
-// 定义newNode的像素格式
+// 定义textNode的像素格式
 textNode.frame = {
   x: 0,
   y: 0,
@@ -749,7 +749,7 @@ struct Font08 {
 ### 示例三（垂直对齐）
 这里以垂直对齐-居中对齐特性为例，呈现文本垂直方向排版的特性。
 
-<!-- @[arkts_complex_style_example3_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample3.ets) -->
+<!-- @[arkts_complex_style_example3_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample3.ets) --> 
 
 ``` TypeScript
 import { NodeController, FrameNode, RenderNode, DrawContext, UIContext } from '@kit.ArkUI'
@@ -799,7 +799,7 @@ class MyRenderNode extends RenderNode {
 
 // 创建一个MyRenderNode对象
 const textNode = new MyRenderNode();
-// 定义newNode的像素格式
+// 定义textNode的像素格式
 textNode.frame = {
   x: 0,
   y: 0,
@@ -891,7 +891,7 @@ struct Font08 {
 ### 示例四（上下标文本）
 这里以下标样式为例，呈现上下标文本排版特性。
 
-<!-- @[arkts_complex_style_example4_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample4.ets) -->
+<!-- @[arkts_complex_style_example4_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample4.ets) --> 
 
 ``` TypeScript
 import { NodeController, FrameNode, RenderNode, DrawContext, UIContext } from '@kit.ArkUI'
@@ -951,7 +951,7 @@ class MyRenderNode extends RenderNode {
 
 // 创建一个MyRenderNode对象
 const textNode = new MyRenderNode();
-// 定义newNode的像素格式
+// 定义textNode的像素格式
 textNode.frame = {
   x: 0,
   y: 0,
@@ -1041,7 +1041,7 @@ struct Font08 {
 ### 示例五（高对比度）
 这里以高对比度为例，呈现高对比度文字的绘制与显示。
 
-<!-- @[arkts_complex_style_example5_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample5.ets) -->
+<!-- @[arkts_complex_style_example5_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample5.ets) --> 
 
 ``` TypeScript
 import { NodeController, FrameNode, RenderNode, DrawContext, UIContext} from '@kit.ArkUI'
@@ -1088,7 +1088,7 @@ class MyRenderNode extends RenderNode {
 
 // 创建一个MyRenderNode对象
 const textNode = new MyRenderNode();
-// 定义newNode的像素格式
+// 定义textNode的像素格式
 textNode.frame = {
   x: 0,
   y: 0,
@@ -1177,7 +1177,7 @@ struct Font08 {
 ### 示例六（行高调整方式一）
 这里以行高上限与行高下限设置相同值为例，呈现固定行高时的绘制表现。
 
-  <!-- @[arkts_complex_style_example6_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample6.ets) -->
+  <!-- @[arkts_complex_style_example6_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample6.ets) --> 
   
   ``` TypeScript
   import { NodeController, FrameNode, RenderNode, DrawContext, UIContext } from '@kit.ArkUI'
@@ -1225,7 +1225,7 @@ struct Font08 {
 
   // 创建一个MyRenderNode对象
   const textNode = new MyRenderNode()
-  // 定义newNode的像素格式
+  // 定义textNode的像素格式
   textNode.frame = {
     x: 0,
     y: 0,
@@ -1315,7 +1315,7 @@ struct Font08 {
 ### 示例七（行高调整方式二）
 这里以行高缩放且行高缩放样式FontHeight为例，呈现行高调整后文字的绘制与显示。
 
-  <!-- @[arkts_complex_style_example7_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample7.ets) -->
+  <!-- @[arkts_complex_style_example7_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample7.ets) --> 
   
   ``` TypeScript
   import { NodeController, FrameNode, RenderNode, DrawContext, UIContext } from '@kit.ArkUI'
@@ -1365,7 +1365,7 @@ struct Font08 {
 
   // 创建一个MyRenderNode对象
   const textNode = new MyRenderNode();
-  // 定义newNode的像素格式
+  // 定义textNode的像素格式
   textNode.frame = {
     x: 0,
     y: 0,
@@ -1454,7 +1454,7 @@ struct Font08 {
 ### 示例八（行间距调整）
 这里以关闭段落上升部下降部并设置行间距为例，呈现行间距增加后的文本绘制与显示。
 
-  <!-- @[arkts_complex_style_example8_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample8.ets) -->
+  <!-- @[arkts_complex_style_example8_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample8.ets) --> 
   
   ``` TypeScript
   import { NodeController, FrameNode, RenderNode, DrawContext, UIContext } from '@kit.ArkUI'
@@ -1502,7 +1502,7 @@ struct Font08 {
 
   // 创建一个MyRenderNode对象
   const textNode = new MyRenderNode();
-  // 定义newNode的像素格式
+  // 定义textNode的像素格式
   textNode.frame = {
     x: 0,
     y: 0,
