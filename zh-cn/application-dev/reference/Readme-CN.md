@@ -63,7 +63,6 @@
 - [Neural Network Runtime Kit API参考](apis-neural-network-runtime-kit/Readme-CN.md)
 - [Notification Kit API参考](apis-notification-kit/Readme-CN.md)
 - [Performance Analysis Kit API参考](apis-performance-analysis-kit/Readme-CN.md)
-- [Security Guard Kit API参考](apis-security-guard-kit/Readme-CN.md)
 - [Sensor Service Kit API参考](apis-sensor-service-kit/Readme-CN.md)
 - [Telephony Kit API参考](apis-telephony-kit/Readme-CN.md)
 - [Test Kit API参考](apis-test-kit/Readme-CN.md)
