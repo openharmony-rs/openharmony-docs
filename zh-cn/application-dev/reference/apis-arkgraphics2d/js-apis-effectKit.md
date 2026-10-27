@@ -739,6 +739,7 @@ function imageBlur(imageBuffer: ArrayBuffer): Promise<image.PixelMap> {
     }).finally(() => {
       imageSource.release();
     });
+  });
 }
 
 @Entry
