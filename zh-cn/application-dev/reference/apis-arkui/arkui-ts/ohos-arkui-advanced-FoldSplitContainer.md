@@ -16,7 +16,7 @@ FoldSplitContainer分栏布局，实现折叠屏二分栏、三分栏在展开�
 >
 > - 本模块接口仅可在Stage模型下使用。
 >
-> - 窗口宽度小于等于600vp时默认使用二分栏，窗口宽度大于600vp时在上下分栏的同时可支持扩展区域，窗口宽度大于600vp且在横屏半折状态下可触发悬停态布局。悬停态布局时会增加折痕区的避让并且扩展区域不可以贯穿折痕区，悬停态可设置不展示扩展区域，详情请参考[示例](#示例)。
+> - 从API版本26.1.0开始，当设备处于半折叠且折痕区域方向为水平时，可触发悬停态布局。API版本26.1.0之前，窗口宽度小于等于600vp时默认使用二分栏，窗口宽度大于600vp时在上下分栏的同时可支持扩展区域，窗口宽度大于600vp且在横屏半折状态下可触发悬停态布局。悬停态布局时会增加折痕区域的避让并且扩展区域不可以贯穿折痕区域，悬停态可设置不展示扩展区域，详情请参考[示例](#示例)。
 >
 > - 如果FoldSplitContainer设置[通用属性](ts-component-general-attributes.md)或[通用事件](ts-component-general-events.md)，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到FoldSplitContainer本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议FoldSplitContainer设置通用属性和通用事件。
 
@@ -47,9 +47,9 @@ FoldSplitContainer({primary: Callback&lt;void&gt;, secondary: Callback&lt;void&g
 | primary | Callback\<void> | 是 | [\@BuilderParam](../../../ui/state-management/arkts-builderparam.md) | 主要区域回调函数，用于构建主要区域的UI内容。回调函数无参数无返回值，在组件布局时被调用。 |
 | secondary | Callback\<void> | 是 | [\@BuilderParam](../../../ui/state-management/arkts-builderparam.md) | 次要区域回调函数，用于构建次要区域的UI内容。回调函数无参数无返回值，在组件布局时被调用。 |
 | extra | Callback\<void> | 否 | [\@BuilderParam](../../../ui/state-management/arkts-builderparam.md) | 扩展区域回调函数，用于构建扩展区域的UI内容。当需要实现三分栏布局或需要显示额外内容区域时传入此参数，不需要扩展区域时可省略此参数。回调函数无参数无返回值，不传入时没有对应区域。 |
-| expandedLayoutOptions | [ExpandedRegionLayoutOptions](#expandedregionlayoutoptions) | 是 | [\@Prop](../../../ui/state-management/arkts-prop.md) | 展开态布局信息，用于控制折叠屏展开状态下扩展区域是否贯穿、区域比例和位置等。窗口宽度大于600vp时可支持扩展区域。 |
-| hoverModeLayoutOptions | [HoverModeRegionLayoutOptions](#hovermoderegionlayoutoptions) | 是 | [\@Prop](../../../ui/state-management/arkts-prop.md) | 悬停态布局信息，用于控制折叠屏半折悬停状态下是否显示扩展区域、区域比例和位置等。窗口宽度大于600vp且在横屏半折状态下可触发悬停态布局。 |
-| foldedLayoutOptions | [FoldedRegionLayoutOptions](#foldedregionlayoutoptions) | 是 | [\@Prop](../../../ui/state-management/arkts-prop.md) | 折叠态布局信息，用于控制折叠屏折叠状态下的主要区域与次要区域的高度比例等。当设备处于折叠状态时生效，窗口宽度小于等于600vp时默认使用二分栏。 |
+| expandedLayoutOptions | [ExpandedRegionLayoutOptions](#expandedregionlayoutoptions) | 是 | [\@Prop](../../../ui/state-management/arkts-prop.md) | 展开态布局信息，用于控制折叠屏展开状态下扩展区域是否贯穿、区域比例和位置等。从API版本26.1.0开始，支持扩展区域不受窗口宽度限制。API版本26.1.0之前，窗口宽度大于600vp时可支持扩展区域。 |
+| hoverModeLayoutOptions | [HoverModeRegionLayoutOptions](#hovermoderegionlayoutoptions) | 是 | [\@Prop](../../../ui/state-management/arkts-prop.md) | 悬停态布局信息，用于控制折叠屏半折悬停状态下是否显示扩展区域、区域比例和位置等。从API版本26.1.0开始，当设备处于半折叠且折痕区域方向为水平时，可触发悬停态布局。API版本26.1.0之前，窗口宽度大于600vp且在横屏半折状态下可触发悬停态布局。 |
+| foldedLayoutOptions | [FoldedRegionLayoutOptions](#foldedregionlayoutoptions) | 是 | [\@Prop](../../../ui/state-management/arkts-prop.md) | 折叠态布局信息，用于控制折叠屏折叠状态下的主要区域与次要区域的高度比例等。从API版本26.1.0开始，当设备处于折叠状态时使用二分栏。API版本26.1.0之前，当设备处于折叠状态时生效，窗口宽度小于等于600vp时默认使用二分栏。 |
 | animationOptions | [AnimateParam](ts-explicit-animation.md#animateparam对象说明) \| null | 否 | [\@Prop](../../../ui/state-management/arkts-prop.md) | 设置动画效果相关的参数，null表示关闭动效。<br>默认值：null |
 | onHoverStatusChange | [OnHoverStatusChangeHandler](#onhoverstatuschangehandler) | 否 | - | 折叠屏进入或退出悬停模式时触发的回调函数。不传入时，不回调悬停状态变化。 |
 

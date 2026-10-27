@@ -624,6 +624,7 @@
 | AUDIO_SESSION_SCENE_MEDIA | 0 | 媒体音频会话场景。     |
 | AUDIO_SESSION_SCENE_GAME | 1 | 游戏音频会话场景。     |
 | AUDIO_SESSION_SCENE_VOICE_COMMUNICATION  | 2 | VoIP语音通话音频会话场景。 |
+| AUDIO_SESSION_SCENE_VOICE_MESSAGE  | 3 | 语音消息音频会话场景。<br>**起始版本：** 26.0.1 <br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## AudioSessionStateChangeHint<sup>20+</sup>
 

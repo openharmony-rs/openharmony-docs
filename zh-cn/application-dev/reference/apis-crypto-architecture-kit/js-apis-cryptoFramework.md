@@ -4633,6 +4633,8 @@ doFinal(data: DataBlob | null, callback: AsyncCallback\<DataBlob>): void
 
 更多加解密流程的完整示例请参考[加解密开发指导](../../security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt.md#使用aes对称密钥gcm模式加解密)。
 
+ArkTS示例：
+
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
@@ -4679,6 +4681,122 @@ function cipherByCallback() {
     });
   });
 }
+```
+
+JS示例：
+
+在Lite Wearable侧对称密钥只支持AES128算法；加解密只支持AES128|GCM或AES128|CBC算法。
+
+下述样例以对称算法为AES128，分组模式为GCM为例。
+
+```xml
+<div class="container">
+    <text class="TestTitle">Crypto测试</text>
+    <input class="btn" @click="Aes128Test">Aes128加解密异步测试</input>
+</div>
+```
+ 
+```css
+.container {
+  width: 100%;
+  height: 2000px;
+  align-items: center;
+  background-color: #fffefcfc;
+  flex-direction: column;
+  display: flex;
+}
+ 
+.TestTitle {
+  width: 300px;
+  height: 80px;
+  text-align: center;
+  background-color: white;
+  color: #fff61515;
+  font-size: 15fp;
+}
+ 
+.btn {
+  width: 90%;
+  height: 80px;
+  text-align: center;
+  background-color: #fff17f04;
+  margin-top: 3px;
+  color: white;
+  font-size: 20fp;
+}
+```
+ 
+```js
+import cryptoFramework from '@ohos.security.cryptoFramework';
+ 
+function StringToUint8Array(str) {
+    let arr = [];
+    for (let i = 0, j = str.length; i < j; ++i) {
+        arr.push(str.charCodeAt(i));
+    }
+    return new Uint8Array(arr);
+}
+ 
+let plainText = "This is a test";
+ 
+function genGcmAeadParamsSpec(ivData, aadData, tagLen) {
+    return {
+        nonce: ivData,
+        authenticatedData: aadData || new Uint8Array(0),
+        algName: 'AeadParamsSpec',
+        tagLen: tagLen === undefined ? 16 : tagLen
+    };
+}
+ 
+function aes128Test() {
+  try {
+      let aesKeyData = new Uint8Array([0x53, 0xD9, 0xE7, 0x4C, 0x1C, 0x71, 0x17, 0xDB, 0xFA, 0x47, 0xD1, 0xD2, 0xCD, 0x61, 0x20, 0x9F]);
+      let symKey = cryptoFramework.createSymKeyGenerator('AES128').convertKeySync({data: aesKeyData});
+      let iv = cryptoFramework.createRandom().generateRandomSync(12);
+      let aeadParams = genGcmAeadParamsSpec(iv, new Uint8Array(0), 16);
+      
+      let cipher = cryptoFramework.createCipher('AES128|GCM|NoPadding');
+      cipher.init(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, aeadParams, function (err) {
+          if (err) {
+              console.error('Encrypt init failed. Code: ' + err.code + " : " + err.message);
+              return;
+          }
+          let inData = StringToUint8Array(plainText);
+          cipher.doFinal({ data: inData }, function (err, encryptOutput) {
+              if (err) {
+                  console.error('Encrypt doFinal failed. Code: ' + err.code + " : " + err.message);
+                  return;
+              }
+              console.info('Encrypt successfully. cipherText: ' + encryptOutput.data);
+              let dec = cryptoFramework.createCipher('AES128|GCM|NoPadding');
+              dec.init(cryptoFramework.CryptoMode.DECRYPT_MODE, symKey, aeadParams, function (err) {
+                  if (err) {
+                      console.error('Decrypt init failed. Code: ' + err.code + " : " + err.message);
+                      return;
+                  }
+                  dec.doFinal({ data: encryptOutput.data }, function (err, decryptOutput) {
+                      if (err) {
+                          console.error('Decrypt doFinal failed. Code: ' + err.code + " : " + err.message);
+                      } else {
+                          console.info('Decrypt successfully: ' + decryptOutput.data);
+                      }
+                  })
+              })
+          })
+      })
+    } catch (error) {
+        console.error(`aes128Test failed. Code: ${error.code}, message: ${error.message}`);
+  }
+}
+ 
+export default {
+    data: {
+        result: ''
+    },
+    Aes128Test() {
+        aes128Test();
+    }
+};
 ```
 
 ### doFinal
@@ -4865,6 +4983,8 @@ doFinalSync(data: DataBlob | null): DataBlob
 
 **示例：**
 
+ArkTS示例：
+
 此外，更多加解密流程的完整示例可参考[加解密开发指导](../../security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt.md#使用aes对称密钥gcm模式加解密)。
 
 ```ts
@@ -4908,6 +5028,100 @@ async function cipherBySync() {
   gcmParams.authTag = cipher.doFinalSync(null);
   console.info('encryptUpdate plainText: ' + encryptUpdate.data);
 }
+```
+
+JS示例：
+
+在Lite Wearable侧对称密钥只支持AES128算法；加解密只支持AES128|GCM或AES128|CBC算法。
+
+下述样例以对称算法为AES128，分组模式为GCM为例。
+
+```xml
+<div class="container">
+    <text class="TestTitle">Crypto测试</text>
+    <input class="btn" @click="Aes128TestSync">Aes128加解密同步测试</input>
+</div>
+```
+ 
+```css
+.container {
+  width: 100%;
+  height: 2000px;
+  align-items: center;
+  background-color: #fffefcfc;
+  flex-direction: column;
+  display: flex;
+}
+ 
+.TestTitle {
+  width: 300px;
+  height: 80px;
+  text-align: center;
+  background-color: white;
+  color: #fff61515;
+  font-size: 15fp;
+}
+ 
+.btn {
+  width: 90%;
+  height: 80px;
+  text-align: center;
+  background-color: #fff17f04;
+  margin-top: 3px;
+  color: white;
+  font-size: 20fp;
+}
+```
+ 
+```js
+import cryptoFramework from '@ohos.security.cryptoFramework';
+ 
+function StringToUint8Array(str) {
+    let arr = [];
+    for (let i = 0, j = str.length; i < j; ++i) {
+        arr.push(str.charCodeAt(i));
+    }
+    return new Uint8Array(arr);
+}
+ 
+function genGcmAeadParamsSpec(ivData, aadData, tagLen) {
+    return {
+        nonce: ivData,
+        authenticatedData: aadData || new Uint8Array(0),
+        algName: 'AeadParamsSpec',
+        tagLen: tagLen === undefined ? 16 : tagLen
+    };
+}
+ 
+function aes128TestSync() {
+  try {
+      let aesKeyData = new Uint8Array([0x53, 0xD9, 0xE7, 0x4C, 0x1C, 0x71, 0x17, 0xDB, 0xFA, 0x47, 0xD1, 0xD2, 0xCD, 0x61, 0x20, 0x9F]);
+      let symKey = cryptoFramework.createSymKeyGenerator('AES128').convertKeySync({data: aesKeyData});
+      let iv = cryptoFramework.createRandom().generateRandomSync(12);
+      let aeadParams = genGcmAeadParamsSpec(iv, new Uint8Array(0), 16);
+      let cipher = cryptoFramework.createCipher('AES128|GCM|NoPadding');
+      let inData = StringToUint8Array("This is a test");
+      cipher.initSync(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, aeadParams);
+      let encryptOutput = cipher.doFinalSync({ data: inData });
+      console.info('Encrypt successfully. cipherText: ' + encryptOutput.data);
+
+      let dec = cryptoFramework.createCipher('AES128|GCM|NoPadding');
+      dec.initSync(cryptoFramework.CryptoMode.DECRYPT_MODE, symKey, aeadParams);
+      let decryptOutput = dec.doFinalSync({ data: encryptOutput.data });
+      console.info('Decrypt successfully: ' + decryptOutput.data);
+  } catch (error) {
+      console.error(`aes128TestSync failed. Code: ${error.code}, message: ${error.message}`);
+  }
+}
+ 
+export default {
+    data: {
+        result: ''
+    },
+    Aes128TestSync() {
+        aes128TestSync();
+    }
+};
 ```
 
 ### setCipherSpec<sup>10+</sup>
@@ -7606,9 +7820,9 @@ squeeze(len: number): Promise\<DataBlob>
 >
 > 当前Md实例中，此接口与[squeezeSync](#squeezesync)仅支持单次调用。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -7661,9 +7875,9 @@ squeezeSync(len: number): DataBlob
 >
 > 当前Md实例中，此接口与[squeeze](#squeeze)仅支持单次调用。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -8052,6 +8266,8 @@ doFinal(callback: AsyncCallback\<DataBlob>): void
 
 此外，更多HMAC的完整示例可参考开发指导中[消息认证码计算](../../security/CryptoArchitectureKit/crypto-compute-hmac.md#分段hmac)。
 
+ArkTS示例：
+
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
@@ -8071,6 +8287,111 @@ function hmacByCallback() {
     });
   });
 }
+```
+
+JS示例：
+
+在Lite Wearable侧HMAC消息认证码支持的摘要算法只有SHA256。
+
+下述样例以摘要算法为SHA256，对称算法为HMAC为例。
+
+```xml
+<div class="container">
+    <text class="TestTitle">Crypto测试</text>
+    <input class="btn" @click="HmacTest">Hmac异步测试</input>
+</div>
+```
+ 
+```css
+.container {
+  width: 100%;
+  height: 2000px;
+  align-items: center;
+  background-color: #fffefcfc;
+  flex-direction: column;
+  display: flex;
+}
+ 
+.TestTitle {
+  width: 300px;
+  height: 80px;
+  text-align: center;
+  background-color: white;
+  color: #fff61515;
+  font-size: 15fp;
+}
+ 
+.btn {
+  width: 90%;
+  height: 80px;
+  text-align: center;
+  background-color: #fff17f04;
+  margin-top: 3px;
+  color: white;
+  font-size: 20fp;
+}
+```
+ 
+```js
+import cryptoFramework from '@ohos.security.cryptoFramework';
+ 
+function StringToUint8Array(str) {
+    let arr = [];
+    for (let i = 0, j = str.length; i < j; ++i) {
+        arr.push(str.charCodeAt(i));
+    }
+    return new Uint8Array(arr);
+}
+ 
+let plainText = "hmacTestMessage";
+ 
+function hmacTest() {
+  try {
+      let hmacSpec = { algName: 'HMAC', mdName: 'SHA256' };
+      let keyData = StringToUint8Array("12345678abcdefgh");
+      let mac = cryptoFramework.createMac(hmacSpec);
+      console.info('createMac ' + typeof mac);
+  
+      let symKeyGenerator = cryptoFramework.createSymKeyGenerator('HMAC');
+      symKeyGenerator.convertKey({ data: keyData }, function (err, symKey) {
+          if (err) {
+              console.error('convertKey failed. Code: ' + err.code + " : " + err.message);
+              return;
+          }
+          mac.init(symKey, function (err) {
+              if (err) {
+                  console.error('Mac init failed. Code: ' + err.code + " : " + err.message);
+                  return;
+              }
+              mac.update({ data: StringToUint8Array(plainText) }, function (err) {
+                  if (err) {
+                      console.error('Mac update failed. Code: ' + err.code + " : " + err.message);
+                      return;
+                  }
+                  mac.doFinal(function (err, output) {
+                      if (err) {
+                          console.error('Mac doFinal failed. Code: ' + err.code + " : " + err.message);
+                      } else {
+                          console.info('Mac doFinal successfully: ' + output.data);
+                          console.info('Mac len: ' + mac.getMacLength());
+                      }
+                  })
+              })
+          })
+      })
+    } catch (error) {
+        console.error(`hmacTest failed. Code: ${error.code}, message: ${error.message}`);
+  }
+}
+ 
+export default {
+    data: {
+        result: ''
+    },
+    HmacTest() {
+        hmacTest();
+    }
+};
 ```
 
 ### doFinal
@@ -8152,6 +8473,8 @@ doFinalSync(): DataBlob
 
 此外，更多HMAC的完整示例可参考开发指导[消息认证码计算](../../security/CryptoArchitectureKit/crypto-compute-hmac.md#分段hmac)。
 
+ArkTS示例：
+
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
@@ -8167,6 +8490,87 @@ function hmacBySync() {
   console.info('[Sync]: HMAC result: ' + macOutput.data);
   console.info('[Sync]: MAC len: ' + mac.getMacLength());
 }
+```
+
+JS示例：
+
+在Lite Wearable侧HMAC消息认证码支持的摘要算法只有SHA256。
+
+下述样例以摘要算法为SHA256，对称算法为HMAC为例。
+
+```xml
+<div class="container">
+    <text class="TestTitle">Crypto测试</text>
+    <input class="btn" @click="HmacTestSync">Hmac同步测试</input>
+</div>
+```
+ 
+```css
+.container {
+  width: 100%;
+  height: 2000px;
+  align-items: center;
+  background-color: #fffefcfc;
+  flex-direction: column;
+  display: flex;
+}
+ 
+.TestTitle {
+  width: 300px;
+  height: 80px;
+  text-align: center;
+  background-color: white;
+  color: #fff61515;
+  font-size: 15fp;
+}
+ 
+.btn {
+  width: 90%;
+  height: 80px;
+  text-align: center;
+  background-color: #fff17f04;
+  margin-top: 3px;
+  color: white;
+  font-size: 20fp;
+}
+```
+ 
+```js
+import cryptoFramework from '@ohos.security.cryptoFramework';
+ 
+function StringToUint8Array(str) {
+    let arr = [];
+    for (let i = 0, j = str.length; i < j; ++i) {
+        arr.push(str.charCodeAt(i));
+    }
+    return new Uint8Array(arr);
+}
+ 
+function hmacTestSync() {
+  try {
+      let hmacSpec = { algName: 'HMAC', mdName: 'SHA256' };
+      let keyData = StringToUint8Array("12345678abcdefgh");
+      let message = "hmacTestMessage";
+      let mac = cryptoFramework.createMac(hmacSpec);
+      let symKeyGenerator = cryptoFramework.createSymKeyGenerator('HMAC');
+      let symKey = symKeyGenerator.convertKeySync({ data: keyData });
+      mac.initSync(symKey);
+      mac.updateSync({ data: StringToUint8Array(message) });
+      let macOutput = mac.doFinalSync();
+      console.info('Mac doFinal successfully: ' + macOutput.data);
+  } catch (error) {
+      console.error(`GenerateRandom random number failed. Code: ${error.code}, message: ${error.message}`);
+  }
+}
+ 
+export default {
+    data: {
+        result: ''
+    },
+    HmacTestSync() {
+        hmacTestSync();
+    }
+};
 ```
 
 ### getMacLength

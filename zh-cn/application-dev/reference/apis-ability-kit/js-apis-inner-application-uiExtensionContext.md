@@ -1314,6 +1314,8 @@ startUIServiceExtensionAbility(want: Want): Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+
 **参数：**
 
 | 参数名   | 类型                                                                         | 必填 | 说明                      |
@@ -1399,6 +1401,8 @@ connectUIServiceExtensionAbility(want: Want, callback: UIServiceExtensionConnect
 > - 该接口不支持连接应用分身的UIServiceExtensionAbility。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
 **参数：**
 

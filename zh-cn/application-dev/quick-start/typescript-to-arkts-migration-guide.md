@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "罗列ArkTS中限制使用的TypeScript特性并逐条给出代码重构建议，适配后代码仍为合法TS，帮助开发者完成TS到ArkTS的规范迁移。"
+keywords: [TypeScript, ArkTS, 适配规则, TS特性限制, 代码重构, 语法约束]
+doctype: guide
+status: active
+---
+
 # 从TypeScript到ArkTS的适配规则
 
 <!--Kit: ArkTS-->

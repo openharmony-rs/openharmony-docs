@@ -342,7 +342,7 @@ This API provides compatibility check for OpenHarmony and its distribution OS AP
 
 | Name   | Type                                     | Mandatory| Description                              |
 | --------- | ----------------------------------------- | ---- | ---------------------------------- |
-| version | string \| number | Yes | API version to be verified. Supports both integer and string formats. The string uses the M.S.F format (for example, "26.0.0" and "5.0.1"): for API 26.0.0 and later (version >= 26.0.0), it represents the OpenHarmony and distribution OS API version. For API earlier than 26.0.0 (version < 26.0.0), it represents the distribution OS API version. The integer format (for example, 13) represents the OpenHarmony SDK API version. (Only API earlier than 26 is supported.) M>=26, 0<=S<=99, 0<=F<=99. A compilation error occurs when an invalid literal is passed. |
+| version | string \| number | Yes | API version to be verified. Supports both integer and string formats.<br> The string uses the M.S.F format (for example, "26.0.0" and "5.0.1"), where 0<=S<=99 and 0<=F<=99: <br>&emsp;&emsp;For API 26.0.0 and later (version >= 26.0.0), it represents the OpenHarmony and distribution OS API version.<br>&emsp;&emsp;For API earlier than 26.0.0 (version < 26.0.0), it represents the distribution OS API version. <br> The integer format (for example, 13): <br>&emsp;&emsp;Represents the OpenHarmony SDK API version. (Only API earlier than 26 is supported.) |
 
 **Return value**
 

@@ -5,7 +5,7 @@
 <!--Designer: @zhanganxiang1-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=25745d7412ef752a0bb67958c6e2fba8ee28c6e9 translatedAt=2026-09-18T01:52:18.724Z pushedAt=2026-09-18T06:47:14.504Z -->
+<!-- md-trans-meta sourceCommit=35dafaadbdd99b98cc2c4c5a8c1d0e4c1ab76160 translatedAt=2026-10-22T02:39:11.487Z pushedAt=2026-10-22T03:39:40.619Z nl=1 -->
 
 Starting from API version 21, support for switching audio input device routes is available.
 
@@ -52,7 +52,7 @@ Applications can use [selectMediaInputDevice](../../reference/apis-audio-kit/ark
 >
 > In call scenarios, the input device follows the current output device, and other concurrent recording streams also follows the call input device.
 
-<!-- @[selectMediaInputDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioInputDeviceSwitcher.ets) -->  
+<!-- @[selectMediaInputDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioInputDeviceSwitcher.ets) -->
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit';
@@ -312,8 +312,8 @@ C/C++ example:
 
 - **Audio stream level:** Use [OH_AudioDeviceEnhanceManager_SelectInputDeviceForAudioCapturer](../../reference/apis-audio-kit/capi-native-audio-device-enhance-manager-h.md#oh_audiodeviceenhancemanager_selectinputdeviceforaudiocapturer) to select an input device for a specified audio recording stream.
 
-  <!-- @[select_InputDeviceForAudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleC/entry/src/main/cpp/EnhancedDeviceRouting.cpp) -->
-
+  <!-- @[select_InputDeviceForAudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleC/entry/src/main/cpp/EnhancedDeviceRouting.cpp) -->  
+  
   ``` C++
   // Obtain the audio device enhancement manager.
   static OH_AudioDeviceEnhanceManager *GetEnhanceManager(std::string &errorMsg)
@@ -385,7 +385,7 @@ C/C++ example:
   }
   
   // ...
-  // Set the preferred input device for the specified audio playback stream.
+  // Set the preferred input device for the specified audio recording stream.
   napi_value SelectInputDeviceForAudioCapturer(napi_env env, napi_callback_info info)
   {
       int32_t deviceId = 0;

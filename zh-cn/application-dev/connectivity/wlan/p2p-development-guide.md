@@ -17,7 +17,7 @@ P2P模式，主要提供了WLAN设备的一种点对点连接技术，它可以�
 
 ## 接口说明
 
-完整的JS API说明以及示例代码请参考：[P2P接口](../../reference/apis-connectivity-kit/js-apis-wifiManager.md)。
+完整的JS API说明以及示例代码请参考：[@ohos.wifiManager (WLAN)](../../reference/apis-connectivity-kit/js-apis-wifiManager.md)。
 
 具体接口说明如下表。
 
@@ -108,9 +108,16 @@ P2P模式，主要提供了WLAN设备的一种点对点连接技术，它可以�
    } catch (error) {
      console.error("failed:" + JSON.stringify(error));
    }
+
+   // 取消注册，停止获取永久组状态改变事件
+   try {
+     wifiManager.off("p2pPersistentGroupChange", recvP2pPersistentGroupChangeFunc);
+   } catch (error) {
+     console.error("failed:" + JSON.stringify(error));
+   }
    ```
 
-6. 错误码请参见[WIFI错误码](../../reference/apis-connectivity-kit/errorcode-wifi.md)。
+6. 错误码请参见[Wi-Fi错误码](../../reference/apis-connectivity-kit/errorcode-wifi.md)。
 
 ### 建立P2P连接
 1. import需要的Wi-Fi模块。
@@ -225,7 +232,7 @@ P2P模式，主要提供了WLAN设备的一种点对点连接技术，它可以�
    console.info("start discover devices -> " + wifiManager.startDiscoverDevices());
    ```
 
-7. 错误码请参见[WIFI错误码](../../reference/apis-connectivity-kit/errorcode-wifi.md)。
+7. 错误码请参见[Wi-Fi错误码](../../reference/apis-connectivity-kit/errorcode-wifi.md)。
 
 ### 获取对端IP以及Socket通信
 1. import需要的Wi-Fi模块。

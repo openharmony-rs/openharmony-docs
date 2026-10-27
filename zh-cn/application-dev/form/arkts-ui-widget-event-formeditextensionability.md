@@ -106,7 +106,7 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
    ```
 
    - 半模态二级编辑页Ability的实现。
-   <!-- @[FormEditDemo_FormEditSecPageAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditDemo/entry/src/main/ets/entryformeditability/FormEditSecPageAbility.ets) -->
+   <!-- @[FormEditDemo_FormEditSecPageAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditDemo/entry/src/main/ets/entryformeditability/FormEditSecPageAbility.ets) --> 
    
    ``` TypeScript
    // entry/src/main/ets/entryformeditability/FormEditSecPageAbility.ets
@@ -114,7 +114,7 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
    import { UIExtensionContentSession, Want } from '@kit.AbilityKit';
    import { ExtensionEvent } from '../model/ExtensionEvent';
    
-   const TAG: string = 'FormEditExtensionAbility';
+   const TAG: string = 'FormEditSecPageAbility';
    
    export default class FormEditSecPageAbility extends FormEditExtensionAbility {
      public storage: LocalStorage = new LocalStorage();
@@ -142,9 +142,9 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
    
        try {
          session.loadContent('pages/FormEditSecPage', this.storage);
-         console.info(TAG, `loadContent first edit page success`);
+         console.info(TAG, 'loadContent second edit page success');
        } catch (e) {
-         console.error(TAG, `EntryFormEditAbility loadContent err, want: ${e?.message}`);
+         console.error(TAG, `FormEditSecPageAbility loadContent err, want: ${e?.message}`);
        }
      }
    

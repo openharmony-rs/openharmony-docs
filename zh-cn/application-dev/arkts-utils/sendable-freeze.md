@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍Sendable对象的冻结能力：通过Object.freeze将对象冻结为只读，多并发实例访问时无需加锁；由于.ets文件不支持直接调用该接口，示例演示在ts文件中封装冻结方法的使用方式。"
+keywords: [Sendable冻结, Object.freeze, 只读对象, 免锁访问, 并发实例, ts文件封装]
+doctype: guide
+status: active
+---
+
 # Sendable对象冻结
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->

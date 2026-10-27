@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍如何使用JSVM-API在C/C++侧创建JavaScript函数并调用JS方法，涵盖回调参数获取与函数对象判断，适用于JS与C/C++函数互通场景。"
+keywords: [OH_JSVM_CreateFunction, OH_JSVM_CallFunction, OH_JSVM_GetCbInfo, OH_JSVM_IsFunction, 函数创建, 函数调用, 回调参数, C++调用JS]
+doctype: guide
+status: active
+---
+
 # 使用JSVM-API接口进行函数创建和调用
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->

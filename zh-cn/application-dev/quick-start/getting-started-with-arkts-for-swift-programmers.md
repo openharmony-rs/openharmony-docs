@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "面向Swift开发者对比讲解ArkTS的基础语法、语言结构与类型系统差异，梳理迁移中的误解与陷阱，帮助其快速上手ArkTS应用开发。"
+keywords: [Swift, ArkTS, 迁移指导, Swift开发者, 语言对比, 类型系统, 语法差异]
+doctype: guide
+status: active
+---
+
 # 从Swift到ArkTS的迁移指导
 
 <!--Kit: ArkTS-->

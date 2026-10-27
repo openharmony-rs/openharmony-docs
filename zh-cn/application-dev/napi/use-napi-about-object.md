@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍使用Node-API接口进行object相关开发，包括创建对象、获取原型、冻结和密封对象等操作，支持在Node-API模块中管理ArkTS对象。"
+keywords: [Node-API, object, 对象操作, napi_get_prototype, napi_freeze, napi_seal, 原型, 对象管理, 冻结对象]
+doctype: guide
+status: active
+---
+
 # 使用Node-API接口进行object相关开发
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
@@ -294,7 +302,7 @@ try {
 
 这个接口用于获取给定ArkTS value的ArkTS Type。
 
-**注：**napi_typeof可以判断的类型包含：   
+**注**：napi_typeof可以判断的类型包含：   
 |类型 | 
 |-----|
 |undefined|

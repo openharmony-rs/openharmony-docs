@@ -1,9 +1,17 @@
+---
+kits: ["Image Kit / 图片处理服务"]
+description: "PixelMap提供图像变换能力，支持对解码后的图片执行裁剪、缩放、平移、旋转、翻转及透明度设置，适用于图片编辑、美化等需要几何变换的开发场景。"
+keywords: [PixelMap, 图像变换, 裁剪, 缩放, 平移, 旋转, 翻转, 透明度, 图像信息]
+doctype: guide
+status: active
+---
+
 # 使用PixelMap完成图像变换
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @yaozhupeng-->
 <!--Designer: @yaozhupeng-->
-<!--Tester: @zhaoxiaoguang2-->
+<!--Tester: @yhl0101-->
 <!--Adviser: @w_Machine_cc-->
 
 图片处理指对PixelMap进行相关的操作，如获取图片信息、裁剪、缩放、偏移、旋转、翻转、设置透明度、读写像素数据等。图片处理主要包括图像变换、[位图操作](image-pixelmap-operation.md)，本文介绍图像变换。

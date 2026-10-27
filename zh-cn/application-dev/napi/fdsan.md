@@ -1,8 +1,16 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "介绍fdsan（文件描述符检测器）的原理与使用方法，通过tag机制检测文件描述符的重复关闭和关闭后使用问题，涵盖错误等级设置、owner tag管理、标准库接口集成、日志分析及多线程场景注意事项，适用于Native代码文件句柄泄漏排查。"
+keywords: [fdsan, 文件描述符, double-close, use-after-close, owner tag, fdsan_close_with_tag, fdsan_exchange_owner_tag, error_level, 文件句柄泄漏]
+doctype: guide
+status: active
+---
+
 # fdsan使用指导
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @liyiming13-->
-<!--Designer: @lijin1039-->
+<!--Owner: @da_wei_li11-->
+<!--Designer: @liyiming13-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
 
@@ -67,8 +75,8 @@ uint64_t fdsan_create_owner_tag(enum fdsan_owner_type type, uint64_t tag);
 
 | 名称                       | 说明                                                         |
 | -------------------------- | ------------------------------------------------------------ |
-| `FDSAN_OWNER_TYPE_GENERIC_00` | 默认未使用fd对应的type值。     |
-| `FDSAN_OWNER_TYPE_GENERIC_FF` | 默认非法fd对应的type值。 |
+| `FDSAN_OWNER_TYPE_DEFAULT` | 默认未使用fd对应的type值。     |
+| `FDSAN_OWNER_TYPE_MAX` | 默认非法fd对应的type值。 |
 | `FDSAN_OWNER_TYPE_FILE` | 默认普通文件对应的type值，使用fopen或fdopen打开的文件具有该类型。 |
 | `FDSAN_OWNER_TYPE_DIRECTORY` | 默认文件夹对应的type值，使用opendir或fdopendir打开的文件具有该类型。 |
 | `FDSAN_OWNER_TYPE_UNIQUE_FD` | 默认unique_fd对应的type值，保留暂未使用。 |

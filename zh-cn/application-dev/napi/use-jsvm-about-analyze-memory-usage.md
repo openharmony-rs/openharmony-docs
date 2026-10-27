@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "讲解使用Chrome DevTools分析网页内存的方法，覆盖堆快照获取、摘要/比较/控制/统计四类视图解读，并通过快照对比与时间轴分配视图定位内存泄漏。"
+keywords: [DevTools, 内存分析, 堆快照, Chrome浏览器, 摘要视图, 比较视图, 内存泄漏, 保留大小, 浅层大小]
+doctype: guide
+status: active
+---
+
 # 使用DevTools进行网页内存分析
 <!--Kit: NDK Development-->
 <!--Subsystem: arkcompiler-->

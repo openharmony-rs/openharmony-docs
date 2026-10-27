@@ -28,6 +28,8 @@ getPhotoAccessHelper(context: Context, userId: number): PhotoAccessHelper
 
 **系统接口**：此接口为系统接口。
 
+**需要权限**：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
+
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **参数：**
@@ -12277,7 +12279,7 @@ async function example(context: Context) {
     } else if (taskStage == photoAccessHelper.CloudEnhancementTaskStage.TASK_STAGE_FAILED) {
       let errCode = cloudEnhancementTaskState.statusCode;
       let message = `task is failed, errCode: ${errCode}`;
-      console.info(message);
+      console.error(message);
     } else if (taskStage == photoAccessHelper.CloudEnhancementTaskStage.TASK_STAGE_COMPLETED) {
       console.info("task is completed");
     }
@@ -14557,7 +14559,7 @@ try {
 | ARCHITECTURE<sup>23+</sup> |  15 | ARCHITECTURE表示建筑照片会被推荐。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。|
 | LANDSCAPE<sup>23+</sup> |  16 | LANDSCAPE表示风景照片会被推荐。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。|
 | GAUSSIAN_SPLAT_3D<sup>24+</sup> |  17 | GAUSSIAN_SPLAT_3D表示通过3D高斯技术生成的照片会被推荐。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。|
-| FEATURED_SINGLE_PET |  18 | FEATURED_SINGLE_PET表示精选宠物照片会被推荐。<br>**起始版本：** 26.2.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。|
+| FEATURED_SINGLE_PET |  18 | FEATURED_SINGLE_PET表示精选宠物照片会被推荐。<br>**起始版本：** 26.1.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。|
 
 ## RecommendationOptions<sup>11+</sup>
 

@@ -307,7 +307,7 @@ if (code != OH_USBMANAGER_SUCCESS) {
 
 > **重要：**<br>资源释放顺序为先关闭管道，再释放设备数组。确保异常退出路径上也执行释放操作，避免资源泄漏。
 
-<!-- @[CApiClosePipe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerCApiSample/entry/src/main/cpp/napi_init.cpp) -->  
+<!-- @[CApiClosePipe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerCApiSample/entry/src/main/cpp/napi_init.cpp) --> 
 
 ``` C++
 (void)info;

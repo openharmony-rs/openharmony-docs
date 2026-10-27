@@ -5,7 +5,7 @@
 <!--Designer: @ding_dong_dong-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=6d0420fb94e31e8d87b8edab2079e2cc942d26bc translatedAt=2026-09-04T04:01:23.857Z pushedAt=2026-09-09T09:11:03.747Z -->
+<!-- md-trans-meta sourceCommit=1b798c55b9b21ec7c3d1bebc2b3bb18182ba4577 translatedAt=2026-10-19T10:25:42.856Z pushedAt=2026-10-19T11:36:36.149Z nl=1 -->
 
 The **distributedKVStore** module implements collaboration between databases for different devices that form a Super Device. You can use the APIs provided by this module to save application data to a distributed key-value (KV) store and perform operations, such as adding, deleting, modifying, and querying data, and synchronizing data across devices.
 
@@ -48,7 +48,7 @@ Provides constants of the distributed KV store.
 | --------------------- | ------ | ---- | ---- | ---------------------------------------------------------- |
 | MAX_KEY_LENGTH        | number | Yes  | No   | The value is 1024, indicating the maximum length allowed for a key in the database, in bytes.        |
 | MAX_VALUE_LENGTH      | number | Yes  | No   | The value is 4194303, indicating the maximum length allowed for a value in the database, in bytes.   |
-| MAX_KEY_LENGTH_DEVICE | number | Yes  | No   | The value is 896, indicating the maximum length allowed for a key in the device collaboration database, in bytes. |
+| MAX_KEY_LENGTH_DEVICE | number | Yes  | No   | The value is 896, indicating the maximum length allowed for a key in the device KV store, in bytes. |
 | MAX_STORE_ID_LENGTH   | number | Yes  | No   | The value is 128, indicating the maximum length allowed for a database identifier, in bytes.        |
 | MAX_QUERY_LENGTH      | number | Yes  | No   | The value is 512000, indicating the maximum query length, in bytes.                   |
 | MAX_BATCH_SIZE        | number | Yes  | No  | Maximum number of batch operations allowed, which is 128.                         |
@@ -3540,7 +3540,7 @@ Obtains all KV pairs that match the specified key prefix. This API uses an async
 
 | Name   | Type                              | Mandatory| Description                                                                                 |
 | --------- | -------------------------------------- | ---- |-------------------------------------------------------------------------------------|
-| keyPrefix | string                                 | Yes  | Key prefix to match. The length ranges from 1 to [MAX_KEY_LENGTH](#constants). It cannot contain '^'; otherwise, the predicate becomes invalid and all data in the RDB store will be returned.|
+| keyPrefix | string                                 | Yes  | Key prefix to match. The length ranges from 1 to [MAX_KEY_LENGTH](#constants). It cannot contain '^'; otherwise, the predicate becomes invalid and all data in the KV store will be returned.|
 | callback  | AsyncCallback&lt;[Entry](#entry)[]&gt; | Yes  | Callback used to return the KV pairs that match the specified prefix.                                                               |
 
 **Error codes**
@@ -3608,7 +3608,7 @@ Obtains all KV pairs that match the specified key prefix. This API uses a promis
 
 | Name   | Type| Mandatory| Description                                                                                 |
 | --------- | -------- | ---- |-------------------------------------------------------------------------------------|
-| keyPrefix | string   | Yes  | Key prefix to match. The length ranges from 1 to [MAX_KEY_LENGTH](#constants). It cannot contain '^'; otherwise, the predicate becomes invalid and all data in the RDB store will be returned.|
+| keyPrefix | string   | Yes  | Key prefix to match. The length ranges from 1 to [MAX_KEY_LENGTH](#constants). It cannot contain '^'; otherwise, the predicate becomes invalid and all data in the KV store will be returned.|
 
 **Return value**
 
@@ -3819,7 +3819,7 @@ Obtains a result set with the specified prefix from this single KV store. This A
 
 | Name   | Type                                                  | Mandatory| Description                                                                                 |
 | --------- | ---------------------------------------------------------- | ---- |-------------------------------------------------------------------------------------|
-| keyPrefix | string                                 | Yes  | Key prefix to match. The length ranges from 1 to [MAX_KEY_LENGTH](#constants). It cannot contain '^'; otherwise, the predicate becomes invalid and all data in the RDB store will be returned.|
+| keyPrefix | string                                 | Yes  | Key prefix to match. The length ranges from 1 to [MAX_KEY_LENGTH](#constants). It cannot contain '^'; otherwise, the predicate becomes invalid and all data in the KV store will be returned.|
 | callback  | AsyncCallback&lt;[KVStoreResultSet](#kvstoreresultset)&gt; | Yes  | Callback used to return the result set with the specified prefix.                                                                 |
 
 **Error codes**
@@ -3897,7 +3897,7 @@ Obtains a result set with the specified prefix from this single KV store. This A
 
 | Name   | Type| Mandatory| Description                                                                                 |
 | --------- | -------- | ---- |-------------------------------------------------------------------------------------|
-| keyPrefix | string   | Yes  | Key prefix to match. The length ranges from 1 to [MAX_KEY_LENGTH](#constants). It cannot contain '^'; otherwise, the predicate becomes invalid and all data in the RDB store will be returned.|
+| keyPrefix | string   | Yes  | Key prefix to match. The length ranges from 1 to [MAX_KEY_LENGTH](#constants). It cannot contain '^'; otherwise, the predicate becomes invalid and all data in the KV store will be returned.|
 
 **Return value**
 
@@ -4374,7 +4374,7 @@ try {
     if (err) {
       console.error(`Failed to backup. Code: ${err.code}, message: ${err.message} `);
     } else {
-      console.info(`Succeeded in backupping data`);
+      console.info(`Succeeded in backing up data`);
     }
   });
 } catch (err) {
@@ -4420,7 +4420,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let backupFile = 'BK001';
 try {
   kvStore.backup(backupFile).then(() => {
-    console.info(`Succeeded in backupping data`);
+    console.info(`Succeeded in backing up data`);
   }).catch((err: BusinessError) => {
     console.error(`Failed to backup. Code: ${err.code}, message: ${err.message}`);
   });
@@ -4470,7 +4470,7 @@ const backupConfig: distributedKVStore.BackupConfig = {
 };
 try {
   kvStore.backupEx(backupConfig).then(() => {
-    console.info(`Succeeded in backupping data`);
+    console.info(`Succeeded in backing up data`);
   }).catch((err: BusinessError) => {
     console.error(`Failed to backup. Code: ${err.code}, message: ${err.message}`);
   });
@@ -5135,7 +5135,7 @@ try {
 
 setSyncRange(localLabels: string[], remoteSupportLabels: string[], callback: AsyncCallback&lt;void&gt;): void
 
-Sets the data sync range. This API uses an asynchronous callback to return the result. You can set the sync tags for the local and remote devices to determine which devices can perform data sync. Data can be synced only when the tags of the local device overlap with those of the remote device.
+Sets the data sync range. This API uses an asynchronous callback to return the result. You can set the sync labels for the local and remote devices to determine which devices can perform data sync. Data can be synced only when the tags of the local device overlap with those of the remote device.
 
 **System capability**: SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -5180,7 +5180,7 @@ try {
 
 setSyncRange(localLabels: string[], remoteSupportLabels: string[]): Promise&lt;void&gt;
 
-Sets the data sync range. This API uses a promise to return the result. You can set the sync tags for the local and remote devices to determine which devices can perform data sync. Data can be synced only when the tags of the local device overlap with those of the remote device.
+Sets the data sync range. This API uses a promise to return the result. You can set the sync labels for the local and remote devices to determine which devices can perform data sync. Data can be synced only when the tags of the local device overlap with those of the remote device.
 
 **System capability**: SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -5808,7 +5808,6 @@ For details about the error codes, see [Distributed KV Store Error Codes](errorc
 | ------------ | -------------------------------------- |
 | 15100003     | Database corrupted. |
 | 15100005     | Database or result set already closed. |
-| 15100006     | Failed to update the key. |
 
 **Example**
 
@@ -6083,7 +6082,7 @@ Obtains all KV pairs that match the specified key prefix for this device. This A
 
 | Name   | Type                                  | Mandatory| Description                                    |
 | --------- | -------------------------------------- | ---- | ---------------------------------------- |
-| keyPrefix | string                                 | Yes  | Key prefix to match. The length ranges from 1 to [MAX_KEY_LENGTH](#constants). It cannot contain '^'; otherwise, the predicate becomes invalid and all data in the RDB store will be returned.|
+| keyPrefix | string                                 | Yes  | Key prefix to match. The length ranges from 1 to [MAX_KEY_LENGTH](#constants). It cannot contain '^'; otherwise, the predicate becomes invalid and all data in the KV store will be returned.|
 | callback  | AsyncCallback&lt;[Entry](#entry)[]&gt; | Yes  | Callback used to return the KV pairs that match the specified prefix.|
 
 **Error codes**
@@ -6151,7 +6150,7 @@ Obtains all KV pairs that match the specified key prefix for this device. This A
 
 | Name   | Type  | Mandatory| Description                |
 | --------- | ------ | ---- | -------------------- |
-| keyPrefix | string | Yes  | Key prefix to match. The length ranges from 1 to [MAX_KEY_LENGTH](#constants). It cannot contain '^'; otherwise, the predicate becomes invalid and all data in the RDB store will be returned.|
+| keyPrefix | string | Yes  | Key prefix to match. The length ranges from 1 to [MAX_KEY_LENGTH](#constants). It cannot contain '^'; otherwise, the predicate becomes invalid and all data in the KV store will be returned.|
 
 **Return value**
 
@@ -6224,7 +6223,7 @@ Obtains all KV pairs that match the specified device ID and key prefix. This API
 | Name   | Type                              | Mandatory| Description                                          |
 | --------- | -------------------------------------- | ---- | ---------------------------------------------- |
 | deviceId  | string                                 | Yes  | Network ID of the device whose data is to be queried. This parameter cannot be left empty.                      |
-| keyPrefix | string                                 | Yes  | Key prefix to match. The length ranges from 1 to [MAX_KEY_LENGTH](#constants). It cannot contain '^'; otherwise, the predicate becomes invalid and all data in the RDB store will be returned.|
+| keyPrefix | string                                 | Yes  | Key prefix to match. The length ranges from 1 to [MAX_KEY_LENGTH](#constants). It cannot contain '^'; otherwise, the predicate becomes invalid and all data in the KV store will be returned.|
 | callback  | AsyncCallback&lt;[Entry](#entry)[]&gt; | Yes  | Callback used to return the KV pairs obtained.|
 
 **Error codes**
@@ -6297,7 +6296,7 @@ Obtains all KV pairs that match the specified device ID and key prefix. This API
 | Name   | Type| Mandatory| Description                    |
 | --------- | -------- | ---- | ------------------------ |
 | deviceId  | string   | Yes  | Network ID of the device whose data is to be queried. This parameter cannot be left empty.|
-| keyPrefix | string   | Yes  | Key prefix to match. The length ranges from 1 to [MAX_KEY_LENGTH](#constants). It cannot contain '^'; otherwise, the predicate becomes invalid and all data in the RDB store will be returned.|
+| keyPrefix | string   | Yes  | Key prefix to match. The length ranges from 1 to [MAX_KEY_LENGTH](#constants). It cannot contain '^'; otherwise, the predicate becomes invalid and all data in the KV store will be returned.|
 
 **Return value**
 
@@ -6667,7 +6666,7 @@ Obtains a result set with the specified prefix for this device. This API uses an
 
 | Name   | Type                                                      | Mandatory| Description                                                                                |
 | --------- | ---------------------------------------------------------- | ---- |------------------------------------------------------------------------------------|
-| keyPrefix | string   | Yes  | Key prefix to match. The length ranges from 1 to [MAX_KEY_LENGTH](#constants). It cannot contain '^'; otherwise, the predicate becomes invalid and all data in the RDB store will be returned.|
+| keyPrefix | string   | Yes  | Key prefix to match. The length ranges from 1 to [MAX_KEY_LENGTH](#constants). It cannot contain '^'; otherwise, the predicate becomes invalid and all data in the KV store will be returned.|
 | callback  | AsyncCallback&lt;[KVStoreResultSet](#kvstoreresultset)&gt; | Yes  | Callback used to return the result set with the specified prefix.                                                                |
 
 **Error codes**
@@ -6744,7 +6743,7 @@ Obtains a result set with the specified prefix for this device. This API uses a 
 
 | Name   | Type  | Mandatory| Description                |
 | --------- | ------ | ---- | -------------------- |
-| keyPrefix | string | Yes  | Key prefix to match. The length ranges from 1 to [MAX_KEY_LENGTH](#constants). It cannot contain '^'; otherwise, the predicate becomes invalid and all data in the RDB store will be returned.|
+| keyPrefix | string | Yes  | Key prefix to match. The length ranges from 1 to [MAX_KEY_LENGTH](#constants). It cannot contain '^'; otherwise, the predicate becomes invalid and all data in the KV store will be returned.|
 
 **Return value**
 
@@ -6823,7 +6822,7 @@ Obtains a **KVStoreResultSet** object that matches the specified device ID and k
 | Name   | Type                                                    | Mandatory| Description                                                        |
 | --------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | deviceId  | string                                                       | Yes  | Network ID of the device whose data is to be queried. This parameter cannot be left empty.                                    |
-| keyPrefix | string                                                       | Yes  | Key prefix to match. The length ranges from 1 to [MAX_KEY_LENGTH](#constants). It cannot contain '^'; otherwise, the predicate becomes invalid and all data in the RDB store will be returned.|
+| keyPrefix | string                                                       | Yes  | Key prefix to match. The length ranges from 1 to [MAX_KEY_LENGTH](#constants). It cannot contain '^'; otherwise, the predicate becomes invalid and all data in the KV store will be returned.|
 | callback  | AsyncCallback&lt;[KVStoreResultSet](#kvstoreresultset)&gt; | Yes  | Callback used to return the **KVStoreResultSet** object obtained.|
 
 **Error codes**
@@ -6884,7 +6883,7 @@ Obtains a **KVStoreResultSet** object that matches the specified device ID and k
 | Name   | Type| Mandatory| Description                    |
 | --------- | -------- | ---- | ------------------------ |
 | deviceId  | string   | Yes  | Network ID of the device whose data is to be queried. This parameter cannot be left empty.|
-| keyPrefix | string   | Yes  | Key prefix to match. The length ranges from 1 to [MAX_KEY_LENGTH](#constants). It cannot contain '^'; otherwise, the predicate becomes invalid and all data in the RDB store will be returned.|
+| keyPrefix | string   | Yes  | Key prefix to match. The length ranges from 1 to [MAX_KEY_LENGTH](#constants). It cannot contain '^'; otherwise, the predicate becomes invalid and all data in the KV store will be returned.|
 
 **Return value**
 

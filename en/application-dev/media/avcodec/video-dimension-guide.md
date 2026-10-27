@@ -2,11 +2,11 @@
 
 <!--Kit: AVCodec Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @zhanghongran-->
+<!--Owner: @rchdlee-->
 <!--Designer: @dpy2650--->
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=45526eba67080b876eb51af31a33be43ae26f701 translatedAt=2026-07-13T13:19:28.539Z pushedAt=2026-07-20T07:55:12.752Z -->
+<!-- md-trans-meta sourceCommit=304faff8a397ac34a55bc74807f59e83ee136957 translatedAt=2026-10-22T04:08:32.522Z pushedAt=2026-10-22T13:28:11.145Z nl=1 -->
 
 ## Overview
 
@@ -30,6 +30,7 @@ In video codec development, **width** and **height** are represented in multiple
 > **NOTE**
 >
 > For the definitions of the keys in the table, refer to [native_avcodec_base.h](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md).
+
 
 ## Core Concepts
 
@@ -87,7 +88,6 @@ Video codec hardware typically requires **memory alignment to specific bytes or 
 Stride has two dimensions:
 
 - **Stride**: The actual number of bytes per row in memory, typically greater than or equal to the valid image width.
-
 - **sliceHeight**: The total number of rows allocated in memory, typically greater than or equal to the valid image height.
 
 The relationship between the two and the valid dimensions is as follows:
@@ -117,7 +117,7 @@ The following table describes the parameters in Figure 1.
 
 The memory layout of the decoder output buffer is similar, but different key names are used to identify the valid region.
 
-**Figure 2** Memory layout of the decoder output buffer 
+**Figure 2** Memory layout of the decoder output buffer
 ![decoder stride](figures/copy-by-line-decoder.png)
 
 The following table describes the parameters in Figure 2.
@@ -147,6 +147,7 @@ The four decoder-specific crop parameters define the rectangular region of the *
 | cropTop | `OH_MD_KEY_VIDEO_CROP_TOP` | The row coordinate (y) of the top edge of the valid area. The coordinate starts from 0, and the specified row is included. |
 | cropBottom | `OH_MD_KEY_VIDEO_CROP_BOTTOM` | The row coordinate (y) of the bottom edge of the valid area. The coordinate starts from 0, and the specified row is included. |
 
+
 ## Relationship Between picWidth/picHeight and Bitstream Standards (H.264/H.265)
 
 ### H.264/AVC Standard
@@ -162,6 +163,7 @@ In the H.264 standard, the image size relationship is defined by the following f
 | `frame_crop_right_offset` | Right crop offset (number of pixels from the right edge). |
 | `frame_crop_top_offset` | Top crop offset (number of pixels from the top edge). |
 | `frame_crop_bottom_offset` | Bottom crop offset (number of pixels from the bottom edge). |
+
 
 For common formats such as YUV420 and H.264 videos with `frame_mbs_only_flag = 1`, the valid image size can be calculated using the following formulas.
 
@@ -190,7 +192,6 @@ The H.265 standard uses Coding Tree Unit (CTU) instead of macroblocks. The follo
 | `conf_win_bottom_offset` | Bottom offset of the conformance window (number of pixels from the bottom edge). |
 
 For common YUV420 H.265 videos, the valid image size can be calculated using the following formulas.
-
 ```txt
 // Method 1: Calculate directly using SPS offsets.
 picWidth  = pic_width_in_luma_samples - 2 * conf_win_right_offset - 2 * conf_win_left_offset
@@ -211,19 +212,21 @@ picHeight = cropBottom - cropTop + 1
 > 4. Specific SoC: may require stricter alignment.
 > You should obtain the actual stride value through `GetInputDescription`/`GetOutputDescription` or the `OnStreamChanged` callback, rather than assuming a fixed value.
 
+
+
 ## Code Example
 
 ### Scenario 1: Writing Data to the Encoder Input Buffer
 
 In encoder buffer mode, the encoder provides an available input buffer through the `OnNeedInputBuffer` callback. You need to copy the raw image data into the `OH_AVBuffer`. When the buffer memory stride is greater than the configured width and height, the valid data must be copied row by row while skipping the padding area; otherwise, the image will be misaligned.
 
-Reference code: step 3 in [Buffer Mode](video-encoding.md#buffer-mode) of the video encoding development guide, and step 8 in [Buffer Mode](video-encoding.md#buffer-mode) of the video encoding development guide
+Reference code: asynchronous video encoding development guide ([Buffer Mode](video-encoding.md#buffer-mode), step 3), asynchronous video encoding development guide ([Buffer Mode](video-encoding.md#buffer-mode), step 8).
 
 ### Scenario 2: Reading Data from the Decoder Output Buffer
 
 In decoder buffer mode, when reading data, it is necessary to read row by row based on the valid image dimensions and stride, and to skip padding and invalid edges in combination with the crop information.
 
-Reference code: step 3 in [Buffer Mode](video-decoding.md#buffer-mode) of the video decoding development guide, and step 11 in [Buffer Mode](video-decoding.md#buffer-mode) of the video decoding development guide
+Reference code: asynchronous video decoding development guide ([Buffer Mode](video-decoding.md#buffer-mode), step 3), asynchronous video decoding development guide ([Buffer Mode](video-decoding.md#buffer-mode), step 11).
 
 ### Scenario 3: Surface Mode
 
@@ -233,6 +236,7 @@ When surface mode is used, the system automatically handles stride and memory al
 |------|-------------------------------|-----------------------------|
 | Surface mode | System (automatically handled by the underlying graphics stack). | No |
 | Buffer mode | Developer (data must be copied row by row). | Yes |
+
 
 ## Dimension Relationship Quick Reference
 
@@ -290,9 +294,7 @@ Relationship (typical case, with cropping and alignment):
 ### When Do I Need to Consider Crop Information?
 
 **Answer**: You only need to consider crop information when using a decoder and the bitstream contains non-zero crop values. This is commonly seen in the following scenarios:
-
 - Bitstreams output by some network cameras. (The encoded frame is padded to a multiple of 16 and then cropped back to the original size.)
-
 - Bitstreams generated by some transcoding tools.
 
 For most common bitstreams, such as videos recorded by mobile phones, the crop values usually cover the entire coded frame. In this case, `LEFT = 0`, `TOP = 0`, `RIGHT = encoded frame width - 1`, and `BOTTOM = encoded frame height - 1`. Therefore, `picWidth` equals the coded frame width and `picHeight` equals the coded frame height, and no additional crop offset processing is required.
@@ -300,7 +302,6 @@ For most common bitstreams, such as videos recorded by mobile phones, the crop v
 ### What Are the Differences Between Surface Mode and Buffer Mode?
 
 **Answer**: The differences are shown in the following table.
-
 | Aspect | Surface Mode | Buffer Mode |
 |------|-------------|-------------|
 | Stride handling | Handled automatically by the system/driver layer. | Must be handled manually by the developer. |
@@ -309,25 +310,19 @@ For most common bitstreams, such as videos recorded by mobile phones, the crop v
 ### Q5: Are Stride Values Always Fixed?
 
 **Answer**: Not necessarily. The stride depends on:
-
 - Platform: Different SoCs have different alignment requirements.
-
 - Pixel format: The alignment rules for YUV420P and RGBA may differ.
 
 Therefore, query the stride again each time in `OnStreamChanged` or during the first call to `GetInputDescription`/`GetOutputDescription`. Do not cache the stride value.
 
 ### Q6: What Do the Width and Height Parameters in Capability Query APIs Such as `OH_AVCapability_IsVideoSizeSupported` Refer To?
 
-**Answer**: The width and height parameters in these APIs generally refer to the **encoded frame width and height** defined in the bitstream parameter set (such as SPS), and they do not directly correspond to any of the width/height keys used in the `avcodec` APIs (such as `OH_MD_KEY_WIDTH`, `OH_MD_KEY_VIDEO_PIC_WIDTH`, etc.). During decoding, the decoder determines whether decoding at that resolution is supported based on the **encoded frame width and height** read from the bitstream parameter set. If the width and height queried earlier do not match the actual parameters in the bitstream, the actual decoding capability may differ from the query result.
+**Answer**: The width and height parameters in these APIs generally refer to the **encoded frame width and height** defined in the bitstream parameter set (such as SPS). They do not directly correspond to any of the width/height keys used in `avcodec` APIs (such as `OH_MD_KEY_WIDTH` and `OH_MD_KEY_VIDEO_PIC_WIDTH`). During decoding, the decoder determines whether it supports decoding the resolution based on the **encoded frame width and height** read from the bitstream parameter set. If the width and height queried earlier do not match the parameters in the actual bitstream, the actual decoding capability may differ from the query result.
 
 ## References
 
-- [Video Encoding](video-encoding.md): complete workflow for surface mode and buffer mode
-
-- [Video Decoding](video-decoding.md): complete workflow for surface mode and buffer mode.
-
-- [native_avcodec_base.h](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md): definitions of all key names
-
-- [native_avcodec_videoencoder.h](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md): encoder APIs
-
-- [native_avcodec_videodecoder.h](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md): decoder APIs
+- [Asynchronous Video Encoding](video-encoding.md): complete workflow for surface mode and buffer mode.
+- [Asynchronous Video Decoding](video-decoding.md): complete workflow for surface mode and buffer mode.
+- [native_avcodec_base.h](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md): Definitions of all key names.
+- [native_avcodec_videoencoder.h](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md): Encoder APIs.
+- [native_avcodec_videodecoder.h](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md): Decoder APIs.

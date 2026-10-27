@@ -1231,6 +1231,7 @@ Preferences实例配置选项。
 | name        | string | 否  | 否 | Preferences实例的名称。名称长度需大于零且小于等于255字节，名称中不能包含'/'且不能以'/'结尾。 <br>**原子化服务API：** 从API version 11开始，该参数支持在原子化服务中使用。                                    |
 | dataGroupId | string \| null \| undefined | 否  | 是 | 应用组ID，<!--RP1-->暂不支持指定dataGroupId在对应共享沙箱路径下创建Preferences实例。<!--RP1End--><br>为可选参数。指定在此dataGroupId对应的沙箱路径下创建Preferences实例。当此参数不填时，默认在本应用沙箱目录下创建Preferences实例。<br> **模型约束：** 此属性仅在Stage模型下可用。<br>**原子化服务API：** 从API version 11开始，该参数支持在原子化服务中使用。 |
 | storageType<sup>18+</sup> | [StorageType](#storagetype18) \| null \| undefined | 否 | 是 | 存储模式，为可选参数。表示当前Preferences实例需要使用的存储模式。当此参数不填时，默认使用XML存储模式。当选择某种存储模式创建Preferences后，不支持中途切换存储模式。 <br>**原子化服务API：** 从API version 18开始，该参数支持在原子化服务中使用。 |
+| sharedMapSize | number | 否 | 是 | 初始缓存文件大小，单位为KB。表示当前Preferences实例的初始跨进程共享缓存文件大小，仅在存储模式设置为GSKV时生效（即storageType为StorageType.GSKV）。取值可以为0或[256, 1112784]范围内的值。不指定此参数时，系统按需自动初始化缓存文件。设置为0时，初始缓存文件大小为0，该Preferences实例的缓存文件不会增长，且不支持跨进程访问。设置为大于0的有效值时，初始缓存文件大小为配置值，该Preferences实例的缓存文件大小仍会按需增长。配置值可在Preferences实例断开连接后重新连接时动态切换。<br> **模型约束：** 此属性仅在Stage模型下可用。<br>**原子化服务API：** 从API版本26.1.0开始，该参数支持在原子化服务中使用。 |
 
 
 ## Preferences

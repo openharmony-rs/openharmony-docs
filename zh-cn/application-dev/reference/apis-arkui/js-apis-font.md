@@ -14,7 +14,7 @@
 >
 > - 本模块功能依赖UI的执行上下文，不可在[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的地方使用，参见[UIContext](./arkts-apis-uicontext-uicontext.md)说明。
 >
-> - 推荐使用字体引擎的[loadFontSync](../apis-arkgraphics2d/js-apis-graphics-text.md#loadfontsync)接口注册自定义字体。
+> - 推荐使用图形的[@ohos.graphics.text (文本模块)](../apis-arkgraphics2d/js-apis-graphics-text.md)。
 
 ## 导入模块
 
@@ -29,6 +29,8 @@ registerFont(options: FontOptions): void
 在字体管理中注册自定义字体。
 
 该接口为异步接口，不支持并发调用。
+
+推荐使用字体引擎的[loadFontSync()](../apis-arkgraphics2d/js-apis-graphics-text.md#loadfontsync)接口注册自定义字体。
 
 > **说明：**
 >
@@ -138,7 +140,7 @@ getSystemFontList(): Array\<string>
 
 该接口仅在PC/2in1设备上生效，在其他设备上返回空数组。
 
-推荐使用[getSystemFontFullNamesByType](../apis-arkgraphics2d/js-apis-graphics-text.md#textgetsystemfontfullnamesbytype14)接口获取系统最新支持的字体列表数据。
+推荐使用[getSystemFontFullNamesByType()](../apis-arkgraphics2d/js-apis-graphics-text.md#textgetsystemfontfullnamesbytype14)接口获取系统最新支持的字体列表数据。
 
 > **说明：**
 >
@@ -193,6 +195,8 @@ struct FontExample {
 getFontByName(fontName: string): FontInfo
 
 根据传入的系统字体名称获取系统字体的相关信息。
+
+推荐使用[getFontDescriptorByFullName()](../apis-arkgraphics2d/js-apis-graphics-text.md#textgetfontdescriptorbyfullname14)接口获取指定字体类型的字体相关信息。
 
 > **说明：**
 >

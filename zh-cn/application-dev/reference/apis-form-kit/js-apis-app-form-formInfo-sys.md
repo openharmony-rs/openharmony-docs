@@ -57,7 +57,7 @@ import { formInfo } from '@kit.FormKit';
 | TEMPLATE_FORM_DESCRIPTION<sup>23+</sup>    | 'ohos.extra.param.key.template_form_description'   | 模板卡片描述。 <br>**系统接口：** 此接口为系统接口。  |
 | FORM_FONT_SIZE_SCALE_KEY    | 'ohos.extra.param.key.form_font_size_scale'   | 卡片字体大小缩放键值。 <br>**系统接口：** 此接口为系统接口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**起始版本：** 26.0.0  |
 | FORM_FONT_WEIGHT_SCALE_KEY    | 'ohos.extra.param.key.form_font_weight_scale'   | 卡片字重缩放键值。 <br>**系统接口：** 此接口为系统接口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**起始版本：** 26.0.0  |
-| FORM_EDIT_COLOR_MODE_KEY    | 'ohos.extra.param.key.form_edit_color_mode'   | 卡片编辑能力颜色模式键值。 <br/>-1：表示自动跟随系统。<br/>0：表示深色模式。<br/>1：表示浅色模式。 <br>**系统接口：** 此接口为系统接口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**起始版本：** 26.2.0  |
+| FORM_EDIT_COLOR_MODE_KEY    | 'ohos.extra.param.key.form_edit_color_mode'   | 卡片编辑能力颜色模式键值。 <br/>-1：表示自动跟随系统。<br/>0：表示深色模式。<br/>1：表示浅色模式。 <br>**系统接口：** 此接口为系统接口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**起始版本：** 26.1.0  |
 
 ## FormUsageState<sup>11+</sup>
 
@@ -167,8 +167,8 @@ import { formInfo } from '@kit.FormKit';
 | NO_SPACE       | 1    | 表示没有空间添加卡片。           |
 | PARAM_ERROR    | 2    | 表示参数检查失败。               |
 | INTERNAL_ERROR | 3    | 表示卡片处理过程中出现内部错误。 |
-| NOT_SUPPORT    | 4    | 表示卡片不支持发布。<br/>**起始版本：** 26.0.1 |
-| HOST_FORM_LIMIT | 5   | 表示添加到使用方的卡片数量超过上限。<br/>**起始版本：** 26.0.1 |
+| NOT_SUPPORT    | 4    | 表示卡片不支持发布。<br/>适用版本：26.0.1 |
+| HOST_FORM_LIMIT | 5   | 表示添加到使用方的卡片数量超过上限。<br/>适用版本：26.0.1 |
 
 ## RenderingMode<sup>18+</sup>
 
@@ -222,7 +222,7 @@ import { formInfo } from '@kit.FormKit';
 | abilityName | string | 否  | 是   | 趣味交互场景 extensionAbility 名称，默认为空。 |
 | targetBundleName  | string | 否  | 否   | 趣味交互场景[主包包名](https://developer.huawei.com/consumer/cn/doc/quickApp-Guides/quickgame-independent-subpackage-0000002076341729)。        |
 | subBundleName  | string | 否  | 否   | 趣味交互场景[独立分包名](https://developer.huawei.com/consumer/cn/doc/quickApp-Guides/quickgame-independent-subpackage-0000002076341729)。 |
-| keepStateDuration  | number | 否  | 是   | 趣味交互场景无交互时，激活态保持时长。默认值为10000，单位ms。取值为(0,60000]的整数，超过取值范围则取最大值60000。<br/>**说明：** 在API版本26.0.0之前该字段为(0,10000]的整数，超过取值范围则取默认值10000。 |
+| keepStateDuration  | number | 否  | 是   | 趣味交互场景无交互时，激活态保持时长。默认值为10000，单位ms。取值为[0,60000]的整数，超过取值范围则取最大值60000。<br/>**说明：** 在API版本26.0.0之前该字段为(0,10000]的整数，超过取值范围则取默认值10000。 |
 
 ## SceneAnimationParams<sup>20+</sup>
 
@@ -399,6 +399,40 @@ let publishFormCrossBundleControlCallback: formInfo.PublishFormCrossBundleContro
   };
 ```
 
+## GetLiveFormStatusCallback<sup>20+</sup>
+
+type GetLiveFormStatusCallback = () => Record&lt;string, string&gt;
+
+获取互动卡片状态的回调。
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Record&lt;string, string&gt; | 返回卡片的状态信息。key为formID，value为卡片的状态信息。状态信息有"INACTIVE"、"PAUSE"、"ACTIVE"。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                                                                  |
+|-------|-----------------------------------------------------------------------------------------------------------|
+| 202   | The application is not a system application.                                                              |
+
+**示例：**
+
+```ts
+import { formInfo } from '@kit.FormKit';
+
+let GetLiveFormStatusCallback: formInfo.GetLiveFormStatusCallback = (): Record<string, string> => {
+  return { '1256444': 'ACTIVE' };
+};
+```
+
 ## SceneAnimationTriggerType
 
 场景动效卡片触发类型枚举。
@@ -433,7 +467,7 @@ type GetWantParamsCallback = (formInfo: Array&lt;formInfo.FormInfo&gt;) => Array
 
 | 参数名 | 类型 | 必填 | 说明 |
 |------|------|----|------|
-| formInfo | Array&lt;[FormInfo](#forminfo)&gt; | 是 | 卡片信息列表。 |
+| formInfo | Array&lt;[formInfo.FormInfo](#forminfo)&gt; | 是 | 卡片信息列表。 |
 
 **返回值：**
 
@@ -561,7 +595,7 @@ let deleteFormsCallback: formInfo.DeleteFormsCallback =
 | serviceName | string | 否 | 否 | 服务名称。 |
 | serviceDisplayName | string | 否 | 否 | 服务显示名称。 |
 | displayId | string | 否 | 否 | 显示标识。 |
-| customData | Record&lt;string, string&gt; | 否 | 是 | 自定义数据。 |
+| customData | Record&lt;string, string&gt; | 否 | 是 | 自定义数据。默认值为空。 |
 
 ## PeerFormHostServiceInfo
 
@@ -580,10 +614,10 @@ let deleteFormsCallback: formInfo.DeleteFormsCallback =
 | serviceName | string | 否 | 否 | 远端卡片使用方服务的服务名称。 |
 | serviceDisplayName | string | 否 | 否 | 远端卡片使用方服务的服务显示名称。 |
 | displayId | string | 否 | 否 | 远端卡片使用方服务的显示标识。 |
-| customData | Record&lt;string, string&gt; | 否 | 是 | 远端卡片使用方服务的自定义数据。 |
+| customData | Record&lt;string, string&gt; | 否 | 是 | 远端卡片使用方服务的自定义数据。默认值为空。 |
 | deviceId | string | 否 | 否 | 远端卡片使用方服务的设备标识。 |
 | networkId | string | 否 | 否 | 远端卡片使用方服务的网络标识。 |
-| serviceId | string | 否 | 否 | 远端卡片使用方服务的服务Id。 |
+| serviceId | string | 否 | 否 | 远端卡片使用方服务的服务标识。 |
 
 ## PublishFormCrossDeviceResult
 

@@ -1,10 +1,11 @@
 # Text Measurement (ArkTS)
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @gmiao522-->
-<!--Designer: @liumingxiang-->
-<!--Tester: @yhl0101-->
+<!--Owner: @oh_wangxk-->
+<!--Designer: @KejiePeng-->
+<!--Tester: @LiTongguan2026-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=5284e30f06236fe06b1ce39618ec19c1d67b8d4a translatedAt=2026-10-19T01:34:38.158Z pushedAt=2026-10-19T10:25:36.918Z -->
 
 ## Overview
 
@@ -21,10 +22,16 @@ The following text measurement capabilities are supported:
 
 - **Measurement of character spacing**: measures the horizontal distance between individual characters, which is usually related to the glyph and font design.
 
+- **Layout with constraints**: lays out text within a constrained width and height area, and obtains the actual layout dimensions and the adapted string range.
+
+- **Character position query**: obtains the corresponding character position based on screen coordinates, which can be used for interactive scenarios such as text selection and cursor positioning.
+
+- **Character and glyph range query**: converts between glyph ranges and character ranges, enabling mapping between glyph and character indices in scenarios such as text editing and selection highlighting.
+
 
 ## Available APIs
 
-The following table lists the APIs used for text measurement. For details about the APIs, see [@ohos.graphics.text (Text)](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#paragraph).
+The following table lists the common APIs used for text measurement. For details about the APIs, see [@ohos.graphics.text (Text)](../reference/apis-arkgraphics2d/js-apis-graphics-text.md).
 
 | Name| Description| 
 | -------- | -------- |
@@ -42,10 +49,10 @@ The following table lists the APIs used for text measurement. For details about 
    <!-- @[ts_text_metrics_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/TextMetrics/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
-   import { text } from '@kit.ArkGraphics2D';
+   import { text, drawing } from '@kit.ArkGraphics2D';
    ```
 
-2. Create a paragraph style and use **ParagraphBuilder** to generate a paragraph instance.
+2. Create a paragraph style and construct a **ParagraphBuilder** instance.
 
    <!-- @[ts_text_metrics_create_paragraphBuilder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/TextMetrics/entry/src/main/ets/pages/Index.ets) -->
    
@@ -121,4 +128,65 @@ The following table lists the APIs used for text measurement. For details about 
    // Case 5: Obtain the metrics array of all lines after typography.
    let allLineMetrics = paragraph.getLineMetrics();
    console.info("MetricsMSG: line 1 lineMetrics width: " + allLineMetrics[0].width);
+   ```
+
+5. Starting from API version 24, you can lay out text within a constrained width and height area and obtain the layout result.
+
+   Use [layoutWithConstraints()](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#layoutwithconstraints24) to lay out text within the specified width and height constraints. The returned result includes the actual layout dimensions (**correctRect**) and the adapted string range (**fitStrRange**).
+
+   <!-- @[ts_text_metrics_layout_with_constraints](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/TextMetrics/entry/src/main/ets/pages/Index.ets) -->
+
+   ``` TypeScript
+   // Case 6: Lay out text within a constrained width and height area, and obtain the layout result.
+   let constraint: text.TextRectSize = { width: 600, height: 200 };
+   let layoutResult: text.TextLayoutResult = paragraph.layoutWithConstraints(constraint);
+   // Obtain the actual size after layout.
+   console.info("MetricsMSG: correctRect width: " + layoutResult.correctRect.width +
+     ", height: " + layoutResult.correctRect.height);
+   // Obtain the fitted string range.
+   for (let i = 0; i < layoutResult.fitStrRange.length; i++) {
+     console.info("MetricsMSG: fitStrRange[" + i + "] start: " + layoutResult.fitStrRange[i].start +
+       ", end: " + layoutResult.fitStrRange[i].end);
+   }
+   ```
+
+6. Starting from API version 24, you can obtain character position information based on coordinates.
+
+   Use [getCharacterPositionAtCoordinate()](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#getcharacterpositionatcoordinate24) to obtain the character position under the specified encoding type. The returned **PositionWithAffinity** contains the character index and affinity information.
+
+   <!-- @[ts_text_metrics_get_character_position](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/TextMetrics/entry/src/main/ets/pages/Index.ets) -->
+
+   ``` TypeScript
+   // Case 8: Obtain the character position based on coordinates (with the specified encoding type).
+   let charPos: text.PositionWithAffinity =
+     paragraph.getCharacterPositionAtCoordinate(100, 50, drawing.TextEncoding.TEXT_ENCODING_UTF16);
+   console.info("MetricsMSG: charPos position: " + charPos.position +
+     ", affinity: " + charPos.affinity);
+   ```
+
+7. Starting from API version 24, you can convert between glyph ranges and character ranges.
+
+   Use [getCharacterRangeForGlyphRange()](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#getcharacterrangeforglyphrange24) to obtain the corresponding character range based on a glyph range, and use [getGlyphRangeForCharacterRange()](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#getglyphrangeforcharacterrange24) to obtain the corresponding glyph range based on a character range. The returned array contains two elements: the first is the target range, and the second is the actual range. Both UTF-8 and UTF-16 encoding types are supported.
+
+   <!-- @[ts_text_metrics_glyph_character_range](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/TextMetrics/entry/src/main/ets/pages/Index.ets) -->
+
+   ``` TypeScript
+   // Case 9: Obtain the character range based on the glyph range.
+   let glyphRange: text.Range = { start: 0, end: 2 };
+   let glyphToCharRanges: Array<text.Range> =
+     paragraph.getCharacterRangeForGlyphRange(glyphRange, drawing.TextEncoding.TEXT_ENCODING_UTF16);
+   // The first element of the returned array is the character range, and the second is the actual glyph range.
+   console.info("MetricsMSG: charRange start: " + glyphToCharRanges[0].start +
+     ", end: " + glyphToCharRanges[0].end);
+   console.info("MetricsMSG: actualGlyphRange start: " + glyphToCharRanges[1].start +
+     ", end: " + glyphToCharRanges[1].end);
+   // case10: Obtain the glyph range based on the character range.
+   let charRange: text.Range = { start: 0, end: 2 };
+   let charToGlyphRanges: Array<text.Range> =
+     paragraph.getGlyphRangeForCharacterRange(charRange, drawing.TextEncoding.TEXT_ENCODING_UTF16);
+   // The first element of the returned array is the glyph range, and the second is the actual character range.
+   console.info("MetricsMSG: glyphRange start: " + charToGlyphRanges[0].start +
+     ", end: " + charToGlyphRanges[0].end);
+   console.info("MetricsMSG: actualCharRange start: " + charToGlyphRanges[1].start +
+     ", end: " + charToGlyphRanges[1].end);
    ```

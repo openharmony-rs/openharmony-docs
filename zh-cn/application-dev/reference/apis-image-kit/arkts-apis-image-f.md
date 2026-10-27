@@ -308,8 +308,8 @@ function createPixelMapFromPixelsSync() {
   try {
     const pixelMap = image.createPixelMapFromPixelsSync(pixels, config);
     console.info('Succeeded in creating the PixelMap.');
-  } catch (e) {
-    const err = e as BusinessError;
+  } catch (error) {
+    const err = error as BusinessError;
     console.error(`Failed to create the PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }
@@ -373,8 +373,8 @@ function createEmptyPixelMap() {
   try {
     const pixelMap = image.createEmptyPixelMap(config);
     console.info('Succeeded in creating the empty PixelMap.');
-  } catch (e) {
-    const err = e as BusinessError;
+  } catch (error) {
+    const err = error as BusinessError;
     console.error(`Failed to create the empty PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }
@@ -528,8 +528,8 @@ function createPixelMapSync() {
       return;
     }
     console.info('Succeeded in creating the PixelMap.');
-  } catch (e) {
-    const err = e as BusinessError;
+  } catch (error) {
+    const err = error as BusinessError;
     console.error(`Failed to create the PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }
@@ -582,8 +582,8 @@ function createPixelMapSync() {
       return;
     }
     console.info('Succeeded in creating the PixelMap.');
-  } catch (e) {
-    const err = e as BusinessError;
+  } catch (error) {
+    const err = error as BusinessError;
     console.error(`Failed to create the PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }
@@ -704,8 +704,8 @@ function createPixelMapUsingAllocatorSync() {
       return;
     }
     console.info('Succeeded in creating the PixelMap.');
-  } catch (e) {
-    const err = e as BusinessError;
+  } catch (error) {
+    const err = error as BusinessError;
     console.error(`Failed to create the PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }
@@ -760,8 +760,8 @@ function createPixelMapUsingAllocatorSync() {
       return;
     }
     console.info('Succeeded in creating the PixelMap.');
-  } catch (e) {
-    const err = e as BusinessError;
+  } catch (error) {
+    const err = error as BusinessError;
     console.error(`Failed to create the PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }
@@ -825,8 +825,8 @@ class MySequence implements rpc.Parcelable {
   unmarshalling(messageSequence: rpc.MessageSequence) {
     try {
       this.pixelMap = image.createPixelMapFromParcel(messageSequence);
-    } catch (e) {
-      const err = e as BusinessError;
+    } catch (error) {
+      const err = error as BusinessError;
       console.error(`Failed to create the PixelMap from parcel. Code: ${err.code}, message: ${err.message}`);
       return false;
     }
@@ -963,8 +963,8 @@ function createPixelMapFromSurfaceSync(surfaceId: string) {
   try {
     let pixelMap: image.PixelMap = image.createPixelMapFromSurfaceSync(surfaceId, region);
     console.info('Succeeded in creating the PixelMap from Surface.');
-  } catch (e) {
-    const err = e as BusinessError;
+  } catch (error) {
+    const err = error as BusinessError;
     console.error(`Failed to create the PixelMap from Surface. Code: ${err.code}, message: ${err.message}`);
   }
 }
@@ -1063,8 +1063,8 @@ function createPixelMapFromSurfaceSync(surfaceId: string) {
   try {
     let pixelMap: image.PixelMap = image.createPixelMapFromSurfaceSync(surfaceId);
     console.info('Succeeded in creating the PixelMap from Surface.');
-  } catch (e) {
-    const err = e as BusinessError;
+  } catch (error) {
+    const err = error as BusinessError;
     console.error(`Failed to create the PixelMap from Surface. Code: ${err.code}, message: ${err.message}`);
   }
 }
@@ -1171,8 +1171,8 @@ function createPixelMapFromSurfaceWithTransformationSync(surfaceId: string, tran
   try {
     const pixelMap: image.PixelMap = image.createPixelMapFromSurfaceWithTransformationSync(surfaceId, transformEnabled);
     console.info('Succeeded in creating the PixelMap from Surface.');
-  } catch (e) {
-    const err = e as BusinessError;
+  } catch (error) {
+    const err = error as BusinessError;
     console.error(`Failed to create the PixelMap from Surface. Code: ${err.code}, message: ${err.message}`);
   }
 }

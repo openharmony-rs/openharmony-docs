@@ -1,3 +1,11 @@
+---
+kits: ["AVCodec Kit / 音视频编解码服务"]
+description: "介绍B帧编码特性，B帧（双向预测编码）通过同时参考前后帧信息降低时域冗余、提升压缩效率，适用于录像、编辑导出、转码及非低时延直播场景，需注意会增加端到端时延。"
+keywords: [B帧编码, 双向预测, 最大B帧数, 码控模式]
+doctype: guide
+status: active
+---
+
 # 高压缩率B帧编码
 
 <!--Kit: AVCodec Kit-->

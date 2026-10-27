@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍使用Node-API扩展接口创建对ArkTS对象的强引用，通过napi_create_strong_reference等接口管理引用，相较于napi_ref具有更快的创建效率。"
+keywords: [Node-API, 强引用, napi_create_strong_reference, napi_ref, 引用管理, 对象引用, 引用效率]
+doctype: guide
+status: active
+---
+
 # 使用扩展的Node-API接口创建对ArkTS对象的强引用
 
 <!--Kit: ArkTS-->

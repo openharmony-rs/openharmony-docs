@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍如何使用JSVM-API创建Date对象、获取其UTC毫秒时间值并判断对象是否为Date类型，适用于Native侧处理日期时间的场景。"
+keywords: [OH_JSVM_CreateDate, OH_JSVM_GetDateValue, OH_JSVM_IsDate, Date对象, 毫秒数, 时间值, UTC时间]
+doctype: guide
+status: active
+---
+
 # 使用JSVM-API接口进行Date相关开发
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->

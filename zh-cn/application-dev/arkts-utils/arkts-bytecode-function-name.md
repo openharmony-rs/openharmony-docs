@@ -1,9 +1,17 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "阐述方舟字节码文件中函数名称的命名规则，包括入口函数func_main_0的固定命名以及非入口函数由作用域标签、作用域名称和重名序号组成的前缀结构，便于开发者解析函数符号。"
+keywords: [方舟字节码, 函数命名规则, func_main_0, 作用域标签, 重名序号, name_off, "name mangling"]
+doctype: guide
+status: active
+---
+
 # 方舟字节码函数命名规则
 
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @jokerxd-liu; @zmw1-->
-<!--Designer: @huyunhui1; @oatuwwutao-->
+<!--Owner: @jokerxd-liu-->
+<!--Designer: @huyunhui1; @oatuwwutao; @zmw1-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
 

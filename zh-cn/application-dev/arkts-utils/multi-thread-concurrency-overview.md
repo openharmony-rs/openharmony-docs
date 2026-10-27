@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "概述ArkTS多线程并发能力：介绍耗时、长时、常驻三类业务场景，对比内存共享模型与Actor并发模型的差异，说明TaskPool和Worker均基于Actor模型实现，并给出并发注意事项。"
+keywords: [多线程并发, Actor模型, 内存共享模型, 消息传递, TaskPool, Worker, 并发模型对比, 并发注意事项]
+doctype: guide
+status: active
+---
+
 # 多线程并发概述
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->

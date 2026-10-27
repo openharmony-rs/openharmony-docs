@@ -3885,7 +3885,7 @@ getBackupDataSize(isPreciseScan: boolean, dataList: Array\<IncrementalBackupTime
 
 appendBundles(bundlesToBackup: Array&lt;IncrementalBackupData&gt;): Promise&lt;void&gt;
 
-添加需要增量备份的应用。当前整个流程中，触发Release接口之前都可以进行appendBundles的调用。使用Promise异步回调。
+添加需要增量备份的应用。当前整个流程中，触发release接口之前都可以进行appendBundles的调用。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 

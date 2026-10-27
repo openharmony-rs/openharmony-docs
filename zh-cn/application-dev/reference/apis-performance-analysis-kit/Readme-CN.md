@@ -50,6 +50,7 @@
     - [HiAppEvent_Watcher](capi-hiappevent-hiappevent-watcher.md)
     - [HiAppEvent_Processor](capi-hiappevent-hiappevent-processor.md)
     - [HiAppEvent_Config](capi-hiappevent-hiappevent-config.md)
+    - [OH_HiAppEvent_ExternalLog](capi-hiappevent-hiappevent-externallog.md)
     - [HiCollie_DetectionParam](capi-hicollie-hicollie-detectionparam.md)
     - [HiCollie_SetTimerParam](capi-hicollie-hicollie-settimerparam.md)
     - [HiDebug_ThreadCpuUsage](capi-hidebug-hidebug-threadcpuusage.md)

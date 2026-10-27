@@ -1,7 +1,15 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍ArrayList、List、LinkedList、Deque、Queue、Stack、Vector七种线性容器的特征对比与使用方法，涵盖插入删除效率与适用场景差异，帮助开发者按数据访问特点选择合适的线性容器。"
+keywords: [线性容器, ArrayList, List, LinkedList, Deque, Queue, Stack, Vector, 容器对比]
+doctype: guide
+status: active
+---
+
 # 线性容器
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @wang_zhaoyong-->
 <!--Designer: @wang_zhaoyong-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
@@ -37,7 +45,7 @@ ArrayList支持增、删、改、查操作，常用API如下：
 | 增加元素 | add(element: T) | 在数组尾部增加一个元素。 |
 | 增加元素 | insert(element: T, index: number) | 在指定位置插入一个元素。 |
 | 访问元素 | arr[index: number] | 获取指定index对应的value值。 |
-| 访问元素 | forEach(callbackFn: (value: T, index?: number, arrlist?: ArrayList&lt;T&gt;) =&gt; void, thisArg?: Object) | 访问整个ArrayList容器的元素，其中`callbackFn`是`forEach`方法中用于处理每个元素的回调函数，它接收当前元素、索引和原列表作为参数。 |
+| 访问元素 | forEach(callbackFn: (value: T, index?: number, arrlist?: ArrayList&lt;T&gt;) =&gt; void, thisArg?: Object) | 访问整个ArrayList容器的元素，其中`callbackFn`是`forEach()`方法中用于处理每个元素的回调函数，它接收当前元素、索引和原列表作为参数。 |
 | 访问元素 | \[Symbol.iterator]():IterableIterator&lt;T&gt; | 创建迭代器以进行数据访问。 |
 | 修改元素 | arr[index] = xxx | 修改指定index位置对应的value值。 |
 | 删除元素 | remove(element: T) | 删除第一个匹配到的元素。 |

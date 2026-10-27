@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍如何使用OH_JSVM_CreateSnapshot创建虚拟机启动快照以保存堆内存、执行上下文等状态，并通过OH_JSVM_CreateEnvFromSnapshot从快照恢复运行环境。"
+keywords: [OH_JSVM_CreateSnapshot, OH_JSVM_CreateEnvFromSnapshot, 虚拟机快照, 启动快照, 状态保存, 环境恢复, externalReferences]
+doctype: guide
+status: active
+---
+
 # 使用JSVM-API接口进行虚拟机快照相关开发
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->

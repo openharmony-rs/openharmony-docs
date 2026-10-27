@@ -3,7 +3,7 @@
 <!--Subsystem: Graphics-->
 <!--Owner: @jason_stark-->
 <!--Designer: @zdustc-->
-<!--Tester: @zhangyue283-->
+<!--Tester: @dongchao01-->
 <!--Adviser: @ge-yafang-->
 
 本模块提供ArkGraphics 3D中场景资源节点的类型及操作方法。SceneNode是3D场景的基础构建单元，它允许开发者通过层级结构管理场景中的对象，实现高效的场景组织与交互控制。

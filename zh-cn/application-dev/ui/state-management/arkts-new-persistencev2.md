@@ -442,7 +442,7 @@ PersistenceV2继承自[AppStorageV2](../../reference/apis-arkui/js-apis-stateMan
 13. 当存储数据的结构与当前数据的结构不一致时，可能会导致反序列化失败。在API版本26.0.0以前，开发者无法获取旧的序列化数据，进而无法判断自己的数据结构有哪些改变。
     - 从API版本26.0.0开始，[PersistenceErrorCallback](../../reference/apis-arkui/js-apis-stateManagement.md#persistenceerrorcallback)支持传入oldValue参数，开发者可通过该参数获取存于磁盘的旧的序列化数据，具体用例可见[通过notifyOnError获取旧的序列化数据](#通过notifyonerror获取旧的序列化数据)。
 
-14. 在API版本26.2.0前，不支持在使用globalConnect持久化的类中使用[\@Computed](./arkts-new-computed.md)函数。\@Computed为只读属性，不支持赋值操作，因此会导致反序列化失败。从API版本26.2.0开始，通过在[ConnectOptions](../../reference/apis-arkui/js-apis-stateManagement.md#connectoptionst18)中配置ignoreReadOnlyProperties为true，可以在globalConnect持久化的类中使用\@Computed函数。ignoreReadOnlyProperties默认为false，设为true时，PersistenceV2会跳过只读的属性（如\@Computed函数），避免反序列化失败。
+14. 在API版本26.1.0前，不支持在使用globalConnect持久化的类中使用[\@Computed](./arkts-new-computed.md)函数。\@Computed为只读属性，不支持赋值操作，因此会导致反序列化失败。从API版本26.1.0开始，通过在[ConnectOptions](../../reference/apis-arkui/js-apis-stateManagement.md#connectoptionst18)中配置ignoreReadOnlyProperties为true，可以在globalConnect持久化的类中使用\@Computed函数。ignoreReadOnlyProperties默认为false，设为true时，PersistenceV2会跳过只读的属性（如\@Computed函数），避免反序列化失败。
 
     ```typescript
     import { PersistenceV2 } from '@kit.ArkUI';
@@ -1060,9 +1060,9 @@ struct Page1 {
 
 **connect的存储路径需要注意以下两点：**
 
-1、connect使用module级别的存储路径，以最先启动的module的路径作为存储路径，从内存回写磁盘时会回写到第一个连接该module的路径。应用如果之后先从另一个module启动，则会以新module的路径作为存储路径。
+1. connect使用module级别的存储路径，以最先启动的module的路径作为存储路径，从内存回写磁盘时会回写到第一个连接该module的路径。应用如果之后先从另一个module启动，则会以新module的路径作为存储路径。
 
-2、当不同module使用相同的key时，哪个module先启动，数据就为哪个module中保存的键值对，回写到对应的module中。
+2. 当不同module使用相同的key时，哪个module先启动，数据就为哪个module中保存的键值对，回写到对应的module中。
 
 **globalConnect的存储路径需要注意：**
 

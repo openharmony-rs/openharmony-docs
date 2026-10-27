@@ -1,3 +1,11 @@
+---
+kits: ["Media Kit / 媒体服务"]
+description: "介绍使用AVScreenCapture的C API进行屏幕录制的基础流程，涵盖实例创建、音视频参数配置、回调设置、录屏启停及资源释放等步骤，适用于屏幕录制、会议共享、直播等场景。"
+keywords: [AVScreenCapture, 屏幕录制, 码流输出, 文件输出]
+doctype: guide
+status: active
+---
+
 # AVScreenCapture录屏基础流程
 
 <!--Kit: Media Kit-->

@@ -40,6 +40,7 @@ ChipGroupV2({ <br>
   chipGroupSpace?: ChipGroupV2Space, <br>
   chipGroupPadding?: ChipGroupV2Padding, <br>
   onChange?: Callback<Array<number\>\>, <br>
+  onItemsChange?: Callback<ChipGroupV2Items\>, <br>
   suffix?: Callback<void\> <br>
 })
  
@@ -66,6 +67,7 @@ ChipGroupV2({ <br>
 | chipGroupSpace  | [ChipGroupV2Space](#chipgroupv2space) | 否   | @Param | 左右内边距及ChipV2之间间距。设置后可调整ChipGroupV2的左右内边距和ChipV2之间的间距，增大间距使布局更宽松，减小间距使布局更紧凑。参考[ChipGroupV2Space](#chipgroupv2space)类型。<br>默认值：{ itemSpace: 8, startSpace: 16, endSpace: 16 }<br>单位：vp<br>值为undefined时，按默认值处理。 |
 | chipGroupPadding  | [ChipGroupV2Padding](#chipgroupv2padding) | 否   | @Param | 设置ChipGroupV2的上下内边距，以控制整体高度。类型为[ChipGroupV2Padding](#chipgroupv2padding)。<br>默认值：{ top: 14, bottom: 14 }<br>单位：vp<br>值为undefined时，按默认值处理。 |
 | onChange        | [Callback](ts-types.md#callback12)\<Array\<number>>  | 否   | @Event  | ChipV2状态改变时的回调方法，用于响应ChipV2选中状态变化。当需要监听ChipV2选中状态改变时传入此回调。<br>触发场景：用户点击ChipV2改变选中状态时触发，返回当前选中ChipV2的索引数组。<br>默认值：undefined，不触发事件。                                                              |
+| onItemsChange  | [Callback](ts-types.md#callback12)\<[ChipGroupV2Items](#chipgroupv2items)\>  | 否   | @Event  | ChipGroupV2Items变更回调方法，用于响应items变化。当需要感知ChipGroupV2内容变化并同步业务数据时传入此回调。<br>触发场景：用户关闭[ChipV2](./ohos-arkui-advanced-ChipV2.md)导致ChipV2被删除时触发，开发者主动修改items时不会触发该回调。回调参数为当前生效的items数组，组件不修改开发者传入的items，仅通知生效的数组。<br>默认值：undefined，不触发事件。<br>**起始版本：** 26.1.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。 |
 | suffix          | [Callback](ts-types.md#callback12)\<void\>                                        | 否   | @BuilderParam | 支持开发者自定义builder，如需在组件最右侧显示自定义内容可配置suffix属性，使用属性suffix需引用[ChipGroupV2IconGroupSuffix](#chipgroupv2icongroupsuffix)接口。<br>默认值：undefined，不在最右侧显示自定义内容。 |
 
 ### build
@@ -542,6 +544,8 @@ ChipGroupV2SymbolItemConfig定义了尾部Symbol图标的配置类型。
 
 该示例通过不设置suffix参数，实现了[ChipGroupV2](#chipgroupv2-1)没有最右侧自定义组件时的效果。
 
+从API版本26.2.0开始，[ChipGroupV2](#chipgroupv2-1)新增onItemsChange属性。
+
 ```ts
 import { ChipV2Size, ChipGroupV2, ChipGroupV2Items, ChipGroupV2ItemStyle, ChipGroupV2Space, ChipGroupV2Padding, ColorMetrics } from '@kit.ArkUI';
 
@@ -603,6 +607,9 @@ struct Index {
         onChange: (activatedChipsIndex: Array<number>) => {
           console.info('chips on clicked, activated index ' + activatedChipsIndex);
         },
+        onItemsChange: (items: ChipGroupV2Items) => {
+          console.info('chip items changed');
+        },
       })
     }
   }
@@ -616,6 +623,8 @@ struct Index {
 该示例通过设置suffix参数，实现了[ChipGroupV2](#chipgroupv2-1)最右侧的自定义组件效果。
 
 从API版本26.0.0开始，ChipGroupV2新增suffix属性。
+
+从API版本26.2.0开始，[ChipGroupV2](#chipgroupv2-1)新增onItemsChange属性。
 
 ```ts
 import { ChipV2Size, ChipGroupV2, ChipGroupV2Items, ChipGroupV2IconGroupSuffix, ChipGroupV2ItemStyle, ChipGroupV2Space, ChipGroupV2Padding, ColorMetrics, LengthMetrics } from '@kit.ArkUI';
@@ -699,6 +708,9 @@ struct Index {
         onChange: (activatedChipsIndex: Array<number>) => {
           console.info('chips on clicked, activated index ' + activatedChipsIndex);
         },
+        onItemsChange: (items: ChipGroupV2Items) => {
+          console.info('chip items changed');
+        },
         // ChipGroupV2最右侧显示的自定义组件。
         suffix: this.ChipGroupSuffix
       })
@@ -714,6 +726,8 @@ struct Index {
 该示例通过[SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier)实现了[ChipGroupV2IconGroupSuffix](#chipgroupv2icongroupsuffix)和[ChipGroupV2](#chipgroupv2-1)设置Symbol类型图标。
 
 从API版本26.0.0开始，新增ChipGroupV2IconGroupSuffix和ChipGroupV2。
+
+从API版本26.2.0开始，[ChipGroupV2](#chipgroupv2-1)新增onItemsChange属性。
 
 ```ts
 import { ChipV2Size, ChipGroupV2, ChipGroupV2Items, ChipGroupV2IconGroupSuffix, SymbolGlyphModifier, ChipGroupV2ItemStyle, ChipGroupV2Space, ChipGroupV2Padding, ColorMetrics } from '@kit.ArkUI';
@@ -800,6 +814,9 @@ struct Index {
         chipGroupPadding: new ChipGroupV2Padding({ top: 10, bottom: 10 }),
         onChange: (activatedChipsIndex: Array<number>) => {
           console.info('chips on clicked, activated index ' + activatedChipsIndex);
+        },
+        onItemsChange: (items: ChipGroupV2Items) => {
+          console.info('chip items changed');
         },
         // ChipGroupV2最右侧显示的自定义组件。
         suffix: this.ChipGroupSuffix

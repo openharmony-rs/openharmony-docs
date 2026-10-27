@@ -2,10 +2,10 @@
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphic-->
 <!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
-
+<!-- md-trans-meta sourceCommit=b97bbcb0e110a51170b961b11d1f4dbe26e0e8c1 translatedAt=2026-10-19T01:25:48.451Z pushedAt=2026-10-19T07:39:36.190Z -->
 
 ## Overview
 
@@ -106,7 +106,7 @@ const rect: common2D.Rect = {
   right: VALUE_1000,
   bottom: VALUE_600
 };
-// Draw a rectangle.
+// Draw an arc.
 canvas.drawArc(rect, 0, 180);
 // Remove the stroke effect.
 canvas.detachPen();
@@ -163,7 +163,7 @@ The following describes the APIs and implementation of drawing a path. For detai
 
 3. **lineTo()**: draws a line segment from the start point or the last point of the path (if the path is empty, the start point (0, 0) is used) to the target point.
 
-The following is an example of drawing a five-pointed star using a pen and a brush:
+The following is an example of drawing a five-pointed star using a brush:
 
 <!-- @[arkts_graphics_draw_path](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ShapeDrawing.ets) -->
 
@@ -182,7 +182,7 @@ let bY = aY + Math.sqrt((cX - dX) * (cX - dX) + (len / 2.0) * (len / 2.0));
 let eX = aX - (len / 2.0);
 let eY = bY;
 
-// Create a path object and use the APIs to construct a pentagram.
+// Create a path object and use the APIs to construct a five-pointed star.
 let path = new drawing.Path();
 // Specify the start point of the path.
 path.moveTo(aX, aY);
@@ -263,7 +263,7 @@ The effect is as follows:
 
 You can use a pen or brush to draw a rectangle on the canvas. Use **drawRect()** to draw a rectangle. The API needs to pass four floating points, which indicate the coordinates of the left, top, right, and bottom positions of the rectangle. The four coordinates form a rectangle.
 
-The following is an example of drawing a five-pointed star using a pen and a brush:
+The following is an example of drawing a five-pointed star using a brush:
 
 <!-- @[arkts_graphics_draw_rect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ShapeDrawing.ets) -->
 

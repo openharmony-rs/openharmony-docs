@@ -16,7 +16,7 @@
 
  - 半模态内嵌[UIExtension](../reference/apis-arkui/js-apis-arkui-uiExtension.md)时，不支持再在UIExtension内拉起半模态/弹窗。
 
- - 若无二次确认或者自定义关闭行为的场景，不建议使用[shouldDismiss](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#sheetoptions)/[onWillDismiss](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#sheetoptions)接口。
+ - 若无二次确认或者自定义关闭行为的场景，不建议使用[shouldDismiss](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#sheetoptions)/[onWillDismiss](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#sheetoptions)。
 
 ## 生命周期
 
@@ -126,11 +126,11 @@ struct SheetDemo {
 
 ## 二次确认能力
 
-推荐使用onWillDismiss接口，此接口支持在回调中处理二次确认，或自定义关闭行为。
+推荐使用onWillDismiss，此接口支持在回调中处理二次确认，或自定义关闭行为。
 
 > **说明：** 
 >
-> 声明onWillDismiss接口后，半模态页面的所有关闭操作，包括侧滑、点击关闭按钮、点击蒙层和下拉关闭，都需通过调用dismiss方法来实现。若未实现此逻辑，半模态页面将无法响应上述关闭操作。
+> 声明onWillDismiss后，半模态页面的所有关闭操作，包括侧滑、点击关闭按钮、点击蒙层和下拉关闭，都需通过调用dismiss方法来实现。若未实现此逻辑，半模态页面将无法响应上述关闭操作。
 <!-- @[onWillDismiss_Dismiss](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BindSheet/entry/src/main/ets/pages/bindSheet/template11/OnWillDismiss_Dismiss.ets) -->  
 
 ``` TypeScript
@@ -210,7 +210,7 @@ struct OnWillDismiss_Dismiss {
 
 ## 屏蔽部分关闭行为
 
-由于声明了onWillDismiss接口，半模态的关闭行为都需要dismiss处理。可以通过if等逻辑自定义处理关闭逻辑。
+由于声明了onWillDismiss，半模态的关闭行为都需要dismiss处理。可以通过if等逻辑自定义处理关闭逻辑。
 
 下述示例显示半模态页面只在下滑的时候关闭。
 
@@ -222,7 +222,7 @@ onWillDismiss: ((DismissSheetAction: DismissSheetAction) => {
 }),
 ```
 
-同理可以结合`onWillSpringBackWhenDismiss`接口实现更好的下滑体验。
+同理可以结合`onWillSpringBackWhenDismiss`实现更好的下滑体验。
 
 类比`onWillDismiss`，在声明了`onWillSpringBackWhenDismiss`后，半模态下滑时的回弹操作需要使用 `SpringBackAction.springBack()`处理，无此逻辑则不会回弹。
 

@@ -1,3 +1,11 @@
+---
+kits: ["AVCodec Kit / 音视频编解码服务"]
+description: "介绍从mp4、mkv、mpeg-ts等媒体文件或网络流中解封装出音视频、字幕sample及DRM信息的开发流程，支持fd与http输入，适用于播放、音视频编辑及转封装场景。"
+keywords: [媒体数据解封装, 解封装器, OH_AVSource, OH_AVDemuxer, sample, DRM, fd, 网络流, 轨道信息]
+doctype: guide
+status: active
+---
+
 # 媒体数据解封装
 
 <!--Kit: AVCodec Kit-->
@@ -95,7 +103,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
 
    // 为自定义数据源创建 source 资源实例（可选）。使用该方式前，需要先实现AVSourceReadAt接口函数实现。
    // 当使用OH_AVSource_CreateWithDataSource时需要补充g_filePath。
-   // g_filePath = filePath ;
+   // g_filePath = filePath;
    // OH_AVDataSource dataSource = {fileSize, AVSourceReadAt};
    // OH_AVSource *source = OH_AVSource_CreateWithDataSource(&dataSource);
    ```

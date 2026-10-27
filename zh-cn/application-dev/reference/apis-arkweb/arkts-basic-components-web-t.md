@@ -493,7 +493,7 @@ type OnZoomChangeCallback = (zoomChangeInfo: OnZoomChangeEvent) => void
 
 页面缩放倍率变化时所调用的回调函数类型。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -504,3 +504,26 @@ type OnZoomChangeCallback = (zoomChangeInfo: OnZoomChangeEvent) => void
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
 | zoomChangeInfo | [OnZoomChangeEvent](./arkts-basic-components-web-i.md#onzoomchangeevent) | 是 | 页面缩放倍率变化的详细信息。 |
+
+## OnContextMenuUpdateCallback
+
+type OnContextMenuUpdateCallback = (menuItemId: WebContextMenuItemId, options?: WebContextMenuOptions) => void
+
+上下文菜单项状态更新的回调类型。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ---- | ---- | ---- | ---- |
+| menuItemId | [WebContextMenuItemId](./arkts-basic-components-web-e.md#webcontextmenuitemid) | 是 | 上下文菜单项的ID。 |
+| options | [WebContextMenuOptions](./arkts-basic-components-web-i.md#webcontextmenuoptions) | 否 | 上下文菜单项的选项。 |
+
+**示例：**
+
+完整示例代码请参考[onContextMenuUpdate](./arkts-basic-components-web-events.md#oncontextmenuupdate)。

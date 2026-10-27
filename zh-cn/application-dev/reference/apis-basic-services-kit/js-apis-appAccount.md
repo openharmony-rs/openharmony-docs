@@ -661,7 +661,7 @@ setDataSyncEnabled(name: string, isEnabled: boolean, callback: AsyncCallback&lt;
 
 | 错误码ID | 错误信息|
 | ------- | -------|
-| 201 | Permission denied.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | System service exception. |
 | 12300002 | Invalid name. |
@@ -711,7 +711,7 @@ setDataSyncEnabled(name: string, isEnabled: boolean): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | ------- |
-| 201 | Permission denied.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | System service exception. |
 | 12300002 | Invalid name. |
@@ -757,7 +757,7 @@ checkDataSyncEnabled(name: string, callback: AsyncCallback&lt;boolean&gt;): void
 
 | 错误码ID | 错误信息 |
 | ------- | ------- |
-| 201 | Permission denied.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | System service exception. |
 | 12300002 | Invalid name. |
@@ -810,7 +810,7 @@ checkDataSyncEnabled(name: string): Promise&lt;boolean&gt;
 
 | 错误码ID | 错误信息|
 | ------- | -------|
-| 201 | Permission denied.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | System service exception. |
 | 12300002 | Invalid name. |

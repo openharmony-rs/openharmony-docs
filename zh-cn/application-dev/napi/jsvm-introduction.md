@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍JSVM-API的场景、组成架构与关键交互流程。它是基于标准JS引擎的C语言接口，用于动态执行JS代码并将高性能C++能力注册给JS调用，适用范围与Node-API有所区别。"
+keywords: [JSVM-API, 标准JS引擎, JS与C++交互, 虚拟机生命周期, 上下文快照, code cache, CPU Profiler, 堆统计]
+doctype: guide
+status: active
+---
+
 # JSVM-API简介
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->

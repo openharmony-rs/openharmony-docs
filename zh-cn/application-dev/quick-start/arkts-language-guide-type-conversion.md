@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "讲解ArkTS类型转换机制，涵盖类型断言、类型守卫、向上与向下转型、联合类型处理、穷尽性检查及类型兼容性。"
+keywords: [ArkTS, 类型转换, 类型断言, as, 类型守卫, instanceof, 向下转型, 穷尽性检查, 类型兼容性]
+doctype: guide
+status: active
+---
+
 # 类型转换
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->

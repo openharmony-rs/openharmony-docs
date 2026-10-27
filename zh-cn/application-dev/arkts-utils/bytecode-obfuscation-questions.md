@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "汇总ArkGuard字节码混淆的常见问题，包括与源码混淆的差异、功能异常排查思路以及编译报错、运行异常的处理方法，帮助开发者快速定位解决混淆问题。"
+keywords: [混淆, 字节码混淆, 常见问题, 混淆差异, 功能异常排查, 编译报错, 运行异常]
+doctype: faq
+status: active
+---
+
 # ArkGuard字节码混淆常见问题
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
@@ -563,7 +571,10 @@ loadAndUseAdd();
 export function c1(d1: number, e1: number): number {
     return d1 + e1;
 }
+```
 
+``` TypeScript
+// 混淆后
 // MainPage.ets
 async function i() {
     try {
@@ -615,7 +626,10 @@ import { NS } from './ExportNs';
 export namespace i {
     export function j() {}
 }
+```
 
+``` TypeScript
+// 混淆后
 // MainPage.ets
 import { i } from './ExportNs';
 
@@ -667,12 +681,14 @@ Error message: is not callable
 Stacktrace: Cannot get SourceMap info, dump raw stack: at anonymous (ads_service|@hw-ads/ohos-ads-model|1.0.1|src/main/ets/annotations/FieldType.ts:6:1。
 ```
 
-```js
+``` JSON5
 // oh-package.json5
 "dependencies": {
   "reflect-metadata": "0.2.1"
 }
-  
+```
+
+``` TypeScript
 // test.ts
 import 'reflect-metadata';
 

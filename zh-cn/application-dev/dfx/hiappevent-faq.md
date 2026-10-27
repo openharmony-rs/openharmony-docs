@@ -143,14 +143,14 @@ import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
               hilog.info(0x0000, 'testTag', `HiAppEvent file=${externalLog} fd=${file.fd}`);
               fileIo.closeSync(file);
               }).catch((err: BusinessError) => {
-                hilog.info(0x0000, 'testTag',
+                hilog.error(0x0000, 'testTag',
                 `HiAppEvent open file=${externalLog} failed with error message=${err.message}, error code=${err.code}`);
               });
               // 删除external_log日志文件：
               fileIo.unlink(externalLog).then(() => {
-                console.info("HiAppEvent remove file:" + externalLog + " succeed");
+                hilog.info(0x0000, 'testTag', "HiAppEvent remove file:" + externalLog + " succeed");
               }).catch((err: BusinessError) => {
-                console.error("HiAppEvent remove file:" + externalLog + " failed with error message: " + err.message +
+                hilog.error(0x0000, 'testTag', "HiAppEvent remove file:" + externalLog + " failed with error message: " + err.message +
                 ", error code: " + err.code);
               });
             }

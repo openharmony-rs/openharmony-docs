@@ -1,9 +1,17 @@
+---
+kits: ["ArkGraphics 3D / 方舟3D图形"]
+description: "介绍3D场景中动画资源的播放与控制能力，涵盖动画的加载、开始、暂停、停止、结束、重启和跳转等状态的控制操作，以及onStarted与onFinished回调的注册使用，帮助开发者实现灵活的动画交互。"
+keywords: [ArkGraphics 3D, 3D动画, onStarted, onFinished]
+doctype: guide
+status: active
+---
+
 # 场景动画控制与管理
 <!--Kit: ArkGraphics 3D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @jason_stark-->
 <!--Designer: @zdustc-->
-<!--Tester: @zhangyue283-->
+<!--Tester: @dongchao01-->
 <!--Adviser: @ge-yafang-->
 
 动画（animation）：3D场景中重要的资源类型，用于控制场景中各种元素的运动。例如，要让场景中的人物完成走路动作，逐帧计算并设置人物每个关节的旋转角是难以实现的。因此，针对这类复杂的动画需求，3D场景资源的制作者会预先制作好动画，在模型文件中保存动画的关键帧数据以及关键帧之间的插值器类型。

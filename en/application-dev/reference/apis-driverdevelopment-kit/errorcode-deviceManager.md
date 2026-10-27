@@ -1,12 +1,11 @@
 # Driver Error Codes
-
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
 <!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=a30d46aa87725f954a8669c5a6106a0f5fa2de6d translatedAt=2026-06-22T10:50:14.999Z pushedAt=2026-06-22T11:21:11.451Z -->
+<!-- md-trans-meta sourceCommit=4e4b18ce5c3346ee05b620e87051d886ec217a55 translatedAt=2026-10-14T05:04:37.765Z pushedAt=2026-10-26T06:44:58.029Z nl=2 -->
 
 > **NOTE**
 >
@@ -25,17 +24,13 @@ This error code is reported if the ExternalDeviceManager service is abnormal or 
 **Possible Causes**
 
 1. The product type is incorrect. Only PCs/2-in-1 products are supported.
-
 2. An internal communication error occurs in the ExternalDeviceManager service.
-
-3. The **busType** parameter is not properly set.
+3. If the **busType** parameter exists in the API, the value of this parameter is not within the valid range.
 
 **Solution**
 
 1. Change the product type.
-
-2. Restart the device. <!--RP1-->You can also submit an [issue](https://gitcode.com/openharmony/drivers_external_device_manager/issues/create/choose) online.<!--RP1End-->
-
+2. Restart the device.<!--RP1--> If the error persists, submit an [issue](https://gitcode.com/openharmony/drivers_external_device_manager/issues/create/choose) online.<!--RP1End-->
 3. Query the supported bus types using [deviceManager.BusType](js-apis-driver-deviceManager.md#bustype).
 
 ## 26300001 ExternalDeviceManager Service Exception
@@ -51,14 +46,12 @@ This error code is reported if the ExternalDeviceManager service is abnormal.
 **Possible Causes**
 
 1. The product type is incorrect. Only PCs/2-in-1 products are supported.
-
 2. An internal communication error occurs in the ExternalDeviceManager service.
 
 **Solution**
 
 1. Change the product type.
-
-2. Restart the device. <!--RP1-->You can also submit an [issue](https://gitcode.com/openharmony/drivers_external_device_manager/issues/create/choose) online.<!--RP1End-->
+2. Restart the device.<!--RP1--> If the error persists, submit an [issue](https://gitcode.com/openharmony/drivers_external_device_manager/issues/create/choose) online.<!--RP1End-->
 
 ## 26300002 Binding Driver Client to Driver Server Failed
 
@@ -72,11 +65,11 @@ This error code is reported if a driver client is prohibited from binding a driv
 
 **Possible Causes**
 
-An incorrect `value` is set for **ohos.permission.ACCESS_DDK_ALLOWED** in the `metadata` attribute of the `extensionAbilities` structure whose `type` is **driver**.
+In the source code project of the non-standard peripheral driver, an incorrect value is set for **ohos.permission.ACCESS_DDK_ALLOWED** in the metadata attribute of the extensionAbilities structure whose type is **driver** in the **entry/src/main/module.json5** file.
 
 **Solution**
 
-In the source code project of the non-standard peripheral driver, open the `entry/src/main/module.json5` file, and assign the `value` **true** to **ohos.permission.ACCESS_DDK_ALLOWED** in the `metadata` attribute of the `extensionAbilities` structure whose `type` is **driver**.
+In the source code project of the non-standard peripheral driver, open the **entry/src/main/module.json5** file, and assign the value **true** to **ohos.permission.ACCESS_DDK_ALLOWED** in the metadata attribute of the extensionAbilities structure whose type is **driver**.
 
 ## 26300003 Driver Client Not Bound to Any Driver Server
 

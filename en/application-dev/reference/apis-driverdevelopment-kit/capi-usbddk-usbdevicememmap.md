@@ -5,7 +5,7 @@
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=a30d46aa87725f954a8669c5a6106a0f5fa2de6d translatedAt=2026-06-22T10:49:52.512Z pushedAt=2026-06-22T11:21:11.438Z -->
+<!-- md-trans-meta sourceCommit=f407beb6a0d69c2cfebf045463efead7e20c4825 translatedAt=2026-10-14T05:00:46.932Z pushedAt=2026-10-22T04:59:56.364Z nl=2 -->
 
 ```c
 typedef struct UsbDeviceMemMap {...} UsbDeviceMemMap
@@ -13,7 +13,7 @@ typedef struct UsbDeviceMemMap {...} UsbDeviceMemMap
 
 ## Overview
 
-Device memory map created by calling <b>OH_Usb_CreateDeviceMemMap</b>. A buffer using the device memory map can improve data transmission performance.
+Defines the device memory map created by calling [OH_Usb_CreateDeviceMemMap](capi-usb-ddk-api-h.md#oh_usb_createdevicememmap). A buffer using the device memory map can provide better data transfer performance.
 
 **Since**: 10
 
@@ -28,7 +28,9 @@ Device memory map created by calling <b>OH_Usb_CreateDeviceMemMap</b>. A buffer 
 | Name| Description|
 | -- | -- |
 | uint8_t* const address | Buffer address.|
-| const size_t size | Buffer size.|
-| uint32_t offset | Offset of the used buffer. The default value is **0**, indicating that there is no offset and the offset starts from the buffer address.|
-| uint32_t bufferLength | Length of the used buffer. By default, the value is equal to the buffer size, indicating that the entire buffer is used.|
-| uint32_t transferedLength | Length of the transferred data.|
+| const size_t size | Buffer size, in bytes. The value must be greater than 0. |
+| uint32_t offset | Offset of the used buffer. The default value is **0**, indicating that there is no offset. The offset is calculated from the buffer address. The sum of **offset** and **bufferLength** must be less than or equal to **size**. |
+| uint32_t bufferLength | Length of the used buffer. By default, the value is equal to the buffer size, indicating that the entire buffer is used. The sum of **offset** and **bufferLength** must be less than or equal to **size**. |
+| uint32_t transferedLength | Length of the data actually transferred, in bytes. |
+
+

@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍Sendable对象改造实践：使用TurboTrans三方库实现TurboTransJSON序列化反序列化、TurboTransProtobuf编解码并生成Sendable对象，结合makeObserved将Sendable对象转换为观察对象驱动UI实时更新。"
+keywords: [Sendable改造, TurboTrans, TurboTransJSON, TurboTransProtobuf, makeObserved, 可观察对象, UI实时更新]
+doctype: guide
+status: active
+---
+
 # Sendable对象改造实践
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
@@ -93,8 +101,8 @@
 
    使用`TJSON.fromString<Model>(jsonStr, Model)`从JSON字符串反序列化为普通对象，可用`ArkTSUtils.isSendable(obj)`进行校验。工程示例演示了两种输入来源，并在反序列化后继续将普通对象转换为Sendable对象，形成“JSON字符串 -> 普通对象 -> Sendable对象”的前半段链路。
 
-   - testJSON1方法是将普通对象通过`JSON.stringify()`序列化为JSON字符串后，再将JSON字符串反序列化为普通对象，最后再转换为Sendable对象的过程。
-   - testJSON2方法是将手写的JSON字符串反序列化为普通对象，然后再转换为Sendable对象的过程。
+   - testJSON1()方法是将普通对象通过`JSON.stringify()`序列化为JSON字符串后，再将JSON字符串反序列化为普通对象，最后再转换为Sendable对象的过程。
+   - testJSON2()方法是将手写的JSON字符串反序列化为普通对象，然后再转换为Sendable对象的过程。
 
      <!-- @[transferableObject_testJSON](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/TurboTrans/entry/src/main/ets/turbotrans_JSON/test1.ets) --> 
      
@@ -252,7 +260,7 @@
 
 4. 创建Sendable消息对象并进行编码与解码。
 
-   使用生成类提供的encode/decode完成二进制序列化/反序列化并且解码后得到的消息对象仍可继续作为Sendable对象向后传递。test_pb经过编解码后仍然保留Sendable特性，因此也可以像JSON路径生成的Sendable对象一样，继续作为并发任务的返回值进入UI绑定流程。以下示例中testProtobuf方法先创建test_pb实例，再编码为二进制，最后解码回test_pb并校验其仍为Sendable对象。
+   使用生成类提供的encode()/decode()完成二进制序列化/反序列化并且解码后得到的消息对象仍可继续作为Sendable对象向后传递。test_pb经过编解码后仍然保留Sendable特性，因此也可以像JSON路径生成的Sendable对象一样，继续作为并发任务的返回值进入UI绑定流程。以下示例中testProtobuf()方法先创建test_pb实例，再编码为二进制，最后解码回test_pb并校验其仍为Sendable对象。
 
    ```ts
    import { test_pb } from '../protobuf/test_pb'

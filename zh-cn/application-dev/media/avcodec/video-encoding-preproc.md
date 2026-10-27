@@ -1,3 +1,11 @@
+---
+kits: ["AVCodec Kit / 音视频编解码服务"]
+description: "介绍视频编码前处理能力，支持在编码前对输入帧执行降采样、裁剪和丢帧处理，适用于低分辨率编码输出、仅部分区域需要编码、自适应低帧率等场景，仅支持Surface异步模式。"
+keywords: [编码前处理, 降采样, 裁剪, 丢帧, 主编码器, 低分辨率编码, ROI区域, 自适应码率, ABR]
+doctype: guide
+status: active
+---
+
 # 视频编码前处理
 
 <!--Kit: AVCodec Kit-->

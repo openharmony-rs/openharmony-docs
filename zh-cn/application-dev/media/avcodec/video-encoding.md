@@ -1,3 +1,11 @@
+---
+kits: ["AVCodec Kit / 音视频编解码服务"]
+description: "介绍异步模式视频编码的核心流程与状态机调用关系，覆盖Surface与Buffer两种输入模式，将未压缩视频数据压缩为H.264、H.265码流，适用于与相机、屏幕录制等数据源对接的场景。"
+keywords: [视频编码, 异步模式, Surface模式, Buffer模式, OH_VideoEncoder, 状态机, H.264, H.265, NativeWindow]
+doctype: guide
+status: active
+---
+
 # 异步模式视频编码
 
 <!--Kit: AVCodec Kit-->

@@ -5,7 +5,7 @@
 <!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=ae0f76f239c21806b95d0f359f48114cf63a6fb3 translatedAt=2026-09-18T04:07:29.317Z pushedAt=2026-09-18T11:10:11.566Z -->
+<!-- md-trans-meta sourceCommit=0cf67759e96d4b345d5571260842bb37abb8e452 translatedAt=2026-10-22T03:47:03.051Z pushedAt=2026-10-22T07:36:33.627Z nl=1 -->
 
 OpenSL ES, short for Open Sound Library for Embedded Systems, is an embedded, cross-platform, free audio processing library. It provides standardized, high-performance, low-latency APIs for app developers on embedded mobile multimedia devices. The Native API of OpenHarmony is implemented based on the [OpenSL ES](https://www.khronos.org/opensles/) 1.0.1 API specification developed by the [Khronos Group](https://www.khronos.org/). Developers can use the relevant APIs on OpenHarmony through &lt;SLES/OpenSLES.h&gt; and &lt;SLES/OpenSLES_OpenHarmony.h&gt;.
 
@@ -32,7 +32,7 @@ The following lists the OpenSL ES APIs that have been implemented on OpenHarmony
   | SLInterfaceID | Description|
   | -------- | -------- |
   | SL_IID_ENGINE | Universal engine, which provides the interface for creating player objects.|
-  | SL_IID_PLAY | Provides the player status interface.|
+  | SL_IID_PLAY | Provides the player status API.|
   | SL_IID_VOLUME | Provides interfaces for adjusting and reading the volume of audio playback streams.|
   | SL_IID_OH_BUFFERQUEUE | Provides the callback registration interface for audio playback stream data.|
 
@@ -57,7 +57,7 @@ The following lists the OpenSL ES APIs that have been implemented on OpenHarmony
   - SLresult (\*GetMaxVolumeLevel) (SLVolumeItf  self, SLmillibel \*pMaxLevel)
 
 - **BufferQueue APIs implemented on OpenHarmony**
-
+   
    The APIs listed below can be used only after <OpenSLES_OpenHarmony.h\> is introduced.
 
   | API| Description| 
@@ -79,30 +79,30 @@ target_link_libraries(sample PUBLIC libOpenSLES.so)
 Refer to the sample code below to play an audio file.
 
 1. Add the header files.
-
+     
    ```cpp
    #include "SLES/OpenSLES.h"
    #include "SLES/OpenSLES_OpenHarmony.h"
    #include "SLES/OpenSLES_Platform.h"
    ```
 
-2. Use the **slCreateEngine** API to obtain an engine instance.
-
+2. Use **slCreateEngine** to create and instantiate the engine object.
+     
    ```cpp
    SLObjectItf engineObject = nullptr;
    slCreateEngine(&engineObject, 0, nullptr, 0, nullptr, nullptr);
    (*engineObject)->Realize(engineObject, SL_BOOLEAN_FALSE);
    ```
 
-3. Obtain the engineEngine instance of the **SL_IID_ENGINE** API.
-
+3. Obtain the engine API handle corresponding to **SL_IID_ENGINE**.
+     
    ```cpp
    SLEngineItf engineEngine = nullptr;
    (*engineObject)->GetInterface(engineObject, SL_IID_ENGINE, &engineEngine);
    ```
 
 4. Configure the player and create an AudioPlayer instance.
-
+     
    ```cpp
    SLObjectItf outputMixObject = nullptr;
    (*engineEngine)->CreateOutputMix(engineEngine, &outputMixObject, 0, nullptr, nullptr);
@@ -146,14 +146,14 @@ Refer to the sample code below to play an audio file.
    ```
 
 5. Obtain the bufferQueueItf instance of the **SL_IID_OH_BUFFERQUEUE** API.
-
+     
    ```cpp
    SLOHBufferQueueItf bufferQueueItf;
    (*pcmPlayerObject)->GetInterface(pcmPlayerObject, SL_IID_OH_BUFFERQUEUE, &bufferQueueItf);
    ```
 
 6. Open an audio file and register the **BufferQueueCallback** function.
-
+     
    ```cpp
    static void BufferQueueCallback (SLOHBufferQueueItf bufferQueueItf, void *pContext, SLuint32 size)
    {
@@ -167,8 +167,8 @@ Refer to the sample code below to play an audio file.
    (*bufferQueueItf)->RegisterCallback(bufferQueueItf, BufferQueueCallback, pContext);
    ```
 
-7. Obtain the playItf instance of **SL_IID_PLAY** and start playback.
-
+7. Obtain the play API handle corresponding to **SL_IID_PLAY**, and start playback.
+     
    ```cpp
    SLPlayItf playItf = nullptr;
    (*pcmPlayerObject)->GetInterface(pcmPlayerObject, SL_IID_PLAY, &playItf);
@@ -176,7 +176,7 @@ Refer to the sample code below to play an audio file.
    ```
 
 8. Stop playing.
-
+     
    ```cpp
    (*playItf)->SetPlayState(playItf, SL_PLAYSTATE_STOPPED);
    (*pcmPlayerObject)->Destroy(pcmPlayerObject);

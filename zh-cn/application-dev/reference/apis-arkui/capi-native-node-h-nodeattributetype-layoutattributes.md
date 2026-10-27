@@ -1153,7 +1153,7 @@ NODE_LAYOUT_GRAVITY = 122
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 设置Stack容器中子组件的对齐规则，决定子组件在Stack容器中的位置。参数类型为[ArkUI_LocalizedAlignment](capi-layout-h.md#arkui_localizedalignment)，默认值：ARKUI_ALIGNMENT_CENTER。设置异常值时，按默认值显示。 |
+| .value[0].i32 | 设置Stack容器中子组件的对齐规则，决定子组件在Stack容器中的位置。参数类型为[ArkUI_LocalizedAlignment](capi-layout-h.md#arkui_localizedalignment)，默认值：ARKUI_LOCALIZED_ALIGNMENT_CENTER。设置异常值时，按默认值显示。 |
 
 **返回：**
 

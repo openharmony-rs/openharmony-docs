@@ -1911,7 +1911,7 @@ connect(deviceId: string, autoConnect?: boolean): void
 调用方充当GATT客户端，发起和远端BLE设备连接，通过参数autoConnect设置是否直接连接到远端设备或者在远端设备可用时自动重连。
 
 - 若要实现在远端设备可用时自动重连（即[autoConnect](#gattsetting)为true），需保证client端[createGattClientDevice](#blecreategattclientdevice-1)发起连接，并设置[autoConnect](#gattsetting)为true。
-- server端可通过订阅[on('BLEConnectionStateChange')](#onbleconnectionstatechange)事件感知连接状态。
+- server端可通过订阅[on('connectionStateChange')](#onconnectionstatechange)事件感知连接状态。
 - 当server端想要断开连接时，可主动调用[disconnect](#disconnect)。
 
 **起始版本**：26.0.0
@@ -1963,7 +1963,7 @@ disconnect(deviceId: string): void
 
 调用方充当GATT客户端，主动发起与远端设备断连，或停止正在进行的连接。
 
-可通过订阅[on('BLEConnectionStateChange')](#onbleconnectionstatechange)事件来感知连接状态。
+可通过订阅[on('connectionStateChange')](#onconnectionstatechange)事件来感知连接状态。
 
 **起始版本**：26.0.0
 
@@ -3410,6 +3410,73 @@ try {
     device.connect();
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
+
+### refreshServices
+
+refreshServices(): Promise&lt;void&gt;
+
+client端刷新已连接server端设备的服务信息。使用Promise异步回调。
+
+- 调用本接口后会清空client端缓存的server端服务信息，并异步重新执行服务发现。刷新请求下发成功后，重新发现将异步进行。可通过[getServices](#getservices)方法获取刷新后的服务列表。
+- 需先调用[connect](#connect)方法，待GATT profile连接成功后方可使用；建议已通过[getServices](#getservices)方法获取过服务信息后再调用本接口。
+- 调用本接口会重新触发服务发现，属于耗时操作，建议在服务发现失败后尝试恢复等场景调用。比如：设备MTU异常导致服务发现失败场景；server端添加或删除服务时，client端未感知场景等。
+
+
+**起始版本**： 26.1.0
+
+**模型约束**： 此接口仅可在Stage模型下使用。
+
+**需要权限**： ohos.permission.ACCESS_BLUETOOTH
+
+**系统能力**： SystemCapability.Communication.Bluetooth.Core
+
+**返回值**：
+
+| 类型                                       | 说明                          |
+| ---------------------------------------- | --------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------- |
+|201 | Permission denied.                 |
+|801 | Capability not supported.          |
+|2900099 | Operation failed.                        |
+|2901003 | The connection is not established.                        |
+
+**示例**：
+
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let device: ble.GattClientDevice = ble.createGattClientDevice('11:22:33:44:55:66');
+// 订阅连接状态：GATT连接成功后刷新服务信息，并获取刷新后的服务列表
+let connectStateChanged = (state: ble.BLEConnectionChangeState) => {
+    if (state.state === constant.ProfileConnectionState.STATE_CONNECTED) {
+        device.refreshServices().then(() => {
+            console.info('Succeeded in refreshing services.');
+            device.getServices().then((services: Array<ble.GattService>) => {
+                console.info(`Succeeded in getting services, services is ${JSON.stringify(services)}`);
+            }).catch((err: BusinessError) => {
+                console.error(`Failed to get services. Code is ${err.code}, message is ${err.message}`);
+            });
+        }).catch((err: BusinessError) => {
+            console.error(`Failed to refresh services. Code is ${err.code}, message is ${err.message}`);
+        });
+    }
+};
+device.on('BLEConnectionStateChange', connectStateChanged);
+try {
+    device.connect();
+} catch (error) {
+    const err: BusinessError = error as BusinessError;
+    console.error(`Failed to connect. Code is ${err.code}, message is ${err.message}`);
 }
 ```
 

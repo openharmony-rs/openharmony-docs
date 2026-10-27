@@ -817,7 +817,7 @@ class ItemInfo {
 
 Repeat在懒加载模式下具有复用池，从组件树中移除的子组件会被存入缓存池中备用，详见[节点更新/复用能力说明](#节点更新复用能力说明)。
 
-从API version 26.2.0开始，当开发者需要主动释放懒加载模式下复用池中的组件时，可以通过控制器[RepeatController](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#repeatcontroller)实现。
+从API version 26.1.0开始，当开发者需要主动释放懒加载模式下复用池中的组件时，可以通过控制器[RepeatController](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#repeatcontroller)实现。
 
 使用方式：创建RepeatController对象，并在创建Repeat组件时通过[RepeatOptions](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#repeatoptions)的controller字段完成绑定；需要清理缓存时，调用控制器上的[clearCache](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#clearcache)方法。
 

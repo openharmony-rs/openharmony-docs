@@ -285,8 +285,6 @@ notifyMovingPhotoTransition(): void
 
 **系统接口：** 此接口为系统接口。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **错误码：**

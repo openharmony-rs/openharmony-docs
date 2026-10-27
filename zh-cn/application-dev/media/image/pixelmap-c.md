@@ -1,9 +1,17 @@
+---
+kits: ["Image Kit / 图片处理服务"]
+description: "Image_NativeModule提供C/C++位图操作能力，支持创建释放PixelMap、读写像素、获取图像信息、图像变换、预乘格式转换及提取图片主色调，适用于Native层图像处理开发。"
+keywords: [Image_NativeModule, Native位图操作, 像素数据读写, 图像变换, 裁剪, 缩放, 平移, 旋转, 翻转, 透明度, 预乘模式转换, 提取平均颜色, Pixelmap]
+doctype: guide
+status: active
+---
+
 # 使用Image_NativeModule完成位图操作
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @yaozhupeng-->
 <!--Designer: @yaozhupeng-->
-<!--Tester: @zhaoxiaoguang2-->
+<!--Tester: @yhl0101-->
 <!--Adviser: @w_Machine_cc-->
 
 创建位图，获取位图的宽、高、pixelFormat、alphaType、rowStride信息、对位图进行操作以及释放位图实例。
