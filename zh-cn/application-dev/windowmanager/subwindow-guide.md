@@ -43,7 +43,7 @@
              }
              subWindowClass = data;
              if (!subWindowClass) {
-               console.error('sub_windowClass is null');
+               console.error('subWindowClass is null');
                return;
              }
              console.info('Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
@@ -70,7 +70,7 @@
            promise.then((data: window.Window | undefined) => {
              independentWindowClass = data;
              if (!independentWindowClass) {
-               console.error('independent_sub_windowClass is null');
+               console.error('independentSubWindowClass is null');
                return;
              }
              console.info(`Succeeded in creating the subwindow. Data: ${JSON.stringify(data)}`);
@@ -103,7 +103,7 @@
      }
      console.info('Succeeded in moving the window.');
      if (!independentWindowClass) {
-       console.error('independent_windowClass is null');
+       console.error('independentWindowClass is null');
        return;
      }
      independentWindowClass.resize(1000, 500, (err) => {
@@ -133,7 +133,7 @@
      }
      console.info('Succeeded in loading the content.');
      if (!independentWindowClass) {
-       console.error('independent_windowClass is null');
+       console.error('independentWindowClass is null');
        return;
      }
      // 显示子窗口。

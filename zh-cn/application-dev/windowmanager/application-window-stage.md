@@ -209,7 +209,7 @@ export default class EntryAbility extends UIAbility {
         sub_windowClass.setUIContent('pages/Index', (err: BusinessError) => {
           let errCode: number = err.code;
           if (errCode) {
-            hilog.info(DOMAIN, TAG, `Failed to load the content. Cause: ${JSON.stringify(err)}`);
+            hilog.error(DOMAIN, TAG, `Failed to load the content. Cause: ${JSON.stringify(err)}`);
             return;
           }
           hilog.info(DOMAIN, TAG, `Succeeded in loading the content.`);
@@ -236,7 +236,7 @@ export default class EntryAbility extends UIAbility {
       hilog.error(DOMAIN, TAG, `sub_windowClass is null`);
       return;
     }
-    // 5.销毁子窗口。当不再需要子窗口时，可根据具体实现逻辑，使用destroy对其进行销毁。
+    // 5.销毁子窗口。当不再需要子窗口时，可根据具体实现逻辑，使用destroyWindow对其进行销毁。
     sub_windowClass.destroyWindow((err: BusinessError) => {
       let errCode: number = err.code;
       if (errCode) {
@@ -298,7 +298,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN = 0X0000;
-const TAG : string = '[Sample_CreatSubWindow2]';
+const TAG: string = '[Sample_CreatSubWindow2]';
 
 let windowStage_: window.WindowStage | undefined = undefined;
 let sub_windowClass: window.Window | undefined = undefined;
@@ -354,7 +354,7 @@ struct Index {
             hilog.error(DOMAIN, TAG, `sub_windowClass is null`);
             return;
           }
-          // 3.显示子窗口。
+          // 4.显示子窗口。
           sub_windowClass.showWindow((err: BusinessError) => {
             let errCode: number = err.code;
             if (errCode) {
@@ -372,7 +372,7 @@ struct Index {
       hilog.error(DOMAIN, TAG, `sub_windowClass is null`);
       return;
     }
-    // 4.销毁子窗口。当不再需要子窗口时，可根据具体实现逻辑，使用destroy对其进行销毁。
+    // 4.销毁子窗口。当不再需要子窗口时，可根据具体实现逻辑，使用destroyWindow对其进行销毁。
     sub_windowClass.destroyWindow((err: BusinessError) => {
       let errCode: number = err.code;
       if (errCode) {

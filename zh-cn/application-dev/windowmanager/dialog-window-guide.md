@@ -53,7 +53,7 @@
      }
      console.info('Succeeded in moving the window.');
      if (!dialogWindowClass) {
-       console.error('dialog_windowClass is null');
+       console.error('dialogWindowClass is null');
        return;
      }
      dialogWindowClass.resize(500, 500, (err) => {
