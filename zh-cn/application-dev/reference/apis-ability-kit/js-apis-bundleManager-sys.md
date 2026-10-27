@@ -5327,7 +5327,6 @@ enableDynamicIcon(bundleName: string, moduleName: string, option?: BundleOptions
 | -------- | --------------------------------------|
 | 201 | Permission denied. |
 | 202 | Permission denied, non-system app called system api. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 17700001 | The specified bundleName is not found. |
 | 17700002 | The specified moduleName is not found. |
 | 17700004 | The specified user ID is not found. |
