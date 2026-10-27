@@ -19,7 +19,7 @@
 
 ### 支持的设备
 
-Phone、PC/2in1、Tablet、TV、Wearable
+Phone、PC/2in1、Tablet、TV、Car、Wearable
 
 ### 支持的国家/地区
 
