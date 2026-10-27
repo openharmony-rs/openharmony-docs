@@ -48,4 +48,4 @@ async obtainingAuthLockState() : Promise<string> {
 
 ## 示例代码
 
-  - [查询指定认证类型的认证冻结状态](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/UserAuthentication)
+  - 可参考[用户认证服务](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/UserAuthentication)示例代码。
