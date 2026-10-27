@@ -131,7 +131,7 @@ unregisterTask(taskInfo: TaskInfo): void
                 taskId: 1,
                 abilityName: 'TestAppMainUIAbility'
             }
-            // 02.取消注册启动后台加载任务，系统将删除注册记录
+            // 02.取消注册后台加载任务，系统将删除注册记录
             backgroundLoader.unregisterTask(taskInfo);
             console.info('unregisterTask success');
         } catch (error) {
@@ -278,7 +278,7 @@ finishTask(taskInfo: TaskInfo): void
                 abilityName: 'TestAppMainUIAbility'
             }
 
-            // 04.取消启动后台加载任务，系统将删除注册记录
+            // 04.取消注册后台加载任务，系统将删除注册记录
             backgroundLoader.unregisterTask(taskInfo);
             console.info('unregisterTask success');
         } catch (error) {
