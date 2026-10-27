@@ -40,6 +40,14 @@ Web组件为开发者提供了丰富的控制Web页面能力。包括：
 使用Web组件访问在线Web网页时需添加网络权限：ohos.permission.INTERNET，具体申请方式请参考[声明权限](../security/AccessToken/declare-permissions.md)。
 
   <!-- @[INTERNET](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebWriteScreenIssue/entry/src/main/module.json5) -->
+  
+  ``` JSON5
+  "requestPermissions":[
+    {
+      "name" : "ohos.permission.INTERNET"
+    }
+  ],
+  ```
 
 ## 约束与限制
 
