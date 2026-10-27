@@ -1222,6 +1222,140 @@ ArkTS-Sta示例：
   </html>
   ```
 
+## caretColor
+
+ArkTS-Dyn: caretColor(value: ResourceColor)
+
+ArkTS-Sta: caretColor(value: ResourceColor | undefined)
+
+设置Web组件网页文本输入光标及文本选择手柄的颜色。
+
+> **说明：**
+>
+> - 未设置此属性或重置后，输入光标使用网页CSS `caret-color`的结果；CSS为`auto`或未设置时，使用内核默认光标颜色（当前为`#0A59F7`）。选择手柄使用当前主题颜色。
+> - 非零API颜色的优先级高于网页CSS `caret-color`，包括CSS显式颜色和`transparent`。
+> - 解析后的精确颜色值`0x00000000`用于重置API颜色覆盖，恢复CSS及主题的默认行为。可使用字符串`#00000000`重置；ArkTS-Dyn传入`undefined`或`null`、ArkTS-Sta传入`undefined`时也会重置该属性。数值`0`会按颜色解析规则补全透明度，不能用于此重置操作。
+> - 本属性影响输入光标、选择手柄的外圈及连接线，不改变手柄内圈或文字选区背景。
+> - 应用需自行配置适合深色和浅色模式的颜色，例如提供对应主题的颜色资源，或监听模式变化后重新设置颜色。本属性不自动选择适配颜色或保证对比度。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| value | ArkTS-Dyn: [ResourceColor](../apis-arkui/arkui-ts/ts-types.md#resourcecolor)<br>ArkTS-Sta: [ResourceColor](../apis-arkui/arkui-ts/ts-types.md#resourcecolor) \| undefined | 是 | 网页文本输入光标及选择手柄的颜色。非零颜色覆盖网页CSS光标色；字符串`#00000000`重置颜色覆盖。<br>ArkTS-Dyn：传入undefined或null时重置。<br>ArkTS-Sta：传入undefined时重置。 |
+
+**示例：**
+
+点击按钮设置颜色后，点击网页输入框观察光标，或长按选择文字观察手柄。点击重置按钮后，输入光标恢复网页CSS指定的蓝色，选择手柄恢复当前主题颜色。动态示例使用透明颜色字符串重置，静态示例使用undefined重置。
+
+ArkTS-Dyn示例：
+
+
+```ts
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+  @State caretColorValue: ResourceColor = '#FFFF0000';
+
+  build() {
+    Column() {
+      Row() {
+        Button('红色')
+          .onClick(() => {
+            this.caretColorValue = '#FFFF0000';
+          })
+        Button('绿色')
+          .onClick(() => {
+            this.caretColorValue = '#FF00FF00';
+          })
+        Button('重置')
+          .onClick(() => {
+            this.caretColorValue = '#00000000';
+          })
+      }
+      Web({ src: $rawfile('caret_color_zh.html'), controller: this.controller })
+        .caretColor(this.caretColorValue)
+        .width('100%')
+        .layoutWeight(1)
+    }.width('100%').height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+
+```ts
+'use static'
+
+import { $rawfile, Button, Column, Component, Entry, ResourceColor, Row, State, Web } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  @State caretColorValue: ResourceColor | undefined = '#FFFF0000';
+
+  build() {
+    Column() {
+      Row() {
+        Button('红色')
+          .onClick(() => {
+            this.caretColorValue = '#FFFF0000';
+          })
+        Button('绿色')
+          .onClick(() => {
+            this.caretColorValue = '#FF00FF00';
+          })
+        Button('重置')
+          .onClick(() => {
+            this.caretColorValue = undefined;
+          })
+      }
+      Web({ src: $rawfile('caret_color_zh.html'), controller: this.controller })
+        .caretColor(this.caretColorValue)
+        .width('100%')
+        .layoutWeight(1)
+    }.width('100%').height('100%')
+  }
+}
+```
+
+加载的HTML文件位于`entry/src/main/resources/rawfile/caret_color_zh.html`。
+
+
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    input {
+      width: 90%;
+      font-size: 24px;
+      caret-color: blue;
+    }
+  </style>
+</head>
+<body>
+  <input value="点击输入文字，或长按选择这些文字">
+</body>
+</html>
+```
+
 ## cacheMode
 
 ArkTS-Dyn: cacheMode(cacheMode: CacheMode)
