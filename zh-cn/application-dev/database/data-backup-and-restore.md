@@ -290,7 +290,10 @@ import { common } from '@kit.AbilityKit';
 
 ``` TypeScript
 /* context为应用的上下文信息，由调用方自行获取，此处仅为示例。 */
-const context = new UIContext().getHostContext() as common.UIAbilityContext;
+const context = uiContext.getHostContext();
+if (context === undefined) {
+  return;
+}
 let store: relationalStore.RdbStore | undefined = undefined;
 const STORE_CONFIG: relationalStore.StoreConfig = {
   name: 'RdbTest.db',
@@ -374,7 +377,10 @@ export default class EntryAbility extends UIAbility {
 ``` TypeScript
 let store: relationalStore.RdbStore | undefined = undefined;
 /* context为应用的上下文信息，由调用方自行获取，此处仅为示例。 */
-const context = new UIContext().getHostContext() as common.UIAbilityContext;
+const context = uiContext.getHostContext();
+if (context === undefined) {
+  return;
+}
 try {
   const STORE_CONFIG: relationalStore.StoreConfig = {
     name: 'RdbTest.db',
@@ -469,7 +475,10 @@ try {
     ``` TypeScript
     let store: relationalStore.RdbStore | undefined = undefined;
     /* context为应用的上下文信息，由调用方自行获取，此处仅为示例。 */
-    const context = new UIContext().getHostContext() as common.UIAbilityContext;
+    const context = uiContext.getHostContext();
+    if (context === undefined) {
+      return;
+    }
     let STORE_CONFIG: relationalStore.StoreConfig = {
       name: 'RdbTest.db',
       securityLevel: relationalStore.SecurityLevel.S3,
