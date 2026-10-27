@@ -263,6 +263,7 @@
 | ERR_CODE_CAST_CONTROL_DRM_DEVICE_REVOKED<sup>13+</sup>     | 6616007 | 设备已撤销DRM权限。 <br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast|
 | ERR_CODE_CAST_CONTROL_DRM_LICENSE_EXPIRED<sup>13+</sup>   | 6616008 | 加载中的DRM许可证已过期。 <br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast|
 | ERR_CODE_CAST_CONTROL_DRM_PROVIDE_KEY_RESPONSE_ERROR<sup>13+</sup>    | 6616100 | DRM处理密钥响应时发生错误。 <br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast|
+| ERR_CODE_SERVICE_NOT_RUNNING   | 6700101 | 会话服务未运行。 <br>**起始版本：** 26.0.1 <br> **模型约束：** 此接口仅可在Stage模型下使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Manager |
 
 ## SkipIntervals<sup>11+</sup>
 
