@@ -115,7 +115,7 @@ isFrameType4Supported(): boolean
 
 | 类型 | 说明 |
 | -------- | -------- |
-| boolean | 表示当前设备是否支持无线帧类型4。true：表示支持。false：表示不支持。 |
+| boolean | 表示当前设备是否支持无线帧类型4。返回true：设备支持无线帧类型4。返回false：设备不支持无线帧类型4。 |
 
 **示例：** 
 ```typescript
