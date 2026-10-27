@@ -9,5 +9,4 @@
 | 场景分类 | Sample名称 | 语言 | 场景介绍 |
 | -------- | -------- | -------- | -------- |
 | 低功耗音频播放 | [AudioRendererSampleJS](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioRendererSampleJS) | ArkTS | 使用AudioRenderer以STREAM_USAGE_MUSIC流类型播放音乐，系统默认启用低功耗渲染器，可基于此示例实践低功耗音频播放。 |
-| 低功耗音频播放 | [OHAudio](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/OHAudio) | C/C++ | 使用OHAudio以AUDIOSTREAM_USAGE_MUSIC流类型播放音频，系统默认启用低功耗渲染器，可基于此示例实践C/C++侧低功耗音频播放。 |
 | 空间音频能力查询和状态订阅 | [AudioRendererSampleJS](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioRendererSampleJS) | ArkTS | 演示获取AudioSpatializationManager实例、查询设备空间音频渲染能力与开关状态，以及订阅/取消订阅开关状态变化事件的完整场景。 |
