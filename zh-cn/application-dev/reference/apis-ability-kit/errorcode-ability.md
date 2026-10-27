@@ -3110,9 +3110,7 @@ Task already exists.
 
 1. 若该任务已存在，请先调用[finishTask](js-apis-app-agent-taskManager-sys.md#taskmanagerfinishtask)接口结束该任务，再重新启动。
 2. 若需要并行执行多个任务，请使用不同的taskId。
-<!--DelEnd-->
 
-<!--Del-->
 ## 16000302 任务不存在
 
 **错误信息**
