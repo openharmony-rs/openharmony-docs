@@ -12,7 +12,7 @@
 >
 > - 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本模块为系统接口。
-> - 从 API version 26.2.0 开始，新增阻断服务提供者接入接口，包括 `createAuthProvider`、`destroyAuthProvider`、`AuthProvider.requestAuthResult` 及相关类型。
+> - 从 API version 26.1.0 开始，新增阻断服务提供者接入接口，包括 `createAuthProvider`、`destroyAuthProvider`、`AuthProvider.requestAuthResult` 及相关类型。
 
 
 ## 导入模块
@@ -611,7 +611,7 @@ async function updatePolicy(): Promise<void> {
 
 表示阻断策略的枚举。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **系统能力：** SystemCapability.Security.SecurityGuard
 
@@ -625,9 +625,9 @@ async function updatePolicy(): Promise<void> {
 
 ## AuthEventInfo
 
-阻断事件信息，由阻断服务提供者通过 [requestAuthResult](#requestauthresult) 上报。
+阻断事件信息。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **系统能力：** SystemCapability.Security.SecurityGuard
 
@@ -636,7 +636,7 @@ async function updatePolicy(): Promise<void> {
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
 | eventId | number | 否 | 否 | 事件类型ID。 |
-| version | string | 否 | 否 | 事件版本号。不同版本对应不同数据格式。 |
+| version | string | 否 | 否 | 事件版本号。 |
 | content | string | 否 | 否 | 事件内容，JSON字符串格式。 |
 | clientStatus | Array&lt;[AuthClientStatus](#authclientstatus)&gt; | 否 | 是 | 客户端会话状态列表，用于标记降级客户端。降级的客户端仅上报通知，不参与从严聚合。 |
 
@@ -644,7 +644,7 @@ async function updatePolicy(): Promise<void> {
 
 客户端会话状态，标记单个客户端是否降级。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **系统能力：** SystemCapability.Security.SecurityGuard
 
@@ -653,13 +653,13 @@ async function updatePolicy(): Promise<void> {
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
 | clientId | string | 否 | 否 | 客户端会话唯一标识。 |
-| isDegraded | boolean | 否 | 否 | 事件是否降级。true表示降级，降级的事件仅上报通知，不需要接收阻断结果，不参与从严聚合。 |
+| isDegraded | boolean | 否 | 否 | 事件是否降级。true表示降级，降级的事件仅上报通知，不需要接收阻断结果，不参与从严聚合；false表示未降级，正常参与阻断决策与从严聚合。 |
 
 ## AuthClientInfo
 
 客户端会话信息，由框架通过 [onClientStatusChanged](#onclientstatuschanged) 回调下发给阻断服务提供者。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **系统能力：** SystemCapability.Security.SecurityGuard
 
@@ -671,13 +671,13 @@ async function updatePolicy(): Promise<void> {
 | bundleName | string | 否 | 否 | 应用Bundle名称。 |
 | subscribedEvents | Array&lt;number&gt; | 否 | 否 | 客户端订阅的事件类型ID列表。阻断服务提供者可据此过滤关心的事件。 |
 | defaultTimeoutStrategy | [AuthStrategy](#authstrategy) | 否 | 否 | 客户端响应超时时的默认阻断策略。 |
-| defaultTimeoutMs | number | 否 | 否 | 客户端响应超时时间，单位毫秒。 |
+| defaultTimeoutMs | number | 否 | 否 | 客户端响应超时时间，单位毫秒。当前默认设置为400。 |
 
 ## ClientAuthResult
 
 单个客户端的阻断结果。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **系统能力：** SystemCapability.Security.SecurityGuard
 
@@ -690,11 +690,11 @@ async function updatePolicy(): Promise<void> {
 
 ## AuthResult
 
-所有客户端阻断结果，由框架按从严策略聚合后返回给阻断服务提供者。
+所有客户端阻断结果。
 
 从严策略：任一客户端返回 DENY 即阻断，全部客户端返回 ALLOW 才放行。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **系统能力：** SystemCapability.Security.SecurityGuard
 
@@ -709,7 +709,7 @@ async function updatePolicy(): Promise<void> {
 
 阻断服务提供者回调接口，在调用 [createAuthProvider](#securityguardcreateauthprovider) 时传入。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **系统能力：** SystemCapability.Security.SecurityGuard
 
@@ -721,7 +721,7 @@ onClientStatusChanged: (clientInfos: Array&lt;AuthClientInfo&gt;) => void
 
 客户端会话状态变更时触发。[createAuthProvider](#securityguardcreateauthprovider) 成功后会立即触发一次，下发当前全量客户端列表；后续客户端创建、销毁或订阅变更时再次触发。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **系统能力：** SystemCapability.Security.SecurityGuard
 
@@ -733,11 +733,29 @@ onClientStatusChanged: (clientInfos: Array&lt;AuthClientInfo&gt;) => void
 | ------ | ---- | ---- | ---- |
 | clientInfos | Array&lt;[AuthClientInfo](#authclientinfo)&gt; | 是 | 全量客户端会话信息列表。 |
 
+**示例：**
+
+```ts
+import { securityGuard } from '@kit.SecurityGuardKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// onClientStatusChanged 作为 createAuthProvider 的回调传入，此处仅演示回调内部处理逻辑
+let callback: securityGuard.AuthProviderCallback = {
+  onClientStatusChanged: (clientInfos: Array<securityGuard.AuthClientInfo>) => {
+    hilog.info(0x0000, 'testTag', 'clientCount %{public}d', clientInfos.length);
+    for (let info of clientInfos) {
+      hilog.info(0x0000, 'testTag', 'clientId %{public}s, events %{public}d',
+        info.clientId, info.subscribedEvents.length);
+    }
+  }
+};
+```
+
 ## AuthProvider
 
 阻断服务提供者类，由 [createAuthProvider](#securityguardcreateauthprovider) 工厂函数创建。通过该类实例可请求事件的阻断结果。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **系统能力：** SystemCapability.Security.SecurityGuard
 
@@ -747,13 +765,13 @@ onClientStatusChanged: (clientInfos: Array&lt;AuthClientInfo&gt;) => void
 
 requestAuthResult(event: AuthEventInfo): Promise&lt;AuthResult&gt;
 
-请求事件的阻断结果。使用Promise异步回调。框架校验并发上限后立即返回受理结果，阻断结果聚合完成后通过Promise resolve通知调用方。
+请求事件的阻断结果。使用Promise异步回调。
 
-- 单个 Provider 并发请求上限为 128，超限返回 27000004。
-- 框架侧超时时间为 400 毫秒，超时后按各客户端默认策略聚合并 resolve Promise。
+- 单个Provider并发请求上限为128，超限返回27000004。
+- 框架侧超时时间为400毫秒，超时后按各客户端默认策略聚合并resolve Promise。
 - 从严聚合：任一客户端阻断即阻断，全部客户端放行才放行。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **需要权限：** ohos.permission.AUTH_SERVICE_ACCESS
 
@@ -775,7 +793,7 @@ requestAuthResult(event: AuthEventInfo): Promise&lt;AuthResult&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+下表仅列出本接口特有的错误码，通用错误码请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -815,11 +833,9 @@ async function requestAuthResult(): Promise<void> {
 
 createAuthProvider(callback: AuthProviderCallback, serviceId: string): AuthProvider
 
-创建阻断服务提供者会话。同一进程最多 1 个 Provider 实例，全局最多 16 个。
+创建阻断服务提供者会话。同一进程最多1个Provider实例，全局最多16个。
 
-创建成功后，框架会立即通过 `callback.onClientStatusChanged` 下发当前全量客户端会话信息。
-
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **需要权限：** ohos.permission.AUTH_SERVICE_ACCESS
 
@@ -842,7 +858,7 @@ createAuthProvider(callback: AuthProviderCallback, serviceId: string): AuthProvi
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+下表仅列出本接口特有的错误码，通用错误码请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -884,9 +900,9 @@ try {
 
 destroyAuthProvider(provider: AuthProvider): void
 
-销毁阻断服务提供者会话。销毁后实例不可再用，框架将回收相关资源并通知其他客户端。
+销毁阻断服务提供者会话。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **需要权限：** ohos.permission.AUTH_SERVICE_ACCESS
 
@@ -902,7 +918,7 @@ destroyAuthProvider(provider: AuthProvider): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+下表仅列出本接口特有的错误码，通用错误码请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
