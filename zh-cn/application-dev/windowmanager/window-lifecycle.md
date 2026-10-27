@@ -203,7 +203,7 @@ struct Index {
 
 ### 锁屏状态下启动应用（PC/2in1）
 
-在PC/2in1设备上，当锁屏状态下收到来电通知、日程提醒等事件时，其他应用可能需要通过调用[startAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability)等接口拉起目标应用。若目标应用需在锁屏状态下被启动，需申请权限[ohos.permission.START_WINDOW_BELOW_LOCK_SCREEN](../security/AccessToken/permissions-for-all.md#ohospermissionstart_window_below_lock_screen)，否则无法拉起该应用。
+在PC/2in1设备上，当锁屏状态下收到日程提醒等事件时，其他应用可能需要通过调用[startAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability)等接口拉起目标应用。若目标应用需在锁屏状态下被启动，需申请权限[ohos.permission.START_WINDOW_BELOW_LOCK_SCREEN](../security/AccessToken/permissions-for-all.md#ohospermissionstart_window_below_lock_screen)，否则无法拉起该应用。
 
 该权限允许应用在PC/2in1设备的锁屏状态下被启动至前台，设备解锁后应用窗口保持前台状态。需在[module.json5配置文件](../quick-start/module-configuration-file.md)的requestPermissions标签中声明该权限，具体请参考[声明权限](../security/AccessToken/declare-permissions.md)。
 
@@ -211,9 +211,9 @@ struct Index {
 > 
 > 在开发跨设备应用时，建议通过[canIUse()](../reference/common/js-apis-syscap.md#caniuse)接口判断当前设备是否支持该权限所对应的系统能力，避免在不支持的设备上产生非预期行为。
 
-以StartAbilityBelowLockScreenSample通过startAbility拉起BelowLockScreenTargetSample为例，模拟锁屏状态下其他应用拉起目标应用的场景。
+此处以在应用A（StartAbilityBelowLockScreenSample）点击按钮后5s通过startAbility()拉起应用B（BelowLockScreenTargetSample）为例，模拟锁屏状态下其他应用响应事件拉起目标应用的场景。
 
-StartAbilityBelowLockScreenSample点击按钮后延时5秒，通过startAbility拉起BelowLockScreenTargetSample。示例代码如下：
+示例代码如下：
 
 <!-- @[StartAbilityBelowLockScreen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/StartAbilityBelowLockScreenSample/entry/src/main/ets/pages/Index.ets) -->
 
@@ -224,7 +224,7 @@ startTargetAbility(): void {
     return;
   }
   hilog.info(DOMAIN, TAG, '%{public}s', 'Start to delay 5 seconds before startAbility.');
-  // 设置延时函数，延时5秒钟后拉起目标应用，模拟设备进入锁屏状态后响应事件需要拉起目标应用的场景
+  // 设置延时函数，延时5秒钟后拉起目标应用，模拟响应事件拉起目标应用
   setTimeout(() => {
     const want: Want = {
       deviceId: '',
@@ -258,7 +258,6 @@ build() {
       .id('startAbilityButton')
       .fontSize(20)
       .onClick(() => {
-        // 点击按钮后，需在5秒内手动锁屏，5秒后自动拉起目标应用
         hilog.info(DOMAIN, TAG, '%{public}s', 'Click: Start ability below lock screen');
         this.startTargetAbility();
       })
@@ -271,33 +270,6 @@ build() {
 }
 ```
 
-BelowLockScreenTargetSample在onWindowStageCreate中延时3秒加载页面内容，并在module.json5中声明[ohos.permission.START_WINDOW_BELOW_LOCK_SCREEN](../security/AccessToken/permissions-for-all.md#ohospermissionstart_window_below_lock_screen)权限。示例代码如下：
+**图1** 锁屏状态下启动应用
 
-<!-- @[BelowLockScreenTargetSample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/BelowLockScreenTargetSample/entry/src/main/ets/entryability/EntryAbility.ets) -->
-
-``` TypeScript
-onWindowStageCreate(windowStage: window.WindowStage): void {
-  hilog.info(DOMAIN, TAG, '%{public}s', 'Ability onWindowStageCreate');
-  hilog.info(DOMAIN, TAG, '%{public}s', 'Delay 3 seconds before loadContent.');
-  // 设置延时函数，延时3秒钟后加载页面内容，模拟锁屏状态下被拉起时的数据加载过程
-  setTimeout(() => {
-    windowStage.loadContent('pages/Index', (err) => {
-      if (err.code) {
-        hilog.error(DOMAIN, TAG, 'Failed to load the content. Cause: %{public}s', JSON.stringify(err));
-        return;
-      }
-      hilog.info(DOMAIN, TAG, '%{public}s', 'Succeeded in loading the content.');
-    });
-  }, 3000);
-}
-```
-
-点击StartAbilityBelowLockScreenSample的按钮后立刻锁屏，等待8秒后解锁，可看到BelowLockScreenTargetSample已显示在屏幕上。
-
-示例效果如下：
-
-**图1** 解锁状态下启动
-![StartAbilityOnUnlocked](figures/StartAbilityOnUnlocked.gif)
-
-**图2** 锁屏状态下启动
 ![StartAbilityBelowLockScreen](figures/StartAbilityBelowLockScreen.gif)
