@@ -1,3 +1,11 @@
+---
+kits: ["AVCodec Kit / 音视频编解码服务"]
+description: "介绍以主动请求Buffer方式完成同步模式音频编码的开发流程，将PCM数据压缩为AAC、FLAC等格式码流，适用于需要应用主动控制送帧节奏的音频录制与编辑导出场景。"
+keywords: [音频编码, 同步模式, PCM, AAC, 主动请求Buffer, OH_AudioCodec, 音频录制, 音频编辑]
+doctype: guide
+status: active
+---
+
 # 同步模式音频编码
 
 <!--Kit: AVCodec Kit-->

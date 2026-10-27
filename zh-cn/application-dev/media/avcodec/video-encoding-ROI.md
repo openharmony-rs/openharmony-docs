@@ -1,3 +1,11 @@
+---
+kits: ["AVCodec Kit / 音视频编解码服务"]
+description: "介绍ROI视频编码能力，为待编码的画面指定重点区域，编码时为重点区域分配更多的码流资源，可以在有限带宽下保障重点区域（如人脸、车牌等）画质清晰，支持NativeBuffer元数据与编码输入回调两种配置方式"
+keywords: [ROI编码, 感兴趣区域, DeltaQp, NativeBuffer元数据, 随帧下发, 直播, 视频通话, 安全监控, 人脸区域]
+doctype: guide
+status: active
+---
+
 # 实现指定区域更清晰的ROI编码
 
 <!--Kit: AVCodec Kit-->

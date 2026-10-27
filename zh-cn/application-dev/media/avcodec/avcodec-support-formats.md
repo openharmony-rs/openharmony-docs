@@ -1,3 +1,11 @@
+---
+kits: ["AVCodec Kit / 音视频编解码服务"]
+description: "汇总AVCodec Kit的音视频编解码及媒体数据封装、解封装格式支持情况，涵盖H.264、H.265、AAC、MP3等MIME类型及mp4、flv等封装格式，帮助开发者了解平台能力差异并选择合适的编解码格式。"
+keywords: [格式支持, MIME类型, 视频编解码格式, 音频编解码格式, 封装格式, 解封装格式, H.264, AAC, mp4]
+doctype: guide
+status: active
+---
+
 # AVCodec支持的格式
 
 <!--Kit: AVCodec Kit-->
