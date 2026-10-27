@@ -57,6 +57,7 @@
     - [@ohos.app.agent.agentConstant (Agent常量)](js-apis-app-agent-agentConstant.md)
     - [@ohos.app.agent.AgentExtensionAbility (智能体扩展组件)](js-apis-app-agent-agentExtensionAbility.md)
     - [@ohos.app.agent.AgentUIExtensionAbility (带界面的智能体扩展组件)](js-apis-agent-agentUIExtensionAbility.md)
+    - [@ohos.app.cli.cliManager (CLI工具管理)](js-apis-app-cli-cliManager.md)
     - [@ohos.continuation.continuationManager (流转/协同管理)](js-apis-continuation-continuationManager.md)
     <!--Del-->
     - [@ohos.app.ability.AbilityConstant (Ability相关常量)(系统接口)](js-apis-app-ability-abilityConstant-sys.md)
@@ -198,6 +199,8 @@
       - [ProcessData](js-apis-inner-application-processData.md)
       - [PhotoEditorExtensionContext](js-apis-app-ability-photoEditorExtensionContext.md)
       - [SendableContext](js-apis-inner-application-sendableContext.md)
+      - [CliToolEvent (CLI工具会话事件)](js-apis-inner-application-cliToolEvent.md)
+      - [ToolEventCallback (CLI工具事件回调)](js-apis-inner-application-toolEventCallback.md)
       - [ViewData](js-apis-inner-application-viewData.md)
       <!--Del-->
       - [AbilityFirstFrameStateData (系统接口)](js-apis-inner-application-abilityFirstFrameStateData-sys.md)
@@ -211,7 +214,6 @@
       - [AutoFillType (系统接口)](js-apis-inner-application-autoFillType-sys.md)
       - [AutoStartupCallback (系统接口)](js-apis-inner-application-autoStartupCallback-sys.md)
       - [AutoStartupInfo (系统接口)](js-apis-inner-application-autoStartupInfo-sys.md)
-      - [CliToolEvent (系统接口)](js-apis-inner-application-cliToolEvent-sys.md)
       - [Context (系统接口)](js-apis-inner-application-context-sys.md)
       - [ContinueDeviceInfo (系统接口)](js-apis-inner-application-continueDeviceInfo-sys.md)
       - [CustomData (系统接口)](js-apis-inner-application-customData-sys.md)
@@ -225,7 +227,6 @@
       - [RunningMultiAppInfo (系统接口)](js-apis-inner-application-runningMultiAppInfo-sys.md)
       - [RunningMultiInstanceInfo (系统接口)](js-apis-inner-application-runningMultiInstanceInfo-sys.md)
       - [ServiceExtensionContext (系统接口)](js-apis-inner-application-serviceExtensionContext-sys.md)
-      - [ToolEventCallback (系统接口)](js-apis-inner-application-toolEventCallback-sys.md)
       - [ToolInfo (系统接口)](js-apis-inner-application-ToolInfo-sys.md)
       - [UIServiceExtensionContext (系统接口)](js-apis-inner-application-uiserviceExtensionContext-sys.md)
       - [UIServiceHostProxy (系统接口)](js-apis-inner-application-uiservicehostproxy-sys.md)
