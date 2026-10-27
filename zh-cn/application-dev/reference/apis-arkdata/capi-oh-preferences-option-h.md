@@ -65,7 +65,7 @@ enum Preferences_StorageType
 | --------------------------- | ------------------------------------------------------------ |
 | PREFERENCES_STORAGE_XML = 0 | XML存储模式，对数据的操作发生在内存中，调用[OH_Preferences_Close](capi-oh-preferences-h.md#oh_preferences_close)时落盘，不支持多进程。 |
 | PREFERENCES_STORAGE_GSKV    | GSKV存储模式，对数据的操作实时落盘，可支持多进程。             |
-
+ 
 ## 函数说明
 
 ### OH_PreferencesOption_Create()
@@ -104,7 +104,7 @@ int OH_PreferencesOption_SetFileName(OH_PreferencesOption *option, const char *f
 | 参数项                                                       | 描述                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | [OH_PreferencesOption](capi-preferences-oh-preferencesoption.md) *option | 指向Preferences配置选项[OH_PreferencesOption](capi-preferences-oh-preferencesoption.md)实例对象的指针。 |
-| const char *fileName                                         | 需要设置的文件名称。文件名称长度需大于零且小于等于255字节，名称中不能包含'/'且不能以'/'结尾。                                         |
+| const char *fileName                                         | 需要设置的文件名称。                                         |
 
 **返回：**
 
