@@ -132,9 +132,9 @@ DRM Kit提供MediaKeySystem实现DRM证书管理、DRM许可证管理功能，�
 
       ```ts
       mediaKeySession.on('keysChange', (keyInfo : drm.KeysInfo[], newKeyAvailable:boolean) => {
-          keyInfo.forEach((info: drm.KeysInfo) => {
-              console.info('keysChange' + 'info:' + info.keyId + ' extraInfo:' + info.value);
-          });
+        for(let i = 0; i < keyInfo.length; i++){
+            console.info('keysChange' + 'info:' + keyInfo[i].keyId + ' extraInfo:' + keyInfo[i].value);
+        }
       });
       ```
 
@@ -158,8 +158,8 @@ DRM Kit提供MediaKeySystem实现DRM证书管理、DRM许可证管理功能，�
     let initData = new Uint8Array([0x00, 0x00, 0x00, 0x00]);
     // 根据DRM解决方案要求设置可选数据的值。
     let optionalData:drm.OptionsData[] = [{
-        name: "licenseServerUrl",
-        value: "https://license.example.com"
+        name: "optionalDataName",
+        value: "optionalDataValue"
     }];
     // 在线媒体密钥请求和响应。
     mediaKeySession.generateMediaKeyRequest("video/mp4", initData, drm.MediaKeyType.MEDIA_KEY_TYPE_ONLINE, optionalData).then(async (licenseRequest: drm.MediaKeyRequest) => {

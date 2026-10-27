@@ -44,37 +44,34 @@
    let mediaKeySystem: drm.MediaKeySystem
    let mediaKeySession: drm.MediaKeySession
    let drmInfoArr: drm.MediaKeySystemInfo[] = mediaKeySystemInfo
-   drmInfoArr.forEach((drmInfo: drm.MediaKeySystemInfo) => {
-     console.info('drmInfoArr - uuid: ' + drmInfo.uuid)
-     console.info('drmInfoArr - pssh: ' + drmInfo.pssh)
+   for (let i = 0; i < drmInfoArr.length; i++) {
+     console.info('drmInfoArr - uuid: ' + drmInfoArr[i].uuid)
+     console.info('drmInfoArr - pssh: ' + drmInfoArr[i].pssh)
      let description: drm.MediaKeySystemDescription[] = drm.getMediaKeySystems();
      let solutionName: string = "com.clearplay.drm"
      for (let item of description) {
-       if (drmInfo.uuid == item.uuid) {
+       if (drmInfoArr[i].uuid == item.uuid) {
          solutionName = item.name
          }
        }
-       // 实际开发中应从播放内容的轨道信息（如AVPlayer.getTrackDescription()）或已知媒体源获取mimeType。
-       // drm.MediaKeySystemInfo不包含mimeType字段，无法直接从drmInfo获取。
-       let mimeType: string = "video/mp4";
-       let isSupported: boolean = drm.isMediaKeySystemSupported(solutionName, mimeType);
+       let isSupported: boolean = drm.isMediaKeySystemSupported(solutionName, "video/mp4");
        if (isSupported) {
          mediaKeySystem = drm.createMediaKeySystem(solutionName);
          mediaKeySession = mediaKeySystem.createMediaKeySession();
      }
-   })
+   }
    ```
 
 5. 调用[generateMediaKeyRequest](../../reference/apis-drm-kit/arkts-apis-drm-MediaKeySession.md#generatemediakeyrequest)生成媒体密钥请求，并调用[processMediaKeyResponse](../../reference/apis-drm-kit/arkts-apis-drm-MediaKeySession.md#processmediakeyresponse)处理媒体密钥响应。
 
    ```ts
    // 媒体密钥请求与处理。
-   let initData: Uint8Array = new Uint8Array(drmInfo.pssh);
+   let initData: Uint8Array = new Uint8Array(drmInfoArr[i].pssh);
    const optionsData: drm.OptionsData[] = [{
      name: "optionalDataName",
      value: "optionalDataValue"
    }]
-   mediaKeySession.generateMediaKeyRequest(mimeType, initData, drm.MediaKeyType.MEDIA_KEY_TYPE_ONLINE, optionsData).then(async (licenseRequest) => {
+   mediaKeySession.generateMediaKeyRequest("video/mp4", initData, drm.MediaKeyType.MEDIA_KEY_TYPE_ONLINE, optionsData).then(async (licenseRequest) => {
      console.info("generateMediaKeyRequest success", licenseRequest.mediaKeyRequestType, licenseRequest.data, licenseRequest.defaultURL);
      // 将媒体密钥请求返回的licenseRequest.data通过网络请求发送给DRM服务获取媒体密钥响应，并处理。
      let licenseResponse = new Uint8Array([0x00, 0x00, 0x00, 0x00]);
