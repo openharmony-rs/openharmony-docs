@@ -1,11 +1,3 @@
----
-kits: ["AVCodec Kit / 音视频编解码服务"]
-description: "介绍ROI视频编码能力，为待编码的画面指定重点区域，编码时为重点区域分配更多的码流资源，可以在有限带宽下保障重点区域（如人脸、车牌等）画质清晰，支持NativeBuffer元数据与编码输入回调两种配置方式"
-keywords: [ROI编码, 感兴趣区域, DeltaQp, NativeBuffer元数据, 随帧下发, 直播, 视频通话, 安全监控, 人脸区域]
-doctype: guide
-status: active
----
-
 # 实现指定区域更清晰的ROI编码
 
 <!--Kit: AVCodec Kit-->
@@ -170,7 +162,7 @@ Surface模式下，相机将视频帧输出到OH_NativeImage的Surface上，开�
    **ArkTS示例：**
 
    <!-- @[roi_enable_in_frame_metadata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/ROISample/entry/src/main/ets/controller/CameraController.ets) -->
-
+   
    ``` TypeScript
    if (metadataOutput.isInFrameMetadataForEncoderSupported()) {
      metadataOutput.setInFrameMetadataForEncoderEnabled(true);
@@ -184,7 +176,7 @@ Surface模式下，相机将视频帧输出到OH_NativeImage的Surface上，开�
    以下示例中的`metadataOutput_`为已创建并加入相机会话的元数据输出对象。
 
    <!-- @[roi_enable_in_frame_metadata_native](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/ROISample/entry/src/main/cpp/capbilities/camera/NativeCamera.cpp) -->
-
+   
    ``` C++
    Camera_ErrorCode NativeCamera::EnableInFrameMetadata()
    {
