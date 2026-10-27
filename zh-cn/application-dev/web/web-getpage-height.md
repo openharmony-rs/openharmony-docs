@@ -22,6 +22,7 @@
 
 ArkTS-Dyn示例：
 <!-- @[ordinary_static_display_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebPageHeight/entry/src/main/ets/pages/Index.ets) -->
+
 ``` TypeScript
 @Component
 struct Scene1Static {
