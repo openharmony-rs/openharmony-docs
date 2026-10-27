@@ -709,7 +709,7 @@ async function updatePolicy(): Promise<void> {
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
 | mergedAuthStrategy | [AuthStrategy](#authstrategy) | 否 | 否 | 所有客户端聚合后的阻断策略。 |
-| clientAuthResult | Array&lt;[ClientAuthResult](#clientauthresult)&gt; | 否 | 否 | 各客户端的阻断结果列表。 |
+| clientAuthResult | [ClientAuthResult](#clientauthresult)[] | 否 | 否 | 各客户端的阻断结果列表。 |
 
 ## AuthProviderCallback
 
