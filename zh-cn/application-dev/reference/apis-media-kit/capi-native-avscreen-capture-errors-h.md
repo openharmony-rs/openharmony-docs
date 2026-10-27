@@ -51,7 +51,7 @@ enum OH_AVSCREEN_CAPTURE_ErrCode
 | AV_SCREEN_CAPTURE_ERR_BASE = 0 | 错误码的基础值，其他错误码在此基础上递增，用于标识不同的错误类型。 | 
 | AV_SCREEN_CAPTURE_ERR_OK = AV_SCREEN_CAPTURE_ERR_BASE | 操作成功。 | 
 | AV_SCREEN_CAPTURE_ERR_NO_MEMORY = AV_SCREEN_CAPTURE_ERR_BASE + 1 | 内存不足。<br>可能原因：系统可用内存不足。<br>解决措施：请检查录制参数或系统内存状况。 | 
-| AV_SCREEN_CAPTURE_ERR_OPERATE_NOT_PERMIT = AV_SCREEN_CAPTURE_ERR_BASE + 2 | 不允许操作。<br>可能原因：当前操作未获得必要权限或处于非法状态。<br>解决措施：请检查操作权限和当前状态后重试。 | 
+| AV_SCREEN_CAPTURE_ERR_OPERATE_NOT_PERMIT = AV_SCREEN_CAPTURE_ERR_BASE + 2 | 不允许操作。<br>可能原因：1. 实例数量超出限制时，录屏启动报错。2. 通话中未设置保持录屏策略时，无法启动录屏报错。3. 录屏超过规格限制时，无法启动录屏报错。<br>解决措施：1. 实例数量超出规格限制，当前规格为每种数据格式最多两个实例。建议释放多余实例后再使用新实例。2. 从API版本20开始，如需在通话中保持录屏，可使用[OH_AVScreenCapture_StrategyForKeepCaptureDuringCall()](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforkeepcaptureduringcall)设置“蜂窝通话时保持录屏”策略。3. 检查并调整录屏配置参数，确保视频码率（videoBitrate）取值范围在[1, 30000000]内。 | 
 | AV_SCREEN_CAPTURE_ERR_INVALID_VAL = AV_SCREEN_CAPTURE_ERR_BASE + 3 | 无效参数。<br>可能原因：传入的参数不符合接口要求或取值范围不正确。<br>解决措施：请检查参数类型和取值范围后重试。 | 
 | AV_SCREEN_CAPTURE_ERR_IO = AV_SCREEN_CAPTURE_ERR_BASE + 4 | 输入输出流异常。<br>可能原因：文件读写失败或数据传输错误。<br>解决措施：请检查文件路径、权限和存储空间后重试。 | 
 | AV_SCREEN_CAPTURE_ERR_TIMEOUT = AV_SCREEN_CAPTURE_ERR_BASE + 5 | 网络超时。<br>可能原因：网络连接不稳定或服务器响应超时。<br>解决措施：请检查网络连接状态后重试。 | 
