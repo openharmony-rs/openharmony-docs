@@ -78,4 +78,4 @@ cancelingUserAuthentication() {
 
 ## 示例代码
 
-  - [认证过程中取消认证](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/UserAuthentication)
+  - 可参考[用户认证服务](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/UserAuthentication)示例代码。
