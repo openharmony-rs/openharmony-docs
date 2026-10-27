@@ -55,7 +55,6 @@
 
 ``` TypeScript
 import { window } from '@kit.ArkUI';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
