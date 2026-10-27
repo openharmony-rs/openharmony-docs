@@ -621,6 +621,8 @@ async function updatePolicy(): Promise<void> {
 
 **系统能力：** SystemCapability.Security.SecurityGuard
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统接口：** 此接口为系统接口。
 
 | 名称 | 值 | 说明 |
@@ -636,6 +638,8 @@ async function updatePolicy(): Promise<void> {
 **起始版本：** 26.1.0
 
 **系统能力：** SystemCapability.Security.SecurityGuard
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -654,6 +658,8 @@ async function updatePolicy(): Promise<void> {
 
 **系统能力：** SystemCapability.Security.SecurityGuard
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统接口：** 此接口为系统接口。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
@@ -668,6 +674,8 @@ async function updatePolicy(): Promise<void> {
 **起始版本：** 26.1.0
 
 **系统能力：** SystemCapability.Security.SecurityGuard
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -687,6 +695,8 @@ async function updatePolicy(): Promise<void> {
 
 **系统能力：** SystemCapability.Security.SecurityGuard
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统接口：** 此接口为系统接口。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
@@ -704,6 +714,8 @@ async function updatePolicy(): Promise<void> {
 
 **系统能力：** SystemCapability.Security.SecurityGuard
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统接口：** 此接口为系统接口。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
@@ -719,6 +731,8 @@ async function updatePolicy(): Promise<void> {
 
 **系统能力：** SystemCapability.Security.SecurityGuard
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统接口：** 此接口为系统接口。
 
 ### onClientStatusChanged
@@ -730,6 +744,8 @@ onClientStatusChanged: (clientInfos: Array&lt;AuthClientInfo&gt;) => void
 **起始版本：** 26.1.0
 
 **系统能力：** SystemCapability.Security.SecurityGuard
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -773,6 +789,8 @@ let callback: securityGuard.AuthProviderCallback = {
 
 **系统能力：** SystemCapability.Security.SecurityGuard
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统接口：** 此接口为系统接口。
 
 ### requestAuthResult
@@ -790,6 +808,8 @@ requestAuthResult(event: AuthEventInfo): Promise&lt;AuthResult&gt;
 **需要权限：** ohos.permission.AUTH_SERVICE_ACCESS
 
 **系统能力：** SystemCapability.Security.SecurityGuard
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -854,6 +874,8 @@ createAuthProvider(callback: AuthProviderCallback, serviceId: string): AuthProvi
 **需要权限：** ohos.permission.AUTH_SERVICE_ACCESS
 
 **系统能力：** SystemCapability.Security.SecurityGuard
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -921,6 +943,8 @@ destroyAuthProvider(provider: AuthProvider): void
 **需要权限：** ohos.permission.AUTH_SERVICE_ACCESS
 
 **系统能力：** SystemCapability.Security.SecurityGuard
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统接口：** 此接口为系统接口。
 
