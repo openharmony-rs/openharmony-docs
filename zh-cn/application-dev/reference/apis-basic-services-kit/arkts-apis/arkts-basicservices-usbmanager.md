@@ -22,8 +22,6 @@
 
 调用[usbManager.closePipe](arkts-basicservices-usbmanager-closepipe-f.md)关闭设备连接通道。
 
-![usbmanager](../../../reference/figures/usbManager.png)
-
 ## 导入模块
 
 ```TypeScript

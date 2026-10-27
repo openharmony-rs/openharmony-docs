@@ -32,7 +32,7 @@ function getProfileByExtensionAbility(moduleName: string, extensionAbilityName: 
 | moduleName | string | 是 | 表示Module名称。 |
 | extensionAbilityName | string | 是 | 表示ExtensionAbility组件的名称。 |
 | metadataName | string | 是 | 表示ExtensionAbility组件的元信息名称，即module.json5配置文件中[extensionAbilities标签](../../../quick-start/module-configuration-file.md#extensionabilities标签)下的metadata标签的name。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;string&gt;&gt; | 是 | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，当获取成功时，err为undefined，data为获取到的Array<string>；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;string&gt;&gt; | 是 | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，当获取成功时，err为undefined，data为获取到的Array&lt;string&gt;；否则为错误对象。 |
 
 **错误码：**
 
@@ -100,7 +100,7 @@ function getProfileByExtensionAbility(moduleName: string, extensionAbilityName: 
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;string&gt;&gt; | Promise对象，返回Array<string>对象。 |
+| Promise&lt;Array&lt;string&gt;&gt; | Promise对象，返回Array&lt;string&gt;对象。 |
 
 **错误码：**
 

@@ -306,7 +306,7 @@ NODE_FONT_FEATURE
 
 **描述：**
 
-设置文本特性效果。NODE_FONT_FEATURE是OpenType字体的高级排版能力，如支持连字、数字等宽等特性，一般用在自定义字体中，其能力需要字体本身支持。支持属性设置、属性重置和属性获取接口。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.string：符合文本特性格式的字符串，格式为normal \| <feature-tag-value>。 <feature-tag-value>的格式为：string [ <integer> \| on \| off ]。 <feature-tag-value>的个数可以有多个，中间用','隔开，例如，使用等宽数字的输入格式为：ss01 on。</li> </ul><br> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.string：表示文本特性的内容，多个文本特性之间使用逗号分隔。</li> </ul>
+设置文本特性效果。NODE_FONT_FEATURE是OpenType字体的高级排版能力，如支持连字、数字等宽等特性，一般用在自定义字体中，其能力需要字体本身支持。支持属性设置、属性重置和属性获取接口。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.string：符合文本特性格式的字符串，格式为normal \| &lt;feature-tag-value&gt;。 &lt;feature-tag-value&gt;的格式为：string [ &lt;integer&gt; \| on \| off ]。 &lt;feature-tag-value&gt;的个数可以有多个，中间用','隔开，例如，使用等宽数字的输入格式为：ss01 on。</li> </ul><br> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.string：表示文本特性的内容，多个文本特性之间使用逗号分隔。</li> </ul>
 
 **起始版本：** 12
 

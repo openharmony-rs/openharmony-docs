@@ -50,7 +50,7 @@ function showDialog(options: ShowDialogOptions, callback: AsyncCallback<ShowDial
 
 **示例**
 
-showDialog(options: ShowDialogOptions, callback: AsyncCallback<ShowDialogSuccessResponse>):void
+showDialog(options: ShowDialogOptions, callback: AsyncCallback&lt;ShowDialogSuccessResponse&gt;):void
 
 创建并显示对话框，对话框响应结果使用callback异步回调返回。
 
@@ -253,7 +253,7 @@ function showDialog(options: ShowDialogOptions): Promise<ShowDialogSuccessRespon
 
 **示例**
 
-showDialog(options: ShowDialogOptions): Promise<ShowDialogSuccessResponse>
+showDialog(options: ShowDialogOptions): Promise&lt;ShowDialogSuccessResponse&gt;
 
 创建并显示对话框，对话框通过Promise返回结果。
 

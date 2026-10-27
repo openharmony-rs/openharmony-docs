@@ -572,7 +572,7 @@ columnCount: number
 columnNames: Array<string>
 ```
 
-columnNames: Array<string>
+columnNames: Array&lt;string&gt;
 
 获取结果集中所有列的名称。
 

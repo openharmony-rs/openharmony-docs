@@ -50,7 +50,7 @@ function showActionMenu(options: ActionMenuOptions, callback: AsyncCallback<Acti
 
 **示例**
 
-showActionMenu(options: ActionMenuOptions, callback: AsyncCallback<ActionMenuSuccessResponse>):void
+showActionMenu(options: ActionMenuOptions, callback: AsyncCallback&lt;ActionMenuSuccessResponse&gt;):void
 
 创建并显示操作菜单，菜单响应结果使用callback异步回调返回。
 
@@ -228,7 +228,7 @@ function showActionMenu(options: ActionMenuOptions): Promise<ActionMenuSuccessRe
 
 **示例**
 
-showActionMenu(options: ActionMenuOptions): Promise<ActionMenuSuccessResponse>
+showActionMenu(options: ActionMenuOptions): Promise&lt;ActionMenuSuccessResponse&gt;
 
 创建并显示操作菜单，菜单响应后通过Promise返回结果。
 

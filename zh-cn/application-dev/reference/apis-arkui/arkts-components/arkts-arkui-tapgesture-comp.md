@@ -8,7 +8,7 @@ Defines TapGesture Component.
 TapGesture(value?: TapGestureParameters)
 ```
 
-创建点击手势对象。继承自[GestureInterface<T>](arkts-arkui-tapgesture-comp-gestureinterface-i.md)。
+创建点击手势对象。继承自[GestureInterface&lt;T&gt;](arkts-arkui-tapgesture-comp-gestureinterface-i.md)。
 
 触发点击手势事件的设备类型为键盘或手柄时，事件的[SourceTool](arkts-arkui-common-comp-sourcetool-e.md)值为Unknown，事件的SourceType值为KEY或JOYSTICK。
 

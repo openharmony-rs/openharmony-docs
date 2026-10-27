@@ -401,7 +401,7 @@ proxy?: string
 
 设置代理地址，其最大长度为512个字符，默认为空。
 
-代理地址格式:"http://<domain or address>:<port>"
+代理地址格式:"http://&lt;domain or address&gt;:&lt;port&gt;"
 
 **类型：** string
 

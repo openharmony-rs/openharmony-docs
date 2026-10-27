@@ -9627,7 +9627,7 @@ struct Index {
 
 ### 示例19（根据触发方式弹出不同内容的菜单）
 
-该示例通过在[bindContextMenuWithResponse](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenuwithresponse)中传入CustomBuilderT<ResponseType>给目标组件绑定菜单，组件会在UI函数中返回弹出菜单的触发方式，开发者可根据返回的触发方式实现差异化显示。
+该示例通过在[bindContextMenuWithResponse](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenuwithresponse)中传入CustomBuilderT&lt;ResponseType&gt;给目标组件绑定菜单，组件会在UI函数中返回弹出菜单的触发方式，开发者可根据返回的触发方式实现差异化显示。
 
 从API version 23开始，新增了bindContextMenuWithResponse的接口。
 

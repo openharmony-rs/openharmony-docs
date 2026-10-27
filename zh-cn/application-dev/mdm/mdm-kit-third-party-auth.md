@@ -100,8 +100,6 @@ MDM（Mobile Device Management，移动设备管理）应用支持为账号添�
 4. MDM应用调用`closeSession`关闭会话，凭据添加完成。
 5. （可选）调用`setUnlockPolicy`配置设备解锁策略。
 
-![添加三方自定义身份认证凭据流程](figures/third_party_auth_add.png)
-
 > **说明：**
 >
 > - `authType`仅支持`PIN`，`authTrustLevel`仅支持`ATL4`。
@@ -206,8 +204,6 @@ export async function bindUsbKey(uiContext: UIContext): Promise<string> {
 4. MDM应用调用`removeUserExtendCredential`，传入credentialId和authToken，删除三方自定义身份认证凭据。
 5. MDM应用调用`closeSession`关闭会话，凭据删除完成。
 6. （可选）调用`setUnlockPolicy`将设备解锁策略重置为系统内置认证方式。
-
-![删除三方自定义身份认证凭据流程](figures/third_party_auth_remove.png)
 
 > **说明：**
 >

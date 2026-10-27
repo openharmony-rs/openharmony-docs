@@ -44,7 +44,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [ArkUI_XComponentType](#arkui_xcomponenttype) | ArkUI_XComponentType | Enumerates the types of the <b><XComponent></b> component. |
+| [ArkUI_XComponentType](#arkui_xcomponenttype) | ArkUI_XComponentType | Enumerates the types of the <b>&lt;XComponent&gt;</b> component. |
 | [ArkUI_CopyOptions](#arkui_copyoptions) | ArkUI_CopyOptions | 定义文本复制粘贴模式枚举值。 |
 | [ArkUI_ShadowType](#arkui_shadowtype) | ArkUI_ShadowType | Enumerates the shadow types. |
 | [ArkUI_FocusWrapMode](#arkui_focuswrapmode) | ArkUI_FocusWrapMode | 组件走焦换行规则。Grid、List组件默认值为ARKUI_FOCUS_WRAP_MODE_DEFAULT。 |
@@ -392,7 +392,7 @@ enum ArkUI_XComponentType
 
 **描述：**
 
-Enumerates the types of the <b><XComponent></b> component.
+Enumerates the types of the <b>&lt;XComponent&gt;</b> component.
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

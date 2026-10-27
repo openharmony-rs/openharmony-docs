@@ -6,7 +6,6 @@
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
-
 Text是文本组件，用于展示用户视图，如显示文章的文字内容。该组件支持绑定自定义文本选择菜单，用户可根据需要选择不同功能。此外，还可以扩展自定义菜单，丰富可用选项，进一步提升用户体验。Span则用于展示行内文本。  
 
 具体用法请参考[Text](../reference/apis-arkui/arkts-apis/arkts-arkui-typenode-text-t.md)和Span组件的API文档。
@@ -17,7 +16,6 @@ Text是文本组件，用于展示用户视图，如显示文章的文字内容�
 
 Text可通过以下两种方式来创建：
 
-
 - string字符串。
 
   <!-- @[create_a_text_in_one_way](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/CreateText.ets) -->
@@ -26,9 +24,7 @@ Text可通过以下两种方式来创建：
   Text('我是一段文本')
   ```
 
-
 ![text-basic](figures/text-basic.png)
-
 
 - 引用Resource资源。
 
@@ -752,7 +748,6 @@ Text() {
 
 由于Span组件无尺寸信息，仅支持添加点击事件[onClick](../reference/apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-arcbutton-arcbuttonoptions-c.md#onclick)、悬浮事件[onHover](../reference/apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#onhover)。
 
-
   <!-- @[textspan_onhover](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextSpanOnHover.ets) -->
   
   ``` TypeScript
@@ -1291,7 +1286,6 @@ Text组件通过[enableDataDetector](../reference/apis-arkui/arkts-components/ar
     })
   ```
 
-
 - 如果需要调整识别出的样式，可以通过[dataDetectorConfig](../reference/apis-arkui/arkts-components/arkts-arkui-text-comp-attribute.md#datadetectorconfig)实现，具体可以参考TextDataDetectorConfig配置项。
 - 如果需要调整菜单的位置，可以通过[editMenuOptions](../reference/apis-arkui/arkts-components/arkts-arkui-text-comp-attribute.md#editmenuoptions)实现，具体可以参考示例[文本扩展自定义菜单](../reference/apis-arkui/arkts-components/arkts-arkui-text-comp.md#示例12文本扩展自定义菜单)。 
 <!--RP2--><!--RP2End-->
@@ -1460,8 +1454,6 @@ Text组件通过设置TextMenuShowMode控制文本菜单在哪个窗口中渲染
   }
   ```
 
-  ![text-cross-node-selection](figures/text-cross-node-selection.gif)
-
 ### 配置跨节点文本拼接方式
 
 跨节点选中涉及多个Text组件时，复制到剪贴板的文本需按视觉顺序拼接。通过[textJoinStyle](../reference/apis-arkui/arkts-components/arkts-arkui-selectioncontainer-comp-attribute.md#textjoinstyle)可设置拼接方式：SelectionContainerTextJoinStyle.NEWLINE在不同文本节点间插入换行符，.DIRECT直接拼接不添加分隔符。
@@ -1548,8 +1540,6 @@ Text组件通过设置TextMenuShowMode控制文本菜单在哪个窗口中渲染
     }
   }
   ```
-
-  ![text-cross-node-join-style](figures/text-cross-node-join-style.gif)
 
 ### 绑定自定义选择菜单
 
@@ -1648,8 +1638,6 @@ Text组件通过设置TextMenuShowMode控制文本菜单在哪个窗口中渲染
     }
   }
   ```
-
-  ![text-cross-node-bind-menu](figures/text-cross-node-bind-menu.gif)
 
 ### 扩展系统菜单选项
 
@@ -1770,8 +1758,6 @@ Text组件通过设置TextMenuShowMode控制文本菜单在哪个窗口中渲染
   }
   ```
 
-  ![text-cross-node-extend-menu](figures/text-cross-node-extend-menu.gif)
-
 ### 通过控制器关闭菜单与清除选中
 
 在页面跳转、弹窗遮盖等场景下，需主动关闭选择菜单或清除选中状态。可通过SelectionContainerController的[closeSelectionMenu](../reference/apis-arkui/arkts-components/arkts-arkui-selectioncontainer-comp-selectioncontainercontroller-c.md#closeselectionmenu)关闭菜单，通过[clearTextSelection](../reference/apis-arkui/arkts-components/arkts-arkui-selectioncontainer-comp-selectioncontainercontroller-c.md#cleartextselection)清除选中态。
@@ -1840,8 +1826,6 @@ Text组件通过设置TextMenuShowMode控制文本菜单在哪个窗口中渲染
     }
   }
   ```
-
-  ![text-cross-node-controller](figures/text-cross-node-controller.gif)
 
 ## 实现热搜榜
 

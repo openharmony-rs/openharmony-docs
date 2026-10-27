@@ -40,7 +40,7 @@ onExecute(): Promise<insightIntent.IntentResult<T>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[insightIntent.IntentResult](arkts-ability-insightintent-intentresult-i.md)&lt;T&gt;&gt; | Promise对象。返回[insightIntent.IntentResult<T>](arkts-ability-insightintent-intentresult-i.md)对象，表示意图执行结果。 |
+| Promise&lt;[insightIntent.IntentResult](arkts-ability-insightintent-intentresult-i.md)&lt;T&gt;&gt; | Promise对象。返回[insightIntent.IntentResult&lt;T&gt;](arkts-ability-insightintent-intentresult-i.md)对象，表示意图执行结果。 |
 
 ## context
 

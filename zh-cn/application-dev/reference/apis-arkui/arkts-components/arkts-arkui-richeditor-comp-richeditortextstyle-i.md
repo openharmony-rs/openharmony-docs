@@ -92,7 +92,7 @@ fontFeature?: string
 
 格式为：normal | <feature-tag-value>
 
-<feature-tag-value>的格式为：<string> [ <integer> | on | off ]
+&lt;feature-tag-value&gt;的格式为：&lt;string&gt; [ &lt;integer&gt; | on | off ]
 
 <feature-tag-value>的个数可以有多个，中间用','隔开。
 

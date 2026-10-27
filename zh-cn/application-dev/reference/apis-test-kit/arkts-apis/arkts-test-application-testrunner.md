@@ -5,7 +5,7 @@ TestRunner模块提供了框架测试的能力。包括准备单元测试环境�
 
 > **说明：**
  >
- > 本模块接口仅可在[单元测试框架](../../../application-test/unittest-guidelines.md)中使用。
+ > 本模块接口仅可在单元测试框架中使用。
 
 
 

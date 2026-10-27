@@ -144,7 +144,7 @@ fontFeature(value: string)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | string | 是 | 文字特性效果，用于设置文字的OpenType特性。格式为：normal &#124; <feature-tag-value>，其中<feature-tag-value>格式为：<string> [ <integer> &#124; on &#124; off ]。可设置多个特性，中间用','隔开。例如，使用等宽时钟数字的格式为：'"ss01" on'。 |
+| value | string | 是 | 文字特性效果，用于设置文字的OpenType特性。格式为：normal &#124; &lt;feature-tag-value&gt;，其中&lt;feature-tag-value&gt;格式为：&lt;string&gt; [ &lt;integer&gt; &#124; on &#124; off ]。可设置多个特性，中间用','隔开。例如，使用等宽时钟数字的格式为：'"ss01" on'。 |
 
 ## fontSize
 

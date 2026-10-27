@@ -692,8 +692,6 @@ Tid:29192, Name:OS_FFRT_2_0                 <- 故障线程号，线程名
 
 以9级`async/await`嵌套调用为例，整个过程如下图所示：调用方发起调用后，每层异步函数执行至`await`处挂起，待其Promise决议后由运行时（事件循环）恢复执行，随后调用下一层异步函数，如此逐层嵌套，直至最深层multiAsync9。每层`await`都会产生一个新的Promise节点，运行时会逐层保存该层的提交者调用栈。multiAsync9恢复执行后调用`TriggerCppCrash()`触发Cpp Crash，日志中保留的正是该层的提交者调用栈。
 
-![Promise异步嵌套调用过程](figures/promise_async_nested_call.png)
-
 以下是一份DevEco Studio归档在FaultLog的进程崩溃日志的核心内容。
 
 ```text
