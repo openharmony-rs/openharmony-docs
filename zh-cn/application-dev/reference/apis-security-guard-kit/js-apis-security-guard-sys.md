@@ -799,7 +799,7 @@ requestAuthResult(event: AuthEventInfo): Promise&lt;AuthResult&gt;
 
 **错误码：**
 
-下表仅列出本接口特有的错误码，通用错误码请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备风险管理错误码](errorcode-securityguard.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -864,7 +864,7 @@ createAuthProvider(callback: AuthProviderCallback, serviceId: string): AuthProvi
 
 **错误码：**
 
-下表仅列出本接口特有的错误码，通用错误码请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备风险管理错误码](errorcode-securityguard.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -924,7 +924,7 @@ destroyAuthProvider(provider: AuthProvider): void
 
 **错误码：**
 
-下表仅列出本接口特有的错误码，通用错误码请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备风险管理错误码](errorcode-securityguard.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
