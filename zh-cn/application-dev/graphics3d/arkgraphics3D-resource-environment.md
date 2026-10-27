@@ -1,7 +1,7 @@
 ---
 kits: ["ArkGraphics3D Kit / 方舟3D图形"]
-description: "介绍。"
-keywords: [3D, component3D, gltf, scene]
+description: "介绍3D场景环境资源的创建与使用方法，通过createEnvironment()加载环境贴图，设置等距柱状投影背景与基于图像的光照（IBL），控制间接漫反射强度，使物体更自然地融入场景提升渲染真实感。"
+keywords: [ArkGraphics 3D, IBL, 环境贴图, 场景背景]
 doctype: guide
 status: active
 ---
