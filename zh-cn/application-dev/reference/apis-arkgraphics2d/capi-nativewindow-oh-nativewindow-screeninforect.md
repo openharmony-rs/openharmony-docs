@@ -6,7 +6,7 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 ```c
-typedef struct OH_NaticveWindow_ScreenInfoRect OH_NaticveWindow_ScreenInfoRect
+typedef struct OH_NativeWindow_ScreenInfoRect OH_NativeWindow_ScreenInfoRect
 ```
 
 ## 概述
