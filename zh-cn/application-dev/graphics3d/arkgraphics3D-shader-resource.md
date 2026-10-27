@@ -1,7 +1,7 @@
 ---
 kits: ["ArkGraphics3D Kit / 方舟3D图形"]
-description: "介绍。"
-keywords: [3D, component3D, gltf, scene]
+description: "说明ArkGraphics 3D中.shader资源文件的JSON格式规范，涵盖compatibility_info、vert/frag着色器路径、vertexInputDeclaration、光栅化/深度模板/颜色混合等state管线状态字段的取值与配置要求。"
+keywords: [ArkGraphics 3D, shader文件, vertex shader, fragment shader]
 doctype: guide
 status: active
 ---
