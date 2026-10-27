@@ -21,6 +21,43 @@
 应用侧代码
 <!-- @[ordinary_static_display_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebPageHeight/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+@Component
+struct Scene1Static {
+  controller: webview.WebviewController = new webview.WebviewController();
+  @State heightText: ResourceStr = $r('app.string.waiting_for_height');
+
+  build() {
+    Column() {
+      Text('getPageHeight: ' + this.heightText)
+        .width('100%')
+        .padding(12)
+        .fontSize(16)
+        .backgroundColor('#f5f5f5')
+        .textAlign(TextAlign.Center)
+
+      Web({ src: $rawfile('scene1_index.html'), controller: this.controller })
+        .layoutWeight(1)
+        .onPageEnd(() => {
+          this.heightText = $r('app.string.scene1_on_page_end');
+          setTimeout(() => {
+            try {
+              const h: number = this.controller.getPageHeight();
+              console.info(`page height: onPageEnd: ${h}`);
+              this.heightText = String(h) + ' px';
+            } catch (err) {
+              console.error(`page height: onPageEnd error: ${JSON.stringify(err)}`);
+              this.heightText = $r('app.string.get_height_failed');
+            }
+          }, 300)
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
 ## 复杂动态网页使用JSBridge传递特定回调
 
 动态网页可以通过JSBridge传递特定回调，通知到应用侧调用。
