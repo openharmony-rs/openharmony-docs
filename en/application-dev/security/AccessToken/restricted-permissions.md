@@ -1784,13 +1784,11 @@ With this permission, an application can implement the recording and playback fu
 
 ## ohos.permission.DISABLE_SCREEN_PRIVACY_PROTECTION
 
-Allows an application to disable screen privacy protection while recording the screen.
+Allows an application to record content protected by screen privacy guard.
 
 With this permission, the application can record system UI elements (such as status notifications and input method editors) that are shielded by default under screen privacy protection during screen recording.
 
-**Prerequisites**: Before requesting this permission, the application must request the [ohos.permission.CUSTOM_SCREEN_RECORDING](#ohos.permission.CUSTOM_SCREEN_RECORDING) permission (privacy warnings will no longer be displayed after user authorization is obtained.)
-
-<!--RP117--><!--RP117End-->
+**Prerequisites: ** Before requesting this permission, the application must request the [ohos.permission.CUSTOM_SCREEN_RECORDING](restricted-permissions.md#ohospermissioncustom_screen_recording) permission (privacy warnings will no longer be displayed after user authorization is obtained.)
 
 **Permission level**: normal
 
