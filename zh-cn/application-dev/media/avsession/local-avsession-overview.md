@@ -1,3 +1,11 @@
+---
+kits: ["AVSession Kit / 音视频播控服务"]
+description: "本地媒体会话在设备本地的媒体会话提供方和媒体会话控制方之间建立连接，通过AVSessionManager创建AVSession和AVSessionController对象，实现音视频应用统一的媒体播放控制和媒体信息显示。"
+keywords: [本地媒体会话, 媒体会话提供方, 媒体会话控制方, AVSessionManager, AVSessionController, 媒体会话交互过程, 会话创建, 会话元数据]
+doctype: guide
+status: active
+---
+
 # 本地媒体会话概述
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
