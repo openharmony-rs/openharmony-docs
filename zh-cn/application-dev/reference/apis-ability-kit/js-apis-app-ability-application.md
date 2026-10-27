@@ -449,11 +449,11 @@ export default class MyAbilityStage extends AbilityStage{
 
 createModuleContextSync(context: Context, moduleName: string): Context
 
-创建指定模块的上下文。创建出的模块上下文中[resourceManager.Configuration](../apis-localization-kit/js-apis-resource-manager.md#configuration)资源继承自入参上下文，便于开发者获取[跨HAP/HSP包资源](../../quick-start/resource-categories-and-access.md#访问跨haphsp包资源)（新创建的上下文中的资源是独立的一份，不会随着入参上下文资源的变化而变化）。该接口为同步接口。
+创建指定模块的上下文。该接口通过继承入参上下文中的[resourceManager.Configuration](../apis-localization-kit/js-apis-resource-manager.md#configuration)配置，便于开发者直接访问[跨HAP/HSP包资源](../../quick-start/resource-categories-and-access.md#访问跨haphsp包资源)；同时，新上下文中的资源作为独立副本存在，不会随着入参上下文资源的变化而改变。该接口为同步接口。
 
 > **说明：**
 >
-> 由于创建模块上下文的过程涉及资源查询与初始化，耗时相对较长，在对应用流畅性要求较高的场景下，不建议频繁或多次调用createModuleContextSync接口创建多个Context实例，以免影响用户体验。
+> 建议在主线程或高流畅性要求的场景下，避免频繁、重复调用createModuleContextSync接口。由于创建模块上下文涉及资源查询与初始化等耗时操作，多次实例化可能会引发界面卡顿，进而影响用户体验。
 
 **起始版本**： 26.0.1
 
