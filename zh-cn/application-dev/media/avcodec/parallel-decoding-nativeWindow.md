@@ -1,3 +1,11 @@
+---
+kits: ["AVCodec Kit / 音视频编解码服务"]
+description: "介绍在XComponent或OpenGL后处理未就绪时，通过NativeImage创建临时Surface先行创建并启动视频解码器，待真实消费端就绪后再重定向输出的并行方案，解决解码器创建依赖问题。"
+keywords: [NativeWindow, NativeImage, 临时Surface, 解码器创建并行, XComponent, SetSurface, 起播优化, OpenGL后处理]
+doctype: faq
+status: active
+---
+
 # 创建视频解码器和NativeWindow初始化并行
 
 <!--Kit: AVCodec Kit-->

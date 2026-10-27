@@ -1,3 +1,11 @@
+---
+kits: ["AVCodec Kit / 音视频编解码服务"]
+description: "介绍通过Native API以回调机制异步完成音频编码的开发流程，将PCM数据压缩为AAC、FLAC、MP3等格式码流，适用于音频录制、音频编辑后导出文件的场景。"
+keywords: [音频编码, 异步模式, PCM, AAC, 采样率, 声道数, 音频录制, OH_AudioCodec]
+doctype: guide
+status: active
+---
+
 # 异步模式音频编码
 <!--Kit: AVCodec Kit-->
 <!--Subsystem: Multimedia-->

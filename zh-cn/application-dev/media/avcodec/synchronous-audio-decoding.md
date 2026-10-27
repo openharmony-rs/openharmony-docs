@@ -1,3 +1,11 @@
+---
+kits: ["AVCodec Kit / 音视频编解码服务"]
+description: "介绍以主动请求Buffer送帧方式完成同步模式音频解码的开发流程，将媒体码流解码为PCM数据，适用于需要应用主动控制解码节奏的音频播放与音频处理场景。"
+keywords: [音频解码, 同步模式, PCM, 主动请求Buffer, OH_AudioCodec, 音频播放, 送帧, 采样率]
+doctype: guide
+status: active
+---
+
 # 同步模式音频解码
 
 <!--Kit: AVCodec Kit-->
