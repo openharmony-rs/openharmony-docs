@@ -219,12 +219,12 @@ H5示例:
 <!-- @[SetUAPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebDragInteraction/entry/src/main/ets/pages/SetUAPage.ets) -->  
 
 ``` TypeScript
-import { webview } from '@kit.ArkWeb'
+import { webview } from '@kit.ArkWeb';
 
 @Entry
 @Component
 struct Index {
-  private webController: webview.WebviewController = new webview.WebviewController()
+  private webController: webview.WebviewController = new webview.WebviewController();
   build(){
     Column() {
       Web({
@@ -232,8 +232,8 @@ struct Index {
         controller: this.webController,
       }).onControllerAttached(() => {
         // 特定UA
-        let customUA = 'android'
-        this.webController.setCustomUserAgent(this.webController.getUserAgent() + customUA)
+        let customUA = 'android';
+        this.webController.setCustomUserAgent(this.webController.getUserAgent() + customUA);
       })
     }
   }
