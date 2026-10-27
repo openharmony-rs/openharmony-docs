@@ -137,8 +137,7 @@ avSession.getSessionDescriptors(avSession.SessionCategory.CATEGORY_ALL).then((de
  
 getSessionDescriptorsForAudioZone(userId: number): Promise\<Array\<Readonly\<AVSessionDescriptor>>> 
  
-获取userId用户所属音区的会话描述信息。使用Promise异步回调。
-音区指音频输出区域，不同音区可独立播放媒体。
+获取userId用户所属音区的会话描述信息。使用Promise异步回调。<br> 音区指音频输出区域，不同音区可独立播放媒体。
 
 **起始版本：** 26.0.1
  
