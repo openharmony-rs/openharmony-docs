@@ -337,7 +337,7 @@ openInstallCertificateDialog(context: common.Context, request: InstallCertificat
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **设备行为差异：**
-1. 入参request.certType为CA_CERT时，该接口在PC/2in1设备中可以正常调用，在其他设备中会返回29700004错误码。可以通过[supportsCACertDialog](#certificatemanagerdialogsupportscacertdialog)来判断本设备是否支持打开CA证书安装对话框。
+1. 入参request.certType为CA_CERT时，该接口在PC/2in1设备中可以正常调用，在其他设备中会返回29700004错误码。可以通过[supportsCACertDialog](#certificatemanagerdialogsupportscacertdialog)()来判断本设备是否支持打开CA证书安装对话框。
 2. 入参request.certType为CREDENTIAL_USER或CREDENTIAL_SYSTEM时，在PC/2in1、Phone和Tablet设备中可以正常调用。
 
 **参数**：
