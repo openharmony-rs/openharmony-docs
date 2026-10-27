@@ -646,3 +646,235 @@ async function getPersistentPolicyExample() {
   }
 }
 ```
+
+## GrantStatus
+
+枚举用户授予的URI权限的状态。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.FileManagement.AppFileService.FolderAuthorization
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| DENIED | -1 | URI权限未授权。 |
+| GRANTED | 0 | URI权限已授权。 |
+
+## PermissionStatusInfo
+
+应用的URI权限状态信息。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.FileManagement.AppFileService.FolderAuthorization
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| tokenID | number | 是 | 否 | 应用的访问令牌标识。 |
+| policyInfo | [PolicyInfo](js-apis-fileShare.md#policyinfo11) | 是 | 否 | URI权限的策略信息。 |
+| grantStatus | [GrantStatus](#grantstatus) | 是 | 否 | URI权限的授权状态。 |
+
+## fileShare.grantPermissionByUser
+
+grantPermissionByUser(tokenID: number, policies: Array&lt;PolicyInfo&gt;): Promise&lt;void&gt;
+
+用户授予URIs权限，使用Promise异步回调。授权成功后可通过[getStatusByPermission](#filesharegetstatusbypermission)()查询到GRANTED状态。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.GRANT_SENSITIVE_PERMISSIONS
+
+**系统能力：** SystemCapability.FileManagement.AppFileService.FolderAuthorization
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| tokenID | number | 是 | 目标应用的访问令牌标识，可通过应用[BundleInfo](../apis-ability-kit/js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](../apis-ability-kit/js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获取。 |
+| policies | Array&lt;[PolicyInfo](js-apis-fileShare.md#policyinfo11)&gt; | 是 | 需要授权URI的策略信息数组，policies数组大小上限为500。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
+| 13900001 | Operation not permitted. |
+| 13900011 | Out of memory. |
+| 13900020 | Invalid tokenID. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileShare } from '@kit.CoreFileKit';
+
+async function grantPermissionByUserExample() {
+  try {
+    let tokenID = 537688848; // 系统应用可以通过bundleManager.getApplicationInfo获取。
+    let policyInfo: fileShare.PolicyInfo = {
+      uri: 'file://docs/storage/Users/currentUser/Images',
+      operationMode: fileShare.OperationMode.READ_MODE,
+    };
+    let policies: Array<fileShare.PolicyInfo> = [policyInfo];
+    fileShare.grantPermissionByUser(tokenID, policies).then(() => {
+      console.info('grantPermissionByUser success');
+    }).catch((err: BusinessError) => {
+      console.error(`grantPermissionByUser failed, Code: ${err.code}, message: ${err.message}`);
+    });
+  } catch (error) {
+    console.error(`grantPermissionByUser error, Code: ${error.code}, message: ${error.message}`);
+  }
+}
+```
+
+## fileShare.getStatusByPermission
+
+getStatusByPermission(tokenIDList: Array&lt;number&gt;): Promise&lt;Array&lt;PermissionStatusInfo&gt;&gt;
+
+获取URIs权限的状态，使用Promise异步回调。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.GET_SENSITIVE_PERMISSIONS
+
+**系统能力：** SystemCapability.FileManagement.AppFileService.FolderAuthorization
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| tokenIDList | Array&lt;number&gt; | 是 | 目标应用的访问令牌标识数组，数组元素为整数，tokenIDList数组大小上限为500。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;Array&lt;[PermissionStatusInfo](#permissionstatusinfo)&gt;&gt; | Promise对象，返回应用的URI权限状态信息数组。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
+| 13900001 | Operation not permitted. |
+| 13900011 | Out of memory. |
+| 13900020 | Invalid tokenID. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileShare } from '@kit.CoreFileKit';
+
+async function getStatusByPermissionExample() {
+  try {
+    let tokenIDList: Array<number> = [537688848, 537688849]; // 系统应用可以通过bundleManager.getApplicationInfo获取。
+    fileShare.getStatusByPermission(tokenIDList).then((result: Array<fileShare.PermissionStatusInfo>) => {
+      for (let info of result) {
+        console.info(`tokenID=${info.tokenID}, grantStatus=${info.grantStatus}, uri=${info.policyInfo.uri}`);
+      }
+    }).catch((err: BusinessError) => {
+      console.error(`getStatusByPermission failed, Code: ${err.code}, message: ${err.message}`);
+    });
+  } catch (error) {
+    console.error(`getStatusByPermission error, Code: ${error.code}, message: ${error.message}`);
+  }
+}
+```
+
+## fileShare.revokePermissionByUser
+
+revokePermissionByUser(tokenID: number, policies: Array&lt;PolicyInfo&gt;): Promise&lt;void&gt;
+
+用户撤销URIs权限，使用Promise异步回调。撤销成功后可通过[getStatusByPermission](#filesharegetstatusbypermission)()查询到DENIED状态。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.REVOKE_SENSITIVE_PERMISSIONS
+
+**系统能力：** SystemCapability.FileManagement.AppFileService.FolderAuthorization
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| tokenID | number | 是 | 目标应用的访问令牌标识，可通过应用[BundleInfo](../apis-ability-kit/js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](../apis-ability-kit/js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获取。 |
+| policies | Array&lt;[PolicyInfo](js-apis-fileShare.md#policyinfo11)&gt; | 是 | 需要撤销授权URI的策略信息数组，policies数组大小上限为500。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
+| 13900001 | Operation not permitted. |
+| 13900011 | Out of memory. |
+| 13900020 | Invalid tokenID. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileShare } from '@kit.CoreFileKit';
+
+async function revokePermissionByUserExample() {
+  try {
+    let tokenID = 537688848; // 系统应用可以通过bundleManager.getApplicationInfo获取。
+    let policyInfo: fileShare.PolicyInfo = {
+      uri: 'file://docs/storage/Users/currentUser/Images',
+      operationMode: fileShare.OperationMode.READ_MODE,
+    };
+    let policies: Array<fileShare.PolicyInfo> = [policyInfo];
+    fileShare.revokePermissionByUser(tokenID, policies).then(() => {
+      console.info('revokePermissionByUser success');
+    }).catch((err: BusinessError) => {
+      console.error(`revokePermissionByUser failed, Code: ${err.code}, message: ${err.message}`);
+    });
+  } catch (error) {
+    console.error(`revokePermissionByUser error, Code: ${error.code}, message: ${error.message}`);
+  }
+}
+```
