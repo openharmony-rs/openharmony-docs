@@ -8127,7 +8127,12 @@ try {
 
 getString(): string
 
-从富文本中提取纯文本。
+从富文本中提取纯文本。提取规则因[SpanType](#spantype)类型而异：
+
+- TEXT：按原始文本内容正常提取。
+- IMAGE：替换为一个占位符。
+- CUSTOM：替换为一个占位符。
+- SYMBOL：替换为两个占位符。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
