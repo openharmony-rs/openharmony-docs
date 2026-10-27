@@ -240,10 +240,10 @@ finishTask(taskInfo: TaskInfo): void
     }
   }
   // 01.定义后台加载的onStart回调方法
-  function BackgroundLoaderOnStart(pdata: rpc.MessageSequence): rpc.Parcelable {
+  function BackgroundLoaderOnStart(pData: rpc.MessageSequence): rpc.Parcelable {
     let taskInfo:  backgroundLoader.TaskInfo = {
-        taskId: pdata.readInt(),
-        abilityName: pdata.readString()
+        taskId: pData.readInt(),
+        abilityName: pData.readString()
     };
 
     console.info(`background loader Task OnStart, taskInfo ${taskInfo.taskId}`);
@@ -255,11 +255,11 @@ finishTask(taskInfo: TaskInfo): void
   }
 
   // 02.定义后台加载的onStop回调方法
-  function BackgroundLoaderOnStop(pdata: rpc.MessageSequence): rpc.Parcelable {
-    let taskId:number = pdata.readInt();
-    let abilityName:string = pdata.readString();
-    let stopCode:number = pdata.readInt();
-    let stopMessage:string = pdata.readString();
+  function BackgroundLoaderOnStop(pData: rpc.MessageSequence): rpc.Parcelable {
+    let taskId:number = pData.readInt();
+    let abilityName:string = pData.readString();
+    let stopCode:number = pData.readInt();
+    let stopMessage:string = pData.readString();
 
     console.info(`background loader Task OnStop, taskId ${taskId}`);
     return new ReplyParcelable();
