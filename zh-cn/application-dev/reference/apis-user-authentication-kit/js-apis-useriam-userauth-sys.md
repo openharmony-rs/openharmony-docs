@@ -661,7 +661,7 @@ queryReusableAuthResult(authParam: AuthParam): Uint8Array
 
 | 错误码ID | 错误信息                                |
 | -------- | --------------------------------------- |
-| 201      | PPermission verification failed. The application does not have the permission required to call the API.    |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.    |
 | 202      | Permission verification failed. A non-system application calls a system API. |
 | 12500002 | General operation error.                |
 | 12500008 | The parameter is out of range.          |
