@@ -127,6 +127,7 @@
     - [@ohos.app.agent.AgentExtensionAbility (智能体扩展组件)(系统接口)](js-apis-app-agent-agentExtensionAbility-sys.md)
     - [@ohos.app.agent.agentManager (Agent智能组件管理)(系统接口)](js-apis-app-agent-agentManager-sys.md)
     - [@ohos.app.agent.agentConstant (Agent常量)(系统接口)](js-apis-app-agent-agentConstant-sys.md)
+    - [@ohos.app.agent.taskManager (任务管理)(系统接口)](js-apis-app-agent-taskManager-sys.md)
     - [@ohos.app.ability.kioskManager (Kiosk模式管理)(系统接口)](js-apis-app-ability-kioskManager-sys.md)
     - [@ohos.app.ability.missionManager (missionManager)(系统接口)](js-apis-app-ability-missionManager-sys.md)
     - [@ohos.app.ability.quickFixManager (quickFixManager)(系统接口)](js-apis-app-ability-quickFixManager-sys.md)
