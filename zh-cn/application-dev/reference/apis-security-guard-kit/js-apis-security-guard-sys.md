@@ -12,8 +12,6 @@
 >
 > - 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本模块为系统接口。
-> - 从 API version 26.1.0 开始，新增阻断服务提供者接入接口，包括 `createAuthProvider`、`destroyAuthProvider`、`AuthProvider.requestAuthResult` 及相关类型。
-
 
 ## 导入模块
 
@@ -685,7 +683,7 @@ async function updatePolicy(): Promise<void> {
 | bundleName | string | 否 | 否 | 应用Bundle名称。 |
 | subscribedEvents | number[] | 否 | 否 | 客户端订阅的事件类型ID列表。阻断服务提供者可据此过滤关心的事件。 |
 | defaultTimeoutStrategy | [AuthStrategy](#authstrategy) | 否 | 否 | 客户端响应超时时的默认阻断策略。 |
-| defaultTimeoutMs | number | 否 | 否 | 客户端响应超时时间，单位为毫秒。当前默认设置为400。 |
+| defaultTimeoutMs | number | 否 | 否 | 客户端响应超时时间，单位为毫秒。默认值为400。 |
 
 ## ClientAuthResult
 
@@ -708,7 +706,6 @@ async function updatePolicy(): Promise<void> {
 
 所有客户端阻断结果。
 
-从严策略：任一客户端返回 DENY 即阻断，全部客户端返回 ALLOW 才放行。
 
 **起始版本：** 26.1.0
 
@@ -737,7 +734,7 @@ async function updatePolicy(): Promise<void> {
 
 ### onClientStatusChanged
 
-onClientStatusChanged: (clientInfos: Array&lt;AuthClientInfo&gt;) => void
+onClientStatusChanged: (clientInfos: AuthClientInfo[]) => void
 
 客户端会话状态变更时触发。[createAuthProvider](#securityguardcreateauthprovider) 成功后会立即触发一次，下发当前全量客户端列表；后续客户端创建、销毁或订阅变更时再次触发。
 
@@ -789,18 +786,16 @@ let callback: securityGuard.AuthProviderCallback = {
 
 **系统能力：** SystemCapability.Security.SecurityGuard
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统接口：** 此接口为系统接口。
 
 ### requestAuthResult
 
-requestAuthResult(event: AuthEventInfo): Promise&lt;AuthResult&gt;
+requestAuthResult(event: AuthEventInfo): Promise\<AuthResult\>
 
 请求事件的阻断结果。使用Promise异步回调。
 
-- 单个Provider并发请求上限为128，超限返回27000004。
-- 框架侧超时时间为400毫秒，超时后按各客户端默认策略聚合并resolve Promise。
+- 单个Provider并发请求上限为128个。
+- 框架侧超时时间为400毫秒，超时后按各客户端默认策略聚合。
 - 从严聚合：任一客户端阻断即阻断，全部客户端放行才放行。
 
 **起始版本：** 26.1.0
