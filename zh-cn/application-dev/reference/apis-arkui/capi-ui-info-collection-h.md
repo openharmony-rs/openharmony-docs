@@ -46,7 +46,7 @@
 | -- | -- | -- |
 | [typedef void (\*OH_ArkUI_NativeModule_UIInfoCollectionInteractionJsonCallback)(const OH_ArkUI_NativeModule_UIJsonWrapper *json, void *userData)](#oh_arkui_nativemodule_uiinfocollectioninteractionjsoncallback) | OH_ArkUI_NativeModule_UIInfoCollectionInteractionJsonCallback | 定义接收感知到的交互事件的回调类型。<br>回调通过借用的[OH_ArkUI_NativeModule_UIJsonWrapper](capi-arkui-nativemodule-oh-arkui-nativemodule-uijsonwrapper.md)对象接收事件数据，不取得该对象的所有权。对象仅在本次回调执行期间有效，回调不得保留或销毁该对象。事件数据中的所有位置坐标均相对于屏幕（显示器），单位为物理像素（px）。事件数据顶层始终包含schemaVersion字段。顶层结构为{ "schemaVersion": 1, "type": "<event type>", ... }。<br>各事件类型对应的字段见[OH_ArkUI_NativeModule_UIInfoCollectionInteractionJsonCallback()](#oh_arkui_nativemodule_uiinfocollectioninteractionjsoncallback)。 |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_UIInfoCollectionRegisterInteractionObserver(ArkUI_ContextHandle uiContext, uint32_t eventMask, uint32_t *registerID, OH_ArkUI_NativeModule_UIInfoCollectionInteractionJsonCallback callback, void *userData)](#oh_arkui_nativemodule_uiinfocollectionregisterinteractionobserver) | - | 注册UI交互事件观察者。<br>观察者仅接收eventMask指定类型的事件回调。同一个UI实例可以注册多个观察者。使用相同的callback和userData组合重复注册，会创建一个新的独立观察者，并分配新的注册ID。<br>不再使用观察者时，必须调用[OH_ArkUI_NativeModule_UIInfoCollectionUnregisterInteractionObserver()](capi-ui-info-collection-h.md#oh_arkui_nativemodule_uiinfocollectionunregisterinteractionobserver)注销回调。 |
-| [ArkUI_ErrorCode OH_ArkUI_NativeModule_UIInfoCollectionUnregisterInteractionObserver(uint32_t registerID)](#oh_arkui_nativemodule_uiinfocollectionunregisterinteractionobserver) | - | 注销交互事件观察者。<br>本次调用完成后，不再调用对应的回调函数。<br>本函数是线程安全的，可以从任意线程调用，且不会阻塞调用方，但不具备异步信号安全性。 |
+| [ArkUI_ErrorCode OH_ArkUI_NativeModule_UIInfoCollectionUnregisterInteractionObserver(uint32_t registerID)](#oh_arkui_nativemodule_uiinfocollectionunregisterinteractionobserver) | - | 注销交互事件观察者。<br>本次调用完成后，不再调用对应的回调函数。<br>该函数不是线程安全的，不能在非主线程中调用。 |
 | [typedef void (\*OH_ArkUI_NativeModule_UIAgentJsonCallback)(ArkUI_ContextHandle context, uint64_t requestId, ArkUI_ErrorCode errorCode, OH_ArkUI_NativeModule_UIJsonWrapper *json, void *userData)](#oh_arkui_nativemodule_uiagentjsoncallback) | OH_ArkUI_NativeModule_UIAgentJsonCallback | 定义异步JSON树采集请求完成时调用的回调函数类型。<br>每个被接受的请求均在UI线程上触发且仅触发一次回调。仅当errorCode为[ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)时，回调才会接收非NULL的JSON对象并取得其所有权。调用方必须调用[OH_ArkUI_NativeModule_UIJsonWrapperDestroy()](capi-ui-json-wrapper-h.md#oh_arkui_nativemodule_uijsonwrapperdestroy)释放该对象。 |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_UIAgentTreeRequestCreate(OH_ArkUI_NativeModule_UIAgentTreeType treeType, OH_ArkUI_NativeModule_UIAgentTreeRequest **request)](#oh_arkui_nativemodule_uiagenttreerequestcreate) | - | 创建UI树采集请求。 |
 | [void OH_ArkUI_NativeModule_UIAgentTreeRequestDestroy(OH_ArkUI_NativeModule_UIAgentTreeRequest *request)](#oh_arkui_nativemodule_uiagenttreerequestdestroy) | - | 销毁UI树采集请求对象。 |
@@ -249,7 +249,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIInfoCollectionUnregisterInteractionObser
 
 **描述：**
 
-注销交互事件观察者。<br>本次调用完成后，不再调用对应的回调函数。<br>本函数是线程安全的，可以从任意线程调用，且不会阻塞调用方，但不具备异步信号安全性。
+注销交互事件观察者。<br>本次调用完成后，不再调用对应的回调函数。<br>该函数不是线程安全的，不能在非主线程中调用。
 
 **起始版本：** 26.1.0
 
