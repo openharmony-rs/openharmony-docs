@@ -139,7 +139,7 @@ USB Key PIN码认证请求。
 | 名称              | 类型    | 只读 | 可选 | 说明                         |
 | ----------------- | ------- | ---- | ---- | ---------------------------- |
 | keyUri | string   | 否   | 否   | 表示USB Key证书凭据的唯一标识符，长度限制256字节以内。该参数值可通过调用[openAuthorizeDialog](#certificatemanagerdialogopenauthorizedialog22)接口返回的CertReference中获取。 |
-| customData | Uint8Array   | 否   | 是   | 表示传入Ukey鉴权对话框的自定义数据，最大长度2048字节。一般情况下，该字段仅在调用[openAuthDialogForUkeyProvider](#certificatemanagerdialogopenauthdialogforukeyprovider)接口时需要提供。<br>**ArkTS-Dyn起始版本**： 26.0.1<br/>**ArkTS-Sta起始版本**：26.0.1 |
+| customData | Uint8Array   | 否   | 是   | 表示传入Ukey鉴权对话框的自定义数据，最大长度2048字节。一般情况下，该字段仅在调用[openAuthDialogForUkeyProvider](#certificatemanagerdialogopenauthdialogforukeyprovider)接口时需要提供。<br>**ArkTS-Dyn起始版本**：26.0.1<br/>**ArkTS-Sta起始版本**：26.0.1 |
 | timeoutDuration | number   | 否   | 是   | 表示Ukey认证对话框的操作超时时间，单位为秒。取值范围为[180, 600]内的整数，默认值为300。<br>**ArkTS-Dyn起始版本**：26.0.1<br/>**ArkTS-Sta起始版本**：26.0.1 |
 
 ## AuthorizeRequest<sup>22+</sup>
