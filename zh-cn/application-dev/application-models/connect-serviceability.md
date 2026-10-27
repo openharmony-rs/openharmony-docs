@@ -71,7 +71,7 @@ struct PageServiceAbility {
                 });
               },
               onFailed: (code) => {
-                hilog.info(domain, TAG, `onConnectLocalService onFailed errCode:${code}`);
+                hilog.error(domain, TAG, `onConnectLocalService onFailed errCode:${code}`);
                 promptAction.showToast({
                   message: 'connect_service_failed_toast'
                 });
@@ -83,7 +83,7 @@ struct PageServiceAbility {
               abilityName: 'com.samples.famodelabilitydevelop.ServiceAbility',
             };
             let connId = featureAbility.connectAbility(request, option);
-            hilog.info(domain, TAG, `onConnectLocalService onFailed errCode:${connId}`);
+            hilog.info(domain, TAG, `onConnectLocalService connectAbility connId:${connId}`);
           })
         }
         // ...
@@ -127,7 +127,7 @@ class FirstServiceAbilityStub extends rpc.RemoteObject {
       hilog.info(domain, TAG, `ServiceAbility result=${result}`);
       reply.writeString(result);
     } else {
-      hilog.info(domain, TAG, 'ServiceAbility unknown request code');
+      hilog.error(domain, TAG, 'ServiceAbility unknown request code');
     }
     return true;
   }
