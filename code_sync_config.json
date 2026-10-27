@@ -64437,7 +64437,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/AVCodec/ROISample/entry/src/main/cpp/CMakeLists.txt",
 				"functions":[
 					{
-						"end_line":45,
+						"end_line":46,
 						"name":"roi_cmake_link_libraries",
 						"start_line":23
 					}
