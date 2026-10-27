@@ -51,3 +51,20 @@ function getBleMacByBrMac(brMac: string): string
 | [2900016](../errorcode-bluetoothManager.md#2900016-设备未配对) | Device unpaired. |
 | [2900017](../errorcode-bluetoothManager.md#2900017-输入br地址未关联ble地址) | No BLE address is associated with the input BR address. |
 | [2900099](../errorcode-bluetoothManager.md#2900099-操作失败) | Operation failed. |
+
+<!--Del-->
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+    let bleMac: string = connection.getBleMacByBrMac('11:22:33:AA:BB:FF'); // 入参为已配对的对端设备的实际BR地址
+    console.info(`Succeeded in getting bleMac, bleMac is ${bleMac}`);
+} catch (error) {
+    const err: BusinessError = error as BusinessError;
+    console.error(`Failed to get bleMac by brMac. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
+<!--DelEnd-->

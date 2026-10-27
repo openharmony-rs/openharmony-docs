@@ -10,20 +10,20 @@ import { behaviorAwareness } from '@kit.MultimodalAwarenessKit';
 
 ```TypeScript
 export function onPerception(
-    options: SubscribeOptions,
+    info: SubscribeInfo,
     callback: Callback<PerceptionEvent<BehaviorAwarenessPayload>>
   ): Promise<void>
 ```
 
 发起订阅。业务侧向 MSDP 注册订阅关系，同时注册感知事件回调。
 
-当用户执行 Action 时，MSDP 从感知事件表过滤匹配项并通过 callback 实时推送。同一订阅目标重复订阅时，后传入的 callback 覆盖之前的 callback。
+当用户执行动作时，MSDP 从感知事件表过滤匹配项并通过回调实时推送。同一订阅目标重复订阅时，后传入的回调覆盖之前的回调。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-behaviorAwareness-export function onPerception(    options: SubscribeOptions,    callback: Callback<PerceptionEvent<BehaviorAwarenessPayload>>  ): Promise<void>--><!--Device-behaviorAwareness-export function onPerception(    options: SubscribeOptions,    callback: Callback<PerceptionEvent<BehaviorAwarenessPayload>>  ): Promise<void>-End-->
+<!--Device-behaviorAwareness-export function onPerception(    info: SubscribeInfo,    callback: Callback<PerceptionEvent<BehaviorAwarenessPayload>>  ): Promise<void>--><!--Device-behaviorAwareness-export function onPerception(    info: SubscribeInfo,    callback: Callback<PerceptionEvent<BehaviorAwarenessPayload>>  ): Promise<void>-End-->
 
 **系统能力：** SystemCapability.MultimodalAwareness.DeviceStatus
 
@@ -33,14 +33,14 @@ export function onPerception(
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | [SubscribeOptions](arkts-multimodalawareness-behaviorawareness-subscribeoptions-i-sys.md) | 是 | 订阅选项。如果为 undefined 或 null，抛出 401 错误。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[PerceptionEvent](arkts-multimodalawareness-behaviorawareness-perceptionevent-i-sys.md)&lt;[BehaviorAwarenessPayload](arkts-multimodalawareness-behaviorawareness-behaviorawarenesspayload-i-sys.md)&gt;&gt; | 是 | 感知事件回调函数。需保存此回调引用，用于 offPerception 时传入。如果为 undefined 或 null，抛出 401 错误。 |
+| info | [SubscribeInfo](arkts-multimodalawareness-behaviorawareness-subscribeinfo-i-sys.md) | 是 | 订阅选项。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[PerceptionEvent](arkts-multimodalawareness-behaviorawareness-perceptionevent-i-sys.md)&lt;[BehaviorAwarenessPayload](arkts-multimodalawareness-behaviorawareness-behaviorawarenesspayload-i-sys.md)&gt;&gt; | 是 | 用于返回感知事件的回调。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 异步返回，无返回值。 |
+| Promise&lt;void&gt; | 无返回值的 Promise。 |
 
 **错误码：**
 

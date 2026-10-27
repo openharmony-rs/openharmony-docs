@@ -120,6 +120,26 @@ remoteInfo?: RemoteInfo
 
 **系统接口：** 此接口为系统接口。
 
+## taskIdentity
+
+```TypeScript
+taskIdentity?: TaskIdentity
+```
+
+任务标识。
+
+**类型：** [TaskIdentity](arkts-ability-abilitytoolaccessctrl-taskidentity-i-sys.md)
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+<!--Device-PermissionQuery-taskIdentity?: TaskIdentity--><!--Device-PermissionQuery-taskIdentity?: TaskIdentity-End-->
+
+**系统能力：** SystemCapability.Security.Asset
+
+**系统接口：** 此接口为系统接口。
+
 ## ticketExpireTimeMs
 
 ```TypeScript

@@ -63,6 +63,7 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 | [firstApiVersion](arkts-basicservices-deviceinfo-con.md#firstapiversion) | First API version. |
 | [hardwareModel](arkts-basicservices-deviceinfo-con.md#hardwaremodel) | Hardware model. |
 | [incrementalVersion](arkts-basicservices-deviceinfo-con.md#incrementalversion) | Incremental version, which is the Ohos version number generated during compilation. |
+| [installTime](arkts-basicservices-deviceinfo-con.md#installtime) | Obtains the system installation UTC timestamp. Example: 1790784000000. |
 | [kernelVersion](arkts-basicservices-deviceinfo-con.md#kernelversion) | Obtain the kernel version. The value is in the format of 'HongMeng Kernel X.Y.Z'. Example: 'HongMeng Kernel 1.0.0'. |
 | [majorVersion](arkts-basicservices-deviceinfo-con.md#majorversion) | Major version number, which increments with the main version. The value is the first digit in **osFullName**. You are advised to use **deviceInfo.majorVersion** instead of parsing **osFullName** to obtain the value, facilitating efficiency improvement. |
 | [manufacture](arkts-basicservices-deviceinfo-con.md#manufacture) | Device manufacturer. |

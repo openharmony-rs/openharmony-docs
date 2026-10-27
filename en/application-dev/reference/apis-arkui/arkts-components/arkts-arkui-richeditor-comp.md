@@ -62,6 +62,14 @@ Called when create RichEditor.
 
 ## Summary
 
+### Classes
+
+| Name | Description |
+| --- | --- |
+| [RichEditorBaseController](arkts-arkui-richeditor-comp-richeditorbasecontroller-c.md) | Represents the base class of the **RichEditor** component controller. |
+| [RichEditorController](arkts-arkui-richeditor-comp-richeditorcontroller-c.md) | Implements the **RichEditor** component controller. Inherits from [RichEditorBaseController](arkts-arkui-richeditor-comp-richeditorbasecontroller-c.md). |
+| [RichEditorStyledStringController](arkts-arkui-richeditor-comp-richeditorstyledstringcontroller-c.md) | Represents the controller of the **RichEditor** component built with the styled string. Inherits from [RichEditorBaseController](arkts-arkui-richeditor-comp-richeditorbasecontroller-c.md). |
+
 ### Interfaces
 
 | Name | Description |
@@ -133,7 +141,7 @@ Called when create RichEditor.
 
 ### Example 1: Updating the Text Style
 
-This example demonstrates how to update the text style using the [updateSpanStyle](arkts-arkui-richeditor-comp-richeditorcontroller-c.md#updatespanstyle) API. After modifying the style, you can use [getSpans](arkts-arkui-richeditor-comp-richeditorcontroller-c.md#getspans) to obtain the updated style information of the text.
+This example demonstrates how to update the text style using the [updateSpanStyle](arkts-arkui-richeditor-comp-richeditorcontroller-c.md#updatespanstyle) API. After modifying the style, you can use [getSpans](#getspans) to obtain the updated style information of the text.
 
 
 
@@ -1992,7 +2000,7 @@ struct Index {
 
 ### Example 10: Using and Managing BuilderSpan in a Component
 
-This example demonstrates how to add a custom layout span using the [addBuilderSpan](arkts-arkui-richeditor-comp-richeditorcontroller-c.md#addbuilderspan) API. APIs, such as [getSpans](arkts-arkui-richeditor-comp-richeditorcontroller-c.md#getspans) and [onWillChange](#onwillchange12), do not return the internal information of BuilderSpan. You need to manage the BuilderSpan state and update it when the component content changes.
+This example demonstrates how to add a custom layout span using the [addBuilderSpan](arkts-arkui-richeditor-comp-richeditorcontroller-c.md#addbuilderspan) API. APIs, such as [getSpans](#getspans) and [onWillChange](#onwillchange12), do not return the internal information of BuilderSpan. You need to manage the BuilderSpan state and update it when the component content changes.
 
 
 

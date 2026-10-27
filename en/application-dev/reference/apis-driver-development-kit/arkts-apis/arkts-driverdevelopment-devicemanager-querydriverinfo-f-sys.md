@@ -54,9 +54,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   // In this example, driver-12345 is the driver UID. During application development, you can use queryDeviceInfo to query the driver UID and use it as the input parameter.
-  let driverInfos : Array<deviceManager.DriverInfo> = deviceManager.queryDriverInfo("driver-12345");
+  let driverInfos: Array<deviceManager.DriverInfo> = deviceManager.queryDriverInfo('driver-12345');
   for (let item of driverInfos) {
-    console.info(`driver name is ${item.driverName}`)
+    console.info(`driver name is ${item.driverName}`);
   }
 } catch (error) {
   let err: BusinessError = error as BusinessError;

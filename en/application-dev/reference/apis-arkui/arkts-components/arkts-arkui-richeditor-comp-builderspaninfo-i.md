@@ -11,7 +11,7 @@ Defines the identity and position information of a BuilderSpan in **RichEditor**
 > This interface is not supported when the **RichEditor** component is constructed with
 > [RichEditorStyledStringOptions](arkts-arkui-richeditor-comp-richeditorstyledstringoptions-i.md).
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 <!--Device-unnamed-declare interface BuilderSpanInfo--><!--Device-unnamed-declare interface BuilderSpanInfo-End-->
 
@@ -27,11 +27,11 @@ Developer-defined tracking identifier for tracking BuilderSpan. The framework do
 
 **Type:** string
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-BuilderSpanInfo-id?: string--><!--Device-BuilderSpanInfo-id?: string-End-->
 
@@ -47,11 +47,11 @@ Current offset position of the BuilderSpan in the text content. This value is ma
 
 **Type:** number
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-BuilderSpanInfo-offset?: number--><!--Device-BuilderSpanInfo-offset?: number-End-->
 

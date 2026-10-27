@@ -183,7 +183,7 @@ async function CreatePictures(imageSourceObj : image.ImageSource) {
     try {
       let pictureObj: image.Picture = await imageSourceObj.createPictureAtIndex(index);
       console.info('Succeeded in creating picture for frame: ' + index);
-    } catch (e) {
+    } catch (error) {
       console.error('Failed to create picture for frame: ' + index);
     }
   }

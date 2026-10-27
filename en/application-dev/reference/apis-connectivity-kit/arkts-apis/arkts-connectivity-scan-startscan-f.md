@@ -20,7 +20,7 @@ Starts NearLink scanning. This API uses a promise to return the result. You need
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-scan-function startScan(filters: ScanFilters[] | null, options?: ScanOptions): Promise<void>--><!--Device-scan-function startScan(filters: ScanFilters[] | null, options?: ScanOptions): Promise<void>-End-->
 

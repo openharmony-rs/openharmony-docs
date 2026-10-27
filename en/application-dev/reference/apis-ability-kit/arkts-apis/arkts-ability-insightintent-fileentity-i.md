@@ -10,7 +10,7 @@ You can define file entities by implementing this interface. The child class mus
 
 **Inheritance/Implementation:** FileEntity extends [IntentEntity](arkts-ability-insightintent-intententity-i.md)
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 <!--Device-insightIntent-interface FileEntity extends IntentEntity--><!--Device-insightIntent-interface FileEntity extends IntentEntity-End-->
 
@@ -32,11 +32,11 @@ ID of the file entity. The value is fixed to 'OHOS_FILE_ENTITY'.
 
 **Type:** 'OHOS_FILE_ENTITY'
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-FileEntity-entityId: 'OHOS_FILE_ENTITY'--><!--Device-FileEntity-entityId: 'OHOS_FILE_ENTITY'-End-->
 
@@ -56,11 +56,11 @@ The FLAG_AUTH_READ_URI_PERMISSION permission on the URI is granted by default. F
 
 **Type:** Array&lt;string&gt;
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-FileEntity-uris: Array<string>--><!--Device-FileEntity-uris: Array<string>-End-->
 

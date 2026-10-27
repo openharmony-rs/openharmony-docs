@@ -4,7 +4,7 @@
 export enum MechDeviceType
 ```
 
-Enumerates the mechanical device types.
+机械体设备类型的枚举
 
 **起始版本：** 20
 

@@ -40,11 +40,11 @@ Creates a [RunningLock](arkts-basicservices-runninglock-runninglock-c.md) object
 **Examples**
 
 ```TypeScript
-runningLock.create('running_lock_test', runningLock.RunningLockType.PROXIMITY_SCREEN_CONTROL, (err: Error, lock: runningLock.RunningLock) => {
-    if (typeof err === 'undefined') {
-        console.info('created running lock: ' + lock);
+runningLock.create('running_lock_test', runningLock.RunningLockType.PROXIMITY_SCREEN_CONTROL, (err: BusinessError, lock: runningLock.RunningLock) => {
+    if (err) {
+        console.error(`Failed to create running lock. Code: ${err.code}, message: ${err.message}`);
     } else {
-        console.error('create running lock failed, err: ' + err);
+        console.info('created running lock: ' + lock); // After creating and saving a lock object, you need to use the hold and unhold methods.
     }
 });
 ```
@@ -91,9 +91,9 @@ Creates a [RunningLock](arkts-basicservices-runninglock-runninglock-c.md) object
 ```TypeScript
 runningLock.create('running_lock_test', runningLock.RunningLockType.PROXIMITY_SCREEN_CONTROL)
 .then((lock: runningLock.RunningLock) => {
-    console.info('created running lock: ' + lock);
+    console.info('created running lock: ' + lock); // After creating and saving a lock object, you need to use the hold and unhold methods.
 })
-.catch((err: Error) => {
-    console.error('create running lock failed, err: ' + err);
+.catch((err: BusinessError) => {
+    console.error(`Failed to create running lock. Code: ${err.code}, message: ${err.message}`);
 });
 ```

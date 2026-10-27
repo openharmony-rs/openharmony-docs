@@ -6,7 +6,7 @@ export interface TaskInfo
 
 任务信息
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 <!--Device-backgroundLoader-export interface TaskInfo--><!--Device-backgroundLoader-export interface TaskInfo-End-->
 
@@ -28,7 +28,7 @@ abilityName: string
 
 **类型：** string
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -46,7 +46,7 @@ taskId: number
 
 **类型：** number
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

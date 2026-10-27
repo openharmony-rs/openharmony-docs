@@ -32,7 +32,7 @@ Manufacturer data.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-ManufacturerData-manufacturerData: ArrayBuffer--><!--Device-ManufacturerData-manufacturerData: ArrayBuffer-End-->
 
@@ -52,7 +52,7 @@ Manufacturer ID. The value range is [1, 65535].
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-ManufacturerData-manufacturerId: int--><!--Device-ManufacturerData-manufacturerId: int-End-->
 

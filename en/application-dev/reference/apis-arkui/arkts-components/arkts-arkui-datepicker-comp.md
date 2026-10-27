@@ -38,6 +38,12 @@ Creates a date picker based on the specified date range. Use cases include appli
 
 ## Summary
 
+### Classes
+
+| Name | Description |
+| --- | --- |
+| [DatePickerDialog](arkts-arkui-datepicker-comp-datepickerdialog-c.md) | Creates a date picker based on the specified date range and displays it in a dialog box. This component is suitable for scenarios where users need to quickly select a date, such as schedule arrangement, activity arrangement, and birthday setting. Using this component simplifies the development process, provides a unified date selection user experience, and supports multiple customization options to meet different requirements. |
+
 ### Interfaces
 
 | Name | Description |

@@ -32,7 +32,7 @@ address: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-PropertyReadRequest-address: string--><!--Device-PropertyReadRequest-address: string-End-->
 
@@ -52,7 +52,7 @@ propertyUuid: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-PropertyReadRequest-propertyUuid: string--><!--Device-PropertyReadRequest-propertyUuid: string-End-->
 
@@ -72,7 +72,7 @@ requestId: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-PropertyReadRequest-requestId: int--><!--Device-PropertyReadRequest-requestId: int-End-->
 
@@ -92,7 +92,7 @@ serviceUuid: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-PropertyReadRequest-serviceUuid: string--><!--Device-PropertyReadRequest-serviceUuid: string-End-->
 

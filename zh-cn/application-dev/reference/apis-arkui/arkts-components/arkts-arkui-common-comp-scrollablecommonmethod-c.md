@@ -275,11 +275,11 @@ enableScrollWithKeyboard(enabled: boolean | undefined): T
 
 设置是否支持键盘方向键滚动。开启后，组件在获焦且未激活焦点态时会响应键盘方向键滚动。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-ScrollableCommonMethod-enableScrollWithKeyboard(enabled: boolean | undefined): T--><!--Device-ScrollableCommonMethod-enableScrollWithKeyboard(enabled: boolean | undefined): T-End-->
 
@@ -319,7 +319,7 @@ enableScrollWithMouse(enabled: boolean | undefined): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| enabled | boolean &#124; undefined | 是 | 是否支持左键按下拖动滚动。<br>默认值：API版本26.2.0下的版本默认值为 false。API版本26.2.0及以上的版本默认值为可滚动组件水平滚动时为 true，否则为 false。 |
+| enabled | boolean &#124; undefined | 是 | 是否支持左键按下拖动滚动。<br>默认值：API版本26.1.0下的版本默认值为 false。API版本26.1.0及以上的版本默认值为可滚动组件水平滚动时为 true，否则为 false。 |
 
 **返回值：**
 
@@ -1040,7 +1040,7 @@ scrollBarWidth(value: number | string): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number &#124; string | 是 | 滚动条的宽度。<br>默认值：4<br>单位：vp <br>取值范围：设置为小于0的值时，按默认值4vp处理。设置为0时，不显示滚动条。 |
+| value | number &#124; string | 是 | 滚动条的宽度。<br>单位：vp <br>取值范围：[0, +∞)。设置为小于0的值时，按4vp处理，儿童智能表则恢复至5vp。设置为0时，不显示滚动条。 |
 
 **返回值：**
 
@@ -1072,7 +1072,7 @@ scrollBarWidth(value: number | string | Resource): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 是 | 滚动条的宽度。<br>默认值：4<br>单位：vp <br>取值范围：设置为小于0的值时，按默认值4vp处理。设置为0时，不显示滚动条。 |
+| value | number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 是 | 滚动条的宽度。<br>单位：vp <br>取值范围：[0, +∞)。设置为小于0的值时，按4vp处理，儿童智能表则恢复至5vp。设置为0时，不显示滚动条。 |
 
 **返回值：**
 

@@ -97,7 +97,7 @@ const TAG: string = '[testTag] LiveFormExtAbility';
 
 export default class LiveFormExtAbility extends LiveFormExtensionAbility {
   onLiveFormDestroy(liveFormInfo: LiveFormInfo) {
-    console.info(TAG, `onLiveFormDestroy, liveFormInfo: ${liveFormInfo.formId}`);
+    console.info(TAG, `onLiveFormDestroy, formId: ${liveFormInfo.formId}`);
   }
 }
 ```

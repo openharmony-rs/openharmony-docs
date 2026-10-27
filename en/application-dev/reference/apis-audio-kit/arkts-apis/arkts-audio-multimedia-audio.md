@@ -84,6 +84,7 @@ import { audio } from '@kit.AudioKit';
 | [DeviceChangeAction](arkts-audio-audio-devicechangeaction-i.md) | Describes the device connection status and device information. |
 | [InterruptEvent](arkts-audio-audio-interruptevent-i.md) | Describes the interruption event received by the application when the audio is interrupted. |
 | [MicStateChangeEvent](arkts-audio-audio-micstatechangeevent-i.md) | Describes the event received by the application when the microphone mute status is changed. |
+| [SoundCardInfo](arkts-audio-audio-soundcardinfo-i.md) | Describes sound card information. |
 | [StreamVolumeEvent](arkts-audio-audio-streamvolumeevent-i.md) | Describes the event received by the application when the audio stream volume is changed. |
 | [SystemRecordControllerConfig](arkts-audio-audio-systemrecordcontrollerconfig-i.md) | Defines the configuration for the system recording controller panel. |
 | [VolumeEvent](arkts-audio-audio-volumeevent-i.md) | Describes the event received by the application when the volume is changed. |
@@ -133,7 +134,6 @@ import { audio } from '@kit.AudioKit';
 | [AudioVolumeGroupManager](arkts-audio-audio-audiovolumegroupmanager-i-sys.md) | This interface implements volume management for an audio group. |
 | [AudioVolumeManager](arkts-audio-audio-audiovolumemanager-i-sys.md) | This interface implements audio volume management. |
 | [InterruptResult](arkts-audio-audio-interruptresult-i-sys.md) | Describes audio interrupt operation results. |
-| [SoundCardInfo](arkts-audio-audio-soundcardinfo-i-sys.md) | Describes sound card information. |
 | [SystemRecordControllerChangeInfo](arkts-audio-audio-systemrecordcontrollerchangeinfo-i-sys.md) | Defines the information carried when the system recording controller state changes. It includes the enable status, application UID and expected audio source type. |
 | [SystemVolumeFilter](arkts-audio-audio-systemvolumefilter-i-sys.md) | Describes the system volume filter. |
 | [TonePlayer](arkts-audio-audio-toneplayer-i-sys.md) | Provides APIs for tone playing. |

@@ -4,7 +4,7 @@
 interface SecurityEvent
 ```
 
-提供SecurityEvent类型，包括事件ID、版本信息和上报内容。
+Provides the SecurityEvent type, including the event id, version info, report content.
 
 **起始版本：** 12
 
@@ -26,7 +26,7 @@ import { securityGuard } from '@kit.SecurityGuardKit';
 content: string
 ```
 
-安全事件内容，json格式。
+The report content
 
 **类型：** string
 
@@ -44,7 +44,7 @@ content: string
 eventId: number
 ```
 
-安全事件类型。
+The event id
 
 **类型：** number
 
@@ -62,7 +62,7 @@ eventId: number
 timestamp?: string
 ```
 
-事件时间戳，格式为YYYYMMDDHHMMSS。
+The event timestamp, format is YYYYMMDDHHMMSS.
 
 **类型：** string
 
@@ -80,7 +80,7 @@ timestamp?: string
 version: string
 ```
 
-安全事件版本号。
+The version of a security event. Different versions indicate different data formats.
 
 **类型：** string
 

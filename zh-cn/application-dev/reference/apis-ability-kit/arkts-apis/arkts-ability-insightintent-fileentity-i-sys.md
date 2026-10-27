@@ -8,7 +8,7 @@ interface FileEntity extends IntentEntity
 
 **继承/实现关系：** FileEntity extends [IntentEntity](arkts-ability-insightintent-intententity-i.md)
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 <!--Device-insightIntent-interface FileEntity extends IntentEntity--><!--Device-insightIntent-interface FileEntity extends IntentEntity-End-->
 
@@ -34,7 +34,7 @@ flags?: number
 
 **类型：** number
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

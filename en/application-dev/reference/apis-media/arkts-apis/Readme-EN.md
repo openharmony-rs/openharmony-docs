@@ -75,6 +75,7 @@
   <!--Del-->
   - [PlaybackStrategy(system api)](arkts-media-media-playbackstrategy-i-sys.md)<!--DelEnd-->
   - [Range](arkts-media-media-range-i.md)
+  - [RectangleRegion](arkts-media-media-rectangleregion-i.md)
   <!--Del-->
   - [ScreenCaptureMonitor(system api)](arkts-media-media-screencapturemonitor-i-sys.md)<!--DelEnd-->
   - [SeiMessage](arkts-media-media-seimessage-i.md)
@@ -128,6 +129,7 @@
   - [AVImageQueryOptions](arkts-media-media-avimagequeryoptions-e.md)
   - [AVMetricsEventType](arkts-media-media-avmetricseventtype-e.md)
   - [AVMimeTypes](arkts-media-media-avmimetypes-e.md)
+  - [AVScreenCaptureAutoPauseCaptureScene](arkts-media-media-avscreencaptureautopausecapturescene-e.md)
   - [AVScreenCaptureFillMode](arkts-media-media-avscreencapturefillmode-e.md)
   - [AVScreenCaptureRecordPreset](arkts-media-media-avscreencapturerecordpreset-e.md)
   - [AVScreenCaptureStateCode](arkts-media-media-avscreencapturestatecode-e.md)
@@ -145,6 +147,7 @@
   - [PickerMode](arkts-media-media-pickermode-e.md)
   <!--Del-->
   - [PixelFormat(system api)](arkts-media-media-pixelformat-e-sys.md)<!--DelEnd-->
+  - [PlaybackCommand](arkts-media-media-playbackcommand-e.md)
   - [PlaybackInfoKey](arkts-media-media-playbackinfokey-e.md)
   - [PlaybackMetricsKey](arkts-media-media-playbackmetricskey-e.md)
   - [PlaybackSpeed](arkts-media-media-playbackspeed-e.md)

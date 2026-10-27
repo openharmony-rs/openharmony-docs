@@ -57,6 +57,21 @@ Connect the PBAP client connection with the remote device.
 | 2900004 | Profile not supported. |
 | 2900099 | Internal system error. For example, IPC error. Detailed error messages can be used to assist in locating the problem. |
 
+<!--Del-->
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+try {
+    let pbapClientProfile = pbap.createPbapClientProfile();
+    pbapClientProfile.connect('XX:XX:XX:XX:XX:XX');
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
+<!--DelEnd-->
+
 ## disconnect
 
 ```TypeScript
@@ -93,6 +108,21 @@ Disconnect the PBAP client connection with the remote device.
 | 2900003 | Bluetooth disabled. |
 | 2900004 | Profile not supported. |
 | 2900099 | Internal system error. For example, IPC error. Detailed error messages can be used to assist in locating the problem. |
+
+<!--Del-->
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+try {
+    let pbapClientProfile = pbap.createPbapClientProfile();
+    pbapClientProfile.disconnect('XX:XX:XX:XX:XX:XX');
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
+<!--DelEnd-->
 
 ## getSyncState
 
@@ -137,6 +167,21 @@ Get the PBAP phone book sync state, only the synchronization sub-state is report
 | 2900004 | Profile not supported. |
 | 2900099 | Internal system error. For example, IPC error. Detailed error messages can be used to assist in locating the problem. |
 
+<!--Del-->
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+try {
+    let pbapClientProfile = pbap.createPbapClientProfile();
+    let state = pbapClientProfile.getSyncState('XX:XX:XX:XX:XX:XX');
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
+<!--DelEnd-->
+
 ## offSyncStateChange
 
 ```TypeScript
@@ -170,6 +215,23 @@ Unsubscribe to the event reported when the phone book sync state changes.
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+try {
+    let pbapClientProfile = pbap.createPbapClientProfile();
+    pbapClientProfile.offSyncStateChange((data: pbap.SyncStateChangeParam) => {
+        console.info('deviceId: ' + data.deviceId + ', state: ' + data.state);
+    });
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
+<!--DelEnd-->
+
 ## onSyncStateChange
 
 ```TypeScript
@@ -202,3 +264,20 @@ Subscribe to the event reported when the phone book sync state changes. Only the
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
+
+<!--Del-->
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+try {
+    let pbapClientProfile = pbap.createPbapClientProfile();
+    pbapClientProfile.onSyncStateChange((data: pbap.SyncStateChangeParam) => {
+        console.info('deviceId: ' + data.deviceId + ', state: ' + data.state);
+    });
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
+<!--DelEnd-->

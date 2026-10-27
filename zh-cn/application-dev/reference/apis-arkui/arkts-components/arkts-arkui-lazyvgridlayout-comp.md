@@ -46,6 +46,12 @@ LazyVGridLayout()
 
 ## 汇总
 
+### 类
+
+| 名称 | 说明 |
+| --- | --- |
+| [LazyGridLayoutAttribute](arkts-arkui-lazyvgridlayout-comp-lazygridlayoutattribute-c.md) | 除支持通用属性外，还支持以下属性： |
+
 ## 示例
 
 ### 示例1（实现懒加载网格布局）
@@ -432,7 +438,7 @@ struct LazyVGridLayoutColumnsTemplateDemo {
 
 LazyVGridLayout内容区宽度属于sm及更小的断点区间时显示1列，属于md断点区间时显示2列，属于lg及更大的断点区间时显示3列。
 
-从API版本26.2.0开始，新增支持columnsTemplate设置为ItemFillPolicy类型。
+从API版本26.1.0开始，新增支持columnsTemplate设置为ItemFillPolicy类型。
 
 ```TypeScript
 import { LazyColumnLayout, LazyColumnLayoutAttribute, LengthMetrics } from '@kit.ArkUI';

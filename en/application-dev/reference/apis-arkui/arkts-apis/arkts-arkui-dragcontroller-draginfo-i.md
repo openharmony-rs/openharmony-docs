@@ -21,7 +21,7 @@ import { dragController } from '@kit.ArkUI';
 ## autoHideComponentUniqueIds
 
 ```TypeScript
-autoHideComponentUniqueIds?: number[]
+autoHideComponentUniqueIds?: number | number[]
 ```
 
 Unique ID of the component that is automatically hidden by the system during proactive dragging. A single unique ID or an array of unique IDs can be passed.
@@ -34,7 +34,7 @@ The unique ID of a component can be obtained by using [UIContext.getFrameNodeByI
 
 You need to restore the component display status as required in the drag end callback.
 
-**Type:** number[]
+**Type:** number &#124; number[]
 
 **Since:** 26.0.0
 

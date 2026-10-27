@@ -49,7 +49,7 @@ isBlockDevice(): boolean
 
 ```TypeScript
 let filePath = pathDir + "/test.txt";
-let isBLockDevice = fileIo.statSync(filePath).isBlockDevice();
+let isBlockDevice = fileIo.statSync(filePath).isBlockDevice();
 ```
 
 ## isCharacterDevice

@@ -176,7 +176,7 @@ Obtains the private key data that complies with the ASN.1 syntax and DER encodin
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported.<br>**Applicable version:** 26.2.0 and later |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported.<br>**Applicable version:** 26.1.0 and later |
 | [17620001](../errorcode-crypto-framework.md#17620001-memory-operation-failed) | Memory operation failed. |
 | [17630001](../errorcode-crypto-framework.md#17630001-cryptographic-operation-error) | Crypto operation error. |
 | [17620003](../errorcode-crypto-framework.md#17620003-parameter-check-failed) | Parameter check failed.<br>**Applicable version:** 26.0.0 and later |
@@ -231,7 +231,7 @@ Obtains the private key data in PEM encoding. This API returns the result synchr
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported.<br>**Applicable version:** 26.2.0 and later |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported.<br>**Applicable version:** 26.1.0 and later |
 | [17620001](../errorcode-crypto-framework.md#17620001-memory-operation-failed) | Memory operation failed. |
 | [17630001](../errorcode-crypto-framework.md#17630001-cryptographic-operation-error) | Crypto operation error. |
 | [17620003](../errorcode-crypto-framework.md#17620003-parameter-check-failed) | Parameter check failed.<br>**Applicable version:** 26.0.0 and later |
@@ -374,7 +374,7 @@ Obtains the private key data based on the specified key data type. This API uses
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported.<br>**Applicable version:** 26.2.0 and later |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported.<br>**Applicable version:** 26.1.0 and later |
 | [17620001](../errorcode-crypto-framework.md#17620001-memory-operation-failed) | Memory operation failed. |
 | [17620002](../errorcode-crypto-framework.md#17620002-failed-to-obtain-the-native-object-or-convert-parameters) | Failed to obtain the native object or convert parameters. |
 | [17620003](../errorcode-crypto-framework.md#17620003-parameter-check-failed) | Parameter check failed. |
@@ -429,7 +429,7 @@ Obtains the private key data based on the specified key data type. This API retu
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported.<br>**Applicable version:** 26.2.0 and later |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported.<br>**Applicable version:** 26.1.0 and later |
 | [17620001](../errorcode-crypto-framework.md#17620001-memory-operation-failed) | Memory operation failed. |
 | [17620002](../errorcode-crypto-framework.md#17620002-failed-to-obtain-the-native-object-or-convert-parameters) | Failed to obtain the native object or convert parameters. |
 | [17620003](../errorcode-crypto-framework.md#17620003-parameter-check-failed) | Parameter check failed. |
@@ -474,7 +474,7 @@ Obtains a public key from a private key. This API uses a promise to return the r
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported.<br>**Applicable version:** 26.2.0 and later |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported.<br>**Applicable version:** 26.1.0 and later |
 | [17620001](../errorcode-crypto-framework.md#17620001-memory-operation-failed) | Memory operation failed. |
 | [17620002](../errorcode-crypto-framework.md#17620002-failed-to-obtain-the-native-object-or-convert-parameters) | Failed to obtain the native object or convert parameters. |
 | [17630001](../errorcode-crypto-framework.md#17630001-cryptographic-operation-error) | Crypto operation error. |
@@ -577,7 +577,7 @@ Obtains a public key from a private key in synchronous mode.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported.<br>**Applicable version:** 26.2.0 and later |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported.<br>**Applicable version:** 26.1.0 and later |
 | [17620001](../errorcode-crypto-framework.md#17620001-memory-operation-failed) | Memory operation failed. |
 | [17620002](../errorcode-crypto-framework.md#17620002-failed-to-obtain-the-native-object-or-convert-parameters) | Failed to obtain the native object or convert parameters. |
 | [17630001](../errorcode-crypto-framework.md#17630001-cryptographic-operation-error) | Crypto operation error. |

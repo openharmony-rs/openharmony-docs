@@ -40,7 +40,7 @@ Checks whether the specified WantAgent is local.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System app. Interface caller is not a system app. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 
 <!--Del-->
 **Examples**

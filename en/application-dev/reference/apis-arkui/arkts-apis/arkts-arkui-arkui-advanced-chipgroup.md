@@ -5,6 +5,18 @@ The **ChipGroup** component provides chip group capabilities, supporting single-
  various scenarios such as file categorization, resource filtering, tag selection, and content grouping, helping
  developers quickly implement selection functionality while delivering a consistent visual and interactive experience.
 
+> **NOTE**
+ >
+ > - If the **ChipGroup** component has [universal attributes](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md) or
+ > [universal events](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md) configured, the compiler toolchain automatically
+ > generates an additional \_\_Common\_\_ node and mounts the universal attributes and universal events on this node
+ > rather than the **ChipGroup** component itself. As a result, the configured universal attributes and universal
+ > events may fail to take effect or behave as intended. For this reason, avoid using universal attributes and events
+ > with the **ChipGroup** component.
+
+## Child Components
+
+None
 
 ## Modules to Import
 

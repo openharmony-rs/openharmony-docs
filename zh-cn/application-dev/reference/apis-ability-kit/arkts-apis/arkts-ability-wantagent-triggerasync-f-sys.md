@@ -42,8 +42,8 @@ function triggerAsync(agent: WantAgent, triggerInfo: TriggerInfo, context: Conte
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | The application does not have permission to call the interface. |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The application is not system-app, can not use system-api. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [16000020](../errorcode-ability.md#16000020-传入的context对象不是ability级别context) | The context is not ability context. |
 | [16000151](../errorcode-ability.md#16000151-无效wantagent对象) | Invalid wantAgent object. |
 | [16000153](../errorcode-ability.md#16000153-wantagent对象已被取消) | The WantAgent has been canceled. |

@@ -105,7 +105,7 @@ Use this API in the **onContextMenuShow** event callback. Before calling this AP
 > After the operation is complete, closeContextMenu() should be called to close
 > the menu. Failure to do so may result in menu resources not being properly released.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -216,7 +216,7 @@ Use this API in the **onContextMenuShow** event callback. Before calling this AP
 > After the operation is complete, closeContextMenu() should be called to close
 > the menu. Failure to do so may result in menu resources not being properly released.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 

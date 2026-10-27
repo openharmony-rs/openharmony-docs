@@ -15,7 +15,7 @@ Base options shared by all dialog types.
 ## Modules to Import
 
 ```TypeScript
-import { dialog, DialogBaseAlignment, DialogButtonOrientation, DialogState, DialogResult, DialogDismissal, DialogBaseController } from '@kit.ArkUI';
+import { dialog, DialogBaseAlignment, DialogButtonOrientation, DialogState, DialogResult, DialogDismissal, DialogBaseController, HandednessFollowMode } from '@kit.ArkUI';
 ```
 
 ## onDidAppear
@@ -87,6 +87,28 @@ Callback function before the dialog close animation starts.
 **Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 <!--Device-DialogBaseOptions-onWillDisappear?: VoidCallback--><!--Device-DialogBaseOptions-onWillDisappear?: VoidCallback-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## adaptToHandedness
+
+```TypeScript
+adaptToHandedness?: HandednessFollowMode
+```
+
+Whether and how the dialog adapts to the handedness. FOLLOW_ANCHOR: the dialog is offset towards the position of the component that triggers it; falls back to the current layout when no trigger component exists. FOLLOW_GRIP_HAND: the dialog is offset towards the grip hand (the hand holding the device, distinguished from the operating hand) reported by the awareness platform; falls back to the current layout when unavailable.
+
+**Type:** [HandednessFollowMode](arkts-arkui-arkui-dialog-handednessfollowmode-e.md)
+
+**Default:** HandednessFollowMode.NONE
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+<!--Device-DialogBaseOptions-adaptToHandedness?: HandednessFollowMode--><!--Device-DialogBaseOptions-adaptToHandedness?: HandednessFollowMode-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

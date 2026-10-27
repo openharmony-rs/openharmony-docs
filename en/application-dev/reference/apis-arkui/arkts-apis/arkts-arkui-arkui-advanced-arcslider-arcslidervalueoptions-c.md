@@ -58,7 +58,7 @@ When an abnormal situation occurs where **min** &gt;= max, **min** takes the def
 
 When progress is not within the range of [min, max], the nearest boundary value is taken: if **progress** is less than **min**, **min** is taken; if **progress** is greater than **max**, **max** is taken.
 
-**Decorator:*
+**Decorator**: @Trace
 
 **Type:** number
 

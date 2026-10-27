@@ -28,6 +28,12 @@ Creates a **Scroll** component.
 
 ## Summary
 
+### Classes
+
+| Name | Description |
+| --- | --- |
+| [Scroller](arkts-arkui-scroll-comp-scroller-c.md) | Defines a controller for scrollable container components. It can be bound to a container component to control its scrolling behavior. A single **Scroller** instance cannot control multiple container components simultaneously. Currently, it can be bound to the following components: **ArcList**, **ArcScrollBar**, **List**, **Scroll**, **ScrollBar**, **Grid**, and **WaterFlow**. |
+
 ### Interfaces
 
 | Name | Description |

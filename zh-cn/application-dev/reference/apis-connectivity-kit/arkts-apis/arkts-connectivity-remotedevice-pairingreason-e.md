@@ -24,7 +24,7 @@ PAIRING_REASON_ACB_CONNECTION_FAIL = 2
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-PairingReason-PAIRING_REASON_ACB_CONNECTION_FAIL = 2--><!--Device-PairingReason-PAIRING_REASON_ACB_CONNECTION_FAIL = 2-End-->
 
@@ -42,7 +42,7 @@ PAIRING_REASON_AUTH_FAIL = 6
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-PairingReason-PAIRING_REASON_AUTH_FAIL = 6--><!--Device-PairingReason-PAIRING_REASON_AUTH_FAIL = 6-End-->
 
@@ -60,7 +60,7 @@ PAIRING_REASON_EXCEED_ACB_MAX = 3
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-PairingReason-PAIRING_REASON_EXCEED_ACB_MAX = 3--><!--Device-PairingReason-PAIRING_REASON_EXCEED_ACB_MAX = 3-End-->
 
@@ -78,7 +78,7 @@ PAIRING_REASON_FAILURE = 1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-PairingReason-PAIRING_REASON_FAILURE = 1--><!--Device-PairingReason-PAIRING_REASON_FAILURE = 1-End-->
 
@@ -96,7 +96,7 @@ PAIRING_REASON_LOCAL_CANCELED = 5
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-PairingReason-PAIRING_REASON_LOCAL_CANCELED = 5--><!--Device-PairingReason-PAIRING_REASON_LOCAL_CANCELED = 5-End-->
 
@@ -114,7 +114,7 @@ PAIRING_REASON_REMOTE_CANCELED = 4
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-PairingReason-PAIRING_REASON_REMOTE_CANCELED = 4--><!--Device-PairingReason-PAIRING_REASON_REMOTE_CANCELED = 4-End-->
 
@@ -132,7 +132,7 @@ PAIRING_REASON_SUCCESS = 0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-PairingReason-PAIRING_REASON_SUCCESS = 0--><!--Device-PairingReason-PAIRING_REASON_SUCCESS = 0-End-->
 

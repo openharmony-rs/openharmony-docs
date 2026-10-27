@@ -35,3 +35,48 @@ function createFormBindingDataEx(obj?: Object | string): FormBindingData
 | 类型 | 说明 |
 | --- | --- |
 | [FormBindingData](arkts-form-formbindingdata-formbindingdata-i.md) | 基于传入的参数数据创建FormBindingData对象 |
+
+**示例**
+
+```TypeScript
+import { formBindingData } from '@kit.FormKit';
+import { fileIo } from '@kit.CoreFileKit';
+import { common } from '@kit.AbilityKit';
+
+@Entry
+@Component
+struct Index {
+  content = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  pathDir: string = this.content.filesDir;
+
+  createFormBindingDataEx() {
+    let filePath = this.pathDir + "/form.png";
+    let fd: number = -1;
+    try {
+      fd = fileIo.openSync(filePath, fileIo.OpenMode.READ_ONLY).fd;
+      let formImagesParam: Record<string, number> = {
+        'image': fd
+      };
+      let createFormBindingDataExParam: Record<string, string | Record<string, number>> = {
+        'name': '21°',
+        'imgSrc': 'image',
+        'formImages': formImagesParam
+      };
+      let formBindingDataObj = formBindingData.createFormBindingDataEx(createFormBindingDataExParam);
+    } catch (error) {
+      console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+    } finally {
+      if (fd !== -1) {
+        fileIo.closeSync(fd);
+      }
+    }
+  }
+
+  build() {
+    Button('createFormBindingDataEx')
+      .onClick((event: ClickEvent) => {
+        this.createFormBindingDataEx();
+      })
+  }
+}
+```

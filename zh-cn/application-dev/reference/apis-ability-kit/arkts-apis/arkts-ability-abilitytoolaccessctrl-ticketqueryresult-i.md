@@ -6,7 +6,7 @@ interface TicketQueryResult
 
 票据查询结果。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 <!--Device-abilityToolAccessCtrl-interface TicketQueryResult--><!--Device-abilityToolAccessCtrl-interface TicketQueryResult-End-->
 
@@ -28,7 +28,7 @@ permissionResults: PermissionInfo[]
 
 **类型：** [PermissionInfo](arkts-ability-abilitytoolaccessctrl-permissioninfo-i.md)[]
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
@@ -46,7 +46,7 @@ ticket: string
 
 **类型：** string
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 

@@ -16,4 +16,4 @@ type PageUpdateType = 'pageContentUpdate' | 'pageStateUpdate' | 'pageStatePreUpd
 | --- | --- |
 | 'pageContentUpdate' | 表示页面内容更新。 |
 | 'pageStateUpdate' | 表示页面状态更新。 |
-| 'pageStatePreUpdate' | 表示页面状态即将更新。<br>**起始版本：** 26.2.0 |
+| 'pageStatePreUpdate' | 表示页面状态即将更新。<br>**起始版本：** 26.1.0 |

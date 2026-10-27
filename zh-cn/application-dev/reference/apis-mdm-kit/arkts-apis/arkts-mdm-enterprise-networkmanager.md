@@ -37,6 +37,7 @@ import { networkManager } from '@kit.MDMKit';
 | [getGlobalProxySync](arkts-mdm-networkmanager-getglobalproxysync-f.md#getglobalproxysync-1) | 获取网络全局代理。适用于企业网络管理场景，例如审计当前网络代理配置、验证代理策略是否生效、排查网络访问问题，帮助企业检查网络代理设置，确保网络访问策略正确执行。 |
 | [getIpAddressSync](arkts-mdm-networkmanager-getipaddresssync-f.md#getipaddresssync-1) | 根据网络接口获取设备IP地址。适用于企业网络管理场景，例如网络审计、设备定位、网络连接问题排查、IP地址分配管理，帮助企业IT管理员了解设备网络配置，便于网络管理和故障诊断。 |
 | [getMacSync](arkts-mdm-networkmanager-getmacsync-f.md#getmacsync-1) | 根据网络接口获取设备MAC地址。适用于企业网络管理场景，例如设备识别、网络准入控制、MAC地址审计、设备资产管理，帮助企业识别和追踪设备，实现精细化的网络访问控制。 |
+| [getSharedList](arkts-mdm-networkmanager-getsharedlist-f.md#getsharedlist-1) | 获取设备上通过网络领域共享的所有文件夹路径列表。 |
 | [isNetworkInterfaceDisabledSync](arkts-mdm-networkmanager-isnetworkinterfacedisabledsync-f.md#isnetworkinterfacedisabledsync-1) | 查询指定网络接口是否被禁用。适用于企业网络管理场景，例如检查网络接口状态、审计网络接口使用情况、验证网络策略执行效果，帮助企业确认网络接口管理策略是否生效，便于策略调整和问题排查。 |
 | [isNetworkInterfaceDisabledSync](arkts-mdm-networkmanager-isnetworkinterfacedisabledsync-f.md#isnetworkinterfacedisabledsync-2) | 查询指定网络接口是否被禁用。适用于企业网络管理场景，例如检查网络接口状态、审计网络接口使用情况、验证网络策略执行效果，帮助企业确认网络接口管理策略是否生效，便于策略调整和问题排查。 |
 | [queryApn](arkts-mdm-networkmanager-queryapn-f.md#queryapn-1) | 查询符合特定APN信息的APN ID。适用于企业移动网络配置审计场景，例如查找特定配置的APN、验证APN配置是否存在、为APN管理操作提供APN ID参数，帮助企业查找和管理APN配置，为APN的更新和删除操作提供必要的参数信息。 |
@@ -86,6 +87,8 @@ import { networkManager } from '@kit.MDMKit';
 | [DomainFilterRule](arkts-mdm-networkmanager-domainfilterrule-i.md) | 域名过滤规则。 |
 | [FirewallRule](arkts-mdm-networkmanager-firewallrule-i.md) | 防火墙过滤规则。 |
 | [InterfaceConfig](arkts-mdm-networkmanager-interfaceconfig-i.md) | 以太网的网络接口配置。仅支持IPv4。 |
+| [PathSharedData](arkts-mdm-networkmanager-pathshareddata-i.md) | 共享路径数据。 |
+| [UserPathInfo](arkts-mdm-networkmanager-userpathinfo-i.md) | 共享路径的用户权限信息。 |
 
 <!--Del-->
 ### 接口（系统接口）

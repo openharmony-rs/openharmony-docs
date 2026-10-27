@@ -66,6 +66,30 @@ function addMetadataObjectTypes(metadataOutput: camera.MetadataOutput, types: Ar
 }
 ```
 
+## isInFrameMetadataForEncoderSupported
+
+```TypeScript
+isInFrameMetadataForEncoderSupported(): boolean
+```
+
+Check if in frame metdata for encoder is supported.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+<!--Device-MetadataOutput-isInFrameMetadataForEncoderSupported(): boolean--><!--Device-MetadataOutput-isInFrameMetadataForEncoderSupported(): boolean-End-->
+
+**System capability:** SystemCapability.Multimedia.Camera.Core
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| boolean | TRUE if the delivery of in frame metadata is supported; FALSE otherwise. |
+
 ## isLockMetadataObjectTrackingSupported
 
 ```TypeScript
@@ -344,6 +368,40 @@ function removeMetadataObjectTypes(metadataOutput: camera.MetadataOutput, types:
   }
 }
 ```
+
+## setInFrameMetadataForEncoderEnabled
+
+```TypeScript
+setInFrameMetadataForEncoderEnabled(enable: boolean): void
+```
+
+Enable or disable in frame metadata delivery for encoder.  
+> **NOTE:** 
+> 
+> Before calling this method, check if the camera device supports the in frame metadata delivery for encoder by calling [isInFrameMetadataForEncoderSupported](#isinframemetadataforencodersupported).
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+<!--Device-MetadataOutput-setInFrameMetadataForEncoderEnabled(enable: boolean): void--><!--Device-MetadataOutput-setInFrameMetadataForEncoderEnabled(enable: boolean): void-End-->
+
+**System capability:** SystemCapability.Multimedia.Camera.Core
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| enable | boolean | Yes | Target state for in frame metadata delivery for encoder. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Check if the camera device supports the required in frame metadata delivery for encoder by using capability query APIs. |
+| [7400201](../errorcode-camera.md#7400201-camera-service-error) | Camera service fatal error. |
 
 ## start
 

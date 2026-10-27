@@ -32,7 +32,7 @@ address?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-ScanFilters-address?: string--><!--Device-ScanFilters-address?: string-End-->
 
@@ -52,7 +52,7 @@ deviceName?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-ScanFilters-deviceName?: string--><!--Device-ScanFilters-deviceName?: string-End-->
 
@@ -72,7 +72,7 @@ manufacturerData?: ArrayBuffer
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-ScanFilters-manufacturerData?: ArrayBuffer--><!--Device-ScanFilters-manufacturerData?: ArrayBuffer-End-->
 
@@ -92,7 +92,7 @@ manufacturerDataMask?: ArrayBuffer
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-ScanFilters-manufacturerDataMask?: ArrayBuffer--><!--Device-ScanFilters-manufacturerDataMask?: ArrayBuffer-End-->
 
@@ -112,7 +112,7 @@ manufacturerId?: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-ScanFilters-manufacturerId?: int--><!--Device-ScanFilters-manufacturerId?: int-End-->
 
@@ -132,7 +132,7 @@ rssi?: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-ScanFilters-rssi?: int--><!--Device-ScanFilters-rssi?: int-End-->
 

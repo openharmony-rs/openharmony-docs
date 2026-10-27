@@ -2,14 +2,14 @@
 
 ```TypeScript
 export type ResponseHeaders = {
-    [k: string]: string[] | undefined;
+    [k: string]: string | string[] | undefined;
   }
 ```
 
 Enumerates the response headers sent by the server.
 
 **Type:** {
-    [k: string]: string[] | undefined;
+    [k: string]: string | string[] | undefined;
   }
 
 **Since:** 12

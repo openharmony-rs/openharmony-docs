@@ -416,7 +416,7 @@ function ImportSceneTest() {
 static load(uri? : ResourceStr): Promise<Scene>
 ```
 
-Loads a resource by path. This API uses a promise to return the result.
+Loads resources through the passed resource path. This API uses a promise to return the result. After the call, you should call [destroy](#destroy) to release resources when the Scene is no longer used; otherwise, resource leakage may occur.
 
 **Since:** 12
 

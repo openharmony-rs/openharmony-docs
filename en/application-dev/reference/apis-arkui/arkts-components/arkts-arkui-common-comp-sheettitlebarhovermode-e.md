@@ -20,11 +20,11 @@ SAFE_AREA_PADDING = 2
 
 Safe area padding mode: The title bar is placed in the safe area padding region. The content expands into the safe area, and the scroll content is clipped to the safe area.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-SheetTitleBarHoverMode-SAFE_AREA_PADDING = 2--><!--Device-SheetTitleBarHoverMode-SAFE_AREA_PADDING = 2-End-->
 

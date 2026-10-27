@@ -294,15 +294,15 @@ relations?: Relation[]
 significantDates?: SignificantDate[]
 ```
 
-联系人的生日、周年纪念等重要日期列表。从API version 26.2.0开始，建议使用该版本。
+联系人的生日、周年纪念等重要日期列表。从API version 26.1.0开始，建议使用该版本。
 
 **类型：** [SignificantDate](arkts-contacts-contact-significantdate-c.md)[]
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-Contact-significantDates?: SignificantDate[]--><!--Device-Contact-significantDates?: SignificantDate[]-End-->
 
@@ -356,7 +356,7 @@ events?: Event[]
 
 **起始版本：** 7
 
-**废弃版本：** 26.2.0
+**废弃版本：** 26.1.0
 
 **替代接口：** [significantDates](#significantdates)
 

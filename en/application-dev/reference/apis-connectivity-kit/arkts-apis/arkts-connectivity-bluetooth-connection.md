@@ -22,6 +22,7 @@ import { connection } from '@kit.ConnectivityKit';
 
 | Name | Description |
 | --- | --- |
+| [cancelPairedDevice](arkts-connectivity-connection-cancelpaireddevice-f.md#cancelpaireddevice-2) | Remove a paired remote device. |
 | [connectAllowedProfiles](arkts-connectivity-connection-connectallowedprofiles-f.md#connectallowedprofiles-1) | Connects all allowed bluetooth profiles between the local and remote device. |
 | [connectAllowedProfiles](arkts-connectivity-connection-connectallowedprofiles-f.md#connectallowedprofiles-2) | Connects all allowed bluetooth profiles between the local and remote device. |
 | [disconnectAllowedProfiles](arkts-connectivity-connection-disconnectallowedprofiles-f.md#disconnectallowedprofiles-2) | Disconnects all allowed bluetooth profiles between the local and remote device. |
@@ -72,7 +73,6 @@ import { connection } from '@kit.ConnectivityKit';
 | Name | Description |
 | --- | --- |
 | [cancelPairedDevice](arkts-connectivity-connection-cancelpaireddevice-f-sys.md#cancelpaireddevice-1) | Remove a paired remote device. |
-| [cancelPairedDevice](arkts-connectivity-connection-cancelpaireddevice-f-sys.md#cancelpaireddevice-2) | Remove a paired remote device. |
 | [cancelPairingDevice](arkts-connectivity-connection-cancelpairingdevice-f-sys.md#cancelpairingdevice-1) | Remove a pairing remote device. |
 | [cancelPairingDevice](arkts-connectivity-connection-cancelpairingdevice-f-sys.md#cancelpairingdevice-2) | Remove a pairing remote device. |
 | [controlDeviceAction](arkts-connectivity-connection-controldeviceaction-f-sys.md#controldeviceaction-1) | Controls the actions of Bluetooth peripherals. |

@@ -14,7 +14,7 @@ function subscribeNotification(priorityStrategy?: number): Promise<void>
 
 根据优先通知过滤条件订阅通知。使用Promise异步回调。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **需要权限：** ohos.permission.NOTIFICATION_SYSTEM_SUBSCRIBER
 
@@ -49,3 +49,16 @@ function subscribeNotification(priorityStrategy?: number): Promise<void>
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 | [1600022](../errorcode-notification.md#1600022-无效的包信息) | The application does not implement the NotificationSubscriberExtensionAbility. |
+
+<!--Del-->
+**示例**
+
+```TypeScript
+notificationExtensionSubscription.subscribeNotification(0).then(() => {
+    console.info(`subscribeNotification successfully.`);
+}).catch((err: BusinessError) => {
+    console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+<!--DelEnd-->

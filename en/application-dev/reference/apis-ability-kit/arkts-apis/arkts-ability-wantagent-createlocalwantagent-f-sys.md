@@ -40,7 +40,7 @@ Create a local WantAgent object. The WantAgent created by this interface stores 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System App. Interface caller is not a system app. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 
 <!--Del-->
 **Examples**

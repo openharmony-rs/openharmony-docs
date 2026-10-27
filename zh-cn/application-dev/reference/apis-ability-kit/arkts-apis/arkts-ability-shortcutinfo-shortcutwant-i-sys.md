@@ -22,7 +22,7 @@ action?: string
 
 **类型：** string
 
-**起始版本：** 26.0.1
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -38,11 +38,11 @@ action?: string
 flags?: number
 ```
 
-拉起快捷方式时Want对象的处理方式，取值为枚举类型[Flags](arkts-ability-wantconstant-flags-e.md)，与[Want](arkts-ability-app-ability-want-want-c.md#flags)的**flags**字段一致。
+拉起快捷方式时Want对象的处理方式，取值为枚举类型[Flags](arkts-ability-wantconstant-flags-e.md)，与[Want](arkts-ability-app-ability-want-want-c.md#flags)的**flags**字段一致。取值限定为整数。
 
 **类型：** number
 
-**起始版本：** 26.0.1
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -62,7 +62,7 @@ uri?: string
 
 **类型：** string
 
-**起始版本：** 26.0.1
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -6,7 +6,7 @@ interface DirtyDataResultInfo
 
 Dirty data query results.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 <!--Device-photoAccessHelper-interface DirtyDataResultInfo--><!--Device-photoAccessHelper-interface DirtyDataResultInfo-End-->
 
@@ -30,7 +30,7 @@ Execution time in milliseconds. Unit: milliseconds. The value should be an integ
 
 **Type:** number
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -50,7 +50,7 @@ Error description. Returns an empty string when no error occurs, otherwise conta
 
 **Type:** string
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -70,7 +70,7 @@ Benefit of cleanable dirty data size in bytes. Unit: bytes. The value should be 
 
 **Type:** number
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 

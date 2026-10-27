@@ -50,7 +50,7 @@ Texture map based on PBR properties to convey the texture information of the mat
 sampler?: Sampler
 ```
 
-Texture sampler, with the default value set to LINEAR for magnification, minification, and mipmaps, and to REPEAT for U, V, and W directions.
+Texture sampler, with the default value set to LINEAR for magnification, minification, and mipmaps, and to REPEAT for U and V directions.
 
 **Type:** [Sampler](arkts-arkgraphics3d-sceneresources-sampler-i.md)
 

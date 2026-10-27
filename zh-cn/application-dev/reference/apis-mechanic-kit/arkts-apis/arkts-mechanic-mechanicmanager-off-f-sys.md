@@ -12,7 +12,7 @@ import { mechanicManager } from '@kit.MechanicKit';
 function off(type: 'rotationAxesStatusChange', callback?: Callback<RotationAxesStateChangeInfo>): void
 ```
 
-Unregister a listener for axis state changes.
+取消注册旋转轴状态变化事件的回调监听。使用callback异步回调。
 
 **起始版本：** 20
 

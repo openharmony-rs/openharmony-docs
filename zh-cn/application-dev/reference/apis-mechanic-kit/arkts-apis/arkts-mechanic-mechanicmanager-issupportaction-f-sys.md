@@ -42,3 +42,19 @@ function isSupportAction(mechId: number, actionType: ActionType): boolean
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
 | [33300001](../errorcode-mechanic.md#33300001-系统错误) | Service exception. |
 | [33300002](../errorcode-mechanic.md#33300002-设备未连接) | Device not connected. |
+
+<!--Del-->
+**示例**
+
+```TypeScript
+let mechId: number = 0;
+let actionType = mechanicManager.ActionType.HEAD_UP;
+try {
+  let isSupported = mechanicManager.isSupportAction(mechId, actionType);
+  console.info(`isSupported: ${isSupported}`);
+} catch (e) {
+  console.error(`Code is ${e.code}, message is ${e.message}`);
+}
+```
+
+<!--DelEnd-->

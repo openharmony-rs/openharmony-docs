@@ -41,6 +41,9 @@ import { abilityAccessCtrl, Context, PermissionRequestResult, Permissions } from
 | Name | Description |
 | --- | --- |
 | [AtManager](arkts-ability-abilityaccessctrl-atmanager-i-sys.md) | Program access control management class, providing capabilities such as permission verification, runtime permission dialog box request, settings page authorization guidance, global switch request, and permission status monitoring. Obtain an instance through [createAtManager](arkts-ability-abilityaccessctrl-createatmanager-f.md). |
+| [AutomationControlControllerInfo](arkts-ability-abilityaccessctrl-automationcontrolcontrollerinfo-i-sys.md) | Represents a controller app that has automation control over a target app. |
+| [AutomationControlTargetParam](arkts-ability-abilityaccessctrl-automationcontroltargetparam-i-sys.md) | Represents a target app and its automation control status. |
+| [AutomationControlTargetResult](arkts-ability-abilityaccessctrl-automationcontroltargetresult-i-sys.md) | Represents a target app and its automation control status with bundle name. Used as the return type of getAutomationControlTargets. |
 | [PermissionStatusInfo](arkts-ability-abilityaccessctrl-permissionstatusinfo-i-sys.md) | Indicates the permission status. |
 <!--DelEnd-->
 
@@ -59,5 +62,7 @@ import { abilityAccessCtrl, Context, PermissionRequestResult, Permissions } from
 
 | Name | Description |
 | --- | --- |
+| [AutomationControlSetResult](arkts-ability-abilityaccessctrl-automationcontrolsetresult-e-sys.md) | Enumerates the results for setting automation control status per target app. |
+| [AutomationControlStatus](arkts-ability-abilityaccessctrl-automationcontrolstatus-e-sys.md) | Enumerates the automation control status values. |
 | [PermissionRequestToggleStatus](arkts-ability-abilityaccessctrl-permissionrequesttogglestatus-e-sys.md) | Enumerates the permission toggle states. |
 <!--DelEnd-->

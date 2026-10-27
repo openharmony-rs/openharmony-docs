@@ -95,6 +95,8 @@ get(key: string): string | undefined
 
 <!--Device-Storage-get(key: string): string | undefined--><!--Device-Storage-get(key: string): string | undefined-End-->
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **系统接口：** 此接口为系统接口。
 
 **参数：**

@@ -4,13 +4,7 @@
 declare struct ArcSlider
 ```
 
-The **ArcSlider** component is designed for circular screens on wearables to quickly adjust settings, such as the volume and brightness.
-
-> **NOTE:** 
-> 
-> - This component is supported since API version 18. New features in later versions are marked with superscripts to indicate the initial version.
-> 
-> - This component is supported on Phone, PC/2in1, Tablet, TV, and Wearable devices. In API version 22 and earlier,using it on Phone, PC/2in1, Tablet, or TV generates a compilation warning, but the component can run normally.
+Creates an **ArcSlider** instance. The input parameter is the arc slider configuration options.
 
 **Since:** 18
 

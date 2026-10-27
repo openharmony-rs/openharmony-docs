@@ -4,6 +4,8 @@
 export declare struct Filter
 ```
 
+多条件筛选，帮助用户在大量信息中找到所需内容，应结合具体场景选择合适筛选方式。
+
 **起始版本：** 10
 
 **装饰器类型：** @Component

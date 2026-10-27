@@ -6,7 +6,7 @@ declare interface VersionCondition
 
 Defines VersionCondition interface
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 <!--Device-unnamed-declare interface VersionCondition--><!--Device-unnamed-declare interface VersionCondition-End-->
 
@@ -22,13 +22,13 @@ Maximum API version for the style or extend to take effect. Represets the runtim
 
 **Type:** number &#124; string
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 26.2.0.
+**Widget capability:** This API can be used in ArkTS widgets since API version 26.1.0.
 
 <!--Device-VersionCondition-maxApiVersion?: number | string--><!--Device-VersionCondition-maxApiVersion?: number | string-End-->
 
@@ -44,13 +44,13 @@ Minimum API version for the style or extend to take effect. Represets the runtim
 
 **Type:** number &#124; string
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 26.2.0.
+**Widget capability:** This API can be used in ArkTS widgets since API version 26.1.0.
 
 <!--Device-VersionCondition-minApiVersion?: number | string--><!--Device-VersionCondition-minApiVersion?: number | string-End-->
 

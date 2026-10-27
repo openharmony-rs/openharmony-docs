@@ -4,8 +4,6 @@
 export declare struct CustomContentDialog
 ```
 
-CustomContentDialog({controller: CustomDialogController, contentBuilder: () =&gt; void, primaryTitle?: ResourceStr, secondaryTitle?: ResourceStr, localizedContentAreaPadding?: LocalizedPadding, contentAreaPadding?: Padding, buttons?: ButtonOptions[], theme?: Theme | CustomTheme, themeColorMode?: ThemeColorMode})
-
 Displays a dialog box that contains custom content and operation area.
 
 > **NOTE:** 

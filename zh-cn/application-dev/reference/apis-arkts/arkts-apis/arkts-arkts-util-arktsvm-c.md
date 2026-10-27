@@ -173,7 +173,7 @@ static getGlobalHandleCount(): number
 > 返回值受强引用创建/删除操作的影响。例如，napi_create_strong_reference、napi_delete_strong_reference 会相应
 > 增减计数，而 napi_create_strong_sendable_reference、napi_delete_strong_sendable_reference 不会影响计数结果。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

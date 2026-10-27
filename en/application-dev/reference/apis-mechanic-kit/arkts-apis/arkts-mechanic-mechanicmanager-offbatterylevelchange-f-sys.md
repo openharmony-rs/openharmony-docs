@@ -14,7 +14,7 @@ function offBatteryLevelChange(mechId: number, callback?: Callback<BatteryLevelI
 
 Unsubscribes to device battery level change information.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 

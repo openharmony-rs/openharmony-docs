@@ -69,6 +69,45 @@ Constructor
 | [@Track](arkts-arkui-common-comp-track-d.md#track) | **@Track** is used in [state management V1](../../../ui/state-management/arkts-state-management-overview.md) to implement property-level precise observation by decorating specified properties of a class object. When a property decorated with **@Track** changes, the system updates only the UI components that depend on that property, thereby reducing unnecessary UI re-rendering. It is applicable to scenarios where a class object contains many properties and redundant UI refreshes need to be reduced to optimize rendering performance. |
 | [@Watch](arkts-arkui-common-comp-watch-d.md#watch) | **\@Watch** is used in [state management V1](../../../ui/state-management/arkts-state-management-overview.md) to listen for changes to state variables and trigger specified callback functions when the variables change. It applies to scenarios where linked logic, data synchronization, or derived value calculation needs to be automatically executed when a state variable changes. |
 
+### Classes
+
+| Name | Description |
+| --- | --- |
+| [BaseCustomComponent](arkts-arkui-common-comp-basecustomcomponent-c.md) | Custom Component base class and it is migrated from class CustomComponent. |
+| [ChildrenMainSize](arkts-arkui-common-comp-childrenmainsize-c.md) | Provides the size information of the child components of the **List** or **ListItemGroup** component along the main axis. This object only supports one-to-one binding to the **List** or **ListItemGroup** component. |
+| [CommonMethod](arkts-arkui-common-comp-commonmethod-c.md) | CommonMethod. |
+| [CommonShapeMethod](arkts-arkui-common-comp-commonshapemethod-c.md) | CommonShapeMethod |
+| [ContentTransitionEffect](arkts-arkui-common-comp-contenttransitioneffect-c.md) | Defines the content transition effect. |
+| [CustomComponent](arkts-arkui-common-comp-customcomponent-c.md) | Custom Component |
+| [CustomComponentV2](arkts-arkui-common-comp-customcomponentv2-c.md) | Custom ComponentV2 |
+| [CustomEnvKey](arkts-arkui-common-comp-customenvkey-c.md) | Defines the type of the key for a custom environment variable. |
+| [DrawModifier](arkts-arkui-common-comp-drawmodifier-c.md) | DrawModifier can set the drawing methods of the mask layer (drawOverlay<sup>23+</sup>), foreground (drawForeground<sup>20+</sup>), content foreground (drawFront), content (drawContent), and content background (drawBehind), and also provides the [invalidate](arkts-arkui-common-comp-drawmodifier-c.md#invalidate) method to actively trigger redrawing. Each DrawModifier instance can be set to only one component, and repeated setting is prohibited. |
+| [DynamicNode](arkts-arkui-common-comp-dynamicnode-c.md) | Define DynamicNode. |
+| [LayoutPolicy](arkts-arkui-common-comp-layoutpolicy-c.md) | Layout policy for the width and height of a component. It provides three layout policy options: **matchParent**, **wrapContent**, and **fixAtIdealSize**, which are respectively used for scenarios where the component adapts to the parent component layout, adapts to the content but does not exceed the parent component size, and adapts to the content and may exceed the parent component size. |
+| [MutableBuilder](arkts-arkui-common-comp-mutablebuilder-c.md) | `MutableBuilder` inherits from [WrappedBuilder](arkts-arkui-common-comp-wrappedbuilder-c.md) and is used to wrap a [global `@Builder`](../../../ui/state-management/arkts-builder.md) function and to support switching the build function at runtime. When you need to dynamically replace the content of a global `@Builder` function based on state or conditions, it is recommended that you use the [mutableBuilder](../../../ui/state-management/arkts-mutableBuilder.md) function to create a `MutableBuilder` object. Its `builder` attribute method can be called only inside the `build` function of a custom component or a function decorated by `@Builder`. |
+| [ProgressMask](arkts-arkui-common-comp-progressmask-c.md) | Sets the progress, maximum value, and color for a mask. |
+| [RawInputEventWrapper](arkts-arkui-common-comp-rawinputeventwrapper-c.md) | Raw input event wrapper class. |
+| [ReadonlyEnvKey](arkts-arkui-common-comp-readonlyenvkey-c.md) | Defines the set of read-only system environment variable keys, which are used to obtain the corresponding system environment variables through the **\@Env** decorator. |
+| [ReadonlySystemEnvKey](arkts-arkui-common-comp-readonlysystemenvkey-c.md) | Defines a read-only system environment variable key, which inherits from [SystemEnvKey<T>](arkts-arkui-common-comp-systemenvkey-c.md). |
+| [ScrollableCommonMethod](arkts-arkui-common-comp-scrollablecommonmethod-c.md) | CommonScrollableMethod |
+| [ScrollResult](arkts-arkui-common-comp-scrollresult-c.md) | Implements a return value object of the [OnWillScrollCallback](arkts-arkui-common-comp-onwillscrollcallback-t.md) callback. |
+| [SystemEnvKey](arkts-arkui-common-comp-systemenvkey-c.md) | Defines the type corresponding to the system environment variable key. |
+| [TextContentControllerBase](arkts-arkui-common-comp-textcontentcontrollerbase-c.md) | Represents the base controller for **TextInput**, **TextArea**, and **Search** components. |
+| [TouchResult](arkts-arkui-common-comp-touchresult-c.md) | Defines the custom event dispatch result. You can influence event dispatch by returning specific results. |
+| [TouchTestInfo](arkts-arkui-common-comp-touchtestinfo-c.md) | Provides information about the coordinate system, ID, and size of the component where the current touch point is located. |
+| [TransitionEffect](arkts-arkui-common-comp-transitioneffect-c.md) | Defines the transition effect by using the provided APIs, as listed below. |
+| [WrappedBuilder](arkts-arkui-common-comp-wrappedbuilder-c.md) | `WrappedBuilder` is a wrapper class for `@Builder` functions. It is used to encapsulate a global `@Builder` function and its parameters to implement pass-by-reference and dynamic invocation. |
+| [WritableEnvKey](arkts-arkui-common-comp-writableenvkey-c.md) | Defines the set of writable system environment variable keys, which are used to obtain the corresponding system environment variables through the **\@Env** decorator. You can use the env method in [WithEnv](arkts-arkui-withenv-comp-attribute.md#withenv) to set local environment variable values to affect the rendering of descendant components. For details, see [Example 2: Setting Local Layout Direction](arkts-arkui-withenv-comp-attribute.md#withenv). |
+| [WritableSystemEnvKey](arkts-arkui-common-comp-writablesystemenvkey-c.md) | Defines a writable system environment variable key, which inherits from [SystemEnvKey<T>](arkts-arkui-common-comp-systemenvkey-c.md). |
+
+<!--Del-->
+### Classes(System API)
+
+| Name | Description |
+| --- | --- |
+| [View](arkts-arkui-common-comp-view-c-sys.md) | View |
+<!--DelEnd-->
+
 ### Interfaces
 
 | Name | Description |
@@ -260,6 +299,7 @@ Constructor
 | [DrawContext](arkts-arkui-common-comp-drawcontext-t.md) | DrawContext |
 | [EllipseShape](arkts-arkui-common-comp-ellipseshape-t.md) | Defines the EllipseShape type. |
 | [EnvDecorator](arkts-arkui-common-comp-envdecorator-t.md) | Defines the **EnvDecorator** property decorator type. |
+| [ExtendVersionDecorator](arkts-arkui-common-comp-extendversiondecorator-t.md) | Define Extend Decorator type with version control. |
 | [Filter](arkts-arkui-common-comp-filter-t.md) | Represents a filter object. |
 | [FractionStop](arkts-arkui-common-comp-fractionstop-t.md) | Defines a gradient blur stop. |
 | [GestureCollectInterceptCallback](arkts-arkui-common-comp-gesturecollectinterceptcallback-t.md) | Defines the callback type used in [onGestureCollectIntercept](arkts-arkui-common-comp-commonmethod-c.md#ongesturecollectintercept). |

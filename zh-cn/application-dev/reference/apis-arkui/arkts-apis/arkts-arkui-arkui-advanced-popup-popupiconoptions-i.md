@@ -70,7 +70,7 @@ height?: Dimension
 
 设置图标高度。单位：vp。
 
-默认值：32VP
+默认值：32vp
 
 **类型：** [Dimension](arkts-arkui-dimension-t.md)
 
@@ -112,7 +112,7 @@ width?: Dimension
 
 设置图标宽度。单位：vp。
 
-默认值：32VP
+默认值：32vp
 
 **类型：** [Dimension](arkts-arkui-dimension-t.md)
 

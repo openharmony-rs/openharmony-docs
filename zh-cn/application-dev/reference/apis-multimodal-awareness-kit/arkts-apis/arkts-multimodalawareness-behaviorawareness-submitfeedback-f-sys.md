@@ -12,9 +12,9 @@ import { behaviorAwareness } from '@kit.MultimodalAwarenessKit';
 export function submitFeedback(feedback: FeedbackData): Promise<void>
 ```
 
-提交用户反馈。业务侧将用户对感知事件的反馈传递给 MSDP。
+提交用户反馈。业务侧将用户反馈发送给 MSDP。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -28,13 +28,13 @@ export function submitFeedback(feedback: FeedbackData): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| feedback | [FeedbackData](arkts-multimodalawareness-behaviorawareness-feedbackdata-i-sys.md) | 是 | 反馈数据。如果为 undefined 或 null，抛出 401 错误。 |
+| feedback | [FeedbackData](arkts-multimodalawareness-behaviorawareness-feedbackdata-i-sys.md) | 是 | 反馈数据。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 异步返回，无返回值。 |
+| Promise&lt;void&gt; | 无返回值的 Promise。 |
 
 **错误码：**
 

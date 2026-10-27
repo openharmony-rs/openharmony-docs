@@ -20,9 +20,9 @@ FormEditExtensionContext是[FormEditExtensionAbility](arkts-form-app-form-formed
 setWindowBackgroundColor(color: string): Promise<void>
 ```
 
-设置卡片编辑页的背景色
+设置卡片编辑页的背景色, 使用Promise异步回调。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -34,13 +34,13 @@ setWindowBackgroundColor(color: string): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| color | string | 是 | 要设置的背景颜色。该值是一个十六进制 RGB 或 ARGB 颜色代码，不区分大小写，例如 **#00FF00** 或 **#FF00FF00**。它也可以是一个资源字符串。 |
+| color | string | 是 | 要设置的背景颜色。该值是一个十六进制 RGB 或 ARGB 颜色代码，不区分大小写，例如 **#00FF00** 或 **#FF00FF00**。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 不返回值 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

@@ -20,7 +20,7 @@ function dumpJsHeapData(filename : string) : void
 
 **起始版本：** 9
 
-**废弃版本：** 26.2.0
+**废弃版本：** 26.1.0
 
 **替代接口：** [dumpJsRawHeapData](arkts-performanceanalysis-hidebug-dumpjsrawheapdata-f.md)
 
@@ -38,7 +38,7 @@ function dumpJsHeapData(filename : string) : void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameter check failed, Parameter type error. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. |
 
 **示例**
 
@@ -68,7 +68,7 @@ function dumpJsHeapData(filename : string, needClean : boolean) : void
 
 **起始版本：** 24
 
-**废弃版本：** 26.2.0
+**废弃版本：** 26.1.0
 
 **替代接口：** [dumpJsRawHeapData](arkts-performanceanalysis-hidebug-dumpjsrawheapdata-f.md)
 

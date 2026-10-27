@@ -32,7 +32,7 @@ Client device address. The address format is **11:22:33:AA:BB:FF**.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-ServerResponse-address: string--><!--Device-ServerResponse-address: string-End-->
 
@@ -52,7 +52,7 @@ Request ID. The value range is [0, 65535]. The ID must be the same as the value 
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-ServerResponse-requestId: int--><!--Device-ServerResponse-requestId: int-End-->
 
@@ -72,7 +72,7 @@ Data value of the response.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-ServerResponse-value: ArrayBuffer--><!--Device-ServerResponse-value: ArrayBuffer-End-->
 

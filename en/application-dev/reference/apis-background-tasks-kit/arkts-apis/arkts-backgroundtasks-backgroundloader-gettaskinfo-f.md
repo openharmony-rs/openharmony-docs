@@ -14,7 +14,7 @@ function getTaskInfo(taskId: number): Promise<TaskInfo>
 
 Obtains the information of a background load task. This API returns the result via a promise.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Required permissions:** ohos.permission.KEEP_BACKGROUND_RUNNING
 

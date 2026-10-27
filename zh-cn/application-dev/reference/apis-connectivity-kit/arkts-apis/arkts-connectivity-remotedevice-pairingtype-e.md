@@ -24,7 +24,7 @@ NO_PASSKEY_CONFIRMATION = 0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-PairingType-NO_PASSKEY_CONFIRMATION = 0--><!--Device-PairingType-NO_PASSKEY_CONFIRMATION = 0-End-->
 
@@ -42,7 +42,7 @@ PAIRING_TYPE_NUMBER_COMPARE = 2
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-PairingType-PAIRING_TYPE_NUMBER_COMPARE = 2--><!--Device-PairingType-PAIRING_TYPE_NUMBER_COMPARE = 2-End-->
 
@@ -60,7 +60,7 @@ PAIRING_TYPE_PASSCODE = 1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-PairingType-PAIRING_TYPE_PASSCODE = 1--><!--Device-PairingType-PAIRING_TYPE_PASSCODE = 1-End-->
 

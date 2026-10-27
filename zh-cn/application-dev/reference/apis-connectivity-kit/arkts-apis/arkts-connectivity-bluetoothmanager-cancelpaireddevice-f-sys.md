@@ -18,7 +18,7 @@ function cancelPairedDevice(deviceId: string): void
 
 **废弃版本：** 10
 
-**替代接口：** [cancelPairedDevice](arkts-connectivity-connection-cancelpaireddevice-f-sys.md)
+**替代接口：** [cancelPairedDevice](arkts-connectivity-connection-cancelpaireddevice-f.md)
 
 **需要权限：** 
 - API版本10+：ohos.permission.ACCESS_BLUETOOTH

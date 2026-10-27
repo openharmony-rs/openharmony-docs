@@ -78,11 +78,11 @@ columnsTemplate(template: string | ItemFillPolicy)
 > 
 > string类型和ItemFillPolicy类型设置的是同一个属性，多次设置时以最后一次设置为准。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-LazyVGridLayoutAttribute-columnsTemplate(template: string | ItemFillPolicy): LazyVGridLayoutAttribute--><!--Device-LazyVGridLayoutAttribute-columnsTemplate(template: string | ItemFillPolicy): LazyVGridLayoutAttribute-End-->
 

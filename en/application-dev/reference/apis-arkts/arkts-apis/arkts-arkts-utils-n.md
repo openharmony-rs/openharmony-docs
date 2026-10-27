@@ -35,4 +35,5 @@ import { ArkTSUtils } from '@kit.ArkTS';
 
 | Name | Description |
 | --- | --- |
+| [Atomics](arkts-arkts-utils-atomics-c.md) | Provides atomic operations for ArkTS integer typed arrays backed by an ArkTS ArrayBuffer. Unlike the ECMAScript built-in Atomics object, this class is exposed through the utils module and provides only static methods for ArkTS typed arrays. |
 | [SendableLruCache](arkts-arkts-utils-sendablelrucache-c.md) | Object used for store least recently used sendable Object. |

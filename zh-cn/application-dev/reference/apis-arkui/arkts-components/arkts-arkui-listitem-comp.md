@@ -68,6 +68,12 @@ ListItem(value?: string)
 
 ## 汇总
 
+### 类
+
+| 名称 | 说明 |
+| --- | --- |
+| [ListItemSwipeActionManager](arkts-arkui-listitem-comp-listitemswipeactionmanager-c.md) | ListItem划出菜单的管理器。 |
+
 ### 接口
 
 | 名称 | 说明 |

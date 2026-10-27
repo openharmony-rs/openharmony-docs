@@ -4,8 +4,6 @@
 
 > **说明：** 
 > 
-> *
-> 
 > * 仅支持作为[Grid](arkts-arkui-grid-comp.md)组件的子组件使用。
 > 
 > * 当GridItem配合[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)使用时，GridItem子组件在GridItem创建时创建。配合[if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)、[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)使用时，或父组件为Grid时，GridItem子组件在GridItem布局时创建。

@@ -53,8 +53,8 @@ connectServiceExtensionAbilityWithRootHostToken(want: Want, connect: ConnectOpti
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | The application does not have permission to call the interface. Possible cause: target service extension ability is in cross-device and needed designated permission to be started, but call ability do not have this permission. |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [16000001](../errorcode-ability.md#16000001-指定的ability名称不存在) | The specified ability does not exist. |
 | [16000002](../errorcode-ability.md#16000002-接口调用ability类型错误) | Incorrect ability type. |
 | [16000004](../errorcode-ability.md#16000004-可见性校验失败) | Cannot start an invisible component. |
@@ -102,7 +102,7 @@ setHostPageOverlayForbidden(isForbidden: boolean) : void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The application is not system-app, can not use system-api. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 
 ## startAbilityForResultAsCaller
@@ -149,8 +149,8 @@ startAbilityForResultAsCaller(want: Want, options?: StartOptions): Promise<Abili
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | The application does not have permission to call the interface. |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. Interface caller is not a system app. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [16000001](../errorcode-ability.md#16000001-指定的ability名称不存在) | The specified ability does not exist. |
 | [16000004](../errorcode-ability.md#16000004-可见性校验失败) | Cannot start an invisible component. |
@@ -200,8 +200,8 @@ startServiceExtensionAbility(want: Want): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | The application does not have permission to call the interface. |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The application is not system-app, can not use system-api. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [16000001](../errorcode-ability.md#16000001-指定的ability名称不存在) | The specified ability does not exist. |
 | [16000002](../errorcode-ability.md#16000002-接口调用ability类型错误) | Incorrect ability type. |
@@ -260,8 +260,8 @@ startServiceExtensionAbilityWithAccount(want: Want, accountId: number): Promise<
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | The application does not have permission to call the interface. |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The application is not system-app, can not use system-api. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [16000001](../errorcode-ability.md#16000001-指定的ability名称不存在) | The specified ability does not exist. |
 | [16000002](../errorcode-ability.md#16000002-接口调用ability类型错误) | Incorrect ability type. |
@@ -314,9 +314,9 @@ startUIAbilities(wantList: Array<Want>): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | The application does not have permission to call the interface. |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | [16000001](../errorcode-ability.md#16000001-指定的ability名称不存在) | The specified ability does not exist. |
 | [16000004](../errorcode-ability.md#16000004-可见性校验失败) | Cannot start an invisible component. |
 | [16000005](../errorcode-ability.md#16000005-指定的进程权限校验失败) | The specified process does not have the permission. |
@@ -384,9 +384,9 @@ startUIAbilitiesInSplitWindowMode(primaryWindowId: number, secondaryWant: Want):
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | The application does not have permission to call the interface. |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | [16000001](../errorcode-ability.md#16000001-指定的ability名称不存在) | Target UIAbility does not exist. |
 | [16000004](../errorcode-ability.md#16000004-可见性校验失败) | Cannot start an invisible component. |
 | [16000005](../errorcode-ability.md#16000005-指定的进程权限校验失败) | The specified process does not have the permission. |

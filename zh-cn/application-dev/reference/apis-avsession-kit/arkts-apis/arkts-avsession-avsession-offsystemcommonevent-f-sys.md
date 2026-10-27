@@ -28,7 +28,7 @@ function offSystemCommonEvent(callback?: EventProcess): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | EventProcess | 否 | 处理事件回调 |
+| callback | [EventProcess](arkts-avsession-avsession-eventprocess-t.md) | 否 | 处理事件回调 |
 
 **错误码：**
 

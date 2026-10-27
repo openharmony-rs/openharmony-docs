@@ -1,5 +1,11 @@
 # SceneNodes
 
+This module provides the types and operation methods of scene resource nodes in ArkGraphics 3D.
+ SceneNode is the basic building unit of a 3D scene. It allows developers to manage objects in a scene
+ through a hierarchical structure, implementing efficient scene organization and interaction control.
+
+
+
 ## Summary
 
 ### Interfaces
@@ -13,6 +19,8 @@
 | [LayerMask](arkts-arkgraphics3d-scenenodes-layermask-i.md) | Defines the layer mask of a node. |
 | [Light](arkts-arkgraphics3d-scenenodes-light-i.md) | Light node, which inherits from [Node](arkts-arkgraphics3d-scenenodes-node-i.md). |
 | [Node](arkts-arkgraphics3d-scenenodes-node-i.md) | The 3D scene consists of nodes in a tree hierarchy, where each node implements a Node interface. This class inherits from [SceneResource](arkts-arkgraphics3d-sceneresources-sceneresource-i.md). |
+| [PointLight](arkts-arkgraphics3d-scenenodes-pointlight-i.md) | Point light. |
+| [RectLight](arkts-arkgraphics3d-scenenodes-rectlight-i.md) | Rectangular area light. |
 | [SpotLight](arkts-arkgraphics3d-scenenodes-spotlight-i.md) | Spotlight, which inherits from [Light](arkts-arkgraphics3d-scenenodes-light-i.md). |
 
 ### Enums

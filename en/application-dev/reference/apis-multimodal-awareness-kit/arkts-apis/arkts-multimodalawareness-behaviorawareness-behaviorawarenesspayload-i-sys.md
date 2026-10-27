@@ -6,7 +6,7 @@ export interface BehaviorAwarenessPayload
 
 Habit-aware domain payload. Specific data in the HABIT_Awareness domain.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 <!--Device-behaviorAwareness-export interface BehaviorAwarenessPayload--><!--Device-behaviorAwareness-export interface BehaviorAwarenessPayload-End-->
 
@@ -30,7 +30,7 @@ Associated Actions.
 
 **Type:** [ActionData](arkts-multimodalawareness-behaviorawareness-actiondata-i-sys.md)[]
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -50,7 +50,7 @@ Perception mode type.
 
 **Type:** [PatternType](arkts-multimodalawareness-behaviorawareness-patterntype-e-sys.md)
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -70,7 +70,7 @@ Triggering event.
 
 **Type:** [EventData](arkts-multimodalawareness-behaviorawareness-eventdata-i-sys.md)[]
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 

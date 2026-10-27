@@ -1,5 +1,21 @@
 # @ohos.arkui.advanced.PopupV2
 
+The **PopupV2** component is used to display popup bubbles of specific styles, suitable for scenarios that require
+ user attention or response,
+ such as prompts, operation confirmations, or information notifications.
+
+This component is implemented based on
+ [state management V2](../../../ui/state-management/arkts-state-management-overview.md#state-management-v2).
+ Compared with
+ [state management V1](../../../ui/state-management/arkts-state-management-overview.md#state-management-v1),
+ state management V2 delivers enhanced capabilities for deep observation and management of data objects,
+ and is no longer limited to the component level. With state management V2, you can more flexibly control
+ the display of popup bubbles of specific styles through this component, achieving more efficient UI refresh.
+
+## Child Components
+
+None
+
 ## Modules to Import
 
 ```TypeScript

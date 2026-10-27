@@ -8,7 +8,7 @@ The universal attributes module for security components enables unified configur
 
 This module is mainly used in the following scenarios:  
 - Set layout, size, text, icon, color, border, and interaction-related attributes for security components  
-such as [PasteButton](../arkts-components/arkts-arkui-pastebutton-comp.md) and [SaveButton](../arkts-components/arkts-arkui-savebutton-comp.md).  
+such as [PasteButton](../arkts-components/arkts-arkui-pastebutton-comp.md#pastebutton) and [SaveButton](../arkts-components/arkts-arkui-savebutton-comp.md#savebutton).  
 - Adjust the display effect and interaction experience of security components while ensuring compliance with  
 the security component specifications. For specific constraints, see [Constraints](../../../security/AccessToken/security-component-overview.md#constraints).  
 - Reuse the universal attribute capabilities of security components through chained calls.

@@ -2,7 +2,7 @@
 
 The **taskManager** module provides APIs for managing the lifecycle of tasks. A task is the attribution unit for the execution of user intents: during the lifetime of a task, the processes attributed to the task are managed by the system according to the task priority.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 

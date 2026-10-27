@@ -32,7 +32,7 @@ Removes the current process from the candidate master process list. This API use
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | [16000116](../errorcode-ability.md#16000116-process-is-already-a-master-process) | The current process is already a master process and does not support cancellation. |
 | [16000117](../errorcode-ability.md#16000117-process-is-not-a-candidate-master-process) | The current process is not a candidate master process and does not support cancellation. |
 

@@ -4,7 +4,7 @@
 type OnMonitorBlankScreenCallback = (event: MonitoredBlankScreenEventInfo) => void
 ```
 
-监测到白屏并完成根因归因时触发的回调。
+监测到白屏并完成根因归因时触发此回调。
 
 **起始版本：** 26.0.1
 
@@ -18,4 +18,4 @@ type OnMonitorBlankScreenCallback = (event: MonitoredBlankScreenEventInfo) => vo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | [MonitoredBlankScreenEventInfo](arkts-arkweb-web-comp-monitoredblankscreeneventinfo-i.md) | 是 | 监测到白屏并完成归因时的事件信息。 |
+| event | [MonitoredBlankScreenEventInfo](arkts-arkweb-web-comp-monitoredblankscreeneventinfo-i.md) | 是 | 监测到白屏并完成归因时的详细信息。 |

@@ -46,6 +46,12 @@ SelectionContainer(value?: SelectionContainerOptions)
 
 ## 汇总
 
+### 类
+
+| 名称 | 说明 |
+| --- | --- |
+| [SelectionContainerController](arkts-arkui-selectioncontainer-comp-selectioncontainercontroller-c.md) | SelectionContainer组件的控制器。 |
+
 ### 接口
 
 | 名称 | 说明 |

@@ -50,7 +50,7 @@ trace单位流量实测方法：limitSize设置为最大值500M，调用startApp
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid argument, Possible causes: 1.The limit parameter is too small 2.The parameter is not within the enumeration type 3.The parameter type error or parameter order error |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. |
 | [11400102](../errorcode-hiviewdfx-hidebug-trace.md#11400102-重复采集) | Capture trace already enabled. |
 | [11400103](../errorcode-hiviewdfx-hidebug-trace.md#11400103-权限校验失败) | No write permission on the file. |
 | [11400104](../errorcode-hiviewdfx-hidebug-cpuusage.md#11400104-cpuusage统计异常) | Abnormal trace status. |

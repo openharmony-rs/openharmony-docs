@@ -6,6 +6,8 @@ export declare class DatePickerComponentResult
 
 Defines the selection result of the date and time picker, including the year, month, day, hour, minute, and second selected by the user. It is used to pass the specific date and time values in the **onChange** and **onScrollStop** callbacks.
 
+**NOTE:** When [hideYear](arkts-arkui-arkui-advanced-datepickercomponent-dateoptions-c.md) is **true**, if the user selects "----", [year](arkts-arkui-arkui-advanced-datepickercomponent-datepickercomponentresult-c.md) is not returned; if a specific year is selected, the [year](arkts-arkui-arkui-advanced-datepickercomponent-datepickercomponentresult-c.md) is the selected year. In lunar calendar mode, the returned year, month, and day are lunar calendar values; in Gregorian calendar mode, the returned values are Gregorian calendar values. When [hideYear](arkts-arkui-arkui-advanced-datepickercomponent-dateoptions-c.md) is **false**, the year, month, and day are fixed to return Gregorian calendar values.
+
 **Since:** 26.0.0
 
 <!--Device-unnamed-export declare class DatePickerComponentResult--><!--Device-unnamed-export declare class DatePickerComponentResult-End-->
@@ -125,6 +127,8 @@ year?: number
 ```
 
 Year of the selected date.
+
+When [hideYear](arkts-arkui-arkui-advanced-datepickercomponent-dateoptions-c.md) is **true** and the user selects "----", year is not returned; when a specific year is selected, the value is the selected year. The value should be an integer.
 
 **Type:** number
 

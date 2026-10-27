@@ -14,7 +14,7 @@ function disableUserGrantedByBundle(bundle: GrantedBundleInfo): Promise<void>
 
 Disables the switch status of a specified app in the list of obtained local notifications in this app. This API uses a promise to return the result.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Required permissions:** ohos.permission.SUBSCRIBE_NOTIFICATION
 

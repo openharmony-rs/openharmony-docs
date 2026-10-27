@@ -46,6 +46,13 @@ Video(value: VideoOptions)
 
 ## Summary
 
+### Classes
+
+| Name | Description |
+| --- | --- |
+| [VideoController](arkts-arkui-video-comp-videocontroller-c.md) | A **VideoController** object can control one or more **Video** components. |
+| [VideoControllerAsync](arkts-arkui-video-comp-videocontrollerasync-c.md) | **VideoControllerAsync** is the asynchronous version of **VideoController**. It can obtain the results of some playback control commands through a promise. It does not support controlling multiple **Video** components at the same time. |
+
 ### Interfaces
 
 | Name | Description |

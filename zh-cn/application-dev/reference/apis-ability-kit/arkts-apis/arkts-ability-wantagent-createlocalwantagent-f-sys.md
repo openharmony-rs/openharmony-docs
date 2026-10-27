@@ -44,7 +44,7 @@ function createLocalWantAgent(info: LocalWantAgentInfo): WantAgent
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. Interface caller is not a system app. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 
 <!--Del-->
 **示例**

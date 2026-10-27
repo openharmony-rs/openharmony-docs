@@ -30,6 +30,7 @@ import { bundleManager } from '@kit.MDMKit';
 | [addInstallationAllowedAppDistributionTypes](arkts-mdm-bundlemanager-addinstallationallowedappdistributiontypes-f.md#addinstallationallowedappdistributiontypes-1) | 添加可安装应用的分发类型。添加成功后，当前设备可以安装对应分发类型的应用，但无法安装[AppDistributionType](arkts-mdm-bundlemanager-appdistributiontype-e.md)中未添加的分发类型的应用。 |
 | [getAllowedInstallBundlesSync](arkts-mdm-bundlemanager-getallowedinstallbundlessync-f.md#getallowedinstallbundlessync-1) | 获取当前/指定用户下的应用程序包安装允许名单。 |
 | [getAllowedInstallBundlesSync](arkts-mdm-bundlemanager-getallowedinstallbundlessync-f.md#getallowedinstallbundlessync-2) | 获取当前/指定用户下的应用程序包安装允许名单。 |
+| [getDefaultApplicationBundleName](arkts-mdm-bundlemanager-getdefaultapplicationbundlename-f.md#getdefaultapplicationbundlename-1) |  |
 | [getDisallowedInstallBundlesSync](arkts-mdm-bundlemanager-getdisallowedinstallbundlessync-f.md#getdisallowedinstallbundlessync-1) | 获取当前/指定用户下的应用程序包安装禁止名单。 |
 | [getDisallowedInstallBundlesSync](arkts-mdm-bundlemanager-getdisallowedinstallbundlessync-f.md#getdisallowedinstallbundlessync-2) | 获取当前/指定用户下的应用程序包安装禁止名单。 |
 | [getDisallowedUninstallBundlesSync](arkts-mdm-bundlemanager-getdisalloweduninstallbundlessync-f.md#getdisalloweduninstallbundlessync-1) | 获取当前/指定用户下包卸载禁止名单。 |
@@ -46,6 +47,7 @@ import { bundleManager } from '@kit.MDMKit';
 | [removeDisallowedInstallBundlesSync](arkts-mdm-bundlemanager-removedisallowedinstallbundlessync-f.md#removedisallowedinstallbundlessync-1) | 在应用程序包安装禁止名单中移除应用，在禁止名单存在的情况下，在应用程序包安装禁止名单中的应用不允许在当前/指定用户下安装。 |
 | [removeDisallowedUninstallBundlesSync](arkts-mdm-bundlemanager-removedisalloweduninstallbundlessync-f.md#removedisalloweduninstallbundlessync-1) | 在包卸载禁止名单中移除应用。在禁止名单存在的情况下，在包卸载禁止名单中的应用不允许在当前/指定用户下卸载。 |
 | [removeInstallationAllowedAppDistributionTypes](arkts-mdm-bundlemanager-removeinstallationallowedappdistributiontypes-f.md#removeinstallationallowedappdistributiontypes-1) | 移除应用的分发类型。若只移除了数组中部分的分发类型，则当前设备可以安装数组中剩下的分发类型的应用，但无法安装[AppDistributionType](arkts-mdm-bundlemanager-appdistributiontype-e.md)中未添加的分发类型的应用。 |
+| [setDefaultApplication](arkts-mdm-bundlemanager-setdefaultapplication-f.md#setdefaultapplication-1) |  |
 | [uninstall](arkts-mdm-bundlemanager-uninstall-f.md#uninstall-5) | 卸载当前/指定用户下的指定包，选择是否保留包数据（由isKeepData指定）。使用Promise异步回调。调用成功后，应用被卸载，数据根据isKeepData参数保留或删除。 |
 
 <!--Del-->
@@ -105,3 +107,4 @@ import { bundleManager } from '@kit.MDMKit';
 | --- | --- |
 | [AppDistributionType](arkts-mdm-bundlemanager-appdistributiontype-e.md) | 应用程序签名证书的分发类型。详细介绍请参见[ApplicationInfo](../../apis-ability-kit/arkts-apis/arkts-ability-applicationinfo-i.md)的appDistributionType属性。 |
 | [BundleInfoGetFlag](arkts-mdm-bundlemanager-bundleinfogetflag-e.md) | 包信息获取标志，指示需要获取的包信息的内容。 |
+| [DefaultApplicationType](arkts-mdm-bundlemanager-defaultapplicationtype-e.md) |  |

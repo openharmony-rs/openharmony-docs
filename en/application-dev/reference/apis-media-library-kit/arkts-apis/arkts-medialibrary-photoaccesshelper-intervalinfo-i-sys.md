@@ -6,7 +6,7 @@ interface IntervalInfo
 
 Interval information.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 <!--Device-photoAccessHelper-interface IntervalInfo--><!--Device-photoAccessHelper-interface IntervalInfo-End-->
 
@@ -30,7 +30,7 @@ Begin time in milliseconds. Unit: milliseconds. The value should be an integer.
 
 **Type:** number
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -50,7 +50,7 @@ End time in milliseconds. Unit: milliseconds. The value should be an integer.
 
 **Type:** number
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -70,7 +70,7 @@ Interval index. The value should be an integer without unit.
 
 **Type:** number
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 

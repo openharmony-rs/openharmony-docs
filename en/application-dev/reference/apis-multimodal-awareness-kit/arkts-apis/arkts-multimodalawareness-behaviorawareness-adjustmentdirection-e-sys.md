@@ -6,7 +6,7 @@ export enum AdjustmentDirection
 
 Adjustment direction enum.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 <!--Device-behaviorAwareness-export enum AdjustmentDirection--><!--Device-behaviorAwareness-export enum AdjustmentDirection-End-->
 
@@ -22,7 +22,7 @@ DOWN = 'down'
 
 Decrease.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -40,7 +40,7 @@ UP = 'up'
 
 Increase.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 

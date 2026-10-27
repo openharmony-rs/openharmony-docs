@@ -12,7 +12,7 @@ import { securityGuard } from '@kit.SecurityGuardKit';
 function updatePolicyFile(policyFile: PolicyFile): Promise<void>
 ```
 
-更新配置文件。
+Update the policy file.
 
 **起始版本：** 12
 
@@ -28,13 +28,13 @@ function updatePolicyFile(policyFile: PolicyFile): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| policyFile | [PolicyFile](arkts-securityguard-securityguard-policyfile-i-sys.md) | 是 | 配置文件信息。 |
+| policyFile | [PolicyFile](arkts-securityguard-securityguard-policyfile-i-sys.md) | 是 | Indicates the policy file information. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 以Promise形式返回结果。 |
+| Promise&lt;void&gt; | the promise returned by the function. |
 
 **错误码：**
 

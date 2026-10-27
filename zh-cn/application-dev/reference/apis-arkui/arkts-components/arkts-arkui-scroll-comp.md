@@ -48,6 +48,12 @@ Scroll(scroller?: Scroller)
 
 ## 汇总
 
+### 类
+
+| 名称 | 说明 |
+| --- | --- |
+| [Scroller](arkts-arkui-scroll-comp-scroller-c.md) | 可滚动容器组件的控制器，可以将此组件绑定至容器组件，然后通过它控制容器组件的滚动。同一个控制器不可以控制多个容器组件，目前支持绑定到ArcList、ArcScrollBar、List、Scroll、ScrollBar、Grid、WaterFlow上。 |
+
 ### 接口
 
 | 名称 | 说明 |
@@ -936,6 +942,94 @@ struct Index {
       .backgroundColor(0xFAEEE0)
       .height(300)
       NodeContainer(this.myNodeController)
+    }
+  }
+}
+```
+
+### 示例14（获取滚动状态）
+
+该示例通过[getScrollState](arkts-arkui-scroll-comp-scroller-c.md#getscrollstate)接口，实现了获取滚动状态的功能。
+
+从API版本26.1.0开始，新增getScrollState接口。
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+/**
+ * 滚动状态查询示例
+ *
+ * 通过Scroller.getScrollState()获取当前滚动状态，并利用定时器每4ms自动查询一次，实时展示滚动过程中的状态变化。
+ */
+@Entry
+@Component
+struct ScrollExample {
+  // 当前滚动状态（Idle：空闲、Scroll：手指拖动、Fling：惯性滚动）
+  @State scrollStateStr: string = 'Idle';
+  // 滚动控制器，用于绑定Scroll组件并查询滚动状态
+  scroller: Scroller = new Scroller();
+  // 定时器ID，用于页面销毁时清除定时器
+  private timerId: number = -1;
+  // 列表数据
+  private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+  aboutToAppear() {
+    // 每4ms自动查询一次滚动状态，实现近乎实时的展示
+    this.timerId = setInterval(() => {
+      this.queryScrollState();
+    }, 4);
+  }
+
+  aboutToDisappear() {
+    // 页面销毁时清除定时器，避免资源泄漏
+    clearInterval(this.timerId);
+  }
+
+  // 获取当前滚动状态并更新展示文本
+  private queryScrollState(): void {
+    try {
+      // 通过调用getScrollState函数获取当前滚动状态
+      const state: ScrollState = this.scroller.getScrollState();
+      // 将滚动状态转换为可读文本
+      this.scrollStateStr = this.scrollStateToStr(state);
+    } catch (error) {
+      // Scroller未绑定组件时会抛异常，需要加上try catch保护
+      let err: BusinessError = error as BusinessError;
+      console.error(`Failed to get scrollState. Code: ${err.code}, message: ${err.message}`);
+    }
+  }
+
+  // 将滚动状态枚举转换为可读文本
+  private scrollStateToStr(state: ScrollState): string {
+    return state === ScrollState.Idle ? 'Idle' :
+      state === ScrollState.Scroll ? 'Scroll' : 'Fling';
+  }
+
+  build() {
+    Column() {
+      // 实时展示getScrollState获取到的滚动状态，每4ms自动刷新
+      Text('ScrollState：' + this.scrollStateStr)
+        .fontColor(Color.Black)
+        .height(50)
+
+      Stack({ alignContent: Alignment.TopStart }) {
+        Scroll(this.scroller) {
+          Column() {
+            ForEach(this.arr, (item: number) => {
+              Text(item.toString())
+                .width('90%')
+                .height(150)
+                .backgroundColor(0xFFFFFF)
+                .border({ width: 1, color: 0xCCCCCC })
+                .borderRadius(15)
+                .fontSize(16)
+                .textAlign(TextAlign.Center)
+                .margin({ top: 15 })
+            }, (item: number) => item.toString())
+          }.width('100%')
+        }
+        .edgeEffect(EdgeEffect.Spring, { alwaysEnabled: true, effectEdge: EffectEdge.START })
+      }
     }
   }
 }

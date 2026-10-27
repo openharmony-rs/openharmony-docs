@@ -89,6 +89,13 @@ Navigation(pathInfos: NavPathStack, homeDestination: HomePathInfo)
 
 ## 汇总
 
+### 类
+
+| 名称 | 说明 |
+| --- | --- |
+| [NavPathInfo](arkts-arkui-navigation-comp-navpathinfo-c.md) | 路由页面信息。 |
+| [NavPathStack](arkts-arkui-navigation-comp-navpathstack-c.md) | Navigation导航控制器，以栈的数据结构管理Navigation中所有的子页面，并提供栈操作的方法用于控制Navigation中子页面的切换。 |
+
 ### 接口
 
 | 名称 | 说明 |

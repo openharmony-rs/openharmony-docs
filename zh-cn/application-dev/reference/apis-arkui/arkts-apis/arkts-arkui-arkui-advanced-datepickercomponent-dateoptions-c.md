@@ -22,6 +22,34 @@ DateOptions定义日期选择器的选项。
 import { DatePickerComponent, DatePickerComponentOptions, DisplayMode, DateMode, TimeFormat, DatePickerComponentResult } from '@kit.ArkUI';
 ```
 
+## hideYear
+
+```TypeScript
+hideYear?: boolean
+```
+
+是否启用"隐藏年份"选项。  
+- **true**：在[end](arkts-arkui-arkui-advanced-datepickercomponent-commonoptions-c.md)后面追加一个"----"选项。用户可以选择"----"  
+表示不关心具体年份，适用于生日、纪念日等无需具体年份的场景。  
+- **false**：不显示"----"选项。年份列仅展示[start](arkts-arkui-arkui-advanced-datepickercomponent-commonoptions-c.md)和[end](arkts-arkui-arkui-advanced-datepickercomponent-commonoptions-c.md)范围内的具体年份。**说明：** 
+1. 该属性仅在[displayMode](arkts-arkui-arkui-advanced-datepickercomponent-datepickercomponentoptions-c.md)为DisplayMode.DATE或
+DisplayMode.DATE_TIME，且[mode](arkts-arkui-arkui-advanced-datepickercomponent-dateoptions-c.md)为DateMode.DATE或DateMode.YEAR_AND_MONTH时生效。
+2. 该属性为true时，用户仍可滚动选择具体年份，"----"选项与具体年份可自由切换。
+3. 该属性支持运行时动态切换，属性值变化时年份列随之更新。
+默认值：禁用。
+
+**类型：** boolean
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-DateOptions-hideYear?: boolean--><!--Device-DateOptions-hideYear?: boolean-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 ## lunar
 
 ```TypeScript

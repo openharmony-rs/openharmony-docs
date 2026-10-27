@@ -6,7 +6,7 @@ export interface BatteryLevelInfo
 
 Definition of battery level information.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 <!--Device-mechanicManager-export interface BatteryLevelInfo--><!--Device-mechanicManager-export interface BatteryLevelInfo-End-->
 
@@ -30,7 +30,7 @@ Battery level percentage(in %). The value is an integer in the range [0, 100]. 0
 
 **Type:** number
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -50,7 +50,7 @@ Indicates whether the device is charging. The value is true when charging and fa
 
 **Type:** boolean
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -70,7 +70,7 @@ ID of the mechanical device corresponding to the battery level information.
 
 **Type:** number
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 

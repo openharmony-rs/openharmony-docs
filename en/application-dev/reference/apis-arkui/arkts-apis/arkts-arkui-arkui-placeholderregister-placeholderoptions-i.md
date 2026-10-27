@@ -6,7 +6,7 @@ export interface PlaceholderOptions
 
 Describes the placeholder to display for an item of a scrollable component while the real item is being created across frames.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 <!--Device-unnamed-export interface PlaceholderOptions--><!--Device-unnamed-export interface PlaceholderOptions-End-->
 
@@ -28,11 +28,11 @@ ID of the registered placeholder builder. The registry is obtained per UI instan
 
 **Type:** string
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-PlaceholderOptions-id?: string--><!--Device-PlaceholderOptions-id?: string-End-->
 
@@ -48,11 +48,11 @@ Suggested layout size of the placeholder. The real item is re-laid out under the
 
 **Type:** [SizeOptions](arkts-arkui-sizeoptions-i.md)
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-PlaceholderOptions-size?: SizeOptions--><!--Device-PlaceholderOptions-size?: SizeOptions-End-->
 

@@ -32,7 +32,7 @@ cancelDevicePairing(): Promise<void>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-RemoteDevice-cancelDevicePairing(): Promise<void>--><!--Device-RemoteDevice-cancelDevicePairing(): Promise<void>-End-->
 
@@ -69,7 +69,7 @@ connect(): Promise<void>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-RemoteDevice-connect(): Promise<void>--><!--Device-RemoteDevice-connect(): Promise<void>-End-->
 
@@ -106,7 +106,7 @@ disconnect(): Promise<void>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-RemoteDevice-disconnect(): Promise<void>--><!--Device-RemoteDevice-disconnect(): Promise<void>-End-->
 
@@ -143,7 +143,7 @@ getDeviceAlias(): string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-RemoteDevice-getDeviceAlias(): string--><!--Device-RemoteDevice-getDeviceAlias(): string-End-->
 
@@ -178,7 +178,7 @@ getDeviceModel(): DeviceModel
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-RemoteDevice-getDeviceModel(): DeviceModel--><!--Device-RemoteDevice-getDeviceModel(): DeviceModel-End-->
 
@@ -214,7 +214,7 @@ getRssiValue(): Promise<number>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-RemoteDevice-getRssiValue(): Promise<int>--><!--Device-RemoteDevice-getRssiValue(): Promise<int>-End-->
 
@@ -251,7 +251,7 @@ removePairedDevice(): Promise<void>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-RemoteDevice-removePairedDevice(): Promise<void>--><!--Device-RemoteDevice-removePairedDevice(): Promise<void>-End-->
 
@@ -288,7 +288,7 @@ setConnectionInterval(interval: ConnectionInterval): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-RemoteDevice-setConnectionInterval(interval: ConnectionInterval): void--><!--Device-RemoteDevice-setConnectionInterval(interval: ConnectionInterval): void-End-->
 
@@ -325,7 +325,7 @@ setDeviceAlias(alias: string): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-RemoteDevice-setDeviceAlias(alias: string): void--><!--Device-RemoteDevice-setDeviceAlias(alias: string): void-End-->
 
@@ -363,7 +363,7 @@ setPairingConfirmation(accept: boolean): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-RemoteDevice-setPairingConfirmation(accept: boolean): void--><!--Device-RemoteDevice-setPairingConfirmation(accept: boolean): void-End-->
 
@@ -400,7 +400,7 @@ setPairingPasscode(passcode: string): Promise<void>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-RemoteDevice-setPairingPasscode(passcode: string): Promise<void>--><!--Device-RemoteDevice-setPairingPasscode(passcode: string): Promise<void>-End-->
 
@@ -444,7 +444,7 @@ startCrediblePairing(): Promise<void>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-RemoteDevice-startCrediblePairing(): Promise<void>--><!--Device-RemoteDevice-startCrediblePairing(): Promise<void>-End-->
 

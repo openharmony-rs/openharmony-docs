@@ -6,7 +6,7 @@ interface ColorfulBrightnessBlender
 
 Hue-preserving brightening and darkening blender, used to add the brightening and darkening effect to a specified component. This effect preserves hue by reconstructing it channel by channel when brightening or darkening the foreground, and can enhance saturation to avoid the desaturation issue of common brightening/darkening; it also uses a luma difference threshold to ensure the contrast between the foreground and background. Before calling ColorfulBrightnessBlender, you need to first create a ColorfulBrightnessBlender instance through createColorfulBrightnessBlender.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 <!--Device-uiEffect-interface ColorfulBrightnessBlender--><!--Device-uiEffect-interface ColorfulBrightnessBlender-End-->
 
@@ -30,11 +30,11 @@ Regular parameters for brightening and darkening, used to configure basic proper
 
 **Type:** [BrightnessBlenderParam](arkts-arkgraphics2d-graphics-uieffect-brightnessblenderparam-i-sys.md)
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 26.2.0.
+**Widget capability:** This API can be used in ArkTS widgets since API version 26.1.0.
 
 <!--Device-ColorfulBrightnessBlender-brightnessBlenderParam: BrightnessBlenderParam--><!--Device-ColorfulBrightnessBlender-brightnessBlenderParam: BrightnessBlenderParam-End-->
 
@@ -52,11 +52,11 @@ Enhanced parameters for brightening and darkening, used to control the brighteni
 
 **Type:** [ColorfulBrightnessBlenderOptions](arkts-arkgraphics2d-uieffect-colorfulbrightnessblenderoptions-i-sys.md)
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 26.2.0.
+**Widget capability:** This API can be used in ArkTS widgets since API version 26.1.0.
 
 <!--Device-ColorfulBrightnessBlender-options?: ColorfulBrightnessBlenderOptions--><!--Device-ColorfulBrightnessBlender-options?: ColorfulBrightnessBlenderOptions-End-->
 

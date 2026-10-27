@@ -6,7 +6,7 @@ interface IntervalInfo
 
 时间区域信息
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 <!--Device-photoAccessHelper-interface IntervalInfo--><!--Device-photoAccessHelper-interface IntervalInfo-End-->
 
@@ -30,7 +30,7 @@ beginTime: number
 
 **类型：** number
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -50,7 +50,7 @@ endTime: number
 
 **类型：** number
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -70,7 +70,7 @@ intervalIndex: number
 
 **类型：** number
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

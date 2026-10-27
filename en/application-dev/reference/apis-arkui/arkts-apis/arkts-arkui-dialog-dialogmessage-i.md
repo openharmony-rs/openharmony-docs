@@ -17,7 +17,7 @@ Message options for the dialog box, combining message content with text style.
 ## Modules to Import
 
 ```TypeScript
-import { dialog, DialogBaseAlignment, DialogButtonOrientation, DialogState, DialogResult, DialogDismissal, DialogBaseController } from '@kit.ArkUI';
+import { dialog, DialogBaseAlignment, DialogButtonOrientation, DialogState, DialogResult, DialogDismissal, DialogBaseController, HandednessFollowMode } from '@kit.ArkUI';
 ```
 
 ## content

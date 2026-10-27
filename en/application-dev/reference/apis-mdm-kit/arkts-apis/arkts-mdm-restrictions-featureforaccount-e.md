@@ -81,6 +81,22 @@ this capability ([FeatureForDevice.FINGERPRINT](arkts-mdm-restrictions-featurefo
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
+## FREE_WINDOW
+
+```TypeScript
+FREE_WINDOW = 14
+```
+
+Free window mode is an interaction method that supports users in performing multitasking on mobile devices.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FeatureForAccount-FREE_WINDOW = 14--><!--Device-FeatureForAccount-FREE_WINDOW = 14-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
 ## MTP_CLIENT
 
 ```TypeScript

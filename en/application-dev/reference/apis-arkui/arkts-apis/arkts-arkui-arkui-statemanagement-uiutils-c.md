@@ -21,7 +21,7 @@ import { AppStorageV2, PersistenceV2, Type, UIUtils, ConnectOptions, Binding, Mu
 ## addMonitor
 
 ```TypeScript
-static addMonitor(target: object, path: string[], monitorCallback: MonitorCallback, options?: MonitorOptions): void
+static addMonitor(target: object, path: string | string[], monitorCallback: MonitorCallback, options?: MonitorOptions): void
 ```
 
 Dynamically adds a listener to the state variable of state management V2. For details, see [addMonitor and clearMonitor APIs: Dynamically Adding and Removing Listeners](../../../ui/state-management/arkts-new-addMonitor-clearMonitor.md).
@@ -41,7 +41,7 @@ Dynamically adds a listener to the state variable of state management V2. For de
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | target | object | Yes | Target object. Only [@ComponentV2](../../../ui/state-management/arkts-create-custom-components.md#componentv2) and [@ObservedV2](../../../ui/state-management/arkts-new-observedV2-and-trace.md) instances are supported. <br>For unsupported types, a runtime error is thrown. |
-| path | string[] | Yes | Path of the variable name to be listened for. You can specify a path or pass a string array to specify multiple variable paths to be listened for at a time. <br>Only string and string arrays are supported. For unsupported types, a runtime error is thrown. |
+| path | string &#124; string[] | Yes | Path of the variable name to be listened for. You can specify a path or pass a string array to specify multiple variable paths to be listened for at a time. <br>Only string and string arrays are supported. For unsupported types, a runtime error is thrown. |
 | monitorCallback | [MonitorCallback](arkts-arkui-monitorcallback-t.md) | Yes | Callback registered for the corresponding state variable. When the state variable corresponding to the path changes, the callback is invoked. <br>For unsupported types, a runtime error is thrown. |
 | options | [MonitorOptions](arkts-arkui-arkui-statemanagement-monitoroptions-i.md) | No | Configuration options of the listener. For details, see [MonitorOptions](arkts-arkui-arkui-statemanagement-monitoroptions-i.md). By default, the asynchronous callback is used. |
 
@@ -279,7 +279,7 @@ export struct School {
 ## clearMonitor
 
 ```TypeScript
-static clearMonitor(target: object, path: string[], monitorCallback?: MonitorCallback) : void
+static clearMonitor(target: object, path: string | string[], monitorCallback?: MonitorCallback) : void
 ```
 
 Deletes the listener added to the state variable of the state management V2 by calling the [addMonitor](#addmonitor) API. For details, see [addMonitor and clearMonitor APIs: Dynamically Adding and Removing Listeners](../../../ui/state-management/arkts-new-addMonitor-clearMonitor.md).
@@ -299,7 +299,7 @@ Deletes the listener added to the state variable of the state management V2 by c
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | target | object | Yes | Target object. Only instances of [@ComponentV2](../../../ui/state-management/arkts-create-custom-components.md#componentv2) and [@ObservedV2](../../../ui/state-management/arkts-new-observedV2-and-trace.md) are supported. <br>For unsupported types, a runtime error is thrown. |
-| path | string[] | Yes | Path of the variable name for which the listener is to be deleted. You can specify a single path or pass a string array to delete listeners of multiple state variables at a time. <br>Only strings and arrays are supported. For unsupported types, a runtime error is thrown. |
+| path | string &#124; string[] | Yes | Path of the variable name for which the listener is to be deleted. You can specify a single path or pass a string array to delete listeners of multiple state variables at a time. <br>Only strings and arrays are supported. For unsupported types, a runtime error is thrown. |
 | monitorCallback | [MonitorCallback](arkts-arkui-monitorcallback-t.md) | No | Callback to be deleted. <br>If this parameter is not passed, all listeners registered for the variable corresponding to the path are deleted. <br>For unsupported types, a runtime error is thrown. |
 
 **Error codes:**

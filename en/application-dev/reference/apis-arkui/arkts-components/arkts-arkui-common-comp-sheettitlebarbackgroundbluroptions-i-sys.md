@@ -44,7 +44,7 @@ Sliding distance required for the blur effect to transition from fully hidden to
 
 **Type:** LengthMetrics
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -64,7 +64,7 @@ Base color of the gradient mask. This color serves as the maximum color at the t
 
 **Type:** [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -84,7 +84,7 @@ Extra height of the gradient mask. Additional mask coverage height beyond the ti
 
 **Type:** LengthMetrics
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 

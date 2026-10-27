@@ -81,3 +81,53 @@ try {
   console.error(`Failed to open install certificate dialog. Code: ${error.code}, message: ${error.message}`);
 }
 ```
+
+
+## openInstallCertificateDialog
+
+```TypeScript
+function openInstallCertificateDialog(context: common.Context, request: InstallCertificateRequest): Promise<string>
+```
+
+Opens the Certificate Management Install Certificate dialog box. After the certificate is successfully installed, the unique identifier of the certificate is returned. Applications can use the identifier to use the certificate. Use Promise asynchronous callback.
+
+**Since:** 26.1.0
+
+**Required permissions:** ohos.permission.ACCESS_CERT_MANAGER
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-certificateManagerDialog-function openInstallCertificateDialog(context: common.Context, request: InstallCertificateRequest): Promise<string>--><!--Device-certificateManagerDialog-function openInstallCertificateDialog(context: common.Context, request: InstallCertificateRequest): Promise<string>-End-->
+
+**System capability:** SystemCapability.Security.CertificateManagerDialog
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| context | [common.Context](../../apis-ability-kit/arkts-apis/arkts-ability-common-context-t.md) | Yes | Context of the application. |
+| request | [InstallCertificateRequest](arkts-devicecertificate-certificatemanagerdialog-installcertificaterequest-i.md) | Yes | The request parameter of the install certificate dialog box. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;string&gt; | Promise used to return the certificate URI. The value contains up to 256 bytes. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported because the certificate management application hap is not preinstalled in the system. |
+| [29700001](../errorcode-certManagerDialog.md#29700001-internal-error) | Internal error. Possible causes: 1. IPC communication failed; <br>2. Memory operation error; 3. File operation error. Please try again. |
+| [29700002](../errorcode-certManagerDialog.md#29700002-operation-canceled) | The user cancels the installation operation. |
+| [29700003](../errorcode-certManagerDialog.md#29700003-failed-to-install-the-certificate) | The user install certificate failed in the certificate manager dialog, such as the certificate is in an invalid format. |
+| [29700004](../errorcode-certManagerDialog.md#29700004-operation-not-supported-by-the-device) | For security purposes, the current device does not support this API. You can use the [supportsCACertDialog](arkts-devicecertificate-certificatemanagerdialog-supportscacertdialog-f.md) to determine whether the device supports opening the dialog box for installing a CA certificate with certType set to CA. |
+| [29700005](../errorcode-certManagerDialog.md#29700005-non-secure-operation) | The operation does not comply with the device security policy, such as the device does not allow users to manage the CA certificate of the global user. |
+| [29700006](../errorcode-certManagerDialog.md#29700006-failed-to-validate-the-input-parameter) | Indicates that the input parameters validation failed. For example, the parameter format is incorrect or the value range is invalid. |
+| 29700008 | The keystore file password is incorrect. |
+
+**Examples**
+
+See [openInstallCertificateDialog](#openinstallcertificatedialog)

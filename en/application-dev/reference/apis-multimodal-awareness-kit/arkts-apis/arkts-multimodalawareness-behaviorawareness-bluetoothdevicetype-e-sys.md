@@ -6,7 +6,7 @@ export enum BluetoothDeviceType
 
 Bluetooth device type enum.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 <!--Device-behaviorAwareness-export enum BluetoothDeviceType--><!--Device-behaviorAwareness-export enum BluetoothDeviceType-End-->
 
@@ -22,7 +22,7 @@ CAR = 1
 
 Car device.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -40,7 +40,7 @@ DEFAULT = 0
 
 Default/uncategorized device.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -58,7 +58,7 @@ GLASSES = 4
 
 Glasses.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -76,7 +76,7 @@ HEADSET = 2
 
 Headset.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -94,7 +94,7 @@ HEARING = 3
 
 Hearing aid.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -112,7 +112,7 @@ OTHERS = 7
 
 Others.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -130,7 +130,7 @@ SPEAKER = 6
 
 Speaker.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -148,7 +148,7 @@ WATCH = 5
 
 Watch.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 

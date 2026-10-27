@@ -28,7 +28,7 @@ function onSystemCommonEvent(callback: EventProcess): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | EventProcess | 是 | 监听通用事件命令回调 |
+| callback | [EventProcess](arkts-avsession-avsession-eventprocess-t.md) | 是 | 监听通用事件命令回调 |
 
 **错误码：**
 

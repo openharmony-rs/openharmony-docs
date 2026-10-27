@@ -4,7 +4,7 @@
 declare class SaveButtonAttribute extends SecurityComponentMethod<SaveButtonAttribute>
 ```
 
-不支持通用属性，除了继承[安全控件通用属性](../arkts-apis/arkts-arkui-securitycomponent.md#security_component)，还支持以下属性。不支持通用事件，仅支持以下事件。
+不支持通用属性，除了继承[安全控件通用属性](../arkts-apis/arkts-arkui-securitycomponentmethod-c.md)，还支持以下属性。不支持通用事件，仅支持以下事件。
 
 **继承/实现关系：** SaveButtonAttribute extends SecurityComponentMethod&lt;SaveButtonAttribute&gt;
 
@@ -117,7 +117,7 @@ setIcon(icon: Resource)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| icon | [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 是 | 自定义图标资源信息，仅支持Resource类型的数据源。<br>可支持的图片格式：png、jpg、jpeg、bmp、svg、webp、gif和heif等，支持的图片格式范围见[Image](arkts-arkui-image-comp.md)。当资源为非图片资源或不支持的格式时，图标显示为空白。<br>从API版本26.0.0开始，支持Symbol格式的Resource类型的数据源。<br>若应用不具备ohos.permission.CUSTOMIZE_SAVE_BUTTON权限，则自定义图标设置不生效，保存控件保持默认样式。 |
+| icon | [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 是 | 自定义图标资源信息，仅支持Resource类型的数据源。<br>可支持的图片格式：png、jpg、jpeg、bmp、svg、webp、gif和heif等，支持的图片格式范围见[Image](arkts-arkui-image-comp.md#image)。当资源为非图片资源或不支持的格式时，图标显示为空白。<br>从API版本26.0.0开始，支持Symbol格式的Resource类型的数据源。<br>若应用不具备ohos.permission.CUSTOMIZE_SAVE_BUTTON权限，则自定义图标设置不生效，保存控件保持默认样式。 |
 
 ## setText
 

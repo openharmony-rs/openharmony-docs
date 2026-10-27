@@ -68,6 +68,24 @@ The album friend_id operation attribute.
 
 **System API:** This is a system API.
 
+## HIDDEN_ATTR
+
+```TypeScript
+HIDDEN_ATTR = 'hidden'
+```
+
+The album hidden operation attribute.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AlbumAttribute-HIDDEN_ATTR = 'hidden'--><!--Device-AlbumAttribute-HIDDEN_ATTR = 'hidden'-End-->
+
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**System API:** This is a system API.
+
 ## IS_REMOVED_ATTR
 
 ```TypeScript

@@ -59,7 +59,7 @@ try {
     if (err) {
       console.error(`Failed to backup. Code: ${err.code}, message: ${err.message} `);
     } else {
-      console.info(`Succeeded in backupping data`);
+      console.info(`Succeeded in backing up data`);
     }
   });
 } catch (err) {
@@ -111,7 +111,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let backupFile = 'BK001';
 try {
   kvStore.backup(backupFile).then(() => {
-    console.info(`Succeeded in backupping data`);
+    console.info(`Succeeded in backing up data`);
   }).catch((err: BusinessError) => {
     console.error(`Failed to backup. Code: ${err.code}, message: ${err.message}`);
   });
@@ -167,7 +167,7 @@ const backupConfig: distributedKVStore.BackupConfig = {
 };
 try {
   kvStore.backupEx(backupConfig).then(() => {
-    console.info(`Succeeded in backupping data`);
+    console.info(`Succeeded in backing up data`);
   }).catch((err: BusinessError) => {
     console.error(`Failed to backup. Code: ${err.code}, message: ${err.message}`);
   });

@@ -1,5 +1,10 @@
 # Scene
 
+As the basic module of ArkGraphics 3D, this module provides data types such as scene load parameters.
+ It also provides basic methods such as scene loading methods.
+
+
+
 ## Summary
 
 ### Classes

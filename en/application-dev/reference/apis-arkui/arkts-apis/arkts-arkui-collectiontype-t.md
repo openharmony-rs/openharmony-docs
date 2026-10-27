@@ -1,8 +1,7 @@
 # CollectionType
 
 ```TypeScript
-export declare type CollectionType<S> = Array<S> | Map<string | number, S> |
-  Set<S> | collections.Array<S> | collections.Map<string | number, S> | collections.Set<S>
+export declare type CollectionType<S> = Array<S> | Map<string | number, S> | Set<S> | collections.Array<S> | collections.Map<string | number, S> | collections.Set<S>
 ```
 
 Defines the types of persistent collection data supported by **globalConnect** using the generic type of the input parameter of **globalConnect**.

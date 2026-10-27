@@ -12,6 +12,38 @@ enum ScreenshotEventType
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+## CELIA_EYE_START
+
+```TypeScript
+CELIA_EYE_START = 6
+```
+
+小艺双指长按识屏事件。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-ScreenshotEventType-CELIA_EYE_START = 6--><!--Device-ScreenshotEventType-CELIA_EYE_START = 6-End-->
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+## CELIA_SNAP_START
+
+```TypeScript
+CELIA_SNAP_START = 5
+```
+
+小艺指关节圈选截屏事件
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-ScreenshotEventType-CELIA_SNAP_START = 5--><!--Device-ScreenshotEventType-CELIA_SNAP_START = 5-End-->
+
+**系统能力：** SystemCapability.Window.SessionManager
+
 ## SCROLL_SHOT_ABORT
 
 ```TypeScript

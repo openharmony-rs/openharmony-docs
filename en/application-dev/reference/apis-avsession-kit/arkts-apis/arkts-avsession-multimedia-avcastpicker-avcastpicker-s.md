@@ -112,13 +112,13 @@ Indicates whether the playback component is an independent process. If this para
 
 **Type:** boolean
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Decorator:** @Prop
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-AVCastPicker-isIndependent?: boolean--><!--Device-AVCastPicker-isIndependent?: boolean-End-->
 

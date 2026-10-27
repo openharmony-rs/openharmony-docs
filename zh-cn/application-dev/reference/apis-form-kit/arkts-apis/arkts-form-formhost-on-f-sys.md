@@ -237,3 +237,22 @@ Listens to the event of get live form status.
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The application is not a system application. |
+
+<!--Del-->
+**示例**
+
+```TypeScript
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  formHost.on('getLiveFormStatus', (): Record<string, string> => {
+    // 卡片使用方需要对查询请求进行处理，计算并返回状态信息
+    return { "status": "active" };
+  });
+} catch (error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+}
+```
+
+<!--DelEnd-->

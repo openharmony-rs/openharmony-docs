@@ -38,6 +38,12 @@ Defines the constructor of Search.
 
 ## Summary
 
+### Classes
+
+| Name | Description |
+| --- | --- |
+| [SearchController](arkts-arkui-search-comp-searchcontroller-c.md) | The controller of the Search component inherits from [TextContentControllerBase](arkts-arkui-common-comp-textcontentcontrollerbase-c.md), and the involved APIs include [getTextContentRect](arkts-arkui-common-comp-textcontentcontrollerbase-c.md#gettextcontentrect), [getTextContentLineCount](arkts-arkui-common-comp-textcontentcontrollerbase-c.md#gettextcontentlinecount), [getCaretOffset](arkts-arkui-common-comp-textcontentcontrollerbase-c.md#getcaretoffset), [addText](arkts-arkui-common-comp-textcontentcontrollerbase-c.md#addtext), [deleteText](arkts-arkui-common-comp-textcontentcontrollerbase-c.md#deletetext), [getSelection](arkts-arkui-common-comp-textcontentcontrollerbase-c.md#getselection), [clearPreviewText](arkts-arkui-common-comp-textcontentcontrollerbase-c.md#clearpreviewtext), [setStyledPlaceholder](arkts-arkui-common-comp-textcontentcontrollerbase-c.md#setstyledplaceholder), [deleteBackward](arkts-arkui-common-comp-textcontentcontrollerbase-c.md#deletebackward), [scrollToVisible](arkts-arkui-common-comp-textcontentcontrollerbase-c.md#scrolltovisible)<!--Del-->and the system API [getText](arkts-arkui-common-comp-textcontentcontrollerbase-c-sys.md#gettext)<!--DelEnd-->. |
+
 ### Interfaces
 
 | Name | Description |

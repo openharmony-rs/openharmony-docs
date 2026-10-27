@@ -37,7 +37,11 @@
 
 ## 属性
 
-<br><br>不支持[通用属性](../../apis-arkui/arkts-components/arkts-arkui-common-comp.md)<br><br>
+<br><br>不支持[通用属性](../../apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md)<br><br>
+
+## 事件
+
+<br><br>不支持[通用事件](../../apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md)<br><br>
 
 ## 子组件
 

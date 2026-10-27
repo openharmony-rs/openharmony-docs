@@ -55,6 +55,12 @@ Creates a vertical lazy-loading grid layout container.
 
 ## Summary
 
+### Classes
+
+| Name | Description |
+| --- | --- |
+| [LazyGridLayoutAttribute](arkts-arkui-lazyvgridlayout-comp-lazygridlayoutattribute-c.md) | Defines the lazy grid layout attribute. |
+
 ## Examples
 
 ### Example 1: Implementing a Lazy-Loading Grid Layout

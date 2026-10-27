@@ -76,7 +76,7 @@ Whether the same-layer rendering component supports CSS transform rotate and ske
 
 **Default:** false
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 

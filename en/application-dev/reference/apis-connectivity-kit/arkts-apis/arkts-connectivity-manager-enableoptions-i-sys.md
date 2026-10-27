@@ -6,7 +6,7 @@ interface EnableOptions
 
 The options for enabling NearLink.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 <!--Device-manager-interface EnableOptions--><!--Device-manager-interface EnableOptions-End-->
 
@@ -30,11 +30,11 @@ Auto-connection policy to be used when NearLink is enabled. The default value is
 
 **Type:** [AutoConnectPolicy](arkts-connectivity-manager-autoconnectpolicy-e-sys.md)
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-EnableOptions-autoConnPolicy?: AutoConnectPolicy--><!--Device-EnableOptions-autoConnPolicy?: AutoConnectPolicy-End-->
 

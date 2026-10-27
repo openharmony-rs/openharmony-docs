@@ -24,7 +24,7 @@ High-power scan mode. The scan frequency is high, and the power consumption is h
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-ScanMode-SCAN_MODE_LOW_LATENCY = 2--><!--Device-ScanMode-SCAN_MODE_LOW_LATENCY = 2-End-->
 

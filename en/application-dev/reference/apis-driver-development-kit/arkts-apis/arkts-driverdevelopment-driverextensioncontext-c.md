@@ -37,7 +37,7 @@ Updates the driver state. This interface is reserved and does not provide specif
 
 ```TypeScript
 // The current code implementation depends on the code implementation in the previous section.
-if (context != null) {
+if (context !== undefined) {
   context.updateDriverState();
 }
 ```

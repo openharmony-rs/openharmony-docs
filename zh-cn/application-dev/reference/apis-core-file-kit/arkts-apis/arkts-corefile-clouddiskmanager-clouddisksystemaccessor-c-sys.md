@@ -48,6 +48,24 @@ constructor()
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The caller is not a system application. |
 | [34400014](../errorcode-clouddiskmanager-sys.md#34400014-系统内部错误) | Temporary failure. Failed to initialize the native accessor instance. Please try again. |
 
+<!--Del-->
+**示例**
+
+```TypeScript
+import { cloudDiskManager } from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let accessor: cloudDiskManager.CloudDiskSystemAccessor = new cloudDiskManager.CloudDiskSystemAccessor();
+  console.info('CloudDiskSystemAccessor created successfully.');
+} catch (err) {
+  let error: BusinessError = err as BusinessError;
+  console.error(`CloudDiskSystemAccessor constructor failed. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+<!--DelEnd-->
+
 ## dehydrateFile
 
 ```TypeScript
@@ -101,6 +119,25 @@ dehydrateFile(filePath: string): Promise<void>
 | [34400025](../errorcode-clouddiskmanager-sys.md#34400025-文件名或路径过长) | The file name or path is too long. |
 | [34400029](../errorcode-clouddiskmanager-sys.md#34400029-网盘应用拒绝脱水) | The cloud disk provider did not approve the dehydration request. |
 | [34400033](../errorcode-clouddiskmanager-sys.md#34400033-占位符状态无效) | The placeholder state or its stored attribute is invalid. |
+
+<!--Del-->
+**示例**
+
+```TypeScript
+import { cloudDiskManager } from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let accessor: cloudDiskManager.CloudDiskSystemAccessor = new cloudDiskManager.CloudDiskSystemAccessor();
+let filePath: string = '/storage/Users/currentUser/Docs/cloud/photo.jpg';
+
+accessor.dehydrateFile(filePath).then(() => {
+  console.info('dehydrate file successfully.');
+}).catch((err: BusinessError) => {
+  console.error(`dehydrateFile failed with error message: ${err.message}, error code: ${err.code}`);
+});
+```
+
+<!--DelEnd-->
 
 ## hydratePlaceholder
 
@@ -159,6 +196,31 @@ hydratePlaceholder(filePath: string, callbackType: CallbackType, priority: Hydra
 | [34400033](../errorcode-clouddiskmanager-sys.md#34400033-占位符状态无效) | The placeholder state or its stored attribute is invalid. |
 | [34400034](../errorcode-clouddiskmanager-sys.md#34400034-活跃水合任务数量达到上限) | The limit on pending hydrate tasks has been reached. |
 
+<!--Del-->
+**示例**
+
+```TypeScript
+import { cloudDiskManager } from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let accessor: cloudDiskManager.CloudDiskSystemAccessor = new cloudDiskManager.CloudDiskSystemAccessor();
+let filePath: string = '/storage/Users/currentUser/Docs/cloud/photo.jpg';
+
+accessor.onHydrateProgress((progress: cloudDiskManager.HydrateProgress) => {
+  console.info(`hydrate progress - filePath: ${progress.filePath}, state: ${progress.state}`);
+  console.info(`processedSize: ${progress.processedSize}, totalSize: ${progress.totalSize}`);
+});
+
+accessor.hydratePlaceholder(filePath, cloudDiskManager.CallbackType.FETCH_DATA,
+  cloudDiskManager.HydratePriority.HIGH).then(() => {
+  console.info('hydrate task created successfully.');
+}).catch((err: BusinessError) => {
+  console.error(`hydratePlaceholder failed with error message: ${err.message}, error code: ${err.code}`);
+});
+```
+
+<!--DelEnd-->
+
 ## offHydrateProgress
 
 ```TypeScript
@@ -196,6 +258,33 @@ offHydrateProgress(callback?: Callback<HydrateProgress>): void
 | [34400008](../errorcode-clouddiskmanager-sys.md#34400008-同步根路径未注册) | No sync root is registered, or the registered sync roots cannot be queried when unregistering this instance's callback from the service. |
 | [34400014](../errorcode-clouddiskmanager-sys.md#34400014-系统内部错误) | Temporary failure while unregistering the callback. Please try again. |
 
+<!--Del-->
+**示例**
+
+```TypeScript
+import { cloudDiskManager } from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let accessor: cloudDiskManager.CloudDiskSystemAccessor = new cloudDiskManager.CloudDiskSystemAccessor();
+
+let callback = (progress: cloudDiskManager.HydrateProgress) => {
+  console.info(`hydrate progress - filePath: ${progress.filePath}, state: ${progress.state}`);
+};
+
+accessor.onHydrateProgress(callback);
+
+try {
+  accessor.offHydrateProgress(callback); // 取消指定的回调
+  accessor.offHydrateProgress(); // 取消所有回调
+  console.info('unsubscribe hydrateProgress successfully.');
+} catch (err) {
+  let error: BusinessError = err as BusinessError;
+  console.error(`offHydrateProgress failed. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+<!--DelEnd-->
+
 ## onHydrateProgress
 
 ```TypeScript
@@ -232,3 +321,28 @@ onHydrateProgress(callback: Callback<HydrateProgress>): void
 | [34400003](../errorcode-clouddiskmanager-sys.md#34400003-ipc通信失败) | IPC communication failed. |
 | [34400008](../errorcode-clouddiskmanager-sys.md#34400008-同步根路径未注册) | No sync root is registered, or the registered sync roots cannot be queried. |
 | [34400014](../errorcode-clouddiskmanager-sys.md#34400014-系统内部错误) | Temporary failure. Failed to initialize the callback, resolve the user account, or complete an internal operation. Please try again. |
+
+<!--Del-->
+**示例**
+
+```TypeScript
+import { cloudDiskManager } from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let accessor: cloudDiskManager.CloudDiskSystemAccessor = new cloudDiskManager.CloudDiskSystemAccessor();
+
+let callback = (progress: cloudDiskManager.HydrateProgress) => {
+  console.info(`hydrate progress - filePath: ${progress.filePath}, state: ${progress.state}`);
+  console.info(`processedSize: ${progress.processedSize}, totalSize: ${progress.totalSize}`);
+};
+
+try {
+  accessor.onHydrateProgress(callback);
+  console.info('subscribe hydrateProgress successfully.');
+} catch (err) {
+  let error: BusinessError = err as BusinessError;
+  console.error(`onHydrateProgress failed. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+<!--DelEnd-->

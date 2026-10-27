@@ -76,6 +76,12 @@ List(options?: ListOptions)
 
 ## 汇总
 
+### 类
+
+| 名称 | 说明 |
+| --- | --- |
+| [ListScroller](arkts-arkui-list-comp-listscroller-c.md) | List组件的滚动控制器，通过它控制List组件的滚动，仅支持一对一绑定到List组件。 |
+
 ### 接口
 
 | 名称 | 说明 |
@@ -1379,6 +1385,8 @@ struct ListExample {
 
 ListDataSource说明及完整代码参考[示例1（添加滚动事件）](#示例1添加滚动事件)。
 
+
+
 ```TypeScript
 // xxx.ets
 import { ListDataSource } from './ListDataSource';
@@ -1440,6 +1448,71 @@ struct ListExample {
         console.info(`onEditModeChange:${data}`)
       })
       .editModeOptions({ useDefaultMultiSelectStyle: true, enableTwoFingerMultiSelect: true })
+    }.width('100%').padding({ top: 10 }).backgroundColor('#FFDCDCDC')
+  }
+}
+```
+
+### 示例19（设置滚动占位）
+
+该示例通过[scrollPlaceholder](#scrollplaceholder)接口为List设置滚动占位：占位模板经wrapBuilder包装后，通过UIContext的[getPlaceholderRegister()](../arkts-apis-uicontext-uicontext.md#getplaceholderregister)注册（完整说明参考[PlaceholderRegister](../arkts-apis-placeholderregister.md#placeholderregister)）；快速滚动时，帧预算不足的列表项先显示已注册的占位模板，真实列表项分帧创建完成后替换占位，减少丢帧。
+
+从API版本26.1.0开始，List组件新增scrollPlaceholder接口。
+
+ListDataSource说明及完整代码参考[示例1（添加滚动事件）](#示例1添加滚动事件)。
+
+```TypeScript
+// xxx.ets
+import { ListDataSource } from './ListDataSource';
+import { PlaceholderOptions } from '@kit.ArkUI';
+
+// 占位模板须为全局、无参、只读静态渲染的受限Builder
+@Builder({ isPlaceholder: true })
+function ItemPlaceholder() {
+  Column() {
+    Text('加载中...')
+      .fontSize(16)
+      .fontColor(0x999999)
+  }
+  .width('100%')
+  .height(100)
+  .justifyContent(FlexAlign.Center)
+}
+
+@Entry
+@Component
+struct ListExample {
+  private arr: ListDataSource = new ListDataSource([]);
+
+  aboutToAppear() {
+    // 通过UIContext获取占位注册表，占位模板经wrapBuilder包装后注册，供provider按id引用
+    this.getUIContext().getPlaceholderRegister().register('itemPlaceholder', wrapBuilder(ItemPlaceholder));
+    let list: number[] = [];
+    for (let i = 0; i < 100; i++) {
+      list.push(i);
+    }
+    this.arr = new ListDataSource(list);
+  }
+
+  build() {
+    Column({ space: 5 }) {
+      List({ space: 10 }) {
+        LazyForEach(this.arr, (item: number, index: number) => {
+          ListItem() {
+            Text(item.toString())
+              .fontSize(16)
+              .width('100%')
+              .height(100)
+              .textAlign(TextAlign.Center)
+          }
+        }, (item: number) => item.toString())
+      }
+      .width('90%')
+      .height(300)
+      // id对应已注册的占位模板，size为占位的建议尺寸，与真实列表项高度一致
+      .scrollPlaceholder((index: number): PlaceholderOptions | undefined => {
+        return { id: 'itemPlaceholder', size: { height: 100 } };
+      })
     }.width('100%').padding({ top: 10 }).backgroundColor('#FFDCDCDC')
   }
 }

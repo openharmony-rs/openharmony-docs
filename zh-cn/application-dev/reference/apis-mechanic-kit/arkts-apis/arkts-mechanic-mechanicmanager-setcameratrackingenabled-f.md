@@ -37,6 +37,12 @@ function setCameraTrackingEnabled(isEnabled: boolean): void
 **示例**
 
 ```TypeScript
+// 判断当前设备是否支持对特定设备类型的机械体设备控制（isControlSupported()接口API起始版本：26.0.0）
+let isSupported: boolean = mechanicManager.isControlSupported();
+if (!isSupported) {
+  console.info('The control function is not supported.');
+  return;
+}
 console.info('Enable tracing');
 // 调用setCameraTrackingEnabled方法，参数true表示启用摄像头跟踪
 mechanicManager.setCameraTrackingEnabled(true);

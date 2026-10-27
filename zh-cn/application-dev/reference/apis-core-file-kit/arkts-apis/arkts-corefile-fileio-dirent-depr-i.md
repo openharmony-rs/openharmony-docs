@@ -49,7 +49,7 @@ isBlockDevice(): boolean
 
 ```TypeScript
 let dir = fileio.opendirSync(pathDir);
-let isBLockDevice = dir.readSync().isBlockDevice();
+let isBlockDevice = dir.readSync().isBlockDevice();
 ```
 
 ## isCharacterDevice

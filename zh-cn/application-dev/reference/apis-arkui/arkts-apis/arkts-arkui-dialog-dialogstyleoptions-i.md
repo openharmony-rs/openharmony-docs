@@ -17,7 +17,7 @@ declare interface DialogStyleOptions extends DialogBaseOptions
 ## 导入模块
 
 ```TypeScript
-import { dialog, DialogBaseAlignment, DialogButtonOrientation, DialogState, DialogResult, DialogDismissal, DialogBaseController } from '@kit.ArkUI';
+import { dialog, DialogBaseAlignment, DialogButtonOrientation, DialogState, DialogResult, DialogDismissal, DialogBaseController, HandednessFollowMode } from '@kit.ArkUI';
 ```
 
 ## buttonDirection

@@ -6,6 +6,8 @@ declare class DistortionComponentAttribute extends CommonMethod<DistortionCompon
 
 Defines the DistortionComponent attribute functions
 
+支持通用事件。
+
 **继承/实现关系：** DistortionComponentAttribute extends CommonMethod&lt;DistortionComponentAttribute&gt;
 
 **起始版本：** 26.0.0

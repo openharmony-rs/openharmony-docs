@@ -2474,3 +2474,43 @@ windowId?: number
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **系统接口：** 此接口为系统接口。
+
+## windowScaleX
+
+```TypeScript
+windowScaleX?: number
+```
+
+窗口在X轴方向上的缩放比例。
+
+**类型：** number
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AccessibilityElement-windowScaleX?: double--><!--Device-AccessibilityElement-windowScaleX?: double-End-->
+
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
+
+**系统接口：** 此接口为系统接口。
+
+## windowScaleY
+
+```TypeScript
+windowScaleY?: number
+```
+
+窗口在Y轴方向上的缩放比例。
+
+**类型：** number
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AccessibilityElement-windowScaleY?: double--><!--Device-AccessibilityElement-windowScaleY?: double-End-->
+
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
+
+**系统接口：** 此接口为系统接口。

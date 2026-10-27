@@ -32,7 +32,7 @@ NearLink address of a remote device. The address format is **11:22:33:AA:BB:FF**
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-DataParams-address: string--><!--Device-DataParams-address: string-End-->
 
@@ -52,7 +52,7 @@ Data packet. When this parameter is used in [dataTransfer.writeData](arkts-conne
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-DataParams-data: ArrayBuffer--><!--Device-DataParams-data: ArrayBuffer-End-->
 
@@ -72,7 +72,7 @@ NearLink service UUID, which is a string of 36 characters. The value consists of
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-DataParams-uuid: string--><!--Device-DataParams-uuid: string-End-->
 

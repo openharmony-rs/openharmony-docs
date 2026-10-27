@@ -62,7 +62,7 @@ master process. If no available process exists, it creates an empty process as t
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | [16000115](../errorcode-ability.md#16000115-current-process-cannot-be-set-as-candidate-master-process) | The current process cannot be set as a candidate master process. |
 
 **Examples**

@@ -14,7 +14,7 @@ function getActiveNotification(hashCode: string): Promise<NotificationRequest>
 
 根据通知的唯一标识hashCode获取当前未删除的通知信息。使用Promise异步回调。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -48,3 +48,20 @@ function getActiveNotification(hashCode: string): Promise<NotificationRequest>
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 | [1600007](../errorcode-notification.md#1600007-通知不存在) | The notification does not exist. |
+
+<!--Del-->
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 此处应改为开发者需要查询的通知唯一标识
+let hashCode: string = 'hashCode';
+notificationManager.getActiveNotification(hashCode).then((data: notificationManager.NotificationRequest) => {
+    console.info(`getActiveNotification success, data: ${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+    console.error(`getActiveNotification failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+<!--DelEnd-->

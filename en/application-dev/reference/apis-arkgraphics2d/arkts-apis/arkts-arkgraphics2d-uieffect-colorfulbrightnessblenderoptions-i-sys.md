@@ -6,7 +6,7 @@ interface ColorfulBrightnessBlenderOptions
 
 Optional enhanced configuration for the hue-preserving brightening and darkening blender, passed in as the options parameter of createColorfulBrightnessBlender. In addition to the regular BrightnessBlenderParam, it can be further fine-tuned for the brightening or darkening direction, color enhancement strength, input color influence, contrast against the background, and the HDR switch. If not passed, each item uses its default value.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 <!--Device-uiEffect-interface ColorfulBrightnessBlenderOptions--><!--Device-uiEffect-interface ColorfulBrightnessBlenderOptions-End-->
 
@@ -32,11 +32,11 @@ Foreground darken weight, which controls the direction and strength of brighteni
 
 **Default:** 1
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 26.2.0.
+**Widget capability:** This API can be used in ArkTS widgets since API version 26.1.0.
 
 <!--Device-ColorfulBrightnessBlenderOptions-darkenWeight?: double--><!--Device-ColorfulBrightnessBlenderOptions-darkenWeight?: double-End-->
 
@@ -56,11 +56,11 @@ Whether to actively enable HDR. When set to true, HDR is actively enabled and th
 
 **Default:** false
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 26.2.0.
+**Widget capability:** This API can be used in ArkTS widgets since API version 26.1.0.
 
 <!--Device-ColorfulBrightnessBlenderOptions-hdrEnabled?: boolean--><!--Device-ColorfulBrightnessBlenderOptions-hdrEnabled?: boolean-End-->
 
@@ -80,11 +80,11 @@ Luma difference threshold to ensure readability, used to constrain the luma diff
 
 **Default:** 0
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 26.2.0.
+**Widget capability:** This API can be used in ArkTS widgets since API version 26.1.0.
 
 <!--Device-ColorfulBrightnessBlenderOptions-lumaDiff?: double--><!--Device-ColorfulBrightnessBlenderOptions-lumaDiff?: double-End-->
 
@@ -104,11 +104,11 @@ Input color influence, which controls the degree to which the input color partic
 
 **Default:** 1
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 26.2.0.
+**Widget capability:** This API can be used in ArkTS widgets since API version 26.1.0.
 
 <!--Device-ColorfulBrightnessBlenderOptions-tintedColorPercent?: double--><!--Device-ColorfulBrightnessBlenderOptions-tintedColorPercent?: double-End-->
 
@@ -128,11 +128,11 @@ Color enhancement strength, which controls the degree of saturation enhancement 
 
 **Default:** 0
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 26.2.0.
+**Widget capability:** This API can be used in ArkTS widgets since API version 26.1.0.
 
 <!--Device-ColorfulBrightnessBlenderOptions-vibrancyStrength?: double--><!--Device-ColorfulBrightnessBlenderOptions-vibrancyStrength?: double-End-->
 

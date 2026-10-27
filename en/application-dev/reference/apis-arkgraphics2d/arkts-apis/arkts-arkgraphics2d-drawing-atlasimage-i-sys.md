@@ -26,7 +26,7 @@ import { drawing } from '@kit.ArkGraphics2D';
 atlasImage: image.PixelMap
 ```
 
-Sprite sheet atlas image. Created through the image module as a PixelMap instance.
+Sprite sheet atlas image.
 
 **Type:** [image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)
 

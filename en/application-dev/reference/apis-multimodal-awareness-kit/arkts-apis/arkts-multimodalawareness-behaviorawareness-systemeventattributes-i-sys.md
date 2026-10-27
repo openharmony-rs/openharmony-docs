@@ -6,7 +6,7 @@ export interface SystemEventAttributes
 
 System event scenario attributes.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 <!--Device-behaviorAwareness-export interface SystemEventAttributes--><!--Device-behaviorAwareness-export interface SystemEventAttributes-End-->
 
@@ -30,7 +30,7 @@ Application ID (for app-related events).
 
 **Type:** string
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -50,7 +50,7 @@ Application name.
 
 **Type:** string
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -70,7 +70,7 @@ Battery threshold. Unit: Percentage. The value must be an integer within [0,100]
 
 **Type:** number
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -90,7 +90,7 @@ Bluetooth device name.
 
 **Type:** string
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -110,7 +110,7 @@ Bluetooth device type. Default value: The default value is 0.
 
 **Type:** [BluetoothDeviceType](arkts-multimodalawareness-behaviorawareness-bluetoothdevicetype-e-sys.md)
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -130,7 +130,7 @@ Daily usage duration threshold. Unit: Minute. The value must be an integer withi
 
 **Type:** number
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -150,7 +150,7 @@ Single-use duration threshold. Unit: Minute. The value should be an integer. Def
 
 **Type:** number
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -170,7 +170,7 @@ Discriminator field, fixed as 'systemEvent'.
 
 **Type:** 'systemEvent'
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -190,7 +190,7 @@ Battery percentage. Unit: Percentage. The value must be an integer within [0,100
 
 **Type:** number
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -210,7 +210,7 @@ Application package name.
 
 **Type:** string
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 

@@ -88,7 +88,7 @@ struct PickerDemo {
   private onRecentPhotoCheckResult(recentPhotoExists: boolean): void {
     // Image or video that meets the search criteria exists.
     if (recentPhotoExists) {
-      console.info('The photo is exist.');
+      console.info('The photo exists.');
     }
   }
 

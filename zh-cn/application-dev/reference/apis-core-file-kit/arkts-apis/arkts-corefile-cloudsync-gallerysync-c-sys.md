@@ -343,6 +343,23 @@ startWithType(type: SyncType): Promise<void>
 | 22400002 | Network unavailable. |
 | 22400003 | Low battery level. |
 
+<!--Del-->
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let gallerySync = new cloudSync.GallerySync();
+
+gallerySync.startWithType(cloudSync.SyncType.FORCE_THM).then(() => {
+  console.info('start sync successfully.');
+}).catch((err: BusinessError) => {
+  console.error(`start sync failed, code: ${err.code}, message: ${err.message}`);
+});
+```
+
+<!--DelEnd-->
+
 ## startWithType
 
 ```TypeScript
@@ -379,6 +396,26 @@ startWithType(callback: Callback<void>, type: SyncType): void
 | 22400001 | Cloud status not ready. |
 | 22400002 | Network unavailable. |
 | 22400003 | Low battery level. |
+
+<!--Del-->
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let gallerySync = new cloudSync.GallerySync();
+
+try {
+  gallerySync.startWithType(() => {
+    console.info('start sync successfully.');
+  }, cloudSync.SyncType.FORCE_THM);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`start sync failed, code: ${error.code}, message: ${error.message}`);
+}
+```
+
+<!--DelEnd-->
 
 ## stop
 

@@ -34,7 +34,7 @@ Obtains system service information.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | The parameter check failed, Possible causes: 1.The parameter type error. 2.The args parameter is not string array. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. |
 | [11400101](../errorcode-hiviewdfx-hidebug.md#11400101-failed-to-obtain-the-system-service) | ServiceId invalid. The system ability does not exist. |
 
 **Examples**

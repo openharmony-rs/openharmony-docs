@@ -6,7 +6,7 @@ interface CleanupSize
 
 ROM revenue.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 <!--Device-photoAccessHelper-interface CleanupSize--><!--Device-photoAccessHelper-interface CleanupSize-End-->
 
@@ -30,7 +30,7 @@ Interval index. The value should be an integer.
 
 **Type:** number
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -50,7 +50,7 @@ ROM reclaimed space in bytes. Unit: Bytes. The value should be an integer.
 
 **Type:** number
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 

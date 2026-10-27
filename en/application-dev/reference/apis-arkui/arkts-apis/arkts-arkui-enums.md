@@ -96,6 +96,7 @@
 | [ResponseRegionSupportedTool](arkts-arkui-responseregionsupportedtool-e.md) | Sets the type of the input tool applicable to the touch target. |
 | [ResponseType](arkts-arkui-responsetype-e.md) | Sets how menu display is triggered. |
 | [ScrollSource](arkts-arkui-scrollsource-e.md) | Enumerates the sources of scroll operations. |
+| [ShadowClipMode](arkts-arkui-shadowclipmode-e.md) | Enumerates the clip modes for the shadow when it is not filled. |
 | [SharedTransitionEffectType](arkts-arkui-sharedtransitioneffecttype-e.md) | Sets the animation type. |
 | [SmartGestureAction](arkts-arkui-smartgestureaction-e.md) | Enumerates smart gesture action types. |
 | [TextAlign](arkts-arkui-textalign-e.md) | Sets the horizontal alignment of the text. |

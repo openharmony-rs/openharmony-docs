@@ -4,7 +4,7 @@
 export interface TargetInfo
 ```
 
-Target information.
+搜索目标的相关信息
 
 **起始版本：** 21
 

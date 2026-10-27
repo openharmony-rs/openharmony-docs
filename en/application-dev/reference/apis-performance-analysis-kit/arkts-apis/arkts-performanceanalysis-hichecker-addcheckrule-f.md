@@ -30,7 +30,7 @@ Adds one or more check rules. HiChecker detects unexpected operations or gives f
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | the parameter check failed, only one bigint type parameter is needed |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. |
 
 **Examples**
 

@@ -30,7 +30,7 @@ Starts the VM profiling method. **startJsCpuProfiling(filename: string)** and **
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | The parameter check failed, Parameter type error. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. |
 
 **Examples**
 

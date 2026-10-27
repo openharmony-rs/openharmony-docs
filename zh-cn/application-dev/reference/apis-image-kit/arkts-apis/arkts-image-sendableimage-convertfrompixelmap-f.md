@@ -56,8 +56,8 @@ function convertFromPixelMap() {
   try {
     let sendablePixelMap: sendableImage.PixelMap = sendableImage.convertFromPixelMap(pixelMap);
     console.info('Succeeded in converting the PixelMap.');
-  } catch (e) {
-    const err = e as BusinessError;
+  } catch (error) {
+    const err = error as BusinessError;
     console.error(`Failed to convert the PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }

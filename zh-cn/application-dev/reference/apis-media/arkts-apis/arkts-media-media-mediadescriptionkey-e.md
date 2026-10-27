@@ -268,6 +268,24 @@ MD_KEY_TRACK_NAME = 'track_name'
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
+## MD_KEY_TRACK_PLAYABLE
+
+```TypeScript
+MD_KEY_TRACK_PLAYABLE = 'is_playable'
+```
+
+提取该Track是否可以正常播放的键
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-MediaDescriptionKey-MD_KEY_TRACK_PLAYABLE = 'is_playable'--><!--Device-MediaDescriptionKey-MD_KEY_TRACK_PLAYABLE = 'is_playable'-End-->
+
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
 ## MD_KEY_TRACK_REFERENCE_TYPE
 
 ```TypeScript

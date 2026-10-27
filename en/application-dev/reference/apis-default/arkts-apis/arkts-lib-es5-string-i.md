@@ -94,7 +94,7 @@ Returns the last occurrence of a substring in the string.
 ## localeCompare
 
 ```TypeScript
-localeCompare(that: string, locales?: string[], options?: Intl.CollatorOptions): number
+localeCompare(that: string, locales?: string | string[], options?: Intl.CollatorOptions): number
 ```
 
 Determines whether two strings are equivalent in the current or specified locale.
@@ -106,7 +106,7 @@ Determines whether two strings are equivalent in the current or specified locale
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | that | string | Yes |  |
-| locales | string[] | No |  |
+| locales | string &#124; string[] | No |  |
 | options | [Intl.CollatorOptions](arkts-intl-collatoroptions-i.md) | No |  |
 
 ## match
@@ -229,7 +229,7 @@ Returns the substring at the specified location within a String object.
 ## toLocaleLowerCase
 
 ```TypeScript
-toLocaleLowerCase(locales?: string[]): string
+toLocaleLowerCase(locales?: string | string[]): string
 ```
 
 Converts all alphabetic characters to lowercase, taking into account the host environment's current locale.
@@ -240,12 +240,12 @@ Converts all alphabetic characters to lowercase, taking into account the host en
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| locales | string[] | No |  |
+| locales | string &#124; string[] | No |  |
 
 ## toLocaleUpperCase
 
 ```TypeScript
-toLocaleUpperCase(locales?: string[]): string
+toLocaleUpperCase(locales?: string | string[]): string
 ```
 
 Returns a string where all alphabetic characters have been converted to uppercase, taking into account the host environment's current locale.
@@ -256,7 +256,7 @@ Returns a string where all alphabetic characters have been converted to uppercas
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| locales | string[] | No |  |
+| locales | string &#124; string[] | No |  |
 
 ## toLowerCase
 

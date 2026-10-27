@@ -34,11 +34,11 @@ Checks whether a specified type of [RunningLock](arkts-basicservices-runninglock
 **Examples**
 
 ```TypeScript
-runningLock.isRunningLockTypeSupported(runningLock.RunningLockType.BACKGROUND, (err: Error, data: boolean) => {
-    if (typeof err === 'undefined') {
-        console.info('BACKGROUND lock support status: ' + data);
+runningLock.isRunningLockTypeSupported(runningLock.RunningLockType.BACKGROUND, (err: BusinessError, data: boolean) => {
+    if (err) {
+        console.error(`Failed to check BACKGROUND lock support status. Code: ${err.code}, message: ${err.message}`);
     } else {
-        console.error('check BACKGROUND lock support status failed, err: ' + err);
+        console.info('BACKGROUND lock support status: ' + data);
     }
 });
 ```
@@ -81,7 +81,7 @@ runningLock.isRunningLockTypeSupported(runningLock.RunningLockType.BACKGROUND)
 .then((data: boolean) => {
     console.info('BACKGROUND lock support status: ' + data);
 })
-.catch((err: Error) => {
-    console.error('check BACKGROUND lock support status failed, err: ' + err);
+.catch((err: BusinessError) => {
+    console.error(`Failed to check BACKGROUND lock support status. Code: ${err.code}, message: ${err.message}`);
 });
 ```

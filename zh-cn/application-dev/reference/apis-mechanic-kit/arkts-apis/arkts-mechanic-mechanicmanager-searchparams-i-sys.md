@@ -4,7 +4,7 @@
 export interface SearchParams
 ```
 
-Parameters for target searching.
+指定搜索的方向
 
 **起始版本：** 21
 
@@ -26,7 +26,7 @@ import { mechanicManager } from '@kit.MechanicKit';
 direction: SearchDirection
 ```
 
-Search direction.
+搜索的方向
 
 **类型：** [SearchDirection](arkts-mechanic-mechanicmanager-searchdirection-e-sys.md)
 

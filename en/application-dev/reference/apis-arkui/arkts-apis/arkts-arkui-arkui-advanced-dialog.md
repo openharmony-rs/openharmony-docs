@@ -1,5 +1,23 @@
 # @ohos.arkui.advanced.Dialog(Dialog)
 
+A dialog is a modal window that temporarily displays information that requires user attention or actions that need to
+ be performed, while preserving the current context.
+ Users must complete the interaction before exiting this modal state.
+
+> **NOTE**
+ >
+ > - If the **Dialog** component has universal attributes and universal events
+ > configured,
+ > the compiler toolchain automatically generates an additional \_\_Common\_\_ node and mounts the universal
+ > attributes and universal events on this node rather than the **Dialog** component itself.
+ > As a result, the configured universal attributes and universal events may fail to take effect or behave as
+ > intended. For this reason,
+ > avoid using universal attributes and events with the **Dialog** component.
+
+## Child Components
+
+Not supported
+
 ## Modules to Import
 
 ```TypeScript
@@ -18,13 +36,13 @@ import { AlertDialog, ButtonOptions, ConfirmDialog, LoadingDialog, SelectDialog,
 
 | Name | Description |
 | --- | --- |
-| [AlertDialog](arkts-arkui-arkui-advanced-dialog-alertdialog-s.md) | AlertDialog({controller: CustomDialogController, primaryTitle?: ResourceStr, secondaryTitle?: ResourceStr, content: ResourceStr, primaryButton?: ButtonOptions, secondaryButton?: ButtonOptions, theme?: Theme &#124; CustomTheme, themeColorMode?: ThemeColorMode}) |
-| [ConfirmDialog](arkts-arkui-arkui-advanced-dialog-confirmdialog-s.md) | ConfirmDialog({controller: CustomDialogController, title: ResourceStr, content?: ResourceStr, checkTips?: ResourceStr, isChecked?: boolean, onCheckedChange?: Callback\<boolean>, primaryButton?: ButtonOptions, secondaryButton?: ButtonOptions, theme?: Theme &#124; CustomTheme, themeColorMode?: ThemeColorMode}) |
-| [CustomContentDialog](arkts-arkui-arkui-advanced-dialog-customcontentdialog-s.md) | CustomContentDialog({controller: CustomDialogController, contentBuilder: () =&gt; void, primaryTitle?: ResourceStr, secondaryTitle?: ResourceStr, localizedContentAreaPadding?: LocalizedPadding, contentAreaPadding?: Padding, buttons?: ButtonOptions[], theme?: Theme &#124; CustomTheme, themeColorMode?: ThemeColorMode}) |
-| [LoadingDialog](arkts-arkui-arkui-advanced-dialog-loadingdialog-s.md) | LoadingDialog({Controller: CustomDialogController, content?: ResourceStr, theme?: Theme &#124; CustomTheme, themeColorMode?: ThemeColorMode}) |
-| [PopoverDialog](arkts-arkui-arkui-advanced-dialog-popoverdialog-s.md) | A dialog is a modal window that temporarily displays information that requires user attention or actions that need to be performed, while preserving the current context. Users must complete the interaction before exiting this modal state. |
-| [SelectDialog](arkts-arkui-arkui-advanced-dialog-selectdialog-s.md) | SelectDialog({controller: CustomDialogController, title: ResourceStr, content?: ResourceStr, selectedIndex?: number, confirm?: ButtonOptions, radioContent: Array&lt;SheetInfo&gt;, theme?: Theme &#124; CustomTheme, themeColorMode?: ThemeColorMode}) |
-| [TipsDialog](arkts-arkui-arkui-advanced-dialog-tipsdialog-s.md) | TipsDialog({controller: CustomDialogController, imageRes: ResourceStr &#124; PixelMap, imageSize?: SizeOptions, title?: ResourceStr, content?: ResourceStr, checkTips?: ResourceStr, isChecked?: boolean, checkAction?: (isChecked: boolean) =&gt; void, onCheckedChange?: Callback\<boolean>, primaryButton?: ButtonOptions, secondaryButton?: ButtonOptions, theme?: Theme &#124; CustomTheme, themeColorMode?: ThemeColorMode}) |
+| [AlertDialog](arkts-arkui-arkui-advanced-dialog-alertdialog-s.md) | Defines an alert dialog box used to warn the user when triggering an irreversible operation that will have serious consequences (such as deletion, reset, cancel editing, stop, etc.). |
+| [ConfirmDialog](arkts-arkui-arkui-advanced-dialog-confirmdialog-s.md) | Defines a confirmation dialog box used to provide error feedback or prompt information when an operation is not correctly executed (for example, a network error or low battery level) or when an incorrect operation is performed (for example, fingerprint enrollment). |
+| [CustomContentDialog](arkts-arkui-arkui-advanced-dialog-customcontentdialog-s.md) | Displays a dialog box that contains custom content and operation area. |
+| [LoadingDialog](arkts-arkui-arkui-advanced-dialog-loadingdialog-s.md) | Displays a loading dialog box to inform the user of the operation progress. |
+| [PopoverDialog](arkts-arkui-arkui-advanced-dialog-popoverdialog-s.md) | Defines a follow-hand dialog box that pops up based on the position of the target component. The aforementioned **TipsDialog**, **SelectDialog**, **ConfirmDialog**, **AlertDialog**, **LoadingDialog**, and **CustomContentDialog** can all serve as the content of the dialog box. |
+| [SelectDialog](arkts-arkui-arkui-advanced-dialog-selectdialog-s.md) | Displays a dialog box from which the user can select options presented in a list or grid. |
+| [TipsDialog](arkts-arkui-arkui-advanced-dialog-tipsdialog-s.md) | Defines a tip dialog box used to remind users to pay attention to specific matters or perform confirmation operations. |
 
 ### Interfaces
 

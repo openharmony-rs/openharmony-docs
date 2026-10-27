@@ -608,7 +608,7 @@ You can return **true** to block the current closure attempt and then manually c
 > 
 > - When [AbilityStage.onPrepareTerminationAsync](arkts-ability-app-ability-abilitystage-abilitystage-c.md#onprepareterminationasync)or [AbilityStage.onPrepareTermination](arkts-ability-app-ability-abilitystage-abilitystage-c.md#onpreparetermination) is implemented, this callback is not executed if the user right-clicks the dock bar or system tray to close the UIAbility.
 > 
-> - Additionally, if the application or a third-party framework registers a listener for window.WindowStage.on('windowStageClose'), this callback function is not executed.
+> - Additionally, if the application or a third-party framework registers a listener for window.WindowStage.on, this callback function is not executed.
 > 
 > - If an asynchronous callback crashes, it will be handled as a timeout. If the UIAbility does not respond within 10 seconds, it will be terminated forcibly.
 

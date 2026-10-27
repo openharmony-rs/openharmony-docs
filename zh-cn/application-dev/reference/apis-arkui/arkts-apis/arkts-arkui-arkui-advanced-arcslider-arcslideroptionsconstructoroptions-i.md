@@ -106,9 +106,9 @@ digitalCrownSensitivity?: CrownSensitivity
 layoutOptions?: ArcSliderLayoutOptions
 ```
 
-配置弧形Slider的样式信息。
+配置弧形Slider的布局信息。
 
-默认值：[ArcSliderStyleOptions](arkts-arkui-arkui-advanced-arcslider-arcsliderstyleoptions-c.md)的各项子属性均取其默认值。
+默认值：[ArcSliderLayoutOptions](arkts-arkui-arkui-advanced-arcslider-arcsliderlayoutoptions-c.md)的各项子属性均取其默认值。
 
 @Trace
 
@@ -150,9 +150,9 @@ styleOptions?: ArcSliderStyleOptions
 valueOptions?: ArcSliderValueOptions
 ```
 
-配置弧形Slider的样式信息。
+配置弧形Slider的数值信息。
 
-默认值：[ArcSliderStyleOptions](arkts-arkui-arkui-advanced-arcslider-arcsliderstyleoptions-c.md)的各项子属性均取其默认值。
+默认值：[ArcSliderValueOptions](arkts-arkui-arkui-advanced-arcslider-arcslidervalueoptions-c.md)的各项子属性均取其默认值。
 
 @Trace
 

@@ -6,7 +6,7 @@ interface InsightIntentExecutionInfo
 
 表示意图执行信息。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 <!--Device-insightIntent-interface InsightIntentExecutionInfo--><!--Device-insightIntent-interface InsightIntentExecutionInfo-End-->
 
@@ -28,11 +28,11 @@ callerBundleName: string
 
 **类型：** string
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-InsightIntentExecutionInfo-callerBundleName: string--><!--Device-InsightIntentExecutionInfo-callerBundleName: string-End-->
 
@@ -48,11 +48,11 @@ callerTokenId: string
 
 **类型：** string
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-InsightIntentExecutionInfo-callerTokenId: string--><!--Device-InsightIntentExecutionInfo-callerTokenId: string-End-->
 
@@ -68,33 +68,13 @@ callerUid: number
 
 **类型：** number
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-InsightIntentExecutionInfo-callerUid: int--><!--Device-InsightIntentExecutionInfo-callerUid: int-End-->
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-## instanceId
-
-```TypeScript
-instanceId: number
-```
-
-表示意图实例的唯一ID。该值应为整数。
-
-**类型：** number
-
-**起始版本：** 26.2.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
-
-<!--Device-InsightIntentExecutionInfo-instanceId: int--><!--Device-InsightIntentExecutionInfo-instanceId: int-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -108,11 +88,11 @@ intentName: string
 
 **类型：** string
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-InsightIntentExecutionInfo-intentName: string--><!--Device-InsightIntentExecutionInfo-intentName: string-End-->
 

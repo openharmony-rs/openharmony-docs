@@ -34,7 +34,7 @@ function getServiceDump(serviceid : number, fd : number, args : Array<string>) :
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameter check failed, Possible causes: 1.The parameter type error. 2.The args parameter is not string array. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. |
 | [11400101](../errorcode-hiviewdfx-hidebug.md#11400101-系统服务获取失败) | ServiceId invalid. The system ability does not exist. |
 
 **示例**

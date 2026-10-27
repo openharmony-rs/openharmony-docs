@@ -36,6 +36,12 @@ Creates a data panel component.
 
 ## Summary
 
+### Classes
+
+| Name | Description |
+| --- | --- |
+| [LinearGradient](arkts-arkui-datapanel-comp-lineargradient-c.md) | LinearGradient class |
+
 ### Interfaces
 
 | Name | Description |

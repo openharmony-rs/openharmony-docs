@@ -53,17 +53,17 @@ import { DriverExtensionAbility } from '@kit.DriverDevelopmentKit';
 import { rpc } from '@kit.IPCKit';
 import { Want } from '@kit.AbilityKit';
 
-class StubTest extends rpc.RemoteObject{
-    constructor(des : string) {
+class StubTest extends rpc.RemoteObject {
+    constructor(des: string) {
         super(des);
     }
-    onRemoteMessageRequest(code : number, data : rpc.MessageSequence, reply : rpc.MessageSequence, option : rpc.MessageOption) {
+    onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence, option: rpc.MessageOption) {
       // This interface must be overridden.
       return true;
     }
 }
 class DriverExt extends DriverExtensionAbility {
-  onConnect(want : Want) {
+  onConnect(want: Want) {
     console.info(`onConnect , want: ${want.abilityName}`);
     return new StubTest('test');
   }
@@ -77,21 +77,21 @@ import { DriverExtensionAbility } from '@kit.DriverDevelopmentKit';
 import { rpc } from '@kit.IPCKit';
 import { Want } from '@kit.AbilityKit';
 
-class StubTest extends rpc.RemoteObject{
-    constructor(des : string) {
+class StubTest extends rpc.RemoteObject {
+    constructor(des: string) {
         super(des);
     }
-    onRemoteMessageRequest(code : number, data : rpc.MessageSequence, reply : rpc.MessageSequence, option : rpc.MessageOption) {
+    onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence, option: rpc.MessageOption) {
       // This interface must be overridden.
       return true;
     }
 }
 async function getDescriptor() {
     // Call the asynchronous function.
-    return "asyncTest";
+    return 'asyncTest';
 }
 class DriverExt extends DriverExtensionAbility {
-  async onConnect(want : Want) {
+  async onConnect(want: Want) {
     console.info(`onConnect , want: ${want.abilityName}`);
     let descriptor = await getDescriptor();
     return new StubTest(descriptor);
@@ -128,7 +128,7 @@ import { DriverExtensionAbility } from '@kit.DriverDevelopmentKit';
 import { Want } from '@kit.AbilityKit';
 
 class DriverExt extends DriverExtensionAbility {
-  onDisconnect(want : Want) {
+  onDisconnect(want: Want) {
     console.info(`onDisconnect, want: ${want.abilityName}`);
   }
 }
@@ -141,7 +141,7 @@ import { DriverExtensionAbility } from '@kit.DriverDevelopmentKit';
 import { Want } from '@kit.AbilityKit';
 
 class DriverExt extends DriverExtensionAbility {
-  async onDisconnect(want : Want) {
+  async onDisconnect(want: Want) {
     console.info(`onDisconnect, want: ${want.abilityName}`);
     // Call the asynchronous function.
   }
@@ -180,7 +180,7 @@ Dumps client information. It is recommended that developers don't DUMP sensitive
 
 ```TypeScript
 class DriverExt extends DriverExtensionAbility {
-    onDump(params : Array<string>) {
+    onDump(params: Array<string>) {
         console.info(`dump, params: ${JSON.stringify(params)}`);
         return ['params'];
     }
@@ -216,7 +216,7 @@ import { DriverExtensionAbility } from '@kit.DriverDevelopmentKit';
 import { Want } from '@kit.AbilityKit';
 
 class DriverExt extends DriverExtensionAbility {
-  onInit(want : Want) {
+  onInit(want: Want) {
     console.info(`onInit, want: ${want.abilityName}`);
   }
 }

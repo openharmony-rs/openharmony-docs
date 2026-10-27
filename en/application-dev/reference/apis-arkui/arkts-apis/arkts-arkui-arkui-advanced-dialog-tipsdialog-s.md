@@ -4,8 +4,6 @@
 export declare struct TipsDialog
 ```
 
-TipsDialog({controller: CustomDialogController, imageRes: ResourceStr | PixelMap, imageSize?: SizeOptions, title?: ResourceStr, content?: ResourceStr, checkTips?: ResourceStr, isChecked?: boolean, checkAction?: (isChecked: boolean) =&gt; void, onCheckedChange?: Callback\<boolean>, primaryButton?: ButtonOptions, secondaryButton?: ButtonOptions, theme?: Theme | CustomTheme, themeColorMode?: ThemeColorMode})
-
 Defines a tip dialog box used to remind users to pay attention to specific matters or perform confirmation operations.
 
 **Since:** 10

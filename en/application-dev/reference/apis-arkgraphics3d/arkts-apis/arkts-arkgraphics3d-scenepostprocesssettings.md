@@ -1,5 +1,9 @@
 # ScenePostProcessSettings
 
+This module provides image post-processing methods such as tone mapping in ArkGraphics 3D.
+
+
+
 ## Summary
 
 ### Interfaces

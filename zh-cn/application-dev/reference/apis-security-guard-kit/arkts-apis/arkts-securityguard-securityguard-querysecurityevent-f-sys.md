@@ -12,7 +12,7 @@ import { securityGuard } from '@kit.SecurityGuardKit';
 function querySecurityEvent(rules: Array<SecurityEventRule>, querier: Querier): void
 ```
 
-用于获取安全事件信息。
+Query security event information from security guard.
 
 **起始版本：** 12
 
@@ -28,8 +28,8 @@ function querySecurityEvent(rules: Array<SecurityEventRule>, querier: Querier): 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| rules | Array&lt;[SecurityEventRule](arkts-securityguard-securityguard-securityeventrule-i-sys.md)&gt; | 是 | 获取数据的规则。 |
-| querier | [Querier](arkts-securityguard-securityguard-querier-i-sys.md) | 是 | 用于接收数据的回调函数。 |
+| rules | Array&lt;[SecurityEventRule](arkts-securityguard-securityguard-securityeventrule-i-sys.md)&gt; | 是 | rule of get security event information. |
+| querier | [Querier](arkts-securityguard-securityguard-querier-i-sys.md) | 是 | callback of receiving the query data. |
 
 **错误码：**
 

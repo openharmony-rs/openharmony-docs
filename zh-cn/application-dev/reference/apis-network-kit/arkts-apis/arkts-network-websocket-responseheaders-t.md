@@ -2,14 +2,14 @@
 
 ```TypeScript
 export type ResponseHeaders = {
-    [k: string]: string[] | undefined;
+    [k: string]: string | string[] | undefined;
   }
 ```
 
 服务器发送的响应头。
 
 **类型：** {
-    [k: string]: string[] | undefined;
+    [k: string]: string | string[] | undefined;
   }
 
 **起始版本：** 12

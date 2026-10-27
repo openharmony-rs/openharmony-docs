@@ -1143,11 +1143,11 @@ including the semantics of **syncLoad**.
 3. After the real item has been created, it is re-laid out under the normal layout constraints of
 ListItem and replaces the placeholder, keeping the scroll anchor.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-ListAttribute-scrollPlaceholder(provider?: PlaceholderProvider): ListAttribute--><!--Device-ListAttribute-scrollPlaceholder(provider?: PlaceholderProvider): ListAttribute-End-->
 

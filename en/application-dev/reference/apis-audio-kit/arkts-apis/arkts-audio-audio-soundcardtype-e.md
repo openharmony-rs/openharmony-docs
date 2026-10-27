@@ -6,7 +6,7 @@ enum SoundCardType
 
 Enumerates sound card types.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 <!--Device-audio-enum SoundCardType--><!--Device-audio-enum SoundCardType-End-->
 
@@ -20,7 +20,7 @@ ONBOARD = 0
 
 Onboard sound card.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -36,7 +36,7 @@ USB = 1
 
 USB sound card.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 

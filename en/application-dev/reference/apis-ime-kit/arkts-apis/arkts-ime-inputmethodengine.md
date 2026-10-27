@@ -35,6 +35,7 @@ import { inputMethodEngine } from '@kit.IMEKit';
 | [ImmersiveEffect](arkts-ime-inputmethodengine-immersiveeffect-i.md) | Describes the immersive effect. |
 | [InputClient](arkts-ime-inputmethodengine-inputclient-i.md) | You must first use [on('inputStart')](arkts-ime-inputmethodengine-inputmethodability-i.md#oninputstart) to obtain a **InputClient** instance, and then use this instance to call the following APIs. |
 | [InputMethodAbility](arkts-ime-inputmethodengine-inputmethodability-i.md) | In the following API examples, you must first use [getInputMethodAbility](arkts-ime-inputmethodengine-getinputmethodability-f.md) to obtain an **InputMethodAbility** instance, and then call the APIs using the obtained instance. |
+| [InputMethodRichText](arkts-ime-inputmethodengine-inputmethodrichtext-i.md) | Defines the rich text. |
 | [KeyboardArea](arkts-ime-inputmethodengine-keyboardarea-i.md) | Represents the keyboard area on the panel. |
 | [KeyboardController](arkts-ime-inputmethodengine-keyboardcontroller-i.md) | You must first use [on('inputStart')](arkts-ime-inputmethodengine-inputmethodability-i.md#oninputstart) to obtain a **KeyboardController** instance, and then use this instance to call the following APIs. |
 | [KeyboardDelegate](arkts-ime-inputmethodengine-keyboarddelegate-i.md) | In the following API examples, you must first use [getKeyboardDelegate](arkts-ime-inputmethodengine-getkeyboarddelegate-f.md) to obtain a **KeyboardDelegate** instance, and then call the APIs using the obtained instance. |
@@ -45,6 +46,7 @@ import { inputMethodEngine } from '@kit.IMEKit';
 | [PanelInfo](arkts-ime-inputmethodengine-panelinfo-i.md) | Describes the attributes of the input method panel. |
 | [PanelRect](arkts-ime-inputmethodengine-panelrect-i.md) | Represents the size of the input method panel. |
 | [Range](arkts-ime-inputmethodengine-range-i.md) | Describes the range of the selected text. |
+| [RichTextSpan](arkts-ime-inputmethodengine-richtextspan-i.md) | Defines a span in the rich text. |
 | [SystemPanelInsets](arkts-ime-inputmethodengine-systempanelinsets-i.md) | Defines the offset area between the input method soft keyboard and the system panel. |
 | [WindowInfo](arkts-ime-inputmethodengine-windowinfo-i.md) | Represents window information. |
 | [InputMethodEngine](arkts-ime-inputmethodengine-inputmethodengine-i.md) | In the following API examples, you must first use [getInputMethodEngine](arkts-ime-inputmethodengine-getinputmethodengine-f.md) to obtain an **InputMethodEngine** instance, and then call the APIs using the obtained instance. |
@@ -88,6 +90,7 @@ import { inputMethodEngine } from '@kit.IMEKit';
 | [PanelType](arkts-ime-inputmethodengine-paneltype-e.md) | Enumerates the types of the input method panel. <br> |
 | [RequestKeyboardReason](arkts-ime-inputmethodengine-requestkeyboardreason-e.md) | Enumerates the reasons for requesting keyboard input. <br> |
 | [SecurityMode](arkts-ime-inputmethodengine-securitymode-e.md) | Describes the security mode. |
+| [SpanType](arkts-ime-inputmethodengine-spantype-e.md) | Enumerates the types of spans in the rich text.<br> <br> |
 
 <!--Del-->
 ### Enums(System API)

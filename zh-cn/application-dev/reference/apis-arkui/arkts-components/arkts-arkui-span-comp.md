@@ -44,6 +44,12 @@ Span(value: string | Resource)
 
 ## 汇总
 
+### 类
+
+| 名称 | 说明 |
+| --- | --- |
+| [BaseSpan](arkts-arkui-span-comp-basespan-c.md) | 定义BaseSpan基础类，包含Span的通用属性。 |
+
 ### 接口
 
 | 名称 | 说明 |

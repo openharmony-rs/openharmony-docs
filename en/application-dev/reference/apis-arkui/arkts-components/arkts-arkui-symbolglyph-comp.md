@@ -38,6 +38,19 @@ Defines the constructor of SymbolGlyph.
 
 ## Summary
 
+### Classes
+
+| Name | Description |
+| --- | --- |
+| [AppearSymbolEffect](arkts-arkui-symbolglyph-comp-appearsymboleffect-c.md) | Inherits from **SymbolEffect**. |
+| [BounceSymbolEffect](arkts-arkui-symbolglyph-comp-bouncesymboleffect-c.md) | Inherits from **SymbolEffect**. |
+| [DisappearSymbolEffect](arkts-arkui-symbolglyph-comp-disappearsymboleffect-c.md) | Inherits from **SymbolEffect**. |
+| [HierarchicalSymbolEffect](arkts-arkui-symbolglyph-comp-hierarchicalsymboleffect-c.md) | Inherits from **SymbolEffect**. |
+| [PulseSymbolEffect](arkts-arkui-symbolglyph-comp-pulsesymboleffect-c.md) | Inherits from **SymbolEffect**. |
+| [ReplaceSymbolEffect](arkts-arkui-symbolglyph-comp-replacesymboleffect-c.md) | Inherits from **SymbolEffect**. |
+| [ScaleSymbolEffect](arkts-arkui-symbolglyph-comp-scalesymboleffect-c.md) | Inherits from **SymbolEffect**. |
+| [SymbolEffect](arkts-arkui-symbolglyph-comp-symboleffect-c.md) | Defines the **SymbolEffect** class. |
+
 ### Enums
 
 | Name | Description |

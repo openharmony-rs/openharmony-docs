@@ -6,7 +6,7 @@ declare interface WebContextMenuOptions
 
 Defines the options for a context menu item.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 <!--Device-unnamed-declare interface WebContextMenuOptions--><!--Device-unnamed-declare interface WebContextMenuOptions-End-->
 
@@ -22,7 +22,7 @@ Whether the context menu item is enabled. Default value: Default value: false.
 
 **Type:** boolean
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 

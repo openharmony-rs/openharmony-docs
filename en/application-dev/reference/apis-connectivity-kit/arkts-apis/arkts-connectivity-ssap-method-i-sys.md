@@ -34,7 +34,7 @@ Method UUID. The data format is the same as that of **serviceUuid**.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-Method-methodUuid: string--><!--Device-Method-methodUuid: string-End-->
 
@@ -56,7 +56,7 @@ Method parameters. The data format is defined by the specific service. By defaul
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-Method-parameter?: ArrayBuffer--><!--Device-Method-parameter?: ArrayBuffer-End-->
 
@@ -78,7 +78,7 @@ Return value of the method. The data format is defined by the specific service. 
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-Method-result?: ArrayBuffer--><!--Device-Method-result?: ArrayBuffer-End-->
 
@@ -100,7 +100,7 @@ NearLink service UUID, which is a string of 36 characters. The value consists of
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-Method-serviceUuid: string--><!--Device-Method-serviceUuid: string-End-->
 

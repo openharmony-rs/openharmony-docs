@@ -48,7 +48,7 @@ Specifies whether to perform full synchronization. When set to true, all data is
 
 **Type:** boolean
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 

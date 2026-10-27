@@ -44,6 +44,12 @@ Defines the constructor of Span.
 
 ## Summary
 
+### Classes
+
+| Name | Description |
+| --- | --- |
+| [BaseSpan](arkts-arkui-span-comp-basespan-c.md) | Defines the base class **BaseSpan**, including the universal attributes of the **Span** component. |
+
 ### Interfaces
 
 | Name | Description |

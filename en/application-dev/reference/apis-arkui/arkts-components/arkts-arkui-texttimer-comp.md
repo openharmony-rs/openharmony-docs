@@ -39,6 +39,12 @@ Create TextTimer component.
 
 ## Summary
 
+### Classes
+
+| Name | Description |
+| --- | --- |
+| [TextTimerController](arkts-arkui-texttimer-comp-texttimercontroller-c.md) | Defines the controller for controlling the **TextTimer** component. A **TextTimer** component can only be bound to one controller, and the relevant commands can only be called after the component has been created. A **TextTimerController** can control only the last **TextTimer** component bound to it. |
+
 ### Interfaces
 
 | Name | Description |

@@ -4,7 +4,7 @@
 export enum MechDeviceType
 ```
 
-Enumerates the mechanical device types.
+机械体设备类型的枚举
 
 **起始版本：** 20
 
@@ -34,7 +34,7 @@ POCKET_GIMBAL_CAMERA_DEVICE = 3
 
 口袋云台相机
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

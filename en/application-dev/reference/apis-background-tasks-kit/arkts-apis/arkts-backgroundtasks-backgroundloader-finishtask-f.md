@@ -14,7 +14,7 @@ function finishTask(taskInfo: TaskInfo): void
 
 Finish background load task.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Required permissions:** ohos.permission.KEEP_BACKGROUND_RUNNING
 

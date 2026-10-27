@@ -15,7 +15,7 @@ export class DialogBaseController
 ## 导入模块
 
 ```TypeScript
-import { dialog, DialogBaseAlignment, DialogButtonOrientation, DialogState, DialogResult, DialogDismissal, DialogBaseController } from '@kit.ArkUI';
+import { dialog, DialogBaseAlignment, DialogButtonOrientation, DialogState, DialogResult, DialogDismissal, DialogBaseController, HandednessFollowMode } from '@kit.ArkUI';
 ```
 
 ## close

@@ -38,10 +38,49 @@ function requestExemptionResource(resourceType: StandbyResourceType, bundleName:
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: <br>1. The hardware does not support the capability. <br>2. The chip does not support the capability. <br>3. A dependent service feature is not supported. |
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
 | [9200012](../errorcode-enterpriseDeviceManager.md#9200012-参数校验失败) | Parameter verification failed. |
 | [9200016](../errorcode-enterpriseDeviceManager.md#9200016-服务超时) | Service timeout. |
 | [9201002](../errorcode-enterpriseDeviceManager.md#9201002-企业应用安装失败) | The application is not installed. |
+
+**示例**
+
+```TypeScript
+import { applicationManager, systemManager } from '@kit.MDMKit';
+import { BusinessError, systemDateTime } from '@kit.BasicServicesKit';
+
+// 需根据实际情况进行替换
+let bundleName: string = 'com.example.test';
+let duration: number = 3600;
+let timerId: number = 0;
+// 精确定时器初始化配置
+let config: systemManager.ExactTimerConfig = {
+  name: 'networkExemptionTimer',
+  repeat: true,
+  interval: 3500000,
+  callback: () => {
+    try {
+      // 在精确定时器回调中调用网络资源豁免接口
+      applicationManager.requestExemptionResource(applicationManager.StandbyResourceType.NETWORK, bundleName, duration);
+      console.info('Succeeded in requesting exemption resource.');
+    } catch (err) {
+      console.error(`Failed to request exemption resource. Code is ${err.code}, message is ${err.message}`);
+    }
+  }
+};
+// 创建精确定时器
+systemManager.createExactTimer(config).then((id: number) => {
+  timerId = id;
+  console.info(`Succeeded in creating exact timer, timerId: ${timerId}.`);
+  let triggerTime: number = systemDateTime.getUptime(systemDateTime.TimeType.STARTUP) + 5000;
+  // 启动精确定时器，触发回调，申请网络资源豁免。成功后即可按需调用网络资源
+  return systemManager.startExactTimer(timerId, triggerTime);
+}).then(() => {
+  console.info('Succeeded in starting exact timer.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to create or start exact timer. Code: ${err.code}, message: ${err.message}`);
+});
+```

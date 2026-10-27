@@ -46,3 +46,28 @@ function connectDevice(addrInfo: AddressInfo, params: ConnectParam): Promise<Att
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
 | [33300001](../errorcode-mechanic.md#33300001-系统错误) | Service exception. |
+
+<!--Del-->
+**示例**
+
+```TypeScript
+let addrInfo: mechanicManager.AddressInfo = {
+  address: '123',
+  addressType: mechanicManager.AddressType.BLE_ADDR
+}
+let params: mechanicManager.ConnectParam = {
+  deviceName: "deviceName",
+  custdata: '123',
+  identifier: Number('0x551b9225')
+}
+try {
+  mechanicManager.connectDevice(addrInfo, params)
+    .then((info: mechanicManager.AttachStateChangeInfo) => {
+      console.info(`connectDevice -- info: ${JSON.stringify(info)}`);
+  });
+} catch (e) {
+  console.error(`Code is ${e.code}, message is ${e.message}`);
+}
+```
+
+<!--DelEnd-->

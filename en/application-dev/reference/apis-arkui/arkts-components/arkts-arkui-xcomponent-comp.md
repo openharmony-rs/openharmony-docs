@@ -108,6 +108,12 @@ Constructor parameters
 
 ## Summary
 
+### Classes
+
+| Name | Description |
+| --- | --- |
+| [XComponentController](arkts-arkui-xcomponent-comp-xcomponentcontroller-c.md) | Defines the controller of the **XComponent**. You can bind the controller to the **XComponent** to call the component APIs through the controller. |
+
 ### Interfaces
 
 | Name | Description |
@@ -129,6 +135,14 @@ Constructor parameters
 | Name | Description |
 | --- | --- |
 | [HdrType](arkts-arkui-xcomponent-comp-hdrtype-e.md) | Enumerates the high dynamic range rendering types of HDR content. |
+
+<!--Del-->
+### Enums(System API)
+
+| Name | Description |
+| --- | --- |
+| [XComponentExtraFlag](arkts-arkui-xcomponent-comp-xcomponentextraflag-e-sys.md) | Defines the extra flags for XComponent. |
+<!--DelEnd-->
 
 ## Examples
 

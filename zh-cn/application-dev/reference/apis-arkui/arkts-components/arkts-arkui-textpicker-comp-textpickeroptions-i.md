@@ -46,7 +46,7 @@ columnWidths?: LengthMetrics[]
 ## range
 
 ```TypeScript
-range: string[] | string[][]  | Resource | TextPickerRangeContent[] | TextCascadePickerRangeContent[]
+range: string[] | string[][] | Resource | TextPickerRangeContent[] | TextCascadePickerRangeContent[]
 ```
 
 选择器的数据选择列表。不可设置为空数组，若设置为空数组，则不显示；若动态变化为空数组，则保持当前正常值显示。
@@ -74,7 +74,7 @@ range: string[] | string[][]  | Resource | TextPickerRangeContent[] | TextCascad
 ## selected
 
 ```TypeScript
-selected?: number[]
+selected?: number | number[]
 ```
 
 设置选中项在数据选择列表中的索引值，索引从0开始。
@@ -89,7 +89,7 @@ selected?: number[]
 > 4. 从API version 10开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。
 > 5. 未设置该属性或设置的值无效时，使用默认值。
 
-**类型：** number[]
+**类型：** number &#124; number[]
 
 **默认值：** 0
 
@@ -106,7 +106,7 @@ selected?: number[]
 ## value
 
 ```TypeScript
-value?: ResourceStr[]
+value?: ResourceStr | ResourceStr[]
 ```
 
 设置选中项的值，优先级低于selected。
@@ -123,7 +123,7 @@ value?: ResourceStr[]
 > 6. 多列联动数据选择器使用[ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md)[]类型，数组长度与层级数一致。
 > 7. 当selected和value均未设置，或selected值无效时，使用默认值。
 
-**类型：** [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md)[]
+**类型：** [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) &#124; [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md)[]
 
 **默认值：** 
 - API版本8-9：第一项的值

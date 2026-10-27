@@ -26,7 +26,7 @@ The device can be connected.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-ConnectionMode-SLE_MODE_CONNECTABLE = 1--><!--Device-ConnectionMode-SLE_MODE_CONNECTABLE = 1-End-->
 
@@ -46,7 +46,7 @@ The device cannot be connected.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-ConnectionMode-SLE_MODE_UNCONNECTABLE = 0--><!--Device-ConnectionMode-SLE_MODE_UNCONNECTABLE = 0-End-->
 

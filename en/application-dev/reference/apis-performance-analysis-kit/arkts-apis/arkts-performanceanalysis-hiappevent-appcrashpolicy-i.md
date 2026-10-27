@@ -120,11 +120,11 @@ Policy for the APP_CRASH event the value true means the application will receive
 
 **Type:** boolean
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-AppCrashPolicy-publishOnNextLaunch?: boolean--><!--Device-AppCrashPolicy-publishOnNextLaunch?: boolean-End-->
 

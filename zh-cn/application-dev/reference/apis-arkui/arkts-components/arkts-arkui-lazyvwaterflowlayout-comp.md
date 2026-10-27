@@ -22,6 +22,12 @@ LazyVWaterFlowLayout()
 
 ## 汇总
 
+### 类
+
+| 名称 | 说明 |
+| --- | --- |
+| [LazyWaterFlowLayoutAttribute](arkts-arkui-lazyvwaterflowlayout-comp-lazywaterflowlayoutattribute-c.md) | 定义懒加载瀑布流布局属性。 |
+
 ## 示例
 
 ### 示例1（实现懒加载瀑布流布局）

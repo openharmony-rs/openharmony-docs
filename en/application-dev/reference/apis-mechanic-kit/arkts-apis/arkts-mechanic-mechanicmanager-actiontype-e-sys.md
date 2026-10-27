@@ -54,7 +54,7 @@ BASE_TURN_TO_HEAD = 12
 
 Action of turning the base to align with the head.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -120,7 +120,7 @@ FRONT_TO_BACK_FLIP = 13
 
 Action of performing a front-to-back flip of the head.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -218,7 +218,7 @@ HEAD_TURN_TO_BASE = 11
 
 Action of turning the head to align with the base.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 

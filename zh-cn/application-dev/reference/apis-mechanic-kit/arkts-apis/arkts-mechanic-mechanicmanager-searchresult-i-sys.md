@@ -4,7 +4,7 @@
 export interface SearchResult
 ```
 
-Search result.
+显示搜索命令的执行结果
 
 **起始版本：** 21
 
@@ -26,7 +26,7 @@ import { mechanicManager } from '@kit.MechanicKit';
 targetCount: number
 ```
 
-Search result. Returns the number of targets found.0 means not found.
+搜索到的目标数量
 
 **类型：** number
 

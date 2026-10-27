@@ -22,7 +22,7 @@ import { AppStorageV2, PersistenceV2, Type, UIUtils, ConnectOptions, Binding, Mu
 
 ```TypeScript
 getReusableInfo(constructor: ReusableComponentConstructor,
-    reuseId?: string): IReusableInfo[]  | IReusableInfo | undefined
+    reuseId?: string): IReusableInfo[] | IReusableInfo | undefined
 ```
 
 检索此复用池中给定可复用组件类型的回收实例信息。

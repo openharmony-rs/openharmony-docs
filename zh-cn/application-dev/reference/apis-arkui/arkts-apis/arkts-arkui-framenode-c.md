@@ -543,11 +543,11 @@ dispatchInputEvent(event: InputEventType, competitionStrategy?: CompetitionStrat
 
 向当前FrameNode派发输入事件，并可指定竞争策略。支持TouchEvent、MouseEvent和AxisEvent。KeyEvent请使用[dispatchKeyEvent](#dispatchkeyevent)派发。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-FrameNode-dispatchInputEvent(event: InputEventType, competitionStrategy?: CompetitionStrategy): boolean--><!--Device-FrameNode-dispatchInputEvent(event: InputEventType, competitionStrategy?: CompetitionStrategy): boolean-End-->
 
@@ -566,6 +566,10 @@ dispatchInputEvent(event: InputEventType, competitionStrategy?: CompetitionStrat
 | --- | --- |
 | boolean | 是否成功派发事件。 |
 
+**示例**
+
+请参考节点操作示例。
+
 ## dispatchKeyEvent
 
 ```TypeScript
@@ -574,11 +578,11 @@ dispatchKeyEvent(event: KeyEvent): boolean
 
 向当前FrameNode派发按键事件。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-FrameNode-dispatchKeyEvent(event: KeyEvent): boolean--><!--Device-FrameNode-dispatchKeyEvent(event: KeyEvent): boolean-End-->
 
@@ -595,6 +599,10 @@ dispatchKeyEvent(event: KeyEvent): boolean
 | 类型 | 说明 |
 | --- | --- |
 | boolean | 按键事件是否被消费。 |
+
+**示例**
+
+请参考节点操作示例。
 
 ## dispose
 

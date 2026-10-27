@@ -15,7 +15,7 @@ Definition of av cast picker style
 ## STYLE_MENU
 
 ```TypeScript
-STYLE_MENU
+STYLE_MENU = 1
 ```
 
 The picker shows in a menu style.
@@ -24,14 +24,14 @@ The picker shows in a menu style.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
-<!--Device-AVCastPickerStyle-STYLE_MENU--><!--Device-AVCastPickerStyle-STYLE_MENU-End-->
+<!--Device-AVCastPickerStyle-STYLE_MENU = 1--><!--Device-AVCastPickerStyle-STYLE_MENU = 1-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVCast
 
 ## STYLE_PANEL
 
 ```TypeScript
-STYLE_PANEL
+STYLE_PANEL = 0
 ```
 
 The picker shows in a panel style.
@@ -40,6 +40,6 @@ The picker shows in a panel style.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
-<!--Device-AVCastPickerStyle-STYLE_PANEL--><!--Device-AVCastPickerStyle-STYLE_PANEL-End-->
+<!--Device-AVCastPickerStyle-STYLE_PANEL = 0--><!--Device-AVCastPickerStyle-STYLE_PANEL = 0-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVCast

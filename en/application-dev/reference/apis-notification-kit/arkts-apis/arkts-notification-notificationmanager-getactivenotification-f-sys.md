@@ -14,7 +14,7 @@ function getActiveNotification(hashCode: string): Promise<NotificationRequest>
 
 Obtains an active notification based on **hashCode**. This API uses a promise to return the result.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
 

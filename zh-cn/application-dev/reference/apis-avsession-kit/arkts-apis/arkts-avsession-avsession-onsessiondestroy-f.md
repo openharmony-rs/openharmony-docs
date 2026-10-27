@@ -12,7 +12,7 @@ import { avSession } from '@kit.AVSessionKit';
 function onSessionDestroy(callback: Callback<AVSessionDescriptor>): void
 ```
 
-Register session destroy callback
+会话销毁监听回调
 
 **起始版本：** 23
 

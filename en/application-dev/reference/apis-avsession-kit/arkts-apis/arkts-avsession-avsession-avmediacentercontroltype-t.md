@@ -1,8 +1,7 @@
 # AVMediaCenterControlType
 
 ```TypeScript
-type AVMediaCenterControlType = 'playNext' | 'playPrevious' | 'fastForward' | 'rewind' | 'setSpeed' | 'setLoopMode'
-    'toggleFavorite'
+type AVMediaCenterControlType = 'playNext' | 'playPrevious' | 'fastForward' | 'rewind' | 'setSpeed' | 'setLoopMode' | 'toggleFavorite'
 ```
 
 The type of media center control command, which can be used to determine the button displayed on the media center.

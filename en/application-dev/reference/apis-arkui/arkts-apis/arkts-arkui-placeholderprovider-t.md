@@ -8,11 +8,11 @@ Provides the placeholder description for an item of a scrollable component.
 
 <br>**NOTE:** <br> The provider is invoked synchronously during scrolling on the UI thread and must be a pure calculation. Returning **undefined** means the item does not need a placeholder.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-unnamed-export type PlaceholderProvider = (index: number) => PlaceholderOptions | undefined--><!--Device-unnamed-export type PlaceholderProvider = (index: number) => PlaceholderOptions | undefined-End-->
 

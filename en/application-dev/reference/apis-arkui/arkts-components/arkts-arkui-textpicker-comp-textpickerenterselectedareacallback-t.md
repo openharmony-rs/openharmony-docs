@@ -1,7 +1,7 @@
 # TextPickerEnterSelectedAreaCallback
 
 ```TypeScript
-declare type TextPickerEnterSelectedAreaCallback = (value: string[], index: number[]) => void
+declare type TextPickerEnterSelectedAreaCallback = (value: string | string[], index: number | number[]) => void
 ```
 
 Defines the **onEnterSelectedArea** event callback signature.
@@ -20,5 +20,5 @@ Defines the **onEnterSelectedArea** event callback signature.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | string[] | Yes | Text of the currently selected item. For a multi-column data picker, the value is of the array type. <br>**Note:** <br>When the picker content is text or a mix of text and images, the value is the text of the selected item; when the picker content is an image, the value is empty. |
-| index | number[] | Yes | Index of the selected item. The index is zero-based. Use the array type for multi-column pickers. |
+| value | string &#124; string[] | Yes | Text of the currently selected item. For a multi-column data picker, the value is of the array type. <br>**Note:** <br>When the picker content is text or a mix of text and images, the value is the text of the selected item; when the picker content is an image, the value is empty. |
+| index | number &#124; number[] | Yes | Index of the selected item. The index is zero-based. Use the array type for multi-column pickers. |

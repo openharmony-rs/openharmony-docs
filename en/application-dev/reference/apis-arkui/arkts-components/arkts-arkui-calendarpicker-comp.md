@@ -38,6 +38,12 @@ Creates a calendar picker.
 
 ## Summary
 
+### Classes
+
+| Name | Description |
+| --- | --- |
+| [CalendarPickerDialog](arkts-arkui-calendarpicker-comp-calendarpickerdialog-c.md) | Tapping a date opens a calendar picker dialog, where you can select a date. It is suitable for scenarios requiring date selection within an app, such as schedule management, booking systems, and form filling. |
+
 ### Interfaces
 
 | Name | Description |

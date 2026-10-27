@@ -2435,3 +2435,43 @@ Default value: **-1**.
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
+
+## windowScaleX
+
+```TypeScript
+windowScaleX?: number
+```
+
+Zoom ratio of the window in the X axis direction.
+
+**Type:** number
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AccessibilityElement-windowScaleX?: double--><!--Device-AccessibilityElement-windowScaleX?: double-End-->
+
+**System capability:** SystemCapability.BarrierFree.Accessibility.Core
+
+**System API:** This is a system API.
+
+## windowScaleY
+
+```TypeScript
+windowScaleY?: number
+```
+
+Zoom ratio of the window in the Y axis direction.
+
+**Type:** number
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AccessibilityElement-windowScaleY?: double--><!--Device-AccessibilityElement-windowScaleY?: double-End-->
+
+**System capability:** SystemCapability.BarrierFree.Accessibility.Core
+
+**System API:** This is a system API.

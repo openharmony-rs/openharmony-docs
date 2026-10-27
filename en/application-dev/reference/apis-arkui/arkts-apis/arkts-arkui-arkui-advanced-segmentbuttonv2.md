@@ -1,4 +1,4 @@
-# @ohos.arkui.advanced.SegmentButtonV2(api/@ohos.arkui.advanced.SegmentedButton.d.ts)
+# @ohos.arkui.advanced.SegmentButtonV2
 
 The segmented button component is used to create tab-type, single-selection, or multi-selection capsule segmented
  buttons. It supports multiple option types such as text, icons, and symbols, as well as graphic-text hybrid
@@ -7,6 +7,17 @@ The segmented button component is used to create tab-type, single-selection, or 
  selection switching scenarios, and the multi-selection capsule segmented button is suitable for multi-selection
  filtering scenarios.
 
+## Child Components
+
+None
+
+## Attributes
+
+The [universal attributes](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md) are not supported.
+
+## Events
+
+The [universal events](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md) are not supported.
 
 ## Modules to Import
 

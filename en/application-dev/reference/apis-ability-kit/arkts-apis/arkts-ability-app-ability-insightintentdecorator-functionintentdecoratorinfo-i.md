@@ -26,15 +26,15 @@ import { InsightIntentLink, InsightIntentPage, InsightIntentFunctionMethod, Insi
 permissions?: string[]
 ```
 
-Indicates the permissions required by the intent.
+Optional list of permissions required to invoke this intent. This is for caller-side query/reference only. The system does not enforce these permissions automatically. Permission validation must be implemented on the intent provider (server side).
 
 **Type:** string[]
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-FunctionIntentDecoratorInfo-permissions?: string[]--><!--Device-FunctionIntentDecoratorInfo-permissions?: string[]-End-->
 

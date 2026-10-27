@@ -35,7 +35,7 @@ function stopCasting(session: SessionToken, callback: AsyncCallback<void>): void
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-| [6600109](../errorcode-avsession.md#6600109-远端会话不存在) | The remote connection is not established |
+| [6600109](../errorcode-avsession.md#6600109-远端会话不存在) | The remote connection is not established. |
 
 <!--Del-->
 **示例**
@@ -87,7 +87,7 @@ function stopCasting(session: SessionToken): Promise<void>
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-| [6600109](../errorcode-avsession.md#6600109-远端会话不存在) | The remote connection is not established |
+| [6600109](../errorcode-avsession.md#6600109-远端会话不存在) | The remote connection is not established. |
 
 <!--Del-->
 **示例**

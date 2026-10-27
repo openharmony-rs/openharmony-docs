@@ -39,6 +39,12 @@ Create TextClock component.
 
 ## Summary
 
+### Classes
+
+| Name | Description |
+| --- | --- |
+| [TextClockController](arkts-arkui-textclock-comp-textclockcontroller-c.md) | Implements the controller of the **TextClock** component. You can bind the controller to the component to control its start and stop. A **TextClock** component can be bound to only one controller. |
+
 ### Interfaces
 
 | Name | Description |

@@ -4,7 +4,7 @@
 interface PolicyFile
 ```
 
-配置文件信息。
+Provides policy file information.
 
 **起始版本：** 12
 
@@ -26,7 +26,7 @@ import { securityGuard } from '@kit.SecurityGuardKit';
 fd: number
 ```
 
-配置文件的文件描述符。
+The policy file descriptor.
 
 **类型：** number
 
@@ -44,7 +44,7 @@ fd: number
 name: string
 ```
 
-配置文件名称。
+The policy file name.
 
 **类型：** string
 

@@ -24,11 +24,11 @@ bufferQueueCount(count: number)
 
 Sets the buffer queue count for the XComponent. Only takes effect for XComponent of type SURFACE or TEXTURE. If the value is greater than 5, it is clamped to 5; if the value is less than 2, it is clamped to 2; if a non-integer value is passed, the default value 5 is used. Modifying the buffer queue count during buffer rotation may cause frame drops.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-XComponentAttribute-bufferQueueCount(count: number): XComponentAttribute--><!--Device-XComponentAttribute-bufferQueueCount(count: number): XComponentAttribute-End-->
 

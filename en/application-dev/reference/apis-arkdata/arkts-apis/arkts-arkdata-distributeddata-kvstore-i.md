@@ -718,7 +718,7 @@ try {
         });
     });
 }catch(e) {
-    console.info('PutBatch e ' + JSON.stringify(e));
+    console.error('PutBatch e ' + JSON.stringify(e));
 }
 ```
 
@@ -782,7 +782,7 @@ try {
         console.error('putBatch fail ' + JSON.stringify(err));
     });
 }catch(e) {
-    console.info('PutBatch e ' + JSON.stringify(e));
+    console.error('PutBatch e ' + JSON.stringify(e));
 }
 ```
 

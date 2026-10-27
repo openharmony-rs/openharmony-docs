@@ -24,7 +24,7 @@ Connection failed: ACB connection failed. The remote device may be powered off o
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-ConnectionReason-CONNECTION_FAIL_ACB_CONNECTION = 4--><!--Device-ConnectionReason-CONNECTION_FAIL_ACB_CONNECTION = 4-End-->
 
@@ -42,7 +42,7 @@ Connection failed: Connection limit exceeded.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-ConnectionReason-CONNECTION_FAIL_CONNECTION_NUM_LIMITED = 7--><!--Device-ConnectionReason-CONNECTION_FAIL_CONNECTION_NUM_LIMITED = 7-End-->
 
@@ -60,7 +60,7 @@ Connection failed: No available services found on the remote device.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-ConnectionReason-CONNECTION_FAIL_NO_AVAILABLE_SERVICE = 6--><!--Device-ConnectionReason-CONNECTION_FAIL_NO_AVAILABLE_SERVICE = 6-End-->
 
@@ -78,7 +78,7 @@ Connection failed: Service discovery failed.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-ConnectionReason-CONNECTION_FAIL_SERVICE_DISCOVERY = 5--><!--Device-ConnectionReason-CONNECTION_FAIL_SERVICE_DISCOVERY = 5-End-->
 
@@ -96,7 +96,7 @@ Connection failed.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-ConnectionReason-CONNECTION_FAILURE = 1--><!--Device-ConnectionReason-CONNECTION_FAILURE = 1-End-->
 
@@ -114,7 +114,7 @@ Local device initiated disconnection.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-ConnectionReason-CONNECTION_LOCAL_DISCONNECT = 2--><!--Device-ConnectionReason-CONNECTION_LOCAL_DISCONNECT = 2-End-->
 
@@ -132,7 +132,7 @@ Remote device initiated disconnection.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-ConnectionReason-CONNECTION_REMOTE_DISCONNECT = 3--><!--Device-ConnectionReason-CONNECTION_REMOTE_DISCONNECT = 3-End-->
 
@@ -150,7 +150,7 @@ Connection succeeded.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-ConnectionReason-CONNECTION_SUCCESS = 0--><!--Device-ConnectionReason-CONNECTION_SUCCESS = 0-End-->
 

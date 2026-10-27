@@ -44,6 +44,12 @@ TextPicker(options?: TextPickerOptions)
 
 ## 汇总
 
+### 类
+
+| 名称 | 说明 |
+| --- | --- |
+| [TextPickerDialog](arkts-arkui-textpicker-comp-textpickerdialog-c.md) | 根据指定的选择范围创建文本滑动选择器，展示在弹窗上。该组件适用于设置页面、表单录入、数据筛选等需要用户从预设选项中选择文本的场景。 |
+
 ### 接口
 
 | 名称 | 说明 |

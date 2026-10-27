@@ -12,7 +12,7 @@ import { securityGuard } from '@kit.SecurityGuardKit';
 function getModelResult(rule: ModelRule): Promise<ModelResult>
 ```
 
-请求安全模型检测结果。
+Request security model result from security guard.
 
 **起始版本：** 12
 
@@ -28,13 +28,13 @@ function getModelResult(rule: ModelRule): Promise<ModelResult>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| rule | [ModelRule](arkts-securityguard-securityguard-modelrule-i-sys.md) | 是 | 安全模型规则，指定模型名称与参数。 |
+| rule | [ModelRule](arkts-securityguard-securityguard-modelrule-i-sys.md) | 是 | indicates the security model rule. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[ModelResult](arkts-securityguard-securityguard-modelresult-i-sys.md)&gt; | 以Promise形式返回模型结果。 |
+| Promise&lt;[ModelResult](arkts-securityguard-securityguard-modelresult-i-sys.md)&gt; | model Results with Promises. |
 
 **错误码：**
 

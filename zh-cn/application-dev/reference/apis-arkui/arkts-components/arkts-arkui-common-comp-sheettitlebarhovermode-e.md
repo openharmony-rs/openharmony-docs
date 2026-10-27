@@ -20,11 +20,11 @@ SAFE_AREA_PADDING = 2
 
 安全区域填充模式：标题栏放置在安全区域padding区域。内容扩展到安全区域，滚动内容裁剪到安全区域。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-SheetTitleBarHoverMode-SAFE_AREA_PADDING = 2--><!--Device-SheetTitleBarHoverMode-SAFE_AREA_PADDING = 2-End-->
 

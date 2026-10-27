@@ -16,9 +16,9 @@ export function offPerception(
 
 取消订阅。业务侧向 MSDP 注销订阅关系。
 
-如果传入 callback，则仅取消与该回调匹配的订阅；如果不传 callback，则取消当前包名下的所有订阅。
+如果传入回调，则仅取消与该回调匹配的订阅；如果不传回调，则取消当前包名下的所有订阅。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -32,13 +32,13 @@ export function offPerception(
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[PerceptionEvent](arkts-multimodalawareness-behaviorawareness-perceptionevent-i-sys.md)&lt;[BehaviorAwarenessPayload](arkts-multimodalawareness-behaviorawareness-behaviorawarenesspayload-i-sys.md)&gt;&gt; | 否 | 可选，与 onPerception 时传入的回调函数需为同一引用。不传则取消所有订阅。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[PerceptionEvent](arkts-multimodalawareness-behaviorawareness-perceptionevent-i-sys.md)&lt;[BehaviorAwarenessPayload](arkts-multimodalawareness-behaviorawareness-behaviorawarenesspayload-i-sys.md)&gt;&gt; | 否 | 用于返回感知事件的回调。用于清除所有订阅的感知事件。<br>默认值：不指定时，取消当前包的所有订阅。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 异步返回，无返回值。 |
+| Promise&lt;void&gt; | 无返回值的 Promise。 |
 
 **错误码：**
 

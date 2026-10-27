@@ -70,8 +70,8 @@ class MySequence implements rpc.Parcelable {
   unmarshalling(messageSequence: rpc.MessageSequence) {
     try {
       this.pixelMap = sendableImage.createPixelMapFromParcel(messageSequence);
-    } catch (e) {
-      const err = e as BusinessError;
+    } catch (error) {
+      const err = error as BusinessError;
       console.error(`Failed to create the PixelMap from parcel. Code: ${err.code}, message: ${err.message}`);
       return false;
     }

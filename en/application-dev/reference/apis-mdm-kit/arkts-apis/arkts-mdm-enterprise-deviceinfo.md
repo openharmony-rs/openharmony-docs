@@ -33,6 +33,7 @@ import { deviceInfo } from '@kit.MDMKit';
 | Name | Description |
 | --- | --- |
 | [getDeviceInfo](arkts-mdm-deviceinfo-getdeviceinfo-f.md#getdeviceinfo-1) | Obtains device information. |
+| [getPatchInfo](arkts-mdm-deviceinfo-getpatchinfo-f.md#getpatchinfo-1) | Obtains the device patch information. |
 
 <!--Del-->
 ### Functions(System API)
@@ -46,3 +47,11 @@ import { deviceInfo } from '@kit.MDMKit';
 | [getDisplayVersion](arkts-mdm-deviceinfo-getdisplayversion-f-sys.md#getdisplayversion-1) | Obtains the device version number. This API uses an asynchronous callback to return the result. |
 | [getDisplayVersion](arkts-mdm-deviceinfo-getdisplayversion-f-sys.md#getdisplayversion-2) | Obtains the device version number. This API uses a promise to return the result. |
 <!--DelEnd-->
+
+### Interfaces
+
+| Name | Description |
+| --- | --- |
+| [PatchDescription](arkts-mdm-deviceinfo-patchdescription-i.md) | Indicates the patch description. |
+| [PatchDescriptionBody](arkts-mdm-deviceinfo-patchdescriptionbody-i.md) | Indicates the patch description body. |
+| [PatchInfo](arkts-mdm-deviceinfo-patchinfo-i.md) | Indicates the device patch information. |

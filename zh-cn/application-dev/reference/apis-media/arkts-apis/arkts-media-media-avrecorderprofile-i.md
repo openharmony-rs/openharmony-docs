@@ -157,6 +157,22 @@ enableBFrame?: boolean
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
+## enableStableQualityMode
+
+```TypeScript
+enableStableQualityMode?: boolean
+```
+
+视频录制是否选择稳定质量模式，选择视频录制时选填，enableStableQualityMode默认为false。设置为true时，启用视频编码策略以实现质量稳定的编码。
+
+**类型：** boolean
+
+**起始版本：** 26.0.1
+
+<!--Device-AVRecorderProfile-enableStableQualityMode?: boolean--><!--Device-AVRecorderProfile-enableStableQualityMode?: boolean-End-->
+
+**系统能力：** SystemCapability.Multimedia.Media.AVRecorder
+
 ## enableTemporalScale
 
 ```TypeScript
@@ -204,6 +220,24 @@ HDR编码，选择视频录制时选填。isHdr默认为false，对应编码格�
 **起始版本：** 11
 
 <!--Device-AVRecorderProfile-isHdr?: boolean--><!--Device-AVRecorderProfile-isHdr?: boolean-End-->
+
+**系统能力：** SystemCapability.Multimedia.Media.AVRecorder
+
+## sqrFactor
+
+```TypeScript
+sqrFactor?: boolean
+```
+
+在StableQualityMode中设置质量参数。取值范围为【0,51】。数值越小，输出码率越高，质量越好。取值限定为整数。
+
+**类型：** boolean
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AVRecorderProfile-sqrFactor?: boolean--><!--Device-AVRecorderProfile-sqrFactor?: boolean-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 

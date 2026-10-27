@@ -1219,7 +1219,7 @@ getSupportedLoopModes(): Promise<Array<LoopMode>>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600103](../errorcode-avsession.md#6600103-会话控制器不存在) | The session controller does not exist. |
 
 **示例**
@@ -1260,7 +1260,7 @@ getSupportedPlaySpeeds(): Promise<Array<number>>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600103](../errorcode-avsession.md#6600103-会话控制器不存在) | The session controller does not exist. |
 
 **示例**
@@ -1666,7 +1666,7 @@ off(type: 'callMetadataChange', callback?: Callback<CallMetadata>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'callMetadataChange' | 是 | 取消对应的监听事件，支持事件`'callMetadataChange'`。 |
+| type | 'callMetadataChange' | 是 | 'callMetadataChange' |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[CallMetadata](arkts-avsession-avsession-callmetadata-i.md)&gt; | 否 | 回调函数，参数calldata是变化后的通话原数据。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
@@ -1703,7 +1703,7 @@ off(type: 'callStateChange', callback?: Callback<AVCallState>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'callStateChange' | 是 | 取消对应的监听事件，支持事件`'callStateChange'`。 |
+| type | 'callStateChange' | 是 | 'callStateChange' |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[AVCallState](arkts-avsession-avsession-avcallstate-i.md)&gt; | 否 | 回调函数，参数callstate是变化后的通话状态。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
@@ -1742,7 +1742,7 @@ off(type: 'sessionDestroy', callback?: () => void)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'sessionDestroy' | 是 | 取消对应的监听事件，支持事件`'sessionDestroy'`。 |
+| type | 'sessionDestroy' | 是 | 'sessionDestroy' |
 | callback | () =&gt; void | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
@@ -1781,7 +1781,7 @@ off(type: 'activeStateChange', callback?: (isActive: boolean) => void)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'activeStateChange' | 是 | 取消对应的监听事件，支持事件`'activeStateChange'`。 |
+| type | 'activeStateChange' | 是 | 'activeStateChange' |
 | callback | (isActive: boolean) =&gt; void | 否 | 回调函数。参数isActive表示会话是否被激活。true表示被激活，false表示禁用。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
@@ -1865,8 +1865,8 @@ off(type: 'outputDeviceChange', callback?: (state: ConnectionState, device: Outp
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
-| [6600103](../errorcode-avsession.md#6600103-会话控制器不存在) | The session controller does not exist |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
+| [6600103](../errorcode-avsession.md#6600103-会话控制器不存在) | The session controller does not exist. |
 
 **示例**
 
@@ -2047,7 +2047,7 @@ off(type: 'customDataChange', callback?: Callback<Record<string, Object>>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600103](../errorcode-avsession.md#6600103-会话控制器不存在) | The session controller does not exist. |
 
 **示例**
@@ -2228,7 +2228,7 @@ offSupportedLoopModesChange(callback?: Callback<Array<LoopMode>>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600103](../errorcode-avsession.md#6600103-会话控制器不存在) | The session controller does not exist. |
 
 **示例**
@@ -2267,7 +2267,7 @@ offSupportedPlaySpeedsChange(callback?: Callback<Array<number>>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600103](../errorcode-avsession.md#6600103-会话控制器不存在) | The session controller does not exist. |
 
 **示例**
@@ -2396,7 +2396,7 @@ on(type: 'callMetadataChange', filter: Array<keyof CallMetadata> | 'all', callba
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'callMetadataChange' | 是 | 事件回调类型，支持事件`'callMetadataChange'`：当通话元数据变化时，触发该事件。 |
+| type | 'callMetadataChange' | 是 | 'callMetadataChange' |
 | filter | Array&lt;keyof CallMetadata&gt; &#124; 'all' | 是 | 'all'表示关注通话元数据所有字段变化；Array<keyof CallMetadata> 表示关注Array中的字段变化。&#124; 'all'。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[CallMetadata](arkts-avsession-avsession-callmetadata-i.md)&gt; | 是 | 回调函数，参数callmetadata是变化后的通话元数据。 |
 
@@ -2578,7 +2578,7 @@ on(type: 'validCommandChange', callback: (commands: Array<AVControlCommandType>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'validCommandChange' | 是 | 事件回调类型，支持事件`'validCommandChange'`：当检测到会话的合法命令发生改变时，触发该事件。 |
+| type | 'validCommandChange' | 是 | 'validCommandChange' |
 | callback | (commands: Array&lt;[AVControlCommandType](arkts-avsession-avsession-avcontrolcommandtype-t.md)&gt;) =&gt; void | 是 | 回调函数。参数commands是有效命令的集合。 |
 
 **错误码：**
@@ -2628,8 +2628,8 @@ on(type: 'outputDeviceChange', callback: (state: ConnectionState, device: Output
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
-| [6600103](../errorcode-avsession.md#6600103-会话控制器不存在) | The session controller does not exist |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
+| [6600103](../errorcode-avsession.md#6600103-会话控制器不存在) | The session controller does not exist. |
 
 **示例**
 
@@ -2663,7 +2663,7 @@ on(type: 'sessionEvent', callback: (sessionEvent: string, args: {[key: string]: 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'sessionEvent' | 是 | 事件回调类型，支持事件`'sessionEvent'`：当会话事件变化时，触发该事件。 |
+| type | 'sessionEvent' | 是 | 'sessionEvent' |
 | callback | (sessionEvent: string, args: {[key: string]: Object}) =&gt; void | 是 | 回调函数，sessionEvent为变化的会话事件名，args为事件的参数。 |
 
 **错误码：**
@@ -2823,7 +2823,7 @@ on(type: 'customDataChange', callback: Callback<Record<string, Object>>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600103](../errorcode-avsession.md#6600103-会话控制器不存在) | The session controller does not exist. |
 
 **示例**
@@ -3014,7 +3014,7 @@ onSupportedLoopModesChange(callback: Callback<Array<LoopMode>>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600103](../errorcode-avsession.md#6600103-会话控制器不存在) | The session controller does not exist. |
 
 **示例**
@@ -3055,7 +3055,7 @@ onSupportedPlaySpeedsChange(callback: Callback<Array<number>>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600103](../errorcode-avsession.md#6600103-会话控制器不存在) | The session controller does not exist. |
 
 **示例**
@@ -3407,7 +3407,7 @@ sendCustomData(data: Record<string, Object>): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 | [6600103](../errorcode-avsession.md#6600103-会话控制器不存在) | The session controller does not exist. |
 

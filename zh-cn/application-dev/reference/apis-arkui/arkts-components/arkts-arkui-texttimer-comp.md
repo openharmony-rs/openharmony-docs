@@ -38,6 +38,12 @@ TextTimer(options?: TextTimerOptions)
 
 ## 汇总
 
+### 类
+
+| 名称 | 说明 |
+| --- | --- |
+| [TextTimerController](arkts-arkui-texttimer-comp-texttimercontroller-c.md) | TextTimer组件的控制器，用于控制文本计时器。一个TextTimer组件仅支持绑定一个控制器，组件创建完成后相关指令才能被调用。一个TextTimerController只能控制最后一个绑定此TextTimerController的TextTimer组件。 |
+
 ### 接口
 
 | 名称 | 说明 |

@@ -150,6 +150,34 @@ When **end** is set to a valid value, **loop** does not take effect.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
+## extendSelected
+
+```TypeScript
+extendSelected?: Date | DatePickerComponentResult
+```
+
+Selected date or time.
+
+**Description:**
+
+> Takes priority over [selected](arkts-arkui-arkui-advanced-datepickercomponent-commonoptions-c.md); when both are set, **selected** does not take effect.
+> When [hideYear](arkts-arkui-arkui-advanced-datepickercomponent-dateoptions-c.md) is **true**, **year** may be omitted (or **undefined**), indicating that the
+> year column selects the "----" option.
+
+Default value: current system date or time.
+
+**Type:** Date &#124; [DatePickerComponentResult](arkts-arkui-arkui-advanced-datepickercomponent-datepickercomponentresult-c.md)
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+<!--Device-CommonOptions-extendSelected?: Date | DatePickerComponentResult--><!--Device-CommonOptions-extendSelected?: Date | DatePickerComponentResult-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
 ## loop
 
 ```TypeScript

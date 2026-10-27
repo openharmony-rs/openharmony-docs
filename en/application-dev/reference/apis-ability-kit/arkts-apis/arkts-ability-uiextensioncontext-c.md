@@ -52,7 +52,7 @@ Connects this UIExtensionAbility to a ServiceExtensionAbility. It enables commun
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | The application does not have permission to call the interface. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [16000001](../errorcode-ability.md#16000001-ability-name-does-not-exist) | The specified ability does not exist. |
 | [16000002](../errorcode-ability.md#16000002-incorrect-ability-type) | Incorrect ability type. |
@@ -106,9 +106,9 @@ Connects to a UIServiceExtensionAbility. This API uses a promise to return the r
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | The application does not have permission to call the interface. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | [16000001](../errorcode-ability.md#16000001-ability-name-does-not-exist) | The specified ability does not exist. |
 | [16000002](../errorcode-ability.md#16000002-incorrect-ability-type) | Incorrect ability type. |
 | [16000004](../errorcode-ability.md#16000004-visibility-verification-failure) | Cannot start an invisible component. |
@@ -319,7 +319,7 @@ If you want to obtain the result after the started UIAbility is terminated, set 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | The application does not have permission to call the interface. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [16000001](../errorcode-ability.md#16000001-ability-name-does-not-exist) | The specified ability does not exist. |
 | [16000002](../errorcode-ability.md#16000002-incorrect-ability-type) | Incorrect ability type. |
@@ -433,7 +433,7 @@ Starts a UIAbility. This API uses an asynchronous callback to return the result.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | The application does not have permission to call the interface. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [16000001](../errorcode-ability.md#16000001-ability-name-does-not-exist) | The specified ability does not exist. |
 | [16000002](../errorcode-ability.md#16000002-incorrect-ability-type) | Incorrect ability type. |
@@ -496,7 +496,7 @@ Starts a UIAbility. This API uses an asynchronous callback to return the result.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | The application does not have permission to call the interface. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [16000001](../errorcode-ability.md#16000001-ability-name-does-not-exist) | The specified ability does not exist. |
 | [16000004](../errorcode-ability.md#16000004-visibility-verification-failure) | Cannot start an invisible component. |
@@ -562,7 +562,7 @@ Starts a UIAbility. This API uses a promise to return the result.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | The application does not have permission to call the interface. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [16000001](../errorcode-ability.md#16000001-ability-name-does-not-exist) | The specified ability does not exist. |
 | [16000002](../errorcode-ability.md#16000002-incorrect-ability-type) | Incorrect ability type. |
@@ -629,7 +629,7 @@ Starts a UIAbility and returns the exit result of the launched UIAbility via a c
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | The application does not have permission to call the interface. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [16000001](../errorcode-ability.md#16000001-ability-name-does-not-exist) | The specified ability does not exist. |
 | [16000002](../errorcode-ability.md#16000002-incorrect-ability-type) | Incorrect ability type. |
@@ -697,7 +697,7 @@ Starts a UIAbility and returns the exit result of the launched UIAbility via a c
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | The application does not have permission to call the interface. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [16000001](../errorcode-ability.md#16000001-ability-name-does-not-exist) | The specified ability does not exist. |
 | [16000004](../errorcode-ability.md#16000004-visibility-verification-failure) | Cannot start an invisible component. |
@@ -768,7 +768,7 @@ Starts a UIAbility and returns the exit result of the launched UIAbility via a c
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | The application does not have permission to call the interface. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [16000001](../errorcode-ability.md#16000001-ability-name-does-not-exist) | The specified ability does not exist. |
 | [16000002](../errorcode-ability.md#16000002-incorrect-ability-type) | Incorrect ability type. |
@@ -835,9 +835,9 @@ Starts a UIServiceExtensionAbility. This API uses a promise to return the result
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | The application does not have permission to call the interface. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | [16000001](../errorcode-ability.md#16000001-ability-name-does-not-exist) | The specified ability does not exist. |
 | [16000002](../errorcode-ability.md#16000002-incorrect-ability-type) | Incorrect ability type. |
 | [16000004](../errorcode-ability.md#16000004-visibility-verification-failure) | Cannot start an invisible component. |

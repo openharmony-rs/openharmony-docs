@@ -4,7 +4,7 @@
 interface CollectorRule
 ```
 
-安全事件采集规则。
+Provides the conditions of Collector.
 
 **起始版本：** 12
 
@@ -26,7 +26,7 @@ import { securityGuard } from '@kit.SecurityGuardKit';
 eventId: number
 ```
 
-安全事件ID。
+The event id
 
 **类型：** number
 
@@ -44,7 +44,7 @@ eventId: number
 param?: string
 ```
 
-额外查询条件。
+The query condition.
 
 **类型：** string
 

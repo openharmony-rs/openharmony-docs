@@ -39,7 +39,7 @@ Queries information about the coordinated devices set of a remote device.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-CdsmClient-getCdsmInfo(): CdsmInfo--><!--Device-CdsmClient-getCdsmInfo(): CdsmInfo-End-->
 
@@ -71,7 +71,7 @@ Unsubscribes from the CDSM information change event. This API uses an asynchrono
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-CdsmClient-offCdsmInfoChange(callback?: Callback<CdsmInfo>): void--><!--Device-CdsmClient-offCdsmInfoChange(callback?: Callback<CdsmInfo>): void-End-->
 
@@ -99,7 +99,7 @@ The app must have the **ohos.permission.ACCESS_NEARLINK** permission to receive 
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-CdsmClient-onCdsmInfoChange(callback: Callback<CdsmInfo>): void--><!--Device-CdsmClient-onCdsmInfoChange(callback: Callback<CdsmInfo>): void-End-->
 

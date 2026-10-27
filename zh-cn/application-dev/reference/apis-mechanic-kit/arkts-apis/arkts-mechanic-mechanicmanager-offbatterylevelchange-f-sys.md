@@ -14,7 +14,7 @@ function offBatteryLevelChange(mechId: number, callback?: Callback<BatteryLevelI
 
 取消订阅电池电量变化信息
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

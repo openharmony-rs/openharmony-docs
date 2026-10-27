@@ -26,7 +26,7 @@ import { mechanicManager } from '@kit.MechanicKit';
 negativePitchMax: number
 ```
 
-Maximum pitch rotation angles in the negative direction, ranging from -2*Math.PI to 0, measured in radians. If the value is less than or equal to -2*Math.PI, there is no restriction.
+最大俯仰旋转角度（负方向），范围为[-2*Math.PI， 0]，以弧度为单位。如果值小于或等于 -2*Math.PI，则没有限制。
 
 **类型：** number
 
@@ -44,7 +44,7 @@ Maximum pitch rotation angles in the negative direction, ranging from -2*Math.PI
 negativeRollMax: number
 ```
 
-Maximum roll rotation angles in the negative direction, ranging from -2*Math.PI to 0, measured in radians. If the value is less than or equal to -2*Math.PI, there is no restriction.
+最大横滚旋转角度（负方向），范围为[-2*Math.PI, 0]，以弧度为单位。如果值小于或等于 -2*Math.PI，则没有限制。
 
 **类型：** number
 
@@ -62,7 +62,7 @@ Maximum roll rotation angles in the negative direction, ranging from -2*Math.PI 
 negativeYawMax: number
 ```
 
-Maximum yaw rotation angles in the negative direction, ranging from -2*Math.PI to 0, measured in radians. If the value is less than or equal to -2*Math.PI, there is no restriction.
+最大偏航旋转角度（负方向），范围为[-2*Math.PI， 0]，以弧度为单位如果值小于或等于 -2*Math.PI，则没有限制。
 
 **类型：** number
 
@@ -80,7 +80,7 @@ Maximum yaw rotation angles in the negative direction, ranging from -2*Math.PI t
 positivePitchMax: number
 ```
 
-Maximum pitch rotation angles in the positive direction, ranging from 0 to 2*Math.PI, measured in radians. If the value is greater than or equal to 2*Math.PI, there is no restriction.
+最大俯仰旋转角度（正方向），范围为[0， 2*Math.PI]，以弧度为单位。如果值大于或等于 2*Math.PI，则没有限制。
 
 **类型：** number
 
@@ -98,7 +98,7 @@ Maximum pitch rotation angles in the positive direction, ranging from 0 to 2*Mat
 positiveRollMax: number
 ```
 
-Maximum roll rotation angles in the positive direction, ranging from 0 to 2*Math.PI, measured in radians. If the value is greater than or equal to 2*Math.PI, there is no restriction.
+最大横滚旋转角度（正方向），范围为[0， 2*Math.PI]，以弧度为单位。如果值大于或等于 2*Math.PI，则没有限制。
 
 **类型：** number
 
@@ -116,7 +116,7 @@ Maximum roll rotation angles in the positive direction, ranging from 0 to 2*Math
 positiveYawMax: number
 ```
 
-Maximum yaw rotation angles in the positive direction, ranging from 0 to 2*Math.PI, measured in radians. If the value is greater than or equal to 2*Math.PI, there is no restriction.
+最大偏航旋转角度（正方向），范围为[0， 2*Math.PI]，以弧度为单位。如果值大于或等于 2*Math.PI，则没有限制。
 
 **类型：** number
 

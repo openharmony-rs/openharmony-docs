@@ -543,11 +543,11 @@ dispatchInputEvent(event: InputEventType, competitionStrategy?: CompetitionStrat
 
 Dispatches a pointer input event to this FrameNode with an optional competition strategy. This API supports TouchEvent, MouseEvent, and AxisEvent. KeyEvent is dispatched by [dispatchKeyEvent](#dispatchkeyevent) instead.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-FrameNode-dispatchInputEvent(event: InputEventType, competitionStrategy?: CompetitionStrategy): boolean--><!--Device-FrameNode-dispatchInputEvent(event: InputEventType, competitionStrategy?: CompetitionStrategy): boolean-End-->
 
@@ -574,11 +574,11 @@ dispatchKeyEvent(event: KeyEvent): boolean
 
 Dispatches a key event to this FrameNode.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-FrameNode-dispatchKeyEvent(event: KeyEvent): boolean--><!--Device-FrameNode-dispatchKeyEvent(event: KeyEvent): boolean-End-->
 

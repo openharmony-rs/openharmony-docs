@@ -15,11 +15,11 @@ function createColorfulBrightnessBlender(brightnessBlenderParam: BrightnessBlend
 
 创建ColorfulBrightnessBlender实例，用于给组件添加基于保持色相的提亮压暗效果。该效果在对前景提亮或压暗时通过逐通道重建保持色相、并可增强饱和度，避免普通提亮压暗的去色问题。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**卡片能力：** 从API版本26.2.0开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本26.1.0开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-uiEffect-function createColorfulBrightnessBlender(brightnessBlenderParam: BrightnessBlenderParam,    options?: ColorfulBrightnessBlenderOptions): ColorfulBrightnessBlender--><!--Device-uiEffect-function createColorfulBrightnessBlender(brightnessBlenderParam: BrightnessBlenderParam,    options?: ColorfulBrightnessBlenderOptions): ColorfulBrightnessBlender-End-->
 

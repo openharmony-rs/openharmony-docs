@@ -42,6 +42,18 @@ getAllLogFiles(): Set<string>
 | --- | --- |
 | Set&lt;string&gt; | 所有外部日志文件路径的集合 |
 
+**示例**
+
+```TypeScript
+// 定义ExternalLogManager实现
+let myLogManager: hiAppEvent.ExternalLogManager = {
+  onCapacityReached(container: hiAppEvent.ExternalLogContainer): void {
+    // 获取所有external_log日志文件路径
+    let allFiles: Set<string> = container.getAllLogFiles();
+  }
+};
+```
+
 ## getAllLogs
 
 ```TypeScript
@@ -65,6 +77,18 @@ getAllLogs(): Set<ExternalLogWrapper>
 | 类型 | 说明 |
 | --- | --- |
 | Set&lt;[ExternalLogWrapper](arkts-performanceanalysis-hiappevent-externallogwrapper-c.md)&gt; | 所有ExternalLogWrappers的集合 |
+
+**示例**
+
+```TypeScript
+// 定义ExternalLogManager实现
+let myLogManager: hiAppEvent.ExternalLogManager = {
+  onCapacityReached(container: hiAppEvent.ExternalLogContainer): void {
+    // 获取所有日志信息详情
+    let allLogs: Set<hiAppEvent.ExternalLogWrapper> = container.getAllLogs();
+  }
+};
+```
 
 ## getFirstGeneratedLogFiles
 
@@ -96,6 +120,18 @@ getFirstGeneratedLogFiles(num: number): Set<string>
 | --- | --- |
 | Set&lt;string&gt; | 符合条件的外部日志文件路径的集合 |
 
+**示例**
+
+```TypeScript
+// 定义ExternalLogManager实现
+let myLogManager: hiAppEvent.ExternalLogManager = {
+  onCapacityReached(container: hiAppEvent.ExternalLogContainer): void {
+    // 获取最早生成的6个external_log日志文件路径
+    let files: Set<string> = container.getFirstGeneratedLogFiles(6);
+  }
+};
+```
+
 ## getLogFilesGeneratedAfter
 
 ```TypeScript
@@ -125,6 +161,19 @@ getLogFilesGeneratedAfter(timePoint: number): Set<string>
 | 类型 | 说明 |
 | --- | --- |
 | Set&lt;string&gt; | 指定时间之后的所有外部日志文件路径的集合 |
+
+**示例**
+
+```TypeScript
+// 定义ExternalLogManager实现
+let myLogManager: hiAppEvent.ExternalLogManager = {
+  onCapacityReached(container: hiAppEvent.ExternalLogContainer): void {
+    // 获取指定时间后生成的external_log日志文件路径
+    let timePoint = Date.now() - 60 * 60 * 1000; // 当前时间戳减1小时
+    let files: Set<string> = container.getLogFilesGeneratedAfter(timePoint);
+  }
+};
+```
 
 ## getLogFilesGeneratedBefore
 
@@ -156,6 +205,19 @@ getLogFilesGeneratedBefore(timePoint: number): Set<string>
 | --- | --- |
 | Set&lt;string&gt; | 给定时间之前的所有外部日志文件路径的集合 |
 
+**示例**
+
+```TypeScript
+// 定义ExternalLogManager实现
+let myLogManager: hiAppEvent.ExternalLogManager = {
+  onCapacityReached(container: hiAppEvent.ExternalLogContainer): void {
+    // 获取指定时间前生成的external_log日志文件路径
+    let timePoint = Date.now() - 60 * 60 * 1000; // 当前时间戳减1小时
+    let files: Set<string> = container.getLogFilesGeneratedBefore(timePoint);
+  }
+};
+```
+
 ## getLogFilesLargerThan
 
 ```TypeScript
@@ -185,6 +247,18 @@ getLogFilesLargerThan(sizeKb: number): Set<string>
 | 类型 | 说明 |
 | --- | --- |
 | Set&lt;string&gt; | 大小大于给定数量的所有外部日志文件路径的集合 |
+
+**示例**
+
+```TypeScript
+// 定义ExternalLogManager实现
+let myLogManager: hiAppEvent.ExternalLogManager = {
+  onCapacityReached(container: hiAppEvent.ExternalLogContainer): void {
+    // 获取大于指定大小的external_log日志文件路径
+    let files: Set<string> = container.getLogFilesLargerThan(100);
+  }
+};
+```
 
 ## getLogFilesOfSysEvent
 
@@ -216,6 +290,18 @@ getLogFilesOfSysEvent(event: string): Set<string>
 | --- | --- |
 | Set&lt;string&gt; | 给定系统事件的所有外部日志文件路径的集合 |
 
+**示例**
+
+```TypeScript
+// 定义ExternalLogManager实现
+let myLogManager: hiAppEvent.ExternalLogManager = {
+  onCapacityReached(container: hiAppEvent.ExternalLogContainer): void {
+    // 获取指定事件类型external_log日志文件路径
+    let crashFiles: Set<string> = container.getLogFilesOfSysEvent('APP_CRASH');
+  }
+};
+```
+
 ## getLogFilesSmallerThan
 
 ```TypeScript
@@ -246,6 +332,18 @@ getLogFilesSmallerThan(sizeKb: number): Set<string>
 | --- | --- |
 | Set&lt;string&gt; | 大小小于给定数量的所有外部日志文件路径的集合 |
 
+**示例**
+
+```TypeScript
+// 定义ExternalLogManager实现
+let myLogManager: hiAppEvent.ExternalLogManager = {
+  onCapacityReached(container: hiAppEvent.ExternalLogContainer): void {
+    // 获取小于指定大小的external_log日志文件路径
+    let files: Set<string> = container.getLogFilesSmallerThan(100);
+  }
+};
+```
+
 ## getLogNumber
 
 ```TypeScript
@@ -269,3 +367,15 @@ getLogNumber(): number
 | 类型 | 说明 |
 | --- | --- |
 | number | 所有外部日志文件的个数 |
+
+**示例**
+
+```TypeScript
+// 定义ExternalLogManager实现
+let myLogManager: hiAppEvent.ExternalLogManager = {
+  onCapacityReached(container: hiAppEvent.ExternalLogContainer): void {
+    // 获取external_log目录日志文件数量
+    let num: number = container.getLogNumber();
+  }
+};
+```

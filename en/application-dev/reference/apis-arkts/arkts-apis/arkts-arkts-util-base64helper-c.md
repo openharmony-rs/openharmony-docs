@@ -222,7 +222,7 @@ Encodes the input content into a string. This API uses a promise to return the r
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| src | Uint8Array &#124; [collections.Uint8Array](arkts-arkts-collections-uint8array-c.md) | Yes | Uint8Array object to encode.<br>**Since:** 26.2.0 |
+| src | Uint8Array &#124; [collections.Uint8Array](arkts-arkts-collections-uint8array-c.md) | Yes | Uint8Array object to encode.<br>**Since:** 26.1.0 |
 | options | [Type](arkts-arkts-util-type-e.md) | No | Encoding format.<br>The following values are available:<br>- **util.Type.BASIC** (default): Base64 encoding. The return value does not contain carriage return characters or newline characters.<br>- **util.Type.MIME**: Base64 encoding. Each line of the return value contains a maximum of 76 characters and ends with '\r\n'.<br>- **util.Type.BASIC_URL_SAFE**: Base64URL encoding. The return value does not contain carriage return characters or newline characters.<br>- **util.Type.MIME_URL_SAFE**: Base64URL encoding. Each line in the return value contains a maximum of 76 characters and ends with '\r\n'.<br>**Since:** 10 |
 
 **Return value:**
@@ -267,7 +267,7 @@ Performs Base64 encoding on the input Uint8Array byte array and returns a string
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| src | Uint8Array &#124; [collections.Uint8Array](arkts-arkts-collections-uint8array-c.md) | Yes | Uint8Array object to encode.<br>**Since:** 26.2.0 |
+| src | Uint8Array &#124; [collections.Uint8Array](arkts-arkts-collections-uint8array-c.md) | Yes | Uint8Array object to encode.<br>**Since:** 26.1.0 |
 | options | [Type](arkts-arkts-util-type-e.md) | No | Encoding format.<br>The following values are available:<br>- **util.Type.BASIC** (default): Base64 encoding. The return value does not contain carriage return characters or newline characters.<br>- **util.Type.MIME**: Base64 encoding. If the return value exceeds 76 characters, a line break is inserted every 76 characters, and each line ends with '\r\n'. If the return value is fewer than 76 characters, an exception is thrown.<br>- **util.Type.BASIC_URL_SAFE**: Base64URL encoding. The return value does not contain carriage return characters or newline characters.<br>- **util.Type.MIME_URL_SAFE**: Base64 URL encoding. Each line in the return value contains a maximum of 76 characters and ends with '\r\n'.<br>**Since:** 12 |
 
 **Return value:**

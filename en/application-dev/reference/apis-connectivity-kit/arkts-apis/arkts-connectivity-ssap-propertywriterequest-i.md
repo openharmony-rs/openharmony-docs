@@ -32,7 +32,7 @@ Client device address. The address format is **11:22:33:AA:BB:FF**.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-PropertyWriteRequest-address: string--><!--Device-PropertyWriteRequest-address: string-End-->
 
@@ -52,7 +52,7 @@ Property UUID, in the same format as **serviceUuid**.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-PropertyWriteRequest-propertyUuid: string--><!--Device-PropertyWriteRequest-propertyUuid: string-End-->
 
@@ -72,7 +72,7 @@ Write request ID of the client. This ID must be carried in the response returned
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-PropertyWriteRequest-requestId: int--><!--Device-PropertyWriteRequest-requestId: int-End-->
 
@@ -92,7 +92,7 @@ NearLink service UUID, which is a string of 36 characters. The value consists of
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-PropertyWriteRequest-serviceUuid: string--><!--Device-PropertyWriteRequest-serviceUuid: string-End-->
 
@@ -112,7 +112,7 @@ Value written by the client.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-PropertyWriteRequest-value: ArrayBuffer--><!--Device-PropertyWriteRequest-value: ArrayBuffer-End-->
 
@@ -132,7 +132,7 @@ Property write type of the client.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-PropertyWriteRequest-writeType: PropertyWriteType--><!--Device-PropertyWriteRequest-writeType: PropertyWriteType-End-->
 

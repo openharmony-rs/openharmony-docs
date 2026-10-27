@@ -22,6 +22,41 @@ interface AudioDeviceEnhanceManager
 import { audio } from '@kit.AudioKit';
 ```
 
+## getSoundCardInfoList
+
+```TypeScript
+getSoundCardInfoList(): Promise<Array<SoundCardInfo>>
+```
+
+获取声卡信息列表，包括板载声卡和USB声卡。使用Promise异步回调返回查询结果。使用场景：应用需要获取设备上所有声卡信息，包括板载声卡和USB声卡，用于资产管理与监控等场景。
+
+使用约束：  
+- 应用必须申请ohos.permission.GET_AUDIO_ADAPTER_INFO权限。  
+-此接口仅支持PC设备。非PC设备调用该接口，返回错误码801。
+
+**起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.GET_AUDIO_ADAPTER_INFO
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AudioDeviceEnhanceManager-getSoundCardInfoList(): Promise<Array<SoundCardInfo>>--><!--Device-AudioDeviceEnhanceManager-getSoundCardInfoList(): Promise<Array<SoundCardInfo>>-End-->
+
+**系统能力：** SystemCapability.Multimedia.Audio.DeviceEnhance
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;Array&lt;[SoundCardInfo](arkts-audio-audio-soundcardinfo-i.md)&gt;&gt; | Promise用于返回声卡信息列表。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | The current device model does not support this function. |
+
 ## isEnhancedRoutingSupported
 
 ```TypeScript

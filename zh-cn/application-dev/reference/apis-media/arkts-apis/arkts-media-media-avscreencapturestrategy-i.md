@@ -17,6 +17,24 @@ interface AVScreenCaptureStrategy
 ```TypeScript
 ```
 
+## contentAutoPauseScenes
+
+```TypeScript
+contentAutoPauseScenes?: Array<AVScreenCaptureAutoPauseCaptureScene>
+```
+
+设置自动暂停屏幕内容采集的场景集合。<br>当采集会话运行过程中，若场景集合中的任一场景发生，系统将自动暂停屏幕内容采集。<br>可通过OH_AVScreenCapture_ResumeScreenCapture()接口恢复屏幕内容采集。<br>默认不自动暂停屏幕内容采集（即不设置该参数时的默认行为）。
+
+**类型：** Array&lt;[AVScreenCaptureAutoPauseCaptureScene](arkts-media-media-avscreencaptureautopausecapturescene-e.md)&gt;
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AVScreenCaptureStrategy-contentAutoPauseScenes?: Array<AVScreenCaptureAutoPauseCaptureScene>--><!--Device-AVScreenCaptureStrategy-contentAutoPauseScenes?: Array<AVScreenCaptureAutoPauseCaptureScene>-End-->
+
+**系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
+
 ## enableAEC
 
 ```TypeScript
@@ -27,7 +45,7 @@ enableAEC?: boolean
 
 **类型：** boolean
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -32,7 +32,7 @@ Indicates the device address. The length must be 17, The value consists of hexad
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-PairingRequestParam-address: string--><!--Device-PairingRequestParam-address: string-End-->
 
@@ -52,7 +52,7 @@ Indicates the pairing type.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-PairingRequestParam-pairingType: PairingType--><!--Device-PairingRequestParam-pairingType: PairingType-End-->
 
@@ -72,7 +72,7 @@ Key for the device pairing.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-PairingRequestParam-passkey: string--><!--Device-PairingRequestParam-passkey: string-End-->
 

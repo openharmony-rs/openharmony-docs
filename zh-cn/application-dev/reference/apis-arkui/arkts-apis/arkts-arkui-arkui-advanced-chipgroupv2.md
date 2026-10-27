@@ -39,7 +39,7 @@ import { ChipGroupV2ItemConfig, ChipGroupV2Item, ChipGroupV2Items, ChipGroupV2It
 | 名称 | 说明 |
 | --- | --- |
 | [ChipGroupV2](arkts-arkui-arkui-advanced-chipgroupv2-chipgroupv2-s.md) | 创建ChipGroupV2组件。 |
-| [ChipGroupV2IconGroupSuffix](arkts-arkui-arkui-advanced-chipgroupv2-chipgroupv2icongroupsuffix-s.md) | ChipGroupV2组件提供操作块群组容器，支持单选或多选、自定义样式和间距、以及尾部自定义内容。该组件适用于文件或资源内容的分类、标签选择、筛选等场景，可帮助开发者快速构建美观且交互丰富的标签组界面。 |
+| [ChipGroupV2IconGroupSuffix](arkts-arkui-arkui-advanced-chipgroupv2-chipgroupv2icongroupsuffix-s.md) | ChipGroupV2IconGroupSuffix用于在ChipGroupV2组件最右侧显示自定义内容，支持配置Image图标、Symbol图标或Symbol图标配置项，以及图标背景材质样式，适用于需要在标签组尾部添加额外操作入口的场景。 |
 
 ### 接口
 
@@ -120,6 +120,9 @@ struct Index {
         chipGroupPadding: new ChipGroupV2Padding({ top: 10, bottom: 10 }),
         onChange: (activatedChipsIndex: Array<number>) => {
           console.info('chips on clicked, activated index ' + activatedChipsIndex);
+        },
+        onItemsChange: (items: ChipGroupV2Items) => {
+          console.info('chip items changed');
         },
       })
     }
@@ -216,6 +219,9 @@ struct Index {
         chipGroupPadding: new ChipGroupV2Padding({ top: 10, bottom: 10 }),
         onChange: (activatedChipsIndex: Array<number>) => {
           console.info('chips on clicked, activated index ' + activatedChipsIndex);
+        },
+        onItemsChange: (items: ChipGroupV2Items) => {
+          console.info('chip items changed');
         },
         // ChipGroupV2最右侧显示的自定义组件。
         suffix: this.ChipGroupSuffix
@@ -318,6 +324,9 @@ struct Index {
         chipGroupPadding: new ChipGroupV2Padding({ top: 10, bottom: 10 }),
         onChange: (activatedChipsIndex: Array<number>) => {
           console.info('chips on clicked, activated index ' + activatedChipsIndex);
+        },
+        onItemsChange: (items: ChipGroupV2Items) => {
+          console.info('chip items changed');
         },
         // ChipGroupV2最右侧显示的自定义组件。
         suffix: this.ChipGroupSuffix

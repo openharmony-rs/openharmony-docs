@@ -12,7 +12,7 @@ import { securityGuard } from '@kit.SecurityGuardKit';
 function off(type: 'securityEventOccur', securityEventInfo: SecurityEventInfo, callback?: Callback<SecurityEvent>): void
 ```
 
-解订阅安全事件。
+Unsubscribe the security event.
 
 **起始版本：** 12
 
@@ -28,9 +28,9 @@ function off(type: 'securityEventOccur', securityEventInfo: SecurityEventInfo, c
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'securityEventOccur' | 是 | 订阅类型。 |
-| securityEventInfo | [SecurityEventInfo](arkts-securityguard-securityguard-securityeventinfo-i-sys.md) | 是 | 订阅的安全事件信息。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[SecurityEvent](arkts-securityguard-securityguard-securityevent-i-sys.md)&gt; | 否 | 安全事件发生时的监听回调函数。 |
+| type | 'securityEventOccur' | 是 |  |
+| securityEventInfo | [SecurityEventInfo](arkts-securityguard-securityguard-securityeventinfo-i-sys.md) | 是 | Indicates the subscribed event information. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[SecurityEvent](arkts-securityguard-securityguard-securityevent-i-sys.md)&gt; | 否 | Indicates the listener when the security event occurs. |
 
 **错误码：**
 

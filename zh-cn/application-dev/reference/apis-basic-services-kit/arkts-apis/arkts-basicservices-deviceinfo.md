@@ -64,6 +64,7 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 | [firstApiVersion](arkts-basicservices-deviceinfo-con.md#firstapiversion) | 首个版本系统软件API版本。 |
 | [hardwareModel](arkts-basicservices-deviceinfo-con.md#hardwaremodel) | 硬件版本号。 |
 | [incrementalVersion](arkts-basicservices-deviceinfo-con.md#incrementalversion) | 差异版本号，是编译时生成的ohos的版本号。 |
+| [installTime](arkts-basicservices-deviceinfo-con.md#installtime) | 获取系统安装UTC时间戳。例如：1790784000000。 |
 | [kernelVersion](arkts-basicservices-deviceinfo-con.md#kernelversion) | 获取内核版本。示例: '产品内核1.0.0'。 |
 | [majorVersion](arkts-basicservices-deviceinfo-con.md#majorversion) | Major版本号，随主版本更新增加，值为osFullName中的第一位数值，建议直接使用deviceInfo.majorVersion获取，可提升效率，不建议开发者自主解析osFullName获取。 |
 | [manufacture](arkts-basicservices-deviceinfo-con.md#manufacture) | 设备厂家名称。 |

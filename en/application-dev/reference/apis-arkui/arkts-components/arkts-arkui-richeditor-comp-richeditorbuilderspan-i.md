@@ -11,7 +11,7 @@ Defines the BuilderSpan object of **RichEditor**, providing identity recognition
 > This interface is not supported when the **RichEditor** component is constructed with
 > [RichEditorStyledStringOptions](arkts-arkui-richeditor-comp-richeditorstyledstringoptions-i.md).
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 <!--Device-unnamed-declare interface RichEditorBuilderSpan--><!--Device-unnamed-declare interface RichEditorBuilderSpan-End-->
 
@@ -27,11 +27,11 @@ Accessibility reading feature. When omitted, the default value of [Accessibility
 
 **Type:** [AccessibilitySpanOptions](../arkts-apis/arkts-arkui-accessibilityspanoptions-i.md)
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-RichEditorBuilderSpan-accessibilitySpanOptions?: AccessibilitySpanOptions--><!--Device-RichEditorBuilderSpan-accessibilitySpanOptions?: AccessibilitySpanOptions-End-->
 
@@ -47,11 +47,11 @@ Custom component builder.
 
 **Type:** [CustomBuilder](arkts-arkui-common-comp-custombuilder-t.md)
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-RichEditorBuilderSpan-builder: CustomBuilder--><!--Device-RichEditorBuilderSpan-builder: CustomBuilder-End-->
 
@@ -67,11 +67,11 @@ Callback triggered when the BuilderSpan is attached to **RichEditor**. The callb
 
 **Type:** Callback&lt;[BuilderSpanInfo](arkts-arkui-richeditor-comp-builderspaninfo-i.md)&gt;
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-RichEditorBuilderSpan-onAttach?: Callback<BuilderSpanInfo>--><!--Device-RichEditorBuilderSpan-onAttach?: Callback<BuilderSpanInfo>-End-->
 
@@ -92,11 +92,11 @@ Callback triggered when the BuilderSpan is removed from **RichEditor**. This inc
 
 **Type:** Callback&lt;[BuilderSpanInfo](arkts-arkui-richeditor-comp-builderspaninfo-i.md)&gt;
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-RichEditorBuilderSpan-onDetach?: Callback<BuilderSpanInfo>--><!--Device-RichEditorBuilderSpan-onDetach?: Callback<BuilderSpanInfo>-End-->
 

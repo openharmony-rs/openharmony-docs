@@ -102,10 +102,15 @@ function connectToCandidateConfig(settings: ConnectSettings): Promise<void>
 
 ```TypeScript
 import { wifiManager } from '@kit.ConnectivityKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
 
   try {
     let setting:wifiManager.ConnectSettings = { networkId: 0 }; // 候选网络ID，在添加候选网络时生成
-    wifiManager.connectToCandidateConfig(setting);
+    wifiManager.connectToCandidateConfig(setting).then(() => {
+      console.info("connect success");
+    }).catch((error: BusinessError) => {
+      console.error(`connectToCandidateConfig failed. Code: ${error.code}, message: ${error.message}`);
+    });
   }catch(error){
     console.error("failed:" + JSON.stringify(error));
   }

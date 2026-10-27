@@ -627,12 +627,12 @@ Obtains the y-coordinate of the drag point relative to the upper left corner of 
 ## autoHideComponentUniqueIds
 
 ```TypeScript
-autoHideComponentUniqueIds?: number[]
+autoHideComponentUniqueIds?: number | number[]
 ```
 
 Set the uniqueId or uniqueId array of components that need to be automatically hidden during dragging. This property takes effect only in onDragStart. After the drag starts successfully, the system hides the target components before the drag preview window is shown. If the drag source itself also needs to be hidden, the uniqueId of the drag source component must be passed in as well. The uniqueId of a component can be obtained through UIContext.getFrameNodeById() together with FrameNode.getUniqueId(). Developers need to restore component visibility in onDragEnd or onDrop based on service requirements.
 
-**Type:** number[]
+**Type:** number &#124; number[]
 
 **Since:** 26.0.0
 

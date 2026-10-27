@@ -353,11 +353,15 @@
   - [setExtBundleStats（系统接口）](arkts-corefile-storagestatistics-setextbundlestats-f-sys.md)<!--DelEnd-->
   - [BundleStats](arkts-corefile-storagestatistics-bundlestats-i.md)
   <!--Del-->
+  - [BundleStatsOptions（系统接口）](arkts-corefile-storagestatistics-bundlestatsoptions-i-sys.md)<!--DelEnd-->
+  <!--Del-->
   - [ExtBundleStats（系统接口）](arkts-corefile-storagestatistics-extbundlestats-i-sys.md)<!--DelEnd-->
   <!--Del-->
   - [StorageStats（系统接口）](arkts-corefile-storagestatistics-storagestats-i-sys.md)<!--DelEnd-->
   <!--Del-->
   - [UserdataDirInfo（系统接口）](arkts-corefile-storagestatistics-userdatadirinfo-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [GetBundleStatsFlag（系统接口）](arkts-corefile-storagestatistics-getbundlestatsflag-e-sys.md)<!--DelEnd-->
 - [@ohos.file.volumeManager（卷管理）](arkts-corefile-file-volumemanager.md)
   <!--Del-->
   - [burn（系统接口）](arkts-corefile-volumemanager-burn-f-sys.md)<!--DelEnd-->

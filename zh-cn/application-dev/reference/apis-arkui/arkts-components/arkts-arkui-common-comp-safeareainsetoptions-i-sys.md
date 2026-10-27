@@ -6,7 +6,7 @@ declare interface SafeAreaInsetOptions
 
 组件四边的完整边缘内容配置。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 <!--Device-unnamed-declare interface SafeAreaInsetOptions--><!--Device-unnamed-declare interface SafeAreaInsetOptions-End-->
 
@@ -24,11 +24,11 @@ bottom?: SafeAreaInsetEdgeConfig
 
 **类型：** [SafeAreaInsetEdgeConfig](arkts-arkui-common-comp-safeareainsetedgeconfig-i-sys.md)
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-SafeAreaInsetOptions-bottom?: SafeAreaInsetEdgeConfig--><!--Device-SafeAreaInsetOptions-bottom?: SafeAreaInsetEdgeConfig-End-->
 
@@ -46,11 +46,11 @@ end?: SafeAreaInsetEdgeConfig
 
 **类型：** [SafeAreaInsetEdgeConfig](arkts-arkui-common-comp-safeareainsetedgeconfig-i-sys.md)
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-SafeAreaInsetOptions-end?: SafeAreaInsetEdgeConfig--><!--Device-SafeAreaInsetOptions-end?: SafeAreaInsetEdgeConfig-End-->
 
@@ -68,11 +68,11 @@ start?: SafeAreaInsetEdgeConfig
 
 **类型：** [SafeAreaInsetEdgeConfig](arkts-arkui-common-comp-safeareainsetedgeconfig-i-sys.md)
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-SafeAreaInsetOptions-start?: SafeAreaInsetEdgeConfig--><!--Device-SafeAreaInsetOptions-start?: SafeAreaInsetEdgeConfig-End-->
 
@@ -90,11 +90,11 @@ top?: SafeAreaInsetEdgeConfig
 
 **类型：** [SafeAreaInsetEdgeConfig](arkts-arkui-common-comp-safeareainsetedgeconfig-i-sys.md)
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-SafeAreaInsetOptions-top?: SafeAreaInsetEdgeConfig--><!--Device-SafeAreaInsetOptions-top?: SafeAreaInsetEdgeConfig-End-->
 

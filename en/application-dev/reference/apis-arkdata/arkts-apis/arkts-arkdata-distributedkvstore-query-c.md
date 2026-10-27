@@ -446,7 +446,7 @@ try {
 ## inNumber
 
 ```TypeScript
-inNumber(field: string, valueList: number[] | number[]): Query
+inNumber(field: string, valueList: number[]): Query
 ```
 
 Creates a **Query** object to match the specified field whose value is within the specified list of numbers.
@@ -472,7 +472,7 @@ Creates a **Query** object to match the specified field whose value is within th
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | field | string | Yes | Field to match. It cannot contain '^'. If the value contains '^', the predicate becomes invalid and all data in the KV store will be returned. |
-| valueList | number[] &#124; number[] | Yes | List of numbers. |
+| valueList | number[] | Yes | List of numbers. |
 
 **Return value:**
 
@@ -988,7 +988,7 @@ try {
 ## notInNumber
 
 ```TypeScript
-notInNumber(field: string, valueList: number[] | number[]): Query
+notInNumber(field: string, valueList: number[]): Query
 ```
 
 Creates a **Query** object to match the specified field whose value is not within the specified list of numbers.
@@ -1014,7 +1014,7 @@ Creates a **Query** object to match the specified field whose value is not withi
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | field | string | Yes | Field to match. It cannot contain '^'. If the value contains '^', the predicate becomes invalid and all data in the KV store will be returned. |
-| valueList | number[] &#124; number[] | Yes | List of numbers. |
+| valueList | number[] | Yes | List of numbers. |
 
 **Return value:**
 

@@ -41,3 +41,19 @@ function setExternalStorageDeviceMountPolicy(volumeId: string, policy: MountPoli
 | [9200012](../errorcode-enterpriseDeviceManager.md#9200012-参数校验失败) | Parameter verification failed. |
 | [9200016](../errorcode-enterpriseDeviceManager.md#9200016-服务超时) | Service timeout. |
 | [9201056](../errorcode-enterpriseDeviceManager.md#9201056-外置存储设备挂载策略不合法) | Invalid external storage mount policy. |
+
+**示例**
+
+```TypeScript
+import { usbManager } from '@kit.MDMKit';
+
+try {
+  // 卷ID需根据实际情况进行替换
+  let volumeId: string = 'public:123456,1';
+  let policy: usbManager.MountPolicy = usbManager.MountPolicy.MOUNT_READ_WRITE;
+  usbManager.setExternalStorageDeviceMountPolicy(volumeId, policy);
+  console.info(`Succeeded in setting external storage device mount policy.`);
+} catch (err) {
+  console.error(`Failed to set external storage device mount policy. Code: ${err.code}, message: ${err.message}`);
+}
+```

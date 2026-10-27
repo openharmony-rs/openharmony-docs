@@ -40,7 +40,7 @@ Obtains the sound card information. This method uses a Promise to return the que
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[SoundCardInfo](arkts-audio-audio-soundcardinfo-i-sys.md)&gt; | Promise used to return the sound card information. |
+| Promise&lt;[SoundCardInfo](arkts-audio-audio-soundcardinfo-i.md)&gt; | Promise used to return the sound card information. |
 
 **Error codes:**
 

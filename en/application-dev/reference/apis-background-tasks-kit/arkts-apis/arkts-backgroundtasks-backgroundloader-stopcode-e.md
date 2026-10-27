@@ -6,7 +6,7 @@ export enum StopCode
 
 Enumerates the stop code, which is used to ON_STOP function.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 <!--Device-backgroundLoader-export enum StopCode--><!--Device-backgroundLoader-export enum StopCode-End-->
 
@@ -20,7 +20,7 @@ EXECUTE_ERROR = 4
 
 Anomalies during task execution.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -36,7 +36,7 @@ PERCEPTIBLE_ERROR = 2
 
 Perceptible anomalies during task execution.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -52,7 +52,7 @@ SUCCESS = 0
 
 Success code.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -68,7 +68,7 @@ SYSTEM_ERROR = 1
 
 System error during task execution.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -84,7 +84,7 @@ TIMEOUT_ERROR = 3
 
 Timeout during task execution.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 

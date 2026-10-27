@@ -18,6 +18,29 @@ Represents the configuration of the recent image or video.
 import { RecentPhotoComponent, RecentPhotoCheckResultCallback, RecentPhotoInfo, RecentPhotoCheckInfoCallback, RecentPhotoClickCallback, RecentPhotoOptions, PhotoSource } from '@kit.MediaLibraryKit';
 ```
 
+## assetFilter
+
+```TypeScript
+assetFilter?: Array<photoAccessHelper.OperationItem>
+```
+
+Media asset filter, with a maximum length of 50 items. If the limit is exceeded, only the first 50 items are used. **NOTE:** 
+1. When this filter is applied, other filters become invalid.
+2. When setting multiple conditions, enclose the filter conditions in parentheses to prevent conflicts with
+internal filter items.
+
+**Type:** Array&lt;[photoAccessHelper.OperationItem](arkts-medialibrary-photoaccesshelper-operationitem-c.md)&gt;
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+<!--Device-RecentPhotoOptions-assetFilter?: Array<photoAccessHelper.OperationItem>--><!--Device-RecentPhotoOptions-assetFilter?: Array<photoAccessHelper.OperationItem>-End-->
+
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
 ## colorMode
 
 ```TypeScript
@@ -62,6 +85,46 @@ The default value is **false**, indicating that the component does not automatic
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+## isPersistAfterClick
+
+```TypeScript
+isPersistAfterClick?: boolean
+```
+
+Whether to keep the component alive after click. true: component will not be destroyed after click. false: component will be destroyed after click (default).
+
+**Type:** boolean
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+<!--Device-RecentPhotoOptions-isPersistAfterClick?: boolean--><!--Device-RecentPhotoOptions-isPersistAfterClick?: boolean-End-->
+
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+## isShowBadge
+
+```TypeScript
+isShowBadge?: boolean
+```
+
+Whether to show the badge on the displayed photo. true: show the badge info, such as moving photo badge and video duration (default). false: do not show any badge; only the photo thumbnail is displayed.
+
+**Type:** boolean
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+<!--Device-RecentPhotoOptions-isShowBadge?: boolean--><!--Device-RecentPhotoOptions-isShowBadge?: boolean-End-->
+
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
 ## MIMEType
 
 ```TypeScript
@@ -86,9 +149,9 @@ Types of the file displayed. The default value is **PhotoViewMIMETypes.IMAGE_VID
 period?: number
 ```
 
-Time period for displaying the latest image sorted by creation time, in seconds. The longest duration you can set is 1 day (86400s).
+Time range for displaying the recent images or videos, measured in seconds. After setting, the system shows the latest image sorted by creation time taken within the specified time from the current moment. The longest duration you can set is 2147483647 (INT_MAX) seconds.
 
-If the value is less than or equal to 0, greater than 86400, or not set, the most recent photos over the longest period of up to one day is displayed by default. If there is no image or video in the specified period, the component is not displayed.
+If the value is set to Number.POSITIVE_INFINITY, the system shows the latest one within the INT_MAX range. If the value is less than or equal to 0, greater than INT_MAX, or not set, the system uses 1 day by default. If there are no images or videos within the set time range, the component does not show anything.
 
 **Type:** number
 

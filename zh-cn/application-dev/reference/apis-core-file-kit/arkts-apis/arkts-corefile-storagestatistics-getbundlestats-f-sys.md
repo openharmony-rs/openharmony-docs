@@ -149,3 +149,105 @@ try {
 ```
 
 <!--DelEnd-->
+
+
+## getBundleStats
+
+```TypeScript
+function getBundleStats(packageName: string, option?: BundleStatsOptions): Promise<BundleStats>
+```
+
+异步获取应用存储数据的空间大小（单位为Byte），使用Promise异步回调。
+
+**起始版本：** 26.0.1
+
+**需要权限：** ohos.permission.STORAGE_MANAGER
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-storageStatistics-function getBundleStats(packageName: string, option?: BundleStatsOptions): Promise<BundleStats>--><!--Device-storageStatistics-function getBundleStats(packageName: string, option?: BundleStatsOptions): Promise<BundleStats>-End-->
+
+**系统能力：** SystemCapability.FileManagement.StorageService.SpatialStatistics
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| packageName | string | 是 | 应用包名。 |
+| option | [BundleStatsOptions](arkts-corefile-storagestatistics-bundlestatsoptions-i-sys.md) | 否 | 获取应用存储空间信息的选项。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;[BundleStats](arkts-corefile-storagestatistics-bundlestats-i.md)&gt; | Promise对象，返回应用存储数据的空间大小（单位为Byte）。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The caller is not a system application. |
+| 13600001 | IPC error. |
+| 13600008 | No such object. |
+
+<!--Del-->
+**示例**
+
+```TypeScript
+import { bundleResourceManager } from '@kit.AbilityKit';
+import { storageStatistics } from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let bundleName = "com.example.myapplication";
+let bundleFlags = bundleResourceManager.ResourceFlag.GET_RESOURCE_INFO_ALL;
+try {
+  let resourceInfo = bundleResourceManager.getBundleResourceInfo(bundleName, bundleFlags);
+  hilog.info(0x0000, 'testTag', 'getBundleResourceInfo successfully. Data label: %{public}s', JSON.stringify(resourceInfo.label));
+
+  let packageName:string = bundleName;
+  let index:number = resourceInfo.appIndex;
+  storageStatistics.getBundleStats(packageName, index).then((bundleStats: storageStatistics.BundleStats) => {
+    hilog.info(0x0000, 'testTag', 'getBundleStats successfully. BundleStats: %{public}s', JSON.stringify(bundleStats));
+  }).catch((err: BusinessError) => {
+    console.error(`getBundleStats failed with err, code is: ${err.code}, message is: ${err.message}`);
+  });
+
+} catch (err) {
+  let message = (err as BusinessError).message;
+  console.error(`getBundleResourceInfo failed with err, message is: ${message}`);
+}
+```
+
+```TypeScript
+import { bundleResourceManager } from '@kit.AbilityKit';
+import { storageStatistics } from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let bundleName = "com.example.myapplication";
+let bundleFlags = bundleResourceManager.ResourceFlag.GET_RESOURCE_INFO_ALL;
+try {
+  let resourceInfo = bundleResourceManager.getBundleResourceInfo(bundleName, bundleFlags);
+  hilog.info(0x0000, 'testTag', 'getBundleResourceInfo successfully. Data label: %{public}s', JSON.stringify(resourceInfo.label));
+
+  let packageName:string = bundleName;
+  let index:number = resourceInfo.appIndex;
+  storageStatistics.getBundleStats(packageName, (err: BusinessError, bundleStats: storageStatistics.BundleStats) => {
+    if (err) {
+      console.error(`getBundleStats failed with err, code is: ${err.code}, message is: ${err.message}`);
+    } else {
+      hilog.info(0x0000, 'testTag', 'getBundleStats successfully. BundleStats: %{public}s', JSON.stringify(bundleStats));
+    }
+  }, index);
+
+} catch (err) {
+  let message = (err as BusinessError).message;
+  console.error(`getBundleResourceInfo failed with err, message is: ${message}`);
+}
+```
+
+<!--DelEnd-->

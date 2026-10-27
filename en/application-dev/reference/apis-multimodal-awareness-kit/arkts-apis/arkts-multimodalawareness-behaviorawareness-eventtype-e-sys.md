@@ -6,7 +6,7 @@ export enum EventType
 
 Event type enum.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 <!--Device-behaviorAwareness-export enum EventType--><!--Device-behaviorAwareness-export enum EventType-End-->
 
@@ -22,7 +22,7 @@ ALARM_DISMISS = 'alarmDismiss'
 
 Alarm dismiss.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -40,7 +40,7 @@ APP_EXIT = 'appExit'
 
 App exit.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -58,7 +58,7 @@ APP_LAUNCH = 'appLaunch'
 
 App launch.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -76,7 +76,7 @@ APP_USAGE_DAILY = 'appUsageDaily'
 
 Daily app usage.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -94,7 +94,7 @@ APP_USAGE_SINGLE = 'appUsageSingle'
 
 Single app usage.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -112,7 +112,7 @@ BATTERY_ABOVE = 'batteryAbove'
 
 Battery above specified level.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -130,7 +130,7 @@ BATTERY_BELOW = 'batteryBelow'
 
 Battery below specified level.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -148,7 +148,7 @@ BLUETOOTH_CONNECT = 'bluetoothConnect'
 
 Bluetooth connected.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -166,7 +166,7 @@ BLUETOOTH_DISCONNECT = 'bluetoothDisconnect'
 
 Bluetooth disconnected.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -184,7 +184,7 @@ CHARGE_END = 'chargeEnd'
 
 Charge end.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -202,7 +202,7 @@ CHARGE_FULL = 'chargeFull'
 
 Battery fully charged.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -220,7 +220,7 @@ CHARGE_START = 'chargeStart'
 
 Charge start.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -238,7 +238,7 @@ DAILY_TIME = 'dailyTime'
 
 Daily time point.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -256,7 +256,7 @@ LOCATION = 'location'
 
 Location information, including the location and fence entry and exit status.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -274,7 +274,7 @@ MONTHLY_TIME = 'monthlyTime'
 
 Monthly time point.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -292,7 +292,7 @@ PHONE_RING = 'phoneRing'
 
 Incoming phone ring.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -310,7 +310,7 @@ WEEKLY_TIME = 'weeklyTime'
 
 Weekly time point.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -328,7 +328,7 @@ WORKDAY_TIME = 'workdayTime'
 
 Legal workday time point.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 

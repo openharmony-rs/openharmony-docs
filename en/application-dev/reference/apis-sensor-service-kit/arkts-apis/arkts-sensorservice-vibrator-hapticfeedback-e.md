@@ -34,7 +34,7 @@ EFFECT_IME_STRENGTH1 = 'haptic.grade.normal.strength1'
 
 Vibration effect of the input method keyboard. The strength is 1 (minimum strength).
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -50,7 +50,7 @@ EFFECT_IME_STRENGTH2 = 'haptic.grade.normal.strength2'
 
 Vibration effect of the input method keyboard. The strength is 2.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -66,7 +66,7 @@ EFFECT_IME_STRENGTH3 = 'haptic.grade.normal.strength3'
 
 Vibration effect of the input method keyboard. The strength is 3 (medium strength).
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -82,7 +82,7 @@ EFFECT_IME_STRENGTH4 = 'haptic.grade.normal.strength4'
 
 Vibration effect of the input method keyboard. The strength is 4.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -98,7 +98,7 @@ EFFECT_IME_STRENGTH5 = 'haptic.grade.normal.strength5'
 
 Vibration effect of the input method keyboard. The strength is 5 (maximum strength).
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 

@@ -1,5 +1,9 @@
 # SceneResources
 
+This module provides the common basic resource types in ArkGraphics 3D.
+
+
+
 ## Summary
 
 ### Interfaces

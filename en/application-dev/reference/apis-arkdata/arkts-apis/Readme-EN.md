@@ -137,6 +137,32 @@
   - [createRdbPredicates](arkts-arkdata-dataability-createrdbpredicates-f.md)
   - [DataAbilityPredicates](arkts-arkdata-dataability-dataabilitypredicates-c.md)
   - [ValueType](arkts-arkdata-dataability-valuetype-t.md)
+<!--Del-->
+- [@ohos.data.dataFabricAddress(This module provides the capability of subscribing to and unsubscribing from address data fabric.)](arkts-arkdata-data-datafabricaddress.md)<!--DelEnd-->
+  <!--Del-->
+  - [offDataFabricAddress(system api)](arkts-arkdata-datafabricaddress-offdatafabricaddress-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [onDataFabricAddress(system api)](arkts-arkdata-datafabricaddress-ondatafabricaddress-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [DataFabricAddressParams(system api)](arkts-arkdata-datafabricaddress-datafabricaddressparams-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [DataProcessingResponse(system api)](arkts-arkdata-datafabricaddress-dataprocessingresponse-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [LocationInfo(system api)](arkts-arkdata-datafabricaddress-locationinfo-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [LocationPoint(system api)](arkts-arkdata-datafabricaddress-locationpoint-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [ReferenceLocationInfo(system api)](arkts-arkdata-datafabricaddress-referencelocationinfo-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [ActionType(system api)](arkts-arkdata-datafabricaddress-actiontype-e-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [BusinessScenario(system api)](arkts-arkdata-datafabricaddress-businessscenario-e-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [CoordinateSystemName(system api)](arkts-arkdata-datafabricaddress-coordinatesystemname-e-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [LabelName(system api)](arkts-arkdata-datafabricaddress-labelname-e-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [StatusCode(system api)](arkts-arkdata-datafabricaddress-statuscode-e-sys.md)<!--DelEnd-->
 - [@ohos.data.dataShare(DataShare)](arkts-arkdata-data-datashare.md)
   - [createDataProxyHandle](arkts-arkdata-datashare-createdataproxyhandle-f.md)
   <!--Del-->

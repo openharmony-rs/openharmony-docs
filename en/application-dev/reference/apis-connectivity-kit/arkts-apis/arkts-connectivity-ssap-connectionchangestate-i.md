@@ -32,7 +32,7 @@ Remote device address. The address format is **11:22:33:AA:BB:FF**.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-ConnectionChangeState-address: string--><!--Device-ConnectionChangeState-address: string-End-->
 
@@ -52,7 +52,7 @@ Connection status with a remote device.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-ConnectionChangeState-state: ConnectionState--><!--Device-ConnectionChangeState-state: ConnectionState-End-->
 

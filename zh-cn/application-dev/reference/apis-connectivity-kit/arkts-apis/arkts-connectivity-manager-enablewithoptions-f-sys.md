@@ -14,13 +14,13 @@ function enableWithOptions(options?: EnableOptions): void
 
 以指定选项打开星闪。调用此接口前，您可以调用[isNearLinkSupported](arkts-connectivity-manager-isnearlinksupported-f.md)查询设备是否支持星闪。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **需要权限：** ohos.permission.ACCESS_NEARLINK and ohos.permission.MANAGE_NEARLINK
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-manager-function enableWithOptions(options?: EnableOptions): void--><!--Device-manager-function enableWithOptions(options?: EnableOptions): void-End-->
 

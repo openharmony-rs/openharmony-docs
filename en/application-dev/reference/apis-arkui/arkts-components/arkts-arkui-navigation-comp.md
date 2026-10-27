@@ -94,6 +94,13 @@ Binds a routing stack to the **Navigation** component and specifies a **NavDesti
 
 ## Summary
 
+### Classes
+
+| Name | Description |
+| --- | --- |
+| [NavPathInfo](arkts-arkui-navigation-comp-navpathinfo-c.md) | Provides the navigation page information. |
+| [NavPathStack](arkts-arkui-navigation-comp-navpathstack-c.md) | A navigation controller that manages all child pages in the **Navigation** component with a stack data structure and provides stack operation methods for controlling page transitions. |
+
 ### Interfaces
 
 | Name | Description |

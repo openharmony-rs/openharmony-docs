@@ -96,6 +96,7 @@
 | [ResponseRegionSupportedTool](arkts-arkui-responseregionsupportedtool-e.md) | 触摸热区适用的输入工具类型。 |
 | [ResponseType](arkts-arkui-responsetype-e.md) | 菜单显示的触发方式。 |
 | [ScrollSource](arkts-arkui-scrollsource-e.md) | 滑动操作的来源。 |
+| [ShadowClipMode](arkts-arkui-shadowclipmode-e.md) | 阴影不填充时的裁切方式。 |
 | [SharedTransitionEffectType](arkts-arkui-sharedtransitioneffecttype-e.md) | 动画类型。 |
 | [SmartGestureAction](arkts-arkui-smartgestureaction-e.md) | 智慧手势操作类型枚举。 |
 | [TextAlign](arkts-arkui-textalign-e.md) | 文本段落在水平方向的对齐方式。 |

@@ -118,8 +118,7 @@
   <!--Del-->
   - [InterruptResult（系统接口）](arkts-audio-audio-interruptresult-i-sys.md)<!--DelEnd-->
   - [MicStateChangeEvent](arkts-audio-audio-micstatechangeevent-i.md)
-  <!--Del-->
-  - [SoundCardInfo（系统接口）](arkts-audio-audio-soundcardinfo-i-sys.md)<!--DelEnd-->
+  - [SoundCardInfo](arkts-audio-audio-soundcardinfo-i.md)
   - [StreamVolumeEvent](arkts-audio-audio-streamvolumeevent-i.md)
   <!--Del-->
   - [SystemRecordControllerChangeInfo（系统接口）](arkts-audio-audio-systemrecordcontrollerchangeinfo-i-sys.md)<!--DelEnd-->
@@ -244,6 +243,7 @@
   - [PolicyType（系统接口）](arkts-audio-audio-policytype-e-sys.md)<!--DelEnd-->
   <!--Del-->
   - [RenderTarget（系统接口）](arkts-audio-audio-rendertarget-e-sys.md)<!--DelEnd-->
+  - [SoundCardType](arkts-audio-audio-soundcardtype-e.md)
   - [SourceType](arkts-audio-audio-sourcetype-e.md)
   <!--Del-->
   - [SourceType（系统接口）](arkts-audio-audio-sourcetype-e-sys.md)<!--DelEnd-->

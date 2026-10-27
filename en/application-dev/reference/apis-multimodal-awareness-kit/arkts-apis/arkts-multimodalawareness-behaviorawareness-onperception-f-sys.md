@@ -19,7 +19,7 @@ Initiate subscription. The service side registers the subscription relationship 
 
 When a user performs an action, MSDP filters matches from the awareness event table and pushes them in real time through callbacks. When the same subscription target is subscribed repeatedly, the later callback overrides the previous callback.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 

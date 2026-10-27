@@ -6,7 +6,7 @@ interface InsightIntentExecutionInfo
 
 The insight intent execute information.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 <!--Device-insightIntent-interface InsightIntentExecutionInfo--><!--Device-insightIntent-interface InsightIntentExecutionInfo-End-->
 
@@ -28,11 +28,11 @@ The caller bundle name of the intent.
 
 **Type:** string
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-InsightIntentExecutionInfo-callerBundleName: string--><!--Device-InsightIntentExecutionInfo-callerBundleName: string-End-->
 
@@ -48,11 +48,11 @@ Token ID of the caller.
 
 **Type:** string
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-InsightIntentExecutionInfo-callerTokenId: string--><!--Device-InsightIntentExecutionInfo-callerTokenId: string-End-->
 
@@ -68,33 +68,13 @@ UID of the caller. The value should be an integer.
 
 **Type:** number
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-InsightIntentExecutionInfo-callerUid: int--><!--Device-InsightIntentExecutionInfo-callerUid: int-End-->
-
-**System capability:** SystemCapability.Ability.AbilityRuntime.Core
-
-## instanceId
-
-```TypeScript
-instanceId: number
-```
-
-Unique ID of an intent instance. The value should be an integer.
-
-**Type:** number
-
-**Since:** 26.2.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
-
-<!--Device-InsightIntentExecutionInfo-instanceId: int--><!--Device-InsightIntentExecutionInfo-instanceId: int-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -108,11 +88,11 @@ Intent name.
 
 **Type:** string
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-InsightIntentExecutionInfo-intentName: string--><!--Device-InsightIntentExecutionInfo-intentName: string-End-->
 

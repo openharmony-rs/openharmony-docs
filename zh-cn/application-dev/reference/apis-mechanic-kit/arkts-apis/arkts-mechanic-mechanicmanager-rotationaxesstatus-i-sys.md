@@ -4,7 +4,7 @@
 export interface RotationAxesStatus
 ```
 
-Rotation axes status
+旋转轴状态
 
 **起始版本：** 20
 
@@ -26,7 +26,7 @@ import { mechanicManager } from '@kit.MechanicKit';
 pitchEnabled: boolean
 ```
 
-是否使能俯仰轴
+是否启用了俯仰轴，true表示已启用，false表示已禁用。
 
 **类型：** boolean
 
@@ -44,7 +44,7 @@ pitchEnabled: boolean
 pitchLimited?: RotationAxisLimited
 ```
 
-Whether the pitch axis is limited.
+俯仰轴限位状态
 
 **类型：** [RotationAxisLimited](arkts-mechanic-mechanicmanager-rotationaxislimited-e-sys.md)
 
@@ -62,7 +62,7 @@ Whether the pitch axis is limited.
 rollEnabled: boolean
 ```
 
-是否启用滚动轴
+是否启用了横滚轴，true表示已启用，false表示已禁用。
 
 **类型：** boolean
 
@@ -80,7 +80,7 @@ rollEnabled: boolean
 rollLimited?: RotationAxisLimited
 ```
 
-Whether the roll axis is limited.
+横滚轴限位状态
 
 **类型：** [RotationAxisLimited](arkts-mechanic-mechanicmanager-rotationaxislimited-e-sys.md)
 
@@ -98,7 +98,7 @@ Whether the roll axis is limited.
 yawEnabled: boolean
 ```
 
-是否启用偏航轴
+是否启用了偏航轴，true表示已启用，false表示已禁用。
 
 **类型：** boolean
 
@@ -116,7 +116,7 @@ yawEnabled: boolean
 yawLimited?: RotationAxisLimited
 ```
 
-偏航轴是否限位
+偏航轴限位状态
 
 **类型：** [RotationAxisLimited](arkts-mechanic-mechanicmanager-rotationaxislimited-e-sys.md)
 

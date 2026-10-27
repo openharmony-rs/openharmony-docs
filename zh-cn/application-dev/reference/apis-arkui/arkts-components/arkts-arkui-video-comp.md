@@ -45,6 +45,13 @@ Video(value: VideoOptions)
 
 ## 汇总
 
+### 类
+
+| 名称 | 说明 |
+| --- | --- |
+| [VideoController](arkts-arkui-video-comp-videocontroller-c.md) | 一个VideoController对象可以控制一个或多个Video。 |
+| [VideoControllerAsync](arkts-arkui-video-comp-videocontrollerasync-c.md) | VideoControllerAsync是VideoController的异步版本，可以通过Promise获取部分播控命令的结果。不支持同时控制多个Video。 |
+
 ### 接口
 
 | 名称 | 说明 |

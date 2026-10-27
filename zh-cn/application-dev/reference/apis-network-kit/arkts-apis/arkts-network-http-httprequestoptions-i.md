@@ -99,12 +99,12 @@ caPath?: string
 ## certificatePinning
 
 ```TypeScript
-certificatePinning?: CertificatePinning[]
+certificatePinning?: CertificatePinning | CertificatePinning[]
 ```
 
 支持动态设置证书锁定配置，可以传入单个或多个证书PIN码。
 
-**类型：** [CertificatePinning](arkts-network-http-certificatepinning-i.md)[]
+**类型：** [CertificatePinning](arkts-network-http-certificatepinning-i.md) &#124; [CertificatePinning](arkts-network-http-certificatepinning-i.md)[]
 
 **起始版本：** 12
 

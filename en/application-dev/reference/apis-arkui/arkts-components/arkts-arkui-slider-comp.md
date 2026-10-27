@@ -40,6 +40,12 @@ Creates the Slider component.
 
 ## Summary
 
+### Classes
+
+| Name | Description |
+| --- | --- |
+| [ColorMetricsLinearGradient](arkts-arkui-slider-comp-colormetricslineargradient-c.md) | Sets the linear gradient background color of the track. |
+
 ### Interfaces
 
 | Name | Description |

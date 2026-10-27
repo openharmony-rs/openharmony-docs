@@ -157,3 +157,19 @@ For example, the parameter format is incorrect or the parameter range is invalid
 <!--Device-CertificateDialogErrorCode-ERROR_PARAMETER_VALIDATION_FAILED = 29700006--><!--Device-CertificateDialogErrorCode-ERROR_PARAMETER_VALIDATION_FAILED = 29700006-End-->
 
 **System capability:** SystemCapability.Security.CertificateManagerDialog
+
+## ERROR_PASSWORD_IS_INCORRECT
+
+```TypeScript
+ERROR_PASSWORD_IS_INCORRECT = 29700008
+```
+
+The password is incorrect.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-CertificateDialogErrorCode-ERROR_PASSWORD_IS_INCORRECT = 29700008--><!--Device-CertificateDialogErrorCode-ERROR_PASSWORD_IS_INCORRECT = 29700008-End-->
+
+**System capability:** SystemCapability.Security.CertificateManagerDialog

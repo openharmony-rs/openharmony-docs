@@ -6,8 +6,6 @@ interface VideoSession extends Session, Flash, AutoExposure, WhiteBalance, Focus
     Aperture
 ```
 
-VideoSession继承自[Session](arkts-camera-camera-session-i.md)、[Flash](arkts-camera-camera-flash-i.md)、[AutoExposure](arkts-camera-camera-autoexposure-i.md)、[WhiteBalance](arkts-camera-camera-whitebalance-i.md)、[Focus](arkts-camera-camera-focus-i.md)、[Zoom](arkts-camera-camera-zoom-i.md)、[Stabilization](arkts-camera-camera-stabilization-i.md)、[ColorManagement](arkts-camera-camera-colormanagement-i.md)、[AutoDeviceSwitch](arkts-camera-camera-autodeviceswitch-i.md)、[Macro](arkts-camera-camera-macro-i.md)、[ControlCenter](arkts-camera-camera-controlcenter-i.md)、[ManualExposure](arkts-camera-camera-manualexposure-i.md)、[ManualFocus](arkts-camera-camera-manualfocus-i.md)、[ManualIso](arkts-camera-camera-manualiso-i.md)、[OIS](arkts-camera-camera-ois-i.md)、and [Aperture](arkts-camera-camera-aperture-i.md)。
-
 普通录像模式会话类，提供了对闪光灯、曝光、白平衡、对焦、变焦、视频防抖、色彩空间、微距及控制器、手动曝光、手动对焦、手动ISO、光学防抖及光圈的操作。
 
 默认的视频录制模式，适用于一般场景。支持720P、1080p等多种分辨率的录制，可选择不同帧率（如30fps、60fps）。

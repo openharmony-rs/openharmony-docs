@@ -266,11 +266,11 @@ getScrollState(): ScrollState
 
 获取绑定到此Scroller的可滚动组件的当前滚动状态。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-Scroller-getScrollState(): ScrollState--><!--Device-Scroller-getScrollState(): ScrollState-End-->
 

@@ -32,7 +32,7 @@ Cancels the ongoing pairing request. This API uses a promise to return the resul
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-RemoteDevice-cancelDevicePairing(): Promise<void>--><!--Device-RemoteDevice-cancelDevicePairing(): Promise<void>-End-->
 
@@ -69,7 +69,7 @@ Initiates a connection request to a remote device. This API uses a promise to re
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-RemoteDevice-connect(): Promise<void>--><!--Device-RemoteDevice-connect(): Promise<void>-End-->
 
@@ -106,7 +106,7 @@ Disconnects from the remote device. This API uses a promise to return the result
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-RemoteDevice-disconnect(): Promise<void>--><!--Device-RemoteDevice-disconnect(): Promise<void>-End-->
 
@@ -143,7 +143,7 @@ Obtains the alias of a remote device.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-RemoteDevice-getDeviceAlias(): string--><!--Device-RemoteDevice-getDeviceAlias(): string-End-->
 
@@ -178,7 +178,7 @@ Obtains the model of a remote device.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-RemoteDevice-getDeviceModel(): DeviceModel--><!--Device-RemoteDevice-getDeviceModel(): DeviceModel-End-->
 
@@ -214,7 +214,7 @@ Obtains the received signal strength indicator (RSSI) of a remote device. This A
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-RemoteDevice-getRssiValue(): Promise<int>--><!--Device-RemoteDevice-getRssiValue(): Promise<int>-End-->
 
@@ -251,7 +251,7 @@ Removes a paired device. This API uses a promise to return the result.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-RemoteDevice-removePairedDevice(): Promise<void>--><!--Device-RemoteDevice-removePairedDevice(): Promise<void>-End-->
 
@@ -288,7 +288,7 @@ Sets the interval for connecting to a remote device.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-RemoteDevice-setConnectionInterval(interval: ConnectionInterval): void--><!--Device-RemoteDevice-setConnectionInterval(interval: ConnectionInterval): void-End-->
 
@@ -325,7 +325,7 @@ Sets the alias of a remote device.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-RemoteDevice-setDeviceAlias(alias: string): void--><!--Device-RemoteDevice-setDeviceAlias(alias: string): void-End-->
 
@@ -363,7 +363,7 @@ Sets the pairing confirmation. You can obtain the pairing request of the peer de
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-RemoteDevice-setPairingConfirmation(accept: boolean): void--><!--Device-RemoteDevice-setPairingConfirmation(accept: boolean): void-End-->
 
@@ -400,7 +400,7 @@ Sets the pairing passcode. This API uses a promise to return the result.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-RemoteDevice-setPairingPasscode(passcode: string): Promise<void>--><!--Device-RemoteDevice-setPairingPasscode(passcode: string): Promise<void>-End-->
 
@@ -444,7 +444,7 @@ Initiates pairing with a trusted remote device without a dialog box. This API us
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-RemoteDevice-startCrediblePairing(): Promise<void>--><!--Device-RemoteDevice-startCrediblePairing(): Promise<void>-End-->
 

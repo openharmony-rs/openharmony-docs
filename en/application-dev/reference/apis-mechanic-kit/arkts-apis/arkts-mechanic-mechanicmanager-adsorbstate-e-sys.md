@@ -6,7 +6,7 @@ export enum AdsorbState
 
 Mechanic device state. The state indicates whether the device is adsorbed or unadsorbed.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 <!--Device-mechanicManager-export enum AdsorbState--><!--Device-mechanicManager-export enum AdsorbState-End-->
 
@@ -22,7 +22,7 @@ ADSORBED = 0
 
 Adsorbed state. Indicates that the device has been adsorbed.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -40,7 +40,7 @@ UNADSORBED = 1
 
 Unadsorbed state. Indicates that the device is not adsorbed.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -58,7 +58,7 @@ UNKNOWN = -1
 
 Unknown state. Indicates that the adsorption state is unknown.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 

@@ -404,7 +404,7 @@ createOsAccount(localName: string, type: OsAccountType, options?: CreateOsAccoun
 | [12300007](../errorcode-account.md#12300007-账号数量已达上限) | The number of accounts has reached the upper limit. |
 | [12300015](../errorcode-account.md#12300015-短名称已存在) | The short name already exists.<br>**适用版本：** 12+ |
 | [12300023](../errorcode-account.md#12300023-指定类型的账号数量已达到上限) | The number of accounts of the specified type has reached the upper limit.<br>**适用版本：** 24+ |
-| [12300024](../errorcode-account.md#12300024-系统账号id已存在) | The specified OS account ID already exists. Suggested solutions: Use a different ID, or remove the existing OS account with the same ID and try again.<br>**适用版本：** 26.2.0+ |
+| [12300024](../errorcode-account.md#12300024-系统账号id已存在) | The specified OS account ID already exists. Suggested solutions: Use a different ID, or remove the existing OS account with the same ID and try again.<br>**适用版本：** 26.1.0+ |
 
 <!--Del-->
 **示例**
@@ -553,7 +553,7 @@ createOsAccountForDomain(type: OsAccountType, domainInfo: DomainAccountInfo, opt
 | [12300007](../errorcode-account.md#12300007-账号数量已达上限) | The number of accounts has reached the upper limit. |
 | [12300015](../errorcode-account.md#12300015-短名称已存在) | The short name already exists.<br>**适用版本：** 12+ |
 | [12300023](../errorcode-account.md#12300023-指定类型的账号数量已达到上限) | The number of accounts of the specified type has reached the upper limit.<br>**适用版本：** 24+ |
-| [12300024](../errorcode-account.md#12300024-系统账号id已存在) | The specified OS account ID already exists. Suggested solutions: Use a different ID, or remove the existing OS account with the same ID and try again.<br>**适用版本：** 26.2.0+ |
+| [12300024](../errorcode-account.md#12300024-系统账号id已存在) | The specified OS account ID already exists. Suggested solutions: Use a different ID, or remove the existing OS account with the same ID and try again.<br>**适用版本：** 26.1.0+ |
 
 <!--Del-->
 **示例**

@@ -133,8 +133,7 @@ If the content exceeds the space provided by the tab bar, it will be clipped.
 ## tabBar
 
 ```TypeScript
-tabBar(content: ComponentContent | SubTabBarStyle | BottomTabBarStyle | string | Resource | CustomBuilder | 
-    TabBarOptions)
+tabBar(content: ComponentContent | SubTabBarStyle | BottomTabBarStyle | string | Resource | CustomBuilder | TabBarOptions)
 ```
 
 Sets the content displayed on the tab bar.

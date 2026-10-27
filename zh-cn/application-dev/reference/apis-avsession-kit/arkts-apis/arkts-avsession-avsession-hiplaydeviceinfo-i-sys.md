@@ -85,25 +85,3 @@ supportCastMode?: number
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
 **系统接口：** 此接口为系统接口。
-
-## supportMultiDeviceMode
-
-```TypeScript
-supportMultiDeviceMode?: number
-```
-
-是否支持多设备连接能力。取值限定为整数。
-
-**类型：** number
-
-**起始版本：** 26.0.1
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
-
-<!--Device-HiPlayDeviceInfo-supportMultiDeviceMode?: int--><!--Device-HiPlayDeviceInfo-supportMultiDeviceMode?: int-End-->
-
-**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
-
-**系统接口：** 此接口为系统接口。

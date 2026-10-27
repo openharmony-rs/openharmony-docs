@@ -463,8 +463,8 @@ getAVCastController(callback: AsyncCallback<AVCastController>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist |
-| [6600109](../errorcode-avsession.md#6600109-远端会话不存在) | The remote connection is not established |
+| [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
+| [6600109](../errorcode-avsession.md#6600109-远端会话不存在) | The remote connection is not established. |
 
 **示例**
 
@@ -508,8 +508,8 @@ getAVCastController(): Promise<AVCastController>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist |
-| [6600109](../errorcode-avsession.md#6600109-远端会话不存在) | The remote connection is not established |
+| [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
+| [6600109](../errorcode-avsession.md#6600109-远端会话不存在) | The remote connection is not established. |
 
 **示例**
 
@@ -1073,7 +1073,7 @@ off(type: 'playWithAssetId', callback?: Callback<string>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'playWithAssetId' | 是 | 关闭对应的监听事件，支持的事件是`'playWithAssetId'`。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;string&gt; | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。参数assetId是媒体ID。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;string&gt; | 否 | Callback used to handle the 'playWithAssetId' command. |
 
 **错误码：**
 
@@ -1220,7 +1220,7 @@ off(type: 'setTargetLoopMode', callback?: Callback<LoopMode>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'setTargetLoopMode' | 是 | 关闭对应的监听事件，支持关闭事件`'setTargetLoopMode'`。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[LoopMode](arkts-avsession-avsession-loopmode-e.md)&gt; | 否 | 回调函数，参数表示目标循环模式。<br>- 当监听事件取消成功，err为undefined，否则返回错误对象。<br>- 该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[LoopMode](arkts-avsession-avsession-loopmode-e.md)&gt; | 否 | Used to handle setTargetLoopMode command.The callback provides the [LoopMode](arkts-avsession-avsession-loopmode-e.md) |
 
 **错误码：**
 
@@ -1337,8 +1337,8 @@ off(type: 'outputDeviceChange', callback?: (state: ConnectionState, device: Outp
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
-| [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
+| [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
 **示例**
 
@@ -1443,7 +1443,7 @@ off(type: 'answer', callback?: Callback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'answer' | 是 | 关闭对应的监听事件，支持的事件是`'answer'`。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | 否 | Used to handle ('answer') command |
 
 **错误码：**
 
@@ -1480,7 +1480,7 @@ off(type: 'hangUp', callback?: Callback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'hangUp' | 是 | 关闭对应的监听事件，支持的事件是`'hangUp'`。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | 否 | Used to handle ('hangUp') command |
 
 **错误码：**
 
@@ -1517,7 +1517,7 @@ off(type: 'toggleCallMute', callback?: Callback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'toggleCallMute' | 是 | 关闭对应的监听事件，支持的事件是`'toggleCallMute'`。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | 否 | Used to handle ('toggleCallMute') command |
 
 **错误码：**
 
@@ -1554,15 +1554,15 @@ off(type: 'castDisplayChange', callback?: Callback<CastDisplayInfo>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'castDisplayChange' | 是 | 关闭对应的监听事件，支持的事件是`'castDisplayChange'`。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[CastDisplayInfo](arkts-avsession-avsession-castdisplayinfo-i.md)&gt; | 否 | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[CastDisplayInfo](arkts-avsession-avsession-castdisplayinfo-i.md)&gt; | 否 | Callback used to return cast display information. |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
-| [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
+| [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
 **示例**
 
@@ -1597,7 +1597,7 @@ Unsubscribes from custom data changes.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
 **示例**
@@ -2507,8 +2507,8 @@ on(type: 'outputDeviceChange', callback: (state: ConnectionState, device: Output
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
-| [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
+| [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
 **示例**
 
@@ -2755,8 +2755,8 @@ on(type: 'castDisplayChange', callback: Callback<CastDisplayInfo>): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
-| [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
+| [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
 **示例**
 
@@ -2799,7 +2799,7 @@ on(type: 'customDataChange', callback: Callback<Record<string, Object>>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
 **示例**
@@ -3156,7 +3156,7 @@ sendCustomData(data: Record<string, Object>): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
 **示例**
@@ -3765,6 +3765,7 @@ setBackgroundPlayMode(mode: BackgroundPlayMode): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
 **示例**
@@ -4355,7 +4356,7 @@ setSupportedLoopModes(loopModes: Array<LoopMode>): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
 **示例**
@@ -4408,7 +4409,7 @@ setSupportedPlaySpeeds(speeds: Array<number>): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception |
+| [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
 **示例**
@@ -4447,7 +4448,7 @@ stopCasting(callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [6600109](../errorcode-avsession.md#6600109-远端会话不存在) | The remote connection is not established |
+| [6600109](../errorcode-avsession.md#6600109-远端会话不存在) | The remote connection is not established. |
 
 **示例**
 
@@ -4483,7 +4484,7 @@ stopCasting(): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [6600109](../errorcode-avsession.md#6600109-远端会话不存在) | The remote connection is not established |
+| [6600109](../errorcode-avsession.md#6600109-远端会话不存在) | The remote connection is not established. |
 
 **示例**
 

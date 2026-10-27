@@ -30,6 +30,12 @@ Called when a indicator is set.
 
 ## Summary
 
+### Classes
+
+| Name | Description |
+| --- | --- |
+| [IndicatorComponentController](arkts-arkui-indicatorcomponent-comp-indicatorcomponentcontroller-c.md) | Controller of the **Indicator** component. You can bind this object to the **Indicator** component to control page turning. By passing the same **IndicatorComponentController** instance to the constructor of the **IndicatorComponent** and the **indicator** attribute of the **Swiper** component, you can bind the **Indicator** and **Swiper** components for linkage. |
+
 ## Examples
 
 ### Example 1: Using a Dot Indicator with a Swiper Component

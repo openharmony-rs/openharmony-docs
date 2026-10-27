@@ -138,24 +138,26 @@
   - [off（系统接口）](arkts-avsession-avsession-off-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [offActiveSessionChanged（系统接口）](arkts-avsession-avsession-offactivesessionchanged-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [offAudioZoneSessionChange（系统接口）](arkts-avsession-avsession-offaudiozonesessionchange-f-sys.md)<!--DelEnd-->
   - [offSessionCreate](arkts-avsession-avsession-offsessioncreate-f.md)
+  - [offSessionCreateForAudioZone](arkts-avsession-avsession-offsessioncreateforaudiozone-f.md)
   - [offSessionDestroy](arkts-avsession-avsession-offsessiondestroy-f.md)
+  - [offSessionDestroyForAudioZone](arkts-avsession-avsession-offsessiondestroyforaudiozone-f.md)
   <!--Del-->
   - [offSystemCommonEvent（系统接口）](arkts-avsession-avsession-offsystemcommonevent-f-sys.md)<!--DelEnd-->
   - [offTopSessionChange](arkts-avsession-avsession-offtopsessionchange-f.md)
+  - [offTopSessionChangeForAudioZone](arkts-avsession-avsession-offtopsessionchangeforaudiozone-f.md)
   <!--Del-->
   - [on（系统接口）](arkts-avsession-avsession-on-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [onActiveSessionChanged（系统接口）](arkts-avsession-avsession-onactivesessionchanged-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [onAudioZoneSessionChange（系统接口）](arkts-avsession-avsession-onaudiozonesessionchange-f-sys.md)<!--DelEnd-->
   - [onSessionCreate](arkts-avsession-avsession-onsessioncreate-f.md)
+  - [onSessionCreateForAudioZone](arkts-avsession-avsession-onsessioncreateforaudiozone-f.md)
   - [onSessionDestroy](arkts-avsession-avsession-onsessiondestroy-f.md)
+  - [onSessionDestroyForAudioZone](arkts-avsession-avsession-onsessiondestroyforaudiozone-f.md)
   <!--Del-->
   - [onSystemCommonEvent（系统接口）](arkts-avsession-avsession-onsystemcommonevent-f-sys.md)<!--DelEnd-->
   - [onTopSessionChange](arkts-avsession-avsession-ontopsessionchange-f.md)
+  - [onTopSessionChangeForAudioZone](arkts-avsession-avsession-ontopsessionchangeforaudiozone-f.md)
   <!--Del-->
   - [sendSystemAVKeyEvent（系统接口）](arkts-avsession-avsession-sendsystemavkeyevent-f-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -166,6 +168,8 @@
   - [setDiscoverable（系统接口）](arkts-avsession-avsession-setdiscoverable-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [startAVPlayback（系统接口）](arkts-avsession-avsession-startavplayback-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [startAVPlaybackForAudioZone（系统接口）](arkts-avsession-avsession-startavplaybackforaudiozone-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [startCastDeviceDiscovery（系统接口）](arkts-avsession-avsession-startcastdevicediscovery-f-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -195,6 +199,8 @@
   - [AVQueueItem](arkts-avsession-avsession-avqueueitem-i.md)
   - [AVSession](arkts-avsession-avsession-avsession-i.md)
   - [AVSessionController](arkts-avsession-avsession-avsessioncontroller-i.md)
+  <!--Del-->
+  - [AVSessionController（系统接口）](arkts-avsession-avsession-avsessioncontroller-i-sys.md)<!--DelEnd-->
   - [AVSessionDescriptor](arkts-avsession-avsession-avsessiondescriptor-i.md)
   <!--Del-->
   - [AVSessionDescriptor（系统接口）](arkts-avsession-avsession-avsessiondescriptor-i-sys.md)<!--DelEnd-->
@@ -218,6 +224,7 @@
   - [AVControlCommandType](arkts-avsession-avsession-avcontrolcommandtype-t.md)
   - [AVMediaCenterControlType](arkts-avsession-avsession-avmediacentercontroltype-t.md)
   - [AVSessionType](arkts-avsession-avsession-avsessiontype-t.md)
+  - [EventProcess](arkts-avsession-avsession-eventprocess-t.md)
   - [ExtraInfo](arkts-avsession-avsession-extrainfo-t.md)
   - [KeyRequestCallback](arkts-avsession-avsession-keyrequestcallback-t.md)
   - [NoParamCallback](arkts-avsession-avsession-noparamcallback-t.md)

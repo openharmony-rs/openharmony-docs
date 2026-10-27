@@ -24,7 +24,7 @@ Advertising started.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-AdvertisingState-STARTED = 1--><!--Device-AdvertisingState-STARTED = 1-End-->
 
@@ -42,7 +42,7 @@ Advertising stopped.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-AdvertisingState-STOPPED = 2--><!--Device-AdvertisingState-STOPPED = 2-End-->
 

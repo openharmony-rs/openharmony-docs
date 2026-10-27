@@ -46,4 +46,4 @@ Remove the list of USB devices that support CD/DVD burning.This API uses a promi
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-permission-denied) | The administrator application does not have permission to manage the device. |
 | [9200012](../errorcode-enterpriseDeviceManager.md#9200012-parameter-verification-failed) | Parameter verification failed. |
 | [9200016](../errorcode-enterpriseDeviceManager.md#9200016-service-timeout) | Service timeout. |
-| 9200019 | The policy list has exceeded the limit. The maximum length of usbDevices is         10000. Remove some devices from the list and try again. |
+| 9200019 | The policy list has exceeded the limit. |

@@ -18,7 +18,7 @@ Remove a paired remote device. On API 10 and above, the permission required by t
 
 **Deprecated since:** 10
 
-**Substitutes:** [cancelPairedDevice](arkts-connectivity-connection-cancelpaireddevice-f-sys.md)
+**Substitutes:** [cancelPairedDevice](arkts-connectivity-connection-cancelpaireddevice-f.md)
 
 **Required permissions:** 
 - API version 10 and later: ohos.permission.ACCESS_BLUETOOTH

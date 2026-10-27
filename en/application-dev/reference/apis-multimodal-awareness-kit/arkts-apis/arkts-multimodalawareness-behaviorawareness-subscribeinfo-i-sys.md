@@ -6,7 +6,7 @@ export interface SubscribeInfo
 
 Subscription Options. Defines the filter criteria for subscriptions.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 <!--Device-behaviorAwareness-export interface SubscribeInfo--><!--Device-behaviorAwareness-export interface SubscribeInfo-End-->
 
@@ -30,7 +30,7 @@ Perception domain type.
 
 **Type:** [PerceptionDomain](arkts-multimodalawareness-behaviorawareness-perceptiondomain-e-sys.md)
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -50,7 +50,7 @@ Subtype Filtering (Optional. If this parameter is not specified, all modes in th
 
 **Type:** [PatternType](arkts-multimodalawareness-behaviorawareness-patterntype-e-sys.md)[]
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 

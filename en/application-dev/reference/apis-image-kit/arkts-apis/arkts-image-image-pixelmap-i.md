@@ -4042,6 +4042,53 @@ function writeAllPixelsFromBuffer(pixelMap: image.PixelMap) {
 }
 ```
 
+## writeAllPixelsFromBuffer
+
+```TypeScript
+writeAllPixelsFromBuffer(src: ArrayBuffer, sourcePixelFormat: PixelMapFormat): Promise<void>
+```
+
+Writes pixel data in the specified pixel format from a buffer to the entire PixelMap. The supported source pixel formats are RGBA_8888, RGB_888, RGB_565, and RGBA_F16.
+
+Source rows must be tightly packed without row padding. The minimum required buffer size is the PixelMap width multiplied by the PixelMap height and the number of bytes per pixel of sourcePixelFormat. To write source data with a customized row stride or offset, use [writePixelsFromArea](#writepixelsfromarea) instead.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PixelMap-writeAllPixelsFromBuffer(src: ArrayBuffer, sourcePixelFormat: PixelMapFormat): Promise<void>--><!--Device-PixelMap-writeAllPixelsFromBuffer(src: ArrayBuffer, sourcePixelFormat: PixelMapFormat): Promise<void>-End-->
+
+**System capability:** SystemCapability.Multimedia.Image.Core
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| src | ArrayBuffer | Yes | Buffer that contains the source pixel data. |
+| sourcePixelFormat | [PixelMapFormat](arkts-image-image-pixelmapformat-e.md) | Yes | Pixel format of the source data. The supported values are RGBA_8888, RGB_888, RGB_565, and RGBA_F16. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;void&gt; | Promise that returns no value. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [7600104](../errorcode-image.md#7600104-failed-to-obtain-image-data) | Failed to get image data. Possible cause: Internal data is corrupted. Please check the logs for detailed information. |
+| [7600105](../errorcode-image.md#7600105-pixelmap-object-has-been-released) | The PixelMap has been released. |
+| [7600106](../errorcode-image.md#7600106-pixelmap-has-been-passed-to-another-thread) | The PixelMap has been passed to another thread. |
+| [7600201](../errorcode-image.md#7600201-unsupported-operation) | Unsupported operation because the PixelMap is not editable or is locked. |
+| [7600203](../errorcode-image.md#7600203-unsupported-conversion) | Unsupported conversion. Possible cause: Conversion between the source pixel format and the PixelMap pixel format is not supported. |
+| [7600206](../errorcode-image.md#7600206-invalid-parameter) | Invalid parameter. Possible causes: 1. The source buffer is too small. 2. sourcePixelFormat is not supported. |
+| [7600302](../errorcode-image.md#7600302-memory-copy-failure) | Failed to copy or convert the pixel data. |
+
+**Examples**
+
+See [writeAllPixelsFromBuffer](#writeallpixelsfrombuffer)
+
 ## writeAllPixelsFromBufferSync
 
 ```TypeScript
@@ -4104,6 +4151,47 @@ function writeAllPixelsFromBufferSync(pixelMap: image.PixelMap) {
   }
 }
 ```
+
+## writeAllPixelsFromBufferSync
+
+```TypeScript
+writeAllPixelsFromBufferSync(src: ArrayBuffer, sourcePixelFormat: PixelMapFormat): void
+```
+
+Writes pixel data in the specified pixel format from a buffer to the entire PixelMap. The supported source pixel formats are RGBA_8888, RGB_888, RGB_565, and RGBA_F16.
+
+Source rows must be tightly packed without row padding. The minimum required buffer size is the PixelMap width multiplied by the PixelMap height and the number of bytes per pixel of sourcePixelFormat. To write source data with a customized row stride or offset, use [writePixelsFromAreaSync](#writepixelsfromareasync) instead. This API returns the result synchronously.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PixelMap-writeAllPixelsFromBufferSync(src: ArrayBuffer, sourcePixelFormat: PixelMapFormat): void--><!--Device-PixelMap-writeAllPixelsFromBufferSync(src: ArrayBuffer, sourcePixelFormat: PixelMapFormat): void-End-->
+
+**System capability:** SystemCapability.Multimedia.Image.Core
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| src | ArrayBuffer | Yes | Buffer that contains the source pixel data. |
+| sourcePixelFormat | [PixelMapFormat](arkts-image-image-pixelmapformat-e.md) | Yes | Pixel format of the source data. The supported values are RGBA_8888, RGB_888, RGB_565, and RGBA_F16. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [7600104](../errorcode-image.md#7600104-failed-to-obtain-image-data) | Failed to get image data. Possible cause: Internal data is corrupted. Please check the logs for detailed information. |
+| [7600105](../errorcode-image.md#7600105-pixelmap-object-has-been-released) | The PixelMap has been released. |
+| [7600106](../errorcode-image.md#7600106-pixelmap-has-been-passed-to-another-thread) | The PixelMap has been passed to another thread. |
+| [7600201](../errorcode-image.md#7600201-unsupported-operation) | Unsupported operation because the PixelMap is not editable or is locked. |
+| [7600203](../errorcode-image.md#7600203-unsupported-conversion) | Unsupported conversion. Possible cause: Conversion between the source pixel format and the PixelMap pixel format is not supported. |
+| [7600206](../errorcode-image.md#7600206-invalid-parameter) | Invalid parameter. Possible causes: 1. The source buffer is too small. 2. sourcePixelFormat is not supported. |
+| [7600302](../errorcode-image.md#7600302-memory-copy-failure) | Failed to copy or convert the pixel data. |
+
+**Examples**
+
+See [writeAllPixelsFromBufferSync](#writeallpixelsfrombuffersync)
 
 ## writeBufferToPixels
 
@@ -4510,6 +4598,53 @@ function writePixelsFromAreaYUV(pixelMap: image.PixelMap) {
 }
 ```
 
+## writePixelsFromArea
+
+```TypeScript
+writePixelsFromArea(area: PositionArea, sourcePixelFormat: PixelMapFormat): Promise<void>
+```
+
+Writes pixel data in the specified pixel format from a buffer to a certain area of the PixelMap. The supported source pixel formats are RGBA_8888, RGB_888, RGB_565, and RGBA_F16.
+
+The value of PositionArea.stride must be greater than or equal to PositionArea.region.size.width multiplied by the number of bytes per pixel of sourcePixelFormat. The minimum required buffer size is calculated as follows: PositionArea.offset + (PositionArea.region.size.height - 1) * PositionArea.stride + PositionArea.region.size.width * bytesPerPixel(sourcePixelFormat).
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PixelMap-writePixelsFromArea(area: PositionArea, sourcePixelFormat: PixelMapFormat): Promise<void>--><!--Device-PixelMap-writePixelsFromArea(area: PositionArea, sourcePixelFormat: PixelMapFormat): Promise<void>-End-->
+
+**System capability:** SystemCapability.Multimedia.Image.Core
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| area | [PositionArea](arkts-image-image-positionarea-i.md) | Yes | Area of the PixelMap to write the data. Data will be copied from PositionArea.pixels to the PixelMap. |
+| sourcePixelFormat | [PixelMapFormat](arkts-image-image-pixelmapformat-e.md) | Yes | Pixel format of the source data. The supported values are RGBA_8888, RGB_888, RGB_565, and RGBA_F16. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;void&gt; | Promise that returns no value. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [7600104](../errorcode-image.md#7600104-failed-to-obtain-image-data) | Failed to get image data. Possible cause: Internal data is corrupted. Please check the logs for detailed information. |
+| [7600105](../errorcode-image.md#7600105-pixelmap-object-has-been-released) | The PixelMap has been released. |
+| [7600106](../errorcode-image.md#7600106-pixelmap-has-been-passed-to-another-thread) | The PixelMap has been passed to another thread. |
+| [7600201](../errorcode-image.md#7600201-unsupported-operation) | Unsupported operation because the PixelMap is not editable or is locked. |
+| [7600203](../errorcode-image.md#7600203-unsupported-conversion) | Unsupported conversion. Possible cause: Conversion between the source pixel format and the PixelMap pixel format is not supported. |
+| [7600206](../errorcode-image.md#7600206-invalid-parameter) | Invalid parameter. Possible causes: 1. PositionArea.pixels is too small. 2. PositionArea.region is out of range.         3. PositionArea.offset or PositionArea.stride is invalid. 4. sourcePixelFormat is not supported. |
+| [7600302](../errorcode-image.md#7600302-memory-copy-failure) | Failed to copy or convert the pixel data. |
+
+**Examples**
+
+See [writePixelsFromArea](#writepixelsfromarea)
+
 ## writePixelsFromAreaSync
 
 ```TypeScript
@@ -4610,6 +4745,47 @@ function writePixelsFromAreaSyncYUV(pixelMap: image.PixelMap) {
   }
 }
 ```
+
+## writePixelsFromAreaSync
+
+```TypeScript
+writePixelsFromAreaSync(area: PositionArea, sourcePixelFormat: PixelMapFormat): void
+```
+
+Writes pixel data in the specified pixel format from a buffer to a certain area of the PixelMap. The supported source pixel formats are RGBA_8888, RGB_888, RGB_565, and RGBA_F16.
+
+The value of PositionArea.stride must be greater than or equal to PositionArea.region.size.width multiplied by the number of bytes per pixel of sourcePixelFormat. The minimum required buffer size is calculated as follows: PositionArea.offset + (PositionArea.region.size.height - 1) * PositionArea.stride + PositionArea.region.size.width * bytesPerPixel(sourcePixelFormat). This API returns the result synchronously.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PixelMap-writePixelsFromAreaSync(area: PositionArea, sourcePixelFormat: PixelMapFormat): void--><!--Device-PixelMap-writePixelsFromAreaSync(area: PositionArea, sourcePixelFormat: PixelMapFormat): void-End-->
+
+**System capability:** SystemCapability.Multimedia.Image.Core
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| area | [PositionArea](arkts-image-image-positionarea-i.md) | Yes | Area of the PixelMap to write the data. Data will be copied from PositionArea.pixels to the PixelMap. |
+| sourcePixelFormat | [PixelMapFormat](arkts-image-image-pixelmapformat-e.md) | Yes | Pixel format of the source data. The supported values are RGBA_8888, RGB_888, RGB_565, and RGBA_F16. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [7600104](../errorcode-image.md#7600104-failed-to-obtain-image-data) | Failed to get image data. Possible cause: Internal data is corrupted. Please check the logs for detailed information. |
+| [7600105](../errorcode-image.md#7600105-pixelmap-object-has-been-released) | The PixelMap has been released. |
+| [7600106](../errorcode-image.md#7600106-pixelmap-has-been-passed-to-another-thread) | The PixelMap has been passed to another thread. |
+| [7600201](../errorcode-image.md#7600201-unsupported-operation) | Unsupported operation because the PixelMap is not editable or is locked. |
+| [7600203](../errorcode-image.md#7600203-unsupported-conversion) | Unsupported conversion. Possible cause: Conversion between the source pixel format and the PixelMap pixel format is not supported. |
+| [7600206](../errorcode-image.md#7600206-invalid-parameter) | Invalid parameter. Possible causes: 1. PositionArea.pixels is too small. 2. PositionArea.region is out of range.         3. PositionArea.offset or PositionArea.stride is invalid. 4. sourcePixelFormat is not supported. |
+| [7600302](../errorcode-image.md#7600302-memory-copy-failure) | Failed to copy or convert the pixel data. |
+
+**Examples**
+
+See [writePixelsFromAreaSync](#writepixelsfromareasync)
 
 ## writePixelsSync
 

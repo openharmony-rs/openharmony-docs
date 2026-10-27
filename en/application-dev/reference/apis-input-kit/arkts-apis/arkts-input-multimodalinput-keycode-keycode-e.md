@@ -1358,6 +1358,22 @@ Delete File key
 
 **System capability:** SystemCapability.MultimodalInput.Input.Core
 
+## KEYCODE_DESKTOP
+
+```TypeScript
+KEYCODE_DESKTOP = 3245
+```
+
+Return to desktop
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-KeyCode-KEYCODE_DESKTOP = 3245--><!--Device-KeyCode-KEYCODE_DESKTOP = 3245-End-->
+
+**System capability:** SystemCapability.MultimodalInput.Input.Core
+
 ## KEYCODE_DIRECTION_ROTATE_DISPLAY
 
 ```TypeScript

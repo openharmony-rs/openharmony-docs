@@ -10,7 +10,7 @@ declare interface RichEditorBuilderSpan
 > 
 > 当**RichEditor**组件使用[RichEditorStyledStringOptions](arkts-arkui-richeditor-comp-richeditorstyledstringoptions-i.md)构造时，不支持此接口。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 <!--Device-unnamed-declare interface RichEditorBuilderSpan--><!--Device-unnamed-declare interface RichEditorBuilderSpan-End-->
 
@@ -26,11 +26,11 @@ accessibilitySpanOptions?: AccessibilitySpanOptions
 
 **类型：** [AccessibilitySpanOptions](../arkts-apis/arkts-arkui-accessibilityspanoptions-i.md)
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-RichEditorBuilderSpan-accessibilitySpanOptions?: AccessibilitySpanOptions--><!--Device-RichEditorBuilderSpan-accessibilitySpanOptions?: AccessibilitySpanOptions-End-->
 
@@ -46,11 +46,11 @@ builder: CustomBuilder
 
 **类型：** [CustomBuilder](arkts-arkui-common-comp-custombuilder-t.md)
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-RichEditorBuilderSpan-builder: CustomBuilder--><!--Device-RichEditorBuilderSpan-builder: CustomBuilder-End-->
 
@@ -66,11 +66,11 @@ BuilderSpan挂载到**RichEditor**时触发的回调。回调接收一个[Builde
 
 **类型：** Callback&lt;[BuilderSpanInfo](arkts-arkui-richeditor-comp-builderspaninfo-i.md)&gt;
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-RichEditorBuilderSpan-onAttach?: Callback<BuilderSpanInfo>--><!--Device-RichEditorBuilderSpan-onAttach?: Callback<BuilderSpanInfo>-End-->
 
@@ -91,11 +91,11 @@ BuilderSpan从**RichEditor**中被移除时触发的回调。包括通过deleteS
 
 **类型：** Callback&lt;[BuilderSpanInfo](arkts-arkui-richeditor-comp-builderspaninfo-i.md)&gt;
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-RichEditorBuilderSpan-onDetach?: Callback<BuilderSpanInfo>--><!--Device-RichEditorBuilderSpan-onDetach?: Callback<BuilderSpanInfo>-End-->
 

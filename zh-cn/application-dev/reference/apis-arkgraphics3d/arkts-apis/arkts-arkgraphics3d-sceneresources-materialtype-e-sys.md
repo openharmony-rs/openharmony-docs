@@ -18,7 +18,7 @@ export enum MaterialType
 UNLIT_SHADOW_ALPHA = 100
 ```
 
-仅对阴影进行绘制，当材质开启Blend属性，与背景融合模拟透明材质效果。
+仅对阴影进行绘制，当材质开启[Blend](arkts-arkgraphics3d-sceneresources-blend-i.md)属性，与背景融合模拟透明材质效果。
 
 **起始版本：** 23
 

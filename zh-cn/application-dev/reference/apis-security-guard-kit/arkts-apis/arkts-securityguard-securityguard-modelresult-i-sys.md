@@ -4,7 +4,7 @@
 interface ModelResult
 ```
 
-安全模型结果。
+Provides the ModelResult type.
 
 **起始版本：** 12
 
@@ -26,7 +26,7 @@ import { securityGuard } from '@kit.SecurityGuardKit';
 result: string
 ```
 
-安全模型结果。
+The result of security model.
 
 **类型：** string
 

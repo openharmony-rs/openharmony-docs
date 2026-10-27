@@ -6,7 +6,7 @@ export enum RecurrenceType
 
 Recurrence type enum.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 <!--Device-behaviorAwareness-export enum RecurrenceType--><!--Device-behaviorAwareness-export enum RecurrenceType-End-->
 
@@ -22,7 +22,7 @@ DAILY = 'daily'
 
 Daily.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -40,7 +40,7 @@ MONTHLY = 'monthly'
 
 Monthly.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -58,7 +58,7 @@ WEEKLY = 'weekly'
 
 Weekly.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -76,7 +76,7 @@ WORKDAY = 'workday'
 
 Legal workday.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 

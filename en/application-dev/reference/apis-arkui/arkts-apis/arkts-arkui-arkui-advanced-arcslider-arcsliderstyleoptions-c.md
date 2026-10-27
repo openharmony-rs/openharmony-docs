@@ -108,7 +108,7 @@ Default value: **20**
 
 Value range: [0, +∞). Abnormal values are handled as default.
 
-**Decorator:*
+**Decorator**: @Trace
 
 **Type:** number
 

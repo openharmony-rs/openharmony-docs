@@ -1,8 +1,7 @@
 # GestureType
 
 ```TypeScript
-declare type GestureType =
-  TapGestureInterface | LongPressGestureInterface | PanGestureInterface | PinchGestureInterface | SwipeGestureInterface | RotationGestureInterface | GestureGroupInterface
+declare type GestureType =TapGestureInterface | LongPressGestureInterface | PanGestureInterface | PinchGestureInterface | SwipeGestureInterface | RotationGestureInterface | GestureGroupInterface
 ```
 
 Enumerates gesture types.

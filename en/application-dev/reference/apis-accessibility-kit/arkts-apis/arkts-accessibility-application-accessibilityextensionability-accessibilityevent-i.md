@@ -37,7 +37,7 @@ ID of the element that is actively focused. Active focus means that the app acti
 ## eventType
 
 ```TypeScript
-eventType: accessibility.EventType | accessibility.WindowUpdateTypeTouchGuideType | GestureType | PageUpdateType
+eventType: accessibility.EventType | accessibility.WindowUpdateType | TouchGuideType | GestureType | PageUpdateType
 ```
 
 Specific event type, which identifies the category of the current accessibility event.

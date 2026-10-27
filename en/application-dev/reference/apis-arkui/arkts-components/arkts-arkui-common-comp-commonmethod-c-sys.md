@@ -181,11 +181,11 @@ safeAreaInset(options?: SafeAreaInsetOptions): T
 
 Places custom content at one or more component edges and reserves component-level safe area for it. Use this attribute for edge toolbars, action areas, or placeholders. Each call replaces the complete four-edge configuration; omitted edges do not retain their previous content. Content is attached to the inner boundary of the component's ordinary `padding`. On each physical edge of the same component, the effective safe area is the greater of the declared `safeAreaPadding` and the inset extent, not their sum. Ancestor and system safe areas retain their existing accumulation rules. The effective safe area is included when calculating the component's adaptive size perpendicular to the edge.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-CommonMethod-safeAreaInset(options?: SafeAreaInsetOptions): T--><!--Device-CommonMethod-safeAreaInset(options?: SafeAreaInsetOptions): T-End-->
 

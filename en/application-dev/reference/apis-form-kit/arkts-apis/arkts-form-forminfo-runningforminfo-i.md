@@ -138,6 +138,26 @@ Obtains the name of this form.
 
 **System capability:** SystemCapability.Ability.Form
 
+## isColorModeRefreshEnabled
+
+```TypeScript
+readonly isColorModeRefreshEnabled?: boolean
+```
+
+Indicates whether the form enable refresh upon switching between light and dark modes. Default value: The default value is false.
+
+**Type:** boolean
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+<!--Device-RunningFormInfo-readonly isColorModeRefreshEnabled?: boolean--><!--Device-RunningFormInfo-readonly isColorModeRefreshEnabled?: boolean-End-->
+
+**System capability:** SystemCapability.Ability.Form
+
 ## moduleName
 
 ```TypeScript

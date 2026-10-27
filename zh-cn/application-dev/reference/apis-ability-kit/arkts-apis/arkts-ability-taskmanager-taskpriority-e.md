@@ -6,7 +6,7 @@ export enum TaskPriority
 
 任务优先级枚举。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 <!--Device-taskManager-export enum TaskPriority--><!--Device-taskManager-export enum TaskPriority-End-->
 
@@ -20,7 +20,7 @@ HIGH = 300
 
 高优先级。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -36,7 +36,7 @@ LOW = 100
 
 低优先级。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -52,7 +52,7 @@ MEDIUM = 200
 
 中优先级。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

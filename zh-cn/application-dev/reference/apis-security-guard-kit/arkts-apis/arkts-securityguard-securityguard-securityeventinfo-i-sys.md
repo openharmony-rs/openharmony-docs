@@ -4,7 +4,7 @@
 interface SecurityEventInfo
 ```
 
-调用订阅接口使用的事件信息。
+Provides the conditions of on/off.
 
 **起始版本：** 12
 
@@ -26,7 +26,7 @@ import { securityGuard } from '@kit.SecurityGuardKit';
 eventId: number
 ```
 
-安全事件ID。
+The security event id.
 
 **类型：** number
 

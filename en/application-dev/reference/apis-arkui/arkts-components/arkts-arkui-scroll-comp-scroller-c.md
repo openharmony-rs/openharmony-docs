@@ -249,11 +249,11 @@ getScrollState(): ScrollState
 
 Obtains the current scroll state of the scrollable component bound to this scroller.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-Scroller-getScrollState(): ScrollState--><!--Device-Scroller-getScrollState(): ScrollState-End-->
 

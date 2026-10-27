@@ -1,6 +1,7 @@
 # ArkTS API<!--arkts-multimodalawarenesskit-->
 
-- [@ohos.multimodalAwareness.behaviorAwareness（行为感知）](arkts-multimodalawareness-multimodalawareness-behaviorawareness.md)
+<!--Del-->
+- [@ohos.multimodalAwareness.behaviorAwareness（行为感知）](arkts-multimodalawareness-multimodalawareness-behaviorawareness.md)<!--DelEnd-->
   <!--Del-->
   - [offPerception（系统接口）](arkts-multimodalawareness-behaviorawareness-offperception-f-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -12,6 +13,8 @@
   <!--Del-->
   - [BehaviorAwarenessPayload（系统接口）](arkts-multimodalawareness-behaviorawareness-behaviorawarenesspayload-i-sys.md)<!--DelEnd-->
   <!--Del-->
+  - [Coordinates（系统接口）](arkts-multimodalawareness-behaviorawareness-coordinates-i-sys.md)<!--DelEnd-->
+  <!--Del-->
   - [EventData（系统接口）](arkts-multimodalawareness-behaviorawareness-eventdata-i-sys.md)<!--DelEnd-->
   <!--Del-->
   - [FeedbackData（系统接口）](arkts-multimodalawareness-behaviorawareness-feedbackdata-i-sys.md)<!--DelEnd-->
@@ -20,7 +23,7 @@
   <!--Del-->
   - [PerceptionEvent（系统接口）](arkts-multimodalawareness-behaviorawareness-perceptionevent-i-sys.md)<!--DelEnd-->
   <!--Del-->
-  - [SubscribeOptions（系统接口）](arkts-multimodalawareness-behaviorawareness-subscribeoptions-i-sys.md)<!--DelEnd-->
+  - [SubscribeInfo（系统接口）](arkts-multimodalawareness-behaviorawareness-subscribeinfo-i-sys.md)<!--DelEnd-->
   <!--Del-->
   - [SystemActionAttributes（系统接口）](arkts-multimodalawareness-behaviorawareness-systemactionattributes-i-sys.md)<!--DelEnd-->
   <!--Del-->

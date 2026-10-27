@@ -152,11 +152,11 @@ safeAreaInset(options?: SafeAreaInsetOptions): T
 
 在组件的一个或多个边缘放置自定义内容，并按其实际占用为主体内容留出组件级安全区域。适用于边缘工具栏、操作区或占位内容。再次调用时整体替换四边配置，未提供的边不保留旧内容。内容从宿主普通 `padding` 的内边界附着；同宿主同物理边的有效安全区取已有 `safeAreaPadding`与边缘内容占用的较大值，不将两者相加。跨祖先和系统安全区沿用既有累计规则。计算组件在垂直于附着边方向上的自适应尺寸时，会计入有效安全区。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-CommonMethod-safeAreaInset(options?: SafeAreaInsetOptions): T--><!--Device-CommonMethod-safeAreaInset(options?: SafeAreaInsetOptions): T-End-->
 
@@ -208,7 +208,7 @@ spatialEffect(params: SpatialEffectParams | undefined): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| params | [SpatialEffectParams](arkts-arkui-common-comp-spatialeffectparams-i-sys.md) &#124; undefined | 是 | 空间效果参数。 |
+| params | [SpatialEffectParams](arkts-arkui-common-comp-spatialeffectparams-i-sys.md) &#124; undefined | 是 | 空间效果参数。如果该参数设置为undefined，则移除空间效果。 |
 
 **返回值：**
 

@@ -21,7 +21,7 @@ import { dragController } from '@kit.ArkUI';
 ## autoHideComponentUniqueIds
 
 ```TypeScript
-autoHideComponentUniqueIds?: number[]
+autoHideComponentUniqueIds?: number | number[]
 ```
 
 设置在主动拖拽过程中由系统自动隐藏的组件uniqueId，支持传入单个uniqueId或数组。
@@ -34,7 +34,7 @@ autoHideComponentUniqueIds?: number[]
 
 开发者需要在拖拽结束回调中按需恢复组件显示状态。
 
-**类型：** number[]
+**类型：** number &#124; number[]
 
 **起始版本：** 26.0.0
 

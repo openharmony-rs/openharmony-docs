@@ -54,9 +54,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   // For example, deviceId is 12345678. You can use queryDevices() to obtain the deviceId.
-  let deviceInfos : Array<deviceManager.DeviceInfo> = deviceManager.queryDeviceInfo(12345678);
+  let deviceInfos: Array<deviceManager.DeviceInfo> = deviceManager.queryDeviceInfo(12345678);
   for (let item of deviceInfos) {
-    console.info(`Device id is ${item.deviceId}`)
+    console.info(`Device id is ${item.deviceId}`);
   }
 } catch (error) {
   let err: BusinessError = error as BusinessError;

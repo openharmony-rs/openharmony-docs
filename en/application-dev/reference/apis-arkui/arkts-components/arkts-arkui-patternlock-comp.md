@@ -34,6 +34,12 @@ Creates a pattern lock component.
 
 ## Summary
 
+### Classes
+
+| Name | Description |
+| --- | --- |
+| [PatternLockController](arkts-arkui-patternlock-comp-patternlockcontroller-c.md) | Controller of the **PatternLock** component, used to reset the component state and set the pattern password state. |
+
 ### Interfaces
 
 | Name | Description |

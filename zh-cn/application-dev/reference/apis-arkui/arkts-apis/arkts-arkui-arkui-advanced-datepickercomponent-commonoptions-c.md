@@ -124,6 +124,33 @@ end?: Date
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+## extendSelected
+
+```TypeScript
+extendSelected?: Date | DatePickerComponentResult
+```
+
+选中日期或时间。
+
+**说明：** 
+
+> 优先级高于[selected](arkts-arkui-arkui-advanced-datepickercomponent-commonoptions-c.md)；同时设置时，**selected** 不生效。
+> 当[hideYear](arkts-arkui-arkui-advanced-datepickercomponent-dateoptions-c.md)为**true**时，可省略year（或传undefined），表示年份列选中"----"选项。
+
+默认值：当前系统日期或时间。
+
+**类型：** Date &#124; [DatePickerComponentResult](arkts-arkui-arkui-advanced-datepickercomponent-datepickercomponentresult-c.md)
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-CommonOptions-extendSelected?: Date | DatePickerComponentResult--><!--Device-CommonOptions-extendSelected?: Date | DatePickerComponentResult-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 ## loop
 
 ```TypeScript

@@ -42,6 +42,12 @@ Creates a text picker based on the specified data list.
 
 ## Summary
 
+### Classes
+
+| Name | Description |
+| --- | --- |
+| [TextPickerDialog](arkts-arkui-textpicker-comp-textpickerdialog-c.md) | Creates a text picker based on the specified selection range and displays it in a dialog box. This component is applicable to scenarios where users need to select text from preset options, such as setting pages, entering data in AbilityForm, and filtering data. |
+
 ### Interfaces
 
 | Name | Description |

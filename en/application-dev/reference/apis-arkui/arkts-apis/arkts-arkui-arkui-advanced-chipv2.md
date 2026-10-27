@@ -12,6 +12,18 @@ This component is implemented based on
  longer limited to the component level. With state management V2, you can control component data and state more
  flexibly, achieving more efficient UI refresh.
 
+> **NOTE**
+ >
+ > - If the **ChipV2** component has [universal attributes](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md) or
+ > [universal events](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md) configured, the compiler toolchain automatically
+ > generates an additional \_\_Common\_\_ node and mounts the universal attributes and universal events on this node
+ > rather than the **ChipV2** component itself. As a result, the configured universal attributes and universal
+ > events may fail to take effect or behave as intended. For this reason, avoid using universal attributes and events
+ > with the **ChipV2** component.
+
+## Child Components
+
+None
 
 ## Modules to Import
 

@@ -8,7 +8,7 @@ interface VideoPlayer
 
 > **说明：** 
 > 
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[AVPlayer](arkts-media-multimedia-media.md)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[AVPlayer](arkts-media-media-avplayer-i.md)替代。
 
 **起始版本：** 8
 

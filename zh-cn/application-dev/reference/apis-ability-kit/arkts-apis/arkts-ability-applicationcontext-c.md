@@ -151,7 +151,7 @@ disableDelayedProcessExit(): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. Possible causes: Fail to connect system service. |
 | [16000150](../errorcode-ability.md#16000150-发送请求失败) | The current process has no UIAbility, and this API cannot be called. |
 
@@ -203,7 +203,7 @@ enableDelayedProcessExit(): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. Possible causes: Fail to connect system service. |
 | [16000150](../errorcode-ability.md#16000150-发送请求失败) | The current process has no UIAbility, and this API cannot be called. |
 
@@ -1120,6 +1120,35 @@ export default class MyAbility extends UIAbility {
 }
 ```
 
+## offAppProcessStateChange
+
+```TypeScript
+offAppProcessStateChange(observer?: AppProcessStateObserver): void
+```
+
+为应用程序中的进程状态更改取消注册侦听器。它可以被称为仅在主线程上。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-ApplicationContext-offAppProcessStateChange(observer?: AppProcessStateObserver): void--><!--Device-ApplicationContext-offAppProcessStateChange(observer?: AppProcessStateObserver): void-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| observer | [AppProcessStateObserver](arkts-ability-app-ability-appprocessstateobserver-appprocessstateobserver-i.md) | 否 | 通过调用注册的观察者[ApplicationContext.onAppProcessStateChange](#onappprocessstatechange).如果传入了定义的观察者，则该观察者的侦听器将未注册。如果没有传入值，则当前进程注册的所有监听器都将被取消注册。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [16000050](../errorcode-ability.md#16000050-内部错误) | Connect to system server failed. |
+| [16300004](../errorcode-ability.md#16300004-指定的observer不存在) | If the observer does not exist |
+
 ## offSystemConfigurationUpdated
 
 ```TypeScript
@@ -1477,6 +1506,35 @@ export default class MyAbility extends UIAbility {
   }
 }
 ```
+
+## onAppProcessStateChange
+
+```TypeScript
+onAppProcessStateChange(observer: AppProcessStateObserver): void
+```
+
+为应用程序中的进程状态更改注册侦听器，包括进程创建和终止。它只能在主线程上调用。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-ApplicationContext-onAppProcessStateChange(observer: AppProcessStateObserver): void--><!--Device-ApplicationContext-onAppProcessStateChange(observer: AppProcessStateObserver): void-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| observer | [AppProcessStateObserver](arkts-ability-app-ability-appprocessstateobserver-appprocessstateobserver-i.md) | 是 | 进程创建时触发的观察者或在应用程序中销毁。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [16000050](../errorcode-ability.md#16000050-内部错误) | Connect to system server failed. |
+| 16000165 | The number of registered observers for the current application has reached the upper limit. |
 
 ## onSystemConfigurationUpdated
 
@@ -1934,7 +1992,7 @@ setSupportedProcessCache(isSupported : boolean): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | [16000011](../errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
@@ -1992,7 +2050,7 @@ startSelfUIAbility(want: Want): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | [16000001](../errorcode-ability.md#16000001-指定的ability名称不存在) | The specified ability does not exist. |
 | [16000008](../errorcode-ability.md#16000008-众测应用到期) | The crowdtesting application expires. |
 | [16000009](../errorcode-ability.md#16000009-wukong模式不允许启动停止ability) | An ability cannot be started or stopped in Wukong mode. |

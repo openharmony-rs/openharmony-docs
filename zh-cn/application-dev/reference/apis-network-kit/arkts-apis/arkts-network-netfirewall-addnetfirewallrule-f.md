@@ -179,13 +179,13 @@ let domainRule: netFirewall.NetFirewallRule = {
       domain: "*.example.cn"
     },{
       isWildcard: true,
-      domain: "*w.example.cn"  // 从API版本26.0.0开始支持
+      domain: "*w.example.cn"  // 从API版本26.0.1开始支持
     },{
       isWildcard: true,
-      domain: "www.example.*"  // 从API版本26.0.0开始支持
+      domain: "www.example.*"  // 从API版本26.0.1开始支持
     },{
       isWildcard: true,
-      domain: "www.example.c*"  // 从API版本26.0.0开始支持
+      domain: "www.example.c*"  // 从API版本26.0.1开始支持
     }],
   userId: 100,
   interface:"wlan0" // 从API版本26.0.0开始支持

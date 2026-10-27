@@ -22,7 +22,7 @@ import { AppStorageV2, PersistenceV2, Type, UIUtils, ConnectOptions, Binding, Mu
 
 ```TypeScript
 getReusableInfo(constructor: ReusableComponentConstructor,
-    reuseId?: string): IReusableInfo[]  | IReusableInfo | undefined
+    reuseId?: string): IReusableInfo[] | IReusableInfo | undefined
 ```
 
 Obtains the information about the recycling instance of a given reusable component type in this reuse pool.

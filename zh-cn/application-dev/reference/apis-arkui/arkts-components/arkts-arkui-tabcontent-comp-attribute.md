@@ -131,8 +131,7 @@ tabBar(value: SubTabBarStyle | BottomTabBarStyle)
 ## tabBar
 
 ```TypeScript
-tabBar(content: ComponentContent | SubTabBarStyle | BottomTabBarStyle | string | Resource | CustomBuilder | 
-    TabBarOptions)
+tabBar(content: ComponentContent | SubTabBarStyle | BottomTabBarStyle | string | Resource | CustomBuilder | TabBarOptions)
 ```
 
 设置TabBar上显示内容。

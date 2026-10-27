@@ -4,8 +4,7 @@ The **MenuItemGroup** component represents a group of menu items. It supports se
 
 > **NOTE:** 
 > 
-> - This component is supported since API version 9. Newly added APIs will be marked with a superscript to indicate their
-> 
+> - This component is supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > - This component supports [WithTheme](arkts-arkui-withtheme-comp.md) since API version 26.0.0.
 
 ## Child Components

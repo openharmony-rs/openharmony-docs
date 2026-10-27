@@ -4,7 +4,7 @@
 enum AtlasInterpolationMode
 ```
 
-Defines the interpolation mode for sprite sheet frame animation.
+Interpolation mode enum for sprite sheet frame animation.
 
 **Since:** 26.0.1
 
@@ -38,7 +38,7 @@ Inter-frame interpolation. Smooth transition between adjacent frames.
 NONE = 0
 ```
 
-No interpolation. Each frame is displayed independently as a discrete step.
+No interpolation. Each frame is displayed independently.
 
 **Since:** 26.0.1
 

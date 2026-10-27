@@ -92,6 +92,7 @@ The multimedia subsystem provides a set of simple and easy-to-use APIs for you t
 | [PlaybackInfo](arkts-media-media-playbackinfo-i.md) | Provides player statistic info. |
 | [PlaybackStrategy](arkts-media-media-playbackstrategy-i.md) | Provides preferred playback settings for player. |
 | [Range](arkts-media-media-range-i.md) | Provides Range with lower and upper limit. |
+| [RectangleRegion](arkts-media-media-rectangleregion-i.md) | This API is used to configure a rectangular area. The position of the rectangular region starts from the upper left corner, and the size is defined as the length and width of the rectangle. |
 | [SeiMessage](arkts-media-media-seimessage-i.md) | Describes the information of an SEI message. |
 | [SubtitleInfo](arkts-media-media-subtitleinfo-i.md) | Provides subtitle information. When a subtitle update event is subscribed to, the information about the external subtitle is returned through a callback. Can be synchronized to the time reported by AVPlayer#timeUpdate event |
 | [TrackSelectionFilter](arkts-media-media-trackselectionfilter-i.md) | Describes the filter conditions for track selection. |
@@ -127,7 +128,7 @@ The multimedia subsystem provides a set of simple and easy-to-use APIs for you t
 | Name | Description |
 | --- | --- |
 | [AVDownloadTaskState](arkts-media-media-avdownloadtaskstate-t.md) | Enumerates the states of the download task. |
-| [AVPlayerState](arkts-media-media-avplayerstate-t.md) | Describes the state of the [AVPlayer](arkts-media-multimedia-media.md). Your application can proactively obtain the AVPlayer state through the **state** property or obtain the reported AVPlayer state by subscribing to the [stateChange](arkts-media-media-avplayer-i.md#onstatechange) event. For details about the rules for state transition, see [Audio Playback](../../../media/media/using-avplayer-for-playback.md). |
+| [AVPlayerState](arkts-media-media-avplayerstate-t.md) | Describes the state of the [AVPlayer](arkts-media-media-avplayer-i.md). Your application can proactively obtain the AVPlayer state through the **state** property or obtain the reported AVPlayer state by subscribing to the [stateChange](arkts-media-media-avplayer-i.md#onstatechange) event. For details about the rules for state transition, see [Audio Playback](../../../media/media/using-avplayer-for-playback.md). |
 | [AVRecorderState](arkts-media-media-avrecorderstate-t.md) | Enumerates the AVRecorder states. You can obtain the state through the **state** property. |
 | [OnAdsEventAdsStartedHandle](arkts-media-media-onadseventadsstartedhandle-t.md) | Registers a callback invoked when the ad starts to play. |
 | [OnAdsEventLoadingErrorHandle](arkts-media-media-onadseventloadingerrorhandle-t.md) | Registers a callback for the ad media resource loading failure event. |
@@ -169,6 +170,7 @@ The multimedia subsystem provides a set of simple and easy-to-use APIs for you t
 | [AVImageQueryOptions](arkts-media-media-avimagequeryoptions-e.md) | Enumerates the relationship between the video frame and the time at which the video thumbnail is obtained. |
 | [AVMetricsEventType](arkts-media-media-avmetricseventtype-e.md) | Enumerates the metric events supported by the media service. |
 | [AVMimeTypes](arkts-media-media-avmimetypes-e.md) | Enumerates the MIME type, which is set by using [setMimeType](arkts-media-media-mediasource-i.md#setmimetype). |
+| [AVScreenCaptureAutoPauseCaptureScene](arkts-media-media-avscreencaptureautopausecapturescene-e.md) | Scene enumeration definition for automatically pausing screen capture |
 | [AVScreenCaptureFillMode](arkts-media-media-avscreencapturefillmode-e.md) | Enumerates the video fill modes during screen capture. |
 | [AVScreenCaptureRecordPreset](arkts-media-media-avscreencapturerecordpreset-e.md) | Enumerates the encoding and container formats used during screen capture. |
 | [AVScreenCaptureStateCode](arkts-media-media-avscreencapturestatecode-e.md) | Enumerates the screen capture states used in callbacks. |
@@ -182,6 +184,7 @@ The multimedia subsystem provides a set of simple and easy-to-use APIs for you t
 | [MediaDescriptionKey](arkts-media-media-mediadescriptionkey-e.md) | Enumerates the media description keys. |
 | [MediaType](arkts-media-media-mediatype-e.md) | Enumerates the media types. |
 | [PickerMode](arkts-media-media-pickermode-e.md) | Enumerates the display mode for the screen capture picker. |
+| [PlaybackCommand](arkts-media-media-playbackcommand-e.md) | Enumeration definition of executable playback control instructions, This interface is used by the application to query whether the corresponding playback control operation can be performed on the media asset after Prepare() is complete. |
 | [PlaybackInfoKey](arkts-media-media-playbackinfokey-e.md) | Enumerates the playback description keys. |
 | [PlaybackMetricsKey](arkts-media-media-playbackmetricskey-e.md) | Enumerates the playback metric keys. |
 | [PlaybackSpeed](arkts-media-media-playbackspeed-e.md) | Enumerates the video playback speeds, which can be passed in the **setSpeed** API. |

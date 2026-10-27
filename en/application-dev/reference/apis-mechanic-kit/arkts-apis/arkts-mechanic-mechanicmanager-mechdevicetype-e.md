@@ -34,7 +34,7 @@ POCKET_GIMBAL_CAMERA_DEVICE = 3
 
 Pocket Gimbal Camera device
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 

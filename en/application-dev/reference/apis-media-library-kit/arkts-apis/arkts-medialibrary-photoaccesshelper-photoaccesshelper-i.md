@@ -379,7 +379,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
         fileIo.closeSync(srcFile);
         fileIo.closeSync(resultFile);
     } catch (err) {
-        console.error('createAssetWithShortTermPermission failed, errCode is ' + err.code + ', errMsg is ' + err.message);
+        console.error(`createAssetWithShortTermPermission failed. Code: ${err.code}, message: ${err.message}`);
     }
     
 }
@@ -538,7 +538,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   console.info('getAlbumIdByLpath');
 
   try {
-      let albumId: number = await phAccessHelper.getAlbumIdByLpath('testLpath');
+      let albumId: number = await phAccessHelper.getAlbumIdByLpath('/DCIM/Camera');
       console.info('requestFile:: albumId: ', albumId);
 
       console.info('getAlbumIdByLpath completed.');
@@ -805,6 +805,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   };
 
   phAccessHelper.getAssets(fetchOptions, async (err, fetchResult) => {
+    if (err) {
+      console.error(`fetchResult fail with error: ${err.code}, ${err.message}`);
+      return;
+    }
     if (fetchResult !== undefined) {
       console.info('fetchResult success');
       let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
@@ -1164,6 +1168,7 @@ let onCallback2 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
   // file had changed, do something.
 }
 
+// After registering the photoChange listener, cancel the specified listener to demonstrate how to cancel the listener.
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context){
   console.info('offPhotoChangeDemo.');
 
@@ -1228,6 +1233,7 @@ let onCallback2 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
   // file had changed, do something.
 }
 
+// After registering the photoAlbumChange listener, cancel the specified listener to demonstrate how to cancel the listener.
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context){
   console.info('onPhotoAlbumChangeDemo.');
 
@@ -1291,9 +1297,10 @@ class MediaLibraryExample {
 
   offMediaLibraryAvailability = async () => {
     try {
+      // Register a listener for the media library availability and then unregister it to demonstrate how to cancel the listener.
       this.helper.onMediaLibraryAvailability(this.handleMediaLibraryChange);
       this.helper.offMediaLibraryAvailability(this.handleMediaLibraryChange);
-      console.info('Media library listener unregistered successfully');
+      console.info('Media library listener unregistered successfully.');
     } catch (err) {
       console.error(`offMediaLibraryAvailability failed::${(err as BusinessError).code}, ${(err as BusinessError).message} !`);
     }
@@ -1356,6 +1363,7 @@ let onCallback3 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
   // Operations performed when the callback is triggered.
 }
 
+// After obtaining albums, register a listener for changes to a single album and demonstrate how to cancel the listener in different ways.
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context){
   console.info('onSinglePhotoChangeDemo.');
   let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
@@ -1446,6 +1454,7 @@ let onCallback3 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
   // Operations performed when the callback is triggered.
 }
 
+// After obtaining albums and assets, register a listener for changes to a single asset and demonstrate how to cancel the listener in different ways.
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context){
   console.info('onSinglePhotoChangeDemo.');
   let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
@@ -1529,6 +1538,7 @@ let onCallback2 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
   // file had changed, do something.
 }
 
+// Register photoChange to listen for media asset changes. You can register multiple callbacks.
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context){
   console.info('onPhotoChangeDemo.');
 
@@ -1590,6 +1600,7 @@ let onCallback2 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
   // file had changed, do something.
 }
 
+// Register photoAlbumChange to listen for album changes. You can register multiple callbacks.
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context){
   console.info('onPhotoAlbumChangeDemo.');
 
@@ -1651,15 +1662,18 @@ class MediaLibraryExample {
 
   onMediaLibraryAvailability = async () => {
     try {
+      // Define the callback function for media library availability changes.
       this.handleMediaLibraryChange = (
         changeData: photoAccessHelper.MediaLibraryAvailability
       ) => {
+        // Obtain the availability of the media library and the reason why it is unavailable.
         const availabilityStatus = changeData.availabilityStatus;
         const unavailabilityReason = changeData.unavailabilityReason;
-        console.info(`Media library status change: status=${availabilityStatus}, reason=${unavailabilityReason}`);
+        console.info(`Media library status changed: status=${availabilityStatus}, reason=${unavailabilityReason}`);
       };
+      // Register a listener for media library availability.
       this.helper.onMediaLibraryAvailability(this.handleMediaLibraryChange);
-      console.info('Media library listener registered successfully');
+      console.info('Media library listener registered successfully.');
     } catch (err) {
       console.error(`onMediaLibraryAvailability failed::${(err as BusinessError).code}, ${(err as BusinessError).message} !`);
     }
@@ -1714,6 +1728,7 @@ let onCallback2 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
   // Operations performed when the callback is triggered.
 }
 
+// After obtaining albums, register a listener for changes to a single album to demonstrate how to use onSinglePhotoAlbumChange.
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context){
   console.info('onSinglePhotoAlbumChangeDemo.');
   let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
@@ -1786,6 +1801,7 @@ let onCallback2 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
   // Operations performed when the callback is triggered.
 }
 
+// After obtaining albums and assets, register a listener for changes to a single asset to demonstrate how to use onSinglePhotoChange.
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context){
   console.info('onSinglePhotoChangeDemo.');
   let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
@@ -1849,6 +1865,7 @@ For details about how to create a phAccessHelper instance, see the example provi
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context) {
   console.info('registerChangeDemo');
@@ -1861,7 +1878,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
   let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
   if (photoAsset !== undefined) {
     console.info('photoAsset.displayName : ' + photoAsset.displayName);
-  }
+    } else {
+      console.error('photoAsset is undefined');
+      return;
+    }
   let onCallback1 = (changeData: photoAccessHelper.ChangeData) => {
       console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
     // file had changed, do something.
@@ -2012,8 +2032,6 @@ requestPhotoUrisReadPermission(srcFileUris: Array<string>): Promise<Array<string
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```TypeScript
-import { dataSharePredicates } from '@kit.ArkData';
-
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context) {
   console.info('requestPhotoUrisReadPermissionDemo.');
 
@@ -2025,7 +2043,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
     let desFileUris: Array<string> = await phAccessHelper.requestPhotoUrisReadPermission(srcFileUris);
     console.info('requestPhotoUrisReadPermission success, data is ' + desFileUris);
   } catch (err) {
-    console.error('requestPhotoUrisReadPermission failed, errCode is ' + err.code + ', errMsg is ' + err.message);
+    console.error(`requestPhotoUrisReadPermission failed. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -2073,7 +2091,6 @@ It contains the list of URIs that have been created and granted the save permiss
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```TypeScript
-import { dataSharePredicates } from '@kit.ArkData';
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context) {
@@ -2087,7 +2104,7 @@ console.info('requestPhotoUrisReadPermissionExDemo.');
     let requestReadPermissionResult: photoAccessHelper.RequestReadPermissionResult = await phAccessHelper.requestPhotoUrisReadPermissionEx(srcFileUris);
     console.info('requestPhotoUrisReadPermissionEx success, data is ' + requestReadPermissionResult);
   } catch (err) {
-    console.error('requestPhotoUrisReadPermissionEx failed, errCode is ' + err.code + ', errMsg is ' + err.message);
+    console.error(`requestPhotoUrisReadPermissionEx failed. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -2190,8 +2207,6 @@ The dialog box must display the application name, but this cannot be directly ob
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```TypeScript
-import { dataSharePredicates } from '@kit.ArkData';
-
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   console.info('ShowAssetsCreationDialogDemo.');
 
@@ -2211,7 +2226,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     let desFileUris: Array<string> = await phAccessHelper.showAssetsCreationDialog(srcFileUris, photoCreationConfigs);
     console.info('showAssetsCreationDialog success, data is ' + desFileUris);
   } catch (err) {
-    console.error('showAssetsCreationDialog failed, errCode is ' + err.code + ', errMsg is ' + err.message);
+    console.error(`showAssetsCreationDialog failed. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -2266,8 +2281,6 @@ Displays a dialog box for the user to confirm whether to save the images or vide
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```TypeScript
-import { dataSharePredicates } from '@kit.ArkData';
-
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) { 
   console.info('ShowAssetsCreationDialogExDemo.'); 
 
@@ -2276,17 +2289,17 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     let srcFileUris: Array<string> = [
       'file://fileUriDemo1' // The URI here is an example only.
     ];
-    let photoCreationConfigs: Array<photoAccessHelper.CreationSetting> = [
+    let creationConfigs: Array<photoAccessHelper.CreationSetting> = [
       {
         title: 'test2', // Optional.
         fileNameExtension: 'jpg',
         photoType: photoAccessHelper.PhotoType.IMAGE
       }
     ];
-    let desFileUris: Array<string> = await phAccessHelper.showAssetsCreationDialogEx(srcFileUris, photoCreationConfigs);
+    let desFileUris: Array<string> = await phAccessHelper.showAssetsCreationDialogEx(srcFileUris, creationConfigs);
     console.info('showAssetsCreationDialogEx success, data is ' + desFileUris);
   } catch (err) {
-    console.error('showAssetsCreationDialogEx failed, errCode is ' + err.code + ', errMsg is ' + err.message);
+    console.error(`showAssetsCreationDialogEx failed. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -2342,8 +2355,6 @@ Displays a dialog box for the user to confirm whether to save an image or video.
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```TypeScript
-import { dataSharePredicates } from '@kit.ArkData';
-
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   console.info('ShowSingleAssetCreationDialogExDemo.');
 
@@ -2359,7 +2370,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     let desFileUri: string = await phAccessHelper.showSingleAssetCreationDialogEx(srcFileUri, photoCreationConfig, isImageFullyDisplayed);
     console.info('showSingleAssetCreationDialogEx success, data is ' + desFileUri);
   } catch (err) {
-    console.error('showSingleAssetCreationDialogEx failed, errCode is ' + err.code + ', errMsg is ' + err.message);
+    console.error(`showSingleAssetCreationDialogEx failed. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -2411,7 +2422,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
   let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
   if (photoAsset !== undefined) {
     console.info('photoAsset.displayName : ' + photoAsset.displayName);
-  }
+    } else {
+      console.error('photoAsset is undefined');
+      return;
+    }
   let onCallback1 = (changeData: photoAccessHelper.ChangeData) => {
     console.info('onCallback1 on');
   }
@@ -2478,22 +2492,26 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     fetchColumns: [],
     predicates: predicates
   };
+  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> | undefined = undefined;
   try {
-    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
+    fetchResult = await phAccessHelper.getAssets(fetchOptions);
     let asset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
     if (asset === undefined) {
       console.error('asset not exist');
       return;
     }
     phAccessHelper.createDeleteRequest([asset.uri], (err) => {
-      if (err === undefined) {
-        console.info('createDeleteRequest successfully');
-      } else {
+      if (err) {
         console.error(`createDeleteRequest failed with error: ${err.code}, ${err.message}`);
+      } else {
+        console.info('createDeleteRequest successfully');
       }
     });
   } catch (err) {
     console.error(`fetch failed, error: ${err.code}, ${err.message}`);
+  } finally {
+    // Release resources after use.
+    fetchResult?.close();
   }
 }
 ```
@@ -2553,8 +2571,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     fetchColumns: [],
     predicates: predicates
   };
+  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> | undefined = undefined;
   try {
-    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
+    fetchResult = await phAccessHelper.getAssets(fetchOptions);
     let asset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
     if (asset === undefined) {
       console.error('asset not exist');
@@ -2564,6 +2583,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     console.info('createDeleteRequest successfully');
   } catch (err) {
     console.error(`createDeleteRequest failed with error: ${err.code}, ${err.message}`);
+  } finally {
+    // Release resources after use.
+    fetchResult?.close();
   }
 }
 ```

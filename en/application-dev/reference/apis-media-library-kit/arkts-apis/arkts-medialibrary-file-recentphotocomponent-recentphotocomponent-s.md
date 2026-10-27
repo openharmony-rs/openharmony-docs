@@ -70,6 +70,26 @@ Callback when select photos or videos
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+## onError
+
+```TypeScript
+onError?: ErrorCallback
+```
+
+Callback when an error occurs in the RecentPhotoComponent.
+
+**Type:** [ErrorCallback](arkts-medialibrary-errorcallback-t.md)
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+<!--Device-RecentPhotoComponent-onError?: ErrorCallback--><!--Device-RecentPhotoComponent-onError?: ErrorCallback-End-->
+
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
 ## recentPhotoOptions
 
 ```TypeScript

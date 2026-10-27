@@ -1,5 +1,11 @@
 # @ohos.arkui.advanced.DatePickerComponent
 
+The **DatePickerComponent** is used to select dates (year, month, and day) and times (hour, minute, and second).
+
+## Child Components
+
+None
+
 ## Modules to Import
 
 ```TypeScript
@@ -22,7 +28,7 @@ import { DatePickerComponent, DatePickerComponentOptions, DisplayMode, DateMode,
 
 | Name | Description |
 | --- | --- |
-| [DatePickerComponent](arkts-arkui-arkui-advanced-datepickercomponent-datepickercomponent-s.md) | The **DatePickerComponent** is used to select dates (year, month, and day) and times (hour, minute, and second). |
+| [DatePickerComponent](arkts-arkui-arkui-advanced-datepickercomponent-datepickercomponent-s.md) | Defines a date and time picker component. |
 
 ### Enums
 

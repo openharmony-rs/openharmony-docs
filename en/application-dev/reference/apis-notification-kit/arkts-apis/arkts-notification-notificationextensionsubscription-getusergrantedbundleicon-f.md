@@ -14,7 +14,7 @@ function getUserGrantedBundleIcon(bundleName: string): Promise<image.PixelMap>
 
 Queries the icons of apps whose switch is turned on in the list of obtained local notifications in this app. This API uses a promise to return the result.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Required permissions:** ohos.permission.SUBSCRIBE_NOTIFICATION
 

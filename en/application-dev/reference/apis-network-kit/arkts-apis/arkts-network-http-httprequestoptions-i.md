@@ -102,12 +102,12 @@ The preset CA certificate is available at **\/etc/ssl/certs/cacert.pem**.
 ## certificatePinning
 
 ```TypeScript
-certificatePinning?: CertificatePinning[]
+certificatePinning?: CertificatePinning | CertificatePinning[]
 ```
 
 Dynamic configuration of certificate pinning. One or more certificate PINs can be specified.
 
-**Type:** [CertificatePinning](arkts-network-http-certificatepinning-i.md)[]
+**Type:** [CertificatePinning](arkts-network-http-certificatepinning-i.md) &#124; [CertificatePinning](arkts-network-http-certificatepinning-i.md)[]
 
 **Since:** 12
 

@@ -818,7 +818,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
         console.info('photoAsset.displayName : ' + photoAsset.displayName);
       }
     } else {
-      console.error(`fetchResult fail with error: ${err.code}, ${err.message}`);
+      console.error(`failed to fetchResult`);
     }
   });
 }

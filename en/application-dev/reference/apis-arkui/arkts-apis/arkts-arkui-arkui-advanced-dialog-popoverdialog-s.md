@@ -4,13 +4,7 @@
 export declare struct PopoverDialog
 ```
 
-A dialog is a modal window that temporarily displays information that requires user attention or actions that need to be performed, while preserving the current context. Users must complete the interaction before exiting this modal state.
-
-> **NOTE:** 
-> 
-> - This component can be used only in the stage model.
-> 
-> - If the **Dialog** component has [universal attributes](../arkts-components/arkts-arkui-common-comp.md) and [universal events](../arkts-components/arkts-arkui-common-comp.md) configured, the compiler toolchain automatically generates an additional \_\_Common\_\_ node and mounts the universal attributes and universal events on this node rather than the **Dialog** component itself. As a result, the configured universal attributes and universal events may fail to take effect or behave as intended. For this reason, avoid using universal attributes and events with the **Dialog** component.
+Defines a follow-hand dialog box that pops up based on the position of the target component. The aforementioned **TipsDialog**, **SelectDialog**, **ConfirmDialog**, **AlertDialog**, **LoadingDialog**, and **CustomContentDialog** can all serve as the content of the dialog box.
 
 **Since:** 14
 

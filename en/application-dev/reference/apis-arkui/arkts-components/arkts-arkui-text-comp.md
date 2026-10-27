@@ -44,6 +44,12 @@ Defines the constructor of Text.
 
 ## Summary
 
+### Classes
+
+| Name | Description |
+| --- | --- |
+| [TextController](arkts-arkui-text-comp-textcontroller-c.md) | Defines the controller of the **Text** component. |
+
 ### Interfaces
 
 | Name | Description |

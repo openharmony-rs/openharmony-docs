@@ -4,8 +4,6 @@
 export declare struct SelectDialog
 ```
 
-SelectDialog({controller: CustomDialogController, title: ResourceStr, content?: ResourceStr, selectedIndex?: number, confirm?: ButtonOptions, radioContent: Array&lt;SheetInfo&gt;, theme?: Theme | CustomTheme, themeColorMode?: ThemeColorMode})
-
 Displays a dialog box from which the user can select options presented in a list or grid.
 
 **Since:** 10

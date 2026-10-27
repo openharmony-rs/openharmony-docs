@@ -50,6 +50,15 @@ Swiper(controller?: SwiperController)
 
 ## 汇总
 
+### 类
+
+| 名称 | 说明 |
+| --- | --- |
+| [DigitIndicator](arkts-arkui-swiper-comp-digitindicator-c.md) | 构造数字指示器的样式，继承自[Indicator](arkts-arkui-swiper-comp-indicator-c.md)。 |
+| [DotIndicator](arkts-arkui-swiper-comp-dotindicator-c.md) | 构造圆点指示器的样式，继承自[Indicator](arkts-arkui-swiper-comp-indicator-c.md)。 |
+| [Indicator](arkts-arkui-swiper-comp-indicator-c.md) | 设置导航点与Swiper组件的距离。由于导航点有默认交互区域，交互区域高度为32vp，所以无法让显示部分完全贴底。若想实现完全贴底，可以使用[IndicatorComponent](../../../reference/apis-arkui/arkui-ts/ts-swiper-components-indicator.md#indicatorcomponent)组件，更灵活地调整位置。 |
+| [SwiperController](arkts-arkui-swiper-comp-swipercontroller-c.md) | Swiper容器组件的控制器，可以将此对象绑定至Swiper组件，实现控制Swiper翻页等功能。 |
+
 ### 接口
 
 | 名称 | 说明 |

@@ -457,6 +457,7 @@
   - [DrawContext](arkts-arkui-common-comp-drawcontext-t.md)
   - [EllipseShape](arkts-arkui-common-comp-ellipseshape-t.md)
   - [EnvDecorator](arkts-arkui-common-comp-envdecorator-t.md)
+  - [ExtendVersionDecorator](arkts-arkui-common-comp-extendversiondecorator-t.md)
   - [Filter](arkts-arkui-common-comp-filter-t.md)
   - [FractionStop](arkts-arkui-common-comp-fractionstop-t.md)
   - [GestureCollectInterceptCallback](arkts-arkui-common-comp-gesturecollectinterceptcallback-t.md)
@@ -1132,6 +1133,7 @@
 - [Repeat](arkts-arkui-repeat-comp.md)
   - [Repeat properties/events](arkts-arkui-repeat-comp-attribute.md)
   - [RepeatItem](arkts-arkui-repeat-comp-repeatitem-i.md)
+  - [RepeatOptions](arkts-arkui-repeat-comp-repeatoptions-i.md)
   - [TemplateOptions](arkts-arkui-repeat-comp-templateoptions-i.md)
   - [VirtualScrollOptions](arkts-arkui-repeat-comp-virtualscrolloptions-i.md)
   - [RepeatArray](arkts-arkui-repeat-comp-repeatarray-t.md)
@@ -1564,3 +1566,5 @@
   - [XComponentOptions(system api)](arkts-arkui-xcomponent-comp-xcomponentoptions-i-sys.md)<!--DelEnd-->
   - [OnNativeLoadCallback](arkts-arkui-xcomponent-comp-onnativeloadcallback-t.md)
   - [HdrType](arkts-arkui-xcomponent-comp-hdrtype-e.md)
+  <!--Del-->
+  - [XComponentExtraFlag(system api)](arkts-arkui-xcomponent-comp-xcomponentextraflag-e-sys.md)<!--DelEnd-->

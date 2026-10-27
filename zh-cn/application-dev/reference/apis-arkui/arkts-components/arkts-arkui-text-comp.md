@@ -42,6 +42,12 @@ Text(content?: string | Resource, value?: TextOptions)
 
 ## 汇总
 
+### 类
+
+| 名称 | 说明 |
+| --- | --- |
+| [TextController](arkts-arkui-text-comp-textcontroller-c.md) | Text组件的控制器。 |
+
 ### 接口
 
 | 名称 | 说明 |
@@ -2077,7 +2083,7 @@ struct Utf16GlyphHighlightPage {
 
 该示例通过[strokeWidth](#strokewidth)、[strokeColor](#strokecolor)和[strokeJoinStyle](#strokejoinstyle)属性为Text设置文本描边样式，分别展示描边宽度、描边颜色和描边拐角样式的效果，并演示了将描边宽度设为负值时显示实心字的效果。
 
-从API版本26.2.0开始，新增[strokeColor](#strokecolor)、[strokeWidth](#strokewidth)和[strokeJoinStyle](#strokejoinstyle)属性。
+从API版本26.1.0开始，新增[strokeColor](#strokecolor)、[strokeWidth](#strokewidth)和[strokeJoinStyle](#strokejoinstyle)属性。
 
 ```TypeScript
 // xxx.ets

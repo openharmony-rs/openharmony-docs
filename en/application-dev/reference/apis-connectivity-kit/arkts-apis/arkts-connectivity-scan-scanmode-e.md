@@ -24,7 +24,7 @@ Balanced scan mode. The scan frequency and power consumption are medium.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-ScanMode-SCAN_MODE_BALANCED = 1--><!--Device-ScanMode-SCAN_MODE_BALANCED = 1-End-->
 
@@ -42,7 +42,7 @@ Low-power scan mode. The scan frequency and power consumption are low. This is t
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-ScanMode-SCAN_MODE_LOW_POWER = 0--><!--Device-ScanMode-SCAN_MODE_LOW_POWER = 0-End-->
 

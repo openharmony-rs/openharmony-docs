@@ -12,6 +12,38 @@ Enumerates the screenshot event types.
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
+## CELIA_EYE_START
+
+```TypeScript
+CELIA_EYE_START = 6
+```
+
+CELIA double finger long press screen event.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ScreenshotEventType-CELIA_EYE_START = 6--><!--Device-ScreenshotEventType-CELIA_EYE_START = 6-End-->
+
+**System capability:** SystemCapability.WindowManager.WindowManager.Core
+
+## CELIA_SNAP_START
+
+```TypeScript
+CELIA_SNAP_START = 5
+```
+
+CELIA knuckle circle selection screenshot event
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ScreenshotEventType-CELIA_SNAP_START = 5--><!--Device-ScreenshotEventType-CELIA_SNAP_START = 5-End-->
+
+**System capability:** SystemCapability.Window.SessionManager
+
 ## SCROLL_SHOT_ABORT
 
 ```TypeScript

@@ -24,7 +24,7 @@ Basic mode, without a data retransfer mechanism. This mode is applicable to serv
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-TransferMode-BASIC = 0--><!--Device-TransferMode-BASIC = 0-End-->
 
@@ -42,7 +42,7 @@ Reliable mode, with a data retransfer mechanism. This mode is applicable to serv
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-TransferMode-RELIABLE = 1--><!--Device-TransferMode-RELIABLE = 1-End-->
 

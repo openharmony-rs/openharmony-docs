@@ -4,7 +4,7 @@
 interface Querier
 ```
 
-用于接收安全数据的回调函数。
+Definition callback of receiving the query data.
 
 **起始版本：** 12
 
@@ -26,7 +26,7 @@ import { securityGuard } from '@kit.SecurityGuardKit';
 onComplete: () => void
 ```
 
-获取数据结束时触发。
+Triggered when data is complete.
 
 **起始版本：** 12
 
@@ -42,7 +42,7 @@ onComplete: () => void
 onError: (message: string) => void
 ```
 
-查询存在失败时触发。
+Triggered when error.
 
 **起始版本：** 12
 
@@ -64,7 +64,7 @@ onError: (message: string) => void
 onQuery: (events: Array<SecurityEvent>) => void
 ```
 
-返回数据时触发。
+Triggered when data is returned.
 
 **起始版本：** 12
 
