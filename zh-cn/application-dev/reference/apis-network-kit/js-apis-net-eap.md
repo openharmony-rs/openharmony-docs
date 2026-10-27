@@ -279,7 +279,7 @@ setEthEapConfig(config: EthEapConfig): void
 
 任意字段发生变化时，会触发一次自动认证流程。如果802.1X功能已禁用，或者认证正由企业应用控制，则仅保存配置，不触发自动认证；企业应用仍保留认证控制权。认证结果通过[eap.onStateChange](#eaponstatechange)注册的回调返回，本接口调用返回不代表认证成功。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.0.1
 
 **需要权限**：ohos.permission.ENTERPRISE_MANAGE_EAP
 
@@ -349,7 +349,7 @@ getEthEapConfig(): Promise\<EthEapConfig\>
 
 返回配置中profile的敏感字段password、certPassword始终为空字符串，certEntry始终为空数组。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.0.1
 
 **需要权限**：ohos.permission.ENTERPRISE_MANAGE_EAP
 
@@ -397,7 +397,7 @@ deleteEthEapConfig(): Promise\<void\>
 
 该操作具有幂等性，即使尚未保存配置，也会成功完成。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.0.1
 
 **需要权限**：ohos.permission.ENTERPRISE_MANAGE_EAP
 
@@ -443,7 +443,7 @@ getEthEapStateInfo(): EthEapStateInfo
 
 同步获取当前以太网802.1X EAP认证状态信息，包括认证状态、重试次数和补充信息。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.0.1
 
 **需要权限**：ohos.permission.ENTERPRISE_MANAGE_EAP
 
@@ -486,7 +486,7 @@ onStateChange(callback: Callback\<EthEapStateInfo\>): void
 
 订阅以太网802.1X EAP认证状态变化。使用callback异步回调。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.0.1
 
 **需要权限**：ohos.permission.ENTERPRISE_MANAGE_EAP
 
@@ -533,7 +533,7 @@ offStateChange(callback?: Callback\<EthEapStateInfo\>): void
 
 取消订阅以太网802.1X EAP认证状态变化。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.0.1
 
 **需要权限**：ohos.permission.ENTERPRISE_MANAGE_EAP
 
@@ -588,7 +588,7 @@ connect(action: EthEapConnectAction): Promise\<void\>
 
 当action为ACTION_DISCONNECT时，停止自动认证，并退出底层802.1X认证。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.0.1
 
 **需要权限**：ohos.permission.ENTERPRISE_MANAGE_EAP
 
@@ -723,7 +723,7 @@ EAP信息。
 
 以太网802.1X EAP配置，包括EAP配置信息和功能开关。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.0.1
 
 **系统能力**：SystemCapability.Communication.NetManager.Eap
 
@@ -740,7 +740,7 @@ EAP信息。
 
 以太网802.1X EAP认证状态枚举。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.0.1
 
 **系统能力**：SystemCapability.Communication.NetManager.Eap
 
@@ -758,7 +758,7 @@ EAP信息。
 
 以太网802.1X EAP认证状态信息，可通过[eap.getEthEapStateInfo](#eapgetetheapstateinfo)获取，也可通过[eap.onStateChange](#eaponstatechange)注册的回调返回。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.0.1
 
 **系统能力**：SystemCapability.Communication.NetManager.Eap
 
@@ -774,7 +774,7 @@ EAP信息。
 
 以太网802.1X EAP手动连接操作枚举，用于[eap.connect](#eapconnect)。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.0.1
 
 **系统能力**：SystemCapability.Communication.NetManager.Eap
 
