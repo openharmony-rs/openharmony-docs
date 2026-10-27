@@ -35,7 +35,25 @@
    import { photoAccessHelper } from '@kit.MediaLibraryKit';
    ```
 
-2. 确定拍照输出流。
+2. 查询相机是否支持拍照模式。
+
+   通过[getSupportedSceneModes](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedscenemodes11)接口获取传入镜头支持的模式，查询是否支持拍照模式。
+
+   ```ts
+   function isCaptureModeSupported(cameraManager: camera.CameraManager, cameraDevice: camera.CameraDevice): boolean
+   {
+     try {
+       let modeArray = cameraManager.getSupportedSceneModes(cameraDevice);
+       return modeArray.includes(camera.SceneMode.NORMAL_PHOTO);
+     } catch (error) {
+       let err = error as BusinessError;
+       console.error(`failed to getSupportedSceneModes, err code: ${err.code}`);
+       return false;
+     }
+   }
+   ```
+
+3. 确定拍照输出流。
 
    通过[CameraOutputCapability](../../reference/apis-camera-kit/arkts-apis-camera-i.md#cameraoutputcapability)中的photoProfiles属性，可获取当前设备支持的拍照输出流，通过[createPhotoOutput](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#createphotooutput11)方法创建拍照输出流。
 
@@ -63,7 +81,7 @@
    }
    ```
 
-3. 设置拍照photoAssetAvailable的回调。
+4. 设置拍照photoAssetAvailable的回调。
 
    > **注意：**
    >
@@ -133,7 +151,7 @@
 
    请求图片参考媒体库接口：[requestImageData](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAssetManager.md#requestimagedata11) 和 [onDataPrepared](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAssetDataHandler.md#ondataprepared11)
 
-4. 拍照时的会话配置及触发拍照的方式，与普通拍照相同，请参考[拍照](camera-shooting.md)的步骤4-5。
+5. 拍照时的会话配置及触发拍照的方式，与普通拍照相同，请参考[拍照](camera-shooting.md)的步骤4-5。
 
 ## 状态监听
 
