@@ -30,7 +30,7 @@
 | flags | number | 否 | 表示处理方式，文件打开场景请参考表3。                                                                                                                                                                                       |
 | action | string | 是 | 表示要执行的通用操作。文件打开场景固定值：'ohos.want.action.viewData' ，表示查看数据的操作。<br>**说明：**<br>接口调用传参的action不是'ohos.want.action.viewData'时，也能拉起应用选择框，但是无法体验弹框全部功能。                                                                                                                                                                                      |
 
-**表2** [parameters](../reference/apis-ability-kit/js-apis-app-ability-wantConstant.md#params)相关参数说明
+**表2** [parameters](../reference/apis-ability-kit/js-apis-app-ability-want.md#want)相关参数说明
 
 
 | 参数名称                              | 类型    | 说明                                                                                                                                                                |
@@ -137,7 +137,7 @@
 
     支持打开文件的应用需要在[module.json5](../quick-start/module-configuration-file.md)配置文件中声明文件打开能力。其中uris字段表示接收URI的类型，其中scheme固定为file。type字段表示支持打开的文件类型（参见[UTD类型](../database/uniform-data-type-descriptors.md)（推荐）或[MIME type类型](https://www.iana.org/assignments/media-types/media-types.xhtml?utm_source=ld246.com)），如下举例中类型为txt文件。
 
-    ```json
+    ```json5
     {
     "module": {
         // ...
