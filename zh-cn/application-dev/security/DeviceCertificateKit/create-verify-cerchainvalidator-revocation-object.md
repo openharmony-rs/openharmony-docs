@@ -9,7 +9,7 @@
 
 ## 本地证书链吊销状态校验时仅校验终端实体证书
 
-API 22开始支持本地证书链吊销状态校验时仅校验终端实体证书。
+从API version 22开始支持本地证书链吊销状态校验时仅校验终端实体证书。
 
 ### 开发步骤
 
@@ -230,9 +230,11 @@ async function doTestCaCheck() {
    ```
 2. 调用[cert.createX509CertChain](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatex509certchain11-2)创建证书链对象。
 
-3. 调用[cert.createX509Cert](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatex509cert)创建X.509证书对象。构造 `cert.CertChainValidationParameters` 证书链校验参数，配置 `revocationCheckParam` 为 `RevocationCheckOptions.REVOCATION_CHECK_OPTION_IGNORE_NETWORK_ERROR`，以忽略网络不可达的情况。
+3. 调用[cert.createX509Cert](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatex509cert)创建X.509证书对象。
 
-4. 调用[cert.validate](../../reference/apis-device-certificate-kit/js-apis-cert.md#validate11)，传入证书链校验参数，进行证书链校验。
+4. 构造 `cert.CertChainValidationParameters` 证书链校验参数，配置 `revocationCheckParam` 为 `RevocationCheckOptions.REVOCATION_CHECK_OPTION_IGNORE_NETWORK_ERROR`，以忽略网络不可达的情况。
+
+5. 调用[cert.validate](../../reference/apis-device-certificate-kit/js-apis-cert.md#validate11)，传入证书链校验参数，进行证书链校验。
 
 在线CRL检查忽略网络不可达异常示例：
 
