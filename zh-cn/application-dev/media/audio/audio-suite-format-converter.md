@@ -16,6 +16,10 @@
 
 <!-- @[CMake_lib_suite_libohaudiosuite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/CMakeLists.txt) -->
 
+``` Text
+target_link_libraries(entry PUBLIC libohaudiosuite.so)
+```
+
 ### 添加头文件
 开发者通过引入头文件<[native_audio_converter.h](../../reference/apis-audio-kit/capi-native-audio-converter-h.md)>，使用音频格式转换相关API。
 
