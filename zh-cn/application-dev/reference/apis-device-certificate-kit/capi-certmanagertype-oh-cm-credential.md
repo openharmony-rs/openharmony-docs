@@ -28,8 +28,8 @@ typedef struct {...} OH_CM_Credential
 | 名称 | 描述 |
 | -- | -- |
 | uint32_t isExist | 表示证书数据是否存在。取值原则：0表示不存在，1表示存在。 |
-| char type[OH_CM_MAX_LEN_TYPE_NAME] | 表示凭据的类型，最大长度为8字节，数据包含终止符'\0'字符。 |
-| char alias[OH_CM_MAX_LEN_CERT_ALIAS] | 表示凭据的别名，最大长度为128字节，数据包含终止符'\0'字符。 |
+| char type[OH_CM_MAX_LEN_TYPE_NAME] | 表示凭据的类型，最大长度为1025字节，数据包含终止符'\0'字符。 |
+| char alias[OH_CM_MAX_LEN_CERT_ALIAS] | 表示凭据的别名，最大长度为129字节，数据包含终止符'\0'字符。 |
 | char keyUri[OH_CM_MAX_LEN_URI] | 表示凭据的唯一标识，最大长度为256字节，数据包含终止符'\0'字符。 |
 | uint32_t certNum | 表示凭据中包含的证书个数。 |
 | uint32_t keyNum | 表示凭据中包含的密钥个数。 |
