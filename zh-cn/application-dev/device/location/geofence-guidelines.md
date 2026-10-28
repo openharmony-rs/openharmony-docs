@@ -117,6 +117,10 @@
    }
    try {
      // 添加围栏
+     if (geoLocationManager.isGnssFenceServiceSupported();) {
+       console.error("current device do not support gnss fence");
+       return;
+     }
      geoLocationManager.addGnssGeofence(gnssGeofenceRequest).then((id) => {
        // 围栏添加成功后返回围栏ID
        console.info("addGnssGeofence success, fence id: " + id);
@@ -136,6 +140,10 @@
    // fenceId是在geoLocationManager.addGnssGeofence执行成功后获取的
    let fenceId = 1;
    try {
+     if (geoLocationManager.isGnssFenceServiceSupported();) {
+       console.error("current device do not support gnss fence");
+       return;
+     }
      geoLocationManager.removeGnssGeofence(fenceId).then(() => {
        console.info("removeGnssGeofence success fenceId:" + fenceId);
      }).catch((error : BusinessError) => {
