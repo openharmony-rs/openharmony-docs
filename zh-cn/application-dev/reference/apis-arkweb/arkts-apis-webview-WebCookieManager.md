@@ -1317,17 +1317,17 @@ static saveCookieSync(): void
 
 将当前可通过fetchCookie获取到的所有需要持久化的cookies同步保存到磁盘中。
 
-**系统能力：** SystemCapability.Web.Webview.Core
-
-**ArkTS-Dyn起始版本：** 15
-
-**ArkTS-Sta起始版本：** 23
-
 > **说明：**
 >
 > - saveCookieSync用于强制将需要持久化的cookies写入磁盘。PC/2in1和Tablet设备不会持久化session cookies，即使调用saveCookieSync，也不会将session cookies写入磁盘。
 >
 > - saveCookieSync将阻塞调用者直到操作完成，期间可能会执行I/O操作。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 
