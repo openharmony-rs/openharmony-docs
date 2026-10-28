@@ -59,7 +59,6 @@ struct Scene1Static {
   }
 }
 ```
-```
 
 ArkTS-Sta示例：
 ``` TypeScript
