@@ -220,7 +220,7 @@ getAuthLockState(authType: UserAuthType): Promise\<AuthLockState\>
 
 | 错误码ID | 错误信息 |
 | -------- | ------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 12500002 | General operation error. |
 | 12500005 | The authentication type is not supported. |
 | 12500008 | The parameter is out of range. |
@@ -279,8 +279,7 @@ getEnrolledState(authType: UserAuthType): EnrolledState
 
 | 错误码ID | 错误信息 |
 | -------- | ------- |
-| 201 | Permission denied. |
-| 401 | Parameter error. Possible causes: <br>1.Mandatory parameters are left unspecified. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 12500002 | General operation error. |
 | 12500005 | The authentication type is not supported. |
 | 12500010 | The type of credential has not been enrolled. |
@@ -631,7 +630,7 @@ on(type: 'result', callback: IAuthCallback): void
 
 | 错误码ID | 错误信息                 |
 | -------- | ------------------------ |
-| 401      | Parameter error. Possible causes: <br>1.Mandatory parameters are left unspecified. <br>2.Incorrect parameter types. <br>3.Parameter verification failed. |
+| 401      | [Sync] Parameter error. Possible causes: <br>1.Mandatory parameters are left unspecified. <br>2.Incorrect parameter types. <br>3.Parameter verification failed. |
 | 12500002 | General operation error. |
 
 **示例1：**
@@ -778,7 +777,7 @@ off(type: 'result', callback?: IAuthCallback): void
 
 | 错误码ID | 错误信息                 |
 | -------- | ------------------------ |
-| 401      | Parameter error. Possible causes: <br>1.Mandatory parameters are left unspecified. <br>2.Incorrect parameter types. <br>3.Parameter verification failed. |
+| 401      | [Sync] Parameter error. Possible causes: <br>1.Mandatory parameters are left unspecified. <br>2.Incorrect parameter types. <br>3.Parameter verification failed. |
 | 12500002 | General operation error. |
 
 **示例：**
@@ -851,8 +850,7 @@ start(): void
 
 | 错误码ID | 错误信息                                         |
 | -------- | ------------------------------------------------ |
-| 201      | Permission denied. Possible causes: <br>1.No permission to access biometric. <br>2.No permission to start authentication from background.|
-| 401      | Parameter error. Possible causes: <br>1.Incorrect parameter types. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 12500001 | Authentication failed. <br> 适用版本：10-19                          |
 | 12500002 | General operation error.                         |
 | 12500003 | Authentication canceled.                         |
@@ -925,8 +923,7 @@ cancel(): void
 
 | 错误码ID | 错误信息                        |
 | -------- | ------------------------------- |
-| 201      | Permission denied. |
-| 401      | Parameter error. Possible causes: <br>1.Incorrect parameter types. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 12500002 | General operation error.        |
 
 **示例：**
@@ -1150,7 +1147,7 @@ getUserAuthInstance(authParam: AuthParam, widgetParam: WidgetParam): UserAuthIns
 
 | 错误码ID | 错误信息                                         |
 | -------- | ------------------------------------------------ |
-| 401      | Parameter error. Possible causes: <br>1.Mandatory parameters are left unspecified. <br>2.Incorrect parameter types. <br>3.Parameter verification failed.   |
+| 401      | [Sync] Parameter error. Possible causes: <br>1.Mandatory parameters are left unspecified. <br>2.Incorrect parameter types. <br>3.Parameter verification failed.   |
 | 12500002 | General operation error.                         |
 | 12500005 | The authentication type is not supported.        |
 | 12500006 | The authentication trust level is not supported. |
@@ -1446,7 +1443,7 @@ getUserRecognitionMgr(): UserRecognitionMgr | null
 
 | 错误码ID | 错误信息                 |
 | -------- | ------------------------ |
-| 201      | Permission denied.       |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 
 **示例：**
 
@@ -1755,7 +1752,7 @@ start: () => void
 
 | 错误码ID | 错误信息 |
 | -------- | ------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. |
 | 12500001 | Authentication failed. |
 | 12500002 | General operation error. |
@@ -1807,7 +1804,7 @@ cancel: () => void
 
 | 错误码ID | 错误信息 |
 | -------- | ------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. |
 | 12500002 | General operation error. |
 
@@ -1925,8 +1922,7 @@ getAvailableStatus(authType: UserAuthType, authTrustLevel: AuthTrustLevel): void
 
 | 错误码ID | 错误信息 |
 | -------- | ------- |
-| 201 | Permission denied. |
-| 401 | Parameter error. Possible causes: <br>1.Mandatory parameters are left unspecified. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 12500002 | General operation error. |
 | 12500005 | The authentication type is not supported. |
 | 12500006 | The authentication trust level is not supported. |
