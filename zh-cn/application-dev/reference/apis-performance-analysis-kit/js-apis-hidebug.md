@@ -2165,6 +2165,6 @@ getAppRunningUniqueId(): string
 ```ts
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 
-let apprunningId = hidebug.getAppRunningUniqueId();
-console.info(`apprunningId: ${apprunningId}`);
+let appRunningId = hidebug.getAppRunningUniqueId();
+console.info(`appRunningId: ${appRunningId}`);
 ```
