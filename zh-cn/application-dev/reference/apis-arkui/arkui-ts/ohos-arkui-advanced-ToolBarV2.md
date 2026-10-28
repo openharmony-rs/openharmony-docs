@@ -1194,4 +1194,3 @@ struct Index {
 ```
 
 ![zh-cn\_image\_toolbar\_example01](figures/image-toolbar-example01.png)
-
