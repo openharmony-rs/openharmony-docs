@@ -14,7 +14,7 @@ This guide provides migration instructions for in-application state variables.
 | -------- | -------- |
 | [LocalStorage](./arkts-localstorage.md) | [@ObservedV2](./arkts-new-observedV2-and-trace.md) [@Trace](./arkts-new-observedV2-and-trace.md) |
 | [AppStorage](./arkts-appstorage.md) | [AppStorageV2](./arkts-new-appstoragev2.md) |
-| [Environment](./arkts-environment.md) | Obtain system environment variables using the **config** property of [UIAbilityContext](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#uiabilitycontext). |
+| [Environment](./arkts-environment.md) | Obtain system environment variables using the **config** property of [UIAbilityContext](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#uiabilitycontext-1). |
 | [PersistentStorage](./arkts-persiststorage.md) | [PersistenceV2](./arkts-new-persistencev2.md) |
 | Legacy migration scenarios| \@ObservedV2, \@Trace, [\@Monitor](./arkts-new-monitor.md)|
 
@@ -1248,7 +1248,7 @@ struct Index1 {
 
 In V1, you can obtain environment variables through **Environment**. However, the result obtained by **Environment** cannot be directly used. It must be combined with AppStorage to obtain the corresponding environment variable values.
 
-After migration to V2, you can directly obtain the system environment variables through the [config](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#uiabilitycontext) property of **UIAbilityContext**, eliminating the need for the **Environment** API.
+After migration to V2, you can directly obtain the system environment variables through the [config](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#uiabilitycontext-1) property of **UIAbilityContext**, eliminating the need for the **Environment** API.
 
 V1:
 
