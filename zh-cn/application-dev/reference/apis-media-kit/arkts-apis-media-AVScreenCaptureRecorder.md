@@ -760,6 +760,81 @@ async function testSetContentAutoRotation() {
 }
 ```
 
+## setCaptureArea
+
+ArkTS-Dyn: setCaptureArea(displayId: number, area: RectangleRegion): Promise\<void>
+
+ArkTS-Sta: setCaptureArea(displayId: int, area: RectangleRegion): Promise\<void>
+
+用于在屏幕录制模式下指定实际录制的区域。使用Promise异步回调。
+
+可在启动录屏前配置录制区域，也可以在录屏过程中更新录制区域。区域更新成功后，后续录制的画面内容随之切换为新的区域。
+
+> **说明：**
+>
+> - 录制区域以displayId对应屏幕的左上角为原点计算，单位为像素（px）。displayId为0时表示主屏。
+> - 设置的区域中，left和top不能为负数，width和height必须大于0，且区域必须在屏幕范围内、不能跨屏。区域设置失败时，仍按上一次设置的区域进行录制。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
+
+**参数：**
+
+| 参数名 | 类型                                                     | 必填 | 说明                                                         |
+| ------ | -------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| displayId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 屏幕ID，表示录制区域所属的屏幕。取值需大于或等于0，0表示主屏。 |
+| area   | [RectangleRegion](arkts-apis-media-i.md#rectangleregion) | 是   | 录制的矩形区域。各字段的取值范围和约束请参考[RectangleRegion](arkts-apis-media-i.md#rectangleregion)。 |
+
+**返回值：**
+
+| 类型           | 说明                                       |
+| -------------- | ------------------------------------------ |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
+
+| 错误码ID | 错误信息                                                  |
+| -------- | --------------------------------------------------------- |
+| 5400102  | Operation not allowed. Return by promise.                 |
+| 5400105  | Service died. Return by promise.                          |
+| 5400108  | The parameter check failed, parameter value out of range. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+``` TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
+
+async function testSetCaptureArea() {
+  // 创建录屏实例。
+  let avScreenCaptureRecorder = await media.createAVScreenCaptureRecorder();
+
+  // 其余流程。
+
+  // 指定屏幕ID和录制区域，区域左上角坐标为(0, 0)，宽度为640px，高度为480px。
+  let displayId: number = 0;
+  let area: media.RectangleRegion = { left: 0, top: 0, width: 640, height: 480 };
+
+  // 调用setCaptureArea方法。
+  if (avScreenCaptureRecorder) {
+    avScreenCaptureRecorder.setCaptureArea(displayId, area).then(() => {
+      console.info('Succeeded in setting capture area.');
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to set capture area. Code: ${err.code}, message: ${err.message}`);
+    });
+  }
+}
+```
+
 ## release<sup>12+</sup>
 
 release(): Promise\<void>
