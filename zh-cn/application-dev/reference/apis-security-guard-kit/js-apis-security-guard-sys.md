@@ -758,7 +758,7 @@ onClientStatusChanged: (clientInfos: AuthClientInfo[]) => void
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 202 | non-system application uses the system API |
+| 202 | Non-system application attempted to use a system API. |
 
 **示例：**
 
@@ -826,9 +826,9 @@ requestAuthResult(event: AuthEventInfo): Promise\<AuthResult\>
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | check permission fail |
-| 202 | non-system application uses the system API |
-| 27000001 | Internal system error. |
+| 201 | Permission verification failed. |
+| 202 | Non-system application attempted to use a system API. |
+| 27000001 | Internal system error.<br>The possible causes are as follows:<br>1. The inter-process IPC call fails.<br>2. The system service process is faulty. |
 | 27000004 | Concurrent request count has reached the upper limit. |
 
 **示例：**
@@ -893,9 +893,9 @@ createAuthProvider(callback: AuthProviderCallback, serviceId: string): AuthProvi
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | check permission fail |
-| 202 | non-system application uses the system API |
-| 27000001 | Internal system error. |
+| 201 | Permission verification failed. |
+| 202 | Non-system application attempted to use a system API. |
+| 27000001 | Internal system error.<br>The possible causes are as follows:<br>1. The inter-process IPC call fails.<br>2. The system service process is faulty. |
 | 27000002 | Provider count of the current process has reached the upper limit. |
 | 27000003 | Global provider count has reached the upper limit. |
 
@@ -955,9 +955,9 @@ destroyAuthProvider(provider: AuthProvider): void
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | check permission fail |
-| 202 | non-system application uses the system API |
-| 27000001 | Internal system error. |
+| 201 | Permission verification failed. |
+| 202 | Non-system application attempted to use a system API. |
+| 27000001 | Internal system error.<br>The possible causes are as follows:<br>1. The inter-process IPC call fails.<br>2. The system service process is faulty. |
 
 **示例：**
 

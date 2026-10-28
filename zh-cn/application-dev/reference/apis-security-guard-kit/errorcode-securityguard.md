@@ -15,7 +15,7 @@
 
 **错误信息**
 
-Internal system error.
+Internal system error.<br>The possible causes are as follows:<br>1. The inter-process IPC call fails.<br>2. The system service process is faulty.
 
 **错误描述**
 
