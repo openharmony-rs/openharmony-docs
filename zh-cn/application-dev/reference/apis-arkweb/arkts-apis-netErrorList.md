@@ -92,7 +92,7 @@ ArkWeb的网络协议栈错误列表
 |ERR_PROXY_CERTIFICATE_INVALID | -136 | HTTPS 代理提供的证书无效。 |
 |ERR_NAME_RESOLUTION_FAILED | -137 | 域名解析时出错（DNS）。|
 |ERR_NETWORK_ACCESS_DENIED | -138 | 网络被禁用。 |
-|ERR_TEMPORARILY_THROTTLED | -139 | 因节流而取消了此请求以避免DDOS。|
+|ERR_TEMPORARILY_THROTTLED | -139 | 因节流而取消了此请求以避免DDoS。|
 |ERR_HTTPS_PROXY_TUNNEL_RESPONSE_REDIRECT | -140 | 通过HTTPS代理创建SSL隧道连接的请求收到302（响应正文可能包括请求失败原因的描述）。|
 |ERR_SSL_CLIENT_AUTH_SIGNATURE_FAILED | -141 | 无法使用客户端证书的私钥对SSL客户端身份验证握手的CertificateVerify数据进行签名。|
 |ERR_MSG_TOO_BIG | -142 | 消息太大，无法传输。（例如，超过大小阈值的UDP消息）。|
@@ -257,7 +257,7 @@ ArkWeb的网络协议栈错误列表
 |ERR_CERT_VERIFIER_CHANGED | -716 | 证书验证配置已发生某种更改。|
 |ERR_DNS_MALFORMED_RESPONSE | -800 | DNS解析程序收到格式错误的响应。|
 |ERR_DNS_SERVER_REQUIRES_TCP | -801 | DNS服务器需要TCP。|
-|ERR_DNS_SERVER_FAILED | -802 | DNS服务器失败。对于以下所有错误情况，都会返回此错误。1-格式错误-名称服务器无法解释查询。2-服务器故障-名称服务器由于自身问题无法处理这个查询。 4-未实现-名称服务器不支持请求的查询类型。 5-拒绝-名称服务器出于策略原因拒绝执行指定的操作。|
+|ERR_DNS_SERVER_FAILED | -802 | DNS服务器失败。对于以下所有错误情况，都会返回此错误。1-格式错误-名称服务器无法解释查询。2-服务器故障-名称服务器由于自身问题无法处理这个查询。4-未实现-名称服务器不支持请求的查询类型。5-拒绝-名称服务器出于策略原因拒绝执行指定的操作。|
 |ERR_DNS_TIMED_OUT | -803 | DNS事务超时。|
 |ERR_DNS_CACHE_MISS | -804 | 对于只查询本地源的查找，在缓存或其他本地源中未找到该条目。|
 |ERR_DNS_SEARCH_EMPTY | -805 | 后缀搜索列表规则阻止了给定主机名的解析。|

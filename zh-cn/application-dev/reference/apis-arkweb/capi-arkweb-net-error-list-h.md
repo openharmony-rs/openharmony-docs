@@ -112,7 +112,7 @@ enum ArkWeb_NetError
 | ARKWEB_ERR_PROXY_CERTIFICATE_INVALID = -136 | HTTPS代理提供的证书无效。 |
 | ARKWEB_ERR_NAME_RESOLUTION_FAILED = -137 | 在尝试进行域名解析（DNS）时发生错误。 |
 | ARKWEB_ERR_NETWORK_ACCESS_DENIED = -138 | 访问网络的权限被拒绝。这用于区分很可能是由防火墙导致的错误和其他访问被拒绝的错误。另请参阅ARKWEB_ERR_ACCESS_DENIED。 |
-| ARKWEB_ERR_TEMPORARILY_THROTTLED = -139 | 请求节流模块取消了此请求，以避免DDOS攻击。 |
+| ARKWEB_ERR_TEMPORARILY_THROTTLED = -139 | 请求节流模块取消了此请求，以避免DDoS攻击。 |
 | ARKWEB_ERR_HTTPS_PROXY_TUNNEL_RESPONSE_REDIRECT = -140 | 通过HTTPS代理创建SSL隧道连接的请求收到了302（临时重定向）响应。响应体可能包含请求失败原因的说明。 |
 | ARKWEB_ERR_SSL_CLIENT_AUTH_SIGNATURE_FAILED = -141 | 我们无法使用客户端证书的私钥签署SSL客户端身份验证握手的CertificateVerify数据。 |
 | ARKWEB_ERR_MSG_TOO_BIG = -142 | 消息对于传输来说太大了。（例如，UDP消息超过了大小阈值）。 |
@@ -149,7 +149,7 @@ enum ArkWeb_NetError
 | ARKWEB_ERR_INVALID_ECH_CONFIG_LIST = -182 | 通过DNS获取的ECHConfigList无法解析。 |
 | ARKWEB_ERR_ECH_NOT_NEGOTIATED = -183 | 已启用ECH（Encrypted Client Hello，加密客户端Hello），但服务器无法解密加密的ClientHello。 |
 | ARKWEB_ERR_ECH_FALLBACK_CERTIFICATE_INVALID = -184 | ECH（Encrypted Client Hello）已启用，但服务器无法解密加密的ClientHello，并且没有提供对公共名称有效的证书。 |
-| ARKWEB_ERR_CERT_COMMON_NAME_INVALID = -200 | 服务器响应了一个证书，其通用名称与主机名不匹配。这可能意味着：1. 攻击者已将我们的流量重定向到他们的服务器，并呈现了一个他们知道私钥的证书。2.服务器配置错误，使用错误的证书进行响应。3.用户在无线网络上，并被重定向到网络的登录页面。4.操作系统使用了DNS搜索后缀，服务器在地址栏中没有缩写名称的证书。 |
+| ARKWEB_ERR_CERT_COMMON_NAME_INVALID = -200 | 服务器响应了一个证书，其通用名称与主机名不匹配。这可能意味着：1. 攻击者已将我们的流量重定向到他们的服务器，并呈现了一个他们知道私钥的证书。2. 服务器配置错误，使用错误的证书进行响应。3. 用户在无线网络上，并被重定向到网络的登录页面。4. 操作系统使用了DNS搜索后缀，服务器在地址栏中没有缩写名称的证书。 |
 | ARKWEB_ERR_CERT_DATE_INVALID = -201 | 服务器以证书作为响应，但根据我们的时钟，该证书似乎尚未生效或已过期。这可能是以下情况之一：1. 攻击者提供了旧的证书，并设法获取了私钥。2. 服务器配置错误，没有提供有效的证书。3. 我们的时钟错误。 |
 | ARKWEB_ERR_CERT_AUTHORITY_INVALID = -202 | 服务器回应了一个由我们不信任的机构签名的证书。这可能意味着：1. 攻击者已经将真实的证书替换为包含其公钥并由其同伙签名的证书。 |
 | ARKWEB_ERR_CERT_CONTAINS_ERRORS = -203 | 服务器返回的证书包含错误。此错误无法恢复。MSDN对此错误的描述如下："SSL证书包含错误。"注意：目前尚不清楚这与ERR_CERT_INVALID有何不同。 |
