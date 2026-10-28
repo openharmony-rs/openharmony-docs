@@ -717,7 +717,7 @@ scrollSnapStrategy(strategy?: ScrollSnapAlign | ScrollSnapOffsetProvider)
 
 设置Grid的限位滚动策略，使Grid在滚动结束时按指定方式对齐item，或停在自定义的吸附位置。内置对齐方式参考[示例23](#示例23设置滚动吸附对齐)，自定义吸附位置参考[示例24](#示例24自定义滚动吸附位置)。
 
-<br>包含跨列（不规则）GridItem的布局不支持本接口。
+包含跨列（不规则）GridItem的布局不支持本接口。
 
 > **说明：**
 >
