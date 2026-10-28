@@ -1,7 +1,7 @@
 ---
 kits: ["Audio Kit / 音频服务"]
 description: "介绍OH_MIDI的核心概念：以UMP统一数据包格式屏蔽MIDI 1.0与2.0协议差异，说明客户端、设备、端口、事件四大概念，以及USB和蓝牙MIDI设备的连接方式与使用约束。"
-keywords: [OH_MIDI, MIDI 2.0, UMP格式, MIDI客户端, MIDI设备, MIDI端口, MIDI事件, USB MIDI, 蓝牙MIDI]
+keywords: [OH_MIDI, MIDI 2.0, UMP格式, MIDI客户端, MIDI设备枚举, MIDI输入输出端口, MIDI事件, USB MIDI设备, 蓝牙MIDI设备, 怎么连接MIDI键盘]
 doctype: guide
 status: active
 ---
