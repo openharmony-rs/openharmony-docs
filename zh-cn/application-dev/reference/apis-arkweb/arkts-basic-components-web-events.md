@@ -5287,6 +5287,53 @@ Web组件检测到白屏时触发此回调。
     }
   }
   ```
+## onMonitoredBlankScreen
+
+onMonitoredBlankScreen(callback: OnMonitorBlankScreenCallback)
+
+Web组件检测到白屏时会触发回调。
+
+> **说明：**
+>
+> - 需配合[enableBlankScreenMonitor](./arkts-basic-components-web-attributes.md#enableblankscreenmonitor)使用。未开启白屏检测时，不会触发本回调。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名        | 类型    | 必填   | 说明          |
+| ---------- | ------- | ---- | ------------- |
+| callback | [OnMonitorBlankScreenCallback](./arkts-basic-components-web-t.md#onmonitorblankscreencallback) | 是 | 检测到白屏时触发。事件对象包含页面URL、白屏根因、归因详情等诊断信息。 |
+
+**示例：**
+
+  ```ts
+  // onMonitoredBlankScreen.ets
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .enableBlankScreenMonitor(true)
+          .onMonitoredBlankScreen((event: MonitoredBlankScreenEventInfo)=>{
+            console.info(`Monitored blank screen on ${event.url}.`);
+            console.info(`The blank screen reason is ${event.reason}.`);
+            console.info(`The extra message is ${event.extraMsg}.`);
+          })
+      }
+    }
+  }
+  ```
+
 ## onRenderExited<sup>(deprecated)</sup>
 
 onRenderExited(callback: (event?: { detail: object }) => boolean)
