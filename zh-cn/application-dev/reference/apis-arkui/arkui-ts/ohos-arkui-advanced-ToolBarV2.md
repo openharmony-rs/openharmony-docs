@@ -452,6 +452,10 @@ ToolBarV2SymbolGlyphOptions定义Symbol图标的属性。
 | LEADING   | 1 | 前导半区。适用于在主内容之前放置的主要操作。           |
 | TRAILING  | 2 | 尾随半区。适用于在主内容之后放置的次要或溢出操作。      |
 
+**示例：**
+
+请参考[AdvancedToolbarV2Item](#advancedtoolbarv2item)接口的示例。
+
 ## AdvancedToolbarV2Item
 
 定义高级工具栏子项，继承自[ToolBarV2Item](#toolbarv2item)，在其基础上扩展了高级布局能力，支持自定义构造器、放置位置、显示优先级、激活背景色、子项尺寸、分割线、文本可见性、溢出菜单、子项分组等。
@@ -731,88 +735,7 @@ direction(value: Axis): AdvancedToolBarV2Modifier
 
 **示例：**
 
-该示例通过AdvancedToolBarV2Modifier设置direction为Axis.Vertical实现垂直布局，配合crossAxisLength指定交叉轴宽度；子项设置isShowText为false呈现纯图标样式。
-
-```ts
-import {
-  AdvancedToolbarV2Item, AdvancedToolBarV2Modifier, ToolBarV2ItemText,
-  ToolBarV2ItemImage, ToolBarV2ItemState, ToolBarV2, LengthMetrics
-} from '@kit.ArkUI';
-
-@Entry
-@ComponentV2
-struct Index {
-  @Local toolbarList: AdvancedToolbarV2Item[] = [];
-  // 设置布局方向为垂直，并指定交叉轴长度（宽度）
-  private advancedToolBarModifier: AdvancedToolBarV2Modifier =
-    new AdvancedToolBarV2Modifier()
-      .direction(Axis.Vertical)
-      .crossAxisLength(LengthMetrics.vp(40))
-      .mainAxisLength(LengthMetrics.vp(300));
-
-  aboutToAppear() {
-    this.toolbarList.push(
-      new AdvancedToolbarV2Item({
-        content: new ToolBarV2ItemText({ text: '复制' }),
-        icon: new ToolBarV2ItemImage({ src: $r('sys.media.ohos_ic_public_copy') }),
-        // 纯图标项：不显示文本
-        isShowText: false,
-        state: ToolBarV2ItemState.ACTIVATE,
-        groupID: "toolbar",
-        action: () => {
-        },
-      })
-    );
-    this.toolbarList.push(
-      new AdvancedToolbarV2Item({
-        content: new ToolBarV2ItemText({ text: '粘贴' }),
-        icon: new ToolBarV2ItemImage({ src: $r('sys.media.ohos_ic_public_paste') }),
-        isShowText: false,
-        groupID: "toolbar",
-        action: () => {
-        },
-      })
-    );
-    this.toolbarList.push(
-      new AdvancedToolbarV2Item({
-        content: new ToolBarV2ItemText({ text: '全选' }),
-        icon: new ToolBarV2ItemImage({ src: $r('sys.media.ohos_ic_public_select_all') }),
-        isShowText: false,
-        groupID: "toolbar",
-        action: () => {
-        },
-      })
-    );
-    this.toolbarList.push(
-      new AdvancedToolbarV2Item({
-        content: new ToolBarV2ItemText({ text: '分享' }),
-        icon: new ToolBarV2ItemImage({ src: $r('sys.media.ohos_ic_public_share') }),
-        groupID: "toolbar",
-        action: () => {
-        },
-      })
-    );
-  }
-
-  build() {
-    Stack() {
-      Column() {
-        ToolBarV2({
-          advancedToolBarModifier: this.advancedToolBarModifier,
-          toolBarList: this.toolbarList,
-        })
-      }
-    }
-    .backgroundColor('#F0FAFF')
-    .padding({ right: 10 })
-    .align(Alignment.End)
-    .width('100%')
-    .height('50%')
-  }
-}
-```
-
-![zh-cn\_image\_toolbar\_example05](figures/image-toolbar-example05.png)
+请参考[AdvancedToolbarV2Item](#advancedtoolbarv2item)接口的示例。
 
 ## 示例
 
