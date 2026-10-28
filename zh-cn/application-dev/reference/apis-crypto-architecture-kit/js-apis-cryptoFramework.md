@@ -762,7 +762,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
 > **说明：**
 >
->  password 是原始密码。如果使用 string 类型，需直接传入用于密钥派生的数据，而不是 HexString 或 base64 等字符串类型，并确保该字符串为 UTF-8 编码，否则派生结果会有差异。
+> password是原始密码。如果使用string类型，需直接传入用于密钥派生的数据，而不是HexString或Base64等字符串类型，并确保该字符串为UTF-8编码，否则派生结果会有差异。
 
 ## HKDFSpec<sup>12+</sup>
 
@@ -800,14 +800,14 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 | passphrase | string \| Uint8Array | 否   | 否   | 用户输入的原始密码。|
 | salt | Uint8Array | 否   | 否   | 盐值。 |
 | n | number | 否   | 否   | CPU/内存开销参数，需要为正整数。 |
-| p | number | 否   | 否   | 并行化参数，需要为正整数。 |
 | r | number | 否   | 否   | 块大小参数，需要为正整数。 |
+| p | number | 否   | 否   | 并行化参数，需要为正整数。 |
 | maxMemory | number | 否   | 否   | 最大内存限制参数，需要为正整数，单位为bytes。 |
 | keySize | number | 否   | 否   | 派生得到的密钥字节长度，需要为正整数，单位为bytes。 |
 
 > **说明：**
 >
-> passphrase指的是原始密码，如果使用string类型，需要直接传入用于密钥派生的数据，而不是HexString、base64等字符串类型，同时需要确保该字符串为UTF-8编码，否则派生结果会有差异。
+> passphrase指的是原始密码，如果使用string类型，需要直接传入用于密钥派生的数据，而不是HexString、Base64等字符串类型，同时需要确保该字符串为UTF-8编码，否则派生结果会有差异。
 
 ## X963KdfSpec<sup>22+</sup>
 
@@ -4134,6 +4134,8 @@ static getCipherTextSpec(cipherText: DataBlob, mode?: string): SM2CipherTextSpec
 | 17620001 | Memory operation failed.                    |
 | 17630001 | Crypto operation error.          |
 
+**示例：**
+
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -4386,7 +4388,7 @@ init(opMode: CryptoMode, key: Key, params: ParamsSpec | null): Promise\<void>
 
 initSync(opMode: CryptoMode, key: Key, params: ParamsSpec | null): void
 
-初始化加解密的[cipher](#cipher)对象，通过注册回调函数获取结果。initSync、updateSync、doFinalSync为三段式接口，需要成组使用。其中initSync和doFinalSync必选，updateSync可选。
+初始化加解密的[cipher](#cipher)对象，此API以同步方式返回结果。initSync、updateSync、doFinalSync为三段式接口，需要成组使用。其中initSync和doFinalSync必选，updateSync可选。
 
 必须在使用[createCipher](#cryptoframeworkcreatecipher)创建[Cipher](#cipher)实例后，才能使用本函数。
 
@@ -4519,7 +4521,7 @@ update(data: DataBlob): Promise\<DataBlob>
 
 updateSync(data: DataBlob): DataBlob
 
-分段更新加密或者解密数据操作，通过注册回调函数获取加/解密数据。
+分段更新加密或者解密数据操作。
 
 必须在对[Cipher](#cipher)实例使用[initSync()](#initsync12)初始化后，才能使用本函数。
 
@@ -4939,7 +4941,7 @@ async function cipherByPromise() {
 
 doFinalSync(data: DataBlob | null): DataBlob
 
-（1）在对称加解密中，doFinalSync用于处理剩余数据和本次传入的数据，并结束加密或解密操作，通过注册回调函数获取加密或解密结果。
+（1）在对称加解密中，doFinalSync用于处理剩余数据和本次传入的数据，最后结束加密或者解密数据操作，使用同步方式获取加密或者解密数据。
 
 如果数据量较小，可以在doFinalSync中一次性传入数据，而不使用updateSync。如果在本次加解密流程中已经使用[updateSync](#updatesync12)传入过数据，可以在doFinalSync的data参数处传入null。
 
@@ -5547,7 +5549,7 @@ sign(data: DataBlob, callback: AsyncCallback\<DataBlob>): void
 | 17620001 | Memory operation failed.          |
 | 17620002 | Failed to obtain the native object or convert parameters.         |
 | 17620003 | Parameter check failed. <br>适用版本：26.0.0+|
-| 17630001 | crypto operation error. |
+| 17630001 | Crypto operation error. |
 
 ### sign<sup>10+</sup>
 
@@ -5614,7 +5616,7 @@ sign(data: DataBlob): Promise\<DataBlob>
 | 17620001 | Memory operation failed.                                     |
 | 17620002 | Failed to obtain the native object or convert parameters.                                    |
 | 17620003 | Parameter check failed. <br>适用版本：26.0.0+|
-| 17630001 | crypto operation error. |
+| 17630001 | Crypto operation error. |
 
 ### sign<sup>10+</sup>
 
@@ -6378,7 +6380,7 @@ verify(data: DataBlob, signatureData: DataBlob, callback: AsyncCallback\<boolean
 | 17620001 | Memory operation failed.          |
 | 17620002 | Failed to obtain the native object or convert parameters.         |
 | 17620003 | Parameter check failed. <br>适用版本：26.0.0+|
-| 17630001 | crypto operation error. |
+| 17630001 | Crypto operation error. |
 
 ### verify<sup>10+</sup>
 
@@ -6447,7 +6449,7 @@ verify(data: DataBlob, signatureData: DataBlob): Promise\<boolean>
 | 17620001 | Memory operation failed.                                     |
 | 17620002 | Failed to obtain the native object or convert parameters.                                    |
 | 17620003 | Parameter check failed. <br>适用版本：26.0.0+|
-| 17630001 | crypto operation error. |
+| 17630001 | Crypto operation error. |
 
 ### verify<sup>10+</sup>
 
@@ -9432,7 +9434,7 @@ static genEccSignatureSpec(data: Uint8Array): EccSignatureSpec
 
 ### genEccSignature<sup>20+</sup>
 
-static genEccSignature(spec: EccSignatureSpec): Uint8Array;
+static genEccSignature(spec: EccSignatureSpec): Uint8Array
 
 将（r、s）的ECC/SM2签名数据转换为ASN.1 DER编码。
 
