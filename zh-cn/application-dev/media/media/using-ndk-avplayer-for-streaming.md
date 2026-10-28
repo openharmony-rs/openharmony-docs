@@ -38,7 +38,7 @@ status: active
 
 - 在CMake脚本中链接如下动态库。
    <!-- @[target_link_libraries](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/CMakeLists.txt) -->
-  
+   
    ``` Text
    target_link_libraries(entry PUBLIC 
        libavplayer.so 
