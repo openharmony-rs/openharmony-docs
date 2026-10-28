@@ -1834,3 +1834,20 @@ type Nullable\<T> = T \| undefined
 | AVOID_WINDOW_CONTROLS | 6 | 在[自由窗口](../../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下，通过[setWindowDecorVisible](../arkts-apis-window-Window.md#setwindowdecorvisible11)接口隐藏窗口标题栏时，设置此策略避让窗口三键，即窗口右上角的窗口最大化/还原、窗口最小化和关闭窗口三个按钮。 |
 | BIND_SHEET_EXPAND_SAFE_AREA | 7 | 扩展[bindSheet](ts-universal-attributes-sheet-transition.md#bindsheet)的标题区作为内容区的安全区。通过[UIContext.applyDefaultImmersiveStrategy](../arkts-apis-uicontext-uicontext.md#applydefaultimmersivestrategy)应用此策略后，bindSheet的[SheetOptions](ts-universal-attributes-sheet-transition.md#sheetoptions).titleBarHoverMode默认值为[SheetTitleBarHoverMode.SAFE_AREA_PADDING](ts-universal-attributes-sheet-transition.md#sheettitlebarhovermode)。 |
 | NAVIGATION_EXPAND_SAFE_AREA | 8 | 将Navigation/NavDestination组件的标题栏和工具栏扩展为内容区的安全区域，若在Navigation/NavDestination组件上显式设置了标题栏或工具栏样式，则显式设置优先于该配置。 |
+
+## ShadowClipMode
+
+阴影不填充时的裁切方式。
+
+**起始版本：** 26.1.0
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 值 | 说明 |
+| ------ | ---- | ---------- |
+| DEFAULT_SHAPE | 0 | 按默认形状裁切（优先级顺序：[shadowShape](ts-universal-attributes-image-effect.md#shadowshape) > [clipShape](ts-universal-attributes-sharp-clipping.md#clipshape12) > 组件边界）。 |
+| BOUNDS_SHAPE | 1 | 按组件边界裁切。 |
