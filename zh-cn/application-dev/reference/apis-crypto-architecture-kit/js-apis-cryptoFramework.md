@@ -762,7 +762,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
 > **说明：**
 >
->  password 是原始密码。如果使用 string 类型，需直接传入用于密钥派生的数据，而不是HexString或Base64等字符串类型，并确保该字符串为UTF-8编码，否则派生结果会有差异。
+> password是原始密码。如果使用string类型，需直接传入用于密钥派生的数据，而不是HexString或Base64等字符串类型，并确保该字符串为UTF-8编码，否则派生结果会有差异。
 
 ## HKDFSpec<sup>12+</sup>
 
