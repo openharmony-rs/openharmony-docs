@@ -190,6 +190,8 @@ java -jar app_packing_tool.jar --mode app [--hap-path <path>] [--hsp-path <path>
 
 ## installer模式打包指令
 
+从API版本26.0.1开始支持installer模式。
+
 installer模式用于将一个或多个应用的HAP、HSP和安装清单打包为一个.app包，供安装器读取。生成的包采用ZIP格式，根目录包含manifest.json和Contents目录，Contents下按应用目录存放原始HAP、HSP文件。
 
 该包与[App打包指令](#app打包指令)生成的包具有不同的内部结构，使用时需要安装器支持installer包格式。打包工具负责生成容器，不执行应用安装或签名、验签。
@@ -252,17 +254,17 @@ manifest.json记录应用信息。未传入--manifest时，工具自动生成清
 
 | 字段 | 类型 | 是否必填 | 描述 |
 | --- | --- | --- | --- |
-| version | number | 否 | 自动生成时为1，外部清单不校验、不补充该字段。 |
-| distributionType | string | 否 | 自动生成时为developerID，外部清单不校验、不补充该字段。 |
+| version | number | 否 | 清单格式版本号。 |
+| distributionType | string | 否 | 分发类型。 |
 | apps | Array&lt;Object&gt; | 是 | 非空应用信息数组，与--contents下的应用目录一一对应。 |
 
 **表8** apps数组元素字段说明
 
 | 字段 | 类型 | 是否必填 | 描述 |
 | --- | --- | --- | --- |
-| bundleName | string | 是 | 非空应用Bundle名称，与对应应用模块一致。 |
-| versionCode | number | 是 | 应用版本号，与对应应用模块一致。 |
-| versionName | string | 是 | 非空应用版本名称，与对应应用模块一致。 |
+| bundleName | string | 是 | 非空应用Bundle名称。 |
+| versionCode | number | 是 | 应用版本号。 |
+| versionName | string | 是 | 非空应用版本名称。 |
 | minAPIVersion | number | 是 | 最小API版本，不低于对应应用内所有模块的最大值。 |
 | path | string | 是 | 包内应用目录，格式为`Contents/<应用目录名>`，使用正斜杠。 |
 | coreApp | boolean | 否 | 是否为核心应用。整个apps数组必须有且只有一个true，其余项可省略或设为false。 |
