@@ -53,7 +53,7 @@ status: active
 
 - 开发者使用系统日志能力时，需引入如下头文件。
    <!-- @[hilog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->
-  
+   
    ``` C++
    #include <hilog/log.h>
    ```
