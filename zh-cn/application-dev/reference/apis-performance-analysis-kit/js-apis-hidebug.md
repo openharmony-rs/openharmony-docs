@@ -1787,5 +1787,5 @@ getAppRunningUniqueId(): string
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 
 let appRunningId = hidebug.getAppRunningUniqueId();
-console.info(`apprunningId: ${appRunningId}`);
+console.info(`appRunningId: ${appRunningId}`);
 ```
