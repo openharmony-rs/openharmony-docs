@@ -53,7 +53,6 @@ import { formInfo } from '@kit.FormKit';
 | supportedShapes<sup>12+</sup>    | ArkTS-Dyn: Array&lt;number&gt; <br> ArkTS-Sta: Array&lt;int&gt; | 否    | 否     | 卡片支持的形状。具体可选形状参考[FormShape<sup>12+</sup>](#formshape12) <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23 |
 | isColorModeRefreshEnabled | boolean  | 是    | 是     | 表示卡片是否使能深浅模式切换触发刷新，默认值为false。<br/>-&nbsp;true：使能。<br/>-&nbsp;false：不使能。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
 
-
 ## FormType
 
 支持的卡片类型枚举。JS卡片使用Web技术实现，适合简单的展示类卡片；ArkTS卡片使用ArkTS语言开发，支持更丰富的交互和动画效果。开发时应根据卡片复杂度和交互需求选择合适类型。
