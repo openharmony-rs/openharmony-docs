@@ -384,7 +384,7 @@ HDF_SUCCESS 表示注册成功。
 
 HDF_FAILED 表示注册失败。
 
-Invalid 表示进程通信异常
+invalid 表示无法获取服务
 
 ### GetTemperature()
 
