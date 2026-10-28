@@ -41,7 +41,6 @@
    let isGnssGeoFeceSupported = geoLocationManager.isGnssFenceServiceSupported();
    if (!isGnssGeoFeceSupported) {
        console.error("Current Device Do not Support GnssGeofence");
-       return;
    }
    ```
 
@@ -118,17 +117,15 @@
    try {
      // 添加围栏
      if (geoLocationManager.isGnssFenceServiceSupported();) {
-       console.error("current device do not support gnss fence");
-       return;
+        geoLocationManager.addGnssGeofence(gnssGeofenceRequest).then((id) => {
+           // 围栏添加成功后返回围栏ID
+           console.info("addGnssGeofence success, fence id: " + id);
+           let fenceId = id;
+        }).catch((err: BusinessError) => {
+           console.error("addGnssGeofence failed, promise errCode:" + (err as BusinessError).code + 
+             ",errMessage:" + (err as BusinessError).message);
+        });
      }
-     geoLocationManager.addGnssGeofence(gnssGeofenceRequest).then((id) => {
-       // 围栏添加成功后返回围栏ID
-       console.info("addGnssGeofence success, fence id: " + id);
-       let fenceId = id;
-     }).catch((err: BusinessError) => {
-       console.error("addGnssGeofence failed, promise errCode:" + (err as BusinessError).code + 
-         ",errMessage:" + (err as BusinessError).message);
-     });
    } catch(error) {
        console.error("addGnssGeofence failed, err:" + JSON.stringify(error));
    }
@@ -141,14 +138,12 @@
    let fenceId = 1;
    try {
      if (geoLocationManager.isGnssFenceServiceSupported();) {
-       console.error("current device do not support gnss fence");
-       return;
+        geoLocationManager.removeGnssGeofence(fenceId).then(() => {
+           console.info("removeGnssGeofence success fenceId:" + fenceId);
+        }).catch((error : BusinessError) => {
+           console.error("removeGnssGeofence: error=" + JSON.stringify(error));
+        });
      }
-     geoLocationManager.removeGnssGeofence(fenceId).then(() => {
-       console.info("removeGnssGeofence success fenceId:" + fenceId);
-     }).catch((error : BusinessError) => {
-       console.error("removeGnssGeofence: error=" + JSON.stringify(error));
-     });
    } catch(error) {
      console.error("removeGnssGeofence: error=" + JSON.stringify(error));
    }
