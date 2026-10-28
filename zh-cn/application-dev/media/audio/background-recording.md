@@ -1,3 +1,11 @@
+---
+kits: ["Audio Kit / 音频服务"]
+description: "通过声明后台模式和申请录音类型长时任务，实现前台启动后持续后台录音，并处理打断与资源释放。"
+keywords: [后台录音, 长时任务, audioRecording, 麦克风权限, 前台启动, 静音打断模式, 资源释放]
+doctype: guide
+status: active
+---
+
 # 实现后台录音
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->

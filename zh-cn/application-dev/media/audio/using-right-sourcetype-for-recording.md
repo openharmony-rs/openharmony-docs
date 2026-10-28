@@ -1,3 +1,11 @@
+---
+kits: ["Audio Kit / 音频服务"]
+description: "按语音识别、通话、直播等用途选择SourceType，匹配音频焦点、输入设备和处理策略。"
+keywords: [SourceType, 语音识别, VoIP, 直播, 音频焦点, 输入设备, 回声消除, 低时延录制]
+doctype: guide
+status: active
+---
+
 # 选择合适的录制流类型
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->

@@ -1,3 +1,11 @@
+---
+kits: ["Audio Kit / 音频服务"]
+description: "查询录制流和设备信息，监听采集状态变化，结合电平与录制可用性接口判断麦克风占用情况。"
+keywords: [AudioStreamManager, audioCapturerChange, stateChange, 麦克风, isRecordingAvailable, getCurrentAudioCapturerInfoArray, getMaxAmplitudeForInputDevice, USE_BLUETOOTH]
+doctype: guide
+status: active
+---
+
 # 查询和监听其他应用录制状态
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->

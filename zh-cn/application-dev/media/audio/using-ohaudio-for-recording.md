@@ -1,3 +1,11 @@
+---
+kits: ["Audio Kit / 音频服务"]
+description: "使用OHAudio的C API配置PCM采集与回调，控制录制流并设置低时延、耳返音效和静音策略。"
+keywords: [OHAudio, PCM, 音频回调, 低时延模式, 回环音效, 静音打断模式, 静音提示, 回声消除, OH_AudioCapturer_Release]
+doctype: guide
+status: active
+---
+
 # 推荐使用OHAudio开发音频录制功能(C/C++)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->

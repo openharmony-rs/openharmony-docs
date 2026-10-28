@@ -1,3 +1,11 @@
+---
+kits: ["Audio Kit / 音频服务"]
+description: "组合OHAudio录制与播放能力，将采集数据经自定义音效处理后实时送入有线耳机，实现K歌耳返。"
+keywords: [OHAudio, 音效算法, 有线耳机, 低时延模式, 公共缓冲区, 音频流参数, 录制回调, 播放回调]
+doctype: guide
+status: active
+---
+
 # 实现自定义耳返
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->

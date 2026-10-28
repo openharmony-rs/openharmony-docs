@@ -1,3 +1,11 @@
+---
+kits: ["Audio Kit / 音频服务"]
+description: "在录制前查询麦克风静音状态，并订阅状态变化，识别录制中持续写入无声数据的情况。"
+keywords: [AudioVolumeGroupManager, 麦克风静音, micStateChange, isMicrophoneMute, AudioManager, 无声数据]
+doctype: guide
+status: active
+---
+
 # 管理麦克风静音状态
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->

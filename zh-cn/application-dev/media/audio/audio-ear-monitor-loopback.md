@@ -1,3 +1,11 @@
+---
+kits: ["Audio Kit / 音频服务"]
+description: "使用AudioLoopback搭建系统低时延耳返，查询设备组合并管理音量、混响、均衡器及返听状态。"
+keywords: [AudioLoopback, 麦克风权限, 有线耳机, 星闪耳机, 输入输出设备组合, 返听音量, 混响模式, 均衡器, 音频焦点]
+doctype: guide
+status: active
+---
+
 # 实现低时延耳返
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
