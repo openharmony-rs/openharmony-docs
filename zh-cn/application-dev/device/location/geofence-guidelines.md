@@ -35,16 +35,25 @@
    import { notificationManager } from '@kit.NotificationKit';
    ```
 
-3. 创建围栏。
+3. 判断是否支持围栏功能
 
    ```ts
-   // 通过WantAgentInfo的operationType设置动作类型
+   let isGnssGeoFeceSupported = geoLocationManager.isGnssFenceServiceSupported();
+   if (!isGnssGeoFeceSupported) {
+       console.error("Current Device Do not Support GnssGeofence");
+       return;
+   }
+   ```
+
+4. 创建围栏。
+
+   ```ts
    let geofence: geoLocationManager.Geofence = {
        "latitude": 34.12, "longitude": 124.11, "radius": 10000.0, "expiration": 10000.0
    }
    ```
 
-4. 指定APP需要监听的地理围栏事件类型，这里表示需要监听进入围栏和退出围栏事件。
+5. 指定APP需要监听的地理围栏事件类型，这里表示需要监听进入围栏和退出围栏事件。
 
    ```ts
    let transitionStatusList: Array<geoLocationManager.GeofenceTransitionEvent> = [
@@ -53,7 +62,7 @@
    ];
    ```
 
-4. 创建GEOFENCE_TRANSITION_EVENT_ENTER、GEOFENCE_TRANSITION_EVENT_EXIT事件对应的通知对象。
+6. 创建GEOFENCE_TRANSITION_EVENT_ENTER、GEOFENCE_TRANSITION_EVENT_EXIT事件对应的通知对象。
 
    ```ts
    // GEOFENCE_TRANSITION_EVENT_ENTER事件
@@ -82,7 +91,7 @@
    };
    ```
 
-5. 添加围栏。
+7. 添加围栏。
 
    ```ts
    // 把创建的通知对象存入Array中，存入顺序与transitionStatusList一致
@@ -121,7 +130,7 @@
    }
    ```
 
-6. 删除围栏。
+8. 删除围栏。
 
    ```ts
    // fenceId是在geoLocationManager.addGnssGeofence执行成功后获取的

@@ -57,13 +57,13 @@
       try {
           geoLocationManager.getAddressesFromLocation(reverseGeocodeRequest, (err, data) => {
               if (err) {
-                  console.error('getAddressesFromLocation err: ' + JSON.stringify(err));
+                  console.error("getAddressesFromLocation errCode:" + err.code + ", message:"  + err.message);
               } else {
                   console.info('getAddressesFromLocation data: ' + JSON.stringify(data));
               }
           });
       } catch (err) {
-          console.error("errCode:" + JSON.stringify(err));
+          console.error("errCode:" + err.code + ", message:"  + err.message);
       }
       ```
 
@@ -74,13 +74,13 @@
       try {
           geoLocationManager.getAddressesFromLocationName(geocodeRequest, (err, data) => {
               if (err) {
-                  console.error('getAddressesFromLocationName err: ' + JSON.stringify(err));
+                  console.error("getAddressesFromLocationName errCode:" + err.code + ", message:"  + err.message);
               } else {
                   console.info('getAddressesFromLocationName data: ' + JSON.stringify(data));
               }
           });
       } catch (err) {
-          console.error("errCode:" + JSON.stringify(err));
+          console.error("errCode:" + err.code + ", message:"  + err.message);
       }
       ```
 
