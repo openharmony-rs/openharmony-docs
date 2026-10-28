@@ -64,10 +64,6 @@
         bool isEnabled = false;
         int resultCode = OH_Location_IsLocatingEnabled(&isEnabled);
         napi_value result = NULL;
-        if (resultCode != LOCATION_SUCCESS) {
-           napi_create_int32(env, resultCode, &result);
-           return result;
-        }
         napi_get_boolean(env, isEnabled, &result);
         return result;
     }
@@ -106,43 +102,30 @@
    // 订阅位置信息
    static napi_value OhLocationStartLocating(napi_env env, napi_callback_info info)
    {
-       napi_value result = NULL;
-       bool isEnabled = false;
-       int resultCode = OH_Location_IsLocatingEnabled(&isEnabled);
-       if (!isEnabled) {
-          int errCode = LOCATION_SWITCH_OFF;
-          napi_get_boolean(env, isEnabled, &result);
-          return result;
-       }
        if (g_requestConfig == NULL) {
            g_requestConfig = OH_Location_CreateRequestConfig();
        }
        OH_LocationRequestConfig_SetUseScene(g_requestConfig, LOCATION_USE_SCENE_NAVIGATION);
        OH_LocationRequestConfig_SetInterval(g_requestConfig, 1);
        mydata = (void *)malloc(sizeof("mydata")); // 用户自定义任意类型，callback 透传返回
-       if (mydata == NULL) {
-           int errCode = LOCATION_INVALID_PARAM;
-           napi_create_int32(env, errCode, &result);
-           return result;
-       }
        OH_LocationRequestConfig_SetCallback(g_requestConfig, reportLocation, mydata);
-       int resultCode = OH_Location_StartLocating(g_requestConfig);
-       napi_create_int32(env, resultCode, &result);
+       OH_Location_StartLocating(g_requestConfig);
+       int32_t ret = 0;
+       napi_value result = NULL;
+       napi_create_int32(env, ret, &result);
        return result;
    }
 
    // 取消订阅位置信息， g_requestConfig要和订阅时传入的对象保持一致
    static napi_value OhLocationStopLocating(napi_env env, napi_callback_info info)
    {
+       OH_Location_StopLocating(g_requestConfig);
        if (g_requestConfig != NULL) {
-           OH_Location_StopLocating(g_requestConfig);
            OH_Location_DestroyRequestConfig(g_requestConfig);
            g_requestConfig = NULL;
        }
-       if (mydata != NULL) {
-           free(mydata);
-           mydata = NULL;
-       }
+       free(mydata);
+       mydata = NULL;
        int32_t ret = 0;
        napi_value result = NULL;
        napi_create_int32(env, ret, &result);
