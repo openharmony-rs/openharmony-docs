@@ -156,11 +156,11 @@ setWindowBackgroundColor(color: string): Promise&lt;void&gt;
 
 设置卡片编辑页的背景色，使用Promise异步回调。
 
+**起始版本：** 26.1.0
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Ability.Form
-
-**起始版本：** 26.1.0
 
 **参数：**
 
