@@ -6,12 +6,12 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 ```c
-typedef struct OH_NaticveWindow_ScreenInfoRect OH_NaticveWindow_ScreenInfoRect
+typedef struct OH_NativeWindow_ScreenInfoRect OH_NativeWindow_ScreenInfoRect
 ```
 
 ## 概述
 
-定义一个包含坐标和尺寸信息的矩阵描述屏幕信息。
+定义一个包含坐标和尺寸信息的矩形描述屏幕信息。
 
 **起始版本：** 26.1.0
 
