@@ -114,7 +114,7 @@ Continuous task verification failed.
 11. 当前长时任务或者被合并的长时任务不支持通知合并。
 12. 合并通知的长时任务类型不一致。
 13. 应用申请[TASK_KEEPING](./js-apis-resourceschedule-backgroundTaskManager.md#backgroundmode)长时任务时，未申请ACL授权。
-14. 数据传输类型不支持通过更新接口更新长时任务类型。
+14. 长时任务在后台运行期间，待更新的长时任务或指定的更新类型中包含数据传输类型，不支持新增或移除了录音、定位或VOIP类型。
 15. 在后台申请除播音外新的长时任务类型。
 16. 应用申请[MODE_SPECIAL_SCENARIO_PROCESSING](./js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmode21)类型的长时任务时，未申请ACL授权。
 
@@ -133,7 +133,7 @@ Continuous task verification failed.
 11. 请检查合并通知时，当前长时任务或者被合并的长时任务是否支持合并。
 12. 请检查合并通知时，长时任务类型是否一致。
 13. 请检查申请[TASK_KEEPING](./js-apis-resourceschedule-backgroundTaskManager.md#backgroundmode)长时任务时，是否申请了[ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system)的ACL授权。
-14. 请检查更新长时任务时，原类型或者新增类型是否包含了数据传输类型。
+14. 更新长时任务时，请检查待更新类型相比原类型是否新增或移除了录音、定位或VOIP类型。
 15. 请检查除了播音和已经在前台申请过的长时任务类型，是否在后台申请了其他长时任务类型。
 16. 请检查申请[MODE_SPECIAL_SCENARIO_PROCESSING](./js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmode21)类型的长时任务时，是否申请了[ohos.permission.KEEP_BACKGROUND_RUNNING_SPECIAL_SCENARIO](../../security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_special_scenario)或者[ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system)的ACL授权。
 
