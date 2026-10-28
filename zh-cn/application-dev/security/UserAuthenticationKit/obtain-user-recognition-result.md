@@ -63,4 +63,4 @@ async obtainingUserRecognitionResult(): Promise<string> {
 
 ## 示例代码
 
-示例代码可参考[查询和订阅用户识别结果](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/UserAuthentication)。
+  - 可参考[用户认证服务](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/UserAuthentication)示例代码。
