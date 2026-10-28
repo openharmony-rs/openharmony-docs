@@ -440,8 +440,8 @@ function printNodeTreeInRelativePath(node: Node | null): void {
 | ---- | ---- | ---- |
 | DIRECTIONAL | 1 | 平行光类型。 |
 | SPOT | 2 | 聚光灯类型。 |
-| POINT | 3 | 点光源类型。 **起始版本：** 26.1.0<br>**模型约束：** 此接口仅可在Stage模型下使用。|
-| RECT | 4 | 矩形光类型。  **起始版本：** 26.1.0<br>**模型约束：** 此接口仅可在Stage模型下使用。|
+| POINT | 3 | 点光源类型。<br>**起始版本：** 26.1.0<br>**模型约束：** 此接口仅可在Stage模型下使用。|
+| RECT | 4 | 矩形光类型。 <br>**起始版本：** 26.1.0<br>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ## Light
 
