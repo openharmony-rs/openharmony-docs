@@ -15,7 +15,68 @@ CryptoExtensionAbility可以隔离底层硬件（UKey驱动）厂商实现差异
 
 三方驱动HAP应用如需定义自身外部密钥管理扩展能力：
 
-首先，需继承CryptoExtensionAbility并完成相关的接口实现。其次，通过Provider注册接口[registerProvider](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptoregisterprovider)完成能力注册。最后，由HUKS和证书管理将对应的密钥管理扩展能力开放给应用。
+密钥管理扩展应用从开发、注册到注销的完整生命周期分为三个阶段：
+
+1. 接口实现：继承CryptoExtensionAbility，根据业务需要实现[核心能力实现](#核心能力实现)中的回调接口，封装对底层外部密钥管理后端的调用。
+
+2. 注册到HUKS：在密钥管理扩展设备/服务可用时调用[registerProvider](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptoregisterprovider)将CryptoExtensionAbility注册到HUKS。注册成功后，HUKS和证书管理将对应的密钥管理扩展能力开放给应用。
+
+3. 注销下线：在设备拔出、服务停止等不可用场景下调用[unregisterProvider](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptounregisterprovider)注销已注册的能力，避免资源残留。
+
+## 接入能力
+
+密钥管理扩展应用需实现以下机制，使单个ExtensionAbility实例能够安全地管理一个或多个外部密钥管理资源（如UKey物理设备、软件资源等）。
+
+在介绍具体机制前，需先明确两个核心概念：
+
+- Provider：代表一个外部密钥管理驱动的逻辑归属，用于在HUKS中唯一标识该驱动。一般情况下，一个密钥管理扩展应用注册一个Provider，命名建议包含外部密钥管理能力提供方信息以保证全局唯一。
+
+- Ability：代表开发者针对各业务定制的扩展能力，标识一个CryptoExtensionAbility实例的逻辑名。一个Provider下可注册多个Ability，对应密钥管理扩展应用中不同的CryptoExtensionAbility子类实例，用于在同一驱动下区分不同业务场景。
+
+下文将依次介绍可用性检测、Provider/Ability约束、设备级资源隔离与定制化认证UI关联。
+
+### 可用性检测与注册/注销时机
+
+密钥管理扩展应用需根据接入的设备/服务形态，检测其可用性。当设备或服务可用时调用[registerProvider](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptoregisterprovider)接口注册CryptoExtensionAbility，不可用时调用[unregisterProvider](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptounregisterprovider)接口注销CryptoExtensionAbility，可参考[CryptoExtensionAbility注册与注销](huks-extension-registration-and-unregistration-arkts.md)。
+
+检测机制因设备形态而异：
+- UKey物理设备：监听USB插拔事件。
+- 其他形态：根据服务可用性自行实现。
+
+### Provider与Ability管理
+
+一个Provider可以关联多个CryptoExtensionAbility。建议使用时按一对一方式进行匹配。
+
+- Provider名称长度最大为128字节，建议包含外部密钥管理能力提供方信息以保证全局唯一。
+- 整个系统最多支持注册**10个**CryptoExtensionAbility Provider，超过限制时registerProvider接口返回HUKS_ERR_CODE_EXCEED_LIMIT。
+- 注册时由`(providerName, abilityName, bundleName)`三元组唯一标识。
+
+### 设备级资源隔离
+
+建议密钥管理扩展应用保障不同外部密钥管理资源的设备句柄、资源映射、会话状态、认证状态等相互独立。
+
+### 定制化认证UI
+
+系统提供PIN码认证弹窗能力，供上层应用在需要时拉起UKey PIN认证界面。若系统默认弹窗不满足业务需求，密钥管理扩展应用可注册自定义认证UI，在注册Provider时同步关联，由证书管理在需要时统一拉起。
+
+从API版本26.0.0开始，支持注册[UIAbility](../../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#uiability)作为自定义认证UI，开发者自行实现UI布局与交互逻辑。该方式仅支持由上层应用拉起，依赖调用方持有上下文信息。
+
+从API版本26.0.1开始，新增支持注册[UkeyAuthExtensionAbility](../../reference/apis-device-certificate-kit/js-apis-UkeyAuthExtensionAbility.md#ukeyauthextensionability)作为自定义认证UI，开发者继承后自行实现UI布局与交互逻辑。该方式支持两种拉起路径：一种由上层应用拉起，依赖调用方持有上下文信息；另一种由UKey驱动应用主动拉起，不依赖上层应用持有上下文信息。
+
+- 数量限制：同一resourceId字段对应的资源，仅支持关联一种类型的定制化认证UI（UIAbility或UkeyAuthExtensionAbility），不可同时注册两种类型。1个CryptoExtensionAbility最多关联**10个**自定义认证UI，超出时registerProvider返回HUKS_ERR_CODE_EXCEED_LIMIT。
+- 字段说明：在注册密钥管理扩展时同步注册对应的定制化认证UI弹窗，通过[HUKS_EXT_CRYPTO_TAG_ABILITY_INFO](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag)传入JSON字符串，其中abilityName字段对应module.json5中name字段，最大长度为127字节，index字段对应resourceId，最大长度为512字节，用于将定制化认证UI路由到具体资源。
+- 典型场景：自定义PIN输入框、自定义证书选择界面、自定义用户确认对话框等。
+
+两种方式的差异如下：
+
+| 维度 | UIAbility（26.0.0+） | UkeyAuthExtensionAbility（26.0.1+） |
+| --- | --- | --- |
+| 实现方式 | 开发者自实现UIAbility。 | 开发者继承UkeyAuthExtensionAbility自实现。 |
+| abilityType | 0（或不传，默认按UIAbility处理） | 1 |
+| 拉起方 | 上层应用。 | 上层应用或UKey驱动应用。 |
+| 拉起接口 | [openUkeyAuthDialog()](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenukeyauthdialog22) | [openUkeyAuthDialog()](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenukeyauthdialog22)或[openAuthDialogForUkeyProvider()](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthdialogforukeyprovider) |
+| 上下文依赖 | 依赖调用方持有上下文信息。 | 依赖上下文（上层应用拉起）或不依赖上下文（UKey驱动应用拉起）。 |
+| 弹窗行为 | 普通应用窗口，支持前后台切换，可被切到后台。 | 模态系统弹窗，在用户完成交互前整个系统进入模态状态，无法切到后台或关闭。 |
 
 ## 核心能力实现
 

@@ -527,6 +527,7 @@ onErrorReceive(callback: Callback\<OnErrorReceiveEvent\>)
             if (event) {
               console.info('getErrorInfo:' + event.error.getErrorInfo());
               console.info('getErrorCode:' + event.error.getErrorCode());
+              console.info('getCustomErrorCode:' + event.error.getCustomErrorCode());
               console.info('url:' + event.request.getRequestUrl());
               console.info('isMainFrame:' + event.request.isMainFrame());
               console.info('isRedirect:' + event.request.isRedirect());

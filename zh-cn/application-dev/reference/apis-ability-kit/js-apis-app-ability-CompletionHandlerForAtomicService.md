@@ -95,7 +95,7 @@ export default class EntryAbility extends UIAbility {
         hilog.info(0x0000, 'testTag', `appId:${appId}`);
       },
       onAtomicServiceRequestFailure(appId: string, failureCode: FailureCode, failureMessage: string) {
-        hilog.info(0x0000, 'testTag', `appId:${appId}, failureCode:${failureCode}, failureMessage:${failureMessage}`);
+        hilog.error(0x0000, 'testTag', `appId:${appId}, failureCode:${failureCode}, failureMessage:${failureMessage}`);
       }
     };
     let options: AtomicServiceOptions = {

@@ -87,7 +87,7 @@ struct PagePageAbilitySecond {
     }
     let context = featureAbility.getContext();
     context.requestPermissionsFromUser(requestPermissions, 1, (error, data) => {
-      hilog.info(domain, TAG, 'error:' + error.message + ',data:' + JSON.stringify(data));
+      hilog.error(domain, TAG, 'error:' + error.message + ',data:' + JSON.stringify(data));
       hilog.info(domain, TAG, 'data requestCode:' + data.requestCode);
       hilog.info(domain, TAG, 'data permissions:' + data.permissions);
       hilog.info(domain, TAG, 'data authResults:' + data.authResults);
@@ -128,7 +128,7 @@ struct PagePageAbilitySecond {
       if (typeof dmClass === 'object' && dmClass !== null) {
         let list = dmClass.getAvailableDeviceListSync();
         if (typeof (list) == undefined || list.length == 0) {
-          hilog.info(domain, TAG, 'EntryAbility onButtonClick getRemoteDeviceId err: list is null');
+          hilog.error(domain, TAG, 'EntryAbility onButtonClick getRemoteDeviceId err: list is null');
           return;
         }
         hilog.info(domain, TAG, `EntryAbility onButtonClick getRemoteDeviceId success[${list.length}]:` + JSON.stringify(list[0]));
@@ -139,10 +139,10 @@ struct PagePageAbilitySecond {
           message: this.deviceID
         });
       } else {
-        hilog.info(domain, TAG, 'EntryAbility onButtonClick getRemoteDeviceId err: dmClass is null');
+        hilog.error(domain, TAG, 'EntryAbility onButtonClick getRemoteDeviceId err: dmClass is null');
       }
     } catch (error) {
-      hilog.info(domain, TAG, `getRemoteDeviceId error, error=${error}, message=${error.message}`);
+      hilog.error(domain, TAG, `getRemoteDeviceId error, error=${error}, message=${error.message}`);
     }
   }
 

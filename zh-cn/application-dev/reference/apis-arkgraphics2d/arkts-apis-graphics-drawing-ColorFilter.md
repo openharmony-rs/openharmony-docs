@@ -222,7 +222,7 @@ static createMatrixColorFilter(matrix: Array\<number>): ColorFilter
 
 | 类型                        | 说明               |
 | --------------------------- | ------------------ |
-| [ColorFilter](arkts-apis-graphics-drawing-ColorFilter.md) | 返回颜色滤波器。 |
+| [ColorFilter](arkts-apis-graphics-drawing-ColorFilter.md) | 返回颜色滤波器。创建失败时返回undefined。 |
 
 **错误码：**
 
