@@ -1,12 +1,12 @@
-# Encoding with Preprocessing
+# Video Encoding Preprocessing
 
 <!--Kit: AVCodec Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @zhanghongran-->
+<!--Owner: @rchdlee-->
 <!--Designer: @dpy2650-->
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=45526eba67080b876eb51af31a33be43ae26f701 translatedAt=2026-07-13T13:19:20.788Z pushedAt=2026-07-21T12:11:27.919Z -->
+<!-- md-trans-meta sourceCommit=2e205e439bc0f41b94da84e35d75dd910dd5454c translatedAt=2026-10-22T04:11:20.498Z pushedAt=2026-10-22T13:40:44.193Z nl=1 -->
 
 Starting from API version 26.0.0, video encoders support preprocessing, including downsampling, cropping, and frame dropping.
 
@@ -22,6 +22,7 @@ Encoding preprocessing refers to the preprocessing capabilities executed by the 
 
 **Mutual exclusion rule**: Downsampling parameters and cropping parameters **cannot be used simultaneously**. Frame dropping can be **combined with** either downsampling or cropping.
 
+
 ### When to Use
 
 **Scenario 1: Low-Resolution Encoding Output**
@@ -35,9 +36,7 @@ Use downsampling to scale high-resolution input frames before encoding, producin
 **Scenario 3: ABR**
 
 - Normal network conditions: Disable frame dropping or use a low frame-dropping rate to maintain image quality.
-
 - Network congestion: Increase the frame-dropping rate dynamically by calling `SetParameter` to reduce the output frame rate and save bandwidth.
-
 - Network recovery: Set the frame-dropping target to `0.00` to disable frame dropping.
 
 ### Constraints
@@ -64,15 +63,10 @@ Use downsampling to scale high-resolution input frames before encoding, producin
 **Cropping Constraints**
 
 Coordinate system description:
-
 - `(left, top)` is the coordinate of the upper-left corner of the cropping rectangle.
-
 - `(right, bottom)` is the coordinate of the lower-right corner of the cropping rectangle.
-
 - Row and column indexes start from **0**.
-
 - **Cropping area width = right - left + 1**
-
 - **Cropping area height = bottom - top + 1**
 
 | No. | Constraint Rule |
@@ -131,7 +125,6 @@ The workflow for encoding with pre-processing is the same as that for a regular 
 ### Creating an Encoder with Preprocessing Support
 
 Before creating an encoder with preprocessing support, you are advised to check whether the current encoder supports the required preprocessing features through the capability query API:
-
 ```c++
 const char *mime = OH_AVCODEC_MIMETYPE_VIDEO_AVC;
 
@@ -228,7 +221,6 @@ if (ret != AV_ERR_OK || window == nullptr) {
 > - For the one-input dual-output scenario, the Surface needs to be obtained only once (the primary and secondary encoders share the same input source).
 
 ### Preparing, Starting, and Writing Encoded Images
-
 For details, see steps 7, 8, and 10 in [Surface Mode](video-encoding.md#surface-mode) of video encoding.
 
 ### (Optional) Dynamically Adjusting at Runtime
@@ -264,11 +256,9 @@ void AdjustDownsampling(OH_AVCodec *enc, int newWidth, int newHeight)
     OH_AVFormat_Destroy(param);
 }
 ```
-
 Other encoder parameters can also be updated dynamically. For details, see step 9 in [Surface Mode](video-encoding.md#surface-mode) of video encoding.
 
 ### Notifying End of Stream, Releasing Output Buffers, and Destroying the Encoder
-
 The steps are the same as those for a regular encoder. For details, see steps 12, 13, and 17 in [Surface Mode](video-encoding.md#surface-mode) of video encoding.
 
 ## Query via GetInputDescription
@@ -289,3 +279,6 @@ if (inputDesc != nullptr) {
     }
 }
 ```
+
+
+

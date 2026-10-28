@@ -1,3 +1,11 @@
+---
+kits: ["Media Kit / 媒体服务"]
+description: "介绍如何使用AVScreenCaptureRecorder实现屏幕录制并写入文件，涵盖音视频采集参数配置、录屏启停及资源释放等全流程，适用于屏幕录制并生成文件分享的场景。"
+keywords: [AVScreenCaptureRecorder, AVScreenCaptureRecorderConfig, 录屏写文件]
+doctype: guide
+status: active
+---
+
 # 使用AVScreenCaptureRecorder录屏写文件(ArkTS)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->

@@ -5,7 +5,7 @@
 <!--Designer: @hao-liangfei-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=5c8a6d5ce15406865f1f18928a4452d8d491334f translatedAt=2026-09-20T02:28:50.606Z pushedAt=2026-09-20T02:58:12.718Z -->
+<!-- md-trans-meta sourceCommit=d2da5b49a40bf13cd0859a784a35f0b0e97bc829 translatedAt=2026-10-22T03:41:12.484Z pushedAt=2026-10-22T04:13:31.988Z nl=1 -->
 
 In the scenario where multiple audio streams are concurrently playing, the system has preset a default [audio focus strategy](audio-playback-concurrency.md#audio-focus-strategy) for unified audio focus management across all audio streams (including playback and recording).
 
@@ -113,7 +113,7 @@ The audio session deactivation event (AudioSessionDeactivatedEvent) contains the
    When activating the AudioSession, you must specify an [Audio Session Strategy](#audio-session-strategy). The strategy contains the **concurrencyMode** parameter, which is of the [AudioConcurrencyMode](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audioconcurrencymode12) type and is used to declare the audio concurrency strategy.
 
    <!-- @[activate_audio_session_v1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
    import { audio } from '@kit.AudioKit';
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -123,7 +123,7 @@ The audio session deactivation event (AudioSessionDeactivatedEvent) contains the
      let strategy: audio.AudioSessionStrategy = {
        concurrencyMode: audio.AudioConcurrencyMode.CONCURRENCY_MIX_WITH_OTHERS
      };
-
+   
      // Activate the audio session.
      audioSessionManager.activateAudioSession(strategy).then(() => {
        console.info('Succeeded in activating audio session.');
@@ -139,7 +139,7 @@ The audio session deactivation event (AudioSessionDeactivatedEvent) contains the
    You can call [isAudioSessionActivated](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#isaudiosessionactivated12) to check whether the audio session of the current app is activated.
 
    <!-- @[is_audio_session_activated](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
    // Query whether the audio session is activated.
    let isActivated = audioSessionManager.isAudioSessionActivated();
@@ -156,7 +156,7 @@ The audio session deactivation event (AudioSessionDeactivatedEvent) contains the
    You can call [off('audioSessionDeactivated')](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#offaudiosessiondeactivated12) to cancel listening for audio session deactivation events.
 
    <!-- @[on_audio_session_deactivated](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
    import { audio } from '@kit.AudioKit';
    // ...
@@ -177,12 +177,12 @@ The audio session deactivation event (AudioSessionDeactivatedEvent) contains the
    > After the AudioSession is deactivated, new audio streams started by the app will follow the default focus strategy.
 
    <!-- @[deactivate_audio_session_v1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
    import { BusinessError } from '@kit.BasicServicesKit';
    // ...
    
-    // Deactivate the audio session.
+     // Deactivate the audio session.
      // ...
      audioSessionManager.deactivateAudioSession().then(() => {
        console.info('Succeeded in deactivating audio session.');
@@ -275,11 +275,15 @@ Typical usage scenarios are as follows:
 
 When an audio session holds focus in a unified manner, the system provides three audio session scenes. Before activating the AudioSession, you must call [setAudioSessionScene](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setaudiosessionscene20) to set the corresponding audio session scene. When the AudioSession is activated, the system requests the corresponding audio focus based on the audio session scene selected by the app.
 
-| Name                   | Value | Description      |
-| :--------------------- |:--|:--------|
-| AUDIO_SESSION_SCENE_MEDIA | 0 | Media audio session.     |
-| AUDIO_SESSION_SCENE_GAME | 1 | Game audio session.     |
-| AUDIO_SESSION_SCENE_VOICE_COMMUNICATION  | 2 | VoIP call audio session. |
+| Name                   | Value | Matching StreamUsage | Description | Applicable Scenario      |
+| :--------------------- |:--|:---------------|:--------|:----------|
+| AUDIO_SESSION_SCENE_MEDIA | 0 | STREAM_USAGE_MUSIC, STREAM_USAGE_MOVIE, STREAM_USAGE_AUDIOBOOK | Media audio session.     | Scenarios where focus is frequently requested and released (for example, swiping through multiple short videos), and media playback scenarios where you do not hold an AudioRenderer object but need to listen for focus changes. |
+| AUDIO_SESSION_SCENE_GAME | 1 | STREAM_USAGE_GAME | Game audio session.     | Game audio scenarios such as in-game background music and voice-overs. |
+| AUDIO_SESSION_SCENE_VOICE_COMMUNICATION  | 2 | STREAM_USAGE_RINGTONE, STREAM_USAGE_VOICE_COMMUNICATION, STREAM_USAGE_VIDEO_COMMUNICATION | VoIP call audio session. | Call scenarios such as VoIP calls where a ringtone stream must be started simultaneously. |
+
+> **NOTE**
+>
+> If you do not use an audio session scene (AudioSessionScene) that matches the audio stream type (StreamUsage), the behavior of the audio stream may be inconsistent with expectations, causing the focus strategy to fail or playback to be abnormal.
 
 ### Listening for AudioSession Focus and State Change Events
 
@@ -310,7 +314,7 @@ You can call [on('audioSessionStateChanged')](../../reference/apis-audio-kit/ark
    > - If the app already has a running audio playback stream when activating the AudioSession, the system releases the focus held by that playback stream and the AudioSession manages it uniformly.
 
    <!-- @[activate_audio_session_v2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
    import { audio } from '@kit.AudioKit';
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -340,7 +344,7 @@ You can call [on('audioSessionStateChanged')](../../reference/apis-audio-kit/ark
    You can call [isAudioSessionActivated](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#isaudiosessionactivated12) to check whether the audio session of the current app is activated.
 
    <!-- @[is_audio_session_activated](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
    // Query whether the audio session is activated.
    let isActivated = audioSessionManager.isAudioSessionActivated();
@@ -351,7 +355,7 @@ You can call [on('audioSessionStateChanged')](../../reference/apis-audio-kit/ark
    You can call [on('audioSessionStateChanged')](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#onaudiosessionstatechanged20) to listen for AudioSession focus and state changes.
 
    <!-- @[on_audio_session_state_changed](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) --> 
-
+   
    ``` TypeScript
    import { audio } from '@kit.AudioKit';
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -383,6 +387,7 @@ You can call [on('audioSessionStateChanged')](../../reference/apis-audio-kit/ark
            break;
          case audio.AudioSessionStateChangeHint.AUDIO_SESSION_STATE_CHANGE_HINT_UNDUCK:
            // This branch indicates that the system has restored the volume of all playing audio streams of the application to normal.
+           break;
          case audio.AudioSessionStateChangeHint.AUDIO_SESSION_STATE_CHANGE_HINT_MUTE_SUGGESTION:
            // This branch indicates that another application starts playing non-mixing audio, and the system can decide whether to mute.
            break;
@@ -412,7 +417,7 @@ You can call [on('audioSessionStateChanged')](../../reference/apis-audio-kit/ark
    > When the AudioSession is deactivated, the system releases the focus requested by the AudioSession and stops all audio streams being played by the app.
 
    <!-- @[deactivate_audio_session_v2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
    import { BusinessError } from '@kit.BasicServicesKit';
    // ...
@@ -482,6 +487,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
         break;
       case audio.AudioSessionStateChangeHint.AUDIO_SESSION_STATE_CHANGE_HINT_UNDUCK:
         // This branch indicates that the system has restored the volume of all playing audio streams of the application to normal.
+        break;
       case audio.AudioSessionStateChangeHint.AUDIO_SESSION_STATE_CHANGE_HINT_MUTE_SUGGESTION:
         // This branch indicates that another application starts playing non-mixing audio, and the system can decide whether to mute it.
         break;

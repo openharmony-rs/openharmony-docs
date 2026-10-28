@@ -108,7 +108,7 @@ Stub端用于处理远端数据请求的回调函数。当Proxy端通过[OH_IPCR
 
 | 类型 | 说明 |
 | ---- | ---- |
-| int | 成功返回[OH_IPC_ErrorCode#OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode)；<br> 否则返回用户自定义错误码或系统错误码，自定义错误码范围：[1909001, 1909999]；<br> 如果用户自定义错误码超出范围，将返回[OH_IPC_ErrorCode#OH_IPC_INVALID_USER_ERROR_CODE](capi-ipc-error-code-h.md#oh_ipc_errorcode)。 |
+| int | 成功返回[OH_IPC_ErrorCode#OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode)；<br> 否则返回用户自定义错误码或系统错误码，自定义错误码范围：[1909000, 1909999]；<br> 如果用户自定义错误码超出范围，将返回[OH_IPC_ErrorCode#OH_IPC_INVALID_USER_ERROR_CODE](capi-ipc-error-code-h.md#oh_ipc_errorcode)。 |
 
 ### OH_OnRemoteDestroyCallback()
 
@@ -263,7 +263,7 @@ IPC消息发送函数，用于Proxy端向远端Stub发送IPC消息请求，支�
 
 | 类型 | 说明 |
 | ---- | ---- |
-| int | 发送成功返回[OH_IPC_ErrorCode#OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode)；<br> 参数不合法时返回[OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode)；<br> 远端OHIPCRemoteStub对象死亡返回[OH_IPC_ErrorCode#OH_IPC_DEAD_REMOTE_OBJECT](capi-ipc-error-code-h.md#oh_ipc_errorcode)；<br> code超出范围返回[OH_IPC_ErrorCode#OH_IPC_CODE_OUT_OF_RANGE](capi-ipc-error-code-h.md#oh_ipc_errorcode)；<br> 其它返回[OH_IPC_ErrorCode#OH_IPC_INNER_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode)或用户自定义错误码（范围：[1909001, 1909999]）。 |
+| int | 发送成功返回[OH_IPC_ErrorCode#OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode)；<br> 参数不合法时返回[OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode)；<br> 远端OHIPCRemoteStub对象死亡返回[OH_IPC_ErrorCode#OH_IPC_DEAD_REMOTE_OBJECT](capi-ipc-error-code-h.md#oh_ipc_errorcode)；<br> code超出范围返回[OH_IPC_ErrorCode#OH_IPC_CODE_OUT_OF_RANGE](capi-ipc-error-code-h.md#oh_ipc_errorcode)；<br> 其它返回[OH_IPC_ErrorCode#OH_IPC_INNER_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode)或用户自定义错误码（范围：[1909000, 1909999]）。 |
 
 ### OH_IPCRemoteProxy_GetInterfaceDescriptor()
 

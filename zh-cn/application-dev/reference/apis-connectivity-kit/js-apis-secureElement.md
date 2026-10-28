@@ -411,7 +411,7 @@ let seService : omapi.SEService;
 
 try {
     let version = seService.getVersion();
-    hilog.error(0x0000, 'testTag', 'version %{public}s', JSON.stringify(version));
+    hilog.info(0x0000, 'testTag', 'version %{public}s', JSON.stringify(version));
 } catch (error) {
     hilog.error(0x0000, 'testTag', 'getVersion error %{public}s', JSON.stringify(error));
 }

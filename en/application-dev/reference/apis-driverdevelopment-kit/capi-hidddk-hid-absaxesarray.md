@@ -5,7 +5,6 @@
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=a30d46aa87725f954a8669c5a6106a0f5fa2de6d translatedAt=2026-06-22T10:47:40.065Z pushedAt=2026-06-22T11:21:11.374Z -->
 
 ```c
 typedef struct Hid_AbsAxesArray {...} Hid_AbsAxesArray
@@ -13,7 +12,7 @@ typedef struct Hid_AbsAxesArray {...} Hid_AbsAxesArray
 
 ## Overview
 
-Defines an array of absolute coordinates.
+Defines an array of absolute coordinate attributes, which stores attributes about multiple absolute coordinate axes of an HID device. These attributes can be used to describe coordinate features of input devices such as touchscreens and game analog sticks. This struct is applicable to driver development scenarios that require precise reading and processing of multi-dimensional input data, for example, recording axis position data in input devices such as game controllers and touchpads.
 
 **Since**: 11
 
@@ -27,5 +26,5 @@ Defines an array of absolute coordinates.
 
 | Name| Description|
 | -- | -- |
-| Hid_AbsAxes* hidAbsAxes | Array of absolute coordinates.|
-| uint16_t length | Valid length of an array.|
+| [Hid_AbsAxes](capi-hid-ddk-types-h.md#hid_absaxes)* hidAbsAxes | Pointer to the first element of the array of absolute coordinate codes. This parameter must be used together with **length**. The pointer must be valid and cannot be null.|
+| uint16_t length | Valid length of the array, indicating the number of valid elements to which the **hidAbsAxes** pointer points. The value range is [0, 65535].|

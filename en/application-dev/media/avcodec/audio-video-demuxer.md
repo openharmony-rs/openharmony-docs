@@ -2,16 +2,17 @@
 
 <!--Kit: AVCodec Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @zhanghongran-->
+<!--Owner: @yangjunhui10; @hanzhengshi-->
 <!--Designer: @dpy2650--->
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=d8da44d9389782cf4839d2e77f3518c20aa1b228 translatedAt=2026-10-22T03:52:07.391Z pushedAt=2026-10-22T12:22:28.419Z nl=1 -->
 
 You can call native APIs to demultiplex media data. The demultiplexing involves extracting media samples such as audio, video, and subtitles from bit stream data, and obtaining information related to Digital Rights Management (DRM).
 
 Currently, two data input types are supported: remote connection (over HTTP) and File Descriptor (FD).
 
-For details about the supported demultiplexing formats, see [AVCodec Supported Formats](avcodec-support-formats.md#media-data-demultiplexing).
+For the currently supported demultiplexing formats, see [AVCodec Supported Formats](avcodec-support-formats.md#media-data-demultiplexing).
 
 **When to Use**
 
@@ -33,9 +34,9 @@ Read [AVDemuxer](../../reference/apis-avcodec-kit/capi-avdemuxer.md) and [AVSour
 
 > **NOTE**
 >
-> - To call the demuxer APIs to parse a network playback path, declare the ohos.permission.INTERNET permission by following the instructions provided in [Declaring Permissions](../../security/AccessToken/declare-permissions.md).
-> - To call the demuxer APIs to write a local file, request the ohos.permission.READ_MEDIA permission by following the instructions provided in [Requesting User Authorization](../../security/AccessToken/request-user-authorization.md).
-> - You can also use **ResourceManager.getRawFd** to obtain the FD of a file packed in the HAP file. For details, see [ResourceManager API Reference](../../reference/apis-localization-kit/js-apis-resource-manager.md#getrawfd9).
+> - To use the demultiplexing capability to parse a network playback path, you need to [declare the permission](../../security/AccessToken/declare-permissions.md): `ohos.permission.INTERNET`.
+> - To obtain the FD of a media library resource, see [Selecting Media Library Resources Using Picker](../medialibrary/photoAccessHelper-photoviewpicker.md).
+> - If you use `ResourceManager.getRawFd` to open the HAP resource file descriptor, see [getRawFd](../../reference/apis-localization-kit/js-apis-resource-manager.md#getrawfd9).
 
 ### Linking the Dynamic Libraries in the CMake Script
 
@@ -82,9 +83,9 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
       printf("get stat failed");
       return;
    }
-   // Note: The offset (start offset of the file) and fileSize (file size) must match the file to be parsed.
-   // If fd points to a single resource file, set offset to 0 and fileSize to the size of the resource file.
-   // If fd points to multiple consecutive resource files (for example, multiple MP3 binary files), set offset and fileSize based on the actual offset and size of the resource file to be parsed.
+   // Note: offset (file start offset) and fileSize (file size) must match the file to be demuxed.
+   // When fd points to a single resource file, offset is 0 and fileSize is the resource file size.
+   // When fd points to multiple consecutively concatenated resource files (for example, multiple concatenated MP3 binaries), set offset and fileSize based on the actual offset and size of the file to be demuxed.
    OH_AVSource *source = OH_AVSource_CreateWithFD(fd, 0, fileSize);
    if (source == nullptr) {
       printf("create source failed");
@@ -92,10 +93,10 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
    }
    // (Optional) Create a source resource instance for the URI resource file.
    // OH_AVSource *source = OH_AVSource_CreateWithURI(uri);
-   
+
    // (Optional) Create a source resource instance for the custom data source. Before the operation, you must implement AVSourceReadAt.
    // Add g_filePath when OH_AVSource_CreateWithDataSource is used.
-   // g_filePath = filePath ;
+   // g_filePath = filePath;
    // OH_AVDataSource dataSource = {fileSize, AVSourceReadAt};
    // OH_AVSource *source = OH_AVSource_CreateWithDataSource(&dataSource);
    ```
@@ -109,36 +110,36 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
 
    ```c++
    static std::string g_filePath;
-   
+
    enum MediaDataSourceError : int32_t {
       SOURCE_ERROR_IO = -2,
       SOURCE_ERROR_EOF = -1
    };
-   
+
    int32_t AVSourceReadAt(OH_AVBuffer *data, int32_t length, int64_t pos)
    {
       if (data == nullptr) {
          printf("AVSourceReadAt : data is nullptr!\n");
          return MediaDataSourceError::SOURCE_ERROR_IO;
       }
-   
+
       std::ifstream infile(g_filePath, std::ofstream::binary);
       if (!infile.is_open()) {
          printf("AVSourceReadAt : open file failed! file:%s\n", g_filePath.c_str());
          return MediaDataSourceError::SOURCE_ERROR_IO; // Failed to open the file.
       }
-   
+
       infile.seekg(0, std::ios::end);
       int64_t fileSize = infile.tellg();
       if (pos >= fileSize) {
          printf("AVSourceReadAt : pos over or equals file size!\n");
          return MediaDataSourceError::SOURCE_ERROR_EOF; // pos is already at the end of the file and cannot be read.
       }
-   
+
       if (pos + length > fileSize) {
          length of length = fileSize - pos; // When the sum of pos and length exceeds the file size, the data from pos to the end of the file is read.
       }
-   
+
       infile.seekg(pos, std::ios::beg);
       if (length <= 0) {
          printf("AVSourceReadAt : read length less than zero!\n");
@@ -147,11 +148,11 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
       char* buffer = new char[length];
       infile.read(buffer, length);
       infile.close();
-   
+
       memcpy(reinterpret_cast<char *>(OH_AVBuffer_GetAddr(data)),
          buffer, length);
       delete[] buffer;
-   
+
       return length;
    }
    ```
@@ -164,7 +165,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
       return;
    }
    ```
-4. (Optional) Register a [callback to obtain the media key system information](../../reference/apis-avcodec-kit/capi-native-avdemuxer-h.md#demuxer_mediakeysysteminfocallback). If the stream is not a DRM stream or the [media key system information](../../reference/apis-drm-kit/capi-drm-drm-mediakeysysteminfo.md) has been obtained, you can skip this step.
+4. Register a DRM information listener. For the API reference, see [Demuxer_MediaKeySystemInfoCallback()](../../reference/apis-avcodec-kit/capi-native-avdemuxer-h.md#demuxer_mediakeysysteminfocallback) (optional). If the bitstream is not DRM-protected or the DRM information has already been obtained, you can skip this step. For details about DRM information, see [DRM_MediaKeySystemInfo](../../reference/apis-drm-kit/capi-drm-drm-mediakeysysteminfo.md).
 
    In the API for setting DRM information listeners, the callback function can return a demuxer instance. It is suitable for the scenario where multiple demuxer instances are used.
 
@@ -176,7 +177,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
    }
 
    Demuxer_MediaKeySystemInfoCallback callback = &OnDrmInfoChangedWithObj;
-   Drm_ErrCode ret = OH_AVDemuxer_SetDemuxerMediaKeySystemInfoCallback(demuxer, callback);
+   OH_AVErrCode ret = OH_AVDemuxer_SetDemuxerMediaKeySystemInfoCallback(demuxer, callback);
    ```
    After the callback is invoked, you can call the API to proactively obtain the media key system information (UUID and corresponding PSSH).
 
@@ -184,7 +185,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
    DRM_MediaKeySystemInfo mediaKeySystemInfo;
    OH_AVDemuxer_GetMediaKeySystemInfo(demuxer, &mediaKeySystemInfo);
    ```
-   After obtaining and parsing DRM information, create [MediaKeySystem and MediaKeySession](../drm/drm-c-dev-guide.md) instances of the corresponding DRM scheme to obtain a media key. If required, set the audio decryption configuration by following step 4 in [Audio Decoding](audio-decoding.md#how-to-develop), and set the video decryption configuration by following step 5 in [Surface Mode in Video Decoding](video-decoding.md#surface-mode) or step 4 in [Buffer Mode in Video Decoding](video-decoding.md#buffer-mode).
+   After obtaining and parsing DRM information, create [MediaKeySystem and MediaKeySession](../drm/drm-c-dev-guide.md) instances of the corresponding DRM scheme to obtain DRM licenses. If required, set the audio decryption configuration by following step 4 in [Audio Decoding](audio-decoding.md#how-to-develop), and set the video decryption configuration by following step 5 in [Surface Mode in Video Decoding](video-decoding.md#surface-mode) or step 4 in [Buffer Mode in Video Decoding](video-decoding.md#buffer-mode).
 
 5. Obtain file information.
 
@@ -264,7 +265,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
          }
          int32_t* referenceIds;
          size_t referenceIdsCount;
-         if (!OH_AVFormat_GetIntBuffer(trackFormat, OH_MD_KEY_TRACK_REFERENCE_TYPE, &referenceIds, &referenceIdsCount)) {
+         if (!OH_AVFormat_GetIntBuffer(trackFormat, OH_MD_KEY_REFERENCE_TRACK_IDS, &referenceIds, &referenceIdsCount)) {
             printf("get reference track ids from auxiliary track failed");
          }
          // Process the track reference relationship based on the auxiliary track type.
@@ -421,11 +422,12 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
 ## Appendix
 ### Supported File-Level Attributes
 
-> **NOTE**<br>
-> - Attribute data can be obtained only when the file is parsed normally. If the file information is incorrect or missing, the parsing is abnormal and the corresponding data cannot be obtained.
-> - Currently, data in the GBK character set is converted to UTF-8. If other character sets need to be converted to UTF-8, you must handle the conversion. For details, see [icu4c](../../reference/native-lib/icu4c.md).
-> - Starting from API version 23, some OGG format resources, such as **OH_MD_KEY_TITLE, OH_MD_KEY_ARTIST** and **OH_MD_KEY_ALBUM**, are stored in and can be retrieved from track attributes.
-> - For details about the data type and value range, see [Media Data Key-Value Pairs](../../reference/apis-avcodec-kit/capi-codecbase.md#media-data-key-value-pairs).
+> **NOTE**
+>
+> - Attribute data can be obtained only during normal demuxing. If the file information is incorrect or missing, demuxing will be abnormal and data cannot be obtained.
+> - Data in the GBK character set is converted to UTF-8 before being provided. To convert data in other character sets to UTF-8, you need to perform the conversion yourself. For details, see [icu4c](../../reference/native-lib/icu4c.md).
+> - Since API version 23, for some OGG resources, attributes such as OH_MD_KEY_TITLE, OH_MD_KEY_ARTIST, and OH_MD_KEY_ALBUM are stored in track attributes and can be obtained from track-level attributes.
+> - For data types and detailed value ranges, see [Media Data Key-Value Pairs](../../reference/apis-avcodec-kit/capi-codecbase.md#media-data-key-value-pairs).
 
 **Table 1** Supported file-level attributes
 | Name| Description|
@@ -447,11 +449,12 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
 
 ### Supported Track-Level Attributes
 
-> **NOTE**<br>
-> Attribute data can be obtained only when the file is parsed normally. If the file information is incorrect or missing, the parsing is abnormal and the corresponding data cannot be obtained.
-> The supported attributes of the auxiliary track must match the actual media type (audio or video).
+> **NOTE**
+>
+> Attribute data can be obtained only during normal demuxing. If the file information is incorrect or missing, demuxing will be abnormal and data cannot be obtained.
+> The attribute range of auxiliary tracks is consistent with the actual media type (audio or video).
 > 
-> For details about the data type and value range, see [Media Data Key-Value Pairs](../../reference/apis-avcodec-kit/capi-codecbase.md#media-data-key-value-pairs).
+> For data types and detailed value ranges, see [Media Data Key-Value Pairs](../../reference/apis-avcodec-kit/capi-codecbase.md#media-data-key-value-pairs).
 
 **Table 2** Supported track-level attributes
 | Name| Description| Supported by Video Tracks| Supported by Audio Tracks| Supported by Subtitle Tracks| Supported by Auxiliary Tracks|

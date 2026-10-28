@@ -1386,6 +1386,70 @@ struct Index {
 }
 ```
 
+## ApplicationContext.setFont
+
+setFont(font: string, enableAnimation: boolean): void
+
+设置应用的字体。仅支持在主线程调用。
+
+> **说明：**
+>
+> 调用该接口前，需要确保窗口已完成创建、且UIAbility对应的页面已完成加载，即在[onWindowStageCreate()](js-apis-app-ability-uiAbility.md#onwindowstagecreate)生命周期中通过[loadContent](../apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)方法加载页面之后调用。
+
+**起始版本：** 26.1.0
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| font | string | 是 | 字体，可以通过[UIContext.registerFont](../apis-arkui/arkts-apis-uicontext-font.md#registerfont)方法进行注册使用。 |
+| enableAnimation | boolean | 是 | 本次设置是否使用动画。true表示使用动画，false表示不使用动画。 |
+
+**错误码：**
+
+以下错误码详细介绍请参考[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 16000011 | The context does not exist. |
+
+**示例：**
+
+```ts
+import { common } from '@kit.AbilityKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+  context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+
+  aboutToAppear() {
+    this.getUIContext().getFont().registerFont({
+      familyName: 'fontName',
+      familySrc: $rawfile('font/medium.ttf') // 'font/medium.ttf'仅作为示例，实际使用时请替换为真实的字体资源文件。
+    });
+
+    // 设置应用使用注册的字体，不使用动画
+    this.context.getApplicationContext().setFont('fontName', false);
+  }
+
+  build() {
+    Row() {
+      Column() {
+        Text(this.message)
+          .fontSize(50)
+          .fontWeight(50)
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
 ## ApplicationContext.setSupportedProcessCache<sup>12+</sup>
 
 setSupportedProcessCache(isSupported : boolean): void

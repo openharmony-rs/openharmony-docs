@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍Node-API扩展能力接口，提供在Node-API模块中与ArkTS进行更灵活交互和定制的接口，支持创建自定义ArkTS对象等高级场景开发。"
+keywords: [Node-API, 扩展能力, 自定义对象, napi_create_object, ArkTS交互, 接口扩展, 高级开发]
+doctype: guide
+status: active
+---
+
 # 使用Node-API进行扩展能力功能开发
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->

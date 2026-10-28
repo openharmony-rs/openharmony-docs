@@ -187,11 +187,11 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 - 获取相册管理模块photoAccessHelper实例。
 - [申请相册管理模块功能相关权限](photoAccessHelper-preparation.md#申请相册管理模块功能相关权限)'ohos.permission.WRITE_IMAGEVIDEO'和'ohos.permission.READ_IMAGEVIDEO'。
 
-下面以重命名标题为'oldTestPhoto'的图片为例。
+下面以重命名标题为'test'的图片为例。
 
 **开发步骤**
 
-1. 建立检索条件，获取标题为'oldTestPhoto'的图片资源。
+1. 建立检索条件，获取标题为'test'的图片资源。
 2. 调用[PhotoAccessHelper.getAssets](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getassets-1)接口获取目标图片资源。
 3. 调用[FetchResult.getFirstObject](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md#getfirstobject-1)接口获取要重命名的图片对象。
 4. 调用[MediaAssetChangeRequest.setTitle](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAssetChangeRequest.md#settitle11)接口将图片重命名。

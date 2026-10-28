@@ -5,7 +5,6 @@
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=a30d46aa87725f954a8669c5a6106a0f5fa2de6d translatedAt=2026-06-22T10:48:11.329Z pushedAt=2026-06-22T11:21:11.386Z -->
 
 ```c
 typedef struct Hid_RelAxesArray {...} Hid_RelAxesArray
@@ -13,7 +12,7 @@ typedef struct Hid_RelAxesArray {...} Hid_RelAxesArray
 
 ## Overview
 
-Defines an array of relative coordinates.
+Defines an array of relative coordinate attribute codes, which stores the relative coordinate attributes supported by an HID device.
 
 **Since**: 11
 
@@ -27,5 +26,5 @@ Defines an array of relative coordinates.
 
 | Name| Description|
 | -- | -- |
-| Hid_RelAxes* hidRelAxes | Array of relative coordinates.|
-| uint16_t length | Valid length of an array.|
+| [Hid_RelAxes](capi-hid-ddk-types-h.md#hid_relaxes)* hidRelAxes | Pointer to the array of relative coordinate attribute codes, which points to the array pre-allocated by the caller. The pointer cannot be null. The array size must be greater than or equal to the value of length.|
+| uint16_t length | Valid length of the array, which cannot exceed the actual length of the **hidRelAxes** array.|

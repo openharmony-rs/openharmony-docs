@@ -5,6 +5,7 @@
 <!--Designer: @wh_qwe-->
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=8274e2d7a391483e6c7c9de842768baf61c0596c translatedAt=2026-10-19T01:24:14.981Z pushedAt=2026-10-19T07:35:01.623Z -->
 
 Nowadays, low-temperature polycrystalline oxide (LTPO) screens are widely used. This type of screen supports switching between frame rates at multiple levels.
 

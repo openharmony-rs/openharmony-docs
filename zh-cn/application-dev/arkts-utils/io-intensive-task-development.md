@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "提供I/O密集型任务的开发指导：频繁磁盘读写、网络通信等任务的关键在于I/O效率，以频繁读写系统文件为例演示基于TaskPool的多线程并发处理，避免阻塞线程中的其他任务。"
+keywords: [I/O密集型任务, 文件读写, 磁盘IO, 网络通信, TaskPool, 多线程并发, I/O效率]
+doctype: guide
+status: active
+---
+
 # I/O密集型任务开发指导 (TaskPool)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->

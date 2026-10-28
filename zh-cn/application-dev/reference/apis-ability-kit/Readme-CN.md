@@ -104,6 +104,7 @@
       - [ProcessInfo](js-apis-inner-app-processInfo.md)
   - 通用能力的接口(推荐)<!--both-models-->
     - [@ohos.abilityAccessCtrl (程序访问控制管理)](js-apis-abilityAccessCtrl.md)
+    - [@ohos.abilityToolAccessCtrl (安全访问围栏服务)](js-apis-abilityToolAccessCtrl.md)
     - [@ohos.ability.screenLockFileManager (锁屏敏感数据管理)](js-apis-screenLockFileManager.md)
     - [@ohos.app.ability.abilityManager (Ability信息管理)](js-apis-app-ability-abilityManager.md)
     - [@ohos.app.ability.appManager (应用管理)](js-apis-app-ability-appManager.md)
@@ -128,6 +129,7 @@
     - [@ohos.app.agent.AgentExtensionAbility (智能体扩展组件)(系统接口)](js-apis-app-agent-agentExtensionAbility-sys.md)
     - [@ohos.app.agent.agentManager (Agent智能组件管理)(系统接口)](js-apis-app-agent-agentManager-sys.md)
     - [@ohos.app.agent.agentConstant (Agent常量)(系统接口)](js-apis-app-agent-agentConstant-sys.md)
+    - [@ohos.app.agent.taskManager (任务管理)(系统接口)](js-apis-app-agent-taskManager-sys.md)
     - [@ohos.app.ability.kioskManager (Kiosk模式管理)(系统接口)](js-apis-app-ability-kioskManager-sys.md)
     - [@ohos.app.ability.missionManager (missionManager)(系统接口)](js-apis-app-ability-missionManager-sys.md)
     - [@ohos.app.ability.quickFixManager (quickFixManager)(系统接口)](js-apis-app-ability-quickFixManager-sys.md)
@@ -391,6 +393,7 @@
   - [包管理快速修复命令的错误码](bm-quickfix-errorcode.md)
   - [访问控制错误码](errorcode-access-token.md)
   - [锁屏敏感数据管理错误码](errorcode-screenLockFileManager.md)
+  - [安全访问围栏服务错误码](errorcode-abilityToolAccessCtrl.md)
   <!--Del-->
   - [应用域名校验错误码](errorcode-appDomainVerify-sys.md)
   - [工具访问控制错误码](errorcode-abilityToolAccessCtrl-sys.md)

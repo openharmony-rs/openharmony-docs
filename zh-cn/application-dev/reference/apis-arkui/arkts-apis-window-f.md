@@ -376,7 +376,7 @@ shiftAppWindowFocus(sourceWindowId: number, targetWindowId: number): Promise&lt;
 
 目标窗口需确保具有获得焦点的能力（可通过[setWindowFocusable()](arkts-apis-window-Window.md#setwindowfocusable9)设置），并确保调用[showWindow()](arkts-apis-window-Window.md#showwindow9)成功且执行完毕。
 
-非[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)支持调用。[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)调用该接口不生效也不报错。
+非独立子窗支持调用。[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)调用该接口不生效也不报错。
 
 > **说明：**
 >
@@ -1285,6 +1285,71 @@ try {
   window.offApplicationFocusStateChange(); 
 } catch (exception) {
   console.error(`Failed to disable the listener for application focus state changes. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+## window.setWindowPosition
+
+setWindowPosition(list: Array&lt;WindowPositionParams&gt;): Promise&lt;void&gt;
+
+调整当前应用进程中一个或多个主窗口的Z序。支持的调整方式请见[WindowPosition](arkts-apis-window-e.md#windowposition)枚举。使用Promise异步回调。
+
+不支持调整位于[虚拟屏](../../displaymanager/display-terminology.md#虚拟屏)上的主窗口的Z序。
+
+**需要权限：** ohos.permission.WINDOW_TOPMOST（当设置主窗口置顶，或将处于置顶状态的主窗口取消置顶时需申请，非置顶状态的窗口设置取消置顶时则不需要该权限）
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**设备行为差异：** 该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+
+**参数：**
+
+| 参数名 | 类型                                                                                       | 必填 | 说明                                        |
+| ---- | --------------------------------------------------------------------------------------- | ---- | --------------------------------------------- |
+| list | Array&lt;[WindowPositionParams](arkts-apis-window-i.md#windowpositionparams)&gt; | 是   | 待调整的主窗口位置参数列表。该列表不能为空，且最大个数不能超过50个，列表个数超过50个时返回错误码1300016。|
+
+**返回值：**
+
+| 类型                | 说明                    |
+| -------------- | -------------------------- |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 201     | Permission verification failed. The application does not have the permission required to call the API. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window to be adjusted cannot be found: not created, has been destroyed or not belong to current process; 2. The target main window specified by insertAfter cannot be found: not created or has been destroyed. |
+| 1300003 | This window manager service works abnormally. |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only main windows are supported. |
+| 1300008 | The display device is abnormal. Possible cause: The window to be adjusted or the target main window specified by insertAfter is on a virtual screen. |
+| 1300016 | Parameter error. Possible cause: The windowPositions list exceeds the maximum size of 50. |
+
+**示例：**
+
+```ts
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let list: Array<window.WindowPositionParams> = [{
+  windowId: 1,
+  insertAfter: 2,
+}];
+try {
+  window.setWindowPosition(list).then(() => {
+    console.info('Succeeded in adjusting the window position.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to adjust the window position. Cause code: ${err.code}, message: ${err.message}`);
+  });
+} catch (err) {
+  console.error(`Failed to adjust the window position. Cause info: ${JSON.stringify(err)}`);
 }
 ```
 

@@ -115,6 +115,10 @@ TimeFormat枚举用于定义时间选择器的格式。
 
 DatePickerComponentResult定义日期时间选择器的选择结果，包含用户选择的年、月、日、时、分、秒信息，用于在onChange和onScrollStop回调中传递选择的具体日期时间值。
 
+> **说明：**
+>
+> 从API版本26.1.0开始，当[hideYear](#dateoptions)为true时，若用户选择“----”，year返回undefined；若选择具体年份，year为所选具体年份。农历模式下，若用户选择“----”，year同样返回undefined，返回的月、日为农历值；若选择具体年份，则依然返回对应年、月、日的公历值。当[hideYear](#dateoptions)为false时，年、月、日固定返回公历值。
+
 **起始版本：** 26.0.0
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
@@ -125,7 +129,7 @@ DatePickerComponentResult定义日期时间选择器的选择结果，包含用�
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| year | number | 否 | 是 | 所选日期的年份。 |
+| year | number | 否 | 是 | 所选日期的年份。取值限定为整数。<br>当[hideYear](#dateoptions)为true且用户选择“----”时，year返回undefined；当选择具体年份时，值为所选具体年份。 |
 | month | number | 否 | 是 | 所选日期的月份索引，从0开始，0表示1月，11表示12月。 |
 | day | number | 否 | 是 | 所选日期的日。 |
 | hour | number | 否 | 是 | 所选时间的小时部分。 |
@@ -143,10 +147,9 @@ CommonOptions定义日期时间选择器的通用选项。
 > - DatePickerComponent的文本字号根据显示的总列数变化，当列数大于等于6列时，字号为14vp，其他情况下为16vp，当组件宽度过窄时，可能出现文本显示截断的情况。
 > - 参数缺省或者设置为undefined时，均保持默认值。
 > - 在[DateOptions](#dateoptions)中设置start、end、selected时仅日期部分（年月日）设置生效，在[TimeOptions](#timeoptions)中设置start、end、selected时仅时间部分（时分秒）设置生效。系统会根据配置的displayMode和对应的Options类型，自动过滤Date对象的相应部分并应用约束。
+> - [extendSelected](#commonoptions)优先级高于[selected](#commonoptions)，从API版本26.1.0开始，当两者同时设置时，selected不生效。extendSelected支持传入[DatePickerComponentResult](#datepickercomponentresult)以回传上次选择结果，适用于跨组件重建恢复选择状态的场景（如页面跳转后恢复用户上次选择的日期时间）。
 
 **起始版本：** 26.0.0
-
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -154,13 +157,14 @@ CommonOptions定义日期时间选择器的通用选项。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| start | Date | 否 | 是 | 选择器的起始日期或时间。<br>默认值：Date('1970-01-01T00:00:00')<br>取值范围：\[Date('0001-01-01T00:00:00'), Date('9999-12-31T23:59:59')] <br>**说明：**<br>设置了start且为有效值的场景下，API版本26.2.0之前loop不生效，从API版本26.2.0开始，loop对非边界列生效，对边界列不生效。|
-| end | Date | 否 | 是 | 选择器的结束日期或时间。<br>默认值：Date('2100-12-31T23:59:59')<br>取值范围：\[Date('0001-01-01T00:00:00'), Date('9999-12-31T23:59:59')] <br>**说明：**<br>设置了end且为有效值的场景下，API版本26.2.0之前loop不生效，从API版本26.2.0开始，loop对非边界列生效，对边界列不生效。|
-| selected | Date | 否 | 是 | 选中的日期或时间，设置后作为初始选中值显示。<br>默认值为当前系统日期或时间。<br>**说明：**<br>在DateMode.MONTH_AND_DAY模式下，仅month和day字段参与选择；年份取selected指定值，未指定时取当前系统年份，滚动过程中保持不变。 |
-| loop | boolean | 否 | 是 | 设置是否启用循环模式。<br>- true：启用循环模式，支持滚动到边界时继续循环选择。<br>- false：不启用循环模式，滚动到边界时停止。<br>默认值：true<br>**使用场景：**<br>循环模式适用于需要连续滚动选择的场景，如快速浏览年月；非循环模式适用于需要明确边界范围的场景。 |
-| onChange | [Callback](ts-types.md#callback12)<[DatePickerComponentResult](#datepickercomponentresult)> | 否 | 是 | 选择日期或时间后触发该回调。 |
-| onScrollStop | [Callback](ts-types.md#callback12)<[DatePickerComponentResult](#datepickercomponentresult)> | 否 | 是 | 选择器项被选中且滚动停止时触发该回调。 |
-| enableHapticFeedback | boolean | 否 | 是 | 设置是否启用触控反馈。<br>默认值：true<br>- true：启用触控反馈，适用于需要增强用户交互体验的场景，如游戏、乐器类应用等。<br>- false：不启用触控反馈，适用于不需要触觉反馈或需要节省设备资源的场景。<br>**说明：**<br>1. 设置为true后，其生效情况取决于系统的硬件是否支持。<br>2. 启用触控反馈时，需要在工程的[module.json5](../../../quick-start/module-configuration-file.md)中配置requestPermissions字段以开启振动权限，配置如下：<br>"requestPermissions": [{"name": "ohos.permission.VIBRATE"}] |
+| start | Date | 否 | 是 | 选择器的起始日期或时间。<br>默认值：Date('1970-01-01T00:00:00')<br>取值范围：\[Date('0001-01-01T00:00:00'), Date('9999-12-31T23:59:59')] <br>**说明：**<br>设置了start且为有效值的场景下，API版本26.1.0之前loop不生效，从API版本26.1.0开始，loop对非边界列生效，对边界列不生效。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
+| end | Date | 否 | 是 | 选择器的结束日期或时间。<br>默认值：Date('2100-12-31T23:59:59')<br>取值范围：\[Date('0001-01-01T00:00:00'), Date('9999-12-31T23:59:59')] <br>**说明：**<br>设置了end且为有效值的场景下，API版本26.1.0之前loop不生效，从API版本26.1.0开始，loop对非边界列生效，对边界列不生效。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
+| selected | Date | 否 | 是 | 选中的日期或时间，设置后作为初始选中值显示。<br>默认值为当前系统日期或时间。<br>**说明：**<br>在DateMode.MONTH_AND_DAY模式下，仅month和day字段参与选择；年份取selected指定值，未指定时取当前系统年份，滚动过程中保持不变。<br>从API版本26.1.0开始，当与[extendSelected](#commonoptions)同时设置时，selected不生效。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| extendSelected | Date \| [DatePickerComponentResult](#datepickercomponentresult) | 否 | 是 | 选中的日期或时间，设置后作为初始选中值显示。<br>**优先级高于[selected](#commonoptions)**：当两者同时设置时，selected不生效。<br>默认值为当前系统日期或时间。<br>**说明：**<br>从API版本26.1.0开始，新增该参数。该参数支持传入[DatePickerComponentResult](#datepickercomponentresult)，用于回传[onChange](#commonoptions)或[onScrollStop](#commonoptions)回调收到的选择结果以恢复上次选择状态：<br>- 传入Date时，行为与selected一致。<br>- 传入DatePickerComponentResult时，每个已设置字段生效，未设置字段取系统默认对应部分（字段级默认）。例如传入`{hour: 10, minute: 30}`（second未设置），时、分生效，秒取系统默认值。<br>- 当[hideYear](#dateoptions)为true且year为undefined时，年份列选中“----”，忽略year，仅采用month/day。<br>- 当传入的日期或时间为非法值时，回退到系统默认日期。<br>**起始版本：** 26.1.0<br>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。 |
+| loop | boolean | 否 | 是 | 设置是否启用循环模式。<br>- true：启用循环模式，支持滚动到边界时继续循环选择。<br>- false：不启用循环模式，滚动到边界时停止。<br>默认值：true<br>**使用场景：**<br>循环模式适用于需要连续滚动选择的场景，如快速浏览年月；非循环模式适用于需要明确边界范围的场景。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| onChange | [Callback](ts-types.md#callback12)<[DatePickerComponentResult](#datepickercomponentresult)> | 否 | 是 | 选择日期或时间后触发该回调。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| onScrollStop | [Callback](ts-types.md#callback12)<[DatePickerComponentResult](#datepickercomponentresult)> | 否 | 是 | 选择器项被选中且滚动停止时触发该回调。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| enableHapticFeedback | boolean | 否 | 是 | 设置是否启用触控反馈。<br>默认值：true<br>- true：启用触控反馈，适用于需要增强用户交互体验的场景，如游戏、乐器类应用等。<br>- false：不启用触控反馈，适用于不需要触觉反馈或需要节省设备资源的场景。<br>**说明：**<br>1. 设置为true后，其生效情况取决于系统的硬件是否支持。<br>2. 启用触控反馈时，需要在工程的[module.json5](../../../quick-start/module-configuration-file.md)中配置requestPermissions字段以开启振动权限，配置如下：<br>"requestPermissions": [{"name": "ohos.permission.VIBRATE"}]<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 
 > **说明：**
 >
@@ -206,16 +210,15 @@ DateOptions定义日期选择器的选项。
 
 **起始版本：** 26.0.0
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| mode | [DateMode](#datemode) | 否 | 是 | 定义日期选择器的模式。<br>默认值：DateMode.DATE |
-| lunar | boolean | 否 | 是 | 指定是否显示为农历。<br>- true：显示为农历，适用于需要传统农历日期的场景，如传统节日、农历生日、农历纪念日等。<br>- false：不显示为农历，适用于使用公历日期的场景。<br>默认值：false<br>**说明：**<br>仅在简体中文和繁体中文语言环境下生效，其他语言环境下设置该属性无效果。 |
+| mode | [DateMode](#datemode) | 否 | 是 | 定义日期选择器的模式。<br>默认值：DateMode.DATE<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| lunar | boolean | 否 | 是 | 指定是否显示为农历。<br>- true：显示为农历，适用于需要传统农历日期的场景，如传统节日、农历生日、农历纪念日等。<br>- false：不显示为农历，适用于使用公历日期的场景。<br>默认值：false<br>**说明：**<br>仅在简体中文和繁体中文语言环境下生效，其他语言环境下设置该属性无效果。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| hideYear | boolean | 否 | 是 | 是否启用“隐藏年份”选项。<br>- true：在[end](#commonoptions)后面追加一个“----”选项。用户可以选择“----”表示不关心具体年份，适用于生日、纪念日等无需具体年份的场景。<br>- false：不显示“----”选项。年份列仅展示[start](#commonoptions)和[end](#commonoptions)范围内的具体年份。<br>默认值：false<br>**说明：**<br>1. 该属性仅在[displayMode](#datepickercomponentoptions)为DisplayMode.DATE或DisplayMode.DATE_TIME，且[mode](#dateoptions)为DateMode.DATE或DateMode.YEAR_AND_MONTH时生效。<br>2. 该属性为true时，用户仍可滚动选择具体年份，“----”选项与具体年份可自由切换。<br>3. 该属性支持运行时动态切换，属性值变化时年份列随之更新。<br>**起始版本：** 26.1.0<br>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。 |
 
 ## TimeOptions
 
@@ -414,3 +417,49 @@ struct NoLoopPickerExample {
 ```
 
 ![loop](figures/DatePickerComponent4.gif)
+
+### 示例5（隐藏年份选项与回传结果）
+
+该示例通过[DateOptions](#dateoptions)中的hideYear参数启用“----”选项，并通过[CommonOptions](#commonoptions)中的extendSelected参数回传上次选择结果（含“----”选择）以恢复选择状态。
+
+从API版本26.1.0开始，[DateOptions](#dateoptions)新增hideYear参数，[CommonOptions](#commonoptions)新增extendSelected参数。
+
+```ts
+import { DatePickerComponent, DisplayMode, DateMode, DatePickerComponentResult } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct HideYearAndExtendSelectedExample {
+  // 保存上次选择结果，用于回传
+  @State lastResult: DatePickerComponentResult = { year: undefined, month: 10, day: 20 };
+
+  build() {
+    Column() {
+      DatePickerComponent({
+        options: {
+          displayMode: DisplayMode.DATE,
+          dateOptions: {
+            mode: DateMode.DATE,
+            start: new Date('2020-01-01'),
+            end: new Date('2030-12-31'),
+            hideYear: true,
+            // extendSelected优先于selected；传入上次结果恢复选择状态
+            extendSelected: this.lastResult,
+            onChange: (result) => {
+              this.lastResult = result
+              console.info('Selected: year=' + (result.year ?? '----') +
+                ', month=' + (result.month ?? 0) + ', day=' + (result.day ?? 0))
+            },
+            onScrollStop: (result) => {
+              console.info('Scroll stop: year=' + (result.year ?? '----') +
+                ', month=' + (result.month ?? 0) + ', day=' + (result.day ?? 0))
+            }
+          }
+        }
+      })
+    }
+  }
+}
+```
+
+![hideyear](figures/datepickercomponenthideyear.gif)

@@ -51,7 +51,7 @@ Network connection error or OS error.
 
 **错误信息**
 
-updateNtpTime()未成功调用。
+updateNtpTime() is not called successfully.
 
 **错误描述**
 

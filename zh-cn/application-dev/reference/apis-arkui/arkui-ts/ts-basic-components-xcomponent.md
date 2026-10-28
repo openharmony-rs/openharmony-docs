@@ -244,6 +244,37 @@ hdrBrightness(brightness: number, type?: HdrType)
 | brightness | number | 是   | HDR内容的亮度。<br>默认值：1.0<br>取值范围：[0.0, 1.0]。小于0.0的值按0.0处理，大于1.0的值按1.0处理，其他异常值按1.0处理。<br>0.0表示内容按照SDR亮度显示，1.0表示内容按照当前允许的最高HDR亮度显示。|
 | type | [HdrType](#hdrtype24枚举说明) | 否   | 显示HDR内容时的HDR类型。<br>默认值：HdrType.DEFAULT|
 
+### bufferQueueCount
+
+bufferQueueCount(count: number)
+
+设置XComponent的buffer队列大小。未通过该接口设置时，默认大小为5。
+
+XComponent持有的Surface通过buffer队列进行渲染上屏：生产侧（应用、相机、播放器等）将渲染内容提交到buffer队列，系统渲染侧从队列中获取buffer并显示到屏幕。buffer队列大小决定了渲染链路中可同时流转的buffer数量：
+
+- 队列越小，画面从生产到上屏的时延越低，占用的内存越少，适用于相机预览、投屏等对显示时延敏感的场景；
+- 队列越大，渲染缓冲越充裕，可更好地吸收生产侧的帧率波动，适用于视频播放等对流畅性要求较高、对时延不敏感的场景。
+
+该属性支持运行时动态修改：组件创建后，可根据使用场景动态切换buffer队列大小。例如，从视频播放切换到相机预览时，可将队列调小以降低显示时延；从相机预览切换到视频播放时，可将队列调大以获得更充裕的渲染缓冲。
+
+> **说明：**
+>
+> 在buffer轮转过程中修改buffer队列大小，可能引起丢帧。建议在切换前后短暂停止生产侧的渲染提交，以减少丢帧。
+
+**起始版本：** 26.1.0
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名   | 类型    | 必填 | 说明                   |
+| -------- | ------- | ---- | ---------------------- |
+| count | number | 是   | buffer队列大小。<br>取值范围：[2, 5]。大于5的值按5处理，小于2的值按2处理，传入非整数值时按默认值5处理。|
+
 ## HdrType<sup>24+</sup>枚举说明
 
 HDR内容的高动态范围渲染类型。
@@ -1170,3 +1201,45 @@ struct Index {
 ```
 
 ![setXComponentSurfaceConfig示例图](./figures/surfaceConfig.jpeg)
+
+### 示例6（设置XComponent的buffer队列大小）
+
+该示例通过[bufferQueueCount](#bufferqueuecount)属性设置XComponent的buffer队列大小，并演示运行时的动态切换：在相机预览、投屏等对显示时延敏感的场景下，可减小buffer队列，以降低画面从生产到上屏的时延并减少内存占用；在视频播放等对流畅性要求较高的场景下，可保持默认值以获得更充裕的渲染缓冲。
+
+从API版本26.1.0开始，新增bufferQueueCount属性。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  @State isLowLatency: boolean = false;
+  @State queueSize: number = 5; // buffer队列大小，默认值为5。
+  xComponentController: XComponentController = new XComponentController();
+
+  build() {
+    Column({ space: 20 }) {
+      XComponent({ type: XComponentType.SURFACE, controller: this.xComponentController })
+        // 根据场景设置buffer队列大小。取值范围：[2, 5]；大于5的值按5处理，小于2的值按2处理。
+        // 队列越小显示时延越低，队列越大渲染缓冲越充裕。
+        .bufferQueueCount(this.queueSize)
+        .width('90%')
+        .height('40%')
+
+      Row({ space: 8 }) {
+        Toggle({ type: ToggleType.Switch, isOn: this.isLowLatency })
+          .onChange((isOn: boolean) => {
+            this.isLowLatency = isOn;
+            // 支持运行时动态修改buffer队列大小。
+            // 说明：在buffer轮转过程中修改buffer队列大小，可能引起丢帧。
+            this.queueSize = isOn ? 2 : 5;
+          })
+        Text(this.isLowLatency ? '低时延模式（buffer队列大小：2）' : '标准模式（buffer队列大小：5）')
+      }
+    }
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```

@@ -5,7 +5,7 @@
 <!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=8478ec4698910b30203efbe7815bce1603fa5a99 translatedAt=2026-09-18T03:36:44.297Z pushedAt=2026-09-20T04:30:04.818Z -->
+<!-- md-trans-meta sourceCommit=d9d760905c0c2b985a89f8de206fa099e14f74c4 translatedAt=2026-10-22T03:44:28.160Z pushedAt=2026-10-22T07:24:28.908Z nl=1 -->
 
 - [About This Kit](audio-kit-intro.md)
 - Audio Focus and Audio Session Management<!--audio-session-->
@@ -70,7 +70,7 @@
   - [Offline Editing (C/C++)](audio-suite-manual-rendering.md)
   - [Real-Time Preview (C/C++)](audio-suite-real-time-rendering.md)
   - [Audio Format Conversion (C/C++)](audio-suite-format-converter.md)
-  - [Spatial Rendering (C/C++)](audio-suite-space-render.md)
+  - [Spatial Audio Rendering (C/C++)](audio-suite-space-render.md)
   - [Audio Effects (C/C++)](audio-suite-effects.md)
 - MIDI Device Communication<!--midi-->
   - [OH_MIDI Overview (C/C++)](midi-overview.md)
