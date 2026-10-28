@@ -1670,7 +1670,7 @@ struct Index {
           event.handler.confirm(this.uri);
         })
         .onSslErrorEventReceive(e => {
-          console.info(`onSslErrorEventReceive->${e.error.toString()}`);
+          console.error(`onSslErrorEventReceive->${e.error.toString()}`);
         })
         .onErrorReceive((event) => {
           if (event) {
@@ -1971,7 +1971,7 @@ struct Index {
               event.handler.confirm(PinVerifyResult.PIN_VERIFICATION_SUCCESS);
             }).catch((err: BusinessError) => {
             // 通知webPIN码认证失败
-            console.info(`onVerifyPin fail`);
+            console.error(`onVerifyPin fail`);
             event.handler.confirm(PinVerifyResult.PIN_VERIFICATION_FAILED);
           })
         })

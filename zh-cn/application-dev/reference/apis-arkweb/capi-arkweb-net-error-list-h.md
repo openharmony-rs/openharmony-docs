@@ -59,7 +59,7 @@ enum ArkWeb_NetError
 | ARKWEB_ERR_ACCESS_DENIED = -10 | 访问除网络外的资源被拒绝。 |
 | ARKWEB_ERR_NOT_IMPLEMENTED = -11 | 由于功能未实现，操作失败。 |
 | ARKWEB_ERR_INSUFFICIENT_RESOURCES = -12 | 没有足够的资源来完成操作。 |
-| ARKWEB_ERR_OUT_OF_MEMORY = -13 | 内存溢出。 |
+| ARKWEB_ERR_OUT_OF_MEMORY = -13 | 内存分配失败。 |
 | ARKWEB_ERR_UPLOAD_FILE_CHANGED = -14 | 文件上传失败，因为文件的修改时间与预期不同。 |
 | ARKWEB_ERR_SOCKET_NOT_CONNECTED = -15 | socket未连接。 |
 | ARKWEB_ERR_FILE_EXISTS = -16 | 文件已存在。 |
@@ -149,7 +149,7 @@ enum ArkWeb_NetError
 | ARKWEB_ERR_INVALID_ECH_CONFIG_LIST = -182 | 通过DNS获取的ECHConfigList无法解析。 |
 | ARKWEB_ERR_ECH_NOT_NEGOTIATED = -183 | 已启用ECH（Encrypted Client Hello，加密客户端Hello），但服务器无法解密加密的ClientHello。 |
 | ARKWEB_ERR_ECH_FALLBACK_CERTIFICATE_INVALID = -184 | ECH（Encrypted Client Hello）已启用，但服务器无法解密加密的ClientHello，并且没有提供对公共名称有效的证书。 |
-| ARKWEB_ERR_CERT_COMMON_NAME_INVALID = -200 | 服务器响应了一个证书，其通用名称与主机名不匹配。这可能意味着：1. 攻击者已将我们的流量重定向到他们的服务器，并呈现了一个他们知道私钥的证书。 |
+| ARKWEB_ERR_CERT_COMMON_NAME_INVALID = -200 | 服务器响应了一个证书，其通用名称与主机名不匹配。这可能意味着：1. 攻击者已将我们的流量重定向到他们的服务器，并呈现了一个他们知道私钥的证书。2. 服务器配置错误，使用错误的证书进行响应。3. 用户在无线网络上，并被重定向到网络的登录页面。4. 操作系统使用了DNS搜索后缀，服务器在地址栏中没有缩写名称的证书。 |
 | ARKWEB_ERR_CERT_DATE_INVALID = -201 | 服务器以证书作为响应，但根据我们的时钟，该证书似乎尚未生效或已过期。这可能是以下情况之一：1. 攻击者提供了旧的证书，并设法获取了私钥。2. 服务器配置错误，没有提供有效的证书。3. 我们的时钟错误。 |
 | ARKWEB_ERR_CERT_AUTHORITY_INVALID = -202 | 服务器回应了一个由我们不信任的机构签名的证书。这可能意味着：1. 攻击者已经将真实的证书替换为包含其公钥并由其同伙签名的证书。 |
 | ARKWEB_ERR_CERT_CONTAINS_ERRORS = -203 | 服务器返回的证书包含错误。此错误无法恢复。MSDN对此错误的描述如下："SSL证书包含错误。"注意：目前尚不清楚这与ERR_CERT_INVALID有何不同。 |
@@ -277,7 +277,7 @@ enum ArkWeb_NetError
 | ARKWEB_ERR_CERT_VERIFIER_CHANGED = -716 | 证书验证配置已发生某种更改。 |
 | ARKWEB_ERR_DNS_MALFORMED_RESPONSE = -800 | DNS解析程序收到格式错误的响应。 |
 | ARKWEB_ERR_DNS_SERVER_REQUIRES_TCP = -801 | DNS服务器需要TCP。 |
-| ARKWEB_ERR_DNS_SERVER_FAILED = -802 | DNS服务器失败。对于以下所有错误情况，都会返回此错误：1 - 格式错误 - 名称服务器无法解释查询。2 - 服务器故障 - 名称服务器由于自身问题无法处理这个查询。4 - 未实现 - 名称服务器不支持请求的查询类型。 |
+| ARKWEB_ERR_DNS_SERVER_FAILED = -802 | DNS服务器失败。对于以下所有错误情况，都会返回此错误：1 - 格式错误 - 名称服务器无法解释查询。2 - 服务器故障 - 名称服务器由于自身问题无法处理这个查询。4 - 未实现 - 名称服务器不支持请求的查询类型。5 - 拒绝 - 名称服务器出于策略原因拒绝执行指定的操作。 |
 | ARKWEB_ERR_DNS_TIMED_OUT = -803 | DNS事务超时。 |
 | ARKWEB_ERR_DNS_CACHE_MISS = -804 | 对于只查询本地源的查找，在缓存或其他本地源中未找到该条目。 |
 | ARKWEB_ERR_DNS_SEARCH_EMPTY = -805 | 后缀搜索列表规则阻止了给定主机名的解析。 |
