@@ -13,7 +13,7 @@ typedef struct OH_NaticveWindow_ScreenInfoRect OH_NaticveWindow_ScreenInfoRect
 
 定义一个包含坐标和尺寸信息的矩阵描述屏幕信息。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **相关模块：** [NativeWindow](capi-nativewindow.md)
 
