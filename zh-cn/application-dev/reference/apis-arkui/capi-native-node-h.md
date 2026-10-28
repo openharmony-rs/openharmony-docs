@@ -170,6 +170,9 @@
 | [int32_t OH_ArkUI_Swiper_IsFakeDragging(ArkUI_NodeHandle node, bool* isFakeDragging)](#oh_arkui_swiper_isfakedragging) | - | 获取Swiper节点的模拟拖拽状态。 |
 | [int32_t OH_ArkUI_Swiper_ShowPrevious(ArkUI_NodeHandle node)](#oh_arkui_swiper_showprevious) | - | 显示Swiper节点的上一页。 |
 | [int32_t OH_ArkUI_Swiper_ShowNext(ArkUI_NodeHandle node)](#oh_arkui_swiper_shownext) | - | 显示Swiper节点的下一页。 |
+| [int32_t OH_ArkUI_ArcSwiper_ShowPrevious(ArkUI_NodeHandle node)](#oh_arkui_arcswiper_showprevious) | - | 显示ArcSwiper节点的上一页。 |
+| [int32_t OH_ArkUI_ArcSwiper_ShowNext(ArkUI_NodeHandle node)](#oh_arkui_arcswiper_shownext) | - | 显示ArcSwiper节点的下一页。 |
+| [int32_t OH_ArkUI_ArcSwiper_FinishAnimation(ArkUI_NodeHandle node)](#oh_arkui_arcswiper_finishanimation) | - | 停止ArcSwiper节点正在执行的动画。 |
 | [int32_t OH_ArkUI_NativeModule_AtomicServiceMenuBarSetVisible(ArkUI_ContextHandle uiContext, bool visible)](#oh_arkui_nativemodule_atomicservicemenubarsetvisible) | - | 设置菜单栏的可见性。 |
 | [int32_t OH_ArkUI_NativeModule_GetPageRootNodeHandleByContext(ArkUI_ContextHandle context, ArkUI_NodeHandle* rootNode)](#oh_arkui_nativemodule_getpagerootnodehandlebycontext) | - | 获得指定的UIContext对应窗口中的页面根节点。 |
 | [int32_t OH_ArkUI_NativeModule_RegisterCommonAreaApproximateChangeEvent(ArkUI_NodeHandle node, float expectedUpdateInterval, void* userData, void (\*callback)(ArkUI_NodeEvent\* event))](#oh_arkui_nativemodule_registercommonareaapproximatechangeevent) | - | 注册组件尺寸与区域变化的监听事件。可在任意时机对有效的[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md)组件节点调用该函数。新注册的回调会替换该事件此前已注册的回调，并从下一帧开始生效。当回调不再需要时，请调用[OH_ArkUI_NativeModule_UnregisterCommonAreaApproximateChangeEvent](#oh_arkui_nativemodule_unregistercommonareaapproximatechangeevent)进行注销。否则，回调会在节点释放时自动注销。 |
@@ -226,6 +229,7 @@ enum ArkUI_NodeType
 | ARKUI_NODE_XCOMPONENT_TEXTURE = 20 | TEXTURE类型XComponent。<br>**起始版本：** 18 |
 | ARKUI_NODE_CHECKBOX_GROUP = 21 | 复选框组。<br>**起始版本：** 15                |
 | ARKUI_NODE_TEXT_EDITOR = 22 | 文本编辑器。<br>**起始版本：** 24 |
+| ARKUI_NODE_ARC_ALPHABET_INDEXER = 23 | 弧形字母索引组件。 <br>**起始版本：** 26.0.1 |
 | ARKUI_NODE_STACK = MAX_NODE_SCOPE_NUM | 堆叠容器。                                |
 | ARKUI_NODE_SWIPER = 1001 | 翻页容器。                                |
 | ARKUI_NODE_SCROLL = 1002 | 滚动容器。                                |
@@ -248,6 +252,7 @@ enum ArkUI_NodeType
 | ARKUI_NODE_ARC_LIST = 1019 | 弧形列表。<br>**起始版本：** 26.0.0 |
 | ARKUI_NODE_ARC_LIST_ITEM = 1020 | 弧形列表项。 <br>**起始版本：** 26.0.0 |
 | ARKUI_NODE_ARC_SCROLL_BAR = 1021 | 弧形滚动条。 <br>**起始版本：** 26.0.0 |
+| ARKUI_NODE_ARC_SWIPER = 1022 | 弧形翻页容器。 <br>**起始版本：** 26.0.1 |
 
 ### ArkUI_NodeAttributeType
 
@@ -466,6 +471,11 @@ enum ArkUI_NodeEventType
 | NODE_ARC_LIST_ON_SCROLL_STOP = 1019004 | 定义ArcList组件的滚动停止事件枚举值。触发该事件的条件：<br> 1. ArcList组件触发滚动后停止。<br> 事件回调发生时，事件参数[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象中的联合体类型为[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)。<br> [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)中不包含参数。  <br>**起始版本：** 26.0.0 |
 | NODE_ARC_LIST_ON_WILL_SCROLL = 1019005 | 定义ArcList组件滚动前触发事件枚举值。触发该事件的条件：<br> 1. ArcList组件触发滚动时触发。<br> 2. 通过滚动控制器API接口调用。<br> 事件回调发生时，事件参数[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象中的联合体类型为[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)。<br> [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)中包含3个参数：<br> ArkUI_NodeComponentEvent.data[0].f32：本次滚动的距离，内容向上滚动时偏移量为正，向下滚动时偏移量为负，单位vp。 <br> ArkUI_NodeComponentEvent.data[1].i32：当前滚动状态，数据类型[ArkUI_ScrollState](capi-scroll-h.md#arkui_scrollstate)。 <br> ArkUI_NodeComponentEvent.data[2].i32：当前滚动的来源，参数类型[ArkUI_ScrollSource](capi-scroll-h.md#arkui_scrollsource)。 <br>**起始版本：** 26.0.0 |
 | NODE_ARC_LIST_ON_DID_SCROLL = 1019006 | 定义ArcList组件滚动时触发事件枚举值。触发该事件的条件：<br> 1. ArcList组件触发滚动时触发。<br> 2. 通过滚动控制器API接口调用。<br> 事件回调发生时，事件参数[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象中的联合体类型为[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)。<br> [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)中包含2个参数：<br> ArkUI_NodeComponentEvent.data[0].f32：本帧滚动的距离，内容向上滚动时偏移量为正，向下滚动时偏移量为负，单位vp。 <br> ArkUI_NodeComponentEvent.data[1].i32：当前滚动状态，数据类型[ArkUI_ScrollState](capi-scroll-h.md#arkui_scrollstate)。 <br>**起始版本：** 26.0.0  |
+| NODE_ARC_ALPHABET_INDEXER_EVENT_ON_SELECT = MAX_NODE_SCOPE_NUM * ARKUI_NODE_ARC_ALPHABET_INDEXER = 23000 | 定义ARKUI_NODE_ARC_ALPHABET_INDEXER当前显示元素的索引变化时触发事件回调。<br>事件回调发生时，事件参数[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象中的联合体类型为[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)。<br>[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)中包含1个参数：<br>ArkUI_NodeComponentEvent.data[0].i32：表示当前显示元素的索引。<br>**起始版本：** 26.0.1 |
+| NODE_ARC_SWIPER_EVENT_ON_CHANGE = MAX_NODE_SCOPE_NUM * ARKUI_NODE_ARC_SWIPER = 1022000 | 定义弧形翻页容器（[ARKUI_NODE_ARC_SWIPER](#arkui_nodetype)）当前显示元素的索引变化时触发事件回调。<br>事件回调发生时，事件参数[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象中的联合体类型为[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)。<br>[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)中包含1个参数：<br>ArkUI_NodeComponentEvent.data[0].i32：表示当前显示元素的索引。<br>**起始版本：** 26.0.1 |
+| NODE_ARC_SWIPER_EVENT_ON_ANIMATION_START = 1022001 | 定义弧形翻页容器（[ARKUI_NODE_ARC_SWIPER](#arkui_nodetype)）切换动画开始时触发事件回调。<br>事件回调发生时，事件参数[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象中的联合体类型为[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)。<br>[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)中包含5个参数：<br>ArkUI_NodeComponentEvent.data[0].i32：表示当前显示元素的索引。<br>ArkUI_NodeComponentEvent.data[1].i32：表示切换动画目标元素的索引。<br>ArkUI_NodeComponentEvent.data[2].f32：表示主轴方向上当前显示元素相对Swiper起始位置的位移。<br>ArkUI_NodeComponentEvent.data[3].f32：表示主轴方向上目标元素相对Swiper起始位置的位移。<br>ArkUI_NodeComponentEvent.data[4].f32：表示离手速度。<br>**起始版本：** 26.0.1 |
+| NODE_ARC_SWIPER_EVENT_ON_ANIMATION_END = 1022002 | 定义弧形翻页容器（[ARKUI_NODE_ARC_SWIPER](#arkui_nodetype)）切换动画结束时触发事件回调。<br>事件回调发生时，事件参数[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象中的联合体类型为[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)。<br>[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)中包含2个参数：<br>ArkUI_NodeComponentEvent.data[0].i32：表示当前显示元素的索引。<br>ArkUI_NodeComponentEvent.data[1].f32：表示主轴方向上当前显示元素相对Swiper起始位置的位移。<br>**起始版本：** 26.0.1 |
+| NODE_ARC_SWIPER_EVENT_ON_GESTURE_SWIPE = 1022003 | 定义弧形翻页容器（[ARKUI_NODE_ARC_SWIPER](#arkui_nodetype)）在页面跟手滑动过程中，逐帧触发该事件回调。<br>事件回调发生时，事件参数[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象中的联合体类型为[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)。<br>[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)中包含2个参数：<br>ArkUI_NodeComponentEvent.data[0].i32：表示当前显示元素的索引。<br>ArkUI_NodeComponentEvent.data[1].f32：表示主轴方向上当前显示元素相对Swiper起始位置的位移。<br>**起始版本：** 26.0.1 |
 
 ### ArkUI_NodeDirtyFlag
 
@@ -3579,6 +3589,78 @@ int32_t OH_ArkUI_Swiper_ShowNext(ArkUI_NodeHandle node)
 | 类型 | 说明 |
 | -- | -- |
 | int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常。 |
+
+### OH_ArkUI_ArcSwiper_ShowPrevious()
+
+```c
+int32_t OH_ArkUI_ArcSwiper_ShowPrevious(ArkUI_NodeHandle node)
+```
+
+**描述**
+
+显示ArcSwiper节点的上一页。
+
+**起始版本：** 26.0.1
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | ArkUI_NodeHandle指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常。 |
+
+### OH_ArkUI_ArcSwiper_ShowNext()
+
+```c
+int32_t OH_ArkUI_ArcSwiper_ShowNext(ArkUI_NodeHandle node)
+```
+
+**描述**
+
+显示ArcSwiper节点的下一页。
+
+**起始版本：** 26.0.1
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | ArkUI_NodeHandle指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常。 |
+
+### OH_ArkUI_ArcSwiper_FinishAnimation()
+
+```c
+int32_t OH_ArkUI_ArcSwiper_FinishAnimation(ArkUI_NodeHandle node)
+```
+
+**描述**
+
+停止ArcSwiper节点正在执行的动画。
+
+**起始版本：** 26.0.1
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | ArkUI_NodeHandle指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_NativeModule_AtomicServiceMenuBarSetVisible()
 
