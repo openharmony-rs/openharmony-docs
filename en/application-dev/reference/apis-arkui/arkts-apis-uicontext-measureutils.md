@@ -212,7 +212,7 @@ struct TextDemo {
           console.info("displayedText: " + this.displayedText);
         }
       }
-      this.displayedText = this.displayedText + "...";
+      this.displayedText = this.displayedText + "…";
     }
   }
 
@@ -266,7 +266,7 @@ Converts a styled string into an array of corresponding [Paragraph](../apis-arkg
 
 **Example**
 
-The following example demonstrates how to use the **getParagraphs** API from **MeasureUtils** to measure text. When the content exceeds the maximum number of display lines, the text is truncated and displays a "... Full Text" indicator.
+The following example demonstrates how to use the **getParagraphs** API from **MeasureUtils** to measure text. When the content exceeds the maximum number of display lines, the text is truncated and displays a "… Full Text" indicator.
 
 ``` typescript
 import { LengthMetrics } from '@kit.ArkUI';
@@ -363,7 +363,7 @@ struct Index {
     while (low <= high) {
       let mid = (low + high) >> 1;
       console.info("demo: get " + low + " " + high + " " + mid);
-      let moreStyledString = new MutableStyledString("... Full Text", [{
+      let moreStyledString = new MutableStyledString("… Full Text", [{
         start: 4,
         length: 2,
         styledKey: StyledStringKey.FONT,
@@ -431,7 +431,7 @@ struct Index {
         Text(undefined, { controller: this.textController }).onAppear(() => {
           let now = this.getCorrectIndex(this.mutableStrAllContent, 3, LengthMetrics.px(500));
           if (now != this.mutableStrAllContent.length - 1) {
-            let moreStyledString = new MutableStyledString("... Full Text", [{
+            let moreStyledString = new MutableStyledString("… Full Text", [{
               start: 4,
               length: 2,
               styledKey: StyledStringKey.FONT,
@@ -453,7 +453,7 @@ struct Index {
         Text('After layout')
         Text(undefined, { controller: this.textController2 }).onAppear(() => {
           let now = this.getCorrectIndex(this.mutableStrAllContent2, 3, LengthMetrics.px(500));
-          let moreStyledString = new MutableStyledString("... Full Text", [{
+          let moreStyledString = new MutableStyledString("… Full Text", [{
             start: 4,
             length: 2,
             styledKey: StyledStringKey.FONT,
