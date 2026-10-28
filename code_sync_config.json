@@ -24109,6 +24109,11 @@
 						"end_line":56,
 						"name":"arkts_custom_font_step4",
 						"start_line":47
+					},
+					{
+						"end_line":26,
+						"name":"arkts_custom_font_font_collection",
+						"start_line":22
 					}
 				]
 			}
