@@ -132,9 +132,6 @@ try {
 updateForm(formId: string, formBindingData: formBindingData.FormBindingData, callback: AsyncCallback&lt;void&gt;): void
 
 更新指定的卡片，使用callback异步回调。适用于卡片数据变化时主动更新卡片内容的场景，例如天气数据变化、股票价格更新、任务进度更新等。
-> **说明：**
->
-> 从API version 20开始，如果卡片刷新的数据通过共享内存更新，刷新数据总大小不超过10MB，刷新图片数量不超过20张。API version 19及之前的版本，图片文件数量上限为5张，每张限制内存2MB，超出限制的图片会显示异常。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -145,7 +142,7 @@ updateForm(formId: string, formBindingData: formBindingData.FormBindingData, cal
 | 参数名 | 类型                                                                    | 必填 | 说明             |
 | ------ | ---------------------------------------------------------------------- | ---- | ---------------- |
 | formId | string                                                                 | 是   | 请求更新的卡片标识。 |
-| formBindingData | [formBindingData.FormBindingData](js-apis-app-form-formBindingData.md#formbindingdata) | 是   | 用于更新的数据。具体限制请参考上方说明。    |
+| formBindingData | [formBindingData.FormBindingData](js-apis-app-form-formBindingData.md#formbindingdata) | 是   | 用于更新的数据。    |
 | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。更新结果的回调，成功时error为undefined。 |
 
 **错误码：**
@@ -192,9 +189,6 @@ try {
 updateForm(formId: string, formBindingData: formBindingData.FormBindingData): Promise&lt;void&gt;
 
 更新指定的卡片，使用Promise异步回调。适用于卡片数据变化时主动更新卡片内容的场景，例如天气数据变化、股票价格更新、任务进度更新等。
-> **说明：**
->
-> 从API version 20开始，如果卡片刷新的数据通过共享内存更新，刷新数据总大小不超过10MB，刷新图片数量不超过20张。API version 19及之前的版本，图片文件数量上限为5张，每张限制内存2MB，超出限制的图片会显示异常。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -205,7 +199,7 @@ updateForm(formId: string, formBindingData: formBindingData.FormBindingData): Pr
 | 参数名 | 类型                                                                    | 必填 | 说明             |
 | ------ | ---------------------------------------------------------------------- | ---- | ---------------- |
 | formId | string                                                                 | 是   | 请求更新的卡片标识。 |
-| formBindingData | [formBindingData.FormBindingData](js-apis-app-form-formBindingData.md#formbindingdata) | 是   | 用于更新的数据。具体限制请参考上方说明。    |
+| formBindingData | [formBindingData.FormBindingData](js-apis-app-form-formBindingData.md#formbindingdata) | 是   | 用于更新的数据。    |
 
 **返回值：**
 
