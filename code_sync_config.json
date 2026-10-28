@@ -68600,9 +68600,9 @@
 						"start_line":204
 					},
 					{
-						"end_line":257,
+						"end_line":233,
 						"name":"AudioEncoder::NotifyEndOfStream",
-						"start_line":229
+						"start_line":220
 					},
 					{
 						"end_line":227,
@@ -68815,9 +68815,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/sample/player/output/audio/PlayerAudioOutput.cpp",
 				"functions":[
 					{
-						"end_line":110,
+						"end_line":109,
 						"name":"Player::AudioDecInputSyncThread",
-						"start_line":63
+						"start_line":64
 					}
 				]
 			},
@@ -68878,9 +68878,9 @@
 						"start_line":128
 					},
 					{
-						"end_line":257,
+						"end_line":233,
 						"name":"AudioEncoder::NotifyEndOfStream",
-						"start_line":229
+						"start_line":220
 					},
 					{
 						"end_line":183,
