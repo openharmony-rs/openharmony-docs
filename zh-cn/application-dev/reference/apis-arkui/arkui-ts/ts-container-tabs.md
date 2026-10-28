@@ -1045,6 +1045,26 @@ sidebarDisplayStyle(style: Optional\<TabsSidebarDisplayStyle\>)
 | ------ | ---- | ---- | ---- |
 | style | Optional<[TabsSidebarDisplayStyle](#tabssidebardisplaystyle)> | 是 | 侧边栏展示模式。<br/>设置undefined时，恢复默认展示模式。 |
 
+### showSidebarControlButton
+
+showSidebarControlButton(value: Optional\<boolean>)
+
+设置是否显示控制侧边页签栏展开或收起的按钮。点击该按钮可以控制侧边页签栏展开或收起。未通过该接口设置时，默认不显示按钮。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | -------- | ---- | --------- |
+| value   | Optional\<boolean> | 是 | 侧边页签栏是否显示控制按钮。<br/>true表示显示按钮；false表示不显示按钮。<br/>设置undefined时，取默认值false。 |
+
 ## DividerStyle<sup>10+</sup>对象说明
 
 分割线样式对象。
@@ -4114,9 +4134,9 @@ struct TabsFloatingStyleExample {
 
 ### 示例25（设置侧边页签栏样式）
 
-本示例展示了通过[barStyle](#barstyle)接口设置页签栏的显示样式，包括固定底部页签栏样式、固定侧边页签栏样式、自适应侧边页签栏样式。通过[sidebarPosition](#sidebarposition)接口设置侧边页签栏的显示位置，通过[sidebarHeader](#sidebarheader)接口在侧边页签栏头部设置自定义内容，通过[sidebarFooter](#sidebarfooter)接口在侧边页签栏页签列表尾部设置随页签列表滚动的自定义内容，通过[sidebarBottomBar](#sidebarbottombar)接口在侧边页签栏固定底部设置自定义内容。通过[sidebarSearchable](#sidebarsearchable)接口开启侧边页签栏的搜索功能，通过[onBarDisplayModeChange](#onbardisplaymodechange)接口注册显示模式切换的监听函数。
+本示例展示了通过[barStyle](#barstyle)接口设置页签栏的显示样式，包括固定底部页签栏样式、固定侧边页签栏样式、自适应侧边页签栏样式。通过[sidebarPosition](#sidebarposition)接口设置侧边页签栏的显示位置，通过[sidebarHeader](#sidebarheader)接口在侧边页签栏头部设置自定义内容，通过[sidebarFooter](#sidebarfooter)接口在侧边页签栏页签列表尾部设置随页签列表滚动的自定义内容，通过[sidebarBottomBar](#sidebarbottombar)接口在侧边页签栏固定底部设置自定义内容。通过[sidebarSearchable](#sidebarsearchable)接口开启侧边页签栏的搜索功能，通过[onBarDisplayModeChange](#onbardisplaymodechange)接口注册显示模式切换的监听函数，通过[showSidebarControlButton](#showsidebarcontrolbutton)接口设置是否在侧边页签栏头部显示用于控制展开或收起的按钮。
 
-从API版本26.0.1开始，新增barStyle、sidebarPosition、sidebarHeader、sidebarSearchable、onBarDisplayModeChange接口。从API版本26.1.0开始，新增sidebarFooter、sidebarBottomBar接口。
+从API版本26.0.1开始，新增barStyle、sidebarPosition、sidebarHeader、sidebarSearchable、onBarDisplayModeChange接口。从API版本26.1.0开始，新增sidebarFooter、sidebarBottomBar、showSidebarControlButton接口。
 
 ```ts
 // xxx.ets
@@ -4249,9 +4269,10 @@ struct TabsSidebarExample {
       .onBarDisplayModeChange((mode: TabBarDisplayMode) => {
         console.info(`testTag TabBarDisplayMode change to ${mode}`)
       })
+      .showSidebarControlButton(true)
     }
     .width('100%')
-    .height(600)
+    .height(700)
   }
 }
 ```
