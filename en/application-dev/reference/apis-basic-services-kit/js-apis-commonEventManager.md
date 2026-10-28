@@ -2,10 +2,10 @@
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=f1df35e744e8be0a80ac7cb20765106cc0424535 translatedAt=2026-09-23T02:13:42.888Z pushedAt=2026-09-24T02:20:50.103Z -->
+<!-- md-trans-meta sourceCommit=097d84c08b6dd34c7fea7675d84d753092b8a960 translatedAt=2026-10-23T03:08:07.829Z pushedAt=2026-10-23T09:46:54.468Z nl=1 -->
 
 This module provides APIs to publish, subscribe to, and unsubscribe from common events. This module provides a system-level event notification mechanism that allows an app to send notifications to other apps that have subscribed to the event when the system status changes (such as power-on completion, battery level change, and screen on/off) or a custom service event occurs. This mechanism enables transferring information across components and apps.
 
@@ -36,6 +36,10 @@ The event communication of this module involves three processes: subscription, p
 2. The subscriber with a higher priority receives the event first, who can modify the code and data in the callback using methods such as **setCodeAndData** for subsequent subscribers to receive.
 3. After the processing is complete, call **finishCommonEvent** to deliver the event to the subscriber with the next highest priority. To stop delivering the event, call **abortCommonEvent** to mark the event as aborted.
 
+> **Description**
+>
+> The processing duration of an ordered common event for each subscriber is limited (the timeout interval is 10 seconds). If a subscriber does not call [finishCommonEvent](js-apis-inner-commonEvent-commonEventSubscriber.md#finishcommonevent9) within the timeout interval after receiving an ordered common event, the system considers that the subscriber has completed the processing and automatically delivers the event to the subscriber with the next highest priority. In this case, the system does not send a timeout notification to the current subscriber. After that, the **setCode**, **setData**, **setCodeAndData**, and **finishCommonEvent** APIs called by the subscriber will no longer take effect.
+
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
@@ -64,7 +68,7 @@ Publishes a common event. This API uses an asynchronous callback to return the r
 
 | Name    | Type                | Mandatory| Description                  |
 | -------- | -------------------- | ---- | ---------------------- |
-| event    | string               | Yes  | Name of the common event to publish. For details, see [System Common Events](./common_event/commonEventManager-definitions.md).|
+| event    | string               | Yes   | Common event to publish. For details, see [System Common Events](./common_event/commonEventManager-definitions.md). The value can contain a maximum of 254 bytes. Excess content will be truncated. |
 | callback | AsyncCallback\<void> | Yes  | Callback used to return the result. If the common event is successfully published, **err** is **undefined**; if the event fails to be published, **err** is an error object.|
 
 **Error codes**
@@ -112,7 +116,7 @@ Publishes a common event. This API uses an asynchronous callback to return the r
 
 | Name    | Type                  | Mandatory| Description                  |
 | -------- | ---------------------- | ---- | ---------------------- |
-| event    | string                 | Yes  | Name of the common event to publish. For details, see [System Common Events](./common_event/commonEventManager-definitions.md). |
+| event    | string                 | Yes   | Common event to publish. For details, see [System Common Events](./common_event/commonEventManager-definitions.md). The value can contain a maximum of 254 bytes. Excess content will be truncated. |
 | options  | [CommonEventPublishData](./js-apis-inner-commonEvent-commonEventPublishData.md) | Yes  | Properties of the common event to publish.|
 | callback | AsyncCallback\<void>   | Yes  | Callback used to return the result. If the common event is successfully published, **err** is **undefined**; if the event fails to be published, **err** is an error object. |
 
@@ -480,7 +484,7 @@ Subscribes to a common event. This API uses a promise to return the result.
 | Name      | Type                                               | Mandatory| Description                            |
 | ---------- | ---------------------------------------------------- | ---- | -------------------------------- |
 | subscriber | [CommonEventSubscriber](./js-apis-inner-commonEvent-commonEventSubscriber.md#commoneventsubscriber-1)     | Yes  | Subscriber object.                |
-| callback   | Callback\<[CommonEventData](./js-apis-inner-commonEvent-commonEventData.md)> | Yes  | Callback to be invoked when a common event is subscribed to.|
+| callback   | Callback\<[CommonEventData](./js-apis-inner-commonEvent-commonEventData.md)> | Yes   | Callback used to return the common event data. |
 
 **Return value**
 | Type                                                     | Description            |
@@ -596,4 +600,3 @@ Describes the content and properties of a common event.
 | --- | --- |
 | [_CommonEventPublishData](js-apis-inner-commonEvent-commonEventPublishData.md) | Content and properties of a common event.|
 
-<!--no_check-->

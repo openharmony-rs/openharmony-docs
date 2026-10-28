@@ -47,6 +47,30 @@
 
 ## 函数说明
 
+### OH_AbilityRuntime_ModObjExtensionInstance
+
+```c
+typedef struct OH_AbilityRuntime_ModularObjectExtensionInstance OH_AbilityRuntime_ModObjExtensionInstance
+```
+
+**描述**
+
+定义OH_AbilityRuntime_ModObjExtensionInstance结构体。
+
+**起始版本：** 26.0.0
+
+### OH_AbilityRuntime_ModObjExtensionInstanceHandle
+
+```c
+typedef OH_AbilityRuntime_ModObjExtensionInstance* OH_AbilityRuntime_ModObjExtensionInstanceHandle
+```
+
+**描述**
+
+定义指向OH_AbilityRuntime_ModObjExtensionInstance的指针类型。
+
+**起始版本：** 26.0.0
+
 ### OH_AbilityRuntime_ModObjExtensionAbility_OnCreateFunc()
 
 ```c

@@ -80,7 +80,7 @@ Data Protection Kit为应用提供了将明文文件生成DLP文件的能力和�
 
     3.2 需要获取明文文件和加密文件的文件描述符。
 
-    3.3 调用[dlpPermission.decryptDlpFile](../../reference/apis-data-protection-kit/js-apis-dlppermission.md#dlppermissiondecryptdlpfile21)将明文文件加密生成企业账号DLP文件。
+    3.3 调用[dlpPermission.decryptDlpFile](../../reference/apis-data-protection-kit/js-apis-dlppermission.md#dlppermissiondecryptdlpfile21)恢复原始文件。
 
     <!-- @[dlp_decryptDlpFile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
     

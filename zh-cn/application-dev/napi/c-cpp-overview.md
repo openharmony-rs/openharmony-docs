@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "介绍OpenHarmony中C/C++标准库的核心机制，涵盖C++兼容性（libc++.so与libc++_shared.so隔离）、musl libc动态链接器命名空间隔离、rpath机制、信号使用规则及全球化支持等内容，帮助开发者在NDK开发中避免ABI兼容性和库加载等问题。"
+keywords: [C/C++标准库, musl libc, 动态链接器, 命名空间隔离, rpath, C++兼容性, libc++_shared.so, ABI兼容性, symbol-version]
+doctype: guide
+status: active
+---
+
 # C/C++标准库机制概述
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
@@ -38,7 +46,7 @@ OpenHarmony中动态库加载namespace配置的情况
 
 - ndk ns：动态链接器启动时默认创建的ns，它可以搜索`/system/lib{abi}/ndk`目录下的so，主要是暴露了NDK接口的so。
 
-- app ns: 应用启动时创建的ns，它的搜索路径一般是应用的安装路径(可能为沙箱路径)，即可加载应用的so。
+- app ns：应用启动时创建的ns，它的搜索路径一般是应用的安装路径（可能为沙箱路径），即可加载应用的so。
 
 当前的命名空间机制主要限制了应用native库和系统native库之间的调用，规则如图所示：
 

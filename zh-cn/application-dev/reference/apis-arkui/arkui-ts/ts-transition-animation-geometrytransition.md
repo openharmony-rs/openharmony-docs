@@ -28,7 +28,7 @@ geometryTransition(id: string): T
 
 | 参数名  | 类型                 | 必填 | 说明                                                     |
 | ------- | ------------------------ | ---- | ------------------------------------------------------------ |
-| id      | string                   | 是   | 用于设置绑定关系，id置空字符串清除绑定关系避免参与共享行为，id可更换重新建立绑定关系。同一个id只能有两个组件绑定，且分别作为in（新视图）和out（旧视图）两种不同类型角色，不能多个组件绑定同一个id。 |
+| id      | string                   | 是   | 用于设置绑定关系，id置空字符串清除绑定关系避免参与共享行为，id可更换重新建立绑定关系。同一个id只能有两个组件绑定，且分别作为in（新视图）和out（旧视图）两种不同类型角色，不能多个组件绑定同一个id。绑定同一id的组件不能相互嵌套，即一个绑定了该id的组件内部不能再嵌套另一个绑定了相同id的组件，否则会导致转场动画异常。建议在动画结束回调（[onFinish](ts-explicit-animation.md#animateparam对象说明)）中将绑定的id置空，防止在非预期场景（如页面快速连续点击、状态变量变化等）下误触发共享元素转场，下次触发转场前再将id设置回所需值。 |
 
 **返回值：**
 
@@ -52,7 +52,7 @@ geometryTransition(id: string, options?: GeometryTransitionOptions): T
 
 | 参数名  | 类型                 | 必填 | 说明                                                     |
 | ------- | ------------------------ | ---- | ------------------------------------------------------------ |
-| id      | string                   | 是   | 用于设置绑定关系，id置空字符串清除绑定关系避免参与共享行为，id可更换重新建立绑定关系。同一个id只能有两个组件绑定，且分别作为in（新视图）和out（旧视图）两种不同类型角色，不能多个组件绑定同一个id。 |
+| id      | string                   | 是   | 用于设置绑定关系，id置空字符串清除绑定关系避免参与共享行为，id可更换重新建立绑定关系。同一个id只能有两个组件绑定，且分别作为in（新视图）和out（旧视图）两种不同类型角色，不能多个组件绑定同一个id。绑定同一id的组件不能相互嵌套，即一个绑定了该id的组件内部不能再嵌套另一个绑定了相同id的组件，否则会导致转场动画异常。建议在动画结束回调（[onFinish](ts-explicit-animation.md#animateparam对象说明)）中将绑定的id置空，防止在非预期场景（如页面快速连续点击、状态变量变化等）下误触发共享元素转场，下次触发转场前再将id设置回所需值。 |
 | options | [GeometryTransitionOptions](#geometrytransitionoptions11) | 否   | 组件内隐式共享元素转场动画参数，需配合[animateTo](../arkts-apis-uicontext-uicontext.md#animateto)使用才有动画效果。<br>默认值为 { follow: false }。                                    |
 
 **返回值：**
@@ -85,6 +85,7 @@ geometryTransition(id: string, options?: GeometryTransitionOptions): T
 @Component
 struct Index {
   @State isShow: boolean = false;
+  @State geometryId: string = 'picture';
 
   build() {
     Stack({ alignContent: Alignment.Center }) {
@@ -96,8 +97,12 @@ struct Index {
           .width(300)
           .height(400)
           .offset({ y: 100 })
-          .geometryTransition('picture')
+          .geometryTransition(this.geometryId)
           .transition(TransitionEffect.OPACITY)
+          // 在打断场景下，即动画过程中点击页面触发下一次转场，如果不加id，则会出现重影
+          // 加了id之后，新建的图片会复用之前的图片节点，不会重新创建节点，也就不会有重影问题
+          // 加id的规则为加在if和else下的第一个节点上，有多个并列节点则也需要进行添加
+          .id('item1')
       } else {
         // geometryTransition此处绑定的是容器，那么容器内的子组件需设为相对布局跟随父容器变化，
         // 套多层容器为了说明相对布局约束传递
@@ -114,13 +119,17 @@ struct Index {
         // 则对容器本身有圆角同步而不会操作容器内部子组件的borderRadius
         .borderRadius(20)
         .clip(true)
-        .geometryTransition('picture')
+        .geometryTransition(this.geometryId)
         // transition保证组件离场不被立即析构，可设置其他转场效果
         .transition(TransitionEffect.OPACITY)
+        .id('item2')
       }
     }
     .onClick(() => {
-      this.getUIContext().animateTo({ duration: 1000 }, () => {
+      this.geometryId = 'picture';
+      this.getUIContext().animateTo({ duration: 1000, onFinish: () => {
+        this.geometryId = '';
+      } }, () => {
         this.isShow = !this.isShow;
       });
     })

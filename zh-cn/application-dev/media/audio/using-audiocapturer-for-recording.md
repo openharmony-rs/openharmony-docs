@@ -26,6 +26,8 @@ AudioCapturer是音频采集器，用于录制PCM（Pulse Code Modulation）音�
 
 以下各步骤示例为片段代码，可通过示例代码右下方链接获取[完整示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS)。
 
+完整示例展示了使用AudioCapturer完成录音，并在录音完成后播放所录制音频的实现。
+
 1. 配置音频采集参数并创建AudioCapturer实例，音频采集参数的详细信息可以查看[AudioCapturerOptions](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiocaptureroptions8)。
 
    > **说明：**
@@ -176,7 +178,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 下面展示了使用AudioCapturer录制音频的完整示例代码。
 
-<!-- @[all_audioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->  
+<!-- @[all_audioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit';
@@ -297,7 +299,7 @@ async function startRender(updateCallback?: (msg: string, isError: boolean) => v
   if (audioRenderer !== undefined) {
     let stateGroup = [audio.AudioState.STATE_PREPARED, audio.AudioState.STATE_PAUSED, audio.AudioState.STATE_STOPPED];
     if (stateGroup.indexOf(audioRenderer.state.valueOf()) === -1) { // 当且仅当状态为prepared、paused和stopped之一时才能启动渲染。
-      console.info(TAG + 'start failed');
+      console.error(TAG + 'start failed');
       return;
     }
     // 启动渲染。
@@ -317,7 +319,7 @@ async function stopRender(updateCallback?: (msg: string, isError: boolean) => vo
     // 只有渲染器状态为running或paused的时候才可以停止。
     if (audioRenderer.state.valueOf() !== audio.AudioState.STATE_RUNNING &&
       audioRenderer.state.valueOf() !== audio.AudioState.STATE_PAUSED) {
-      console.info('Renderer is not running or paused.');
+      console.error('Renderer is not running or paused.');
       return;
     }
     // 停止渲染。
@@ -336,7 +338,7 @@ async function releaseRender(updateCallback?: (msg: string, isError: boolean) =>
   if (audioRenderer !== undefined) {
     // 渲染器状态不是released状态，才能release。
     if (audioRenderer.state.valueOf() === audio.AudioState.STATE_RELEASED) {
-      console.info('Renderer already released');
+      console.error('Renderer already released');
       return;
     }
     // 释放资源。
@@ -377,7 +379,7 @@ async function start(updateCallback?: (msg: string, isError: boolean) => void): 
       , audio.AudioState.STATE_PAUSED, audio.AudioState.STATE_STOPPED];
     // 当且仅当状态为STATE_PREPARED、STATE_PAUSED和STATE_STOPPED之一时才能启动采集。
     if (stateGroup.indexOf(audioCapturer.state.valueOf()) === -1) {
-      console.info(`${TAG}: start failed`);
+      console.error(`${TAG}: start failed`);
       // ...
       return;
     }
@@ -440,7 +442,7 @@ async function stop(updateCallback?: (msg: string, isError: boolean) => void): P
     // 只有采集器状态为STATE_RUNNING或STATE_PAUSED的时候才可以停止。
     if (audioCapturer.state.valueOf() !== audio.AudioState.STATE_RUNNING &&
       audioCapturer.state.valueOf() !== audio.AudioState.STATE_PAUSED) {
-      console.info(`${TAG}: Capturer is not running or paused`);
+      console.error(`${TAG}: Capturer is not running or paused`);
       // ...
       return;
     }
@@ -464,7 +466,7 @@ async function release(updateCallback?: (msg: string, isError: boolean) => void)
     // 采集器状态不是STATE_RELEASED或STATE_NEW状态,才能release。
     if (audioCapturer.state.valueOf() === audio.AudioState.STATE_RELEASED ||
       audioCapturer.state.valueOf() === audio.AudioState.STATE_NEW) {
-      console.info(`${TAG}: Capturer already released`);
+      console.error(`${TAG}: Capturer already released`);
       // ...
       return;
     }

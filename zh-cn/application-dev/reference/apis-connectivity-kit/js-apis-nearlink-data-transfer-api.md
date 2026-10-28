@@ -43,6 +43,8 @@ createPort(uuid: string): void
 
 注册端口通道。端口通道注册后方可用于连接远端设备，不再使用时需通过[dataTransfer.destroyPort](#datatransferdestroyport)销毁。
 
+调用此接口前，您可以调用[isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported)查询设备是否支持星闪。
+
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -63,8 +65,8 @@ createPort(uuid: string): void
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 801 | Capability not supported because the chip does not support it. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100003 | NearLink disabled. |
 | 36100020 | The UUID is already registered. |
 | 36100021 | Port exceeds the upper limit. |
@@ -93,6 +95,8 @@ destroyPort(uuid: string): void
 
 销毁端口通道。
 
+调用此接口前，您可以调用[isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported)查询设备是否支持星闪。
+
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -113,8 +117,8 @@ destroyPort(uuid: string): void
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 801 | Capability not supported because the chip does not support it. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100003 | NearLink disabled. |
 | 36100022 | The UUID is not registered. |
 | 36100043 | Invalid UUID. |
@@ -142,6 +146,8 @@ connect(params: ConnectionParams): Promise&lt;void&gt;
 
 连接远端设备。使用Promise异步回调。
 
+调用此接口前，您可以调用[isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported)查询设备是否支持星闪。
+
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -168,8 +174,8 @@ connect(params: ConnectionParams): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 801 | Capability not supported because the chip does not support it. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100003 | NearLink disabled. |
 | 36100041 | Invalid address. |
 | 36100043 | Invalid UUID. |
@@ -204,6 +210,8 @@ disconnect(params: ConnectionParams): Promise&lt;void&gt;
 
 断连远端设备。需在通过[dataTransfer.connect](#datatransferconnect)成功建立连接后调用，用于断开已建立的远端设备连接。使用Promise异步回调。
 
+调用此接口前，您可以调用[isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported)查询设备是否支持星闪。
+
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -230,8 +238,8 @@ disconnect(params: ConnectionParams): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 801 | Capability not supported because the chip does not support it. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100003 | NearLink disabled. |
 | 36100041 | Invalid address. |
 | 36100043 | Invalid UUID. |
@@ -268,6 +276,8 @@ onConnectionStateChanged(callback: Callback&lt;ConnectionResult&gt;): void
 
 应用需具备ohos.permission.ACCESS_NEARLINK权限，方可接收此事件上报。
 
+调用此接口前，您可以调用[isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported)查询设备是否支持星闪。
+
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -286,7 +296,7 @@ onConnectionStateChanged(callback: Callback&lt;ConnectionResult&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 801 | Capability not supported because the chip does not support it. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100099 | Operation failed. |
 
 **示例：** 
@@ -311,6 +321,8 @@ offConnectionStateChanged(callback?: Callback&lt;ConnectionResult&gt;): void
 
 取消订阅端口通道连接状态变更事件。使用callback异步回调。
 
+调用此接口前，您可以调用[isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported)查询设备是否支持星闪。
+
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -329,7 +341,7 @@ offConnectionStateChanged(callback?: Callback&lt;ConnectionResult&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 801 | Capability not supported because the chip does not support it. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100099 | Operation failed. |
 
 **示例：** 
@@ -350,6 +362,8 @@ try {
 getConnectionState(params: ConnectionStateParams): ConnectionState
 
 获取与远端设备之间的端口通道连接状态。
+
+调用此接口前，您可以调用[isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported)查询设备是否支持星闪。
 
 **起始版本：** 26.0.0
 
@@ -377,8 +391,8 @@ getConnectionState(params: ConnectionStateParams): ConnectionState
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 801 | Capability not supported because the chip does not support it. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100003 | NearLink disabled. |
 | 36100041 | Invalid address. |
 | 36100043 | Invalid UUID in connection parameters. |
@@ -409,6 +423,8 @@ writeData(params: DataParams): Promise&lt;void&gt;
 
 通过设备地址和UUID向远端设备发送数据。使用Promise异步回调。
 
+调用此接口前，您可以调用[isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported)查询设备是否支持星闪。
+
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -435,10 +451,10 @@ writeData(params: DataParams): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 801 | Capability not supported because the chip does not support it. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100003 | NearLink disabled. |
-| 36100023 | Write data congestion. |
+| 36100023 | Data transmission congested. |
 | 36100041 | Invalid address. |
 | 36100043 | Invalid UUID. |
 | 36100044 | NearLink standard UUID not allowed. |
@@ -480,6 +496,8 @@ onReadData(callback: Callback&lt;DataParams&gt;): void
 
 应用需具备ohos.permission.ACCESS_NEARLINK权限，方可接收此事件上报。
 
+调用此接口前，您可以调用[isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported)查询设备是否支持星闪。
+
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -498,7 +516,7 @@ onReadData(callback: Callback&lt;DataParams&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 801 | Capability not supported because the chip does not support it. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100099 | Operation failed. |
 
 **示例：** 
@@ -523,6 +541,8 @@ offReadData(callback?: Callback&lt;DataParams&gt;): void
 
 取消订阅端口通道数据接收事件。使用callback异步回调。
 
+调用此接口前，您可以调用[isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported)查询设备是否支持星闪。
+
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -541,7 +561,7 @@ offReadData(callback?: Callback&lt;DataParams&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 801 | Capability not supported because the chip does not support it. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100099 | Operation failed. |
 
 **示例：** 

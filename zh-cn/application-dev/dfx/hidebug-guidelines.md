@@ -377,6 +377,7 @@ HiDebug提供修改转储堆快照级别的接口。
 | OH_HiDebug_SetMaxStackDepth | 设置最大回栈深度。<br/>**说明**：从API版本26.0.1开始，支持该接口。 |
 | OH_HiDebug_SetFilterSize | 设置内存分配过滤大小。<br/>**说明**：从API版本26.0.1开始，支持该接口。 |
 | OH_HiDebug_SetMaxDurationSec | 设置最大采集时长，单位秒。<br/>**说明**：从API版本26.0.1开始，支持该接口。 |
+| OH_HiDebug_SetStackTraceMode | 设置调用栈追踪模式，用于配置资源采集时已销毁调用栈追踪的处理方式。<br/>**说明**：从API版本26.0.1开始，支持该接口。 |
 | OH_HiDebug_StartProfilerWithOptions | 按指定资源类型和配置开启资源分配栈信息采集。须与OH_HiDebug_StopProfiler配对使用。<br/>**说明**：从API版本26.0.1开始，支持该接口。 |
 
 ## 导出内存快照

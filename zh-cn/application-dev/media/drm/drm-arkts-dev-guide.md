@@ -9,7 +9,7 @@
 
 开发者可以调用DRM Kit的ArkTS接口实现DRM证书管理、DRM许可证管理、DRM节目授权、DRM节目解密等数字版权保护功能。
 
-DRM Kit提供MediaKeySystem实现DRM证书管理、DRM许可证管理功能，并管理MediaKeySession实例；MediaKeySession实现DRM节目授权，并可支持Media Kit或Media Kit/AVCodec Kit实现DRM节目解密以实现DRM节目播放。
+DRM Kit提供MediaKeySystem实现DRM证书管理、DRM许可证管理功能，并管理MediaKeySession实例；MediaKeySession实现DRM节目授权，并可支持Media Kit/AVCodec Kit实现DRM节目解密以实现DRM节目播放。
 
 ## 开发步骤
 
@@ -77,7 +77,7 @@ DRM Kit提供MediaKeySystem实现DRM证书管理、DRM许可证管理功能，�
        mediaKeySystem.generateKeySystemRequest().then(async (drmRequest: drm.ProvisionRequest) => {
            console.info("generateKeySystemRequest success", drmRequest.data, drmRequest.defaultURL);
        }).catch((err:BusinessError) =>{
-           console.error("generateKeySystemRequest err end", err.code);
+           console.error("generateKeySystemRequest failed", err.code);
        });
    } else {
        console.info("The certificate already exists.");
@@ -87,7 +87,7 @@ DRM Kit提供MediaKeySystem实现DRM证书管理、DRM许可证管理功能，�
    mediaKeySystem.processKeySystemResponse(provisionResponseByte).then(() => {
        console.info("processKeySystemResponse success");
    }).catch((err:BusinessError) =>{
-       console.error("processKeySystemResponse err end", err.code);
+       console.error("processKeySystemResponse failed", err.code);
    });
    ```
 
@@ -132,7 +132,7 @@ DRM Kit提供MediaKeySystem实现DRM证书管理、DRM许可证管理功能，�
 
       ```ts
       mediaKeySession.on('keysChange', (keyInfo : drm.KeysInfo[], newKeyAvailable:boolean) => {
-          for(let i = 0; i < keyInfo.length; i++){
+         for(let i = 0; i < keyInfo.length; i++){
               console.info('keysChange' + 'info:' + keyInfo[i].keyId + ' extraInfo:' + keyInfo[i].value);
           }
       });
@@ -158,8 +158,8 @@ DRM Kit提供MediaKeySystem实现DRM证书管理、DRM许可证管理功能，�
     let initData = new Uint8Array([0x00, 0x00, 0x00, 0x00]);
     // 根据DRM解决方案要求设置可选数据的值。
     let optionalData:drm.OptionsData[] = [{
-        name: "optionalDataName",
-        value: "optionalDataValue"
+        name: "licenseServerUrl",
+        value: "https://license.example.com"
     }];
     // 在线媒体密钥请求和响应。
     mediaKeySession.generateMediaKeyRequest("video/mp4", initData, drm.MediaKeyType.MEDIA_KEY_TYPE_ONLINE, optionalData).then(async (licenseRequest: drm.MediaKeyRequest) => {
@@ -169,10 +169,10 @@ DRM Kit提供MediaKeySystem实现DRM证书管理、DRM许可证管理功能，�
        mediaKeySession.processMediaKeyResponse(licenseResponse).then((mediaKeyId: Uint8Array) => {
          console.info("processMediaKeyResponse success");
        }).catch((err:BusinessError) =>{
-         console.error("processMediaKeyResponse err end", err.code);
+         console.error("processMediaKeyResponse failed", err.code);
       });
     }).catch((err:BusinessError) =>{
-      console.error("generateMediaKeyRequest err end", err.code);
+      console.error("generateMediaKeyRequest failed", err.code);
     });
     // 离线媒体密钥请求和响应。
     let offlineMediaKeyId: Uint8Array;
@@ -184,10 +184,10 @@ DRM Kit提供MediaKeySystem实现DRM证书管理、DRM许可证管理功能，�
          offlineMediaKeyId = new Uint8Array(mediaKeyId);
          console.info("processMediaKeyResponse success");
        }).catch((err:BusinessError) =>{
-         console.error("processMediaKeyResponse err end", err.code);
+         console.error("processMediaKeyResponse failed", err.code);
       });
     }).catch((err:BusinessError) =>{
-      console.error("generateMediaKeyRequest err end", err.code);
+      console.error("generateMediaKeyRequest failed", err.code);
     });
       ```
 

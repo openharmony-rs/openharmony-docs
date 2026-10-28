@@ -11,6 +11,11 @@
 
 对应算法规格请查看[密钥派生算法规格：X963KDF](crypto-key-derivation-overview.md#x963kdf算法)。
 
+## 在CMake脚本中链接相关动态库
+```txt
+target_link_libraries(entry PUBLIC libohcrypto.so)
+```
+
 ## 开发步骤
 
 1. 调用[OH_CryptoKdfParams_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-kdf-h.md#oh_cryptokdfparams_create)，指定字符串参数'X963KDF'，创建密钥派生参数对象。

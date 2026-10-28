@@ -5,7 +5,7 @@
 <!--Designer: @trytocalm-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=0d5bc9298f401d2d43e377f0c6777e605efaeed7 translatedAt=2026-09-18T04:05:45.363Z pushedAt=2026-09-18T10:24:26.383Z -->
+<!-- md-trans-meta sourceCommit=ddf46082e201d3e56e9a77a4a4b0d3c87dbe2be9 translatedAt=2026-10-22T03:46:33.346Z pushedAt=2026-10-22T07:34:59.049Z nl=1 -->
 
 ## When to Use
 
@@ -46,7 +46,7 @@ Before using **OH_MIDI** APIs, you need to complete the following preparations:
 - Link dynamic libraries in the CMake script.
 
   <!-- @[ohmidi_cmake](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/CMakeLists.txt) -->
-
+  
   ``` Text
   target_link_libraries(entry PUBLIC
       libace_napi.z.so
@@ -561,14 +561,8 @@ static napi_value SendMIDI(napi_env env, napi_callback_info info)
 
     uint32_t eventsWritten = 0;
     OH_MIDIStatusCode status = OH_MIDIDevice_Send(it->second, portIndex, events.data(), eventCount, &eventsWritten);
-    napi_create_object(env, &result);
-    napi_value statusValue;
-    napi_create_int32(env, static_cast<int32_t>(status), &statusValue);
-    napi_set_named_property(env, result, "status", statusValue);
-    napi_value writtenValue;
-    napi_create_uint32(env, eventsWritten, &writtenValue);
-    napi_set_named_property(env, result, "eventsWritten", writtenValue);
-    return result;
+    // ...
+}
 ```
 
 **UMP Format Description**

@@ -125,7 +125,7 @@ async function EnvelopRsaTest()
     .then((data) => {
       handle = data.handle;
     }).catch((error: BusinessError) => {
-      console.error(`decrypt init fail, errorCode: ${error.code}`)
+      console.error(`encrypt init fail, errorCode: ${error.code}`)
     })
   await huks.finishSession(handle, enOption)
     .then((data) => {

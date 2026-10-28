@@ -206,7 +206,7 @@ try {
 
 setHomeWallpaper(admin: Want, fd: number): Promise&lt;void&gt;
 
-设置桌面壁纸，使用Promise异步回调。
+设置桌面壁纸，折叠屏设备只支持设置单屏壁纸，使用Promise异步回调。
 
 > **说明：**
 >
@@ -275,7 +275,7 @@ deviceSettings.setHomeWallpaper(wantTemp, fd).then(() => {
 
 setUnlockWallpaper(admin: Want, fd: number): Promise&lt;void&gt;
 
-设置锁屏壁纸，使用Promise异步回调。企业设备管理应用可通过此接口统一设置企业设备的锁屏壁纸，用于企业形象展示或安全管控等场景。
+设置锁屏壁纸，折叠屏设备只支持设置单屏壁纸，使用Promise异步回调。企业设备管理应用可通过此接口统一设置企业设备的锁屏壁纸，用于企业形象展示或安全管控等场景。
 
 > **说明：**
 >

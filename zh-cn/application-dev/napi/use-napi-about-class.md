@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍使用Node-API接口进行class相关开发，包括定义类、构造实例、设置原型等操作，支持在Node-API模块中创建和操作ArkTS类对象。"
+keywords: [Node-API, class, 类开发, 构造函数, 原型, 实例化, napi_define_class, 继承]
+doctype: guide
+status: active
+---
+
 # 使用Node-API进行class相关开发
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
@@ -16,7 +24,7 @@
 
 - **类**：类是用于创建对象的模板。它提供了一种封装数据和行为的方式，以便于对数据进行处理和操作。类在ArkTS中是建立在原型（prototype）的基础上的，并且还引入了一些类独有的语法和语义。
 - **实例**：实例是通过类创建具体的对象。类定义了对象的结构和行为，而实例则是类的具体表现。通过实例化类，我们可以访问类中定义的属性和方法，并且每个实例都具有自己的属性值。
-- **原型**：ArkTS也采用Class的概念来实现类型之间的继承，早期EcmaScript规范定义了原型的概念，对象通过原型链的方式来实现继承的。原型的概念可以参考[EcmaScript的社区规范](https://262.ecma-international.org/#sec-terms-and-definitions-prototype)。
+- **原型**：ArkTS也采用Class的概念来实现类型之间的继承，早期ECMAScript规范定义了原型的概念，对象通过原型链的方式来实现继承的。原型的概念可以参考[ECMAScript的社区规范](https://262.ecma-international.org/#sec-terms-and-definitions-prototype)。
 
 ## 场景和功能介绍
 

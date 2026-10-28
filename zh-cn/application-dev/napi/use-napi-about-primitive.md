@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍使用Node-API接口进行primitive类型相关开发，包括ArkTS值与C/C++类型的转换、类型判断和强转操作，支持在Node-API模块中处理基本数据类型交互。"
+keywords: [Node-API, primitive, 类型转换, napi_coerce_to_bool, napi_coerce_to_number, 类型判断, 数据转换, 基本类型]
+doctype: guide
+status: active
+---
+
 # 使用Node-API接口进行primitive类相关开发
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->

@@ -924,7 +924,7 @@ AES（GCM模式）解密失败返回错误码17630001可参考[使用AES-GCM算�
     let dataTag = new Uint8Array(arr);
     let tagBlob: cryptoFramework.DataBlob = {
       data: dataTag
-    }; // The GCM authTag is obtained by doFinal() in encryption and passed in params of init() in decryption.
+    }; // GCM的authTag在加密时通过doFinal()获取，在解密时通过init()的params传入。
     let gcmParamsSpec: cryptoFramework.GcmParamsSpec = {
       iv: ivBlob,
       aad: aadBlob,
@@ -1031,7 +1031,7 @@ AES（GCM模式）解密失败返回错误码17630001可参考[使用AES-GCM算�
     let dataTag = new Uint8Array(arr);
     let tagBlob: cryptoFramework.DataBlob = {
       data: dataTag
-    }; // The GCM authTag is obtained by doFinal() in encryption and passed in params of init() in decryption.
+    }; // GCM的authTag在加密时通过doFinal()获取，在解密时通过init()的params传入。
     let gcmParamsSpec: cryptoFramework.GcmParamsSpec = {
       iv: ivBlob,
       aad: aadBlob,

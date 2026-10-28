@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍如何使用实验性接口从外部内存创建ArrayBuffer对象，并依据copied输出参数与finalize回调管理外部内存生命周期。"
+keywords: [OH_JSVM_CreateArrayBufferFromExternalMemory, JSVM_FinalizeArrayBuffer, 外部内存, 零拷贝, copied, 8字节对齐, JSVM_EXPERIMENTAL, ArrayBuffer, 内存生命周期]
+doctype: guide
+status: active
+---
+
 # 使用JSVM-API接口从外部内存创建ArrayBuffer
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->

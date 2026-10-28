@@ -48,7 +48,10 @@ DRM Kit提供MediaKeySystem实现DRM证书管理、DRM许可证管理功能，�
 4. （可选）查询设备是否支持对应DRM解决方案名称、媒体类型、安全保护级别的DRM解决方案。
 
     ```c++
-    bool isSupported = OH_MediaKeySystem_IsSupported3("com.clearplay.drm", "video/mp4", CONTENT_PROTECTION_LEVEL_SW_CRYPTO);
+    // mimeType应根据实际媒体内容的容器类型动态获取（如从媒体源解析），避免硬编码。
+    // 传入前可通过OH_MediaKeySystem_IsSupported2/OH_MediaKeySystem_IsSupported3确认设备是否支持该类型。
+    const char *mimeType = "video/mp4";
+    bool isSupported = OH_MediaKeySystem_IsSupported3("com.clearplay.drm", mimeType, CONTENT_PROTECTION_LEVEL_SW_CRYPTO);
     if (isSupported != true) {
         printf("The device does not support the content protection level.");
     }
@@ -166,8 +169,10 @@ DRM Kit提供MediaKeySystem实现DRM证书管理、DRM许可证管理功能，�
 12. （可选）查询是否需要安全解码。
 
     ```c++
+    // codecMimeType应根据实际媒体内容的编码类型动态获取（如video/avc），避免硬编码。
+    const char *codecMimeType = "video/avc";
     bool requireSecureDecoder;
-    ret = OH_MediaKeySession_RequireSecureDecoderModule(mediaKeySession, "video/avc", &requireSecureDecoder);
+    ret = OH_MediaKeySession_RequireSecureDecoderModule(mediaKeySession, codecMimeType, &requireSecureDecoder);
     if (ret != DRM_ERR_OK) {
         printf("OH_MediaKeySession_RequireSecureDecoderModule failed.");
     }
@@ -184,11 +189,14 @@ DRM Kit提供MediaKeySystem实现DRM证书管理、DRM许可证管理功能，�
     memset(&info, 0, sizeof(DRM_MediaKeyRequestInfo));
     info.initDataLen = sizeof(initData);
     info.type = MEDIA_KEY_TYPE_ONLINE; // MEDIA_KEY_TYPE_ONLINE: 在线媒体密钥请求类型; MEDIA_KEY_TYPE_OFFLINE: 离线媒体密钥请求类型。 
-    memcpy(info.mimeType, (char *)"video/mp4", sizeof("video/mp4"));
+    // mimeType应根据实际媒体内容的容器类型动态获取（如从媒体源解析），避免硬编码。
+    const char *mimeType = "video/mp4";
+    if (strlen(mimeType) < sizeof(info.mimeType)) {
+        memcpy(info.mimeType, mimeType, strlen(mimeType) + 1);
+    }
     memcpy(info.initData, initData, sizeof(initData));
-    memcpy(info.optionName[0], (char *)"optionalDataName", sizeof("optionalDataName"));
-    memcpy(info.optionData[0], (char *)"optionalDataValue", sizeof("optionalDataValue"));
-    info.optionsCount = 1;
+    // 若DRM解决方案需要可选数据，请按实际设置optionName、optionData，并令optionsCount为实际选项数量。
+    info.optionsCount = 0;
     ret = OH_MediaKeySession_GenerateMediaKeyRequest(mediaKeySession, &info, &mediaKeyRequest);
     if (ret != DRM_ERR_OK) {
         printf("OH_MediaKeySession_GenerateMediaKeyRequest failed.");

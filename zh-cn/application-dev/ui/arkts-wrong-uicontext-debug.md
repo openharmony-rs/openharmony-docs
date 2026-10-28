@@ -48,7 +48,7 @@
 
   - 异常日志示例：
 
-    `(100000:100000:scoped)] [com.example.helloworld][entry][100001]: window background`
+    `(100000:100000:scope)] [com.example.helloworld][entry][100001]: window background`
 
     该异常日志说明存在错误跟踪ID为100000的UI实例。
 

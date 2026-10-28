@@ -77,8 +77,8 @@ function certSample(): void {
 
     // 获取证书主体名称。
     let subjectNameBin = x509Cert.getSubjectName(cert.EncodingType.ENCODING_UTF8);
-    let encoder = util.TextDecoder.create();
-    let subjectName = encoder.decodeToString(subjectNameBin.data);
+    let decoder = util.TextDecoder.create();
+    let subjectName = decoder.decodeToString(subjectNameBin.data);
     console.info(`X509 subjectName: ${subjectName}`);
 
     // 获取证书对象的字符串类型数据。

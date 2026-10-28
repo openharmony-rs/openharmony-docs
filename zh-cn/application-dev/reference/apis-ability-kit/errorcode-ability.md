@@ -2795,6 +2795,62 @@ write系统调用失败。
 
 缓冲区满或对端异常，尝试等待一段时间后重新写入。
 
+## 35600034 设备未处于开发者模式
+
+**错误信息**
+
+The device is not in developer mode.
+
+**错误描述**
+
+设备未处于开发者模式，不允许注册Hook。
+
+**可能原因**
+
+设备未开启开发者模式，调用[registerCliHook()](js-apis-app-cli-cliManager-sys.md#climanagerregisterclihook)或[registerFunctionHook()](js-apis-app-function-functionManager-sys.md#functionmanagerregisterfunctionhook)接口时返回该错误码。
+
+**处理步骤**
+
+1. 进入设备设置，开启开发者模式。
+2. 开发者模式开启后重新调用注册Hook的接口。
+
+## 35600035 Hook已注册
+
+**错误信息**
+
+A hook is already registered; unregister it first.
+
+**错误描述**
+
+已注册了同类型的Hook，无法重复注册，需要先取消原注册Hook。
+
+**可能原因**
+
+同一时间对同一类型的Hook只允许注册一个。如果已有Hook处于注册状态时，再次调用[registerCliHook()](js-apis-app-cli-cliManager-sys.md#climanagerregisterclihook)或[registerFunctionHook()](js-apis-app-function-functionManager-sys.md#functionmanagerregisterfunctionhook)接口，系统会返回该错误码。
+
+**处理步骤**
+
+1. 先调用[unregisterCliHook()](js-apis-app-cli-cliManager-sys.md#climanagerunregisterclihook)或[unregisterFunctionHook()](js-apis-app-function-functionManager-sys.md#functionmanagerunregisterfunctionhook)接口取消已注册的Hook。
+2. 确保前一个Hook成功取消注册后，再次调用相应的注册接口。
+
+## 35600036 Hook未注册
+
+**错误信息**
+
+No hook is registered; nothing to unregister.
+
+**错误描述**
+
+当前未注册任何Hook，无需执行取消注册操作。
+
+**可能原因**
+
+设备未注册Hook时，调用[unregisterCliHook()](js-apis-app-cli-cliManager-sys.md#climanagerunregisterclihook)或[unregisterFunctionHook()](js-apis-app-function-functionManager-sys.md#functionmanagerunregisterfunctionhook)接口会返回该错误码。
+
+**处理步骤**
+
+确认是否已注册Hook，仅在已注册Hook后调用取消注册接口。
+
 ## 35600050 偶发性报错
 
 **错误信息**
@@ -3034,3 +3090,44 @@ The number of AgentCards in the bundle reaches the limit.
 **处理步骤**
 
 调用agentManager.deleteAgentCard删除不再需要的AgentCard。
+
+<!--Del-->
+## 16000301 任务已存在
+
+**错误信息**
+
+Task already exists.
+
+**错误描述**
+
+启动任务时，若指定任务ID的任务已存在，方法将返回该错误码。
+
+**可能原因**
+
+调用[startTask](js-apis-app-agent-taskManager-sys.md#taskmanagerstarttask)接口时，传入的taskId对应的任务尚未结束。任务存续期间，不允许重复启动相同taskId的任务。
+
+**处理步骤**
+
+1. 若该任务已存在，请先调用[finishTask](js-apis-app-agent-taskManager-sys.md#taskmanagerfinishtask)接口结束该任务，再重新启动。
+2. 若需要并行执行多个任务，请使用不同的taskId。
+
+## 16000302 任务不存在
+
+**错误信息**
+
+Task not found.
+
+**错误描述**
+
+结束任务时，若指定的任务不存在或已结束，方法将返回该错误码。
+
+**可能原因**
+
+1. 调用[finishTask](js-apis-app-agent-taskManager-sys.md#taskmanagerfinishtask)接口时，传入的taskId未通过[startTask](js-apis-app-agent-taskManager-sys.md#taskmanagerstarttask)接口启动，或该任务已结束（包括被系统自动结束，例如任务超时、创建者进程退出）。
+2. 调用方不是创建该任务的应用，仅任务创建者可以结束任务。
+
+**处理步骤**
+
+1. 确认传入的taskId对应的任务已启动且尚未结束。
+2. 确认调用方为创建该任务的应用。
+<!--DelEnd-->

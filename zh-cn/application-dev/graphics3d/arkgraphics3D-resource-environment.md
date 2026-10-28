@@ -1,9 +1,17 @@
+---
+kits: ["ArkGraphics 3D / 方舟3D图形"]
+description: "介绍3D场景下环境资源的创建与使用方法，通过createEnvironment()加载环境贴图，设置等距柱状投影背景与基于图像的光照（IBL），控制间接漫反射强度，使物体更自然地融入场景提升渲染真实感。"
+keywords: [ArkGraphics 3D, IBL, 环境贴图, 场景背景]
+doctype: guide
+status: active
+---
+
 # 创建并使用环境资源
 <!--Kit: ArkGraphics 3D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @jason_stark-->
 <!--Designer: @zdustc-->
-<!--Tester: @zhangyue283-->
+<!--Tester: @dongchao01-->
 <!--Adviser: @ge-yafang-->
 
 环境（Environment）：用于定义3D场景背景，可基于图片创建。它将环境贴图映射到立方体或球体表面（如等距柱状投影），以模拟真实环境背景；同时提供基于图像的光照（Image-Based Lighting，IBL），通过间接漫反射等方式影响物体环境光照，使物体更自然地融入场景，提升渲染真实感。
@@ -30,10 +38,10 @@ ArkGraphics 3D支持开发者创建环境资源，用于定义3D场景背景。
    
    ``` TypeScript
    if (this.scene === null) {
-     // Switched from .gltf to .glb; same content, different format
+     // 从 .gltf 切换为 .glb；内容相同，格式不同
      Scene.load($rawfile('gltf/CubeWithFloor/glTF/AnimatedCube.glb'))
        .then(async (result: Scene) => {
-         // Assign loaded scene to globalScene for unified resource creation
+         // 将加载的场景赋值给globalScene，以便统一创建资源
          globalScene = result;
          this.scene = result;
          this.sceneOpt = { scene: this.scene, modelType: ModelType.SURFACE } as SceneOptions;
@@ -67,7 +75,7 @@ ArkGraphics 3D支持开发者创建环境资源，用于定义3D场景背景。
    ``` TypeScript
    this.geom = this.scene.getNodeByPath('rootNode_/Unnamed Node 1/AnimatedCube') as Geometry;
    
-   // record original material
+   // 记录原始材质
    this.originalMat = this.geom.mesh.subMeshes[0].material;
    ```
 
@@ -80,21 +88,21 @@ ArkGraphics 3D支持开发者创建环境资源，用于定义3D场景背景。
    ``` TypeScript
    function createEnvironmentPromise() : Promise<Environment> {
      return new Promise((resolve, reject) => {
-       // Ensure the scene is loaded before accessing sceneFactory
+       // 确保在访问sceneFactory之前场景已加载
        if (globalScene) {
          let sceneFactory: SceneResourceFactory = globalScene.getResourceFactory();
    
-         // Manually load environment maps (.ktx/.jpg/.png etc.)
+         // 手动加载环境贴图（.ktx/.jpg/.png等）
          let sceneImageParameter: SceneResourceParameters = { name: 'image', uri: $rawfile('image/Cube_BaseColor.png') };
          let image: Promise<Image> = sceneFactory.createImage(sceneImageParameter);
          image.then(async (imageEntity: Image) => {
-           // Create Environment
+           // 创建环境
            let sceneEnvironmentParameter: SceneResourceParameters = { name: 'env' };
            let env: Promise<Environment> = sceneFactory.createEnvironment(sceneEnvironmentParameter);
            env.then(async (envEntity: Environment) => {
              envEntity.backgroundType = EnvironmentBackgroundType.BACKGROUND_EQUIRECTANGULAR;
              envEntity.environmentImage  = imageEntity;
-             // Set environment related properties
+             // 设置环境相关属性
              envEntity.indirectDiffuseFactor.x = 1;
              envEntity.indirectDiffuseFactor.y = 1;
              envEntity.indirectDiffuseFactor.z = 1;

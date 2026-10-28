@@ -5,7 +5,7 @@
 <!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=be0965b331f5500a1c33de3947179643ce7998f6 translatedAt=2026-09-18T04:00:58.168Z pushedAt=2026-09-18T10:24:00.982Z -->
+<!-- md-trans-meta sourceCommit=d2da5b49a40bf13cd0859a784a35f0b0e97bc829 translatedAt=2026-10-22T03:46:36.884Z pushedAt=2026-10-22T07:34:50.463Z nl=1 -->
 
 In the scenario where multiple audio streams are concurrently playing, the system has preset a [default audio focus strategy](audio-playback-concurrency.md#audio-focus-strategy) for unified audio focus management of all streams (including playback and recording).
 
@@ -202,8 +202,8 @@ OH_AudioSessionManager *audioSessionManager;
         audioSessionManager, MyAudioSessionDeactivatedCallback);
     // ...
     // Cancel listening for audio session deactivation events.
-    result = OH_AudioSessionManager_UnregisterStateChangeCallback(audioSessionManager,
-                                                                  AudioSessionStateChangedCallback);
+    result = OH_AudioSessionManager_UnregisterSessionDeactivatedCallback(audioSessionManager,
+                                                                         MyAudioSessionDeactivatedCallback);
     // ...
     // Deactivate the audio session.
     result = OH_AudioSessionManager_DeactivateAudioSession(audioSessionManager);

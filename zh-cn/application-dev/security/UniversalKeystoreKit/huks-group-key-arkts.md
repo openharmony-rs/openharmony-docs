@@ -68,6 +68,7 @@
 import { huks } from '@kit.UniversalKeystoreKit';
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { BusinessError } from "@kit.BasicServicesKit";
+import { util } from '@kit.ArkTS';
 
 let aesKeyAlias = 'groupKeyTestAesKeyAlias';
 let handle: number;
@@ -79,20 +80,13 @@ let cipherData: Uint8Array;
  */
 let group = 'ohos.test.groupKey';
 
-function stringToUint8Array(str: string) {
-  let arr: number[] = new Array();
-  for (let i = 0, j = str.length; i < j; ++i) {
-    arr.push(str.charCodeAt(i));
-  }
-  return new Uint8Array(arr);
+function stringToUint8Array(str: string): Uint8Array {
+  const encoder = new util.TextEncoder();
+  return encoder.encodeInto(str);
 }
 
 function uint8ArrayToString(fileData: Uint8Array) {
-  let dataString = '';
-  for (let i = 0; i < fileData.length; i++) {
-    dataString += String.fromCharCode(fileData[i]);
-  }
-  return dataString;
+  return Array.from(fileData, byte => String.fromCharCode(byte)).join('');
 }
 
 function getAesGenerateProperties() {
@@ -340,11 +334,7 @@ function stringToUint8Array(str: string) {
 }
 
 function uint8ArrayToString(fileData: Uint8Array) {
-  let dataString = '';
-  for (let i = 0; i < fileData.length; i++) {
-    dataString += String.fromCharCode(fileData[i]);
-  }
-  return dataString;
+  return Array.from(fileData, byte => String.fromCharCode(byte)).join('');
 }
 
 /*
@@ -612,11 +602,7 @@ function stringToUint8Array(str: string) {
 }
 
 function uint8ArrayToString(fileData: Uint8Array) {
-  let dataString = '';
-  for (let i = 0; i < fileData.length; i++) {
-    dataString += String.fromCharCode(fileData[i]);
-  }
-  return dataString;
+  return Array.from(fileData, byte => String.fromCharCode(byte)).join('');
 }
 
 /*

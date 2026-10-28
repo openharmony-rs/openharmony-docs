@@ -53,6 +53,7 @@ HiDebug模块代码结构体定义。
 | [HiDebug_CrashObjType](#hidebug_crashobjtype) | HiDebug_CrashObjType | 维测信息数据类型的枚举。 |
 | [OH_HiDebug_ResourceType](#oh_hidebug_resourcetype) | OH_HiDebug_ResourceType | 定义资源采集类型的枚举。 |
 | [OH_HiDebug_MemListenerType](#oh_hidebug_memlistenertype) | OH_HiDebug_MemListenerType | 内存监听回调的类型枚举。开发者根据回调类型处理相关逻辑。 |
+| [OH_HiDebug_ProfilerStackTraceMode](#oh_hidebug_profilerstacktracemode) | OH_HiDebug_ProfilerStackTraceMode | 定义调用栈追踪模式枚举。 |
 
 ### 宏定义
 
@@ -146,6 +147,7 @@ enum HiDebug_ErrorCode
 | HIDEBUG_RES_PROF_FAILURE = 11400430 | 资源采集启动/停止失败。<br>**起始版本：** 24 |
 | HIDEBUG_RES_PROF_INVALID_MAX_ASYNC_NESTING_DEPTH = 11400431 | 资源采集异步嵌套深度参数无效。<br>**起始版本：** 26.0.1 |
 | HIDEBUG_RES_PROF_INVALID_MAX_ASYNC_TASK_STACK_DEPTH = 11400432 | 资源采集异步任务回栈深度参数无效。<br>**起始版本：** 26.0.1 |
+| HIDEBUG_RES_PROF_INVALID_STACK_TRACE_MODE = 11400433 | 无效的调用栈追踪模式。<br>**起始版本：** 26.0.1 |
 
 ### HiDebug_TraceFlag
 
@@ -242,6 +244,23 @@ enum OH_HiDebug_MemListenerType
 | OH_HIDEBUG_DO_NOTHING = 0 | 无特定操作，仅通知回调。<br>**起始版本：** 26.0.0 |
 | OH_HIDEBUG_RUNNING_GC = 1 | 垃圾回收（GC）操作。<br>**起始版本：** 26.0.0 |
 | OH_HIDEBUG_DUMP_SNAPSHOT = 2 | 导出内存快照。<br>**起始版本：** 26.0.0 |
+
+### OH_HiDebug_ProfilerStackTraceMode
+
+```c
+enum OH_HiDebug_ProfilerStackTraceMode
+```
+
+**描述**
+
+定义调用栈追踪模式枚举。
+
+**起始版本：** 26.0.1
+
+| 枚举项 | 描述 |
+| -- | -- |
+| OH_HIDEBUG_STACK_TRACE_KEEP_ALL = 0 | 保留所有调用栈追踪，包括已销毁的。<br>**起始版本：** 26.0.1 |
+| OH_HIDEBUG_STACK_TRACE_DISCARD_DESTROYED = 1 | 丢弃已销毁的调用栈追踪。<br>**起始版本：** 26.0.1 |
 
 ## 宏定义说明
 

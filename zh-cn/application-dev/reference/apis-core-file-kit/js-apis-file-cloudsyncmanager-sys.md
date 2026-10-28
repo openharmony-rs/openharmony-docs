@@ -1,8 +1,8 @@
 # @ohos.file.cloudSyncManager (端云同步管理能力)(系统接口)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @Hermits; @reminder2352-->
-<!--Designer: @oh_create_jiawei-->
+<!--Owner: @bao-yangyang; @maokelong95-->
+<!--Designer: @reminder2352-->
 <!--Tester: @zsyztt-->
 <!--Adviser: @jinqiuheng-->
 

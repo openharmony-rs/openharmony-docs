@@ -222,6 +222,7 @@ write(data: Uint8Array, timeout?: number): Promise&lt;number&gt;
 
 | 错误码ID | 错误信息                          |
 | -------- | --------------------------------- |
+| 401      | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. undefined is passed as the optional parameter. |
 | 35700001 | Service error.                    |
 | 35700002 | Invalid parameter.                |
 | 35700003 | Virtual serial port disconnected. |

@@ -2,10 +2,10 @@
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=4bb0b56d7d67b2ab3ff0955bce487aba3399fade translatedAt=2026-09-22T02:07:05.812Z pushedAt=2026-09-22T08:29:58.355Z -->
+<!-- md-trans-meta sourceCommit=1ded46b3f2c6157598c112b16f192beb1f37cf1d translatedAt=2026-10-08T02:17:01.946Z pushedAt=2026-10-08T09:16:37.144Z -->
 
 > **NOTE**
 >
@@ -120,7 +120,7 @@ The notification attribute **isUnremovable** is set to true.
 
 **Solution**
 
-Enable notification deletion. For details, see [NotificationRequest](./js-apis-inner-notification-notificationRequest.md).
+Enable notification deletion. For details, see [NotificationRequest](js-apis-inner-notification-notificationRequest.md).
 <!--DelEnd-->
 
 ## 1600007 Notification Not Found
@@ -159,7 +159,7 @@ The user information passed is incorrect.
 
 Verify that the user information passed in is correct.
 
-## 1600009 Notification Sending Limit Reached
+## 1600009 Notification Sending Frequency Limit Reached
 
 **Error Message**
 
@@ -547,7 +547,7 @@ When setting [notification snooze](../../notification/notification-glossary.md#n
 
 **Solution**
 
-Check whether the notification is third-party live notification, system live notification, or other types that cannot be deleted when you set the notification snooze.
+Check whether the notification is third-party live view notification, system live view notification, or other types that cannot be deleted when you set the notification snooze.
 <!--DelEnd-->
 
 ## 1600029 Failed to Find the ExtensionAbility for the Custom Extension Area of the Live View Widget
@@ -567,4 +567,3 @@ The application does not configure or incorrectly configures the **ExtensionAbil
 **Solution**
 
 Check whether the application correctly configures the **ExtensionAbility** for the custom extension area of the live view widget.
-<!--no_check-->

@@ -97,7 +97,6 @@
    import { distributedDeviceManager } from '@kit.DistributedServiceKit';
    import { hilog } from '@kit.PerformanceAnalysisKit';
    import { common } from '@kit.AbilityKit';
-   import { UIContext } from '@kit.ArkUI';
    const DOMAIN = 0x0000;
    ```
 
@@ -117,8 +116,7 @@
        securityLevel: relationalStore.SecurityLevel.S3 // 数据库安全级别
      };
      // 打开数据库并设置分布式表
-     const context = new UIContext().getHostContext() as common.UIAbilityContext;
-     relationalStore.getRdbStore(context, STORE_CONFIG).then(async (rdbStore: relationalStore.RdbStore) => {
+     relationalStore.getRdbStore(context!, STORE_CONFIG).then(async (rdbStore: relationalStore.RdbStore) => {
        store = rdbStore;
        await store.executeSql('CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL, AGE INTEGER, SALARY REAL, CODES BLOB)');
        // 将已创建的表设置分布式表。
@@ -318,8 +316,7 @@
        enableCloud: false,
        tableType: relationalStore.DistributedTableType.SINGLE_VERSION
      }
-     const context = new UIContext().getHostContext() as common.UIAbilityContext;
-     relationalStore.getRdbStore(context, STORE_CONFIG).then(async (rdbStore: relationalStore.RdbStore) => {
+     relationalStore.getRdbStore(context!, STORE_CONFIG).then(async (rdbStore: relationalStore.RdbStore) => {
        store = rdbStore;
        await store.executeSql('CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL UNIQUE, AGE INTEGER, SALARY REAL, CODES BLOB)');
        await store.executeSql('CREATE TABLE IF NOT EXISTS EMPLOYEE2 (NAME TEXT NOT NULL UNIQUE, AGE INTEGER, SALARY REAL, CODES BLOB, PRIMARY KEY (NAME))');
@@ -340,10 +337,9 @@
 
 ### schema文件名及路径要求
 
-schema文件名及路径不支持自定义，否则使用单版本表模式进行数据同步将读取不到对应文件，设置分布式表也会失败。 
+schema文件名及路径不支持自定义。若自定义，使用单版本表模式进行数据同步时将无法读取对应文件，创建分布式表也会失败。
 
--  文件名：sync_schema.json
-
+- 文件名：`sync_schema.json`
 - 文件路径：`../entry/src/main/resources/rawfile/arkdata/schema/sync_schema.json`
 
 ### schema文件内容层级及目录结构
@@ -359,7 +355,7 @@ schema文件为json格式，文件主要为在dbSchema字段下进行多项配�
     - deviceSyncFields：指定端端同步对应的列，array[string]，必填字段。其中字段必须在fields中，且必须在数据库表中，否则不会同步；未填写该字段时设置分布式表失败。<!--RP1--><!--RP1End-->
     - fields：数据库表字段详细信息，array[field]。
       - columnName：字段名，string类型，必填字段。
-      - type：字段类型，string类型，必填字段，可选参数范围为：["Text", "Integer", "Long", "Float", "Double", "Blob" ]。
+      - type：字段类型，string类型，必填字段，可选参数范围为：["Text", "Integer", "Long", "Float", "Double", "Blob"]。
       - primaryKey：该字段表示是否为指定解冲突列，与表中是否为主键无关，bool类型。如果这张表没有配置解冲突列时，有主键表默认主键为解冲突列，无主键表默认rowid为解冲突列。若是自增主键表，该字段为必填字段。其中：true表示为解冲突列，false表示非解冲突列，默认为false。
       - autoIncrement：是否自增属性，必须与表结构中对应，bool类型。关系型数据库跨设备数据同步不支持同步自增主键。其中：true表示自增主键，false表示非自增主键，默认为false。
       - notNull：是否非空，bool类型，非必填字段。其中：true表示非空字段，false表示可以为空字段，默认为false。
@@ -573,7 +569,7 @@ schema文件为json格式，文件主要为在dbSchema字段下进行多项配�
 - 同步列必须存在表中。
   
   错误示例：schema指定字段"NAMe"，与表中字段"NAME"大小写不一致。
-    - 建表语句：'CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL, AGE INTEGER, SALARY REAL, CODES BLOB)'
+    - 建表语句：`'CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL, AGE INTEGER, SALARY REAL, CODES BLOB)'`
     - schema：<!--RP6-->
       ``` Json
       {
@@ -689,7 +685,7 @@ schema文件为json格式，文件主要为在dbSchema字段下进行多项配�
 - 单版本表模式下，表中所有UNIQUE列必须同步。
   
   错误示例："AGE"为UNIQUE列，但是未指定该字段同步。
-    - 建表语句：'CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL UNIQUE, AGE INTEGER UNIQUE, SALARY REAL, CODES BLOB)'。
+    - 建表语句：`'CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL UNIQUE, AGE INTEGER UNIQUE, SALARY REAL, CODES BLOB)'`
     - schema：<!--RP9-->
       ``` Json
       {
@@ -729,7 +725,7 @@ schema文件为json格式，文件主要为在dbSchema字段下进行多项配�
 - 自增表下，不支持指定非主键列解冲突又同步主键。
   
   错误示例：自增表下，指定"NAME"为解冲突列，但是又同步字段"ID"。
-    - 建表语句：'CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL UNIQUE, AGE INTEGER, SALARY REAL, CODES BLOB)'。
+    - 建表语句：`'CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL UNIQUE, AGE INTEGER, SALARY REAL, CODES BLOB)'`
     - schema：<!--RP10-->
       ``` Json
       {
@@ -880,7 +876,7 @@ schema文件为json格式，文件主要为在dbSchema字段下进行多项配�
 - 表中not null字段必须有默认值，否则要指定同步。
   
   错误示例：字段"AGE"为not null值，没有默认值，同步schema中没有指定"AGE"同步。
-    - 建表语句：'CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL UNIQUE, AGE INTEGER NOT NULL, SALARY REAL, CODES BLOB)'。
+    - 建表语句：`'CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL UNIQUE, AGE INTEGER NOT NULL, SALARY REAL, CODES BLOB)'`
     - schema：<!--RP14-->
       ``` Json
       {
@@ -920,7 +916,7 @@ schema文件为json格式，文件主要为在dbSchema字段下进行多项配�
 - 无主键表不支持指定列同步，不支持配置单版本表模式。
   
   错误示例："EMPLOYEE"是无主键表，设置单版本模式分布式表时会失败。
-    - 建表语句：'CREATE TABLE IF NOT EXISTS EMPLOYEE (NAME TEXT NOT NULL UNIQUE, AGE INTEGER, SALARY REAL, CODES BLOB)'。
+    - 建表语句：`'CREATE TABLE IF NOT EXISTS EMPLOYEE (NAME TEXT NOT NULL UNIQUE, AGE INTEGER, SALARY REAL, CODES BLOB)'`
     - schema：<!--RP15-->
       ``` Json
       {
@@ -960,7 +956,7 @@ schema文件为json格式，文件主要为在dbSchema字段下进行多项配�
 - 主键为非自增，主键必须同步，且解冲突列必须为主键。
   
   错误示例："NAME"为非自增主键，但是指定"AGE"为解冲突列。
-    - 建表语句：'CREATE TABLE IF NOT EXISTS EMPLOYEE (NAME TEXT NOT NULL PRIMARY KEY, AGE INTEGER NOT NULL UNIQUE, SALARY REAL, CODES BLOB)'。
+    - 建表语句：`'CREATE TABLE IF NOT EXISTS EMPLOYEE (NAME TEXT NOT NULL PRIMARY KEY, AGE INTEGER NOT NULL UNIQUE, SALARY REAL, CODES BLOB)'`
     - schema：<!--RP16-->
       ``` Json
       {
@@ -1000,7 +996,7 @@ schema文件为json格式，文件主要为在dbSchema字段下进行多项配�
 - 配置解冲突列必须为UNIQUE属性，且为类似uuid等全局唯一字段。
   
   错误示例：指定解冲突列"NAME"没有UNIQUE属性。
-    - 建表语句：'CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL, AGE INTEGER, SALARY REAL, CODES BLOB)'。
+    - 建表语句：`'CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL, AGE INTEGER, SALARY REAL, CODES BLOB)'`
     - schema：<!--RP17-->
       ``` Json
       {
@@ -1040,7 +1036,7 @@ schema文件为json格式，文件主要为在dbSchema字段下进行多项配�
 - deviceSyncFields中字段必须在fields中，否则该字段将不会同步。
   
   错误示例：字段"AGE"未出现在fields中，该字段将不会同步。
-    - 建表语句：'CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL UNIQUE, AGE INTEGER, SALARY REAL, CODES BLOB)'。
+    - 建表语句：`'CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL UNIQUE, AGE INTEGER, SALARY REAL, CODES BLOB)'`
     - schema：<!--RP18-->
       ``` Json
       {
@@ -1073,7 +1069,7 @@ schema文件为json格式，文件主要为在dbSchema字段下进行多项配�
 - 必须同步uuid等全局唯一的主键，自增主键不允许同步，若主键为自增，必须配置一个非主键列解冲突。
   
   错误示例：schema中指定了"ID"同步，该字段为自增主键。
-    - 建表语句：'CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL UNIQUE, AGE INTEGER, SALARY REAL, CODES BLOB)'。
+    - 建表语句：`'CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL UNIQUE, AGE INTEGER, SALARY REAL, CODES BLOB)'`
     - schema：<!--RP19-->
       ``` Json
       {
@@ -1113,16 +1109,16 @@ schema文件为json格式，文件主要为在dbSchema字段下进行多项配�
 - 指定解冲突列中的值不能出现null值。若指定解冲突列存量数据有null值，设置分布式表会失败；若指定解冲突列增量数据为null值，写入会失败。
   
   错误示例：若先执行写入语句，执行设置分布式表语句会失败；若先执行设置分布式表语句，执行写入语句会失败。
-    - 建表语句：'CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT UNIQUE, AGE INTEGER, SALARY REAL, CODES BLOB)'。
+    - 建表语句：`'CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT UNIQUE, AGE INTEGER, SALARY REAL, CODES BLOB)'`
     - 写入语句：
       ``` TypeScript
-      let valueBucket: ValueBucket = {};
+      let valueBucket: relationalStore.ValueBucket = {};
       valueBucket["NAME"] = null;
       valueBucket["AGE"] = 25;
       valueBucket["SALARY"] = 23456.7;
       let value = new Uint8Array([1, 2, 3, 4, 5]);
       valueBucket["CODES"] = value;
-      await rdbstore.insert("EMPLOYEE", valueBucket);
+      await store.insert("EMPLOYEE", valueBucket);
       ```
     - 设置分布式表语句：
       ``` TypeScript

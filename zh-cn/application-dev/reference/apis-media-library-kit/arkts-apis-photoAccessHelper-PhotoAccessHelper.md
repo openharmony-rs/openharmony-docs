@@ -79,7 +79,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
         console.info('photoAsset.displayName : ' + photoAsset.displayName);
       }
     } else {
-      console.error(`fetchResult fail with error: ${err.code}, ${err.message}`);
+      console.error(`failed to fetchResult`);
     }
   });
 }
@@ -374,7 +374,7 @@ createAsset(photoType: PhotoType, extension: string, options?: CreateOptions): P
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. <br> 适用版本：11+  |
 | 13900012     | Permission denied. <br> 适用版本：10         |
-| 13900020 | Invalid parameter. Possible causes:<br>1. System internal error. Possible: 1. File system exception; 2. IPC timeout. Please retry and check logs<br>2. The number of arguments is invalid.<br>3. The argument list is empty.<br>4. The object is not a valid instance.<br>5. PhotoAccessHelper object is not a valid instance obtained through the proper API.<br>6. The callback parameter type does not match, expected AsyncCallback.<br>7. Failed to get the photoType parameter, please check the parameter type.<br>8. The photoType parameter is not a valid number type.<br>9. Invalid file type, must be IMAGE or VIDEO.<br>10. Failed to parse the extension parameter, please check if it is a valid string.<br>11. Failed to get the options parameter type, please check if it is an object.<br>12. Failed to parse CreateOptions, please check the options parameter.<br>13. Server returned an invalid argument error.<br>14. Failed to get the photoType parameter. |
+| 13900020 | Invalid parameter. Possible causes:<br>1. System internal error. Possible: (1) File system exception; (2) IPC timeout. Please retry and check logs<br>2. The number of arguments is invalid.<br>3. The argument list is empty.<br>4. The object is not a valid instance.<br>5. PhotoAccessHelper object is not a valid instance obtained through the proper API.<br>6. The callback parameter type does not match, expected AsyncCallback.<br>7. Failed to get the photoType parameter, please check the parameter type.<br>8. The photoType parameter is not a valid number type.<br>9. Invalid file type, must be IMAGE or VIDEO.<br>10. Failed to parse the extension parameter, please check if it is a valid string.<br>11. Failed to get the options parameter type, please check if it is an object.<br>12. Failed to parse CreateOptions, please check the options parameter.<br>13. Server returned an invalid argument error.<br>14. Failed to get the photoType parameter. |
 | 14000011 | MediaLibrary inner fail. Possible causes:<br>1. The photoType parameter is not a valid PhotoType enum value, must be IMAGE or VIDEO.<br>2. The extension parameter is not a valid string, please check if it is a valid file extension.<br>3. The options parameter is invalid, please check if it is a valid CreateOptions object.<br>4. Failed to create the asset, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs. |
 
 **示例：**
@@ -2107,7 +2107,7 @@ onSinglePhotoAlbumChange(album: Album, callback: Callback&lt;AlbumChangeInfos&gt
 | 参数名   | 类型                   | 必填 | 说明      |
 |-----------|-------------------------|-----------|-----------------|
 | album | Album | 是 | 注册单个监听的媒体相册。注册完成后，当该相册发生变化时，通过callback返回变更信息。|
-| callback  | Callback&lt;[AlbumChangeInfos](arkts-apis-photoAccessHelper-i.md#albumchangeinfos20)&gt; | 是 | 返回变更的媒体相册信息[PhotoAssetChangeInfos](arkts-apis-photoAccessHelper-i.md#photoassetchangeinfos20)。<br>**注意：**<br>该接口可以注册多个不同的callback监听。|
+| callback  | Callback&lt;[AlbumChangeInfos](arkts-apis-photoAccessHelper-i.md#albumchangeinfos20)&gt; | 是 | 返回变更的媒体相册信息。<br>**注意：**<br>该接口可以注册多个不同的callback监听。|
 
 **错误码：**
 

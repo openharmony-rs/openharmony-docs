@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍使用Node-API接口进行线程安全开发，通过napi_create_threadsafe_function创建线程安全函数，支持多线程间安全调用ArkTS方法，避免竞争条件和死锁。"
+keywords: [Node-API, 线程安全, napi_create_threadsafe_function, 多线程, 竞争条件, 死锁, 线程间通信, 异步计算]
+doctype: guide
+status: active
+---
+
 # 使用Node-API接口进行线程安全开发
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
@@ -73,7 +81,7 @@
            auto result = future.get();
            OH_LOG_INFO(LOG_APP, "XXX, Result from JS %{public}s", result.c_str());
        } catch (const std::exception &e) {
-           OH_LOG_INFO(LOG_APP, "XXX, Result from JS %{public}s", e.what());
+           OH_LOG_ERROR(LOG_APP, "XXX, Result from JS %{public}s", e.what());
        }
    }
    
@@ -442,7 +450,7 @@
 
    @Concurrent
    function nativeCall(input : string): void {
-     console.info('Taskpool thread received:%s', input);
+     console.info('Taskpool thread received:', input);
      nativeModule.startWithCallback('Taskpool', (result: string) => {
        console.info('[Taskpool] Got from native:', result);
      });

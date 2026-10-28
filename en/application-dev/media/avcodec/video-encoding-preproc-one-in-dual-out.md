@@ -1,12 +1,12 @@
-# Encoding with One Input and Dual Outputs
+# Video Encoding with One Input and Dual Outputs
 
 <!--Kit: AVCodec Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @zhanghongran-->
+<!--Owner: @rchdlee-->
 <!--Designer: @dpy2650-->
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=45526eba67080b876eb51af31a33be43ae26f701 translatedAt=2026-07-13T13:19:26.909Z pushedAt=2026-07-21T12:10:53.541Z -->
+<!-- md-trans-meta sourceCommit=d8da44d9389782cf4839d2e77f3518c20aa1b228 translatedAt=2026-10-22T04:10:30.844Z pushedAt=2026-10-22T13:40:28.331Z nl=1 -->
 
 Starting from API version 26.0.0, video encoding supports one input and dual outputs. This capability allows the same video input data to simultaneously drive **two independent encoders** to generate two encoded streams with different configurations.
 
@@ -26,9 +26,7 @@ The following figure shows the architecture of the One Input Dual Outputs featur
 ![One input dual outputs](figures/video-encoding-one-in-dual-out.png)
 
 ### When to Use
-
 Apps can choose the appropriate mode based on their own scenarios. The following table lists usage examples.
-
 | Scenario | Primary Encoder | Secondary Encoder | Description |
 |------|---------------------|----------------------|----------|
 | Adaptive bitrate (ABR) streaming | High-bitrate primary bitstream | Downsampled, lower-frame-rate, lower-bitrate stream | Eliminates the need for cloud-side adaptive bitrate transcoding. Encoding both streams on the broadcaster side enables devices with different network conditions to receive the most appropriate stream, reducing cloud transcoding latency and cost. |
@@ -45,7 +43,7 @@ Apps can choose the appropriate mode based on their own scenarios. The following
 | 2 | Creation order: Create the Primary first, and then create the Secondary from the Primary. |
 | 3 | Lifecycle relationship: The Primary owns the Secondary. A Secondary cannot exist independently of its Primary.<br>- **Recommended destruction order**: Call `Destroy` on the Secondary first, and then on the Primary. After destruction, immediately set the corresponding pointer to `nullptr`.<br>- **Fault tolerance**: If the Primary is destroyed before the Secondary, the system automatically destroys the associated Secondary. However, you should still explicitly follow the recommended destruction order. |
 | 4 | Recreation: After a Secondary is destroyed, a new Secondary can be created from the same Primary. |
-| 5 | Supported mode: Only Surface mode is supported. |
+| 5 | Only Surface mode is supported. |
 
 **API Availability Constraints**
 
@@ -82,7 +80,8 @@ Apps can choose the appropriate mode based on their own scenarios. The following
 | Surface sharing | The primary and secondary encoders share the same Consumer Surface. You only need to obtain it once from `GetSurface` and bind it to the data source (Camera/XComponent). |
 | Window lifecycle | The window instance obtained through `OH_VideoEncoder_GetSurface` must be released. After all encoders are destroyed, call `OH_NativeWindow_DestroyNativeWindow(window)` to destroy the window. |
 | Preprocessing independence | Each encoder can independently configure different downsampling, cropping, and frame dropping strategies. However, within a single encoder, downsampling and cropping remain mutually exclusive. |
-| Callback independence | The `onNewOutputBuffer` callbacks for the two streams are triggered in different threads. You must call `FreeOutputBuffer` separately for each encoder. |
+| Callback independence | The onNewOutputBuffer() callbacks of the two paths are triggered in different threads, and each must release its own FreeOutputBuffer. |
+
 
 ## How to Develop
 
@@ -164,6 +163,7 @@ if (ret != AV_ERR_OK) {
 }
 OH_AVFormat_Destroy(format);
 ```
+
 
 ### Creating a Secondary Encoder from the Primary Encoder
 
@@ -340,24 +340,22 @@ if (window != nullptr){
 > - If the primary encoder is destroyed first, the system automatically destroys the associated secondary encoder before releasing the primary encoder.
 > - However, it is recommended that you explicitly follow the recommended destruction order to keep the code clear and predictable.
 
+
 ## Recommended Configuration Modes
 
 ### Mode A: Dual-Resolution Encoding (Recommended)
 
 - **Primary**: Encodes the original resolution with no preprocessing or only light frame dropping for recording and archiving.
-
 - **Secondary**: Applies downsampling to a lower resolution together with frame dropping for preview and live streaming.
 
 ### Mode B: Full-Frame Encoding with ROI Cropping
 
 - **Primary**: Encodes the full frame for complete video archiving.
-
 - **Secondary**: Crops a specified ROI for localized analysis or close-up views.
 
 ### Mode C: Adaptive Bitrate (ABR)
 
 - **Primary**: Encodes the full frame with moderate frame dropping to produce the primary stream.
-
 - **Secondary**: Applies aggressive downsampling and frame dropping to produce a backup stream for low-bandwidth networks.
 
 ## Troubleshooting
@@ -397,3 +395,4 @@ if (window != nullptr){
 **Possible cause**: The `onNewOutputBuffer` callback for the primary encoder takes too long to complete.
 
 **Solution**: Call `FreeOutputBuffer` as soon as possible in the primary encoder callback to avoid blocking the encoding pipeline for an extended period.
+

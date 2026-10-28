@@ -43,10 +43,10 @@ OpenHarmony为开发者提供了用于创建VPN的API解决方案。当前提供
 ``` JSON5
 // 举例：在应用的module.json5中定义MyVpnExtAbility。
 "extensionAbilities": [
-// ···
+  // ...
   {
     "name": "MyVpnExtAbility",
-    "srcEntry": "./ets/vpnability/VPNExtentionAbility.ets",
+    "srcEntry": "./ets/vpnability/VPNExtensionAbility.ets",
     "type": "vpn"
   }
 ],
@@ -262,7 +262,10 @@ export class VpnTest extends VpnExtensionAbility {
     // ...
       this.vpnConnection = vpnExtension.createVpnConnection(this.context);
       hilog.info(0x0000, 'testTag', 'create success');
-      this.vpnConnection?.destroy(this.vpnId);
+      this.vpnConnection?.destroy(this.vpnId).catch(() => {
+        hilog.error(0x0000, 'testTag', 'destroy fail');
+        return false;
+      });
       // ...
   }
 };
@@ -307,7 +310,7 @@ let vpnConfig: vpnExtension.VpnConfig = {
   // 配置VPN虚拟网卡的IP地址。
   addresses: [{
     address: {
-      address:'192.x.x.5',
+      address:'192.xxx.xxx.5',
       family:1
     },
     prefixLength:24
@@ -318,14 +321,14 @@ let vpnConfig: vpnExtension.VpnConfig = {
     interface: 'vpn-tun',
     destination: {
       address: {
-        address:'10.x.x.8',
+        address:'10.xxx.xxx.8',
         family:1,
         port:8080
       },
       prefixLength:24
     },
     gateway: {
-      address:'10.x.x.5',
+      address:'10.xxx.xxx.5',
       family:1,
       port:8080
     },
@@ -335,7 +338,7 @@ let vpnConfig: vpnExtension.VpnConfig = {
   // 配置最大传输单元值。
   mtu: 1400,
   // 配置VPN使用的DNS服务器。
-  dnsAddresses: ['223.x.x.5', '223.x.x.6'],
+  dnsAddresses: ['223.xxx.xxx.5', '223.xxx.xxx.6'],
   // 受信任的应用信息列表。配置此项时，被阻止的应用信息列表应配置为空。
   trustedApplications: ['com.test.browser'],
   // 被阻止的应用信息列表。配置此项时，受信任的应用信息列表应配置为空。

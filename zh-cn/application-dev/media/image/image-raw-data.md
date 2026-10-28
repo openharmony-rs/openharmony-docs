@@ -169,18 +169,10 @@
 
    确认imageSource的异步方法已经执行完成，不再使用该变量后，可按需手动调用下面方法释放。
 
-   <!-- @[release_pixelMapDecoder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/pages/DecodingPixelMap.ets) -->    
+   <!-- @[release_imageSource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/pages/DecodingPixelMap.ets) -->    
    
    ``` TypeScript
-   async release() {
-     try {
-       await this.pixelMap?.release();
-     } catch (error) {
-       console.error(`Failed to release PixelMap: ${error}.`);
-     } finally {
-       this.pixelMap = undefined;
-     }
-   
+   async release_imageSource() {
      try {
        await this.imageSource?.release();
      } catch (error) {

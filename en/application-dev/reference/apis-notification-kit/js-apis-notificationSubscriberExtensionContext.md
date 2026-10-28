@@ -2,10 +2,10 @@
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=4bb0b56d7d67b2ab3ff0955bce487aba3399fade translatedAt=2026-09-22T02:36:45.787Z pushedAt=2026-09-22T08:29:58.389Z -->
+<!-- md-trans-meta sourceCommit=1ded46b3f2c6157598c112b16f192beb1f37cf1d translatedAt=2026-10-08T02:34:11.551Z pushedAt=2026-10-08T10:04:11.688Z -->
 
 The **NotificationSubscriberExtensionContext** module provides the extension capability for [notification subscription](../../notification/notification-glossary.md#notification-subscription) subscribers.
 
@@ -25,4 +25,3 @@ import { NotificationSubscriberExtensionContext } from '@kit.NotificationKit';
 **NotificationSubscriberExtensionContext** inherits from [ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md) and provides the context for the **NotificationSubscriberExtensionAbility**.
 
 **System capability**: SystemCapability.Notification.Notification
-<!--no_check-->

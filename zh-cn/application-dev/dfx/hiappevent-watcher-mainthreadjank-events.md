@@ -271,11 +271,13 @@ setEventConfig接口不提供主线程超时结束自动停止采样栈的功能
 
    HiAppEvent_Config* config = OH_HiAppEvent_CreateConfig();    
    OH_HiAppEvent_SetConfigItem(config, MAIN_THREAD_JANK_PARAM_LOG_TYPE, "0");
-   int ret = OH_HiAppEvent_SetEventConfig(EVENT_MAIN_THREAD_JANK, config);
-   if (ret == HIAPPEVENT_SUCCESS) {
-       OH_LOG_INFO(LogType::LOG_APP, "Setting default value successfully.");
-   }
-   OH_HiAppEvent_DestroyConfig(config);
+    int ret = OH_HiAppEvent_SetEventConfig(EVENT_MAIN_THREAD_JANK, config);
+    if (ret == HIAPPEVENT_SUCCESS) {
+        OH_LOG_INFO(LogType::LOG_APP, "Setting default value successfully.");
+    }
+    if (config != nullptr) {
+       OH_HiAppEvent_DestroyConfig(config);
+    }
    ```
 
    （2）MAIN_THREAD_JANK_PARAM_LOG_TYPE为"1"时，仅用于采集调用栈。
@@ -299,7 +301,9 @@ setEventConfig接口不提供主线程超时结束自动停止采样栈的功能
    if (ret == HIAPPEVENT_SUCCESS) {
        OH_LOG_INFO(LogType::LOG_APP, "Successfully set sampling stack parameters.");
    }
-   OH_HiAppEvent_DestroyConfig(config);
+   if (config != nullptr) {
+       OH_HiAppEvent_DestroyConfig(config);
+   }
    ```
 
    （3）MAIN_THREAD_JANK_PARAM_LOG_TYPE为"2"时，仅用于采集trace。
@@ -319,7 +323,9 @@ setEventConfig接口不提供主线程超时结束自动停止采样栈的功能
    if (ret == HIAPPEVENT_SUCCESS) {
        OH_LOG_INFO(LogType::LOG_APP, "Set to only collect trace successfully");
    }
-   OH_HiAppEvent_DestroyConfig(config);
+   if (config != nullptr) {
+       OH_HiAppEvent_DestroyConfig(config);
+   }
    ```  
 
 **name为EVENT_MAIN_THREAD_JANK_V2**
@@ -378,7 +384,9 @@ setEventConfig接口不提供主线程超时结束自动停止采样栈的功能
    if (ret == HIAPPEVENT_SUCCESS) {
        OH_LOG_INFO(LogType::LOG_APP, "Setting default value successfully.");
    }
-   OH_HiAppEvent_DestroyConfig(config);
+   if (config != nullptr) {
+       OH_HiAppEvent_DestroyConfig(config);
+   }
    ```
 
    （2）MAIN_THREAD_JANK_PARAM_LOG_TYPE为"1"时，仅用于采集调用栈。
@@ -403,7 +411,9 @@ setEventConfig接口不提供主线程超时结束自动停止采样栈的功能
    if (ret == HIAPPEVENT_SUCCESS) {
        OH_LOG_INFO(LogType::LOG_APP, "Successfully set sampling stack parameters.");
    }
-   OH_HiAppEvent_DestroyConfig(config);
+   if (config != nullptr) {
+       OH_HiAppEvent_DestroyConfig(config);
+   }
    ```
 
    （3）MAIN_THREAD_JANK_PARAM_LOG_TYPE为"2"时，仅用于采集trace。
@@ -423,7 +433,9 @@ setEventConfig接口不提供主线程超时结束自动停止采样栈的功能
    if (ret == HIAPPEVENT_SUCCESS) {
        OH_LOG_INFO(LogType::LOG_APP, "Set to only collect trace successfully");
    }
-   OH_HiAppEvent_DestroyConfig(config);
+   if (config != nullptr) {
+       OH_HiAppEvent_DestroyConfig(config);
+   }
    ```  
 
 ## 事件字段说明

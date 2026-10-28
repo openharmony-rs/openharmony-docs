@@ -40,7 +40,7 @@ Data Protection Kit为应用提供了获取DLP文件权限策略信息的能力�
           let ciphertextFd = fileIo.openSync(fileDir + '/' + fileName, fileIo.OpenMode.READ_ONLY).fd;
           this.result = await dlpPermission.queryDlpPolicy(ciphertextFd);
           console.info('res', this.result);
-          hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'getDLPSuffix result: ' + this.result);
+          hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'queryDlpPolicy result: ' + this.result);
         } catch (err) {
           console.error('error message', err.message);
           this.result = 'error message' + err.message;

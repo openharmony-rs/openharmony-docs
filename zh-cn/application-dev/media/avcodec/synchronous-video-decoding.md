@@ -1,3 +1,11 @@
+---
+kits: ["AVCodec Kit / 音视频编解码服务"]
+description: "介绍以主动请求Buffer送帧方式完成同步模式视频解码的开发流程，支持Surface与Buffer两种输出模式，适用于需要应用主动控制解码输出与取帧节奏的场景。"
+keywords: [视频解码, 同步模式, Surface模式, Buffer模式, OH_VideoDecoder, 主动请求Buffer, YUV, NV12]
+doctype: guide
+status: active
+---
+
 # 同步模式视频解码
 
 <!--Kit: AVCodec Kit-->
@@ -236,7 +244,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
                    return false;
                }
                if (inFile_->eof()) {
-                   inputDone = 1;
+                   inputDone = true;
                }
                break;
            }
@@ -282,7 +290,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
                    return false;
                }
                if (info.flags & AVCODEC_BUFFER_FLAGS_EOS) {
-                   outputDone = 1;
+                   outputDone = true;
                }
                
                // 解码输出数据处理。
@@ -339,7 +347,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
 
    ```c++
    bool result = true;
-   int64_t timeoutUs = 0; // 单位：微秒（us），负值：无限等待；0：立即退出；正值：指定时间后结束后退出。
+   int64_t timeoutUs = 0; // 单位：微秒（us），负值：无限等待；0：立即退出；正值：等待指定时长后退出。
 
    while (!outputDone && result) {
        if (!inputDone) {
@@ -569,7 +577,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
                     return false;
                 }
                 if (inFile_->eof()) {
-                    inputDone = 1;
+                    inputDone = true;
                 }
                 break;
             }
@@ -620,7 +628,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
                     return false;
                 }
                 if (info.flags & AVCODEC_BUFFER_FLAGS_EOS) {
-                    outputDone = 1;
+                    outputDone = true;
                 }
                 
                 // 释放已完成处理的信息，index为对应buffer队列的下标。

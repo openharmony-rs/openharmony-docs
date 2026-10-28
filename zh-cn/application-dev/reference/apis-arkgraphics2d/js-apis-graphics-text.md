@@ -1,9 +1,9 @@
 # @ohos.graphics.text (文本模块)
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @gmiao522-->
-<!--Designer: @liumingxiang-->
-<!--Tester: @yhl0101-->
+<!--Owner: @oh_wangxk-->
+<!--Designer: @KejiePeng-->
+<!--Tester: @LiTongguan2026-->
 <!--Adviser: @ge-yafang-->
 本模块提供一系列用于文本布局和字体管理的编程接口。文本布局相关的接口旨在提供高质量的排版，包括字符到字形的转换、字距调整、换行、对齐、文本测量等。字体管理接口提供字体注册、字体描述符、字体集管理等功能。
 
@@ -855,6 +855,8 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 | rightTopRadius     | number                                               | 否  |  否   | 矩形框的右上半径，单位为物理像素px。       |
 | rightBottomRadius  | number                                               | 否  |  否   | 矩形框的右下半径，单位为物理像素px。       |
 | leftBottomRadius   | number                                               | 否  |  否   | 矩形框的左下半径，单位为物理像素px。       |
+| borderColor        | [common2D.Color](js-apis-graphics-common2D.md#color) | 否  |  是   | 矩形边框的颜色，默认值为白色。<br>**起始版本：** 26.1.0<br>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。               |
+| borderWidth        | number                                               | 否  |  是   | 矩形边框的宽度，单位为物理像素px，默认值为0。<br>**起始版本：** 26.1.0<br>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## FontFeature
 
@@ -984,7 +986,7 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 | fontFamily | string | 否 | 是 | 字体家族，可取任意字符串，默认为空字符串。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
 | fontSubfamily | string | 否 | 是 | 子字体家族，可取任意字符串，默认为空字符串。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
 | weight | [FontWeight](#fontweight) | 否 | 是 | 字体字重，默认值为0。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
-| width | number | 否 | 是 | 字体宽度，取值范围1-9整数，默认值为0。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
+| width | number | 否 | 是 | 字体宽度，取值范围1-9整数，默认值为0，0表示未指定字体宽度。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
 | italic | number | 否 | 是 | 是否是斜体字体，0表示非斜体，1表示斜体，默认值为0。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
 | monoSpace | boolean | 否 | 是 | 是否是等宽字体，true表示等宽，false表示非等宽，默认值为false。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
 | symbolic | boolean | 否 | 是 | 是否支持符号，true表示支持，false表示不支持，默认值为false。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
@@ -2067,7 +2069,7 @@ let maxIntrinsicWidth = paragraph.getMaxIntrinsicWidth();
 
 getAlphabeticBaseline(): number
 
-获取拉丁字母基线位置。
+获取拉丁字母的基线位置。
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
@@ -2077,7 +2079,7 @@ getAlphabeticBaseline(): number
 
 | 类型   | 说明                |
 | ------ | ------------------ |
-| number | 拉丁字母下的基线位置，浮点数，单位为物理像素px。|
+| number | 拉丁字母的基线位置，浮点数，单位为物理像素px。|
 
 **示例：**
 
@@ -2089,7 +2091,7 @@ let alphabeticBaseline = paragraph.getAlphabeticBaseline();
 
 getIdeographicBaseline(): number
 
-获取表意字（如CJK（中文，日文，韩文））下的基线位置。
+获取表意字（如CJK（中文，日文，韩文））的基线位置。
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
@@ -2099,7 +2101,7 @@ getIdeographicBaseline(): number
 
 | 类型   | 说明                  |
 | ------ | -------------------- |
-| number | 表意字下的基线位置，浮点数，单位为物理像素px。 |
+| number | 表意字的基线位置，浮点数，单位为物理像素px。 |
 
 **示例：**
 

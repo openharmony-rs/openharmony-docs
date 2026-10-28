@@ -1,34 +1,34 @@
 # Managing Notification Slots
-
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @peixu-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=4bb0b56d7d67b2ab3ff0955bce487aba3399fade translatedAt=2026-09-29T11:09:06.414Z pushedAt=2026-09-30T09:25:49.848Z -->
 
-The system supports a range of notification slots. Different notification slots are assigned different reminder modes. You can choose notification slots for your application and manage them as required, such as creating, querying, and deleting notification slots.
+The system supports multiple [notification slots](notification-glossary.md#notification-slot). Different notification slots correspond to different [notification reminder modes](notification-glossary.md#notification-reminder-mode). You can select an appropriate notification slot based on the actual application scenario and manage notification slots (including creating, querying, and deleting them).
 
 ## Notification Slots
 
-The following table lists the notification slots and their reminder modes. **Y** indicates that the feature is supported, and **N** indicates that the feature is not supported.
+Different types of [notification slots](notification-glossary.md#notification-slot) correspond to different [notification reminder modes](notification-glossary.md#notification-reminder-mode), as shown in the following table. In the table, Y indicates supported and N indicates not supported.
 
 <!--RP1-->
 <!--RP1End-->
-
-| SlotType             | Value  | Category    | Notification Panel| Banner| Lock Screen| Alert Tone/Vibration| Status Bar Icon| Automatic Screen-on|
+<!--RP2-->
+| SlotType             | Value   | Category     | [Notification Center](notification-glossary.md#notification-center) | Banner | Lock Screen | Ringtone/Vibration | Status Bar Icon | Auto Screen-on |
 | -------------------- | ------ | --------| ------- |------|------|----------|-----------|---------|
-| UNKNOWN_TYPE         | 0      | Unknown| Y | N | N | N | N | N |
-| SOCIAL_COMMUNICATION | 1      | Social communication| Y | Y | Y | Y | Y | Y |
-| SERVICE_INFORMATION  | 2      | Service notification| Y | Y | Y | Y | Y | Y |
-| CONTENT_INFORMATION  | 3      | Content and news| Y | N | N | N | N | N |
-| CUSTOMER_SERVICE     | 5      | Customer service| Y | N | N | Y | Y | N |
-| OTHER_TYPES          | 0xFFFF | Other    | Y | N | N | N | N | N |
-
+| SOCIAL_COMMUNICATION | 1      | Social communication | Y | Y | Y | Y | Y | Y |
+| SERVICE_INFORMATION  | 2      | Service reminder | Y | Y | Y | Y | Y | Y |
+| CUSTOMER_SERVICE     | 5      | Customer service message | Y | N | N | Y | Y | N |
+| CONTENT_INFORMATION  | 3      | Content information | Y | N | N | N | N | N |
+| UNKNOWN_TYPE         | 0      | Unknown type | Y | N | N | N | N | N |
+| OTHER_TYPES          | 0xFFFF | Others     | Y | N | N | N | N | N |
+<!--RP2End-->
 
 ## Available APIs
 
-The main notification slot APIs are as follows. For details about other APIs, see [@ohos.notificationManager (NotificationManager)](../reference/apis-notification-kit/js-apis-notificationManager.md).
+The main APIs of [notification slots](notification-glossary.md#notification-slot) are as follows. For details about other APIs, see [@ohos.notificationManager (NotificationManager Module)](../reference/apis-notification-kit/js-apis-notificationManager.md).
 
 | **API**| **Description**|
 | ---------- | -------- |
@@ -53,7 +53,7 @@ In addition to using **addSlot()**, you can also create a notification slot by p
    const DOMAIN_NUMBER: number = 0xFF00;
    ```
 
-2. Add a notification slot.
+2. Create a [notification slot](notification-glossary.md#notification-slot) of the specified type.
 
    <!-- @[create_type_channel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/ManageNotificationWays.ets) -->
    
@@ -71,7 +71,7 @@ In addition to using **addSlot()**, you can also create a notification slot by p
 
 3. Obtain a notification slot.
 
-   Retrieve the slot's creation status and supported notification modes—for example, whether there is an alert tone, vibration, and lock screen visibility.
+   Obtain whether the corresponding slot has been created and the [notification reminder modes](notification-glossary.md#notification-reminder-mode) supported by the slot, such as whether a ringtone is available, whether vibration is available, and whether the notification is visible on the lock screen.
 
    <!-- @[get_type_channel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/ManageNotificationWays.ets) -->
    

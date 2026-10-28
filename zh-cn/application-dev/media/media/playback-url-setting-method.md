@@ -1,8 +1,16 @@
+---
+kits: ["Media Kit / 媒体服务"]
+description: "介绍AVPlayer在不同场景下设置播放URL的方法，覆盖HTTP/HTTPS、HLS流媒体点播直播、自定义HTTP请求头，以及本地Raw文件、应用沙箱文件等流媒体资源的播放地址设置。"
+keywords: [AVPlayer, URL设置, 播放地址, HTTP请求头, HLS, 流媒体, 应用沙箱, Raw文件, m3u8]
+doctype: guide
+status: active
+---
+
 # 使用AVPlayer设置播放URL(ArkTS)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @chennotfound-->
-<!--Designer: @dongyu_dy-->
+<!--Designer: @chennotfound-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 本开发指导将介绍如何使用AVPlayer开发播放功能，在不同的场景下如何设置URL。

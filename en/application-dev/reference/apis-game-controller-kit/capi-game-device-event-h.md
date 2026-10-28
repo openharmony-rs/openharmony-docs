@@ -1,12 +1,11 @@
 # game_device_event.h
-
 <!--Kit: Game Controller Kit-->
 <!--Subsystem: Game-->
 <!--Owner: @weixin_42784160-->
 <!--Designer: @wudejun2025-->
 <!--Tester: @fei_0805-->
-<!--Adviser: @luwy2025-->
-<!-- md-trans-meta sourceCommit=77c72b42e08d6a4d9b4548171e0024968c7d2a99 translatedAt=2026-07-30T08:26:53.625Z pushedAt=2026-07-30T08:45:20.274Z -->
+<!--Adviser: @yuwenliang0514-->
+<!-- md-trans-meta sourceCommit=6debdc04d740aa8b2b848a338dee8dc580475ff9 translatedAt=2026-10-08T07:34:38.503Z pushedAt=2026-10-09T03:03:19.699Z -->
 
 ## Overview
 
@@ -49,6 +48,7 @@ Defines APIs for game device events.
 | [GameController_ErrorCode OH_GameDevice_DeviceInfo_GetDeviceId(const struct GameDevice_DeviceInfo* deviceInfo, char** deviceId)](#oh_gamedevice_deviceinfo_getdeviceid) | - | Obtains the device ID from the device information.|
 | [GameController_ErrorCode OH_GameDevice_DeviceInfo_GetName(const struct GameDevice_DeviceInfo* deviceInfo, char** name)](#oh_gamedevice_deviceinfo_getname) | - | Obtains the device name from the device information.|
 | [GameController_ErrorCode OH_GameDevice_DeviceInfo_GetProduct(const struct GameDevice_DeviceInfo* deviceInfo, int32_t* product)](#oh_gamedevice_deviceinfo_getproduct) | - | Obtains the product information from the device information.|
+| [GameController_ErrorCode OH_GameDevice_DeviceInfo_GetVendor(const struct GameDevice_DeviceInfo* deviceInfo, int32_t* vendor)](#oh_gamedevice_deviceinfo_getvendor) | - | Obtains the vendor information from the device information. |
 | [GameController_ErrorCode OH_GameDevice_DeviceInfo_GetVersion(const struct GameDevice_DeviceInfo* deviceInfo, int32_t* version)](#oh_gamedevice_deviceinfo_getversion) | - | Obtains the version information from the device information.|
 | [GameController_ErrorCode OH_GameDevice_DeviceInfo_GetPhysicalAddress(const struct GameDevice_DeviceInfo* deviceInfo, char** physicalAddress)](#oh_gamedevice_deviceinfo_getphysicaladdress) | - | Obtains the physical address from the device information.|
 | [GameController_ErrorCode OH_GameDevice_DeviceInfo_GetDeviceType(const struct GameDevice_DeviceInfo* deviceInfo, GameDevice_DeviceType* deviceType)](#oh_gamedevice_deviceinfo_getdevicetype) | - | Obtains the device type from the device information.|
@@ -93,6 +93,7 @@ Defines device types.
 | UNKNOWN = 0 | Unknown.<br>**Since:** 21|
 | GAME_PAD = 1 | Gamepad.<br>**Since:** 21|
 
+
 ## Function Description
 
 ### GameDevice_DeviceMonitorCallback()
@@ -113,7 +114,7 @@ Defines the callback function used in [OH_GameDevice_RegisterDeviceMonitor](capi
 
 | Name| Description|
 | -- | -- |
-| (const struct GameDevice_DeviceEvent* deviceEvent) | Output parameter. Device status change event [GameDevice_DeviceEvent](capi-gamecontroller-gamedevice-deviceevent.md).|
+| const struct GameDevice_DeviceEvent* deviceEvent | Input parameter, indicating a device status change event [GameDevice_DeviceEvent](capi-gamecontroller-gamedevice-deviceevent.md). |
 
 ### OH_GameDevice_DeviceEvent_GetChangedType()
 
@@ -276,6 +277,33 @@ Obtains the product information from the device information.
 | -- | -- |
 | [GameController_ErrorCode](capi-game-controller-type-h.md#gamecontroller_errorcode) | <ul><li>If the operation is successful, [GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li>     <li>If the **deviceInfo** parameter is null, [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li></ul> |
 
+### OH_GameDevice_DeviceInfo_GetVendor()
+
+```c
+GameController_ErrorCode OH_GameDevice_DeviceInfo_GetVendor(const struct GameDevice_DeviceInfo* deviceInfo, int32_t* vendor)
+```
+
+**Description**
+
+Obtains the vendor information from the device information.
+
+**System capability:** SystemCapability.Game.GameController
+
+**Since:** 26.0.1
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| [const struct GameDevice_DeviceInfo](capi-gamecontroller-gamedevice-deviceinfo.md)* deviceInfo | [in] Pointer to the [GameDevice_DeviceInfo](capi-gamecontroller-gamedevice-deviceinfo.md) instance. The pointer cannot be null. |
+| int32_t* vendor | [out] Output parameter, indicating the vendor information. |
+
+**Return value**
+
+| Type | Description |
+| -- | -- |
+| GameController_ErrorCode | <ul><li>[GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode): The operation is successful.</li>      <li>[GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode): **deviceInfo** or **vendor** is null.</li></ul> |
+
 ### OH_GameDevice_DeviceInfo_GetVersion()
 
 ```c
@@ -356,3 +384,5 @@ Obtains the device type from the device information.
 | Type| Description|
 | -- | -- |
 | [GameController_ErrorCode](capi-game-controller-type-h.md#gamecontroller_errorcode) | <ul><li>If the operation is successful, [GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li>     <li>If the **deviceInfo** parameter is null, [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li></ul> |
+
+

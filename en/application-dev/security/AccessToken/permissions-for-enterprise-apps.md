@@ -790,3 +790,22 @@ With this permission, the application can back up and restore user data and appl
 **Supported devices**: PCs/2-in-1 devices
 
 **Valid since**: 26.0.1
+
+## ohos.permission.GET_AUDIO_ADAPTER_INFO
+
+Allows an enterprise application to obtain audio sound card information.
+
+<!--RP7--><!--RP7End-->
+
+<!--RP2--><!--RP2End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+<!--Del-->
+**Certificate-based authorization**: true<!--DelEnd-->
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Valid since**: 26.1.0

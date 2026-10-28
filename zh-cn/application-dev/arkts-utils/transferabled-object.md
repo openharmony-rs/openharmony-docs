@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍Transferable对象（NativeBinding对象）的两种传递模式：共享模式支持跨线程共享访问，转移模式转移对象所有权且原线程不再拥有访问权限，适用于文件描述符、图形资源等需要高效传递的对象。"
+keywords: [Transferable对象, NativeBinding对象, 共享模式, 转移模式, 所有权转移, 文件描述符, 图形资源]
+doctype: guide
+status: active
+---
+
 # Transferable对象 (NativeBinding对象)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
@@ -18,7 +26,7 @@ Transferable对象，也称为NativeBinding对象，是指绑定C++对象的JS�
 ![nativeBinding](figures/nativeBinding.png)
 
 
-常见的共享模式NativeBinding对象包括：应用上下文（[ApplicationContext](../reference/apis-ability-kit/js-apis-inner-application-applicationContext.md)）、窗口上下文（WindowContext）、组件上下文（AbilityContext或ComponentContext）等Context类型对象。这些上下文对象封装了应用程序组件的上下文信息，提供了访问系统服务和资源的能力，使得应用程序组件可以与系统进行交互。获取Context信息的方法可以参考[获取上下文信息](../application-models/application-context-stage.md)。跨线程共享使用上下文的示例可参考[使用TaskPool进行频繁数据库操作](batch-database-operations-guide.md#使用taskpool进行频繁数据库操作)。
+常见的共享模式NativeBinding对象包括：应用上下文（[ApplicationContext](../reference/apis-ability-kit/js-apis-inner-application-applicationContext.md)）等Context类型对象。这些上下文对象封装了应用程序组件的上下文信息，提供了访问系统服务和资源的能力，使得应用程序组件可以与系统进行交互。获取Context信息的方法可以参考[获取上下文信息](../application-models/application-context-stage.md)。跨线程共享使用上下文的示例可参考[使用TaskPool进行频繁数据库操作](batch-database-operations-guide.md#使用taskpool进行频繁数据库操作)。
 
 
 ## 转移模式

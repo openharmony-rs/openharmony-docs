@@ -1,3 +1,11 @@
+---
+kits: ["AVCodec Kit / 音视频编解码服务"]
+description: "梳理视频编解码中width/height、picWidth/picHeight、stride/sliceHeight及Crop裁剪等尺寸参数的含义与关系，说明解码输出有效区域的计算方法，帮助开发者正确读写图像数据。"
+keywords: [视频宽高, 跨距, stride, sliceHeight, 裁剪, Crop, picWidth, 内存对齐, 解码输出]
+doctype: faq
+status: active
+---
+
 # 视频编解码宽高、跨距与裁剪信息说明
 
 <!--Kit: AVCodec Kit-->

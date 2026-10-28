@@ -14,12 +14,12 @@
 
 
 - 应用侧代码。
-
-  ```ts
-  // xxx.ets
+  <!-- @[create_a_message_port_to_implement_communication_between_the_two_ends](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry3/src/main/ets/pages/Index.ets) -->
+  
+  ``` TypeScript
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
-
+  
   @Entry
   @Component
   struct WebComponent {
@@ -27,7 +27,7 @@
     ports: webview.WebMessagePort[] = [];
     @State sendFromEts: string = 'Send this message from ets to HTML';
     @State receivedFromHtml: string = 'Display received message send from HTML';
-
+  
     build() {
       Column() {
         // 展示接收到的来自HTML的内容
@@ -37,7 +37,7 @@
           .onChange((value: string) => {
             this.sendFromEts = value;
           })
-
+  
         // 该内容可以放在onPageEnd生命周期中调用。
         Button('postMessage')
           .onClick(() => {
@@ -69,10 +69,11 @@
                 console.error(`ports is null, Please initialize first`);
               }
             } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              console.error(
+                `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
           })
-
+  
         // 4、使用应用侧的端口给另一个已经发送到html的端口发送消息。
         Button('SendDataToHTML')
           .onClick(() => {
@@ -83,10 +84,11 @@
                 console.error(`ports is null, Please initialize first`);
               }
             } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              console.error(
+                `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
           })
-
+  
         // 5、关闭端口。  
         Button('closePort')
         .onClick(() => {
@@ -95,10 +97,11 @@
               this.ports[0].close();
               this.ports = [];
             } else {
-              console.error("ports is null, not need close");
+              console.error(`ports is null, not need close`);
             }
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(
+              `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
         })
         Web({ src: $rawfile('index.html'), controller: this.controller })

@@ -42,6 +42,8 @@
 | [const char *OH_GetOsReleaseType(void)](#oh_getosreleasetype) | 获取系统的发布类型。 |
 | [const char *OH_GetOSFullName(void)](#oh_getosfullname) | 获取完整的系统版本名。 |
 | [int OH_GetSdkApiVersion(void)](#oh_getsdkapiversion) | 获取系统软件API版本。 |
+| [int OH_GetSdkMinorApiVersion(void)](#oh_getsdkminorapiversion) | 获取系统次版本号。从API版本26.0.0起，为配合语义化版本号，新增次版本号的定义，即中间字段的值，值为整型数。完整版本号由sdkApiVersion.sdkMinorApiVersion.sdkPatchApiVersion共同构成。 |
+| [int OH_GetSdkPatchApiVersion(void)](#oh_getsdkpatchapiversion) | 获取系统修订版本号。从API版本26.0.0起，为配合语义化版本号，新增修订版本号的定义，即第三个字段的值，值为整型数。完整版本号由sdkApiVersion.sdkMinorApiVersion.sdkPatchApiVersion共同构成。 |
 | [int OH_GetFirstApiVersion(void)](#oh_getfirstapiversion) | 获取首个版本系统软件API版本。 |
 | [const char *OH_GetVersionId(void)](#oh_getversionid) | 获取版本ID。 |
 | [const char *OH_GetBuildType(void)](#oh_getbuildtype) | 获取系统的构建类型。 |
@@ -53,6 +55,8 @@
 | [const char *OH_GetDistributionOSVersion(void)](#oh_getdistributionosversion) | 获取ISV发行版系统版本号。 |
 | [int OH_GetDistributionOSApiVersion(void)](#oh_getdistributionosapiversion) | 获取ISV发行版系统API版本。 |
 | [const char *OH_GetDistributionOSReleaseType(void)](#oh_getdistributionosreleasetype) | 获取ISV发行版系统类型。 |
+| [int32_t OH_GetDiskSN(char *diskSn)](#oh_getdisksn) | 获取磁盘序列号。 |
+| [const char *OH_GetOdid(void)](#oh_getodid) | 获取开发者匿名设备标识符。 |
 
 ## 函数说明
 
@@ -344,6 +348,42 @@ int OH_GetSdkApiVersion(void)
 | -- | -- |
 | int | 系统软件API版本，取值范围为整数。常见的取值包括：12等。 |
 
+### OH_GetSdkMinorApiVersion()
+
+```c
+int OH_GetSdkMinorApiVersion(void)
+```
+
+**描述**
+
+获取系统次版本号。从API版本26.0.0起，为配合语义化版本号，新增次版本号的定义，即中间字段的值，值为整型数。完整版本号由sdkApiVersion.sdkMinorApiVersion.sdkPatchApiVersion共同构成。
+
+**起始版本：** 26.0.1
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int | 0 ~ 99 - 系统次版本号，取值范围为整数。<br>-1 - 未查询到系统次版本号，或调用内部接口失败。|
+
+### OH_GetSdkPatchApiVersion()
+
+```c
+int OH_GetSdkPatchApiVersion(void)
+```
+
+**描述**
+
+获取系统修订版本号。从API版本26.0.0起，为配合语义化版本号，新增修订版本号的定义，即第三个字段的值，值为整型数。完整版本号由sdkApiVersion.sdkMinorApiVersion.sdkPatchApiVersion共同构成。
+
+**起始版本：** 26.0.1
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int | 0 ~ 99 - 系统修订版本号，取值范围为整数。<br>-1 - 未查询到系统修订版本号，或调用内部接口失败。|
+
 ### OH_GetFirstApiVersion()
 
 ```c
@@ -542,3 +582,46 @@ const char *OH_GetDistributionOSReleaseType(void)
 | -- |---------------------------------------------------------------------------------|
 | const char* | ISV发行版系统类型。<br> 如果没有指定ISV，它将返回与[OH_GetOsReleaseType](#oh_getosreleasetype)相同的值。 |
 
+### OH_GetDiskSN()
+
+```c
+int32_t OH_GetDiskSN(char *diskSn)
+```
+
+**描述**
+
+获取磁盘序列号。
+
+**需要权限：** ohos.permission.ACCESS_DISK_PHY_INFO
+
+**参数：**
+
+| 参数名 | 说明 |
+| --  | -- |
+| char* diskSn | 磁盘序列号。 |
+
+**起始版本：** 26.1.0
+
+**返回：**
+
+| 类型 | 说明                                                                              |
+| -- |---------------------------------------------------------------------------------|
+| int32_t | <ul><li>如果操作成功，则返回0。</li><li>201如果调用者没有ohos.permission.ACCESS_DISK_PHY_INFO。</li></ul> |
+
+### OH_GetOdid()
+
+```c
+const char *OH_GetOdid(void)
+```
+
+**描述**
+
+获取开发者匿名设备标识符。
+
+**起始版本：** 26.1.0
+
+**返回：**
+
+| 类型 | 说明                                                                              |
+| -- |---------------------------------------------------------------------------------|
+| const char* | 返回开发者匿名设备标识符。 |

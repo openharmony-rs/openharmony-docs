@@ -2601,7 +2601,7 @@ Obtains the file descriptor of the **TCPSocket** object. This API uses a promise
 
 | Type                                            | Description                                      |
 | ----------------------------------------------- | ----------------------------------------- |
-| Promise\<number\> | Promise object that returns the file descriptor of the socket. |
+| Promise\<number\> | Promise used to return the file descriptor of the socket. |
 
 **Example**
 
@@ -4826,7 +4826,7 @@ Obtains the file descriptor of the **LocalSocket** object. This API uses a promi
 
 | Type              | Description                             |
 | :---------------- | :-------------------------------- |
-| Promise\<number\> | Promise object that returns the file descriptor of the socket. |
+| Promise\<number\> | Promise used to return the file descriptor of the socket. |
 
 **Example**
 
@@ -7916,7 +7916,7 @@ Obtains the cipher suite negotiated by both communication parties after a **TLSS
 
 | Type                   | Description                 |
 | ---------------------- | --------------------- |
-| Promise\<Array\<string\>\> | Promise object that returns the cipher suites supported by both communicating parties. On failure, returns an error code and error message. |
+| Promise\<Array\<string\>\> | Promise used to return the cipher suites supported by both communicating parties. On failure, returns an error code and error message. |
 
 **Error codes**
 
@@ -7990,7 +7990,7 @@ Obtains the signing algorithm negotiated by both communication parties after a *
 
 | Type                   | Description                 |
 | ---------------------- | -------------------- |
-| Promise\<Array\<string\>\> | Promise object that returns the obtained signature algorithms supported by both parties. |
+| Promise\<Array\<string\>\> | Promise used to return the obtained signature algorithms supported by both parties. |
 
 **Error codes**
 
@@ -10218,7 +10218,7 @@ Obtains the signing algorithm negotiated by both communication parties after a *
 
 | Type                      | Description                                         |
 | -------------------------- | --------------------------------------------- |
-| Promise\<Array\<string\>\> | Promise object that returns the obtained signature algorithms supported by both parties. |
+| Promise\<Array\<string\>\> | Promise used to return the obtained signature algorithms supported by both parties. |
 
 **Error codes**
 

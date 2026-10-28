@@ -104,7 +104,7 @@ Adds an MDNS service. This API uses a promise to return the result.
 
 | Type                             | Description                                 |
 | --------------------------------- | ------------------------------------- |
-| Promise\<[LocalServiceInfo](#localserviceinfo)> | Promise object that returns the added MDNS service information. |
+| Promise\<[LocalServiceInfo](#localserviceinfo)> | Promise used to return the added MDNS service information. |
 
 **Error codes**
 

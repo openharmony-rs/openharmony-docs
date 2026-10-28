@@ -3,7 +3,7 @@
 <!--Kit: IDL-->
 <!--Subsystem: SystemManagementServices-->
 <!--Owner: @c_bing_b-->
-<!--Designer: @liveery-->
+<!--Designer: @c_bing_b-->
 <!--Tester: @alien0208-->
 <!--Adviser: @huipeizi-->
 ## IDL接口描述语言简介
@@ -51,58 +51,56 @@ sequenceable数据类型是指使用“sequenceable”关键字声明的数据�
 
 在C++中sequenceable数据类型的声明放在文件的头部，以“sequenceable includedir..namespace.typename”的形式声明。具体而言，声明可以有如下三个形式：
 
-```cpp
-sequenceable includedir..namespace.typename
-sequenceable includedir...typename
-sequenceable namespace.typename
-```
+- sequenceable includedir..namespace.typename
+- sequenceable includedir...typename
+- sequenceable namespace.typename
 
 其中，includedir表示该数据类型头文件所在目录，includedir中以“.”作为分隔符。namespace表示该数据类型所在命名空间，namespace中同样以“.”作为分隔符。typename表示数据类型，数据类型中不能包含非英文字符类型的其他符号。includedir与namespace之间通过“..”分割，如果类型声明的表达式中不包含“..”,除去最后一个typename之外的字符都会被解析为命名空间。例如：
 
-```cpp
+<!-- @[idl_cpp_sequenceable_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/IDLTool/entry/src/cpp/idl_type_declaration.idl) -->
+
+``` TypeScript
 sequenceable a.b..C.D
 ```
 
- 上述声明在生成的C++头文件中将被解析为如下代码：
+上述声明在生成的C++头文件中将被解析为如下代码：
 
-```cpp
+<!-- @[idl_cpp_sequenceable_parsed](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/IDLTool/entry/src/cpp/idl_sequenceable_parsed.h) -->
+
+``` C
 #include  "a/b/d.h"
 using C::D;
 ```
 
 TS声明放在文件的头部，以 “sequenceable namespace.typename;”的形式声明。具体而言，声明可以有如下形式（idl为对应namespace，MySequenceable为对应typename）：
 
-```ts
+<!-- @[idl_ts_sequenceable_declaration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/IDLTool/entry/src/main/ets/idl/idl_type_declaration.idl) -->
+
+``` TypeScript
 sequenceable idl.MySequenceable
 ```
 
 其中，namespace是该类型所属的命名空间，typename是类型名。MySequenceable类型表示可以通过Parcel进行跨进程传递。sequenceable数据类型并不在OpenHarmony IDL文件中定义，而是定义在.ts文件中。因此，OpenHarmony IDL工具将根据声明在生成的.ts代码文件中加入如下语句：
 
-```ts
-import MySequenceable from "./my_sequenceable"
+<!-- @[idl_ts_sequenceable_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/IDLTool/entry/src/main/ets/idl/idl_type_import.ts) -->
+
+``` TypeScript
+import MySequenceable from './my_sequenceable';
 ```
 
 需要注意的是，IDL并不负责该类型的代码实现，仅仅按照指定的形式引入该头文件或import指定模块，并使用该类型，因此开发者需要自行保证引入目录、命名空间及类型的正确性。
 
 ### 接口类型
- 接口类型是指OpenHarmony IDL文件中定义的接口。对于当前IDL文件中定义的接口，可以直接使用它作为方法参数类型或返回值类型。而在其它OpenHarmony IDL文件中定义的接口，则需要在文件的头部进行前置声明。 
+接口类型是指OpenHarmony IDL文件中定义的接口。对于当前IDL文件中定义的接口，可以直接使用它作为方法参数类型或返回值类型。而在其它OpenHarmony IDL文件中定义的接口，则需要在文件的头部进行前置声明。 
 
- C++中声明的形式与sequenceable类型相似，具体而言可以有如下形式： 
+C++中声明的形式与sequenceable类型相似，形式为“interface includedir..namespace.typename”。
 
-```cpp
-interface includedir..namespace.typename
-```
+TS中声明的形式为“interface namespace.interfacename”，其中，namespace是该接口所属的命名空间，interfacename是接口名。例如：“interface OHOS.IIdlTestObserver;”声明了在其他OpenHarmony IDL文件定义的IIdlTestObserver接口，该接口可以作为当前定义中方法的参数类型或返回值类型使用。OpenHarmony IDL工具将根据该声明在生成的TS代码文件中加入如下语句：
 
- TS中声明的形式，具体而言可以有如下形式： 
+<!-- @[idl_ts_interface_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/IDLTool/entry/src/main/ets/idl/idl_type_import.ts) -->
 
-```ts
-interface namespace.interfacename
-```
-
-其中，namespace是该接口所属的命名空间，interfacename是接口名。例如：“interface OHOS.IIdlTestObserver;”声明了在其他OpenHarmony IDL文件定义的IIdlTestObserver接口，该接口可以作为当前定义中方法的参数类型或返回值类型使用。OpenHarmony IDL工具将根据该声明在生成的TS代码文件中加入如下语句：
-
-```ts
-import IIdlTestObserver from "./i_idl_test_observer"
+``` TypeScript
+import IIdlTestObserver from './i_idl_test_observer';
 ```
 
 ### 数组类型
@@ -165,8 +163,7 @@ OpenHarmony IDL容器数据类型与Ts数据类型、C++数据类型的对应关
 ### 方法二：
 首先，打开DevEco Studio—>Tools—>SDK Manager，查看OpenHarmony SDK的本地安装路径，此处以DevEco Studio 3.0.0.993版本为例，查看方式如下图所示。
 
-![SDKpath](./figures/SDKpath.png)
-![SDKpath](./figures/SDKpath2.png)
+![SDKpath](./figures/SDKpath.png)![SDKpath](./figures/SDKpath2.png)
 
 进入对应路径后，查看toolchains->3.x.x.x（对应版本号命名文件夹）下是否存在idl工具的可执行文件。
 
@@ -188,13 +185,15 @@ OpenHarmony IDL容器数据类型与Ts数据类型、C++数据类型的对应关
 
  例如，此处构建一个名为IIdlTestService.idl的文件，文件内具体内容如下：  
 
-```cpp
-  interface OHOS.IIdlTestService {
-      int TestIntTransaction([in] int data);
-      void TestStringTransaction([in] String data);
-      void TestMapTransaction([in] Map<int, int> data);
-      int TestArrayTransaction([in] String[] data);
-  }
+<!-- @[idl_interface_definition](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/IDLTool/entry/src/main/ets/IIdlTestServiceTs/IIdlTestService.idl) -->
+
+``` TypeScript
+interface OHOS.IIdlTestService {
+   int TestIntTransaction([in] int data);
+   void TestStringTransaction([in] String data);
+   void TestMapTransaction([in] Map<int, int> data);
+   int TestArrayTransaction([in] String[] data);
+}
 ```
 
 在idl的可执行文件所在文件夹下执行命令 `idl -gen-ts -d dir -c dir/IIdlTestService.idl`。
@@ -220,173 +219,199 @@ OpenHarmony IDL容器数据类型与Ts数据类型、C++数据类型的对应关
 
 OpenHarmony IDL工具生成的Stub类是接口类的抽象实现，并且会声明.idl文件中的所有方法。 
 
-```ts
-import {testIntTransactionCallback} from "./i_idl_test_service";
-import {testStringTransactionCallback} from "./i_idl_test_service";
-import {testMapTransactionCallback} from "./i_idl_test_service";
-import {testArrayTransactionCallback} from "./i_idl_test_service";
-import IIdlTestService from "./i_idl_test_service";
-import { rpc } from "@kit.IPCKit";
+<!-- @[idl_ts_stub](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/IDLTool/entry/src/main/ets/IIdlTestServiceTs/idl_test_service_stub.ts) -->
+
+``` TypeScript
+import { testIntTransactionCallback } from './i_idl_test_service';
+import { testStringTransactionCallback } from './i_idl_test_service';
+import { testMapTransactionCallback } from './i_idl_test_service';
+import { testArrayTransactionCallback } from './i_idl_test_service';
+import IIdlTestService from './i_idl_test_service';
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
+const TAG = 'IdlTestServiceStub';
 
 export default class IdlTestServiceStub extends rpc.RemoteObject implements IIdlTestService {
-    constructor(des: string) {
-        super(des);
-    }
-    
-    async onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
-        option: rpc.MessageOption): Promise<boolean> {
-        console.log("onRemoteMessageRequest called, code = " + code);
-        if (code == IdlTestServiceStub.COMMAND_TEST_INT_TRANSACTION) {
-            let _data = data.readInt();
-            this.testIntTransaction(_data, (errCode: number, returnValue: number) => {
-                reply.writeInt(errCode);
-                if (errCode == 0) {
-                    reply.writeInt(returnValue);
-                }
-            });
-            return true;
-        } else if (code == IdlTestServiceStub.COMMAND_TEST_STRING_TRANSACTION) {
-            let _data = data.readString();
-            this.testStringTransaction(_data, (errCode: number) => {
-                reply.writeInt(errCode);
-            });
-            return true;
-        } else if (code == IdlTestServiceStub.COMMAND_TEST_MAP_TRANSACTION) {
-            let _data: Map<number, number> = new Map();
-            let _dataSize = data.readInt();
-            for (let i = 0; i < _dataSize; ++i) {
-                let key = data.readInt();
-                let value = data.readInt();
-                _data.set(key, value);
-            }
-            this.testMapTransaction(_data, (errCode: number) => {
-                reply.writeInt(errCode);
-            });
-            return true;
-        } else if (code == IdlTestServiceStub.COMMAND_TEST_ARRAY_TRANSACTION) {
-            let _data = data.readStringArray();
-            this.testArrayTransaction(_data, (errCode: number, returnValue: number) => {
-                reply.writeInt(errCode);
-                if (errCode == 0) {
-                    reply.writeInt(returnValue);
-                }
-            });
-            return true;
-        } else {
-            console.log("invalid request code" + code);
-        }
-        return false;
-    }
-    
-    testIntTransaction(data: number, callback: testIntTransactionCallback): void{}
-    testStringTransaction(data: string, callback: testStringTransactionCallback): void{}
-    testMapTransaction(data: Map<number, number>, callback: testMapTransactionCallback): void{}
-    testArrayTransaction(data: string[], callback: testArrayTransactionCallback): void{}
+  constructor(des: string) {
+    super(des);
+  }
 
-    static readonly COMMAND_TEST_INT_TRANSACTION = 1;
-    static readonly COMMAND_TEST_STRING_TRANSACTION = 2;
-    static readonly COMMAND_TEST_MAP_TRANSACTION = 3;
-    static readonly COMMAND_TEST_ARRAY_TRANSACTION = 4;
+  async onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
+    option: rpc.MessageOption): Promise<boolean> {
+    hilog.info(DOMAIN, TAG, 'onRemoteMessageRequest called, code = %{public}d', code);
+    if (code === IdlTestServiceStub.COMMAND_TEST_INT_TRANSACTION) {
+      let _data = data.readInt();
+      this.testIntTransaction(_data, (errCode: number, returnValue: number) => {
+        reply.writeInt(errCode);
+        if (errCode === 0) {
+          reply.writeInt(returnValue);
+        }
+      });
+      return true;
+    } else if (code === IdlTestServiceStub.COMMAND_TEST_STRING_TRANSACTION) {
+      let _data = data.readString();
+      this.testStringTransaction(_data, (errCode: number) => {
+        reply.writeInt(errCode);
+      });
+      return true;
+    } else if (code === IdlTestServiceStub.COMMAND_TEST_MAP_TRANSACTION) {
+      let _data: Map<number, number> = new Map();
+      let _dataSize = data.readInt();
+      for (let i = 0; i < _dataSize; ++i) {
+        let key = data.readInt();
+        let value = data.readInt();
+        _data.set(key, value);
+      }
+      this.testMapTransaction(_data, (errCode: number) => {
+        reply.writeInt(errCode);
+      });
+      return true;
+    } else if (code === IdlTestServiceStub.COMMAND_TEST_ARRAY_TRANSACTION) {
+      let _data = data.readStringArray();
+      this.testArrayTransaction(_data, (errCode: number, returnValue: number) => {
+        reply.writeInt(errCode);
+        if (errCode === 0) {
+          reply.writeInt(returnValue);
+        }
+      });
+      return true;
+    } else {
+      hilog.error(DOMAIN, TAG, 'invalid request code: %{public}d', code);
+    }
+    return false;
+  }
+
+  testIntTransaction(data: number, callback: testIntTransactionCallback): void {
+  }
+
+  testStringTransaction(data: string, callback: testStringTransactionCallback): void {
+  }
+
+  testMapTransaction(data: Map<number, number>, callback: testMapTransactionCallback): void {
+  }
+
+  testArrayTransaction(data: string[], callback: testArrayTransactionCallback): void {
+  }
+
+  static readonly COMMAND_TEST_INT_TRANSACTION = 1;
+  static readonly COMMAND_TEST_STRING_TRANSACTION = 2;
+  static readonly COMMAND_TEST_MAP_TRANSACTION = 3;
+  static readonly COMMAND_TEST_ARRAY_TRANSACTION = 4;
 }
 ```
 
 开发者需要继承.idl文件中定义的接口类并实现其中的方法。在本示例中，我们继承了IdlTestServiceStub接口类并实现了其中的testIntTransaction、testStringTransaction、testMapTransaction和testArrayTransaction方法。具体的示例代码如下：
 
-```ts
-import {testIntTransactionCallback} from "./i_idl_test_service"
-import {testStringTransactionCallback} from "./i_idl_test_service"
-import {testMapTransactionCallback} from "./i_idl_test_service";
-import {testArrayTransactionCallback} from "./i_idl_test_service";
-import IdlTestServiceStub from "./idl_test_service_stub"
+<!-- @[idl_ts_service_implementation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/IDLTool/entry/src/main/ets/IIdlTestServiceTs/IdlTestImp.ets) -->
 
+``` TypeScript
+import {testIntTransactionCallback} from './i_idl_test_service';
+import {testStringTransactionCallback} from './i_idl_test_service';
+import {testMapTransactionCallback} from './i_idl_test_service';
+import {testArrayTransactionCallback} from './i_idl_test_service';
+import IdlTestServiceStub from './idl_test_service_stub';
 
-class IdlTestImp extends IdlTestServiceStub {
+export default class IdlTestImp extends IdlTestServiceStub {
 
-    testIntTransaction(data: number, callback: testIntTransactionCallback): void
-    {
-        callback(0, data + 1);
-    }
-    testStringTransaction(data: string, callback: testStringTransactionCallback): void
-    {
-        callback(0);
-    }
-    testMapTransaction(data: Map<number, number>, callback: testMapTransactionCallback): void
-    {
-        callback(0);
-    }
-    testArrayTransaction(data: string[], callback: testArrayTransactionCallback): void
-    {
-        callback(0, 1);
-    }
+  testIntTransaction(data: number, callback: testIntTransactionCallback): void {
+    callback(0, data + 1);
+  }
+  testStringTransaction(data: string, callback: testStringTransactionCallback): void {
+    callback(0);
+  }
+  testMapTransaction(data: Map<number, number>, callback: testMapTransactionCallback): void {
+    callback(0);
+  }
+  testArrayTransaction(data: string[], callback: testArrayTransactionCallback): void {
+    callback(0, 1);
+  }
 }
 ```
 
 在服务实现接口后，需要向客户端公开该接口，以便客户端进程绑定。如果开发者的服务要公开该接口，请扩展Ability并实现onConnect()从而返回IRemoteObject，以便客户端能与服务进程交互。服务端向客户端公开IRemoteAbility接口的代码示例如下:
 
-```ts
+<!-- @[idl_ts_service_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/IDLTool/entry/src/main/ets/service/ServiceAbility.ets) -->
+
+``` TypeScript
 import { Want } from '@kit.AbilityKit';
-import { rpc } from "@kit.IPCKit";
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import IdlTestImp from '../IIdlTestServiceTs/IdlTestImp';
+
+const DOMAIN = 0x0000;
+const TAG = 'ServiceAbility';
 
 class ServiceAbility {
-  onStart() {
-    console.info('ServiceAbility onStart');
+  onStart(want: Want): void {
+    hilog.info(DOMAIN, TAG, '%{public}s', 'ServiceAbility onStart');
   }
-  onStop() {
-    console.info('ServiceAbility onStop');
+  onStop(): void {
+    hilog.info(DOMAIN, TAG, '%{public}s', 'ServiceAbility onStop');
   }
-  onCommand(want: Want, startId: number) {
-    console.info('ServiceAbility onCommand');
+  onCommand(want: Want, restart: boolean, startId: number): void {
+    hilog.info(DOMAIN, TAG, '%{public}s', 'ServiceAbility onCommand');
   }
-  onConnect(want: Want) {
-    console.info('ServiceAbility onConnect');
+  onConnect(want: Want): rpc.RemoteObject {
+    hilog.info(DOMAIN, TAG, '%{public}s', 'ServiceAbility onConnect');
     try {
-      console.log('ServiceAbility want:' + typeof(want));
-      console.log('ServiceAbility want:' + JSON.stringify(want));
-      console.log('ServiceAbility want name:' + want.bundleName)
+      hilog.info(DOMAIN, TAG, 'ServiceAbility want type: %{public}s', typeof(want));
+      hilog.info(DOMAIN, TAG, 'ServiceAbility want: %{public}s', JSON.stringify(want));
+      hilog.info(DOMAIN, TAG, 'ServiceAbility want name: %{public}s', want.bundleName);
     } catch(err) {
-      console.log('ServiceAbility error:' + err)
+      hilog.error(DOMAIN, TAG, 'ServiceAbility error: %{public}s', JSON.stringify(err));
     }
-    console.info('ServiceAbility onConnect end');
+    hilog.info(DOMAIN, TAG, '%{public}s', 'ServiceAbility onConnect end');
     return new IdlTestImp('connect') as rpc.RemoteObject;
   }
-  onDisconnect(want: Want) {
-    console.info('ServiceAbility onDisconnect');
-    console.info('ServiceAbility want:' + JSON.stringify(want));
+  onDisconnect(want: Want): void {
+    hilog.info(DOMAIN, TAG, '%{public}s', 'ServiceAbility onDisconnect');
+    try {
+      hilog.info(DOMAIN, TAG, 'ServiceAbility want: %{public}s', JSON.stringify(want));
+    } catch(err) {
+      hilog.error(DOMAIN, TAG, 'ServiceAbility error: %{public}s', JSON.stringify(err));
+    }
   }
 }
 
-export default new ServiceAbility()
+export default new ServiceAbility();
 ```
 
 ### 客户端调用IPC方法
 
 客户端调用connectServiceExtensionAbility()以连接服务时，客户端的onAbilityConnectDone中的onConnect回调会接收服务的onConnect()方法返回的IRemoteObject实例。由于客户端和服务在不同应用内，所以客户端应用的目录内必须包含.idl文件(SDK工具会自动生成Proxy代理类)的副本。客户端的onAbilityConnectDone中的onConnect回调会接收服务的onConnect()方法返回的IRemoteObject实例，使用IRemoteObject创建IdlTestServiceProxy类的实例对象testProxy，然后调用相关IPC方法。示例代码如下：
 
-```ts
+<!-- @[idl_ts_client](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/IDLTool/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 import { Want, common } from '@kit.AbilityKit';
-import IdlTestServiceProxy from './idl_test_service_proxy';
+import IdlTestServiceProxy from '../IIdlTestServiceTs/idl_test_service_proxy';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN = 0x0000;
+const TAG = 'IdlClient';
 
 function callbackTestIntTransaction(result: number, ret: number): void {
-  if (result == 0 && ret == 124) {
-    console.log('case 1 success');
+  if (result === 0 && ret === 124) {
+    hilog.info(DOMAIN, TAG, '%{public}s', 'case 1 success');
   }
 }
 
 function callbackTestStringTransaction(result: number): void {
-  if (result == 0) {
-    console.log('case 2 success');
+  if (result === 0) {
+    hilog.info(DOMAIN, TAG, '%{public}s', 'case 2 success');
   }
 }
 
 function callbackTestMapTransaction(result: number): void {
-  if (result == 0) {
-    console.log('case 3 success');
+  if (result === 0) {
+    hilog.info(DOMAIN, TAG, '%{public}s', 'case 3 success');
   }
 }
 
 function callbackTestArrayTransaction(result: number, ret: number): void {
-  if (result == 0 && ret == 124) {
-    console.log('case 4 success');
+  if (result === 0 && ret === 124) {
+    hilog.info(DOMAIN, TAG, '%{public}s', 'case 4 success');
   }
 }
 
@@ -398,28 +423,25 @@ let onAbilityConnectDone: common.ConnectOptions = {
     testProxy.testIntTransaction(123, callbackTestIntTransaction);
     testProxy.testStringTransaction('hello', callbackTestStringTransaction);
     testProxy.testMapTransaction(testMap, callbackTestMapTransaction);
-    testProxy.testArrayTransaction(['1','2'], callbackTestArrayTransaction);
+    testProxy.testArrayTransaction(['1', '2'], callbackTestArrayTransaction);
   },
   onDisconnect: (elementName) => {
-    console.log('onDisconnectService onDisconnect');
+    hilog.info(DOMAIN, TAG, '%{public}s', 'onDisconnectService onDisconnect');
   },
   onFailed: (code) => {
-    console.log('onDisconnectService onFailed');
+    hilog.error(DOMAIN, TAG, '%{public}s', 'onDisconnectService onFailed');
   }
 };
 
-let context: common.UIAbilityContext = this.context;
-
-function connectAbility(): void {
-    let want: Want = {
-        bundleName: 'com.example.myapplicationidl',
-        abilityName: 'com.example.myapplicationidl.ServiceAbility'
-    };
-    let connectionId = -1;
-    connectionId = context.connectServiceExtensionAbility(want, onAbilityConnectDone);
+// ...
+connectAbility(): void {
+  let want: Want = {
+    bundleName: 'com.example.idltool',
+    abilityName: 'com.example.idltool.ServiceAbility'
+  };
+  let connectionId = -1;
+  connectionId = this.context.connectServiceExtensionAbility(want, onAbilityConnectDone);
 }
-
-
 ```
 
 ### IPC传递sequenceable对象
@@ -433,7 +455,9 @@ function connectAbility(): void {
 
 MySequenceable类的代码示例如下：
 
-```ts
+<!-- @[idl_ts_sequenceable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/IDLTool/entry/src/main/ets/MySequenceable.ts) -->
+
+``` TypeScript
 import { rpc } from '@kit.IPCKit';
 
 export default class MySequenceable implements rpc.Parcelable {
@@ -447,12 +471,12 @@ export default class MySequenceable implements rpc.Parcelable {
   getString() : string {
     return this.str;
   }
-  marshalling(messageParcel: rpc.MessageSequence) {
+  marshalling(messageParcel: rpc.MessageSequence): boolean {
     messageParcel.writeInt(this.num);
     messageParcel.writeString(this.str);
     return true;
   }
-  unmarshalling(messageParcel: rpc.MessageSequence) {
+  unmarshalling(messageParcel: rpc.MessageSequence): boolean {
     this.num = messageParcel.readInt();
     this.str = messageParcel.readString();
     return true;

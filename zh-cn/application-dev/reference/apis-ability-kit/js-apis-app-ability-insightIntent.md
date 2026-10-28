@@ -58,6 +58,21 @@ import { insightIntent } from '@kit.AbilityKit';
 | -------- | -------- | -------- | -------- | -------- |
 | entityId | string | 否 | 否 | 意图实体的ID。<br/>**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。 |
 
+## FileEntity
+
+定义文件实体的结构体。表示意图执行过程中涉及的关键文件对象，包括意图参数和执行结果。
+
+**起始版本**：26.1.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| entityId | string | 否 | 否 | 文件实体标识。固定为'OHOS_FILE_ENTITY'。<br>**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。 |
+| uris | Array&lt;string&gt; | 否 | 否 | 文件URI列表。<br>**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。<br>**说明：**<br>默认授予URI的FLAG_AUTH_READ_URI_PERMISSION权限。权限介绍见[Flags](js-apis-app-ability-wantConstant.md#flags)。 |
+
 ## IntentResult\<T><sup>20+</sup>
 
 意图执行的返回结果，支持[泛型类型](../../quick-start/arkts-language-guide-generics.md#泛型类)。

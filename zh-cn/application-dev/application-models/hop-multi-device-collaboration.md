@@ -449,14 +449,14 @@
           // 成功连接后台服务
           hilog.info(DOMAIN_NUMBER, TAG, `sendRequest msg:${msg}`);
         }).catch((error: BusinessError) => {
-          hilog.info(DOMAIN_NUMBER, TAG, `sendRequest failed, ${JSON.stringify(error)}`);
+          hilog.error(DOMAIN_NUMBER, TAG, `sendRequest failed, ${JSON.stringify(error)}`);
         });
       },
       onDisconnect(elementName): void {
         hilog.info(DOMAIN_NUMBER, TAG, 'onDisconnect callback');
       },
       onFailed(code): void {
-        hilog.info(DOMAIN_NUMBER, TAG, 'onFailed callback');
+        hilog.error(DOMAIN_NUMBER, TAG, 'onFailed callback');
       }
     };
    

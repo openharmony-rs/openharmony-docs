@@ -36,7 +36,7 @@ PIN码认证。使用Promise异步回调。
 | 参数名   | 类型 | 必填 | 说明 |
 | -------- | -------- | ---- | -------|
 | resourceId | string | 是   | UKey中某容器的资源ID，可通过[openAuthorizeDialog](../apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22)获取，其结果中附带resourceId。 |
-| params  | Array\<[HuksExternalCryptoParam](js-apis-huksExternalCrypto.md#huksexternalcryptoparam)> | 是   | 操作时需传入的参数，必选TAG：[HUKS_EXT_CRYPTO_TAG_UKEY_PIN](js-apis-huksExternalCrypto.md#huksexternalcryptotag)。 |
+| params  | Array\<[HuksExternalCryptoParam](js-apis-huksExternalCrypto.md#huksexternalcryptoparam)> | 是   | 操作时需传入的参数，必选TAG：[HUKS_EXT_CRYPTO_TAG_UKEY_PIN](js-apis-huksExternalCrypto.md#huksexternalcryptotag)。<br>在API版本26.0.1，新增可选TAG：[HUKS_EXT_CRYPTO_TAG_TIMEOUT](js-apis-huksExternalCrypto.md#huksexternalcryptotag)，用于自定义异步接口超时等待时间，未传入时使用默认值60秒。 |
 
 **返回值：**
 

@@ -57,7 +57,7 @@ OH_AVImageGenerator* OH_AVImageGenerator_Create(void)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVImageGenerator](capi-avimagegenerator-oh-avimagegenerator.md)* | 创建成功时返回指向OH_AVImageGenerator实例的指针，否则返回空指针。<br>         可能的失败原因：HstEngineFactory未能创建AVMetadataHelperEngine。 |
+| [OH_AVImageGenerator](capi-avimagegenerator-oh-avimagegenerator.md)* | 创建成功时返回指向OH_AVImageGenerator实例的指针，否则返回空指针。<br>         可能的失败原因：HstEngineFactory未能创建AVImageGeneratorEngine。 |
 
 ### OH_AVImageGenerator_SetFDSource()
 

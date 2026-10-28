@@ -2,10 +2,10 @@
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=4bb0b56d7d67b2ab3ff0955bce487aba3399fade translatedAt=2026-09-22T02:07:44.168Z pushedAt=2026-09-22T08:29:58.358Z -->
+<!-- md-trans-meta sourceCommit=1ded46b3f2c6157598c112b16f192beb1f37cf1d translatedAt=2026-10-08T02:17:36.597Z pushedAt=2026-10-08T09:16:49.531Z -->
 
 NotificationContent defines the content structure of a notification and provides interfaces for describing multiple notification content types. When an application needs to publish a notification, it can select the corresponding content type interface to construct the [notification content](../../notification/notification-glossary.md#notification-content) based on the display requirements of the notification (such as plain text, long text, multiline text, picture, and live view).
 
@@ -13,7 +13,7 @@ NotificationContent defines the content structure of a notification and provides
 >
 > The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> This topic describes only system APIs provided by the module. For details about its public APIs, see [NotificationContent](./js-apis-inner-notification-notificationContent.md).
+> This topic describes only system APIs provided by the module. For details about its public APIs, see [NotificationContent](js-apis-inner-notification-notificationContent.md).
 
 ## NotificationContent
 
@@ -21,7 +21,7 @@ NotificationContent defines the content structure of a notification and provides
 
 | Name          | Type                                                                       | Read-Only| Optional| Description              |
 | -----------   | --------------------------------------------------------------------------- | ---- | --- | ------------------ |
-| liveView<sup>11+</sup>       | [NotificationLiveViewContent](#notificationliveviewcontent11)              | No  | Yes  | Normal live view type [notification content](../../notification/notification-glossary.md#notification-content-notification-content).<br>**System API**: This API is a system API. |
+| liveView<sup>11+</sup>       | [NotificationLiveViewContent](#notificationliveviewcontent11)              | No  | Yes  | Normal live view type [notification content](../../notification/notification-glossary.md#notification-content).<br>**System API**: This API is a system API. |
 
 ## NotificationBasicContent
 
@@ -84,7 +84,7 @@ Describes the [notification capsule](../../notification/notification-glossary.md
 
 | Name                 |  Type                        | Read-Only| Optional| Description                             |
 | --------------------- | ---------------------------- | ---- | ---- | -------------------------------- |
-| content<sup>12+</sup> | string                       |  No |  Yes | Extended text of the capsule. This parameter is left empty by default.                  |
+| content<sup>12+</sup> | string                       |  No  |  Yes  | Extended text of the capsule. This parameter is left empty by default.                   |
 | time<sup>18+</sup> | number                       |  No  |  Yes  | Display duration of the notification capsule of an instant task. The default value is **0**.<br>Unit: second.   |
 | capsuleButtons<sup>18+</sup> | Array\<[NotificationIconButton](#notificationiconbutton18)\>    |  No |  Yes | Buttons of the notification capsule of an instant task. A maximum of two buttons are supported. This parameter is left empty by default.     |
 
@@ -165,5 +165,4 @@ Describes the multi-line text notification content. This API inherits from [Noti
 
 | Name          | Type   | Read-Only| Optional| Description                            |
 | -------------- | ------ | ---- | --- | -------------------------------- |
-| lineWantAgents<sup>20+</sup>       | Array<[WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md)> |  No | Yes | **wantAgent**s triggered when a line of text in the multi-line text is tapped. The text in different lines corresponds to different **wantAgent**s. The maximum number of lines configured for this field is equal to the value of [lines](./js-apis-inner-notification-notificationContent.md#notificationmultilinecontent). This parameter is left empty by default.<br>**System API**: This is a system API.<br>**Required permissions**: ohos.permission.NOTIFICATION_AGENT_CONTROLLER|
-<!--no_check-->
+| lineWantAgents<sup>20+</sup>       | Array<[WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md)> |  No  |  Yes  | **wantAgent**s triggered when a line of text in the multi-line text is tapped. The text in different lines corresponds to different **wantAgent**s. The number of lines configured for this field cannot be greater than the number of [lines](js-apis-inner-notification-notificationContent.md#notificationmultilinecontent). This parameter is left empty by default.<br>**System API**: This is a system API.<br>**Required permissions**: ohos.permission.NOTIFICATION_AGENT_CONTROLLER |

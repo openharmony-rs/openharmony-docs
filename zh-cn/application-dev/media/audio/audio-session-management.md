@@ -1,7 +1,7 @@
 # 音频会话管理(ArkTS)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @funny_sunix-->
+<!--Owner: @LauJianghu-->
 <!--Designer: @hao-liangfei-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
@@ -272,13 +272,14 @@ let audioSessionManager: audio.AudioSessionManager = audioManager.getSessionMana
 
 ### 音频会话场景
 
-音频会话统一持有焦点时，系统提供了三种音频会话场景。激活AudioSession前需要先通过[setAudioSessionScene](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setaudiosessionscene20)设置对应的音频会话场景，后续激活时系统会根据应用选择的音频会话场景申请对应的音频焦点。
+音频会话统一持有焦点时，系统提供如下几种音频会话场景。激活AudioSession前需要先通过[setAudioSessionScene](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setaudiosessionscene20)设置对应的音频会话场景，后续激活时系统会根据应用选择的音频会话场景申请对应的音频焦点。
 
 | 名称                   | 值 | 匹配的StreamUsage | 说明 | 适用的场景      |
 | :--------------------- |:--|:---------------|:--------|:----------|
-| AUDIO_SESSION_SCENE_MEDIA | 0 | STREAM_USAGE_MUSIC、STREAM_USAGE_MOVIE、STREAM_USAGE_AUDIOBOOK | 媒体音频会话场景。     | 频繁申请和释放焦点的场景（如多个小视频滑动播放），不持有AudioRenderer对象但需监听焦点变化等媒体播放场景。 |
-| AUDIO_SESSION_SCENE_GAME | 1 | STREAM_USAGE_GAME | 游戏音频会话场景。     | 游戏内配乐、配音等游戏音频场景。 |
-| AUDIO_SESSION_SCENE_VOICE_COMMUNICATION  | 2 | STREAM_USAGE_RINGTONE、STREAM_USAGE_VOICE_COMMUNICATION、STREAM_USAGE_VIDEO_COMMUNICATION | VoIP语音通话音频会话场景。 | VoIP通话场景下需同时启动铃声流等通话场景。 |
+| AUDIO_SESSION_SCENE_MEDIA | 0 | STREAM_USAGE_MUSIC、STREAM_USAGE_MOVIE、STREAM_USAGE_AUDIOBOOK | 媒体音频会话场景。     | 频繁申请和释放焦点的场景（如多个小视频滑动播放），不持有AudioRenderer对象但需监听焦点变化等媒体播放场景。<br>**说明：** 从API版本20开始，支持该参数。  |
+| AUDIO_SESSION_SCENE_GAME | 1 | STREAM_USAGE_GAME | 游戏音频会话场景。     | 游戏内配乐、配音等游戏音频场景。<br>**说明：** 从API版本20开始，支持该参数。  |
+| AUDIO_SESSION_SCENE_VOICE_COMMUNICATION  | 2 | STREAM_USAGE_RINGTONE、STREAM_USAGE_VOICE_COMMUNICATION、STREAM_USAGE_VIDEO_COMMUNICATION | VoIP语音通话音频会话场景。 | VoIP通话场景下需同时启动铃声流等通话场景。<br>**说明：** 从API版本20开始，支持该参数。  |
+| AUDIO_SESSION_SCENE_VOICE_MESSAGE  | 3 | STREAM_USAGE_VOICE_MESSAGE | 语音消息音频会话场景。 | 聊天应用中播放语音消息的场景。<br>**说明：** 从API版本26.0.1开始，支持该参数。 |
 
 > **注意：**
 >
@@ -386,6 +387,7 @@ AudioSession申请的焦点和AudioRenderer申请的焦点是同等地位。
            break;
          case audio.AudioSessionStateChangeHint.AUDIO_SESSION_STATE_CHANGE_HINT_UNDUCK:
            // 此分支表示系统已将应用所有播放音频流音量恢复正常。
+           break;
          case audio.AudioSessionStateChangeHint.AUDIO_SESSION_STATE_CHANGE_HINT_MUTE_SUGGESTION:
            // 此分支表示其他应用开始播放非混音音频，系统可自行决定是否静音。
            break;
@@ -485,6 +487,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
         break;
       case audio.AudioSessionStateChangeHint.AUDIO_SESSION_STATE_CHANGE_HINT_UNDUCK:
         // 此分支表示系统已将应用所有播放音频流音量恢复正常。
+        break;
       case audio.AudioSessionStateChangeHint.AUDIO_SESSION_STATE_CHANGE_HINT_MUTE_SUGGESTION:
         // 此分支表示其他应用开始播放非混音音频，系统可自行决定是否静音。
         break;

@@ -235,9 +235,12 @@
 
 > **说明：** 
 > 
-> 应用默认只能接收自身应用的skill变化事件。
+> - 应用默认只能接收自身的Skill变化事件。
 > 
-> 申请ohos.permission.MANAGE_SKILL_PRIVILEGE权限后能接收自身应用和其他应用的skill变化事件。
+> - 应用申请ohos.permission.MANAGE_SKILL权限后，可接收自身及其他应用的Skill变化事件。<!--Del-->
+> 
+> - 对于系统应用，建议优先申请ohos.permission.MANAGE_SKILL_PRIVILEGE权限，接收自身及其他应用的Skill变化事件。
+<!--DelEnd-->
 
 **起始版本：** 26.0.0
 

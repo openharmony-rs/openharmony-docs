@@ -3,7 +3,7 @@
 <!--Subsystem: Window-->
 <!--Owner: @oh_wangxk-->
 <!--Designer: @wulong158-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @LiTongguan2026-->
 <!--Adviser: @ge-yafang-->
 
 本模块提供屏幕截图的能力，截取屏幕时支持设置截取的区域、大小等图像信息。可应用于屏幕内容分享、问题反馈或测试验证等场景，支持普通截图和HDR截图两种模式，具备区域选择、旋转处理、多屏支持和截屏通知等特性，帮助开发者灵活获取屏幕内容。

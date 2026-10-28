@@ -1,11 +1,11 @@
-# System Common Event Definitions
+# System Common Events
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=f1df35e744e8be0a80ac7cb20765106cc0424535 translatedAt=2026-09-23T02:04:43.619Z pushedAt=2026-09-23T10:54:45.123Z -->
+<!-- md-trans-meta sourceCommit=d92fd96c7713dc18450281df98f1c9ed5f77b2c9 translatedAt=2026-09-29T09:38:57.952Z pushedAt=2026-10-08T04:38:23.323Z -->
 
 This document provides indexes for predefined system common events.
 
@@ -1403,4 +1403,3 @@ Common event types are defined in [Support](../js-apis-commonEvent.md#support) o
   > **NOTE**
   >
   > This type is supported since API version 8 and deprecated since API version 9. You are advised to use [COMMON_EVENT_SPLIT_SCREEN](commonEventManager-definitions.md#common_event_split_screen) instead.
-<!--no_check-->

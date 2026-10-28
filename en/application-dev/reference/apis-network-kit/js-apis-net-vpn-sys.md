@@ -182,7 +182,7 @@ Creates a VPN based on the specified configuration. This API uses a promise to r
 
 | Type             | Description                                                          |
 | ----------------- | -------------------------------------------------------------- |
-| Promise\<number\> | Promise object that returns the file descriptor (fd) of the specified virtual network interface. |
+| Promise\<number\> | Promise used to return the file descriptor (fd) of the specified virtual network interface. |
 
 **Error codes**
 
