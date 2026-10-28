@@ -49,12 +49,12 @@ ZOrder值越大，窗口越靠前显示，能够覆盖ZOrder值较小的窗口�
 
   | 窗口类别 | 说明 |
   | -------- | -------- |
-  | 画中画窗口 | 以小窗形式显示的视频窗口，如视频通话或视频播放过程中上划退出应用，画面仍以小窗形式继续显示。 |
-  | 全局悬浮窗 | 使用[WindowType.TYPE_FLOAT](../reference/apis-arkui/arkts-apis-window-e.md#windowtype7)创建的窗口，需申请ohos.permission.SYSTEM_FLOAT_WINDOW权限，位于所有应用窗口之上；另有相机类型悬浮窗、全局搜索窗口等系统接口窗口，仅系统应用可创建。 |
+  | 画中画窗口 | 通过[PiPWindow.create()](../reference/apis-arkui/js-apis-pipWindow.md#pipwindowcreate)接口创建，用于以小窗形式显示视频内容，如视频通话或视频播放过程中上划退出应用，画面仍以小窗形式继续显示。 |
+  | 全局悬浮窗 | 使用[WindowType.TYPE_FLOAT](../reference/apis-arkui/arkts-apis-window-e.md#windowtype7)创建的窗口，需申请[ohos.permission.SYSTEM_FLOAT_WINDOW](../security/AccessToken/restricted-permissions.md#ohospermissionsystem_float_window)权限，位于所有应用窗口之上，仅支持在PC/2in1设备使用；另有相机类型悬浮窗、全局搜索窗口等系统接口窗口，仅系统应用可创建。 |
   | 置顶主窗口 | 调用[setWindowTopmost()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowtopmost14)置顶的主窗口，位于其他应用的普通主窗口之上，但仍低于上方的画中画窗口和全局悬浮窗。 |
   | 应用主窗口 | 默认创建的应用主窗口，多个主窗口之间按激活顺序叠放。 |
 
-  各层级的具体数值在不同设备形态（PC、phone、pad）上存在差异，上表仅描述相对层级关系。
+  各层级的具体数值在不同设备形态（PC/2in1、phone等）上存在差异，上表仅描述相对层级关系。
 
 - **相同类型窗口的层级调整**
 
@@ -165,7 +165,7 @@ async function showDeleteConfirm(context: common.UIAbilityContext): Promise<void
 
 > **说明：**
 >
-> - 置顶主窗口仅高于其他应用的普通主窗口，仍低于层级更高的窗口（如画中画窗口、全局悬浮窗、输入法窗口）。
+> - 置顶主窗口仅高于其他应用的普通主窗口，仍低于层级更高的窗口（如画中画窗口、全局悬浮窗）。
 > - 建议在页面中提供明显的置顶/取消置顶入口，避免长期置顶干扰用户的多任务操作。
 
 1. 在[module.json5](../quick-start/module-configuration-file.md)中声明权限[ohos.permission.WINDOW_TOPMOST](../security/AccessToken/permissions-for-all.md#ohospermissionwindow_topmost)。
