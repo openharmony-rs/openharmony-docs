@@ -912,7 +912,7 @@ Web组件返回的请求/响应头对象。适用于需要读取或修改HTTP头
 
 ## MonitoredBlankScreenEventInfo
 
-提供监测到白屏并完成根因归因时的事件信息，包括页面URL、归因原因和附加详情。适用于需要监控页面白屏问题并分析根因的场景，提升白屏问题的定位效率和用户体验。
+白屏检测归因信息，包括页面URL、白屏根因、归因详情。
 
 **起始版本：** 26.0.1
 
@@ -922,9 +922,9 @@ Web组件返回的请求/响应头对象。适用于需要读取或修改HTTP头
 
 | 名称             | 类型      | 只读 | 可选   | 说明                                       |
 | -------------- | ---- | ---- | ---- | ---------------------------------------- |
-| url | string | 否 | 否 | 监测到白屏时，页面的URL。    |
-| reason | [BlankScreenReason](./arkts-basic-components-web-e.md#blankscreenreason) | 否 | 否 | 本次白屏的归因原因。    |
-| extraMsg | string | 否 | 否 | 白屏归因原因的附加信息，JSON格式的字符串，包含根因归因报告的详细内容。 |
+| url | string | 否 | 否 | 页面URL。    |
+| reason | [BlankScreenReason](./arkts-basic-components-web-e.md#blankscreenreason) | 否 | 否 | 白屏的具体原因。    |
+| extraMsg | string | 否 | 否 | 归因详情，JSON格式的字符串。 |
 
 ## CameraCaptureStateChangeInfo<sup>23+</sup>
 

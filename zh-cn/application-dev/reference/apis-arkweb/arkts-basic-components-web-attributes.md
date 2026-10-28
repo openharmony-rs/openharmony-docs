@@ -3948,7 +3948,7 @@ blankScreenDetectionConfig(detectConfig: BlankScreenDetectionConfig)
 
 enableBlankScreenMonitor(enable: boolean)
 
-设置是否开启白屏监控。开启白屏监控后，监测到白屏时会触发回调[onMonitoredBlankScreen](./arkts-basic-components-web-events.md#onmonitoredblankscreen)。
+设置是否开启白屏检测。开启白屏检测后，Web组件检测到白屏时会触发回调[onMonitoredBlankScreen](./arkts-basic-components-web-events.md#onmonitoredblankscreen)。当属性没有显式调用时，默认关闭白屏检测。
 
 **起始版本：** 26.0.1
 
@@ -3960,7 +3960,7 @@ enableBlankScreenMonitor(enable: boolean)
 
 | 参数名        | 类型    | 必填   | 说明          |
 | ---------- | ------- | ---- | ------------- |
-| enable | boolean | 是 | 是否开启白屏监控。true表示开启，false表示关闭。 |
+| enable | boolean | 是 | 是否开启白屏检测。true表示开启，false表示关闭。 |
 
 **示例：**
 
