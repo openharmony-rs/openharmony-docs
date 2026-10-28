@@ -37,24 +37,24 @@ status: active
 
 ## 开发步骤及注意事项
 - 在CMake脚本中链接如下动态库。
-  <!-- @[target_link_libraries](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/CMakeLists.txt) -->
+   <!-- @[target_link_libraries](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/CMakeLists.txt) -->
   
-  ``` Text
-  target_link_libraries(entry PUBLIC 
-      libavplayer.so 
-      libnative_media_core.so 
-      libhilog_ndk.z.so
-  )
-  ```
+   ``` Text
+   target_link_libraries(entry PUBLIC 
+       libavplayer.so 
+       libnative_media_core.so 
+       libhilog_ndk.z.so
+   )
+   ```
 
 - 使用[OH_AVPlayer_SetOnInfoCallback()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setoninfocallback)、[OH_AVPlayer_SetOnErrorCallback()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setonerrorcallback)接口设置信息监听回调函数和错误监听回调函数，需要链接libnative_media_core.so动态库。
 
 - 开发者使用系统日志能力时，需引入如下头文件。
-  <!-- @[hilog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @[hilog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->
   
-  ``` C++
-  #include <hilog/log.h>
-  ```
+   ``` C++
+   #include <hilog/log.h>
+   ```
 
   并需要链接libhilog_ndk.z.so动态库。
 
