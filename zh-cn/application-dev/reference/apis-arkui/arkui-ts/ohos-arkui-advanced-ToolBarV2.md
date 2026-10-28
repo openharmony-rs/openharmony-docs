@@ -8,7 +8,7 @@
 
 工具栏用于展示针对当前界面内容的操作选项，在界面底部显示，适用于需要为用户提供快速操作入口的场景。底部最多显示5个入口，超过则收纳入“更多”子项中，在最右侧显示。适用于需要对当前页面内容进行快捷操作的场景，可帮助用户快速访问常用功能，提升操作效率。<br />
 该组件基于[状态管理（V2）](../../../ui/state-management/arkts-state-management-overview.md#状态管理v2)实现，相较于[状态管理（V1）](../../../ui/state-management/arkts-state-management-overview.md#状态管理v1)，状态管理（V2）增强了对数据对象的深度观察与管理能力，不再局限于组件层级。借助状态管理（V2），开发者可以通过该组件更灵活地控制工具栏的数据和状态，实现更高效的用户界面刷新。<br>
-当ToolBarV2设置[AdvancedToolBarV2Modifier](#advancedtoolbarv2modifier)参数时，可使用高级工具栏功能，支持通过[AdvancedToolbarV2Item](#advancedtoolbarv2item)（继承自[ToolBarV2Item](#toolbarv2item)）配置高级工具栏子项。配置了高级子项的工具栏更为灵活，允许溢出菜单、子项分组等。<br>
+从API版本26.1.0开始，当ToolBarV2设置[AdvancedToolBarV2Modifier](#advancedtoolbarv2modifier)参数时，可使用高级工具栏功能，支持通过[AdvancedToolbarV2Item](#advancedtoolbarv2item)（继承自[ToolBarV2Item](#toolbarv2item)）配置高级工具栏子项。配置了高级子项的工具栏更为灵活，允许溢出菜单、子项分组等。<br>
 
 > **说明：**
 >
@@ -458,10 +458,6 @@ ToolBarV2SymbolGlyphOptions定义Symbol图标的属性。
 
 具有相同非空groupID的子项构成一个分组。分组级别的配置（放置位置）从数组中携带该groupID的第一个子项读取。
 
-> **说明：**
->
-> 继承自[ToolBarV2Item](#toolbarv2item)的属性（content、action、icon、state、accessibilityText、accessibilityDescription、accessibilityLevel）请参见[ToolBarV2Item](#toolbarv2item)，以下为AdvancedToolbarV2Item新增属性。
-
 **起始版本：** 26.1.0
 
 **装饰器类型：** @ObservedV2
@@ -495,8 +491,8 @@ ToolBarV2SymbolGlyphOptions定义Symbol图标的属性。
 | activatedBackgroundColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否 | 是 | 子项在激活态（ACTIVATE）下的背景色。当子项isShowText为false（即纯图标渲染）时生效；当子项同时渲染图标与文本时该属性被忽略且不报错。未指定时默认透明，建议使用$r('sys.color.comp_background_emphasize')。<br />默认值：Color.Transparent。<br />装饰器类型：@Trace |
 | id                       | string                                            | 否   | 是   | 工具栏子项的唯一标识。<br />默认值：undefined。<br />值为undefined时，不设置唯一标识。<br />装饰器类型：@Trace                                                                                                                                                                        |
 | itemSize                 | [Size](../js-apis-arkui-graphics.md#size)          | 否   | 是   | 工具栏子项的尺寸（宽×高）。<br />水平方向：56vp（宽）× 48vp（高）；垂直方向：48vp（宽）× 56vp（高）。<br />默认值：主轴56vp × 交叉轴48vp。<br />装饰器类型：@Trace                                                              |
-| isShowSeparator          | boolean                                           | 否   | 是   | 是否在该子项后显示分割线。为true时在该子项后渲染分割线（工具栏最后一个子项后不显示）。<br />默认值：false。<br />装饰器类型：@Trace                                                                                          |
-| isShowText               | boolean                                           | 否   | 是   | 是否显示子项的文本内容。设置为false时，工具栏中不渲染content指定的文本，但content仍用于无障碍和溢出菜单识别。适用于纯图标子项仍需在溢出菜单中通过文本识别的场景。<br />默认值：true。<br />装饰器类型：@Trace                                   |
+| isShowSeparator          | boolean                                           | 否   | 是   | 是否在该子项后显示分割线。true表示在该子项后显示分割线（工具栏最后一个子项后不显示）；false表示在该子项后不显示分割线。<br />默认值：false。<br />装饰器类型：@Trace                                                                                          |
+| isShowText               | boolean                                           | 否   | 是   | 是否显示子项的文本内容。设置为false时，工具栏中不显示content指定的文本，但content仍用于无障碍和溢出菜单识别。适用于纯图标子项仍需在溢出菜单中通过文本识别的场景。<br />默认值：true。<br />装饰器类型：@Trace                                   |
 | isShowOverflowMenu       | boolean                                           | 否   | 是   | 是否在该子项中显示工具栏的溢出菜单。溢出菜单用于收纳超出工具栏显示数量的子项；建议设置在ToolbarV2ItemPlacement.TRAILING半区的子项上，多个子项同时设置为true时以数组中第一个为准。<br />默认值：false。<br />装饰器类型：@Trace                                                                                                                                     |
 | groupID                  | string                                            | 否   | 是   | 分组标识。具有相同非空groupID的子项将作为一个可视分组渲染。分组级别的配置从数组中携带该groupID的第一个子项读取。<br />默认值：undefined。<br />值为undefined时，该子项不参与分组。<br />装饰器类型：@Trace                                                              |
 
@@ -505,6 +501,10 @@ ToolBarV2SymbolGlyphOptions定义Symbol图标的属性。
 constructor(options: AdvancedToolbarV2ItemOptions)
 
 AdvancedToolbarV2Item的构造函数。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
@@ -521,10 +521,6 @@ AdvancedToolbarV2Item的构造函数。
 ## AdvancedToolbarV2ItemOptions
 
 用于构建AdvancedToolbarV2Item对象，继承自[ToolBarV2ItemOptions](#toolbarv2itemoptions)，在其基础上扩展了高级字段。
-
-> **说明：**
->
-> 继承自[ToolBarV2ItemOptions](#toolbarv2itemoptions)的字段（content、action、icon、state、accessibilityText、accessibilityDescription、accessibilityLevel）请参见[ToolBarV2ItemOptions](#toolbarv2itemoptions)，以下为AdvancedToolbarV2ItemOptions新增字段。
 
 **起始版本：** 26.1.0
 
@@ -544,8 +540,8 @@ AdvancedToolbarV2Item的构造函数。
 | activatedBackgroundColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否 | 是 | 子项在激活态（ACTIVATE）下的背景色。当子项isShowText为false（即纯图标渲染）时生效；当子项同时渲染图标与文本时该属性被忽略且不报错。未指定时默认透明，建议使用$r('sys.color.comp_background_emphasize')。<br />默认值：Color.Transparent。                                 |
 | id                       | string                                            | 否   | 是   | 工具栏子项的唯一标识。<br />默认值：undefined。<br />值为undefined时，不设置唯一标识。                                                                                                                                                                       |
 | itemSize                 | [Size](../js-apis-arkui-graphics.md#size)          | 否   | 是   | 工具栏子项的尺寸（宽×高）。<br />水平方向：56vp（宽）× 48vp（高）；垂直方向：48vp（宽）× 56vp（高）。<br />默认值：主轴56vp × 交叉轴48vp。                                                                                  |
-| isShowSeparator          | boolean                                           | 否   | 是   | 是否在该子项后显示分割线。为true时在该子项后渲染分割线（工具栏最后一个子项后不显示）。<br />默认值：false。                                                                                                            |
-| isShowText               | boolean                                           | 否   | 是   | 是否显示子项的文本内容。设置为false时，工具栏中不渲染content指定的文本，但content仍用于无障碍和溢出菜单识别。适用于纯图标子项仍需在溢出菜单中通过文本识别的场景。<br />默认值：true。                                                |
+| isShowSeparator          | boolean                                           | 否   | 是   | 是否在该子项后显示分割线。true表示在该子项后显示分割线（工具栏最后一个子项后不显示）；false表示在该子项后不显示分割线。<br />默认值：false。                                                                                                            |
+| isShowText               | boolean                                           | 否   | 是   | 是否显示子项的文本内容。设置为false时，工具栏中不显示content指定的文本，但content仍用于无障碍和溢出菜单识别。适用于纯图标子项仍需在溢出菜单中通过文本识别的场景。<br />默认值：true。                                                |
 | isShowOverflowMenu       | boolean                                           | 否   | 是   | 是否在该子项中显示工具栏的溢出菜单。溢出菜单用于收纳超出工具栏显示数量的子项；建议设置在ToolbarV2ItemPlacement.TRAILING半区的子项上，多个子项同时设置为true时以数组中第一个为准。<br />默认值：false。                                                                                                                                                              |
 | groupID                  | string                                            | 否   | 是   | 分组标识。具有相同非空groupID的子项将作为一个可视分组渲染。<br />默认值：undefined。<br />值为undefined时，该子项不参与分组。                                                                                                                                   |
 
@@ -573,6 +569,10 @@ mainAxisLength(value: LengthMetrics): AdvancedToolBarV2Modifier
 
 水平方向：控制宽度。垂直方向：控制高度。
 
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -599,6 +599,10 @@ crossAxisLength(value: LengthMetrics): AdvancedToolBarV2Modifier
 
 水平方向：控制高度。垂直方向：控制宽度。未设置时交叉轴按内容自适应。
 
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -622,6 +626,10 @@ crossAxisLength(value: LengthMetrics): AdvancedToolBarV2Modifier
 direction(value: Axis): AdvancedToolBarV2Modifier
 
 设置工具栏布局方向的接口。未通过该接口设置时，默认值为Axis.Horizontal。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
@@ -1020,9 +1028,9 @@ struct Index {
 
 ### 示例4（高级工具栏放置位置与分组展示）
 
-该示例通过设置advancedToolBarModifier启用高级工具栏功能，使用[AdvancedToolbarV2Item](#advancedtoolbarv2item)配置[placement](#toolbarv2itemplacement)（LEADING/MAIN/TRAILING）与groupID分组，展示子项在不同区域的放置效果及分组展示。
+该示例通过设置[AdvancedToolBarV2Modifier](#advancedtoolbarv2modifier)启用高级工具栏功能，使用[AdvancedToolbarV2Item](#advancedtoolbarv2item)配置[ToolbarV2ItemPlacement](#toolbarv2itemplacement)放置位置（LEADING/MAIN/TRAILING）与groupID分组，展示子项在不同区域的放置效果及分组展示。
 
-本示例涉及的[AdvancedToolbarV2Item](#advancedtoolbarv2item)、[AdvancedToolBarV2Modifier](#advancedtoolbarv2modifier)、[ToolbarV2ItemPlacement](#toolbarv2itemplacement)等接口从API版本26.1.0开始新增。
+从API版本26.1.0开始，新增[AdvancedToolbarV2Item](#advancedtoolbarv2item)、[AdvancedToolBarV2Modifier](#advancedtoolbarv2modifier)、[ToolbarV2ItemPlacement](#toolbarv2itemplacement)。
 
 ```ts
 import {
@@ -1106,7 +1114,7 @@ struct Index {
 
 该示例通过AdvancedToolBarV2Modifier设置direction为Axis.Vertical实现垂直布局，配合crossAxisLength指定交叉轴宽度；子项设置isShowText为false呈现纯图标样式。
 
-本示例涉及的[AdvancedToolbarV2Item](#advancedtoolbarv2item)、[AdvancedToolBarV2Modifier](#advancedtoolbarv2modifier)等接口从API版本26.1.0开始新增。
+从API版本26.1.0开始，新增[AdvancedToolbarV2Item](#advancedtoolbarv2item)、[AdvancedToolBarV2Modifier](#advancedtoolbarv2modifier)。
 
 ```ts
 import {
