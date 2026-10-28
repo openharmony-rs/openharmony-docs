@@ -80,3 +80,5 @@
 |[setNTPServer](../reference/apis-mdm-kit/js-apis-enterprise-systemManager.md#systemmanagersetntpserver)|{"server":"ntpserver.com"}|
 |[setActivationLockDisabled](../reference/apis-mdm-kit/js-apis-enterprise-systemManager.md#systemmanagersetactivationlockdisabled24)|{"isAllowed":true}|
 |[setWifiProfileSync](../reference/apis-mdm-kit/js-apis-enterprise-wifiManager.md#wifimanagersetwifiprofilesync)|{"profile":{"ssid":"guest-Wi-Fi","bssid":"AA:BB:CC:DD:EE:FF"}}|
+
+<!--RP1--><!--RP1End-->
