@@ -37,7 +37,7 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 | deviceType | string | 是 | 设备类型。详细请参考[deviceTypes标签](../../quick-start/module-configuration-file.md#devicetypes标签)。<br/>**原子化服务API（仅ArkTS-Dyn）**：从API版本11开始，该接口支持在原子化服务中使用。<br/>示例：wearable<br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24|
 | manufacture | string | 是 | 设备厂家名称。<br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24 |
 | brand | string | 是 | 设备品牌名称。<br/>**原子化服务API（仅ArkTS-Dyn）**：从API版本11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24 |
-| marketName | string | 是 | 外部产品系列。<br/>示例：<!--RP2-->Mate XX<!--RP2End--><br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24 |
+| marketName | string | 是 | <!--RP17-->外部产品系列。<!--RP17End--><br/>示例：<!--RP2-->Mate XX<!--RP2End--><br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24 |
 | productSeries | string | 是 | 产品系列。<br/>示例：<!--RP3-->TAS<!--RP3End--><br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24 |
 | productModel | string | 是 | 认证型号。<br/>**原子化服务API（仅ArkTS-Dyn）**：从API版本11开始，该接口支持在原子化服务中使用。<br/>示例：<!--RP4-->TAS-AL00<!--RP4End--><br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24 |
 | productModelAlias<sup>14+</sup> | string | 是 | 认证型号别名。<br/>**原子化服务API（仅ArkTS-Dyn）**：从API版本14开始，该接口支持在原子化服务中使用。<br/>示例：TAS-AL00<br/>**ArkTS-Dyn起始版本：** 14<br/>**ArkTS-Sta起始版本：** 24 |
