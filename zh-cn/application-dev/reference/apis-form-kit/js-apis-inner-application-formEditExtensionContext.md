@@ -194,7 +194,7 @@ const TAG: string = '[testTag] ExampleFormEditExtensionAbility'
 export default class ExampleFormEditAbility extends FormEditExtensionAbility {
   onSessionCreate(want: Want, session: UIExtensionContentSession): void {
     try {
-      this.formEditContext.setWindowBackgroundColor("#00FFFFFF")
+      this.context.setWindowBackgroundColor("#00FFFFFF")
         .then(() => {
           console.info('Background color set successfully');
         })
