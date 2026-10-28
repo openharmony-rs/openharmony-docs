@@ -4887,14 +4887,14 @@ function testSendUssdResponse() {
 
 **系统能力**：SystemCapability.Telephony.CallManager
 
-|        名称              | 类型                               | 必填 | 说明                                         |
-| ------------------------ | ---------------------------------- | ---- | ------------------------------------------- |
-| accountId <sup>9+</sup>  | number                             | 否   | 帐户Id。<br/>- 0：卡槽1。<br/>- 1：卡槽2。    |
-| videoState <sup>9+</sup> | [VideoStateType](#videostatetype7) | 否   | 视频状态类型。                               |
-| dialScene <sup>9+</sup>  | [DialScene](#dialscene8)           | 否   | 拨号场景。                                   |
-| dialType <sup>9+</sup>   | [DialType](#dialtype8)             | 否   | 拨号类型。                                   |
-| extraParams <sup>14+</sup>   | Record\<string, Object\>       | 否   | 表示额外的呼叫参数。                          |
-| xCallType                | [xCallType](#xcalltype)            | 否   | XCALL类型。 <br>**起始版本:** 26.0.0         |
+|        名称              | 类型                               | 只读 | 可选 | 说明                                         |
+| ------------------------ | ---------------------------------- | ---- | ---- | ------------------------------------------- |
+| accountId <sup>9+</sup>  | number                             | 是   | 否   | 帐户Id。<br/>- 0：卡槽1。<br/>- 1：卡槽2。    |
+| videoState <sup>9+</sup> | [VideoStateType](#videostatetype7) | 是   | 否   | 视频状态类型。                               |
+| dialScene <sup>9+</sup>  | [DialScene](#dialscene8)           | 是   | 否   | 拨号场景。                                   |
+| dialType <sup>9+</sup>   | [DialType](#dialtype8)             | 是   | 否   | 拨号类型。                                   |
+| extraParams <sup>14+</sup>   | Record\<string, Object\>       | 是   | 否   | 表示额外的呼叫参数。                          |
+| xCallType                | [xCallType](#xcalltype)            | 是   | 否   | XCALL类型。 <br>**起始版本:** 26.0.0         |
 
 
 ## ImsCallMode<sup>8+</sup>
@@ -5033,27 +5033,27 @@ IP多媒体系统调用模式。
 
 **系统能力**：SystemCapability.Telephony.CallManager
 
-|      名称       | 类型                                     | 必填 | 说明           |
-| --------------- | ---------------------------------------- | ---- | -------------- |
-| accountNumber   | string                                   | 是   | 账号号码。       |
-| speakerphoneOn  | boolean                                  | 是   | 判断是否是扬声器接通电话，默认false。<br/>-true：是<br/>-false：否 |
-| accountId       | number                                   | 是   | 帐户Id。         |
-| videoState      | [VideoStateType](#videostatetype7)       | 是   | 视频状态类型。   |
-| startTime       | number                                   | 是   | 开始时间。       |
-| isEcc           | boolean                                  | 是   | 判断是否是Ecc，默认false。<br/>-true：是<br/>-false：否      |
-| callType        | [CallType](#calltype7)                   | 是   | 通话类型。       |
-| callId          | number                                   | 是   | 呼叫Id。         |
-| callState       | [DetailedCallState](#detailedcallstate7) | 是   | 详细呼叫状态。   |
-| conferenceState | [ConferenceState](#conferencestate7)     | 是   | 会议状态。       |
-| voipCallAttribute<sup>11+</sup> | [VoipCallAttribute](#voipcallattribute11)     | 否   | VoIP通话信息。       |
-| crsType<sup>11+</sup> | number                             | 是   | 视频彩振类型。|
-| originalCallType<sup>11+</sup> | number                    | 是   | 视频彩振原始呼叫类型。|
-| numberLocation<sup>12+</sup> | string | 否 | 号码归属地信息 |
-| numberMarkInfo<sup>12+</sup> | [NumberMarkInfo](#numbermarkinfo12) | 否 | 号码标记信息。 |
-| extraParams <sup>14+</sup>   | Record\<string, Object\>       | 否   | 表示额外的呼叫参数。                          |
-| rttState <sup>22+</sup>   | [RttState](#rttstate22)      | 否   | rtt通话状态。                          |
-| xCallType | [xCallType](#xcalltype) | 否 | XCALL类型。 <br>**起始版本:** 26.0.0|
-| isCustomAccessibility  | boolean              | 否 | 应用是否支持自定义无障碍能力，默认为false。<br>-true:支持<br>-false:不支持  <br>**起始版本:** 26.0.0|
+|      名称       | 类型                                     | 只读 | 可选| 说明           |
+| --------------- | ---------------------------------------- | ---- | ---- | -------------- |
+| accountNumber   | string                                   | 是   | 否   | 账号号码。       |
+| speakerphoneOn  | boolean                                  | 是   | 否   | 判断是否是扬声器接通电话，默认false。<br/>-true：是<br/>-false：否 |
+| accountId       | number                                   | 是   | 否   | 帐户Id。         |
+| videoState      | [VideoStateType](#videostatetype7)       | 是   | 否   | 视频状态类型。   |
+| startTime       | number                                   | 是   | 否   | 开始时间。       |
+| isEcc           | boolean                                  | 是   | 否   | 判断是否是Ecc，默认false。<br/>-true：是<br/>-false：否      |
+| callType        | [CallType](#calltype7)                   | 是   | 否   | 通话类型。       |
+| callId          | number                                   | 是   | 否   | 呼叫Id。         |
+| callState       | [DetailedCallState](#detailedcallstate7) | 是   | 否   | 详细呼叫状态。   |
+| conferenceState | [ConferenceState](#conferencestate7)     | 是   | 否   | 会议状态。       |
+| voipCallAttribute<sup>11+</sup> | [VoipCallAttribute](#voipcallattribute11)     | 是   | 否   | VoIP通话信息。       |
+| crsType<sup>11+</sup> | number                             | 是   | 否   | 视频彩振类型。|
+| originalCallType<sup>11+</sup> | number                    | 是   | 否   | 视频彩振原始呼叫类型。|
+| numberLocation<sup>12+</sup> | string | 是   | 否 | 号码归属地信息 |
+| numberMarkInfo<sup>12+</sup> | [NumberMarkInfo](#numbermarkinfo12) | 是   | 否 | 号码标记信息。 |
+| extraParams <sup>14+</sup>   | Record\<string, Object\>       | 是   | 否   | 表示额外的呼叫参数。                          |
+| rttState <sup>22+</sup>   | [RttState](#rttstate22)      | 是   | 否   | rtt通话状态。                          |
+| xCallType | [xCallType](#xcalltype) | 是   | 否 | XCALL类型。 <br>**起始版本:** 26.0.0|
+| isCustomAccessibility  | boolean              | 是   | 否 | 应用是否支持自定义无障碍能力，默认为false。<br>-true:支持<br>-false:不支持  <br>**起始版本:** 26.0.0|
 
 ## VoipCallAttribute<sup>11+</sup>
 
