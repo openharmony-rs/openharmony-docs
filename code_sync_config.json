@@ -18904,14 +18904,14 @@
 						"start_line":18
 					},
 					{
-						"end_line":81,
+						"end_line":80,
 						"name":"enter_edit_mode",
-						"start_line":41
+						"start_line":40
 					},
 					{
-						"end_line":62,
+						"end_line":61,
 						"name":"is_edit_mode",
-						"start_line":48
+						"start_line":47
 					},
 					{
 						"end_line":205,
