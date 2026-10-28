@@ -45,6 +45,54 @@
 - 下次刷新：表示指定卡片的下一次刷新时间。可以通过调用[setFormNextRefreshTime](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formprovidersetformnextrefreshtime)接口来实现。最短刷新时间为5分钟。例如，可以设置卡片在调用接口5分钟后刷新。
 
   <!-- @[set_form_next_refreshtime](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/updatebytimeformability/UpdateByTimeFormAbility.ts) --> 
+  
+  ``` TypeScript
+  // entry/src/main/ets/updatebytimeformability/UpdateByTimeFormAbility.ts
+  import { formBindingData, FormExtensionAbility, formInfo, formProvider } from '@kit.FormKit';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { Want } from '@kit.AbilityKit';
+  
+  const TAG: string = 'UpdateByTimeFormAbility';
+  const FIVE_MINUTE: number = 5;
+  const DOMAIN_NUMBER: number = 0xFF00;
+  
+  export default class UpdateByTimeFormAbility extends FormExtensionAbility {
+    onAddForm(want: Want): formBindingData.FormBindingData {
+      // 卡片使用方创建卡片时触发，返回卡片数据绑定类
+      let formData: Record<string, Object | string> = {};
+      return formBindingData.createFormBindingData(formData);
+    }
+  
+    // ...
+    onFormEvent(formId: string, message: string): void {
+      // 当卡片提供方的postCardAction接口的message事件被触发时调用
+      hilog.info(DOMAIN_NUMBER, TAG, `FormAbility onFormEvent, formId = ${formId}, message: ${JSON.stringify(message)}`);
+      try {
+        // 设置过5分钟后更新卡片内容
+        formProvider.setFormNextRefreshTime(formId, FIVE_MINUTE, (err: BusinessError) => {
+          if (err) {
+            hilog.error(DOMAIN_NUMBER, TAG,
+              `Failed to setFormNextRefreshTime. Code: ${err.code}, message: ${err.message}`);
+            return;
+          } else {
+            hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in setFormNextRefreshTime.');
+          }
+        });
+      } catch (err) {
+        hilog.error(DOMAIN_NUMBER, TAG,
+          `Failed to setFormNextRefreshTime. Code: ${(err as BusinessError).code},
+           message: ${(err as BusinessError).message}`);
+      }
+    }
+  
+    onAcquireFormState(want: Want): formInfo.FormState {
+      // 卡片使用方查询卡片状态时触发该回调，默认返回初始状态。
+      return formInfo.FormState.READY;
+    }
+  
+  }
+  ```
 
 在触发定时、下次刷新后，系统会调用FormExtensionAbility的[onUpdateForm](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonupdateform)生命周期回调，在回调中，可以使用[updateForm](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderupdateform)接口刷新卡片内容。`onUpdateForm`生命周期回调的使用请参见[卡片生命周期管理](./arkts-ui-widget-lifecycle.md)。
 
