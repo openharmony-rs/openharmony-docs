@@ -15,7 +15,10 @@
 
 **错误信息**
 
-Internal system error.<br>The possible causes are as follows:<br>1. The inter-process IPC call fails.<br>2. The system service process is faulty.
+Internal system error.
+The possible causes are as follows:
+1. The inter-process IPC call fails.
+2. The system service process is faulty.
 
 **错误描述**
 
@@ -47,7 +50,7 @@ Provider count of the current process has reached the upper limit.
 
 **处理步骤**
 
-1. 若确需新建实例，先调用[destroyAuthProvider](js-apis-security-guard-sys.md#securityguarddestroyauthprovider)()销毁已有实例，再调用[createAuthProvider](js-apis-security-guard-sys.md#securityguardcreateauthprovider)()创建。
+若确需新建实例，先调用[destroyAuthProvider](js-apis-security-guard-sys.md#securityguarddestroyauthprovider)()销毁已有实例，再调用[createAuthProvider](js-apis-security-guard-sys.md#securityguardcreateauthprovider)()创建。
 
 ## 27000003 全局阻断服务提供者实例数达上限
 

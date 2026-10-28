@@ -728,8 +728,6 @@ async function updatePolicy(): Promise<void> {
 
 **系统能力：** SystemCapability.Security.SecurityGuard
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统接口：** 此接口为系统接口。
 
 ### onClientStatusChanged
@@ -862,7 +860,7 @@ async function requestAuthResult(): Promise<void> {
 
 createAuthProvider(callback: AuthProviderCallback, serviceId: string): AuthProvider
 
-创建阻断服务提供者会话。同一进程只能创建1个Provider实例，全局最多16个。
+创建阻断服务提供者会话。使用callback异步回调。同一进程只能创建1个Provider实例，全局最多16个。
 
 **起始版本：** 26.1.0
 
