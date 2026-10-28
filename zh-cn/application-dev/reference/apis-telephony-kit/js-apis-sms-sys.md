@@ -888,7 +888,7 @@ addSimMessage\(options: SimMessageOptions, callback: AsyncCallback\<void\>\): vo
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.RECEIVE_SMS and ohos.permission.SEND_MESSAGES
+**需要权限**：ohos.permission.RECEIVE_SMS 和 ohos.permission.SEND_MESSAGES
 
 **系统能力**：SystemCapability.Telephony.SmsMms
 
@@ -939,7 +939,7 @@ addSimMessage\(options: SimMessageOptions\): Promise\<void\>
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.RECEIVE_SMS and ohos.permission.SEND_MESSAGES
+**需要权限**：ohos.permission.RECEIVE_SMS 和 ohos.permission.SEND_MESSAGES
 
 **系统能力**：SystemCapability.Telephony.SmsMms
 
@@ -996,7 +996,7 @@ delSimMessage\(slotId: number, msgIndex: number, callback: AsyncCallback\<void\>
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.RECEIVE_SMS and ohos.permission.SEND_MESSAGES
+**需要权限**：ohos.permission.RECEIVE_SMS 和 ohos.permission.SEND_MESSAGES
 
 **系统能力**：SystemCapability.Telephony.SmsMms
 
@@ -1044,7 +1044,7 @@ delSimMessage\(slotId: number, msgIndex: number\): Promise\<void\>
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.RECEIVE_SMS and ohos.permission.SEND_MESSAGES
+**需要权限**：ohos.permission.RECEIVE_SMS 和 ohos.permission.SEND_MESSAGES
 
 **系统能力**：SystemCapability.Telephony.SmsMms
 
@@ -1099,7 +1099,7 @@ updateSimMessage\(options: UpdateSimMessageOptions, callback: AsyncCallback\<voi
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.RECEIVE_SMS and ohos.permission.SEND_MESSAGES
+**需要权限**：ohos.permission.RECEIVE_SMS 和 ohos.permission.SEND_MESSAGES
 
 **系统能力**：SystemCapability.Telephony.SmsMms
 
@@ -1151,7 +1151,7 @@ updateSimMessage\(options: UpdateSimMessageOptions\): Promise\<void\>
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.RECEIVE_SMS and ohos.permission.SEND_MESSAGES
+**需要权限**：ohos.permission.RECEIVE_SMS 和 ohos.permission.SEND_MESSAGES
 
 **系统能力**：SystemCapability.Telephony.SmsMms
 

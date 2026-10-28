@@ -984,7 +984,7 @@ answerCall\(callback: AsyncCallback\<void\>\): void
 
 接听来电。使用callback异步回调。
 
-**需要权限**：ohos.permission.ANSWER_CALL or ohos.permission.MANAGE_CALL_FOR_DEVICES
+**需要权限**：ohos.permission.ANSWER_CALL 或 ohos.permission.MANAGE_CALL_FOR_DEVICES
 
 - ohos.permission.ANSWER_CALL权限仅系统应用可申请。
 
@@ -1030,7 +1030,7 @@ hangUpCall\(callback: AsyncCallback\<void\>\): void
 
 挂断电话。使用callback异步回调。
 
-**需要权限**：ohos.permission.ANSWER_CALL or ohos.permission.SET_TELEPHONY_STATE or ohos.permission.MANAGE_CALL_FOR_DEVICES
+**需要权限**：ohos.permission.ANSWER_CALL 或 ohos.permission.SET_TELEPHONY_STATE 或 ohos.permission.MANAGE_CALL_FOR_DEVICES
 
 - ohos.permission.ANSWER_CALL、ohos.permission.SET_TELEPHONY_STATE权限仅系统应用可申请。
 
@@ -1077,7 +1077,7 @@ rejectCall\(callback: AsyncCallback\<void\>\): void
 
 拒绝来电。使用callback异步回调。
 
-**需要权限**：ohos.permission.ANSWER_CALL or ohos.permission.MANAGE_CALL_FOR_DEVICES
+**需要权限**：ohos.permission.ANSWER_CALL 或 ohos.permission.MANAGE_CALL_FOR_DEVICES
 
 - ohos.permission.ANSWER_CALL权限仅系统应用可申请。
 
