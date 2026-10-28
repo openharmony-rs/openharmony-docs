@@ -6,6 +6,7 @@
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=265662c3f1bebcccc82375e5952ee48da32366a3 translatedAt=2026-10-28T12:17:00.500Z pushedAt=2026-10-28T12:46:30.490Z nl=1 -->
 
 ## Overview
 
@@ -29,11 +30,11 @@ The USB serial port service consists of two phases:
 
   After a USB-to-serial device is inserted, the USB host initiates an enumeration process over the USB bus to obtain the device descriptor (such as the vendor ID, device ID, and USB identifier of the communication device class). The OS matches the driver based on the descriptor to initialize the device and register the virtual serial port.
 
-- Transmit and receive data.
+- Transmit and receive data. 
 
   Transmitting data:
 
-  The application layer sends data. → The driver transmits the data to the device through the USB channel. → The device parses the data and sends the data to the serial port device through the physical serial port.
+  The application layer sends data. → The driver transmits the data to the device through the USB channel. → The device parses the data and sends the data to the serial port device through the physical serial port. 
   
   Receiving data:
   
@@ -60,10 +61,10 @@ The USB serial port service consists of two phases:
 
 - SDK version configuration:
 
-  API version 19 or later.
+  The ArkTS APIs provided by this module require SDK version API 19 or later.
 
 ### Environment Setup
 
 - Install [DevEco Studio](https://developer.huawei.com/consumer/en/download/deveco-studio) 4.1 or later on the PC.
-- Update the public SDK to API version 19 or later.
+- Update public-SDK to API 19 or later<!--Del-->. For details about how to update the SDK, see [Update Guide](../../../tools/openharmony-sdk-upgrade-assistant.md)<!--DelEnd-->.
 - Prepare a USB-to-serial cable. Connect the USB port and the serial port of the cable to that of the OpenHarmony device.
