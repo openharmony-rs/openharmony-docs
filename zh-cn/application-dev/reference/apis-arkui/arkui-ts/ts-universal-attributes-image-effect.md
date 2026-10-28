@@ -142,6 +142,118 @@ shadow(options: Optional\<ShadowOptions \| ShadowStyle>): T
 | ------ | ------------------------ |
 | T | 返回当前组件，用于链式调用。 |
 
+## shadowShape
+
+shadowShape(shape: CircleShape \| EllipseShape \| PathShape \| RectShape \| undefined): T
+
+设置组件阴影的渲染形状，阴影按指定形状渲染。该接口需与[shadow](#shadow)属性配合使用：当组件设置了阴影后，阴影默认按组件自身形状（即组件大小、位置和圆角形成的形状）渲染，使用本接口后阴影将按指定的形状渲染。指定的形状对象的属性参数支持百分比尺寸。
+
+> **说明：**
+>
+> 该接口对[ShadowOptions](#shadowoptions对象说明)中type取值为[ShadowType](#shadowtype10枚举说明).BLUR的阴影不生效。
+
+**起始版本：** 26.1.0
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名 | 类型 | 必填 | 说明                                                         |
+| ------ | ---- | ---- | ------------------------------------------------------------ |
+| shape  | [CircleShape](ts-universal-attributes-sharp-clipping.md#circleshape12) \| [EllipseShape](ts-universal-attributes-sharp-clipping.md#ellipseshape12) \| [PathShape](ts-universal-attributes-sharp-clipping.md#pathshape12) \| [RectShape](ts-universal-attributes-sharp-clipping.md#rectshape12) \| undefined | 是   | 阴影形状。<br>当值类型为CircleShape、EllipseShape、PathShape或RectShape时，阴影渲染为对应形状。<br>当shape的值为undefined时，清除阴影形状属性，阴影恢复为按组件自身形状渲染。 |
+
+**返回值：**
+
+| 类型   | 说明                     |
+| ------ | ------------------------ |
+| T | 返回当前组件，用于链式调用。 |
+
+**示例：**
+
+请参考[shadowClipMode](#shadowclipmode)接口的示例。
+
+## shadowClipMode
+
+shadowClipMode(mode: ShadowClipMode \| undefined): T
+
+设置[shadow](#shadow)在不填充时的裁剪方式：按指定形状对绘制的阴影进行裁切，阴影与该形状相交的部分被裁去，不予绘制。仅在[ShadowOptions](#shadowoptions对象说明)的fill字段设为false（即阴影不内部填充）时生效。
+
+> **说明：**
+>
+> 该接口对[ShadowOptions](#shadowoptions对象说明)中type取值为[ShadowType](#shadowtype10枚举说明).BLUR的阴影不生效。
+
+**起始版本：** 26.1.0
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名 | 类型 | 必填 | 说明                                                         |
+| ------ | ---- | ---- | ------------------------------------------------------------ |
+| mode   | [ShadowClipMode](ts-appendix-enums.md#shadowclipmode) \| undefined | 是   | 阴影裁切方式。<br>当mode的值为undefined时，恢复为默认裁切方式DEFAULT_SHAPE。 |
+
+**返回值：**
+
+| 类型   | 说明                     |
+| ------ | ------------------------ |
+| T | 返回当前组件，用于链式调用。 |
+
+**示例：**
+
+该示例主要演示通过[shadowShape](#shadowshape)设置阴影的渲染形状，并通过[shadowClipMode](#shadowclipmode)设置阴影不填充时的裁剪方式。
+
+```ts
+// xxx.ets
+import { RectShape } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct ShadowShapeExample {
+  build() {
+    Column() {
+      Row({ space: 60 }) {
+        Column() {
+          Text('BOUNDS_SHAPE').fontSize(12)
+        }
+        .width(100)
+        .height(100)
+        .borderRadius(16)
+        .justifyContent(FlexAlign.Center)
+        .backgroundColor('#8092D6CC')
+        .shadow({ radius: 15, color: Color.Gray }) // ShadowOptions中fill默认为false
+        .shadowShape(new RectShape({ width: 120, height: 120, radius: 20 }).position({ x: -10, y: -10 }))
+        .shadowClipMode(ShadowClipMode.BOUNDS_SHAPE) // 组件边界内的阴影被裁切，不予绘制
+
+        Column() {
+          Text('DEFAULT_SHAPE').fontSize(12)
+        }
+        .width(100)
+        .height(100)
+        .borderRadius(16)
+        .justifyContent(FlexAlign.Center)
+        .backgroundColor('#8092D6CC')
+        .shadow({ radius: 15, color: Color.Gray }) // ShadowOptions中fill默认为false
+        .shadowShape(new RectShape({ width: 120, height: 120, radius: 20 }).position({ x: -10, y: -10 }))
+        .shadowClipMode(ShadowClipMode.DEFAULT_SHAPE) // 默认阴影裁切方式，shadowShape内的阴影被裁切，不予绘制
+      }
+    }
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
+
+![shadowShapeEffect](figures/shadowShapeEffect.png)
+
 ## grayscale
 
 grayscale(value: number): T
