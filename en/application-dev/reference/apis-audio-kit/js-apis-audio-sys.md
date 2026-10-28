@@ -2690,7 +2690,7 @@ Obtains the list of sound card information, including onboard sound cards and US
 
 Application scenario: The application needs to obtain information about all audio adapters on the device, including onboard audio adapters and USB audio adapters, for asset management and monitoring.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -2738,7 +2738,7 @@ deviceEnhanceManager.getSoundCardInfoList().then((soundCardInfoList: Array<audio
 
 Enumerates sound card types.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -2753,7 +2753,7 @@ Enumerates sound card types.
 
 Describes the sound card information.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
 
 **Model restriction**: This API can be used only in the stage model.
 
