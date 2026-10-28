@@ -4027,6 +4027,16 @@
 						"start_line":16
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ComponentExtension/entry/src/main/ets/pages/StylesDecorator/StylesVersionCondition.ets",
+				"functions":[
+					{
+						"end_line":52,
+						"name":"Styles_Version_Condition",
+						"start_line":16
+					}
+				]
 			}
 		]
 	},
@@ -21368,6 +21378,16 @@
 						"end_line":56,
 						"name":"Extend_Usage_Scenario_three",
 						"start_line":38
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/extend/ExtendVersionCondition.ets",
+				"functions":[
+					{
+						"end_line":50,
+						"name":"Extend_Version_Condition",
+						"start_line":15
 					}
 				]
 			}
