@@ -13,17 +13,17 @@
 
 开发者可以根据界面设计和交互需求，对窗口外观进行定制。例如：
 
-- 通过设置窗口掩码，将子窗或全局悬浮窗显示为异形窗口。
+- 通过设置窗口掩码，将子窗口或[全局悬浮窗](global-floating-window-guide.md)显示为异形窗口。
 
-- 通过设置窗口边缘阴影的模糊半径，调整子窗或全局悬浮窗的阴影效果。<!--Del-->系统应用还可设置窗口边缘阴影的颜色和偏移量。<!--DelEnd-->
+- 通过设置窗口边缘阴影的模糊半径，调整子窗口或全局悬浮窗的阴影效果。<!--Del-->系统应用还可设置窗口边缘阴影的颜色和偏移量。<!--DelEnd-->
 
-- 通过设置窗口圆角，调整子窗或全局悬浮窗的边缘显示效果。<!--Del-->系统应用还可以设置窗口内容的模糊半径和窗口背景的模糊半径。<!--DelEnd-->
+- 通过设置窗口圆角，调整子窗口或全局悬浮窗的边缘显示效果。<!--Del-->系统应用还可以设置窗口内容的模糊半径和窗口背景的模糊半径。<!--DelEnd-->
 
 - 通过设置窗口背景色，使窗口背景与应用页面或主题样式保持一致。
 
 ## 异形窗口
 
-异形窗口为非常规形状的窗口，掩码用于描述异形窗口的形状。仅应用子窗和全局悬浮窗可设置为异形窗口。
+异形窗口为非常规形状的窗口，掩码用于描述异形窗口的形状。仅子窗口和全局悬浮窗可设置为异形窗口。
 
 可通过[setWindowMask()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowmask12)或[setWindowMaskWithAlpha()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowmaskwithalpha)接口设置异形窗口的掩码，以定义窗口的可见区域。
 
@@ -41,70 +41,17 @@
 
   ![setWindowMaskWithAlpha](figures/setWindowMaskWithAlpha.png)
 
-此处以设置子窗的异形窗口为例。此例主要实现以下效果：
+此处以设置子窗口的异形窗口为例。此例主要实现以下效果：
 
-1. 点击“Create Sub Window”按钮可以创建子窗。
+1. 点击“Create Sub Window”按钮可以创建子窗口。
 
-2. 创建子窗后，点击“setWindowMask for Sub Window”按钮，可通过[setWindowMaskWithAlpha()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowmaskwithalpha)接口设置子窗掩码。子窗发生以下变化：
+2. 创建子窗口后，点击“setWindowMask for Sub Window”按钮，可通过[setWindowMaskWithAlpha()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowmaskwithalpha)接口设置子窗口掩码。子窗口发生以下变化：
 
-     - 子窗变为三角形。
-     - 子窗的阴影和圆角消失。
-     - 子窗矩形区域的左上部分变为透明不可交互，通过点击“Create Test Window”按钮，事件透传到该按钮，创建出绿色的测试窗口。
+     - 子窗口变为三角形。
+     - 子窗口的阴影和圆角消失。
+     - 子窗口矩形区域的左上部分变为透明不可交互，通过点击“Create Test Window”按钮，事件透传到该按钮，创建出绿色的测试窗口。
 
-<!-- @[setWindowMaskSample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/EventDistribution/setWindowMask/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-import { window } from '@kit.ArkUI';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-@Entry
-@Component
-struct Index {
-  // ...
-  private windowMaskSub: window.Window | undefined = undefined;
-
-  // ...
-  setWindowMask(window: window.Window) {
-    let windowMask: Uint8Array = new Uint8Array(this.winWidth * this.winHeight);
-    for (let i = 0; i < this.winHeight; i++) {
-      for (let k = 0; k < this.winWidth; k++) {
-        if ((i + k) < (this.winHeight + this.winWidth) / 2) {
-          windowMask[i * this.winWidth + k] = 0;
-        } else {
-          windowMask[i * this.winWidth + k] = 255;
-        }
-      }
-    }
-    window.setWindowMaskWithAlpha(windowMask, this.winWidth, this.winHeight);
-  }
-
-  build() {
-    Row() {
-      Scroll(){
-        Column() {
-          // ...
-          Row() {
-            Button('setWindowMask for Sub Window')
-              .width('90%')
-              .type(ButtonType.Capsule)
-              .margin({
-                top: 10
-              }).fontSize(18)
-              .onClick(() => {
-                if(this.windowMaskSub) {
-                  this.setWindowMask(this.windowMaskSub);
-                }
-              })
-          }
-        }
-        .width('100%')
-      }
-    }
-    .height('100%')
-  }
-
-}
-```
+<!-- @[setWindowMaskSample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/EventDistribution/setWindowMask/entry/src/main/ets/pages/Index.ets) --> 
 
 ![setWindowMaskWithAlphaDemo](figures/setWindowMaskWithAlphaDemo.gif)
 
@@ -115,7 +62,7 @@ struct Index {
 <!--Del-->
 - 针对系统应用，可通过[setShadow()](../reference/apis-arkui/js-apis-window-sys.md#setshadow9)接口设置窗口边缘阴影，该接口支持设置窗口边缘阴影的模糊半径、颜色、X轴偏移量和Y轴偏移量。仅支持系统窗口、应用子窗口、全局悬浮窗和模态窗口使用。
 
-  此处以子窗为例，调用setShadow()设置窗口边缘阴影。
+  此处以子窗口为例，调用setShadow()设置窗口边缘阴影。
 
   <!-- @[windowShadowSample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/WindowShadowSample/entry/src/main/ets/pages/Index.ets) --> 
   
@@ -165,7 +112,7 @@ struct Index {
   ![setShadow](figures/setShadow.png)
 <!--DelEnd-->
 
-- 可通过[setWindowShadowRadius()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowshadowradius17)接口设置窗口边缘阴影的模糊半径，仅支持子窗和全局悬浮窗使用。
+- 可通过[setWindowShadowRadius()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowshadowradius17)接口设置窗口边缘阴影的模糊半径，仅支持子窗口和全局悬浮窗使用。
 
   此处以全局悬浮窗为例，设置其窗口边缘阴影的模糊半径。
 
@@ -196,7 +143,7 @@ struct Index {
 
 ## 设置窗口圆角<!--Del-->与模糊效果<!--DelEnd-->
 
-- 可通过[setWindowCornerRadius()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowcornerradius17)接口设置窗口的圆角半径，仅支持子窗和全局悬浮窗使用。
+- 可通过[setWindowCornerRadius()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowcornerradius17)接口设置窗口的圆角半径，仅支持子窗口和全局悬浮窗使用。
 
   此处以全局悬浮窗为例，设置其窗口圆角。
 
