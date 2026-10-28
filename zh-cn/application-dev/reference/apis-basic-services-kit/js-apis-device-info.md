@@ -33,7 +33,7 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 | deviceType | string | 是 | 设备类型。详细请参考[deviceTypes标签](../../quick-start/module-configuration-file.md#devicetypes标签)。<br>**原子化服务API**：从API版本11开始，该接口支持在原子化服务中使用。<br>示例：wearable |
 | manufacture | string | 是 | 设备厂家名称。 |
 | brand | string | 是 | 设备品牌名称。<br>**原子化服务API**：从API版本11开始，该接口支持在原子化服务中使用。 |
-| marketName | string | 是 | 外部产品系列。<br>示例：<!--RP2-->Mate XX<!--RP2End--> |
+| marketName | string | 是 | <!--RP17-->外部产品系列。<!--RP17End--><br>示例：<!--RP2-->Mate XX<!--RP2End--> |
 | productSeries | string | 是 | 产品系列。<br>示例：<!--RP3-->TAS<!--RP3End--> |
 | productModel | string | 是 | 认证型号。<br>**原子化服务API**：从API版本11开始，该接口支持在原子化服务中使用。<br>示例：<!--RP4-->TAS-AL00<!--RP4End--> |
 | productModelAlias<sup>14+</sup> | string | 是 | 认证型号别名。<br>**原子化服务API**：从API版本14开始，该接口支持在原子化服务中使用。<br>示例：TAS-AL00 |
