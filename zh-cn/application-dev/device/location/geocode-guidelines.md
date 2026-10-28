@@ -45,7 +45,7 @@
       try {
           let isAvailable = geoLocationManager.isGeocoderAvailable();
       } catch (err) {
-          console.error("errCode:" + JSON.stringify(err));
+          console.error("errCode:" + err.code + ", message:"  + err.message);
       }
       ```
 
