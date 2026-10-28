@@ -44,6 +44,10 @@
       import { geoLocationManager } from '@kit.LocationKit';
       try {
           let isAvailable = geoLocationManager.isGeocoderAvailable();
+          if (!isAvailable) {
+              console.error("current device do not support geocoder");
+              return;
+          }
       } catch (err) {
           console.error("errCode:" + err.code + ", message:"  + err.message);
       }
@@ -55,6 +59,10 @@
       ```ts
       let reverseGeocodeRequest:geoLocationManager.ReverseGeoCodeRequest = {"latitude": 31.12, "longitude": 121.11, "maxItems": 1};
       try {
+          if (!geoLocationManager.isGeocoderAvailable()) {
+              console.error("current device do not support geocoder");
+              return;
+          }
           geoLocationManager.getAddressesFromLocation(reverseGeocodeRequest, (err, data) => {
               if (err) {
                   console.error("getAddressesFromLocation errCode:" + err.code + ", message:"  + err.message);
@@ -72,6 +80,10 @@
       ```ts
       let geocodeRequest:geoLocationManager.GeoCodeRequest = {"description": "上海市浦东新区xx路xx号", "maxItems": 1};
       try {
+          if (!geoLocationManager.isGeocoderAvailable()) {
+              console.error("current device do not support geocoder");
+              return;
+          }
           geoLocationManager.getAddressesFromLocationName(geocodeRequest, (err, data) => {
               if (err) {
                   console.error("getAddressesFromLocationName errCode:" + err.code + ", message:"  + err.message);
