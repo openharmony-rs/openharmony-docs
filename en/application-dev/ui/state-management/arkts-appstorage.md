@@ -1,12 +1,11 @@
 # AppStorage: Storing Application-wide UI State
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @jiyujia926-->
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=3efb4ba336409dd0731ba011e1e227786db57fa2 translatedAt=2026-07-22T02:01:56.474Z pushedAt=2026-07-22T03:22:00.948Z -->
+<!-- md-trans-meta sourceCommit=f40d976a55afa9474832553b7faba446f7655708 translatedAt=2026-10-28T03:52:47.429Z pushedAt=2026-10-28T07:12:50.744Z nl=1 -->
 
 Before reading this document, it is recommended that you review the [State Management Overview](./arkts-state-management-overview.md) to understand the role of AppStorage within the state management framework.
 
@@ -43,10 +42,10 @@ Properties in AppStorage support two-way synchronization and offer extended feat
 | \@StorageProp Decorator| Description                                                        |
 | ----------------------- | ------------------------------------------------------------ |
 | Parameters             | Constant string, which is mandatory. The string must be enclosed in quotation marks.<br>**NOTE**<br>Using **null** and **undefined** as keys will implicitly convert them to their corresponding string representations. This usage is not recommended.               |
-| Allowed Decorated Variable Types      | Object, class, string, number, boolean, enum types, and arrays of these types.<br/>API version 12 and later supports [Map](#decorating-variables-of-the-map-type), [Set](#decorating-variables-of-the-set-type), [Date](#decorating-variables-of-the-date-type), undefined, and null types, as well as union types of these types. For examples, see [Using Union Types in AppStorage](#using-union-types-in-appstorage).<br/>For nested type scenarios, see [Observed Changes and Behavior](#observed-changes-and-behavior). <br/>**NOTE**<br/>The variable type must be specified. It is recommended to use the same type as the corresponding attribute in AppStorage. Otherwise, implicit type conversion may occur, causing abnormal app behavior.|
+| Allowed variable types | Object, class, string, number, boolean, enum types, and arrays of these types.<br/>API version 12 and later supports [Map](#decorating-variables-of-the-map-type), [Set](#decorating-variables-of-the-set-type), [Date](#decorating-variables-of-the-date-type), undefined and null types, and union types of these types. For examples, see [Using Union Types in AppStorage](#using-union-types-in-appstorage).<br/>For nested types, see [Observed Changes and Behavior](#observed-changes-and-behavior). <br/>**NOTE**<br/>The variable type must be specified. It is recommended that the type be the same as that of the corresponding property in AppStorage. Otherwise, implicit type conversion may occur, causing abnormal application behavior.|
 | Disallowed variable types               | Function.|
 | Synchronization type               | One-way: from the property in AppStorage to the component variable.<br>The component variable can be changed locally, but an update from AppStorage will overwrite local changes.|
-| Initial value for the decorated variable     | Local initialization is mandatory. If the property does not exist in AppStorage, the initial value is used to initialize the property and store it into AppStorage.|
+| Initial value of the decorated variable     | Local initialization is mandatory. If the property does not exist in AppStorage, the initial value is used to initialize the property and store it into AppStorage.|
 
 ### Variable Transfer/Access Rules
 
@@ -56,7 +55,7 @@ Properties in AppStorage support two-way synchronization and offer extended feat
 | Child component initialization    | Supported. Can be used to initialize variables decorated with [\@State](./arkts-state.md), [\@Link](./arkts-link.md), [\@Prop](./arkts-prop.md), or [\@Provide](./arkts-provide-and-consume.md).|
 | Access from outside the component | Not supported.                                      |
 
-  **Figure 1** \@StorageProp initialization rule 
+  **Figure 1** \@StorageProp initialization rule
 
 ![storageprop-initialization](figures/storageprop-initialization.PNG)
 
@@ -94,21 +93,22 @@ Properties in AppStorage support two-way synchronization and offer extended feat
 
 | \@StorageLink Decorator| Description                                                        |
 | ----------------------- | ------------------------------------------------------------ |
-| Parameters             | key: constant string, which is mandatory. The string must be enclosed in quotation marks.<br>**NOTE**<br>Using **null** and **undefined** as keys will implicitly convert them to their corresponding string representations. This usage is not recommended.                 |
-| Allowed variable types     | Object, class, string, number, Boolean, enum, and array of these types.<br>API version 12 and later: Map, Set, Date, undefined, null, and union types of these types. For details, see [Using Union Types in AppStorage](#using-union-types-in-appstorage).<br>For details about the scenarios of nested objects, see [Observed Changes and Behavior](#observed-changes-and-behavior-1).<br>**NOTE**<br>The variable type must be specified. Whenever possible, use the same type as that of the corresponding property in AppStorage. Otherwise, implicit type conversion occurs, causing application behavior exceptions.|
+| Decorator parameter | key: constant string, which is mandatory. The string must be enclosed in quotation marks.<br>**NOTE**<br>Using **null** and **undefined** as keys will implicitly convert them to their corresponding string representations. This usage is not recommended. |
+| Allowed variable types | Object, class, string, number, boolean, enum, and arrays of these types.<br>API version 12 and later support Map, Set, Date, undefined, and null types, as well as union types of these types. For examples, see [Using Union Types in AppStorage](#using-union-types-in-appstorage).<br>For nested types, see [Observed Changes and Behavior](#observed-changes-and-behavior-1).<br>**NOTE**<br>The variable type must be specified. It is recommended that the type be the same as that of the corresponding property in AppStorage. Otherwise, implicit type conversion may occur, causing unexpected application behavior. |
 | Disallowed variable types               | Function.|
 | Synchronization type               | Two-way: from the property in AppStorage to the custom component variable and vice versa|
-| Initial value for the decorated variable     | Local initialization is mandatory. If the property does not exist in AppStorage, the initial value is used to initialize the property and store it into AppStorage.|
+| Initial value of the decorated variable     | Local initialization is mandatory. If the property does not exist in AppStorage, the initial value is used to initialize the property and store it into AppStorage.|
+
 
 ### Variable Transfer/Access Rules
 
 | Transfer/Access     | Description                                      |
 | ---------- | ---------------------------------------- |
 | Initialization and update from the parent component| Forbidden.                                     |
-| Child component initialization    | Supported. The decorated variable can be used to initialize a regular variable or an \@State, \@Link, \@Prop, or \@Provide decorated variable in the child component.|
+| Child component initialization | Supported. Can be used to initialize regular variables, [\@State](./arkts-state.md), [\@Link](./arkts-link.md), [\@Prop](./arkts-prop.md), [\@Provide](./arkts-provide-and-consume.md). |
 | Whether external access is supported | Not supported.                                      |
 
-  **Figure 2** \@StorageLink initialization rule 
+  **Figure 2** \@StorageLink initialization rule
 
 ![storagelink-initialization](figures/storagelink-initialization.PNG)
 
@@ -122,7 +122,7 @@ Properties in AppStorage support two-way synchronization and offer extended feat
 
 - When the decorated object is an array, the changes of adding, deleting, and updating array units can be observed. For details, see [Decorating Variables of the Array Type](#decorating-variables-of-the-array-type).
 
-- When the decorated object is of the **Date** type, the following changes can be observed: (1) complete **Date** object reassignment; (2) property changes caused by calling **setFullYear**, **setMonth**, **setDate**, **setHours**, **setMinutes**, **setSeconds**, **setMilliseconds**, **setTime**, **setUTCFullYear**, **setUTCMonth**, **setUTCDate**, **setUTCHours**, **setUTCMinutes**, **setUTCSeconds**, or **setUTCMilliseconds**. For details, see [Decorating Variables of the Date Type](#decorating-variables-of-the-date-type).
+- When the decorated object is of the Date type, the following changes can be observed: (1) complete **Date** object reassignment; (2) property changes caused by calling **setFullYear**, **setMonth**, **setDate**, **setHours**, **setMinutes**, **setSeconds**, **setMilliseconds**, **setTime**, **setUTCFullYear**, **setUTCMonth**, **setUTCDate**, **setUTCHours**, **setUTCMinutes**, **setUTCSeconds**, or **setUTCMilliseconds**. For details, see [Decorating Variables of the Date Type](#decorating-variables-of-the-date-type).
 
 - When the decorated object is of the **Map** type, the following changes can be observed: (1) complete **Map** object reassignment; (2) changes caused by calling **set**, **clear**, or **delete**. For details, see [Decorating Variables of the Map Type](#decorating-variables-of-the-map-type).
 
@@ -136,17 +136,18 @@ Properties in AppStorage support two-way synchronization and offer extended feat
 
 3. The data decorated by @StorageLink(key) is a state variable. Its changes are not only synchronized to AppStorage but also trigger re-rendering of the custom component.
 
+
 ## Constraints
 
 1. The parameter of \@StorageProp and \@StorageLink must be of the string type. Otherwise, an error is reported during compilation.
 
    ```ts
    AppStorage.setOrCreate('propA', 47);
-
+   
    // Incorrect usage, which causes a compilation error.
    @StorageProp() storageProp: number = 1;
    @StorageLink() storageLink: number = 2;
-
+   
    // Correct usage.
    @StorageProp('propA') storageProp: number = 1;
    @StorageLink('propA') storageLink: number = 2;
@@ -263,7 +264,7 @@ struct TestStorageProp {
         .fontSize(20)
         .margin(10)
         .onClick(() => {
-          hilog.info(DOMAIN, TAG, `Appstorage.get: ${AppStorage.get<number>('propA')}`);
+          hilog.info(DOMAIN, TAG, `AppStorage.get: ${AppStorage.get<number>('propA')}`);
           AppStorage.set<number>('propA', 100);
         })
 
@@ -962,6 +963,7 @@ export struct TapImage {
 }
 ```
 
+
 The preceding notification logic is simple. It can be simplified into a ternary expression as follows:
 
 <!-- @[appstorage_page_nine](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/Gallery.ets) -->   
@@ -1086,7 +1088,5 @@ struct PageStorageProp {
 In the preceding example, the value of **propA** has been changed to **true** locally before the click event, while the value stored in AppStorage remains **false**. When the click event attempts to update the value of **propA** to **false** through the **setOrCreate** API, no synchronization is triggered because the value in AppStorage is already **false** (matching the new value). As a result, the value of the @StorageProp decorated variable remains **true**.
 
 To achieve synchronization, there are two approaches:
-
 1. Change \@StorageProp to \@StorageLink.
-
 2. Use **AppStorage.setOrCreate('propA', true)** to change the local value.

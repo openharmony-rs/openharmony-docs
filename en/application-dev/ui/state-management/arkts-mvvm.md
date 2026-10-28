@@ -1,12 +1,13 @@
-# MVVM (V1)
+# MVVM V1
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zzq212050299-->
-<!--Designer: @s10021109-->
+<!--Owner: @jiyujia926-->
+<!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=b3d483b49d1071ea35ea7373cd3db3058b2f8c7a translatedAt=2026-10-28T04:01:06.917Z pushedAt=2026-10-28T07:55:40.673Z nl=1 -->
 
-After mastering the basic concepts of state management, developers usually try to develop their own applications. In the early stage of application development, if the project structure is not carefully planned, the number of state variables increases as the project expands and becomes complex. As a result, the relationships between components become complex. In this case, developing new functions may cause a chain reaction and increase maintenance costs. This document describes the MVVM mode and the relationship between the UI development mode of ArkUI and MVVM, and provides guidance for developers to design the project structure to facilitate product development and maintenance during product iteration and upgrade.
+After mastering the basic concepts of status management, developers usually try to develop their own applications. In the early stage of application development, if the project structure is not carefully planned, the number of status variables increases as the project expands and becomes complex. As a result, the relationships between components become complex. In this case, developing new functions may cause a chain reaction and increase maintenance costs. This document describes the MVVM mode and the relationship between the UI development mode of ArkUI and MVVM, and provides guidance for developers to design the project structure to facilitate product development and maintenance during product iteration and upgrade.
 
 
 Most decorators are covered in this topic, therefore, you are advised to read [State Management Overview](./arkts-state-management-overview.md) and topics related to decorators of V1 to have a basic understanding of state management V1 before getting started.
@@ -21,8 +22,8 @@ During application development, UI updates need to synchronize data status chang
 - Model: indicates the data access layer. It is data-centric and does not directly interact with the user interface. Defines data structures, manages data (such as obtaining, storing, and updating data), and processes service logic.
 - ViewModel: indicates the logical layer. Generally, a View corresponds to a ViewModel. The View and ViewModel can communicate with each other in either of the following ways:
 
-  1. Method invoking: The view listens to user behavior through events and triggers the method at the ViewModel layer in the callback. For example, when a view detects a user's button click behavior, the method corresponding to the ViewModel is called to process the user operation. 
-  2. Bidirectional binding: Views are bound to ViewModel data to implement bidirectional synchronization. 
+  1. Method invoking: The view listens to user behavior through events and triggers the method at the ViewModel layer in the callback. For example, when a view detects a user's button click behavior, the method corresponding to the ViewModel is called to process the user operation.  
+  2. Bidirectional binding: Views are bound to ViewModel data to implement bidirectional synchronization.  
 
 The UI development mode of ArkUI belongs to the MVVM mode. By introducing the concept of MVVM, you may have basic understanding on how the state management work in MVVM. State management aims to drive data update and enable you to focus only on page design without paying attention to the UI re-render logic. In addition, ViewModel enables state variables to automatically maintain data. In this way, MVVM provides a more efficient way for you to develop applications.
 
@@ -39,7 +40,7 @@ The UI development mode of ArkUI is the MVVM mode. State variables play the role
 The View layer consists of the following components:
 * Page components: All applications are classified by page, such as the login page, list page, editing page, help page, and copyright page. The data required by each page may be completely different, or the data required by multiple pages may be the same.
 * Business components: a functional component that has some service capabilities of the application. Typically, the business component may be associated with the data in the ViewModel of the project and cannot be shared with other projects.
-* Common components: Like system components, these components are not associated with the ViewModel data in the application. These components can be shared across multiple projects to implement common functions.
+* Shared components: like system components, these components are not associated with the data in the ViewModel of the application. They can be shared across multiple projects to implement common functions.
 
 **Model**
 
@@ -77,7 +78,7 @@ For a component, the reasons are as follows:
 
 * The child components used by the component are clear, therefore, access is allowed.
 * The parent node where the component is placed is unknown. Therefore, the component can access the parent node only through notifications or events.
-* It is impossible for a component to know its sibling nodes, so the component cannot manipulate the sibling nodes.
+* A component cannot know who its sibling nodes are, so it cannot operate on sibling nodes.
 
 ## Memo Development
 
@@ -85,7 +86,7 @@ This section describes how to use the ArkUI framework to design your own applica
 
 ### @State
 
-* The [@State](./arkts-state.md) decorator is one of the most commonly used decorators and is used to define state variables. Generally, these state variables are used as the data source of the parent component. When a developer clicks a state variable, the state variable is updated and the UI is refreshed.
+* The [@State](./arkts-state.md) decorator is one of the most commonly used decorators and is used to define state variables. Generally, these status variables are used as the data source of the parent component. When a developer clicks a status variable, the status variable is updated and the UI is refreshed.
 
 <!-- @[state_source_update_refresh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/pages/StateIndex.ets) -->
 
@@ -119,7 +120,7 @@ struct StateIndex {
             .width(28)
             .height(28)
         }
-        // Replace $r('app.string.all_learn_advanced_math') with the actual resource file. In this example, the value of the resource file is Learning Heights.
+        // Replace $r('app.string.learn_advanced_math') with the actual resource file. In this example, the value of this resource file is "Learn Advanced Math".
         Text($r('app.string.learn_advanced_math'))
           .fontSize(24)
           .decoration({ type: this.isFinished ? TextDecorationType.LineThrough : TextDecorationType.None })
@@ -207,7 +208,7 @@ struct ThingComponent1 {
           .width(28)
           .height(28)
       }
-      // Replace $r('app.string.learn_chinese') with the actual resource file. In this example, the value of the resource file is "Learning language."
+      // Replace $r('app.string.learn_chinese') with the actual resource file. In this example, the value of the resource file is "Learn Chinese."
       Text($r('app.string.learn_chinese'))
         .fontSize(24)
         .decoration({ type: this.isFinished ? TextDecorationType.LineThrough : TextDecorationType.None })
@@ -227,7 +228,7 @@ struct ThingComponent2 {
   @Prop isFinished: boolean;
 
   build() {
-    // Task 1
+      // To-do item 2.
     Row({ space: 15 }) {
       if (this.isFinished) {
         // Replace $r('app.media.finished') with the actual resource file.
@@ -292,7 +293,7 @@ Below is how the component looks with the system bar effect applied.
 * Although subcomponents are split in the previous example, the code of component 1 is similar to that of component 2. When the rendered components have the same settings except data, you need to use [ForEach loop rendering](../../reference/apis-arkui/arkui-ts/ts-rendering-control-foreach.md).
 * In this way, redundant code is decreased and the code structure is clearer.
 
-<!-- @[foreach_update_refresh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/pages/ForEachIndex.ets) -->
+<!-- @[foreach_update_refresh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/pages/ForEachIndex.ets) --> 
 
 ``` TypeScript
 @Component
@@ -336,7 +337,7 @@ struct ForEachThingComponent {
   @Prop thing: string;
 
   build() {
-    // Task 1
+      // To-do items
     Row({ space: 15 }) {
       if (this.isFinished) {
         // Replace $r('app.media.finished') with the actual resource file.
@@ -388,11 +389,10 @@ struct ForEachIndex {
     // Replace $r('app.string.sleep') with the actual resource file. In this example, the value of the resource file is 1:30 Sleep.
     $r('app.string.sleep')
   ];
-  context1 = this.getUIContext().getHostContext();
 
   aboutToAppear(): void {
     for (let i = 0; i < this.planList.length; i++) {
-      this.planList[i] = this.context1!.resourceManager.getStringSync((this.planList[i] as Resource).id);
+      this.planList[i] = resource.resourceToString(this.planList[i] as Resource);
     };
   }
 
@@ -406,7 +406,7 @@ struct ForEachIndex {
 
       List() {
         ForEach(this.planList, (item: string) => {
-          // Task 1
+          // To-do items
           ForEachThingComponent({ isFinished: this.isFinished, thing: item })
             .margin(5)
         })
@@ -430,7 +430,7 @@ Below is how the component looks with the system bar effect applied.
 * The **Builder** method is used to define methods in a component so that the same code can be reused in the component.
 * In this example, the [@Builder](./arkts-builder.md) method is used for deduplication and data is removed. The code is clearer and easier to read, the @Entry component is used only to process page construction logic and does not process a large amount of content irrelevant to page design.
 
-<!-- @[builder_source_update_refresh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/pages/BuilderIndex.ets) -->
+<!-- @[builder_source_update_refresh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/pages/BuilderIndex.ets) --> 
 
 ``` TypeScript
 @Observed
@@ -505,7 +505,7 @@ struct BuilderThingComponent {
   }
 
   build() {
-    // Task 1
+      // To-do item
     Row({ space: 15 }) {
       if (this.isFinished) {
         // Replace $r('app.media.finished') with the actual resource file.
@@ -518,8 +518,7 @@ struct BuilderThingComponent {
         .fontSize(24)
         .decoration({ type: this.isFinished ? TextDecorationType.LineThrough : TextDecorationType.None })
         .onClick(() => {
-          // Replace $r('app.string.la_la') with the actual resource file. In this example, the value in the resource file is "la".
-          this.thing += this.getUIContext().getHostContext()!.resourceManager.getStringSync($r('app.string.la_la').id);
+          this.thing += 'lala';
         })
     }
     .height('8%')
@@ -542,7 +541,7 @@ struct BuilderIndex {
   aboutToAppear(): void {
     for (let i = 0; i < this.data.planList.length; i++) {
       this.data.planList[i] =
-        this.getUIContext().getHostContext()!.resourceManager.getStringSync((this.data.planList[i] as Resource).id);
+        resource.resourceToString(this.data.planList[i] as Resource);
     }
   }
 
@@ -556,7 +555,7 @@ struct BuilderIndex {
 
       List() {
         ForEach(this.data.planList, (item: string) => {
-          // Task 1
+          // To-do item
           BuilderThingComponent({ isFinished: this.isFinished, thing: item })
             .margin(5)
         })
@@ -585,29 +584,15 @@ struct BuilderIndex {
 
 The previous section shows the code organization in non-MVVM mode. With the increase of the main page code, a proper layering policy should be adopted to make the project structure clear and prevent components from referencing each other. This avoids the difficulty in updating functions during subsequent maintenance. This section describes how to use the MVVM to reconstruct the code in the previous section based on the core file organization mode of the MVVM.
 
-### MVVM File Structure
-
-```txt
-├── src
-│   ├── ets
-│   │   ├── pages Stores page components.
-│   │   ├── views Stores service components.
-│   │   ├── shares Stores common components.
-│   │   └── viewmodel Data service.
-│   │   │   ├── LoginViewModel.ets Login page ViewModel.
-│   │   │   └── xxxViewModel.ets Other pages ViewModel.
-│
-```
-
 ### Layered Design
 
 **Model**
 
-* The Model layer stores the core data structure of the application. This layer is not closely related to UI development. You can encapsulate the data structure based on your service logic.
+* The Model layer stores the core data structures of the application. This layer itself has little to do with UI development, allowing developers to encapsulate it according to their own business logic.
 
 **ViewModel**
 
-> Note:
+> **NOTE**
 >
 > The ViewModel layer not only stores data, but also provides data services and processing.
 
@@ -617,7 +602,7 @@ The previous section shows the code organization in non-MVVM mode. With the incr
 
 **View**
 
-The View layer is organized as required. You need to distinguish the following three types of components at this layer:
+The View layer is organized as needed, but it needs to distinguish the following three types of components:
 
 * Page components: provides the overall page layout, implements redirection between multiple pages, and processes foreground and background events.
 * Business components: referenced by a page to construct a page.
@@ -636,17 +621,17 @@ The organizational structure is reconstructed based on the MVVM model as follows
 ```txt
 ├── src
 │   ├── ets
-│   │   ├── model
+│   │   ├── model // stores data structures
 │   │   │   ├── ThingModel.ets
 │   │   │   └── TodoListModel.ets
-│   │   ├── pages
+│   │   ├── pages // stores page components
 │   │   │   ├── Index.ets
-│   │   ├── views
+│   │   ├── views // stores business components
 │   │   │   ├── AllChooseComponent.ets
 │   │   │   ├── ThingComponent.ets
 │   │   │   ├── TodoComponent.ets
 │   │   │   └── TodoListComponent.ets
-│   │   ├── viewmodel
+│   │   ├── viewmodel // stores data services
 │   │   │   ├── ThingViewModel.ets
 │   │   │   └── TodoListViewModel.ets
 │   └── resources
@@ -670,7 +655,7 @@ The code is as follows:
 
   * TodoListModel.ets
 
-  <!-- @[to_do_list_model_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/model/TodoListModel.ets) --> 
+  <!-- @[to_do_list_model_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/model/TodoListModel.ets) -->   
   
   ``` TypeScript
   import { common } from '@kit.AbilityKit';
@@ -696,6 +681,7 @@ The code is as follows:
         let result = textDecoder.decodeToString(getJson, { stream: false });
         this.things = JSON.parse(result);
       } catch (error) {
+        // Task loading failed. Output the error information to facilitate troubleshooting.
         hilog.error(DOMAIN, TAG, 'Failed to load tasks. Cause: %{public}s', JSON.stringify(error.message));
       }
     }
@@ -913,8 +899,8 @@ The code is as follows:
     }
   
     addSuffixes(): void {
-      // In the resources\base\element\string.json file, set name to 'la_la' and value to a non-null string.
-      this.thingName += this.context.resourceManager.getStringSync($r('app.string.la_la').id);
+      // Replace $r('app.string.la_la') with the actual resource file. In this example, the value of the resource file is "la".
+      this.thingName += resource.resourceToString($r('app.string.la_la'));
     }
   }
   ```
@@ -922,7 +908,7 @@ The code is as follows:
 
   * TodoListViewModel.ets
 
-  <!-- @[to_do_list_view_model](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/viewmodel/TodoListViewModel.ets) --> 
+  <!-- @[to_do_list_view_model](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/viewmodel/TodoListViewModel.ets) -->  
   
   ``` TypeScript
   import ThingViewModel from './ThingViewModel';
@@ -949,6 +935,7 @@ The code is as follows:
     }
   
     chooseAll(): void {
+      // Traverse all to-do items, set their completion status.
       for (let thing of this.things) {
         thing.isFinish = this.isChosen;
       }
@@ -977,6 +964,3 @@ The code is as follows:
 
   ![MVVM_index.gif](./figures/MVVM_index.gif)
 
-  
-
-  

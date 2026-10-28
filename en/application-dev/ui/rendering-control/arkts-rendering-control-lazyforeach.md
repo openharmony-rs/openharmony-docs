@@ -1,12 +1,11 @@
 # LazyForEach: Lazy Data Loading
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @maorh-->
 <!--Designer: @keerecles-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=82cbd61bf5a97c687ddb974e4186cc744a8f06f2 translatedAt=2026-08-03T09:16:06.708Z pushedAt=2026-08-03T09:46:12.537Z -->
+<!-- md-trans-meta sourceCommit=37a41c7e4764d3e7f831e1f47fc28c3acf56e6c1 translatedAt=2026-10-28T03:52:02.793Z pushedAt=2026-10-28T07:07:25.088Z nl=1 -->
 
 ## Overview
 
@@ -22,27 +21,16 @@ For details about the related APIs, see [LazyForEach](../../reference/apis-arkui
 ## Constraints
 
 - **LazyForEach** must be used within a container component. Only the following components support lazy loading with configurable **cachedCount** (to load only the visible portion plus a small buffer of data before and after): [List](../../reference/apis-arkui/arkui-ts/ts-container-list.md), [ListItemGroup](../../reference/apis-arkui/arkui-ts/ts-container-listitemgroup.md), [Grid](../../reference/apis-arkui/arkui-ts/ts-container-grid.md), [Swiper](../../reference/apis-arkui/arkui-ts/ts-container-swiper.md), and [WaterFlow](../../reference/apis-arkui/arkui-ts/ts-container-waterflow.md). Other components load all data at once. The parent component supporting lazy loading calculates the number of child components to render in the visible area based on its own and the children's dimensions. If height or width values are missing, lazy loading may fail in certain scenarios. For details, see [Lazy Loading Failure](#lazy-loading-failure).
-
 - **LazyForEach** uses the generated key value to determine whether to refresh child components. Components with unchanged key values will not be refreshed.
-
 - A container component can contain only one **LazyForEach**. Using **List** as an example, it is not recommended to include [ListItem](../../reference/apis-arkui/arkui-ts/ts-container-listitem.md), [ForEach](./arkts-rendering-control-foreach.md), and **LazyForEach** together, nor is it recommended to include multiple **LazyForEach** instances simultaneously.
-
 - Each iteration of **LazyForEach** must generate exactly one child component. The child component generator function should return a single root component.
-
 - Generated child components must be valid within the parent container component of **LazyForEach**.
-
 - **LazyForEach** can be included in [if/else](./arkts-rendering-control-ifelse.md) conditional rendering statements, and if/else conditional rendering statements can also appear inside **LazyForEach**.
-
 - The key generation function must produce unique values for each data item. Duplicate key values will cause rendering issues.
-
 - **LazyForEach** must be updated through a **DataChangeListener** object (for details, see [LazyForEach](../../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md)). Reassigning **dataSource** (first parameter) causes an exception. If **dataSource** uses a state variable, changes to the state variable will not trigger UI refresh in **LazyForEach**.
-
 - For optimal rendering performance, ensure the **onDataChange** API of **DataChangeListener** generates new key values different from previous ones to trigger component re-rendering.
-
 - **LazyForEach** can be combined with [\@Reusable](../state-management/arkts-reusable.md) to enable node reuse. For details, see [List Scrolling with LazyForEach](../state-management/arkts-reusable.md#list-scrolling-with-lazyforeach).
-
 - **LazyForEach** also supports integration with [\@ReusableV2](../state-management/arkts-new-reusableV2.md). For details, see [Using in LazyForEach](../state-management/arkts-new-reusableV2.md#using-in-lazyforeach).
-
 - When child nodes of **LazyForEach** leave both the visible and preload areas, they are not destroyed or recycled immediately. **LazyForEach** performs destruction and recycling during idle periods.
 
 ## Basic Features
@@ -60,9 +48,7 @@ During **LazyForEach** rendering, the system generates a unique, persistent key 
 **LazyForEach** provides the **keyGenerator** parameter for custom key generation. If this parameter is undefined, the framework uses the default function: **(item: Object, index: number) => { return viewId + '-' + index.toString(); }**, where **viewId** is compiler-generated and consistent within the same **LazyForEach** component.
 
 The key must meet the following requirements:
-
 1. Uniqueness: Each data item must have a distinct key.
-
 2. Consistency: Keys must remain unchanged for unmodified data items.
 
 These requirements ensure correct and efficient child component updates. Violations may cause rendering anomalies or performance degradation.
@@ -139,12 +125,12 @@ In the preceding code, the return value of the **keyGenerator** function is **it
 
 The figure below shows the effect.
 
-**Initial Rendering of LazyForEach** 
+**Initial Rendering of LazyForEach**  
 ![LazyForEach-Render-DifferentKey](figures/LazyForEach-Render-DifferentKey.gif)
 
 **Error Case: Rendering Anomalies Due to Duplicate Key Values**
 
-When identical keys are generated for different data items, framework behavior becomes unpredictable. In the following example, **LazyForEach** renders data items with duplicate keys. During scrolling, when **LazyForEach** preloads components about to enter or leave the viewport, the new components share keys with previously destroyed components. This key collision may cause the framework to reuse incorrect cached components, resulting in rendering issues.
+When identical keys are generated for different data items, framework behavior becomes unpredictable. In the following example, `LazyForEach` renders data items with duplicate keys. During scrolling, when `LazyForEach` preloads components about to enter or leave the viewport, the new components share keys with previously destroyed components. This key collision may cause the framework to reuse incorrect cached components, resulting in rendering issues.
 
 For details about the code of **BasicDataSource**, see [BasicDataSource Implementation for the String Array](#basicdatasource-implementation-for-the-string-array).
 
@@ -199,7 +185,7 @@ struct MyComponent {
 
 The figure below shows the effect.
 
-**LazyForEach Rendering with Duplicate Keys** 
+**LazyForEach Rendering with Duplicate Keys**  
 ![LazyForEach-Render-SameKey](figures/LazyForEach-Render-SameKey.gif)
 
 To resolve this issue, modify the key generation function of **LazyForEach** to produce unique keys for each data item.
@@ -221,7 +207,7 @@ LazyForEach(this.data, (item: string) => {
 
 The corrected implementation produces the following rendering behavior.
 
-**LazyForEach Rendering with Unique Keys** 
+**LazyForEach Rendering with Unique Keys**  
 ![LazyForEach-Render-UniqueKey](figures/LazyForEach-Render-UniqueKey.gif)
 
 ### Data Update
@@ -293,7 +279,7 @@ When a **LazyForEach** child component is clicked, the data source's **pushData*
 
 The figure below shows the effect.
 
-**Adding Data to LazyForEach** 
+**Adding Data to LazyForEach**  
 ![LazyForEach-Add-Data](figures/LazyForEach-Add-Data.gif)
 
 **Deleting Data**
@@ -371,7 +357,7 @@ When a **LazyForEach** child component is clicked, the data source's **deleteDat
 
 The figure below shows the effect.
 
-**Deleting Data from LazyForEach** 
+**Deleting Data from LazyForEach**  
 ![LazyForEach-Delete-Data](figures/LazyForEach-Delete-Data.gif)
 
 **Swapping Data**
@@ -456,7 +442,7 @@ When a **LazyForEach** child component is first clicked, its index is stored in 
 
 The figure below shows the effect.
 
-**Swapping Data in LazyForEach** 
+**Swapping Data in LazyForEach**  
 ![LazyForEach-Exchange-Data](figures/LazyForEach-Exchange-Data.gif)
 
 **Modifying Individual Data Items**
@@ -529,7 +515,7 @@ When a **LazyForEach** child component is clicked, the data source's **changeDat
 
 The figure below shows the effect.
 
-**Modifying Individual Data Items in LazyForEach** 
+**Modifying Individual Data Items in LazyForEach**  
 ![LazyForEach-Change-SingleData](figures/LazyForEach-Change-SingleData.gif)
 
 **Modifying Multiple Data Items**
@@ -608,7 +594,7 @@ When any **LazyForEach** child component is clicked, the data source's **modifyA
 
 The figure below shows the effect.
 
-**Modifying Multiple Data Items in LazyForEach** 
+**Modifying Multiple Data Items in LazyForEach**  
 ![LazyForEach-Reload-Data](figures/LazyForEach-Reload-Data.gif)
 
 **Precisely Modifying Data in Batches**
@@ -695,9 +681,9 @@ struct PreciselyModifyingData {
 }
 ```
 
-The **onDatasetChange** API allows you to notify **LazyForEach** at a time to add, delete, move, and exchange data. In the preceding scenario, after **change data** is clicked, multiple operations are executed simultaneously: The second item moves to the fourth, the fifth and seventh items exchange positions, items **Hello 1** and **Hello 2** are inserted starting at the ninth position, and two items are deleted beginning at the eleventh position. 
+The **onDatasetChange** API allows you to notify **LazyForEach** at a time to add, delete, move, and exchange data. In the preceding scenario, after **change data** is clicked, multiple operations are executed simultaneously: The second item moves to the fourth, the fifth and seventh items exchange positions, items **Hello 1** and **Hello 2** are inserted starting at the ninth position, and two items are deleted beginning at the eleventh position.  
 
-**Modifying Data in Batches in LazyForEach** 
+**Modifying Data in Batches in LazyForEach**  
 ![LazyForEach-Change-MultiData](figures/LazyForEach-Change-MultiData.gif)  
 
 In this approach, array modification is performed through direct value assignment rather than using **splice()**. The resulting **operations** values are derived by comparing the original and modified arrays.
@@ -777,14 +763,13 @@ struct PreciselyModifyingDataTwo {
 }
 ```
 
-**Modifying Multiple Data Items in LazyForEach** 
+**Modifying Multiple Data Items in LazyForEach**  
 ![LazyForEach-Change-MultiData2](figures/LazyForEach-Change-MultiData2.gif)  
 
 Key usage considerations:
 
 1. Do not combine **onDatasetChange** with other data operation APIs within the same update cycle.
-
-2. For the **operations** parameter passed to **onDatasetChange**, the index of each operation is calculated based on the original array (before modification). As a result, the index in **operations** does not always align with the index in **Datasource**, and the index must not be a negative number.
+2. For the `operations` parameter passed to `onDatasetChange`, the `index` of each `operation` is calculated based on the original array (before modification). As a result, the `index` in `operations` does not always align with the `index` in `DataSource`, and the `index` must not be a negative number.
 
    Example analysis:
 
@@ -804,9 +789,7 @@ Key usage considerations:
    **Hello k** (at index 10) and **Hello l** (at index 11) are deleted in the original array. Therefore, the fourth **operation** is written in **{ type: DataOperationType.DELETE, index: 10, count: 2 }**.
 
 3. When data is processed in batches within the same **onDatasetChange** callback, if multiple **DataOperation** instances target the same index, only the first **DataOperation** will take effect.
-
-4. In operations where you specify keys on your own, **LazyForEach** does not call the key generator to obtain keys. As such, make sure the specified keys are correct.
-
+4. In operations where you specify keys on your own, `LazyForEach` does not call `keyGenerator` to obtain keys. As such, make sure the specified keys are correct.
 5. If the operation set includes a reload operation, all other operations in the set are ignored.
 
 ## Advanced Features
@@ -891,7 +874,7 @@ struct ChangingDataSubpropertiesChildComponent {
 
 When a **LazyForEach** item is clicked to modify **item.message**, the @ObjectLink decorator in **ChangingDataSubpropertiesChildComponent** enables sub-property observation. Only the **Text(this.data.message)** component is re-rendered, avoiding complete **ListItem** reconstruction.
 
-**Changing Data Sub-Properties in LazyForEach** 
+**Changing Data Sub-Properties in LazyForEach**  
 ![LazyForEach-Change-SubProperty](figures/LazyForEach-Change-SubProperty.gif)
 
 ### Modifying Data Sub-Properties Using State Management V2
@@ -1148,7 +1131,6 @@ struct ReceivingExternalInputChildComponent {
 The @Param decorator enables child components to receive external input parameters, establishing data synchronization between parent and child components. When creating a child component in **ReceivingExternalInput**, pass **item.message** and bind it to the @Param decorated variable **data**. Clicking the component in **ListItem** modifies **item.message**, propagating the data change from the parent component to the child component and triggering re-rendering of the child component.
 
 ### Drag-and-Drop Sorting
-
 When **LazyForEach** is used within a **List** component with the [onMove](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-sorting.md#onmove) event configured, drag-and-drop sorting functionality is enabled. When the drag gesture is released, if any item's position changes, the **onMove** event is triggered, which reports the original index and target index of the relocated item. In the **onMove** event, modify the data source based on the reported indexes. When modifying the data source in this scenario, there is no need to invoke **DataChangeListener** APIs to notify about the data changes.
 
 For details about the code of **BasicDataSource**, see [BasicDataSource Implementation for the String Array](#basicdatasource-implementation-for-the-string-array).
@@ -1217,8 +1199,96 @@ struct DragandDropSorting {
 }
 ```
 
-**Effect of Drag-and-Drop Sorting in LazyForEach** 
+**Effect of Drag-and-Drop Sorting in LazyForEach**  
 ![LazyForEach-Drag-Sort](figures/LazyForEach-Drag-Sort.gif)
+
+### Actively Clearing Preloaded Child Components
+
+LazyForEach builds and holds the child components in the preloading area.
+
+Starting from API version 26.1.0, when developers need to actively release these preloaded child components, they can do so through the controller [LazyForEachController](../../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md#lazyforeachcontroller).
+
+Usage: Create a LazyForEachController object and bind it through the controller field of [LazyForEachOptions](../../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md#lazyforeachoptions) when creating LazyForEach. When the cache needs to be cleared, call the [clearCache](../../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md#clearcache) method on the controller.
+
+> **NOTE**
+>
+> 1. The controller is bound only when LazyForEach is created and does not support dynamic modification.
+> 2. A controller can control only one LazyForEach component. If the controller is bound to another LazyForEach, the previous binding automatically becomes invalid, and the controller controls only the last bound component.
+
+In the following example, clicking the Clear button actively clears the preloaded child components of LazyForEach.
+
+<!-- @[lazyforeach_clearcache](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/LazyForEachClearCache.ets) --> 
+
+``` TypeScript
+// For the BasicDataSource code, see the BasicDataSource example code at the end of this document: BasicDataSource code for a string typed array.
+import { BasicDataSource } from './BasicDataSource';
+
+class DataSource extends BasicDataSource {
+  public dataArray: string[] = [];
+  public totalCount(): number {
+    return this.dataArray.length;
+  }
+  public getData(index: number): string {
+    return this.dataArray[index];
+  }
+  public pushData(data: string): void {
+    this.dataArray.push(data);
+    this.notifyDataAdd(this.dataArray.length - 1);
+  }
+}
+
+@Component
+struct ChildComponent {
+  aboutToAppear() {
+    console.info('ChildComponent aboutToAppear');
+  }
+  aboutToDisappear() {
+    console.info('ChildComponent aboutToDisappear');
+  }
+  build() {
+    Text('ChildComponent')
+  }
+}
+
+@Entry
+@Component
+struct ClearCacheDemo {
+  private data: DataSource = new DataSource();
+  // Create a LazyForEachController object.
+  private controller: LazyForEachController = new LazyForEachController();
+
+  aboutToAppear(): void {
+    for (let i = 0; i < 100; i++) {
+      this.data.pushData(`item ${i}`);
+    }
+  }
+
+  build() {
+    Column() {
+      List() {
+        // Bind the controller through the controller field of LazyForEachOptions.
+        LazyForEach(this.data,
+          (item: string, index: number) => {
+            ListItem() {
+              ChildComponent()
+            }
+          },
+          (item: string, index: number) => item,
+          { controller: this.controller }
+        )
+      }
+      .cachedCount(5)
+      .height('80%')
+
+      Button('Clear')
+        .onClick(() => {
+          // Actively clear the preloaded child components of LazyForEach.
+          this.controller.clearCache();
+        })
+    }
+  }
+}
+```
 
 ## Implementation Notes
 
@@ -1284,7 +1354,7 @@ struct MyComponent {
 }
 ```
 
-**Unexpected Data Deletion by LazyForEach** 
+**Unexpected Data Deletion by LazyForEach**  
 ![LazyForEach-Render-Not-Expected](figures/LazyForEach-Render-Not-Expected.gif)
 
 When child components are clicked to be deleted, there may be cases where the deleted child component is not the one clicked. This occurs because after a child component is deleted, the indexes of subsequent data items decrease by 1, but the originally assigned indexes in the **itemGenerator** are not updated accordingly, leading to unexpected deletion behavior.
@@ -1365,7 +1435,7 @@ struct UnexpectedRenderingResults {
 
 After a data item is deleted, the **reloadData** method is called to rebuild the subsequent data items to update the indexes. Use the **reloadData** method to rebuild a data item, you should ensure that the data item can generate a new key. **item + index.toString()** is used to rebuild the data items following the deleted data item. If **item + Date.now().toString()** is used instead, all data items generate new keys. As a result, all data items are rebuilt. This method has the same effect, but the performance is slightly poor.
 
-**Fixing Unexpected Data Deletion in LazyForEach** 
+**Fixing Unexpected Data Deletion in LazyForEach**  
 ![LazyForEach-Render-Not-Expected-Repair](figures/LazyForEach-Render-Not-Expected-Repair.gif)
 
 ### Image Flickering During Re-renders
@@ -1444,7 +1514,7 @@ struct MyComponent {
 }
 ```
 
-**Unwanted Image Flickering with LazyForEach** 
+**Unwanted Image Flickering with LazyForEach**  
 ![LazyForEach-Image-Flush](figures/LazyForEach-Image-Flush.gif)
 
 In the example, when a list item is clicked, only the **message** property of the item is changed. However, because the key value changes, the entire list item is re-created. As the **Image** component is updated asynchronously, flickering occurs. The solution is to maintain consistent key values and use @ObjectLink with @Observed to refresh only the **Text** child component independently.
@@ -1462,18 +1532,18 @@ import { GenericBasicDataSource } from './GenericBasicDataSource';
 const TAG = '[Sample_RenderingControl]';
 const DOMAIN = 0xF811;
 
-class FliceringDataSource extends GenericBasicDataSource<ImageFliceringStringData> {
-  private dataArray: ImageFliceringStringData[] = [];
+class FlickeringDataSource extends GenericBasicDataSource<ImageFlickeringStringData> {
+  private dataArray: ImageFlickeringStringData[] = [];
 
   public totalCount(): number {
     return this.dataArray.length;
   }
 
-  public getData(index: number): ImageFliceringStringData {
+  public getData(index: number): ImageFlickeringStringData {
     return this.dataArray[index];
   }
 
-  public pushData(data: ImageFliceringStringData): void {
+  public pushData(data: ImageFlickeringStringData): void {
     this.dataArray.push(data);
     this.notifyDataAdd(this.dataArray.length - 1);
   }
@@ -1481,7 +1551,7 @@ class FliceringDataSource extends GenericBasicDataSource<ImageFliceringStringDat
 
 // The @Observed class decorator and @ObjectLink are used for two-way data synchronization in scenarios involving nested objects or arrays.
 @Observed
-class ImageFliceringStringData {
+class ImageFlickeringStringData {
   public message: string;
   public imgSrc: Resource;
 
@@ -1494,25 +1564,25 @@ class ImageFliceringStringData {
 @Entry
 @Component
 struct ImageFlickeringDuringRerenders {
-  private data: FliceringDataSource = new FliceringDataSource();
+  private data: FlickeringDataSource = new FlickeringDataSource();
 
   aboutToAppear() {
     for (let i = 0; i <= 20; i++) {
       // 'app.media.img' is only an example. Replace it with the actual one in use. Otherwise, the imageSource instance fails to be created, and subsequent operations cannot be performed.
-      this.data.pushData(new ImageFliceringStringData(`Hello ${i}`, $r('app.media.img')));
+      this.data.pushData(new ImageFlickeringStringData(`Hello ${i}`, $r('app.media.img')));
     }
   }
 
   build() {
     List({ space: 3 }) {
-      LazyForEach(this.data, (item: ImageFliceringStringData, index: number) => {
+      LazyForEach(this.data, (item: ImageFlickeringStringData, index: number) => {
         ListItem() {
           ImageFlickeringChildComponent({ data: item })
         }
         .onClick(() => {
           item.message += '0';
         })
-      }, (item: ImageFliceringStringData, index: number) => index.toString()) // Key values are independent of the message property.
+      }, (item: ImageFlickeringStringData, index: number) => index.toString()) // The key is not affected by the message attribute.
     }
     .cachedCount(5)
   }
@@ -1521,7 +1591,7 @@ struct ImageFlickeringDuringRerenders {
 @Component
 struct ImageFlickeringChildComponent {
   // Use state variables to drive UI refresh instead of using LazyForEach APIs to drive UI refresh.
-  @ObjectLink data: ImageFliceringStringData;
+  @ObjectLink data: ImageFlickeringStringData;
 
   build() {
     Column() {
@@ -1537,7 +1607,7 @@ struct ImageFlickeringChildComponent {
 }
 ```
 
-**Fixing Unwanted Image Flickering with LazyForEach** 
+**Fixing Unwanted Image Flickering with LazyForEach**  
 ![LazyForEach-Image-Flush-Repair](figures/LazyForEach-Image-Flush-Repair.gif)
 
 ### UI Not Re-rendered When @ObjectLink Property Is Changed
@@ -1624,7 +1694,7 @@ struct ChildComponent {
 }
 ```
 
-**UI Not Re-rendered When @ObjectLink Property Is Changed** 
+**UI Not Re-rendered When @ObjectLink Property Is Changed**  
 ![LazyForEach-ObjectLink-NotRenderUI](figures/LazyForEach-ObjectLink-NotRenderUI.gif)
 
 The @ObjectLink decorator can only observe changes to direct sub-properties of its bound object and cannot listen for deeply nested properties. As a result, component re-rendering can only be triggered by modifying these direct sub-properties. For details, see [@Observed and @ObjectLink Decorators: Observing Property Changes in Nested Class Objects](../state-management/arkts-observed-and-objectlink.md).
@@ -1714,11 +1784,10 @@ struct UINotRerenderedChildComponent {
 }
 ```
 
-**UI Update After the ObjectLink Property Is Fixed** 
+**UI Update After the ObjectLink Property Is Fixed**  
 ![LazyForEach-ObjectLink-NotRenderUI-Repair](figures/LazyForEach-ObjectLink-NotRenderUI-Repair.gif)
 
 ### Screen Flickering
-
 Calling **onDataReloaded** in the [onScrollIndex](../../reference/apis-arkui/arkui-ts/ts-container-list.md#onscrollindex) method of [List](../../reference/apis-arkui/arkui-ts/ts-container-list.md) may cause screen flickering.
 
 For details about the code of **BasicDataSource**, see [BasicDataSource Implementation for the String Array](#basicdatasource-implementation-for-the-string-array).
@@ -1791,7 +1860,7 @@ struct MyComponent {
 }
 ```
 
-**Screen Flickering When the List Is Scrolled to the Bottom** 
+**Screen Flickering When the List Is Scrolled to the Bottom**  
 ![LazyForEach-Screen-Flicker](figures/LazyForEach-Screen-Flicker.gif)
 
 Replacing **onDataReloaded** by **onDatasetChange** can not only fix this issue but also improve load performance.
@@ -1807,7 +1876,7 @@ import { BasicDataSource } from './BasicDataSource';
 const TAG = '[Sample_RenderingControl]';
 const DOMAIN = 0xF811;
 
-class ScreenFliceringDataSource extends BasicDataSource {
+class ScreenFlickeringDataSource extends BasicDataSource {
   private dataArray: string[] = [];
 
   public totalCount(): number {
@@ -1838,7 +1907,7 @@ class ScreenFliceringDataSource extends BasicDataSource {
 @Component
 struct ScreenFlickeringInList {
   private moved: number[] = [];
-  private data: ScreenFliceringDataSource = new ScreenFliceringDataSource();
+  private data: ScreenFlickeringDataSource = new ScreenFlickeringDataSource();
 
   aboutToAppear() {
     for (let i = 0; i <= 10; i++) {
@@ -1872,7 +1941,7 @@ struct ScreenFlickeringInList {
 }
 ```
 
-**Smooth scrolling without screen flickering after optimization** 
+**Smooth scrolling without screen flickering after optimization**  
 ![LazyForEach-Screen-Flicker-Repair](figures/LazyForEach-Screen-Flicker-Repair.gif)
 
 ### Component Reuse Rendering Exception
@@ -1969,7 +2038,7 @@ To resolve the issue, replace @ComponentV2 with [\@Component](../state-managemen
 
 ### Component Re-Rendering Failure
 
-You need to define a proper function for key generation and return a key associated with the target data. When the target data changes, **LazyForEach** re-renders the corresponding component only after identifying the key change.
+You need to define a proper key generation function and return a key associated with the target data. When the target data changes, **LazyForEach** re-renders the corresponding component only after identifying the key change.
 
 For details about the code of **BasicDataSource**, see [BasicDataSource Implementation for the String Array](#basicdatasource-implementation-for-the-string-array).
 
@@ -2028,7 +2097,7 @@ struct MyComponent {
 }
 ```
 
-**Component Not Re-Rendering After Data Update** 
+**Component Not Re-Rendering After Data Update**  
 ![LazyForEach-Refresh-Not-Expected](figures/LazyForEach-Refresh-Not-Expected.gif)
 
 **LazyForEach** depends on the generated key to determine whether to re-render the child component. If the key is not changed during data update, **LazyForEach** does not re-render the corresponding component. For example, if the key generation function is not defined, the key is related only to the component index and the key remains unchanged during data update.
@@ -2043,7 +2112,7 @@ LazyForEach(this.data, (item: string) => {
 }, (item: string) => item) // Define the key generation function.
 ```
 
-**Successful Component Re-Rendering After Key Generation Function Correction** 
+**Successful Component Re-Rendering After Key Generation Function Correction**  
 ![LazyForEach-Refresh-Not-Expected-Repair](figures/LazyForEach-Refresh-Not-Expected-Repair.gif)
 
 ### Lazy Loading Failure
@@ -2283,3 +2352,4 @@ export class GenericBasicDataSource<T> implements IDataSource {
   }
 }
 ```
+<!--no_check-->

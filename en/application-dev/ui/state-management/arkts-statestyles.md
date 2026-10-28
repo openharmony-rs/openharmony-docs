@@ -1,11 +1,11 @@
 # stateStyles: Applying Polymorphic Styles
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=3477505f92eade71c49719bd32fb8ac4fd5eef96 translatedAt=2026-09-21T11:42:02.793Z pushedAt=2026-09-23T09:30:40.339Z -->
+<!-- md-trans-meta sourceCommit=3b17ae247298f1cf952b1cbdcb60f1ff0e80beac translatedAt=2026-10-28T04:07:07.775Z pushedAt=2026-10-28T08:17:57.796Z nl=1 -->
 
 
 \@Styles is only used for style reuse on static pages, whereas **stateStyles** can quickly set different styles based on a component's internal state. This is what this chapter introduces: **stateStyles** (also known as polymorphic styles).
@@ -84,7 +84,7 @@ struct StateStylesSample {
 
 
 
-  **Figure 1** Focused and pressed states 
+  **Figure 1** Focused and pressed states
 
 ![Video_2023-03-17_120758](figures/Video_2023-03-17_120758.gif)
 
@@ -121,7 +121,7 @@ struct MyComponent {
 }
 ```
 
-  **Figure 2** Normal and pressed states 
+  **Figure 2** Normal and pressed states
 
 ![Video_2023-03-17_144824](figures/Video_2023-03-17_144824.gif)
 
@@ -163,6 +163,6 @@ struct CompWithInlineStateStyles {
 
 By default, the button is displayed in blue in the normal state. When you press the **Tab** key for the first time, the button obtains focus and is displayed in the light gray style specified for **focused**. After a click event occurs and you press the **Tab** key again, the button obtains focus and changes to dark gray.
 
-  **Figure 3** Change of the styles in focused state by a click 
+  **Figure 3** Change of the styles in focused state by a click
 
 ![focus-stateStyles](figures/focus-stateStyles.gif)
