@@ -278,13 +278,15 @@ const TAG: string = '[testTag] ExampleFormEditExtensionAbility'
 export default class ExampleFormEditAbility extends FormEditExtensionAbility {
   onSessionCreate(want: Want, session: UIExtensionContentSession): void {
     try {
-      // 设置编辑页背景为透明
-      this.context.setWindowBackgroundColor('#00FFFFFF').then(() => {
-        console.info(TAG, `setWindowBackgroundColor success`);
-      });
+      this.context.setWindowBackgroundColor("#00FFFFFF")
+        .then(() => {
+          console.info('Background color set successfully');
+        })
+        .catch((e) => {
+          console.error(`Failed to set background color: ${e.code} ${e.message}`);
+        })
     } catch (e) {
-      console.error(TAG, `setWindowBackgroundColor failed, code: ${e.code}, message: ${e.message}`);
-      return
+      console.error(`${TAG} Failed to set background color:, Code: ${e.code}, Message: ${e.message}`);
     }
   }
 }
@@ -303,13 +305,15 @@ const TAG: string = '[testTag] ExampleFormEditExtensionAbility'
 export default class ExampleFormEditAbility extends FormEditExtensionAbility {
   onSessionCreate(want: Want, session: UIExtensionContentSession) {
     try {
-      // 设置编辑页背景为透明
-      this.formEditContext.setWindowBackgroundColor('#00FFFFFF').then(() => {
-        console.info(TAG, `setWindowBackgroundColor success`);
-      });
-    } catch (error) {
-      console.error(TAG, `setWindowBackgroundColor failed: code: ${error.code} message: ${error.message}`)
-      return
+      this.formEditContext.setWindowBackgroundColor("#00FFFFFF")
+        .then(() => {
+          console.info('Background color set successfully');
+        })
+        .catch((e) => {
+          console.error(`Failed to set background color: ${e.code} ${e.message}`);
+        })
+    } catch (e) {
+      console.error(`${TAG} Failed to set background color:, Code: ${e.code}, Message: ${e.message}`);
     }
   }
 }
