@@ -6,7 +6,7 @@
 <!--Tester: @songjinke-->
 <!--Adviser: @zengyawen-->
 
-本模块提供设备风险管理能力，包括安全事件采集、上报、查询与订阅，安全模型检测结果获取、策略文件更新，以及阻断服务提供者接入阻断框架进行事件阻断决策。基于事件数据可分析设备运行风险。
+本模块提供设备风险管理能力，包括安全事件采集、上报、查询与订阅，安全模型检测结果获取、策略文件更新，以及阻断服务提供者接入框架进行事件阻断决策。基于事件数据可分析设备运行风险。
 
 > **说明：**
 >
@@ -667,7 +667,7 @@ async function updatePolicy(): Promise<void> {
 
 ## AuthClientInfo
 
-客户端会话信息，由框架通过 [onClientStatusChanged](#onclientstatuschanged)() 回调下发给阻断服务提供者。
+客户端会话信息，由框架通过[onClientStatusChanged](#onclientstatuschanged)()回调下发给阻断服务提供者。
 
 **起始版本：** 26.1.0
 
@@ -722,7 +722,7 @@ async function updatePolicy(): Promise<void> {
 
 ## AuthProviderCallback
 
-阻断服务提供者回调接口，在调用 [createAuthProvider](#securityguardcreateauthprovider)() 时传入。
+阻断服务提供者回调接口，在调用[createAuthProvider](#securityguardcreateauthprovider)()时传入。
 
 **起始版本：** 26.1.0
 
@@ -736,7 +736,7 @@ async function updatePolicy(): Promise<void> {
 
 onClientStatusChanged: (clientInfos: AuthClientInfo[]) => void
 
-客户端会话状态变更时触发。[createAuthProvider](#securityguardcreateauthprovider)() 成功后会立即触发一次，下发当前全量客户端列表；后续客户端创建、销毁或订阅变更时再次触发。
+客户端会话状态变更时触发。[createAuthProvider](#securityguardcreateauthprovider)()成功后会立即触发一次，下发当前全量客户端列表；后续客户端创建、销毁或订阅变更时再次触发。
 
 **起始版本：** 26.1.0
 
@@ -780,7 +780,7 @@ let callback: securityGuard.AuthProviderCallback = {
 
 ## AuthProvider
 
-阻断服务提供者类，由 [createAuthProvider](#securityguardcreateauthprovider)() 工厂函数创建。通过该类实例可请求事件的阻断结果。
+阻断服务提供者类，由[createAuthProvider](#securityguardcreateauthprovider)()工厂函数创建。通过该类实例可请求事件的阻断结果。
 
 **起始版本：** 26.1.0
 
@@ -878,7 +878,7 @@ createAuthProvider(callback: AuthProviderCallback, serviceId: string): AuthProvi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
-| callback | [AuthProviderCallback](#authprovidercallback) | 是 | 阻断服务提供者回调，接收客户端状态变更通知。 |
+| callback | [AuthProviderCallback](#authprovidercallback) | 是 | 阻断服务提供者回调函数。当阻断服务客户端状态变更时，返回全量客户端会话信息列表。 |
 | serviceId | string | 是 | 服务标识。 |
 
 **返回值：**
