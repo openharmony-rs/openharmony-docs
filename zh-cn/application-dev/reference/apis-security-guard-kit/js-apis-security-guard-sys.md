@@ -667,7 +667,7 @@ async function updatePolicy(): Promise<void> {
 
 ## AuthClientInfo
 
-客户端会话信息，由框架通过 [onClientStatusChanged](#onclientstatuschanged) 回调下发给阻断服务提供者。
+客户端会话信息，由框架通过 [onClientStatusChanged](#onclientstatuschanged)() 回调下发给阻断服务提供者。
 
 **起始版本：** 26.1.0
 
@@ -722,7 +722,7 @@ async function updatePolicy(): Promise<void> {
 
 ## AuthProviderCallback
 
-阻断服务提供者回调接口，在调用 [createAuthProvider](#securityguardcreateauthprovider) 时传入。
+阻断服务提供者回调接口，在调用 [createAuthProvider](#securityguardcreateauthprovider)() 时传入。
 
 **起始版本：** 26.1.0
 
@@ -736,7 +736,7 @@ async function updatePolicy(): Promise<void> {
 
 onClientStatusChanged: (clientInfos: AuthClientInfo[]) => void
 
-客户端会话状态变更时触发。[createAuthProvider](#securityguardcreateauthprovider) 成功后会立即触发一次，下发当前全量客户端列表；后续客户端创建、销毁或订阅变更时再次触发。
+客户端会话状态变更时触发。[createAuthProvider](#securityguardcreateauthprovider)() 成功后会立即触发一次，下发当前全量客户端列表；后续客户端创建、销毁或订阅变更时再次触发。
 
 **起始版本：** 26.1.0
 
@@ -750,7 +750,7 @@ onClientStatusChanged: (clientInfos: AuthClientInfo[]) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
-| clientInfos | Array&lt;[AuthClientInfo](#authclientinfo)&gt; | 是 | 全量客户端会话信息列表。 |
+| clientInfos | [AuthClientInfo](#authclientinfo)[] | 是 | 全量客户端会话信息列表。 |
 
 **错误码：**
 
@@ -780,7 +780,7 @@ let callback: securityGuard.AuthProviderCallback = {
 
 ## AuthProvider
 
-阻断服务提供者类，由 [createAuthProvider](#securityguardcreateauthprovider) 工厂函数创建。通过该类实例可请求事件的阻断结果。
+阻断服务提供者类，由 [createAuthProvider](#securityguardcreateauthprovider)() 工厂函数创建。通过该类实例可请求事件的阻断结果。
 
 **起始版本：** 26.1.0
 
@@ -818,7 +818,7 @@ requestAuthResult(event: AuthEventInfo): Promise\<AuthResult\>
 
 | 类型 | 说明 |
 | ---- | ---- |
-| Promise&lt;[AuthResult](#authresult)&gt; | Promise对象，成功时返回阻断结果，失败时抛出BusinessError。 |
+| Promise\<[AuthResult](#authresult)\> | Promise对象，成功时返回阻断结果，失败时抛出BusinessError。 |
 
 **错误码：**
 
