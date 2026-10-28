@@ -98,7 +98,7 @@ ArkTS-Sta: static createFromImage(pixelmap: image.PixelMap, srcRect?: common2D.R
 
 | 类型                  | 说明           |
 | --------------------- | -------------- |
-| ArkTS-Dyn: [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md)<br/>ArkTS-Sta: [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) \| undefined | 返回基于图像创建的图像滤波器。 |
+| ArkTS-Dyn: [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md)<br/>ArkTS-Sta: [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) \| undefined | 返回基于图像创建的图像滤波器。传入的图片对象无效时返回undefined。 |
 
 **示例：**
 
