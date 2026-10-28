@@ -28,7 +28,7 @@ typedef struct HiDebug_StackFrame {...} HiDebug_StackFrame
 | 名称 | 描述 |
 | -- | -- |
 | HiDebug_StackFrameType type | 当前栈的类型。                                         |
-| frame.js       | Js stack frame defined in [HiDebug_JsStackFrame](capi-hidebug-hidebug-jsstackframe.md)         |
-| frame.native                                   | Native frame defined in [HiDebug_NativeStackFrame](capi-hidebug-hidebug-nativestackframe.md) |
+| frame.js       | 由[HiDebug_JsStackFrame](capi-hidebug-hidebug-jsstackframe.md)定义的js栈帧内容。         |
+| frame.native                                   | 由[HiDebug_NativeStackFrame](capi-hidebug-hidebug-nativestackframe.md)定义的native栈帧内容。 |
 
 
