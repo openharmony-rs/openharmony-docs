@@ -222,7 +222,7 @@ try {
         console.info('No Hyper Snap error occurred.');
         return;
       }
-      console.info(`Last error code: ${errInfo.code}, msg: ${errInfo.msg}, occurTimeStamp: ${errInfo.occurTimeStamp}`);
+      console.error(`Last error code: ${errInfo.code}, msg: ${errInfo.msg}, occurTimeStamp: ${errInfo.occurTimeStamp}`);
     })
     .catch((err: BusinessError) => {
       console.error(`Failed to get last error. Code: ${err.code}, message: ${err.message}`);
