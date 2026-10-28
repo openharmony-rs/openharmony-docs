@@ -390,7 +390,7 @@ datashare服务启动完成后，将会触发事件通知服务发布该[系统�
 **取值：** "common.event.SPLIT_SCREEN"
 
 
-
+<!--Del-->
 ## Notification Kit
 
 ### COMMON_EVENT_SLOT_CHANGE
@@ -408,7 +408,7 @@ datashare服务启动完成后，将会触发事件通知服务发布该[系统�
 **订阅者所需权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
 **取值：** "usual.event.SLOT_CHANGE"
-
+<!--DelEnd-->
 
 ## Background Tasks Kit
 
