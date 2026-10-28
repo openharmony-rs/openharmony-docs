@@ -87,7 +87,7 @@ static createImageShader(pixelmap: image.PixelMap, tileX: TileMode, tileY: TileM
 
 | 类型    | 说明                       |
 | ------- | ------------------------- |
-| [ShaderEffect](arkts-apis-graphics-drawing-ShaderEffect.md) | 返回创建的着色器对象。 |
+| [ShaderEffect](arkts-apis-graphics-drawing-ShaderEffect.md) | 返回创建的着色器对象。传入的图片对象无效时返回undefined。 |
 
 **错误码：**
 
