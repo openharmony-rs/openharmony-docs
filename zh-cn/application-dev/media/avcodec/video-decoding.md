@@ -645,26 +645,26 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
     std::shared_ptr<CodecBufferInfo> bufferInfo = videoDecContext_->inputBufferQueue.Dequeue();
     std::shared_lock<std::shared_mutex> codecLock(videoDecContext_->codecMutex);
     /**
-       *
-       * // 示例：将数据写入 Buffer，设置属性后送入解码器。
-       * uint8_t *addr = OH_AVBuffer_GetAddr(bufferInfo->buffer);
-       * CHECK_AND_RETURN_RET_LOG(addr != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Input buffer addr is null");
-       * int32_t capacity = OH_AVBuffer_GetCapacity(bufferInfo->buffer);
-       * if (size > capacity) {
-       *     // 异常处理。
-       * }
-       * memcpy(addr, frameData, size);
-       * OH_AVCodecBufferAttr attrInfo;
-       * attrInfo.size = size;
-       * attrInfo.offset = offset;
-       * attrInfo.pts = pts;
-       * attrInfo.flags = flags;
-       * OH_AVErrCode setBufferRet = OH_AVBuffer_SetBufferAttr(bufferInfo->buffer, &attrInfo);
-       * if (setBufferRet != AV_ERR_OK) {
-       *     // 异常处理。
-       * }
-       *
-       */
+     *
+     * // 示例：将数据写入 Buffer，设置属性后送入解码器。
+     * uint8_t *addr = OH_AVBuffer_GetAddr(bufferInfo->buffer);
+     * CHECK_AND_RETURN_RET_LOG(addr != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Input buffer addr is null");
+     * int32_t capacity = OH_AVBuffer_GetCapacity(bufferInfo->buffer);
+     * if (size > capacity) {
+     *     // 异常处理。
+     * }
+     * memcpy(addr, frameData, size);
+     * OH_AVCodecBufferAttr attrInfo;
+     * attrInfo.size = size;
+     * attrInfo.offset = offset;
+     * attrInfo.pts = pts;
+     * attrInfo.flags = flags;
+     * OH_AVErrCode setBufferRet = OH_AVBuffer_SetBufferAttr(bufferInfo->buffer, &attrInfo);
+     * if (setBufferRet != AV_ERR_OK) {
+     *     // 异常处理。
+     * }
+     *
+     */
     // ...
     // 送入解码输入队列进行解码。
     ret = videoDecoder_->PushInputBuffer(*bufferInfo);
@@ -1238,26 +1238,26 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
     std::shared_ptr<CodecBufferInfo> bufferInfo = videoDecContext_->inputBufferQueue.Dequeue();
     std::shared_lock<std::shared_mutex> codecLock(videoDecContext_->codecMutex);
     /**
-       *
-       * // 示例：将数据写入 Buffer，设置属性后送入解码器。
-       * uint8_t *addr = OH_AVBuffer_GetAddr(bufferInfo->buffer);
-       * CHECK_AND_RETURN_RET_LOG(addr != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Input buffer addr is null");
-       * int32_t capacity = OH_AVBuffer_GetCapacity(bufferInfo->buffer);
-       * if (size > capacity) {
-       *     // 异常处理。
-       * }
-       * memcpy(addr, frameData, size);
-       * OH_AVCodecBufferAttr attrInfo;
-       * attrInfo.size = size;
-       * attrInfo.offset = offset;
-       * attrInfo.pts = pts;
-       * attrInfo.flags = flags;
-       * OH_AVErrCode setBufferRet = OH_AVBuffer_SetBufferAttr(bufferInfo->buffer, &attrInfo);
-       * if (setBufferRet != AV_ERR_OK) {
-       *     // 异常处理。
-       * }
-       *
-       */
+     *
+     * // 示例：将数据写入 Buffer，设置属性后送入解码器。
+     * uint8_t *addr = OH_AVBuffer_GetAddr(bufferInfo->buffer);
+     * CHECK_AND_RETURN_RET_LOG(addr != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Input buffer addr is null");
+     * int32_t capacity = OH_AVBuffer_GetCapacity(bufferInfo->buffer);
+     * if (size > capacity) {
+     *     // 异常处理。
+     * }
+     * memcpy(addr, frameData, size);
+     * OH_AVCodecBufferAttr attrInfo;
+     * attrInfo.size = size;
+     * attrInfo.offset = offset;
+     * attrInfo.pts = pts;
+     * attrInfo.flags = flags;
+     * OH_AVErrCode setBufferRet = OH_AVBuffer_SetBufferAttr(bufferInfo->buffer, &attrInfo);
+     * if (setBufferRet != AV_ERR_OK) {
+     *     // 异常处理。
+     * }
+     *
+     */
     // ...
     // 送入解码输入队列进行解码。
     ret = videoDecoder_->PushInputBuffer(*bufferInfo);

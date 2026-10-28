@@ -322,33 +322,32 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
                OH_AVBuffer *buffer = OH_VideoDecoder_GetInputBuffer(decoder_, info.bufferIndex);
                CHECK_AND_RETURN_RET_LOG(buffer != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Input buffer is null");
                info.buffer = buffer;
-           /**
-               // 示例：调用方将待解码帧的数据与属性写入 Buffer。
-               uint8_t *addr = OH_AVBuffer_GetAddr(buffer);
-               CHECK_AND_RETURN_RET_LOG(addr != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Input buffer addr is null");
-               // buffer数据填充。
-               int32_t capacity = OH_AVBuffer_GetCapacity(buffer);
-               if (size > capacity) {
-                   // 异常处理。
-               }
-               memcpy(addr, frameData, size);
-
-               OH_AVCodecBufferAttr attrInfo;
-               // buffer属性配置。
-               // 配置帧数据的输入尺寸、偏移量、时间戳等字段信息。
-               attrInfo.size = size;
-               attrInfo.offset = offset;
-               attrInfo.pts = pts;
-               if (inFile_->eof()) {
-                   attrInfo.flags = AVCODEC_BUFFER_FLAGS_EOS;
-               } else {
-                   attrInfo.flags = flags;
-               }
-               OH_AVErrCode setBufferRet = OH_AVBuffer_SetBufferAttr(buffer, &attrInfo);
-               if (setBufferRet != AV_ERR_OK) {
-                   // 异常处理。
-               }
-           **/
+               /**
+                * // 示例：调用方将待解码帧的数据与属性写入 Buffer。
+                * uint8_t *addr = OH_AVBuffer_GetAddr(buffer);
+                * CHECK_AND_RETURN_RET_LOG(addr != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Input buffer addr is null");
+                * // buffer数据填充。
+                * int32_t capacity = OH_AVBuffer_GetCapacity(buffer);
+                * if (size > capacity) {
+                *     // 异常处理。
+                * }
+                * memcpy(addr, frameData, size);
+                * OH_AVCodecBufferAttr attrInfo;
+                * // buffer属性配置。
+                * // 配置帧数据的输入尺寸、偏移量、时间戳等字段信息。
+                * attrInfo.size = size;
+                * attrInfo.offset = offset;
+                * attrInfo.pts = pts;
+                * if (inFile_->eof()) {
+                *     attrInfo.flags = AVCODEC_BUFFER_FLAGS_EOS;
+                * } else {
+                *     attrInfo.flags = flags;
+                * }
+                * OH_AVErrCode setBufferRet = OH_AVBuffer_SetBufferAttr(buffer, &attrInfo);
+                * if (setBufferRet != AV_ERR_OK) {
+                *     // 异常处理。
+                * }
+                */
                return AVCODEC_SAMPLE_ERR_OK;
            }
            case AV_ERR_TRY_AGAIN_LATER: {
@@ -455,14 +454,14 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
                bool getIntRet = OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_PIC_WIDTH, &width) &&
                                 OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_PIC_HEIGHT, &height);
                /**
-                   OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_STRIDE, &widthStride);
-                   OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_SLICE_HEIGHT, &heightStride);
-                   获取裁剪矩形信息可选。
-                   OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_CROP_TOP, &cropTop);
-                   OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_CROP_BOTTOM, &cropBottom);
-                   OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_CROP_LEFT, &cropLeft);
-                   OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_CROP_RIGHT, &cropRight);
-               **/
+                * OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_STRIDE, &widthStride);
+                * OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_SLICE_HEIGHT, &heightStride);
+                * 获取裁剪矩形信息可选。
+                * OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_CROP_TOP, &cropTop);
+                * OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_CROP_BOTTOM, &cropBottom);
+                * OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_CROP_LEFT, &cropLeft);
+                * OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_CROP_RIGHT, &cropRight);
+                */
                CHECK_AND_BREAK_LOG(getIntRet, "Decoder get int value failed.");
                AVCODEC_SAMPLE_LOGI("Stream Changed. Width: %{public}i, height: %{public}i", width, height);
                return GetOutputBuffer(info, timeoutUs);
@@ -805,33 +804,32 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
                OH_AVBuffer *buffer = OH_VideoDecoder_GetInputBuffer(decoder_, info.bufferIndex);
                CHECK_AND_RETURN_RET_LOG(buffer != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Input buffer is null");
                info.buffer = buffer;
-           /**
-               // 示例：调用方将待解码帧的数据与属性写入 Buffer。
-               uint8_t *addr = OH_AVBuffer_GetAddr(buffer);
-               CHECK_AND_RETURN_RET_LOG(addr != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Input buffer addr is null");
-               // buffer数据填充。
-               int32_t capacity = OH_AVBuffer_GetCapacity(buffer);
-               if (size > capacity) {
-                   // 异常处理。
-               }
-               memcpy(addr, frameData, size);
-
-               OH_AVCodecBufferAttr attrInfo;
-               // buffer属性配置。
-               // 配置帧数据的输入尺寸、偏移量、时间戳等字段信息。
-               attrInfo.size = size;
-               attrInfo.offset = offset;
-               attrInfo.pts = pts;
-               if (inFile_->eof()) {
-                   attrInfo.flags = AVCODEC_BUFFER_FLAGS_EOS;
-               } else {
-                   attrInfo.flags = flags;
-               }
-               OH_AVErrCode setBufferRet = OH_AVBuffer_SetBufferAttr(buffer, &attrInfo);
-               if (setBufferRet != AV_ERR_OK) {
-                   // 异常处理。
-               }
-           **/
+               /**
+                * // 示例：调用方将待解码帧的数据与属性写入 Buffer。
+                * uint8_t *addr = OH_AVBuffer_GetAddr(buffer);
+                * CHECK_AND_RETURN_RET_LOG(addr != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Input buffer addr is null");
+                * // buffer数据填充。
+                * int32_t capacity = OH_AVBuffer_GetCapacity(buffer);
+                * if (size > capacity) {
+                *     // 异常处理。
+                * }
+                * memcpy(addr, frameData, size);
+                * OH_AVCodecBufferAttr attrInfo;
+                * // buffer属性配置。
+                * // 配置帧数据的输入尺寸、偏移量、时间戳等字段信息。
+                * attrInfo.size = size;
+                * attrInfo.offset = offset;
+                * attrInfo.pts = pts;
+                * if (inFile_->eof()) {
+                *     attrInfo.flags = AVCODEC_BUFFER_FLAGS_EOS;
+                * } else {
+                *     attrInfo.flags = flags;
+                * }
+                * OH_AVErrCode setBufferRet = OH_AVBuffer_SetBufferAttr(buffer, &attrInfo);
+                * if (setBufferRet != AV_ERR_OK) {
+                *     // 异常处理。
+                * }
+                */
                return AVCODEC_SAMPLE_ERR_OK;
            }
            case AV_ERR_TRY_AGAIN_LATER: {
@@ -938,14 +936,14 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
                bool getIntRet = OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_PIC_WIDTH, &width) &&
                                 OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_PIC_HEIGHT, &height);
                /**
-                   OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_STRIDE, &widthStride);
-                   OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_SLICE_HEIGHT, &heightStride);
-                   获取裁剪矩形信息可选。
-                   OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_CROP_TOP, &cropTop);
-                   OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_CROP_BOTTOM, &cropBottom);
-                   OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_CROP_LEFT, &cropLeft);
-                   OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_CROP_RIGHT, &cropRight);
-               **/
+                * OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_STRIDE, &widthStride);
+                * OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_SLICE_HEIGHT, &heightStride);
+                * 获取裁剪矩形信息可选。
+                * OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_CROP_TOP, &cropTop);
+                * OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_CROP_BOTTOM, &cropBottom);
+                * OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_CROP_LEFT, &cropLeft);
+                * OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_CROP_RIGHT, &cropRight);
+                */
                CHECK_AND_BREAK_LOG(getIntRet, "Decoder get int value failed.");
                AVCODEC_SAMPLE_LOGI("Stream Changed. Width: %{public}i, height: %{public}i", width, height);
                return GetOutputBuffer(info, timeoutUs);
