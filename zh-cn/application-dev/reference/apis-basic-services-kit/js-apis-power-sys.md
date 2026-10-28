@@ -698,3 +698,273 @@ try {
     console.error('set power config failed, err: ' + err);
 }
 ```
+
+## InvokeMode
+
+枚举函数调用方式。
+
+表示API调用是如何执行的，以及它的结果是如何交付的。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.PowerManager.PowerManager.Core
+
+| 名称                    | 值   | 说明                   |
+| ----------------------- | ---- | ---------------------- |
+| SYNC | 0  | 同步调用。调用方阻塞，直到API返回结果。 |
+| ASYNC | 1  | 异步调用。调用者立即返回，结果通过Promise传递。 |
+
+## power.wakeup
+
+wakeup(detail: string, mode?: InvokeMode): void | Promise&lt;void&gt;
+
+唤醒设备，将设备从睡眠状态恢复到活动状态。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.POWER_MANAGER
+
+**系统能力：** SystemCapability.PowerManager.PowerManager.Core
+
+**设备行为差异：** 该接口在Car设备调用返回801错误码，在其他设备中正常调用。
+
+**参数：**
+
+| 参数名    | 类型     | 必填   | 说明    |
+| ------ | ------ | ---- | ----- |
+| detail | string | 是    | 唤醒原因。值必须为字符串。 |
+| mode | [InvokeMode](#invokemode) | 否    | 调用方式。不填该参数则默认为**InvokeMode.SYNC**。 |
+
+**返回值：**
+
+| 类型                | 说明                                   |
+| ------------------- | -------------------------------------- |
+| void \| Promise&lt;void&gt; | Promise对象。同步调用时不返回任何值；异步调用时返回无返回结果的Promise对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[系统电源管理错误码](errorcode-power.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID   | 错误信息    |
+|---------|---------|
+| 4900101 | Failed to connect to the service. |
+| 201     | Permission verification failed. The application does not have the permission required to call the API. |
+| 202     | Permission verification failed. A non-system application calls a system API.  |
+| 801     | Capability not supported. This API cannot work in car devices. |
+
+**示例：**
+
+```ts
+// wakeup - 异步
+(power.wakeup('scheduled_task', power.InvokeMode.ASYNC) as Promise<void>)
+  .then(() => {
+    console.info('wakeup success');
+  })
+  .catch((err: BusinessError) => {
+    console.error(`Failed to wakeup. Code: ${err.code}, message: ${err.message}`);
+  });
+
+// wakeup - 同步
+try {
+  power.wakeup('scheduled_task', power.InvokeMode.SYNC);
+} catch (error) {
+  const err: BusinessError = error as BusinessError;
+  console.error(`Failed to wakeup. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## power.suspend
+
+suspend(isImmediate?: boolean, mode?: InvokeMode): void | Promise&lt;void&gt;
+
+使设备进入睡眠状态。
+
+调用此方法后设备将进入睡眠，如需恢复到活动状态，需调用[power.wakeup](#powerwakeup)唤醒设备。
+
+与hibernate方法的区别：suspend为较浅的低功耗睡眠状态（灭屏后进入睡眠），hibernate为更深的休眠状态（休眠前可选择清理内存）。需快速恢复设备活动时选择suspend，需最大程度节省电量时选择hibernate。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.POWER_MANAGER
+
+**系统能力：** SystemCapability.PowerManager.PowerManager.Core
+
+**设备行为差异：** 该接口在Car设备调用返回801错误码，在其他设备中正常调用。
+
+**参数：**
+
+| 参数名    | 类型     | 必填   | 说明    |
+| ------ | ------ | ---- | ----- |
+| isImmediate | boolean | 否    | 是否直接使设备进入睡眠状态。true表示灭屏后立即进入睡眠，不填该参数则默认为false，表示灭屏后由系统自动检测何时进入睡眠。如果只想做灭屏操作，建议不填参数。 |
+| mode | [InvokeMode](#invokemode) | 否    | 调用方式。不填该参数则默认为**InvokeMode.SYNC**。 |
+
+**返回值：**
+
+| 类型                | 说明                                   |
+| ------------------- | -------------------------------------- |
+| void \| Promise&lt;void&gt; | Promise对象。同步调用时不返回任何值；异步调用时返回无返回结果的Promise对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[系统电源管理错误码](errorcode-power.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID   | 错误信息    |
+|---------|---------|
+| 4900101 | Failed to connect to the service. |
+| 201     | Permission verification failed. The application does not have the permission required to call the API. |
+| 202     | Permission verification failed. A non-system application calls a system API.  |
+| 4900701 | Failed to suspend the device. Possible causes: 1. Not allowed to turn off the screen during the exam. |
+| 801     | Capability not supported. This API cannot work in car devices. |
+
+**示例：**
+
+```ts
+// suspend - 立即睡眠，异步
+(power.suspend(true, power.InvokeMode.ASYNC) as Promise<void>)
+  .then(() => {
+    console.info('suspend success');
+  })
+  .catch((err: BusinessError) => {
+    console.error(`Failed to suspend. Code: ${err.code}, message: ${err.message}`);
+  });
+
+// suspend - 立即睡眠，同步
+try {
+  power.suspend(true, power.InvokeMode.SYNC);
+} catch (error) {
+  const err: BusinessError = error as BusinessError;
+  console.error(`Failed to suspend. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## power.shutdown
+
+shutdown(reason: string, mode?: InvokeMode): void | Promise&lt;void&gt;
+
+系统关机。与reboot方法的区别：shutdown使设备完全关机不再运行，reboot使设备关机后自动重启。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.REBOOT
+
+**系统能力：** SystemCapability.PowerManager.PowerManager.Core
+
+**参数：**
+
+| 参数名    | 类型     | 必填   | 说明    |
+| ------ | ------ | ---- | ----- |
+| reason | string | 是    | 关机原因。 |
+| mode | [InvokeMode](#invokemode) | 否    | 调用方式。不填该参数则默认为**InvokeMode.SYNC**。 |
+
+**返回值：**
+
+| 类型                | 说明                                   |
+| ------------------- | -------------------------------------- |
+| void \| Promise&lt;void&gt; | Promise对象。同步调用时不返回任何值；异步调用时返回无返回结果的Promise对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[系统电源管理错误码](errorcode-power.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID   | 错误信息    |
+|---------|---------|
+| 4900101 | Failed to connect to the service. |
+| 201     | Permission verification failed. The application does not have the permission required to call the API. |
+| 202     | Permission verification failed. A non-system application calls a system API.  |
+
+**示例：**
+
+```ts
+// shutdown - 异步
+(power.shutdown('maintenance', power.InvokeMode.ASYNC) as Promise<void>)
+  .then(() => {
+    console.info('shutdown success');
+  })
+  .catch((err: BusinessError) => {
+    console.error(`Failed to shutdown. Code: ${err.code}, message: ${err.message}`);
+  });
+
+// shutdown - 同步
+try {
+  power.shutdown('maintenance', power.InvokeMode.SYNC);
+} catch (error) {
+  const err: BusinessError = error as BusinessError;
+  console.error(`Failed to shutdown. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## power.reboot
+
+reboot(reason: string, mode?: InvokeMode): void | Promise&lt;void&gt;
+
+重启设备。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.REBOOT
+
+**系统能力：** SystemCapability.PowerManager.PowerManager.Core
+
+**参数：**
+
+| 参数名    | 类型     | 必填   | 说明    |
+| ------ | ------ | ---- | ----- |
+| reason | string | 是    | 重启原因。例如，“updater”表示重启后进入更新模式。传入空字符串时，系统将在重启后进入正常模式。 |
+| mode | [InvokeMode](#invokemode) | 否    | 调用方式。不填该参数则默认为**InvokeMode.SYNC**。 |
+
+**返回值：**
+
+| 类型                | 说明                                   |
+| ------------------- | -------------------------------------- |
+| void \| Promise&lt;void&gt; | Promise对象。同步调用时不返回任何值；异步调用时返回无返回结果的Promise对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[系统电源管理错误码](errorcode-power.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID   | 错误信息    |
+|---------|---------|
+| 4900101 | Failed to connect to the service. |
+| 201     | Permission verification failed. The application does not have the permission required to call the API. |
+| 202     | Permission verification failed. A non-system application calls a system API.  |
+
+**示例：**
+
+```ts
+// reboot - 异步
+(power.reboot('updater', power.InvokeMode.ASYNC) as Promise<void>)
+  .then(() => {
+    console.info('reboot success');
+  })
+  .catch((err: BusinessError) => {
+    console.error(`Failed to reboot. Code: ${err.code}, message: ${err.message}`);
+  });
+
+// reboot - 同步
+try {
+  power.reboot('updater', power.InvokeMode.SYNC);
+} catch (error) {
+  const err: BusinessError = error as BusinessError;
+  console.error(`Failed to reboot. Code: ${err.code}, message: ${err.message}`);
+}
+```
