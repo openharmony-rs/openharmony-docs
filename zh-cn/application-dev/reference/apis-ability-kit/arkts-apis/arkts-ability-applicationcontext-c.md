@@ -96,7 +96,7 @@ clearUpApplicationData(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | AsyncCallback&lt;void&gt; | 是 | Callback used to return the result. If the application data is cleared up, <code>error</code> is <code>undefined</code>; otherwise, <code>error</code> is an error object. |
+| callback | AsyncCallback&lt;void&gt; | 是 | Callback used to return the result. If the application data is cleared up, `error` is `undefined`; otherwise, `error` is an error object. |
 
 **错误码：**
 

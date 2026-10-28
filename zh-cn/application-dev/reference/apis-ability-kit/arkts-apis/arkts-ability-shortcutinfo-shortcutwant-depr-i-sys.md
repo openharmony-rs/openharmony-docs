@@ -1,4 +1,4 @@
-# ShortcutWant（系统接口）
+# deprecated ShortcutWant（系统接口）
 
 ```TypeScript
 export interface ShortcutWant

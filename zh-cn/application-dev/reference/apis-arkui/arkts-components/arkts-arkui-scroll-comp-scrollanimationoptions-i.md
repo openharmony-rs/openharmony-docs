@@ -20,7 +20,7 @@ canOverScroll?: boolean
 
 是否启用过滚动。
 
-<p><strong>说明</strong> <br> 设置为<em>true</em>时可以滚动超出边界并触发回弹动画，同时组件的<em>edgeEffect</em>属性需设置为EdgeEffect.Spring。</p>
+**说明**<br>设置为*true*时可以滚动超出边界并触发回弹动画，同时组件的*edgeEffect*属性需设置为EdgeEffect.Spring。
 
 **类型：** boolean
 

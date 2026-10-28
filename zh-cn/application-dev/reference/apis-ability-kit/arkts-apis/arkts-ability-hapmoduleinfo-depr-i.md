@@ -1,4 +1,4 @@
-# HapModuleInfo
+# deprecated HapModuleInfo
 
 ```TypeScript
 export interface HapModuleInfo

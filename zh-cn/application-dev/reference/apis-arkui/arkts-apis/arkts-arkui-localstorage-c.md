@@ -332,7 +332,7 @@ prop<S>(propName: string): SubscribedAbstractProperty<S>
 
 | 类型 | 说明 |
 | --- | --- |
-| [SubscribedAbstractProperty](arkts-arkui-subscribedabstractproperty-c.md)&lt;S&gt; | SubscribedAbstractProperty<S>的实例，为LocalStorage中propName对应属性的单向绑定的数据。如果LocalStorage中不存在对应的propName，则返回undefined。 |
+| [SubscribedAbstractProperty](arkts-arkui-subscribedabstractproperty-c.md)&lt;S&gt; | SubscribedAbstractProperty&lt;S&gt;的实例，为LocalStorage中propName对应属性的单向绑定的数据。如果LocalStorage中不存在对应的propName，则返回undefined。 |
 
 **示例**
 
@@ -499,7 +499,7 @@ setAndProp<S>(propName: string, defaultValue: S): SubscribedAbstractProperty<S>
 
 | 类型 | 说明 |
 | --- | --- |
-| [SubscribedAbstractProperty](arkts-arkui-subscribedabstractproperty-c.md)&lt;S&gt; | SubscribedAbstractProperty<S>的实例，为LocalStorage中propName对应属性的单向绑定的数据。 |
+| [SubscribedAbstractProperty](arkts-arkui-subscribedabstractproperty-c.md)&lt;S&gt; | SubscribedAbstractProperty&lt;S&gt;的实例，为LocalStorage中propName对应属性的单向绑定的数据。 |
 
 **示例**
 
