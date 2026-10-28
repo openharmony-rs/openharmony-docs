@@ -308,7 +308,7 @@
 > 2. 为减少卡片在频繁开关网络场景进程启动次数，无网判定需要网络连续断开十分钟后，才会认为无网，下次联网后触发网络刷新。
 
   配置示例如下：
- 	 
+
   ```json
   {
     "forms": [
@@ -339,9 +339,9 @@
 
 <!--Del-->
 - 账号变更刷新：从API版本26.1.0开始仅系统应用支持在账号变更的场景下调用[onUpdateForm](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonupdateform)的生命周期回调函数自动刷新卡片内容。可以在[form_config.json](arkts-ui-widget-configuration.md)配置文件的 `metadata` 配置 `{"name": "enableAccountSwitchRefresh", "value": "true"}`。
- 	 
+
   配置示例如下：
- 	 
+
   ```json
   {
     "forms": [
