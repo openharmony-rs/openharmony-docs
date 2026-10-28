@@ -220,9 +220,9 @@ waypoints为导航过程中的途经点数组，数组中元素的个数为[0, 6
 
 | 属性 | 类型 | 说明 |
 | --- | --- | --- |
-| timestamp | number | 位置点的时间戳，单位为秒。 |
-| latitude | number | 位置点的纬度，取值范围为-90度到90度。 |
-| longitude | number | 位置点的经度，取值范围为-180度到180度。 |
+| timestamp | number | 途经点的时间戳，单位为秒。 |
+| latitude | number | 途经点的纬度，取值范围为-90度到90度。 |
+| longitude | number | 途经点的经度，取值范围为-180度到180度。 |
 
 ## DataFabricAddressParams
 
