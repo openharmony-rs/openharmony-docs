@@ -179,6 +179,7 @@
 
 ``` TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 async function main() {
   // 创建一个AsyKeyGenerator实例
