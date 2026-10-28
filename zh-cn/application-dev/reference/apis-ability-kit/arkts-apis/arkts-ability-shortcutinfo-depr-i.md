@@ -1,4 +1,4 @@
-# ShortcutInfo
+# deprecated ShortcutInfo
 
 ```TypeScript
 export interface ShortcutInfo

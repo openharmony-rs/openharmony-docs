@@ -1,4 +1,4 @@
-# UsedScene
+# deprecated UsedScene
 
 ```TypeScript
 export interface UsedScene

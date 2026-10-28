@@ -147,7 +147,7 @@ CryptoExtensionAbility接口按职责可分为7个能力域，部分能力域在
 
 - 证书枚举：[onEnumCertificates](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-security-cryptoextensionability-cryptoextensionability-c.md#onenumcertificates)枚举当前CryptoExtensionAbility下的所有证书。
 
-- 返回结构：通过result.certs返回，元素类型为Array<HuksCryptoExtensionCertInfo>。
+- 返回结构：通过result.certs返回，元素类型为Array&lt;HuksCryptoExtensionCertInfo&gt;。
 
 - 证书导入（从API版本26.0.0起支持）：通过[onImportCertificate](../../reference/apis-universal-keystore-kit/arkts-apis/arkts-universalkeystore-security-cryptoextensionability-cryptoextensionability-c.md#onimportcertificate)接口将证书导入密钥管理扩展服务。
 
