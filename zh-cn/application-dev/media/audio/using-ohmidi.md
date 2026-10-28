@@ -1,3 +1,11 @@
+---
+kits: ["Audio Kit / 音频服务"]
+description: "介绍如何使用OH_MIDI在C/C++层与外接MIDI设备交互：覆盖创建客户端、枚举打开USB或蓝牙设备、管理输入输出端口、以UMP格式收发MIDI消息的完整开发步骤。"
+keywords: [OH_MIDI, MIDI开发, MIDI设备枚举, MIDI端口, UMP格式, MIDI消息收发, SysEx, 蓝牙MIDI, ACCESS_BLUETOOTH权限]
+doctype: guide
+status: active
+---
+
 # 使用OH_MIDI进行MIDI开发(C/C++)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
