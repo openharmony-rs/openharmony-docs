@@ -20,7 +20,7 @@ interface TypographicBounds
 > 示意图展示了字符串为"j"或"E"的排版边界。
 > 
 > !
-> [TypographicBounds-Character.png](../../../reference/apis-arkgraphics2d/figures/TypographicBounds-Character.png)
+> ![TypographicBounds-Character.png](../../../reference/apis-arkgraphics2d/figures/TypographicBounds-Character.png)
 
 **起始版本：** 18
 
