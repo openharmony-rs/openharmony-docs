@@ -223,6 +223,7 @@ setPowerMode(mode: DevicePowerMode, callback: AsyncCallback&lt;void&gt;): void
 | 401     | Parameter error. Possible causes: 1.Parameter verification failed. |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 202     | Permission verification failed. A non-system application calls a system API.  |
+| 203     | This function is prohibited by enterprise management policies. <br>**适用版本：** 26.1.0+ |
 
 **示例：**
 
@@ -270,6 +271,7 @@ setPowerMode(mode: DevicePowerMode): Promise&lt;void&gt;
 | 401     | Parameter error. Possible causes: 1.Parameter verification failed. |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 202     | Permission verification failed. A non-system application calls a system API.  |
+| 203     | This function is prohibited by enterprise management policies. <br>**适用版本：** 26.1.0+ |
 
 **示例：**
 
