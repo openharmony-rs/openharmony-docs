@@ -835,6 +835,33 @@ async function testSetCaptureArea() {
 }
 ```
 
+ArkTS-Sta示例：
+
+``` TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
+
+async function testSetCaptureArea() {
+  // 创建录屏实例。
+  let avScreenCaptureRecorder = await media.createAVScreenCaptureRecorder();
+
+  // 其余流程。
+
+  // 指定屏幕ID和录制区域，区域左上角坐标为(0, 0)，宽度为640px，高度为480px。
+  let displayId: int = 0;
+  let area: media.RectangleRegion = { left: 0, top: 0, width: 640, height: 480 };
+
+  // 调用setCaptureArea方法。
+  if (avScreenCaptureRecorder) {
+    avScreenCaptureRecorder.setCaptureArea(displayId, area).then(() => {
+      console.info('Succeeded in setting capture area.');
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to set capture area. Code: ${err.code}, message: ${err.message}`);
+    });
+  }
+}
+```
+
 ## release<sup>12+</sup>
 
 release(): Promise\<void>
