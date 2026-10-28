@@ -90,6 +90,7 @@ static show(options?: DatePickerDialogOptions)
 | enableHapticFeedback<sup>18+</sup> | boolean | 否  | 是  | 设置是否开启触控反馈。<br>- true：开启触控反馈（当需要为用户提供操作反馈时选择）。<br>- false：不开启触控反馈（当不需要触控反馈或设备不支持时选择）。<br>默认值：true<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br>**说明：**<br>1. 设置为true后，其生效情况取决于系统的硬件是否支持。<br>2. 开启触控反馈时，需要在工程的src/main/module.json5文件的"module"内配置requestPermissions字段开启振动权限，配置如下：<br>"requestPermissions": [{"name": "ohos.permission.VIBRATE"}]|
 | canLoop<sup>20+</sup> | boolean | 否 | 是 | 设置是否可循环滚动。<br>- true：可循环，年份随着月份的循环滚动进行联动加减，月份随着日的循环滚动进行联动加减。<br>- false：不可循环，年、月、日到达本列的顶部或底部时，无法再进行滚动，年、月、日之间也无法再联动加减。<br>默认值：true<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | systemMaterial | [SystemUiMaterial](ts-universal-attributes-image-effect.md#systemuimaterial) | 否 | 是 | 设置弹窗的系统材质。<br>**说明：**<br>- 默认值为ImmersiveOptions的style为ImmersiveStyle.ULTRA_THICK的ImmersiveMaterial对象，设置undefined时与默认值保持一致。不同的材质具有不同的效果。关于ImmersiveMaterial的详细说明，请参考[SystemUiMaterial](ts-universal-attributes-image-effect.md#systemuimaterial)类型定义。<br>- 该接口影响背景色[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、背景模糊[backgroundBlurStyle](ts-universal-attributes-background.md#backgroundblurstyle9)、背景模糊效果[backgroundBlurStyleOptions](ts-universal-attributes-background.md#backgroundblurstyleoptions10对象说明)、背景效果[backgroundEffect](ts-universal-attributes-background.md#backgroundeffect11)、边框颜色[borderColor](ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](ts-universal-attributes-border.md#borderwidth)、阴影[shadow](ts-universal-attributes-image-effect.md#shadow)，当设置系统材质时，上述接口不生效。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| adaptToHandedness | [HandednessFollowMode](../js-apis-dialog.md#handednessfollowmode) | 否 | 是 | 弹窗是否以及如何适配握持习惯。<br>默认值：HandednessFollowMode.NONE<br>**说明：**<br>当alignment不为DialogAlignment.Default，或者offset值不为0时，该接口不生效。<br>**起始版本：** 26.1.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。 |
 
 ## LunarSwitchStyle<sup>14+</sup>对象说明
 
@@ -674,3 +675,35 @@ struct DatePickerDialogExample {
 
 ![date-picker-dialog-systemMaterial](figures/date-picker-dialog-systemMaterial.gif)
 
+### 示例13（设置弹窗适配握持习惯）
+
+该示例通过[DatePickerDialogOptions](#datepickerdialogoptions对象说明)中的adaptToHandedness属性设置弹窗适配握持习惯，使弹窗跟随触发它的组件的位置偏移。
+
+从API版本26.1.0开始，在[DatePickerDialogOptions](#datepickerdialogoptions对象说明)中新增了adaptToHandedness属性。
+
+```ts
+import { HandednessFollowMode } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct DatePickerDialogExample {
+  private selectedDate: Date = new Date('2010-01-01');
+
+  build() {
+    Column() {
+      Button('DatePickerDialog')
+        .margin(20)
+        .onClick(() => {
+          this.getUIContext().showDatePickerDialog({
+            selected: this.selectedDate,
+            adaptToHandedness: HandednessFollowMode.FOLLOW_ANCHOR
+          });
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+![设置弹窗适配握持习惯](figures/datepickerdialoghandedness.gif)
