@@ -521,8 +521,6 @@ AdvancedToolbarV2Item的构造函数。
 
 该示例通过设置[AdvancedToolBarV2Modifier](#advancedtoolbarv2modifier)启用高级工具栏功能，使用[AdvancedToolbarV2Item](#advancedtoolbarv2item)配置[ToolbarV2ItemPlacement](#toolbarv2itemplacement)放置位置（LEADING/MAIN/TRAILING）与groupID分组，展示子项在不同区域的放置效果及分组展示。
 
-从API版本26.1.0开始，新增[AdvancedToolbarV2Item](#advancedtoolbarv2item)、[AdvancedToolBarV2Modifier](#advancedtoolbarv2modifier)、[ToolbarV2ItemPlacement](#toolbarv2itemplacement)。
-
 ```ts
 import {
   AdvancedToolbarV2Item, AdvancedToolBarV2Modifier, ToolbarV2ItemPlacement, ToolBarV2ItemText,
@@ -734,8 +732,6 @@ direction(value: Axis): AdvancedToolBarV2Modifier
 **示例：**
 
 该示例通过AdvancedToolBarV2Modifier设置direction为Axis.Vertical实现垂直布局，配合crossAxisLength指定交叉轴宽度；子项设置isShowText为false呈现纯图标样式。
-
-从API版本26.1.0开始，新增[AdvancedToolbarV2Item](#advancedtoolbarv2item)、[AdvancedToolBarV2Modifier](#advancedtoolbarv2modifier)。
 
 ```ts
 import {
