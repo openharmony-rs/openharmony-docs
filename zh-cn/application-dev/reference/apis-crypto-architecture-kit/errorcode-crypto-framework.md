@@ -141,7 +141,7 @@ doFinal失败，表示校验tag失败，解密输入的tag和解密过程中计�
 
 > **说明：**
 >
-> AES-CBC属于块加密算法，因此需要使用到填充算法PKCS7，将明文填充至块大小整数倍。
+> AES-CBC属于块加密算法，因此需要使用到填充算法PKCS #7，将明文填充至块大小整数倍。
 >
 > 解密时，doFinal接口会对padding进行校验。
 
@@ -191,7 +191,7 @@ AES-ECB解密时调用doFinal失败，返回错误码17630001。
 
 > **说明：**
 >
-> AES-ECB属于块加密算法，分组长度为128位（16字节），因此需要使用到填充算法PKCS7，将明文填充至分组大小的整数倍。
+> AES-ECB属于块加密算法，分组长度为128位（16字节），因此需要使用到填充算法PKCS #7，将明文填充至分组大小的整数倍。
 >
 > 解密时，doFinal接口会对padding进行校验。
 
@@ -201,7 +201,7 @@ doFinal失败，表示校验padding失败，doFinal对最后一块密文数据�
 
 1. key不正确，update得到的明文不正确，doFinal失败，即校验padding失败。
 2. ciphertext不正确，最后一个密文块错误，update得到的明文部分正确，doFinal失败，即校验padding失败；其他密文块错误，update得到的明文部分正确，doFinal成功。
-3. ciphertext长度不是16字节（分组大小）的整数倍（使用PKCS7填充时），doFinal失败。
+3. ciphertext长度不是16字节（分组大小）的整数倍（使用PKCS #7填充时），doFinal失败。
 
 **解决措施**
 
@@ -228,7 +228,7 @@ doFinal失败，表示校验padding失败。解密输入的key内容错误（长
 1. key内容不正确（DES密钥应为8字节，3DES密钥应为24字节），update得到的明文不正确，doFinal失败。
 2. iv不正确（CBC/OFB/CFB模式下iv为8字节）：CBC和CFB模式下仅影响第一个密文块的解密，update得到的明文部分不正确，doFinal成功；OFB为流密码，iv不正确将导致所有明文不正确，但doFinal仍成功。
 3. ciphertext不正确，ECB模式下最后一个密文块错误，或CBC模式下倒数第一或第二个密文块错误时，doFinal失败，即padding校验失败；其他密文块错误，doFinal成功，但得到的明文不正确。
-4. ciphertext长度不是8字节（分组大小）的整数倍（使用PKCS7填充时），doFinal失败。
+4. ciphertext长度不是8字节（分组大小）的整数倍（使用PKCS #7填充时），doFinal失败。
 
 **解决措施**
 
@@ -279,7 +279,7 @@ doFinal失败，表示校验padding失败。解密输入的key和ciphertext，�
 1. key不正确（SM4密钥应为16字节），update得到的明文不正确，doFinal失败，即校验padding失败。
 2. iv不正确（CBC模式下iv为16字节），仅影响第一个密文块的解密，update得到的明文部分不正确，doFinal成功。
 3. ciphertext不正确，ECB模式下最后一个密文块错误，或CBC模式下倒数第一或第二个密文块错误时，doFinal失败，即padding校验失败；其他密文块错误，doFinal成功，但得到的明文不正确。
-4. ciphertext长度不是16字节（分组大小）的整数倍（使用PKCS7填充时），doFinal失败。
+4. ciphertext长度不是16字节（分组大小）的整数倍（使用PKCS #7填充时），doFinal失败。
 
 **解决措施**
 
