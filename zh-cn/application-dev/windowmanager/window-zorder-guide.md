@@ -130,12 +130,14 @@ ZOrder值越大，窗口越靠前显示，能够覆盖ZOrder值较小的窗口�
 2. 调用[loadContent()](../reference/apis-arkui/arkts-apis-window-Window.md#loadcontent9)加载确认弹窗页面，调用[showWindow()](../reference/apis-arkui/arkts-apis-window-Window.md#showwindow9-1)显示子窗。
 3. 用户确认或取消后，调用[destroyWindow()](../reference/apis-arkui/arkts-apis-window-Window.md#destroywindow9)销毁子窗，被遮蔽窗口恢复交互。
 
+<!-- @[modal_sub_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/WindowZOrder/entry/src/main/ets/pages/Index.ets) -->
+
 ```ts
-// 弹出确认删除操作的模态子窗
 import { window } from '@kit.ArkUI';
 import { common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// 弹出确认删除操作的模态子窗
 async function showDeleteConfirm(context: common.UIAbilityContext): Promise<void> {
   let mainWindow = context.windowStage.getMainWindowSync();
   let options: window.SubWindowOptions = {
@@ -185,13 +187,10 @@ async function showDeleteConfirm(context: common.UIAbilityContext): Promise<void
 2. 调用[isInFreeWindowMode()](../reference/apis-arkui/arkts-apis-window-Window.md#isinfreewindowmode22)确认当前是否处于[自由窗口](window-terminology.md#freeform-window自由窗口)状态（置顶仅在该状态下生效）；必要时注册[on('freeWindowModeChange')](../reference/apis-arkui/arkts-apis-window-Window.md#onfreewindowmodechange22)监听窗口模式变化。
 3. 调用[setWindowTopmost()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowtopmost14)传入true实现主窗口置顶；当窗口不再需要置顶显示时，可调用setWindowTopmost()传入false取消置顶。
 
+<!-- @[window_topmost](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/WindowZOrder/entry/src/main/ets/pages/Index.ets) -->
+
 ```ts
 // Index.ets
-// 示例：在页面中提供置顶/取消置顶按钮入口
-import { window } from '@kit.ArkUI';
-import { common } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
 @Entry
 @Component
 struct Index {
@@ -199,7 +198,8 @@ struct Index {
   private context = (this.getUIContext()?.getHostContext() as common.UIAbilityContext);
 
   build() {
-    Column() {
+    Column({ space: 24 }) {
+      // ...
       Button(this.isTopmost ? 'Cancel Topmost' : 'Set Topmost')
         .onClick(() => {
           let mainWindow = this.context.windowStage.getMainWindowSync();
