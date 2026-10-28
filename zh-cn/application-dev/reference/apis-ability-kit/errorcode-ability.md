@@ -734,7 +734,7 @@ The caller does not exist.
 
 **错误描述**
 
-通过backToCallerAbilityWithResult接口向调用方返回结果时，如果根据传入的requestCode无法找到调用方，返回该错误码。
+通过backToCallerAbilityWithResult或backToCallerAppWithResult接口向调用方返回结果时，如果根据传入的requestCode无法找到调用方，返回该错误码。
 
 **可能原因**
 
@@ -756,7 +756,7 @@ BackToCaller is not supported.
 
 **错误描述**
 
-不支持通过backToCallerAbilityWithResult接口返回到调用方时，返回该错误码。
+不支持通过backToCallerAbilityWithResult或backToCallerAppWithResult接口返回到调用方时，返回该错误码。
 
 **可能原因**
 
