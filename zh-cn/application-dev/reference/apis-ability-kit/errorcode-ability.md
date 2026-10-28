@@ -2186,7 +2186,7 @@ The specified application is not authorized to start before the user is unlocked
 
 **错误描述**
 
-设置用户解锁前自启动失败，目标应用未获授ohos.permission.ALLOW_DIRECT_BOOT权限。
+目标应用未获授ohos.permission.ALLOW_DIRECT_BOOT权限，无法设置用户解锁前自启动。
 
 **可能原因**
 
