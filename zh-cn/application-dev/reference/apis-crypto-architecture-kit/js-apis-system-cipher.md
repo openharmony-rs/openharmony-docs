@@ -56,8 +56,8 @@ import cipher from '@system.cipher';
 | 名称 | 类型       | 只读 | 可选 | 说明   |
 | ---- | ---------- | ---- | ---- | ------ |
 | action | string | 否   | 否   | 加解密操作类型，可选项有：<br/>1. encrypt 加密；<br/>2. decrypt 解密。 |
-| text | string | 否   | 否   | 待加密或解密的文本内容。待加密的文本内容应该是一段普通文本。待解密的文本内容应该是经过Base64 编码的一段二进制值。Base64 编码使用默认风格。 |
-| key | string | 否   | 否   | 加密或解密使用到的密钥，经过Base64 编码后生成的字符串。 |
+| text | string | 否   | 否   | 待加密或解密的文本内容。待加密的文本内容应该是一段普通文本。待解密的文本内容应该是经过Base64编码的一段二进制值。Base64编码使用默认风格。 |
+| key | string | 否   | 否   | 加密或解密使用到的密钥，经过Base64编码后生成的字符串。 |
 | transformation | string | 否   | 是   | AES算法的加密模式和填充项，默认AES/CBC/PKCS5Padding。 |
 | iv | string | 否   | 是   | AES加解密的初始向量，经过Base64编码后的字符串，默认值为key值。 |
 | ivOffset | string | 否   | 是   | AES加解密的初始向量偏移，默认值0，仅支持0。 |
