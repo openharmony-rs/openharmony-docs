@@ -286,7 +286,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
 
 onConfigurationUpdate(newConfig: Configuration): void
 
-当系统配置项变更时调用，仅当FormExtensionAbility存活时才会触发onConfigurationUpdate回调。<!--Del-->此外，从API version 20开始，对于系统应用，当系统语言发生变更时会拉起FormExtensionAbility再触发onConfigurationUpdate回调。<!--DelEnd-->自API版本26.1.0起，对于启用了切换深浅模式时自动刷新的卡片应用，当深浅模式发生变化时，FormExtensionAbility中的*onConfigurationUpdate*回调将被触发。
+当系统配置项变更时调用，仅当FormExtensionAbility存活时才会触发onConfigurationUpdate回调。<!--Del-->此外，从API version 20开始，对于系统应用，当系统语言发生变更时会拉起FormExtensionAbility再触发onConfigurationUpdate回调。<!--DelEnd-->自API版本26.1.0起，对于启用了切换深浅色模式时自动刷新的卡片应用，当深浅模式发生变化时，FormExtensionAbility中的*onConfigurationUpdate*回调将被触发。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
