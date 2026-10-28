@@ -283,7 +283,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message       |
 | -------- | --------------- |
-| 801 | Capability not supported.|
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 16000115 | The current process cannot be set as a candidate master process. |
 
 
@@ -334,7 +334,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message       |
 | -------- | --------------- |
-| 801 | Capability not supported.|
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 16000116 | The current process is already a master process and does not support cancellation. |
 | 16000117 | The current process is not a candidate master process and does not support cancellation. |
 
@@ -385,7 +385,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message       |
 | -------- | --------------- |
-| 801 | Capability not supported.|
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 16000118 | Not a master process. |
 | 16000119 | Cannot exit because there is an unfinished request. |
 
