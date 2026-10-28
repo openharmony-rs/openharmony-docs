@@ -15,7 +15,7 @@
 
 ![themeText_native](figures/themeText_native.jpg)
 
-针对主题字的切换使用，应用方应确保订阅主题字体变更事件，当接收到字体变更事件后，由应用方主动调用页面刷新才能实现主题字的切换，否则主题字只能在重启应用后才生效。
+针对主题字体的切换使用，应用方应确保订阅主题字体变更事件，当接收到字体变更事件后，由应用方主动调用页面刷新才能实现主题字体的切换，否则主题字体只能在重启应用后才生效。
 
 
 ## 接口说明
@@ -147,7 +147,7 @@
    }
    ```
 
-8. 在EntryAbility.ets中接收主题字变更事件，并调用渲染节点更新函数。
+8. 在EntryAbility.ets中接收主题字体变更事件，并调用渲染节点更新函数。
 
    <!-- @[arkts_theme_font_entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ThemeFont/entry/src/main/ets/entryability/EntryAbility.ets) -->
    
