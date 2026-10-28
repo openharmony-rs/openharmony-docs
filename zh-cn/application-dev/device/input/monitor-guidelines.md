@@ -9,7 +9,10 @@
 
 ## 功能介绍
 
-从API version 12开始，多模为应用提供了按键、输入事件（鼠标、触屏和轴事件）监听能力，当前仅支持录屏类应用。使用场景例如：用户在录屏应用开启录屏时，监听设备的按键、鼠标、触摸和轴事件。
+从API version 12开始，多模为应用提供了按键、输入事件（鼠标、触屏和轴事件）监听能力。使用场景例如：
+
+- 录屏类应用：应用开启录屏期间，监听设备的按键、鼠标、触摸和轴事件。
+- 输入录制、自动化测试类应用（从API版本26.1.0开始，仅PC/2in1形态支持）：用户完成授权后，应用可在任意时刻监听设备的按键、鼠标、触摸和轴事件，监听不随录屏状态变化而中断。
 
 ## 接口说明
 
@@ -40,15 +43,36 @@ target_link_libraries(entry PUBLIC libohinput.so)
 
 ### 申请所需权限
 
-应用需要在module.json5中添加下面权限的配置，详细的配置方法参考声明[声明权限文档](../../security/AccessToken/declare-permissions.md)。
+应用需要在module.json5中声明所需权限，详细的配置方法参考[声明权限文档](../../security/AccessToken/declare-permissions.md)。两种权限的授权方式不同，申请说明如下。
 
-```json
-"requestPermissions": [
-    {
-        "name": "ohos.permission.INPUT_MONITORING"
-    }
-]
-```
+- **ohos.permission.INPUT_MONITORING**（系统授权）：面向录屏类应用，应用开启录屏期间可监听设备的按键、鼠标、触摸和轴事件。该权限需要通过ACL方式申请，具体请参考[申请受限权限](../../security/AccessToken/declare-permissions-in-acl.md)。
+
+    ```json
+    "requestPermissions": [
+        {
+            "name": "ohos.permission.INPUT_MONITORING"
+        }
+    ]
+    ```
+
+- **ohos.permission.INPUT_RECORDING**（手动设置授权，从API版本26.1.0开始支持，仅支持PC/2in1）：面向输入录制、自动化测试类应用，用户完成授权后，应用可在任意时刻监听设备的按键、鼠标、触摸和轴事件，监听不随录屏状态变化而中断。该权限的授权说明请参考[手动设置授权](../../security/AccessToken/app-permission-mgmt-overview.md#manual_settings手动设置授权)。
+
+    该权限的reason与usedScene字段必填；无法通过弹窗向用户申请授权，应用上架审核通过后，需引导用户在"设置 > 隐私 > 权限管理"中手动开启授权。
+
+    ```json
+    "requestPermissions": [
+        {
+            "name": "ohos.permission.INPUT_RECORDING",
+            "reason": "$string:input_recording_permission_reason",
+            "usedScene": {
+                "abilities": [
+                    "EntryAbility"
+                ],
+                "when": "inuse"
+            }
+        }
+    ]
+    ```
 
 ### 创建事件监听
 
