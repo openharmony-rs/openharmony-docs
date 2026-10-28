@@ -593,9 +593,11 @@ export class ContactsGroupDataSource implements IDataSource {
     return this.list[index];
   }
 
+  // 注册数据变化监听器，用于在数据源变化时通知LazyForEach刷新。本示例数据源为静态数据，数据不会发生变化，无需注册监听器，故此处为空实现。
   registerDataChangeListener(listener: DataChangeListener): void {
   }
 
+  // 注销数据变化监听器。本示例数据源为静态数据，未注册数据变化监听器，无需注销，故此处为空实现。
   unregisterDataChangeListener(listener: DataChangeListener): void {
   }
 }
