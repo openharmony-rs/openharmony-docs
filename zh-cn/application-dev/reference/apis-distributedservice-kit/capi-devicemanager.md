@@ -1,9 +1,9 @@
 # DeviceManager
 <!--Kit: Distributed Service Kit-->
 <!--Subsystem: DistributedSched-->
-<!--Owner: @hobbycao;@huangkai71-->
-<!--Designer: @gsxiaowen;@lee_jet520-->
-<!--Tester: @hanjiawei;@Ytt-test-->
+<!--Owner: @liwei_hw-->
+<!--Designer: @hwzhangchuang-->
+<!--Tester: @zhaodengqi-->
 <!--Adviser: @hu-zhiqiong-->
 
 ## 概述
@@ -19,5 +19,5 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| [oh_device_manager.h](capi-oh-device-manager-h.md) | 提供访问可信设备和本地设备信息的接口。引用文件：`<distributedhardware/device_manager/oh_device_manager.h>` |
-| [oh_device_manager_err_code.h](capi-oh-device-manager-err-code-h.md) | 声明设备管理模块错误码信息。引用文件：`<distributedhardware/device_manager/oh_device_manager_err_code.h>` |
+| [oh_device_manager.h](capi-oh-device-manager-h.md) | 提供访问可信设备和本地设备信息的接口。 |
+| [oh_device_manager_err_code.h](capi-oh-device-manager-err-code-h.md) | 声明设备管理模块错误码信息。 |

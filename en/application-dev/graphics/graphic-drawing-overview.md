@@ -3,9 +3,10 @@
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=4e8c8649f5f2efb4d6a6d42fbee5df7e42731663 translatedAt=2026-10-19T01:25:40.580Z pushedAt=2026-10-19T09:50:50.294Z -->
 
 ## Overview
 
@@ -59,7 +60,7 @@ The [Canvas component](../reference/apis-arkui/arkui-ts/ts-components-canvas-can
 
 **CanvasRenderingContext2D** encapsulates the native Drawing APIs of ArkGraphics 2D based on the W3C standard, which facilitates the reuse of the drawing logic of web applications. Therefore, **CanvasRenderingContext2D** is applicable to scenarios such as web applications and games, prototyping, data visualization, online drawing boards, teaching tools, and creative applications.
 
-The bottom layer of the [Canvas component](../reference/apis-arkui/arkui-ts/ts-components-canvas-canvas.md) also uses the [Native Drawing](../reference/apis-arkgraphics2d/capi-drawing.md) API to implement the drawing function. The drawing capabilities of the two are the same. However, due to the multi-layer encapsulation implementation, the Canvas component is not as close to the hardware as the [Native Drawing Canvas](../reference/apis-arkgraphics2d/capi-drawing-canvas-h.md). Therefore, in scenarios with high performance requirements, complex drawing, and strong hardware dependency, such as professional graphics processing software, desktop or mobile applications, using the Canvas component for drawing may cause performance problems such as frame freezing and frame loss. In this case, you can use the self-drawing capability of the **Native Drawing** APIs to ensure the drawing performance of the application.
+The [Canvas component](../reference/apis-arkui/arkui-ts/ts-components-canvas-canvas.md) also uses the [Native Drawing](../reference/apis-arkgraphics2d/capi-drawing.md) APIs at the underlying layer to implement drawing functionality, so there is no essential difference in drawing capabilities between the two. However, due to the multi-layer encapsulation, the Canvas component is less capable than the Native Drawing Canvas ([drawing_canvas.h](../reference/apis-arkgraphics2d/capi-drawing-canvas-h.md)) in terms of hardware proximity. Therefore, for scenarios with high performance requirements, complex drawing, or strong hardware dependency, such as professional graphics processing software, desktop or mobile apps, using the Canvas component for drawing may cause performance issues like stuttering and frame drops. In such cases, you can use the self-drawing capability of the Native Drawing APIs to ensure the drawing performance of your app.
 
 
 ## Constraints

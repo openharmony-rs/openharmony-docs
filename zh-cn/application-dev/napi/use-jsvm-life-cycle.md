@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍如何通过HandleScope与JSVM_Ref管理JSVM_Value生命周期，涵盖可逃逸作用域、引用计数操作及垃圾回收回调，帮助避免内存泄漏。"
+keywords: [OH_JSVM_OpenHandleScope, OH_JSVM_CloseHandleScope, OH_JSVM_CreateReference, OH_JSVM_EscapeHandle, OH_JSVM_AddFinalizer, HandleScope, 引用计数, 生命周期管理, 可逃逸作用域]
+doctype: guide
+status: active
+---
+
 # 使用JSVM-API接口进行生命周期相关开发
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
@@ -60,14 +68,14 @@ cpp 部分代码：
 <!-- @[oh_jsvm_open_handle_scope_and_oh_jsvm_close_handle_scope](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmLifeCycle/openhandlescope/src/main/cpp/hello.cpp) -->
 
 ``` C++
-// OH_JSVM_OpenHandleScope、OH_JSVM_CloseHandleScope的三种样例方法
+// OH_JSVM_OpenHandleScope、OH_JSVM_CloseHandleScope的样例方法
 static JSVM_Value HandleScopeFor(JSVM_Env env, JSVM_CallbackInfo info)
 {
     // 在for循环中频繁调用JSVM接口创建js对象时，要加handle_scope及时释放不再使用的资源。
     // 下面例子中，每次循环结束局部变量res的生命周期已结束，因此加scope及时释放其持有的js对象，防止内存泄漏
-    constexpr uint32_t DIFF_VALUE_HUNDRED_THOUSAND = 10000;
+    constexpr uint32_t ITERATION_COUNT = 10000;
     JSVM_Value checked = nullptr;
-    for (int i = 0; i < DIFF_VALUE_HUNDRED_THOUSAND; i++) {
+    for (int i = 0; i < ITERATION_COUNT; i++) {
         JSVM_HandleScope scope = nullptr;
         JSVM_Status status = OH_JSVM_OpenHandleScope(env, &scope);
         if (status != JSVM_OK || scope == nullptr) {
@@ -243,12 +251,12 @@ static JSVM_Value UseReference(JSVM_Env env, JSVM_CallbackInfo info)
     return object;
 }
 
-// CreateReference、UseReference、DeleteReference注册回调
+// UseReference注册回调
 static JSVM_CallbackStruct param[] = {
     {.callback = UseReference, .data = nullptr},
 };
 static JSVM_CallbackStruct *method = param;
-// CreateReference、UseReference、DeleteReference方法别名，供JS调用
+// UseReference方法别名，供JS调用
 static JSVM_PropertyDescriptor descriptor[] = {
     {"useReference", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };

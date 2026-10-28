@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍使用Node-API接口设置和获取ArkTS对象属性，包括属性的创建、读取、删除、枚举和存在性检查，支持完整的对象属性管理能力。"
+keywords: [Node-API, 属性, napi_set_property, napi_get_property, napi_delete_property, 可枚举属性, 自有属性, 属性管理]
+doctype: guide
+status: active
+---
+
 # 使用Node-API接口设置ArkTS对象的属性
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
@@ -350,8 +358,8 @@ export function napiDeleteProperty() {
   let obj: Obj = { first: 1 };
   hilog.info(0x0000, 'testTag', 'Test Node-API napi_delete_property first: %{public}s',
     testNapi.deleteProperty(obj, 'first'));
-  // Set the new property as non-configurable
-  // The Object.defineProperty method is not supported in DevEco Studio 4.1.0.400 and above versions, and needs to be used in TS (TypeScript)
+  // 将新属性设置为不可配置
+  // DevEco Studio 4.1.0.400及以上版本不支持Object.defineProperty方法，需要在TS（TypeScript）中使用
   Object.defineProperty(obj, 'config', {
     configurable: false,
     value: 'value'
@@ -847,14 +855,14 @@ hilog.info(0x0000, 'testTag', 'Test Node-API define_method_properties:%{public}d
   testNapi.defineMethodProperties()
     .defineMethodPropertiesExample());
 // 定义string类型的属性
-hilog.info(0x0000, 'testTag', 'Test Node-API define_string_properties::%{public}s ',
+hilog.info(0x0000, 'testTag', 'Test Node-API define_string_properties:%{public}s ',
   testNapi.defineStringProperties()
     .defineStringPropertiesExample);
 // getter和setter
-hilog.info(0x0000, 'testTag', 'Test Node-API get::%{public}s ',
+hilog.info(0x0000, 'testTag', 'Test Node-API get:%{public}s ',
   testNapi.createStringWithGetterSetter()
     .getterCallback());
-hilog.info(0x0000, 'testTag', 'Test Node-API setter::%{public}s ',
+hilog.info(0x0000, 'testTag', 'Test Node-API setter:%{public}s ',
   testNapi.createStringWithGetterSetter()
     .setterCallback('set data'));
 ```

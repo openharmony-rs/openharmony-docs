@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍Node-API支持的数据类型和接口，包括napi_status枚举、napi_value值类型、扩展能力接口等，为开发者提供完整的Node-API数据类型和接口参考。"
+keywords: [Node-API, 数据类型, napi_value, napi_status, 接口参考, 扩展能力, napi_env, 回调函数]
+doctype: guide
+status: active
+---
+
 # Node-API支持的数据类型和接口
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
@@ -604,7 +612,7 @@ napi_status napi_run_script_path(napi_env env,
                                  const char* abcPath,
                                  napi_value* result);
 ```
-**注：**使用限制说明文档：[使用napi_run_script_path接口执行包内abc文件的使用限制](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs/faqs-ndk-65)
+**注**：使用限制说明文档：[使用napi_run_script_path接口执行包内abc文件的使用限制](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs/faqs-ndk-65)
 **napi_load_module**
 
 ```c

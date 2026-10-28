@@ -3,9 +3,10 @@
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=aa0a67ae9790115e74a1e29268966a05ae945ba8 translatedAt=2026-10-19T01:31:34.193Z pushedAt=2026-10-19T10:19:37.779Z -->
 
 All graphics, regardless of complexity, are built from basic primitives. Canvas offers rich primitive drawing features to support rendering of diverse primitives. This topic describes how to draw geometric shapes (such as points, circles, and rectangles), images, and TextBlobs, and provides sample code for implementing target UI effects.
 

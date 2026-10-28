@@ -153,12 +153,12 @@ struct MaterialColorExample {
 
 ## 设置沉浸式系统材质交互效果
 
-沉浸式系统材质支持设置交互形变和点光源效果：
+沉浸式系统材质支持设置交互形变和光感交互反馈效果：
 
 - **交互形变**：通过[interactive](../reference/apis-arkui/arkts-apis-uimaterial.md#immersiveoptions)开启交互形变，组件在按压时产生弹性形变，松手后自动恢复，增强交互的视觉反馈。
-- **点光源**：通过[lightEffect](../reference/apis-arkui/arkts-apis-uimaterial.md#immersiveoptions)开启点光源，用户手指触摸组件时会产生流光跟随效果。lightEffect传入有效对象即启用，传入null或undefined则不启用；对象中的color字段自定义流光颜色，默认值为Color.White。
+- **光感交互反馈**：通过[lightEffect](../reference/apis-arkui/arkts-apis-uimaterial.md#immersiveoptions)开启光感交互反馈，用户手指触摸组件时会产生流光跟随效果。lightEffect传入有效对象即启用，传入null则显式禁用，不传入时默认为undefined，跟随组件的默认效果；对象中的color字段自定义流光颜色，默认值为Color.White。
 
-以下示例为高算力设备均衡档位的交互形变与点光源的效果：设置interactive为true并传入lightEffect对象后，按压组件时产生弹性形变，手指触摸时产生流光跟随效果。
+以下示例为高算力设备均衡档位的交互形变与光感交互反馈的效果：设置interactive为true并传入lightEffect对象后，按压组件时产生弹性形变，手指触摸时产生流光跟随效果。
 
 <!-- @[material_interactive_light](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsImmersiveLightSense/entry/src/main/ets/pages/MaterialInteractiveLightExample.ets) -->
 

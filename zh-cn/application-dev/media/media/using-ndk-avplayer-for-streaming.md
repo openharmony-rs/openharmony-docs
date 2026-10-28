@@ -1,3 +1,11 @@
+---
+kits: ["Media Kit / 媒体服务"]
+description: "从API版本11开始介绍如何使用AVPlayer的C/C++接口实现流媒体播放，涵盖HLS、DASH、HTTP-FLV等协议的流媒体端到端播放全流程，适用于Native层网络流媒体播放。"
+keywords: [AVPlayer, 流媒体播放, HLS, DASH, HTTP, 缓冲状态, 切换码率]
+doctype: guide
+status: active
+---
+
 # 使用AVPlayer播放流媒体(C/C++)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia--> 
@@ -92,13 +100,13 @@
 
 3. 设置资源：调用[OH_AVPlayer_SetURLSource()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_seturlsource)，设置属性URL（支持点播和直播源），AVPlayer进入[AVPlayerState](../../reference/apis-media-kit/capi-avplayer-base-h.md#avplayerstate).AV_INITIALIZED（初始化）状态。
 
-   <!-- @[OH_AVPlayer_SetURLSource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->  
+   <!-- @[OH_AVPlayer_SetURLSource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->     
    
    ``` C++
    LOG("player %{public}s >> URL source", url);
    LOG("call %{public}s", "OH_AVPlayer_SetURLSource");
    ret = OH_AVPlayer_SetURLSource(player, url);
-   LOG("OH_AVPlayer_SetURLSource ret:%{public}d", ret);
+   LOG("OH_AVPlayer_SetUrlSource ret:%{public}d", ret);
    ```
 
 4. （可选）设置智能追帧：直播场景下调用[OH_AVPlayer_SetPlaybackStrategy()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setplaybackstrategy)，设置AVPlayer启用智能追帧。

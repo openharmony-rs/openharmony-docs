@@ -1,3 +1,11 @@
+---
+kits: ["Media Kit / 媒体服务"]
+description: "介绍使用AVPlayer NDK接口在C/C++环境实现音频端到端播放，覆盖创建播放器、设置信息与错误回调、设置资源与播放窗口、播放控制及销毁实例等完整开发流程。"
+keywords: [AVPlayer, 音频播放, 回调监听, OH_AVPlayer, 播放控制]
+doctype: guide
+status: active
+---
+
 # 使用AVPlayer播放音频(C/C++)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->

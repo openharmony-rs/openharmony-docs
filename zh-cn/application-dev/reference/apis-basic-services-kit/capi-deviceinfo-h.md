@@ -55,6 +55,8 @@
 | [const char *OH_GetDistributionOSVersion(void)](#oh_getdistributionosversion) | 获取ISV发行版系统版本号。 |
 | [int OH_GetDistributionOSApiVersion(void)](#oh_getdistributionosapiversion) | 获取ISV发行版系统API版本。 |
 | [const char *OH_GetDistributionOSReleaseType(void)](#oh_getdistributionosreleasetype) | 获取ISV发行版系统类型。 |
+| [int32_t OH_GetDiskSN(char *diskSn)](#oh_getdisksn) | 获取磁盘序列号。 |
+| [const char *OH_GetOdid(void)](#oh_getodid) | 获取开发者匿名设备标识符。 |
 
 ## 函数说明
 
@@ -580,3 +582,46 @@ const char *OH_GetDistributionOSReleaseType(void)
 | -- |---------------------------------------------------------------------------------|
 | const char* | ISV发行版系统类型。<br> 如果没有指定ISV，它将返回与[OH_GetOsReleaseType](#oh_getosreleasetype)相同的值。 |
 
+### OH_GetDiskSN()
+
+```c
+int32_t OH_GetDiskSN(char *diskSn)
+```
+
+**描述**
+
+获取磁盘序列号。
+
+**需要权限：** ohos.permission.ACCESS_DISK_PHY_INFO
+
+**参数：**
+
+| 参数名 | 说明 |
+| --  | -- |
+| char* diskSn | 磁盘序列号。 |
+
+**起始版本：** 26.1.0
+
+**返回：**
+
+| 类型 | 说明                                                                              |
+| -- |---------------------------------------------------------------------------------|
+| int32_t | <ul><li>如果操作成功，则返回0。</li><li>201如果调用者没有ohos.permission.ACCESS_DISK_PHY_INFO。</li></ul> |
+
+### OH_GetOdid()
+
+```c
+const char *OH_GetOdid(void)
+```
+
+**描述**
+
+获取开发者匿名设备标识符。
+
+**起始版本：** 26.1.0
+
+**返回：**
+
+| 类型 | 说明                                                                              |
+| -- |---------------------------------------------------------------------------------|
+| const char* | 返回开发者匿名设备标识符。 |

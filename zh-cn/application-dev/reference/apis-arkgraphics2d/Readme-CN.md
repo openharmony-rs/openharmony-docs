@@ -4,7 +4,7 @@
 <!--Subsystem: Graphic-->
 <!--Owner: @hangmengxin; @oh_wangxk-->
 <!--Designer: @wanyanglan; @KejiePeng-->
-<!--Tester: @nobuggers; @LiTongguan2026-->
+<!--Tester: @nobuggers; @yhl0101; @LiTongguan2026-->
 <!--Adviser: @ge-yafang-->
 
 - ArkTS API<!--arkgraphics-arkts-->

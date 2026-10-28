@@ -240,7 +240,7 @@ getServiceDump(serviceid: number, fd: number, args: Array\<string>): void
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------------------------------------------------- |
-| 401 | The parameter check failed,Possible causes:1.The parameter type error. 2.The args parameter is not string array.  |
+| 401 | [Sync] Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed.  |
 | 11400101 | ServiceId invalid. The system ability does not exist.                                           |
 
 **示例**：
@@ -289,7 +289,7 @@ startJsCpuProfiling(filename: string): void
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------------------------------------------------- |
-| 401 | The parameter check failed,Parameter type error.                        |
+| 401 | [Sync] Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed.                        |
 
 **示例**：
 
@@ -329,11 +329,17 @@ try {
 }
 ```
 
-## hidebug.dumpJsHeapData<sup>9+</sup>
+## hidebug.dumpJsHeapData<sup>(deprecated)</sup>
 
 dumpJsHeapData(filename: string): void
 
 虚拟机堆数据转储。
+
+**起始版本：** 9
+
+**废弃版本：** 26.1.0
+
+**替代接口：** [hidebug.dumpJsRawHeapData](#hidebugdumpjsrawheapdata18)
 
 > **注意**：
 >
@@ -353,7 +359,7 @@ dumpJsHeapData(filename: string): void
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------------------------------------------------- |
-| 401 | The parameter check failed, Parameter type error.                      |
+| 401 | [Sync] Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed.                      |
 
 **示例**：
 
@@ -368,11 +374,17 @@ try {
 }
 ```
 
-## hidebug.dumpJsHeapData<sup>24+</sup>
+## hidebug.dumpJsHeapData<sup>(deprecated)</sup>
 
 dumpJsHeapData(filename: string, needClean: boolean): void
 
 虚拟机堆数据转储，支持清除nodeId缓存。
+
+**起始版本：** 24
+
+**废弃版本：** 26.1.0
+
+**替代接口：** [hidebug.dumpJsRawHeapData](#hidebugdumpjsrawheapdata24)
 
 > **注意**：
 >
@@ -464,7 +476,7 @@ dumpHeapData(filename: string): void
 
 > **说明**：
 > 
-> 从API version 8支持，从API version 9开始废弃，建议使用[hidebug.dumpJsHeapData](#hidebugdumpjsheapdata9)替代。
+> 从API version 8支持，从API version 9开始废弃，建议使用[hidebug.dumpJsRawHeapData](#hidebugdumpjsrawheapdata18)替代。
 
 虚拟机堆数据转储，生成`filename.heapsnapshot`文件。
 
