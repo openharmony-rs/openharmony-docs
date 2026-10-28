@@ -40,12 +40,12 @@ status: active
 ## 开发步骤及注意事项
 - 在CMake脚本中链接如下动态库。
   <!-- @[target_link_libraries](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/CMakeLists.txt) -->
-
-  ```C++
-  target_link_libraries(entry PUBLIC
-    libavplayer.so
-    libnative_media_core.so
-    libhilog_ndk.z.so
+  
+  ``` Text
+  target_link_libraries(entry PUBLIC 
+      libavplayer.so 
+      libnative_media_core.so 
+      libhilog_ndk.z.so
   )
   ```
 
