@@ -49611,5 +49611,20 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/security/AssetStoreKit/asset-native-group-access-control.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp",
+				"functions":[
+					{
+						"end_line":20,
+						"name":"include",
+						"start_line":16
+					}
+				]
+			}
+		]
 	}
 ]
