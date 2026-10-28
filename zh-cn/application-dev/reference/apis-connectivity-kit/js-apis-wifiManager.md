@@ -1740,7 +1740,7 @@ getDeviceMacAddress(): string[]
 
 **需要权限：** ohos.permission.GET_WIFI_LOCAL_MAC 和 ohos.permission.GET_WIFI_INFO
 
-**原子化服务API：** 从API version 26.0.1开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 API8-15 ohos.permission.GET_WIFI_LOCAL_MAC权限仅向系统应用开放，从API16开始，在PC/2in1设备上面向普通应用开放，在其余设备上仍仅面向系统应用开放。
 
