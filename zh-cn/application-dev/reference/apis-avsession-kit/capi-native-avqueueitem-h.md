@@ -313,7 +313,7 @@ AVQueueItem_Result OH_AVSession_AVMediaDescriptionBuilder_SetDuration(OH_AVSessi
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVQueueItem_Result](capi-native-avsession-errors-h.md#avqueueitem_result) | AVQUEUEITEM_SUCCESS：函数执行成功。<br>         AVQUEUEITEM_ERROR_INVALID_PARAM：<br>                                        1. 参数builder为nullptr。<br>                                        2. 参数duration无效。 |
+| [AVQueueItem_Result](capi-native-avsession-errors-h.md#avqueueitem_result) | AVQUEUEITEM_SUCCESS：函数执行成功。<br>         AVQUEUEITEM_ERROR_INVALID_PARAM：<br>                                        1. 参数builder为nullptr。<br>                                        2. 参数duration无效（小于0）。 |
 
 ### OH_AVSession_AVMediaDescriptionBuilder_SetMediaUri()
 
