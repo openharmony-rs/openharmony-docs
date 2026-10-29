@@ -5,9 +5,9 @@
 <!--Designer: @hwzhangchuang; @Dyylll-->
 <!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=563f325fc4197af705064cb3a103e60b86e4aa4f translatedAt=2026-08-26T04:37:45.148Z pushedAt=2026-08-28T07:17:25.885Z -->
+<!-- md-trans-meta sourceCommit=38d97c24db2a8043d3c2ddd6e83542302255a273 translatedAt=2026-10-29T10:30:53.856Z pushedAt=2026-10-29T10:30:53.856Z nl=1 -->
 
-When users need to share files or save user files such as images and videos, you can use the system's prebuilt [Picker](../reference/apis-core-file-kit/js-apis-file-picker.md) to implement this capability. Accessing files through Picker will launch the corresponding app and guide users through the UI operations. The API itself does not require any permission. The URI obtained by selecting a file or folder through Picker has only **temporary read/write permission**. To obtain persistent permission, use [FilePicker to set permanent authorization](file-persistPermission.md#persisting-a-temporary-permission-granted-by-picker).
+When users need to share files or save user files such as images and videos, you can use the system's prebuilt [Picker](../reference/apis-core-file-kit/js-apis-file-picker.md) to implement this capability. Accessing files through Picker will launch the corresponding app and guide users through the UI operations. The API itself does not require any permission. The URI obtained by selecting a file or folder through Picker has only **temporary read/write permission**. To obtain persistent permission, see [Persisting a Temporary Permission Granted by Picker](file-persistPermission.md#persisting-a-temporary-permission-granted-by-picker).
 
 **Constraints**
 
@@ -24,7 +24,7 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
 
 - [PhotoViewPicker](../reference/apis-core-file-kit/js-apis-file-picker.md#photoviewpickerdeprecated): used to select and save images and videos. The APIs of this Picker will not be maintained in later versions. Use [PhotoViewPicker](../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoViewPicker.md) of PhotoAccessHelper to select image files. Use [a security component to save media library assets](../media/medialibrary/photoAccessHelper-savebutton.md).
 
-- [DocumentViewPicker](../reference/apis-core-file-kit/js-apis-file-picker.md#documentviewpicker): used to select and save documents. The **DocumentViewPicker** API triggers the **FilePicker** application. Documents are not distinguished by file name extensions. For example, the images and files downloaded from a browser are documents.
+- [DocumentViewPicker](../reference/apis-core-file-kit/js-apis-file-picker.md#documentviewpicker): selects and saves files through FilePicker, which manages file resources regardless of their extensions. For example, images and documents downloaded by a browser are both treated as files.
 
 - [AudioViewPicker](../reference/apis-core-file-kit/js-apis-file-picker.md#audioviewpicker): used to select and save audio clips. The **AudioViewPicker** API triggers the **AudioPicker** application.
 
@@ -37,8 +37,7 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
 1. Import modules.
 
    ```ts
-   import  { picker } from '@kit.CoreFileKit';
-   import { fileIo } from '@kit.CoreFileKit';
+   import { picker, fileIo } from '@kit.CoreFileKit';
    import { common } from '@kit.AbilityKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
@@ -73,7 +72,7 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
 3. Create a [DocumentViewPicker](../reference/apis-core-file-kit/js-apis-file-picker.md#documentviewpicker) instance. Call [select()](../reference/apis-core-file-kit/js-apis-file-picker.md#select-3) to launch the FilePicker app UI for file selection.
 
    <!--@[picker_select](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/SelectingUserFiles/entry/src/main/ets/pages/Index.ets)-->        
-
+   
    ``` TypeScript
    let uris: string[] = [];
    let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
@@ -90,8 +89,8 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
 
    > **NOTE**
    >
-   > 1. The URI permission returned by [select()](../reference/apis-core-file-kit/js-apis-file-picker.md#select-3) through Picker is a temporary read/write permission. The temporary permission becomes invalid after the app exits to the background.<br>
-   > 2. To obtain persistent permission, see [Persistent Authorization for File Access](file-persistPermission.md#persisting-a-temporary-permission-granted-by-picker).<br>
+   > 1. The URI permission returned by [select()](../reference/apis-core-file-kit/js-apis-file-picker.md#select-3) through Picker is a temporary read/write permission. The temporary permission becomes invalid after the application exits.<br>
+   > 2. To obtain persistent permission, see [Persisting a Temporary Permission Granted by Picker](file-persistPermission.md#persisting-a-temporary-permission-granted-by-picker).<br>
    > 3. You can further process the URIs in the result set. It is recommended to define a global variable to store the URI.<br>
    > 4. If you need to obtain metadata, you can use [File Management](../reference/apis-core-file-kit/js-apis-file-fs.md) and [File URI](../reference/apis-core-file-kit/js-apis-file-fileuri.md) to obtain some file attribute information based on the URI, such as file size, access time, modification time, file name, and file path.
 
@@ -121,8 +120,7 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
 1. Import modules.
 
    ```ts
-   import  { picker } from '@kit.CoreFileKit';
-   import { fileIo } from '@kit.CoreFileKit';
+   import { picker, fileIo } from '@kit.CoreFileKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    import { common } from '@kit.AbilityKit';
    ```
@@ -131,7 +129,7 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
 
    > **NOTE**
    >
-   > Currently, **AudioSelectOptions** is not configurable. By default, all types of user files are selected.
+   > Currently, **AudioSelectOptions** does not support parameter configuration. By default, all types of user files can be selected.
 
    ```ts
    const audioSelectOptions = new picker.AudioSelectOptions();
@@ -140,7 +138,7 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
 3. Create an [AudioViewPicker](../reference/apis-core-file-kit/js-apis-file-picker.md#audioviewpicker) instance. Call [select()](../reference/apis-core-file-kit/js-apis-file-picker.md#select-5) to launch the AudioPicker app UI for file selection.
 
    <!--@[audio_select_picker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/SelectingUserFiles/entry/src/main/ets/pages/Index.ets)-->        
-
+   
    ``` TypeScript
    let uris: string[] = [];
    // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
@@ -159,8 +157,8 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
 
    > **NOTE**
    >
-   > 1. The URI permission returned by [select()](../reference/apis-core-file-kit/js-apis-file-picker.md#select-3) through Picker is a temporary read-only permission. The temporary permission becomes invalid after the app exits to the background.<br>
-   > 2. To obtain persistent permission, see [Persistent Authorization for File Access](file-persistPermission.md#persisting-a-temporary-permission-granted-by-picker).<br>
+   > 1. The URI permission returned by [select()](../reference/apis-core-file-kit/js-apis-file-picker.md#select-3) through Picker is a temporary read-only permission. The temporary permission becomes invalid after the application exits.<br>
+   > 2. To obtain persistent permission, see [Persisting a Temporary Permission Granted by Picker](file-persistPermission.md#persisting-a-temporary-permission-granted-by-picker).<br>
    > 3. You can read file data based on the URIs in the result set. It is recommended to define a global variable to store the URI. For example, you can use the APIs of the [File Management](../reference/apis-core-file-kit/js-apis-file-fs.md) module to obtain the file descriptor (FD) of the audio resource based on the URI, and then use the media service to implement audio playback. For details, see [Audio Playback Development](../media/audio/audio-playback-overview.md).
 
 4. After the application UI is returned from AudioPicker, use [fileIo.openSync](../reference/apis-core-file-kit/js-apis-file-fs.md#fileioopensync) to open the file based on the URI and obtain the file descriptor (FD).
