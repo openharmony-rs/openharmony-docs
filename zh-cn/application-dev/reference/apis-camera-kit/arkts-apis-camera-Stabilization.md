@@ -73,7 +73,7 @@ setVideoStabilizationMode(mode: VideoStabilizationMode): void
 
 > **说明**
 >
-> 通过该接口设置HIGH视频防抖模式后，为保障多场景下的视频防抖表现，调用[getActiveVideoStabilizationMode](#getactivevideostabilizationmode11)查询当前正在使用的视频防抖模式时，返回结果为AUTO模式。
+> 从API版本12开始，通过该接口设置HIGH视频防抖模式后，为保障多场景下的视频防抖表现，调用[getActiveVideoStabilizationMode](#getactivevideostabilizationmode11)查询当前正在使用的视频防抖模式时，返回结果为AUTO模式，即自动进行选择防抖算法。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
