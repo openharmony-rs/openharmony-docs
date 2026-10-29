@@ -394,6 +394,8 @@ makeDirectCall\(phoneNumber: string\): Promise\<void\>
 
 **起始版本：** 26.0.1
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.Telephony.CallManager
 
 **需要权限**：ohos.permission.DIRECT_CALL
