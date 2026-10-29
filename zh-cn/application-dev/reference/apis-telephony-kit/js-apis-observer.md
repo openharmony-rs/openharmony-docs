@@ -1455,7 +1455,7 @@ VoIP呼叫状态信息。
 |  appName  | string |  否  |  否  | VoIP应用程序名称。 |
 | contactName | string  |  否  |  否  | VoIP呼叫的联系人姓名。 |
 | callType | [VoIPCallType](#voipcalltype)  |  否  |  否  | VoIP呼叫类型。 |
-| CallState | [VoIPCallState](#voipcallstate)  |  否  |  否  | VoIP呼叫状态。 |
+| callState | [VoIPCallState](#voipcallstate)  |  否  |  否  | VoIP呼叫状态。 |
 | isVoiceAnswerSupported | boolean  |  否  |  否  | VoIP应用是否支持将当前呼叫作为语音呼叫接听。<br>- true：支持当前呼叫作为语音呼叫接听。<br>- false：不支持当前呼叫作为语音呼叫接听。 |
 
 ## VoIPCallType
