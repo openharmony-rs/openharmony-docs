@@ -1599,7 +1599,7 @@ ArkTS-Sta: type OnVisibleIndexesChangeCallback = (start: int, end: int) => void
 
 ## ScrollSnapOffsetProvider
 
-用于自定义限位滚动的距离和吸附位置。此接口适用于[Grid](ts-container-grid.md)和[WaterFlow](ts-container-waterflow.md)组件的scrollSnapStrategy属性。开发者实现接口后，将对象传入scrollSnapStrategy即可使用。
+用于自定义限位滚动的距离和吸附位置。此接口适用于[Grid](ts-container-grid.md)和[WaterFlow](ts-container-waterflow.md)组件的scrollSnapStrategy属性。开发者实现接口后，将对象传入scrollSnapStrategy即可使用。完整示例参考[示例24（自定义滚动吸附位置）](ts-container-grid.md#示例24自定义滚动吸附位置)。
 
 自定义限位滚动分为两个阶段：先按指定的距离惯性滚动，再通过限位动画滚动到目标吸附位置。两个回调分别在两个阶段的起始时机调用：
 
