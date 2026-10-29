@@ -45,6 +45,22 @@ import { childProcessManager } from '@kit.AbilityKit';
 | SELF_FORK |  0   | 从App自身进程Fork子进程。以该模式启动的子进程会继承父进程资源，不能使用Binder IPC和其他进程通信，否则会导致子进程崩溃退出。 |
 | APP_SPAWN_FORK |  1   | 从AppSpawn Fork子进程。以该模式启动的子进程不会继承父进程资源，可以使用Binder IPC和其他进程通信。 |
 
+## ChildProcessInformation
+
+type ChildProcessInformation = _ChildProcessInformation
+
+定义子进程信息。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+| 类型    | 说明                                          |
+| :------ | --------------------------------------------- |
+| _[ChildProcessInformation](./js-apis-inner-application-childProcessRunningInfo.md) | 定义子进程信息，包含子进程的PID、所属父进程的PID、子进程的进程名。|
+
 ## childProcessManager.startChildProcess
 
 startChildProcess(srcEntry: string, startMode: StartMode): Promise&lt;number&gt;
