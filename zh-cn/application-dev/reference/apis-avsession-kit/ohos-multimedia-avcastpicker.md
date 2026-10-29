@@ -36,6 +36,7 @@ AVCastPicker({
   sessionType?: string;
   customPicker?: CustomBuilder;
   onStateChange?: (state: AVCastPickerState) => void;
+  isIndependent?: boolean;
 })
 ```
 
@@ -45,19 +46,18 @@ AVCastPicker({
 
 **装饰器类型：** [@Component](../../ui/state-management/arkts-create-custom-components.md)
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
 | 名称 | 类型 | 必填 | 装饰器类型 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| normalColor<sup>11+</sup> | Color \| number \| string | 否 | @Prop | 正常状态下投播组件的颜色。<br>未设置时，将采用colorMode下的颜色设置。 |
-| activeColor<sup>11+</sup> | Color \| number \| string | 否 | @Prop | 设备连接成功状态下投播组件的颜色。<br>未设置activeColor时，如果normalColor已设置，则使用normalColor的颜色；如果normalColor也未设置，将采用colorMode下的颜色设置。 |
-| pickerStyle<sup>12+</sup> | [AVCastPickerStyle](js-apis-avCastPickerParam.md#avcastpickerstyle12) | 否 | @Prop | 投播样式。<br>- STYLE_PANEL：显示面板样式的投播组件。<br>- STYLE_MENU：显示菜单样式的投播组件。<br>- 当sessionType是audio或者video时，默认值为STYLE_PANEL。<br>- 当sessionType是voice_call或者video_call时，默认值为STYLE_MENU，且不可修改为STYLE_PANEL。|
-| colorMode<sup>12+</sup> | [AVCastPickerColorMode](js-apis-avCastPickerParam.md#avcastpickercolormode12) | 否 |  @Prop | 显示模式。默认值为AUTO。<br>- 当colorMode设置为AUTO时，跟随系统的深浅色模式的默认色值。<br>- 当colorMode设置为DARK、LIGHT时，使用对应模式的系统预设色值。 |
-| sessionType<sup>12+</sup> | string | 否| @Prop | 会话类型，有效值参考[AVSessionType](arkts-apis-avsession-t.md#avsessiontype10)。默认值为当前应用创建的AVSessionType。 |
-| customPicker<sup>12+</sup> | [CustomBuilder](../apis-arkui/arkui-ts/ts-types.md#custombuilder8) | 否 | @Prop | 自定义样式。建议使用自定义组件样式，可有效提升组件显示速度。 |
-| onStateChange<sup>11+</sup> | (state: [AVCastPickerState](js-apis-avCastPickerParam.md#avcastpickerstate11)) => void | 否 | - | 投播状态更改回调。投播组件状态变化时触发，state为STATE_APPEARING表示组件开始显示，STATE_DISAPPEARING表示组件结束显示。 |
+| normalColor<sup>11+</sup> | Color \| number \| string | 否 | @Prop | 正常状态下投播组件的颜色。<br>未设置时，将采用colorMode下的颜色设置。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
+| activeColor<sup>11+</sup> | Color \| number \| string | 否 | @Prop | 设备连接成功状态下投播组件的颜色。<br>未设置activeColor时，如果normalColor已设置，则使用normalColor的颜色；如果normalColor也未设置，将采用colorMode下的颜色设置。  <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| pickerStyle<sup>12+</sup> | [AVCastPickerStyle](js-apis-avCastPickerParam.md#avcastpickerstyle12) | 否 | @Prop | 投播样式。<br>- STYLE_PANEL：显示面板样式的投播组件。<br>- STYLE_MENU：显示菜单样式的投播组件。<br>- 当sessionType是audio或者video时，默认值为STYLE_PANEL。<br>- 当sessionType是voice_call或者video_call时，默认值为STYLE_MENU，且不可修改为STYLE_PANEL。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| colorMode<sup>12+</sup> | [AVCastPickerColorMode](js-apis-avCastPickerParam.md#avcastpickercolormode12) | 否 |  @Prop | 显示模式。默认值为AUTO。<br>- 当colorMode设置为AUTO时，跟随系统的深浅色模式的默认色值。<br>- 当colorMode设置为DARK、LIGHT时，使用对应模式的系统预设色值。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
+| sessionType<sup>12+</sup> | string | 否| @Prop | 会话类型，有效值参考[AVSessionType](arkts-apis-avsession-t.md#avsessiontype10)。默认值为当前应用创建的AVSessionType。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
+| customPicker<sup>12+</sup> | [CustomBuilder](../apis-arkui/arkui-ts/ts-types.md#custombuilder8) | 否 | @Prop | 自定义样式。建议使用自定义组件样式，可有效提升组件显示速度。  <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| onStateChange<sup>11+</sup> | (state: [AVCastPickerState](js-apis-avCastPickerParam.md#avcastpickerstate11)) => void | 否 | - | 投播状态更改回调。投播组件状态变化时触发，state为STATE_APPEARING表示组件开始显示，STATE_DISAPPEARING表示组件结束显示。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
+| isIndependent | boolean | 否 | @Prop | 投播组件是否运行在独立进程。默认值：true，即不设置时页面上每个AVCastPicker组件各自运行在独立进程中；设置为false时，多个组件将共用进程。仅在Phone设备上生效，其他设备形态下该属性被忽略。<br>**起始版本：** 26.1.0 <br>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 ## 事件
 
 支持[通用事件](../apis-arkui/arkui-ts/ts-component-general-events.md)。
