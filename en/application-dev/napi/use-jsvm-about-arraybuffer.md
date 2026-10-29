@@ -1,12 +1,11 @@
 # Working with ArrayBuffer Using JSVM-API
-
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=d475d826f8ab6e97b4b69944b8a9a6d84f792324 translatedAt=2026-08-12T06:30:16.357Z pushedAt=2026-08-12T10:52:32.947Z -->
+<!-- md-trans-meta sourceCommit=7d9ce201efa894024f69109a8bec89b278e1456d translatedAt=2026-10-13T13:05:58.600Z pushedAt=2026-10-16T04:10:15.211Z -->
 
 ## Introduction
 
@@ -15,7 +14,6 @@
 ## Basic Concepts
 
 - **ArrayBuffer**: An **ArrayBuffer** object represents a generic, fixed-length buffer of raw binary data. The **ArrayBuffer** content cannot be directly operated. Instead, you need to use a TypedArray or **DataView** object to interpret the buffer data in specific formats. **ArrayBuffer** is used to process original binary data of a fixed length, such as files and network data packets.
-
 - Lifecycle and memory management: When using **ArrayBuffer** with JSVM-API, pay special attention to lifecycle and memory management, ensuring timely memory release.
 
 ## Available APIs
@@ -86,7 +84,6 @@ getArraybufferInfo(new ArrayBuffer(10));
 ```
 
 Expected result:
-
 ```txt
 JSVM GetArraybufferInfo: success
 ```
@@ -140,7 +137,6 @@ isArrayBuffer(new ArrayBuffer(8));
 ```
 
 Expected result:
-
 ```txt
 JSVM IsArrayBuffer: success
 JSVM IsArrayBuffer: 1
@@ -149,6 +145,8 @@ JSVM IsArrayBuffer: 1
 ### OH_JSVM_DetachArraybuffer
 
 Use **OH_JSVM_DetachArraybuffer** to call the **Detach()** operation of an **ArrayBuffer** object.
+
+The example code is presented together with that of OH_JSVM_IsDetachedArraybuffer. Refer to the `DetachArraybuffer` method in [OH_JSVM_IsDetachedArraybuffer](#oh_jsvm_isdetachedarraybuffer) below.
 
 ### OH_JSVM_IsDetachedArraybuffer
 
@@ -192,7 +190,7 @@ static JSVM_Value IsDetachedArraybuffer(JSVM_Env env, JSVM_CallbackInfo info)
         OH_LOG_ERROR(LOG_APP, "JSVM IsDetachedArraybuffer: failed");
     } else {
         OH_LOG_INFO(LOG_APP, "JSVM IsDetachedArraybuffer: success");
-        OH_LOG_INFO(LOG_APP, "JSVM IsArrayBuffer: %{public}d", result);
+        OH_LOG_INFO(LOG_APP, "JSVM IsDetachedArraybuffer: %{public}d", result);
     }
     JSVM_Value isDetached = nullptr;
     OH_JSVM_GetBoolean(env, result, &isDetached);
@@ -218,11 +216,10 @@ isDetachedArraybuffer(arrayBuffer);
 ```
 
 Expected result:
-
 ```txt
 JSVM DetachArraybuffer: success
 JSVM IsDetachedArraybuffer: success
-JSVM IsArrayBuffer: 1
+JSVM IsDetachedArraybuffer: 1
 ```
 
 ### OH_JSVM_CreateArraybuffer
@@ -280,7 +277,6 @@ createArraybuffer(8);
 ```
 
 Expected result:
-
 ```txt
 JSVM CreateArraybuffer: success
 JSVM ArrayBuffer length: 8

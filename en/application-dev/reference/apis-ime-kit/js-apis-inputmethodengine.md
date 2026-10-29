@@ -126,8 +126,8 @@ The following constants are divided into three categories by function:
 | PATTERN_ONE_TIME_CODE<sup>20+</sup> | number | 13 | Verification code edit box.<br/>**Model restriction:** This parameter can be used only in the stage model. |
 | OPTION_ASCII | number | 20 | ASCII values are allowed.|
 | OPTION_NONE | number | 0 | No input attribute is specified.|
-| OPTION_AUTO_CAP_CHARACTERS | number | 2 | Characters are allowed.|
-| OPTION_AUTO_CAP_SENTENCES | number | 8 | Sentences are allowed.|
+| OPTION_AUTO_CAP_CHARACTERS | number | 2 | Characters are auto-capitalized.|
+| OPTION_AUTO_CAP_SENTENCES | number | 8 | Sentences are auto-capitalized.|
 | OPTION_AUTO_WORDS | number | 4 | Words are allowed.|
 | OPTION_MULTI_LINE | number | 1 | Multiple lines are allowed.|
 | OPTION_NO_FULLSCREEN | number | 10 | Half-screen style.|

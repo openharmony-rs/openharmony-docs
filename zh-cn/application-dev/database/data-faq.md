@@ -36,10 +36,11 @@
 
 ## 调用getRdbStore接口使用原始密钥打开加密关系型数据库时，入参encryptionKey如何配置
 
-在关系型数据库中，调用[getRdbStore](../reference/apis-arkdata/arkts-apis-data-relationalStore-f.md#relationalstoregetrdbstore)接口使用原始密钥打开加密库时，入参[CryptoParam.encryptionKey](../reference/apis-arkdata/arkts-apis-data-relationalStore-i.md#cryptoparam14)需要按照如下操作配置：
+在关系型数据库中，调用[getRdbStore()](../reference/apis-arkdata/arkts-apis-data-relationalStore-f.md#relationalstoregetrdbstore)接口使用原始密钥打开加密库时，入参[CryptoParam.encryptionKey](../reference/apis-arkdata/arkts-apis-data-relationalStore-i.md#cryptoparam14)需要按照如下操作配置：
 
 ```ts
 import { relationalStore } from '@kit.ArkData'
+import { buffer } from '@kit.ArkTS';
 
 let password: string = "x'3605d7de19311edba4d3c88143c61cdd79dd5a58bc829c8b1234567891234567'"; // 需替换为实际的数据库原始密钥（64位十六进制字符串，对应32字节原始密钥）
 let key = new Uint8Array(buffer.from(password, 'utf8').buffer); // 返回的是Uint8Array

@@ -1,10 +1,11 @@
-# Application- or Component-Level Configuration (Stage Model)
+# Application- or Component-Level Configuration
 <!--Kit: Ability Kit-->
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Tester: @memghaiyang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=0ea90699c22c82153d76e42b42b6354680202a52 translatedAt=2026-10-13T07:12:59.376Z pushedAt=2026-10-15T13:16:22.273Z -->
 
 During application development, you must configure tags to identify an application, such as the bundle name and application icon. This topic describes some critical tags.
 
@@ -18,7 +19,7 @@ Application icons and labels are usually configured together. They correspond to
 
 ## Configuring Application Version Declaration
 
-To declare the application version, configure the **versionCode** and **versionName** fields in the [app.json5 file](../quick-start/app-configuration-file.md) in the **AppScope** directory of the project. **versionCode** specifies the version number of the application. The value is a 32-bit non-negative integer. It is used only to determine whether a version is later than another version. A larger value indicates a later version. **versionName** provides the text description of the version number.
+To declare the application version, configure the versionCode and versionName fields in the [app.json5 configuration file](../quick-start/app-configuration-file.md) under the AppScope directory of the project. versionCode identifies the version number of the application. The value of this tag ranges from [0, 2147483647] and must be an integer. This number is used only to determine whether one version is newer than another; a larger value indicates a newer version. The versionName tag provides a text description of the version number.
 
 ## Configuring Device Types Supported by the Module
 
@@ -30,17 +31,4 @@ The [requestPermissions](../security/AccessToken/declare-permissions.md) field i
 
 ## Configuring the Launch Mode
 
-From API version 20 onwards, the **startMode** field can be used to customize the mode for starting an application upon an icon tap. This setting takes effect only when **launchType** is set to [singleton](./uiability-launch-type.md#singleton) and is designed for applications with multiple UIAbility components. The **startMode** field must be specified in the [app.json5](../quick-start/app-configuration-file.md#tags-in-the-configuration-file) file.
-
-- The default value is **mainTask**, indicating that the main UIAbility of the application is always started when the icon is tapped.
-- The value can be **recentTask**, which means that the most recently used UIAbility is started when the icon is tapped.
-
-```json
-{
-  // ...
-  "app": {
-    "startMode": "mainTask"
-    // ...
-  }
-}
-```
+Since API version 20, applications can configure the startMode field in app.json5 to set different launch modes. For usage constraints and supported values, see the description of the startMode field in the app.json5 [configuration file tags](../quick-start/app-configuration-file.md#tags-in-the-configuration-file).

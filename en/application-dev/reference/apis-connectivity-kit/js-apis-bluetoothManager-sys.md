@@ -3,9 +3,10 @@
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @enjoy_sunshine-->
-<!--Designer: @chengguohong; @tangjia15-->
+<!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=8ff016e75e2b0278da32972ba2fe1462174aaa8f translatedAt=2026-10-09T13:14:41.496Z pushedAt=2026-10-10T07:12:00.583Z -->
 
 The **Bluetooth** module provides classic Bluetooth capabilities and Bluetooth Low Energy (BLE) scan and advertising.
 
@@ -13,7 +14,7 @@ The **Bluetooth** module provides classic Bluetooth capabilities and Bluetooth L
 >
 > The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > The APIs provided by this module are no longer maintained since API version 10. You are advised to use profile APIs of [@ohos.bluetooth.ble](js-apis-bluetooth-ble.md).
-> This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.bluetoothManager](js-apis-bluetoothManager.md).
+> This topic describes only the system APIs provided by the module. For details about its public APIs, see [@ohos.bluetoothManager](js-apis-bluetoothManager.md).
 
 
 
@@ -280,7 +281,7 @@ Obtains the tethering status.
 
 > **NOTE**
 >
-> This API is supported since API version 9 and deprecated since API version 10. You are advised to use [isTetheringOn](js-apis-bluetooth-pan-sys.md#istetheringon) instead.
+> This API is supported since API version 9 and deprecated since API version 10. You are advised to use [isTetheringOn](js-apis-bluetooth-pan.md#istetheringon) instead.
 
 **System API**: This is a system API.
 

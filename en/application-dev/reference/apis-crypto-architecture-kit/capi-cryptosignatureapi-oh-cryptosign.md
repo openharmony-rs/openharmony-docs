@@ -13,7 +13,7 @@ typedef struct OH_CryptoSign OH_CryptoSign
 
 ## Overview
 
-Defines a struct for signing.
+Defines a struct for signing, which indicates the signing context.
 
 **Since**: 20
 

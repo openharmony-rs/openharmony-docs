@@ -1,12 +1,11 @@
 # text_area.h
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @Zhang-Dong-hui-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=1fff2d486e3243c0754f8adfd7ecd9495d7fddb9 translatedAt=2026-08-11T09:10:48.851Z pushedAt=2026-08-12T06:33:10.177Z -->
+<!-- md-trans-meta sourceCommit=50f5d66e38b8b4fff9b1e5a462513d4b69c2569d translatedAt=2026-10-15T10:34:58.108Z pushedAt=2026-10-16T01:55:02.194Z -->
 
 ## Overview
 
@@ -53,3 +52,5 @@ Enumerates the input types of multi-line text. Different enumerated values speci
 | ARKUI_TEXTAREA_TYPE_PHONE_NUMBER = 3 | Phone number input type.<br>It supports digits, spaces, +, -, *, #, (, ), with no length limit. |
 | ARKUI_TEXTAREA_TYPE_EMAIL = 5 | Email address input type.<br>It supports digits, letters, underscores, dots, !, #, $, %, &amp;, ', *, +, -, /, =, ?, ^, `, {, , }, ~, and @ (only one @ allowed). The email address must follow the basic format: the part before @ is the username, and the part after @ is the domain. |
 | ARKUI_TEXTAREA_TYPE_ONE_TIME_CODE = 14 | Verification code input type with no special restrictions. In this type, the system input method is shown by default when the component gains focus.<br>**Since:** 20 |
+
+

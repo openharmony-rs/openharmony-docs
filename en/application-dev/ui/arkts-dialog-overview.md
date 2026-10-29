@@ -1,12 +1,11 @@
 # Popup Window Overview
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @houguobiao-->
 <!--Designer: @houguobiao-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=8e22c68cdd7ecb0668db21c4312cda839c2cdaa0 translatedAt=2026-07-30T11:33:36.770Z pushedAt=2026-07-30T12:25:08.821Z -->
+<!-- md-trans-meta sourceCommit=3bd46a1d3614ecae7d45fa7b3b78285ce9f7a1da translatedAt=2026-10-12T09:08:52.488Z pushedAt=2026-10-12T10:19:11.668Z -->
 
 A popup window is a UI element that automatically appears when an application is launched or when a user performs a specific action. It is designed to present important information or actions that require the user's attention within a short timeframe.
 
@@ -26,7 +25,7 @@ When used together with routing and navigation, components created using [Dialog
 
    ![pageLevelMode2](figures/pageLevelMode2.png)
 
-   > **NOTE**
+   > **NOTE** 
    >
    > If a dialog box component (such as **Popup** or **Menu**) is bound to a component that is no longer displayed after a page jump, the system will automatically close that dialog box. However, because the dialog box's visibility is also controlled by developer-set parameters (such as the **show** parameter of [Popup](arkts-popup-overview.md)), the dialog box may still appear overlaying the next page.
 
@@ -40,29 +39,30 @@ When used together with routing and navigation, components created using [Dialog
 
  - The dialog box is displayed in an independent window, which is above the application window.
 
-On PC and 2-in-1 devices, you often expect a dialog box to display outside the app window, which requires the sub-window capability. For example, for a custom dialog box, you can use the showInSubWindow attribute in [CustomDialogControllerOptions](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions) to control whether to use the sub-window feature. The following figure shows the effect of a dialog box displayed based on a sub-window.
+   On PC and 2-in-1 devices, you often expect a dialog box to display outside the app window, which requires the sub-window capability. For example, for a custom dialog box, you can use the showInSubWindow attribute in [CustomDialogControllerOptions](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions) to control whether to use the sub-window feature. The following figure shows the effect of a dialog box displayed based on a sub-window.
 
    ![pageLevelMode3](figures/pageLevelMode3.png)
 
    In this case, the dialog box's display order is managed by the window stack manager, placing it above the current application window but below system windows (for example, system input methods and system dialog boxes).
+
+
 
 ## Types of Popup Windows
 
 Popup windows can be categorized based on the level of user interaction required. There are two main types: modal and non-modal popup windows. The key difference between them lies in whether the user must interact with the popup window.
 
 * **Modal popup window**: This type of popup window is a strong interaction element. It interrupts the user's current task and requires a response before the user can proceed with other actions. It is typically used when important information needs to be conveyed to the user.
+* **Non-modal popup window**: This is a weaker form of interaction and does not interfere with the user's current tasks. The user is not required to respond to the popup window, which usually has a time limit and disappears automatically after a set period. This type is generally used only to inform users of certain information.
 
-* **Non-modal popup window**: This is a weaker form of interaction and does not interfere with the user's current tasks. The user is not required to respond to the popup window, which usually has a time limit and disappears automatically after a set period. This type is generally used when users need to perform additional actions while being notified of certain information.
-
-> **NOTE**
+> **NOTE** 
 >
-> A modal popup window can be converted to a non-modal one through specific attributes. For example, setting the **isModal** attribute of [AlertDialogParam](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparam) to **false** for **AlertDialog** will change it from modal to non-modal. For more details on other popup windows, see the respective API references.
+> A modal popup window can be converted to a non-modal one through specific attributes. For example, setting the **isModal** attribute of [AlertDialogParam](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparam) to false makes it non-modal. For other popup windows, see the API descriptions.
 >
-> Avoid calling popup window display APIs when the application runs in the background.
+> Do not call the dialog display API when the application is not in the foreground.
 >
-> System popup windows are managed by the system and do not support style customization for security reasons.
+> A system dialog is displayed by the system and, for security reasons, does not support custom styles.
 >
-> When a system popup window displays, call non-system popup window display APIs (such as [openCustomDialog](../reference/apis-arkui/js-apis-promptAction.md#promptactionopencustomdialogdeprecated) of [promptAction](../reference/apis-arkui/js-apis-promptAction.md) and [open](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#open) of [CustomDialogController](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontroller)) to disable the popup window display.
+> When a system dialog is displayed, calling the display API of a non-system dialog (for example, [openCustomDialog](../reference/apis-arkui/js-apis-promptAction.md#promptactionopencustomdialogdeprecated) of [promptAction](../reference/apis-arkui/js-apis-promptAction.md) or [open](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#open) of [CustomDialogController](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontroller)) is prohibited, and such a dialog will not be displayed.
 
 ## Use Cases
 
@@ -82,7 +82,8 @@ Choose the appropriate component based on your specific requirements.
 ## Specifications Constraints
 
 * When multiple popup window components are displayed in sequence, the layer of the later displayed component is higher than that of the earlier one, and they exit in the reverse order of their display.
-
 * On mobile devices, a popup window in subwindow mode cannot exceed the main window. On a 2-in-1 device, a modal popup window may need to be displayed beyond the main window. In this case, you can set **showInSubWindow** to **true** to achieve this effect. The following figure shows the effect.
 
   ![image](figures/Dialog01.png)
+
+

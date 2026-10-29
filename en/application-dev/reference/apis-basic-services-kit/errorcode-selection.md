@@ -2,11 +2,11 @@
 
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: SelectionInput-->
-<!--Owner: @no86-->
-<!--Designer: @no86-->
+<!--Owner: @zl_startup-->
+<!--Designer: @zl_startup-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=7bd9d64d06b09f010cde4ca5a86285027d09b51a translatedAt=2026-08-04T10:28:47.232Z pushedAt=2026-08-06T03:23:06.329Z -->
+<!-- md-trans-meta sourceCommit=b7fd791217eb31a347f5d13714b33196dd35ae59 translatedAt=2026-10-09T12:02:20.159Z pushedAt=2026-10-10T05:51:27.818Z -->
 
 > **NOTE**
 >
@@ -25,19 +25,14 @@ When a word selection app calls the word selection service API, this error code 
 **Possible Causes**
 
 1. The word selection service is abnormal.
-
 2. Other system services that the word selection service depends on are abnormal.
-
 3. A panel of the same type is created repeatedly. One word selection app is allowed to create **MENU_PANEL** and **MAIN_PANEL** only once.
 
 **Solution**
 
 1. Check whether the word selection service is running properly.
-
 2. If the service is abnormal, restart the device and call the API again.
-
 3. If the issue persists after restart, contact technical personnel for support.
-
 4. Avoid creating panels of the same type repeatedly. One word selection app is allowed to create **MENU_PANEL** and **MAIN_PANEL** only once.
 
 ## 33600002 Word Selection Panel Has Been Destroyed
@@ -57,9 +52,7 @@ The word selection panel has been destroyed, and operations continue to be perfo
 **Solution**
 
 1. Before operating on the word selection panel, determine whether the panel object is valid.
-
 2. If the panel has been destroyed, recreate the panel before performing any operation.
-
 3. Do not continue to hold and operate on the panel object after it has been destroyed.
 
 ## 33600003 API Caller and Word Selection Application Mismatched
@@ -79,7 +72,6 @@ The app calling the word selection service API is not the one selected by the us
 **Solution**
 
 1. In system settings, check whether the currently selected word selection app is this app.
-
 2. If not, switch the word selection app to this app before calling the API.
 
 ## 33600004 The API Is Called Too Frequently
@@ -135,7 +127,6 @@ The text content of the app cannot be accessed by other apps through settings su
 **Solution**
 
 1. Switch to an app that allows word selection, and call the **getSelectionContent** API after the **selectionCompleted** event is detected.
-
 2. If you need to use the word selection feature in the current app, contact the app developer to confirm whether the app text content can be obtained.
 
 ## 33600007 Selected Text Is Out of Range
@@ -169,15 +160,11 @@ When the word selection service attempts to obtain the selected text content fro
 **Possible Causes**
 
 1. The system load is high.
-
 2. The target app is abnormal.
-
 3. The copy logic of the target app is complex.
 
 **Solution**
 
 1. Call the **getSelectionContent** API again after the **selectionCompleted** event is detected to check whether the timeout is occasional.
-
 2. If the timeout persists, check the response status of the target app and the system resource usage.
-
 3. If the issue persists, contact technical personnel for support.

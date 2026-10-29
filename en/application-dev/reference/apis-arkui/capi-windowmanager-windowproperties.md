@@ -3,8 +3,9 @@
 <!--Subsystem: Window-->
 <!--Owner: @fei_1007-->
 <!--Designer: @gcw_sPCsris4-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=494f31a35d1b25179fe202754d9ee44d527d8ab6 translatedAt=2026-10-15T10:40:05.269Z pushedAt=2026-10-16T02:31:30.371Z -->
 
 ```c
 typedef struct {...} WindowManager_WindowProperties
@@ -27,7 +28,7 @@ Describes the window properties.
 | Name| Description|
 | -- | -- |
 | [WindowManager_Rect](capi-windowmanager-rect.md) windowRect | Position and size of the window.|
-| [WindowManager_Rect](capi-windowmanager-rect.md) drawableRect | Size of the drawable area within the window.|
+| [WindowManager_Rect](capi-windowmanager-rect.md) drawableRect | Position and size of the drawable area in the window. |
 | [WindowManager_WindowType](capi-oh-window-comm-h.md#windowmanager_windowtype) type | Window type.|
 | bool isFullScreen | Whether the window is in full-screen mode. The default value is **false**. **true** if in full-screen mode, **false** otherwise.|
 | bool isLayoutFullScreen | Whether the window layout is immersive. The default value is **false**. **true** if immersive, **false** otherwise.|
@@ -38,4 +39,6 @@ Describes the window properties.
 | bool isPrivacyMode | Whether privacy mode is enabled for the window. The default value is **false**. **true** if enabled, **false** otherwise.|
 | bool isTransparent | Whether the window is transparent. The default value is **false**. **true** if transparent, **false** otherwise.|
 | uint32_t id | Window ID. The default value is **0**, and the value is an integer.|
-| uint32_t displayId | ID of the screen where the window is located. By default, the ID of the primary screen is returned. The value is an integer.|
+| uint32_t displayId | ID of the screen where the window is located. The default value is the primary screen ID. The value is an integer. |
+
+

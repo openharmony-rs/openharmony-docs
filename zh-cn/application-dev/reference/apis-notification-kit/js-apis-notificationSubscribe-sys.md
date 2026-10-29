@@ -394,7 +394,7 @@ unsubscribe(subscriber: NotificationSubscriber, callback: AsyncCallback\<void\>)
 
 **系统能力**：SystemCapability.Notification.Notification
 
-**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+**需要权限**：对于API版本9-19，需要申请ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
 
@@ -447,7 +447,7 @@ unsubscribe(subscriber: NotificationSubscriber): Promise\<void\>
 
 **系统能力**：SystemCapability.Notification.Notification
 
-**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+**需要权限**：对于API版本9-19，需要申请ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
 

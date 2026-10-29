@@ -11,7 +11,7 @@
 
 从API version 21开始，支持创建PKCS #12证书。
 
-PKCS #12是一种用于存储和传输用户私钥、证书及其相关证书链的标准格式。该格式通过密码保护，将多个密码学对象打包为一个加密的容器文件，支持存储私钥、公钥证书、证书颁发机构证书以及其他相关的密码学数据。PKCS12广泛应用于数字证书的安全存储、跨平台传输和证书备份场景，是实现证书管理和PKI应用的重要标准之一。
+PKCS #12是一种用于存储和传输用户私钥、证书及其相关证书链的标准格式。该格式通过密码保护，将多个密码学对象打包为一个加密的容器文件，支持存储私钥、公钥证书、证书颁发机构证书以及其他相关的密码学数据。PKCS #12广泛应用于数字证书的安全存储、跨平台传输和证书备份场景，是实现证书管理和PKI应用的重要标准之一。
 
 ## 开发步骤
 
@@ -167,7 +167,7 @@ async function doTestCreatePkcs12() {
     let p12 = await cert.createPkcs12(data, config);
     console.info(`createPkcs12 result: success, p12 = ` + p12);
     let out: cert.Pkcs12Data = await cert.parsePkcs12(p12, '123456');
-    console.info(`parsePKCS12 result: success.`);
+    console.info(`parsePkcs12 result: success.`);
     if (out.privateKey) {
       console.info(`privateKey:` + out.privateKey.toString());
     }
@@ -217,7 +217,7 @@ async function createX509Cert(certData: string): Promise<cert.X509Cert> {
   try {
     x509Cert = await cert.createX509Cert(encodingBlob);
   } catch (err) {
-    console.error(`doTestCreatePkcs12 failed: errCode: ${err.code}, message: ${err.message}`);
+    console.error(`createX509Cert failed: errCode: ${err.code}, message: ${err.message}`);
   }
   return x509Cert;
 }
@@ -338,7 +338,7 @@ async function doTestCreatePkcs12Sync() {
       needsOtherCerts: true,
     };
     let out: cert.Pkcs12Data = cert.parsePkcs12(p12, conf);
-    console.info(`parsePKCS12 result: success.`);
+    console.info(`parsePkcs12 result: success.`);
     if (out.privateKey) {
       console.info(`privateKey:` + out.privateKey.toString());
     }
@@ -354,7 +354,7 @@ async function doTestCreatePkcs12Sync() {
       console.info(`otherCerts is empty or not an array.`);
     }
   } catch (err) {
-    console.error(`doTestCreatePkcs12 failed: errCode: ${err.code}, message: ${err.message}`);
+    console.error(`doTestCreatePkcs12Sync failed: errCode: ${err.code}, message: ${err.message}`);
   }
 }
 ```

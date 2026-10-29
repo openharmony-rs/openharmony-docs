@@ -1,12 +1,11 @@
 # Common Log Issues and Troubleshooting in Window Development
-
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
 <!--Owner: @liangryan-->
 <!--Designer: @liangryan-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=3a0456038efb1faad3d42835870623551c67ae07 translatedAt=2026-08-11T10:12:07.640Z pushedAt=2026-08-11T11:33:58.359Z -->
+<!-- md-trans-meta sourceCommit=d3892b2d07408e5d546efbe3172eb29f03f427d8 translatedAt=2026-10-08T09:04:43.040Z pushedAt=2026-10-09T00:29:43.099Z -->
 
 ## Using the hidumper Window Command to View Window Information for Troubleshooting
 
@@ -15,7 +14,6 @@
 ### hidumper Parameter Description
 
 Basic command format:
-
 ```bash
 hdc shell hidumper -s WindowManagerService -a '<Parameter>'
 ```
@@ -31,6 +29,7 @@ Parameter list:
 | `-p` | Displays the window parent-child tree structure. | `hidumper -s WindowManagerService -a '-p'` | Used to troubleshoot issues such as window parent-child relationships and hierarchy tree structures. |
 | `-c` | Displays window screenshot information. | `hidumper -s WindowManagerService -a '-c'` | Used in advanced debugging scenarios (screenshot-related information). |
 
+
 ### Viewing All Window Lists
 
 ```bash
@@ -40,7 +39,6 @@ hdc shell hidumper -s WindowManagerService -a '-a'
 This command outputs the complete status information of the window management service, including detailed information of all windows, focus states, z-order, and more.
 
 Sample:
-
 ```bash
 ----------------------------------WindowManagerService----------------------------------
 -------------------------------------ScreenGroup 1-------------------------------------
@@ -70,7 +68,7 @@ Field description:
 
 | Field | Description | Remarks |
 |-------|---------|-------------|
-| WindowName | Window name. | **note0** indicates a memo app window; **SystemUi_StatusBar** indicates the system status bar window. |
+| WindowName | Window name. | **note0** indicates a Notes app window; **SystemUi_StatusBar** indicates the system status bar window. |
 | DisplayId | Display device ID. | **0** indicates the primary screen. In multi‑screen scenarios, you can use [**getAllDisplays()**](../reference/apis-arkui/js-apis-display.md#displaygetalldisplays9) to query the **DisplayId** of all screens. |
 | Pid | ID of the process that creates the window. | Example: **18299** |
 | WinId | Window unique ID. | Example: **13** |
@@ -90,7 +88,6 @@ hdc shell hidumper -s WindowManagerService -a '-a' | grep "Focus window"
 ```
 
 Sample:
-
 ```text
 Focus window: 13
 ```
@@ -100,11 +97,8 @@ Locate the corresponding window in the window list based on WinId: `note0` (the 
 Focus description for foreground and background windows:
 
 - Only foreground windows have the opportunity to gain focus, while background windows do not gain focus.
-
 - **ZOrd** is **-1** for background windows generally, which do not participate in focus competition.
-
 - When a window switches from the foreground to the background, it automatically loses focus.
-
 - You can quickly determine this using the separator line: the focus window is always in the foreground window area, and the background window area never contains a focus window.
 
 ### Viewing Detailed Information of a Specified Window
@@ -120,7 +114,6 @@ hdc shell hidumper -s WindowManagerService -a '-w 13'
 Output Example:
 
 <!--RP1-->
-
 ```bash
 ----------------------------------WindowManagerService----------------------------------
 WindowName: note0
@@ -163,7 +156,6 @@ Field description:
 | isSnapshotSkip | Whether to show the window during screen capture. | **0** indicates that the window content is displayed during screen capture; **1** indicates that the window content is not displayed during screen capture. |
 | WindowRect | Window rectangle area. | Window position and size, in the format [x, y, width, height], with coordinates originating from the upper‑left corner of the screen. For example, **[0, 0, 720, 1280]** indicates position **(0,0)** and size **720x1280**. |
 | TouchHotAreas | Touch hot area. | The value is in the format [x, y, width, height], with coordinates originating from the upper‑left corner of the window. |
-
 <!--RP1End-->
 
 Common issues:
@@ -171,17 +163,13 @@ Common issues:
 Failed to receive keyboard inputs
 
 - Check whether `Focusable` of the window is **false**. If so, call [setWindowFocusable()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowfocusable9) and pass in **true** to enable focus.
-
 - Check whether the window is in the foreground (above the separator line).
 
 <!--Del-->
-
 Window content not hidden during screenshot
 
 - Check whether the window is a non-privacy window with the setting to display window content during screenshot, that is, **IsPrivacyMode** is **false** and **isSnapshotSkip** is **0**. In this case, the content is not hidden during screenshot.
-
 - If you need to hide window content during screenshot, call [setWindowPrivacyMode()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowprivacymode9) and pass in **true** to enable privacy mode.
-
 <!--DelEnd-->
 
 Slow window startup performance
@@ -189,53 +177,34 @@ Slow window startup performance
 - Check whether the first frame of the window has not been displayed. If **FirstFrameCallbackCalled** is **0**, the first frame is not complete, and the page loading may be slow. You need to analyze the startup time cause in combination with logs.
 
 <!--Del-->
-
 Window touch area anomaly
-
 - `TouchHotAreas` size anomaly: The touch hot area is incorrectly set.
-
 - Compare with `WindowRect` to verify whether it is correctly set.
-
 <!--DelEnd-->
 
 ### Locating Approach
 
 1. Problem locating process:
-
    1. Identify the problem.
-
-   2. Use hidumper to check the window state.
-
+   2. Use hidumper to check the window status.
    3. Analyze abnormal attributes.
-
-4. Locate the code position.
-
-5. Fix the issue and verify the result.
+   4. Locate the code position.
+   5. Fix the issue and verify the result.
 
 2. Use with logs:
-
-- hidumper provides real-time window status.
-
-- System logs (**WINDOW_FROZEN_DETECTION**) provide anomaly warnings.
-
+   - hidumper provides real-time window status.
+   - System logs (**WINDOW_FROZEN_DETECTION**) provide anomaly warnings.
    - Combining both can help locate issues more quickly.
 
 3. Comparison and verification:
-
-   - Compare window states before and after performing an operation.
-
+   - Compare the window statuses before and after performing an operation.
    - Confirm whether the operation takes effect.
 
 4. Focus on key attributes:
-
    <!--Del-->
-
    - **VisibilityState**: Check whether the window is displayed.
-
    <!--DelEnd-->
-
    - **ZOrder**: Check the hierarchical relationship.
-
    - **WindowRect**: Check the window size and position.
 
 > **NOTE**
@@ -263,13 +232,9 @@ MSG = SetUIContent timeout uid: [uid], windowName: [windowName], bundleName: [bu
 ```
 
 Key information:
-
 - `uid`: User ID.
-
 - `windowName`: Window name.
-
 - `bundleName`: Bundle name.
-
 - `abilityName`: Instance name.
 
 **Detection Logic**
@@ -283,13 +248,9 @@ The system starts a timer to monitor the page loading process upon window creati
 **Analysis, Location, and Resolution**
 
 Troubleshooting steps:
-
 1. Whether [loadContent()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9) or [setUIContent()](../reference/apis-arkui/arkts-apis-window-Window.md#setuicontent9) is called immediately after window creation.
-
 2. Whether there are time-consuming operations between page loading and window display.
-
 3. Determine whether [showWindow()](../reference/apis-arkui/arkts-apis-window-Window.md#showwindow9) is called before [loadContent()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9).
-
 4. Determine whether the page path is correct.
 
 **Positive and Negative Examples**
@@ -318,7 +279,7 @@ windowStage.createSubWindow('subWindow', (err, windowClass) => {
         return;
     }
     // Load the page content immediately.
-    windowClass.loadContent('pages/SubWindowPage', (err) => {
+    windowClass.setUIContent('pages/SubWindowPage', (err) => {
         if (err.code) {
             console.error('Failed to load content.');
             return;
@@ -361,7 +322,6 @@ Field description:
 An anomaly is triggered when the window size meets any of the following conditions:
 
 1. The size exceeds the maximum: `curWidth &gt; maxFloatingWindowSize` or `curHeight &gt; maxFloatingWindowSize`.
-
 2. The size is below the minimum limit and smaller than the screen size (non-system window types): `curWidth &lt; minWidth` and `curWidth &lt; screenWidthVp`, or `curHeight &lt; minHeight` and `curHeight &lt; screenHeightVp`.
 
 > **NOTE**
@@ -381,21 +341,14 @@ An anomaly is triggered when the window size meets any of the following conditio
    ```
 
 2. Parse the fault log fields. Extract key information from the fault log:
-
    - `windowName`: Confirm the name of the abnormal window.
-
    - `curWidth` and `curHeight`: View the current abnormal size values (vp).
-
    - `minWidth`, `minHeight`, and `maxFloatingWindowSize`: Compare against the limit thresholds (vp).
-
    - `screenWidth` and `screenHeight`: Compare against the screen size (px, which needs to be converted to vp)
 
 3. Determine the anomaly type. Based on the comparison of **curWidth** and **curHeight** with the limit values and screen size:
-
    - If `curWidth &gt; maxFloatingWindowSize` or `curHeight &gt; maxFloatingWindowSize`: The window size exceeds the maximum limit.
-
    - If `curWidth &lt; minWidth` and `curWidth &lt; screenWidthVp`: The window width is too small and less than the screen width.
-
    - If `curHeight &lt; minHeight` and `curHeight &lt; screenHeightVp`: The window height is too small and less than the screen height.
 
 4. Check the size parameters at the [resize()](../reference/apis-arkui/arkts-apis-window-Window.md#resize9) call location in the code.

@@ -13,7 +13,7 @@ typedef struct OH_CryptoRand OH_CryptoRand
 
 ## Overview
 
-Defines a struct for a random number generator.
+Defines a struct for a random number generator, which indicates the context of the random number generator.
 
 **Since**: 20
 

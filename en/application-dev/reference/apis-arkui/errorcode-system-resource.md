@@ -5,6 +5,7 @@
 <!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=82cd6c97b4405c479de2651e0266bd835e918f94 translatedAt=2026-10-15T10:48:48.616Z pushedAt=2026-10-16T03:33:10.729Z -->
 
 > **NOTE**
 >
@@ -14,7 +15,7 @@
 
 **Error Message**
 
-System resources does not exist.
+System resource does not exist.
 
 **Description**
 

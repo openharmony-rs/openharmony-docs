@@ -1,12 +1,11 @@
 # Using AVPlayer to Add External Subtitles to Videos (ArkTS)
-
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @chennotfound-->
-<!--Designer: @dongyu_dy-->
+<!--Designer: @chennotfound-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=5431dfef3480aa170de3ea7c328962a87045baac translatedAt=2026-08-11T01:55:36.968Z pushedAt=2026-08-12T03:30:36.792Z -->
+<!-- md-trans-meta sourceCommit=2d56846da3109c6542705ceefa4aed0cf271c3b1 translatedAt=2026-10-13T13:23:06.123Z pushedAt=2026-10-16T03:07:54.872Z -->
 
 Currently, you can add external subtitles to a video only before it starts playing.
 
@@ -72,10 +71,10 @@ Read [AVPlayer](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md) for
     this.avPlayer?.off('subtitleUpdate');
    ```
 
+
 ## Running the Sample Project
 
 1. Create a project, download the [sample project](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSSubtitle), and copy its resources to the corresponding directories.
-
    ```text
     AVPlayerArkTSSubtitle
     entry/src/main/ets/

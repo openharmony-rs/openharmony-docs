@@ -145,6 +145,8 @@ JSVM IsArrayBuffer: 1
 
 调用 ArrayBuffer 对象的 Detach 操作。
 
+示例代码与OH_JSVM_IsDetachedArraybuffer合并展示，请参考下文[OH_JSVM_IsDetachedArraybuffer](#oh_jsvm_isdetachedarraybuffer)中的`DetachArraybuffer`方法。
+
 ### OH_JSVM_IsDetachedArraybuffer
 
 检查给定的 ArrayBuffer 是否已被分离。
@@ -187,7 +189,7 @@ static JSVM_Value IsDetachedArraybuffer(JSVM_Env env, JSVM_CallbackInfo info)
         OH_LOG_ERROR(LOG_APP, "JSVM IsDetachedArraybuffer: failed");
     } else {
         OH_LOG_INFO(LOG_APP, "JSVM IsDetachedArraybuffer: success");
-        OH_LOG_INFO(LOG_APP, "JSVM IsArrayBuffer: %{public}d", result);
+        OH_LOG_INFO(LOG_APP, "JSVM IsDetachedArraybuffer: %{public}d", result);
     }
     JSVM_Value isDetached = nullptr;
     OH_JSVM_GetBoolean(env, result, &isDetached);
@@ -216,7 +218,7 @@ isDetachedArraybuffer(arrayBuffer);
 ```txt
 JSVM DetachArraybuffer: success
 JSVM IsDetachedArraybuffer: success
-JSVM IsArrayBuffer: 1
+JSVM IsDetachedArraybuffer: 1
 ```
 
 ### OH_JSVM_CreateArraybuffer

@@ -1,12 +1,11 @@
 # native_audio_accessory_manager.h
-
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @songshenke-->
-<!--Designer: @hao-liangfei; @zhanganxiang-->
+<!--Designer: @zhanganxiang1-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=f6b98329623e60d030164db3f328ee8bd5405051 translatedAt=2026-08-31T02:32:24.387Z pushedAt=2026-08-31T09:33:15.829Z -->
+<!-- md-trans-meta sourceCommit=231a0f852838e757ab03536e79d2ff209c5f5457 translatedAt=2026-10-08T12:14:50.854Z pushedAt=2026-10-12T10:49:52.266Z -->
 
 ## Overview
 

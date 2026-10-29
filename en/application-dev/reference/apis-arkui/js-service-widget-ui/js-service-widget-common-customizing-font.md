@@ -5,9 +5,9 @@
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=50f5d66e38b8b4fff9b1e5a462513d4b69c2569d translatedAt=2026-10-12T04:01:19.683Z pushedAt=2026-10-12T06:46:04.268Z -->
 
-
-**font-face** is used to define the font style. You can define **font-face** in **style** to specify a font name and resource for your app and then reference this font from **font-family**.
+**@font-face** is used to define the font style. You can define **@font-face** in **style** to specify a font name and resource for your app and then reference this font from **font-family**.
 
 
 The custom font can be loaded from the font file in a project or a network font file.
@@ -40,9 +40,9 @@ The custom font can be loaded from the font file in a project or a network font 
 - You can set only one **src** attribute.
 
 
-## Using font-face
+## Using @font-face
 
-You can set **font-face** in **style** and specify the name of the **font-face** using **font-family**. The following is an example:
+You can set **@font-face** in **style** and specify the name of the **@font-face** using **font-family**. The following is an example:
 
 - Page layout
   

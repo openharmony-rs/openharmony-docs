@@ -1,18 +1,19 @@
 # Button
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liyi0309-->
 <!--Designer: @liyi0309-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=b8421fa94775fa4bceb1b522857b705478302935 translatedAt=2026-07-29T12:45:06.136Z pushedAt=2026-07-30T02:18:33.611Z -->
+<!-- md-trans-meta sourceCommit=dfc4b4cbbfd636b15b323266c14e73471edab887 translatedAt=2026-10-10T06:07:07.745Z pushedAt=2026-10-12T07:41:23.259Z -->
 
 The **Button** component is usually activated by user clicks to perform a specific action. It comes in four types: capsule, circle, normal, and rounded rectangle. When used as a container, the **Button** component accepts child components such as text and images. For details, see [Button](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md).
+
 
 ## Creating a Button
 
 You can create a button using the following methods:
+
 
 - Creating a button without child components using **label** and [ButtonOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md#buttonoptions)<br>Take **type** and **stateEffect** in **ButtonOptions** as an example:
 
@@ -33,6 +34,7 @@ You can create a button using the following methods:
   ```
 
   ![Button code](figures/button-code.png)
+
 
 - Creating a button with child components using [ButtonOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md#buttonoptions)<br>Take **type** and **stateEffect** in **ButtonOptions** as an example:
 
@@ -56,9 +58,11 @@ You can create a button using the following methods:
 
   ![Button creation](figures/button-create.png)
 
+
 ## Setting the Button Type
 
 Buttons come in four types, set using the **type** parameter: Capsule, Circle, Normal, and ROUNDED_RECTANGLE.
+
 
 - Capsule button (default type)
 
@@ -74,6 +78,7 @@ Buttons come in four types, set using the **type** parameter: Capsule, Circle, N
   ```
 
   ![Button type setting](figures/button-set-type.png)
+
 
 - Circle button
 
@@ -137,6 +142,7 @@ Buttons come in four types, set using the **type** parameter: Capsule, Circle, N
 
   ![Button style](figures/button-style.png)
 
+
 - Setting the text style
 
   Add text style attributes for the button.
@@ -152,6 +158,7 @@ Buttons come in four types, set using the **type** parameter: Capsule, Circle, N
 
   ![Button capsule](figures/button-capsule.png)
 
+
 - Setting the background color
 
   Add the **backgroundColor** attribute for the button.
@@ -164,10 +171,10 @@ Buttons come in four types, set using the **type** parameter: Capsule, Circle, N
 
   ![Button background color](figures/button-bgcolor.png)
 
+
 - Assigning a function to the button
 
   For example, to create a delete button:
-
   <!-- @[custom_create_function_button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/button/ButtonCustomStyle.ets) -->
 
   ``` TypeScript
@@ -178,6 +185,7 @@ Buttons come in four types, set using the **type** parameter: Capsule, Circle, N
   ```
 
   ![Round button](figures/button-round.png)
+
 
 ## Adding Events
 
@@ -192,13 +200,14 @@ Button('Ok', { type: ButtonType.Normal, stateEffect: true })
   }).margin(10)
 ```
 
+
 ## Example
 
 - Using the button for triggering actions
 
   You can use the button for any UI element that requires user-initiated actions. The button triggers the predefined event based on user interactions. For example, you can use a button in the **List** container to navigate to another page.
 
-  <!-- @[button_case_1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/button/ButtonCaseTouch.ets) --> 
+  <!-- @[button_case_1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/button/ButtonCaseTouch.ets) -->
 
   ``` TypeScript
   import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -327,10 +336,10 @@ Button('Ok', { type: ButtonType.Normal, stateEffect: true })
 
   ![Button full example](figures/button-full-example.gif)
 
+
 - Using the button for submitting forms
 
   On the user login/registration page, you can use a button to submit a login or registration request.
-
   <!-- @[button_case_2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/button/ButtonCaseLogin.ets) -->
 
   ``` TypeScript

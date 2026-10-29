@@ -6,6 +6,7 @@
 <!--Designer: @HighLowWorld-->
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=4a0d60c413ad51190440217475c8f9ea1644f828 translatedAt=2026-10-13T01:58:24.804Z pushedAt=2026-10-13T03:13:14.173Z -->
 
 For details about scenarios and related concepts, see [HUKS Access Control Overview](huks-identity-authentication-overview.md).
 
@@ -13,11 +14,198 @@ For details about scenarios and related concepts, see [HUKS Access Control Overv
 
 ### Generating a Key
 
-Specify the fingerprint access control type and related properties.
-
-When a key is generated or imported, set [HuksUserAuthType](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksuserauthtype9), [HuksAuthAccessType](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksauthaccesstype9), and [HuksChallengeType](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukschallengetype9).
+Specify the user identity authentication access control type and related attributes. Specifically, when generating or importing a key, specify three parameters in the key property set: the user authentication type [HuksUserAuthType](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksuserauthtype9), the authorized access type [HuksAuthAccessType](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksauthaccesstype9), and the challenge type [HuksChallengeType](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukschallengetype9).
 
 <!-- @[user_authentication_key_generation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/AccessControl/entry/src/main/ets/pages/UserIdentityAuthentication.ets) -->
+
+``` TypeScript
+import { huks } from '@kit.UniversalKeystoreKit';
+import { userAuth } from '@kit.UserAuthenticationKit';
+
+const KEY_ALIAS = 'test_sm4_key_alias';
+const IV = '1234567890123456';
+const CIPHER_IN_DATA = 'Hks_SM4_Cipher_Test_101010101010101010110_string';
+const AUTH_TYPE = userAuth.UserAuthType.PIN;
+const AUTH_TRUST_LEVEL = userAuth.AuthTrustLevel.ATL1;
+
+let sessionHandle: number;
+let challenge: Uint8Array;
+let authToken: Uint8Array;
+let encryptedData: Uint8Array;
+
+class ThrowObject {
+  public isThrow: boolean = false;
+}
+
+function stringToUint8Array(str: string): Uint8Array {
+  let arr: number[] = [];
+  for (let i = 0, j = str.length; i < j; ++i) {
+    arr.push(str.charCodeAt(i));
+  }
+  return new Uint8Array(arr);
+}
+
+/* Step 1: Key generation module */
+const KEY_GENERATION_PROPERTIES: huks.HuksParam[] = [
+  {
+    tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+    value: huks.HuksKeyAlg.HUKS_ALG_SM4
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+    value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT | huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+    value: huks.HuksKeySize.HUKS_SM4_KEY_SIZE_128,
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_BLOCK_MODE,
+    value: huks.HuksCipherMode.HUKS_MODE_CBC,
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_PADDING,
+    value: huks.HuksKeyPadding.HUKS_PADDING_NONE,
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_USER_AUTH_TYPE,
+    value: huks.HuksUserAuthType.HUKS_USER_AUTH_TYPE_PIN
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_KEY_AUTH_ACCESS_TYPE,
+    value: huks.HuksAuthAccessType.HUKS_AUTH_ACCESS_INVALID_CLEAR_PASSWORD
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_CHALLENGE_TYPE,
+    value: huks.HuksChallengeType.HUKS_CHALLENGE_TYPE_NORMAL
+  }
+];
+
+/* Generate the key */
+function generateKeyItem(keyAlias: string, huksOptions: huks.HuksOptions, throwObject: ThrowObject): Promise<void> {
+  return new Promise<void>((resolve, reject) => {
+    try {
+      huks.generateKeyItem(keyAlias, huksOptions, (error) => {
+        if (error) {
+          reject(error);
+        } else {
+          resolve();
+        }
+      });
+    } catch (error) {
+      throwObject.isThrow = true;
+      const err = error instanceof Error ? error : new Error(String(error));
+      throw err;
+    }
+  });
+}
+
+/* Generate the SM4 key */
+async function step1GenerateKey(): Promise<void> {
+  const generateOptions: huks.HuksOptions = {
+    properties: KEY_GENERATION_PROPERTIES,
+    inData: new Uint8Array([])
+  };
+
+  let throwObject: ThrowObject = { isThrow: true };
+  try {
+    await generateKeyItem(KEY_ALIAS, generateOptions, throwObject)
+      .then(() => {
+        console.info('Key generated successfully');
+      })
+      .catch((error: Error) => {
+        if (throwObject.isThrow) {
+          const err = error instanceof Error ? error : new Error(String(error));
+          throw err;
+        } else {
+          console.error('Key generation failed: ' + JSON.stringify(error));
+        }
+      });
+  } catch (error) {
+    console.error('Invalid key generation parameters: ' + JSON.stringify(error));
+    const err = error instanceof Error ? error : new Error(String(error));
+    throw err;
+  }
+}
+
+/* Step 2: Session initialization module - initialize the encryption session and obtain the challenge */
+const INIT_SESSION_PROPERTIES: huks.HuksParam[] = [
+  {
+    tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+    value: huks.HuksKeyAlg.HUKS_ALG_SM4,
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+    value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT,
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+    value: huks.HuksKeySize.HUKS_SM4_KEY_SIZE_128,
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_BLOCK_MODE,
+    value: huks.HuksCipherMode.HUKS_MODE_CBC,
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_PADDING,
+    value: huks.HuksKeyPadding.HUKS_PADDING_NONE,
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_IV,
+    value: stringToUint8Array(IV),
+  }
+];
+
+/* Initialize the session */
+function initSession(keyAlias: string, huksOptions: huks.HuksOptions,
+  throwObject: ThrowObject): Promise<huks.HuksSessionHandle> {
+  return new Promise<huks.HuksSessionHandle>((resolve, reject) => {
+    try {
+      huks.initSession(keyAlias, huksOptions, (error, data) => {
+        if (error) {
+          reject(error);
+        } else {
+          resolve(data);
+        }
+      });
+    } catch (error) {
+      throwObject.isThrow = true;
+      const err = error instanceof Error ? error : new Error(String(error));
+      throw err;
+    }
+  });
+}
+
+/* Initialize the session and obtain the challenge */
+async function step2InitSession(): Promise<void> {
+  const initOptions: huks.HuksOptions = {
+    properties: INIT_SESSION_PROPERTIES,
+    inData: new Uint8Array([])
+  };
+
+  let throwObject: ThrowObject = { isThrow: true };
+  try {
+    await initSession(KEY_ALIAS, initOptions, throwObject)
+      .then((data) => {
+        sessionHandle = data.handle;
+        challenge = data.challenge as Uint8Array;
+        console.info('Session initialized successfully, challenge: ' + challenge.toString());
+      })
+      .catch((error: Error) => {
+        if (throwObject.isThrow) {
+          const err = error instanceof Error ? error : new Error(String(error));
+          throw err;
+        } else {
+          console.error('Session initialization failed: ' + JSON.stringify(error));
+        }
+      });
+  } catch (error) {
+    console.error('Invalid session initialization parameters: ' + JSON.stringify(error));
+    const err = error instanceof Error ? error : new Error(String(error));
+    throw err;
+  }
+}
+```
 
 ## Development Cases
 

@@ -264,7 +264,7 @@ media.createAVPlayer((err: BusinessError, player: media.AVPlayer) => {
 | dateTime | string | 否 | 是 | 媒体资源的创建时间。不支持AVRecorder设置该属性。 |
 | dateTimeFormat | string | 否 | 是 | 媒体资源的创建时间，按YYYY-MM-DD HH:mm:ss格式输出。不支持AVRecorder设置该属性。 |
 | composer | string | 否 | 是 | 媒体资源的作曲家。不支持AVRecorder设置该属性。 |
-| duration | string | 否 | 是 | 媒体资源的时长。不支持AVRecorder设置该属性。 |
+| duration | string | 否 | 是 | 媒体资源的时长，单位为毫秒（ms）。不支持AVRecorder设置该属性。 |
 | genre | string | 否 | 是 | 媒体资源的类型或体裁。|
 | hasAudio | string | 否 | 是 | 媒体资源是否包含音频。不支持AVRecorder设置该属性。 |
 | hasVideo | string | 否 | 是 | 媒体资源是否包含视频。不支持AVRecorder设置该属性。 |

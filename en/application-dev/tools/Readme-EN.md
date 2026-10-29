@@ -5,6 +5,7 @@
 <!--Designer: @lingminghw-->
 <!--Tester: @RayShih-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=265662c3f1bebcccc82375e5952ee48da32366a3 translatedAt=2026-10-10T03:59:10.028Z pushedAt=2026-10-12T03:12:02.847Z -->
 
 - [About This Kit](command-line-tools-overview.md)
 - [hdc](../dfx/hdc.md)
@@ -24,7 +25,7 @@
 - [param](param-tool.md)
 - [power-shell](power-shell.md)
 <!--Del-->
--  
+- [OpenHarmony SDK Upgrade Assistant](openharmony-sdk-upgrade-assistant.md)
 <!--DelEnd-->
 - [Access Token Manager](atm-tool.md)
 - [network-cfg](network-cfg.md)

@@ -294,7 +294,7 @@ try {
 
 这个接口用于获取给定ArkTS value的ArkTS Type。
 
-**注：**napi_typeof可以判断的类型包含：   
+**注**：napi_typeof可以判断的类型包含：   
 |类型 | 
 |-----|
 |undefined|
@@ -525,7 +525,7 @@ static napi_value SetTypeTagToObject(napi_env env, napi_callback_info info)
     // 给参数（对象）设置类型标签
     napi_status status = napi_type_tag_object(env, args[0], &TagsData[index]);
     if (status != napi_ok) {
-        napi_throw_error(env, "Reconnect error", "napi_type_tag_object failed");
+        napi_throw_error(env, "napi_type_tag_object error", "napi_type_tag_object failed");
         return nullptr;
     }
     // 将bool结果转换为napi_value并返回
@@ -563,6 +563,8 @@ export const setTypeTagToObject: (obj: Object, index: number) => boolean | undef
 
 export const checkObjectTypeTag: (obj: Object, index: number) => boolean; // napi_check_object_type_tag
 ```
+
+ArkTS侧示例代码
 
 <!-- @[ark_napi_type_tag_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/ets/pages/Index.ets) --> 
 

@@ -5,7 +5,7 @@
 <!--Designer: @zhansf1988-->
 <!--Tester: @hongmei_may-->
 <!--Adviser: @RayShih-->
-<!-- md-trans-meta sourceCommit=3af2c2640a0dfa1285ceb6197505adab556ff3bb translatedAt=2026-09-02T02:14:38.664Z pushedAt=2026-09-03T04:04:29.433Z -->
+<!-- md-trans-meta sourceCommit=0c8a16f2f37045e8dab4d32079468a2615074183 translatedAt=2026-10-09T12:11:24.965Z pushedAt=2026-10-12T11:10:13.402Z -->
 
 
 The AutoAdComponent module provides the capability of displaying carousel ads.
@@ -50,7 +50,17 @@ Component used to display carousel ads.
 | displayOptions | advertising.[AdDisplayOptions](js-apis-advertising.md#addisplayoptions) | Yes | - | Ad display parameters. | 
 | interactionListener | advertising.[AdInteractionListener](js-apis-advertising.md#adinteractionlistener) | Yes | - | Callback for ad status changes. | 
 
-**Example:**
+### build
+
+build(): void
+
+A constructor used to create an **AutoAdComponent** object.
+
+**Atomic service API**: This API can be used in atomic services since API version 12.
+
+**System capability**: SystemCapability.Advertising.Ads
+
+## Example
 
 ```typescript
 import { advertising, AutoAdComponent } from '@kit.AdsKit';
@@ -61,7 +71,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 struct Index {
   // Ad request parameters.
   private adRequestParams: advertising.AdRequestParams = {
-    // Ad ID.
+    // Ad slot ID.
     adId: 'h5xkz3mbr2',
     // Ad type.
     adType: 8,
@@ -70,11 +80,11 @@ struct Index {
     // Ad slot height, in vp.
     adHeight: 57
   };
-  // Ad configuration options.
+  // Ad configuration parameters.
   private adOptions: advertising.AdOptions = {};
   // Ad display parameters.
   private adDisplayOptions: advertising.AdDisplayOptions = {
-    // Interval at which the carousel items rotate, in ms. The value range is [30000, 120000].
+    // Ad carousel interval, in ms. Value range: [30000, 120000].
     refreshTime: 30000
   };
   private ratio: number = -1;
@@ -115,18 +125,3 @@ struct Index {
   }
 }
 ```
-
-
-### build
-
-
-build(): void
-
-
-A constructor used to create an **AutoAdComponent** object.
-
-
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
-
-**System capability**: SystemCapability.Advertising.Ads

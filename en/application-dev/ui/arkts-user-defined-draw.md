@@ -667,7 +667,7 @@ Effect with message overlay and star decoration on the foreground layer:
            OH_Drawing_TypographyLayout(typography, maxWidth);
            OH_Drawing_TypographyPaint(typography, canvas, x, y);
    
-           // 释放资源
+           // Release resources.
            OH_Drawing_DestroyTextStyle(textStyle);
            OH_Drawing_DestroyTypography(typography);
            OH_Drawing_DestroyTypographyHandler(typographyHandler);

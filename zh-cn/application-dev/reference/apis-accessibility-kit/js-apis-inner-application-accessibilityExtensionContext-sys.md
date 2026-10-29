@@ -1434,7 +1434,7 @@ export default class AccessibilityManager {
 }
 ```
 
-### findElement('elementId')
+### findElement('elementId')<sup>12+</sup>
 
 findElement(type: 'elementId', condition: number): Promise\<AccessibilityElement>
 
@@ -1484,7 +1484,7 @@ rootElement.findElement('elementId', condition).then((data: AccessibilityElement
 });
 ```
 
-### findElement('textType')
+### findElement('textType')<sup>12+</sup>
 
 findElement(type: 'textType', condition: string): Promise\<Array\<AccessibilityElement>>
 
@@ -2146,7 +2146,7 @@ findElementById(condition: number): Promise\<AccessibilityElement>
 
 根据元素ID查找当前活动窗口下的节点元素。使用Promise异步回调。
 
-与[findElement('elementId')](#findelementelementid)功能等价，推荐优先使用本方法。
+与[findElement('elementId')](#findelementelementid12)功能等价，推荐优先使用本方法。
 
 **需要权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 

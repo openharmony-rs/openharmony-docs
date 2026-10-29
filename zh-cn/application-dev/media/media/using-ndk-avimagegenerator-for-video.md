@@ -16,7 +16,7 @@
 target_link_libraries(entry PUBLIC libavimage_generator.so libace_napi.z.so)
 ```
 
-使用[OH_PixelmapNative_ConvertPixelmapNativeToNapi()](../../reference/apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_convertpixelmapnativetonapi)接口将nativePixelMap对象转换为PixelMapnapi对象、[OH_PixelmapNative_Release()](../../reference/apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_release)接口释放OH_PixelmapNative对象资源，需引入如下头文件。
+使用[OH_PixelmapNative_ConvertPixelmapNativeToNapi()](../../reference/apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_convertpixelmapnativetonapi)接口将OH_PixelmapNative对象转换为PixelMapnapi对象、[OH_PixelmapNative_Release()](../../reference/apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_release)接口释放OH_PixelmapNative对象资源，需引入如下头文件。
 ```c
 #include <multimedia/image_framework/image/pixelmap_native.h>
 ```
@@ -66,7 +66,7 @@ target_link_libraries(entry PUBLIC libavmetadata_extractor.so libnative_media_co
 
    int64_t offset = 0; // 媒体源在文件描述符中的偏移量。
    int32_t fileDescribe = -1; // 媒体文件描述符。
-   int32_t fileSize = 0; // 媒体文件大小。
+   int64_t fileSize = 0; // 媒体文件大小。
        
    // 设置视频资源的文件描述符。
    OH_AVErrCode avErrCode = OH_AVImageGenerator_SetFDSource(generator, fileDescribe, offset, fileSize);
@@ -130,7 +130,7 @@ target_link_libraries(entry PUBLIC libavmetadata_extractor.so libnative_media_co
 
 4. 获取指定时间的视频帧：调用[OH_AVImageGenerator_FetchFrameByTime()](../../reference/apis-media-kit/capi-avimage-generator-h.md#oh_avimagegenerator_fetchframebytime)，可以获取到一个OH_PixelmapNative对象，该对象可用于图片显示。
 
-   使用完成需要调用OH_PixelmapNative_Release释放OH_PixelmapNative对象资源，详细使用方法请参阅[Image_NativeModule](../../reference/apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_release)。
+   使用完成需要调用OH_PixelmapNative_Release释放OH_PixelmapNative对象资源，详细使用方法请参阅[OH_PixelmapNative_Release()](../../reference/apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_release)。
    ```c
    #include "napi/native_api.h"
    #include <multimedia/image_framework/image/pixelmap_native.h>
@@ -143,7 +143,7 @@ target_link_libraries(entry PUBLIC libavmetadata_extractor.so libnative_media_co
        int64_t timeUs = 0; // 指定的时间（单位us）。
        int64_t offset = 0; // 媒体源在文件描述符中的偏移量。
        int32_t fileDescribe = -1; // 媒体文件描述符。
-       int32_t fileSize = 0; // 媒体文件大小。
+       int64_t fileSize = 0; // 媒体文件大小。
        int32_t options = OH_AVIMAGE_GENERATOR_QUERY_CLOSEST; // OH_AVIMAGE_GENERATOR_QUERY_CLOSEST表示选取离传入时间点最近的关键帧。
    };
 

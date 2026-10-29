@@ -1,17 +1,15 @@
 # Deferred Photo Delivery (C/C++)
-
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=92637e66fde45a3fccdf6e7082b1121eb02199b4 translatedAt=2026-08-10T09:18:40.990Z pushedAt=2026-08-10T13:16:40.561Z -->
+<!-- md-trans-meta sourceCommit=132342cdd19e09e8d1c7a964e48a57b6cf30fc8d translatedAt=2026-09-28T02:44:04.603Z pushedAt=2026-09-29T08:23:29.714Z -->
 
 Deferred photo capture is one of the most important camera features. The camera outputs a low-quality image for quick display, enhancing the user's perceived capture speed, while using a high-quality image to ensure the final image quality meets the level of the system camera. This not only meets the needs of post-processing algorithms but also avoids blocking the foreground capture speed, building camera performance competitiveness and improving user experience.
 
 - In the first phase, the system promptly delivers an image that has undergone lightweight processing, offering a balance between reduced quality and swift image availability. The application receives a PhotoAsset object through the callback. Through this object, the application can call the media library APIs to read the image or flush the image to the disk.
-
 - In the second phase, the camera framework enhances the image to achieve full quality, either in response to the application's request for higher quality or when the system is not busy. The enhanced image is then sent back to the media library to replace the previously provided one.
 
 ## How to Develop
@@ -20,8 +18,8 @@ For details about the APIs, see [OH_Camera](../../reference/apis-camera-kit/capi
 
 1. Import the NDK, which provides camera-related properties and methods.
 
-   <!-- @[import_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKDeferredCaptureSample/entry/src/main/cpp/camera_manager.h) -->
-
+   <!-- @[import_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKDeferredCaptureSample/entry/src/main/cpp/camera_manager.h) -->    
+   
    ``` C
    #include <cstdint>
    #include <unistd.h>
@@ -30,7 +28,6 @@ For details about the APIs, see [OH_Camera](../../reference/apis-camera-kit/capi
    #include <cstdio>
    #include <fcntl.h>
    #include <map>
-   #include <string>
    #include <vector>
    #include <native_buffer/native_buffer.h>
    #include "iostream"
@@ -89,15 +86,12 @@ For details about the APIs, see [OH_Camera](../../reference/apis-camera-kit/capi
    The development process is as follows:
 
    - Register the callback before the session commits the configuration.
-
    - Obtain a media asset through the callback.
-
    - Through the media asset, either save the images or request images and after service processing, save them through a buffer or display them. For details, see step 5 in [Photo Capture (C/C++)](./native-camera-shooting.md).
-
    - Unregister the callback when it is no longer required.
 
    <!-- @[deferred_photo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKDeferredCaptureSample/entry/src/main/cpp/camera_manager.cpp) -->    
-
+   
    ``` C++
    // Deferred photo capture callback.
    void onPhotoAssetAvailable(Camera_PhotoOutput *photoOutput, OH_MediaAsset *mediaAsset)

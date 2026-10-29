@@ -5,7 +5,7 @@
 <!--Designer: @Hu_ZeQi-->
 <!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
-
+<!-- md-trans-meta sourceCommit=5296b1b646755fde9c974ed11b8c9a275644597c translatedAt=2026-10-12T09:36:15.125Z pushedAt=2026-10-13T06:02:00.242Z -->
 
 When there is a large amount of page information, to enable the user to focus on the currently displayed content, the page content needs to be classified to improve the page space utilization. The [Tabs](../reference/apis-arkui/arkui-ts/ts-container-tabs.md) component can quickly switch between views on a page, improving information search efficiency and reducing the amount of information that users receive at a time.
 
@@ -13,7 +13,7 @@ When there is a large amount of page information, to enable the user to focus on
 
   The **Tabs** component consists of two parts: [TabContent](../reference/apis-arkui/arkui-ts/ts-container-tabcontent.md) and [TabBar](../reference/apis-arkui/arkui-ts/ts-container-tabcontent.md#tabbar). **TabContent** is the content page, and **TabBar** is the navigation tab bar. The following figure shows the page structure. The layout varies according to the navigation type. In bottom navigation, top navigation, and side navigation, the navigation tab bar is located at the bottom, top, and edge, respectively.
 
-  **Figure 1** Tabs component layout 
+  **Figure 1** Tabs component layout  
 
 ![tabs-layout](figures/tabs-layout.png)
 
@@ -27,7 +27,7 @@ When there is a large amount of page information, to enable the user to focus on
 The **Tabs** component uses braces to wrap **TabContent** child components, as shown in Figure 2.
 
 
-  **Figure 2** Using Tabs and TabContent 
+  **Figure 2** Using Tabs and TabContent
 
 ![tabs-tabscontent](figures/tabs-tabscontent.png)
 
@@ -93,7 +93,7 @@ Tabs() {
 Bottom navigation is the most common navigation mode in applications. The bottom navigation bar is located at the bottom of the level-1 page of the application. It enables the user to quickly have a picture of the feature categories the moment they open the application. In addition, it facilitates one-hand operations of the user. Bottom navigation generally exists as a main navigation form of an application, in that it provides convenient access to primary destinations anywhere in the application.
 
 
-  **Figure 3** Bottom navigation bar 
+  **Figure 3** Bottom navigation bar
 
 ![bottom-navigation](figures/bottom-navigation.gif)
 
@@ -117,7 +117,7 @@ You can customize the appearance of the bottom navigation bar by setting the [Bo
 
 Top navigation comes in handy when there are many content categories and users need to frequently switch between them. It is usually a further subdivision of the categories in the bottom navigation bar. For example, a theme application may provide a top navigation bar that classifies themes into image, video, and font.
 
-  **Figure 4** Top navigation bar 
+  **Figure 4** Top navigation bar
 
 ![top-navigation](figures/top-navigation.gif)
 
@@ -137,7 +137,7 @@ Tabs({ barPosition: BarPosition.Start }) {
 Side navigation is seldom used in applications. It is more applicable to landscape screens. Because the natural eye movement pattern is from left to right, the side navigation bar is located on the left side by default.
 
 
-  **Figure 5** Side navigation bar 
+  **Figure 5** Side navigation bar
 
 ![side-navigation](figures/side-navigation.png)
 
@@ -167,16 +167,16 @@ To implement the side navigation bar, set the [vertical](../reference/apis-arkui
 > - When the **vertical** attribute is set to **true**, the tab bar takes up the actual content height by default. Set [barHeight](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#barheight) to a proper value.
 
 
-## Restricting the Scrolling of the Navigation Bar
+## Restricting Swipe-based Switching for the Navigation Bar
 
-  By default, the navigation bar is scrollable. On some pages that require multi-level classification of content, for example, when both bottom navigation and top navigation are used, the scroll effect of the bottom navigation bar may conflict with that of the top navigation bar. In this case, the scrolling of the bottom navigation bar needs to be restricted to improve user experience.
+  By default, navigation bars support swipe-based switching. On pages where content needs to be categorized into multiple levels, such as when bottom navigation and top navigation are used in combination, the swipe effect of the bottom navigation bar conflicts with the top navigation. In this case, you need to restrict swiping on the bottom navigation bar to avoid a poor user experience.
   
-  **Figure 6** Restricting the scrolling of the bottom navigation bar 
+  **Figure 6** Restricting swiping on the bottom navigation bar
 
 ![restricted-navigation](figures/restricted-navigation.gif)
 
 
-The attribute that controls the scrolling is [scrollable](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#scrollable). The default value is **true**, indicating that scrolling is allowed. To restrict swipe-to-switch tabs, set this attribute to **false**.
+The [scrollable](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#scrollable) attribute controls swipe-based switching. The default value is **true**, indicating that swipe-based switching is allowed. To disable swipe-based switching, set this attribute to **false**.
 
 <!-- @[swipe_locked_tab_bar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/SwipeLockedTabBar.ets) -->
 
@@ -231,7 +231,7 @@ Tabs({ barPosition: BarPosition.End }) {
 The top navigation bar or side navigation bar can be set to be scrollable if the screen width cannot fully accommodate all the tabs. With a scrollable navigation bar, users can reveal tabs beyond the visible area by touching or swiping on the navigation bar.
 
 
-  **Figure 8** Scrollable navigation bar 
+  **Figure 8** Scrollable navigation bar
 
 ![scrollable-navigation](figures/scrollable-navigation.gif)
 
@@ -254,7 +254,7 @@ Tabs({ barPosition: BarPosition.Start }) {
 The bottom navigation bar is generally used on the home page of an application. To deliver a more vibrant experience, you can customize the style of the navigation bar, combining use of text and icons to signify the tab content.
 
 
-  **Figure 9** Custom navigation bar 
+  **Figure 9** Custom navigation bar
 
 ![custom-navigation-bar](figures/custom-navigation-bar.png)
 
@@ -308,7 +308,7 @@ TabContent() {
 Non-custom navigation bars follow the default switching logic. If you are using a custom navigation bar, you must manually implement the logic for switching tabs so that when the user switches to a tab, the application displays the corresponding tab page.
 
 
-  **Figure 10** Content page and tab bar not synced 
+  **Figure 10** Content page and tab bar not synced
 
 ![Content Page and Tab Bar Not Synced](figures/tabcontent_tabbar_not_sync.gif)
 
@@ -378,7 +378,7 @@ export struct ContentPageNoAndTabLinkage {
   }
 }
 ```
-  **Figure 11** Content page and tab bar synced 
+  **Figure 11** Content page and tab bar synced
 
 ![Content Page and Tab Bar Synced](figures/tabcontent_tabbar_sync.gif)
 
@@ -431,11 +431,11 @@ To enable switching between content pages and tabs without swiping, you can pass
                 })
 ```
   
-  **Figure 12** Switching to a specific tab page   
+  **Figure 12** Switching to a specific tab page
 
 ![Switching to a Specified Tab Page](figures/TabsChange.gif)
 
-You can use the [onContentWillChange](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#oncontentwillchange12) API of the **Tabs** component to customize the interception callback. The interception callback function is called when a new page is about to be displayed. If the callback returns **true**, the tab can switch to the new page. If the callback returns **false**, the tab cannot switch to the new page and will remain on the current page.
+You can use the [onContentWillChange](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#oncontentwillchange12) API of the **Tabs** component to customize the interception callback. The interception callback is called when a new page is about to be displayed. If the callback returns **true**, the tab can switch to the new page. If the callback returns **false**, the tab cannot switch to the new page and will remain on the current page.
   
 <!-- @[custom_page_toggle_interception_events](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/ContentWillChange.ets) -->
 
@@ -459,7 +459,7 @@ Tabs({ barPosition: BarPosition.End, index: this.currentIndex, controller: this.
 
 In aging-friendly scenarios with large font sizes, the bottom tab bar offers a dialog box with large fonts for content display. When the component detects a large font setting, it constructs a long-press dialog box based on the configured text and icons. After the user long-presses the tab bar and then swipes in the dialog box to switch to the next tab, the dialog box updates with content of the new tab. Upon releasing, the dialog box closes and the UI switches to the corresponding tab page.
 
->  **NOTE**
+>  **NOTE** 
 >
 > The dialog box is applicable only to the bottom tab bar [BottomTabBarStyle](../reference/apis-arkui/arkui-ts/ts-container-tabcontent.md#bottomtabbarstyle9).
 
@@ -632,9 +632,9 @@ export struct AgeFriendlyTabs {
 
 ## Controlling the Number of Cached Pages
 
-Since API version 19, you can use the [cachedMaxCount](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#cachedmaxcount19) API to set the maximum number of cached child components and specify the cache mode. By default, all **TabContent** components are preloaded when the **Tabs** component is created, and the loaded pages remain in memory, which may cause performance and memory issues. To control the number of cached pages, set the [cachedMaxCount](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#cachedmaxcount19) attribute. Once this attribute is configured, pages are no longer preloaded but instead use lazy loading (pages load only when switched to). When users switch between pages, the [TabsCacheMode](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#tabscachemode19) attribute determines whether to retain or release pages based on the specified mode.
+Starting from API version 19, you can use [cachedMaxCount](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#cachedmaxcount19) to set the maximum number of cached child components and the cache mode. By default, when Tabs is created, all TabContent components are preloaded at once, and loaded pages are not released, which may cause performance and memory issues. In this case, you can set the [cachedMaxCount](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#cachedmaxcount19) attribute to control the number of cached pages. After this attribute is set, pages are not preloaded; instead, a lazy loading mechanism is used (a page is loaded only when you switch to it). When you switch pages, the configured [TabsCacheMode](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#tabscachemode19) determines whether to keep the cache or release the page.
 
->  **NOTE**
+>  **NOTE** 
 >
 > - When **TabsCacheMode** is set to **CACHE_BOTH_SIDE**, the currently displayed child component and the adjacent components on both sides are cached.
 >
@@ -730,9 +730,9 @@ Based on the preceding example code, the caching behavior in different scenarios
 
    ![cachedMaxCount4](figures/cachedMaxCount4.png)
 
-<!--Del-->## Samples
+## Samples
 
 For more details about the implementation of **Tabs**, see the following example:
 
-- [Common Components and Layouts](https://gitcode.com/openharmony/codelabs/tree/master/ETSUI/ArkTSComponents)<!--DelEnd-->
+- [Common Components and Layouts](https://gitcode.com/openharmony/codelabs/tree/master/ETSUI/ArkTSComponents)
 <!--RP1--><!--RP1End-->

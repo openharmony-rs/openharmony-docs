@@ -6,6 +6,7 @@
 <!--Designer: @HighLowWorld-->
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=4a0d60c413ad51190440217475c8f9ea1644f828 translatedAt=2026-10-13T01:51:12.368Z pushedAt=2026-10-13T02:03:20.853Z -->
 
 This topic walks you through on how to export the public key of a persistently stored asymmetric key. Currently, HUKS supports export of the ECC, RSA, Ed25519, X25519, and SM2 public keys.
 >**NOTE**<br>
@@ -58,11 +59,11 @@ let huksOptions: huks.HuksOptions = {
 function generateKeyItem(keyAlias: string, huksOptions: huks.HuksOptions) {
   return new Promise<void>((resolve, reject) => {
     try {
-      huks.generateKeyItem(keyAlias, huksOptions, (error, data) => {
+      huks.generateKeyItem(keyAlias, huksOptions, (error) => {
         if (error) {
           reject(error);
         } else {
-          resolve(data);
+          resolve();
         }
       });
     } catch (error) {
@@ -75,15 +76,10 @@ async function publicGenKeyFunc(keyAlias: string, huksOptions: huks.HuksOptions)
   console.info(`enter promise generateKeyItem`);
   try {
     await generateKeyItem(keyAlias, huksOptions)
-      .then((data) => {
-        console.info(`promise: generateKeyItem success, data = ${JSON.stringify(data)}`);
-      })
-      .catch((error: Error) => {
-        console.error(`promise: generateKeyItem failed, ${JSON.stringify(error)}`);
-      });
+    console.info(`promise: generateKeyItem success`);
     return 'Success';
   } catch (error) {
-    console.error(`promise: generateKeyItem input arg invalid, ${JSON.stringify(error)}`);
+    console.error(`promise: generateKeyItem failed, ${JSON.stringify(error)}`);
     return 'Failed';
   }
 }
@@ -112,4 +108,3 @@ function check(): string {
   }
 }
 ```
-<!--no_check-->

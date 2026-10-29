@@ -5,7 +5,7 @@
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=3383cf6b2a36933eae9d88e06bbfad5f09f5363a translatedAt=2026-09-16T03:29:48.029Z pushedAt=2026-09-16T08:21:13.295Z -->
+<!-- md-trans-meta sourceCommit=d1178002fc643635e4d37f0a3a9a787e6461e6fa translatedAt=2026-10-13T13:12:38.095Z pushedAt=2026-10-16T04:12:47.793Z -->
 
 The maintenance and debugging measures mentioned in this topic rely on the Ark runtime multi-thread check. Therefore, you are advised to enable this feature before debugging. For details about how to enable Ark runtime multi-thread check, see [Analyzing CPP Crash](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-multi-thread-check).
 
@@ -336,7 +336,7 @@ Sample code of **napi_call_threadsafe_function** and **napi_release_threadsafe_f
                     [](napi_env, void *, void *) {}, nullptr,                           \
                     [](napi_env, napi_value, void *, void *) {}, &tsfn);                \
                 if (status != napi_ok) {                                                \
-                    OH_INFO_ERROR(LOG_APP,"napi_create_threadsafe_function failed");    \
+                    OH_LOG_ERROR(LOG_APP,"napi_create_threadsafe_function failed");     \
                     return nullptr;                                                     \
                 }                                                                       \
                 if (!localEnv.RecreateSame()) {                                         \
@@ -365,7 +365,7 @@ EXPAND_THREADSAFE_FUNCTION_CASE(TriggerDFXTsfnRelease,
 
 ### Logs
 
-Most Node-API interfaces are not thread-safe. Additional measures are used to locate the errors caused by improper use of Node-API interfaces. 
+Most Node-API interfaces are not thread-safe. Additional measures are used to locate the errors caused by improper use of Node-API interfaces.
 
 Unless otherwise specified, the maintenance and debugging measures used in this topic will interrupt the process once the Ark runtime multi-thread check is enabled.
 

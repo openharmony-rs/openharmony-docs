@@ -2,17 +2,18 @@
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=4faed534b39ef26ef8f9b647802a53e9f8d2b792 translatedAt=2026-10-09T10:04:47.533Z pushedAt=2026-10-12T08:05:06.637Z -->
 
-The **NotificationContent** module provides APIs for defining the notification content.
+NotificationContent defines the content structure of a notification and provides APIs for describing multiple notification content types. When an application needs to publish a notification, it can select the corresponding content type interface to construct the [notification content](../../notification/notification-glossary.md#notification-content) based on the display requirements of the notification (such as basic text, long text, multi-line text, picture, and live view).
 
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> This topic describes only system APIs provided by the module. For details about its public APIs, see [NotificationContent](./js-apis-inner-notification-notificationContent.md).
+> This topic describes only system APIs provided by the module. For details about its public APIs, see [NotificationContent](js-apis-inner-notification-notificationContent.md).
 
 ## NotificationContent
 
@@ -20,11 +21,11 @@ The **NotificationContent** module provides APIs for defining the notification c
 
 | Name          | Type                                                                       | Read-Only| Optional| Description              |
 | -----------   | --------------------------------------------------------------------------- | ---- | --- | ------------------ |
-| liveView<sup>11+</sup>       | [NotificationLiveViewContent](#notificationliveviewcontent11)              | No | Yes | Common live view.<br>**System API**: This is a system API.|
+| liveView<sup>11+</sup>       | [NotificationLiveViewContent](#notificationliveviewcontent11)              | No  | Yes  | Normal live view type [notification content](../../notification/notification-glossary.md#notification-content).<br>**System API**: This API is a system API.|
 
 ## NotificationBasicContent
 
-Describes the normal text notification.
+Describes the basic text notification.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -32,11 +33,11 @@ Describes the normal text notification.
 
 | Name          | Type                                                                       | Read-Only| Optional| Description              |
 | -----------   | --------------------------------------------------------------------------- | ---- | --- | ------------------ |
-| structuredText<sup>21+</sup> | Map<string, string> |  No |  Yes | Structured notification. Currently, only service reminder messages can be displayed in structured format in the notification center. This parameter is left empty by default. (The size of key or value cannot exceed 512 bytes; otherwise, the excess part will be truncated. Only a maximum of three pairs of structured data are supported.)  |
+| structuredText<sup>21+</sup> | Map<string, string> |  No  |  Yes  | Structured field of the notification. Currently, only service reminder SMS messages are supported for structured display in the [notification center](../../notification/notification-glossary.md#notification-center). Empty by default. (The size of each key/value must not exceed 512 bytes; the excess part is truncated. A maximum of 3 pairs of structured data is supported, and the excess part is ignored.)   |
 
 ## NotificationLiveViewContent<sup>11+</sup>
 
-Describes the common live view.
+Describes the [normal live view notification](../../notification/notification-glossary.md#normal-live-view). This API is inherited from [NotificationBasicContent](#notificationbasiccontent).
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -45,16 +46,20 @@ Describes the common live view.
 | Name          | Type                                                               | Read-Only| Optional| Description                                                 |
 | -------------- | ------------------------------------------------------------------ | --- | --- | ------------------------------------------------------|
 | status         | [LiveViewStatus](#liveviewstatus11)                                | No | No | Notification status.                 |
-| version        | number                                                             | No | Yes | If the version number stored in the database is not **0xffffffff**, the version number needs to be verified when the live view is updated or ended to ensure that the current version number is greater than the version number stored in the database. The default value is **0xffffffff**.|
-| extraInfo      | Record<string, Object\>                                               | No | Yes | Extra information of the live view. This parameter is left empty by default.          |
+| version        | number                                                             | No | Yes | Notification version number. If the version number stored in the database is not **0xffffffff**, the version number needs to be verified when the live view is updated or ended to ensure that the current version number is greater than the version number stored in the database. The default value is **0xffffffff**.|
+| extraInfo      | Record<string, Object\>                                               | No  | Yes  | Additional content of the [live view notification](../../notification/notification-glossary.md#live-view-notification). Empty by default.           |
 | pictureInfo    | Record<string, Array<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)\>\> | No | Yes | Extra image information of the live view. This parameter is left empty by default.|
 | isLocalUpdateOnly<sup>12+</sup> | boolean                                           | No | Yes | Whether the live view is updated only locally. The default value is **false**.<br> - **true**: Yes.<br> - **false**: No.    |
-| extensionWantAgent<sup>20+</sup> | [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md)    |  No |  Yes | Redirection by tapping in the auxiliary area. This parameter is left empty by default.     |
+| extensionWantAgent<sup>20+</sup> | [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md)    |  No |  Yes | Redirection by tapping the auxiliary area. This parameter is left empty by default.     |
 
 
 ## NotificationSystemLiveViewContent<sup>18+</sup>
 
-Describes the system live view notification. A third-party application cannot directly create a notification of this type. After the system proxy creates a system live view, the third-party application releases a notification with the same ID to update the specified content. This API inherits from [NotificationBasicContent](./js-apis-inner-notification-notificationContent.md#notificationbasiccontent).
+Describes the [system live view](../../notification/notification-glossary.md#system-live-view) [notification content](../../notification/notification-glossary.md#notification-content), which is used to display real-time status information in the live view. Third-party applications cannot directly create this type of notification. After the system agent creates a system live view type notification, a third-party application can publish a notification with the same ID to update the specified content. This API is inherited from [NotificationBasicContent](#notificationbasiccontent).
+
+> **NOTE**
+>
+> The actual display effect depends on the device capability and the [notification center](../../notification/notification-glossary.md#notification-center) UI style.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -67,7 +72,11 @@ Describes the system live view notification. A third-party application cannot di
 
 ## NotificationCapsule<sup>11+</sup>
 
-Describe the notification capsule.
+Describes the [notification capsule](../../notification/notification-glossary.md#notification-capsule), which is used to display the capsule form in the live view.
+
+> **NOTE**
+>
+> The actual display effect depends on the device capability and the [notification center](../../notification/notification-glossary.md#notification-center) UI style.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -75,13 +84,13 @@ Describe the notification capsule.
 
 | Name                 |  Type                        | Read-Only| Optional| Description                             |
 | --------------------- | ---------------------------- | ---- | ---- | -------------------------------- |
-| content<sup>12+</sup> | string                       |  No |  Yes | Extended text of the capsule. This parameter is left empty by default.                  |
-| time<sup>18+</sup> | number                       |  No |  Yes | Display duration of the notification capsule of an instant task, in seconds. The default value is **0**.  |
+| content<sup>12+</sup> | string                       |  No  |  Yes  | Extended text of the capsule. This parameter is left empty by default.                   |
+| time<sup>18+</sup> | number                       |  No  |  Yes  | Display duration of the notification capsule of an instant task. The default value is **0**.<br>Unit: second.   |
 | capsuleButtons<sup>18+</sup> | Array\<[NotificationIconButton](#notificationiconbutton18)\>    |  No |  Yes | Buttons of the notification capsule of an instant task. A maximum of two buttons are supported. This parameter is left empty by default.     |
 
 ## LiveViewStatus<sup>11+</sup>
 
-Enumerates the statuses of the common live view.
+Describes the status of the [normal live view notification](../../notification/notification-glossary.md#normal-live-view).
 
 **System capability**: SystemCapability.Security.AccessToken
 
@@ -98,7 +107,7 @@ Enumerates the statuses of the common live view.
 
 ## NotificationIconButton<sup>18+</sup>
 
-Describes the information of a system notification button.
+Describes the system [notification button](../../notification/notification-glossary.md#notification-button).
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -106,10 +115,10 @@ Describes the information of a system notification button.
 
 | Name         | Type                   | Read-Only| Optional| Description                                     |
 | ------------ | ----------------------- | ---- | ---- | ---------------------------------------- |
-| name         | string                  | No  |  No | Button ID, which is used to distinguish multiple buttons of the same notification.  |
+| name         | string                  | No   |  No  | Button identifier, used to distinguish multiple different buttons for the same notification. The string length cannot exceed 202 bytes, and the exceeding part will be truncated. It cannot be an empty string.   |
 | iconResource | [IconType](#icontype18) | No  |  No | Background image of a button.                            |
-| text         | string                  | No  |  Yes | Text displayed on the button. This parameter is left empty by default.                          |
-| hidePanel    | boolean                 | No  |  Yes | Whether to hide the notification panel when the button is tapped. The default value is **false**.<br> - **true**: Yes.<br> - **false**: No.  |
+| text         | string                  | No   |  Yes  | Text displayed on the button. It defaults to empty. The string length cannot exceed 202 bytes, and the exceeding part will be truncated.             |
+| hidePanel    | boolean                 | No   |  Yes  | Whether to hide the [notification center](../../notification/notification-glossary.md#notification-center) when the button is tapped. The default value is **false**.<br> - **true**: yes.<br> - **false**: no.   |
 
 ## IconType<sup>18+</sup>
 
@@ -128,7 +137,7 @@ Describes the icon types.
 
 ## LiveViewTypes<sup>18+</sup>
 
-Enumerates live view types.
+Describes the type of the [live view notification](../../notification/notification-glossary.md#live-view-notification).
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -142,8 +151,18 @@ Enumerates live view types.
 
 ## NotificationMultiLineContent
 
+Describes the multi-line text notification. This API is inherited from [NotificationBasicContent](#notificationbasiccontent).
+
+> **NOTE**
+>
+> - When a notification of this type forms a [group notification](../../notification/notification-glossary.md#group-notification) with other notifications, it is displayed in the collapsed state by default. The title and text displayed are the `title` and `text` in the [basic text](#notificationbasiccontent) inherited by this type.<br>When a notification of this type is displayed independently without forming a group notification with other notifications, it is displayed in the expanded state by default. The title displayed is the expanded title `longTitle`, and the multi-line text content `lines` is displayed as multiple lines of text.
+>
+> - When the user taps a grouped notification to view the details of each notification, the notification is displayed in the expanded state.
+>
+> - The actual display effect depends on the device capability and the [notification center](../../notification/notification-glossary.md#notification-center) UI style.
+
 **System capability**: SystemCapability.Notification.Notification
 
 | Name          | Type   | Read-Only| Optional| Description                            |
 | -------------- | ------ | ---- | --- | -------------------------------- |
-| lineWantAgents<sup>20+</sup>       | Array<[WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md)> |  No | Yes | **wantAgent**s triggered when a line of text in the multi-line text is tapped. The text in different lines corresponds to different **wantAgent**s. The maximum number of lines configured for this field is equal to the value of [lines](./js-apis-inner-notification-notificationContent.md#notificationmultilinecontent). This parameter is left empty by default.<br>**System API**: This is a system API.<br>**Required permissions**: ohos.permission.NOTIFICATION_AGENT_CONTROLLER|
+| lineWantAgents<sup>20+</sup>       | Array<[WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md)> |  No  | Yes  | **wantAgent**s triggered when a line of text in the multi-line text is tapped. The text in different lines corresponds to different **wantAgent**s. The number of lines configured for this field cannot be greater than the number of [lines](js-apis-inner-notification-notificationContent.md#notificationmultilinecontent). This parameter is left empty by default.<br>**System API**: This is a system API.<br>**Required permissions**: ohos.permission.NOTIFICATION_AGENT_CONTROLLER |

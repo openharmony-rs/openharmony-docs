@@ -1,4 +1,4 @@
-# AES Symmetric Key Encryption and Decryption (ArkTS)
+# Encryption and Decryption with an AES Symmetric Key (ArkTS)
 
 <!--Kit: Crypto Architecture Kit-->
 <!--Subsystem: Security-->
@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=e80025ed82ed281bac11c255d720292d542f564f translatedAt=2026-08-31T02:36:16.746Z pushedAt=2026-08-31T09:14:43.499Z -->
+<!-- md-trans-meta sourceCommit=37d727032f8a5a0747b68f886d62fe3723192102 translatedAt=2026-10-09T01:34:32.630Z pushedAt=2026-10-10T01:41:52.708Z -->
 
 For the corresponding algorithm specifications, see [Symmetric Key Encryption and Decryption Algorithm Specifications: AES](crypto-encryption-decryption.md#aes).
 
@@ -14,7 +14,7 @@ For the corresponding algorithm specifications, see [Symmetric Key Encryption an
 
 **Encryption**
 
-1. Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesymkeygenerator) to create a symmetric key (SymKey) with the AES algorithm and a key length of 128 bits. Then call [SymKeyGenerator.generateSymKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatesymkey-1) to generate the symmetric key.
+1. Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesymkeygenerator) to generate a 128-bit AES symmetric key (**SymKey**). Then call [SymKeyGenerator.convertKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertkey-1) to generate the symmetric key.
 
    To generate an AES symmetric key, you can refer to the following example and read it together with [Symmetric Key Generation and Conversion Specifications: AES](crypto-key-generation-conversion.md#aes) and [Randomly Generating a Symmetric Key](crypto-generate-sym-key-randomly.md). Note that the reference documents may differ from the current example in input parameters.
 
@@ -33,9 +33,9 @@ For the corresponding algorithm specifications, see [Symmetric Key Encryption an
 
 6. Read [GcmParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#gcmparamsspec).authTag as the authentication information for decryption.
 
-> **NOTE:**
->
-> In GCM mode, during a single encryption process, concatenating the result of each update and the final doFinal yields "ciphertext + authTag", where authTag is the last 16 bytes and the rest is ciphertext. If null is passed to the data parameter of doFinal, the doFinal result is the authTag.
+   > **NOTE:**
+   >
+   > In GCM mode, during a single encryption process, concatenating the result of each update and the final doFinal yields "ciphertext + authTag", where authTag is the last 16 bytes and the rest is ciphertext. If null is passed to the data parameter of doFinal, the doFinal result is the authTag.
 
 **Decryption**
 
@@ -219,7 +219,7 @@ If AES (GCM mode) decryption fails and returns error code 17630001, see [Failed 
 
 **Encryption**
 
-1. Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesymkeygenerator) and [SymKeyGenerator.generateSymKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatesymkey-1) to generate a symmetric key (SymKey) with the AES algorithm and a key length of 128 bits.
+1. Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesymkeygenerator) and [SymKeyGenerator.convertKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertkey-1) to generate a 128-bit AES symmetric key (**SymKey**).
 
    For details about how to generate an AES symmetric key, you can refer to the example below, together with [Symmetric Key Generation and Conversion Specifications: AES](crypto-key-generation-conversion.md#aes) and [Randomly Generating a Symmetric Key](crypto-generate-sym-key-randomly.md) for understanding. The reference documents may have differences in input parameters compared with the current example. Note the difference.
 
@@ -403,7 +403,7 @@ Use the `AeadParamsSpec` parameter when you do not want to explicitly save the `
 
 **Key generation**
 
-Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesymkeygenerator) and [SymKeyGenerator.generateSymKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatesymkey-1) to generate a symmetric key (`SymKey`) with the AES algorithm and a key length of 128 bits.
+Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesymkeygenerator) and [SymKeyGenerator.convertKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertkey-1) to generate a 128-bit AES symmetric key (**SymKey**).
 
    For details about how to generate an AES symmetric key, refer to the following example together with the symmetric key generation and conversion specifications: [AES](crypto-key-generation-conversion.md#aes) and [Randomly Generating a Symmetric Key](crypto-generate-sym-key-randomly.md). Note that the reference documents may differ from the current example in input parameters.
 
@@ -419,7 +419,7 @@ Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-archite
    > **NOTE**
    >
    > When `AeadParamsSpec` is used, in CCM mode you can call only one of `update` and `doFinal` for encryption, and each method can be called only once.
-   >
+   > 
    > When a Cipher instance is initialized with `AeadParamsSpec`, the authentication tag (`authTag`) is automatically appended to the end of the ciphertext and does not need to be saved separately.
    >
    > In CCM mode with the `AeadParamsSpec` structure, `tagLen` supports 4, 6, 8, 10, 12, 14, and 16. If it is not passed, the default value is 12. The unit is byte.
@@ -574,7 +574,7 @@ If AES (CCM mode) decryption fails and returns error code 17630001, see [Failed 
 
 **Encryption**
 
-1. Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesymkeygenerator) and [SymKeyGenerator.generateSymKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatesymkey-1) to generate a symmetric key (SymKey) with the AES algorithm and a key length of 128 bits.
+1. Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesymkeygenerator) and [SymKeyGenerator.convertKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertkey-1) to generate a 128-bit AES symmetric key (**SymKey**).
 
    For how to generate an AES symmetric key, you can refer to the example below, and understand it together with [Symmetric Key Generation and Conversion Specifications: AES](crypto-key-generation-conversion.md#aes) and [Randomly Generating a Symmetric Key](crypto-generate-sym-key-randomly.md). The reference documents may have differences in input parameters from the current example, so please note the difference when reading.
 
@@ -734,7 +734,7 @@ If AES (CBC mode) decryption fails and returns error code 17630001, see [Failed 
 
 **Encryption**
 
-1. Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesymkeygenerator) and [SymKeyGenerator.generateSymKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatesymkey-1) to generate a symmetric key (`SymKey`) with the AES algorithm and a key length of 128 bits.
+1. Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesymkeygenerator) and [SymKeyGenerator.convertKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertkey-1) to generate a 128-bit AES symmetric key (**SymKey**).
 
    To learn how to generate an AES symmetric key, refer to the following example together with [Symmetric Key Generation and Conversion Specifications: AES](crypto-key-generation-conversion.md#aes) and [Randomly Generating a Symmetric Key](crypto-generate-sym-key-randomly.md). The reference documents may differ from the current example in input parameters, so note the difference when reading them.
 
@@ -862,7 +862,7 @@ If AES (ECB mode) decryption fails and returns error code 17630001, see [Failed 
 
 **Encryption**
 
-1. Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesymkeygenerator) and [SymKeyGenerator.generateSymKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatesymkey-1) to generate a symmetric key (SymKey) with the AES algorithm and a key length of 128 bits.
+1. Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesymkeygenerator) and [SymKeyGenerator.convertKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertkey-1) to generate a 128-bit AES symmetric key (**SymKey**).
 
    To learn how to generate an AES symmetric key, you can refer to the following example and read [Symmetric Key Generation and Conversion Specifications: AES](crypto-key-generation-conversion.md#aes) and [Randomly Generating a Symmetric Key](crypto-generate-sym-key-randomly.md) for understanding. The reference documents may have differences in input parameters from the current example, so note the difference when reading.
 
@@ -925,7 +925,7 @@ If AES (GCM mode) decryption fails and error code 17630001 is returned, see [Fai
     let dataTag = new Uint8Array(arr);
     let tagBlob: cryptoFramework.DataBlob = {
       data: dataTag
-    }; // The GCM authTag is obtained by doFinal() in encryption and passed in params of init() in decryption.
+    }; // GCM's authTag is obtained via doFinal() during encryption and passed via init()'s params during decryption.
     let gcmParamsSpec: cryptoFramework.GcmParamsSpec = {
       iv: ivBlob,
       aad: aadBlob,
@@ -1032,7 +1032,7 @@ If AES (GCM mode) decryption fails and error code 17630001 is returned, see [Fai
     let dataTag = new Uint8Array(arr);
     let tagBlob: cryptoFramework.DataBlob = {
       data: dataTag
-    }; // The GCM authTag is obtained by doFinal() in encryption and passed in params of init() in decryption.
+    }; // The GCM authTag is obtained through doFinal() during encryption and passed through init()'s params during decryption.
     let gcmParamsSpec: cryptoFramework.GcmParamsSpec = {
       iv: ivBlob,
       aad: aadBlob,

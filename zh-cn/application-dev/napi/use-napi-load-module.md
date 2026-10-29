@@ -324,7 +324,7 @@ napi_status napi_load_module(napi_env env, const char* path, napi_value* result)
     }
     ```
 
-2. 在使用library的模块中，对build-profile.json5进行配置：
+2. 在使用sharedlibrary的模块中，对build-profile.json5进行配置：
 
     ```json
     {

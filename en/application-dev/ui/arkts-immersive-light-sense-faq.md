@@ -1,30 +1,156 @@
-# FAQs About Immersive Light Sense
-
+# FAQs About Immersive Light Sensing
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @H-xinwei-->
 <!--Designer: @zhanghaibo0-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=0ecc390317140dcc7c4726f5897f445275bf3259 translatedAt=2026-08-01T00:27:40.538Z pushedAt=2026-08-01T04:55:46.667Z -->
+<!-- md-trans-meta sourceCommit=30a0d7c059dff847820cd3847015731fe24ef1b1 translatedAt=2026-10-12T09:18:50.105Z pushedAt=2026-10-13T03:34:51.913Z -->
 
-This document provides common issues and solutions encountered during the development of immersive light sense. For a complete introduction and development guide to immersive light sense, see [Immersive Light Sense](arkts-immersive-light-sense-overview.md).
+This document provides common issues and solutions encountered during the development of immersive light sense. For a complete introduction and development guide to immersive light sense, see [Immersive Light Sense Overview](arkts-immersive-light-sense-overview.md).
+
+<!--RP1--><!--RP1End-->
 
 ## No Material Effect Is Visible After Setting Immersive System Material for a Component
 
+### Component Outside the Immersive Light Sense Effective Scope
+
 **Symptom**
 
-After calling the [systemMaterial](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#systemmaterial) API to set immersive system material for a component, the component's visual appearance does not change and still displays a solid-color background or no material effect at all.
+- After immersive light sense is enabled, the component does not display the immersive light sense effect.
+- The log contains the following message: Material inactive: out of scope. Use component in navigation title bar or Tabbar.
 
 **Possible Causes**
 
-The visual layer of the immersive system material is positioned below the component's [backgroundColor](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor), [backgroundBlurStyle](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundblurstyle9), and other attributes. If an opaque background color or background blur style is set simultaneously, these properties will overlay the material layer, blocking the material effect from being visible.
+After immersive light sense is enabled,
+- The immersive light sense effect of specified popup components ([AlertDialog](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md), [ActionSheet](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md), [CustomDialog](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md), [CalendarPickerDialog](../reference/apis-arkui/arkui-ts/ts-methods-calendarpicker-dialog.md), [DatePickerDialog](../reference/apis-arkui/arkui-ts/ts-methods-datepicker-dialog.md), [TimePickerDialog](../reference/apis-arkui/arkui-ts/ts-methods-timepicker-dialog.md), [TextPickerDialog](../reference/apis-arkui/arkui-ts/ts-methods-textpicker-dialog.md), [SelectionMenu](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SelectionMenu.md), [AlphabetIndexer](../reference/apis-arkui/arkui-ts/ts-container-alphabet-indexer.md) popup, and the text menu triggered by long press or double tap after setting [copyOption](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#copyoption9) for [Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md)) can take effect on the full page.
+- The immersive light sense effect of specified popup APIs ([PromptAction](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md), [ArkUI_NativeDialog](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativedialog.md), [@ohos.promptAction (popup)](../reference/apis-arkui/js-apis-promptAction.md), [Popup control](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md), [Tips control](../reference/apis-arkui/arkui-ts/ts-universal-attributes-tips.md), [Menu control](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md), [Sheet transition](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md)) can take effect on the full page.
+- The immersive light sense effect of [Slider](../reference/apis-arkui/arkui-ts/ts-basic-components-slider.md), [Toggle](../reference/apis-arkui/arkui-ts/ts-basic-components-toggle.md), and [Select](../reference/apis-arkui/arkui-ts/ts-basic-components-select.md) can take effect on the full page.
+- Other components take effect only in the Navigation/NavDestination title bar or in the bottom TabBar of horizontal Tabs where barPosition is BarPosition.End. Setting the immersive light sense effect in other areas does not take effect.
 
 **Solution**
 
-1. Set the component's background color to transparent (`Color.Transparent`) or remove the background color setting.
+Place the component that requires the immersive light sense effect in the Navigation/NavDestination title bar, or in the bottom TabBar of horizontal Tabs where barPosition is BarPosition.End.
 
-2. Remove background blur styles such as [backgroundBlurStyle](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundblurstyle9) to prevent the blur effect from covering the material layer.
+If the effective scope requirement cannot be met, use universal attributes such as [backgroundColor](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor) instead of the material effect.
+
+**Example**
+
+The following example shows the display effect of enabling immersive light sense in the Navigation title bar and in the Navigation content area, respectively. The Column in the Navigation title bar takes effect normally when immersive light sense is enabled. The Column component in the Navigation content area does not take effect because it is not located in the Navigation title bar or the bottom TabBar.
+ 
+The illustration in this example shows the strong effect on a high computing power device. The component's immersive light sense effect is automatically adjusted based on the device computing power and the immersive light sense effect set by the user in the system, so no additional adaptation is required.
+
+<!-- @[material_scope_adapt](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsImmersiveLightSense/entry/src/main/ets/pages/MaterialScopeAdaptExample.ets) -->
+
+``` TypeScript
+import { CircleShape, TitleBarType, uiMaterial } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct MaterialScopeAdaptExample {
+  private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+  @State titleHeight: number = 140;
+
+  @Builder
+  NavigationTitle() {
+    Row() {
+      // Replace $r('app.string.title_bar') with the actual resource file. In this example, the value of the resource file is "Title Bar".
+      Text($r('app.string.title_bar'))
+        .fontColor('#182431')
+        .fontSize(30)
+        .lineHeight(41)
+        .fontWeight(700)
+      Blank()
+      Column() {
+        SymbolGlyph($r('sys.symbol.a_3d_square_fill'))
+      }
+      .width(50)
+      .height(50)
+      .clipShape(new CircleShape({
+        width: 50,
+        height: 50
+      }))
+      .justifyContent(FlexAlign.Center)
+      .backgroundColor(Color.Transparent)
+      // Enable immersive light sense in the Navigation title bar. Within the effective range, the immersive light sense effect takes effect.
+      .systemMaterial(new uiMaterial.ImmersiveMaterial({
+        style: uiMaterial.ImmersiveStyle.THIN,
+      }))
+    }
+    .alignItems(VerticalAlign.Center)
+    .width('100%')
+    .padding(16)
+    .height(this.titleHeight)
+  }
+
+  build() {
+    Column() {
+      Navigation() {
+        Column() {
+          Row() {
+            // Replace $r('app.string.content_area') with the actual resource file. In this example, the value of the resource file is "Content Area".
+            Text($r('app.string.content_area'))
+
+            Blank()
+
+            Column() {
+              SymbolGlyph($r('sys.symbol.a_3d_square_fill'))
+            }
+            .width(50)
+            .height(50)
+            .clipShape(new CircleShape({
+              width: 50,
+              height: 50
+            }))
+            .justifyContent(FlexAlign.Center)
+            .backgroundColor(Color.Transparent)
+            // Enable immersive light sense in the Navigation content. Outside the effective range, the immersive light sense effect does not take effect.
+            .systemMaterial(new uiMaterial.ImmersiveMaterial({
+              style: uiMaterial.ImmersiveStyle.THIN,
+            }))
+          }
+          .width('100%')
+          .padding(16)
+          .borderRadius(16)
+        }
+        .width('100%')
+        .height('100%')
+        .padding(16)
+        .backgroundColor('#FFFFFF')
+        .linearGradient({
+          angle: 0,
+          colors: [
+            ['#004AAF', 0.0],
+            ['#2787D9', 0.5],
+            ['#F0FAFF', 1.0]
+          ]
+        })
+        .justifyContent(FlexAlign.Center)
+        .alignItems(HorizontalAlign.Center)
+      }
+      .title({ builder: this.NavigationTitle, height: this.titleHeight }, { barStyle: BarStyle.STACK })
+    }.width('100%').height('100%').backgroundColor('#F1F3F5')
+  }
+}
+```
+
+
+<!--Del-->   <!--DelEnd-->
+
+### Background Color or Background Blur Obscures the Material Effect
+
+**Symptom**
+
+After calling the [systemMaterial](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#systemmaterial) API to enable immersive light sense for a component, the component's visual appearance does not change and still displays a solid-color background or no material effect at all.
+
+**Possible Causes**
+
+The visual layer of immersive light sense is positioned below the component's [backgroundColor](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor), [backgroundBlurStyle](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundblurstyle9), and other attributes. If an opaque background color or background blur style is set simultaneously, these properties will overlay the material layer, blocking the material effect from being visible.
+
+**Solution**
+
+- Set the component's background color to transparent (`Color.Transparent`) or remove the background color setting.
+- Remove background blur styles such as [backgroundBlurStyle](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundblurstyle9) to prevent the blur effect from covering the material layer.
 
 **Code Example**
 
@@ -40,7 +166,6 @@ Column() {
   style: uiMaterial.ImmersiveStyle.THIN,
 }))
 .backgroundColor(Color.White)
-
 // Recommended approach: set the background color to transparent to ensure the material effect is visible
 Column() {
   Text('Immersive light sense')
@@ -52,6 +177,44 @@ Column() {
 .systemMaterial(new uiMaterial.ImmersiveMaterial({
   style: uiMaterial.ImmersiveStyle.THIN,
 }))
+```
+
+### CustomDialog Does Not Apply the Immersive System Material Effect
+
+**Symptom**
+
+- For custom popups created through [openCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog12) and [openCustomDialogWithController](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialogwithcontroller18), the immersive system material effect does not take effect after the `systemMaterial` attribute is passed.
+- When [customStyle](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions) of CustomDialog is set to `true`, the immersive system material effect does not take effect on the popup.
+
+**Possible Causes**
+
+If you create a custom popup using `openCustomDialog` or `openCustomDialogWithController`, or set the `customStyle` attribute of the popup to `true`, the popup backplate is customized by you, and adapting the immersive system material to this scenario is not currently supported.
+
+**Solution**
+
+Adapting the immersive system material to the custom popup backplate is not supported.
+
+If you have such a requirement, use other similar APIs, such as [openCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog12-1).
+
+**Code Example**
+
+The following code shows how to create a custom popup using the [openCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog12-1) API and apply the immersive system material effect.
+
+<!-- @[open_custom_dialog_with_system_material_set_material](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/opencustomdialog/openCustomDialogWithSystemMaterial.ets) -->
+
+```ts
+Button('Click Me')
+  .fontSize(30)
+  .onClick(() => {
+    this.getUIContext()
+      .getPromptAction()
+      .openCustomDialog({
+        builder: () => {
+          this.customDialogComponent()
+        },
+        systemMaterial: new uiMaterial.ImmersiveMaterial({ style: uiMaterial.ImmersiveStyle.ULTRA_THICK })
+      })
+  })
 ```
 
 ## Component Border Displays Colors from the Surrounding Background After Setting Immersive System Material
@@ -67,10 +230,9 @@ This is a normal optical behavior of immersive system materials. The immersive l
 **Solution**
 
 - Use thicker material styles (such as REGULAR, THICK, or ULTRA_THICK) to reduce material transparency and thereby minimize the refraction effect.
-
 - Add a [materialColor](../reference/apis-arkui/arkts-apis-uimaterial.md#immersiveoptions) overlay to the material layer to reduce the visibility of refraction by blending in a semi‑transparent color.
 
-## Fully Transparent materialColor Removes Material Effect
+## Material Effect Disappears After an Opaque Color Is Passed to materialColor
 
 **Symptom**
 
@@ -128,25 +290,22 @@ After enabling the [colorInvert](../reference/apis-arkui/arkts-apis-uimaterial.m
 
 For automatic color inversion to take effect, the following conditions must be met simultaneously:
 
+- The device computing power tier must be high or medium. On low computing power devices, automatic color inversion does not produce a visual difference.
 - The material style must be THIN or ULTRA_THIN. It does not take effect under REGULAR, THICK, or ULTRA_THICK styles.
-
-- The system's immersive light sense intensity configuration affects the inversion trigger threshold. The thinner the material and the stronger the system's immersive light sense setting, the more likely automatic inversion is triggered.
-
+- The system's immersive light sense intensity configuration affects the inversion trigger threshold. The thinner the immersive system material and the stronger the system's immersive light sense setting, the more likely automatic color inversion is triggered.
 - Automatic color inversion takes effect only for color values set through resource interfaces, including the [fontColor](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#fontcolor) attribute of the [Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md) component, the [fontColor](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md#fontcolor) attribute of the [Button](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md) component, the [fontColor](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md#fontcolor) attribute of the [SymbolGlyph](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md) component, the [fillColor](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md#fillcolor) attribute of the [Image](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md) component, and the color attributes of components such as TextInput, TextArea, Chip, ChipGroup, SegmentButton, and Swiper. For the complete list of attributes that take effect, see the [colorInvert](../reference/apis-arkui/arkts-apis-uimaterial.md#immersiveoptions) parameter description. Hardcoded color values in the code (such as `Color.White` and `'#FFFFFFFF'`) do not trigger automatic color inversion.
 
 **Solution**
 
 1. Ensure that the material style is THIN or ULTRA_THIN.
-
 2. Ensure that the text color is set via resource interfaces (such as `$r('app.color.xxx')`), rather than hard‑coded color values.
-
 3. Increase the system's immersive light sense configuration and observe the effect.
 
 ## Shadow Effect Does Not Behave as Expected When Both shadow Attribute and Immersive System Material Are Set
 
 **Symptom**
 
-After setting both the [shadow](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#shadow) universal attribute and immersive system material for a component, the shadow effect displays the material's built‑in shadow style, and the custom shadow parameters do not take effect.
+After setting both the [shadow](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#shadow) universal attribute and immersive system material for a component, the shadow effect displays the immersive system material's built-in shadow style, and the custom shadow parameters do not take effect.
 
 **Possible Causes**
 
@@ -154,8 +313,7 @@ When the [applyShadow](../reference/apis-arkui/arkts-apis-uimaterial.md#immersiv
 
 **Solution**
 
-- If you need to use the shadow effect that comes with the material, you do not need to set the **shadow** attribute additionally.
-
+- If you need to use the shadow effect that comes with the immersive system material, you do not need to set the **shadow** attribute additionally.
 - If you need to use a custom **shadow** universal attribute, set [applyShadow](../reference/apis-arkui/arkts-apis-uimaterial.md#immersiveoptions) to **false**.
 
 **Code Example**
@@ -168,7 +326,7 @@ new uiMaterial.ImmersiveMaterial({
 })
 ```
 
-## Component Style Appears Abnormal After Setting Material via the systemMaterial Universal Attribute
+## Component Style Appears Abnormal After Setting the Immersive System Material via the systemMaterial Universal Attribute
 
 **Symptom**
 
@@ -176,11 +334,11 @@ After setting the immersive system material through the universal attribute [sys
 
 **Possible Causes**
 
-When setting materials through the universal attribute, if [systemMaterial](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#systemmaterial) is placed before other style attributes, the material effect priority may not match expectations.
+When setting the immersive system material through the universal attribute, if [systemMaterial](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#systemmaterial) is placed before other style attributes, the material effect priority may not match expectations.
 
 **Solution**
 
-Set [systemMaterial](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#systemmaterial) after other style attributes (such as background color, border, shadow, etc.). When setting the material through component options parameters (such as **Toast**'s [ShowToastOptions](../reference/apis-arkui/js-apis-promptAction.md#showtoastoptions), **Popup**'s [PopupOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#popupoptions), etc.), the order does not need to be considered.
+Set [systemMaterial](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#systemmaterial) after other style attributes (such as background color, border, shadow, etc.). When setting the immersive system material through component options parameters (such as **Toast**'s [ShowToastOptions](../reference/apis-arkui/js-apis-promptAction.md#showtoastoptions), **Popup**'s [PopupOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#popupoptions), etc.), the order does not need to be considered.
 
 **Code Example**
 
@@ -211,7 +369,130 @@ In [DEFAULT](../reference/apis-arkui/arkts-apis-uimaterial.md#materialstate) mod
 **Solution**
 
 - Remove conflicting property settings (such as **backgroundColor**, **backgroundBlurStyle**, and **shadow**) to allow the material effect to be enabled by default.
+- In ENABLE mode, immersive system material styles have higher priority than the component's own background color, blur, shadow, and border styles, and more components enable the immersive system material by default.
+- To use the immersive system material while retaining existing properties, actively set it via the [systemMaterial](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#systemmaterial) attribute.
 
-- In ENABLE mode, immersive system material styles have higher priority than the component's own background color, blur, shadow, and border styles, and more components enable materials by default.
 
-- To use materials while retaining existing properties, actively set them via the [systemMaterial](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#systemmaterial) attribute.
+## Inconsistency Between the Material Rendering Area and the Component Visibility Area
+
+**Symptom**
+
+After the immersive system material is set for a component, the material rendering area is inconsistent with the component visibility area.
+
+- The visible area of Checkbox is a 40\*40 circle, while the material rendering area is a 40\*40 rectangle.
+
+  <!--Del-->   <!--DelEnd-->
+
+- The visible area of the Text component is the text content, while the material rendering area is a 100\*40 rectangle.
+
+  <!--Del-->   <!--DelEnd-->
+
+- The visible area of the Progress component is capsule-shaped, while the material rendering area is a 100\*40 rectangle.
+
+  <!--Del-->   <!--DelEnd-->
+
+**Possible Causes**
+
+The material rendering area is determined by the component layout area, while the component visibility area is the area where content is actually rendered, which may differ from the layout area, causing the two to be inconsistent.
+
+**Solution**
+
+Use the [width](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#width), [height](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#height), and [borderRadius](../reference/apis-arkui/arkui-ts/ts-universal-attributes-border.md#borderradius) APIs to keep the component visibility area consistent with the material rendering area.
+
+> **NOTE**
+>
+> The **Text** component does not support applying immersive system materials to text content.
+
+**Code Example**
+
+```ts
+// Example where the material rendering area is inconsistent with the component visibility area
+Row() {
+  Text('Checkbox component:')
+    .fontColor(Color.Black)
+  Checkbox()
+    .width(40)
+    .height(40)
+    .borderWidth(1)
+    .borderColor(Color.Blue)
+    .systemMaterial(new uiMaterial.ImmersiveMaterial({
+      style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
+      interactive: true
+    }))
+}
+Row() {
+  Text('Text component:')
+    .fontColor(Color.Black)
+  Text("hello")
+    .width(100)
+    .height(40)
+    .systemMaterial(new uiMaterial.ImmersiveMaterial({
+      style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
+      interactive: true
+    }))
+}
+
+Row() {
+  Text('Progress component:')
+    .fontColor(Color.Black)
+  Progress({value: 40, type: ProgressType.Capsule})
+    .width(100)
+    .height(40)
+    .systemMaterial(new uiMaterial.ImmersiveMaterial({
+      style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
+      interactive: true
+    }))
+}
+
+// Example where the material rendering area is consistent with the component visibility area
+Row() {
+  Text('Progress component:')
+    .fontColor(Color.Black)
+  Progress({value: 40, type: ProgressType.Capsule})
+    .width(100)
+    .height(40)
+    .borderRadius(20) // Set the borderRadius attribute to make the material rendering area consistent with the component visibility area.
+    .systemMaterial(new uiMaterial.ImmersiveMaterial({
+      style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
+      interactive: true
+    }))
+}
+```
+
+## Display Layer Issue of Material Effects
+
+**Symptom**
+
+When both the immersive system material and a background color are set for a component, the material effect is covered. For example, after a background color is set for the TextArea component, it covers the material effect.
+
+<!--Del-->   <!--DelEnd-->
+
+**Possible Causes**
+
+The background color of a self-drawn component applies to the content layer, while the material effect applies to the backplate layer. Because the content layer is above the backplate layer, the material effect is covered by the content layer.
+
+**Solution**
+
+It is not recommended to use the immersive system material together with the background color [backgroundColor](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor) API.
+
+> **NOTE**
+>
+> The immersive system material cannot be drawn on the content layer.
+
+**Code Example**
+
+```ts
+// Example of the display layer issue of the material effect
+Row() {
+  Text('TextArea component:')
+    .fontColor(Color.Black)
+  TextArea()
+    .width(100)
+    .height(40)
+    .backgroundColor('#cc999999') // It is not recommended to use the immersive system material and the background color API at the same time.
+    .systemMaterial(new uiMaterial.ImmersiveMaterial({
+      style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
+      interactive: true
+    }))
+}
+```

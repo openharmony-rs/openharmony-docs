@@ -6,9 +6,9 @@
 <!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=14ca614ebb030bf413b2d8393352ad7521a1d1b9 translatedAt=2026-08-19T10:01:29.326Z pushedAt=2026-08-20T01:48:14.763Z -->
+<!-- md-trans-meta sourceCommit=b93d1c66c7c5d7a115863148e38e9b4d6f77aba7 translatedAt=2026-10-09T13:12:02.813Z pushedAt=2026-10-10T07:10:53.169Z -->
 
-The **pbap** module implements phone book access capabilities based on the [Phone Book Access Profile (PBAP)](../../connectivity/bluetooth/terminology.md#pbap), such as obtaining the phone book service connection status.
+This module implements phone book access capabilities based on the [Phone Book Access Profile (PBAP)](../../connectivity/bluetooth/terminology.md#pbap). It allows you to create a [PSE](../../connectivity/bluetooth/terminology.md#pse) server instance and obtain the connection status of the Bluetooth phonebook service between devices. This module is applicable to scenarios where the local device functions as a PSE to provide phonebook access services for external devices. It helps you quickly implement Bluetooth phonebook sharing and connection management.
 
 > **NOTE**
 >
@@ -36,7 +36,7 @@ type BaseProfile = baseProfile.BaseProfile
 
 createPbapServerProfile(): PbapServerProfile
 
-Creates a [PSE](../../connectivity/bluetooth/terminology.md#pse) instance. Through this instance, you can use the local device as the PSE and implement functions such as obtaining the phone book service connection status.
+Creates a [PSE](../../connectivity/bluetooth/terminology.md#pse) instance. Through this instance, you can use the local device as the PSE and implement functions such as obtaining the phone book service connection status between the local device and other devices. Typical use scenarios include the Bluetooth car kit accessing the phone book of a mobile phone and cross-device contacts synchronization, where the local device needs to function as the phone book server.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 

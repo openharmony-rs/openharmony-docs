@@ -5,6 +5,7 @@
 <!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=99170cd098d394aca06fa01cb6bc53938313bd82 translatedAt=2026-10-13T13:20:26.724Z pushedAt=2026-10-16T03:03:09.734Z -->
 
 When an application needs to read image content, display an image, or process an image by scaling or cropping it, you can use [ImageSource](../../reference/apis-image-kit/arkts-apis-image-ImageSource.md) to decode the image. An application can create an ImageSource instance by using the image path in the application sandbox, a file descriptor, or a buffer, and decode the image into a PixelMap.
 
@@ -43,7 +44,7 @@ The following table lists the target pixel formats (`desiredPixelFormat`) suppor
 > - For PNG, GIF, ICO, and WebP images, if `desiredPixelFormat` is set to `RGB_565`, only images without an alpha channel can be decoded. Decoding fails for images with an alpha channel.
 >
 > - The `ARGB_8888` and `RGBA_F16` pixel formats are not supported for decoding. For JPEG, BMP, DNG, HEIC, WBMP, HEIFS, AVIF, AVIS, PNG, GIF, WebP, and ICO images, if `desiredPixelFormat` is set to `ARGB_8888` or `RGBA_F16`, the output pixel format is `RGBA_8888`.
->
+> 
 > - When both `desiredPixelFormat` and `desiredDynamicRange` are set, the former specifies the expected output pixel format, and the latter specifies the dynamic range after decoding. To meet SDR or HDR decoding requirements, the actual output pixel format of the PixelMap may be different from `desiredPixelFormat`. You are advised to call [getImageInfoSync](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md#getimageinfosync12) to obtain `ImageInfo.pixelFormat` and check the actual output pixel format.
 
 ## How to Develop
@@ -51,9 +52,9 @@ The following table lists the target pixel formats (`desiredPixelFormat`) suppor
 For details about the APIs related to image decoding, see [ImageSource](../../reference/apis-image-kit/arkts-apis-image-ImageSource.md).
 
 1. Import the image module.
-
-   <!-- @[decodingPixelMap_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/pages/DecodingPixelMap.ets) -->
-
+   
+   <!-- @[decodingPixelMap_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/pages/DecodingPixelMap.ets) -->   
+   
    ``` TypeScript
    // Import the required modules.
    import { image } from '@kit.ImageKit';
@@ -67,8 +68,8 @@ For details about the APIs related to image decoding, see [ImageSource](../../re
 
    The decoding capabilities of some image formats depend on device hardware. Before decoding an image, you can query the list of decoding formats supported by the device:
 
-   <!-- @[get_supportedFormats](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->
-
+   <!-- @[get_supportedFormats](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) --> 
+   
    ``` TypeScript
    // Obtain the list of decoding formats supported by the current device.
    export function getSupportedFormats(): string[] {
@@ -76,7 +77,7 @@ For details about the APIs related to image decoding, see [ImageSource](../../re
      console.info('Supported formats: ' + formats);
      return formats;
    }
-
+   
    // Check whether decoding is supported for the specified format.
    export function isFormatSupported(format: string): boolean {
      let formats = image.getImageSourceSupportedFormats();
@@ -85,10 +86,11 @@ For details about the APIs related to image decoding, see [ImageSource](../../re
    ```
 
 3. Obtain an image.
+
    - Method 1: Directly obtain the image through the sandbox path. This method applies only to images in the application sandbox path. For details about how to obtain the sandbox path, see [Obtaining Application File Paths](../../application-models/application-context-stage.md#obtaining-application-file-paths). For details about the application sandbox and how to push files to the application sandbox directory, see [File Management](../../file-management/app-sandbox-directory.md).
-
-     <!-- @[get_filePath](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->
-
+     
+     <!-- @[get_filePath](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
+     
      ``` TypeScript
      function getFilePath(context: Context, fileName: string): string {
        const filePath: string = context.cacheDir + '/' + fileName;
@@ -97,9 +99,9 @@ For details about the APIs related to image decoding, see [ImageSource](../../re
      ```
 
    - Method 2: Obtain the file descriptor of the image through the sandbox path. For details, see [@ohos.file.fs (File Management)](../../reference/apis-core-file-kit/js-apis-file-fs.md). To use this method, you must import the \@kit.CoreFileKit module first.
-
-     <!-- @[get_fileFd](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->
-
+   
+     <!-- @[get_fileFd](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
+     
      ``` TypeScript
      function getFileFd(context: Context, fileName: string): number | undefined {
        try {
@@ -113,11 +115,11 @@ For details about the APIs related to image decoding, see [ImageSource](../../re
        }
      }
      ```
-
+      
    - Method 3: Obtain the array buffer of the resource file through the resource manager. For details, see [getRawFileContent](../../reference/apis-localization-kit/js-apis-resource-manager.md#getrawfilecontent9-1). To use this method, you must import the \@kit.LocalizationKit module first.
 
-     <!-- @[get_fileBuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->
-
+     <!-- @[get_fileBuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
+     
      ``` TypeScript
      async function getFileBuffer(context: Context, fileName: string): Promise<ArrayBuffer | undefined> {
        try {
@@ -134,11 +136,11 @@ For details about the APIs related to image decoding, see [ImageSource](../../re
        }
      }
      ```
-
+      
    - Method 4: Obtain the raw file descriptor of the resource file through the resource manager. For details, see [getRawFd](../../reference/apis-localization-kit/js-apis-resource-manager.md#getrawfd9-1). To use this method, you must import the \@kit.LocalizationKit module first.
-
-     <!-- @[get_RawFd](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->
-
+   
+     <!-- @[get_RawFd](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
+     
      ``` TypeScript
      async function getRawFd(context: Context, fileName: string): Promise<resourceManager.RawFileDescriptor | undefined> {
        try {
@@ -152,13 +154,13 @@ For details about the APIs related to image decoding, see [ImageSource](../../re
        }
      }
      ```
-
+   
 4. Create an ImageSource instance.
 
    - Method 1: Create an ImageSource instance using the sandbox path. The sandbox path can be obtained by using method 1 in step 2.
 
-     <!-- @[createImageSource_filePath](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->
-
+     <!-- @[createImageSource_filePath](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
+     
      ``` TypeScript
      // path indicates the obtained sandbox path.
      const imageSource : image.ImageSource = image.createImageSource(filePath);
@@ -166,8 +168,8 @@ For details about the APIs related to image decoding, see [ImageSource](../../re
 
    - Method 2: Create an ImageSource instance using the file descriptor. The file descriptor can be obtained by using method 2 in step 2.
 
-     <!-- @[createImageSource_fd](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->
-
+     <!-- @[createImageSource_fd](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
+     
      ``` TypeScript
      // fd is the obtained file descriptor.
      const imageSource: image.ImageSource = image.createImageSource(fd);
@@ -175,25 +177,26 @@ For details about the APIs related to image decoding, see [ImageSource](../../re
 
    - Method 3: Create an ImageSource instance using an array buffer. The array buffer can be obtained by using method 3 in step 2.
 
-     <!-- @[createImageSource_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->
-
+     <!-- @[createImageSource_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
+     
      ``` TypeScript
      const imageSource: image.ImageSource = image.createImageSource(buffer);
      ```
 
    - Method 4: Create an ImageSource instance using the raw file descriptor of the resource file. The raw file descriptor can be obtained by using method 4 in step 2.
 
-     <!-- @[createImageSource_rawFd](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->
-
+     <!-- @[createImageSource_rawFd](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
+     
      ``` TypeScript
      const imageSource: image.ImageSource = image.createImageSource(rawFileDescriptor);
      ```
 
 5. Set **DecodingOptions** and decode the image to obtain a PixelMap.
+
    Carry out decoding after the setting.
 
-   <!-- @[create_pixelMap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->
-
+   <!-- @[create_pixelMap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->     
+   
    ``` TypeScript
    async createPixelMap(imageSource: image.ImageSource | undefined): Promise<image.PixelMap | undefined> {
      if (!imageSource) {
@@ -207,7 +210,7 @@ For details about the APIs related to image decoding, see [ImageSource](../../re
        // If AUTO is passed in, decoding is performed based on the image format and device capabilities. If the image is an HDR resource and the device supports HDR decoding, an HDR PixelMap is obtained after decoding.
        desiredDynamicRange: image.DecodingDynamicRange.AUTO,
      };
-
+   
      try {
        // Generate a PixelMap and return it.
        const pixelMap = await imageSource.createPixelMap(decodingOptions);
@@ -227,25 +230,17 @@ For details about the APIs related to image decoding, see [ImageSource](../../re
      }
    }
    ```
-
+      
    After the decoding is complete and the PixelMap is obtained, you can perform subsequent [image processing](image-transformation.md).
-
+   
 6. Release the PixelMap and ImageSource instances.
 
    Ensure that the asynchronous operations of the PixelMap and ImageSource instances have finished executing. After these variables are no longer needed, you can manually call the APIs below to release them.
 
-   <!-- @[release_pixelMapDecoder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/pages/DecodingPixelMap.ets) -->
-
+   <!-- @[release_imageSource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/pages/DecodingPixelMap.ets) -->  
+   
    ``` TypeScript
-   async release() {
-     try {
-       await this.pixelMap?.release();
-     } catch (error) {
-       console.error(`Failed to release PixelMap: ${error}.`);
-     } finally {
-       this.pixelMap = undefined;
-     }
-
+   async release_imageSource() {
      try {
        await this.imageSource?.release();
      } catch (error) {
@@ -255,7 +250,7 @@ For details about the APIs related to image decoding, see [ImageSource](../../re
      }
    }
    ```
-
+   
    > **NOTE**
    > 1. When to release the ImageSource instance: After successfully executing **createPixelMap** and obtaining the PixelMap instance, if you are certain that no other APIs of ImageSource will be used, you can manually release the ImageSource instance. Since the PixelMap instance obtained from decoding is independent, releasing the ImageSource instance will not make the PixelMap instance unusable.
    > 2. When to release the PixelMap instance: If you are using the [**Image** component](../../reference/apis-arkui/arkui-ts/ts-basic-components-image.md) for displaying images, there is no need to manually release the PixelMap instance, as the Image component will automatically manage the PixelMap instance passed to it. If your application handles the PixelMap instance on its own, you are advised to manually release the PixelMap instance of the old page during page transitions or when the application switches to the background. In scenarios where memory resources are tight, you are advised to release the PixelMap instances of all invisible pages except the current one.

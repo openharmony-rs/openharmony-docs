@@ -344,7 +344,7 @@ uinput --keyboard --text <text>
 
 **Example**
 ```bash
-# Simulate inputting a text "Hello, World!".
+# Simulate inputting a text 'Hello, World!'.
 uinput -K -t Hello,World!
 ```
 

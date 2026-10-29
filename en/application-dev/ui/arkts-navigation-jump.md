@@ -5,6 +5,7 @@
 <!--Designer: @fangzhiyuan1-->
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=8d75ae784f56fc7e62ba636f357115f8f4b9c3ff translatedAt=2026-10-12T09:34:08.958Z pushedAt=2026-10-13T06:09:45.008Z -->
 
 [Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md)-related routing operations are all based on the APIs provided by the navigation controller [NavPathStack](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navpathstack10). For each **Navigation** component, a **NavPathStack** object must be created and passed to manage pages. **NavPathStack** mainly provides page navigation, page return, page replacement, page deletion, parameter acquisition, and route interception.
 
@@ -211,25 +212,25 @@ Since API version 12, the navigation controller can be inherited. You can custom
 
 3. Navigation with an error code: Upon failure, an asynchronous callback is triggered to provide the error code information.
 
-      <!-- @[PushDestination](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
+      <!-- @[PushDestination](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) --> 
       
       ``` TypeScript
       const DOMAIN = 0x0000;
       this.pageStack.pushDestination({
         name: 'pageTwo', param: 'PageTwo Param'}).catch((error: BusinessError) => {
-        hilog.info(DOMAIN, 'testTag', '[pushDestination]failed', 'error code = ', error.code,
+        hilog.error(DOMAIN, 'testTag', '[pushDestination]failed', 'error code = ', error.code,
           'error.message = ', error.message);
       }).then(() => {
         hilog.info(DOMAIN, 'testTag', '[pushDestination]success.');
       });
       ```
 
-      <!-- @[PushDestinationByName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
+      <!-- @[PushDestinationByName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) --> 
       
       ``` TypeScript
       const DOMAIN = 0x0000;
       this.pageStack.pushDestinationByName('pageTwo', 'PageTwo Param').catch((error: BusinessError) => {
-        hilog.info(DOMAIN, 'testTag', '[pushDestinationByName]failed', 'error code = ', error.code,
+        hilog.error(DOMAIN, 'testTag', '[pushDestinationByName]failed', 'error code = ', error.code,
           'error.message = ', error.message);
       }).then(() => {
         hilog.info(DOMAIN, 'testTag', '[pushDestinationByName]success.');
@@ -241,26 +242,26 @@ Since API version 12, the navigation controller can be inherited. You can custom
 **NavPathStack** implements the page return feature through [pop](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#pop11)-related APIs. Below shows the examples:
 
    <!-- @[pop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageTwo.ets) -->
-   
+
    ``` TypeScript
    // Navigate back to the previous page.
    this.pathStack.pop();
    ```
    <!-- @[popToName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template4/PageTwo.ets) -->
-   
+
    ``` TypeScript
    // Navigate back to the previous pageOne page.
    this.pathStack.popToName('temp4-pageOne');
    ```
 
    <!-- @[popToIndex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template4/PageTwo.ets) --> 
-   
+
    ``` TypeScript
    // Navigate back to the page at index 0.
    this.pathStack.popToIndex(0);
    ```
    <!-- @[clear](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
-   
+
    ``` TypeScript
    // Navigate back to the root home page (clearing all pages in the stack).
    this.pageStack.clear();
@@ -271,21 +272,21 @@ Since API version 12, the navigation controller can be inherited. You can custom
 **NavPathStack** provides replace-related APIs (such as [replacePath](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#replacepath11), [replacePathByName](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#replacepathbyname11), and [replaceDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#replacedestination18)) to implement the page replacement functionality.
 
    <!-- @[replacePath](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
-   
+
    ``` TypeScript
    // Replace the top page of the stack with pageTwo.
    this.pageStack.replacePath({ name: 'pageTwo', param: 'PageTwo Param' });
    this.pageStack.replacePathByName('pageTwo', 'PageTwo Param');
    ```
 
-   <!-- @[replaceDestination](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
+   <!-- @[replaceDestination](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) --> 
    
    ``` TypeScript
    const DOMAIN = 0x0000;
    // Replacement with an error code: Upon failure, an asynchronous callback is triggered to provide the error code information.
    this.pageStack.replaceDestination({ name: 'pageTwo', param: 'PageTwo Param' })
      .catch((error: BusinessError) => {
-       hilog.info(DOMAIN, 'testTag', '[replaceDestination]failed', 'error code = ', error.code,
+       hilog.error(DOMAIN, 'testTag', '[replaceDestination]failed', 'error code = ', error.code,
          'error.message = ', error.message);
      }).then(() => {
      hilog.info(DOMAIN, 'testTag', '[replaceDestination]success.');
@@ -297,19 +298,19 @@ Since API version 12, the navigation controller can be inherited. You can custom
 **NavPathStack** uses the remove-related APIs (such as [removeByName](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#removebyname11), [removeByIndexes](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#removebyindexes11), and [removeByNavDestinationId](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#removebynavdestinationid12)) to delete a specific page from the navigation stack. Below shows the examples:
 
    <!-- @[removeByName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
-   
+
    ``` TypeScript
    // Remove all pages whose name is pageTwo from the stack.
    this.pageStack.removeByName('pageTwo');
    ```
    <!-- @[removeByIndexes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
-   
+
    ``` TypeScript
    // Remove the page with the specified index.
    this.pageStack.removeByIndexes([1]);
    ```
    <!-- @[removeByNavDestinationId](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
-   
+
    ``` TypeScript
    // Remove the page with the specified ID.
    this.pageStack.removeByNavDestinationId('1');
@@ -320,13 +321,13 @@ Since API version 12, the navigation controller can be inherited. You can custom
 **NavPathStack** provides move-related APIs (such as [moveToTop](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#movetotop10) and [moveIndexToTop](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#moveindextotop10)) to move a specific page to the top of the navigation stack. Below shows the examples:
 
    <!-- @[moveToTop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
-   
+
    ``` TypeScript
    // Move the page named pageTwo to the top of the stack.
    this.pageStack.moveToTop('pageTwo');
    ```
    <!-- @[moveIndexToTop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
-   
+
    ``` TypeScript
    // Move the page at index 1 to the top of the stack.
    this.pageStack.moveIndexToTop(1);
@@ -348,7 +349,7 @@ For details about the sample code for singleton navigation, see [Using NavPathSt
 The [onReady](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onready11) callback is triggered when a **NavDestination** page is first created, allowing you to obtain parameters associated with that page.
 
    <!-- @[onReady](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template7/PageOne.ets) -->
-   
+
    ``` TypeScript
    @Component
    struct Page01 {
@@ -369,8 +370,8 @@ The [onReady](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestinatio
 
 To receive parameters passed when navigating back, you can use the [onResult](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onresult15) API of the **NavDestination** component.
 
-   <!-- @[onResult](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
-   
+   <!-- @[onResult](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->  
+
    ``` TypeScript
    class NavParam {
      desc: string = 'navigation-param'
@@ -399,7 +400,7 @@ To receive parameters passed when navigating back, you can use the [onResult](..
 For other service scenarios, you can proactively call the getter APIs of **NavPathStack** (such as [getAllPathName](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#getallpathname10), [getParamByIndex](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#getparambyindex10), [getParamByName](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#getparambyname10), and [getIndexByName](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#getindexbyname10)) to obtain parameters from specific pages.
 
    <!-- @[GetParam](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
-   
+
    ``` TypeScript
    // Obtain all page names in the stack.
    this.pageStack.getAllPathName();
@@ -424,7 +425,7 @@ For other service scenarios, you can proactively call the getter APIs of **NavPa
 Take the **willShow** callback as an example. You can modify the navigation stack in the callback to implement route interception and redirection.
 
    <!-- @[setInterception](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/Index.ets) -->
-   
+
    ``` TypeScript
    const DOMAIN = 0x0000;
    this.pageStack.setInterception({
@@ -553,7 +554,7 @@ Create navigation subpage 1 as follows:
 
 3. Add an **onClick** method to the components within the subpage and use the **pop** method of the **NavPathStack** to pop the top element of the stack and return to the previous page upon click.
 
-<!-- @[NavigationExampleOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/NavigationExampleOne.ets) -->
+<!-- @[NavigationExampleOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/NavigationExampleOne.ets) -->  
 
 ``` TypeScript
 @Builder
@@ -705,60 +706,60 @@ export struct PageTwo {
 
 The implementation procedure is as follows:
 
-1. Configure **{"routerMap": "$profile:router_map"}** in the project configuration file [module.json5](../quick-start/module-configuration-file.md).
+1. In the **router_map.json** file, define the global routing table. The navigation controller **NavPathStack** can push the corresponding page information onto the stack based on the name in the routing table. 
 
-2. In the **router_map.json** file, define the global routing table. The navigation controller **NavPathStack** can push the corresponding page information onto the stack based on the name in the routing table.
+   ``` json
+   {
+     "routerMap" : [
+       {
+         "name" : "WLAN",
+         "pageSourceFile"  : "src/main/ets/pages/PageOne.ets",
+         "buildFunction" : "PageOneBuilder"
+       },
+       {
+         "name" : "Bluetooth",
+         "pageSourceFile"  : "src/main/ets/pages/PageOne.ets",
+         "buildFunction" : "PageOneBuilder"
+       },
+       {
+         "name" : "Personal Hotspot",
+         "pageSourceFile"  : "src/main/ets/pages/PageOne.ets",
+         "buildFunction" : "PageOneBuilder"
+       },
+       {
+         "name" : "Connect & Share",
+         "pageSourceFile"  : "src/main/ets/pages/PageTwo.ets",
+         "buildFunction" : "PageTwoBuilder"
+       },
+       {
+         "name" : "Projection",
+         "pageSourceFile"  : "src/main/ets/pages/PageOne.ets",
+         "buildFunction" : "PageOneBuilder"
+       },
+       {
+         "name" : "Print",
+         "pageSourceFile"  : "src/main/ets/pages/PageOne.ets",
+         "buildFunction" : "PageOneBuilder"
+       },
+       {
+         "name" : "VPN",
+         "pageSourceFile"  : "src/main/ets/pages/PageOne.ets",
+         "buildFunction" : "PageOneBuilder"
+       },
+       {
+         "name" : "Private DNS",
+         "pageSourceFile"  : "src/main/ets/pages/PageOne.ets",
+         "buildFunction" : "PageOneBuilder"
+       },
+       {
+         "name" : "NFC",
+         "pageSourceFile"  : "src/main/ets/pages/PageOne.ets",
+         "buildFunction" : "PageOneBuilder"
+       }
+     ]
+   }
+   ```
 
-``` json
-{
-  "routerMap" : [
-    {
-      "name" : "WLAN",
-      "pageSourceFile"  : "src/main/ets/pages/PageOne.ets",
-      "buildFunction" : "PageOneBuilder"
-    },
-    {
-      "name" : "Bluetooth",
-      "pageSourceFile"  : "src/main/ets/pages/PageOne.ets",
-      "buildFunction" : "PageOneBuilder"
-    },
-    {
-      "name" : "Personal Hotspot",
-      "pageSourceFile"  : "src/main/ets/pages/PageOne.ets",
-      "buildFunction" : "PageOneBuilder"
-    },
-    {
-      "name" : "Connect & Share",
-      "pageSourceFile"  : "src/main/ets/pages/PageTwo.ets",
-      "buildFunction" : "PageTwoBuilder"
-    },
-    {
-      "name" : "Projection",
-      "pageSourceFile"  : "src/main/ets/pages/PageOne.ets",
-      "buildFunction" : "PageOneBuilder"
-    },
-    {
-      "name" : "Print",
-      "pageSourceFile"  : "src/main/ets/pages/PageOne.ets",
-      "buildFunction" : "PageOneBuilder"
-    },
-    {
-      "name" : "VPN",
-      "pageSourceFile"  : "src/main/ets/pages/PageOne.ets",
-      "buildFunction" : "PageOneBuilder"
-    },
-    {
-      "name" : "Private DNS",
-      "pageSourceFile"  : "src/main/ets/pages/PageOne.ets",
-      "buildFunction" : "PageOneBuilder"
-    },
-    {
-      "name" : "NFC",
-      "pageSourceFile"  : "src/main/ets/pages/PageOne.ets",
-      "buildFunction" : "PageOneBuilder"
-    }
-  ]
-}
-```
+Configure `{"routerMap": "$profile:router_map"}` in the project configuration file [module.json5](../quick-start/module-configuration-file.md).
 
 ![en-us_image_0000001588458252](figures/arkts-navigation-transition_1.gif)

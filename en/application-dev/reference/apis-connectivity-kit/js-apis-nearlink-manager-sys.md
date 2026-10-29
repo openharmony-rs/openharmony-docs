@@ -1,14 +1,15 @@
 # @ohos.nearlink.manager (Basic NearLink Management Capability) (System API)
-
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @CCCZKing-->
 <!--Designer: @lilong32; @CCCZKing-->
 <!--Tester: @zhangjiaji111-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=aa9545020692baaf11004432a3eb3c2a031071bf translatedAt=2026-08-17T08:49:08.929Z pushedAt=2026-08-18T12:03:22.652Z -->
+<!-- md-trans-meta sourceCommit=304517cf5105092ff7ebb1be0da01c6a3f1d16fb translatedAt=2026-10-09T13:26:13.351Z pushedAt=2026-10-10T07:13:39.243Z -->
+
 
 This module provides basic NearLink management capabilities, including enabling or disabling NearLink, obtaining the MAC address of the local device, and setting the connection mode.
+
 
 **Since**: 26.0.0
 
@@ -16,11 +17,13 @@ This module provides basic NearLink management capabilities, including enabling 
 >
 > The APIs provided by this module are system APIs.
 
+
 ## Modules to Import
 
 ```typescript
 import { manager } from '@kit.ConnectivityKit';
 ```
+
 
 ## manager.enable
 
@@ -51,10 +54,9 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 | 36100099 | Operation failed. |
 
 **Example**
-
 ```typescript
 import { manager } from '@kit.ConnectivityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   manager.enable();
@@ -91,10 +93,9 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 | 36100099 | Operation failed. |
 
 **Example**
-
 ```typescript
 import { manager } from '@kit.ConnectivityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   manager.disable();
@@ -138,10 +139,9 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 | 36100099 | Operation failed. |
 
 **Example**
-
 ```typescript
 import { manager } from '@kit.ConnectivityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let addr: string = manager.getLocalAddress();
@@ -185,10 +185,9 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 | 36100099 | Operation failed. |
 
 **Example**
-
 ```typescript
 import { manager } from '@kit.ConnectivityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   manager.factoryReset().then(() => {
@@ -261,10 +260,9 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 | 36100099 | Operation failed. |
 
 **Example**
-
 ```typescript
 import { manager } from '@kit.ConnectivityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let mode: manager.ConnectionMode = manager.ConnectionMode.SLE_MODE_CONNECTABLE;

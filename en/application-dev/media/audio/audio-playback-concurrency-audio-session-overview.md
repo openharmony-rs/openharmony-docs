@@ -1,13 +1,13 @@
 # Audio Focus and Audio Session Overview
-
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @funny_sunix-->
+<!--Owner: @LauJianghu-->
 <!--Designer: @hao-liangfei-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=249567c57853ff4ccedf632ba69d388b5f14b19c translatedAt=2026-08-06T01:43:56.686Z pushedAt=2026-08-06T06:50:43.871Z -->
+<!-- md-trans-meta sourceCommit=f1ca331abf2c28a107fcffc98f1c662851eca68f translatedAt=2026-10-13T13:17:24.907Z pushedAt=2026-10-16T02:46:07.708Z -->
 
+ 
 When an app plays or records audio, it may encounter audio focus conflicts with other apps or with other audio streams within the same app. This section provides an overview of how these conflicts are handled and explains how to use the system's audio focus management capabilities to resolve audio interruption issues.
 
 The system provides two mechanisms for managing audio conflicts: audio focus and audio sessions.
@@ -27,7 +27,6 @@ The following table lists the main differences between audio focus and audio ses
 | Applicable scenario | Single playback and recording scenarios. | Complex concurrency scenarios requiring fine-grained control. |
 
 ## Audio Focus Usage Scenarios
-
 Audio focus is a system-managed mechanism that uses predefined focus policies to handle simple audio concurrency scenarios. Typical use cases include the following.
 
 ### Scenario 1: VoIP Calls Interrupted by Incoming Cellular Calls
@@ -63,7 +62,6 @@ If the system default policies do not meet your scenario requirements, you are a
 App A is playing music. The user then launches App B, which also starts audio playback. Under the default audio focus policy (STOP), App A is interrupted by App B and does not resume playback after App B stops playing. To enable App A to resume playback, the system provides the options listed in the following table.
 
 <!--Table: 6%; 30%; 30%; 17%; 17% -->
-
 | - | App A | App B | Interruption Effect | Remarks |
 |--|-------|-------|---------|------|
 | Default scenario | Plays media audio (music) | Plays media audio (short video) | The default focus policy is stop. After B starts playing, A is interrupted and does not resume. | If App A needs to continue playback, see the following solutions. |
@@ -78,7 +76,6 @@ App A is playing music. The user then launches App B, which also starts audio pl
 ### Scenario 2: Recording Interrupted by a Calling App and Unable to Resume
 
 <!--Table: 6%; 30%; 30%; 17%; 17% -->
-
 | - | App A | App B | Interruption Effect | Remarks |
 |--|-------|-------|---------|------|
 | Default scenario | Starts audio recording | Cellular call, video call | For security reasons, calls and VoIP calls prohibit recording. | - |
@@ -89,7 +86,6 @@ App A is playing music. The user then launches App B, which also starts audio pl
 ### Scenario 3: Recording Fails to Start During a Call
 
 <!--Table: 6%; 30%; 30%; 17%; 17% -->
-
 | - | App A | App B | Interruption Effect | Remarks |
 |--|-------|-------|---------|------|
 | Default scenario | Starts a call | Starts recording | Recording fails. | - |
@@ -104,7 +100,7 @@ App A is playing music, and app B starts recording (via voice recognition, voice
 | - | App A | App B | Interruption Effect | Remarks |
 |--|-------|-------|---------|------|
 | Default scenario | Starts music playback | Starts recording | Recording preempts focus, and music is paused. After recording ends, music receives a RESUME notification and can resume. | The RESUME event requires the app to actively call `play()` to resume. |
-| Solution 1 | Uses the audio recording API [setIndependentAudioSessionStrategy](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#setindependentaudiosessionstrategy24) with `MUTE_WHEN_INTERRUPTED` for `AudioSessionBehaviorFlags`. | No adaptation required. | During recording, music continues playback silently. After recording ends, music resumes audibly. | After resumption, the content muted during the silent period is skipped. Not recommended for scenarios sensitive to progress bars. |
+| Solution 1 | Uses the audio rendering API [setIndependentAudioSessionStrategy](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#setindependentaudiosessionstrategy24) with `AudioSessionBehaviorFlags` set to `MUTE_WHEN_INTERRUPTED`. | No adaptation required. | Music continues playing muted during recording, and resumes audibly after recording ends. | Resuming playback skips the muted content; not recommended for scenarios sensitive to the progress bar. |
 | Solution 2 | No adaptation required. | The audio session concurrency policy uses `CONCURRENCY_DUCK_OTHERS`. | Recording proceeds normally, and music volume is lowered. After recording ends, the volume is automatically restored. | Volume is automatically restored; no additional adaptation required. |
 | Solution 3 | No adaptation required. | The audio session concurrency policy uses `CONCURRENCY_MIX_WITH_OTHERS`. | Recording and music run simultaneously without affecting each other. | - |
 

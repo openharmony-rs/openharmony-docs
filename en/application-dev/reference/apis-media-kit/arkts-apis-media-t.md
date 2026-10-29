@@ -1,12 +1,10 @@
 # Types
-
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @chenkun613227-->
 <!--Designer: @yxc2-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=9db705fe14c0b1b0ee0cb98d9a6d2d4ac019dd9c translatedAt=2026-08-19T10:03:22.555Z pushedAt=2026-08-20T02:49:21.648Z -->
+<!--Adviser: @zzs911-->
 
 > **NOTE**
 >
@@ -133,9 +131,7 @@ type OnSuperResolutionChanged = (enabled: boolean) => void
 Describes the callback used to listen for video super resolution status changes. If super resolution is enabled by using [PlaybackStrategy](arkts-apis-media-i.md#playbackstrategy12), this callback is invoked to report the super resolution status changes. It is also invoked to report the initial status when the video starts. However, this callback is not invoked when super resolution is not enabled.
 
 Super resolution is automatically disabled in either of the following cases:
-
 * The current super resolution algorithm only works with videos that have a frame rate of 30 fps or lower. If the video frame rate exceeds 30 fps, or if the input frame rate exceeds the processing capability of the super resolution algorithm in scenarios such as fast playback, super resolution is automatically disabled.
-
 * The current super resolution algorithm supports input resolutions from 320 × 320 to 1920 × 1080, in px. If the input video resolution exceeds the range during playback, super resolution is automatically disabled.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
@@ -187,7 +183,7 @@ type OnFrameFetched = (frameInfo: FrameInfo, err?: BusinessError\<void>) => void
 
 Describes the callback invoked when thumbnails are obtained in batches.
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Multimedia.Media.AVMetadataExtractor
 
@@ -216,7 +212,7 @@ Enumerates the AVRecorder states. You can obtain the state through the **state**
 | 'paused'   | The AVRecorder enters this state when the recording is paused. In this state, you can call [AVRecorder.resume()](arkts-apis-media-AVRecorder.md#resume9) to continue recording or call [AVRecorder.stop()](arkts-apis-media-AVRecorder.md#stop9) to stop recording.|
 | 'stopped'  | The AVRecorder enters this state when the recording stops. In this state, you can call [AVRecorder.prepare()](arkts-apis-media-AVRecorder.md#prepare9) to set recording parameters so that the AVRecorder enters the prepared state again.|
 | 'released' | The AVRecorder enters this state when the recording resources are released. In this state, no operation can be performed. In any other state, you can call [AVRecorder.release()](arkts-apis-media-AVRecorder.md#release9) to enter the released state.|
-| 'error'    | The AVRecorder enters this state when an irreversible error occurs in the AVRecorder instance. In this state, the [AVRecorder.on('error')](arkts-apis-media-AVRecorder.md#onerror9) is reported, with the detailed error cause. In the error state, you must call [AVRecorder.reset()](arkts-apis-media-AVRecorder.md#reset9) to reset the AVRecorder instance or call [AVRecorder.release()](arkts-apis-media-AVRecorder.md#release9) to release the resources. |
+| 'error'    | The AVRecorder enters this state when an irreversible error occurs in the AVRecorder instance. In this state, the [AVRecorder.on('error')](arkts-apis-media-AVRecorder.md#onerror9) is reported, with the detailed error cause. In the error state, you must call [AVRecorder.reset()](arkts-apis-media-AVRecorder.md#reset9) to reset the AVRecorder instance or call [AVRecorder.release()](arkts-apis-media-AVRecorder.md#release9) to release the resources.|
 
 ## OnAVRecorderStateChangeHandler<sup>12+</sup>
 
@@ -393,7 +389,7 @@ Describes the video playback state. You can obtain the state through the **state
 | 'playing'  | Video playback is in progress.|
 | 'paused'   | Video playback is paused.|
 | 'stopped'  | Video playback is stopped.|
-| 'error'    | Video playback is in the error state.    |
+| 'error'    | The AVRecorder enters this state    |
 
 ## AVDownloadTaskState
 
@@ -401,21 +397,21 @@ type AVDownloadTaskState = 'init' | 'queued' | 'running' | 'completed' | 'paused
 
 Enumerates the states of an offline download task.
 
-**Since**: 26.0.0
+**Since:** 26.0.0
 
 **Model restriction**: This API can be used only in the stage model.
 
-**System capability:** SystemCapability.Multimedia.Media.Core
+**System capability**: SystemCapability.Multimedia.Media.Core
 
-| Type         | Description                     |
+| Type        | Description                    |
 | ------------ | ------------------------ |
-| 'init'       | The download task is initialized.         |
-| 'queued'     | The download task is queued and waiting.       |
-| 'running'    | The download task is running.       |
-| 'completed'  | The download task is completed.         |
-| 'paused'     | The download task is paused.         |
-| 'removing'   | The download task is being removed.       |
-| 'error'      | The download task encounters an error.           |
+| 'init'       | The download task is being initialized.        |
+| 'queued'     | The download task is waiting in the queue.      |
+| 'running'    | The download task is running.      |
+| 'completed'  | The download task is complete.        |
+| 'paused'     | The download task is paused.        |
+| 'removing'   | The download task is being removed.      |
+| 'error'      | An error occurred in the download task.          |
 
 ## OnAVDownloadTaskStateHandle
 
@@ -423,18 +419,18 @@ type OnAVDownloadTaskStateHandle = (taskId: string, state: AVDownloadTaskState) 
 
 Registers a callback for the status change event of an offline download task.
 
-**Since**: 26.0.0
+**Since:** 26.0.0
 
 **Model restriction**: This API can be used only in the stage model.
 
-**System capability:** SystemCapability.Multimedia.Media.Core
+**System capability**: SystemCapability.Multimedia.Media.Core
 
 **Parameters**
 
-| Name   | Type   | Mandatory | Description                                                         |
+| Name  | Type  | Mandatory| Description                                                        |
 | ------ | ------ | ------ | ---------------------------------------------------------- |
-| taskId | string | Yes     | ID of the offline download task whose state changes.                                  |
-| state  | [AVDownloadTaskState](#avdownloadtaskstate) | Yes | New state of the task. |
+| taskId | string | Yes    | ID of the offline download task whose status changes.                                 |
+| state  | [AVDownloadTaskState](#avdownloadtaskstate) | Yes| New task state.|
 
 ## OnAVDownloadProgressChangeHandle
 
@@ -442,18 +438,18 @@ type OnAVDownloadProgressChangeHandle = (taskId: string, progress: number) => vo
 
 Registers a callback for the progress change event of an offline download task. This event is triggered when the download progress changes by more than 1% compared to the last time and the interval since the last triggering exceeds 500 ms.
 
-**Since**: 26.0.0
+**Since:** 26.0.0
 
 **Model restriction**: This API can be used only in the stage model.
 
-**System capability:** SystemCapability.Multimedia.Media.Core
+**System capability**: SystemCapability.Multimedia.Media.Core
 
 **Parameters**
 
-| Name   | Type   | Mandatory | Description                                                         |
+| Name  | Type  | Mandatory| Description                                                        |
 | ------ | ------ | ------ | ---------------------------------------------------------- |
-| taskId | string | Yes     | ID of the offline download task.                                            |
-| progress | number | Yes     | Download progress value.<br>Value range: [0.0, 1.0]<br>The value **-1** indicates that the resource size is unknown. |
+| taskId | string | Yes    | ID of an offline download task.                                           |
+| progress | number | Yes    | Download progress.<br>The value range is [0.0, 1.0].<br>If the value is **-1**, the resource size is unknown.|
 
 ## OnAdsEventLoadingErrorHandle
 
@@ -461,34 +457,34 @@ type OnAdsEventLoadingErrorHandle = (adsId: string, reason: BusinessError) => vo
 
 Registers a callback for the ad media resource loading failure event.
 
-**Since**: 26.0.0
+**Since:** 26.0.0
 
 **Model restriction**: This API can be used only in the stage model.
 
-**System capability:** SystemCapability.Multimedia.Media.AVPlayer
+**System capability**: SystemCapability.Multimedia.Media.AVPlayer
 
 **Parameters**
 
-| Name   | Type   | Mandatory | Description                                                         |
+| Name  | Type  | Mandatory| Description                                                        |
 | ------ | ------ | ------ | ---------------------------------------------------------- |
-| adsId  | string | Yes | ID of the ad resource that fails to load.     |
-| reason | BusinessError | Yes | Reason for the loading failure. |
+| adsId  | string | Yes| ID of the ad resource that fails to be loaded.    |
+| reason | BusinessError | Yes| Cause of the loading failure.|
 
 ## OnAdsEventAdsStartedHandle
 
 type OnAdsEventAdsStartedHandle = (adsId: string, duration: number) => void
 
-Registers a callback invoked when the ad starts to play.
+Registers a callback invoked when the ad starts to play.Registers a callback invoked when the ad starts to play.
 
-**Since**: 26.0.0
+**Since:** 26.0.0
 
 **Model restriction**: This API can be used only in the stage model.
 
-**System capability:** SystemCapability.Multimedia.Media.AVPlayer
+**System capability**: SystemCapability.Multimedia.Media.AVPlayer
 
 **Parameters**
 
-| Name   | Type   | Mandatory | Description                                                         |
+| Name  | Type  | Mandatory| Description                                                        |
 | ------ | ------ | ------ | ---------------------------------------------------------- |
-| adsId  | string | Yes | ID of the ad resource being played.     |
-| duration | number | Yes | Playback duration of the ad, in milliseconds.<br>The value must be an integer. |
+| adsId  | string | Yes| ID of the ad resource that is being played.    |
+| duration | number | Yes| Playback duration of an ad, in milliseconds.<br>The value must be an integer.|

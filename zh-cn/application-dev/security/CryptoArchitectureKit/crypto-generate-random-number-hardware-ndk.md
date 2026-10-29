@@ -44,6 +44,11 @@
 | -------- | -------- |
 | CTR_DRBG | [1, INT_MAX] |
 
+## 在CMake脚本中链接相关动态库
+```txt
+target_link_libraries(entry PUBLIC libohcrypto.so)
+```
+
 ## 开发步骤
 
 1. 调用[OH_CryptoRand_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-rand-h.md#oh_cryptorand_create)，创建随机数生成器。

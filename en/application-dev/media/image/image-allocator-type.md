@@ -1,12 +1,11 @@
 # Image Decoding Memory Optimization (ArkTS)
-
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
 <!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=baa6342393c04fcdac4db76418b040e6bcf63bed translatedAt=2026-08-18T11:03:44.885Z pushedAt=2026-08-18T11:39:10.039Z -->
+<!-- md-trans-meta sourceCommit=bb8dffad20b6dfeef9edb224e6970710896e01f5 translatedAt=2026-09-28T02:47:02.430Z pushedAt=2026-09-29T08:34:16.036Z -->
 
 When an app performs image decoding, it needs to allocate the corresponding memory. The memory usage depends on the memory allocation type and pixel format. This guide describes different memory types, pixel formats, and how to combine them for optimal decoding performance.
 
@@ -19,7 +18,6 @@ When the PixelMap is large and uses shared memory, the RS main thread will exper
 The memory types for the PixelMap are as follows:
 
 - SHARE_MEMORY: shared memory. Texture upload is required.
-
 - DMA_ALLOC: DMA memory. Texture upload is not required.
 
 The system provides the [createPixelMapUsingAllocator](../../reference/apis-image-kit/arkts-apis-image-ImageSource.md#createpixelmapusingallocator15) API, allowing you to customize the memory allocation type for decoding. For details about the API definition and usage examples, see the image decoding API description [Interface (ImageSource)](../../reference/apis-image-kit/arkts-apis-image-ImageSource.md).
@@ -42,9 +40,7 @@ The system provides the [createPixelMapUsingAllocator](../../reference/apis-imag
 - **Reduced texture upload time**
 
    When SHARE_MEMORY is used, image data needs to be copied to GPU memory through the CPU, increasing the texture upload time. With DMA_ALLOC, data is directly stored in memory that is accessible by the GPU, avoiding the time-consuming copy process.
-
    - SHARE_MEMORY time consumption: Single-frame rendering of a 4K image takes about 20 ms.
-
    - DMA_ALLOC time consumption: The time of single-frame rendering for a 4K image can be reduced to about 4 ms. This optimization is particularly significant in scenarios involving the display of large images and frequent dynamic image loading.
 
 - **Reduced CPU load**
@@ -60,9 +56,7 @@ The system provides the [createPixelMapUsingAllocator](../../reference/apis-imag
 The current image decoding feature has the following restrictions on memory allocation modes:
 
 - HDR image decoding supports only DMA_ALLOC.
-
 - Hardware decoding supports only DMA_ALLOC.
-
 - SVG image decoding supports only SHARE_MEMORY.
 
 When [createPixelMapUsingAllocator](../../reference/apis-image-kit/arkts-apis-image-ImageSource.md#createpixelmapusingallocator15) is used for decoding, if the specified memory allocation mode does not match the image format or decoding method, an exception indicating a memory allocation failure is thrown.
@@ -78,7 +72,6 @@ The stride describes the storage width of each row of pixel data of an image in 
 When memory is allocated using DMA_ALLOC, the stride must meet the hardware alignment requirements.
 
 - The stride value must be an integer multiple of the number of bytes required by the hardware platform.
-
 - When the stride value is greater than or equal to the image width, the system automatically pads the data.
 
 The stride value can be obtained by calling [getImageInfo()](../../reference/apis-image-kit/arkts-apis-image-ImageSource.md#getimageinfo-1).
@@ -88,7 +81,7 @@ The stride value can be obtained by calling [getImageInfo()](../../reference/api
 2. Access the stride value (**info.stride**) from the ImageInfo object.
 
    <!-- @[allocator_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/pages/AllocateMemory.ets) -->   
-
+   
    ``` TypeScript
    // Import the related modules.
    import { image } from '@kit.ImageKit';
@@ -96,7 +89,7 @@ The stride value can be obtained by calling [getImageInfo()](../../reference/api
    ```
 
    <!-- @[allocator_called](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
-
+   
    ``` TypeScript
    async CreatePixelMapUsingAllocator(context: Context, type: image.AllocatorType): Promise<image.PixelMap | undefined> {
      const resourceMgr = context.resourceManager;
@@ -118,7 +111,7 @@ The stride value can be obtained by calling [getImageInfo()](../../reference/api
        
    }
    ```
-
+   
 ## Pixel Format
 
 The pixel format after image decoding directly affects memory usage. The main supported pixel formats are as follows.
@@ -138,11 +131,8 @@ The pixel format after image decoding directly affects memory usage. The main su
 - **Significantly reduces memory usage**
 
   Taking a 4K image (3840×2160) as an example:
-
   - RGBA_8888 memory usage: 3840 × 2160 × 4 ≈ 33.2 MB
-
   - NV21 memory usage: 3840 × 2160 × 1.5 ≈ 12.4 MB
-
   - Memory savings of approximately 62.5%, effectively reducing app memory pressure.
 
 - **Reduces format conversion overhead**
@@ -187,19 +177,9 @@ async CreatePixelMapWithYUV(context: Context): Promise<image.PixelMap | undefine
 
 ## System Default Memory Allocation
 
-When [createPixelMap](../../reference/apis-image-kit/arkts-apis-image-ImageSource.md#createpixelmap7) is called for decoding, different memory allocation types are used in different scenarios.
+When decoding with [createPixelMap](../../reference/apis-image-kit/arkts-apis-image-ImageSource.md#createpixelmap7) or [createPixelMapSync](../../reference/apis-image-kit/arkts-apis-image-ImageSource.md#createpixelmapsync12), the system automatically selects shared memory or DMA memory.
 
-DMA_ALLOC is used in the following scenarios:
-
-- Decoding HDR images
-
-- Decoding HEIF format images
-
-- Decoding JPEG format images, when the original image width and height are both between 1024 and 8192 pixels, [desiredPixelFormat](../../reference/apis-image-kit/arkts-apis-image-i.md#decodingoptions7) is RGBA_8888 or NV21, and the hardware is not busy (concurrency of 3).
-
-- Decoding images in other formats, when [desiredSize](../../reference/apis-image-kit/arkts-apis-image-i.md#decodingoptions7) is greater than or equal to 512 × 512 pixels (the original image size is used if desiredSize is not set), and the width is a multiple of 64.
-
-In all other scenarios, SHARE_MEMORY is used.
+To specify the memory type, call [createPixelMapUsingAllocator](../../reference/apis-image-kit/arkts-apis-image-ImageSource.md#createpixelmapusingallocator15) or [createPixelMapUsingAllocatorSync](../../reference/apis-image-kit/arkts-apis-image-ImageSource.md#createpixelmapusingallocatorsync15), and set `allocatorType` to `image.AllocatorType.DMA` or `image.AllocatorType.SHARE_MEMORY`.
 
 ## Memory Restrictions for Decoding a Single Image
 
@@ -220,7 +200,6 @@ For images with original pixel memory exceeding 2 GB that support downsampling, 
 Starting from API version 21, for images that support downsampling decoding, when **desiredSize** (expected output size) is set, the decoder calculates PixelMap pixel memory at the optimal downsampling rate with a base gradient of 1/8. This means that it selects the highest clarity sampling rate among 7/8, 6/8, ..., 1/8.
 
 The table below lists the downsampling decoding support for different image formats in the image framework.
-
 | Support for Downsampling| Image Format                                                 |
 | ------------ | --------------------------------------------------------- |
 | Supported         | .jpg, .png, .heic<sup>12+</sup> (Refer to the device specification document for specific support.)|

@@ -1,12 +1,11 @@
 # VPN Management
-
 <!--Kit: Network Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @wmyao_mm-->
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=8d3dade79c7254af98ff73abd19b721fdb7a8535 translatedAt=2026-08-13T03:09:49.385Z pushedAt=2026-08-13T07:09:09.547Z -->
+<!-- md-trans-meta sourceCommit=a803887a9fc2f8daf89eae54ccb6f391feede9ff translatedAt=2026-10-13T13:16:16.651Z pushedAt=2026-10-16T04:13:26.161Z -->
 
 ## Overview
 
@@ -26,14 +25,13 @@ OpenHarmony provides the VPN Extension solution for enhanced VPN management. Cur
 With the [vpnExtension](../reference/apis-network-kit/js-apis-net-vpnExtension.md) APIs provided by the system, you can build VPN services that support different protocols. OpenHarmony provides a UI that allows users to learn about the startup and connection of the current VPN app service:
 
 - When the VPN application sets up a connection for the first time, the VPN connection authorization dialog box is displayed. The dialog box prompts users whether to trust the VPN application and accept the VPN connection request.
-
 - When the VPN connection is started successfully, a VPN (key) icon is displayed in the status bar to remind users that the VPN is connected.
 
 To facilitate the query and configuration, your VPN application needs to provide the following UIs:
 
 - UI for manually starting and stopping the VPN connection.
-
 - When the VPN connection is started, the connection status of the VPN app is displayed in the notification panel, or network statistics (such as connection duration and traffic) are provided. Tapping the notification brings your VPN app to the foreground.
+
 
 ## How to Develop
 
@@ -46,10 +44,10 @@ To enable your application to support the VPN functionality, you need to create 
 ``` JSON5
 // Assume that the VNP application is named MyVpnExtAbility. Define it in module.json5.
 "extensionAbilities": [
-// ···
+  // ...
   {
     "name": "MyVpnExtAbility",
-    "srcEntry": "./ets/vpnability/VPNExtentionAbility.ets",
+    "srcEntry": "./ets/vpnability/VPNExtensionAbility.ets",
     "type": "vpn"
   }
 ],
@@ -62,13 +60,9 @@ To enable your application to support the VPN functionality, you need to create 
 Next, you need to configure, start, and stop the VPN in the created **VpnExtensionAbility**.
 
 - Establish a VPN tunnel. The following uses the UDP tunnel as an example. For details, see the **UdpConnect()** API in the [napi_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case/entry/src/main/cpp/napi_init.cpp) demo project.
-
 - Use [VpnConnection.protect](../reference/apis-network-kit/js-apis-net-vpnExtension.md#protect) to enable protection for the UDP tunnel.
-
 - Construct VPN Config parameters. For details, see [VPN Config Parameters](#description-of-vpn-config-parameters).
-
 - Use [VpnConnection.create](../reference/apis-network-kit/js-apis-net-vpnExtension.md#create) to establish a VPN connection.
-
 - Process data of the virtual network interface card (vNIC), such as reading or writing data.
 
 ### Starting the VPN Extension Ability
@@ -131,6 +125,8 @@ struct StartVpn {
 If your VPN app is not trusted by the user, the system displays a dialog box asking the user to authorize the VPN connection. After obtaining the authorization, the system automatically calls [onCreate](../reference/apis-network-kit/js-apis-VpnExtensionAbility.md#vpnextensionabilityoncreate) of the **VpnExtensionAbility**.
 
 Currently, only one active VPN connection is supported. If the application calls **startVpnExtensionAbility** when a VPN connection is active, it will receive a system rejection error. In this case, you are advised to remind the user to disconnect the active VPN connection first.
+
+
 
 ### Stopping the VPN Extension Ability
 
@@ -278,13 +274,11 @@ export class VpnTest extends VpnExtensionAbility {
 To ensure network connectivity, the system automatically stops the VPN connection when detecting that the VPN application is abnormal:
 
 - The application process that calls **startVpnExtensionAbility** exits.
-
 - The VPN service process is destroyed.
 
 ## Description of VPN Config parameters
 
 <!--Table: 20%; 20%; 10%; 10%; 40%-->
-
 | Name      | Type                                      | Read-only|Optional| Description         |
 | ------------------- | ------------------------------------------------------------ | ---- | ---|------------------------------------------------------------ |
 | addresses           | Array\<[LinkAddress](../reference/apis-network-kit/js-apis-net-connection.md#linkaddress)\> | No  |No| IP addresses of virtual network interface cards (vNICs).                                         |
@@ -314,7 +308,7 @@ let vpnConfig: vpnExtension.VpnConfig = {
   // Configure the IP address of the vNIC.
   addresses: [{
     address: {
-      address:'192.x.x.5',
+      address:'192.xxx.xxx.5',
       family:1
     },
     prefixLength:24
@@ -325,14 +319,14 @@ let vpnConfig: vpnExtension.VpnConfig = {
     interface: 'vpn-tun',
     destination: {
       address: {
-        address:'10.x.x.8',
+        address:'10.xxx.xxx.8',
         family:1,
         port:8080
       },
       prefixLength:24
     },
     gateway: {
-      address:'10.x.x.5',
+      address:'10.xxx.xxx.5',
       family:1,
       port:8080
     },
@@ -342,7 +336,7 @@ let vpnConfig: vpnExtension.VpnConfig = {
   // Configure the MTU.
   mtu: 1400,
   // Configure IP addresses of DNS serves.
-  dnsAddresses: ['223.x.x.5', '223.x.x.6'],
+  dnsAddresses: ['223.xxx.xxx.5', '223.xxx.xxx.6'],
   // Trusted app information list. When this item is configured, the blocked app information list must be empty.
   trustedApplications: ['com.test.browser'],
   // Blocked app information list. When this item is configured, the trusted app information list must be empty.
@@ -366,4 +360,5 @@ vpnConnection.create(vpnConfig).then((data) => {
 
 The OpenHarmony project provides a sample application named [VPN](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case), which showcases how to implement the VPN service.
 
-<!--no_check-->
+
+

@@ -6,6 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=e614d89ea989f36e0b13aa6a29dc8dc8d371310c translatedAt=2026-10-09T01:45:53.231Z pushedAt=2026-10-10T02:30:13.091Z -->
 
 This topic walks you through on how to generate an RSA, an ECC, and an SM2 asymmetric key pair (**KeyPair**) based on the specified key parameters and obtain the key parameter properties.
 
@@ -13,16 +14,16 @@ The **KeyPair** object created can be used for subsequent operations, such as en
 
 ## Generating an RSA Public Key Based on Key Parameters
 
-For details about the algorithm specifications, see [RSA](crypto-asym-key-generation-conversion-spec.md#rsa).
+For details about the algorithm specifications, see [Asymmetric Key Generation and Conversion Specifications: RSA](crypto-key-generation-conversion.md#rsa).
 
 1. Create an [RSACommonParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#rsacommonparamsspec10) object to specify the common parameter (**n**) of both the public and private keys of the RSA algorithm.
-   
+
    **RSACommonParamsSpec** is a child class of **AsyKeySpec**. Specify the RSA algorithm in the **algName** parameter, and set the key parameter type to **AsyKeySpecType.COMMON_PARAMS_SPEC**, which indicates the common parameter for both the public and private keys.
 
    When key parameters are specified for generating a key, parameters of the bigint type must be input in big-endian format, and the values must be a positive number to satisfy the requirements of mathematical operations.
 
 2. Create an [RSAPubKeySpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#rsapubkeyspec10) object to specify the parameters (**n**, **pk**) contained in the public key of the RSA algorithm.
-   
+
    **RSAPubKeySpec** is a child class of **AsyKeySpec**. Specify the RSA algorithm in the **algName** parameter, and set the key parameter type to **AsyKeySpecType.PUBLIC_KEY_SPEC**, which indicates the parameters of the public key.
 
 3. Call [cryptoFramework.createAsyKeyGeneratorBySpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateasykeygeneratorbyspec10) with the **RSAPubKeySpec** object to create an asymmetric key generator (**AsyKeyGeneratorBySpec**) object.
@@ -32,8 +33,8 @@ For details about the algorithm specifications, see [RSA](crypto-asym-key-genera
 5. Call [PubKey.getAsyKeySpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#getasykeyspec10) to obtain the modulus **n** and the public key exponent **pk** (expressed as e in the formula).
 
 - Example: Generate an RSA public key based on key parameters (using callback-based APIs).
-  <!-- @[specify_parameter_generate_rsa_keypair](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/SpecifiedParametersGenerateAsymmetricKeyPair/entry/src/main/ets/pages/rsa/Callback.ets) -->
-  
+  <!-- @[specify_parameter_generate_rsa_keypair](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SpecifiedParametersGenerateAsymmetricKeyPair/entry/src/main/ets/pages/rsa/Callback.ets) -->
+
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   
@@ -107,8 +108,8 @@ For details about the algorithm specifications, see [RSA](crypto-asym-key-genera
 
 
 - Synchronously return the result ([generatePubKeySync](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatepubkeysync12)):
-  <!-- @[specify_parameter_generate_rsa_keypair_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/SpecifiedParametersGenerateAsymmetricKeyPair/entry/src/main/ets/pages/rsa/Sync.ets) -->
-  
+  <!-- @[specify_parameter_generate_rsa_keypair_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SpecifiedParametersGenerateAsymmetricKeyPair/entry/src/main/ets/pages/rsa/Sync.ets) -->
+
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   
@@ -186,7 +187,7 @@ For details about the algorithm specifications, see [RSA](crypto-asym-key-genera
 
 ## Generating an ECC Key Pair Based on Key Parameters
 
-For details about the algorithm specifications, see [ECC](crypto-asym-key-generation-conversion-spec.md#ecc).
+For the corresponding algorithm specification, see [Asymmetric Key Generation and Conversion Specifications: ECC](crypto-key-generation-conversion.md#ecc).
 
 1. Create an [ECCCommonParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#ecccommonparamsspec10) object to specify the common parameters of both the public and private keys of the ECC algorithm.
 
@@ -201,8 +202,8 @@ For details about the algorithm specifications, see [ECC](crypto-asym-key-genera
 4. Call [PriKey.getAsyKeySpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#getasykeyspec10-1) to obtain the private key specifications, and call [PubKey.getAsyKeySpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#getasykeyspec10) to obtain the public key specifications of the ECC.
 
 - Example: Generate an ECC key pair based on key parameters (using promise-based APIs).
-  <!-- @[specify_parameter_generate_ecc_keypair](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/SpecifiedParametersGenerateAsymmetricKeyPair/entry/src/main/ets/pages/ecc/Promise.ets) -->
-  
+  <!-- @[specify_parameter_generate_ecc_keypair](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SpecifiedParametersGenerateAsymmetricKeyPair/entry/src/main/ets/pages/ecc/Promise.ets) -->
+
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -308,8 +309,8 @@ For details about the algorithm specifications, see [ECC](crypto-asym-key-genera
 
 
 - Synchronously return the result ([generateKeyPairSync](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatekeypairsync12)):
-  <!-- @[specify_parameter_generate_ecc_keypair_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/SpecifiedParametersGenerateAsymmetricKeyPair/entry/src/main/ets/pages/ecc/Sync.ets) -->
-  
+  <!-- @[specify_parameter_generate_ecc_keypair_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SpecifiedParametersGenerateAsymmetricKeyPair/entry/src/main/ets/pages/ecc/Sync.ets) -->
+
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   
@@ -394,7 +395,7 @@ For details about the algorithm specifications, see [ECC](crypto-asym-key-genera
     try {
       let commKeySpec = genEccCommonSpec(); // Construct the commKeySpec parameter.
       let generatorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(commKeySpec); // Create an generatorBySpec instance based on the commKeySpec parameter.
-      let keyPair = generatorBySpec.generateKeyPairSync(); // Generate an ECC key pair.
+      let keyPair = generatorBySpec.generateKeyPairSync(); // Generate the ECC key pair.
       if (keyPair != null) {
         showEccSpecDetailInfo(keyPair.priKey, "priKey"); // Obtain the private key specifications.
         showEccSpecDetailInfo(keyPair.pubKey, 'pubKey'); // Obtain the public key specifications.
@@ -412,7 +413,7 @@ For details about the algorithm specifications, see [ECC](crypto-asym-key-genera
 
 ## Generating an SM2 Key Pair Based on the Elliptic Curve Name
 
-For details about the algorithm specifications, see [SM2](crypto-asym-key-generation-conversion-spec.md#sm2).
+For details about the algorithm specifications, see [Asymmetric Key Generation and Conversion Specifications: SM2](crypto-key-generation-conversion.md#sm2).
 
 1. Create an [ECCCommonParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#ecccommonparamsspec10) object to specify common parameters of the private and public keys. Call [genECCCommonParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#genecccommonparamsspec11) with an NID string to generate the common parameters for the SM2 key pair.
 
@@ -427,7 +428,7 @@ For details about the algorithm specifications, see [SM2](crypto-asym-key-genera
 5. Call [PriKey.getAsyKeySpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#getasykeyspec10-1) to obtain elliptic curve parameters of SM2.
 
 - Example: Generate an SM2 key based on the elliptic curve name (using promise-based APIs)
-  <!-- @[specify_parameter_generate_sm2_keypair](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/SpecifiedParametersGenerateAsymmetricKeyPair/entry/src/main/ets/pages/sm2/Promise.ets) -->
+  <!-- @[specify_parameter_generate_sm2_keypair](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SpecifiedParametersGenerateAsymmetricKeyPair/entry/src/main/ets/pages/sm2/Promise.ets) -->
 
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -458,8 +459,8 @@ For details about the algorithm specifications, see [SM2](crypto-asym-key-genera
 
 
 - Synchronously return the result ([generateKeyPairSync](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatekeypairsync12)):
-  <!-- @[specify_parameter_generate_sm2_keypair_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/SpecifiedParametersGenerateAsymmetricKeyPair/entry/src/main/ets/pages/sm2/Sync.ets) -->
-  
+  <!-- @[specify_parameter_generate_sm2_keypair_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SpecifiedParametersGenerateAsymmetricKeyPair/entry/src/main/ets/pages/sm2/Sync.ets) -->
+
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   

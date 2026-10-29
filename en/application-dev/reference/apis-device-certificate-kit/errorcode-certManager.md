@@ -17,6 +17,10 @@
 
 Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error.
 
+**Description**
+
+Internal error. Possible causes: 1. IPC failed. 2. An error occurs during memory manipulation. 3. The file operation is incorrect.
+
 **Possible Causes**
 
 An internal error occurs when the API is called.
@@ -28,6 +32,10 @@ Check for and rectify the internal error.
 ## 17500002 Certificate Not Exist
 
 **Error Message**
+
+The certificate does not exist.
+
+**Description**
 
 The certificate does not exist.
 
@@ -45,6 +53,10 @@ Check whether the certificate exists.
 
 The keystore is in an invalid format or the keystore password is incorrect.
 
+**Description**
+
+The keystore format is invalid or the keystore password is incorrect.
+
 **Possible Causes**
 
 The input certificate or credential is invalid.
@@ -58,6 +70,10 @@ Check that the certificate or credential is valid.
 **Error Message**
 
 The number of certificates or credentials reaches the maximum allowed.
+
+**Description**
+
+The number of certificates or credentials has reached the maximum.
 
 **Possible Causes**
 
@@ -73,6 +89,10 @@ Clear expired certificates or credentials.
 
 The application is not authorized by the user.
 
+**Description**
+
+The app is not authorized.
+
 **Possible Causes**
 
 The user has not authorized the application to use the specified credential.
@@ -86,6 +106,10 @@ Check that the credential is correct, and authorize the application to use the c
 **Error Message**
 
 The device enters advanced security mode.
+
+**Description**
+
+The device enters the advanced security mode.
 
 **Possible Causes**
 
@@ -102,6 +126,10 @@ Guide the user to disable the advanced security mode on the application UI.
 
 The input password is error.
 
+**Description**
+
+Incorrect password.
+
 **Possible Causes**
 
 Incorrect password.
@@ -117,6 +145,10 @@ Check whether the password is correct. Use the correct password and try again.
 
 The device does not support the specified certificate store path.
 
+**Description**
+
+The device does not support the specified certificate storage path.
+
 **Possible Causes**
 
 The device does not support the specified certificate storage path.
@@ -131,6 +163,10 @@ Check whether the entered certificate type is correct.
 
 The USB key service access failed.
 
+**Description**
+
+Failed to access the USB Key service.
+
 **Possible Causes**
 
 The USB hardware driver service is abnormal.
@@ -144,6 +180,10 @@ Check whether the USB is properly connected or the USB driver is working properl
 **Error Message**
 
 The input parameters validation failed.
+
+**Description**
+
+Failed to validate the input parameters.
 
 **Possible Causes**
 

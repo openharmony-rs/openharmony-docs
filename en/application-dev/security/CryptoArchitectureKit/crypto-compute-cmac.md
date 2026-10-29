@@ -6,6 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=e614d89ea989f36e0b13aa6a29dc8dc8d371310c translatedAt=2026-10-09T01:37:31.520Z pushedAt=2026-10-10T02:02:51.989Z -->
 
 The cipher-based message authentication code (CMAC) uses a block cipher (such as AES) and a key to generate an authentication code, which verifies that a message has not been alerted during transmission.
 
@@ -17,9 +18,9 @@ The following provides examples of CMAC operations with different data passing m
 
 ### Generating a CMAC by Passing in Full Data
 
-1. Call [cryptoFramework.createMac](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatemac18) with the MAC algorithm set to **CMAC** and symmetric key algorithm set to **AES128** to create a **Mac** instance.
+1. Call [cryptoFramework.createMac](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatemac18) with the MAC algorithm set to **CMAC** and symmetric algorithm set to **AES128** to create a **Mac** instance.
 
-2. Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesymkeygenerator) and [SymKeyGenerator.convertKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertkey-1) to generate a symmetric key (**SymKey**) using AES256.
+2. Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesymkeygenerator) and [SymKeyGenerator.convertKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertkey-1) to generate a symmetric key (**SymKey**) with the AES128 algorithm.
 
    For details, see [Converting Binary Data into a Symmetric Key](crypto-convert-binary-data-to-sym-key.md).
 
@@ -34,7 +35,7 @@ The following provides examples of CMAC operations with different data passing m
 - Example: Pass in the full data to generate a MAC using **await**.
 
   <!-- @[message_authentication_code_calculation_cmac_single_time_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageAuthenticationCode/entry/src/main/ets/pages/CMACSingleTime/Async.ets) -->
-  
+
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
@@ -47,7 +48,7 @@ The following provides examples of CMAC operations with different data passing m
     return symKey;
   }
   async function doCmac() {
-    // Convert the string into a Uint8Array in UTF-8 format and use it as the private key, which is 128 bits (16 bytes).
+    // Encode the string into a Uint8Array in UTF-8, and use a fixed 128-bit key, that is, 16 bytes.
     let keyData = new Uint8Array(buffer.from('12345678abcdefgh', 'utf-8').buffer);
     let key = await genSymKeyByData(keyData);
     let spec: cryptoFramework.CmacSpec = {
@@ -70,7 +71,7 @@ The following provides examples of CMAC operations with different data passing m
 - Example: Pass in the full data to calculate a MAC using synchronous APIs.
 
   <!-- @[message_authentication_code_calculation_cmac_single_time_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageAuthenticationCode/entry/src/main/ets/pages/CMACSingleTime/Sync.ets) -->
-  
+
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
@@ -83,7 +84,7 @@ The following provides examples of CMAC operations with different data passing m
     return symKey;
   }
   function doCmacBySync() {
-    // Convert the string into a Uint8Array in UTF-8 format and use it as the private key, which is 128 bits (16 bytes).
+    // Encode the string into a Uint8Array in UTF-8, using a fixed 128-bit key, that is, 16 bytes.
     let keyData = new Uint8Array(buffer.from('12345678abcdefgh', 'utf-8').buffer);
     let key = genSymKeyByData(keyData);
     let spec: cryptoFramework.CmacSpec = {
@@ -104,9 +105,9 @@ The following provides examples of CMAC operations with different data passing m
 
 ### Generating a CMAC by Passing In Data by Segment
 
-1. Call [cryptoFramework.createMac](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatemac18) with the MAC algorithm set to **CMAC** and symmetric key algorithm set to **AES256** to create a **Mac** instance.
+1. Call [cryptoFramework.createMac](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatemac18) with the MAC algorithm set to **CMAC** and the symmetric algorithm set to AES128 to generate a message authentication code instance (**Mac**).
 
-2. Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesymkeygenerator) and [SymKeyGenerator.convertKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertkey-1) to generate a symmetric key (**SymKey**) using AES256.
+2. Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesymkeygenerator) and [SymKeyGenerator.convertKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertkey-1) to generate a symmetric key (**SymKey**) with the AES128 algorithm.
 
    For details, see [Converting Binary Data into a Symmetric Key](crypto-convert-binary-data-to-sym-key.md).
 
@@ -121,7 +122,7 @@ The following provides examples of CMAC operations with different data passing m
 - Example: Pass in data by segment to generate a MAC using **await**.
 
   <!-- @[message_authentication_code_calculation_cmac_segmentation_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageAuthenticationCode/entry/src/main/ets/pages/CMACSegmentation/Async.ets) -->
-  
+
   ``` TypeScript
   
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -135,7 +136,7 @@ The following provides examples of CMAC operations with different data passing m
     return symKey;
   }
   async function doLoopCmac() {
-    // Convert the string into a Uint8Array in UTF-8 format and use it as the private key, which is 128 bits (16 bytes).
+    // Encode the string into a Uint8Array in UTF-8, using a fixed 128-bit key, that is, 16 bytes.
     let keyData = new Uint8Array(buffer.from('12345678abcdefgh', 'utf-8').buffer);
     let key = await genSymKeyByData(keyData);
     let spec: cryptoFramework.CmacSpec = {
@@ -143,10 +144,10 @@ The following provides examples of CMAC operations with different data passing m
       cipherName: 'AES128',
     };
     let mac = cryptoFramework.createMac(spec);
-    // In this example, the message is of 43 bytes. After decoded in UTF-8 format, the message is also of 43 bytes.
-    let messageText = 'aaaaa......bbbbb......ccccc......ddddd......eee';
+    // In this example, the message is of 43 bytes. After being decoded in UTF-8 format, the message is also of 43 bytes.
+    let messageText = 'aaaaa.....bbbbb.....ccccc.....ddddd.....eee';
     let messageData = new Uint8Array(buffer.from(messageText, 'utf-8').buffer);
-    let updateLength = 20; // Pass in 20 bytes each time. You can set this parameter as required.
+    let updateLength = 20; // Pass in 20 bytes each time. There is no specific requirement for this value.
     await mac.init(key);
     for (let i = 0; i < messageData.length; i += updateLength) {
       let updateMessage = messageData.subarray(i, i + updateLength);
@@ -164,7 +165,7 @@ The following provides examples of CMAC operations with different data passing m
 - Example: Pass in data by segment to generate a MAC using synchronous APIs.
 
   <!-- @[message_authentication_code_calculation_cmac_segmentation_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageAuthenticationCode/entry/src/main/ets/pages/CMACSegmentation/Sync.ets) -->
-  
+
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
@@ -177,7 +178,7 @@ The following provides examples of CMAC operations with different data passing m
     return symKey;
   }
   function doLoopCmacBySync() {
-    // Convert the string into a Uint8Array in UTF-8 format and use it as the private key, which is 128 bits (16 bytes).
+    // Encode the string into a Uint8Array in UTF-8, using a fixed 128-bit key (that is, 16 bytes).
     let keyData = new Uint8Array(buffer.from('12345678abcdefgh', 'utf-8').buffer);
     let key = genSymKeyByData(keyData);
     let spec: cryptoFramework.CmacSpec = {
@@ -185,7 +186,7 @@ The following provides examples of CMAC operations with different data passing m
       cipherName: 'AES128',
     };
     let mac = cryptoFramework.createMac(spec);
-    // In this example, the message is of 43 bytes. After decoded in UTF-8 format, the message is also of 43 bytes.
+    // In this example, the message is of 43 bytes. After being decoded in UTF-8 format, the message is also of 43 bytes.
     let messageText = 'aaaaa.....bbbbb.....ccccc.....ddddd.....eee';
     let messageData = new Uint8Array(buffer.from(messageText, 'utf-8').buffer);
     let updateLength = 20; // Pass in 20 bytes each time. You can set this parameter as required.
@@ -201,3 +202,4 @@ The following provides examples of CMAC operations with different data passing m
     console.info('CMAC len: ' + macLen);
   }
   ```
+

@@ -6,7 +6,7 @@
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=bbc8406212c76d396fc2036d1d8fe953b6305789 translatedAt=2026-08-15T01:46:36.757Z pushedAt=2026-08-15T07:13:09.409Z -->
+<!-- md-trans-meta sourceCommit=8ea556ad50860a98041332a35647945090ac4fac translatedAt=2026-09-28T02:27:44.439Z pushedAt=2026-09-29T03:48:05.267Z -->
 
 ## Overview
 
@@ -17,20 +17,17 @@ The killed event refers to a phenomenon that an application is forced to exit by
 HiAppEvent APIs for subscribing to application killed events:
 
 - [Subscribing to Application Killed Events (ArkTS)](hiappevent-watcher-app-killed-events-arkts.md)
-
 - [Subscribing to Application Killed Events (C/C++)](hiappevent-watcher-app-killed-events-ndk.md)
 
 > **NOTE**
 >
 > Application killed events can be subscribed to using HiAppEvent in [application clones](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/app-clone) and atomic services. Since API version 22, application killed events can be subscribed to using HiAppEvent in [input method applications](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/inputmethod-application-guide).
 
-The **params** attribute in the application killed event is described as follows.
-
 ## Field Description
 
 ### params
 
-The **params** attribute in the application killed event is described as follows.
+The **params** property in the application killed event is described as follows.
 
 | Name   | Type  | Description                      |
 | ------- | ------ | ------------------------- |

@@ -6,6 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=64044667f2ece520228c37a4e282d90b2e014ba4 translatedAt=2026-10-09T01:51:18.480Z pushedAt=2026-10-10T02:37:15.737Z -->
 
 The following uses AES and SM4 as an example to describe how to randomly generate a symmetric key (**OH_CryptoSymKey**).
 
@@ -18,7 +19,7 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 
 ## Randomly Generating an AES Key
 
-For details about the algorithm specifications, see [AES](crypto-sym-key-generation-conversion-spec.md#aes).
+For the corresponding algorithm specifications, see [Symmetric Key Generation and Conversion Specifications: AES](crypto-key-generation-conversion.md#aes).
 
 1. Call [OH_CryptoSymKeyGenerator_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-key-h.md#oh_cryptosymkeygenerator_create) with the string parameter **'AES256'** to create a symmetric key generator (**OH_CryptoSymKeyGenerator**) object for a 256-bit AES key.
 
@@ -60,7 +61,7 @@ OH_Crypto_ErrCode testGenerateSymKey()
 
 ## Randomly Generating an SM4 Key
 
-For details about the algorithm specifications, see [SM4](crypto-sym-key-generation-conversion-spec.md#sm4).
+For the corresponding algorithm specifications, see [Symmetric Key Generation and Conversion Specifications: SM4](crypto-key-generation-conversion.md#sm4).
 
 1. Call [OH_CryptoSymKeyGenerator_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-key-h.md#oh_cryptosymkeygenerator_create) with the string parameter **'SM4_128'** to create a symmetric key generator (**OH_CryptoSymKeyGenerator**) object for a 128-bit SM4 key.
 
@@ -99,3 +100,4 @@ OH_Crypto_ErrCode testGenerateSM4Key()
     return ret;
 }
 ```
+

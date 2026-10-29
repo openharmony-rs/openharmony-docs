@@ -1,11 +1,11 @@
 # Audio Session Management (ArkTS)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @funny_sunix-->
+<!--Owner: @LauJianghu-->
 <!--Designer: @hao-liangfei-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=827f02bd18610a1b7ab381e75aefc2cee15de330 translatedAt=2026-09-01T02:33:07.132Z pushedAt=2026-09-02T02:59:34.660Z -->
+<!-- md-trans-meta sourceCommit=1d8516904d45ad9b388880a584cf8cd014dd5cf1 translatedAt=2026-10-13T13:17:44.671Z pushedAt=2026-10-16T02:46:18.032Z -->
 
 In the scenario where multiple audio streams are concurrently playing, the system has preset a default [audio focus strategy](audio-playback-concurrency.md#audio-focus-strategy) for unified audio focus management across all audio streams (including playback and recording).
 
@@ -113,7 +113,7 @@ The audio session deactivation event (AudioSessionDeactivatedEvent) contains the
    When activating the AudioSession, you must specify an [audio session strategy](#audio-session-strategy). The strategy contains the **concurrencyMode** parameter, which is of the [AudioConcurrencyMode](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audioconcurrencymode12) type and is used to declare the audio concurrency strategy.
 
    <!-- @[activate_audio_session_v1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
    import { audio } from '@kit.AudioKit';
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -139,7 +139,7 @@ The audio session deactivation event (AudioSessionDeactivatedEvent) contains the
    You can call [isAudioSessionActivated](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#isaudiosessionactivated12) to check whether the audio session of the current app is activated.
 
    <!-- @[is_audio_session_activated](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
    // Check whether the audio session is activated.
    let isActivated = audioSessionManager.isAudioSessionActivated();
@@ -156,7 +156,7 @@ The audio session deactivation event (AudioSessionDeactivatedEvent) contains the
    You can call [off('audioSessionDeactivated')](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#offaudiosessiondeactivated12) to cancel listening for audio session deactivation events.
 
    <!-- @[on_audio_session_deactivated](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
    import { audio } from '@kit.AudioKit';
    // ...
@@ -177,7 +177,7 @@ The audio session deactivation event (AudioSessionDeactivatedEvent) contains the
    > After the AudioSession is deactivated, new audio streams started by the app will follow the default focus strategy.
 
    <!-- @[deactivate_audio_session_v1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
    import { BusinessError } from '@kit.BasicServicesKit';
    // ...
@@ -275,11 +275,15 @@ Typical usage scenarios are as follows:
 
 When an audio session holds focus in a unified manner, the system provides three audio session scenes. Before activating the AudioSession, you must call [setAudioSessionScene](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setaudiosessionscene20) to set the corresponding audio session scene. When the AudioSession is activated, the system requests the corresponding audio focus based on the audio session scene selected by the app.
 
-| Name                   | Value | Description      |
-| :--------------------- |:--|:--------|
-| AUDIO_SESSION_SCENE_MEDIA | 0 | Media audio session scene.     |
-| AUDIO_SESSION_SCENE_GAME | 1 | Game audio session scene.     |
-| AUDIO_SESSION_SCENE_VOICE_COMMUNICATION  | 2 | VoIP voice call audio session scene. |
+| Name                   | Value | Matching StreamUsage | Description | Applicable Scenario      |
+| :--------------------- |:--|:---------------|:--------|:----------|
+| AUDIO_SESSION_SCENE_MEDIA | 0 | STREAM_USAGE_MUSIC, STREAM_USAGE_MOVIE, STREAM_USAGE_AUDIOBOOK | Media audio session.     | Scenarios where focus is frequently requested and released (for example, swiping through multiple short videos), and media playback scenarios where you do not hold an AudioRenderer object but need to listen for focus changes. |
+| AUDIO_SESSION_SCENE_GAME | 1 | STREAM_USAGE_GAME | Game audio session.     | Game audio scenarios such as in-game background music and voice-overs. |
+| AUDIO_SESSION_SCENE_VOICE_COMMUNICATION  | 2 | STREAM_USAGE_RINGTONE, STREAM_USAGE_VOICE_COMMUNICATION, STREAM_USAGE_VIDEO_COMMUNICATION | VoIP call audio session. | Call scenarios such as VoIP calls where a ringtone stream must be started simultaneously. |
+
+> **NOTE**
+>
+> If you do not use an audio session scene (AudioSessionScene) that matches the audio stream type (StreamUsage), the behavior of the audio stream may be inconsistent with expectations, causing the focus strategy to fail or playback to be abnormal.
 
 ### Listening for AudioSession Focus and State Change Events
 
@@ -310,7 +314,7 @@ You can call [on('audioSessionStateChanged')](../../reference/apis-audio-kit/ark
    > - If the app already has a running audio playback stream when activating the AudioSession, the system releases the focus held by that playback stream and the AudioSession manages it uniformly.
 
    <!-- @[activate_audio_session_v2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
    import { audio } from '@kit.AudioKit';
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -340,7 +344,7 @@ You can call [on('audioSessionStateChanged')](../../reference/apis-audio-kit/ark
    You can call [isAudioSessionActivated](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#isaudiosessionactivated12) to check whether the audio session of the current app is activated.
 
    <!-- @[is_audio_session_activated](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
    // Query whether the audio session is activated.
    let isActivated = audioSessionManager.isAudioSessionActivated();
@@ -351,7 +355,7 @@ You can call [on('audioSessionStateChanged')](../../reference/apis-audio-kit/ark
    You can call [on('audioSessionStateChanged')](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#onaudiosessionstatechanged20) to listen for AudioSession focus and state changes.
 
    <!-- @[on_audio_session_state_changed](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) -->  
-
+   
    ``` TypeScript
    import { audio } from '@kit.AudioKit';
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -383,6 +387,7 @@ You can call [on('audioSessionStateChanged')](../../reference/apis-audio-kit/ark
            break;
          case audio.AudioSessionStateChangeHint.AUDIO_SESSION_STATE_CHANGE_HINT_UNDUCK:
            // This branch indicates that the system has restored the volume of all playback audio streams of the app to normal.
+           break;
          case audio.AudioSessionStateChangeHint.AUDIO_SESSION_STATE_CHANGE_HINT_MUTE_SUGGESTION:
            // This branch indicates that another app has started playing non-mixable audio. The system may decide whether to mute.
            break;
@@ -399,7 +404,7 @@ You can call [on('audioSessionStateChanged')](../../reference/apis-audio-kit/ark
            break;
        }
      };
-
+   
      audioSessionManager.on('audioSessionStateChanged', audioSessionStateChangedCallback);
    ```
 
@@ -412,7 +417,7 @@ You can call [on('audioSessionStateChanged')](../../reference/apis-audio-kit/ark
    > When the AudioSession is deactivated, the system releases the focus requested by the AudioSession and stops all audio streams being played by the app.
 
    <!-- @[deactivate_audio_session_v2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) -->  
-
+   
    ``` TypeScript
    import { BusinessError } from '@kit.BasicServicesKit';
    // ...
@@ -482,6 +487,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
         break;
       case audio.AudioSessionStateChangeHint.AUDIO_SESSION_STATE_CHANGE_HINT_UNDUCK:
         // This branch indicates that the system has restored the volume of all playback audio streams of the app to normal.
+        break;
       case audio.AudioSessionStateChangeHint.AUDIO_SESSION_STATE_CHANGE_HINT_MUTE_SUGGESTION:
         // This branch indicates that another app has started playing non-mixable audio. The system may decide whether to mute at its own discretion.
         break;
@@ -529,7 +535,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 Starting from API version 24, when an app has muted the recording stream in the current audio session on the service side, you can call [setCapturerMuteHint](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setcapturermutehint24) to report this state to the system audio module. The system audio module adjusts its strategy based on the reported state to reduce power consumption. Note that this feature currently takes effect only on certain PCs/2-in-1 devices. This API does not actually trigger muting or perform mute processing on recording data. It only notifies the system audio module that the app has muted the recording stream in the current audio session. You still need to handle the recording data yourself, for example, by not sending captured data or by sending mute data.
 
-This API can only be called when there is a running recording stream in the current audio session. Otherwise, error code `6800103` is returned. If a recording stream has both the stream-level mute prompt API [AudioCapturer.setMuteHint](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#setmutehint24) and the session-level mute prompt API called, the stream-level setting takes precedence. Therefore, when the mute states of multiple recording streams in the app are consistent, you can use the session-level API for unified reporting. When the mute states of different recording streams are inconsistent, use the stream-level API for specific recording streams. If you create a Mic audio source recording stream to call the session-level API, you need to request the microphone permission `ohos.permission.MICROPHONE`. No system query API is currently provided. If you need to display the mute prompt state on the UI, you must maintain the most recently set state yourself. In the following example, `muteHint` set to `true` indicates reporting a mute prompt, and `false` indicates canceling the mute prompt.
+This API can only be called when there is a running recording stream in the current audio session. Otherwise, error code `6800103` is returned. If a recording stream has both the stream-level mute hint API [AudioCapturer.setMuteHint](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#setmutehint24) and the session-level mute hint API called, the stream-level setting takes precedence. Therefore, when the mute states of multiple recording streams in the app are consistent, you can use the session-level API for unified reporting. When the mute states of different recording streams are inconsistent, use the stream-level API for specific recording streams. If you create a Mic audio source recording stream to call the session-level API, you need to request the microphone permission `ohos.permission.MICROPHONE`. No system query API is currently provided. If you need to display the mute hint state on the UI, you must maintain the most recently set state yourself. In the following example, `muteHint` set to `true` indicates reporting a mute hint, and `false` indicates canceling the mute hint.
 
 <!-- @[set_capturer_mute_hint](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) -->
 

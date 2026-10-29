@@ -1,12 +1,11 @@
 # Implementing UI Internationalization
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @camlostshi-->
-<!--Designer: @lanshouren-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=a38cd9231e6454f93fa0ce51eba86f35252da12c translatedAt=2026-08-01T00:30:26.100Z pushedAt=2026-08-03T02:23:20.391Z -->
+<!-- md-trans-meta sourceCommit=1b57cea50c747247c512c53163783a2d7d3b56ca translatedAt=2026-10-12T09:25:44.677Z pushedAt=2026-10-13T08:03:59.406Z -->
 
 This topic explains how to implement UI internationalization in an application, including resource configuration and mirroring. For details about internationalization guidance, see [Localization Kit](../internationalization/i18n-l10n.md).
 
@@ -31,7 +30,6 @@ The mirroring capability is activated on a component under either of these condi
 ### Basic Concepts
 
 - LTR: left-to-right reading direction
-
 - RTL: right-to-left reading direction
 
 ### Constraints
@@ -39,7 +37,6 @@ The mirroring capability is activated on a component under either of these condi
 ArkUI provides built-in mirroring support for the following capabilities.
 
 <!--Table: 20%; 80%-->
-
 | Category    | Name                                                        |
 | -------- | ------------------------------------------------------------ |
 | Basic components| [Swiper](../reference/apis-arkui/arkui-ts/ts-container-swiper.md), [Tabs](../reference/apis-arkui/arkui-ts/ts-container-tabs.md), [TabContent](../reference/apis-arkui/arkui-ts/ts-container-tabcontent.md), [List](../reference/apis-arkui/arkui-ts/ts-container-list.md), [Progress](../reference/apis-arkui/arkui-ts/ts-basic-components-progress.md), [CalendarPicker](../reference/apis-arkui/arkui-ts/ts-basic-components-calendarpicker.md), [CalendarPickerDialog](../reference/apis-arkui/arkui-ts/ts-methods-calendarpicker-dialog.md), [TextPicker](../reference/apis-arkui/arkui-ts/ts-basic-components-textpicker.md), [TextPickerDialog](../reference/apis-arkui/arkui-ts/ts-methods-textpicker-dialog.md), [DatePicker](../reference/apis-arkui/arkui-ts/ts-basic-components-datepicker.md), [DatePickerDialog](../reference/apis-arkui/arkui-ts/ts-methods-datepicker-dialog.md), [Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md), [WaterFlow](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md), [Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md), [ScrollBar](../reference/apis-arkui/arkui-ts/ts-basic-components-scrollbar.md), [AlphabetIndexer](../reference/apis-arkui/arkui-ts/ts-container-alphabet-indexer.md), [Stepper](../reference/apis-arkui/arkui-ts/ts-basic-components-stepper.md), [SideBarContainer](../reference/apis-arkui/arkui-ts/ts-container-sidebarcontainer.md), [Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md), [NavDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md), [Rating](../reference/apis-arkui/arkui-ts/ts-basic-components-rating.md), [Slider](../reference/apis-arkui/arkui-ts/ts-basic-components-slider.md), [Toggle](../reference/apis-arkui/arkui-ts/ts-basic-components-toggle.md), [Badge](../reference/apis-arkui/arkui-ts/ts-container-badge.md), [Counter](../reference/apis-arkui/arkui-ts/ts-container-counter.md), [Chip](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Chip.md), [SegmentButton](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SegmentButton.md), [bindMenu](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindmenu), [bindContextMenu](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindcontextmenu8), [TextInput](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md), [TextArea](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md), [Search](../reference/apis-arkui/arkui-ts/ts-basic-components-search.md), [Stack](../reference/apis-arkui/arkui-ts/ts-container-stack.md), [GridRow](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md), [Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md), [Select](../reference/apis-arkui/arkui-ts/ts-basic-components-select.md), [Marquee](../reference/apis-arkui/arkui-ts/ts-basic-components-marquee.md), [Row](../reference/apis-arkui/arkui-ts/ts-container-row.md), [Column](../reference/apis-arkui/arkui-ts/ts-container-column.md), [Flex](../reference/apis-arkui/arkui-ts/ts-container-flex.md), [RelativeContainer](../reference/apis-arkui/arkui-ts/ts-container-relativecontainer.md), [ListItemGroup](../reference/apis-arkui/arkui-ts/ts-container-listitemgroup.md)|
@@ -51,7 +48,7 @@ However, adaptation is still required in the following three scenarios:
 
 1. For layout and border settings, use the generalized direction terms **start** and **end** as parameter types instead of absolute terms such as **left**, **right**, **x**, and **y**, to accommodate mirroring.
 
-2. The [Canvas](../reference/apis-arkui/arkui-ts/ts-components-canvas-canvas.md) component offers limited support for mirroring in text drawing only.
+2. The [Canvas](../reference/apis-arkui/arkui-ts/ts-components-canvas-canvas.md) component supports mirroring in text drawing only.
 
 3. The [XComponent](../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md) component does not support component mirroring.
 
@@ -68,7 +65,7 @@ Size settings: [padding](../reference/apis-arkui/arkui-ts/ts-universal-attribute
 For example, with **position**, change the absolute directional descriptions of **x** and **y** to the new parameter types of **start** and **end**.
 
   <!-- @[Interface_Layout_Border_Settings](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/internationalization/entry/src/main/ets/homePage/InterfaceLayoutBorderSettings.ets) -->
-
+  
   ``` TypeScript
   import { LengthMetrics } from '@kit.ArkUI';
   
@@ -93,6 +90,7 @@ For example, with **position**, change the absolute directional descriptions of 
     }
   }
   ```
+  
 
 ### Custom Drawing with the Canvas Component
 
@@ -101,13 +99,11 @@ The drawings and coordinates of the **Canvas** component do not support mirrorin
 [CanvasRenderingContext2D](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md) supports mirroring for text rendering, which should be used with the **Canvas** component's **direction** attribute and the **direction** attribute of **CanvasRenderingContext2D**. The following table lists the specifications.
 
 1. Priority: CanvasRenderingContext2D.direction > Canvas.direction > system language's horizontal display direction
-
 2. The **Canvas** component does not automatically mirror with system language changes; applications must listen for system language changes and redraw the content on their own.
-
 3. Only symbols follow the direction setting during text drawing with **CanvasRenderingContext2D**; Latin characters and numbers do not.
 
   <!-- @[Customize_Canvas_Component_Drawing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/internationalization/entry/src/main/ets/homePage/CustomizeCanvasComponentDrawing.ets) -->
-
+  
   ``` TypeScript
   import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
   
@@ -147,7 +143,7 @@ The drawings and coordinates of the **Canvas** component do not support mirrorin
     }
   
     drawText(): void {
-      console.error('drawText')
+      console.info('drawText')
       this.context.reset()
       this.context.direction = 'inherit'
       this.context.font = '30px sans-serif'
@@ -169,13 +165,13 @@ The drawings and coordinates of the **Canvas** component do not support mirrorin
   
   }
   ```
-
+  
+  
 | Before Mirroring         | After Mirroring                                 |
 | ----------- | ----------------------------------- |
 |![](figures/mirroring_2-0.jpg)|![](figures/mirroring_2-1.jpg)|
 
 ### Bidirectional Text Layout and Alignment
-
 Text direction ([Direction](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#direction)) defines the order of characters when text is presented on the screen. In left-to-right (LTR) scripts, the display order is from left to right; in right-to-left (RTL) scripts, the display order is from right to left.
 
 Text alignment ([TextAlign](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#textalign)) affects the layout of text as a whole, with specific positioning influenced by **Direction**. For example, when **TextAlign** is set to **start**, the text is left-aligned if **Direction** is **LTR**, and is right-aligned if **Direction** is **RTL**.
@@ -185,7 +181,6 @@ When LTR and RTL scripts are mixed (for example, an English sentence containing 
 ![alt text](figures/image-8.png)
 
 In this case, the text rendering engine uses a method called the Unicode Bidirectional Algorithm to determine the character display order. The following figure illustrates the character display order for mixed LTR and RTL scripts. The basic principles for determining character direction are as follows:
-
 1. Strong characters: Strong characters have a definite directionality. For example, Chinese characters are LTR, and Arabic characters are RTL. These characters influence the directionality of surrounding neutral characters.
 
 2. Weak characters: Weak characters do not have a definite directionality. These characters do not affect the directionality of surrounding neutral characters.

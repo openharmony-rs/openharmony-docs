@@ -1,12 +1,11 @@
 # FileUri Development (C/C++)
-
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
 <!--Owner: @lvzhenjie-->
 <!--Designer: @wang_zhangjun; @chenxi0605-->
 <!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=a4bb221ea8dcccf781d5793faa6c8f62723e3e12 translatedAt=2026-08-01T07:27:49.653Z pushedAt=2026-08-01T10:32:14.575Z -->
+<!-- md-trans-meta sourceCommit=9ba5cc8a5a6376c01d21ba01049967807da4bf5c translatedAt=2026-10-13T12:52:29.891Z pushedAt=2026-10-15T11:39:17.448Z -->
 
 ## When to Use
 
@@ -52,13 +51,13 @@ target_link_libraries(sample PUBLIC libohfileuri.so)
 
 1. Call `OH_FileUri_GetUriFromPath`. The memory malloc'd in the API must be freed after use to avoid memory leaks. The sample code is as follows:
 
-   <!-- @[get_uri_from_path_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/FileUriDevelopment_C/entry/src/main/cpp/napi_init.cpp) -->    
-
+   <!-- @[get_uri_from_path_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/FileUriDevelopment_C/entry/src/main/cpp/napi_init.cpp) -->  
+   
    ``` C++
    static napi_value NAPI_Global_OH_FileUri_GetUriFromPathExample(napi_env env, napi_callback_info info)
    {   
        // ...
-       // Allocate memory for char* uri.
+       // Allocate memory for the char* uri.
        char *path = new char[strLength + 1]; // +1 for null terminator
        // Copy the JavaScript string to uri.
        // ...
@@ -67,31 +66,25 @@ target_link_libraries(sample PUBLIC libohfileuri.so)
        // ...
        char *uriResult = nullptr;
        FileManagement_ErrCode ret = OH_FileUri_GetUriFromPath(path, length, &uriResult);
+       delete[] path;
        // Output the result URI string.
        // ...
-       if (ret == 0 && uriResult != nullptr) {
-           // Convert the C string to napi_value.
-           napi_status status = napi_create_string_utf8(env, uriResult, NAPI_AUTO_LENGTH, &result);
-           if (status != napi_ok) {
-               free(uriResult);
-               return nullptr;
-           }
-           free(uriResult); // Release the temporary string.
-       } else {
-           // Convert the C string to napi_value.
-           napi_status status = napi_create_string_utf8(env, "Hello World", NAPI_AUTO_LENGTH, &result);
-           if (status != napi_ok) {
-               return nullptr;
-           }
+       // After creating the return value, release the memory allocated by the API, including on error paths.
+       const char *value = (ret == 0 && uriResult != nullptr) ? uriResult : "Hello World";
+       napi_status status = napi_create_string_utf8(env, value, NAPI_AUTO_LENGTH, &result);
+       free(uriResult);
+       if (status != napi_ok) {
+           return nullptr;
        }
        return result;
    }
    ```
 
+
 2. Call `OH_FileUri_GetPathFromUri` to convert a URI to the corresponding path. The memory malloc'd in the API must be freed after use to avoid memory leaks. The sample code is as follows:
 
-   <!-- @[get_path_from_uri_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/FileUriDevelopment_C/entry/src/main/cpp/napi_init.cpp) -->
-
+   <!-- @[get_path_from_uri_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/FileUriDevelopment_C/entry/src/main/cpp/napi_init.cpp) -->  
+   
    ``` C++
    static napi_value NAPI_Global_OH_FileUri_GetPathFromUriExample(napi_env env, napi_callback_info info)
    {
@@ -105,31 +98,25 @@ target_link_libraries(sample PUBLIC libohfileuri.so)
        OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.WatcherType=OnTrigger: %{public}s", uri);
        char *pathResult = nullptr;
        FileManagement_ErrCode ret = OH_FileUri_GetPathFromUri(uri, length, &pathResult);
+       delete[] uri;
        // Output the path result string.
        // ...
-       if (ret == 0 && pathResult != nullptr) {
-           // Convert the C string to napi_value.
-           napi_status status = napi_create_string_utf8(env, pathResult, NAPI_AUTO_LENGTH, &result);
-           if (status != napi_ok) {
-               free(pathResult);
-               return nullptr;
-           }
-           free(pathResult); // Release the temporary string.
-       } else {
-           // Convert the empty string to napi_value.
-           napi_status status = napi_create_string_utf8(env, "", NAPI_AUTO_LENGTH, &result);
-           if (status != napi_ok) {
-               return nullptr;
-           }
+       // After creating the return value, release the memory allocated by the API, including on error paths.
+       const char *value = (ret == 0 && pathResult != nullptr) ? pathResult : "";
+       napi_status status = napi_create_string_utf8(env, value, NAPI_AUTO_LENGTH, &result);
+       free(pathResult);
+       if (status != napi_ok) {
+           return nullptr;
        }
        return result;
    }
    ```
 
+
 3. Call `OH_FileUri_GetFullDirectoryUri` to obtain the URI of the directory where the URI resides. The memory malloc'd in the API must be freed after use to avoid memory leaks. The sample code is as follows:
 
-   <!-- @[get_full_directory_uri](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/FileUriDevelopment_C/entry/src/main/cpp/napi_init.cpp) -->    
-
+   <!-- @[get_full_directory_uri](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/FileUriDevelopment_C/entry/src/main/cpp/napi_init.cpp) -->  
+   
    ``` C++
    static napi_value NAPI_Global_OH_FileUri_GetFullDirectoryUriExample(napi_env env, napi_callback_info info)
    {
@@ -143,6 +130,7 @@ target_link_libraries(sample PUBLIC libohfileuri.so)
        OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.WatcherType=OnTrigger: %{public}s", uri);
        char *uriResult = nullptr;
        FileManagement_ErrCode ret = OH_FileUri_GetFullDirectoryUri(uri, length, &uriResult);
+       delete[] uri;
        // Output the URI string of the path.
        // ...
        if (ret == 0 && uriResult != nullptr) {
@@ -159,10 +147,11 @@ target_link_libraries(sample PUBLIC libohfileuri.so)
    }
    ```
 
+
 4. Call **OH_FileUri_IsValidUri** to check whether a URI is valid. The sample code is as follows:
 
-   <!-- @[is_valid_uri_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/FileUriDevelopment_C/entry/src/main/cpp/napi_init.cpp) -->    
-
+   <!-- @[is_valid_uri_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/FileUriDevelopment_C/entry/src/main/cpp/napi_init.cpp) -->  
+   
    ``` C++
    static napi_value NAPI_Global_OH_FileUri_IsValidUriExample(napi_env env, napi_callback_info info)
    {
@@ -174,14 +163,16 @@ target_link_libraries(sample PUBLIC libohfileuri.so)
        // Output the input URI string.
        OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.WatcherType=OnTrigger: %{public}s", uri);
        bool flags = OH_FileUri_IsValidUri(uri, length);
+       delete[] uri;
        // ...
    }
    ```
 
+
 5. Call OH_FileUri_GetFileName to obtain the file name from the URI. The memory malloc'd in the API must be freed after use to avoid memory leaks. The sample code is as follows:
 
-   <!-- @[get_file_name_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/FileUriDevelopment_C/entry/src/main/cpp/napi_init.cpp) -->    
-
+   <!-- @[get_file_name_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/FileUriDevelopment_C/entry/src/main/cpp/napi_init.cpp) -->  
+   
    ``` C++
    static napi_value NAPI_Global_OH_FileUri_GetFileNameExample(napi_env env, napi_callback_info info)
    {
@@ -195,23 +186,17 @@ target_link_libraries(sample PUBLIC libohfileuri.so)
        OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.WatcherType=OnTrigger: %{public}s", uri);
        char *uriResult = nullptr;
        FileManagement_ErrCode ret = OH_FileUri_GetFileName(uri, length, &uriResult);
+       delete[] uri;
        // Output the obtained file name.
        // ...
-       if (ret == 0 && uriResult != nullptr) {
-           // Convert the C string to napi_value.
-           napi_status status = napi_create_string_utf8(env, uriResult, NAPI_AUTO_LENGTH, &result);
-           if (status != napi_ok) {
-               free(uriResult);
-               return NULL;
-           }
-           free(uriResult); // Release the temporary string.
-       } else {
-           // Convert the empty string to napi_value.
-           napi_status status = napi_create_string_utf8(env, "", NAPI_AUTO_LENGTH, &result);
-           if (status != napi_ok) {
-               return nullptr;
-           }
+       // Release the memory allocated by the API after creating the return value, including on error paths.
+       const char *value = (ret == 0 && uriResult != nullptr) ? uriResult : "";
+       napi_status status = napi_create_string_utf8(env, value, NAPI_AUTO_LENGTH, &result);
+       free(uriResult);
+       if (status != napi_ok) {
+           return nullptr;
        }
        return result;
    }
    ```
+

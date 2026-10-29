@@ -5,7 +5,7 @@
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=2ef4fc705e90909eae85f03b810d01076231d3b3 translatedAt=2026-09-16T03:20:39.904Z pushedAt=2026-09-16T08:20:30.654Z -->
+<!-- md-trans-meta sourceCommit=7d9ce201efa894024f69109a8bec89b278e1456d translatedAt=2026-10-13T13:08:02.177Z pushedAt=2026-10-16T04:10:50.430Z -->
 
 ## Introduction
 
@@ -269,7 +269,7 @@ static int PromiseRegisterHandler(JSVM_VM vm, JSVM_Env env) {
 
 static void RunDemo(JSVM_VM vm, JSVM_Env env) {
     if (PromiseRegisterHandler(vm, env) != 0) {
-        OH_LOG_INFO(LOG_APP, "Run PromiseRegisterHandler failed");
+        OH_LOG_ERROR(LOG_APP, "Run PromiseRegisterHandler failed");
     }
 }
 ```

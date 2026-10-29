@@ -3,9 +3,9 @@
 <!--Subsystem: Window-->
 <!--Owner: @oh_wangxk-->
 <!--Designer: @wulong158-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @LiTongguan2026-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=1901db9be343b0a2f2f315e66f0588f9bda6dfc5 translatedAt=2026-09-14T09:16:08.923Z pushedAt=2026-09-15T13:11:12.726Z -->
+<!-- md-trans-meta sourceCommit=494f31a35d1b25179fe202754d9ee44d527d8ab6 translatedAt=2026-10-13T12:51:08.767Z pushedAt=2026-10-15T11:07:31.025Z -->
 
 ## When to Use
 

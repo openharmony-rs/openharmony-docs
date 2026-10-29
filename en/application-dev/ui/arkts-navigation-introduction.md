@@ -5,6 +5,7 @@
 <!--Designer: @fangzhiyuan1-->
 <!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=5296b1b646755fde9c974ed11b8c9a275644597c translatedAt=2026-10-12T09:33:53.393Z pushedAt=2026-10-13T06:38:55.216Z -->
 
 A page serves as a visual interaction unit composed of layouts, components, and interaction logic. It encapsulates specific functional logic and information presentation, forming the core interface medium for user-application interaction. A complete application typically consists of multiple pages. Both [Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md) and [@ohos.router](../reference/apis-arkui/arkts-apis-uicontext-router.md) provide the ability to navigate between pages within the application.
 
@@ -29,9 +30,9 @@ In the ArkUI component tree hierarchy, pages that were originally managed by the
 
 5. Transforms page transition animations into component property animations, offering a wider and more flexible range of transition effects.
 
-6. Opens the page stack object to allow developers to inherit it for better management of the page display.
+6. Exposes the page stack object, which you can inherit to better manage page display.
 
-## Capability Comparison 
+## Capability Comparison
 
 | Scenario                                     | Navigation                            | Router                                 |
 | --------------------------------------------- | ------------------------------------- | -------------------------------------- |
@@ -41,7 +42,7 @@ In the ArkUI component tree hierarchy, pages that were originally managed by the
 | Navigation to a page within a HAR                                | Supported                                 | Supported                                  |
 | Passing parameters during navigation                                     | Supported                                 | Supported                                 |
 | Obtaining parameters of a specific page                             | Supported                                 | Not supported                                |
-| Type of parameters passed                                     | Passed as an object                       | Passed as an object, method variables not supported within the object|
+| Type of parameters passed                                     | Passed as an object                       | Passed as an object; method variables not supported within the object|
 | Navigation result callback                                 | Supported                                 | Supported                                  |
 | Navigation to a singleton page                                 | Supported                                 | Supported                                  |
 | Return to a previous page                                     | Supported                                 | Supported                                  |
@@ -57,9 +58,9 @@ In the ArkUI component tree hierarchy, pages that were originally managed by the
 | Shared element animation with **geometryTransition**               | Supported through sharing between **NavDestination** components       | Not supported                                |
 | Listening for page lifecycle                             | [UIObserver.on('navDestinationUpdate')](../reference/apis-arkui/arkts-apis-uicontext-uiobserver.md#onnavdestinationupdate11) | [UIObserver.on('routerPageUpdate')](../reference/apis-arkui/arkts-apis-uicontext-uiobserver.md#onrouterpageupdate11)     |
 | Obtaining a page stack object                               | Supported                                 | Not supported                                |
-| Route interception                                     | Supported through [setInterception](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#setinterception12).     | Not supported                                |
+| Route Interception                                      | Supports route interception through [setInterception](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#setinterception12).      | Not supported                                 |
 | Route stack information query                               | Supported                                 | [getState()](../reference/apis-arkui/arkts-apis-uicontext-router.md#getstate)|
-| Move operations within the navigation stack                               | [moveToTop](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#movetotop10) & [moveIndexToTop](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#moveindextotop10)             | Not supported                                |
+| Move operations on the navigation stack                               | [moveToTop](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#movetotop10) & [moveIndexToTop](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#moveindextotop10)             | Not supported                                |
 | Immersive pages                                   | Supported                                 | Not supported; requires window configuration              |
 | Setting the title bar and toolbar| Supported                                 | Not supported                                |
 | Modal nested routing                                 | Supported                                 | Not supported                                |

@@ -3,7 +3,7 @@
 <!--Subsystem: Window-->
 <!--Owner: @betafringe007-->
 <!--Designer: @loumou-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
 
 闪控窗是悬浮在桌面/应用界面上的小型窗口，提供灵活的窗口管理能力。

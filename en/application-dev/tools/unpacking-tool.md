@@ -5,6 +5,7 @@
 <!--Designer: @jsjzju-->
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=556722674c4dacd2a3b1e7f63dd94728429dfa5f translatedAt=2026-10-10T04:03:43.124Z pushedAt=2026-10-12T03:25:30.301Z -->
 
 The unpacking tool is a commissioning tool used to unpack HAP (an application package), HSP (dynamically shared library), and APP (application set to launch to the application market) files. It also provides Java APIs to parse the HAP, HSP, and APP files.
 
@@ -229,7 +230,7 @@ The package parsing APIs are used by the application market to parse an HAP, HSP
 | label                          | String  | Label of an application. | NA          |
 | description                    | String  | Description of the application.   | New in the stage model.  |
 | minCompatibleVersionCode       | int     | Earliest compatible version of the application. | NA          |
-| distributedNotificationEnabled | boolean | Whether the distributed notification feature is enabled for the application. The value **true** indicates that the feature is enabled, and **false** indicates the opposite.  | New in the stage model.  |
+| distributedNotificationEnabled | boolean | Identifies whether distributed notifications are enabled for the application. The value true indicates enabled, and false indicates disabled.   | New in the stage model.   |
 | bundleType                     | String  | Bundle type.<br>- **app**: The bundle is used for an application.<br>- **atomicService**: The bundle is used for an atomic service.<br>- **shared**: The bundle is used for a shared library.| NA   |
 | compileSdkVersion              | String  | SDK version used for compiling the application.  | This field is valid only for API version 10 and later.  |
 | compileSdkType                 | String  | SDK type used for compiling the application.  | This field is valid only for API version 10 and later.  |
@@ -493,13 +494,13 @@ For details, see [alternateIcons](../quick-start/app-configuration-file.md#alter
 | name                | String                   | Name of the widget.                                             | NA        |
 | type                | String                   | Type of the widget.                                          | NA        |
 | updateEnabled       | boolean                  | Whether the widget supports scheduled refresh. **true** to support, **false** otherwise.                                  | NA        |
-| scheduledUpdateTime | String                   | Scheduled time to update the widget. The value is in 24-hour format and accurate to the minute.      | NA        |
+| scheduledUpdateTime | String                   | Identifies the time for scheduled card refresh, using a 24-hour format and accurate to the minute.       | NA        |
 | updateDuration      | int                      | Interval to update the widget. The unit is 30 minutes. The value is a multiple of 30.  | NA        |
 | supportDimensions   | List\<String>            | Dimensions supported by the widget, which can be **1 * 2**, **2 * 2**, **2 * 4**, or **4 * 4**.  | NA        |
 | defaultDimension    | String                   | Default dimensions of the widget. The value must be available in the **supportDimensions** array of the widget.| NA        |
 | MetaData            | MetaData                 | Custom data of the widget.                                        | NA        |
 | description         | String                   | Description of the widget.                            | New in the stage model.|
-| src                 | String                   | JS code of the widget.                                      | NA        |
+| src                 | String                   | S code corresponding to the UI of the widget.                                      | NA        |
 | windowInfo          | ModuleWindowInfo struct  | Window information of the ability.                                      | NA        |
 | isDefault           | boolean                  | Whether the widget is a default one. Each HAP has only one default widget. The value **true** indicates the widget is a default one, and **false** indicates the opposite.     | NA        |
 | colorMode           | String                   | Color mode of the widget, which can be **auto**, **dark**, or **light**.             | NA        |
@@ -523,8 +524,8 @@ For details, see [alternateIcons](../quick-start/app-configuration-file.md#alter
 
 | Field          | Type  | Description          | Remarks|
 |--------------| ------ |--------------| ---- |
-| bundleName   | String | Bundle name of the shared package.| NA   |
-| moduleName   | String | Module name of the shared package.| NA   |
+| bundleName   | String | Bundle name of the shared bundle.| NA   |
+| moduleName   | String | Module name of the shared bundle.| NA   |
 | versionCode  | String | Version number of the shared bundle.     | NA   |
 
 ### ModuleAtomicService Struct

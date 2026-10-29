@@ -287,17 +287,17 @@ function socketTest() {
     // 从@kit.NetworkKit中导入connection命名空间。
     import { connection } from '@kit.NetworkKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
-    // ···
+    // ...
         let netHandleInfo:connection.NetHandle|null = null;
         // 调用getDefaultNet方法，获取默认的数据网络(NetHandle)
         connection.getDefaultNet().then((data: connection.NetHandle) => {
           if (data.netId == 0) {
-            hilog.info(0x0000, 'testTag', `don't have defaultNet`);
+            hilog.error(0x0000, 'testTag', `don't have defaultNet`);
             // 当前无默认网络时，获取的netHandler的netid为0,属于异常情况，需要额外处理
             return;
           }
           if (data) {
-            // ···
+            // ...
             hilog.info(0x0000, 'testTag', 'getDefaultNet get data: ' + JSON.stringify(data));
             // 获取netHandle对应网络的能力信息。能力信息包含了网络类型、网络具体能力等网络信息
             netHandleInfo = data;
@@ -342,14 +342,13 @@ function socketTest() {
                   }
                 }
               });
+            // 获取netHandle对应的网络的连接信息。需在获取到有效netHandle后调用。
+            connection.getConnectionProperties(netHandleInfo).then((data: connection.ConnectionProperties) => {
+              hilog.info(0x0000, 'testTag', 'getConnectionProperties get data: ' + JSON.stringify(data));
+            })
           }
         });
-    
-        // 获取netHandle对应的网络的连接信息。
-        connection.getConnectionProperties(netHandleInfo).then((data: connection.ConnectionProperties) => {
-          hilog.info(0x0000, 'testTag', 'getConnectionProperties get data: ' + JSON.stringify(data));
-        })
-    // ···
+      // ...
     ```
     
 3. 查询所有网络连接信息代码示例
@@ -456,7 +455,7 @@ function socketTest() {
     import { hilog } from '@kit.PerformanceAnalysisKit';
     // ...
           // 使用默认网络解析主机名以获取所有IP地址
-          connection.getAddressesByName('xxxx').then((data: connection.NetAddress[]) => {
+          connection.getAddressesByName('www.example.com').then((data: connection.NetAddress[]) => {
             hilog.info(0x0000, 'testTag', 'Successfully retrieved default network IP address: ' + JSON.stringify(data));
             // ...
           })

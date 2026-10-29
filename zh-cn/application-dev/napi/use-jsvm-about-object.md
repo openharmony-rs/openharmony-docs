@@ -12,7 +12,7 @@
 
 ## 基本概念
 
-在JSVM接口开发中，经常需要定义和操作对象。例如，创建一个接口，该接口接受一个对象作为输入参数，对该对象执行某些操作，并返回一个结果对象。在这个过程中，需要确保接口的定义清晰、规范，并且与对象的属性和方法相兼容。
+在JSVM接口开发中，经常需要定义和操作对象。例如，创建一个接口，该接口接收一个对象作为输入参数，对该对象执行某些操作，并返回一个结果对象。在这个过程中，需要确保接口的定义清晰、规范，并且与对象的属性和方法相兼容。
 
 - **接口（API）**：接口定义了组件之间的交互协议，包括输入参数、输出结果以及可能的错误处理。通过接口，组件可以相互调用和交换数据，而无需了解对方的内部实现细节。
 - **对象（Object）**：在JavaScript中，对象是一种复合数据类型，允许存储多个不同类型的值作为一个单独的实体。对象是属性和方法的集合。属性是与对象相关联的值，而方法则是对象可以执行的操作。
@@ -159,7 +159,7 @@ cpp部分代码：
 const int FREEZE_TEST_VALUE = 111111;
 static JSVM_Value ObjectFreeze(JSVM_Env env, JSVM_CallbackInfo info)
 {
-    // 接受一个JavaScript侧传入的object
+    // 接收一个JavaScript侧传入的object
     size_t argc = 1;
     JSVM_Value argv[1] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, argv, nullptr, nullptr);
@@ -212,33 +212,33 @@ cpp部分代码：
 const int TEST_VALUE = 111111;
 static JSVM_Value ObjectSeal(JSVM_Env env, JSVM_CallbackInfo info)
 {
-    // 接受一个JavaScript侧传入的object
+    // 接收一个JavaScript侧传入的object
     size_t argc = 1;
     JSVM_Value argv[1] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, argv, nullptr, nullptr);
-    // 调用接口OH_JSVM_ObjectSeal将传入的object封闭，使其无法添加新的属性
+    // 调用接口OH_JSVM_ObjectSeal将传入的object密封，使其无法添加新的属性
     JSVM_Status status = OH_JSVM_ObjectSeal(env, argv[0]);
     if (status == JSVM_OK) {
         OH_LOG_INFO(LOG_APP, "Test JSVM OH_JSVM_ObjectSeal success");
     }
-    // 检查封闭后的对象中属性能否修改、删除、新增
-    // 封闭后对象修改
+    // 检查密封后的对象中属性能否修改、删除、新增
+    // 密封后对象修改
     JSVM_Value changeValue = nullptr;
     OH_JSVM_CreateInt32(env, TEST_VALUE, &changeValue);
     OH_JSVM_SetNamedProperty(env, argv[0], "data", changeValue);
-    // 封闭后对象删除
+    // 密封后对象删除
     JSVM_Value deleteProperty = nullptr;
     OH_JSVM_CreateStringUtf8(env, "message", JSVM_AUTO_LENGTH, &deleteProperty);
     bool result = false;
     OH_JSVM_DeleteProperty(env, argv[0], deleteProperty, &result);
     if (result) {
-        OH_LOG_INFO(LOG_APP, "Test JSVM OH_JSVM_ObjectSeal failed");
+        OH_LOG_ERROR(LOG_APP, "Test JSVM OH_JSVM_ObjectSeal failed");
     }
-    // 封闭后对象新增
+    // 密封后对象新增
     JSVM_Value addValue = nullptr;
     OH_JSVM_CreateStringUtf8(env, "addValue", JSVM_AUTO_LENGTH, &addValue);
     OH_JSVM_SetNamedProperty(env, argv[0], "newProperty", addValue);
-    // 将封闭后改动过的对象返回JavaScript侧
+    // 将密封后改动过的对象返回JavaScript侧
     return argv[0];
 }
 // ObjectSeal注册回调
@@ -652,7 +652,7 @@ static JSVM_Value CreateSymbol(JSVM_Env env, JSVM_CallbackInfo info)
     if (valuetypeSymbol == JSVM_SYMBOL) {
         OH_LOG_INFO(LOG_APP, "JSVM CreateSymbol Success");
     } else {
-        OH_LOG_INFO(LOG_APP, "JSVM CreateSymbol fail");
+        OH_LOG_ERROR(LOG_APP, "JSVM CreateSymbol fail");
     }
     return returnSymbol;
 }

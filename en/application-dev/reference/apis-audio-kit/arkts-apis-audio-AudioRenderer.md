@@ -1,10 +1,11 @@
 # Interface (AudioRenderer)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @boxwall-->
+<!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=e2bac062111f9118e281f8f0d45c0ddb4af26ea3 translatedAt=2026-10-08T12:02:23.917Z pushedAt=2026-10-12T02:30:48.003Z -->
 
 This interface provides APIs for audio rendering.
 
@@ -807,11 +808,20 @@ getAudioTimestampInfo(): Promise\<AudioTimestampInfo>
 
 Obtains the timestamp and position information of an output audio stream. It adapts to the speed adjustment interface. This API uses a promise to return the result.
 
-This information is commonly used for audio and video synchronization.
+This function obtains the timestamp and position information of an output audio stream for audio-video synchronization. The playback position is in samples, and the timestamp is in nanoseconds.
 
-Note that when the actual playback position (**framePosition**) is 0, the timestamp remains fixed until the stream begins to play. The playback position is also reset when **Flush** is called.
+When you switch devices or resume playback after a pause, the playback position and timestamp retrieved via this function will temporarily stay in the state they were in before the switch or pause, since the playback channel requires a moment to stabilize.
 
-Additionally, changes in the audio stream route, such as switching devices or output types, will reset the playback position, whereas the timestamp keeps increasing. You are advised to call this API to obtain the corresponding value only when the actual playback position and timestamp are stable. This API adapts to the speed adjustment interface. For example, if the playback speed is set to 2x, the rate at which the playback position increases is also twice the normal speed.
+This API is typically used for audio-video synchronization. You are advised to call this API at least once every 200 ms, with a preferred frequency of once per minute. If audio-video synchronization is ensured, you do not need to frequently query the timestamp to prevent unnecessary power consumption.
+
+> **NOTE**
+>
+> - When the actual playback position (**framePosition**) is 0, the timestamp remains fixed until the stream begins playback.
+> - The playback position (**framePosition**) is in samples. The number of samples is calculated as the sample rate multiplied by time (for example, when the sample rate is 48000 Hz, the number of samples corresponding to 20 ms of audio data is 48000 × 0.02, which equals 960 samples).
+> - The playback position is also reset when **Flush** is called.
+> - Before calling this function, ensure that the audio stream is in the running state and at least one frame of data has been successfully played.
+> - Changes in the audio stream route, such as switching devices or output types, will reset the playback position, whereas the timestamp keeps increasing. You are advised to call this API to obtain the corresponding value only when the actual playback position and timestamp are stable.
+> - This API adapts to the speed adjustment interface. For example, if the playback speed is set to 2x, the rate at which the playback position increases is also twice the normal speed.
 
 **System capability**: SystemCapability.Multimedia.Audio.Renderer
 
@@ -1723,6 +1733,7 @@ Sets the default audio output device. This API uses a promise to return the resu
 >
 > - This API applies only to the scenarios where [StreamUsage](arkts-apis-audio-e.md#streamusage) is set to voice message, VoIP voice calls, or VoIP video calls. It supports only receivers, speakers, and system default devices.
 > - This API can be called at any time after an AudioRenderer instance is created. When this API is called, the system registers the specified device as the default built-in audio output device for the application. If an external audio device, such as a Bluetooth speaker or wired headset, is connected when the application starts, the system preferentially uses the external device for audio playback. In the absence of an external device, the system uses the device specified by this API for playback.
+> - This API has a lower priority than [setDefaultOutputDevice](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setdefaultoutputdevice20) of AudioSessionManager. If **setDefaultOutputDevice** of AudioSessionManager has been used to set the default audio output device, the settings made via this API does not take effect.
 
 **System capability**: SystemCapability.Multimedia.Audio.Renderer
 
@@ -2289,9 +2300,12 @@ audioRenderer.off('outputDeviceChangeWithInfo', outputDeviceChangeWithInfoCallba
 
 on(type: 'writeData', callback: AudioRendererWriteDataCallback): void
 
-Subscribes to the audio data write event, which is triggered when audio data needs to be written. This API uses an asynchronous callback to return the result.
+Subscribes to the audio data write event (triggered when audio data needs to be written). This API uses an asynchronous callback to return the result.
 
-The callback function is used only to write audio data. Do not call AudioRenderer APIs in it.
+> **NOTE**
+>
+> - The callback function is used only to write audio data. Do not call AudioRenderer APIs in it.
+> - To avoid audio artifacts caused by data discontinuity during playback start and stop, the system typically applies a fade-in/fade-out of less than 20 ms to the audio data.
 
 **System capability**: SystemCapability.Multimedia.Audio.Renderer
 

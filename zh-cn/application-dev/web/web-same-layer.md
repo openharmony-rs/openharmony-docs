@@ -474,8 +474,7 @@ display，position，z-index，visibility，opacity, background-color，backgrou
   
   ``` TypeScript
   import { webview } from '@kit.ArkWeb';
-  import { UIContext } from '@kit.ArkUI';
-  import { NodeController, BuilderNode, NodeRenderType, FrameNode } from '@kit.ArkUI';
+  import { UIContext, NodeController, BuilderNode, NodeRenderType, FrameNode } from '@kit.ArkUI';
   
   @Observed
   declare class Params{
@@ -1106,8 +1105,7 @@ display，position，z-index，visibility，opacity, background-color，backgrou
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
-import { UIContext } from '@kit.ArkUI';
-import { NodeController, BuilderNode, NodeRenderType, FrameNode } from '@kit.ArkUI';
+import { UIContext, NodeController, BuilderNode, NodeRenderType, FrameNode } from '@kit.ArkUI';
 
 @Observed
 declare class Params{
@@ -1411,8 +1409,7 @@ ArkWeb同层渲染场景下的私有属性`arkwebnativestyle`，仅在开启同�
   
   ``` TypeScript
   import { webview } from '@kit.ArkWeb';
-  import { UIContext } from '@kit.ArkUI';
-  import { NodeController, BuilderNode, NodeRenderType, FrameNode } from '@kit.ArkUI';
+  import { UIContext, NodeController, BuilderNode, NodeRenderType, FrameNode } from '@kit.ArkUI';
   @Observed
   declare class Params{
     elementId: string

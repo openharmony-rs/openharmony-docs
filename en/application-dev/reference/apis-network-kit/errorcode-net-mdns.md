@@ -1,4 +1,6 @@
-# MDNS Error Codes
+# mDNS Error Codes
+
+<!-- md-trans-meta sourceCommit=fe47b7db75861b58ddb0d93e5f0db87ae361144c translatedAt=2026-09-28T01:18:57.979Z pushedAt=2026-10-09T02:26:22.732Z -->
 
 <!--Kit: Network Kit-->
 <!--Subsystem: Communication-->
@@ -6,7 +8,6 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=66333f405b8ba85b102d9221d24e54901f6cfbf8 translatedAt=2026-06-25T01:49:56.324Z pushedAt=2026-06-26T03:00:41.282Z -->
 
 > **NOTE**
 >
@@ -82,11 +83,11 @@ This error code is reported if a callback already exists.
 
 **Possible Causes**
 
-An MDNS service with the same name and type is repeatedly registered.
+An mDNS service with the same name and type is repeatedly registered.
 
 **Solution**
 
-Check whether the MDNS service to be registered already exists.
+Check whether the mDNS service to be registered already exists.
 
 ## 2204007 Service Already Exists
 
@@ -96,15 +97,15 @@ Service instance duplicated.
 
 **Description**
 
-This error code is reported if an MDNS service already exists.
+This error code is reported if an mDNS service already exists.
 
 **Possible Causes**
 
-The previously registered MDNS service is still running.
+The previously registered mDNS service is still running.
 
 **Solution**
 
-Check whether the MDNS service already exists.
+Check whether the mDNS service already exists.
 
 ## 2204008 Service Deletion Failure
 
@@ -114,7 +115,7 @@ Failed to delete the service instance.
 
 **Description**
 
-This error code is reported if the MDNS service to be removed does not exist.
+This error code is reported if the mDNS service to be removed does not exist.
 
 **Possible Causes**
 
@@ -122,7 +123,7 @@ The service has been deleted.
 
 **Solution**
 
-Check whether the MDNS service to be registered already exists.
+Check whether the mDNS service to be registered already exists.
 
 ## 2204009 Data Packet Sending Failure
 
@@ -150,15 +151,15 @@ Failed to send the message.
 
 **Description**
 
-This error code is reported if messages fail to be sent through an MDNS service.
+Failed to send the message.
 
 **Possible Causes**
 
-The MDNS service does not exist on the LAN.
+The mDNS service does not exist on the LAN.
 
 **Solution**
 
-Check whether the target MDNS service exists on the LAN.
+Check whether the target mDNS service exists on the LAN.
 
 ## 2204006 Service Resolution Timeout
 
@@ -168,12 +169,12 @@ Request timeout.
 
 **Description**
 
-This error code is reported if MDNS services of the specified type fail to be resolved.
+This error code is reported if mDNS services of the specified type fail to be resolved.
 
 **Possible Causes**
 
-MDNS services of the specified type do not exist on the LAN.
+mDNS services of the specified type do not exist on the LAN.
 
 **Solution**
 
-Check whether MDNS services of the specified type exist on the LAN.
+Check whether mDNS services of the specified type exist on the LAN.

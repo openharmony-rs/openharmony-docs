@@ -1,12 +1,11 @@
 # Photo Capture Practices (C/C++)
-
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=99899ebe5624ae690ba80c936c1ba3c6dd396548 translatedAt=2026-08-10T09:22:12.045Z pushedAt=2026-08-10T13:35:44.945Z -->
+<!-- md-trans-meta sourceCommit=63e06d0a97101595637b8c367634436777df073e translatedAt=2026-09-28T02:45:43.542Z pushedAt=2026-09-29T08:29:31.305Z -->
 
 Before developing a camera application, you must [request required permissions](camera-preparation.md).
 
@@ -21,7 +20,6 @@ After obtaining the output stream capabilities supported by the camera, create a
 ## Complete Sample Code
 
 1. Link the dynamic library in the CMake script.
-
     ```txt
     target_link_libraries(entry PUBLIC
         libace_napi.z.so
@@ -32,9 +30,7 @@ After obtaining the output stream capabilities supported by the camera, create a
         libohfileuri.so
     )
     ```
-
 2. Create the header file **ndk_camera.h**.
-
    ```c++
    #include "ohcamera/camera.h"
    #include "ohcamera/camera_input.h"
@@ -53,9 +49,9 @@ After obtaining the output stream capabilities supported by the camera, create a
    ```
 
 3. Import the NDK APIs on the C++ side, and perform photo capture based on the surface ID passed in.
-
     ```c++
     #include "hilog/log.h"
+    #include "ndk_camera.h"
 
     void CaptureSessionOnFocusStateChange(Camera_CaptureSession* session, Camera_FocusState focusState)
     {
@@ -273,7 +269,7 @@ After obtaining the output stream capabilities supported by the camera, create a
         // Select an appropriate photo resolution from photoProfiles of cameraOutputCapability.
         photoProfile = cameraOutputCapability->photoProfiles[0];
 
-        // Create a preview output stream, with the previewSurfaceId parameter set to the ID of the surface provided by the XComponent.
+        // Create the preview output stream. The previewSurfaceId parameter refers to the XComponent component mentioned above, and the preview stream is the surface provided by the XComponent component.
         ret = OH_CameraManager_CreatePreviewOutput(cameraManager, previewProfile, previewSurfaceId, &previewOutput);
         if (previewProfile == nullptr || previewOutput == nullptr || ret != CAMERA_OK) {
             OH_LOG_ERROR(LOG_APP, "OH_CameraManager_CreatePreviewOutput failed.");

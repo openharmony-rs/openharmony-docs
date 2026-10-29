@@ -5,7 +5,7 @@
 <!--Designer: @zdustc-->
 <!--Tester: @zhangyue283-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=a200f12b3c07f37fb080224a65f9be5397544a01 translatedAt=2026-09-20T06:45:58.912Z pushedAt=2026-09-20T08:15:49.839Z -->
+<!-- md-trans-meta sourceCommit=e5521e4e68d4358f2c99dbebfb237c12bb0173c0 translatedAt=2026-10-13T12:59:02.357Z pushedAt=2026-10-16T02:38:28.232Z -->
 
 Image: a two-dimensional texture resource in 3D rendering, essentially a memory buffer that stores pixel data. It provides the data required for rendering object surfaces, including maps such as base color, normal, metallic, roughness, and ambient occlusion. It can also serve as the texture input of a material or a custom shader, ultimately determining the appearance of an object surface.
 
@@ -23,7 +23,7 @@ ArkGraphics 3D provides the capability of creating Image resources in JPEG, PNG,
    Import the core types provided by ArkGraphics 3D in the page script to create objects like scenes, cameras, materials, and images.
 
    <!-- @[resource_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
-
+   
    ``` TypeScript
    import { Camera, Environment, Geometry, Image, Material, MaterialType, Scene, SceneResourceFactory,
      SceneResourceParameters, Shader, ShaderMaterial, EnvironmentBackgroundType } from '@kit.ArkGraphics3D';
@@ -34,13 +34,13 @@ ArkGraphics 3D provides the capability of creating Image resources in JPEG, PNG,
    Call **Scene.load()** to load model files in .glb or .gltf format, and obtain a scene object upon completion. Then, construct a SceneOptions object to specify the scene and rendering mode for rendering the scene content via Component3D.
 
    <!-- @[scene_load_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
-
+   
    ``` TypeScript
    if (this.scene === null) {
-     // Switched from .gltf to .glb; same content, different format
+     // Switch from .gltf to .glb; the content is the same, but the format is different.
      Scene.load($rawfile('gltf/CubeWithFloor/glTF/AnimatedCube.glb'))
        .then(async (result: Scene) => {
-         // Assign loaded scene to globalScene for unified resource creation
+         // Assign the loaded scene to globalScene for unified resource creation.
          globalScene = result;
          this.scene = result;
          this.sceneOpt = { scene: this.scene, modelType: ModelType.SURFACE } as SceneOptions;
@@ -58,7 +58,7 @@ ArkGraphics 3D provides the capability of creating Image resources in JPEG, PNG,
    Create a camera object, and set its enabled state and viewing position for subsequent model display.
 
    <!-- @[scene_camera_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
-
+   
    ``` TypeScript
    this.cam = await this.rf.createCamera({ name: 'Camera1' });
    this.cam.enabled = true;
@@ -70,11 +70,11 @@ ArkGraphics 3D provides the capability of creating Image resources in JPEG, PNG,
    Call **Scene.getNodeByPath()** to obtain the geometry node of the target model, and record its original material. This enables rollback or recovery in case the material is later modified.
 
    <!-- @[geometry_node_get](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
-
+   
    ``` TypeScript
    this.geom = this.scene.getNodeByPath('rootNode_/Unnamed Node 1/AnimatedCube') as Geometry;
    
-   // record original material
+   // Record the original material.
    this.originalMat = this.geom.mesh.subMeshes[0].material;
    ```
 
@@ -83,11 +83,11 @@ ArkGraphics 3D provides the capability of creating Image resources in JPEG, PNG,
    Use **SceneResourceFactory.createImage()** to create an image resource.
 
    <!-- @[create_image_promise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
-
+   
    ``` TypeScript
    function createImagePromise(): Promise<Image> {
      return new Promise((resolve, reject) => {
-       // Ensure the scene is loaded before accessing sceneFactory
+       // Ensure the scene is loaded before accessing sceneFactory.
        if (globalScene) {
          let sceneFactory: SceneResourceFactory = globalScene.getResourceFactory();
    
@@ -115,7 +115,7 @@ ArkGraphics 3D provides the capability of creating Image resources in JPEG, PNG,
    In the button click callback, create a shader material using **createShader()** and **createMaterial()**, call **createImagePromise()** to obtain the image resource and bind it to the shader input property **BASE_COLOR_Image**, and then apply the material to the model geometry to make the surface texture take effect and replace the texture.
 
    <!-- @[replace_with_image_material](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
-
+   
    ``` TypeScript
    Button('Replace with a Image material')
      // ...
@@ -126,16 +126,16 @@ ArkGraphics 3D provides the capability of creating Image resources in JPEG, PNG,
          return;
        }
    
-       // create shader
+       // Create a shader.
        this.shader = await this.rf.createShader({
          name: 'shaderResource',
          uri: $rawfile('shaders/custom_shader/custom_material_sample.shader')
        });
    
-       // create imageMat
+       // Create an image material.
        this.imageMat = await this.rf.createMaterial({ name: 'imageMat' }, MaterialType.SHADER) as ShaderMaterial;
    
-       // bind between shader and imageMat
+       // Bind the shader and the image material.
        this.imageMat.colorShader = this.shader;
        let createdImage =  await createImagePromise();
        if (createdImage) {

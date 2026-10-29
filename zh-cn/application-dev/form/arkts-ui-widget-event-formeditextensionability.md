@@ -114,7 +114,7 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
    import { UIExtensionContentSession, Want } from '@kit.AbilityKit';
    import { ExtensionEvent } from '../model/ExtensionEvent';
    
-   const TAG = 'FormEditExtensionAbility';
+   const TAG: string = 'FormEditSecPageAbility';
    
    export default class FormEditSecPageAbility extends FormEditExtensionAbility {
      public storage: LocalStorage = new LocalStorage();
@@ -142,9 +142,9 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
    
        try {
          session.loadContent('pages/FormEditSecPage', this.storage);
-         console.info(TAG, `loadContent first edit page success`);
+         console.info(TAG, 'loadContent second edit page success');
        } catch (e) {
-         console.error(TAG, `EntryFormEditAbility loadContent err, want: ${e?.message}`);
+         console.error(TAG, `FormEditSecPageAbility loadContent err, want: ${e?.message}`);
        }
      }
    

@@ -1,10 +1,11 @@
 # oh_display_capture.h
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @oh_wangxk; @logn-->
-<!--Designer: @hejunfei1991-->
-<!--Tester: @qinliwen0417-->
+<!--Owner: @oh_wangxk-->
+<!--Designer: @wulong158-->
+<!--Tester: @LiTongguan2026-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=494f31a35d1b25179fe202754d9ee44d527d8ab6 translatedAt=2026-10-10T10:29:29.857Z pushedAt=2026-10-15T01:48:43.912Z -->
 
 ## Overview
 
@@ -41,7 +42,7 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_CaptureScreenPixelmap(uin
 Takes a screenshot of the entire screen. This API can be used to capture a specified screen based on a display ID.
 
 **Required permission**:
-- API version 22+: **ohos.permission.CUSTOM_SCREEN_CAPTURE** or **ohos.permission.CUSTOM_SCREEN_RECORDING**
+- API versions 22+: **ohos.permission.CUSTOM_SCREEN_CAPTURE** or **ohos.permission.CUSTOM_SCREEN_RECORDING**
 - API versions 14 to 21: **ohos.permission.CUSTOM_SCREEN_CAPTURE**
 
 **Since**: 14
@@ -60,3 +61,5 @@ Takes a screenshot of the entire screen. This API can be used to capture a speci
 | Type| Description|
 | -- | -- |
 | [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | **DISPLAY_MANAGER_OK**: The operation is successful.<br>**DISPLAY_MANAGER_ERROR_NO_PERMISSION**: The permission verification fails and the application does not have the permission to use the API. You need to apply for the permission.<br>**DISPLAY_MANAGER_ERROR_INVALID_PARAM**: The parameter check fails.<br>**DISPLAY_MANAGER_ERROR_DEVICE_NOT_SUPPORTED**: The device does not support this API.<br>**DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL**: The system service is abnormal.|
+
+

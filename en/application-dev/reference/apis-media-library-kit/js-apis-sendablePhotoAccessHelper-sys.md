@@ -58,7 +58,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 // The phAccessHelper instance obtained is a global object. It is used by default in subsequent operations. If the code snippet is not added, an error will be reported indicating that phAccessHelper is not defined.
-// Obtain the context from the component and ensure that the return value of this.getUiContext().getHostContext() is UIAbilityContext.
+// Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
 import { common } from '@kit.AbilityKit';
 
 @Entry
@@ -334,6 +334,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.sendablePhotoAccessHelper (Album Management Based on a Sendable Object)](js-apis-sendablePhotoAccessHelper.md).
 
 ```ts
+import { Context } from '@kit.AbilityKit';
 async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelper, context: Context) {
   console.info('getPhotoAssets demo');
   let valuesArr: photoAccessHelper.ValuesBucket[] = [];
@@ -426,7 +427,7 @@ Obtains analysis data. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
-**Required permissions**: ohos.permission.READ\_IMAGEVIDEO
+**Required permissions**: ohos.permission.READ_IMAGEVIDEO
 
 Since API version 22, the **ohos.permission.MEDIA\_LOCATION** permission is required when **analysisType** is set to [ANALYSIS\_DETAIL\_ADDRESS](js-apis-photoAccessHelper-sys.md#analysistype11). If the permission is not granted, the universal error code [201 Permission Denied](../errorcode-universal.md#201-permission-denied) is thrown.
 
@@ -442,7 +443,7 @@ Since API version 22, the **ohos.permission.MEDIA\_LOCATION** permission is requ
 
 | Type               | Description                               |
 | :------------------ | :---------------------------------- |
-| Promise&lt;string&gt; | Promise used to return the analysis result obtained.|
+| Promise&lt;string&gt; | Promise used to return the smart analysis result data of the specified type.|
 
 **Error codes**
 
@@ -529,7 +530,7 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
   try {
     console.info('getFaceIdDemo');
     let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
-    predicates.equalTo("user_display_level", 1);
+    predicates.equalTo('user_display_level', 1);
     let fetchOptions: photoAccessHelper.FetchOptions = {
       fetchColumns: [],
       predicates: predicates

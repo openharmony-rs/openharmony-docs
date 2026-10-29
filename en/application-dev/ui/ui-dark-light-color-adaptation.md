@@ -181,7 +181,7 @@ To enhance user experience, applications should adapt to the system's dark and l
 
     Using [WithTheme](../reference/apis-arkui/arkui-ts/ts-container-with-theme.md), you can set three [color modes](../reference/apis-arkui/arkui-ts/ts-universal-attributes-foreground-blur-style.md#themecolormode): follow the system, light mode, and dark mode.
 
-    Within the scope of **WithTheme**, component styles adapt to the specified color mode by accessing the corresponding system and application resource values, ensuring components adjust their appearance based on the configured mode. For details, see [Setting a Custom Theme Style for Specific Application Pages](./theme_skinning.md#setting-a-custom-theme-style-for-specific-application-pages).
+    Within the scope of **WithTheme**, component styles adapt to the specified color mode by accessing the corresponding system and application resource values, ensuring components adjust their appearance based on the configured mode. For details, see [Setting a Custom Theme Style for Specific Application Pages](./theme-skinning.md#setting-a-custom-theme-style-for-specific-application-pages).
 
 ## Setting the Color Mode Independently
 

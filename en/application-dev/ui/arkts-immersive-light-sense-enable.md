@@ -14,7 +14,7 @@ Immersive light sensing provides two enablement methods: app-level and component
 
 > **NOTE**
 >
-> - To enable immersive light sense, ensure that the [targetAPIVersion](../quick-start/app-configuration-file.md) of your app is not earlier than 26.0.0. For adaptation to earlier versions, see [Immersive Light Sense Compatibility Adaptation](arkts-immersive-light-sense-compatibility.md).
+> - To enable immersive light sense, ensure that the [targetAPIVersion](../quick-start/app-configuration-file.md) of your app is not earlier than 26.0.0. For adaptation to earlier versions, see [Immersive Light Sense Compatibility Adaptation](arkts-immersive-light-sense-common-capability.md).
 > - After immersive light sense is enabled, except for Slider, Toggle, and popup-type components, other components take effect only in the following subtrees: the title bar subtree of Navigation/NavDestination, or the bottom TabBar subtree of a horizontal Tabs where barPosition is BarPosition.End. Popup-type components include Popup, Tips, Menu, BindSheet, AlertDialog, CustomDialog, ActionSheet, CalendarPickerDialog, DatePickerDialog, TextPickerDialog, TimePickerDialog, Toast, Select drop-down menu, AlphabetIndexer bubble popup, and SelectionMenu text selection menu.
 
 The following table compares the different enabling methods:

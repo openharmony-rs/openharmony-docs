@@ -1,12 +1,11 @@
 # Using Image_NativeModule to Encode Images
-
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
 <!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=51871fad202ca89cea4824e5e1f6eae94c62de6c translatedAt=2026-08-11T01:44:50.261Z pushedAt=2026-08-11T07:22:02.477Z -->
+<!-- md-trans-meta sourceCommit=7309d91550473d80535b32eca83cb9c0b600f845 translatedAt=2026-09-28T02:47:07.804Z pushedAt=2026-09-29T08:34:41.967Z -->
 
 You can use the **ImagePacker** class to create and release ImagePacker instances.
 
@@ -24,7 +23,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage
 
 For details about the APIs, see [Image_NativeModule](../../reference/apis-image-kit/capi-image-nativemodule.md).
 
-Create a native C++ application in DevEco Studio. The project created by default contains the **index.ets** file, and a **hello.cpp** or **napi_init.cpp** file is generated in the **entry\src\main\cpp** directory. In this example, the generated file is **hello.cpp**. Implement the C APIs in **hello.cpp**. Refer to the sample code below.
+When creating a Native C++ app in DevEco Studio, the generated project includes an `index.ets` file by default, and a `cpp` file (`hello.cpp` or `napi_init.cpp`; this example uses `hello.cpp` as the file name) is automatically generated in the `entry\src\main\cpp` directory. Implement the C API call logic in `hello.cpp`. The sample code is as follows:
 
 **Example of Using the Encoding APIs**
 
@@ -37,7 +36,7 @@ Create a native C++ application in DevEco Studio. The project created by default
 1. Import the required header files.
 
    <!-- @[packSource_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->     
-
+   
    ``` C++
    #include <string>
    #include <hilog/log.h>
@@ -52,7 +51,7 @@ Create a native C++ application in DevEco Studio. The project created by default
 2. Modify the log macro definition as required.
 
    <!-- @[define_logInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->     
-
+   
    ``` C++
    #undef LOG_DOMAIN
    #undef LOG_TAG
@@ -63,7 +62,7 @@ Create a native C++ application in DevEco Studio. The project created by default
 3. Define the ImageSourceNative class.
 
    <!-- @[define_sourceClass](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/imageKits.h) -->   
-
+   
    ``` C
    class ImageSourceNative {
    public:
@@ -80,7 +79,7 @@ Create a native C++ application in DevEco Studio. The project created by default
 4. Create an instance of ImageSourceNative.
 
    <!-- @[create_sourceClass](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->   
-
+   
    ``` C++
    static ImageSourceNative *g_thisImageSource = new ImageSourceNative();
    ```
@@ -88,7 +87,7 @@ Create a native C++ application in DevEco Studio. The project created by default
 5. Define a global variable to record the encoding formats supported.
 
    <!-- @[packSource_supportedFormats](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->   
-
+   
    ``` C++
    static std::set<std::string> g_encodeSupportedFormats;
    ```
@@ -96,7 +95,7 @@ Create a native C++ application in DevEco Studio. The project created by default
 6. Create the **GetJsResult** function to process the NAPI return value.
 
    <!-- @[get_returnValue](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/napi_init.cpp) -->   
-
+   
    ``` C++
    // Process the NAPI return value.
    napi_value GetJsResult(napi_env env, int result)
@@ -110,7 +109,7 @@ Create a native C++ application in DevEco Studio. The project created by default
 7. After an ImagePacker instance is created and encoding parameters are specified, the ImageSource or PixelMap object is encoded to a file or buffer.
 
    <!-- @[pack_source](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->     
-
+   
    ``` C++
    // Obtain the encoding capability range.
    Image_ErrorCode GetEncodeSupportedFormats()

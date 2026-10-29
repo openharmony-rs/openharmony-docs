@@ -2920,6 +2920,8 @@ error: uninstall missing installed module.
 **处理步骤**
 
 使用[bm dump -n](#查询应用信息命令dump)命令查看应用配置，确认要卸载的模块已经安装。
+
+<!--Del-->
 ### 9568432 插件与应用之间的 pluginDistributionIDs 校验失败，导致安装失败
 **错误信息**
 
@@ -2962,6 +2964,7 @@ error: Failed to install the plugin because host application check permission fa
 1. 参考[权限申请指导](../security/AccessToken/declare-permissions.md)申请[ohos.permission.kernel.SUPPORT_PLUGIN权限](../security/AccessToken/restricted-permissions.md#ohospermissionkernelsupport_plugin)。<!--Del-->
 
 2. 该权限等级为system_basic，若[应用APL等级](../security/AccessToken/app-permission-mgmt-overview.md#权限机制中的基本概念)低于system_basic，请[申请受限权限](../security/AccessToken/declare-permissions-in-acl.md)。<!--DelEnd-->
+<!--DelEnd-->
 
 
 ### 9568333 模块名称为空
@@ -3265,6 +3268,7 @@ error: Failed to install the plugin because they have different configuration in
 
 检查多HSP之间的包信息是否一致，包括[app.json5配置文件](../quick-start/app-configuration-file.md#配置文件标签)中bundleName、bundleType、versionCode、apiReleaseType字段。
 
+<!--Del-->
 ### 9568437 插件的 pluginDistributionIDs 解析失败
 **错误信息**
 
@@ -3288,6 +3292,7 @@ error: Failed to install the plugin because the plugin id failed to be parsed.
     }
 }
 ```
+<!--DelEnd-->
 
 ### 9568438 插件包名不存在
 **错误信息**

@@ -1,12 +1,11 @@
 # Handling Output Device Changes Gracefully
-
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @songshenke-->
 <!--Designer: @zhanganxiang1-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=b065b5b02aeefe715acab92287399dde4481a96c translatedAt=2026-08-06T01:43:39.322Z pushedAt=2026-08-06T03:52:19.047Z -->
+<!-- md-trans-meta sourceCommit=3cba3d1071f73693662a910e0841fe04876df38d translatedAt=2026-09-28T02:34:40.434Z pushedAt=2026-09-29T06:39:27.805Z -->
 
 You can listen for audio output device changes and implement appropriate responses. For example, if the output device disconnects during music playback, the application should pause playback immediately to avoid disrupting the user.
 
@@ -39,11 +38,8 @@ The audio device change information returned by [on('outputDeviceChangeWithInfo'
   The handling suggestions for typical service scenarios are as follows:
 
   - Gaming scenario: Do not pause audio playback.
-
   - Audiobook scenario: Pause audio playback.
-
   - Music scenario: Pause audio playback.
-
   - Video scenario: Pause audio playback.
 
 - **REASON_OVERRODE**: The user forcibly selects a device.
@@ -60,30 +56,30 @@ The following examples are code snippets. For the [complete sample](https://gitc
 
 ### AudioRenderer Sample
 
-  <!-- @[onOutputDeviceChangeWithInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioOutputDeviceChange.ets) --> 
-
-  ``` TypeScript	
-  import { audio } from '@kit.AudioKit';	
-  import { BusinessError } from '@kit.BasicServicesKit';	
+  <!-- @[onOutputDeviceChangeWithInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioOutputDeviceChange.ets) -->
+  
+  ``` TypeScript
+  import { audio } from '@kit.AudioKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   // ...
   
-  let audioRenderer: audio.AudioRenderer | undefined = undefined;	
-  let audioStreamInfo: audio.AudioStreamInfo = {	
+  let audioRenderer: audio.AudioRenderer | undefined = undefined;
+  let audioStreamInfo: audio.AudioStreamInfo = {
     samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // Sampling rate.
     channels: audio.AudioChannel.CHANNEL_2, // Channel.
     sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE, // Sampling format.
     encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW // Encoding format.
-  };	
-  let audioRendererInfo: audio.AudioRendererInfo = {	
+  };
+  let audioRendererInfo: audio.AudioRendererInfo = {
     usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION, // Audio stream usage type: voice communication. Configure based on the service scenario. See StreamUsage.
     rendererFlags: 0 // AudioRenderer flag.
-  };	
-  let audioRendererOptions: audio.AudioRendererOptions = {	
-    streamInfo: audioStreamInfo,	
-    rendererInfo: audioRendererInfo	
+  };
+  let audioRendererOptions: audio.AudioRendererOptions = {
+    streamInfo: audioStreamInfo,
+    rendererInfo: audioRendererInfo
   };
   // ...
-
+  
     // Create an AudioRenderer instance.
     audio.createAudioRenderer(audioRendererOptions, (err, renderer) => {
       if (!err) {
@@ -92,7 +88,7 @@ The following examples are code snippets. For the [complete sample](https://gitc
         audioRenderer = renderer;
         // ...
       } else {
-        console.info(`Failed to create audio renderer. Code: ${err.code}, message: ${err.message}`);
+        console.error(`Failed to create audio renderer. Code: ${err.code}, message: ${err.message}`);
         // ...
       }
     });
@@ -102,33 +98,33 @@ The following examples are code snippets. For the [complete sample](https://gitc
       audioRenderer?.on('outputDeviceChangeWithInfo', (deviceChangeInfo: audio.AudioStreamDeviceChangeInfo) => {
         console.info(`Succeeded in using on function. AudioStreamDeviceChangeInfo: ${JSON.stringify(deviceChangeInfo)}`);
         // ...
-        switch (deviceChangeInfo.changeReason) {	
-          case audio.AudioStreamDeviceChangeReason.REASON_OLD_DEVICE_UNAVAILABLE:	
+        switch (deviceChangeInfo.changeReason) {
+          case audio.AudioStreamDeviceChangeReason.REASON_OLD_DEVICE_UNAVAILABLE:
             // Respond to the device unavailable event. If the app is in the playback state, pause playback and update the UX.
             audioRenderer?.pause();
-            break;	
-          case audio.AudioStreamDeviceChangeReason.REASON_NEW_DEVICE_AVAILABLE:	
+            break;
+          case audio.AudioStreamDeviceChangeReason.REASON_NEW_DEVICE_AVAILABLE:
             // The application responds to the device availability event based on the service status.
-            break;	
-          case audio.AudioStreamDeviceChangeReason.REASON_OVERRODE:	
+            break;
+          case audio.AudioStreamDeviceChangeReason.REASON_OVERRODE:
             // The application responds to the forcible device selection event based on the service status.
-            break;	
-          case audio.AudioStreamDeviceChangeReason.REASON_UNKNOWN:	
+            break;
+          case audio.AudioStreamDeviceChangeReason.REASON_UNKNOWN:
             // The application responds to the unknown reason event based on the service status.
-            break;	
+            break;
         }
       });
     } catch (err) {
       let error = err as BusinessError;
       console.error(`Failed to use on function. Code: ${error.code}, message: ${error.message}`);
       // ...
-    }	
+    }
   ```
 
 ### AudioSessionManager Sample
 
-  <!-- @[onCurrentOutputDeviceChanged](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioOutputDeviceChange.ets) --> 
-
+  <!-- @[onCurrentOutputDeviceChanged](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioOutputDeviceChange.ets) -->
+  
   ``` TypeScript
   import { audio } from '@kit.AudioKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -161,7 +157,7 @@ The following examples are code snippets. For the [complete sample](https://gitc
         audioRenderer = renderer;
         // ...
       } else {
-        console.info(`Failed to create audio renderer. Code: ${err.code}, message: ${err.message}`);
+        console.error(`Failed to create audio renderer. Code: ${err.code}, message: ${err.message}`);
         // ...
       }
     });
@@ -189,7 +185,7 @@ The following examples are code snippets. For the [complete sample](https://gitc
         // ...
         switch (deviceChangeInfo.changeReason) {
           case audio.AudioStreamDeviceChangeReason.REASON_OLD_DEVICE_UNAVAILABLE:
-            // Respond to the device unavailability event. If the application is playing content, pause the playback and update the UX.
+            // Respond to the device unavailable event. If the application is playing content, pause the playback and update the UX.
             audioRenderer?.pause();
             console.info('REASON_OLD_DEVICE_UNAVAILABLE, pause audio is recommended');
             break;

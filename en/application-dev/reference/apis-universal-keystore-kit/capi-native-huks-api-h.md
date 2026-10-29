@@ -6,6 +6,7 @@
 <!--Designer: @HighLowWorld-->
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=23577c979bcb519c1999250f5076db4008505504 translatedAt=2026-10-12T08:39:35.482Z pushedAt=2026-10-13T06:55:17.704Z -->
 
 ## Overview
 
@@ -15,10 +16,7 @@ Declares the APIs used to access HUKS.
 
 **Library**: libhuks_ndk.z.so
 
-**System capability**:
-
-- API version 20 +: SystemCapability.Security.Huks.Core
-- API version 9 - 19: SystemCapability.Security.Huks
+**System capability:** SystemCapability.Security.Huks.Core
 
 **Since**: 9
 
@@ -117,7 +115,7 @@ Imports a key in plaintext.
 | Name| Description|
 | -- | -- |
 | [const struct OH_Huks_Blob](capi-hukstypeapi-oh-huks-blob.md) *keyAlias | Pointer to the alias of the key to import. The alias must be unique in the process of the service.|
-| [const struct OH_Huks_ParamSet](capi-hukstypeapi-oh-huks-paramset.md) *paramSet | Pointer to the properties of the key to import.|
+| [const struct OH_Huks_ParamSet](capi-hukstypeapi-oh-huks-paramset.md) *paramSet | Pointer to the parameters of the key to import.|
 | [const struct OH_Huks_Blob](capi-hukstypeapi-oh-huks-blob.md) *key | Pointer to the data of the key to import, complying with the format requirements of HUKS. For details, see [native_huks_type.h](capi-native-huks-type-h.md).|
 
 **Returns**
@@ -143,9 +141,9 @@ Imports a key in ciphertext.
 | Name| Description|
 | -- | -- |
 | [const struct OH_Huks_Blob](capi-hukstypeapi-oh-huks-blob.md) *keyAlias | Pointer to the alias of the key to import. The alias must be unique in the process of the service.|
-| [const struct OH_Huks_Blob](capi-hukstypeapi-oh-huks-blob.md) *wrappingKeyAlias | Pointer to the alias of the key used for key negotiation or digital envelope decryption. The negotiated or decrypted key is then used to decrypt the key to import.|
+| [const struct OH_Huks_Blob](capi-hukstypeapi-oh-huks-blob.md) *wrappingKeyAlias | Pointer to the alias of the key used for key agreement or digital envelope decryption. The negotiated or decrypted key is then used to decrypt the key to import.|
 | [const struct OH_Huks_ParamSet](capi-hukstypeapi-oh-huks-paramset.md) *paramSet | Pointer to the parameters for importing the key in ciphertext.|
-| [const struct OH_Huks_Blob](capi-hukstypeapi-oh-huks-blob.md) *wrappedKeyData | Pointer to the data of the key to import, complying with the format requirements of HUKS. For details, see [OH_Huks_AlgSuite](capi-native-huks-type-h.md#oh_huks_algsuite).|
+| [const struct OH_Huks_Blob](capi-hukstypeapi-oh-huks-blob.md) *wrappedKeyData | Pointer to the wrapped key data to import, complying with the format requirements of HUKS. For details, see [OH_Huks_AlgSuite](capi-native-huks-type-h.md#oh_huks_algsuite).|
 
 **Returns**
 
@@ -270,9 +268,9 @@ Obtains the certificate chain of a key. This API is open only to system applicat
 **Since**: 9
 
 <!--RP1-->
-> **NOTE**<br>
+> **NOTE** 
 >
-> The certificate chain generated during non-anonymous certificate key attestation may contain the device identifier (confirm the specific implementation with the vendor). If the device identifier is included, you can determine its use, retention, and destruction. It is recommended that you describe the use purpose, retention policy, and destruction method in the privacy statement.
+> The certificate chain generated when using non-anonymous certificate key attestation may contain device identifiers (for the specific implementation, confirm with the vendor). If device identifiers are included, their use, retention, and destruction are determined by the developer. It is recommended that the developer explain the purpose of use, retention policy, and destruction method in its privacy statement.
 <!--RP1End-->
 
 **Parameters**
@@ -333,7 +331,7 @@ Initializes a key session. This function returns a session handle (mandatory) an
 | -- | -- |
 | [const struct OH_Huks_Blob](capi-hukstypeapi-oh-huks-blob.md) *keyAlias | Pointer to the alias of the key to be operated.|
 | [const struct OH_Huks_ParamSet](capi-hukstypeapi-oh-huks-paramset.md) *paramSet | Pointer to the parameters for the initialization operation.|
-| [struct OH_Huks_Blob](capi-hukstypeapi-oh-huks-blob.md) *handle | Pointer to the handle of the key session. This handle is required for subsequent operations of the same key, including [OH_Huks_UpdateSession](capi-native-huks-api-h.md#oh_huks_updatesession), [OH_Huks_FinishSession](capi-native-huks-api-h.md#oh_huks_finishsession) and [OH_Huks_AbortSession](capi-native-huks-api-h.md#oh_huks_abortsession).|
+| [struct OH_Huks_Blob](capi-hukstypeapi-oh-huks-blob.md) *handle | Pointer to the handle to the key session. This handle is required for subsequent operations of the same key, including [OH_Huks_UpdateSession](capi-native-huks-api-h.md#oh_huks_updatesession), [OH_Huks_FinishSession](capi-native-huks-api-h.md#oh_huks_finishsession) and [OH_Huks_AbortSession](capi-native-huks-api-h.md#oh_huks_abortsession).|
 | [struct OH_Huks_Blob](capi-hukstypeapi-oh-huks-blob.md) *token | Pointer to the token used for key access control.|
 
 **Returns**
@@ -376,7 +374,7 @@ Adds data by segment for the key operation, performs the related key operation, 
 
 | Type| Description|
 | -- | -- |
-| [struct OH_Huks_Result](capi-hukstypeapi-oh-huks-result.md) | Possible error codes (**errorCode**):<br>         **OH_HUKS_SUCCESS 0**: Operation successful.<br>         **OH_HUKS_ERR_CODE_ILLEGAL_ARGUMENT 401**: Invalid **handle**, **paramSet**, **inData**, or **outData**.<br>         **OH_HUKS_ERR_CODE_FEATURE_NOT_SUPPORTED 12000001**: This feature is not supported currently.<br>         **OH_HUKS_ERR_CODE_MISSING_CRYPTO_ALG_ARGUMENT 12000002**: Failed to obtain the key parameter.<br>         **OH_HUKS_ERR_CODE_INVALID_CRYPTO_ALG_ARGUMENT 12000003**: The key parameter is invalid.<br>         **OH_HUKS_ERR_CODE_COMMUNICATION_FAIL 12000005**: IPC communication failed.<br>         **OH_HUKS_ERR_CODE_CRYPTO_FAIL 12000006**: The encryption engine fails.<br>         **OH_HUKS_ERR_CODE_KEY_AUTH_PERMANENTLY_INVALIDATED 12000007**: Failed to verify the access token information.<br>         **OH_HUKS_ERR_CODE_KEY_AUTH_VERIFY_FAILED 12000008**: Failed to verify the authentication token.<br>         **OH_HUKS_ERR_CODE_KEY_AUTH_TIME_OUT 12000009**: The authentication token times out.<br>         **OH_HUKS_ERR_CODE_ITEM_NOT_EXIST 12000011**: The key file or the handle does not exist.<br>         **OH_HUKS_ERR_CODE_INTERNAL_ERROR 12000012**: The device environment or input parameters are abnormal.<br>         **OH_HUKS_ERR_CODE_CREDENTIAL_NOT_EXIST 12000013**: The certificate does not exist.<br>         **OH_HUKS_ERR_CODE_INSUFFICIENT_MEMORY 12000014**: Insufficient memory.<br>         **OH_HUKS_ERR_CODE_DEVICE_PASSWORD_UNSET 12000016**: No device password is set.<br>         **OH_HUKS_ERR_CODE_INVALID_ARGUMENT 12000018**: The group name specified by accessing the group tag is invalid. (This error code is added in API version 23.)<br>         **OH_HUKS_ERR_CODE_EXTERNAL_MODULE 12000020**: The provider or UKey internal execution fails. (This error code is added in API version 22.)<br>         **OH_HUKS_ERR_CODE_PIN_LOCKED 12000021**: The PIN is locked. (This error code is added in API version 22.)<br>         **OH_HUKS_ERR_CODE_PIN_NO_AUTH 12000023**: The PIN authentication fails. (This error code is added in API version 22.)<br>         **OH_HUKS_ERR_CODE_BUSY 12000024**: The resource in the provider or UKey is being used. (This error code is added in API version 22.) |
+| [struct OH_Huks_Result](capi-hukstypeapi-oh-huks-result.md) | Possible error codes (**errorCode**):<br>         **OH_HUKS_SUCCESS 0**: Operation successful.<br>         **OH_HUKS_ERR_CODE_ILLEGAL_ARGUMENT 401**: Invalid **handle**, **paramSet**, **inData**, or **outData**.<br>         **OH_HUKS_ERR_CODE_FEATURE_NOT_SUPPORTED 12000001**: This feature is not supported currently.<br>         **OH_HUKS_ERR_CODE_MISSING_CRYPTO_ALG_ARGUMENT 12000002**: Failed to obtain the key parameter.<br>         **OH_HUKS_ERR_CODE_INVALID_CRYPTO_ALG_ARGUMENT 12000003**: The key parameter is invalid.<br>         **OH_HUKS_ERR_CODE_COMMUNICATION_FAIL 12000005**: IPC communication failed.<br>         **OH_HUKS_ERR_CODE_CRYPTO_FAIL 12000006**: The encryption engine fails.<br>         **OH_HUKS_ERR_CODE_KEY_AUTH_PERMANENTLY_INVALIDATED 12000007**: Failed to verify the authentication token information.<br>         **OH_HUKS_ERR_CODE_KEY_AUTH_VERIFY_FAILED 12000008**: Failed to verify the authentication token.<br>         **OH_HUKS_ERR_CODE_KEY_AUTH_TIME_OUT 12000009**: The authentication token times out.<br>         **OH_HUKS_ERR_CODE_ITEM_NOT_EXIST 12000011**: The key file or the handle does not exist.<br>         **OH_HUKS_ERR_CODE_INTERNAL_ERROR 12000012**: The device environment or input parameters are abnormal.<br>         **OH_HUKS_ERR_CODE_CREDENTIAL_NOT_EXIST 12000013**: The certificate does not exist.<br>         **OH_HUKS_ERR_CODE_INSUFFICIENT_MEMORY 12000014**: Insufficient memory.<br>         **OH_HUKS_ERR_CODE_DEVICE_PASSWORD_UNSET 12000016**: No device password is set.<br>         **OH_HUKS_ERR_CODE_INVALID_ARGUMENT 12000018**: The group name specified by accessing the group tag is invalid. (This error code is added in API version 23.)<br>         **OH_HUKS_ERR_CODE_EXTERNAL_MODULE 12000020**: The provider or UKey internal execution fails. (This error code is added in API version 22.)<br>         **OH_HUKS_ERR_CODE_PIN_LOCKED 12000021**: The PIN is locked. (This error code is added in API version 22.)<br>         **OH_HUKS_ERR_CODE_PIN_NO_AUTH 12000023**: The PIN authentication fails. (This error code is added in API version 22.)<br>         **OH_HUKS_ERR_CODE_BUSY 12000024**: The resource in the provider or UKey is being used. (This error code is added in API version 22.) |
 
 **Reference**
 
@@ -412,7 +410,7 @@ Finishes a key session.
 
 | Type| Description|
 | -- | -- |
-| [struct OH_Huks_Result](capi-hukstypeapi-oh-huks-result.md) | Possible error codes (**errorCode**):<br>         **OH_HUKS_SUCCESS 0**: Operation successful.<br>         **OH_HUKS_ERR_CODE_ILLEGAL_ARGUMENT 401**: Invalid **handle**, **paramSet**, **inData**, or **outData**.<br>         **OH_HUKS_ERR_CODE_FEATURE_NOT_SUPPORTED 12000001**: This feature is not supported currently.<br>         **OH_HUKS_ERR_CODE_MISSING_CRYPTO_ALG_ARGUMENT 12000002**: Failed to obtain the key parameter.<br>         **OH_HUKS_ERR_CODE_INVALID_CRYPTO_ALG_ARGUMENT 12000003**: The key parameter is invalid.<br>         **OH_HUKS_ERR_CODE_COMMUNICATION_FAIL 12000005**: IPC communication failed.<br>         **OH_HUKS_ERR_CODE_CRYPTO_FAIL 12000006**: The encryption engine fails.<br>         **OH_HUKS_ERR_CODE_KEY_AUTH_PERMANENTLY_INVALIDATED 12000007**: Failed to verify the access token information.<br>         **OH_HUKS_ERR_CODE_KEY_AUTH_VERIFY_FAILED 12000008**: Failed to verify the authentication token.<br>         **OH_HUKS_ERR_CODE_KEY_AUTH_TIME_OUT 12000009**: The authentication token times out.<br>         **OH_HUKS_ERR_CODE_ITEM_NOT_EXIST 12000011**: The key file or the handle does not exist.<br>         **OH_HUKS_ERR_CODE_INTERNAL_ERROR 12000012**: The device environment or input parameters are abnormal.<br>         **OH_HUKS_ERR_CODE_CREDENTIAL_NOT_EXIST 12000013**: The certificate does not exist.<br>         **OH_HUKS_ERR_CODE_INSUFFICIENT_MEMORY 12000014**: Insufficient memory.<br>         **OH_HUKS_ERR_CODE_DEVICE_PASSWORD_UNSET 12000016**: No device password is set.<br>         **OH_HUKS_ERR_CODE_KEY_ALREADY_EXIST 12000017**: A key with the same name already exists. (This error code is added in API version 20.)<br>         **OH_HUKS_ERR_CODE_INVALID_ARGUMENT 12000018**: The group name specified by accessing the group tag is invalid. (This error code is added in API version 23.)<br>         **OH_HUKS_ERR_CODE_EXTERNAL_MODULE 12000020**: The provider or UKey internal execution fails. (This error code is added in API version 22.)<br>         **OH_HUKS_ERR_CODE_PIN_LOCKED 12000021**: The PIN is locked. (This error code is added in API version 22.)<br>         **OH_HUKS_ERR_CODE_PIN_NO_AUTH 12000023**: The PIN authentication fails. (This error code is added in API version 22.)<br>         **OH_HUKS_ERR_CODE_BUSY 12000024**: The resource in the provider or UKey is being used. (This error code is added in API version 22.) |
+| [struct OH_Huks_Result](capi-hukstypeapi-oh-huks-result.md) | Possible error codes (**errorCode**):<br>         **OH_HUKS_SUCCESS 0**: Operation successful.<br>         **OH_HUKS_ERR_CODE_ILLEGAL_ARGUMENT 401**: Invalid **handle**, **paramSet**, **inData**, or **outData**.<br>         **OH_HUKS_ERR_CODE_FEATURE_NOT_SUPPORTED 12000001**: This feature is not supported currently.<br>         **OH_HUKS_ERR_CODE_MISSING_CRYPTO_ALG_ARGUMENT 12000002**: Failed to obtain the key parameter.<br>         **OH_HUKS_ERR_CODE_INVALID_CRYPTO_ALG_ARGUMENT 12000003**: The key parameter is invalid.<br>         **OH_HUKS_ERR_CODE_COMMUNICATION_FAIL 12000005**: IPC communication failed.<br>         **OH_HUKS_ERR_CODE_CRYPTO_FAIL 12000006**: The encryption engine fails.<br>         **OH_HUKS_ERR_CODE_KEY_AUTH_PERMANENTLY_INVALIDATED 12000007**: Failed to verify the authentication token information.<br>         **OH_HUKS_ERR_CODE_KEY_AUTH_VERIFY_FAILED 12000008**: Failed to verify the authentication token.<br>         **OH_HUKS_ERR_CODE_KEY_AUTH_TIME_OUT 12000009**: The authentication token times out.<br>         **OH_HUKS_ERR_CODE_ITEM_NOT_EXIST 12000011**: The key file or the handle does not exist.<br>         **OH_HUKS_ERR_CODE_INTERNAL_ERROR 12000012**: The device environment or input parameters are abnormal.<br>         **OH_HUKS_ERR_CODE_CREDENTIAL_NOT_EXIST 12000013**: The certificate does not exist.<br>         **OH_HUKS_ERR_CODE_INSUFFICIENT_MEMORY 12000014**: Insufficient memory.<br>         **OH_HUKS_ERR_CODE_DEVICE_PASSWORD_UNSET 12000016**: No device password is set.<br>         **OH_HUKS_ERR_CODE_KEY_ALREADY_EXIST 12000017**: A key with the same name already exists. (This error code is added in API version 20.)<br>         **OH_HUKS_ERR_CODE_INVALID_ARGUMENT 12000018**: The group name specified by accessing the group tag is invalid. (This error code is added in API version 23.)<br>         **OH_HUKS_ERR_CODE_EXTERNAL_MODULE 12000020**: The provider or UKey internal execution fails. (This error code is added in API version 22.)<br>         **OH_HUKS_ERR_CODE_PIN_LOCKED 12000021**: The PIN is locked. (This error code is added in API version 22.)<br>         **OH_HUKS_ERR_CODE_PIN_NO_AUTH 12000023**: The PIN authentication fails. (This error code is added in API version 22.)<br>         **OH_HUKS_ERR_CODE_BUSY 12000024**: The resource in the provider or UKey is being used. (This error code is added in API version 22.) |
 
 **Reference**
 
@@ -440,7 +438,7 @@ Aborts a key session.
 | Name| Description|
 | -- | -- |
 | [const struct OH_Huks_Blob](capi-hukstypeapi-oh-huks-blob.md) *handle | Pointer to the key session handle, which is returned by [OH_Huks_InitSession](capi-native-huks-api-h.md#oh_huks_initsession).|
-| [const struct OH_Huks_ParamSet](capi-hukstypeapi-oh-huks-paramset.md) *paramSet | Pointer to the parameters for aborting the key session. By default, this parameter is a null pointer.|
+| [const struct OH_Huks_ParamSet](capi-hukstypeapi-oh-huks-paramset.md) *paramSet | Pointer to the parameter set for aborting the key session. By default, this parameter is a null pointer.|
 
 **Returns**
 
@@ -474,7 +472,7 @@ Obtains the key alias set.
 
 | Name| Description|
 | -- | -- |
-| [const struct OH_Huks_ParamSet](capi-hukstypeapi-oh-huks-paramset.md) *paramSet | Pointer to the parameters for obtaining the key alias set. By default, this parameter is a null pointer.|
+| [const struct OH_Huks_ParamSet](capi-hukstypeapi-oh-huks-paramset.md) *paramSet | Pointer to the parameter set for obtaining the key alias set. By default, this parameter is a null pointer.|
 | [struct OH_Huks_KeyAliasSet](capi-hukstypeapi-oh-huks-keyaliasset.md) **outData | Double pointer to the obtained key alias set. After the key alias set is used, you need to use [OH_Huks_FreeKeyAliasSet](capi-native-huks-param-h.md#oh_huks_freekeyaliasset) to release the memory allocated by the system.|
 
 **Returns**
@@ -500,7 +498,7 @@ Exports a wrapped key.
 | Name| Description|
 | -- | -- |
 | [const struct OH_Huks_Blob](capi-hukstypeapi-oh-huks-blob.md) *keyAlias | Pointer to the alias of the key to export.|
-| [const struct OH_Huks_ParamSet](capi-hukstypeapi-oh-huks-paramset.md) *paramSet | Pointer to the parameters for encrypting the exported key.|
+| [const struct OH_Huks_ParamSet](capi-hukstypeapi-oh-huks-paramset.md) *paramSet | Pointer to the parameter set for encrypting the exported key.|
 | [struct OH_Huks_Blob](capi-hukstypeapi-oh-huks-blob.md) *wrappedKey | Pointer to the wrapped key to export.|
 
 **Returns**
@@ -526,7 +524,7 @@ Imports a wrapped key.
 | Name| Description|
 | -- | -- |
 | [const struct OH_Huks_Blob](capi-hukstypeapi-oh-huks-blob.md) *keyAlias | Pointer to the alias of the key to import. The alias must be unique in the service process. Otherwise, the key will be overwritten.|
-| [const struct OH_Huks_ParamSet](capi-hukstypeapi-oh-huks-paramset.md) *paramSet | Pointer to the parameters for encrypting the imported key.|
+| [const struct OH_Huks_ParamSet](capi-hukstypeapi-oh-huks-paramset.md) *paramSet | Pointer to the parameter set for encrypting the imported key.|
 | [struct OH_Huks_Blob](capi-hukstypeapi-oh-huks-blob.md) *wrappedKey | Pointer to the wrapped key to import.|
 
 **Returns**
@@ -534,3 +532,5 @@ Imports a wrapped key.
 | Type| Description|
 | -- | -- |
 | [struct OH_Huks_Result](capi-hukstypeapi-oh-huks-result.md) | Possible error codes (**errorCode**):<br>         **OH_HUKS_SUCCESS 0**: Operation successful.<br>         **OH_HUKS_ERR_CODE_NOT_SUPPORTED_API 801**: The API is not supported.<br>         **OH_HUKS_ERR_CODE_FILE_OPERATION_FAIL 12000004**: Failed to delete or write the file.<br>         **OH_HUKS_ERR_CODE_COMMUNICATION_FAIL 12000005**: IPC communication failed.<br>         **OH_HUKS_ERR_CODE_INTERNAL_ERROR 12000012**: The device environment or input parameters are abnormal.<br>         **OH_HUKS_ERR_CODE_INSUFFICIENT_MEMORY 12000014**: Insufficient memory.<br>         **OH_HUKS_ERR_CODE_CALL_SERVICE_FAILED 12000015**: Failed to connect to the user IAM.<br>         **OH_HUKS_ERR_CODE_INVALID_ARGUMENT 12000018**: The key alias, parameter set, or wrapped key is invalid.|
+
+

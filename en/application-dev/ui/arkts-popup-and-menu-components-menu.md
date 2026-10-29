@@ -1,18 +1,18 @@
 # Menu Control (Menu)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @H-xinwei-->
 <!--Designer: @zhanghaibo0-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=b8421fa94775fa4bceb1b522857b705478302935 translatedAt=2026-08-04T06:37:07.811Z pushedAt=2026-08-04T08:03:19.991Z -->
+<!-- md-trans-meta sourceCommit=3bd46a1d3614ecae7d45fa7b3b78285ce9f7a1da translatedAt=2026-10-12T09:36:37.228Z pushedAt=2026-10-13T03:49:27.554Z -->
 
 You can use menu APIs to display a context menu, a vertical list of items displayed by long pressing, clicking, or right-clicking a component. For details, see [Menu Control](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md).
 
-A context menu displayed using [bindContextMenu](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindcontextmenu12) and configured with a preview image has a mask applied; in this case, it is modal.
+When [bindContextMenu](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindcontextmenu12) is used with a preview image set, a mask appears when the menu pops up, and the menu is modal in this case.
 
 A context menu displayed using [bindMenu](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindmenu11), or **bindContextMenu** without a preview image configured, does not have a mask applied; in this case, it is non-modal.
+
 
 ## Creating a Menu in the Default Style
 
@@ -142,11 +142,10 @@ Button('click for Menu')
 Use the [bindContextMenu](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindcontextmenu8) API to customize the menu content and menu popup mode: right-click or long press. The menu items that are displayed using **bindContextMenu** are in an independent child window and can be displayed outside the application window.
 
 - Use @Builder to customize the menu content. The content configuration follows the same logic as the preceding section.
-
 - Check the menu popup mode and bind the component through the **bindContextMenu** attribute. In the example, the menu is displayed upon right-clicking.
 
   <!-- @[create_right_click_menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/CreateMenu.ets) -->
-
+  
   ``` TypeScript
   Button('Right-click for Menu')
     .bindContextMenu(this.MyMenu, ResponseType.RightClick)
@@ -157,11 +156,10 @@ Use the [bindContextMenu](../reference/apis-arkui/arkui-ts/ts-universal-attribut
 Menu haptic feedback is supported since API version 18. By default, menus are displayed without haptic feedback. To enable haptic feedback when menus appear, configure the haptic feedback mode using the **hapticFeedbackMode** property in [ContextMenuOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#contextmenuoptions10).
 
 - The haptic feedback mode is only configurable for level-1 menus.
-
 - The settings take effect only when the application has the ohos.permission.VIBRATE permission and the user has enabled haptic feedback. To enable haptic feedback, you must [declare the required permission](../security/AccessToken/declare-permissions.md) under **requestPermissions** in the **module.json5** file of the project as follows:
 
   <!-- @[menu_permissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/module.json5) -->
-
+  
   ``` JSON5
   "requestPermissions": [
     {
@@ -180,7 +178,7 @@ Button('click for Menu')
 
 ## Implementing Center Axis Avoidance
 
-Since API version 18, menus support center axis avoidance. Since API version 20, it is enabled by default on 2-in-1 devices (avoidance only occurs when the window is in waterfall mode). You can control whether to enable axis avoidance through the **enableHoverMode** property in [ContextMenuOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#contextmenuoptions10).
+Since API version 18, menus support center axis avoidance. Since API version 20, it is enabled by default on 2-in-1 devices (avoidance only occurs when the window is in waterfall mode). You can control whether to enable center axis avoidance through the **enableHoverMode** property in [ContextMenuOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#contextmenuoptions10).
 
 > **NOTE**
 > - Menus will not avoid the center axis if tapped in the axis area.
@@ -361,3 +359,4 @@ export struct BindComponentMenuExample {
 ```
 
 ![AnchorPosition](figures/AnchorPosition.gif)
+

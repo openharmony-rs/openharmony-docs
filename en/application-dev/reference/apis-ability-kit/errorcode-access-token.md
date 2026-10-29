@@ -6,6 +6,7 @@
 <!--Designer: @linshuqing; @hehehe-li-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=770bd4ac52fd8abe00521a11eac44381dda0dea5 translatedAt=2026-10-09T10:39:00.076Z pushedAt=2026-10-10T08:54:44.682Z -->
 
 > **NOTE**
 >
@@ -38,7 +39,7 @@ The input parameter is incorrect.
 
 **Solution**
 
-Check that the input parameters are set to valid values by referring to the [API parameters](js-apis-abilityAccessCtrl.md).
+Check the input parameters and correct them to valid values. For valid values, see the parameter description of the corresponding API in [@ohos.abilityAccessCtrl (Program Access Control Management)](js-apis-abilityAccessCtrl.md).
 
 <!--Del-->
 ## 12100002 TokenId Not Exist
@@ -49,7 +50,7 @@ TokenId does not exist.
 
 **Description**
 
-The specified token ID does not meet the requirements.
+This error code is returned when the specified tokenId does not exist or the corresponding process is not an application process.
 
 **Possible Causes**
 
@@ -69,7 +70,7 @@ Permission does not exist.
 
 **Description**
 
-The specified permission name does not meet requirements.
+This error code is returned when the specified permission does not exist or has not been requested.
 
 **Possible Causes**
 
@@ -90,17 +91,31 @@ The API is not used in pair with others.
 
 **Description**
 
-The API is not used in pair with its counterpart.
+This error code is returned when the APIs are not called in the required pairing relationship, or are repeatedly called before the pairing relationship is released.
 
 **Possible Causes**
 
-1. One of the listener APIs that must be used in pairs is repeatedly called.
+1. The current API is repeatedly called with the same input parameters before the pairing relationship is released.
 2. One of the listener APIs that must be used in pairs is independently called.
 
 **Solution**
 
-1. For the APIs that must be used in pairs, for example, **on()** and **off()**, check whether **on()** with the same parameters is called again before **off()** is called.
-2. For the APIs that must be used in pairs, for example, **on()** and **off()**, check whether **off()** is called before **on()**.
+Check whether the current API is used with its matching API:
+
+- The listener registration API and the listener unregistration API must be used together: after the listener registration API is called, the listener registration API cannot be called again with the same input parameters before the corresponding listener unregistration API is called; the listener unregistration API can be called only after the corresponding listener registration API is called.
+<!--Del-->
+- The API for starting recording and the API for stopping recording must be used together: after the API for starting recording is called, the API for starting recording cannot be called again with the same input parameters before the corresponding API for stopping recording is called; the API for stopping recording can be called only after the corresponding API for starting recording is called.
+<!--DelEnd-->
+
+Related APIs:
+<!--Del-->
+- Start using a permission: [privacyManager.startUsingPermission](js-apis-privacyManager-sys.md#privacymanagerstartusingpermission)
+- Stop using a permission: [privacyManager.stopUsingPermission](js-apis-privacyManager-sys.md#privacymanagerstopusingpermission)
+- Subscribe to the permission usage state change event: [privacyManager.on](js-apis-privacyManager-sys.md#privacymanageron)
+- Unsubscribe from the permission usage state change event: [privacyManager.off](js-apis-privacyManager-sys.md#privacymanageroff)
+<!--DelEnd-->
+- Subscribe to the permission state change event of the current application: [on](js-apis-abilityAccessCtrl.md#on18)
+- Unsubscribe from the permission state change event of the current application: [off](js-apis-abilityAccessCtrl.md#off18)
 
 
 ## 12100005 Listener Overflows
@@ -115,7 +130,7 @@ The number of listeners exceeds the upper limit.
 
 **Possible Causes**
 
-The number of listeners exceeds 200.
+The number of registered listeners exceeds the system limit of 200.
 
 **Solution**
 
@@ -147,7 +162,7 @@ The specified application cannot be granted or revoked the specified permission.
 
 **Error Message**
 
-The service is abnormal.
+Service exception.
 
 **Description**
 
@@ -156,7 +171,7 @@ The system service is abnormal.
 **Possible Causes**
 
 1. The permission management service cannot start properly.
-2. The read or write of IPC data fails.
+2. Failed to read or write IPC (Inter-Process Communication) data.
 
 **Solution**
 
@@ -175,7 +190,7 @@ The memory allocation fails.
 
 **Possible Causes**
 
-The system memory is insufficient.
+The system memory is insufficient to complete the memory allocation operation.
 
 **Solution**
 
@@ -190,24 +205,26 @@ Common inner error.
 
 **Description**
 
-An internal service error occurs or an error occurs in the permission dialog box.
+This error code is returned when an internal service error or a permission popup error occurs.
 
 **Possible Causes**
 
 1. Internal error
    - An internal service error or database error occurs.
-2. Permission dialog box error
-   - The application is in the background and cannot be started.
-   - The dialog box is not processed in time after being displayed, and the dialog box process is reclaimed by the system because the application exits. For example, the user clears the application process on the multitasking screen.
+2. Permission popup error
+   - The application is in the background and cannot properly bring up the popup.
+   - The device is in the locked state and cannot properly display the popup.
+   - The popup is not processed in time after being brought up, and the popup process is reclaimed by the system because the application exits. For example, the user clears the application process in the recent tasks screen.
 
 **Solution**
 
 1. Internal error
    - Restart the device and try again.
-2. Permission dialog box error
-   - Ensure that the application is in the foreground before initiating the dialog box request.
-   - Ensure that the dialog box has been processed in a timely manner. If the dialog box process is reclaimed by the system because the application exits, no further action is required.
-3. If the fault persists, submit a service ticket online. Support personnel will get back to you as soon as possible.
+2. Permission popup error
+   - Ensure that the application is in the foreground before initiating the popup request.
+   - Make sure the device is unlocked before initiating the permission popup request.
+   - Make sure the popup is handled in a timely manner. If the popup process is reclaimed by the system because the application exits, no additional operation is required.
+3. If the problem persists, submit a ticket online with the problem description and log information. Technical support personnel will handle it in a timely manner.
 
 ## 12100010 Pending Request
 
@@ -225,7 +242,7 @@ The last request has not been processed yet.
 
 **Solution**
 
-Wait until the last request is processed.
+Wait until the previous permission request is complete, finish the authorization based on the result returned by the previous request, and then initiate the request again.
 
 
 ## 12100011 All Requested Permissions Granted
@@ -244,7 +261,7 @@ All requested permissions have been granted.
 
 **Solution**
 
-No action is required. If this error code is returned, the permission has been granted and the permission settings dialog box will not be displayed.
+No handling is required. This error code indicates that the requested permission has been granted, and the permission setting popup will not be displayed.
 
 ## 12100012 Not All Permissions Are Rejected by the User
 
@@ -280,7 +297,7 @@ The global switch is already turned on.
 
 **Solution**
 
-No action is required. If this error code is returned, the global switch has been enabled and the dialog box for setting the global switch will not be displayed.
+No handling is required. This error code indicates that the global switch is already enabled, and the global switch setting popup will not be displayed.
 
 ## 12100014 Unexpected Permission
 
@@ -294,10 +311,31 @@ The input permission does not meet the requirements.
 
 **Possible Causes**
 
-1. When the [permission setting dialog box is displayed again](js-apis-abilityAccessCtrl.md#requestpermissiononsetting12), the permission of the manual_settings authorization mode is passed.
+1. When [requestPermissionOnSetting](js-apis-abilityAccessCtrl.md#requestpermissiononsetting12) is called to display the permission setting popup again, a permission with the manual_settings authorization mode is passed in.
 2. During authorization or authorization cancellation, the permission of the non-user_grant or manual_settings authorization mode is passed.
-3. When the [permission setting dialog box is displayed again](js-apis-abilityAccessCtrl.md#openpermissiononsetting22), the permission of the non-manual_settings authorization mode is passed.
+3. When [openPermissionOnSetting](js-apis-abilityAccessCtrl.md#openpermissiononsetting22) is called to display the popup for redirecting to the settings page, a permission with a non-manual_settings authorization mode is passed in.
 
 **Solution**
 
 Check whether the input permission meets the requirements.
+
+<!--Del-->
+## 12100015 Queried Data Exceeds the Upper Limit
+
+**Error Message**
+
+The queried data exceeds the upper limit.
+
+**Symptom**
+
+This error code is returned when the queried data exceeds the upper limit.
+
+**Possible Cause**
+
+1. The permission list queried in batches exceeds the upper limit of a single query set by the system.
+2. The application tokenID list queried in batches exceeds the upper limit of a single query set by the system.
+
+**Procedure**
+
+Reduce the number of permissions or applications in a single query and perform the query in batches. For details about the upper limit, see the parameter descriptions of [queryStatusByPermission](js-apis-abilityAccessCtrl-sys.md#querystatusbypermission) and [queryStatusByTokenID](js-apis-abilityAccessCtrl-sys.md#querystatusbytokenid).
+<!--DelEnd-->

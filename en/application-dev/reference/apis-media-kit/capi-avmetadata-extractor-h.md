@@ -38,9 +38,9 @@ The file declares the AVMetadataExtractor APIs. You can use the APIs to obtain m
 | [OH_AVErrCode OH_AVMetadataExtractor_FetchFrameByTime(OH_AVMetadataExtractor *extractor, int64_t timeUs, OH_AVMedia_SeekMode seekMode, const OH_AVMetadataExtractor_OutputParam\* outputParam, OH_PixelmapNative\*\* pixelMap)](#oh_avmetadataextractor_fetchframebytime) | Extracts an image at a specified time point from the video source. This function must be used after resources are set.|
 | [typedef void (\*OH_AVMetadataExtractor_OnFrameFetched)(OH_AVMetadataExtractor *extractor, const OH_AVMetadataExtractor_FrameInfo\* frameInfo, OH_AVErrCode code, void\* userData)](#oh_avmetadataextractor_onframefetched) | Defines a callback used to obtain the frames captured by **AVMetadataExtractor**. Note: **frameInfo** is automatically released after the callback. However, you need to use [OH_PixelmapNative_Destroy](../apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_destroy) to release **frameInfo.image** to avoid memory leaks.|
 | [OH_AVErrCode OH_AVMetadataExtractor_FetchFramesByTimes(OH_AVMetadataExtractor \*extractor, int64_t timesUs[], uint16_t timesUsSize, OH_AVMedia_SeekMode seekMode, const OH_AVMetadataExtractor_OutputParam\* outputParam, OH_AVMetadataExtractor_OnFrameFetched onFrameInfoCallback, void\* userData)](#oh_avmetadataextractor_fetchframesbytimes) | Extracts images at multiple specified time points from the video source asynchronously. This function must be used after resources are set.|
-| [void OH_AVMetadataExtractor_CancelAllFetchFrames(OH_AVMetadataExtractor *extractor)](#oh_avmetadataextractor_cancelallfetchframes) | Cancels all batch image obtaining operations initiated by [OH_AVMetadataExtractor_FetchFramesByTimes](capi-avmetadata-extractor-h.md#oh_avmetadataextractor_fetchframesbytimes). If this function is called, the pending fetch operation is canceled and the result is marked as canceled in the [OH_AVMetadataExtractor_OnFrameFetched](capi-avmetadata-extractor-h.md#oh_avmetadataextractor_onframefetched) callback.|
-| [OH_AVFormat *OH_AVMetadataExtractor_GetTrackDescription(OH_AVMetadataExtractor *extractor, uint32_t index)](#oh_avmetadataextractor_gettrackdescription) | Obtains the track description of a specified index from the media source. This function must be used after resources are set.|
-| [OH_AVFormat *OH_AVMetadataExtractor_GetCustomInfo(OH_AVMetadataExtractor *extractor)](#oh_avmetadataextractor_getcustominfo) | Obtains custom metadata from the media source. This function must be used after resources are set.|
+| [void OH_AVMetadataExtractor_CancelAllFetchFrames(OH_AVMetadataExtractor *extractor)](#oh_avmetadataextractor_cancelallfetchframes) | Cancels all batch image obtaining operations initiated by [OH_AVMetadataExtractor_FetchFramesByTimes](capi-avmetadata-extractor-h.md#oh_avmetadataextractor_fetchframesbytimes). If this function is called, the pending fetch operation is canceled and the result is marked as canceled in the [OH_AVMetadataExtractor_OnFrameFetched](capi-avmetadata-extractor-h.md#oh_avmetadataextractor_onframefetched) callback. The **code** parameter of the callback returns an error code indicating the cancellation.|
+| [OH_AVFormat *OH_AVMetadataExtractor_GetTrackDescription(OH_AVMetadataExtractor *extractor, uint32_t index)](#oh_avmetadataextractor_gettrackdescription) | Obtains the track description of a specified index from a media asset. This function must be used after resources are set.|
+| [OH_AVFormat *OH_AVMetadataExtractor_GetCustomInfo(OH_AVMetadataExtractor *extractor)](#oh_avmetadataextractor_getcustominfo) | Obtains custom metadata from a media asset. This function must be used after resources are set.|
 | [OH_AVErrCode OH_AVMetadataExtractor_SetMediaSource(OH_AVMetadataExtractor *extractor, OH_AVMediaSource *source)](#oh_avmetadataextractor_setmediasource) | Sets the media source for the extractor.|
 | [OH_AVMetadataExtractor* OH_AVMetadataExtractor_Create(void)](#oh_avmetadataextractor_create) | Creates an **OH_AVMetadataExtractor** instance.|
 | [OH_AVErrCode OH_AVMetadataExtractor_SetFDSource(OH_AVMetadataExtractor* extractor, int32_t fd, int64_t offset, int64_t size)](#oh_avmetadataextractor_setfdsource) | Sets a data source based on the media file descriptor.|
@@ -110,7 +110,7 @@ Sets the expected output size of the **OH_AVMetadataExtractor_OutputParam** inst
 
 | Type| Description|
 | -- | -- |
-| bool | **true** if the operation is successful; **false** otherwise.<br>     Possible cause: **outputParam** is a null pointer.|
+| bool | **true** if the operation is successful; **false** otherwise.<br>         Possible causes: **outputParam** is a null pointer.|
 
 ### OH_AVMetadataExtractor_FetchFrameByTime()
 
@@ -190,7 +190,7 @@ void OH_AVMetadataExtractor_CancelAllFetchFrames(OH_AVMetadataExtractor *extract
 
 **Description**
 
-Cancels all batch image obtaining operations initiated by [OH_AVMetadataExtractor_FetchFramesByTimes](capi-avmetadata-extractor-h.md#oh_avmetadataextractor_fetchframesbytimes). If this function is called, the pending fetch operation is canceled and the result is marked as canceled in the [OH_AVMetadataExtractor_OnFrameFetched](capi-avmetadata-extractor-h.md#oh_avmetadataextractor_onframefetched) callback.
+Cancels all batch image obtaining operations initiated by [OH_AVMetadataExtractor_FetchFramesByTimes](capi-avmetadata-extractor-h.md#oh_avmetadataextractor_fetchframesbytimes). If this function is called, the pending fetch operation is canceled and the result is marked as canceled in the [OH_AVMetadataExtractor_OnFrameFetched](capi-avmetadata-extractor-h.md#oh_avmetadataextractor_onframefetched) callback. The **code** parameter of the callback returns an error code indicating the cancellation.
 
 **Since**: 23
 
@@ -208,7 +208,7 @@ OH_AVFormat *OH_AVMetadataExtractor_GetTrackDescription(OH_AVMetadataExtractor *
 
 **Description**
 
-Obtains the track description of a specified index from the media source. This function must be used after resources are set.
+Obtains the track description of a specified index from a media asset. This function must be used after resources are set.
 
 **Since**: 23
 
@@ -233,7 +233,7 @@ OH_AVFormat *OH_AVMetadataExtractor_GetCustomInfo(OH_AVMetadataExtractor *extrac
 
 **Description**
 
-Obtains custom metadata from the media source. This function must be used after resources are set.
+Obtains custom metadata from a media asset. This function must be used after resources are set.
 
 **Since**: 23
 

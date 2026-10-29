@@ -2,11 +2,12 @@
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Designer: @hao-liangfei-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=ce3658887ea37d337235e6ba158ecef52f692540 translatedAt=2026-10-08T12:10:14.761Z pushedAt=2026-10-12T08:56:45.456Z -->
 
-This interface implements audio volume management.
+**AudioVolumeManager** is a volume management module in the audio system. This module provides audio volume management capabilities, including obtaining and setting the app-level volume, obtaining the audio stream volume and volume range, and listening for system and app-level volume changes. When you need to precisely control the app volume or respond to system volume changes, use the APIs of this module to perform related operations.
 
 Before calling any API in AudioVolumeManager, you must use [getVolumeManager](arkts-apis-audio-AudioManager.md#getvolumemanager9) to obtain an AudioVolumeManager instance.
 
@@ -33,7 +34,7 @@ Obtains a VolumeGroupManager instance. This API uses an asynchronous callback to
 
 | Name    | Type                                                        | Mandatory| Description                                                       |
 | ---------- | ------------------------------------------------------------ | ---- |-----------------------------------------------------------|
-| groupId    | number                                    | Yes  | Volume group ID. The default value is **DEFAULT_VOLUME_GROUP_ID**.                        |
+| groupId    | number                                    | Yes   | Volume group ID. The default value is **DEFAULT_VOLUME_GROUP_ID**.                         |
 | callback   | AsyncCallback&lt;[AudioVolumeGroupManager](arkts-apis-audio-AudioVolumeGroupManager.md)&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the VolumeGroupManager instance obtained; otherwise, **err** is an error object.|
 
 **Example**
@@ -46,13 +47,12 @@ let audioVolumeGroupManager: audio.AudioVolumeGroupManager;
 
 audioVolumeManager.getVolumeGroupManager(groupId, (err: BusinessError, value: audio.AudioVolumeGroupManager) => {
   if (err) {
-    console.error(`Failed to get volume group manager. Code: ${err.code}, message: ${err.message}`);
+    console.error(`Failed to obtain the volume group manager. Code: ${err.code}, message: ${err.message}`);
     return;
   }
-  console.info('Succeeded in getting volume group manager.');
   audioVolumeGroupManager = value;
+  console.info('Succeeded in obtaining the volume group manager.');
 });
-
 ```
 
 ## getVolumeGroupManager<sup>9+</sup>
@@ -67,7 +67,7 @@ Obtains a VolumeGroupManager instance. This API uses a promise to return the res
 
 | Name    | Type                                     | Mandatory| Description                              |
 | ---------- | ---------------------------------------- | ---- |----------------------------------|
-| groupId    | number                                   | Yes  | Volume group ID. The default value is **DEFAULT_VOLUME_GROUP_ID**.|
+| groupId    | number                                   | Yes   | Volume group ID. The default value is **DEFAULT_VOLUME_GROUP_ID**. |
 
 **Return value**
 
@@ -78,17 +78,16 @@ Obtains a VolumeGroupManager instance. This API uses a promise to return the res
 **Example**
 
 ```ts
-import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let groupId: number = audio.DEFAULT_VOLUME_GROUP_ID;
 let audioVolumeGroupManager: audio.AudioVolumeGroupManager;
 
 audioVolumeManager.getVolumeGroupManager(groupId).then((value: audio.AudioVolumeGroupManager) => {
-  console.info('Succeeded in getting volume group manager.');
   audioVolumeGroupManager = value;
+  console.info('Succeeded in obtaining the volume group manager.');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to get volume group manager. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to obtain the volume group manager. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -106,7 +105,7 @@ Obtains a VolumeGroupManager instance. This API returns the result synchronously
 
 | Name    | Type                                     | Mandatory| Description                              |
 | ---------- | ---------------------------------------- | ---- |----------------------------------|
-| groupId    | number                                   | Yes  | Volume group ID. The default value is **DEFAULT_VOLUME_GROUP_ID**.|
+| groupId    | number                                   | Yes   | Volume group ID. The default value is **DEFAULT_VOLUME_GROUP_ID**.|
 
 **Return value**
 
@@ -120,7 +119,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 6800101 | Parameter verification failed. |
 
 **Example**
@@ -130,10 +129,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let audioVolumeGroupManager: audio.AudioVolumeGroupManager = audioVolumeManager.getVolumeGroupManagerSync(audio.DEFAULT_VOLUME_GROUP_ID);
-  console.info('Succeeded in getting volume group manager.');
+  console.info('Succeeded in obtaining the volume group manager.');
 } catch (err) {
   let error = err as BusinessError;
-  console.error(`Failed to get volume group manager. Code: ${error.code}, message: ${error.message}`);
+  console.error(`Failed to obtain the volume group manager. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -151,15 +150,17 @@ Obtains the volume of the application. (The volume range is 0 to 100.) This API 
 
 | Type               | Description                |
 | ------------------- |--------------------|
-| Promise&lt;number&gt; | Promise used to return the application volume.|
+| Promise&lt;number&gt; | Promise used to return the app volume.<br>The value range is [0, 100], in percentage (%). |
 
 **Example**
 
 ```ts
-import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 audioVolumeManager.getAppVolumePercentage().then((value: number) => {
-  console.info(`app volume is ${value}.`);
+  console.info(`Succeeded in obtaining the app volume percentage, appVolumePercentage: ${value}.`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to obtain the app volume percentage. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -177,13 +178,13 @@ Sets the volume (within a range of 0 to 100) for the application. This API uses 
 
 | Name    | Type                                     | Mandatory| Description      |
 | ---------- | ---------------------------------------- | ---- |----------|
-| volume    | number                                   | Yes  | Volume to set.|
+| volume    | number                                   | Yes   | Volume to set.<br>The value range is [0, 100], in percentage (%). |
 
 **Return value**
 
 | Type               | Description                           |
 | ------------------- | ------------------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
@@ -197,10 +198,12 @@ For details about the error codes, see [Audio Error Codes](errorcode-audio.md).
 **Example**
 
 ```ts
-import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 audioVolumeManager.setAppVolumePercentage(20).then(() => {
-  console.info(`set app volume success.`);
+  console.info('Succeeded in setting the app volume percentage.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to set the app volume percentage. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -211,7 +214,8 @@ on(type: 'volumeChange', callback: Callback\<VolumeEvent>): void
 Subscribes to the system volume change event, which is triggered when the system volume is changed. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
-> This API is supported since API version 9 and deprecated since API version 20. You are advised to use [on('streamVolumeChange')](arkts-apis-audio-AudioVolumeManager.md#onstreamvolumechange20) instead.
+>
+> This API is supported since API version 9 and deprecated since API version 20. You are advised to use [on('streamVolumeChange')](#onstreamvolumechange20) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Volume
 
@@ -235,9 +239,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 audioVolumeManager.on('volumeChange', (volumeEvent: audio.VolumeEvent) => {
-  console.info(`VolumeType of stream: ${volumeEvent.volumeType} `);
-  console.info(`Volume level: ${volumeEvent.volume} `);
-  console.info(`Whether to updateUI: ${volumeEvent.updateUi} `);
+  console.info(`Volume changed, volumeEvent: ${JSON.stringify(volumeEvent)}.`);
 });
 ```
 
@@ -245,10 +247,11 @@ audioVolumeManager.on('volumeChange', (volumeEvent: audio.VolumeEvent) => {
 
 off(type: 'volumeChange', callback?: Callback\<VolumeEvent>): void
 
-Unsubscribes from the system volume change event. This API uses an asynchronous callback to return the result.
+Unsubscribes from the system volume change event.
 
 > **NOTE**
-> This API is supported since API version 12 and deprecated since API version 20. You are advised to use [off('streamVolumeChange')](arkts-apis-audio-AudioVolumeManager.md#offstreamvolumechange20) instead.
+>
+> This API is supported since API version 12 and deprecated since API version 20. You are advised to use [off('streamVolumeChange')](#offstreamvolumechange20) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Volume
 
@@ -256,8 +259,8 @@ Unsubscribes from the system volume change event. This API uses an asynchronous 
 
 | Name  | Type                                  | Mandatory| Description                                                        |
 | -------- | -------------------------------------- | ---- | ------------------------------------------------------------ |
-| type     | string                                 | Yes  | Event type. The event **'volumeChange'** is triggered when the system volume is changed.|
-| callback | Callback<[VolumeEvent](arkts-apis-audio-i.md#volumeevent9)> | No  | Callback used to return the changed volume.|
+| type     | string                                 | Yes   | Event type. This field has a fixed value of **'volumeChange'**. |
+| callback | Callback<[VolumeEvent](arkts-apis-audio-i.md#volumeevent9)> | No   | Callback used to return the result. If a callback is passed, only the listener for events corresponding to this callback will be unregistered. The callback must be the same as that bound to [on('volumeChange')](#onvolumechangedeprecated). If no parameter is passed, all listeners for events of this event type will be unregistered. |
 
 **Error codes**
 
@@ -276,9 +279,7 @@ audioVolumeManager.off('volumeChange');
 
 // For the same event, if the callback parameter passed to the off API is the same as that passed to the on API, the off API cancels the subscription registered with the specified callback parameter.
 let volumeChangeCallback = (volumeEvent: audio.VolumeEvent) => {
-  console.info(`VolumeType of stream: ${volumeEvent.volumeType} `);
-  console.info(`Volume level: ${volumeEvent.volume} `);
-  console.info(`Whether to updateUI: ${volumeEvent.updateUi} `);
+  console.info(`Volume changed, volumeEvent: ${JSON.stringify(volumeEvent)}.`);
 };
 
 audioVolumeManager.on('volumeChange', volumeChangeCallback);
@@ -313,9 +314,7 @@ For details about the error codes, see [Audio Error Codes](errorcode-audio.md).
 
 ```ts
 audioVolumeManager.on('appVolumeChange', (volumeEvent: audio.VolumeEvent) => {
-  console.info(`VolumeType of stream: ${volumeEvent.volumeType} `);
-  console.info(`Volume level: ${volumeEvent.volume} `);
-  console.info(`Whether to updateUI: ${volumeEvent.updateUi} `);
+  console.info(`App volume changed, appVolumeEvent: ${JSON.stringify(volumeEvent)}.`);
 });
 ```
 
@@ -323,7 +322,7 @@ audioVolumeManager.on('appVolumeChange', (volumeEvent: audio.VolumeEvent) => {
 
 off(type: 'appVolumeChange', callback?: Callback\<VolumeEvent>): void
 
-Unsubscribes from the application-level volume change event of the application. This API uses an asynchronous callback to return the result.
+Unsubscribes from the app-level volume change event of the app.
 
 **System capability**: SystemCapability.Multimedia.Audio.Volume
 
@@ -331,8 +330,8 @@ Unsubscribes from the application-level volume change event of the application. 
 
 | Name  | Type                                  | Mandatory| Description                                                        |
 | -------- | -------------------------------------- | ---- | ------------------------------------------------------------ |
-| type     | string                                 | Yes  | Event type. The event **'appVolumeChange'** is triggered when the application-level volume is changed.|
-| callback | Callback<[VolumeEvent](arkts-apis-audio-i.md#volumeevent9)> | No  | Callback used to return the changed volume.|
+| type     | string                                 | Yes   | Event type. This field has a fixed value of **'appVolumeChange'**. |
+| callback | Callback<[VolumeEvent](arkts-apis-audio-i.md#volumeevent9)> | No   | Callback used to return the result. If a callback is passed, only the listener for events corresponding to this callback will be unregistered. The callback must be the same as that bound to [on('appVolumeChange')](#onappvolumechange19). If no parameter is passed, all listeners for events of this event type will be unregistered.  |
 
 **Error codes**
 
@@ -350,9 +349,7 @@ audioVolumeManager.off('appVolumeChange');
 
 // For the same event, if the callback parameter passed to the off API is the same as that passed to the on API, the off API cancels the subscription registered with the specified callback parameter.
 let appVolumeChangeCallback = (volumeEvent: audio.VolumeEvent) => {
-  console.info(`VolumeType of stream: ${volumeEvent.volumeType} `);
-  console.info(`Volume level: ${volumeEvent.volume} `);
-  console.info(`Whether to updateUI: ${volumeEvent.updateUi} `);
+  console.info(`App volume changed, appVolumeEvent: ${JSON.stringify(volumeEvent)}.`);
 };
 
 audioVolumeManager.on('appVolumeChange', appVolumeChangeCallback);
@@ -393,16 +390,15 @@ For details about the error codes, see [Audio Error Codes](errorcode-audio.md).
 **Example**
 
 ```ts
-// Obtain the volume of a specified audio stream.
 import { BusinessError } from '@kit.BasicServicesKit';
-import { audio } from '@kit.AudioKit'
 
+// Obtain the volume of a specified audio stream.
 try {
-  let volume : number = audio.getAudioManager().getVolumeManager().getVolumeByStream(audio.StreamUsage.STREAM_USAGE_MUSIC);
-  console.info(`Obtains the volume of a stream success.`);
+  let volume: number = audio.getAudioManager().getVolumeManager().getVolumeByStream(audio.StreamUsage.STREAM_USAGE_MUSIC);
+  console.info(`Succeeded in obtaining the volume by stream, volume: ${volume}.`);
 } catch (err) {
   let error = err as BusinessError;
-  console.error(`Failed to obtains the volume of a stream, error: ${error}`);
+  console.error(`Failed to obtain the volume by stream. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -439,16 +435,15 @@ For details about the error codes, see [Audio Error Codes](errorcode-audio.md).
 **Example**
 
 ```ts
-// Obtain the minimum volume of a specified audio stream.
 import { BusinessError } from '@kit.BasicServicesKit';
-import { audio } from '@kit.AudioKit'
 
+// Obtain the minimum volume of a specified audio stream.
 try {
-  let volume : number = audio.getAudioManager().getVolumeManager().getMinVolumeByStream(audio.StreamUsage.STREAM_USAGE_MUSIC);
-  console.info(`Obtains the minimum volume allowed for a stream success.`);
+  let volume: number = audio.getAudioManager().getVolumeManager().getMinVolumeByStream(audio.StreamUsage.STREAM_USAGE_MUSIC);
+  console.info(`Succeeded in obtaining the minimum volume by stream, minVolume: ${volume}.`);
 } catch (err) {
   let error = err as BusinessError;
-  console.error(`Failed to obtains the minimum volume allowed for a stream, error: ${error}`);
+  console.error(`Failed to obtain the minimum volume by stream. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -485,16 +480,15 @@ For details about the error codes, see [Audio Error Codes](errorcode-audio.md).
 **Example**
 
 ```ts
-// Obtain the maximum volume of a specified audio stream.
 import { BusinessError } from '@kit.BasicServicesKit';
-import { audio } from '@kit.AudioKit'
 
+// Obtain the maximum volume of a specified audio stream.
 try {
-  let volume : number = audio.getAudioManager().getVolumeManager().getMaxVolumeByStream(audio.StreamUsage.STREAM_USAGE_MUSIC);
-  console.info(`Obtains the maximum volume allowed for a stream success.`);
+  let volume: number = audio.getAudioManager().getVolumeManager().getMaxVolumeByStream(audio.StreamUsage.STREAM_USAGE_MUSIC);
+  console.info(`Succeeded in obtaining the maximum volume by stream, maxVolume: ${volume}.`);
 } catch (err) {
   let error = err as BusinessError;
-  console.error(`Failed to obtains the maximum volume allowed for a stream, error: ${error}`);
+  console.error(`Failed to obtain the maximum volume by stream. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -529,18 +523,16 @@ For details about the error codes, see [Audio Error Codes](errorcode-audio.md).
 **Example**
 
 ```ts
-// Check whether a specified audio stream is muted.
 import { BusinessError } from '@kit.BasicServicesKit';
-import { audio } from '@kit.AudioKit'
 
+// Check whether a specified audio stream is muted.
 try {
-  let isMuted : boolean = audio.getAudioManager().getVolumeManager().isSystemMutedForStream(audio.StreamUsage.STREAM_USAGE_MUSIC);
-  console.info(`Checks whether the system is muted based on the stream success.`);
+  let isMuted: boolean = audio.getAudioManager().getVolumeManager().isSystemMutedForStream(audio.StreamUsage.STREAM_USAGE_MUSIC);
+  console.info(`Succeeded in checking whether the system is muted for the stream, isMuted: ${isMuted}.`);
 } catch (err) {
   let error = err as BusinessError;
-  console.error(`Failed to checks whether the system is muted based on the stream, error: ${error}`);
+  console.error(`Failed to check whether the system is muted for the stream. Code: ${error.code}, message: ${error.message}`);
 }
-
 ```
 ## getVolumeInUnitOfDbByStream<sup>20+</sup>
 
@@ -554,7 +546,7 @@ Obtains the volume (in dB) calculated by the system based on the audio stream, v
 
 | Name  | Type                                  | Mandatory| Description                                                        |
 | -------- | -------------------------------------- | ---- | ------------------------------------------------------------ |
-| streamUsage     | [StreamUsage](arkts-apis-audio-e.md#streamusage)                                 | Yes  | Audio stream.|
+| streamUsage     | [StreamUsage](arkts-apis-audio-e.md#streamusage)                                 | Yes   | Audio stream type. |
 | volumeLevel     | number                                 | Yes  | Volume level.|
 | device     | [DeviceType](arkts-apis-audio-e.md#devicetype)                                 | Yes  | Device type.|
 
@@ -575,17 +567,15 @@ For details about the error codes, see [Audio Error Codes](errorcode-audio.md).
 **Example**
 
 ```ts
-// Obtain the volume (in dB) calculated by the system based on the audio stream, volume level, and device type.
 import { BusinessError } from '@kit.BasicServicesKit';
-import { audio } from '@kit.AudioKit'
 
+// Obtain the volume (in dB) calculated by the system based on the audio stream, volume level, and device type.
 try {
-  let volumeInDb : number = audio.getAudioManager().getVolumeManager().getVolumeInUnitOfDbByStream(audio.StreamUsage.STREAM_USAGE_MUSIC, 5, audio.DeviceType.SPEAKER);
-  console.info(`Gets the volume db value that system calculate by volume stream, volume level and device type.
- success.`);
+  let volumeInDb: number = audio.getAudioManager().getVolumeManager().getVolumeInUnitOfDbByStream(audio.StreamUsage.STREAM_USAGE_MUSIC, 5, audio.DeviceType.SPEAKER);
+  console.info(`Succeeded in obtaining the volume in dB by stream, volumeInDb: ${volumeInDb}.`);
 } catch (err) {
   let error = err as BusinessError;
-  console.error(`Failed to gets the volume db value that system calculate by volume stream, volume level and device type., error: ${error}`);
+  console.error(`Failed to obtain the volume in dB by stream. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -602,7 +592,7 @@ Subscribes to the system audio volume change event, which is triggered when the 
 | Name  | Type                                  | Mandatory| Description                                                        |
 | -------- | -------------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                                 | Yes  | Event type. The event **'streamVolumeChange'** is triggered when the system audio volume is changed.|
-| streamUsage     | [StreamUsage](arkts-apis-audio-e.md#streamusage)                                 | Yes  | Audio stream usage.|
+| streamUsage     | [StreamUsage](arkts-apis-audio-e.md#streamusage)                                 | Yes   | Type of the audio stream whose volume change needs to be listened for. |
 | callback | Callback<[StreamVolumeEvent](arkts-apis-audio-i.md#streamvolumeevent20)> | Yes  | Callback used to return the changed volume.|
 
 **Error codes**
@@ -617,9 +607,7 @@ For details about the error codes, see [Audio Error Codes](errorcode-audio.md).
 
 ```ts
 audioVolumeManager.on('streamVolumeChange', audio.StreamUsage.STREAM_USAGE_MUSIC, (streamVolumeEvent: audio.StreamVolumeEvent) => {
-  console.info(`StreamUsage of stream: ${streamVolumeEvent.streamUsage} `);
-  console.info(`Volume level: ${streamVolumeEvent.volume} `);
-  console.info(`Whether to updateUI: ${streamVolumeEvent.updateUi} `);
+  console.info(`Stream volume changed, streamVolumeEvent: ${JSON.stringify(streamVolumeEvent)}.`);
 });
 ```
 
@@ -627,7 +615,7 @@ audioVolumeManager.on('streamVolumeChange', audio.StreamUsage.STREAM_USAGE_MUSIC
 
 off(type: 'streamVolumeChange', callback?: Callback\<StreamVolumeEvent>): void
 
-Unsubscribes from the system audio volume change event, which is triggered when the system audio volume is changed. This API uses an asynchronous callback to return the result.
+Unsubscribes from the system audio stream volume change event.
 
 **System capability**: SystemCapability.Multimedia.Audio.Volume
 
@@ -635,8 +623,8 @@ Unsubscribes from the system audio volume change event, which is triggered when 
 
 | Name  | Type                                  | Mandatory| Description                                                        |
 | -------- | -------------------------------------- | ---- | ------------------------------------------------------------ |
-| type     | string                                 | Yes  | Event type. The event **'volumeChange'** is triggered when the system volume is changed.|
-| callback | Callback<[StreamVolumeEvent](arkts-apis-audio-i.md#streamvolumeevent20)> | No  | Callback used to return the changed volume.|
+| type     | string                                 | Yes   | Event type. This field has a fixed value of **'streamVolumeChange'**. |
+| callback | Callback<[StreamVolumeEvent](arkts-apis-audio-i.md#streamvolumeevent20)> | No   | Callback used to return the result. If a callback is passed, only the listener for events corresponding to this callback will be unregistered. The callback must be the same as that bound to [on('streamVolumeChange')](#onstreamvolumechange20). If no parameter is passed, all listeners for events of this event type will be unregistered.  |
 
 **Example**
 
@@ -646,9 +634,7 @@ audioVolumeManager.off('streamVolumeChange');
 
 // For the same event, if the callback parameter passed to the off API is the same as that passed to the on API, the off API cancels the subscription registered with the specified callback parameter.
 let streamVolumeChangeCallback = (streamVolumeEvent: audio.StreamVolumeEvent) => {
-  console.info(`StreamUsage of stream: ${streamVolumeEvent.streamUsage} `);
-  console.info(`Volume level: ${streamVolumeEvent.volume} `);
-  console.info(`Whether to updateUI: ${streamVolumeEvent.updateUi} `);
+  console.info(`Stream volume changed, streamVolumeEvent: ${JSON.stringify(streamVolumeEvent)}.`);
 };
 
 audioVolumeManager.on('streamVolumeChange', audio.StreamUsage.STREAM_USAGE_MUSIC, streamVolumeChangeCallback);

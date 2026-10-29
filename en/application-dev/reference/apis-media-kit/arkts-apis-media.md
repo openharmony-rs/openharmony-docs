@@ -4,8 +4,7 @@
 <!--Owner: @chenkun613227-->
 <!--Designer: @chris2981-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=4b1a2f751fcd33c52248528ed8c23a9b2935126b translatedAt=2026-06-23T01:03:49.333Z pushedAt=2026-06-23T06:12:23.666Z -->
+<!--Adviser: @zzs911-->
 
 The multimedia subsystem provides a set of simple and easy-to-use APIs for you to access the system and use media resources.
 

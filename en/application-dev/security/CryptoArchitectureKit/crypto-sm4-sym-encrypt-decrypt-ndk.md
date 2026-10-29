@@ -1,4 +1,4 @@
-# SM4 Symmetric Key Encryption and Decryption (C/C++)
+# Encryption and Decryption with an SM4 Symmetric Key (C/C++)
 
 <!--Kit: Crypto Architecture Kit-->
 <!--Subsystem: Security-->
@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=64044667f2ece520228c37a4e282d90b2e014ba4 translatedAt=2026-08-31T02:45:49.760Z pushedAt=2026-09-01T06:11:13.021Z -->
+<!-- md-trans-meta sourceCommit=cfb3907bfa3f7d3a5fbbbb806a3b6c24a0397042 translatedAt=2026-10-09T02:04:29.684Z pushedAt=2026-10-10T02:48:54.886Z -->
 
 For the corresponding algorithm specifications, see [Symmetric Key Encryption and Decryption Algorithm Specifications: SM4](crypto-encryption-decryption.md#sm4).
 
@@ -29,7 +29,7 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 
 3. Call [OH_CryptoSymCipher_Init](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_init) to set the mode to encryption (CRYPTO_ENCRYPT_MODE), specify the encryption key (OH_CryptoSymKey), and initialize the encryption Cipher instance.
 
-   ECB mode has no encryption parameters, so pass null directly.
+   ECB mode requires no additional encryption parameters. Simply create an empty parameter object and pass it in.
 
 4. Call [OH_CryptoSymCipher_Update](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_update) to update the data (plaintext).
 
@@ -47,7 +47,7 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 
 1. Call [OH_CryptoSymCipher_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_create), specify the string parameter 'SM4_128|ECB|PKCS7', and create a Cipher instance with the symmetric key type SM4_128, block mode ECB, and padding mode PKCS7 for the decryption operation.
 
-2. Call [OH_CryptoSymCipher_Init](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_init), set the mode to decryption (CRYPTO_DECRYPT_MODE), and specify the decryption key (OH_CryptoSymKey) to initialize the decryption Cipher instance. The ECB mode has no encryption parameters, so pass null directly.
+2. Call [OH_CryptoSymCipher_Init](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_init) to initialize the **Cipher** instance. Specifically, set the mode to decryption (**CRYPTO_DECRYPT_MODE**), specify the decryption key (**OH_CryptoSymKey**), and initialize the decryption **Cipher** instance. ECB mode requires no additional encryption parameters. Simply create an empty parameter object and pass it in.
 
 3. Call [OH_CryptoSymCipher_Update](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_update) to update data (ciphertext).
 
@@ -432,9 +432,7 @@ end:
 
 2. Call [OH_CryptoSymCipher_Init](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_init) to set the mode to decryption (`CRYPTO_DECRYPT_MODE`), specify the decryption key (`OH_CryptoSymKey`) and the decryption parameters (`OH_CryptoSymCipherParams`) corresponding to the GCM mode, and initialize the decryption Cipher instance.
 
-3. Set the amount of data input at a time to 20 bytes, and call [OH_CryptoSymCipher_Update](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_update) multiple times to update the data (ciphertext).
-
-4. Call [OH_CryptoSymCipher_Final](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_final) to obtain the decrypted data.
+3. Call [OH_CryptoSymCipher_Final](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_final) and pass in the complete ciphertext data (`cipherBlob`) obtained after encryption to obtain the decrypted data.
 
 <!-- @[crypt_decrypt_sm4_gcm_seg](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceSM4/entry/src/main/cpp/types/project/sm4_gcm_seg_encryption_decryption.cpp) -->
 

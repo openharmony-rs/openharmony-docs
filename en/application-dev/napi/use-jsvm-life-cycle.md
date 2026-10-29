@@ -5,7 +5,7 @@
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=e7d54c65a024645f8f688ed024b0b4059342e5b3 translatedAt=2026-09-01T02:44:17.855Z pushedAt=2026-09-02T06:50:01.000Z -->
+<!-- md-trans-meta sourceCommit=7d9ce201efa894024f69109a8bec89b278e1456d translatedAt=2026-10-13T13:10:17.996Z pushedAt=2026-10-16T04:12:24.056Z -->
 
 ## Introduction
 
@@ -306,7 +306,7 @@ static JSVM_Value RunDemo(JSVM_Env env, JSVM_CallbackInfo info)
     JSVM_VM vm;
     OH_JSVM_GetVM(env, &vm);
     if (AddFinalizer(vm, env) != 0) {
-        OH_LOG_INFO(LOG_APP, "Run AddFinalizer failed");
+        OH_LOG_ERROR(LOG_APP, "Run AddFinalizer failed");
     }
 
     return nullptr;

@@ -6,7 +6,7 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=f771d833faf36ca8b13c1491a42033e94d5bb3f7 translatedAt=2026-09-14T08:48:43.792Z pushedAt=2026-09-15T10:36:11.140Z -->
+<!-- md-trans-meta sourceCommit=7de74d10089ae65ef9185e98373eb2da78c06dde translatedAt=2026-09-28T02:25:33.129Z pushedAt=2026-09-29T01:05:14.922Z -->
 
 ## Introduction
 
@@ -14,14 +14,14 @@ Since API version 12, the multimodal module provides applications with the abili
 
 ## Available APIs
 
-The following table lists the APIs for creating and deleting event interception. For details, see [input](../../reference/apis-input-kit/capi-input.md).
+The following table lists the APIs for creating and deleting event interception. For details about the APIs, see [oh_input_manager.h](../../reference/apis-input-kit/capi-oh-input-manager-h.md).
 
 | API | Description|
 | ------------------------------------------------------------ | -------------------------- |
-| Input_Result OH_Input_AddKeyEventInterceptor(Input_KeyEventCallback callback, Input_InterceptorOptions *option) |Creates a key event interceptor. |
-| Input_Result OH_Input_AddInputEventInterceptor(Input_InterceptorEventCallback *callback, Input_InterceptorOptions *option) |Creates an input event interceptor. Input events include mouse, touch, and axis events. |
-| Input_Result OH_Input_RemoveKeyEventInterceptor() |Removes a key event interceptor. |
-| Input_Result OH_Input_RemoveInputEventInterceptor() |Removes an input event interceptor. |
+| Input_Result OH_Input_AddKeyEventInterceptor(Input_KeyEventCallback callback, Input_InterceptorOptions *option) | Adds the interceptor for key events. |
+| Input_Result OH_Input_AddInputEventInterceptor(Input_InterceptorEventCallback *callback, Input_InterceptorOptions *option) | Adds the interceptor for input events, including mouse, touch, and axis events. |
+| Input_Result OH_Input_RemoveKeyEventInterceptor(void) | Removes the interceptor for key events. |
+| Input_Result OH_Input_RemoveInputEventInterceptor(void) | Removes the interceptor for input events, including mouse, touch, and axis events. |
 
 ## How to Develop
 

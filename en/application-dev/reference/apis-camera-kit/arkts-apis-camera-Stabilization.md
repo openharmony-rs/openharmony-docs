@@ -5,6 +5,7 @@
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=1131f25f94c09b310a6e67ef6adb8c71963ba154 translatedAt=2026-10-12T11:57:57.694Z pushedAt=2026-10-13T04:58:00.889Z -->
 
 **Stabilization** inherits from [StabilizationQuery](arkts-apis-camera-StabilizationQuery.md).
 

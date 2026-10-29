@@ -1,12 +1,11 @@
 # Video Recording Practices (C/C++)
-
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=425e79ed59a841b19860caacc0b050f68405d43e translatedAt=2026-08-10T09:22:28.093Z pushedAt=2026-08-10T13:27:07.091Z -->
+<!-- md-trans-meta sourceCommit=50266c36d56733840f26c6f9da6f30cdad8ed3fe translatedAt=2026-10-13T13:19:42.923Z pushedAt=2026-10-16T02:48:47.978Z -->
 
 Before developing a camera application, you must [request required permissions](camera-preparation.md).
 
@@ -21,7 +20,6 @@ After obtaining the output stream capabilities supported by the camera, create a
 ## Complete Sample Code
 
 1. Link the dynamic library in the CMake script.
-
     ```txt
     target_link_libraries(entry PUBLIC
         libace_napi.z.so
@@ -31,7 +29,6 @@ After obtaining the output stream capabilities supported by the camera, create a
     ```
 
 2. Create the header file **ndk_camera.h**.
-
    ```c++
    #include "ohcamera/camera.h"
    #include "ohcamera/camera_input.h"
@@ -49,9 +46,9 @@ After obtaining the output stream capabilities supported by the camera, create a
    ```
 
 3. Import the NDK APIs on the C++ side, and perform video recording based on the surface ID passed in.
-
     ```c++
     #include "hilog/log.h"
+    #include "ndk_camera.h"
     #include <cmath>
 
     bool IsAspectRatioEqual(float videoAspectRatio, float previewAspectRatio)
@@ -62,7 +59,7 @@ After obtaining the output stream capabilities supported by the camera, create a
 
     void OnCameraInputError(const Camera_Input* cameraInput, Camera_ErrorCode errorCode)
     {
-        OH_LOG_INFO(LOG_APP, "OnCameraInput errorCode = %{public}d", errorCode);
+        OH_LOG_ERROR(LOG_APP, "OnCameraInput errorCode = %{public}d", errorCode);
     }
 
     CameraInput_Callbacks* GetCameraInputListener(void)
@@ -80,7 +77,7 @@ After obtaining the output stream capabilities supported by the camera, create a
 
     void CaptureSessionOnError(Camera_CaptureSession* session, Camera_ErrorCode errorCode)
     {
-        OH_LOG_INFO(LOG_APP, "CaptureSessionOnError = %{public}d", errorCode);
+        OH_LOG_ERROR(LOG_APP, "CaptureSessionOnError = %{public}d", errorCode);
     }
 
     CaptureSession_Callbacks* GetCaptureSessionRegister(void)
@@ -104,7 +101,7 @@ After obtaining the output stream capabilities supported by the camera, create a
 
     void VideoOutputOnError(Camera_VideoOutput* videoOutput, Camera_ErrorCode errorCode)
     {
-        OH_LOG_INFO(LOG_APP, "VideoOutput errorCode = %{public}d", errorCode);
+        OH_LOG_ERROR(LOG_APP, "VideoOutput errorCode = %{public}d", errorCode);
     }
 
     VideoOutput_Callbacks* GetVideoOutputListener(void)
@@ -168,10 +165,10 @@ After obtaining the output stream capabilities supported by the camera, create a
         }
 
         for (int index = 0; index < size; index++) {
-            OH_LOG_ERROR(LOG_APP, "cameraId  =  %{public}s ", cameras[index].cameraId);              // Obtain the camera ID.
-            OH_LOG_ERROR(LOG_APP, "cameraPosition  =  %{public}d ", cameras[index].cameraPosition);  // Obtain the camera position.
-            OH_LOG_ERROR(LOG_APP, "cameraType  =  %{public}d ", cameras[index].cameraType);          // Obtain the camera type.
-            OH_LOG_ERROR(LOG_APP, "connectionType  =  %{public}d ", cameras[index].connectionType);  // Obtain the camera connection type.
+            OH_LOG_INFO(LOG_APP, "cameraId  =  %{public}s ", cameras[index].cameraId);              // Obtain the camera ID.
+            OH_LOG_INFO(LOG_APP, "cameraPosition  =  %{public}d ", cameras[index].cameraPosition);  // Obtain the camera position.
+            OH_LOG_INFO(LOG_APP, "cameraType  =  %{public}d ", cameras[index].cameraType);          // Obtain the camera type.
+            OH_LOG_INFO(LOG_APP, "connectionType  =  %{public}d ", cameras[index].connectionType);  // Obtain the camera connection type.
         }
 
         if (size < cameraDeviceIndex + 1) {
@@ -377,19 +374,19 @@ After obtaining the output stream capabilities supported by the camera, create a
         if (ret != CAMERA_OK) {
             OH_LOG_ERROR(LOG_APP, "Delete Cameras failed.");
         } else {
-            OH_LOG_ERROR(LOG_APP, "OH_CameraManager_DeleteSupportedCameras. ok");
+            OH_LOG_INFO(LOG_APP, "OH_CameraManager_DeleteSupportedCameras. ok");
         }
         ret = OH_CameraManager_DeleteSupportedCameraOutputCapability(cameraManager, cameraOutputCapability);
         if (ret != CAMERA_OK) {
             OH_LOG_ERROR(LOG_APP, "Delete Cameras failed.");
         } else {
-            OH_LOG_ERROR(LOG_APP, "OH_CameraManager_DeleteSupportedCameraOutputCapability success");
+            OH_LOG_INFO(LOG_APP, "OH_CameraManager_DeleteSupportedCameraOutputCapability success");
         }
         ret = OH_Camera_DeleteCameraManager(cameraManager);
         if (ret != CAMERA_OK) {
             OH_LOG_ERROR(LOG_APP, "Delete Cameras failed.");
         } else {
-            OH_LOG_ERROR(LOG_APP, "OH_Camera_DeleteCameraManager success");
+            OH_LOG_INFO(LOG_APP, "OH_Camera_DeleteCameraManager success");
         }
     }
     ```

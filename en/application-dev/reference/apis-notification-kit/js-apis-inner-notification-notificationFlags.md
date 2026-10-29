@@ -2,11 +2,12 @@
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=4faed534b39ef26ef8f9b647802a53e9f8d2b792 translatedAt=2026-10-09T10:06:34.108Z pushedAt=2026-10-12T08:05:06.638Z -->
 
-The **NotificationFlags** module implements a **NotificationFlags** instance.
+Describes the [notification flags](../../notification/notification-glossary.md#notification-flags). An application can use `NotificationFlags` to reduce the notification reminder methods as needed.
 
 > **NOTE**
 >
@@ -14,7 +15,7 @@ The **NotificationFlags** module implements a **NotificationFlags** instance.
 
 ## NotificationFlags
 
-Defines the notification flags.
+Describes the [notification flags](../../notification/notification-glossary.md#notification-flags).
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -34,6 +35,6 @@ Enumerates the notification flag states.
 
 | Name          | Value | Description                              |
 | -------------- | --- | --------------------------------- |
-| TYPE_NONE      | 0   | Default flag, which has the same effect as **TYPE_OPEN**.         |
+| TYPE_NONE      | 0   | Default flag when no flag is set. It has the same effect as **TYPE_OPEN**.     |
 | TYPE_OPEN      | 1   | The notification flag is enabled.                    |
 | TYPE_CLOSE     | 2   | The notification flag is disabled.                    |

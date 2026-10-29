@@ -1,12 +1,11 @@
 # Cross-Device Sync of Distributed Data Objects (ArkTS)
-
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @lvcong_oh-->
 <!--Designer: @lvcong_oh-->
 <!--Tester: @logic42; @hanjiawei-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=b504d26dfc97256c1aae157485692176a3eff938 translatedAt=2026-08-01T02:50:40.821Z pushedAt=2026-08-01T06:20:55.113Z -->
+<!-- md-trans-meta sourceCommit=fb30f4735181c495fcfa540143cf90b73c34803f translatedAt=2026-10-13T12:44:00.957Z pushedAt=2026-10-14T03:35:03.233Z -->
 
 ## When to Use
 
@@ -20,17 +19,16 @@ Currently<!--RP2--> distributed data objects can be used only in [cross-device m
 
 ## Basic Concepts
 
-- Distributed in-memory database: The distributed in-memory database caches data in the memory so that applications can quickly access the data. However, the data is not persisted. If the database is closed, the data is not retained.
+- **Distributed in-memory database**: The distributed in-memory database caches data in the memory so that applications can quickly access the data. However, the data is not persisted. If the database is closed, the data is not retained.
 
-- Distributed data object: A distributed data object is encapsulation of a JS object type. Each distributed data object instance creates a data table in the in-memory database. The in-memory databases created for different applications are isolated from each other. Reading and writing a distributed data object are mapped to the **get** and **put** operations in the corresponding database, respectively.
+- **Distributed data object**: A distributed data object is encapsulation of a JS object type. Each distributed data object instance creates a data table in the in-memory database. The in-memory databases created for different applications are isolated from each other. Reading and writing a distributed data object are mapped to the **get** and **put** operations in the corresponding database, respectively.
 
   The distributed data object has the following states in its lifecycle:
 
   - **Uninitialized**: The distributed data object is not instantiated or is destroyed.
-
   - **Local**: A data table is created, but the data cannot be synced.
-
   - **Distributed**: A data table is created, and data can be synced (there are at least two online devices with the same session ID). If a device is offline or the session ID is empty, the distributed data object changes to the local state.
+
 
 ## Working Principles
 
@@ -39,6 +37,7 @@ Currently<!--RP2--> distributed data objects can be used only in [cross-device m
 ![distributedObject](figures/distributedObject.jpg)
 
 The distributed data objects are encapsulated JS objects in distributed in-memory databases, and can be operated in the same way as local variables. The system automatically implements data sync across devices.
+
 
 ### Encapsulation and Storage of JS Objects
 
@@ -68,7 +67,7 @@ After the sync relationship is established, each session has a copy of shared ob
 
 (3) Listening for status changes, such as the addition and removal of other devices.
 
-When a distributed data object is added to a session, if its data is different from that of the session, the distributed data object updates data of the session. If you do not want to update the data of the session when adding a distributed data object to a session and obtain the data of the session, set the attribute value of the object to **undefined** (for an asset, set each attribute of the asset to an empty string).
+When a distributed data object is added to a session, if its data is different from that of the session, the distributed data object updates data of the session. If you do not want to update the data of the session when adding a distributed data object to a session and obtain the data of the session, set the property value of the object to **undefined** (for an asset, set each property of the asset to an empty string).
 
 ### Minimum Sync Unit
 
@@ -83,7 +82,9 @@ dataObject['parents']['mom'] = "amy"; // Unsupported modification
 
 **Figure 3** Sync of distributed data objects 
 
+
 ![distributedObject_syncView](figures/distributedObject_syncView.jpg)
+
 
 ### Persistence of Distributed Data Objects
 
@@ -104,19 +105,13 @@ Prior to API version 20, only the **Asset** type is supported; the asset array t
 Starting from API version 20, asset arrays ([Assets](../reference/apis-arkdata/js-apis-data-commonType.md#assets)) can be synced.
 
 ## Constraints
-
 <!--RP5-->
-
 - Currently, distributed data objects can only be used in [cross-device migration](../application-models/hop-cross-device-migration.md) and [multi-device collaboration through cross-device call](../application-models/uiability-cross-device-interaction.md) scenarios. In cross-device migration scenarios, the size of each distributed data object does not exceed 150 KB. In multi-device collaboration scenarios, the size of each distributed data object does not exceed 500 KB.
 
 - Currently, the cross-device continuation capability supports the following scenarios:
-
   - [Migrating between abilities in the same application across devices](../application-models/hop-cross-device-migration.md#migrating-between-abilities-in-the-same-application-across-devices)
-
   - [Migrating abilities with different bundle names in the same application across devices](../application-models/hop-cross-device-migration.md#migrating-abilities-with-different-bundle-names-in-the-same-application-across-devices)
-
 <!--RP5End-->
-
 - Data synchronization of distributed data objects occurs within the same application and between the same **sessionId**.
 
 - If data of 1 KB is modified on device A, device B can complete data update within 50 ms after receiving a data change notification.
@@ -125,13 +120,15 @@ Starting from API version 20, asset arrays ([Assets](../reference/apis-arkdata/j
 
 - For the sake of performance and user experience, the maximum number of devices for data collaboration is 3.
 
-- For complex data types, only root-level properties can be modified. Modifying nested properties is not supported. In the [asset sync mechanism](#asset-sync-mechanism), nested properties one level below the root are supported for asset-type data.
+- For complex data types, only root properties can be modified. Modifying nested properties is not supported. In the [asset sync mechanism](#asset-sync-mechanism), nested properties one level below the root are supported for asset-type data.
 
 - Currently, interoperability is supported only among JavaScript APIs.
 
 ## Available APIs
 
 The following are APIs for cross-device data sync of distributed data objects. For more APIs and usage, see [@ohos.data.distributedDataObject (Distributed Data Object)](../reference/apis-arkdata/js-apis-data-distributedobject.md).
+
+
 
 | API| Description|
 | -------- | -------- |
@@ -141,17 +138,18 @@ The following are APIs for cross-device data sync of distributed data objects. F
 | setSessionId(callback: AsyncCallback&lt;void&gt;): void | Exits all sessions.|
 | on(type: 'change', callback: (sessionId: string, fields: Array&lt;string&gt;) => void): void | Subscribes to data changes of a distributed data object.|
 | off(type: 'change', callback?: (sessionId: string, fields: Array&lt;string&gt;) => void): void | Unsubscribes from data changes of a distributed data object.|
-| on(type: 'status', callback: (sessionId: string, networkId: string, status: 'online' \| 'offline' ) => void): void | Subscribes to status changes of a distributed data object.|
-| off(type: 'status', callback?: (sessionId: string, networkId: string, status: 'online' \|'offline' ) => void): void | Unsubscribes from status changes of a distributed data object.|
+| on(type: 'status', callback: (sessionId: string, networkId: string, status: 'online' \| 'offline' ) => void): void | Subscribes to online/offline status changes of a distributed data object.|
+| off(type: 'status', callback?: (sessionId: string, networkId: string, status: 'online' \|'offline' ) => void): void | Unsubscribes from online/offline status changes of a distributed data object.|
 | save(deviceId: string, callback: AsyncCallback&lt;SaveSuccessResponse&gt;): void | Saves a distributed data object.|
-| revokeSave(callback: AsyncCallback&lt;RevokeSaveSuccessResponse&gt;): void | Revokes the saving of a distributed data object.|
+| revokeSave(callback: AsyncCallback&lt;RevokeSaveSuccessResponse&gt;): void | Revokes the saved distributed data object.|
 | bindAssetStore(assetKey: string, bindInfo: BindInfo, callback: AsyncCallback&lt;void&gt;): void | Binds an asset and its RDB store.|
-| setAsset(assetKey: string, uri: string): void | Sets an asset.|
-| setAssets(assetKey: string, uris: Array&lt;string&gt;): void | Sets assets.|
-| on(type: 'change', callback: DataObserver&lt;void&gt;): void | Subscribes to data changes of a distributed data object. |
-| off(type: 'change', callback?: DataObserver&lt;void&gt;): void | Unsubscribes from data changes of a distributed data object. |
-| on(type: 'status', callback: StatusObserver&lt;void&gt;): void | Subscribes to the status changes of a distributed data object. |
-| off(type: 'status', callback?: StatusObserver&lt;void&gt;): void | Unsubscribes from status changes of a distributed data object. |
+| setAsset(assetKey: string, uri: string): Promise&lt;void&gt; | Sets a single asset. |
+| setAssets(assetsKey: string, uris: Array&lt;string&gt;): Promise&lt;void&gt; | Sets an array of assets. |
+| on(type: 'change', callback: DataObserver): void | Listens for data changes of the distributed data object. |
+| off(type: 'change', callback?: DataObserver): void | Removes the callback instance for listening to data changes of the distributed data object. |
+| on(type: 'status', callback: StatusObserver): void | Listens for status changes of the distributed data object. |
+| off(type: 'status', callback?: StatusObserver): void | Removes the callback instance for listening to status changes of the distributed data object. |
+
 
 ## How to Develop
 
@@ -178,16 +176,14 @@ The following are APIs for cross-device data sync of distributed data objects. F
 > - During cross-device migration, after **setSessionId()** is called on the source device to set **sessionId**, you should call **save()** to save data to the target device. However, data can only be synced to the target device upon the first call of the **save()** API. This is because the migration task is completed immediately after data is obtained from the source device for the first time; subsequent data shall be subject to the target device and no further sync is required.
 > - When an application is launched as a result of a migration, the [onWindowStageRestore()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagerestore) lifecycle callback function, rather than [onWindowStageCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagecreate), is triggered following **onCreate()** or **onNewWant()**. This sequence occurs for both cold and hot starts. If you have performed some necessary initialization operations during application launch in `onWindowStageCreate()`, you must perform the same initialization operations in `onWindowStageRestore()` after the migration to avoid application exceptions.
 >
-
 <!--RP1-->
-
 > - The `continuable` tag must be set for cross-device migration. For details, see [cross-device migration development procedure](../application-models/hop-cross-device-migration.md#how-to-develop).<!--RP1End-->
 >
 > - The **sessionId** field in **wantParam** is used by other services. You are advised to customize a key for accessing the **sessionId** field.
 >
 > - Use data of the Asset type to record information about assets (such as documents, images, and videos). When asset data is migrated, the corresponding asset is also migrated to the target device.
 >
-> - The initial value of the service data must be set to **undefined** on the target device so that the data saved on the source device can be restored on the target device. Otherwise, the data on the source device will be overwritten by the data set on the target device. For asset data, you need to set each attribute of the asset data to an empty string instead of setting the entire asset data to **undefined**.
+> - The initial value of the service data must be set to **undefined** on the target device so that the data saved on the source device can be restored on the target device. Otherwise, the data on the source device will be overwritten by the data set on the target device. For asset data, you need to set each property of the asset data to an empty string instead of setting the entire asset data to **undefined**.
 >
 > - Before API version 20, the asset array is not supported. If multiple files need to be migrated, define an asset data record for each file to migrate. Since API version 20, the asset array can be synced.
 >
@@ -309,7 +305,7 @@ export default class EntryAbility extends UIAbility {
     return AbilityConstant.OnContinueResult.AGREE;
   }
 
-  // 2. The receiver creates a distributed data object in onCreate and onNewWant and joins the network for data recovery.
+  // 2. The target device creates a distributed data object in onCreate and onNewWant and joins the network for data recovery.
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     if (launchParam.launchReason === AbilityConstant.LaunchReason.CONTINUATION) {
       if (want.parameters && want.parameters.distributedSessionId) {
@@ -318,7 +314,7 @@ export default class EntryAbility extends UIAbility {
     }
   }
 
-  // 2. The receiver creates a distributed data object in onCreate and onNewWant and joins the network for data recovery.
+  // 2. The target device creates a distributed data object in onCreate and onNewWant and joins the network for data recovery.
   onNewWant(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     if (launchParam.launchReason === AbilityConstant.LaunchReason.CONTINUATION) {
       if (want.parameters && want.parameters.distributedSessionId) {
@@ -360,6 +356,7 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
+               
 
 ### Using Distributed Data Objects in Multi-Device Collaboration
 

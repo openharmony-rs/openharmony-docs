@@ -1,12 +1,11 @@
 # Dialog Mask Control
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @houguobiao-->
 <!--Designer: @houguobiao-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=78d78090bbbf5f40196ee65bc7b4bd207be8ec5d translatedAt=2026-07-30T11:32:38.936Z pushedAt=2026-07-30T12:23:16.481Z -->
+<!-- md-trans-meta sourceCommit=386a9834cbea9e6c7f83b08081abcbbc28c6b80a translatedAt=2026-10-12T09:07:41.960Z pushedAt=2026-10-12T10:17:33.696Z -->
 
 You can customize not only the content of dialogs but also their mask behavior. This topic introduces ArkUI's dialog mask control capabilities, including dismiss-on-click behavior, mask area, mask color, and mask animations.
 
@@ -32,11 +31,11 @@ ArkUI provides various dialog types with different mask customization capabiliti
 
 > **NOTE**
 > 
-> - **autoCancel**: controls whether clicking the mask dismisses the popup.
+> - **autoCancel**: controls whether clicking the mask dismisses the dialog.
 >
 > - **maskRect**: customizes the mask size and position. Events within the mask area are blocked.
 >
-> - **isModal**: specifies whether the dialog is a modal. Non-modal popups have no mask and allow background interactions, while modal popups have a mask and block background interactions.
+> - **isModal**: specifies whether the dialog is a modal. Non-modal dialogs have no mask and allow background interactions, while modal dialogs have a mask and block background interactions.
 >
 > - **immersiveMode** (supported since API version 15): extends the mask to the status and navigation bars when **levelMode** is set to **LevelMode.EMBEDDED**.
 
@@ -68,13 +67,14 @@ ArkUI provides various dialog types with different mask customization capabiliti
 >
 > - **maskTransition** (supported since API version 19): customizes the dialog mask animation.
 
+
 ## Dialog Mask Visibility Control
 
 The **autoCancel** and **isModal** attributes control the visibility of the dialog mask.
 
 Set **autoCancel** to **false** to disable the default behavior of dismissing the dialog when the mask is touched.
 
-<!-- @[custom_dialog_control_autoCancel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/maskdialog/CustomDialogControl.ets) --> 
+<!-- @[custom_dialog_control_autoCancel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/maskdialog/CustomDialogControl.ets) -->
 
 ``` TypeScript
 autoCancelOpt: promptAction.CustomDialogOptions = {
@@ -93,7 +93,7 @@ build() {
         .onClick(() => {
           this.getUIContext().getPromptAction().openCustomDialog(this.autoCancelOpt);
         })
-         
+
       // ...
     }
     .width('100%')
@@ -101,12 +101,11 @@ build() {
   }
 }
 ```
-
  ![dialog_mask_autoCancel](figures/dialog_mask_autoCancel.gif)
 
 Set **isModal** to **false** to change the default modal dialog to a non-modal dialog.
 
-<!-- @[custom_dialog_control_modal](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/maskdialog/CustomDialogControl.ets) --> 
+<!-- @[custom_dialog_control_modal](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/maskdialog/CustomDialogControl.ets) -->
 
 ``` TypeScript
 modalOpt: promptAction.CustomDialogOptions = {
@@ -134,16 +133,17 @@ build() {
   }
 }
 ```
-
  ![dialog_mask_modal](figures/dialog_mask_modal.PNG)
+
 
 ## Dialog Mask Style Control
 
-This example demonstrates the popup's mask style control capabilities using **maskRect**, **immersiveMode**, and **maskColor**.
+This example demonstrates the dialog mask style control capabilities using **maskRect**, **immersiveMode**, and **maskColor**.
+
 
 Set **maskRect** and **maskColor** to set the mask area and mask color.
 
-<!-- @[custom_dialog_control_mask](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/maskdialog/CustomDialogControl.ets) --> 
+<!-- @[custom_dialog_control_mask](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/maskdialog/CustomDialogControl.ets) -->
 
 ``` TypeScript
 maskOpt: promptAction.CustomDialogOptions = {
@@ -177,11 +177,10 @@ build() {
   }
 }
 ```
-
  ![dialog_mask_mask](figures/dialog_mask_mask.PNG)
 
-When **levelMode** is set to **LevelMode.EMBEDDED**, the following example shows how different **immersiveMode** values affect the mask's extension to the navigation bar and status bar.
 
+When **levelMode** is set to **LevelMode.EMBEDDED**, the following example shows how different **immersiveMode** values affect the mask's extension to the navigation bar and status bar.
 <!-- @[custom_dialog_control_immersive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/maskdialog/CustomDialogControl.ets) -->
 
 ``` TypeScript
@@ -213,15 +212,13 @@ When **levelMode** is set to **LevelMode.EMBEDDED**, the following example shows
     }
   }
 ```
-
  ![dialog_mask_immersiveMode](figures/dialog_mask_immersiveMode.gif)
 
 ## Dialog Mask Animation Control
 
-This example demonstrates the popup's mask animation capabilities using **transition** and **maskTransition**.
+This example demonstrates the dialog mask animation capabilities using **transition** and **maskTransition**.
 
 Set **transition** to implement a unified animation for both the dialog and its mask.
-
 <!-- @[custom_dialog_control_transition](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/maskdialog/CustomDialogControl.ets) -->
 
 ``` TypeScript
@@ -250,11 +247,9 @@ Set **transition** to implement a unified animation for both the dialog and its 
     }
   }
 ```
-
  ![dialog_mask_transition](figures/dialog_mask_transition.gif)
 
-Sets **maskTransition** to implement independent animation customization for the popup's mask.
-
+Sets **maskTransition** to implement independent animation customization for the dialog mask.
 <!-- @[custom_dialog_control_mask_transition](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/maskdialog/CustomDialogControl.ets) -->
 
 ``` TypeScript
@@ -271,10 +266,9 @@ Button('openCustomDialog maskTransition')
     });
   })
 ```
-
  ![dialog_mask_maskTransition](figures/dialog_mask_maskTransition.gif)
 
-Although [CustomDialog](arkts-common-components-custom-dialog.md) does not support the **transition** API, the corresponding **openAnimation** and **closeAnimation** APIs can be used to customize the animation for opening and closing the popup. Example code is as follows:
+Although [CustomDialog](arkts-common-components-custom-dialog.md) does not support the **transition** API, the corresponding **openAnimation** and **closeAnimation** APIs can be used to customize the animation for opening and closing the dialog. Example code is as follows:
 
 <!-- @[custom_dialog_animation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/maskdialog/CustomDialogAnimation.ets) -->
 
@@ -336,12 +330,12 @@ export struct CustomDialogAnimation {
   }
 }
 ```
-
  ![CustomDialogController](figures/dialog_mask_CustomDialogController.gif)
+
 
 ## Complete Sample Code
 
-<!-- @[custom_dialog_control](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/maskdialog/CustomDialogControl.ets) --> 
+<!-- @[custom_dialog_control](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/maskdialog/CustomDialogControl.ets) -->
 
 ``` TypeScript
 // xxx.ets
@@ -378,7 +372,7 @@ export struct CustomDialogControl {
     },
     maskColor: '#33AA0000'
   } as promptAction.CustomDialogOptions;
-  
+
   transitionOpt: promptAction.CustomDialogOptions = {
     builder: () => {
       this.myBuilder();
@@ -404,7 +398,7 @@ export struct CustomDialogControl {
           .onClick(() => {
             this.getUIContext().getPromptAction().openCustomDialog(this.autoCancelOpt);
           })
-         
+
         Button('openCustomDialog isModal:false')
           .width('100%')
           .margin({ top: 10 })
@@ -460,5 +454,4 @@ export struct CustomDialogControl {
   }
 }
 ```
-
  ![openCustomDialog](figures/dialog_mask_openCustomDialog.gif)

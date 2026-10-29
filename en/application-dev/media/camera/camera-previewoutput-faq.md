@@ -1,12 +1,11 @@
 # Camera Preview Stream Startup Issues
-
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=46a890d188d7f6818c431e97e537193ed2cefcf2 translatedAt=2026-08-10T09:15:13.109Z pushedAt=2026-08-10T12:01:48.538Z -->
+<!-- md-trans-meta sourceCommit=132342cdd19e09e8d1c7a964e48a57b6cf30fc8d translatedAt=2026-09-28T02:42:38.488Z pushedAt=2026-09-29T07:59:02.453Z -->
 
 ## Symptom
 

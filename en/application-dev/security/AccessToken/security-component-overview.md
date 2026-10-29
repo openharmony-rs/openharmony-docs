@@ -6,6 +6,7 @@
 <!--Designer: @linshuqing; @hehehe-li-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=196fbeae27d87b5fe060c5e38cc412bb4bc76440 translatedAt=2026-10-09T01:12:00.665Z pushedAt=2026-10-09T08:35:57.366Z -->
 
 Security components are a set of ArkUI basic components, including the **SaveButton** and **PasteButton** components. The security components can be used as special buttons that help implement authorization upon a user tap.
 
@@ -17,7 +18,7 @@ Compared with dynamic permission requesting, security components allow scenario-
 
 3. Reduces pop-up windows.
 
-Security components collect only personal data necessary for implementing service functions and help develop transparent, optional, and controllable privacy compliance applications.
+Security components collect only the personal data necessary for implementing business functions, serving user needs and helping develop transparent, optional, and controllable privacy-compliant applications.
 
 ## Security Components
 
@@ -41,13 +42,13 @@ The security component solution consists of the following:
 
 - UI component: implements the style of fixed text and icons for users to identify and provides rich customization capabilities.
 
-- Component manager service: provides the component registration management capability, temporary authorization mechanism, and authorization validity period management to ensure that security components cannot be registered or used when the screen is locked or the application runs in the background.
+- Security component manager service: provides the component registration management capability, temporary authorization mechanism, and authorization validity period management to ensure that security components cannot be registered or used when the screen is locked or the application runs in the background.
 
-- Security hardening: provides <!--Del-->basic capabilities currently, and the system integrators need to implement <!--DelEnd-->security safeguarding capabilities, such as address randomization, challenge value check, callback UI framework component information review, caller address check, component anti-overwriting, and real click event verification, to prevent abuse of authorization mechanisms via obfuscation, hiding, tampering, and spoofing and protect user privacy.
+- Security component enhancement: Security components<!--Del--> currently provide only basic capabilities. System integrators must <!--DelEnd--> implement the relevant protection capabilities themselves to prevent the related security mechanisms from being bypassed.
 
 The following figure illustrates the working mechanism.
 
-![](figures/security_component_workflow.png)
+![security-control-operation-mechanism](figures/security-control-operation-mechanism.png)
 
 1. After a security component is declared in .ets files, the JS engine parses the .ets files and creates the security component in the ArkUI framework.
 

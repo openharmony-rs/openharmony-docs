@@ -3,7 +3,7 @@
 <!--Subsystem: Window-->
 <!--Owner: @oh_wangxk-->
 <!--Designer: @wulong158-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @LiTongguan2026-->
 <!--Adviser: @ge-yafang-->
 
 本模块提供屏幕截图的能力，支持区域截图和全屏截图两种模式，帮助开发者实现屏幕内容的获取功能。

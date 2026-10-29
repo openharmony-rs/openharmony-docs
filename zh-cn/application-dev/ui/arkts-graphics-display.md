@@ -763,10 +763,10 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
             .width('40%')
             // 通过colorFilter调整图片的像素颜色，为图片添加滤镜
             .colorFilter(
-               [1, 1, 0, 0, 0,
-                0, 1, 0, 0, 0,
-                0, 0, 1, 0, 0,
-                0, 0, 0, 1, 0])
+              [1, 1, 0, 0, 0,
+               0, 1, 0, 0, 0,
+               0, 0, 1, 0, 0,
+               0, 0, 0, 1, 0])
             .margin(10)
         }.width('100%')
         .justifyContent(FlexAlign.Center)
@@ -795,7 +795,7 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
 
 ## 事件调用
 
-通过在Image组件上绑定onComplete事件，图片加载成功后可以获取图片的必要信息。如果图片加载失败，也可以通过绑定onError回调来获得结果。
+通过在Image组件上绑定onComplete事件，图片加载成功后可以获取图片的必要信息。如果图片加载失败，也可以通过绑定onError()回调来获得结果。
 
 
   <!-- @[event_invocation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/EventCall.ets) -->    

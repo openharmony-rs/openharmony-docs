@@ -2,11 +2,12 @@
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=4faed534b39ef26ef8f9b647802a53e9f8d2b792 translatedAt=2026-10-09T10:26:24.393Z pushedAt=2026-10-12T08:05:06.665Z -->
 
-The **notificationSubscribe** module provides APIs for notification subscription, notification unsubscription, subscription removal, and more. In general cases, only system applications can call these APIs.
+This module provides [notification subscription](../../notification/notification-glossary.md#notification-subscription), unsubscription, notification removal, and other capabilities. Generally, only system applications have the permissions for these operations.
 
 > **NOTE**
 >
@@ -42,7 +43,7 @@ Subscribes to a notification with the subscription information specified. This A
 
 | Name      | Type                     | Mandatory| Description            |
 | ---------- | ------------------------- | ---- | ---------------- |
-| subscriber | [NotificationSubscriber](js-apis-inner-notification-notificationSubscriber-sys.md)    | Yes  | Notification subscriber.    |
+| subscriber | [NotificationSubscriber](js-apis-inner-notification-notificationSubscriber-sys.md)    | Yes   | [Notification subscription](../../notification/notification-glossary.md#notification-subscription) object.     |
 | info       | [NotificationSubscribeInfo](js-apis-inner-notification-notificationSubscribeInfo-sys.md#notificationsubscribeinfo) | Yes  | Notification subscription information.|
 | callback   | AsyncCallback\<void\>     | Yes  | Callback used to return the result.|
 
@@ -52,9 +53,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -70,7 +71,7 @@ let subscribeCallback = (err: BusinessError) => {
   if (err) {
     console.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
   } else {
-    console.info("subscribe success");
+    console.info('subscribe success');
   }
 }
 let onConsumeCallback = (data: notificationSubscribe.SubscribeCallbackData) => {
@@ -81,7 +82,7 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 };
 // Bundle names are not verified. You need to determine the target bundle names.
 let info: notificationSubscribe.NotificationSubscribeInfo = {
-  bundleNames: ["bundleName1","bundleName2"]
+  bundleNames: ['bundleName1','bundleName2']
 };
 notificationSubscribe.subscribe(subscriber, info, subscribeCallback);
 ```
@@ -108,7 +109,7 @@ Subscribes to notifications of all applications under this user. This API uses a
 
 | Name      | Type                  | Mandatory| Description            |
 | ---------- | ---------------------- | ---- | ---------------- |
-| subscriber | [NotificationSubscriber](js-apis-inner-notification-notificationSubscriber-sys.md) | Yes  | Notification subscriber.    |
+| subscriber | [NotificationSubscriber](js-apis-inner-notification-notificationSubscriber-sys.md) | Yes   | [Notification subscription](../../notification/notification-glossary.md#notification-subscription) object.     |
 | callback   | AsyncCallback\<void\>  | Yes  | Callback used to return the result.|
 
 **Error codes**
@@ -117,9 +118,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -134,7 +135,7 @@ let subscribeCallback = (err: BusinessError) => {
   if (err) {
     console.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
   } else {
-    console.info("subscribe success");
+    console.info('subscribe success');
   }
 }
 let onConsumeCallback = (data: notificationSubscribe.SubscribeCallbackData) => {
@@ -170,8 +171,8 @@ Subscribes to a notification with the subscription information specified. This A
 
 | Name      | Type                     | Mandatory| Description        |
 | ---------- | ------------------------- | ---- | ------------ |
-| subscriber | [NotificationSubscriber](js-apis-inner-notification-notificationSubscriber-sys.md)    | Yes  | Notification subscriber.|
-| info       | [NotificationSubscribeInfo](js-apis-inner-notification-notificationSubscribeInfo-sys.md#notificationsubscribeinfo) | No  | Notification subscription information. By default, this parameter is left empty, which means to subscribe to notifications of all applications under this user.  |
+| subscriber | [NotificationSubscriber](js-apis-inner-notification-notificationSubscriber-sys.md)    | Yes   | [Notification subscription](../../notification/notification-glossary.md#notification-subscription) object. |
+| info       | [NotificationSubscribeInfo](js-apis-inner-notification-notificationSubscribeInfo-sys.md#notificationsubscribeinfo) | No   | Notification subscription information. The default value is empty. When this parameter is empty, it indicates subscribing to notifications of all applications under the current user.   |
 
 **Return value**
 
@@ -185,9 +186,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -205,7 +206,7 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
   onConsume: onConsumeCallback
 };
 notificationSubscribe.subscribe(subscriber).then(() => {
-  console.info("subscribe success");
+  console.info('subscribe success');
 }).catch((err: BusinessError) => {
   console.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -231,7 +232,7 @@ Subscribes to notifications. After the subscription, the new message is received
 
 | Name      | Type                     | Mandatory| Description        |
 | ---------- | ------------------------- | ---- | ------------ |
-| subscriber | [NotificationSubscriber](js-apis-inner-notification-notificationSubscriber-sys.md)    | Yes  | Notification subscriber.|
+| subscriber | [NotificationSubscriber](js-apis-inner-notification-notificationSubscriber-sys.md)    | Yes   | [Notification subscription](../../notification/notification-glossary.md#notification-subscription) subscriber. |
 
 **Return value**
 
@@ -241,7 +242,7 @@ Subscribes to notifications. After the subscription, the new message is received
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](errorcode-notification.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
@@ -263,7 +264,7 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
   onConsume: onConsumeCallback
 };
 notificationSubscribe.subscribeNotification(subscriber).then(() => {
-  console.info("subscribeNotification success");
+  console.info('subscribeNotification success');
 }).catch((err: BusinessError) => {
   console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -289,8 +290,8 @@ Subscribes to notifications. After the subscription, the new message is received
 
 | Name      | Type                     | Mandatory| Description        |
 | ---------- | ------------------------- | ---- | ------------ |
-| subscriber | [NotificationSubscriber](js-apis-inner-notification-notificationSubscriber-sys.md)    | Yes  | Notification subscriber.|
-| info       | [NotificationSubscribeInfo](js-apis-inner-notification-notificationSubscribeInfo-sys.md#notificationsubscribeinfo) | Yes  | Notification subscription information.  |
+| subscriber | [NotificationSubscriber](js-apis-inner-notification-notificationSubscriber-sys.md)    | Yes   | [Notification subscription](../../notification/notification-glossary.md#notification-subscription) subscriber. |
+| info       | [NotificationSubscribeInfo](js-apis-inner-notification-notificationSubscribeInfo-sys.md#notificationsubscribeinfo) | Yes   | Notification subscription information. The default value is empty. When this parameter is empty, it indicates subscribing to notifications of all applications under the current user.   |
 
 **Return value**
 
@@ -300,7 +301,7 @@ Subscribes to notifications. After the subscription, the new message is received
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](errorcode-notification.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
@@ -322,10 +323,10 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
   onConsume: onConsumeCallback
 };
 let subscribeInfo: notificationSubscribe.NotificationSubscribeInfo = {
-  bundleNames: ["bundleName1", "bundleName2"],
+  bundleNames: ['bundleName1', 'bundleName2'],
 }
 notificationSubscribe.subscribeNotification(subscriber, subscribeInfo).then(() => {
-  console.info("subscribeNotification success");
+  console.info('subscribeNotification success');
 }).catch((err: BusinessError) => {
   console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -335,7 +336,7 @@ notificationSubscribe.subscribeNotification(subscriber, subscribeInfo).then(() =
 
 subscribeSelf(subscriber: NotificationSubscriber): Promise\<void\>
 
-Subscribes to notifications of the application and specifies subscription information. This API uses a promise to return the result.
+Subscribes to notifications of this application. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -345,7 +346,7 @@ Subscribes to notifications of the application and specifies subscription inform
 
 | Name      | Type                     | Mandatory| Description        |
 | ---------- | ------------------------- | ---- | ------------ |
-| subscriber | [NotificationSubscriber](js-apis-inner-notification-notificationSubscriber-sys.md)    | Yes  | Notification subscriber.|
+| subscriber | [NotificationSubscriber](js-apis-inner-notification-notificationSubscriber-sys.md)    | Yes   | [Notification subscription](../../notification/notification-glossary.md#notification-subscription) object. |
 
 **Return value**
 
@@ -358,9 +359,9 @@ Subscribes to notifications of the application and specifies subscription inform
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](errorcode-notification.md).
 
 | ID| Error Message                           |
-| -------- | ----------------------------------- | 
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| -------- | ----------------------------------- |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -372,13 +373,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let onConsumeCallback = (data: notificationSubscribe.SubscribeCallbackData) => {
-  console.info(`Consume callback:  ${JSON.stringify(data)}`);
+  console.info(`Consume callback: ${JSON.stringify(data)}`);
 }
 let subscriber: notificationSubscribe.NotificationSubscriber = {
   onConsume: onConsumeCallback
 };
 notificationSubscribe.subscribeSelf(subscriber).then(() => {
-  console.info("subscribeSelf success");
+  console.info('subscribeSelf success');
 }).catch((err: BusinessError) => {
   console.error(`subscribeSelf failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -394,13 +395,15 @@ Unsubscribes from a notification. This API uses an asynchronous callback to retu
 
 **System capability**: SystemCapability.Notification.Notification
 
+**Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
+
 **System API**: This is a system API.
 
 **Parameters**
 
 | Name      | Type                  | Mandatory| Description                |
 | ---------- | ---------------------- | ---- | -------------------- |
-| subscriber | [NotificationSubscriber](js-apis-inner-notification-notificationSubscriber-sys.md) | Yes  | Notification subscriber.        |
+| subscriber | [NotificationSubscriber](js-apis-inner-notification-notificationSubscriber-sys.md) | Yes   | [Notification subscription](../../notification/notification-glossary.md#notification-subscription) object.         |
 | callback   | AsyncCallback\<void\>  | Yes  | Callback used to return the result.|
 
 **Error codes**
@@ -409,8 +412,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied.<br> Applicable versions: 9-19                                      |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -424,11 +428,11 @@ let unsubscribeCallback = (err: BusinessError) => {
   if (err) {
     console.error(`unsubscribe failed, code is ${err.code}, message is ${err.message}`);
   } else {
-    console.info("unsubscribe success");
+    console.info('unsubscribe success');
   }
 }
 let onDisconnectCallback = () => {
-  console.info("subscribe disconnect");
+  console.info('subscribe disconnect');
 }
 let subscriber: notificationSubscribe.NotificationSubscriber = {
   onDisconnect: onDisconnectCallback
@@ -444,13 +448,15 @@ Unsubscribes from a notification. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
+**Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
+
 **System API**: This is a system API.
 
 **Parameters**
 
 | Name      | Type                  | Mandatory| Description        |
 | ---------- | ---------------------- | ---- | ------------ |
-| subscriber | [NotificationSubscriber](js-apis-inner-notification-notificationSubscriber-sys.md) | Yes  | Notification subscriber.|
+| subscriber | [NotificationSubscriber](js-apis-inner-notification-notificationSubscriber-sys.md) | Yes | [Notification subscription](../../notification/notification-glossary.md#notification-subscription) object. |
 
 **Return value**
 
@@ -464,8 +470,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied.<br> Applicable versions: 9-19                                      |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -476,15 +483,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let onDisconnectCallback = () => {
-  console.info("subscribe disconnect");
+  console.info('subscribe disconnect');
 }
 let subscriber: notificationSubscribe.NotificationSubscriber = {
   onDisconnect: onDisconnectCallback
 };
 notificationSubscribe.unsubscribe(subscriber).then(() => {
-  console.info("unsubscribe success");
+  console.info('unsubscribe success');
 }).catch((err: BusinessError) => {
-  console.error(`unsubscribe fail: ${JSON.stringify(err)}`);
+  console.error(`unsubscribe fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -515,9 +522,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -534,15 +541,15 @@ let removeCallback = (err: BusinessError) => {
   if (err) {
     console.error(`remove failed, code is ${err.code}, message is ${err.message}`);
   } else {
-    console.info("remove success");
+    console.info('remove success');
   }
 }
 let bundle: notificationManager.BundleOption = {
-  bundle: "bundleName1",
+  bundle: 'bundleName1',
 };
 let notificationKey: notificationSubscribe.NotificationKey = {
   id: 0,
-  label: "label",
+  label: 'label',
 };
 let reason: notificationSubscribe.RemoveReason = notificationSubscribe.RemoveReason.CLICK_REASON_REMOVE;
 notificationSubscribe.remove(bundle, notificationKey, reason, removeCallback);
@@ -582,9 +589,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -598,17 +605,17 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { notificationManager } from '@kit.NotificationKit';
 
 let bundle: notificationManager.BundleOption = {
-  bundle: "bundleName1",
+  bundle: 'bundleName1',
 };
 let notificationKey: notificationSubscribe.NotificationKey = {
   id: 0,
-  label: "label",
+  label: 'label',
 };
 let reason: notificationSubscribe.RemoveReason = notificationSubscribe.RemoveReason.CLICK_REASON_REMOVE;
 notificationSubscribe.remove(bundle, notificationKey, reason).then(() => {
-  console.info("remove success");
+  console.info('remove success');
 }).catch((err: BusinessError) => {
-  console.error(`remove fail: ${JSON.stringify(err)}`);
+  console.error(`remove fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -638,9 +645,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -656,7 +663,7 @@ let removeCallback = (err: BusinessError) => {
   if (err) {
     console.error(`remove failed, code is ${err.code}, message is ${err.message}`);
   } else {
-    console.info("remove success");
+    console.info('remove success');
   }
 }
 let reason: notificationSubscribe.RemoveReason = notificationSubscribe.RemoveReason.CANCEL_REASON_REMOVE;
@@ -694,9 +701,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -710,9 +717,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let hashCode: string = 'hashCode';
 let reason: notificationSubscribe.RemoveReason = notificationSubscribe.RemoveReason.CLICK_REASON_REMOVE;
 notificationSubscribe.remove(hashCode, reason).then(() => {
-  console.info("remove success");
+  console.info('remove success');
 }).catch((err: BusinessError) => {
-  console.error(`remove fail: ${JSON.stringify(err)}`);
+  console.error(`remove fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -742,9 +749,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -759,7 +766,7 @@ let removeCallback = (err: BusinessError) => {
   if (err) {
     console.error(`remove failed, code is ${err.code}, message is ${err.message}`);
   } else {
-    console.info("remove success");
+    console.info('remove success');
   }
 }
 let reason: notificationSubscribe.RemoveReason = notificationSubscribe.RemoveReason.CANCEL_REASON_REMOVE;
@@ -782,7 +789,7 @@ Removes specified notifications. This API uses a promise to return the result.
 
 | Name      | Type                           | Mandatory| Description         |
 |-----------|-------------------------------| ---- |-------------|
-| hashCodes | Array\<String\>               | Yes  | Array of unique notification IDs.|
+| hashCodes | Array\<String\>               | Yes   | Array of unique notification IDs. It is the value of **hashCode** in the [NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest-1) object of [SubscribeCallbackData](js-apis-inner-notification-notificationSubscriber-sys.md#subscribecallbackdata) used in the [onConsume](js-apis-inner-notification-notificationSubscriber-sys.md#onconsume) callback. |
 | reason    | [RemoveReason](#removereason) | Yes  | Reason for removing the notification.    |
 
 **Return value**
@@ -797,9 +804,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -812,9 +819,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let hashCodes: string[] = ['hashCode1','hashCode2'];
 let reason: notificationSubscribe.RemoveReason = notificationSubscribe.RemoveReason.CLICK_REASON_REMOVE;
 notificationSubscribe.remove(hashCodes, reason).then(() => {
-  console.info("remove success");
+  console.info('remove success');
 }).catch((err: BusinessError) => {
-  console.error(`remove fail: ${JSON.stringify(err)}`);
+  console.error(`remove fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -843,9 +850,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -860,11 +867,11 @@ let removeAllCallback = (err: BusinessError) => {
   if (err) {
     console.error(`removeAll failed, code is ${err.code}, message is ${err.message}`);
   } else {
-    console.info("removeAll success");
+    console.info('removeAll success');
   }
 }
 let bundle: notificationSubscribe.BundleOption = {
-  bundle: "bundleName1",
+  bundle: 'bundleName1',
 };
 notificationSubscribe.removeAll(bundle, removeAllCallback);
 ```
@@ -893,9 +900,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -909,7 +916,7 @@ let removeAllCallback = (err: BusinessError) => {
     if (err) {
         console.error(`removeAll failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("removeAll success");
+        console.info('removeAll success');
     }
 }
 notificationSubscribe.removeAll(removeAllCallback);
@@ -931,7 +938,7 @@ Removes all notifications for a specified application. This API uses a promise t
 
 | Name  | Type        | Mandatory| Description      |
 | ------ | ------------ | ---- | ---------- |
-| bundle | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | No  | Bundle information of the application. By default, this parameter is left empty, indicating that all notifications will be removed.|
+| bundle | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | No | Bundle information of the specified application. Default is empty. When this parameter is empty, it indicates deleting notifications of all applications. |
 
 **Return value**
 
@@ -945,9 +952,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -960,9 +967,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // If no application is specified, notifications of all applications are deleted.
 notificationSubscribe.removeAll().then(() => {
-  console.info("removeAll success");
+  console.info('removeAll success');
 }).catch((err: BusinessError) => {
-  console.error(`removeAll fail: ${JSON.stringify(err)}`);
+  console.error(`removeAll fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -991,9 +998,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -1008,7 +1015,7 @@ let removeAllCallback = (err: BusinessError) => {
   if (err) {
     console.error(`removeAll failed, code is ${err.code}, message is ${err.message}`);
   } else {
-    console.info("removeAll success");
+    console.info('removeAll success');
   }
 }
 // Use the actual user ID when calling the API.
@@ -1046,9 +1053,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -1061,9 +1068,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let userId: number = 1;
 notificationSubscribe.removeAll(userId).then(() => {
-  console.info("removeAll success");
+  console.info('removeAll success');
 }).catch((err: BusinessError) => {
-  console.error(`removeAll fail: ${JSON.stringify(err)}`);
+  console.error(`removeAll fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -1071,7 +1078,7 @@ notificationSubscribe.removeAll(userId).then(() => {
 
 distributeOperation(hashcode: string, operationInfo?: OperationInfo): Promise\<void>
 
-Triggers a notification for cross-device operations, such as tap-to-redirect and quick reply. This API uses a promise to return the result.
+Triggers the [cross-device collaboration](../../notification/notification-glossary.md#cross-device-collaboration) operation of the specified notification (for example, cross-device notification click-to-redirect and cross-device quick reply). This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -1083,8 +1090,8 @@ Triggers a notification for cross-device operations, such as tap-to-redirect and
 
 | Name  | Type        | Mandatory| Description      |
 | ------ | ------------ | ---- | ---------- |
-| hashcode | string | Yes  | Unique notification ID.|
-| operationInfo | [OperationInfo](#operationinfo18) | No  | Cross-device operation information. This parameter is left empty by default.|
+| hashcode | string | Yes | Unique notification ID. It is the value of **hashCode** in the [NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest-1) object of [SubscribeCallbackData](js-apis-inner-notification-notificationSubscriber-sys.md#subscribecallbackdata) used in the [onConsume](js-apis-inner-notification-notificationSubscriber-sys.md#onconsume) callback. |
+| operationInfo | [OperationInfo](#operationinfo18) | No | Cross-device collaboration operation information. When this parameter is not passed, the system default collaboration operation configuration is used. |
 
 **Return value**
 
@@ -1098,9 +1105,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600010  | Distributed operation failed.                     |
 | 1600021  | Distributed operation timed out.                    |
 
@@ -1109,21 +1116,23 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let hashcode: string = 'hashcode';
+let hashCode: string = 'hashCode';
 let operationInfo: notificationSubscribe.OperationInfo = {
-  actionName: "actionName",
-  userInput: "userInput",
+  actionName: 'actionName',
+  userInput: 'userInput',
   operationType: 1,
   buttonIndex: 1,
 };
-notificationSubscribe.distributeOperation(hashcode, operationInfo).then(() => {
-  console.info("distributeOperation success");
+notificationSubscribe.distributeOperation(hashCode, operationInfo).then(() => {
+  console.info('distributeOperation success');
 }).catch((err: BusinessError) => {
-  console.error(`distributeOperation fail: ${JSON.stringify(err)}`);
+  console.error(`distributeOperation fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
 ## NotificationKey
+
+Notification key.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -1136,6 +1145,8 @@ notificationSubscribe.distributeOperation(hashcode, operationInfo).then(() => {
 
 ## RemoveReason
 
+Reason for removing the notification.
+
 **System capability**: SystemCapability.Notification.Notification
 
 **System API**: This is a system API.
@@ -1147,6 +1158,8 @@ notificationSubscribe.distributeOperation(hashcode, operationInfo).then(() => {
 
 ## OperationInfo<sup>18+</sup>
 
+Describes the [cross-device collaboration](../../notification/notification-glossary.md#cross-device-collaboration) operation information.
+
 **System capability**: SystemCapability.Notification.Notification
 
 **System API**: This is a system API.
@@ -1155,5 +1168,5 @@ notificationSubscribe.distributeOperation(hashcode, operationInfo).then(() => {
 | ----- | ------ | --- | ---- | -------- |
 | actionName    | string | No| Yes| Operation button displayed in the notification. The value must be the same as that of **title** in [NotificationActionButton](js-apis-inner-notification-notificationActionButton.md#notificationactionbutton-1).  |
 | userInput | string | No| Yes| User input, used to apply quick reply across devices. The value must be the same as that of **inputKey** in [NotificationUserInput](js-apis-inner-notification-notificationUserInput.md#notificationuserinput-1).|
-| operationType<sup>20+</sup> | number | No| Yes| Operation type.<br> - **0**: The user taps the non-live view.<br> - **1**: The user taps the non-live view button.<br> - **32**: The user taps the live view.<br> - **33**: The user taps the live view auxiliary area.|
+| operationType<sup>20+</sup> | number | No | Yes | Type of the user click operation.<br> - **0**: The user clicks the non-[live view notification](../../notification/notification-glossary.md#live-view-notification) body.<br> - **1**: The user clicks a non-live-view notification button.<br> - **32**: The user clicks the live view notification body.<br> - **33**: The user clicks the auxiliary area of the live view notification. |
 | buttonIndex<sup>20+</sup> | number | No| Yes| Index of the non-live view button or live view auxiliary area that the user taps.|

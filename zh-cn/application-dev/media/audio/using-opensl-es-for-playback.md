@@ -85,7 +85,7 @@ target_link_libraries(sample PUBLIC libOpenSLES.so)
    #include "SLES/OpenSLES_Platform.h"
    ```
 
-2. 使用slCreateEngine接口和获取engine实例。
+2. 使用slCreateEngine接口创建并实例化引擎对象。
      
    ```cpp
    SLObjectItf engineObject = nullptr;
@@ -93,7 +93,7 @@ target_link_libraries(sample PUBLIC libOpenSLES.so)
    (*engineObject)->Realize(engineObject, SL_BOOLEAN_FALSE);
    ```
 
-3. 获取接口SL_IID_ENGINE的engineEngine实例。
+3. 获取SL_IID_ENGINE对应的引擎接口句柄。
      
    ```cpp
    SLEngineItf engineEngine = nullptr;
@@ -166,7 +166,7 @@ target_link_libraries(sample PUBLIC libOpenSLES.so)
    (*bufferQueueItf)->RegisterCallback(bufferQueueItf, BufferQueueCallback, pContext);
    ```
 
-7. 获取接口SL_IID_PLAY的playItf实例，开始播放。
+7. 获取SL_IID_PLAY对应的播放接口句柄，开始播放。
      
    ```cpp
    SLPlayItf playItf = nullptr;

@@ -1,12 +1,11 @@
 # Using fdsan
-
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
 <!--Owner: @liyiming13-->
 <!--Designer: @lijin1039-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=475e4d2b6871e35f77881171adb8e0af7608aa09 translatedAt=2026-08-12T06:25:11.681Z pushedAt=2026-08-12T07:48:12.970Z -->
+<!-- md-trans-meta sourceCommit=e384b5132f5430ed3ed4b21decb8b098345fc7f2 translatedAt=2026-10-08T03:46:46.737Z pushedAt=2026-10-08T06:46:23.633Z -->
 
 ## When to Use
 
@@ -25,6 +24,8 @@ A tag is of 64 bits, consisting of the following:
  **Figure** Tag
 
 ![](./figures/tag.png)
+
+
 
 ## Available APIs
 
@@ -58,19 +59,17 @@ enum fdsan_error_level fdsan_get_error_level();
 **Return value**<br>Current error level.
 
 ### fdsan_create_owner_tag
-
 ```c
 uint64_t fdsan_create_owner_tag(enum fdsan_owner_type type, uint64_t tag);
 ```
-
 **Description**<br>Creates a tag for a file descriptor.
 
 **Parameters**<br>**fdsan_owner_type**
 
 | Value                      | Description                                                        |
 | -------------------------- | ------------------------------------------------------------ |
-| `FDSAN_OWNER_TYPE_GENERIC_00` | Default type.    |
-| `FDSAN_OWNER_TYPE_GENERIC_FF` | Default type for invalid file descriptors.|
+| `FDSAN_OWNER_TYPE_DEFAULT` | Default type.    |
+| `FDSAN_OWNER_TYPE_MAX` | Default type for invalid file descriptors.|
 | `FDSAN_OWNER_TYPE_FILE` | Type for a file, which can be opened by using **fopen()** or **fdopen()**.|
 | `FDSAN_OWNER_TYPE_DIRECTORY` | Type for a directory, which can be opened by using **opendir** or **fdopendir**.|
 | `FDSAN_OWNER_TYPE_UNIQUE_FD` | Type for **unique_fd**. This value is reserved.|
@@ -83,7 +82,6 @@ uint64_t fdsan_create_owner_tag(enum fdsan_owner_type type, uint64_t tag);
 ```c
 void fdsan_exchange_owner_tag(int fd, uint64_t expected_tag, uint64_t new_tag);
 ```
-
 **Description**<br>Modifies the tag of a file descriptor.
 
 Locate the **FdEntry** based on the file descriptor and check whether the value of **close_tag** is the same as that of **expected_tag**. If yes, you can change the value of **FdEntry** with the value of **new_tag** passed in.
@@ -98,12 +96,13 @@ If the value of **close_tag** is not the same as that of **expected_tag**, an er
 | `expected_tag` | uint64_t | Expected value of the tag.    |
 | `new_tag` | uint64_t | New value of the tag.  |
 
+
+
 ### fdsan_close_with_tag
 
 ```c
 int fdsan_close_with_tag(int fd, uint64_t tag);
 ```
-
 **Description**<br>Closes a file descriptor based on the tag.
 
 Locate the **FdEntry** based on the file descriptor. If **close_tag** is the same as **tag**, the file descriptor can be closed. Otherwise, an exception occurs.
@@ -118,11 +117,9 @@ Locate the **FdEntry** based on the file descriptor. If **close_tag** is the sam
 **Return value**<br>Returns **0** if the file descriptor is closed; returns **-1** otherwise.
 
 ### fdsan_get_owner_tag
-
 ```c
 uint64_t fdsan_get_owner_tag(int fd);
 ```
-
 **Description**<br>Obtains tag information based on the given file descriptor.
 
 Locate **FdEntry** based on the file descriptor and obtain **close_tag**.
@@ -136,11 +133,9 @@ Locate **FdEntry** based on the file descriptor and obtain **close_tag**.
 **Return value**<br>Tag of the file descriptor.
 
 ### fdsan_get_tag_type
-
 ```c
 const char* fdsan_get_tag_type(uint64_t tag);
 ```
-
 **Description**<br>Obtains the file descriptor type based on the given tag.
 
 The type information can be calculated based on the tag information.
@@ -154,11 +149,9 @@ The type information can be calculated based on the tag information.
 **Return value**<br>Type obtained.
 
 ### fdsan_get_tag_value
-
 ```c
 uint64_t fdsan_get_tag_value(uint64_t tag);
 ```
-
 **Description**<br>Obtains the owner value based on the given tag.
 
 The value contained in a tag can be obtained via offset calculation.
@@ -220,7 +213,6 @@ int main()
     return 0;
 }
 ```
-
 In this example, **good_write** is used to open a file and write data to it; **bad_close** is used to open a file and trigger a double-close problem. If the two threads run at the same time, the application execution is as follows:
 
 ![](./figures/fdsan-error-2.png)
@@ -240,7 +232,7 @@ The **fopen**, **fdopen**, **opendir**, and **fdopendir** APIs in libc have inte
 
 void good_write()
 {
-    // fopen is protected by fdsan. Use fopen to replace open. 
+    // fopen is protected by fdsan. Use fopen to replace open.
     // int fd = open(TEMP_FILE, O_RDWR);
     FILE *f = fopen(TEMP_FILE, "w+");
     if (f == NULL) {
@@ -256,9 +248,7 @@ void good_write()
     fclose(f);
 }
 ```
-
 ### Log Information
-
 Each file descriptor returned by **fopen** has a tag. When the file descriptor is closed by **close**, fdsan checks whether the file descriptor matches the tag. If the file descriptor does not match the tag, related log information is displayed by default. The log information for the preceding code is as follows:
 
 ```txt
@@ -331,11 +321,8 @@ The `LastFatalMessage` may be one of the following:
 **fd->object description**: ID of the kernel object associated with the file descriptor **fd**.
 
 **[Content in square brackets]**: Internal ID of the object, including the following:
-
 - For socket/pipe: Pseudo file system ID allocated by the kernel.
-
 - For a common file: Inode ID of the file system (data structure used by the OS to manage the file metadata and data blocks).
-
 - For **anon_inode**: Object type name.
 
 **native object of unknown type 0**: The tag value of the **fd** is 0.
@@ -391,6 +378,7 @@ OpenFiles:
 49->pipe:[95636] native object of unknown type 0
 50->pipe:[95636] native object of unknown type 0
 ```
+
 
 ### Implementing APIs with fdsan
 
@@ -496,7 +484,7 @@ void good_write()
     // int fd = open(DEV_NULL_FILE, O_RDWR);
     fdsan_fd fd(open(TEMP_FILE, O_CREAT | O_RDWR));
     if (fd.get() == -1) {
-        printf("fopen failed errno=%d\n", errno);
+        printf("open failed errno=%d\n", errno);
         return;
     }
     ssize_t ret = write(fd.get(), "fdsan test\n", 11);
@@ -520,7 +508,7 @@ When using fdsan in a multithreaded environment, because the allocation and recy
 **Troubleshooting suggestions:** When you see an fdsan error, do not immediately assume that the owner shown in the log is directly responsible for the problem. It is recommended that you conduct a comprehensive investigation by considering the fd lifecycle, call stack information, and how other modules in the system use the fd, to determine whether there are illegal close or double close behaviors in other modules.
 
 ## Signal Safety of the close Function
-
 In the POSIX standard, the **close** function is defined as an async-signal-safe function, which can be safely called in the signal handler. However, in the system implementation integrated with the File Descriptor Sanitizer (fdsan) mechanism, the **close** function is no longer signal-safe.
 
 This is because the implementation of fdsan depends on the mmap system call, which is not a signal-safe function. Therefore, instead of using **close()** in the signal handler, you can use the system call to implement the same functionality.
+

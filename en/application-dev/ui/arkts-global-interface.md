@@ -1,12 +1,11 @@
 # Using the UI Context API for UI Operations (UIContext)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @wangyang2022-->
 <!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=6019f175585872e2522e9e5fbe00369eb27c6f7e translatedAt=2026-08-01T00:28:28.270Z pushedAt=2026-08-01T04:48:59.823Z -->
+<!-- md-trans-meta sourceCommit=bbe2a5a1904867294232227bd28ba5a89468d90c translatedAt=2026-10-12T09:14:02.906Z pushedAt=2026-10-12T10:52:56.568Z -->
 
 This document explains concepts related to multiple UI instances, reasons for replacing global APIs with [UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md) APIs, and corresponding migration solutions.
 
@@ -54,8 +53,6 @@ The following figure illustrates the relationship between the ArkTS engine and U
 
 The table below lists common API replacements for multi-instance scenarios. For the full list of supported APIs, see [UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md).
 
-In the sample code, [isAvailable](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#isavailable20) is available since API version 20, with other APIs available since version 18.
-
 |               Global API               |               Substitute API               |            Description           |
 | :-----------------------------------: | :-----------------------------------: | :------------------------: |
 |            @ohos.animator             |            createAnimator             |      Custom animation controller.     |
@@ -65,7 +62,7 @@ In the sample code, [isAvailable](../reference/apis-arkui/arkts-apis-uicontext-u
 |         @ohos.arkui.inspector         |            getUIInspector             |        Component layout inspector.       |
 |         @ohos.arkui.observer          |             getUIObserver             |          Observer.         |
 |              @ohos.font               |                getFont                |         Custom font.        |
-|             @ohos.measure             |            getMeasureUtil             |          Text measurement.         |
+|             @ohos.measure             |            getMeasureUtils             |          Text calculation.          |
 |           @ohos.mediaquery            |             getMediaQuery             |          Media query.         |
 |          @ohos.promptAction           |            getPromptAction            |            Popup.           |
 |             @ohos.router              |               getRouter               |          Page routing.         |
@@ -77,8 +74,8 @@ In the sample code, [isAvailable](../reference/apis-arkui/arkts-apis-uicontext-u
 |           TextPickerDialog            |         showTextPickerDialog          |     Text picker dialog box.    |
 |              ContextMenu              |       getContextMenuController        |          Menu control.         |
 | vp2px/px2vp/fp2px/px2fp/lpx2px/px2lpx | vp2px/px2vp/fp2px/px2fp/lpx2px/px2lpx |        Pixel unit conversion.       |
-|             focusControl              |            getFocusControl            |          Focus control.         |
-|             cursorControl             |           getCursorControl            |          Cursor control.         |
+|             focusControl              |            getFocusController            |          Focus control          |
+|             cursorControl             |           getCursorController            |          Cursor control          |
 |              getContext               |            getHostContext             | Obtains the context of the current ability.|
 |        LocalStorage.getShared         |         getSharedLocalStorage         |  Obtains the storage passed by the current ability. |
 |               animateTo               |               animateTo               |          Triggers an explicit animation.         |
@@ -86,7 +83,7 @@ In the sample code, [isAvailable](../reference/apis-arkui/arkts-apis-uicontext-u
 
 ## Replacing Global APIs with Common UIContext APIs
 
-The following uses [pixel unit conversion](../reference/apis-arkui/arkui-ts/ts-pixel-units.md) as an example to illustrate how to replace global APIs with common UIContext APIs.
+The following examples of replacing global APIs with UIContext APIs use the [pixel unit](../reference/apis-arkui/arkui-ts/ts-pixel-units.md) API as an example. Among the APIs used in the sample code, [isAvailable](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#isavailable20) takes effect from API version 20, UIContext.resolveUIContext(), UIContext.getCallingScopeUIContext(), UIContext.getLastFocusedUIContext(), UIContext.getLastForegroundUIContext(), UIContext.getAllUIContexts(), and the UIContext() constructor take effect from API version 22, and the remaining APIs take effect from API version 15.
 
 ### Obtaining UIContext Through a Custom Component
 
@@ -98,7 +95,6 @@ When a global API is invoked within a [custom component](./ui-js-custom-componen
 > 3. The UIContext obtained from a custom node created using a [custom declarative node (BuilderNode)](./arkts-user-defined-arktsNode-builderNode.md) points to the same UI instance as the UIContext associated with the BuilderNode itself.
 
 Using the global API (deprecated):
-
 <!--deprecated_code_no_check-->
 
 ```ts
@@ -171,7 +167,6 @@ Use the [getUIContext](../reference/apis-arkui/arkts-apis-window-Window.md#getui
 >2. If the UI instance is not yet created, **vp2px**/**px2vp** will use default values for calculations. When migrating to UIContext, you can retrieve the logical pixel density of the current default [Display](../reference/apis-arkui/js-apis-display.md#display) object for calculations. For details, see [Replacing Pixel Unit Conversion APIs with UIContext APIs](#replacing-pixel-unit-conversion-apis-with-uicontext-apis).
 
 Using the global API:
-
 <!--deprecated_code_no_check-->
 
 ```ts
@@ -207,7 +202,6 @@ export default class EntryAbility extends UIAbility {
   // ...
 }
 ```
-
 Using the UIContext API (recommended):
 
 <!-- @[Common_UIContext](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->  
@@ -273,9 +267,7 @@ export default class EntryAbility extends UIAbility {
 }
 
 ```
-
 ### Obtaining the UIContext Object Using a Static Method
-
 Starting from API version 22, you can retrieve the UIContext object using the static method [resolveUIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#resolveuicontext22) of the **UIContext** class.
 
 >**NOTE**
@@ -287,7 +279,6 @@ The following examples demonstrate replacing global APIs with the static method 
 Using the global API:
 
 <!--deprecated_code_no_check-->
-
 ``` TypeScript
 // entryability/EntryAbility.ets
 import { AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -323,7 +314,6 @@ export default class EntryAbility extends UIAbility {
 ```
 
 <!--deprecated_code_no_check-->
-
 ``` TypeScript
 // pages/Index.ets
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -357,7 +347,6 @@ Using the static method for replacement:
 <!-- @[Common_Entry](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ResolvedUIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->  
 
 <!--deprecated_code_no_check-->
-
 ``` TypeScript
 // entryability/EntryAbility.ets
 import { AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -500,7 +489,6 @@ Global APIs are typically used within encapsulated APIs. In such scenarios, it i
 >3. If the UI instance is not yet created, **vp2px**/**px2vp** will use default values for calculations. When migrating to UIContext, you can retrieve the logical pixel density of the current default **Display** object for calculations. For details, see [Replacing Pixel Unit Conversion APIs with UIContext APIs](#replacing-pixel-unit-conversion-apis-with-uicontext-apis).
 
 Using the global API:
-
 <!--deprecated_code_no_check-->
 
 ```ts
@@ -570,7 +558,6 @@ export class PixelUtil {
   }
 }
 ```
-
 <!-- @[Common_UIContext](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->  
 
 ``` TypeScript
@@ -677,6 +664,7 @@ let pxValue = PixelUtils.vp2px(20);
 hilog.info(DOMAIN, 'testTag', `20vp equals to ${pxValue}px`);
 ```
 
+
 ### Obtaining the UIContext Object Through the Recently Focused Window
 
 If an application has multiple windows and the **UIContext** object cannot be directly retrieved, you can obtain it from the window that recently gains focus.
@@ -736,7 +724,6 @@ export class WindowUIContextUtils {
   }
 }
 ```
-
 <!-- @[Common_registerWindowCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->  
 
 ``` TypeScript
@@ -799,7 +786,6 @@ export default class EntryAbility extends UIAbility {
 }
 
 ```
-
 <!-- @[Main_WindowTestPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/pages/WindowTestPage.ets) -->  
 
 ``` TypeScript
@@ -922,7 +908,6 @@ Different UI instances may use distinct conversion coefficients, so the results 
 In real-world development, global APIs may be called before UI instances are created. To replace **vp2px**/**px2vp**, use [display.getDefaultDisplaySync](../reference/apis-arkui/js-apis-display.md#displaygetdefaultdisplaysync9) to retrieve the default screen's logical pixel density for calculations. For **fp2px**/**px2fp**/**lpx2px**/**px2lpx**, directly return **undefined** to maintain behavior consistency.
 
 Using the global API:
-
 <!--deprecated_code_no_check-->
 
 ```ts
@@ -1039,6 +1024,8 @@ struct GetContextPage {
   }
 }
 ```
+
+
 
 Using the UIContext API (recommended):
 

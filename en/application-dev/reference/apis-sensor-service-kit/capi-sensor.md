@@ -2,15 +2,16 @@
 <!--Kit: Sensor Service Kit-->
 <!--Subsystem: Sensors-->
 <!--Owner: @dilligencer-->
-<!--Designer: @andeszhang-->
-<!--Tester: @liuhaonan2-->
+<!--Designer: @butterls-->
+<!--Tester: @zhaofangyuan-->
 <!--Adviser: @hu-zhiqiong-->
 
 ## Overview
 
-Provides APIs to manipulate sensors. For example, you can call APIs to obtain sensor information and subscribe to or unsubscribe from sensor data.
+Provides APIs for using common sensor features, including the accelerometer, gyroscope, and light sensor. You can use unified APIs to obtain sensor information and subscribe to or unsubscribe from sensor data, simplifying the app development process and reducing development costs. **Use scenarios**: pedometer, motion tracking, automatic screen brightness adjustment, and game control.
 
 **Since**: 11
+
 ## Files
 
 | Name| Description|

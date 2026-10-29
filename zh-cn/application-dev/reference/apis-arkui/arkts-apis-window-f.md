@@ -3,7 +3,7 @@
 <!--Subsystem: Window-->
 <!--Owner: @fei_1007-->
 <!--Designer: @gcw_sPCsris4-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
 
 > **说明：**
@@ -1240,7 +1240,7 @@ onApplicationFocusStateChange(callback: Callback\<boolean\>): void
 import { window } from '@kit.ArkUI';
 
 try {
-  window.onApplicationFocusStateChange((data) =>{
+  window.onApplicationFocusStateChange((data) => {
       console.info(`Succeeded in enabling the listener for application focus state changes. Data: ${data}`);
   })
 } catch (exception){
@@ -1627,7 +1627,7 @@ import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
-  onWindowStageCreate(windowStage:window.WindowStage){
+  onWindowStageCreate(windowStage: window.WindowStage){
     console.info('onWindowStageCreate');
     let windowClass: window.Window | undefined = undefined;
     try {
@@ -1679,7 +1679,7 @@ import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
-  onWindowStageCreate(windowStage:window.WindowStage) {
+  onWindowStageCreate(windowStage: window.WindowStage) {
     console.info('onWindowStageCreate');
     let windowClass: window.Window | undefined = undefined;
     let promise = window.getTopWindow(this.context);

@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-**MediaAssetProgressHandler** is used to obtain the media asset processing progress from **onProgress()**.
+The **MediaAssetProgressHandler** interface is used to obtain the media asset processing progress.
 
 > **NOTE**
 >
@@ -23,7 +23,7 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
 onProgress(progress: number): void
 
-Called when the progress of the requested video is returned.
+Called when the progress of the requested media asset is returned.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -31,4 +31,4 @@ Called when the progress of the requested video is returned.
 
 | Name | Type   | Mandatory| Description                      |
 | ------- | ------- | ---- | -------------------------- |
-| progress | number | Yes  | Progress in percentage. <br>Value range: [0, 100]|
+| progress | number | Yes  | Progress in percentage. The Value range is [0, 100].|

@@ -1,12 +1,11 @@
 # JSVM-API FAQs
-
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=2b8002975a0c421d94edbe70b3817da05adefb9a translatedAt=2026-08-12T06:26:10.234Z pushedAt=2026-08-12T08:51:13.346Z -->
+<!-- md-trans-meta sourceCommit=3c322d4980db4ff806888b92ca96f9d6f31f2934 translatedAt=2026-10-13T13:04:31.306Z pushedAt=2026-10-16T03:42:41.197Z -->
 
 ## Fault Location
 
@@ -89,11 +88,10 @@ Unexpected execution result issues: Locate the issue by checking the JSVM-API re
    A: Check whether HandleScope is correctly used. For details, see [Lifecycle Management](jsvm-guidelines.md#lifecycle-management).
 
 5. Q: The error `JSVM Fatal Error Message:(openHandleScopes)==(openHandleScopesBefore)` occurs when a JSVM-API is called.
-
+   
    A: This error occurs when the HandleScopes lifecycle is not properly managed according to the JSVM-API usage specifications, causing the HandleScopes level to change and failing the JSVM system-level check after the call completes. To fix this issue, see [JSVM-API Development Specifications](jsvm-guidelines.md). Prioritize checking the JSVM-API call points in the injected callback functions.
 
 6. Q: The following two errors occur when a JSVM-API is called:
-
    ```txt
    #00 pc 00000000068f670/system/lib64/libv8_shared.so(v8::internal::PagedSpaceBase::RelinkFreeListCategories(v8::internal::PageMetadata*)+72)
    #01 pc 00000000068f670/system/lib64/libv8_shared.so(v8::internal::PagedSpaceBase::RelinkFreeListCategories(v8::internal::PageMetadata*)+80)
@@ -123,7 +121,7 @@ Unexpected execution result issues: Locate the issue by checking the JSVM-API re
       b) In cross-thread calling scenarios, OH_JSVM_DestroyEnv() may have already been executed on the current thread while other threads are still attempting to call JSVM-API, which may also cause this error.
 
       c) If a task queue is used for JS task execution, a destroy env task may be enqueued before a regular JS task, which may also cause this error. In this case, refer to scenario a) and add a thread_local_flag for the JSVM instance. If the thread_local_flag is true when a task is dequeued, all remaining tasks in the queue must be skipped.
-
+      
    For more details, see [JSVM-API Development Process](use-jsvm-process.md).
 
 ## JSVM-API Execution Failures
@@ -139,3 +137,7 @@ Unexpected execution result issues: Locate the issue by checking the JSVM-API re
 3. Q: The class defined by `OH_JSVM_DefineClass` cannot be found during JS execution.
 
    A: Check whether the defined class is bound to the JS context. For details, see [Binding Objects to Context](jsvm-guidelines.md#binding-objects-to-context).
+
+4. Q: The `OH_JSVM_CompileScript()` call fails, and the return value is `JSVM_GENERIC_FAILURE`.
+
+   A: See item 6 in [Application Crash Issues](#application-crash-issues).

@@ -1,7 +1,7 @@
 # 支持鼠标输入事件
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -13,7 +13,7 @@
 >**说明：**
 >
 >所有单指可响应的触摸事件/手势事件，均可通过鼠标左键来操作和响应。
-> - 例如当我们需要开发单击[Button](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md)跳转页面的功能、且需要支持手指点击和鼠标左键点击，那么只绑定一个点击事件（[onClick](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#onclick)）就可以实现该效果；
+> - 例如当开发者需要开发单击[Button](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md)跳转页面的功能、且需要支持手指点击和鼠标左键点击，那么只绑定一个点击事件（[onClick](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#onclick)）就可以实现该效果；
 > - 若需要针对手指和鼠标左键的点击实现不一样的效果，可以在onClick回调中，使用回调参数中的source字段判断当前触发事件的来源是手指还是鼠标。
 
 此外，对PC/2in1、Tablet类型设备上没有针对鼠标操作适配的应用，系统会提供兜底方案，将鼠标左键的点击和滑动，以及滚轮事件转换为触摸事件。并且对开发者开放了通过配置文件自行控制是否转换事件的能力。

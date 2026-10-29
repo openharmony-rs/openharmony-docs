@@ -382,7 +382,7 @@ GPU后端Canvas指画布是基于GPU进行绘制的，GPU的并行计算能力�
            return -1;
        }
    
-       SAMPLE_LOGE("Init success.");
+       SAMPLE_LOGI("Init success.");
        return 0;
    }
    ```

@@ -6,6 +6,7 @@
 <!--Designer: @HighLowWorld-->
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=4a0d60c413ad51190440217475c8f9ea1644f828 translatedAt=2026-10-13T01:52:28.307Z pushedAt=2026-10-13T02:26:43.803Z -->
 
 This topic walks you through on how to import an ECDH key pair in secure mode. However, the example does not cover the operations such as [key generation](huks-key-generation-overview.md) and [key agreement](huks-key-agreement-overview.md) of the service side.
 
@@ -298,8 +299,8 @@ async function publicGenerateItemFunc(keyAlias: string, huksOptions: huks.HuksOp
   console.info(`enter promise generateKeyItem`);
   try {
     await huks.generateKeyItem(keyAlias, huksOptions)
-      .then(data => {
-        console.info(`promise: generateKeyItem success, data = ${JSON.stringify(data)}`);
+      .then(() => {
+        console.info(`promise: generateKeyItem success`);
       })
       .catch((err: Error) => {
         console.error(`promise: generateKeyItem failed, ${JSON.stringify(err)}`);
@@ -315,8 +316,8 @@ async function publicImportKeyItemFunc(keyAlias: string, huksOptions: huks.HuksO
   console.info(`enter promise importKeyItem`);
   try {
     await huks.importKeyItem(keyAlias, huksOptions)
-      .then(data => {
-        console.info(`promise: importKeyItem success, data = ${JSON.stringify(data)}`);
+      .then(() => {
+        console.info(`promise: importKeyItem success`);
       }).catch((err: Error) => {
         console.error(`promise: importKeyItem failed, ${JSON.stringify(err)}`);
         throw (err as Error);
@@ -331,8 +332,8 @@ async function publicDeleteKeyItemFunc(keyAlias: string, huksOptions: huks.HuksO
   console.info(`enter promise deleteKeyItem`);
   try {
     await huks.deleteKeyItem(keyAlias, huksOptions)
-      .then(data => {
-        console.info(`promise: deleteKeyItem key success, data = ${JSON.stringify(data)}`);
+      .then(() => {
+        console.info(`promise: deleteKeyItem key success`);
       })
       .catch((err: Error) => {
         console.error(`promise: deleteKeyItem failed, ${JSON.stringify(err)}`);
@@ -344,49 +345,13 @@ async function publicDeleteKeyItemFunc(keyAlias: string, huksOptions: huks.HuksO
   }
 }
 
-function importWrappedKeyItem(keyAlias: string, wrappingKeyAlias: string, huksOptions: huks.HuksOptions) {
-  return new Promise<void>((resolve, reject) => {
-    try {
-      huks.importWrappedKeyItem(keyAlias, wrappingKeyAlias, huksOptions, (error, data) => {
-        if (error) {
-          reject(error);
-        } else {
-          resolve(data);
-        }
-      });
-    } catch (error) {
-      throw (error as Error);
-    }
-  });
-}
-
-async function publicImportWrappedKeyFunc(keyAlias: string, wrappingKeyAlias: string, huksOptions: huks.HuksOptions) {
-  console.info(`enter promise importWrappedKeyItem`);
-  for (let i = 0; i < huksOptions.inData!.length; i++) {
-    console.error(`${i}: ${huksOptions.inData![i]}`);
-  }
-  try {
-    await importWrappedKeyItem(keyAlias, wrappingKeyAlias, huksOptions)
-      .then((data) => {
-        console.info(`promise: importWrappedKeyItem success, data = ${JSON.stringify(data)}`);
-      })
-      .catch((error: Error) => {
-        console.error(`promise: importWrappedKeyItem failed, ${JSON.stringify(error)}`);
-        throw (error as Error);
-      });
-  } catch (error) {
-    console.error(`promise: importWrappedKeyItem input arg invalid, ${JSON.stringify(error)}`);
-    throw (error as Error);
-  }
-}
-
 async function publicImportWrappedKeyPromise(keyAlias: string, wrappingKeyAlias: string,
   huksOptions: huks.HuksOptions) {
   console.info(`enter promise importWrappedKeyItem`);
   try {
     await huks.importWrappedKeyItem(keyAlias, wrappingKeyAlias, huksOptions)
-      .then((data) => {
-        console.info(`promise: importWrappedKeyItem success, data = ${JSON.stringify(data)}`);
+      .then(() => {
+        console.info(`promise: importWrappedKeyItem success`);
       })
       .catch((error: Error) => {
         console.error(`promise: importWrappedKeyItem failed, ${JSON.stringify(error)}`);
@@ -504,7 +469,7 @@ async function agreeFunction(keyAlias: string, huksOptions: huks.HuksOptions, hu
   try {
     await huks.updateSession(handle, huksOptions)
       .then((data) => {
-        console.error(`promise: doUpdate success, data = ${JSON.stringify(data)}`);
+        console.info(`promise: doUpdate success, data = ${JSON.stringify(data)}`);
       })
       .catch((error: Error) => {
         console.error(`promise: doUpdate failed, ${JSON.stringify(error)}`);
@@ -624,7 +589,7 @@ Complete secure import process
 async function ImportWrappedKey() {
   /**
    * 1. If the key to be imported from device A is an asymmetric key pair, convert it into the HUKS key material format To_Import_Key. Skip over this step if the key is a symmetric key.
-   * This example uses a 256-bit AES key (symmetric key) as an example.
+   * This example uses an importedAes256PlainKey (symmetric key) as an example.
    */
   /**
    * 2. Generate an asymmetric key pair Wrapping_Key (comprising the public key Wrapping_Pk and private key Wrapping_Sk) on device B for secure import and negotiation.
@@ -641,28 +606,28 @@ async function ImportWrappedKey() {
 
   /**
    * 4. Generate a symmetric key Caller_Kek for device A. This key is used to encrypt To_Import_Key.
-   * Perform key agreement with the private key **Caller_Sk** in **Caller_Key** of device A and the public key **Wrapping_Pk** in **Wrapping_Key** of device B to yield a **Shared_Key**.
+   * Perform key agreement with the private key Caller_Sk in Caller_Key of device A and the public key Wrapping_Pk in Wrapping_Key of device B to yield a Shared_Key.
    */
   await importKekAndAgreeSharedSecret(callerKekAliasAes256, importParamsCallerKek, callerKeyAlias, huksPubKey,
     callerAgreeParams);
 
   /**
    * 5. Use Caller_Kek to encrypt To_Import_Key of device A and generate To_Import_Key_Enc.
-   * Use **Shared_Key** to encrypt **Caller_Kek** of device A and generate **Caller_Kek_Enc**.
+   * Use Shared_Key to encrypt Caller_Kek of device A and generate Caller_Kek_Enc.
    */
   await encryptImportedPlainKeyAndKek(importedAes192PlainKey);
 
   /**
-   * 6. Encapsulate the key materials Caller_Pk, To_Import_Key_Enc, and Caller_Kek_Enc of device A, and send them to device B.
+   * 6. Encapsulate key materials such as Caller_Pk, To_Import_Key_Enc, and Caller_Kek_Enc of device A, and send them to device B.
    * In this example, Caller_Pk is placed in callerSelfPublicKey, To_Import_Key_Enc in PlainKeyEncData, and Caller_Kek_Enc in KekEncData.
    */
   let wrappedData = await buildWrappedDataAndImportWrappedKey(importedAes192PlainKey);
   importWrappedAes192Params.inData = wrappedData;
 
   /* 7. Import the encapsulated key materials to device B. */
-  await publicImportWrappedKeyFunc(importedKeyAliasAes192, srcKeyAliasWrap, importWrappedAes192Params);
+  await publicImportWrappedKeyPromise(importedKeyAliasAes192, srcKeyAliasWrap, importWrappedAes192Params);
 
-  /* 8. Delete the intermediate keys (keys used for secure import) from devices A and B.
+  /* 8. Delete the intermediate keys (keys used for secure import) from devices A and B. */
   await publicDeleteKeyItemFunc(srcKeyAliasWrap, genWrappingKeyParams);
   await publicDeleteKeyItemFunc(callerKeyAlias, genCallerEcdhParams);
   await publicDeleteKeyItemFunc(importedKeyAliasAes192, importWrappedAes192Params);
@@ -690,7 +655,7 @@ function Check() {
       if (error) {
         console.error(`callback: isKeyItemExist failed, ${JSON.stringify(error)}`);
       } else {
-        if (data !== null && data.valueOf() !== null) {
+        if (data) {
           isKeyExist = data.valueOf();
           console.info(`callback: isKeyItemExist success, isKeyExist = ${isKeyExist}`);
         }

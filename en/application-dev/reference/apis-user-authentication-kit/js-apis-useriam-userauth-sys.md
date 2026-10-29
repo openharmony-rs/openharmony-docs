@@ -97,7 +97,7 @@ Sends a notification from the user authentication widget. When the unified authe
 | Name    | Type                       | Mandatory| Description      |
 | ---------- | --------------------------- | ---- | ---------- |
 | noticeType | [NoticeType](#noticetype10) | Yes  | Notification type. It identifies the source of a notification. Currently, **WIDGET_NOTICE (1)** is supported, indicating that the notification is from the authentication widget.|
-| eventData  | string                | Yes  | Event data. It is a string in JSON format, containing the notification details, such as the authentication type and ready event. The data length ranges from 0 to 65536 bytes.|
+| eventData  | string                | Yes  | Event data, in bytes. It is a string in JSON format, containing the notification details, such as the authentication type and ready event. The data length range is (0, 65536).|
 
 **Error codes**
 

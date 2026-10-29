@@ -5,7 +5,7 @@
 <!--Designer: @andeszhang-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=c4600a44573a6aee547e47f52cb983f9fbf70114 translatedAt=2026-08-26T02:54:15.609Z pushedAt=2026-08-26T03:22:34.585Z -->
+<!-- md-trans-meta sourceCommit=73d66c100e94b50c7ee14b20e494288d30baa6dc translatedAt=2026-10-13T13:01:24.298Z pushedAt=2026-10-16T02:45:06.069Z -->
 
 [InputMethodExtensionAbility](../reference/apis-ime-kit/js-apis-inputmethod-extension-ability.md) provides the **onCreate()** and **onDestroy()** callbacks, as described below. Override them as required. InputMethodExtensionAbility lifecycle:
 
@@ -47,7 +47,7 @@ To implement an input method application, manually create an InputMethodExtensio
    In the **InputMethodService.ets** file, add the dependency package for importing **InputMethodExtensionAbility**. Customize a class that inherits from **InputMethodExtensionAbility** and add the required lifecycle callbacks.
 
    <!-- @[input_case_module_import_InputMethodExtensionAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/InputMethodExtensionAbility/InputMethodService.ets) -->
-
+   
    ``` TypeScript
    
    import { InputMethodExtensionAbility } from '@kit.IMEKit';
@@ -80,7 +80,7 @@ To implement an input method application, manually create an InputMethodExtensio
    ![Offset area diagram](./figures/offset-area-between-the-system-panel-and-soft-keyboard.png)
 
    <!-- @[input_case_input_KeyboardController358](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/InputMethodExtensionAbility/model/KeyboardController.ets) -->
-
+   
    ``` TypeScript
    
    // Define the two subtypes of the input method.
@@ -160,7 +160,7 @@ To implement an input method application, manually create an InputMethodExtensio
          keyHeightRate = KEYBOARD_HEIGHT_RATE_BIG;
        }
        let keyHeight = dHeight * keyHeightRate;
-       this.inputHandle.addLog(`initWindow-dWidth = ${dWidth};dHeight = ${dHeight};keyboard height = ${keyHeight};;navibar height = navigationBar_height`);
+       this.inputHandle.addLog(`initWindow-dWidth = ${dWidth};dHeight = ${dHeight};keyboard height = ${keyHeight};navibar height = navigationBar_height`);
        this.inputHandle.addLog(`initWindow-deviceType = ${deviceInfo.deviceType}`);
        let panelInfo: inputMethodEngine.PanelInfo = {
          type: inputMethodEngine.PanelType.SOFT_KEYBOARD,
@@ -173,9 +173,11 @@ To implement an input method application, manually create an InputMethodExtensio
          panel.resize(dWidth, keyHeight).then(() => {
            panel.setUiContent('InputMethodExtensionAbility/pages/Index').then(() => {
              this.inputHandle.addLog('loadContent finished');
-           })
+           }).catch((err: BusinessError) => {
+             Log.showError(TAG, `Failed to setUiContent: ${err.code} ${err.message}`);
+           });
          }).catch((err: BusinessError) => {
-           Log.showError(TAG, `Failed to setUiContent: ${err.code} ${err.message}`);
+           Log.showError(TAG, `Failed to resize: ${err.code} ${err.message}`);
          });
        }).catch((err: BusinessError) => {
          Log.showError(TAG, `Failed to resize: ${err.code} ${err.message}`);
@@ -243,10 +245,10 @@ To implement an input method application, manually create an InputMethodExtensio
        }
      }
    ```
-
-
+   
+ 
    <!-- @[input_case_input_KeyboardController507](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/InputMethodExtensionAbility/model/KeyboardController.ets) -->
-
+   
    ``` TypeScript
    private registerListener(): void {
      this.inputHandle.addLog('registerListener');
@@ -330,10 +332,10 @@ To implement an input method application, manually create an InputMethodExtensio
      }
    }
    ```
-
+ 
 
    <!-- @[input_case_input_KeyboardController587](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/InputMethodExtensionAbility/model/KeyboardController.ets) -->
-
+   
    ``` TypeScript
      public isShiftKeyHold(): boolean {
        if (this.keyCodes.length === 0) {
@@ -350,7 +352,7 @@ To implement an input method application, manually create an InputMethodExtensio
        if (idx === -1) {
          this.keyCodes.push(keyCode);
        } else {
-         this.inputHandle.addLog(`keyCode down is intercepted: ${keyCode}}`);
+         this.inputHandle.addLog(`keyCode down is intercepted: ${keyCode}`);
        }
        if (this.isShiftKeyHold() && this.keyCodes.length === 2 && !this.isKeyCodeAZ(keyCode)) {
          this.isSpecialKeyPress = true;
@@ -483,14 +485,14 @@ To implement an input method application, manually create an InputMethodExtensio
    ```
 
 
-
+ 
 3. **KeyboardKeyData.ets** file.
 
    In this file you can define the content displayed on the soft keyboard.
 
 
    <!-- @[input_case_input_KeyboardKeyData016](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/model/KeyboardKeyData.ets) -->
-
+   
    ``` TypeScript
    export interface keySourceListType {
      title: string,
@@ -662,7 +664,7 @@ To implement an input method application, manually create an InputMethodExtensio
 
 
    <!-- @[input_case_input_KeyboardKeyData186](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/model/KeyboardKeyData.ets) -->
-
+   
    ``` TypeScript
    export let numberSourceListData: sourceListType[] = [
      {
@@ -833,7 +835,7 @@ To implement an input method application, manually create an InputMethodExtensio
      }
    ]
    ```
-
+ 
 4. **Index.ets** file:
 
    This file describes the functions of keys. For example, the number keys print numbers in the text box, and the delete key deletes what's entered.
@@ -841,7 +843,7 @@ To implement an input method application, manually create an InputMethodExtensio
    <!--Del-->Add the path to this file to the **src** field in the **resources/base/profile/main_pages.json** file.<!--DelEnd-->
 
    <!-- @[input_case_input_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/InputMethodExtensionAbility/pages/Index.ets) -->
-
+   
    ``` TypeScript
    import { deviceInfo } from '@kit.BasicServicesKit';
    import Log from '../../model/Log';
@@ -960,7 +962,7 @@ To implement an input method application, manually create an InputMethodExtensio
 
 
    <!-- @[input_case_entry_module_extensionAbilities](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/module.json5) -->
-
+   
    ``` JSON5
    "extensionAbilities": [
      {

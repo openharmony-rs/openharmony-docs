@@ -6,7 +6,7 @@
 <!--Designer: @gcw_nDnzjzHO;@wei-guoning-->
 <!--Tester: @sd_yinjian-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=f3efdb02e23121aaefae0a5dab0a37bc284fa9d3 translatedAt=2026-09-23T08:20:55.668Z pushedAt=2026-09-23T08:22:58.271Z -->
+<!-- md-trans-meta sourceCommit=16e4c027f369ebe528abfd2256a067c2dde5264f translatedAt=2026-10-08T03:43:00.590Z pushedAt=2026-10-08T06:10:35.678Z -->
 
 ## When to Use
 
@@ -31,7 +31,7 @@ Common APIs are listed in the following table. For more API details, see [OH_Con
 | API | Description |
 | ------- | ---- |
 | OH_ContentEmbed_CreateDocumentByFile | Creates an [OE document](content-embed-kit-terminology.md#oe-document) based on the path of the embedded document. |
-| OH_ContentEmbed_CreateDocumentByOEId | Creates an OE document based on an [OEID](content-embed-kit-terminology.md#oeid). |
+| OH_ContentEmbed_CreateDocumentByOEid | Creates an OE document based on an [OEID](content-embed-kit-terminology.md#oeid).|
 | OH_ContentEmbed_LoadDocumentFromFile | Loads an OE document from an existing [OE format file](content-embed-kit-terminology.md#oe-format-file). |
 | OH_ContentEmbed_CreateExtensionProxy | Creates a [client OE object](content-embed-kit-terminology.md#client-oe-object). |
 | OH_ContentEmbed_DestroyExtensionProxy | Destroys the client OE object and releases related resources. |
@@ -274,7 +274,7 @@ void ClientCallBack_OnUpdateFunc(ContentEmbed_ExtensionProxy *proxy)
 
 void ClientCallBack_OnErrorFunc(ContentEmbed_ExtensionProxy *proxy, ContentEmbed_ErrorCode error)
 {
-    OH_LOG_INFO(LOG_APP, "Enter ClientCallBack_OnErrorFunc, error: %{public}d", error);
+    OH_LOG_ERROR(LOG_APP, "Enter ClientCallBack_OnErrorFunc, error: %{public}d", error);
 }
 
 void ClientCallBack_OnEditingFinishedFunc(ContentEmbed_ExtensionProxy *proxy, bool dataModified)

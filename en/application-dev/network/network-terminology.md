@@ -1,12 +1,11 @@
 # Glossary
-
 <!--Kit: Network Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @wmyao_mm-->
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=563c3fe9cdad6b385a7bab92806c6884fd9ba7f9 translatedAt=2026-08-13T03:09:49.833Z pushedAt=2026-08-13T07:19:46.445Z -->
+<!-- md-trans-meta sourceCommit=ddfb612b69f0239598ba3f945d8c45f883f4229d translatedAt=2026-10-13T13:16:32.006Z pushedAt=2026-10-16T04:13:31.878Z -->
 
 ## D
 
@@ -19,9 +18,7 @@ A system that translates human-readable domain names into machine-recognizable I
 The network that the system uses by default. It is determined by the system, regardless of whether an app specifies a network. Based on network availability, capabilities, priority, and other policies, the system selects the default network from Wi‑Fi, cellular data, Ethernet, and Bluetooth connections.
 
 - If an app is not bound to a specific network, its requests are usually sent over the default network.
-
 - The default network may change due to network switching, signal changes, or system policies.
-
 - The default network is not necessarily the only available network; rather, it is the network currently preferred by the system.
 
 ## E
@@ -40,9 +37,10 @@ An application-layer protocol designed for distributed, collaborative, and hyper
 
 A security-enhanced communication protocol built upon HTTP, leveraging SSL/TLS encryption to ensure data transmission confidentiality, integrity, and identity authentication.
 
-### Interceptor
+### HTTP Interceptor
 
 A component used to intercept and modify HTTP requests and responses. It supports creating an interceptor chain and customizing a set of interceptors to modify network requests/responses as needed.
+
 
 ## M
 
@@ -61,9 +59,7 @@ An object used to send HTTP multipart form data. It supports specifying the orde
 A network handle is an identifier used by the system to identify a specific network connection instance. An app can use the handle to query network capabilities, link attributes, routing status, and other information, or to bind traffic to a specified network.
 
 - Used to uniquely identify an established or available network instance.
-
 - Can be used for network query, network binding, and policy control.
-
 - When no network is available, the `netId` of the network handle is `0`.
 
 ### Network Bearer Type (NetBearType)

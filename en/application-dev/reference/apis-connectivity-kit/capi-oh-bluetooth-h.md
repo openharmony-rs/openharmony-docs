@@ -3,13 +3,14 @@
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @enjoy_sunshine-->
-<!--Designer: @chengguohong; @tangjia15-->
+<!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=1ea8aa0626dcbea629ef512eb27ca07c34ff3ad2 translatedAt=2026-10-09T12:34:21.385Z pushedAt=2026-10-10T06:56:38.680Z -->
 
 ## Overview
 
-Defines the API for obtaining the Bluetooth switch state.
+Provides APIs for obtaining the Bluetooth switch state. You can obtain the Bluetooth switch state, including enabled, disabling, enabling, and BLE only. This is applicable to scenarios where the current Bluetooth switch state needs to be detected for service processing.
 
 **File to include**: <ConnectivityKit/bluetooth/oh_bluetooth.h>
 
@@ -97,10 +98,12 @@ Obtains the Bluetooth state.
 
 | Name| Description|
 | -- | -- |
-| [Bluetooth_SwitchState](capi-oh-bluetooth-h.md#bluetooth_switchstate) *state | Pointer to the Bluetooth state obtained. A null pointer is prohibited. If a null pointer is passed in, an error is returned. For details, see [Bluetooth_SwitchState](capi-oh-bluetooth-h.md#bluetooth_switchstate).|
+| [Bluetooth_SwitchState](#bluetooth_switchstate) *state | Pointer to the Bluetooth state obtained. A null pointer is prohibited. If a null pointer is passed in, an error is returned. For details, see [Bluetooth_SwitchState](#bluetooth_switchstate). |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [Bluetooth_ResultCode](capi-oh-bluetooth-h.md#bluetooth_resultcode) | Bluetooth switch state enumerated by [Bluetooth_ResultCode](capi-oh-bluetooth-h.md#bluetooth_resultcode).<br>     The value can be:<br>     [BLUETOOTH_SUCCESS](capi-oh-bluetooth-h.md#bluetooth_resultcode): The Bluetooth switch status is successfully obtained.<br>     [BLUETOOTH_INVALID_PARAM](capi-oh-bluetooth-h.md#bluetooth_resultcode): The input parameter is a null pointer.|
+| [Bluetooth_ResultCode](#bluetooth_resultcode) | Bluetooth switch state enumerated by [Bluetooth_ResultCode](capi-oh-bluetooth-h.md#bluetooth_resultcode).<br>     For details, see [Bluetooth_ResultCode](#bluetooth_resultcode).<br>     [BLUETOOTH_SUCCESS](#bluetooth_resultcode) indicates that the operation is successful.<br>     [BLUETOOTH_INVALID_PARAM](#bluetooth_resultcode) indicates that the input parameter is a null pointer. |
+
+

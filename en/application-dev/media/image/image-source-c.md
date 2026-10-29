@@ -1,12 +1,11 @@
 # Using Image_NativeModule to Decode Images
-
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
 <!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=51871fad202ca89cea4824e5e1f6eae94c62de6c translatedAt=2026-08-11T01:47:35.545Z pushedAt=2026-08-11T08:46:55.196Z -->
+<!-- md-trans-meta sourceCommit=7309d91550473d80535b32eca83cb9c0b600f845 translatedAt=2026-09-28T02:48:01.818Z pushedAt=2026-09-29T08:36:50.813Z -->
 
 This topic describes how to create an ImageSource object, obtain the width and height of the PixelMap, and release the ImageSource object.
 
@@ -26,7 +25,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
 
 For details about the APIs, see [Image_NativeModule](../../reference/apis-image-kit/capi-image-nativemodule.md).
 
-Create a native C++ application in DevEco Studio. The project created by default contains the **index.ets** file, and a **hello.cpp** or **napi_init.cpp** file is generated in the **entry\src\main\cpp** directory. In this example, the generated file is **hello.cpp**. Implement the C APIs in **hello.cpp**. Refer to the sample code below.
+When creating a Native C++ app in DevEco Studio, the generated project includes an `index.ets` file by default, and a `cpp` file (`hello.cpp` or `napi_init.cpp`; this example uses `hello.cpp` as the file name) is automatically generated in the `entry\src\main\cpp` directory. Implement the C API call logic in `hello.cpp`. The sample code is as follows:
 
 **Example of Using the Decoding APIs**
 
@@ -37,7 +36,7 @@ Create a native C++ application in DevEco Studio. The project created by default
 1. Import the required header files.
 
    <!-- @[decodingPixel_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->     
-
+   
    ``` C++
    #include <string>
    #include <hilog/log.h>
@@ -50,7 +49,7 @@ Create a native C++ application in DevEco Studio. The project created by default
 2. Modify the log macro definition as required.
 
    <!-- @[define_logInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->     
-
+   
    ``` C++
    #undef LOG_DOMAIN
    #undef LOG_TAG
@@ -61,7 +60,7 @@ Create a native C++ application in DevEco Studio. The project created by default
 3. Define the ImageSourceNative class.
 
    <!-- @[define_sourceClass](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/imageKits.h) -->     
-
+   
    ``` C
    class ImageSourceNative {
    public:
@@ -74,19 +73,19 @@ Create a native C++ application in DevEco Studio. The project created by default
        ~ImageSourceNative() {}
    };
    ```
-
+   
 4. Create an instance of ImageSourceNative.
 
    <!-- @[create_sourceClass](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->        
-
+   
    ``` C++
    static ImageSourceNative *g_thisImageSource = new ImageSourceNative();
    ```
-
+   
 5. Create the **GetJsResult** function to process the NAPI return value.
 
    <!-- @[get_returnValue](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/napi_init.cpp) -->       
-
+   
    ``` C++
    // Process the NAPI return value.
    napi_value GetJsResult(napi_env env, int result)
@@ -100,7 +99,7 @@ Create a native C++ application in DevEco Studio. The project created by default
 6. Define constants.
 
    <!-- @[define_maxStringLength](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->     
-
+   
    ``` C++
    const int MAX_STRING_LENGTH = 1024;
    ```
@@ -108,7 +107,7 @@ Create a native C++ application in DevEco Studio. The project created by default
 7. Create an ImageSource instance.
 
    <!-- @[decodingPixel_operations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->     
-
+   
    ``` C++
    // Return the error code.
    napi_value ReturnErrorCode(napi_env env, Image_ErrorCode errCode, std::string funcName)
@@ -162,7 +161,7 @@ Create a native C++ application in DevEco Studio. The project created by default
    - Create a PixelMap object.
 
      <!-- @[create_pixelMap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->    
-
+     
      ``` C++
      // Create a PixelMap object based on image decoding parameters.
      napi_value CreatePixelMap(napi_env env, napi_callback_info info)
@@ -202,7 +201,7 @@ Create a native C++ application in DevEco Studio. The project created by default
    - Create a structure object that defines the image information and obtain the image information.
 
      <!-- @[get_imageInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->      
-
+     
      ``` C++
      // Create a structure object that defines the image information and obtain the image information.
      napi_value GetImageInfo(napi_env env, napi_callback_info info)
@@ -242,7 +241,7 @@ Create a native C++ application in DevEco Studio. The project created by default
    - Read and edit Exif data.
 
      <!-- @[editExif_operations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->      
-
+     
      ``` C++
      // Obtain the value of a specified property.
      napi_value GetImageProperty(napi_env env, napi_callback_info info)
@@ -330,7 +329,7 @@ Create a native C++ application in DevEco Studio. The project created by default
    - Obtain the number of frames.
 
      <!-- @[get_frameCount](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->     
-
+     
      ``` C++
      // Obtain the number of image frames.
      napi_value GetFrameCount(napi_env env, napi_callback_info info)
@@ -348,7 +347,7 @@ Create a native C++ application in DevEco Studio. The project created by default
    - Create a PixelMap list based on image decoding parameters.
 
      <!-- @[create_pixelmapList](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->             
-
+     
      ``` C++
      // Create a PixelMap list based on image decoding parameters.
      napi_value CreatePixelmapList(napi_env env, napi_callback_info info)
@@ -375,7 +374,7 @@ Create a native C++ application in DevEco Studio. The project created by default
    - Obtain the image delay time list.
 
      <!-- @[get_delayTimeList](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->        
-
+     
      ``` C++
      // Obtain the image delay time list.
      napi_value GetDelayTimeList(napi_env env, napi_callback_info info)
@@ -398,7 +397,7 @@ Create a native C++ application in DevEco Studio. The project created by default
 9. Release the ImageSource instance.
 
    <!-- @[release_imageSource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->       
-
+   
    ``` C++
    // Release the instance.
    napi_value ReleaseImageSource(napi_env env, napi_callback_info info)
@@ -410,13 +409,10 @@ Create a native C++ application in DevEco Studio. The project created by default
        return ReturnErrorCode(env, errCode, "OH_ImageSourceNative_Release");
    }
    ```
-
+   
 ## Advanced Topics
 
 - **Memory-optimized decoding**: Use DMA memory and YUV pixel format to reduce memory usage and improve decoding performance. For details, see [Image Decoding Memory Optimization (C/C++)](image-allocator-type-c.md).
-
 - **Region decoding**: Decode a specified region of an image, suitable for partial viewing and crop preview of large images. For details, see [Image Region Decoding and Downsampling (C/C++)](image-region-and-downsampling-c.md).
-
 - **Downsampling decoding**: Scale the image to the target size directly during decoding, avoiding the performance overhead of post-decode scaling. Suitable for thumbnail generation. For details, see [Image Region Decoding and Downsampling (C/C++)](image-region-and-downsampling-c.md).
-
 - **Multi-image object decoding**: Decode a Picture object that contains a primary image and auxiliary images, suitable for HDR images and HEIF professional format processing. For details, see [Using Image_NativeModule to Decode Pictures](image-source-picture-c.md).

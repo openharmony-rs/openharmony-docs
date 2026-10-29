@@ -1,16 +1,14 @@
 # Class (MediaAssetsChangeRequest)
-
 <!--Kit: Media Library Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @yixiaoff-->
 <!--Designer: @liweilu1-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=064bb08ccf99717a1b68e90ff57938ff22079494 translatedAt=2026-08-17T10:27:08.320Z pushedAt=2026-08-19T07:51:23.239Z -->
 
 MediaAssetsChangeRequest implements [MediaChangeRequest](arkts-apis-photoAccessHelper-i.md#mediachangerequest11).
 
-Represents a request for changing multiple assets.
+Represents a request for changing multiple media assets.
 
 > **NOTE**
 >
@@ -29,21 +27,21 @@ constructor(assets: Array&lt;PhotoAsset&gt;)
 
 Defines a constructor, which is used to initialize a request for changing multiple assets.
 
-**Since**: 26.0.0
+**Since:** 26.0.0
 
-**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **Parameters**
 
-| Name   | Type                      | Mandatory | Description       |
+| Name  | Type                     | Mandatory| Description      |
 | -------- | ------------------------- | ---- | ---------- |
-| assets | Array&lt;[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)&gt; | Yes   | Assets to change. |
+| assets | Array&lt;[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)&gt; | Yes  | Assets to change.|
 
 **Error codes**
 
-For details about the error codes thrown by the API, see [File Management Error Codes](../apis-core-file-kit/errorcode-filemanagement.md).
+For details about the error codes, see [File Management Error Codes](../apis-core-file-kit/errorcode-filemanagement.md).
 
-| ID | Error Message |
+| ID| Error Message|
 | -------- | ---------------------------------------- |
 | 14000011       | System inner fail.          |
 
@@ -53,6 +51,7 @@ For details about how to create a **phAccessHelper** instance, see the example p
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   console.info('MediaAssetsChangeRequest constructorDemo');
@@ -73,30 +72,31 @@ setFavorite(favoriteState: boolean): void
 
 Favorites or unfavorites multiple file assets.
 
-**Since**: 26.0.0
+**Since:** 26.0.0
 
-**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **Parameters**
 
-| Name        | Type      | Mandatory   | Description                                 |
+| Name       | Type     | Mandatory  | Description                                |
 | ---------- | ------- | ---- | ---------------------------------- |
-| favoriteState | boolean | Yes    | Whether to favorite the file asset. **true** to favorite, and **false** otherwise. |
+| favoriteState | boolean | Yes   | Whether to favorite the file asset. **true** to favorite, and **false** otherwise.|
 
 **Error codes**
 
 For details about the error codes, see [File Management Error Codes](../apis-core-file-kit/errorcode-filemanagement.md).
 
-| ID | Error Message |
+| ID| Error Message|
 | -------- | ---------------------------------------- |
 | 14000011       | System inner fail.         |
 
 **Example**
 
-For details about how to create a **phAccessHelper** instance, see the example in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
+For details about how to create a **phAccessHelper** instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {

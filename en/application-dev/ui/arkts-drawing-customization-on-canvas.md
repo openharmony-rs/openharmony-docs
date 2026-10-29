@@ -1,20 +1,22 @@
-# Drawing Custom Shapes on Canvas (Canvas)
-
+# Drawing Custom Graphics on the Canvas (Canvas)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @camlostshi-->
 <!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=c8954d33bacbdec6df88d8586db7cc9b9d8a799e translatedAt=2026-07-30T11:34:18.189Z pushedAt=2026-07-30T12:25:46.013Z -->
+<!-- md-trans-meta sourceCommit=2a42ff8914ff22790967c83ce7dbccb920b0a5db translatedAt=2026-10-13T01:51:02.913Z pushedAt=2026-10-13T03:13:17.430Z -->
 
 [Canvas](../reference/apis-arkui/arkui-ts/ts-components-canvas-canvas.md) provides a canvas component for custom drawing. You can use the [CanvasRenderingContext2D](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md) object and the [OffscreenCanvasRenderingContext2D](../reference/apis-arkui/arkui-ts/ts-offscreencanvasrenderingcontext2d.md) object to draw on the Canvas component. Drawing objects can be basic shapes, text, images, and more.
+
 
 ## Drawing Custom Shapes on the Canvas Component
 
 You can draw custom shapes on the canvas in the following three ways:
 
+
 - Use the [CanvasRenderingContext2D](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md) object to draw on the Canvas component.
+
 
 <!-- @[canvasRenderingContext2D_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomCanvas/entry/src/main/ets/pages/canvas/CanvasRenderingContext2D.ets) -->
 
@@ -45,15 +47,15 @@ struct CanvasExample1 {
 }
 ```
 
+
   ![2023022793003](figures/2023022793003.jpg)
 
 - Offscreen drawing refers to drawing the content to be rendered into a buffer first, then converting it into an image and drawing it onto the Canvas at once, which speeds up the drawing process. The process is as follows:
-
   1. Use the [transferToImageBitmap](../reference/apis-arkui/arkui-ts/ts-offscreencanvasrenderingcontext2d.md#transfertoimagebitmap) method to create an [ImageBitmap](../reference/apis-arkui/arkui-ts/ts-components-canvas-imagebitmap.md) object from the most recently rendered image on the offscreen canvas.
-
   2. Use the [transferFromImageBitmap](../reference/apis-arkui/arkui-ts/ts-components-canvas-common-method.md#transferfromimagebitmap) method of the [CanvasRenderingContext2D](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md) object to display the given ImageBitmap object.
 
     For details, see the [OffscreenCanvasRenderingContext2D](../reference/apis-arkui/arkui-ts/ts-offscreencanvasrenderingcontext2d.md) object.
+
 
 <!-- @[offScreenDrawing_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomCanvas/entry/src/main/ets/pages/canvas/OffScreenDrawing.ets) -->
 
@@ -88,13 +90,15 @@ struct CanvasExample2 {
 }
 ```
 
+
   ![2023022793003(1)](figures/2023022793003.jpg)
 
   > **NOTE**
   >
   >In the Canvas component, the same APIs are used for drawing on the Canvas component through the CanvasRenderingContext2D object and the OffscreenCanvasRenderingContext2D object. In addition, unless otherwise specified, all API parameters are in vp.
 
-- When loading a Lottie animation on Canvas, download Lottie as follows:
+- To load a Lottie animation on Canvas, first download and install the [lottie](https://gitcode.com/CPF-ApplicationTPC/lottieArkTS) dependency package, and then import the module as follows.
+
 
 <!-- @[lottie_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomCanvas/entry/src/main/ets/pages/canvas/OffScreenDrawing.ets) -->
 
@@ -102,11 +106,11 @@ struct CanvasExample2 {
 import lottie from '@ohos/lottie'
 ```
 
-  For details about the APIs, see [lottie](https://gitcode.com/CPF-ApplicationTPC/lottieArkTS).
 
 ## Initializing the Canvas Component
 
 `onReady(event: () => void)` is the event callback triggered when the Canvas component initialization is complete. After this event is called, you can obtain the exact [width](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md#attributes) and [height](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md#attributes) of the Canvas component, and then use the CanvasRenderingContext2D and OffscreenCanvasRenderingContext2D objects to call relevant APIs for drawing.
+
 
 <!-- @[initCanvasComponent_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomCanvas/entry/src/main/ets/pages/canvas/InitCanvasComponent.ets) -->
 
@@ -121,13 +125,16 @@ Canvas(this.context)
   })
 ```
 
+
 ![2023022793350(1)](figures/2023022793350.jpg)
+
 
 ## Canvas Component Drawing Methods
 
 After the event callback [onReady()](../reference/apis-arkui/arkui-ts/ts-components-canvas-canvas.md#onready) of the Canvas component is invoked, you can directly use the Canvas component for drawing. Alternatively, you can define a [Path2D](../reference/apis-arkui/arkui-ts/ts-components-canvas-path2d.md) object independently of the Canvas component and the onReady() lifecycle to construct the desired path, and then use the Canvas component for drawing after onReady() is invoked.
 
 - Directly call related APIs through a CanvasRenderingContext2D object for drawing.
+
 
 <!-- @[contextCallApi_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomCanvas/entry/src/main/ets/pages/canvas/CanvasComponentDrawingMethod.ets) -->
 
@@ -144,9 +151,11 @@ Canvas(this.context)
   })
 ```
 
+
   ![2023022793719(1)](figures/2023022793719.jpg)
 
 - First define a Path2D object independently to construct the desired path, and then draw by calling the [stroke](../reference/apis-arkui/arkui-ts/ts-components-canvas-common-method.md#stroke-1) or [fill](../reference/apis-arkui/arkui-ts/ts-components-canvas-common-method.md#fill-1) API of the CanvasRenderingContext2D or OffscreenCanvasRenderingContext2D object. For details, see [Path2D](../reference/apis-arkui/arkui-ts/ts-components-canvas-path2d.md).
+
 
 <!-- @[definePath2d_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomCanvas/entry/src/main/ets/pages/canvas/CanvasComponentDrawingMethod.ets) -->
 
@@ -162,7 +171,9 @@ Canvas(this.context2)
   })
 ```
 
+
   ![2023022794031(1)](figures/2023022794031.jpg)
+
 
 ## Common Canvas Component Methods
 
@@ -171,6 +182,7 @@ The OffscreenCanvasRenderingContext2D and CanvasRenderingContext2D objects provi
 - Drawing basic shapes.
 
   You can draw basic shapes using APIs such as [arc](../reference/apis-arkui/arkui-ts/ts-components-canvas-common-method.md#arc) (draws an arc path), [ellipse](../reference/apis-arkui/arkui-ts/ts-components-canvas-common-method.md#ellipse) (draws an ellipse), and [rect](../reference/apis-arkui/arkui-ts/ts-components-canvas-common-method.md#rect) (creates a rectangular path).
+
 
   <!-- @[CanvasComponentBasicShapes_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomCanvas/entry/src/main/ets/pages/canvas/CanvasComponentBasicShapes.ets) -->
 
@@ -195,11 +207,13 @@ Canvas(this.context)
   })
 ```
 
+
   ![2023022794521(1)](figures/2023022794521.jpg)
 
 - Draw text.
 
   You can draw text using APIs such as [fillText](../reference/apis-arkui/arkui-ts/ts-components-canvas-common-method.md#filltext) (text fill) and [strokeText](../reference/apis-arkui/arkui-ts/ts-components-canvas-common-method.md#stroketext) (text stroke). In the example, the font is set to a 50px bold "sans-serif" font, and then the fillText method is called to draw the text "Hello World!" at (50, 100). The strokeStyle is set to red, lineWidth to 2, and font to a 50px bold "sans-serif" font, and then the strokeText method is called to draw the outline of the text "Hello World!" at (50, 150).
+
 
 <!-- @[canvasComponentText_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomCanvas/entry/src/main/ets/pages/canvas/CanvasComponentText.ets) -->
 
@@ -219,12 +233,14 @@ Canvas(this.context)
     this.context.strokeText('Hello World!', 50, 150);
   })
 ```
+ 
 
   ![2023022795105(1)](figures/2023022795105.jpg)
 
 - Draw a text border.
 
   You can use [measureText](../reference/apis-arkui/arkui-ts/ts-components-canvas-common-method.md#measuretext) to calculate the width and height of the text to be drawn, and then use the measured dimensions as the border size. In the example, set textBaseline to `'top'` and font to `30px "monospace"`. Call measureText to obtain the text width and height, then call fillText to draw "Hello World" at (20, 100), and call strokeRect at the same position with the measured dimensions to draw a border of the corresponding size. Next, set font to `60px bold "sans-serif"`, call measureText again to obtain the text width and height, then call fillText to draw "Hello World" at (20, 150), and call strokeRect at the same position with the measured dimensions to draw a border of the corresponding size.
+
 
 <!-- @[canvasComponentTextBorder_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomCanvas/entry/src/main/ets/pages/canvas/CanvasComponentTextBorder.ets) -->
 
@@ -244,7 +260,7 @@ struct CanvasComponentTextBorder {
         .height('100%')
         .backgroundColor('#F5DC62')
         .onReady(() => {
-          // The horizontal alignment of the text is 'top'.
+          // The vertical baseline alignment of the text is 'top'.
           this.context.textBaseline = 'top';
           // The font size is 30px and the font family is monospace.
           this.context.font = '30px monospace';
@@ -266,11 +282,13 @@ struct CanvasComponentTextBorder {
 }
 ```
 
+
   ![measureTextAndRect](figures/measureTextAndRect.png)
 
 - Draw text using a custom font.
 
-Starting from API version 20, you can obtain an instance of the app global font manager through [getGlobalInstance](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#getglobalinstance), then use the [loadFontSync](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#loadfontsync) API to load a custom font from a specified path, set the font style for text drawing through the [font](../reference/apis-arkui/arkui-ts/ts-components-canvas-common-property.md#font) API (which sets the font style in text drawing), and then draw text using APIs such as [fillText](../reference/apis-arkui/arkui-ts/ts-components-canvas-common-method.md#filltext) (draws filled text) and [strokeText](../reference/apis-arkui/arkui-ts/ts-components-canvas-common-method.md#stroketext) (draws stroked text).
+  Starting from API version 20, you can obtain an instance of the app global font manager through [getGlobalInstance](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#getglobalinstance), then use the [loadFontSync](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#loadfontsync) API to load a custom font from a specified path, set the font style for text drawing through the [font](../reference/apis-arkui/arkui-ts/ts-components-canvas-common-property.md#font) API (which sets the font style in text drawing), and then draw text using APIs such as [fillText](../reference/apis-arkui/arkui-ts/ts-components-canvas-common-method.md#filltext) (draws filled text) and [strokeText](../reference/apis-arkui/arkui-ts/ts-components-canvas-common-method.md#stroketext) (draws stroked text).
+
 
 <!-- @[canvasComponentCustomFontsDrawText_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomCanvas/entry/src/main/ets/pages/canvas/CanvasComponentCustomFontsDrawText.ets) -->
 
@@ -304,11 +322,13 @@ struct CustomFont {
 }
 ```
 
-![customFont](figures/customFont.jpeg)
+
+  ![customFont](figures/customFont.jpeg)
 
 - Draw images and process image pixel information.
 
-You can draw images using APIs such as [drawImage](../reference/apis-arkui/arkui-ts/ts-components-canvas-common-method.md#drawimage) (draws an image) and [putImageData](../reference/apis-arkui/arkui-ts/ts-components-canvas-common-method.md#putimagedata) (fills a new rectangular area with [ImageData](../reference/apis-arkui/arkui-ts/ts-components-canvas-imagedata.md) data), and process image pixel information using APIs such as [createImageData](../reference/apis-arkui/arkui-ts/ts-components-canvas-common-method.md#createimagedata) (creates a new ImageData object), [getPixelMap](../reference/apis-arkui/arkui-ts/ts-components-canvas-common-method.md#getpixelmap) (creates a [PixelMap](../reference/apis-image-kit/arkts-apis-image-PixelMap.md) object from the pixels in a specified area of the current canvas), and [getImageData](../reference/apis-arkui/arkui-ts/ts-components-canvas-common-method.md#getimagedata) (creates an ImageData object from the pixels in a specified area of the current canvas).
+  You can draw images using APIs such as [drawImage](../reference/apis-arkui/arkui-ts/ts-components-canvas-common-method.md#drawimage) (draws an image) and [putImageData](../reference/apis-arkui/arkui-ts/ts-components-canvas-common-method.md#putimagedata) (fills a new rectangular area with [ImageData](../reference/apis-arkui/arkui-ts/ts-components-canvas-imagedata.md) data), and process image pixel information using APIs such as [createImageData](../reference/apis-arkui/arkui-ts/ts-components-canvas-common-method.md#createimagedata) (creates a new ImageData object), [getPixelMap](../reference/apis-arkui/arkui-ts/ts-components-canvas-common-method.md#getpixelmap) (creates a [PixelMap](../reference/apis-image-kit/arkts-apis-image-PixelMap.md) object from the pixels in a specified area of the current canvas), and [getImageData](../reference/apis-arkui/arkui-ts/ts-components-canvas-common-method.md#getimagedata) (creates an ImageData object from the pixels in a specified area of the current canvas).
+
 
 <!-- @[CanvasComponentDrawingPictureAndImagePixel_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomCanvas/entry/src/main/ets/pages/canvas/CanvasComponentDrawingPictureAndImagePixel.ets) -->
 
@@ -347,11 +367,13 @@ struct CanvasComponentDrawingPictureAndImagePixel {
 }
 ```
 
+
   ![drawimage](figures/drawimage.PNG)
 
 - Other methods.
 
   Canvas also provides other types of methods. Methods related to gradients ([CanvasGradient](../reference/apis-arkui/arkui-ts/ts-components-canvas-canvasgradient.md) objects): [createLinearGradient](../reference/apis-arkui/arkui-ts/ts-components-canvas-common-method.md#createlineargradient) (creates a linear gradient), [createRadialGradient](../reference/apis-arkui/arkui-ts/ts-components-canvas-common-method.md#createradialgradient) (creates a radial gradient), and more.
+
 
 <!-- @[canvasComponentOtherMethods_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomCanvas/entry/src/main/ets/pages/canvas/CanvasComponentOtherMethods.ets) -->
 
@@ -373,11 +395,13 @@ Canvas(this.context)
   })
 ```
 
+
   ![2023022700701(1)](figures/2023022700701.jpg)
 
 ## Driving Canvas Refresh with State Variables
 
 You can use state variables to drive Canvas refresh. Monitor the changing data through [@Watch](state-management/arkts-watch.md) and bind it to a custom `draw()` method. When the data is refreshed, the method bound by @Watch executes the drawing logic, causing the Canvas to refresh.
+
 
 <!-- @[canvasContentUpdate_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomCanvas/entry/src/main/ets/pages/canvas/CanvasContentUpdate.ets) -->
 
@@ -415,6 +439,7 @@ struct CanvasContentUpdate {
 }
 ```
 
+
 ![data_drive_update](figures/data_drive_update.gif)
 
 ## Preventing Drawing When the Canvas Component Is Invisible
@@ -423,12 +448,14 @@ You can use the following two methods to monitor Canvas component visibility and
 
 - Starting from API version 13, use the [setOnVisibleAreaApproximateChange](../reference/apis-arkui/arkui-ts/ts-uicommonevent.md#setonvisibleareaapproximatechange) API to monitor Canvas component visibility.
 
+<!-- @[canvasContentSetOnVisibleAreaApproximateChange_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomCanvas/entry/src/main/ets/pages/canvas/CanvasContentSetOnVisibleAreaApproximateChange.ets) -->
+
   ```ts
   import { ColorMetrics } from '@kit.ArkUI';
 
   @Entry
   @Component
-  struct Page {
+  struct CanvasContentSetOnVisibleAreaApproximateChange {
     private canvasContext: CanvasRenderingContext2D = new CanvasRenderingContext2D()
     private timerId: number = -1;
 
@@ -458,22 +485,22 @@ You can use the following two methods to monitor Canvas component visibility and
             let frameNode = this.canvasContext.canvas;
             frameNode.commonEvent.setOnVisibleAreaApproximateChange({ ratios: [0.0] },
               (isVisible: boolean, currentRatio: number) => {
-              // Canvas is invisible.
-              if (!isVisible && currentRatio <= 0) {
-                clearInterval(this.timerId)
-                this.timerId = -2
-              }
-              // Canvas is visible.
-              if (isVisible) {
-                if (this.timerId == -2) {
-                  this.timerId = setInterval(() => {
-                    this.drawRandomCircle()
-                  }, 500)
+                // The canvas is invisible.
+                if (!isVisible && currentRatio <= 0) {
+                  clearInterval(this.timerId)
+                  this.timerId = -2
                 }
-              }
-            })
+                // The canvas is visible.
+                if (isVisible) {
+                  if (this.timerId == -2) {
+                    this.timerId = setInterval(() => {
+                      this.drawRandomCircle()
+                    }, 500)
+                  }
+                }
+              })
           })
-        Button("draw sth")
+        Button('draw sth')
           .onClick(() => {
             if (this.timerId < 0) {
               this.timerId = setInterval(() => {
@@ -488,16 +515,18 @@ You can use the following two methods to monitor Canvas component visibility and
   }
   ```
 
-![canvas_RenderingContext](figures/Canvas_RenderingContext.gif)
+  ![canvas_RenderingContext](figures/Canvas_RenderingContext.gif)
 
 - Starting from API version 17, use the [onVisibleAreaApproximateChange](../reference/apis-arkui/arkui-ts/ts-universal-component-visible-area-change-event.md#onvisibleareaapproximatechange17) API to listen for Canvas component visibility changes.
+
+<!-- @[canvasContentOnVisibleAreaApproximateChange_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomCanvas/entry/src/main/ets/pages/canvas/CanvasContentOnVisibleAreaApproximateChange.ets) -->
 
   ```ts
   import { ColorMetrics } from '@kit.ArkUI';
 
   @Entry
   @Component
-  struct Page {
+  struct CanvasContentOnVisibleAreaApproximateChange {
     private canvasContext: CanvasRenderingContext2D = new CanvasRenderingContext2D()
     private timerId: number = -1;
 
@@ -524,22 +553,22 @@ You can use the following two methods to monitor Canvas component visibility and
           .width(300)
           .height(300)
           .onVisibleAreaApproximateChange({ ratios: [0.0] },
-              (isVisible: boolean, currentRatio: number) => {
-                // Canvas is invisible.
-                if (!isVisible && currentRatio <= 0) {
-                  clearInterval(this.timerId)
-                  this.timerId = -2
+            (isVisible: boolean, currentRatio: number) => {
+              // canvas is invisible
+              if (!isVisible && currentRatio <= 0) {
+                clearInterval(this.timerId)
+                this.timerId = -2
+              }
+              // canvas is visible
+              if (isVisible) {
+                if (this.timerId == -2) {
+                  this.timerId = setInterval(() => {
+                    this.drawRandomCircle()
+                  }, 500)
                 }
-                // Canvas is visible.
-                if (isVisible) {
-                  if (this.timerId == -2) {
-                    this.timerId = setInterval(() => {
-                      this.drawRandomCircle()
-                    }, 500)
-                  }
-                }
-              })
-        Button("draw sth")
+              }
+            })
+        Button('draw sth')
           .onClick(() => {
             if (this.timerId < 0) {
               this.timerId = setInterval(() => {
@@ -559,6 +588,7 @@ You can use the following two methods to monitor Canvas component visibility and
 ## Example
 
 - Draw regular basic shapes.
+
 
 <!-- @[drawingRegularBaseShape_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomCanvas/entry/src/main/ets/pages/canvas/DrawingRegularBaseShape.ets) -->
 
@@ -590,9 +620,11 @@ struct ClearRect {
 }
 ```
 
+
   ![2023022701120(1)](figures/2023022701120.jpg)
 
 - Draw irregular shapes.
+
 
 <!-- @[drawIrregularFigures_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomCanvas/entry/src/main/ets/pages/canvas/DrawIrregularFigures.ets) -->
 
@@ -632,11 +664,13 @@ struct Path2d {
 }
 ```
 
-![2023032422159](figures/2023032422159.jpg)
+
+  ![2023032422159](figures/2023032422159.jpg)
 
 - Draw a draggable cursor.
 
-You can use the [beginPath](../reference/apis-arkui/arkui-ts/ts-components-canvas-common-method.md#beginpath), [moveTo](../reference/apis-arkui/arkui-ts/ts-components-canvas-common-method.md#moveto), [lineTo](../reference/apis-arkui/arkui-ts/ts-components-canvas-common-method.md#lineto), and [arc](../reference/apis-arkui/arkui-ts/ts-components-canvas-common-method.md#arc) methods to set the cursor position, and the [stroke](../reference/apis-arkui/arkui-ts/ts-components-canvas-common-method.md#stroke) and [fill](../reference/apis-arkui/arkui-ts/ts-components-canvas-common-method.md#fill) methods to draw the cursor. The press state and position changes are monitored through @Watch and bound to a custom drawCursor() method. When the cursor is dragged, the method bound by @Watch executes the drawing logic to calculate and update the cursor color and position.
+  You can use the [beginPath](../reference/apis-arkui/arkui-ts/ts-components-canvas-common-method.md#beginpath), [moveTo](../reference/apis-arkui/arkui-ts/ts-components-canvas-common-method.md#moveto), [lineTo](../reference/apis-arkui/arkui-ts/ts-components-canvas-common-method.md#lineto), and [arc](../reference/apis-arkui/arkui-ts/ts-components-canvas-common-method.md#arc) methods to set the cursor position, and the [stroke](../reference/apis-arkui/arkui-ts/ts-components-canvas-common-method.md#stroke) and [fill](../reference/apis-arkui/arkui-ts/ts-components-canvas-common-method.md#fill) methods to draw the cursor. The press state and position changes are monitored through @Watch and bound to a custom drawCursor() method. When the cursor is dragged, the method bound by @Watch executes the drawing logic to calculate and update the cursor color and position.
+
 
 <!-- @[cursor_moving_canvas](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomCanvas/entry/src/main/ets/pages/canvas/DrawDraggableCursor.ets) -->
 
@@ -646,7 +680,7 @@ You can use the [beginPath](../reference/apis-arkui/arkui-ts/ts-components-canva
 struct CursorMoving {
   // Monitor whether the cursor is pressed, and refresh the cursor color.
   @State @Watch('drawCursor') isTouchDown: boolean = false;
-  // Monitor position changes and refresh the page.
+  // Listen for position changes and refresh the cursor position.
   @State @Watch('drawCursor') cursorPosition: RectPosition = {
     x: 0,
     y: 0,
@@ -781,7 +815,7 @@ struct CursorMoving {
     this.canvasContext.strokeStyle = this.isTouchDown ? '#ff1a5cae' : '#ff9ba59b';
     this.canvasContext.fillStyle = this.isTouchDown ? '#ff1a5cae' : '#ff9ba59b';
     this.canvasContext.arc(this.cursorPosition.x + this.cursorPosition.width / 2,
-      this.cursorPosition.y + this.cursorPosition.width / 2, this.arcRadius, 0, 2 * Math.PI);
+      this.cursorPosition.y + this.cursorPosition.height / 2, this.arcRadius, 0, 2 * Math.PI);
     this.canvasContext.fill();
     this.canvasContext.stroke();
 
@@ -803,7 +837,7 @@ struct CursorMoving {
     this.canvasContext.stroke();
   }
 
-  // Check whether the touch position is within the diamond shape.
+  // Check whether the tap position is within the diamond.
   isTouchCursorArea(touch: TouchObject) {
     let tempLength = Math.sqrt((touch.x - this.cursorCenterPosition.x) * (touch.x - this.cursorCenterPosition.x) +
       (touch.y - this.cursorCenterPosition.y) * (touch.y - this.cursorCenterPosition.y));
@@ -827,6 +861,7 @@ export interface Position {
 };
 ```
 
+
   ![CursorMoving](./figures/CursorMoving.gif)
 
 ## Samples
@@ -842,7 +877,4 @@ The following samples demonstrate how to draw custom shapes on a canvas:
 - [Lottie Animation](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/Solutions/Game/Lottie)
 
 - [Custom Lottery Wheel (ArkTS) (API 9)](https://gitcode.com/openharmony/codelabs/tree/master/ETSUI/CanvasComponent)
-
 <!--RP1--><!--RP1End-->
-
-<!--no_check-->

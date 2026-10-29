@@ -71,14 +71,20 @@ libnative_rdb_ndk.z.so
 #include <database/rdb/relational_store_error_code.h>
 ```
 
-1. 判断当前系统是否支持向量数据库，若不支持，则表示当前系统不具备向量数据库能力。示例代码如下：
+1. 调用[OH_Rdb_GetSupportedDbType()](../reference/apis-arkdata/capi-relational-store-h.md#oh_rdb_getsupporteddbtype)接口获取当前系统支持的所有数据库类型，遍历其中元素查找是否支持目标数据库类型。若包含[RDB_SQLITE](../reference/apis-arkdata/capi-relational-store-h.md#rdb_dbtype)，则表示当前系统支持SQLite数据库。若包含[RDB_CAYLEY](../reference/apis-arkdata/capi-relational-store-h.md#rdb_dbtype)，则表示当前系统支持向量数据库。示例代码如下：
 
    <!--@[vector_OH_Rdb_GetSupportedDbType](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/cpp/napi_init.cpp)-->
    
    ``` C++
-   int numType = 0;
-   // 如果numType为2则支持向量数据库，为1则不支持向量数据库
-   OH_Rdb_GetSupportedDbType(&numType);
+   int typeCount = 0;
+   const int *dbTypes = OH_Rdb_GetSupportedDbType(&typeCount);
+   bool isVectorStoreSupported = false;
+   for (int i = 0; i < typeCount; i++) {
+       if (dbTypes[i] == RDB_CAYLEY) {
+           isVectorStoreSupported = true;
+           break;
+       }
+   }
    ```
 
 2. 当前系统支持向量数据库时，获取OH_Rdb_Store实例。示例代码如下：
@@ -169,7 +175,7 @@ libnative_rdb_ndk.z.so
 
    > **说明：**
    >
-   > 当应用完成查询数据操作，不再使用结果集（OH_Cursor）时，请及时调用destroy方法关闭结果集，释放系统为其分配的内存。
+   > 当应用完成查询数据操作，不再使用结果集（OH_Cursor）时，请及时调用[destroy()](../reference/apis-arkdata/capi-rdb-oh-cursor.md#destroy)接口关闭结果集，释放系统为其分配的内存。
 
    示例代码如下：
 

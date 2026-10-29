@@ -6,7 +6,7 @@
 <!--Designer: @zhanglu161-->
 <!--Tester: @lotsof-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=528f79113a49f66de1d5ef6860690f10b63b035e translatedAt=2026-08-15T01:48:43.668Z pushedAt=2026-08-15T07:32:35.713Z -->
+<!-- md-trans-meta sourceCommit=2ab629e0f75f57d6f17bc96f6d743f7df1757ea2 translatedAt=2026-09-28T02:31:51.846Z pushedAt=2026-09-29T06:21:06.171Z -->
 
 ## Task Management
 
@@ -34,11 +34,8 @@ typedef struct {
 **Parameters**
 
 - `len`: number of data dependencies.
-
 - `items`: data dependency array. The data length is equal to `len`.
-
 - `ptr`: data address.
-
 - `type`: distinguishes between data and `task_handle`.
 
 **Description**
@@ -124,7 +121,6 @@ FFRT_C_API void ffrt_task_attr_set_name(ffrt_task_attr_t* attr, const char* name
 Parameters
 
 - `attr`: pointer to the `ffrt_task_attr_t` object.
-
 - `name`: task name.
 
 Description
@@ -158,7 +154,6 @@ FFRT_C_API void ffrt_task_attr_set_qos(ffrt_task_attr_t* attr, ffrt_qos_t qos);
 Parameters
 
 - `attr`: pointer to the `ffrt_task_attr_t` object.
-
 - `qos`: QoS level.
 
 Description
@@ -192,13 +187,11 @@ FFRT_C_API void ffrt_task_attr_set_delay(ffrt_task_attr_t* attr, uint64_t delay_
 Parameters
 
 - `attr`: pointer to the `ffrt_task_attr_t` object.
-
 - `delay_us`: scheduling delay. The unit is μs.
 
 Description
 
 - Sets the scheduling delay of a task. The task will be scheduled and executed after the delay interval. If no delay is set, the default delay is 0.
-
 - After the scheduling delay is set, the input and output dependencies of the task will not take effect.
 
 **ffrt_task_attr_get_delay**
@@ -228,7 +221,6 @@ FFRT_C_API void ffrt_task_attr_set_queue_priority(ffrt_task_attr_t* attr, ffrt_q
 Parameters
 
 - `attr`: pointer to the `ffrt_task_attr_t` object.
-
 - `priority`: task priority.
 
 Description
@@ -262,7 +254,6 @@ FFRT_C_API void ffrt_task_attr_set_stack_size(ffrt_task_attr_t* attr, uint64_t s
 Parameters
 
 - `attr`: pointer to the `ffrt_task_attr_t` object.
-
 - `size`: size of the coroutine stack, in bytes.
 
 Description
@@ -324,11 +315,8 @@ FFRT_C_API void *ffrt_alloc_auto_managed_function_storage_base(ffrt_function_kin
 **Parameters**
 
 - `kind`: `ffrt_function_kind_general` for submitting a common task; `ffrt_function_kind_queue` for submitting a queue task.
-
 - `exec`: function pointer invoked during task execution.
-
 - `destroy`: function pointer invoked after a task is complete. It can be used to destroy resources.
-
 - `reserve`: internal reserved space. It cannot be used by users.
 
 **Return Values**
@@ -431,11 +419,8 @@ FFRT_C_API void ffrt_submit_base(ffrt_function_header_t* f, const ffrt_deps_t* i
 **Parameters**
 
 - `f`: task executor of a user. The value can be of the native `ffrt_function_header_t` type or a custom extension type based on `ffrt_function_header_t`.
-
 - `in_deps`: input data dependency of a task. It is usually expressed as the actual data address. `ffrt_task_handle_t` can also be used as a special input dependency.
-
 - `out_deps`: output data dependency of a task. It is usually expressed as the actual data address. `ffrt_task_handle_t` is not supported.
-
 - `attr`: task attribute.
 
 **Description**
@@ -572,13 +557,9 @@ FFRT_C_API void ffrt_submit_f(ffrt_function_t func, void* arg, const ffrt_deps_t
 **Parameters**
 
 - `func`: specified task function.
-
 - `arg`: parameter passed to the task function.
-
 - `in_deps`: input data dependency of a task. It is usually expressed as the actual data address. `ffrt_task_handle_t` can also be used as a special input dependency.
-
 - `out_deps`: output data dependency of a task. It is usually expressed as the actual data address. `ffrt_task_handle_t` is not supported.
-
 - `attr`: task attribute.
 
 **Description**
@@ -626,11 +607,8 @@ FFRT_C_API ffrt_task_handle_t ffrt_submit_h_base(ffrt_function_header_t* f, cons
 **Parameters**
 
 - `f`: task executor of a user. The value can be of the native `ffrt_function_header_t` type or a custom extension type based on `ffrt_function_header_t`.
-
 - `in_deps`: input data dependency of a task. It is usually expressed as the actual data address. `ffrt_task_handle_t` can also be used as a special input dependency.
-
 - `out_deps`: output data dependency of a task. It is usually expressed as the actual data address. `ffrt_task_handle_t` is not supported.
-
 - `attr`: task attribute.
 
 **Return Values**
@@ -666,13 +644,9 @@ FFRT_C_API ffrt_task_handle_t ffrt_submit_h_f(ffrt_function_t func, void* arg, c
 **Parameters**
 
 - `func`: specified task function.
-
 - `arg`: parameter passed to the task function.
-
 - `in_deps`: input data dependency of a task. It is usually expressed as the actual data address. `ffrt_task_handle_t` can also be used as a special input dependency.
-
 - `out_deps`: output data dependency of a task. It is usually expressed as the actual data address. `ffrt_task_handle_t` is not supported.
-
 - `attr`: task attribute.
 
 **Return Values**
@@ -973,7 +947,6 @@ void ffrt_queue_attr_set_qos(ffrt_queue_attr_t* attr, ffrt_qos_t qos);
 Parameters
 
 - `attr`: pointer to the queue attribute.
-
 - `qos`: QoS.
 
 Description
@@ -1007,7 +980,6 @@ void ffrt_queue_attr_set_timeout(ffrt_queue_attr_t* attr, uint64_t timeout_us);
 Parameters
 
 - `attr`: pointer to the queue attribute.
-
 - `timeout_us`: timeout (μs).
 
 Description
@@ -1041,13 +1013,11 @@ void ffrt_queue_attr_set_callback(ffrt_queue_attr_t* attr, ffrt_function_header_
 Parameters
 
 - `attr`: pointer to the queue attribute.
-
 - `f`: pointer to the task executor, which describes how to execute and destroy the CPU task.
 
 Description
 
 - Sets the callback function to be executed after a queue task times out.
-
 - You are not advised to call the `exit` function in `f`. Otherwise, undefined behavior may occur.
 
 **ffrt_queue_attr_get_callback**
@@ -1077,7 +1047,6 @@ void ffrt_queue_attr_set_max_concurrency(ffrt_queue_attr_t* attr, const int max_
 Parameters
 
 - `attr`: pointer to the queue attribute.
-
 - `max_concurrency`: maximum concurrency.
 
 Description
@@ -1111,7 +1080,6 @@ void ffrt_queue_attr_set_thread_mode(ffrt_queue_attr_t* attr, bool mode);
 Parameters
 
 - `attr`: pointer to the queue attribute.
-
 - `mode`: running mode of the queue task. The value `true` indicates the thread mode, and the value `false` indicates the coroutine mode.
 
 Description
@@ -1195,9 +1163,7 @@ ffrt_queue_t ffrt_queue_create(ffrt_queue_type_t type, const char* name, const f
 Parameters
 
 - `type`: queue type, for example, `ffrt_queue_serial` or `ffrt_queue_concurrent`.
-
 - `name`: queue name.
-
 - `attr`: pointer to the queue attribute.
 
 Return Values
@@ -1231,9 +1197,7 @@ void ffrt_queue_submit(ffrt_queue_t queue, ffrt_function_header_t* f, const ffrt
 Parameters
 
 - `queue`: queue handle.
-
 - `f`: pointer to the task executor, which describes how to execute and destroy the CPU task.
-
 - `attr`: task attribute.
 
 Description
@@ -1249,11 +1213,8 @@ void ffrt_queue_submit_f(ffrt_queue_t queue, ffrt_function_t func, void* arg, co
 Parameters
 
 - `queue`: queue handle.
-
 - `func`: specified task function.
-
 - `arg`: parameter passed to the task function.
-
 - `attr`: task attribute.
 
 Description
@@ -1273,9 +1234,7 @@ ffrt_task_handle_t ffrt_queue_submit_h(ffrt_queue_t queue, ffrt_function_header_
 Parameters
 
 - `queue`: queue handle.
-
 - `f`: pointer to the task executor, which describes how to execute and destroy the CPU task.
-
 - `attr`: task attribute.
 
 Return Values
@@ -1295,11 +1254,8 @@ ffrt_task_handle_t ffrt_queue_submit_h_f(ffrt_queue_t queue, ffrt_function_t fun
 Parameters
 
 - `queue`: queue handle.
-
 - `func`: specified task function.
-
 - `arg`: parameter passed to the task function.
-
 - `attr`: task attribute.
 
 Return Values
@@ -1373,7 +1329,6 @@ Return Values
 Description
 
 - This API has been deprecated since API version 18. You are not advised to use it.
-
 - Obtains the ArkTS Worker thread queue for the FFRT thread to communicate with the ArkTS Worker thread.
 
 **Example**
@@ -1498,7 +1453,6 @@ FFRT_C_API int ffrt_mutexattr_settype(ffrt_mutexattr_t* attr, int type);
 Parameters
 
 - `attr`: FFRT mutex attribute.
-
 - `type`: FFRT mutex type. Currently, only `ffrt_mutex_normal` and `ffrt_mutex_recursive` are supported.
 
 Return Values
@@ -1518,7 +1472,6 @@ FFRT_C_API int ffrt_mutexattr_gettype(ffrt_mutexattr_t* attr, int* type);
 Parameters
 
 - `attr`: FFRT mutex attribute.
-
 - `type`: pointer to the FFRT mutex type.
 
 Return Values
@@ -1566,19 +1519,12 @@ int ffrt_mutex_destroy(ffrt_mutex_t* mutex);
 **Description**
 
 - This API can be called inside or outside an FFRT task.
-
 - The traditional function `pthread_mutex_t` may cause unexpected kernel mode trap when it fails to lock a mutex. **ffrt_mutex_t** solves this problem and therefore provides better performance if used properly.
-
 - `ffrt_mutexattr_t` in the C API needs to be explicitly created and destroyed by calling `ffrt_mutexattr_init` and `ffrt_mutexattr_destroy`. Otherwise, undefined behavior may occur.
-
 - `ffrt_mutex_t` in the C API needs to be explicitly created and destroyed by calling `ffrt_mutex_init` and `ffrt_mutex_destroy`. Otherwise, undefined behavior may occur.
-
 - You need to set the `ffrt_mutex_t` object in the C code to null or destroy the object. For the same `ffrt_mutex_t` object, `ffrt_mutex_destroy` can be called only once. Otherwise, undefined behavior may occur.
-
 - The same `ffrt_mutexattr_t` in the C API can call `ffrt_mutexattr_init` and `ffrt_mutexattr_destroy` only once. Repeated calling may cause undefined behavior.
-
 - You need to explicitly call `ffrt_mutexattr_destroy` after `ffrt_mutex_init` and before `ffrt_mutex_destroy`.
-
 - If `ffrt_mutex_t` is accessed after `ffrt_mutex_destroy`, undefined behavior may occur.
 
 **Methods**
@@ -1592,7 +1538,6 @@ FFRT_C_API int ffrt_mutex_init(ffrt_mutex_t* mutex, const ffrt_mutexattr_t* attr
 Parameters
 
 - `mutex`: pointer to the operated mutex.
-
 - `attr`: FFRT mutex attribute. Its valid value can be a null pointer, `ffrt_mutex_normal`, or `ffrt_mutex_recursive`.
 
 Return Values
@@ -1734,15 +1679,10 @@ int ffrt_rwlock_destroy(ffrt_rwlock_t* rwlock);
 **Description**
 
 - This API can be called inside or outside an FFRT task.
-
 - This API can avoid the issue that `pthread_rwlock_t` sleeps without releasing threads. The performance is better when the API is properly used.
-
 - `ffrt_rwlock_t` in the C API needs to be explicitly created and destroyed by calling `ffrt_rwlock_init` and `ffrt_rwlock_destroy`. Otherwise, undefined behavior may occur.
-
 - For `ffrt_rwlockattr_t` in the C API, the corresponding parameter must be a null pointer when calling `ffrt_rwlock_init`.
-
 - You need to set the `ffrt_rwlock_t` object in the C code to null and destroy the object. For the same `ffrt_rwlock_t` object, `ffrt_rwlock_destroy` can be called only once. Otherwise, undefined behavior may occur.
-
 - If `ffrt_rwlock_t` is accessed after `ffrt_rwlock_destroy` is called, undefined behavior may occur.
 
 **Methods**
@@ -1756,7 +1696,6 @@ FFRT_C_API int ffrt_rwlock_init(ffrt_rwlock_t* rwlock, const ffrt_rwlockattr_t* 
 Parameters
 
 - `rwlock`: pointer to the operated read-write lock.
-
 - `attr`: pointer to the attribute of the operated read-write lock. Only the default mode is supported. That is, `attr` must be set to a null pointer.
 
 Return Values
@@ -1930,7 +1869,7 @@ int main()
 
     ffrt::submit([&]() {
         ffrt_usleep(2);
-        if(ffrt_rwlock_trywrlock(&rwlock)){
+        if(ffrt_rwlock_trywrlock(&rwlock) == ffrt_success){
             x++;
             ffrt_rwlock_unlock(&rwlock);
         }
@@ -1938,7 +1877,7 @@ int main()
 
     ffrt::submit([&]() {
         ffrt_usleep(2);
-        if(ffrt_rwlock_tryrdlock(&rwlock)){
+        if(ffrt_rwlock_tryrdlock(&rwlock) == ffrt_success){
             ffrt_rwlock_unlock(&rwlock);
         }
     },{},{});
@@ -1981,13 +1920,9 @@ int ffrt_cond_destroy(ffrt_cond_t* cond);
 **Description**
 
 - This API can be called inside or outside an FFRT task.
-
 - The traditional function `pthread_cond_t` may cause unexpected kernel mode trap when the conditions are not met. **ffrt_cond_t** solves this problem and therefore provides better performance if being used properly.
-
 - Note that `ffrt_cond_t` in the C API needs to be explicitly created and destroyed by calling `ffrt_cond_init` and `ffrt_cond_destroy`. However, in the C++ API, the dependency construction and destruction are automatically completed.
-
 - You need to set the `ffrt_cond_t` object in the C code to null or destroy the object. For the same `ffrt_cond_t` object, `ffrt_cond_destroy` can be called only once. Otherwise, undefined behavior may occur.
-
 - If `ffrt_cond_t` is accessed after `ffrt_cond_destroy` is called, undefined behavior may occur.
 
 **Methods**
@@ -2001,7 +1936,6 @@ FFRT_C_API int ffrt_cond_init(ffrt_cond_t* cond, const ffrt_condattr_t* attr);
 Parameters
 
 - `cond`: pointer to the target condition variable.
-
 - `attr`: pointer to the attribute. A null pointer indicates that the default attribute is used.
 
 Return Values
@@ -2075,7 +2009,6 @@ FFRT_C_API int ffrt_cond_wait(ffrt_cond_t* cond, ffrt_mutex_t* mutex);
 Parameters
 
 - `cond`: pointer to the target condition variable.
-
 - `mutex`: pointer to the target mutex.
 
 Return Values
@@ -2085,7 +2018,6 @@ Return Values
 Description
 
 - Blocks a task on a condition variable. When using this method, a task releases the input mutex and enters the waiting state. The task obtains the mutex again and continues to execute until another task notifies the condition variable.
-
 - This method is usually used together with `ffrt_mutex_lock` or `ffrt_mutex_trylock` to ensure that the mutex is held before entering the wait state.
 
 **ffrt_cond_timedwait**
@@ -2097,9 +2029,7 @@ FFRT_C_API int ffrt_cond_timedwait(ffrt_cond_t* cond, ffrt_mutex_t* mutex, const
 Parameters
 
 - `cond`: pointer to the target condition variable.
-
 - `mutex`: pointer to the target mutex.
-
 - `time_point`: pointer to the maximum duration during which the thread is blocked.
 
 Return Values
@@ -2109,7 +2039,6 @@ Return Values
 Description
 
 - Blocks a task on a condition variable until the specified timeout is reached.
-
 - Unlike `ffrt_cond_wait`, the `ffrt_cond_timedwait` method allows a task to wait for a period of time on a condition variable. If no notification is received within the specified period of time, the task is woken up and the function returns.
 
 **Example**
@@ -2188,11 +2117,8 @@ FFRT_C_API int ffrt_usleep(uint64_t usec);
 **Description**
 
 - This API can be called inside or outside an FFRT task.
-
 - Provides performance implementation similar to C11 sleep and Linux usleep.
-
 - The sleep precision of this API is μs.
-
 - The traditional function `sleep` may cause unexpected kernel mode trap. **ffrt_usleep** solves this problem and therefore provides better performance if used properly.
 
 **Example**
@@ -2222,9 +2148,7 @@ FFRT_C_API void ffrt_yield();
 **Description**
 
 - This API can be called inside or outside an FFRT task.
-
 - Yields CPU execution resources for other executable tasks. If there is no other executable task, `yield` is invalid.
-
 - The exact behavior of this API depends on the implementation, especially the mechanism and system state of the FFRT scheduler in use.
 
 **Example**
@@ -2277,13 +2201,9 @@ FFRT_C_API ffrt_timer_t ffrt_timer_start(ffrt_qos_t qos, uint64_t timeout, void*
 Parameters
 
 - `qos`: QoS.
-
 - `timeout`: timer timeout, in ms.
-
 - `cb`: callback function after expiration.
-
 - `data`: input parameter of the callback function.
-
 - `repeat`: whether the timer is triggered repeatedly.
 
 Return Values
@@ -2293,7 +2213,6 @@ Return Values
 Description
 
 - Starts a timer. If the timer expires and is not stopped, the callback function is executed. If `repeat` is set to `true`, the timer is set again after it expires.
-
 - You are not advised to call the `exit` function in `cb`. Otherwise, undefined behavior may occur.
 
 **ffrt_timer_stop**
@@ -2307,7 +2226,6 @@ FFRT_C_API int ffrt_timer_stop(ffrt_qos_t qos, ffrt_timer_t handle);
 Parameters
 
 - `qos`: QoS.
-
 - `handle`: timer handle.
 
 Return Values
@@ -2317,7 +2235,6 @@ Return Values
 Description
 
 - Stops a timer. It is used with `ffrt_timer_start`.
-
 - This is a blocking API and should be avoided in the callback to prevent deadlock or synchronization problems. If the callback corresponding to the input handle is being executed, this function will wait until the callback is complete.
 
 **Example**
@@ -2483,15 +2400,10 @@ int ffrt_loop_epoll_ctl(ffrt_loop_t loop, int op, int fd, uint32_t events, void 
 Parameters
 
 - `loop`: loop object.
-
 - `op`: FD operator. For details, see the operation type of **epoll_ctl**.
-
 - `fd`: event descriptor.
-
 - `events`: event. For details, see the event type of **epoll_ctl**.
-
 - `data`: input parameter of the callback function.
-
 - `cb`: callback function.
 
 Return Values
@@ -2501,7 +2413,6 @@ Return Values
 Description
 
 - Manages FD listening on the loop. Event listening and callback are processed on the loop thread.
-
 - You are not advised to call the `exit` function in `cb`. Otherwise, undefined behavior may occur.
 
 **ffrt_loop_timer_start**
@@ -2515,13 +2426,9 @@ FFRT_C_API ffrt_timer_t ffrt_loop_timer_start(ffrt_loop_t loop, uint64_t timeout
 Parameters
 
 - `loop`: loop object.
-
 - `timeout`: timer timeout, in ms.
-
 - `cb`: callback function after expiration.
-
 - `data`: input parameter of the callback function.
-
 - `repeat`: whether the timer is triggered repeatedly.
 
 Return Values
@@ -2531,7 +2438,6 @@ Return Values
 Description
 
 - Starts a timer on the loop. The usage is the same as that of `ffrt_timer_start`. The only difference is that the listening and callback execution of the timer are processed on the loop thread.
-
 - You are not advised to call the `exit` function in `cb`. Otherwise, undefined behavior may occur.
 
 **ffrt_loop_timer_stop**
@@ -2545,7 +2451,6 @@ FFRT_C_API int ffrt_loop_timer_stop(ffrt_loop_t loop, ffrt_timer_t handle);
 Parameters
 
 - `loop`: loop object.
-
 - `handle`: timer handle.
 
 Return Values
@@ -2717,7 +2622,6 @@ struct ffrt_fiber_t;
 **Description**
 
 - A fiber is a lightweight user mode thread that enables efficient task scheduling and context switching within the user space.
-
 - `ffrt_fiber_t` is used to save and restore the execution context of the fiber.
 
 **Methods**
@@ -2733,19 +2637,14 @@ FFRT_C_API int ffrt_fiber_init(ffrt_fiber_t* fiber, void(*func)(void*), void* ar
 Parameters
 
 - `fiber`: pointer to the fiber.
-
 - `func`: pointer to the function when the fiber is started.
-
 - `arg`: pointer to the argument when the fiber is started.
-
 - `stack`: pointer to the start address of the stack space used by the fiber during execution.
-
 - `stack_size`: size of the fiber stack, in bytes.
 
 Return Values
 
 - If the initialization is successful, `ffrt_success` is returned. Otherwise, `ffrt_error` is returned.
-
 - The common reason of the error is that `stack_size` does not meet the minimum stack space limit that varies by platform. It is recommended that the stack space size be set to 4 KB or larger.
 
 Description
@@ -2767,13 +2666,11 @@ FFRT_C_API void ffrt_fiber_switch(ffrt_fiber_t* from, ffrt_fiber_t* to);
 Parameters
 
 - `from`: pointer to the saved fiber context. The thread that calls this function suspends the current task.
-
 - `to`: pointer to the restored fiber context. The thread that calls this function executes the task specified by `to`.
 
 Description
 
 - When the fiber context is switched, the thread that calls this function suspends the current task, saves the context to the `from` fiber, restores the context of the `to` fiber, and executes the task specified by `to`.
-
 - Note that `from` and `to` are not verified. The caller must ensure the validity of these addresses to prevent process crashes.
 
 > **NOTE**

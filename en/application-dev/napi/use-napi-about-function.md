@@ -5,7 +5,7 @@
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=099d2f0bb805c74cb41780582ea4e8e363b016e3 translatedAt=2026-09-16T03:34:29.787Z pushedAt=2026-09-16T08:25:46.852Z -->
+<!-- md-trans-meta sourceCommit=b0b5eafca7403cbe6624b8035952408b9a014394 translatedAt=2026-10-13T13:13:15.438Z pushedAt=2026-10-16T04:12:53.191Z -->
 
 ## Introduction
 
@@ -26,7 +26,7 @@ Functions are blocks of reusable code that performs specific tasks or operations
 ## Example
 
 If you are just starting out with Node-API, see [Node-API Development Process](use-napi-process.md). The following demonstrates only the C++ and ArkTS code related to function invocation.
-## napi_get_cb_info
+### napi_get_cb_info
 
 Use **napi_get_cb_info** to obtain detailed information about function calls.
 
@@ -138,7 +138,7 @@ hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_cb_info get thisArg:%{publ
   testNapi.getCbContext().toString());
 ```
 
-## napi_call_function
+### napi_call_function
 
 Use **napi_call_function** to call an ArkTS function from a C/C++ addon.
 
@@ -225,7 +225,7 @@ hilog.info(0x0000, 'testTag', 'Test Node-API call_function:%{public}d',
   testNapi.objCallFunction(person, person.age));
 ```
 
-## napi_create_function
+### napi_create_function
 
 Use **napi_create_function** to create an ArkTS function object in native code, which allows calling into the native code from ArkTS. This API returns a **napi_value** that represents the function created.
 

@@ -6,16 +6,17 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=64044667f2ece520228c37a4e282d90b2e014ba4 translatedAt=2026-10-09T01:35:52.058Z pushedAt=2026-10-10T01:45:53.524Z -->
 
 Crypto Architecture Kit provides cryptographic functionalities, such as encryption and decryption, signing and signature verification, message authentication code (MAC) generation, hash computation, random number generation, and key derivation.
 
-Crypto Architecture Kit shields the implementation differences of third-party cryptographic algorithm libraries to implement rapid application development.
+By calling the cryptographic algorithm framework service, you can ignore the differences between underlying third-party cryptographic algorithm libraries and achieve rapid development.
 
 ## Constraints
 
 - Crypto Architecture Kit does not support multi-thread concurrent operations.
 
-- Currently, Crypto Architecture Kit is implemented based on OpenSSL.
+- Crypto Architecture Kit is currently implemented based on OpenSSL.
 
 - Crypto Architecture Kit provides most of the common algorithms. However, some algorithms and specifications, such as MD5, are not applicable to scenarios with high security requirements. Use appropriate algorithms based on service requirements.
 
@@ -23,9 +24,9 @@ Crypto Architecture Kit shields the implementation differences of third-party cr
 
 Crypto Architecture Kit provides the following functionalities, with algorithm specifications and development guides for your reference.
 
-- [Key Generation and Conversion](crypto-key-generation-conversion-overview.md)
+- [Key Generation and Conversion](crypto-key-generation-conversion.md)
 
-- [Encryption and Decryption](crypto-encryption-decryption-overview.md)
+- [Introduction to Encryption and Decryption](crypto-encryption-decryption.md)
 
 - [Signing and Signature Verification](crypto-sign-sig-verify-overview.md)
 
@@ -44,11 +45,11 @@ Crypto Architecture Kit provides the following functionalities, with algorithm s
 Before you get started, be sure to understand the following basic concepts:
 
 - Symmetric key
-  
+
   A symmetric key is a key used both to encrypt and decrypt data. In symmetric encryption, the sender converts information in plaintext into ciphertext using a key and certain algorithm for security purposes. The receiver converts the ciphertext into plaintext using the same key and algorithm.
 
 - Asymmetric key
-  
+
   In the asymmetric cryptography, a private and public key pair is required. The private key is used to encrypt the plaintext, and the public key is used to decrypt the ciphertext.
 
   The public key is public and open to anyone in the system, while the private key is private.

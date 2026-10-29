@@ -1,12 +1,11 @@
 # Adding a WantAgent Object to a Notification
-
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=b0e965054b682272b6c9e3890a6020b1129a6551 translatedAt=2026-08-22T02:22:56.472Z pushedAt=2026-08-22T07:16:56.792Z -->
+<!-- md-trans-meta sourceCommit=4faed534b39ef26ef8f9b647802a53e9f8d2b792 translatedAt=2026-10-08T03:49:58.124Z pushedAt=2026-10-08T06:50:42.771Z -->
 
 An application requests [WantAgent](../reference/apis-ability-kit/js-apis-app-ability-wantAgent.md) from Ability Kit and encapsulates it into the notification. When a notification is published, the user may tap a message or a button in the notification panel to start the target application or publish a common event.
 
@@ -30,7 +29,7 @@ The following figure shows a notification carrying action buttons.
 1. Import the modules.
 
    <!-- @[add_behavior_intent_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/AddWantAgent.ets) -->
-
+   
    ``` TypeScript
    import { notificationManager } from '@kit.NotificationKit';
    import { wantAgent, WantAgent } from '@kit.AbilityKit';
@@ -46,7 +45,7 @@ The following figure shows a notification carrying action buttons.
    Scenario 1: Create a [WantAgentInfo](../reference/apis-ability-kit/js-apis-inner-wantAgent-wantAgentInfo.md) object for starting a UIAbility.
 
    <!-- @[create_launch_uiAbility_agent_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/AddWantAgent.ets) -->
-
+   
    ``` TypeScript
    let wantAgentObj: WantAgent | null = null; // Store the created WantAgent object for subsequent trigger actions.
    
@@ -72,7 +71,7 @@ The following figure shows a notification carrying action buttons.
    Scenario 2: Create a [WantAgentInfo](../reference/apis-ability-kit/js-apis-inner-wantAgent-wantAgentInfo.md) object for publishing a [common event](../basic-services/common-event/common-event-overview.md).
 
    <!-- @[create_pub_event_agent_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/AddWantAgent.ets) -->
-
+   
    ``` TypeScript
    let wantAgentObj: WantAgent | null = null; // Store the created WantAgent object for subsequent trigger actions.
    
@@ -93,7 +92,7 @@ The following figure shows a notification carrying action buttons.
 3. Call [getWantAgent()](../reference/apis-ability-kit/js-apis-app-ability-wantAgent.md#wantagentgetwantagent) to create a **WantAgent** object.
 
    <!-- @[create_get_agent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/AddWantAgent.ets) -->
-
+   
    ``` TypeScript
    // Create a WantAgent object.
    wantAgent.getWantAgent(wantAgentInfo, (err: BusinessError, data: WantAgent) => {
@@ -118,7 +117,7 @@ The following figure shows a notification carrying action buttons.
    > - If **WantAgent** is encapsulated in a [notification button](notification-glossary.md#notification-button), after you tap the notification, a notification button appears below the notification, and you can tap the button to trigger **WantAgent**.
 
    <!-- @[pub_want_agent_req_notify](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/AddWantAgent.ets) -->
-
+   
    ``` TypeScript
    // Create the NotificationActionButton object.
    let actionButton: notificationManager.NotificationActionButton = {
@@ -160,5 +159,4 @@ The following figure shows a notification carrying action buttons.
 ## Sample Code
 
   - [Custom Notification](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Notification/CustomNotification/README.md)
-
 <!--RP1End-->

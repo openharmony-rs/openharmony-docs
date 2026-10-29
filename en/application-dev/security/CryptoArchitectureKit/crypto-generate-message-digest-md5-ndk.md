@@ -6,6 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=ac7aadaed0ba814e5656bd629aa77c6ff19fe22e translatedAt=2026-10-09T01:46:43.854Z pushedAt=2026-10-10T02:31:35.297Z -->
 
 For details about the algorithm specifications, see [Supported Algorithms and Specifications](crypto-generate-message-digest-overview.md#supported-algorithms-and-specifications).
 
@@ -84,9 +85,9 @@ OH_Crypto_ErrCode doTestMd5Md()
 
 5. Call [OH_DigestCrypto_Destroy](../../reference/apis-crypto-architecture-kit/capi-crypto-digest-h.md#oh_digestcrypto_destroy) to destroy the **OH_CryptoDigest** instance.
 
-- **Example**
+**Example**
 
-  <!-- @[message_digest_md5_segmentation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageDigestComputation/entry/src/main/cpp/types/project/md5/segmentation.cpp) -->
+<!-- @[message_digest_md5_segmentation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageDigestComputation/entry/src/main/cpp/types/project/md5/segmentation.cpp) -->
 
 ``` C++
 
@@ -137,3 +138,4 @@ OH_Crypto_ErrCode doLoopMd5Md()
     return ret;
 }
 ```
+

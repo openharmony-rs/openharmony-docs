@@ -5,6 +5,7 @@
 <!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=a6514d5d1338910de8e5f17c93fcc5275db26e2d translatedAt=2026-10-15T10:49:13.925Z pushedAt=2026-10-16T03:33:45.502Z -->
 
 > **NOTE**
 >
@@ -44,7 +45,7 @@ The type of callback function is incorrect.
 
 **Solution**
 
-Pass a callback function of the correct type.
+Pass a non-empty callback function that conforms to the requirements of the API signature.
 
 ## 100101 Invalid Negative Parameter Value
 
@@ -62,7 +63,7 @@ An invalid negative parameter value is provided.
 
 **Solution**
 
-Ensure all parameter values meet minimum value requirements.
+Pass a parameter value greater than or equal to 0.
 
 ## 100102 Incorrect Parameter Type
 
@@ -108,7 +109,7 @@ The UIContext is not available.
 
 **Description**
 
-This error code is reported when the instance does not exist.
+This error code is reported when the UIContext is unavailable.
 
 **Possible Causes**
 

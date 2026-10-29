@@ -5,7 +5,7 @@
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=3383cf6b2a36933eae9d88e06bbfad5f09f5363a translatedAt=2026-09-16T03:27:24.459Z pushedAt=2026-09-16T08:20:54.113Z -->
+<!-- md-trans-meta sourceCommit=99dc0be9c9e6b83b8b22fabaa10ae54edac846bc translatedAt=2026-10-13T13:11:28.103Z pushedAt=2026-10-16T04:12:38.717Z -->
 
 ## Introduction
 
@@ -180,7 +180,7 @@ try {
     testNapi.createBigintWords());
   // ...
 } catch (error) {
-  hilog.error(0x0000, 'testTag', 'Test Node-API NapiGetValueBigint: %{public}s', error.message);
+  hilog.error(0x0000, 'testTag', 'Test Node-API NapiCreateValueBigint: %{public}s', error.message);
   // ...
 }
 ```

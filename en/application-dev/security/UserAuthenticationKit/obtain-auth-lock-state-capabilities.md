@@ -6,6 +6,7 @@
 <!--Designer: @lichangting518-->
 <!--Tester: @jane_lz-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=75b771e3d8d4dc0fc10b69d1fff999d4c300cda5 translatedAt=2026-10-10T03:30:17.618Z pushedAt=2026-10-10T03:40:47.117Z -->
 
 From API version 22, you can obtain the locking status of a specified authentication type, the number of remaining authentication attempts, or the remaining authentication locking time based on the following development guide.
 
@@ -25,14 +26,14 @@ For details about the parameters, return values, and error codes, see [userAuth.
 
 Example: Obtain the authentication locking status of the PIN authentication type.
 
-<!-- @[obtain_auth_lock_state_capabilities](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[obtain_auth_lock_state_capabilities](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
 async obtainingAuthLockState() : Promise<string> {
   try {
     Logger.info(`get auth lock state start`);
     const authLockState : userAuth.AuthLockState = await userAuth.getAuthLockState(userAuth.UserAuthType.PIN);
-    if (authLockState.lockoutDuration === userAuth.PERMANENT_LOCKOUT_DURATION) {
+    if (authLockState.isLocked && authLockState.lockoutDuration === userAuth.PERMANENT_LOCKOUT_DURATION) {
       Logger.info('the authentication of given authType is permanent locked.');
     }
     const authLockStateContent : string = JSON.stringify(authLockState);

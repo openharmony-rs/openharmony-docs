@@ -1346,6 +1346,10 @@ setMissionLabel(label: string, callback: AsyncCallback&lt;void&gt;): void
 
 设置UIAbility在多任务界面中显示的名称。使用callback异步回调。
 
+> **说明：**
+>
+> 建议主进程UIAbility名称与应用名保持一致。
+
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
@@ -1387,6 +1391,10 @@ export default class EntryAbility extends UIAbility {
 setMissionLabel(label: string): Promise&lt;void&gt;
 
 设置UIAbility在多任务界面中显示的名称。使用Promise异步回调。
+
+> **说明：**
+>
+> 建议主进程UIAbility名称与应用名保持一致。
 
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 

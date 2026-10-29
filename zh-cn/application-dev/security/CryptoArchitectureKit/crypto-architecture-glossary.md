@@ -55,9 +55,9 @@
 
 一种分组加密算法，将明文分成64位的块进行加密，加密过程包含16轮相同的加密函数，每轮使用由原始密钥经置换和移位生成的子密钥，密钥长度为64位。
 
-### DH Diffie-Hellman Key Exchange Diffie-Hellman；密钥交换
+### DH Diffie-Hellman Key Exchange；密钥交换
 
-一种密钥协商算法，只涉及公钥的交换，临时密钥DH（DHE）可提供前向安全性，即使在通信渠道被监听的情况下也不会暴露双方私钥。支持modp、ffdhe等知名安全素数群。
+一种密钥协商算法，通过交换公钥来协商共享密钥，私钥不离开本地。临时DH（DHE，Ephemeral Diffie-Hellman）可提供前向保密，即使在通信信道被监听的情况下也不会暴露双方的私钥。支持modp、ffdhe等知名素数群。
 
 ### DSA Digital Signature Algorithm；数字签名算法
 

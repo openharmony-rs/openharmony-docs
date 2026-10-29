@@ -1,8 +1,8 @@
 # video_processing_types.h
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @wang-haizhou6-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @liziliang-->
+<!--Designer: @dev_ZUT-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -27,10 +27,10 @@ The file declares the video processing types.
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
 | [VideoProcessing_ColorSpaceInfo](capi-videoprocessing-videoprocessing-colorspaceinfo.md) | VideoProcessing_ColorSpaceInfo | Describes the color space information of video processing.|
-| [OH_VideoProcessing](capi-videoprocessing-oh-videoprocessing.md) | OH_VideoProcessing | Describes an object for video processing.<br>You should define a null pointer for **OH_VideoProcessing** and use [OH_VideoProcessing_Create](capi-video-processing-h.md#oh_videoprocessing_create) to create a video processing instance. Before creation, ensure that the pointer is null. You can create different video processing instances with different processing types.|
+| [OH_VideoProcessing](capi-videoprocessing-oh-videoprocessing.md) | OH_VideoProcessing | Describes an object for video processing.<br>You should define a null pointer for **OH_VideoProcessing** and use [OH_VideoProcessing_Create](capi-video-processing-h.md#oh_videoprocessing_create) to create a video processing instance. You can create different video processing instances with different processing types.|
 | [NativeWindow](capi-videoprocessing-nativewindow.md) | OHNativeWindow | Describes the NativeWindow object.|
 | [OH_AVFormat](capi-videoprocessing-oh-avformat.md) | OH_AVFormat | Describes the OH_AVFormat object.|
-| [VideoProcessing_Callback](capi-videoprocessing-videoprocessing-callback.md) | VideoProcessing_Callback | Describes a callback object for handling video processing events.<br>You should define a null pointer for **VideoProcessing_Callback** and use [OH_VideoProcessingCallback_Create](capi-video-processing-h.md#oh_videoprocessingcallback_create) to create a callback object. Before creation, ensure that the pointer is null. After creating the callback object, call [OH_VideoProcessing_RegisterCallback](capi-video-processing-h.md#oh_videoprocessing_registercallback) to register it with the video processing instance.|
+| [VideoProcessing_Callback](capi-videoprocessing-videoprocessing-callback.md) | VideoProcessing_Callback | Describes a callback object for handling video processing events. Describes a callback object for handling video processing events. Before using [OH_VideoProcessingCallback_Create](capi-video-processing-h.md#oh_videoprocessingcallback_create) to create a callback object, initialize the pointer of this type to a null pointer. After the callback object is created, you can call [OH_VideoProcessing_RegisterCallback](capi-video-processing-h.md#oh_videoprocessing_registercallback) to register the callback object with the video processing instance.|
 
 ### Enums
 
@@ -53,8 +53,8 @@ The file declares the video processing types.
 
 | Name| Description|
 | -- | -- |
-| const int32_t VIDEO_PROCESSING_TYPE_COLOR_SPACE_CONVERSION | Instance created for color space conversion during video processing.<br>Call [OH_VideoProcessing_Create](capi-video-processing-h.md#oh_videoprocessing_create) to create such an instance for color space conversion. If color space conversion is not supported, [VideoProcessing_ErrorCode](#videoprocessing_errorcode).VIDEO_PROCESSING_ERROR_UNSUPPORTED_PROCESSING is returned.<br>**Since**: 12|
-| const int32_t VIDEO_PROCESSING_TYPE_METADATA_GENERATION | Instance created for metadata generation during video processing.<br>Call [OH_VideoProcessing_Create](capi-video-processing-h.md#oh_videoprocessing_create) to create such an instance for metadata generation. If metadata generation is not supported, [VideoProcessing_ErrorCode](#videoprocessing_errorcode).VIDEO_PROCESSING_ERROR_UNSUPPORTED_PROCESSING is returned.<br>**Since**: 12|
+| const int32_t VIDEO_PROCESSING_TYPE_COLOR_SPACE_CONVERSION | Instance created for color space conversion during video processing.<br>Call [OH_VideoProcessing_Create](capi-video-processing-h.md#oh_videoprocessing_create) to create such an instance for color space conversion. If color space conversion is not supported, [VideoProcessing_ErrorCode](#videoprocessing_errorcode).VIDEO_PROCESSING_ERROR_UNSUPPORTED_PROCESSING is returned. You can call [OH_VideoProcessing_IsColorSpaceConversionSupported](capi-video-processing-h.md#oh_videoprocessing_iscolorspaceconversionsupported) to check whether this processing is supported.<br>**Since**: 12|
+| const int32_t VIDEO_PROCESSING_TYPE_METADATA_GENERATION | Instance created for metadata generation during video processing.<br>Call [OH_VideoProcessing_Create](capi-video-processing-h.md#oh_videoprocessing_create) to create such an instance for metadata generation. If metadata generation is not supported, [VideoProcessing_ErrorCode](#videoprocessing_errorcode).VIDEO_PROCESSING_ERROR_UNSUPPORTED_PROCESSING is returned. You can call [OH_VideoProcessing_IsMetadataGenerationSupported](capi-video-processing-h.md#oh_videoprocessing_ismetadatagenerationsupported) to check whether this processing is supported.<br>**Since**: 12|
 | const int32_t VIDEO_PROCESSING_TYPE_DETAIL_ENHANCER | Instance for detail enhancement during video processing.<br>Call [OH_VideoProcessing_Create](capi-video-processing-h.md#oh_videoprocessing_create) to create such an instance for detail enhancement. If detail enhancement is not supported, [VideoProcessing_ErrorCode](#videoprocessing_errorcode).VIDEO_PROCESSING_ERROR_UNSUPPORTED_PROCESSING is returned.<br>**Since**: 12|
 | const char* VIDEO_DETAIL_ENHANCER_PARAMETER_KEY_QUALITY_LEVEL | Pointer to the quality level of video detail enhancement. For details, see [VideoDetailEnhancer_QualityLevel](#videodetailenhancer_qualitylevel).<br>You can call [OH_VideoProcessing_SetParameter](capi-video-processing-h.md#oh_videoprocessing_setparameter) to set the quality level,<br>and call [OH_VideoProcessing_GetParameter](capi-video-processing-h.md#oh_videoprocessing_getparameter) to obtain the quality level.<br>**Since**: 12|
 | const char * VIDEO_METADATA_GENERATOR_STYLE_CONTROL | Style mode available for video metadata generation. For details about the enumerated values, see [VideoMetadataGeneratorStyleControl](#videometadatageneratorstylecontrol). Call [OH_AVFormat_SetIntValue](../apis-avcodec-kit/capi-native-avformat-h.md#oh_avformat_setintvalue) to set the video metadata generation style in the AVFormat parameter. Call [OH_VideoProcessing_SetParameter](capi-video-processing-h.md#oh_videoprocessing_setparameter) to configure the current video metadata generation style. Call [OH_VideoProcessing_GetParameter](capi-video-processing-h.md#oh_videoprocessing_getparameter) to obtain the current video metadata generation style.<br>**Since**: 22|
@@ -128,12 +128,12 @@ Enumerates the video processing error codes.
 | VIDEO_PROCESSING_SUCCESS | The processing is successful.|
 | VIDEO_PROCESSING_ERROR_INVALID_PARAMETER = 401 | An input parameter is invalid. This error code is returned in the following cases:<br>1. The input or output video buffer is either invalid or empty.<br>2. The provided parameter is invalid or missing.<br>3. The requested processing type is invalid.|
 | VIDEO_PROCESSING_ERROR_UNKNOWN = 29210001 | An unknown error occurs. For example, the GPU computing or memcpy fails.|
-| VIDEO_PROCESSING_ERROR_INITIALIZE_FAILED | The global video processing environment, for example, the GPU environment, fails to be initialized.|
-| VIDEO_PROCESSING_ERROR_CREATE_FAILED | Creating the video processing instance fails. For example, the total number of instances exceeds the upper limit.|
+| VIDEO_PROCESSING_ERROR_INITIALIZE_FAILED | The global video processing environment, for example, the GPU environment, fails to be initialized. Check whether the device supports GPU acceleration, or restart the app and try again.|
+| VIDEO_PROCESSING_ERROR_CREATE_FAILED | Creating the video processing instance fails. For example, the total number of instances exceeds the upper limit. Call [OH_VideoProcessing_Destroy](capi-video-processing-h.md#oh_videoprocessing_destroy) to release the instance that is no longer used and try again.|
 | VIDEO_PROCESSING_ERROR_PROCESS_FAILED | The processing fails. For example, the processing times out.|
-| VIDEO_PROCESSING_ERROR_UNSUPPORTED_PROCESSING | The processing type is not supported. You can call **OH_VideoProcessing_Is*XXX*Supported** to check whether a specific processing type is supported.|
+| VIDEO_PROCESSING_ERROR_UNSUPPORTED_PROCESSING | The processing type is not supported. For example, an attempt is made to create a video processing instance that is not supported. Currently, the following two video processing functions can be checked: [OH_VideoProcessing_IsColorSpaceConversionSupported](capi-video-processing-h.md#oh_videoprocessing_iscolorspaceconversionsupported) and [OH_VideoProcessing_IsMetadataGenerationSupported](capi-video-processing-h.md#oh_videoprocessing_ismetadatagenerationsupported).|
 | VIDEO_PROCESSING_ERROR_OPERATION_NOT_PERMITTED | The operation is not allowed. For example, the function is called in an incorrect running state.|
-| VIDEO_PROCESSING_ERROR_NO_MEMORY | Insufficient memory.|
+| VIDEO_PROCESSING_ERROR_NO_MEMORY | Insufficient memory. Release resources that are no longer used and try again, or reduce the video processing resolution.|
 | VIDEO_PROCESSING_ERROR_INVALID_INSTANCE | The video processing instance is invalid, for example, a null instance.|
 | VIDEO_PROCESSING_ERROR_INVALID_VALUE | The input value is invalid. This error code is returned in the following cases:<br>1. The width and height of the video buffer are inappropriate or the color space is incorrect.<br>2. The parameter contains an invalid value. For example, the quality level of detail enhancement is incorrect.|
 

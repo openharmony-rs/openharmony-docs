@@ -1,12 +1,11 @@
 # Multi-level Gesture Events
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=4c2e225aac32899cadee59d9bf9342ca46a9c9ff translatedAt=2026-08-01T00:26:57.024Z pushedAt=2026-08-01T03:42:07.205Z -->
+<!-- md-trans-meta sourceCommit=dde23f107beeb9fe1bac4336216c647e80ced3de translatedAt=2026-10-12T09:12:57.472Z pushedAt=2026-10-12T10:47:11.059Z -->
 
 Multi-level gesture events refer to scenarios where both parent and child components in a nested structure are bound to gestures or events. In such scenarios, the response to gestures or events is affected by multiple factors, with mutual transmission and competition between them, which is likely to cause unexpected responses.
 
@@ -42,7 +41,6 @@ Column() {
   Column().id('ComponentC').onTouch(() => {})
 }.id('ComponentA').onTouch(() => {})
 ```
-
 Components B and C are child components of component A. When component B or C is touched, component A is also touched. The **onTouch** event allows multiple components to be triggered simultaneously. Therefore, touching component B triggers the **onTouch** callbacks of both component A and component B, but not the **onTouch** callback of component C.
 
 Touching component C triggers the **onTouch** callbacks of both component A and component C, but not the callback of component B.
@@ -59,7 +57,6 @@ Stack() {
   Column().id('ComponentC').onTouch(() => {})
 }.id('Stack A').onTouch(() => {})
 ```
-
 Assume that components B and C are children of Stack A, and component C covers component B. Then touching component B or component C also touches Stack A. The **onTouch** callback can be invoked by multiple components at the same time. Therefore, when the overlapping area of components B and C is touched, the **onTouch** callback is invoked by both Stack A and component C, but not by component B (which is covered by component C).
 
 ### Gestures and Events
@@ -72,9 +69,9 @@ Therefore, unless it is explicitly declared that multiple gestures can be recogn
 
 The response to gestures complies with the following rules:
 
-1. When the parent and child components are bound to the same type of gesture, the child component responds prior to the parent component.
+1. When both a parent component and a child component are bound to the same type of gesture, the child component is triggered before the parent component.
 
-2. When a component is bound to multiple gestures, the gesture that first meets triggering conditions is preferentially triggered.
+2. When multiple gestures are bound to a component, the gesture whose trigger condition is met first is triggered first.
 
 <!-- @[priorityfirst_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultilevelGestureEvents/entry/src/main/ets/pages/GesturesEvents.ets) -->
 
@@ -131,7 +128,6 @@ Column() {
 .gesture(TapGesture({count: 1}))
 .responseRegion([rect4])
 ```
-
 When component A has the **.responseRegion([rect4])** attribute set, all touch events and gestures that fall within the rect4 region can be responded to by the corresponding callback of component A.
 
 When component B has the **.responseRegion([rect1, rect2, rect3])** attribute set, all touch events and gestures that fall within the rect1, rect2, and rect3 regions can be responded to by the corresponding callback of component B.
@@ -142,7 +138,7 @@ The **responseRegion** attribute accepts an array consisting of multiple **Rect*
 
 ### Controlling Gestures and Events via Hit Testing
 
-The [hitTestBehavior](../reference/apis-arkui/arkui-ts/ts-universal-attributes-hit-test-behavior.md#hittestbehavior) attribute sets which components can respond to specific gestures and events. It is especially useful under complex multi-layer event scenarios.
+The [hitTestBehavior](../reference/apis-arkui/arkui-ts/ts-universal-attributes-hit-test-behavior.md#hittestbehavior) attribute sets which components can respond to specific gestures and events. It is especially useful under complex multi-level event scenarios.
 
 <!-- @[hittestbehavior_first](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultilevelGestureEvents/entry/src/main/ets/pages/CustomEvent.ets) -->
 
@@ -168,9 +164,8 @@ Column() {
 .onTouch(() => {})
 .gesture(TapGesture({count: 1}))
 ```
-
 With **HitTestMode.Block**, the node responds to the hit test of a touch event, but its child node and sibling node are blocked from the hit test; as a result, neither the child node nor sibling node can receive the **onTouch** events and gestures.
-
+    
 When **hitTestBehavior** is not set for component C, tapping on the area of component D triggers the **onTouch** events of components A, C, and D, and also triggers the tap gesture of component D.
 
 When **hitTestBehavior** is set to **HitTestMode.Block** for component C, tapping on the area of component D triggers the **onTouch** events of components A and C, but not the **onTouch** event of component D. In addition, because component D is blocked and its tap gesture cannot be triggered, the tap gesture of component C is triggered.
@@ -194,7 +189,6 @@ Stack() {
 .onTouch(() => {})
 .gesture(TapGesture({count: 1}))
 ```
-
 With **HitTestMode.Transparent**, both the node and its child node respond to the hit test of a touch event, and its sibling node is also considered during the hit test.
 
 If **hitTestBehavior** is not set for component C, when the overlapping area of component B and component C is touched, the **onTouch** events of Stack A and component C are triggered, the touch event of component C is triggered, and neither the **onTouch** event nor tap gesture of component B is triggered.
@@ -215,7 +209,6 @@ Column() {
 .gesture(TapGesture({count: 1}))
 .hitTestBehavior(HitTestMode.None)
 ```
-
 **HitTestMode.None** does not respond to hit testing itself and does not block hit testing for child nodes or sibling nodes.
 
 If **hitTestBehavior** is not set for component A, a touch in the target touch of component B triggers the **onTouch** events of components A and B, as well as the tap gesture of component B.
@@ -245,12 +238,11 @@ Stack() {
 .onTouch(() => {})
 .gesture(TapGesture({count: 1}))
 ```
-
 **HitTestMode.BLOCK_HIERARCHY** is available since API version 20. In this mode, the node itself and its child nodes respond to the hit test, while all parent nodes and sibling nodes with lower priority are blocked from participating in the hit test.
 
-When component C does not have **hitTestBehavior** set, clicking the overlapping area of components B and D triggers the **onTouch** events of components A, C, and D, and also triggers the click gesture of component D.
+When component C does not have **hitTestBehavior** set, clicking the overlapping area of components B and D triggers the **onTouch** events of components A, C, and D, and also triggers the tap gesture of component D.
 
-When component C has **hitTestBehavior** set to **HitTestMode.BLOCK_HIERARCHY**, clicking the overlapping area of components B and D triggers the **onTouch** events of components C and D, while the **onTouch** events of components A and B are not triggered; the click gesture of component D is still triggered.
+When component C has **hitTestBehavior** set to **HitTestMode.BLOCK_HIERARCHY**, clicking the overlapping area of components B and D triggers the **onTouch** events of components C and D, while the **onTouch** events of components A and B are not triggered; the tap gesture of component D is still triggered.
 
 <!-- @[responseregion_fifth](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultilevelGestureEvents/entry/src/main/ets/pages/CustomEvent.ets) -->
 
@@ -275,19 +267,17 @@ Stack() {
 .onTouch(() => {})
 .gesture(TapGesture({count: 1}))
 ```
-
 [HitTestMode](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#hittestmode9).BLOCK_DESCENDANTS is available since API version 20. In this mode, the node itself does not respond to the hit test, and all its descendants (children, grandchildren, and more) also do not respond to the hit test. It does not affect the hit test of ancestor nodes.
 
-If component C does not have [hitTestBehavior](../reference/apis-arkui/arkui-ts/ts-universal-attributes-hit-test-behavior.md#hittestbehavior) set, clicking the overlapping area of components B and D triggers the [onTouch](../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md#ontouch) events of components A, C, and D, and also triggers the click gesture of component D.
+If component C does not have [hitTestBehavior](../reference/apis-arkui/arkui-ts/ts-universal-attributes-hit-test-behavior.md#hittestbehavior) set, clicking the overlapping area of components B and D triggers the [onTouch](../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md#ontouch) events of components A, C, and D, and also triggers the tap gesture of component D.
 
-When component C has [hitTestBehavior](../reference/apis-arkui/arkui-ts/ts-universal-attributes-hit-test-behavior.md#hittestbehavior) set to **HitTestMode.BLOCK_DESCENDANTS**, clicking the overlapping area of components B and D triggers the [onTouch](../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md#ontouch) events of components A and B, while the **onTouch** events of components C and D are not triggered; the click gesture of component B is triggered instead.
+When component C has [hitTestBehavior](../reference/apis-arkui/arkui-ts/ts-universal-attributes-hit-test-behavior.md#hittestbehavior) set to **HitTestMode.BLOCK_DESCENDANTS**, clicking the overlapping area of components B and D triggers the [onTouch](../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md#ontouch) events of components A and B, while the **onTouch** events of components C and D are not triggered; the tap gesture of component B is triggered instead.
 
 Under simple scenarios, you are advised to set **hitTestBehavior** for each single component.
 
 Under complex scenarios, you are advised to set different **hitTestBehavior** values to multiple components to control the dispatching of touch events.
 
 ### Calling Gesture Binding Methods
-
 When binding a parent component and a child component to a same gesture, you can assign different response priorities to them by using different gesture binding methods.
 
 When .[gesture](../reference/apis-arkui/arkui-ts/ts-gesture-settings.md#gesture) is used for gesture binding, the child component responds prior to the parent component.
@@ -345,7 +335,6 @@ When a parent component binds a gesture using .[parallelGesture](../reference/ap
 In this case, tapping within the area of component B triggers the tap gestures of both component A and component B.
 
 ### Implementing Event Passthrough in OverlayManager
-
 In the event mechanism of [OverlayManager](../reference/apis-arkui/arkts-apis-uicontext-overlaymanager.md), events are first delivered to components inside the [WrappedBuilder](../reference/apis-arkui/arkui-ts/ts-universal-wrapBuilder.md#wrappedbuilder) and are not propagated downward by default.
 
 To enable the underlying page below the **OverlayManager** to detect events, you can use **hitTestBehavior(HitTestMode.Transparent)** to pass through events. Refer to the following pseudocode:

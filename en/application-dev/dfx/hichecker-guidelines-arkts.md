@@ -6,7 +6,7 @@
 <!--Designer: @martin_duan-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=e7dd3a89a3290ed7a4eadac67526f33c246b623a translatedAt=2026-08-15T01:47:03.022Z pushedAt=2026-08-15T07:17:46.316Z -->
+<!-- md-trans-meta sourceCommit=3c786fca5fd2c366519ee83fe4562efb79a563e2 translatedAt=2026-10-08T03:42:58.267Z pushedAt=2026-10-08T06:16:54.348Z -->
 
 ## Overview
 
@@ -18,15 +18,15 @@ HiChecker is provided to check issues that may be easily ignored during app deve
 
 ## Working Principles
 
-1. The application calls HiChecker APIs to add, remove, query, and modify rules. 
+1. The application calls HiChecker APIs to add, remove, query, and modify rules.
 
 2. When a time-consuming call or ability resource leakage occurs, HiChecker reports an event based on the rule triggered.
 
 ## Constraints
 
-- Currently, the alarm rules support only logs (default) and application crashes. 
+- Currently, the alarm rules support only logs (default) and application crashes.
 
-- HiChecker supports stack unwinding in C but not in JavaScript. 
+- HiChecker supports stack unwinding in C but not in JavaScript.
 
 ## Available APIs
 
@@ -46,9 +46,8 @@ After the application startup execution page is loaded, the check starts. After 
 To detect time-consuming function calls and record them in logs, perform the following steps:
 
 1. Create an ArkTS application project. In the **Project** window, click **entry > src > main > ets > entryability** to open the **EntryAbility.ets** file. After the page is loaded, call the HiChecker to add check rules. The sample code is as follows:
-
    <!-- @[HiChecker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/PerformanceAnalysisTool/entry/src/main/ets/entryability/EntryAbility.ets) -->
-
+   
    ``` TypeScript
    import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
    import { hichecker, hilog } from '@kit.PerformanceAnalysisKit';
@@ -57,14 +56,14 @@ To detect time-consuming function calls and record them in logs, perform the fol
    
    export default class EntryAbility extends UIAbility {
      onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-        // Add a check rule. For details about the rule, see HiChecker.
+       // Add a detection rule. For the meaning of the rule, see the detection mode API reference.
        hichecker.addCheckRule(hichecker.RULE_CAUTION_PRINT_LOG|hichecker.RULE_THREAD_CHECK_SLOW_PROCESS);
        let filePath: string = this.context.filesDir + '/test.JPG';
        const imageSourceObj: image.ImageSource = image.createImageSource(filePath);
        const imagePackerObj: image.ImagePacker = image.createImagePacker();
        let packOpts: image.PackingOption = { format:"image/jpeg", quality:98 };
        imagePackerObj.packToData(imageSourceObj, packOpts);
-       // The preceding codes trigger the check rule through the image subsystem.
+       // The preceding five lines trigger the check rule through the image subsystem.
        hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
      }
    
@@ -86,17 +85,17 @@ To detect time-consuming function calls and record them in logs, perform the fol
      }
    
      onWindowStageDestroy(): void {
-       // Main window is destroyed, and UI related resources are released.
+       // Main window is destroyed, and UI-related resources are released.
        hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageDestroy');
      }
    
      onForeground(): void {
-       // Ability is brought to foreground.
+       // Ability is brought to the foreground.
        hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onForeground');
      }
    
      onBackground(): void {
-       // Ability is back to background.
+       // Ability is back to the background.
        hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onBackground');
      }
    };

@@ -3,9 +3,9 @@
 <!--Subsystem: Window-->
 <!--Owner: @oh_wangxk-->
 <!--Designer: @wulong158-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @LiTongguan2026-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=1901db9be343b0a2f2f315e66f0588f9bda6dfc5 translatedAt=2026-09-14T09:13:25.836Z pushedAt=2026-09-15T13:10:13.320Z -->
+<!-- md-trans-meta sourceCommit=494f31a35d1b25179fe202754d9ee44d527d8ab6 translatedAt=2026-10-13T12:49:12.176Z pushedAt=2026-10-15T10:38:11.239Z -->
 
 <!--RP1-->
 <!--RP1End-->

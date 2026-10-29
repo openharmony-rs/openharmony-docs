@@ -1,12 +1,11 @@
 # Window Development FAQs
-
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
 <!--Owner: @JUGaaab-->
 <!--Designer: @ki_ja-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=e5f4a12518daa36e56bebaf91a68665e9bbab092 translatedAt=2026-08-11T10:12:17.065Z pushedAt=2026-08-11T11:30:31.757Z -->
+<!-- md-trans-meta sourceCommit=3bd46a1d3614ecae7d45fa7b3b78285ce9f7a1da translatedAt=2026-10-08T09:03:40.451Z pushedAt=2026-10-08T11:31:17.831Z -->
 
 ## How to Launch Application B During the Startup of Application A
 
@@ -66,7 +65,7 @@ export default class EntryAbility extends UIAbility {
 
 In application development, dynamically obtaining the window width and height is mainly used to implement responsive layout to adapt to devices of different sizes or window status changes (such as split-screen, maximization, restoration, and drag resizing).
 
-You are advised to use [getMainWindowSync()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#getmainwindowsync9), [getMainWindow()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#getmainwindow9-1), or [getSubWindow()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#getsubwindow9-1) to obtain the window instance (**windowClass**), and then call the [getWindowProperties()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowproperties9) API through the instance to obtain the **WindowProperties** attribute. You can obtain the window width and height based on the attribute. The sample code is as follows:
+You are advised to use [getMainWindowSync()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#getmainwindowsync9), [getMainWindow()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#getmainwindow9-1), or [getSubWindow()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#getsubwindow9-1) to obtain the window instance (**windowClass**), and then call the [getWindowProperties()](../reference/apis-arkui//arkts-apis-window-Window.md#getwindowproperties9) API through the instance to obtain the **WindowProperties** attribute. You can obtain the window width and height based on the attribute. The sample code is as follows:
 
 ```ts
 import { UIAbility } from '@kit.AbilityKit';
@@ -92,6 +91,7 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
+
 
 ## How to Obtain the Soft Keyboard Height
 
@@ -128,6 +128,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+
 ## How to Obtain the Height of the PC's Default System Title Bar
 
 Call [getWindowDecorHeight()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowdecorheight11) to obtain the height of the title bar.
@@ -158,6 +159,7 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
+
 
 ## How to Implement or Determine Immersive Window Layout
 
@@ -195,6 +197,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+
 ## How to Hide the Status Bar and Bottom Navigation Area
 
 Call [setSpecificSystemBarEnabled()](../reference/apis-arkui/arkts-apis-window-Window.md#setspecificsystembarenabled11) to hide the status bar and bottom navigation bar.
@@ -225,6 +228,7 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
+
 
 ## How to Obtain the Status Bar Height
 
@@ -437,7 +441,7 @@ The options are as follows:
 > 
 > - The **supportWindowMode** field is of the string array type and can be left unspecified. The default value is **["fullscreen", "split", "floating"]**.
 > 
-> - When both **fullscreen** and **split** are configured in the [freeform window](window-terminology.md#freeform-window) state, if the app's [targetAPIVersion](../quick-start/app-configuration-file.md#tags-in-the-configuration-file) is earlier than 15, the window starts in floating window mode. If the app's [targetAPIVersion](../quick-start/app-configuration-file.md#tags-in-the-configuration-file) is 15 or later, the window starts in fullscreen mode.
+> - When both **fullscreen** and **split** are configured in the [freeform window](window-terminology.md#freeform-window) state, if the app's [targetAPIVersion](../quick-start/app-configuration-file.md#tags-in-the-configuration-file) is earlier than 15, the window starts in floating window mode. If the app's [targetAPIVersion](../quick-start/app-configuration-file.md#tags-in-the-configuration-file) is 15 or later, the window starts in full screen mode.
 
 The following is a configuration example of the module.json5 file:
 
@@ -497,7 +501,7 @@ In application development, there are two ways to determine whether an applicati
 
 - Call the [on('windowStatusChange')](../reference/apis-arkui/arkts-apis-window-Window.md#onwindowstatuschange11) API to listen for window mode changes.
 
-If an app needs to respond immediately when the window mode changes (for example, from fullscreen to floating window mode), this API can be used to listen for window mode changes and implement corresponding business adaptations.
+  If an app needs to respond immediately when the window mode changes (for example, from fullscreen to floating window mode), this API can be used to listen for window mode changes and implement corresponding business adaptations.
 
   ```ts
   import { UIAbility } from '@kit.AbilityKit';
@@ -573,7 +577,6 @@ For the PiP and floating ball windows, their privacy mode follows the parent win
 To take a screenshot of a privacy window, you can use the [snapshotIgnorePrivacy()](../reference/apis-arkui/arkts-apis-window-Window.md#snapshotignoreprivacy18) API.
 
 ## How to Implement a Blur Effect When the App Goes to the Background and Appears in the Multitasking Window
-
 Your app can listen to the main window lifecycle state and store the state using [AppStorage](../ui/state-management/arkts-appstorage.md). When the state is the foreground non-interactive state or the background state, set the [foregroundBlurStyle](../reference/apis-arkui/arkui-ts/ts-universal-attributes-foreground-blur-style.md#foregroundblurstyle) attribute for the component.
 
 The example code is as follows:
@@ -666,19 +669,15 @@ There is no restriction on the window position when [moveWindowTo()](../referenc
 ## How to Set or Remove Watermarks
 
 <!--Del-->
-
 Watermarks are classified into the following types by scope:
 
 - Window-level watermark: You can call [setWaterMarkFlag()](../reference/apis-arkui/js-apis-window-sys.md#setwatermarkflag10) to add or remove a security watermark for the current window.
-
 <!--DelEnd-->
 
 - Process-level watermark: You can call [setWatermarkImageForAppWindows()](../reference/apis-arkui/arkts-apis-window-f.md#windowsetwatermarkimageforappwindows21) to set or cancel a process-level watermark, which takes effect for the windows of the current process, including the windows newly created by the process.
 
 <!--Del-->
-
 - Screen-level watermark: [window.setWaterMarkImage](../reference/apis-arkui/js-apis-window-sys.md#windowsetwatermarkimage10) can be called to set or remove a screen-level watermark.
-
 <!--DelEnd-->
 
 ## How to Move a Created Window to an Extended Screen
@@ -722,7 +721,7 @@ windowClass.loadContent("pages/page2", storage, (err: BusinessError) => {
 
 Currently, brightness can be set only at the window level.
 
-To achieve page-level brightness adjustment, an app can call [setWindowBrightness()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowbrightness9-1) on the main window to adjust the brightness when entering a specific page, and call [setWindowBrightness()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowbrightness9-1) with **-1** on the main window to restore the system screen brightness when exiting that page.
+To achieve page-level brightness adjustment, an app can call [setWindowBrightness()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowbrightness9-1) on the main window to adjust the brightness when entering a specific page, and call [setWindowBrightness()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowbrightness9-1) with **-1** on the main window to restore the system default brightness when exiting that page.
 
 ## How to Restore System Default Brightness
 

@@ -6,9 +6,9 @@
 <!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=14ca614ebb030bf413b2d8393352ad7521a1d1b9 translatedAt=2026-08-19T11:50:14.403Z pushedAt=2026-08-19T12:00:33.913Z -->
+<!-- md-trans-meta sourceCommit=ab463549ba53ac7ad9c9f586570526c5d592d467 translatedAt=2026-10-09T12:42:40.347Z pushedAt=2026-10-10T07:03:26.544Z -->
 
-The **baseProfile** module provides the basic common methods for different Bluetooth technology protocols.
+This module provides the basic common methods for different Bluetooth technology protocols. It offers common capabilities such as querying the connection status, subscribing to connection status updates, and unsubscribing from connection status updates for Bluetooth [profiles](../../connectivity/bluetooth/terminology.md#profile) such as [A2DP](../../connectivity/bluetooth/terminology.md#a2dp), [HFP](../../connectivity/bluetooth/terminology.md#hfp) and [PAN](../../connectivity/bluetooth/terminology.md#pan). This module is suitable for scenarios where the connection status of multiple Bluetooth profiles needs to be managed in a unified manner within an app.
 
 > **NOTE**
 >
@@ -19,10 +19,9 @@ The **baseProfile** module provides the basic common methods for different Bluet
 ```js
 import { baseProfile } from '@kit.ConnectivityKit';
 ```
-
 ## BaseProfile
 
-**BaseProfile** class, which provides public capabilities such as obtaining the connection status and listening for connection status changes. For example, [profiles](../../connectivity/bluetooth/terminology.md#profile) such as [A2dpSourceProfile](js-apis-bluetooth-a2dp.md#a2dpsourceprofile) and [HandsFreeAudioGatewayProfile](js-apis-bluetooth-hfp.md#handsfreeaudiogatewayprofile) are inherited from this class.
+**BaseProfile** class, which provides common capabilities such as obtaining the connection status and listening for connection status changes. For example, profiles such as [A2dpSourceProfile](js-apis-bluetooth-a2dp.md#a2dpsourceprofile) and [HandsFreeAudioGatewayProfile](js-apis-bluetooth-hfp.md#handsfreeaudiogatewayprofile) are inherited from this class.
 
 ## ProfileConnectionState
 
@@ -51,7 +50,7 @@ Defines the parameters for the profile connection status change between the loca
 | deviceId | string                        | No  | No  | Address of the peer device, for example, XX:XX:XX:XX:XX:XX.  |
 | state    | [ProfileConnectionState](js-apis-bluetooth-constant.md#profileconnectionstate)        | No  | No  | Profile connection status.|
 | cause<sup>12+</sup>| [DisconnectCause](#disconnectcause12) | No| No| Reason of profile disconnection.|
-| role| [PanRole](#panrole) | No | Yes | [PAN](../../connectivity/bluetooth/terminology.md#pan) role of the current peer device.<br> **Since:** 26.0.0|
+| role| [PanRole](#panrole) | No | Yes | [PAN](../../connectivity/bluetooth/terminology.md#pan) role of the current peer device. This field is returned only when the PAN profile connection status changes. It does not exist in non-PAN scenarios.<br> **Since:** 26.0.0|
 
 ## DisconnectCause<sup>12+</sup>
 
@@ -85,16 +84,15 @@ Enumerates the PAN roles.
 | ROLE_PANNAP            | 0    |[NAP](../../connectivity/bluetooth/terminology.md#nap) role. |
 | ROLE_PANU      | 1    |[PANU](../../connectivity/bluetooth/terminology.md#panu) role. |
 
+
 ## BaseProfile.getConnectedDevices
 
 getConnectedDevices(): Array&lt;string&gt;
 
-Obtains the list of peer devices that have connected to the profile of the local device.
+Obtains the list of peer devices that have connected to the profile of the local device. For example, in a Bluetooth audio playback app, you can use this method to obtain the list of connected A2DP audio devices for device display or management.
 
 **Required permissions**:
-
 - API versions 26.0.0+: ohos.permission.ACCESS_BLUETOOTH or (ohos.permission.ACCESS_BLUETOOTH and ohos.permission.GET_BLUETOOTH_PEERS_MAC)
-
 - API versions 10 to 24: ohos.permission.ACCESS_BLUETOOTH
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
@@ -138,7 +136,7 @@ try {
 
 getConnectionState(deviceId: string): ProfileConnectionState
 
-Obtains the profile connection status between the local and peer devices.
+Obtains the profile connection status between the local and peer devices. For example, in a Bluetooth app, you can use this API to determine whether a device is connected, and then decide whether to initiate data transfer or update the device connection status.
 
 - Starting from API version 21, this API can be used to obtain the profile connection status by using the actual MAC address of the peer device.
 
@@ -192,12 +190,10 @@ try {
 
 on(type: 'connectionStateChange', callback: Callback&lt;StateChangeParam&gt;): void
 
-Enables listening for profile connection status change events. This API uses an asynchronous callback to return the result.
+Subscribes to profile connection status change events. This API uses an asynchronous callback to return the result. For example, in a Bluetooth audio app, when the earphones are connected or disconnected, the playback screen status is updated in real time or a message is displayed to notify the user.
 
 **Required permissions**:
-
 - API versions 26.0.0+: ohos.permission.ACCESS_BLUETOOTH or (ohos.permission.ACCESS_BLUETOOTH and ohos.permission.GET_BLUETOOTH_PEERS_MAC)
-
 - API versions 10 to 24: ohos.permission.ACCESS_BLUETOOTH
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
@@ -255,7 +251,7 @@ Disables listening for profile connection status change events.
 | Name     | Type                                      | Mandatory  | Description                                      |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
 | type     | string                                   | Yes   | Event type. The value **connectionStateChange** indicates a profile connection status change event.|
-| callback | Callback&lt;[StateChangeParam](#statechangeparam)&gt; | No   | Callback to unregister.<br>If this parameter is specified, it must be the same as the callback in [BaseProfile.on('connectionStateChange')](#baseprofileonconnectionstatechange). If this parameter is not specified, all callbacks corresponding to the event type are unregistered.                              |
+| callback | Callback&lt;[StateChangeParam](#statechangeparam)&gt; | No    | Callback to unregister.<br>If this parameter is specified, it must be the same as the callback in [BaseProfile.on('connectionStateChange')](#baseprofileonconnectionstatechange). In this case, the callback is canceled. If the passed callback is different from the registered callback, the subscription cannot be canceled. If no parameter is passed, all callbacks of the specified type are unregistered.                               |
 
 **Error codes**
 

@@ -642,7 +642,7 @@ setPreferredApn(apnId: number): Promise\<boolean\>
 
 异步设置apnId对应的APN为首选APN。
 
-> 注意:
+> **注意：**
 >
 > 如果传入的apnId为无效的apnId，切回运营商默认配置的优选Apn。
 

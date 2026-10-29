@@ -360,7 +360,7 @@ The following example creates a custom drawing component that can draw a custom 
                OH_Drawing_CanvasAttachBrush(drawCanvas, brush);
                OH_Drawing_CanvasDrawPath(drawCanvas, path);
                OH_Drawing_CanvasDetachBrush(drawCanvas);
-               // 释放资源
+               // Release resources.
                OH_Drawing_BrushDestroy(brush);
                OH_Drawing_PathDestroy(path);
            }

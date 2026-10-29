@@ -6,6 +6,7 @@
 <!--Designer: @HighLowWorld-->
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=4a0d60c413ad51190440217475c8f9ea1644f828 translatedAt=2026-10-13T01:56:50.998Z pushedAt=2026-10-13T03:12:21.143Z -->
 
 This topic describes how to obtain properties of a key. Before the operation, ensure that the key exists in HUKS.
 >**NOTE**
@@ -57,11 +58,11 @@ let huksOptions: huks.HuksOptions = {
 function generateKeyItem(keyAlias: string, huksOptions: huks.HuksOptions) {
   return new Promise<void>((resolve, reject) => {
     try {
-      huks.generateKeyItem(keyAlias, huksOptions, (error, data) => {
+      huks.generateKeyItem(keyAlias, huksOptions, (error) => {
         if (error) {
           reject(error);
         } else {
-          resolve(data);
+          resolve();
         }
       });
     } catch (error) {
@@ -74,8 +75,8 @@ async function publicGenKeyFunc(keyAlias: string, huksOptions: huks.HuksOptions)
   console.info(`enter promise generateKeyItem`);
   try {
     await generateKeyItem(keyAlias, huksOptions)
-      .then((data) => {
-        console.info(`promise: generateKeyItem success, data = ${JSON.stringify(data)}`);
+      .then(() => {
+        console.info(`promise: generateKeyItem success`);
       })
       .catch((error: Error) => {
         console.error(`promise: generateKeyItem failed, ${JSON.stringify(error)}`);
@@ -111,4 +112,3 @@ function check(): string {
   }
 }
 ```
-<!--no_check-->

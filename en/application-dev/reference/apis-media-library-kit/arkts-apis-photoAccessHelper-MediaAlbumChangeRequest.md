@@ -1,12 +1,10 @@
 # Class (MediaAlbumChangeRequest)
-
 <!--Kit: Media Library Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @yixiaoff-->
 <!--Designer: @liweilu1-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=b4558baf2653dbc4e06627859cd656768663a602 translatedAt=2026-06-23T07:32:11.121Z pushedAt=2026-06-23T09:25:46.740Z -->
 
 MediaAlbumChangeRequest implements [MediaChangeRequest](arkts-apis-photoAccessHelper-i.md#mediachangerequest11).
 
@@ -37,7 +35,7 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
 constructor(album: Album)
 
-Initializes a newly created object. The constructor is used to perform operations on an album.
+Constructor used to initialize a new object. This method can be used to perform operations on albums.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -70,9 +68,13 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     fetchColumns: [],
     predicates: predicates
   };
-  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.USER, photoAccessHelper.AlbumSubtype.USER_GENERIC, fetchOptions);
-  let album: photoAccessHelper.Album = await fetchResult.getFirstObject();
-  let albumChangeRequest: photoAccessHelper.MediaAlbumChangeRequest = new photoAccessHelper.MediaAlbumChangeRequest(album);
+  try {
+    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.USER, photoAccessHelper.AlbumSubtype.USER_GENERIC, fetchOptions);
+    let album: photoAccessHelper.Album = await fetchResult.getFirstObject();
+    let albumChangeRequest: photoAccessHelper.MediaAlbumChangeRequest = new photoAccessHelper.MediaAlbumChangeRequest(album);
+  } catch (err) {
+    console.error(`MediaAlbumChangeRequest constructorDemo failed with error: ${err.code}, ${err.message}`);
+  }
 }
 ```
 
@@ -129,23 +131,13 @@ setAlbumName(name: string): void
 
 Sets the album name.
 
-The album name must meet the following requirements:
-
-- The total length of the album name must be between 1 and 255 characters.
-
-- It must not contain any invalid characters, which are:<br> . \ / : * ? " ' ` < > | { } [ ]
-
-- It is case-insensitive.
-
-- Duplicate album names are not allowed.
-
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **Parameters**
 
 | Name       | Type     | Mandatory  | Description                                |
 | ---------- | ------- | ---- | ---------------------------------- |
-| name | string | Yes  | Album name to set.|
+| name | string | Yes  | Album name to set.<br>The total length of the album name must be between 1 and 255 characters. It must not contain any invalid characters, which are:<br> . \ / : * ? " ' ` < > \| { } [ ]<br>It is case-insensitive.<br>Duplicate album names are not allowed.|
 
 **Error codes**
 

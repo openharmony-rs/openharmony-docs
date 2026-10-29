@@ -1,4 +1,4 @@
-# Encryption and Decryption Using ECIES (ArkTS)
+# Encryption and Decryption with ECIES (ArkTS)
 
 <!--Kit: Crypto Architecture Kit-->
 <!--Subsystem: Security-->
@@ -6,6 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=c3c3aa3aaad4832d462b5cbd97f74e458e42b92c translatedAt=2026-10-09T01:44:32.353Z pushedAt=2026-10-10T02:14:52.943Z -->
 
 The ECIES algorithm is supported since API version 26.0.0. It is an encryption algorithm based on elliptic curve cryptography.
 
@@ -20,7 +21,7 @@ The ECIES algorithm is supported since API version 26.0.0. It is an encryption a
 
 ### Encryption
 
-1. Call [cryptoFramework.createAsyKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateasykeygenerator) and [SymKeyGenerator.generateKeyPair](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatekeypair) to generate a key pair using the ECC algorithm.
+1. Call [cryptoFramework.createAsyKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateasykeygenerator) and [AsyKeyGenerator.generateKeyPair](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatekeypair) to generate a key pair (KeyPair) with the ECC algorithm.
 
 2. Call [cryptoFramework.createKeyAgreement](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatekeyagreement) and [KeyAgreement.generateSecret](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatesecret11) to perform key agreement based on the local private key (KeyPair.priKey) and peer public key (KeyPair.pubKey) and return the shared key.
 
@@ -38,7 +39,7 @@ The ECIES algorithm is supported since API version 26.0.0. It is an encryption a
 
 ### Decryption
 
-1. Call [cryptoFramework.createAsyKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateasykeygenerator) and [SymKeyGenerator.generateKeyPair](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatekeypair) to generate a key pair using the ECC algorithm.
+1. Call [cryptoFramework.createAsyKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateasykeygenerator) and [AsyKeyGenerator.generateKeyPair](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatekeypair) to generate a key pair (KeyPair) with the ECC algorithm.
 
 2. Call [cryptoFramework.createKeyAgreement](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatekeyagreement) and [KeyAgreement.generateSecret](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatesecret11) to perform key agreement based on the local private key (KeyPair.priKey) and peer public key (KeyPair.pubKey) and return the shared key.
 
@@ -57,10 +58,11 @@ The ECIES algorithm is supported since API version 26.0.0. It is an encryption a
 - Example (using asynchronous APIs):
 
   <!-- @[use_sample_await_test](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceECIES/entry/src/main/ets/pages/Await.ets) -->
-  
+
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   namespace ECIES {
     function generateGcmParamsSpec(ivData: Uint8Array): cryptoFramework.GcmParamsSpec {
@@ -154,7 +156,8 @@ The ECIES algorithm is supported since API version 26.0.0. It is an encryption a
         console.info('doEciesTest success, message: ' + buffer.from(plainData.data).toString('utf-8'));
         return 'Success';
       } catch (error) {
-        console.error(`doEciesTest failed, error: + ${JSON.stringify(error)}`);
+        let e: BusinessError = error as BusinessError;
+        console.error(`doEciesTest failed: errCode: ${e.code}, message: ${e.message}`);
         return 'Failed';
       }
     }
@@ -164,10 +167,11 @@ The ECIES algorithm is supported since API version 26.0.0. It is an encryption a
 - Example (using synchronous APIs):
 
   <!-- @[use_sample_sync_test](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceECIES/entry/src/main/ets/pages/Sync.ets) -->
-  
+
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   namespace ECIES {
     function generateGcmParamsSpec(ivData: Uint8Array): cryptoFramework.GcmParamsSpec {
@@ -261,7 +265,8 @@ The ECIES algorithm is supported since API version 26.0.0. It is an encryption a
         console.info('doEciesTest success, message: ' + buffer.from(plainData.data).toString('utf-8'));
         return 'Success';
       } catch (error) {
-        console.error(`doEciesTest failed, error: + ${JSON.stringify(error)}`);
+        let e: BusinessError = error as BusinessError;
+        console.error(`doEciesTest failed: errCode: ${e.code}, message: ${e.message}`);
         return 'Failed';
       }
     }

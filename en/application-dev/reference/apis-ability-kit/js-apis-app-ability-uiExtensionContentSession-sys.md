@@ -1,11 +1,12 @@
-# @ohos.app.ability.UIExtensionContentSession (UI Operation Class for ExtensionAbility with UI) (System API)
+# @ohos.app.ability.UIExtensionContentSession (UI Operation Class of UI-based Extension Ability)(system API)
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @zexin_c-->
 <!--Designer: @xhz-sz-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=7738447060c2cc1f595c9bdcb430e65d6029dba4 translatedAt=2026-10-09T11:05:26.759Z pushedAt=2026-10-12T09:14:57.805Z -->
 
 UIExtensionContentSession is an instance created when the [UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md) loads UI content. When the UIExtensionComponent starts a UIExtensionAbility, the UIExtensionAbility creates a UIExtensionContentSession instance and returns it through the [onSessionCreate](js-apis-app-ability-uiExtensionAbility.md#onsessioncreate) callback. One UIExtensionComponent corresponds to one UIExtensionContentSession instance, which provides methods such as UI loading and result notification. The UIExtensionContentSession instances of multiple UIExtensionAbilities are operated separately.
 
@@ -15,7 +16,7 @@ UIExtensionContentSession is an instance created when the [UIExtensionAbility](j
 >
 > The APIs of this module can be used only in the stage model.
 >
-> This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.app.ability.UIExtensionContentSession (UI Operation Class for ExtensionAbilities with UI)](js-apis-app-ability-uiExtensionContentSession.md).
+> This page contains only the system APIs of this module. For details about other public APIs, see [@ohos.app.ability.UIExtensionContentSession (UI Content Operation Class with UI Extension Capability)](js-apis-app-ability-uiExtensionContentSession.md).
 
 ## Modules to Import
 
@@ -947,7 +948,7 @@ Obtains the window object corresponding to the current UIExtension to notify the
 
 | Type| Description|
 | -------- | -------- |
-| [uiExtensionHost.UIExtensionHostWindowProxy](../apis-arkui/js-apis-uiExtensionHost-sys.md) | Window information of the host application.|
+| [uiExtensionHost.UIExtensionHostWindowProxy](../apis-arkui/js-apis-uiExtensionHost-sys.md#uiextensionhostwindowproxy) | Window information of the host application. |
 
 **Error codes**
 

@@ -817,7 +817,7 @@ Represents the configuration for generating a CMS message.
 | --------------------- | ----------------------------- | ---- | ---- |------------------------------------------------------ |
 | contentDataFormat     | [CmsContentDataFormat](#cmscontentdataformat18)               | No  | Yes  |Format of the content. The default value is **CmsContentDataFormat.BINARY**.  |
 | outFormat             | [CmsFormat](#cmsformat18)                          | No  |Yes  | Format of the CMS data generated. The default value is **DER**.        |
-| isDetached     | boolean                            | No  |Yes  | Whether the CMS data generated contains raw data. The default value is **false**. **true**: yes; **false**: no.        |
+| isDetached     | boolean                            | No  |Yes  | Whether the CMS data generated contains raw data. The default value is **false**. **true**: no; **false**: yes.        |
 
 ## CmsVerificationConfig<sup>22+</sup>
 

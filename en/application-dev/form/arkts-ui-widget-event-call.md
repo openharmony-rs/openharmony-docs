@@ -1,12 +1,11 @@
 # Launching UIAbility to the Background (call Event)
-
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @Qian-Win-->
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=04869f9e89f730a6d0eb27f25db0b204c50aad54 translatedAt=2026-08-22T01:26:49.750Z pushedAt=2026-08-22T03:11:10.849Z -->
+<!-- md-trans-meta sourceCommit=14c25dcfa79d2f07b35a4a6bbbdc3d13f8f727f0 translatedAt=2026-10-13T12:53:45.706Z pushedAt=2026-10-15T13:00:20.887Z -->
 
 Many apps want to leverage widget capabilities to achieve the same functionality as when the app is running in the foreground. For example, a music widget provides buttons such as play and pause. Tapping different buttons triggers different functions of the music app, thereby improving the user experience. Using the call capability of the [postCardAction](../reference/apis-arkui/js-apis-postCardAction.md#postcardaction-1) API in a widget, you can pull the UIAbility specified by the widget provider app to the background. In addition, the call capability allows you to invoke a specified method of the app and pass data, so that the app can execute different functions through the buttons on the widget while running in the background.
 
@@ -15,7 +14,6 @@ Many apps want to leverage widget capabilities to achieve the same functionality
 > This topic describes development for dynamic widgets. For static widgets, see [FormLink](../reference/apis-arkui/arkui-ts/ts-container-formlink.md).
 
 ## How to Develop
-
 1. Create a dynamic widget.
 
     Create an ArkTS dynamic widget named **WidgetEventCall**.
@@ -25,7 +23,7 @@ Many apps want to leverage widget capabilities to achieve the same functionality
     **Button A** and **Button B** correspond to calling the `funA` and `funB` methods, respectively. `funA` carries the `formId` parameter, and `funB` carries the `formId` and `num` parameters. Pass parameters based on your actual needs during development. The `method` parameter in `postCardAction` is mandatory and identifies the method name to be called. It must be consistent with the method listened for by the UIAbility in step 3. Other parameters are optional.
 
     <!-- @[widget_event_call_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgeteventcall/pages/WidgetEventCallCard.ets) -->
-
+    
     ``` TypeScript
     //src/main/ets/widgeteventcall/pages/WidgetEventCallCard.ets
     let storageEventCall = new LocalStorage();
@@ -90,11 +88,11 @@ Many apps want to leverage widget capabilities to achieve the same functionality
     ```
 
 3. Create a UIAbility.
-
+    
     Listen for the call event in the UIAbility. Based on the method name in the `method` parameter, call the corresponding method and obtain parameters through [rpc.MessageSequence](../reference/apis-ipc-kit/js-apis-rpc.md#messagesequence9). The method listened for in the UIAbility must be consistent with the method called in step 2.
 
-    <!-- @[widget_event_call_card_entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgeteventcallentryability/WidgetEventCallEntryAbility.ets) -->
-
+    <!-- @[widget_event_call_card_entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgeteventcallentryability/WidgetEventCallEntryAbility.ets) --> 
+    
     ``` TypeScript
     //src/main/ets/WidgetEventCallEntryAbility/WidgetEventCallEntryAbility.ets
     import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -156,7 +154,7 @@ Many apps want to leverage widget capabilities to achieve the same functionality
           this.callee.off('funA');
           this.callee.off('funB');
         } catch (err) {
-          hilog.error(DOMAIN_NUMBER, TAG, `Failed to register callee off. Cause: ${JSON.stringify(err as BusinessError)}`);
+          hilog.error(DOMAIN_NUMBER, TAG, `Failed to unregister callee off. error code: ${error.code}, error message: ${error.message}`);
         }
       }
     }
@@ -167,7 +165,7 @@ Many apps want to leverage widget capabilities to achieve the same functionality
     To receive the call event, the widget provider must add the background running permission ([ohos.permission.KEEP_BACKGROUND_RUNNING](../security/AccessToken/permissions-for-all.md#ohospermissionkeep_background_running)) to the **module.json5** file.
 
     <!-- @[module_json5_request_permissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/module.json5) -->
-
+    
     ``` JSON5
     //src/main/module.json5
     "requestPermissions": [
@@ -184,7 +182,7 @@ Many apps want to leverage widget capabilities to achieve the same functionality
     Add the WidgetEventCallEntryAbility configuration information to the abilities array in the **module.json5** file.
 
     <!-- @[module_json5_abilities](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/module.json5) -->
-
+    
     ``` JSON5
     //src/main/module.json5
     "abilities": [

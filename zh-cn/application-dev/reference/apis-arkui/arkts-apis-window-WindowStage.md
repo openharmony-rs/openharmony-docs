@@ -3,7 +3,7 @@
 <!--Subsystem: Window-->
 <!--Owner: @fei_1007-->
 <!--Designer: @gcw_sPCsris4-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
 
 > **说明：**
@@ -1618,13 +1618,13 @@ setWindowModal(isModal: boolean): Promise&lt;void&gt;
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
 
-| 错误码ID | 错误信息                       |
-| -------- | ------------------------------ |
-| 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
-| 1300003  | This window manager service works abnormally. |
-| 1300005 | This window stage is abnormal. Possible cause: The window is not created or destroyed.<br>适用版本：20+ |
+| 错误码ID | 错误信息                                                                                                       |
+|---------|--------------------------------------------------------------------------------------------------------------|
+| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities.                         |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed.                       |
+| 1300003 | This window manager service works abnormally.                                                                |
+| 1300005 | This window stage is abnormal. Possible cause: The window is not created or destroyed.<br>适用版本：20+        |
 
 **示例：**
 

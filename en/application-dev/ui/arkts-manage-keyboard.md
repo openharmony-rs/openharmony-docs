@@ -5,6 +5,7 @@
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=50f5d66e38b8b4fff9b1e5a462513d4b69c2569d translatedAt=2026-10-12T09:33:26.280Z pushedAt=2026-10-13T07:08:44.792Z -->
 
 The soft keyboard serves as a critical user interaction channel for text input. This topic explains how to control soft keyboard display and hiding when using system input components ([TextInput](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md), [TextArea](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md), [Search](../reference/apis-arkui/arkui-ts/ts-basic-components-search.md), and [RichEditor](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md)).
 
@@ -12,11 +13,11 @@ The soft keyboard serves as a critical user interaction channel for text input. 
 
 By default, the soft keyboard automatically appears when an input component gains focus
 
-through the following methods:
+The following methods are as follows:
 
 1. Interactive focus: tapping, double-tapping, or long-pressing the input field
 
-2. Programmatic focus: using the [requestFocus](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#requestfocus9) API or [defaultFocus](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#defaultfocus9) attribute
+2. Programmatic focus: using the [requestFocus](../reference/apis-arkui/arkts-apis-uicontext-focuscontroller.md#requestfocus12) method or the [defaultFocus](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#defaultfocus9) attribute to transfer focus to the input box.
 
 3. External keyboard navigation: pressing **Tab**, **Shift+Tab**, or arrow keys (which shows the physical keyboard toolbar instead of the soft keyboard)
 
@@ -30,7 +31,7 @@ The following demonstrates soft keyboard behavior during input field tapping, do
 
 ### Programmatic Focus
 
-Use focus control methods, such as the [defaultFocus](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#defaultfocus9) attribute and [requestFocus](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#requestfocus9) API, to programmatically focus input fields and trigger keyboard display. For details, see [Implementing Focus Support](./arkts-common-events-focus-event.md).
+You can programmatically transfer focus to the input box, including using the [defaultFocus](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#defaultfocus9) attribute and the [requestFocus](../reference/apis-arkui/arkts-apis-uicontext-focuscontroller.md#requestfocus12) method. For more details, see [Focus Handling](./arkts-common-events-focus-event.md).
 
 The following example demonstrates transferring focus to a text input field and displaying the soft keyboard when a button is clicked.
 
@@ -167,7 +168,7 @@ struct Index {
 
 Swipe gestures hide the soft keyboard. The figure below demonstrates this dismissal scenario.
 
-![keyboard_textInput_gesture_return](figures/keyboard_textInput_gesture_return.gif)
+<!--Del-->  <!--DelEnd-->
 
 ### Page Navigation
 
@@ -300,7 +301,7 @@ struct textInputControllerCloseKeyboard {
 
 Moving focus to non-input components automatically hides the soft keyboard.
 
-Focus transfer can be controlled programmatically using [requestFocus](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#requestfocus9) and [clearFocus](../reference/apis-arkui/arkts-apis-uicontext-focuscontroller.md#clearfocus12). For details, see [Implementing Focus Support](./arkts-common-events-focus-event.md).
+Methods for programmatically controlling focus transfer include [requestFocus](../reference/apis-arkui/arkts-apis-uicontext-focuscontroller.md#requestfocus12) and [clearFocus](../reference/apis-arkui/arkts-apis-uicontext-focuscontroller.md#clearfocus12). For more details, see [Focus Handling](./arkts-common-events-focus-event.md).
 
 Compared with using text input controllers to exit edit mode, focus transfer offers better scalability for pages with multiple input fields, eliminating the need for configuring individual controllers for each text input.
 

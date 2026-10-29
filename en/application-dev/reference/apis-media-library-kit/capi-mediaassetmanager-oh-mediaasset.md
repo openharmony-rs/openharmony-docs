@@ -12,9 +12,7 @@ typedef struct OH_MediaAsset OH_MediaAsset
 
 ## Overview
 
-The struct describes a media asset.
-
-This struct provides the capability of encapsulating media file attributes.
+Defines a media associated object. This struct is used to represent and operate multimedia file resources. It provides the capability to access the basic attributes and metadata of media files, as well as the capability to encapsulate file resource attributes.
 
 **Since**: 12
 

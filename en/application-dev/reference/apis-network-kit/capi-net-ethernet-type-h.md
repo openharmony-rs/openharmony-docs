@@ -6,13 +6,14 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=6994127fda5fa94233d6d71d8b1f4bb64832a6a8 translatedAt=2026-08-14T10:23:48.757Z pushedAt=2026-08-17T08:57:34.999Z -->
+<!-- md-trans-meta sourceCommit=417110679ffbc4e6910173369ae0f364f3a7739a translatedAt=2026-09-28T01:05:53.262Z pushedAt=2026-10-09T01:39:40.128Z -->
+
 
 ## Overview
 
 Defines the data structures for the C APIs of the Ethernet NIC module.
 
-**File to include:** <network/net_ethernet/net_ethernet_type.h>
+**File to include:** <network/netmanager_ext/net_ethernet_type.h>
 
 **Library:** libnet_ethernet.so
 
@@ -40,3 +41,4 @@ Defines the data structures for the C APIs of the Ethernet NIC module.
 | -- | -- |
 | ETHERNET_MAX_NET_SIZE 32 | Maximum number of Ethernet NIC connections.<br>**Since:** 26.0.0 |
 | ETHERNET_MAX_STR_LEN 256 | Maximum length of the MAC address and IP address of an Ethernet NIC.<br>**Since:** 26.0.0 |
+

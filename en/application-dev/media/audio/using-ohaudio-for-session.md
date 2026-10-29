@@ -1,12 +1,11 @@
 # Using OHAudio for Audio Session (C/C++)
-
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @funny_sunix-->
+<!--Owner: @LauJianghu-->
 <!--Designer: @hao-liangfei-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=3a7084fa36f3aa40ad1ae670f066e28c8494300a translatedAt=2026-08-06T01:54:21.431Z pushedAt=2026-08-06T09:59:06.286Z -->
+<!-- md-trans-meta sourceCommit=99bfa2d22b016a77f9465a50d8f5dbf5a2d51c19 translatedAt=2026-10-13T13:19:12.356Z pushedAt=2026-10-16T02:47:37.846Z -->
 
 In the scenario where multiple audio streams are concurrently playing, the system has preset a [default audio focus strategy](audio-playback-concurrency.md#audio-focus-strategy) for unified audio focus management of all streams (including playback and recording).
 
@@ -21,6 +20,7 @@ To use the audio session manager provided by OHAudio, add the corresponding head
 The following examples are code snippets. You can access the [complete sample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioSessionSampleC) via the link at the bottom-right corner of each code snippet.
 
 ### Linking the Dynamic Library in the CMake Script
+
 
 ``` cmake
 target_link_libraries(sample PUBLIC libohaudio.so)
@@ -202,15 +202,14 @@ OH_AudioSessionManager *audioSessionManager;
         audioSessionManager, MyAudioSessionDeactivatedCallback);
     // ...
     // Cancel listening for audio session deactivation events.
-    result = OH_AudioSessionManager_UnregisterStateChangeCallback(audioSessionManager,
-                                                                  AudioSessionStateChangedCallback);
+    result = OH_AudioSessionManager_UnregisterSessionDeactivatedCallback(audioSessionManager,
+                                                                         MyAudioSessionDeactivatedCallback);
     // ...
     // Deactivate the audio session.
     result = OH_AudioSessionManager_DeactivateAudioSession(audioSessionManager);
 ```
 
 ## Requesting Focus by Setting Audio Session Scene Parameters
-
 The application requests focus using an audio session. Call [OH_AudioSessionManager_SetScene](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setscene) to set the scene parameters, and then call [OH_AudioSessionManager_ActivateAudioSession](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosessionmanager_activateaudiosession) to activate the audio session.
 
 <!-- @[cset_audioscene](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleC/entry/src/main/cpp/audiosession.cpp) -->
@@ -227,7 +226,6 @@ OH_AudioSessionManager_ActivateAudioSession(audioSessionManager, &strategy);
 ```
 
 ## Enabling Mute Suggestion Notifications for Mixed Playback
-
 Starting from API version 23, when the current application plays audio in the **CONCURRENCY_MIX_WITH_OTHERS** concurrency mode, if audio from other applications is playing simultaneously, the audio from both will be mixed. In certain scenarios (such as games or broadcasts), applications can enable mute suggestion notifications to enhance user experience.
 
 After enabling mute suggestion notifications, if other applications play audio that cannot be played concurrently with the current application while the current application is playing audio, the current application will receive a mute suggestion notification. The current application can either choose to take no action (allowing concurrent playback with other applications) or mute itself to let other applications play audio alone.
@@ -249,7 +247,6 @@ OH_AudioSessionManager_ActivateAudioSession(audioSessionManager, &strategy);
 ```
 
 ## Listening for Audio Session Focus State Change events
-
 Listen for audio session focus state changes through [OH_AudioSession_StateChangedEvent](../../reference/apis-audio-kit/capi-ohaudio-oh-audiosession-statechangedevent.md).
 
 **Below is a comprehensive example of requesting focus for an audio session and listening for focus change events:**
@@ -295,7 +292,7 @@ void AudioSessionStateChangedCallback(OH_AudioSession_StateChangedEvent event)
             break;
         case AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE:
           // This branch indicates that the system has unmuted the audio.
-            break;
+            break;    
         default:
             break;
     }
@@ -344,5 +341,3 @@ OH_AudioSession_Strategy strategy = {CONCURRENCY_PAUSE_OTHERS};
 // Set the audio concurrency mode and activate the audio session.
 OH_AudioSessionManager_ActivateAudioSession(audioSessionManager, &strategy);
 ```
-
-<!--no_check-->

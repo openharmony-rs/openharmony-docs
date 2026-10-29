@@ -6,7 +6,7 @@
 <!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=14ca614ebb030bf413b2d8393352ad7521a1d1b9 translatedAt=2026-08-19T10:01:26.528Z pushedAt=2026-08-20T01:23:05.649Z -->
+<!-- md-trans-meta sourceCommit=6d6a74bc781c1902efe4649091429c81adf85a57 translatedAt=2026-10-09T13:08:23.078Z pushedAt=2026-10-10T07:09:06.415Z -->
 
 The **hid** module provides Bluetooth capabilities based on Bluetooth Classic's [Human Interface Device Profile (HID)](../../connectivity/bluetooth/terminology.md#hid), such as obtaining the Bluetooth connection status.
 
@@ -120,29 +120,21 @@ try {
 ## HidDeviceProfile<sup>23+</sup>
 
 Represents the [HID Device](../../connectivity/bluetooth/terminology.md#hid-device) role in Bluetooth HID communication.
-
 - This class is inherited from [BaseProfile](#baseprofile). Therefore, you can use the APIs in its parent class.
-
 - Before using the APIs of this class, you need to construct an instance of the class by calling [createHidDeviceProfile](#hidcreatehiddeviceprofile23).
-
 - You can use this instance to operate the device, for example, call [registerHidDevice](#registerhiddevice23) to register an HID device and call [sendReport](#sendreport23) to send a report.
-
 - The role corresponding to this instance role is [HID host](../../connectivity/bluetooth/terminology.md#hid-host).
+
 
 ### registerHidDevice<sup>23+</sup>
 
 registerHidDevice(sdp: HidDeviceSdp, inQos: HidDeviceQos, outQos: HidDeviceQos, callback: Callback&lt;boolean&gt;): void
 
 Registers an HID device so that the application can communicate with an HID host (such as a computer or mobile phone). This API uses an asynchronous callback to return the result.
-
 - After calling this API to register the HID device successfully, the application can call the [connect](#connect23) API to connect to the HID host.
-
 - Only one application can successfully register an HID device at a time. If the same application registers the HID device repeatedly, the registration will fail. After the registration is successful, other applications will also fail to register the HID device.
-
 - When the application no longer needs the HID device, it needs to call the [unregisterHidDevice](#unregisterhiddevice23) API to unregister the HID device.
-
 - When this API is called, the application must be in the foreground. Otherwise, the registration will fail.
-
 - After the registration is successful, if the application transitions to the background, the HID device will be automatically unregistered. The registration status change is reported to the upper-layer application through a callback.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
@@ -181,7 +173,7 @@ let descriptors: Uint8Array = new Uint8Array([
     0x05, 0x01,        // The device category is the universal desktop control.
     0x09, 0x06,        // The specific device is a keyboard.
     0xA1, 0x01,        // The application set starts.
-    
+
     // Key field definition.
     0x05, 0x07,        // Switch to the keyboard/key area.
     0x19, 0x00,        // Define the minimum key code as 0 (no key).
@@ -191,7 +183,7 @@ let descriptors: Uint8Array = new Uint8Array([
     0x75, 0x08,        // Each field contains eight bits.
     0x95, 0x01,        // There is only one field.
     0x81, 0x00,        // Define the input field: data field. The value is the key array.
-    
+
     // End the device definition.
     0xC0               // The application set ends.
 ]);
@@ -229,7 +221,6 @@ try {
 unregisterHidDevice(): void
 
 Unregisters an HID device and releases all related resources.
-
 - If the local end has established a connection with the HID host by calling [connect](#connect23) before this API is called, the connection will be disconnected after this API is called.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
@@ -267,10 +258,8 @@ connect(deviceId: BluetoothAddress): void
 Initiates a connection to a specified HID host.
 
 - Before calling this API, call [registerHidDevice](#registerhiddevice23) to register the HID device.
-
 - You can call [on('connectionStateChange')](js-apis-bluetooth-baseProfile.md#baseprofileonconnectionstatechange) to subscribe to connection status change events.
-
-- If the connection is no longer needed, call [disconnect](#disconnect23) for disconnection.
+- When the connection is no longer needed, call [disconnect](#disconnect23) to disconnect. In addition, calling [unregisterHidDevice](#unregisterhiddevice23) to unregister also disconnects the existing HID host connection.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
@@ -313,13 +302,11 @@ try {
     console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```
-
 ### disconnect<sup>23+</sup>
 
 disconnect(): void
 
 Disconnects from the HID host and releases related resources.
-
 - After the call is successful, the capability registration status of the current HID device is not affected. The application is still in the registration status and can call [connect](#connect23) again to connect to a new HID host.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
@@ -356,9 +343,7 @@ try {
 sendReport(id: number, reportData: Uint8Array): void
 
 Sends report data to a connected HID host.
-
 - Before calling this API, ensure that [registerHidDevice](#registerhiddevice23) has been called to complete the registration and [connect](#connect23) has been called to establish a connection with the HID host.
-
 - The length and content of the report data must be the same as those defined by [HidDeviceSdp](#hiddevicesdp23) during HID device registration. Otherwise, the HID host cannot correctly parse the report data.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
@@ -399,15 +384,12 @@ try {
     console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```
-
 ### replyReport<sup>23+</sup>
 
 replyReport(type: ReportType, id: number, reportData: Uint8Array): void
 
 Replies to a specific request from a connected HID host.
-
 - Before calling this API, ensure that [registerHidDevice](#registerhiddevice23) has been called to complete the registration and [connect](#connect23) has been called to establish a connection with the HID host.
-
 - You can call [onGetReport](#ongetreport23) to subscribe to events for receiving requests from hosts.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
@@ -420,7 +402,7 @@ Replies to a specific request from a connected HID host.
 
 | **Name**  | Type                           | **Mandatory**| Description      |
 | ------- | ---------------------------     |-----| --------- |
-| type | [ReportType](#reporttype23) | Yes   | Type of the report to be replied.|
+| type | [ReportType](#reporttype23) | Yes | Report type, which must be the same as the type received in the [onGetReport](#ongetreport23) callback. |
 | id | number | Yes   | Report ID defined in the descriptor provided by [HidDeviceSdp](#hiddevicesdp23) during HID device registration, which is used to identify the report type. For a simple device without an ID, this parameter must be set to **0**. For a device that defines multiple report IDs, the corresponding ID value must be passed, which must be the same as the value defined in the descriptor.|
 | reportData | Uint8Array | Yes   | Report data. The content length and parsing mode must strictly match the format defined for the report ID in the descriptor.|
 
@@ -455,7 +437,7 @@ try {
 
 reportError(error: ErrorReason): void
 
-Reports errors of a specific type to a connected HID host.
+Reports errors of a specific type to a connected HID host. This API is usually used to report an error when the data received from the [onGetReport](#ongetreport23) or [onSetReport](#onsetreport23) callback does not meet the expectation.
 
 - Before calling this API, ensure that [registerHidDevice](#registerhiddevice23) has been called to complete the registration and [connect](#connect23) has been called to establish a connection with the HID host.
 
@@ -666,7 +648,7 @@ try {
 
 onInterruptDataReceived(callback: Callback&lt;InterruptData&gt;): void
 
-Subscribes to the events where an HID host sends data through the interrupt transfer channel. This API uses an asynchronous callback to return the result.
+Subscribes to the events where an HID host sends data through the interrupt transfer channel. This API uses an asynchronous callback to return the result. After receiving the interrupt data, the app can parse and process the data based on the report ID. For example, the app can process the output report (such as the keyboard LED status) delivered by the host.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
@@ -702,7 +684,6 @@ try {
     console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```
-
 ### offInterruptDataReceived<sup>23+</sup>
 
 offInterruptDataReceived(callback?: Callback&lt;InterruptData&gt;): void
@@ -890,7 +871,6 @@ Unsubscribes from the events where an HID host disconnects the virtual link from
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
 | ID| Error Message|
 | -------- | ---------------------------- |
 |201     | Permission denied.             |
@@ -925,7 +905,7 @@ Describes the service registration configuration of an HID device in the service
 | description  | string | No| No| Description of an HID device, in bytes. The value range is [1, 50]. |
 | provider  | string | No| No| Manufacturer information of an HID device, in bytes. The value range is [1, 50]. |
 | subclass  | [Subclass](#subclass23) | No| No| Type of an HID device. |
-| descriptors  | Uint8Array | No| No| Descriptor used to define Bluetooth HID device capabilities. The descriptors will assign a unique ID to each supported report and define the length, structure, and field meanings in the report. Setting this parameter must comply with the [USB HID](https://www.usb.org/hid) specifications. |
+| descriptors  | Uint8Array | No | No | Descriptor used to define Bluetooth HID device capabilities. The descriptors will assign a unique ID to each supported report and define the length, structure, and field meanings in the report. Setting this parameter must comply with the [USB HID](https://www.usb.org/hid) specifications.  |
 
 ## HidDeviceQos<sup>23+</sup>
 
@@ -939,8 +919,8 @@ Describes the QoS parameters of an HID device. This API defines the traffic cont
 | --------- | ----------------------- | ---- | ---- | ------------------------------ |
 | serviceType  |  [ServiceType](#servicetype23)   | No| Yes| Service type. The default value is **SERVICE_BEST_EFFORT**.   |
 | tokenRate  | number | No| Yes| Average amount of data that can be transmitted per unit time, in byte/s. The default value is **0**, indicating that there is no limit on the average amount of data. |
-| tokenBucketSize  | number | No| Yes| Maximum amount of data that can exceed the value of **tokenRate** in a short period of time. The default value is **0**, indicating that there is no limit on the maximum amount of data. |
-| peakBandwidth  | number | No| Yes| Maximum transmission rate, in byte/s. The default value is **0**, indicating that there is no limit on the transmission rate. |
+| tokenBucketSize  | number | No | Yes | Maximum amount of data that can exceed the value of **tokenRate** in a short period of time, in bytes. The default value is **0**, indicating that there is no limit on the maximum amount of data.  |
+| peakBandwidth  | number | No | Yes | Maximum transfer rate, in bytes/s. The default value is **0**, indicating that there is no limit on the transfer rate.  |
 | latency  | number | No| Yes| Maximum latency allowed, in μs. The default value is **-1**, indicating that there is no latency limit. |
 | delayVariation  | number | No| Yes| Latency fluctuation range allowed, in μs. The default value is **-1**, indicating that there is no latency fluctuation range limit. |
 
@@ -1029,7 +1009,7 @@ Enumerates report types.
 | **Name**               | **Value**| Description                   |
 | --------------------| --| -----------------------|
 | REPORT_TYPE_INPUT   | 1 | Input report, indicating the data sent by the local end to an HID host.|
-| REPORT_TYPE_OUTPUT  | 2 | Output report, indicating the data sent by an HID host to the local end. |
+| REPORT_TYPE_OUTPUT  | 2 | Output report, indicating the data sent by the host of the HID connection to the local device.  |
 | REPORT_TYPE_FEATURE | 3 | Feature report, indicating the configuration data for bidirectional transmission.      |
 
 ## ServiceType<sup>23+</sup>
@@ -1045,6 +1025,7 @@ Enumerates the service types of the connection between an HID host and an HID de
 | SERVICE_NO_TRAFFIC  | 0 | Low-power mode. Only the connection is maintained, and no application data is transmitted. The power consumption is the lowest.  |
 | SERVICE_BEST_EFFORT | 1 | High-speed mode. The transmission rate is the fastest, but data packets may be lost or out of order. This mode is applicable to scenarios that are sensitive to latency but insensitive to packet loss.  |
 | SERVICE_GUARANTEED  | 2 | Reliable mode. The transmission speed is slow, but data is correctly delivered. This mode is applicable to scenarios such as file transfer.  |
+
 
 ## ErrorReason<sup>23+</sup>
 

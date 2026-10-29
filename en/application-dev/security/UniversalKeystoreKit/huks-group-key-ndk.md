@@ -6,6 +6,7 @@
 <!--Designer: @HighLowWorld-->
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=378245a86d32efe96912b5f4c8580ec33dd67087 translatedAt=2026-10-10T03:27:39.211Z pushedAt=2026-10-10T03:36:16.567Z -->
 
 From API version 23, HUKS supports the group key function. For details about the HUKS key operations supported by the group key function, see [Group Key Overview](huks-group-key-overview.md). This guide describes [Encryption and Decryption Using AES/CBC/PKCS7](#encryption-and-decryption-using-aescbcpkcs7), [Asymmetric Key Negotiation Using X25519](#asymmetric-key-agreement-using-x25519), and [Key Derivation Using PBKDF2](#key-derivation-using-pbkdf2) as examples to show how to use group keys.
 
@@ -113,7 +114,6 @@ OH_Huks_Result InitParamSet(struct OH_Huks_ParamSet **paramSet, const struct OH_
     }
     return ret;
 }
-uint32_t OH_HUKS_TAG_KEY_ACCESS_GROUP = 5 << 28 | 523;
 static const uint32_t IV_SIZE = 16;
 static uint8_t IV[IV_SIZE] = { 0 };
 static OH_Crypto_ErrCode ret = genRandomNumber(IV_SIZE, IV);
@@ -278,7 +278,7 @@ static napi_value EncDecKey(napi_env env, napi_callback_info info)
         if (ohResult.errorCode != OH_HUKS_SUCCESS) {
             break;
         }
-        char tmpInData[] = "AES_ECB_INDATA_1";
+        char tmpInData[] = "AES_CBC_INDATA_1";
         struct OH_Huks_Blob inData = { (uint32_t)strlen(tmpInData), (uint8_t *)tmpInData };
         uint8_t cipher[AES_COMMON_SIZE] = {0};
         struct OH_Huks_Blob cipherText = {AES_COMMON_SIZE, cipher};
@@ -323,7 +323,7 @@ static napi_value EncDecKey(napi_env env, napi_callback_info info)
      * 4.1. Obtain the key alias.
      */
     /*
-     * 4.2. Call deleteKeyItem to delete the key.   
+     * 4.2. Call deleteKeyItem to delete the key.    
      */
     (void)OH_Huks_DeleteKeyItem(&keyAlias, genParamSet);
         

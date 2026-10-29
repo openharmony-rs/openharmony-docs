@@ -2,12 +2,13 @@
 
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Owner: @dreamyhhh-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=3b75f30d038321e59d140485862ef0f48205e17e translatedAt=2026-10-09T12:27:03.130Z pushedAt=2026-10-12T11:32:10.366Z -->
 
-```
+```c
 typedef struct {...} OH_Drawing_BitmapFormat
 ```
 
@@ -29,3 +30,5 @@ This struct describes the pixel format of a bitmap, including the color type and
 | -- | -- |
 | OH_Drawing_ColorFormat colorFormat | Storage format of bitmap pixels.|
 | OH_Drawing_AlphaFormat alphaFormat | Alpha format of bitmap pixels.|
+
+

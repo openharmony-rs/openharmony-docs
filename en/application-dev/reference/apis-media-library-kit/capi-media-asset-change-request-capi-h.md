@@ -109,7 +109,7 @@ Adds a resource using ArrayBuffer data.
 | [OH_MediaAssetChangeRequest](capi-mediaassetmanager-oh-mediaassetchangerequest.md)* changeRequest | Pointer to an [OH_MediaAssetChangeRequest](capi-mediaassetmanager-oh-mediaassetchangerequest.md) instance.|
 | [MediaLibrary_ResourceType](capi-media-asset-base-capi-h.md#medialibrary_resourcetype) resourceType | Type of the resource to add.|
 | uint8_t* buffer | Pointer to the data buffer.|
-| uint32_t length | Length of the data buffer.|
+| uint32_t length | Length of the data buffer, in bytes.|
 
 **Return value**
 
@@ -137,7 +137,7 @@ Obtains the handler used for writing a file to cache.
 | Parameter| Description|
 | -- | -- |
 | [OH_MediaAssetChangeRequest](capi-mediaassetmanager-oh-mediaassetchangerequest.md)* changeRequest | Pointer to an [OH_MediaAssetChangeRequest](capi-mediaassetmanager-oh-mediaassetchangerequest.md) instance.|
-| int32_t* fd | Pointer to the file descriptor (FD) obtained.|
+| int32_t* fd | Output parameter, which is used to obtain the write handle of a temporary file. You can use this handle to write data to the temporary file. After using the handle, close it in a timely manner to avoid resource leakage.|
 
 **Return value**
 
@@ -154,6 +154,12 @@ MediaLibrary_ErrorCode OH_MediaAssetChangeRequest_SaveCameraPhoto(OH_MediaAssetC
 **Description**
 
 Saves the photo taken by the camera.
+
+> **NOTE**
+>
+> - In non-YUV shooting mode, the encoding format of the saved photo is the same as that of [Camera_Format](../apis-camera-kit/capi-camera-h.md#camera_format).
+> - In YUV shooting mode, this API encodes the YUV object and saves it in a specified format based on [MediaLibrary_ImageFileType](capi-media-asset-base-capi-h.md#medialibrary_imagefiletype).
+> - When this API is used together with [OH_MediaAssetChangeRequest_AddResourceWithUri](#oh_mediaassetchangerequest_addresourcewithuri) or [OH_MediaAssetChangeRequest_AddResourceWithBuffer](#oh_mediaassetchangerequest_addresourcewithbuffer), the encoding format of the saved photo resource must be the same as that of the resource added by [OH_MediaAssetChangeRequest_AddResourceWithUri](#oh_mediaassetchangerequest_addresourcewithuri) or [OH_MediaAssetChangeRequest_AddResourceWithBuffer](#oh_mediaassetchangerequest_addresourcewithbuffer).
 
 **Since**: 12
 

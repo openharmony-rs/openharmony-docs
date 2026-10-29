@@ -6,16 +6,17 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=1b9dc846389405d57ea9496c8b5a7a7ff4d36877 translatedAt=2026-10-09T01:35:05.539Z pushedAt=2026-10-10T01:43:02.184Z -->
 
-From API version 22, the crypto algorithm library supports encryption and decryption with AES-WRAP.
+Starting from API version 22, the algorithm library supports encryption and decryption using this algorithm.
 
-For details, see [AES-WRAP encryption and decryption algorithm specifications](crypto-sym-encrypt-decrypt-spec.md#aes-wrap).
+For the corresponding algorithm specifications, see [AES-WRAP encryption and decryption algorithm specifications](crypto-encryption-decryption.md#aes-wrap).
 
 **Encryption**
 
-1. Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesymkeygenerator) and [SymKeyGenerator.generateSymKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatesymkey-1) to generate a 128-bit AES symmetric key (**SymKey**).
-   
-   In addition to the example in this topic, [AES](crypto-sym-key-generation-conversion-spec.md#aes) and [Randomly Generating a Symmetric Key](crypto-generate-sym-key-randomly.md) may help you better understand how to generate an AES symmetric key. Note that the input parameters in the reference documents may be different from those in the example below.
+1. Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesymkeygenerator) and [SymKeyGenerator.convertKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertkey-1) to generate a 128-bit AES symmetric key (**SymKey**).
+
+   For details about how to generate an AES symmetric key, refer to the following example and also see [Symmetric Key Generation and Conversion Specifications: AES](crypto-key-generation-conversion.md#aes) and [Randomly Generating a Symmetric Key](crypto-generate-sym-key-randomly.md). The referenced documents may differ from the current example in input parameters. Pay attention to these differences when reading.
 
 2. Call [cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatecipher) and specify the string parameter **AES128-WRAP** to create a **Cipher** instance of the AES128-WRAP type for encryption.
 
@@ -34,7 +35,7 @@ For details, see [AES-WRAP encryption and decryption algorithm specifications](c
 - Example (using asynchronous APIs):
 
   <!-- @[encrypt_decrypt_aes_wrap_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceAesWrap/entry/src/main/ets/pages/aeswrap/AesWrapEncryptionDecryptionAsync.ets) -->   
-  
+
   ``` TypeScript
   
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -101,7 +102,7 @@ For details, see [AES-WRAP encryption and decryption algorithm specifications](c
 - Example (using synchronous APIs):
 
   <!-- @[encrypt_decrypt_aes_wrap_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceAesWrap/entry/src/main/ets/pages/aeswrap/AesWrapEncryptionDecryptionSync.ets) -->
-  
+
   ``` TypeScript
   
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';

@@ -53,8 +53,9 @@ activateOsAccount(localId: number, callback: AsyncCallback&lt;void&gt;): void
 | 12300002 | Invalid localId.    |
 | 12300003 | Account not found. |
 | 12300008 | Restricted Account. |
-| 12300010 | Service busy. Possible causes: The target account is being operated. |
-| 12300016 | The number of logged in accounts reaches the upper limit. |
+| 12300009 | Account has been activated. <br>适用版本：7-11 |
+| 12300010 | Service busy. Possible causes: The target account is being operated. <br>适用版本：12+ |
+| 12300016 | The number of logged in accounts reaches the upper limit. <br>适用版本：12+ |
 
 **示例：**
 
@@ -113,8 +114,9 @@ activateOsAccount(localId: number): Promise&lt;void&gt;
 | 12300002 | Invalid localId.    |
 | 12300003 | Account not found. |
 | 12300008 | Restricted Account. |
-| 12300010 | Service busy. Possible causes: The target account is being operated. |
-| 12300016 | The number of logged in accounts reaches the upper limit. |
+| 12300009 | Account has been activated. <br>适用版本：7-11 |
+| 12300010 | Service busy. Possible causes: The target account is being operated. <br>适用版本：12+|
+| 12300016 | The number of logged in accounts reaches the upper limit. <br>适用版本：12+|
 
 **示例：**
 

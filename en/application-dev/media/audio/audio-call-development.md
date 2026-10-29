@@ -5,7 +5,7 @@
 <!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=50bea4f0f1f10cbac3c507e2e5f64f12337256be translatedAt=2026-09-14T09:38:42.383Z pushedAt=2026-09-15T13:36:19.660Z -->
+<!-- md-trans-meta sourceCommit=3cba3d1071f73693662a910e0841fe04876df38d translatedAt=2026-09-28T02:34:05.095Z pushedAt=2026-09-29T06:38:23.913Z -->
 
 During an audio call, the app needs to simultaneously perform audio output (playing the peer voice) and audio input (recording the local voice). You can use AudioRenderer for audio output and AudioCapturer for audio input, and leverage the 3A algorithms (acoustic echo cancellation, noise suppression, and automatic gain control) provided since API version 8 to improve call quality.
 
@@ -28,7 +28,7 @@ The 3A algorithm typically includes the following audio processing capabilities:
 ### Notes
 
 - The 3A processing is automatically determined by the system based on device capabilities and the current audio path. The processing effect is not guaranteed to be identical across all devices and routes.
-- In call scenarios, do not superimpose custom noise reduction, echo cancellation, or gain processing from the app, as this may conflict with the system 3A strategy and cause sound distortion, volume fluctuation, or voice anomalies.
+- In call scenarios, do not superimpose custom noise suppression, echo cancellation, or gain processing from the app, as this may conflict with the system 3A strategy and cause sound distortion, volume fluctuation, or voice anomalies.
 - If the input or output device is switched during a call, the system may reselect the audio path. The app should monitor device changes and reconfirm the call experience.
 - When developing call services, configure both the playback stream and the recording stream according to the call scenario. If a playback type other than `STREAM_USAGE_VOICE_COMMUNICATION` or `STREAM_USAGE_VIDEO_COMMUNICATION` is used, or a recording type other than `SOURCE_TYPE_VOICE_COMMUNICATION` is used, the system cannot identify the call scenario, and processing strategies such as echo cancellation, noise suppression, and automatic gain control may not take effect or may produce unexpected results.
 
@@ -98,7 +98,7 @@ async function initArguments(context: common.UIAbilityContext) {
       if (bufferLength < buffer.byteLength) {
         let view = new DataView(buffer);
         for (let i = bufferLength; i < buffer.byteLength; i++) {
-          // Fill the blank area with silence data. When the audio sampling format is SAMPLE_FORMAT_U8, 0x7F represents silence data. For other sampling formats, 0 represents silence data.
+          // Fill blank areas with silence data. When the audio sampling format is SAMPLE_FORMAT_U8, 0x80 is the silence data; when other sampling formats are used, 0 is the silence data. In this example, the sampling format is SAMPLE_FORMAT_S16LE, so the silence data is filled with 0.
           view.setUint8(i, 0);
         }
       }
@@ -134,7 +134,7 @@ async function init() {
         audioRenderer.on('writeData', writeDataCallback);
       }
     } else {
-      console.info(`${TAG}: creating AudioRenderer failed, error: ${err.message}`);
+      console.error(`${TAG}: creating AudioRenderer failed, error: ${err.message}`);
       // ...
     }
   });
@@ -145,7 +145,7 @@ async function start() {
   if (audioRenderer !== undefined) {
     let stateGroup = [audio.AudioState.STATE_PREPARED, audio.AudioState.STATE_PAUSED, audio.AudioState.STATE_STOPPED];
     if (stateGroup.indexOf(audioRenderer.state.valueOf()) === -1) { // Rendering can be started only when the AudioRenderer is in the prepared, paused, or stopped state.
-      console.error(TAG + 'start failed');
+      console.info(TAG + 'start failed');
       // ...
       return;
     }
@@ -233,7 +233,7 @@ async function release() {
 
 ### Using AudioCapturer to Record the Local Voice
 
-This process is similar to the process of [using AudioCapturer to develop audio recording (ArkTS)](using-audiocapturer-for-recording.md). The key differences lie in the **audioCapturerInfo** parameter and audio data stream direction. In the **audioCapturerInfo** parameter used for audio streams, **source** must be set to **SOURCE_TYPE_VOICE_COMMUNICATION**.
+This process is similar to the process of [using AudioCapturer to develop audio recording (ArkTS)](using-audiocapturer-for-recording.md). The key differences lie in the **audioCapturerInfo** parameter and audio data flow direction. In the **audioCapturerInfo** parameter used for audio streams, **source** must be set to **SOURCE_TYPE_VOICE_COMMUNICATION**.
 
 You must request the ohos.permission.MICROPHONE permission for all recording tasks. For details, see [Requesting User Authorization](../../security/AccessToken/request-user-authorization.md).
 
@@ -314,7 +314,7 @@ async function start() {
     let stateGroup = [audio.AudioState.STATE_PREPARED, audio.AudioState.STATE_PAUSED, audio.AudioState.STATE_STOPPED];
     if (stateGroup.indexOf(audioCapturer.state.valueOf()) === -1) {
       // Recording can be started only when the AudioCapturer is in the STATE_PREPARED, STATE_PAUSED, or STATE_STOPPED state.
-      console.error(`${TAG}: start failed`);
+      console.info(`${TAG}: start failed`);
       // ...
       return;
     }

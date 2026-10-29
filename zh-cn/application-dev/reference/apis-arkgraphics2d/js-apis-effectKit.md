@@ -7,7 +7,7 @@
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
 
-图像效果模块提供了处理图像的基础能力，包括亮度调节、模糊化、灰度调节和智能取色等。effectKit用于离线处理图像（如pixelmap、png、jpeg）以获得视觉效果，而uiEffect则实时接入渲染服务，针对屏幕帧缓存进行处理以获得动态视觉效果。
+图像效果模块提供了处理图像的基础能力，包括亮度调节、模糊化、灰度调节和智能取色等。effectKit用于离线处理图像（如pixelmap、png、jpeg）以获得视觉效果，而[@ohos.graphics.uiEffect (效果级联)](js-apis-uiEffect.md)则实时接入渲染服务，针对屏幕帧缓存进行处理以获得动态视觉效果。
 
 该模块提供以下图像效果相关的常用功能：
 
@@ -739,6 +739,7 @@ function imageBlur(imageBuffer: ArrayBuffer): Promise<image.PixelMap> {
     }).finally(() => {
       imageSource.release();
     });
+  });
 }
 
 @Entry

@@ -282,7 +282,7 @@ async function createWriteTask(baseDir: string, writeText: number, sabInLock: Sh
   }
   // 初始化输出文件目录
   let filePath: string | undefined = undefined;
-  filePath = baseDir + useLock ? "/useLock.txt" : "/unusedLock.txt";
+  filePath = baseDir + useLock ? "/usedLock.txt" : "/unusedLock.txt";
   if (!fileIo.accessSync(baseDir)) {
     fileIo.mkdirSync(baseDir);
   }

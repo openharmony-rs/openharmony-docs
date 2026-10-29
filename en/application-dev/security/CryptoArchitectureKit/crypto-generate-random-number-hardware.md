@@ -6,8 +6,9 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=e614d89ea989f36e0b13aa6a29dc8dc8d371310c translatedAt=2026-10-09T01:50:09.205Z pushedAt=2026-10-10T02:36:55.589Z -->
 
-From API version 21, you can generate secure random number with hardware entropy sources.
+Starting from API version 21, a hardware entropy source can be used to generate secure random numbers.
 
 Random numbers are used to generate temporary session keys and asymmetric encryption algorithm keys. In encryption and decryption, a secure random number generator must feature randomness, unrepeatability, and unpredictability.
 
@@ -58,7 +59,7 @@ After the hardware entropy source is set, use the **RAND_priv_bytes** API of Ope
 
 - Return the result using **await**:
   <!-- @[secure_hard_ware_random_number_generation_await](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SecureHardWareRandomNumberGeneration/entry/src/main/ets/pages/Await.ets) -->
-  
+
   ``` TypeScript
   
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -77,7 +78,7 @@ After the hardware entropy source is set, use the **RAND_priv_bytes** API of Ope
 
 - Return the result synchronously:
   <!-- @[secure_hard_ware_random_number_generation_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SecureHardWareRandomNumberGeneration/entry/src/main/ets/pages/Sync.ets) -->
-  
+
   ``` TypeScript
   
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -100,3 +101,4 @@ After the hardware entropy source is set, use the **RAND_priv_bytes** API of Ope
     }
   }
   ```
+

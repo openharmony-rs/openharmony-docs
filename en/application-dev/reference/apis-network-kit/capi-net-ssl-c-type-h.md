@@ -6,6 +6,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=742fd8e7f742ee980eb300ddfd075065ca362dff translatedAt=2026-09-28T01:09:05.344Z pushedAt=2026-10-09T01:39:47.045Z -->
 
 ## Overview
 
@@ -56,9 +57,9 @@ Certificate type enums.
 
 | Enum Item| Description|
 | -- | -- |
-| NETSTACK_CERT_TYPE_PEM = 0 | PEM certificate.|
-| NETSTACK_CERT_TYPE_DER = 1 | DER certificate.|
-| NETSTACK_CERT_TYPE_INVALID | Invalid certificate.|
+| NETSTACK_CERT_TYPE_PEM = 0 | PEM certificate type. |
+| NETSTACK_CERT_TYPE_DER = 1 | DER certificate type. |
+| NETSTACK_CERT_TYPE_INVALID | Invalid certificate type. |
 
 ### NetStack_CertificatePinningKind
 
@@ -74,7 +75,7 @@ Certificate pinning type enums.
 
 | Enum Item| Description|
 | -- | -- |
-| PUBLIC_KEY | Public key lock type.|
+| PUBLIC_KEY | Public key pinning type. |
 
 ### NetStack_HashAlgorithm
 
@@ -90,4 +91,5 @@ Hash algorithm enums.
 
 | Enum Item| Description|
 | -- | -- |
-| SHA_256 | Sha256 |
+| SHA_256 | Sha256. |
+

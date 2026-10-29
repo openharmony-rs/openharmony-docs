@@ -1,12 +1,10 @@
 # Class (MediaAssetChangeRequest)
-
 <!--Kit: Media Library Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @yixiaoff-->
 <!--Designer: @liweilu1-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=4a795b21f57b573005021f11eccd17e669448809 translatedAt=2026-08-19T10:04:40.778Z pushedAt=2026-08-20T02:56:23.211Z -->
 
 MediaAssetChangeRequest implements [MediaChangeRequest](arkts-apis-photoAccessHelper-i.md#mediachangerequest11).
 
@@ -202,7 +200,7 @@ Create an asset change request based on the file type and filename extension.
 | ------- | ------- | ---- | -------------------------- |
 | context | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | Yes  | Context of the ability instance.|
 | photoType  | [PhotoType](arkts-apis-photoAccessHelper-e.md#phototype)        | Yes  | Type of the file to create, which can be **IMAGE** or **VIDEO**.             |
-| extension  | string        | Yes  | File name extension, for example, **'jpg'**.             |
+| extension  | string        | Yes  | File name extension. The value must be a valid image or video file name extension, such as **jpg**, **png**, **gif**, **mp4**, and **mov**.|
 | options  | [CreateOptions](arkts-apis-photoAccessHelper-i.md#createoptions)        | No  | Options for creating the image or video asset, for example, **{title: 'testPhoto'}**.<br>The file name must not contain any invalid characters, which are:.. \ / : * ? " ' ` < > \| { } [ ]|
 
 **Return value**
@@ -249,7 +247,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 static deleteAssets(context: Context, assets: Array&lt;PhotoAsset&gt;): Promise&lt;void&gt;
 
-Deletes a media asset through a **PhotoAsset** object. The deleted asset will enter the recycle bin. This API uses a promise to return the result.
+Deletes a media file using a **PhotoAsset** object. The deleted file is moved to the recycle bin. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.WRITE_IMAGEVIDEO
 
@@ -307,7 +305,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 static deleteAssets(context: Context, uriList: Array&lt;string&gt;): Promise&lt;void&gt;
 
-Deletes a media asset by URI. The deleted asset will enter the recycle bin. This API uses a promise to return the result.
+Deletes a media file based on the URI. The deleted file is moved to the recycle bin. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.WRITE_IMAGEVIDEO
 
@@ -380,7 +378,7 @@ Obtains the asset in this asset change request.
 
 | Type                                   | Description             |
 | --------------------------------------- | ----------------- |
-| [PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md) | Asset obtained.|
+| [PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md) | Asset obtained. For the change request used to create an asset, this API returns **null** before **applyChanges** is called to apply the changes.|
 
 **Error codes**
 
@@ -428,11 +426,8 @@ Sets the media asset title.
 | title | string | Yes  | Title to set.|
 
 The title must meet the following requirements:
-
 - It must not contain a file name extension.
-
 - The total length of the file name must be between 1 and 255 characters.
-
 - It must not contain any invalid characters, which are:<br> . \ / : * ? " ' ` < > | { } [ ]
 
 **Error codes**
@@ -516,6 +511,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
     let photoType: photoAccessHelper.PhotoType = photoAccessHelper.PhotoType.VIDEO;
     let extension: string = 'mp4';
     let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest = photoAccessHelper.MediaAssetChangeRequest.createAssetRequest(context, photoType, extension);
+    // Obtain the pointer to the FD obtained for writing data.
     let fd: number = await assetChangeRequest.getWriteCacheHandler();
     console.info('getWriteCacheHandler successfully');
     // write data into fd..
@@ -642,7 +638,7 @@ Saves the photo taken by the camera.
 > **NOTE**
 >
 > - In non-YUV shooting mode, the encoding format of the saved photo is the same as that of [CameraFormat](../apis-camera-kit/arkts-apis-camera-e.md#cameraformat).
-> - In YUV shooting mode, the encoding format cannot be specified using this API, and the image is saved in JPG format by default.
+> - In YUV shooting mode, the encoding format cannot be specified using this API, and the image is saved in JPG format by default. Since API version 13, use the [saveCameraPhoto](#savecameraphoto13) API to specify the encoding format.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -708,7 +704,6 @@ For details about how to create a phAccessHelper instance, see the example provi
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
-import { image } from '@kit.ImageKit';
 
 async function example(context: Context, asset: photoAccessHelper.PhotoAsset) {
   console.info('saveCameraPhotoDemo');
@@ -776,7 +771,7 @@ Sets the image rotation angle. This API adjusts the image rotation angle by modi
 
 | Name       | Type     | Mandatory  | Description                                |
 | ---------- | ------- | ---- | ---------------------------------- |
-| orientation | number | Yes  | Rotation angle of the image to set. The value can only be **0**, **90**, **180**, or **270**.|
+| orientation | number | Yes  | Rotation angle of the image to set, in degrees (°). The value can only be **0**, **90**, **180**, or **270**.|
 
 **Error codes**
 
@@ -789,7 +784,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a **phAccessHelper** instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -805,6 +800,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
   let asset = await fetchResult.getFirstObject();
   let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest = new photoAccessHelper.MediaAssetChangeRequest(asset);
+  // Change the image rotation angle to 90°. (The value can only be 0°, 90°, 180°, or 270°.)
   assetChangeRequest.setOrientation(90);
   phAccessHelper.applyChanges(assetChangeRequest).then(() => {
     console.info('apply setOrientation successfully');
@@ -820,21 +816,21 @@ setFavorite(favoriteState: boolean): void
 
 Favorites or unfavorites this file asset.
 
-**Since**: 26.0.0
+**Since:** 26.0.0
 
-**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **Parameters**
 
-| Name        | Type      | Mandatory   | Description                                 |
+| Name       | Type     | Mandatory  | Description                                |
 | ---------- | ------- | ---- | ---------------------------------- |
-| favoriteState | boolean | Yes    | Whether to favorite the file asset. **true** to favorite, and **false** otherwise. |
+| favoriteState | boolean | Yes   | Whether to favorite the file asset. **true** to favorite, and **false** otherwise.     |
 
 **Error codes**
 
-For details about the error codes thrown by the API, see [File Management Error Codes](../apis-core-file-kit/errorcode-filemanagement.md).
+For details about the error codes, see [File Management Error Codes](../apis-core-file-kit/errorcode-filemanagement.md).
 
-| ID | Error Message |
+| ID| Error Message|
 | -------- | ---------------------------------------- |
 | 14000011       | System inner fail.         |
 
@@ -856,6 +852,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
   let asset = await fetchResult.getFirstObject();
   let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest = new photoAccessHelper.MediaAssetChangeRequest(asset);
+  // Whether to favorite the file asset. true to favorite, and false otherwise.
   assetChangeRequest.setFavorite(true);
   phAccessHelper.applyChanges(assetChangeRequest).then(() => {
     console.info('apply setFavorite successfully');

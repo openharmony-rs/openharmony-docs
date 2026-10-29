@@ -5,11 +5,11 @@
 <!--Designer: @peter_1024-->
 <!--Tester: @Aullar-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=0b93323b0f7c91ca4630a6299721102bac279fe0 translatedAt=2026-09-01T02:32:03.194Z pushedAt=2026-09-02T02:12:27.528Z -->
+<!-- md-trans-meta sourceCommit=2a61f966f5287975c6419ac774129fb453fc44c4 translatedAt=2026-09-28T02:33:56.671Z pushedAt=2026-09-29T06:32:34.912Z -->
 
 Mechanic Manager is supported since API version 20, offering richer photography experiences with professional features such as object tracking and automatic composition for applications (including third-party applications).
 
-The object camera tracking function enables automated tracking of faces and objects through mechanic devices, enhancing photography quality and user experience and helping developers to build more automated and efficient photography solutions.
+The object tracking function enables automated tracking of faces and objects through mechanic devices, enhancing photography quality and user experience and helping developers to build more automated and efficient photography solutions.
 
 ## Available APIs
 
@@ -30,14 +30,14 @@ For API usage instructions, see [@ohos.distributedHardware.mechanicManager (Mech
 
 ### Getting Started
 
-1. Prepare a mechanic device that supports Mechanic Kit.
+1. Prepare a mechanic device that supports the Mechanic Kit protocol. For details, see point 2 in Managing the Device Connection State.
 2. To verify the object camera tracking function, check that the camera driver of the main device supports face detection.
 3. Update the SDK to API 20 or later. For details, see [Downloading and Installing DevEco Studio](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-software-install).
 4. Ensure that the mechanic device is connected to the main device through Bluetooth.
 
-### Managing the Device Connection Status
+### Managing the Device Connection State
 
-Device connection status management helps to ensure that the application responds promptly when the mechanic device is connected or disconnected.
+Device connection state management helps to ensure that the application responds promptly when the mechanic device is connected or disconnected.
 
 1. Import the **mechanicManager** module.
    <!-- @[import_mechanicManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicKit/MechanicManagerSample/entry/src/main/ets/pages/ApiTestPage.ets) -->
@@ -46,7 +46,15 @@ Device connection status management helps to ensure that the application respond
     import { mechanicManager } from '@kit.MechanicKit';
     ```
 
-2. Obtain the list of connected mechanic devices.
+2. Query whether the device supports the mechanic device control capability.
+   <!-- @[is_control_supported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicKit/MechanicManagerSample/entry/src/main/ets/pages/ApiTestPage.ets) -->
+   
+   ``` TypeScript
+   let isSupported: boolean = mechanicManager.isControlSupported();
+   console.info(`'isSupported:' ${isSupported}`);
+   ```
+
+3. Obtain the list of connected mechanic devices.
    <!-- @[get_mechDevices](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicKit/MechanicManagerSample/entry/src/main/ets/pages/ApiTestPage.ets) -->
 
     ```ts
@@ -76,7 +84,7 @@ Device connection status management helps to ensure that the application respond
     }
     ```
 
-3. Listen for the connection state changes of the device.
+4. Listen for the connection state changes of the device.
    <!-- @[on_attachStateChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicKit/MechanicManagerSample/entry/src/main/ets/pages/AttachStateChangeCallbackRegister.ets) -->
 
     ```ts
@@ -96,9 +104,9 @@ Device connection status management helps to ensure that the application respond
     mechanicManager.on('attachStateChange', attachStateChangeCallback);
     ```
 
-4. Process device connection and disconnection events.
+5. Process device connection and disconnection events.
    <!-- @[handle_device_attached_detached](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicKit/MechanicManagerSample/entry/src/main/ets/pages/AttachStateChangeCallbackRegister.ets) -->
-
+   
     ```ts
     function handleDeviceAttached(mechInfo: mechanicManager.MechInfo) {
     console.info(`New device is connected: ${mechInfo.mechName} (ID: ${mechInfo.mechId})`);
@@ -112,10 +120,10 @@ Device connection status management helps to ensure that the application respond
     // To do sth.
     }
     ```
-
-5. Cancel listening for device connection state changes.
+   
+6. Cancel listening for device connection state changes.
    <!-- @[off_attachStateChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicKit/MechanicManagerSample/entry/src/main/ets/pages/AttachStateChangeCallbackRegister.ets) -->
-
+   
     ```ts
     // Cancel listening for device connection state changes.
     mechanicManager.off('attachStateChange', attachStateChangeCallback);
@@ -127,7 +135,7 @@ After the object tracking photography function is enabled, the device will autom
 
 1. Enable the object tracking photography function.
    <!-- @[set_cameraTracking_enabled](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicKit/MechanicManagerSample/entry/src/main/ets/pages/ApiTestPage.ets) -->
-
+   
     ```ts
     try {
     // Check whether savedMechIds is empty.
@@ -145,10 +153,10 @@ After the object tracking photography function is enabled, the device will autom
     console.error('Failed to enable camera tracking:', err);
     }
     ```
-
+   
 2. Enable listening for tracking state changes.
    <!-- @[on_trackingStateChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicKit/MechanicManagerSample/entry/src/main/ets/pages/ApiTestPage.ets) -->
-
+   
     ```ts
     const trackingStateCallback = (eventInfo : mechanicManager.TrackingEventInfo) => {
     switch (eventInfo.event) {
@@ -170,10 +178,10 @@ After the object tracking photography function is enabled, the device will autom
     // Register the listener for tracking state changes.
     mechanicManager.on('trackingStateChange', trackingStateCallback);
     ```
-
+   
 3. Process the tracking state change event.
    <!-- @[handle_tracking_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicKit/MechanicManagerSample/entry/src/main/ets/pages/ApiTestPage.ets) -->
-
+   
     ```ts
     function handleTrackingEnabled() {
     console.info('Handling camera tracking enable events');
@@ -210,7 +218,7 @@ After the object tracking photography function is enabled, the device will autom
     console.info('Update layout UI:', layout);
     }
     ```
-
+   
 4. Cancel listening for tracking state changes.
    <!-- @[off_trackingStateChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicKit/MechanicManagerSample/entry/src/main/ets/pages/ApiTestPage.ets) -->
     ```ts

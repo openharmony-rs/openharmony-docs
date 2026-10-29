@@ -1,16 +1,17 @@
 # Accessing Backup and Restore
-
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
 <!--Owner: @lvzhenjie-->
 <!--Designer: @chenxi0605-->
 <!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=be32bd8bba98ad269ffd4be3b9a7ac920bcf706b translatedAt=2026-08-01T07:23:26.691Z pushedAt=2026-08-01T08:10:45.627Z -->
+<!-- md-trans-meta sourceCommit=9ba5cc8a5a6376c01d21ba01049967807da4bf5c translatedAt=2026-10-13T12:51:24.024Z pushedAt=2026-10-15T11:07:55.182Z -->
 
 You can use **BackupExtensionAbility** to enable an application to access the backup and restore framework.
 
 **BackupExtensionAbility** is a derived class of [ExtensionAbility](../application-models/extensionability-overview.md), which is an extension component in the [stage model](../application-models/stage-model-development-overview.md). You can customize the behavior of the backup and restore framework by modifying the configuration file, including whether to allow backup and restore and which files to back up.
+
+
 
 ## Available APIs
 
@@ -27,13 +28,9 @@ The following table lists the key APIs of the backup and restore extension capab
 ## Constraints
 
 - The path of the file or directory to be backed up or restored cannot exceed 4095 bytes. Otherwise, undefined behavior may occur.
-
 - If a directory needs to be backed up, the application process must have the permission to read the directory and all its subdirectories (`r` in DAC). Otherwise, the backup fails.
-
 - If a file needs to be backed up, the application process must have the permission to retrieve all the ancestor directories of the file (`x` in DAC). Otherwise, the backup fails.
-
 - The path of the file or directory to be backed up or restored does not support relative paths (**../**) and soft links.
-
 - For constraints on `BackupExtensionAbility` API calls, see [Constraints](../reference/apis-core-file-kit/js-apis-application-backupExtensionAbility.md#constraints) in the API reference.
 
 ## How to Develop
@@ -109,8 +106,8 @@ The following table lists the key APIs of the backup and restore extension capab
     }
     ```
 
-   <!-- @[on_backup_restore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileBackupExtension/entry/src/main/ets/common/BackupExtension.ets) -->    
-
+   <!-- @[on_backup_restore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileBackupExtension/entry/src/main/ets/common/BackupExtension.ets) -->  
+   
    ``` TypeScript
    import { BackupExtensionAbility } from '@kit.CoreFileKit';
    import { BundleVersion } from '@kit.CoreFileKit';
@@ -150,14 +147,15 @@ The following table lists the key APIs of the backup and restore extension capab
    }
    ```
 
+
 4. Starting from API version 20, to perform special operations after application data backup and restore, such as cleaning up temporary files created during these processes, you can customize `BackupExtensionAbility` inherited by the class in the `BackupExtension.ets` file and override the `onRelease` method for execution when the backup or restore is complete.
 
    `onRelease` has a timeout mechanism. If the `onRelease` operation is not completed within 5 seconds, the application process exits when the backup and restoration are complete.
 
    The following example shows how to implement `onRelease` when the temporary file directory needs to be removed.
 
-   <!-- @[on_release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileBackupExtension/entry/src/main/ets/common/BackupExtension.ets) -->    
-
+   <!-- @[on_release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileBackupExtension/entry/src/main/ets/common/BackupExtension.ets) -->  
+   
    ``` TypeScript
    import { BackupExtensionAbility } from '@kit.CoreFileKit';
    // ...
@@ -167,13 +165,13 @@ The following table lists the key APIs of the backup and restore extension capab
    
    const SCENARIO_BACKUP: number = 1;
    const SCENARIO_RESTORE: number = 2;
-   // Temporary directory to be removed.
-   let filePath: string = '/data/storage/el2/base/.temp/';
    
    class BackupExt extends BackupExtensionAbility {
      // ...
      // onRelease
      async onRelease(scenario: number): Promise<void> {
+       // Clean up the temporary backup or restore files created by the app in this directory.
+       let filePath: string = this.context.filesDir + '/.temp/';
        try {
          if (scenario == SCENARIO_BACKUP) {
            // In the backup scenario, the application implements the processing. The following describes how to delete temporary files generated during backup.
@@ -194,6 +192,7 @@ The following table lists the key APIs of the backup and restore extension capab
    }
    ```
 
+
 ### Description of the Metadata Profile
 
 | Field            | Type  | Mandatory| Description                                                        |
@@ -205,12 +204,12 @@ The following table lists the key APIs of the backup and restore extension capab
 | restoreDeps          | String    | No  | **(Not recommended)** Dependencies for the application to restore. The default value is "". You need to configure the names of the dependent applications. Currently, only one dependency is supported. The configured dependency takes effect only in the context of one restore task. If no dependent application is detected, the dependency description will be ignored and the restore task continues. The application restore will fail if the dependent application is not restored or fails to be restored.|
 | extraInfo            | JSON string    | No  | Additional information to be passed.            |
 
+
 **Field Description**
 
 1. When setting **fullBackupOnly**, observe the following:
 
    - When **fullBackupOnly** is set to **false**, the restored data will be decompressed with **/** as the root directory, and files with the same name in the same path will be overwritten.
-
    - When **fullBackupOnly** is set to **true**, the restored data will be decompressed with a temporary directory as the root directory. You need to implement the data restoration logic in **onRestore** or **onRestoreEx** to complete the final restoration.
 
    You can choose the appropriate data restore mode based on your service scenarios.
@@ -218,9 +217,7 @@ The following table lists the key APIs of the backup and restore extension capab
    **Example:**
 
    Assume that the app's data backup path is **data/storage/el2/base/files/A/**. During restoration:
-
    - If **fullBackupOnly** is set to **false**, data will be directly decompressed to the **/data/storage/el2/base/files/A/** directory.
-
    - If **fullBackupOnly** is set to **true**, data will be decompressed to the **temporary path backupDir + /restore/data/storage/el2/base/files/A/** directory.
 
 2. The list of paths supported by **includes** is as follows:
@@ -253,5 +250,3 @@ The following table lists the key APIs of the backup and restore extension capab
 The following sample is available:
 
 - [FileBackupExtension (ArkTS) (Full SDK) (API10)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/FileManagement/FileBackupExtension)
-
-<!--no_check-->

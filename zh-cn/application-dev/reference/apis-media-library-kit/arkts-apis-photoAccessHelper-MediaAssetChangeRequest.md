@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-MediaAssetChangeRequest implements [MediaChangeRequest](arkts-apis-photoAccessHelper-i.md#mediachangerequest11).
+MediaAssetChangeRequest类实现了[MediaChangeRequest](arkts-apis-photoAccessHelper-i.md#mediachangerequest11)接口。
 
 资产变更请求。
 

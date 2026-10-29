@@ -47,6 +47,7 @@
 3. cpp侧导入NDK接口，并根据传入的SurfaceId进行录像。
     ```c++
     #include "hilog/log.h"
+    #include "ndk_camera.h"
     #include <cmath>
 
     bool IsAspectRatioEqual(float videoAspectRatio, float previewAspectRatio)

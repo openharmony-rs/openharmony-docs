@@ -1,12 +1,13 @@
 # OH_Drawing_GpuContextOptions
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Owner: @dreamyhhh-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=3b75f30d038321e59d140485862ef0f48205e17e translatedAt=2026-10-09T12:34:05.743Z pushedAt=2026-10-10T10:00:06.861Z -->
 
-```
+```c
 typedef struct {...} OH_Drawing_GpuContextOptions
 ```
 
@@ -29,3 +30,4 @@ This struct describes the options about the GPU context.
 | Name                     | Description                                                        |
 | ------------------------- | ------------------------------------------------------------ |
 | bool allowPathMaskCaching | Whether to allow path mask textures to be cached. The value **true** means to allow the path mask textures to be cached, and **false** means the opposite.|
+

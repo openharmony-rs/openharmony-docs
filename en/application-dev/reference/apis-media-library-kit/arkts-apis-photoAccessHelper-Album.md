@@ -83,7 +83,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   }
   album.albumName = 'hello';
   album.commitModify((err) => {
-    if (err !== undefined) {
+    if (err) {
       console.error(`commitModify failed with error: ${err.code}, ${err.message}`);
     } else {
       console.info('commitModify successfully');
@@ -146,6 +146,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     return;
   }
   album.albumName = 'hello';
+  // Submit the album name change to the database.
   album.commitModify().then(() => {
     console.info('commitModify successfully');
   }).catch((err: BusinessError) => {
@@ -158,7 +159,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 addAssets(assets: Array&lt;PhotoAsset&gt;, callback: AsyncCallback&lt;void&gt;): void
 
-Adds image and video assets to a user album. Before the operation, ensure that the image and video assets to add and the album exist. This API uses an asynchronous callback to return the result.
+Adds image and video assets to a user album. Before calling this API, ensure that the album object has been obtained and the resource file is ready. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -172,7 +173,7 @@ Adds image and video assets to a user album. Before the operation, ensure that t
 
 | Name  | Type                     | Mandatory| Description      |
 | -------- | ------------------------- | ---- | ---------- |
-| assets | Array&lt;[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)&gt; | Yes  | Array of the image and video assets to add.|
+| assets | Array&lt;[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)&gt; | Yes  | Array of the image and video assets to add. |
 | callback | AsyncCallback&lt;void&gt; | Yes  | Callback function. If an image or video is added successfully, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
@@ -211,7 +212,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
       return;
     }
     album.addAssets([asset], (err) => {
-      if (err === undefined) {
+      if (!err) {
         console.info('album addAssets successfully');
       } else {
         console.error(`album addAssets failed with error: ${err.code}, ${err.message}`);
@@ -227,7 +228,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 addAssets(assets: Array&lt;PhotoAsset&gt;): Promise&lt;void&gt;
 
-Adds image and video assets to a user album. Before the operation, ensure that the image and video assets to add and the album exist. This API uses a promise to return the result.
+Adds image and video assets to a user album. Before calling this API, ensure that the album object has been obtained and the resource file is ready. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -285,6 +286,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
       console.error('addAssetsDemoPromise asset is undefined');
       return;
     }
+    // Add assets to the album.
     album.addAssets([asset]).then(() => {
       console.info('album addAssets successfully');
     }).catch((err: BusinessError) => {
@@ -300,7 +302,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 removeAssets(assets: Array&lt;PhotoAsset&gt;, callback: AsyncCallback&lt;void&gt;): void
 
-Removes image and video assets from a user album. The album and file resources must exist. This API uses an asynchronous callback to return the result.
+Adds image and video assets to a user album. Before calling this API, ensure that the album object has been obtained and the resource file is ready. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -353,7 +355,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
       return;
     }
     album.removeAssets([asset], (err) => {
-      if (err === undefined) {
+      if (!err) {
         console.info('album removeAssets successfully');
       } else {
         console.error(`album removeAssets failed with error: ${err.code}, ${err.message}`);
@@ -369,7 +371,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 removeAssets(assets: Array&lt;PhotoAsset&gt;): Promise&lt;void&gt;
 
-Removes image and video assets from a user album. The album and file resources must exist. This API uses a promise to return the result.
+Adds image and video assets to a user album. Before calling this API, ensure that the album object has been obtained and the resource file is ready. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -431,6 +433,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
       console.error('removeAssetsPromise asset is undefined');
       return;
     }
+    // Remove assets from the album.
     album.removeAssets([asset]).then(() => {
       console.info('album removeAssets successfully');
     }).catch((err: BusinessError) => {

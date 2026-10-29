@@ -1,14 +1,13 @@
 # Interface (AudioSessionManager)
-
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @funny_sunix-->
 <!--Designer: @hao-liangfei-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=35adc31eaf96d9a7e6271e45a667c27fecde38b0 translatedAt=2026-08-10T01:22:38.480Z pushedAt=2026-08-10T03:11:08.127Z -->
+<!-- md-trans-meta sourceCommit=59c3fabc0701f94b960b606856aa3cc084316830 translatedAt=2026-10-08T12:05:04.414Z pushedAt=2026-10-12T03:44:40.021Z -->
 
-This interface implements audio session management.
+**AudioSessionManager** is a session management module in the audio system. This module provides APIs for audio session management, including activating and deactivating audio sessions, controlling audio focus, selecting and switching audio devices, and setting audio scenes. When you need to coordinate the audio playback behavior of multiple apps and resolve audio focus conflicts, use the APIs provided by this module to complete related operations. This module is applicable to scenarios that require refined audio management, such as media playback, VoIP calls, and games.
 
 Before calling any API in AudioSessionManager, you must use [getSessionManager](arkts-apis-audio-AudioManager.md#getsessionmanager12) to obtain an AudioSessionManager instance.
 
@@ -43,7 +42,7 @@ Activates an audio session. This API uses a promise to return the result.
 
 | Type          | Description                     |
 | -------------- | ------------------------- |
-| Promise\<void> | Promise that returns no value.|
+| Promise\<void> | Promise that returns no value. |
 
 **Error codes**
 
@@ -60,14 +59,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Set the audio session concurrency mode to mixing mode.
 let strategy: audio.AudioSessionStrategy = {
   concurrencyMode: audio.AudioConcurrencyMode.CONCURRENCY_MIX_WITH_OTHERS
 };
 
 audioSessionManager.activateAudioSession(strategy).then(() => {
-  console.info('activateAudioSession SUCCESS');
+  console.info('Succeeded in activating the audio session.');
 }).catch((err: BusinessError) => {
-  console.error(`ERROR: ${err}`);
+  console.error(`Failed to activate the audio session. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -85,7 +85,7 @@ Deactivates this audio session. This API uses a promise to return the result.
 
 | Type          | Description                     |
 | -------------- | ------------------------- |
-| Promise\<void> | Promise that returns no value.|
+| Promise\<void> | Promise that returns no value. |
 
 **Error codes**
 
@@ -101,9 +101,9 @@ For details about the error codes, see [Audio Error Codes](errorcode-audio.md).
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioSessionManager.deactivateAudioSession().then(() => {
-  console.info('deactivateAudioSession SUCCESS');
+  console.info('Succeeded in deactivating the audio session.');
 }).catch((err: BusinessError) => {
-  console.error(`ERROR: ${err}`);
+  console.error(`Failed to deactivate the audio session. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -160,7 +160,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 audioSessionManager.on('audioSessionDeactivated',
   (audioSessionDeactivatedEvent: audio.AudioSessionDeactivatedEvent) => {
-  console.info(`reason of audioSessionDeactivated: ${audioSessionDeactivatedEvent.reason} `);
+  console.info(`Audio session deactivated, audioSessionDeactivatedEvent: ${JSON.stringify(audioSessionDeactivatedEvent)}.`);
 });
 ```
 
@@ -168,7 +168,7 @@ audioSessionManager.on('audioSessionDeactivated',
 
 off(type: 'audioSessionDeactivated', callback?: Callback\<AudioSessionDeactivatedEvent>): void
 
-Unsubscribes from the audio session deactivation event. This API uses an asynchronous callback to return the result.
+Unsubscribes from the audio session deactivation event.
 
 **Atomic service API**: This API can be used in atomic services since API version 26.0.0.
 
@@ -178,8 +178,8 @@ Unsubscribes from the audio session deactivation event. This API uses an asynchr
 
 | Name  | Type                                  | Mandatory| Description                                                        |
 | -------- | -------------------------------------- | ---- | ------------------------------------------------------------ |
-| type     | string | Yes  | Event type. The event **'audioSessionDeactivated'** is triggered when the audio session is deactivated.|
-| callback |Callback<[AudioSessionDeactivatedEvent](arkts-apis-audio-i.md#audiosessiondeactivatedevent12)> | No  | Callback used to return the reason why the audio session is deactivated.|
+| type     | string | Yes   | Event type. This field has a fixed value of **'audioSessionDeactivated'**. |
+| callback |Callback<[AudioSessionDeactivatedEvent](arkts-apis-audio-i.md#audiosessiondeactivatedevent12)> | No   | Callback function. When a callback function is passed in, only the listening event corresponding to this callback is unregistered, and the same callback function must be bound as in [on('audioSessionDeactivated')](#onaudiosessiondeactivated12); when no parameter is passed, all subscribed listening events of this event type are unregistered. |
 
 **Error codes**
 
@@ -198,7 +198,7 @@ audioSessionManager.off('audioSessionDeactivated');
 
 // For the same event, if the callback parameter passed to the off API is the same as that passed to the on API, the off API cancels the subscription registered with the specified callback parameter.
 let audioSessionDeactivatedCallback = (audioSessionDeactivatedEvent: audio.AudioSessionDeactivatedEvent) => {
-  console.info(`reason of audioSessionDeactivated: ${audioSessionDeactivatedEvent.reason} `);
+  console.info(`Audio session deactivated, audioSessionDeactivatedEvent: ${JSON.stringify(audioSessionDeactivatedEvent)}.`);
 };
 
 audioSessionManager.on('audioSessionDeactivated', audioSessionDeactivatedCallback);
@@ -265,7 +265,7 @@ For details about the error codes, see [Audio Error Codes](errorcode-audio.md).
 
 ```ts
 audioSessionManager.on('audioSessionStateChanged', (audioSessionStateChangedEvent: audio.AudioSessionStateChangedEvent) => {
-  console.info(`hint of audioSessionStateChanged: ${audioSessionStateChangedEvent.stateChangeHint} `);
+  console.info(`Audio session state changed, audioSessionStateChangedEvent: ${JSON.stringify(audioSessionStateChangedEvent)}.`);
 });
 ```
 
@@ -273,7 +273,7 @@ audioSessionManager.on('audioSessionStateChanged', (audioSessionStateChangedEven
 
 off(type: 'audioSessionStateChanged', callback?: Callback\<AudioSessionStateChangedEvent>): void
 
-Unsubscribes from the audio session state change event. This API uses an asynchronous callback to return the result.
+Unregisters the listener for the audio session state change event.
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
@@ -281,8 +281,8 @@ Unsubscribes from the audio session state change event. This API uses an asynchr
 
 | Name  | Type                                                                       | Mandatory| Description                                                        |
 | -------- |---------------------------------------------------------------------------| ---- | ------------------------------------------------------------ |
-| type     | string | Yes  | Event type. The event **'audioSessionStateChanged'** is triggered when the audio session state is changed.|
-| callback | Callback<[AudioSessionStateChangedEvent](arkts-apis-audio-i.md#audiosessionstatechangedevent20)> | No| Callback used to return the audio session change information.|
+| type     | string | Yes   | Event type. This field has a fixed value of **'audioSessionStateChanged'**. |
+| callback | Callback<[AudioSessionStateChangedEvent](arkts-apis-audio-i.md#audiosessionstatechangedevent20)> | No | Callback function. When a callback function is passed in, only the listening event corresponding to this callback is unregistered, and the same callback function must be bound as in [on('audioSessionStateChanged')](#onaudiosessionstatechanged20); when no parameter is passed, all subscribed listening events of this event type are unregistered.  |
 
 **Error codes**
 
@@ -301,7 +301,7 @@ audioSessionManager.off('audioSessionStateChanged');
 
 // For the same event, if the callback parameter passed to the off API is the same as that passed to the on API, the off API cancels the subscription registered with the specified callback parameter.
 let audioSessionStateChangedCallback = (audioSessionStateChangedEvent: audio.AudioSessionStateChangedEvent) => {
-  console.info(`hint of audioSessionStateChanged: ${audioSessionStateChangedEvent.stateChangeHint} `);
+  console.info(`Audio session state changed, audioSessionStateChangedEvent: ${JSON.stringify(audioSessionStateChangedEvent)}.`);
 };
 
 audioSessionManager.on('audioSessionStateChanged', audioSessionStateChangedCallback);
@@ -335,7 +335,7 @@ Sets the default audio output device. This API uses a promise to return the resu
 
 | Type               | Description                         |
 | ------------------- | ----------------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
@@ -353,9 +353,9 @@ For details about the error codes, see [Audio Error Codes](errorcode-audio.md).
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioSessionManager.setDefaultOutputDevice(audio.DeviceType.SPEAKER).then(() => {
-  console.info('setDefaultOutputDevice Success!');
+  console.info('Succeeded in setting the default output device.');
 }).catch((err: BusinessError) => {
-  console.error(`setDefaultOutputDevice Fail: ${err}`);
+  console.error(`Failed to set the default output device. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -396,9 +396,9 @@ Switches the media output device to the built-in speaker when other external aud
 
 > **NOTE**
 >
-> - This API applies only to media playback scenarios and affects all media streams initiated within the app.
-> - If there is a concurrent playback stream with a higher priority or the user manually selects an output device, the actual output device used by the app may differ from the device set by this API. The app can listen for the [CurrentOutputDeviceChangedEvent](arkts-apis-audio-i.md#currentoutputdevicechangedevent20) event to obtain the currently active output device.
-> - When the app needs to clear the speaker output configuration previously set through this API, it can do so by calling this API to set the media output device to DEFAULT (system default device). This setting is valid only while the app is running. When the app exits, the setting configured by this API is automatically cleared.
+> - This API applies only to media playback scenarios and affects all media streams initiated in the app.
+> - If there is a concurrent playback stream with a higher priority or the user manually selects an output device, the output device used by the app for primary use will be different from the device set by this API. You can obtain the active output device by listening for the [CurrentOutputDeviceChangedEvent](arkts-apis-audio-i.md#currentoutputdevicechangedevent20).
+> - To clear the speaker output configuration previously set, you can call this API to set the media output device to **DEFAULT**. This setting is valid only when the app is running. When the app exits, the setting will be automatically cleared.
 
 **Since**: 26.0.0
 
@@ -435,9 +435,9 @@ For details about the error codes, see [Audio Error Codes](errorcode-audio.md).
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioSessionManager.setMediaOutputDevice(audio.DeviceType.SPEAKER).then(() => {
-  console.info('setMediaOutputDevice Success!');
+  console.info('Succeeded in setting the media output device.');
 }).catch((err: BusinessError) => {
-  console.error(`setMediaOutputDevice Fail: ${err}`);
+  console.error(`Failed to set the media output device. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -469,10 +469,8 @@ For details about the error codes, see [Audio Error Codes](errorcode-audio.md).
 **Example**
 
 ```ts
-import { audio } from '@kit.AudioKit';
-
 let currentOutputDeviceChangedCallback = (currentOutputDeviceChangedEvent: audio.CurrentOutputDeviceChangedEvent) => {
-  console.info(`reason of currentOutputDeviceChanged: ${currentOutputDeviceChangedEvent.changeReason} `);
+  console.info(`Current output device changed, currentOutputDeviceChangedEvent: ${JSON.stringify(currentOutputDeviceChangedEvent)}.`);
 };
 
 audioSessionManager.on('currentOutputDeviceChanged', currentOutputDeviceChangedCallback);
@@ -482,7 +480,7 @@ audioSessionManager.on('currentOutputDeviceChanged', currentOutputDeviceChangedC
 
 off(type: 'currentOutputDeviceChanged', callback?: Callback\<CurrentOutputDeviceChangedEvent>): void
 
-Unsubscribes from the current output device change event. This API uses an asynchronous callback to return the result.
+Unsubscribes from the current output device change event.
 
 **System capability**: SystemCapability.Multimedia.Audio.Device
 
@@ -490,8 +488,8 @@ Unsubscribes from the current output device change event. This API uses an async
 
 | Name  | Type                                                | Mandatory| Description                                                     |
 | :------- | :--------------------------------------------------- | :--- |:--------------------------------------------------------|
-| type     | string | Yes  | Event type. The event **'currentOutputDeviceChanged'** is triggered when the current output device is changed.|
-| callback | Callback<[CurrentOutputDeviceChangedEvent](arkts-apis-audio-i.md#currentoutputdevicechangedevent20)> | No| Callback used to return the information about the current output device.|
+| type     | string | Yes   | Event type. This field has a fixed value of **'currentOutputDeviceChanged'**. |
+| callback | Callback<[CurrentOutputDeviceChangedEvent](arkts-apis-audio-i.md#currentoutputdevicechangedevent20)> | No | Callback function. When a callback function is passed in, only the listening event corresponding to this callback is unregistered, and the same callback function must be bound as in [on('currentOutputDeviceChanged')](#oncurrentoutputdevicechanged20); when no parameter is passed, all subscribed listening events of this event type are unregistered.  |
 
 **Error codes**
 
@@ -510,7 +508,7 @@ audioSessionManager.off('currentOutputDeviceChanged');
 
 // For the same event, if the callback parameter passed to the off API is the same as that passed to the on API, the off API cancels the subscription registered with the specified callback parameter.
 let currentOutputDeviceChangedCallback = (currentOutputDeviceChangedEvent: audio.CurrentOutputDeviceChangedEvent) => {
-  console.info(`reason of currentOutputDeviceChanged: ${currentOutputDeviceChangedEvent.changeReason} `);
+  console.info(`Current output device changed, currentOutputDeviceChangedEvent: ${JSON.stringify(currentOutputDeviceChangedEvent)}.`);
 };
 
 audioSessionManager.on('currentOutputDeviceChanged', currentOutputDeviceChangedCallback);
@@ -554,10 +552,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let data: audio.AudioDeviceDescriptors = audioSessionManager.getAvailableDevices(audio.DeviceUsage.MEDIA_OUTPUT_DEVICES);
-  console.info('Succeeded in doing getAvailableDevices.');
+  console.info(`Succeeded in obtaining available devices, audioDeviceDescriptors: ${JSON.stringify(data)}.`);
 } catch (err) {
   let error = err as BusinessError;
-   console.error(`Failed to getAvailableDevices. Code: ${error.code}, message: ${error.message}`);
+  console.error(`Failed to obtain available devices. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -590,10 +588,7 @@ For details about the error codes, see [Audio Error Codes](errorcode-audio.md).
 
 ```ts
 audioSessionManager.on('availableDeviceChange', audio.DeviceUsage.MEDIA_INPUT_DEVICES, (deviceChanged: audio.DeviceChangeAction) => {
-  console.info('device change type : ' + deviceChanged.type);
-  console.info('device descriptor size : ' + deviceChanged.deviceDescriptors.length);
-  console.info('device change descriptor : ' + deviceChanged.deviceDescriptors[0].deviceRole);
-  console.info('device change descriptor : ' + deviceChanged.deviceDescriptors[0].deviceType);
+  console.info(`Available device changed, deviceChangeAction: ${JSON.stringify(deviceChanged)}.`);
 });
 ```
 
@@ -609,8 +604,8 @@ Unsubscribes from the event indicating that the connection status of an availabl
 
 | Name  | Type                                               | Mandatory| Description                                      |
 | -------- | --------------------------------------------------- | ---- | ------------------------------------------ |
-| type     | string                                              | Yes  | Event type. The event **'availableDeviceChange'** is triggered when the connection status of available audio devices is changed.|
-| callback | Callback\<[DeviceChangeAction](arkts-apis-audio-i.md#devicechangeaction)\> | No  | Callback used to return the available device change details.|
+| type     | string | Yes   | Event type. This field has a fixed value of **'availableDeviceChange'**. |
+| callback | Callback\<[DeviceChangeAction](arkts-apis-audio-i.md#devicechangeaction)\> | No   | Callback function. When a callback function is passed in, only the listening event corresponding to this callback is unregistered, and the same callback function must be bound as in [on('availableDeviceChange')](#onavailabledevicechange21); when no parameter is passed, all subscribed listening events of this event type are unregistered.  |
 
 **Error codes**
 
@@ -628,10 +623,7 @@ audioSessionManager.off('availableDeviceChange');
 
 // For the same event, if the callback parameter passed to the off API is the same as that passed to the on API, the off API cancels the subscription registered with the specified callback parameter.
 let availableDeviceChangeCallback = (deviceChanged: audio.DeviceChangeAction) => {
-  console.info('device change type : ' + deviceChanged.type);
-  console.info('device descriptor size : ' + deviceChanged.deviceDescriptors.length);
-  console.info('device change descriptor : ' + deviceChanged.deviceDescriptors[0].deviceRole);
-  console.info('device change descriptor : ' + deviceChanged.deviceDescriptors[0].deviceType);
+  console.info(`Available device changed, deviceChangeAction: ${JSON.stringify(deviceChanged)}.`);
 };
 
 audioSessionManager.on('availableDeviceChange', audio.DeviceUsage.MEDIA_INPUT_DEVICES, availableDeviceChangeCallback);
@@ -648,9 +640,9 @@ Selects a media input device. This API uses a promise to return the result.
 > **NOTE**
 >
 > - This API is not suitable for VoIP call recording; that is, it does not apply to scenarios where [SourceType](arkts-apis-audio-e.md#sourcetype8) is **SOURCE_TYPE_VOICE_COMMUNICATION**.
-> - Before calling this API, call [getAvailableDevices](#getavailabledevices21) to query the list of available input devices and select an input device from the list.
+> - Before calling this API, call [getAvailableDevices](#getavailabledevices21) to query the list of currently available input devices, and select an input device from the list.
 > - If there are recording streams of other applications with higher priorities in the system, the actual input device used will follow the input device selected by these applications.
-> - Applications can listen for the [currentInputDeviceChanged](#oncurrentinputdevicechanged21) event to find out the actual input device being used.
+> - Apps can listen for the [currentInputDeviceChanged](#oncurrentinputdevicechanged21) event to find out the actual input device being used.
 
 **System capability**: SystemCapability.Multimedia.Audio.Device
 
@@ -681,19 +673,21 @@ For details about the error codes, see [Audio Error Codes](errorcode-audio.md).
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // Obtain the list of available audio input devices for subsequent selection.
   let data: audio.AudioDeviceDescriptors = audioSessionManager.getAvailableDevices(audio.DeviceUsage.MEDIA_INPUT_DEVICES);
-  console.info('Succeeded in doing getAvailableDevices.');
+  console.info(`Succeeded in obtaining available devices, audioDeviceDescriptors: ${JSON.stringify(data)}.`);
 
   if (data[0]) {
+    // Select the first available device as the audio input device.
     audioSessionManager.selectMediaInputDevice(data[0]).then(() => {
-      console.info('Succeeded in doing selectMediaInputDevice.');
+      console.info('Succeeded in selecting the media input device.');
     }).catch((selectErr: BusinessError) => {
-      console.error(`Failed to selectMediaInputDevice. Code: ${selectErr.code}, message: ${selectErr.message}`);
+      console.error(`Failed to select the media input device. Code: ${selectErr.code}, message: ${selectErr.message}`);
     });
   }
 } catch (err) {
   let error = err as BusinessError;
-  console.error(`Failed to getAvailableDevices. Code: ${error.code}, message: ${error.message}`);
+  console.error(`Failed to obtain available devices. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -726,10 +720,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let device: audio.AudioDeviceDescriptor = audioSessionManager.getSelectedMediaInputDevice();
-  console.info('Succeeded in doing getSelectedMediaInputDevice.');
+  console.info(`Succeeded in obtaining the selected media input device, audioDeviceDescriptor: ${JSON.stringify(device)}.`);
 } catch (err) {
   let error = err as BusinessError;
-  console.error(`Failed to getSelectedMediaInputDevice. Code: ${error.code}, message: ${error.message}`);
+  console.error(`Failed to obtain the selected media input device. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -761,9 +755,9 @@ For details about the error codes, see [Audio Error Codes](errorcode-audio.md).
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioSessionManager.clearSelectedMediaInputDevice().then(() => {
-  console.info('Succeeded in doing clearSelectedMediaInputDevice.');
+  console.info('Succeeded in clearing the selected media input device.');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to clearSelectedMediaInputDevice. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to clear the selected media input device. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -771,13 +765,13 @@ audioSessionManager.clearSelectedMediaInputDevice().then(() => {
 
 setBluetoothAndNearlinkPreferredRecordCategory(category: BluetoothAndNearlinkPreferredRecordCategory): Promise<void\>
 
-Sets the preferred device category for recording with Bluetooth or NearLink. This API uses a promise to return the result.
+Sets the preferred device category for recording with Bluetooth or NearLink. This API uses a promise to return the result asynchronously.
 
 > **NOTE**
 >
-> - Applications can set this category before connecting to Bluetooth or NearLink devices, and the system prioritizes using the device for recording when the device is connected.
+> - Apps can set this category before connecting to Bluetooth or NearLink devices, and the system prioritizes using the device for recording when the device is connected.
 > - If there are recording streams of other applications with higher priorities in the system, the actual input device used will follow the input device selected by these applications.
-> - Applications can listen for the [currentInputDeviceChanged](#oncurrentinputdevicechanged21) event to find out the actual input device being used.
+> - Apps can listen for the [currentInputDeviceChanged](#oncurrentinputdevicechanged21) event to find out the actual input device being used.
 
 **System capability**: SystemCapability.Multimedia.Audio.Device
 
@@ -785,7 +779,7 @@ Sets the preferred device category for recording with Bluetooth or NearLink. Thi
 
 | Name  | Type                                                | Mandatory| Description                                                     |
 | :------- | :--------------------------------------------------- | :--- |:--------------------------------------------------------|
-| category| [BluetoothAndNearlinkPreferredRecordCategory](arkts-apis-audio-e.md#bluetoothandnearlinkpreferredrecordcategory21) | Yes  | Preferred device category for recording with Bluetooth or NearLink.|
+| category| [BluetoothAndNearlinkPreferredRecordCategory](arkts-apis-audio-e.md#bluetoothandnearlinkpreferredrecordcategory21) | Yes | Preferred device category available for recording with Bluetooth or NearLink. |
 
 **Return value**
 
@@ -807,11 +801,13 @@ For details about the error codes, see [Audio Error Codes](errorcode-audio.md).
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-const category = audio.BluetoothAndNearlinkPreferredRecordCategory.PREFERRED_LOW_LATENCY;
+// Set the Bluetooth and NearLink recording preference to the low-latency mode, so that the low-latency device is preferentially used.
+let category = audio.BluetoothAndNearlinkPreferredRecordCategory.PREFERRED_LOW_LATENCY;
+
 audioSessionManager.setBluetoothAndNearlinkPreferredRecordCategory(category).then(() => {
-  console.info('Succeeded in doing setBluetoothAndNearlinkPreferredRecordCategory.');
+  console.info('Succeeded in setting the bluetooth and nearlink preferred record category.');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to setBluetoothAndNearlinkPreferredRecordCategory. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to set the bluetooth and nearlink preferred record category. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -827,7 +823,7 @@ Obtains the preferred device category for recording with Bluetooth or NearLink, 
 
 | Type          | Description                     |
 | -------------- | ------------------------- |
-| [BluetoothAndNearlinkPreferredRecordCategory](arkts-apis-audio-e.md#bluetoothandnearlinkpreferredrecordcategory21) | Preferred device category for recording with Bluetooth or NearLink.|
+| [BluetoothAndNearlinkPreferredRecordCategory](arkts-apis-audio-e.md#bluetoothandnearlinkpreferredrecordcategory21) | Preferred device category for recording with Bluetooth or NearLink. |
 
 **Error codes**
 
@@ -844,10 +840,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let category: audio.BluetoothAndNearlinkPreferredRecordCategory = audioSessionManager.getBluetoothAndNearlinkPreferredRecordCategory();
-  console.info('Succeeded in doing getBluetoothAndNearlinkPreferredRecordCategory.');
+  console.info(`Succeeded in obtaining the bluetooth and nearlink preferred record category, category: ${category}.`);
 } catch (err) {
   let error = err as BusinessError;
-  console.error(`Failed to getBluetoothAndNearlinkPreferredRecordCategory. Code: ${error.code}, message: ${error.message}`);
+  console.error(`Failed to obtain the bluetooth and nearlink preferred record category. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -878,10 +874,8 @@ For details about the error codes, see [Audio Error Codes](errorcode-audio.md).
 **Example**
 
 ```ts
-import { audio } from '@kit.AudioKit';
-
 let currentInputDeviceChangedCallback = (currentInputDeviceChangedEvent: audio.CurrentInputDeviceChangedEvent) => {
-  console.info(`reason of currentInputDeviceChanged: ${currentInputDeviceChangedEvent.changeReason} `);
+  console.info(`Current input device changed, currentInputDeviceChangedEvent: ${JSON.stringify(currentInputDeviceChangedEvent)}.`);
 };
 
 audioSessionManager.on('currentInputDeviceChanged', currentInputDeviceChangedCallback);
@@ -899,8 +893,8 @@ Unsubscribes from the current input device change event.
 
 | Name  | Type                                                | Mandatory| Description                                                     |
 | :------- | :--------------------------------------------------- | :--- |:--------------------------------------------------------|
-| type     | string | Yes  | Event type. The event **'currentInputDeviceChanged'** is triggered when the current input device is changed.|
-| callback | Callback<[CurrentInputDeviceChangedEvent](arkts-apis-audio-i.md#currentinputdevicechangedevent21)> | No| Callback used to return the information about the current input device.|
+| type     | string | Yes   | Event type. This field has a fixed value of **'currentInputDeviceChanged'**. |
+| callback | Callback<[CurrentInputDeviceChangedEvent](arkts-apis-audio-i.md#currentinputdevicechangedevent21)> | No | Callback function. When a callback function is passed in, only the listening event corresponding to this callback is unregistered, and the same callback function must be bound as in [on('currentInputDeviceChanged')](#oncurrentinputdevicechanged21); when no parameter is passed, all subscribed listening events of this event type are unregistered.  |
 
 **Error codes**
 
@@ -918,7 +912,7 @@ audioSessionManager.off('currentInputDeviceChanged');
 
 // For the same event, if the callback parameter passed to the off API is the same as that passed to the on API, the off API cancels the subscription registered with the specified callback parameter.
 let currentInputDeviceChangedCallback = (currentInputDeviceChangedEvent: audio.CurrentInputDeviceChangedEvent) => {
-  console.info(`reason of currentInputDeviceChanged: ${currentInputDeviceChangedEvent.changeReason} `);
+  console.info(`Current input device changed, currentInputDeviceChangedEvent: ${JSON.stringify(currentInputDeviceChangedEvent)}.`);
 };
 
 audioSessionManager.on('currentInputDeviceChanged', currentInputDeviceChangedCallback);
@@ -934,7 +928,7 @@ Enables mute suggestion notifications for mixed playback.
 
 Typically, when the audio mixing mode is used, if two applications plays audio at the same time, their audio streams are mixed. In certain scenarios (such as games or broadcasts), applications can mute their own audio to provide a better user experience.
 
-If this feature is enabled, mute and unmute suggestions will be sent through the [AudioSessionStateChangedEvent](arkts-apis-audio-i.md#audiosessionstatechangedevent20) callback after the audio session state change event is subscribed to. Receiving the muted suggestion indicates that another application starts to play audio, and the played audio and the audio of this application cannot be mixed.
+If this feature is enabled, mute and unmute suggestions will be sent through the [AudioSessionStateChangedEvent](arkts-apis-audio-i.md#audiosessionstatechangedevent20) callback after the audio session state change event is subscribed to. Receiving the muted suggestion indicates that another app starts to play audio, and the played audio and the audio of this application cannot be mixed.
 
 This feature can be used only by audio sessions for which [AudioSessionScene](./arkts-apis-audio-e.md#audiosessionscene20) has been set and the **CONCURRENCY_MIX_WITH_OTHERS** mode has been activated. This feature takes effect only once when the audio session is activated. You need to enable it again before each activation of the audio session.
 
@@ -948,7 +942,7 @@ For details, see [Enabling Mute Suggestion Notifications for Mixed Playback](../
 
 | Name  | Type              | Mandatory| Description     |
 | -------- | ----------------- | ---- | --------- |
-| enable   | boolean           | Yes  | Whether to enable mute suggestion notifications for mixed playback. **true** to enable, **false** otherwise.|
+| enable   | boolean           | Yes   | Whether to enable mute suggestion notifications for mixed playback. **true** to enable, and **false** otherwise. |
 
 **Error codes**
 
@@ -962,8 +956,9 @@ For details about the error codes, see [Audio Error Codes](errorcode-audio.md).
 **Example**
 
 ```ts
-audio.getAudioManager().getSessionManager().enableMuteSuggestionWhenMixWithOthers(true);
+audioSessionManager.enableMuteSuggestionWhenMixWithOthers(true);
 ```
+
 
 ## setCapturerMuteHint<sup>24+</sup>
 
@@ -1007,9 +1002,9 @@ For details about the error codes, see [Audio Error Codes](errorcode-audio.md).
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioSessionManager.setCapturerMuteHint(true).then(() => {
-  console.info('Successfully set capturer mute hint.');
+  console.info('Succeeded in setting the capturer mute hint.');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to setCapturerMuteHint. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to set the capturer mute hint. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1043,7 +1038,7 @@ Sets audio session behavior parameters. (Multiple flags can be combined.)
 
 > **NOTE**
 >
-> If this API is called while an audio session is active, you must call the [activateAudioSession](./arkts-apis-audio-AudioSessionManager.md#activateaudiosession12) API again for the settings to take effect.
+> If this API is called while an audio session is active, you must call [activateAudioSession](#activateaudiosession12) again for the settings to take effect.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -1067,6 +1062,7 @@ For details about the error codes, see [Audio Error Codes](errorcode-audio.md).
 **Example**
 
 ```ts
+// Set the audio session behavior to mute when interrupted. When the audio is interrupted by another app, it is automatically muted.
 let behavior: number = audio.AudioSessionBehaviorFlags.MUTE_WHEN_INTERRUPTED;
 audioSessionManager.setAudioSessionBehavior(behavior);
 ```

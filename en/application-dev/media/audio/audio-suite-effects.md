@@ -1,12 +1,11 @@
 # Audio Effects (C/C++)
-
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @xxngwang-->
 <!--Designer: @jay-liusong-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=19889a99389d4cf8eb3285184cf910e9c13f48e4 translatedAt=2026-08-15T01:57:18.674Z pushedAt=2026-08-15T09:28:43.420Z -->
+<!-- md-trans-meta sourceCommit=e08619ef493b16df1a39cca6721a6fc41e76c0cf translatedAt=2026-09-28T02:36:00.432Z pushedAt=2026-09-29T06:51:20.059Z -->
 
 Since API version 22, [OHAudioSuite](../../reference/apis-audio-kit/capi-ohaudiosuite.md) provides various audio effect nodes. You can select appropriate effect nodes to process audio based on your service requirements.
 
@@ -55,21 +54,13 @@ The frequencies corresponding to the 10 bands are as follows:
 The equalizer node provides the following preset effects:
 
 - [OH_EQUALIZER_PARAM_DEFAULT](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#variables): default effect, with the gain for each band being {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}.
-
 - [OH_EQUALIZER_PARAM_BALLADS](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#variables): ballad effect, with the gain for each band being {3, 5, 2, -4, 1, 2, -3, 1, 4, 5}.
-
 - [OH_EQUALIZER_PARAM_CHINESE_STYLE](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#variables): Chinese style effect, with the gain for each band being {0, 0, 2, 0, 0, 4, 4, 2, 2, 5}.
-
 - [OH_EQUALIZER_PARAM_CLASSICAL](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#variables): Classical effect, with the gain for each band being {2, 3, 2, 1, 0, 0, -5, -5, -5, -6}.
-
 - [OH_EQUALIZER_PARAM_DANCE_MUSIC](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#variables): Dance music effect, with the gain for each band being {4, 3, 2, -3, 0, 0, 5, 4, 2, 0}.
-
 - [OH_EQUALIZER_PARAM_JAZZ](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#variables): Jazz effect, with the gain for each band being {2, 0, 2, 3, 6, 5, -1, 3, 4, 4}.
-
 - [OH_EQUALIZER_PARAM_POP](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#variables): Pop effect, with the gain for each band being {5, 2, 1, -1, -5, -5, -2, 1, 2, 4}.
-
 - [OH_EQUALIZER_PARAM_RB](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#variables): R&B effect, with the gain for each band being {1, 4, 5, 3, -2, -2, 2, 3, 5, 5}.
-
 - [OH_EQUALIZER_PARAM_ROCK](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#variables): Rock effect, with the gain for each band being {6, 4, 4, 2, 0, 1, 3, 3, 5, 4}.
 
 ### Setting Method for the Equalizer Effect Node
@@ -140,7 +131,6 @@ The source separation effect node [EFFECT_MULTII_OUTPUT_NODE_TYPE_AUDIO_SEPARATI
 ### Configuration Description
 
 - A source separation effect node can connect only to output nodes, not to other effect nodes.
-
 - Because it is a multi-output node, obtain the processed data through [OH_AudioSuiteEngine_MultiRenderFrame](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_multirenderframe). The size of `audioDataArray` must correspond one-to-one with the number of outputs: one channel for vocals and one channel for accompaniment.
 
 ### Setting Method for the Source Separation Effect Node
@@ -214,7 +204,7 @@ Refer to [Mixing and Cascading](audio-suite-manual-rendering.md#mixing-and-casca
 
 ## Spatial Rendering
 
-The spatial rendering effect node [EFFECT_NODE_TYPE_SPACE_RENDER](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audionode_type) is used to implement the positioning and rendering of 3D spatial audio. It adopts a left-handed coordinate system (the thumb points to the positive X-axis direction, the index finger points to the positive Y-axis direction, and the remaining fingers point to the positive Z-axis direction). For details, see [Spatial Rendering (C/C++)](audio-suite-space-render.md).
+The spatial rendering effect node [EFFECT_NODE_TYPE_SPACE_RENDER](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audionode_type) is used to implement the positioning and rendering of 3D spatial audio. It adopts a left-handed coordinate system (the thumb points to the positive X-axis direction, the index finger points to the positive Y-axis direction, and the remaining fingers point to the positive Z-axis direction). For details, see [Spatial Audio Rendering (C/C++)](audio-suite-space-render.md).
 
 ### Rendering Mode
 
@@ -409,33 +399,20 @@ The HOA (High-Order Ambisonics)-to-binaural spatial audio node [EFFECT_NODE_TYPE
 The preceding node of this node must be an HOA-format input node. The input audio format requirements are as follows:
 
 - Sample rate: [OH_Audio_SampleRate](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audio_samplerate).SAMPLE_RATE_16000 or SAMPLE_RATE_48000.
-
 - Sample format: [OH_Audio_SampleFormat](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audio_sampleformat).
-
 - Channel layout: Supports first-order to third-order HOA. The values are as follows:
-
   - [OH_AudioChannelLayout](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_AMB_ORDER1_ACN_N3D.
-
   - [OH_AudioChannelLayout](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_AMB_ORDER1_ACN_SN3D.
-
   - [OH_AudioChannelLayout](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_AMB_ORDER1_FUMA.
-
   - [OH_AudioChannelLayout](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_AMB_ORDER2_ACN_N3D.
-
   - [OH_AudioChannelLayout](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_AMB_ORDER2_ACN_SN3D.
-
   - [OH_AudioChannelLayout](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_AMB_ORDER2_FUMA.
-
   - [OH_AudioChannelLayout](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_AMB_ORDER3_ACN_N3D.
-
   - [OH_AudioChannelLayout](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_AMB_ORDER3_ACN_SN3D.
-
   - [OH_AudioChannelLayout](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_AMB_ORDER3_FUMA.
 
 ### Configuration Description
 
 - The preceding node of this node must be connected to an input node whose audio format is HOA.
-
 - If the node is not connected correctly, an error is reported when [OH_AudioSuiteEngine_StartPipeline](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_startpipeline) is called.
-
 - This node requires no additional configuration parameters. It takes effect once it is created and connected correctly.

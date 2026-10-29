@@ -236,7 +236,7 @@ function setinputs(): void {
 | ---- | ---- | ---- | ---- | ---- |
 | image | [Image](#image) \| null | 否 | 否 | 基于物理渲染（PBR）属性纹理贴图，用于表达材质的纹理信息。|
 | factor | [Vec4](js-apis-inner-scene-types.md#vec4) | 否 | 否 | 基于物理渲染（PBR）属性因子，不同属性不同含义。|
-| sampler | [Sampler](#sampler20) | 否 | 是 | 纹理贴图采样器，默认使用放大、缩小和mipmap过滤模式为线性过滤（LINEAR），纹理贴图U、V、W方向的寻址模式为重复（REPEAT）。|
+| sampler | [Sampler](#sampler20) | 否 | 是 | 纹理贴图采样器，默认使用放大、缩小和mipmap过滤模式为线性过滤（LINEAR），纹理贴图U、V方向的寻址模式为重复（REPEAT）。|
 
 ## MetallicRoughnessMaterial<sup>20+</sup>
 
@@ -687,7 +687,7 @@ getPropertyValue(propertyName: string): Object | null | undefined
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| propertyName | string | 是 | 特定特效属性的名称。目前支持的字符串为：<br>-'exposure':该属性表示图像的曝光度。<br>-'vibrance': 该属性表示图像的自然饱和度。 |
+| propertyName | string | 是 | 特定特效属性的名称。目前支持的字符串为：<br>-'exposure'：该属性表示图像的曝光度。<br>-'vibrance'：该属性表示图像的自然饱和度。 |
 
 **返回值：**
 
@@ -729,7 +729,7 @@ setPropertyValue(propertyName: string, value: Object | undefined): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| propertyName | string | 是 | 特定特效属性的名称。目前支持的字符串为：<br>-'exposure':该属性表示图像的曝光度。<br>-'vibrance': 该属性表示图像的自然饱和度。 |
+| propertyName | string | 是 | 特定特效属性的名称。目前支持的字符串为：<br>-'exposure'：该属性表示图像的曝光度。<br>-'vibrance'：该属性表示图像的自然饱和度。 |
 | value | Object \| undefined | 是 | 要设置的特效属性值。<br>-'exposure'：value实际类型为number，推荐取值范围[-5, 5]。取值越大，图像越亮。<br>-'vibrance'：value实际类型为number，推荐取值范围 [-1, 1]。取值越大，图像颜色越鲜艳。 |
 
 **返回值：**

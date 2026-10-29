@@ -35,18 +35,18 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
 
 | 接口名 | 描述 |
 | -------- | -------- |
-| isDLPFile(fd: number): Promise&lt;boolean&gt; <br> isDLPFile(fd: number, callback: AsyncCallback&lt;boolean&gt;): void| 判断是否是dlp文件。 |
+| isDLPFile(fd: number): Promise&lt;boolean&gt; <br> isDLPFile(fd: number, callback: AsyncCallback&lt;boolean&gt;): void| 判断是否是DLP文件。 |
 | getDLPPermissionInfo(): Promise&lt;DLPPermissionInfo&gt; <br>getDLPPermissionInfo(callback: AsyncCallback&lt;DLPPermissionInfo&gt;): void  | 获取当前沙箱应用的权限类型。 |
-| getOriginalFileName(fileName: string): string | 获取dlp文件原始文件名。 |
-| getDLPSuffix(): string | 获取dlp文件dlp后缀名。 |
-| on(type: 'openDLPFile', listener: Callback&lt;AccessedDLPFileInfo&gt;): void | 注册dlp文件打开事件监听，用于原始应用获取dlp文件打开事件。 |
-| off(type: 'openDLPFile', listener?: Callback&lt;AccessedDLPFileInfo&gt;): void | 取消dlp文件打开事件监听。 |
+| getOriginalFileName(fileName: string): string | 获取DLP文件原始文件名。 |
+| getDLPSuffix(): string | 获取DLP文件dlp后缀名。 |
+| on(type: 'openDLPFile', listener: Callback&lt;AccessedDLPFileInfo&gt;): void | 注册DLP文件打开事件监听，用于原始应用获取DLP文件打开事件。 |
+| off(type: 'openDLPFile', listener?: Callback&lt;AccessedDLPFileInfo&gt;): void | 取消DLP文件打开事件监听。 |
 | isInSandbox(): Promise&lt;boolean&gt; <br>isInSandbox(callback: AsyncCallback&lt;boolean&gt;): void | 判断当前是否是dlp沙箱应用。 |
 | getDLPSupportedFileTypes(): Promise&lt;Array&lt;string&gt;&gt;<br>getDLPSupportedFileTypes(callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void | 获取当前系统支持添加权限保护的文件格式类型。 |
 | setRetentionState(docUris: Array&lt;string&gt;): Promise&lt;void&gt; <br> setRetentionState(docUris: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void | 设置dlp分身应用保留状态。 |
 | cancelRetentionState(docUris: Array&lt;string&gt;): Promise&lt;void&gt;<br> cancelRetentionState(docUris: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void | 取消dlp分身应用保留状态。 |
 | getRetentionSandboxList(bundleName?: string): Promise&lt;Array&lt;RetentionSandboxInfo&gt;&gt; <br> getRetentionSandboxList(bundleName: string, callback: AsyncCallback&lt;Array&lt;RetentionSandboxInfo&gt;&gt;): void  <br> getRetentionSandboxList(callback: AsyncCallback&lt;Array&lt;RetentionSandboxInfo&gt;&gt;): void| 获取当前保留沙箱列表。 |
-| getDLPFileAccessRecords(): Promise&lt;Array&lt;AccessedDLPFileInfo&gt;&gt; <br> getDLPFileAccessRecords(callback: AsyncCallback&lt;Array&lt;AccessedDLPFileInfo&gt;&gt;): void | 获取dlp文件访问记录。 |
+| getDLPFileAccessRecords(): Promise&lt;Array&lt;AccessedDLPFileInfo&gt;&gt; <br> getDLPFileAccessRecords(callback: AsyncCallback&lt;Array&lt;AccessedDLPFileInfo&gt;&gt;): void | 获取DLP文件访问记录。 |
 |setSandboxAppConfig(configInfo: string): Promise&lt;void&gt;|设置沙箱应用配置信息。|
 |getSandboxAppConfig(): Promise&lt;string&gt;|查询沙箱应用配置信息。|
 |cleanSandboxAppConfig(): Promise&lt;void&gt;|清理沙箱应用配置信息。|
@@ -228,9 +228,9 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
     getDLPSupportedFileTypes() {
       if (canIUse('SystemCapability.Security.DataLossPrevention')) {
         dlpPermission.getDLPSupportedFileTypes((err, result) => {
-          console.info('getDLPSupportedFileTypes: ' + JSON.stringify(err));
+          console.error('getDLPSupportedFileTypes: ' + JSON.stringify(err));
           console.info('getDLPSupportedFileTypes: ' + JSON.stringify(result));
-          hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'getDLPSupportedFileTypes: ' + JSON.stringify(err));
+          hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG, 'getDLPSupportedFileTypes: ' + JSON.stringify(err));
           hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'getDLPSupportedFileTypes: ' + JSON.stringify(result));
           this.result = 'getDLPSupportedFileTypes result: ' + JSON.stringify(result);
         });
@@ -240,7 +240,7 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
 
 7. 判断当前打开文件是否是DLP文件。 
 
-   使用该接口的前置条件：需要dlp文件进行判断。
+   使用该接口的前置条件：需要DLP文件进行判断。
 
     <!-- @[dlp_isCurrentDlpFile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->  
     
@@ -256,7 +256,7 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
           if (res.valueOf()) {
             this.result = 'isDLPFile result: ' + JSON.stringify(res);
           } else {
-            this.result = '请打开一个dlp文件! ';
+            this.result = getResourceString(this.context, $r('app.string.open_dlp_file_prompt'));
           }
           console.info('res', res);
           hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'res' + res);

@@ -9,7 +9,7 @@
 
 ## Overview
 
-Provides APIs for key derivation functions (KDFs).
+Describes the APIs provided by OpenHarmony for key derivation functions (KDFs).
 
 **Since**: 20
 

@@ -6,6 +6,7 @@
 <!--Designer: @HighLowWorld-->
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=ffc5e2859dca1ab6a17f6a8a1c145390f67cf1d5 translatedAt=2026-10-10T03:26:51.384Z pushedAt=2026-10-10T03:30:34.112Z -->
 
 This topic walks you through on how to export the public key of a persistently stored asymmetric key. Currently, HUKS supports export of the ECC, RSA, Ed25519, X25519, and SM2 public keys.
 
@@ -27,7 +28,7 @@ target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
    - **paramSetIn**: This parameter is reserved. Leave it empty.
    - **key**: [OH_Huks_Blob](../../reference/apis-universal-keystore-kit/capi-hukstypeapi-oh-huks-blob.md) object used to hold the key exported. Ensure that there is enough memory for storing the key exported.
 
-2. Call [OH_Huks_GetKeyItemParamSet](../../reference/apis-universal-keystore-kit/capi-native-huks-api-h.md#oh_huks_getkeyitemparamset) to pass in the preceding parameters.
+2. Call [OH_Huks_ExportPublicKeyItem](../../reference/apis-universal-keystore-kit/capi-native-huks-api-h.md#oh_huks_exportpublickeyitem) and pass in the parameters above.
 
 3. Check the return value. If the operation is successful, the exported key is in the **key** field in the DER format defined in X.509. For details about the format, see [Public Key Material Format](huks-concepts.md#public-key-material-format). If the operation fails, an error code is returned.
 
@@ -114,4 +115,3 @@ static napi_value ExportKey(napi_env env, napi_callback_info info)
     return ret;
 }
 ```
-<!--no_check-->

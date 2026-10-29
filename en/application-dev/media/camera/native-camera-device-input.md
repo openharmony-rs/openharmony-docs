@@ -1,12 +1,11 @@
 # Device Input Management (C/C++)
-
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=03da8d98875c99278437bdd28f12d4fdb3efd8f7 translatedAt=2026-08-10T09:18:47.836Z pushedAt=2026-08-10T13:18:01.733Z -->
+<!-- md-trans-meta sourceCommit=132342cdd19e09e8d1c7a964e48a57b6cf30fc8d translatedAt=2026-09-28T02:44:08.620Z pushedAt=2026-09-29T08:23:55.322Z -->
 
 Before developing a camera application, you must [request required permissions](camera-preparation.md).
 
@@ -16,7 +15,7 @@ A camera application invokes and controls a camera device to perform basic opera
 
 For detailed API descriptions, refer to [OH_Camera](../../reference/apis-camera-kit/capi-oh-camera.md).
 
-1. Import the NDK.  
+1. Import the NDK.
 
    ```c++
    // Include the NDK header files.
@@ -41,7 +40,6 @@ For detailed API descriptions, refer to [OH_Camera](../../reference/apis-camera-
    ```
 
 3. Call [OH_CameraManager_CreateCameraInput()](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_createcamerainput) to obtain a cameraInput object.
-
    ```c++
    // Listen for camera input errors.
    void OnCameraInputError(const Camera_Input* cameraInput, Camera_ErrorCode errorCode)
@@ -57,7 +55,6 @@ For detailed API descriptions, refer to [OH_Camera](../../reference/apis-camera-
       return &cameraInputCallbacks;
    }
    ```
-
    ```c++
    // Listen for camera status information.
    void CameraManagerStatusCallback(Camera_Manager* cameraManager, Camera_StatusInfo* status)
@@ -73,7 +70,6 @@ For detailed API descriptions, refer to [OH_Camera](../../reference/apis-camera-
        return &cameraManagerListener;
    }
    ```
-
    ```c++
    void CreateAndOpenCamera()
    {
@@ -112,7 +108,7 @@ For detailed API descriptions, refer to [OH_Camera](../../reference/apis-camera-
        // Open a camera.
        ret = OH_CameraInput_Open(cameraInput);
        if (ret != CAMERA_OK) {
-           OH_LOG_ERROR(LOG_APP, "OH_CameraInput_open failed.");
+           OH_LOG_ERROR(LOG_APP, "OH_CameraInput_Open failed.");
            return;
        }
    }
@@ -145,6 +141,7 @@ For detailed API descriptions, refer to [OH_Camera](../../reference/apis-camera-
    ```
 
 5. Call [OH_CameraManager_GetSupportedCameraOutputCapabilityWithSceneMode()](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_getsupportedcameraoutputcapabilitywithscenemode) to obtain all output streams supported by the current device in the current mode, such as preview streams and photo streams. The output streams are available in the profile fields of [Camera_OutputCapability](../../reference/apis-camera-kit/capi-oh-camera-camera-outputcapability.md). Depending on the [Camera_SceneMode](../../reference/apis-camera-kit/capi-camera-h.md#camera_scenemode) specified for the camera device, you need to add the corresponding type of output stream to the session. For details, see step 6 in the session management [development procedure](./native-camera-session-management.md#how-to-develop).
+
 
    ```c++
    Camera_OutputCapability* GetSupportedCameraOutputCapability(Camera_Manager* cameraManager, Camera_Device &camera)

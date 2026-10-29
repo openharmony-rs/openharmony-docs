@@ -19,7 +19,7 @@
     - [@ohos.arkui.observer (Observer)](js-apis-arkui-observer.md)
     - [@ohos.arkui.Prefetcher (Prefetching)](js-apis-arkui-Prefetcher.md)
     - [@ohos.arkui.shape (Shape)](js-apis-arkui-shape.md)
-    - [@ohos.arkui.theme(Theme)](js-apis-arkui-theme.md)
+    - [@ohos.arkui.theme (Theme)](js-apis-arkui-theme.md)
     - @ohos.arkui.UIContext (UIContext)<!--js-apis-arkui-uicontext-->
       - [Module Description](arkts-apis-uicontext.md)
       <!--Del-->
@@ -79,7 +79,7 @@
     - [@ohos.measure (Text Calculation)](js-apis-measure.md)
     - [@ohos.mediaquery (Media Query)](js-apis-mediaquery.md)
     - [@ohos.pluginComponent (PluginComponentManager)](js-apis-plugincomponent.md)
-    - [@ohos.promptAction (Dialog Box)](js-apis-promptAction.md)
+    - [@ohos.promptAction (Prompt)](js-apis-promptAction.md)
     <!--Del-->
     - [@ohos.promptAction (Prompt) (System API)](js-apis-promptAction-sys.md)
     <!--DelEnd-->

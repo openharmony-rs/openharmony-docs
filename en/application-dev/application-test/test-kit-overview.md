@@ -4,8 +4,8 @@
 <!--Owner: @inter515-->
 <!--Designer: @inter515-->
 <!--Tester: @laonie666-->
-<!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=fc51a757cde4308898b8986a88362ef10907d498 translatedAt=2026-09-17T09:20:10.106Z pushedAt=2026-09-21T11:20:37.067Z -->
+<!--Adviser: @chen8281-->
+<!-- md-trans-meta sourceCommit=0aac5c07a75bbca4e339d2ef1a5a592663ce2891 translatedAt=2026-10-13T07:33:45.738Z pushedAt=2026-10-15T07:14:56.887Z -->
 
 ## Capability Scope
 
@@ -16,13 +16,13 @@ Test Kit provides automated test frameworks that support unit, UI, and performan
   - Assertion APIs that can be flexibly integrated into your test scripts and support multiple assertion modes to verify that test cases meet expected behavior.
   - APIs for executing preset and clear actions at both test suite and test case levels.
   - Multiple test case execution modes, including specified test case execution, random execution, and stress execution.
-- UI test capability: provides automated UI test features. UI test scripts are developed based on JSUnit. For details, see <!--RP2-->[UITest User Guide](uitest-guidelines.md)<!--RP2End-->. The main features are as follows:
+- UI test capability: provides automated UI test features. UI test scripts are developed based on JsUnit. For details, see <!--RP2-->[UITest User Guide](uitest-guidelines.md)<!--RP2End-->. The main features are as follows:
   - APIs for searching for components in multiple modes, for example, by component attribute or relative position.
   - APIs for simulating UI operations, such as tapping, double-tapping, swiping, and the two-finger pinch gesture, as well as operations on external devices such as the mouse and keyboard.
   - APIs for simulating window operations, such as resizing and moving the window.
   - Shell commands for simulating UI operations, such as tapping, double-tapping, and swiping.
   - Capabilities of listening for system dialog boxes and toasts, and obtaining prompt messages.
-- Performance test capability: provides automated white-box performance test features. Performance test scripts are developed based on JSUnit. For details, see <!--RP3-->[PerfTest User Guide](perftest-guideline.md)<!--RP3End-->. The main features are as follows:
+- Performance test capability: provides automated white-box performance test features. Performance test scripts are developed based on JsUnit. For details, see <!--RP3-->[PerfTest User Guide](perftest-guideline.md)<!--RP3End-->. The main features are as follows:
   - Basic performance data collection during the execution of a specified code segment, including the execution duration, CPU usage, and memory usage.
   - Application scenario-based performance data collection, including the application launch latency, page switching latency, and list scrolling frame rate.
 - Auxiliary testing capability: provides command-line auxiliary testing tools that support system state management and environment simulation. Devices running OpenHarmony 7.0.0 or later support this capability. For details, see <!--RP5-->Auxiliary Testing Tool Usage Guide<!--RP5End-->.

@@ -2,9 +2,10 @@
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=4faed534b39ef26ef8f9b647802a53e9f8d2b792 translatedAt=2026-10-09T10:13:00.084Z pushedAt=2026-10-12T08:05:06.649Z -->
 
 The **NotificationSortingMap** module provides APIs for defining the sorting information of active notifications in all subscribed notifications.
 
@@ -22,5 +23,5 @@ The **NotificationSortingMap** module provides APIs for defining the sorting inf
 
 | Name       | Type    | Read Only| Optional| Description                                      |
 | ----------- | ------- | --- | ----- |------------------------------------------ |
-| sortings    | Record<string, [NotificationSorting](js-apis-inner-notification-notificationSorting-sys.md)\> | Yes| No | Array of notification sorting information.                                  |
+| sortings    | Record<string, [NotificationSorting](js-apis-inner-notification-notificationSorting-sys.md)\> | Yes | No  | [Notification sorting](../../notification/notification-glossary.md#notification-sorting) information.                                   |
 | sortedHashCode | Array<string\> | Yes| No | Hash codes for notification sorting.|

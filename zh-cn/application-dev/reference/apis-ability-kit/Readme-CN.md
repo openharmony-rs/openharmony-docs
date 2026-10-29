@@ -83,7 +83,7 @@
        - [ContinuableInfo (系统接口)](js-apis-inner-application-continuableInfo-sys.md)
        - [ContinueCallback (系统接口)](js-apis-inner-application-continueCallback-sys.md)
        - [ContinueMissionInfo (系统接口)](js-apis-inner-application-continueMissionInfo-sys.md)
-       - [MissionCallbacks (系统接口)](js-apis-inner-application-missionCallbacks-sys.md)
+       - [MissionCallback (系统接口)](js-apis-inner-application-missionCallbacks-sys.md)
        - [MissionDeviceInfo (系统接口)](js-apis-inner-application-missionDeviceInfo-sys.md)
        - [MissionParameter (系统接口)](js-apis-inner-application-missionParameter-sys.md)
        <!--DelEnd-->

@@ -1,10 +1,11 @@
 # OH_AudioRenderer_Callbacks_Struct
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @boxwall-->
+<!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=1ff9e9cd1ebb6561090ad32be99073f8301559bf translatedAt=2026-10-08T12:42:06.577Z pushedAt=2026-10-13T06:38:42.782Z -->
 
 ```c
 typedef struct OH_AudioRenderer_Callbacks_Struct {...} OH_AudioRenderer_Callbacks
@@ -14,7 +15,7 @@ typedef struct OH_AudioRenderer_Callbacks_Struct {...} OH_AudioRenderer_Callback
 
 The struct defines a pointer to the callback functions related to an audio renderer.
 
-To avoid unexpected behavior, ensure that every member variable of the struct is initialized by a custom callback method or a null pointer when setting the audio callback functions.
+To avoid unexpected behavior, ensure that every member variable of the struct is initialized by a custom callback function or a null pointer when setting the audio callback functions.
 
 For details, see [(Recommended) Using OHAudio for Audio Playback (C/C++)](../../media/audio/using-ohaudio-for-playback.md).
 
@@ -72,7 +73,7 @@ Defines a function pointer to the callback function used to write audio data.<br
 | [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | Pointer to an audio renderer instance, which is created by calling [OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer).|
 | void* userData | Pointer to the data storage area customized by the application.|
 | void* buffer | Pointer to the playback data storage area, which is used by the application to fill in playback data.|
-| int32_t length | Length of the buffer.|
+| int32_t length | Length of the buffer, in bytes. |
 
 ### OH_AudioRenderer_OnStreamEvent()
 
@@ -148,3 +149,5 @@ Defines a function pointer to the callback function used to process audio playba
 | [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | Pointer to an audio renderer instance, which is created by calling [OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer).|
 | void* userData | Pointer to the data storage area customized by the application.|
 | [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) error | Audio playback error result, which may be **AUDIOSTREAM_ERROR_INVALID_PARAM**, **AUDIOSTREAM_ERROR_ILLEGAL_STATE**, or **AUDIOSTREAM_ERROR_SYSTEM**.|
+
+

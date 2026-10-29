@@ -522,7 +522,7 @@ enum Camera_SystemPressureLevel
 | SYSTEM_PRESSURE_NORMAL = 0 | 系统压力正常。 |
 | SYSTEM_PRESSURE_MILD = 1 | 系统压力升高，但是系统不会主动管控。 |
 | SYSTEM_PRESSURE_SEVERE = 2 | 系统压力可能对图像总质量、性能产生影响。 |
-| SYSTEM_PRESSURE_CRITICAL = 3 | 系统图像质量、性能产生显著影响。 |
+| SYSTEM_PRESSURE_CRITICAL = 3 | 系统压力可能对图像质量、性能产生显著影响。 |
 | SYSTEM_PRESSURE_SHUTDOWN = 4 | 系统压力过高，停止工作。 |
 
 ### Camera_PreconfigType
@@ -539,9 +539,9 @@ enum Camera_PreconfigType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| PRECONFIG_720P = 0 | 预配置照片分辨率为720P。 |
-| PRECONFIG_1080P = 1 | 预配置照片分辨率为1080P。 |
-| PRECONFIG_4K = 2 | 预配置照片分辨率为4K。 |
+| PRECONFIG_720P = 0 | 预配置分辨率为720P。 |
+| PRECONFIG_1080P = 1 | 预配置分辨率为1080P。 |
+| PRECONFIG_4K = 2 | 预配置分辨率为4K。 |
 | PRECONFIG_HIGH_QUALITY = 3 | 预配置照片为高质量。 |
 | PRECONFIG_HIGH_QUALITY_PHOTOSESSION_BT2020 = 4 | 预配置支持预览高动态范围显示和HDR动图拍摄。<br>**起始版本：** 23 |
 
@@ -674,7 +674,7 @@ enum Camera_ControlCenterEffectType
 | -- | -- |
 | CONTROL_CENTER_EFFECT_TYPE_BEAUTY = 0 | 控制器效果类型：美颜。 |
 | CONTROL_CENTER_EFFECT_TYPE_PORTRAIT = 1 | 控制器效果类型：人像虚化。 |
-| CONTROL_CENTER_EFFECT_TYPE_AUTO_FRAMING = 2 | 控制器效果类型：自动对焦。<br>**起始版本：** 24 |
+| CONTROL_CENTER_EFFECT_TYPE_AUTO_FRAMING = 2 | 控制器效果类型：自动构图。<br>**起始版本：** 24 |
 | CONTROL_CENTER_EFFECT_TYPE_COLOR_EFFECT = 3 | 控制器效果类型：XMAGE风格。<br>**起始版本：** 26.0.0 |
 
 ### Camera_PhotoQualityPrioritization

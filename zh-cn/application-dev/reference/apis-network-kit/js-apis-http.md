@@ -160,7 +160,7 @@ createHttp(): HttpRequest
 创建一个HTTP请求，里面包括发起请求、中断请求、订阅/取消订阅HTTP Response Header事件。当发起多个HTTP请求时，需为每个HTTP请求创建对应HttpRequest对象。每一个HttpRequest对象对应一个HTTP请求。
 
 > **说明：**
-> 当该请求使用完毕时，需调用destroy方法释放资源，否则会出现内存泄露问题。
+> 当该请求使用完毕时，需调用destroy方法释放资源，否则会出现内存泄漏问题。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -206,7 +206,7 @@ request(url: string, callback: AsyncCallback\<HttpResponse\>): void
 
 | 参数名   | 类型                                           | 必填 | 说明                    |
 | -------- | ---------------------------------------------- | ---- | ---------------------- |
-| url      | string                                         | 是   | 发起网络请求的URL地址。示例：https://www.test.com |
+| url      | string                                         | 是   | 发起网络请求的URL地址。示例：`https://www.test.com` |
 | callback | AsyncCallback\<[HttpResponse](#httpresponse)\> | 是   | 回调函数。    |
 
 **错误码：**

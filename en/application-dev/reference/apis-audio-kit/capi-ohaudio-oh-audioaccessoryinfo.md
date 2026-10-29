@@ -1,12 +1,11 @@
 # OH_AudioAccessoryInfo
-
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @songshenke-->
-<!--Designer: @hao-liangfei; @zhanganxiang-->
+<!--Designer: @zhanganxiang1-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=fea09459a0476f095195448c2ce1ed787d76ab6a translatedAt=2026-08-31T02:32:20.925Z pushedAt=2026-08-31T08:40:57.362Z -->
+<!-- md-trans-meta sourceCommit=231a0f852838e757ab03536e79d2ff209c5f5457 translatedAt=2026-10-08T12:39:54.035Z pushedAt=2026-10-13T05:56:11.033Z -->
 
 ```c
 typedef struct OH_AudioAccessoryInfo {...} OH_AudioAccessoryInfo

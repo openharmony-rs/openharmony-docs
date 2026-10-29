@@ -5,9 +5,10 @@
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=132342cdd19e09e8d1c7a964e48a57b6cf30fc8d translatedAt=2026-10-12T12:01:01.405Z pushedAt=2026-10-13T04:58:00.897Z -->
 
 ```c
-typedef struct {...} Camera_DeviceQueryInfo
+typedef struct Camera_DeviceQueryInfo {...} Camera_DeviceQueryInfo
 ```
 
 ## Overview

@@ -6,12 +6,13 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=e80025ed82ed281bac11c255d720292d542f564f translatedAt=2026-10-09T01:42:02.334Z pushedAt=2026-10-10T02:11:10.536Z -->
 
 This topic walks you through on how to convert a string in PEM format into an RSA asymmetric key pair (**KeyPair**).
 
 > **NOTE**
 >
-> The **convertPemKey** operation must comply with the following requirements: 
+> The **convertPemKey** operation must comply with the following requirements:
 >
 > - The public key must comply with X.509 specifications, PKCS\#1 specifications, and PEM encoding format.
 >
@@ -19,20 +20,21 @@ This topic walks you through on how to convert a string in PEM format into an RS
 
 ## Converting a String in PEM Format into a Key Pair
 
-For details about the algorithm specifications, see [Asymmetric Key Generation and Conversion Specifications](crypto-asym-key-generation-conversion-spec.md).
+For the corresponding algorithm specifications, see [Asymmetric Key Generation and Conversion Specifications](crypto-key-generation-conversion.md).
 
 1. Call [cryptoFramework.createAsyKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateasykeygenerator) with the string parameter **'RSA1024'** to create an asymmetric key generator (**AsyKeyGenerator**) for a 1024-bit RSA key with two primes.
 
    The default number of primes for creating an RSA asymmetric key is **2**. The **PRIMES_2** parameter is omitted in the string parameter here.
 
 2. Call [AsyKeyGenerator.convertPemKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertpemkey12) to convert the binary data into an asymmetric key pair (**KeyPair**).
-3. Call [AsyKeyGenerator.getEncodedPem](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#getencodedpem12) to convert the public key in the asymmetric key object into the PKCS #1 or X509 format and the private key into the PKCS #1 or PKCS #8 format.
+3. Call [AsyKeyGenerator.getEncodedPem](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#getencodedpem12) to convert the public key in the asymmetric key object into PKCS #1 or X.509 format, and the private key into PKCS #1 or PKCS #8 format.
 
 - Example: Convert a string in PEM format into an RSA key pair (using promise-based APIs).
   <!-- @[specify_pem_string_convert_rsa_keypair](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/ConvertSpecifiedPEMAsymmetricKeyPair/entry/src/main/ets/pages/Promise.ets) -->
-  
+
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   let priKeyPkcs1Str1024: string =
     '-----BEGIN RSA PRIVATE KEY-----\n' +
@@ -58,14 +60,19 @@ For details about the algorithm specifications, see [Asymmetric Key Generation a
       '-----END RSA PUBLIC KEY-----\n';
   
   async function testPkcs1ToPkcs8ByPromise() {
-    let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
-    let keyPair = await asyKeyGenerator.convertPemKey(publicPkcs1Str1024, priKeyPkcs1Str1024);
-    let priPemKey = keyPair.priKey;
-    let pubPemKey = keyPair.pubKey;
-    let priString = priPemKey.getEncodedPem('PKCS8');
-    let pubString = pubPemKey.getEncodedPem('X509');
-    console.info('[promise]TestPkcs1ToPkcs8ByPromise priString output: ' + priString);
-    console.info('[promise]TestPkcs1ToPkcs8ByPromise pubString output: ' + pubString);
+    try {
+      let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
+      let keyPair = await asyKeyGenerator.convertPemKey(publicPkcs1Str1024, priKeyPkcs1Str1024);
+      let priPemKey = keyPair.priKey;
+      let pubPemKey = keyPair.pubKey;
+      let priString = priPemKey.getEncodedPem('PKCS8');
+      let pubString = pubPemKey.getEncodedPem('X509');
+      console.info('[promise]TestPkcs1ToPkcs8ByPromise priString output: ' + priString);
+      console.info('[promise]TestPkcs1ToPkcs8ByPromise pubString output: ' + pubString);
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`testPkcs1ToPkcs8ByPromise failed: errCode: ${e.code}, errMsg: ${e.message}`);
+    }
   }
   ```
 
@@ -73,7 +80,7 @@ For details about the algorithm specifications, see [Asymmetric Key Generation a
 - Example: Convert a string in PEM format into an RSA key pair (using the synchronous API [convertPemKeySync](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertpemkeysync12)).
 
   <!-- @[specify_pem_string_convert_rsa_keypair_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/ConvertSpecifiedPEMAsymmetricKeyPair/entry/src/main/ets/pages/Sync.ets) -->
-  
+
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   
@@ -120,3 +127,4 @@ For details about the algorithm specifications, see [Asymmetric Key Generation a
     }
   }
   ```
+

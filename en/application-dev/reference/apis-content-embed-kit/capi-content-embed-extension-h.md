@@ -6,6 +6,7 @@
 <!--Designer: @gcw_nDnzjzHO;@wei-guoning-->
 <!--Tester: @sd_yinjian-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=78fb6d277634036465889d9375393ad47ef282fd translatedAt=2026-10-12T12:06:21.442Z pushedAt=2026-10-13T04:58:00.912Z -->
 
 ## Overview
 
@@ -812,3 +813,5 @@ Destroys the OE Extension.
 | Type| Description|
 | -- | -- |
 | [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | The following error codes are returned:<br>     CE_ERR_OK: Operations are successful.<br>     CE_ERR_PARAM_INVALID: Parameter check failed.<br>     CE_ERR_NULL_POINTER: A null pointer is returned.<br>     CE_ERR_SYSTEM_ABNORMAL: The system service is abnormal.<br>     CE_ERR_DEVICE_NOT_SUPPORTED: The device is not supported.<br>     CE_ERR_IN_DLP_SANDBOX: This operation is not supported because the application is in the DLP sandbox.|
+
+

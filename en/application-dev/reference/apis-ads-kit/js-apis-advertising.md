@@ -6,7 +6,7 @@
 <!--Designer: @zhansf1988-->
 <!--Tester: @hongmei_may-->
 <!--Adviser: @RayShih-->
-<!-- md-trans-meta sourceCommit=3af2c2640a0dfa1285ceb6197505adab556ff3bb translatedAt=2026-09-02T02:15:31.403Z pushedAt=2026-09-03T04:01:27.054Z -->
+<!-- md-trans-meta sourceCommit=cd1164e267103966a4e890176c2f64b6c9ba0bff translatedAt=2026-10-09T12:11:23.567Z pushedAt=2026-10-12T09:27:59.837Z -->
 
 
 The advertising module provides APIs for requesting and displaying ads.
@@ -48,7 +48,7 @@ For details about the following error codes, see [Ads Service Framework Error Co
 
 | ID| Error Message                                                                               |
 |----------|-----------------------------------------------------------------------------------------|
-| 401 | Invalid input parameter. Possible causes:<br/>1. Mandatory parameters are left unspecified. |
+| 401 | Parameter error. Possible causes:<br/>1. Mandatory parameters are left unspecified. |
 | 21800001 | System internal error.                                                                  |
 | 21800004 | Failed to display the ad.                                                               |
 
@@ -100,11 +100,11 @@ Obtains the body of an ad request. This API uses a promise to return the result 
 
 For details about the following error codes, see [Ads Service Framework Error Codes](errorcode-ads.md).
 
-| Error Code ID | Error Message | 
+| Error Code ID | Error Message |
 | -------- | -------- |
-| 401 | Invalid input parameter. Possible causes:<br/>1. Mandatory parameters are left unspecified.<br/>2. Incorrect parameter types.<br/>3. Parameter verification failed. | 
-| 801 | Device not supported. | 
-| 21800001 | System internal error. | 
+| 401 | Parameter error. Possible causes:<br/>1. Mandatory parameters are left unspecified.<br/>2. Incorrect parameter types.<br/>3. Parameter verification failed. |
+| 801 | Capability not supported. |
+| 21800001 | System internal error. |
 
 **Example**
 
@@ -145,10 +145,10 @@ Parses and processes the body of an ad response (this API is only open to some p
 
 For details about the following error codes, see [Ads Service Framework Error Codes](errorcode-ads.md).
 
-| Error Code ID | Error Message | 
+| Error Code ID | Error Message |
 | -------- | -------- |
-| 401 | Invalid input parameter. Possible causes:<br/>1. Mandatory parameters are left unspecified.<br/>2. Incorrect parameter types.<br/>3. Parameter verification failed. | 
-| 801      | Device not supported.                                                                                                                                   |
+| 401 | Parameter error. Possible causes:<br/>1. Mandatory parameters are left unspecified.<br/>2. Incorrect parameter types.<br/>3. Parameter verification failed. |
+| 801 | Capability not supported. |
 | 21800001 | System internal error.                                                                                                                                  |
 | 21800005 | Failed to parse the ad response.                                                                                                                        |
 
@@ -203,7 +203,7 @@ For details about the following error codes, see [Ads Service Framework Error Co
 
 | ID| Error Message                                                                               |
 |----------|-----------------------------------------------------------------------------------------|
-| 401 | Invalid input parameter. Possible causes:<br/>1. Mandatory parameters are left unspecified. |
+| 401 | Parameter error. Possible causes:<br/>1. Mandatory parameters are left unspecified. |
 | 21800001 | System internal error.                                                                  |
 
 **Example**
@@ -260,7 +260,7 @@ For details about the following error codes, see [Ads Service Framework Error Co
 
 | ID| Error Message                                                                            |
 |----------|--------------------------------------------------------------------------------------|
-| 401      | Invalid input parameter. Possible causes: Mandatory parameters are left unspecified. |
+| 401 | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
 | 21800001 | System internal error.                                                  |
 
 **Example**
@@ -316,7 +316,7 @@ For details about the following error codes, see [Ads Service Framework Error Co
 
 | ID| Error Message                                                                            |
 |----------|--------------------------------------------------------------------------------------|
-| 401      | Invalid input parameter. Possible causes: Mandatory parameters are left unspecified. |
+| 401 | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
 | 21800001 | System internal error.                                                  |
 
 **Example**
@@ -410,8 +410,8 @@ For details about the following error codes, see [Ads Service Framework Error Co
 
 | Error Code ID | Error Message |
 | -------- | -------- |
-| 401 | Invalid input parameter. Possible causes:<br/>1. Mandatory parameters are left unspecified.<br/>2. Incorrect parameter types.<br/>3. Parameter verification failed. |
-| 801 | Device not supported.<br>Applicable version: 12+ |
+| 401 | Parameter error. Possible causes:<br/>1. Mandatory parameters are left unspecified.<br/>2. Incorrect parameter types.<br/>3. Parameter verification failed. |
+| 801 | Capability not supported.<br>Applicable version: 12+ |
 | 21800001 | System internal error. |
 | 21800003 | Failed to load the ad request. |
 
@@ -471,8 +471,8 @@ For details about the following error codes, see [Ads Service Framework Error Co
 
 | Error Code ID | Error Message |
 | -------- | -------- |
-| 401 | Invalid input parameter. Possible causes:<br/>1. Mandatory parameters are left unspecified.<br/>2. Incorrect parameter types.<br/>3. Parameter verification failed. |
-| 801 | Device not supported.<br>Applicable version: 12+ |
+| 401 | Parameter error. Possible causes:<br/>1. Mandatory parameters are left unspecified.<br/>2. Incorrect parameter types.<br/>3. Parameter verification failed. |
+| 801 | Capability not supported.<br>Applicable version: 12+ |
 | 21800001 | System internal error. |
 | 21800003 | Failed to load the ad request. |
 

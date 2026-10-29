@@ -1,10 +1,11 @@
 # oh_display_manager.h
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @oh_wangxk; @logn-->
-<!--Designer: @hejunfei1991-->
-<!--Tester: @qinliwen0417-->
+<!--Owner: @oh_wangxk-->
+<!--Designer: @wulong158-->
+<!--Tester: @LiTongguan2026-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=494f31a35d1b25179fe202754d9ee44d527d8ab6 translatedAt=2026-10-10T10:31:38.422Z pushedAt=2026-10-15T02:46:54.077Z -->
 
 ## Overview
 
@@ -36,8 +37,8 @@ Provides basic display management capabilities, including obtaining information 
 | [NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDefaultDisplayDensityDpi(int32_t *densityDpi)](#oh_nativedisplaymanager_getdefaultdisplaydensitydpi) | - | Obtains the physical pixel density of the default display.|
 | [NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDefaultDisplayDensityPixels(float *densityPixels)](#oh_nativedisplaymanager_getdefaultdisplaydensitypixels) | - | Obtains the logical pixel density of the default display.|
 | [NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDefaultDisplayScaledDensity(float *scaledDensity)](#oh_nativedisplaymanager_getdefaultdisplayscaleddensity) | - | Obtains the font scale factor of the default display.|
-| [NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDefaultDisplayDensityXdpi(float *xDpi)](#oh_nativedisplaymanager_getdefaultdisplaydensityxdpi) | - | Obtains the number of physical pixels per inch on the default display in the X dimension.|
-| [NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDefaultDisplayDensityYdpi(float *yDpi)](#oh_nativedisplaymanager_getdefaultdisplaydensityydpi) | - | Obtains the number of physical pixels per inch on the default display in the Y dimension.|
+| [NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDefaultDisplayDensityXdpi(float *xDpi)](#oh_nativedisplaymanager_getdefaultdisplaydensityxdpi) | - | Obtains the number of physical pixels per inch on the default display in the X direction.|
+| [NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDefaultDisplayDensityYdpi(float *yDpi)](#oh_nativedisplaymanager_getdefaultdisplaydensityydpi) | - | Obtains the number of physical pixels per inch on the default display in the Y direction.|
 | [NativeDisplayManager_ErrorCode OH_NativeDisplayManager_CreateDefaultDisplayCutoutInfo(NativeDisplayManager_CutoutInfo **cutoutInfo)](#oh_nativedisplaymanager_createdefaultdisplaycutoutinfo) | - | Obtains the information about the unusable area of the default display, including a punch hole, a notch, and the curved area of a waterfall display.|
 | [NativeDisplayManager_ErrorCode OH_NativeDisplayManager_DestroyDefaultDisplayCutoutInfo(NativeDisplayManager_CutoutInfo *cutoutInfo)](#oh_nativedisplaymanager_destroydefaultdisplaycutoutinfo) | - | Destroys the information about the unusable area of the default display, including a punch hole, a notch, and the curved area of a waterfall display.|
 | [bool OH_NativeDisplayManager_IsFoldable()](#oh_nativedisplaymanager_isfoldable) | - | Checks whether the current device is foldable.|
@@ -52,7 +53,7 @@ Provides basic display management capabilities, including obtaining information 
 | [void OH_NativeDisplayManager_DestroyAllDisplays(NativeDisplayManager_DisplaysInfo *allDisplays)](#oh_nativedisplaymanager_destroyalldisplays) | - | Destroys the object that contains the information about all displays.|
 | [NativeDisplayManager_ErrorCode OH_NativeDisplayManager_CreateDisplayById(uint32_t displayId,NativeDisplayManager_DisplayInfo **displayInfo)](#oh_nativedisplaymanager_createdisplaybyid) | - | Obtains the object that contains the information about a display.|
 | [void OH_NativeDisplayManager_DestroyDisplay(NativeDisplayManager_DisplayInfo *displayInfo)](#oh_nativedisplaymanager_destroydisplay) | - | Destroys the object that contains the information about a display.|
-| [NativeDisplayManager_ErrorCode OH_NativeDisplayManager_CreatePrimaryDisplay(NativeDisplayManager_DisplayInfo **displayInfo)](#oh_nativedisplaymanager_createprimarydisplay) | - | Obtains the object that contains the information about the primary display. For devices other than PCs/2-in-1 devices, the **displayInfo** object obtained contains information about the built-in screen. For PCs/2-in-1 devices with an external screen, the **displayInfo** object obtained contains information about the current primary screen. For PCs/2-in-1 devices without an external screen, the **displayInfo** object obtained contains information about the built-in screen.|
+| [NativeDisplayManager_ErrorCode OH_NativeDisplayManager_CreatePrimaryDisplay(NativeDisplayManager_DisplayInfo **displayInfo)](#oh_nativedisplaymanager_createprimarydisplay) | - | Obtains the object that contains the information about the primary display. For devices other than PCs/2-in-1 devices, the **displayInfo** object obtained contains information about the built-in display. For PCs/2-in-1 devices with an external display, the **displayInfo** object obtained contains information about the current primary display. For PCs/2-in-1 devices without an external display, the **displayInfo** object obtained contains information about the built-in display.|
 | [typedef void (\*OH_NativeDisplayManager_AvailableAreaChangeCallback)(uint64_t displayId)](#oh_nativedisplaymanager_availableareachangecallback) | OH_NativeDisplayManager_AvailableAreaChangeCallback | Called when the available area of the display changes.|
 | [NativeDisplayManager_ErrorCode OH_NativeDisplayManager_RegisterAvailableAreaChangeListener(OH_NativeDisplayManager_AvailableAreaChangeCallback availableAreaChangeCallback, uint32_t *listenerIndex)](#oh_nativedisplaymanager_registeravailableareachangelistener) | - | Registers a listener for available area changes of the display.|
 | [NativeDisplayManager_ErrorCode OH_NativeDisplayManager_UnregisterAvailableAreaChangeListener(uint32_t listenerIndex)](#oh_nativedisplaymanager_unregisteravailableareachangelistener) | - | Unregisters a listener for available area changes of the display.|
@@ -261,7 +262,7 @@ Obtains the physical pixel density of the default display.
 
 | Parameter| Description|
 | -- | -- |
-| int32_t *densityDpi | Pointer to the physical pixel density, that is, the number of pixels per inch. The value is an integer, in px. The actual value depends on the options provided in device settings.  |
+| int32_t *densityDpi | Physical pixel density of the display, indicating the number of pixels per inch. The value is an integer, and the actual value depends on the options provided in the settings of different devices. It is returned as an output parameter. |
 
 **Return value**
 
@@ -386,7 +387,7 @@ Obtains the information about the unusable area of the default display, includin
 
 | Parameter| Description|
 | -- | -- |
-| [NativeDisplayManager_CutoutInfo](capi-nativedisplaymanager-cutoutinfo.md) **cutoutInfo | Double pointer to the unusable area information, which is encapsulated in [NativeDisplayManager_CutoutInfo](capi-nativedisplaymanager-cutoutinfo.md).|
+| [NativeDisplayManager_CutoutInfo](capi-nativedisplaymanager-cutoutinfo.md) **cutoutInfo | Pointer to the information about the unusable area of the default display, including a punch hole, a notch, and the curved area of a waterfall display. For details, see [NativeDisplayManager_CutoutInfo](capi-nativedisplaymanager-cutoutinfo.md). It is returned as an output parameter. After use, call [OH_NativeDisplayManager_DestroyDefaultDisplayCutoutInfo](#oh_nativedisplaymanager_destroydefaultdisplaycutoutinfo) to release the resources. |
 
 **Return value**
 
@@ -449,7 +450,7 @@ Obtains the display mode of the foldable device.
 
 **Since**: 12
 
-**Device behavior differences**: This API returns **0** for PC/2-in-1 devices and non-foldable devices. For other devices, this API can be called properly.
+**Device behavior differences**: This API returns **NativeDisplayManager_FoldDisplayMode.DISPLAY_MANAGER_FOLD_DISPLAY_MODE_UNKNOWN** on PCs/2-in-1 devices and non-foldable devices, and can be properly called on other devices.
 
 
 **Parameters**
@@ -621,7 +622,7 @@ Obtains the object that contains the information about all displays.
 
 | Parameter| Description|
 | -- | -- |
-| [NativeDisplayManager_DisplaysInfo](capi-nativedisplaymanager-displaysinfo.md) **allDisplays | Double pointer to the display information, which is encapsulated in [NativeDisplayManager_DisplaysInfo](capi-nativedisplaymanager-displaysinfo.md).|
+| [NativeDisplayManager_DisplaysInfo](capi-nativedisplaymanager-displaysinfo.md) **allDisplays | Pointer to the information about all displays. For details, see [NativeDisplayManager_DisplaysInfo](capi-nativedisplaymanager-displaysinfo.md). It is returned as an output parameter. After use, call [OH_NativeDisplayManager_DestroyAllDisplays](#oh_nativedisplaymanager_destroyalldisplays) to release the resources. |
 
 **Return value**
 
@@ -651,7 +652,7 @@ Destroys the object that contains the information about all displays.
 ### OH_NativeDisplayManager_CreateDisplayById()
 
 ```c
-NativeDisplayManager_ErrorCode OH_NativeDisplayManager_CreateDisplayById(uint32_t displayId,NativeDisplayManager_DisplayInfo **displayInfo)
+NativeDisplayManager_ErrorCode OH_NativeDisplayManager_CreateDisplayById(uint32_t displayId, NativeDisplayManager_DisplayInfo **displayInfo)
 ```
 
 **Description**
@@ -666,7 +667,7 @@ Obtains the object that contains the information about a display.
 | Parameter| Description|
 | -- | -- |
 | uint32_t displayId | ID of the display, which is a non-negative integer.|
-| [NativeDisplayManager_DisplayInfo](capi-nativedisplaymanager-displayinfo.md) **displayInfo | Double pointer to the display information, which is encapsulated in [NativeDisplayManager_DisplayInfo](capi-nativedisplaymanager-displayinfo.md).|
+| [NativeDisplayManager_DisplayInfo](capi-nativedisplaymanager-displayinfo.md) **displayInfo | Pointer to the information about a display. For details, see [NativeDisplayManager_DisplayInfo](capi-nativedisplaymanager-displayinfo.md). It is returned as an output parameter. After use, call [OH_NativeDisplayManager_DestroyDisplay](#oh_nativedisplaymanager_destroydisplay) to release the resources. |
 
 **Return value**
 
@@ -701,7 +702,7 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_CreatePrimaryDisplay(Nati
 
 **Description**
 
-Obtains the object that contains the information about the primary display. For devices other than PCs/2-in-1 devices, the **displayInfo** object obtained contains information about the built-in screen. For PCs/2-in-1 devices with an external screen, the **displayInfo** object obtained contains information about the current primary screen. For PCs/2-in-1 devices without an external screen, the **displayInfo** object obtained contains information about the built-in screen.
+Obtains the object that contains the information about the primary display. For devices other than PCs/2-in-1 devices, the **displayInfo** object obtained contains information about the built-in display. For PCs/2-in-1 devices with an external display, the **displayInfo** object obtained contains information about the current primary display. For PCs/2-in-1 devices without an external display, the **displayInfo** object obtained contains information about the built-in display.
 
 **Since**: 14
 
@@ -753,7 +754,7 @@ Registers a listener for available area changes of the display.
 
 - This API can be properly called on devices running OpenHarmony 7.0.0 or later.
 
-- For devices running versions earlier than OpenHarmony 7.0.0, this API can be properly called on PCs/2-in-1 devices and tablets. If being called on other device types, it does not take effect and no error is reported.
+- For devices running versions earlier than OpenHarmony 7.0.0, this API can be properly called on PCs/2-in-1 devices and tablets, but does not work or report an error on other devices.
 
 **Parameters**
 
@@ -784,7 +785,7 @@ Unregisters a listener for available area changes of the display.
 
 - This API can be properly called on devices running OpenHarmony 7.0.0 or later.
 
-- For devices running versions earlier than OpenHarmony 7.0.0, this API can be properly called on PCs/2-in-1 devices and tablets. If being called on other device types, it does not take effect and no error is reported.
+- For devices running versions earlier than OpenHarmony 7.0.0, this API can be properly called on PCs/2-in-1 devices and tablets, but does not work or report an error on other devices.
 
 **Parameters**
 
@@ -808,13 +809,15 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_CreateAvailableArea(uint6
 
 Obtains the available area of a display.
 
+The available area is the area that applications can freely use after the system UI (such as the status bar and Dock bar) is excluded.
+
 **Since**: 20
 
-**Device behavior differences**:
+**Device behavior differences**: 
 
 - This API can be properly called on devices running OpenHarmony 7.0.0 or later.
 
-- For devices running versions earlier than OpenHarmony 7.0.0, this API can be properly called on PCs/2-in-1 devices and tablets, but does not work for other device types. To obtain the available screen area on the current device, call [OH_NativeDisplayManager_GetDefaultDisplayWidth()](#oh_nativedisplaymanager_getdefaultdisplaywidth) and [OH_NativeDisplayManager_GetDefaultDisplayHeight()](#oh_nativedisplaymanager_getdefaultdisplayheight).
+- For devices running versions earlier than OpenHarmony 7.0.0, this API can be properly called on PCs/2-in-1 devices and tablets, and is unavailable on other devices. To obtain the available area of the current display, use [OH_NativeDisplayManager_GetDefaultDisplayWidth()](#oh_nativedisplaymanager_getdefaultdisplaywidth) and [OH_NativeDisplayManager_GetDefaultDisplayHeight()](#oh_nativedisplaymanager_getdefaultdisplayheight).
 
 
 **Parameters**
@@ -822,7 +825,7 @@ Obtains the available area of a display.
 | Parameter| Description|
 | -- | -- |
 | uint64_t displayId | ID of the display, which is a non-negative integer.|
-| [NativeDisplayManager_Rect](capi-nativedisplaymanager-rect.md) **availableArea | Double pointer to the available area of the display. For details, see [NativeDisplayManager_Rect](capi-nativedisplaymanager-rect.md).|
+| [NativeDisplayManager_Rect](capi-nativedisplaymanager-rect.md) **availableArea | Pointer to the available area of the display. For details, see [NativeDisplayManager_Rect](capi-nativedisplaymanager-rect.md). It is returned as an output parameter. After use, call [OH_NativeDisplayManager_DestroyAvailableArea](#oh_nativedisplaymanager_destroyavailablearea) to release the resources. |
 
 **Return value**
 
@@ -1029,7 +1032,7 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDisplayPosition(uint64
 
 **Description**
 
-Obtains the display position, that is, the x-coordinate and y-coordinate relative to the original point (the upper left corner of the main screen).
+Obtains the display position, that is, the x-coordinate and y-coordinate relative to the original point (the upper left corner of the primary display).
 
 The actual value is returned only when the current display source mode is **DISPLAY_SOURCE_MODE_MAIN** or **DISPLAY_SOURCE_MODE_EXTEND**.
 
@@ -1043,11 +1046,12 @@ You can obtain the display source mode by calling [OH_NativeDisplayManager_GetDi
 | Parameter| Description|
 | -- | -- |
 | uint64_t displayId | ID of the display whose position is to be queried. The value must be a non-negative integer.|
-| int32_t *x | Pointer to the x-coordinate relative to the upper left corner of the main screen, in px. The value must be an integer and is returned as an output parameter.|
-| int32_t *y | Pointer to the y-coordinate relative to the upper left corner of the main screen, in px. The value must be an integer and is returned as an output parameter.|
+| int32_t *x | Pointer to the x-coordinate relative to the upper left corner of the primary display, in px. The value must be an integer and is returned as an output parameter.|
+| int32_t *y | Pointer to the y-coordinate relative to the upper left corner of the primary display, in px. The value must be an integer and is returned as an output parameter.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | **DISPLAY_MANAGER_OK**: The operation is successful.<br>**DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL**: The system service is abnormal.<br>Currently, only the primary screen and extended screen support position information query. Queries for other screens return **DISPLAY_MANAGER_ERROR_ILLEGAL_PARAM**.|
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | **DISPLAY_MANAGER_OK**: The operation is successful.<br>**DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL**: The system service is abnormal.<br>Currently, only the primary display and extended display support position information query. Queries for other displays return **DISPLAY_MANAGER_ERROR_ILLEGAL_PARAM**.|
+

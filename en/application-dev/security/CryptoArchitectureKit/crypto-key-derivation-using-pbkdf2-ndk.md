@@ -6,8 +6,14 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=777c15c9d8c75a1677c1c6408af774652fa3dc6e translatedAt=2026-10-09T01:55:43.578Z pushedAt=2026-10-10T02:40:10.563Z -->
 
 For details about the corresponding algorithm specifications, see [PBKDF2](crypto-key-derivation-overview.md#pbkdf2).
+
+## Adding the Dynamic Library in the CMake Script
+```txt
+target_link_libraries(entry PUBLIC libohcrypto.so)
+```
 
 ## How to Develop
 
@@ -32,42 +38,48 @@ For details about the corresponding algorithm specifications, see [PBKDF2](crypt
 
 static OH_Crypto_ErrCode setParams(OH_CryptoKdfParams **params)
 {
+    char password[] = "123456";
+    const char *salt = "saltstring";
+    int iterations = 10000;
     // Set the password.
-    const char *password = "123456";
     Crypto_DataBlob passwordBlob = {
         .data = reinterpret_cast<uint8_t *>(const_cast<char *>(password)),
         .len = strlen(password)
     };
     OH_Crypto_ErrCode ret = OH_CryptoKdfParams_SetParam(*params, CRYPTO_KDF_KEY_DATABLOB, &passwordBlob);
     if (ret != CRYPTO_SUCCESS) {
-        goto end;
+        (void)memset(password, 0, sizeof(password));
+        OH_CryptoKdfParams_Destroy(*params);
+        *params = nullptr;
+        return ret;
     }
 
     // Set the salt value.
-    const char *salt = "saltstring";
     Crypto_DataBlob saltBlob = {
         .data = reinterpret_cast<uint8_t *>(const_cast<char *>(salt)),
         .len = strlen(salt)
     };
     ret = OH_CryptoKdfParams_SetParam(*params, CRYPTO_KDF_SALT_DATABLOB, &saltBlob);
     if (ret != CRYPTO_SUCCESS) {
-        goto end;
+        (void)memset(password, 0, sizeof(password));
+        OH_CryptoKdfParams_Destroy(*params);
+        *params = nullptr;
+        return ret;
     }
 
     // Set the number of iterations.
-    int iterations = 10000;
     Crypto_DataBlob iterationsBlob = {
         .data = reinterpret_cast<uint8_t *>(&iterations),
         .len = sizeof(int)
     };
     ret = OH_CryptoKdfParams_SetParam(*params, CRYPTO_KDF_ITER_COUNT_INT, &iterationsBlob);
     if (ret != CRYPTO_SUCCESS) {
-        goto end;
+        (void)memset(password, 0, sizeof(password));
+        OH_CryptoKdfParams_Destroy(*params);
+        *params = nullptr;
+        return ret;
     }
-end:
-    OH_CryptoKdfParams_Destroy(*params);
-    *params = nullptr;
-    return ret;
+    return CRYPTO_SUCCESS;
 }
 
 OH_Crypto_ErrCode doTestPbkdf2()

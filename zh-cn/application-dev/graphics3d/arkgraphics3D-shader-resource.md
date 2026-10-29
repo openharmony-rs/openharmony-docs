@@ -214,11 +214,11 @@ ArkGraphics 3D中支持的.shader文件基于JSON格式，书写.shader文件时
    - alphaBlendOp：指定渲染源和渲染目标透明通道的混合方式，可取值及含义见下表。
      | 可取值 | 说明 |
      | :----: | :----: |
-     | "add" | 源alpha+目标alpha。 |
-     | "subtract" | 源alpha-目标alpha。 |
-     | "reverse_subtract" | 目标alpha-源alpha。 |
-     | "min" | 取源alpha与目标alpha的最小值。 |
-     | "max" | 取源alpha与目标alpha的最大值。 |
+     | "add" | 源Alpha+目标Alpha。 |
+     | "subtract" | 源Alpha-目标Alpha。 |
+     | "reverse_subtract" | 目标Alpha-源Alpha。 |
+     | "min" | 取源Alpha与目标Alpha的最小值。 |
+     | "max" | 取源Alpha与目标Alpha的最大值。 |
 
 ## materialMetadata
  - 类型：`array<MaterialMetadata>`

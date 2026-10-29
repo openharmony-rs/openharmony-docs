@@ -5,11 +5,11 @@
 <!--Designer: @zhanghaibo0-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=972f1649fdb6ebd99757019463fe43a902cdae45 translatedAt=2026-08-31T03:08:58.288Z pushedAt=2026-09-03T11:06:35.049Z -->
+<!-- md-trans-meta sourceCommit=3a8b0fe553ae5d0b319caef2cc26c9db6a4714f0 translatedAt=2026-10-12T09:17:03.126Z pushedAt=2026-10-12T11:10:48.551Z -->
 
-The immersive system material is composed of multiple stacked layers of effects such as material filters, refraction, highlights, and shadows. Rendering it consumes GPU resources, and improper use can significantly increase power consumption.
+The immersive light sensing effect is composed of multiple stacked layers of effects such as material filters, refraction, highlights, and shadows. Rendering it consumes GPU resources, and improper use can significantly increase power consumption.
 
-General optimization principle: Use the immersive system material as a "scarce" visual resource. Control its area and number of layers, and do not keep it fixed over changing content such as videos, animated images, and animations. Follow the power consumption optimizations below to achieve an immersive lighting experience while reducing the impact on performance and power consumption.
+General optimization principle: Use the immersive light sensing effect as a "scarce" visual resource. Control its area and number of layers, and do not keep it fixed over changing content such as videos, animated images, and animations. Follow the power consumption optimization suggestions below to obtain the immersive light sensing experience while reducing the impact on performance and power consumption.
 
 ## Controlling the Material Usage Area
 
@@ -17,12 +17,17 @@ The larger the area affected by the immersive system material, the more pixels n
 
 > **NOTE**
 >
-> The immersive system material set for a component through [systemMaterial](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#systemmaterial) takes effect only in the title bar subtree of Navigation/NavDestination, or in the bottom TabBar subtree of a horizontal Tabs where `barPosition` is `BarPosition.End`. Ordinary components outside this range do not display the material effect. Slider, Toggle, and dialog-type components are not subject to this range restriction.
+> After immersive light sensing is enabled,
+> - The immersive light sensing effect of the specified dialog components ([AlertDialog](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md), [ActionSheet](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md), [CustomDialog](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md), [CalendarPickerDialog](../reference/apis-arkui/arkui-ts/ts-methods-calendarpicker-dialog.md), [DatePickerDialog](../reference/apis-arkui/arkui-ts/ts-methods-datepicker-dialog.md), [TimePickerDialog](../reference/apis-arkui/arkui-ts/ts-methods-timepicker-dialog.md), [TextPickerDialog](../reference/apis-arkui/arkui-ts/ts-methods-textpicker-dialog.md), [SelectionMenu](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SelectionMenu.md), [AlphabetIndexer](../reference/apis-arkui/arkui-ts/ts-container-alphabet-indexer.md) popup, and the text menu triggered by long pressing or double-tapping [Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md) after setting [copyOption](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#copyoption9)) can take effect across the entire page.
+> - The immersive light sensing effect of the specified dialog interfaces ([PromptAction](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md), [ArkUI_NativeDialog](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativedialog.md), [@ohos.promptAction (dialog box)](../reference/apis-arkui/js-apis-promptAction.md), [Popup control](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md), [Tips control](../reference/apis-arkui/arkui-ts/ts-universal-attributes-tips.md), [Menu control](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md), [sheet transition](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md)) can take effect across the entire page.
+> - The immersive light sensing effect of [Slider](../reference/apis-arkui/arkui-ts/ts-basic-components-slider.md), [Toggle](../reference/apis-arkui/arkui-ts/ts-basic-components-toggle.md), and [Select](../reference/apis-arkui/arkui-ts/ts-basic-components-select.md) can take effect across the entire page.
+> - For other components, the effect takes effect only in the Navigation/NavDestination title bar or in the bottom TabBar of horizontal Tabs where `barPosition` is `BarPosition.End`. Setting the immersive light sensing effect in other areas does not take effect.
+ 
 
 ```ts
 import { uiMaterial } from '@kit.ArkUI';
 
-// Positive example: Set the immersive system material for a local container in the Navigation title bar subtree. The material takes effect and its area is controllable.
+// Positive example: Set the immersive system material for a local container in the Navigation title bar. The material takes effect and its area is controllable.
 @Entry
 @Component
 struct MaterialAreaExample {
@@ -215,7 +220,7 @@ setInterval(() => {
 
 ## Avoid Duplicate Shadow Overlay
 
-The immersive system material provides a shadow by default through [applyShadow](../reference/apis-arkui/arkts-apis-uimaterial.md#immersiveoptions). Setting the generic [shadow](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#shadow) attribute on top of it not only conflicts with the material effect but also causes redundant drawing overhead. To customize the shadow, set `applyShadow` to `false` before using `shadow`, so that the two effects do not take effect simultaneously.
+The immersive system material already provides a shadow through [applyShadow](../reference/apis-arkui/arkts-apis-uimaterial.md#immersiveoptions) by default. Setting the general [shadow](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#shadow) attribute additionally not only conflicts with the material effect but also causes duplicate rendering overhead. To customize the shadow, set `applyShadow` to `false` before using `shadow`, so as to avoid the extra overhead caused by duplicate shadow overlay.
 
 ```ts
 // Positive example: To customize the shadow, first disable the built-in shadow of the immersive system material (applyShadow: false).

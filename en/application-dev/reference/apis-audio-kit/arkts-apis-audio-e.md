@@ -5,6 +5,7 @@
 <!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=86ea8b97f1292b63df716c46ceb4a291cb4def98 translatedAt=2026-10-08T12:09:40.178Z pushedAt=2026-10-12T09:13:58.524Z -->
 
 > **NOTE**
 >
@@ -99,10 +100,10 @@ Enumerates the device types.
 | REMOTE_CAST<sup>12+</sup>        | 24     | Remote cast device.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | USB_DEVICE<sup>18+</sup>        | 25 | USB device (excluding USB headsets).          |
 | HDMI<sup>19+</sup>        | 27 | HDMI device (such as HDMI, ARC, and eARC).          |
-| LINE_DIGITAL<sup>19+</sup>        | 28 | Wired digital device (such as S/PDIF)          |
+| LINE_DIGITAL<sup>19+</sup>        | 28 | Wired digital device (such as S/PDIF).          |
 | REMOTE_DAUDIO<sup>18+</sup>        | 29 | Distributed device.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
-| HEARING_AID<sup>20+</sup>        | 30 | Hearing aid device.|
-| NEARLINK<sup>20+</sup>        | 31 | NearLink device.|
+| HEARING_AID<sup>20+</sup>        | 30 | Hearing aid device.<br>This type is returned as an anonymous type **BLUETOOTH_SCO** by default. Since API version 26.0.0, to obtain the actual device type, you can call [declareDeviceTypesCompatibility](./arkts-apis-audio-AudioRoutingManager.md#declaredevicetypescompatibility) to declare the device type compatibility first. |
+| NEARLINK<sup>20+</sup>        | 31 | NearLink device.<br>This type is returned as an anonymous type **BLUETOOTH_SCO** by default. Since API version 26.0.0, to obtain the actual device type, you can call [declareDeviceTypesCompatibility](./arkts-apis-audio-AudioRoutingManager.md#declaredevicetypescompatibility) to declare the device type compatibility first. |
 | SYSTEM_PRIVATE<sup>22+</sup> | 200 | System private device. (This device is a private device within the system, and applications can ignore it.)|
 | DEFAULT<sup>9+</sup> | 1000   | Default device type.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 

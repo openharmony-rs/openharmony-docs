@@ -6,7 +6,8 @@
 <!--Designer: @guxinggang; @liweilu1-->
 <!--Tester: @wangbeibei; @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=b4558baf2653dbc4e06627859cd656768663a602 translatedAt=2026-06-23T07:33:02.850Z pushedAt=2026-06-23T09:25:46.751Z -->
+
+The **PhotoAccessHelper** interface provides access management capabilities for image and video resources. It allows you to obtain, create, and delete media assets, manage albums, and listen for asset changes.
 
 > **NOTE**
 >
@@ -46,7 +47,8 @@ In API version 13 and earlier versions, if the caller does not have the required
 | ID| Error Message|
 | -------- | ---------------------------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 201     | Permission denied.         |
+| 201     | Permission denied. <br> Applicable versions: 12+       |
+| 13900012     | Permission denied. <br> Applicable versions: 10 to 11        |
 | 13900020     | Invalid argument.         |
 | 14000011       | System inner fail.         |
 
@@ -66,6 +68,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   };
 
   phAccessHelper.getAssets(fetchOptions, async (err, fetchResult) => {
+    if (err) {
+      console.error(`fetchResult fail with error: ${err.code}, ${err.message}`);
+      return;
+    }
     if (fetchResult !== undefined) {
       console.info('fetchResult success');
       let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
@@ -113,7 +119,8 @@ In API version 13 and earlier versions, if the caller does not have the required
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201     | Permission denied.         |
+| 201     | Permission denied.<br> Applicable versions: 20+        |
+| 13900012     | Permission denied. <br> Applicable versions: 10 to 19        |
 | 13900020     | Invalid argument.         |
 | 14000011       | System inner fail.         |
 
@@ -244,7 +251,8 @@ In API version 13 and earlier versions, if the caller does not have the required
 | ID| Error Message|
 | -------- | ---------------------------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 201     | Permission denied.         |
+| 201     | Permission denied. <br> Applicable versions: 11+       |
+| 13900012     | Permission denied. <br> Applicable version: 10        |
 | 13900020     | Invalid argument.         |
 | 14000011       | System inner fail.         |
 
@@ -302,7 +310,8 @@ In API version 13 and earlier versions, if the caller does not have the required
 | ID| Error Message|
 | -------- | ---------------------------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 201     | Permission denied.         |
+| 201     | Permission denied. <br> Applicable versions: 11+       |
+| 13900012     | Permission denied. <br> Applicable version: 10        |
 | 13900020     | Invalid argument.         |
 | 14000011       | System inner fail.         |
 
@@ -363,7 +372,8 @@ In API version 13 and earlier versions, if the caller does not have the required
 | ID| Error Message|
 | -------- | ---------------------------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 201     | Permission denied.         |
+| 201     | Permission denied. <br> Applicable versions: 11+       |
+| 13900012     | Permission denied. <br> Applicable version: 10        |
 | 13900020     | Invalid argument.         |
 | 14000011       | System inner fail.         |
 
@@ -410,7 +420,7 @@ If you do not have the **ohos.permission.WRITE_IMAGEVIDEO** permission, you can 
 | Name  | Type                    | Mandatory| Description                     |
 | -------- | ------------------------ | ---- | ------------------------- |
 | photoType  | [PhotoType](arkts-apis-photoAccessHelper-e.md#phototype)        | Yes  | Type of the file to be created. For example, **IMAGE** or **VIDEO**.             |
-| extension  | string        | Yes  | File name extension. For example, **'jpg'**.             |
+| extension  | string        | Yes  | File name extension. For example, **jpg**, **png**, or **mp4**.|
 | title | string | No  | Title of the image or video resource.    |
 
 **Return value**
@@ -479,7 +489,8 @@ In API version 13 and earlier versions, if the caller does not have the required
 | ID| Error Message|
 | -------- | ---------------------------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 201     | Permission denied.         |
+| 201     | Permission denied. <br> Applicable versions: 12+       |
+| 13900012     | Permission denied. <br> Applicable versions: 10 to 11        |
 | 13900020     | Invalid argument.         |
 | 14000011       | System inner fail.         |
 
@@ -539,12 +550,11 @@ Before the operation, ensure that the albums to obtain exist.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](../apis-core-file-kit/errorcode-filemanagement.md).
 
-In API version 13 and earlier versions, if the caller does not have the required permission, error code 13900012 is returned. Starting from API version 14, the same situation raises error code 201.
-
 | ID| Error Message|
 | -------- | ---------------------------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 201     | Permission denied.         |
+| 201     | Permission denied.  <br> Applicable versions: 12+      |
+| 13900012     | Permission denied. <br> Applicable versions: 10 to 11        |
 | 13900020     | Invalid argument.         |
 | 14000011       | System inner fail.         |
 
@@ -607,7 +617,8 @@ If error code 13900012 is returned, follow the instructions provided in [Before 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 201     | Permission denied.         |
+| 201     | Permission denied. <br> Applicable versions: 12+       |
+| 13900012     | Permission denied. <br> Applicable versions: 10 to 11        |
 | 13900020     | Invalid argument.         |
 | 14000011       | System inner fail.         |
 
@@ -676,6 +687,7 @@ For details about how to create a phAccessHelper instance, see the example provi
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context) {
   console.info('registerChangeDemo');
@@ -688,7 +700,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
   let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
   if (photoAsset !== undefined) {
     console.info('photoAsset.displayName : ' + photoAsset.displayName);
-  }
+    } else {
+      console.error('photoAsset is undefined');
+      return;
+    }
   let onCallback1 = (changeData: photoAccessHelper.ChangeData) => {
       console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
     // file had changed, do something.
@@ -710,7 +725,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 unRegisterChange(uri: string, callback?: Callback&lt;ChangeData&gt;): void
 
-Unregisters listening for the specified URI. Multiple callbacks can be registered for a URI for listening. You can use this API to unregister the listening of the specified callbacks or all callbacks.
+Unregistering a listener for the specified URI Multiple listeners can be registered for a URI. If multiple listeners are registered, you can unregister a specific listener by specifying **callback**. Alternatively, you can unregister all of them without specifying **callback**.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -751,7 +766,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
   let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
   if (photoAsset !== undefined) {
     console.info('photoAsset.displayName : ' + photoAsset.displayName);
-  }
+    } else {
+      console.error('photoAsset is undefined');
+      return;
+    }
   let onCallback1 = (changeData: photoAccessHelper.ChangeData) => {
     console.info('onCallback1 on');
   }
@@ -1270,12 +1288,12 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 requestPhotoUrisReadPermissionEx(srcFileUris: Array&lt;string&gt;): Promise&lt;RequestReadPermissionResult&gt;
 
-Grants the read permission for unauthorized URIs. This API uses a promise to return the authorization result.
+Grants the read permission for unauthorized URIs. This API uses a promise to return the result.
 
 It contains the list of URIs that have been created and granted the save permission and the list of invalid URIs.
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
-
+  
 ​**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -1324,7 +1342,7 @@ console.info('requestPhotoUrisReadPermissionExDemo.');
 }
 ```
 
-## getSupportedPhotoFormats<sup>18+</sup>
+## getSupportedPhotoFormats<sup>18+</sup> 
 
 getSupportedPhotoFormats(photoType: PhotoType): Promise&lt;Array&lt;string&gt;&gt;
 
@@ -1384,7 +1402,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, phot
 }
 ```
 
-## on('photoChange')<sup>20+</sup>
+## on('photoChange')<sup>20+</sup> 
 
 on(type: 'photoChange', callback: Callback&lt;PhotoAssetChangeInfos&gt;): void
 
@@ -1427,6 +1445,7 @@ let onCallback2 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
   // file had changed, do something.
 }
 
+// Register photoChange to listen for media asset changes. You can register multiple callbacks.
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context){
   console.info('onPhotoChangeDemo.');
 
@@ -1441,7 +1460,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 }
 ```
 
-## off('photoChange')<sup>20+</sup>
+## off('photoChange')<sup>20+</sup> 
 
 off(type: 'photoChange', callback?: Callback&lt;PhotoAssetChangeInfos&gt;): void
 
@@ -1484,6 +1503,7 @@ let onCallback2 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
   // file had changed, do something.
 }
 
+// After registering the photoChange listener, cancel the specified listener to demonstrate how to cancel the listener.
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context){
   console.info('offPhotoChangeDemo.');
 
@@ -1501,7 +1521,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 }
 ```
 
-## on('photoAlbumChange')<sup>20+</sup>
+## on('photoAlbumChange')<sup>20+</sup> 
 
 on(type: 'photoAlbumChange', callback: Callback&lt;AlbumChangeInfos&gt;): void
 
@@ -1544,6 +1564,7 @@ let onCallback2 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
   // file had changed, do something.
 }
 
+// Register photoAlbumChange to listen for album changes. You can register multiple callbacks.
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context){
   console.info('onPhotoAlbumChangeDemo.');
 
@@ -1558,7 +1579,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 }
 ```
 
-## off('photoAlbumChange')<sup>20+</sup>
+## off('photoAlbumChange')<sup>20+</sup> 
 
 off(type: 'photoAlbumChange', callback?: Callback&lt;AlbumChangeInfos&gt;): void
 
@@ -1601,6 +1622,7 @@ let onCallback2 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
   // file had changed, do something.
 }
 
+// After registering the photoAlbumChange listener, cancel the specified listener to demonstrate how to cancel the listener.
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context){
   console.info('onPhotoAlbumChangeDemo.');
 
@@ -1636,7 +1658,7 @@ Obtains the name of the album that the **PhotoPickerComponent** shows by default
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](../apis-core-file-kit/errorcode-filemanagement.md).
+For details about the error codes, see [Media Library Error Codes](errorcode-medialibrary.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -1883,7 +1905,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   console.info('getAlbumIdByLpath');
 
   try {
-      let albumId: number = await phAccessHelper.getAlbumIdByLpath('testLpath');
+      let albumId: number = await phAccessHelper.getAlbumIdByLpath('/DCIM/Camera');
       console.info('requestFile:: albumId: ', albumId);
 
       console.info('getAlbumIdByLpath completed.');
@@ -1894,7 +1916,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
-## onSinglePhotoChange<sup>23+</sup>
+## onSinglePhotoChange<sup>23+</sup> 
 
 onSinglePhotoChange(asset: PhotoAsset, callback: Callback&lt;PhotoAssetChangeInfos&gt;): void
 
@@ -1937,6 +1959,7 @@ let onCallback2 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
   // Operations performed when the callback is triggered.
 }
 
+// After obtaining albums and assets, register a listener for changes to a single asset to demonstrate how to use onSinglePhotoChange.
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context){
   console.info('onSinglePhotoChangeDemo.');
   let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
@@ -1964,9 +1987,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 }
 ```
 
-## offSinglePhotoChange<sup>23+</sup>
+## offSinglePhotoChange<sup>23+</sup> 
 
-offSinglePhotoChange(asset?: PhotoAsset, callback?: Callback&lt;PhotoAssetChangeInfos&gt;): void;
+offSinglePhotoChange(asset?: PhotoAsset, callback?: Callback&lt;PhotoAssetChangeInfos&gt;): void
 
 Unregisters the listener for a single asset. Note the following:
 
@@ -2017,6 +2040,7 @@ let onCallback3 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
   // Operations performed when the callback is triggered.
 }
 
+// After obtaining albums and assets, register a listener for changes to a single asset and demonstrate how to cancel the listener in different ways.
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context){
   console.info('onSinglePhotoChangeDemo.');
   let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
@@ -2053,9 +2077,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 }
 ```
 
-## onSinglePhotoAlbumChange<sup>23+</sup>
+## onSinglePhotoAlbumChange<sup>23+</sup> 
 
-onSinglePhotoAlbumChange(album: Album, callback: Callback&lt;AlbumChangeInfos&gt;): void;
+onSinglePhotoAlbumChange(album: Album, callback: Callback&lt;AlbumChangeInfos&gt;): void
 
 Registers a listener for changes of a single common asset. This API uses an asynchronous callback to return the result.
 
@@ -2096,6 +2120,7 @@ let onCallback2 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
   // Operations performed when the callback is triggered.
 }
 
+// After obtaining albums, register a listener for changes to a single album to demonstrate how to use onSinglePhotoAlbumChange.
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context){
   console.info('onSinglePhotoAlbumChangeDemo.');
   let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
@@ -2121,7 +2146,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 }
 ```
 
-## offSinglePhotoAlbumChange<sup>23+</sup>
+## offSinglePhotoAlbumChange<sup>23+</sup> 
 
 offSinglePhotoAlbumChange(album?: Album, callback?: Callback&lt;AlbumChangeInfos&gt;): void
 
@@ -2151,7 +2176,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | ---------------------------------------- |
 | 201 | Permission denied. |
-| 23800151 | The scenario parameter verification fails. Possible causes: 1.The same callback is unregistered repeatedly. 2. The uri of the album invalid.|
+| 23800151 | The scenario parameter verification fails. Possible causes: 1. The same callback is unregistered repeatedly. 2. The uri of the album invalid. |
 | 23800301 | Internal system error. You are advised to retry and check the logs. Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
 
 **Example**
@@ -2174,6 +2199,7 @@ let onCallback3 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
   // Operations performed when the callback is triggered.
 }
 
+// After obtaining albums, register a listener for changes to a single album and demonstrate how to cancel the listener in different ways.
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context){
   console.info('onSinglePhotoChangeDemo.');
   let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
@@ -2358,15 +2384,18 @@ class MediaLibraryExample {
 
   onMediaLibraryAvailability = async () => {
     try {
+      // Define the callback function for media library availability changes.
       this.handleMediaLibraryChange = (
         changeData: photoAccessHelper.MediaLibraryAvailability
       ) => {
+        // Obtain the availability of the media library and the reason why it is unavailable.
         const availabilityStatus = changeData.availabilityStatus;
         const unavailabilityReason = changeData.unavailabilityReason;
-        console.info(`Media library status change: status=${availabilityStatus}, reason=${unavailabilityReason}`);
+        console.info(`Media library status changed: status=${availabilityStatus}, reason=${unavailabilityReason}`);
       };
+      // Register a listener for media library availability.
       this.helper.onMediaLibraryAvailability(this.handleMediaLibraryChange);
-      console.info('Media library listener registered successfully');
+      console.info('Media library listener registered successfully.');
     } catch (err) {
       console.error(`onMediaLibraryAvailability failed::${(err as BusinessError).code}, ${(err as BusinessError).message} !`);
     }
@@ -2418,9 +2447,10 @@ class MediaLibraryExample {
 
   offMediaLibraryAvailability = async () => {
     try {
+      // Register a listener for the media library availability and then unregister it to demonstrate how to cancel the listener.
       this.helper.onMediaLibraryAvailability(this.handleMediaLibraryChange);
       this.helper.offMediaLibraryAvailability(this.handleMediaLibraryChange);
-      console.info('Media library listener unregistered successfully');
+      console.info('Media library listener unregistered successfully.');
     } catch (err) {
       console.error(`offMediaLibraryAvailability failed::${(err as BusinessError).code}, ${(err as BusinessError).message} !`);
     }

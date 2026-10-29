@@ -1,10 +1,11 @@
 # Functions
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @boxwall-->
+<!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=138f7dcec9e99067f11a5ba1afa58271363a7ef2 translatedAt=2026-10-08T12:10:31.277Z pushedAt=2026-10-12T09:31:38.876Z -->
 
 > **NOTE**
 >
@@ -43,7 +44,7 @@ let audioManager = audio.getAudioManager();
 
 createAudioRenderer(options: AudioRendererOptions, callback: AsyncCallback\<AudioRenderer>): void
 
-Creates an AudioRenderer instance. This API uses an asynchronous callback to return the result.
+Creates an audio renderer. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Multimedia.Audio.Renderer
 
@@ -52,7 +53,7 @@ Creates an AudioRenderer instance. This API uses an asynchronous callback to ret
 | Name  | Type                                           | Mandatory| Description            |
 | -------- | ----------------------------------------------- | ---- | ---------------- |
 | options  | [AudioRendererOptions](arkts-apis-audio-i.md#audiorendereroptions8)  | Yes  | Renderer configurations.    |
-| callback | AsyncCallback<[AudioRenderer](arkts-apis-audio-AudioRenderer.md)> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the AudioRenderer instance obtained; otherwise, **err** is an error object.|
+| callback | AsyncCallback<[AudioRenderer](arkts-apis-audio-AudioRenderer.md)> | Yes | Callback used to return the result. If the audio renderer is created successfully, **err** is **undefined** and **data** is the AudioRenderer instance created; otherwise, **err** is an error object. |
 
 **Example**
 
@@ -92,7 +93,7 @@ audio.createAudioRenderer(audioRendererOptions,(err, data) => {
 
 createAudioRenderer(options: AudioRendererOptions): Promise<AudioRenderer\>
 
-Creates an AudioRenderer instance. This API uses a promise to return the result.
+Creates an audio renderer. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Multimedia.Audio.Renderer
 
@@ -145,7 +146,7 @@ audio.createAudioRenderer(audioRendererOptions).then((data) => {
 
 createAudioCapturer(options: AudioCapturerOptions, callback: AsyncCallback<AudioCapturer\>): void
 
-Creates an AudioCapturer instance. This API uses an asynchronous callback to return the result.
+Creates an audio capturer. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Multimedia.Audio.Capturer
 
@@ -158,7 +159,7 @@ This permission is required when [SourceType](arkts-apis-audio-e.md#sourcetype8)
 | Name  | Type                                           | Mandatory| Description            |
 | :------- | :---------------------------------------------- | :--- | :--------------- |
 | options  | [AudioCapturerOptions](arkts-apis-audio-i.md#audiocaptureroptions8)  | Yes  | Capturer configurations.|
-| callback | AsyncCallback<[AudioCapturer](arkts-apis-audio-AudioCapturer.md)> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the AudioCapturer instance obtained; otherwise, **err** is an error object. If the operation fails, an error object with one of the following error codes is returned:<br>Error code 6800301: indicates a parameter verification exception, permission verification exception, or system processing exception. For details, see system logs.<br>Error code 6800101: indicates that a mandatory parameter is null or the parameter type is incorrect.|
+| callback | AsyncCallback<[AudioCapturer](arkts-apis-audio-AudioCapturer.md)> | Yes | Callback used to return the result. If the audio capturer is created successfully, **err** is **undefined** and data is the **AudioCapturer** object. Otherwise, **err** is an error object.<br>If the operation fails, an error object with one of the following error codes is returned:<br>Error code 6800301: indicates a parameter verification exception, permission verification exception, or system processing exception. For details, see system logs.<br>Error code 6800101: indicates that a mandatory parameter is null or the parameter type is incorrect. |
 
 **Example**
 
@@ -198,7 +199,7 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 
 createAudioCapturer(options: AudioCapturerOptions): Promise<AudioCapturer\>
 
-Creates an AudioCapturer instance. This API uses a promise to return the result.
+Creates an audio capturer. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Multimedia.Audio.Capturer
 
@@ -216,7 +217,7 @@ This permission is required when [SourceType](arkts-apis-audio-e.md#sourcetype8)
 
 | Type                                     | Description                  |
 | ----------------------------------------- |----------------------|
-| Promise<[AudioCapturer](arkts-apis-audio-AudioCapturer.md)> | Promise used to return the result. If the operation is successful, an AudioCapturer instance is returned; otherwise, an error object with either of the following error codes is returned:<br>Error code 6800301: indicates a parameter verification exception, permission verification exception, or system processing exception. For details, see system logs.<br>Error code 6800101: indicates that a mandatory parameter is null or the parameter type is incorrect.|
+| Promise<[AudioCapturer](arkts-apis-audio-AudioCapturer.md)> | Promise used to return the result. If the operation is successful, an **AudioCapturer** instance is returned; otherwise, an error object with either of the following error codes is returned:<br>Error code 6800301: indicates a parameter verification exception, permission verification exception, or system processing exception. For details, see system logs.<br>Error code 6800101: indicates that a mandatory parameter is null or the parameter type is incorrect. |
 
 **Example**
 
@@ -259,10 +260,11 @@ Creates an AudioLoopback instance. This API uses a promise to return the result.
 
 Before using **createAudioLoopback**, call [isAudioLoopbackSupported](arkts-apis-audio-AudioStreamManager.md#isaudioloopbacksupported20) to check whether the system supports the audio loopback mode.
 
-
 **System capability**: SystemCapability.Multimedia.Audio.Capturer
 
 **Required permissions**: ohos.permission.MICROPHONE
+- In API versions 20 to 24, you need to request the required permissions to use this API.
+- Since API version 26.0.0, this API can be used directly without requesting permissions.
 
 **Parameters**
 
@@ -282,8 +284,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------|
-|     201 | Permission denied.             |
-|     801 | Unsupported API.               |
+|     201 | Permission denied.<br>Applicable versions: 20–24 |
+|     801 | Unsupported API.<br>Applicable versions: 20–24 |
 | 6800101 | Parameter verification failed. |
 | 6800104 | Loopback mode is unsupported.  |
 

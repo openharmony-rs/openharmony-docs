@@ -34,6 +34,7 @@
     - [Creating an Application Clone](app-clone.md)
     - [Creating an Application Multi-Instance](multiInstance.md)
     - [Configuring an Application Icon and Label](layered-image.md)
+    - [Configuring the Context Menu for Applications (PC/2-in-1 Device)](right-click-menu.md)
     - [Converting HAR to HSP](har-to-hsp.md)
     - [Converting HSP to HAR](hsp-to-har.md)
     - [Converting HAP to HAR](hap-to-har.md)

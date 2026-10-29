@@ -28,10 +28,10 @@ The file declares the APIs related to moving photos. You can use the APIs to obt
 | Name| Description|
 | -- | -- |
 | [MediaLibrary_ErrorCode OH_MovingPhoto_GetUri(OH_MovingPhoto* movingPhoto, const char** uri)](#oh_movingphoto_geturi) | Obtains the URI of a moving photo.|
-| [MediaLibrary_ErrorCode OH_MovingPhoto_RequestContentWithUris(OH_MovingPhoto* movingPhoto, char* imageUri, char* videoUri)](#oh_movingphoto_requestcontentwithuris) | Requests the image data and video data of a moving photo and writes them to the specified URIs, respectively.|
+| [MediaLibrary_ErrorCode OH_MovingPhoto_RequestContentWithUris(OH_MovingPhoto* movingPhoto, char* imageUri, char* videoUri)](#oh_movingphoto_requestcontentwithuris) | Requests the image data and video data of a moving photo and writes them to the specified URIs, respectively.   |
 | [MediaLibrary_ErrorCode OH_MovingPhoto_RequestContentWithUri(OH_MovingPhoto* movingPhoto, MediaLibrary_ResourceType resourceType, char* uri)](#oh_movingphoto_requestcontentwithuri) | Requests the moving photo content of the specified resource type and writes it to the specified URI.|
 | [MediaLibrary_ErrorCode OH_MovingPhoto_RequestContentWithBuffer(OH_MovingPhoto* movingPhoto, MediaLibrary_ResourceType resourceType, const uint8_t** buffer, uint32_t* size)](#oh_movingphoto_requestcontentwithbuffer) | Requests the moving photo content of the specified resource type and returns it in ArrayBuffer format.|
-| [MediaLibrary_ErrorCode OH_MovingPhoto_Release(OH_MovingPhoto* movingPhoto)](#oh_movingphoto_release) | Releases an [OH_MovingPhoto](capi-mediaassetmanager-oh-movingphoto.md) instance.|
+| [MediaLibrary_ErrorCode OH_MovingPhoto_Release(OH_MovingPhoto* movingPhoto)](#oh_movingphoto_release) | Releases an [OH_MovingPhoto](capi-mediaassetmanager-oh-movingphoto.md) instance.      |
 
 ## Function Description
 
@@ -53,7 +53,7 @@ Obtains the URI of a moving photo.
 | Parameter| Description|
 | -- | -- |
 | [OH_MovingPhoto](capi-mediaassetmanager-oh-movingphoto.md)* movingPhoto | Pointer to an [OH_MovingPhoto](capi-mediaassetmanager-oh-movingphoto.md) instance.|
-| const char** uri | Double pointer to the URI of the moving photo obtained.|
+| const char** uri | Pointer to the URI of the moving photo object.|
 
 **Return value**
 
@@ -140,8 +140,8 @@ Requests the moving photo content of the specified resource type and returns it 
 | -- | -- |
 | [OH_MovingPhoto](capi-mediaassetmanager-oh-movingphoto.md)* movingPhoto | Pointer to an [OH_MovingPhoto](capi-mediaassetmanager-oh-movingphoto.md) instance.|
 | [MediaLibrary_ResourceType](capi-media-asset-base-capi-h.md#medialibrary_resourcetype) resourceType | Resource type, which is specified by [MediaLibrary_ResourceType](capi-media-asset-base-capi-h.md#medialibrary_resourcetype).|
-| const uint8_t** buffer | Double pointer to the buffer for storing the target file data.|
-| uint32_t* size | Pointer to the buffer size.|
+| const uint8_t** buffer | Pointer to the buffer for storing the target file data., which is used to receive the requested resource content data.|
+| uint32_t* size | Output parameter, which returns the size of the buffer data, in bytes.|
 
 **Return value**
 

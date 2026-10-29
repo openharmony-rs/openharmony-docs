@@ -1,7 +1,7 @@
 # 添加事件监听
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -724,10 +724,10 @@ void onColorModeChange(ArkUI_SystemColorMode colorMode, void *userData)
 {
     ColorModeInfo* info = static_cast<ColorModeInfo*>(userData);
     if (colorMode == ARKUI_SYSTEM_COLOR_MODE_LIGHT) {
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "[Sample_NdkAddInteractionEvent]",
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "[Sample_NdkAddInteractionEvent]",
                      "NdkAddInteractionEvent_Light mode: ", info->lightMsg);
     } else if (colorMode == ARKUI_SYSTEM_COLOR_MODE_DARK) {
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "[Sample_NdkAddInteractionEvent]",
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "[Sample_NdkAddInteractionEvent]",
                      "NdkAddInteractionEvent_Dark mode: ", info->darkMsg);
     }
 }

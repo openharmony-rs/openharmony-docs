@@ -6,14 +6,13 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=586ca0df7c9e6070a6064e9c1b3f797ce18bcafe translatedAt=2026-08-11T02:01:13.312Z pushedAt=2026-08-11T07:43:31.128Z -->
+<!-- md-trans-meta sourceCommit=e80025ed82ed281bac11c255d720292d542f564f translatedAt=2026-10-10T03:25:47.106Z pushedAt=2026-10-10T03:30:24.134Z -->
 
 This topic walks you through on how to create a certificate revocation list (CRL) instance, obtain CRL information, check whether a certificate has been revoked, and print the revocation date if the certificate has been revoked.
 
 ## How to Develop
 
 1. Import the [certificate module](../../reference/apis-device-certificate-kit/js-apis-cert.md) and the [crypto framework](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md).
-
    ```ts
    import { cert } from '@kit.DeviceCertificateKit';
    import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -121,9 +120,9 @@ function crlSample(): void {
     let revokedFlag = true;
     let serial: bigint = BigInt('0');
     cert.createX509Cert(certBlob, (err, x509Cert) => {
-      serial = x509Cert.getCertSerialNumber();
       if (err == null) {
         try {
+          serial = x509Cert.getCertSerialNumber();
           // Check whether the certificate has been revoked.
           revokedFlag = x509Crl.isRevoked(x509Cert);
           console.info(`revokedFlag is: ${revokedFlag}`);

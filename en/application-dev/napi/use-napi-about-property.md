@@ -5,7 +5,7 @@
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=099d2f0bb805c74cb41780582ea4e8e363b016e3 translatedAt=2026-09-16T03:37:20.462Z pushedAt=2026-09-16T08:36:25.741Z -->
+<!-- md-trans-meta sourceCommit=43d4933e255d44811a8dba2f5e6ee13aa8604419 translatedAt=2026-10-13T13:13:53.658Z pushedAt=2026-10-16T04:13:02.644Z -->
 
 ## Introduction
 
@@ -22,7 +22,7 @@ Before working with ArkTS objects using Node-API, you need to understand the fol
 
 ## Available APIs
 
-The following table lists the APIs for manipulating ArkTS object properties.  
+The following table lists the APIs for manipulating ArkTS object properties.
 | API| Description|
 | -------- | -------- |
 | napi_get_property_names | Obtains the names of the enumerable properties of an object in an array of strings.  |
@@ -160,7 +160,7 @@ try {
     JSON.stringify(result));
   // ...
 } catch (error) {
-  hilog.info(0x0000, 'testTag', 'Test Node-API napi_set_property error: %{public}s', error.message);
+  hilog.error(0x0000, 'testTag', 'Test Node-API napi_set_property error: %{public}s', error.message);
   // ...
 }
 ```
@@ -217,7 +217,7 @@ try {
     testNapi.getProperty(obj, 'message'));
   // ...
 } catch (error) {
-  hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_property error: %{public}s', error.message);
+  hilog.error(0x0000, 'testTag', 'Test Node-API napi_get_property error: %{public}s', error.message);
   // ...
 }
 ```
@@ -282,7 +282,7 @@ try {
     JSON.stringify(resultTrue));
   // ...
 } catch (error) {
-  hilog.info(0x0000, 'testTag', 'Test Node-API napi_has_property error: %{public}s', error.message);
+  hilog.error(0x0000, 'testTag', 'Test Node-API napi_has_property error: %{public}s', error.message);
   // ...
 }
 ```
@@ -917,7 +917,7 @@ try {
     JSON.stringify(propertyNames));
   // ...
 } catch (error) {
-  hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_all_property_names error: %{public}s',
+  hilog.error(0x0000, 'testTag', 'Test Node-API napi_get_all_property_names error: %{public}s',
     error.message);
   // ...
 }

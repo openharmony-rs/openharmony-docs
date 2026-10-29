@@ -23,7 +23,7 @@ Drawing模块提供包括2D图形渲染、文字绘制和图片显示等功能�
 | [drawing_color.h](capi-drawing-color-h.md) | 文件中定义了与颜色相关的功能函数。 |
 | [drawing_color_filter.h](capi-drawing-color-filter-h.md) | 声明与绘图模块中的颜色滤波器对象相关的函数。 |
 | [drawing_color_space.h](capi-drawing-color-space-h.md) | 文件中定义了与颜色空间相关的功能函数。 |
-| [drawing_error_code.h](capi-drawing-error-code-h.md) | 声明与绘图模块中的错误码相关的函数。include native_drawing/drawing_error_code.h |
+| [drawing_error_code.h](capi-drawing-error-code-h.md) | 声明与绘图模块中的错误码相关的函数。 |
 | [drawing_filter.h](capi-drawing-filter-h.md) | 声明与绘图模块中的滤波器对象相关的函数。 |
 | [drawing_font.h](capi-drawing-font-h.md) | 文件中定义了与字体相关的功能函数。 |
 | [drawing_font_collection.h](capi-drawing-font-collection-h.md) | 定义绘制模块中与字体集合相关的函数。 |

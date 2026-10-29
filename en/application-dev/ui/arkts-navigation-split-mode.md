@@ -1,10 +1,11 @@
 # Split-View Layout
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @mayaolll-->
+<!--Owner: @huangxiaolinabc-->
 <!--Designer: @fangzhiyuan1-->
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=b5d07443c629fc3cb39d28cdcd1858d2f47dbab3 translatedAt=2026-10-12T09:35:05.975Z pushedAt=2026-10-13T06:02:47.885Z -->
 
 [Navigation](https://developer.huawei.com/consumer/en/doc/harmonyos-references/ts-basic-components-navigation) is a container component that provides two layouts: single-column layout and split-view layout. The split-view layout is applicable to wide-screen devices. In this layout, the navigation bar (**navBar**) is always displayed, and the subpage (**NavDestination**) is displayed through the navigation controller (**NavPathStack**). A divider is displayed between the navigation bar and the subpage. You can drag the divider to control the display ratio of the left and right sides. For details about the architecture, see [Navigation Architecture](./arkts-navigation-architecture.md).
 
@@ -12,41 +13,45 @@
 
 ### mode
 
-The [mode](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#mode9) attribute is used to control the display mode of **Navigation**. Four modes are available: single-column, split-view, adaptive, and aspect ratio–based adaptive.
+The [mode](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#mode9) attribute is used to control the display mode of **Navigation**. Four modes are available: single-column, split, adaptive, and adaptive based on aspect ratio.
 
 **Figure 1** Single-column layout (NavigationMode.Stack)
 
 ![img](figures/NavigationModeStack.png)
 
-**Figure 2** Split-view layout (NavigationMode.Split)
+**Figure 2** Split layout (NavigationMode.Split)
 
 ![img](figures/NavigationModeSplit.png)
 
 **Figure 3** Adaptive layout (NavigationMode.Auto)
 
+<!--Del-->   <!--DelEnd-->
 
+**Figure 4** Adaptive layout based on aspect ratio (NavigationMode.AUTO_WITH_ASPECT_RATIO)
+
+<!--Del-->   <!--DelEnd-->
 
 ### navBarPosition
 
-[navBarPosition](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navbarposition9) is used to control the position of the navigation bar. However, this operation will be affected by the system language. For example, in the LTR language system represented by Chinese and English, **NavBarPosition.Start** indicates that the navigation bar is displayed on the left, while in the RTL language system represented by Arabic, the navigation bar is displayed on the right. **NavBarPosition.End** also delivers a similar effect.
+[navBarPosition](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navbarposition9) is used to control the position of the navigation bar. When you use navBarPosition to control the position of the navigation bar, the result is affected by the system language. For example, in an LTR language system such as Chinese or English, NavBarPosition.Start means that the navigation bar appears on the left, whereas in an RTL language system such as Arabic, NavBarPosition.Start means that the navigation bar appears on the right. A similar effect also applies to NavBarPosition.End.
 
 **NavBarPosition.Start**
 
-**Figure 4** Layout for LTR language system
+**Figure 5** Layout of NavBarPosition.Start in an LTR language system
 
 ![img](figures/LTR-NavBarPositionStart.png)
 
-**Figure 5** Layout for RTL language system
+**Figure 6** Layout of NavBarPosition.Start in an RTL language system
 
 ![img](figures/RTL-NavBarPositionStar.png)
 
 **NavBarPosition.End**
 
-**Figure 6** Layout for LTR language system
+**Figure 7** Layout of NavBarPosition.End in an LTR language system
 
 ![img](figures/LTR-NavBarPositionEnd.png)
 
-**Figure 7** Layout for RTL language system
+**Figure 8** Effect of NavBarPosition.End when the system language is RTL
 
 ![img](figures/RTL-NavBarPositionEnd.png)
 
@@ -54,11 +59,11 @@ The [mode](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#mo
 
 [enableDragBar](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#enabledragbar14) is used to control whether to display the drag button.
 
-**Figure 8** Layout with enableDragBar set to false
+**Figure 9** Effect when enableDragBar is false
 
 ![img](figures/enableDragBar-false.png)
 
-**Figure 9** Layout with enableDragBar set to true
+**Figure 10** enableDragBar set to true
 
 ![img](figures/enableDragBar-true.png)
 
@@ -106,7 +111,7 @@ Configured routing table:
       "pageSourceFile": "src/main/ets/pages/navigation/splitmode/NewsDetail.ets",
       "buildFunction": "NewsDetailPageBuilder",
       "data": {
-        "description": "this is DetailPageA"
+        "description": "this is NewsDetail"
       }
     }
   ]
@@ -229,6 +234,6 @@ struct Index {
 }
 ```
 
-**Figure 10** Final effect
+**Figure 11** Running effect
 
-
+<!--Del-->   <!--DelEnd-->

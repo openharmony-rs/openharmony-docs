@@ -301,7 +301,7 @@ A single string field supports a maximum of 8 MB data. If the data exceeds 8 MB,
 
 | Type                 | Description                                             |
 | --------------------- | ------------------------------------------------- |
-| Promise&lt;number&gt; | Promise object that returns the row ID of the inserted data. |
+| Promise&lt;number&gt; | Promise used to return the row ID of the inserted data. |
 
 **Error codes**
 
@@ -397,7 +397,7 @@ A single string field supports a maximum of 8 MB data. If the data exceeds 8 MB,
 
 | Type                 | Description                                             |
 | --------------------- | ------------------------------------------------- |
-| Promise&lt;number&gt; | Promise object that returns the row ID of the inserted data. |
+| Promise&lt;number&gt; | Promise used to return the row ID of the inserted data. |
 
 **Error codes**
 

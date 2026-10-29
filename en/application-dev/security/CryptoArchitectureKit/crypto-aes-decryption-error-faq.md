@@ -6,6 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=8f7dd020d83b5e570ce0a1c601b2d8c4e2eb4949 translatedAt=2026-10-09T01:32:02.824Z pushedAt=2026-10-10T01:37:33.550Z -->
 
 When using the encryption and decryption algorithm library, developers often encounter symmetric algorithm decryption error 17630001. The following describes the failure causes in detail.
 
@@ -57,7 +58,7 @@ If **doFinal** fails, the padding fails to be verified. **doFinal** decrypts the
 
 1. If **key** is incorrect, the plaintext obtained by **update** is incorrect, and **doFinal** fails. That is, the padding verification fails.
 
-2. If **iv** is incorrect, the complete ciphertext length is 16 bytes, **update** has no output, and **doFinal** fails. That is, the padding verification fails. If the complete ciphertext length is not 16 bytes (multiple of 16), the plaintext obtained by **update** is partially correct, and **doFinal** is successful.
+2. **iv** is incorrect. If the complete ciphertext length is 16 bytes, update produces no output and **doFinal** fails, meaning padding verification fails. If the complete ciphertext length is an integer multiple of 16 bytes (excluding 16 bytes), the plaintext obtained by **update** is partially correct and **doFinal** succeeds.
 
 3. If **ciphertext** is incorrect, the last or second-to-last ciphertext block is incorrect, the plaintext obtained by **update** is partially correct (or no output is generated), and **doFinal** fails. That is, the padding verification fails. If other ciphertext blocks are incorrect, the plaintext obtained by **update** is partially correct, and **doFinal** is successful.
 

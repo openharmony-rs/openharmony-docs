@@ -6,6 +6,7 @@
 <!--Designer: @skye_you-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=4406a1fcebfd3a8963726b8dfa66bed58dd98b9c translatedAt=2026-10-09T01:13:50.262Z pushedAt=2026-10-09T11:00:48.642Z -->
 
 ## Available APIs
 
@@ -22,25 +23,25 @@ The following table describes the attributes of **AssetMap** for adding an asset
 | SECRET                | Type: Uint8Array<br>Length: 1-1024 bytes                          | Yes    | Asset in plaintext.                                             |
 | ALIAS                 | Type: Uint8Array<br>Length: 1-256 bytes                           | Yes    | Asset alias, which uniquely identifies an asset.                       |
 | ACCESSIBILITY         | Type: number<br>Value range: see [Accessibility](../../reference/apis-asset-store-kit/js-apis-asset.md#accessibility)| No    | Access control based on whether the screen is locked. The default value is **DEVICE_FIRST_UNLOCKED**, indicating that the asset can be accessed after the device is unlocked for the first time.     |
-| REQUIRE_PASSWORD_SET  | Type: Boolean                                                  | No    | Whether the asset is accessible only when a lock screen password is set. The value **true** means that the asset can be accessed only when the user sets a screen lock password. The value **false** means that the asset can be accessed regardless of whether the user sets a screen lock password. The default value is **false**.             |
+| REQUIRE_PASSWORD_SET  | Type: boolean                                                  | No    | Whether the asset is accessible only when a lock screen password is set. The value **true** means that the asset can be accessed only when the user sets a lock screen password. The value **false** means that the asset can be accessed regardless of whether the user sets a lock screen password. The default value is **false**.             |
 | AUTH_TYPE             | Type: number<br>Value range: see [AuthType](../../reference/apis-asset-store-kit/js-apis-asset.md#authtype)| No    | User authentication type required for accessing an asset. The default value is **NONE**, indicating that user authentication is not required before the user accesses an asset.        |
 | SYNC_TYPE             | Type: number<br>Value range: see [SyncType](../../reference/apis-asset-store-kit/js-apis-asset.md#synctype)| No    | Sync type supported by the asset. The default value is **NEVER**, indicating that the asset cannot be synced.               |
-| IS_PERSISTENT         | Type: Boolean                                                  | No    | Whether to retain the asset when the application is uninstalled. The value **true** means to retain the asset when the application is uninstalled; the value **false** means the opposite. The default value is **false**.<br>**NOTE**: If this parameter is set, the application must [apply for](../AccessToken/declare-permissions.md) the ohos.permission.STORE_PERSISTENT_DATA permission.|
-| DATA_LABEL_CRITICAL_1 | Type: Uint8Array<br>Length: 1-2048 bytes                        | No    | Asset attribute information customized by the service with integrity protection.<br>**NOTE**: The data length is 1 to 512 bytes before API version 12.|
-| DATA_LABEL_CRITICAL_2 | Type: Uint8Array<br>Length: 1-2048 bytes                      | No    | Asset attribute information customized by the service with integrity protection.<br>**NOTE**: The data length is 1 to 512 bytes before API version 12.|
-| DATA_LABEL_CRITICAL_3 | Type: Uint8Array<br>Length: 1-2048 bytes                       | No    | Asset attribute information customized by the service with integrity protection.<br>**NOTE**: The data length is 1 to 512 bytes before API version 12.|
-| DATA_LABEL_CRITICAL_4 | Type: Uint8Array<br>Length: 1-2048 bytes                       | No    | Asset attribute information customized by the service with integrity protection.<br>**NOTE**: The data length is 1 to 512 bytes before API version 12.|
-| DATA_LABEL_NORMAL_1   | Type: Uint8Array<br>Length: 1-2048 bytes                       | No    | Asset attribute information customized by the service without integrity protection.<br>**NOTE**: The data length is 1 to 512 bytes before API version 12.|
-| DATA_LABEL_NORMAL_2   | Type: Uint8Array<br>Length: 1-2048 bytes                       | No    | Asset attribute information customized by the service without integrity protection.<br>**NOTE**: The data length is 1 to 512 bytes before API version 12.|
-| DATA_LABEL_NORMAL_3   | Type: Uint8Array<br>Length: 1-2048 bytes                       | No    | Asset attribute information customized by the service without integrity protection.<br>**NOTE**: The data length is 1 to 512 bytes before API version 12.|
-| DATA_LABEL_NORMAL_4   | Type: Uint8Array<br>Length: 1-2048 bytes                       | No    | Asset attribute information customized by the service without integrity protection.<br>**NOTE**: The data length is 1 to 512 bytes before API version 12.|
-| DATA_LABEL_NORMAL_LOCAL_1<sup>12+</sup> | Type: Uint8Array<br>Length: 1-2048 bytes| No| Local attribute information about the asset. The value is assigned by the service without integrity protection and will not be synced.|
-| DATA_LABEL_NORMAL_LOCAL_2<sup>12+</sup> | Type: Uint8Array<br>Length: 1-2048 bytes| No| Local attribute information about the asset. The value is assigned by the service without integrity protection and will not be synced.|
-| DATA_LABEL_NORMAL_LOCAL_3<sup>12+</sup> | Type: Uint8Array<br>Length: 1-2048 bytes| No| Local attribute information about the asset. The value is assigned by the service without integrity protection and will not be synced.|
-| DATA_LABEL_NORMAL_LOCAL_4<sup>12+</sup> | Type: Uint8Array<br>Length: 1-2048 bytes| No| Local attribute information about the asset. The value is assigned by the service without integrity protection and will not be synced.|
+| IS_PERSISTENT         | Type: boolean                                                  | No    | Whether to retain the asset when the application is uninstalled. The value **true** means to retain the asset when the application is uninstalled; the value **false** means the opposite. The default value is **false**.<br>**NOTE**: If this parameter is set, the application must [apply for](../AccessToken/declare-permissions.md) the ohos.permission.STORE_PERSISTENT_DATA permission.|
+| DATA_LABEL_CRITICAL_1 | Type: Uint8Array, length: 1-2048 bytes.                         | Optional     | Attached information of an asset. The content is defined by the service and has integrity protection.<br/>**Note:** In API version 12 and earlier, the length is 1-512 bytes. |
+| DATA_LABEL_CRITICAL_2 | Type: Uint8Array, length: 1-2048 bytes.                       | Optional     | Attached information of an asset. The content is defined by the service and has integrity protection.<br/>**Note:** In API version 12 and earlier, the length is 1-512 bytes. |
+| DATA_LABEL_CRITICAL_3 | Type: Uint8Array, length: 1-2048 bytes.                        | Optional     | Attached information of an asset. The content is defined by the service and has integrity protection.<br/>**Note:** In API version 12 and earlier, the length is 1-512 bytes. |
+| DATA_LABEL_CRITICAL_4 | Type: Uint8Array, length: 1-2048 bytes.                        | Optional     | Attached information of an asset. The content is defined by the service and has integrity protection.<br/>**Note:** In API version 12 and earlier, the length is 1-512 bytes. |
+| DATA_LABEL_NORMAL_1   | Type: Uint8Array, length: 1-2048 bytes.                        | Optional     | Attached information of an asset. The content is defined by the service and has no integrity protection.<br/>**Note:** In API version 12 and earlier, the length is 1-512 bytes. |
+| DATA_LABEL_NORMAL_2   | Type: Uint8Array, length: 1-2048 bytes.                        | Optional     | Attached information of an asset. The content is defined by the service and has no integrity protection.<br/>**Note:** In API version 12 and earlier, the length is 1-512 bytes. |
+| DATA_LABEL_NORMAL_3   | Type: Uint8Array, length: 1-2048 bytes.                        | Optional     | Attached information of an asset. The content is defined by the service and has no integrity protection.<br/>**Note:** In API version 12 and earlier, the length is 1-512 bytes. |
+| DATA_LABEL_NORMAL_4   | Type: Uint8Array, length: 1-2048 bytes.                        | Optional     | Attached information of an asset. The content is defined by the service and has no integrity protection.<br/>**Note:** In API version 12 and earlier, the length is 1-512 bytes. |
+| DATA_LABEL_NORMAL_LOCAL_1<sup>12+</sup> | Type: Uint8Array<br>Length: 1-2048 bytes| No| Local information attached to the asset. The value is defined by the service without integrity protection and will not be synced.|
+| DATA_LABEL_NORMAL_LOCAL_2<sup>12+</sup> | Type: Uint8Array<br>Length: 1-2048 bytes| No| Local information attached to the asset. The value is defined by the service without integrity protection and will not be synced.|
+| DATA_LABEL_NORMAL_LOCAL_3<sup>12+</sup> | Type: Uint8Array<br>Length: 1-2048 bytes| No| Local information attached to the asset. The value is defined by the service without integrity protection and will not be synced.|
+| DATA_LABEL_NORMAL_LOCAL_4<sup>12+</sup> | Type: Uint8Array<br>Length: 1-2048 bytes| No| Local information attached to the asset. The value is defined by the service without integrity protection and will not be synced.|
 | CONFLICT_RESOLUTION   | Type: number<br>Value range: see [ConflictResolution](../../reference/apis-asset-store-kit/js-apis-asset.md#conflictresolution)| No    | Conflict (for example, duplicate aliases) resolution when an asset is added. The default value is **THROW_ERROR**, indicating that an exception is thrown for subsequent processing by the service. |
-| REQUIRE_ATTR_ENCRYPTED<sup>14+</sup> | Type: Boolean| No| Whether to encrypt the additional asset information customized by the service. The value **true** means to encrypt the additional asset information customized by the service; the value **false** means the opposite. The default value is **false**.|
-| GROUP_ID<sup>18+</sup> | Type: Uint8Array<br>Length: 7-127 bytes| No| Group to which the asset to be added belongs. By default, this parameter is not specified.|
+| REQUIRE_ATTR_ENCRYPTED<sup>14+</sup> | Type: boolean| No| Whether to encrypt the additional asset information customized by the service. The value **true** means to encrypt the additional asset information customized by the service; the value **false** means the opposite. The default value is **false**.|
+| GROUP_ID<sup>18+</sup> | Type: Uint8Array<br>Length: 7-127 bytes| No| Group to which the asset to be added belongs.  By default, the newly added asset does not belong to any group.|
 | WRAP_TYPE<sup>18+</sup> | Type: number<br>Value range: see [WrapType](../../reference/apis-asset-store-kit/js-apis-asset.md#wraptype18)| No| Encrypted import/export type supported by the asset. The default value is **NEVER**, indicating that encrypted import/export is not supported.|
 
 ## Constraints
@@ -51,7 +52,7 @@ The following table describes the attributes of **AssetMap** for adding an asset
 
 - Custom service data storage
 
-  Asset Store Kit provides 12 custom asset attributes starting with **DATA_LABEL** for services. If the 12 custom attributes are used, you can combine multiple data segments in a certain format (for example, JSON) into an attribute of this kit.
+  Asset Store Kit provides 12 custom attributes starting with **DATA_LABEL** for services. If the 12 custom attributes are used, you can combine multiple data segments in a certain format (for example, JSON) into an attribute of this kit.
 
   Asset Store Kit protects the integrity of the attributes starting with **DATA_LABEL_CRITICAL**. These attributes cannot be changed once written.
 
@@ -67,7 +68,7 @@ Add an asset that is accessible when the user unlocks the device for the first t
 
 1. Include the header file and define the tool function.
    <!-- @[import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/add.ets) -->
-   
+
    ``` TypeScript
    import { asset } from '@kit.AssetStoreKit';
    import { util } from '@kit.ArkTS';
@@ -81,7 +82,7 @@ Add an asset that is accessible when the user unlocks the device for the first t
 
 2. Develop the desired feature.
    <!-- @[add_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/add.ets) -->
-   
+
    ``` TypeScript
    let attr: asset.AssetMap = new Map();
    attr.set(asset.Tag.SECRET, stringToArray('demo_pwd'));
@@ -102,3 +103,4 @@ Add an asset that is accessible when the user unlocks the device for the first t
      // ...
    }
    ```
+

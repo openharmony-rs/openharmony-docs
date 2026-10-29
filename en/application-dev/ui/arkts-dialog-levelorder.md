@@ -1,12 +1,11 @@
 # Dialog Box Layer Management
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @houguobiao-->
 <!--Designer: @houguobiao-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=c8954d33bacbdec6df88d8586db7cc9b9d8a799e translatedAt=2026-07-30T11:31:55.919Z pushedAt=2026-07-31T01:45:00.432Z -->
+<!-- md-trans-meta sourceCommit=faa9c2922ab5a5f0e0bdeca23152568ef5a17f31 translatedAt=2026-10-12T09:06:56.161Z pushedAt=2026-10-12T10:16:09.327Z -->
 
 By default, ArkUI dialog box nodes are directly mounted on the root node in ascending order of their levels. Under the root node, dialog box nodes with higher levels are displayed above those with lower levels. A newly created dialog box node is inserted at the position corresponding to its level, and dialog box nodes at the same level are mounted in the order of creation.
 
@@ -29,7 +28,7 @@ Currently, [openCustomDialog](arkts-uicontext-custom-dialog.md), [CustomDialog](
 1. Initialize a dialog box content area with a **Text** component.
 
     <!-- @[normal_custom_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogboxlayermanagement/DialogBoxLayer.ets) -->
-
+    
     ``` TypeScript
     @Builder
     normalCustomDialog(index: number) {
@@ -40,11 +39,11 @@ Currently, [openCustomDialog](arkts-uicontext-custom-dialog.md), [CustomDialog](
       }.height(400).padding(5).justifyContent(FlexAlign.SpaceBetween)
     }
     ```
+    
 
 2. Initialize another dialog box content area with a button to open a common dialog box: In the click event, call the [getPromptAction](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getpromptaction) API in [UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md) to obtain a [PromptAction](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md) object. Then, use this object to call the [openCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog12-1) API and set the [levelOrder](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11) parameter to **0** to create a normal-level dialog box.
-
     <!-- @[top_custom_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogboxlayermanagement/DialogBoxLayer.ets) -->
-
+    
     ``` TypeScript
     @Builder
     topCustomDialog() {
@@ -70,11 +69,14 @@ Currently, [openCustomDialog](arkts-uicontext-custom-dialog.md), [CustomDialog](
       }.height(200).padding(5).justifyContent(FlexAlign.SpaceBetween)
     }
     ```
+    
+    
+
 
 3. Create a top-level dialog box: In the click event, call the [getPromptAction](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getpromptaction) API in [UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md) to obtain a [PromptAction](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md) object. Then, use this object to call the [openCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog12-1) API and set the [levelOrder](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11) parameter to **100000** to create a top-level dialog box.
 
     <!-- @[open_top_custom_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogboxlayermanagement/DialogBoxLayer.ets) -->
-
+    
     ``` TypeScript
     this.getUIContext().getPromptAction().openCustomDialog({
       builder: () => {
@@ -85,11 +87,12 @@ Currently, [openCustomDialog](arkts-uicontext-custom-dialog.md), [CustomDialog](
       hilog.error(DOMAIN, 'dialogBoxLayer', 'openCustomDialog error: ' + err.code + ' ' + err.message);
     });
     ```
+    
+ 
 
 ## Sample Code
-
  <!-- @[dialog_box](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogboxlayermanagement/DialogBoxLayer.ets) -->
-
+ 
  ``` TypeScript
  import { LevelOrder } from '@kit.ArkUI';
  import { BusinessError } from '@kit.BasicServicesKit';
@@ -161,5 +164,7 @@ Currently, [openCustomDialog](arkts-uicontext-custom-dialog.md), [CustomDialog](
    }
  }
  ```
-
+ 
+ 
+ 
 ![dialog-levelorder-demo1](figures/dialog-levelorder-demo1.gif)

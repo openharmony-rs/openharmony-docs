@@ -5,7 +5,7 @@
 <!--Designer: @weixin_41398971-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=adc4147325c7a699cf993a4c3c77a45afc993b6d translatedAt=2026-09-14T09:44:34.392Z pushedAt=2026-09-15T13:37:34.401Z -->
+<!-- md-trans-meta sourceCommit=cac2d4956f49e70c22c21caf87e918d83d8b28c6 translatedAt=2026-10-13T13:17:54.496Z pushedAt=2026-10-16T02:46:32.572Z -->
 
 The AudioCapturer is used to record Pulse Code Modulation (PCM) audio data. It is suitable if you have extensive audio development experience and want to implement more flexible recording features.
 
@@ -13,13 +13,13 @@ The AudioCapturer is used to record Pulse Code Modulation (PCM) audio data. It i
 
 Using AudioCapturer to record audio involves creating an AudioCapturer instance, configuring audio capture parameters, starting and stopping capture, and releasing resources. This development guide walks you through the process of audio recording with AudioCapturer, using a complete recording session as an example. It is recommended to read this guide together with the API reference of [AudioCapturer](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md).
 
-The figure below shows the state changes of the AudioCapturer. After an instance is created, you can call corresponding methods to switch the AudioCapturer to a specific state and trigger the associated behavior. Note: Calling an inappropriate method in a certain state may cause the AudioCapturer to encounter an error. You are advised to check the state before calling a state transition method to avoid unexpected results.
+The figure below shows the state changes of the AudioCapturer. After an instance is created, you can call corresponding methods to switch the AudioCapturer to a specific state and trigger the associated behavior. Note: Calling an inappropriate method in a certain state may cause the AudioCapturer to encounter an error. You are advised to check the state before calling a state change method to avoid unexpected results.
 
 You can use the [on('stateChange')](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#onstatechange8) method to listen for state changes of the AudioCapturer. For the value and description of each state, see [AudioState](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audiostate8).
 
 When an audio stream is in the working state (not in the released state), it occupies system audio stream resources. Because the system imposes a limit on the number of audio streams, you should call `release()` to reclaim audio resources when the audio stream is temporarily not in use, so as to ensure proper resource utilization and avoid failures when creating subsequent audio streams.
 
-**Figure 1** AudioCapturer state transition
+**Figure 1** AudioCapturer state change
 
 ![AudioCapturer state change](figures/audiocapturer-status-change.png)
 
@@ -27,14 +27,16 @@ When an audio stream is in the working state (not in the released state), it occ
 
 The following examples are code snippets. You can obtain the [complete sample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS) via the link at the bottom right of the sample code.
 
-1. Set audio recording parameters and create an AudioCapturer instance. For details about the parameters, see [AudioCapturerOptions](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiocaptureroptions8).
+The complete example demonstrates how to use `AudioCapturer` to record audio and play back the recorded audio after recording is complete.
+
+1. Set audio capture parameters and create an AudioCapturer instance. For details about the parameters, see [AudioCapturerOptions](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiocaptureroptions8).
 
    > **NOTE**
    >
    > When the microphone audio source is set ([SourceType](../../reference/apis-audio-kit/arkts-apis-audio-e.md#sourcetype8) is set to **SOURCE_TYPE_MIC**, **SOURCE_TYPE_VOICE_RECOGNITION**, **SOURCE_TYPE_VOICE_COMMUNICATION**, **SOURCE_TYPE_VOICE_MESSAGE**, or **SOURCE_TYPE_LIVE**), the permission ohos.permission.MICROPHONE is required. Note that **SOURCE_TYPE_LIVE** is supported since API version 20. For details about how to apply for the permission, see [Requesting User Authorization](../../security/AccessToken/request-user-authorization.md).
 
    <!-- @[create_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->
-
+   
    ``` TypeScript
    import { audio } from '@kit.AudioKit';
    // ...
@@ -72,17 +74,18 @@ The following examples are code snippets. You can obtain the [complete sample](h
 2. Call [on('readData')](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#onreaddata11) to subscribe to the audio data read callback.
    > **NOTE**
    > 
-   > - **Thread management**: Using multiple threads to process data reads is not recommended. If you must use multiple threads to read data, manage the threads properly.
-   > - **Time-consuming tasks in threads**: Do not perform time-consuming tasks in the thread where the `readData` method runs. Otherwise, the data processing thread may respond to callbacks with delay, causing audio issues such as missing recording data, stuttering, and noise.
-   > - **Callback registration**: Avoid registering callbacks on the main thread, because the callbacks may be blocked by other services and fail to respond in time, causing stuttering. Use a dedicated asynchronous thread pool to process callbacks.
-   > - **High-load blocking risk**: In high-load scenarios, the ArkTS execution context that hosts the callbacks may be continuously occupied by tasks of other services, delaying callback scheduling. Such scenarios cause issues similar to main-thread blocking, such as missing recording data, stuttering, or noise. When handling high load, reduce the execution frequency of non-essential tasks in the same execution context, avoid running multiple timer tasks simultaneously, and suspend other non-critical services if necessary.
-   > - **Recording overload confirmation**: During recording, the system audio module writes audio input data into the recording buffer shared with the application-side audio client, and the application-side audio client reads data from this buffer. When the rate at which the application side reads data is lower than the rate at which the system audio module writes data, unprocessed data keeps accumulating. When the remaining writable space in the shared buffer cannot hold a complete audio frame, the system audio module determines that an overload has occurred. In this case, the input data is not written to the shared buffer, and the application side cannot read the data. The overload count records the detected overloads. An ArkTS application can call [getOverflowCount()](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#getoverflowcount12) or [getOverflowCountSync()](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#getoverflowcountsync12) to query the number of overloaded audio frames. From API version 26.0.0 onward, when you use [printCapturerInfo](../../reference/apis-audio-kit/arkts-apis-audio-AudioDebuggingManager.md#printcapturerinfo) to output a recording snapshot, you can also view the `overflowCount` in it for problem locating after recording ends. During high load or task queue backlog, if the overload count keeps increasing, prioritize reducing task contention, limiting the queue length, or proactively stopping the recording stream.
-   > - **Service muting**: Currently, recording muting can be implemented in the following ways.
-   >   1. When the recording stream must remain running during muting: The application copies the captured data in the `readData` callback, sets all sample data in the copy to the mute value, and then saves or sends it. The mute value for signed PCM format is `0`; the mute value for the `SAMPLE_FORMAT_U8` format is `0x80`.
-   >   2. When the service allows stopping data capture during muting: The application proactively stops the recording stream and restarts it when recording is needed again, replacing muting with stopping capture.
+   > - **Main thread blocking risk**: The recording stream continuously produces audio data, which requires timely callback responses. The main thread of an ArkTS application is usually responsible for UI refresh, user interaction, and some service callbacks. If time-consuming tasks such as synchronous file read/write, complex computation, or frequent log printing are executed on the main thread, the main thread cannot process recording data callbacks in time. For AudioCapturer, delayed execution of the `readData` callback affects audio buffer flow and may cause recorded audio data loss, stuttering, or noise. Therefore, avoid registering callbacks on the main thread to prevent stuttering caused by delayed callback responses blocked by other services. In the recording data callback, perform only necessary lightweight processing, such as copying data and updating a small amount of state, and return as soon as possible. Time-consuming processing such as file saving, encoding, and network transmission should be dispatched to asynchronous tasks or workers as required by the service.
+   > - **High-load blocking risk**: In high-load scenarios, the ArkTS execution context that hosts the callback may be continuously occupied by tasks of other services, causing callback scheduling delays. Such scenarios produce recorded audio data loss, stuttering, or noise similar to main thread blocking. When handling high load, reduce the execution frequency of non-essential tasks in the same execution context, avoid running multiple timers simultaneously, and pause other non-critical services if necessary.
+   > - **Recording overload confirmation**: During recording, the system audio module writes audio input data into the recording buffer shared with the application-side audio client, and the application-side audio client reads data from this buffer. When the rate at which the application side reads data is lower than the rate at which the system audio module writes data, unprocessed data keeps accumulating. When the remaining writable space in the shared buffer is insufficient to hold a complete audio frame, the system audio module determines that an overload has occurred. In this case, the input data is not written to the shared buffer, and the application side cannot read the data. The overload count is used to record detected overloads. An ArkTS application can call [getOverflowCount()](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#getoverflowcount12) or [getOverflowCountSync()](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#getoverflowcountsync12) to query the number of overloaded audio frames. From API version 26.0.0 onward, when using [printCapturerInfo](../../reference/apis-audio-kit/arkts-apis-audio-AudioDebuggingManager.md#printcapturerinfo) to output a recording snapshot, you can also view the `overflowCount` in it for problem locating after recording ends. During high load or task queue backlog, if the overload count keeps increasing, prioritize reducing task contention, limiting the queue length, or proactively stopping the recording stream.
+   > - **Thread management**: You are advised not to use multiple threads for data reading. If you need to dispatch time-consuming tasks such as data saving, encoding, and network transmission to asynchronous tasks or workers, ensure proper thread management.
+   > - **Data buffering**: The ArrayBuffer returned by the `readData` callback corresponds to the underlying audio buffer, which may be reused by the system after the callback returns. If you need to continue processing data after the callback returns, copy the ArrayBuffer first and then dispatch it to an asynchronous task for processing.
+   > - **API calls**: The `readData` callback is used only to obtain audio data. You are advised not to call the `start`, `stop`, `release`, or `off` APIs of AudioCapturer in the callback. After registering the `readData` callback, you are advised not to call the deprecated `read` API to read data on the same AudioCapturer instance.
+   > - **Service muting**: You can mute recording in the following ways.
+   >   1. The recording stream must remain running during muting: The application copies the captured data in the `readData` callback, sets all sample data in the copy to the mute value, and then saves or sends it. The mute value for signed PCM format is `0`; the mute value for `SAMPLE_FORMAT_U8` format is `0x80`.
+   >   2. The service allows no data capture during muting: The application proactively stops the recording stream and restarts it when recording is needed later, replacing muting with stopping capture.
 
-   <!-- @[listen_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) --> 
-
+   <!-- @[listen_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->
+   
    ``` TypeScript
    import { BusinessError } from '@kit.BasicServicesKit';
    import { fileIo as fs } from '@kit.CoreFileKit';
@@ -95,26 +98,25 @@ The following examples are code snippets. You can obtain the [complete sample](h
    }
    
    // ...
-      let writtenBytes: number = 0;
-      pendingRecordingWrite = Promise.resolve();
-      let path = context.cacheDir;
-      let filePath = path + '/S16LE_2_48000.pcm';
-      recordingFile = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
-      onReadData = (buffer: ArrayBuffer) => {
-        // ...
-        let recordingBuffer = buffer.slice(0);
-        let writeOffset = writtenBytes;
-        writtenBytes += recordingBuffer.byteLength;
-        let options: Options = {
-          offset: writeOffset,
-          length: recordingBuffer.byteLength
-        }
-        pendingRecordingWrite = pendingRecordingWrite.then(async () => {
-          await fs.write(recordingFile.fd, recordingBuffer, options);
-        }).catch((error: BusinessError) => {
-          console.error(`${TAG}: Write recording data failed, code: ${error.code}, message: ${error.message}`);
-        });
-      };
+     let writtenBytes: number = 0;
+     pendingRecordingWrite = Promise.resolve();
+     let path = context.cacheDir;
+     let filePath = path + '/S16LE_2_48000.pcm';
+     recordingFile = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+     onReadData = (buffer: ArrayBuffer) => {
+       let recordingBuffer = buffer.slice(0);
+       let writeOffset = writtenBytes;
+       writtenBytes += recordingBuffer.byteLength;
+       let options: Options = {
+         offset: writeOffset,
+         length: recordingBuffer.byteLength
+       }
+       pendingRecordingWrite = pendingRecordingWrite.then(async () => {
+         await fs.write(recordingFile.fd, recordingBuffer, options);
+       }).catch((error: BusinessError) => {
+         console.error(`${TAG}: Write recording data failed, code: ${error.code}, message: ${error.message}`);
+       });
+     };
      // ...
          audioCapturer.on('readData', onReadData);
    ```
@@ -122,7 +124,7 @@ The following examples are code snippets. You can obtain the [complete sample](h
 3. Call [start](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#start8) to switch the AudioCapturer to the running state and start recording.
 
    <!-- @[start_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->
-
+   
    ``` TypeScript
    import { BusinessError } from '@kit.BasicServicesKit';
    // ...
@@ -140,7 +142,7 @@ The following examples are code snippets. You can obtain the [complete sample](h
 4. Call [stop](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#stop8) to stop recording.
 
    <!-- @[stop_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->
-
+   
    ``` TypeScript
    import { BusinessError } from '@kit.BasicServicesKit';
    // ...
@@ -152,35 +154,35 @@ The following examples are code snippets. You can obtain the [complete sample](h
          let error = err as BusinessError;
          // ...
          console.error(`${TAG}: Capturer stop failed, code: ${error.code}, message: ${error.message}`);
-      }
+       }
    ```
 
 5. Call [release](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#release8) to destroy the instance and release resources.
-   <!-- @[release_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) --> 
+<!-- @[release_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->
 
-   ``` TypeScript
-   import { BusinessError } from '@kit.BasicServicesKit';
-   // ...
-       try {
-        await audioCapturer.release();
-        capturerMuteHintEnabledByApp = false;
-        console.info(`${TAG}: Capturer release success.`);
-        // ...
-       } catch (err) {
-        let error = err as BusinessError;
-        // ...
-        console.error(`${TAG}: Capturer release failed, code: ${error.code}, message: ${error.message}`);
-      } finally {
-        await pendingRecordingWrite;
-        fs.closeSync(recordingFile.fd);
-      }
-   ```
+``` TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+// ...
+    try {
+      await audioCapturer.release();
+      capturerMuteHintEnabledByApp = false;
+      console.info(`${TAG}: Capturer release success.`);
+      // ...
+    } catch (err) {
+      let error = err as BusinessError;
+      // ...
+      console.error(`${TAG}: Capturer release failed, code: ${error.code}, message: ${error.message}`);
+    } finally {
+      await pendingRecordingWrite;
+      fs.closeSync(recordingFile.fd);
+    }
+```
 
 ### Complete Sample Code
 
 Refer to the sample code below to record audio using AudioCapturer.
 
-<!-- @[all_audioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) --> 
+<!-- @[all_audioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit';
@@ -270,7 +272,7 @@ async function initRender(context: common.UIAbilityContext) {
       if (bufferLength < buffer.byteLength) {
         let view = new DataView(buffer);
         for (let i = bufferLength; i < buffer.byteLength; i++) {
-          // Fill the blank area with silence data. When the audio sampling format is SAMPLE_FORMAT_U8, 0x7F is the silence data. When other sampling formats are used, 0 is the silence data.
+          // Fill the blank area with silence data. When the audio sampling format is SAMPLE_FORMAT_U8, 0x80 is the silence data; when other sampling formats are used, 0 is the silence data. In this example, the sampling format is SAMPLE_FORMAT_S16LE, so the silence data is filled with 0.
           view.setUint8(i, 0);
         }
       }
@@ -291,7 +293,7 @@ async function initRender(context: common.UIAbilityContext) {
         audioRenderer.on('writeData', writeDataCallback);
       }
     } else {
-      console.info(`${TAG}: creating AudioRenderer failed, error: ${err.message}`);
+      console.error(`${TAG}: creating AudioRenderer failed, error: ${err.message}`);
     }
   });
 }
@@ -301,7 +303,7 @@ async function startRender(updateCallback?: (msg: string, isError: boolean) => v
   if (audioRenderer !== undefined) {
     let stateGroup = [audio.AudioState.STATE_PREPARED, audio.AudioState.STATE_PAUSED, audio.AudioState.STATE_STOPPED];
     if (stateGroup.indexOf(audioRenderer.state.valueOf()) === -1) { // Rendering can be started only when the state is one of prepared, paused, or stopped.
-      console.error(TAG + 'start failed');
+      console.info(TAG + 'start failed');
       return;
     }
     // Start rendering.
@@ -348,8 +350,7 @@ async function releaseRender(updateCallback?: (msg: string, isError: boolean) =>
       if (err) {
         console.error('Renderer release failed.');
       } else {
-        await pendingRecordingWrite;
-        fs.closeSync(recordingFile.fd);
+        fs.closeSync(file.fd);
         console.info('Renderer release success.');
       }
     });
@@ -382,7 +383,7 @@ async function start(updateCallback?: (msg: string, isError: boolean) => void): 
       , audio.AudioState.STATE_PAUSED, audio.AudioState.STATE_STOPPED];
     // Recording can be started only when the AudioCapturer is in the STATE_PREPARED, STATE_PAUSED, or STATE_STOPPED state.
     if (stateGroup.indexOf(audioCapturer.state.valueOf()) === -1) {
-      console.error(`${TAG}: start failed`);
+      console.info(`${TAG}: start failed`);
       // ...
       return;
     }
@@ -484,10 +485,10 @@ async function release(updateCallback?: (msg: string, isError: boolean) => void)
       let error = err as BusinessError;
       // ...
       console.error(`${TAG}: Capturer release failed, code: ${error.code}, message: ${error.message}`);
-      } finally {
-        await pendingRecordingWrite;
-        fs.closeSync(recordingFile.fd);
-      }
+    } finally {
+      await pendingRecordingWrite;
+      fs.closeSync(recordingFile.fd);
+    }
   }
 }
 
@@ -502,11 +503,11 @@ To ensure that the recording is not interrupted by the system's focus concurrenc
 
 ### Setting Mute Hint for Recording Stream
 
-Starting from API version 24, when an app has muted a recording stream on the service side, you can call [setMuteHint](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#setmutehint24) to report this state to the system audio module. The system audio module then adjusts its policies based on the reported state to reduce power consumption. Note: This feature currently takes effect only on certain PCs/2-in-1 devices. This API does not actually trigger muting, nor does it mute the recording data. It simply informs the system audio module that the app has muted the current recording stream. The app still needs to process the recording data on its own, for example, by not sending captured data or by sending silent data.
+From API version 24 onward, when an application has muted a recording stream on the service side, it can call the [setMuteHint](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#setmutehint24) API to report this state to the system audio module and record the most recently set value. The system audio module adjusts its policy based on the reported state to reduce power consumption. Note that this feature currently takes effect only on some PCs/2-in-1 devices. This API only informs the system audio module that the application has muted the current recording stream; it does not actually trigger muting, nor does it mute the recorded audio data. The application still needs to process the recorded audio data itself, for example, by not sending the captured data or by sending muted data.
 
 This API can only be called when the AudioCapturer is in the running state; otherwise, error code `6800103` is returned. If both a stream-level mute hint and a session-level mute hint [setCapturerMuteHint](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setcapturermutehint24) are set for the same recording stream, the stream-level mute hint takes precedence, and the stream-level setting is used. No system query API is currently provided. If you need to display the mute hint state on the UI, the app must maintain the most recently set state on its own. In the following example, `muteHint` set to `true` indicates reporting a mute hint, and `false` indicates canceling the mute hint. `capturerMuteHintEnabledByApp` is a state maintained locally by the app, recording the current value of muteHint.
 
-<!-- @[set_mute_hint](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) --> 
+<!-- @[set_mute_hint](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->
 
 ``` TypeScript
 try {
@@ -525,4 +526,4 @@ try {
 
 Echo cancellation effectively eliminates echo interference during recording on supported devices, thereby improving audio capture quality. You can enable this feature by specifying particular microphone audio [source types](../../reference/apis-audio-kit/arkts-apis-audio-e.md#sourcetype8) (**SOURCE_TYPE_VOICE_COMMUNICATION** or **SOURCE_TYPE_LIVE**). Once enabled, the system automatically processes the captured audio signal to cancel echoes.
 
-Before enabling this feature, you are advised to call [isAcousticEchoCancelerSupported](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#isacousticechocancelersupported20) to check whether the device supports echo cancellation for the audio input [source type](../../reference/apis-audio-kit/arkts-apis-audio-e.md#sourcetype8). (This API is available since API version 20.) If supported, you can activate the echo cancellation processing by setting the corresponding microphone audio source when creating the audio capturer.
+Before enabling this feature, you are advised to call [isAcousticEchoCancelerSupported](../../reference//apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#isacousticechocancelersupported20) to check whether the device supports echo cancellation for the audio input [source type](../../reference/apis-audio-kit/arkts-apis-audio-e.md#sourcetype8). (This API is available since API version 20.) If supported, you can activate the echo cancellation processing by setting the corresponding microphone audio source when creating the audio capturer.

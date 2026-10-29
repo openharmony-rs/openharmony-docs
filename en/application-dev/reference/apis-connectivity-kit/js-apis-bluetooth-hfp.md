@@ -6,9 +6,9 @@
 <!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=14ca614ebb030bf413b2d8393352ad7521a1d1b9 translatedAt=2026-08-19T10:00:03.242Z pushedAt=2026-08-19T12:17:38.452Z -->
+<!-- md-trans-meta sourceCommit=ab463549ba53ac7ad9c9f586570526c5d592d467 translatedAt=2026-10-09T12:59:56.600Z pushedAt=2026-10-10T07:08:43.778Z -->
 
-The **hfp** module provides the Bluetooth call audio capability based on the [Hands-Free Profile (HFP)](../../connectivity/bluetooth/terminology.md#hfp), such as obtaining the call audio connection status.
+This module provides the Bluetooth call audio capability based on the [Hands-Free Profile (HFP)](../../connectivity/bluetooth/terminology.md#hfp), such as creating [HFP AG](../../connectivity/bluetooth/terminology.md#hfp-ag) and [HF](../../connectivity/bluetooth/terminology.md#hf) instances and obtaining the call audio connection status. This module is applicable to scenarios where Bluetooth call audio connection management and call audio connection status monitoring need to be implemented.
 
 > **NOTE**
 >
@@ -36,7 +36,7 @@ type BaseProfile = baseProfile.BaseProfile
 
 createHfpAgProfile(): HandsFreeAudioGatewayProfile
 
-Creates an [HFP AG](../../connectivity/bluetooth/terminology.md#hfp-ag) instance. Through this instance, you can use the local device as the HFP AG and implement functions such as obtaining the Bluetooth call audio connection status.
+Creates an [HFP AG](../../connectivity/bluetooth/terminology.md#hfp-ag) instance. Through this instance, you can use the local device as the HFP AG and implement functions such as obtaining the Bluetooth call audio connection status. Typical use scenarios include the Bluetooth call function of the in-vehicle infotainment (IVI) system. The local device functions as the audio gateway (AG) to manage the call audio route.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
@@ -44,7 +44,7 @@ Creates an [HFP AG](../../connectivity/bluetooth/terminology.md#hfp-ag) instance
 
 | Type                           | Description        |
 | ----------------------------- | ---------- |
-| [HandsFreeAudioGatewayProfile](#handsfreeaudiogatewayprofile) | HFP AG instance.|
+| [HandsFreeAudioGatewayProfile](#handsfreeaudiogatewayprofile) | HFP AG instance, which can be used to obtain the Bluetooth call audio connection status with other devices. |
 
 **Error codes**
 
@@ -68,11 +68,12 @@ try {
 }
 ```
 
+
 ## hfp.createHfpHfProfile
 
 createHfpHfProfile(): HandsFreeHfProfile
 
-Creates an [HF](../../connectivity/bluetooth/terminology.md#hf) instance. Through this instance, you can use the local device as the HF and implement functions such as obtaining the Bluetooth call audio connection status.
+Creates an [HF](../../connectivity/bluetooth/terminology.md#hf) instance. Through this instance, you can use the local device as the HF and implement functions such as obtaining the Bluetooth call audio connection status. Typical use scenarios include the hands-free call function of Bluetooth earphones and the in-vehicle hands-free call system. The local device functions as the hands-free (HF) role to receive and process call audio.
 
 **Since:** 26.0.0
 
@@ -84,7 +85,7 @@ Creates an [HF](../../connectivity/bluetooth/terminology.md#hf) instance. Throug
 
 | Type                            | Description         |
 | ----------------------------- | ---------- |
-| [HandsFreeHfProfile](#handsfreehfprofile) | HF instance. |
+| [HandsFreeHfProfile](#handsfreehfprofile) | HF instance, which can be used to obtain the Bluetooth call audio connection status with other devices. |
 
 **Error codes**
 
@@ -105,26 +106,22 @@ try {
 }
 ```
 
+
 ## HandsFreeAudioGatewayProfile
 
 Represents the [HFP AG](../../connectivity/bluetooth/terminology.md#hfp-ag) role in Bluetooth call audio.
-
 - The **HandsFreeAudioGatewayProfile** class is inherited from [BaseProfile](#baseprofile). Therefore, you can use the APIs in its parent class.
-
 - Before using the APIs of this class, you need to construct an HFP AG instance by calling [createHfpAgProfile](#hfpcreatehfpagprofile).
-
 - The counterpart of the HFP AG role is the [HF](../../connectivity/bluetooth/terminology.md#hf) role.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+
 ## HandsFreeHfProfile
 
 Represents the [HF](../../connectivity/bluetooth/terminology.md#hf) role in Bluetooth call audio.
-
 - This class is inherited from [BaseProfile](#baseprofile). Therefore, you can use the APIs in its parent class.
-
 - Before using the APIs of this class, you need to construct an instance of this class by calling [createHfpHfProfile](#hfpcreatehfphfprofile).
-
 - The counterpart of the HF role is the [HFP AG](../../connectivity/bluetooth/terminology.md#hfp-ag) role.
 
 **Since:** 26.0.0

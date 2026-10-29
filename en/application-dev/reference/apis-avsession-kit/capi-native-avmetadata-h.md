@@ -1,8 +1,8 @@
 # native_avmetadata.h
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @devil_red-->
-<!--Designer: @ccfriend-->
+<!--Owner: @gcw_7KSyM10J; @devil_red-->
+<!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -27,7 +27,7 @@ The file declares the definitions of playback control metadata.
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
 | [OH_AVMetadataBuilderStruct](capi-ohavsession-oh-avmetadatabuilderstruct.md) | OH_AVMetadataBuilder | Defines a struct for the session metadata builder. The builder is used to construct session metadata.|
-| [OH_AVMetadataStruct](capi-ohavsession-oh-avmetadatastruct.md) | OH_AVMetadata | Defines a struct for the session metadata. It is an AVMetadata instance set for a media asset.|
+| [OH_AVMetadataStruct](capi-ohavsession-oh-avmetadatastruct.md) | OH_AVMetadata | Defines a struct for storing media resource metadata.|
 
 ### Functions
 
@@ -43,7 +43,7 @@ The file declares the definitions of playback control metadata.
 | [AVMetadata_Result OH_AVMetadataBuilder_SetWriter(OH_AVMetadataBuilder* builder, const char* writer)](#oh_avmetadatabuilder_setwriter) | Sets a writer for the media asset.|
 | [AVMetadata_Result OH_AVMetadataBuilder_SetComposer(OH_AVMetadataBuilder* builder, const char* composer)](#oh_avmetadatabuilder_setcomposer) | Sets a composer for the media asset.|
 | [AVMetadata_Result OH_AVMetadataBuilder_SetDuration(OH_AVMetadataBuilder* builder, int64_t duration)](#oh_avmetadatabuilder_setduration) | Sets the playback duration for the media asset.|
-| [AVMetadata_Result OH_AVMetadataBuilder_SetMediaImageUri(OH_AVMetadataBuilder* builder, const char* mediaImageUri)](#oh_avmetadatabuilder_setmediaimageuri) | Sets an image for the media asset.|
+| [AVMetadata_Result OH_AVMetadataBuilder_SetMediaImageUri(OH_AVMetadataBuilder* builder, const char* mediaImageUri)](#oh_avmetadatabuilder_setmediaimageuri) | Sets the URI of a media image.|
 | [AVMetadata_Result OH_AVMetadataBuilder_SetSubtitle(OH_AVMetadataBuilder* builder, const char* subtitle)](#oh_avmetadatabuilder_setsubtitle) | Sets a subtitle for the media asset.|
 | [AVMetadata_Result OH_AVMetadataBuilder_SetDescription(OH_AVMetadataBuilder* builder, const char* description)](#oh_avmetadatabuilder_setdescription) | Sets a description for the media asset.|
 | [AVMetadata_Result OH_AVMetadataBuilder_SetLyric(OH_AVMetadataBuilder* builder, const char* lyric)](#oh_avmetadatabuilder_setlyric) | Sets lyrics for the media asset.|
@@ -71,7 +71,7 @@ Creates a metadata builder.
 
 | Name| Description|
 | -- | -- |
-| [OH_AVMetadataBuilder](capi-ohavsession-oh-avmetadatabuilderstruct.md)** builder |  Double pointer to the builder created.|
+| [OH_AVMetadataBuilder](capi-ohavsession-oh-avmetadatabuilderstruct.md)** builder |  Pointer to the created builder instance.|
 
 **Returns**
 
@@ -120,7 +120,7 @@ Sets the ID of the media asset.
 | Name| Description|
 | -- | -- |
 | [OH_AVMetadataBuilder](capi-ohavsession-oh-avmetadatabuilderstruct.md)* builder | Pointer to an **OH_AVMetadataBuilder** instance.|
-| const char* assetId | Pointer to the asset ID.|
+| const char* assetId | Asset ID.|
 
 **Returns**
 
@@ -170,7 +170,7 @@ Sets an artist for the media asset.
 | Name| Description|
 | -- | -- |
 | [OH_AVMetadataBuilder](capi-ohavsession-oh-avmetadatabuilderstruct.md)* builder | Pointer to an **OH_AVMetadataBuilder** instance.|
-| const char* artist | Artist of the media asset.|
+| const char* artist | Pointer to the artist of the media resource.|
 
 **Returns**
 
@@ -311,7 +311,7 @@ AVMetadata_Result OH_AVMetadataBuilder_SetMediaImageUri(OH_AVMetadataBuilder* bu
 
 **Description**
 
-Sets an image for the media asset.
+Sets the URI of a media image.
 
 **Since**: 13
 
@@ -320,7 +320,7 @@ Sets an image for the media asset.
 | Name| Description|
 | -- | -- |
 | [OH_AVMetadataBuilder](capi-ohavsession-oh-avmetadatabuilderstruct.md)* builder | Pointer to an **OH_AVMetadataBuilder** instance.|
-| const char* mediaImageUri | Pointer to the URI of the image.|
+| const char* mediaImageUri | URI of a media image.|
 
 **Returns**
 
@@ -445,7 +445,7 @@ Sets display tags for the media asset.
 | Name| Description|
 | -- | -- |
 | [OH_AVMetadataBuilder](capi-ohavsession-oh-avmetadatabuilderstruct.md)* builder | Pointer to an **OH_AVMetadataBuilder** instance.|
-| int32_t tags | Tags of the media asset displayed on the playback control page.|
+| int32_t tags | Display tags of the media asset to be displayed on the media controller. For details, see the definition in [AVMetadata_DisplayTag](capi-native-avsession-base-h.md#avmetadata_displaytag).|
 
 **Returns**
 
@@ -495,7 +495,7 @@ Generates an **OH_AVMetadata** object.
 | Name| Description|
 | -- | -- |
 | [OH_AVMetadataBuilder](capi-ohavsession-oh-avmetadatabuilderstruct.md)* builder | Pointer to an **OH_AVMetadataBuilder** instance.|
-| [OH_AVMetadata](capi-ohavsession-oh-avmetadatastruct.md)** avMetadata | Double pointer to the **OH_AVMetadata** object created.|
+| [OH_AVMetadata](capi-ohavsession-oh-avmetadatastruct.md)** avMetadata | Pointer to the **OH_AVMetadata** object, which is used to receive the generated metadata object.|
 
 **Returns**
 
@@ -519,7 +519,7 @@ Releases an **OH_AVMetadata** object.
 
 | Name| Description|
 | -- | -- |
-| [OH_AVMetadata](capi-ohavsession-oh-avmetadatastruct.md)* avMetadata | Pointer to an **OH_AVMetadata** object.|
+| [OH_AVMetadata](capi-ohavsession-oh-avmetadatastruct.md)* avMetadata | Pointer to the metadata instance.|
 
 **Returns**
 

@@ -6,6 +6,7 @@
 <!--Designer: @linshuqing; @hehehe-li-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=0b15f1900aa7e2f9a2dc9ee950f5abe64e8a8f6c translatedAt=2026-10-09T01:11:09.651Z pushedAt=2026-10-09T08:22:54.367Z -->
 
 ## How to Request
 
@@ -13,7 +14,7 @@
 
 Restricted permissions are permissions available to normal applications but must be requested via [access control list (ACL)](app-permission-mgmt-overview.md#basic-concepts-in-the-permission-mechanism).
 
-To change the APL of a normal application to system_basic or higher, modify the HarmonyAppProvision file (**Toolchains / _{Version} _/ lib / UnsignedReleasedProfileTemplate.json** file in the SDK directory) of the application when developing the application installation package, and sign the application again.
+An application at the normal level must declare its own APL as system_basic or higher. When developing the application installation package, you need to modify the application's HarmonyAppProvision configuration file, that is, the "`Toolchains / _{Version} _/ lib / UnsgnedReleasedProfileTemplate.json`" file in the SDK directory, and then re-sign the application.
 
 **Modification mode**:
 
@@ -28,7 +29,7 @@ Modify the **"bundle-info"** &gt; **"apl"** field in the file.
 ```
 
 > **NOTE**
-> Modifying the HarmonyAppProvision configuration file applies to the applications in the debug phase, but not to the applications released to the app market. For a commercial application, apply for a release certificate and profile in the app market.
+> Modifying the HarmonyAppProvision configuration file applies to the applications in the debug phase, but not to the applications released to the application market. For a commercial application, apply for a release certificate and profile in the application market.
 
 <!--RP1End-->
 
@@ -94,7 +95,7 @@ Allows an application to modify the audio files in a user public directory.
 
 ## ohos.permission.READ_IMAGEVIDEO
 
-Allows an application to read image or video files from users' local public directories. 
+Allows an application to read image or video files from users' local public directories.
 
 <!--RP27--><!--RP27End-->
 
@@ -210,7 +211,12 @@ Allows an application to support persistent access to file URIs.
 
 > **NOTE**
 >
-> In API 12 and later versions, the permission level is changed to normal, and applications can directly [declare permissions](declare-permissions.md). If compatibility with versions earlier than API 12 is required, the permission must still be used following the [request method for restricted permissions](declare-permissions-in-acl.md).
+> In API version 12, the permission level of this permission is changed to normal.
+> - If the application is only for local debugging:
+>   - For versions before API version 12, you still need to use this permission by following the [restricted permission application method](declare-permissions-in-acl.md).
+>   - For API version 12 and later only, you can directly [declare the permission](declare-permissions.md).
+> - If the application needs to be released to an application market:
+>   You still need to use this permission by following the [restricted permission application method](declare-permissions-in-acl.md).
 
 <!--RP18--><!--RP18End-->
 
@@ -308,7 +314,7 @@ This permission is required if you want to obtain the MAC address of the peer de
 
 **Since**: 8
 
-**Changelog**: The permission level is system_core in API versions 8 to 13, and is changed to system_basic since API version 14.
+**Changelog**: The permission level is system_core in API versions 8 to 13, and is changed to system_basic since API version 14. It is available to normal applications.
 
 ## ohos.permission.SET_TELEPHONY_ESIM_STATE_OPEN
 
@@ -340,15 +346,17 @@ For the application developed using the cross-platform framework, this permissio
 
 ## ohos.permission.kernel.ALLOW_WRITABLE_CODE_MEMORY
 
-Allows an application to apply for writable and executable anonymous memory.
+Allows an application to apply for writable and executable anonymous memory. This capability is mainly used to provide just-in-time (JIT) compilation for the engines bundled with the application (such as JS engines and game script engines) to improve code execution efficiency.
 
-<!--RP10-->
-For the application developed using the cross-platform framework, this permission allows the application to apply for writable and executable anonymous memory. Currently, this permission is available only to applications running on tablets and 2-in-1 devices.
-<!--RP10End-->
+<!--RP10--><!--RP10End-->
 
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
+
+**Supported devices**: PC/2in1 | Tablet
+
+<!--RP108--><!--RP108End-->
 
 **Since**: 14
 
@@ -356,7 +364,7 @@ For the application developed using the cross-platform framework, this permissio
 
 Allows an application to have its system JS engine to apply for anonymous executable memory with the MAP_FORT identifier.
 
-After the application has this permission, the system JS engine can request anonymous executable memory with MAP_FORT for just-in-time (JIT) compilation, which increases the runtime execution efficiency.
+After the application obtains this permission, the system engine can apply for anonymous executable memory with the MAP_FORT identifier for just-in-time compilation, improving runtime execution efficiency.
 
 <!--RP13--><!--RP13End-->
 
@@ -538,7 +546,7 @@ Allows an application to obtain the MAC address of the local Wi-Fi device.
 
 **Since**: 8
 
-**Change history:** For API versions 8 to 15, this permission is available only to system applications. For API versions 16 and later, this permission is available to common applications on PCs/2-in-1 devices, and is available only to system applications on other devices.
+**Changelog:** For API versions 8 to 15, this permission is available only to system applications. For API versions 16 and later, this permission is available to normal applications on PCs/2-in-1 devices, and is available only to system applications on other devices.
 
 ## ohos.permission.kernel.ALLOW_USE_JITFORT_INTERFACE
 
@@ -564,7 +572,7 @@ Allows an application to obtain the current MAC address of the Ethernet.
 
 **Since**: 13
 
-**Changelog**: This permission is available only to MDM applications in API version 13. From API version 14, this permission is available to normal enterprise applications. From API version 16, this permission is available to normal applications on PCs/2-in-1 devices, and is available only to system applications on other devices.
+**Changelog**: In API 13, this permission is open only to MDM applications. Starting from API 14, the open scope is changed from MDM applications to normal enterprise applications. Starting from API 16, it is open to normal applications on PCs/2-in-1 devices, while on other devices it remains open only to system applications.
 
 ## ohos.permission.kernel.DISABLE_GOTPLT_RO_PROTECTION
 
@@ -592,12 +600,12 @@ Allows an application to use the fraud app Picker to obtain application informat
 
 ## ohos.permission.ACCESS_DDK_DRIVERS
 
-Allows a peripheral extension driver client to bind to the driver server.
+Allows an extended peripheral driver client to bind to the driver server.
 
 This permission can be requested successfully only when:
 
-1. The target extension driver server in the value field of the permission declaration for the peripheral extension driver client has been launched or both the server and client have been launched.
-2. The capabilities provided by the target extension driver server comply with the requirements of the peripheral extension driver client.
+1. The target extension driver server in the value field of the permission declaration for the extended peripheral driver client has been launched or both the server and client have been launched.
+2. The capabilities provided by the target extension driver server comply with the requirements of the extended peripheral driver client.
 
 <!--RP82--><!--RP82End-->
 
@@ -611,9 +619,9 @@ This permission can be requested successfully only when:
 
 ## ohos.permission.ACCESS_DDK_SCSI_PERIPHERAL
 
-Allows a peripheral extension driver to access the SCSI DDK APIs to implement development of SCSI extended peripheral drivers.
+Allows an extended peripheral driver to access the SCSI DDK APIs to implement development of SCSI extended peripheral drivers.
 
-The APIs can be used to develop the following types of peripheral extension drivers:
+The APIs can be used to develop the following types of extended peripheral drivers:
 
 Peripherals connected to the host via a USB bus and:
 
@@ -630,9 +638,9 @@ Peripherals connected to the host via a USB bus and:
 
 ## ohos.permission.ACCESS_DDK_USB_SERIAL
 
-Allows a peripheral extension driver to access the USB Serial DDK APIs.
+Allows an extended peripheral driver to access the USB Serial DDK APIs.
 
-The USB Serial DDK APIs can be used to develop the following types of peripheral extension drivers:
+The USB Serial DDK APIs can be used to develop the following types of extended peripheral drivers:
 
 Peripherals connected to the host via a USB bus and:
 
@@ -645,7 +653,7 @@ Peripherals connected to the host via a USB bus and:
 
 **Authorization mode**: system_grant
 
-**Supported devices: ** PCs/2-in-1 devices | tablets
+**Supported devices**:  PCs/2-in-1 devices | tablets
 
 **Since**: 18
 
@@ -809,20 +817,6 @@ With this permission, the application can obtain the device name on the **About*
 
 **Since**: 20
 
-<!--Del-->
-## ohos.permission.atomicService.MANAGE_STORAGE
-
-Allows an atomic service to request differentiated storage space.
-
-**Permission level**: system_basic
-
-**Authorization mode**: system_grant
-
-**Supported devices**: phones | PCs/2-in-1 devices | tablets
-
-**Since**: 20
-<!--DelEnd-->
-
 ## ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM
 
 Allows an application to request continuous tasks of special types, such as computing tasks.
@@ -913,7 +907,7 @@ With this permission, the application can choose the target applications for sys
 
 ## ohos.permission.HOOK_KEY_EVENT
 
-Allows an application to intercept keyboard input events.
+Allows an application to intercept key events.
 
 With this permission, the application can integrate its custom key handling process into the system's key handling process prior to the key event being dispatched to the application window.
 
@@ -1119,7 +1113,7 @@ With this permission, the application can set the background color of the main w
 
 ## ohos.permission.MANAGE_CALL_FOR_DEVICES
 
-Allows an application to manage call status, such as retrieving incoming call numbers, answering, rejecting, and ending calls.
+Allows an application to manage the call state, such as obtaining the incoming call number, answering, rejecting, and hanging up calls.
 
 <!--RP64--><!--RP64End-->
 
@@ -1279,7 +1273,7 @@ Allows an application to apply for a continuous task of the special type.
 
 ## ohos.permission.FLOAT_VIEW
 
-Allows an application to use floating windows. 
+Allows an application to use floating windows.
 
 <!--RP78--><!--RP78End-->
 
@@ -1306,7 +1300,7 @@ Allows an application to query the call forwarding status.
 **Since**: 26.0.0
 
 ## ohos.permission.MANAGE_SKILL
-    
+
 Allows an application to use Skills.
 
 With this permission, the application can:
@@ -1341,8 +1335,9 @@ Allows an application to install the PCIe driver.
 
 ## ohos.permission.ACCESS_GAME_BUDDY_SERVICE
 
-Allows an application to access the game buddy service. 
-With this permission, the application can utilize the APIs provided by the game buddy service, such as capturing screenshots of running games and obtaining the foreground and background states of games.
+Allows an application to access the game companion service.
+
+After obtaining this permission, the application can use the APIs provided by the game companion service, such as obtaining screenshots of running game applications and obtaining the foreground/background status of game applications.
 
 <!--RP93--><!--RP93End-->
 
@@ -1350,11 +1345,11 @@ With this permission, the application can utilize the APIs provided by the game 
 
 **Authorization mode**: system_grant
 
-**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs
+**Supported devices**: Phone | PC/2in1 | Tablet | TV
 
 **Since**: 26.0.0
 
-**Changelog**: Since API version 26.0.0, this permission is also available on tablets, PCs/2-in-1 devices and TVs.
+**Change information:** Starting from API version 26.0.0, support is added for applying on tablets, PCs/2-in-1 devices, and TVs.
 
 ## ohos.permission.KNOCK_COLLABORATION
 
@@ -1395,6 +1390,20 @@ Allows an application to install and load self-distributed plug-ins.
 **Authorization mode**: system_grant
 
 **Supported devices**: PCs/2-in-1 devices
+
+**Since**: 26.0.0
+
+## ohos.permission.MANAGE_AUDIO_ACCESSORY
+
+Allows an application to register audio accessories with the system.
+
+<!--RP99--><!--RP99End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: Phone | TV | PC/2in1 | Tablet | Car
 
 **Since**: 26.0.0
 
@@ -1480,6 +1489,6 @@ Allows an application to generate, use, and delete secure element keys.
 
 **Authorization mode**: system_grant
 
-**Supported devices**: phones | wearables | TVs | PCs/2-in-1 devices | tablets | cars   
+**Supported devices**: phones | wearables | TVs | PCs/2-in-1 devices | tablets | cars
 
 **Since**: 26.0.0

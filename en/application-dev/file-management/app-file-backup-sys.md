@@ -5,7 +5,7 @@
 <!--Designer: @chenxi0605-->
 <!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=7c6ac23e7ff24196e5c67385c09579cd2f5a2b1e translatedAt=2026-09-16T02:46:46.600Z pushedAt=2026-09-16T06:45:34.060Z -->
+<!-- md-trans-meta sourceCommit=9ba5cc8a5a6376c01d21ba01049967807da4bf5c translatedAt=2026-10-13T12:52:44.782Z pushedAt=2026-10-15T11:09:13.426Z -->
 
 The backup and restore framework provides a solution for backing up and restoring data of applications and services on a device. You can follow the procedure below to enable an application to trigger data backup or restoration:
 
@@ -37,7 +37,7 @@ The capability file of an application contains the device type, device version, 
 
 Call [backup.getLocalCapabilities()](../reference/apis-core-file-kit/js-apis-file-backup-sys.md#backupgetlocalcapabilities) to obtain the capability file.
 
-<!-- @[get_local_cap_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFileBackup/entry/src/main/ets/backuprestore/BackupRestore.ets) -->
+<!-- @[get_local_cap_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFileBackup/entry/src/main/ets/backuprestore/BackupRestore.ets) -->  
 
 ``` TypeScript
 import { fileIo } from '@kit.CoreFileKit';
@@ -45,18 +45,20 @@ import { backup } from '@kit.CoreFileKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 // ...
 
-// This is only an example. The path can be obtained via getHostContext within the component.
-let filesDir = '/data/storage/el2/base/haps/entry/files';
+// filesDir is obtained by the caller via UIAbilityContext.filesDir and passed in.
 
 // Obtain capability files.
-export async function getLocalCapabilities(): Promise<void> {
+export async function getLocalCapabilities(filesDir: string): Promise<void> {
   try {
     let fileData = await backup.getLocalCapabilities();
     console.info('getLocalCapabilities success');
     let fpath = filesDir + '/localCapabilities.json';
-    fileIo.copyFileSync(fileData.fd, fpath);
+    try {
+      fileIo.copyFileSync(fileData.fd, fpath);
+    } finally {
+      fileIo.closeSync(fileData.fd);
+    }
     // ...
-    fileIo.closeSync(fileData.fd);
   } catch (error) {
     console.error(`getLocalCapabilities failed with err, code is ${error.code}, message is ${error.message}`);
   }
@@ -104,16 +106,15 @@ You can save the file to a local directory as required.
 
 **Example**
 
-  <!-- @[session_backup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFileBackup/entry/src/main/ets/backuprestore/BackupRestore.ets) -->
-
+  <!-- @[session_backup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFileBackup/entry/src/main/ets/backuprestore/BackupRestore.ets) -->  
+  
   ``` TypeScript
   import { fileIo } from '@kit.CoreFileKit';
   import { backup } from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   // ...
   
-  // This is only an example. The path can be obtained via getHostContext within the component.
-  let filesDir = '/data/storage/el2/base/haps/entry/files';
+  // filesDir is obtained by the caller through UIAbilityContext.filesDir and passed in.
   
   // ...
   
@@ -121,7 +122,7 @@ You can save the file to a local directory as required.
   // Create a SessionBackup instance for data backup.
   let gSession: backup.SessionBackup;
   
-  function createSessionBackup(): backup.SessionBackup {
+  function createSessionBackup(filesDir: string): backup.SessionBackup {
     let generalCallbacks: backup.GeneralCallbacks = {
       // onFileReady is called to return a data complete notification to the application. Avoid time-consuming implementations in onFileReady. You can use asynchronous threads to process data based on the file FD.
       onFileReady: (err: BusinessError, file: backup.File) => {
@@ -180,8 +181,8 @@ You can save the file to a local directory as required.
   }
   
   // ...
-  export async function sessionBackup(): Promise<void> {
-    gSession = createSessionBackup();
+  export async function sessionBackup(filesDir: string): Promise<void> {
+    gSession = createSessionBackup(filesDir);
     // Select the application to be backed up based on the capability file obtained by backup.getLocalCapabilities().
     // You can also back up data based on the application bundle name.
     const backupApps: string[] = [
@@ -203,16 +204,15 @@ When all the data of the application is ready, the service starts to restore the
 
 **Example**
 
-  <!-- @[session_restore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFileBackup/entry/src/main/ets/backuprestore/BackupRestore.ets) -->  
-
+  <!-- @[session_restore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFileBackup/entry/src/main/ets/backuprestore/BackupRestore.ets) -->
+  
   ``` TypeScript
   import { fileIo } from '@kit.CoreFileKit';
   import { backup } from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   // ...
   
-  // This is only an example. The path can be obtained via getHostContext within the component.
-  let filesDir = '/data/storage/el2/base/haps/entry/files';
+  // filesDir is obtained by the caller through UIAbilityContext.filesDir and passed in.
   
   // ...
   // Restore the application data.
@@ -234,13 +234,13 @@ When all the data of the application is ready, the service starts to restore the
     await gSessionRestore.publishFile(fileMeta);
   }
   
-  function createSessionRestore(): backup.SessionRestore {
+  function createSessionRestore(filesDir: string): backup.SessionRestore {
     let generalCallbacks: backup.GeneralCallbacks = {
       onFileReady: (err: BusinessError, file: backup.File) => {
         if (err) {
           console.error(`onFileReady err, code is ${err.code}, message is ${err.message}`);
         }
-        // Set bundlePath based on the actual situation.
+        // Adjust bundlePath based on the actual location where the files to be restored are stored.
         let bundlePath: string = `${filesDir}/${file.bundleName}/`;
         if (!fileIo.accessSync(bundlePath)) {
           console.error('onFileReady bundlePath err : ' + bundlePath);
@@ -291,8 +291,8 @@ When all the data of the application is ready, the service starts to restore the
     return sessionRestore;
   }
   
-  export async function sessionRestore(): Promise<void> {
-    gSessionRestore = createSessionRestore();
+  export async function sessionRestore(filesDir: string): Promise<void> {
+    gSessionRestore = createSessionRestore(filesDir);
     const restoreApps: string[] = [
       'com.samples.filebackupextension'
     ];

@@ -2,9 +2,10 @@
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=4faed534b39ef26ef8f9b647802a53e9f8d2b792 translatedAt=2026-10-09T10:32:00.952Z pushedAt=2026-10-12T08:05:06.670Z -->
 
 > **NOTE**
 > - The APIs of this module are no longer maintained since API version 7. You are advised to use [@ohos.notification (Notification)](js-apis-notification.md).
@@ -37,8 +38,8 @@ import notification from '@system.notification';
 | Name         | Type                                          | Mandatory| Description                       |
 | ------------- | ---------------------------------------------- | ---- | ------------------------- |
 | contentTitle  | string                                          | No  | Notification title.                 |
-| contentText   | string                                          | No  | Notification content.                 |
-| clickAction<sup>(deprecated)</sup>   | [ActionResult](#actionresult)                                    | No  | Action triggered when the notification is clicked.<br>This API is deprecated since API version 7.    |
+| contentText   | string                                          | No   | [Notification content](../../notification/notification-glossary.md#notification-content).                  |
+| clickAction<sup>(deprecated)</sup>   | [ActionResult](#actionresult)                                    | No  | Action triggered when the notification is tapped.<br>This API is deprecated since API version 7.    |
 
 
 ## notification.show
@@ -53,7 +54,7 @@ Displays a notification.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| options | ShowNotificationOptions | No| Notification title.|
+| options | [ShowNotificationOptions](#shownotificationoptions) | No | Options for displaying the notification, including the notification title, notification content, and the action triggered when the notification is tapped. |
 
 **Example**
 ```ts

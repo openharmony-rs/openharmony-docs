@@ -29,13 +29,13 @@ Enumerates the error codes used in the certificate management APIs.
 | Name      | Value|  Description     |
 | ---------- | ------ | --------- |
 | CM_ERROR_NOT_SYSTEM_APP   | 202      | The caller is not a system application.<br> **System API**: This is a system API.|
-| CM_ERROR_PASSWORD_IS_ERR   | 17500008      | The password is incorrect.<br> **System API**: This is a system API.<br>**Since**: 26.0.0|
+| CM_ERROR_PASSWORD_IS_ERR   | 17500008      | The password is incorrect.<br> **System API**: This is a system API.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
 
 ## certificateManager.getAllAppPrivateCertificates
 
 getAllAppPrivateCertificates(callback: AsyncCallback\<CMResult>): void
 
-Obtains all private credentials. This API uses an asynchronous callback to return the result.
+Obtains all private credentials. This API returns the result asynchronously through a callback.
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER and ohos.permission.ACCESS_CERT_MANAGER_INTERNAL
 
@@ -53,12 +53,12 @@ Obtains all private credentials. This API uses an asynchronous callback to retur
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. |
+| 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 
 **Example**
 ```ts
@@ -106,11 +106,11 @@ Obtains all private credentials. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
 
-| Error Code| Error Message     |
+| ID| Error Message     |
 | -------- | ------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
-| 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. |
+| 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 
 **Example**
 ```ts
@@ -158,11 +158,11 @@ Obtains all system credentials. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
 
-| Error Code| Error Message     |
+| ID| Error Message     |
 | -------- | ------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
-| 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. |
+| 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 
 **Example**
 ```ts
@@ -202,6 +202,8 @@ Obtains details about a CA certificate trusted by the system. This API is called
 
 **System API**: This is a system API.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **Parameters**
 
 | Name  | Type                                             | Mandatory| Description                      |
@@ -218,7 +220,7 @@ Obtains details about a CA certificate trusted by the system. This API is called
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
 
-| Error Code| Error Message     |
+| ID| Error Message     |
 | -------- | ------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
@@ -263,6 +265,8 @@ Obtains the list of CA certificates trusted by the system. This API is called on
 
 **System API**: This is a system API.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **Return value**
 
 | Type                           | Description                                                        |
@@ -273,7 +277,7 @@ Obtains the list of CA certificates trusted by the system. This API is called on
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
 
-| Error Code| Error Message     |
+| ID| Error Message     |
 | -------- | ------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
@@ -317,6 +321,8 @@ Sets the status of a CA certificate. Currently, only the status of a user's CA c
 
 **System API**: This is a system API.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **Parameters**
 
 | Name  | Type                                             | Mandatory| Description                      |
@@ -335,7 +341,7 @@ Sets the status of a CA certificate. Currently, only the status of a user's CA c
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
 
-| Error Code| Error Message     |
+| ID| Error Message     |
 | -------- | ------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
@@ -376,6 +382,8 @@ Uninstalls all CA certificates trusted by the user. This API is called only by t
 
 **System API**: This is a system API.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **Return value**
 
 | Type                           | Description                                                        |
@@ -386,7 +394,7 @@ Uninstalls all CA certificates trusted by the user. This API is called only by t
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
 
-| Error Code| Error Message     |
+| ID| Error Message     |
 | -------- | ------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
@@ -423,6 +431,8 @@ Installs the public credential of the user. This API is called only by the certi
 
 **System API**: This is a system API.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **Parameters**
 
 | Name     | Type      | Mandatory|Description                                           |
@@ -440,7 +450,7 @@ Installs the public credential of the user. This API is called only by the certi
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
 
-| Error Code   | Error Message                                                                                                                                           |
+| ID   | Error Message                                                                                                                                           |
 | ----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201                    | Permission verification failed. The application does not have the permission required to call the API. |
 | 202                    | Permission verification failed. A non-system application calls a system API. |
@@ -488,6 +498,8 @@ Uninstalls the public credential of the user. This API is called only by the cer
 
 **System API**: This is a system API.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **Parameters**
 
 | Name  | Type                                             | Mandatory| Description                      |
@@ -504,7 +516,7 @@ Uninstalls the public credential of the user. This API is called only by the cer
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
 
-| Error Code   | Error Message                                                                                                                                           |
+| ID   | Error Message                                                                                                                                           |
 | ----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201                    | Permission verification failed. The application does not have the permission required to call the API. |
 | 202                    | Permission verification failed. A non-system application calls a system API. |
@@ -545,6 +557,8 @@ Obtains the public credentials of all users. This API is called only by the cert
 
 **System API**: This is a system API.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **Return value**
 
 | Type                           | Description                                                        |
@@ -555,7 +569,7 @@ Obtains the public credentials of all users. This API is called only by the cert
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
 
-| Error Code   | Error Message                                                                                                                                           |
+| ID   | Error Message                                                                                                                                           |
 | ----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201                    | Permission verification failed. The application does not have the permission required to call the API. |
 | 202                    | Permission verification failed. A non-system application calls a system API. |
@@ -600,6 +614,8 @@ Grants the permission for an application to use the public credentials of a user
 
 **System API**: This is a system API.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **Parameters**
 
 | Name      | Type      | Mandatory|Description                                           |
@@ -617,7 +633,7 @@ Grants the permission for an application to use the public credentials of a user
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
 
-| Error Code   | Error Message                                                                                                                                           |
+| ID   | Error Message                                                                                                                                           |
 | ----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201                    | Permission verification failed. The application does not have the permission required to call the API. |
 | 202                    | Permission verification failed. A non-system application calls a system API. |
@@ -660,6 +676,8 @@ Obtains the list of authorized applications of a user's public credential. This 
 
 **System API**: This is a system API.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **Parameters**
 
 | Name  | Type                                             | Mandatory| Description                      |
@@ -676,7 +694,7 @@ Obtains the list of authorized applications of a user's public credential. This 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
 
-| Error Code   | Error Message                                                                                                                                           |
+| ID   | Error Message                                                                                                                                           |
 | ----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201                    | Permission verification failed. The application does not have the permission required to call the API. |
 | 202                    | Permission verification failed. A non-system application calls a system API. |
@@ -722,6 +740,8 @@ Removes the permission for an application to use the public credentials of a use
 
 **System API**: This is a system API.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **Parameters**
 
 | Name      | Type      | Mandatory|Description                                           |
@@ -739,7 +759,7 @@ Removes the permission for an application to use the public credentials of a use
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
 
-| Error Code   | Error Message                                                                                                                                           |
+| ID   | Error Message                                                                                                                                           |
 | ----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201                    | Permission verification failed. The application does not have the permission required to call the API. |
 | 202                    | Permission verification failed. A non-system application calls a system API. |
@@ -781,6 +801,8 @@ Obtains all private credentials of a specified application. This API is called o
 
 **System API**: This is a system API.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **Parameters**
 
 | Name  | Type                                             | Mandatory| Description                      |
@@ -797,7 +819,7 @@ Obtains all private credentials of a specified application. This API is called o
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
 
-| Error Code   | Error Message                                                                                                                                           |
+| ID   | Error Message                                                                                                                                           |
 | ----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201                    | Permission verification failed. The application does not have the permission required to call the API. |
 | 202                    | Permission verification failed. A non-system application calls a system API. |
@@ -843,6 +865,8 @@ Installs the system application credential. This API is called only by the certi
 
 **System API**: This is a system API.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **Parameters**
 
 | Name     | Type      | Mandatory|Description                                           |
@@ -860,7 +884,7 @@ Installs the system application credential. This API is called only by the certi
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
 
-| Error Code   | Error Message                                                                                                                                           |
+| ID   | Error Message                                                                                                                                           |
 | ----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201                    | Permission verification failed. The application does not have the permission required to call the API. |
 | 202                    | Permission verification failed. A non-system application calls a system API. |
@@ -882,7 +906,8 @@ let keystore: Uint8Array = new Uint8Array([
 ]);
 let keystorePwd: string = "123456";
 try {
-  certificateManager.installSystemAppCertificate(keystore, keystorePwd).then((cmResult: certificateManager.CMResult) => {
+  certificateManager.installSystemAppCertificate(keystore, keystorePwd)
+    .then((cmResult: certificateManager.CMResult) => {
     let uri: string = (cmResult?.uri == undefined) ? '' : cmResult.uri;
     console.info('Succeeded in installing system app certificate.');
   }).catch((error: Error) => {
@@ -908,6 +933,8 @@ Obtains the credential details of the system application. This API is called onl
 
 **System API**: This is a system API.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **Parameters**
 
 | Name  | Type                                             | Mandatory| Description                      |
@@ -924,7 +951,7 @@ Obtains the credential details of the system application. This API is called onl
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
 
-| Error Code   | Error Message                                                                                                                                           |
+| ID   | Error Message                                                                                                                                           |
 | ----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201                    | Permission verification failed. The application does not have the permission required to call the API. |
 | 202                    | Permission verification failed. A non-system application calls a system API. |
@@ -970,6 +997,8 @@ Uninstalls the credential of the system application. This API is called only by 
 
 **System API**: This is a system API.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **Parameters**
 
 | Name  | Type                                             | Mandatory| Description                      |
@@ -986,7 +1015,7 @@ Uninstalls the credential of the system application. This API is called only by 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
 
-| Error Code   | Error Message                                                                                                                                           |
+| ID   | Error Message                                                                                                                                           |
 | ----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201                    | Permission verification failed. The application does not have the permission required to call the API. |
 | 202                    | Permission verification failed. A non-system application calls a system API. |
@@ -1027,6 +1056,8 @@ Uninstalls all system application credentials and public user credentials. This 
 
 **System API**: This is a system API.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **Return value**
 
 | Type                           | Description                                                        |
@@ -1037,7 +1068,7 @@ Uninstalls all system application credentials and public user credentials. This 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
 
-| Error Code   | Error Message                                                                                                                                           |
+| ID   | Error Message                                                                                                                                           |
 | ----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201                    | Permission verification failed. The application does not have the permission required to call the API. |
 | 202                    | Permission verification failed. A non-system application calls a system API. |

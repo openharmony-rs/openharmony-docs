@@ -5,7 +5,7 @@
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=099d2f0bb805c74cb41780582ea4e8e363b016e3 translatedAt=2026-09-16T03:28:11.811Z pushedAt=2026-09-16T08:21:06.669Z -->
+<!-- md-trans-meta sourceCommit=d2f1b2fa2674e862f711d1571c4d557cb9b70bd8 translatedAt=2026-10-13T13:12:28.292Z pushedAt=2026-10-16T04:15:00.674Z -->
 
 ## Introduction
 
@@ -17,7 +17,7 @@ To begin with, it is important to understand the following basic concepts:
 
 - Class: a template used to create an object. It provides a way to define object properties and methods in a structured manner. Classes in ArkTS are based on prototypes and added with unique syntax and semantics.
 - Instance: an object created from a class. A class defines the structure and behavior of an object, and an instance is a specific representation of a class. Instantiating a class allows access to the properties and methods defined in the class. Each instance has its own property values.
-- Prototype: ArkTS also employs classes to implement inheritance across types. Defined in the early EcmaScript specifications, the prototype concept is used to achieve object inheritance via prototype chains. For details about the prototype concept, see [EcmaScript Language Specification](https://262.ecma-international.org/#sec-terms-and-definitions-prototype).
+- **Prototype**: ArkTS also employs classes to implement inheritance across types. Defined in the early ECMAScript specifications, the prototype concept is used to achieve object inheritance via prototype chains. For details about the prototype concept, see [ECMAScript Language Specification](https://262.ecma-international.org/#sec-terms-and-definitions-prototype).
 
 ## Available APIs
 

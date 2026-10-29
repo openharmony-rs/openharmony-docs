@@ -1,12 +1,11 @@
 # Interface (VideoOutput)
-
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=425e79ed59a841b19860caacc0b050f68405d43e translatedAt=2026-08-11T02:00:13.427Z pushedAt=2026-08-12T01:09:37.319Z -->
+<!-- md-trans-meta sourceCommit=8b512243901c55915aa61df5cc70cfb3620f6e97 translatedAt=2026-10-12T11:58:15.191Z pushedAt=2026-10-13T04:58:00.893Z -->
 
 VideoOutput implements output information used in a video session. It inherits from [CameraOutput](arkts-apis-camera-CameraOutput.md).
 
@@ -174,7 +173,7 @@ Subscribes to video recording start events. This API uses an asynchronous callba
 
 | Name     | Type                 | Mandatory| Description                                      |
 | -------- | -------------------- | ---- | ----------------------------------------- |
-| type     | string               | Yes  | Event type. The value is fixed at **'frameStart'**. The event can be listened for when a videoOutput instance is created. The event is triggered and the corresponding information is returned when the bottom layer starts exposure for the first time.|
+| type     | string               | Yes  | Event type. The value is fixed at **'frameStart'**. The event can be listened for when a **videoOutput** instance is created. The event is triggered and the corresponding information is returned when the bottom layer starts exposure for the first time.|
 | callback | AsyncCallback\<void\> | Yes  | Callback used to return the result.  The recording starts as long as this event is returned.                    |
 
 **Example**
@@ -213,7 +212,7 @@ Unsubscribes from video recording start events.
 
 | Name     | Type                 | Mandatory| Description                                      |
 | -------- | -------------------- | ---- | ----------------------------------------- |
-| type     | string               | Yes  | Event type. The value is fixed at **'frameStart'**. The event can be listened for when a videoOutput instance is created.|
+| type     | string               | Yes  | Event type. The value is fixed at **'frameStart'**. The event can be listened for when a **videoOutput** instance is created.|
 | callback | AsyncCallback\<void\> | No  | Callback used to return the result. If this parameter is specified, the subscription to the specified event with the specified callback is canceled. (The callback object cannot be an anonymous function.) Otherwise, the subscriptions to the specified event with all the callbacks are canceled.|
 
 **Example**
@@ -239,7 +238,7 @@ Subscribes to video recording stop events. This API uses an asynchronous callbac
 
 | Name     | Type                 | Mandatory| Description                                      |
 | -------- | -------------------- | ---- | ------------------------------------------ |
-| type     | string               | Yes  | Event type. The value is fixed at **'frameEnd'**. The event can be listened for when a videoOutput instance is created. This event is triggered and returned when the last frame of recording is complete.|
+| type     | string               | Yes  | Event type. The value is fixed at **'frameEnd'**. The event can be listened for when a **videoOutput** instance is created. This event is triggered and returned when the last frame of recording is complete.|
 | callback | AsyncCallback\<void\> | Yes  | Callback used to return the result. The recording ends as long as this event is returned.                     |
 
 **Example**
@@ -274,7 +273,7 @@ Unsubscribes from video recording stop events.
 
 | Name     | Type                 | Mandatory| Description                                      |
 | -------- | -------------------- | ---- | ------------------------------------------ |
-| type     | string               | Yes  | Event type. The value is fixed at **'frameEnd'**. The event can be listened for when a videoOutput instance is created.|
+| type     | string               | Yes  | Event type. The value is fixed at **'frameEnd'**. The event can be listened for when a **videoOutput** instance is created.|
 | callback | AsyncCallback\<void\> | No  | Callback used to return the result. If this parameter is specified, the subscription to the specified event with the specified callback is canceled. (The callback object cannot be an anonymous function.) Otherwise, the subscriptions to the specified event with all the callbacks are canceled.|
 
 **Example**
@@ -303,7 +302,7 @@ Subscribes to VideoOutput error events. This API uses an asynchronous callback t
 
 | Name    | Type      | Mandatory| Description                                   |
 | -------- | ----------- | ---- | -------------------------------------- |
-| type     | string      | Yes  | Event type. The value is fixed at **'error'**. The event can be listened for when a videoOutput instance is created. This event is triggered and the corresponding error message is returned when an error occurs during the use of a recording-related API such as [start](#start-1) or [CameraOutput.release](arkts-apis-camera-CameraOutput.md#release-1).|
+| type     | string      | Yes  | Event type. The value is fixed at **'error'**. The event can be listened for when a **videoOutput** instance is created. This event is triggered and the corresponding error message is returned when an error occurs during the use of a recording-related API such as [start](#start-1) or [CameraOutput.release](arkts-apis-camera-CameraOutput.md#release-1).|
 | callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | Yes  | Callback used to return an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode).                |
 
 **Example**
@@ -334,7 +333,7 @@ Unsubscribes from VideoOutput error events.
 
 | Name    | Type        | Mandatory| Description                                |
 | -------- | ------------- | ---- | ----------------------------------- |
-| type     | string       | Yes  | Event type. The value is fixed at **'error'**. The event can be listened for when a photoOutput instance is created.|
+| type     | string       | Yes   | Event type. The value is fixed at **'error'**. The event can be listened for when a **videoOutput** instance is created. |
 | callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | No  | Callback used to return the result. If this parameter is specified, the subscription to the specified event with the specified callback is canceled. (The callback object cannot be an anonymous function.) Otherwise, the subscriptions to the specified event with all the callbacks are canceled.|
 
 **Example**
@@ -535,6 +534,7 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 | 7400101  | Parameter missing or parameter type incorrect. |
 | 7400103  | Session not config.                    |
 
+
 **Example**
 
 ```ts
@@ -559,7 +559,6 @@ getVideoRotation(deviceDegree?: number): ImageRotation
 Obtains the video rotation angle.
 
 - Device' natural orientation: the default orientation for using a device. For example, the default orientation of the bar-type phone is in portrait mode, with the charging port facing downward.
-
 - Camera lens angle: equivalent to the angle at which the camera is rotated clockwise to match the device's natural orientation. For example, the rear camera sensor of a bar-type phone is installed in landscape mode. Therefore, it needs to be rotated by 90 degrees clockwise to match the device's natural orientation.
 
 **Model restriction**: This API can be used only in the stage model.
@@ -652,3 +651,4 @@ function getDeviceDegree(): Promise<number> {
   });
 }
 ```
+

@@ -6,8 +6,9 @@
 <!--Designer: @piggyguy; @lushi871202; @hehongyang3-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=eb9d7c1b740b2649e00d506ed20745ec66a77332 translatedAt=2026-10-15T11:11:15.875Z pushedAt=2026-10-20T02:49:46.657Z -->
 
-Provides APIs for listening for UI component behavior changes. [UIObserver](./arkts-apis-uicontext-uiobserver.md) is recommended for component observation.
+Provides APIs for listening for UI component behavior changes, including listening for page states, scroll events, page routing, screen pixel density, layout and drawing, page switching, and **TabContent** state changes. It is suitable for scenarios where UI state changes need to be sensed without intruding into the component service logic. [UIObserver](./arkts-apis-uicontext-uiobserver.md) is recommended for component observation.
 
 > **NOTE**
 >
@@ -59,7 +60,7 @@ Enumerates the scroll event types.
 
 ## RouterPageState
 
-Enumerates the states of a page during routing. **RouterPageState** is used in [RouterPageInfo](#routerpageinfo) as the callback parameter for passive observation via [routerPageUpdate](#uiobserveronrouterpageupdate11).
+Enumerates the states of a page during routing. **RouterPageState** is used in [RouterPageInfo](#routerpageinfo) as the callback parameter for passive observation via [routerPageUpdate](#uiobserveronrouterpageupdate).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -226,7 +227,7 @@ Provides the **TabContent** switching information.
 | index        | number                                       | No  | No  | Index of the **TabContent** component. The index is zero-based.<br>**Atomic service API**: This API can be used in atomic services since API version 12.      |
 | id           | string                                       | No  | No  | ID of the **Tabs** component.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                        |
 | uniqueId     | number                                       | No  | No  | Unique ID of the **Tabs** component.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                     |
-| lastIndex<sup>22+</sup>    | number                                       | No  | Yes  | Index of the previously focused **TabContent** component. The index is zero-based. This parameter is available only in the callback of [on('tabChange')](./arkts-apis-uicontext-uiobserver.md#ontabchange22).<br>**Atomic service API**: This API can be used in atomic services since API version 22.  |
+| lastIndex<sup>22+</sup>    | number                                       | No   | Yes   | Subscript index of the most recently focused **TabContent** component. The index starts from 0. It exists only in the callback of [on('tabChange')](./arkts-apis-uicontext-uiobserver.md#ontabchange22).  <br/>**Atomic service API:** This API can be used in atomic services since API version 22.   |
 
 ## WindowSizeLayoutBreakpointInfo<sup>22+</sup>
 
@@ -252,7 +253,7 @@ Subscribes to status changes of the **NavDestination** component.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name  | Type                                                 | Mandatory| Description                                                                    |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
@@ -324,7 +325,7 @@ Unsubscribes from status changes of the **NavDestination** component.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name  | Type                                                 | Mandatory| Description                                                                    |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
@@ -345,7 +346,7 @@ Subscribes to status changes of the **NavDestination** component. Compared with 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name  | Type                                                                | Mandatory| Description                                                                    |
 | -------- | -------------------------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
@@ -419,7 +420,7 @@ Unsubscribes from status changes of the **NavDestination** component. Compared w
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name  | Type                                                                | Mandatory| Description                                                                    |
 | -------- | -------------------------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
@@ -441,7 +442,7 @@ Listens for the start and end of scroll events of all scrollable components. Sup
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name  | Type                                                 | Mandatory| Description                                                                    |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
@@ -462,7 +463,7 @@ Unregisters the listener for the start and end of scroll events of all scrollabl
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name  | Type                                                 | Mandatory| Description                                                                    |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
@@ -483,7 +484,7 @@ Listens for the start and end of scroll events of a specific scrollable componen
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name  | Type                                                                | Mandatory| Description                                                                    |
 | -------- | -------------------------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
@@ -505,7 +506,7 @@ Unregisters the listener for the start and end of scroll events of a specific sc
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name  | Type                                                                | Mandatory| Description                                                                    |
 | -------- | -------------------------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
@@ -539,7 +540,7 @@ struct Index {
                 .fontSize(16)
                 .textAlign(TextAlign.Center)
                 .margin({ top: 10 })
-            }, (item: string) => item)
+            }, (item: number) => item.toString())
           }.width('100%')
         }
         .id('testId')
@@ -582,7 +583,7 @@ struct Index {
 }
 ```
 
-## uiObserver.on('routerPageUpdate')<sup>11+</sup>
+## uiObserver.on('routerPageUpdate')
 
 on(type: 'routerPageUpdate', context: UIAbilityContext | UIContext, callback: Callback\<RouterPageInfo\>): void
 
@@ -592,7 +593,7 @@ Subscribes to state changes of the page during routing.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -636,7 +637,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-## uiObserver.off('routerPageUpdate')<sup>11+</sup>
+## uiObserver.off('routerPageUpdate')
 
 off(type: 'routerPageUpdate', context: UIAbilityContext | UIContext, callback?: Callback\<RouterPageInfo\>): void
 
@@ -646,7 +647,7 @@ Unsubscribes from state changes of the page during routing.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -691,7 +692,7 @@ Listens for screen pixel density changes.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -740,7 +741,7 @@ Unregisters the listener for screen pixel density changes.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name  | Type                                     | Mandatory| Description                                                                                          |
 | -------- | ----------------------------------------- | ---- | ---------------------------------------------------------------------------------------------- |
@@ -749,7 +750,7 @@ Unregisters the listener for screen pixel density changes.
 | callback | Callback\<[DensityInfo](#densityinfo12)\> | No  | Target listener to unregister. If no parameter is provided, all listeners for the **densityUpdate** event under the current UI context are unregistered.|
 
 ```ts
-import { uiObserver, UIContext } from '@kit.ArkUI';
+import { uiObserver } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -793,7 +794,7 @@ Listens for drawing instruction dispatch in each frame.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -833,7 +834,7 @@ Unregisters the listener for drawing instruction dispatch in each frame.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name  | Type                                     | Mandatory| Description                                                 |
 | -------- | ----------------------------------------- | ---- | ----------------------------------------------------- |
@@ -877,7 +878,7 @@ Listens for layout completion status in each frame.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -917,7 +918,7 @@ Unregisters the listener for layout completion status in each frame.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name  | Type                                     | Mandatory| Description                                                 |
 | -------- | ----------------------------------------- | ---- | ----------------------------------------------------- |
@@ -961,7 +962,7 @@ Subscribes to **Navigation** component page switching events.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -1087,7 +1088,7 @@ Unsubscribes from **Navigation** component page switching events.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -1109,7 +1110,7 @@ Subscribes to **Navigation** component page switching events. Compared with [uiO
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -1241,7 +1242,7 @@ Unsubscribes from **Navigation** component page switching events. Compared with 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -1264,7 +1265,7 @@ Subscribes to **TabContent** switch events. Unlike [on('tabChange')](./arkts-api
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -1332,7 +1333,7 @@ Unsubscribes from the **TabContent** switching event.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -1353,7 +1354,7 @@ Subscribes to **TabContent** page switching events for the specified **Tabs** co
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -1422,7 +1423,7 @@ Unsubscribes from **TabContent** page switching events for the specified **Tabs*
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |

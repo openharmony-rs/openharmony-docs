@@ -438,7 +438,7 @@ status为true时，[addPermissionUsedRecord](#privacymanageraddpermissionusedrec
 | 202 | Not system app. Interface caller is not a system app. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 12100007 | Service exception. |
-| 12100009 | Common inner error. Possible causes: 1. A database error occurs; 2. Failed to query all applications under the user. |
+| 12100009 | Common inner error. Possible causes: 1. Database error. 2. Failed to query all applications under the user. |
 
 **示例：**
 

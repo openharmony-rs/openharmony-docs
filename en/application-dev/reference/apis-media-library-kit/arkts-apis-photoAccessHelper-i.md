@@ -60,7 +60,7 @@ Defines the retrieval options.
 
 | Name                  | Type               | Read-Only| Optional| Description                                             |
 | ---------------------- | ------------------- | ---- |---- | ------------------------------------------------ |
-| fetchColumns           | Array&lt;string&gt; | No  | No  | Names of the columns specified for query.<br>If this parameter is left blank for photos, photos are fetched by **'uri'**, **'media_type'**, **'subtype'**, and **'display_name'** by default. An error will be thrown if [get](arkts-apis-photoAccessHelper-PhotoAsset.md#get) is used to obtain other attributes of this object. <br>Example: **fetchColumns: ['uri', 'title']**.<br>If this parameter is left blank for albums, albums are fetched by **'uri'** and **'album_name'** by default.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| fetchColumns           | Array&lt;string&gt; | No  | No  | Names of the columns specified for query.<br>If this parameter is left blank for photos, photos are fetched by **'uri'**, **'media_type'**, **'subtype'**, and **'display_name'** by default. An error will be thrown if [get](arkts-apis-photoAccessHelper-PhotoAsset.md#get) is used to obtain other attributes. <br>Example: **fetchColumns: ['uri', 'title']**.<br>If this parameter is left blank for albums, albums are fetched by **'uri'** and **'album_name'** by default.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 | predicates           | [dataSharePredicates.DataSharePredicates](../apis-arkdata/js-apis-data-dataSharePredicates.md#datasharepredicates) | No  | No  | Predicates that specify the fetch criteria.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 
 ## RequestOptions<sup>11+</sup>
@@ -71,9 +71,9 @@ Represents request options.
 
 | Name                  | Type                       | Read-Only| Optional| Description                                        |
 | ---------------------- |----------------------------| ---- | ---- | ------------------------------------------- |
-| deliveryMode           | [DeliveryMode](arkts-apis-photoAccessHelper-e.md#deliverymode11) | No  | No  | Delivery mode of the requested asset. The value can be **FAST_MODE**, **HIGH_QUALITY_MODE**, or **BALANCE_MODE**.|
+| deliveryMode           | [DeliveryMode](arkts-apis-photoAccessHelper-e.md#deliverymode11) | No  | No  | Delivery mode of the requested asset. The value can be **FAST_MODE**, **HIGH_QUALITY_MODE**, or **BALANCE_MODE**.                |
 | compatibleMode<sup>15+</sup>      | [CompatibleMode](arkts-apis-photoAccessHelper-e.md#compatiblemode15) | No  | Yes  | HDR video transcoding policy, which can be **FAST_ORIGINAL_FORMAT_MODE** (maintaining the original HDR format) or **COMPATIBLE_FORMAT_MODE** (converting HDR content to SDR format). The default value is **FAST_ORIGINAL_FORMAT_MODE**.|
-| mediaAssetProgressHandler<sup>15+</sup> | [MediaAssetProgressHandler](arkts-apis-photoAccessHelper-MediaAssetProgressHandler.md) | No  | Yes  | Callback used to return the HDR-to-SDR conversion progress.|
+| mediaAssetProgressHandler<sup>15+</sup> | [MediaAssetProgressHandler](arkts-apis-photoAccessHelper-MediaAssetProgressHandler.md) | No  | Yes  | Callback used to return the HDR-to-SDR conversion progress.<br>Set this parameter when you need to monitor the HDR-to-SDR conversion progress. If this parameter is not set, the conversion progress cannot be obtained.|
 
 ## ChangeData
 
@@ -84,7 +84,7 @@ Defines the return value of the listener callback.
 | Name   | Type                       | Read-Only| Optional| Description                                                        |
 | ------- | --------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | type    | [NotifyType](arkts-apis-photoAccessHelper-e.md#notifytype) | No  | No  | Notification type.                                      |
-| uris    | Array&lt;string&gt;         | No  | No  | All URIs with the same [NotifyType](arkts-apis-photoAccessHelper-e.md#notifytype), which can be **PhotoAsset** or **Album**.|
+| uris    | Array&lt;string&gt;         | No  | No  | All URI strings with the same [NotifyType](arkts-apis-photoAccessHelper-e.md#notifytype), which can be the URI of **PhotoAsset** or **Album**.|
 | extraUris | Array&lt;string&gt;         | No  | No  | URIs of the changed files in the album. The value may be undefined. Check whether the value is undefined before using it.                          |
 
 ## TextContextInfo<sup>12+</sup>
@@ -172,6 +172,7 @@ Describes the information about a media asset.
 | uri       | string  | No| No| URI of the media asset.|
 | mediaType | [PhotoType](arkts-apis-photoAccessHelper-e.md#phototype) | No| No | Type of the media asset (image or video).|
 | albumUri  | string  | No| No| URI of the album that the media asset belongs to. |
+| isFavorite | boolean  | No| No| Whether the media asset is marked as a favorite. **true** if marked, and **false** otherwise.<br>**Since**: 26.0.0                         |
 
 ## PhotoAssetChangeData<sup>20+</sup>
 
@@ -263,8 +264,8 @@ Defines the asset compatibility capability.
     
 | Name                  | Type               | Read-Only| Optional| Description          |
 | ---- | ---- | ---- | ---- | ---- |
-| supportedHighResolution | boolean  | No| No| Whether high-resolution assets are supported. **true**: yes; **false**: no.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
-| supportedMimeType | Array&lt;string&gt;  | No| Yes| Supported MIME types.<br>- **image/heic**: The app supports the HEIF format.<br>- **image/jpeg**: The app supports only the JPEG format.<br>**Since**: 26.0.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
+| supportedHighResolution | boolean  | No| No| Whether the app supports obtaining high-resolution media assets. The value **true** indicates that high-resolution media assets can be requested, and the value **false** indicates that only standard-resolution media assets can be requested.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
+| supportedMimeType | Array&lt;string&gt;  | No| Yes| Supported MIME type.<br>- **image/heic**: The app supports the HEIF format.<br>- **image/jpeg**: The app supports only the JPEG format.<br>**Since**: 26.0.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.      |
 
 ## MediaLibraryAvailability
 

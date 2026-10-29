@@ -5,7 +5,7 @@
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=099d2f0bb805c74cb41780582ea4e8e363b016e3 translatedAt=2026-09-16T03:02:20.841Z pushedAt=2026-09-16T08:15:40.470Z -->
+<!-- md-trans-meta sourceCommit=908d5c8cc497717aa25a0c85e864f0d8a9e36e28 translatedAt=2026-10-13T13:04:51.863Z pushedAt=2026-10-16T03:43:05.761Z -->
 
 ## Data Types
 
@@ -464,8 +464,8 @@ Node-API is extended based on the native modules provided by Node.js. The follow
 | napi_throw_range_error | Throws an ArkTS range error with text information.|
 | napi_is_error | Checks whether **napi_value** indicates an error object.|
 | napi_create_error | Creates an ArkTS error object with text information.|
-| napi_create_type_error | Creates an ArkTS error object with text information.|
-| napi_create_range_error | Creates an ArkTS error object with text information.|
+| napi_create_type_error | Call **napi_create_type_error** to create an ArkTS **TypeError** object with text information. |
+| napi_create_range_error | Call **napi_create_range_error** to create an ArkTS **RangeError** object with text information. |
 | napi_get_and_clear_last_exception | Obtains and clears the latest exception.|
 | napi_is_exception_pending | Checks whether an exception occurs.|
 | napi_fatal_error | Raises a fatal error to terminate the process immediately.|
@@ -586,7 +586,7 @@ Node-API is extended based on the native modules provided by Node.js. The follow
 | napi_delete_callsite_info | Deletes a callsite information handle and releases the associated cached resources. |
 | napi_get_property_with_callsite_info | Quickly retrieves an object property value using callsite information. |
 | napi_set_property_with_callsite_info | Quickly sets an object property value using callsite information. |
-
+ 
 **napi_queue_async_work_with_qos**
 
 ```c

@@ -1,12 +1,12 @@
 # @ohos.multimedia.avCastPickerParam (AVCastPicker Parameters)
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @devil_red-->
-<!--Designer: @ccfriend-->
+<!--Owner: @gcw_7KSyM10J; @devil_red-->
+<!--Designer: @gcw_7KSyM10J-->
 <!--Tester:@chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
 
-**avCastPickerParam** provides the enumerated values for the [@ohos.multimedia.avCastPicker](ohos-multimedia-avcastpicker.md) component states.
+**avCastPickerParam** provides the enumerated parameters of the [@ohos.multimedia.avCastPicker](ohos-multimedia-avcastpicker.md) components.
 
 > **NOTE**
 >

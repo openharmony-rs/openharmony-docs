@@ -1,14 +1,15 @@
 # Drag Event Error Codes
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=9c92183287fa23162e04874223c3b068eb1f8a4d translatedAt=2026-10-15T10:42:18.904Z pushedAt=2026-10-16T02:51:05.797Z -->
 
 > **NOTE**
 >
-> This topic describes only module-specific error codes. For details about universal error codes, see [Universal Error Codes](../errorcode-universal.md).
+> This topic describes the error codes specific to the drag event module, covering common exceptions in data retrieval, operation phases, and data loading, to help you identify the causes of errors and take corresponding measures. For universal error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 ## 190001 Data Not Found
 
@@ -18,7 +19,7 @@ Data not found.
 
 **Description**
 
-This error code is reported when no data has been obtained using the [getData](./arkui-ts/ts-universal-events-drag-drop.md#getdata10) API of **DragEvent**.
+This error code is reported when you call [getData](./arkui-ts/ts-universal-events-drag-drop.md#getdata10) of **DragEvent** but the data has not been obtained yet. The error code is of the string type.
 
 **Possible Causes**
 
@@ -36,7 +37,7 @@ Data error.
 
 **Description**
 
-This error code is reported when the data obtained via the [getData](./arkui-ts/ts-universal-events-drag-drop.md#getdata10) API of **DragEvent** is incorrect.
+This error code is reported when you call [getData](./arkui-ts/ts-universal-events-drag-drop.md#getdata10) of **DragEvent** but the obtained data is incorrect. The error code is of the string type.
 
 **Possible Causes**
 
@@ -54,11 +55,11 @@ Operation not allowed for current phase.
 
 **Description**
 
-This error code is reported when you call an API that is only supported during the [onDrop](./arkui-ts/ts-universal-events-drag-drop.md#ondrop) phase outside of that phase.
+This error code is reported when you call an API that is supported only in the [onDrop](./arkui-ts/ts-universal-events-drag-drop.md#ondrop) phase outside that phase. The error code is of the string type.
 
 **Possible Causes**
 
-The operation is not allowed in the current phase.
+The current phase is not the [onDrop](./arkui-ts/ts-universal-events-drag-drop.md#ondrop) phase.
 
 **Solution**
 
@@ -72,7 +73,7 @@ Operation failed.
 
 **Description**
 
-This error code is reported if the [cancelDataLoading](./arkts-apis-uicontext-dragcontroller.md#canceldataloading15) API is called when data has not been loaded or loading is complete.
+This error code is reported when you do not call [cancelDataLoading](./arkts-apis-uicontext-dragcontroller.md#canceldataloading15) during the data loading process after the drag is released. The error code is of the string type.
 
 **Possible Causes**
 

@@ -6,12 +6,13 @@
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 <!--deprecated_code_no_check-->
+<!-- md-trans-meta sourceCommit=5a5f201351bc507eed1f4198e52fee2b1f6735cb translatedAt=2026-10-21T09:32:25.379Z pushedAt=2026-10-22T02:45:08.505Z -->
 
-The **XComponentNode** module provides APIs for the XComponentNode, which represents an [XComponent](arkui-ts/ts-basic-components-xcomponent.md) in the component tree. You can write [EGL](../native-lib/egl.md)/[OpenGL ES](../native-lib/opengles.md) and media data and display it on the **XComponent**, whose rendering type can be dynamically modified.
+The XComponentNode module provides APIs for the XComponentNode, which represents an [XComponent](arkui-ts/ts-basic-components-xcomponent.md) in the component tree. You can write [EGL](../native-lib/egl.md)/[OpenGL ES](../native-lib/opengles.md) and media data and display it on the **XComponent**, whose render type can be dynamically modified. It is suitable for scenarios where native self-rendering content needs to be embedded in the ArkUI component tree.
 
 > **NOTE**
 >
-> - The APIs of this module are deprecated since API version 12. You are advised to use the APIs of the **typeNode** module in the [XComponent](./js-apis-arkui-frameNode.md#xcomponent12) type instead.
+> - The APIs of this module are supported since API version 11 and deprecated since API version 12. You are advised to use the APIs of the **typeNode** module in the [XComponent](./js-apis-arkui-frameNode.md#xcomponent12) type instead.
 >
 > - The APIs of this module can be used only in the stage model.
 >
@@ -22,7 +23,7 @@ The **XComponentNode** module provides APIs for the XComponentNode, which repres
 ## Modules to Import
 
 ```ts
-import { XComponentNode } from "@kit.ArkUI";
+import { XComponentNode } from '@kit.ArkUI';
 ```
 
 ## XComponentNode<sup>(deprecated)</sup>
@@ -43,11 +44,11 @@ Constructor used to create an XComponentNode.
 
 | Name     | Type                                                        | Mandatory| Description                                                        |
 | ----------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| uiContext   | [UIContext](arkts-apis-uicontext-uicontext.md)                      | Yes  | UI context. For details about how to obtain it, see [Obtaining UI Context](./js-apis-arkui-node.md#obtaining-ui-context).|
-| options     | [RenderOptions](./js-apis-arkui-builderNode.md#renderoptions) | Yes  | Parameters for creating an XComponentNode.                              |
-| id          | string                                                       | Yes  | Unique ID of the **XComponent**. The value can contain a maximum of 128 characters. For details, see [XComponent](arkui-ts/ts-basic-components-xcomponent.md).|
-| type        | [XComponentType](arkui-ts/ts-appendix-enums.md#xcomponenttype10) | Yes  | Type of the **XComponent**. For details, see [XComponent](arkui-ts/ts-basic-components-xcomponent.md).|
-| libraryName | string                                                       | No  | Name of the dynamic library generated during compilation at the native layer. For details, see [XComponent](arkui-ts/ts-basic-components-xcomponent.md).|
+| uiContext   | [UIContext](./arkts-apis-uicontext-uicontext.md)                      | Yes   | UI context. For details about how to obtain it, see [Obtaining UI Context](./js-apis-arkui-node.md#obtaining-ui-context). |
+| options     | [RenderOptions](./js-apis-arkui-builderNode.md#renderoptions) | Yes   | Rendering options of an XComponentNode, used to set node rendering related parameters such as the ideal size (**selfIdealSize**). |
+| id          | string                                                       | Yes   | Unique ID of the **XComponent**. The value can contain a maximum of 128 characters. If the length exceeds the limit, the API fails to create the component. For details, see [XComponent](arkui-ts/ts-basic-components-xcomponent.md). |
+| type        | [XComponentType](arkui-ts/ts-appendix-enums.md#xcomponenttype10) | Yes   | Type of the **XComponent**, specified using the [XComponentType](arkui-ts/ts-appendix-enums.md#xcomponenttype10) enumeration. For details, see [XComponent](arkui-ts/ts-basic-components-xcomponent.md). |
+| libraryName | string                                                       | No   | Name of the dynamic library compiled and output at the native layer. If this parameter is not passed, the native dynamic library is not loaded by default. For details, see [XComponent](arkui-ts/ts-basic-components-xcomponent.md). |
 
 > **NOTE**
 >
@@ -69,7 +70,7 @@ Called when the XComponentNode loading is complete.
 
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| event  | Object | No  | Context of the **XComponent** object. The APIs contained in the context are defined at the C++ layer by developers.|
+| event  | Object | No   | Event parameter of the **XComponent** instance, used to obtain the context of the **XComponent** instance. The APIs mounted on the context are defined by you at the C++ layer, and you can call the APIs registered at the native layer through this context. |
 
 ### onDestroy<sup>(deprecated)</sup>
 
@@ -87,7 +88,7 @@ Called when the XComponentNode is destroyed.
 
 changeRenderType(type: NodeRenderType): boolean
 
-Changes the rendering type of the XComponentNode.
+Dynamically changes the render type of the **XComponentNode**. The render policy can be switched dynamically at runtime, which is suitable for scenarios where different render types are selected based on content rendering requirements. For example, the **DISPLAY** type can be used when direct EGL/OpenGL ES drawing on the component is required; the **TEXTURE** type can be used when the rendered content needs to participate in composition as a texture (such as implementing semi-transparent overlay effects or off-screen rendering).
 
 > **NOTE**
 >
@@ -99,22 +100,22 @@ Changes the rendering type of the XComponentNode.
 
 | Name| Type                                                    | Mandatory| Description            |
 | ------ | ------------------------------------------------------------ | ---- | ------------------ |
-| type   | [NodeRenderType](./js-apis-arkui-builderNode.md#noderendertype) | Yes| Target rendering type.|
+| type   | [NodeRenderType](./js-apis-arkui-builderNode.md#noderendertype) | Yes | Target render type to change, specified using the [NodeRenderType](./js-apis-arkui-builderNode.md#noderendertype) enumeration. |
 
 **Return value**
 
 | Type| Description                  |
 | ---- | ---------------------- |
-| boolean | Whether the rendering type is changed successfully.<br>**true**: The rendering type is changed successfully. **false**: The rendering type fails to be changed.|
+| boolean | Whether the render type is changed successfully. The value **true** indicates that the render type is changed successfully, and **false** indicates the opposite.|
 
 ## Example
 
 ```ts
-import { NodeController, FrameNode, XComponentNode, NodeRenderType, UIContext} from '@kit.ArkUI'
+import { NodeController, FrameNode, XComponentNode, NodeRenderType, XComponentType, UIContext } from '@kit.ArkUI';
 
 class XComponentNodeController extends NodeController {
   private xComponentNode: MyXComponentNode | null = null;
-  private soName: string = "tetrahedron_napi" // This .so file is written and generated by you using the Node-API.
+  private soName: string = 'tetrahedron_napi'; // This .so file is written and generated by you using the Node-API.
 
   constructor() {
     super();
@@ -123,7 +124,7 @@ class XComponentNodeController extends NodeController {
   makeNode(context: UIContext): FrameNode | null {
     this.xComponentNode = new MyXComponentNode(context, {
       selfIdealSize: { width: 200, height: 200 }
-    }, "xComponentId", XComponentType.SURFACE, this.soName);
+    }, 'xComponentId', XComponentType.SURFACE, this.soName);
     return this.xComponentNode;
   }
 

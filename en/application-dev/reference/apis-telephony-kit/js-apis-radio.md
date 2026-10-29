@@ -54,10 +54,12 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+//Specify the card slot ID. The value 0 indicates card slot 1.
 let slotId: number = 0;
+// Obtain the RAT used in the CS and PS domains for the SIM card in the specified slot.
 radio.getRadioTech(slotId, (err: BusinessError, data: radio.NetworkRadioTech) => {
     if (err) {
-        console.error(`getRadioTech failed, callback: err->${JSON.stringify(err)}`);
+        console.error(`getRadioTech failed, callback: err code: ${err.code}, message: ${err.message}`);
         return;
     }
     console.info(`getRadioTech success, callback: data->${JSON.stringify(data)}`);
@@ -109,7 +111,7 @@ let slotId: number = 0;
 radio.getRadioTech(slotId).then((data: radio.NetworkRadioTech) => {
     console.info(`getRadioTech success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-    console.error(`getRadioTech failed, promise: err->${JSON.stringify(err)}`);
+    console.error(`getRadioTech failed, promise: err code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -118,7 +120,7 @@ radio.getRadioTech(slotId).then((data: radio.NetworkRadioTech) => {
 
 getRadioTechSync\(slotId: number\): [NetworkRadioTech](#networkradiotech11)
 
-Obtains the RAT used in the CS and PS domains for the SIM card in the specified slot. The CS domain refers to the Circuit Switched domain, and the PS domain refers to the Packet Switched domain.
+Obtains the RAT used by the CS and PS domains for the SIM card in the specified slot. This method is the synchronous version of [getRadioTech](#radiogetradiotech) and directly returns the result. This method has the same function as the asynchronous method **getRadioTech**. It is applicable to scenarios where the result needs to be obtained immediately and blocking calls are acceptable. If non-blocking calls are required, use **getRadioTech**. The CS domain refers to the Circuit Switched domain, and the PS domain refers to the Packet Switched domain.
 
 **Required permission**: ohos.permission.GET_NETWORK_INFO
 
@@ -145,16 +147,22 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201      | Permission denied.                           |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.                             |
 | 8300001  | Invalid parameter value.                     |
-| 8300002  | Operation failed. Cannot connect to service.                  |
-| 8300003  | System internal error.                       |
-| 8300999  | Unknown error code.                               |
+| 8300002  | Service connection failed.                   |
+| 8300003  | Operation failed. Cannot connect service.    |
+| 8300999  | Unknown error code.                          |
 
 **Example**
 
 ```ts
+//Specify the card slot ID. The value 0 indicates card slot 1.
 let slotId: number = 0;
-let networkRadioTech: radio.NetworkRadioTech = radio.getRadioTechSync(slotId);
-console.info(`getRadioTechSync success, NetworkRadioTech->${JSON.stringify(networkRadioTech)}`);
+try {
+    // Obtain the RAT used in the CS and PS domains for the SIM card in the specified slot synchronously.
+    let networkRadioTech: radio.NetworkRadioTech = radio.getRadioTechSync(slotId);
+    console.info(`getRadioTechSync success, NetworkRadioTech->${JSON.stringify(networkRadioTech)}`);
+} catch (err) {
+    console.error(`getRadioTechSync failed, err->${JSON.stringify(err)}`);
+}
 ```
 
 
@@ -194,7 +202,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 radio.getNetworkState((err: BusinessError, data: radio.NetworkState) => {
     if (err) {
-        console.error(`getNetworkState failed, callback: err->${JSON.stringify(err)}`);
+        console.error(`getNetworkState failed, callback: err code: ${err.code}, message: ${err.message}`);
         return;
     }
     console.info(`getNetworkState success, callback: data->${JSON.stringify(data)}`);
@@ -206,7 +214,7 @@ radio.getNetworkState((err: BusinessError, data: radio.NetworkState) => {
 
 getNetworkState\(slotId: number, callback: AsyncCallback\<NetworkState\>\): void
 
-Obtains the network status of the SIM card in the specified slot. This API uses an asynchronous callback to return the result.
+Obtains the network status. This API uses an asynchronous callback to return the result.
 
 **Required permission**: ohos.permission.GET_NETWORK_INFO
 
@@ -240,7 +248,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let slotId: number = 0;
 radio.getNetworkState(slotId, (err: BusinessError, data: radio.NetworkState) => {
     if (err) {
-        console.error(`getNetworkState failed, callback: err->${JSON.stringify(err)}`);
+        console.error(`getNetworkState failed, callback: err code: ${err.code}, message: ${err.message}`);
         return;
     }
     console.info(`getNetworkState success, callback: data->${JSON.stringify(data)}`);
@@ -252,7 +260,7 @@ radio.getNetworkState(slotId, (err: BusinessError, data: radio.NetworkState) => 
 
 getNetworkState\(slotId?: number\): Promise\<NetworkState\>
 
-Obtains the network status of the SIM card in the specified slot. This API uses a promise to return the result.
+Obtains the network status. This API uses a promise to return the result.
 
 **Required permission**: ohos.permission.GET_NETWORK_INFO
 
@@ -288,11 +296,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+//Specify the card slot ID. The value 0 indicates card slot 1.
 let slotId: number = 0;
+// Obtain the network status. This API uses a promise to return the result.
 radio.getNetworkState(slotId).then((data: radio.NetworkState) => {
     console.info(`getNetworkState success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-    console.error(`getNetworkState failed, promise: err->${JSON.stringify(err)}`);
+    console.error(`getNetworkState failed, promise: err code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -332,7 +342,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let slotId: number = 0;
 radio.getNetworkSelectionMode(slotId, (err: BusinessError, data: radio.NetworkSelectionMode) => {
     if (err) {
-        console.error(`getNetworkSelectionMode failed, callback: err->${JSON.stringify(err)}`);
+        console.error(`getNetworkSelectionMode failed, callback: err code: ${err.code}, message: ${err.message}`);
         return;
     }
     console.info(`getNetworkSelectionMode success, callback: data->${JSON.stringify(data)}`);
@@ -381,7 +391,7 @@ let slotId: number = 0;
 radio.getNetworkSelectionMode(slotId).then((data: radio.NetworkSelectionMode) => {
     console.info(`getNetworkSelectionMode success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-    console.error(`getNetworkSelectionMode failed, promise: err->${JSON.stringify(err)}`);
+    console.error(`getNetworkSelectionMode failed, promise: err code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -421,7 +431,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let slotId: number = 0;
 radio.getISOCountryCodeForNetwork(slotId, (err: BusinessError, data: string) => {
     if (err) {
-        console.error(`getISOCountryCodeForNetwork failed, callback: err->${JSON.stringify(err)}`);
+        console.error(`getISOCountryCodeForNetwork failed, callback: err code: ${err.code}, message: ${err.message}`);
         return;
     }
     console.info(`getISOCountryCodeForNetwork success, callback: data->${JSON.stringify(data)}`);
@@ -470,7 +480,7 @@ let slotId: number = 0;
 radio.getISOCountryCodeForNetwork(slotId).then((data: string) => {
     console.info(`getISOCountryCodeForNetwork success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-    console.error(`getISOCountryCodeForNetwork failed, promise: err->${JSON.stringify(err)}`);
+    console.error(`getISOCountryCodeForNetwork failed, promise: err code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -498,8 +508,12 @@ Obtains the ISO country code of the network with which the SIM card in the speci
 
 ```ts
 let slotId: number = 0;
-let countryISO: string = radio.getISOCountryCodeForNetworkSync(slotId);
-console.info(`the country ISO is:` + countryISO);
+try {
+    let countryISO: string = radio.getISOCountryCodeForNetworkSync(slotId);
+    console.info(`the country ISO is:` + countryISO);
+} catch (err) {
+    console.error(`getISOCountryCodeForNetworkSync failed, err->${JSON.stringify(err)}`);
+}
 ```
 
 
@@ -537,7 +551,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 radio.getPrimarySlotId((err: BusinessError, data: number) => {
     if (err) {
-        console.error(`getPrimarySlotId failed, callback: err->${JSON.stringify(err)}`);
+        console.error(`getPrimarySlotId failed, callback: err code: ${err.code}, message: ${err.message}`);
         return;
     }
     console.info(`getPrimarySlotId success, callback: data->${JSON.stringify(data)}`);
@@ -557,7 +571,7 @@ Obtains the ID of the slot in which the primary card is located. This API uses a
 
 | Type                                                       | Description                                                        |
 | ----------------------------------------------------------- | ------------------------------------------------------------ |
-| Promise\<number\> | Promise used to return the result.|
+| Promise\<number\> | Promise used to return the ID of the slot in which the primary card is located.|
 
 **Error codes**
 
@@ -577,7 +591,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 radio.getPrimarySlotId().then((data: number) => {
     console.info(`getPrimarySlotId success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-    console.error(`getPrimarySlotId failed, promise: err->${JSON.stringify(err)}`);
+    console.error(`getPrimarySlotId failed, promise: err code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -617,7 +631,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let slotId: number = 0;
 radio.getSignalInformation(slotId, (err: BusinessError, data: Array<radio.SignalInformation>) => {
     if (err) {
-        console.error(`getSignalInformation failed, callback: err->${JSON.stringify(err)}`);
+        console.error(`getSignalInformation failed, callback: err code: ${err.code}, message: ${err.message}`);
         return;
     }
     console.info(`getSignalInformation success, callback: data->${JSON.stringify(data)}`);
@@ -666,7 +680,7 @@ let slotId: number = 0;
 radio.getSignalInformation(slotId).then((data: Array<radio.SignalInformation>) => {
     console.info(`getSignalInformation success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-    console.error(`getSignalInformation failed, promise: err->${JSON.stringify(err)}`);
+    console.error(`getSignalInformation failed, promise: err code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -690,13 +704,16 @@ Obtains a list of signal strengths of the network with which the SIM card in the
 | ----------------------------------------------------------- | ------------------------------------------------------------ |
 | Array\<[SignalInformation](#signalinformation)\>| Array of child class objects derived from [SignalInformation](#signalinformation).|
 
-
 **Example**
 
 ```ts
 let slotId: number = 0;
-let signalInfo: Array<radio.SignalInformation> = radio.getSignalInformationSync(slotId);
-console.info(`signal information size is:` + signalInfo.length);
+try {
+    let signalInfo: Array<radio.SignalInformation> = radio.getSignalInformationSync(slotId);
+    console.info(`signal information size is:` + signalInfo.length);
+} catch (err) {
+    console.error(`getSignalInformationSync failed, err->${JSON.stringify(err)}`);
+}
 ```
 
 ## radio.isNrSupported<sup>(deprecated)</sup>
@@ -715,20 +732,20 @@ Checks whether the current device supports NR.
 
 | Type   | Description                            |
 | ------- | -------------------------------- |
-| boolean | - **true**: supported<br>- **false**: not supported|
+| boolean | Whether the current device supports NR. - **true**: supported<br>- **false**: not supported|
 
 **Example**
 
 ```ts
 let result: boolean = radio.isNrSupported();
-console.info("Result: "+ result);
+console.info("Result: " + result);
 ```
 
 ## radio.isNrSupported<sup>(deprecated)</sup>
 
 isNrSupported\(slotId: number\): boolean
 
-Checks whether the SIM card in the specified slot supports NR.
+Checks whether the current device supports NR.
 
 > **NOTE**
 >
@@ -746,14 +763,16 @@ Checks whether the SIM card in the specified slot supports NR.
 
 | Type              | Description                                                        |
 | ------------------ | ------------------------------------------------------------ |
-| boolean | - **true**: supported<br>- **false**: not supported|
+| boolean | Whether the current device supports NR. - **true**: supported<br>- **false**: not supported|
 
 **Example**
 
 ```ts
+//Specify the card slot ID. The value 0 indicates card slot 1.
 let slotId: number = 0;
+// Check whether the current device supports NR. (This API has been deprecated. You are advised to use isNRSupported instead.)
 let result: boolean = radio.isNrSupported(slotId);
-console.info("Result: "+ result);
+console.info("Result: " + result);
 ```
 
 
@@ -769,13 +788,13 @@ Checks whether the current device supports NR.
 
 | Type   | Description                            |
 | ------- | -------------------------------- |
-| boolean | - **true**: supported<br>- **false**: not supported|
+| boolean | Whether the current device supports NR. - **true**: supported<br>- **false**: not supported|
 
 **Example**
 
 ```ts
 let result: boolean = radio.isNRSupported();
-console.info("Result: "+ result);
+console.info("Result: " + result);
 ```
 
 
@@ -783,7 +802,7 @@ console.info("Result: "+ result);
 
 isNRSupported\(slotId: number\): boolean
 
-Checks whether the SIM card in the specified slot supports NR.
+Checks whether the current device supports NR.
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -797,14 +816,14 @@ Checks whether the SIM card in the specified slot supports NR.
 
 | Type              | Description                                                        |
 | ------------------ | ------------------------------------------------------------ |
-| boolean | - **true**: supported<br>- **false**: not supported|
+| boolean | Whether the current device supports NR. - **true**: supported<br>- **false**: not supported|
 
 **Example**
 
 ```ts
 let slotId: number = 0;
 let result: boolean = radio.isNRSupported(slotId);
-console.info("Result: "+ result);
+console.info("Result: " + result);
 ```
 
 
@@ -844,7 +863,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 radio.isRadioOn((err: BusinessError, data: boolean) => {
     if (err) {
-        console.error(`isRadioOn failed, callback: err->${JSON.stringify(err)}`);
+        console.error(`isRadioOn failed, callback: err code: ${err.code}, message: ${err.message}`);
         return;
     }
     console.info(`isRadioOn success, callback: data->${JSON.stringify(data)}`);
@@ -890,7 +909,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let slotId: number = 0;
 radio.isRadioOn(slotId, (err: BusinessError, data: boolean) => {
     if (err) {
-        console.error(`isRadioOn failed, callback: err->${JSON.stringify(err)}`);
+        console.error(`isRadioOn failed, callback: err code: ${err.code}, message: ${err.message}`);
         return;
     }
     console.info(`isRadioOn success, callback: data->${JSON.stringify(data)}`);
@@ -912,7 +931,7 @@ Checks whether the radio service is enabled on the SIM card in the specified slo
 
 | Name| Type  | Mandatory| Description                                  |
 | ------ | ------ | ---- | -------------------------------------- |
-| slotId | number | No  | Card slot ID.<br>- **0**: card slot 1.<br>- **1**: card slot 2.<br>If the slot ID is not specified, this API is defaulted to check whether the radio service is enabled on the primary SIM card.|
+| slotId | number | No  | Card slot ID.<br>- **0**: card slot 1.<br>- **1**: card slot 2<br>If the slot ID is not specified, this API is defaulted to check whether the radio service is enabled on the primary SIM card.|
 
 **Return value**
 
@@ -942,7 +961,7 @@ let slotId: number = 0;
 radio.isRadioOn(slotId).then((data: boolean) => {
     console.info(`isRadioOn success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-    console.error(`isRadioOn failed, promise: err->${JSON.stringify(err)}`);
+    console.error(`isRadioOn failed, promise: err code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -982,7 +1001,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let slotId: number = 0;
 radio.getOperatorName(slotId, (err: BusinessError, data: string) => {
     if (err) {
-        console.error(`getOperatorName failed, callback: err->${JSON.stringify(err)}`);
+        console.error(`getOperatorName failed, callback: err code: ${err.code}, message: ${err.message}`);
         return;
     }
     console.info(`getOperatorName success, callback: data->${JSON.stringify(data)}`);
@@ -1031,7 +1050,7 @@ let slotId: number = 0;
 radio.getOperatorName(slotId).then((data: string) => {
     console.info(`getOperatorName success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-    console.error(`getOperatorName failed, promise: err->${JSON.stringify(err)}`);
+    console.error(`getOperatorName failed, promise: err code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1039,7 +1058,7 @@ radio.getOperatorName(slotId).then((data: string) => {
 
 getOperatorNameSync\(slotId: number\): string
 
-Obtains the carrier name of the SIM card in the specified slot.
+Obtains the carrier name. This method is the synchronous version of [getOperatorName](#radiogetoperatorname7) and directly returns the result. This method has the same function as the asynchronous method **getOperatorName**. It is applicable to scenarios where the result needs to be obtained immediately and blocking calls are acceptable. If non-blocking calls are required, use **getOperatorName**.
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -1055,19 +1074,24 @@ Obtains the carrier name of the SIM card in the specified slot.
 | ----------------- | ------------------------------------------------------------ |
 | string | Carrier name, for example, China Mobile.               |
 
-
 **Example**
 
 ```ts
+//Specify the card slot ID. The value 0 indicates card slot 1.
 let slotId: number = 0;
-let operatorName: string = radio.getOperatorNameSync(slotId);
-console.info(`operator name is:` + operatorName);
+try {
+    // Obtain the carrier name synchronously.
+    let operatorName: string = radio.getOperatorNameSync(slotId);
+    console.info(`operator name is:` + operatorName);
+} catch (err) {
+    console.error(`getOperatorNameSync failed, err->${JSON.stringify(err)}`);
+}
 ```
 
 
 ## NetworkRadioTech<sup>11+</sup>
 
-Defines the radio access technology for the packet switched (PS) or circuit switched (CS) network.
+Defines the radio access technology used in the PS and CS domains on the network.
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -1085,17 +1109,17 @@ Enumerates radio access technologies.
 | Name                     | Value  | Description                                                        |
 | ------------------------- | ---- | ------------------------------------------------------------ |
 | RADIO_TECHNOLOGY_UNKNOWN  | 0    | Unknown RAT                                   |
-| RADIO_TECHNOLOGY_GSM      | 1    | Global System for Mobile Communication (GSM) |
-| RADIO_TECHNOLOGY_1XRTT    | 2    | Single-Carrier Radio Transmission Technology (1XRTT)|
-| RADIO_TECHNOLOGY_WCDMA    | 3    | Wideband Code Division Multiple Access (WCDMA)|
-| RADIO_TECHNOLOGY_HSPA     | 4    | High Speed Packet Access (HSPA)              |
-| RADIO_TECHNOLOGY_HSPAP    | 5    | Evolved High Speed Packet Access (HSPA+)    |
+| RADIO_TECHNOLOGY_GSM      | 1    | Global System for Mobile Communication (GSM). |
+| RADIO_TECHNOLOGY_1XRTT    | 2    | Single-Carrier Radio Transmission Technology (1XRTT).|
+| RADIO_TECHNOLOGY_WCDMA    | 3    | Wideband Code Division Multiple Access (WCDMA).|
+| RADIO_TECHNOLOGY_HSPA     | 4    | High Speed Packet Access (HSPA).              |
+| RADIO_TECHNOLOGY_HSPAP    | 5    | High Speed Packet Access+ (HSPAP).    |
 | RADIO_TECHNOLOGY_TD_SCDMA | 6    | TD-SCDMA.|
-| RADIO_TECHNOLOGY_EVDO     | 7    | Evolution-Data Optimized (EVDO)                  |
-| RADIO_TECHNOLOGY_EHRPD    | 8    | Evolved High Rate Package Data (EHRPD)       |
+| RADIO_TECHNOLOGY_EVDO     | 7    | Evolution-Data Optimized (EVDO).                  |
+| RADIO_TECHNOLOGY_EHRPD    | 8    | Evolved High Rate Packet Data (EHRPD).       |
 | RADIO_TECHNOLOGY_LTE      | 9    | Long Term Evolution (LTE)                    |
 | RADIO_TECHNOLOGY_LTE_CA   | 10   | Long Term Evolution_Carrier Aggregation (LTE_CA)|
-| RADIO_TECHNOLOGY_IWLAN    | 11   | Industrial Wireless LAN (IWLAN)              |
+| RADIO_TECHNOLOGY_IWLAN    | 11   | Interworking Wireless LAN (IWLAN).              |
 | RADIO_TECHNOLOGY_NR       | 12   | New Radio (NR)                               |
 
 
@@ -1137,18 +1161,18 @@ Defines the network status.
 | -------------------- | ----------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | longOperatorName     | string                              |  No |  No | Long carrier name of the registered network.                                    |
 | shortOperatorName    | string                              |  No |  No | Short carrier name of the registered network.                                    |
-| plmnNumeric          | string                              |  No |  No | PLMN code of the registered network.                                          |
-| isRoaming            | boolean                             |  No |  No | Whether the user is roaming.                                          |
+| plmnNumeric          | string                              |  No |  No | Public Land Mobile Network (PLMN) code of the registered network.                                          |
+| isRoaming            | boolean                             |  No |  No | Whether the user is roaming.<br>- **true**: The user is roaming.<br>- **false**: The user is not roaming.                                          |
 | regState             | [RegState](#regstate)               |  No |  No | Network registration status of the device.                                        |
 | cfgTech<sup>8+</sup> | [RadioTechnology](#radiotechnology) |  No |  No | RAT of the device.                                        |
 | nsaState             | [NsaState](#nsastate)               |  No |  No | NSA network registration status of the device.                                     |
-| isCaActive           | boolean                             |  No |  No | CA status.                                                  |
+| isCaActive           | boolean                             |  No |  No | Carrier aggregation (CA) status.<br>- **true**: CA is activated.<br>- **false**: CA is not activated.                                                  |
 | isEmergency          | boolean                             |  No |  No | Whether only emergency calls are allowed.                              |
 
 
 ## RegState
 
-Defines the network registration status of the device.
+Defines the network status.
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -1173,7 +1197,7 @@ Enumerates NSA network states.
 | NSA_STATE_CONNECTED_DETECT | 3    | The device is connected to the LTE network in an LTE cell that supports NSA and NR coverage detection.         |
 | NSA_STATE_IDLE_DETECT      | 4    | The device is in the idle state in an LTE cell that supports NSA and NR coverage detection.          |
 | NSA_STATE_DUAL_CONNECTED   | 5    | The device is connected to the LTE/NR network in an LTE cell that supports NSA.              |
-| NSA_STATE_SA_ATTACHED      | 6    | The device is idle or connected to the NG-RAN cell when being attached to the 5G Core.     |
+| NSA_STATE_SA_ATTACHED      | 6    | The device is idle or connected to the NG-RAN (next-generation radio access network) cell when being attached to the 5G Core.     |
 
 
 ## NetworkSelectionMode

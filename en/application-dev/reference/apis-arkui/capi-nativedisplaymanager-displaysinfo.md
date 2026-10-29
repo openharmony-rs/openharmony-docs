@@ -1,10 +1,11 @@
 # NativeDisplayManager_DisplaysInfo
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @oh_wangxk; @logn-->
-<!--Designer: @hejunfei1991-->
-<!--Tester: @qinliwen0417-->
+<!--Owner: @oh_wangxk-->
+<!--Designer: @wulong158-->
+<!--Tester: @LiTongguan2026-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=494f31a35d1b25179fe202754d9ee44d527d8ab6 translatedAt=2026-10-10T10:28:28.872Z pushedAt=2026-10-15T01:41:44.644Z -->
 
 ```c
 typedef struct {...} NativeDisplayManager_DisplaysInfo
@@ -28,3 +29,5 @@ Describes the information about displays of a device with multiple screens.
 | -- | -- |
 | uint32_t displaysLength | Number of displays of a device with multiple screens.|
 | [NativeDisplayManager_DisplayInfo](capi-nativedisplaymanager-displayinfo.md)* displaysInfo | Pointer to the array of **NativeDisplayManager_DisplayInfo** structs, each containing information about a display.|
+
+

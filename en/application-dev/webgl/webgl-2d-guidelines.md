@@ -6,7 +6,7 @@
 <!--Designer: @shi-yang-2012-->
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=da9e8ddad7f6a944d945f3648baa90ea33d18b68 translatedAt=2026-08-14T10:11:46.587Z pushedAt=2026-08-16T01:50:35.163Z -->
+<!-- md-trans-meta sourceCommit=dc7a8e368647662e8a65a9c70e09750d1b0eed33 translatedAt=2026-10-10T06:04:05.650Z pushedAt=2026-10-12T08:48:44.632Z -->
 
 ## When to Use
 
@@ -43,6 +43,7 @@ The frame buffer provides an alternative rendering target for the drawing buffer
 ### Texture
 
 A texture is an image that can be applied to the surface of a 3D model. Textures in WebGL have many properties, including width, height, format, and type. When using a texture, load it into WebGL and bind it to a texture unit.
+
 
 ## Variables and APIs
 
@@ -118,7 +119,6 @@ The following uses a colored square as an example to demonstrate the process of 
      gl.clear(gl.COLOR_BUFFER_BIT);
    }
    ```
-
 3. Define the vertex shader.
 
    The vertex shader needs to perform the necessary transformations on the vertex coordinates, make other adjustments or calculations on a per‑vertex basis, and then return the transformed vertices by storing them in the special variables provided by GLSL.
@@ -152,7 +152,6 @@ The following uses a colored square as an example to demonstrate the process of 
        }
     `;
    ```
-
 5. Pass the shader to WebGL.
 
    Pass the vertex shader and fragment shader defined to WebGL and compile them together.
@@ -197,7 +196,6 @@ The following uses a colored square as an example to demonstrate the process of 
      return shader;
    }
    ```
-
 6. Find the input location assigned by WebGL.
 
    - After creating the shader program, find the input location allocated by WebGL. There is one property and two Uniforms.
@@ -225,7 +223,7 @@ The following uses a colored square as an example to demonstrate the process of 
 
    - Call the **createBuffer()** function of **gl** to obtain a buffer object and store it in the vertex buffer. Then call the **bindBuffer()** function to bind the context.
 
-   - Create a JavaScript array to record each vertex of each square. Then convert it into a WebGL floating‑point typed array and pass it to the **bufferData()** method of the gl object to set up the object's vertices.
+   - Create a JavaScript array to record each vertex of each square. Then convert it into a WebGL floating-point typed array and pass it to the **bufferData()** method of the gl object to set up the object's vertices.
 
    ```js
    function initBuffers(gl) {

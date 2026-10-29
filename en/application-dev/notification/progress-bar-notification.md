@@ -1,12 +1,11 @@
 # Publishing a Progress Notification
-
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=fa3fc214ef4b265f033bc3f0d0a2df54f511a497 translatedAt=2026-08-13T03:12:36.212Z pushedAt=2026-08-13T07:49:13.781Z -->
+<!-- md-trans-meta sourceCommit=4faed534b39ef26ef8f9b647802a53e9f8d2b792 translatedAt=2026-10-08T03:50:05.333Z pushedAt=2026-10-08T06:50:49.720Z -->
 
 The progress notification is a commonly used notification type, mainly used to display the progress of an ongoing operation, such as file downloading. When publishing a progress notification through the notification subsystem, you can use the readily available template by specifying the related attributes, such as the template name and template data.
 
@@ -20,12 +19,13 @@ Currently, the system template supports only the progress bar template. The `dat
 | -------- | -------- |
 | isSupportTemplate(templateName: string): Promise\<boolean\> | Checks whether the corresponding notification template is supported. |
 
+
 ## How to Develop
 
 1. Import the module.
 
    <!-- @[publish_notification_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/PublishNotification.ets) -->
-
+   
    ``` TypeScript
    import { notificationManager } from '@kit.NotificationKit';
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -38,7 +38,7 @@ Currently, the system template supports only the progress bar template. The `dat
 2. Check whether a specific template is supported. In this example, the template of the **downloadTemplate** type is checked.
 
    <!-- @[check_progress_template_download](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/PublishNotification.ets) -->
-
+   
    ``` TypeScript
    notificationManager.isSupportTemplate('downloadTemplate').then((data: boolean) => {
      let isSupportTemplate: boolean = data; // The value true means that the template of the downloadTemplate type is supported, and false means the opposite.
@@ -49,14 +49,14 @@ Currently, the system template supports only the progress bar template. The `dat
        `Failed to support download template notification. Code is ${err.code}, message is ${err.message}`);
    });
    ```
-
+   
    > **NOTE**
    > Proceed with the step below only when the specified template is supported.
-
+   
 3. Create a **NotificationRequest** object and publish a progress notification.
 
    <!-- @[pub_progress_template_req_notify](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/PublishNotification.ets) -->
-
+   
    ``` TypeScript
    let notificationRequest: notificationManager.NotificationRequest = {
      id: 5,

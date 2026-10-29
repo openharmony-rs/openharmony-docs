@@ -1,12 +1,11 @@
 # Responsive Grid Layout (GridRow/GridCol)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zju_ljz-->
-<!--Designer: @lanshouren-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=c8954d33bacbdec6df88d8586db7cc9b9d8a799e translatedAt=2026-08-01T00:32:27.755Z pushedAt=2026-08-03T07:00:53.673Z -->
+<!-- md-trans-meta sourceCommit=5c003cd0078f072682e40161bc8d6b59282f6cb6 translatedAt=2026-10-12T09:30:34.756Z pushedAt=2026-10-13T08:50:14.848Z -->
 
 ## Overview
 
@@ -18,11 +17,13 @@ As an auxiliary positioning tool, the responsive grid layout is handy in UI desi
 
 3. Provides a flexible spacing adjustment method for applications to accommodate special layout requirements. You can adjust the spacing between columns and between rows to control the typesetting of the entire page.
 
-4. Completes the wrapping and adaptation automatically when overflow occurs. When the number of page elements exceeds the capacity of a row or column, they automatically wrap to a new row or column and adapt the typesetting to different devices.
+4. Automatic wrapping and adaptation: The grid layout can automatically wrap and adapt one-to-many layouts. When the number of page elements exceeds the capacity of a row or column, they automatically wrap to a new row or column and adapt the typesetting to different devices, making the page layout more flexible and adaptable.
 
 The [GridRow](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md) component is a responsive grid container and must have [GridCol](../reference/apis-arkui/arkui-ts/ts-container-gridcol.md) as its child component.
 
+
 ## GridRow
+
 
 ### Breakpoints
 
@@ -121,12 +122,12 @@ You can customize breakpoints using the [BreakPoints](../reference/apis-arkui/ar
 
   ![gridLayoutReference](figures/gridLayoutReference.gif)
 
+
 ### Columns
 
 The **columns** attribute defines the total number of columns in the **GridRow** container.
 
 - Before API version 20, the default value of **columns** is 12. If **columns** is not set, the responsive grid layout is divided into 12 columns at any breakpoint.
-
 - Since API version 20, the default value of **columns** is { xs: 2, sm: 4, md: 8, lg: 12, xl: 12, xxl: 12 }.
 
 
@@ -163,8 +164,8 @@ The **columns** attribute defines the total number of columns in the **GridRow**
     
     ![gridLayoutColumns2](figures/gridLayoutColumns2.png)
 
-**columns** supports two types: number and [GridRowColumnOption](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gridrowcolumnoption). You can set the total column count of the grid layout in two ways.
 
+**columns** supports two types: number and [GridRowColumnOption](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gridrowcolumnoption). You can set the total column count of the grid layout in two ways.
 - When **columns** is set to a number, the grid maintains the same number of columns across all device sizes. The following figures demonstrate the layout effects when the grid is configured with 4 and 8 columns respectively, with each child component spanning one column.
 
   <!-- @[GridLayoutColumnsToFour_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/gridlayout/GridLayoutColumnsToFour.ets) -->
@@ -274,13 +275,14 @@ The **columns** attribute defines the total number of columns in the **GridRow**
 
     Layout behavior before API version 20: If the number of grid columns is not configured for xs devices, the default value of 12 columns is used.
 
-    ![gridRow](figures/gridRow.gif)
+    ![gridRow-w800](figures/gridRow.gif)
 
     Layout behavior since API version 20: xs devices inherit the number of grid columns from sm devices.
 
-    ![gridRow2](figures/gridRow2.gif)
+    ![gridRow2-w800](figures/gridRow2.gif)
 
   If only the grid column numbers for sm and md devices are configured, the xs, lg, xl, and xxl devices will use default values based on the [grid column number completion rules](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gridrowcolumnoption).
+
 
 ### Alignment
 
@@ -308,6 +310,7 @@ In the grid layout, you can set the [direction](../reference/apis-arkui/arkui-ts
 
     ![gridLayoutDirectionRowReverse](figures/gridLayoutDirectionRowReverse.png)
 
+
 ### Gutters
 
 In the **GridRow** component, [gutter](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gridrowoptions) is used to set the spacing between adjacent child components in the horizontal and vertical directions.
@@ -333,6 +336,7 @@ In the **GridRow** component, [gutter](../reference/apis-arkui/arkui-ts/ts-conta
     ```
 
     ![gridLayoutGutterOption](figures/gridLayoutGutterOption.png)
+
 
 ## GridCol
 
@@ -397,11 +401,11 @@ The [GridCol](../reference/apis-arkui/arkui-ts/ts-container-gridcol.md) componen
 Sets the number of columns occupied by a child component in the grid layout, which determines the child component width. The default value is **1**.
 
 **span** supports two types: number and [GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-container-gridcol.md#gridcolcolumnoption). You can set the number of columns that a grid subcomponent occupies within the grid container in two ways.
-
 - When **span** is set to a number, the child component occupies the same number of columns across all screen sizes.
 
-    <!-- @[GridColSpanToNumber_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/gridlayout/GridColSpanToNumber.ets) -->
 
+    <!-- @[GridColSpanToNumber_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/gridlayout/GridColSpanToNumber.ets) -->
+    
     ``` TypeScript
     // xxx.ets
     @Entry
@@ -659,6 +663,7 @@ If **order** is set for only some child components, those with explicit **order*
 
     ![gridColOrderToOption](figures/gridColOrderToOption.gif)
 
+
 ## Nesting of Responsive Grid Components
 
 Responsive grid components can be contained in other responsive grid components.
@@ -706,5 +711,6 @@ struct GridRowExample {
 
 
 ![gridRowExample](figures/gridRowExample.png)
+
 
 To sum up, the responsive grid components are powerful tools with a wide range of customization capabilities. With the required attributes set at different breakpoints, such as [columns](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gridrowoptions), [margin](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#margin), [gutter](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gridrowoptions), [gutter](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gridrowoptions), and [span](../reference/apis-arkui/arkui-ts/ts-container-gridcol.md#gridcoloptions), the layout is created automatically. You do not need to pay attention to the specific device type and device state (such as landscape and portrait).

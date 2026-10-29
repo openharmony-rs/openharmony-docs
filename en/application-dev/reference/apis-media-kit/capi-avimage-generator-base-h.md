@@ -26,7 +26,7 @@ The file declares the enums used by the AVImageGenerator.
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [OH_AVImageGenerator_QueryOptions](#oh_avimagegenerator_queryoptions) | OH_AVImageGenerator_QueryOptions | Enumerates the mappings between time points and video frames.|
+| [OH_AVImageGenerator_QueryOptions](#oh_avimagegenerator_queryoptions) | OH_AVImageGenerator_QueryOptions | Enumerates the mappings between time points and frames during video frame query.|
 
 ## Enum Description
 
@@ -38,7 +38,7 @@ enum OH_AVImageGenerator_QueryOptions
 
 **Description**
 
-Enumerates the mappings between time points and video frames.
+Enumerates the mappings between time points and frames during video frame query.
 
 **System capability**: SystemCapability.Multimedia.Media.AVImageGenerator
 

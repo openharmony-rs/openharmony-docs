@@ -5,6 +5,7 @@
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=e4d6dbcdca3073c04cc290f436d3c624978d2e49 translatedAt=2026-09-23T10:18:36.057Z pushedAt=2026-10-10T08:19:48.997Z -->
 
 ```c
 enum ArkUI_NodeAttributeType
@@ -137,7 +138,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | -- | -- |
 | .value[0].f32 to .value[19].f32| Filter matrix array.|
 | .size | 5 x 4 filter array size.|
-| .object | Pointer to the color filter. The parameter type is **OH_Drawing_ColorFilter**.<br>Either **.object** or **.size** must be set.|
+| .object | Color filter pointer. The parameter type is **OH_Drawing_ColorFilter**.<br>Either **.object** or **.size** must be set. |
 
 **Returns**
 
@@ -145,7 +146,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | -- | -- |
 | .value[0].f32 to .value[19].f32| Filter matrix array.|
 | .size | 5 x 4 filter array size.|
-| .object | Pointer to the color filter. The parameter type is **OH_Drawing_ColorFilter**.|
+| .object | Color filter pointer. The parameter type is **OH_Drawing_ColorFilter**. |
 
 ## NODE_IMAGE_AUTO_RESIZE
 
@@ -237,13 +238,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Image rendering mode. The parameter type is [ArkUI_ImageRenderMode](capi-image-h.md#arkui_imagerendermode).|
+| .value[0].i32 | Image rendering mode. The value is an enumerated value of [ArkUI_ImageRenderMode](capi-image-h.md#arkui_imagerendermode). |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Image rendering mode. The parameter type is [ArkUI_ImageRenderMode](capi-image-h.md#arkui_imagerendermode).|
+| .value[0].i32 | Image rendering mode. The value is an enumerated value of [ArkUI_ImageRenderMode](capi-image-h.md#arkui_imagerendermode). |
 
 ## NODE_IMAGE_FIT_ORIGINAL_SIZE
 
@@ -285,13 +286,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].u32 | Fill color, in 0xARGB format. For example, **0xFFFF0000** indicates red.|
+| .value[0].u32 | Fill color, in 0xARGB format, for example, **0xFFFF0000** indicates red. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].u32 | Fill color, in 0xARGB format.|
+| .value[0].u32 | Fill color, in 0xARGB format. |
 
 ## NODE_IMAGE_RESIZABLE
 
@@ -332,6 +333,7 @@ NODE_IMAGE_SYNC_LOAD = 4012
 ```
 
 Synchronous image loading attribute, which can be set, reset, and obtained as required through APIs.<br>
+The [NODE_IMAGE_ALT](#node_image_alt) placeholder image is always loaded asynchronously, and **syncLoad** does not take effect on it.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 20
@@ -366,7 +368,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | Name| Description|
 | -- | -- |
 | .value[0].i32 | Width for image decoding, in px.|
-| .value[1].i32 | Height for image decoding, in px. If the value of any parameter is less than or equal to **0**, the attribute setting fails and [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) is returned, indicating a parameter error.|
+| .value[1].i32 | Height for image decoding, in px. If the value of any parameter is less than or equal to 0, the attribute setting fails and [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) is returned, indicating a parameter error. |
 
 **Returns**
 
@@ -391,7 +393,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0...15].f32 | 4 x 4 matrix represented by a floating-point array with a length of 16. If the number of parameters is less than 16, the attribute setting fails, and [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) is returned, indicating a parameter error. If the number of parameters exceeds 16, only the first 16 data entries are used.|
+| .value[0...15].f32 | 4 x 4 matrix represented by a floating-point array with a length of 16. If the number of parameters is less than 16, the attribute setting fails, and [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) is returned. If the number of parameters exceeds 16, only the first 16 data entries are used. |
 
 **Returns**
 
@@ -535,13 +537,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Expected image content display orientation, specified using [ArkUI_Orientation](capi-image-h.md#arkui_imagerotateorientation). The default value is **ARKUI_ORIENTATION_UP**.|
+| .value[0].i32 | Expected image content display orientation, specified using [ArkUI_ImageRotateOrientation](capi-image-h.md#arkui_imagerotateorientation). The default value is **ARKUI_ORIENTATION_UP**. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Expected image content display orientation, specified using [ArkUI_Orientation](capi-image-h.md#arkui_imagerotateorientation).|
+| .value[0].i32 | Expected image content display orientation, specified using [ArkUI_ImageRotateOrientation](capi-image-h.md#arkui_imagerotateorientation). |
 
 ## NODE_IMAGE_SUPPORT_SVG2
 
@@ -594,7 +596,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 ## NODE_IMAGE_ALT_PLACEHOLDER
 
 ```c
-NODE_IMAGE_ALT_PLACEHOLDER  = 4023
+NODE_IMAGE_ALT_PLACEHOLDER = 4023
 ```
 
 Placeholder image during the loading process. This attribute can be set, reset, and obtained as required through APIs.<br>
@@ -620,7 +622,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 ## NODE_IMAGE_ALT_ERROR
 
 ```c
-NODE_IMAGE_ALT_ERROR  = 4024
+NODE_IMAGE_ALT_ERROR = 4024
 ```
 
 Placeholder image in the loading failure scenarios. This attribute can be set, reset, and obtained as required through APIs.<br>

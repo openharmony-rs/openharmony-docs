@@ -98,17 +98,15 @@ enum OH_CaptureMode
 
 枚举，表示屏幕录制的不同模式。
 
-根据录制需求选择合适的模式：录制主屏幕适用于全屏录制场景；录制指定屏幕适用于多屏环境下选择特定屏幕的场景；录制指定窗口适用于仅录制单个应用窗口的场景。
-
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
 **起始版本：** 10
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_CAPTURE_HOME_SCREEN = 0 | 录制主屏幕。 |
-| OH_CAPTURE_SPECIFIED_SCREEN = 1 | 录制指定屏幕。使用此模式需在OH_AVScreenCaptureConfig中指定displayId。 |
-| OH_CAPTURE_SPECIFIED_WINDOW = 2 | 录制指定窗口。使用此模式需在OH_AVScreenCaptureConfig中指定windowId。 |
+| OH_CAPTURE_HOME_SCREEN = 0 | 录制主屏幕。适用于全屏录制场景。 |
+| OH_CAPTURE_SPECIFIED_SCREEN = 1 | 录制指定屏幕。适用于多屏环境下选择特定屏幕的场景。使用此模式需在OH_AVScreenCaptureConfig中指定displayId。 |
+| OH_CAPTURE_SPECIFIED_WINDOW = 2 | 录制指定窗口。适用于仅录制单个应用窗口的场景。使用此模式需在OH_AVScreenCaptureConfig中指定windowId。 |
 | OH_CAPTURE_INVAILD = -1 | 无效模式。 |
 
 ### OH_AudioCaptureSourceType

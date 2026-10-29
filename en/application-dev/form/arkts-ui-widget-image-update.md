@@ -1,21 +1,21 @@
 # Updating Local and Online Images in the Widget
-
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @Qian-Win-->
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=95db9cefd559cc896d806e0e7b41b79f1d647956 translatedAt=2026-08-03T02:26:24.250Z pushedAt=2026-08-03T06:45:25.680Z -->
+<!-- md-trans-meta sourceCommit=14c25dcfa79d2f07b35a4a6bbbdc3d13f8f727f0 translatedAt=2026-10-13T12:55:19.247Z pushedAt=2026-10-15T13:02:20.246Z -->
 
 To display local images or images downloaded from the network on a widget, you need to use FormExtensionAbility to obtain them. The following sample code demonstrates how to display local and network images on a widget.
+
 
 1. For the widget to download online images, declare the **ohos.permission.INTERNET** permission for the widget. For details, see [Declaring Permissions](../security/AccessToken/declare-permissions.md).
 
 2. Import related modules to the **WgtImgUpdateEntryFormAbility.ts** file.
 
    <!-- @[refresh_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/wgtimgupdateentryformability/WgtImgUpdateEntryFormAbility.ts) --> 
-
+   
    ``` TypeScript
    // entry/src/main/ets/wgtimgupdateentryformability/WgtImgUpdateEntryFormAbility.ts
    import { Want } from '@kit.AbilityKit';
@@ -29,7 +29,7 @@ To display local images or images downloaded from the network on a widget, you n
 3. Implement local file refresh in the onAddForm lifecycle callback of WgtImgUpdateEntryFormAbility.
 
    <!-- @[local_file_refresh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/wgtimgupdateentryformability/WgtImgUpdateEntryFormAbility.ts) --> 
-
+   
    ``` TypeScript
    // entry/src/main/ets/wgtimgupdateentryformability/WgtImgUpdateEntryFormAbility.ts
    const TAG: string = 'WgtImgUpdateEntryFormAbility';
@@ -72,7 +72,7 @@ To display local images or images downloaded from the network on a widget, you n
 4. Implement network file refresh in the onFormEvent lifecycle callback of WgtImgUpdateEntryFormAbility.
 
    <!-- @[network_file_refresh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/wgtimgupdateentryformability/WgtImgUpdateEntryFormAbility.ts) --> 
-
+   
    ``` TypeScript
    // entry/src/main/ets/wgtimgupdateentryformability/WgtImgUpdateEntryFormAbility.ts
    const TAG: string = 'WgtImgUpdateEntryFormAbility';
@@ -90,8 +90,8 @@ To display local images or images downloaded from the network on a widget, you n
        let formInfo: formBindingData.FormBindingData = formBindingData.createFormBindingData(param);
        formProvider.updateForm(formId, formInfo);
    
-       // Note: After being started with the triggering of the lifecycle callback, the FormExtensionAbility can run in the background for only 5 seconds.
-       // When possible, limit the size of the image to download. If an image cannot be downloaded within 5 seconds, it will not be updated to the widget page.
+       // Note: FormExtensionAbility is started when a lifecycle callback is triggered and can stay in the background for only 10 seconds.
+       // Download small files that can be downloaded quickly. If the download is not completed within 10 seconds, the network image cannot be refreshed to the widget page this time.
        let netFile =
          'https://cn-assets.gitee.com/assets/mini_app-e5eee5a21c552b69ae6bf2cf87406b59.jpg';
        // Specify the URL of the image to download.
@@ -160,7 +160,7 @@ To display local images or images downloaded from the network on a widget, you n
 5. Display the widget content passed from WgtImgUpdateEntryFormAbility on the widget page through the backgroundImage attribute.
 
    <!-- @[widget_image_update_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetimageupdate/pages/WidgetImageUpdateCard.ets) --> 
-
+   
    ``` TypeScript
    // entry/src/main/ets/widgetimageupdate/pages/WidgetImageUpdateCard.ets
    let storageWidgetImageUpdate = new LocalStorage();

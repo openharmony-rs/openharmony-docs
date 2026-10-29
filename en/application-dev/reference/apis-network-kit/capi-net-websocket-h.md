@@ -6,7 +6,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=66333f405b8ba85b102d9221d24e54901f6cfbf8 translatedAt=2026-06-25T01:49:39.175Z pushedAt=2026-06-26T03:00:41.278Z -->
+<!-- md-trans-meta sourceCommit=665fb1cdc433986b650f04e3483e40ef553c2bca translatedAt=2026-09-28T01:09:29.973Z pushedAt=2026-10-09T01:39:50.670Z -->
 
 ## Overview
 
@@ -149,7 +149,7 @@ Sends data from the WebSocket client to the server.
 | -- | -- |
 | [struct WebSocket](capi-netstack-websocket.md) *client | WebSocket client.|
 | char *data |   Data sent by the WebSocket client.|
-| size_t length | Length of the data sent by the WebSocket client.|
+| size_t length | Length of the data sent by the client. Unit: Byte. |
 
 **Returns**
 
@@ -222,3 +222,4 @@ Releases the WebSocket connection context and resources. Usage:
 | Type| Description|
 | -- | -- |
 | int | **0** if the operation is successful; a non-0 value otherwise. For details about the return values, see **OH_Websocket_ErrCode**.|
+

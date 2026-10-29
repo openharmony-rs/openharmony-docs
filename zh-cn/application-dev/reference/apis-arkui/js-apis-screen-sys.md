@@ -3,7 +3,7 @@
 <!--Subsystem: Window-->
 <!--Owner: @oh_wangxk-->
 <!--Designer: @wulong158-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @LiTongguan2026-->
 <!--Adviser: @ge-yafang-->
 
 本模块提供管理屏幕的一些基础能力，包括获取屏幕对象，监听屏幕变化，创建和销毁虚拟屏幕等。适用于多屏显示管理、投屏应用等场景，可帮助开发者统一管理所有[物理屏](../../displaymanager/display-terminology.md#物理屏)，提升多屏协同体验和显示能力。

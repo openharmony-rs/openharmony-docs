@@ -3,9 +3,10 @@
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @enjoy_sunshine-->
-<!--Designer: @chengguohong; @tangjia15-->
+<!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=14ca614ebb030bf413b2d8393352ad7521a1d1b9 translatedAt=2026-10-09T13:09:50.078Z pushedAt=2026-10-10T07:09:25.221Z -->
 
 The OPP module provides the Bluetooth-based file transfer functions, including sending files, receiving files, and obtaining the file transfer progress.
 
@@ -196,7 +197,7 @@ try {
 } catch (err) {
       console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 } finally {
-  // Close the file descriptor after file receiving is complete. 
+  // Close the file descriptor after file receiving is complete.  
   if (file) {
     fs.close(file.fd);
   }

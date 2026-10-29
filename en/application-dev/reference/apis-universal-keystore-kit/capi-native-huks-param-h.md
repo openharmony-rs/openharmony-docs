@@ -6,19 +6,17 @@
 <!--Designer: @HighLowWorld-->
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=00a2027b3e1aa103a8a9ca9bc16da3483980026c translatedAt=2026-10-12T08:40:04.106Z pushedAt=2026-10-13T06:55:17.706Z -->
 
 ## Overview
 
-Provides APIs for constructing, using, and destroying a parameter set.
+Provides APIs for constructing, using, and freeing a parameter set.
 
 **File to include**: <huks/native_huks_param.h>
 
 **Library**: libhuks_ndk.z.so
 
-**System capability:**
-
-- API version 20+: SystemCapability.Security.Huks.Core
-- API version 9-19: SystemCapability.Security.Huks
+**System capability:** SystemCapability.Security.Huks.Core
 
 **Since**: 9
 
@@ -30,14 +28,14 @@ Provides APIs for constructing, using, and destroying a parameter set.
 
 | Name| Description|
 | -- | -- |
-| [struct OH_Huks_Result OH_Huks_InitParamSet(struct OH_Huks_ParamSet **paramSet)](#oh_huks_initparamset) | Initializes a parameter set. No parameter information is required, and the default available memory space is allocated to the parameter set. The initialized parameter set needs to be released by using [OH_Huks_FreeParamSet](capi-native-huks-param-h.md#oh_huks_freeparamset). To add parameters to a parameter set, you need to use [OH_Huks_AddParams](capi-native-huks-param-h.md#oh_huks_addparams) to add parameters and use [OH_Huks_BuildParamSet](capi-native-huks-param-h.md#oh_huks_buildparamset) to construct the parameter set.|
+| [struct OH_Huks_Result OH_Huks_InitParamSet(struct OH_Huks_ParamSet **paramSet)](#oh_huks_initparamset) | Initializes a parameter set. No parameter information is required, and the default available memory space is allocated to the parameter set. The initialized parameter set needs to be freed by using [OH_Huks_FreeParamSet](capi-native-huks-param-h.md#oh_huks_freeparamset). To add parameters to a parameter set, you need to use [OH_Huks_AddParams](capi-native-huks-param-h.md#oh_huks_addparams) to add parameters and use [OH_Huks_BuildParamSet](capi-native-huks-param-h.md#oh_huks_buildparamset) to construct the parameter set.|
 | [struct OH_Huks_Result OH_Huks_AddParams(struct OH_Huks_ParamSet *paramSet, const struct OH_Huks_Param *params, uint32_t paramCnt)](#oh_huks_addparams) | Adds parameters to a parameter set. After the parameters are added, use [OH_Huks_BuildParamSet](capi-native-huks-param-h.md#oh_huks_buildparamset) to construct a parameter set.|
 | [struct OH_Huks_Result OH_Huks_BuildParamSet(struct OH_Huks_ParamSet **paramSet)](#oh_huks_buildparamset) | Constructs a parameter set. After [OH_Huks_InitParamSet](capi-native-huks-param-h.md#oh_huks_initparamset) is called to initialize the parameter set and [OH_Huks_AddParams](capi-native-huks-param-h.md#oh_huks_addparams) is called to add parameters, serialize the parameter set and copy the data of the BLOB type to the adjacent memory area at the end of the **paramSet** structure.|
 | [void OH_Huks_FreeParamSet(struct OH_Huks_ParamSet **paramSet)](#oh_huks_freeparamset) | Frees a parameter set. This function frees the memory allocated by [OH_Huks_InitParamSet](capi-native-huks-param-h.md#oh_huks_initparamset).|
 | [struct OH_Huks_Result OH_Huks_CopyParamSet(const struct OH_Huks_ParamSet *fromParamSet, uint32_t fromParamSetSize, struct OH_Huks_ParamSet **paramSet)](#oh_huks_copyparamset) | Copies a parameter set (deep copy).|
 | [struct OH_Huks_Result OH_Huks_GetParam(const struct OH_Huks_ParamSet *paramSet, uint32_t tag, struct OH_Huks_Param **param)](#oh_huks_getparam) | Obtains a parameter from a parameter set.|
 | [struct OH_Huks_Result OH_Huks_FreshParamSet(struct OH_Huks_ParamSet *paramSet, bool isCopy)](#oh_huks_freshparamset) | Refreshes the [OH_Huks_Blob](capi-hukstypeapi-oh-huks-blob.md) data in the parameter set.|
-| [struct OH_Huks_Result OH_Huks_IsParamSetTagValid(const struct OH_Huks_ParamSet *paramSet)](#oh_huks_isparamsettagvalid) | Checks whether the parameters in a parameter set are valid.|
+| [struct OH_Huks_Result OH_Huks_IsParamSetTagValid(const struct OH_Huks_ParamSet *paramSet)](#oh_huks_isparamsettagvalid) | Checks whether the parameters in a parameter set are valid and whether there are duplicates.|
 | [struct OH_Huks_Result OH_Huks_IsParamSetValid(const struct OH_Huks_ParamSet *paramSet, uint32_t size)](#oh_huks_isparamsetvalid) | Checks whether a parameter set is of the valid size.|
 | [struct OH_Huks_Result OH_Huks_CheckParamMatch(const struct OH_Huks_Param *baseParam, const struct OH_Huks_Param *param)](#oh_huks_checkparammatch) | Checks whether two parameters are the same.|
 | [void OH_Huks_FreeKeyAliasSet(struct OH_Huks_KeyAliasSet *keyAliasSet)](#oh_huks_freekeyaliasset) | Frees a key alias set.|
@@ -52,7 +50,7 @@ struct OH_Huks_Result OH_Huks_InitParamSet(struct OH_Huks_ParamSet **paramSet)
 
 **Description**
 
-Initializes a parameter set. No parameter information is required, and the default available memory space is allocated to the parameter set. The initialized parameter set needs to be released by using [OH_Huks_FreeParamSet](capi-native-huks-param-h.md#oh_huks_freeparamset). To add parameters to a parameter set, you need to use [OH_Huks_AddParams](capi-native-huks-param-h.md#oh_huks_addparams) to add parameters and use [OH_Huks_BuildParamSet](capi-native-huks-param-h.md#oh_huks_buildparamset) to construct the parameter set.
+Initializes a parameter set. No parameter information is required, and the default available memory space is allocated to the parameter set. The initialized parameter set needs to be freed by using [OH_Huks_FreeParamSet](capi-native-huks-param-h.md#oh_huks_freeparamset). To add parameters to a parameter set, you need to use [OH_Huks_AddParams](capi-native-huks-param-h.md#oh_huks_addparams) to add parameters and must use [OH_Huks_BuildParamSet](capi-native-huks-param-h.md#oh_huks_buildparamset) to construct the parameter set.
 
 **Since**: 9
 
@@ -153,7 +151,7 @@ Copies a parameter set (deep copy).
 | Name| Description|
 | -- | -- |
 | [const struct OH_Huks_ParamSet](capi-hukstypeapi-oh-huks-paramset.md) *fromParamSet | Pointer to the parameter set to copy.|
-| uint32_t fromParamSetSize | Size of the memory occupied by the copied parameter set.|
+| uint32_t fromParamSetSize | Size of the memory occupied by the parameter set to be copied, in bytes. |
 | [struct OH_Huks_ParamSet](capi-hukstypeapi-oh-huks-paramset.md) **paramSet | Double pointer to the new parameter set generated.|
 
 **Returns**
@@ -221,7 +219,7 @@ struct OH_Huks_Result OH_Huks_IsParamSetTagValid(const struct OH_Huks_ParamSet *
 
 **Description**
 
-Checks whether the parameters in a parameter set are valid.
+Checks whether the parameters in a parameter set are valid and whether there are duplicates.
 
 **Since**: 9
 
@@ -254,7 +252,7 @@ Checks whether a parameter set is of the valid size.
 | Name| Description|
 | -- | -- |
 | [const struct OH_Huks_ParamSet](capi-hukstypeapi-oh-huks-paramset.md) *paramSet | Pointer to the parameter set to check.|
-| uint32_t size | Memory size occupied by the parameter set.|
+| uint32_t size | Memory size occupied by the parameter set, in bytes. |
 
 **Returns**
 
@@ -303,4 +301,6 @@ Frees a key alias set.
 
 | Name| Description|
 | -- | -- |
-| [struct OH_Huks_KeyAliasSet](capi-hukstypeapi-oh-huks-keyaliasset.md) *keyAliasSet | Pointer to the key alias set to be destroyed.|
+| [struct OH_Huks_KeyAliasSet](capi-hukstypeapi-oh-huks-keyaliasset.md) *keyAliasSet | Pointer to the key alias set to be freed.|
+
+

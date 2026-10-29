@@ -6,7 +6,7 @@
 <!--Designer: @ccllee1-->
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
-<!-- md-trans-meta sourceCommit=2845f22b3a6c7c573421bce7ff3e32f73246613d translatedAt=2026-07-20T10:51:34.078Z pushedAt=2026-07-21T08:51:22.436Z -->
+<!-- md-trans-meta sourceCommit=4bad8126d6f63924da12d96cf1b3dfae2cb11cb2 translatedAt=2026-10-10T03:56:04.028Z pushedAt=2026-10-10T06:30:32.501Z -->
 
 Ability Assistant (aa) is a tool used to start applications and test cases. It provides basic application debugging and testing capabilities, for example, starting application components, forcibly stopping processes, and printing application component information.
 
@@ -34,8 +34,8 @@ hdc shell "aa process -b com.example.myapplication -a EntryAbility -p perf-cmd"
 | dump<sup>(deprecated)</sup> |  Prints information about an application component.|
 | force-stop |  Forcibly stops a process based on the bundle name.|
 | test |  Starts the test framework based on the carried parameters.|
-| attach |  Attaches an application to enable it to enter the debugging mode.|
-| detach |  Detaches an application to enable it to exit the debugging mode.|
+| attach |  Attaches an application to enable it to enter the debug mode.|
+| detach |  Detaches an application to enable it to exit the debug mode.|
 | appdebug |  Sets or cancels the waiting-for-debugging state of an application, and obtains the bundle name and persistence flag of an application in the waiting-for-debugging state. The waiting-for-debugging state takes effect only for debugging applications. The setting command of **appdebug** takes effect only for a single application. Once the command is executed repeatedly, the bundle name and persistence flag are replaced with the latest settings.|
 | process | Debugs or optimizes an application. In DevEco Studio, this command is used to integrate debugging and optimization tools.|
 | send-memory-level | Triggers the **onMemoryLevel** lifecycle callback of a process based on its PID and memory usage level.  |
@@ -55,9 +55,9 @@ Starts an application component. The target component can be the PageAbility and
 ```bash
 # Start an ability explicitly.
 # To enable an application clone, use [--pi ohos.extra.param.key.appCloneIndex <unsigned integer-value>] to specify the index of the application clone.
- [-d <deviceId>] [-a <abilityName> -b <bundleName>] [-m <moduleName>] [-u <userId>] [-c] [-E] [-D] [-R] [-S] [-W] [--pi <key> <unsigned integer-value>] [--pb <key> <bool-value: true/false/t/f (case-insensitive)] [--ps <key> <value>] [--psn <key>] [--wl <windowLeft>] [--wt <windowTop>] [--wh <windowHeight>] [--ww <windowWidth>] [-p <perf-cmd>]
+[-d <deviceId>] [-a <abilityName> -b <bundleName>] [-m <moduleName>] [-u <userId>] [-c] [-E] [-D] [-R] [-S] [-W] [--pi <key> <unsigned integer-value>] [--pb <key> <bool-value: true/false/t/f (case-insensitive)] [--ps <key> <value>] [--psn <key>] [--wl <windowLeft>] [--wt <windowTop>] [--wh <windowHeight>] [--ww <windowWidth>] [-p <perf-cmd>]
 
-# Implicitly start an ability. If none of the parameters in the command is set, the startup fails.
+# Implicitly launch an ability. If none of the parameters in the command is set, the startup fails.
 aa start [-d <deviceId>] [-U <URI>] [-t <type>] [-A <action>] [-e <entity>] [-u <userId>] [-c] [-D] [-E] [-R] [--pi <key> <unsigned integer-value>] [--pb <key> <bool-value: true/false/t/f (case-insensitive)] [--ps <key> <value>] [--psn <key>] [--wl <windowLeft>] [--wt <windowTop>] [--wh <windowHeight>] [--ww <windowWidth>] [-p <perf-cmd>] 
 ```
 
@@ -87,7 +87,7 @@ aa start [-d <deviceId>] [-U <URI>] [-t <type>] [-A <action>] [-e <entity>] [-u 
   | -E | Whether to display detailed exception information during debugging. This parameter is optional. The detailed exception information is displayed when this parameter is passed in.<br>**NOTE**: This parameter is supported since API version 14.|
   | -R | Whether to enable multi-thread error detection during debugging. This parameter is optional. The detection is enabled when this parameter is passed in.<br>**NOTE**: This parameter is supported since API version 14.|
   | -S | Whether to enter the application sandbox during debugging. This parameter is optional. If this parameter is carried, the application sandbox is entered. Otherwise, the application sandbox is not entered.|
-  | -D | Debugging mode. This parameter is optional.       |
+  | -D | Debug mode. This parameter is optional.       |
   | -N | Whether to enable debugging during the startup phase. This parameter is optional.       |
   | -C | Whether to enable ASan debugging. This parameter is optional.       |
   | -p | Optimization mode. This parameter is optional. This command can be customized.       |
@@ -169,7 +169,7 @@ aa start [-d <deviceId>] [-U <URI>] [-t <type>] [-A <action>] [-e <entity>] [-u 
         ```
 
       The following is an example for the UIAbility to obtain input parameters:
-  
+
         ```ts
         import { UIAbility, Want, AbilityConstant } from '@kit.AbilityKit';
         import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -226,7 +226,7 @@ aa stop-service [-d <deviceId>] -a <abilityName> -b <bundleName> [-m <moduleName
   | 10105002 | Failed to obtain ability information. |
 
   **Example**
-  
+
   ```bash
   # Stop a ServiceAbility.
   aa stop-service -a EntryAbility -b com.example.myapplication -m entry
@@ -249,7 +249,7 @@ aa dump -a
   | -------- | -------- | -------- |
   | -h/--help | - | Help information.|
   | -a/--all | - | Application component information in all missions.|
-  | -l/--mission-list | type (All logs are printed if this parameter is left unspecified.)| For better management, the service side maintains four types of MissionLists,<br>as described below:<br>- **NORMAL**: MissionList that is started normally. For example, if A starts B and C, the corresponding MissionList is A->B->C.<br>- **DEFAULT_STANDARD**: If a MissionList is damaged, missions with the launch type set to **multiton** are removed to this MissionList. The Missions in it are not associated with each other.<br>- **DEFAULT_SINGLE**: If a MissionList is damaged, missions with the launch type set to **singleton** are removed to this MissionList. The Missions in it are not associated with each other.<br>- **LAUNCHER**: MissionList for launcher abilities.|
+  | -l/--mission-list | type (all by default) | To facilitate task chain management, the service side maintains four types of task chains.<br/>Possible values:<br/>-&nbsp;NORMAL: a task chain started normally (for example, if A starts B and B starts C, the corresponding task chain is A->B->C)<br/>-&nbsp;DEFAULT_STANDARD: tasks in a broken task chain whose startup mode is `multiton` are placed in this task chain, and these tasks are not associated with each other<br/>-&nbsp;DEFAULT_SINGLE: tasks in a broken task chain whose startup mode is `singleton` are placed in this task chain, and these tasks are not associated with each other<br/>-&nbsp;LAUNCHER: the task chain of the launcher |
   | -e/--extension | elementName | Extended component information.|
   | -u/--userId | UserId | Mission stack information of a specified user ID. This parameter must be used together with other parameters. Example commands: **aa dump -a -u 100** and **aa dump -d -u 100**.|
   | -d/--data | - | DataAbility information.|
@@ -265,7 +265,7 @@ aa dump -a
   | 10105001 | Failed to connect to the ability service. |
 
   **Example**
-  
+
   ```bash
   # Print the application component information in all missions.
   aa dump -a
@@ -273,7 +273,7 @@ aa dump -a
 
   ![aa-dump-a](figures/aa-dump-a.png)
 
-  
+
   ```bash
   # Print all task chains.
   aa dump -l
@@ -281,7 +281,7 @@ aa dump -a
 
   ![aa-dump-l](figures/aa-dump-l.png)
 
-  
+
   ```bash
   # Print the detailed information about an application component.
   aa dump -i 105
@@ -351,7 +351,7 @@ aa test -b <bundleName> [-m <module-name>] [-p <package-name>] [-s class <test-c
   | -s timeout | Timeout interval for executing the test case, in ms. The default value is 5000. This parameter is optional.|
   | -s \<any-key> | Any key-value pair. This parameter is optional.|
   | -w | Test running time, in ms. This parameter is optional.|
-  | -D | Debugging mode. This parameter is optional.|
+  | -D | Debug mode. This parameter is optional.|
 
   **Return value**
 
@@ -379,7 +379,7 @@ aa test -b <bundleName> [-m <module-name>] [-p <package-name>] [-s class <test-c
 
 ## attach
 
-Attaches an application to enable it to enter the debugging mode.
+Attaches an application to enable it to enter the debug mode.
 
 ```bash
 aa attach -b <bundleName>
@@ -393,7 +393,7 @@ aa attach -b <bundleName>
 
   **Return value**
 
-  "attach app debug successfully." is returned if the application enters the debugging mode; "fail: unknown option." and the help information are returned if the specified parameter is invalid.
+  "attach app debug successfully." is returned if the application enters the debug mode; "fail: unknown option." and the help information are returned if the specified parameter is invalid.
 
   **Error codes**
 
@@ -408,13 +408,13 @@ aa attach -b <bundleName>
   **Example**
 
   ```bash
-  # Attach an application to enable it to enter the debugging mode.
+  # Attach an application to enable it to enter the debug mode.
   aa attach -b com.example.myapplication
   ```
 
 ## detach
 
-Detaches an application to enable it to exit the debugging mode.
+Detaches an application to enable it to exit the debug mode.
 
 ```bash
 aa detach -b <bundleName>
@@ -428,7 +428,7 @@ aa detach -b <bundleName>
 
   **Return value**
 
-  "detach app debug successfully." is returned if the application exits the debugging mode; "fail: unknown option." and the help information are returned if the specified parameter is invalid.
+  "detach app debug successfully." is returned if the application exits the debug mode; "fail: unknown option." and the help information are returned if the specified parameter is invalid.
 
   **Error codes**
 
@@ -443,7 +443,7 @@ aa detach -b <bundleName>
   **Example**
 
   ```bash
-  # Detach an application to enable it to exit the debugging mode.
+  # Detach an application to enable it to exit the debug mode.
   aa detach -b com.example.myapplication
   ```
 
@@ -513,7 +513,7 @@ aa process -b <bundleName> -a <abilityName> [-m <moduleName>] [-p <perf-cmd>] [-
   | -a | Ability name. This parameter is mandatory.|
   | -m | Module name. This parameter is optional.|
   | -p | Optimization mode. This parameter is optional. Either this parameter or **-D** must be specified. This command can be customized.|
-  | -D | Debugging mode. This parameter is optional. Either this parameter or **-p** must be specified. This command can be customized.|
+  | -D | Debug mode. This parameter is optional. Either this parameter or **-p** must be specified. This command can be customized.|
   | -S | Used to enter the application sandbox. This parameter is optional.|
 
   **Return value**
@@ -632,7 +632,7 @@ Check whether the **exported** field of the ability in the **module.json5** file
 The specified ability does not exist.
 
 **Symptom**
- 
+
 The specified ability name does not exist.
 
 **Possible Causes**
@@ -658,7 +658,7 @@ The specified ability is not installed.
 The specified pid does not exist.
 
 **Symptom**
- 
+
 The specified PID does not exist.
 
 **Possible Causes**
@@ -676,7 +676,7 @@ Check whether the process ID specified by the **-p** parameter exists on the dev
 The specified level does not exist.
 
 **Symptom**
- 
+
 The specified memory usage level does not exist.
 
 **Possible Causes**

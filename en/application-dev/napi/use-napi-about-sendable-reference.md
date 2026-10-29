@@ -6,7 +6,7 @@
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=3383cf6b2a36933eae9d88e06bbfad5f09f5363a translatedAt=2026-09-16T03:39:43.649Z pushedAt=2026-09-16T08:26:04.254Z -->
+<!-- md-trans-meta sourceCommit=6904d9490d08f6e95590f9076e80fa522cfa75ba translatedAt=2026-10-13T13:14:06.802Z pushedAt=2026-10-16T06:34:45.044Z -->
 
 OpenHarmony APIs provide the capability of sharing strong references across ArkTS threads in the same process. Unlike **napi_ref**, **napi_sendable_ref** supports operations across ArkTS threads, but also has some restrictions.
 
@@ -287,11 +287,11 @@ You can use the [napi_create_strong_sendable_reference](../reference/native-lib/
    const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
 
    /**
-   * Defines the event handler to be called when the worker thread receives a message sent by the host thread.
-   * The event handler is executed in the worker thread.
-   *
-   * @param event message data
-   */
+    * Defines the event handler called when the Worker thread receives a message sent by the host thread.
+    * This event handler is executed in the Worker thread.
+    *
+    * @param event Message data.
+    */
    workerPort.onmessage = (event: MessageEvents) => {
       let data: string = event.data;
       hilog.info(DOMAIN, 'testTag', data);
@@ -301,21 +301,25 @@ You can use the [napi_create_strong_sendable_reference](../reference/native-lib/
    };
 
    /**
-   * Defines the event handler to be called when the worker receives a message that cannot be deserialized.
-   * The event handler is executed in the worker thread.
-   *
-   * @param event message data
-   */
+    * Defines the event handler called when the Worker thread receives a message that cannot be deserialized.
+    * This event handler is executed in the Worker thread.
+    *
+    * @param event Message data.
+    */
    workerPort.onmessageerror = (event: MessageEvents) => {
+      // Reserved API.
+      console.error('onmessageerror:' + event.data);
    };
 
    /**
-   * Defines the event handler to be called when an exception occurs during worker execution.
-   * The event handler is executed in the worker thread.
-   *
-   * @param event error message
-   */
+    * Defines the event handler called when an exception occurs during Worker execution.
+    * This event handler is executed in the Worker thread.
+    *
+    * @param event Error information.
+    */
    workerPort.onerror = (event: ErrorEvent) => {
+      // Reserved API.
+      console.error('onerror:' + event.message);
    };
    ```
 

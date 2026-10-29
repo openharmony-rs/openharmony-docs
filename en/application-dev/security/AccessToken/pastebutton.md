@@ -6,6 +6,7 @@
 <!--Designer: @linshuqing; @hehehe-li-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=44cc3978a01b17856a98c72090b06049c02dfb64 translatedAt=2026-10-09T01:09:30.887Z pushedAt=2026-10-09T07:42:47.284Z -->
 
 The **PasteButton** component comes with the pasteboard (also called clipboard) read privilege, which allows an application to silently read data from the pasteboard.
 
@@ -15,7 +16,7 @@ For example, if a user needs to copy a verification code (received from the Mess
 
 The following figure shows the effect of **PasteButton** component.
 
-![](figures/PasteButton_effect.gif)
+<!--Del-->   <!--DelEnd-->
 
 ## Constraints
 
@@ -30,21 +31,21 @@ The following figure shows the effect of **PasteButton** component.
 The following procedure shows how to make entering a verification code easier: After **Paste** is tapped, the text is pasted to the text box. See the figure above.
 
 1. Import the dependency **pasteboard**.
-   
+
    ```ts
    import { pasteboard } from '@kit.BasicServicesKit';
    ```
 
 2. Add the text boxes and **PasteButton** component.
-   
+
    **PasteButton** is a button-like component consisting of an icon, text, and background. The background is mandatory, and at least one of the icon and text must be selected. The icon and text cannot be customized. You can only select from the existing options.
 
    When using the API for creating a security component, you can determine whether to pass in parameters. If no parameter is passed in, a component with default icon, text, and background is created. If parameters are passed in, the component is created based on the specified parameters and elements that are not configured are not contained.
 
    The following example uses the default parameters. For details, see [PasteButton](../../reference/apis-arkui/arkui-ts/ts-security-components-pastebutton.md). In addition, all security components inherit the [Security Component Universal Attributes](../../reference/apis-arkui/arkui-ts/ts-securitycomponent-attributes.md), which can be used to customize styles.
-   
+
    <!-- @[use_paste_button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/SecurityComponent/entry/src/main/ets/securitycomponent/pages/Paste.ets) -->    
-   
+
    ``` TypeScript
    import { pasteboard, BusinessError } from '@kit.BasicServicesKit';
    
@@ -80,3 +81,4 @@ The following procedure shows how to make entering a verification code easier: A
      }
    }
    ```
+

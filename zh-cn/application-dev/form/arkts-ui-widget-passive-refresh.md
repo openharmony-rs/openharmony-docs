@@ -44,7 +44,7 @@
 
 - 下次刷新：表示指定卡片的下一次刷新时间。可以通过调用[setFormNextRefreshTime](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formprovidersetformnextrefreshtime)接口来实现。最短刷新时间为5分钟。例如，可以设置卡片在调用接口5分钟后刷新。
 
-  <!-- @[set_form_next_refreshtime](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/updatebytimeformability/UpdateByTimeFormAbility.ts) -->
+  <!-- @[set_form_next_refreshtime](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/updatebytimeformability/UpdateByTimeFormAbility.ts) --> 
   
   ``` TypeScript
   // entry/src/main/ets/updatebytimeformability/UpdateByTimeFormAbility.ts
@@ -76,7 +76,7 @@
               `Failed to setFormNextRefreshTime. Code: ${err.code}, message: ${err.message}`);
             return;
           } else {
-            hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in setFormNextRefreshTiming.');
+            hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in setFormNextRefreshTime.');
           }
         });
       } catch (err) {

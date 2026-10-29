@@ -2,10 +2,11 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yylong; @rongShao-Z-->
-<!--Designer: @yylong; @zcdqs-->
+<!--Owner: @rongShao-Z-->
+<!--Designer: @yangcan18-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=5575f73d326abf87cc6dda50f211ca34472d98c2 translatedAt=2026-10-15T10:47:56.011Z pushedAt=2026-10-16T03:19:13.243Z -->
 
 > **NOTE**
 >

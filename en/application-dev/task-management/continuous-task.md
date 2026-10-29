@@ -6,6 +6,7 @@
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
 <!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=f78aeba97990ac3971cd21695e65fbdd4cf55ea0 translatedAt=2026-10-08T08:57:35.039Z pushedAt=2026-10-08T10:47:11.963Z -->
 
 ## Overview
 
@@ -24,16 +25,16 @@ The table below lists the types of continuous tasks, which are used in various s
 **Table 1** Continuous task types
 | Name| Description| Item| Example Scenario|
 | -------- | -------- | -------- | -------- |
-| DATA_TRANSFER | Data transfer.| dataTransfer | Non-hosting uploading and downloading operations, like those occurring in the background of a web browser for data transfer.|
-| AUDIO_PLAYBACK | Audio and video playback.<br> **Note:** Availble in atomic services since API version 12.| audioPlayback | Audio and video playback in the background; audio and video casting.|
-| AUDIO_RECORDING | Recording.| audioRecording | Recording and screen capture in the background.|
-| LOCATION | Positioning and navigation.<br>**Note:** Availble in atomic services since API version 26.0.0.| location | Positioning and navigation.|
+| DATA_TRANSFER | Data transfer.| dataTransfer | Unmanaged uploading and downloading operations, like those occurring in the background of a web browser for data transfer.|
+| AUDIO_PLAYBACK | Audio/Video playback.<br> **Note:** Available in atomic services since API version 12.| audioPlayback | Audio/Video playback in the background; audio and video casting.|
+| AUDIO_RECORDING | Recording.| audioRecording | Audio recording and screen recording when the app moves to the background.|
+| LOCATION | Positioning and navigation.<br>**Note:** Available in atomic services since API version 26.0.0.| location | Positioning and navigation.|
 | BLUETOOTH_INTERACTION | Bluetooth-related services.| bluetoothInteraction | An application transitions into the background during the process of file transfer using Bluetooth.|
-| MULTI_DEVICE_CONNECTION | Multi-device connection.<br> **Note:** Availble in atomic services since API version 12.| multiDeviceConnection | Distributed service connection and casting.|
+| MULTI_DEVICE_CONNECTION | Multi-device connection.<br> **Note:** Available in atomic services since API version 12.| multiDeviceConnection | Distributed service connection and casting.|
 | <!--DelRow-->WIFI_INTERACTION | WLAN-related services (for system applications only).| wifiInteraction  | An application transitions into the background during the process of file transfer using WLAN.|
-| VOIP | Audio and video calls.<br>**Note**: It is supported since API version 13.| voip  | Chat applications (with audio and video services) transition into the background during audio and video calls.|
-| TASK_KEEPING | Computing tasks.<br>**Note**: Starting from API version 21, this capability is made available to applications on non‑PC/2‑in‑1 devices that have obtained the ACL permission [ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system). For PC/2‑in‑1 devices, applications are not required to apply for the ACL permission. In API version 20 and earlier versions, this task type is limited to PCs/2-in-1 devices only.| taskKeeping  | Antivirus software is running.|
-| MODE_AV_PLAYBACK_AND_RECORD | Multimedia services.<br>**Note**: It is supported since API version 22.<br>It is availble in atomic services since API version 26.0.0.| avPlaybackAndRecord  | When an application is in the background during audio/video playback, recording, or audio/video calls, you can select either this task type or the corresponding continuous task type for these three scenarios. For example, in the audio/video playback scenario, you can choose either **AUDIOPLAYBACK** or **MODE_AVPLAYBACK_AND_RECORD**.|
+| VOIP | Audio and video calls.<br>**Note**: It is supported since API version 13.| voip  | Some chat applications (with audio and video services) transition into the background during audio and video calls.|
+| TASK_KEEPING | Computing tasks.<br>**Note**: Starting from API version 21, this capability is made available to applications on non‑PCs/2‑in‑1 devices that have obtained the ACL permission [ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system). For PCs/2‑in‑1 devices, applications are not required to request the ACL permission. In API version 20 and earlier versions, this task type is limited to PCs/2-in-1 devices only.| taskKeeping  | Antivirus software is running.|
+| MODE_AV_PLAYBACK_AND_RECORD | Multimedia services.<br>**Note**: It is supported since API version 22.<br>It is available in atomic services since API version 26.0.0.| avPlaybackAndRecord  | When an application is in the background during audio/video playback, recording, or audio/video calls, you can select either this task type or the corresponding continuous task type for these three scenarios. For example, in the audio/video playback scenario, you can choose either **AUDIO_PLAYBACK** or **MODE_AV_PLAYBACK_AND_RECORD**.|
 | MODE_SPECIAL_SCENARIO_PROCESSING | Special scenarios (available only for smartphones, tablets, PCs/2-in-1 devices).<br>**Note**: It is supported since API version 22.| specialScenarioProcessing  | Exporting media files in the background, using a third‑party casting component to cast in the background, and providing indoor sports scenarios when the application is running in the background|
 | MODE_NEARLINK | NearLink service.<br>**Since**: 26.0.0 | nearlink | An application transitions into the background during the process of file transfer using NearLink.|
 
@@ -51,7 +52,7 @@ Description of **AUDIO_PLAYBACK**:
 
 - In addition to the aforementioned playback types, when an application needs to run other user-perceptible tasks in the background for a long time, it must request continuous tasks of the **AUDIO_PLAYBACK** type, without accessing AVSession.
 
-- If the application does not comply with the preceding access specifications, it will be muted and suspended by the system when switched to the background. It can resume playback only when it returns to the foreground.
+- If the application does not comply with the preceding access specifications, it will be muted and frozen by the system when switched to the background. It can resume playback only when it returns to the foreground.
 
 - Starting from API version 20, if a continuous task of the **AUDIO_PLAYBACK** type is requested without being connected to AVSession, a notification will appear in the notification panel once the task is successfully requested. Once AVSession is connected, the background task module will no longer send notifications; instead, notifications will be sent by AVSession. For API version 19 and earlier versions, the background task module does not display notifications in the notification panel.
 
@@ -68,13 +69,13 @@ If an application applies only for a Bluetooth continuous task, it will be cance
 3. After successfully scanning the device, the application needs to proactively restore the Bluetooth connection via [connect](../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#connect). The system then reactivates the suspended continuous task and keeps it alive.
 4. Starting from API version 26.0.0, within a certain period after a [BR](../connectivity/bluetooth/terminology.md#br) Bluetooth disconnection (the exact duration depends on system load and can be up to ten minutes), you can use the [onAclStateChange](../reference/apis-connectivity-kit/js-apis-bluetooth-connection.md#connectiononaclstatechange) API to listen for ACL connection state changes and re‑establish keep‑alive.
 
-Description of the MODE_NEARLINK (NearLink service):
+Description of the MODE_NEARLINK (NearLink service): 
 
-If an application applies only for a NearLink continuous task, it will be canceled upon NearLink disconnection caused by device distance. To ensure a seamless NearLink connection experience, within 1 to 10 minutes after disconnection (the exact duration depends on system load), the system allows applications that meet the following conditions to re‑establish keep‑alive upon reconnection, enabling them to run for an extended period in the background.
- 
-1. Register the event of suspending the listening of a continuous task so that the task is marked as suspended instead of being immediately canceled by the system. For details, see [on('continuousTaskSuspend')](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanageroncontinuoustasksuspend20).
-2. To ensure timely connection recovery after a NearLink disconnection, the local device application subscribes to NearLink scan results after the connection is established. Upon disconnection, the local device actively initiates NearLink scanning, while the peer device sends NearLink advertisements.
-3. After successfully scanning for the peer device, the local device needs to initiate a connection request to the peer device. If there are no other service scanning requirements, the local device can stop NearLink scanning.
+If an application applies only for a NearLink continuous task, it will be canceled upon NearLink disconnection caused by device distance. To ensure a seamless NearLink connection experience, within 1 to 10 minutes after disconnection (the exact duration depends on system load), the system allows applications that meet the following conditions to re‑establish keep‑alive upon reconnection, enabling them to run for an extended period in the background. 
+
+1. Register the event of suspending the listening of a continuous task so that the task is marked as suspended instead of being immediately canceled by the system. For details, see [on('continuousTaskSuspend')](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanageroncontinuoustasksuspend20). 
+2. To ensure that the connection can be restored in time after a NearLink disconnection, the local device app subscribes to NearLink scan results through [onDeviceFound](../reference/apis-connectivity-kit/js-apis-nearlink-scan.md#scanondevicefound) after the NearLink connection is established. After a disconnection, the local device actively initiates a NearLink scan through [startScan](../reference/apis-connectivity-kit/js-apis-nearlink-scan.md#scanstartscan), while the peer device sends NearLink advertising through [startAdvertising](../reference/apis-connectivity-kit/js-apis-nearlink-advertising.md#advertisingstartadvertising). 
+3. After successfully scanning for the peer device, the local device needs to initiate a [connect](../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md#connect) request to the peer device. If there are no other service scanning requirements, the local device can stop NearLink scanning via [stopScan](../reference/apis-connectivity-kit/js-apis-nearlink-scan.md#scanstopscan).
 
 Description of continuous task notifications:
 
@@ -125,7 +126,7 @@ The table below uses promise as an example to describe the APIs used for develop
 
 The following walks you through how to request a continuous task for audio and video playback to implement the following functionalities:
 
-- Click the **Request continuous task** button. The app successfully applies for a continuous task of the audio and video playback type, and the related notification is displayed in the notification bar.
+- Click the **Request continuous task** button. The app successfully applies for a continuous task of the audio and video playback type, and the related notification is displayed in the notification panel.
 
 - When a user touches **Cancel Continuous Task**, the application cancels the continuous task, and the notification message is removed.
 
@@ -138,7 +139,7 @@ The following walks you through how to request a continuous task for audio and v
    Declare the type of the continuous task for the target UIAbility under **abilities** in the [module.json5 file](../quick-start/module-configuration-file.md). Set the corresponding [configuration item](continuous-task.md#use-cases) in the configuration file.
 
    <!-- @[continuous_task_configure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/ContinuousTask/entry/src/main/module.json5) -->
-   
+
    ``` JSON5
    "module": {
      // ...
@@ -159,12 +160,12 @@ The following walks you through how to request a continuous task for audio and v
    ```
 
 3. Import the modules.
-   
+
    Import the modules related to continuous tasks: @ohos.resourceschedule.backgroundTaskManager and @ohos.app.ability.wantAgent. Import other modules based on the project requirements.
     <!--RP1-->
 
     <!-- @[continuous_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/ContinuousTask/entry/src/main/ets/pages/audioPlayback/AudioPlaybackIndex.ets) -->
-    
+
     ``` TypeScript
     import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
     import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -179,13 +180,13 @@ The following walks you through how to request a continuous task for audio and v
 4. Request and cancel a continuous task.
 
    The code snippet below shows how an application requests and cancels a continuous task for itself.
-   
+
    Since API version 15, you can use [on('continuousTaskCancel')](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanageroncontinuoustaskcancel15) to listen for the cancellation of a continuous task.
-   
+
    Since API version 16, you can use [BackgroundSubMode](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundsubmode16) to implement the Bluetooth car key function.
 
    <!-- @[continuous_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/ContinuousTask/entry/src/main/ets/pages/audioPlayback/AudioPlaybackIndex.ets) -->
-   
+
    ``` TypeScript
    function callback(info: backgroundTaskManager.ContinuousTaskCancelInfo) {
      // ID of a continuous task.
@@ -355,13 +356,13 @@ The following walks you through how to request a continuous task for audio and v
 5. Request and cancel a continuous task using **async**/**await**.
 
    The code snippet below shows how an application requests and cancels a continuous task using **async**/**await** for itself.
-   
+
    Since API version 15, you can use [on('continuousTaskCancel')](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanageroncontinuoustaskcancel15) to listen for the cancellation of a continuous task.
-   
+
    Since API version 16, you can use [BackgroundSubMode](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundsubmode16) to implement the Bluetooth car key function.
 
    <!-- @[continuous_task_await](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/ContinuousTask/entry/src/main/ets/pages/audioPlayback/IndexAsyncAndAwait.ets) -->
-   
+
    ``` TypeScript
    @Entry
    @Component
@@ -475,9 +476,9 @@ The following walks you through how to request a continuous task for audio and v
    <!--Del-->
 
    The code snippet below shows how an application requests a continuous task across devices or applications. When executing a continuous task in the background across devices or applications, you can create and run a **UIAbility** in the background via the **Call** method. For details, see [Using Cross-Device Call](../application-models/hop-multi-device-collaboration.md#using-cross-device-call).
-   
+
    <!-- @[continuous_task_call](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/ContinuousTask/entry/src/main/ets/MainAbility/BgTaskAbility.ets) -->
-   
+
    ``` TypeScript
    const MSG_SEND_METHOD: string = 'CallSendMsg';
    
@@ -615,7 +616,7 @@ The following walks you through how to request a continuous task for audio and v
 2. Configure permissions and declare the continuous task type.
 
    Declare the **ohos.permission.KEEP_BACKGROUND_RUNNING** permission in the **config.json** file. For details, see [Declaring Permissions](../security/AccessToken/declare-permissions.md). In addition, declare the continuous task type for the ServiceAbility.
-   
+
    ``` json5
    "module": {
        "package": "com.example.myapplication",
@@ -623,7 +624,7 @@ The following walks you through how to request a continuous task for audio and v
            {
                "backgroundModes": [
                "audioRecording"
-               ], // Background mode
+               ], // Continuous task type.
                "type": "service"  // The ability type is service.
            }
        ],
@@ -636,7 +637,7 @@ The following walks you through how to request a continuous task for audio and v
    ```
 
 3. Import the modules.
-   
+
    ```js
     import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
     import { rpc } from '@kit.IPCKit'
@@ -645,7 +646,7 @@ The following walks you through how to request a continuous task for audio and v
    ```
 
 4. Request and cancel a continuous task. In the ServiceAbility, call [startBackgroundRunning](#available-apis) and [stopBackgroundRunning](#available-apis) to request and cancel a continuous task. Use JavaScript code to implement this scenario.
-  
+
    ```js
     function startContinuousTask() {
       let wantAgentInfo: wantAgent.WantAgentInfo = {
@@ -756,5 +757,3 @@ The following walks you through how to request a continuous task for audio and v
 The following sample is provided to help you better understand how to develop continuous tasks:
 
 - [Continuous Task (ArkTS, API version 9)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/BackGroundTasksKit/ContinuousTask)
-
-<!--no_check-->

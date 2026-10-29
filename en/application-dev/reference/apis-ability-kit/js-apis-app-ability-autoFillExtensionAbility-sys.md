@@ -4,14 +4,15 @@
 <!--Subsystem: Ability-->
 <!--Owner: @hanchen45; @Luobniz21-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=c920da5cfd564683d69f2c2c17a74e191ade8d45 translatedAt=2026-10-09T10:49:22.067Z pushedAt=2026-10-10T09:30:18.318Z -->
 
-The AutoFillExtensionAbility module provides APIs for automatically filling in and saving accounts and passwords. It inherits from [ExtensionAbility](js-apis-app-ability-extensionAbility.md).
+The AutoFillExtensionAbility module supports automatic filling and saving of multiple data types such as accounts, passwords, and addresses. It inherits from [ExtensionAbility](js-apis-app-ability-extensionAbility.md).
 
 > **NOTE**
 > 
-> The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version. 
+> The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.  
 >
 > The APIs of this module can be used only in the stage model.
 >
@@ -121,7 +122,7 @@ Called when automatic or manual saving is initiated.
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | session | [UIExtensionContentSession](js-apis-app-ability-uiExtensionContentSession.md)  | Yes| UI content information related to the AutoFillExtensionAbility.|
-| request | [SaveRequest](js-apis-inner-application-autoFillRequest-sys.md#saverequest)  | Yes| Data to be saved.|
+| request | [SaveRequest](js-apis-inner-application-autoFillRequest.md#saverequest)  | Yes | Save request data. |
 | callback | [SaveRequestCallback](js-apis-inner-application-autoFillRequest-sys.md#saverequestcallback)  | Yes| Callback used for the saving request.|
 
 **Example**

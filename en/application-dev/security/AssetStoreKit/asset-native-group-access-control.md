@@ -2,10 +2,11 @@
 
 <!--Kit: Asset Store Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @yhf-->
+<!--Owner: @HarMonkey-->
 <!--Designer: @wkr321_ent-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=d910972754a03f29eabea013ac43af463c14ec75 translatedAt=2026-10-09T01:22:19.973Z pushedAt=2026-10-09T11:32:31.293Z -->
 
 Before managing assets in a group, ensure that you are familiar with the following operations:
 
@@ -212,3 +213,4 @@ static napi_value QueryGroupAssetAttribute(napi_env env, napi_callback_info info
     return ret;
 }
 ```
+

@@ -6,14 +6,20 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=777c15c9d8c75a1677c1c6408af774652fa3dc6e translatedAt=2026-10-09T01:41:26.769Z pushedAt=2026-10-10T02:10:50.730Z -->
 
 You can generate a public key object [PubKey](../../reference/apis-crypto-architecture-kit/capi-cryptoasymkeyapi-oh-cryptopubkey.md) from ECC public key data or obtain the ECC public key data from a public key (**PubKey**) object.
 
-Currently, the system supports only the X.509-certified compressed or uncompressed ECC public key data, which must be complete. The public key data mentioned in this topic is a complete X.509 public key. For details about the operations on point data, see [Converting Compressed or Uncompressed ECC Point Data](crypto-convert-compressed-or-uncompressed-ECC-point.md).
+Currently, only complete public key data in compressed or uncompressed format that complies with the X.509 standard is supported for the ECC algorithm. The public key data here must be a complete X.509 public key. For scenarios where only point data is used, see [ECC Compressed/Uncompressed Point Format Conversion](crypto-convert-compressed-or-uncompressed-ECC-point.md).
 
-For details, see the ECC section of [Asymmetric Key Generation and Conversion Specifications](crypto-asym-key-generation-conversion-spec.md).
+See [Asymmetric Key Generation and Conversion Specifications: ECC](crypto-key-generation-conversion.md#ecc).
 
-<br>You can pass in the string parameter to set the format of the ECC public key to obtain. To obtain a compressed public key that complies with the X.509 standard, pass in **X509|COMPRESSED**. To obtain an uncompressed public key, pass in **X509|UNCOMPRESSED**.
+You can pass in a string parameter to specify the format of the ECC public key data to obtain. To obtain compressed data that complies with the X.509 standard, pass in **"X509|COMPRESSED"**. To obtain uncompressed data, pass in **"X509|UNCOMPRESSED"**.
+
+## Adding the Dynamic Library in the CMake Script
+```txt
+target_link_libraries(entry PUBLIC libohcrypto.so)
+```
 
 ##  Converting Uncompressed Public Key Data to Compressed Public Key Data
 
@@ -21,7 +27,7 @@ For details, see the ECC section of [Asymmetric Key Generation and Conversion Sp
 
    The public key and private key can be passed separately. In this example, the non-compressed public key is passed.
 
-2. Call [OH_CryptoAsymKeyGenerator_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoasymkeygenerator_generate) with the string parameter **'ECC_BrainPoolP256r1'** to create an asymmetric key generator (**OH_CryptoAsymKeyGenerator**) object for a 256-bit ECC key.
+2. Call [OH_CryptoAsymKeyGenerator_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoasymkeygenerator_create) with the string parameter `'ECC_BrainPoolP256r1'` to create an asymmetric key generator (**OH_CryptoAsymKeyGenerator**) with the ECC algorithm and a key length of 256 bits.
 3. Call [OH_CryptoAsymKeyGenerator_Convert](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoasymkeygenerator_convert) and pass the encapsulated [Crypto_DataBlob](../../reference/apis-crypto-architecture-kit/capi-cryptocommonapi-crypto-datablob.md) to generate an asymmetric key object (**OH_CryptoKeyPair**).
 4. Call [OH_CryptoPubKey_Encode](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptopubkey_encode) with the parameter set to **'X509|COMPRESSED'** to obtain the byte stream of the compressed public key data.
 
@@ -31,7 +37,7 @@ For details, see the ECC section of [Asymmetric Key Generation and Conversion Sp
 #include "CryptoArchitectureKit/crypto_common.h"
 #include "CryptoArchitectureKit/crypto_asym_key.h"
 
-OH_Crypto_ErrCode doTestEccDataCovert()
+OH_Crypto_ErrCode doTestEccDataConvert()
 {
     OH_CryptoAsymKeyGenerator *generator = nullptr;
     OH_CryptoKeyPair *keyPair = nullptr;
@@ -73,3 +79,4 @@ OH_Crypto_ErrCode doTestEccDataCovert()
     return ret;
 }
 ```
+

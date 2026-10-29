@@ -5,6 +5,7 @@
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=50f5d66e38b8b4fff9b1e5a462513d4b69c2569d translatedAt=2026-10-12T04:00:37.240Z pushedAt=2026-10-12T06:46:04.264Z -->
 
 The **\<progress>** component is used to provide a progress bar that displays the progress of content loading or operation processing.
 
@@ -29,18 +30,18 @@ In addition to the [universal attributes](js-service-widget-common-attributes.md
 Different types of progress bars support different attributes.
 
 - When the type is **horizontal**, **ring**, or **scale-ring**, the following attributes are supported.
-    | Name| Type| Default Value| Mandatory| Description|
+  | Name| Type| Default Value| Mandatory| Description|
   | -------- | -------- | -------- | -------- | -------- |
   | percent | number | 0 | No| Current progress. The value ranges from 0 to 100.|
-  | secondarypercent(Rich) | number | 0 | No| Secondary progress. The value ranges from 0 to 100.|
+  | secondarypercent | number | 0 | No | Secondary progress. The value ranges from 0 to 100. |
 
 - When the type is **ring** or **scale-ring**, the following attribute is supported.
-    | Name| Type| Default Value| Mandatory| Description|
+  | Name| Type| Default Value| Mandatory| Description|
   | -------- | -------- | -------- | -------- | -------- |
   | clockwise | boolean | true | No| Whether the ring progress bar uses clockwise.|
 
 - When the type is **arc** or **eclipse**, the following attribute is supported.
-    | Name| Type| Default Value| Mandatory| Description|
+  | Name| Type| Default Value| Mandatory| Description|
   | -------- | -------- | -------- | -------- | -------- |
   | percent | number | 0 | No| Current progress. The value ranges from 0 to 100.|
 
@@ -124,3 +125,4 @@ The [universal events](js-service-widget-common-events.md) are supported.
 **4 x 4 widget**
 
 ![progress](figures/progress.png)
+

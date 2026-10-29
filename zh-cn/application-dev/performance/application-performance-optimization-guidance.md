@@ -115,7 +115,7 @@ export struct PageOnePositive {
 
 问题：在aboutToAppear生命周期函数中，运行了业务数据解析和处理等耗时操作，影响了上一页面点击跳转该页面的响应时延。
 
-可以把耗时操作的执行从同步执行改为异步或者延后执行，[提升应用冷启动速度](improve-application-cold-start-speed.md)，比如使用setTimeOut执行耗时操作，示例如下：
+可以把耗时操作的执行从同步执行改为异步或者延后执行，[提升应用冷启动速度](improve-application-cold-start-speed.md)，比如使用setTimeout执行耗时操作，示例如下：
 
 ```typescript
 import { hilog, hiTraceMeter } from '@kit.PerformanceAnalysisKit';
@@ -1566,7 +1566,7 @@ struct PositiveOfOnClick {
 
 ### 使用状态变量组件定位工具分析状态变量关联信息
 
-开发者可以使用[状态变量组件定位工具](state_variable_dfx_pratice.md)获取状态管理相关信息，例如自定义组件拥有的状态变量、状态变量的同步对象和关联组件等，了解状态变量影响UI的范围，写出高性能应用代码。
+开发者可以使用[状态变量组件定位工具实践](state-variable-dfx-practice.md)获取状态管理相关信息，例如自定义组件拥有的状态变量、状态变量的同步对象和关联组件等，了解状态变量影响UI的范围，写出高性能应用代码。
 
 ### 使用常用trace使用指导协助定位性能问题
 

@@ -5,10 +5,10 @@
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=df2388ac9ece670e2be6918a776640e250f776ef translatedAt=2026-06-25T02:36:36.965Z pushedAt=2026-06-25T06:57:19.558Z -->
+<!-- md-trans-meta sourceCommit=132342cdd19e09e8d1c7a964e48a57b6cf30fc8d translatedAt=2026-10-12T12:01:21.326Z pushedAt=2026-10-13T04:58:00.902Z -->
 
 ```c
-typedef struct {...} Camera_OcclusionDetectionResult
+typedef struct Camera_OcclusionDetectionResult {...} Camera_OcclusionDetectionResult
 ```
 
 ## Overview

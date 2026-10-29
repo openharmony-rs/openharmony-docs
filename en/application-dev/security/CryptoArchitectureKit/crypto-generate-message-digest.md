@@ -6,12 +6,13 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=64044667f2ece520228c37a4e282d90b2e014ba4 translatedAt=2026-10-09T01:49:04.153Z pushedAt=2026-10-10T02:36:00.892Z -->
 
 For details about the algorithm specifications, see [Supported Algorithms and Specifications](crypto-generate-message-digest-overview.md#supported-algorithms-and-specifications).
 
 > **NOTE**
 > 
-> Since API version 12, wearable devices support MD operations.
+> Starting from API version 12, lightweight smart wearable devices support message digest computation and operations.
 
 ## How to Develop
 
@@ -32,7 +33,7 @@ The following provides examples of MD operations with different data passing met
 - Example: Pass in the full data to generate an MD using **await**.
 
   <!-- @[message_digest_sha256_single_time_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageDigestComputation/entry/src/main/ets/pages/sha256/singleTime/SingleTimeAsync.ets) -->
-  
+
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
@@ -54,7 +55,7 @@ The following provides examples of MD operations with different data passing met
 - Example: Pass in the full data to generate an MD using a synchronous API.
 
   <!-- @[message_digest_sha256_single_time_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageDigestComputation/entry/src/main/ets/pages/sha256/singleTime/SingleTimeSync.ets) -->
-  
+
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
@@ -85,7 +86,7 @@ The following provides examples of MD operations with different data passing met
 
 - Example: Pass in data by segment to generate an MD using **await**.
   <!-- @[message_digest_sha256_segmentation_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageDigestComputation/entry/src/main/ets/pages/sha256/segmentation/SegmentationAsync.ets) -->
-  
+
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
@@ -113,7 +114,7 @@ The following provides examples of MD operations with different data passing met
 - Example: Pass in data by segment to generate an MD using a synchronous API.
 
   <!-- @[message_digest_sha256_segmentation_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageDigestComputation/entry/src/main/ets/pages/sha256/segmentation/SegmentationSync.ets) -->
-  
+
   ``` TypeScript
   
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';

@@ -5,10 +5,11 @@
 <!--Designer: @fangzhiyuan1-->
 <!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=f78de1dba0b7b24dea276e0921b4436a9b638745 translatedAt=2026-10-10T10:29:35.024Z pushedAt=2026-10-15T01:46:56.971Z -->
 
 ## Overview
 
-Defines the enumerations and APIs of the **Navigation** or **Router** component.
+Defines the enumerations related to the **Navigation** and **Router** components.
 
 **File to include:** <arkui/navigation_router.h>
 
@@ -76,3 +77,5 @@ Enumerates states of [Router](arkts-apis-uicontext-router.md).
 | ARKUI_ROUTER_PAGE_STATE_ON_SHOW = 2 | The page is displayed.|
 | ARKUI_ROUTER_PAGE_STATE_ON_HIDE = 3 | The page is hidden.|
 | ARKUI_ROUTER_PAGE_STATE_ON_BACK_PRESS = 4 | The back button is pressed for the page.|
+
+

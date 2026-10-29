@@ -6,7 +6,7 @@
 <!--Designer: @HighLowWorld-->
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=ec7d2479b6b3839e76a32c0d9bfdf31f7c8310c8 translatedAt=2026-08-17T10:25:51.197Z pushedAt=2026-08-17T11:53:10.236Z -->
+<!-- md-trans-meta sourceCommit=e852a9793c23f1c08716ebd417cc0b132ef00a32 translatedAt=2026-10-12T08:48:27.345Z pushedAt=2026-10-13T06:55:17.716Z -->
 
 This module provides capabilities such as registration and unregistration of external key management extensions, PIN authentication, and authentication status retrieval.
 
@@ -44,6 +44,7 @@ Enumerates the tags used to invoke parameters.
 | HUKS_EXT_CRYPTO_TAG_EXTRA_DATA | HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_BYTES \| 200003    | External data, which indicates the return data in the common query scenario.|
 | HUKS_EXT_CRYPTO_TAG_UID | HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_INT \| 200004    | UID of the caller.|
 | HUKS_EXT_CRYPTO_TAG_PURPOSE | HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_INT \| 200005    | Usage type of the key corresponding to the certificate chain. For details, see [CertificatePurpose](../apis-device-certificate-kit/js-apis-certManager.md#certificatepurpose22).|
+| HUKS_EXT_CRYPTO_TAG_TIMEOUT | HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_UINT \| 200006    | Asynchronous timeout, in seconds, which can be customized by the service logic.<br>**Since:** 26.0.1 |
 | HUKS_EXT_CRYPTO_TAG_RESOURCE_INFO | HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_BYTES \| 200007    | Information required for obtaining the resource ID. The format and content are defined by the vendor.<br>**Since**: 26.0.0<br>**Model restriction:** This API can be used only in the stage model.|
 | HUKS_EXT_CRYPTO_TAG_ABILITY_INFO | HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_BYTES \| 200008    | Indicates the Ability list information related to the custom PIN dialog box of the key management extension. It is registered synchronously when the key management extension is registered. For details, see [provider registration example](../../security/UniversalKeystoreKit/huks-extension-registration-and-unregistration-arkts.md). If a custom dialog box is registered, the custom dialog box can be launched during PIN authentication to perform PIN authentication and other operations.<br>HUKS_EXT_CRYPTO_TAG_ABILITY_INFO<br> 1.abilityName: The length ranges from 1 to 128 bytes.<br> 2.index: Its value is resourceId, and the maximum length is 512 bytes. This field must be unique. It can be empty under a single CryptoExtension. When it is empty, an empty string is transmitted. During search, the UIAbility corresponding to index is matched first. If it does not exist, the UIAbility with an empty index is returned.<br>**Since:** 26.0.0<br>**Model restriction:** This API can be used only in the stage model. |
 | HUKS_EXT_CRYPTO_TAG_BUNDLE_NAME | HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_BYTES \| 200009    | Name of the HAP bundle to which the **CryptoExtensionAbility** belongs.<br>**Since**: 26.0.0<br>**Model restriction:** This API can be used only in the stage model.|
@@ -57,7 +58,7 @@ Defines the type of the param array used for calling the API.
 | Name| Type       | Read-Only| Optional| Description        |
 | ------ | ----------------------------------- | ---- | ---- | ------------ |
 | tag    | [HuksExternalCryptoTag](#huksexternalcryptotag)  | No  | No  | Parameter tag, which is used to distinguish parameters.|
-| value  | boolean\|number\|bigint\|Uint8Array | No  | No  | Value of the tag.|
+| value  | boolean \| number \| bigint \| Uint8Array | No   | No   | Value corresponding to the tag. |
 
 ## HuksExternalErrorInfo
 
@@ -72,7 +73,7 @@ Defines the detailed error information returned by the key management extension 
 | Name| Type| Read-Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
 | errno | number | No| No| Error code returned by the key management extension.<br>- Non-zero value: The key management extension returns detailed error information, and **errno** is the specific error code.<br>- **0**: The key management extension does not return detailed error information, and **errno** is the default value **0**. You need to determine the error cause based on the API error code.|
-| errorDesc | string | No| No| Error description returned by the key management extension. The value of this field is associated with **errno**.<br>- If **errno** is not **0**, the description returned by the key management extension may be an empty string (determined by the extension).<br>- If **errno** is **0**, the value is an empty string.|
+| errorDesc | string | No | No | Error description returned by the key management extension, with a length of 0 to 256 bytes. The value of this field is associated with **errno**:<br>- When **errno** is not **0**: the description returned by the key management extension, which may be an empty string (determined by the extension).<br>- When **errno** is **0**: an empty string. |
 
 ## HuksExternalPinAuthState
 
@@ -101,19 +102,14 @@ To use a custom PIN dialog box, you need to register the **UIAbility** when regi
 3. When the system starts the custom dialog box, it passes the following parameters to you through the **want** API:
 
     - **Action**: string type. When the custom dialog box is started, the **Action** transferred by the **want** API is **"UkeyPINAuth"**.
-
     - **appUid**: number type, transferred through **want.parameters**. The **appUid** field indicates the application ID. You can use this field to isolate applications.
-
     - keyUri: string type. Its value is resourceId, transferred through want.parameters. Indicates the index of the UKey certificate.
-
+  
 4. When implementing **UIAbility**, your application needs to return the corresponding error code based on the specified scenario.
 
     - If the user cancels the operation, [ERROR_OPERATION_CANCELED](../apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatedialogerrorcode) is returned.
-
     - If the certificate or key specified by **keyUri** does not exist, [ERROR_OPERATION_FAILED](../apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatedialogerrorcode) is returned.
-
     - If the parameter format is incorrect, [ERROR_PARAMETER_VALIDATION_FAILED](../apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatedialogerrorcode) is returned.
-
     - In other failure scenarios, the error code [ERROR_GENERIC](../apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatedialogerrorcode) is returned. If the operation is successful, **0** is returned.
 
 **Required permissions**: ohos.permission.CRYPTO_EXTENSION_REGISTER
@@ -162,11 +158,11 @@ function stringToUint8Array(str: string) {
   return new Uint8Array(arr);
 }
 
-const providerName = "testProviderName";
+const providerName = 'testProviderName';
 const extProperties: Array<huksExternalCrypto.HuksExternalCryptoParam> = [
   {
     tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_ABILITY_NAME,
-    value: stringToUint8Array("CryptoExtension")
+    value: stringToUint8Array('CryptoExtension')
   }
 ];
 huksExternalCrypto.registerProvider(providerName, extProperties)
@@ -225,11 +221,11 @@ function stringToUint8Array(str: string) {
   return new Uint8Array(arr);
 }
 
-const providerName = "testProviderName";
+const providerName = 'testProviderName';
 const extProperties: Array<huksExternalCrypto.HuksExternalCryptoParam> = [
   {
     tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_ABILITY_NAME,
-    value: stringToUint8Array("CryptoExtension")
+    value: stringToUint8Array('CryptoExtension')
   }
 ];
 huksExternalCrypto.unregisterProvider(providerName, extProperties)
@@ -251,7 +247,7 @@ Obtains the PIN authentication state. This API uses a promise to return the resu
 | Name  | Type | Mandatory| Description |
 | -------- | ------- | ---- | ----------|
 | resourceId | string | Yes  | Resource ID, which can be obtained through [openAuthorizeDialog](../apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22). The result contains the resource ID.|
-| params  | Array\<[HuksExternalCryptoParam](#huksexternalcryptoparam)> | No  | Operation parameters. If this parameter is not passed, no additional parameters are passed to the Extension Ability. If a non-system application passes [HUKS_EXT_CRYPTO_TAG_UID](#huksexternalcryptotag), the parameter is invalid.|
+| params  | Array\<[HuksExternalCryptoParam](#huksexternalcryptoparam)> | No   | Parameters of the operation. If not passed, no additional parameters are passed to the Extension Ability. For non-system applications, passing [HUKS_EXT_CRYPTO_TAG_UID](#huksexternalcryptotag) is an invalid parameter.<br>Since API version 26.0.1, the optional TAG [HUKS_EXT_CRYPTO_TAG_TIMEOUT](#huksexternalcryptotag) is added to customize the timeout wait time of the asynchronous API. If not passed, the default value of 3 seconds is used. |
 
 **Return value**
 
@@ -280,7 +276,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 
-const testResourceId = "{\"providerName\":\"testProviderName\", \"bundleName\":\"com.example.cryptoapplication\", \"abilityName\":\"CryptoExtension\",\"index\":{\"key\":\"testKey\"}}";
+const testResourceId = JSON.stringify({
+  providerName: "testProviderName",
+  bundleName: "com.example.cryptoapplication",
+  abilityName: "CryptoExtension",
+  index: {
+    key: "testKey"
+  } as ESObject
+});
 const extProperties: Array<huksExternalCrypto.HuksExternalCryptoParam> = [];
 huksExternalCrypto.getUkeyPinAuthState(testResourceId, extProperties)
     .then((data) => {
@@ -297,11 +300,8 @@ Obtains a property value. This API uses a promise to return the result.
 The **propertyId** parameter indicates the ID of the property to be queried. You are advised to use SKF API names defined in GMT 0016-2023 as property IDs. The supported IDs are as follows:
 
 - SKF_EnumDev 
-
 - SKF_GetDevInfo 
-
 - SKF_EnumApplication 
-
 - SKF_EnumContainer
 
 Since API version 26.0.0, property IDs can be customized, which is provided by the [CryptoExtensionAbility](js-apis-CryptoExtensionAbility.md) implementation party.
@@ -316,7 +316,7 @@ Since API version 26.0.0, property IDs can be customized, which is provided by t
 | -------- | ------- | ---- | ----------|
 | resourceId | string | Yes  | Resource ID, which can be obtained through [openAuthorizeDialog](../apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22). The result returned by this API contains the resource ID.|
 | propertyId | string | Yes  | Property name for the search operation, which is the SKF API name defined in GMT 0016-2023. You need to make adaptation based on the API name.|
-| params  | Array\<[HuksExternalCryptoParam](#huksexternalcryptoparam)> | No  | Parameters to be passed to [CryptoExtensionAbility](js-apis-CryptoExtensionAbility.md). If this parameter is not passed, no additional parameters are passed to the Extension Ability. If a non-system application passes [HUKS_EXT_CRYPTO_TAG_UID](#huksexternalcryptotag), the parameter is invalid.|
+| params  | Array\<[HuksExternalCryptoParam](#huksexternalcryptoparam)> | No   | Input parameters to be passed to [CryptoExtensionAbility](js-apis-CryptoExtensionAbility.md). If not passed, no additional parameters are passed to the Extension Ability. For non-system applications, passing [HUKS_EXT_CRYPTO_TAG_UID](#huksexternalcryptotag) is an invalid parameter.<br>Since API version 26.0.1, an optional TAG [HUKS_EXT_CRYPTO_TAG_TIMEOUT](#huksexternalcryptotag) is added to customize the timeout wait time of the asynchronous API. If not passed, the default value of 3 seconds is used. |
 
 **Return value**
 
@@ -356,7 +356,7 @@ const testResourceId = JSON.stringify({
   } as ESObject
 });
 
-let propertyId = "SKF_EnumDev";
+let propertyId = 'SKF_EnumDev';
 const extProperties: Array<huksExternalCrypto.HuksExternalCryptoParam> = [];
 
 console.info('promise: await huksExternalCrypto getProperty.');
@@ -377,7 +377,7 @@ async function testFunction() : Promise<void>
 
 clearUkeyPinAuthState(resourceId: string): Promise&lt;void&gt;
 
-Clears the PIN authentication status of a specified resource ID. After the status is cleared, the PIN authentication status changes to **HUKS_EXT_CRYPTO_PIN_NO_AUTH** (unauthenticated). This API uses a promise to return the result.
+Clears the PIN authentication state of a specified resource ID. After the status is cleared, the PIN authentication state changes to **HUKS_EXT_CRYPTO_PIN_NO_AUTH** (unauthenticated). This API uses a promise to return the result.
 
 **Since**: 26.0.0
 
@@ -450,7 +450,7 @@ Obtains the resource ID of the key extension capability. This API uses a promise
 | Name  | Type | Mandatory| Description |
 | -------- | ------- | ---- | ----------|
 | providerName | string | Yes  | Provider name, which is recommended to contain the vendor information and must be globally unique. The maximum length is 128 bytes.|
-| params | [HuksExternalCryptoParam](#huksexternalcryptoparam)[] | Yes  | Property parameters required for obtaining the resource ID. Mandatory tags include [HUKS_EXT_CRYPTO_TAG_ABILITY_NAME](#huksexternalcryptotag), [HUKS_EXT_CRYPTO_TAG_BUNDLE_NAME](#huksexternalcryptotag) and [HUKS_EXT_CRYPTO_TAG_RESOURCE_INFO](#huksexternalcryptotag). If a non-system application passes [HUKS_EXT_CRYPTO_TAG_UID](#huksexternalcryptotag), the parameter is invalid.|
+| params | [HuksExternalCryptoParam](#huksexternalcryptoparam)[] | Yes | Parameters required for obtaining the resource ID. The mandatory TAGs include [HUKS_EXT_CRYPTO_TAG_ABILITY_NAME](#huksexternalcryptotag), [HUKS_EXT_CRYPTO_TAG_BUNDLE_NAME](#huksexternalcryptotag), and [HUKS_EXT_CRYPTO_TAG_RESOURCE_INFO](#huksexternalcryptotag). For non-system applications, passing [HUKS_EXT_CRYPTO_TAG_UID](#huksexternalcryptotag) is an invalid parameter.<<br>In API version 26.0.1, an optional TAG [HUKS_EXT_CRYPTO_TAG_TIMEOUT](#huksexternalcryptotag) is added to customize the timeout wait time of the asynchronous API. If it is not passed, the default value of 3 seconds is used. |
 
 **Return value**
 
@@ -487,11 +487,11 @@ function stringToUint8Array(str: string) {
   return new Uint8Array(arr);
 }
 
-const providerName = "testProviderName";
-const abilityName = "CryptoExtension";
-const bundleName = "com.example.cryptoapplication";
+const providerName = 'testProviderName';
+const abilityName = 'CryptoExtension';
+const bundleName = 'com.example.cryptoapplication';
 // Resource information. The format and content are defined by the vendor.
-const resourceInfo = "vendor_defined_resource_info";
+const resourceInfo = 'vendor_defined_resource_info';
 
 const extProperties: Array<huksExternalCrypto.HuksExternalCryptoParam> = [
   {
@@ -535,7 +535,7 @@ Opens a resource with a specified resource ID. This API uses a promise to return
 | Name  | Type | Mandatory| Description |
 | -------- | ------- | ---- | ----------|
 | resourceId | string | Yes  | Resource ID. You can obtain the key URI as the resource ID from [openAuthorizeDialog](../apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22) or obtain the resource ID of the external key management extension through [getResourceId](#huksexternalcryptogetresourceid).|
-| params | [HuksExternalCryptoParam](#huksexternalcryptoparam)[] | No  | Parameters to be passed to [CryptoExtensionAbility](js-apis-CryptoExtensionAbility.md). If this parameter is not passed, no additional parameters are passed to the Extension Ability.|
+| params | [HuksExternalCryptoParam](#huksexternalcryptoparam)[] | No   | Input parameters to be passed to [CryptoExtensionAbility](js-apis-CryptoExtensionAbility.md). If not passed, no additional parameters are passed to the Extension Ability.<br>In API version 26.0.1, the optional tag [HUKS_EXT_CRYPTO_TAG_TIMEOUT](#huksexternalcryptotag) is added to customize the timeout wait time of the asynchronous API. If not passed, the default value of 3 seconds is used. |
 
 **Return value**
 
@@ -587,7 +587,7 @@ closeResource(resourceId: string, params?: HuksExternalCryptoParam[]): Promise&l
 
 Closes a resource with a specified resource ID. This API uses a promise to return the result.
 
-This API calls [onClearUkeyPinAuthState](js-apis-CryptoExtensionAbility.md#onclearukeypinauthstate) to clear the PIN authentication status associated with the resource, and calls [onFinishSession](js-apis-CryptoExtensionAbility.md#onfinishsession) to clear the session handle associated with the resource.
+This API calls [onClearUkeyPinAuthState](js-apis-CryptoExtensionAbility.md#onclearukeypinauthstate) to clear the PIN authentication state associated with the resource, and calls [onFinishSession](js-apis-CryptoExtensionAbility.md#onfinishsession) to clear the session handle associated with the resource.
 
 **Since**: 26.0.0
 
@@ -600,7 +600,7 @@ This API calls [onClearUkeyPinAuthState](js-apis-CryptoExtensionAbility.md#oncle
 | Name  | Type | Mandatory| Description |
 | -------- | ------- | ---- | ----------|
 | resourceId | string | Yes  | Resource ID. You can obtain the key URI as the resource ID from [openAuthorizeDialog](../apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22) or obtain the resource ID of the external key management extension through [getResourceId](#huksexternalcryptogetresourceid).|
-| params | [HuksExternalCryptoParam](#huksexternalcryptoparam)[] | No  | Parameters to be passed to [CryptoExtensionAbility](js-apis-CryptoExtensionAbility.md). If this parameter is not passed, no additional parameters are passed to the Extension Ability.|
+| params | [HuksExternalCryptoParam](#huksexternalcryptoparam)[] | No   | Input parameters to be passed to [CryptoExtensionAbility](js-apis-CryptoExtensionAbility.md). If not passed, no additional parameters are passed to the Extension Ability.<br>Since API version 26.0.1, the optional TAG [HUKS_EXT_CRYPTO_TAG_TIMEOUT](#huksexternalcryptotag) is added to customize the timeout wait time of asynchronous APIs. If not passed, the default value of 3 seconds is used. |
 
 **Return value**
 
@@ -661,7 +661,7 @@ Sets the property value of the UKey resource identified by **resourceId**. This 
 | -------- | ------- | ---- | ----------|
 | resourceId | string | Yes  | Resource ID. You can obtain the key URI as the resource ID from [openAuthorizeDialog](../apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22) or obtain the resource ID of the external key management extension through [getResourceId](#huksexternalcryptogetresourceid).|
 | propertyId | string | Yes  | Property name of the setting operation. The value is provided by the [CryptoExtensionAbility](js-apis-CryptoExtensionAbility.md) implementation. You are advised to use the SKF API names defined in GMT 0016-2023 as property IDs.|
-| params  | [HuksExternalCryptoParam](#huksexternalcryptoparam)[] | No  | Parameters to be passed to the [CryptoExtensionAbility](js-apis-CryptoExtensionAbility.md), including operation parameters related to the property ID. If this parameter is not passed, no additional parameters are passed to the ExtensionAbility.|
+| params  | [HuksExternalCryptoParam](#huksexternalcryptoparam)[] | No   | Parameters to be passed to [CryptoExtensionAbility](js-apis-CryptoExtensionAbility.md), including the operation parameters related to **propertyId**. If not passed, no additional parameters are passed to the Extension Ability.<br>Since API version 26.0.1, the optional tag [HUKS_EXT_CRYPTO_TAG_TIMEOUT](#huksexternalcryptotag) is added to customize the timeout wait time of the asynchronous API. If not passed, the default value of 3 seconds is used. |
 
 **Return value**
 
@@ -701,7 +701,7 @@ const testResourceId = JSON.stringify({
   } as ESObject
 });
 
-const propertyId = "SKF_SetDevInfo";
+const propertyId = 'SKF_SetDevInfo';
 const extProperties: Array<huksExternalCrypto.HuksExternalCryptoParam> = [];
 
 async function testFunction() : Promise<void>
@@ -716,6 +716,7 @@ async function testFunction() : Promise<void>
   }
 }
 ```
+
 
 ## huksExternalCrypto.getErrorInfo
 
@@ -746,36 +747,23 @@ Obtains the detailed error information about the latest external key operation i
 ```ts
 import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 
-function stringToUint8Array(str: string) {
-  let arr: number[] = [];
-  for (let i = 0, j = str.length; i < j; ++i) {
-    arr.push(str.charCodeAt(i));
-  }
-  return new Uint8Array(arr);
-}
-
 const resourceId = JSON.stringify({
   providerName: "testProviderName",
   bundleName: "com.example.cryptoapplication",
   abilityName: "CryptoExtension",
-  index: "testKey"
+  index: {
+    key: "testKey"
+  } as ESObject
 });
-const pin = "123456"; // This is an example. Replace it with the actual user PIN in real services.
-const params: Array<huksExternalCrypto.HuksExternalCryptoParam> = [
-  {
-    tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_UKEY_PIN,
-    value: stringToUint8Array(pin)
-  }
-];
 
 async function testFunction() : Promise<void>
 {
   try {
-    await huksExternalCrypto.authUkeyPin(resourceId, params);
+    await huksExternalCrypto.openResource(resourceId);
   } catch (error) {
     const errorInfo = huksExternalCrypto.getErrorInfo();
-    console.info(`errno: ${errorInfo.errno}`);
-    console.info(`errorDesc: ${errorInfo.errorDesc}`);
+    console.error(`errno: ${errorInfo.errno}`);
+    console.error(`errorDesc: ${errorInfo.errorDesc}`);
   }
 }
 ```

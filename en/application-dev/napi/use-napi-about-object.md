@@ -5,7 +5,7 @@
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=3383cf6b2a36933eae9d88e06bbfad5f09f5363a translatedAt=2026-09-16T03:35:21.620Z pushedAt=2026-09-16T08:25:50.345Z -->
+<!-- md-trans-meta sourceCommit=38001e95c4636c93c2e73784007e4ca04bf73505 translatedAt=2026-10-13T13:13:44.880Z pushedAt=2026-10-16T04:12:58.697Z -->
 
 ## Overview
 
@@ -295,7 +295,7 @@ try {
 
 Call **napi_typeof** to obtain the ArkTS type of an ArkTS value.
 
-**NOTE**<br>**napi_typeof** can determine the following types.  
+**NOTE**<br>**napi_typeof** can determine the following types.   
 |Type| 
 |-----|
 |undefined|
@@ -526,7 +526,7 @@ static napi_value SetTypeTagToObject(napi_env env, napi_callback_info info)
     // Set the type tag for the parameter (object).
     napi_status status = napi_type_tag_object(env, args[0], &TagsData[index]);
     if (status != napi_ok) {
-        napi_throw_error(env, "Reconnect error", "napi_type_tag_object failed");
+        napi_throw_error(env, "napi_type_tag_object error", "napi_type_tag_object failed");
         return nullptr;
     }
     // Convert the bool result to napi_value and return it.
@@ -564,6 +564,8 @@ export const setTypeTagToObject: (obj: Object, index: number) => boolean | undef
 
 export const checkObjectTypeTag: (obj: Object, index: number) => boolean; // napi_check_object_type_tag
 ```
+
+ArkTS code:
 
 <!-- @[ark_napi_type_tag_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/ets/pages/Index.ets) --> 
 

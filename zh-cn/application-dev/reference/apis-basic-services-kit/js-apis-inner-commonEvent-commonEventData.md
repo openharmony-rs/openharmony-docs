@@ -20,8 +20,8 @@
 
 | 名称       | 类型                 | 只读 | 可选 | 说明                                                    |
 | ---------- |-------------------- | ---- | ---- |  ------------------------------------------------------- |
-| event      | string               | 否  | 否  | 表示当前接收的公共事件名称。                              |
-| bundleName | string               | 否  | 是  | 表示发布公共事件的应用包名，默认为空字符串。               |
+| event      | string               | 否  | 否  | 表示当前接收的公共事件名称。字符串长度不超过254字节，超出部分会被截断。 |
+| bundleName | string               | 否  | 是  | 表示发布公共事件的应用包名，默认为空字符串。字符串长度不超过254字节，超出部分会被截断。 |
 | code       | number               | 否  | 是  | 表示订阅者接收到的公共事件数据。该字段取值与发布方使用[commonEventManager.publish](./js-apis-commonEventManager.md#commoneventmanagerpublish-1)发布公共事件时，通过[CommonEventPublishData](./js-apis-inner-commonEvent-commonEventPublishData.md)中的`code`字段传递的数据一致。取值范围[-2147483648, 2147483647]，默认值为0。           |
 | data       | string               | 否  | 是  | 表示订阅者接收到的公共事件数据，数据大小不超过64KB。该字段取值与发布方使用[commonEventManager.publish](./js-apis-commonEventManager.md#commoneventmanagerpublish-1)发布公共事件时，通过[CommonEventPublishData](./js-apis-inner-commonEvent-commonEventPublishData.md)中的`data`字段传递的数据一致。 |
 | parameters | {[key: string]: any} | 否  | 是  | 表示订阅者接收到的公共事件的附加信息。该字段取值与发布方使用[commonEventManager.publish](./js-apis-commonEventManager.md#commoneventmanagerpublish-1)发布公共事件时，通过[CommonEventPublishData](./js-apis-inner-commonEvent-commonEventPublishData.md)中的`parameters`字段传递的数据一致。           |

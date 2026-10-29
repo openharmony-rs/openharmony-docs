@@ -36,7 +36,7 @@ Hypertext Transfer Protocol，超文本传输协议。是一种用于分布式�
 
 Hypertext Transfer Protocol Secure，是一种基于HTTP的安全通信协议，通过SSL/TLS加密技术实现数据传输的保密性、完整性和身份认证‌。
 
-### Interceptor；拦截器
+### HTTP Interceptor；HTTP拦截器
 
 用于在HTTP请求和响应过程中进行拦截和修改的组件，支持创建拦截器链，按需定制一组拦截器对网络请求/响应进行修改。
 

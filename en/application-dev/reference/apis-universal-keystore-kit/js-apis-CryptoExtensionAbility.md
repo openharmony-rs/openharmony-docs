@@ -6,30 +6,20 @@
 <!--Designer: @HighLowWorld-->
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=9152c268f46614a686fc0194817d9148fb47574b translatedAt=2026-08-14T09:00:13.365Z pushedAt=2026-08-15T09:11:15.653Z -->
+<!-- md-trans-meta sourceCommit=4638d690f8b425619d75d1da12aa9af34d2279f4 translatedAt=2026-10-12T08:41:41.918Z pushedAt=2026-10-13T06:55:17.712Z -->
 
 Provides the external key extension abilities, including resource management, PIN authentication management, cryptographic operations, and common operations.
 
 Functions and restrictions of **ExtensionAbility**:
-
 1. Device management: A single **ExtensionAbility** implementation supports a maximum of 10 UKey connections.
-
 2. Handle management: Application-based handle resource management is supported for the same UKey resource (for example, the keys in a container).
-
    - Multiple OpenHarmony applications can open the same UKey key resource. For example, after OpenHarmony application 1 opens container A, OpenHarmony application 2 can also open container A.
-
    - Multiple OpenHarmony applications can operate the same UKey key resource. For example, after OpenHarmony application 1 performs private key signing on container A, OpenHarmony application 2 can also perform private key signing on container A after verifying the PIN. The two applications do not affect each other.
-
 3. Key session management: Three-segment key management is supported. Signature verification for a single signature requires the [onInitSession](#oninitsession)/[onUpdateSession](#onupdatesession)/[onFinishSession](#onfinishsession) functions to be used together in three steps. In addition, session management and key session status caching are supported.
-
    - **init**: Initializes the key session and returns the session handle information.
-
    - **update**: Passes group data, performs cryptographic operations on the group data, updates the key session information, and returns the intermediate data (if any).
-
    - **finish**: Passes the last group of data, returns the key, ends the key session, and returns the final result.
-
 4. Authentication state management: Application-based authentication state management is supported. After OpenHarmony application 1 verifies the PIN of UKey application A, if OpenHarmony application 2 needs to access UKey application A, PIN authentication is also required.
-
 5. Certificate query: Enumeration of all certificates and query of certificates in a single container based on certificate type are supported.
 
 > **Description**
@@ -97,7 +87,7 @@ Defines the common return value types of APIs.
 
 ## HuksCryptoExtensionParam
 
-Defines the key extension operation parameter, which is used to specify the attribute tag and corresponding value of the operation.
+Defines the key extension operation parameter, which is used to specify the property tag and corresponding value of the operation.
 
 **Since:** 26.0.0
 
@@ -112,7 +102,7 @@ Defines the key extension operation parameter, which is used to specify the attr
 
 ## HuksCryptoExtensionParams
 
-Defines the key extension operation parameter set, which is used to pass the attributes and input data required for the operation.
+Defines the key extension operation parameter set, which is used to pass the properties and input data required for the operation.
 
 **Since:** 26.0.0
 
@@ -232,7 +222,7 @@ Obtains the property based on the **handle** and **propertyId** parameters. This
 
 | Type   | Description  |
 | -------- | -----------|
-| Promise\<[HuksCryptoExtensionResult](#hukscryptoextensionresult)> | Promise used to return the result. When the call succeeds, **resultCode** is **0**, and the **property** member of **HuksCryptoExtensionResult** is non-empty, including the obtained attribute carried by the [HUKS_EXT_CRYPTO_TAG_EXTRA_DATA](js-apis-huksExternalCrypto.md#huksexternalcryptotag) parameter. On call failure, **resultCode** carries error code information.<br>Possible error codes:<br>34800000 key extension error.<br>34800002 UKey driver error.<br>34800003 UKey PIN unauthenticated.<br>34800004 handle does not exist.<br>34800005 handle unavailable.<br>34800007 UKey PIN locked.<br>For the specific meaning, see [HuksCryptoExtensionResultCode](#hukscryptoextensionresultcode). |
+| Promise\<[HuksCryptoExtensionResult](#hukscryptoextensionresult)> | Promise used to return the result. When the call succeeds, **resultCode** is **0**, and the **property** member of **HuksCryptoExtensionResult** is non-empty, including the obtained property carried by the [HUKS_EXT_CRYPTO_TAG_EXTRA_DATA](js-apis-huksExternalCrypto.md#huksexternalcryptotag) parameter. On call failure, **resultCode** carries error code information.<br>Possible error codes:<br>34800000 key extension error.<br>34800002 UKey driver error.<br>34800003 UKey PIN unauthenticated.<br>34800004 handle does not exist.<br>34800005 handle unavailable.<br>34800007 UKey PIN locked.<br>For the specific meaning, see [HuksCryptoExtensionResultCode](#hukscryptoextensionresultcode). |
 
 **Example**
 
@@ -278,7 +268,7 @@ Sets the property based on the **handle** and **propertyId** parameters. This AP
 
 | Type   | Description  |
 | -------- | -----------|
-| Promise\<[HuksCryptoExtensionResult](#hukscryptoextensionresult)> | Promise object. When the call succeeds, **resultCode** is 0, indicating that the attribute is set successfully. When the call fails, **resultCode** carries error code information.<br>Possible error codes:<br>34800000 Key extension error. Possible cause:<br>1. Invalid input parameter.<br>2. The key extension encounters an unresolvable error state.<br>34800002 UKey driver error.<br>34800003 The UKey PIN is unauthenticated. Authenticate the UKey PIN first.<br>34800004 The handle does not exist. Possible cause:<br>1. Invalid handle.<br>2. The states of the HUKS service and the key extension are inconsistent. Due to an exception, the handle held by the HUKS service is not released.<br>34800005 The handle is unavailable. Possible cause:<br>The states of the key extension and the UKey are inconsistent.<br>34800007 The UKey PIN is locked. Possible cause:<br>The PIN is entered incorrectly too many times.<br>For the specific meaning, see [HuksCryptoExtensionResultCode](#hukscryptoextensionresultcode). |
+| Promise\<[HuksCryptoExtensionResult](#hukscryptoextensionresult)> | Promise object. When the call succeeds, **resultCode** is 0, indicating that the property is set successfully. When the call fails, **resultCode** carries error code information.<br>Possible error codes:<br>34800000 Key extension error. Possible cause:<br>1. Invalid input parameter.<br>2. The key extension encounters an unresolvable error state.<br>34800002 UKey driver error.<br>34800003 The UKey PIN is unauthenticated. Authenticate the UKey PIN first.<br>34800004 The handle does not exist. Possible cause:<br>1. Invalid handle.<br>2. The states of the HUKS service and the key extension are inconsistent. Due to an exception, the handle held by the HUKS service is not released.<br>34800005 The handle is unavailable. Possible cause:<br>The states of the key extension and the UKey are inconsistent.<br>34800007 The UKey PIN is locked. Possible cause:<br>The PIN is entered incorrectly too many times.<br>For the specific meaning, see [HuksCryptoExtensionResultCode](#hukscryptoextensionresultcode). |
 
 **Example**
 
@@ -317,7 +307,7 @@ Requests the UKey PIN authentication. This API uses a promise to return the resu
 
 | Type| Description|
 | -------- | --------|
-| Promise\<[HuksCryptoExtensionResult](#hukscryptoextensionresult)> | Promise object. When the call succeeds, **resultCode** is **0** and **authState** is not **0**, indicating that the authentication request succeeds. When the call fails, **resultCode** carries the error code information.<br>Possible error codes:<br>34800000 key extension error.<br>34800002 UKey driver error.<br>34800004 Handle does not exist.<br>34800005 Handle unavailable.<br>34800006 UKey PIN code error.<br>34800007 UKey PIN code locked.<br>For the specific meaning, see [HuksCryptoExtensionResultCode](#hukscryptoextensionresultcode). |
+| Promise\<[HuksCryptoExtensionResult](#hukscryptoextensionresult)> | Promise object. When the call succeeds, **resultCode** is **0** and **authState** is not **0**, indicating that the authentication request succeeds. When the call fails, **resultCode** carries the error code information.<br>Possible error codes:<br>34800000 key extension error.<br>34800002 UKey driver error.<br>34800004 Handle does not exist.<br>34800005 Handle unavailable.<br>34800006 UKey PIN code error.<br>34800007 UKey PIN locked.<br>For the specific meaning, see [HuksCryptoExtensionResultCode](#hukscryptoextensionresultcode). |
 
 **Example**
 
@@ -435,7 +425,7 @@ Initializes a key session. (The first operation of the Init-Update-Finish proces
 
 | Type| Description|
 | --------- | ---------|
-| Promise\<[HuksCryptoExtensionResult](#hukscryptoextensionresult)> | Promise used to return the result. When the call succeeds, **resultCode** is **0** and **handle** is a non-empty member. When the call fails, **resultCode** carries error code information.<br>Possible error codes:<br>34800000 key extension error.<br>34800002 UKey driver error.<br>34800003 UKey PIN unauthenticated.<br>34800004 Handle does not exist.<br>34800005 Handle unavailable.<br>34800007 UKey PIN code locked.<br>For the specific meaning, see [HuksCryptoExtensionResultCode](#hukscryptoextensionresultcode). |
+| Promise\<[HuksCryptoExtensionResult](#hukscryptoextensionresult)> | Promise used to return the result. When the call succeeds, **resultCode** is **0** and **handle** is a non-empty member. When the call fails, **resultCode** carries error code information.<br>Possible error codes:<br>34800000 key extension error.<br>34800002 UKey driver error.<br>34800003 UKey PIN unauthenticated.<br>34800004 Handle does not exist.<br>34800005 Handle unavailable.<br>34800007 UKey PIN locked.<br>For the specific meaning, see [HuksCryptoExtensionResultCode](#hukscryptoextensionresultcode). |
 
 **Example**
 
@@ -474,7 +464,7 @@ Updates a key session. (The second operation of the Init-Update-Finish process.)
 
 | Type| Description|
 | --------- | ---------|
-| Promise\<[HuksCryptoExtensionResult](#hukscryptoextensionresult)> | Promise used to return the result. When the call succeeds, **resultCode** is **0**. When the call fails, **resultCode** carries error code information.<br>Possible error codes:<br>34800000 Key extension error.<br>34800002 UKey driver error.<br>34800003 UKey PIN unauthenticated.<br>34800004 Handle does not exist.<br>34800005 Handle unavailable.<br>34800007 UKey PIN code locked.<br>For the specific meaning, see [HuksCryptoExtensionResultCode](#hukscryptoextensionresultcode). |
+| Promise\<[HuksCryptoExtensionResult](#hukscryptoextensionresult)> | Promise used to return the result. When the call succeeds, **resultCode** is **0**. When the call fails, **resultCode** carries error code information.<br>Possible error codes:<br>34800000 Key extension error.<br>34800002 UKey driver error.<br>34800003 UKey PIN unauthenticated.<br>34800004 Handle does not exist.<br>34800005 Handle unavailable.<br>34800007 UKey PIN locked.<br>For the specific meaning, see [HuksCryptoExtensionResultCode](#hukscryptoextensionresultcode). |
 
 **Example**
 
@@ -514,7 +504,7 @@ Ends a key session. (The last operation of the Init-Update-Finish process.) This
 
 | Type| Description|
 | ------- | ---------- |
-| Promise\<[HuksCryptoExtensionResult](#hukscryptoextensionresult)> | Promise used to return the result. When the call succeeds, **resultCode** is **0**. When the call fails, **resultCode** carries error code information.<br>Possible error codes:<br>34800000 Key extension error.<br>34800002 UKey driver error.<br>34800003 UKey PIN code unauthenticated.<br>34800004 Handle does not exist.<br>34800005 Handle unavailable.<br>34800007 UKey PIN code locked.<br>For the specific meaning, see [HuksCryptoExtensionResultCode](#hukscryptoextensionresultcode). |
+| Promise\<[HuksCryptoExtensionResult](#hukscryptoextensionresult)> | Promise used to return the result. When the call succeeds, **resultCode** is **0**. When the call fails, **resultCode** carries error code information.<br>Possible error codes:<br>34800000 Key extension error.<br>34800002 UKey driver error.<br>34800003 UKey PIN unauthenticated.<br>34800004 Handle does not exist.<br>34800005 Handle unavailable.<br>34800007 UKey PIN locked.<br>For the specific meaning, see [HuksCryptoExtensionResultCode](#hukscryptoextensionresultcode). |
 
 **Example**
 
@@ -548,7 +538,7 @@ Queries the certificate of a specified resource ID. This API uses a promise to r
 | Name  | Type | Mandatory| Description|
 | -------- | ---------- | ---- | --------- |
 | resourceId | string | Yes  | Resource ID. It is attached to [HuksCryptoExtensionCertInfo](#hukscryptoextensioncertinfo).|
-| params  | Array\<[huksExternalCrypto.HuksExternalCryptoParam](js-apis-huksExternalCrypto.md#huksexternalcryptoparam)> \| [HuksCryptoExtensionParam](#hukscryptoextensionparam)[]  | No   | Operation attribute. By default, a certificate of the signature type is obtained. You can also use the parameter [HUKS_EXT_CRYPTO_TAG_PURPOSE](js-apis-huksExternalCrypto.md#huksexternalcryptotag) to specify the certificate type. Supported types include signature verification, encryption and decryption, and so on. |
+| params  | Array\<[huksExternalCrypto.HuksExternalCryptoParam](js-apis-huksExternalCrypto.md#huksexternalcryptoparam)> \| [HuksCryptoExtensionParam](#hukscryptoextensionparam)[]  | No   | Operation property. By default, a certificate of the signature type is obtained. You can also use the parameter [HUKS_EXT_CRYPTO_TAG_PURPOSE](js-apis-huksExternalCrypto.md#huksexternalcryptotag) to specify the certificate type. Supported types include signature verification, encryption and decryption, and so on. |
 
 **Return value**
 
@@ -560,7 +550,7 @@ Queries the certificate of a specified resource ID. This API uses a promise to r
 
 ```ts
 import { huksExternalCrypto, CryptoExtensionAbility, HuksCryptoExtensionResult,
-  HuksCryptoExtensionCertInfo } from '@kit.UniversalKeystoreKit';
+  HuksCryptoExtensionCertInfo, HuksCryptoExtensionParam } from '@kit.UniversalKeystoreKit';
 
 export default class CryptoExtension extends CryptoExtensionAbility {
   onExportCertificate(resourceId: string, params?: Array<huksExternalCrypto.HuksExternalCryptoParam> | HuksCryptoExtensionParam[]): Promise<HuksCryptoExtensionResult> {
@@ -588,7 +578,7 @@ Obtains the certificate information of all UKey devices under an extension. This
 
 | Name  | Type| Mandatory| Description  |
 | -------- | -----| ---- | ---------- |
-| params  | Array\<[huksExternalCrypto.HuksExternalCryptoParam](js-apis-huksExternalCrypto.md#huksexternalcryptoparam)> \| [HuksCryptoExtensionParam](#hukscryptoextensionparam)[]  | No   | Operation attribute. By default, a [certificate](../../security/DeviceCertificateKit/certManager-overview.md) of the signing type is obtained. You can also use the parameter [HUKS_EXT_CRYPTO_TAG_PURPOSE](js-apis-huksExternalCrypto.md#huksexternalcryptotag) to specify the certificate type. Supported types include signing and signature verification, encryption and decryption, and so on. |
+| params  | Array\<[huksExternalCrypto.HuksExternalCryptoParam](js-apis-huksExternalCrypto.md#huksexternalcryptoparam)> \| [HuksCryptoExtensionParam](#hukscryptoextensionparam)[]  | No   | Operation property. By default, a [certificate](../../security/DeviceCertificateKit/certManager-overview.md) of the signature type is obtained. You can also use the parameter [HUKS_EXT_CRYPTO_TAG_PURPOSE](js-apis-huksExternalCrypto.md#huksexternalcryptotag) to specify the certificate type. Supported types include signing and signature verification, encryption and decryption, and so on. |
 
 **Return value**
 
@@ -881,13 +871,9 @@ export default class CryptoExtension extends CryptoExtensionAbility {
 ## Appendix
 
 **CryptoExtensionAbility** does not support references to the following modules.
-
 <!--RP1-->
-
 | Kit | Module |
 | ------ | ------ |
-| Ability Kit | @ohos.distributedBundle (Distributed Bundle Management) (System API) |
-| Ability Kit | @ohos.distributedMissionManager (Distributed Mission Management) (System API) |
 | Ability Kit | [@ohos.wantAgent (WantAgent Module)](../../reference/apis-ability-kit/js-apis-wantAgent.md) |
 | Ads Kit | [@ohos.advertising.AdComponent (Ad Component)](../../reference/apis-ads-kit/js-apis-adcomponent.md) |
 | Ads Kit | [@ohos.advertising.AdsServiceExtensionAbility (ExtensionAbility for Ads)](../../reference/apis-ads-kit/js-apis-adsserviceextensionability.md) |
@@ -908,23 +894,18 @@ export default class CryptoExtension extends CryptoExtensionAbility {
 | ArkWeb | [@ohos.web.WebNativeMessagingExtensionContext (Web Native Messaging Extension Context)](../../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionContext.md) |
 | ArkWeb | [@ohos.web.webNativeMessagingExtensionManager (Web Native Messaging Extension Manager)](../../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionManager.md) |
 | ArkWeb | [@ohos.web.webview](../../reference/apis-arkweb/arkts-apis-webview.md) |
-| Audio Kit | @ohos.multimedia.audio (Audio Management) (System API) |
 | Audio Kit | [@ohos.multimedia.audioHaptic (Audio-Haptic)](../../reference/apis-audio-kit/js-apis-audioHaptic.md) |
 | Audio Kit | [@ohos.multimedia.avVolumePanel (Volume Panel)](../../reference/apis-audio-kit/ohos-multimedia-avvolumepanel.md) |
 | Audio Kit | [@ohos.multimedia.systemSoundManager (System Sound Management)](../../reference/apis-audio-kit/js-apis-systemSoundManager.md) |
 | AVSession Kit | [@ohos.multimedia.avCastPicker (AVCastPicker)](../../reference/apis-avsession-kit/ohos-multimedia-avcastpicker.md) |
 | AVSession Kit | [@ohos.multimedia.avCastPickerParam (AVCastPicker Parameters)](../../reference/apis-avsession-kit/js-apis-avCastPickerParam.md) |
 | AVSession Kit | [@ohos.multimedia.avInputCastPicker (AVInputCastPicker)](../../reference/apis-avsession-kit/ohos-multimedia-avinputcastpicker.md) |
-| AVSession Kit | @ohos.multimedia.avsession (AVSession Management) (System API) |
-| Basic Service Kit | @ohos.ai.intelligentVoice (Intelligent Voice) (System API) |
 | Basic Service Kit | [@ohos.pasteboard (Pasteboard)](../../reference/apis-basic-services-kit/js-apis-pasteboard.md) |
 | Basic Service Kit | [@ohos.scan (Scan)](../../reference/apis-basic-services-kit/js-apis-scan.md) |
 | Basic Service Kit | [@ohos.screenLock (Screen Lock)](../../reference/apis-basic-services-kit/js-apis-screen-lock.md) |
 | Basic Service Kit | [@ohos.settings (Data Item Settings)](../../reference/apis-basic-services-kit/js-apis-settings.md) |
 | Basic Service Kit | [@ohos.wallpaper (Wallpaper)](../../reference/apis-basic-services-kit/js-apis-wallpaper.md) |
-| Basic Service Kit | @ohos.WallpaperExtensionAbility (WallpaperExtensionAbility) (System API) |
 | Calendar Kit | [@ohos.calendarManager (Calendar Manager)](../../reference/apis-calendar-kit/js-apis-calendarManager.md) |
-| Camera Kit | @ohos.multimedia.camera (Camera Management) (System API) |
 | Camera Kit | [@ohos.multimedia.cameraPicker (Camera Picker)](../../reference/apis-camera-kit/js-apis-cameraPicker.md) |
 | Connectivity Kit | [@ohos.bluetooth.a2dp (Bluetooth A2DP Module)](../../reference/apis-connectivity-kit/js-apis-bluetooth-a2dp.md) |
 | Connectivity Kit | [@ohos.bluetooth.access (Bluetooth Access Module)](../../reference/apis-connectivity-kit/js-apis-bluetooth-access.md) |
@@ -938,11 +919,9 @@ export default class CryptoExtension extends CryptoExtensionAbility {
 | Connectivity Kit | [@ohos.bluetooth.hid (Bluetooth HID Module)](../../reference/apis-connectivity-kit/js-apis-bluetooth-hid.md) |
 | Connectivity Kit | [@ohos.bluetoothManager (Bluetooth)](../../reference/apis-connectivity-kit/js-apis-bluetoothManager.md) |
 | Connectivity Kit | [@ohos.bluetooth.map (Bluetooth MAP Module)](../../reference/apis-connectivity-kit/js-apis-bluetooth-map.md) |
-| Connectivity Kit | @ohos.bluetooth.opp (Bluetooth OPP Module) (System API) |
 | Connectivity Kit | [@ohos.bluetooth.pan (Bluetooth PAN Module)](../../reference/apis-connectivity-kit/js-apis-bluetooth-pan.md) |
 | Connectivity Kit | [@ohos.bluetooth.pbap (Bluetooth PBAP Module)](../../reference/apis-connectivity-kit/js-apis-bluetooth-pbap.md) |
 | Connectivity Kit | [@ohos.bluetooth.socket (Bluetooth Socket Module)](../../reference/apis-connectivity-kit/js-apis-bluetooth-socket.md) |
-| Connectivity Kit | @ohos.bluetooth.wearDetection(Bluetooth Wear Detection Module) (System API) |
 | Connectivity Kit | [@ohos.connectedTag (Active Tags)](../../reference/apis-connectivity-kit/js-apis-connectedTag.md) |
 | Connectivity Kit | [@ohos.nfc.cardEmulation (Standard NFC Card Emulation)](../../reference/apis-connectivity-kit/js-apis-cardEmulation.md) |
 | Connectivity Kit | [@ohos.nfc.controller (standard NFC)](../../reference/apis-connectivity-kit/js-apis-nfcController.md) |
@@ -954,22 +933,16 @@ export default class CryptoExtension extends CryptoExtensionAbility {
 | Contacts Kit | [@ohos.contact (Contact)](../../reference/apis-contacts-kit/js-apis-contact.md) |
 | Data Protection Kit | [@ohos.dlpPermission (DLP)](../../reference/apis-data-protection-kit/js-apis-dlppermission.md) |
 | Distributed Service Kit | [@ohos.distributedDeviceManager (Device Management)](../../reference/apis-distributedservice-kit/js-apis-distributedDeviceManager.md) |
-| Distributed Service Kit | @ohos.distributedHardware.deviceManager (Device Management) (System API) |
-| Distributed Service Kit | @ohos.distributedHardware.hardwareManager (Distributed Hardware Management) (System API) |
 | Distributed Service Kit | [@ohos.distributedsched.abilityConnectionManager (Cross-Device Connection Management)](../../reference/apis-distributedservice-kit/js-apis-distributed-abilityConnectionManager.md) |
 | Distributed Service Kit | [@ohos.distributedsched.linkEnhance (Enhanced Connection)](../../reference/apis-distributedservice-kit/js-apis-link-enhance.md) |
 | Distributed Service Kit | [@ohos.distributedsched.proxyChannelManager (Proxy Channel Management)](../../reference/apis-distributedservice-kit/js-apis-proxyChannelManager.md) |
 | DRM Kit | [@ohos.multimedia.drm](../../reference/apis-drm-kit/arkts-apis-drm.md) |
-| Form Kit | @ohos.app.form.formAgent (FormAgent) (System API) |
 | Form Kit | [@ohos.app.form.formBindingData (formBindingData)](../../reference/apis-form-kit/js-apis-app-form-formBindingData.md) |
 | Form Kit | [@ohos.app.form.FormEditExtensionAbility (FormEditExtensionAbility)](../../reference/apis-form-kit/js-apis-app-form-formEditExtensionAbility.md) |
 | Form Kit | [@ohos.app.form.FormExtensionAbility (FormExtensionAbility)](../../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md) |
-| Form Kit | @ohos.app.form.formHost (formHost) (System API) |
 | Form Kit | [@ohos.app.form.formInfo (formInfo)](../../reference/apis-form-kit/js-apis-app-form-formInfo.md) |
-| Form Kit | @ohos.app.form.formObserver (formObserver) (System API) |
 | Form Kit | [@ohos.app.form.formProvider (formProvider)](../../reference/apis-form-kit/js-apis-app-form-formProvider.md) |
 | Form Kit | [@ohos.app.form.LiveFormExtensionAbility (LiveFormExtensionAbility)](../../reference/apis-form-kit/js-apis-app-form-LiveFormExtensionAbility.md) |
-| Image Kit | @ohos.multimedia.image (Image Processing) (System API) |
 | Image Kit | [@ohos.multimedia.sendableImage (Image Processing Based on Sendable Objects)](../../reference/apis-image-kit/js-apis-sendableImage.md) |
 | Image Kit | [@ohos.multimedia.videoProcessingEngine (Video Processing Engine)](../../reference/apis-image-kit/js-apis-videoProcessingEngine.md) |
 | Location Kit | [@ohos.geolocation (Geolocation)](../../reference/apis-location-kit/js-apis-geolocation.md) |
@@ -981,7 +954,6 @@ export default class CryptoExtension extends CryptoExtensionAbility {
 | MDM Kit | [@ohos.enterprise.browser (Browser Management)](../../reference/apis-mdm-kit/js-apis-enterprise-browser.md) |
 | MDM Kit | [@ohos.enterprise.bundleManager (Bundle Management)](../../reference/apis-mdm-kit/js-apis-enterprise-bundleManager.md) |
 | MDM Kit | [@ohos.enterprise.common (Common Module)](../../reference/apis-mdm-kit/js-apis-enterprise-common.md) |
-| MDM Kit | @ohos.enterprise.dateTimeManager (System Time Management) (System API) |
 | MDM Kit | [@ohos.enterprise.deviceControl (Device Control Management)](../../reference/apis-mdm-kit/js-apis-enterprise-deviceControl.md) |
 | MDM Kit | [@ohos.enterprise.deviceInfo (Device Information Management)](../../reference/apis-mdm-kit/js-apis-enterprise-deviceInfo.md) |
 | MDM Kit | [@ohos.enterprise.deviceSettings (Device Settings Management)](../../reference/apis-mdm-kit/js-apis-enterprise-deviceSettings.md) |
@@ -995,7 +967,6 @@ export default class CryptoExtension extends CryptoExtensionAbility {
 | MDM Kit | [@ohos.enterprise.usbManager (USB Management)](../../reference/apis-mdm-kit/js-apis-enterprise-usbManager.md) |
 | MDM Kit | [@ohos.enterprise.wifiManager (Wi-Fi Management)](../../reference/apis-mdm-kit/js-apis-enterprise-wifiManager.md) |
 | Mechanic Kit | [@ohos.distributedHardware.mechanicManager (Mechanic Manager)](../../reference/apis-mechanic-kit/js-apis-mechanicManager.md) |
-| Media Kit | @ohos.multimedia.media (Media) (System API) |
 | Media Library Kit | [@ohos.multimedia.movingphotoview (MovingPhotoView)](../../reference/apis-media-library-kit/ohos-multimedia-movingphotoview.md) |
 | MindSpore Lite Kit | [@ohos.ai.mindSporeLite (On-device AI Framework)](../../reference/apis-mindspore-lite-kit/js-apis-mindSporeLite.md) |
 | Network Kit | [@ohos.net.connection (Network Connection Management)](../../reference/apis-network-kit/js-apis-net-connection.md) |
@@ -1007,7 +978,7 @@ export default class CryptoExtension extends CryptoExtensionAbility {
 | Network Kit | [@ohos.net.networkSecurity (Network Security)](../../reference/apis-network-kit/js-apis-networkSecurity.md) |
 | Network Kit | [@ohos.net.policy (Network Policy Management)](../../reference/apis-network-kit/js-apis-net-policy.md) |
 | Network Kit | [@ohos.net.sharing (Network Sharing Management)](../../reference/apis-network-kit/js-apis-net-sharing.md) |
-| Network Kit | [@ohos.net.socket (Socket Connection)](../../reference/apis-network-kit/js-apis-socket.md) |
+| Network Kit | [@ohos.net.socket (Socket Connection)](../../reference/apis-network-kit/js-apis-socket.md)<br>Applicable versions: 22-26.0.0|
 | Network Kit | [@ohos.net.statistics (Traffic Management)](../../reference/apis-network-kit/js-apis-net-statistics.md) |
 | Network Kit | [@ohos.net.vpn (VPN Management)](../../reference/apis-network-kit/js-apis-net-vpn.md) |
 | Network Kit | [@ohos.net.vpnExtension (Enhanced VPN Management)](../../reference/apis-network-kit/js-apis-net-vpnExtension.md) |
@@ -1020,6 +991,4 @@ export default class CryptoExtension extends CryptoExtensionAbility {
 | Telephony Kit | [@ohos.telephony.sim (SIM Management)](../../reference/apis-telephony-kit/js-apis-sim.md) |
 | Telephony Kit | [@ohos.telephony.sms (SMS)](../../reference/apis-telephony-kit/js-apis-sms.md) |
 | Telephony Kit | [@ohos.telephony.vcard (VCard)](../../reference/apis-telephony-kit/js-apis-vcard.md) |
-
 <!--RP1End-->
-<!--no_check-->

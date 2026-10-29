@@ -3,16 +3,17 @@
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @enjoy_sunshine-->
-<!--Designer: @chengguohong; @tangjia15-->
+<!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=ab463549ba53ac7ad9c9f586570526c5d592d467 translatedAt=2026-10-09T13:15:56.081Z pushedAt=2026-10-10T07:12:09.085Z -->
 
-The **Bluetooth** module provides classic Bluetooth capabilities and Bluetooth Low Energy (BLE) scan and advertising.
+The **Bluetooth** module provides classic Bluetooth capabilities and [Bluetooth Low Energy (BLE)](../../connectivity/bluetooth/terminology.md#ble) scan and advertising.
 
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-> The APIs provided by this module are no longer maintained since API version 10. You are advised to use profile APIs of [@ohos.bluetooth.ble](js-apis-bluetooth-ble.md).
+> The APIs provided by this module are no longer maintained since API version 10. You are advised to use profile APIs of [@ohos.bluetooth.ble (Bluetooth BLE Module)](js-apis-bluetooth-ble.md).
 
 
 
@@ -2607,8 +2608,8 @@ panProfile.off('connectionStateChange', onReceiveEvent);
 
 Implements the Generic Attribute Profile (GATT) server. Before using an API of this class, you need to create a **GattServer** instance using **createGattServer()**.
 
-> **NOTE**<br>
-> This API is supported since API version 9 and deprecated since API version 10. You are advised to use [ble.GattServer](js-apis-bluetooth-ble.md#gattserver) instead. 
+> **NOTE**<br/>
+> This API is supported since API version 9 and deprecated since API version 10. You are advised to use [ble.GattServer](js-apis-bluetooth-ble.md#gattserver) instead.
 
 
 ### startAdvertising<sup>(deprecated)</sup>
@@ -2617,8 +2618,8 @@ startAdvertising(setting: AdvertiseSetting, advData: AdvertiseData, advResponse?
 
 Starts BLE advertising.
 
-> **NOTE**<br>
-> This API is supported since API version 9 and deprecated since API version 10. You are advised to use [ble.startAdvertising](js-apis-bluetooth-ble.md#blestartadvertising) instead. 
+> **NOTE**<br/>
+> This API is supported since API version 9 and deprecated since API version 10. You are advised to use [ble.startAdvertising](js-apis-bluetooth-ble.md#blestartadvertising) instead.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
@@ -2628,9 +2629,9 @@ Starts BLE advertising.
 
 | Name        | Type                                   | Mandatory  | Description            |
 | ----------- | ------------------------------------- | ---- | -------------- |
-| setting     | [AdvertiseSetting](#advertisesettingdeprecated) | Yes   | Settings related to BLE advertising.   |
-| advData     | [AdvertiseData](#advertisedatadeprecated)       | Yes   | Content of the BLE advertisement packet.     |
-| advResponse | [AdvertiseData](#advertisedatadeprecated)       | No   | Response to the BLE scan request.|
+| setting     | [AdvertiseSetting](#advertisesettingdeprecated) | Yes    | Advertising settings.    |
+| advData     | [AdvertiseData](#advertisedatadeprecated)       | Yes    | Advertising data.      |
+| advResponse | [AdvertiseData](#advertisedatadeprecated)       | No    | Advertising response. |
 
 **Error codes**
 
@@ -4621,7 +4622,7 @@ Defines the SPP configuration parameters.
 
 | Name    | Type               | Read-Only  | Optional  | Description         |
 | ------ | ------------------- | ---- | ---- | ----------- |
-| uuid   | string              | No   | No   | UUID of the SPP.|
+| uuid   | string              | No    | No    | Service UUID of the socket link type. |
 | secure | boolean             | No   | No   | Whether it is a secure channel.   |
 | type   | [SppType](#spptypedeprecated) | No   | No   | Type of the SPP link.   |
 
@@ -4957,7 +4958,7 @@ Defines the BLE advertising parameters.
 | Name         | Type   | Read-Only  | Optional  | Description                                      |
 | ----------- | ------- | ---- | ---- | ---------------------------------------- |
 | interval    | number  | No   | Yes   | Interval for BLE advertising. The minimum value is **32** slots (20 ms). The maximum value is **16384** slots. The default value is **1600** slots (1s).|
-| txPower     | number  | No   | Yes   | Transmit power, in dBm. The value range is -127 to 1. The default value is **-7**.  |
+| txPower     | number  | No    | Yes    | Transmit power, in dBm. The value range is –127 to 1. The default value is **-7**.   |
 | connectable | boolean | No   | Yes   | Whether the advertisement is connectable. The default value is **true**.                  |
 
 
@@ -5181,9 +5182,9 @@ Enumerates the major and minor classes of Bluetooth devices.
 | HEALTH_PULSE_OXIMETER                    | 0x0914 | Pulse oximeter.   |
 | HEALTH_PULSE_RATE                        | 0x0918 | Heart rate monitor.     |
 | HEALTH_DATA_DISPLAY                      | 0x091C | Health data display.    |
-| HEALTH_STEP_COUNTER                      | 0x0920 | Step counter.   |
+| HEALTH_STEP_COUNTER                      | 0x0920 | Step counter.    |
 | HEALTH_BODY_COMPOSITION_ANALYZER         | 0x0924 | Body composition analyzer. |
-| HEALTH_PEAK_FLOW_MONITOR                  | 0x0928 | Hygrometer.     |
+| HEALTH_PEAK_FLOW_MONITOR                  | 0x0928 | Peak flow monitor.      |
 | HEALTH_MEDICATION_MONITOR                | 0x092C | Medication monitor.   |
 | HEALTH_KNEE_PROSTHESIS                   | 0x0930 | Prosthetic knee.    |
 | HEALTH_ANKLE_PROSTHESIS                  | 0x0934 | Prosthetic ankle.    |
@@ -5202,8 +5203,8 @@ Enumerates the A2DP playing states.
 
 | Name               | Value   | Description     |
 | ----------------- | ------ | ------- |
-| STATE_NOT_PLAYING | 0x0000 | Not playing. |
-| STATE_PLAYING     | 0x0001 | Playing.|
+| STATE_NOT_PLAYING | 0 | Not playing.  |
+| STATE_PLAYING     | 1 | Playing. |
 
 
 ## ProfileId<sup>(deprecated)</sup>

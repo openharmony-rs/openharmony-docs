@@ -5,6 +5,7 @@
 <!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=fea09459a0476f095195448c2ce1ed787d76ab6a translatedAt=2026-10-08T12:15:27.477Z pushedAt=2026-10-12T10:50:59.188Z -->
 
 ## Overview
 
@@ -48,11 +49,13 @@ Enumerates the audio operation results.
 | Enum Item| Description|
 | -- | -- |
 | AUDIOCOMMON_RESULT_SUCCESS = 0 | Operation successful.|
+| AUDIOCOMMON_RESULT_ERROR_PERMISSION_DENIED = 201 | The caller does not have the required permission.<br>**Since:** 26.0.0 |
 | AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM = 6800101 | Incorrect parameter.|
 | AUDIOCOMMON_RESULT_ERROR_NO_MEMORY = 6800102 | Insufficient memory.|
 | AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE = 6800103 | Invalid state.|
 | AUDIOCOMMON_RESULT_ERROR_UNSUPPORTED = 6800104 | Unsupported operation.|
 | AUDIOCOMMON_RESULT_ERROR_TIMEOUT = 6800105 | Operation timeout.|
+| AUDIOCOMMON_RESULT_ERROR_FRAME_LENGTH_MISMATCH = 6800106 | The input audio data does not match the required frame length.<br>**Since:** 26.0.0 |
 | AUDIOCOMMON_RESULT_ERROR_STREAM_LIMIT = 6800201 | Reached the maximum number of audio streams allowed.|
 | AUDIOCOMMON_RESULT_ERROR_SYSTEM = 6800301 | System error.|
 

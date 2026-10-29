@@ -6,6 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=d93383360d36e72d15ef3e14ccb0a6b358a4f8a5 translatedAt=2026-10-09T01:44:07.607Z pushedAt=2026-10-10T02:14:51.164Z -->
 
 The ECIES algorithm is supported since API version 26.0.0. It is an encryption algorithm based on elliptic curve cryptography.
 
@@ -41,9 +42,7 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 
    > **NOTE**
    >
-   > If the GCM mode is used, **authTag** returned by **OH_CryptoSymCipher_Final()** will be used to initialize the authentication information during decryption and needs to be manually saved.
-   >
-   > In GCM mode, the algorithm library currently supports only 16‑byte values for **authTag**, which serve as authentication information for initialization during decryption..
+   > In GCM mode, in a single encryption process, concatenating the results of each `update` and the final `final` call yields "ciphertext + `authTag`", where `authTag` is the last 16 bytes. The remaining part is the ciphertext. If `null` is passed to the `data` parameter of `final`, the result of `final` is `authTag`.
 
 ### Decryption
 

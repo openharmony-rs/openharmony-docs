@@ -1,12 +1,11 @@
 # Container Breakpoint (ContainerReader)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @song-song-song-->
 <!--Designer: @fenglinbailu-->
 <!--Tester: @weixin_45530366-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=087470085268b4c7968360a1498b1da15f27d467 translatedAt=2026-07-06T13:07:02.335Z pushedAt=2026-07-07T06:21:41.499Z -->
+<!-- md-trans-meta sourceCommit=8d44de8409972fb2a81e8c9e83c6d9cf4dd46fe3 translatedAt=2026-10-12T09:27:51.092Z pushedAt=2026-10-13T08:04:14.261Z -->
 
 The container breakpoint component [ContainerReader](../reference/apis-arkui/arkui-ts/ts-container-containerreader.md) is a responsive layout solution provided by ArkUI. Starting from API version 26.0.0, it allows you to implement adaptive layouts based on container size rather than window size. Compared with traditional window breakpoints, container breakpoints provide finer-grained layout control, enabling components to present different layout effects under different container sizes.
 
@@ -17,12 +16,10 @@ In actual development, ContainerReader is often used inside [Flex](../reference/
 **ContainerReader** provides the following key capabilities.
 
 - **Container-level size awareness**: Determines breakpoint values based on the component's own actual size, rather than the window size. Suitable for component-level responsive layout, nested layout scenarios, and reusable component development.
-
 - **Real-time retrieval via two-way binding**: Obtains container size and breakpoint information in real time through state variables.
-
 - **Width/height dual mode**: Supports both width breakpoints and height breakpoints to meet adaptive requirements in different dimensions.
-
 - **Custom breakpoint thresholds**: Flexibly configures layout strategies corresponding to different size ranges through the [breakpointConfig](../reference/apis-arkui/arkui-ts/ts-container-containerreader.md#breakpointconfig) attribute.
+
 
 ## Layout Specifications
 
@@ -38,16 +35,13 @@ Starting from API version 26.0.0, the layout specifications of the [ContainerRea
 | Flex, Row, Column | Fills the parent container. | Fills the remaining space of the parent container. |
 | Other component types | Fills the parent component. | Fills the parent component. |
 
-When [ContainerReader](../reference/apis-arkui/arkui-ts/ts-container-containerreader.md) is used as a child component, its size is determined by the parent container. When the parent container is **Flex**, **Row**, or **Column**, **ContainerReader** automatically fills the remaining space of the parent container along its layout direction.
 
-> **NOTE**
->
-> When using **ContainerReader**, you need to simultaneously import **ContainerReaderAttribute**; otherwise, it will cause a compilation error.
+When [ContainerReader](../reference/apis-arkui/arkui-ts/ts-container-containerreader.md) is used as a child component, its size is determined by the parent container. When the parent container is **Flex**, **Row**, or **Column**, **ContainerReader** automatically fills the remaining space of the parent container along its layout direction.
 
 <!-- @[FillTheSpace](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ContainerReader/entry/src/main/ets/pages/layoutSpecifications/FillTheSpace.ets) -->  
 
 ``` TypeScript
-import {ContainerReader, ContainerReaderAttribute, Size} from '@kit.ArkUI';
+import {ContainerReader,  Size} from '@kit.ArkUI';
 @Entry
 @Component
 struct Example {
@@ -79,14 +73,10 @@ struct Example {
 
 When [ContainerReader](../reference/apis-arkui/arkui-ts/ts-container-containerreader.md) is used as a child component of **Flex**, **Row**, or **Column**, the system prioritizes size calculation for non-**ContainerReader** child components, and then allocates space to the **ContainerReader** component based on the remaining container space and your settings. This is particularly suitable for scenarios where fixed content and adaptive content coexist.
 
-> **NOTE**
->
-> When using **ContainerReader**, you need to simultaneously import **ContainerReaderAttribute**; otherwise, it will cause a compilation error.
-
 <!-- @[DivideRemainingSpace](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ContainerReader/entry/src/main/ets/pages/layoutSpecifications/DivideRemainingSpace.ets) -->  
 
 ``` TypeScript
-import {ContainerReader, ContainerReaderAttribute, Size} from '@kit.ArkUI';
+import {ContainerReader,  Size} from '@kit.ArkUI';
 @Entry
 @Component
 struct Example {
@@ -127,14 +117,10 @@ struct Example {
 
 When there are multiple [ContainerReader](../reference/apis-arkui/arkui-ts/ts-container-containerreader.md) child components in a **Flex**, **Row**, or **Column** container, the first **ContainerReader** in your writing order will fill the remaining space, while the main axis size of the other **ContainerReader** components will be **0**. However, you can use the **layoutWeight** attribute to make multiple **ContainerReader** components equally divide the remaining space.
 
-> **NOTE**
->
-> When using **ContainerReader**, you need to simultaneously import **ContainerReaderAttribute**; otherwise, it will cause a compilation error.
-
 <!-- @[DivideRemainingSpaceEqually](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ContainerReader/entry/src/main/ets/pages/layoutSpecifications/DivideRemainingSpaceEqually.ets) -->  
 
 ``` TypeScript
-import {ContainerReader, ContainerReaderAttribute, Size} from '@kit.ArkUI';
+import {ContainerReader,  Size} from '@kit.ArkUI';
 @Entry
 @Component
 struct Example {
@@ -195,6 +181,7 @@ struct Example {
 
 ![](figures/containerReader-development-remainSize-layoutWeight.png)
 
+
 ## Constraints
 
 **State variable requirements**
@@ -232,19 +219,21 @@ The size of [ContainerReader](../reference/apis-arkui/arkui-ts/ts-container-cont
 
 Therefore, ensure that the parent container has a definite size. The parent container containing the **ContainerReader** component should not rely on child nodes to determine its own size, and the **ContainerReader** component should not rely on the size of its own child nodes to determine its size.
 
+
 ## Obtaining the ContainerReader Container Size
 
 **ContainerReader** provides the **ContainerReader** API and **breakpointConfig** attribute.
 
-- ContainerReader API 
+- ContainerReader API
 
    [ContainerReader](../reference/apis-arkui/arkui-ts/ts-container-containerreader.md) is the core component for implementing container breakpoints, and its usage requirements are as follows. All parameters of [ContainerReaderInfo](../reference/apis-arkui/arkui-ts/ts-container-containerreader.md#containerreaderinfo) must be two-way bound via state variables. **ContainerReader** uses a two-way binding mechanism to update the backend-calculated size and breakpoint values to the state variables in real time. Do not attempt to set the **ContainerReader** size by changing the size of [ContainerReaderInfo](../reference/apis-arkui/arkui-ts/ts-container-containerreader.md#containerreaderinfo) here. When using state variables, you need to add the [!!](state-management/arkts-new-binding.md) suffix to trigger the two-way binding update.
 
+
 - breakpointConfig attribute
 
-Custom breakpoint thresholds can be configured via the [breakpointConfig](../reference/apis-arkui/arkui-ts/ts-container-containerreader.md#breakpointconfig) attribute. The breakpoint array must be a monotonically increasing array. A maximum of five width breakpoints are supported, meaning the array can have a maximum length of four; a maximum of three height breakpoints are supported, meaning the array can have a maximum length of two. The breakpoint interval is a left-closed, right-open interval `[breakpoint[i], breakpoint[i+1])`. The unit for width breakpoint values is vp; height breakpoint values represent the ratio of the component height to its width and are unitless.
+   Custom breakpoint thresholds can be configured via the [breakpointConfig](../reference/apis-arkui/arkui-ts/ts-container-containerreader.md#breakpointconfig) attribute. The breakpoint array must be a monotonically increasing array. A maximum of five width breakpoints are supported, meaning the array can have a maximum length of four; a maximum of three height breakpoints are supported, meaning the array can have a maximum length of two. The breakpoint interval is a left-closed, right-open interval `[breakpoint[i], breakpoint[i+1])`. The unit for width breakpoint values is vp; height breakpoint values represent the ratio of the component height to its width and are unitless.
 
-**Exception handling rules:**
+   **Exception handling rules:**
 
    | Exception | Handling Method |
    | -------- | -------- |
@@ -252,7 +241,7 @@ Custom breakpoint thresholds can be configured via the [breakpointConfig](../ref
    | The array is not monotonically increasing. | The subarray where the increase ends is used. |
    | The array contains exceptional values (non-numeric, etc.). | Invalid values are skipped, and only valid values are processed. |
 
-**Example:**
+   **Example:**
 
    ``` TypeScript
    // Example 1: The array exceeds the maximum length [320, 600, 840, 1440, 2000, 3000]
@@ -268,6 +257,7 @@ Custom breakpoint thresholds can be configured via the [breakpointConfig](../ref
    .breakpointConfig({ width: [100, undefined, 300, 400] })
    ```
 
+
 The following describes the simple development steps for container breakpoints.
 
 1. Declare state variables.
@@ -275,7 +265,7 @@ The following describes the simple development steps for container breakpoints.
    First, declare and initialize state variables for storing container size and breakpoint information to prevent exceptions caused by using them before the **ContainerReader**'s size and breakpoints are obtained.
 
    <!-- @[DevelopmentSteps1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ContainerReader/entry/src/main/ets/pages/developmentSteps/DevelopmentSteps.ets) -->  
-
+   
    ``` TypeScript
    @State containerSize: Size = { width: 0, height: 0 };
    @State widthBp: WidthBreakpoint = WidthBreakpoint.WIDTH_MD;
@@ -286,7 +276,7 @@ The following describes the simple development steps for container breakpoints.
    Bind the state variables to the **ContainerReader** component, using the `!!` suffix to trigger two-way binding updates.
 
    <!-- @[DevelopmentSteps2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ContainerReader/entry/src/main/ets/pages/developmentSteps/DevelopmentSteps.ets) -->  
-
+   
    ``` TypeScript
    ContainerReader({
      size: this.containerSize!!,
@@ -303,25 +293,18 @@ The following describes the simple development steps for container breakpoints.
 3. Determine the container size.
 
    Case 1: **ContainerReader** does not explicitly set a size; it automatically obtains the size in the following ways.
-
    - **Fill the parent container**: When **ContainerReader** is the only child component of the parent container, it automatically fills the parent container.
-
    - **Fill the remaining space**: When the parent container **Flex**, **Row**, or **Column** has child components that are not of the **ContainerReader** type, **ContainerReader** occupies the remaining space.
-
    - **Allocate remaining space proportionally**: When the parent container **Flex**, **Row**, or **Column** has multiple **ContainerReader** child components, **ContainerReader** allocates the remaining space via **layoutWeight**.
 
    Scenario 2: You can set size attributes such as layout constraints for **ContainerReader** to constrain its size. When a **Flex**, **Row**, or **Column** container has multiple **ContainerReader** child components, generally the first **ContainerReader** in your writing order will fill the remaining space, and the main axis size of the other **ContainerReader** components will be **0**. When you set size constraints on a **ContainerReader** that appears earlier in the writing order, space is allocated to that **ContainerReader** according to the size constraints, and the remaining space is then allocated to the next **ContainerReader**.
 
    Taking the scenario of filling the parent container in Scenario 1 as an example, **Flex** allocates space equal to **Flex**'s own size to the child component **ContainerReader**.
 
-   > **NOTE**
-   >
-   > When using **ContainerReader**, you need to simultaneously import **ContainerReaderAttribute**; otherwise, it will cause a compilation error.
-
    <!-- @[DevelopmentSteps](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ContainerReader/entry/src/main/ets/pages/developmentSteps/DevelopmentSteps.ets) -->  
-
+   
    ``` TypeScript
-   import {ContainerReader, ContainerReaderAttribute, Size} from '@kit.ArkUI';
+   import {ContainerReader,  Size} from '@kit.ArkUI';
    @Entry
    @Component
    struct Example {
@@ -349,20 +332,18 @@ The following describes the simple development steps for container breakpoints.
    }
    ```
 
+
    ![](figures/containerReader-development-demo1.png)
+
 
 ## Implementing Independent Breakpoints
 
 In the same component, you can use multiple **ContainerReader** components simultaneously, each with its own independent breakpoint state, enabling more refined layout control.
 
-> **NOTE**
->
-> When using **ContainerReader**, you need to simultaneously import **ContainerReaderAttribute**; otherwise, it will cause a compilation error.
-
 <!-- @[IndependentBreakpoints](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ContainerReader/entry/src/main/ets/pages/developmentDemo/IndependentBreakpoints.ets) -->  
 
 ``` TypeScript
-import {ContainerReader, ContainerReaderAttribute, Size} from '@kit.ArkUI';
+import {ContainerReader,  Size} from '@kit.ArkUI';
 @Entry
 @Component
 struct MultiContainerExample {
@@ -420,18 +401,15 @@ struct MultiContainerExample {
 
 ![](figures/containerReader-development-multi.png)
 
+
 ## Setting Column Count of a Grid Component Based on Container Breakpoints
 
 In multi-device development, a grid component (such as [Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md)) can set different numbers of columns based on its own container size, implementing an adaptive list layout.
 
-> **NOTE**
->
-> When using **ContainerReader**, you need to simultaneously import **ContainerReaderAttribute**; otherwise, it will cause a compilation error.
-
 <!-- @[GridComponentAdaptiveColumnSettings](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ContainerReader/entry/src/main/ets/pages/developmentDemo/GridComponentAdaptiveColumnSettings.ets) -->  
 
 ``` TypeScript
-import {ContainerReader, ContainerReaderAttribute, Size} from '@kit.ArkUI';
+import {ContainerReader,  Size} from '@kit.ArkUI';
 @Entry
 @Component
 struct GridBreakpointExample {
@@ -501,20 +479,18 @@ struct GridBreakpointExample {
 }
 ```
 
+
 ![](figures/containerReader-development-grid.png)
+
 
 ## Custom Component Adaptive Layout Based on Container Breakpoint
 
 You can create custom components that use **ContainerReader** internally to implement adaptive internal layout, allowing the component to present the best effect in different usage scenarios.
 
-> **NOTE**
->
-> When using **ContainerReader**, you need to simultaneously import **ContainerReaderAttribute**; otherwise, it will cause a compilation error.
-
 <!-- @[CustomComponentAdaptiveLayout](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ContainerReader/entry/src/main/ets/pages/developmentDemo/CustomComponentAdaptiveLayout.ets) -->  
 
 ``` TypeScript
-import {ContainerReader, ContainerReaderAttribute, Size} from '@kit.ArkUI';
+import {ContainerReader,  Size} from '@kit.ArkUI';
 
 // Adaptive card component, internally uses ContainerReader to sense the container size.
 @Component
@@ -580,18 +556,15 @@ struct AdaptiveCardExample {
 
 ![](figures/containerReader-development-custom.png)
 
+
 ## Adaptive Left-Right Split Layout
 
 On a master-detail page, the left side has a fixed-width **Tab** label, and the right side has an adaptive detail area. The right detail area uses **ContainerReader** to automatically switch the layout based on the remaining width: a vertical arrangement on narrow screens and a horizontal arrangement on wide screens.
 
-> **NOTE**
->
-> When using **ContainerReader**, you need to simultaneously import **ContainerReaderAttribute**; otherwise, it will cause a compilation error.
-
 <!-- @[LeftOrRightSplitLayout](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ContainerReader/entry/src/main/ets/pages/developmentDemo/LeftOrRightSplitLayout.ets) -->  
 
 ``` TypeScript
-import { ContainerReader, ContainerReaderAttribute, Size } from '@kit.ArkUI';
+import { ContainerReader,  Size } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -706,5 +679,3 @@ Vertical arrangement in narrow screen:
 Horizontal arrangement in wide screen:
 
 ![](figures/containerReader-development-tabs2.png)
-
-<!--no_check-->

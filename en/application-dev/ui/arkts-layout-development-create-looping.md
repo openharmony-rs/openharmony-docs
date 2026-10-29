@@ -5,11 +5,11 @@
 <!--Designer: @Hu_ZeQi-->
 <!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
-
+<!-- md-trans-meta sourceCommit=265662c3f1bebcccc82375e5952ee48da32366a3 translatedAt=2026-10-12T09:29:23.412Z pushedAt=2026-10-13T08:46:32.908Z -->
 
 The [Swiper](../reference/apis-arkui/arkui-ts/ts-container-swiper.md) component is a container that is able to display child components in looping mode. It is typically used in scenarios such as display of recommended content on the home page.
 
-The **Swiper** component provides a preloading mechanism, which you can use to improve the swipe experience in complex scenarios. This mechanism allows for prebuilding and prerendering components when the main thread is idle. <!--Del-->For details, see [High-Performance Swiper Development](../performance/swiper_optimization.md).<!--DelEnd-->
+For complex page scenarios, you can use the preloading mechanism of the Swiper component to build and lay out components in advance by leveraging the idle time of the main thread, thereby optimizing the swiping experience.
 
 
 ## Layout and Constraints
@@ -154,9 +154,9 @@ The selected navigation indicator has a width of 30 vp and a height of 15 vp wit
 
 ![ind](figures/ind.PNG)
 
-You can set the [displayArrow](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#displayarrow10) attribute of **Swiper** to control the size, position, color, and background of navigation point arrows, and whether to display arrows on mouse hover.
+You can set the [displayArrow](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#displayarrow10) attribute of **Swiper** to control the size, position, color, and background of navigation indicator arrows, and whether to display arrows on mouse hover.
 
-- Example of using the navigation point arrows in the default style:
+- Example of using the navigation indicator arrows in the default style:
 
 <!-- @[default_arrow_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/swiper/SwiperIndicatorStyle.ets) -->
 
@@ -170,7 +170,7 @@ You can set the [displayArrow](../reference/apis-arkui/arkui-ts/ts-container-swi
 
 ![arrow1](figures/arrow1.gif)
 
-- Example of customizing the style of navigation point arrows:
+- Example of customizing the style of navigation indicator arrows:
 
 In this example, the arrows are displayed on both sides of the component, with a size of 18 vp and a color of blue.
 
@@ -195,7 +195,7 @@ In this example, the arrows are displayed on both sides of the component, with a
 
 ## Page Switching Mode
 
-The **Swiper** component supports three page switching modes: swiping with fingers, touching navigation points, and using a controller. The following example shows how to switch between pages using a controller.
+The **Swiper** component supports three page switching modes: swiping with fingers, touching navigation indicators, and using a controller. The following example shows how to switch between pages using a controller.
 
 <!-- @[switch_pages](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/swiper/SwiperPageSwitchMethod.ets) -->
 
@@ -597,7 +597,7 @@ Swiper(
 
 ## Ignoring the Navigation Indicator Component Size
 
-After the [bottom](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#bottom) of the navigation point is set to **0**, there is still a certain spacing between the bottom of the navigation point and the bottom of the **Swiper**. To eliminate this spacing, you can call the [bottom](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#bottom19)(bottom, ignoreSize) attribute from API version 19. Set **ignoreSize** to **true** to ignore the navigation indicator component size.
+After the [bottom](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#bottom) of the navigation indicator is set to **0**, there is still a certain spacing between the bottom of the navigation indicator and the bottom of the **Swiper**. To eliminate this spacing, you can call the [bottom](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#bottom19)(bottom, ignoreSize) attribute from API version 19. Set **ignoreSize** to **true** to ignore the navigation indicator component size.
 
 - Ignoring the dot navigation indicator component size:
 
@@ -846,11 +846,11 @@ export struct SwiperVisibleContentPosition {
 
 ![maintainVisibleContentPosition_true](figures/maintainVisibleContentPosition_true.gif)
 
-<!--Del-->## Samples
+## Samples
 
 The following samples are provided to help you better understand how to develop **Swiper**:
 
 - [Electronic Album (ArkTS) (API9)](https://gitcode.com/openharmony/codelabs/tree/master/ETSUI/ElectronicAlbum)
 
-- [Using Swiper (ArkTS) (API9)](https://gitcode.com/openharmony/codelabs/tree/master/ETSUI/SwiperArkTS)<!--DelEnd-->
+- [Using Swiper (ArkTS) (API9)](https://gitcode.com/openharmony/codelabs/tree/master/ETSUI/SwiperArkTS)
 <!--RP1--><!--RP1End-->

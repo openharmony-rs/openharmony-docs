@@ -44,13 +44,13 @@ OpenHarmony的DFX子系统提供了为应用框架以及系统底座核心模块
 | 序号  | **Trace**                               | **参数说明**         | **描述**                               |
 |:--- | --------------------------------------- | ---------------- | ------------------------------------ |
 | 1   | OnVsyncEvent now:%" PRIu64 "            | 当前时间戳--纳秒级       | 收到Vsync信号，渲染流程开始                     |
-| 2   | FlushVsync                              |                  | 刷新视图同步事件，包括记录帧信息、刷新任务、绘制渲染上下文、处理用户输入 |
-| 3   | UITaskScheduler::FlushTask              |                  | 刷新UI界面，包括布局、渲染和动画等                   |
-| 4   | FlushMessages                           |                  | 发送消息通知图形侧进行渲染                        |
-| 5   | FlushLayoutTask                         |                  | 执行布局任务                               |
+| 2   | FlushVsync                              |        /          | 刷新视图同步事件，包括记录帧信息、刷新任务、绘制渲染上下文、处理用户输入 |
+| 3   | UITaskScheduler::FlushTask              |        /          | 刷新UI界面，包括布局、渲染和动画等                   |
+| 4   | FlushMessages                           |        /          | 发送消息通知图形侧进行渲染                        |
+| 5   | FlushLayoutTask                         |        /          | 执行布局任务                               |
 | 6   | FlushRenderTask %zu                     | 当前页面上的需要渲染的节点的数量 | 总渲染任务执行                              |
-| 7   | Layout                                  |                  | 节点布局                                 |
-| 8   | FrameNode::RenderTask                   |                  | 单个渲染任务执行                             |
+| 7   | Layout                                  |        /          | 节点布局                                 |
+| 8   | FrameNode::RenderTask                   |        /          | 单个渲染任务执行                             |
 | 9   | ListLayoutAlgorithm::MeasureListItem:%d | 当前列表项索引          | 计算列表项的布局尺寸                           |
 
 图形图像子系统中的Render Service，是负责界面内容绘制的部件，处理由各个应用提交的统一渲染任务，将不同应用渲染的图层进行合并、送显。在收到每个Vsync周期信号时，首先处理应用提交的指令，包括应用渲染树节点的新增、删除、修改，然后进行动画计算和遮挡计算，以上是为了对统一渲染树进行更新。接下来开始对渲染树执行绘制，首先预处理每个节点，计算绝对位置和脏区信息，然后针对脏区进行绘制，优先使用硬件合成器进行绘制，当遇到无法合成绘制的，交由GPU执行重绘，绘制的所有结果都将存入屏幕缓冲区，最后将绘制结果提交送显、上屏展示。
@@ -87,12 +87,12 @@ OpenHarmony的DFX子系统提供了为应用框架以及系统底座核心模块
 |:------ | ------------------------------ | -------------------------------------- | ------------------------------------------------ |
 | 1      | OnIdle, targettime:%" PRId64 " | 时间戳，在这个时间之前完成该任务                       | idle事件循环中检查是否有新的事件需要处理，如果有，则将任务调度器加入UI线程中并执行预测任务 |
 | 2      | expiringItem_ count:[%zu]      | 懒加载Item的个数                             | 预构建，包含处理所有懒加载项                                   |
-| 3      | List predict                   |                                        | 添加预测布局任务                                         |
+| 3      | List predict                   |                 /                       | 添加预测布局任务                                         |
 | 4      | Builder:BuildLazyItem [%d]     | 需创建的项目索引                               | 在需要时创建项，并进行缓存                                    |
 | 5      | Layout[%s][self:%d][parent:%d] | tag标签，当前节点在UINode树中的索引，父节点在UINode树中的索引 | 当前帧节点布局                                          |
 | 6      | Build[%s][self:%d][parent:%d]  | tag标签，当前节点在UINode树中的索引，父节点在UINode树中的索引 | 当前帧节点构建                                          |
 | 7      | CustomNode:BuildRecycle %s     | JS视图名称                                 | 触发复用渲染                                           |
-| 8      | ExecuteJS                      |                                        | 执行JS代码                                           |
+| 8      | ExecuteJS                      |                 /                       | 执行JS代码                                           |
 
 ### 页面加载
 
@@ -104,9 +104,9 @@ OpenHarmony的DFX子系统提供了为应用框架以及系统底座核心模块
 
 | **序号** | **Trace**                                                     | **参数说明**                               | **描述**                       |
 |:------ | ------------------------------------------------------------- | -------------------------------------- | ---------------------------- |
-| 1      | PageRouterManager::RunPage                                    |                                        | 页面路由预处理及加载页面                 |
-| 2      | PageRouterManager::LoadPage                                   |                                        | 加载页面并路由                      |
-| 3      | JsiDeclarativeEngine::LoadPageSource                          |                                        | 加载一个JavaScript文件并将其解析为ABC字节码 |
+| 1      | PageRouterManager::RunPage                                    |                   /                     | 页面路由预处理及加载页面                 |
+| 2      | PageRouterManager::LoadPage                                   |                   /                     | 加载页面并路由                      |
+| 3      | JsiDeclarativeEngine::LoadPageSource                          |                   /                     | 加载一个JavaScript文件并将其解析为ABC字节码 |
 | 4      | JsiDeclarativeEngine::LoadJsWithModule Execute Page code : %s | 页面url地址                                | 执行页面代码                       |
 | 5      | Build[%s][self:%d][parent:%d]                                 | tag标签，当前节点在UINode树中的索引，父节点在UINode树中的索引 | 当前帧节点构建                      |
 | 6      | CustomNode:BuildItem %s                                       | JS视图名称                                 | 渲染子节点然后将其挂载到父节点上             |
@@ -115,6 +115,7 @@ OpenHarmony的DFX子系统提供了为应用框架以及系统底座核心模块
 ## Trace实践
 
 以下示例采用`LazyForEach`的方式遍历列表，并借助[SmartPerf-Host调试工具](../../device-dev/device-test/smartperf-host.md)追踪代码执行流程。
+
 在[代码示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/Performance/PerformanceLibrary/feature/trace)中，使用一个List容器组件，通过懒加载方式来创建出120个IconView自定义组件。在IconView组件中，使用了Flex容器组件包含Image和Text子组件，形成了图文混合列表。
 
 ```ts
@@ -268,6 +269,7 @@ export struct IconItem {
 > [性能打点跟踪开发指导（Native）](../dfx/hitracemeter-guidelines-ndk.md)
 
 添加自定义Trace后，可在[SmartPerf-Host调试工具](../../device-dev/device-test/smartperf-host.md)上查看，自定义Trace将以独立泳道的形式呈现在对应打点的进程下。
+
 下图两条泳道使用了startTrace和finishTrace方法，表示程序运行过程中，指定标签从调用startTrace到调用finishTrace的耗时统计。图中记录了CUSTOM_TRACE_TAG_1和CUSTOM_TRACE_TAG_2两个标签，先后呈现了2个标签的耗时统计。
 
 **图12 自定义Trace示例**
@@ -282,16 +284,17 @@ export struct IconItem {
 
 ## 性能打点原理
 
-Trace的生成依赖了DFX子系统中的HiTrace组件，其中包含的hiTraceMeter模块为开发者提供系统性能打点接口，具体细节可参考下方链接：
+Trace的生成依赖了DFX子系统中的HiTrace组件，其中包含的hiTraceMeter模块(trace.h)为开发者提供系统性能打点接口，具体细节可参考下方链接：
 
 > [HiTrace组件](https://gitcode.com/openharmony/hiviewdfx_hitrace)
-> [hiTraceMeter模块](../reference/apis-performance-analysis-kit/capi-trace-h.md)
+> [trace.h](../reference/apis-performance-analysis-kit/capi-trace-h.md)
 
 hiTraceMeter拥有两套开始和结束打点接口，实现对逻辑行为的耗时统计。由于耗时统计大多数以方法为单位，所以hiTraceMeter也提供了快速打点单个方法执行耗时的宏定义HITRACE_METER、HITRACE_METER_NAME、HITRACE_METER_FMT，使用它们，只需要在方法起始位置调用即可。这些宏定义依赖了方法内局部变量的生命周期，其原理是在方法开始时构造了一个打点实例，在实例构造函数中调用开始打点接口，当方法执行完毕，打点实例随着方法结束而执行析构，在实例析构函数中调用结束打点接口。
 
 ### App中的打点示例
 
 ArkUI框架子系统应用hiTraceMeter的例子，来源于[ArkUI开发框架](https://gitcode.com/openharmony/arkui_ace_engine)源码。
+
 以下代码对hiTraceMeter进行接口封装，其原理与HITRACE_METER等相同，依赖方法内局部变量的生命周期实现快速打点。
 
 ```cpp
@@ -329,6 +332,7 @@ void PipelineContext::FlushVsync(uint64_t nanoTimestamp, uint32_t frameCount)
 ### RS中的打点示例
 
 图形子系统应用hiTraceMeter的例子，来源于[图形子系统](https://gitcode.com/openharmony/graphic_graphic_2d)源码。
+
 以下代码对hiTraceMeter进行接口封装。
 
 ```cpp
@@ -347,7 +351,7 @@ void PipelineContext::FlushVsync(uint64_t nanoTimestamp, uint32_t frameCount)
 #define RS_TRACE_FUNC() RS_TRACE_NAME(__func__)
 ```
 
-以下代码在显示器画面绘制方法。在方法开头调用宏定义RS_TRACE_NAME，将函数名ProcessDisplayRenderNode与对应的显示器id组合后，作为Trace名称记录下来，同时由于其本质是使用了快速打点单个方法的宏定义HITRACE_METER_NAME，于是只需要调用一次，即可收集到ProcessDisplayRenderNode函数的执行起终点时间，得出执行耗时。
+以下代码在显示器画面绘制方法。在方法开头调用宏定义RS_TRACE_NAME，将函数名ProcessDisplayRenderNode与对应的显示器id组合后，作为Trace名称记录下来，同时由于其本质是使用了快速打点单个方法的宏定义HITRACE_METER_NAME，于是只需要调用一次，即可收集到ProcessDisplayRenderNode函数的执行起止时间，得出执行耗时。
 
 ```cpp
 // rosen/modules/render_service/core/pipeline/rs_surface_capture_task.cpp

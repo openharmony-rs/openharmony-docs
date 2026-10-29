@@ -1,12 +1,11 @@
 # Linear Layout (Row/Column)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @camlostshi-->
-<!--Designer: @lanshouren-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=871010847291a8d5221a0bd1c554d4d2cba1ab41 translatedAt=2026-08-01T00:32:39.117Z pushedAt=2026-08-03T08:28:21.087Z -->
+<!-- md-trans-meta sourceCommit=45ec2d938cfede23d9ca90fe41c0d1f3e7b2b01d translatedAt=2026-10-12T09:30:43.010Z pushedAt=2026-10-13T08:54:40.477Z -->
 
 ## Overview
 
@@ -14,15 +13,18 @@ Linear layout is the most frequently used layout in development, implemented usi
 
 > **NOTE**
 >
-> When nesting multiple components in a complex UI, excessive nesting depth or too many nested components in layout containers will incur additional overhead. It is recommended to optimize performance by removing redundant nodes, using layout boundaries to reduce layout calculations, and properly applying rendering control syntax and layout component methods.
+> When nesting multiple components in a complex UI, excessive nesting depth or too many nested components in layout containers will incur additional overhead. It is recommended to optimize performance by removing redundant nodes, using layout boundaries to reduce layout calculations, and properly applying rendering control syntax and layout component methods. For details, see [Layout Optimization](https://developer.huawei.com/consumer/en/doc/doccenter-capabilities/arkts-layout-optimization-guidance).
+
 
   **Figure 1** Child element arrangement in a Column container
 
 ![arrangement-child-elements-column](figures/arrangement-child-elements-column.png)
 
+
   **Figure 2** Child element arrangement in a Row container
 
 ![arrangement-child-elements-row](figures/arrangement-child-elements-row.png)
+
 
 ## Basic Concepts
 
@@ -36,9 +38,11 @@ Linear layout is the most frequently used layout in development, implemented usi
 
 - Spacing: distance between child elements.
 
+
 ## Spacing Child Elements Along the Arrangement Direction
 
 Inside a layout container, you can use the [space](../reference/apis-arkui/arkui-ts/ts-container-row.md#rowoptions18) attribute of the [Row](../reference/apis-arkui/arkui-ts/ts-container-row.md) component or the [space](../reference/apis-arkui/arkui-ts/ts-container-column.md#columnoptions18) attribute of the [Column](../reference/apis-arkui/arkui-ts/ts-container-column.md) component to set the spacing between child elements along the main axis, creating an evenly spaced effect.
+
 
 ### In the Column Container
 
@@ -57,13 +61,16 @@ Column({ space: 20 }) {
 }.width('100%')
 ```
 
+
 ![arrangement-direction-column-sample](figures/arrangement-direction-column-sample.png)
+
 
 ### In the Row Container
 
   **Figure 4** Layout child element spacing in the arrangement direction in the Row container
 
 ![arrangement-direction-row](figures/arrangement-direction-row.png)
+
 
 <!-- @[RowLayoutExample_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/linearlayout/RowLayoutExample.ets) -->
 
@@ -82,6 +89,7 @@ Row({ space: 35 }) {
 
 In the layout container, you can use the [justifyContent](../reference/apis-arkui/arkui-ts/ts-container-column.md#justifycontent8) attribute to set the arrangement mode of child elements along the main axis. The arrangement may begin from the start point or end point of the main axis, or the space of the main axis can be evenly divided.
 
+
 ### Vertical Alignment of Child Elements in the Column Container
 
   **Figure 5** Vertical alignment of child elements in the Column container
@@ -91,7 +99,7 @@ In the layout container, you can use the [justifyContent](../reference/apis-arku
 - **justifyContent(FlexAlign.Start)** (default value): The elements are vertically aligned with each other toward the start edge of the container.
 
   <!-- @[ColumnLayoutJustifyContentStart_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/linearlayout/ColumnLayoutJustifyContentStart.ets) -->
-
+  
   ``` TypeScript
   Column({}) {
     Column() {
@@ -110,7 +118,7 @@ In the layout container, you can use the [justifyContent](../reference/apis-arku
 - **justifyContent(FlexAlign.Center)**: The elements are vertically aligned with each other toward the center of the container. The space between the first component and the start edge is the same as that between the last component and the end edge.
 
   <!-- @[ColumnLayoutJustifyContentCenter_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/linearlayout/ColumnLayoutJustifyContentCenter.ets) -->
-
+  
   ``` TypeScript
   Column({}) {
     Column() {
@@ -129,7 +137,7 @@ In the layout container, you can use the [justifyContent](../reference/apis-arku
 - **justifyContent(FlexAlign.End)**: Aligns elements to the end in the vertical direction. The last element is aligned with the end of the line, and the other elements are aligned with the one after them.
 
   <!-- @[ColumnLayoutJustifyContentEnd_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/linearlayout/ColumnLayoutJustifyContentEnd.ets) -->
-
+  
   ``` TypeScript
   Column({}) {
     Column() {
@@ -148,7 +156,7 @@ In the layout container, you can use the [justifyContent](../reference/apis-arku
 - **justifyContent(FlexAlign.SpaceBetween)**: The elements are evenly distributed vertically. The space between any two adjacent elements is the same. The first element is aligned with the start edge, the last element is aligned with the end edge, and the remaining elements are distributed so that the space between any two adjacent elements is the same.
 
   <!-- @[ColumnLayoutJustifyContentSpaceBetween_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/linearlayout/ColumnLayoutJustifyContentSpaceBetween.ets) -->
-
+  
   ``` TypeScript
   Column({}) {
     Column() {
@@ -167,7 +175,7 @@ In the layout container, you can use the [justifyContent](../reference/apis-arku
 - **justifyContent(FlexAlign.SpaceAround)**: The elements are evenly distributed vertically. The space between any two adjacent elements is the same. The space between the first element and start edge, and that between the last element and end edge are both half the size of the space between two adjacent elements.
 
   <!-- @[ColumnLayoutJustifyContentSpaceAround_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/linearlayout/ColumnLayoutJustifyContentSpaceAround.ets) -->
-
+  
   ``` TypeScript
   Column({}) {
     Column() {
@@ -186,7 +194,7 @@ In the layout container, you can use the [justifyContent](../reference/apis-arku
 - **justifyContent(FlexAlign.SpaceEvenly)**: The elements are evenly distributed vertically. The space between the first element and start edge, the space between the last element and end edge, and the space between any two adjacent elements are the same.
 
   <!-- @[ColumnLayoutJustifyContentSpaceEvenly_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/linearlayout/ColumnLayoutJustifyContentSpaceEvenly.ets) -->
-
+  
   ``` TypeScript
   Column({}) {
     Column() {
@@ -202,16 +210,17 @@ In the layout container, you can use the [justifyContent](../reference/apis-arku
 
   ![columnLayoutJustifyContentSpaceEvenly](figures/columnLayoutJustifyContentSpaceEvenly.png)
 
+
 ### Horizontal Alignment of Child Elements in the Row Container
 
-  **Figure 6** Horizontal alignment of child elements in the Row container 
+  **Figure 6** Horizontal alignment of child elements in the Row container
 
 ![horizontal-arrangement-child-row](figures/horizontal-arrangement-child-row.png)
 
 - **justifyContent(FlexAlign.Start)** (default value): Aligns elements to the start in the horizontal direction. The first element is aligned with the beginning of the line, and the subsequent elements are aligned with the one before them.
 
   <!-- @[RowLayoutJustifyContentStart_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/linearlayout/RowLayoutJustifyContentStart.ets) -->
-
+  
   ``` TypeScript
   Row({}) {
     Column() {
@@ -230,7 +239,7 @@ In the layout container, you can use the [justifyContent](../reference/apis-arku
 - **justifyContent(FlexAlign.Center)**: The elements are horizontally aligned with each other toward the center of the container. The space between the first component and the start edge is the same as that between the last component and the end edge.
 
   <!-- @[RowLayoutJustifyContentCenter_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/linearlayout/RowLayoutJustifyContentCenter.ets) -->
-
+  
   ``` TypeScript
   Row({}) {
     Column() {
@@ -249,7 +258,7 @@ In the layout container, you can use the [justifyContent](../reference/apis-arku
 - **justifyContent(FlexAlign.End)**: The elements are horizontally aligned with each other toward the end edge of the container.
 
   <!-- @[RowLayoutJustifyContentEnd_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/linearlayout/RowLayoutJustifyContentEnd.ets) -->
-
+  
   ``` TypeScript
   Row({}) {
     Column() {
@@ -268,7 +277,7 @@ In the layout container, you can use the [justifyContent](../reference/apis-arku
 - **justifyContent(FlexAlign.SpaceBetween)**: The elements are evenly distributed horizontally. The space between any two adjacent elements is the same. The first element is aligned with the start edge, the last element is aligned with the end edge, and the remaining elements are distributed so that the space between any two adjacent elements is the same.
 
   <!-- @[RowLayoutJustifyContentSpaceBetween_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/linearlayout/RowLayoutJustifyContentSpaceBetween.ets) -->
-
+  
   ``` TypeScript
   Row({}) {
     Column() {
@@ -287,7 +296,7 @@ In the layout container, you can use the [justifyContent](../reference/apis-arku
 - **justifyContent(FlexAlign.SpaceAround)**: The elements are evenly distributed horizontally. The space between any two adjacent elements is the same. The space between the first element and start edge, and that between the last element and end edge are both half the size of the space between two adjacent elements.
 
   <!-- @[RowLayoutJustifyContentSpaceAround_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/linearlayout/RowLayoutJustifyContentSpaceAround.ets) -->
-
+  
   ``` TypeScript
   Row({}) {
     Column() {
@@ -306,7 +315,7 @@ In the layout container, you can use the [justifyContent](../reference/apis-arku
 - **justifyContent(FlexAlign.SpaceEvenly)**: The elements are evenly distributed horizontally. The space between the first element and start edge, the space between the last element and end edge, and the space between any two adjacent elements are the same.
 
   <!-- @[RowLayoutJustifyContentSpaceEvenly_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/linearlayout/RowLayoutJustifyContentSpaceEvenly.ets) -->
-
+  
   ``` TypeScript
   Row({}) {
     Column() {
@@ -328,16 +337,17 @@ You can use the [alignItems](../reference/apis-arkui/arkui-ts/ts-container-colum
 
 The layout container also provides the [alignSelf](../reference/apis-arkui/arkui-ts/ts-universal-attributes-flex-layout.md#alignself) attribute to control the alignment mode of a single child element along the cross axis. This attribute has a higher priority than the **alignItems** attribute. This means that, if **alignSelf** is set, it will overwrite the **alignItems** setting on the corresponding child element.
 
+
 ### Horizontal Alignment of Child Elements in the Column Container
 
-  **Figure 7** Horizontal alignment of child elements in the Column container 
+  **Figure 7** Horizontal alignment of child elements in the Column container
 
 ![horizontal-arrangement-child-column](figures/horizontal-arrangement-child-column.png)
 
 - **HorizontalAlign.Start**: Child elements are left aligned horizontally.
 
   <!-- @[RowLayoutHorizontalAlignStart_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/linearlayout/RowLayoutHorizontalAlignStart.ets) -->
-
+  
   ``` TypeScript
   Column({}) {
     Column() {
@@ -356,7 +366,7 @@ The layout container also provides the [alignSelf](../reference/apis-arkui/arkui
 - **HorizontalAlign.Center** (default value): Child elements are center-aligned horizontally.
 
   <!-- @[RowLayoutHorizontalAlignCenter_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/linearlayout/RowLayoutHorizontalAlignCenter.ets) -->
-
+  
   ``` TypeScript
   Column({}) {
     Column() {
@@ -375,7 +385,7 @@ The layout container also provides the [alignSelf](../reference/apis-arkui/arkui
 - **HorizontalAlign.End**: Child elements are right-aligned horizontally.
 
   <!-- @[RowLayoutHorizontalAlignEnd_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/linearlayout/RowLayoutHorizontalAlignEnd.ets) -->
-
+  
   ``` TypeScript
   Column({}) {
     Column() {
@@ -391,16 +401,17 @@ The layout container also provides the [alignSelf](../reference/apis-arkui/arkui
 
   ![rowLayoutHorizontalAlignEnd](figures/rowLayoutHorizontalAlignEnd.png)
 
+
 ### Vertical Alignment of Child Elements in the Row Container
 
-  **Figure 8** Vertical alignment of child elements in Row container 
+  **Figure 8** Vertical alignment of child elements in Row container
 
 ![vertical-arrangement-child-row](figures/vertical-arrangement-child-row.png)
 
 - **VerticalAlign.Top**: Child elements are top-aligned vertically.
 
   <!-- @[RowLayoutVerticalAlignTop_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/linearlayout/RowLayoutVerticalAlignTop.ets) -->
-
+  
   ``` TypeScript
   Row({}) {
     Column() {
@@ -419,7 +430,7 @@ The layout container also provides the [alignSelf](../reference/apis-arkui/arkui
 - **VerticalAlign.Center** (default value): Child elements are center-aligned vertically.
 
   <!-- @[RowLayoutVerticalAlignCenter_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/linearlayout/RowLayoutVerticalAlignCenter.ets) -->
-
+  
   ``` TypeScript
   Row({}) {
     Column() {
@@ -438,7 +449,7 @@ The layout container also provides the [alignSelf](../reference/apis-arkui/arkui
 - **VerticalAlign.Bottom**: Child elements are bottom-aligned vertically.
 
   <!-- @[RowLayoutVerticalAlignBottom_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/linearlayout/RowLayoutVerticalAlignBottom.ets) -->
-
+  
   ``` TypeScript
   Row({}) {
     Column() {
@@ -457,6 +468,7 @@ The layout container also provides the [alignSelf](../reference/apis-arkui/arkui
 ## Implementing Adaptive Stretching
 
 In linear layout, adaptive stretching is achieved by using the [Blank](../reference/apis-arkui/arkui-ts/ts-basic-components-blank.md) component, which automatically fills the empty spaces in the container – **Row** or **Column** – along the main axis. Just add the width and height as a percentage, and then adaptive scaling will take effect once the screen width and height change.
+
 
 <!-- @[BlankExample_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/linearlayout/BlankExample.ets) -->
 
@@ -484,14 +496,16 @@ struct BlankExample {
 
 ![landscapeMode](figures/landscapeMode.png)
 
+
 ## Implementing Adaptive Scaling
 
 Adaptive scaling means that the size of a child element is automatically adjusted according to a preset ratio to fit into the container across devices of various screen sizes. In linear layout, adaptive scaling can be achieved using either of the following methods:
 
+
 - When the container size is determined, use [layoutWeight](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#layoutweight) to set the weight of a child element during layout. The container space is then allocated along the main axis among the element and sibling elements based on the set layout weight, ignoring the size settings of the elements themselves.
 
   <!-- @[LayoutWeightExample_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/linearlayout/LayoutWeightExample.ets) -->
-
+  
   ``` TypeScript
   @Entry
   @Component
@@ -539,18 +553,18 @@ Adaptive scaling means that the size of a child element is automatically adjuste
   }
   ```
 
-    **Figure 11** Landscape mode 
+    **Figure 11** Landscape mode
 
   ![landscapeMode2](figures/landscapeMode2.png)
 
-    **Figure 12** Portrait mode 
+    **Figure 12** Portrait mode
 
   ![portraitMode12](figures/portraitMode12.png)
 
 - When the parent container size is fixed, use percentages to set the widths of child elements and sibling elements, so that they maintain a fixed adaptive ratio on devices of any size.
 
   <!-- @[WidthExample_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/linearlayout/WidthExample.ets) -->
-
+  
   ``` TypeScript
   @Entry
   @Component
@@ -578,13 +592,14 @@ Adaptive scaling means that the size of a child element is automatically adjuste
   }
   ```
 
-    **Figure 13** Landscape mode 
+    **Figure 13** Landscape mode
 
   ![widthExample](figures/widthExample.png)
 
-    **Figure 14** Portrait mode 
+    **Figure 14** Portrait mode
 
   ![portraitMode](figures/portraitMode.png)
+
 
 ## Implementing Adaptive Extension
 
@@ -597,7 +612,7 @@ Adaptive extension allows users to drag the scrollbar to access content beyond t
   Example of using a **Scroll** component in the vertical layout:
 
   <!-- @[ScrollVerticalExample_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/linearlayout/ScrollVerticalExample.ets) -->
-
+  
   ``` TypeScript
   @Entry
   @Component
@@ -636,8 +651,9 @@ Adaptive extension allows users to drag the scrollbar to access content beyond t
 
   Example of using a **Scroll** component in the horizontal layout:
 
-  <!-- @[ScrollHorizontalExample_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/linearlayout/ScrollHorizontalExample.ets) -->
 
+  <!-- @[ScrollHorizontalExample_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/linearlayout/ScrollHorizontalExample.ets) -->
+  
   ``` TypeScript
   @Entry
   @Component

@@ -142,13 +142,13 @@
     <!-- @[calendarData_setConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarManager/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
-    const calendarAccounts: calendarManager.CalendarAccount = {
+    const calendarAccount: calendarManager.CalendarAccount = {
       name: 'MyCalendar',
       type: calendarManager.CalendarType.LOCAL,
       displayName: 'MyCalendar'
     };
     // 日历配置信息
-    calendarMgr?.getCalendar(calendarAccounts, (err, data) => {
+    calendarMgr?.getCalendar(calendarAccount, (err, data) => {
       // 获取日历账户
       if (err) {
         console.error(`Failed to get calendar, Code is ${err.code}, message is ${err.message}`);

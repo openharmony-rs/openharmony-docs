@@ -5,7 +5,7 @@
 <!--Designer: @zdustc-->
 <!--Tester: @zhangyue283-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=c13d9575d4aa298d3ecd2c86e7d6822ce4e7d811 translatedAt=2026-09-20T06:44:53.592Z pushedAt=2026-09-20T08:14:40.508Z -->
+<!-- md-trans-meta sourceCommit=e5521e4e68d4358f2c99dbebfb237c12bb0173c0 translatedAt=2026-10-13T12:58:34.926Z pushedAt=2026-10-16T02:37:34.206Z -->
 
 Environment: used to define the background of a 3D scene and can be created based on images. It maps an environment map onto a cube or sphere surface (such as equirectangular projection) to simulate a real-world environment background. It also provides Image-Based Lighting (IBL), which affects the ambient lighting of objects through indirect diffuse reflection and other methods, making objects blend into the scene more naturally and improving rendering realism.
 
@@ -17,7 +17,7 @@ ArkGraphics 3D allows you to create environment resources to define the backgrou
    Import the core types provided by ArkGraphics 3D in the page script to create objects like scenes, cameras, materials, and images.
 
    <!-- @[resource_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
-
+   
    ``` TypeScript
    import { Camera, Environment, Geometry, Image, Material, MaterialType, Scene, SceneResourceFactory,
      SceneResourceParameters, Shader, ShaderMaterial, EnvironmentBackgroundType } from '@kit.ArkGraphics3D';
@@ -28,13 +28,13 @@ ArkGraphics 3D allows you to create environment resources to define the backgrou
    Call **Scene.load()** to load model files in .glb or .gltf format, and obtain a scene object upon completion. Then, construct a SceneOptions object to specify the scene and rendering mode for rendering the scene content via Component3D.
 
    <!-- @[scene_load_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
-
+   
    ``` TypeScript
    if (this.scene === null) {
-     // Switched from .gltf to .glb; same content, different format
+     // Switch from .gltf to .glb; the content is the same, but the format is different.
      Scene.load($rawfile('gltf/CubeWithFloor/glTF/AnimatedCube.glb'))
        .then(async (result: Scene) => {
-         // Assign loaded scene to globalScene for unified resource creation
+         // Assign the loaded scene to globalScene for unified resource creation.
          globalScene = result;
          this.scene = result;
          this.sceneOpt = { scene: this.scene, modelType: ModelType.SURFACE } as SceneOptions;
@@ -52,7 +52,7 @@ ArkGraphics 3D allows you to create environment resources to define the backgrou
    Create a camera object, and set its enabled state and viewing position for subsequent model display.
 
    <!-- @[scene_camera_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
-
+   
    ``` TypeScript
    this.cam = await this.rf.createCamera({ name: 'Camera1' });
    this.cam.enabled = true;
@@ -64,11 +64,11 @@ ArkGraphics 3D allows you to create environment resources to define the backgrou
    Call **Scene.getNodeByPath()** to obtain the geometry node of the target model, and record its original material. This enables rollback or recovery in case the material is later modified.
 
    <!-- @[geometry_node_get](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
-
+   
    ``` TypeScript
    this.geom = this.scene.getNodeByPath('rootNode_/Unnamed Node 1/AnimatedCube') as Geometry;
    
-   // record original material
+   // Record the original material.
    this.originalMat = this.geom.mesh.subMeshes[0].material;
    ```
 
@@ -77,25 +77,25 @@ ArkGraphics 3D allows you to create environment resources to define the backgrou
    Call **SceneResourceFactory.createEnvironment()** to create an environment object, and call **createImage()** to load an environment map. Set **backgroundType** to an equirectangular projection background, bind the image to **environmentImage**, and then adjust properties such as **indirectDiffuseFactor** to control the intensity of the ambient light.
 
    <!-- @[create_environment_promise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
-
+   
    ``` TypeScript
    function createEnvironmentPromise() : Promise<Environment> {
      return new Promise((resolve, reject) => {
-       // Ensure the scene is loaded before accessing sceneFactory
+       // Ensure the scene is loaded before accessing sceneFactory.
        if (globalScene) {
          let sceneFactory: SceneResourceFactory = globalScene.getResourceFactory();
    
-         // Manually load environment maps (.ktx/.jpg/.png etc.)
+         // Manually load the environment map (.ktx/.jpg/.png, etc.).
          let sceneImageParameter: SceneResourceParameters = { name: 'image', uri: $rawfile('image/Cube_BaseColor.png') };
          let image: Promise<Image> = sceneFactory.createImage(sceneImageParameter);
          image.then(async (imageEntity: Image) => {
-           // Create Environment
+           // Create Environment.
            let sceneEnvironmentParameter: SceneResourceParameters = { name: 'env' };
            let env: Promise<Environment> = sceneFactory.createEnvironment(sceneEnvironmentParameter);
            env.then(async (envEntity: Environment) => {
              envEntity.backgroundType = EnvironmentBackgroundType.BACKGROUND_EQUIRECTANGULAR;
              envEntity.environmentImage  = imageEntity;
-             // Set environment related properties
+             // Set environment-related properties.
              envEntity.indirectDiffuseFactor.x = 1;
              envEntity.indirectDiffuseFactor.y = 1;
              envEntity.indirectDiffuseFactor.z = 1;
@@ -121,7 +121,7 @@ ArkGraphics 3D allows you to create environment resources to define the backgrou
    Call **createEnvironmentPromise()** in the button click event to create environment resources, and assign them to the environment property of the scene so that the environment background takes effect immediately.
 
    <!-- @[environment_button_action](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
-
+   
    ``` TypeScript
    Button('Add to Environment')
      // ...

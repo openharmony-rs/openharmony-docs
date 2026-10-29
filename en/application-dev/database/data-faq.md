@@ -5,7 +5,7 @@
 <!--Designer: @htt1997-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=21261d87e182386999b1e4ebaacd86224a2d2034 translatedAt=2026-09-20T06:16:14.458Z pushedAt=2026-09-20T07:38:12.639Z -->
+<!-- md-trans-meta sourceCommit=41a8c060b42cd52d5dc8b729376ed075b1362170 translatedAt=2026-10-13T12:43:50.719Z pushedAt=2026-10-13T12:58:24.850Z -->
 
 ## How Do I View Detailed SQL Execution Error Logs of an RDB Store?
 
@@ -37,10 +37,11 @@ When an RDB store is used, different file artifacts may be generated. The purpos
 
 ## How to Configure the encryptionKey Parameter When Calling getRdbStore to Open an Encrypted RDB Store with a Raw Key?
 
-In an RDB store, when you call [getRdbStore](../reference/apis-arkdata/arkts-apis-data-relationalStore-f.md#relationalstoregetrdbstore) to open an encrypted database with a raw key, configure the [CryptoParam.encryptionKey](../reference/apis-arkdata/arkts-apis-data-relationalStore-i.md#cryptoparam14) parameter as follows:
+In an RDB store, when you call [getRdbStore()](../reference/apis-arkdata/arkts-apis-data-relationalStore-f.md#relationalstoregetrdbstore) to open an encrypted database with a raw key, configure the [CryptoParam.encryptionKey](../reference/apis-arkdata/arkts-apis-data-relationalStore-i.md#cryptoparam14) parameter as follows:
 
 ```ts
 import { relationalStore } from '@kit.ArkData'
+import { buffer } from '@kit.ArkTS';
 
 let password: string = "x'3605d7de19311edba4d3c88143c61cdd79dd5a58bc829c8b1234567891234567'"; // Replace with the actual database raw key (a 64-character hexadecimal string, corresponding to a 32-byte raw key).
 let key = new Uint8Array(buffer.from(password, 'utf8').buffer); // Returns a Uint8Array.

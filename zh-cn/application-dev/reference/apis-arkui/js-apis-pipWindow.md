@@ -3,7 +3,7 @@
 <!--Subsystem: Window-->
 <!--Owner: @betafringe007-->
 <!--Designer: @taoweihua-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
 
 该模块提供画中画基础功能，包括判断当前设备是否支持画中画功能，以及创建画中画控制器用于启动或停止画中画等。支持用户在进行其他操作时以小窗形式继续观看视频内容，提升多任务处理效率。适用于视频播放、视频通话或视频会议场景。
@@ -34,12 +34,12 @@ isPiPEnabled(): boolean
 
 | 类型       | 说明                                  |
 |----------|-------------------------------------|
-| boolean  | 当前系统是否支持画中画功能。true表示支持，false则表示不支持。 |
+| boolean  | 当前设备是否支持画中画功能。true表示支持，false则表示不支持。 |
 
 **示例：**
 
 ```ts
-let enable: boolean = PiPWindow.isPiPEnabled(); // 获取当前系统是否支持画中画功能
+let enable: boolean = PiPWindow.isPiPEnabled(); // 获取当前设备是否支持画中画功能
 console.info('isPiPEnabled:' + enable);
 ```
 
@@ -660,6 +660,10 @@ setAutoStartEnabled(enable: boolean): void
 在开启自动拉起的情况下，当应用主窗为[智慧多窗悬浮窗](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/multi-window-intro#悬浮窗)状态且被收入侧边栏时，应用主窗虽退后台，但不会自动拉起画中画。
 
 在使用XComponent方案实现画中画功能并结合Navigation进行路由管理时，首次调用setAutoStartEnabled(true)方法，系统会缓存当前应用传入的NavigationId的栈顶信息。
+
+> **说明：**
+>
+> 跳转同名页面时会复用缓存页面，如果页面名为缓存的Navigation栈顶则不会跳转。如果需要跳转同名页面，则需要创建同名页面的新实例，将[NavigationOptions](./arkui-ts/ts-basic-components-navigation.md#navigationoptions12)的[launchMode](./arkui-ts/ts-basic-components-navigation.md#launchmode12枚举说明)设置为NEW_INSTANCE即可。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 

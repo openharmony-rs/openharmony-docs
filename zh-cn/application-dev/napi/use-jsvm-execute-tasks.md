@@ -190,7 +190,7 @@ static int SetMicrotaskPolicy(JSVM_VM vm, JSVM_Env env) {
     CHECK_RET(OH_JSVM_GetValueBool(env, hasEvaluateMicrotask, &val));
     OH_LOG_INFO(
         LOG_APP,
-        "Policy: JSVM_MICROTASK_AUTO, evaluateMicrotask before calling OH_JSVM_PerformMicrotaskCheckpoint: %{public}d",
+        "Policy: JSVM_MICROTASK_EXPLICIT, evaluateMicrotask before calling OH_JSVM_PerformMicrotaskCheckpoint: %{public}d",
         val);
 
     CHECK_RET(OH_JSVM_PerformMicrotaskCheckpoint(vm));
@@ -198,7 +198,7 @@ static int SetMicrotaskPolicy(JSVM_VM vm, JSVM_Env env) {
     CHECK_RET(OH_JSVM_GetValueBool(env, hasEvaluateMicrotask, &val));
     OH_LOG_INFO(
         LOG_APP,
-        "Policy: JSVM_MICROTASK_AUTO, evaluateMicrotask after calling OH_JSVM_PerformMicrotaskCheckpoint: %{public}d",
+        "Policy: JSVM_MICROTASK_EXPLICIT, evaluateMicrotask after calling OH_JSVM_PerformMicrotaskCheckpoint: %{public}d",
         val);
 
     return 0;
@@ -206,7 +206,7 @@ static int SetMicrotaskPolicy(JSVM_VM vm, JSVM_Env env) {
 
 static void RunDemo(JSVM_VM vm, JSVM_Env env) {
     if (SetMicrotaskPolicy(vm, env) != 0) {
-        OH_LOG_INFO(LOG_APP, "Run Microtask Policy failed");
+        OH_LOG_ERROR(LOG_APP, "Run Microtask Policy failed");
     }
 }
 
@@ -246,6 +246,6 @@ static int32_t TestJSVM() {
 预期输出结果：
 ```txt
 Policy :JSVM_MICROTASK_AUTO, evaluateMicrotask : 1
-Policy :JSVM_MICROTASK_AUTO, evaluateMicrotask before calling OH_JSVM_PerformMicrotaskCheckpoint: 0
-Policy :JSVM_MICROTASK_AUTO, evaluateMicrotask after calling OH_JSVM_PerformMicrotaskCheckpoint: 1
+Policy: JSVM_MICROTASK_EXPLICIT, evaluateMicrotask before calling OH_JSVM_PerformMicrotaskCheckpoint: 0
+Policy: JSVM_MICROTASK_EXPLICIT, evaluateMicrotask after calling OH_JSVM_PerformMicrotaskCheckpoint: 1
 ```

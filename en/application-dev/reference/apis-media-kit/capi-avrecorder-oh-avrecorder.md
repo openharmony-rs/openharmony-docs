@@ -4,15 +4,15 @@
 <!--Owner: @gcw_dyOv3Sds-->
 <!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @zzs911-->
 
 ```c
-typedef struct OH_AVRecorder OH_AVRecorder
+typedef struct OH_AVRecorder OH_AVRecorder;
 ```
 
 ## Overview
 
-The struct initializes an AVRecorder.
+Defines a struct for audio and video recording, which is used to represent an AVRecorder instance. It supports audio and video data collection and recording, and provides capabilities such as recording process control and callbacks for event listeners. It is applicable to scenarios where audio and video need to be recorded and saved as files, such as video conference recording, screen recording apps, and security surveillance recording.
 
 **Since**: 18
 

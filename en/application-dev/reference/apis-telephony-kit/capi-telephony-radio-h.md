@@ -8,7 +8,7 @@
 
 ## Overview
 
-Defines C APIs for the radio module.
+Defines C APIs for the radio module, which can be used to obtain the mobile network status (including the network registration status, carrier information, and network standard). This is applicable to scenarios where an app needs to query the network connection status of the current card slot.
 
 **File to include**: <telephony/core_service/telephony_radio.h>
 

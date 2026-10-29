@@ -13,7 +13,7 @@ typedef struct OH_CryptoSymKeyGenerator OH_CryptoSymKeyGenerator
 
 ## Overview
 
-Defines a struct for a symmetric key.
+Defines a struct for a symmetric key generator.
 
 **Since**: 12
 

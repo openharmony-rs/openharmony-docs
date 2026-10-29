@@ -2,11 +2,12 @@
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Designer: @hao-liangfei-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=59c3fabc0701f94b960b606856aa3cc084316830 translatedAt=2026-10-08T12:07:47.250Z pushedAt=2026-10-12T08:36:30.167Z -->
 
-This interface implements volume management for an audio group.
+**AudioVolumeGroupManager** is an audio group volume management module in the audio system. This module provides audio group volume management capabilities, including obtaining and setting volume levels of different volume types, managing mute status, listening for and obtaining the ringer mode, managing and listening for the microphone status, controlling the fixed volume mode, querying the volume gain in decibels, and obtaining the level values of input and output devices. When you need to control the volume in a refined manner, you can use the APIs in this module to perform related operations. This module is applicable to scenarios such as multimedia playback, audio and video calls, gaming, and audio recording.
 
 Before calling any API in AudioVolumeGroupManager, you must use [getVolumeGroupManager](arkts-apis-audio-AudioVolumeManager.md#getvolumegroupmanager9) to obtain an AudioVolumeGroupManager instance.
 
@@ -29,6 +30,7 @@ getVolume(volumeType: AudioVolumeType, callback: AsyncCallback&lt;number&gt;): v
 Obtains the volume level of a stream. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
+>
 > This API is supported since API version 9 and deprecated since API version 20. You are advised to use [getVolumeByStream](arkts-apis-audio-AudioVolumeManager.md#getvolumebystream20) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Volume
@@ -45,12 +47,12 @@ Obtains the volume level of a stream. This API uses an asynchronous callback to 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-audioVolumeGroupManager.getVolume(audio.AudioVolumeType.MEDIA, (err: BusinessError, value: number) => {
+audioVolumeGroupManager.getVolume(audio.AudioVolumeType.MEDIA, (err: BusinessError, volume: number) => {
   if (err) {
-    console.error(`Failed to get volume. Code: ${err.code}, message: ${err.message}`);
+    console.error(`Failed to obtain the volume. Code: ${err.code}, message: ${err.message}`);
     return;
   }
-  console.info(`Succeeded in getting volume. Volume: ${value}.`);
+  console.info(`Succeeded in obtaining the volume, volume: ${volume}.`);
 });
 ```
 
@@ -61,6 +63,7 @@ getVolume(volumeType: AudioVolumeType): Promise&lt;number&gt;
 Obtains the volume level of a stream. This API uses a promise to return the result.
 
 > **NOTE**
+>
 > This API is supported since API version 9 and deprecated since API version 20. You are advised to use [getVolumeByStream](arkts-apis-audio-AudioVolumeManager.md#getvolumebystream20) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Volume
@@ -75,13 +78,17 @@ Obtains the volume level of a stream. This API uses a promise to return the resu
 
 | Type                 | Description                     |
 | --------------------- | ------------------------- |
-| Promise&lt;number&gt; | Promise used to return the stream volume level. The volume range of a specified stream can be obtained by calling [getMinVolume](#getminvolumedeprecated) and [getMaxVolume](#getmaxvolumedeprecated).|
+| Promise&lt;number&gt; | Promise used to return the stream volume level. The volume range can be obtained by calling [getMinVolume](#getminvolumedeprecated) and [getMaxVolume](#getmaxvolumedeprecated). |
 
 **Example**
 
 ```ts
-audioVolumeGroupManager.getVolume(audio.AudioVolumeType.MEDIA).then((value: number) => {
-  console.info(`Succeeded in getting volume. Volume: ${value}.`);
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioVolumeGroupManager.getVolume(audio.AudioVolumeType.MEDIA).then((volume: number) => {
+  console.info(`Succeeded in obtaining the volume, volume: ${volume}.`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to obtain the volume. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -92,6 +99,7 @@ getVolumeSync(volumeType: AudioVolumeType): number
 Obtains the volume level of a stream. This API returns the result synchronously.
 
 > **NOTE**
+>
 > This API is supported since API version 10 and deprecated since API version 20. You are advised to use [getVolumeByStream](arkts-apis-audio-AudioVolumeManager.md#getvolumebystream20) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Volume
@@ -123,11 +131,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let value: number = audioVolumeGroupManager.getVolumeSync(audio.AudioVolumeType.MEDIA);
-  console.info(`Succeeded in getting volume. Volume: ${value}.`);
+  let volume: number = audioVolumeGroupManager.getVolumeSync(audio.AudioVolumeType.MEDIA);
+  console.info(`Succeeded in obtaining the volume, volume: ${volume}.`);
 } catch (err) {
   let error = err as BusinessError;
-  console.error(`Failed to get volume. Code: ${error.code}, message: ${error.message}`);
+  console.error(`Failed to obtain the volume. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -138,6 +146,7 @@ getMinVolume(volumeType: AudioVolumeType, callback: AsyncCallback&lt;number&gt;)
 Obtains the minimum volume level of a stream. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
+>
 > This API is supported since API version 9 and deprecated since API version 20. You are advised to use [getMinVolumeByStream](arkts-apis-audio-AudioVolumeManager.md#getminvolumebystream20) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Volume
@@ -147,19 +156,19 @@ Obtains the minimum volume level of a stream. This API uses an asynchronous call
 | Name    | Type                               | Mandatory| Description              |
 | ---------- | ----------------------------------- | ---- | ------------------ |
 | volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio volume type.      |
-| callback   | AsyncCallback&lt;number&gt;         | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the minimum stream volume level obtained; otherwise, **err** is an error object.|
+| callback   | AsyncCallback&lt;number&gt;         | Yes   | Callback used to return the result. If the minimum volume level of a stream is obtained successfully, **err** is **undefined** and **data** is the minimum stream volume level obtained; otherwise, **err** is an error object. |
 
 **Example**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-audioVolumeGroupManager.getMinVolume(audio.AudioVolumeType.MEDIA, (err: BusinessError, value: number) => {
+audioVolumeGroupManager.getMinVolume(audio.AudioVolumeType.MEDIA, (err: BusinessError, minVolume: number) => {
   if (err) {
-    console.error(`Failed to get minVolume. Code: ${err.code}, message: ${err.message}`);
+    console.error(`Failed to obtain the minimum volume. Code: ${err.code}, message: ${err.message}`);
     return;
   }
-  console.info(`Succeeded in getting minVolume. Volume: ${value}.`);
+  console.info(`Succeeded in obtaining the minimum volume, minVolume: ${minVolume}.`);
 });
 ```
 
@@ -170,6 +179,7 @@ getMinVolume(volumeType: AudioVolumeType): Promise&lt;number&gt;
 Obtains the minimum volume level of a stream. This API uses a promise to return the result.
 
 > **NOTE**
+>
 > This API is supported since API version 9 and deprecated since API version 20. You are advised to use [getMinVolumeByStream](arkts-apis-audio-AudioVolumeManager.md#getminvolumebystream20) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Volume
@@ -189,8 +199,12 @@ Obtains the minimum volume level of a stream. This API uses a promise to return 
 **Example**
 
 ```ts
-audioVolumeGroupManager.getMinVolume(audio.AudioVolumeType.MEDIA).then((value: number) => {
-  console.info(`Succeeded in getting minVolume. Volume: ${value}.`);
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioVolumeGroupManager.getMinVolume(audio.AudioVolumeType.MEDIA).then((minVolume: number) => {
+  console.info(`Succeeded in obtaining the minimum volume, minVolume: ${minVolume}.`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to obtain the minimum volume. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -201,6 +215,7 @@ getMinVolumeSync(volumeType: AudioVolumeType): number
 Obtains the minimum volume level of a stream. This API returns the result synchronously.
 
 > **NOTE**
+>
 > This API is supported since API version 10 and deprecated since API version 20. You are advised to use [getMinVolumeByStream](arkts-apis-audio-AudioVolumeManager.md#getminvolumebystream20) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Volume
@@ -232,11 +247,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let value: number = audioVolumeGroupManager.getMinVolumeSync(audio.AudioVolumeType.MEDIA);
-  console.info(`Succeeded in getting minVolume. Volume: ${value}.`);
+  let minVolume: number = audioVolumeGroupManager.getMinVolumeSync(audio.AudioVolumeType.MEDIA);
+  console.info(`Succeeded in obtaining the minimum volume, minVolume: ${minVolume}.`);
 } catch (err) {
   let error = err as BusinessError;
-  console.error(`Failed to get minVolume. Code: ${error.code}, message: ${error.message}`);
+  console.error(`Failed to obtain the minimum volume. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -247,6 +262,7 @@ getMaxVolume(volumeType: AudioVolumeType, callback: AsyncCallback&lt;number&gt;)
 Obtains the maximum volume level of a stream. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
+>
 > This API is supported since API version 9 and deprecated since API version 20. You are advised to use [getMaxVolumeByStream](arkts-apis-audio-AudioVolumeManager.md#getmaxvolumebystream20) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Volume
@@ -256,19 +272,19 @@ Obtains the maximum volume level of a stream. This API uses an asynchronous call
 | Name    | Type                               | Mandatory| Description                  |
 | ---------- | ----------------------------------- | ---- | ---------------------- |
 | volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio volume type.          |
-| callback   | AsyncCallback&lt;number&gt;         | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the maximum stream volume level obtained; otherwise, **err** is an error object.|
+| callback   | AsyncCallback&lt;number&gt;         | Yes   | Callback used to return the result. If the maximum volume level of a stream is obtained successfully, **err** is **undefined** and **data** is the maximum stream volume level obtained; otherwise, **err** is an error object. |
 
 **Example**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-audioVolumeGroupManager.getMaxVolume(audio.AudioVolumeType.MEDIA, (err: BusinessError, value: number) => {
+audioVolumeGroupManager.getMaxVolume(audio.AudioVolumeType.MEDIA, (err: BusinessError, maxVolume: number) => {
   if (err) {
-    console.error(`Failed to get maxVolume. Code: ${err.code}, message: ${err.message}`);
+    console.error(`Failed to obtain the maximum volume. Code: ${err.code}, message: ${err.message}`);
     return;
   }
-  console.info(`Succeeded in getting maxVolume. Volume: ${value}.`);
+  console.info(`Succeeded in obtaining the maximum volume, maxVolume: ${maxVolume}.`);
 });
 ```
 
@@ -279,6 +295,7 @@ getMaxVolume(volumeType: AudioVolumeType): Promise&lt;number&gt;
 Obtains the maximum volume level of a stream. This API uses a promise to return the result.
 
 > **NOTE**
+>
 > This API is supported since API version 9 and deprecated since API version 20. You are advised to use [getMaxVolumeByStream](arkts-apis-audio-AudioVolumeManager.md#getmaxvolumebystream20) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Volume
@@ -298,8 +315,12 @@ Obtains the maximum volume level of a stream. This API uses a promise to return 
 **Example**
 
 ```ts
-audioVolumeGroupManager.getMaxVolume(audio.AudioVolumeType.MEDIA).then((value: number) => {
-  console.info(`Succeeded in getting maxVolume. Volume: ${value}.`);
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioVolumeGroupManager.getMaxVolume(audio.AudioVolumeType.MEDIA).then((maxVolume: number) => {
+  console.info(`Succeeded in obtaining the maximum volume, maxVolume: ${maxVolume}.`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to obtain the maximum volume. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -310,6 +331,7 @@ getMaxVolumeSync(volumeType: AudioVolumeType): number
 Obtains the maximum volume level of a stream. This API returns the result synchronously.
 
 > **NOTE**
+>
 > This API is supported since API version 10 and deprecated since API version 20. You are advised to use [getMaxVolumeByStream](arkts-apis-audio-AudioVolumeManager.md#getmaxvolumebystream20) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Volume
@@ -341,11 +363,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let value: number = audioVolumeGroupManager.getMaxVolumeSync(audio.AudioVolumeType.MEDIA);
-  console.info(`Succeeded in getting maxVolume. Volume: ${value}.`);
+  let maxVolume: number = audioVolumeGroupManager.getMaxVolumeSync(audio.AudioVolumeType.MEDIA);
+  console.info(`Succeeded in obtaining the maximum volume, maxVolume: ${maxVolume}.`);
 } catch (err) {
   let error = err as BusinessError;
-  console.error(`Failed to get maxVolume. Code: ${error.code}, message: ${error.message}`);
+  console.error(`Failed to obtain the maximum volume. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -353,9 +375,10 @@ try {
 
 isMute(volumeType: AudioVolumeType, callback: AsyncCallback&lt;boolean&gt;): void
 
-Checks whether a stream is muted. This API uses an asynchronous callback to return the result.
+Checks whether a volume type is muted. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
+>
 > This API is supported since API version 9 and deprecated since API version 20. You are advised to use [isSystemMutedForStream](arkts-apis-audio-AudioVolumeManager.md#issystemmutedforstream20) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Volume
@@ -365,19 +388,19 @@ Checks whether a stream is muted. This API uses an asynchronous callback to retu
 | Name    | Type                               | Mandatory| Description                                           |
 | ---------- | ----------------------------------- | ---- | ----------------------------------------------- |
 | volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio volume type.                                   |
-| callback   | AsyncCallback&lt;boolean&gt;        | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is **true** if the stream is muted or **false** if not muted; otherwise, **err** is an error object.|
+| callback   | AsyncCallback&lt;boolean&gt;        | Yes   | Callback used to return the result. If whether a volume type is muted is checked successfully, **err** is **undefined** and **data** is **true** if the volume type is muted or **false** if not muted; otherwise, **err** is an error object. |
 
 **Example**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-audioVolumeGroupManager.isMute(audio.AudioVolumeType.MEDIA, (err: BusinessError, value: boolean) => {
+audioVolumeGroupManager.isMute(audio.AudioVolumeType.MEDIA, (err: BusinessError, isMute: boolean) => {
   if (err) {
-    console.error(`Failed to use isMute function. Code: ${err.code}, message: ${err.message}`);
+    console.error(`Failed to check whether the stream is muted. Code: ${err.code}, message: ${err.message}`);
     return;
   }
-  console.info(`Succeeded in using isMute function. MuteState: ${value}.`);
+  console.info(`Succeeded in checking whether the stream is muted, isMuted: ${isMute}.`);
 });
 ```
 
@@ -385,9 +408,10 @@ audioVolumeGroupManager.isMute(audio.AudioVolumeType.MEDIA, (err: BusinessError,
 
 isMute(volumeType: AudioVolumeType): Promise&lt;boolean&gt;
 
-Checks whether a stream is muted. This API uses a promise to return the result.
+Gets the mute state of the specified volume type. This API uses a promise to return the result.
 
 > **NOTE**
+>
 > This API is supported since API version 9 and deprecated since API version 20. You are advised to use [isSystemMutedForStream](arkts-apis-audio-AudioVolumeManager.md#issystemmutedforstream20) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Volume
@@ -407,8 +431,12 @@ Checks whether a stream is muted. This API uses a promise to return the result.
 **Example**
 
 ```ts
-audioVolumeGroupManager.isMute(audio.AudioVolumeType.MEDIA).then((value: boolean) => {
-  console.info(`Succeeded in using isMute function. MuteState: ${value}.`);
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioVolumeGroupManager.isMute(audio.AudioVolumeType.MEDIA).then((isMute: boolean) => {
+  console.info(`Succeeded in checking whether the stream is muted, isMuted: ${isMute}.`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to check whether the stream is muted. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -416,9 +444,10 @@ audioVolumeGroupManager.isMute(audio.AudioVolumeType.MEDIA).then((value: boolean
 
 isMuteSync(volumeType: AudioVolumeType): boolean
 
-Checks whether a stream is muted. This API returns the result synchronously.
+Gets the mute state of the specified volume type. This API returns the result synchronously.
 
 > **NOTE**
+>
 > This API is supported since API version 10 and deprecated since API version 20. You are advised to use [isSystemMutedForStream](arkts-apis-audio-AudioVolumeManager.md#issystemmutedforstream20) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Volume
@@ -433,7 +462,7 @@ Checks whether a stream is muted. This API returns the result synchronously.
 
 | Type                  | Description                                                  |
 | ---------------------- | ------------------------------------------------------ |
-| boolean | Check result for whether the stream is muted. **true** if muted, **false** otherwise.|
+| boolean | Whether the volume is muted. **true** if muted, and **false** otherwise. |
 
 **Error codes**
 
@@ -450,11 +479,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let value: boolean = audioVolumeGroupManager.isMuteSync(audio.AudioVolumeType.MEDIA);
-  console.info(`Succeeded in using isMuteSync function. MuteState: ${value}.`);
+  let isMute: boolean = audioVolumeGroupManager.isMuteSync(audio.AudioVolumeType.MEDIA);
+  console.info(`Succeeded in checking whether the stream is muted, isMuted: ${isMute}.`);
 } catch (err) {
   let error = err as BusinessError;
-  console.error(`Failed to use isMuteSync function. Code: ${error.code}, message: ${error.message}`);
+  console.error(`Failed to check whether the stream is muted. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -477,12 +506,12 @@ Obtains the ringer mode. This API uses an asynchronous callback to return the re
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-audioVolumeGroupManager.getRingerMode((err: BusinessError, value: audio.AudioRingMode) => {
+audioVolumeGroupManager.getRingerMode((err: BusinessError, ringerMode: audio.AudioRingMode) => {
   if (err) {
-    console.error(`Failed to get ringerMode. Code: ${err.code}, message: ${err.message}`);
+    console.error(`Failed to obtain the ringer mode. Code: ${err.code}, message: ${err.message}`);
     return;
   }
-  console.info(`Succeeded in getting ringerMode. AudioRingMode: ${value}.`);
+  console.info(`Succeeded in obtaining the ringer mode, ringerMode: ${ringerMode}.`);
 });
 ```
 
@@ -505,10 +534,10 @@ Obtains the ringer mode. This API uses a promise to return the result.
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-audioVolumeGroupManager.getRingerMode().then((value: audio.AudioRingMode) => {
-  console.info(`Succeeded in getting ringerMode. AudioRingMode: ${value}.`);
+audioVolumeGroupManager.getRingerMode().then((ringerMode: audio.AudioRingMode) => {
+  console.info(`Succeeded in obtaining the ringer mode, ringerMode: ${ringerMode}.`);
 }).catch((err: BusinessError) => {
-  console.error(`Failed to get ringerMode. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to obtain the ringer mode. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -532,11 +561,11 @@ Obtains the ringer mode. This API returns the result synchronously.
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let value: audio.AudioRingMode = audioVolumeGroupManager.getRingerModeSync();
-  console.info(`Succeeded in getting ringerMode. AudioRingMode: ${value}.`);
+  let ringerMode: audio.AudioRingMode = audioVolumeGroupManager.getRingerModeSync();
+  console.info(`Succeeded in obtaining the ringer mode, ringerMode: ${ringerMode}.`);
 } catch (err) {
   let error = err as BusinessError;
-  console.error(`Failed to get ringerMode. Code: ${error.code}, message: ${error.message}`);
+  console.error(`Failed to obtain the ringer mode. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -568,7 +597,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 audioVolumeGroupManager.on('ringerModeChange', (ringerMode: audio.AudioRingMode) => {
-  console.info(`Succeeded in using on function. AudioRingMode: ${ringerMode}.`);
+  console.info(`Ringer mode changed, ringerMode: ${ringerMode}.`);
 });
 ```
 
@@ -576,7 +605,7 @@ audioVolumeGroupManager.on('ringerModeChange', (ringerMode: audio.AudioRingMode)
 
 off(type: 'ringerModeChange', callback?: Callback&lt;AudioRingMode&gt;): void
 
-Unsubscribes from the ringer mode change event. This API uses an asynchronous callback to return the result.
+Unsubscribes from the ringer mode change event.
 
 **System capability**: SystemCapability.Multimedia.Audio.Volume
 
@@ -584,8 +613,8 @@ Unsubscribes from the ringer mode change event. This API uses an asynchronous ca
 
 | Name  | Type                                  | Mandatory| Description                                                        |
 | -------- | -------------------------------------- |----| ------------------------------------------------------------ |
-| type     | string                                 | Yes | Event type. The event **'ringerModeChange'** is triggered when the ringer mode is changed.|
-| callback |Callback&lt;[AudioRingMode](arkts-apis-audio-e.md#audioringmode)&gt; | No | Callback used to return the changed ringer mode.|
+| type     | string                                 | Yes  | Event type. This field has a fixed value of **'ringerModeChange'**. |
+| callback |Callback&lt;[AudioRingMode](arkts-apis-audio-e.md#audioringmode)&gt; | No  | Callback used to return the result. If a callback is passed, only the listener for events corresponding to this callback will be unregistered. The callback must be the same as that bound to [on('ringerModeChange')](#onringermodechange9). If no parameter is passed, all listeners for events of this event type will be unregistered. |
 
 **Error codes**
 
@@ -603,7 +632,7 @@ audioVolumeGroupManager.off('ringerModeChange');
 
 // For the same event, if the callback parameter passed to the off API is the same as that passed to the on API, the off API cancels the subscription registered with the specified callback parameter.
 let ringerModeChangeCallback = (ringerMode: audio.AudioRingMode) => {
-  console.info(`Succeeded in using on or off function. AudioRingMode: ${ringerMode}.`);
+  console.info(`Ringer mode changed, ringerMode: ${ringerMode}.`);
 };
 
 audioVolumeGroupManager.on('ringerModeChange', ringerModeChangeCallback);
@@ -630,12 +659,12 @@ Checks whether the microphone is muted. This API uses an asynchronous callback t
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-audioVolumeGroupManager.isMicrophoneMute((err: BusinessError, value: boolean) => {
+audioVolumeGroupManager.isMicrophoneMute((err: BusinessError, isMute: boolean) => {
   if (err) {
-    console.error(`Failed to use isMicrophoneMute function. Code: ${err.code}, message: ${err.message}`);
+    console.error(`Failed to check whether the microphone is muted. Code: ${err.code}, message: ${err.message}`);
     return;
   }
-  console.info(`Succeeded in using isMicrophoneMute function. MuteState: ${value}.`);
+  console.info(`Succeeded in checking whether the microphone is muted, isMuted: ${isMute}.`);
 });
 ```
 
@@ -658,10 +687,10 @@ Checks whether the microphone is muted. This API uses a promise to return the re
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-audioVolumeGroupManager.isMicrophoneMute().then((value: boolean) => {
-  console.info(`Succeeded in using isMicrophoneMute function. MuteState: ${value}.`);
+audioVolumeGroupManager.isMicrophoneMute().then((isMute: boolean) => {
+  console.info(`Succeeded in checking whether the microphone is muted, isMuted: ${isMute}.`);
 }).catch((err: BusinessError) => {
-  console.error(`Failed to use isMicrophoneMute function. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to check whether the microphone is muted. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -685,11 +714,11 @@ Checks whether the microphone is muted. This API returns the result synchronousl
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let value: boolean = audioVolumeGroupManager.isMicrophoneMuteSync();
-  console.info(`Succeeded in using isMicrophoneMuteSync function. MuteState: ${value}.`);
+  let isMute: boolean = audioVolumeGroupManager.isMicrophoneMuteSync();
+  console.info(`Succeeded in checking whether the microphone is muted, isMuted: ${isMute}.`);
 } catch (err) {
   let error = err as BusinessError;
-  console.error(`Failed to use isMicrophoneMuteSync function. Code: ${error.code}, message: ${error.message}`);
+  console.error(`Failed to check whether the microphone is muted. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -723,7 +752,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 audioVolumeGroupManager.on('micStateChange', (micStateChange: audio.MicStateChangeEvent) => {
-  console.info(`Succeeded in using on function. MicStateChangeEvent: ${JSON.stringify(micStateChange)}.`);
+  console.info(`Mic state changed, micStateChangeEvent: ${JSON.stringify(micStateChange)}.`);
 });
 ```
 
@@ -731,7 +760,7 @@ audioVolumeGroupManager.on('micStateChange', (micStateChange: audio.MicStateChan
 
 off(type: 'micStateChange', callback?: Callback&lt;MicStateChangeEvent&gt;): void
 
-Unsubscribes from the microphone state change event. This API uses an asynchronous callback to return the result.
+Unsubscribes from the system microphone state change event.
 
 **System capability**: SystemCapability.Multimedia.Audio.Volume
 
@@ -739,8 +768,8 @@ Unsubscribes from the microphone state change event. This API uses an asynchrono
 
 | Name  | Type                                  | Mandatory| Description                                                        |
 | -------- | -------------------------------------- |----| ------------------------------------------------------------ |
-| type     | string                                 | Yes | Event type. The event **'micStateChange'** is triggered when the microphone state is changed.|
-| callback | Callback<[MicStateChangeEvent](arkts-apis-audio-i.md#micstatechangeevent9)> | No | Callback used to return the changed microphone state.|
+| type     | string                                 | Yes  | Event type. This field has a fixed value of **'micStateChange'**. |
+| callback | Callback<[MicStateChangeEvent](arkts-apis-audio-i.md#micstatechangeevent9)> | No  | Callback used to return the result. If a callback is passed, only the listener for events corresponding to this callback will be unregistered. The callback must be the same as that bound to [on('micStateChange')](#onmicstatechange9). If no parameter is passed, all listeners for events of this event type will be unregistered.  |
 
 **Error codes**
 
@@ -759,7 +788,7 @@ audioVolumeGroupManager.off('micStateChange');
 
 // For the same event, if the callback parameter passed to the off API is the same as that passed to the on API, the off API cancels the subscription registered with the specified callback parameter.
 let micStateChangeCallback = (micStateChange: audio.MicStateChangeEvent) => {
-  console.info(`Succeeded in using on or off function. MicStateChangeEvent: ${JSON.stringify(micStateChange)}.`);
+  console.info(`Mic state changed, micStateChangeEvent: ${JSON.stringify(micStateChange)}.`);
 };
 
 audioVolumeGroupManager.on('micStateChange', micStateChangeCallback);
@@ -784,8 +813,8 @@ Checks whether the fixed volume mode is enabled. When the fixed volume mode is e
 **Example**
 
 ```ts
-let volumeAdjustSwitch: boolean = audioVolumeGroupManager.isVolumeUnadjustable();
-console.info(`Succeeded in using isVolumeUnadjustable function. VolumeUnadjustable: ${volumeAdjustSwitch}.`);
+let isVolumeUnadjustable: boolean = audioVolumeGroupManager.isVolumeUnadjustable();
+console.info(`Succeeded in checking whether the volume is unadjustable, isVolumeUnadjustable: ${isVolumeUnadjustable}.`);
 ```
 
 ## getSystemVolumeInDb<sup>(deprecated)</sup>
@@ -795,6 +824,7 @@ getSystemVolumeInDb(volumeType: AudioVolumeType, volumeLevel: number, device: De
 Obtains the volume gain. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
+>
 > This API is supported since API version 10 and deprecated since API version 20. You are advised to use [getVolumeInUnitOfDbByStream](arkts-apis-audio-AudioVolumeManager.md#getvolumeinunitofdbbystream20) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Volume
@@ -823,12 +853,12 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-audioVolumeGroupManager.getSystemVolumeInDb(audio.AudioVolumeType.MEDIA, 3, audio.DeviceType.SPEAKER, (err: BusinessError, value: number) => {
+audioVolumeGroupManager.getSystemVolumeInDb(audio.AudioVolumeType.MEDIA, 3, audio.DeviceType.SPEAKER, (err: BusinessError, volumeDb: number) => {
   if (err) {
-    console.error(`Failed to get system volume in db. Code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info(`Succeeded in getting system volume in db. DB: ${value}.`);
+    console.error(`Failed to obtain the system volume in dB. Code: ${err.code}, message: ${err.message}`);
+    return;
   }
+  console.info(`Succeeded in obtaining the system volume in dB, volumeDb: ${volumeDb}.`);
 });
 ```
 
@@ -839,6 +869,7 @@ getSystemVolumeInDb(volumeType: AudioVolumeType, volumeLevel: number, device: De
 Obtains the volume gain. This API uses a promise to return the result.
 
 > **NOTE**
+>
 > This API is supported since API version 10 and deprecated since API version 20. You are advised to use [getVolumeInUnitOfDbByStream](arkts-apis-audio-AudioVolumeManager.md#getvolumeinunitofdbbystream20) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Volume
@@ -872,10 +903,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-audioVolumeGroupManager.getSystemVolumeInDb(audio.AudioVolumeType.MEDIA, 3, audio.DeviceType.SPEAKER).then((value: number) => {
-  console.info(`Succeeded in getting system volume in db. DB: ${value}.`);
+audioVolumeGroupManager.getSystemVolumeInDb(audio.AudioVolumeType.MEDIA, 3, audio.DeviceType.SPEAKER).then((volumeDb: number) => {
+  console.info(`Succeeded in obtaining the system volume in dB, volumeDb: ${volumeDb}.`);
 }).catch((err: BusinessError) => {
-  console.error(`Failed to get system volume in db. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to obtain the system volume in dB. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -886,6 +917,7 @@ getSystemVolumeInDbSync(volumeType: AudioVolumeType, volumeLevel: number, device
 Obtains the volume gain. This API returns the result synchronously.
 
 > **NOTE**
+>
 > This API is supported since API version 10 and deprecated since API version 20. You are advised to use [getVolumeInUnitOfDbByStream](arkts-apis-audio-AudioVolumeManager.md#getvolumeinunitofdbbystream20) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Volume
@@ -919,11 +951,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let value: number = audioVolumeGroupManager.getSystemVolumeInDbSync(audio.AudioVolumeType.MEDIA, 3, audio.DeviceType.SPEAKER);
-  console.info(`Succeeded in getting system volume in db. DB: ${value}.`);
+  let volumeDb: number = audioVolumeGroupManager.getSystemVolumeInDbSync(audio.AudioVolumeType.MEDIA, 3, audio.DeviceType.SPEAKER);
+  console.info(`Succeeded in obtaining the system volume in dB, volumeDb: ${volumeDb}.`);
 } catch (err) {
   let error = err as BusinessError;
-  console.error(`Failed to get system volume in db. Code: ${error.code}, message: ${error.message}`);
+  console.error(`Failed to obtain the system volume in dB. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -968,14 +1000,14 @@ let capturerInfo: audio.AudioCapturerInfo = {
 };
 
 audio.getAudioManager().getRoutingManager().getPreferredInputDeviceForCapturerInfo(capturerInfo).then((data) => {
-  audioVolumeGroupManager.getMaxAmplitudeForInputDevice(data[0]).then((value) => {
-    console.info(`Succeeded in getting maxAmplitude for input device. Amplitude: ${value}.`);
+  audioVolumeGroupManager.getMaxAmplitudeForInputDevice(data[0]).then((maxAmplitude) => {
+    console.info(`Succeeded in obtaining the maximum amplitude for input device, maxAmplitude: ${maxAmplitude}.`);
   }).catch((err: BusinessError) => {
-    console.error(`Failed to get maxAmplitude for input device. Code: ${err.code}, message: ${err.message}`);
-  })
+    console.error(`Failed to obtain the maximum amplitude for input device. Code: ${err.code}, message: ${err.message}`);
+  });
 }).catch((err: BusinessError) => {
-  console.error(`Failed to get preferred input device for capturer info. Code: ${err.code}, message: ${err.message}`);
-})
+  console.error(`Failed to obtain the preferred input device for capturer info. Code: ${err.code}, message: ${err.message}`);
+});
 ```
 
 ## getMaxAmplitudeForOutputDevice<sup>12+</sup>
@@ -1019,14 +1051,14 @@ let rendererInfo: audio.AudioRendererInfo = {
 };
 
 audio.getAudioManager().getRoutingManager().getPreferOutputDeviceForRendererInfo(rendererInfo).then((data) => {
-  audioVolumeGroupManager.getMaxAmplitudeForOutputDevice(data[0]).then((value) => {
-    console.info(`Succeeded in getting maxAmplitude for input device. Amplitude: ${value}.`);
+  audioVolumeGroupManager.getMaxAmplitudeForOutputDevice(data[0]).then((maxAmplitude) => {
+    console.info(`Succeeded in obtaining the maximum amplitude for output device, maxAmplitude: ${maxAmplitude}.`);
   }).catch((err: BusinessError) => {
-    console.error(`Failed to get maxAmplitude for input device. Code: ${err.code}, message: ${err.message}`);
-  })
+    console.error(`Failed to obtain the maximum amplitude for output device. Code: ${err.code}, message: ${err.message}`);
+  });
 }).catch((err: BusinessError) => {
-  console.error(`Failed to get preferred input device for capturer info. Code: ${err.code}, message: ${err.message}`);
-})
+  console.error(`Failed to obtain the preferred output device for renderer info. Code: ${err.code}, message: ${err.message}`);
+});
 ```
 ## setMicrophoneMute<sup>(deprecated)</sup>
 
@@ -1036,7 +1068,7 @@ Mutes or unmutes the microphone. This API uses an asynchronous callback to retur
 
 > **NOTE**
 >
-> This API is supported since API version 9 and deprecated since API version 11. Its substitute is available only to system applications.
+> This API is supported since API version 9 and deprecated since API version 11.
 
 **Required permissions**: ohos.permission.MANAGE_AUDIO_CONFIG (available only for system applications)
 
@@ -1056,10 +1088,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 audioVolumeGroupManager.setMicrophoneMute(true, (err: BusinessError) => {
   if (err) {
-    console.error(`Failed to set microphone mute. Code: ${err.code}, message: ${err.message}`);
+    console.error(`Failed to mute the microphone. Code: ${err.code}, message: ${err.message}`);
     return;
   }
-  console.info('Succeeded in setting microphone mute.');
+  console.info('Succeeded in muting the microphone.');
 });
 ```
 
@@ -1071,7 +1103,7 @@ Mutes or unmutes the microphone. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> This API is supported since API version 9 and deprecated since API version 11. Its substitute is available only to system applications.
+> Supported since API version 9, deprecated since API version 11.
 
 **Required permissions**: ohos.permission.MANAGE_AUDIO_CONFIG (available only for system applications)
 
@@ -1087,12 +1119,16 @@ Mutes or unmutes the microphone. This API uses a promise to return the result.
 
 | Type               | Description                           |
 | ------------------- | ------------------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Example**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 audioVolumeGroupManager.setMicrophoneMute(true).then(() => {
-  console.info('Succeeded in setting microphone mute.');
+  console.info('Succeeded in muting the microphone.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to mute the microphone. Code: ${err.code}, message: ${err.message}`);
 });
 ```

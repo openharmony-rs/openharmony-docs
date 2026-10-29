@@ -6,7 +6,7 @@
 <!--Designer: @gcw_nDnzjzHO;@wei-guoning-->
 <!--Tester: @sd_yinjian-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=f3efdb02e23121aaefae0a5dab0a37bc284fa9d3 translatedAt=2026-09-23T08:20:58.136Z pushedAt=2026-09-23T08:27:51.164Z -->
+<!-- md-trans-meta sourceCommit=16e4c027f369ebe528abfd2256a067c2dde5264f translatedAt=2026-10-08T03:43:09.012Z pushedAt=2026-10-08T06:12:58.758Z -->
 
 ## When to Use
 
@@ -97,7 +97,7 @@ Configuration description:
 - `oeid`: System-recognizable identifier of an OE document, used to locate the OE server application that supports the OE document.
   - If the OE server application provides the same function on other operating systems, reuse the ID already used on those systems.
   - If this function of the OE server application is provided only on OpenHarmony, you are advised to use the built-in Terminal tool and run the `uuidgen` command to generate a new ID.
-- `file_exts`: Supported file extensions, such as `".doc"` and `".docx"`. Use `"|"` to separate multiple file name extensions.
+- `file_exts`: Supported file extensions, such as `".doc"` and `".docx"`. Use `"|"` to separate multiple file extensions.
 - `icon`: Display icon used for OE document queries. The value is the index of the icon resource file.
 - `name`: Display name used for OE document queries. Use a resource index for the name to support multiple languages.
 - `description`: Display description used for OE document queries. Use a resource index for the description to support multiple languages.
@@ -368,7 +368,7 @@ static void NativeOnDoEdit(ContentEmbed_ObjectHandle object)
             outputFile.close();
             OH_LOG_INFO(LOG_APP, "Data written successfully.");
         } else {
-            OH_LOG_INFO(LOG_APP, "Failed to open the file.");
+            OH_LOG_ERROR(LOG_APP, "Failed to open the file.");
         }
         char* tempFileUri;
         OH_FileUri_GetUriFromPath(tempPath.c_str(), tempPath.size(), &tempFileUri);
@@ -428,14 +428,14 @@ static void NativeOnWriteToDataStream(ContentEmbed_ObjectHandle object)
     // Obtain the OE document.
     ret = OH_ContentEmbed_Extension_GetContentEmbedDocument(object, &ceDocument);
     if (ret != CE_ERR_OK) {
-        OH_LOG_INFO(LOG_APP, "OH_ContentEmbed_Extension_GetContentEmbedDocument ret: %{public}d", ret);
+        OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_Extension_GetContentEmbedDocument ret: %{public}d", ret);
         return;
     }
     // Obtain Root Storage.
     ContentEmbed_Storage *rootStorage = nullptr;
     ret = OH_ContentEmbed_Document_GetRootStorage(ceDocument, &rootStorage);
     if (ret != CE_ERR_OK) {
-        OH_LOG_INFO(LOG_APP, "OH_ContentEmbed_Document_GetRootStorage ret: %{public}d", ret);
+        OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_Document_GetRootStorage ret: %{public}d", ret);
         return;
     }
 
@@ -451,7 +451,7 @@ static void NativeOnWriteToDataStream(ContentEmbed_ObjectHandle object)
     char nativeFilePath[MAX_PATH_LENGTH];
     ret = OH_ContentEmbed_Document_GetNativeFilePath(ceDocument, nativeFilePath);
     if (ret != CE_ERR_OK) {
-        OH_LOG_INFO(LOG_APP, "OH_ContentEmbed_Document_GetNativeFilePath ret: %{public}d", ret);
+        OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_Document_GetNativeFilePath ret: %{public}d", ret);
         return;
     }
 
@@ -470,13 +470,13 @@ static void NativeOnWriteToDataStream(ContentEmbed_ObjectHandle object)
     // Write data to the OE document.
     ret = OH_ContentEmbed_Stream_Write(destStream, buffer.data(), oriFileSize, &num);
     if (ret != CE_ERR_OK) {
-        OH_LOG_INFO(LOG_APP, "OH_ContentEmbed_Stream_Write ret: %{public}d", ret);
+        OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_Stream_Write ret: %{public}d", ret);
         return;
     }
     // Flush the OE document.
     ret = OH_ContentEmbed_Document_Flush(ceDocument);
     if (ret != CE_ERR_OK) {
-        OH_LOG_INFO(LOG_APP, "OH_ContentEmbed_Document_Flush ret: %{public}d", ret);
+        OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_Document_Flush ret: %{public}d", ret);
         return;
     }
 }

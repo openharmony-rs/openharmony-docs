@@ -4,8 +4,8 @@
 <!--Owner: @qkfg-->
 <!--Designer: @qkfg-->
 <!--Tester: @caixincen-->
-<!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=d62a05cd3afbfcc6267bfda8bea80438a42a8ef4 translatedAt=2026-09-17T09:26:56.716Z pushedAt=2026-09-21T11:20:39.265Z -->
+<!--Adviser: @chen8281-->
+<!-- md-trans-meta sourceCommit=0aac5c07a75bbca4e339d2ef1a5a592663ce2891 translatedAt=2026-10-13T07:34:15.486Z pushedAt=2026-10-15T07:40:26.642Z -->
 
 ## Introduction
 
@@ -198,7 +198,7 @@ The following figure shows the wukong component architecture and the responsibil
 | -F, --float      | Sets the test ratio for the application split-screen mode and floating window mode. | No | Value range: 0 to 1, default value: 0.|
 | -W, --browser    | Sets the browser operation test ratio.     | No | Value range: 0 to 1, default value: 0.|
 
-> **NOTE**
+> **NOTE** 
 >
 > - The test ratio of the preceding parameters indicates the operations in the current test. The sum of the test ratios of all parameters must be less than or equal to 1.
 >
@@ -238,7 +238,7 @@ The following figure shows the wukong component architecture and the responsibil
   ```bash
   $ wukong exec -b com.ohos.settings -e com.ohos.settings.MainAbility -E com.ohos.settings.AppInfoAbility
   ```
-  >  **NOTE**
+  >  **NOTE** 
   >
   > If **-e** and **-E** are set, you must set **-b** to specify an application.
 
@@ -402,38 +402,38 @@ Contains basic information, event injection statistics, Ability statistics, and 
 
 ## FAQs
 ### What should I do if "failed to connect to AAMS" is displayed?
- **Symptom**
+ **Symptom** 
 
 The error message "failed to connect to AAMS" is displayed.
 
- **Possible Cause**
+ **Possible Cause** 
 
 AAMS is occupied by Hypium or the UIViewer of DevEco Testing. AAMS can be connected to only one program at a time.
 
- **Solution**
+ **Solution** 
 
 Stop the process that occupies AAMS or restart the device.
 ### What should I do if "Errorcode:(4005)" is displayed?
- **Symptom**
+ **Symptom** 
 
 The error message "Errorcode:(4005)" is displayed.
 
- **Possible Cause**
+ **Possible Cause** 
 
 The size of the screen display area changes. As a result, the page information fails to be obtained.
 
- **Solution**
+ **Solution** 
 
 This error does not affect the test process and does not need to be handled.
 ### What should I do if "Errorcode:(4007)" is displayed?
- **Symptom**
+ **Symptom** 
 
 The error message "Errorcode:(4007)" is displayed.
 
- **Possible Cause**
+ **Possible Cause** 
 
 The size of the screen display area changes. As a result, the page information fails to be obtained.
 
- **Solution**
+ **Solution** 
 
 This error does not affect the test process and does not need to be handled.

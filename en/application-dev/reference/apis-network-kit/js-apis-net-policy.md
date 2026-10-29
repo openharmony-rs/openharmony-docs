@@ -6,6 +6,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=e4187d2907c53bb28ff6b37c9c7ce99355d32ac5 translatedAt=2026-09-28T01:39:39.378Z pushedAt=2026-10-09T03:40:42.930Z -->
 
 The **policy** module provides APIs for managing network policies, which allow you to use firewall technology to control and manage the data traffic used.
 
@@ -42,7 +43,7 @@ Sets whether the current application can connect to the Wi-Fi or cellular networ
 
 **Model restriction**: This API can be used only in the stage model.
 
-**Device behavior differences**: This API can be called on phones, 2-in-1 devices, and tablets, but does not take effect on other devices.
+**Device behavior differences**: This API can be called on phones and tablets, but does not take effect on other devices.
 
 
 **Parameters**
@@ -124,7 +125,7 @@ Defines the network access policy information.
 
 **Since**: 26.0.0
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Communication.NetManager.Core
 

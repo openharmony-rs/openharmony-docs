@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=aa06c886eeb3255af276443f6027a6aec8e8ffbf translatedAt=2026-08-17T10:44:15.302Z pushedAt=2026-08-17T10:59:54.872Z -->
+<!-- md-trans-meta sourceCommit=777c15c9d8c75a1677c1c6408af774652fa3dc6e translatedAt=2026-10-09T01:37:08.654Z pushedAt=2026-10-10T01:45:10.171Z -->
 
 ## A
 
@@ -56,9 +56,9 @@ Two encoding formats for elliptic curve public key points. The uncompressed form
 
 A block cipher algorithm that divides plaintext into 64-bit blocks for encryption. The encryption process consists of 16 rounds of the same encryption function, each round using a subkey generated from the original key through permutation and shifting. The key length is 64 bits.
 
-### Diffie-Hellman Key Exchange Diffie-Hellman
+### Diffie-Hellman Key Exchange (DH)
 
-A key agreement algorithm that involves only the exchange of public keys. Ephemeral DH (DHE) provides forward secrecy, so that the private keys of both parties are not exposed even when the communication channel is monitored. It supports well-known safe prime groups such as `modp` and `ffdhe`.
+A key agreement algorithm that negotiates a shared secret by exchanging public keys, with private keys never leaving the local device. Ephemeral DH (DHE) provides forward secrecy, so that the private keys of both parties are not exposed even when the communication channel is monitored. Well-known prime groups such as `modp` and `ffdhe` are supported.
 
 ### Digital Signature Algorithm (DSA)
 

@@ -5,6 +5,8 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=717c394d6f6b10e0c1525acb86c2aa05a1665e70 translatedAt=2026-09-28T01:12:07.036Z pushedAt=2026-10-09T01:40:06.393Z -->
+
 ```c
 typedef struct Http_Buffer {...} Http_Buffer
 ```
@@ -25,5 +27,7 @@ Defines the HTTP buffer structure.
 
 | Name| Description|
 | -- | -- |
-| const char *buffer | Buffer data.|
-| uint32_t length | Buffer length.|
+| const char *buffer | Buffer data. |
+| uint32_t length | Buffer length. Unit: Byte. |
+
+

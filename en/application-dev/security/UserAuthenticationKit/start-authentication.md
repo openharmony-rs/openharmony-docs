@@ -6,7 +6,6 @@
 <!--Designer: @lichangting518-->
 <!--Tester: @jane_lz-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=f17f5e51786f8b19e5c7fc4d59531893c0dc122f translatedAt=2026-08-14T06:45:15.076Z pushedAt=2026-08-14T07:59:38.472Z -->
 
 A user authentication is required before an application accesses a critical functionality or sensitive data. This topic walks you through the process.
 

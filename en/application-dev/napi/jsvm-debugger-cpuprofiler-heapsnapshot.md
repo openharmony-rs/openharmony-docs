@@ -1,17 +1,15 @@
 # JSVM-API Debugging
-
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=f34ddda28f1bcebae0ddfbd293a9ffe8cb2789f9 translatedAt=2026-08-12T06:25:30.419Z pushedAt=2026-08-12T08:44:57.333Z -->
+<!-- md-trans-meta sourceCommit=7d9ce201efa894024f69109a8bec89b278e1456d translatedAt=2026-10-13T13:04:11.222Z pushedAt=2026-10-16T03:42:28.378Z -->
 
 JavaScript virtual machine (JSVM) is a standard JavaScript (JS) code execution engine that strictly complies with the ECMAScript specification. For details, see [JSVM](../reference/common/capi-jsvm.md).
 
 The JSVM-based code debugging and tuning capabilities include Debugger, CPU Profiler, Heap Snapshot, and Heap Statistics. The following APIs are involved:
-
 | API |  Description|
 |---|---|
 | OH_JSVM_GetVM  |  Obtains the VM instance of a specified environment.|
@@ -23,6 +21,7 @@ The JSVM-based code debugging and tuning capabilities include Debugger, CPU Prof
 | OH_JSVM_OpenInspectorWithName | Opens an inspector instance based on the PID and name.|
 | OH_JSVM_CloseInspector  |  Closes all remaining inspector connections.|
 | OH_JSVM_WaitForDebugger  |  Waits for the host to set up a socket connection with the inspector. After the connection is set up, the application continues to run and executes the **Runtime.runIfWaitingForDebugger** command.|
+
 
 This topic describes how to use Debugger, CPU Profiler, and Heap Snapshot.
 
@@ -46,7 +45,6 @@ This topic describes how to use Debugger, CPU Profiler, and Heap Snapshot.
    ```
 
 2. To prevent the pause during the debugging process from being falsely reported as no response, enable the DevEco Studio debug mode by referring to [Starting and Debugging an App/Atomic Service](https://developer.huawei.com/consumer/en/doc/harmonyos-guides-V5/ide-debug-arkts-debug-V5) without setting breakpoints or run JSVM-API in threads except the main thread.
-
    ```cpp
    // Run the JSVM sample code in a non-main thread.
    static napi_value RunTest(napi_env env, napi_callback_info info)
@@ -56,24 +54,16 @@ This topic describes how to use Debugger, CPU Profiler, and Heap Snapshot.
        return  nullptr;
    }
    ```
-
 3. Call **OH_JSVM_OpenInspector** to open an inspector instance on the specified host and port. For example, call **OH_JSVM_OpenInspector(env, "localhost", 9225)** to create a socket on local port 9225 of the device.
-
 4. Call **OH_JSVM_WaitForDebugger** to wait for the setup of a socket connection.
-
 5. Check whether the port on the device side is opened successfully. Run **hdc shell "netstat -anp | grep 9225"**. The port is successfully opened if the status of port 9225 is **LISTEN**.
-
 6. Forward port. For example, run **hdc fport tcp:9229 tcp:9225** to forward port 9229 on a PC to port 9225 on a device. If **Forwardport result:OK** is returned, the port is forwarded successfully.
-
 7. It is recommended to use the [Chrome inspect page](#using-chrome-inspect) for debugging. Alternatively, you can obtain the **devtoolsFrontendUrl** field for debugging, but this method relies on the Chrome DevTools Protocol and its WebSocket connection, which does not guarantee a stable connection and is not supported on Chrome 14x or later. The procedure for using devtoolsFrontendUrl is as follows: Enter **localhost:9229/json** in the address box of the Chrome browser and press Enter to obtain the port connection information. Copy the URL corresponding to the **devtoolsFrontendUrl** field to the address box and press Enter to access the DevTools source code page. You can now view the JS source code executed through **OH_JSVM_RunScript** in the app, with execution paused at the first line of the JS source code. (Note: The URL corresponding to the **devtoolsFrontendUrl** field can only be opened in Chrome or Edge browsers. It is not supported in Firefox, Safari, or other browsers.)
-
 8. You can set breakpoints on the source code page, send debugging commands using the buttons to control JS code execution, and view variables.
-
 9. Call **OH_JSVM_CloseInspector** to close the inspector instance and release the socket connection.
 
 **Sample Code**
 If you are just starting out with JSVM-API, see [JSVM-API Development Process](use-jsvm-process.md). The following demonstrates only the C++ code involved.
-
 ```cpp
 #include "ark_runtime/jsvm.h"
 
@@ -165,25 +155,17 @@ void TestJSVM() {
    ```
 
 2. To prevent the pause during the debugging process from being falsely reported as no response, [enable the DevEco Studio debug mode](https://developer.huawei.com/consumer/en/doc/harmonyos-guides-V5/ide-debug-arkts-debug-V5) without setting breakpoints or run JSVM-API in threads except the main thread.
-
 3. Open the inspector port and connect to DevTools for debugging. The process is as follows: Before executing JS code, call **OH_JSVM_OpenInspectorWithName** to activate the inspector on the specified host and port and create a socket. For example, **OH_JSVM_OpenInspectorWithName(env, 123, "test")** creates a TCP socket and its corresponding Unix domain port.
-
 4. Call **OH_JSVM_WaitForDebugger** to wait for the setup of a socket connection.
-
 5. Check whether the port on the device is enabled successfully. <br>Run **hdc shell "cat /proc/net/unix | grep jsvm"**. An available Unix port is displayed, for example, **jsvm_devtools_remote_9229_123**, where **9229** is the TCP port number and **123** is the PID.
-
 6. Forward port. <br>For example, run **hdc fport tcp:9229 tcp:9229** to forward port 9229 on a PC to port 9229 on a device. If **Forwardport result:OK** is returned, the port is forwarded successfully.
-
 7. It is recommended to use the [Chrome inspect page](#using-chrome-inspect) for debugging. Alternatively, you can obtain the **devtoolsFrontendUrl** field for debugging, but this method relies on the Chrome DevTools Protocol and its WebSocket connection, which does not guarantee a stable connection and is not supported on Chrome 14x or later. The procedure for using devtoolsFrontendUrl is as follows: Enter **localhost:9229/json** in the address box of the Chrome browser and press Enter to obtain the port connection information. Open Chrome DevTools, copy the URL corresponding to the **devtoolsFrontendUrl** field to the address box, and press Enter to access the DevTools source code page. You can now view the JS source code executed through **OH_JSVM_RunScript** in the app, with execution paused at the first line of the JS source code. (Note: The URL corresponding to the **devtoolsFrontendUrl** field can only be opened in Chrome or Edge browsers. It is not supported in Firefox, Safari, or other browsers.)
-
 8. You can set breakpoints on the source code page, send debugging commands using the buttons to control JS code execution, and view variables.
-
 9. Call **OH_JSVM_CloseInspector** to close the inspector instance and release the socket connection.
 
 **Sample Code**
 
 Replace the corresponding EnableInspector with the following:
-
 ```cpp
 // Enable Debugger.
 static void EnableInspector(JSVM_Env env) {
@@ -200,23 +182,23 @@ It is recommended to use the **chrome://inspect/#devices** page of the Chrome br
 
 1. On Google Chrome, enter **chrome://inspect/#devices** in the address box and press **Enter**. On the page displayed, select the following options:
 
-   <div align=left><img src="figures/jsvm-debugger-cpuprofiler-heapsnapshot_1.png"/></div>
+   ![Chrome inspect device page](figures/jsvm-debugger-cpuprofiler-heapsnapshot_1.png)
 
-2. Run **hdc fport** [*Port number on the developer's PC*] [*Port number on a device*] to forward a port. 
+2. Run **hdc fport** [*Port number on the developer's PC*] [*Port number on a device*] to forward a port.  
 
    Example: **hdc fport tcp:9227 tcp:9226**
 
 3. Click **Port forwarding**, enter the port number on the PC in the left text box and the port number on the device in the right text box, and click **Done**, as shown in the figure below.
 
-   <div align=left><img src="figures/jsvm-debugger-cpuprofiler-heapsnapshot_2.png"/></div>
+   ![Port forwarding settings](figures/jsvm-debugger-cpuprofiler-heapsnapshot_2.png)
 
 4. Click **Configure**, enter the port number on the PC, for example, **localhost:9227**, and click **Done**, as shown in the figure below.
 
-   <div align=left><img src="figures/jsvm-debugger-cpuprofiler-heapsnapshot_3.png"/></div>
+   ![Configure settings](figures/jsvm-debugger-cpuprofiler-heapsnapshot_3.png)
 
 5. Wait until the debugging content is displayed under **Target**, and click **inspect** to start debugging, as shown in the figure below.
 
-   <div align=left><img src="figures/jsvm-debugger-cpuprofiler-heapsnapshot_4.png"/></div>
+   ![inspect debugging entry](figures/jsvm-debugger-cpuprofiler-heapsnapshot_4.png)
 
 ### Using WebSocket Port
 
@@ -231,19 +213,15 @@ For details about CDP, see [the official document](https://chromedevtools.github
 ### Using CPU Profiler APIs
 
 1. Before executing the JS code, call **OH_JSVM_StartCpuProfiler** to start sampling and return a **JSVM_CpuProfiler** instance.
-
 2. Run the JS code and call **OH_JSVM_StopCpuProfiler**, in which you need to pass in the **JSVM_CpuProfiler** instance (obtained in step 1), callback for the output stream, and pointer to the output stream. Then, the data will be written to the specified output stream.
-
 3. Obtain the output data in JSON strings. You can also save it to the **.cpuprofile** file, which can be parsed into profiling views with the Chrome DevTools-JavaScript Profiler.
 
 ### Using Heap Snapshot APIs
 
 1. To analyze the heap object creation of a piece of JS code, call **OH_JSVM_TakeHeapSnapshot** before and after the JS code is executed. You need to pass in the callback used to return the output stream and the pointer to the output stream. Then, the data will be written to the specified output stream.
-
 2. Save the output data to the **.heapsnapshot** file, which can be parsed into memory analysis views with the Chrome DevTools-Memory.
 
 ### Example
-
 If you are just starting out with JSVM-API, see [JSVM-API Development Process](use-jsvm-process.md). The following demonstrates only the C++ code involved.
 
 ```cpp
@@ -353,19 +331,15 @@ static JSVM_PropertyDescriptor descriptor[] = {
     {"runScriptWithStatistics", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
 ```
-
 JS example:
-
 ```cpp
 const char *srcCallNative = R"JS(runScriptWithStatistics();)JS";
 ```
-
 Expected result:
-
-```ts
+```txt
 Generate the following three files on the HarmonyOS device for subsequent performance tuning:
 heap-snapshot-begin.heapsnapshot
-heap-snapshot-end.heapsnapshot,
+heap-snapshot-end.heapsnapshot
 cpu-profile.cpuprofile
 For file features, see API usage.
 ```

@@ -1,12 +1,11 @@
 # Interface (Focus)
-
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=f0e09e3de648081eea4659387ebc6bc9008f04fc translatedAt=2026-08-11T01:58:58.234Z pushedAt=2026-08-11T10:20:44.524Z -->
+<!-- md-trans-meta sourceCommit=8b512243901c55915aa61df5cc70cfb3620f6e97 translatedAt=2026-10-08T13:02:06.455Z pushedAt=2026-10-12T11:38:05.623Z -->
 
 **Focus** inherits from [FocusQuery](arkts-apis-camera-FocusQuery.md).
 
@@ -39,7 +38,7 @@ Before the setting, call [isFocusModeSupported](arkts-apis-camera-FocusQuery.md#
 
 | Name     | Type                    | Mandatory| Description                |
 | -------- | ----------------------- | ---- | ------------------- |
-| afMode   | [FocusMode](arkts-apis-camera-e.md#focusmode) | Yes  | Focus mode. If the input parameter is null or undefined, it is treated as 0 and manual focus is used.      |
+| afMode   | [FocusMode](arkts-apis-camera-e.md#focusmode) | Yes   | Specified focus mode. If the input parameter is **null** or **undefined**, it is treated as **0** and manual focus is used.       |
 
 **Error codes**
 
@@ -79,7 +78,7 @@ Obtains the focus mode in use.
 
 | Type       | Description                         |
 | ---------- | ----------------------------- |
-| [FocusMode](arkts-apis-camera-e.md#focusmode)   | Focus mode obtained. If the operation fails, undefined is returned and an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode) is thrown.|
+| [FocusMode](arkts-apis-camera-e.md#focusmode)   | Focus mode obtained. If the operation fails, **undefined** is returned and an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode) is thrown. |
 
 **Error codes**
 
@@ -123,7 +122,7 @@ The coordinate system is based on the horizontal device direction with the devic
 
 | Name     | Type                    | Mandatory| Description                |
 | -------- | ----------------------- | ---- | ------------------- |
-| point    | [Point](arkts-apis-camera-i.md#point)         | Yes  | Focal point. The value range of x and y must be within [0, 1]. If a value less than 0 is passed, the value **0** is used. If a value greater than **1** is passed, the value **1** is used.  |
+| point    | [Point](arkts-apis-camera-i.md#point)         | Yes   | Focal point. The value range of x and y must be within [0, 1]. If a value less than 0 is passed, the value **0** is used. If a value greater than 1 is passed, the value **1** is used.  |
 
 **Error codes**
 

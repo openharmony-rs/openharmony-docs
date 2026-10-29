@@ -1,12 +1,11 @@
 # YUV Photo Capture (ArkTS)
-
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=9a88338888413bc410a855d79b95bea9e0b612b8 translatedAt=2026-08-10T09:18:38.192Z pushedAt=2026-08-10T13:52:24.624Z -->
+<!-- md-trans-meta sourceCommit=8b512243901c55915aa61df5cc70cfb3620f6e97 translatedAt=2026-09-28T02:43:37.198Z pushedAt=2026-09-29T10:30:41.731Z -->
 
 Starting from API version 23, the camera framework provides YUV image capture capability. Compared with standard photo capture, YUV capture obtains unencoded image data that fully retains the raw luminance and chrominance information captured by the sensor, making it suitable for video encoding or professional processing. However, the capture process incurs higher power consumption, and saving the data requires more storage space.
 
@@ -19,7 +18,7 @@ For detailed camera API descriptions, see [Camera Module Description](../../refe
    To obtain photo output data, you need to use the system-provided `image`, `dataSharePredicates`, and `photoAccessHelper` API capabilities as follows.
 
    <!-- @[import_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/YUVPhotoSample/camera/src/main/ets/cameramanagers/PhotoManager.ets) -->
-
+   
    ``` TypeScript
    import { camera } from '@kit.CameraKit';
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -34,7 +33,7 @@ For detailed camera API descriptions, see [Camera Module Description](../../refe
    Use the [getSupportedFullOutputCapability](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedfulloutputcapability23) method to obtain the capabilities of all output streams supported by the current camera device, including preview streams, photo streams, and video streams. The output streams are available in the profile fields of [CameraOutputCapability](../../reference/apis-camera-kit/arkts-apis-camera-i.md#cameraoutputcapability), where photo streams support the YUV format.
 
    <!-- @[get_full_outputCapability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/YUVPhotoSample/camera/src/main/ets/cameramanagers/PhotoManager.ets) -->
-
+   
    ``` TypeScript
      getFullOutputCapability(cameraManager: camera.CameraManager, cameraDevice: camera.CameraDevice,
        sceneMode: camera.SceneMode): camera.CameraOutputCapability | undefined {
@@ -72,7 +71,7 @@ For detailed camera API descriptions, see [Camera Module Description](../../refe
 
 4. Set the callback for the photo output stream.
 
-   Set the callback for one-shot photo capture [onCapturePhotoAvailable](../../reference/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#oncapturephotoavailable23) or deferred photo capture [on('photoAssetAvailable')](../../reference/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#onphotoassetavailable12), and save the captured pixelMap data as an image. If your app needs to quickly obtain the returned image, segmented capture callback is recommended.
+   Set the callback for one-shot photo capture [onCapturePhotoAvailable](../../reference/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#oncapturephotoavailable23) or deferred photo capture [on('photoAssetAvailable')](../../reference/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#onphotoassetavailable12), and save the captured pixelMap data as an image. If your app needs to quickly obtain the returned image, the deferred photo capture callback is recommended.
 
    For details about how to obtain the context, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
@@ -83,15 +82,12 @@ For detailed camera API descriptions, see [Camera Module Description](../../refe
    - **one-shot photo capture (onCapturePhotoAvailable) development process**:
 
      - Register the one-shot photo capture callback before calling [commitConfig](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#commitconfig11-1) on the session.
-
      - In the one-shot photo capture callback function, obtain the image information, parse the pixelMap data, and perform custom business processing.
-
      - Return the processed pixelMap through the callback for image display or write it to a file through a security component to save the image.
-
-- After use, unregister the one-shot photo capture callback function.
+     - After use, unregister the one-shot photo capture callback function.
 
      <!-- @[set_photo_cb_single](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/YUVPhotoSample/camera/src/main/ets/cameramanagers/PhotoManager.ets) -->
-
+     
      ``` TypeScript
      setPhotoOutputCbSingle(photoOutput: camera.PhotoOutput, context: Context) {
        // After the callback is set, calling the capture method of photoOutput returns the captured pixelMap through the callback.
@@ -207,17 +203,13 @@ For detailed camera API descriptions, see [Camera Module Description](../../refe
    - **deferred photo capture (PhotoAvailable) development process**:
 
      - Before the session [commitConfig](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#commitconfig11-1), register the deferred photo capture callback.
-
      - In the deferred photo capture callback function, obtain image information, parse the pixelMap data, and perform custom business processing.
-
      - Pass the processed pixelMap back for image display or save the image to a file through a security control.
-
      - After calling [capture](../../reference/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#capture-2) to take a photo, promptly call [saveCameraPhoto](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAssetChangeRequest.md#savecameraphoto12) to save the image or [discardCameraPhoto](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAssetChangeRequest.md#discardcameraphoto12) to cancel saving. Otherwise, subsequent photo capture will be affected.
-
      - Unregister the deferred photo capture callback function after use.
 
      <!-- @[set_photo_cb_double](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/YUVPhotoSample/camera/src/main/ets/cameramanagers/PhotoManager.ets) -->
-
+     
      ``` TypeScript
      // Save the image.
      async mediaLibSavePhoto(photoAsset: photoAccessHelper.PhotoAsset,
@@ -299,14 +291,14 @@ For detailed camera API descriptions, see [Camera Module Description](../../refe
 
 5. Trigger capture.
 
-Call the [capture](../../reference/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#capture-2) method of `photoOutput` to execute the capture task. This method has two parameters. The first parameter is the capture settings (`setting`), where you can configure the image quality, image rotation angle, and other information. The second parameter is an asynchronous callback used to return the result. If the API call fails, a corresponding error code is returned.
+   Call the [capture](../../reference/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#capture-2) method of `photoOutput` to execute the capture task. This method has two parameters. The first parameter is the capture settings (`setting`), where you can configure the image quality, image rotation angle, and other information. The second parameter is an asynchronous callback function used to return the result. If the API call fails, a corresponding error code is returned.
 
-You can obtain the capture rotation angle through the [getPhotoRotation](../../reference/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#getphotorotation12) method in `PhotoOutput`.
+   You can obtain the capture rotation angle through the [getPhotoRotation](../../reference/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#getphotorotation12) method in `PhotoOutput`.
 
-You can obtain the image geographic location information through the [geoLocationManager.getCurrentLocation](../../reference/apis-location-kit/js-apis-geoLocationManager.md#geolocationmanagergetcurrentlocation) method in `geoLocationManager`. For usage, refer to the [capture](../../reference/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#capture-3) example.
+   You can obtain the image geographic location information through the [geoLocationManager.getCurrentLocation](../../reference/apis-location-kit/js-apis-geoLocationManager.md#geolocationmanagergetcurrentlocation) method in `geoLocationManager`. For usage, refer to the [capture](../../reference/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#capture-3) example.
 
    <!-- @[capture_photo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/YUVPhotoSample/camera/src/main/ets/cameramanagers/PhotoManager.ets) -->
-
+   
    ``` TypeScript
    public async capture(isFront: boolean) {
      Logger.info(TAG_LOG, 'capture start.');
@@ -336,7 +328,7 @@ During camera app development, you can monitor the photo output stream status at
 - Register the `captureStart` callback to listen for the capture start result. You can start listening once `photoOutput` is created. This event is triggered when the camera device is about to start the current capture, and it returns the `captureId` of this capture.
 
   <!-- @[set_capture_start_cb](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/YUVPhotoSample/camera/src/main/ets/cameramanagers/PhotoManager.ets) -->
-
+  
   ``` TypeScript
   onPhotoOutputCaptureStart(photoOutput: camera.PhotoOutput): void {
     photoOutput.on('captureStartWithInfo', (err: BusinessError, captureStartInfo: camera.CaptureStartInfo) => {
@@ -351,7 +343,7 @@ During camera app development, you can monitor the photo output stream status at
 - Register the `captureEnd` callback to listen for the capture end result. You can start listening once `photoOutput` is created. This event returns the related information after the capture is fully completed, as described in [CaptureEndInfo](../../reference/apis-camera-kit/arkts-apis-camera-i.md#captureendinfo).
 
   <!-- @[set_capture_end_cb](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/YUVPhotoSample/camera/src/main/ets/cameramanagers/PhotoManager.ets) -->
-
+  
   ``` TypeScript
   onPhotoOutputCaptureEnd(photoOutput: camera.PhotoOutput): void {
     photoOutput.on('captureEnd', (err: BusinessError, captureEndInfo: camera.CaptureEndInfo) => {
@@ -367,7 +359,7 @@ During camera app development, you can monitor the photo output stream status at
 - Register the `captureReady` callback to listen for whether the next capture can be taken. You can start listening once `photoOutput` is created. This event is triggered when the next capture is ready, and it returns the related information about the readiness for the next capture.
 
   <!-- @[set_capture_ready_cb](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/YUVPhotoSample/camera/src/main/ets/cameramanagers/PhotoManager.ets) -->
-
+  
   ``` TypeScript
   captureReadyCallback(err: BusinessError): void {
     if (err !== undefined && err.code !== 0) {
@@ -391,7 +383,7 @@ During camera app development, you can monitor the photo output stream status at
 - Register a fixed `error` callback to listen for error results of the photo output stream. The callback returns the corresponding error code when the photo output interface encounters an error. For details about the error codes, see [CameraErrorCode](../../reference/apis-camera-kit/arkts-apis-camera-e.md#cameraerrorcode).
 
   <!-- @[set_photo_error_cb](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/YUVPhotoSample/camera/src/main/ets/cameramanagers/PhotoManager.ets) -->
-
+  
   ``` TypeScript
   onPhotoOutputError(photoOutput: camera.PhotoOutput): void {
     photoOutput.on('error', (error: BusinessError) => {

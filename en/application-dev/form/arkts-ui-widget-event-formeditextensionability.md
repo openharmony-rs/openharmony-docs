@@ -1,55 +1,36 @@
 # Editing ArkTS Widgets
-
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @Qian-Win-->
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=7eb91d6df8b4aeed3953bbb4aaef8a6f065801e4 translatedAt=2026-08-15T01:50:43.919Z pushedAt=2026-08-15T10:30:32.135Z -->
+<!-- md-trans-meta sourceCommit=14c25dcfa79d2f07b35a4a6bbbdc3d13f8f727f0 translatedAt=2026-10-13T12:54:22.707Z pushedAt=2026-10-15T13:01:32.477Z -->
 
 ArkTS widgets provide widget page editing capabilities, allowing users to customize widget content, for example, editing a contact widget, modifying the contacts displayed in a widget, and editing a weather widget.
 
 Widget page editing is available in two modes: half-modal widget editing and full-screen widget editing. Starting from API version 18, half-modal widget editing is supported.
 
 ## Semi-Modal Widget Editing
-
 The following example describes how to use semi-modal widget editing.
-
 ### Implementation Principle
-
 ![WidgetProject](figures/semi-modal-edit-page-process.png)
-
 1. Long press on the widget to bring up the menu. At this point, the home screen determines whether to display the **Edit** button based on whether the widget supports the widget editing capability, which is indicated by the [formConfigAbility](./arkts-ui-widget-configuration.md#fields-in-configuration-file) field.
-
 2. Tap the **Edit** menu item. The home screen uses the fields in `formConfigAbility` to launch the corresponding page and enter the first-level editing page. The first-level editing page has a limited editing area and is intended for relatively simple editing layouts.
-
     - Preview area: The gray area is the preview area, which shows the effect after widget editing. The layout of the preview area is determined by the home screen.
-
     - Editing area: The white area is the editing area, which is a custom layout area of the app and is used to implement the widget editing layout. The layout of the widget editing area is drawn by the app after inheriting [FormEditExtensionAbility](../reference/apis-form-kit/js-apis-app-form-formEditExtensionAbility.md), and can be used for simple editing layouts.
-
     - FormEditDemo: This field is the app name of the widget host app, configured through the `label` field in the [app.json5](../quick-start/app-configuration-file.md#tags-in-the-configuration-file) configuration file.
-
     - widget: This field is the widget name, configured through the [name](./arkts-ui-widget-configuration.md#fields-in-configuration-file) field in the widget `form_config.json` configuration file.
-
     - **Done** button: After editing is complete, tap the button to exit the half-modal widget editing page.
-
 3. In the widget editing area, after you tap the **Switch to: Shanghai** button, the widget provider can update the widget information through the [updateForm](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderupdateform) API, and the update is displayed in the preview area.
-
 4. In the widget editing area, tap the **Enter Secondary Editing Page** button. The widget then passes the widget provider's secondary editing page information to the home screen through the [startSecondPage](../reference/apis-form-kit/js-apis-inner-application-formEditExtensionContext.md#startsecondpage) method provided by FormEditExtensionContext. The home screen launches the corresponding page, that is, the secondary editing page. The secondary editing page is mainly used to implement complex editing layouts. Add a secondary editing page based on your actual requirements.
-
 5. Exit the editing page after editing is complete.
-
 ### How to Develop
-
 1. [Create a widget](./arkts-ui-widget-creation.md).
-
 2. Create the EntryFormEditAbility file to implement the semi-modal editing component of [FormEditExtensionAbility](../reference/apis-form-kit/js-apis-app-form-formEditExtensionAbility.md), and configure the [formConfigAbility](./arkts-ui-widget-configuration.md#fields-in-configuration-file) field in the form_config.json file.
-
    - Implementation of the Ability for the semi-modal primary editing page.
-
    <!-- @[FormEditDemo_EntryFormEditAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditDemo/entry/src/main/ets/entryformeditability/EntryFormEditAbility.ets) --> 
-
+   
    ``` TypeScript
    // entry/src/main/ets/entryformeditability/EntryFormEditAbility.ets
    import { FormEditExtensionAbility } from '@kit.FormKit';
@@ -126,16 +107,15 @@ The following example describes how to use semi-modal widget editing.
    ```
 
    - Implementation of the semi-modal second-level editing page Ability.
-
    <!-- @[FormEditDemo_FormEditSecPageAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditDemo/entry/src/main/ets/entryformeditability/FormEditSecPageAbility.ets) --> 
-
+   
    ``` TypeScript
    // entry/src/main/ets/entryformeditability/FormEditSecPageAbility.ets
    import { FormEditExtensionAbility } from '@kit.FormKit';
    import { UIExtensionContentSession, Want } from '@kit.AbilityKit';
    import { ExtensionEvent } from '../model/ExtensionEvent';
    
-   const TAG = 'FormEditExtensionAbility';
+   const TAG: string = 'FormEditSecPageAbility';
    
    export default class FormEditSecPageAbility extends FormEditExtensionAbility {
      public storage: LocalStorage = new LocalStorage();
@@ -163,9 +143,9 @@ The following example describes how to use semi-modal widget editing.
    
        try {
          session.loadContent('pages/FormEditSecPage', this.storage);
-         console.info(TAG, `loadContent first edit page success`);
+         console.info(TAG, 'loadContent second edit page success');
        } catch (e) {
-         console.error(TAG, `EntryFormEditAbility loadContent err, want: ${e?.message}`);
+         console.error(TAG, `FormEditSecPageAbility loadContent err, want: ${e?.message}`);
        }
      }
    
@@ -231,13 +211,10 @@ The following example describes how to use semi-modal widget editing.
        ]
    }
    ```
-
 3. Implement the first-level editing page layout. Use the [updateForm](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderupdateform) API to refresh the information of the widget being edited and the preview widget information, and use the [startSecondPage](../reference/apis-form-kit/js-apis-inner-application-formEditExtensionContext.md#startsecondpage) method to launch the second-level editing page.
-
    - The first-level editing page layout is implemented as follows.
-
    <!-- @[FormEditDemo_FormEditExtension](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditDemo/entry/src/main/ets/pages/FormEditExtension.ets) -->
-
+   
    ``` TypeScript
    // entry/src/main/ets/pages/FormEditExtension.ets
    import { common, UIExtensionContentSession } from '@kit.AbilityKit';
@@ -360,9 +337,8 @@ The following example describes how to use semi-modal widget editing.
    ```
 
    - Add the FormEditSecPage.ets file to implement the second-level editing page layout.
-
    <!-- @[FormEditDemo_FormEditSecPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditDemo/entry/src/main/ets/pages/FormEditSecPage.ets) --> 
-
+   
    ``` TypeScript
    // entry/src/main/ets/pages/FormEditSecPage.ets
    @Entry
@@ -404,9 +380,8 @@ The following example describes how to use semi-modal widget editing.
        ```
 
    - Create an ExtensionEvent file to encapsulate the [startSecondPage](../reference/apis-form-kit/js-apis-inner-application-formEditExtensionContext.md#startsecondpage) method into `startFormEditSecondPage` for business use.
-
    <!-- @[FormEditDemo_ExtensionEvent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditDemo/entry/src/main/ets/model/ExtensionEvent.ets) --> 
-
+   
    ``` TypeScript
    // entry/src/main/ets/model/ExtensionEvent.ets
    const TAG: string = 'FormEditDemo[ExtensionEvent] -->';
@@ -436,11 +411,9 @@ The following example describes how to use semi-modal widget editing.
    ```
 
 4. Persist widget information. Each time you enter the widget editing page, the preview widget must stay consistent with the widget being edited, so the widget information needs to be persisted.
-
    - Create a PreferencesUtil file to encapsulate the [Preferences](../database/data-persistence-by-preferences.md) preferences for persistent data use by the business.
-
    <!-- @[FormEditDemo_PreferencesUtil](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditDemo/entry/src/main/ets/common/PreferencesUtil.ets) --> 
-
+   
    ``` TypeScript
    // entry/src/main/ets/common/PreferencesUtil.ets
    import { preferences } from '@kit.ArkData';
@@ -528,9 +501,8 @@ The following example describes how to use semi-modal widget editing.
    ```
 
    - To keep the preview widget and the widget being edited synchronized, when creating a widget, check in the `onAddForm` callback whether the `ohos.extra.param.key.edit_form_id` field carries a widget ID. If it does, the widget is a preview widget, and the information of the widget being edited must be obtained from the database.
-
    <!-- @[FormEditDemo_EntryFormAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditDemo/entry/src/main/ets/entryformability/EntryFormAbility.ets) -->
-
+   
    ``` TypeScript
    // entry/src/main/ets/entryformability/WidgetCard.ets
    import { formBindingData, FormExtensionAbility, formInfo } from '@kit.FormKit';
@@ -579,9 +551,8 @@ The following example describes how to use semi-modal widget editing.
    ```
 
    - The widget layout file is as follows.
-
    <!-- @[FormEditDemo_WidgetCard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditDemo/entry/src/main/ets/widget/pages/WidgetCard.ets) --> 
-
+   
    ``` TypeScript
    // entry/src/main/ets/widget/pages/WidgetCard.ets
    let storage: LocalStorage = new LocalStorage();
@@ -622,9 +593,8 @@ The following example describes how to use semi-modal widget editing.
    ```
 
    - Add the CommonData.ets file to define the widget data structure.
-
    <!-- @[FormEditDemo_CommonData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditDemo/entry/src/main/ets/common/CommonData.ets) --> 
-
+   
    ``` TypeScript
    // entry/src/main/ets/common/CommonData.ets
    export class FormData {
@@ -637,7 +607,6 @@ The following example describes how to use semi-modal widget editing.
      }
    }
    ```
-
 5. The resource file is as follows.
 
    ```json5
@@ -662,33 +631,21 @@ The following example describes how to use semi-modal widget editing.
     ```
 
 <!--Del-->6. The running effect is as follows:<br>
-
 ![WidgetProject] (figures/half-modal-running-result.gif)<!--DelEnd-->
 
 ## Full-Screen Widget Editing
-
 ### Implementation Principle
-
 ![WidgetProject](figures/full-screen-edit-page-process.png)
-
 1. Long press on the widget to display a menu. The home screen determines whether to display the **Edit** button based on the [formConfigAbility](./arkts-ui-widget-configuration.md#fields-in-configuration-file) field, which indicates whether the widget supports the widget editing capability.
-
 2. Tap the **Edit** menu item to enter the full-screen editing page. The home screen launches the widget editing page based on the information in the `formConfigAbility` field.
-
 3. Tap the **Switch to: Shanghai** button to edit the widget content. The provider updates the information of the widget being edited through the [updateForm](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderupdateform) API.
-
 ### How to Develop
-
 The following example implements the following functions: long press on a widget to display the editing menu, tap the **Edit** menu item to enter the full-screen editing page, and modify the widget content.
-
 1. [Create a widget](./arkts-ui-widget-creation.md).
-
 2. Create an `EntryEditAbility.ets` file that inherits from the [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md) component and implements the [onCreate](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate) and [onNewWant](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onnewwant) callback functions. The widget user passes the ID of the widget being edited through the `parameters` field of [Want](../reference/apis-ability-kit/js-apis-app-ability-want.md). In addition, configure the [formConfigAbility](./arkts-ui-widget-configuration.md#fields-in-configuration-file) field in the `form_config.json` file.
-
    - Implement the Ability for the editing page.
-
    <!-- @[FormEditUIAbility_EntryEditAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditUIAbility/entry/src/main/ets/entryability/EntryEditAbility.ets) -->
-
+   
    ``` TypeScript
    // entry/src/main/ets/entryability/EntryEditAbility.ets
    import { AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -765,9 +722,8 @@ The following example implements the following functions: long press on a widget
    ```
 
    - Configure the newly added EntryEditAbility in module.json5 as follows.
-
    <!-- @[FormEditUIAbility_modulejson5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditUIAbility/entry/src/main/module.json5) --> 
-
+   
    ``` JSON5
    "abilities": [
      // ...
@@ -785,7 +741,6 @@ The following example implements the following functions: long press on a widget
    ```
 
    - Implement the widget form_config.json file.
-
    ```json5
    // entry/src/main/resources/base/profile/form_config.json
    {
@@ -812,9 +767,8 @@ The following example implements the following functions: long press on a widget
    ```
 
 3. Add the FormEditIndex.ets file to implement the full-screen editing page layout, and call [updateForm](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderupdateform) to refresh the information of the widget being edited.
-
    <!-- @[FormEditUIAbility_FormEditIndex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditUIAbility/entry/src/main/ets/pages/FormEditIndex.ets) --> 
-
+   
    ``` TypeScript
    // entry/src/main/ets/pages/FormEditIndex.ets
    import { formBindingData, formProvider } from '@kit.FormKit';
@@ -887,7 +841,6 @@ The following example implements the following functions: long press on a widget
    ```
 
    - Load the full-screen editing page layout file.
-
    ```json5
    // entry/src/main/resources/base/profile/main_pages.json
    {
@@ -899,9 +852,8 @@ The following example implements the following functions: long press on a widget
    ```
 
    - The widget layout file is as follows.
-
    <!-- @[FormEditUIAbility_WidgetCard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditUIAbility/entry/src/main/ets/widget/pages/WidgetCard.ets) --> 
-
+   
    ``` TypeScript
    // entry/src/main/ets/widget/pages/WidgetCard.ets
    @Entry
@@ -940,9 +892,8 @@ The following example implements the following functions: long press on a widget
    ```
 
 4. Add the PreferencesUtil file, which mainly encapsulates [Preferences](../database/data-persistence-by-preferences.md) for persistent data storage in services.
-
    <!-- @[FormEditUIAbility_PreferencesUtil](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditUIAbility/entry/src/main/ets/common/PreferencesUtil.ets) --> 
-
+   
    ``` TypeScript
    // entry/src/main/ets/common/PreferencesUtil.ets
    import { preferences } from '@kit.ArkData';
@@ -1027,7 +978,6 @@ The following example implements the following functions: long press on a widget
    ```
 
 5. The resource file is as follows.
-
    ```json5
    // entry/src/main/resources/base/element/string.json
    {
@@ -1044,7 +994,5 @@ The following example implements the following functions: long press on a widget
      ]
    }
    ```
-
 <!--Del-->6. The running effect is as follows:<br>
-
 ![WidgetProject] (figures/full-screen-editing-page-running-result.gif)<!--DelEnd-->

@@ -360,7 +360,7 @@ off(type: 'autoDeviceSwitchStatusChange', callback?: AsyncCallback\<AutoDeviceSw
 **示例：**
 
 ```ts
-function unregisterSmoothZoomInfo(photoSession: camera.PhotoSession): void {
+function unregisterAutoDeviceSwitchStatus(photoSession: camera.PhotoSession): void {
   photoSession.off('autoDeviceSwitchStatusChange');
 }
 ```

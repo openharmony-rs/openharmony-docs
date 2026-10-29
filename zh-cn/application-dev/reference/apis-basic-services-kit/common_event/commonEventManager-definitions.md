@@ -235,9 +235,12 @@
 
 > **说明：** 
 > 
-> 应用默认只能接收自身应用的skill变化事件。
+> - 应用默认只能接收自身的Skill变化事件。
 > 
-> 申请ohos.permission.MANAGE_SKILL_PRIVILEGE权限后能接收自身应用和其他应用的skill变化事件。
+> - 应用申请ohos.permission.MANAGE_SKILL权限后，可接收自身及其他应用的Skill变化事件。<!--Del-->
+> 
+> - 对于系统应用，建议优先申请ohos.permission.MANAGE_SKILL_PRIVILEGE权限，接收自身及其他应用的Skill变化事件。
+<!--DelEnd-->
 
 **起始版本：** 26.0.0
 
@@ -315,7 +318,7 @@ datashare服务启动完成后，将会触发事件通知服务发布该[系统�
 **取值：** "common.event.SPLIT_SCREEN"
 
 
-
+<!--Del-->
 ## Notification Kit
 
 ### COMMON_EVENT_SLOT_CHANGE
@@ -329,7 +332,7 @@ datashare服务启动完成后，将会触发事件通知服务发布该[系统�
 **订阅者所需权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
 **取值：** "usual.event.SLOT_CHANGE"
-
+<!--DelEnd-->
 
 ## Background Tasks Kit
 

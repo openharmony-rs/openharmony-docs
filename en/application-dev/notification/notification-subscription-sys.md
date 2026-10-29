@@ -1,14 +1,14 @@
 # Subscribing to Notifications (for System Applications Only)
-
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=b0e965054b682272b6c9e3890a6020b1129a6551 translatedAt=2026-08-22T02:22:24.986Z pushedAt=2026-08-22T07:16:39.158Z -->
+<!-- md-trans-meta sourceCommit=4faed534b39ef26ef8f9b647802a53e9f8d2b792 translatedAt=2026-10-08T03:49:43.561Z pushedAt=2026-10-08T06:50:34.608Z -->
 
 To receive notifications, an application must subscribe to notifications first. The notification subsystem provides two types of subscription APIs, allowing applications to subscribe to notifications from all applications or notifications from a specific application.
+
 
 You can use the [NotificationSubscriber](../reference/apis-notification-kit/js-apis-inner-notification-notificationSubscriber-sys.md) object to provide callbacks for subscription events, such as subscription success, notification reception, notification cancellation, and subscription cancellation.
 
@@ -20,9 +20,10 @@ The notification service process consists of the notification subsystem, the not
 
 * Notification subscriber: It can only be a system application, such as the [notification center](notification-glossary.md#notification-center). By default, the notification center subscribes to notifications of all applications on the phone for the current user. You do not need to pay attention to this role.
 
-**Figure 1** Notification service process 
+**Figure 1** Notification service process  
 
 ![notification_internal_principle](figures/notification_internal_principle.png)
+
 
 ## Available APIs
 
@@ -57,12 +58,13 @@ For details about the API, see [NotificationSubscriber](../reference/apis-notifi
 | onEnabledSilentReminderChanged?: EnabledSilentReminderChangedCallback   | Callback for changes to the enabled state of [silent reminder](notification-glossary.md#silent-reminder) for app notifications.   |
 | onBadgeEnabledChanged?: BadgeEnabledChangedCallback   | Callback for changes to the enabled state of application badges.   |
 
+
 ## How to Develop
 
 1. Request the `ohos.permission.NOTIFICATION_SYSTEM_SUBSCRIBER` permission. For details about how to configure it, see [Requesting Permissions for system_basic Applications](../security/AccessToken/determine-application-mode.md#requesting-permissions-for-system_basic-applications).
 
 2. Import the [notification subscription](notification-glossary.md#notification-subscription) module.
-
+   
    ```ts
    import { notificationSubscribe, notificationManager } from '@kit.NotificationKit';
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -73,7 +75,7 @@ For details about the API, see [NotificationSubscriber](../reference/apis-notifi
    ```
 
 3. Create a **subscriber** object.
-
+   
    ```ts
    let subscriber: notificationSubscribe.NotificationSubscriber = {
      onConsume: (data:notificationSubscribe.SubscribeCallbackData) => {
@@ -122,9 +124,9 @@ For details about the API, see [NotificationSubscriber](../reference/apis-notifi
      },
    };
    ```
-
+   
 4. Initiate notification subscription.
-
+   
    ```ts
    notificationSubscribe.subscribeNotification(subscriber).then(() => {
      hilog.info(DOMAIN_NUMBER, TAG, "subscribeNotification success");

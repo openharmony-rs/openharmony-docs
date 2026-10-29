@@ -51,16 +51,17 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-// The phAccessHelper instance obtained is a global object. It is used by default in subsequent operations. If the code snippet is not added, an error will be reported indicating that phAccessHelper is not defined.
+// phAccessHelper is a global object. Ensure that you have obtained the instance before using it.
 // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
 import { common } from '@kit.AbilityKit';
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
 @Entry
 @Component
 struct Index {
   build() {
     Row() {
-      Button("example").onClick(async () => {
+        Button('example').onClick(async () => {
         let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
         let phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
       }).width('100%')

@@ -82,7 +82,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let dialOptions: call.DialOptions = {
     extras: false
-}
+};
 call.dial("138xxxxxxxx", dialOptions, (err: BusinessError, data: boolean) => {
     console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 });
@@ -107,7 +107,7 @@ Initiates a call. You can set call options as needed. This API uses a promise to
 | Name     | Type                       | Mandatory| Description                                  |
 | ----------- | --------------------------- | ---- | -------------------------------------- |
 | phoneNumber | string                      | Yes  | Phone number.                            |
-| options     | [DialOptions](#dialoptions) | No  | Call option, which indicates whether the call is a voice call or video call.|
+| options     | [DialOptions](#dialoptions) | No  | Call option, which indicates whether the call is a voice call or video call. The default value is voice call.|
 
 **Return value**
 
@@ -122,11 +122,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let dialOptions: call.DialOptions = {
     extras: false
-}
+};
 call.dial("138xxxxxxxx", dialOptions).then((data: boolean) => {
     console.info(`dial success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-    console.error(`dial fail, promise: err->${JSON.stringify(err)}`);
+    console.error(`dial fail, promise: err->Code${err.code}, message:${err.message}`);
 });
 ```
 
@@ -134,7 +134,7 @@ call.dial("138xxxxxxxx", dialOptions).then((data: boolean) => {
 
 makeCall\(phoneNumber: string, callback: AsyncCallback\<void\>\): void
 
-Launches the call screen and displays the dialed number. This API uses an asynchronous callback to return the result. This API can be called only in a UIAbility.
+Launches the call screen and displays the dialed number. This API can be called only in [UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md#uiability). This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -144,7 +144,7 @@ Launches the call screen and displays the dialed number. This API uses an asynch
 
 | Name     | Type                     | Mandatory| Description                                      |
 | ----------- | ------------------------- | ---- | ------------------------------------------ |
-| phoneNumber | string                    | Yes  | Phone number.                                |
+| phoneNumber | string                    | Yes  | Phone number. Both numeric numbers and numbers encoded in URI format (for example, **tel:13xxxx**) are supported.                    |
 | callback    | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result.|
 
 **Error codes**
@@ -166,7 +166,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 // The tel URI format is supported since API version 15, for example, tel:13xxxx.
 call.makeCall("138xxxxxxxx", (err: BusinessError) => {
     if (err) {
-        console.error(`makeCall fail, err->${JSON.stringify(err)}`);
+        console.error(`makeCall fail, err->Code${err.code}, message:${err.message}`);
     } else {
         console.info(`makeCall success`);
     }
@@ -178,7 +178,7 @@ call.makeCall("138xxxxxxxx", (err: BusinessError) => {
 
 makeCall\(phoneNumber: string\): Promise\<void\>
 
-Launches the call screen and displays the dialed number. This API uses a promise to return the result. This API can be called only in a UIAbility.
+Launches the call screen and displays the dialed number. This API can be called only in [UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md#uiability). This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -194,7 +194,7 @@ Launches the call screen and displays the dialed number. This API uses a promise
 
 | Type               | Description                             |
 | ------------------- | --------------------------------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
@@ -216,7 +216,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 call.makeCall("138xxxxxxxx").then(() => {
     console.info(`makeCall success`);
 }).catch((err: BusinessError) => {
-    console.error(`makeCall fail, promise: err->${JSON.stringify(err)}`);
+    console.error(`makeCall fail, promise: err->Code${err.code}, message:${err.message}`);
 });
 ```
 
@@ -225,7 +225,7 @@ call.makeCall("138xxxxxxxx").then(() => {
 
 makeCall\(phoneNumber: string, options?: MakeCallOptions\): Promise\<void\>
 
-Launches the call screen and displays the dialed number. This API uses a promise to return the result. This API can be called only in a UIAbility.
+Launches the call screen and displays the dialed number. This API can be called only in [UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md#uiability). This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 24.
 
@@ -235,7 +235,7 @@ Launches the call screen and displays the dialed number. This API uses a promise
 
 | Name     | Type  | Mandatory| Description      |
 | ----------- | ------ | ---- | ---------- |
-| phoneNumber | string | Yes  | Phone number.|
+| phoneNumber | string | Yes  | Phone number, which can be in numeric format or tel format (for example, **tel:13xxxx**).|
 | options | [MakeCallOptions](#makecalloptions24) | No  | Call options.|
 
 **Return value**
@@ -259,16 +259,17 @@ For details about the error codes, see [Telephony Error Codes](errorcode-telepho
 
 ```ts
 import { call } from '@kit.TelephonyKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-// Set whether to return to the current application after the call ends.
+// Set whether to hide the dialer screen.
 let makeOptions: call.MakeCallOptions = {
   isHideDialScreen: true
-}
+};
 
 call.makeCall("138xxxxxxxx", makeOptions).then(() => {
     console.info(`makeCall success`);
 }).catch((err: BusinessError) => {
-    console.error(`makeCall fail, promise: err->${JSON.stringify(err)}`);
+    console.error(`makeCall fail, promise: err->Code${err.code}, message:${err.message}`);
 });
 ```
 
@@ -294,7 +295,7 @@ Launches the call screen and displays the dialed number. This API uses a promise
 
 | Type               | Description                             |
 | ------------------- | --------------------------------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
@@ -321,7 +322,66 @@ let context = this.getUIContext().getHostContext() as Context;
 call.makeCall(context, "138xxxxxxxx").then(() => {
     console.info(`makeCall success`);
 }).catch((err: BusinessError) => {
-    console.error(`makeCall fail, promise: err->${JSON.stringify(err)}`);
+    console.error(`makeCall fail, promise: err->${err.code},message:${err.message}`);
+});
+```
+
+## call.makeCallWithToken
+
+makeCallWithToken\(phoneNumber: string, options?: MakeCallOptions\): Promise\<string\>
+
+Launches the call screen and displays the dialed number. This API uses a promise to return the result. This API can be called only in a UIAbility.
+
+> **NOTE**
+>
+> This API returns a verification token. You can use **phoneNumber** and **token** to implement specific capabilities, such as recording cellular downlink streams.
+
+**Since:** 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Applications.Contacts
+
+**Parameters**
+
+| Name     | Type  | Mandatory| Description      |
+| ----------- | ------ | ---- | ---------- |
+| phoneNumber | string | Yes  | Phone number.|
+| options | [MakeCallOptions](#makecalloptions24) | No  | Call options.|
+
+**Return value**
+
+| Type               | Description                             |
+| ------------------- | --------------------------------- |
+| Promise&lt;string&gt; | Promise used to return the authentication token.|
+
+**Error codes**
+
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                    |
+| -------- | -------------------------------------------- |
+| 8300001  | Invalid parameter value.                     |
+| 8300002  | Operation failed. Cannot connect to service. |
+| 8300003  | System internal error.                       |
+| 8300999  | Unknown error code.                          |
+
+**Example**
+
+```ts
+import { call } from '@kit.TelephonyKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// Set whether to hide the dialer screen and whether to enable custom accessibility for the app.
+let makeOptions: call.MakeCallOptions = {
+  isHideDialScreen: true,
+  isCustomAccessibility: true
+};
+
+call.makeCallWithToken("138xxxxxxxx", makeOptions).then(() => {
+    console.info(`makeCallWithToken success`);
+}).catch((err: BusinessError) => {
+    console.error(`makeCallWithToken fail, promise: err->Code${err.code}, message:${err.message}`);
 });
 ```
 
@@ -346,7 +406,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 call.hasCall((err: BusinessError, data: boolean) => {
     if (err) {
-        console.error(`hasCall fail, err->${JSON.stringify(err)}`);
+        console.error(`hasCall fail, err->Code${err.code}, message:${err.message}`);
     } else {
         console.info(`hasCall success, data->${JSON.stringify(data)}`);
     }
@@ -376,7 +436,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 call.hasCall().then(() => {
     console.info(`hasCall success`);
 }).catch((err: BusinessError) => {
-    console.error(`hasCall fail, promise: err->${JSON.stringify(err)}`);
+    console.error(`hasCall fail, promise: err->Code${err.code}, message:${err.message}`);
 });
 ```
 
@@ -423,7 +483,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 call.getCallState((err: BusinessError, data: call.CallState) => {
     if (err) {
-        console.error(`getCallState fail, err->${JSON.stringify(err)}`);
+        console.error(`getCallState fail, err->Code${err.code}, message:${err.message}`);
     } else {
         console.info(`getCallState success, data->${JSON.stringify(data)}`);
     }
@@ -453,7 +513,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 call.getCallState().then((data: call.CallState) => {
     console.info(`getCallState success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-    console.error(`getCallState fail, promise: err->${JSON.stringify(err)}`);
+    console.error(`getCallState fail, promise: err->Code${err.code}, message:${err.message}`);
 });
 ```
 
@@ -491,6 +551,8 @@ Checks whether a device supports voice calls.
 | Type   | Description                                                        |
 | ------- | ------------------------------------------------------------ |
 | boolean | Result indicating whether the device supports voice calls. The value **true** indicates yes, and the value **false** indicates no.|
+
+**Example**
 
 ```ts
 let result: boolean = call.hasVoiceCapability();
@@ -531,7 +593,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 call.isEmergencyPhoneNumber("138xxxxxxxx", (err: BusinessError, data: boolean) => {
     if (err) {
-        console.error(`isEmergencyPhoneNumber fail, err->${JSON.stringify(err)}`);
+        console.error(`isEmergencyPhoneNumber fail, err->Code${err.code}, message:${err.message}`);
     } else {
         console.info(`isEmergencyPhoneNumber success, data->${JSON.stringify(data)}`);
     }
@@ -572,10 +634,10 @@ For details about the error codes, see [Telephony Error Codes](errorcode-telepho
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let options: call.EmergencyNumberOptions = {slotId: 1}
+let options: call.EmergencyNumberOptions = {slotId: 1};
 call.isEmergencyPhoneNumber("112", options, (err: BusinessError, data: boolean) => {
     if (err) {
-        console.error(`isEmergencyPhoneNumber fail, err->${JSON.stringify(err)}`);
+        console.error(`isEmergencyPhoneNumber fail, err->Code${err.code}, message:${err.message}`);
     } else {
         console.info(`isEmergencyPhoneNumber success, data->${JSON.stringify(data)}`);
     }
@@ -621,11 +683,11 @@ For details about the error codes, see [Telephony Error Codes](errorcode-telepho
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let options: call.EmergencyNumberOptions = {slotId: 1}
+let options: call.EmergencyNumberOptions = {slotId: 1};
 call.isEmergencyPhoneNumber("138xxxxxxxx", options).then((data: boolean) => {
     console.info(`isEmergencyPhoneNumber success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-    console.error(`isEmergencyPhoneNumber fail, promise: err->${JSON.stringify(err)}`);
+    console.error(`isEmergencyPhoneNumber fail, promise: err->Code:${err.code},message:${err.message}`);
 });
 ```
 
@@ -665,7 +727,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 call.formatPhoneNumber("138xxxxxxxx", (err: BusinessError, data: string) => {
     if (err) {
-        console.error(`formatPhoneNumber fail, err->${JSON.stringify(err)}`);
+        console.error(`formatPhoneNumber fail, err->Code${err.code}, message:${err.message}`);
     } else {
         console.info(`formatPhoneNumber success, data->${JSON.stringify(data)}`);
     }
@@ -709,10 +771,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let options: call.NumberFormatOptions = {
     countryCode: "CN"
-}
+};
 call.formatPhoneNumber("138xxxxxxxx", options, (err: BusinessError, data: string) => {
     if (err) {
-        console.error(`formatPhoneNumber fail, err->${JSON.stringify(err)}`);
+        console.error(`formatPhoneNumber fail, err->Code${err.code}, message:${err.message}`);
     } else {
         console.info(`formatPhoneNumber success, data->${JSON.stringify(data)}`);
     }
@@ -735,7 +797,7 @@ A formatted phone number is a standard numeric string, for example, 555 0100.
 | Name     | Type                                        | Mandatory| Description                  |
 | ----------- | -------------------------------------------- | ---- | ---------------------- |
 | phoneNumber | string                                       | Yes  | Phone number.            |
-| options     | [NumberFormatOptions](#numberformatoptions7) | No  | Number formatting options, for example, country code.|
+| options     | [NumberFormatOptions](#numberformatoptions7) | No  | Number formatting options, for example, country code. If this parameter is not passed, the country code CN is used by default.|
 
 **Return value**
 
@@ -762,11 +824,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let options: call.NumberFormatOptions = {
     countryCode: "CN"
-}
+};
 call.formatPhoneNumber("138xxxxxxxx", options).then((data: string) => {
     console.info(`formatPhoneNumber success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-    console.error(`formatPhoneNumber fail, promise: err->${JSON.stringify(err)}`);
+    console.error(`formatPhoneNumber fail, promise: err->Code${err.code}, message:${err.message}`);
 });
 ```
 
@@ -807,7 +869,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 call.formatPhoneNumberToE164("138xxxxxxxx", "CN", (err: BusinessError, data: string) => {
     if (err) {
-        console.error(`formatPhoneNumberToE164 fail, err->${JSON.stringify(err)}`);
+        console.error(`formatPhoneNumberToE164 fail, err->Code${err.code}, message:${err.message}`);
     } else {
         console.info(`formatPhoneNumberToE164 success, data->${JSON.stringify(data)}`);
     }
@@ -860,7 +922,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 call.formatPhoneNumberToE164("138xxxxxxxx", "CN").then((data: string) => {
     console.info(`formatPhoneNumberToE164 success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-    console.error(`formatPhoneNumberToE164 fail, promise: err->${JSON.stringify(err)}`);
+    console.error(`formatPhoneNumberToE164 fail, promise: err->Code${err.code}, message:${err.message}`);
 });
 ```
 
@@ -881,7 +943,7 @@ Answers a call. This API uses an asynchronous callback to return the result.
 
 | Name  | Type                     | Mandatory| Description      |
 | -------- | ------------------------- | ---- | ---------- |
-| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result. If the call is answered successfully, the value of **err** is **undefined**. Otherwise, the value is an error object.|
+| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result. If the call is answered successfully, the value of **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -903,7 +965,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 call.answerCall((err: BusinessError) => {
     if (err) {
-        console.error(`answerCall fail, err->${JSON.stringify(err)}`);
+        console.error(`answerCall fail, err->Code${err.code}, message:${err.message}`);
     } else {
         console.info(`answerCall success.`);
     }
@@ -950,7 +1012,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 call.hangUpCall((err: BusinessError) => {
     if (err) {
-        console.error(`hangUpCall fail, err->${JSON.stringify(err)}`);
+        console.error(`hangUpCall fail, err->Code${err.code}, message:${err.message}`);
     } else {
         console.info(`hangUpCall success.`);
     }
@@ -996,7 +1058,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 call.rejectCall((err: BusinessError) => {
     if (err) {
-        console.error(`rejectCall fail, err->${JSON.stringify(err)}`);
+        console.error(`rejectCall fail, err->Code${err.code}, message:${err.message}`);
     } else {
         console.info(`rejectCall success.`);
     }
@@ -1007,7 +1069,7 @@ call.rejectCall((err: BusinessError) => {
 
 getCallTransferInfo\(type: CallTransferType, number: string\): Promise\<CallTransferResult\>
 
-Obtains call transfer information with the phone number. This API uses a promise to return the result.
+Obtains the call forwarding status of a phone number. This API uses a promise to return the result.
 
 **Since:** 26.0.0
 
@@ -1056,7 +1118,7 @@ call.getCallTransferInfo(type, number)
         console.info(`getCallTransferInfo success, data->${JSON.stringify(data)}`);
     })
     .catch((err:BusinessError) => {
-        console.error(`getCallTransferInfo fail, err->${JSON.stringify(err)}`);
+        console.error(`getCallTransferInfo fail, err->Code${err.code}, message:${err.message}`);
     });
 ```
 
@@ -1069,7 +1131,7 @@ Provides an option for determining whether a call is a video call.
 
 |        Name             | Type                              | Read-Only| Optional| Description                                                                                            |
 | ------------------------ | ---------------------------------- | ---- | ---- | ----------------------------------------------------------------------------------------------- |
-| extras                   | boolean                            | No  | Yes  | Whether the call is a video call. <br>- **true**: video call<br>- **false** (default): voice call  |
+| extras                   | boolean                            | No  | Yes  | Whether the call is a video call.<br>- **true**: video call<br>- **false** (default): voice call  |
 
 ## CallState
 
@@ -1079,7 +1141,7 @@ Enumerates call states.
 
 | Name              | Value  | Description                                                        |
 | ------------------ | ---- | ------------------------------------------------------------ |
-| CALL_STATE_UNKNOWN | -1   | The call status fails to be obtained and is unknown.                        |
+| CALL_STATE_UNKNOWN | -1   | Invalid state when the call status fails to be obtained.                        |
 | CALL_STATE_IDLE    | 0    | No call is in progress.                                    |
 | CALL_STATE_RINGING | 1    | The call is in the ringing or waiting state.                                    |
 | CALL_STATE_OFFHOOK | 2    | At least one call is in dialing, active, or on hold, and no new incoming call is ringing or waiting.|
@@ -1096,7 +1158,8 @@ Provides an option for determining whether a call is a video call.
 
 |        Name             | Type                              | Read-Only| Optional| Description                                                                                            |
 | ------------------------ | ---------------------------------- | ---- | ---- | ----------------------------------------------------------------------------------------------- |
-| isHideDialScreen               | boolean                            | No  | Yes  | Whether to hide the dial screen. **true**: yes; **false**: no.  |
+| isHideDialScreen               | boolean                            | No  | Yes  | Whether to hide the dial screen. **true**: yes; **false**: no. The default value is **false**.  |
+| isCustomAccessibility               | boolean                            | No  | Yes  | Whether the app supports custom accessibility. **true**: yes; **false**: no. The default value is **false**.<br>**Since:** 26.0.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
 
 
 ## TelCallState<sup>21+</sup>
@@ -1107,7 +1170,7 @@ Enumerates call states.
 
 | Name              | Value  | Description                                                        |
 | ------------------ | ---- | ------------------------------------------------------------ |
-| TEL_CALL_STATE_UNKNOWN | -1   | The call status fails to be obtained and is unknown.                        |
+| TEL_CALL_STATE_UNKNOWN | -1   | Invalid state when the call status fails to be obtained.                        |
 | TEL_CALL_STATE_IDLE    | 0    | No call is in progress.                                    |
 | TEL_CALL_STATE_RINGING | 1    | The call is in the ringing or waiting state.                                    |
 | TEL_CALL_STATE_OFFHOOK | 2    | At least one call is being dialed, and no new incoming call is in the ringing or waiting state.|
@@ -1122,13 +1185,13 @@ Carrier call state code.
 
 | Name              | Value  | Description                                                        |
 | ------------------ | ---- | ------------------------------------------------------------ |
-| CCALL_STATE_UNKNOWN       | -1   | The call status fails to be obtained and is unknown.                        |
+| CCALL_STATE_UNKNOWN       | -1   | Invalid state when the call status fails to be obtained.                        |
 | CCALL_STATE_ACTIVE       | 0    | The call is connected.                                    |
 | CCALL_STATE_HOLDING      | 1    | The call is on hold.                                   |
 | CCALL_STATE_DIALING      | 2    | The outgoing call is in the dialing process, and the peer end has not received the ringing.|
 | CCALL_STATE_ALERTING     | 3    | The outgoing call is in the ringing process, and the peer end is ringing.|
 | CCALL_STATE_INCOMING     | 4    | Indicates that an incoming call is received.                                   |
-| CCALL_STATE_WAITING      | 5    | Indicates that another incoming call is received when there is an ongoing call in the same card slot.      |
+| CCALL_STATE_WAITING      | 5    | Another incoming call is received when there is an ongoing call in the same card slot.      |
 | CCALL_STATE_DISCONNECTED | 6    | Indicates that the call has been released.                                |
 | CCALL_STATE_DISCONNECTING| 7    | Indicates that the call is being released.                         |
 | CCALL_STATE_IDLE         | 8    | No call is in progress.                                |
@@ -1143,7 +1206,7 @@ Provides an option for determining whether a number is an emergency number for t
 
 |  Name | Type  | Read-Only| Optional| Description                                          |
 | ------ | ------ | ---- | ---- | ---------------------------------------------- |
-| slotId | number | No  | Yes  | Card slot ID.<br>- **0**: card slot 1<br>- **1**: card slot 2|
+| slotId | number | No  | Yes  | Card slot ID. The default value is **0**.<br>- **0**: card slot 1<br>- **1**: card slot 2|
 
 ## NumberFormatOptions<sup>7+</sup>
 
@@ -1191,10 +1254,10 @@ Defines the call transfer result.
 
 **System capability**: SystemCapability.Telephony.CallManager
 
-|          Name           |                 Type              | Mandatory|       Description      |
-| ------------------------ | ---------------------------------- | ---- | ---------------- |
-| status                   | [TransferStatus](#transferstatus) |  Yes | Enumerates call transfer states.        |
-| startHour   | number                             |  Yes | Hour in the start time.|
-| startMinute | number                             |  Yes | Minute in the start time.|
-| endHour     | number                             |  Yes | Hour in the end time.|
-| endMinute   | number                             |  Yes | Minute in the end time.|
+|          Name           |                 Type              | Read-Only| Optional|       Description      |
+| ------------------------ | ---------------------------------- | ---- | ---- | ---------------- |
+| status                   | [TransferStatus](#transferstatus) | No|  No | Enumerates call transfer states.        |
+| startHour   | number                             | No|  No | Hour in the start time. The value ranges from 0 to 23.|
+| startMinute | number                             | No|  No | Minute in the start time. The value ranges from 0 to 59.|
+| endHour     | number                             | No|  No | Hour in the end time. The value ranges from 0 to 23.|
+| endMinute   | number                             | No|  No | Minute in the end time. The value ranges from 0 to 59.|

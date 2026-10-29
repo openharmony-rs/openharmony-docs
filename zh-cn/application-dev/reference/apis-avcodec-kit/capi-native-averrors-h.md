@@ -1,8 +1,8 @@
 # native_averrors.h
 <!--Kit: AVCodec Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @xushubo; @chennotfound-->
-<!--Designer: @dongyu_dy-->
+<!--Owner: @chennotfound-->
+<!--Designer: @chennotfound-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 

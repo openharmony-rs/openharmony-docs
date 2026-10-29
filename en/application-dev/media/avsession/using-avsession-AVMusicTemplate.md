@@ -5,7 +5,7 @@
 <!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chen-gong1-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=6e63a0e266900a11bfa74fe24b3b676187cc5558 translatedAt=2026-09-14T09:50:46.079Z pushedAt=2026-09-15T13:38:12.633Z -->
+<!-- md-trans-meta sourceCommit=ee6f551d0bb17f955914e4f00d32f642c6822c54 translatedAt=2026-09-28T02:38:37.028Z pushedAt=2026-09-29T07:31:32.448Z -->
 
 Starting from API version 23, media applications can integrate with the playback control center through the audio template capability. This capability provides a unified user interface and playback control experience for audio and video content, reducing application-side development effort. This section describes the audio template APIs and the basic development workflow, including integrating with the playback control center, reporting media information (such as the title, author, and playback state), and responding to playback control commands (such as play, pause, search, and favorite) issued by the playback control center.
 
@@ -32,7 +32,7 @@ The basic steps for a media application to access the audio template are as foll
    The following example shows only how to create an `AVMusicTemplate` instance. In a production application, use the APIs provided by [@ohos.backgroundTaskManager (Background Task Management)](../../reference/apis-backgroundtasks-kit/js-apis-backgroundTaskManager.md) to ensure that the `AVMusicTemplate` instance remains alive while the application is performing background playback. Otherwise, the instance may be reclaimed by the system, causing background audio playback to be interrupted.
 
    <!-- @[ability_create_template](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/TemplateProvider/entry/src/main/ets/entryability/EntryAbility.ets) -->
-
+   
    ``` TypeScript
    import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -66,9 +66,9 @@ The basic steps for a media application to access the audio template are as foll
      }
    }
    ```
-
+   
    <!-- @[manager_create_template](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/TemplateProvider/entry/src/main/ets/manager/TemplateManager.ets) -->
-
+   
    ``` TypeScript
    import { avMusicTemplate } from '@kit.AVSessionKit';
    // ...
@@ -112,16 +112,16 @@ The basic steps for a media application to access the audio template are as foll
      // ...
    }
    ```
-
+   
 2. Register event listeners so that your application can provide data to the audio template when requested. For details about the listener APIs, see [AVMusicTemplate](../../reference/apis-avsession-kit/arkts-apis-avMusicTemplate-AVMusicTemplate.md).
 
    To display the main audio template interface, register both of the following callbacks:
 
    - [onQueryMainTabs](../../reference/apis-avsession-kit/arkts-apis-avMusicTemplate-AVMusicTemplate.md#onquerymaintabs): Registers a callback for querying the main tabs. Return the collection of tab data to display on the main interface. The `tabId` for **Home** must be `"minePage"`.
    - [onQueryMediaTabContent](../../reference/apis-avsession-kit/arkts-apis-avMusicTemplate-AVMusicTemplate.md#onquerymediatabcontent): Registers the listener for querying media tab content events. Provides page display content data based on the `tabId`.
-
+   
    <!-- @[template_register_listener](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/TemplateProvider/entry/src/main/ets/manager/TemplateManager.ets) -->
-
+   
    ``` TypeScript
    import { avMusicTemplate } from '@kit.AVSessionKit';
    // ...
@@ -158,7 +158,7 @@ The basic steps for a media application to access the audio template are as foll
          tabName: 'Home'
        };
        let mineTab: avMusicTemplate.MediaTab = {
-         tabId: 'mine',
+         tabId: 'minePage',
          tabName: 'My'
        };
        let mainTabs: avMusicTemplate.MediaTab[] = [homeTab, mineTab];
@@ -233,9 +233,9 @@ The basic steps for a media application to access the audio template are as foll
 3. In scenarios where the audio template cannot directly detect application state changes, such as user sign-in or download status, the media application must proactively synchronize the corresponding data with the audio template. For details about the sync APIs, see [AVMusicTemplate](../../reference/apis-avsession-kit/arkts-apis-avMusicTemplate-AVMusicTemplate.md).
 
    For example, after a user signs in by scanning a QR code from the audio template interface, only the media application is aware of the updated sign-in state. In this case, call [setUserInfo](../../reference/apis-avsession-kit/arkts-apis-avMusicTemplate-AVMusicTemplate.md#setuserinfo) to synchronize the user information with the audio template.
-
+   
    <!-- @[set_user_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/TemplateProvider/entry/src/main/ets/manager/TemplateManager.ets) -->
-
+   
    ``` TypeScript
    import { avMusicTemplate } from '@kit.AVSessionKit';
    // ...
@@ -273,11 +273,11 @@ The basic steps for a media application to access the audio template are as foll
      // ...
    }
    ```
-
+   
 4. The event listeners registered when the media application starts must be unregistered when the application exits to release resources. For details, see [AVMusicTemplate](../../reference/apis-avsession-kit/arkts-apis-avMusicTemplate-AVMusicTemplate.md).
 
    <!-- @[unregister_listener](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/TemplateProvider/entry/src/main/ets/manager/TemplateManager.ets) -->
-
+   
    ``` TypeScript
    import { avMusicTemplate } from '@kit.AVSessionKit';
    // ...
