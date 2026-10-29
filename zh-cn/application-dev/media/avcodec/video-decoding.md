@@ -136,7 +136,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
        void Enqueue(const std::shared_ptr<CodecBufferInfo> bufferInfo)
        {
            std::unique_lock<std::mutex> lock(mutex_);
-           // 队列只共享描述对象，不取得 OH_AVBuffer 的所有权。消费者必须按所属编解码器归还bufferIndex。
+           // 队列只共享描述对象，不取得OH_AVBuffer的所有权。消费者必须按所属编解码器归还bufferIndex。
            bufferQueue_.push(bufferInfo);
            cond_.notify_all();
        }
@@ -159,7 +159,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
        {
            std::unique_lock<std::mutex> lock(mutex_);
            // 清空回调buffer队列。
-           // 调用方需先与 codec 的 Flush/Stop 及工作线程完成同步，避免在其他线程仍访问 Buffer 时清空队列。
+           // 调用方需先与codec的Flush/Stop及工作线程完成同步，避免在其他线程仍访问buffer时清空队列。
            while (!bufferQueue_.empty()) {
                bufferQueue_.pop();
            }
