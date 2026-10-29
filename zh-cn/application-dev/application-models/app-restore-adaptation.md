@@ -130,10 +130,10 @@ export class RestoreJudge {
 ``` TypeScript
 /** 页面可恢复状态：只包含可序列化的定位键与轻量数据，不放函数/类实例/Map。 */
 export class ReaderState {
-  bookId: string = '';
-  chapterIndex: number = 1;
-  progress: number = 0; // 阅读进度（百分比）
-  draft: string = '';   // 未提交的笔记草稿（超限时走落盘引用）
+  public bookId: string = '';
+  public chapterIndex: number = 1;
+  public progress: number = 0; // 阅读进度（百分比）
+  public draft: string = '';   // 未提交的笔记草稿（超限时走落盘引用）
 }
 ```
 
@@ -268,8 +268,8 @@ private handleParam(ctx: NavDestinationContext): void {
 
 ``` TypeScript
 onWindowStageCreate(windowStage: window.WindowStage): void {
-  // 若工程入口是广告页/闪屏页，恢复启动时应直接加载内容页绕过广告页：
-  // const entry = RestoreJudge.isRestoring() ? 'restore/RestoreIndex' : 'pages/Advert';
+  // 若工程入口是广告页/闪屏页，恢复启动时应直接加载内容页绕过广告页
+  //（根据 RestoreJudge.isRestoring() 选择加载 restore/RestoreIndex 或广告页）。
   windowStage.loadContent('restore/RestoreIndex', (err) => {
     if (err.code) {
       hilog.error(DOMAIN, TAG, 'Failed to load the content. Cause: %{public}s', JSON.stringify(err));
@@ -455,9 +455,9 @@ const EXPIRE_MS = 7 * 24 * 60 * 60 * 1000; // 与系统备份数据 7 天过期�
 
 /** 落盘引用：只包含文件名、版本与字节数，本身必须很小（小于 1KB），实际数据在沙箱文件中。 */
 export class BlobRef {
-  file: string = '';
-  ver: number = 1;
-  size: number = 0;
+  public file: string = '';
+  public ver: number = 1;
+  public size: number = 0;
 }
 ```
 
@@ -469,8 +469,11 @@ static save(context: common.Context, key: string, data: string): BlobRef {
   const fileName = FILE_PREFIX + key + '.json';
   const file = context.filesDir + '/' + fileName;
   const f = fs.openSync(file, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE | fs.OpenMode.TRUNC);
-  fs.writeSync(f.fd, data);
-  fs.closeSync(f);
+  try {
+    fs.writeSync(f.fd, data);
+  } finally {
+    fs.closeSync(f);
+  }
   const ref = new BlobRef();
   ref.file = fileName;
   ref.ver = 1;
