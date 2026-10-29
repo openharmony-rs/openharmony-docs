@@ -527,7 +527,7 @@ struct Index {
           middle: { anchor: '__container__', align: HorizontalAlign.Center }
         })
         .onClick(() => {
-          // ComponentContent底层是BuilderNode，BuilderNode不支持传入@Reusable注解的自定义组件。
+          // ComponentContent底层是BuilderNode，BuilderNode不支持传入@Reusable装饰器装饰的自定义组件。
           let contentNode = new ComponentContent(this.uiContext, wrapBuilder(buildCreativeLoadingDialog), () => {
           });
           this.uiContext.getPromptAction().openCustomDialog(contentNode);
@@ -611,12 +611,12 @@ struct Index {
       Button('Clear All')
         .onClick(() => {
           // 清理默认复用池中的全部组件
-          UIUtils.getCustomComponentContext(this).getDefaultReusePool?.()?.clearCache();
+          UIUtils.getCustomComponentContext(this).getDefaultReusePool()?.clearCache();
         })
       Button('Clear A')
         .onClick(() => {
           // 仅清理reuseId为'A'的组件
-          UIUtils.getCustomComponentContext(this).getDefaultReusePool?.()?.clearCache('A');
+          UIUtils.getCustomComponentContext(this).getDefaultReusePool()?.clearCache('A');
         })
     }
   }
