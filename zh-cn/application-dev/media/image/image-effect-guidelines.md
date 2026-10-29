@@ -230,7 +230,7 @@ target_link_libraries(entry PUBLIC
 
    <!-- @[image_effect_save](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageEffect/entry/src/main/cpp/backend/image_edit.cpp) -->
    ```c++
-   // (可选 序列化效果器)
+   // 序列化效果器(可选)。
    char *imageinfo = nullptr;
    errorCode = OH_ImageEffect_Save(imageEffect, &imageinfo);
    CHECK_AND_RETURN_RET_LOG(errorCode == ImageEffect_ErrorCode::EFFECT_SUCCESS, result, "OH_ImageEffect_Save fail!");
@@ -280,7 +280,7 @@ target_link_libraries(entry PUBLIC
                     OH_EffectFilterDelegate_PushData pushData) { return RenderBrightness(filter, info, pushData); },
        .save = SaveFilterBrightness,
        .restore = [](const char *info) -> OH_EffectFilter * {
-           // 创建 OH_EffectFilter 实例，其中"CustomBrightness"为自定义滤镜的滤镜名。
+           // 创建OH_EffectFilter实例，其中"CustomBrightness"为自定义滤镜的滤镜名。
            OH_EffectFilter *filter = OH_EffectFilter_Create("CustomBrightness");
            CHECK_AND_RETURN_RET_LOG(filter != nullptr, nullptr, "OH_EffectFilter_Create fail!");
            // 解析json字符串info获取key和value。
@@ -377,7 +377,7 @@ target_link_libraries(entry PUBLIC
    // 创建 OH_EffectFilterInfo 实例。
    OH_EffectFilterInfo *customFilterInfo = OH_EffectFilterInfo_Create();
    CHECK_AND_RETURN_RET_LOG(customFilterInfo != nullptr, result, "OH_EffectFilterInfo_Create fail!");
-   // 设置自定义滤镜滤镜名。
+   // 设置自定义滤镜名。
    OH_EffectFilterInfo_SetFilterName(customFilterInfo, "CustomBrightness");
    // 设置自定义滤镜所支持的内存类型。
    ImageEffect_BufferType bufferTypeArray[] = {ImageEffect_BufferType::EFFECT_BUFFER_TYPE_PIXEL};
@@ -450,7 +450,7 @@ target_link_libraries(entry PUBLIC
   <!-- @[image_effect_lookup_filter_info_by_name](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageEffect/entry/src/main/cpp/backend/image_edit.cpp) -->
   ```c++
   OH_EffectFilterInfo *filterInfo = OH_EffectFilterInfo_Create();
-  // 示例代码: 传入nullptr的format, 获取OH_Formats的size
+  // 示例代码：传入nullptr的format，获取OH_Formats的size。
   ImageEffect_ErrorCode errorCode = OH_EffectFilter_LookupFilterInfo(filterName.c_str(), filterInfo);
   CHECK_AND_RETURN_RET_LOG(errorCode == ImageEffect_ErrorCode::EFFECT_SUCCESS, result,
                            "OH_EffectFilter_LookupFilterInfo fail! errorCode = %{public}d", errorCode);
