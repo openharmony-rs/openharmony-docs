@@ -29,7 +29,41 @@
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
 
-2. 创建拍照输出流。
+2. 查询相机是否支持拍照模式。
+
+   通过[getSupportedSceneModes](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedscenemodes11)接口获取传入镜头支持的模式，查询是否支持拍照模式。
+
+   ```ts
+   function isCaptureModeSupported(cameraManager: camera.CameraManager, cameraDevice: camera.CameraDevice): boolean
+   {
+     try {
+       let modeArray = cameraManager.getSupportedSceneModes(cameraDevice);
+       return modeArray.includes(camera.SceneMode.NORMAL_PHOTO);
+     } catch (error) {
+       let err = error as BusinessError;
+       console.error(`failed to getSupportedSceneModes, err code: ${err.code}`);
+       return false;
+     }
+   }
+   ```
+
+3. 通过[getSupportedOutputCapability](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedoutputcapability11)接口获取镜头支持的[CameraOutputCapability](../../reference/apis-camera-kit/arkts-apis-camera-i.md#cameraoutputcapability)列表。
+
+   ```ts
+   function getSupportedOutputCapability(cameraManager: camera.CameraManager, cameraDevice: camera.CameraDevice): camera.CameraOutputCapability | undefined
+   {
+     try {
+       // 接口传入要使能的模式。
+       return cameraManager.getSupportedOutputCapability(cameraDevice, camera.SceneMode.NORMAL_PHOTO);
+     } catch (error) {
+       let err = error as BusinessError;
+       console.error(`failed to getSupportedOutputCapability, err code: ${err.code}`);
+       return undefined;
+     }
+   }
+   ```
+
+4. 创建拍照输出流。
 
    通过[CameraOutputCapability](../../reference/apis-camera-kit/arkts-apis-camera-i.md#cameraoutputcapability)中的photoProfiles属性，可获取当前设备支持的拍照输出流。通过[createPhotoOutput](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#createphotooutput11)方法传入支持的某一个输出流[Profile](../../reference/apis-camera-kit/arkts-apis-camera-i.md#profile)创建拍照输出流。
 
@@ -54,7 +88,7 @@
    }
    ```
 
-3. 设置拍照[on('photoAvailable')](../../reference/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#onphotoavailable11)的回调，并将拍照的buffer保存为图片。
+5. 设置拍照[on('photoAvailable')](../../reference/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#onphotoavailable11)的回调，并将拍照的buffer保存为图片。
 
    Context获取方式请参考：[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
@@ -111,7 +145,7 @@
    }
    ```
 
-4. 参数配置。
+6. 参数配置。
 
    配置相机的参数可以调整拍照的一些功能，包括闪光灯、变焦、焦距等。
 
@@ -185,7 +219,7 @@
    }
    ```
 
-5. 触发拍照。
+7. 触发拍照。
 
    通过photoOutput的[capture](../../reference/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#capture-2)方法，执行拍照任务。该方法有两个参数，第一个参数为拍照设置参数的setting，setting中可以设置照片的质量和旋转角度，第二参数为回调函数。
 
