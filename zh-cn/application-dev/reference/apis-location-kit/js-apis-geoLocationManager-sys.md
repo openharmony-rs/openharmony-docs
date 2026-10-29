@@ -1531,8 +1531,8 @@ addFusionFence(fenceRequestParams: FusionFenceRequestParams): Promise&lt;void&gt
 |801 | Capability not supported. Failed to call ${geoLocationManager.addFusionFence} due to limited device.          |
 |3301000 | The location service is unavailable.                                            |
 |3301100 | The location switch is off.|
-|3501603 | Duplicate fusion fence identifier.                                            |
 |3301601 | The number of geofences exceeds the maximum.                                            |
+|3501603 | Duplicate fusion fence identifier.                                            |
 
 **示例**
 
