@@ -195,7 +195,39 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
            cache.clear();
            remainlen = 0;
        }
+   };
 
+   struct VideoSampleInfo {
+       int32_t videoWidth = 0;
+       int32_t videoHeight = 0;
+       double frameRate = 0.0;
+       int64_t bitrate = BITRATE_10M;
+       int64_t frameInterval = 0;
+       OH_AVPixelFormat pixelFormat = AV_PIXEL_FORMAT_NV12;
+       uint32_t bitrateMode = CBR;
+       int32_t iFrameInterval = 100;
+       int32_t rangFlag = 1;
+       int32_t isHDRVivid = 0;
+       bool hdrVividContainerSignaled = false;
+       int32_t hevcProfile = HEVC_PROFILE_MAIN;
+       OH_ColorPrimary primary = COLOR_PRIMARY_BT2020;
+       OH_TransferCharacteristic transfer = TRANSFER_CHARACTERISTIC_HLG;
+       OH_MatrixCoefficient matrix = MATRIX_COEFFICIENT_BT2020_CL;
+       int32_t rotation = 0;
+       OHNativeWindow *window = nullptr;
+       // API 26 编码前处理设置。降采样与裁剪互斥，目标帧率可与二者之一组合。
+       int32_t preprocMode = 0;
+       int32_t downsamplingWidth = 0;
+       int32_t downsamplingHeight = 0;
+       int32_t cropLeft = 0;
+       int32_t cropTop = 0;
+       int32_t cropRight = 0;
+       int32_t cropBottom = 0;
+       double dropToFrameRate = 0.0;
+   };
+
+   struct SampleInfo {
+       VideoSampleInfo video;
    };
 
 
@@ -308,70 +340,29 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
        OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_PIC_HEIGHT, &codecUserData->height);
    }
 
+   // 设置OH_AVCodecOnNeedInputBuffer回调函数，编码输入帧送入数据队列。
    void SampleCallback::OnNeedInputBuffer(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)
-   {
-       auto *codecUserData = static_cast<CodecUserData *>(userData);
-       if (codecUserData == nullptr || codecUserData->isDestroyed.load()) {
-           return;
-       }
-       if (codec == nullptr || buffer == nullptr) {
-           AVCODEC_SAMPLE_LOGE("Invalid codec input callback argument");
-           codecUserData->SignalError();
-           return;
-       }
-       UpdateEncoderFirstInputDescription(codec, codecUserData);
-       // 输入帧的数据buffer和对应的index送入inputBufferQueue队列。
-       codecUserData->inputBufferQueue.Enqueue(std::make_shared<CodecBufferInfo>(index, buffer));
-   }
-   ```
-
-   ```c++
-   // 设置OH_AVCodecOnError 回调函数，编码异常。
-   static void OnError(OH_AVCodec *codec, int32_t errorCode, void *userData)
-   {
-       // 回调的错误码由开发者判断处理。
-       (void)codec;
-       (void)errorCode;
-       (void)userData;
-   }
-   ```
-   
-   <!--RP12-->
-   ```c++
-   // 设置OH_AVCodecOnStreamChanged 回调函数，编码数据流变化。
-   static void OnStreamChanged(OH_AVCodec *codec, OH_AVFormat *format, void *userData)
-   {
-       // Surface模式下，该回调函数在surface分辨率变化时触发。
-       (void)codec;
-       (void)userData;
-       bool ret = OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_WIDTH, &width) &&
-                  OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_HEIGHT, &height);
-       if (!ret) {
-           // 异常处理。
-       }
-   }
-   ```
-   <!--RP12End-->
-
-   ```c++
-   // 设置 OH_AVCodecOnNeedInputBuffer 回调函数，编码输入帧送入数据队列。
-   static void OnNeedInputBuffer(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)
    {
        // Surface模式下，该回调函数无作用，开发者通过获取的surface输入数据。
        (void)userData;
        (void)index;
        (void)buffer;
    }
-   ```
 
-   ```c++
-   // 设置 OH_AVCodecOnNewOutputBuffer 回调函数，编码完成帧送入输出队列。
-   static void OnNewOutputBuffer(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)
+   void SampleCallback::OnNewOutputBuffer(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)
    {
-       // 完成帧的数据buffer和对应的index送入outQueue队列。
-       (void)codec;
-       (void)userData;
-       outQueue.Enqueue(std::make_shared<CodecBufferInfo>(index, buffer));
+       auto *codecUserData = static_cast<CodecUserData *>(userData);
+       if (codecUserData == nullptr || codecUserData->isDestroyed.load()) {
+           return;
+       }
+       if (codec == nullptr || buffer == nullptr) {
+           AVCODEC_SAMPLE_LOGE("Invalid codec output callback argument");
+           codecUserData->SignalError();
+           return;
+       }
+
+       // 输出帧的数据buffer和对应的index送入outputBufferQueue队列。
+       codecUserData->outputBufferQueue.Enqueue(std::make_shared<CodecBufferInfo>(index, buffer));
    }
    ```
 
