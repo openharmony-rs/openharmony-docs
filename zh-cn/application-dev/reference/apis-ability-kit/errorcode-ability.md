@@ -2178,6 +2178,7 @@ The API is not called in the main thread.
 
 请将接口调用逻辑迁移到主线程中执行。
 
+<!--Del-->
 ## 16000206 指定应用未获授解锁前启动权限
 
 **错误信息**
@@ -2195,6 +2196,7 @@ The specified application is not authorized to start before the user is unlocked
 **处理步骤**
 
 确认目标应用已申请并获授[ohos.permission.ALLOW_DIRECT_BOOT](../../security/AccessToken/permissions-for-system-apps.md#ohospermissionallow_direct_boot)权限，再重新设置用户解锁前自启动。
+<!--DelEnd-->
 
 ## 10110000 装饰器参数声明错误
 
