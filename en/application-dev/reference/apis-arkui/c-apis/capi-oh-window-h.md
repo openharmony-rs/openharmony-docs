@@ -438,7 +438,7 @@ Obtains the snapshot of a window.
 | Parameter | Description |
 | -- | -- |
 | int32_t windowId | Window ID. The default value is **0**. The value is an integer. If the window ID is invalid or the window has been destroyed, you cannot obtain the window snapshot. To successfully obtain a snapshot, a valid window ID is required. You can obtain a valid window ID by calling the ArkTS API getWindowProperties() on the window object |
-| [OH_PixelmapNative](../../apis-input-kit/c-apis/capi-input-oh-pixelmapnative.md)* pixelMap | Pointer to the snapshot. |
+| [OH_PixelmapNative](capi-windowmanager-oh-pixelmapnative.md)* pixelMap | Pointer to the snapshot. |
 
 **Returns**:
 
@@ -590,7 +590,7 @@ Defines the callback used for receiving the main window screenshot list.
 
 | Parameter | Description |
 | -- | -- |
-| [const OH_PixelmapNative](../../apis-input-kit/c-apis/capi-input-oh-pixelmapnative.md)** snapshotPixelMapList | Double pointer to the list of window screenshots. |
+| [const OH_PixelmapNative](capi-windowmanager-oh-pixelmapnative.md)** snapshotPixelMapList | Double pointer to the list of window screenshots. |
 | size_t snapshotListSize | Size of the window screenshot list. |
 
 ### OH_WindowManager_GetMainWindowSnapshot()
@@ -642,7 +642,7 @@ Releases the memory used by the main window screenshot list.
 
 | Parameter | Description |
 | -- | -- |
-| [const OH_PixelmapNative](../../apis-input-kit/c-apis/capi-input-oh-pixelmapnative.md)* snapshotPixelMapList | Pointer to the list of window screenshots. |
+| [const OH_PixelmapNative](capi-windowmanager-oh-pixelmapnative.md)* snapshotPixelMapList | Pointer to the list of window screenshots. |
 
 ### OH_WindowManager_LockCursor()
 

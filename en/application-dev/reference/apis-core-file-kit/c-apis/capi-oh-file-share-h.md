@@ -113,7 +113,7 @@ Set persistent permissions for the URI.
 
 | Type | Description |
 | -- | -- |
-| FileManagement_ErrCode | Returns the status code of the execution. [ERR_INVALID_PARAMETER](capi-fileio-error-code-h.md#filemanagement_errcode) 401 - Invalid input parameter. [ERR_DEVICE_NOT_SUPPORTED](capi-fileio-error-code-h.md#filemanagement_errcode) 801 - Device not supported. [ERR_PERMISSION_ERROR](capi-fileio-error-code-h.md#filemanagement_errcode) 201 - No permission to perform this operation. [ERR_EPERM](capi-fileio-error-code-h.md#filemanagement_errcode) 13900001 - operation not permitted. [ERR_ENOMEM](capi-fileio-error-code-h.md#filemanagement_errcode) 13900011 - Failed to apply for memory or failed to copy memory. [ERR_OK](capi-fileio-error-code-h.md#filemanagement_errcode) 0 - This operation was successfully executed. |
+| FileManagement_ErrCode | Returns the status code of the execution. [ERR_INVALID_PARAMETER](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 401 - Invalid input parameter. [ERR_DEVICE_NOT_SUPPORTED](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 801 - Device not supported. [ERR_PERMISSION_ERROR](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 201 - No permission to perform this operation. [ERR_EPERM](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 13900001 - operation not permitted. [ERR_ENOMEM](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 13900011 - Failed to apply for memory or failed to copy memory. [ERR_OK](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 0 - This operation was successfully executed. |
 
 ### OH_FileShare_RevokePermission()
 
@@ -144,7 +144,7 @@ Revoke persistent permissions for the URI.
 
 | Type | Description |
 | -- | -- |
-| FileManagement_ErrCode | Returns the status code of the execution. [ERR_INVALID_PARAMETER](capi-fileio-error-code-h.md#filemanagement_errcode) 401 - Invalid input parameter. [ERR_DEVICE_NOT_SUPPORTED](capi-fileio-error-code-h.md#filemanagement_errcode) 801 - Device not supported. [ERR_PERMISSION_ERROR](capi-fileio-error-code-h.md#filemanagement_errcode) 201 - No permission to perform this operation. [ERR_EPERM](capi-fileio-error-code-h.md#filemanagement_errcode) 13900001 - operation not permitted. [ERR_ENOMEM](capi-fileio-error-code-h.md#filemanagement_errcode) 13900011 - Failed to apply for memory or failed to copy memory. [ERR_OK](capi-fileio-error-code-h.md#filemanagement_errcode) 0 - This operation was successfully executed. |
+| FileManagement_ErrCode | Returns the status code of the execution. [ERR_INVALID_PARAMETER](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 401 - Invalid input parameter. [ERR_DEVICE_NOT_SUPPORTED](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 801 - Device not supported. [ERR_PERMISSION_ERROR](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 201 - No permission to perform this operation. [ERR_EPERM](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 13900001 - operation not permitted. [ERR_ENOMEM](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 13900011 - Failed to apply for memory or failed to copy memory. [ERR_OK](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 0 - This operation was successfully executed. |
 
 ### OH_FileShare_ActivatePermission()
 
@@ -175,7 +175,7 @@ Enable the URI that have been permanently authorized.
 
 | Type | Description |
 | -- | -- |
-| FileManagement_ErrCode | Returns the status code of the execution. [ERR_INVALID_PARAMETER](capi-fileio-error-code-h.md#filemanagement_errcode) 401 - Invalid input parameter. [ERR_DEVICE_NOT_SUPPORTED](capi-fileio-error-code-h.md#filemanagement_errcode) 801 - Device not supported. [ERR_PERMISSION_ERROR](capi-fileio-error-code-h.md#filemanagement_errcode) 201 - No permission to perform this operation. [ERR_EPERM](capi-fileio-error-code-h.md#filemanagement_errcode) 13900001 - operation not permitted. [ERR_ENOMEM](capi-fileio-error-code-h.md#filemanagement_errcode) 13900011 - Failed to apply for memory or failed to copy memory. [ERR_OK](capi-fileio-error-code-h.md#filemanagement_errcode) 0 - This operation was successfully executed. |
+| FileManagement_ErrCode | Returns the status code of the execution. [ERR_INVALID_PARAMETER](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 401 - Invalid input parameter. [ERR_DEVICE_NOT_SUPPORTED](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 801 - Device not supported. [ERR_PERMISSION_ERROR](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 201 - No permission to perform this operation. [ERR_EPERM](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 13900001 - operation not permitted. [ERR_ENOMEM](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 13900011 - Failed to apply for memory or failed to copy memory. [ERR_OK](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 0 - This operation was successfully executed. |
 
 ### OH_FileShare_DeactivatePermission()
 
@@ -206,7 +206,7 @@ Stop the authorized URI that has been enabled.
 
 | Type | Description |
 | -- | -- |
-| FileManagement_ErrCode | Returns the status code of the execution. [ERR_INVALID_PARAMETER](capi-fileio-error-code-h.md#filemanagement_errcode) 401 - Invalid input parameter. [ERR_DEVICE_NOT_SUPPORTED](capi-fileio-error-code-h.md#filemanagement_errcode) 801 - Device not supported. [ERR_PERMISSION_ERROR](capi-fileio-error-code-h.md#filemanagement_errcode) 201 - No permission to perform this operation. [ERR_EPERM](capi-fileio-error-code-h.md#filemanagement_errcode) 13900001 - operation not permitted. [ERR_ENOMEM](capi-fileio-error-code-h.md#filemanagement_errcode) 13900011 - Failed to apply for memory or failed to copy memory. [ERR_OK](capi-fileio-error-code-h.md#filemanagement_errcode) 0 - This operation was successfully executed. |
+| FileManagement_ErrCode | Returns the status code of the execution. [ERR_INVALID_PARAMETER](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 401 - Invalid input parameter. [ERR_DEVICE_NOT_SUPPORTED](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 801 - Device not supported. [ERR_PERMISSION_ERROR](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 201 - No permission to perform this operation. [ERR_EPERM](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 13900001 - operation not permitted. [ERR_ENOMEM](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 13900011 - Failed to apply for memory or failed to copy memory. [ERR_OK](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 0 - This operation was successfully executed. |
 
 ### OH_FileShare_CheckPersistentPermission()
 
@@ -237,7 +237,7 @@ Check persistent permissions for the URI.
 
 | Type | Description |
 | -- | -- |
-| FileManagement_ErrCode | Returns the status code of the execution. [ERR_INVALID_PARAMETER](capi-fileio-error-code-h.md#filemanagement_errcode) 401 - Invalid input parameter. [ERR_DEVICE_NOT_SUPPORTED](capi-fileio-error-code-h.md#filemanagement_errcode) 801 - Device not supported. [ERR_PERMISSION_ERROR](capi-fileio-error-code-h.md#filemanagement_errcode) 201 - No permission to perform this operation. [ERR_EPERM](capi-fileio-error-code-h.md#filemanagement_errcode) 13900001 - operation not permitted. [ERR_ENOMEM](capi-fileio-error-code-h.md#filemanagement_errcode) 13900011 - Failed to apply for memory or failed to copy memory. [ERR_OK](capi-fileio-error-code-h.md#filemanagement_errcode) 0 - This operation was successfully executed. |
+| FileManagement_ErrCode | Returns the status code of the execution. [ERR_INVALID_PARAMETER](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 401 - Invalid input parameter. [ERR_DEVICE_NOT_SUPPORTED](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 801 - Device not supported. [ERR_PERMISSION_ERROR](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 201 - No permission to perform this operation. [ERR_EPERM](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 13900001 - operation not permitted. [ERR_ENOMEM](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 13900011 - Failed to apply for memory or failed to copy memory. [ERR_OK](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 0 - This operation was successfully executed. |
 
 ### OH_FileShare_ReleasePolicyErrorResult()
 

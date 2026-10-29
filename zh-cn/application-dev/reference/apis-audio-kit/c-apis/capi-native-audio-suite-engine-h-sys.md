@@ -23,7 +23,7 @@
 | [int32_t OH_AudioSuiteEngine_MetaRenderFrame(OH_AudioSuitePipeline* audioSuitePipeline, OH_AudioSuite_MetaFrame* metaFrame, int32_t* responseAudioSize, int32_t* responseMetaSize, bool* finishedFlag)（系统接口）](#oh_audiosuiteengine_metarenderframe) | - | 应用程序使用此接口进行音频数据和元数据处理。 应用需在metaFrame结构体中指定audioData和metaData指针及其对应的大小（AudioDataSize和metaDataSize）。 <br>处理完成后，实际输出的数据大小将通过responseAudioSize和responseMetaSize返回。<br>**系统接口：** 此接口为系统接口。 |
 | [int32_t OH_AudioSuiteNodeBuilderSystem_SetNodeType(OH_AudioNodeBuilder* builder, OH_AudioSuite_SystemNodeType type)（系统接口）](#oh_audiosuitenodebuildersystem_setnodetype) | - | 设置要由构建器创建的音频节点类型。<br>**系统接口：** 此接口为系统接口。 |
 | [int32_t OH_AudioSuiteNodeBuilderSystem_SetFormat(OH_AudioNodeBuilder* builder, OH_AudioSuite_SystemNodeFormat audioFormat)（系统接口）](#oh_audiosuitenodebuildersystem_setformat) | - | 设置节点支持的音频格式。<br>**系统接口：** 此接口为系统接口。 |
-| [typedef int32_t (\*OH_InputNode_RequestMetaDataCallback)(OH_AudioNode* audioNode, void* userData, OH_AudioSuite_MetaFrame* metaFrame, int32_t* responseMetaDataSize, bool* finished)（系统接口）](#oh_inputnode_requestmetadatacallback) | OH_InputNode_RequestMetaDataCallback | 请求元数据的回调函数，仅[INPUT_NODE_TYPE_DEFAULT](capi-native-audio-suite-base-h.md#oh_audionode_type)支持此设置。 每当应用程序或用户调用OH_AudioSuiteEngine_MetaRenderFrame时， 则会触发一次回调。<br>**系统接口：** 此接口为系统接口。 |
+| [typedef int32_t (\*OH_InputNode_RequestMetaDataCallback)(OH_AudioNode* audioNode, void* userData, OH_AudioSuite_MetaFrame* metaFrame, int32_t* responseMetaDataSize, bool* finished)（系统接口）](#oh_inputnode_requestmetadatacallback) | OH_InputNode_RequestMetaDataCallback | 请求元数据的回调函数，仅[INPUT_NODE_TYPE_DEFAULT](capi-native-audio-suite-base-h.md#oh_audionode_type)支持此设置。 每当应用程序或用户调用[OH_AudioSuiteEngine_MetaRenderFrame](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_metarenderframe)时， 则会触发一次回调。<br>**系统接口：** 此接口为系统接口。 |
 | [int32_t OH_AudioSuiteNodeBuilder_SetRequestMetaDataCallback(OH_AudioNodeBuilder* builder, OH_InputNode_RequestMetaDataCallback callback, void* userData)（系统接口）](#oh_audiosuitenodebuilder_setrequestmetadatacallback) | - | 配置当前输入节点构造器的写入音频数据和元数据回调函数。只有[INPUT_NODE_TYPE_DEFAULT](capi-native-audio-suite-base-h.md#oh_audionode_type)支持该设置。<br>**系统接口：** 此接口为系统接口。 |
 | [int32_t OH_AudioSuiteEngineSystem_SetAudioFormat(OH_AudioNode* audioNode, OH_AudioSuite_SystemNodeFormat* audioFormat)（系统接口）](#oh_audiosuiteenginesystem_setaudioformat) | - | 设置输入输出节点的音频格式，指定音频源的音频格式输入节点，或为输出节点指定目标音频格式。<br>**系统接口：** 此接口为系统接口。 |
 | [int32_t OH_AudioSuiteEngineSystem_SetNodeParam(OH_AudioNode* audioNode, uint8_t* param, uint32_t paramSize)（系统接口）](#oh_audiosuiteenginesystem_setnodeparam) | - | 设置系统节点的参数。<br>**系统接口：** 此接口为系统接口。 |
@@ -34,7 +34,7 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| int32_t (*OH_InputNode_RequestMetaDataCallback)(OH_AudioNode* audioNode, void* userData, OH_AudioSuite_MetaFrame* metaFrame, int32_t* responseMetaDataSize, bool* finished)（系统接口） | 请求元数据的回调函数，仅[INPUT_NODE_TYPE_DEFAULT](capi-native-audio-suite-base-h.md#oh_audionode_type)支持此设置。 每当应用程序或用户调用OH_AudioSuiteEngine_MetaRenderFrame时， 则会触发一次回调。<br>**起始版本：** 26.0.0<br>**系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine<br>**系统接口：** 此接口为系统接口。 |
+| int32_t (*OH_InputNode_RequestMetaDataCallback)(OH_AudioNode* audioNode, void* userData, OH_AudioSuite_MetaFrame* metaFrame, int32_t* responseMetaDataSize, bool* finished)（系统接口） | 请求元数据的回调函数，仅[INPUT_NODE_TYPE_DEFAULT](capi-native-audio-suite-base-h.md#oh_audionode_type)支持此设置。 每当应用程序或用户调用[OH_AudioSuiteEngine_MetaRenderFrame](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_metarenderframe)时， 则会触发一次回调。<br>**起始版本：** 26.0.0<br>**系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine<br>**系统接口：** 此接口为系统接口。 |
 
 ## 函数说明
 
@@ -91,7 +91,7 @@ int32_t OH_AudioSuiteNodeBuilderSystem_SetNodeType(OH_AudioNodeBuilder* builder,
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AudioNodeBuilder](capi-ohaudiosuite-oh-audionodebuilder.md)* builder | 音频编创节点构造器句柄。通过[OH_AudioSuiteNodeBuilder_Create](capi-native-audio-suite-engine-h.md#oh_audiosuitenodebuilder_create)获取。 |
-| OH_AudioSuite_SystemNodeType type | OH_AudioSuite_SystemNodeType音频系统节点类型。 |
+| OH_AudioSuite_SystemNodeType type | [OH_AudioSuite_SystemNodeType](capi-native-audio-suite-base-h.md#oh_audiosuite_systemnodetype)音频系统节点类型。 |
 
 **返回值：**
 
@@ -136,7 +136,7 @@ typedef int32_t (*OH_InputNode_RequestMetaDataCallback)(OH_AudioNode* audioNode,
 
 **描述：**
 
-请求元数据的回调函数，仅[INPUT_NODE_TYPE_DEFAULT](capi-native-audio-suite-base-h.md#oh_audionode_type)支持此设置。 每当应用程序或用户调用OH_AudioSuiteEngine_MetaRenderFrame时， 则会触发一次回调。
+请求元数据的回调函数，仅[INPUT_NODE_TYPE_DEFAULT](capi-native-audio-suite-base-h.md#oh_audionode_type)支持此设置。 每当应用程序或用户调用[OH_AudioSuiteEngine_MetaRenderFrame](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_metarenderframe)时， 则会触发一次回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
 
@@ -181,7 +181,7 @@ int32_t OH_AudioSuiteNodeBuilder_SetRequestMetaDataCallback(OH_AudioNodeBuilder*
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AudioNodeBuilder](capi-ohaudiosuite-oh-audionodebuilder.md)* builder | 音频编创节点构造器句柄。通过[OH_AudioSuiteNodeBuilder_Create](capi-native-audio-suite-engine-h.md#oh_audiosuitenodebuilder_create)获取。 |
-| OH_InputNode_RequestMetaDataCallback callback | 用户自定义数据，会在callback函数中将地址传入给用户，如果不使用，可以传入空指针。 |
+| [OH_InputNode_RequestMetaDataCallback](capi-native-audio-suite-engine-h.md#oh_inputnode_requestmetadatacallback) callback | 用户自定义数据，会在callback函数中将地址传入给用户，如果不使用，可以传入空指针。 |
 | void* userData | 指向将传递给回调函数的应用程序数据结构的指针。 |
 
 **返回值：**

@@ -14,4 +14,5 @@ CodecBase模块提供用于音视频封装、解封装、编解码基础功能�
 | -- | -- |
 | [avcodec_audio_channel_layout.h](capi-avcodec-audio-channel-layout-h.md) | 音频编解码声道布局枚举的声明。 |
 | [native_avcodec_videobase.h](capi-native-avcodec-videobase-h.md) | 声明用于基础视频编解码功能以及视频特定配置和参数的Native API。 |
+| [native_avcodec_audiobase.h](capi-native-avcodec-audiobase-h.md) | 声明用于基础音频编解码功能以及音频特定配置和参数的Native API。 |
 | [native_avcodec_base.h](capi-native-avcodec-base-h.md) | 声明用于音视频封装、解封装、编解码基础功能的Native API。 |

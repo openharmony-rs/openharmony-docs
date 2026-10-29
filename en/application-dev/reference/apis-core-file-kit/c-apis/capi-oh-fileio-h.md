@@ -77,6 +77,6 @@ Obtains the location of a file.
 
 | Type | Description |
 | -- | -- |
-| FileManagement_ErrCode | Return the status code of the execution. [ERR_INVALID_PARAMETER](capi-fileio-error-code-h.md#filemanagement_errcode) 401 - Invalid input parameter, pointer is null. [ERR_ENOENT](capi-fileio-error-code-h.md#filemanagement_errcode) 13900002 - No such file or directory. [ERR_ENOMEM](capi-fileio-error-code-h.md#filemanagement_errcode) 13900011 - Failed to apply for memory. |
+| FileManagement_ErrCode | Return the status code of the execution. [ERR_INVALID_PARAMETER](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 401 - Invalid input parameter, pointer is null. [ERR_ENOENT](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 13900002 - No such file or directory. [ERR_ENOMEM](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 13900011 - Failed to apply for memory. |
 
 

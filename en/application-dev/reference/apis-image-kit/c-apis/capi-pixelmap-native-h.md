@@ -73,8 +73,10 @@ Declares the APIs that can access a pixel map.
 | [Image_ErrorCode OH_PixelmapNative_ConvertPixelmapNativeFromNapi(napi_env env, napi_value pixelmapNapi, OH_PixelmapNative **pixelmapNative)](#oh_pixelmapnative_convertpixelmapnativefromnapi) | Convert a <b>PixelMap</b> napi object to native <b>PixelMap</b> object. |
 | [Image_ErrorCode OH_PixelmapNative_ReadPixels(OH_PixelmapNative *pixelmap, uint8_t *destination, size_t *bufferSize)](#oh_pixelmapnative_readpixels) | Reads data of this pixel map to an Buffer. If this pixel map is created in the BGRA_8888 format, the data read is the same as the original data. |
 | [Image_ErrorCode OH_PixelmapNative_WritePixels(OH_PixelmapNative *pixelmap, uint8_t *source, size_t bufferSize)](#oh_pixelmapnative_writepixels) | Reads image data in an Buffer and writes the data to a Pixelmap object. |
+| [Image_ErrorCode OH_PixelmapNative_WritePixelsWithPixelFormat(OH_PixelmapNative *pixelmap, const uint8_t *source, uint32_t bufferSize, PIXEL_FORMAT sourcePixelFormat)](#oh_pixelmapnative_writepixelswithpixelformat) | Writes pixel data in the specified pixel format from a buffer to the entire PixelMap.<br> Supported source pixel formats are [PIXEL_FORMAT_RGBA_8888](capi-pixelmap-native-h.md#pixel_format), [PIXEL_FORMAT_RGB_888](capi-pixelmap-native-h.md#pixel_format), [PIXEL_FORMAT_RGB_565](capi-pixelmap-native-h.md#pixel_format), and [PIXEL_FORMAT_RGBA_F16](capi-pixelmap-native-h.md#pixel_format). Source rows must be tightly packed without row padding. The minimum required buffer size is the PixelMap width multiplied by the PixelMap height and the number of bytes per pixel of sourcePixelFormat. To write source data with a customized row stride or offset, use [OH_PixelmapNative_WritePixelsToAreaWithPixelFormat](capi-pixelmap-native-h.md#oh_pixelmapnative_writepixelstoareawithpixelformat).<br> This function executes synchronously and may allocate memory and convert pixel data. Execution time depends on the number of pixels and the pixel formats. For large images, call this function from a worker thread to avoid blocking the UI thread. The source buffer must remain valid and unchanged until this function returns. The caller must serialize access to the same PixelMap, including reads, writes, pixel access, and release. Do not make reentrant calls on the same PixelMap or call this function from a signal handler. If the PixelMap is locked or not editable, this function returns IMAGE_UNSUPPORTED_OPERATION without waiting for it to become writable. Failed operations are not automatically retried. A failed write does not guarantee that the PixelMap pixel data remains unchanged. Do not use the pixel contents from a failed write; restore them from a known-good source or recreate the PixelMap after resolving the failure. For parameter or conversion errors, correct the input or select a supported format. For allocation or copy errors, check the available memory and buffer validity before performing another write. |
 | [Image_ErrorCode OH_PixelmapNative_ReadPixelsFromArea(OH_PixelmapNative *pixelmap, Image_PositionArea *area)](#oh_pixelmapnative_readpixelsfromarea) | Reads data from a certain area of the PixelMap to a buffer. The resulting data will be in BGRA_8888 format. |
 | [Image_ErrorCode OH_PixelmapNative_WritePixelsToArea(OH_PixelmapNative *pixelmap, Image_PositionArea *area)](#oh_pixelmapnative_writepixelstoarea) | Writes data from a buffer to a certain area of the PixelMap. The source data should be in BGRA_8888 format. |
+| [Image_ErrorCode OH_PixelmapNative_WritePixelsToAreaWithPixelFormat(OH_PixelmapNative *pixelmap, const Image_PositionArea *area, PIXEL_FORMAT sourcePixelFormat)](#oh_pixelmapnative_writepixelstoareawithpixelformat) | Writes pixel data in the specified pixel format from a buffer to a certain area of the PixelMap.<br> Supported source pixel formats are [PIXEL_FORMAT_RGBA_8888](capi-pixelmap-native-h.md#pixel_format), [PIXEL_FORMAT_RGB_888](capi-pixelmap-native-h.md#pixel_format), [PIXEL_FORMAT_RGB_565](capi-pixelmap-native-h.md#pixel_format), and [PIXEL_FORMAT_RGBA_F16](capi-pixelmap-native-h.md#pixel_format). area->stride must be greater than or equal to area->region.width multiplied by the number of bytes per pixel of sourcePixelFormat. The minimum required buffer size is calculated as follows: area->offset + (area->region.height - 1) * area->stride + area->region.width * bytesPerPixel(sourcePixelFormat).<br> This function executes synchronously and may allocate memory and convert pixel data. Execution time depends on the number of pixels in the region and the pixel formats. For large regions, call this function from a worker thread to avoid blocking the UI thread. The area information and source pixel buffer must remain valid and unchanged until this function returns. The caller must serialize access to the same PixelMap, including reads, writes, pixel access, and release. Do not make reentrant calls on the same PixelMap or call this function from a signal handler. If the PixelMap is locked or not editable, this function returns IMAGE_UNSUPPORTED_OPERATION without waiting for it to become writable. Failed operations are not automatically retried. A failed write does not guarantee that the pixel data in the specified region remains unchanged. Do not use the pixel contents from a failed write; restore them from a known-good source or recreate the PixelMap after resolving the failure. For parameter or conversion errors, correct the input or select a supported format. For allocation or copy errors, check the available memory and buffer validity before performing another write. |
 | [Image_ErrorCode OH_PixelmapNative_GetArgbPixels(OH_PixelmapNative *pixelmap, uint8_t *destination, size_t *bufferSize)](#oh_pixelmapnative_getargbpixels) | Get argb pixel buffer from pixelmap. |
 | [Image_ErrorCode OH_PixelmapNative_ToSdr(OH_PixelmapNative *pixelmap)](#oh_pixelmapnative_tosdr) | Convert [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) to standard dynamic range. |
 | [Image_ErrorCode OH_PixelmapNative_GetImageInfo(OH_PixelmapNative *pixelmap, OH_Pixelmap_ImageInfo *imageInfo)](#oh_pixelmapnative_getimageinfo) | Obtains pixel map information of this image. |
@@ -1091,6 +1093,35 @@ Reads image data in an Buffer and writes the data to a Pixelmap object.
 | -- | -- |
 | [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | Function result code: [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful. [IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) Parameter error. Possible causes: 1.Parameter is nullptr 2.pixelmap's inner pixelmap is nullptr. 3.Parameter bufferSize is less than the actual data size. [IMAGE_UNSUPPORTED_OPERATION](capi-image-common-h.md#image_errorcode) If the pixelmap is not editable. [IMAGE_UNKNOWN_ERROR](capi-image-common-h.md#image_errorcode) Internal unknown error, e.g. memory copy failed or pixelmap's attributes are incorrect. |
 
+### OH_PixelmapNative_WritePixelsWithPixelFormat()
+
+```c
+Image_ErrorCode OH_PixelmapNative_WritePixelsWithPixelFormat(OH_PixelmapNative *pixelmap, const uint8_t *source, uint32_t bufferSize, PIXEL_FORMAT sourcePixelFormat)
+```
+
+**Description**
+
+Writes pixel data in the specified pixel format from a buffer to the entire PixelMap.<br> Supported source pixel formats are [PIXEL_FORMAT_RGBA_8888](capi-pixelmap-native-h.md#pixel_format), [PIXEL_FORMAT_RGB_888](capi-pixelmap-native-h.md#pixel_format), [PIXEL_FORMAT_RGB_565](capi-pixelmap-native-h.md#pixel_format), and [PIXEL_FORMAT_RGBA_F16](capi-pixelmap-native-h.md#pixel_format). Source rows must be tightly packed without row padding. The minimum required buffer size is the PixelMap width multiplied by the PixelMap height and the number of bytes per pixel of sourcePixelFormat. To write source data with a customized row stride or offset, use [OH_PixelmapNative_WritePixelsToAreaWithPixelFormat](capi-pixelmap-native-h.md#oh_pixelmapnative_writepixelstoareawithpixelformat).<br> This function executes synchronously and may allocate memory and convert pixel data. Execution time depends on the number of pixels and the pixel formats. For large images, call this function from a worker thread to avoid blocking the UI thread. The source buffer must remain valid and unchanged until this function returns. The caller must serialize access to the same PixelMap, including reads, writes, pixel access, and release. Do not make reentrant calls on the same PixelMap or call this function from a signal handler. If the PixelMap is locked or not editable, this function returns IMAGE_UNSUPPORTED_OPERATION without waiting for it to become writable. Failed operations are not automatically retried. A failed write does not guarantee that the PixelMap pixel data remains unchanged. Do not use the pixel contents from a failed write; restore them from a known-good source or recreate the PixelMap after resolving the failure. For parameter or conversion errors, correct the input or select a supported format. For allocation or copy errors, check the available memory and buffer validity before performing another write.
+
+**System capability**: SystemCapability.Multimedia.Image.Core
+
+**Since**: 26.1.0
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) *pixelmap | [in,out] Pointer to the PixelMap whose pixel data will be modified. This pointer must not be NULL. |
+| const uint8_t *source | [in] Pointer to the source pixel buffer. This pointer must not be NULL. |
+| uint32_t bufferSize | [in] Size of the source buffer, in bytes. It must be at least the minimum required buffer size described above and must not exceed UINT32_MAX. |
+| [PIXEL_FORMAT](capi-pixelmap-native-h.md#pixel_format) sourcePixelFormat | [in] Pixel format of the source data. RGBA_8888, RGB_888, RGB_565, and RGBA_F16 are supported. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | <ul> <li>[IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the operation is successful.</li> <li>[IMAGE_UNSUPPORTED_OPERATION](capi-image-common-h.md#image_errorcode) if the PixelMap is not editable or is locked.</li> <li>[IMAGE_UNSUPPORTED_CONVERSION](capi-image-common-h.md#image_errorcode) if conversion between sourcePixelFormat and the PixelMap pixel format is not supported.</li> <li>[IMAGE_INVALID_PARAMETER](capi-image-common-h.md#image_errorcode) if pixelmap or source is NULL, bufferSize is insufficient, or sourcePixelFormat is invalid or unsupported.</li> <li>[IMAGE_ALLOC_FAILED](capi-image-common-h.md#image_errorcode) if memory allocation fails.</li> <li>[IMAGE_COPY_FAILED](capi-image-common-h.md#image_errorcode) if the pixel data cannot be copied or converted.</li> </ul> |
+
 ### OH_PixelmapNative_ReadPixelsFromArea()
 
 ```c
@@ -1154,6 +1185,34 @@ Writes data from a buffer to a certain area of the PixelMap. The source data sho
 
 [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md)
 
+
+### OH_PixelmapNative_WritePixelsToAreaWithPixelFormat()
+
+```c
+Image_ErrorCode OH_PixelmapNative_WritePixelsToAreaWithPixelFormat(OH_PixelmapNative *pixelmap, const Image_PositionArea *area, PIXEL_FORMAT sourcePixelFormat)
+```
+
+**Description**
+
+Writes pixel data in the specified pixel format from a buffer to a certain area of the PixelMap.<br> Supported source pixel formats are [PIXEL_FORMAT_RGBA_8888](capi-pixelmap-native-h.md#pixel_format), [PIXEL_FORMAT_RGB_888](capi-pixelmap-native-h.md#pixel_format), [PIXEL_FORMAT_RGB_565](capi-pixelmap-native-h.md#pixel_format), and [PIXEL_FORMAT_RGBA_F16](capi-pixelmap-native-h.md#pixel_format). area->stride must be greater than or equal to area->region.width multiplied by the number of bytes per pixel of sourcePixelFormat. The minimum required buffer size is calculated as follows: area->offset + (area->region.height - 1) * area->stride + area->region.width * bytesPerPixel(sourcePixelFormat).<br> This function executes synchronously and may allocate memory and convert pixel data. Execution time depends on the number of pixels in the region and the pixel formats. For large regions, call this function from a worker thread to avoid blocking the UI thread. The area information and source pixel buffer must remain valid and unchanged until this function returns. The caller must serialize access to the same PixelMap, including reads, writes, pixel access, and release. Do not make reentrant calls on the same PixelMap or call this function from a signal handler. If the PixelMap is locked or not editable, this function returns IMAGE_UNSUPPORTED_OPERATION without waiting for it to become writable. Failed operations are not automatically retried. A failed write does not guarantee that the pixel data in the specified region remains unchanged. Do not use the pixel contents from a failed write; restore them from a known-good source or recreate the PixelMap after resolving the failure. For parameter or conversion errors, correct the input or select a supported format. For allocation or copy errors, check the available memory and buffer validity before performing another write.
+
+**System capability**: SystemCapability.Multimedia.Image.Core
+
+**Since**: 26.1.0
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) *pixelmap | [in,out] Pointer to the PixelMap whose pixel data will be modified. This pointer must not be NULL. |
+| const Image_PositionArea *area | [in] Pointer to the area information. Both area and area->pixels must not be NULL. Pixel data is read from area->pixels and written to area->region. The source buffer size area->pixelsSize must be at least the minimum required buffer size described above. |
+| [PIXEL_FORMAT](capi-pixelmap-native-h.md#pixel_format) sourcePixelFormat | [in] Pixel format of the source data. RGBA_8888, RGB_888, RGB_565, and RGBA_F16 are supported. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | <ul> <li>[IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the operation is successful.</li> <li>[IMAGE_UNSUPPORTED_OPERATION](capi-image-common-h.md#image_errorcode) if the PixelMap is not editable or is locked.</li> <li>[IMAGE_UNSUPPORTED_CONVERSION](capi-image-common-h.md#image_errorcode) if conversion between sourcePixelFormat and the PixelMap pixel format is not supported.</li> <li>[IMAGE_INVALID_PARAMETER](capi-image-common-h.md#image_errorcode) if pixelmap, area, or area->pixels is NULL; the buffer size, offset, stride, or region is invalid; or sourcePixelFormat is invalid or unsupported.</li> <li>[IMAGE_ALLOC_FAILED](capi-image-common-h.md#image_errorcode) if memory allocation fails.</li> <li>[IMAGE_COPY_FAILED](capi-image-common-h.md#image_errorcode) if the pixel data cannot be copied or converted.</li> </ul> |
 
 ### OH_PixelmapNative_GetArgbPixels()
 

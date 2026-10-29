@@ -10,7 +10,7 @@ Provides the data structures for the C APIs of the the telephony radio.
 
 **Since**: 13
 
-**Related module**: [](capi-.md)
+**Related module**: [Telephony](capi-telephony.md)
 
 ## Summary
 
@@ -18,7 +18,7 @@ Provides the data structures for the C APIs of the the telephony radio.
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [Telephony_NetworkState](capi--telephony-networkstate.md) | Telephony_NetworkState | Defines network status information. |
+| [Telephony_NetworkState](capi-telephony-telephony-networkstate.md) | Telephony_NetworkState | Defines network status information. |
 
 ### Enum
 

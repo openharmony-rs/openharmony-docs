@@ -56,7 +56,7 @@
 | [OH_AVErrCode OH_VideoDecoder_RenderOutputBuffer(OH_AVCodec *codec, uint32_t index)](#oh_videodecoder_renderoutputbuffer) | 将index对应的输出缓冲返回给解码器，缓冲区中携带解码输出数据，并通知解码器完成在输出surface上渲染，输出缓冲包含解码数据。<br> 如果之前没有配置输出surface，则调用此接口仅将指定index对应的输出缓冲区返回给解码器。 |
 | [OH_AVErrCode OH_VideoDecoder_RenderOutputBufferAtTime(OH_AVCodec *codec, uint32_t index, int64_t renderTimestampNs)](#oh_videodecoder_renderoutputbufferattime) | 将index对应的输出缓冲返回给解码器，缓冲区中携带解码输出数据，并通知解码器在开发者指定的时间内完成在输出surface上渲染，输出缓冲包含解码数据。<br> 如果之前没有配置输出surface，则调用此接口仅将指定index对应的输出缓冲区返回给解码器。<br> 开发者可以使用时间戳在特定时间（在VSYNC或者缓冲区时间戳之后）渲染缓冲区。若要在指定的时间戳显示，时间戳需要合理接近系统时间，有几点需要注意：<br> 1. 缓冲区是按照顺序处理的，因此可能会阻塞后续缓冲区在surface上的显示，如果想要对用户的一些行为做出反应，例如停止或者快进快退视频，这一点很重要。<br> 2. 如果多个缓冲区被发送到surface要在同一个VSYNC上渲染，那么最后一个将会被显示，其他的将被丢弃。<br> 3. 如果时间戳与当前的系统时间不是“合理接近”，surface将会忽略时间戳，并在可行的最早时间里显示buffer。在此模式下不会丢弃帧。<br> 4. 如果需要由系统根据显示刷新率来丢帧，则必须调用此接口，否则应用需自行实现丢帧逻辑。 |
 | [OH_AVErrCode OH_VideoDecoder_FreeOutputBuffer(OH_AVCodec *codec, uint32_t index)](#oh_videodecoder_freeoutputbuffer) | 将处理后的输出缓冲区返回到解码器。用户使用完需要及时调用此接口释放输出缓存区，否则会阻塞解码流程。 |
-| [OH_AVErrCode OH_VideoDecoder_IsValid(OH_AVCodec *codec, bool *isValid)](#oh_videodecoder_isvalid) | 在解码器实例存在的情况下，检查当前解码器服务是否有效。 |
+| [OH_AVErrCode OH_VideoDecoder_IsValid(OH_AVCodec *codec, bool *isValid)](#oh_videodecoder_isvalid) | 检查当前编解码器实例是否有效。 |
 | [OH_AVErrCode OH_VideoDecoder_SetDecryptionConfig(OH_AVCodec *codec, MediaKeySession *mediaKeySession, bool secureVideoPath)](#oh_videodecoder_setdecryptionconfig) | 设置解密配置。在调用OH_VideoDecoder_Prepare接口之前，可选择调用此接口。 |
 | [OH_AVErrCode OH_VideoDecoder_QueryInputBuffer(struct OH_AVCodec *codec, uint32_t *index, int64_t timeoutUs)](#oh_videodecoder_queryinputbuffer) | 查询下一个可用输入缓冲区的索引。<br> 调用此接口后需要接着调用[OH_VideoDecoder_GetInputBuffer](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_getinputbuffer)接口获取缓冲区实例，并通过[OH_VideoDecoder_PushInputBuffer](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_pushinputbuffer)接口传递给解码器。<br> 需要注意的是，上述操作仅在同步模式下支持。 |
 | [OH_AVBuffer *OH_VideoDecoder_GetInputBuffer(struct OH_AVCodec *codec, uint32_t index)](#oh_videodecoder_getinputbuffer) | 获取可用输入缓冲区的实例。<br> 需要注意的是，此接口仅适用于同步模式。 |
@@ -662,7 +662,7 @@ OH_AVErrCode OH_VideoDecoder_IsValid(OH_AVCodec *codec, bool *isValid)
 
 **描述：**
 
-在解码器实例存在的情况下，检查当前解码器服务是否有效。
+检查当前编解码器实例是否有效。
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoDecoder
 
@@ -673,7 +673,7 @@ OH_AVErrCode OH_VideoDecoder_IsValid(OH_AVCodec *codec, bool *isValid)
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | 指向视频解码实例的指针。 |
-| bool *isValid | 输出参数，指向布尔类型的指针。只有当接口返回AV_ERR_OK时，该值表示解码器服务的有效性（true为有效，false为无效）。建议开发者将isValid初始化为false。 |
+| bool *isValid | 输出参数，指向布尔类型的指针。只有当接口返回AV_ERR_OK时，该值表示解码器实例的有效性（true为有效，false为无效）。建议开发者将isValid初始化为false。 |
 
 **返回值：**
 

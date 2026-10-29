@@ -1,5 +1,9 @@
 # Telephony_NetworkState
 
+```c
+typedef struct Telephony_NetworkState {...} Telephony_NetworkState
+```
+
 ## 概述
 
 网络状态信息。
@@ -7,6 +11,10 @@
 **系统能力：** SystemCapability.Telephony.CoreService
 
 **起始版本：** 13
+
+**相关模块：** [Telephony](capi-telephony.md)
+
+**所在头文件：** [telephony_radio_type.h](capi-telephony-radio-type-h.md)
 
 ## 汇总
 

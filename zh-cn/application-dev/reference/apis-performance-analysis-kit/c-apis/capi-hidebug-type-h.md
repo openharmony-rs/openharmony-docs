@@ -252,9 +252,9 @@ enum OH_HiDebug_MemListenerType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_HIDEBUG_DO_NOTHING = 0 |  |
-| OH_HIDEBUG_RUNNING_GC = 1 |  |
-| OH_HIDEBUG_DUMP_SNAPSHOT = 2 |  |
+| OH_HIDEBUG_DO_NOTHING = 0 | 无特定操作，仅通知回调。<br>**起始版本：** 26.0.0 |
+| OH_HIDEBUG_RUNNING_GC = 1 | 垃圾回收（GC）操作。<br>**起始版本：** 26.0.0 |
+| OH_HIDEBUG_DUMP_SNAPSHOT = 2 | 导出内存快照。<br>**起始版本：** 26.0.0 |
 
 ### OH_HiDebug_ProfilerStackTraceMode
 

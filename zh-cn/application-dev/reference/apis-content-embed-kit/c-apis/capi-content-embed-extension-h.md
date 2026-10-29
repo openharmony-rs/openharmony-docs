@@ -24,7 +24,7 @@
 | [ContentEmbed_ExtensionContext](capi-contentembed-contentembed-extensioncontext.md) | ContentEmbed_ExtensionContext | 声明OE Extension上下文的结构体类型。 |
 | [ContentEmbed_ExtensionContextHandle](capi-contentembed-contentembed-extensioncontexthandle.md) | ContentEmbed_ExtensionContextHandle | 声明OE Extension上下文对象指针类型。该指针对象用于在ContentEmbed Extension流程中承载和管理OE Extension的运行上下文信息。<br>可通过 [OH_ContentEmbed_Extension_GetContentEmbedContext](capi-content-embed-extension-h.md#oh_contentembed_extension_getcontentembedcontext)从OE Extension实例获取，支持通过 [OH_ContentEmbed_Extension_GetContext](capi-content-embed-extension-h.md#oh_contentembed_extension_getcontext)获取AbilityRuntime上下文、 [OH_ContentEmbed_Extension_ContextStartSelfUIAbility](capi-content-embed-extension-h.md#oh_contentembed_extension_contextstartselfuiability)或 [OH_ContentEmbed_Extension_ContextStartSelfUIAbilityWithStartOptions](capi-content-embed-extension-h.md#oh_contentembed_extension_contextstartselfuiabilitywithstartoptions)启动自身UIAbility及 [OH_ContentEmbed_Extension_ContextTerminateAbility](capi-content-embed-extension-h.md#oh_contentembed_extension_contextterminateability)销毁OE Extension等操作。 |
 | [ContentEmbed_ExtensionInstance](capi-contentembed-contentembed-extensioninstance.md) | ContentEmbed_ExtensionInstance | 声明OE Extension实例的结构体类型。管理扩展的生命周期、回调注册和客户端OE对象关联等核心功能。适用于服务端应用需要嵌入OE扩展能力并完成扩展与客户端OE文档之间生命周期同步、回调监听及对象关联绑定的场景。 |
-| [ContentEmbed_ExtensionInstanceHandle](capi-contentembed-contentembed-extensioninstancehandle.md) | ContentEmbed_ExtensionInstanceHandle | 声明OE Extension实例对象指针类型。需要在OH_AbilityRuntime_OnNativeExtensionCreate函数实现里通过 [OH_ContentEmbed_Extension_GetExtensionInstance](capi-content-embed-extension-h.md#oh_contentembed_extension_getextensioninstance)方法，在OE Extension被系统启动时获取OE Extension实例对象。 |
+| [ContentEmbed_ExtensionInstanceHandle](capi-contentembed-contentembed-extensioninstancehandle.md) | ContentEmbed_ExtensionInstanceHandle | 声明OE Extension实例对象指针类型。需要在[OH_AbilityRuntime_OnNativeExtensionCreate](../../apis-ability-kit/c-apis/capi-extension-ability-h.md#变量)函数实现里通过 [OH_ContentEmbed_Extension_GetExtensionInstance](capi-content-embed-extension-h.md#oh_contentembed_extension_getextensioninstance)方法，在OE Extension被系统启动时获取OE Extension实例对象。 |
 | [ContentEmbed_Object](capi-contentembed-contentembed-object.md) | ContentEmbed_Object | 声明ContentEmbed_Object结构体类型。用于指向OE文档在服务端封装的文档嵌入和编辑的程序对象（简称服务端OE对象）。 |
 | [ContentEmbed_ObjectHandle](capi-contentembed-contentembed-objecthandle.md) | ContentEmbed_ObjectHandle | 声明ContentEmbed_Object对象指针类型。当客户端连接服务端时，系统创建该对象实例，并回调 [OH_ContentEmbed_Extension_RegisterOnObjectAttachFunc](capi-content-embed-extension-h.md#oh_contentembed_extension_registeronobjectattachfunc)注册的[OH_ContentEmbed_Extension_OnObjectAttachFunc](capi-content-embed-extension-h.md#oh_contentembed_extension_onobjectattachfunc) 函数，并传入该类型的实例指针。 |
 
@@ -34,7 +34,7 @@
 | -- | -- | -- |
 | [ContentEmbed_ErrorCode OH_ContentEmbed_Extension_GetContentEmbedContext(ContentEmbed_ExtensionInstanceHandle ceInstance, ContentEmbed_ExtensionContextHandle *ceContext)](#oh_contentembed_extension_getcontentembedcontext) | - | 从OE Extension实例中获取其对应的OE Extension上下文对象。支持通过[OH_ContentEmbed_Extension_GetContext](capi-content-embed-extension-h.md#oh_contentembed_extension_getcontext)获取AbilityRuntime上下文、 [OH_ContentEmbed_Extension_ContextStartSelfUIAbility](capi-content-embed-extension-h.md#oh_contentembed_extension_contextstartselfuiability)或 [OH_ContentEmbed_Extension_ContextStartSelfUIAbilityWithStartOptions](capi-content-embed-extension-h.md#oh_contentembed_extension_contextstartselfuiabilitywithstartoptions)启动自身UIAbility及 [OH_ContentEmbed_Extension_ContextTerminateAbility](capi-content-embed-extension-h.md#oh_contentembed_extension_contextterminateability)销毁OE Extension等操作。 |
 | [ContentEmbed_ErrorCode OH_ContentEmbed_Extension_GetContext(ContentEmbed_ExtensionContextHandle ceContext, AbilityRuntime_ContextHandle *context)](#oh_contentembed_extension_getcontext) | - | 从OE Extension上下文中获取AbilityRuntime上下文。 |
-| [ContentEmbed_ErrorCode OH_ContentEmbed_Extension_GetExtensionInstance(AbilityRuntime_ExtensionInstanceHandle baseInstance, ContentEmbed_ExtensionInstanceHandle *ceInstance)](#oh_contentembed_extension_getextensioninstance) | - | 从ExtensionAbility基类实例中获取对应的OE Extension实例。 <br>建议在OH_AbilityRuntime_OnNativeExtensionCreate函数实现里调用，获取实例后应调用 [OH_ContentEmbed_Extension_RegisterOnCreateFunc](capi-content-embed-extension-h.md#oh_contentembed_extension_registeroncreatefunc)和 [OH_ContentEmbed_Extension_RegisterOnDestroyFunc](capi-content-embed-extension-h.md#oh_contentembed_extension_registerondestroyfunc)注册OE Extension生命周期回调函数。 |
+| [ContentEmbed_ErrorCode OH_ContentEmbed_Extension_GetExtensionInstance(AbilityRuntime_ExtensionInstanceHandle baseInstance, ContentEmbed_ExtensionInstanceHandle *ceInstance)](#oh_contentembed_extension_getextensioninstance) | - | 从ExtensionAbility基类实例中获取对应的OE Extension实例。 <br>建议在[OH_AbilityRuntime_OnNativeExtensionCreate](../../apis-ability-kit/c-apis/capi-extension-ability-h.md#变量)函数实现里调用，获取实例后应调用 [OH_ContentEmbed_Extension_RegisterOnCreateFunc](capi-content-embed-extension-h.md#oh_contentembed_extension_registeroncreatefunc)和 [OH_ContentEmbed_Extension_RegisterOnDestroyFunc](capi-content-embed-extension-h.md#oh_contentembed_extension_registerondestroyfunc)注册OE Extension生命周期回调函数。 |
 | [typedef void (\*OH_ContentEmbed_Extension_OnCreateFunc)(ContentEmbed_ExtensionInstanceHandle instance, AbilityBase_Want *want)](#oh_contentembed_extension_oncreatefunc) | OH_ContentEmbed_Extension_OnCreateFunc | OE Extension实例创建时的生命周期函数类型。 <br>开发者需要实现此函数并通过[OH_ContentEmbed_Extension_RegisterOnCreateFunc](capi-content-embed-extension-h.md#oh_contentembed_extension_registeroncreatefunc)注册到OE Extension实例。 |
 | [typedef void (\*OH_ContentEmbed_Extension_OnDestroyFunc)(ContentEmbed_ExtensionInstanceHandle instance)](#oh_contentembed_extension_ondestroyfunc) | OH_ContentEmbed_Extension_OnDestroyFunc | OE Extension实例销毁时的生命周期函数类型。 <br>开发者需要实现此函数并通过[OH_ContentEmbed_Extension_RegisterOnDestroyFunc](capi-content-embed-extension-h.md#oh_contentembed_extension_registerondestroyfunc)注册到OE Extension实例。 |
 | [typedef void (\*OH_ContentEmbed_Extension_OnObjectAttachFunc)(ContentEmbed_ExtensionInstanceHandle instance, ContentEmbed_ObjectHandle object)](#oh_contentembed_extension_onobjectattachfunc) | OH_ContentEmbed_Extension_OnObjectAttachFunc | 当客户端OE对象连接到OE Extension实例时的回调函数类型，用于执行服务端OE对象关联后的初始化操作。 <br>开发者需要实现此函数并通过[OH_ContentEmbed_Extension_RegisterOnObjectAttachFunc](capi-content-embed-extension-h.md#oh_contentembed_extension_registeronobjectattachfunc)注册到OE Extension实例。在此回调中，开发者需要调用 [OH_ContentEmbed_Extension_RegisterOnWriteToDataStreamFunc](capi-content-embed-extension-h.md#oh_contentembed_extension_registeronwritetodatastreamfunc)、 [OH_ContentEmbed_Extension_RegisterOnGetCapabilityFunc](capi-content-embed-extension-h.md#oh_contentembed_extension_registerongetcapabilityfunc)、[OH_ContentEmbed_Extension_RegisterOnDoEditFunc](capi-content-embed-extension-h.md#oh_contentembed_extension_registerondoeditfunc)、 [OH_ContentEmbed_Extension_RegisterOnGetSnapshotFunc](capi-content-embed-extension-h.md#oh_contentembed_extension_registerongetsnapshotfunc)和 [OH_ContentEmbed_Extension_RegisterOnGetEditStatusFunc](capi-content-embed-extension-h.md#oh_contentembed_extension_registerongeteditstatusfunc)函数注册用于响应客户端OE对象请求的回调函数。 |
@@ -61,8 +61,8 @@
 | [ContentEmbed_ErrorCode OH_ContentEmbed_Extension_CallbackToOnEditingFinished(ContentEmbed_ObjectHandle object, bool dataModified)](#oh_contentembed_extension_callbacktooneditingfinished) | - | 触发客户端OE对象注册的OE文档编辑完成回调函数。 |
 | [ContentEmbed_ErrorCode OH_ContentEmbed_Extension_CallbackToOnExtensionStopped(ContentEmbed_ExtensionInstanceHandle instance)](#oh_contentembed_extension_callbacktoonextensionstopped) | - | 触发OE Extension关联的所有客户端OE对象注册的OE Extension停止时的回调函数。 |
 | [ContentEmbed_ErrorCode OH_ContentEmbed_Extension_SetSnapshot(ContentEmbed_ObjectHandle object, OH_PixelmapNative *pixelMap)](#oh_contentembed_extension_setsnapshot) | - | 设置客户端OE对象关联的OE文档快照图像。 |
-| [ContentEmbed_ErrorCode OH_ContentEmbed_Extension_ContextStartSelfUIAbility(ContentEmbed_ExtensionContextHandle context, AbilityBase_Want *want)](#oh_contentembed_extension_contextstartselfuiability) | - | 通过OE Extension上下文启动自身的UIAbility。 如需指定启动选项，参考[OH_ContentEmbed_Extension_ContextStartSelfUIAbilityWithStartOptions](capi-content-embed-extension-h.md#oh_contentembed_extension_contextstartselfuiabilitywithstartoptions)。 |
-| [ContentEmbed_ErrorCode OH_ContentEmbed_Extension_ContextStartSelfUIAbilityWithStartOptions(ContentEmbed_ExtensionContextHandle context, AbilityBase_Want *want, AbilityRuntime_StartOptions *options)](#oh_contentembed_extension_contextstartselfuiabilitywithstartoptions) | - | 使用启动选项启动OE Extension上下文自身的UIAbility。 如果不需要指定启动选项，参考[OH_ContentEmbed_Extension_ContextStartSelfUIAbility](capi-content-embed-extension-h.md#oh_contentembed_extension_contextstartselfuiability)。 |
+| [ContentEmbed_ErrorCode OH_ContentEmbed_Extension_ContextStartSelfUIAbility(ContentEmbed_ExtensionContextHandle context, AbilityBase_Want *want)](#oh_contentembed_extension_contextstartselfuiability) | - | 通过OE Extension上下文启动自身的[UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md#uiability)。 如需指定启动选项，参考[OH_ContentEmbed_Extension_ContextStartSelfUIAbilityWithStartOptions](capi-content-embed-extension-h.md#oh_contentembed_extension_contextstartselfuiabilitywithstartoptions)。 |
+| [ContentEmbed_ErrorCode OH_ContentEmbed_Extension_ContextStartSelfUIAbilityWithStartOptions(ContentEmbed_ExtensionContextHandle context, AbilityBase_Want *want, AbilityRuntime_StartOptions *options)](#oh_contentembed_extension_contextstartselfuiabilitywithstartoptions) | - | 使用启动选项启动OE Extension上下文自身的[UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md#uiability)。 如果不需要指定启动选项，参考[OH_ContentEmbed_Extension_ContextStartSelfUIAbility](capi-content-embed-extension-h.md#oh_contentembed_extension_contextstartselfuiability)。 |
 | [ContentEmbed_ErrorCode OH_ContentEmbed_Extension_ContextTerminateAbility(ContentEmbed_ExtensionContextHandle context)](#oh_contentembed_extension_contextterminateability) | - | 销毁OE Extension。当OE Extension不再需要提供服务时调用，通过上下文销毁Extension实例并释放相关资源。建议在所有客户端OE对象断开连接且完成资源清理后调用， 销毁后关联的客户端OE对象将收到Extension停止通知。 |
 
 ### 变量
@@ -127,7 +127,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Extension_GetContext(ContentEmbed_Extensi
 | 参数项 | 描述 |
 | -- | -- |
 | [ContentEmbed_ExtensionContextHandle](capi-contentembed-contentembed-extensioncontexthandle.md) ceContext | OE Extension上下文对象的指针。 |
-| [AbilityRuntime_ContextHandle](../../apis-ability-kit/c-apis/capi-abilityruntime-abilityruntime-contexthandle.md) *context | 输出参数。调用成功后，该指针指向AbilityRuntime_ContextHandle上下文对象。 |
+| [AbilityRuntime_ContextHandle](../../apis-ability-kit/c-apis/capi-abilityruntime-abilityruntime-contexthandle.md) *context | 输出参数。调用成功后，该指针指向[AbilityRuntime_ContextHandle](capi-abilityruntime-abilityruntime-contexthandle.md)上下文对象。 |
 
 **返回值：**
 
@@ -143,7 +143,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Extension_GetExtensionInstance(AbilityRun
 
 **描述：**
 
-从ExtensionAbility基类实例中获取对应的OE Extension实例。 <br>建议在OH_AbilityRuntime_OnNativeExtensionCreate函数实现里调用，获取实例后应调用 [OH_ContentEmbed_Extension_RegisterOnCreateFunc](capi-content-embed-extension-h.md#oh_contentembed_extension_registeroncreatefunc)和 [OH_ContentEmbed_Extension_RegisterOnDestroyFunc](capi-content-embed-extension-h.md#oh_contentembed_extension_registerondestroyfunc)注册OE Extension生命周期回调函数。
+从ExtensionAbility基类实例中获取对应的OE Extension实例。 <br>建议在[OH_AbilityRuntime_OnNativeExtensionCreate](../../apis-ability-kit/c-apis/capi-extension-ability-h.md#变量)函数实现里调用，获取实例后应调用 [OH_ContentEmbed_Extension_RegisterOnCreateFunc](capi-content-embed-extension-h.md#oh_contentembed_extension_registeroncreatefunc)和 [OH_ContentEmbed_Extension_RegisterOnDestroyFunc](capi-content-embed-extension-h.md#oh_contentembed_extension_registerondestroyfunc)注册OE Extension生命周期回调函数。
 
 **系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
@@ -153,7 +153,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Extension_GetExtensionInstance(AbilityRun
 
 | 参数项 | 描述 |
 | -- | -- |
-| [AbilityRuntime_ExtensionInstanceHandle](../../apis-ability-kit/c-apis/capi-abilityruntime-abilityruntime-extensioninstancehandle.md) baseInstance | 指向AbilityRuntime_ExtensionInstanceHandle基类实例的指针。 |
+| [AbilityRuntime_ExtensionInstanceHandle](../../apis-ability-kit/c-apis/capi-abilityruntime-abilityruntime-extensioninstancehandle.md) baseInstance | 指向[AbilityRuntime_ExtensionInstanceHandle](../../apis-ability-kit/c-apis/capi-abilityruntime-abilityruntime-extensioninstancehandle.md)基类实例的指针。 |
 | [ContentEmbed_ExtensionInstanceHandle](capi-contentembed-contentembed-extensioninstancehandle.md) *ceInstance | 输出参数。调用成功后，该指针指向OE Extension实例对象。 |
 
 **返回值：**
@@ -811,7 +811,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Extension_ContextStartSelfUIAbility(Conte
 
 **描述：**
 
-通过OE Extension上下文启动自身的UIAbility。 如需指定启动选项，参考[OH_ContentEmbed_Extension_ContextStartSelfUIAbilityWithStartOptions](capi-content-embed-extension-h.md#oh_contentembed_extension_contextstartselfuiabilitywithstartoptions)。
+通过OE Extension上下文启动自身的[UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md#uiability)。 如需指定启动选项，参考[OH_ContentEmbed_Extension_ContextStartSelfUIAbilityWithStartOptions](capi-content-embed-extension-h.md#oh_contentembed_extension_contextstartselfuiabilitywithstartoptions)。
 
 **系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
@@ -838,7 +838,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Extension_ContextStartSelfUIAbilityWithSt
 
 **描述：**
 
-使用启动选项启动OE Extension上下文自身的UIAbility。 如果不需要指定启动选项，参考[OH_ContentEmbed_Extension_ContextStartSelfUIAbility](capi-content-embed-extension-h.md#oh_contentembed_extension_contextstartselfuiability)。
+使用启动选项启动OE Extension上下文自身的[UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md#uiability)。 如果不需要指定启动选项，参考[OH_ContentEmbed_Extension_ContextStartSelfUIAbility](capi-content-embed-extension-h.md#oh_contentembed_extension_contextstartselfuiability)。
 
 **系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 

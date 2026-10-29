@@ -7,4 +7,4 @@
     - [telephony_radio_type.h](capi-telephony-radio-type-h.md)
     - [telephony_radio.h](capi-telephony-radio-h.md)
 - Struct<!--telephonykit-struct-->
-    - [Telephony_NetworkState](capi--telephony-networkstate.md)
+    - [Telephony_NetworkState](capi-telephony-telephony-networkstate.md)

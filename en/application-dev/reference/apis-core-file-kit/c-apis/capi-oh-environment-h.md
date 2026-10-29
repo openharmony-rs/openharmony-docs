@@ -48,7 +48,7 @@ Obtains the sandbox path of the Download root directory.
 
 | Type | Description |
 | -- | -- |
-| FileManagement_ErrCode | Return the status code of the execution. [ERR_INVALID_PARAMETER](capi-fileio-error-code-h.md#filemanagement_errcode) 401 - Invalid input parameter, pointer is null. [ERR_DEVICE_NOT_SUPPORTED](capi-fileio-error-code-h.md#filemanagement_errcode) 801 - Device not supported. [ERR_ENOMEM](capi-fileio-error-code-h.md#filemanagement_errcode) 13900011 - Failed to apply for memory. |
+| FileManagement_ErrCode | Return the status code of the execution. [ERR_INVALID_PARAMETER](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 401 - Invalid input parameter, pointer is null. [ERR_DEVICE_NOT_SUPPORTED](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 801 - Device not supported. [ERR_ENOMEM](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 13900011 - Failed to apply for memory. |
 
 ### OH_Environment_GetUserDesktopDir()
 
@@ -74,7 +74,7 @@ Obtains the sandbox path of the Desktop root directory.
 
 | Type | Description |
 | -- | -- |
-| FileManagement_ErrCode | Return the status code of the execution. [ERR_INVALID_PARAMETER](capi-fileio-error-code-h.md#filemanagement_errcode) 401 - Invalid input parameter, pointer is null. [ERR_DEVICE_NOT_SUPPORTED](capi-fileio-error-code-h.md#filemanagement_errcode) 801 - Device not supported. [ERR_ENOMEM](capi-fileio-error-code-h.md#filemanagement_errcode) 13900011 - Failed to apply for memory. |
+| FileManagement_ErrCode | Return the status code of the execution. [ERR_INVALID_PARAMETER](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 401 - Invalid input parameter, pointer is null. [ERR_DEVICE_NOT_SUPPORTED](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 801 - Device not supported. [ERR_ENOMEM](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 13900011 - Failed to apply for memory. |
 
 ### OH_Environment_GetUserDocumentDir()
 
@@ -100,6 +100,6 @@ Obtains the sandbox path of the Document root directory.
 
 | Type | Description |
 | -- | -- |
-| FileManagement_ErrCode | Return the status code of the execution. [ERR_INVALID_PARAMETER](capi-fileio-error-code-h.md#filemanagement_errcode) 401 - Invalid input parameter, pointer is null. [ERR_DEVICE_NOT_SUPPORTED](capi-fileio-error-code-h.md#filemanagement_errcode) 801 - Device not supported. [ERR_ENOMEM](capi-fileio-error-code-h.md#filemanagement_errcode) 13900011 - Failed to apply for memory. |
+| FileManagement_ErrCode | Return the status code of the execution. [ERR_INVALID_PARAMETER](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 401 - Invalid input parameter, pointer is null. [ERR_DEVICE_NOT_SUPPORTED](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 801 - Device not supported. [ERR_ENOMEM](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 13900011 - Failed to apply for memory. |
 
 

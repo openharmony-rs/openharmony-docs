@@ -43,13 +43,13 @@
 | [HiDebug_ErrorCode OH_HiDebug_RequestTrace(OH_HiDebug_RequestTraceConfig *config, OH_HiDebug_RequestTraceCallback callback)](#oh_hidebug_requesttrace) | - | 根据设置的采集配置请求trace采集。 |
 | [HiDebug_ErrorCode OH_HiDebug_GetGraphicsMemory(uint32_t *value)](#oh_hidebug_getgraphicsmemory) | - | 获取应用GPU显存大小。注意：由于该接口涉及多次跨进程通信，其耗时可能超过1秒，建议不要在主线程中直接调用该接口。 |
 | [HiDebug_ErrorCode OH_HiDebug_GetGraphicsMemorySummary(uint32_t interval, HiDebug_GraphicsMemorySummary *summary)](#oh_hidebug_getgraphicsmemorysummary) | - | 获取应用显存占用的详细数据。 |
-| [HiDebug_ErrorCode OH_HiDebug_SetMallocDispatchTable(struct HiDebug_MallocDispatch *dispatchTable)](#oh_hidebug_setmallocdispatchtable) | - | 通过设置基础库C库中的MallocDispatch表，将原始内存操作函数（例如：malloc/free/calloc/realloc/mmap/munmap）临时替换为开发者自定义的内存操作函数。 MallocDispatch表是基础库C库中封装malloc/calloc/realloc/free等内存操作函数的结构体，HiDebug_MallocDispatch只是MallocDispatch结构体的一部分。 |
+| [HiDebug_ErrorCode OH_HiDebug_SetMallocDispatchTable(struct HiDebug_MallocDispatch *dispatchTable)](#oh_hidebug_setmallocdispatchtable) | - | 通过设置基础库C库中的MallocDispatch表，将原始内存操作函数（例如：malloc/free/calloc/realloc/mmap/munmap）临时替换为开发者自定义的内存操作函数。 MallocDispatch表是基础库C库中封装malloc/calloc/realloc/free等内存操作函数的结构体，HiDebug_MallocDispatch只是MallocDispatch结构体的一部分。 注意：禁止在自定义内存操作函数中直接调用libc标准库中的malloc/free/calloc/realloc/mmap/munmap等内存操作函数，否则会导致死锁。 禁止在自定义malloc方法中使用hilog打印日志，否则会导致死锁。 |
 | [HiDebug_MallocDispatch* OH_HiDebug_GetDefaultMallocDispatchTable(void)](#oh_hidebug_getdefaultmallocdispatchtable) | - | 获取基础库C库当前默认MallocDispatch表，调用[OH_HiDebug_RestoreMallocDispatchTable](capi-hidebug-h.md#oh_hidebug_restoremallocdispatchtable)可恢复。 |
 | [void OH_HiDebug_RestoreMallocDispatchTable(void)](#oh_hidebug_restoremallocdispatchtable) | - | 恢复基础库C库MallocDispatch表。 |
 | [int OH_HiDebug_BacktraceFromFp(HiDebug_Backtrace_Object object, void* startFp, void** pcArray, int size)](#oh_hidebug_backtracefromfp) | - | 根据给定的fp地址进行栈回溯，该函数异步信号安全。 |
 | [typedef void (\*OH_HiDebug_SymbolicAddressCallback)(void* pc, void* arg, const HiDebug_StackFrame* frame)](#oh_hidebug_symbolicaddresscallback) | OH_HiDebug_SymbolicAddressCallback | 若[OH_HiDebug_SymbolicAddress](capi-hidebug-h.md#oh_hidebug_symbolicaddress)接口调用成功，将通过该函数将解析后的栈信息返回给调用者。注意：由于该接口涉及多次IO操作，耗时较长，建议不要在主线程中直接调用。 |
-| [HiDebug_ErrorCode OH_HiDebug_SymbolicAddress(HiDebug_Backtrace_Object object, void* pc, void* arg, OH_HiDebug_SymbolicAddressCallback callback)](#oh_hidebug_symbolicaddress) | - | 通过给定的pc地址获取详细的符号信息，该函数非异步信号安全。不能在异步信号处理函数中使用。 |
-| [HiDebug_Backtrace_Object OH_HiDebug_CreateBacktraceObject(void)](#oh_hidebug_createbacktraceobject) | - | 创建一个用于栈回溯及栈解析的对象，该函数非异步信号安全。 |
+| [HiDebug_ErrorCode OH_HiDebug_SymbolicAddress(HiDebug_Backtrace_Object object, void* pc, void* arg, OH_HiDebug_SymbolicAddressCallback callback)](#oh_hidebug_symbolicaddress) | - | 通过给定的pc地址获取详细的符号信息，该函数非异步信号安全。不能在异步信号处理函数中使用。 注意：由于该接口涉及多次IO操作，耗时较长，建议不要在主线程中直接调用。 |
+| [HiDebug_Backtrace_Object OH_HiDebug_CreateBacktraceObject(void)](#oh_hidebug_createbacktraceobject) | - | 创建一个用于栈回溯及栈解析的对象，该函数非异步信号安全。 注意：由于该接口涉及多次IO操作，耗时较长，建议不要在主线程中直接调用。 |
 | [void OH_HiDebug_DestroyBacktraceObject(HiDebug_Backtrace_Object object)](#oh_hidebug_destroybacktraceobject) | - | 销毁由[OH_HiDebug_CreateBacktraceObject](capi-hidebug-h.md#oh_hidebug_createbacktraceobject)创建的对象，以释放栈回溯及栈解析过程中申请的资源，该函数非异步信号安全。 |
 | [uint64_t OH_HiDebug_SetCrashObj(HiDebug_CrashObjType type, void* addr)](#oh_hidebug_setcrashobj) | - | 将维测信息添加到崩溃日志中，与[OH_HiDebug_ResetCrashObj](capi-hidebug-h.md#oh_hidebug_resetcrashobj)配对使用。若程序在OH_HiDebug_SetCrashObj与OH_HiDebug_ResetCrashObj之间发生崩溃， 会将OH_HiDebug_SetCrashObj设置的维测信息添加到记录本次崩溃的日志中。 |
 | [void OH_HiDebug_ResetCrashObj(uint64_t crashObj)](#oh_hidebug_resetcrashobj) | - | 将维测信息对象还原到使用OH_HiDebug_SetCrashObj之前的状态。 |
@@ -57,10 +57,10 @@
 | [HiDebug_ErrorCode OH_HiDebug_RequestThreadLiteSampling(HiDebug_ProcessSamplerConfig* config, OH_HiDebug_ThreadLiteSamplingCallback stacksCallback)](#oh_hidebug_requestthreadlitesampling) | - | 对指定的数个线程进行Perf采样，并在调用结束后返回采样栈内容。注意：调用该函数后会阻塞当前线程，直至采样过程完全结束。系统对该接口的调用次数有严格限制，频繁调用超出限额后，将返回 [HIDEBUG_RESOURCE_UNAVAILABLE](capi-hidebug-type-h.md#hidebug_errorcode)错误码。 |
 | [HiDebug_ErrorCode OH_HiDebug_StartProfiler(OH_HiDebug_ResourceType type, OH_HiDebug_ResProfilerConfig* config, OH_HiDebug_ProfilingCallback callback)](#oh_hidebug_startprofiler) | - | 异步启动当前进程资源采集功能。 <br>回调函数只在终止采集（含系统自动停止采集）时调用，其携带采集资源类型和采集文件路径。 <br>若采集异常，则文件路径为NULL。 |
 | [HiDebug_ErrorCode OH_HiDebug_StopProfiler(void)](#oh_hidebug_stopprofiler) | - | 停止当前进程资源采集功能。该接口可在[OH_HiDebug_StartProfiler](capi-hidebug-h.md#oh_hidebug_startprofiler)接口调用后使用，且调用间隔不能超过最大持续时间。 |
-| [typedef bool (\*OH_HiDebug_MemDumpListener)(int32_t fd, OH_HiDebug_MemListenerType tag, bool mayReportToOEM, const char* arg)](#oh_hidebug_memdumplistener) | OH_HiDebug_MemDumpListener | 触发监听的回调函数。开发者在应用中使用FD来写入内存数据，这样就可以使用hidumper命令导出数据。 |
+| [typedef bool (\*OH_HiDebug_MemDumpListener)(int32_t fd, OH_HiDebug_MemListenerType tag, bool mayReportToOEM, const char* arg)](#oh_hidebug_memdumplistener) | OH_HiDebug_MemDumpListener | 内存导出监听的回调函数。开发者通过应用中的文件描述符（FD）来写入内存数据，从而可利用hidumper命令导出数据。 |
 | [HiDebug_ErrorCode OH_HiDebug_RegisterMemDumpListener(const char* name, OH_HiDebug_MemDumpListener listener)](#oh_hidebug_registermemdumplistener) | - | 注册内存导出监听。当应用的内存占用较高，或通过hidumper命令手动导出内存信息时，系统会主动调用已注册的回调函数。 <br>第三方应用框架或开发者可借此将应用内部内存信息转储到hidumper中，或通过商业灰度上传至OEM厂商。 <br>对应的注销函数为：[OH_HiDebug_UnregisterMemDumpListener](capi-hidebug-h.md#oh_hidebug_unregistermemdumplistener)。 |
 | [HiDebug_ErrorCode OH_HiDebug_UnregisterMemDumpListener(const char* name)](#oh_hidebug_unregistermemdumplistener) | - | 注销已经注册成功的内存导出监听。 |
-| [uint64_t OH_HiDebug_AcquireAsyncContext()](#oh_hidebug_acquireasynccontext) | - | Profiler辅助接口，获取一个AsyncContext供后续使用。对应的释放函数为：[OH_HiDebug_ReleaseAsyncContext](capi-hidebug-h.md#oh_hidebug_releaseasynccontext)。 |
+| [uint64_t OH_HiDebug_AcquireAsyncContext()](#oh_hidebug_acquireasynccontext) | - | Profiler辅助接口，获取一个AsyncContext供后续使用。对应的释放函数为：[OH_HiDebug_ReleaseAsyncContext](capi-hidebug-h.md#oh_hidebug_releaseasynccontext)。 注意：该接口仅支持ARM64架构，且仅可在debug版本应用中使用。 |
 | [void OH_HiDebug_PushAsyncContext(uint64_t ctx)](#oh_hidebug_pushasynccontext) | - | Profiler辅助接口，将AsyncContext压入运行上下文栈表。 |
 | [void OH_HiDebug_PopAsyncContext(uint64_t ctx)](#oh_hidebug_popasynccontext) | - | Profiler辅助接口，将AsyncContext从运行上下文栈表中弹出。 |
 | [void OH_HiDebug_ReleaseAsyncContext(uint64_t ctx)](#oh_hidebug_releaseasynccontext) | - | Profiler辅助接口，将AsyncContext释放给系统。 |
@@ -82,7 +82,7 @@
 | -- | -- |
 | void (*OH_HiDebug_SymbolicAddressCallback)(void* pc, void* arg, const HiDebug_StackFrame* frame) | 若[OH_HiDebug_SymbolicAddress](capi-hidebug-h.md#oh_hidebug_symbolicaddress)接口调用成功，将通过该函数将解析后的栈信息返回给调用者。注意：由于该接口涉及多次IO操作，耗时较长，建议不要在主线程中直接调用。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug |
 | void (*OH_HiDebug_ThreadLiteSamplingCallback)(const char* stacks) | 轻量级Perf采样栈内容的回调函数定义。注意：采样数据仅在该回调函数执行期间有效，若需在函数外使用，务必对采样栈内容进行深拷贝。<br>**起始版本：** 22<br>**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug |
-| bool (*OH_HiDebug_MemDumpListener)(int32_t fd, OH_HiDebug_MemListenerType tag, bool mayReportToOEM, const char* arg) | 触发监听的回调函数。开发者在应用中使用FD来写入内存数据，这样就可以使用hidumper命令导出数据。<br>**起始版本：** 26.0.0<br>**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug |
+| bool (*OH_HiDebug_MemDumpListener)(int32_t fd, OH_HiDebug_MemListenerType tag, bool mayReportToOEM, const char* arg) | 内存导出监听的回调函数。开发者通过应用中的文件描述符（FD）来写入内存数据，从而可利用hidumper命令导出数据。<br>**起始版本：** 26.0.0<br>**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug |
 
 ## 函数说明
 
@@ -385,7 +385,7 @@ HiDebug_ErrorCode OH_HiDebug_SetMallocDispatchTable(struct HiDebug_MallocDispatc
 
 **描述：**
 
-通过设置基础库C库中的MallocDispatch表，将原始内存操作函数（例如：malloc/free/calloc/realloc/mmap/munmap）临时替换为开发者自定义的内存操作函数。 MallocDispatch表是基础库C库中封装malloc/calloc/realloc/free等内存操作函数的结构体，HiDebug_MallocDispatch只是MallocDispatch结构体的一部分。
+通过设置基础库C库中的MallocDispatch表，将原始内存操作函数（例如：malloc/free/calloc/realloc/mmap/munmap）临时替换为开发者自定义的内存操作函数。 MallocDispatch表是基础库C库中封装malloc/calloc/realloc/free等内存操作函数的结构体，HiDebug_MallocDispatch只是MallocDispatch结构体的一部分。 注意：禁止在自定义内存操作函数中直接调用libc标准库中的malloc/free/calloc/realloc/mmap/munmap等内存操作函数，否则会导致死锁。 禁止在自定义malloc方法中使用hilog打印日志，否则会导致死锁。
 
 **系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -496,7 +496,7 @@ HiDebug_ErrorCode OH_HiDebug_SymbolicAddress(HiDebug_Backtrace_Object object, vo
 
 **描述：**
 
-通过给定的pc地址获取详细的符号信息，该函数非异步信号安全。不能在异步信号处理函数中使用。
+通过给定的pc地址获取详细的符号信息，该函数非异步信号安全。不能在异步信号处理函数中使用。 注意：由于该接口涉及多次IO操作，耗时较长，建议不要在主线程中直接调用。
 
 **系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -525,7 +525,7 @@ HiDebug_Backtrace_Object OH_HiDebug_CreateBacktraceObject(void)
 
 **描述：**
 
-创建一个用于栈回溯及栈解析的对象，该函数非异步信号安全。
+创建一个用于栈回溯及栈解析的对象，该函数非异步信号安全。 注意：由于该接口涉及多次IO操作，耗时较长，建议不要在主线程中直接调用。
 
 **系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -707,7 +707,7 @@ typedef bool (*OH_HiDebug_MemDumpListener)(int32_t fd, OH_HiDebug_MemListenerTyp
 
 **描述：**
 
-触发监听的回调函数。开发者在应用中使用FD来写入内存数据，这样就可以使用hidumper命令导出数据。
+内存导出监听的回调函数。开发者通过应用中的文件描述符（FD）来写入内存数据，从而可利用hidumper命令导出数据。
 
 **系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -717,16 +717,16 @@ typedef bool (*OH_HiDebug_MemDumpListener)(int32_t fd, OH_HiDebug_MemListenerTyp
 
 | 参数项 | 描述 |
 | -- | -- |
-| int32_t fd | 开发者使用FD在应用程序中写入内存数据。 |
-| [OH_HiDebug_MemListenerType](capi-hidebug-type-h.md#oh_hidebug_memlistenertype) tag | 回调类型。开发人员根据回调类型处理相关逻辑。 |
-| bool mayReportToOEM | 当值为true时告知开发者该数据会上传给OEM厂商请注意数据隐私安全问题 |
-| const char* arg | 回调参数。根据type的值传递不同的参数。 |
+| int32_t fd | 写入内存数据的应用程序文件描述符。 |
+| [OH_HiDebug_MemListenerType](capi-hidebug-type-h.md#oh_hidebug_memlistenertype) tag | 内存监听回调的类型。开发者根据回调类型处理相关逻辑。 |
+| bool mayReportToOEM | 数据上报OEM厂商的标识。true表示数据将上传至OEM厂商，请注意数据隐私与安全；false表示数据不会上报。 |
+| const char* arg | 回调参数。根据回调类型携带不同的数据内容，供开发者使用。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | 操作是否成功。 |
+| bool | 操作结果：true：内存数据写入成功。false：写入失败。 |
 
 ### OH_HiDebug_RegisterMemDumpListener()
 
@@ -789,7 +789,7 @@ uint64_t OH_HiDebug_AcquireAsyncContext()
 
 **描述：**
 
-Profiler辅助接口，获取一个AsyncContext供后续使用。对应的释放函数为：[OH_HiDebug_ReleaseAsyncContext](capi-hidebug-h.md#oh_hidebug_releaseasynccontext)。
+Profiler辅助接口，获取一个AsyncContext供后续使用。对应的释放函数为：[OH_HiDebug_ReleaseAsyncContext](capi-hidebug-h.md#oh_hidebug_releaseasynccontext)。 注意：该接口仅支持ARM64架构，且仅可在debug版本应用中使用。
 
 **系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -819,7 +819,7 @@ Profiler辅助接口，将AsyncContext压入运行上下文栈表。
 
 | 参数项 | 描述 |
 | -- | -- |
-| uint64_t ctx | 由OH_HiDebug_AcquireAsyncContext())获取的异步线程上下文。 |
+| uint64_t ctx | 由[OH_HiDebug_AcquireAsyncContext()](capi-hidebug-h.md#oh_hidebug_acquireasynccontext())获取的异步线程上下文。 |
 
 ### OH_HiDebug_PopAsyncContext()
 
@@ -839,7 +839,7 @@ Profiler辅助接口，将AsyncContext从运行上下文栈表中弹出。
 
 | 参数项 | 描述 |
 | -- | -- |
-| uint64_t ctx | 由OH_HiDebug_AcquireAsyncContext())获取的异步线程上下文。 |
+| uint64_t ctx | 由[OH_HiDebug_AcquireAsyncContext()](capi-hidebug-h.md#oh_hidebug_acquireasynccontext())获取的异步线程上下文。 |
 
 ### OH_HiDebug_ReleaseAsyncContext()
 
@@ -859,7 +859,7 @@ Profiler辅助接口，将AsyncContext释放给系统。
 
 | 参数项 | 描述 |
 | -- | -- |
-| uint64_t ctx | 由OH_HiDebug_AcquireAsyncContext())获取的异步线程上下文。 |
+| uint64_t ctx | 由[OH_HiDebug_AcquireAsyncContext()](capi-hidebug-h.md#oh_hidebug_acquireasynccontext())获取的异步线程上下文。 |
 
 ### OH_HiDebug_CreateProfilerOptions()
 

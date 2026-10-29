@@ -31,6 +31,7 @@
     - [native_cencinfo.h](capi-native-cencinfo-h.md)
     - [native_avcodec_audioencoder.h](capi-native-avcodec-audioencoder-h.md)
     - [native_avcodec_videobase.h](capi-native-avcodec-videobase-h.md)
+    - [native_avcodec_audiobase.h](capi-native-avcodec-audiobase-h.md)
     - [native_avcodec_videoencoder.h](capi-native-avcodec-videoencoder-h.md)
     - [native_avdemuxer.h](capi-native-avdemuxer-h.md)
     - [native_avcodec_base.h](capi-native-avcodec-base-h.md)

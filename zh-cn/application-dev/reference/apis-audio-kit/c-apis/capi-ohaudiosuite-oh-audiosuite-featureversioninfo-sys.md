@@ -25,9 +25,9 @@ struct OH_AudioSuite_FeatureVersionInfo {...}
 | 名称 | 描述 |
 | -- | -- |
 | char featureName[256] | 特性名称。<br>**起始版本：** 26.0.1 |
-| int32_t downloadStatus | 下载状态。<br>**起始版本：** 26.0.1 |
+| int32_t downloadStatus | 特性当前状态。<br>**起始版本：** 26.0.1 |
 | char version[128] | 特性版本。<br>**起始版本：** 26.0.1 |
-| int64_t size | 特性大小以字节为单位，单位为字节。<br>**起始版本：** 26.0.1 |
+| int64_t size | 特性模块占用空间大小。单位为：字节。<br>**起始版本：** 26.0.1 |
 | int32_t errorCode | 错误码。<br>**起始版本：** 26.0.1 |
 
 

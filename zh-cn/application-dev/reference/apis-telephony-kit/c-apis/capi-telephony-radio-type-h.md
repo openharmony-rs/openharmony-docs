@@ -18,7 +18,7 @@ Provides the data structures for the C APIs of the the telephony radio.
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [Telephony_NetworkState](capi--telephony-networkstate.md) | Telephony_NetworkState | 网络状态信息。 |
+| [Telephony_NetworkState](capi-telephony-telephony-networkstate.md) | Telephony_NetworkState | 网络状态信息。 |
 
 ### 枚举
 

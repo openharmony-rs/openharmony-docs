@@ -1,5 +1,9 @@
 # Telephony_NetworkState
 
+```c
+typedef struct Telephony_NetworkState {...} Telephony_NetworkState
+```
+
 ## Overview
 
 Defines network status information.
@@ -7,6 +11,10 @@ Defines network status information.
 **System capability**: SystemCapability.Telephony.CoreService
 
 **Since**: 13
+
+**Related module**: [Telephony](capi-telephony.md)
+
+**Header file**: [telephony_radio_type.h](capi-telephony-radio-type-h.md)
 
 ## Summary
 

@@ -151,7 +151,7 @@ Obtains the corresponding OE Extension instance from the ExtensionAbility base c
 
 | Parameter | Description |
 | -- | -- |
-| [AbilityRuntime_ExtensionInstanceHandle](../../apis-ability-kit/c-apis/capi-abilityruntime-abilityruntime-extensioninstancehandle.md) baseInstance | [AbilityRuntime_ExtensionInstance](capi-abilityruntime-abilityruntime-extensioninstance.md) instance. |
+| [AbilityRuntime_ExtensionInstanceHandle](../../apis-ability-kit/c-apis/capi-abilityruntime-abilityruntime-extensioninstancehandle.md) baseInstance | [AbilityRuntime_ExtensionInstance](../../apis-ability-kit/c-apis/capi-abilityruntime-abilityruntime-extensioninstance.md) instance. |
 | [ContentEmbed_ExtensionInstanceHandle](capi-contentembed-contentembed-extensioninstancehandle.md) *ceInstance | Output parameter. After the call is successful, this pointer points to the OE Extension instance object. |
 
 **Returns**:

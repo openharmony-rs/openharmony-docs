@@ -73,8 +73,10 @@
 | [Image_ErrorCode OH_PixelmapNative_ConvertPixelmapNativeFromNapi(napi_env env, napi_value pixelmapNapi, OH_PixelmapNative **pixelmapNative)](#oh_pixelmapnative_convertpixelmapnativefromnapi) | 将PixelmapNapi对象转换为OH_PixelmapNative对象。 |
 | [Image_ErrorCode OH_PixelmapNative_ReadPixels(OH_PixelmapNative *pixelmap, uint8_t *destination, size_t *bufferSize)](#oh_pixelmapnative_readpixels) | 读取图像像素数据，并按照Pixelmap的像素格式存入缓冲区中。 |
 | [Image_ErrorCode OH_PixelmapNative_WritePixels(OH_PixelmapNative *pixelmap, uint8_t *source, size_t bufferSize)](#oh_pixelmapnative_writepixels) | 将缓冲区中的图像像素数据按照Pixelmap的像素格式写入Pixelmap。 |
+| [Image_ErrorCode OH_PixelmapNative_WritePixelsWithPixelFormat(OH_PixelmapNative *pixelmap, const uint8_t *source, uint32_t bufferSize, PIXEL_FORMAT sourcePixelFormat)](#oh_pixelmapnative_writepixelswithpixelformat) | 将缓冲区内指定像素格式的像素数据写入整个Pixelmap。<br> 支持的源像素格式为[PIXEL_FORMAT_BGRA_8888](capi-pixelmap-native-h.md#pixel_format)、[PIXEL_FORMAT_RGBA_8888](capi-pixelmap-native-h.md#pixel_format)、[PIXEL_FORMAT_RGB_888](capi-pixelmap-native-h.md#pixel_format)、 [PIXEL_FORMAT_RGB_565](capi-pixelmap-native-h.md#pixel_format)和[PIXEL_FORMAT_RGBA_F16](capi-pixelmap-native-h.md#pixel_format)。<br> 本接口同步执行，可能申请内存并转换像素数据，耗时与像素数量及像素格式有关。 对于大图，建议在工作线程调用，避免阻塞UI线程。源缓冲区在接口返回前必须保持有效，且不能被修改。 调用方必须串行访问同一个Pixelmap，包括读取、写入、访问像素及释放操作。 不得对同一个Pixelmap重入调用本接口，也不得在信号处理函数中调用本接口。 Pixelmap已锁定或不可编辑时，接口直接返回IMAGE_UNSUPPORTED_OPERATION，不等待其变为可写状态。 操作失败后，接口不会自动重试。 写入失败时，不保证Pixelmap的像素数据保持原样。不得使用失败写入后的像素内容； 排除失败原因后，应从有效源数据恢复像素内容，或重新创建Pixelmap。 参数或转换错误应通过修正输入或选择受支持的格式处理；拷贝错误应在再次写入前检查可用内存及缓冲区有效性。<br> 本接口支持被以下像素格式的Pixelmap调用：PIXEL_FORMAT_BGRA_8888、PIXEL_FORMAT_RGBA_8888、PIXEL_FORMAT_RGB_888、 PIXEL_FORMAT_RGB_565、PIXEL_FORMAT_RGBA_F16、PIXEL_FORMAT_RGBA_1010102。<br> 如需写入与当前Pixelmap像素格式相同的源数据（包括YUV格式），请使用[OH_PixelmapNative_WritePixels](capi-pixelmap-native-h.md#oh_pixelmapnative_writepixels)。<br> 如需写入具有自定义行跨距或偏移量的源数据，请使用[OH_PixelmapNative_WritePixelsToAreaWithPixelFormat](capi-pixelmap-native-h.md#oh_pixelmapnative_writepixelstoareawithpixelformat)。 |
 | [Image_ErrorCode OH_PixelmapNative_ReadPixelsFromArea(OH_PixelmapNative *pixelmap, Image_PositionArea *area)](#oh_pixelmapnative_readpixelsfromarea) | 从Pixelmap的指定区域中读取像素数据并存入缓冲区。如果Pixelmap的像素格式为YUV类型，则会按照Pixelmap的像素格式存入缓冲区， 否则会按照BGRA_8888格式存入缓冲区。 |
 | [Image_ErrorCode OH_PixelmapNative_WritePixelsToArea(OH_PixelmapNative *pixelmap, Image_PositionArea *area)](#oh_pixelmapnative_writepixelstoarea) | 将缓冲区中的像素数据写入Pixelmap的指定区域。如果Pixelmap的像素格式为YUV类型，则数据源的格式需与Pixelmap相同， 否则数据源需要为BGRA_8888格式。 |
+| [Image_ErrorCode OH_PixelmapNative_WritePixelsToAreaWithPixelFormat(OH_PixelmapNative *pixelmap, const Image_PositionArea *area, PIXEL_FORMAT sourcePixelFormat)](#oh_pixelmapnative_writepixelstoareawithpixelformat) | 将缓冲区内指定像素格式的像素数据写入Pixelmap的指定区域。<br> 支持的源像素格式为[PIXEL_FORMAT_BGRA_8888](capi-pixelmap-native-h.md#pixel_format)、[PIXEL_FORMAT_RGBA_8888](capi-pixelmap-native-h.md#pixel_format)、[PIXEL_FORMAT_RGB_888](capi-pixelmap-native-h.md#pixel_format)、 [PIXEL_FORMAT_RGB_565](capi-pixelmap-native-h.md#pixel_format)和[PIXEL_FORMAT_RGBA_F16](capi-pixelmap-native-h.md#pixel_format)。<br> 所需的最小缓冲区大小计算公式为：area->offset + (area->region.height - 1) * area->stride + area->region.width * sourcePixelFormat的每像素字节数。 其中area->stride的值必须大于或等于area->region.width乘以sourcePixelFormat的每像素字节数。<br> 本接口同步执行，可能申请内存并转换像素数据，耗时与区域内像素数量及像素格式有关。 对于较大区域，建议在工作线程调用，避免阻塞UI线程。区域信息及源像素缓冲区在接口返回前必须保持有效，且不能被修改。 调用方必须串行访问同一个Pixelmap，包括读取、写入、访问像素及释放操作。 不得对同一个Pixelmap重入调用本接口，也不得在信号处理函数中调用本接口。 Pixelmap已锁定或不可编辑时，接口直接返回IMAGE_UNSUPPORTED_OPERATION，不等待其变为可写状态。 操作失败后，接口不会自动重试。 写入失败时，不保证指定区域的像素数据保持原样。不得使用失败写入后的像素内容； 排除失败原因后，应从有效源数据恢复像素内容，或重新创建Pixelmap。 参数或转换错误应通过修正输入或选择受支持的格式处理；拷贝错误应在再次写入前检查可用内存及缓冲区有效性。<br> 本接口支持被以下像素格式的Pixelmap调用：PIXEL_FORMAT_BGRA_8888、PIXEL_FORMAT_RGBA_8888、PIXEL_FORMAT_RGB_888、 PIXEL_FORMAT_RGB_565、PIXEL_FORMAT_RGBA_F16、PIXEL_FORMAT_RGBA_1010102。<br> 如需将YUV格式的像素数据写入同一YUV格式的Pixelmap，请使用[OH_PixelmapNative_WritePixelsToArea](capi-pixelmap-native-h.md#oh_pixelmapnative_writepixelstoarea)。 |
 | [Image_ErrorCode OH_PixelmapNative_GetArgbPixels(OH_PixelmapNative *pixelmap, uint8_t *destination, size_t *bufferSize)](#oh_pixelmapnative_getargbpixels) | 从Pixelmap中读取ARGB格式的数据。 |
 | [Image_ErrorCode OH_PixelmapNative_ToSdr(OH_PixelmapNative *pixelmap)](#oh_pixelmapnative_tosdr) | 将HDR的图像内容转换为SDR的图像内容。 |
 | [Image_ErrorCode OH_PixelmapNative_GetImageInfo(OH_PixelmapNative *pixelmap, OH_Pixelmap_ImageInfo *imageInfo)](#oh_pixelmapnative_getimageinfo) | 获取图像像素信息。 |
@@ -1081,6 +1083,35 @@ Image_ErrorCode OH_PixelmapNative_WritePixels(OH_PixelmapNative *pixelmap, uint8
 | -- | -- |
 | [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>IMAGE_BAD_PARAMETER：参数错误。<br>IMAGE_UNSUPPORTED_OPERATION：操作不支持。<br>IMAGE_UNKNOWN_ERROR：未知错误。 |
 
+### OH_PixelmapNative_WritePixelsWithPixelFormat()
+
+```c
+Image_ErrorCode OH_PixelmapNative_WritePixelsWithPixelFormat(OH_PixelmapNative *pixelmap, const uint8_t *source, uint32_t bufferSize, PIXEL_FORMAT sourcePixelFormat)
+```
+
+**描述：**
+
+将缓冲区内指定像素格式的像素数据写入整个Pixelmap。<br> 支持的源像素格式为[PIXEL_FORMAT_BGRA_8888](capi-pixelmap-native-h.md#pixel_format)、[PIXEL_FORMAT_RGBA_8888](capi-pixelmap-native-h.md#pixel_format)、[PIXEL_FORMAT_RGB_888](capi-pixelmap-native-h.md#pixel_format)、 [PIXEL_FORMAT_RGB_565](capi-pixelmap-native-h.md#pixel_format)和[PIXEL_FORMAT_RGBA_F16](capi-pixelmap-native-h.md#pixel_format)。<br> 本接口同步执行，可能申请内存并转换像素数据，耗时与像素数量及像素格式有关。 对于大图，建议在工作线程调用，避免阻塞UI线程。源缓冲区在接口返回前必须保持有效，且不能被修改。 调用方必须串行访问同一个Pixelmap，包括读取、写入、访问像素及释放操作。 不得对同一个Pixelmap重入调用本接口，也不得在信号处理函数中调用本接口。 Pixelmap已锁定或不可编辑时，接口直接返回IMAGE_UNSUPPORTED_OPERATION，不等待其变为可写状态。 操作失败后，接口不会自动重试。 写入失败时，不保证Pixelmap的像素数据保持原样。不得使用失败写入后的像素内容； 排除失败原因后，应从有效源数据恢复像素内容，或重新创建Pixelmap。 参数或转换错误应通过修正输入或选择受支持的格式处理；拷贝错误应在再次写入前检查可用内存及缓冲区有效性。<br> 本接口支持被以下像素格式的Pixelmap调用：PIXEL_FORMAT_BGRA_8888、PIXEL_FORMAT_RGBA_8888、PIXEL_FORMAT_RGB_888、 PIXEL_FORMAT_RGB_565、PIXEL_FORMAT_RGBA_F16、PIXEL_FORMAT_RGBA_1010102。<br> 如需写入与当前Pixelmap像素格式相同的源数据（包括YUV格式），请使用[OH_PixelmapNative_WritePixels](capi-pixelmap-native-h.md#oh_pixelmapnative_writepixels)。<br> 如需写入具有自定义行跨距或偏移量的源数据，请使用[OH_PixelmapNative_WritePixelsToAreaWithPixelFormat](capi-pixelmap-native-h.md#oh_pixelmapnative_writepixelstoareawithpixelformat)。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) *pixelmap | [in,out] 待修改像素数据的Pixelmap指针，不能为空指针。 |
+| const uint8_t *source | [in] 源像素数据缓冲区指针，不能为空指针，该缓冲区内的像素数据会被拷贝至Pixelmap。 缓冲区内的像素数据必须是整个PixelMap的像素数据，且不包含内存对齐填充字节。 |
+| uint32_t bufferSize | [in] 缓冲区大小。单位：字节（Byte）。所需的最小缓冲区大小可通过[OH_PixelmapNative_GetByteCount](capi-pixelmap-native-h.md#oh_pixelmapnative_getbytecount)接口获取。 |
+| [PIXEL_FORMAT](capi-pixelmap-native-h.md#pixel_format) sourcePixelFormat | [in] 源数据的像素格式，支持BGRA_8888、RGBA_8888、RGB_888、RGB_565和RGBA_F16。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：操作成功。<br>IMAGE_UNSUPPORTED_OPERATION：Pixelmap不可编辑或已锁定。<br>IMAGE_UNSUPPORTED_CONVERSION：不支持从sourcePixelFormat转换为Pixelmap的像素格式。<br>IMAGE_INVALID_PARAMETER：pixelmap或source为空指针、bufferSize不足，或者sourcePixelFormat无效或不受支持。<br>IMAGE_COPY_FAILED：像素数据复制或转换失败。 |
+
 ### OH_PixelmapNative_ReadPixelsFromArea()
 
 ```c
@@ -1134,6 +1165,34 @@ Image_ErrorCode OH_PixelmapNative_WritePixelsToArea(OH_PixelmapNative *pixelmap,
 | 类型 | 说明 |
 | -- | -- |
 | [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：操作成功。<br>IMAGE_BAD_PARAMETER：参数无效，例如：pixelmap或area有误。<br>IMAGE_UNSUPPORTED_OPERATION：Pixelmap不可编辑。<br>IMAGE_UNKNOWN_ERROR：未知的内部错误，例如：不支持的像素格式。 |
+
+### OH_PixelmapNative_WritePixelsToAreaWithPixelFormat()
+
+```c
+Image_ErrorCode OH_PixelmapNative_WritePixelsToAreaWithPixelFormat(OH_PixelmapNative *pixelmap, const Image_PositionArea *area, PIXEL_FORMAT sourcePixelFormat)
+```
+
+**描述：**
+
+将缓冲区内指定像素格式的像素数据写入Pixelmap的指定区域。<br> 支持的源像素格式为[PIXEL_FORMAT_BGRA_8888](capi-pixelmap-native-h.md#pixel_format)、[PIXEL_FORMAT_RGBA_8888](capi-pixelmap-native-h.md#pixel_format)、[PIXEL_FORMAT_RGB_888](capi-pixelmap-native-h.md#pixel_format)、 [PIXEL_FORMAT_RGB_565](capi-pixelmap-native-h.md#pixel_format)和[PIXEL_FORMAT_RGBA_F16](capi-pixelmap-native-h.md#pixel_format)。<br> 所需的最小缓冲区大小计算公式为：area->offset + (area->region.height - 1) * area->stride + area->region.width * sourcePixelFormat的每像素字节数。 其中area->stride的值必须大于或等于area->region.width乘以sourcePixelFormat的每像素字节数。<br> 本接口同步执行，可能申请内存并转换像素数据，耗时与区域内像素数量及像素格式有关。 对于较大区域，建议在工作线程调用，避免阻塞UI线程。区域信息及源像素缓冲区在接口返回前必须保持有效，且不能被修改。 调用方必须串行访问同一个Pixelmap，包括读取、写入、访问像素及释放操作。 不得对同一个Pixelmap重入调用本接口，也不得在信号处理函数中调用本接口。 Pixelmap已锁定或不可编辑时，接口直接返回IMAGE_UNSUPPORTED_OPERATION，不等待其变为可写状态。 操作失败后，接口不会自动重试。 写入失败时，不保证指定区域的像素数据保持原样。不得使用失败写入后的像素内容； 排除失败原因后，应从有效源数据恢复像素内容，或重新创建Pixelmap。 参数或转换错误应通过修正输入或选择受支持的格式处理；拷贝错误应在再次写入前检查可用内存及缓冲区有效性。<br> 本接口支持被以下像素格式的Pixelmap调用：PIXEL_FORMAT_BGRA_8888、PIXEL_FORMAT_RGBA_8888、PIXEL_FORMAT_RGB_888、 PIXEL_FORMAT_RGB_565、PIXEL_FORMAT_RGBA_F16、PIXEL_FORMAT_RGBA_1010102。<br> 如需将YUV格式的像素数据写入同一YUV格式的Pixelmap，请使用[OH_PixelmapNative_WritePixelsToArea](capi-pixelmap-native-h.md#oh_pixelmapnative_writepixelstoarea)。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) *pixelmap | [in,out] 待修改像素数据的Pixelmap指针，不能为空指针。 |
+| const Image_PositionArea *area | [in] 写入区域信息指针，area和area->pixels均不能为空指针。 数据将从area->pixels拷贝至area->region指定的区域。源缓冲区大小area->pixelsSize不小于上述缓冲区的最小大小。 |
+| [PIXEL_FORMAT](capi-pixelmap-native-h.md#pixel_format) sourcePixelFormat | [in] 源像素的像素格式，支持BGRA_8888、RGBA_8888、RGB_888、RGB_565和RGBA_F16。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：操作成功。<br>IMAGE_UNSUPPORTED_OPERATION：Pixelmap不可编辑或已锁定。<br>IMAGE_UNSUPPORTED_CONVERSION：不支持从sourcePixelFormat转换为Pixelmap的像素格式。<br>IMAGE_INVALID_PARAMETER：pixelmap、area或area->pixels为空指针，缓冲区大小、偏移量、行跨距或区域无效，或者sourcePixelFormat无效或不受支持。<br>IMAGE_COPY_FAILED：像素数据复制或转换失败。 |
 
 ### OH_PixelmapNative_GetArgbPixels()
 
