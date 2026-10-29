@@ -16,8 +16,8 @@
 
 1. 调用[addSubtitleFromFd](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#addsubtitlefromfd12)，使用视频播放的AVPlayer实例设置外挂字幕资源。
    <!-- @[addSubtitleFromFd](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSSubtitle/entry/src/main/ets/pages/Index.ets) -->
-
-   ```TypeScript
+   
+   ``` TypeScript
    // 通过UIAbilityContext的resourceManager成员的getRawFd接口获取媒体资源播放地址。
    // 返回类型为{fd,offset,length},fd为HAP包fd地址，offset为媒体资源偏移量，length为播放长度。
    if (this.context == undefined) return;
@@ -30,34 +30,34 @@
      this.avPlayer.release();
      await this.msleepAsync(1500);
    }
-   // 创建avPlayer实例对象
+   // 创建avPlayer实例对象。
    this.avPlayer = await media.createAVPlayer();
    
-   // 创建状态机变化回调函数
+   // 创建状态机变化回调函数。
    await this.setAVPlayerCallback((avPlayer: media.AVPlayer) => {
      this.percent = avPlayer.width / avPlayer.height;
      this.setVideoWH();
      this.durationTime = this.getDurationTime();
-     setInterval(() => { // 更新当前时间
+     setInterval(() => { // 更新当前时间。
        if (!this.isSwiping) {
          this.currentTime = this.getCurrentTime();
        }
      }, SET_INTERVAL);
    });
    
-   // 为fdSrc赋值触发initialized状态机上报
+   // 为fdSrc赋值触发initialized状态机上报。
    this.avPlayer.fdSrc = avFileDescriptor;
    
-   // 设定字幕
+   // 设定字幕。
    let fileDescriptorSub = await this.context.resourceManager.getRawFd('test1.srt');
    this.avPlayer.addSubtitleFromFd(fileDescriptorSub.fd, fileDescriptorSub.offset, fileDescriptorSub.length);
    ```
 
 2. 调用[on('subtitleUpdate')](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#onsubtitleupdate12)接口，注册字幕回调函数。
    <!-- @[onSubtitleUpdate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSSubtitle/entry/src/main/ets/pages/Index.ets) -->
-
-   ```TypeScript
-   // 字幕回调函数
+   
+   ``` TypeScript
+   // 字幕回调函数。
    this.avPlayer.on('subtitleUpdate', (info: media.SubtitleInfo) => {
      if (!!info) {
        let text = (!info.text) ? '' : info.text;
@@ -72,15 +72,14 @@
    ```
 
 3. (可选)当需要不显示字幕的时候，使用视频播放的AVPlayer实例注销字幕回调函数。
-  <!-- @[off('subtitleUpdate')](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSSubtitle/entry/src/main/ets/pages/Index.ets) -->
-  
-  ``` TypeScript
-  // (可选)当需要不显示字幕的时候，使用视频播放的AVPlayer实例注销字幕回调函数
-  // async avTurnOffSubtitle() {
-  //   this.avPlayer?.off('subtitleUpdate');
-  // }
-  ```
-
+   <!-- @[offSubtitleUpdate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSSubtitle/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // (可选)当需要不显示字幕的时候，使用视频播放的AVPlayer实例注销字幕回调函数。
+   async avTurnOffSubtitle() {
+     this.avPlayer?.off('subtitleUpdate');
+   }
+   ```
 
 ## 运行完整示例
 
