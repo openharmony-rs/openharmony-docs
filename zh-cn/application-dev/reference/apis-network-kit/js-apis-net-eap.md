@@ -25,9 +25,9 @@ import {eap} from '@kit.NetworkKit';
 
 regCustomEapHandler(netType: number, eapCode: number, eapType: number, callback: Callback\<EapData\>): void
 
-用于指定需要定制化处理的EAP报文类型和对应的处理回调。使用callback异步回调。
+用于指定需要定制化处理的EAP报文类型和对应的处理callback。使用callback异步回调。
 
-系统会将符合条件的EAP报文传递到回调函数中，供企业应用获取。
+系统会将符合条件的EAP报文送入callback函数中供企业应用获取。
 
 **需要权限**：ohos.permission.MANAGE_ENTERPRISE_WIFI_CONNECTION
 
@@ -74,7 +74,7 @@ console.info('regCustomEapHandler success');
 
 unregCustomEapHandler(netType:number, eapCode: number, eapType: number, callback: Callback\<EapData\>): void
 
-用于指定需要取消定制化处理的EAP报文类型和对应的处理回调。使用回调函数异步返回结果。
+用于指定需要取消定制化处理的EAP报文类型和对应的处理callback。使用callback异步回调。
 
 **需要权限**：ohos.permission.MANAGE_ENTERPRISE_WIFI_CONNECTION
 
