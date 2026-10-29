@@ -1112,7 +1112,7 @@ schema文件为json格式，文件主要为在dbSchema字段下进行多项配�
     - 建表语句：`'CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT UNIQUE, AGE INTEGER, SALARY REAL, CODES BLOB)'`
     - 写入语句：
       ``` TypeScript
-      let valueBucket: relationalStore.ValueBucket = {};
+      let valueBucket: relationalStore.ValuesBucket = {};
       valueBucket["NAME"] = null;
       valueBucket["AGE"] = 25;
       valueBucket["SALARY"] = 23456.7;
