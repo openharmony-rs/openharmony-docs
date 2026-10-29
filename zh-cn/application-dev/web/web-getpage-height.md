@@ -122,7 +122,7 @@ struct Scene2JsBridge {
         if (typeof jsbObj !== 'undefined') {
             jsbObj.notifyToGet();
         } else {
-            console.info("jsbObj is undefined");
+            console.error("jsbObj is undefined");
         }
     })
 </script>
@@ -152,7 +152,7 @@ struct Scene2JsBridge {
         if (typeof jsbObj !== 'undefined') {
             jsbObj.notifyToGet();
         } else {
-            console.info("jsbObj is error");
+            console.error("jsbObj is error");
         }
     });
 </script>
@@ -190,7 +190,7 @@ struct Scene2JsBridge {
             if (typeof jsbObj !== 'undefined') {
                 jsbObj.notifyToGet();
             } else {
-                console.info("jsbObj is error");
+                console.error("jsbObj is error");
             }
         })
     }

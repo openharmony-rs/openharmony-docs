@@ -113,67 +113,7 @@ Web页面出现白屏的原因众多，本文列举了若干常见白屏问题�
       开发者应使用HTTP或HTTPS协议替代file或resource协议，确保Web组件能够成功访问跨域资源。替代的URL域名应为自定义构造，仅限于个人或组织使用，以防止与互联网上的实际域名冲突。此外，开发者需要利用Web组件的[onInterceptRequest](../reference/apis-arkweb/arkts-basic-components-web-events.md#oninterceptrequest9)方法，对本地资源进行拦截和相应替换。
 
       以下结合示例说明如何使用HTTP或HTTPS等协议解决本地资源跨域访问失败的问题。其中，index.html和js/script.js文件置于工程的rawfile目录下。当使用resource协议访问index.html时，js/script.js文件因跨域而被拦截，无法加载。在示例中，使用https:\//www\.example.com/域名替换了原有的resource协议，同时利用onInterceptRequest接口替换资源，确保js/script.js文件可以成功加载，从而解决跨域拦截问题。
-    ```ts
-    // main/ets/pages/Index.ets
-    import { webview } from '@kit.ArkWeb';
-
-    @Entry
-    @Component
-    struct Index {
-      @State message: string = 'Hello World';
-      webviewController: webview.WebviewController = new webview.WebviewController();
-      // 构造域名和本地文件的映射表
-      schemeMap = new Map([
-        ["https://www.example.com/index.html", "index.html"],
-        ["https://www.example.com/js/script.js", "js/script.js"],
-      ])
-      // 构造本地文件和构造返回的格式mimeType
-      mimeTypeMap = new Map([
-        ["index.html", 'text/html'],
-        ["js/script.js", "text/javascript"]
-      ])
-
-      build() {
-        Row() {
-          Column() {
-            // 针对本地index.html,使用HTTP或HTTPS协议代替file协议或者resource协议，并且构造一个属于自己的域名。
-            // 本例中构造www.example.com为例。
-            Web({ src: "https://www.example.com/index.html", controller: this.webviewController })
-              .javaScriptAccess(true)
-              .fileAccess(true)
-              .domStorageAccess(true)
-              .geolocationAccess(true)
-              .width("100%")
-              .height("100%")
-              .onInterceptRequest((event) => {
-                if (!event) {
-                  return;
-                }
-                // 此处匹配自己想要加载的本地离线资源，进行资源拦截替换，绕过跨域
-                if (this.schemeMap.has(event.request.getRequestUrl())) {
-                  let rawfileName: string = this.schemeMap.get(event.request.getRequestUrl())!;
-                  let mimeType = this.mimeTypeMap.get(rawfileName);
-                  if (typeof mimeType === 'string') {
-                    let response = new WebResourceResponse();
-                    // 构造响应数据，如果本地文件在rawfile下，可以通过如下方式设置
-                    response.setResponseData($rawfile(rawfileName));
-                    response.setResponseEncoding('utf-8');
-                    response.setResponseMimeType(mimeType);
-                    response.setResponseCode(200);
-                    response.setReasonMessage('OK');
-                    response.setResponseIsReady(true);
-                    return response;
-                  }
-                }
-                return null;
-              })
-          }
-          .width('100%')
-        }
-        .height('100%')
-      }
-    }
-    ```
+<!-- @[CrossDomainIntercept](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebWriteScreenIssue/entry/src/main/ets/pages/CrossDomainIntercept.ets) -->
 
     ```html
     <!-- main/resources/rawfile/index.html -->
@@ -322,7 +262,7 @@ Web页面出现白屏的原因众多，本文列举了若干常见白屏问题�
     | [onHttpErrorReceive](../reference/apis-arkweb/arkts-basic-components-web-events.md#onhttperrorreceive) | 服务器返回HTTP错误码，这类问题一般需要跟服务器进行联调。 | 
     | [onHttpAuthRequest](../reference/apis-arkweb/arkts-basic-components-web-events.md#onhttpauthrequest9) | 服务器返回407需要端侧提供用户名密码认证，如果不正确处理，可能会导致加载异常、白屏。 | 
     | [onClientAuthenticationRequest](../reference/apis-arkweb/arkts-basic-components-web-events.md#onclientauthenticationrequest9) | 服务器向端侧请求证书，如果不正确处理，会导致页面加载异常。 | 
-    | [onSslErrorEvent](../reference/apis-arkweb/arkts-basic-components-web-events.md#onsslerrorevent12) | 证书错误，需要应用根据证书错误信息进行排查，是证书配错了？还是过期了。 | 
+    | [onSslErrorEvent](../reference/apis-arkweb/arkts-basic-components-web-events.md#onsslerrorevent12) | 证书错误，需应用根据证书错误信息排查，常见原因包括证书配置错误、证书过期或证书不受信任。 | 
 
 
 ## 复杂的布局与渲染模式导致白屏
@@ -370,18 +310,7 @@ Web组件提供了自适应页面布局的能力，详情见[ Web组件大小自
 兼容性问题处理不当也会导致页面白屏。
 * 特殊协议拦截。
 * 若H5页面调用tel:、mailto:等协议导致白屏，需通过onInterceptRequest拦截并调用系统拨号能力：
-   ```ts
-   .onInterceptRequest((event) => {
-       if (event.request.getRequestUrl.startsWith('tel:')) {
-           // 调用系统拨号能力
-           call.makeCall('123456');
-           let response = new WebResourceResponse();
-           response.setResponseCode(404);
-           return response; // 阻止默认行为
-       }
-       return null;  
-   })
-   ```
+<!-- @[InterceptTelScheme](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebWriteScreenIssue/entry/src/main/ets/pages/InterceptTelScheme.ets) -->
 ## 监控内存与生命周期
 内存达到阈值会导致渲染进程被终止，从而引发白屏现象；同样，渲染进程创建失败或非正常销毁也会导致白屏。可从日志中排查原因。检查Web组件是否与WebviewController正确绑定，或是否因WebviewController提前释放导致白屏。关注日志中与Render进程相关的信息：是否存在内存泄漏使渲染内存不足。关键字“MEMORY_PRESSURE_LEVEL_CRITICAL”表明内存已达到阈值，此情形下Web可能遭遇黑屏、花屏或闪屏等异常状况，需排查是否存在内存泄漏问题。Render进程是否成功启动或异常退出。
 
@@ -429,9 +358,7 @@ Tablet/PC/2in1的WebView默认采用多进程加载，iframe默认使用子进�
 **解决措施：**
 
 通过[setRenderProcessMode](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setrenderprocessmode12)设置WebView渲染模式为单进程加载。
-   ```ts
-   webview.WebviewController.setRenderProcessMode(webview.RenderProcessMode.SINGLE);
-   ```
+<!-- @[set_render_process_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebWriteScreenIssue/entry/src/main/ets/pages/RenderAndCacheMode.ets) -->
    
 ## WebView默认缓存模式下缓存协商与服务端资源更新不一致导致的白屏
 

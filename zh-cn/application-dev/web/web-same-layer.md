@@ -1033,7 +1033,7 @@ display，position，z-index，visibility，opacity, background-color，backgrou
             console.info('AVPlayer state paused called.');
             avPlayer.play(); // 再次播放接口开始播放。
             break;
-          case 'completed': // 播放接口后触发该状态机上报。
+          case 'completed': // 播放完成后触发该状态机上报。
             console.info('AVPlayer state completed called.');
             avPlayer.stop(); // 调用停止播放接口。
             break;
@@ -1622,23 +1622,7 @@ ArkWeb同层渲染场景下的私有属性`arkwebnativestyle`，仅在开启同�
 - 自定义组件宽高未指定为同层渲染标签的宽高
 
   自定义的同层渲染组件宽高需要与同层标签的宽高保持一致，示例如下：
-  ```ts
-    @Component
-    struct TextInputComponent {
-      @Prop params: Params
-      @State bkColor: Color = Color.White
-
-      build() {
-        Column() {
-          TextInput({text: '', placeholder: 'please input your word...'})
-            .fontColor(Color.Black)
-        }
-        // 自定义组件中的最外层容器组件宽高应该为同层标签的宽高。
-        .width(this.params.width)
-        .height(this.params.height)
-      }
-    }
-  ```
+<!-- @[text_input_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/RenderTxtBoxSameLayer_two.ets) -->
 
 ### 如何将同层渲染组件捕获到的事件透传到Web前端？
 同层渲染手势事件通过[setGestureEventResult()](../reference/apis-arkweb/arkts-basic-components-web-EventResult.md#setgestureeventresult14)设置手势事件消费结果，可以选择系统组件侧或ArkWeb侧消费手势事件。如果要实现系统组件侧和ArkWeb侧同时消费手势事件，可以在[setGestureEventResult()](../reference/apis-arkweb/arkts-basic-components-web-EventResult.md#setgestureeventresult14)中将stopPropagation设置为false，即系统组件侧消费的同时可以将手势事件向上冒泡给ArkWeb。
@@ -1648,11 +1632,7 @@ ArkWeb同层渲染场景下的私有属性`arkwebnativestyle`，仅在开启同�
 - 同层渲染开关[enableNativeEmbedMode](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#enablenativeembedmode11)未开启
 
   使用同层渲染技术需要显式开启同层渲染开关
-  ```ts
-  Web({ src: $rawfile("text.html"), controller: this.controller })
-    // 配置同层渲染开关开启。
-    .enableNativeEmbedMode(true)
-  ```
+<!-- @[enable_native_embedmode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/RenderTxtBoxSameLayer_two.ets) -->
 
 - 同层标签使用有误
 
@@ -1660,12 +1640,4 @@ ArkWeb同层渲染场景下的私有属性`arkwebnativestyle`，仅在开启同�
 
 ### 涉及界面交互的ArkUI组件（如TextInput等）光标与输入框错位该如何解决？
 首先，需使用Stack包裹同层组件容器和BuilderNode。其次，同层组件容器NodeContainer应与同层标签的位置绑定。示例如下：
-```ts
-ForEach(this.componentIdArr, (componentId: string) => {
-  NodeContainer(this.nodeControllerMap.get(componentId))
-    // 同层组件容器应与同层标签的宽高和位置绑定。
-    .position(this.positionMap.get(componentId))
-    .width(this.widthMap.get(componentId))
-    .height(this.heightMap.get(componentId))
-}, (embedId: string) => embedId)
-```
+<!-- @[same_layer_and_same_tag_bundle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/RenderTxtBoxSameLayer_two.ets) -->
