@@ -7,9 +7,9 @@
 <!--Tester: @WIFIroam-test-->
 <!--Adviser: @zhang_yixin13-->
 
-该模块提供了第三方客户端接入802.1X认证流程的机制，支撑客户端的定制认证等功能，以及以太网802.1X EAP配置管理、认证控制和认证状态监听功能。
+该模块提供了第三方客户端接入802.1X认证流程的机制，支撑客户端的定制认证等功能，以及以太网802.1X认证配置管理、认证控制和认证状态监听功能。
 
-802.1X是一种基于端口的网络接入控制协议，用于在终端接入网络时进行身份认证。EAP（Extensible Authentication Protocol，可扩展认证协议）是一种可支持多种认证方法的认证框架。802.1X EAP指在802.1X认证流程中使用EAP完成身份认证。
+802.1X是一种基于端口的网络接入控制协议，用于在终端接入网络时进行身份认证。EAP（Extensible Authentication Protocol，可扩展认证协议）是一种可支持多种认证方法的认证框架。本模块的以太网802.1X认证使用EAP完成身份认证。
 
 > **说明：** 
 >
@@ -277,7 +277,7 @@ try{
 
 setEthEapConfig(config: EthEapConfig): void
 
-设置以太网802.1X EAP配置，配置将加密并持久化保存。
+设置以太网802.1X认证配置，配置将加密并持久化保存。
 
 多次调用本接口时，若config参数中任意字段发生变化，会触发一次自动认证流程。如果802.1X功能或自动认证已禁用，则保存配置并停止自动认证；如果当前认证由企业应用通过[eap.startEthEap](#eapstartetheap)发起，则仅保存配置，不触发自动认证，企业应用仍保留认证控制权。认证结果通过[eap.onStateChange](#eaponstatechange)注册的回调返回，本接口调用返回不代表认证成功。
 
@@ -293,7 +293,7 @@ setEthEapConfig(config: EthEapConfig): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| config | [EthEapConfig](#etheapconfig) | 是 | 待设置的以太网802.1X EAP配置。当EthEapProfile中的敏感字段password、certPassword传入空字符串，或certEntry传入空数组时，表示保留原值；通过getEthEapConfig读取时，password、certPassword返回空字符串，certEntry返回空数组。 |
+| config | [EthEapConfig](#etheapconfig) | 是 | 待设置的以太网802.1X认证配置。当EthEapProfile中的敏感字段password、certPassword传入空字符串，或certEntry传入空数组时，表示保留原值；通过getEthEapConfig读取时，password、certPassword返回空字符串，certEntry返回空数组。 |
 
 **错误码**：
 
@@ -347,7 +347,7 @@ try {
 
 getEthEapConfig(): Promise\<EthEapConfig\>
 
-获取已保存的以太网802.1X EAP配置。使用Promise异步回调。
+获取已保存的以太网802.1X认证配置。使用Promise异步回调。
 
 返回配置中profile的敏感字段password、certPassword始终为空字符串，certEntry始终为空数组。
 
@@ -363,7 +363,7 @@ getEthEapConfig(): Promise\<EthEapConfig\>
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise\<[EthEapConfig](#etheapconfig)\> | Promise对象，返回已保存的以太网802.1X EAP配置，其中password、certPassword返回空字符串，certEntry返回空数组。 |
+| Promise\<[EthEapConfig](#etheapconfig)\> | Promise对象，返回已保存的以太网802.1X认证配置，其中password、certPassword返回空字符串，certEntry返回空数组。 |
 
 **错误码**：
 
@@ -395,7 +395,7 @@ try {
 
 deleteEthEapConfig(): Promise\<void\>
 
-删除已持久化保存的以太网802.1X EAP配置。若当前存在正在进行的自动认证，则会停止本次认证流程。使用Promise异步回调。
+删除已持久化保存的以太网802.1X认证配置。若当前存在正在进行的自动认证，则会停止本次认证流程。使用Promise异步回调。
 
 **起始版本：** 26.0.1
 
@@ -441,7 +441,7 @@ try {
 
 getEthEapStateInfo(): EthEapStateInfo
 
-同步获取当前以太网802.1X EAP认证状态信息，包括认证状态、重试次数和补充信息。
+同步获取当前以太网802.1X认证状态信息，包括认证状态、重试次数和补充信息。
 
 **起始版本：** 26.0.1
 
@@ -455,7 +455,7 @@ getEthEapStateInfo(): EthEapStateInfo
 
 | 类型 | 说明 |
 | -------- | -------- |
-| [EthEapStateInfo](#etheapstateinfo) | 当前以太网802.1X EAP认证状态信息。 |
+| [EthEapStateInfo](#etheapstateinfo) | 当前以太网802.1X认证状态信息。 |
 
 **错误码**：
 
@@ -484,7 +484,7 @@ try {
 
 onStateChange(callback: Callback\<EthEapStateInfo\>): void
 
-订阅以太网802.1X EAP认证状态变化。使用回调函数异步返回结果。
+订阅以太网802.1X认证状态变化。使用回调函数异步返回结果。
 
 **起始版本：** 26.0.1
 
@@ -498,7 +498,7 @@ onStateChange(callback: Callback\<EthEapStateInfo\>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | Callback\<[EthEapStateInfo](#etheapstateinfo)\> | 是 | 回调函数，返回以太网802.1X EAP认证状态信息。 |
+| callback | Callback\<[EthEapStateInfo](#etheapstateinfo)\> | 是 | 回调函数，返回以太网802.1X认证状态信息。 |
 
 **错误码**：
 
@@ -531,7 +531,7 @@ try {
 
 offStateChange(callback?: Callback\<EthEapStateInfo\>): void
 
-取消订阅以太网802.1X EAP认证状态变化。
+取消订阅以太网802.1X认证状态变化。
 
 **起始版本：** 26.0.1
 
@@ -582,11 +582,11 @@ try {
 
 connect(action: EthEapConnectAction): Promise\<void\>
 
-手动触发或断开以太网802.1X EAP认证。使用Promise异步回调。
+手动触发或断开以太网802.1X认证。使用Promise异步回调。
 
-当action为ACTION_CONNECT时，使用已保存的802.1X EAP配置重新触发认证；未保存802.1X EAP配置时，操作失败。认证结果通过[eap.onStateChange](#eaponstatechange)注册的回调返回。若当前认证由企业应用通过[eap.startEthEap](#eapstartetheap)发起，则本接口不会中断原有认证。
+当action为ACTION_CONNECT时，使用已保存的802.1X认证配置重新触发认证；未保存802.1X认证配置时，操作失败。认证结果通过[eap.onStateChange](#eaponstatechange)注册的回调返回。若当前认证由企业应用通过[eap.startEthEap](#eapstartetheap)发起，则本接口不会中断原有认证。
 
-当action为ACTION_DISCONNECT时，停止自动认证及重试，退出当前以太网802.1X EAP认证，并将认证状态重置为[STATE_IDLE](#etheapstate)。
+当action为ACTION_DISCONNECT时，停止自动认证及重试，退出当前以太网802.1X认证，并将认证状态重置为[STATE_IDLE](#etheapstate)。
 
 **起始版本：** 26.0.1
 
@@ -721,7 +721,7 @@ EAP信息。
 
 ## EthEapConfig
 
-以太网802.1X EAP配置，包括EAP配置信息和功能开关。
+以太网802.1X认证配置，包括EAP配置信息和功能开关。
 
 **起始版本：** 26.0.1
 
@@ -738,7 +738,7 @@ EAP信息。
 
 ## EthEapState
 
-以太网802.1X EAP认证状态枚举。
+以太网802.1X认证状态枚举。
 
 **起始版本：** 26.0.1
 
@@ -749,14 +749,14 @@ EAP信息。
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
 | STATE_IDLE | 0 | 空闲状态，尚未发起认证。 |
-| STATE_AUTHENTICATING | 1 | 正在进行以太网802.1X EAP认证。 |
+| STATE_AUTHENTICATING | 1 | 正在进行以太网802.1X认证。 |
 | STATE_AUTHENTICATED | 2 | 认证成功。 |
 | STATE_FAILED | 3 | 认证失败，已达到最大重试次数。 |
 | STATE_RETRYING | 4 | 等待下一次重试。 |
 
 ## EthEapStateInfo
 
-以太网802.1X EAP认证状态信息，可通过[eap.getEthEapStateInfo](#eapgetetheapstateinfo)获取，也可通过[eap.onStateChange](#eaponstatechange)注册的回调返回。
+以太网802.1X认证状态信息，可通过[eap.getEthEapStateInfo](#eapgetetheapstateinfo)获取，也可通过[eap.onStateChange](#eaponstatechange)注册的回调返回。
 
 **起始版本：** 26.0.1
 
@@ -772,7 +772,7 @@ EAP信息。
 
 ## EthEapConnectAction
 
-以太网802.1X EAP手动连接操作枚举，用于[eap.connect](#eapconnect)。
+以太网802.1X认证操作枚举，用于[eap.connect](#eapconnect)。
 
 **起始版本：** 26.0.1
 
@@ -783,4 +783,4 @@ EAP信息。
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
 | ACTION_CONNECT | 0 | 使用已保存的配置重新触发认证。 |
-| ACTION_DISCONNECT | 1 | 停止自动认证及重试，退出当前以太网802.1X EAP认证，并将认证状态重置为空闲。 |
+| ACTION_DISCONNECT | 1 | 停止自动认证及重试，退出当前以太网802.1X认证，并将认证状态重置为空闲。 |
