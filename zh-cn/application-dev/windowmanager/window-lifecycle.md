@@ -76,19 +76,19 @@ Stage模型下主窗口的生命周期状态包括前台状态（SHOWN）、前�
 
 在Stage模型下，应用主窗口从前台进入后台状态也会驱动UIAbility的生命周期。在该模型下，需要额外关注这个机制在不同类型产品的差异化行为。
 
-- **Phone/TV/Wearable/Car类型设备上：** 窗口从前台进入后台状态，会驱动UIAbility到后台状态。
+- **Phone/TV/Wearable/Car类型设备上：** 窗口从前台进入后台状态，会驱动UIAbility为后台状态。
 
 - **Tablet类型设备上：**
 
-  - 针对不支持在PC/2in1设备上运行的应用，或可同时支持在phone和PC/2in1上运行的应用，窗口从前台进入后台状态，会驱动UIAbility为后台状态。
+  - 针对不支持在PC/2in1设备上运行的应用，或可同时支持在Phone和PC/2in1上运行的应用，窗口从前台进入后台状态，会驱动UIAbility为后台状态。
 
-  - 针对不支持在phone设备上运行且支持在PC/2in1设备上运行的应用，窗口从前台进入后台状态，不会驱动UIAbility为后台状态。
+  - 针对不支持在Phone设备上运行且支持在PC/2in1设备上运行的应用，窗口从前台进入后台状态，当设备处于解锁状态时，不会驱动UIAbility为后台状态；当设备处于锁屏状态时，若应用已接入状态栏则不会驱动UIAbility为后台状态，否则会驱动UIAbility为后台状态。
 
 - **PC/2in1类型设备上：**
 
-  - 针对支持在phone设备运行的应用，窗口从前台进入后台状态，会驱动UIAbility为后台状态。
+  - 针对支持在Phone设备运行的应用，窗口从前台进入后台状态，会驱动UIAbility为后台状态。
 
-  - 针对不支持在phone设备运行的应用，窗口从前台进入后台状态，不会驱动UIAbility为后台状态。
+  - 针对不支持在Phone设备运行的应用，窗口从前台进入后台状态，不会驱动UIAbility为后台状态。
 
 ## 管理辅助窗口的生命周期
 
@@ -118,3 +118,175 @@ Stage模型下主窗口的生命周期状态包括前台状态（SHOWN）、前�
 | 全局悬浮窗 | 不跟随主窗口显示、隐藏。<br>跟随主窗口销毁。 |
 | 画中画 | 不跟随主窗口显示、隐藏。<br>跟随主窗口销毁。 |
 | 闪控球 | 不跟随主窗口显示、隐藏。<br>跟随主窗口销毁。 |
+
+## 实践案例
+
+### 恢复应用主窗口至前台（PC/2in1）
+
+在PC/2in1设备上，当应用主窗口处于后台状态时，若收到事件需要将主窗口恢复到前台显示，可调用[restore()](../reference/apis-arkui/arkts-apis-window-Window.md#restore14)接口将其恢复到进入后台状态之前的大小和位置。若主窗口已处于前台状态，调用该接口仅抬升主窗口层级。
+
+例如，已将应用图标添加到状态栏的应用，可通过监听状态栏图标点击事件，在用户点击状态栏图标时调用[restore()](../reference/apis-arkui/arkts-apis-window-Window.md#restore14)接口恢复应用主窗口。
+
+> **说明：**
+> 
+> - [restore()](../reference/apis-arkui/arkts-apis-window-Window.md#restore14)接口仅在PC/2in1设备、Phone/Tablet设备的[电脑模式](window-terminology.md#pc-mode电脑模式)下可正常调用，在其他设备和其他模式下调用会返回801错误码。
+> 
+> - 在开发跨设备应用时，建议通过[canIUse()](../reference/common/js-apis-syscap.md#caniuse)接口判断当前设备是否支持该权限所对应的系统能力，避免在不支持的设备上产生非预期行为。
+
+示例代码如下：
+
+<!-- @[WindowRestore](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample/ArkUIWindowSamples/WindowRestoreSample/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const DOMAIN: number = 0xFF00;
+const TAG: string = '[Sample_WindowRestore]';
+
+@Entry
+@Component
+struct Index {
+  mainWindow: window.Window | undefined;
+
+  aboutToAppear() {
+    // 在EntryAbility.ets中通过windowStage.getMainWindowSync()保存主窗
+    this.mainWindow = AppStorage.get('mainWindow_Restore') as window.Window;
+  }
+
+  minimizeAndRestore() {
+    if (!this.mainWindow) {
+      hilog.error(DOMAIN, TAG, '%{public}s', 'Main window is not available.');
+      return;
+    }
+    try {
+      // 调用minimize()接口，使主窗进入后台状态
+      this.mainWindow.minimize();
+      // 设置延时函数，延时5秒钟后对主窗进行恢复
+      setTimeout(() => {
+        // 调用restore()接口，将主窗口恢复到前台显示
+        this.mainWindow?.restore().then(() => {
+          hilog.info(DOMAIN, TAG, '%{public}s', 'Succeeded in restoring the window.');
+        }).catch((err: BusinessError) => {
+          hilog.error(DOMAIN, TAG, 'Failed to restore the window. Code: %{public}s, message: %{public}s',
+            `${err.code}`, `${err.message}`);
+        });
+      }, 5000);
+    } catch (error) {
+      const err: BusinessError = error as BusinessError;
+      hilog.error(DOMAIN, TAG, 'Failed to minimize and restore the window. Code: %{public}s, message: %{public}s',
+        `${err.code}`, `${err.message}`);
+    }
+  }
+
+  build() {
+    Column() {
+      Text($r('app.string.minimize_text'))
+        .id('minimizeText')
+        .fontSize(17)
+      Button($r('app.string.minimize_button'))
+        .id('minimizeButton')
+        .onClick(() => {
+          hilog.info(DOMAIN, TAG, '%{public}s', 'Click: Minimize and restore');
+          this.minimizeAndRestore();
+        })
+        .margin({ top: 20 })
+    }
+    .justifyContent(FlexAlign.Center)
+    .alignItems(HorizontalAlign.Center)
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+### 锁屏状态下启动应用（PC/2in1）
+
+在PC/2in1设备上，当锁屏状态下收到日程提醒等事件时，其他应用可能需要通过调用[startAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability)等接口拉起目标应用。若目标应用需在锁屏状态下被启动，需申请权限[ohos.permission.START_WINDOW_BELOW_LOCK_SCREEN](../security/AccessToken/permissions-for-all.md#ohospermissionstart_window_below_lock_screen)，否则无法拉起该应用。
+
+该权限允许应用在PC/2in1设备的锁屏状态下被启动至前台，设备解锁后应用窗口保持前台状态。需在[module.json5配置文件](../quick-start/module-configuration-file.md)的requestPermissions标签中声明该权限，具体请参考[声明权限](../security/AccessToken/declare-permissions.md)。
+
+> **说明：**
+> 
+> 在开发跨设备应用时，建议通过[canIUse()](../reference/common/js-apis-syscap.md#caniuse)接口判断当前设备是否支持该权限所对应的系统能力，避免在不支持的设备上产生非预期行为。
+
+此处以在应用A（StartAbilityBelowLockScreenSample）点击按钮后5s通过startAbility()拉起应用B（BelowLockScreenTargetSample）为例，模拟锁屏状态下其他应用响应事件拉起目标应用的场景。
+
+示例代码如下：
+
+<!-- @[StartAbilityBelowLockScreen](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample/ArkUIWindowSamples/StartAbilityBelowLockScreenSample/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { common, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const DOMAIN: number = 0xFF00;
+const TAG: string = '[Sample_StartAbilityBelowLockScreen]';
+
+// 目标应用的bundleName和abilityName
+const TARGET_BUNDLE_NAME: string = 'com.samples.belowlockscreentarget';
+const TARGET_ABILITY_NAME: string = 'EntryAbility';
+
+@Entry
+@Component
+struct Index {
+  private context: common.UIAbilityContext = AppStorage.get('context') as common.UIAbilityContext;
+
+  startTargetAbility(): void {
+    if (!this.context) {
+      hilog.error(DOMAIN, TAG, '%{public}s', 'Context is not available.');
+      return;
+    }
+    hilog.info(DOMAIN, TAG, '%{public}s', 'Start to delay 5 seconds before startAbility.');
+    // 设置延时函数，延时5秒钟后拉起目标应用，模拟响应事件拉起目标应用
+    setTimeout(() => {
+      const want: Want = {
+        deviceId: '',
+        bundleName: TARGET_BUNDLE_NAME,
+        abilityName: TARGET_ABILITY_NAME,
+        moduleName: 'entry'
+      };
+      try {
+        this.context.startAbility(want, (err: BusinessError) => {
+          if (err.code) {
+            hilog.error(DOMAIN, TAG, 'Failed to startAbility. Code: %{public}s, message: %{public}s',
+              `${err.code}`, `${err.message}`);
+            return;
+          }
+          hilog.info(DOMAIN, TAG, '%{public}s', 'Succeeded in starting target ability.');
+        });
+      } catch (error) {
+        const err: BusinessError = error as BusinessError;
+        hilog.error(DOMAIN, TAG, 'Failed to startAbility. Code: %{public}s, message: %{public}s',
+          `${err.code}`, `${err.message}`);
+      }
+    }, 5000);
+  }
+
+  build() {
+    Column() {
+      Text($r('app.string.start_ability_text'))
+        .id('startAbilityText')
+        .fontSize(24)
+      Button($r('app.string.start_ability_button'))
+        .id('startAbilityButton')
+        .fontSize(20)
+        .onClick(() => {
+          hilog.info(DOMAIN, TAG, '%{public}s', 'Click: Start ability below lock screen');
+          this.startTargetAbility();
+        })
+        .margin({ top: 20 })
+    }
+    .justifyContent(FlexAlign.Center)
+    .alignItems(HorizontalAlign.Center)
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+**图1** 锁屏状态下启动应用
+
+![StartAbilityBelowLockScreen](figures/StartAbilityBelowLockScreen.gif)
