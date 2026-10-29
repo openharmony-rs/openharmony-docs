@@ -37,6 +37,8 @@ import { cliManager } from '@kit.AbilityKit';
 | background | boolean | 否 | 表示任务是否后台执行。<br/>true：后台执行，false：前台执行。<br/>默认值：false。 |
 | yieldMs    | number | 否 | 任务前台执行时长。取值范围：0 ~ 1000 * timeout。默认值：0。 |
 | timeout    | number | 否 | 任务执行超时时长。取值范围：0 ~ 1800。默认值：1800。 |
+| toolCallId | string | 否 | 表示工具调用的唯一标识符，由Agent分配。取值由字母、数字、'_'和'-'组成，最大长度为256。<br>从API版本26.0.1开始支持。 |
+| dmSessionId | string | 否 | 表示对话管理器（DM）的会话ID，用于唯一标识Agent会话。取值由字母、数字、'_'和'-'组成，最大长度为256。<br>从API版本26.0.1开始支持。 |
 
 ## cliManager.queryToolSummaries
 
@@ -346,6 +348,8 @@ Shell命令执行参数，用于拦截Hook。包含命令字符串和执行选�
 | 名称        | 类型 | 必填 | 说明 |
 | ----------- | ---- | --- | ------------------ |
 | execResult  | [ExecResult](js-apis-app-cli-cliManager.md#execresult) | 是 | 工具或命令的执行结果，包含退出码（exitCode）、标准输出（outputText）、标准错误输出（errorText）、终止信号（signalNumber）、是否超时（timeOut）和执行时长（executionTime），详见[ExecResult](js-apis-app-cli-cliManager.md#execresult)。在[onAfterCallTool()](#onaftercalltool)和[onAfterCallCmd()](#onaftercallcmd)回调中可读取该字段查看原始执行结果，修改后会将替换后的结果返回给调用方。 |
+| toolCallId  | string | 否 | 表示工具调用的唯一标识，从[ExecOptions](#execoptions)或[ExecCmdOptions](js-apis-app-cli-cliManager.md#execcmdoptions)回传。仅当调用方传入该标识时存在。取值由字母、数字、'_'和'-'组成，最大长度为256。<br>从API版本26.0.1开始支持。 |
+| dmSessionId | string | 否 | 表示对话管理器（DM）的会话ID，从[ExecOptions](#execoptions)或[ExecCmdOptions](js-apis-app-cli-cliManager.md#execcmdoptions)回传。仅当调用方传入该标识时存在。取值由字母、数字、'_'和'-'组成，最大长度为256。<br>从API版本26.0.1开始支持。 |
 
 ## CliHook
 
