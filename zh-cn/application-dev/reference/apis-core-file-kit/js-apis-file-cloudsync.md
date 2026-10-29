@@ -999,7 +999,7 @@ cleanFileCache(uri: string): void
 | 13900002 | No such file or directory. |
 | 13900010 | Try again. |
 | 13900012  | Permission denied by the file system. |
-| 13900020  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 13900020  | Invalid argument. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 14000002  | Invalid URI. |
 | 22400005  | Inner error. Possible causes: 1. Failed to access the database or execute the SQL statement. 2. System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
@@ -1552,7 +1552,7 @@ downloadHistoryVersion(uri: string, versionId: string, callback: Callback&lt;[Ve
 | 13900002 | No such file or directory. |
 | 13900010 | Try again. |
 | 13900012 | Permission denied by the file system. |
-| 13900020 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 13900020 | Invalid argument. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 14000002 | Invalid URI. |
 | 22400002 | Network unavailable. |
 | 22400005 | Inner error. Possible causes: 1. Failed to access the database or execute the SQL statement. 2. System error, such as a null pointer, insufficient memory or a JS engine exception. |
@@ -1619,7 +1619,7 @@ replaceFileWithHistoryVersion(originalUri: string, versionUri: string): Promise&
 | 13900008 | Bad file descriptor. |
 | 13900010 | Try again. |
 | 13900012 | Permission denied by the file system. |
-| 13900020 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 13900020 | Invalid argument. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 14000002 | Invalid URI. |
 | 22400005 | Inner error. Possible causes: 1. Failed to access the database or execute the SQL statement. 2. System error, such as a null pointer, insufficient memory or a JS engine exception. |
 | 22400007 | The version file specified to replace the original file does not exist. |
@@ -1692,7 +1692,7 @@ isFileConflict(uri: string): Promise&lt;boolean&gt;
 | 13900002 | No such file or directory. |
 | 13900010 | Try again. |
 | 13900012 | Permission denied by the file system. |
-| 13900020 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 13900020 | Invalid argument. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 14000002 | Invalid URI. |
 | 22400005 | Inner error. Possible causes: 1. Failed to access the database or execute the SQL statement. 2. System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
@@ -1744,7 +1744,7 @@ clearFileConflict(uri: string): Promise&lt;void&gt;
 | 13900002 | No such file or directory. |
 | 13900010 | Try again. |
 | 13900012 | Permission denied by the file system. |
-| 13900020 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 13900020 | Invalid argument. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 14000002 | Invalid URI. |
 | 22400005 | Inner error. Possible causes: 1. Failed to access the database or execute the SQL statement. 2. System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
