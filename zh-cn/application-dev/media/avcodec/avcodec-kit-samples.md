@@ -1,7 +1,7 @@
 ---
 kits: ["AVCodec Kit / 音视频编解码服务"]
 description: "汇总AVCodec Kit开发指南配套的示例工程，涵盖视频编解码、音频编解码、媒体数据封装与解封装、智能流畅倍速解码、时域可分层编码及ROI视频编码等场景，便于开发者按场景查找参考示例代码。"
-keywords: [AVCodec Kit, 示例代码, Sample, 视频编解码, 音频编解码, 封装, 解封装, 智能流畅倍速解码, 时域可分层编码, ROI编码]
+keywords: [AVCodec Kit, 示例代码, 视频编解码, 音频编解码, 封装, 解封装, 智能流畅倍速解码, 时域可分层编码, ROI编码]
 doctype: guide
 status: active
 ---
