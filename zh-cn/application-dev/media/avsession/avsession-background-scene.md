@@ -1,7 +1,7 @@
 ---
 kits: ["AVSession Kit / 音视频播控服务"]
 description: "介绍音视频应用实现后台长时间播放的开发步骤，涵盖启动播放器、接入AVSession、申请长时任务、监听前后台状态及设置后台播放模式等关键流程。"
-keywords: [后台播放, 长时任务, 后台播放模式, setBackgroundPlayMode]
+keywords: [后台播放, 长时任务, 后台播放模式, setBackgroundPlayMode, 后台播放管控]
 doctype: guide
 status: active
 ---

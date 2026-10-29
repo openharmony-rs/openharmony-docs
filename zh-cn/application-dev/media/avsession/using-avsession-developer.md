@@ -1,7 +1,7 @@
 ---
 kits: ["AVSession Kit / 音视频播控服务"]
 description: "介绍音视频应用使用ArkTS作为媒体会话提供方接入AVSession的开发流程，涵盖会话创建激活、元数据与播放状态设置、播控命令监听及资源释放。"
-keywords: [媒体会话提供方, AVSession, AVMetadata, AVPlaybackState, 播控命令监听, 播放列表, setLaunchAbility, 自定义会话事件]
+keywords: [媒体会话提供方, AVMetadata, AVPlaybackState, 播控命令监听, 媒体播放列表, 会话激活, 固定播控命令, 高级播控事件]
 doctype: guide
 status: active
 ---
