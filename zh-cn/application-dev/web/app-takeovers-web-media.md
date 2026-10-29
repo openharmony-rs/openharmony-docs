@@ -59,8 +59,8 @@ Web组件提供了应用接管网页中媒体播放的能力，用来支持应�
 
 需要先通过[enableNativeMediaPlayer](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#enablenativemediaplayer12)接口开启接管网页媒体播放的功能。
 
-<!-- @[Enable Native_Media_Player](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/App_takeovers_web_media/entry/src/main/ets/pages/Index.ets) -->
   ```ts
+  // xxx.ets
   import { webview } from '@kit.ArkWeb';
 
   @Entry
@@ -71,7 +71,7 @@ Web组件提供了应用接管网页中媒体播放的能力，用来支持应�
     build() {
       Column() {
         Web({ src: 'www.example.com', controller: this.controller })
-          .enableNativeMediaPlayer({ enable: true, shouldOverlay: true })
+          .enableNativeMediaPlayer({ enable: true, shouldOverlay: false })
       }
     }
   }
@@ -81,7 +81,7 @@ Web组件提供了应用接管网页中媒体播放的能力，用来支持应�
 
 该功能开启后，网页中有媒体需要播放时，ArkWeb内核会触发[onCreateNativeMediaPlayer](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12)注册的回调函数。
 
-应用则需要调用onCreateNativeMediaPlayer()来注册一个创建本地播放器的回调函数。
+应用则需要调用onCreateNativeMediaPlayer来注册一个创建本地播放器的回调函数。
 
 该回调函数需要根据媒体信息来判断是否要创建一个本地播放器来接管当前的网页媒体资源。
 
@@ -486,9 +486,9 @@ ArkWeb内核需要本地播放器的状态信息来更新到网页（例如：�
 
 - 在应用启动阶段保存[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)。
 
-<!-- @[save the UIContext](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/App_takeovers_web_media/entry/src/main/ets/entryability/EntryAbility.ets) -->
-
   ```ts
+  // xxxAbility.ets
+
   import { UIAbility } from '@kit.AbilityKit';
   import { window } from '@kit.ArkUI';
 
@@ -515,9 +515,8 @@ ArkWeb内核需要本地播放器的状态信息来更新到网页（例如：�
 
 - 应用侧代码，视频托管使用示例。通过[AVPlayer](../media/media/media-kit-intro.md#avplayer)托管Web媒体的播放。
 
-<!-- @[AVPlayer for Web Playback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/App_takeovers_web_media/entry/src/main/ets/pages/Index.ets) -->
-
   ```ts
+  // Index.ets
   import { webview } from '@kit.ArkWeb';
   import { BuilderNode, FrameNode, NodeController, NodeRenderType } from '@kit.ArkUI';
   import { AVPlayerDemo, AVPlayerListener } from './PlayerDemo';
@@ -525,7 +524,6 @@ ArkWeb内核需要本地播放器的状态信息来更新到网页（例如：�
   // 实现 webview.NativeMediaPlayerBridge 接口。
   // ArkWeb 内核调用该类的方法来对 NativeMediaPlayer 进行播控。
   class NativeMediaPlayerImpl implements webview.NativeMediaPlayerBridge {
-    // ... 实现 NativeMediaPlayerBridge 里的接口方法 ...
     private surfaceId: string;
     mediaSource: string;
     private mediaHandler: webview.NativeMediaPlayerHandler;
@@ -653,7 +651,7 @@ ArkWeb内核需要本地播放器的状态信息来更新到网页（例如：�
     }
     onError() {
       // 通知ArkWeb内核，本地播放器出错了
-      console.error('AVPlayerListenerImpl.onError');
+      console.info('AVPlayerListenerImpl.onError');
       this.component.has_error = true;
       setTimeout(()=>{
         this.handler.handleError(1, "Oops!");
@@ -994,9 +992,7 @@ ArkWeb内核需要本地播放器的状态信息来更新到网页（例如：�
   }
   ```
 
-- 应用侧代码，视频播放示例, ./PlayerDemo.ets。XComponent创建方法请参考[自定义渲染(XComponent)](../ui/napi-xcomponent-guidelines.md)。
-
-<!-- @[Video Playback Sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/App_takeovers_web_media/entry/src/main/ets/pages/PlayerDemo.ets) -->
+- 应用侧代码，视频播放示例, ./PlayerDemo.ets。
 
   ```ts
   import { media } from '@kit.MediaKit';
