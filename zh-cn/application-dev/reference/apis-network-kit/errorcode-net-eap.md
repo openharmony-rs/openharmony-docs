@@ -12,30 +12,6 @@
 >
 > 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码](../errorcode-universal.md)说明文档。
 
-## 2200003 系统内部错误
-
-**错误信息**
-
-Internal error
-
-**错误描述**
-
-以太网802.1X EAP配置的保存、读取或删除失败。
-
-**可能原因**
-
-1. 配置目录创建失败、配置文件为符号链接，或配置文件无法打开、删除。
-
-2. 配置序列化、反序列化或保存敏感字段时加密失败。
-
-**处理步骤**
-
-1. 查看系统日志，检查配置存储和密钥服务是否正常。
-
-2. 确认已保存的配置有效；必要时删除配置后，重新调用[eap.setEthEapConfig](js-apis-net-eap.md#eapsetetheapconfig)保存配置。
-
-3. 若问题持续存在，请重启设备后重试。
-
 ## 33200001 无效的netId值
 
 **错误信息**
@@ -62,19 +38,15 @@ log off fail.
 
 **错误描述**
 
-退出指定的netId网卡或当前以太网802.1X EAP认证失败。
+退出指定的netId的扩展认证失败。
 
 **可能原因**
 
-1. netId值不存在。
-
-2. 调用[eap.connect](js-apis-net-eap.md#eapconnect)执行ACTION_DISCONNECT时，底层认证停止操作失败或超时。
+netId值不存在。
 
 **处理步骤**
 
-1. 使用[eap.logOffEthEap](js-apis-net-eap.md#eaplogoffetheap)时，输入一个合法的netId值。
-
-2. 使用[eap.connect](js-apis-net-eap.md#eapconnect)时，查看系统日志中的StopEap信息，检查认证服务和驱动是否正常后重试。
+输入一个合法的netId值。
 
 ## 33200003 无效的eth eap配置
 
@@ -88,15 +60,11 @@ Invalid profile.
 
 **可能原因**
 
-1. profile值配置错误。
-
-2. 调用[eap.connect](js-apis-net-eap.md#eapconnect)执行ACTION_CONNECT时，未保存配置或无法获取配置文件状态。
+profile值配置错误。
 
 **处理步骤**
 
-1. 配置正确的profile值。
-
-2. 调用[eap.connect](js-apis-net-eap.md#eapconnect)前，先通过[eap.setEthEapConfig](js-apis-net-eap.md#eapsetetheapconfig)保存配置；若仍报错，请查看系统日志，确认配置文件可访问。
+配置正确的profile值。
 
 ## 33200004 无效的eap结果值
 
@@ -225,50 +193,6 @@ Invalid eth state.
 
 可尝试插拔有线网重试。
 
-## 33200012 配置已锁定
-
-**错误信息**
-
-Configuration locked
-
-**错误描述**
-
-已保存的以太网802.1X EAP配置处于锁定状态，无法修改或删除。
-
-**可能原因**
-
-1. 调用[eap.setEthEapConfig](js-apis-net-eap.md#eapsetetheapconfig)修改已锁定的配置时，传入的locked仍为true。
-
-2. 调用[eap.deleteEthEapConfig](js-apis-net-eap.md#eapdeleteetheapconfig)删除已锁定的配置。
-
-**处理步骤**
-
-由具有ohos.permission.ENTERPRISE_MANAGE_EAP权限的应用调用[eap.setEthEapConfig](js-apis-net-eap.md#eapsetetheapconfig)，将locked设置为false完成解锁，再修改或删除配置。
-
-## 33200013 证书处理失败
-
-**错误信息**
-
-Certificate process failed
-
-**错误描述**
-
-设置以太网802.1X EAP配置时，客户端证书数据解析或证书文件保存失败。
-
-**可能原因**
-
-1. certEntry中的非空证书数据无法解析为PKCS#12结构。
-
-2. 客户端证书存储路径为符号链接，或证书目录无法创建。
-
-3. 客户端证书文件无法打开、写入、同步或重命名。
-
-**处理步骤**
-
-1. 检查certEntry中的证书数据是否为有效的PKCS#12格式。
-
-2. 查看系统日志，排查证书目录和文件访问失败的原因，修正后重新调用[eap.setEthEapConfig](js-apis-net-eap.md#eapsetetheapconfig)。
-
 ## 33200099 程序内部错误
 
 **错误信息**
@@ -291,10 +215,6 @@ internal error.
 
 5.通信失败，如socket通信异常、连接断开。此原因常见于[startEthEap](js-apis-net-eap.md#eapstartetheap)和[logOffEthEap](js-apis-net-eap.md#eaplogoffetheap)接口，通过日志关键词过滤startEap或stopEap检查命令是否正常下发。
 
-6. 调用[eap.onStateChange](js-apis-net-eap.md#eaponstatechange)时，创建跨线程回调通道、底层回调对象或注册底层状态回调失败，包括权限不足、服务不可用等情况。
-
-7. 调用[eap.connect](js-apis-net-eap.md#eapconnect)执行ACTION_DISCONNECT时，底层认证管理对象或驱动接口不可用。
-
 **处理步骤**
 
 1. 查看系统日志定位具体异常原因，通过日志关键词过滤supplicant定位EAP报文处理异常，通过日志关键词过滤replyCustomEapData定位回调函数异常；对于[startEthEap](js-apis-net-eap.md#eapstartetheap)和[logOffEthEap](js-apis-net-eap.md#eaplogoffetheap)接口触发的通信异常，可通过日志关键词过滤startEap或stopEap进行定位。
@@ -305,9 +225,5 @@ internal error.
 
 4. 确认回调函数在注销前未被重复注销，且在注册后正常使用。
 
-5. 订阅状态变化失败时，确认应用具有ohos.permission.ENTERPRISE_MANAGE_EAP权限，并检查认证服务和回调资源是否正常。
-
-6. 断开认证失败时，检查底层认证服务和驱动是否正常。
-
-7. 若问题持续存在，请重启设备后重试。
+5. 若问题持续存在，请重启设备后重试。
 

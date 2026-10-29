@@ -297,16 +297,11 @@ setEthEapConfig(config: EthEapConfig): void
 
 **错误码**：
 
-以下错误码的详细介绍请参见[扩展认证错误码](errorcode-net-eap.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied |
-| 401 | Parameter error |
-| 2200003 | Internal error |
-| 33200009 | Netmanager stop |
-| 33200012 | Configuration locked |
-| 33200013 | Certificate process failed |
 
 **示例：**
 
@@ -372,13 +367,11 @@ getEthEapConfig(): Promise\<EthEapConfig\>
 
 **错误码**：
 
-以下错误码的详细介绍请参见[扩展认证错误码](errorcode-net-eap.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied |
-| 2200003 | Internal error |
-| 33200009 | Netmanager stop |
 
 **示例：**
 
@@ -420,14 +413,11 @@ deleteEthEapConfig(): Promise\<void\>
 
 **错误码**：
 
-以下错误码的详细介绍请参见[扩展认证错误码](errorcode-net-eap.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied |
-| 2200003 | Internal error |
-| 33200009 | Netmanager stop |
-| 33200012 | Configuration locked |
 
 **示例：**
 
@@ -469,12 +459,11 @@ getEthEapStateInfo(): EthEapStateInfo
 
 **错误码**：
 
-以下错误码的详细介绍请参见[扩展认证错误码](errorcode-net-eap.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied |
-| 33200009 | Netmanager stop |
 
 **示例：**
 
@@ -513,14 +502,11 @@ onStateChange(callback: Callback\<EthEapStateInfo\>): void
 
 **错误码**：
 
-以下错误码的详细介绍请参见[扩展认证错误码](errorcode-net-eap.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401 | Parameter error |
-| 33200099 | Internal error |
-
-注册状态回调失败时（包括权限不足、认证服务不可用、跨线程回调通道或底层回调对象创建失败），本接口返回33200099。
+| 201 | Permission denied |
 
 **示例：**
 
@@ -563,13 +549,11 @@ offStateChange(callback?: Callback\<EthEapStateInfo\>): void
 
 **错误码**：
 
-以下错误码的详细介绍请参见[扩展认证错误码](errorcode-net-eap.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied |
-| 401 | Parameter error |
-| 33200009 | Netmanager stop |
 
 **示例：**
 
@@ -626,17 +610,11 @@ connect(action: EthEapConnectAction): Promise\<void\>
 
 **错误码**：
 
-以下错误码的详细介绍请参见[扩展认证错误码](errorcode-net-eap.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied |
-| 401 | Parameter error |
-| 2200003 | Internal error |
-| 33200002 | Log off fail |
-| 33200003 | Invalid profile |
-| 33200009 | Netmanager stop |
-| 33200099 | Internal error |
 
 **示例：**
 
