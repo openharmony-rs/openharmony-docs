@@ -100,4 +100,6 @@ DRM插件管理功能一般由DRM解决方案集成方实现<!--Del-->，具体�
 
 5. 许可证更新或过期：在节目播放过程中，在许可证需要更新的情况下，MediaKeySession将抛出许可证更新事件（keyRequired），此时需要重新请求DRM许可证。MediaKeySession如抛出许可证过期事件（keyExpired），则需要停止DRM节目播放。
 
+<!--RP4--><!--RP4End-->
+
 <!--RP3--><!--RP3End-->
