@@ -81,6 +81,7 @@
     - [应用快启](hyperstartup-application.md)
   - [应用退出](app-stop.md)<!--RP2--><!--RP2End-->
   - [应用重启](app-restart.md)
+  - [应用状态恢复与页面栈恢复适配指南](app-restore-adaptation.md)
   - [获取应用异常退出原因](ability-exit-info-record.md)
 - 应用间跳转<!--inter-app-redirection-->
   - [应用间跳转概述](link-between-apps-overview.md)
