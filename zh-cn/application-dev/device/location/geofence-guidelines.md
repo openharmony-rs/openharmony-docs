@@ -38,8 +38,8 @@
 3. 判断是否支持围栏功能
 
    ```ts
-   let isGnssGeoFenceSupported = geoLocationManager.isGnssFenceServiceSupported();
-   if (!isGnssGeoFenceSupported) {
+   let isGnssGeoFeceSupported = geoLocationManager.isGnssFenceServiceSupported();
+   if (!isGnssGeoFeceSupported) {
        console.error("Current Device Do not Support GnssGeofence");
    }
    ```
@@ -110,13 +110,13 @@
          console.error('geofenceTransitionCallback: err=' + JSON.stringify(err));
        }
        if (transition) {
-         console.info("GeofenceTransition: %{public}s", JSON.stringify(transition));
+         console.info("GeofenceTransition: " + JSON.stringify(transition));
      }
      }
    }
    try {
      // 添加围栏
-     if (geoLocationManager.isGnssFenceServiceSupported();) {
+     if (geoLocationManager.isGnssFenceServiceSupported()) {
         geoLocationManager.addGnssGeofence(gnssGeofenceRequest).then((id) => {
            // 围栏添加成功后返回围栏ID
            console.info("addGnssGeofence success, fence id: " + id);
