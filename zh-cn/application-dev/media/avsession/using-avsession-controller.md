@@ -1,7 +1,7 @@
 ---
 kits: ["AVSession Kit / 音视频播控服务"]
 description: "从API版本23开始介绍应用作为媒体会话控制方接入AVSession的开发流程，涵盖获取媒体会话描述符、创建控制器、监听媒体信息变化及下发播控命令等步骤。"
-keywords: [媒体会话控制方, 播放控制, 播放状态监听, MANAGE_MEDIA_RESOURCES_FOR_PUBLIC]
+keywords: [媒体会话控制方, AVSessionController, 媒体会话描述符, 播放控制, 元数据获取, 播放状态监听, MANAGE_MEDIA_RESOURCES_FOR_PUBLIC]
 doctype: guide
 status: active
 ---

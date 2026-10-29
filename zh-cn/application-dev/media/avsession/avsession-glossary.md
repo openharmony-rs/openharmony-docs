@@ -1,7 +1,7 @@
 ---
 kits: ["AVSession Kit / 音视频播控服务"]
 description: "AVSession Kit术语表，收录媒体会话、媒体会话元数据、媒体播放状态、媒体会话控制器、音频模板、置顶会话、后台播放模式等核心概念的定义与说明。"
-keywords: [术语, AVSession, AVMetadata, AVPlaybackState, AVSessionController, AVSessionManager, AVMusicTemplate, TopSession, BackgroundPlayMode]
+keywords: [AVSession术语, 媒体会话, 媒体会话元数据, 媒体播放状态, 媒体会话控制器, 媒体会话管理器, 音频模板, 置顶会话, 后台播放模式]
 doctype: glossary
 status: active
 ---

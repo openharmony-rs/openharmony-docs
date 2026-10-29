@@ -1,7 +1,7 @@
 ---
 kits: ["AVSession Kit / 音视频播控服务"]
 description: "从API version 23开始介绍系统应用通过音频模板控制器对接入音频模板的媒体应用提供统一UI界面管理和播控操作的开发流程，涵盖创建控制器、查询媒体数据、下发操作指令及监听数据同步。"
-keywords: [音频模板控制器, AVMusicTemplateController, 系统应用, 播控中心, 媒体应用管理, 查询媒体数据, 下发操作指令, createAVMusicTemplateController, Car设备]
+keywords: [音频模板控制器, AVMusicTemplateController, 查询媒体数据, 下发操作指令, createAVMusicTemplateController, 座舱音乐, 模板创建监听]
 doctype: guide
 status: active
 ---

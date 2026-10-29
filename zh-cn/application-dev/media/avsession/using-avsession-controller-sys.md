@@ -1,7 +1,7 @@
 ---
 kits: ["AVSession Kit / 音视频播控服务"]
 description: "介绍系统应用作为媒体会话控制方与音视频应用交互的开发流程，涵盖获取会话描述符、创建控制器、监听会话状态及媒体信息变化、获取媒体数据并下发播控命令等。"
-keywords: [媒体会话控制方, 系统应用, 按键事件下发, 历史会话, sessionServiceDie, sendSystemControlCommand]
+keywords: [媒体会话控制方, 置顶会话, 按键事件响应, 历史会话, 会话状态监听, 媒体信息变化监听]
 doctype: guide
 status: active
 ---
