@@ -4,7 +4,9 @@
 export interface BadgeEnabledChangedCallback
 ```
 
-Defines a callback function to listen for the enabling state changes of the application badge. type BadgeEnabledChangedCallback = (data: EnabledNotificationCallbackData) =&gt; void
+type BadgeEnabledChangedCallback = (data: EnabledNotificationCallbackData) =&gt; void
+
+Defines a callback function to listen for the enabled state changes of the application badge.
 
 **Since:** 12
 
@@ -18,7 +20,7 @@ Defines a callback function to listen for the enabling state changes of the appl
 (data: EnabledNotificationCallbackData): void
 ```
 
-Callback used to return the listened badge enabling state.
+Callback used to return the enabled state of the listened badge.
 
 **Since:** 12
 
@@ -32,7 +34,7 @@ Callback used to return the listened badge enabling state.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| data | [EnabledNotificationCallbackData](arkts-notification-notificationsubscriber-enablednotificationcallbackdata-i-sys.md) | Yes | Callback used to return the listened badge enabling state. |
+| data | [EnabledNotificationCallbackData](arkts-notification-notificationsubscriber-enablednotificationcallbackdata-i-sys.md) | Yes | Callback used to return the enabled state of the listened badge. |
 
 <!--Del-->
 **Examples**

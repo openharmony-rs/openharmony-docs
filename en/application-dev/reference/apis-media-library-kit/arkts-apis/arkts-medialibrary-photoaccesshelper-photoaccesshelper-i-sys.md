@@ -3184,8 +3184,6 @@ move assets of filemanager to Album.
 
 **System API:** This is a system API.
 
-**Test API:** This API is used only in automated test scripts.
-
 **Parameters:**
 
 | Name | Type | Mandatory | Description |

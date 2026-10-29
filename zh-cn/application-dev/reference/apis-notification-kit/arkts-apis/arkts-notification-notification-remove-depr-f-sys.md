@@ -22,7 +22,7 @@ function remove(
 
 **废弃版本：** 9
 
-**替代接口：** [remove](arkts-notification-notificationsubscribe-remove-f-sys.md)
+**替代接口：** [remove](arkts-notification-notificationsubscribe-remove-f-sys.md#remove-1)(bundle: BundleOption, notificationKey: NotificationKey, reason: RemoveReason, callback: AsyncCallback&lt;void&gt;)
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -80,7 +80,7 @@ function remove(bundle: BundleOption, notificationKey: NotificationKey, reason: 
 
 **废弃版本：** 9
 
-**替代接口：** [remove](arkts-notification-notificationsubscribe-remove-f-sys.md)
+**替代接口：** [remove](arkts-notification-notificationsubscribe-remove-f-sys.md#remove-2)(bundle: BundleOption, notificationKey: NotificationKey, reason: RemoveReason)
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -140,7 +140,7 @@ function remove(hashCode: string, reason: RemoveReason, callback: AsyncCallback<
 
 **废弃版本：** 9
 
-**替代接口：** [remove](arkts-notification-notificationsubscribe-remove-f-sys.md)
+**替代接口：** [remove](arkts-notification-notificationsubscribe-remove-f-sys.md#remove-3)(hashCode: string, reason: RemoveReason, callback: AsyncCallback&lt;void&gt;)
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -192,7 +192,7 @@ function remove(hashCode: string, reason: RemoveReason): Promise<void>
 
 **废弃版本：** 9
 
-**替代接口：** [remove](arkts-notification-notificationsubscribe-remove-f-sys.md)
+**替代接口：** [remove](arkts-notification-notificationsubscribe-remove-f-sys.md#remove-5)(hashCode: string, reason: RemoveReason)
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 

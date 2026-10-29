@@ -4,9 +4,9 @@
 export enum SlotType
 ```
 
-通知渠道类型。
+[通知渠道](../../../notification/notification-glossary.md#notification-slot通知渠道)类型。
 
-不同类型对应不同的SlotLevel，决定通知的提醒行为。
+不同类型对应不同的[SlotLevel](arkts-notification-notificationmanager-slotlevel-e.md)，决定通知的提醒行为。
 
 **起始版本：** 9
 
@@ -20,7 +20,7 @@ export enum SlotType
 CONTENT_INFORMATION = 3
 ```
 
-内容资讯。该类型对应SlotLevel为LEVEL_MIN。
+内容资讯。该类型对应[SlotLevel](arkts-notification-notificationmanager-slotlevel-e.md)为LEVEL_MIN。
 
 **起始版本：** 9
 
@@ -36,7 +36,7 @@ CONTENT_INFORMATION = 3
 CUSTOMER_SERVICE = 5
 ```
 
-客服消息。该类型用于用户与商家之间的客服消息，需由用户主动发起。该类型对应SlotLevel为LEVEL_DEFAULT。
+客服消息。该类型用于用户与商家之间的客服消息，需由用户主动发起。该类型对应[SlotLevel](arkts-notification-notificationmanager-slotlevel-e.md)为LEVEL_DEFAULT。
 
 **起始版本：** 11
 
@@ -52,7 +52,7 @@ CUSTOMER_SERVICE = 5
 LIVE_VIEW = 4
 ```
 
-实况窗。不支持三方应用直接创建该渠道类型通知，可以由系统代理创建后，三方应用发布同ID的通知来更新指定内容。该类型对应SlotLevel为LEVEL_DEFAULT。
+实况窗。不支持三方应用直接创建该渠道类型通知，可以由系统代理创建后，三方应用发布同ID的通知来更新指定内容<!--RP1--><!--RP1End-->。该类型对应[SlotLevel](arkts-notification-notificationmanager-slotlevel-e.md)为LEVEL_DEFAULT。
 
 **起始版本：** 11
 
@@ -68,7 +68,7 @@ LIVE_VIEW = 4
 OTHER_TYPES = 0xFFFF
 ```
 
-其他。该类型对应SlotLevel为LEVEL_MIN。
+其他。该类型对应[SlotLevel](arkts-notification-notificationmanager-slotlevel-e.md)为LEVEL_MIN。
 
 **起始版本：** 9
 
@@ -84,7 +84,7 @@ OTHER_TYPES = 0xFFFF
 SERVICE_INFORMATION = 2
 ```
 
-服务提醒。该类型对应SlotLevel为LEVEL_HIGH。
+服务提醒。该类型对应[SlotLevel](arkts-notification-notificationmanager-slotlevel-e.md)为LEVEL_HIGH。
 
 **起始版本：** 9
 
@@ -100,7 +100,7 @@ SERVICE_INFORMATION = 2
 SOCIAL_COMMUNICATION = 1
 ```
 
-社交通讯。该类型对应SlotLevel为LEVEL_HIGH。
+社交通讯。该类型对应[SlotLevel](arkts-notification-notificationmanager-slotlevel-e.md)为LEVEL_HIGH。
 
 **起始版本：** 9
 
@@ -116,7 +116,7 @@ SOCIAL_COMMUNICATION = 1
 UNKNOWN_TYPE = 0
 ```
 
-未知类型。该类型对应SlotLevel为LEVEL_MIN。
+未知类型。该类型对应[SlotLevel](arkts-notification-notificationmanager-slotlevel-e.md)为LEVEL_MIN。
 
 **起始版本：** 9
 

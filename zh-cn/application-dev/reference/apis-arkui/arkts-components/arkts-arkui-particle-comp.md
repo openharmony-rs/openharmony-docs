@@ -59,7 +59,7 @@ Anonymous Object Rectification.
 | [ParticlePropertyAnimation](arkts-arkui-particle-comp-particlepropertyanimation-i.md) | 设置粒子属性生命周期。 |
 | [ParticlePropertyOptions](arkts-arkui-particle-comp-particlepropertyoptions-i.md) | 设置粒子属性选项。 |
 | [ParticlePropertyUpdaterConfigs](arkts-arkui-particle-comp-particlepropertyupdaterconfigs-i.md) | 设置粒子属性更新器配置。 |
-| Particles | 粒子动画的集合。 |
+| [Particles](arkts-arkui-particle-comp-particles-i.md#particles) | 粒子动画的集合。 |
 | [ParticleUpdaterOptions](arkts-arkui-particle-comp-particleupdateroptions-i.md) | 属性变化配置。 |
 | [PointParticleParameters](arkts-arkui-particle-comp-pointparticleparameters-i.md) | 设置粒子半径。 |
 | [RippleFieldOptions](arkts-arkui-particle-comp-ripplefieldoptions-i.md) | 用于描述粒子波动场信息的参数。 |

@@ -18,7 +18,7 @@ Subscribes to notifications of all applications under this user. This API uses a
 
 **Deprecated since:** 26.0.0
 
-**Substitutes:** [subscribeNotification](arkts-notification-notificationsubscribe-subscribenotification-f-sys.md)
+**Substitutes:** [subscribeNotification](arkts-notification-notificationsubscribe-subscribenotification-f-sys.md#subscribenotification-1)(subscriber: NotificationSubscriber)
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -32,7 +32,7 @@ Subscribes to notifications of all applications under this user. This API uses a
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| subscriber | [NotificationSubscriber](arkts-notification-notificationsubscribe-notificationsubscriber-t-sys.md) | Yes | Notification subscriber. |
+| subscriber | [NotificationSubscriber](arkts-notification-notificationsubscribe-notificationsubscriber-t-sys.md) | Yes | [Notification subscription](../../../notification/notification-glossary.md#notification-subscription) object. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
 
 **Error codes:**
@@ -88,7 +88,7 @@ Subscribes to a notification with the subscription information specified. This A
 
 **Deprecated since:** 26.0.0
 
-**Substitutes:** [subscribeNotification](arkts-notification-notificationsubscribe-subscribenotification-f-sys.md)
+**Substitutes:** [subscribeNotification](arkts-notification-notificationsubscribe-subscribenotification-f-sys.md#subscribenotification-2)(subscriber: NotificationSubscriber, info: NotificationSubscribeInfo)
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -102,7 +102,7 @@ Subscribes to a notification with the subscription information specified. This A
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| subscriber | [NotificationSubscriber](arkts-notification-notificationsubscribe-notificationsubscriber-t-sys.md) | Yes | Notification subscriber. |
+| subscriber | [NotificationSubscriber](arkts-notification-notificationsubscribe-notificationsubscriber-t-sys.md) | Yes | [Notification subscription](../../../notification/notification-glossary.md#notification-subscription) object. |
 | info | [NotificationSubscribeInfo](arkts-notification-notificationsubscribe-notificationsubscribeinfo-t-sys.md) | Yes | Notification subscription information. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
 
@@ -160,7 +160,7 @@ Subscribes to a notification with the subscription information specified. This A
 
 **Deprecated since:** 26.0.0
 
-**Substitutes:** [subscribeNotification](arkts-notification-notificationsubscribe-subscribenotification-f-sys.md)
+**Substitutes:** [subscribeNotification](arkts-notification-notificationsubscribe-subscribenotification-f-sys.md#subscribenotification-2)(subscriber: NotificationSubscriber, info: NotificationSubscribeInfo)
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -174,8 +174,8 @@ Subscribes to a notification with the subscription information specified. This A
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| subscriber | [NotificationSubscriber](arkts-notification-notificationsubscribe-notificationsubscriber-t-sys.md) | Yes | Notification subscriber. |
-| info | [NotificationSubscribeInfo](arkts-notification-notificationsubscribe-notificationsubscribeinfo-t-sys.md) | No | Notification subscription information. By default, this parameter is left empty, which means to subscribe to notifications of all applications under this user. |
+| subscriber | [NotificationSubscriber](arkts-notification-notificationsubscribe-notificationsubscriber-t-sys.md) | Yes | [Notification subscription](../../../notification/notification-glossary.md#notification-subscription) object. |
+| info | [NotificationSubscribeInfo](arkts-notification-notificationsubscribe-notificationsubscribeinfo-t-sys.md) | No | Notification subscription information. The default value is empty. When this parameter is empty, it indicates subscribing to notifications of all applications under the current user. |
 
 **Return value:**
 

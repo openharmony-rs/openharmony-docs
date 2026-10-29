@@ -4,7 +4,7 @@
 export type EnabledNotificationCallbackData = _EnabledNotificationCallbackData
 ```
 
-Describes the properties of the application that the permission to send notifications has changed.
+Returns the changes of the application badge enabled state.
 
 **Type:** _EnabledNotificationCallbackData
 

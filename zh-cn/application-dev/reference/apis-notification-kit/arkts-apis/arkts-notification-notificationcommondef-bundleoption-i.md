@@ -18,7 +18,7 @@ export interface BundleOption
 bundle: string
 ```
 
-应用的包名。
+应用的包名。字符串长度不超过202字节，超出部分会被截断。
 
 **类型：** string
 
@@ -34,7 +34,7 @@ bundle: string
 uid?: number
 ```
 
-应用的UID。从ApplicationInfo获取，默认为0。应用分身场景下，此参数为必填项。
+应用的UID。从ApplicationInfo获取，默认为0。 应用分身场景下，此参数为必填项。
 
 **类型：** number
 

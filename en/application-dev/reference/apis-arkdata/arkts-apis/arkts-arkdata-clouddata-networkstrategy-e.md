@@ -4,7 +4,7 @@
 enum NetWorkStrategy
 ```
 
-Enumerates the network sync options.
+Enumerates the network policy parameters.
 
 **Since:** 12
 
@@ -18,7 +18,7 @@ Enumerates the network sync options.
 CELLULAR = 2
 ```
 
-Sync over the cellular network.
+Cellular network policy.
 
 **Since:** 12
 
@@ -32,7 +32,7 @@ Sync over the cellular network.
 WIFI = 1
 ```
 
-Sync over Wi-Fi.
+Wi-Fi network policy.
 
 **Since:** 12
 

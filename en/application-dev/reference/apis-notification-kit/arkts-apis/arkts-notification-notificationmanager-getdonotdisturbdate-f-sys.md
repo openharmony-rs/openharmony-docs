@@ -14,8 +14,6 @@ function getDoNotDisturbDate(callback: AsyncCallback<DoNotDisturbDate>): void
 
 Obtains the DND time. This API uses an asynchronous callback to return the result.
 
-This API can be properly called on devices other than wearables and TVs. If it is called on wearables and TVs, error code 801 is returned.
-
 **Since:** 9
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
@@ -73,8 +71,6 @@ function getDoNotDisturbDate(): Promise<DoNotDisturbDate>
 
 Obtains the DND time. This API uses a promise to return the result.
 
-This API can be properly called on devices other than wearables and TVs. If it is called on wearables and TVs, error code 801 is returned.
-
 **Since:** 9
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
@@ -126,8 +122,6 @@ function getDoNotDisturbDate(userId: number, callback: AsyncCallback<DoNotDistur
 ```
 
 Obtains the DND time of a specified user. This API uses an asynchronous callback to return the result.
-
-This API can be properly called on devices other than wearables and TVs. If it is called on wearables and TVs, error code 801 is returned.
 
 **Since:** 9
 
@@ -190,8 +184,6 @@ function getDoNotDisturbDate(userId: number): Promise<DoNotDisturbDate>
 ```
 
 Obtains the DND time of a specified user. This API uses a promise to return the result.
-
-This API can be properly called on devices other than wearables and TVs. If it is called on wearables and TVs, error code 801 is returned.
 
 **Since:** 9
 

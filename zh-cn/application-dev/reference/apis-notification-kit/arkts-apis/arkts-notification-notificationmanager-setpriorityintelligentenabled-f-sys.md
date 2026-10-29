@@ -12,7 +12,7 @@ import { notificationManager } from '@kit.NotificationKit';
 function setPriorityIntelligentEnabled(enable: boolean): Promise<void>
 ```
 
-设置优先通知智能服务使能状态。使用Promise异步回调。
+设置[优先通知](../../../notification/notification-glossary.md#priority-notification优先通知)智能服务使能状态。使用Promise异步回调。
 
 **起始版本：** 23
 

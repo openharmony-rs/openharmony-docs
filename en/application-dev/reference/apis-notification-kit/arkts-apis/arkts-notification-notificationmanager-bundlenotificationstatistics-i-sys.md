@@ -44,7 +44,7 @@ Bundle information of the application.
 lastTime: number
 ```
 
-Time when the app last published a notification.<br>Data format: timestamp.<br>Unit: millisecond.
+Time when the app last published a notification. Data format: timestamp. Unit: millisecond.
 
 **Type:** number
 

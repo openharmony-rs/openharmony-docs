@@ -4,7 +4,7 @@
 export interface GroupInfo
 ```
 
-组通知信息。
+[组通知](../../../notification/notification-glossary.md#group-notification组通知)信息。
 
 **起始版本：** 26.0.0
 

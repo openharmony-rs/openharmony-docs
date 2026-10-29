@@ -26,7 +26,7 @@ import { dataShare } from '@kit.ArkData';
 bundleNameOfOwner: string
 ```
 
-Bundle name of the template owner. The value must be the same as the **bundleName** in [**addTemplate**](arkts-arkdata-datashare-datasharehelper-i-sys.md#addtemplate).
+Bundle name of the template owner who creates the template.
 
 **Type:** string
 
@@ -46,7 +46,7 @@ Bundle name of the template owner. The value must be the same as the **bundleNam
 subscriberId: string
 ```
 
-ID of the subscriber who handles the callback. The value must the same as the **subscriberId** in [**addTemplate**](arkts-arkdata-datashare-datasharehelper-i-sys.md#addtemplate). The ID of each subscriber must be unique.
+ID of the subscriber who handles the callback. The value must be the same as the **subscriberId** in [**addTemplate**](arkts-arkdata-datashare-datasharehelper-i-sys.md#addtemplate). The ID of each subscriber must be unique.
 
 **Type:** string
 

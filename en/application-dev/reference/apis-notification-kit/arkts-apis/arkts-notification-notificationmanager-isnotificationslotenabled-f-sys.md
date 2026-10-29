@@ -14,8 +14,6 @@ function isNotificationSlotEnabled(bundle: BundleOption, type: SlotType, callbac
 
 Checks whether a notification slot type is enabled for the specified application. This API uses an asynchronous callback to return the result.
 
-This API can be properly called on devices other than wearables. If it is called on wearables, error code 801 is returned.
-
 **Since:** 9
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
@@ -77,9 +75,7 @@ notificationManager.isNotificationSlotEnabled(
 function isNotificationSlotEnabled(bundle: BundleOption, type: SlotType): Promise<boolean>
 ```
 
-Checks whether a notification slot type is enabled for the specified application. This API uses a promise to return the result.
-
-This API can be properly called on devices other than wearables. If it is called on wearables, error code 801 is returned.
+Obtains whether a notification slot type is enabled for the specified application. This API uses a promise to return the result.
 
 **Since:** 9
 

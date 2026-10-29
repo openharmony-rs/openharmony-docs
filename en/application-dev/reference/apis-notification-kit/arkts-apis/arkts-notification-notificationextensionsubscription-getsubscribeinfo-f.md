@@ -22,13 +22,13 @@ Obtains the subscription information about the notification extension of this ap
 
 **System capability:** SystemCapability.Notification.Notification
 
-**See also:** [subscribe](arkts-notification-notificationextensionsubscription-subscribe-f.md#subscribe-1) subscribes from the notification extension.
+**See also:** [subscribe](arkts-notification-notificationextensionsubscription-subscribe-f.md#subscribe-1) subscribes to the notification extension.
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[NotificationExtensionSubscriptionInfo](arkts-notification-notificationextensionsubscription-notificationextensionsubscriptioninfo-t.md)[]&gt; | Promise used to return the [NotificationExtensionSubscriptionInfo](arkts-notification-notificationextensionsubscriptioninfo-i.md) array. |
+| Promise&lt;[NotificationExtensionSubscriptionInfo](arkts-notification-notificationextensionsubscription-notificationextensionsubscriptioninfo-t.md)[]&gt; | Promise used to return the [NotificationExtensionSubscriptionInfo[]][NotificationExtensionSubscriptionInfo](arkts-notification-notificationextensionsubscriptioninfo-i.md) array. |
 
 **Error codes:**
 

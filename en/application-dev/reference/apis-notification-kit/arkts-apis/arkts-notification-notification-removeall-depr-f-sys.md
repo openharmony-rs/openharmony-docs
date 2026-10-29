@@ -17,7 +17,7 @@ Removes all notifications for a specified application. This API uses an asynchro
 
 **Deprecated since:** 9
 
-**Substitutes:** [removeAll](arkts-notification-notificationsubscribe-removeall-f-sys.md)
+**Substitutes:** [removeAll](arkts-notification-notificationsubscribe-removeall-f-sys.md#removeall-1)(bundle: BundleOption, callback: AsyncCallback&lt;void&gt;)
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -68,7 +68,7 @@ Removes all notifications. This API uses an asynchronous callback to return the 
 
 **Deprecated since:** 9
 
-**Substitutes:** [removeAll](arkts-notification-notificationsubscribe-removeall-f-sys.md)
+**Substitutes:** [removeAll](arkts-notification-notificationsubscribe-removeall-f-sys.md#removeall-2)(callback: AsyncCallback&lt;void&gt;)
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -116,7 +116,7 @@ Removes all notifications for a specified user. This API uses an asynchronous ca
 
 **Deprecated since:** 9
 
-**Substitutes:** [removeAll](arkts-notification-notificationsubscribe-removeall-f-sys.md)
+**Substitutes:** [removeAll](arkts-notification-notificationsubscribe-removeall-f-sys.md)(userId: number, callback: AsyncCallback&lt;void&gt;)
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -166,7 +166,7 @@ Removes all notifications for a specified user. This API uses a promise to retur
 
 **Deprecated since:** 9
 
-**Substitutes:** [removeAll](arkts-notification-notificationsubscribe-removeall-f-sys.md)
+**Substitutes:** [removeAll](arkts-notification-notificationsubscribe-removeall-f-sys.md)(userId: number)
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -217,7 +217,7 @@ Removes all notifications for a specified application. This API uses a promise t
 
 **Deprecated since:** 9
 
-**Substitutes:** [removeAll](arkts-notification-notificationsubscribe-removeall-f-sys.md)
+**Substitutes:** [removeAll](arkts-notification-notificationsubscribe-removeall-f-sys.md#removeall-5)(bundle?: BundleOption)
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
 

@@ -4,7 +4,7 @@
 type DataObserver = (sessionId: string, fields: Array<string>) => void
 ```
 
-Defines an observer for obtaining the data change of a distributed object.
+Defines the callback used to listen for data changes of a distributed data object.
 
 **Since:** 20
 

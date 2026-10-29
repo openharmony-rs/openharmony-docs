@@ -12,7 +12,7 @@ import { notificationManager } from '@kit.NotificationKit';
 function getSlotFlagsByBundle(bundle: BundleOption): Promise<number>
 ```
 
-Obtains the notification slot flag of a specified application. This API uses a promise to return the result.
+Obtains the [notification slot](../../../notification/notification-glossary.md#notification-slot) flag of a specified application. This API uses a promise to return the result.
 
 **Since:** 11
 

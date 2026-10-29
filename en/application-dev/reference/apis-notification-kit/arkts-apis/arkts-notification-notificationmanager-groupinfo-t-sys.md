@@ -4,7 +4,7 @@
 export type GroupInfo = _GroupInfo
 ```
 
-Defines the custom group notification information.
+Defines the custom [group notification](../../../notification/notification-glossary.md#group-notification) information.
 
 **Type:** _GroupInfo
 

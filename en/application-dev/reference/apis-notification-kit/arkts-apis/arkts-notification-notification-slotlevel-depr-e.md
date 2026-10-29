@@ -22,7 +22,7 @@ Enumerates the notification level.
 LEVEL_DEFAULT = 3
 ```
 
-The notification feature is enabled, and the notification icon is displayed in the status bar, with an alert tone but no banner.
+The notification function is enabled, and the notification icon is displayed in the status bar, with an alert tone but no banner.
 
 **Since:** 7
 
@@ -40,7 +40,7 @@ The notification feature is enabled, and the notification icon is displayed in t
 LEVEL_HIGH = 4
 ```
 
-The notification feature is enabled, and the notification icon is displayed in the status bar, with an alert tone and banner.
+The notification function is enabled, and the notification icon is displayed in the status bar, with an alert tone and banner.
 
 **Since:** 7
 

@@ -4,7 +4,7 @@
 interface AudioSuiteFeatureVersionInfo
 ```
 
-定义音频编创套件特性的版本信息。
+定义音频编创特性的版本信息。
 
 **起始版本：** 26.0.1
 
@@ -26,7 +26,7 @@ import { audio } from '@kit.AudioKit';
 errorCode: AudioErrors
 ```
 
-特性进入异常状态后的错误码。<br>如果错误码为6800301，表示系统内部数据库异常或io异常，与应用调用无关。
+特性进入异常状态后的错误码。<br>如果错误码为6800301，表示系统内部数据库异常或IO异常，与应用调用无关。
 
 **类型：** [AudioErrors](arkts-audio-audio-audioerrors-e.md)
 

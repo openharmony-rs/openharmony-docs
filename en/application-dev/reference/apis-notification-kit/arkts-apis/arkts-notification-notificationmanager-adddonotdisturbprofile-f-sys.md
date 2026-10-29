@@ -108,13 +108,13 @@ Adds the Do Not Disturb profile for a specified user. This API uses a promise to
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | templates | Array&lt;[DoNotDisturbProfile](arkts-notification-notificationmanager-donotdisturbprofile-i-sys.md)&gt; | Yes | Do Not Disturb profile. |
-| userId | number | Yes | ID of the target user. |
+| userId | number | Yes | ID of the target user. <br>The value should be an integer. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;void&gt; | Promise that returns no result. |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes:**
 

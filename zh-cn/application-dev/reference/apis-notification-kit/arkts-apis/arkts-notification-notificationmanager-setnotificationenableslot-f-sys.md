@@ -107,7 +107,7 @@ function setNotificationEnableSlot(
 | bundle | [BundleOption](arkts-notification-notificationmanager-bundleoption-t.md) | 是 | 应用的包信息。 |
 | type | [SlotType](arkts-notification-notificationmanager-slottype-e.md) | 是 | 指定渠道类型。 |
 | enable | boolean | 是 | 使能状态（true：使能，false：禁止）。 |
-| isForceControl | boolean | 是 | 渠道开关是否受通知授权开关影响（false：受影响，true：不受影响）。 |
+| isForceControl | boolean | 是 | 渠道开关是否受[通知授权](../../../notification/notification-glossary.md#notification-authorization通知授权)开关影响（false：受影响，true：不受影响）。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 设置渠道使能回调函数。 |
 
 **错误码：**
@@ -154,7 +154,7 @@ notificationManager.setNotificationEnableSlot(
 function setNotificationEnableSlot(bundle: BundleOption, type: SlotType, enable: boolean, isForceControl?: boolean): Promise<void>
 ```
 
-设置指定应用的指定渠道类型的使能状态。使用promise异步回调。
+设置指定应用的指定渠道类型的使能状态。使用Promise异步回调。
 
 **起始版本：** 9
 

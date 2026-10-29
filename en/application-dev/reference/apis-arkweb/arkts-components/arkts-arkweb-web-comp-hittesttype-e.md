@@ -21,8 +21,6 @@ Enumerates the test result types of the click event.
 
 **System capability:** SystemCapability.Web.Webview.Core
 
-**Test API:** This API is used only in automated test scripts.
-
 ## EditText
 
 ```TypeScript

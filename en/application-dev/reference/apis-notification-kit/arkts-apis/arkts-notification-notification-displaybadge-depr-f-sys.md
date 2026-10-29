@@ -17,7 +17,7 @@ Sets whether to enable the notification badge for a specified application. This 
 
 **Deprecated since:** 9
 
-**Substitutes:** [displayBadge](arkts-notification-notificationmanager-displaybadge-f-sys.md)
+**Substitutes:** [displayBadge](arkts-notification-notificationmanager-displaybadge-f-sys.md#displaybadge-1)(bundle: BundleOption, enable: boolean, callback: AsyncCallback&lt;void&gt;)
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -32,7 +32,7 @@ Sets whether to enable the notification badge for a specified application. This 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | bundle | BundleOption | Yes | Bundle information of the application. |
-| enable | boolean | Yes | Whether to enable notification. |
+| enable | boolean | Yes | Whether to enable notification badge. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
 
 <!--Del-->
@@ -69,7 +69,7 @@ Sets whether to enable the notification badge for a specified application. This 
 
 **Deprecated since:** 9
 
-**Substitutes:** [displayBadge](arkts-notification-notificationmanager-displaybadge-f-sys.md)
+**Substitutes:** [displayBadge](arkts-notification-notificationmanager-displaybadge-f-sys.md#displaybadge-2)(bundle: BundleOption, enable: boolean)
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -84,7 +84,7 @@ Sets whether to enable the notification badge for a specified application. This 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | bundle | BundleOption | Yes | Bundle information of the application. |
-| enable | boolean | Yes | Whether to enable notification. |
+| enable | boolean | Yes | Whether to enable notification badge. |
 
 **Return value:**
 

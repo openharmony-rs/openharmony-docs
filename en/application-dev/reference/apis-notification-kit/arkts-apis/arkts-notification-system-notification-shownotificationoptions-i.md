@@ -4,6 +4,8 @@
 export interface ShowNotificationOptions
 ```
 
+Options for displaying the notification, including the notification title, notification content, and the action triggered when the notification is tapped.
+
 **Since:** 3
 
 **Deprecated since:** 7
@@ -24,9 +26,7 @@ import { Notification, ActionResult, ShowNotificationOptions } from '@kit.Notifi
 clickAction?: ActionResult
 ```
 
-Action triggered when the notification is clicked.
-
-This API is deprecated since API version 7.
+Action triggered when the notification is tapped.
 
 **Type:** [ActionResult](arkts-notification-system-notification-actionresult-i.md)
 
@@ -44,7 +44,7 @@ This API is deprecated since API version 7.
 contentText?: string
 ```
 
-Notification content.
+[Notification content](../../../notification/notification-glossary.md#notification-content).
 
 **Type:** string
 

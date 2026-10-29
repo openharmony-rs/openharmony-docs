@@ -19,8 +19,6 @@ Sets the response logic and node blocking rules for the hit test.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Test API:** This API is used only in automated test scripts.
-
 ## Block
 
 ```TypeScript
@@ -40,8 +38,6 @@ The node itself responds to the hit test and blocks the hit test of child nodes,
 <!--Device-HitTestMode-Block--><!--Device-HitTestMode-Block-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Test API:** This API is used only in automated test scripts.
 
 ## BLOCK_DESCENDANTS
 
@@ -63,8 +59,6 @@ The node itself does not respond to the hit test, and all descendants (children,
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Test API:** This API is used only in automated test scripts.
-
 ## BLOCK_HIERARCHY
 
 ```TypeScript
@@ -84,8 +78,6 @@ The node itself and its child nodes respond to the hit test, preventing all sibl
 <!--Device-HitTestMode-BLOCK_HIERARCHY--><!--Device-HitTestMode-BLOCK_HIERARCHY-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Test API:** This API is used only in automated test scripts.
 
 ## Default
 
@@ -107,8 +99,6 @@ Default hit test mode. The node itself and its child nodes respond to the hit te
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Test API:** This API is used only in automated test scripts.
-
 ## None
 
 ```TypeScript
@@ -129,8 +119,6 @@ The node itself does not respond to the hit test and does not block the hit test
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Test API:** This API is used only in automated test scripts.
-
 ## Transparent
 
 ```TypeScript
@@ -150,5 +138,3 @@ Both the node itself and its child nodes respond to the hit test and do not bloc
 <!--Device-HitTestMode-Transparent--><!--Device-HitTestMode-Transparent-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Test API:** This API is used only in automated test scripts.

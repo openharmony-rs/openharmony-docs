@@ -1076,6 +1076,30 @@ Sets whether the page can be switched by swiping the page. When used with custom
 | --- | --- | --- | --- |
 | value | boolean | Yes | Whether the page can be switched by swiping the page.<br>Default value: **true**, the page can be switched by swiping the page. When set to **false**, the page cannot be switched by swiping. |
 
+## showSidebarControlButton
+
+```TypeScript
+showSidebarControlButton(value: Optional<boolean>)
+```
+
+Sets whether to display the sidebar control button.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+<!--Device-TabsAttribute-showSidebarControlButton(value: Optional<boolean>): TabsAttribute--><!--Device-TabsAttribute-showSidebarControlButton(value: Optional<boolean>): TabsAttribute-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| value | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to display the sidebar control button. |
+
 ## sidebarBackgroundBlurStyle
 
 ```TypeScript

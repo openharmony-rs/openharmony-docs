@@ -4,7 +4,7 @@
 export enum SlotType
 ```
 
-Enumerates the notification slot types.
+Enumerates the [notification slot](../../../notification/notification-glossary.md#notification-slot) types.
 
 Different types correspond to different [SlotLevel](arkts-notification-notificationmanager-slotlevel-e.md) values, determining the reminder behavior of the notification.
 
@@ -52,7 +52,7 @@ Customer service message. This type is used for messages between users and custo
 LIVE_VIEW = 4
 ```
 
-Live view. A third-party application cannot directly create a notification of this type. Instead, after the system proxy creates a notification, the third-party application can release the notification with the same ID to update the specified content. This type corresponds to the [SlotLevel](arkts-notification-notificationmanager-slotlevel-e.md) of **LEVEL_DEFAULT**.
+Live view. A third-party application cannot directly create a notification of this type. Instead, after the system agent creates a notification, the third-party application can release the notification with the same ID to update the specified content<!--RP1--><!--RP1End-->. This type corresponds to the [SlotLevel](arkts-notification-notificationmanager-slotlevel-e.md) of **LEVEL_DEFAULT**.
 
 **Since:** 11
 

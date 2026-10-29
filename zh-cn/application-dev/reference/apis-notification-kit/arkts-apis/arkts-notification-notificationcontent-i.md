@@ -4,7 +4,7 @@
 export interface NotificationContent
 ```
 
-通知内容。
+NotificationContent中定义通知的内容结构，提供多种通知类型的内容描述接口。当应用需要发布通知时，可根据通知的展示需求（如普通文本、长文本、多行文本、图片、实况窗），选择对应的内容类型接口构造[通知内容](../../../notification/notification-glossary.md#notification-content通知内容)。
 
 **起始版本：** 7
 
@@ -66,7 +66,7 @@ normal?: NotificationBasicContent
 notificationContentType?: notificationManager.ContentType
 ```
 
-通知内容类型，用于指定通知的内容布局类型，决定了通知在通知中心中的展示样式。需与对应类型的通知内容对象配合使用，例如设置为NOTIFICATION_CONTENT_BASIC_TEXT时需同时填充normal字段。
+[通知内容类型](../../../notification/notification-glossary.md#content-type通知内容类型)，用于指定通知的内容布局类型，决定了通知在[通知中心](../../../notification/notification-glossary.md#notification-center通知中心)中的展示样式。需与对应类型的通知内容对象配合使用，例如设置为NOTIFICATION_CONTENT_BASIC_TEXT时需同时填充normal字段。
 
 **类型：** [notificationManager.ContentType](arkts-notification-notificationmanager-contenttype-e.md)
 
@@ -98,7 +98,7 @@ picture?: NotificationPictureContent
 systemLiveView?: NotificationSystemLiveViewContent
 ```
 
-系统实况窗类型通知内容。不支持三方应用直接创建该类型通知，可以由系统代理创建系统实况窗类型通知后，三方应用发布同ID的通知来更新指定内容。
+[系统实况窗](../../../notification/notification-glossary.md#system-live-view系统实况窗)类型通知内容。不支持三方应用直接创建该类型通知，可以由系统代理创建系统实况窗类型通知后，三方应用发布同ID的通知来更新指定内容。
 
 **类型：** [NotificationSystemLiveViewContent](arkts-notification-notificationcontent-notificationsystemliveviewcontent-i.md)
 

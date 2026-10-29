@@ -12,7 +12,7 @@ import { notificationManager } from '@kit.NotificationKit';
 function setDistributedEnabled(enable: boolean, deviceType: string): Promise<void>
 ```
 
-Sets whether the device of a specified type enables cross-device notification. This API uses a promise to return the result.
+Sets whether the device supports [cross-device collaboration](../../../notification/notification-glossary.md#cross-device-collaboration) notifications. This API uses a promise to return the result.
 
 **Since:** 20
 
@@ -28,14 +28,14 @@ Sets whether the device of a specified type enables cross-device notification. T
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enable | boolean | Yes | Whether the device of a specified type enables cross-device notification. The value **true** indicates that the cross-device notification is enabled, and the value **false** indicates the opposite. |
-| deviceType | string | Yes | Device type. The options are as follows:<br>- **headset**: wearable audio device<br>           - **liteWearable**: lite wearable<br>- **wearable**: wearable<br>- **current**: current device<br>- **2in1**:   PC<br>- **tablet**: tablet |
+| enable | boolean | Yes | Whether the device of a specified type enables cross-device collaboration notification. The value **true** indicates that the cross-device collaboration notification is enabled, and the value **false** indicates the opposite. |
+| deviceType | string | Yes | Device type. The options are as follows: <br>- **headset**: wearable audio device <br>- **liteWearable**: lite wearable <br>- **wearable**: wearable <br>- **current**: current device <br>- **2in1**: PC <br>- **tablet**: tablet |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;void&gt; | Promise that returns no result. |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes:**
 

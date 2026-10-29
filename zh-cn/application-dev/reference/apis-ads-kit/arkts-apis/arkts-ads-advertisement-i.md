@@ -127,8 +127,6 @@ userId: "12345"
 
 **系统能力：** SystemCapability.Advertising.Ads
 
-**测试接口：** 此接口仅在自动化测试脚本中使用。
-
 ## shown
 
 ```TypeScript

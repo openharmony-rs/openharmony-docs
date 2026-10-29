@@ -14,9 +14,9 @@ function cancel(id: number, callback: AsyncCallback<void>): void
 
 Cancels a notification with the specified ID. This API uses an asynchronous callback to return the result.
 
-After cancellation, the corresponding notification will be removed from the notification center, status bar, etc., and will no longer be visible to the user.
+After cancellation, the corresponding notification is removed from the [notification center](../../../notification/notification-glossary.md#notification-center), status bar, and other locations, and is no longer visible to the user.
 
-Compared with notificationManager.cancel(id, label, callback), which includes the label parameter, this API does not pass in a label and will cancel the notification matching the specified ID. When a notification is published with a non-empty label, the `notificationManager.cancel(id, label, callback)` API must be used to cancel it.
+Compared with [notificationManager.cancel(id, label, callback)](arkts-notification-notificationmanager-cancel-f.md), which includes the label parameter, this API does not pass in a label and will cancel the notification matching the specified ID. When a notification is published with a non-empty label, the `notificationManager.cancel(id, label, callback)` API must be used to cancel it.
 
 **Since:** 9
 
@@ -36,7 +36,7 @@ Compared with notificationManager.cancel(id, label, callback), which includes th
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| id | number | Yes | Notification ID, used to identify the target notification. This value is specified by the **id** field of NotificationRequest when a notification is published. |
+| id | number | Yes | Notification ID, used to identify the target notification. This value is specified by the **id** field of [NotificationRequest](arkts-notification-notificationrequest-i.md) when a notification is published. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object. |
 
 **Error codes:**
@@ -74,9 +74,9 @@ function cancel(id: number, label: string, callback: AsyncCallback<void>): void
 
 Cancels a published notification based on the notification ID and label. This API uses an asynchronous callback to return the result.
 
-After cancellation, the corresponding notification will be removed from the notification center, status bar, and other locations, and will no longer be visible to the user. This is suitable for scenarios where a specific notification with a particular tag needs to be precisely canceled.
+After cancellation, the corresponding notification is removed from the [notification center](../../../notification/notification-glossary.md#notification-center), status bar, and other locations, and is no longer visible to the user. This is suitable for scenarios where a specific notification with a particular label needs to be canceled precisely.
 
-Compared with notificationManager.cancel(id, callback), which requires only the notification ID, this API additionally has the **label** parameter, allowing precise cancellation of notifications with the same ID but different labels.
+Compared with [notificationManager.cancel(id, callback)](arkts-notification-notificationmanager-cancel-f.md), which requires only the notification ID, this API additionally has the **label** parameter, allowing precise cancellation of notifications with the same ID but different labels.
 
 **Since:** 9
 
@@ -96,8 +96,8 @@ Compared with notificationManager.cancel(id, callback), which requires only the 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| id | number | Yes | Notification ID, used to identify the target notification. This value is specified by the **id** field of NotificationRequest when a notification is published. |
-| label | string | Yes | Notification label. This value is specified by the **label** field of NotificationRequest during the notification publishment. If the **label** field is empty, the published notification that matches the specified notification ID and has an empty label is canceled. If the **label** field is not empty, the published notification that matches both the specified notification ID and label is canceled. |
+| id | number | Yes | Notification ID, used to identify the target notification. This value is specified by the **id** field of [NotificationRequest](arkts-notification-notificationrequest-i.md) when a notification is published. |
+| label | string | Yes | Notification label. This value is specified by the **label** field in [NotificationRequest](arkts-notification-notificationrequest-i.md) during the notification publishment. <br> - If the **label** field is empty, the published notification that matches the specified notification ID and has an empty label is canceled. <br> - If the **label** field is not empty, the published notification that matches both the specified notification ID and label is canceled. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object. |
 
 **Error codes:**
@@ -135,7 +135,7 @@ function cancel(id: number, label?: string): Promise<void>
 
 Cancels a published notification based on the notification ID and label. This API uses a promise to return the result.
 
-After cancellation, the corresponding notification will be removed from the notification center, status bar, and other locations, and will no longer be visible to the user.
+After cancellation, the corresponding notification is removed from the [notification center](../../../notification/notification-glossary.md#notification-center), status bar, and other locations, and is no longer visible to the user.
 
 **Since:** 9
 
@@ -155,8 +155,8 @@ After cancellation, the corresponding notification will be removed from the noti
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| id | number | Yes | Notification ID, used to identify the target notification. This value is specified by the id field of NotificationRequest when publishing a notification. |
-| label | string | No | Notification label. The default value is empty. This value is specified by the **label** field of NotificationRequest during the notification publishment. If the **label** field is empty, the published notification that matches the specified notification ID and has an empty label is canceled. If the **label** field is not empty, the published notification that matches both the specified notification ID and label is canceled. |
+| id | number | Yes | Notification ID, used to identify the target notification. This value is specified by the id field of [NotificationRequest](arkts-notification-notificationrequest-i.md) when publishing a notification. |
+| label | string | No | Notification label. The default value is empty. This value is specified by the **label** field of [NotificationRequest](arkts-notification-notificationrequest-i.md) during the notification publishment. <br> - If the **label** field is empty, the published notification that matches the specified notification ID and has an empty label is canceled. <br> - If the **label** field is not empty, the published notification that matches both the specified notification ID and label is canceled. |
 
 **Return value:**
 

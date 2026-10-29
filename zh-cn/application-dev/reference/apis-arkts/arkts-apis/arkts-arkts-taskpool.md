@@ -54,7 +54,7 @@ import { taskpool } from '@kit.ArkTS';
 | [LongTask](arkts-arkts-taskpool-longtask-c.md) | 表示长时任务。**LongTask**继承自[Task](arkts-arkts-taskpool-task-c.md)。长时任务不设置执行时间上限，长时间运行不会触发超时异常，但不支持将同一任务多次执行或者将该任务加入任务组（TaskGroup）。执行长时任务的线程会持续存在，直到任务完成并调用[terminateTask](arkts-arkts-taskpool-terminatetask-f.md)后，该线程在空闲时被回收。 |
 | [SequenceRunner](arkts-arkts-taskpool-sequencerunner-c.md) | 表示串行队列的任务，用于执行一组需要串行执行的任务。 |
 | [Task](arkts-arkts-taskpool-task-c.md) | 调用Task中的任何接口前必须先使用构造函数创建Task对象。任务可以多次执行，也可以放入任务组、串行队列或异步队列执行，还支持添加依赖关系。 |
-| [TaskGroup](arkts-arkts-taskpool-taskgroup-c.md) | 表示任务组，一次执行一组任务，适用于执行一组有关联的任务。如果所有任务正常执行，异步执行完毕后返回所有任务结果的数组，数组中元素的顺序与调用addTask添加任务的顺序相同。如果任意任务失败，则会抛出对应异常。如果任务组中存在多个任务失败的情况，则会抛出第一个失败任务的异常。任务组可以多次执行，但执行后不能新增任务。 |
+| [TaskGroup](arkts-arkts-taskpool-taskgroup-c.md) | 表示任务组，一次执行一组任务，适用于执行一组有关联的任务。如果所有任务正常执行，异步执行完毕后返回所有任务结果的数组，数组中元素的顺序与调用[addTask](arkts-arkts-taskpool-taskgroup-c.md#addtask-2)添加任务的顺序相同。如果任意任务失败，则会抛出对应异常。如果任务组中存在多个任务失败的情况，则会抛出第一个失败任务的异常。任务组可以多次执行，但执行后不能新增任务。 |
 | [TaskInfo](arkts-arkts-taskpool-taskinfo-c.md) | 任务的内部信息。 |
 | [TaskPoolInfo](arkts-arkts-taskpool-taskpoolinfo-c.md) | 任务池的内部信息。 |
 | [ThreadInfo](arkts-arkts-taskpool-threadinfo-c.md) | 工作线程的内部信息。 |
@@ -77,5 +77,5 @@ import { taskpool } from '@kit.ArkTS';
 
 | 名称 | 说明 |
 | --- | --- |
-| [Priority](arkts-arkts-taskpool-priority-e.md) | 表示所创建任务（Task）执行时的优先级。工作线程优先级跟随任务优先级更新，对应关系参考QoS等级定义。 |
+| [Priority](arkts-arkts-taskpool-priority-e.md) | 表示所创建任务（Task）执行时的优先级。工作线程优先级跟随任务优先级更新，对应关系参考[QoS等级定义](../../../napi/qos-guidelines.md#qos等级定义)。 |
 | [State](arkts-arkts-taskpool-state-e.md) | 表示任务（Task）状态的枚举。 |

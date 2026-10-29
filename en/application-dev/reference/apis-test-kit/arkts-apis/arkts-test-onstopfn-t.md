@@ -15,5 +15,3 @@ Stop all test cases.
 <!--Device-unnamed-type OnStopFn = () => void--><!--Device-unnamed-type OnStopFn = () => void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
-
-**Test API:** This API is used only in automated test scripts.

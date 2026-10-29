@@ -29,7 +29,7 @@ function removeGroupByBundle(bundle: BundleOption, groupName: string, callback: 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundle | [BundleOption](arkts-notification-notificationmanager-bundleoption-t.md) | 是 | 应用的包信息。 |
-| groupName | string | 是 | 通知组名称。 |
+| groupName | string | 是 | 通知组名称，此名称需要在发布通知时通过[NotificationRequest](arkts-notification-notificationrequest-i.md)对象指定。<br>大小不超过202字节，超出部分会被截断。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 删除指定应用指定组下通知的回调函数。 |
 
 **错误码：**
@@ -90,7 +90,7 @@ function removeGroupByBundle(bundle: BundleOption, groupName: string): Promise<v
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundle | [BundleOption](arkts-notification-notificationmanager-bundleoption-t.md) | 是 | 应用的包信息。 |
-| groupName | string | 是 | 通知组名称。 |
+| groupName | string | 是 | 通知组名称，此名称需要在发布通知时通过[NotificationRequest](arkts-notification-notificationrequest-i.md)对象指定。<br>大小不超过202字节，超出部分会被截断。 |
 
 **返回值：**
 

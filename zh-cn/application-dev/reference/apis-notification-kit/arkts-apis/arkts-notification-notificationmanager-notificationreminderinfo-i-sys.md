@@ -44,7 +44,14 @@ bundle: BundleOption
 reminderFlags: number
 ```
 
-表示通知提醒方式的标志位。
+表示[通知提醒方式](../../../notification/notification-glossary.md#notification-reminder-mode通知提醒方式)的标志位。
+
+- bit0：铃声提示。0表示关闭，1表示开启。  
+- bit1：锁屏。0表示关闭，1表示开启。  
+- bit2：横幅。0表示关闭，1表示开启。  
+- bit3：亮屏。0表示关闭，1表示开启。  
+- bit4：振动。0表示关闭，1表示开启。  
+- bit5：状态栏通知图标。0表示关闭，1表示开启。
 
 **类型：** number
 
@@ -62,7 +69,7 @@ reminderFlags: number
 silentReminderEnabled: boolean
 ```
 
-表示静默提醒开关使能状态（true：使能，false：禁止）。
+表示[静默提醒](../../../notification/notification-glossary.md#silent-reminder静默提醒)开关使能状态（true：使能，false：禁止）。
 
 **类型：** boolean
 

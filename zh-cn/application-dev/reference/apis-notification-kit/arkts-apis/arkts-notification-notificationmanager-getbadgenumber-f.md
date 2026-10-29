@@ -22,7 +22,7 @@ function getBadgeNumber(): Promise<number>
 
 **系统能力：** SystemCapability.Notification.Notification
 
-**参见：** [setBadgeNumber](arkts-notification-notificationmanager-setbadgenumber-f.md#setbadgenumber-2) 设定角标个数。
+**参见：** [setBadgeNumber](arkts-notification-notificationmanager-setbadgenumber-f.md) 设定角标个数。
 
 **返回值：**
 

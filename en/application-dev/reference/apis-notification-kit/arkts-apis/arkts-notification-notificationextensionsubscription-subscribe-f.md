@@ -26,7 +26,7 @@ Subscribes to the notification extension. You can subscribe to the notification 
 
 [unsubscribe](arkts-notification-notificationextensionsubscription-unsubscribe-f.md) unsubscribes from the notification extension.
 
-[getSubscribeInfo](arkts-notification-notificationextensionsubscription-getsubscribeinfo-f.md) obtains all applications that have requested the ohos.permission.SUBSCRIBE_NOTIFICATION permission and implemented.
+[getSubscribeInfo](arkts-notification-notificationextensionsubscription-getsubscribeinfo-f.md) obtains the subscription information about the notification extension of this application.
 
 **Parameters:**
 

@@ -17,7 +17,7 @@ Publishes a notification to a specified user. This API uses an asynchronous call
 
 **Deprecated since:** 9
 
-**Substitutes:** [publish](arkts-notification-notificationmanager-publish-f.md)
+**Substitutes:** [publish](arkts-notification-notificationmanager-publish-f.md)(request: NotificationRequest, userId: number, callback: AsyncCallback&lt;void&gt;)
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -82,7 +82,7 @@ Publishes a notification to a specified user. This API uses a promise to return 
 
 **Deprecated since:** 9
 
-**Substitutes:** [publish](arkts-notification-notificationmanager-publish-f.md)
+**Substitutes:** [publish](arkts-notification-notificationmanager-publish-f.md)(request: NotificationRequest, userId: number)
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
 

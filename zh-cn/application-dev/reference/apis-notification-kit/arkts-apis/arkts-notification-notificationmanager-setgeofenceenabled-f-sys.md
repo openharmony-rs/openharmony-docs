@@ -12,7 +12,7 @@ import { notificationManager } from '@kit.NotificationKit';
 function setGeofenceEnabled(enabled: boolean): Promise<void>
 ```
 
-设置地理围栏的启用状态。使用Promise异步回调。
+设置[地理围栏](../../../notification/notification-glossary.md#geofence地理围栏)的启用状态。使用Promise异步回调。
 
 **起始版本：** 23
 

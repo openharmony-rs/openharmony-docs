@@ -2323,8 +2323,6 @@ Sets the stencil operation
 
 **System capability:** SystemCapability.Graphic.Graphic2D.WebGL
 
-**Test API:** This API is used only in automated test scripts.
-
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -2348,8 +2346,6 @@ Sets the stencil operation separately for front and back faces
 <!--Device-WebGLRenderingContextBase-stencilOpSeparate(face: GLenum, fail: GLenum, zfail: GLenum, zpass: GLenum): void--><!--Device-WebGLRenderingContextBase-stencilOpSeparate(face: GLenum, fail: GLenum, zfail: GLenum, zpass: GLenum): void-End-->
 
 **System capability:** SystemCapability.Graphic.Graphic2D.WebGL
-
-**Test API:** This API is used only in automated test scripts.
 
 **Parameters:**
 
@@ -3994,8 +3990,6 @@ Enable cap: depth test
 <!--Device-WebGLRenderingContextBase-readonly DEPTH_TEST: GLenum--><!--Device-WebGLRenderingContextBase-readonly DEPTH_TEST: GLenum-End-->
 
 **System capability:** SystemCapability.Graphic.Graphic2D.WebGL
-
-**Test API:** This API is used only in automated test scripts.
 
 ## DEPTH_WRITEMASK
 
@@ -6445,8 +6439,6 @@ Enable cap: scissor test
 
 **System capability:** SystemCapability.Graphic.Graphic2D.WebGL
 
-**Test API:** This API is used only in automated test scripts.
-
 ## SHADER_TYPE
 
 ```TypeScript
@@ -6896,8 +6888,6 @@ Enable cap: stencil test
 <!--Device-WebGLRenderingContextBase-readonly STENCIL_TEST: GLenum--><!--Device-WebGLRenderingContextBase-readonly STENCIL_TEST: GLenum-End-->
 
 **System capability:** SystemCapability.Graphic.Graphic2D.WebGL
-
-**Test API:** This API is used only in automated test scripts.
 
 ## STENCIL_VALUE_MASK
 

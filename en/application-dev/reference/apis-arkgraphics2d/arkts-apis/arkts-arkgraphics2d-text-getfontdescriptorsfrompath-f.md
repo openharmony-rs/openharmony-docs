@@ -28,8 +28,6 @@ Obtains an array of font descriptors by font file path. This API uses a promise 
 
 **System capability:** SystemCapability.Graphics.Drawing
 
-**Test API:** This API is used only in automated test scripts.
-
 **Parameters:**
 
 | Name | Type | Mandatory | Description |

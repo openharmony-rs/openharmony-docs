@@ -24,7 +24,7 @@ import { Animator, AnimatorOptions, AnimatorResult, SimpleAnimatorOptions } from
 static create(options: AnimatorOptions | SimpleAnimatorOptions): AnimatorResult
 ```
 
-创建animator动画结果对象（AnimatorResult）。与create相比，新增对[SimpleAnimatorOptions](arkts-arkui-animator-simpleanimatoroptions-c.md)类型入参的支持。
+创建animator动画结果对象（AnimatorResult）。与[create](#create-2)相比，新增对[SimpleAnimatorOptions](arkts-arkui-animator-simpleanimatoroptions-c.md)类型入参的支持。
 
 **起始版本：** 18
 
@@ -60,7 +60,7 @@ static create(options: AnimatorOptions | SimpleAnimatorOptions): AnimatorResult
 
 > 说明：
 > 
-> 推荐通过使用UIContext中的createAnimator接口明确UI上下文。
+> 推荐通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的createAnimator接口明确UI上下文。
 
 ```TypeScript
 import { Animator as animator, SimpleAnimatorOptions } from '@kit.ArkUI';
@@ -118,7 +118,7 @@ static create(options: AnimatorOptions): AnimatorResult
 
 > 说明：
 > 
-> 推荐通过使用UIContext中的createAnimator接口明确UI上下文。
+> 推荐通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的createAnimator接口明确UI上下文。
 
 ```TypeScript
 import { Animator as animator, AnimatorOptions } from '@kit.ArkUI';

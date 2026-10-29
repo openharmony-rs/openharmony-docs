@@ -4,9 +4,11 @@
 declare const Watch: (value: string) => PropertyDecorator
 ```
 
-@Watch装饰器用于状态管理V1中，监听状态变量的变化，并在变量变化时触发指定回调函数。适用于状态变量变化时需要自动执行联动逻辑、数据同步或计算衍生值的场景。
+@Watch装饰器用于[状态管理V1](../../../ui/state-management/arkts-state-management-overview.md#状态管理v1)中，监听状态变量的变化，并在变量变化时触发指定回调函数。适用于状态变量变化时需要自动执行联动逻辑、数据同步或计算衍生值的场景。
 
 开发指南参考：[@Watch装饰器：状态变量更改通知](../../../ui/state-management/arkts-watch.md)。
+
+value：监听状态变量变化的回调函数名，函数签名为`(propertyName: string) =&gt; void`，`propertyName`为变化的属性名。PropertyDecorator：属性装饰器，开发者无需关注该返回值。
 
 **起始版本：** 7
 

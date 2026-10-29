@@ -29,8 +29,6 @@ Provides the capability of accessing application resources and system resources.
 
 **System capability:** SystemCapability.Global.ResourceManager
 
-**Test API:** This API is used only in automated test scripts.
-
 ## Modules to Import
 
 ```TypeScript
@@ -107,8 +105,6 @@ Closes the file descriptor (fd) of the HAP where a specific rawfile in the **res
 
 **System capability:** SystemCapability.Global.ResourceManager
 
-**Test API:** This API is used only in automated test scripts.
-
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -167,8 +163,6 @@ Closes the file descriptor (fd) of the HAP where a specific rawfile in the **res
 
 **System capability:** SystemCapability.Global.ResourceManager
 
-**Test API:** This API is used only in automated test scripts.
-
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -226,8 +220,6 @@ Closes the file descriptor (fd) of the HAP where the **rawfile** file in the **r
 <!--Device-ResourceManager-closeRawFdSync(path: string): void--><!--Device-ResourceManager-closeRawFdSync(path: string): void-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
-
-**Test API:** This API is used only in automated test scripts.
 
 **Parameters:**
 
@@ -4543,8 +4535,6 @@ Obtains the file descriptor (fd) of the HAP where a specific rawfile in the **re
 
 **System capability:** SystemCapability.Global.ResourceManager
 
-**Test API:** This API is used only in automated test scripts.
-
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -4609,8 +4599,6 @@ Obtains the file descriptor (fd) of the HAP where a specific rawfile in the **re
 <!--Device-ResourceManager-getRawFd(path: string): Promise<RawFileDescriptor>--><!--Device-ResourceManager-getRawFd(path: string): Promise<RawFileDescriptor>-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
-
-**Test API:** This API is used only in automated test scripts.
 
 **Parameters:**
 
@@ -4680,8 +4668,6 @@ Obtains the file descriptor (fd) of the HAP where the rawfile file in the resour
 
 **System capability:** SystemCapability.Global.ResourceManager
 
-**Test API:** This API is used only in automated test scripts.
-
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -4736,8 +4722,6 @@ Obtain the content of a rawfile in the **resources/rawfile** directory. This API
 <!--Device-ResourceManager-getRawFileContent(path: string, callback: _AsyncCallback<Uint8Array>): void--><!--Device-ResourceManager-getRawFileContent(path: string, callback: _AsyncCallback<Uint8Array>): void-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
-
-**Test API:** This API is used only in automated test scripts.
 
 **Parameters:**
 
@@ -4794,8 +4778,6 @@ Obtain the content of a rawfile in the **resources/rawfile** directory. This API
 <!--Device-ResourceManager-getRawFileContent(path: string): Promise<Uint8Array>--><!--Device-ResourceManager-getRawFileContent(path: string): Promise<Uint8Array>-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
-
-**Test API:** This API is used only in automated test scripts.
 
 **Parameters:**
 
@@ -4855,8 +4837,6 @@ Obtains the content of a rawfile in the **resources/rawfile** directory. This AP
 <!--Device-ResourceManager-getRawFileContentSync(path: string): Uint8Array--><!--Device-ResourceManager-getRawFileContentSync(path: string): Uint8Array-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
-
-**Test API:** This API is used only in automated test scripts.
 
 **Parameters:**
 
@@ -6884,8 +6864,6 @@ Checks whether a path is a subdirectory in the **rawfile** directory. This API r
 
 **System capability:** SystemCapability.Global.ResourceManager
 
-**Test API:** This API is used only in automated test scripts.
-
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -7059,8 +7037,6 @@ Closes the file descriptor (fd) of a specific rawfile in the **resources/rawfile
 
 **System capability:** SystemCapability.Global.ResourceManager
 
-**Test API:** This API is used only in automated test scripts.
-
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -7099,8 +7075,6 @@ Closes the file descriptor (fd) of a specific rawfile in the **resources/rawfile
 <!--Device-ResourceManager-closeRawFileDescriptor(path: string): Promise<void>--><!--Device-ResourceManager-closeRawFileDescriptor(path: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
-
-**Test API:** This API is used only in automated test scripts.
 
 **Parameters:**
 
@@ -8184,8 +8158,6 @@ Obtain the content of a rawfile in the **resources/rawfile** directory. This API
 
 **System capability:** SystemCapability.Global.ResourceManager
 
-**Test API:** This API is used only in automated test scripts.
-
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -8226,8 +8198,6 @@ Obtain the content of a rawfile in the **resources/rawfile** directory. This API
 <!--Device-ResourceManager-getRawFile(path: string): Promise<Uint8Array>--><!--Device-ResourceManager-getRawFile(path: string): Promise<Uint8Array>-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
-
-**Test API:** This API is used only in automated test scripts.
 
 **Parameters:**
 
@@ -8273,8 +8243,6 @@ Obtains the file descriptor (fd) of a specific rawfile in the **resources/rawfil
 
 **System capability:** SystemCapability.Global.ResourceManager
 
-**Test API:** This API is used only in automated test scripts.
-
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -8317,8 +8285,6 @@ Obtains the file descriptor (fd) of a specific rawfile in the **resources/rawfil
 <!--Device-ResourceManager-getRawFileDescriptor(path: string): Promise<RawFileDescriptor>--><!--Device-ResourceManager-getRawFileDescriptor(path: string): Promise<RawFileDescriptor>-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
-
-**Test API:** This API is used only in automated test scripts.
 
 **Parameters:**
 

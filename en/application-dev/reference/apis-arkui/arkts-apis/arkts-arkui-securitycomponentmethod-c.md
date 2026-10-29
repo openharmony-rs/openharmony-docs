@@ -23,7 +23,7 @@ the security component specifications. For specific constraints, see [Constraint
 
 - [SecurityComponentLayoutDirection](arkts-arkui-securitycomponentlayoutdirection-e.md): Enumeration of icon and text  
 layout directions for the security component. Specifies horizontal or vertical layout.  
-- ButtonType: Enumeration of button styles for the security component.  
+- [ButtonType](../arkts-components/arkts-arkui-button-comp-buttontype-e.md): Enumeration of button styles for the security component.  
 Specifies capsule, circle, rounded rectangle, or normal button style.
 
 ## Key APIs
@@ -315,7 +315,7 @@ borderRadius(value: Dimension): T
 
 Sets the border radius of the security component.
 
-The effect of **borderRadius** is influenced by **ButtonType**. When **ButtonType** is **Capsule** or **Circle**, the **borderRadius** setting does not take effect, and the corner radius is automatically determined by the button type. When the **ButtonType** is **Normal** or **ROUNDED_RECTANGLE**, the **borderRadius** setting takes effect. For details, see ButtonType.
+The effect of **borderRadius** is influenced by **ButtonType**. When **ButtonType** is **Capsule** or **Circle**, the **borderRadius** setting does not take effect, and the corner radius is automatically determined by the button type. When the **ButtonType** is **Normal** or **ROUNDED_RECTANGLE**, the **borderRadius** setting takes effect. For details, see [ButtonType](../arkts-components/arkts-arkui-button-comp-buttontype-e.md).
 
 **Since:** 10
 
@@ -347,7 +347,7 @@ borderRadius(radius: Dimension | BorderRadiuses): T
 
 Sets the border radius of the security component, allowing individual setting of the four corner radii.
 
-The effect of **borderRadius** is influenced by **ButtonType**. When **ButtonType** is **Capsule** or **Circle**, the **borderRadius** setting does not take effect, and the corner radius is automatically determined by the button type. When the **ButtonType** is **Normal** or **ROUNDED_RECTANGLE**, the **borderRadius** setting takes effect. For details, see ButtonType.
+The effect of **borderRadius** is influenced by **ButtonType**. When **ButtonType** is **Capsule** or **Circle**, the **borderRadius** setting does not take effect, and the corner radius is automatically determined by the button type. When the **ButtonType** is **Normal** or **ROUNDED_RECTANGLE**, the **borderRadius** setting takes effect. For details, see [ButtonType](../arkts-components/arkts-arkui-button-comp-buttontype-e.md).
 
 **Since:** 15
 

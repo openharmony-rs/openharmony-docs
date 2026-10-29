@@ -52,8 +52,6 @@ The string type can be used to load local images and, more frequently, online im
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Test API:** This API is used only in automated test scripts.
-
 ## title
 
 ```TypeScript

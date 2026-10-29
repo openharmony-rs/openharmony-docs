@@ -114,7 +114,7 @@ displayY: number
 globalDisplayX?: number
 ```
 
-点击位置在全局坐标系中的X坐标。
+点击位置在[全局坐标系](../../../windowmanager/window-terminology.md#全局坐标系)中的X坐标。
 
 单位：vp
 
@@ -138,7 +138,7 @@ globalDisplayX?: number
 globalDisplayY?: number
 ```
 
-点击位置在全局坐标系中的Y坐标。
+点击位置在[全局坐标系](../../../windowmanager/window-terminology.md#全局坐标系)中的Y坐标。
 
 单位：vp
 
@@ -226,7 +226,7 @@ windowY: number
 x: number
 ```
 
-点击位置在被点击元素为基准的[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)中的X坐标。onClick的distanceThreshold设置后，点击位置为抬手点。触发事件的是键盘或手柄时，点击位置为被点击元素的中心点。
+点击位置在被点击元素为基准的[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)中的X坐标。onClick的[distanceThreshold](arkts-arkui-common-comp-commonmethod-c.md#onclick-2)设置后，点击位置为抬手点。触发事件的是键盘或手柄时，点击位置为被点击元素的中心点。
 
 单位：vp
 

@@ -4,7 +4,7 @@
 export interface OperationInfo
 ```
 
-Defines cross-device collaborative operation information.
+Describes the [cross-device collaboration](../../../notification/notification-glossary.md#cross-device-collaboration) operation information.
 
 **Since:** 18
 
@@ -62,12 +62,12 @@ Index of the non-live view button or live view auxiliary area that the user taps
 operationType?: number
 ```
 
-Operation type.
+Type of the user click operation.
 
-- **0**: The user taps the non-live view.  
-- **1**: The user taps the non-live view button.  
-- **32**: The user taps the live view.  
-- **33**: The user taps the live view auxiliary area.
+- **0**: The user clicks the non-[live view notification](../../../notification/notification-glossary.md#live-view-notification) body.  
+- **1**: The user clicks a non-live-view notification button.  
+- **32**: The user clicks the live view notification body.  
+- **33**: The user clicks the auxiliary area of the live view notification.
 
 **Type:** number
 

@@ -29,9 +29,9 @@ Publishes a common event to a specific user. This API uses an asynchronous callb
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| event | string | Yes | Name of the common event to publish. |
+| event | string | Yes | Common event to publish. The value can contain a maximum of 254 bytes. Excess content will be truncated. |
 | userId | number | Yes | ID of the user to whom the common event is published. |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the common event publication result. |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object. |
 
 <!--Del-->
 **Examples**
@@ -75,7 +75,7 @@ Publishes a common event with given properties to a specific user. This API uses
 
 **Deprecated since:** 9
 
-**Substitutes:** [publishAsUser](arkts-basicservices-commoneventmanager-publishasuser-f-sys.md)( event: string, userId: number, options: CommonEventPublishData, callback: AsyncCallback&lt;void&gt; )
+**Substitutes:** [publishAsUser](arkts-basicservices-commoneventmanager-publishasuser-f-sys.md)(event: string, userId: number, options: CommonEventPublishData, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-commonEvent-function publishAsUser(    event: string,    userId: number,    options: CommonEventPublishData,    callback: AsyncCallback<void>  ): void--><!--Device-commonEvent-function publishAsUser(    event: string,    userId: number,    options: CommonEventPublishData,    callback: AsyncCallback<void>  ): void-End-->
 
@@ -87,10 +87,10 @@ Publishes a common event with given properties to a specific user. This API uses
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| event | string | Yes | Name of the common event to publish. |
+| event | string | Yes | Common event to publish. The value can contain a maximum of 254 bytes. Excess content will be truncated. |
 | userId | number | Yes | ID of the user to whom the common event is published. |
 | options | [CommonEventPublishData](arkts-basicservices-commoneventpublishdata-i.md) | Yes | Properties of the common event to publish. |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the common event publication result. |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object. |
 
 <!--Del-->
 **Examples**

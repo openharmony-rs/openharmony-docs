@@ -831,7 +831,7 @@ g_object.save('local').then((callbackInfo: distributedDataObject.SaveSuccessResp
 setAsset(assetKey: string, uri: string): Promise<void>
 ```
 
-设置分布式数据对象中的单个资产的属性信息，该接口必须在setSessionId接口调用前使用。使用Promise异步回调。<br>  
+设置分布式数据对象中的单个资产的属性信息，该接口必须在[setSessionId](#setsessionid-3)接口调用前使用。使用Promise异步回调。<br>  
 > **注意：**
 > 
 > 在设置资产时必须保证assetKey存在且对应文件为资产类型文件，否则无法保证对端能接收到此次设置的资产。
@@ -841,7 +841,7 @@ setAsset(assetKey: string, uri: string): Promise<void>
 
 | 触发条件 | 操作结果 |  
 | -------- | -------- |  
-| 调用setSessionId接口设置sessionId后再调用[setAsset](#setasset)接口设置资产。 | 设置资产失败，抛出15400003异常。 |  
+| 调用[setSessionId](#setsessionid-3)接口设置sessionId后再调用[setAsset](#setasset)接口设置资产。 | 设置资产失败，抛出15400003异常。 |  
 | assetKey为无效值，例如：null（不存在）、undefined（未定义）或''（空字符串）。 | 设置资产失败，抛出15400002异常。 |  
 | assetKey存在、对应文件为非资产类型。 | 系统会强制修改该字段对应的文件类型为资产类型且设置资产字段，可能出现真实资产无法同步至对端设备。 |  
 | uri为无效值，例如：null（不存在）、undefined（未定义）或''（空字符串）。 | 设置资产失败，抛出15400002异常。 |
@@ -922,7 +922,7 @@ class EntryAbility extends UIAbility {
 setAssets(assetsKey: string, uris: Array<string>): Promise<void>
 ```
 
-设置分布式数据对象中的多个资产的属性信息，该接口必须在setSessionId接口调用前使用。使用Promise异步回调。<br>  
+设置分布式数据对象中的多个资产的属性信息，该接口必须在[setSessionId](#setsessionid-3)接口调用前使用。使用Promise异步回调。<br>  
 > **注意：**
 > 
 > 在设置资产时必须保证assetsKey存在且对应文件为资产类型文件，否则无法保证对端能接收到此次设置的资产。
@@ -932,7 +932,7 @@ setAssets(assetsKey: string, uris: Array<string>): Promise<void>
 
 | 触发条件 | 操作结果 |  
 | -------- | -------- |  
-| 调用setSessionId接口设置sessionId后再调用[setAssets](#setassets)接口设置资产。 | 设置资产失败，抛出15400003异常。 |  
+| 调用[setSessionId](#setsessionid-3)接口设置sessionId后再调用[setAssets](#setassets)接口设置资产。 | 设置资产失败，抛出15400003异常。 |  
 | assetsKey为无效值，例如：null（不存在）、undefined（未定义）或''（空字符串）。 | 设置资产失败，抛出15400002异常。 |  
 | assetsKey存在、对应文件为非资产类型。 | 系统会强制修改该字段对应的文件类型为资产类型且设置资产字段，可能出现真实资产无法同步至对端设备。 |  
 | assetsKey存在、且对应文件为资产类型。 | 设置资产成功、更新uri信息。 |  

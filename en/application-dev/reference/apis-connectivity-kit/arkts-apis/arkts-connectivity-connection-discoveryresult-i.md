@@ -42,7 +42,7 @@ The class of the device
 deviceId: string
 ```
 
-Identify of the discovery device
+Identify of the discovered device
 
 **Type:** string
 
@@ -96,7 +96,7 @@ RSSI of the remote device
 transport?: BluetoothTransport
 ```
 
-The transport of the discovery device.
+The transport of the discovered device.
 
 **Type:** [BluetoothTransport](arkts-connectivity-connection-bluetoothtransport-e.md)
 

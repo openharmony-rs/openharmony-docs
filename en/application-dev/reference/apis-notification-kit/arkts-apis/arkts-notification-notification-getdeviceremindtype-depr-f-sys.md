@@ -17,7 +17,7 @@ Obtains the notification reminder type. This API uses an asynchronous callback t
 
 **Deprecated since:** 9
 
-**Substitutes:** [getDeviceRemindType](arkts-notification-notificationmanager-getdeviceremindtype-f-sys.md)
+**Substitutes:** [getDeviceRemindType](arkts-notification-notificationmanager-getdeviceremindtype-f-sys.md#getdeviceremindtype-1)(callback: AsyncCallback&lt;DeviceRemindType&gt;)
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -31,7 +31,7 @@ Obtains the notification reminder type. This API uses an asynchronous callback t
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;DeviceRemindType&gt; | Yes | Callback used to return the result. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;DeviceRemindType&gt; | Yes | Callback invoked to return the [notification reminder mode](../../../notification/notification-glossary.md#notification-reminder-mode). |
 
 <!--Del-->
 **Examples**
@@ -65,7 +65,7 @@ Obtains the notification reminder type. This API uses a promise to return the re
 
 **Deprecated since:** 9
 
-**Substitutes:** [getDeviceRemindType](arkts-notification-notificationmanager-getdeviceremindtype-f-sys.md)
+**Substitutes:** [getDeviceRemindType](arkts-notification-notificationmanager-getdeviceremindtype-f-sys.md)()
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -79,7 +79,7 @@ Obtains the notification reminder type. This API uses a promise to return the re
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;DeviceRemindType&gt; | Promise used to return the result. |
+| Promise&lt;DeviceRemindType&gt; | Promise used to return the result of obtaining the [notification reminder mode](../../../notification/notification-glossary.md#notification-reminder-mode). |
 
 <!--Del-->
 **Examples**

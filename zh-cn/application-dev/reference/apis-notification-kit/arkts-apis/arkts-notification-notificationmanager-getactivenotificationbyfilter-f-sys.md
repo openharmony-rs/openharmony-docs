@@ -12,7 +12,7 @@ import { notificationManager } from '@kit.NotificationKit';
 function getActiveNotificationByFilter(filter: NotificationFilter, callback: AsyncCallback<NotificationRequest>): void
 ```
 
-获取满足条件的普通实况通知信息。使用callback异步回调。
+获取满足条件的[普通实况通知](../../../notification/notification-glossary.md#normal-live-view普通实况通知)信息。使用callback异步回调。
 
 **起始版本：** 11
 
@@ -77,7 +77,7 @@ notificationManager.getActiveNotificationByFilter(filter, getActiveNotificationB
 function getActiveNotificationByFilter(filter: NotificationFilter): Promise<NotificationRequest>
 ```
 
-获取满足条件的普通实况通知信息。使用Promise异步回调。
+获取满足条件的[普通实况通知](../../../notification/notification-glossary.md#normal-live-view普通实况通知)信息。使用Promise异步回调。
 
 **起始版本：** 11
 

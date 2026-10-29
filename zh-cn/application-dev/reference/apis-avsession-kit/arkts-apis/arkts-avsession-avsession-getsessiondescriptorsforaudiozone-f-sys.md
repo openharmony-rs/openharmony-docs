@@ -44,4 +44,4 @@ function getSessionDescriptorsForAudioZone(userId: number): Promise<Array<Readon
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | permission denied |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. |
-| 6700101 | Session service is not running. |
+| [6700101](../errorcode-avsession.md#6700101-会话服务未运行) | Session service is not running. |

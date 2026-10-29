@@ -17,7 +17,7 @@ function publish(request: NotificationRequest, callback: AsyncCallback<void>): v
 
 **废弃版本：** 9
 
-**替代接口：** [publish](arkts-notification-notificationmanager-publish-f.md)
+**替代接口：** [publish](arkts-notification-notificationmanager-publish-f.md#publish-1)(request: NotificationRequest, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-notification-function publish(request: NotificationRequest, callback: AsyncCallback<void>): void--><!--Device-notification-function publish(request: NotificationRequest, callback: AsyncCallback<void>): void-End-->
 
@@ -72,7 +72,7 @@ function publish(request: NotificationRequest): Promise<void>
 
 **废弃版本：** 9
 
-**替代接口：** [publish](arkts-notification-notificationmanager-publish-f.md)
+**替代接口：** [publish](arkts-notification-notificationmanager-publish-f.md#publish-2)(request: NotificationRequest)
 
 <!--Device-notification-function publish(request: NotificationRequest): Promise<void>--><!--Device-notification-function publish(request: NotificationRequest): Promise<void>-End-->
 

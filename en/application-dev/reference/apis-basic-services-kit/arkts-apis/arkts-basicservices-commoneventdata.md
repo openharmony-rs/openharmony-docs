@@ -1,4 +1,4 @@
-# commonEventData(Common event data.)
+# commonEventData(CommonEventData)
 
 ## Summary
 

@@ -4,7 +4,7 @@
 export type NotificationContent = _NotificationContent
 ```
 
-通知内容。
+[通知内容](../../../notification/notification-glossary.md#notification-content通知内容)。
 
 **类型：** _NotificationContent
 

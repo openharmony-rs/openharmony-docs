@@ -4,7 +4,7 @@
 export type NotificationSubscriber = _NotificationSubscriber
 ```
 
-作为订阅通知接口subscribe的入参，提供订阅者接收到新通知、取消通知等的回调方法。
+提供订阅者接收到新通知、取消通知等的回调方法。
 
 **类型：** _NotificationSubscriber
 

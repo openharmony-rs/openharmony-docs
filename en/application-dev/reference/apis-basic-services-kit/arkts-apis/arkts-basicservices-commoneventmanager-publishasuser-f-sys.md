@@ -26,7 +26,7 @@ Publishes a common event to a specified user. This API uses an asynchronous call
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| event | string | Yes | Name of the common event to publish. |
+| event | string | Yes | Common event to publish. For details, see [System Common Events (System API)](arkts-basicservices-commoneventmanager.md). The value can contain a maximum of 254 bytes. Excess content will be truncated. |
 | userId | number | Yes | ID of the user who will receive the common event. |
 | callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object. |
 
@@ -93,7 +93,7 @@ Publishes a common event to a specified user and specifies the information to be
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| event | string | Yes | Name of the common event to publish. |
+| event | string | Yes | Common event to publish. For details, see [System Common Events (System API)](arkts-basicservices-commoneventmanager.md). The value can contain a maximum of 254 bytes. Excess content will be truncated. |
 | userId | number | Yes | ID of the user who will receive the common event. |
 | options | [CommonEventPublishData](arkts-basicservices-commoneventmanager-commoneventpublishdata-t.md) | Yes | Properties of the common event to publish. |
 | callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object. |

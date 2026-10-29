@@ -17,7 +17,7 @@ function subscribe(subscriber: CommonEventSubscriber, callback: AsyncCallback<Co
 
 **废弃版本：** 9
 
-**替代接口：** [subscribe](arkts-basicservices-commoneventmanager-subscribe-f.md)
+**替代接口：** [subscribe](arkts-basicservices-commoneventmanager-subscribe-f.md#subscribe-1)(subscriber: CommonEventSubscriber, callback: AsyncCallback&lt;CommonEventData&gt;)
 
 <!--Device-commonEvent-function subscribe(subscriber: CommonEventSubscriber, callback: AsyncCallback<CommonEventData>): void--><!--Device-commonEvent-function subscribe(subscriber: CommonEventSubscriber, callback: AsyncCallback<CommonEventData>): void-End-->
 
@@ -28,7 +28,7 @@ function subscribe(subscriber: CommonEventSubscriber, callback: AsyncCallback<Co
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | subscriber | [CommonEventSubscriber](arkts-basicservices-commoneventsubscriber-i.md) | 是 | 表示订阅者对象。 |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;[CommonEventData](arkts-basicservices-commoneventdata-i.md)&gt; | 是 | 表示接收公共事件数据的回调方法。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;[CommonEventData](arkts-basicservices-commoneventdata-i.md)&gt; | 是 | 回调函数。当订阅公共事件成功，err为undefined，data为获取到的公共事件数据，否则为错误对象。 |
 
 **示例**
 

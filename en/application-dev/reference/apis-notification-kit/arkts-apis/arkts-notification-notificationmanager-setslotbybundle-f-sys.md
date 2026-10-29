@@ -12,9 +12,9 @@ import { notificationManager } from '@kit.NotificationKit';
 function setSlotByBundle(bundle: BundleOption, slot: NotificationSlot, callback: AsyncCallback<void>): void
 ```
 
-Sets the notification slot for a specified application. This API uses an asynchronous callback to return the result.
+Sets the [notification slot](../../../notification/notification-glossary.md#notification-slot) of a specified application. This API uses an asynchronous callback to return the result.
 
-Before setting a notification slot, create a slot through [addSlot](arkts-notification-notificationmanager-addslot-f-sys.md#addslot-1).
+Before setting a notification slot, create a slot through [addSlot](arkts-notification-notificationmanager-addslot-f.md).
 
 **Since:** 9
 
@@ -78,9 +78,9 @@ notificationManager.setSlotByBundle(bundle, notificationSlot, setSlotByBundleCal
 function setSlotByBundle(bundle: BundleOption, slot: NotificationSlot): Promise<void>
 ```
 
-Sets the notification slot for a specified application. This API uses a promise to return the result.
+Sets the [notification slot](../../../notification/notification-glossary.md#notification-slot) of a specified application. This API uses a promise to return the result.
 
-Before setting a notification slot, create a slot through [addSlot](arkts-notification-notificationmanager-addslot-f-sys.md#addslot-1).
+Before setting a notification slot, create a slot through [addSlot](arkts-notification-notificationmanager-addslot-f.md).
 
 **Since:** 9
 

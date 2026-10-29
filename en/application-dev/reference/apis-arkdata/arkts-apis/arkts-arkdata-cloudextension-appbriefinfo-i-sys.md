@@ -62,7 +62,7 @@ Bundle name of the application.
 cloudSwitch: boolean
 ```
 
-Whether the cloud service is enabled for the application. The value true means the cloud service is enabled; the value false means the opposite.
+Whether the cloud service is enabled for the application. The value **true** means the cloud service is enabled; the value **false** means the opposite.
 
 **Type:** boolean
 
@@ -80,7 +80,7 @@ Whether the cloud service is enabled for the application. The value true means t
 instanceId: number
 ```
 
-Application twin ID. The value 0 indicates the application itself, and the twin ID increases in ascending order.
+Application twin ID. The value **0** indicates the application itself, and the twin ID increases in ascending order.
 
 **Type:** number
 

@@ -4,7 +4,7 @@
 export type UnifiedGroupInfo = _UnifiedGroupInfo
 ```
 
-描述通知智能聚合信息字段。
+描述通知[智能聚合](../../../notification/notification-glossary.md#notification-smart-aggregation智能聚合)信息字段。
 
 **类型：** _UnifiedGroupInfo
 

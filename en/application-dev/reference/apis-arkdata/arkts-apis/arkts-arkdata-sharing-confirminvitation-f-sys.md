@@ -27,7 +27,7 @@ Confirms the invitation based on the sharing invitation code and obtains the sha
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | invitationCode | string | Yes | Invitation code of the share. |
-| state | [State](arkts-arkdata-sharing-state-e-sys.md) | Yes | Confirmation state. |
+| state | [State](arkts-arkdata-sharing-state-e-sys.md) | Yes | New confirmation state of the invitation. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[Result](arkts-arkdata-relationalstore-result-i.md)&lt;string&gt;&gt; | Yes | Callback used to return the result. |
 
 **Error codes:**
@@ -79,7 +79,7 @@ Confirms the invitation based on the sharing invitation code and obtains the sha
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | invitationCode | string | Yes | Invitation code of the share. |
-| state | [State](arkts-arkdata-sharing-state-e-sys.md) | Yes | Confirmation state. |
+| state | [State](arkts-arkdata-sharing-state-e-sys.md) | Yes | New confirmation state of the invitation. |
 
 **Return value:**
 

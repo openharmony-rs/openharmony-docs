@@ -11,13 +11,13 @@
 function isDistributedEnabled(callback: AsyncCallback<boolean>): void
 ```
 
-Checks whether this device supports distributed notifications. This API uses an asynchronous callback to return the result.
+Checks whether the device supports [distributed notification](../../../notification/notification-glossary.md#distributed-notification). This API uses a callback to return the result.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [isDistributedEnabled](arkts-notification-notificationmanager-isdistributedenabled-f.md)
+**Substitutes:** [isDistributedEnabled](arkts-notification-notificationmanager-isdistributedenabled-f.md#isdistributedenabled-1)(callback: AsyncCallback&lt;boolean&gt;)
 
 <!--Device-notification-function isDistributedEnabled(callback: AsyncCallback<boolean>): void--><!--Device-notification-function isDistributedEnabled(callback: AsyncCallback<boolean>): void-End-->
 
@@ -52,13 +52,13 @@ Notification.isDistributedEnabled(isDistributedEnabledCallback);
 function isDistributedEnabled(): Promise<boolean>
 ```
 
-Checks whether this device supports distributed notifications. This API uses a promise to return the result.
+Checks whether the device supports [distributed notification](../../../notification/notification-glossary.md#distributed-notification). This API uses a promise to return the result.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [isDistributedEnabled](arkts-notification-notificationmanager-isdistributedenabled-f.md)
+**Substitutes:** [isDistributedEnabled](arkts-notification-notificationmanager-isdistributedenabled-f.md)()
 
 <!--Device-notification-function isDistributedEnabled(): Promise<boolean>--><!--Device-notification-function isDistributedEnabled(): Promise<boolean>-End-->
 

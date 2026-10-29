@@ -63,7 +63,7 @@ operateIntention: OperateIntention
 
 **示例**
 
-本示例实现了在智慧手势监听回调中，从BaseGestureHandlingProposal获取智慧手势处理信息，完整示例请参考示例1（启用智慧手势并自定义动作处理）。
+本示例实现了在智慧手势监听回调中，从BaseGestureHandlingProposal获取智慧手势处理信息，完整示例请参考[示例1（启用智慧手势并自定义动作处理）](./arkts-apis-uicontext-smartgesturecontroller.md#示例1启用智慧手势并自定义动作处理)。
 
 ```TypeScript
 import {

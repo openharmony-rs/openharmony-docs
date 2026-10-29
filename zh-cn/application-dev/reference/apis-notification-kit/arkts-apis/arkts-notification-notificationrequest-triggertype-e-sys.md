@@ -20,7 +20,7 @@ export enum TriggerType
 TRIGGER_TYPE_GEOFENCE = 1
 ```
 
-地理围栏触发类型。
+[地理围栏](../../../notification/notification-glossary.md#geofence地理围栏)触发类型。
 
 **起始版本：** 23
 

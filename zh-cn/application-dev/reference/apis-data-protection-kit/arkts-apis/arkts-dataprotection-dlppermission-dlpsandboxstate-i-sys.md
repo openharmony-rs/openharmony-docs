@@ -26,7 +26,7 @@ import { dlpPermission } from '@kit.DataProtectionKit';
 appIndex: number
 ```
 
-表示DLP沙箱应用索引。
+表示DLP沙箱应用索引。取值范围为[1000, 1100]，超出范围时输出错误日志。
 
 **类型：** number
 

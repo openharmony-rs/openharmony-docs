@@ -4,7 +4,7 @@
 export type NotificationSlot = _NotificationSlot
 ```
 
-通知渠道。
+[通知渠道](../../../notification/notification-glossary.md#notification-slot通知渠道)。
 
 **类型：** _NotificationSlot
 

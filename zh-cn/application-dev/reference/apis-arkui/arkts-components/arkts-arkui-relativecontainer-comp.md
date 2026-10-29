@@ -10,7 +10,7 @@
 > 
 > * 从API version 11开始，在RelativeContainer组件中，[width](arkts-arkui-common-comp-commonmethod-c.md#width-1)、[height](arkts-arkui-common-comp-commonmethod-c.md#height-1)设置"auto"表示自适应子组件。当width设置"auto"时，如果水平方向上子组件以容器作为锚点，则"auto"不生效（即视为不设置width），垂直方向上同理。
 > 
-> * 从API version 20开始，在RelativeContainer组件中，width、height设置LayoutPolicy.wrapContent表示自适应子组件且被祖先节点尺寸约束，设置LayoutPolicy.fixAtIdealSize表示自适应子组件且不被祖先节点尺寸约束。当width设置wrapContent或fixAtIdealSize时，如果水平方向上子组件直接或间接以容器作为锚点，则容器在该方向上的尺寸不自适应该组件，垂直方向上同理。
+> * 从API version 20开始，在RelativeContainer组件中，[width](arkts-arkui-common-comp-commonmethod-c.md#width-2)、[height](arkts-arkui-common-comp-commonmethod-c.md#height-2)设置LayoutPolicy.wrapContent表示自适应子组件且被祖先节点尺寸约束，设置LayoutPolicy.fixAtIdealSize表示自适应子组件且不被祖先节点尺寸约束。当width设置wrapContent或fixAtIdealSize时，如果水平方向上子组件直接或间接以容器作为锚点，则容器在该方向上的尺寸不自适应该组件，垂直方向上同理。
 > 
 > * RelativeContainer中子组件的[margin](arkts-arkui-common-comp-commonmethod-c.md#margin)不同于通用属性margin，指子组件到该方向上锚点的距离。例如，当alignRules设置了left锚点时，margin.left表示子组件到left锚点的距离。若alignRules未设置某个边界方向的锚点（如未设置left或right锚点），则该方向的margin不生效。
 
@@ -289,7 +289,7 @@ struct Index {
 
 ### 示例4（设置偏移）
 
-本示例通过bias实现了子组件的位置在垂直方向的两个锚点间偏移的效果。
+本示例通过[bias](ts-types.md#bias11对象说明)实现了子组件的位置在垂直方向的两个锚点间偏移的效果。
 
 
 
@@ -432,7 +432,7 @@ struct Index {
 
 ### 示例7（设置链）
 
-本示例通过chainMode接口从上至下分别实现了水平方向的SPREAD链、SPREAD_INSIDE链和PACKED链。
+本示例通过[chainMode](ts-universal-attributes-location.md#chainmode12)接口从上至下分别实现了水平方向的[SPREAD](ts-universal-attributes-location.md#chainstyle12)链、[SPREAD_INSIDE](ts-universal-attributes-location.md#chainstyle12)链和[PACKED](ts-universal-attributes-location.md#chainstyle12)链。
 
 
 
@@ -583,7 +583,7 @@ struct Index {
 
 ### 示例8（链中设置偏移）
 
-本示例通过chainMode和bias接口实现了水平方向的带偏移的PACKED链。
+本示例通过[chainMode](ts-universal-attributes-location.md#chainmode12)和[bias](ts-types.md#bias11对象说明)接口实现了水平方向的带偏移的[PACKED](ts-universal-attributes-location.md#chainstyle12)链。
 
 
 
@@ -649,7 +649,7 @@ struct Index {
 
 ### 示例9（设置镜像模式）
 
-本示例展示了在镜像模式（direction声明Direction.Rtl）下以屏障为锚点时使用LocalizedAlignRuleOptions和LocalizedBarrierDirection设置对齐方式的用法。
+本示例展示了在镜像模式（direction声明Direction.Rtl）下以屏障为锚点时使用[LocalizedAlignRuleOptions](ts-universal-attributes-location.md#localizedalignruleoptions12对象说明)和[LocalizedBarrierDirection](#localizedbarrierdirection12枚举说明)设置对齐方式的用法。
 
 
 
@@ -723,7 +723,7 @@ struct Index {
 
 ### 示例10（设置链中节点权重）
 
-本示例展示了链中节点使用chainWeight设置尺寸权重的用法。
+本示例展示了链中节点使用[chainWeight](ts-universal-attributes-location.md#chainweight14)设置尺寸权重的用法。
 
 必须先通过alignRules设置子组件的链式对齐规则（确保组件在水平或垂直方向形成链），再通过chainMode设置链样式（如SPREAD、SPREAD_INSIDE、PACKED），chainWeight仅在链模式下生效。
 

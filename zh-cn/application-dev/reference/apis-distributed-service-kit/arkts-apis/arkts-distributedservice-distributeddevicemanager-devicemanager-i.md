@@ -999,7 +999,7 @@ on(type: 'discoverFailure', callback: Callback<{ reason: number; }>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'discoverFailure' | 是 | 注册设备发现失败回调，以便在发现周边设备失败时通知应用，固定为discoverFailure。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;{ reason: number; }&gt; | 是 | 注册设备发现失败的回调方法，返回设备发现失败的原因。回调参数reason为整数类型，表示发现失败的错误原因码，具体取值可参见设备管理错误码。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;{ reason: number; }&gt; | 是 | 注册设备发现失败的回调方法，返回设备发现失败的原因。回调参数reason为整数类型，表示发现失败的错误原因码，具体取值可参见[设备管理错误码](../../../reference/apis-distributedservice-kit/errorcode-device-manager.md)。 |
 
 **错误码：**
 
@@ -1034,16 +1034,16 @@ try {
 ## on('serviceDie')
 
 ```TypeScript
-on(type: 'serviceDie', callback: Callback<{}>): void
+on(type: 'serviceDie', callback?: Callback<{}>): void
 ```
 
-注册设备管理服务死亡回调，以便在服务死亡时通知应用。使用callback异步回调。
+注册设备管理服务死亡回调，以便在服务死亡时通知应用程序。使用callback异步回调。
 
 **起始版本：** 10
 
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
-<!--Device-DeviceManager-on(type: 'serviceDie', callback: Callback<{}>): void--><!--Device-DeviceManager-on(type: 'serviceDie', callback: Callback<{}>): void-End-->
+<!--Device-DeviceManager-on(type: 'serviceDie', callback?: Callback<{}>): void--><!--Device-DeviceManager-on(type: 'serviceDie', callback?: Callback<{}>): void-End-->
 
 **系统能力：** SystemCapability.DistributedHardware.DeviceManager
 
@@ -1052,7 +1052,7 @@ on(type: 'serviceDie', callback: Callback<{}>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'serviceDie' | 是 | 注册serviceDie回调，以便在devicemanager服务异常终止时通知应用程序，固定为serviceDie。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;{}&gt; | 是 | 注册serviceDie的回调方法，当设备管理服务异常终止时触发该回调通知应用。如果不传入callback参数，则不会注册回调。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;{}&gt; | 否 | 注册serviceDie的回调方法，如果不传入该参数，无法收到死亡回调通知。 |
 
 **错误码：**
 
@@ -1060,25 +1060,6 @@ on(type: 'serviceDie', callback: Callback<{}>): void
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter type;         3. Parameter verification failed;         4. The size of specified type is greater than 255. |
-
-**示例**
-
-```TypeScript
-import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  // 创建设备管理实例
-  let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
-  // 注册设备管理服务死亡回调
-  dmInstance.on('serviceDie', () => {
-    console.info('serviceDie on');
-  });
-} catch (err) {
-  let error: BusinessError = err as BusinessError;
-  console.error(`Failed to register service die callback. Code: ${error.code}, message: ${error.message}`);
-}
-```
 
 ## startDiscovering
 

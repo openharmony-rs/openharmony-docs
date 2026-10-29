@@ -4,7 +4,7 @@
 interface AudioSuiteFeatureStatusInfo
 ```
 
-定义音频编创套件特性的状态信息。
+定义音频编创特性的状态信息。
 
 **起始版本：** 26.0.1
 

@@ -239,7 +239,7 @@ g_object.on('status', (sessionId: string, networkId: string, status: 'online' | 
 setSessionId(sessionId?: string): boolean
 ```
 
-Sets a session ID. For the devices in the collaboration state in a trusted network, data of the distributed objects with the same session ID can be automatically synced across devices.
+Sets a session ID. When multiple devices in a trusted group network are in the collaborative state, data of the distributed data objects with the same session ID can be automatically synced across devices.
 
 **Since:** 8
 
@@ -263,7 +263,7 @@ Sets a session ID. For the devices in the collaboration state in a trusted netwo
 
 | Type | Description |
 | --- | --- |
-| boolean | Returns true if the session ID is set successfully; returns false otherwise. |
+| boolean | **true** indicates that the **sessionId** is set successfully. <br>**false** indicates that the **sessionId** fails to be set. |
 
 **Examples**
 

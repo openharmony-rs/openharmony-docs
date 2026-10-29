@@ -4,7 +4,7 @@
 export type NotificationFilter = _NotificationFilter
 ```
 
-描述查询普通实况窗时的筛选条件。
+描述查询实况通知时的筛选条件。
 
 **类型：** _NotificationFilter
 

@@ -26,6 +26,38 @@ DIRECTIONAL = 1
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
+## POINT
+
+```TypeScript
+POINT = 3
+```
+
+点光源类型
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-LightType-POINT = 3--><!--Device-LightType-POINT = 3-End-->
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
+
+## RECT
+
+```TypeScript
+RECT = 4
+```
+
+矩形光类型。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-LightType-RECT = 4--><!--Device-LightType-RECT = 4-End-->
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
+
 ## SPOT
 
 ```TypeScript

@@ -8,7 +8,7 @@
 > 
 > - 该组件从API version 10开始支持继承父组件Text的属性，即如果子组件未设置属性且父组件设置属性，则继承父组件设置的属性。支持继承的属性仅包括：fontColor、fontSize、fontStyle、fontWeight、decoration、letterSpacing、textCase、fontFamily、textShadow。
 > 
-> - 支持[通用属性](arkts-arkui-common-comp.md)中的[无障碍属性](arkts-arkui-common-comp.md)（[accessibilityText](arkts-arkui-common-comp-commonmethod-c.md#accessibilitytext-1)）、[组件标识](arkts-arkui-common-comp.md)（[id](arkts-arkui-common-comp-commonmethod-c.md#id)、[key](arkts-arkui-common-comp-commonmethod-c.md#key)）和[禁用反色能力](arkts-arkui-common-comp.md)（[allowForceDark](arkts-arkui-common-comp-commonmethod-c.md#allowforcedark)），不支持其他通用属性。若需设置其他通用属性，应使用[Text](arkts-arkui-text-comp.md)进行设置，或改用属性字符串中的[CustomSpan](../arkts-apis/arkts-arkui-customspan-c.md)自行绘制。
+> - 支持[通用属性](arkts-arkui-common-comp.md)中的[无障碍属性](arkts-arkui-common-comp.md)（[accessibilityText](arkts-arkui-common-comp-commonmethod-c.md#accessibilitytext-1)）、[组件标识](arkts-arkui-common-comp.md)（[id](arkts-arkui-common-comp-commonmethod-c.md#id)、[key](arkts-arkui-common-comp-commonmethod-c.md#key)）和[禁用反色能力](arkts-arkui-common-comp.md)（[allowForceDark](arkts-arkui-common-comp-commonmethod-c.md#allowforcedark)），不支持其他通用属性。若需设置其他通用属性，应使用[Text](arkts-arkui-text-comp.md)进行设置，或改用[属性字符串](../arkts-apis/arkts-arkui-styledstring.md#styled_string)中的[CustomSpan](../arkts-apis/arkts-arkui-customspan-c.md)自行绘制。
 > 
 > - [accessibilityText](arkts-arkui-common-comp-commonmethod-c.md#accessibilitytext-1)仅在Span设置了[onClick](arkts-arkui-common-comp-commonmethod-c.md#onclick-1)事件时生效，配置的文本只会体现在无障碍服务识别到的内嵌链接弹窗中。直接播报时，仍播报Span的内容，不会替换为accessibilityText配置的文本。
 > 
@@ -233,7 +233,7 @@ struct SpanExample {
 
 ### 示例2（设置文本阴影）
 
-从API version 11开始，该示例通过textShadow属性展示了文本设置阴影的效果。
+从API version 11开始，该示例通过[textShadow](#textshadow11)属性展示了文本设置阴影的效果。
 
 
 
@@ -287,7 +287,7 @@ struct SpanExample {
 
 ### 示例3（设置背景样式）
 
-从API version 11开始，该示例通过textBackgroundStyle属性展示了文本设置背景样式的效果。
+从API version 11开始，该示例通过[textBackgroundStyle](#textbackgroundstyle11)属性展示了文本设置背景样式的效果。
 
 
 
@@ -311,7 +311,7 @@ struct SpanExample {
 
 ### 示例4（设置文本基线偏移量）
 
-从API version 12开始，该示例通过baselineOffset属性展示了文本设置不同基线偏移量的效果。
+从API version 12开始，该示例通过[baselineOffset](#baselineoffset12)属性展示了文本设置不同基线偏移量的效果。
 
 
 
@@ -348,9 +348,9 @@ struct SpanExample {
 
 ### 示例5（设置文本可变字体的属性）
 
-该示例通过fontVariations属性设置可变字体的属性。
+该示例通过[fontVariations](#fontvariations)属性设置可变字体的属性。
 
-从API版本26.0.0开始，新增fontVariations接口。
+从API版本26.0.0开始，新增[fontVariations](#fontvariations)接口。
 
 ```TypeScript
 // xxx.ets

@@ -112,7 +112,7 @@ open()
 > **说明：** 
 > 
 > 不支持在输入法类型窗口中使用子窗（showInSubwindow为true）的CustomDialog，详情见输入法框架的约束与限制说明
-> createPanel
+> [createPanel](../../apis-ime-kit/arkts-apis/arkts-ime-inputmethodengine-inputmethodability-i.md#createpanel-2)
 > 。
 
 **起始版本：** 7

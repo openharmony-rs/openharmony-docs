@@ -44,7 +44,7 @@ Bundle name.
 enable?: boolean
 ```
 
-Whether the application enables cross-device collaboration. The value **true** indicates that the cross-device collaboration is enabled, and the value **false** indicates the opposite.
+Whether [cross-device collaboration](../../../notification/notification-glossary.md#cross-device-collaboration) is supported. The value **true** indicates supported, and **false** indicates not supported. The default value is **false**.
 
 **Type:** boolean
 

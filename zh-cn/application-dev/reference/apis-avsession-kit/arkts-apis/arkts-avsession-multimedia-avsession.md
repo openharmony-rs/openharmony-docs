@@ -20,8 +20,8 @@ import { avSession } from '@kit.AVSessionKit';
 | --- | --- |
 | [createAVSession](arkts-avsession-avsession-createavsession-f.md#createavsession-1) | 创建会话对象，一个应用程序仅允许存在一个会话，重复创建会失败，结果通过callback异步回调方式返回。 |
 | [createAVSession](arkts-avsession-avsession-createavsession-f.md#createavsession-2) | 创建会话对象，一个应用进程仅允许存在一个会话，重复创建会失败，结果通过Promise异步回调方式返回。 |
-| createController | 根据会话ID创建会话控制器。使用Promise异步回调。 |
-| getAllSessionDescriptors | 获取所有设置过媒体信息且注册过控制回调的会话的描述符信息。结果通过Promise异步回调方式返回。 |
+| [createController](arkts-avsession-avsession-createcontroller-f.md#createcontroller-2) | 根据会话ID创建会话控制器。使用Promise异步回调。 |
+| [getAllSessionDescriptors](arkts-avsession-avsession-getallsessiondescriptors-f.md#getallsessiondescriptors-2) | 获取所有设置过媒体信息且注册过控制回调的会话的描述符信息。结果通过Promise异步回调方式返回。 |
 | [getAVSession](arkts-avsession-avsession-getavsession-f.md#getavsession-1) | 获取会话对象。使用Promise异步回调。 |
 | [isDesktopLyricSupported](arkts-avsession-avsession-isdesktoplyricsupported-f.md#isdesktoplyricsupported-1) | 设备是否支持桌面歌词功能。使用Promise异步回调。 |
 | [offSessionCreate](arkts-avsession-avsession-offsessioncreate-f.md#offsessioncreate-1) | Unregister session create callback |
@@ -113,7 +113,7 @@ import { avSession } from '@kit.AVSessionKit';
 | [AudioCapabilities](arkts-avsession-avsession-audiocapabilities-i.md) | 表示投播设备支持的音频能力。 |
 | [AVCallState](arkts-avsession-avsession-avcallstate-i.md) | 通话状态相关属性。 |
 | [AVCastControlCommand](arkts-avsession-avsession-avcastcontrolcommand-i.md) | 投播控制器接受的命令的对象描述。 |
-| [AVCastController](arkts-avsession-avsession-avcastcontroller-i.md) | 在投播建立后，调用avSession.getAVCastController后，返回会话控制器实例。控制器可查看会话ID，并可完成对会话发送命令及事件，获取会话元数据，播放状态信息等操作。 |
+| [AVCastController](arkts-avsession-avsession-avcastcontroller-i.md) | 在投播建立后，调用[avSession.getAVCastController](arkts-avsession-avsession-getavcastcontroller-f-sys.md)后，返回会话控制器实例。控制器可查看会话ID，并可完成对会话发送命令及事件，获取会话元数据，播放状态信息等操作。 |
 | [AVCastPickerOptions](arkts-avsession-avsession-avcastpickeroptions-i.md) | 拉起的投播组件包含的配置属性。 |
 | [AVControlCommand](arkts-avsession-avsession-avcontrolcommand-i.md) | 会话接受的命令的对象描述。 |
 | [AVMediaDescription](arkts-avsession-avsession-avmediadescription-i.md) | 播放列表媒体元数据的相关属性。 |
@@ -137,7 +137,7 @@ import { avSession } from '@kit.AVSessionKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [AVCastController](arkts-avsession-avsession-avcastcontroller-i-sys.md) | 在投播建立后，调用avSession.getAVCastController后，返回会话控制器实例。控制器可查看会话ID，并可完成对会话发送命令及事件，获取会话元数据，播放状态信息等操作。 |
+| [AVCastController](arkts-avsession-avsession-avcastcontroller-i-sys.md) | 在投播建立后，调用[avSession.getAVCastController](arkts-avsession-avsession-getavcastcontroller-f-sys.md)后，返回会话控制器实例。控制器可查看会话ID，并可完成对会话发送命令及事件，获取会话元数据，播放状态信息等操作。 |
 | [AVQueueInfo](arkts-avsession-avsession-avqueueinfo-i-sys.md) | 歌单（歌曲列表）的相关属性。 |
 | [AVSessionController](arkts-avsession-avsession-avsessioncontroller-i-sys.md) | AVSessionController控制器可查看会话ID，并可完成对会话发送命令及事件，获取会话元数据，播放状态信息等操作。 |
 | [AVSessionDescriptor](arkts-avsession-avsession-avsessiondescriptor-i-sys.md) | 会话的相关描述信息。 |

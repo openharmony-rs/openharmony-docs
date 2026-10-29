@@ -4,7 +4,7 @@
 export interface UnifiedGroupInfo
 ```
 
-Describes the fields of notification intelligent unification information.
+Describes the information fields of notification [smart aggregation](../../../notification/notification-glossary.md#notification-smart-aggregation).
 
 **Since:** 12
 

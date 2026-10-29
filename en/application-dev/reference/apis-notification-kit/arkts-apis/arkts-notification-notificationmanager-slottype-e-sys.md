@@ -4,7 +4,7 @@
 export enum SlotType
 ```
 
-Enumerates the notification slot types.
+Enumerates the [notification slot](../../../notification/notification-glossary.md#notification-slot) types.
 
 Different types correspond to different [SlotLevel](arkts-notification-notificationmanager-slotlevel-e.md) values, determining the reminder behavior of the notification.
 

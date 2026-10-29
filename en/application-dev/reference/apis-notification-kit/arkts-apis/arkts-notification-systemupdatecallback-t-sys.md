@@ -4,7 +4,7 @@
 export type SystemUpdateCallback = (data: SubscribeCallbackData) => void
 ```
 
-Returns the notification information carrying system property values. type SystemUpdateCallback = (data: SubscribeCallbackData) =&gt; void
+Returns the notification information carrying system property values.
 
 **Since:** 23
 

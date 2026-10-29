@@ -4,7 +4,7 @@
 export interface EnabledPriorityNotificationCallbackData
 ```
 
-通知优先级总开关状态。
+通知优先级总开关状态变化的回调数据。
 
 **起始版本：** 23
 
@@ -20,8 +20,9 @@ export interface EnabledPriorityNotificationCallbackData
 readonly enable: boolean
 ```
 
-所有通知的优先使能状态。  
-- true：允许设置为优先通知。  
+所有通知的优先使能状态。
+
+- true：允许设置为[优先通知](../../../notification/notification-glossary.md#priority-notification优先通知)。  
 - false：禁止设置为优先通知。
 
 **类型：** boolean

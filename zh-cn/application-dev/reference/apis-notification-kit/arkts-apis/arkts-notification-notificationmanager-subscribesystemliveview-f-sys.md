@@ -12,7 +12,7 @@ import { notificationManager } from '@kit.NotificationKit';
 function subscribeSystemLiveView(subscriber: SystemLiveViewSubscriber): Promise<void>
 ```
 
-订阅系统实况窗。使用Promise异步回调。
+订阅[系统实况窗](../../../notification/notification-glossary.md#system-live-view系统实况窗)。使用Promise异步回调。
 
 **起始版本：** 11
 

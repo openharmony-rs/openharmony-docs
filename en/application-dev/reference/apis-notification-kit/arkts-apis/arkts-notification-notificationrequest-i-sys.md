@@ -4,7 +4,7 @@
 export interface NotificationRequest
 ```
 
-Defines the data structure of a notification request, which is used to describe all information about a notification, including the notification content, identifier, display style, and interaction behavior.
+Defines the data structure of a [notification request](../../../notification/notification-glossary.md#notification-request), which is used to describe all information of a notification, including [notification content](../../../notification/notification-glossary.md#notification-content), identifier, display style, interaction behavior, and so on.
 
 **Since:** 7
 
@@ -36,7 +36,7 @@ Information about the agent bundle for creating notifications. This parameter is
 readonly appInstanceKey?: string
 ```
 
-Application instance key. This parameter is left empty by default.
+Application instance key. The default value is empty. Set this field when you need to distinguish between different instances of the same application.
 
 **Type:** string
 
@@ -54,7 +54,9 @@ Application instance key. This parameter is left empty by default.
 classification?: string
 ```
 
-Notification classification. Not supported currently.
+Notification classification.
+
+Not supported currently.
 
 **Type:** string
 
@@ -72,7 +74,9 @@ Notification classification. Not supported currently.
 readonly deviceId?: string
 ```
 
-Device ID of the notification source. Not supported currently.
+Device ID of the notification source.
+
+Not supported currently.
 
 **Type:** string
 
@@ -108,9 +112,14 @@ Extended parameters customized for the system applications to publish notificati
 forceDistributed?: boolean
 ```
 
-Whether notifications are forcibly displayed in all scenario across devices. The default value is **false**. **NOTE:** This field takes effect only when the application is in the cross-device collaborative management list and **notDistributed** is set to **false**. Check whether the **collaborationFilter** field in the **notification_config.json** file contains the UID or bundle name of the application. For details about the file configuration path, see the **NOTIFICATION_CONFIG_FILE** property in [notification_config_parse.h](https://gitcode.com/openharmony/notification_distributed_notification_service/blob/master/services/ans/include/notification_config_parse.h). If yes, the application is on the cross-device collaborative management list.
-- **true**: Notifications are displayed on all collaboration devices.
-- **false**: Notifications are displayed on the applications that are on the collaborative management list.
+Whether notifications are forcibly displayed through all-scenario cross-device collaboration. The default value is **false**.
+
+**NOTE:** 
+
+This field takes effect only when the application is in the cross-device collaboration management list and **notDistributed** is set to **false**. Check whether the **collaborationFilter** field in the **notification_config.json** file contains the UID or bundle name of the application. For details about the file configuration path, see the **NOTIFICATION_CONFIG_FILE** property in [notification_config_parse.h] (https://gitcode.com/openharmony/notification_distributed_notification_service/blob/master/services/ans/include/notification_config_parse.h). If yes, the application is on the cross-device collaboration management list.
+
+- **true**: Notifications are displayed on all collaboration devices.  
+- **false**: Notifications are displayed according to the collaborative management list.
 
 **Type:** boolean
 
@@ -130,7 +139,7 @@ Whether notifications are forcibly displayed in all scenario across devices. The
 groupInfo?: GroupInfo
 ```
 
-Custom group notification information. This parameter is left empty by default.
+Custom information of the [group notification](../../../notification/notification-glossary.md#group-notification). This parameter is left empty by default.
 
 **Type:** [GroupInfo](arkts-notification-notificationrequest-groupinfo-i-sys.md)
 
@@ -177,9 +186,15 @@ Whether the notification can be removed. If a notification is not removable, it 
 notDistributed?: boolean
 ```
 
-Whether notifications are not displayed in all scenarios across devices. The default value is **false**. **NOTE:** This field is mutually exclusive with the **forceDistributed** field. When both fields are set to **true**, only the **notDistributed** field takes effect.
-- **true**: Notifications are displayed only on the local device.
-- **false**: Notifications are displayed on all collaboration devices.
+Whether the notification is not displayed through all-scenario [cross-device collaboration](../../../notification/notification-glossary.md#cross-device-collaboration). The default value is **false**.
+
+**Note:** 
+
+This field is mutually exclusive with the forceDistributed field. When both are set to **true**, only the notDistributed field takes effect.
+
+- When set to **true**: the notification is displayed only on this device.
+
+- When set to **false**: the notification is displayed on all collaboration devices.
 
 **Type:** boolean
 
@@ -199,7 +214,9 @@ Whether notifications are not displayed in all scenarios across devices. The def
 notificationControlFlags?: number
 ```
 
-Notification mode control. The default value is **0**. This API can be used to reduce the notification modes of the current notification. This parameter is obtained by performing the bitwise OR operation with the enumeration of NotificationControlFlagStatus.
+[Notification reminder mode](../../../notification/notification-glossary.md#notification-reminder-mode) control. The default value is **0**.
+
+This API can be used to reduce the reminder modes of the current notification. This parameter is obtained by performing a bitwise OR operation on the enums of [NotificationControlFlagStatus](arkts-notification-notificationmanager-notificationcontrolflagstatus-e-sys.md).
 
 **Type:** number
 
@@ -235,7 +252,9 @@ Information about the proxied bundle. This parameter is left empty by default.
 readonly source?: number
 ```
 
-Notification source. Not supported currently.
+Notification source.
+
+Not supported currently.
 
 **Type:** number
 
@@ -271,7 +290,7 @@ Condition object. This parameter is left empty by default.
 unifiedGroupInfo?: UnifiedGroupInfo
 ```
 
-Intelligent notification unification information. This parameter is left empty by default.
+Information field of message [smart aggregation](../../../notification/notification-glossary.md#notification-smart-aggregation). This parameter is left empty by default.
 
 **Type:** [UnifiedGroupInfo](arkts-notification-notificationrequest-unifiedgroupinfo-i-sys.md)
 

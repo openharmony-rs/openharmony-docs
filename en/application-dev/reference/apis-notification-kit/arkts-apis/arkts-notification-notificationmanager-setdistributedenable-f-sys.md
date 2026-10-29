@@ -12,7 +12,7 @@ import { notificationManager } from '@kit.NotificationKit';
 function setDistributedEnable(enable: boolean, callback: AsyncCallback<void>): void
 ```
 
-Sets whether to enable distributed notification on this device. This API uses an asynchronous callback to return the result.
+Sets whether to enable [distributed notification](../../../notification/notification-glossary.md#distributed-notification) on this device. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
 
@@ -74,7 +74,7 @@ notificationManager.setDistributedEnable(enable, setDistributedEnableCallback);
 function setDistributedEnable(enable: boolean): Promise<void>
 ```
 
-Sets whether to enable distributed notification on this device. This API uses a promise to return the result.
+Sets whether to enable [distributed notification](../../../notification/notification-glossary.md#distributed-notification) on this device. This API uses a promise to return the result.
 
 **Since:** 9
 

@@ -395,14 +395,14 @@ updateOsAccountDistributedInfo(accountInfo: DistributedInfo): Promise<void>
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> setOsAccountDistributedInfo
+> [setOsAccountDistributedInfo](#setosaccountdistributedinfo-2)
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** setOsAccountDistributedInfo(accountInfo: DistributedInfo)
+**替代接口：** [setOsAccountDistributedInfo](#setosaccountdistributedinfo-2)(accountInfo: DistributedInfo)
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS
 

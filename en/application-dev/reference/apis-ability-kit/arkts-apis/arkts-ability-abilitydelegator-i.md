@@ -16,8 +16,6 @@ The **AbilityDelegator** module can listen for and manage the lifecycle changes 
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
-**Test API:** This API is used only in automated test scripts.
-
 ## addAbilityMonitor
 
 ```TypeScript
@@ -741,8 +739,6 @@ Finishes the test and prints log information to the unit test console. This API 
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
-**Test API:** This API is used only in automated test scripts.
-
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -792,8 +788,6 @@ Finishes the test and prints log information to the unit test console. This API 
 <!--Device-AbilityDelegator-finishTest(msg: string, code: long): Promise<void>--><!--Device-AbilityDelegator-finishTest(msg: string, code: long): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
-
-**Test API:** This API is used only in automated test scripts.
 
 **Parameters:**
 
@@ -1030,8 +1024,6 @@ Prints log information to the unit test console. This API uses an asynchronous c
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
-**Test API:** This API is used only in automated test scripts.
-
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -1074,8 +1066,6 @@ Prints log information to the unit test console. This API uses a promise to retu
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
-**Test API:** This API is used only in automated test scripts.
-
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -1117,8 +1107,6 @@ Prints log information to the unit test console.
 <!--Device-AbilityDelegator-printSync(msg: string): void--><!--Device-AbilityDelegator-printSync(msg: string): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
-
-**Test API:** This API is used only in automated test scripts.
 
 **Parameters:**
 

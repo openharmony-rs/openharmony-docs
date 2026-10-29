@@ -28,7 +28,7 @@ Sets the additional system configuration information of the notification. This A
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| key | string | Yes | Additional configuration key. Currently, only **RING_TRUSTLIST_PKG** is supported, indicating that the application supports custom ringtones. |
+| key | string | Yes | Additional configuration key. Currently, only `RING_TRUSTLIST_PKG` is supported, indicating that the application supports the use of [customized ringtone](../../../notification/notification-glossary.md#customized-ringtone). |
 | value | string | Yes | Additional configuration value. Example: [bundleName1,bundleName2]. |
 
 **Return value:**

@@ -15,7 +15,7 @@ export interface GrantedBundleInfo
 ## appIndex
 
 ```TypeScript
-readonly appIndex: number
+appIndex: number
 ```
 
 应用的分身索引标识，仅在分身应用中生效。从ApplicationInfo中appIndex获取。
@@ -24,7 +24,7 @@ readonly appIndex: number
 
 **起始版本：** 22
 
-<!--Device-GrantedBundleInfo-readonly appIndex: int--><!--Device-GrantedBundleInfo-readonly appIndex: int-End-->
+<!--Device-GrantedBundleInfo-appIndex: int--><!--Device-GrantedBundleInfo-appIndex: int-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
 

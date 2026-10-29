@@ -34,7 +34,7 @@ No permission to perform this operation on the URI.
 OVER_LIMIT = 3
 ```
 
-The number of configurations published by the current application exceeds the upper limit of 32.
+Before API version 26.0.0, this status code indicates that the number of configurations published by the current application exceeds the upper limit of 32. Since API version 26.0.0, it indicates that the number of configurations published by the current application exceeds the upper limit of 64, or the value of the obtained share configuration item exceeds the maximum length limit configured by the **maxValueLength** field in [DataProxyConfig](arkts-arkdata-datashare-dataproxyconfig-i.md).
 
 **Since:** 20
 

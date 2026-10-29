@@ -4,7 +4,7 @@
 export interface NotificationContent
 ```
 
-通知内容。
+NotificationContent中定义通知的内容结构，提供多种通知类型的内容描述接口。当应用需要发布通知时，可根据通知的展示需求（如普通文本、长文本、多行文本、图片、实况窗），选择对应的内容类型接口构造[通知内容](../../../notification/notification-glossary.md#notification-content通知内容)。
 
 **起始版本：** 7
 
@@ -18,7 +18,7 @@ export interface NotificationContent
 liveView?: NotificationLiveViewContent
 ```
 
-普通实况窗类型通知内容。
+普通实况窗类型[通知内容](../../../notification/notification-glossary.md#notification-content通知内容)。
 
 **类型：** [NotificationLiveViewContent](arkts-notification-notificationcontent-notificationliveviewcontent-i-sys.md)
 

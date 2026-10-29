@@ -8,7 +8,8 @@ Describes the notification timing information.
 
 > **NOTE:** 
 > 
-> The actual display effect depends on the device capabilities and the notification center UI style.
+> The actual display effect depends on the device capabilities and the
+> [notification center](../../../notification/notification-glossary.md#notification-center) UI style.
 
 **Since:** 11
 
@@ -22,7 +23,9 @@ Describes the notification timing information.
 initialTime?: number
 ```
 
-Initial time for the timer, which is used to set the starting point of the timer in the live view. The default value is **0**. Unit: ms.
+Initial time for the timer, which is used to set the starting point of the timer in the live view. The default value is **0**.
+
+Unit: ms.
 
 **Type:** number
 

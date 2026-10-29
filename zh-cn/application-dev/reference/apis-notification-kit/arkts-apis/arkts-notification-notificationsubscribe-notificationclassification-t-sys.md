@@ -4,7 +4,7 @@
 export type NotificationClassification = _NotificationClassification
 ```
 
-描述通知分类信息。
+通知分类信息。
 
 **类型：** _NotificationClassification
 

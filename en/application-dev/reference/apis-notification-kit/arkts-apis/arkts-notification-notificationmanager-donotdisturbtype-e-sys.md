@@ -20,7 +20,7 @@ Defines the DND time type.
 TYPE_CLEARLY = 3
 ```
 
-DND at the specified time segment (with the hour, day, and month specified).
+DND at the specified time segment (accurate to month, day, and hour).
 
 **Since:** 9
 

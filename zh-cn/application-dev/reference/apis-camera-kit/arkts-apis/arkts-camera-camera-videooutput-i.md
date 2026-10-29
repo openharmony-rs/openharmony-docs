@@ -29,7 +29,7 @@ enableMirror(enabled: boolean): void
 启用/关闭镜像录像。
 
 - 调用该接口前，需要通过[isMirrorSupported](#ismirrorsupported)查询是否支录像镜像功能。  
-- 启用/关闭录像镜像后，需要通过[getVideoRotation](#getvideorotation)获取录像旋转角度以及updateRotation更新旋转角度。
+- 启用/关闭录像镜像后，需要通过[getVideoRotation](#getvideorotation)获取录像旋转角度以及[updateRotation](../../apis-media/arkts-apis/arkts-media-media-avrecorder-i.md#updaterotation)更新旋转角度。
 
 **起始版本：** 15
 

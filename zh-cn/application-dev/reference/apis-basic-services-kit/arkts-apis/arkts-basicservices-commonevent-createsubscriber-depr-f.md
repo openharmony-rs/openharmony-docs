@@ -20,7 +20,7 @@ function createSubscriber(
 
 **废弃版本：** 9
 
-**替代接口：** [createSubscriber](arkts-basicservices-commoneventmanager-createsubscriber-f.md#createsubscriber-1)( subscribeInfo: CommonEventSubscribeInfo, callback: AsyncCallback&lt;CommonEventSubscriber&gt; )
+**替代接口：** [createSubscriber](arkts-basicservices-commoneventmanager-createsubscriber-f.md#createsubscriber-1)(subscribeInfo: CommonEventSubscribeInfo, callback: AsyncCallback&lt;CommonEventSubscriber&gt;)
 
 <!--Device-commonEvent-function createSubscriber(    subscribeInfo: CommonEventSubscribeInfo,    callback: AsyncCallback<CommonEventSubscriber>  ): void--><!--Device-commonEvent-function createSubscriber(    subscribeInfo: CommonEventSubscribeInfo,    callback: AsyncCallback<CommonEventSubscriber>  ): void-End-->
 
@@ -31,7 +31,7 @@ function createSubscriber(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | subscribeInfo | [CommonEventSubscribeInfo](arkts-basicservices-commoneventsubscribeinfo-i.md) | 是 | 表示订阅信息。 |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;[CommonEventSubscriber](arkts-basicservices-commoneventsubscriber-i.md)&gt; | 是 | 表示创建订阅者的回调方法。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;[CommonEventSubscriber](arkts-basicservices-commoneventsubscriber-i.md)&gt; | 是 | 回调函数。当创建公共事件订阅者成功，err为undefined，data为获取到的公共事件订阅者，否则为错误对象。 |
 
 **示例**
 
@@ -89,7 +89,7 @@ function createSubscriber(subscribeInfo: CommonEventSubscribeInfo): Promise<Comm
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[CommonEventSubscriber](arkts-basicservices-commoneventsubscriber-i.md)&gt; | 返回订阅者对象。 |
+| Promise&lt;[CommonEventSubscriber](arkts-basicservices-commoneventsubscriber-i.md)&gt; | Promise对象，返回订阅者对象。 |
 
 **示例**
 

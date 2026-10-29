@@ -4,7 +4,7 @@
 export interface SystemLiveViewSubscriber
 ```
 
-Subscriber of the system live view notification.
+Defines the [system live view](../../../notification/notification-glossary.md#system-live-view) subscriber.
 
 **Since:** 11
 

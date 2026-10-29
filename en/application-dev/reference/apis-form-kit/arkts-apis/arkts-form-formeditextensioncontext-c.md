@@ -51,6 +51,7 @@ Sets the background color for the FormEditExtensionAbility.This API uses a promi
 | Error Code ID | Error Message |
 | --- | --- |
 | [16500050](../errorcode-form.md#16500050-ipc-failure) | An IPC connection error happened. |
+| 16501026 | Invalid color value. |
 
 ## startSecondPage
 

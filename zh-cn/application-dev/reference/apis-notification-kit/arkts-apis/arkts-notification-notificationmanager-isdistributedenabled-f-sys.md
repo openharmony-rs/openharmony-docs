@@ -12,7 +12,7 @@ import { notificationManager } from '@kit.NotificationKit';
 function isDistributedEnabled(deviceType: string): Promise<boolean>
 ```
 
-查询设备是否支持跨设备协同通知。使用Promise异步回调。
+查询设备是否支持[跨设备协同](../../../notification/notification-glossary.md#cross-device-collaboration跨设备协同)通知。使用Promise异步回调。
 
 **起始版本：** 20
 
@@ -34,7 +34,7 @@ function isDistributedEnabled(deviceType: string): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | 返回设备是否支持跨设备协同通知的结果，返回true表示支持；返回false表示不支持。Promise对象。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示设备支持跨设备协同通知；返回false表示不支持。 |
 
 **错误码：**
 

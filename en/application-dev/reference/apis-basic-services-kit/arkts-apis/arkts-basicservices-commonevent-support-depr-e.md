@@ -4,7 +4,9 @@
 export enum Support
 ```
 
-A system common event is an event that is published by a system service or system application and requires specific permissions to subscribe to. To publish or subscribe to this type of event, you must follow the event-specific definitions.
+[System common events](../../../basic-services/common-event/common-event-glossary.md#system-common-event) refer to events released by system services or system apps. Subscribing to these events requires specific permissions. To publish or subscribe to this type of event, you must follow the event-specific definitions.
+
+For details about the definitions of all system common events, see [System Common Events](arkts-basicservices-commonevent.md).
 
 **Since:** 7
 

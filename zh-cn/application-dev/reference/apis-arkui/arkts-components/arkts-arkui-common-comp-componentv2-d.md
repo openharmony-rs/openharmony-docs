@@ -12,6 +12,8 @@ declare const ComponentV2: ClassDecorator & ((options: ComponentOptions) => Clas
 > 
 > - 从API版本26.0.0开始，\@ComponentV2的[ComponentOptions](arkts-arkui-common-comp-componentoptions-i.md)参数支持可选属性`reusePool`和`poolAccepts`，用于配置全局复用池，开发指南参考：[全局复用：集中化的组件回收与复用](../../../ui/state-management/arkts-global-reuse-pool.md)。
 
+options：\@ComponentV2装饰器选项。当需要开启组件冻结或全局复用功能时传入此参数进行自定义配置；缺省时关闭组件冻结和全局复用功能。ClassDecorator：类装饰器，开发者无需关注该返回值。
+
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。

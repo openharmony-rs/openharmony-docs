@@ -12,7 +12,7 @@ import { notificationManager } from '@kit.NotificationKit';
 function getRingtoneInfoByBundle(bundle: BundleOption): Promise<RingtoneInfo>
 ```
 
-获取应用自定义铃声信息。使用Promise异步回调。
+获取应用[自定义铃声](../../../notification/notification-glossary.md#customized-ringtone自定义铃声)信息。使用Promise异步回调。
 
 **起始版本：** 21
 

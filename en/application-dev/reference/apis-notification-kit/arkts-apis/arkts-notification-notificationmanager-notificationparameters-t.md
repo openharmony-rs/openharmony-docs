@@ -4,7 +4,7 @@
 export type NotificationParameters = _NotificationParameters
 ```
 
-Describes partial information about the **wantAgent** in the notification request.
+Describes part of the information about the wantAgent in the [notification request](../../../notification/notification-glossary.md#notification-request).
 
 **Type:** _NotificationParameters
 

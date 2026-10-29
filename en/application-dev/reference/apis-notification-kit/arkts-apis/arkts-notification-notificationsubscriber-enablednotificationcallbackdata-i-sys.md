@@ -4,7 +4,7 @@
 export interface EnabledNotificationCallbackData
 ```
 
-Returns the changes of the application enabling state.
+Returns the changes of the application badge enabled state.
 
 **Since:** 8
 
@@ -38,7 +38,8 @@ Bundle name of the application.
 readonly enable: boolean
 ```
 
-Whether the application notification is enabled.  
+Whether the application notification is enabled.
+
 - **true**: enabled.  
 - **false**: disabled.
 

@@ -44,7 +44,7 @@ HAP的名称。
 readonly originHapHash: string
 ```
 
-指示hap的哈希值。
+指示HAP的哈希值。
 
 **类型：** string
 

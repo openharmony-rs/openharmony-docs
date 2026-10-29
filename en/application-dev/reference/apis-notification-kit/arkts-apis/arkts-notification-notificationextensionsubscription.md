@@ -1,6 +1,6 @@
-# @ohos.notificationExtensionSubscription
+# @ohos.notificationExtensionSubscription(notificationExtensionSubscription)
 
-The **notificationExtensionSubscription** module provides capabilities for managing notification extension, including opening the extension settings screen, subscribing to/unsubscribing from notification extension, and obtaining/ setting the notification authorization status.
+This module provides the capabilities for managing notification extensions, including opening the notification extension subscription settings page, subscribing to and unsubscribing from notification extensions, and obtaining and setting the [notification authorization](../../../notification/notification-glossary.md#notification-authorization) status.
 
 **Since:** 22
 
@@ -35,7 +35,7 @@ import { notificationExtensionSubscription } from '@kit.NotificationKit';
 
 | Name | Description |
 | --- | --- |
-| [getAllSubscriptionBundles](arkts-notification-notificationextensionsubscription-getallsubscriptionbundles-f-sys.md#getallsubscriptionbundles-1) | Obtains all applications that have requested the ohos.permission.SUBSCRIBE_NOTIFICATION permission and implemented [NotificationSubscriberExtensionAbility](arkts-notification-application-notificationsubscriberextensionability-notificationsubscriberextensionability-c.md). This API uses a promise to return the result. |
+| [getAllSubscriptionBundles](arkts-notification-notificationextensionsubscription-getallsubscriptionbundles-f-sys.md#getallsubscriptionbundles-1) | Obtains all applications that have the [ohos.permission.SUBSCRIBE_NOTIFICATION](../../../security/AccessToken/restricted-permissions.md#ohospermissionsubscribe_notification) permission and have implemented [NotificationSubscriberExtensionAbility](arkts-notification-application-notificationsubscriberextensionability-notificationsubscriberextensionability-c.md). This API uses a promise to return the result. |
 | [getUserGrantedEnabledBundles](arkts-notification-notificationextensionsubscription-getusergrantedenabledbundles-f-sys.md#getusergrantedenabledbundles-1) | Obtains the applications that are allowed to access device notifications. This API uses a promise to return the result. |
 | [getUserGrantedState](arkts-notification-notificationextensionsubscription-getusergrantedstate-f-sys.md#getusergrantedstate-1) | Obtains the enabling state of the **Allow access to notifications on this device** switch of a specified application. This API uses a promise to return the result. |
 | [setUserGrantedBundleState](arkts-notification-notificationextensionsubscription-setusergrantedbundlestate-f-sys.md#setusergrantedbundlestate-1) | Sets the enabling state of device notification access for the specified application. This API uses a promise to return the result. |
@@ -50,11 +50,11 @@ import { notificationExtensionSubscription } from '@kit.NotificationKit';
 | [BundleOption](arkts-notification-notificationextensionsubscription-bundleoption-t.md) | Describes the bundle information of an application. |
 | [GrantedBundleInfo](arkts-notification-notificationextensionsubscription-grantedbundleinfo-t.md) | Describes the bundle information of the authorized application. |
 | [NotificationExtensionSubscriptionInfo](arkts-notification-notificationextensionsubscription-notificationextensionsubscriptioninfo-t.md) | Describes the information about the notification extension subscription. |
-| [NotificationInfo](arkts-notification-notificationextensionsubscription-notificationinfo-t.md) | Describes the notification information delivered to the [onReceiveMessage](arkts-notification-application-notificationsubscriberextensionability-notificationsubscriberextensionability-c.md#onreceivemessage) callback of ExtensionAbility for notification subscriptions. |
+| [NotificationInfo](arkts-notification-notificationextensionsubscription-notificationinfo-t.md) | Defines the notification information in the [onReceiveMessage](arkts-notification-application-notificationsubscriberextensionability-notificationsubscriberextensionability-c.md#onreceivemessage) callback of the [notification subscription](../../../notification/notification-glossary.md#notification-subscription) extension ability. |
 | [UserGrantSetting](arkts-notification-notificationextensionsubscription-usergrantsetting-t.md) | Describes the user authorization settings. |
 
 ### Enums
 
 | Name | Description |
 | --- | --- |
-| [SubscribeType](arkts-notification-notificationextensionsubscription-subscribetype-e.md) |  |
+| [SubscribeType](arkts-notification-notificationextensionsubscription-subscribetype-e.md) | Describes the type that enables notification extension subscription. |

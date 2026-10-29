@@ -4,11 +4,11 @@
 export interface NotificationSystemLiveViewContent extends NotificationBasicContent
 ```
 
-描述系统实况窗通知内容，用于在实况窗中展示实时状态信息。不支持三方应用直接创建该类型通知，可以由系统代理创建系统实况窗类型通知后，三方应用发布同ID的通知来更新指定内容。继承自[NotificationBasicContent](arkts-notification-notificationcontent-notificationbasiccontent-i.md)。
+描述[系统实况窗](../../../notification/notification-glossary.md#system-live-view系统实况窗) [通知内容](../../../notification/notification-glossary.md#notification-content通知内容)，用于在实况窗中展示实时状态信息。不支持三方应用直接创建该类型通知，可以由系统代理创建系统实况窗类型通知后，三方应用发布同ID的通知来更新指定内容。继承自[NotificationBasicContent](arkts-notification-notificationcontent-notificationbasiccontent-i.md)。
 
 > **说明：** 
 > 
-> 实际显示效果依赖于设备能力和通知中心UI样式。
+> 实际显示效果依赖于设备能力和[通知中心](../../../notification/notification-glossary.md#notification-center通知中心)UI样式。
 
 **继承/实现关系：** NotificationSystemLiveViewContent extends [NotificationBasicContent](arkts-notification-notificationcontent-notificationbasiccontent-i.md)
 

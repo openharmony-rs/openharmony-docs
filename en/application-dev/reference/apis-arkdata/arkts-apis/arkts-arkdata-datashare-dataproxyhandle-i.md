@@ -38,7 +38,7 @@ Deletes the specified shared configuration items based on URIs. This API uses a 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| uris | string[] | Yes | URI array of the shared configuration items to be deleted, with a maximum of 32 URIs. The URI value is fixed at the format of **"datashareproxy://{*bundleName*}/{*path*}"**, in which **bundleName** indicates the bundle name of the publisher application, and **path** can be set to any value but must be unique in the same application. The value contains a maximum of 256 bytes. |
+| uris | string[] | Yes | Array of URIs corresponding to the share configurations to be deleted. **NOTE:** 1. Before API version 26.0.0, the maximum length of the array is 32; starting from API version 26.0.0, the maximum length of the array is 64. 2. The URI is in the fixed format of `"datashareproxy://{bundleName}/{path}"`, where bundleName is the bundle name of the publisher app of the configuration, and path can be set to any value but must be unique within the same app. The string length cannot exceed 256 bytes. |
 | config | [DataProxyConfig](arkts-arkdata-datashare-dataproxyconfig-i.md) | Yes | Data proxy configuration. |
 
 **Return value:**
@@ -77,7 +77,7 @@ dataProxyHandle.delete(urisToDelete, config).then((results: dataShare.DataProxyR
 deleteMyPublishedData(config: DataProxyConfig): Promise<DataProxyResult[]>
 ```
 
-Deletes all the data published by the publisher. Only the data publisher can delete the data.
+Deletes all share configuration items published by the current publisher. This API uses a promise to return the result. Only the configuration publisher can delete share configuration items.
 
 **Since:** 26.0.0
 
@@ -97,7 +97,7 @@ Deletes all the data published by the publisher. Only the data publisher can del
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[DataProxyResult](arkts-arkdata-datashare-dataproxyresult-i.md)[]&gt; | Promise used to return the operation result. |
+| Promise&lt;[DataProxyResult](arkts-arkdata-datashare-dataproxyresult-i.md)[]&gt; | Promise used to return the result array of the batch operation. |
 
 **Error codes:**
 
@@ -127,7 +127,7 @@ dataProxyHandle.deleteMyPublishedData(config).then((results: dataShare.DataProxy
 get(uris: string[], config: DataProxyConfig): Promise<DataProxyGetResult[]>
 ```
 
-Obtains a specified shared configuration item based on the URI. This API uses a promise to return the result. Only the publisher and applications in the allowed list can access the shared configuration item.
+Obtains a specified share configuration item based on the URI. This API uses a promise to return the result. Only the publisher and applications in the allowed list can access the share configuration item.
 
 **Since:** 20
 
@@ -141,8 +141,8 @@ Obtains a specified shared configuration item based on the URI. This API uses a 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| uris | string[] | Yes | URI array of the shared configuration items to be obtained, with a maximum of 32 URIs. The URI value is fixed at the format of **"datashareproxy://{*bundleName*}/{*path*}"**, in which **bundleName** indicates the bundle name of the publisher application, and **path** can be set to any value but must be unique in the same application. The value contains a maximum of 256 bytes. |
-| config | [DataProxyConfig](arkts-arkdata-datashare-dataproxyconfig-i.md) | Yes | Data proxy configuration. |
+| uris | string[] | Yes | Array of URIs of the share configurations to obtain. **NOTE:** 1. Before API version 26.0.0, the maximum length of the array is 32; since API version 26.0.0, the maximum length of the array is         64. 2. The URI is in the fixed format `"datashareproxy://{bundleName}/{path}"`, where bundleName is the bundle name of the publisher app of the configuration, and path can be any value but must be unique within the same app. The string length cannot exceed 256 bytes. |
+| config | [DataProxyConfig](arkts-arkdata-datashare-dataproxyconfig-i.md) | Yes | Configuration of the data proxy operation. Since API version 26.0.0, length of the obtained share configuration item value cannot exceed the maximum length limit configured in the **maxValueLength** field of [DataProxyConfig](arkts-arkdata-datashare-dataproxyconfig-i.md). When the limit is exceeded, the return value status code [DataProxyErrorCode](arkts-arkdata-datashare-dataproxyerrorcode-e.md) of the corresponding operation result is **OVER_LIMIT**. |
 
 **Return value:**
 
@@ -180,7 +180,7 @@ dataProxyHandle.get(urisToGet, config).then((results: dataShare.DataProxyGetResu
 getValues(uri: string, config: DataProxyConfig): Promise<ValueType[]>
 ```
 
-Obtains all multi-value data under a specified URI. Only the publisher and the applications in the [allowList](arkts-arkdata-datashare-proxydata-i.md#allowlist) can obtain the data. This API uses a promise to return the result.
+Obtains all multi-value type data under the specified URI. Only the publisher and applications in the [allowList](arkts-arkdata-datashare-proxydata-i.md#allowlist) can obtain this data. This API uses a promise to return the result.
 
 **Since:** 26.0.0
 
@@ -194,14 +194,14 @@ Obtains all multi-value data under a specified URI. Only the publisher and the a
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| uri | string | Yes | Indicates the URI of the data to operate. |
+| uri | string | Yes | URI corresponding to the data to be operated. The fixed format is **"datashareproxy://{bundleName}/{path}"**, where **bundleName** is the **bundleName** of the publisher application, **path** can be set as required but not allowed to be duplicated within the same application, and the string length cannot exceed 256 bytes. |
 | config | [DataProxyConfig](arkts-arkdata-datashare-dataproxyconfig-i.md) | Yes | Configuration of the data proxy operation. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[ValueType](arkts-arkdata-valuetype-t.md)[]&gt; | Promise used to return an array of all values under the URI. |
+| Promise&lt;[ValueType](arkts-arkdata-valuetype-t.md)[]&gt; | Promise used to return the array of all values under the URI. |
 
 **Error codes:**
 
@@ -256,6 +256,12 @@ off(
 
 Unsubscribes from the change event of the proxy data corresponding to a specified URI.
 
+**API called in pairs**  
+- This API must be used after [on('dataChange')](#on) is called for subscription.  
+- To unregister a subscription, ensure that the **event**, **uris**, and **config** parameters are consistent  
+with those used during subscription.  
+- If the **callback** parameter is not specified, all registered callbacks for the URI will be unsubscribed.
+
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
@@ -269,9 +275,9 @@ Unsubscribes from the change event of the proxy data corresponding to a specifie
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | event | 'dataChange' | Yes | Event or callback type. The value is **dataChange**, which indicates the data change. |
-| uris | string[] | Yes | Array of URIs to be unsubscribed, with a maximum of 32 URIs. The URI value is fixed at the format of **"datashareproxy://{*bundleName*}/{*path*}"**, in which **bundleName** indicates the bundle name of the publisher application, and **path** can be set to any value but must be unique in the same application. The value contains a maximum of 256 bytes. |
+| uris | string[] | Yes | URI array of the shared configurations to unsubscribe from. **NOTE:** 1. Before API version 26.0.0, the maximum length of the array is 32. Since API version 26.0.0, the maximum length of the array is 64. 2. The URI is in the fixed format `"datashareproxy://{bundleName}/{path}"`, where bundleName is the bundle name of the publisher application of the configuration, and path can be any value but must be unique within the same app. The string length cannot exceed 256 bytes. |
 | config | [DataProxyConfig](arkts-arkdata-datashare-dataproxyconfig-i.md) | Yes | Data proxy configuration. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[DataProxyChangeInfo](arkts-arkdata-datashare-dataproxychangeinfo-i.md)[]&gt; | No | Callback function. If the value is empty, undefined, or null, all notifications of the URIs are unsubscribed. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[DataProxyChangeInfo](arkts-arkdata-datashare-dataproxychangeinfo-i.md)[]&gt; | No | Callback function. When the unsubscription succeeds, err is undefined and data is the obtained DataProxyChangeInfo array, which contains the change type, URI, and changed share configuration content; otherwise, it is an error object. If this parameter is not specified, all registered callback functions are unsubscribed. |
 
 **Return value:**
 
@@ -322,7 +328,12 @@ on(
 
 Subscribes to the change event of the shared configuration corresponding to a specified URI. If the change event is subscribed, the subscriber will receive a callback notification that carries the data change type, changed URI, and changed content when the publisher modifies the configuration. This API uses an asynchronous callback to return the result. This function does not support cross-user notification subscription or subscription to unpublished configurations. If the permission is revoked after the subscription is successful, the subscriber will not be notified consequently.
 
-When the publisher calls the [publish](#publish) or [delete](#delete) API to publish or delete a configuration, a notification is automatically triggered.
+**API called in pairs**  
+- After subscription, you must call [off('dataChange')](#off) to unsubscribe when  
+it is no longer needed.  
+- To unsubscribe an event, ensure that the **event**, **uris**, **config**, and **callback** parameters are  
+consistent with those used during subscription.  
+- Failure to unsubscribe may lead to memory leaks and resource occupation.
 
 **Since:** 20
 
@@ -336,10 +347,10 @@ When the publisher calls the [publish](#publish) or [delete](#delete) API to pub
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| event | 'dataChange' | Yes | Event or callback type. The value is **dataChange**, which indicates the data change. This event is triggered when the publisher modifies the configuration. |
-| uris | string[] | Yes | Array of URIs to be subscribed, with a maximum of 32 URIs. The URI value is fixed at the format of **"datashareproxy://{*bundleName*}/{*path*}"**, in which **bundleName** indicates the bundle name of the publisher application, and **path** can be set to any value but must be unique in the same application. The value contains a maximum of 256 bytes. |
-| config | [DataProxyConfig](arkts-arkdata-datashare-dataproxyconfig-i.md) | Yes | Data proxy configuration. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[DataProxyChangeInfo](arkts-arkdata-datashare-dataproxychangeinfo-i.md)[]&gt; | Yes | Callback triggered when the publisher modifies the configuration. |
+| event | 'dataChange' | Yes | Event or callback type. The **dataChange** event is triggered when the publisher modifies the configuration. |
+| uris | string[] | Yes | Array of URIs corresponding to the share configurations to subscribe to. **NOTE:** 1. Before API version 26.0.0, the maximum length of the array is 32; from API version 26.0.0, the maximum length of the array is 64. 2. The URI is in the fixed format of `"datashareproxy://{bundleName}/{path}"`, where bundleName is the bundleName of the publisher app of the configuration, path can be any value but must be unique within the same app, and the string length cannot exceed 256 bytes. |
+| config | [DataProxyConfig](arkts-arkdata-datashare-dataproxyconfig-i.md) | Yes | Configuration of the data proxy operation. Since API version 26.0.0, when the length of the changed share configuration content exceeds the maximum length limit configured by the **maxValueLength** field in [DataProxyConfig](arkts-arkdata-datashare-dataproxyconfig-i.md), the shared configuration content will be truncated. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[DataProxyChangeInfo](arkts-arkdata-datashare-dataproxychangeinfo-i.md)[]&gt; | Yes | Callback used to return the result. If the subscription is successful, **err** is **undefined**, and **data** is the obtained **DataProxyChangeInfo** array, containing the change type, URI, and the changed share configuration content; otherwise, it is an error object. |
 
 **Return value:**
 
@@ -383,7 +394,17 @@ results.forEach((result) => {
 publish(data: ProxyData[], config: DataProxyConfig): Promise<DataProxyResult[]>
 ```
 
-Publishes shared configuration items. This API uses a promise to return the result. After shared configuration items are published, the publisher and the applications in the allowlist can access these items. If the URI to be published already exists, the corresponding shared configuration item is updated. If any URI in the configuration item to be published exceeds the maximum length or fails the format verification, the current publish operation fails. Only the publisher can update shared configuration items. Each application supports a maximum of 32 shared configurations.
+Publishes share configuration items. This API uses a promise to return the result.
+
+After publishing, the publisher and the applications specified in the allowlist can access the share configuration items.
+
+If the URI to be published already exists, the corresponding share configuration item is updated. If the length of any URI in the published configuration items exceeds the upper limit or format verification fails, the current publish operation fails.
+
+Only the publisher is allowed to update share configuration items.
+
+Before API version 26.0.0, an application supports a maximum of 32 share configurations; since API version 26.0.0, an application supports a maximum of 64 share configurations.
+
+Since API version 26.0.0, publishing multi-value type configurations is supported, and a URI can correspond to only one value type. After a configuration is published, the publish API cannot be used to update a published multi-value type URI. For the APIs for operating multi-value types, see [putValue](#putvalue), [removeValue](#removevalue), and [getValues](#getvalues).
 
 **Since:** 20
 
@@ -397,8 +418,8 @@ Publishes shared configuration items. This API uses a promise to return the resu
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| data | [ProxyData](arkts-arkdata-datashare-proxydata-i.md)[] | Yes | Array of shared configuration items to be created or updated, with a maximum of 32 items. |
-| config | [DataProxyConfig](arkts-arkdata-datashare-dataproxyconfig-i.md) | Yes | Data proxy configuration. |
+| data | [ProxyData](arkts-arkdata-datashare-proxydata-i.md)[] | Yes | Array of share configuration items to be created or updated. Before API version 26.0.0, the maximum array length is 32; Since API version 26.0.0, the maximum array length is 64. |
+| config | [DataProxyConfig](arkts-arkdata-datashare-dataproxyconfig-i.md) | Yes | Configuration for the data proxy operation. Since API version 26.0.0, if the length of any value in the published configuration items exceeds the maximum length limit configured in the **maxValueLength** field of [DataProxyConfig](arkts-arkdata-datashare-dataproxyconfig-i.md), the current publish operation fails. |
 
 **Return value:**
 
@@ -443,7 +464,11 @@ dataProxyHandle.publish(newConfigData, config).then((results: dataShare.DataProx
 putValue(uri: string, key: number, value: ValueType, config: DataProxyConfig): Promise<void>
 ```
 
-Puts a value into the published data. This operation can be performed only on multi-value type data. If the input **key** does not exist, a new value is added. If the input **key** already exists, the value corresponding to the key is updated. By default, a maximum of 10 values can be added to a single data record (that is, a URI) for a single application, and the maximum length of each value is 4096 bytes. In addition, the total length of all values in a single data record is limited by the value of the **maxValueLength** parameter that is specified during data publishing. Note that the **maxValueLength** parameter does not take effect in this API. This API uses a promise to return the result.
+Writes a value to the published data. This operation is only supported for multi-value type data. This API uses a promise to return the result.
+
+If the passed key does not exist, a new value is added; if the passed key already exists, the value corresponding to that key is updated.
+
+By default, a single data item (that is, a URI) can have a maximum of 10 values added in a single app, and the maximum length of each value is 4096 bytes. In addition, the total length of all values of a single data item (that is, a URI) in a single app is limited by the maxValueLength parameter value specified when the data is published using [publish](#publish).
 
 **Since:** 26.0.0
 
@@ -457,10 +482,10 @@ Puts a value into the published data. This operation can be performed only on mu
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| uri | string | Yes | Indicates the URI of the data to operate. |
-| key | number | Yes | The key corresponding to the added value. It is unique for the same application. <br>The value range is all integers. |
-| value | [ValueType](arkts-arkdata-valuetype-t.md) | Yes | The value to be put. |
-| config | [DataProxyConfig](arkts-arkdata-datashare-dataproxyconfig-i.md) | Yes | Configuration of the data proxy operation. |
+| uri | string | Yes | URI corresponding to the data to be operated. The fixed format is **"datashareproxy://{bundleName}/{path}"**, where **bundleName** is the **bundleName** of the publisher application, **path** can be set as required but not allowed to be duplicated within the same application, and the string length cannot exceed 256 bytes. |
+| key | number | Yes | Key corresponding to the added value, which is unique within the same application. <br>The value range is all integers. |
+| value | [ValueType](arkts-arkdata-valuetype-t.md) | Yes | Value to be added. |
+| config | [DataProxyConfig](arkts-arkdata-datashare-dataproxyconfig-i.md) | Yes | Configuration of the data proxy operation. The **maxValueLength** parameter in the configuration does not take effect. |
 
 **Return value:**
 
@@ -514,7 +539,7 @@ try {
 removeValue(uri: string, key: number, config: DataProxyConfig): Promise<void>
 ```
 
-Removes the value corresponding to the key. This operation can be performed only on multi-value type data. Only values added by this application can be removed. This API uses a promise to return the result.
+Removes the value corresponding to the key. This operation can only be performed on multi-value type data. Only values added by the current application can be removed. This API uses a promise to return the result.
 
 **Since:** 26.0.0
 
@@ -528,8 +553,8 @@ Removes the value corresponding to the key. This operation can be performed only
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| uri | string | Yes | Indicates the URI of the data to operate. |
-| key | number | Yes | The key corresponding to the added value. <br>The value range is all integers. |
+| uri | string | Yes | URI corresponding to the data to be operated. The fixed format is **"datashareproxy://{bundleName}/{path}"**, where **bundleName** is the **bundleName** of the publisher application, **path** can be set as required but not allowed to be duplicated within the same application, and the string length cannot exceed 256 bytes. |
+| key | number | Yes | Key corresponding to the value to be removed. <br>The value range is all integers. |
 | config | [DataProxyConfig](arkts-arkdata-datashare-dataproxyconfig-i.md) | Yes | Configuration of the data proxy operation. |
 
 **Return value:**

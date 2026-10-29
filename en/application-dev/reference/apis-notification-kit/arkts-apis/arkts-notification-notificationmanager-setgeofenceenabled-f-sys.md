@@ -12,7 +12,7 @@ import { notificationManager } from '@kit.NotificationKit';
 function setGeofenceEnabled(enabled: boolean): Promise<void>
 ```
 
-Sets the enabling state of geofencing. This API uses a promise to return the result.
+Sets the enabled status of the [geofence](../../../notification/notification-glossary.md#geofence). This API uses a promise to return the result.
 
 **Since:** 23
 
@@ -34,7 +34,7 @@ Sets the enabling state of geofencing. This API uses a promise to return the res
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;void&gt; | Promise that returns no result. |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes:**
 

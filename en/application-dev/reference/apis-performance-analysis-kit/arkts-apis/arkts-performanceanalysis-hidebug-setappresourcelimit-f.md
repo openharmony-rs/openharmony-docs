@@ -28,8 +28,6 @@ This API is used to construct a memory leak. For details, see Subscribing to Res
 
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
-**Test API:** This API is used only in automated test scripts.
-
 **Parameters:**
 
 | Name | Type | Mandatory | Description |

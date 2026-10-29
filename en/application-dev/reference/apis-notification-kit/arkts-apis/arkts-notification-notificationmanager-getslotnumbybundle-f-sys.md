@@ -12,7 +12,7 @@ import { notificationManager } from '@kit.NotificationKit';
 function getSlotNumByBundle(bundle: BundleOption, callback: AsyncCallback<number>): void
 ```
 
-Obtains the number of notification slots of a specified application. This API uses an asynchronous callback to return the result.
+Obtains the number of [notification slots](../../../notification/notification-glossary.md#notification-slot) of a specified application. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
 
@@ -74,7 +74,7 @@ notificationManager.getSlotNumByBundle(bundle, getSlotNumByBundleCallback);
 function getSlotNumByBundle(bundle: BundleOption): Promise<number>
 ```
 
-Obtains the number of notification slots of a specified application. This API uses a promise to return the result.
+Obtains the number of [notification slots](../../../notification/notification-glossary.md#notification-slot) of a specified application. This API uses a promise to return the result.
 
 **Since:** 9
 

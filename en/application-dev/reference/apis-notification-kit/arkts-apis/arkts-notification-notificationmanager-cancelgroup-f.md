@@ -14,7 +14,7 @@ function cancelGroup(groupName: string, callback: AsyncCallback<void>): void
 
 Cancels notifications under a notification group of this application. This API uses an asynchronous callback to return the result.
 
-The notification group **groupName** is the group identifier specified through the **groupName** field of NotificationRequest when a notification is published. After cancellation, all notifications under this group will be removed from the notification center. This is suitable for scenarios where notifications need to be canceled in batches by service group.
+The notification group `groupName` is the group identifier specified by the `groupName` field of [NotificationRequest](arkts-notification-notificationrequest-i.md) when publishing a notification. After cancellation, all notifications under this group are removed from the [notification center](../../../notification/notification-glossary.md#notification-center). This is suitable for scenarios where notifications need to be canceled in batches by business group.
 
 **Since:** 9
 
@@ -26,7 +26,7 @@ The notification group **groupName** is the group identifier specified through t
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| groupName | string | Yes | Name of the notification group, which is specified through [NotificationRequest](arkts-notification-notificationrequest-i.md) when the notification is published. |
+| groupName | string | Yes | Name of the notification group, which is specified through [NotificationRequest](arkts-notification-notificationrequest-i.md) when the notification is published. <br>The size cannot exceed 202 bytes, and the excess part will be truncated. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object. |
 
 **Error codes:**
@@ -63,7 +63,7 @@ function cancelGroup(groupName: string): Promise<void>
 
 Cancels notifications under a notification group of this application. This API uses a promise to return the result.
 
-The notification group **groupName** is the group identifier specified through the **groupName** field of NotificationRequest when a notification is published. After cancellation, all notifications under this group will be removed from the notification center. This is suitable for scenarios where notifications need to be canceled in batches by service group.
+The notification group `groupName` is the group identifier specified by the `groupName` field of [NotificationRequest](arkts-notification-notificationrequest-i.md) when publishing a notification. After cancellation, all notifications under this group are removed from the [notification center](../../../notification/notification-glossary.md#notification-center). This is suitable for scenarios where notifications need to be canceled in batches by business group.
 
 **Since:** 9
 
@@ -75,7 +75,7 @@ The notification group **groupName** is the group identifier specified through t
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| groupName | string | Yes | Name of the notification group, which is specified through [NotificationRequest](arkts-notification-notificationrequest-i.md) when the notification is published. |
+| groupName | string | Yes | Name of the notification group, which is specified through [NotificationRequest](arkts-notification-notificationrequest-i.md) when the notification is published. <br>The size cannot exceed 202 bytes, and the excess part will be truncated. |
 
 **Return value:**
 

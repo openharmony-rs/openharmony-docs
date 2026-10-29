@@ -1,4 +1,4 @@
-# @ohos.notification
+# @ohos.notification(Notification)
 
 The **Notification** module provides notification management capabilities, covering notifications, notification slots, notification subscription, notification enabled status, and notification badge status.
 
@@ -40,9 +40,9 @@ The **Notification** module provides notification management capabilities, cover
 | [getSlot](arkts-notification-notification-getslot-depr-f.md#getslot-2) | Obtains a notification slot of a specified type. This API uses a promise to return the result. |
 | [getSlots](arkts-notification-notification-getslots-depr-f.md#getslots-1) | Obtains all notification slots. This API uses an asynchronous callback to return the result. |
 | [getSlots](arkts-notification-notification-getslots-depr-f.md#getslots-2) | Obtains all notification slots of this application. This API uses a promise to return the result. |
-| [isDistributedEnabled](arkts-notification-notification-isdistributedenabled-depr-f.md#isdistributedenabled-1) | Checks whether this device supports distributed notifications. This API uses an asynchronous callback to return the result. |
-| [isDistributedEnabled](arkts-notification-notification-isdistributedenabled-depr-f.md#isdistributedenabled-2) | Checks whether this device supports distributed notifications. This API uses a promise to return the result. |
-| [isSupportTemplate](arkts-notification-notification-issupporttemplate-depr-f.md#issupporttemplate-1) | Checks whether a specified template is supported before using [NotificationTemplate](arkts-notification-notificationtemplate-i.md) to publish a notification. This API uses an asynchronous callback to return the result. |
+| [isDistributedEnabled](arkts-notification-notification-isdistributedenabled-depr-f.md#isdistributedenabled-1) | Checks whether the device supports [distributed notification](../../../notification/notification-glossary.md#distributed-notification). This API uses a callback to return the result. |
+| [isDistributedEnabled](arkts-notification-notification-isdistributedenabled-depr-f.md#isdistributedenabled-2) | Checks whether the device supports [distributed notification](../../../notification/notification-glossary.md#distributed-notification). This API uses a promise to return the result. |
+| [isSupportTemplate](arkts-notification-notification-issupporttemplate-depr-f.md#issupporttemplate-1) | Before publishing a notification using [NotificationTemplate](arkts-notification-notificationtemplate-i.md), you can call this API to check whether the corresponding notification template is supported. This API uses an asynchronous callback to return the result. |
 | [isSupportTemplate](arkts-notification-notification-issupporttemplate-depr-f.md#issupporttemplate-2) | Checks whether a specified template is supported before using [NotificationTemplate](arkts-notification-notificationtemplate-i.md) to publish a notification. This API uses a promise to return the result. |
 | [publish](arkts-notification-notification-publish-depr-f.md#publish-1) | Publishes a notification. This API uses an asynchronous callback to return the result. |
 | [publish](arkts-notification-notification-publish-depr-f.md#publish-2) | Publishes a notification. This API uses a promise to return the result. |
@@ -64,10 +64,10 @@ The **Notification** module provides notification management capabilities, cover
 | [addSlots](arkts-notification-notification-addslots-depr-f-sys.md#addslots-2) | Adds an array of notification slots. This API uses a promise to return the result. |
 | [displayBadge](arkts-notification-notification-displaybadge-depr-f-sys.md#displaybadge-1) | Sets whether to enable the notification badge for a specified application. This API uses an asynchronous callback to return the result. |
 | [displayBadge](arkts-notification-notification-displaybadge-depr-f-sys.md#displaybadge-2) | Sets whether to enable the notification badge for a specified application. This API uses a promise to return the result. |
-| [enableDistributed](arkts-notification-notification-enabledistributed-depr-f-sys.md#enabledistributed-1) | Sets whether this device supports distributed notifications. This API uses an asynchronous callback to return the result. |
-| [enableDistributed](arkts-notification-notification-enabledistributed-depr-f-sys.md#enabledistributed-2) | Sets whether this device supports distributed notifications. This API uses a promise to return the result. |
-| [enableDistributedByBundle](arkts-notification-notification-enabledistributedbybundle-depr-f-sys.md#enabledistributedbybundle-1) | Sets whether a specified application supports distributed notifications. This API uses an asynchronous callback to return the result. |
-| [enableDistributedByBundle](arkts-notification-notification-enabledistributedbybundle-depr-f-sys.md#enabledistributedbybundle-2) | Sets whether a specified application supports distributed notifications. This API uses a promise to return the result. |
+| [enableDistributed](arkts-notification-notification-enabledistributed-depr-f-sys.md#enabledistributed-1) | Sets whether the device supports [distributed notifications](../../../notification/notification-glossary.md#distributed-notification). This API uses a callback to return the result. |
+| [enableDistributed](arkts-notification-notification-enabledistributed-depr-f-sys.md#enabledistributed-2) | Sets whether the device supports [distributed notifications](../../../notification/notification-glossary.md#distributed-notification). This API uses a promise to return the result. |
+| [enableDistributedByBundle](arkts-notification-notification-enabledistributedbybundle-depr-f-sys.md#enabledistributedbybundle-1) | Sets whether the specified application supports [distributed notifications](../../../notification/notification-glossary.md#distributed-notification). This API uses a callback to return the result. |
+| [enableDistributedByBundle](arkts-notification-notification-enabledistributedbybundle-depr-f-sys.md#enabledistributedbybundle-2) | Sets whether the specified application supports [distributed notifications](../../../notification/notification-glossary.md#distributed-notification). This API uses a promise to return the result. |
 | [enableNotification](arkts-notification-notification-enablenotification-depr-f-sys.md#enablenotification-1) | Sets whether to enable notification for a specified application. This API uses an asynchronous callback to return the result. |
 | [enableNotification](arkts-notification-notification-enablenotification-depr-f-sys.md#enablenotification-2) | Sets whether to enable notification for a specified application. This API uses a promise to return the result. |
 | [getAllActiveNotifications](arkts-notification-notification-getallactivenotifications-depr-f-sys.md#getallactivenotifications-1) | Obtains all active notifications. This API uses an asynchronous callback to return the result. |
@@ -84,8 +84,8 @@ The **Notification** module provides notification management capabilities, cover
 | [getSlotsByBundle](arkts-notification-notification-getslotsbybundle-depr-f-sys.md#getslotsbybundle-2) | Obtains the notification slots of a specified application. This API uses a promise to return the result. |
 | [isBadgeDisplayed](arkts-notification-notification-isbadgedisplayed-depr-f-sys.md#isbadgedisplayed-1) | Checks whether the notification badge is enabled for a specified application. This API uses an asynchronous callback to return the result. |
 | [isBadgeDisplayed](arkts-notification-notification-isbadgedisplayed-depr-f-sys.md#isbadgedisplayed-2) | Checks whether the notification badge is enabled for a specified application. This API uses a promise to return the result. |
-| [isDistributedEnabledByBundle](arkts-notification-notification-isdistributedenabledbybundle-depr-f-sys.md#isdistributedenabledbybundle-1) | Obtains whether an application supports distributed notifications based on the bundle. This API uses an asynchronous callback to return the result. |
-| [isDistributedEnabledByBundle](arkts-notification-notification-isdistributedenabledbybundle-depr-f-sys.md#isdistributedenabledbybundle-2) | Checks whether a specified application supports distributed notifications. This API uses an asynchronous callback to return the result. |
+| [isDistributedEnabledByBundle](arkts-notification-notification-isdistributedenabledbybundle-depr-f-sys.md#isdistributedenabledbybundle-1) | Obtains whether the application supports [distributed notifications](../../../notification/notification-glossary.md#distributed-notification) based on the application's bundle. This API uses a callback to return the result. |
+| [isDistributedEnabledByBundle](arkts-notification-notification-isdistributedenabledbybundle-depr-f-sys.md#isdistributedenabledbybundle-2) | Queries whether the specified application supports [distributed notifications](../../../notification/notification-glossary.md#distributed-notification). This API uses a promise to return the result. |
 | [isNotificationEnabled](arkts-notification-notification-isnotificationenabled-depr-f-sys.md#isnotificationenabled-1) | Checks whether notification is enabled for a specified application. This API uses an asynchronous callback to return the result. |
 | [isNotificationEnabled](arkts-notification-notification-isnotificationenabled-depr-f-sys.md#isnotificationenabled-2) | Checks whether notification is enabled for a specified application. This API uses a promise to return the result. |
 | [isNotificationEnabled](arkts-notification-notification-isnotificationenabled-depr-f-sys.md#isnotificationenabled-3) | Checks whether notification is enabled for this application. This API uses an asynchronous callback to return the result. |
@@ -116,7 +116,7 @@ The **Notification** module provides notification management capabilities, cover
 | [subscribe](arkts-notification-notification-subscribe-depr-f-sys.md#subscribe-3) | Subscribes to a notification with the subscription information specified. This API uses a promise to return the result. |
 | [supportDoNotDisturbMode](arkts-notification-notification-supportdonotdisturbmode-depr-f-sys.md#supportdonotdisturbmode-1) | Checks whether DND mode is supported. This API uses an asynchronous callback to return the result. |
 | [supportDoNotDisturbMode](arkts-notification-notification-supportdonotdisturbmode-depr-f-sys.md#supportdonotdisturbmode-2) | Checks whether DND mode is supported. This API uses a promise to return the result. |
-| [unsubscribe](arkts-notification-notification-unsubscribe-depr-f-sys.md#unsubscribe-1) | Unsubscribes from a notification. This API uses an asynchronous callback to return the result. |
+| [unsubscribe](arkts-notification-notification-unsubscribe-depr-f-sys.md#unsubscribe-1) | Unsubscribes from notifications. This API uses a callback to return the result. |
 | [unsubscribe](arkts-notification-notification-unsubscribe-depr-f-sys.md#unsubscribe-2) | Unsubscribes from a notification. This API uses a promise to return the result. |
 <!--DelEnd-->
 
@@ -124,7 +124,7 @@ The **Notification** module provides notification management capabilities, cover
 
 | Name | Description |
 | --- | --- |
-| [BundleOption](arkts-notification-notification-bundleoption-depr-i.md) | Describes the **BundleOption** information, that is, the bundle information of an application. |
+| [BundleOption](arkts-notification-notification-bundleoption-depr-i.md) | Describes the **BundleOption** information |
 | [NotificationKey](arkts-notification-notification-notificationkey-depr-i.md) | Notification key. |
 
 <!--Del-->

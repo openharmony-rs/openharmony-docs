@@ -4,7 +4,7 @@
 interface CharacteristicWriteRequest
 ```
 
-Describes the parameters of the of the Gatt client's characteristic write request.
+Describes the parameters of the Gatt client's characteristic write request.
 
 **Since:** 10
 

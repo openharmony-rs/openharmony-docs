@@ -1056,6 +1056,29 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 }
 ```
 
+## onPasswordFailed
+
+```TypeScript
+onPasswordFailed(cumulativeFailedCount: number, userId: number): void
+```
+
+Callback for the password authentication failure event. This callback is triggered when password authentication fails. You should register the **MANAGED_EVENT_PASSWORD_FAILED** event through the [adminManager.subscribeManagedEventSync](arkts-mdm-adminmanager-subscribemanagedeventsync-f.md) API.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-EnterpriseAdminExtensionAbility-onPasswordFailed(cumulativeFailedCount: number, userId: number): void--><!--Device-EnterpriseAdminExtensionAbility-onPasswordFailed(cumulativeFailedCount: number, userId: number): void-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| cumulativeFailedCount | number | Yes | Cumulative number of failed password attempts. |
+| userId | number | Yes | ID of the user whose password authentication failed. |
+
 ## onStart
 
 ```TypeScript

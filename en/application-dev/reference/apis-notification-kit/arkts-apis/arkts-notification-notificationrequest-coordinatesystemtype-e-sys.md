@@ -4,7 +4,7 @@
 export enum CoordinateSystemType
 ```
 
-Enumerates the coordinate systems of a geofence.
+Enumerates the coordinate system types of a [geofence](../../../notification/notification-glossary.md#geofence).
 
 **Since:** 23
 

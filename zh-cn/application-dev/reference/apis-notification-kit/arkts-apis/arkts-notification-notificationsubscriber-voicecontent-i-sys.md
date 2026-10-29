@@ -17,7 +17,7 @@ export interface VoiceContent
 ## textContent
 
 ```TypeScript
-textContent?: string
+readonly textContent?: string
 ```
 
 文本语音播报内容。
@@ -28,7 +28,7 @@ textContent?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-VoiceContent-textContent?: string--><!--Device-VoiceContent-textContent?: string-End-->
+<!--Device-VoiceContent-readonly textContent?: string--><!--Device-VoiceContent-readonly textContent?: string-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
 

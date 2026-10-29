@@ -37,5 +37,3 @@ Tool call ID passed by the caller, used to associate this intent execute with a 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
-
-**Test API:** This API is used only in automated test scripts.

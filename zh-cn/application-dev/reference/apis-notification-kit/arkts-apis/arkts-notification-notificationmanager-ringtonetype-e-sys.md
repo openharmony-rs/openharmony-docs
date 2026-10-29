@@ -4,7 +4,7 @@
 export enum RingtoneType
 ```
 
-描述自定义铃声类型。
+描述[自定义铃声](../../../notification/notification-glossary.md#customized-ringtone自定义铃声)类型。
 
 **起始版本：** 21
 

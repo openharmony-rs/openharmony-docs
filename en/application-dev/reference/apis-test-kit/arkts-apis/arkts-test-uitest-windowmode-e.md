@@ -12,8 +12,6 @@ Enumerates the window modes.
 
 **System capability:** SystemCapability.Test.UiTest
 
-**Test API:** This API is used only in automated test scripts.
-
 ## FLOATING
 
 ```TypeScript

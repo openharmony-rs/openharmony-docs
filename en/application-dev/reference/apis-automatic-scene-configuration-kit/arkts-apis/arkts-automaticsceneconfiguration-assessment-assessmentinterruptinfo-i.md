@@ -1,0 +1,55 @@
+# AssessmentInterruptInfo
+
+```TypeScript
+interface AssessmentInterruptInfo
+```
+
+Assessment interrupt information.
+
+**Since:** 26.0.1
+
+<!--Device-assessment-interface AssessmentInterruptInfo--><!--Device-assessment-interface AssessmentInterruptInfo-End-->
+
+**System capability:** SystemCapability.Customization.AssessmentConfiguration
+
+## Modules to Import
+
+```TypeScript
+import { assessment } from '@kit.AutomaticSceneConfigurationKit';
+```
+
+## code
+
+```TypeScript
+code: AssessmentErrorCode
+```
+
+Interrupt reason code.
+
+**Type:** [AssessmentErrorCode](arkts-automaticsceneconfiguration-assessment-assessmenterrorcode-e.md)
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AssessmentInterruptInfo-code: AssessmentErrorCode--><!--Device-AssessmentInterruptInfo-code: AssessmentErrorCode-End-->
+
+**System capability:** SystemCapability.Customization.AssessmentConfiguration
+
+## message
+
+```TypeScript
+message: string
+```
+
+Detailed description of the interrupt reason.
+
+**Type:** string
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AssessmentInterruptInfo-message: string--><!--Device-AssessmentInterruptInfo-message: string-End-->
+
+**System capability:** SystemCapability.Customization.AssessmentConfiguration

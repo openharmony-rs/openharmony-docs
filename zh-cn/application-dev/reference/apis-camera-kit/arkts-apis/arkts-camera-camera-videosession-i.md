@@ -298,6 +298,30 @@ function unregisterSystemPressureLevelChangeCallback(videoSession: camera.VideoS
 }
 ```
 
+## offCameraSwitchRequest
+
+```TypeScript
+offCameraSwitchRequest(callback?: Callback<CameraDevice>): void
+```
+
+取消订阅摄像头切换requeset事件回调。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-VideoSession-offCameraSwitchRequest(callback?: Callback<CameraDevice>): void--><!--Device-VideoSession-offCameraSwitchRequest(callback?: Callback<CameraDevice>): void-End-->
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[CameraDevice](arkts-camera-camera-cameradevice-i.md)&gt; | 否 | 用于获取目标相机设备的回调。 |
+
 ## offExposureInfoChange
 
 ```TypeScript
@@ -681,6 +705,30 @@ function registerSystemPressureLevelChangeCallback(videoSession: camera.VideoSes
     videoSession.on('systemPressureLevelChange', callback);
 }
 ```
+
+## onCameraSwitchRequest
+
+```TypeScript
+onCameraSwitchRequest(callback: Callback<CameraDevice>): void
+```
+
+订阅摄像头切换requeset事件回调。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-VideoSession-onCameraSwitchRequest(callback: Callback<CameraDevice>): void--><!--Device-VideoSession-onCameraSwitchRequest(callback: Callback<CameraDevice>): void-End-->
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[CameraDevice](arkts-camera-camera-cameradevice-i.md)&gt; | 是 | 用于获取目标相机设备的回调。 |
 
 ## onExposureInfoChange
 

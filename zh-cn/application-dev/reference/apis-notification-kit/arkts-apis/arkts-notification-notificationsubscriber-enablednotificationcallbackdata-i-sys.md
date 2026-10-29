@@ -4,7 +4,7 @@
 export interface EnabledNotificationCallbackData
 ```
 
-应用使能状态变化的回调函数类型。
+应用角标使能状态变化的回调数据。
 
 **起始版本：** 8
 
@@ -38,7 +38,8 @@ readonly bundle: string
 readonly enable: boolean
 ```
 
-应用通知使能状态。  
+应用通知使能状态。
+
 - true：允许。  
 - false：禁止。
 

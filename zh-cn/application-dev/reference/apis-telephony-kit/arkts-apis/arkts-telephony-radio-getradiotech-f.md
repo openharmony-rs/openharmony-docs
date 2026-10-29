@@ -111,4 +111,4 @@ function getRadioTech(slotId: number): Promise<NetworkRadioTech>
 
 **示例**
 
-参见 getRadioTech
+参见 [getRadioTech](#getradiotech)

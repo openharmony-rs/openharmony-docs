@@ -88,7 +88,7 @@ RDB store to which the target asset (asset to bind) belongs.
 tableName: string
 ```
 
-Table to which the target asset is located in the RDB store.
+Table in which the target asset is located in the RDB store.
 
 **Type:** string
 

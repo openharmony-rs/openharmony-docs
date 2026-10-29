@@ -17,7 +17,7 @@ Checks whether the notification badge is enabled for a specified application. Th
 
 **Deprecated since:** 9
 
-**Substitutes:** [isBadgeDisplayed](arkts-notification-notificationmanager-isbadgedisplayed-f-sys.md)
+**Substitutes:** [isBadgeDisplayed](arkts-notification-notificationmanager-isbadgedisplayed-f-sys.md#isbadgedisplayed-1)(bundle: BundleOption, callback: AsyncCallback&lt;boolean&gt;)
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -68,7 +68,7 @@ Checks whether the notification badge is enabled for a specified application. Th
 
 **Deprecated since:** 9
 
-**Substitutes:** [isBadgeDisplayed](arkts-notification-notificationmanager-isbadgedisplayed-f-sys.md)
+**Substitutes:** [isBadgeDisplayed](arkts-notification-notificationmanager-isbadgedisplayed-f-sys.md#isbadgedisplayed-2)(bundle: BundleOption)
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
 

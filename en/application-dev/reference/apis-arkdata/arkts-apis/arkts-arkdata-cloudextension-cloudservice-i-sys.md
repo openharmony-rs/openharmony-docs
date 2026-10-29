@@ -26,7 +26,7 @@ import { cloudExtension } from '@kit.ArkData';
 connectAssetLoader(bundleName: string, database: Database): Promise<rpc.RemoteObject>
 ```
 
-Connects to an asset loader by obtaining a RemoteObject instance of AssetLoader, which is created by using createAssetLoaderStub. This API uses a promise to return the result. You can use this API to connect to the asset loader.
+Connects to an asset loader by obtaining a RemoteObject instance of AssetLoader, which is created by using createAssetLoaderStub. This API uses a promise to return the result.
 
 **Since:** 11
 
@@ -193,7 +193,7 @@ Obtains brief application information. This API uses a promise to return the res
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;Record&lt;string, [AppBriefInfo](arkts-arkdata-cloudextension-appbriefinfo-i-sys.md)&gt;&gt; | Promise used to return bundleName and AppBriefInfo, in KV pairs. |
+| Promise&lt;Record&lt;string, [AppBriefInfo](arkts-arkdata-cloudextension-appbriefinfo-i-sys.md)&gt;&gt; | Promise used to return a key-value pair, where the key is **bundleName** and the value is AppBriefInfo. |
 
 <!--Del-->
 **Examples**
@@ -333,7 +333,7 @@ subscribe(
     ): Promise<Result<SubscribeInfo>>
 ```
 
-Subscribes to data. This API uses a promise to return the result.
+Subscribes to the cloud database change notification. This API uses a promise to return the result.
 
 **Since:** 11
 
@@ -388,7 +388,7 @@ class MyCloudService implements cloudExtension.CloudService {
 unsubscribe(unsubscribeInfo: Record<string, Array<string>>): Promise<number>
 ```
 
-Unsubscribes from data changes in the cloud. This API uses a promise to return the result.
+Unsubscribes from the cloud data change notification. This API uses a promise to return the result.
 
 **Since:** 11
 
@@ -402,7 +402,7 @@ Unsubscribes from data changes in the cloud. This API uses a promise to return t
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| unsubscribeInfo | Record&lt;string, Array&lt;string&gt;&gt; | Yes | Data to be unsubscribed from, in an array of KV pairs consisting of the application bundle name and database information. |
+| unsubscribeInfo | Record&lt;string, Array&lt;string&gt;&gt; | Yes | Data to be unsubscribed from, in an array of KV pairs consisting of the application bundle name and database name. |
 
 **Return value:**
 

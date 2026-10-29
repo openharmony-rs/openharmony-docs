@@ -4,7 +4,7 @@
 export type NotificationButton = _NotificationButton
 ```
 
-通知按钮。
+[通知按钮](../../../notification/notification-glossary.md#notification-button通知按钮)。
 
 **类型：** _NotificationButton
 

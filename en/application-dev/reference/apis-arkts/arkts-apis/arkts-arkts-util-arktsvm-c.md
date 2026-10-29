@@ -12,8 +12,6 @@ A class that provides VM maintenance and test capabilities for developers.
 
 **System capability:** SystemCapability.Utils.Lang
 
-**Test API:** This API is used only in automated test scripts.
-
 ## Modules to Import
 
 ```TypeScript

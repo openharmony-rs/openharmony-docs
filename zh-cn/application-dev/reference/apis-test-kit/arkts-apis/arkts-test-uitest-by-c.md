@@ -30,8 +30,6 @@ By类提供的所有API均为同步接口，建议使用者通过静态构造器
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**测试接口：** 此接口仅在自动化测试脚本中使用。
-
 ## 导入模块
 
 ```TypeScript

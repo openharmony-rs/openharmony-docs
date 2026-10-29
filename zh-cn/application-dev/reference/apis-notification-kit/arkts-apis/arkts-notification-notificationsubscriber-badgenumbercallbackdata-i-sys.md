@@ -4,7 +4,7 @@
 export interface BadgeNumberCallbackData
 ```
 
-应用角标数量变化的回调函数类型。
+应用角标数量变化的回调数据。
 
 **起始版本：** 10
 

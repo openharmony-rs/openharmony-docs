@@ -4,7 +4,7 @@
 export interface NotificationRequest
 ```
 
-定义了通知请求的数据结构，用于描述一条通知的全部信息，包括通知内容、标识、展示样式、交互行为等。
+定义了[通知请求](../../../notification/notification-glossary.md#notification-request通知请求)的数据结构，用于描述一条通知的全部信息，包括[通知内容](../../../notification/notification-glossary.md#notification-content通知内容)、标识、展示样式、交互行为等。
 
 **起始版本：** 7
 
@@ -18,7 +18,7 @@ export interface NotificationRequest
 actionButtons?: Array<NotificationActionButton>
 ```
 
-通知按钮，默认为空。一条通知中最多包含两个按钮。从API version 16开始，`wearable`设备一条通知最多包含三个按钮。
+[通知按钮](../../../notification/notification-glossary.md#notification-button通知按钮)，默认为空。一条通知中最多包含两个按钮。从API version 16开始，`wearable`设备一条通知最多包含三个按钮。
 
 **类型：** Array&lt;[NotificationActionButton](arkts-notification-notificationactionbutton-i.md)&gt;
 
@@ -34,7 +34,9 @@ actionButtons?: Array<NotificationActionButton>
 appMessageId?: string
 ```
 
-应用发送通知携带的唯一标识字段，用于通知去重。如果同一应用通过本地和云端等不同途径发布携带相同appMessageId的通知，设备只展示一条消息，之后收到的重复通知会被静默去重，不展示、不提醒。去重标识仅在通知发布的24小时内有效，超过24小时或者设备重启失效。大小不超过202字节，超出部分会被截断。默认为空。
+应用发送通知携带的唯一标识字段，用于通知去重。如果同一应用通过本地和云端等不同途径发布携带相同appMessageId的通知，设备只展示一条消息，之后收到的重复通知会被静默去重，不展示、不提醒。去重标识仅在通知发布的24小时内有效，超过24小时或者设备重启失效。
+
+大小不超过202字节，超出部分会被截断。默认为空。
 
 **类型：** string
 
@@ -92,7 +94,7 @@ badgeNumber?: number
 
 当`badgeNumber`取值小于或等于0时，将忽略本次角标设定。
 
-当角标累加设定个数取值大于99时，通知角标将显示99+。
+当角标累加设定个数取值大于99时，[通知角标](../../../notification/notification-glossary.md#notification-badge通知角标)将显示99+。
 
 例如，应用发布3条通知，`badgeNumber`依次设置为2、0、3，应用将依次展示为2、2、5。
 
@@ -158,7 +160,7 @@ content: NotificationContent
 readonly creatorBundleName?: string
 ```
 
-创建通知的应用名称。
+创建通知的应用包名。
 
 **类型：** string
 
@@ -242,7 +244,7 @@ deliveryTime?: number
 distributedOption?: DistributedOptions
 ```
 
-分布式通知的选项。预留能力，暂未支持。
+[分布式通知](../../../notification/notification-glossary.md#distributed-notification分布式通知)的选项。预留能力，暂未支持。
 
 **类型：** [DistributedOptions](arkts-notification-notificationrequest-distributedoptions-i.md)
 
@@ -262,7 +264,7 @@ extraInfo?: { [key: string]: any }
 
 以下Key由系统赋值，开发者手动修改也不会生效，系统在数据传递时会自动修改为实际值。
 
-- 'ohos.notificationManager.wantUri'：用户点击通知时传递给应用的[Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) 中的uri字段，使用[getActiveNotifications](arkts-notification-notification-getactivenotifications-depr-f.md#getactivenotifications-1)接口获取该信息。
+- 'ohos.notificationManager.wantUri'：用户点击通知时传递给应用的[Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) 中的uri字段，使用[getActiveNotifications](arkts-notification-notificationmanager-getactivenotifications-f.md)接口获取该信息。
 
 **类型：** { [key: string]: any }
 
@@ -278,7 +280,9 @@ extraInfo?: { [key: string]: any }
 groupName?: string
 ```
 
-通知所属组。当不同通知的groupName相同时，这些通知将成组展示。大小不超过202字节，超出部分会被截断。默认为空。
+通知所属组。当不同通知的groupName相同时，这些通知将成组展示。
+
+大小不超过202字节，超出部分会被截断。默认为空。
 
 **类型：** string
 
@@ -326,7 +330,7 @@ id?: number
 isAlertOnce?: boolean
 ```
 
-发布或更新该通知时，是否只进行一次通知提醒，默认值为false。
+发布或更新该通知时，是否只进行一次通知提醒，默认为false。
 
 - true：仅首次发布通知时进行提醒，后续更新该通知时，提醒方式变更为[LEVEL_LOW](arkts-notification-notificationmanager-slotlevel-e.md)。  
 - false：每次均按照配置的通知提醒方式进行提醒。
@@ -429,7 +433,9 @@ label?: string
 
 label字段的功能类似于id，可以单独使用，也可与id结合共同作为通知的标识。优先推荐使用id。
 
-如果发布通知时label不为空，那么在更新或删除该通知时，也需要指定相应的label。大小不超过202字节，超出部分会被截断。默认为空。
+如果发布通知时label不为空，那么在更新或删除该通知时，也需要指定相应的label。
+
+大小不超过202字节，超出部分会被截断。默认为空。
 
 **类型：** string
 
@@ -445,7 +451,9 @@ label字段的功能类似于id，可以单独使用，也可与id结合共同�
 largeIcon?: image.PixelMap
 ```
 
-通知右侧图标，默认为空。当`content`使用[NotificationPictureContent](arkts-notification-notificationcontent-notificationpicturecontent-i.md)时，该参数设置不生效。图标像素的总字节数不超过192KB（图标像素的总字节数通过[getPixelBytesNumber](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md#getpixelbytesnumber)获取），超出后设置不生效。实际显示效果依赖于设备能力和通知中心UI样式<!--RP1--><!--RP1End-->。
+通知右侧图标，默认为空。当`content`使用[NotificationPictureContent](arkts-notification-notificationcontent-notificationpicturecontent-i.md)时，该参数设置不生效。
+
+图标像素的总字节数不超过192KB（图标像素的总字节数通过[getPixelBytesNumber](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md#getpixelbytesnumber)获取），超出后设置不生效。建议图标像素长宽为128*128。实际显示效果依赖于设备能力和通知中心UI样式<!--RP1--><!--RP1End-->。
 
 **类型：** [image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)
 
@@ -461,13 +469,14 @@ largeIcon?: image.PixelMap
 notificationFlags?: NotificationFlags
 ```
 
-通知标志位设置，默认为空。从API version 23开始成为可写参数，设置该参数可削减通知的提醒方式，当通知渠道类型为[LIVE_VIEW](arkts-notification-notificationmanager-slottype-e.md)时，该参数设置不生效。
+[通知标志位](../../../notification/notification-glossary.md#notification-flags通知标志位)设置，默认为空。从API version 23开始成为可写参数，设置该参数可削减通知的提醒方式，当通知渠道类型为[LIVE_VIEW](arkts-notification-notificationmanager-slottype-e.md)时，该参数设置不生效。
 
 **类型：** [NotificationFlags](arkts-notification-notificationflags-i.md)
 
 **起始版本：** 8
 
-**模型约束：** 此接口可在Stage模型和FA模型下使用。
+**模型约束：** 
+- API版本23+：此接口可在Stage模型和FA模型下使用。
 
 <!--Device-NotificationRequest-notificationFlags?: NotificationFlags--><!--Device-NotificationRequest-notificationFlags?: NotificationFlags-End-->
 
@@ -479,7 +488,7 @@ notificationFlags?: NotificationFlags
 notificationSlotType?: notificationManager.SlotType
 ```
 
-通知渠道类型，默认值为OTHER_TYPES。不同渠道类型的通知提醒方式不同。
+[通知渠道](../../../notification/notification-glossary.md#notification-slot通知渠道)类型，默认值为OTHER_TYPES。不同渠道类型的[通知提醒方式](../../../notification/notification-glossary.md#notification-reminder-mode通知提醒方式)不同。
 
 **类型：** [notificationManager.SlotType](arkts-notification-notificationmanager-slottype-e.md)
 
@@ -495,7 +504,9 @@ notificationSlotType?: notificationManager.SlotType
 overlayIcon?: image.PixelMap
 ```
 
-通知重叠图标，替换通知左侧图标，默认为空。此接口只在[notificationSlotType](arkts-notification-notificationrequest-i.md)类型设置为SOCIAL_COMMUNICATION时生效。图标像素的总字节数不超过192KB（图标像素的总字节数通过[getPixelBytesNumber](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md#getpixelbytesnumber)获取），超出后设置不生效。建议图标像素长宽为128*128。实际显示效果依赖于设备能力和通知中心UI样式<!--RP3--><!--RP3End-->。
+通知重叠图标，替换通知左侧图标，默认为空。此接口只在[notificationSlotType](arkts-notification-notificationrequest-i.md)类型设置为SOCIAL_COMMUNICATION时生效。
+
+图标像素的总字节数不超过192KB（图标像素的总字节数通过[getPixelBytesNumber](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md#getpixelbytesnumber)获取），超出后设置不生效。建议图标像素长宽为128*128。实际显示效果依赖于设备能力和通知中心UI样式<!--RP3--><!--RP3End-->。
 
 **类型：** [image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)
 
@@ -511,7 +522,7 @@ overlayIcon?: image.PixelMap
 priorityNotificationType?: notificationManager.PriorityNotificationType
 ```
 
-通知优先级类型，默认值为OTHER。设置该参数可使通知置顶，并且在通知中心以突出方式显示。<!--RP2--><!--RP2End-->实际显示效果依赖于设备能力和通知中心UI样式。
+通知优先级类型，默认值为OTHER。设置该参数可使通知置顶，并且在[通知中心](../../../notification/notification-glossary.md#notification-center通知中心)以突出方式显示。<!--RP2--><!--RP2End-->实际显示效果依赖于设备能力和通知中心UI样式。
 
 **类型：** [notificationManager.PriorityNotificationType](arkts-notification-notificationmanager-prioritynotificationtype-e.md)
 
@@ -563,7 +574,9 @@ showDeliveryTime?: boolean
 smallIcon?: image.PixelMap
 ```
 
-通知左侧图标，默认为空。系统自动生成，无需开发者配置。图标像素的总字节数不超过192KB（图标像素的总字节数通过[getPixelBytesNumber](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md#getpixelbytesnumber)获取），超出后设置不生效。建议图标像素长宽为128*128。实际显示效果依赖于设备能力和通知中心UI样式<!--RP4--><!--RP4End-->。
+通知左侧图标，默认为空。系统自动生成，无需开发者配置。
+
+图标像素的总字节数不超过192KB（图标像素的总字节数通过[getPixelBytesNumber](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md#getpixelbytesnumber)获取），超出后设置不生效。建议图标像素长宽为128*128。实际显示效果依赖于设备能力和通知中心UI样式<!--RP4--><!--RP4End-->。
 
 **类型：** [image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)
 
@@ -579,10 +592,10 @@ smallIcon?: image.PixelMap
 sound?: string
 ```
 
-应用通知自定义铃声资源路径，默认为空。支持两种音频资源来源：
+应用通知[自定义铃声](../../../notification/notification-glossary.md#customized-ringtone自定义铃声)资源路径，默认为空。支持两种音频资源来源：
 
 - 资源文件：应用预置的音频文件，资源文件必须放在resources/rawfile目录下，使用时直接传入文件名。  
-- 沙箱文件：网络下载或者用户生成的音频文件，必须放在沙箱文件目录EL1区域的files目录或  
+- 沙箱文件：网络下载或者用户生成的音频文件，必须放在[沙箱文件目录](../../../file-management/app-sandbox-directory.md#应用文件目录与应用文件路径)EL1区域的files目录或  
 者其子目录下，传入格式为uri::{fileUri}，其中fileUri是通过[getUriFromPath](../../apis-core-file-kit/arkts-apis/arkts-corefile-fileuri-geturifrompath-f.md)获取的路径。例如，应用将下载的音频资源demo.mp3传入沙箱文件目录/data/storage/el1/base/files/，通过getUriFromPath获取的路径为file://{bundleName}/data/storage/el1/ base/files/demo.mp3，使用该路径发布通知即可播放应用下载的音频资源。
 
 支持m4a、aac、mp3、ogg、wav、flac、amr等格式。

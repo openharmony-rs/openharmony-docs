@@ -38,7 +38,7 @@ Notification type.
 extraInfoKeys: Array<string>
 ```
 
-Extra information about the live view.
+Additional information of the [live view notification](../../../notification/notification-glossary.md#live-view-notification).
 
 **Type:** Array&lt;string&gt;
 

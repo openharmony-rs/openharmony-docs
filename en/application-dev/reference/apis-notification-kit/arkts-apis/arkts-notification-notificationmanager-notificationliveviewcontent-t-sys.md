@@ -4,7 +4,7 @@
 export type NotificationLiveViewContent = _NotificationLiveViewContent
 ```
 
-Describes the common live view.
+Describes the [normal live view notification](../../../notification/notification-glossary.md#normal-live-view).
 
 **Type:** _NotificationLiveViewContent
 

@@ -1,4 +1,4 @@
-# notificationSorting(Provides sorting information about an active notification)
+# notificationSorting(NotificationSorting)
 
 ## 汇总
 

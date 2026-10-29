@@ -1,4 +1,4 @@
-# @system.notification
+# @system.notification(Notification)
 
 ## Modules to Import
 
@@ -18,5 +18,5 @@ import { Notification, ActionResult, ShowNotificationOptions } from '@kit.Notifi
 
 | Name | Description |
 | --- | --- |
-| [ActionResult](arkts-notification-system-notification-actionresult-i.md) |  |
-| [ShowNotificationOptions](arkts-notification-system-notification-shownotificationoptions-i.md) |  |
+| [ActionResult](arkts-notification-system-notification-actionresult-i.md) | Defines the action to be taken when the notification is clicked. |
+| [ShowNotificationOptions](arkts-notification-system-notification-shownotificationoptions-i.md) | Options for displaying the notification, including the notification title, notification content, and the action triggered when the notification is tapped. |

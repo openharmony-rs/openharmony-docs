@@ -1,4 +1,4 @@
-# @ohos.application.NotificationSubscriberExtensionContext
+# @ohos.application.NotificationSubscriberExtensionContext(ExtensionAbility Context for Notification Subscription)
 
 ## Modules to Import
 
@@ -12,4 +12,4 @@ import { NotificationSubscriberExtensionContext } from '@kit.NotificationKit';
 
 | Name | Description |
 | --- | --- |
-| [NotificationSubscriberExtensionContext](arkts-notification-application-notificationsubscriberextensioncontext-notificationsubscriberextensioncontext-c.md) | The **NotificationSubscriberExtensionContext** module provides the context for the **NotificationSubscriberExtensionAbility**. |
+| [NotificationSubscriberExtensionContext](arkts-notification-application-notificationsubscriberextensioncontext-notificationsubscriberextensioncontext-c.md) | The **NotificationSubscriberExtensionContext** module provides the extension capability for [notification subscription](../../../notification/notification-glossary.md#notification-subscription) subscribers. |

@@ -14,7 +14,7 @@ function off(eventId: number): void
 
 Unsubscribes from all events with the specified event ID.
 
-After this API is used to unsubscribe from an event, the event that has been published through the [emit](arkts-basicservices-emitter-emit-f.md#emit-1) API but has not been executed will be unsubscribed.
+After this API is used to unsubscribe from an event, the event that has been published through the [emit](arkts-basicservices-emitter-emit-f.md) API but has not been executed will be unsubscribed.
 
 **Since:** 7
 
@@ -60,7 +60,7 @@ After this API is used to unsubscribe from an event, the event that has been pub
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| eventId | string | Yes | Event ID, which cannot be empty or exceed 10,240 bytes. Excess content will be truncated. |
+| eventId | string | Yes | Event ID, <br>which cannot be empty or exceed 10,240 bytes. Excess content will be truncated. |
 
 **Examples**
 
@@ -84,7 +84,7 @@ function off(eventId: number, callback: Callback<EventData>): void
 
 Unsubscribes from an event with the specified event ID and processed by the specified callback. This API takes effect only when **Callback\<EventData>** has been registered through the [on](arkts-basicservices-emitter-on-f.md#on1) or [once](arkts-basicservices-emitter-once-f.md#once1) API. Otherwise, no processing is performed.
 
-After this API is used to unsubscribe from an event, the event that has been published through the [emit](arkts-basicservices-emitter-emit-f.md#emit-1) API but has not been executed will be unsubscribed.
+After this API is used to unsubscribe from an event, the event that has been published through the [emit](arkts-basicservices-emitter-emit-f.md) API but has not been executed will be unsubscribed.
 
 **Since:** 10
 
@@ -99,7 +99,7 @@ After this API is used to unsubscribe from an event, the event that has been pub
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | eventId | number | Yes | Event ID. |
-| callback | [Callback](arkts-basicservices-base-callback-i.md)&lt;[EventData](arkts-basicservices-emitter-eventdata-i.md)&gt; | Yes | Callback to unregister, which must be the same as the callback used during registration. |
+| callback | [Callback](arkts-basicservices-base-callback-i.md)&lt;[EventData](arkts-basicservices-emitter-eventdata-i.md)&gt; | Yes | Callback used to return the data object passed when the event is sent, which must be the same as the callback used during registration. |
 
 **Examples**
 
@@ -137,8 +137,8 @@ After this API is used to unsubscribe from an event, the event that has been pub
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| eventId | string | Yes | Event ID, which cannot be empty or exceed 10,240 bytes. Excess content will be truncated. |
-| callback | [Callback](arkts-basicservices-base-callback-i.md)&lt;[EventData](arkts-basicservices-emitter-eventdata-i.md)&gt; | Yes | Callback to unregister, which must be the same as the callback used during registration. |
+| eventId | string | Yes | Event ID, <br>which cannot be empty or exceed 10,240 bytes. Excess content will be truncated. |
+| callback | [Callback](arkts-basicservices-base-callback-i.md)&lt;[EventData](arkts-basicservices-emitter-eventdata-i.md)&gt; | Yes | Callback used to return the data object passed when the event is sent, which must be the same as the callback used during registration. |
 
 **Examples**
 
@@ -188,8 +188,8 @@ After this API is used to unsubscribe from an event, the event that has been pub
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| eventId | string | Yes | Event ID, which cannot be empty or exceed 10,240 bytes. Excess content will be truncated. |
-| callback | [Callback](arkts-basicservices-base-callback-i.md)&lt;[GenericEventData](arkts-basicservices-emitter-genericeventdata-i.md)&lt;T&gt;&gt; | Yes | Callback to unregister, which must be the same as the callback used during registration. |
+| eventId | string | Yes | Event ID, <br>which cannot be empty or exceed 10,240 bytes. Excess content will be truncated. |
+| callback | [Callback](arkts-basicservices-base-callback-i.md)&lt;[GenericEventData](arkts-basicservices-emitter-genericeventdata-i.md)&lt;T&gt;&gt; | Yes | Callback used to return the generic data object passed when the event is sent, which must be the same as the callback used during registration. |
 
 **Examples**
 

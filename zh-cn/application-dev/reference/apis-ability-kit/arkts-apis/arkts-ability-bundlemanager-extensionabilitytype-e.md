@@ -80,7 +80,7 @@ AGENT = 37
 AGENT_UI = 38
 ```
 
-AgentUIExtensionAbility：为开发者提供接入端侧Agent UI界面显示能力。
+[AgentUIExtensionAbility](../../../reference/apis-ability-kit/js-apis-agent-agentUIExtensionAbility.md)：为开发者提供接入端侧Agent UI界面显示能力。
 
 **起始版本：** 24
 
@@ -352,7 +352,7 @@ LIVE_FORM = 30
 MODULAR_OBJECT = 39
 ```
 
-modular_object_extension_ability：提供[模块化对象](../../../application-models/modular-object-extension-overview.md)扩展能力，可以将应用自身功能封装为独立的功能模块，开放给其他应用使用。
+[modular_object_extension_ability](../../../reference/apis-ability-kit/capi-modular-object-extension-ability-h.md)：提供[模块化对象](../../../application-models/modular-object-extension-overview.md)扩展能力，可以将应用自身功能封装为独立的功能模块，开放给其他应用使用。
 
 **起始版本：** 26.0.0
 
@@ -512,7 +512,7 @@ ThumbnailExtensionAbility：文件缩略图扩展能力，用于为文件提供�
 UKEY_AUTH = 40
 ```
 
-UkeyAuthExtensionAbility:为开发者提供接入自定义UKey认证界面的能力。
+[UkeyAuthExtensionAbility](../../../reference/apis-device-certificate-kit/js-apis-UkeyAuthExtensionAbility.md):为开发者提供接入自定义UKey认证界面的能力。
 
 **起始版本：** 26.0.1
 

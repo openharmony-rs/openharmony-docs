@@ -40,7 +40,7 @@ function setExternalStorageDeviceMountPolicy(volumeId: string, policy: MountPoli
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
 | [9200012](../errorcode-enterpriseDeviceManager.md#9200012-参数校验失败) | Parameter verification failed. |
 | [9200016](../errorcode-enterpriseDeviceManager.md#9200016-服务超时) | Service timeout. |
-| 9201056 | Invalid external storage mount policy. |
+| [9201056](../errorcode-enterpriseDeviceManager.md#9201056-外置存储设备挂载策略不合法) | Invalid external storage mount policy. |
 
 **示例**
 

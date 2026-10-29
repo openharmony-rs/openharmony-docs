@@ -10,7 +10,7 @@ export enum ContentType
 
 **废弃版本：** 9
 
-**替代接口：** [ContentType](arkts-notification-notificationmanager-contenttype-e.md)
+**替代接口：** ContentType
 
 <!--Device-notification-export enum ContentType--><!--Device-notification-export enum ContentType-End-->
 

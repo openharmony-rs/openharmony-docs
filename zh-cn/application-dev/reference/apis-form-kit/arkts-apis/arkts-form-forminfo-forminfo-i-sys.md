@@ -40,6 +40,26 @@ readonly enableBlurBackground?: boolean
 
 **系统接口：** 此接口为系统接口。
 
+## enableTint
+
+```TypeScript
+readonly enableTint?: boolean
+```
+
+获取卡片是否启用赋色。默认值：默认是值是false。
+
+**类型：** boolean
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-FormInfo-readonly enableTint?: boolean--><!--Device-FormInfo-readonly enableTint?: boolean-End-->
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
 ## funInteractionParams
 
 ```TypeScript

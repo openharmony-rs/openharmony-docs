@@ -4,7 +4,7 @@
 export interface NotificationSubscriber
 ```
 
-提供订阅者接收到新通知、取消通知等的回调方法。
+作为订阅通知接口[subscribeNotification](arkts-notification-notificationsubscribe-subscribenotification-f-sys.md)的入参，提供订阅者接收到新通知、取消通知等的回调方法。
 
 **起始版本：** 7
 
@@ -515,7 +515,7 @@ notificationSubscribe.subscribeNotification(subscriber).then(() => {
 onEnabledSilentReminderChanged?: EnabledSilentReminderChangedCallback
 ```
 
-返回应用通知静默提醒的使能状态变化。
+返回应用通知[静默提醒](../../../notification/notification-glossary.md#silent-reminder静默提醒)的使能状态变化。
 
 **起始版本：** 24
 
@@ -533,7 +533,7 @@ onEnabledSilentReminderChanged?: EnabledSilentReminderChangedCallback
 onNotificationSwitchChanged?: NotificationSwitchChangedCallback
 ```
 
-返回由[notificationManager.setNotificationSwitch]{@link../@ohos.notificationManager:notificationManager.setNotificationSwitch}接口设置的通知开关状态变化。
+返回由[notificationManager.setNotificationSwitch](arkts-notification-notificationmanager-setnotificationswitch-f-sys.md)接口设置的通知开关状态变化。
 
 **起始版本：** 26.0.0
 

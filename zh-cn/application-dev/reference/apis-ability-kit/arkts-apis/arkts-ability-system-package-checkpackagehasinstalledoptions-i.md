@@ -9,7 +9,7 @@ export interface CheckPackageHasInstalledOptions
 > 
 > 从API version 3开始支持，从API version 9开始废弃。
 
-指示应用包是否已安装。
+查询包是否已安装时的选项。
 
 **起始版本：** 3
 

@@ -17,7 +17,7 @@ Cancels a notification with the specified ID. This API uses an asynchronous call
 
 **Deprecated since:** 9
 
-**Substitutes:** [cancel](arkts-notification-notificationmanager-cancel-f.md)
+**Substitutes:** [cancel](arkts-notification-notificationmanager-cancel-f.md)(id: number, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-notification-function cancel(id: number, callback: AsyncCallback<void>): void--><!--Device-notification-function cancel(id: number, callback: AsyncCallback<void>): void-End-->
 
@@ -59,7 +59,7 @@ Cancels a notification with the specified ID and label. This API uses an asynchr
 
 **Deprecated since:** 9
 
-**Substitutes:** [cancel](arkts-notification-notificationmanager-cancel-f.md)
+**Substitutes:** [cancel](arkts-notification-notificationmanager-cancel-f.md)(id: number, label: string, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-notification-function cancel(id: number, label: string, callback: AsyncCallback<void>): void--><!--Device-notification-function cancel(id: number, label: string, callback: AsyncCallback<void>): void-End-->
 
@@ -102,7 +102,7 @@ Cancels a notification with the specified ID and optional label. This API uses a
 
 **Deprecated since:** 9
 
-**Substitutes:** [cancel](arkts-notification-notificationmanager-cancel-f.md)
+**Substitutes:** [cancel](arkts-notification-notificationmanager-cancel-f.md)(id: number, label?: string)
 
 <!--Device-notification-function cancel(id: number, label?: string): Promise<void>--><!--Device-notification-function cancel(id: number, label?: string): Promise<void>-End-->
 

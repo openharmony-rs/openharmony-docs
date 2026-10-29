@@ -67,7 +67,7 @@ predicates.beginsWith("NAME", "os");
 contains(field: string, value: string): DataSharePredicates
 ```
 
-Creates a **DataSharePredicates** object to match the data that contains the specified value.
+This API is used to configure the predicate to match the field that contains the specified value.
 
 Currently, only RDB store supports this predicate.
 
@@ -208,7 +208,7 @@ Currently, only RDB store supports this predicate.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | field | string | Yes | Column name in the database table. |
-| value | string | Yes | Wildcard expression to match.In the expression, '*' represents zero, one, or more digits or characters, and '?' represents a single digit or character. It is case sensitive. |
+| value | string | Yes | Wildcard expression to match. In the expression, '*' represents zero, one, or more digits or characters, and '?' represents a single digit or character. It is case sensitive. |
 
 **Return value:**
 
@@ -318,7 +318,7 @@ inKeys(keys: Array<string>): DataSharePredicates
 
 Creates a **DataSharePredicates** object to match the data whose keys are within the given range.
 
-Currently, only the KVDB supports this **DataSharePredicates** object.
+Currently, only the KV store supports this predicate.
 
 **Since:** 9
 
@@ -444,7 +444,7 @@ prefixKey(prefix: string): DataSharePredicates
 
 Creates a **DataSharePredicates** object to match the data with the specified key prefix.
 
-Currently, only the KVDB supports this **DataSharePredicates** object.
+Currently, only the KV store supports this predicate.
 
 **Since:** 9
 
@@ -503,7 +503,7 @@ Currently, both the RDB store and KV store support this predicate.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | field | string | Yes | Column name in the database table. |
-| value | string | Yes | Wildcard expression to match.In the expression, '%' represents zero, one, or more digits or characters, and '_' represents a single digit or character. It is case insensitive. |
+| value | string | Yes | Wildcard expression to match. In the expression, '%' represents zero, one, or more digits or characters, and '_' represents a single digit or character. It is case insensitive. |
 
 **Return value:**
 

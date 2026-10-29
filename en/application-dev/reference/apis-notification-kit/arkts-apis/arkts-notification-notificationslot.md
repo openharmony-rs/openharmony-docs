@@ -1,4 +1,4 @@
-# notificationSlot(Description of the notification channel)
+# notificationSlot(NotificationSlot)
 
 ## Summary
 
@@ -6,12 +6,12 @@
 
 | Name | Description |
 | --- | --- |
-| [NotificationSlot](arkts-notification-notificationslot-i.md) | The **NotificationSlot** module provides APIs for defining the notification slots. The notification reminder modes vary according to notification slots. |
+| [NotificationSlot](arkts-notification-notificationslot-i.md) | Describes the [notification slot](../../../notification/notification-glossary.md#notification-slot). Different notification slots have different [notification reminder modes](../../../notification/notification-glossary.md#notification-reminder-mode). |
 
 <!--Del-->
 ### Interfaces(System API)
 
 | Name | Description |
 | --- | --- |
-| [NotificationSlot](arkts-notification-notificationslot-i-sys.md) | The **NotificationSlot** module provides APIs for defining the notification slots. The notification reminder modes vary according to notification slots. |
+| [NotificationSlot](arkts-notification-notificationslot-i-sys.md) | Describes the [notification slot](../../../notification/notification-glossary.md#notification-slot). Different notification slots have different [notification reminder modes](../../../notification/notification-glossary.md#notification-reminder-mode). |
 <!--DelEnd-->

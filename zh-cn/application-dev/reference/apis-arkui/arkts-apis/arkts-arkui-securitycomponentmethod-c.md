@@ -5,7 +5,7 @@ declare class SecurityComponentMethod<T>
 ```
 
 安全控件通用属性模块，提供安全控件的布局、尺寸、文字、图标、颜色、边框和交互等通用属性的统一配置能力。  
-- 为PasteButton、SaveButton等安全控件统一设置布局、尺寸、文字、图标、颜色、边框和交互相关属性。  
+- 为[PasteButton](../arkts-components/arkts-arkui-pastebutton-comp.md#pastebutton)、[SaveButton](../arkts-components/arkts-arkui-savebutton-comp.md#savebutton)等安全控件统一设置布局、尺寸、文字、图标、颜色、边框和交互相关属性。  
 - 在满足安全控件规范的前提下，调整安全控件显示效果和交互体验。具体约束请参见[约束与限制](../../../security/AccessToken/security-component-overview.md#约束与限制)。  
 - 通过链式调用方式复用安全控件通用属性能力。
 
@@ -18,7 +18,7 @@ declare class SecurityComponentMethod<T>
 ## 核心枚举类型
 
 - **[SecurityComponentLayoutDirection](arkts-arkui-securitycomponentlayoutdirection-e.md)：** 安全控件图标和文字排列方向枚举，用于指定横向或纵向布局。  
-- **ButtonType：** 安全控件按钮样式枚举，用于指定胶囊、圆形、圆角矩形或普通按钮样式。
+- **[ButtonType](../arkts-components/arkts-arkui-button-comp-buttontype-e.md)：** 安全控件按钮样式枚举，用于指定胶囊、圆形、圆角矩形或普通按钮样式。
 
 ## 核心接口类型
 
@@ -184,7 +184,7 @@ align(alignType: Alignment): T
 alignRules(alignRule: AlignRuleOption): T
 ```
 
-设置在相对容器中子组件的对齐规则，仅当父容器为RelativeContainer时生效。
+设置在相对容器中子组件的对齐规则，仅当父容器为[RelativeContainer](../arkts-components/arkts-arkui-relativecontainer-comp.md#relativecontainer)时生效。
 
 **起始版本：** 15
 
@@ -200,7 +200,7 @@ alignRules(alignRule: AlignRuleOption): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| alignRule | [AlignRuleOption](../arkts-components/arkts-arkui-common-comp-alignruleoption-i.md) | 是 | 对齐规则配置对象，包含top、bottom、left、right、center等锚点对齐配置，用于指定安全控件在RelativeContainer中的对齐位置和方式。 |
+| alignRule | [AlignRuleOption](../arkts-components/arkts-arkui-common-comp-alignruleoption-i.md) | 是 | 对齐规则配置对象，包含top、bottom、left、right、center等锚点对齐配置，用于指定安全控件在[RelativeContainer](../arkts-components/arkts-arkui-relativecontainer-comp.md#relativecontainer)中的对齐位置和方式。 |
 
 **返回值：**
 
@@ -214,7 +214,7 @@ alignRules(alignRule: AlignRuleOption): T
 alignRules(alignRule: LocalizedAlignRuleOptions): T
 ```
 
-设置在相对容器中子组件的对齐规则，仅当父容器为RelativeContainer时生效。该方法水平方向上以start和end分别替代上述[alignRules](#alignrules)的left和right，以便在RTL模式下能镜像显示，建议优先使用该方法。
+设置在相对容器中子组件的对齐规则，仅当父容器为[RelativeContainer](../arkts-components/arkts-arkui-relativecontainer-comp.md#relativecontainer)时生效。该方法水平方向上以start和end分别替代上述[alignRules](#alignrules)的left和right，以便在RTL模式下能镜像显示，建议优先使用该方法。
 
 **起始版本：** 15
 
@@ -230,7 +230,7 @@ alignRules(alignRule: LocalizedAlignRuleOptions): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| alignRule | [LocalizedAlignRuleOptions](../arkts-components/arkts-arkui-common-comp-localizedalignruleoptions-i.md) | 是 | 对齐规则配置对象，使用start和end替代left和right以支持RTL布局镜像。包含top、bottom、start、end、center等锚点对齐配置，用于指定安全控件在RelativeContainer中的对齐位置和方式。 |
+| alignRule | [LocalizedAlignRuleOptions](../arkts-components/arkts-arkui-common-comp-localizedalignruleoptions-i.md) | 是 | 对齐规则配置对象，使用start和end替代left和right以支持RTL布局镜像。包含top、bottom、start、end、center等锚点对齐配置，用于指定安全控件在[RelativeContainer](../arkts-components/arkts-arkui-relativecontainer-comp.md#relativecontainer)中的对齐位置和方式。 |
 
 **返回值：**
 
@@ -306,7 +306,7 @@ borderRadius(value: Dimension): T
 
 设置安全控件的边框圆角半径。
 
-borderRadius的设置效果受ButtonType影响。当按钮类型为Capsule或Circle时，borderRadius设置不生效，按钮圆角半径由按钮类型自动确定；当按钮类型为Normal或ROUNDED_RECTANGLE时，borderRadius设置生效。具体影响请参见ButtonType。
+borderRadius的设置效果受ButtonType影响。当按钮类型为Capsule或Circle时，borderRadius设置不生效，按钮圆角半径由按钮类型自动确定；当按钮类型为Normal或ROUNDED_RECTANGLE时，borderRadius设置生效。具体影响请参见[ButtonType](../arkts-components/arkts-arkui-button-comp-buttontype-e.md)。
 
 **起始版本：** 10
 
@@ -338,7 +338,7 @@ borderRadius(radius: Dimension | BorderRadiuses): T
 
 设置安全控件的边框圆角半径，支持分别设置四个圆角的半径。
 
-borderRadius的设置效果受ButtonType影响。当按钮类型为Capsule或Circle时，borderRadius设置不生效，按钮圆角半径由按钮类型自动确定；当按钮类型为Normal或ROUNDED_RECTANGLE时，borderRadius设置生效。具体影响请参见ButtonType。
+borderRadius的设置效果受ButtonType影响。当按钮类型为Capsule或Circle时，borderRadius设置不生效，按钮圆角半径由按钮类型自动确定；当按钮类型为Normal或ROUNDED_RECTANGLE时，borderRadius设置生效。具体影响请参见[ButtonType](../arkts-components/arkts-arkui-button-comp-buttontype-e.md)。
 
 **起始版本：** 15
 
@@ -428,7 +428,7 @@ borderWidth(value: Dimension): T
 chainMode(direction: Axis, style: ChainStyle): T
 ```
 
-设置以该组件为链头所构成的链式布局的参数（包括链的方向和样式），仅当父容器为RelativeContainer时生效。
+设置以该组件为链头所构成的链式布局的参数（包括链的方向和样式），仅当父容器为[RelativeContainer](../arkts-components/arkts-arkui-relativecontainer-comp.md#relativecontainer)时生效。
 
 **起始版本：** 15
 
@@ -444,7 +444,7 @@ chainMode(direction: Axis, style: ChainStyle): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| direction | [Axis](arkts-arkui-axis-e.md) | 是 | 链式布局的方向，用于指定以该组件为链头的链在RelativeContainer中的排列方向。 |
+| direction | [Axis](arkts-arkui-axis-e.md) | 是 | 链式布局的方向，用于指定以该组件为链头的链在[RelativeContainer](../arkts-components/arkts-arkui-relativecontainer-comp.md#relativecontainer)中的排列方向。 |
 | style | [ChainStyle](../arkts-components/arkts-arkui-common-comp-chainstyle-e.md) | 是 | 链式布局的样式，用于控制链内子组件的分布方式，如均匀分布、两端对齐或紧凑排列等，具体取值及效果请参考[ChainStyle](../arkts-components/arkts-arkui-common-comp-chainstyle-e.md)。 |
 
 **返回值：**

@@ -4,7 +4,7 @@
 export type BadgeNumberCallbackData = _BadgeNumberCallbackData
 ```
 
-Describes the badge number of the application has changed.
+Returns the changes of the application badge number.
 
 **Type:** _BadgeNumberCallbackData
 

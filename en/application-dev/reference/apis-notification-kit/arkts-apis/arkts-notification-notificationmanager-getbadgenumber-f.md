@@ -14,7 +14,7 @@ function getBadgeNumber(): Promise<number>
 
 Obtains the badge number of this application. This API uses a promise to return the result.
 
-This API is used to query the badge number displayed on the current application's desktop icon.
+This API is used to query the badge number displayed on the current application's home-screen icon.
 
 **Since:** 22
 
@@ -28,7 +28,7 @@ This API is used to query the badge number displayed on the current application'
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;number&gt; | Promise used to return the badge number. (The value is irrelevant to whether notifications and home-screen badges of this application are enabled.) |
+| Promise&lt;number&gt; | Promise used to return the badge number. (The value is irrelevant to whether notifications and home-screen icons of this application are enabled.) |
 
 **Error codes:**
 

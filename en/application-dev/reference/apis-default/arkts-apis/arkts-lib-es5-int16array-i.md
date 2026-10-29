@@ -41,8 +41,6 @@ Determines whether all the members of an array satisfy the specified test.
 
 <!--Device-Int16Array-every(predicate: (value: number, index: number, array: Int16Array) => unknown, thisArg?: any): boolean--><!--Device-Int16Array-every(predicate: (value: number, index: number, array: Int16Array) => unknown, thisArg?: any): boolean-End-->
 
-**Test API:** This API is used only in automated test scripts.
-
 **Parameters:**
 
 | Name | Type | Mandatory | Description |

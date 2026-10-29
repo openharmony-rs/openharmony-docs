@@ -4,7 +4,7 @@
 export type MissionSnapshot = _MissionSnapshot
 ```
 
-任务的任务快照对象。
+任务快照信息。
 
 **类型：** _MissionSnapshot
 

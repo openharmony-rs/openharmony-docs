@@ -247,8 +247,6 @@ copy(sourceUri: string, destUri: string, force?: boolean): Promise<Array<CopyRes
 
 **系统接口：** 此接口为系统接口。
 
-**测试接口：** 此接口仅在自动化测试脚本中使用。
-
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -356,8 +354,6 @@ copy(sourceUri: string, destUri: string, callback: AsyncCallback<Array<CopyResul
 
 **系统接口：** 此接口为系统接口。
 
-**测试接口：** 此接口仅在自动化测试脚本中使用。
-
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -425,8 +421,6 @@ copy(sourceUri: string, destUri: string, force: boolean, callback: AsyncCallback
 **系统能力：** SystemCapability.FileManagement.UserFileService
 
 **系统接口：** 此接口为系统接口。
-
-**测试接口：** 此接口仅在自动化测试脚本中使用。
 
 **参数：**
 
@@ -498,8 +492,6 @@ copyFile(sourceUri: string, destUri: string, fileName: string): Promise<string>
 **系统能力：** SystemCapability.FileManagement.UserFileService
 
 **系统接口：** 此接口为系统接口。
-
-**测试接口：** 此接口仅在自动化测试脚本中使用。
 
 **参数：**
 
@@ -594,8 +586,6 @@ copyFile(sourceUri: string, destUri: string, fileName: string, callback: AsyncCa
 **系统能力：** SystemCapability.FileManagement.UserFileService
 
 **系统接口：** 此接口为系统接口。
-
-**测试接口：** 此接口仅在自动化测试脚本中使用。
 
 **参数：**
 

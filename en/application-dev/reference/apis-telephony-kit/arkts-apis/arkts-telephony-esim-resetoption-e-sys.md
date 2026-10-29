@@ -30,8 +30,6 @@ Deletion of the downloaded test profiles.
 
 **System API:** This is a system API.
 
-**Test API:** This API is used only in automated test scripts.
-
 ## DELETE_OPERATIONAL_PROFILES
 
 ```TypeScript

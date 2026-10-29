@@ -1,4 +1,4 @@
-# deprecated ShortcutInfo
+# ShortcutInfo
 
 ```TypeScript
 export interface ShortcutInfo
@@ -252,7 +252,7 @@ readonly wants: Array<ShortcutWant>
 
 快捷方式意图列表。
 
-**类型：** Array&lt;ShortcutWant&gt;
+**类型：** Array&lt;[ShortcutWant](arkts-ability-shortcutinfo-shortcutwant-depr-i-sys.md)&gt;
 
 **起始版本：** 7
 

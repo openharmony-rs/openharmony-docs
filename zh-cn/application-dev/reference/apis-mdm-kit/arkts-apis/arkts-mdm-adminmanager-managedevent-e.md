@@ -144,6 +144,24 @@ MANAGED_EVENT_BUNDLE_UPDATED = 10
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+## MANAGED_EVENT_PASSWORD_FAILED
+
+```TypeScript
+MANAGED_EVENT_PASSWORD_FAILED = 13
+```
+
+密码认证失败事件。
+
+**起始版本**：26.1.0
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-ManagedEvent-MANAGED_EVENT_PASSWORD_FAILED = 13--><!--Device-ManagedEvent-MANAGED_EVENT_PASSWORD_FAILED = 13-End-->
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
 ## MANAGED_EVENT_POLICIES_CHANGED
 
 ```TypeScript

@@ -4,7 +4,7 @@
 export type NotificationSystemLiveViewContent = _NotificationSystemLiveViewContent
 ```
 
-系统实况窗通知内容。
+[系统实况窗](../../../notification/notification-glossary.md#system-live-view系统实况窗) [通知内容](../../../notification/notification-glossary.md#notification-content通知内容)。
 
 **类型：** _NotificationSystemLiveViewContent
 

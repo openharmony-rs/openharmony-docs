@@ -46,5 +46,5 @@ function clearSession(sessionId: string): Promise<void>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| 35600032 | The specified session does not exist. |
-| 35600050 | System Error. 1. Failed to connect to the system service;         2. The system service failed to communicate with the dependent module. |
+| [35600032](../errorcode-ability.md#35600032-指定的session不存在) | The specified session does not exist. |
+| [35600050](../errorcode-ability.md#35600050-偶发性报错) | System Error. 1. Failed to connect to the system service;         2. The system service failed to communicate with the dependent module. |

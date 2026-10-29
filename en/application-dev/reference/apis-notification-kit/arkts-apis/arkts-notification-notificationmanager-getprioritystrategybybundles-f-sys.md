@@ -12,7 +12,7 @@ import { notificationManager } from '@kit.NotificationKit';
 function getPriorityStrategyByBundles(bundles: Array<BundleOption>): Promise<Map<BundleOption, number>>
 ```
 
-Obtains the application priority notification strategies in batches. This API uses a promise to return the result.
+Obtains the application notification priority strategies in batches. This API uses a promise to return the result.
 
 **Since:** 23
 

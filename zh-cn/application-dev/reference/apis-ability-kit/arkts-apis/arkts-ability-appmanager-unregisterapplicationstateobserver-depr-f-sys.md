@@ -31,8 +31,8 @@ function unregisterApplicationStateObserver(observerId: number, callback: AsyncC
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| observerId | number | 是 | 表示观察者的编号代码。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 表示指定的callback回调方法。 |
+| observerId | number | 是 | 表示观测器的编号代码。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 取消注册的回调函数。 |
 
 <!--Del-->
 **示例**
@@ -82,7 +82,7 @@ function unregisterApplicationStateObserver(observerId: number): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| observerId | number | 是 | 表示观察者的编号代码。 |
+| observerId | number | 是 | 表示观测器的编号代码。 |
 
 **返回值：**
 

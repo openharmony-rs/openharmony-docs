@@ -4,7 +4,7 @@
 export type EnabledPriorityNotificationByBundleCallbackData = _EnabledPriorityNotificationByBundleCallbackData
 ```
 
-Describes the bundle switch state for priority notification.
+Returns the changes of the enabled state of the application notification priority.
 
 **Type:** _EnabledPriorityNotificationByBundleCallbackData
 

@@ -4,7 +4,7 @@
 export interface EnabledPriorityNotificationByBundleCallbackData
 ```
 
-应用通知优先级开关状态。
+应用通知优先级开关状态变化的回调数据。
 
 **起始版本：** 23
 

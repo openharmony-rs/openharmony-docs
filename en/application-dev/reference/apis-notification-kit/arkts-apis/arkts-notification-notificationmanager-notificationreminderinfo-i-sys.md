@@ -44,7 +44,14 @@ Bundle information of the application.
 reminderFlags: number
 ```
 
-Notification reminder mode flags.<br>- bit0: sound prompt. The value **0** indicates disabled, and **1** indicates enabled. <br>- bit1: lock screen. The value **0** indicates disabled, and **1** indicates enabled. <br>- bit2: banner. The value **0** indicates disabled, and **1** indicates enabled. <br>- bit3: screen on. The value **0** indicates disabled, and **1** indicates enabled. <br>- bit4: vibration. The value **0** indicates disabled, and **1** indicates enabled. <br>- bit5: status bar notification icon. The value **0** indicates disabled, and **1** indicates enabled.
+Flag bits of the [notification reminder mode](../../../notification/notification-glossary.md#notification-reminder-mode).
+
+- **bit0**: ringtone. **0** indicates disabled, and **1** indicates enabled.  
+- **bit1**: lock screen. **0** indicates disabled, and **1** indicates enabled.  
+- **bit2**: banner. **0** indicates disabled, and **1** indicates enabled.  
+- **bit3**: screen on. **0** indicates disabled, and **1** indicates enabled.  
+- **bit4**: vibration. **0** indicates disabled, and **1** indicates enabled.  
+- **bit5**: status bar notification icon. **0** indicates disabled, and **1** indicates enabled.
 
 **Type:** number
 
@@ -62,7 +69,7 @@ Notification reminder mode flags.<br>- bit0: sound prompt. The value **0** indic
 silentReminderEnabled: boolean
 ```
 
-Whether the silent reminder is enabled. The value **true** indicates that the silent reminder is enabled, and the value **false** indicates the opposite.
+Whether the [silent reminder](../../../notification/notification-glossary.md#silent-reminder) switch is enabled (**true**: enabled, **false**: disabled).
 
 **Type:** boolean
 

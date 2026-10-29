@@ -32,6 +32,8 @@ complete?: () => void
 
 **废弃版本：** 6
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 <!--Device-GetDeviceOptions-complete?: () => void--><!--Device-GetDeviceOptions-complete?: () => void-End-->
 
 **系统能力：** SystemCapability.Startup.SystemInfo.Lite
@@ -49,6 +51,8 @@ code:200，表示返回结果中存在无法获得的信息。建议设置此回
 **起始版本：** 3
 
 **废弃版本：** 6
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 <!--Device-GetDeviceOptions-fail?: (data: any, code: number) => void--><!--Device-GetDeviceOptions-fail?: (data: any, code: number) => void-End-->
 
@@ -72,6 +76,8 @@ success?: (data: DeviceResponse) => void
 **起始版本：** 3
 
 **废弃版本：** 6
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 <!--Device-GetDeviceOptions-success?: (data: DeviceResponse) => void--><!--Device-GetDeviceOptions-success?: (data: DeviceResponse) => void-End-->
 

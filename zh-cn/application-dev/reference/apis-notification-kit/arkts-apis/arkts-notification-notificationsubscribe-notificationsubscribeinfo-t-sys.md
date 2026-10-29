@@ -4,7 +4,7 @@
 export type NotificationSubscribeInfo = _NotificationSubscribeInfo
 ```
 
-通知发布者的信息。
+通知订阅者的信息。
 
 **类型：** _NotificationSubscribeInfo
 

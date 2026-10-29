@@ -4,7 +4,7 @@
 export interface CommonEventSubscriber
 ```
 
-表示公共事件的订阅者。CommonEventSubscriber提供了对有序公共事件的处理能力，包括获取和设置事件传递的Code和Data数据、查询当前公共事件是否为有序或粘性公共事件、中止或清理有序公共事件的中止状态、结束对当前有序公共事件的处理，以及获取订阅者的订阅信息等，适用于订阅者需要对接收到的公共事件进行数据处理和流程控制的场景。
+表示公共事件的订阅者。CommonEventSubscriber提供了对[有序公共事件](../../../basic-services/common-event/common-event-glossary.md#ordered-common-event有序公共事件)的处理能力，包括获取和设置事件传递的Code和Data数据、查询当前公共事件是否为有序或[粘性公共事件](../../../basic-services/common-event/common-event-glossary.md#sticky-common-event粘性公共事件)、中止或清理有序公共事件的中止状态、结束对当前有序公共事件的处理，以及获取订阅者的订阅信息等，适用于订阅者需要对接收到的公共事件进行数据处理和流程控制的场景。
 
 **起始版本：** 7
 
@@ -308,7 +308,7 @@ getAbortCommonEvent(callback: AsyncCallback<boolean>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 当查询成功时，err为undefined，data为true表示当前有序公共事件处于中止状态，data为false表示当前有序公共事件没有处于中止状态；否则err为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数。当查询成功时，err为undefined，data为true表示当前有序公共事件处于中止状态，data为false表示当前有序公共事件未处于中止状态；否则err为错误对象。 |
 
 **错误码：**
 
@@ -477,7 +477,7 @@ getCodeSync(): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 表示有序公共事件传递的数据。 |
+| number | 有序公共事件传递的数据。 |
 
 **示例**
 
@@ -608,7 +608,7 @@ getSubscribeInfo(callback: AsyncCallback<CommonEventSubscribeInfo>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;[CommonEventSubscribeInfo](arkts-basicservices-commoneventsubscribeinfo-i.md)&gt; | 是 | 回调函数。当获取成功时，err为undefined，data为订阅者的订阅信息；否则err为错误对象。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;[CommonEventSubscribeInfo](arkts-basicservices-commoneventsubscribeinfo-i.md)&gt; | 是 | 回调函数。当获取成功时，err为undefined，data为订阅者的订阅信息；否则err为错误对象 |
 
 **错误码：**
 
@@ -745,7 +745,7 @@ isOrderedCommonEvent(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise对象。返回true表示有序公共事件；返回false表示无序公共事件。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示有序公共事件；返回false表示[无序公共事件](../../../basic-services/common-event/common-event-glossary.md#unordered-common-event无序公共事件)。 |
 
 **示例**
 

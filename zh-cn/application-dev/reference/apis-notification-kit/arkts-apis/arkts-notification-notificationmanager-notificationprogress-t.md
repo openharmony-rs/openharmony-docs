@@ -4,7 +4,7 @@
 export type NotificationProgress = _NotificationProgress
 ```
 
-通知进度。
+[通知进度](../../../notification/notification-glossary.md#notification-progress通知进度)。
 
 **类型：** _NotificationProgress
 

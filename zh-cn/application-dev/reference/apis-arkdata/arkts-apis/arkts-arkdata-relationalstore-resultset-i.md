@@ -8,7 +8,7 @@ interface ResultSet
 
 ResultSet实例不会实时刷新。使用结果集后，如果数据库中的数据发生变化（如增删改操作），需要重新查询才能获取到最新的数据。
 
-下列API示例中，都需先使用[query](arkts-arkdata-relationalstore-rdbstore-i.md#query-2)、[querySql](arkts-arkdata-relationalstore-rdbstore-i.md#querysql-2)、remoteQuery、[queryLockedRow](arkts-arkdata-relationalstore-rdbstore-i.md#querylockedrow)等query类方法中任一方法获取到ResultSet实例，再通过此实例调用对应方法。
+下列API示例中，都需先使用[query](arkts-arkdata-relationalstore-rdbstore-i.md#query-2)、[querySql](arkts-arkdata-relationalstore-rdbstore-i.md#querysql-2)、[remoteQuery](arkts-arkdata-relationalstore-rdbstore-i.md#remotequery-2)、[queryLockedRow](arkts-arkdata-relationalstore-rdbstore-i.md#querylockedrow)等query类方法中任一方法获取到ResultSet实例，再通过此实例调用对应方法。
 
 **起始版本：** 9
 

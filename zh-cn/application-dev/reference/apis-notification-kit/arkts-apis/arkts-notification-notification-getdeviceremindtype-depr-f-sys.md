@@ -17,7 +17,7 @@ function getDeviceRemindType(callback: AsyncCallback<DeviceRemindType>): void
 
 **废弃版本：** 9
 
-**替代接口：** [getDeviceRemindType](arkts-notification-notificationmanager-getdeviceremindtype-f-sys.md)
+**替代接口：** [getDeviceRemindType](arkts-notification-notificationmanager-getdeviceremindtype-f-sys.md#getdeviceremindtype-1)(callback: AsyncCallback&lt;DeviceRemindType&gt;)
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -31,7 +31,7 @@ function getDeviceRemindType(callback: AsyncCallback<DeviceRemindType>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;DeviceRemindType&gt; | 是 | 获取通知提醒方式的回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;DeviceRemindType&gt; | 是 | 获取[通知提醒方式](../../../notification/notification-glossary.md#notification-reminder-mode通知提醒方式)的回调函数。 |
 
 <!--Del-->
 **示例**
@@ -65,7 +65,7 @@ function getDeviceRemindType(): Promise<DeviceRemindType>
 
 **废弃版本：** 9
 
-**替代接口：** [getDeviceRemindType](arkts-notification-notificationmanager-getdeviceremindtype-f-sys.md)
+**替代接口：** [getDeviceRemindType](arkts-notification-notificationmanager-getdeviceremindtype-f-sys.md)()
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -79,7 +79,7 @@ function getDeviceRemindType(): Promise<DeviceRemindType>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;DeviceRemindType&gt; | Promise方式返回获取通知提醒方式的结果。 |
+| Promise&lt;DeviceRemindType&gt; | Promise方式返回获取[通知提醒方式](../../../notification/notification-glossary.md#notification-reminder-mode通知提醒方式)的结果。 |
 
 <!--Del-->
 **示例**

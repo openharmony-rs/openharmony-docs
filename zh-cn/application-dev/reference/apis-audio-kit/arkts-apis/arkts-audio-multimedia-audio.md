@@ -27,10 +27,10 @@ import { audio } from '@kit.AudioKit';
 | 名称 | 说明 |
 | --- | --- |
 | [createAudioCapturer](arkts-audio-audio-createaudiocapturer-f.md#createaudiocapturer-1) | 创建音频采集器。使用callback异步回调。 |
-| createAudioCapturer | 创建音频采集器。使用Promise异步回调。 |
+| [createAudioCapturer](arkts-audio-audio-createaudiocapturer-f.md#createaudiocapturer-3) | 创建音频采集器。使用Promise异步回调。 |
 | [createAudioLoopback](arkts-audio-audio-createaudioloopback-f.md#createaudioloopback-1) | 创建音频返听器。使用Promise异步回调。 |
 | [createAudioRenderer](arkts-audio-audio-createaudiorenderer-f.md#createaudiorenderer-1) | 创建音频渲染器。使用callback异步回调。 |
-| createAudioRenderer | 创建音频渲染器。使用Promise异步回调。 |
+| [createAudioRenderer](arkts-audio-audio-createaudiorenderer-f.md#createaudiorenderer-3) | 创建音频渲染器。使用Promise异步回调。 |
 | [getAudioManager](arkts-audio-audio-getaudiomanager-f.md#getaudiomanager-1) | 获取音频管理器。 |
 
 <!--Del-->
@@ -127,9 +127,9 @@ import { audio } from '@kit.AudioKit';
 | [AudioSpatialDeviceState](arkts-audio-audio-audiospatialdevicestate-i-sys.md) | 空间化设备状态。 |
 | [AudioSpatialEnabledStateForDevice](arkts-audio-audio-audiospatialenabledstatefordevice-i-sys.md) | 监听设备空间音频开关状态。 |
 | [AudioSpatializationManager](arkts-audio-audio-audiospatializationmanager-i-sys.md) | 空间音频管理。在使用AudioSpatializationManager的接口前，需要使用[getSpatializationManager](arkts-audio-audio-audiomanager-i.md#getspatializationmanager)获取AudioSpatializationManager实例。 |
-| [AudioSuiteDownloadManager](arkts-audio-audio-audiosuitedownloadmanager-i-sys.md) | 提供音频编创套件下载管理能力，包括启动、暂停、取消下载、查询状态、卸载特性功能。 |
-| [AudioSuiteFeatureStatusInfo](arkts-audio-audio-audiosuitefeaturestatusinfo-i-sys.md) | 定义音频编创套件特性的状态信息。 |
-| [AudioSuiteFeatureVersionInfo](arkts-audio-audio-audiosuitefeatureversioninfo-i-sys.md) | 定义音频编创套件特性的版本信息。 |
+| [AudioSuiteDownloadManager](arkts-audio-audio-audiosuitedownloadmanager-i-sys.md) | 提供音频编创特性下载管理能力，包括启动、暂停、取消下载、查询状态、卸载特性功能。 |
+| [AudioSuiteFeatureStatusInfo](arkts-audio-audio-audiosuitefeaturestatusinfo-i-sys.md) | 定义音频编创特性的状态信息。 |
+| [AudioSuiteFeatureVersionInfo](arkts-audio-audio-audiosuitefeatureversioninfo-i-sys.md) | 定义音频编创特性的版本信息。 |
 | [AudioVolumeGroupManager](arkts-audio-audio-audiovolumegroupmanager-i-sys.md) | 管理音频组音量，支持设置和调节指定音量流、控制静音状态、设置铃声模式等。适用于需要对特定音量组进行独立管理、实现铃声模式切换、调节系统音量的场景。在调用AudioVolumeGroupManager的接口前，需要先通过[getVolumeGroupManager](arkts-audio-audio-audiovolumemanager-i.md#getvolumegroupmanager)创建实例。 |
 | [AudioVolumeManager](arkts-audio-audio-audiovolumemanager-i-sys.md) | 音量管理，提供音量组信息查询、应用级音量控制、系统音量百分比管理等功能。适用于需要对音量进行精细化控制、监听音量变化、管理应用级音量的场景。在使用AudioVolumeManager的接口前，需要使用[getVolumeManager](arkts-audio-audio-audiomanager-i.md#getvolumemanager)获取AudioVolumeManager实例。 |
 | [InterruptResult](arkts-audio-audio-interruptresult-i-sys.md) | 音频中断结果。 |
@@ -158,7 +158,7 @@ import { audio } from '@kit.AudioKit';
 | 名称 | 说明 |
 | --- | --- |
 | [ActiveStreamsVolumeInfoArray](arkts-audio-audio-activestreamsvolumeinfoarray-t-sys.md) | ActiveStreamVolumeInfo数组。 |
-| [AudioSuiteFeatureStatusInfoArray](arkts-audio-audio-audiosuitefeaturestatusinfoarray-t-sys.md) | 定义音频编创套件特性的状态信息数组。 |
+| [AudioSuiteFeatureStatusInfoArray](arkts-audio-audio-audiosuitefeaturestatusinfoarray-t-sys.md) | 定义音频编创特性的状态信息数组。 |
 | [StreamUsageArray](arkts-audio-audio-streamusagearray-t-sys.md) | 音频类型数组 |
 | [VolumeGroupInfos](arkts-audio-audio-volumegroupinfos-t-sys.md) | 数组类型，[VolumeGroupInfo](arkts-audio-audio-volumegroupinfo-i-sys.md)数组，只读。 |
 <!--DelEnd-->
@@ -234,8 +234,8 @@ import { audio } from '@kit.AudioKit';
 | [AudioSessionBehaviorFlags](arkts-audio-audio-audiosessionbehaviorflags-e-sys.md) | 表示音频会话行为的枚举。 |
 | [AudioSpatialDeviceType](arkts-audio-audio-audiospatialdevicetype-e-sys.md) | 枚举，空间化设备类型。 |
 | [AudioSpatializationSceneType](arkts-audio-audio-audiospatializationscenetype-e-sys.md) | 枚举，空间音频渲染场景类型。 |
-| [AudioSuiteFeatureStatus](arkts-audio-audio-audiosuitefeaturestatus-e-sys.md) | 枚举音频编创套件的特性状态。 |
-| [AudioSuiteFeatureType](arkts-audio-audio-audiosuitefeaturetype-e-sys.md) | 枚举音频编创套件的特性类型。 |
+| [AudioSuiteFeatureStatus](arkts-audio-audio-audiosuitefeaturestatus-e-sys.md) | 枚举，音频编创特性状态。 |
+| [AudioSuiteFeatureType](arkts-audio-audio-audiosuitefeaturetype-e-sys.md) | 枚举，音频编创特性类型。 |
 | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e-sys.md) | 枚举，音频流类型。 |
 | [ConnectType](arkts-audio-audio-connecttype-e-sys.md) | 枚举，设备连接类型。 |
 | [DeviceFlag](arkts-audio-audio-deviceflag-e-sys.md) | 枚举，可获取的设备种类。 |
@@ -243,7 +243,7 @@ import { audio } from '@kit.AudioKit';
 | [EffectFlag](arkts-audio-audio-effectflag-e-sys.md) | 枚举，音效分类。 |
 | [InterruptRequestResultType](arkts-audio-audio-interruptrequestresulttype-e-sys.md) | 枚举，音频中断请求结果类型。 |
 | [InterruptRequestType](arkts-audio-audio-interruptrequesttype-e-sys.md) | 枚举，音频中断请求类型。 |
-| [NetworkType](arkts-audio-audio-networktype-e-sys.md) | 枚举音频套件下载的网络类型。 |
+| [NetworkType](arkts-audio-audio-networktype-e-sys.md) | 枚举，音频编创特性下载的网络类型。 |
 | [PolicyType](arkts-audio-audio-policytype-e-sys.md) | 表示静音策略类型的枚举。 |
 | [RenderTarget](arkts-audio-audio-rendertarget-e-sys.md) | 枚举，音频渲染器的渲染目标。 |
 | [SourceType](arkts-audio-audio-sourcetype-e-sys.md) | 枚举，音源类型。 |

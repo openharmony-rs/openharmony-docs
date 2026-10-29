@@ -41,8 +41,6 @@ Determines whether all the members of an array satisfy the specified test.
 
 <!--Device-Uint8ClampedArray-every(predicate: (value: number, index: number, array: Uint8ClampedArray) => unknown, thisArg?: any): boolean--><!--Device-Uint8ClampedArray-every(predicate: (value: number, index: number, array: Uint8ClampedArray) => unknown, thisArg?: any): boolean-End-->
 
-**Test API:** This API is used only in automated test scripts.
-
 **Parameters:**
 
 | Name | Type | Mandatory | Description |

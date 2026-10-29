@@ -30,9 +30,9 @@ declare interface ContextMenuOptions
 | 接口 | 菜单默认位置 |  
 |------|-------------|  
 | [bindMenu](arkts-arkui-common-comp-commonmethod-c.md#bindmenu-1) | Placement.BottomLeft |  
-| bindMenu<sup>11+</sup> | Placement.BottomLeft |  
+| [bindMenu<sup>11+</sup>](arkts-arkui-common-comp-commonmethod-c.md#bindmenu-2) | Placement.BottomLeft |  
 | [bindContextMenu<sup>8+</sup>](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu-1) | Placement.Top |  
-| bindContextMenu<sup>12+</sup> | Placement.BottomLeft |  
+| [bindContextMenu<sup>12+</sup>](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu-2) | Placement.BottomLeft |  
 | [bindContextMenuWithResponse<sup>23+</sup>](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenuwithresponse-1) | Placement.Top |
 
 **起始版本：** 10
@@ -847,9 +847,9 @@ placement?: Placement
 
 **说明：** 
 
-1. 作为bindMenu入参时，默认值为Placement.BottomLeft。
+1. 作为[bindMenu](arkts-arkui-common-comp-commonmethod-c.md#bindmenu-2)入参时，默认值为Placement.BottomLeft。
 2. 作为[bindContextMenu<sup>8+</sup>](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu-1)或[bindContextMenuWithResponse<sup>23+</sup>](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenuwithresponse-1)入参时，默认效果为菜单跟随点击位置弹出。
-3. 作为bindContextMenu<sup>12+</sup>入参时，默认值为Placement.BottomLeft。
+3. 作为[bindContextMenu<sup>12+</sup>](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu-2)入参时，默认值为Placement.BottomLeft。
 4. placement值设置为undefined、null或缺省时，按默认值处理。
 
 **类型：** [Placement](../arkts-apis/arkts-arkui-placement-e.md)
@@ -874,7 +874,7 @@ placement?: Placement
 preview?: MenuPreviewMode | CustomBuilder
 ```
 
-长按悬浮菜单或使用bindContextMenu<sup>12+</sup>显示菜单的预览内容样式，可以为目标组件的截图，也可以为用户自定义的内容。
+长按悬浮菜单或使用[bindContextMenu<sup>12+</sup>](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu-2)显示菜单的预览内容样式，可以为目标组件的截图，也可以为用户自定义的内容。
 
 默认值：MenuPreviewMode.NONE，无预览内容。
 

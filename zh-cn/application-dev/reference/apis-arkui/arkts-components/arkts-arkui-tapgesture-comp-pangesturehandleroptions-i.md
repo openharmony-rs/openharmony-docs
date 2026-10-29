@@ -48,7 +48,7 @@ distance?: number
 
 **说明：** 
 
-[Tabs组件](../../apis-avsession-kit/arkts-apis/arkts-avsession-avmusictemplate-customelement-i.md#tabs)滑动与该滑动手势事件同时存在时，可将distance值设为1，使拖动更灵敏，避免造成事件错乱。
+[Tabs组件](arkts-arkui-tabs-comp.md)滑动与该滑动手势事件同时存在时，可将distance值设为1，使拖动更灵敏，避免造成事件错乱。
 
 取值范围：[0, +∞)，当设定的值小于0时，按默认值处理。
 

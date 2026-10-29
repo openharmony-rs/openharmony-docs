@@ -4,7 +4,7 @@
 export type EnabledSilentReminderCallbackData = _EnabledSilentReminderCallbackData
 ```
 
-回调返回监听到的静默提醒使能状态信息。
+应用通知[静默提醒](../../../notification/notification-glossary.md#silent-reminder静默提醒)开关状态变化的回调数据。
 
 **类型：** _EnabledSilentReminderCallbackData
 

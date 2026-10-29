@@ -12,9 +12,9 @@ import { notificationManager } from '@kit.NotificationKit';
 function openNotificationSettings(context: UIAbilityContext): Promise<void>
 ```
 
-拉起应用的通知设置界面，该页面以半模态形式呈现，可用于设置通知开关、通知提醒方式等。使用Promise异步回调。
+拉起应用的[通知设置](../../../notification/notification-glossary.md#notification-setting通知设置)界面，该页面以半模态形式呈现，可用于设置通知开关、[通知提醒方式](../../../notification/notification-glossary.md#notification-reminder-mode通知提醒方式)等。使用Promise异步回调。
 
-适用于用户需要手动修改通知设置的场景，如用户拒绝授权后二次申请，或需要修改通知提醒方式（振动、响铃等）。当requestEnableNotification弹窗被用户拒绝后，开发者可调用此接口引导用户前往通知设置页面手动开启。
+适用于用户需要手动修改通知设置的场景，如用户拒绝授权后二次申请，或需要修改通知提醒方式（振动、铃声等）。当[requestEnableNotification](arkts-notification-notificationmanager-requestenablenotification-f.md)弹窗被用户拒绝后，开发者可调用此接口引导用户前往通知设置页面手动开启。
 
 **起始版本：** 13
 
@@ -26,9 +26,9 @@ function openNotificationSettings(context: UIAbilityContext): Promise<void>
 
 **参见：**
 
-[requestEnableNotification](arkts-notification-notificationmanager-requestenablenotification-f.md) 请求通知使能。
+[requestEnableNotification](arkts-notification-notificationmanager-requestenablenotification-f.md#requestenablenotification-4) 请求通知使能。
 
-isNotificationEnabled 查询当前应用通知授权状态。
+[isNotificationEnabled](arkts-notification-notificationmanager-isnotificationenabled-f.md) 查询当前应用通知授权状态。
 
 [getNotificationSetting](arkts-notification-notificationmanager-getnotificationsetting-f.md) 获取应用的通知设置状态。
 

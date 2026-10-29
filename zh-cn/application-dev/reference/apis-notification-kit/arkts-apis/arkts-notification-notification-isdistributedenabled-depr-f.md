@@ -11,13 +11,13 @@
 function isDistributedEnabled(callback: AsyncCallback<boolean>): void
 ```
 
-查询设备是否支持分布式通知（Callback形式）。
+查询设备是否支持[分布式通知](../../../notification/notification-glossary.md#distributed-notification分布式通知)（Callback形式）。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [isDistributedEnabled](arkts-notification-notificationmanager-isdistributedenabled-f.md)
+**替代接口：** [isDistributedEnabled](arkts-notification-notificationmanager-isdistributedenabled-f.md#isdistributedenabled-1)(callback: AsyncCallback&lt;boolean&gt;)
 
 <!--Device-notification-function isDistributedEnabled(callback: AsyncCallback<boolean>): void--><!--Device-notification-function isDistributedEnabled(callback: AsyncCallback<boolean>): void-End-->
 
@@ -52,13 +52,13 @@ Notification.isDistributedEnabled(isDistributedEnabledCallback);
 function isDistributedEnabled(): Promise<boolean>
 ```
 
-查询设备是否支持分布式通知（Promise形式）。
+查询设备是否支持[分布式通知](../../../notification/notification-glossary.md#distributed-notification分布式通知)（Promise形式）。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [isDistributedEnabled](arkts-notification-notificationmanager-isdistributedenabled-f.md)
+**替代接口：** [isDistributedEnabled](arkts-notification-notificationmanager-isdistributedenabled-f.md)()
 
 <!--Device-notification-function isDistributedEnabled(): Promise<boolean>--><!--Device-notification-function isDistributedEnabled(): Promise<boolean>-End-->
 

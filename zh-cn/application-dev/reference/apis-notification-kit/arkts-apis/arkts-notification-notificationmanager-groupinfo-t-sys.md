@@ -4,7 +4,7 @@
 export type GroupInfo = _GroupInfo
 ```
 
-组通知定制信息。
+[组通知](../../../notification/notification-glossary.md#group-notification组通知)定制信息。
 
 **类型：** _GroupInfo
 

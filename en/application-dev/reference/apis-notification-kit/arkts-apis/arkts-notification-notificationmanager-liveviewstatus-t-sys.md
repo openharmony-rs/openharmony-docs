@@ -4,7 +4,7 @@
 export type LiveViewStatus = _LiveViewStatus
 ```
 
-Enumerates the statuses of the common live view.
+Describes the status of the [normal live view notification](../../../notification/notification-glossary.md#normal-live-view).
 
 **Type:** _LiveViewStatus
 

@@ -12,7 +12,7 @@ import { notificationManager } from '@kit.NotificationKit';
 function getActiveNotification(hashCode: string): Promise<NotificationRequest>
 ```
 
-根据通知的唯一标识hashCode获取当前未删除的通知信息。使用Promise异步回调。
+根据**hashCode**获取活跃的通知。使用Promise异步回调。
 
 **起始版本：** 26.1.0
 
@@ -30,13 +30,13 @@ function getActiveNotification(hashCode: string): Promise<NotificationRequest>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| hashCode | string | 是 | 通知的唯一标识。 |
+| hashCode | string | 是 | 通知唯一标识。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[NotificationRequest](arkts-notification-notificationmanager-notificationrequest-t.md)&gt; | 以Promise形式返回获取通知信息。 |
+| Promise&lt;[NotificationRequest](arkts-notification-notificationmanager-notificationrequest-t.md)&gt; | Promise对象，返回通知信息。 |
 
 **错误码：**
 

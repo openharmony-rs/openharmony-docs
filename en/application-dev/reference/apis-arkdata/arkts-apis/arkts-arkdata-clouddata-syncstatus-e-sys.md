@@ -20,7 +20,7 @@ Enumerates the device-cloud sync task statuses.
 FINISHED = 1
 ```
 
-The device-cloud sync task is completed.
+The device-cloud sync task is complete.
 
 **Since:** 18
 

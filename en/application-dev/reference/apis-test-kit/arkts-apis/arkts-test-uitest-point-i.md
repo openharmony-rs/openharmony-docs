@@ -12,8 +12,6 @@ Represents the point on the device screen.
 
 **System capability:** SystemCapability.Test.UiTest
 
-**Test API:** This API is used only in automated test scripts.
-
 ## Modules to Import
 
 ```TypeScript
@@ -39,8 +37,6 @@ ID of the display to which the coordinate point belongs. The default value is th
 
 **System capability:** SystemCapability.Test.UiTest
 
-**Test API:** This API is used only in automated test scripts.
-
 ## x
 
 ```TypeScript
@@ -59,8 +55,6 @@ Horizontal coordinate of a coordinate point, in pixels. The value is an integer 
 
 **System capability:** SystemCapability.Test.UiTest
 
-**Test API:** This API is used only in automated test scripts.
-
 ## y
 
 ```TypeScript
@@ -78,5 +72,3 @@ Vertical coordinate of a coordinate point, in pixels. The value is an integer gr
 <!--Device-Point-y: int--><!--Device-Point-y: int-End-->
 
 **System capability:** SystemCapability.Test.UiTest
-
-**Test API:** This API is used only in automated test scripts.

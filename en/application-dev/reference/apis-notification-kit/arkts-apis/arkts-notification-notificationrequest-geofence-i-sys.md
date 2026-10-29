@@ -4,7 +4,7 @@
 export interface Geofence
 ```
 
-Defines the configuration of a geofence.
+Defines the configuration information of a [geofence](../../../notification/notification-glossary.md#geofence).
 
 **Since:** 23
 
@@ -38,7 +38,7 @@ Coordinate system type of the center point.
 delayTime?:number
 ```
 
-Delay time of the geofence, in seconds. That is, the delay time before the geofence is triggered after entering the geofence. Value range: [0, 300]. Default value: **0**.
+Delay time of the geofence, in seconds. That is, the delay time before the geofence is triggered after entering the geofence. Value range: [0, 300]. Default value: **0**
 
 **Type:** number
 

@@ -12,7 +12,7 @@ import { notificationExtensionSubscription } from '@kit.NotificationKit';
 function openSubscriptionSettingsWithResult(context: UIAbilityContext): Promise<UserGrantSetting>
 ```
 
-打开应用的通知扩展订阅授权页面，以半模态弹窗形式显示。用户可在该页面授权“允许获取本机通知”开关与“已获取的本机通知”应用开关。使用Promise异步回调，当半模态窗口关闭时返回用户设置的授权的结果。
+打开应用的通知扩展订阅授权页面，以半模态弹窗形式显示。用户可在该页面授权“允许获取本机通知”开关与“已获取的本机通知”应用开关。使用Promise异步回调，当半模态窗口关闭时返回用户设置的授权结果。
 
 **起始版本：** 26.0.0
 
@@ -28,13 +28,13 @@ function openSubscriptionSettingsWithResult(context: UIAbilityContext): Promise<
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | [UIAbilityContext](../../apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md) | 是 | 通知设置页面绑定Ability的上下文。 |
+| context | [UIAbilityContext](../../apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md) | 是 | [通知设置](../../../notification/notification-glossary.md#notification-setting通知设置)页面绑定Ability的上下文。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[UserGrantSetting](arkts-notification-notificationextensionsubscription-usergrantsetting-t.md)&gt; | Promise对象，返回用户设置的授权的结果。 |
+| Promise&lt;[UserGrantSetting](arkts-notification-notificationextensionsubscription-usergrantsetting-t.md)&gt; | Promise对象，返回用户设置的授权结果。 |
 
 **错误码：**
 

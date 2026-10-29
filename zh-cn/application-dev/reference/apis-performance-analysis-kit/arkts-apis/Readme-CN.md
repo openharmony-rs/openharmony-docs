@@ -207,6 +207,50 @@
   - [LeakWatcherConfig](arkts-performanceanalysis-jsleakwatcher-leakwatcherconfig-i.md)
   - [MonitorObjectType](arkts-performanceanalysis-jsleakwatcher-monitorobjecttype-e.md)
 <!--Del-->
+- [@ohos.hiviewdfx.jsLeakWatcherNative（This module provides the native implementation interfaces of jsLeakWatcher.）](arkts-performanceanalysis-hiviewdfx-jsleakwatchernative.md)<!--DelEnd-->
+  <!--Del-->
+  - [jsLeakWatcherNative（系统接口）](arkts-performanceanalysis-jsleakwatchernative-n.md)<!--DelEnd-->
+    <!--Del-->
+    - [apiRecord（系统接口）](arkts-performanceanalysis-jsleakwatchernative-apirecord-f-sys.md)<!--DelEnd-->
+    <!--Del-->
+    - [dumpRawHeap（系统接口）](arkts-performanceanalysis-jsleakwatchernative-dumprawheap-f-sys.md)<!--DelEnd-->
+    <!--Del-->
+    - [dumpRawHeapSync（系统接口）](arkts-performanceanalysis-jsleakwatchernative-dumprawheapsync-f-sys.md)<!--DelEnd-->
+    <!--Del-->
+    - [getDumpStatus（系统接口）](arkts-performanceanalysis-jsleakwatchernative-getdumpstatus-f-sys.md)<!--DelEnd-->
+    <!--Del-->
+    - [handleDumpTask（系统接口）](arkts-performanceanalysis-jsleakwatchernative-handledumptask-f-sys.md)<!--DelEnd-->
+    <!--Del-->
+    - [handleGCTask（系统接口）](arkts-performanceanalysis-jsleakwatchernative-handlegctask-f-sys.md)<!--DelEnd-->
+    <!--Del-->
+    - [handleShutdownTask（系统接口）](arkts-performanceanalysis-jsleakwatchernative-handleshutdowntask-f-sys.md)<!--DelEnd-->
+    <!--Del-->
+    - [registerArkUIObjectLifeCycleCallback（系统接口）](arkts-performanceanalysis-jsleakwatchernative-registerarkuiobjectlifecyclecallback-f-sys.md)<!--DelEnd-->
+    <!--Del-->
+    - [registerWindowLifeCycleCallback（系统接口）](arkts-performanceanalysis-jsleakwatchernative-registerwindowlifecyclecallback-f-sys.md)<!--DelEnd-->
+    <!--Del-->
+    - [removeTask（系统接口）](arkts-performanceanalysis-jsleakwatchernative-removetask-f-sys.md)<!--DelEnd-->
+    <!--Del-->
+    - [reportRawHeap（系统接口）](arkts-performanceanalysis-jsleakwatchernative-reportrawheap-f-sys.md)<!--DelEnd-->
+    <!--Del-->
+    - [setDumpDelay（系统接口）](arkts-performanceanalysis-jsleakwatchernative-setdumpdelay-f-sys.md)<!--DelEnd-->
+    <!--Del-->
+    - [setGcDelay（系统接口）](arkts-performanceanalysis-jsleakwatchernative-setgcdelay-f-sys.md)<!--DelEnd-->
+    <!--Del-->
+    - [unregisterArkUIObjectLifeCycleCallback（系统接口）](arkts-performanceanalysis-jsleakwatchernative-unregisterarkuiobjectlifecyclecallback-f-sys.md)<!--DelEnd-->
+    <!--Del-->
+    - [unregisterWindowLifeCycleCallback（系统接口）](arkts-performanceanalysis-jsleakwatchernative-unregisterwindowlifecyclecallback-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [RawHeapReport（系统接口）](arkts-performanceanalysis-hiviewdfx-jsleakwatchernative-rawheapreport-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [RawHeapDumpCallback（系统接口）](arkts-performanceanalysis-rawheapdumpcallback-t-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [TaskCallback（系统接口）](arkts-performanceanalysis-taskcallback-t-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [WeakRefCallback（系统接口）](arkts-performanceanalysis-weakrefcallback-t-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [WindowLifeCycleCallback（系统接口）](arkts-performanceanalysis-windowlifecyclecallback-t-sys.md)<!--DelEnd-->
+<!--Del-->
 - [@ohos.logLibrary（系统维测日志获取）](arkts-performanceanalysis-loglibrary.md)<!--DelEnd-->
   <!--Del-->
   - [copy（系统接口）](arkts-performanceanalysis-loglibrary-copy-f-sys.md)<!--DelEnd-->

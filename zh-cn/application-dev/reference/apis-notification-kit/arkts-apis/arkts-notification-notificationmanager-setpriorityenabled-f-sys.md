@@ -28,7 +28,7 @@ function setPriorityEnabled(enable: boolean): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| enable | boolean | 是 | 所有通知的优先使能状态。<br> - true：允许设置为优先通知。<br> - false：禁止设置为优先通知。 |
+| enable | boolean | 是 | 所有通知的优先使能状态。<br> - true：允许设置为[优先通知](../../../notification/notification-glossary.md#priority-notification优先通知)。<br> - false：禁止设置为优先通知。 |
 
 **返回值：**
 

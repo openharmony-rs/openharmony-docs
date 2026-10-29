@@ -30,7 +30,7 @@ Subscribes to notifications. After the subscription, the new message is received
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| subscriber | [NotificationSubscriber](arkts-notification-notificationsubscribe-notificationsubscriber-t-sys.md) | Yes | Notification subscriber. |
+| subscriber | [NotificationSubscriber](arkts-notification-notificationsubscribe-notificationsubscriber-t-sys.md) | Yes | [Notification subscription](../../../notification/notification-glossary.md#notification-subscription) subscriber. |
 
 **Return value:**
 
@@ -94,8 +94,8 @@ Subscribes to notifications. After the subscription, the new message is received
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| subscriber | [NotificationSubscriber](arkts-notification-notificationsubscribe-notificationsubscriber-t-sys.md) | Yes | Notification subscriber. |
-| info | [NotificationSubscribeInfo](arkts-notification-notificationsubscribe-notificationsubscribeinfo-t-sys.md) | Yes | Notification subscription information. |
+| subscriber | [NotificationSubscriber](arkts-notification-notificationsubscribe-notificationsubscriber-t-sys.md) | Yes | [Notification subscriber](../../../notification/notification-glossary.md#notification-subscription). |
+| info | [NotificationSubscribeInfo](arkts-notification-notificationsubscribe-notificationsubscribeinfo-t-sys.md) | Yes | Notification subscription information. The default value is empty. When this parameter is empty, it indicates subscribing to notifications of all applications under the current user. |
 
 **Return value:**
 

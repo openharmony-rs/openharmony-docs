@@ -29,7 +29,7 @@ static batchQueryLastSyncInfo(
     ): Promise<Record<string, Record<string, SyncInfo>>>
 ```
 
-Queries the last synchronization information in batch
+Queries information about the last device-cloud sync in batches.
 
 **Since:** 26.0.0
 
@@ -47,14 +47,14 @@ Queries the last synchronization information in batch
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| accountId | string | Yes | Indicates the account ID. The account ID is required by hashing cloud account. |
-| bundleInfos | Array&lt;[BundleInfo](arkts-arkdata-clouddata-bundleinfo-i-sys.md)&gt; | Yes | BundleInfo configuration array. |
+| accountId | string | Yes | ID of the logged-in cloud account. |
+| bundleInfos | Array&lt;[BundleInfo](arkts-arkdata-clouddata-bundleinfo-i-sys.md)&gt; | Yes | Array of application information to be queried in batches. Value range: The array length is [1, 30]. If the array length is out of range, error code 14800001 is returned. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;Record&lt;string, Record&lt;string, [SyncInfo](arkts-arkdata-clouddata-syncinfo-i-sys.md)&gt;&gt;&gt; | Promise used to return the result. |
+| Promise&lt;Record&lt;string, Record&lt;string, [SyncInfo](arkts-arkdata-clouddata-syncinfo-i-sys.md)&gt;&gt;&gt; | Promise used to return the application bundle name and the result set of the last device-cloud sync for the database. The key of the outer record is the application bundle name, and the key of the inner record is the database name. |
 
 **Error codes:**
 
@@ -118,7 +118,7 @@ Changes the device-cloud synergy setting for an application. This API uses an as
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| accountId | string | Yes | ID of the cloud account. |
+| accountId | string | Yes | ID of the logged-in cloud account. |
 | bundleName | string | Yes | Bundle name of the application. |
 | status | boolean | Yes | New device-cloud synergy setting. The value **true** means to enable device-cloud synergy; the value **false** means the opposite. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
@@ -178,7 +178,7 @@ Changes the device-cloud synergy setting for an application. This API uses a pro
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| accountId | string | Yes | ID of the cloud account. |
+| accountId | string | Yes | ID of the logged-in cloud account. |
 | bundleName | string | Yes | Bundle name of the application. |
 | status | boolean | Yes | New device-cloud synergy setting. The value **true** means to enable device-cloud synergy; the value **false** means the opposite. |
 
@@ -248,7 +248,7 @@ Changes the device-cloud synergy setting for an application. This API uses a pro
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| accountId | string | Yes | ID of the cloud account. |
+| accountId | string | Yes | ID of the logged-in cloud account. |
 | bundleName | string | Yes | Bundle name of the application. |
 | status | boolean | Yes | New device-cloud synergy setting. The value **true** means to enable device-cloud synergy; the value **false** means the opposite. |
 | config | [SwitchConfig](arkts-arkdata-clouddata-switchconfig-i-sys.md) | No | Switch configuration of a device-cloud synergy database. Device-cloud synergy priority: application &gt; database &gt; table. If this parameter is not set, the application-level device-cloud synergy is used by default. |
@@ -326,8 +326,8 @@ Clears the cloud data locally. This API uses an asynchronous callback to return 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| accountId | string | Yes | ID of the cloud account. |
-| appActions | Record&lt;string, [ClearAction](arkts-arkdata-clouddata-clearaction-e-sys.md)&gt; | Yes | Information about the application whose data is to be cleared and the operation to perform.<br>**Since:** 11 |
+| accountId | string | Yes | ID of the logged-in cloud account. |
+| appActions | Record&lt;string, [ClearAction](arkts-arkdata-clouddata-clearaction-e-sys.md)&gt; | Yes | Application information of the data to be cleared and the clearing rule of each application. The key is the application bundle name, and the value is the clearing rule.<br>**Since:** 11 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
 
 **Error codes:**
@@ -389,7 +389,7 @@ Clears the cloud data locally. This API uses a promise to return the result.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| accountId | string | Yes | ID of the cloud account. |
+| accountId | string | Yes | ID of the logged-in cloud account. |
 | appActions | Record&lt;string, [ClearAction](arkts-arkdata-clouddata-clearaction-e-sys.md)&gt; | Yes | Information about the application whose data is to be cleared and the operation to perform.<br>**Since:** 11 |
 
 **Return value:**
@@ -461,9 +461,9 @@ Clears the cloud data locally. This API uses a promise to return the result.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| accountId | string | Yes | ID of the cloud account. |
-| appActions | Record&lt;string, [ClearAction](arkts-arkdata-clouddata-clearaction-e-sys.md)&gt; | Yes | Information about the application whose data is to be cleared and the operation to perform. |
-| config | Record&lt;string, [ClearConfig](arkts-arkdata-clouddata-clearconfig-i-sys.md)&gt; | No | Clearance information of a device-cloud synergy database. The key is the application name, and the value is the database clearance rules of the application. Clearance priority: table &gt; database &gt; application. If this parameter is not set, the application-level data clearance mode is used by default. |
+| accountId | string | Yes | ID of the logged-in cloud account. |
+| appActions | Record&lt;string, [ClearAction](arkts-arkdata-clouddata-clearaction-e-sys.md)&gt; | Yes | Application information of the data to be cleared and the clearing rule of each application. The key is the application bundle name, and the value is the clearing rule. |
+| config | Record&lt;string, [ClearConfig](arkts-arkdata-clouddata-clearconfig-i-sys.md)&gt; | No | Database-level clearing rule for device-cloud synergy. The key is the application package name, and the value is the database clearing rule of the application. Clearing rule priority: table level &gt; database level &gt; application level. If this parameter is not configured, the application-level data clearing rule is used by default. |
 
 **Return value:**
 
@@ -545,7 +545,7 @@ Synchronizes data of a specified application on the device to the cloud. This AP
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| bundleName | string | Yes | Name of the application to sync. |
+| bundleName | string | Yes | Bundle name of the application to sync. |
 | storeId | string | Yes | Name of the database to sync. |
 | mode | [relationalStore.SyncMode](arkts-arkdata-relationalstore-syncmode-e.md) | Yes | Device-cloud sync mode. |
 | progress | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[relationalStore.ProgressDetails](arkts-arkdata-relationalstore-progressdetails-i.md)&gt; | Yes | Callback used to return the sync progress. |
@@ -598,7 +598,7 @@ static cloudSyncEx(
     ): Promise<void>
 ```
 
-Sync data to cloud. This API uses a promise to return the result.
+Synchronizes data of a specified application between the device and cloud based on the cloud sync configuration. When **downloadOnly** in **CloudSyncConfig** is set to **true**, only the data on the cloud is synchronized to the device. This API uses a promise to return the result.
 
 **Since:** 26.0.0
 
@@ -616,9 +616,9 @@ Sync data to cloud. This API uses a promise to return the result.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| bundleInfo | [BundleInfo](arkts-arkdata-clouddata-bundleinfo-i-sys.md) | Yes | BundleInfo configuration. <br>the instance object of [BundleInfo](arkts-arkdata-clouddata-bundleinfo-i-sys.md) |
-| config | [relationalStore.CloudSyncConfig](arkts-arkdata-relationalstore-cloudsyncconfig-i.md) | Yes | Indicates cloud sync configuration. <br>the instance object of [CloudSyncConfig](arkts-arkdata-relationalstore-cloudsyncconfig-i.md) |
-| progress | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[relationalStore.ProgressDetails](arkts-arkdata-relationalstore-progressdetails-i.md)&gt; | Yes | Callback used to return the sync progress. |
+| bundleInfo | [BundleInfo](arkts-arkdata-clouddata-bundleinfo-i-sys.md) | Yes | Application bundle information configuration, which is a **BundleInfo** instance. |
+| config | [relationalStore.CloudSyncConfig](arkts-arkdata-relationalstore-cloudsyncconfig-i.md) | Yes | Cloud sync configuration. |
+| progress | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[relationalStore.ProgressDetails](arkts-arkdata-relationalstore-progressdetails-i.md)&gt; | Yes | Callback used to return the **ProgressDetails** instance. |
 
 **Return value:**
 
@@ -690,7 +690,7 @@ Disables device-cloud synergy. This API uses an asynchronous callback to return 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| accountId | string | Yes | ID of the cloud account. |
+| accountId | string | Yes | ID of the logged-in cloud account. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
 
 **Error codes:**
@@ -747,7 +747,7 @@ Disables device-cloud synergy. This API uses a promise to return the result.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| accountId | string | Yes | ID of the cloud account. |
+| accountId | string | Yes | ID of the logged-in cloud account. |
 
 **Return value:**
 
@@ -811,8 +811,8 @@ Enables device-cloud synergy. This API uses an asynchronous callback to return t
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| accountId | string | Yes | ID of the cloud account. |
-| switches | Record&lt;string, boolean&gt; | Yes | Device-cloud synergy settings for applications. The value **true** means to enable device-cloud synergy; the value **false** means the opposite.<br>**Since:** 11 |
+| accountId | string | Yes | ID of the logged-in cloud account. |
+| switches | Record&lt;string, boolean&gt; | Yes | Device-cloud synergy switch information of each application. The key is the bundle name of the application, and the value is the switch status of the application. The value **true** means to enable the device-cloud switch of the application, and **false** means to disable it.<br>**Since:** 11 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
 
 **Error codes:**
@@ -870,7 +870,7 @@ Enables device-cloud synergy. This API uses a promise to return the result.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| accountId | string | Yes | ID of the cloud account. |
+| accountId | string | Yes | ID of the logged-in cloud account. |
 | switches | Record&lt;string, boolean&gt; | Yes | Device-cloud synergy settings for applications. The value **true** means to enable device-cloud synergy; the value **false** means the opposite.<br>**Since:** 11 |
 
 **Return value:**
@@ -1058,7 +1058,7 @@ Notifies the data changes of a user in the cloud. This API uses an asynchronous 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | extInfo | [ExtraData](arkts-arkdata-clouddata-extradata-i-sys.md) | Yes | Transparently transmitted data, including information about the application that has data changes. |
-| userId | number | Yes | User ID in the system. |
+| userId | number | Yes | User account ID, which refers to the existing user account ID in the system. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object. |
 
 **Error codes:**
@@ -1119,7 +1119,7 @@ Notifies the data changes in the cloud. This API uses a promise to return the re
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| accountId | string | Yes | ID of the cloud account. |
+| accountId | string | Yes | ID of the logged-in cloud account. |
 | bundleName | string | Yes | Bundle name of the application. |
 
 **Return value:**
@@ -1181,9 +1181,9 @@ Notifies the data changes in the cloud. This API uses an asynchronous callback t
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| accountId | string | Yes | ID of the cloud account. |
+| accountId | string | Yes | ID of the logged-in cloud account. |
 | bundleName | string | Yes | Bundle name of the application. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the data changes in the cloud are successfully notified, the value of **err** is **undefined**; otherwise, **err** is an error object. |
 
 **Error codes:**
 
@@ -1227,7 +1227,7 @@ static offSyncInfoChanged(
     ): void
 ```
 
-Remove specified observer of specified type from the database.
+Unsubscribes from application sync information changes. This API uses an asynchronous callback to return the result.
 
 **Since:** 26.0.0
 
@@ -1245,8 +1245,8 @@ Remove specified observer of specified type from the database.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| bundleInfos | Array&lt;[BundleInfo](arkts-arkdata-clouddata-bundleinfo-i-sys.md)&gt; | Yes | BundleInfo configuration array. |
-| progress | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;Record&lt;string, Record&lt;string, [SyncInfo](arkts-arkdata-clouddata-syncinfo-i-sys.md)&gt;&gt;&gt; | No | Optional progress callback. |
+| bundleInfos | Array&lt;[BundleInfo](arkts-arkdata-clouddata-bundleinfo-i-sys.md)&gt; | Yes | Array of application information to be unsubscribed from. Value range: The array length is [1, 30]. If the array length is out of range, error code 14800001 is returned. The storeId of the application information during unsubscription must be the same as that during subscription. |
+| progress | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;Record&lt;string, Record&lt;string, [SyncInfo](arkts-arkdata-clouddata-syncinfo-i-sys.md)&gt;&gt;&gt; | No | Callback used to return the result. If this parameter is passed, the specified callback is unsubscribed. If this parameter is not passed, all callbacks of the application are unsubscribed. |
 
 **Error codes:**
 
@@ -1308,7 +1308,7 @@ static onSyncInfoChanged(
     ): void
 ```
 
-Subscribes to changes in the sync information of a specified application.
+Subscribes to application sync information changes. This API uses an asynchronous callback to return the result.
 
 **Since:** 26.0.0
 
@@ -1326,8 +1326,8 @@ Subscribes to changes in the sync information of a specified application.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| bundleInfos | Array&lt;[BundleInfo](arkts-arkdata-clouddata-bundleinfo-i-sys.md)&gt; | Yes | BundleInfo configuration array. |
-| progress | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;Record&lt;string, Record&lt;string, [SyncInfo](arkts-arkdata-clouddata-syncinfo-i-sys.md)&gt;&gt;&gt; | Yes | progress. |
+| bundleInfos | Array&lt;[BundleInfo](arkts-arkdata-clouddata-bundleinfo-i-sys.md)&gt; | Yes | Array of application information to be subscribed to. Value range: The array length is [1, 30]. If the array length is out of range, error code 14800001 is returned. |
+| progress | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;Record&lt;string, Record&lt;string, [SyncInfo](arkts-arkdata-clouddata-syncinfo-i-sys.md)&gt;&gt;&gt; | Yes | Callback used to return the application bundle name and the sync result set of the database. The key of the outer record is the application bundle name, and the key of the inner record is the database name. |
 
 **Error codes:**
 
@@ -1387,7 +1387,7 @@ Queries information about the last device-cloud sync. This API uses a promise to
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| accountId | string | Yes | ID of the cloud account. |
+| accountId | string | Yes | ID of the logged-in cloud account. |
 | bundleName | string | Yes | Bundle name of the application. |
 | storeId | string | No | Name of the RDB store. The default value is an empty string. If the default value is used, this API queries the last device-cloud sync information of all databases of this application. |
 
@@ -1395,7 +1395,7 @@ Queries information about the last device-cloud sync. This API uses a promise to
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;Record&lt;string, [SyncInfo](arkts-arkdata-clouddata-syncinfo-i-sys.md)&gt;&gt; | Promise used to return the database name and the result set of the last device-cloud sync. |
+| Promise&lt;Record&lt;string, [SyncInfo](arkts-arkdata-clouddata-syncinfo-i-sys.md)&gt;&gt; | Result set with database names as keys and the last device-cloud sync information as values. |
 
 **Error codes:**
 
@@ -1455,7 +1455,7 @@ Queries device-cloud data statistics, which include the data not synced, data sy
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| accountId | string | Yes | ID of the cloud account. |
+| accountId | string | Yes | ID of the logged-in cloud account. |
 | bundleName | string | Yes | Bundle name of the application. |
 | storeId | string | No | Name of the RDB store. If this parameter is not specified, all local databases of this application are queried by default. |
 
@@ -1463,7 +1463,7 @@ Queries device-cloud data statistics, which include the data not synced, data sy
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;Record&lt;string, Array&lt;[StatisticInfo](arkts-arkdata-clouddata-statisticinfo-i-sys.md)&gt;&gt;&gt; | Promise used to return the table name and statistics. |
+| Promise&lt;Record&lt;string, Array&lt;[StatisticInfo](arkts-arkdata-clouddata-statisticinfo-i-sys.md)&gt;&gt;&gt; | Promise used to return the result set where the table name is the key and the statistics array is the value. |
 
 **Error codes:**
 
@@ -1554,7 +1554,7 @@ cloudData.Config.setGlobalCloudStrategy(cloudData.StrategyType.NETWORK, [cloudDa
 static stopCloudSync(bundleInfos: Array<BundleInfo>): Promise<void>
 ```
 
-Stops syncing data to the cloud.
+Stops data syncing with the cloud. This API uses a promise to return the result.
 
 **Since:** 26.0.0
 
@@ -1572,13 +1572,13 @@ Stops syncing data to the cloud.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| bundleInfos | Array&lt;[BundleInfo](arkts-arkdata-clouddata-bundleinfo-i-sys.md)&gt; | Yes | BundleInfo configuration array. |
+| bundleInfos | Array&lt;[BundleInfo](arkts-arkdata-clouddata-bundleinfo-i-sys.md)&gt; | Yes | Array of application bundle information configurations. Value range: The array length is [1, 30]. If the array length is out of range, error code 14800001 is returned. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;void&gt; | : The promise returned by the function. |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes:**
 

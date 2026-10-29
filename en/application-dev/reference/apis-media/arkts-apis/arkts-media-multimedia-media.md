@@ -177,6 +177,7 @@ The multimedia subsystem provides a set of simple and easy-to-use APIs for you t
 | [BufferingInfoType](arkts-media-media-bufferinginfotype-e.md) | Enumerates the buffering event types. |
 | [CodecMimeType](arkts-media-media-codecmimetype-e.md) | Enumerates the codec MIME types. |
 | [ContainerFormatType](arkts-media-media-containerformattype-e.md) | Enumerates the container format types (CFTs). |
+| [DestHDRMode](arkts-media-media-desthdrmode-e.md) | Defines the HDR format of the target file. |
 | [FetchResult](arkts-media-media-fetchresult-e.md) | Enumerates the results of obtaining thumbnails in batches. |
 | [FileGenerationMode](arkts-media-media-filegenerationmode-e.md) | Enumerates the modes for creating media files. |
 | [HdrType](arkts-media-media-hdrtype-e.md) | Enumerates the HDR types. |

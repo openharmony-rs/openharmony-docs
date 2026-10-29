@@ -12,8 +12,6 @@ Base class for the test framework. If you want to implement your own unit test f
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
-**Test API:** This API is used only in automated test scripts.
-
 ## Modules to Import
 
 ```TypeScript
@@ -35,8 +33,6 @@ Prepare the unit testing environment for running test cases.
 <!--Device-TestRunner-onPrepare(): void--><!--Device-TestRunner-onPrepare(): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
-
-**Test API:** This API is used only in automated test scripts.
 
 **Examples**
 
@@ -70,8 +66,6 @@ Run all test cases.
 <!--Device-TestRunner-onRun(): void--><!--Device-TestRunner-onRun(): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
-
-**Test API:** This API is used only in automated test scripts.
 
 **Examples**
 
@@ -107,8 +101,6 @@ Stop all test cases.
 <!--Device-TestRunner-onStop?: OnStopFn--><!--Device-TestRunner-onStop?: OnStopFn-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
-
-**Test API:** This API is used only in automated test scripts.
 
 **Examples**
 

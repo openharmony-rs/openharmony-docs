@@ -26,7 +26,7 @@ import { cloudData } from '@kit.ArkData';
 inserted: number
 ```
 
-Number of data records that are added locally and have not been synced to the cloud. For example, the value **2** indicates that the table has two data records that are added locally but not synced to the cloud.
+Number of data records that are added locally but not synced to the cloud. For example, the value **2** indicates that the table has two data records that are added locally but not synced to the cloud.
 
 **Type:** number
 
@@ -44,7 +44,7 @@ Number of data records that are added locally and have not been synced to the cl
 normal: number
 ```
 
-Number of consistent data records between the device and the cloud. For example, the value **2** indicates that table has two data records that are consistent between the device and the cloud.
+Number of consistent data records between the device and the cloud. For example, the value **2** indicates that the table has two data records that are consistent between the device and the cloud.
 
 **Type:** number
 

@@ -10,7 +10,7 @@ export interface BundleOption
 
 **废弃版本：** 9
 
-**替代接口：** [BundleOption](arkts-notification-notificationcommondef-bundleoption-i.md)
+**替代接口：** [BundleOption](arkts-notification-notificationmanager-bundleoption-t.md)
 
 <!--Device-notification-export interface BundleOption--><!--Device-notification-export interface BundleOption-End-->
 

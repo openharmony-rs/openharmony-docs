@@ -180,7 +180,7 @@ struct TestNewInterface {
 
 ### 示例2（设置ArcSwiper自定义页面切换动画）
 
-该示例通过customContentTransition接口，实现了自定义ArcSwiper页面切换动画。
+该示例通过[customContentTransition](#customcontenttransition)接口，实现了自定义ArcSwiper页面切换动画。
 
 ```TypeScript
 import { Decimal } from '@kit.ArkTS';

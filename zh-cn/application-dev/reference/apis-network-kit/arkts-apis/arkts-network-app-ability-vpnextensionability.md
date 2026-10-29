@@ -1,4 +1,4 @@
-# @ohos.app.ability.VpnExtensionAbility
+# @ohos.app.ability.VpnExtensionAbility(三方VPN能力)
 
 ## 导入模块
 

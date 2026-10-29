@@ -1,4 +1,4 @@
-# deprecated ApplicationInfo
+# ApplicationInfo
 
 ```TypeScript
 export interface ApplicationInfo

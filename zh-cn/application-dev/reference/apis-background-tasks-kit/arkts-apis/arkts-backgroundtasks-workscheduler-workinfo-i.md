@@ -188,6 +188,27 @@ isDeepIdle?: boolean
 
 **系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
 
+## isPerformanceSensitive
+
+```TypeScript
+isPerformanceSensitive?: boolean
+```
+
+是否是性能敏感任务。这个参数限制比较严格，系统会对运行时长、运行频率以及整机总运行时长进行限制。  
+- true表示是性能敏感任务，当该标记置true时，isCharging和isDeepIdle参数必须为true，如果是周期性任务，repeatCycleTime参数需要大于等于24小时；  
+- false表示不是性能敏感任务。  
+默认值：false。
+
+**类型：** boolean
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-WorkInfo-isPerformanceSensitive?: boolean--><!--Device-WorkInfo-isPerformanceSensitive?: boolean-End-->
+
+**系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
+
 ## isPersisted
 
 ```TypeScript

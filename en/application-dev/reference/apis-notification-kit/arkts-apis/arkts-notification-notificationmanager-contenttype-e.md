@@ -4,7 +4,7 @@
 export enum ContentType
 ```
 
-Enumerates the notification content types.
+Enumerates the [notification content types](../../../notification/notification-glossary.md#content-type).
 
 **Since:** 9
 
@@ -114,7 +114,7 @@ Picture-attached notification.
 NOTIFICATION_CONTENT_SYSTEM_LIVE_VIEW
 ```
 
-System live view notification. A third-party application cannot directly create a notification of this type. After the system proxy creates a system live view, the third-party application publishes a notification with the same ID to update the specified content.
+[System live view](../../../notification/notification-glossary.md#system-live-view) type notification. Third-party applications are not supported to directly create this type of notification. After the system agent creates a system live view type notification, a third-party application can publish a notification with the same ID to update the specified content.
 
 **Since:** 11
 

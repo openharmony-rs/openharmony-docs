@@ -214,8 +214,6 @@ Returns a value that indicates whether new properties can be added to an object.
 
 <!--Device-ObjectConstructor-isExtensible(o: any): boolean--><!--Device-ObjectConstructor-isExtensible(o: any): boolean-End-->
 
-**Test API:** This API is used only in automated test scripts.
-
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -232,8 +230,6 @@ Returns true if existing property attributes and values cannot be modified in an
 
 <!--Device-ObjectConstructor-isFrozen(o: any): boolean--><!--Device-ObjectConstructor-isFrozen(o: any): boolean-End-->
 
-**Test API:** This API is used only in automated test scripts.
-
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -249,8 +245,6 @@ isSealed(o: any): boolean
 Returns true if existing property attributes cannot be modified in an object and new properties cannot be added to the object.
 
 <!--Device-ObjectConstructor-isSealed(o: any): boolean--><!--Device-ObjectConstructor-isSealed(o: any): boolean-End-->
-
-**Test API:** This API is used only in automated test scripts.
 
 **Parameters:**
 

@@ -36,7 +36,7 @@ The priority notification is disabled.
 ENABLE = 2
 ```
 
-The priority notification is enabled for all applications.
+All application notifications are set as priority notifications.
 
 **Since:** 23
 
@@ -52,7 +52,7 @@ The priority notification is enabled for all applications.
 ENABLE_BY_INTELLIGENT = 1
 ```
 
-The priority notification is enabled by intelligent recognition.
+The priority switch of the application notification is in the intelligent recognition state. It can be set to [priority notification](../../../notification/notification-glossary.md#priority-notification) through intelligent recognition, user keyword matching, application rule matching, and other methods.
 
 **Since:** 23
 

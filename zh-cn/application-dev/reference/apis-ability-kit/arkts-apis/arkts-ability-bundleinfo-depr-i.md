@@ -1,4 +1,4 @@
-# deprecated BundleInfo
+# BundleInfo
 
 ```TypeScript
 export interface BundleInfo

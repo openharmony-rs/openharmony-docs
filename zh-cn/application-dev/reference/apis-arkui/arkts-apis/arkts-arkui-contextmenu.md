@@ -6,7 +6,7 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [ContextMenu](arkts-arkui-contextmenu-c.md) | 在页面范围内关闭通过bindContextMenu属性绑定的菜单。 |
+| [ContextMenu](arkts-arkui-contextmenu-c.md) | 在页面范围内关闭通过[bindContextMenu](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu-2)属性绑定的菜单。 |
 
 ## 示例
 
@@ -14,7 +14,7 @@
 
 > 说明：
 > 
-> 推荐通过使用UIContext中的getContextMenuController来明确UI的执行上下文。
+> 推荐通过使用[UIContext](../arkts-apis-uicontext-uicontext.md)中的[getContextMenuController](../arkts-apis-uicontext-uicontext.md#getcontextmenucontroller)来明确UI的执行上下文。
 
 ```TypeScript
 // xxx.ets

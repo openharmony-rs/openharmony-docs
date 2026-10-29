@@ -12,7 +12,7 @@ import { childProcessManager } from '@kit.AbilityKit';
 function getChildProcessInfos(): Promise<Array<ChildProcessInformation>>
 ```
 
-获取当前应用的子进程信息。该接口使用promise返回的结果。返回的子进程包括通过创建的子进程[startChildProcess](arkts-ability-childprocessmanager-startchildprocess-f.md) (在APP_SPAWN_FORK模式)，[startArkChildProcess](arkts-ability-childprocessmanager-startarkchildprocess-f.md)，以及[startNativeChildProcess](arkts-ability-childprocessmanager-startnativechildprocess-f.md).【OH_Ability_CreateNativeChildProcess】【OH_Ability_CreateNativeChildProcessWithConfigs】【OH_Ability_StartNativeChildProcess】【OH_Ability_StartNativeChildProcessWithConfigs】
+获取当前应用的所有子进程信息，使用Promise异步回调。包括通过以下方式启动的子进程：[startChildProcess](arkts-ability-childprocessmanager-startchildprocess-f.md) (在APP_SPAWN_FORK模式)，[startArkChildProcess](arkts-ability-childprocessmanager-startarkchildprocess-f.md)，以及[startNativeChildProcess](arkts-ability-childprocessmanager-startnativechildprocess-f.md).【OH_Ability_CreateNativeChildProcess】【OH_Ability_CreateNativeChildProcessWithConfigs】【OH_Ability_StartNativeChildProcess】【OH_Ability_StartNativeChildProcessWithConfigs】
 
 > **说明：** 
 > 
@@ -32,7 +32,7 @@ function getChildProcessInfos(): Promise<Array<ChildProcessInformation>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;[ChildProcessInformation](arkts-ability-childprocessmanager-childprocessinformation-t.md)&gt;&gt; | Promise用于返回孩子的信息当前应用的进程。 |
+| Promise&lt;Array&lt;[ChildProcessInformation](arkts-ability-childprocessmanager-childprocessinformation-t.md)&gt;&gt; | Promise返回当前应用的子进程信息。 |
 
 **错误码：**
 

@@ -4,7 +4,7 @@
 export type Geofence = _Geofence
 ```
 
-Defines the configuration of a geofence.
+Defines the configuration information of the [geofence](../../../notification/notification-glossary.md#geofence).
 
 **Type:** _Geofence
 

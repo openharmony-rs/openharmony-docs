@@ -1,10 +1,14 @@
-# @Entry
+# CustomComponentDecorators
+
+## Entry
 
 ```TypeScript
 declare const Entry: ClassDecorator & ((options?: LocalStorage | EntryOptions) => ClassDecorator)
 ```
 
 \@Entry装饰的自定义组件将作为UI页面的入口，被框架识别为页面的根组件，适用于构建独立UI页面的场景。
+
+在单个UI页面中，仅允许存在一个由\@Entry装饰的自定义组件作为页面的入口。
 
 **起始版本：** 7
 

@@ -652,7 +652,7 @@ convertPemKeySync(pubKey: string | null, priKey: string | null, password: string
 
 > **说明：** 
 > convertPemKeySync接口与convertPemKey接口注意事项相同，见
-> convertPemKey
+> [convertPemKey](#convertpemkey-2)
 > 接口说明。
 
 <br><br>**说明：** <br>建议优先使用异步API，[convertPemKey](#convertpemkey)。同步API可能因系统繁忙、高负载等原因耗时较长而阻塞主线程。因此建议在子线程中调用同步API，以避免阻塞主线程。

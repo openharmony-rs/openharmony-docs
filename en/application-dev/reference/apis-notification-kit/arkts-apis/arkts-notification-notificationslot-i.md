@@ -4,7 +4,7 @@
 export interface NotificationSlot
 ```
 
-The **NotificationSlot** module provides APIs for defining the notification slots. The notification reminder modes vary according to notification slots.
+Describes the [notification slot](../../../notification/notification-glossary.md#notification-slot). Different notification slots have different [notification reminder modes](../../../notification/notification-glossary.md#notification-reminder-mode).
 
 **Since:** 7
 
@@ -37,10 +37,10 @@ Whether to display the badge. The default value is **true**.
 bypassDnd?: boolean
 ```
 
-Whether to bypass Do Not Disturb mode in the system. The default value is **false**.
+Whether to bypass [Do Not Disturb mode](../../../notification/notification-glossary.md#do-not-disturb-mode) in the system. The default value is **false**.
 
-- **true**: Bypass Do Not Disturb mode, and notifications will still be alerted in Do Not Disturb mode.  
-- **false**: Do not bypass Do Not Disturb mode, and notifications will not be alerted in Do Not Disturb mode.
+- **true**: bypasses Do Not Disturb mode, and notifications are still reminded in Do Not Disturb mode.  
+- **false**: does not bypass Do Not Disturb mode, and notifications are not reminded in Do Not Disturb mode.
 
 **Type:** boolean
 
@@ -56,7 +56,7 @@ Whether to bypass Do Not Disturb mode in the system. The default value is **fals
 desc?: string
 ```
 
-Description of the notification channel. The size cannot exceed 243 bytes, and the excess part will be truncated.
+Description of the notification slot. The size cannot exceed 243 bytes, and the excess part will be truncated.
 
 **Type:** string
 
@@ -72,10 +72,10 @@ Description of the notification channel. The size cannot exceed 243 bytes, and t
 readonly enabled?: boolean
 ```
 
-Whether to allow notifications of this slot type to be published.
+Whether to allow publishing notifications of this [notification slot](../../../notification/notification-glossary.md#notification-slot) type.
 
-- **true**: yes.  
-- **false**: no.
+- **true**: publishing notifications is allowed.  
+- **false**: publishing notifications is prohibited.
 
 **Type:** boolean
 
@@ -142,7 +142,7 @@ Mode for displaying the notification on the lock screen. This is a reserved capa
 notificationLevel?: notificationManager.SlotLevel
 ```
 
-Notification level, which is used to describe the display priority and alert intensity of notifications of this channel type.
+Notification level, which is used to describe the display priority and alert intensity of notifications of this slot type.
 
 **Type:** [notificationManager.SlotLevel](arkts-notification-notificationmanager-slotlevel-e.md)
 
@@ -158,7 +158,7 @@ Notification level, which is used to describe the display priority and alert int
 notificationType?: notificationManager.SlotType
 ```
 
-Slot type. Different slot types have different notification reminder types.
+Slot type. Different slot types have different [notification reminder modes](../../../notification/notification-glossary.md#notification-reminder-mode).
 
 **Type:** [notificationManager.SlotType](arkts-notification-notificationmanager-slottype-e.md)
 
@@ -174,7 +174,7 @@ Slot type. Different slot types have different notification reminder types.
 sound?: string
 ```
 
-File name of the custom ringtone for notifications from this channel. The file is placed in the **resources/rawfile** directory, and formats such as M4A, AAC, MP3, OGG, WAV, FLAC, and AMR are supported. The size cannot exceed 243 bytes, and the excess part will be truncated.
+File name of the [customized ringtone](../../../notification/notification-glossary.md#customized-ringtone) for notifications of this slot. The file is stored in the resources/rawfile directory and supports formats such as m4a, aac, mp3, ogg, wav, flac, and amr. The size cannot exceed 243 bytes, and the excess part is truncated.
 
 **Type:** string
 
@@ -245,7 +245,7 @@ Notification level.
 type?: notification.SlotType
 ```
 
-Channel type.
+Slot type.
 
 **Type:** [notification.SlotType](arkts-notification-notification-slottype-depr-e.md)
 

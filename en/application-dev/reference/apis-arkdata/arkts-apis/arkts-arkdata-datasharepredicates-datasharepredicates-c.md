@@ -111,9 +111,9 @@ Currently, only RDB store supports this predicate.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| field | string | Yes | Column name in the database table.If this parameter is set to **undefined** or **null**, the predicate used is invalid.If this parameter is set to **'null'** or **'undefined'** in string, the matching result may not be as expected or an exception may be thrown when the predicate is used by the KV store and RDB store APIs. |
-| low | [ValueType](arkts-arkdata-valuetype-t.md) | Yes | Minimum value of the range to set.If **low** is set to a number, the matching range is specified based on the numeric order.If **low** is set to a string, the matching range is specified based on the lexicographical order.If **low** is set to boolean, the matching range is specified based on the numeric order. |
-| high | [ValueType](arkts-arkdata-valuetype-t.md) | Yes | Maximum value to match the **DataAbilityPredicates**.If **high** is set to a number, the matching range is specified based on the numeric order.If **high** is set to a string, the matching range is specified based on the lexicographical order.If **high** is set to boolean, the matching range is specified based on the numeric order. |
+| field | string | Yes | Column name in the database table. If **field** is **undefined** or **null**, the predicate configured by this API call is invalid. When **field** is the string **'null'** or **'undefined'**, the key-value database and relational database APIs may return unexpected matching results or throw an exception when using this predicate. |
+| low | [ValueType](arkts-arkdata-valuetype-t.md) | Yes | Indicate matching with the predicate as the minimum value. When **low** is a number, sort by numeric value to specify the matching range. When **low** is a string, sort in lexicographical order to specify the matching range. When **low** is a boolean, sort by numeric value to specify the matching range. |
+| high | [ValueType](arkts-arkdata-valuetype-t.md) | Yes | Indicate matching with the predicate as the maximum value. When **high** is a number, sort by numeric value to specify the matching range. When **high** is a string, sort in lexicographical order to specify the matching range. When **high** is a boolean, sort by numeric value to specify the matching range. |
 
 **Return value:**
 
@@ -188,8 +188,8 @@ Currently, both the RDB store and KV store support this predicate.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| field | string | Yes | Column name in the database table.If this parameter is set to **undefined** or **null**, the predicate used is invalid. |
-| value | [ValueType](arkts-arkdata-valuetype-t.md) | Yes | Value to match.If this parameter is set to **undefined** or **null**, the predicate used is invalid. |
+| field | string | Yes | Column name in the database table. If **field** is **undefined** or **null**, the predicate configured by this interface call is invalid. |
+| value | [ValueType](arkts-arkdata-valuetype-t.md) | Yes | Value to match with the predicate. If **value** is **undefined** or **null**, the predicate configured by this interface call is invalid. |
 
 **Return value:**
 
@@ -226,8 +226,8 @@ Currently, both the RDB store and KV store support this predicate.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| field | string | Yes | Column name in the database table.If this parameter is set to **undefined** or **null**, the predicate used is invalid.If this parameter is set to **'null'** or **'undefined'** in string, the matching result may not be as expected or an exception may be thrown when the predicate is used by the KV store and RDB store APIs. |
-| value | [ValueType](arkts-arkdata-valuetype-t.md) | Yes | Value to match.If this parameter is set to **undefined** or **null**, the predicate used is invalid. |
+| field | string | Yes | Column name in the database table. If **field** is **undefined** or **null**, the predicate configured by this API call is invalid. When **field** is the string **'null'** or **'undefined'**, the key-value database and relational database APIs may return unexpected matching results or throw an exception when using this predicate. |
+| value | [ValueType](arkts-arkdata-valuetype-t.md) | Yes | Value to match with the predicate. If **value** is **undefined** or **null**, the predicate configured by this API call is invalid. |
 
 **Return value:**
 
@@ -264,8 +264,8 @@ Currently, both the RDB store and KV store support this predicate.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| field | string | Yes | Column name in the database table.If this parameter is set to **undefined** or **null**, the predicate used is invalid.If this parameter is set to **'null'** or **'undefined'** in string, the matching result may not be as expected or an exception may be thrown. |
-| value | [ValueType](arkts-arkdata-valuetype-t.md) | Yes | Value to match.If this parameter is set to **undefined** or **null**, the predicate used is invalid. |
+| field | string | Yes | Column name in the database table. If **field** is **undefined** or **null**, the predicate configured by this API call is invalid. When **field** is the string **'null'** or **'undefined'**, the key-value database and relational database APIs may return unexpected matching results or throw an exception when using this predicate. |
+| value | [ValueType](arkts-arkdata-valuetype-t.md) | Yes | Value to match with the predicate. If **value** is **undefined** or **null**, the predicate configured by this API call is invalid. |
 
 **Return value:**
 
@@ -304,8 +304,8 @@ Currently, both the RDB store and KV store support this predicate.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| field | string | Yes | Column name in the database table.If this parameter is set to **undefined** or **null**, the predicate used is invalid. |
-| value | Array&lt;[ValueType](arkts-arkdata-valuetype-t.md)&gt; | Yes | Array of the values to match. |
+| field | string | Yes | Column name in the database table. If **field** is **undefined** or **null**, the predicate configured by this API call is invalid. When **field** is the string **'null'** or **'undefined'**, the key-value database and relational database APIs may return unexpected matching results or throw an exception when using this predicate. |
+| value | Array&lt;[ValueType](arkts-arkdata-valuetype-t.md)&gt; | Yes | Value to match, specified as an array of the ValueType type. If **value** is **undefined** or **null**, the predicate configured by this API call is invalid. |
 
 **Return value:**
 
@@ -342,8 +342,8 @@ Currently, both the RDB store and KV store support this predicate.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| field | string | Yes | Column name in the database table.If field is null or undefined, the predicate configured by calling this API is invalid.If this parameter is set to **'null'** or **'undefined'** in string, the matching result may not be as expected or an exception may be thrown when the predicate is used by the KV store and RDB store APIs. |
-| value | [ValueType](arkts-arkdata-valuetype-t.md) | Yes | Value to match.If this parameter is set to **undefined** or **null**, the predicate used is invalid. |
+| field | string | Yes | Column name in the database table. If **field** is **null** or **undefined**, the predicate configured by calling this API is invalid. If this parameter is set to **'null'** or **'undefined'** in string, the matching result may not be as expected or an exception may be thrown when the predicate is used by the KV store and RDB store APIs. |
+| value | [ValueType](arkts-arkdata-valuetype-t.md) | Yes | Value to match with the predicate. If **value** is **undefined** or **null**, the predicate configured by calling this API is invalid. |
 
 **Return value:**
 
@@ -380,8 +380,8 @@ Currently, both the RDB store and KV store support this predicate.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| field | string | Yes | Column name in the database table.If this parameter is set to **undefined** or **null**, the predicate used is invalid.If this parameter is set to **'null'** or **'undefined'** in string, the matching result may not be as expected or an exception may be thrown when the predicate is used by the KV store and RDB store APIs. |
-| value | [ValueType](arkts-arkdata-valuetype-t.md) | Yes | Value to match.If this parameter is set to **undefined** or **null**, the predicate used is invalid. |
+| field | string | Yes | Column name in the database table. If **field** is **undefined** or **null**, the predicate configured by this API call is invalid. When **field** is the string **'null'** or **'undefined'**, the key-value database and relational database APIs may return unexpected matching results or throw an exception when using this predicate. |
+| value | [ValueType](arkts-arkdata-valuetype-t.md) | Yes | Value to match with the predicate. If **value** is **undefined** or **null**, the predicate configured by this API call is invalid. |
 
 **Return value:**
 
@@ -418,8 +418,8 @@ Currently, both the RDB store and KV store support this predicate.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| field | string | Yes | Column name in the database table.If this parameter is set to **undefined** or **null**, the predicate used is invalid.If this parameter is set to **'null'** or **'undefined'** in string, the matching result may not be as expected or an exception may be thrown when the predicate is used by the KV store and RDB store APIs. |
-| value | string | Yes | Wildcard expression to match.In the expression, '%' represents zero, one, or more digits or characters, and '_' represents a single digit or character. It is case insensitive.If this parameter is set to **undefined** or **null**, the predicate used is invalid. |
+| field | string | Yes | Column name in the database table. If **field** is **undefined** or **null**, the predicate configured by this API call is invalid. When **field** is the string **'null'** or **'undefined'**, the key-value database and relational database APIs may return unexpected matching results or throw an exception when using this predicate. |
+| value | string | Yes | Wildcard expression to match with the predicate. In the expression, '%' represents zero, one, or more digits or characters, and '_' represents a single digit or character. It is case insensitive. If **value** is **undefined** or **null**, the predicate configured by this API call is invalid. |
 
 **Return value:**
 
@@ -458,8 +458,8 @@ Currently, both the RDB store and KV store support this predicate.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| total | number | Yes | Maximum number of records.If the KV store is used and **total** is **undefined** or **null**, the maximum number of records is 0. For details about the value range, see the description of this parameter in [limit](arkts-arkdata-distributedkvstore-query-c.md#limit).If the RDB store is used and **total** is **undefined** or **null**, the maximum number of records is not limited. For details about the value range, see the description of this parameter in [limitAs](arkts-arkdata-distributedkvstore-query-c.md#limit). |
-| offset | number | Yes | Start position of the query result.If this parameter is set to **undefined** or **null**, the start position is the beginning of the result set.For details about the value range in a KV store, see the description of this parameter in [limit](arkts-arkdata-distributedkvstore-query-c.md#limit).For details about the value range in an RDB store, see the description of the **rowOffset** parameter in [offsetAs](arkts-arkdata-relationalstore-rdbpredicates-c.md#offsetas). |
+| total | number | Yes | Maximum number of records. If the key-value database is used and **total** is **undefined** or **null**, the maximum number of records is limited to 0. If the relational database is used and **total** is **undefined** or **null**, the maximum number of records is not limited. When using a key-value database, for details about the value range, see the description of the **total** parameter in [limit](arkts-arkdata-distributedkvstore-query-c.md#limit). When using a relational database, for details about the value range, see the description of the **value** parameter in [limitAs](arkts-arkdata-relationalstore-rdbpredicates-c.md#limitas). |
+| offset | number | Yes | Start position of the query result. If **offset** is **undefined** or **null**, the start position is the beginning of the result set. When using a key-value database, for details about the value range, see the description of the **offset** parameter in [limit](arkts-arkdata-distributedkvstore-query-c.md#limit). When using a relational database, for details about the value range, see the description of the **rowOffset** parameter in [offsetAs](arkts-arkdata-relationalstore-rdbpredicates-c.md#offsetas). |
 
 **Return value:**
 
@@ -496,9 +496,9 @@ Currently, only RDB store supports this predicate.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| field | string | Yes | Column name in the database table.If this parameter is set to **undefined** or **null**, the predicate used is invalid.If this parameter is set to **'null'** or **'undefined'** in string, the matching result may not be as expected or an exception may be thrown when the predicate is used by the KV store and RDB store APIs. |
-| low | [ValueType](arkts-arkdata-valuetype-t.md) | Yes | Minimum value of the range to set.If **low** is set to a number, the matching range is specified based on the numeric order.If **low** is set to a string, the matching range is specified based on the lexicographical order.If **low** is set to boolean, the matching range is specified based on the numeric order. |
-| high | [ValueType](arkts-arkdata-valuetype-t.md) | Yes | Maximum value to match the **DataAbilityPredicates**.If **high** is set to a number, the matching range is specified based on the numeric order.If **high** is set to a string, the matching range is specified based on the lexicographical order.If **high** is set to boolean, the matching range is specified based on the numeric order. |
+| field | string | Yes | Column name in the database table. If **field** is **undefined** or **null**, the predicate configured by this API call is invalid. When **field** is the string 'null' or 'undefined', the key-value database and relational database APIs may return unexpected matching results or throw an exception when using this predicate. |
+| low | [ValueType](arkts-arkdata-valuetype-t.md) | Yes | Minimum value matching with the predicate. If **low** is number, sort by numeric value to specify the matching range. If **low** is string, sort in lexicographical order to specify the matching range. If **low** is boolean, sort by numeric value to specify the matching range. |
+| high | [ValueType](arkts-arkdata-valuetype-t.md) | Yes | Maximum value matching with the predicate. If **high** is number, sort by numeric value to specify the matching range. If **high** is string, sort in lexicographical order to specify the matching range. If **high** is boolean, sort by numeric value to specify the matching range. |
 
 **Return value:**
 
@@ -535,8 +535,8 @@ Currently, both the RDB store and KV store support this predicate.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| field | string | Yes | Column name in the database table.If this parameter is set to **undefined** or **null**, the predicate used is invalid.If this parameter is set to **'null'** or **'undefined'** in string, the matching result may not be as expected or an exception may be thrown when the predicate is used by the KV store and RDB store APIs. |
-| value | [ValueType](arkts-arkdata-valuetype-t.md) | Yes | Value to match.If this parameter is set to **undefined** or **null**, the predicate used is invalid. |
+| field | string | Yes | Column name in the database table. If this parameter is set to **undefined** or **null**, the predicate used is invalid. If this parameter is set to 'null' or 'undefined' in string, the matching result may not be as expected or an exception may be thrown when the predicate is used by the key-value database and relational database APIs. |
+| value | [ValueType](arkts-arkdata-valuetype-t.md) | Yes | Value to match with the predicate. If this parameter is set to **undefined** or **null**, the predicate used is invalid. |
 
 **Return value:**
 
@@ -573,8 +573,8 @@ Currently, both the RDB store and KV store support this predicate.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| field | string | Yes | Column name in the database table.If this parameter is set to **undefined** or **null**, the predicate used is invalid.If this parameter is set to **'null'** or **'undefined'** in string, the matching result may not be as expected or an exception may be thrown when the predicate is used by the KV store and RDB store APIs. |
-| value | Array&lt;[ValueType](arkts-arkdata-valuetype-t.md)&gt; | Yes | Array of the values to match.If this parameter is set to **undefined** or **null**, the predicate used is invalid. |
+| field | string | Yes | Column name in the database table. If **field** is **undefined** or **null**, the predicate configured by this API call is invalid. When **field** is the string **'null'** or **'undefined'**, the key-value database and relational database APIs may return unexpected matching results or throw an exception when using this predicate. |
+| value | Array&lt;[ValueType](arkts-arkdata-valuetype-t.md)&gt; | Yes | Value to match, specified as an array of the ValueType type. If **value** is **undefined** or **null**, the predicate configured by this API call is invalid. |
 
 **Return value:**
 
@@ -646,7 +646,7 @@ Currently, both the RDB store and KV store support this predicate.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| field | string | Yes | Column name in the database table.If this parameter is set to **undefined** or **null**, the predicate used is invalid. |
+| field | string | Yes | Column name in the database table. If **field** is **undefined** or **null**, the predicate configured by this interface call is invalid. |
 
 **Return value:**
 
@@ -685,7 +685,7 @@ Currently, both the RDB store and KV store support this predicate.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| field | string | Yes | Column name in the database table.If this parameter is set to **undefined** or **null**, the predicate used is invalid. |
+| field | string | Yes | Column name in the database table. If **field** is **undefined** or **null**, the predicate configured by this interface call is invalid. |
 
 **Return value:**
 

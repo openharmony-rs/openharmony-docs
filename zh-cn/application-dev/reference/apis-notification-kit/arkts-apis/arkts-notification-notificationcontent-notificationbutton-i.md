@@ -4,11 +4,11 @@
 export interface NotificationButton
 ```
 
-描述通知按钮，用于在实况窗中展示可交互的按钮。
+描述[通知按钮](../../../notification/notification-glossary.md#notification-button通知按钮)，用于在实况窗中展示可交互的按钮。
 
 > **说明：** 
 > 
-> 实际显示效果依赖于设备能力和通知中心UI样式。
+> 实际显示效果依赖于设备能力和[通知中心](../../../notification/notification-glossary.md#notification-center通知中心)UI样式。
 
 **起始版本：** 11
 
@@ -54,7 +54,9 @@ iconsResource?: Array<Resource>
 names?: Array<string>
 ```
 
-按钮名称列表，每个名称对应一个通知按钮的文本显示。最多支持3个按钮。每个名称的大小不超过202字节，超出部分会被截断。默认为空。
+按钮名称列表，每个名称对应一个通知按钮的文本显示。最多支持3个按钮。
+
+每个名称的大小不超过202字节，超出部分会被截断。默认为空。
 
 **类型：** Array&lt;string&gt;
 

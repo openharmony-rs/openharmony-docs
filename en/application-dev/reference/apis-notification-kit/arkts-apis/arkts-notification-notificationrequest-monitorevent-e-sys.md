@@ -4,7 +4,7 @@
 export enum MonitorEvent
 ```
 
-Enumerates the event types of monitoring a geofence.
+Enumerates the monitor event types of a [geofence](../../../notification/notification-glossary.md#geofence).
 
 **Since:** 23
 

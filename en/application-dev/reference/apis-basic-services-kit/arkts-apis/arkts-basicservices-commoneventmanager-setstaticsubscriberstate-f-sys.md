@@ -12,7 +12,7 @@ import { commonEventManager } from '@kit.BasicServicesKit';
 function setStaticSubscriberState(enable: boolean, callback: AsyncCallback<void>): void
 ```
 
-Enables or disables static subscription for an app. This API uses an asynchronous callback to return the result.
+Enables or disables a [static subscription](../../../basic-services/common-event/common-event-glossary.md#static-subscription) event for the app. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
 
@@ -28,7 +28,7 @@ Enables or disables static subscription for an app. This API uses an asynchronou
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enable | boolean | Yes | Whether static subscription is enabled.<br> **true**: enabled; **false**: disabled. |
+| enable | boolean | Yes | Whether static subscription is enabled. <br> **true**: enabled; **false**: disabled. |
 | callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object. |
 
 **Error codes:**
@@ -64,7 +64,7 @@ commonEventManager.setStaticSubscriberState(true, (err: BusinessError) => {
 function setStaticSubscriberState(enable: boolean): Promise<void>
 ```
 
-Enables or disables static subscription for an app. This API uses a promise to return the result.
+Enables or disables a [static subscription](../../../basic-services/common-event/common-event-glossary.md#static-subscription) event for the app. This API uses a promise to return the result.
 
 **Since:** 10
 
@@ -80,7 +80,7 @@ Enables or disables static subscription for an app. This API uses a promise to r
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enable | boolean | Yes | Whether static subscription is enabled.<br> **true**: enabled; **false**: disabled. |
+| enable | boolean | Yes | Whether static subscription is enabled. <br> **true**: enabled; **false**: disabled. |
 
 **Return value:**
 
@@ -119,7 +119,7 @@ commonEventManager.setStaticSubscriberState(false).then(() => {
 function setStaticSubscriberState(enable: boolean, events?: Array<string>): Promise<void>
 ```
 
-Enables or disables static subscription to a common event for the current app. This API uses a promise to return the result.
+Enables a [static subscription](../../../basic-services/common-event/common-event-glossary.md#static-subscription) common event for the app. This API uses a promise to return the result.
 
 **Since:** 12
 
@@ -135,7 +135,7 @@ Enables or disables static subscription to a common event for the current app. T
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enable | boolean | Yes | Whether static subscription is enabled.<br> **true**: enabled; **false**: disabled. |
+| enable | boolean | Yes | Whether static subscription is enabled. <br> **true**: enabled; **false**: disabled. |
 | events | Array&lt;string&gt; | No | List of common event names to be set. By default, the list is empty, indicating that the status of all common events subscribed to in static mode by the current app is to be set. |
 
 **Return value:**

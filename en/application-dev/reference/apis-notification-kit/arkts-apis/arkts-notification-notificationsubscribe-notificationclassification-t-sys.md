@@ -4,7 +4,7 @@
 export type NotificationClassification = _NotificationClassification
 ```
 
-Describes the notification classification information.
+Returns the notification classification information.
 
 **Type:** _NotificationClassification
 

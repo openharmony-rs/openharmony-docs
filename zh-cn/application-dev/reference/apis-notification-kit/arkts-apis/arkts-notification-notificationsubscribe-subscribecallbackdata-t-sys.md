@@ -4,7 +4,7 @@
 export type SubscribeCallbackData = _SubscribeCallbackData
 ```
 
-携带系统属性值的通知信息。
+返回携带系统属性值的通知信息。
 
 **类型：** _SubscribeCallbackData
 

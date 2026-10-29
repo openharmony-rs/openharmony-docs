@@ -26,8 +26,6 @@ All APIs provided in the **By** class are synchronous. You are advised to use th
 
 **System capability:** SystemCapability.Test.UiTest
 
-**Test API:** This API is used only in automated test scripts.
-
 ## Modules to Import
 
 ```TypeScript

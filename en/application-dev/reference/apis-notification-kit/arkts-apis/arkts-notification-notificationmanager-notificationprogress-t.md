@@ -4,7 +4,7 @@
 export type NotificationProgress = _NotificationProgress
 ```
 
-Describes the notification progress.
+Defines the [notification progress](../../../notification/notification-glossary.md#notification-progress).
 
 **Type:** _NotificationProgress
 

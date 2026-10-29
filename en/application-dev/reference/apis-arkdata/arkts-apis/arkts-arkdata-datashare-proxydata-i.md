@@ -24,7 +24,7 @@ import { dataShare } from '@kit.ArkData';
 allowList?: string[]
 ```
 
-List of applications that can subscribe to and read shared configurations. If this parameter is left empty, the value is an empty string array. The array can contain a maximum of 256 elements. Excess elements are invalid. Each element in the array is the [appIdentifier](../../../quick-start/common-problem-of-application.md#what-is-appidentifier) of an application. The maximum length of an **appIdentifier** is 128 bytes. If the length exceeds 128 bytes, the **appIdentifier** does not take effect. If this parameter is not set when the shared configuration is published for the first time, the allowlist is empty by default. If this parameter is not set when the shared configuration is updated, the allowlist will not be updated. An empty allowlist indicates that only the publisher can access the shared configuration.
+List of apps that are allowed to subscribe to and read the shared configuration. If not specified, an empty string array is used. The maximum length of the array is 256, and elements beyond 256 do not take effect. When the shared configuration is published for the first time, if this parameter is not specified, an empty allowlist is used by default. When the shared configuration is updated, if this parameter is not specified, the allowlist of the shared configuration will not be updated. An empty allowlist indicates that only the publisher can access the shared configuration. Before API version 26.0.0, each element in the array is the [appIdentifier](../../../quick-start/common-problem-of-application.md#what-is-appidentifier) of an app. The maximum length of a single appIdentifier is 128 bytes, and an appIdentifier longer than 128 bytes does not take effect. Since API version 26.0.0, the array supports the special string "all" (case-sensitive), which indicates that all apps are allowed to access.
 
 **Type:** string[]
 
@@ -42,7 +42,7 @@ List of applications that can subscribe to and read shared configurations. If th
 isMultiValues?: boolean
 ```
 
-Indicates whether the shared configuration is multi-value type. The default value is false, indicating that the shared configuration is not multi-value type. If the value is true, it indicates that the data being published is multi-value type, and the [value](#value) parameter will be ignored. Default value: false.
+Whether this is a multi-value shared configuration that uses values. **true** indicates that the data published this time is of the multi-value type, in which case the value parameter is ignored. **false** indicates a non-multi-value type. The default value is **false**.
 
 **Type:** boolean
 
@@ -60,7 +60,7 @@ Indicates whether the shared configuration is multi-value type. The default valu
 trustProviders?: string[]
 ```
 
-List of applications that can add values to the shared configuration of multi-value type. The array can contain a maximum of 256 elements. Excess elements are invalid. Each element in the array is the [appIdentifier](../../../quick-start/common-problem-of-application.md#what-is-appidentifier) of an application. The maximum length of an **appIdentifier** is 128 bytes. If the length exceeds 128 bytes, the **appIdentifier** does not take effect. If this parameter is not set when the shared configuration is published for the first time, the list is empty by default. If this parameter is not set when the shared configuration is updated, the list will not be updated. An empty list indicates that only the publisher can add values to the shared configuration. The array supports the special string "all" (case-sensitive), which indicates that all applications are allowed to add values to the shared configuration.
+List of apps that can assign values to the multi-value shared configuration. The array can contain up to 256 elements, and elements beyond 256 do not take effect. Each element in the array is the [appIdentifier](../../../quick-start/common-problem-of-application.md#what-is-appidentifier) of an app. The maximum length of an appIdentifier is 128 bytes, and the part longer than 128 bytes does not take effect. If this parameter is not set when the shared configuration is published for the first time, the assignment list is empty by default. An empty assignment list indicates that only the publisher can assign values to the multi-value shared configuration. The array supports the special string "all" (case-sensitive), which indicates that all apps are allowed to assign values to the multi-value shared configuration. This parameter takes effect only when isMultiValues is set to **true**.
 
 **Type:** string[]
 
@@ -96,7 +96,7 @@ Unique ID of a shared configuration, fixed at the format of **"datashareproxy://
 value?: ValueType
 ```
 
-Value of a shared configuration. If not specified, the value is an empty string. The value is a string with a maximum of 4,096 bytes. If this parameter is not set when the shared configuration is published for the first time, the value will be an empty string by default. If this parameter is not set when a shared configuration is updated, the value of the shared configuration will not be updated. In versions earlier than API version 26.0.0, the maximum length of a string is 4096 bytes. In API version 26.0.0 and later versions, the maximum length of a string is 4096 bytes by default, and can be extended to 102,400 bytes by setting the maxValueLength parameter in [DataProxyConfig](arkts-arkdata-datashare-dataproxyconfig-i.md).
+Value of the shared configuration. If not specified, an empty string is used. **Note:** 1. Before API version 26.0.0, the string length does not exceed 4096 bytes. Since API version 26.0.0, the default maximum string length allowed is 4096 bytes, and you can configure maxValueLength in [DataProxyConfig](arkts-arkdata-datashare-dataproxyconfig-i.md) to extend the maximum length to 102400 bytes. 2. When the shared configuration is published for the first time, if this parameter is not specified, an empty string is used by default. When the shared configuration is updated, if this parameter is not specified, the value of the shared configuration will not be updated.
 
 **Type:** [ValueType](arkts-arkdata-valuetype-t.md)
 
@@ -114,7 +114,7 @@ Value of a shared configuration. If not specified, the value is an empty string.
 values?: Record<number, ValueType>
 ```
 
-Values of the multi-value type. The first parameter in the **Record** is the key specified by the user, which must be unique. The second parameter is the value corresponding to the key. A maximum of 10 values can be added to a single URI for an application. Each value can contain a maximum of 4096 bytes. At the same time, the total length of all values is limited by the [maxValueLength](arkts-arkdata-datashare-dataproxyconfig-i.md#maxvaluelength) parameter value. This parameter is valid only when [isMultiValues](#ismultivalues) is set to true.
+Value of the multi-value type. The first parameter in Record is the key, which is specified by the user and must be unique. The second parameter is the value corresponding to the key. A single app can add up to 10 values under a single URI, and the maximum length of each value is 4096 bytes. In addition, the total length of all values is limited by the maxValueLength field in [DataProxyConfig](arkts-arkdata-datashare-dataproxyconfig-i.md). This parameter takes effect only when isMultiValues is set to **true**, and it cannot be empty. When isMultiValues is **false**, the default value is undefined.
 
 **Type:** Record&lt;number, [ValueType](arkts-arkdata-valuetype-t.md)&gt;
 

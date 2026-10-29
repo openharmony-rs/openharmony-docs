@@ -4,7 +4,7 @@
 export interface NotificationFlags
 ```
 
-描述通知标志位。
+描述[通知标志位](../../../notification/notification-glossary.md#notification-flags通知标志位)。应用可以使用`NotificationFlags`按需削减通知的提醒方式。
 
 **起始版本：** 8
 

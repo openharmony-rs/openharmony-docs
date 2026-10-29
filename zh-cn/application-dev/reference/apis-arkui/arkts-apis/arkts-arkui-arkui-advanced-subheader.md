@@ -423,7 +423,7 @@ struct SubHeaderExample {
 
 该示例主要演示子标题设置endIcon尾部图标，包括普通图片资源和Symbol图标两种形式。
 
-从API版本26.0.1开始，SubHeader新增endIcon和endIconSymbolOptions属性。
+从API版本26.0.1开始，[SubHeader](#subheader-1)新增endIcon和endIconSymbolOptions属性。
 
 ```TypeScript
 import { SubHeader } from '@kit.ArkUI';

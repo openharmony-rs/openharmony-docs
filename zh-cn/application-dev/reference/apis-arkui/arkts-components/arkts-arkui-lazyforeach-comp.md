@@ -176,7 +176,7 @@ struct MemoryOptimizeDemo {
 
 ### 示例2（主动清理预加载的子组件）
 
-以下示例中，通过[LazyForEachOptions](arkts-arkui-lazyforeach-comp-lazyforeachoptions-i.md)的controller属性绑定了LazyForEachController，点击Clear按钮时主动清理LazyForEach预加载的子组件。
+以下示例中，通过[LazyForEachOptions](arkts-arkui-lazyforeach-comp-lazyforeachoptions-i.md)的controller属性绑定了[LazyForEachController](#lazyforeachcontroller)，点击Clear按钮时主动清理LazyForEach预加载的子组件。
 
 从API版本26.1.0开始，LazyForEachOptions新增controller属性。
 

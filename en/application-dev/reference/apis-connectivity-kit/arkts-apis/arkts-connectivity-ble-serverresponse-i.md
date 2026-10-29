@@ -84,7 +84,7 @@ Indicates the status of the read or write request, set this parameter to '0' in 
 transId: number
 ```
 
-The Id of the write request
+The Id of the read or write request
 
 **Type:** number
 

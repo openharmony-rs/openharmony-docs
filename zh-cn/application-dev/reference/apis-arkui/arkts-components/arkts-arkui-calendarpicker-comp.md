@@ -97,7 +97,7 @@ struct CalendarPickerExample {
 
 该示例通过start和end设置日历选择器的开始日期和结束日期。
 
-从API version 18开始，CalendarOptions中新增了start、end属性。
+从API version 18开始，[CalendarOptions](#calendaroptions对象说明)中新增了start、end属性。
 
 
 
@@ -130,7 +130,7 @@ struct CalendarPickerExample {
 
 该示例通过markToday设置日历选择器在系统当前日期时，开启保持高亮显示，同时，通过disabledDateRange设置日历选择器的禁用日期区间。
 
-从API version 19开始，新增了markToday接口，CalendarOptions中新增了disabledDateRange属性。
+从API version 19开始，新增了[markToday](#marktoday19)接口，[CalendarOptions](#calendaroptions对象说明)中新增了disabledDateRange属性。
 
 
 
@@ -164,7 +164,7 @@ struct CalendarPickerExample {
 
 该示例通过firstDayOfWeek设置日历选择器每周的起始日为周一。
 
-从API版本26.1.0开始，新增了firstDayOfWeek接口。
+从API版本26.1.0开始，新增了[firstDayOfWeek](#firstdayofweek)接口。
 
 ```TypeScript
 // xxx.ets

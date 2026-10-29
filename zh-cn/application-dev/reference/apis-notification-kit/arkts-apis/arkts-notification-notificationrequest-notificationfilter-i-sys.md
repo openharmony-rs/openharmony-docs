@@ -4,7 +4,7 @@
 export interface NotificationFilter
 ```
 
-描述查询普通实况窗时的筛选条件。
+描述查询实况通知时的筛选条件。
 
 **起始版本：** 11
 
@@ -20,7 +20,7 @@ export interface NotificationFilter
 bundle: BundleOption
 ```
 
-实况通知的包信息。
+[实况通知](../../../notification/notification-glossary.md#live-view-notification实况通知)的包信息。
 
 **类型：** [BundleOption](arkts-notification-notificationcommondef-bundleoption-i.md)
 

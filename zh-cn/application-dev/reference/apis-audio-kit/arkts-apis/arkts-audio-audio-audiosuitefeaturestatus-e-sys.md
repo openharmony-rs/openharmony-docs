@@ -4,7 +4,7 @@
 enum AudioSuiteFeatureStatus
 ```
 
-枚举音频编创套件的特性状态。
+枚举，音频编创特性状态。
 
 **起始版本：** 26.0.1
 
@@ -236,7 +236,7 @@ UNINSTALLING = 40
 VERSION_CHECK_FAILED = 11
 ```
 
-查看版本失败状态。
+检测版本失败状态。
 
 **起始版本：** 26.0.1
 
@@ -254,7 +254,7 @@ VERSION_CHECK_FAILED = 11
 VERSION_CHECK_SUCCEEDED = 12
 ```
 
-查看版本成功状态。
+检测版本成功状态。
 
 **起始版本：** 26.0.1
 
@@ -272,7 +272,7 @@ VERSION_CHECK_SUCCEEDED = 12
 VERSION_CHECKING = 10
 ```
 
-云ROM状态正在检查版本。
+特性正在检查版本。
 
 **起始版本：** 26.0.1
 

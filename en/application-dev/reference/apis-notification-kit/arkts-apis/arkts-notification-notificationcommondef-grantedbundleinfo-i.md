@@ -15,7 +15,7 @@ Describes the authorized bundle information.
 ## appIndex
 
 ```TypeScript
-readonly appIndex: number
+appIndex: number
 ```
 
 Index of an application clone, which takes effect only for application clones. The value is obtained from the **appIndex** of ApplicationInfo.
@@ -24,7 +24,7 @@ Index of an application clone, which takes effect only for application clones. T
 
 **Since:** 22
 
-<!--Device-GrantedBundleInfo-readonly appIndex: int--><!--Device-GrantedBundleInfo-readonly appIndex: int-End-->
+<!--Device-GrantedBundleInfo-appIndex: int--><!--Device-GrantedBundleInfo-appIndex: int-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 

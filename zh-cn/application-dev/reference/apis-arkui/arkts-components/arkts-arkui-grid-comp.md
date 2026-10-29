@@ -106,7 +106,7 @@ Grid(scroller?: Scroller, layoutOptions?: GridLayoutOptions)
 
 ### 示例1（固定行列Grid）
 
-可以使用GridLayoutOptions中的onGetRectByIndex指定GridItem的位置和大小。
+可以使用[GridLayoutOptions](#gridlayoutoptions10对象说明)中的onGetRectByIndex指定GridItem的位置和大小。
 
 
 
@@ -192,7 +192,7 @@ struct GridExample {
 
 可滚动Grid，包括所有滚动属性和事件。
 
-GridDataSource实现了LazyForEach数据源接口IDataSource，用于通过LazyForEach给Grid提供子组件。
+GridDataSource实现了LazyForEach数据源接口[IDataSource](ts-rendering-control-lazyforeach.md#idatasource)，用于通过LazyForEach给Grid提供子组件。
 
 ```TypeScript
 // GridDataSource.ets
@@ -339,7 +339,7 @@ struct GridExample {
 
 ### 示例3（可滚动Grid设置跨行跨列节点）
 
-GridLayoutOptions的使用：irregularIndexes与onGetIrregularSizeByIndex。
+[GridLayoutOptions](#gridlayoutoptions10对象说明)的使用：irregularIndexes与onGetIrregularSizeByIndex。
 
 GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
 
@@ -432,7 +432,7 @@ struct GridExample {
 
 ### 示例4（Grid嵌套滚动）
 
-nestedScroll和onScrollFrameBegin的使用。
+[nestedScroll](#nestedscroll10)和[onScrollFrameBegin](#onscrollframebegin10)的使用。
 
 GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
 
@@ -614,11 +614,11 @@ struct GridExample {
 
 ### 示例5（Grid拖拽场景）
 
-通过属性editMode设置Grid是否进入编辑模式，进入编辑模式可以拖拽Grid组件内部GridItem。
+通过属性[editMode](#editmode8)设置Grid是否进入编辑模式，进入编辑模式可以拖拽Grid组件内部GridItem。
 
-在onItemDragStart回调中设置拖拽过程中显示的图片。
+在[onItemDragStart](#onitemdragstart8)回调中设置拖拽过程中显示的图片。
 
-在onItemDrop中获取拖拽起始位置，和拖拽插入位置，并在onItemDrop中完成交换数组位置逻辑。
+在[onItemDrop](#onitemdrop8)中获取拖拽起始位置，和拖拽插入位置，并在[onItemDrop](#onitemdrop8)中完成交换数组位置逻辑。
 
 设置属性支持动画。
 
@@ -720,7 +720,7 @@ struct GridExample {
 
 ### 示例6（自适应Grid）
 
-layoutDirection、maxCount、minCount、[cellLength](arkts-arkui-grid-comp-attribute.md#celllength)的使用。
+[layoutDirection](#layoutdirection8)、[maxCount](#maxcount8)、[minCount](#mincount8)、[cellLength](arkts-arkui-grid-comp-attribute.md#celllength)的使用。
 
 GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
 
@@ -859,7 +859,7 @@ struct GridExample {
 
 ### 示例8（设置自适应列数）
 
-属性columnsTemplate中auto-fill、auto-fit和auto-stretch的使用示例。
+属性[columnsTemplate](#columnstemplate)中auto-fill、auto-fit和auto-stretch的使用示例。
 
 
 
@@ -931,7 +931,7 @@ struct GridColumnsTemplate {
 
 下面的Grid中包含两列，每列中的GridItem包括高度确定的两个Column和一个高度不确定的Text共三个子组件。
 
-在默认情况下，左右两个GridItem的高度可能是不同的；在设置了Grid的alignItems属性为GridItemAlignment.STRETCH后，一行左右两个GridItem中原本高度较小的GridItem会以另一个高度较大的GridItem的高度作为自己的高度。
+在默认情况下，左右两个GridItem的高度可能是不同的；在设置了Grid的[alignItems](#alignitems12)属性为GridItemAlignment.STRETCH后，一行左右两个GridItem中原本高度较小的GridItem会以另一个高度较大的GridItem的高度作为自己的高度。
 
 GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
 
@@ -998,7 +998,7 @@ struct Index {
 
 ### 示例10（设置边缘渐隐）
 
-通过fadingEdge属性来设置边缘渐隐效果。
+通过[fadingEdge](ts-container-scrollable-common.md#fadingedge14)属性来设置边缘渐隐效果。
 
 GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
 
@@ -1054,7 +1054,7 @@ struct GridExample {
 
 ### 示例11（单边边缘效果）
 
-该示例通过edgeEffect接口，实现了Grid组件设置单边边缘效果。
+该示例通过[edgeEffect](#edgeeffect10)接口，实现了Grid组件设置单边边缘效果。
 
 GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
 
@@ -1109,7 +1109,7 @@ struct GridExample {
 
 ### 示例12（方向键走焦换行模式）
 
-从API version 20开始，该示例通过focusWrapMode接口，实现了Grid组件方向键走焦换行效果。
+从API version 20开始，该示例通过[focusWrapMode](#focuswrapmode20)接口，实现了Grid组件方向键走焦换行效果。
 
 
 
@@ -1289,7 +1289,7 @@ struct Index {
 
 ### 示例14（滚动到指定位置）
 
-该示例通过scrollToIndex接口，实现了Grid组件滚动到指定位置。
+该示例通过[scrollToIndex](ts-container-scroll.md#scrolltoindex)接口，实现了Grid组件滚动到指定位置。
 
 GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
 
@@ -1351,7 +1351,7 @@ struct GridScrollToIndexSample {
 
 ### 示例15（实现Grid滑动选择）
 
-该示例通过PanGesture接口，实现了Grid组件一边滑动一边选择的效果。
+该示例通过[PanGesture](./ts-basic-gestures-pangesture.md#pangesture-1)接口，实现了Grid组件一边滑动一边选择的效果。
 
 GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
 
@@ -1654,7 +1654,7 @@ struct GridExample {
 
 ### 示例16（实现GridItem自定义拖拽）
 
-该示例通过gesture接口，实现了GridItem组件自定义拖拽效果。
+该示例通过[gesture](./ts-gesture-settings.md#gesture)接口，实现了GridItem组件自定义拖拽效果。
 
 
 
@@ -1924,7 +1924,7 @@ struct GridItemExample {
 
 ### 示例17（通过拖拽事件实现GridItem拖拽）
 
-该示例通过拖拽事件实现拖拽GridItem到Grid边缘时Grid自动滚动的功能。
+该示例通过[拖拽事件](./ts-universal-events-drag-drop.md)实现拖拽GridItem到Grid边缘时Grid自动滚动的功能。
 
 GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
 
@@ -2144,9 +2144,9 @@ struct GridExample {
 
 ### 示例20（设置多选聚拢动画）
 
-该示例通过打开Grid多选聚拢动画开关，实现了在GridItem上长按弹出菜单时，通过bindContextMenu聚拢显示范围内被选中的GridItem的效果。
+该示例通过打开Grid多选聚拢动画开关，实现了在GridItem上长按弹出菜单时，通过[bindContextMenu](ts-universal-attributes-menu.md#bindcontextmenu8)聚拢显示范围内被选中的GridItem的效果。
 
-从API version 23开始，Grid组件新增editModeOptions接口，可以设置多选聚拢动画开关。
+从API version 23开始，Grid组件新增[editModeOptions](#editmodeoptions23)接口，可以设置多选聚拢动画开关。
 
 GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
 
@@ -2250,7 +2250,7 @@ struct GridExample {
 
 该示例通过使用双向绑定和事件监听在Grid上双指滑动进入多选模式的通知，实现了在Grid上边滑动边选择的效果。
 
-从API版本26.0.0开始，Grid组件新增enableEditMode接口和onEditModeChange事件。
+从API版本26.0.0开始，Grid组件新增[enableEditMode](#enableeditmode)接口和[onEditModeChange](#oneditmodechange)事件。
 
 GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
 
@@ -2345,7 +2345,7 @@ struct GridExample {
 
 ### 示例22（使用OnMove进行拖拽）
 
-从API版本26.0.0开始，该示例展示了Grid使用LazyForEach的onMove接口进行拖拽排序的效果，支持拖动到Grid边缘时触发Grid的自动滚动，同时Grid存在跨行跨列节点。
+从API版本26.0.0开始，该示例展示了Grid使用LazyForEach的[onMove](./ts-universal-attributes-drag-sorting.md#onmove)接口进行拖拽排序的效果，支持拖动到Grid边缘时触发Grid的自动滚动，同时Grid存在跨行跨列节点。
 
 ```TypeScript
 // RectGridDataSource.ets
@@ -2558,7 +2558,7 @@ struct GridOnMoveExample {
 
 ### 示例23（设置滚动吸附对齐）
 
-本示例通过scrollSnapStrategy接口设置ScrollSnapAlign.CENTER，使item在滚动结束时自动对齐到视口中央。
+本示例通过[scrollSnapStrategy](#scrollsnapstrategy)接口设置ScrollSnapAlign.CENTER，使item在滚动结束时自动对齐到视口中央。
 
 从API版本26.1.0开始，新增scrollSnapStrategy接口。
 

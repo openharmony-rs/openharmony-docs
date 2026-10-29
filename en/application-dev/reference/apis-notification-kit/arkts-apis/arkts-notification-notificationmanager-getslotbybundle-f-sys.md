@@ -12,9 +12,9 @@ import { notificationManager } from '@kit.NotificationKit';
 function getSlotByBundle(bundle: BundleOption, slotType: SlotType): Promise<NotificationSlot>
 ```
 
-Obtains a notification slot of a specified application. This API uses a promise to return the result.
+Obtains the [notification slot](../../../notification/notification-glossary.md#notification-slot) of a specified type for a specified application. This API uses a promise to return the result.
 
-Before obtaining the notification slot, create a slot through [addSlot](arkts-notification-notificationmanager-addslot-f-sys.md#addslot-1).
+Before obtaining the notification slot, create a slot through [addSlot](arkts-notification-notificationmanager-addslot-f.md).
 
 **Since:** 12
 

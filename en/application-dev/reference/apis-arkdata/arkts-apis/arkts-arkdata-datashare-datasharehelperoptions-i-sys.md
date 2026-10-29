@@ -4,7 +4,7 @@
 interface DataShareHelperOptions
 ```
 
-Represents the optional parameters of [DataShareHelper](arkts-arkdata-datashare-datasharehelperoptions-i-sys.md).
+Specifies the optional parameters of [DataShareHelper](arkts-arkdata-datashare-datasharehelper-i-sys.md), including whether it is in proxy mode and the startup waiting time for non-silent access.
 
 **Since:** 10
 
@@ -26,9 +26,7 @@ import { dataShare } from '@kit.ArkData';
 isProxy?: boolean
 ```
 
-Whether the [DataShareHelper](arkts-arkdata-datashare-datasharehelperoptions-i-sys.md) is in proxy mode. The default value is **false**.
-
-If the value is **true**, the [DataShareHelper](arkts-arkdata-datashare-datasharehelperoptions-i-sys.md) to be created is in proxy mode, and all operations will not open the data provider application unless the database does not exist. If the database does not exist, [createDataShareHelper](arkts-arkdata-datashare-createdatasharehelper-f-sys.md#createdatasharehelper-2) will start the data provider to create a database.
+Default value: **false**. If set to **true**, the [DataShareHelper](arkts-arkdata-datashare-datasharehelper-i-sys.md) to be created is in proxy mode, and all operations do not open the data provider application unless the database does not exist. When the database does not exist, [createDataShareHelper](arkts-arkdata-datashare-createdatasharehelper-f-sys.md) starts the data provider to create the database.
 
 **Type:** boolean
 
@@ -50,7 +48,7 @@ If the value is **true**, the [DataShareHelper](arkts-arkdata-datashare-datashar
 waitTime?: number
 ```
 
-Waiting time for starting the data provider process, in seconds. The default value is **2**.
+Waiting time for starting the data provider process, in seconds. The default value is **2**. The value must be greater than 0.
 
 **Type:** number
 

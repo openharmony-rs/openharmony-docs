@@ -37,7 +37,7 @@ WantAgent模块提供了创建WantAgent实例、获取实例的用户ID、获取
 | [getUid](arkts-ability-wantagent-getuid-depr-f.md#getuid-2) | 获取WantAgent实例的用户ID。使用Promise异步回调。 |
 | [getWantAgent](arkts-ability-wantagent-getwantagent-depr-f.md#getwantagent-1) | 创建WantAgent。创建失败返回的WantAgent为空值。使用callback异步回调。 |
 | [getWantAgent](arkts-ability-wantagent-getwantagent-depr-f.md#getwantagent-2) | 创建WantAgent。创建失败返回的WantAgent为空值。使用Promise异步回调。 |
-| trigger | 主动激发WantAgent实例。使用callback异步回调。 |
+| [trigger](arkts-ability-wantagent-trigger-depr-f.md#trigger) | 主动激发WantAgent实例。使用callback异步回调。 |
 
 <!--Del-->
 ### 函数（系统接口）

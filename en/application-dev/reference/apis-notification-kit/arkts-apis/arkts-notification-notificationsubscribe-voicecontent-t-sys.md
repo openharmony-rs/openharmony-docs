@@ -4,7 +4,7 @@
 export type VoiceContent = _VoiceContent
 ```
 
-Describes the properties of the voice content of the received notification.
+Returns the notification voice broadcast content.
 
 **Type:** _VoiceContent
 

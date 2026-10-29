@@ -396,8 +396,6 @@ Checks whether all elements in this ArkTS array meet a given condition.
 
 **System capability:** SystemCapability.Utils.Lang
 
-**Test API:** This API is used only in automated test scripts.
-
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -500,8 +498,6 @@ Returns a new array containing all elements that pass a test provided by a callb
 
 **System capability:** SystemCapability.Utils.Lang
 
-**Test API:** This API is used only in automated test scripts.
-
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -537,8 +533,6 @@ Returns the value of the first element that passes a test provided by a callback
 
 **System capability:** SystemCapability.Utils.Lang
 
-**Test API:** This API is used only in automated test scripts.
-
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -573,8 +567,6 @@ Returns the index of the first element that passes a test provided by a callback
 <!--Device-Array-findIndex(predicate: (value: T, index: number, obj: Array<T>) => boolean): number--><!--Device-Array-findIndex(predicate: (value: T, index: number, obj: Array<T>) => boolean): number-End-->
 
 **System capability:** SystemCapability.Utils.Lang
-
-**Test API:** This API is used only in automated test scripts.
 
 **Parameters:**
 
@@ -1314,8 +1306,6 @@ Retains only the elements in this ArkTS Array that satisfy the specified predica
 
 **System capability:** SystemCapability.Utils.Lang
 
-**Test API:** This API is used only in automated test scripts.
-
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -1473,8 +1463,6 @@ Checks whether this ArkTS array contains an element that meets certain condition
 <!--Device-Array-some(predicate: ArrayPredicateFn<T, Array<T>>): boolean--><!--Device-Array-some(predicate: ArrayPredicateFn<T, Array<T>>): boolean-End-->
 
 **System capability:** SystemCapability.Utils.Lang
-
-**Test API:** This API is used only in automated test scripts.
 
 **Parameters:**
 

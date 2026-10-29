@@ -12,7 +12,7 @@ import { commonEventManager } from '@kit.BasicServicesKit';
 function subscribeToEvent(subscriber: CommonEventSubscriber, callback: Callback<CommonEventData>): Promise<void>
 ```
 
-Subscribes to a common event. This API uses a promise to return the result, indicating subscription success or failure.
+Subscribes to a common event. This API uses a promise to return the result.
 
 **Since:** 20
 
@@ -27,7 +27,7 @@ Subscribes to a common event. This API uses a promise to return the result, indi
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | subscriber | [CommonEventSubscriber](arkts-basicservices-commoneventmanager-commoneventsubscriber-t.md) | Yes | Subscriber object. |
-| callback | [Callback](arkts-basicservices-base-callback-i.md)&lt;[CommonEventData](arkts-basicservices-commoneventmanager-commoneventdata-t.md)&gt; | Yes | Callback to be invoked when a common event is subscribed to. |
+| callback | [Callback](arkts-basicservices-base-callback-i.md)&lt;[CommonEventData](arkts-basicservices-commoneventmanager-commoneventdata-t.md)&gt; | Yes | Callback used to return the common event data. |
 
 **Return value:**
 

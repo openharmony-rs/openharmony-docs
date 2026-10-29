@@ -36,4 +36,4 @@ function startTask(taskId: string, priority?: TaskPriority): Promise<void>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. Interface caller is not a system app. |
-| 16000301 | Task already exists. |
+| [16000301](../errorcode-ability.md#16000301-任务已存在) | Task already exists. |

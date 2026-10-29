@@ -4,7 +4,7 @@
 export type MonitorEvent = _MonitorEvent
 ```
 
-表示地理围栏的监控事件类型的枚举。
+表示[地理围栏](../../../notification/notification-glossary.md#geofence地理围栏)的监控事件类型的枚举。
 
 **类型：** _MonitorEvent
 

@@ -4,7 +4,7 @@
 interface BondStateParam
 ```
 
-Describes the class of a bluetooth device.
+Bond state change parameters.
 
 **Since:** 10
 
@@ -78,7 +78,7 @@ Address of a Bluetooth device.
 state: BondState
 ```
 
-Profile connection state of the device.
+Bond state of the device.
 
 **Type:** [BondState](arkts-connectivity-connection-bondstate-e.md)
 

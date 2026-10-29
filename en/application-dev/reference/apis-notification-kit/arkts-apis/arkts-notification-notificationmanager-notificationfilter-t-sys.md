@@ -4,7 +4,7 @@
 export type NotificationFilter = _NotificationFilter
 ```
 
-Describes the filter criteria for querying the live view.
+Describes the filter criteria for querying live view notifications.
 
 **Type:** _NotificationFilter
 

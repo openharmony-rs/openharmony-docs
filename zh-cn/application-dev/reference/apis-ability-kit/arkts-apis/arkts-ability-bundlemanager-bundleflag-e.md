@@ -34,7 +34,7 @@ GET_BUNDLE_INFO_DEFAULT = 0x00000000
 GET_BUNDLE_INFO_ONLY_WITH_LAUNCHER_ABILITY = 0x00001000
 ```
 
-用于获取仅包含有桌面图标的应用的bundleInfo。它仅在getAllBundleInfo接口中生效。
+用于获取仅包含有桌面图标的应用的bundleInfo。它仅在[getAllBundleInfo](arkts-ability-bundlemanager-getallbundleinfo-f-sys.md)接口中生效。
 
 **系统API：** 该标记仅支持在系统API中使用。
 

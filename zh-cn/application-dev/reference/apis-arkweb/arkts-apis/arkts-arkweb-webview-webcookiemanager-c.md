@@ -88,7 +88,7 @@ struct WebComponent {
 static clearAllCookies(callback: AsyncCallback<void>): void
 ```
 
-清除所有cookie（包括会话cookie和持久化cookie），使用callback异步回调。如需仅清除会话cookie，请使用clearSessionCookie。
+清除所有cookie（包括会话cookie和持久化cookie），使用callback异步回调。如需仅清除会话cookie，请使用[clearSessionCookie](#clearsessioncookie-2)。
 
 **起始版本：** 11
 
@@ -360,7 +360,7 @@ static configCookie(url: string, value: string): Promise<void>
 > 
 > - configCookie中的url，可以指定域名的方式来使得页面内请求也附带上cookie。
 > 
-> - cookie每30s周期性保存到磁盘中，也可以使用接口saveCookieAsync进行强制落盘。
+> - cookie每30s周期性保存到磁盘中，也可以使用接口[saveCookieAsync](#savecookieasync-2)进行强制落盘。
 > 
 > - value参数必须遵循Set-Cookie HTTP响应头的格式。形式为"key=value"的键值对，后面可跟随以"; "分隔的cookie属性列表（例如"key=value; Max-Age=100"）。
 > 
@@ -447,7 +447,7 @@ static configCookie(url: string, value: string, incognito: boolean, includeHttpO
 > 
 > - configCookie中的url，可以指定域名的方式来使得页面内请求也附带上cookie。
 > 
-> - cookie每30s周期性保存到磁盘中，也可以使用接口saveCookieAsync进行强制落盘。
+> - cookie每30s周期性保存到磁盘中，也可以使用接口[saveCookieAsync](#savecookieasync-2)进行强制落盘。
 > 
 > - value参数必须遵循Set-Cookie HTTP响应头的格式。形式为"key=value"的键值对，后面可跟随以"; "分隔的cookie属性列表（例如"key=value; Max-Age=100"）。
 > 
@@ -532,7 +532,7 @@ static configCookie(url: string, value: string, callback: AsyncCallback<void>): 
 > 
 > - configCookie中的url，可以指定域名的方式来使得页面内请求也附带上cookie。
 > 
-> - cookie每30s周期性保存到磁盘中，也可以使用接口saveCookieAsync进行强制落盘。
+> - cookie每30s周期性保存到磁盘中，也可以使用接口[saveCookieAsync](#savecookieasync-2)进行强制落盘。
 > 
 > - value参数必须遵循Set-Cookie HTTP响应头的格式。形式为"key=value"的键值对，后面可跟随以"; "分隔的cookie属性列表（例如"key=value; Max-Age=100"）。
 > 
@@ -612,7 +612,7 @@ static configCookieSync(url: string, value: string, incognito?: boolean): void
 > 
 > - configCookieSync中的url，可以指定域名的方式来使得页面内请求也附带上cookie。
 > 
-> - cookie每30s周期性保存到磁盘中，也可以使用接口saveCookieAsync进行强制落盘。
+> - cookie每30s周期性保存到磁盘中，也可以使用接口[saveCookieAsync](#savecookieasync-2)进行强制落盘。
 > 
 > - value参数必须遵循Set-Cookie HTTP响应头的格式。形式为"key=value"的键值对，后面可跟随以"; "分隔的cookie属性列表（例如"key=value; Max-Age=100"）。
 > 
@@ -689,7 +689,7 @@ static configCookieSync(url: string, value: string, incognito: boolean, includeH
 > 
 > - configCookieSync中的url，可以指定域名的方式来使得页面内请求也附带上cookie。
 > 
-> - cookie每30s周期性保存到磁盘中，也可以使用接口saveCookieAsync进行强制落盘。
+> - cookie每30s周期性保存到磁盘中，也可以使用接口[saveCookieAsync](#savecookieasync-2)进行强制落盘。
 > 
 > - value参数必须遵循Set-Cookie HTTP响应头的格式。形式为"key=value"的键值对，后面可跟随以"; "分隔的cookie属性列表（例如"key=value; Max-Age=100"）。
 > 

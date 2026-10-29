@@ -62,5 +62,5 @@ import { missionManager } from '@kit.AbilityKit';
 | --- | --- |
 | [MissionInfo](arkts-ability-missionmanager-missioninfo-t-sys.md) | 表示任务的详细信息。 |
 | [MissionListener](arkts-ability-missionmanager-missionlistener-t-sys.md) | 定义系统任务状态监听。 |
-| [MissionSnapshot](arkts-ability-missionmanager-missionsnapshot-t-sys.md) | 任务的任务快照对象。 |
+| [MissionSnapshot](arkts-ability-missionmanager-missionsnapshot-t-sys.md) | 任务快照信息。 |
 <!--DelEnd-->

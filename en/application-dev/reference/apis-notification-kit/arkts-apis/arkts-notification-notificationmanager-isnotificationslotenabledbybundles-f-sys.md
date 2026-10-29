@@ -12,7 +12,7 @@ import { notificationManager } from '@kit.NotificationKit';
 function isNotificationSlotEnabledByBundles(bundles: Array<BundleOption>, type: SlotType): Promise<Map<BundleOption, boolean>>
 ```
 
-Checks whether a notification slot type is enabled for the specified applications in batch. This API uses a promise to return the result.
+Obtains the enabled state of a specified slot type for multiple applications in batches. This API uses a promise to return the result. All applications share the same slot type. Applications for which no slot has been created will not be returned.
 
 **Since:** 26.0.0
 
@@ -28,14 +28,14 @@ Checks whether a notification slot type is enabled for the specified application
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| bundles | Array&lt;[BundleOption](arkts-notification-notificationmanager-bundleoption-t.md)&gt; | Yes | Array of bundle information of the applications. <br>The maximum length is 1000 and cannot be empty. |
-| type | [SlotType](arkts-notification-notificationmanager-slottype-e.md) | Yes | Notification slot type. All bundles share the same slot type. |
+| bundles | Array&lt;[BundleOption](arkts-notification-notificationmanager-bundleoption-t.md)&gt; | Yes | Array of application bundle information. The maximum length is 1000 and cannot be empty. |
+| type | [SlotType](arkts-notification-notificationmanager-slottype-e.md) | Yes | Slot type. All applications share the same slot type. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;Map&lt;[BundleOption](arkts-notification-notificationmanager-bundleoption-t.md), boolean&gt;&gt; | Promise used to return the result. The key is the bundle information, and the value **true** means that the notification slot type is enabled, and **false** means the opposite. Bundles whose slot has not been created will not appear in the result. |
+| Promise&lt;Map&lt;[BundleOption](arkts-notification-notificationmanager-bundleoption-t.md), boolean&gt;&gt; | Promise used to return the batch query result. The key is the application bundle information, and the value is the slot enabled state (**true**: enabled; **false**: disabled). Applications for which no slot has been created will not be returned. |
 
 **Error codes:**
 

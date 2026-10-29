@@ -46,7 +46,7 @@ function addAllowedOpticalDiscDriveBurnUsbDevices(usbDevices: Array<UsbDevice>):
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
 | [9200012](../errorcode-enterpriseDeviceManager.md#9200012-参数校验失败) | Parameter verification failed. |
 | [9200016](../errorcode-enterpriseDeviceManager.md#9200016-服务超时) | Service timeout. |
-| 9200019 | The policy list has exceeded the limit. |
+| [9200019](../errorcode-enterpriseDeviceManager.md#9200019-策略列表超限) | The policy list has exceeded the limit. |
 
 **示例**
 

@@ -4,7 +4,7 @@
 
 Matrix4的使用场景包括：
 
-[图形变换](../arkts-components/arkts-arkui-common-comp.md)中的transform接口通过使用图形变换矩阵Matrix4对象设置组件的二维变换矩阵，[transform3D](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#transform3d)接口通过使用图形变换矩阵Matrix4对象设置组件的三维变换矩阵。
+[图形变换](../arkts-components/arkts-arkui-common-comp.md)中的[transform](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#transform-2)接口通过使用图形变换矩阵Matrix4对象设置组件的二维变换矩阵，[transform3D](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#transform3d)接口通过使用图形变换矩阵Matrix4对象设置组件的三维变换矩阵。
 
 **起始版本：** 7
 

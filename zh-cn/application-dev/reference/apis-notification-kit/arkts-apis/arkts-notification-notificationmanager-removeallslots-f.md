@@ -12,9 +12,9 @@ import { notificationManager } from '@kit.NotificationKit';
 function removeAllSlots(callback: AsyncCallback<void>): void
 ```
 
-删除当前应用所有通知渠道。使用callback异步回调。
+删除当前应用所有[通知渠道](../../../notification/notification-glossary.md#notification-slot通知渠道)。使用callback异步回调。
 
-删除后，当前应用的所有通知渠道及其配置将被永久移除，后续发布通知时系统将自动创建对应类型的渠道。已通过这些渠道发布的通知不受影响，仍可在通知中心查看。适用于需要一次性清除所有渠道配置的场景。
+删除后，当前应用的所有通知渠道及其配置将被永久移除，后续发布通知时系统将自动创建对应类型的渠道。已通过这些渠道发布的通知不受影响，仍可在[通知中心](../../../notification/notification-glossary.md#notification-center通知中心)查看。适用于需要一次性清除所有渠道配置的场景。
 
 **起始版本：** 9
 
@@ -28,7 +28,7 @@ function removeAllSlots(callback: AsyncCallback<void>): void
 
 [getSlot](arkts-notification-notificationmanager-getslot-f.md#getslot-1) 获取指定类型的通知渠道。
 
-[removeSlot](arkts-notification-notificationmanager-removeslot-f.md#removeslot-1) 删除所有通知渠道。
+[removeSlots](arkts-notification-notificationmanager-removeslot-f.md#removeslot-1) 删除所有通知渠道。
 
 **参数：**
 
@@ -67,9 +67,9 @@ notificationManager.removeAllSlots(removeAllSlotsCallback);
 function removeAllSlots(): Promise<void>
 ```
 
-删除当前应用所有通知渠道。使用Promise异步回调。
+删除当前应用所有[通知渠道](../../../notification/notification-glossary.md#notification-slot通知渠道)。使用Promise异步回调。
 
-删除后，当前应用的所有通知渠道及其配置将被永久移除，后续发布通知时系统将自动创建对应类型的渠道。已通过这些渠道发布的通知不受影响，仍可在通知中心查看。适用于需要一次性清除所有渠道配置的场景。
+删除后，当前应用的所有通知渠道及其配置将被永久移除，后续发布通知时系统将自动创建对应类型的渠道。已通过这些渠道发布的通知不受影响，仍可在[通知中心](../../../notification/notification-glossary.md#notification-center通知中心)查看。适用于需要一次性清除所有渠道配置的场景。
 
 **起始版本：** 9
 
@@ -81,7 +81,7 @@ function removeAllSlots(): Promise<void>
 
 [addSlot](arkts-notification-notificationmanager-addslot-f.md) 创建通知频道。
 
-getSlot 获取指定类型的通知渠道。
+[getSlot](arkts-notification-notificationmanager-getslot-f.md#getslot-3) 获取指定类型的通知渠道。
 
 [removeSlot](arkts-notification-notificationmanager-removeslot-f.md#removeslot-2) 删除指定类型的通知渠道。
 

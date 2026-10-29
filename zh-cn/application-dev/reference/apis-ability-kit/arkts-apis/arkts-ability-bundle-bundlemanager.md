@@ -48,7 +48,7 @@ import { bundleManager } from '@kit.AbilityKit';
 | [getProfileByExtensionAbility](arkts-ability-bundlemanager-getprofilebyextensionability-f.md#getprofilebyextensionability-1) | 根据给定的moduleName、extensionAbilityName和metadataName（module.json5中[metadata标签](../../../quick-start/module-configuration-file.md#metadata标签)下的name）获取自身相应配置文件的json格式字符串。使用callback异步回调。 |
 | [getProfileByExtensionAbility](arkts-ability-bundlemanager-getprofilebyextensionability-f.md#getprofilebyextensionability-2) | 根据给定的moduleName、extensionAbilityName和metadataName（module.json5中[metadata标签](../../../quick-start/module-configuration-file.md#metadata标签)下的name）获取自身相应配置文件的json格式字符串。使用Promise异步回调。 |
 | [getProfileByExtensionAbilitySync](arkts-ability-bundlemanager-getprofilebyextensionabilitysync-f.md#getprofilebyextensionabilitysync-1) | 以同步方法根据给定的moduleName、extensionAbilityName和metadataName（module.json5中[metadata标签](../../../quick-start/module-configuration-file.md#metadata标签)下的name）获取自身相应配置文件的json格式字符串，返回对象为string数组。 |
-| [getSignatureInfo](arkts-ability-bundlemanager-getsignatureinfo-f.md#getsignatureinfo-1) | 根据给定的uid获取对应应用的签名信息。 |
+| [getSignatureInfo](arkts-ability-bundlemanager-getsignatureinfo-f.md#getsignatureinfo-1) | 根据给定的uid获取对应应用的[签名信息](../../../reference/apis-ability-kit/js-apis-bundleManager-bundleInfo.md#signatureinfo)。 |
 | [setAlternateIcon](arkts-ability-bundlemanager-setalternateicon-f.md#setalternateicon-1) | 根据给定的备用图标名称设置调用方自身的备用图标。使用Promise异步回调。 |
 
 <!--Del-->

@@ -36,7 +36,7 @@ Clear the data downloaded from the cloud, excluding the cloud data that has been
 CLEAR_CLOUD_INFO = 0
 ```
 
-Clear the cloud identifier of the data downloaded from the cloud and retain the data locally.
+Clear the cloud identifier of the data downloaded from the cloud (the flag indicating that the data comes from the cloud) and retain the data locally.
 
 **Since:** 10
 

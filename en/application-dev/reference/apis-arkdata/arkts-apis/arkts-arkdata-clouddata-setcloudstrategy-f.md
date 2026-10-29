@@ -12,7 +12,7 @@ import { cloudData } from '@kit.ArkData';
 function setCloudStrategy(strategy: StrategyType, param?: Array<commonType.ValueType>): Promise<void>
 ```
 
-Sets the cloud sync strategy of an application. This API uses a promise to return the result.
+Sets the cloud sync strategy of the application itself. This API uses a promise to return the result.
 
 **Since:** 12
 
@@ -24,8 +24,8 @@ Sets the cloud sync strategy of an application. This API uses a promise to retur
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| strategy | [StrategyType](arkts-arkdata-clouddata-strategytype-e.md) | Yes | Type of the strategy to set. |
-| param | Array&lt;[commonType.ValueType](arkts-arkdata-commontype-valuetype-t.md)&gt; | No | Strategy parameters to set. Currently, only network strategies can be set. By default, Wi-Fi and cellular network are supported. |
+| strategy | [StrategyType](arkts-arkdata-clouddata-strategytype-e.md) | Yes | Type of the strategy to configure. |
+| param | Array&lt;[commonType.ValueType](arkts-arkdata-commontype-valuetype-t.md)&gt; | No | Strategy parameter, of the Array<commonType.ValueType> type. The actual value passed in is a NetWorkStrategy enum value, which can be WIFI or CELLULAR. By default, both the Wi-Fi and cellular network strategies are supported. |
 
 **Return value:**
 

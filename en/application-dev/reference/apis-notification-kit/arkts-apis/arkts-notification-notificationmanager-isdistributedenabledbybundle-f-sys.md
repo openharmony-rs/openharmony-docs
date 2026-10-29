@@ -12,7 +12,7 @@ import { notificationManager } from '@kit.NotificationKit';
 function isDistributedEnabledByBundle(bundle: BundleOption, callback: AsyncCallback<boolean>): void
 ```
 
-Checks whether distributed notification is enabled for a specified application. This API uses an asynchronous callback to return the result.
+Obtains whether an application supports [distributed notification](../../../notification/notification-glossary.md#distributed-notification) based on the application bundle. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
 
@@ -77,7 +77,7 @@ notificationManager.isDistributedEnabledByBundle(bundle, isDistributedEnabledByB
 function isDistributedEnabledByBundle(bundle: BundleOption): Promise<boolean>
 ```
 
-Checks whether distributed notification is enabled for a specified application. This API uses a promise to return the result.
+Queries whether a specified application supports [distributed notification](../../../notification/notification-glossary.md#distributed-notification). This API uses a promise to return the result.
 
 **Since:** 9
 
@@ -144,9 +144,7 @@ notificationManager.isDistributedEnabledByBundle(bundle).then((data: boolean) =>
 function isDistributedEnabledByBundle(bundle: BundleOption, deviceType: string): Promise<boolean>
 ```
 
-Obtains whether a specified application enables cross-device collaboration. This API uses a promise to return the result.
-
-This API can be properly called on devices other than wearables and TVs. If it is called on wearables and TVs, error code 801 is returned.
+Obtains whether a specified application supports [cross-device collaboration](../../../notification/notification-glossary.md#cross-device-collaboration). This API uses a promise to return the result.
 
 **Since:** 12
 
@@ -163,7 +161,7 @@ This API can be properly called on devices other than wearables and TVs. If it i
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | bundle | [BundleOption](arkts-notification-notificationmanager-bundleoption-t.md) | Yes | Bundle information of the application. |
-| deviceType | string | Yes | Device type. |
+| deviceType | string | Yes | Device type. <br>Since API version 18, the following device types are supported: <br>- **headset**: wearable audio device <br>- **liteWearable**: lite wearable <br>- **wearable**: wearable <br>Since API version 20, the following device types are supported: <br>- **headset**: wearable audio device <br>- **liteWearable**: lite wearable <br>- **wearable**: wearable <br>- **current**: current device <br>- **2in1**: PC <br>- **tablet**: tablet |
 
 **Return value:**
 

@@ -4,7 +4,7 @@
 export type NotificationFlags = _NotificationFlags
 ```
 
-描述通知标志位。
+描述[通知标志位](../../../notification/notification-glossary.md#notification-flags通知标志位)。
 
 **类型：** _NotificationFlags
 

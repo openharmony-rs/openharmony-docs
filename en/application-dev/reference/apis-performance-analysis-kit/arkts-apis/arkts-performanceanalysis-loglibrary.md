@@ -10,8 +10,6 @@ The **logLibrary** module provides APIs for obtaining various system maintenance
 
 **System API:** This is a system API.
 
-**Test API:** This API is used only in automated test scripts.
-
 ## Modules to Import
 
 ```TypeScript

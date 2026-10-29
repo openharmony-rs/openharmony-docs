@@ -12,7 +12,7 @@ import { notificationSubscribe } from '@kit.NotificationKit';
 function distributeOperation(hashcode: string, operationInfo?: OperationInfo): Promise<void>
 ```
 
-触发指定通知的跨设备协同操作（例如通知跨设备点击跳转、通知跨设备快捷回复等）。使用Promise异步回调。
+触发指定通知的[跨设备协同](../../../notification/notification-glossary.md#cross-device-collaboration跨设备协同)操作（例如通知跨设备点击跳转、通知跨设备快捷回复等）。使用Promise异步回调。
 
 **起始版本：** 18
 
@@ -28,8 +28,8 @@ function distributeOperation(hashcode: string, operationInfo?: OperationInfo): P
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| hashcode | string | 是 | 通知唯一ID。 |
-| operationInfo | [OperationInfo](arkts-notification-notificationsubscribe-operationinfo-i-sys.md) | 否 | 跨设备协同操作信息，默认为空。 |
+| hashcode | string | 是 | 通知唯一ID。可以通过[onConsume](arkts-notification-notificationsubscriber-i-sys.md#onconsume)回调的入参[SubscribeCallbackData](arkts-notification-notificationsubscriber-subscribecallbackdata-i-sys.md)获取其内部[NotificationRequest](arkts-notification-notificationrequest-i.md)对象中的hashCode。 |
+| operationInfo | [OperationInfo](arkts-notification-notificationsubscribe-operationinfo-i-sys.md) | 否 | 跨设备协同操作信息，不传递该参数时，使用系统默认协同操作配置。 |
 
 **返回值：**
 

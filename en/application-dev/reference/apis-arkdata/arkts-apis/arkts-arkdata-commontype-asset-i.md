@@ -4,7 +4,7 @@
 interface Asset
 ```
 
-Represents asset (such as a file, image, or video) information.
+Represents asset (such as a file, image, or video) information. For details, see the sample code in [Using Distributed Data Objects in Cross-Device Migration] (../../database/data-sync-of-distributed-data-object.md#using-distributed-data-objects-in-cross-device-migration).
 
 **Since:** 11
 
@@ -88,7 +88,7 @@ Application sandbox path of the asset.
 size: string
 ```
 
-Size of the asset. If this field changes, the asset is considered to have changed.
+Size of the space occupied by the asset, in bytes. The value is a non-negative integer.
 
 **Type:** string
 
@@ -104,7 +104,7 @@ Size of the asset. If this field changes, the asset is considered to have change
 status?: AssetStatus
 ```
 
-Asset status. The default value is ASSET_NORMAL.
+Asset status. The default value is **ASSET_NORMAL**.
 
 **Type:** [AssetStatus](arkts-arkdata-commontype-assetstatus-e.md)
 

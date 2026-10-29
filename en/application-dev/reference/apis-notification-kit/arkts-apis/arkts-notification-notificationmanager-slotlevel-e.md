@@ -6,7 +6,7 @@ export enum SlotLevel
 
 Enumerates the notification level.
 
-This API is used to define the notification reminder behavior level of NotificationSlot, affecting how the notification is displayed in the status bar, whether to show banners and alert sounds, etc.
+This API is used to define the notification reminder behavior level of [NotificationSlot](arkts-notification-notificationslot-i.md), affecting how the notification is displayed in the status bar, whether to show banners and alert sounds, etc.
 
 **Since:** 9
 
@@ -20,7 +20,7 @@ This API is used to define the notification reminder behavior level of Notificat
 LEVEL_DEFAULT = 3
 ```
 
-Notification is enabled, and the notification icon is displayed in the status bar, with an alert tone but no banner.
+Notification is enabled, and the notification icon is displayed in the status bar, with an alert sound but no banner.
 
 **Since:** 9
 
@@ -34,7 +34,7 @@ Notification is enabled, and the notification icon is displayed in the status ba
 LEVEL_HIGH = 4
 ```
 
-Notification is enabled, and the notification icon is displayed in the status bar, with an alert tone and banner.
+Notification is enabled, and the notification icon is displayed in the status bar, with an alert sound and banner.
 
 **Since:** 9
 
@@ -48,7 +48,7 @@ Notification is enabled, and the notification icon is displayed in the status ba
 LEVEL_LOW = 2
 ```
 
-Notification is enabled, and the notification icon is displayed in the status bar, with no alert tone and banner.
+Notification is enabled, and the notification icon is displayed in the status bar, with no alert sound and banner.
 
 **Since:** 9
 
@@ -62,7 +62,7 @@ Notification is enabled, and the notification icon is displayed in the status ba
 LEVEL_MIN = 1
 ```
 
-Notification is enabled, but the notification icon is not displayed in the status bar, with no alert tone and banner.
+Notification is enabled, but the notification icon is not displayed in the status bar, with no alert sound and banner.
 
 **Since:** 9
 

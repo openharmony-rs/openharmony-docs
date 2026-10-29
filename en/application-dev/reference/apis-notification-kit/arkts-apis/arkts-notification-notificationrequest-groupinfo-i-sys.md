@@ -4,7 +4,7 @@
 export interface GroupInfo
 ```
 
-Defines the group notification information.
+Defines the information about [group notification](../../../notification/notification-glossary.md#group-notification).
 
 **Since:** 26.0.0
 
@@ -40,7 +40,8 @@ Group title displayed after notifications are grouped. This parameter is valid o
 isGroupIcon?: boolean
 ```
 
-Whether to use the **smallIcon** field in NotificationRequest as the group icon displayed after notifications are grouped. Whether to use the **smallIcon** field as the group icon when the notification is the latest one in the notification group and the **smallIcon** field is passed. The default value is **false**.  
+Whether to use the **smallIcon** field in [NotificationRequest](arkts-notification-notificationrequest-i.md) as the group icon displayed after notifications are grouped. Whether to use the **smallIcon** field as the group icon when the notification is the latest one in the notification group and the **smallIcon** field is passed. The default value is **false**.
+
 - **true**: yes.  
 - **false**: no.
 

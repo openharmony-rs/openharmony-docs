@@ -4,7 +4,7 @@
 interface DescriptorWriteRequest
 ```
 
-Describes the parameters of the Gatt client's characteristic write request.
+Describes the parameters of the Gatt client's descriptor write request.
 
 **Since:** 10
 
@@ -124,7 +124,7 @@ Whether the remote client need a response
 offset: number
 ```
 
-Indicates the byte offset of the start position for writing characteristic value
+Indicates the byte offset of the start position for writing descriptor value
 
 **Type:** number
 

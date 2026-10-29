@@ -11,13 +11,13 @@
 function isDistributedEnabledByBundle(bundle: BundleOption, callback: AsyncCallback<boolean>): void
 ```
 
-根据应用的包获取应用程序是否支持分布式通知（Callback形式）。
+根据应用的包获取应用程序是否支持[分布式通知](../../../notification/notification-glossary.md#distributed-notification分布式通知)（Callback形式）。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [isDistributedEnabledByBundle](arkts-notification-notificationmanager-isdistributedenabledbybundle-f-sys.md)
+**替代接口：** [isDistributedEnabledByBundle](arkts-notification-notificationmanager-isdistributedenabledbybundle-f-sys.md#isdistributedenabledbybundle-1)(bundle: BundleOption, callback: AsyncCallback&lt;boolean&gt;)
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -64,13 +64,13 @@ Notification.isDistributedEnabledByBundle(bundle, isDistributedEnabledByBundleCa
 function isDistributedEnabledByBundle(bundle: BundleOption): Promise<boolean>
 ```
 
-查询指定应用是否支持分布式通知（Promise形式）。
+查询指定应用是否支持[分布式通知](../../../notification/notification-glossary.md#distributed-notification分布式通知)（Promise形式）。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [isDistributedEnabledByBundle](arkts-notification-notificationmanager-isdistributedenabledbybundle-f-sys.md)
+**替代接口：** [isDistributedEnabledByBundle](arkts-notification-notificationmanager-isdistributedenabledbybundle-f-sys.md#isdistributedenabledbybundle-2)(bundle: BundleOption)
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 

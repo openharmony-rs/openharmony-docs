@@ -190,7 +190,7 @@ audioManager.getExtraParameters('key_example', subKeys).then((value: Record<stri
 getSuiteDownloadManager(): AudioSuiteDownloadManager
 ```
 
-获取AudioSuiteDownloadManager实例，用于下载音频编辑算法。
+获取AudioSuiteDownloadManager实例，用于下载音频编创特性。
 
 **起始版本：** 26.0.1
 
@@ -206,7 +206,7 @@ getSuiteDownloadManager(): AudioSuiteDownloadManager
 
 | 类型 | 说明 |
 | --- | --- |
-| [AudioSuiteDownloadManager](arkts-audio-audio-audiosuitedownloadmanager-i-sys.md) | 返回音频套件下载管理器的实例。 |
+| [AudioSuiteDownloadManager](arkts-audio-audio-audiosuitedownloadmanager-i-sys.md) | AudioSuiteDownloadManager实例。 |
 
 **错误码：**
 

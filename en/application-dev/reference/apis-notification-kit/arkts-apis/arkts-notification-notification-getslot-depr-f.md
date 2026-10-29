@@ -17,7 +17,7 @@ Obtains a notification slot of a specified type. This API uses an asynchronous c
 
 **Deprecated since:** 9
 
-**Substitutes:** [getSlot](arkts-notification-notificationmanager-getslot-f.md)
+**Substitutes:** [getSlot](arkts-notification-notificationmanager-getslot-f.md#getslot-1)(slotType: SlotType, callback: AsyncCallback&lt;NotificationSlot&gt;)
 
 <!--Device-notification-function getSlot(slotType: SlotType, callback: AsyncCallback<NotificationSlot>): void--><!--Device-notification-function getSlot(slotType: SlotType, callback: AsyncCallback<NotificationSlot>): void-End-->
 
@@ -27,7 +27,7 @@ Obtains a notification slot of a specified type. This API uses an asynchronous c
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| slotType | SlotType | Yes | Type of the notification slot, which can be used for social communication, service information, content consultation, and other purposes. |
+| slotType | SlotType | Yes | [Notification slot](../../../notification/notification-glossary.md#notification-slot) type, currently divided into social communication, service reminder, content consultation, and other types. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[NotificationSlot](arkts-notification-notificationslot-i.md)&gt; | Yes | Callback used to return the result. |
 
 **Examples**
@@ -60,7 +60,7 @@ Obtains a notification slot of a specified type. This API uses a promise to retu
 
 **Deprecated since:** 9
 
-**Substitutes:** [getSlot](arkts-notification-notificationmanager-getslot-f.md)
+**Substitutes:** [getSlot](arkts-notification-notificationmanager-getslot-f.md#getslot-3)(slotType: SlotType)
 
 <!--Device-notification-function getSlot(slotType: SlotType): Promise<NotificationSlot>--><!--Device-notification-function getSlot(slotType: SlotType): Promise<NotificationSlot>-End-->
 
@@ -70,7 +70,7 @@ Obtains a notification slot of a specified type. This API uses a promise to retu
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| slotType | SlotType | Yes | Type of the notification slot, which can be used for social communication, service information, content consultation, and other purposes. |
+| slotType | SlotType | Yes | Type of the [Notification slot](../../../notification/notification-glossary.md#notification-slot), currently divided into social communication, service reminder, content consultation, and other types. |
 
 **Return value:**
 

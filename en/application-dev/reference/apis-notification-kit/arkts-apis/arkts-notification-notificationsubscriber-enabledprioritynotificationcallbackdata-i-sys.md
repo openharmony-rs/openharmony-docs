@@ -4,7 +4,7 @@
 export interface EnabledPriorityNotificationCallbackData
 ```
 
-Returns the notification priority master switch state.
+Returns the changes of the enabled state of the notification priority.
 
 **Since:** 23
 
@@ -20,9 +20,10 @@ Returns the notification priority master switch state.
 readonly enable: boolean
 ```
 
-Whether the priority notification is enabled.  
-- **true**: The priority notification is enabled.  
-- **false**: The priority notification is disabled.
+Priority enabled state of all notifications.
+
+- **true**: Allow setting as [priority notification](../../../notification/notification-glossary.md#priority-notification).  
+- **false**: Prohibit setting as priority notification.
 
 **Type:** boolean
 

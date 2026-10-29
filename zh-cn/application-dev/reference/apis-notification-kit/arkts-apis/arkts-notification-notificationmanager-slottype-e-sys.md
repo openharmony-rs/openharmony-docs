@@ -4,9 +4,9 @@
 export enum SlotType
 ```
 
-通知渠道类型。
+[通知渠道](../../../notification/notification-glossary.md#notification-slot通知渠道)类型。
 
-不同类型对应不同的SlotLevel，决定通知的提醒行为。
+不同类型对应不同的[SlotLevel](arkts-notification-notificationmanager-slotlevel-e.md)，决定通知的提醒行为。
 
 **起始版本：** 9
 

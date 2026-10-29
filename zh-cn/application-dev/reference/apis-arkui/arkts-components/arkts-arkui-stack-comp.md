@@ -53,7 +53,7 @@ Stack(options?: StackOptions)
 
 ## 示例
 
-当Stack的alignContent属性设为Alignment.Bottom，且syncLoad为true时，其子组件的显示效果表现为在Stack组件底部横向居中并且所有子组件在同一帧内加载完成。
+当Stack的[alignContent](#aligncontent)属性设为Alignment.Bottom，且[syncLoad](#syncload)为true时，其子组件的显示效果表现为在Stack组件底部横向居中并且所有子组件在同一帧内加载完成。
 
 从API版本26.0.0开始，新增syncLoad属性。
 

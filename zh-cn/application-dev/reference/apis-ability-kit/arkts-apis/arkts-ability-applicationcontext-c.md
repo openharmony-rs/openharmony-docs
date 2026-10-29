@@ -96,7 +96,7 @@ clearUpApplicationData(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | AsyncCallback&lt;void&gt; | 是 | Callback used to return the result. If the application data is cleared up, `error` is `undefined`; otherwise, `error` is an error object. |
+| callback | AsyncCallback&lt;void&gt; | 是 | Callback used to return the result. If the application data is cleared up, <code>error</code> is <code>undefined</code>; otherwise, <code>error</code> is an error object. |
 
 **错误码：**
 
@@ -609,7 +609,7 @@ export default class EntryAbility extends UIAbility {
 getUIAbilityChildProcessInfos(): Promise<Array<ChildProcessInformation>>
 ```
 
-获取当前应用的UIAbility子进程信息。使用Promise异步回调。返回通过[startSelfUIAbilityInChildProcess](arkts-ability-uiabilitycontext-c.md#startselfuiabilityinchildprocess)接口启动的进程，以及通过startAbility接口启动且[StartOptions](arkts-ability-app-ability-startoptions-startoptions-c.md)参数中[processMode](arkts-ability-contextconstant-processmode-e.md)设置为NEW_PROCESS_ATTACH_TO_PARENT模式启动的子进程。无子进程时返回空数组。
+获取当前应用的UIAbility子进程信息。使用Promise异步回调。返回通过[startSelfUIAbilityInChildProcess](arkts-ability-uiabilitycontext-c.md#startselfuiabilityinchildprocess)接口启动的进程，以及通过[startAbility](arkts-ability-uiabilitycontext-c.md#startability-3)接口启动且[StartOptions](arkts-ability-app-ability-startoptions-startoptions-c.md)参数中[processMode](arkts-ability-contextconstant-processmode-e.md)设置为NEW_PROCESS_ATTACH_TO_PARENT模式启动的子进程。无子进程时返回空数组。
 
 **起始版本：** 26.0.1
 
@@ -1534,7 +1534,7 @@ onAppProcessStateChange(observer: AppProcessStateObserver): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Connect to system server failed. |
-| 16000165 | The number of registered observers for the current application has reached the upper limit. |
+| [16000165](../errorcode-ability.md#16000165-应用注册的观察者数量已达到上限) | The number of registered observers for the current application has reached the upper limit. |
 
 ## onSystemConfigurationUpdated
 

@@ -1,4 +1,4 @@
-# deprecated ElementName
+# ElementName
 
 ```TypeScript
 export interface ElementName

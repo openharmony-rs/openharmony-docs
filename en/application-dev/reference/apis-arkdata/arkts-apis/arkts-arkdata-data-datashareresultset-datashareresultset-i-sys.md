@@ -77,7 +77,7 @@ If the specified column or key is empty or the value is not of the Blob type, yo
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| columnIndex | number | Yes | Index of the target column, starting from 0. |
+| columnIndex | number | Yes | Specified column index, starting from 0, with a value range of [0, columnCount-1]. |
 
 **Return value:**
 
@@ -172,7 +172,7 @@ The column index is passed in as an input parameter.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| columnIndex | number | Yes | Column index. |
+| columnIndex | number | Yes | Index of the specified column in the result set, starting from 0, in the range [0, columnCount-1]. |
 
 **Return value:**
 
@@ -217,7 +217,7 @@ If the specified column or key is empty or the value is not of the DataType type
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| columnIndex | number | Yes | Column index. |
+| columnIndex | number | Yes | Index of the specified column in the result set, starting from 0, in the range [0, columnCount-1]. |
 
 **Return value:**
 
@@ -267,7 +267,7 @@ If the specified column or key is empty or the value is not of the double type, 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| columnIndex | number | Yes | Index of the target column, starting from 0. |
+| columnIndex | number | Yes | Index of the specified column, starting from 0, in the range [0, columnCount-1]. |
 
 **Return value:**
 
@@ -317,7 +317,7 @@ If the specified column or key is empty or the value is not of the long type, yo
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| columnIndex | number | Yes | Index of the target column, starting from 0. |
+| columnIndex | number | Yes | Index of the specified column, starting from 0, in the value range [0, columnCount-1]. |
 
 **Return value:**
 
@@ -367,7 +367,7 @@ If the specified column or key is empty or the value is not of the string type, 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| columnIndex | number | Yes | Index of the target column, starting from 0. |
+| columnIndex | number | Yes | Index of the specified column, starting from 0, in the range [0, columnCount-1]. |
 
 **Return value:**
 
@@ -603,7 +603,7 @@ Moves to the specified row in the result set.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| position | number | Yes | Position to move to, starting from 0. |
+| position | number | Yes | Target position to move to, starting from 0, in the range [0, rowCount-1]. |
 
 **Return value:**
 

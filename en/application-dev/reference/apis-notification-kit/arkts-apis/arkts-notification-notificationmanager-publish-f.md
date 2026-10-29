@@ -14,7 +14,7 @@ function publish(request: NotificationRequest, callback: AsyncCallback<void>): v
 
 Publishes a notification. This API uses an asynchronous callback to return the result.
 
-After a notification is published, it will be displayed as a notification widget in the device's notification center, status bar, etc. If the ID and tag of the newly published notification are the same as those of an already published notification, the new notification will replace the original one, achieving a notification update effect.
+After a notification is published, it is displayed as a [notification card](../../../notification/notification-glossary.md#notification-card) in the [notification center](../../../notification/notification-glossary.md#notification-center), status bar, and other locations on the device. If the ID and label of the newly published notification are the same as those of an already published notification, the new notification replaces the original notification, achieving the effect of updating the notification.
 
 **Since:** 9
 
@@ -94,7 +94,7 @@ function publish(request: NotificationRequest): Promise<void>
 
 Publishes a notification. This API uses a promise to return the result.
 
-After a notification is published, it will be displayed as a notification card in the device's notification center, status bar, and other locations. If the ID and tag of the newly published notification are the same as those of an already published notification, the new notification will replace the original one, achieving a notification update effect.
+After a notification is published, it is displayed as a [notification card](../../../notification/notification-glossary.md#notification-card) in the [notification center](../../../notification/notification-glossary.md#notification-center), status bar, and other locations on the device. If the ID and label of the newly published notification are the same as those of an already published notification, the new notification replaces the original notification, achieving the effect of updating the notification.
 
 **Since:** 9
 

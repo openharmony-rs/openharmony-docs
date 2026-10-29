@@ -77,7 +77,7 @@ readonly lineHeight: number
 
 获取属性字符串的文本行高。
 
-单位：vp
+单位：[vp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位)
 
 **类型：** number
 

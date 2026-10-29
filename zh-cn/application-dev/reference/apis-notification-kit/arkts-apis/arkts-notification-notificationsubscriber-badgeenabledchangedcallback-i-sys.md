@@ -4,6 +4,8 @@
 export interface BadgeEnabledChangedCallback
 ```
 
+type BadgeEnabledChangedCallback = (data: EnabledNotificationCallbackData) =&gt; void
+
 注册应用角标使能状态变化的回调函数类型。
 
 **起始版本：** 12
@@ -32,7 +34,7 @@ export interface BadgeEnabledChangedCallback
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| data | [EnabledNotificationCallbackData](arkts-notification-notificationsubscriber-enablednotificationcallbackdata-i-sys.md) | 是 |  |
+| data | [EnabledNotificationCallbackData](arkts-notification-notificationsubscriber-enablednotificationcallbackdata-i-sys.md) | 是 | 回调返回监听到的角标使能状态信息。 |
 
 <!--Del-->
 **示例**

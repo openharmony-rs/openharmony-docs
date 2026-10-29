@@ -542,7 +542,7 @@ insertText(text: string): Promise<boolean>
 
 **废弃版本：** 9
 
-**替代接口：** insertText(text: string): Promise&lt;boolean&gt;
+**替代接口：** [insertText](arkts-ime-inputmethodengine-inputclient-i.md#inserttext-2)(text: string): Promise&lt;boolean&gt;
 
 <!--Device-TextInputClient-insertText(text: string): Promise<boolean>--><!--Device-TextInputClient-insertText(text: string): Promise<boolean>-End-->
 

@@ -12,7 +12,7 @@ declare class AbilityComponentAttribute extends CommonMethod<AbilityComponentAtt
 
 **废弃版本：** 10
 
-**替代接口：** UIExtensionComponentAttribute
+**替代接口：** [UIExtensionComponentAttribute](arkts-arkui-uiextensioncomponent-comp-attribute.md#uiextensioncomponentattribute系统接口)
 
 <!--Device-unnamed-declare class AbilityComponentAttribute extends CommonMethod<AbilityComponentAttribute>--><!--Device-unnamed-declare class AbilityComponentAttribute extends CommonMethod<AbilityComponentAttribute>-End-->
 

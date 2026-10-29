@@ -4,7 +4,7 @@
 export type NotificationSwitchChangedCallbackData = _NotificationSwitchChangedCallbackData
 ```
 
-Describes the notification switch state changes callback data.
+Returns the changes of the notification switch state.
 
 **Type:** _NotificationSwitchChangedCallbackData
 

@@ -22,10 +22,10 @@ import { connection } from '@kit.ConnectivityKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| cancelPairedDevice | 删除已配对的远端设备。 |
+| [cancelPairedDevice](arkts-connectivity-connection-cancelpaireddevice-f.md#cancelpaireddevice-2) | 删除已配对的远端设备。 |
 | [connectAllowedProfiles](arkts-connectivity-connection-connectallowedprofiles-f.md#connectallowedprofiles-1) | 连接对端设备支持的Profile（只包括A2DP、HFP和HID）。使用Callback异步回调。 |
 | [connectAllowedProfiles](arkts-connectivity-connection-connectallowedprofiles-f.md#connectallowedprofiles-2) | 连接对端设备支持的Profile（只包括A2DP、HFP和HID）。使用Promise异步回调。 |
-| disconnectAllowedProfiles | 断开对端设备支持的Profile（只包括A2DP和HFP）。 |
+| [disconnectAllowedProfiles](arkts-connectivity-connection-disconnectallowedprofiles-f.md#disconnectallowedprofiles-2) | 断开对端设备支持的Profile（只包括A2DP和HFP）。 |
 | [getBluetoothScanMode](arkts-connectivity-connection-getbluetoothscanmode-f.md#getbluetoothscanmode-1) | 获取蓝牙扫描模式。搭配[onScanModeChange](arkts-connectivity-connection-onscanmodechange-f.md#onscanmodechange-1)接口使用，可实时监听蓝牙扫描模式变更事件。 |
 | [getLastConnectionTime](arkts-connectivity-connection-getlastconnectiontime-f.md#getlastconnectiontime-1) | 获取对端蓝牙设备最近一次连接的时间点。使用Promise异步回调。 |
 | [getLocalName](arkts-connectivity-connection-getlocalname-f.md#getlocalname-1) | 获取本机蓝牙设备的名称。 |

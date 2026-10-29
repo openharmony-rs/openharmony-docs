@@ -12,7 +12,7 @@ import { notificationManager } from '@kit.NotificationKit';
 function triggerSystemLiveView(bundle: BundleOption, notificationId: number, buttonOptions: ButtonOptions): Promise<void>
 ```
 
-触发系统实况窗。使用Promise异步回调。
+触发[系统实况窗](../../../notification/notification-glossary.md#system-live-view系统实况窗)。使用Promise异步回调。
 
 **起始版本：** 11
 

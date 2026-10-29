@@ -1484,5 +1484,3 @@ Internal instruction code used to test whether the IPC service is normal.
 <!--Device-RemoteProxy-static readonly PING_TRANSACTION: number--><!--Device-RemoteProxy-static readonly PING_TRANSACTION: number-End-->
 
 **System capability:** SystemCapability.Communication.IPC.Core
-
-**Test API:** This API is used only in automated test scripts.

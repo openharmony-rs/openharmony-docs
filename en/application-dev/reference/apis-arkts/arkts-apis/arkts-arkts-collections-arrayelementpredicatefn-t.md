@@ -16,8 +16,6 @@ Defines the ArkTS Array predicate function, which is used by the 'retainAll'API 
 
 **System capability:** SystemCapability.Utils.Lang
 
-**Test API:** This API is used only in automated test scripts.
-
 **Parameters:**
 
 | Name | Type | Mandatory | Description |

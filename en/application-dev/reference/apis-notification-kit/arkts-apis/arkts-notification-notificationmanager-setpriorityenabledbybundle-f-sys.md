@@ -29,7 +29,7 @@ Sets the enabling status of the priority notification for an application.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | bundle | [BundleOption](arkts-notification-notificationmanager-bundleoption-t.md) | Yes | Bundle information of the application. |
-| enableStatus | [PriorityEnableStatus](arkts-notification-notificationmanager-priorityenablestatus-e-sys.md) | Yes | Whether the priority notification for an application is enabled.<br>           - **DISABLE**: The priority notification is disabled.<br> - **ENABLE_BY_INTELLIGENT**: The priority   notification can be enabled through intelligent recognition, user keyword matching, or application rule matching.<br> - **ENABLE**: The priority notification is enabled for all applications. |
+| enableStatus | [PriorityEnableStatus](arkts-notification-notificationmanager-priorityenablestatus-e-sys.md) | Yes | Priority switch status of application notifications. <br> - **DISABLE**: The notification cannot be set as a [priority notification](../../../notification/notification-glossary.md#priority-notification). <br> - **ENABLE_BY_INTELLIGENT**: The notification can be set as a priority notification through intelligent recognition, user keyword matching, application rule matching, and other methods. <br> - **ENABLE**: All application notifications are set as priority notifications. |
 
 **Return value:**
 

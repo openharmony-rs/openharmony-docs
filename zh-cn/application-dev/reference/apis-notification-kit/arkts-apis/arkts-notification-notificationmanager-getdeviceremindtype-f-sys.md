@@ -30,7 +30,7 @@ function getDeviceRemindType(callback: AsyncCallback<DeviceRemindType>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[DeviceRemindType](arkts-notification-notificationmanager-deviceremindtype-e-sys.md)&gt; | 是 | 获取通知提醒方式的回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[DeviceRemindType](arkts-notification-notificationmanager-deviceremindtype-e-sys.md)&gt; | 是 | 获取[通知提醒方式](../../../notification/notification-glossary.md#notification-reminder-mode通知提醒方式)的回调函数。 |
 
 **错误码：**
 
@@ -87,7 +87,7 @@ function getDeviceRemindType(): Promise<DeviceRemindType>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[DeviceRemindType](arkts-notification-notificationmanager-deviceremindtype-e-sys.md)&gt; | Promise方式返回获取通知提醒方式的结果。 |
+| Promise&lt;[DeviceRemindType](arkts-notification-notificationmanager-deviceremindtype-e-sys.md)&gt; | Promise对象，返回获取到的[通知提醒方式](../../../notification/notification-glossary.md#notification-reminder-mode通知提醒方式)。 |
 
 **错误码：**
 

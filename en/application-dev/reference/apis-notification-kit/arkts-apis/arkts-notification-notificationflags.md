@@ -1,9 +1,4 @@
-# notificationFlags(Some states and flags for notifications)
-
-The **NotificationFlags** module describes the notification flags. An application can use **NotificationFlags**
- to reduce the notification reminder types as needed.
-
-
+# notificationFlags(NotificationFlags)
 
 ## Summary
 
@@ -11,14 +6,14 @@ The **NotificationFlags** module describes the notification flags. An applicatio
 
 | Name | Description |
 | --- | --- |
-| [NotificationFlags](arkts-notification-notificationflags-i.md) | Defines the notification flags. |
+| [NotificationFlags](arkts-notification-notificationflags-i.md) | Describes the [notification flags](../../../notification/notification-glossary.md#notification-flags). An application can use `NotificationFlags` to reduce the notification reminder methods as needed. |
 
 <!--Del-->
 ### Interfaces(System API)
 
 | Name | Description |
 | --- | --- |
-| [NotificationFlags](arkts-notification-notificationflags-i-sys.md) | Defines the notification flags. |
+| [NotificationFlags](arkts-notification-notificationflags-i-sys.md) | Describes the [notification flags](../../../notification/notification-glossary.md#notification-flags). An application can use `NotificationFlags` to reduce the notification reminder methods as needed. |
 <!--DelEnd-->
 
 ### Enums

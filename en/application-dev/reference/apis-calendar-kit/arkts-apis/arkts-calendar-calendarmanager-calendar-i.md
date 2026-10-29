@@ -56,7 +56,8 @@ Adds an event, with no event ID, instanceStartTime, and instanceEndTime specifie
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API.<br>**Applicable version:** 23 and later |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied.<br>**Applicable version:** 23 and later |
+| [23900003](../errorcode-calendarManager.md#23900003-specified-account-not-found) | The specified account was not found.<br>**Applicable version:** 26.0.1 and later |
 | [23900004](../errorcode-calendarManager.md#23900004-internal-program-error) | Internal program errors. Possible causes: <br>1. dataShare database execution error; <br>2. null pointer error; <br>3. Data parsing error.<br>**Applicable version:** 23 and later |
 
 **Examples**
@@ -122,7 +123,8 @@ Adds an event, with no event ID, instanceStartTime, and instanceEndTime specifie
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API.<br>**Applicable version:** 23 and later |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied.<br>**Applicable version:** 23 and later |
+| [23900003](../errorcode-calendarManager.md#23900003-specified-account-not-found) | The specified account was not found.<br>**Applicable version:** 26.0.1 and later |
 | [23900004](../errorcode-calendarManager.md#23900004-internal-program-error) | Internal program errors. Possible causes: <br>1. dataShare database execution error; <br>2. null pointer error; <br>3. Data parsing error.<br>**Applicable version:** 23 and later |
 
 **Examples**
@@ -191,7 +193,8 @@ Adds events in batches, with no event ID, instanceStartTime, and instanceEndTime
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API.<br>**Applicable version:** 23 and later |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied.<br>**Applicable version:** 23 and later |
+| [23900003](../errorcode-calendarManager.md#23900003-specified-account-not-found) | The specified account was not found.<br>**Applicable version:** 26.0.1 and later |
 | [23900004](../errorcode-calendarManager.md#23900004-internal-program-error) | Internal program errors. Possible causes: <br>1. dataShare database execution error; <br>2. null pointer error; <br>3. Data parsing error.<br>**Applicable version:** 23 and later |
 
 **Examples**
@@ -262,7 +265,8 @@ Adds events in batches, with no event ID, instanceStartTime, and instanceEndTime
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API.<br>**Applicable version:** 23 and later |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied.<br>**Applicable version:** 23 and later |
+| [23900003](../errorcode-calendarManager.md#23900003-specified-account-not-found) | The specified account was not found.<br>**Applicable version:** 26.0.1 and later |
 | [23900004](../errorcode-calendarManager.md#23900004-internal-program-error) | Internal program errors. Possible causes: <br>1. dataShare database execution error; <br>2. null pointer error; <br>3. Data parsing error.<br>**Applicable version:** 23 and later |
 
 **Examples**
@@ -332,6 +336,12 @@ Deletes an event with the specified ID. This API uses a promise to return the re
 | --- | --- |
 | Promise&lt;void&gt; | Promise that returns no value. |
 
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [23900003](../errorcode-calendarManager.md#23900003-specified-account-not-found) | The specified account was not found.<br>**Applicable version:** 26.0.1 and later |
+
 **Examples**
 
 ```TypeScript
@@ -394,6 +404,12 @@ Deletes an event with the specified ID. This API uses an asynchronous callback t
 | --- | --- | --- | --- |
 | id | number | Yes | Event ID, which is the unique identifier of an event. If the input event ID is an integer, the event is created. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [23900003](../errorcode-calendarManager.md#23900003-specified-account-not-found) | The specified account was not found.<br>**Applicable version:** 26.0.1 and later |
 
 **Examples**
 
@@ -462,6 +478,12 @@ Deletes a batch of events with the specified IDs. This API uses a promise to ret
 | Type | Description |
 | --- | --- |
 | Promise&lt;void&gt; | Promise that returns no value. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [23900003](../errorcode-calendarManager.md#23900003-specified-account-not-found) | The specified account was not found.<br>**Applicable version:** 26.0.1 and later |
 
 **Examples**
 
@@ -538,6 +560,12 @@ Deletes a batch of events with the specified IDs. This API uses an asynchronous 
 | --- | --- | --- | --- |
 | ids | number[] | Yes | Array of event IDs. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [23900003](../errorcode-calendarManager.md#23900003-specified-account-not-found) | The specified account was not found.<br>**Applicable version:** 26.0.1 and later |
 
 **Examples**
 
@@ -713,7 +741,8 @@ Obtains all events in a calendar that match the filter criteria. This API uses a
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API.<br>**Applicable version:** 23 and later |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied.<br>**Applicable version:** 23 and later |
+| [23900003](../errorcode-calendarManager.md#23900003-specified-account-not-found) | The specified account was not found.<br>**Applicable version:** 26.0.1 and later |
 | [23900004](../errorcode-calendarManager.md#23900004-internal-program-error) | Internal program errors. Possible causes: <br>1. dataShare database execution error; <br>2. null pointer error; <br>3. Data parsing error.<br>**Applicable version:** 23 and later |
 
 **Examples**
@@ -787,7 +816,8 @@ Obtains all events in a calendar that match the filter criteria. This API uses a
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API.<br>**Applicable version:** 23 and later |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied.<br>**Applicable version:** 23 and later |
+| [23900003](../errorcode-calendarManager.md#23900003-specified-account-not-found) | The specified account was not found.<br>**Applicable version:** 26.0.1 and later |
 | [23900004](../errorcode-calendarManager.md#23900004-internal-program-error) | Internal program errors. Possible causes: <br>1. dataShare database execution error; <br>2. null pointer error; <br>3. Data parsing error.<br>**Applicable version:** 23 and later |
 
 **Examples**
@@ -874,7 +904,8 @@ For versions earlier than API version 20, the default fields to be obtained incl
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API.<br>**Applicable version:** 23 and later |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied.<br>**Applicable version:** 23 and later |
+| [23900003](../errorcode-calendarManager.md#23900003-specified-account-not-found) | The specified account was not found.<br>**Applicable version:** 26.0.1 and later |
 | [23900004](../errorcode-calendarManager.md#23900004-internal-program-error) | Internal program errors. Possible causes: <br>1. dataShare database execution error; <br>2. null pointer error; <br>3. Data parsing error.<br>**Applicable version:** 23 and later |
 
 **Examples**
@@ -941,6 +972,7 @@ This API can be used to view and edit calendar events in the system calendar.
 | Error Code ID | Error Message |
 | --- | --- |
 | [23900001](../errorcode-calendarManager.md#23900001-parameter-value-error) | Parameter value error. |
+| [23900003](../errorcode-calendarManager.md#23900003-specified-account-not-found) | The specified account was not found.<br>**Applicable version:** 26.0.1 and later |
 | [23900005](../errorcode-calendarManager.md#23900005-event-not-editable) | This event cannot be edited. |
 
 **Examples**
@@ -1033,7 +1065,8 @@ Queries the event instance with a specified event key in a calendar. This API us
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API.<br>**Applicable version:** 23 and later |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied.<br>**Applicable version:** 23 and later |
+| [23900003](../errorcode-calendarManager.md#23900003-specified-account-not-found) | The specified account was not found.<br>**Applicable version:** 26.0.1 and later |
 | [23900004](../errorcode-calendarManager.md#23900004-internal-program-error) | Internal program errors. Possible causes: <br>1. dataShare database execution error; <br>2. null pointer error; <br>3. Data parsing error.<br>**Applicable version:** 23 and later |
 
 **Examples**
@@ -1107,6 +1140,7 @@ Sets the calendar configuration information. This API uses a promise to return t
 | Error Code ID | Error Message |
 | --- | --- |
 | [23900001](../errorcode-calendarManager.md#23900001-parameter-value-error) | Parameter value error.<br>**Applicable version:** 23 and later |
+| [23900003](../errorcode-calendarManager.md#23900003-specified-account-not-found) | The specified account was not found.<br>**Applicable version:** 26.0.1 and later |
 
 **Examples**
 
@@ -1164,6 +1198,7 @@ Sets the calendar configuration information. This API uses an asynchronous callb
 | Error Code ID | Error Message |
 | --- | --- |
 | [23900001](../errorcode-calendarManager.md#23900001-parameter-value-error) | Parameter value error.<br>**Applicable version:** 23 and later |
+| [23900003](../errorcode-calendarManager.md#23900003-specified-account-not-found) | The specified account was not found.<br>**Applicable version:** 26.0.1 and later |
 
 **Examples**
 
@@ -1222,6 +1257,12 @@ Updates an event, with the ID of the updated event specified in Event. This API 
 | Type | Description |
 | --- | --- |
 | Promise&lt;void&gt; | Promise that returns no value. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [23900003](../errorcode-calendarManager.md#23900003-specified-account-not-found) | The specified account was not found.<br>**Applicable version:** 26.0.1 and later |
 
 **Examples**
 
@@ -1285,6 +1326,12 @@ Updates an event. The ID of the updated event must be specified in Event. If not
 | --- | --- | --- | --- |
 | event | [Event](arkts-calendar-calendarmanager-event-i.md) | Yes | Event object. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | The callback of updateEvent. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [23900003](../errorcode-calendarManager.md#23900003-specified-account-not-found) | The specified account was not found.<br>**Applicable version:** 26.0.1 and later |
 
 **Examples**
 

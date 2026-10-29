@@ -12,8 +12,6 @@ Enumerates the window change event types that can be listened for.
 
 **System capability:** SystemCapability.Test.UiTest
 
-**Test API:** This API is used only in automated test scripts.
-
 ## WINDOW_ADDED
 
 ```TypeScript

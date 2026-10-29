@@ -29,7 +29,7 @@ function createPixelMapFromSurfaceSync(surfaceId: string, region: Region): Pixel
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| surfaceId | string | 是 | 对应Surface的ID，可通过预览组件获取，如XComponent组件。 |
+| surfaceId | string | 是 | 对应Surface的ID，可通过预览组件获取，如[XComponent](../../apis-arkui/arkui-ts/ts-basic-components-xcomponent.md)组件。 |
 | region | [Region](arkts-image-image-region-i.md) | 是 | 截取的画面区域。仅支持从画面左上角开始截取部分或整个画面，即Region中的x和y必须为0，Region.size中width和height的取值范围分别为[1, 预览流宽度]和[1, 预览流高度]。如需截取任意区域，可先使用[image.createPixelMapFromSurfaceSync](arkts-image-image-createpixelmapfromsurfacesync-f.md)获取整个画面，再使用[applyCropSync](arkts-image-image-pixelmap-i.md#applycropsync)截取所需区域。 |
 
 **返回值：**
@@ -87,7 +87,7 @@ function createPixelMapFromSurfaceSync(surfaceId: string): PixelMap
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| surfaceId | string | 是 | 对应Surface的ID，可通过预览组件获取，如XComponent组件。 |
+| surfaceId | string | 是 | 对应Surface的ID，可通过预览组件获取，如[XComponent](../../apis-arkui/arkui-ts/ts-basic-components-xcomponent.md)组件。 |
 
 **返回值：**
 

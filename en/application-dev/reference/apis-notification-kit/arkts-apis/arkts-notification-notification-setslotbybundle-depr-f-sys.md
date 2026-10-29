@@ -17,7 +17,7 @@ Sets the notification slot for a specified application. This API uses an asynchr
 
 **Deprecated since:** 9
 
-**Substitutes:** [setSlotByBundle](arkts-notification-notificationmanager-setslotbybundle-f-sys.md)
+**Substitutes:** [setSlotByBundle](arkts-notification-notificationmanager-setslotbybundle-f-sys.md#setslotbybundle-1)(bundle: BundleOption, slot: NotificationSlot, callback: AsyncCallback&lt;void&gt;)
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -73,7 +73,7 @@ Sets the notification slot for a specified application. This API uses a promise 
 
 **Deprecated since:** 9
 
-**Substitutes:** [setSlotByBundle](arkts-notification-notificationmanager-setslotbybundle-f-sys.md)
+**Substitutes:** [setSlotByBundle](arkts-notification-notificationmanager-setslotbybundle-f-sys.md#setslotbybundle-2)(bundle: BundleOption, slot: NotificationSlot)
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -94,7 +94,7 @@ Sets the notification slot for a specified application. This API uses a promise 
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;void&gt; | the promise returned by the function. |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 <!--Del-->
 **Examples**

@@ -12,7 +12,7 @@ import { notificationManager } from '@kit.NotificationKit';
 function triggerSystemLiveView(bundle: BundleOption, notificationId: number, buttonOptions: ButtonOptions): Promise<void>
 ```
 
-Triggers a system live view notification. This API uses a promise to return the result.
+Triggers a [system live view](../../../notification/notification-glossary.md#system-live-view). This API uses a promise to return the result.
 
 **Since:** 11
 

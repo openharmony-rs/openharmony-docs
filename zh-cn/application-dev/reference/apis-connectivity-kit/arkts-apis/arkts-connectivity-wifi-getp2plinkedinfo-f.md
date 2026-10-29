@@ -87,4 +87,4 @@ function getP2pLinkedInfo(callback: AsyncCallback<WifiP2pLinkedInfo>): void
 
 **示例**
 
-参见 getP2pLinkedInfo
+参见 [getP2pLinkedInfo](#getp2plinkedinfo)

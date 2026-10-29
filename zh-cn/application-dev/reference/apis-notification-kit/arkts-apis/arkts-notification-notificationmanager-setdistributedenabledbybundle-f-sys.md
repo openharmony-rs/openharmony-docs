@@ -12,7 +12,7 @@ import { notificationManager } from '@kit.NotificationKit';
 function setDistributedEnabledByBundle(bundle: BundleOption, deviceType: string, enable: boolean): Promise<void>
 ```
 
-设置指定应用是否支持跨设备协同。使用Promise异步回调。
+设置指定应用是否支持[跨设备协同](../../../notification/notification-glossary.md#cross-device-collaboration跨设备协同)。使用Promise异步回调。
 
 **起始版本：** 12
 
@@ -29,7 +29,7 @@ function setDistributedEnabledByBundle(bundle: BundleOption, deviceType: string,
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundle | [BundleOption](arkts-notification-notificationmanager-bundleoption-t.md) | 是 | 应用的包信息。 |
-| deviceType | string | 是 | 设备类型。 |
+| deviceType | string | 是 | 设备类型。<br>从API version 18开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>从API version 20开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>- current（本设备）。<br>- 2in1（PC设备）。<br>- tablet（平板）。 |
 | enable | boolean | 是 | 指定应用是否支持跨设备协同（true：支持，false：不支持）。 |
 
 **返回值：**

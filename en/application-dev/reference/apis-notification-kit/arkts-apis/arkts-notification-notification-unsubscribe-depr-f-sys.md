@@ -11,13 +11,13 @@
 function unsubscribe(subscriber: NotificationSubscriber, callback: AsyncCallback<void>): void
 ```
 
-Unsubscribes from a notification. This API uses an asynchronous callback to return the result.
+Unsubscribes from notifications. This API uses a callback to return the result.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [unsubscribe](arkts-notification-notificationsubscribe-unsubscribe-f-sys.md)
+**Substitutes:** [unsubscribe](arkts-notification-notificationsubscribe-unsubscribe-f-sys.md#unsubscribe-1)(subscriber: NotificationSubscriber, callback: AsyncCallback&lt;void&gt;)
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -31,7 +31,7 @@ Unsubscribes from a notification. This API uses an asynchronous callback to retu
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| subscriber | [NotificationSubscriber](arkts-notification-notificationsubscriber-i-sys.md) | Yes | Notification subscriber. |
+| subscriber | [NotificationSubscriber](arkts-notification-notificationsubscriber-i-sys.md) | Yes | [Notification subscription](../../../notification/notification-glossary.md#notification-subscription) object. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
 
 <!--Del-->
@@ -72,7 +72,7 @@ Unsubscribes from a notification. This API uses a promise to return the result.
 
 **Deprecated since:** 9
 
-**Substitutes:** [unsubscribe](arkts-notification-notificationsubscribe-unsubscribe-f-sys.md)
+**Substitutes:** [unsubscribe](arkts-notification-notificationsubscribe-unsubscribe-f-sys.md#unsubscribe-2)(subscriber: NotificationSubscriber)
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -86,7 +86,7 @@ Unsubscribes from a notification. This API uses a promise to return the result.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| subscriber | [NotificationSubscriber](arkts-notification-notificationsubscriber-i-sys.md) | Yes | Notification subscriber. |
+| subscriber | [NotificationSubscriber](arkts-notification-notificationsubscriber-i-sys.md) | Yes | [Notification subscription](../../../notification/notification-glossary.md#notification-subscription) object. |
 
 **Return value:**
 

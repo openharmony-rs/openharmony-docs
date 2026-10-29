@@ -12,8 +12,6 @@ declare interface WindowFilter
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**测试接口：** 此接口仅在自动化测试脚本中使用。
-
 ## 导入模块
 
 ```TypeScript
@@ -41,8 +39,6 @@ active?: boolean
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**测试接口：** 此接口仅在自动化测试脚本中使用。
-
 ## bundleName
 
 ```TypeScript
@@ -62,8 +58,6 @@ bundleName?: string
 <!--Device-WindowFilter-bundleName?: string--><!--Device-WindowFilter-bundleName?: string-End-->
 
 **系统能力：** SystemCapability.Test.UiTest
-
-**测试接口：** 此接口仅在自动化测试脚本中使用。
 
 ## displayId
 
@@ -85,8 +79,6 @@ displayId?: number
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**测试接口：** 此接口仅在自动化测试脚本中使用。
-
 ## focused
 
 ```TypeScript
@@ -107,8 +99,6 @@ focused?: boolean
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**测试接口：** 此接口仅在自动化测试脚本中使用。
-
 ## title
 
 ```TypeScript
@@ -126,8 +116,6 @@ title?: string
 <!--Device-WindowFilter-title?: string--><!--Device-WindowFilter-title?: string-End-->
 
 **系统能力：** SystemCapability.Test.UiTest
-
-**测试接口：** 此接口仅在自动化测试脚本中使用。
 
 ## actived
 
@@ -150,5 +138,3 @@ actived?: boolean
 <!--Device-WindowFilter-actived?: boolean--><!--Device-WindowFilter-actived?: boolean-End-->
 
 **系统能力：** SystemCapability.Test.UiTest
-
-**测试接口：** 此接口仅在自动化测试脚本中使用。

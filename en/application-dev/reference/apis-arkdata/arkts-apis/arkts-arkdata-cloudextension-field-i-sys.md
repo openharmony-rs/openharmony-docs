@@ -62,7 +62,7 @@ Name of the column, in which the field is located.
 nullable: boolean
 ```
 
-Whether the current column can be null. The value true means the current column can be null; the value false means the opposite.
+Whether the current column can be null. The value **true** means the current column can be null; the value **false** means the opposite.
 
 **Type:** boolean
 
@@ -80,7 +80,7 @@ Whether the current column can be null. The value true means the current column 
 primary: boolean
 ```
 
-Whether the current column is the primary key. The value true means the current column is the primary key; the value false means the opposite.
+Whether the current column is the primary key. The value **true** means the current column is the primary key; the value **false** means the opposite.
 
 **Type:** boolean
 
@@ -98,7 +98,7 @@ Whether the current column is the primary key. The value true means the current 
 type: FieldType
 ```
 
-Type of the field. For details, see [FieldType](arkts-arkdata-cloudextension-fieldtype-e-sys.md).
+Type of the field.
 
 **Type:** [FieldType](arkts-arkdata-cloudextension-fieldtype-e-sys.md)
 

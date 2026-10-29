@@ -16,8 +16,6 @@ The **AbilityDelegatorArgs** module provides APIs to obtain an **AbilityDelegato
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
-**Test API:** This API is used only in automated test scripts.
-
 ## bundleName
 
 ```TypeScript
@@ -35,8 +33,6 @@ Bundle name of the application to test.
 <!--Device-AbilityDelegatorArgs-bundleName: string--><!--Device-AbilityDelegatorArgs-bundleName: string-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
-
-**Test API:** This API is used only in automated test scripts.
 
 ## parameters
 
@@ -56,8 +52,6 @@ Parameters of the unit test that is started currently.
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
-**Test API:** This API is used only in automated test scripts.
-
 ## testCaseNames
 
 ```TypeScript
@@ -76,8 +70,6 @@ Test case name.
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
-**Test API:** This API is used only in automated test scripts.
-
 ## testRunnerClassName
 
 ```TypeScript
@@ -95,8 +87,6 @@ Names of the test case executors.
 <!--Device-AbilityDelegatorArgs-testRunnerClassName: string--><!--Device-AbilityDelegatorArgs-testRunnerClassName: string-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
-
-**Test API:** This API is used only in automated test scripts.
 
 **Examples**
 

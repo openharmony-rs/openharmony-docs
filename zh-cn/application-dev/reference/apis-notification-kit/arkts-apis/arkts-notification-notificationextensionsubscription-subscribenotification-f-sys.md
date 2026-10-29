@@ -12,7 +12,7 @@ import { notificationExtensionSubscription } from '@kit.NotificationKit';
 function subscribeNotification(priorityStrategy?: number): Promise<void>
 ```
 
-根据优先通知过滤条件订阅通知。使用Promise异步回调。
+Subscribes to notifications based on the priority strategy. This API uses a promise to return the result.
 
 **起始版本：** 26.1.0
 
@@ -30,13 +30,13 @@ function subscribeNotification(priorityStrategy?: number): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| priorityStrategy | number | 否 | 优先通知过滤条件。与PriorityStrategyStatus的枚举进行按位或运算得到该参数。订阅某条优先通知策略后，应用发布通知时，只返回符合对应策略的通知。当订阅默认优先策略`STATUS_SYSTEM_DEFAULT`时,表示同时订阅优先规则`STATUS_SYSTEM_RULE`、智能识别`STATUS_INTELLIGENT`、用户自定义`STATUS_USER_DEFINED`和应用自定义`STATUS_APPLICATION_DEFINED`策略。当`priorityStrategy`为0时，表示不过滤优先通知策略，可以收到应用发布的所有通知。<br>取值限定为整数。默认值：0。 |
+| priorityStrategy | number | 否 | Priority strategy for filtering the notifications. This parameter is obtained by performing a bitwise OR operation on the enums of PriorityStrategyStatus. After an application subscribes to a specific priority strategy, the system returns only notifications matching the corresponding strategy when the application publishes notifications. Subscribing to the default priority strategy **STATUS_SYSTEM_DEFAULT** means subscribing simultaneously to the following strategies: **STATUS_SYSTEM_RULE**, **STATUS_INTELLIGENT**, **STATUS_USER_DEFINED**, and **STATUS_APPLICATION_DEFINED**. When **priorityStrategy** is set to **0**, no priority strategy is applied, and all notifications published by the application can be received. <br>The value should be an integer. Default value: 0. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **错误码：**
 

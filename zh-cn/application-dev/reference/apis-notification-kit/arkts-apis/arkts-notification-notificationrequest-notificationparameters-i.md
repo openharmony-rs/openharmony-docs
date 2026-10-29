@@ -18,7 +18,7 @@ export interface NotificationParameters
 wantAction?:string
 ```
 
-应用在创建wantAgent时，传入的want的action字段，具体含义请参考[action](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md)。
+应用在创建wantAgent时，传入的Want的action字段，具体含义请参考[action](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md)。
 
 **类型：** string
 
@@ -36,7 +36,7 @@ wantAction?:string
 wantParameters?:Record<string, Object>
 ```
 
-应用在创建wantAgent时，传入的want的parameters字段，具体含义请参考[parameters](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md)。
+应用在创建wantAgent时，传入的Want的parameters字段，具体含义请参考[parameters](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md)。
 
 **类型：** Record&lt;string, Object&gt;
 
@@ -54,7 +54,7 @@ wantParameters?:Record<string, Object>
 wantUri?:string
 ```
 
-应用在创建wantAgent时，传入的want的uri字段，具体含义请参考[uri](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md)。
+应用在创建wantAgent时，传入的Want的uri字段，具体含义请参考[uri](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md)。
 
 **类型：** string
 

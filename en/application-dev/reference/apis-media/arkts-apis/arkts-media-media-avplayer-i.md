@@ -389,7 +389,7 @@ Clears all the items in the player's playlist. Currently playing media will be t
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [5400102](../../apis-media-kit/errorcode-media.md#5400102-unsupported-operation) | operation not allowed . Returned via promise. |
+| [5400102](../../apis-media-kit/errorcode-media.md#5400102-unsupported-operation) | Operation not allowed. Returned via promise. |
 
 **Examples**
 
@@ -758,6 +758,12 @@ Obtains the playback information. This API can be called only when the AVPlayer 
 | --- | --- |
 | Promise&lt;[PlaybackInfo](arkts-media-media-playbackinfo-i.md)&gt; | Promise used to return **PlaybackInfo**. |
 
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [5400102](../../apis-media-kit/errorcode-media.md#5400102-unsupported-operation) | Operation not allowed. Return by promise. |
+
 **Examples**
 
 ```TypeScript
@@ -879,6 +885,12 @@ Obtains the statistic metrics of the current player. This API can be called when
 | Type | Description |
 | --- | --- |
 | Promise&lt;[PlaybackMetrics](arkts-media-media-playbackmetrics-t.md)&gt; | Promise used to return the playback metrics of the current AVPlayer. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [5400102](../../apis-media-kit/errorcode-media.md#5400102-unsupported-operation) | Operation not allowed. Return by promise. |
 
 **Examples**
 

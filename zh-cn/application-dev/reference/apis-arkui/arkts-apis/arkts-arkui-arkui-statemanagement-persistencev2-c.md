@@ -122,7 +122,7 @@ static globalConnect<T extends CollectionType<S>, S extends object>(
   ): T | undefined
 ```
 
-将键值对数据存储在应用磁盘中。支持集合类型`Array`，`Map`，`Set`，`collections.Array`，`collections.Map`，`collections.Set`类型的持久化。注意在持久化`Array<ClassA>`类型的数据时，需要调用[`makeObserved`](arkts-arkui-arkui-statemanagement-uiutils-c.md#makeobserved)使返回的对象被观察到。不支持多个嵌套集合，例如不支持`Array<Array<ClassA>&gt;`的持久化。
+将键值对数据存储在应用磁盘中。支持集合类型[`Array`，`Map`，`Set`，`collections.Array`，`collections.Map`，`collections.Set`类型的持久化](../../../ui/state-management/arkts-new-persistencev2.md#globalconnect支持集合的类型)。注意在持久化`Array<ClassA>`类型的数据时，需要调用[`makeObserved`](arkts-arkui-arkui-statemanagement-uiutils-c.md#makeobserved)使返回的对象被观察到。不支持多个嵌套集合，例如不支持`Array<Array<ClassA>&gt;`的持久化。
 
 > **说明：** 
 > 

@@ -4,7 +4,7 @@
 declare class InsightIntentEntryExecutor<T>
 ```
 
-本模块提供@InsightIntentEntry装饰器的意图执行基类，必须与@InsightIntentEntry装饰器联合使用。开发者需要在继承该基类的子类中，实现[onExecute()](#onexecute)意图执行回调，并使用@ InsightIntentEntry装饰器来装饰子类。
+本模块提供[@InsightIntentEntry](../../../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintententry)装饰器的意图执行基类，必须与@InsightIntentEntry装饰器联合使用。开发者需要在继承该基类的子类中，实现[onExecute()](#onexecute)意图执行回调，并使用@ InsightIntentEntry装饰器来装饰子类。
 
 **起始版本：** 20
 
@@ -40,7 +40,7 @@ onExecute(): Promise<insightIntent.IntentResult<T>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[insightIntent.IntentResult](arkts-ability-insightintent-intentresult-i.md)&lt;T&gt;&gt; | Promise对象。返回[insightIntent.IntentResult&lt;T&gt;](arkts-ability-insightintent-intentresult-i.md)对象，表示意图执行结果。 |
+| Promise&lt;[insightIntent.IntentResult](arkts-ability-insightintent-intentresult-i.md)&lt;T&gt;&gt; | Promise对象。返回[insightIntent.IntentResult<T>](arkts-ability-insightintent-intentresult-i.md)对象，表示意图执行结果。 |
 
 ## context
 

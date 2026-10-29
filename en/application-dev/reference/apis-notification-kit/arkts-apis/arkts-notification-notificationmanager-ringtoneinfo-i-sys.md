@@ -4,7 +4,7 @@
 export interface RingtoneInfo
 ```
 
-Describes the custom ringtone information.
+Describes the [customized ringtone](../../../notification/notification-glossary.md#customized-ringtone) information.
 
 **Since:** 21
 
@@ -26,7 +26,7 @@ import { notificationManager } from '@kit.NotificationKit';
 ringtoneFileName?: string
 ```
 
-File name of the ringtone.
+File name of the ringtone. The size cannot exceed 202 bytes; otherwise, error code 401 is returned. The default value is empty.
 
 **Type:** string
 
@@ -44,7 +44,7 @@ File name of the ringtone.
 ringtoneTitle?: string
 ```
 
-Title of the ringtone.
+Title of the ringtone. The size cannot exceed 202 bytes; otherwise, error code 401 is returned. The default value is empty.
 
 **Type:** string
 
@@ -80,7 +80,7 @@ Type of the ringtone.
 ringtoneUri?: string
 ```
 
-URI of the ringtone.
+URI of the ringtone. For supported resources, see [media.AVPlayer](../../apis-media/arkts-apis/arkts-media-media-avplayer-i.md). The size cannot exceed 202 bytes; otherwise, error code 401 is returned. The default value is empty.
 
 **Type:** string
 

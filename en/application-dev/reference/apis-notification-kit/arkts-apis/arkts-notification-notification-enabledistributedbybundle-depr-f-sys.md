@@ -11,13 +11,13 @@
 function enableDistributedByBundle(bundle: BundleOption, enable: boolean, callback: AsyncCallback<void>): void
 ```
 
-Sets whether a specified application supports distributed notifications. This API uses an asynchronous callback to return the result.
+Sets whether the specified application supports [distributed notifications](../../../notification/notification-glossary.md#distributed-notification). This API uses a callback to return the result.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [setDistributedEnableByBundle](arkts-notification-notificationmanager-setdistributedenablebybundle-f-sys.md)
+**Substitutes:** [setDistributedEnableByBundle](arkts-notification-notificationmanager-setdistributedenablebybundle-f-sys.md#setdistributedenablebybundle-1)(bundle: BundleOption, enable: boolean, callback: AsyncCallback&lt;void&gt;)
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -67,13 +67,13 @@ Notification.enableDistributedByBundle(bundle, enable, enableDistributedByBundle
 function enableDistributedByBundle(bundle: BundleOption, enable: boolean): Promise<void>
 ```
 
-Sets whether a specified application supports distributed notifications. This API uses a promise to return the result.
+Sets whether the specified application supports [distributed notifications](../../../notification/notification-glossary.md#distributed-notification). This API uses a promise to return the result.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [setDistributedEnableByBundle](arkts-notification-notificationmanager-setdistributedenablebybundle-f-sys.md)
+**Substitutes:** [setDistributedEnableByBundle](arkts-notification-notificationmanager-setdistributedenablebybundle-f-sys.md#setdistributedenablebybundle-2)(bundle: BundleOption, enable: boolean)
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -87,7 +87,7 @@ Sets whether a specified application supports distributed notifications. This AP
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| bundle | BundleOption | Yes | Application bundle. |
+| bundle | BundleOption | Yes | Bundle of the application. |
 | enable | boolean | Yes | Whether the device supports distributed notifications. |
 
 **Return value:**

@@ -4,7 +4,7 @@
 export interface NotificationIconButton
 ```
 
-Describes the system notification button.
+Describes the system [notification button](../../../notification/notification-glossary.md#notification-button).
 
 **Since:** 18
 
@@ -20,10 +20,10 @@ Describes the system notification button.
 hidePanel?: boolean
 ```
 
-Whether to hide the notification panel when the button is tapped. The default value is **false**.
+Whether to hide the [notification center](../../../notification/notification-glossary.md#notification-center) when the button is clicked. The default value is false.
 
-- **true**: Yes.  
-- **false**: No.
+- true: yes.  
+- false: no.
 
 **Type:** boolean
 

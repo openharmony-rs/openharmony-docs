@@ -92,7 +92,7 @@ Tabs(options?: TabsOptions)
 
 ### 示例1（设置TabBar的布局模式）
 
-本示例通过barMode分别实现了页签均分布局和以实际长度布局，且展示了当页签布局长度之和超过了TabBar总长度后可滑动的效果。
+本示例通过[barMode](#barmode)分别实现了页签均分布局和以实际长度布局，且展示了当页签布局长度之和超过了TabBar总长度后可滑动的效果。
 
 
 
@@ -168,7 +168,7 @@ struct TabsExample {
 
 ### 示例2（设置Scrollable模式下的TabBar的布局样式）
 
-本示例实现了barMode的ScrollableBarModeOptions参数，该参数仅在Scrollable模式下有效。
+本示例实现了[barMode](#barmode10-1)的ScrollableBarModeOptions参数，该参数仅在Scrollable模式下有效。
 
 
 
@@ -286,7 +286,7 @@ struct TabsExample6 {
 
 ### 示例3（自定义页签切换联动）
 
-本示例通过onAnimationStart、onChange实现切换时自定义tabBar和TabContent的联动。
+本示例通过[onAnimationStart](#onanimationstart11)、[onChange](#onchange)实现切换时自定义tabBar和TabContent的联动。
 
 
 
@@ -363,7 +363,7 @@ struct TabsExample {
 
 ### 示例4（分割线基本属性）
 
-本示例通过divider实现了分割线各种属性的展示。
+本示例通过[divider](#divider10)实现了分割线各种属性的展示。
 
 
 
@@ -473,7 +473,7 @@ struct TabsDivider1 {
 
 ### 示例5（设置TabBar渐隐）
 
-本示例通过fadingEdge实现了切换子页签渐隐和不渐隐。
+本示例通过[fadingEdge](#fadingedge10)实现了切换子页签渐隐和不渐隐。
 
 
 
@@ -586,7 +586,7 @@ struct TabsOpaque {
 
 ### 示例6（设置TabBar叠加在TabContent内容上）
 
-本示例通过barOverlap实现了TabBar是否背后变模糊并叠加在TabContent之上。
+本示例通过[barOverlap](#baroverlap10)实现了TabBar是否背后变模糊并叠加在TabContent之上。
 
 
 
@@ -743,7 +743,7 @@ struct TabsExample5 {
 
 ### 示例8（自定义Tabs页面切换动画）
 
-本示例通过customContentTransition实现了自定义Tabs页面的切换动画。
+本示例通过[customContentTransition](#customcontenttransition11)实现了自定义Tabs页面的切换动画。
 
 
 
@@ -833,7 +833,7 @@ struct TabsCustomAnimationExample {
 
 ### 示例9（页面切换拦截）
 
-本示例通过onContentWillChange实现了自定义页面手势滑动切换拦截。
+本示例通过[onContentWillChange](#oncontentwillchange12)实现了自定义页面手势滑动切换拦截。
 
 
 
@@ -926,7 +926,7 @@ struct TabsExample {
 
 ### 示例10（自定义TabBar切换动画）
 
-本示例通过onChange、onAnimationStart、onAnimationEnd、onGestureSwipe等接口实现了自定义TabBar的切换动画。
+本示例通过[onChange](#onchange)、[onAnimationStart](#onanimationstart11)、[onAnimationEnd](#onanimationend11)、[onGestureSwipe](#ongestureswipe11)等接口实现了自定义TabBar的切换动画。
 
 ```TypeScript
 // EntryAbility.ets
@@ -1098,7 +1098,7 @@ struct TabsExample {
 
 ### 示例11（预加载子节点）
 
-本示例通过preloadItems接口实现了预加载指定子节点。
+本示例通过[preloadItems](#preloaditems12)接口实现了预加载指定子节点。
 
 ```TypeScript
 // xxx.ets
@@ -1227,7 +1227,7 @@ struct TabsExample {
 
 ### 示例13（页面懒加载和释放）
 
-本示例通过使用自定义TabBar与Swiper配合LazyForEach实现页面懒加载和释放。
+本示例通过使用自定义[TabBar](ts-container-tabcontent.md#tabbar)与[Swiper](ts-container-swiper.md)配合[LazyForEach](ts-rendering-control-lazyforeach.md)实现页面懒加载和释放。
 
 
 
@@ -1337,7 +1337,7 @@ struct TabsSwiperExample {
 
 ### 示例14（设置翻页动效）
 
-本示例通过设置animationMode属性，实现了翻页的动效。
+本示例通过设置[animationMode](#animationmode12)属性，实现了翻页的动效。
 
 
 
@@ -1608,7 +1608,7 @@ struct TabsBarModifierExample {
 
 ### 示例17（Tabs与TabBar同步切换）
 
-该示例通过onSelected接口，实现了Tabs与TabBar的同步切换。
+该示例通过[onSelected](#onselected18)接口，实现了Tabs与TabBar的同步切换。
 
 从API version 18开始，新增了onSelected接口。
 
@@ -1814,7 +1814,7 @@ struct TabsExample {
 
 ### 示例20（设置边缘滑动效果）
 
-该示例通过edgeEffect实现了不同的边缘回弹效果。
+该示例通过[edgeEffect](#edgeeffect12)实现了不同的边缘回弹效果。
 
 
 
@@ -1963,7 +1963,7 @@ struct TabsExample {
 
 ### 示例22（监听Tabs页面滑动事件）
 
-该示例展示了如何通过onContentDidScroll接口设置Tabs滑动时的回调。
+该示例展示了如何通过[onContentDidScroll](#oncontentdidscroll23)接口设置Tabs滑动时的回调。
 
 从API version 23开始，新增onContentDidScroll接口。
 
@@ -2064,7 +2064,7 @@ struct TabsDidScrollExample {
 
 ### 示例23（Tabs嵌套滚动）
 
-该示例展示了如何通过nestedScroll接口设置Tabs嵌套滚动效果。
+该示例展示了如何通过[nestedScroll](#nestedscroll24)接口设置Tabs嵌套滚动效果。
 
 从API version 24开始，新增nestedScroll接口。
 
@@ -2188,7 +2188,7 @@ struct TabsFloatingStyleExample {
 
 ### 示例25（设置侧边页签栏样式）
 
-本示例展示了通过barStyle接口设置页签栏的显示样式，包括固定底部页签栏样式、固定侧边页签栏样式、自适应侧边页签栏样式。通过sidebarPosition接口设置侧边页签栏的显示位置，通过sidebarHeader接口在侧边页签栏头部设置自定义内容，通过sidebarFooter接口在侧边页签栏页签列表尾部设置随页签列表滚动的自定义内容，通过sidebarBottomBar接口在侧边页签栏固定底部设置自定义内容。通过sidebarSearchable接口开启侧边页签栏的搜索功能，通过onBarDisplayModeChange接口注册显示模式切换的监听函数。
+本示例展示了通过[barStyle](#barstyle)接口设置页签栏的显示样式，包括固定底部页签栏样式、固定侧边页签栏样式、自适应侧边页签栏样式。通过[sidebarPosition](#sidebarposition)接口设置侧边页签栏的显示位置，通过[sidebarHeader](#sidebarheader)接口在侧边页签栏头部设置自定义内容，通过[sidebarFooter](#sidebarfooter)接口在侧边页签栏页签列表尾部设置随页签列表滚动的自定义内容，通过[sidebarBottomBar](#sidebarbottombar)接口在侧边页签栏固定底部设置自定义内容。通过[sidebarSearchable](#sidebarsearchable)接口开启侧边页签栏的搜索功能，通过[onBarDisplayModeChange](#onbardisplaymodechange)接口注册显示模式切换的监听函数。
 
 从API版本26.0.1开始，新增barStyle、sidebarPosition、sidebarHeader、sidebarSearchable、onBarDisplayModeChange接口。从API版本26.1.0开始，新增sidebarFooter、sidebarBottomBar接口。
 
@@ -2334,7 +2334,7 @@ struct TabsSidebarExample {
 
 ### 示例26（设置侧边栏展示模式）
 
-本示例展示了如何通过sidebarDisplayStyle接口设置Tabs的侧边栏展示模式，切换嵌入模式（EMBED）和推挤模式（DISPLACE）。
+本示例展示了如何通过[sidebarDisplayStyle](#sidebardisplaystyle)接口设置Tabs的侧边栏展示模式，切换嵌入模式（EMBED）和推挤模式（DISPLACE）。
 
 从API版本26.0.1开始，新增sidebarDisplayStyle接口。
 
@@ -2406,19 +2406,19 @@ struct TabsSideBarDemo {
 
 通过[sidebarWidth](arkts-arkui-sidebarcontainer-comp-attribute.md#sidebarwidth)接口设置侧边页签栏的宽度。
 
-通过sidebarBackgroundColor接口设置侧边页签栏的背景颜色。
+通过[sidebarBackgroundColor](#sidebarbackgroundcolor)接口设置侧边页签栏的背景颜色。
 
-通过sidebarBackgroundBlurStyle接口设置侧边页签栏的背景模糊样式。
+通过[sidebarBackgroundBlurStyle](#sidebarbackgroundblurstyle)接口设置侧边页签栏的背景模糊样式。
 
-通过sidebarSelectedIconColor接口设置侧边页签栏中选中态页签的图标颜色。
+通过[sidebarSelectedIconColor](#sidebarselectediconcolor)接口设置侧边页签栏中选中态页签的图标颜色。
 
-通过sidebarSelectedTextColor接口设置侧边页签栏中选中态页签的文本颜色。
+通过[sidebarSelectedTextColor](#sidebarselectedtextcolor)接口设置侧边页签栏中选中态页签的文本颜色。
 
-通过sidebarUnselectedIconColor接口设置侧边页签栏中非选中态页签的图标颜色。
+通过[sidebarUnselectedIconColor](#sidebarunselectediconcolor)接口设置侧边页签栏中非选中态页签的图标颜色。
 
-通过sidebarUnselectedTextColor接口设置侧边页签栏中非选中态页签的文本颜色。
+通过[sidebarUnselectedTextColor](#sidebarunselectedtextcolor)接口设置侧边页签栏中非选中态页签的文本颜色。
 
-通过sidebarSelectedBoardColor接口设置侧边页签栏中选中页签的背板颜色。
+通过[sidebarSelectedBoardColor](#sidebarselectedboardcolor)接口设置侧边页签栏中选中页签的背板颜色。
 
 从API版本26.0.1开始，新增sidebarWidth、sidebarBackgroundColor、sidebarBackgroundBlurStyle、sidebarSelectedTextColor、sidebarSelectedIconColor、sidebarUnselectedTextColor、sidebarUnselectedIconColor、sidebarSelectedBoardColor接口。
 
@@ -2480,13 +2480,13 @@ struct TabsSidebarContentStyleExample {
 
 本示例展示了通过以下接口实现侧边页签栏模式下分割线支持拖拽并指定拖拽范围的效果。
 
-通过sidebarDivider接口设置侧边页签栏的分割线样式。
+通过[sidebarDivider](#sidebardivider)接口设置侧边页签栏的分割线样式。
 
 通过[minSidebarWidth](arkts-arkui-sidebarcontainer-comp-attribute.md#minsidebarwidth)接口设置侧边页签栏的最小宽度。
 
 通过[maxSidebarWidth](arkts-arkui-sidebarcontainer-comp-attribute.md#maxsidebarwidth)接口设置侧边页签栏的最大宽度。
 
-通过minContentWidth接口设置内容区的最小宽度。
+通过[minContentWidth](#mincontentwidth)接口设置内容区的最小宽度。
 
 从API版本26.0.1开始，新增sidebarDivider、minSidebarWidth、maxSidebarWidth、minContentWidth接口。
 
@@ -2543,7 +2543,7 @@ struct TabsSidebarDraggableExample {
 
 ### 示例29（自定义显示模式断点）
 
-本示例展示了通过barDisplayModeBreakpoint接口实现自定义显示模式断点的功能。
+本示例展示了通过[barDisplayModeBreakpoint](#bardisplaymodebreakpoint)接口实现自定义显示模式断点的功能。
 
 从API版本26.0.1开始，新增barDisplayModeBreakpoint接口。
 

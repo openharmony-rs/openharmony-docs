@@ -4,7 +4,7 @@
 export type Geofence = _Geofence
 ```
 
-地理围栏的配置信息。
+[地理围栏](../../../notification/notification-glossary.md#geofence地理围栏)的配置信息。
 
 **类型：** _Geofence
 

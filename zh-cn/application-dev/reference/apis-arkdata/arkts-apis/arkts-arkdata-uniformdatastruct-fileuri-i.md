@@ -72,8 +72,6 @@ oriUri: string
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
-**测试接口：** 此接口仅在自动化测试脚本中使用。
-
 ## uniformDataType
 
 ```TypeScript

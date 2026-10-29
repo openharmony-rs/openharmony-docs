@@ -14,9 +14,7 @@ function setBadgeNumber(badgeNumber: number, callback: AsyncCallback<void>): voi
 
 Sets the notification badge number. This API uses an asynchronous callback to return the result.
 
-A badge is a numeric identifier displayed in the upper right corner of an application's desktop icon, used to prompt the user about the number of unprocessed notifications. After setting, the desktop icon will display the corresponding badge number. This is suitable for scenarios where the number of pending messages needs to be prompted on the desktop icon, such as the number of unread messages and to-do items.
-
-This API can be properly called on devices other than wearables. If it is called on wearables, error code 801 is returned.
+A badge is a numeric identifier displayed in the upper right corner of an application's home-screen icon, used to prompt the user about the number of unprocessed notifications. After setting, the home-screen icon will display the corresponding badge number. This is suitable for scenarios where the number of pending messages needs to be prompted on the home-screen icon, such as the number of unread messages and to-do items.
 
 **Since:** 10
 
@@ -30,7 +28,7 @@ This API can be properly called on devices other than wearables. If it is called
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| badgeNumber | number | Yes | Notification badge number to set. If **badgeNumber** is set to a value less than or equal to **0**, badges are cleared; if the value is greater than **99**, **99+** is displayed on the badge. |
+| badgeNumber | number | Yes | Number of badges. When the badge number is less than or equal to 0, the badge is cleared. When the value is greater than 99, the [notification badge](../../../notification/notification-glossary.md#notification-badge) displays 99+. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object. |
 
 **Error codes:**
@@ -69,9 +67,7 @@ function setBadgeNumber(badgeNumber: number): Promise<void>
 
 Sets the notification badge number. This API uses a promise to return the result.
 
-A badge is a numeric identifier displayed in the upper right corner of an application's desktop icon, used to prompt the user about the number of unprocessed notifications. After setting, the desktop icon will display the corresponding badge number. This is suitable for scenarios where the number of pending messages needs to be prompted on the desktop icon, such as the number of unread messages and to-do items.
-
-This API can be properly called on devices other than wearables. If it is called on wearables, error code 801 is returned.
+A badge is a numeric identifier displayed in the upper right corner of an application's home-screen icon, used to prompt the user about the number of unprocessed notifications. After setting, the home-screen icon will display the corresponding badge number. This is suitable for scenarios where the number of pending messages needs to be prompted on the home-screen icon, such as the number of unread messages and to-do items.
 
 **Since:** 10
 
@@ -85,7 +81,7 @@ This API can be properly called on devices other than wearables. If it is called
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| badgeNumber | number | Yes | Notification badge number to set. If **badgeNumber** is set to a value less than or equal to **0**, badges are cleared; if the value is greater than **99**, **99+** is displayed on the badge. |
+| badgeNumber | number | Yes | Number of badges. When the badge number is less than or equal to 0, the badge is cleared. When the value is greater than 99, the [notification badge](../../../notification/notification-glossary.md#notification-badge) displays 99+. |
 
 **Return value:**
 

@@ -4,7 +4,7 @@
 export type NotificationSwitchChangedCallback = _NotificationSwitchChangedCallback
 ```
 
-Register the callback function type for notification switch state changes set by the interface of [notificationManager.setNotificationSwitch]{@link./@ohos.notificationManager:notificationManager.setNotificationSwitch}.
+Registers the callback for notification switch state changes set by the [notificationManager.setNotificationSwitch](arkts-notification-notificationmanager-setnotificationswitch-f-sys.md) API.
 
 **Type:** _NotificationSwitchChangedCallback
 

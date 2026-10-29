@@ -228,8 +228,6 @@ Returns the sign of the x, indicating whether x is positive, negative or zero.
 
 <!--Device-Math-sign(x: number): number--><!--Device-Math-sign(x: number): number-End-->
 
-**Test API:** This API is used only in automated test scripts.
-
 **Parameters:**
 
 | Name | Type | Mandatory | Description |

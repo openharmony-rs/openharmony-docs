@@ -51,8 +51,6 @@ Determines whether all the members of an array satisfy the specified test.
 
 <!--Device-Array-every<S extends T>(predicate: (value: T, index: number, array: T[]) => value is S, thisArg?: any): this is S[]--><!--Device-Array-every<S extends T>(predicate: (value: T, index: number, array: T[]) => value is S, thisArg?: any): this is S[]-End-->
 
-**Test API:** This API is used only in automated test scripts.
-
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -69,8 +67,6 @@ every(predicate: (value: T, index: number, array: T[]) => unknown, thisArg?: any
 Determines whether all the members of an array satisfy the specified test.
 
 <!--Device-Array-every(predicate: (value: T, index: number, array: T[]) => unknown, thisArg?: any): boolean--><!--Device-Array-every(predicate: (value: T, index: number, array: T[]) => unknown, thisArg?: any): boolean-End-->
-
-**Test API:** This API is used only in automated test scripts.
 
 **Parameters:**
 

@@ -27,8 +27,6 @@ Checks whether the system is undergoing a stability test. This API uses an async
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
-**Test API:** This API is used only in automated test scripts.
-
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -77,8 +75,6 @@ Checks whether the system is undergoing a stability test. This API uses a promis
 <!--Device-appManager-function isRunningInStabilityTest(): Promise<boolean>--><!--Device-appManager-function isRunningInStabilityTest(): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
-
-**Test API:** This API is used only in automated test scripts.
 
 **Return value:**
 

@@ -1,4 +1,6 @@
-# @Reusable
+# ComponentExtensionDecorators
+
+## Reusable
 
 ```TypeScript
 declare const Reusable: ClassDecorator & ((options: ReusableOptions) => ClassDecorator)
@@ -7,6 +9,8 @@ declare const Reusable: ClassDecorator & ((options: ReusableOptions) => ClassDec
 为了降低反复创建销毁自定义组件带来的性能开销，开发者可以使用\@Reusable装饰\@Component装饰的自定义组件，实现组件复用。\@Reusable支持通过reuseId标识不同类型的可复用组件，提供aboutToReuse回调接收复用参数，并支持配置内存优化策略。该装饰器适用于列表滚动、频繁切换组件显示与隐藏等需要反复创建销毁组件的场景。
 
 开发指南参考：[@Reusable装饰器：组件复用](../../../ui/state-management/arkts-reusable.md)。
+
+options：可复用自定义组件的参数，用于配置内存优化策略，缺省时无内存优化策略。建议在组件频繁创建销毁的场景下配置该参数以获得内存优化效果。
 
 **起始版本：** 10
 

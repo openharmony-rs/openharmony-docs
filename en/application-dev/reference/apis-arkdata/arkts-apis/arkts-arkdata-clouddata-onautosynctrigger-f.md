@@ -12,7 +12,7 @@ import { cloudData } from '@kit.ArkData';
 function onAutoSyncTrigger(observer: Callback<AutoSyncTriggerInfo>): void
 ```
 
-Describes the triggering method for automatic device-cloud synchronization subscription.
+Registers the auto sync trigger event notification when device-cloud sync is enabled and automatic sync is disabled for the application. When the auto trigger condition is met, the callback function is invoked.
 
 **Since:** 26.0.0
 
@@ -26,7 +26,7 @@ Describes the triggering method for automatic device-cloud synchronization subsc
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| observer | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[AutoSyncTriggerInfo](arkts-arkdata-clouddata-autosynctriggerinfo-i.md)&gt; | Yes | Callback for automatic synchronization trigger interception. |
+| observer | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[AutoSyncTriggerInfo](arkts-arkdata-clouddata-autosynctriggerinfo-i.md)&gt; | Yes | Callback invoked to return the auto sync trigger information. |
 
 **Error codes:**
 

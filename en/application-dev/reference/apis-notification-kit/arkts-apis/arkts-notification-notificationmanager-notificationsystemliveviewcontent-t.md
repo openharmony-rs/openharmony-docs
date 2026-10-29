@@ -4,7 +4,7 @@
 export type NotificationSystemLiveViewContent = _NotificationSystemLiveViewContent
 ```
 
-Describes the system live view notification.
+Defines the [system live view](../../../notification/notification-glossary.md#system-live-view) [notification content](../../../notification/notification-glossary.md#notification-content).
 
 **Type:** _NotificationSystemLiveViewContent
 

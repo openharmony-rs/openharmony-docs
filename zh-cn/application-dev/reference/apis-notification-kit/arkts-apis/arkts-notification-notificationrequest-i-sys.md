@@ -4,7 +4,7 @@
 export interface NotificationRequest
 ```
 
-定义了通知请求的数据结构，用于描述一条通知的全部信息，包括通知内容、标识、展示样式、交互行为等。
+定义了[通知请求](../../../notification/notification-glossary.md#notification-request通知请求)的数据结构，用于描述一条通知的全部信息，包括[通知内容](../../../notification/notification-glossary.md#notification-content通知内容)、标识、展示样式、交互行为等。
 
 **起始版本：** 7
 
@@ -36,7 +36,7 @@ readonly agentBundle?: BundleOption
 readonly appInstanceKey?: string
 ```
 
-应用实例键值。默认为空。
+应用实例键值。默认为空。当需要区分同一应用的不同实例时，设置此字段。
 
 **类型：** string
 
@@ -54,7 +54,9 @@ readonly appInstanceKey?: string
 classification?: string
 ```
 
-通知分类。预留能力，暂未支持。
+通知分类。
+
+预留能力，暂未支持。
 
 **类型：** string
 
@@ -72,7 +74,9 @@ classification?: string
 readonly deviceId?: string
 ```
 
-通知源的deviceId。预留能力，暂未支持。
+通知源的deviceId。
+
+预留能力，暂未支持。
 
 **类型：** string
 
@@ -136,7 +140,7 @@ forceDistributed?: boolean
 groupInfo?: GroupInfo
 ```
 
-组通知定制信息。默认为空。
+[组通知](../../../notification/notification-glossary.md#group-notification组通知)定制信息。默认为空。
 
 **类型：** [GroupInfo](arkts-notification-notificationrequest-groupinfo-i-sys.md)
 
@@ -183,7 +187,7 @@ isRemoveAllowed?: boolean
 notDistributed?: boolean
 ```
 
-通知是否不进行全场景跨设备协同显示，默认为false。
+通知是否不进行全场景[跨设备协同](../../../notification/notification-glossary.md#cross-device-collaboration跨设备协同)显示，默认为false。
 
 **说明：** 
 
@@ -211,7 +215,7 @@ notDistributed?: boolean
 notificationControlFlags?: number
 ```
 
-通知提醒方式管控。默认值为0。
+[通知提醒方式](../../../notification/notification-glossary.md#notification-reminder-mode通知提醒方式)管控。默认值为0。
 
 可以通过此接口减少当前通知的提醒方式。与[NotificationControlFlagStatus](arkts-notification-notificationmanager-notificationcontrolflagstatus-e-sys.md)的枚举进行按位或运算得到该参数。
 
@@ -249,7 +253,9 @@ representativeBundle?: BundleOption
 readonly source?: number
 ```
 
-通知源。预留能力，暂未支持。
+通知源。
+
+预留能力，暂未支持。
 
 **类型：** number
 
@@ -285,7 +291,7 @@ trigger?:Trigger
 unifiedGroupInfo?: UnifiedGroupInfo
 ```
 
-消息智能聚合信息字段。默认为空。
+消息[智能聚合](../../../notification/notification-glossary.md#notification-smart-aggregation智能聚合)信息字段。默认为空。
 
 **类型：** [UnifiedGroupInfo](arkts-notification-notificationrequest-unifiedgroupinfo-i-sys.md)
 

@@ -258,7 +258,7 @@ function removeAll(bundle?: BundleOption): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundle | BundleOption | 否 | 指定应用的包信息。默认为空，表示删除所有通知。 |
+| bundle | BundleOption | 否 | 指定应用的包信息。默认为空。当该参数为空时，表示删除所有应用的通知。 |
 
 **返回值：**
 

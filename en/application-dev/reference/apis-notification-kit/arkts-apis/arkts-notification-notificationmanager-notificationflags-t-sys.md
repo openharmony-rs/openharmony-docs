@@ -4,7 +4,7 @@
 export type NotificationFlags = _NotificationFlags
 ```
 
-Defines the notification flags.
+Describes the [notification flags](../../../notification/notification-glossary.md#notification-flags).
 
 **Type:** _NotificationFlags
 

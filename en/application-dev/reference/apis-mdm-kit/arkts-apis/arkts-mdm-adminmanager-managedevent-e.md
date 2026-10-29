@@ -142,6 +142,22 @@ Application update event.
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
+## MANAGED_EVENT_PASSWORD_FAILED
+
+```TypeScript
+MANAGED_EVENT_PASSWORD_FAILED = 13
+```
+
+Password authentication failure event.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ManagedEvent-MANAGED_EVENT_PASSWORD_FAILED = 13--><!--Device-ManagedEvent-MANAGED_EVENT_PASSWORD_FAILED = 13-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
 ## MANAGED_EVENT_POLICIES_CHANGED
 
 ```TypeScript

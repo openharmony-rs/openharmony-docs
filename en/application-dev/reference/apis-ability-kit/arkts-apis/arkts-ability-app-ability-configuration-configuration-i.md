@@ -146,6 +146,26 @@ Font weight scale ratio. The value is a non-negative number. The default value i
 
 **System capability:** SystemCapability.Ability.AbilityBase
 
+## hasBrandColorChanged
+
+```TypeScript
+hasBrandColorChanged?: boolean
+```
+
+Indicates whether the brand color has ever changed. true indicates that it has changed, and false indicates that it has not changed.
+
+**Type:** boolean
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+<!--Device-Configuration-hasBrandColorChanged?: boolean--><!--Device-Configuration-hasBrandColorChanged?: boolean-End-->
+
+**System capability:** SystemCapability.Ability.AbilityBase
+
 ## hasPointerDevice
 
 ```TypeScript

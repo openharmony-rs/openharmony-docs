@@ -4,9 +4,9 @@
 interface ParamsSpec
 ```
 
-加解密参数，在进行对称加解密时需要构造其子类对象，并将子类对象传入init()方法。
+加解密参数，在进行对称加解密时需要构造其子类对象，并将子类对象传入[init()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#init-4)方法。
 
-<br>适用于需要iv等参数的对称加解密模式（对于无iv等参数的模式如ECB模式，无需构造，在init()中传入null即可）。
+<br>适用于需要iv等参数的对称加解密模式（对于无iv等参数的模式如ECB模式，无需构造，在[init()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#init-4)中传入null即可）。
 
 > **说明：** 
 > 
@@ -15,7 +15,7 @@ interface ParamsSpec
 
 > **说明：** 
 > 
-> 由于init()的params
+> 由于[init()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#init-4)的params
 > 参数是ParamsSpec类型（父类），而实际需要传入具体的子类对象（如[IvParamsSpec](arkts-cryptoarchitecture-cryptoframework-ivparamsspec-i.md)），因此在
 > 构造子类对象时应设置其父类ParamsSpec的algName参数，使算法库在init()时知道传入的是哪种子类对象。
 

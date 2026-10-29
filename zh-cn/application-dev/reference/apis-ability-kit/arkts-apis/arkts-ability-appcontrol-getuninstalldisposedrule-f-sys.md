@@ -16,7 +16,7 @@ function getUninstallDisposedRule(appIdentifier: string, appIndex?: number): Uni
 
 **起始版本：** 15
 
-**需要权限：** ohos.permission.GET_DISPOSED_APP_STATUS or ohos.permission.MANAGE_DISPOSED_APP_STATUS
+**需要权限：** ohos.permission.GET_DISPOSED_APP_STATUS 或 ohos.permission.MANAGE_DISPOSED_APP_STATUS
 
 <!--Device-appControl-function getUninstallDisposedRule(appIdentifier: string, appIndex?: int): UninstallDisposedRule--><!--Device-appControl-function getUninstallDisposedRule(appIdentifier: string, appIndex?: int): UninstallDisposedRule-End-->
 

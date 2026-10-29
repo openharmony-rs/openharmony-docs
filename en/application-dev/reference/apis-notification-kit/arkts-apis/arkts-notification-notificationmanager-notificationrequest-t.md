@@ -4,7 +4,7 @@
 export type NotificationRequest = _NotificationRequest
 ```
 
-Describes the notification request.
+Defines the [notification request](../../../notification/notification-glossary.md#notification-request).
 
 **Type:** _NotificationRequest
 

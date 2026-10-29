@@ -12,8 +12,6 @@ Enumerates the directions in which a window can be resized.
 
 **System capability:** SystemCapability.Test.UiTest
 
-**Test API:** This API is used only in automated test scripts.
-
 ## DOWN
 
 ```TypeScript

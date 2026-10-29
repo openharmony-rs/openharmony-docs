@@ -4,7 +4,7 @@
 export interface NotificationBasicContent
 ```
 
-Describes the basic text notification, which is used to display the title and body content. It serves as the basic content structure for other notification types. Other notification types (such as long text, multi-line text, picture, and live view) inherit this API and extend their own specific fields on this basis.
+Describes the basic text notification, which is used to display the title and body content. It serves as basic content structure for other notification types. Other notification types (such as long text, multi-line text, picture, and live view) inherit this API and extend their own specific fields on this basis.
 
 **Since:** 7
 
@@ -18,7 +18,7 @@ Describes the basic text notification, which is used to display the title and bo
 structuredText?: Map<string, string>
 ```
 
-Structured notification. Currently, only service reminder messages can be displayed in structured format in the notification center. This parameter is left empty by default. (The size of key or value cannot exceed 512 bytes; otherwise, the excess part will be truncated. Only a maximum of three pairs of structured data are supported.)
+Structured field of the notification. Currently, only service reminder SMS messages are supported for structured display in the [notification center](../../../notification/notification-glossary.md#notification-center). Empty by default. (The size of each key/value must not exceed 512 bytes; the excess part is truncated. A maximum of 3 pairs of structured data is supported, and the excess part is ignored.)
 
 **Type:** Map&lt;string, string&gt;
 

@@ -34,7 +34,7 @@ function registerExternalLogManager(logMngr: ExternalLogManager): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 11106001 | State error. Possible causes: 1. Log manager already registered; |
+| [11106001](../errorcode-hiappevent.md#11106001-注册external_log日志管理者失败) | State error. Possible causes: 1. Log manager already registered; |
 
 **示例**
 

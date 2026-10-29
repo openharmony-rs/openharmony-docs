@@ -1,10 +1,10 @@
 # ArkTS API<!--arkts-notificationkit-->
 
-- [@ohos.application.NotificationSubscriberExtensionAbility](arkts-notification-application-notificationsubscriberextensionability.md)
+- [@ohos.application.NotificationSubscriberExtensionAbility(ExtensionAbility for Notification Subscription)](arkts-notification-application-notificationsubscriberextensionability.md)
   - [NotificationSubscriberExtensionAbility](arkts-notification-application-notificationsubscriberextensionability-notificationsubscriberextensionability-c.md)
-- [@ohos.application.NotificationSubscriberExtensionContext](arkts-notification-application-notificationsubscriberextensioncontext.md)
+- [@ohos.application.NotificationSubscriberExtensionContext(ExtensionAbility Context for Notification Subscription)](arkts-notification-application-notificationsubscriberextensioncontext.md)
   - [NotificationSubscriberExtensionContext](arkts-notification-application-notificationsubscriberextensioncontext-notificationsubscriberextensioncontext-c.md)
-- [@ohos.notificationExtensionSubscription](arkts-notification-notificationextensionsubscription.md)
+- [@ohos.notificationExtensionSubscription(notificationExtensionSubscription)](arkts-notification-notificationextensionsubscription.md)
   - [disableUserGrantedByBundle](arkts-notification-notificationextensionsubscription-disableusergrantedbybundle-f.md)
   <!--Del-->
   - [getAllSubscriptionBundles(system api)](arkts-notification-notificationextensionsubscription-getallsubscriptionbundles-f-sys.md)<!--DelEnd-->
@@ -32,7 +32,7 @@
   - [NotificationInfo](arkts-notification-notificationextensionsubscription-notificationinfo-t.md)
   - [UserGrantSetting](arkts-notification-notificationextensionsubscription-usergrantsetting-t.md)
   - [SubscribeType](arkts-notification-notificationextensionsubscription-subscribetype-e.md)
-- [@ohos.notificationManager](arkts-notification-notificationmanager.md)
+- [@ohos.notificationManager(NotificationManager)](arkts-notification-notificationmanager.md)
   <!--Del-->
   - [addDoNotDisturbProfile(system api)](arkts-notification-notificationmanager-adddonotdisturbprofile-f-sys.md)<!--DelEnd-->
   - [addSlot](arkts-notification-notificationmanager-addslot-f.md)
@@ -312,7 +312,7 @@
   <!--Del-->
   - [SwitchState(system api)](arkts-notification-notificationmanager-switchstate-e-sys.md)<!--DelEnd-->
 <!--Del-->
-- [@ohos.notificationSubscribe](arkts-notification-notificationsubscribe.md)<!--DelEnd-->
+- [@ohos.notificationSubscribe(NotificationSubscribe)](arkts-notification-notificationsubscribe.md)<!--DelEnd-->
   <!--Del-->
   - [distributeOperation(system api)](arkts-notification-notificationsubscribe-distributeoperation-f-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -363,7 +363,7 @@
   - [VoiceContentOptions(system api)](arkts-notification-notificationsubscribe-voicecontentoptions-t-sys.md)<!--DelEnd-->
   <!--Del-->
   - [RemoveReason(system api)](arkts-notification-notificationsubscribe-removereason-e-sys.md)<!--DelEnd-->
-- [@ohos.notification](arkts-notification-notification.md)
+- [@ohos.notification(Notification)](arkts-notification-notification.md)
   - [addSlot](arkts-notification-notification-addslot-depr-f.md)
   <!--Del-->
   - [addSlot(system api)](arkts-notification-notification-addslot-depr-f-sys.md)<!--DelEnd-->
@@ -439,18 +439,18 @@
   - [SlotType](arkts-notification-notification-slottype-depr-e.md)
   <!--Del-->
   - [SourceType(system api)](arkts-notification-notification-sourcetype-depr-e-sys.md)<!--DelEnd-->
-- [@system.notification](arkts-notification-system-notification.md)
+- [@system.notification(Notification)](arkts-notification-system-notification.md)
   - [Notification](arkts-notification-system-notification-notification-c.md)
   - [ActionResult](arkts-notification-system-notification-actionresult-i.md)
   - [ShowNotificationOptions](arkts-notification-system-notification-shownotificationoptions-i.md)
 - notification<!--arkts-notificationkit-notification-->
-  - [notificationActionButton(Describes an action button displayed in a notification)](arkts-notification-notificationactionbutton.md)
+  - [notificationActionButton(NotificationActionButton)](arkts-notification-notificationactionbutton.md)
     - [NotificationActionButton](arkts-notification-notificationactionbutton-i.md)
-  - [NotificationCommonDef(Some common definitions)](arkts-notification-notificationcommondef.md)
+  - [NotificationCommonDef(NotificationCommonDef)](arkts-notification-notificationcommondef.md)
     - [BundleOption](arkts-notification-notificationcommondef-bundleoption-i.md)
     - [GrantedBundleInfo](arkts-notification-notificationcommondef-grantedbundleinfo-i.md)
     - [UserGrantSetting](arkts-notification-notificationcommondef-usergrantsetting-i.md)
-  - [notificationContent(Some notification types and content)](arkts-notification-notificationcontent.md)
+  - [notificationContent(NotificationContent)](arkts-notification-notificationcontent.md)
     - [NotificationBasicContent](arkts-notification-notificationcontent-notificationbasiccontent-i.md)
     <!--Del-->
     - [NotificationBasicContent(system api)](arkts-notification-notificationcontent-notificationbasiccontent-i-sys.md)<!--DelEnd-->
@@ -481,18 +481,18 @@
     - [LiveViewStatus(system api)](arkts-notification-notificationcontent-liveviewstatus-e-sys.md)<!--DelEnd-->
     <!--Del-->
     - [LiveViewTypes(system api)](arkts-notification-notificationcontent-liveviewtypes-e-sys.md)<!--DelEnd-->
-  - [NotificationExtensionContent](arkts-notification-notificationextensioncontent.md)
+  - [NotificationExtensionContent(NotificationExtensionContent)](arkts-notification-notificationextensioncontent.md)
     - [NotificationExtensionContent](arkts-notification-notificationextensioncontent-i.md)
-  - [NotificationExtensionSubscriptionInfo(Describes a notification extension subscription info)](arkts-notification-notificationextensionsubscriptioninfo.md)
+  - [NotificationExtensionSubscriptionInfo(NotificationExtensionSubscriptionInfo)](arkts-notification-notificationextensionsubscriptioninfo.md)
     - [NotificationExtensionSubscriptionInfo](arkts-notification-notificationextensionsubscriptioninfo-i.md)
-  - [notificationFlags(Some states and flags for notifications)](arkts-notification-notificationflags.md)
+  - [notificationFlags(NotificationFlags)](arkts-notification-notificationflags.md)
     - [NotificationFlags](arkts-notification-notificationflags-i.md)
     <!--Del-->
     - [NotificationFlags(system api)](arkts-notification-notificationflags-i-sys.md)<!--DelEnd-->
     - [NotificationFlagStatus](arkts-notification-notificationflags-notificationflagstatus-e.md)
-  - [NotificationInfo](arkts-notification-notificationinfo.md)
+  - [NotificationInfo(NotificationInfo)](arkts-notification-notificationinfo.md)
     - [NotificationInfo](arkts-notification-notificationinfo-i.md)
-  - [notificationRequest(Information carried when a notification is sent)](arkts-notification-notificationrequest.md)
+  - [notificationRequest(NotificationRequest)](arkts-notification-notificationrequest.md)
     - [DistributedOptions](arkts-notification-notificationrequest-distributedoptions-i.md)
     <!--Del-->
     - [DistributedOptions(system api)](arkts-notification-notificationrequest-distributedoptions-i-sys.md)<!--DelEnd-->
@@ -518,20 +518,20 @@
     - [MonitorEvent(system api)](arkts-notification-notificationrequest-monitorevent-e-sys.md)<!--DelEnd-->
     <!--Del-->
     - [TriggerType(system api)](arkts-notification-notificationrequest-triggertype-e-sys.md)<!--DelEnd-->
-  - [notificationSlot(Description of the notification channel)](arkts-notification-notificationslot.md)
+  - [notificationSlot(NotificationSlot)](arkts-notification-notificationslot.md)
     - [NotificationSlot](arkts-notification-notificationslot-i.md)
     <!--Del-->
     - [NotificationSlot(system api)](arkts-notification-notificationslot-i-sys.md)<!--DelEnd-->
   <!--Del-->
-  - [notificationSorting(Provides sorting information about an active notification)](arkts-notification-notificationsorting.md)<!--DelEnd-->
+  - [notificationSorting(NotificationSorting)](arkts-notification-notificationsorting.md)<!--DelEnd-->
     <!--Del-->
     - [NotificationSorting(system api)](arkts-notification-notificationsorting-i-sys.md)<!--DelEnd-->
   <!--Del-->
-  - [notificationSortingMap(The **NotificationSortingMap** module provides APIs for defining the sorting information of active notifications in all subscribed notifications.)](arkts-notification-notificationsortingmap.md)<!--DelEnd-->
+  - [notificationSortingMap(NotificationSortingMap)](arkts-notification-notificationsortingmap.md)<!--DelEnd-->
     <!--Del-->
     - [NotificationSortingMap(system api)](arkts-notification-notificationsortingmap-i-sys.md)<!--DelEnd-->
   <!--Del-->
-  - [notificationSubscribeInfo(Sets filter criteria of publishers for subscribing to desired notifications)](arkts-notification-notificationsubscribeinfo.md)<!--DelEnd-->
+  - [notificationSubscribeInfo(NotificationSubscribeInfo)](arkts-notification-notificationsubscribeinfo.md)<!--DelEnd-->
     <!--Del-->
     - [NotificationSubscribeInfo(system api)](arkts-notification-notificationsubscribeinfo-i-sys.md)<!--DelEnd-->
     <!--Del-->
@@ -539,7 +539,7 @@
     <!--Del-->
     - [VoiceContentOptions(system api)](arkts-notification-notificationsubscribeinfo-voicecontentoptions-i-sys.md)<!--DelEnd-->
   <!--Del-->
-  - [notificationSubscriber(Provides methods that will be called back when the subscriber receives a new notification or a notification is canceled)](arkts-notification-notificationsubscriber.md)<!--DelEnd-->
+  - [notificationSubscriber(NotificationSubscriber)](arkts-notification-notificationsubscriber.md)<!--DelEnd-->
     <!--Del-->
     - [BadgeEnabledChangedCallback(system api)](arkts-notification-notificationsubscriber-badgeenabledchangedcallback-i-sys.md)<!--DelEnd-->
     <!--Del-->
@@ -568,7 +568,7 @@
     - [NotificationSwitchChangedCallback(system api)](arkts-notification-notificationswitchchangedcallback-t-sys.md)<!--DelEnd-->
     <!--Del-->
     - [SystemUpdateCallback(system api)](arkts-notification-systemupdatecallback-t-sys.md)<!--DelEnd-->
-  - [notificationTemplate(Describes a NotificationTemplate instance)](arkts-notification-notificationtemplate.md)
+  - [notificationTemplate(NotificationTemplate)](arkts-notification-notificationtemplate.md)
     - [NotificationTemplate](arkts-notification-notificationtemplate-i.md)
-  - [notificationUserInput(Describes a NotificationUserInput instance)](arkts-notification-notificationuserinput.md)
+  - [notificationUserInput(NotificationUserInput)](arkts-notification-notificationuserinput.md)
     - [NotificationUserInput](arkts-notification-notificationuserinput-i.md)

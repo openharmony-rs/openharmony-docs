@@ -147,7 +147,7 @@ Navigation(pathInfos: NavPathStack, homeDestination: HomePathInfo)
 
 ### 示例1（Navigation页面布局）
 
-该示例主要演示Navigation页面的布局包括标题栏title，菜单栏menus，内容区和工具栏toolbarConfiguration。
+该示例主要演示Navigation页面的布局包括标题栏[title](#title)，菜单栏[menus](#menus)，内容区和工具栏[toolbarConfiguration](#toolbarconfiguration10)。
 
 
 
@@ -255,7 +255,7 @@ struct NavigationExample {
 
 ### 示例2（使用导航控制器方法）
 
-该示例主要演示NavPathStack中方法的使用及路由拦截。
+该示例主要演示[NavPathStack](#navpathstack10)中方法的使用及路由拦截。
 
 ```TypeScript
 // Index.ets
@@ -520,7 +520,7 @@ export struct PageTwo {
 
 ### 示例3（设置可交互转场动画）
 
-该示例主要演示设置每个NavDestination子页面的自定义转场动画及可交互转场动画。
+该示例主要演示设置每个[NavDestination](ts-basic-components-navdestination.md)子页面的自定义转场动画及可交互转场动画。
 
 ```TypeScript
 // Index.ets
@@ -1004,7 +1004,7 @@ export class CustomTransition {
 
 ### 示例4（Navigation带参返回）
 
-该示例主要演示Navigation通过NavPathStack提供的接口来实现将设置的参数传给上一级页面。
+该示例主要演示Navigation通过[NavPathStack](#navpathstack10)提供的接口来实现将设置的参数传给上一级页面。
 
 ```TypeScript
 // Index.ets
@@ -1295,7 +1295,7 @@ export struct PageTwo {
 
 ### 示例5（设置背景颜色和模糊效果）
 
-该示例主要演示设置Navigation主页的标题栏、工具栏和NavDestination页面的标题栏的背景颜色和背景模糊效果。
+该示例主要演示设置Navigation主页的标题栏、工具栏和[NavDestination](ts-basic-components-navdestination.md)页面的标题栏的背景颜色和背景模糊效果。
 
 ```TypeScript
 // Index
@@ -1591,7 +1591,7 @@ export const EFFECT_OPTION_2: BackgroundEffectOptions = {
 
 ### 示例6（嵌套场景下获取外层栈）
 
-该示例主要演示在嵌套Navigation场景下，如何获取父NavPathStack。
+该示例主要演示在嵌套Navigation场景下，如何获取父[NavPathStack](#navpathstack10)。
 
 ```TypeScript
 @Entry
@@ -1664,9 +1664,9 @@ export function PageOneBuilder(name: string) {
 
 该示例主要演示如下两点功能：
 
-NavPathStack无需声明为状态变量，也可以实现路由栈操作功能。
+[NavPathStack](#navpathstack10)无需声明为状态变量，也可以实现路由栈操作功能。
 
-NavDestination通过onReady事件能够拿到对应的[NavPathInfo](arkts-arkui-navigation-comp-navpathinfo-c.md)和所属的NavPathStack。
+[NavDestination](ts-basic-components-navdestination.md)通过[onReady](ts-basic-components-navdestination.md#onready11)事件能够拿到对应的[NavPathInfo](arkts-arkui-navigation-comp-navpathinfo-c.md)和所属的[NavPathStack](#navpathstack10)。
 
 ```TypeScript
 class PageParam {
@@ -1775,7 +1775,7 @@ struct NavigationExample2 {
 
 ### 示例8（NavDestination生命周期时序）
 
-该示例演示NavDestination的onAppear，onDisAppear，onShown，onHidden，onWillAppear，onWillDisappear，onWillShow，onWillHide接口的生命周期时序。
+该示例演示[NavDestination](ts-basic-components-navdestination.md)的[onAppear](ts-universal-events-show-hide.md#onappear)，[onDisAppear](ts-universal-events-show-hide.md#ondisappear)，[onShown](ts-basic-components-navdestination.md#onshown10)，[onHidden](ts-basic-components-navdestination.md#onhidden10)，[onWillAppear](ts-basic-components-navdestination.md#onwillappear12)，[onWillDisappear](ts-basic-components-navdestination.md#onwilldisappear12)，[onWillShow](ts-basic-components-navdestination.md#onwillshow12)，[onWillHide](ts-basic-components-navdestination.md#onwillhide12)接口的生命周期时序。
 
 ```TypeScript
 @Builder
@@ -1968,7 +1968,7 @@ struct NavigationExample {
 
 ### 示例10（定义导航控制器派生类）
 
-该示例主要演示如何定义NavPathStack的派生类和派生类在Navigation中的基本用法。
+该示例主要演示如何定义[NavPathStack](#navpathstack10)的派生类和派生类在Navigation中的基本用法。
 
 ```TypeScript
 // Index.ets
@@ -2118,7 +2118,7 @@ export class NewParam {
 
 ### 示例11（使用Symbol组件）
 
-该示例主要演示Navigation和NavDestination如何使用Symbol组件。
+该示例主要演示Navigation和[NavDestination](ts-basic-components-navdestination.md)如何使用Symbol组件。
 
 ```TypeScript
 // Index.ets
@@ -2269,7 +2269,7 @@ export struct NavigationMenu {
 
 ### 示例12（设置自定义标题栏边距）
 
-该示例主要演示Navigation和NavDestination如何设置自定义标题栏边距，如何通过TextModifier修改主副标题文本样式。
+该示例主要演示Navigation和[NavDestination](ts-basic-components-navdestination.md)如何设置自定义标题栏边距，如何通过TextModifier修改主副标题文本样式。
 
 ```TypeScript
 // Index.ets
@@ -2766,7 +2766,7 @@ export class CustomTransition {
 
 ### 示例14（设置Navigation双栏模式）
 
-该示例主要展示Navigation组件在双栏模式下的使用效果，通过[splitPlaceholder](arkts-arkui-navigation-comp-attribute.md#splitplaceholder)设置右侧默认占位页，使用navBarWidthRange配置导航栏宽度范围，并借助divider属性自定义导航栏与内容区之间的分割线样式。
+该示例主要展示Navigation组件在双栏模式下的使用效果，通过[splitPlaceholder](arkts-arkui-navigation-comp-attribute.md#splitplaceholder)设置右侧默认占位页，使用[navBarWidthRange](#navbarwidthrange10)配置导航栏宽度范围，并借助[divider](#divider23)属性自定义导航栏与内容区之间的分割线样式。
 
 从API version 20开始，新增splitPlaceholder属性；API version 23开始，新增divider属性。
 
@@ -2973,7 +2973,7 @@ struct NavigationExample {
 
 ### 示例16（Navigation使用NavDestination作为导航页）
 
-该示例展示了Navigation组件通过配置homeDestination参数，实现以NavDestination作为根导航页的效果。
+该示例展示了Navigation组件通过配置[homeDestination](#navigation)参数，实现以[NavDestination](ts-basic-components-navdestination.md)作为根导航页的效果。
 
 从API version 20开始，新增创建Navigation组件的方式。
 
@@ -3060,7 +3060,7 @@ struct Index {
 
 ### 示例17（使用新增导航控制器方法）
 
-该示例通过设置[setInterception](arkts-arkui-navigation-comp-navpathstack-c.md#setinterception)方法来实现路由拦截功能，并在NavDestinationContext中获取mode。
+该示例通过设置[setInterception](arkts-arkui-navigation-comp-navpathstack-c.md#setinterception)方法来实现路由拦截功能，并在[NavDestinationContext](ts-basic-components-navdestination.md#navdestinationcontext11)中获取mode。
 
 从API version 22开始，在setInterception的参数类型[NavigationInterception](arkts-arkui-navigation-comp-navigationinterception-i.md)中新增了interception接口。
 
@@ -3330,7 +3330,7 @@ export struct PageTwo {
 
 ### 示例18（设置Navigation可恢复）
 
-该示例演示如何使用recoverable配置Navigation可恢复，需要开发者在应用模块初始化时启用[UIAbility](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md)的备份恢复功能，可参考[UIAbility备份恢复](../../../application-models/ability-recover-guideline.md)。
+该示例演示如何使用[recoverable](#recoverable14)配置Navigation可恢复，需要开发者在应用模块初始化时启用[UIAbility](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md)的备份恢复功能，可参考[UIAbility备份恢复](../../../application-models/ability-recover-guideline.md)。
 
 从API version 14开始，新增recoverable接口。
 
@@ -3503,9 +3503,9 @@ export struct NavigationMenu {
 
 ### 示例19（设置ScrollEffectOptions开启标题栏滚动模糊）
 
-该示例演示如何使用scrollEffectOptions配置项，开启标题栏滚动模糊效果。
+该示例演示如何使用[scrollEffectOptions](#scrolleffectoptions)配置项，开启标题栏滚动模糊效果。
 
-从API版本26.0.0开始，title接口的参数options，新增了scrollEffectOptions属性。
+从API版本26.0.0开始，[title](#title)接口的参数options，新增了[scrollEffectOptions](#scrolleffectoptions)属性。
 
 
 

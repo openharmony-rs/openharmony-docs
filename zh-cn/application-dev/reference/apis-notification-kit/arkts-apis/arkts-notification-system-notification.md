@@ -1,4 +1,4 @@
-# @system.notification
+# @system.notification(通知消息)
 
 ## 导入模块
 
@@ -12,11 +12,11 @@ import { Notification, ActionResult, ShowNotificationOptions } from '@kit.Notifi
 
 | 名称 | 说明 |
 | --- | --- |
-| [Notification](arkts-notification-system-notification-notification-c.md) | 提供通知管理的能力。 |
+| [Notification](arkts-notification-system-notification-notification-c.md) | Manages notifications. |
 
 ### 接口
 
 | 名称 | 说明 |
 | --- | --- |
-| [ActionResult](arkts-notification-system-notification-actionresult-i.md) |  |
-| [ShowNotificationOptions](arkts-notification-system-notification-shownotificationoptions-i.md) |  |
+| [ActionResult](arkts-notification-system-notification-actionresult-i.md) | 定义通知被点击后触发的行为。 |
+| [ShowNotificationOptions](arkts-notification-system-notification-shownotificationoptions-i.md) | 通知展示的相关参数选项，可设置通知标题、通知内容以及通知被点击后触发的行为。 |

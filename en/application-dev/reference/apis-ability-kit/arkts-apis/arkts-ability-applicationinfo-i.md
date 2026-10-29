@@ -443,8 +443,6 @@ Application multi-instance mode. It is applicable to scenarios where multiple ap
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-**Test API:** This API is used only in automated test scripts.
-
 ## name
 
 ```TypeScript

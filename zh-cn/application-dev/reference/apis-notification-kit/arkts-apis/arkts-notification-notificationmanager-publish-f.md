@@ -14,7 +14,7 @@ function publish(request: NotificationRequest, callback: AsyncCallback<void>): v
 
 发布通知。使用callback异步回调。
 
-发布通知后，通知将以通知卡片的形式展示在设备的通知中心、状态栏等位置。如果新发布通知与已发布通知的ID和标签都相同，则新通知将取代原有通知，实现通知的更新效果。
+发布通知后，通知将以[通知卡片](../../../notification/notification-glossary.md#notification-card通知卡片)的形式展示在设备的[通知中心](../../../notification/notification-glossary.md#notification-center通知中心)、状态栏等位置。如果新发布通知与已发布通知的ID和标签都相同，则新通知将取代原有通知，实现通知的更新效果。
 
 **起始版本：** 9
 
@@ -24,7 +24,7 @@ function publish(request: NotificationRequest, callback: AsyncCallback<void>): v
 
 **参见：**
 
-isNotificationEnabled 获取指定应用的通知使能状态。
+[isNotificationEnabled](arkts-notification-notificationmanager-isnotificationenabled-f.md#isnotificationenabled-3) 获取指定应用的通知使能状态。
 
 [cancel](arkts-notification-notificationmanager-cancel-f.md#cancel-2) 根据通知ID和标签label取消已发布的通知。
 
@@ -94,7 +94,7 @@ function publish(request: NotificationRequest): Promise<void>
 
 发布通知。使用Promise异步回调。
 
-发布通知后，通知将以通知卡片的形式展示在设备的通知中心、状态栏等位置。如果新发布通知与已发布通知的ID和标签都相同，则新通知将取代原有通知，实现通知的更新效果。
+发布通知后，通知将以[通知卡片](../../../notification/notification-glossary.md#notification-card通知卡片)的形式展示在设备的[通知中心](../../../notification/notification-glossary.md#notification-center通知中心)、状态栏等位置。如果新发布通知与已发布通知的ID和标签都相同，则新通知将取代原有通知，实现通知的更新效果。
 
 **起始版本：** 9
 

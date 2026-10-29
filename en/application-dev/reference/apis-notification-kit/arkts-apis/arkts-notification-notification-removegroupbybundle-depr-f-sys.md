@@ -17,7 +17,7 @@ Removes notifications under a notification group of a specified application. Thi
 
 **Deprecated since:** 9
 
-**Substitutes:** [removeGroupByBundle](arkts-notification-notificationmanager-removegroupbybundle-f-sys.md)
+**Substitutes:** [removeGroupByBundle](arkts-notification-notificationmanager-removegroupbybundle-f-sys.md#removegroupbybundle-1)(bundle: BundleOption, groupName: string, callback: AsyncCallback&lt;void&gt;)
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -70,7 +70,7 @@ Removes notifications under a notification group of a specified application. Thi
 
 **Deprecated since:** 9
 
-**Substitutes:** [removeGroupByBundle](arkts-notification-notificationmanager-removegroupbybundle-f-sys.md)
+**Substitutes:** [removeGroupByBundle](arkts-notification-notificationmanager-removegroupbybundle-f-sys.md#removegroupbybundle-2)(bundle: BundleOption, groupName: string)
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -91,7 +91,7 @@ Removes notifications under a notification group of a specified application. Thi
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;void&gt; | the promise returned by the function. |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 <!--Del-->
 **Examples**

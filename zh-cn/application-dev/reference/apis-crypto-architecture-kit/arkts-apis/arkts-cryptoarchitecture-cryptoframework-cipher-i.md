@@ -4,7 +4,7 @@
 interface Cipher
 ```
 
-加解密接口，定义对称加解密和非对称加解密方法。调用前，需通过[createCipher(transformation: string): Cipher](arkts-cryptoarchitecture-cryptoframework-createcipher-f.md)方法创建一个Cipher实例。按序调用Cipher实例中的init()、[update()](#update-1)、[doFinal()](#dofinal-2)方法完成加解密操作。
+加解密接口，定义对称加解密和非对称加解密方法。调用前，需通过[createCipher(transformation: string): Cipher](arkts-cryptoarchitecture-cryptoframework-createcipher-f.md)方法创建一个Cipher实例。按序调用Cipher实例中的[init()](#init-4)、[update()](#update-1)、[doFinal()](#dofinal-2)方法完成加解密操作。
 
 <br>完整的加解密流程示例可参考[开发指南](../../../security/CryptoArchitectureKit/crypto-encryption-decryption.md)。
 
@@ -1364,7 +1364,7 @@ update(data: DataBlob, callback: AsyncCallback<DataBlob>): void
 
 更新要分段加密或解密的数据。使用Callback异步回调。
 
-<br>必须在对[Cipher](arkts-cryptoarchitecture-cryptoframework-cipher-i.md)实例使用init()初始化后，才能使用本函数。
+<br>必须在对[Cipher](arkts-cryptoarchitecture-cryptoframework-cipher-i.md)实例使用[init()](#init-4)初始化后，才能使用本函数。
 
 > **说明：** 
 > 
@@ -1414,7 +1414,7 @@ update(data: DataBlob): Promise<DataBlob>
 
 分段更新加密或者解密数据操作。使用Promise异步回调。
 
-<br>必须在对[Cipher](arkts-cryptoarchitecture-cryptoframework-cipher-i.md)实例使用init()初始化后，才能使用本函数。
+<br>必须在对[Cipher](arkts-cryptoarchitecture-cryptoframework-cipher-i.md)实例使用[init()](#init-4)初始化后，才能使用本函数。
 
 > **说明：** 
 > 

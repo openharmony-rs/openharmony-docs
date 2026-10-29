@@ -291,9 +291,11 @@
   - [off](arkts-ability-appmanager-off-f.md)
   <!--Del-->
   - [off(system api)](arkts-ability-appmanager-off-f-sys.md)<!--DelEnd-->
+  - [offFocusedApplicationChanged](arkts-ability-appmanager-offfocusedapplicationchanged-f.md)
   - [on](arkts-ability-appmanager-on-f.md)
   <!--Del-->
   - [on(system api)](arkts-ability-appmanager-on-f-sys.md)<!--DelEnd-->
+  - [onFocusedApplicationChanged](arkts-ability-appmanager-onfocusedapplicationchanged-f.md)
   <!--Del-->
   - [preloadApplication(system api)](arkts-ability-appmanager-preloadapplication-f-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -317,6 +319,8 @@
   - [AppForegroundStateObserver(system api)](arkts-ability-appmanager-appforegroundstateobserver-t-sys.md)<!--DelEnd-->
   - [ApplicationStateObserver](arkts-ability-appmanager-applicationstateobserver-t.md)
   - [AppStateData](arkts-ability-appmanager-appstatedata-t.md)
+  - [FocusedApplicationInfo](arkts-ability-appmanager-focusedapplicationinfo-t.md)
+  - [FocusedApplicationObserver](arkts-ability-appmanager-focusedapplicationobserver-t.md)
   - [ProcessData](arkts-ability-appmanager-processdata-t.md)
   - [ProcessInformation](arkts-ability-appmanager-processinformation-t.md)
   <!--Del-->
@@ -484,6 +488,8 @@
 - [@ohos.app.ability.Configuration(Environment Variables)](arkts-ability-app-ability-configuration.md)
   - [Configuration](arkts-ability-app-ability-configuration-configuration-i.md)
 - [@ohos.app.ability.ConfigurationConstant(Constants Related to Environment Variables)](arkts-ability-app-ability-configurationconstant.md)
+  <!--Del-->
+  - [BrandColorStrategy(system api)](arkts-ability-configurationconstant-brandcolorstrategy-e-sys.md)<!--DelEnd-->
   - [ColorMode](arkts-ability-configurationconstant-colormode-e.md)
   - [Direction](arkts-ability-configurationconstant-direction-e.md)
   - [ScreenDensity](arkts-ability-configurationconstant-screendensity-e.md)
@@ -549,6 +555,7 @@
   - [ExtensionAbility](arkts-ability-app-ability-extensionability-extensionability-c.md)
 - [@ohos.app.ability.hyperSnapManager(Application Quick Startup Management)](arkts-ability-app-ability-hypersnapmanager.md)
   - [getLastError](arkts-ability-hypersnapmanager-getlasterror-f.md)
+  - [isHyperSnapInitializing](arkts-ability-hypersnapmanager-ishypersnapinitializing-f.md)
   - [requestRebuildHyperSnap](arkts-ability-hypersnapmanager-requestrebuildhypersnap-f.md)
   - [setHyperSnapEnabled](arkts-ability-hypersnapmanager-sethypersnapenabled-f.md)
   - [HyperSnapErrorInfo](arkts-ability-hypersnapmanager-hypersnaperrorinfo-i.md)
@@ -767,6 +774,12 @@
   - [OnRemoteStateChangeCallback](arkts-ability-app-ability-uiability-onremotestatechangecallback-i.md)
 - [@ohos.app.ability.UIExtensionAbility(ExtensionAbility with UI)](arkts-ability-app-ability-uiextensionability.md)
   - [UIExtensionAbility](arkts-ability-app-ability-uiextensionability-uiextensionability-c.md)
+  <!--Del-->
+  - [UIExtensionAbility(system api)](arkts-ability-app-ability-uiextensionability-uiextensionability-c-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [ConfigurationStrategy(system api)](arkts-ability-app-ability-uiextensionability-configurationstrategy-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [OnGetConfigurationStrategyFn(system api)](arkts-ability-ongetconfigurationstrategyfn-t-sys.md)<!--DelEnd-->
 - [@ohos.app.ability.UIExtensionContentSession(UI Operation Class with UI Extension Capability)](arkts-ability-app-ability-uiextensioncontentsession.md)
   - [UIExtensionContentSession](arkts-ability-app-ability-uiextensioncontentsession-uiextensioncontentsession-c.md)
   <!--Del-->
@@ -1877,6 +1890,10 @@
   - [ExtensionRunningInfo(ExtensionRunningInfo)](arkts-ability-extensionrunninginfo.md)<!--DelEnd-->
     <!--Del-->
     - [ExtensionRunningInfo(system api)](arkts-ability-extensionrunninginfo-i-sys.md)<!--DelEnd-->
+  - [FocusedApplicationInfo](arkts-ability-focusedapplicationinfo.md)
+    - [FocusedApplicationInfo](arkts-ability-focusedapplicationinfo-i.md)
+  - [FocusedApplicationObserver](arkts-ability-focusedapplicationobserver.md)
+    - [FocusedApplicationObserver](arkts-ability-focusedapplicationobserver-i.md)
   <!--Del-->
   - [FunctionHook](arkts-ability-functionhook.md)<!--DelEnd-->
     <!--Del-->

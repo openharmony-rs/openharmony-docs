@@ -4,7 +4,7 @@
 export type LiveViewStatus = _LiveViewStatus
 ```
 
-描述普通实况通知的状态。
+描述[普通实况通知](../../../notification/notification-glossary.md#normal-live-view普通实况通知)的状态。
 
 **类型：** _LiveViewStatus
 

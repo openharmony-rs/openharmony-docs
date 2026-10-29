@@ -16,7 +16,7 @@ XComponent(value: { id: string; type: XComponentType; libraryname?: string; cont
 
 创建**XComponent**组件，其生命周期回调可以从native侧触发。
 
-从API版本12开始，该接口不再维护。建议使用XComponent(options: XComponentOptions)替代。
+从API版本12开始，该接口不再维护。建议使用[XComponent(options: XComponentOptions)](#xcomponent)替代。
 
 **起始版本：** 10
 
@@ -536,7 +536,7 @@ struct Index {
 
 ### 示例6（设置XComponent的buffer队列大小）
 
-该示例通过bufferQueueCount属性设置XComponent的buffer队列大小，并演示运行时的动态切换：在相机预览、投屏等对显示时延敏感的场景下，可减小buffer队列，以降低画面从生产到上屏的时延并减少内存占用；在视频播放等对流畅性要求较高的场景下，可保持默认值以获得更充裕的渲染缓冲。
+该示例通过[bufferQueueCount](#bufferqueuecount)属性设置XComponent的buffer队列大小，并演示运行时的动态切换：在相机预览、投屏等对显示时延敏感的场景下，可减小buffer队列，以降低画面从生产到上屏的时延并减少内存占用；在视频播放等对流畅性要求较高的场景下，可保持默认值以获得更充裕的渲染缓冲。
 
 从API版本26.1.0开始，新增bufferQueueCount属性。
 

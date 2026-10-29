@@ -12,7 +12,7 @@ import { notificationExtensionSubscription } from '@kit.NotificationKit';
 function getAllSubscriptionBundles(): Promise<BundleOption[]>
 ```
 
-Obtains all applications that have requested the ohos.permission.SUBSCRIBE_NOTIFICATION permission and implemented [NotificationSubscriberExtensionAbility](arkts-notification-application-notificationsubscriberextensionability-notificationsubscriberextensionability-c.md). This API uses a promise to return the result.
+Obtains all applications that have the [ohos.permission.SUBSCRIBE_NOTIFICATION](../../../security/AccessToken/restricted-permissions.md#ohospermissionsubscribe_notification) permission and have implemented [NotificationSubscriberExtensionAbility](arkts-notification-application-notificationsubscriberextensionability-notificationsubscriberextensionability-c.md). This API uses a promise to return the result.
 
 **Since:** 22
 
@@ -28,7 +28,7 @@ Obtains all applications that have requested the ohos.permission.SUBSCRIBE_NOTIF
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[BundleOption](arkts-notification-notificationextensionsubscription-bundleoption-t.md)[]&gt; | Promise used to return the applications that have requested the ohos.permission.SUBSCRIBE_NOTIFICATION permission and implemented NotificationSubscriberExtensionAbility. |
+| Promise&lt;[BundleOption](arkts-notification-notificationextensionsubscription-bundleoption-t.md)[]&gt; | Promise used to return the applications that have the [ohos.permission.SUBSCRIBE_NOTIFICATION](../../../security/AccessToken/restricted-permissions.md#ohospermissionsubscribe_notification) permission and have implemented [NotificationSubscriberExtensionAbility](arkts-notification-application-notificationsubscriberextensionability-notificationsubscriberextensionability-c.md). |
 
 **Error codes:**
 

@@ -12,7 +12,7 @@ import { notificationManager } from '@kit.NotificationKit';
 function isGeofenceEnabled(): Promise<boolean>
 ```
 
-检查地理围栏功能是否已启用。使用Promise异步回调。
+检查[地理围栏](../../../notification/notification-glossary.md#geofence地理围栏)功能是否已启用。使用Promise异步回调。
 
 **起始版本：** 23
 

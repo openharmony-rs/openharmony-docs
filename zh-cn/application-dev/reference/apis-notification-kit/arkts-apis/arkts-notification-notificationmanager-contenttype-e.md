@@ -4,7 +4,7 @@
 export enum ContentType
 ```
 
-通知内容类型。
+[通知内容类型](../../../notification/notification-glossary.md#content-type通知内容类型)。
 
 **起始版本：** 9
 
@@ -114,7 +114,7 @@ NOTIFICATION_CONTENT_PICTURE
 NOTIFICATION_CONTENT_SYSTEM_LIVE_VIEW
 ```
 
-系统实况窗类型通知。不支持三方应用直接创建该类型通知。系统代理创建系统实况窗类型通知后，三方应用可以通过发布相同ID的通知来更新指定内容。
+[系统实况窗](../../../notification/notification-glossary.md#system-live-view系统实况窗)类型通知。不支持三方应用直接创建该类型通知。系统代理创建系统实况窗类型通知后，三方应用可以通过发布相同ID的通知来更新指定内容。
 
 **起始版本：** 11
 

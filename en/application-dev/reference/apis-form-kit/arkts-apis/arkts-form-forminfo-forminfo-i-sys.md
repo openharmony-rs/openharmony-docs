@@ -36,6 +36,26 @@ Indicates whether the form uses a blur background provided by the form host.
 
 **System API:** This is a system API.
 
+## enableTint
+
+```TypeScript
+readonly enableTint?: boolean
+```
+
+Obtains whether the form enable tint color. Default value: false.
+
+**Type:** boolean
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FormInfo-readonly enableTint?: boolean--><!--Device-FormInfo-readonly enableTint?: boolean-End-->
+
+**System capability:** SystemCapability.Ability.Form
+
+**System API:** This is a system API.
+
 ## funInteractionParams
 
 ```TypeScript

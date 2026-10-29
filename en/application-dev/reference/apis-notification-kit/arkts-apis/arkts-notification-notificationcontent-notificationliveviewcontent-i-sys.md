@@ -4,7 +4,7 @@
 export interface NotificationLiveViewContent extends NotificationBasicContent
 ```
 
-Describes the normal live notification content. This API inherits from NotificationBasicContent.
+Describes the [normal live view notification](../../../notification/notification-glossary.md#normal-live-view). This API is inherited from [NotificationBasicContent](arkts-notification-notificationcontent-notificationbasiccontent-i.md).
 
 **Inheritance/Implementation:** NotificationLiveViewContent extends [NotificationBasicContent](arkts-notification-notificationcontent-notificationbasiccontent-i.md)
 
@@ -40,7 +40,7 @@ Redirection by tapping in the auxiliary area. This parameter is left empty by de
 extraInfo?: Record<string, Object>
 ```
 
-Extra information of the live view. This parameter is left empty by default.
+Additional content of the [live view notification](../../../notification/notification-glossary.md#live-view-notification). Empty by default.
 
 **Type:** Record&lt;string, Object&gt;
 
@@ -115,7 +115,7 @@ Notification status.
 version?: number
 ```
 
-If the version number stored in the database is not **0xffffffff**, the version number needs to be verified when the live view is updated or ended to ensure that the current version number is greater than the version number stored in the database. The default value is **0xffffffff**.
+Notification version number. If the version number stored in the database is **0xffffffff**, the version number is not verified when the live view is updated or ended; otherwise, the current version number must be greater than the version number stored in the database. If this parameter is left empty, the default value is **0xffffffff**.
 
 **Type:** number
 

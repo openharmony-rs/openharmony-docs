@@ -12,7 +12,7 @@ import { notificationManager } from '@kit.NotificationKit';
 function isDistributedEnabled(deviceType: string): Promise<boolean>
 ```
 
-Checks whether a device enables cross-device notification. This API uses a promise to return the result.
+Queries whether the device supports [cross-device collaboration](../../../notification/notification-glossary.md#cross-device-collaboration) notifications. This API uses a promise to return the result.
 
 **Since:** 20
 
@@ -28,13 +28,13 @@ Checks whether a device enables cross-device notification. This API uses a promi
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| deviceType | string | Yes | Device type. The options are as follows:<br>- **headset**: wearable audio device<br>           - **liteWearable**: lite wearable<br>- **wearable**: wearable<br>- **current**: current device<br>- **2in1**:   PC<br>- **tablet**: tablet |
+| deviceType | string | Yes | Device type. The options are as follows: <br>- **headset**: wearable audio device <br>- **liteWearable**: lite wearable <br>- **wearable**: wearable <br>- **current**: current device <br>- **2in1**: PC <br>- **tablet**: tablet |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** indicates that the cross-device notification is enabled, and the value **false** indicates the opposite. |
+| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** indicates that the device supports cross-device collaboration notifications, and **false** indicates the opposite. |
 
 **Error codes:**
 

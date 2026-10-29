@@ -12,9 +12,9 @@ import { notificationManager } from '@kit.NotificationKit';
 function openNotificationSettings(context: UIAbilityContext): Promise<void>
 ```
 
-Opens the notification settings page of the application, which is displayed in semi-modal mode and can be used to set the notification enabling and notification mode. This API uses a promise to return the result.
+Brings up the [notification setting](../../../notification/notification-glossary.md#notification-setting) page of the application. The page is presented in semi-modal form and can be used to set the notification switch, [notification reminder mode](../../../notification/notification-glossary.md#notification-reminder-mode), and so on. This API uses a promise to return the result.
 
-This is suitable for scenarios where users need to manually modify notification settings, such as a secondary request after a user denies authorization, or when the notification reminder method (vibration, ringtone, etc.) needs to be modified. When the requestEnableNotification dialog box is denied by the user, you can call this API to guide the user to the notification settings page to manually enable it.
+This is suitable for scenarios where users need to manually modify notification settings, such as a secondary request after a user denies authorization, or when the notification reminder mode (vibration, ringtone, etc.) needs to be modified. When the [requestEnableNotification](arkts-notification-notificationmanager-requestenablenotification-f.md) dialog box is denied by the user, you can call this API to guide the user to the notification settings page to manually enable notifications.
 
 **Since:** 13
 
