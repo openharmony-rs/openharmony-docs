@@ -158,7 +158,7 @@ enum OH_Drawing_BlendMode
 | BLEND_MODE_HARD_LIGHT | 强光模式，根据源像素的亮度，选择性地应用MULTIPLY或SCREEN模式。 |
 | BLEND_MODE_SOFT_LIGHT | 柔光模式，根据源像素的亮度，柔和地变亮或变暗目标像素。 |
 | BLEND_MODE_DIFFERENCE | 差值模式，rc = s + d - 2 * (min(s * da, d * sa)), ra = s + (1 - sa) * d。 |
-| BLEND_MODE_EXCLUSION | 排除模式，rc = s + d - two(s * d), ra = s + (1 - sa) * d。 |
+| BLEND_MODE_EXCLUSION | 排除模式，rc = s + d - 2 * (s * d), ra = s + (1 - sa) * d。 |
 | BLEND_MODE_MULTIPLY | 正片叠底，r = s * (1 - da) + d * (1 - sa) + s * d。 |
 | BLEND_MODE_HUE | 色相模式，使用源像素的色相，目标像素的饱和度和亮度。 |
 | BLEND_MODE_SATURATION | 饱和度模式，使用源像素的饱和度，目标像素的色相和亮度。 |
