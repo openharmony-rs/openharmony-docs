@@ -560,8 +560,8 @@ registerForegroundDispatch(elementName: [ElementName](../apis-ability-kit/js-api
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 801  | Capability not supported. |
-| 3100201 | The tag running state is abnormal in the service. |
-| 3100202  | The element state is invalid. |
+| 3100201 | The tag running state is abnormal in the service.<br>适用版本：12+ |
+| 3100202  | The element state is invalid.<br>适用版本：12+ |
 
 **示例：**
 
@@ -594,7 +594,7 @@ unregisterForegroundDispatch(elementName: [ElementName](../apis-ability-kit/js-a
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 801  | Capability not supported. |
-| 3100201 | The tag running state is abnormal in the service. |
+| 3100201 | The tag running state is abnormal in the service.<br>适用版本：12+ |
 
 **示例：**
 
@@ -723,7 +723,7 @@ off(type: 'readerMode', elementName: [ElementName](../apis-ability-kit/js-apis-b
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 801  | Capability not supported. |
-| 3100201 | The tag running state is abnormal in the service. |
+| 3100201 | The tag running state is abnormal in the service.<br>适用版本：12+ |
 | 3100203  | The off() API can be called only when the on() has been called. |
 
 **示例：**

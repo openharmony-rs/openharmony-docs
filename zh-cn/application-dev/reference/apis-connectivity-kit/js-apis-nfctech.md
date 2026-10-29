@@ -360,7 +360,7 @@ isExtendedApduSupported(): Promise&lt;boolean&gt;
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The tag I/O operation failed. |
+| 3100204 | The tag I/O operation failed.<br>适用版本：12+ |
 
 **示例：**
 
@@ -418,7 +418,7 @@ isExtendedApduSupported(callback: AsyncCallback\<boolean>): void
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The Tag I/O operation failed. |
+| 3100204 | The Tag I/O operation failed.<br>适用版本：12+ |
 
 **示例：**
 
@@ -596,7 +596,7 @@ readNdef(): Promise\<[NdefMessage](#ndefmessage9)>
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The tag I/O operation failed. |
+| 3100204 | The tag I/O operation failed.<br>适用版本：12+ |
 
 **示例：**
 
@@ -654,7 +654,7 @@ readNdef(callback: AsyncCallback\<[NdefMessage](#ndefmessage9)>): void
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The Tag I/O operation failed. |
+| 3100204 | The Tag I/O operation failed.<br>适用版本：12+ |
 
 **示例：**
 
@@ -720,7 +720,7 @@ writeNdef(msg: [NdefMessage](#ndefmessage9)): Promise\<void>
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The tag I/O operation failed. |
+| 3100204 | The tag I/O operation failed.<br>适用版本：12+ |
 
 **示例：**
 
@@ -783,7 +783,7 @@ writeNdef(msg: [NdefMessage](#ndefmessage9), callback: AsyncCallback\<void>): vo
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The Tag I/O operation failed. |
+| 3100204 | The Tag I/O operation failed.<br>适用版本：12+ |
 
 **示例：**
 
@@ -884,7 +884,7 @@ setReadOnly(): Promise\<void>
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The tag I/O operation failed. |
+| 3100204 | The tag I/O operation failed.<br>适用版本：12+ |
 
 **示例：**
 
@@ -942,7 +942,7 @@ setReadOnly(callback: AsyncCallback\<void>): void
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The Tag I/O operation failed. |
+| 3100204 | The Tag I/O operation failed.<br>适用版本：12+ |
 
 **示例：**
 
@@ -1066,7 +1066,7 @@ authenticateSector(sectorIndex: number, key: number[], isKeyA: boolean): Promise
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The tag I/O operation failed. |
+| 3100204 | The tag I/O operation failed.<br>适用版本：12+ |
 
 **示例：**
 
@@ -1129,7 +1129,7 @@ authenticateSector(sectorIndex: number, key: number[], isKeyA: boolean, callback
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The Tag I/O operation failed. |
+| 3100204 | The Tag I/O operation failed.<br>适用版本：12+ |
 
 **示例：**
 ```js
@@ -1196,7 +1196,7 @@ readSingleBlock(blockIndex: number): Promise\<number[]>
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The tag I/O operation failed. |
+| 3100204 | The tag I/O operation failed.<br>适用版本：12+ |
 
 **示例：**
 
@@ -1256,7 +1256,7 @@ readSingleBlock(blockIndex: number, callback: AsyncCallback\<number[]>): void
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The Tag I/O operation failed. |
+| 3100204 | The Tag I/O operation failed.<br>适用版本：12+ |
 
 **示例：**
 
@@ -1324,7 +1324,7 @@ writeSingleBlock(blockIndex: number, data: number[]): Promise\<void>
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The tag I/O operation failed. |
+| 3100204 | The tag I/O operation failed.<br>适用版本：12+ |
 
 **示例：**
 
@@ -1387,7 +1387,7 @@ writeSingleBlock(blockIndex: number, data: number[], callback: AsyncCallback\<vo
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The Tag I/O operation failed. |
+| 3100204 | The Tag I/O operation failed.<br>适用版本：12+ |
 
 **示例：**
 
@@ -1457,7 +1457,7 @@ incrementBlock(blockIndex: number, value: number): Promise\<void>
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The tag I/O operation failed. |
+| 3100204 | The tag I/O operation failed.<br>适用版本：12+ |
 
 **示例：**
 
@@ -1519,7 +1519,7 @@ incrementBlock(blockIndex: number, value: number, callback: AsyncCallback\<void>
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The Tag I/O operation failed. |
+| 3100204 | The Tag I/O operation failed.<br>适用版本：12+ |
 
 **示例：**
 
@@ -1588,7 +1588,7 @@ decrementBlock(blockIndex: number, value: number): Promise\<void>
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The tag I/O operation failed. |
+| 3100204 | The tag I/O operation failed.<br>适用版本：12+ |
 
 **示例：**
 
@@ -1650,7 +1650,7 @@ decrementBlock(blockIndex: number, value: number, callback: AsyncCallback\<void>
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The Tag I/O operation failed. |
+| 3100204 | The Tag I/O operation failed.<br>适用版本：12+ |
 
 **示例：**
 
@@ -1719,7 +1719,7 @@ transferToBlock(blockIndex: number): Promise\<void>
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The tag I/O operation failed. |
+| 3100204 | The tag I/O operation failed.<br>适用版本：12+ |
 
 **示例：**
 
@@ -1779,7 +1779,7 @@ transferToBlock(blockIndex: number, callback: AsyncCallback\<void>): void
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The Tag I/O operation failed. |
+| 3100204 | The Tag I/O operation failed.<br>适用版本：12+ |
 
 **示例：**
 
@@ -1846,7 +1846,7 @@ restoreFromBlock(blockIndex: number): Promise\<void>
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The tag I/O operation failed. |
+| 3100204 | The tag I/O operation failed.<br>适用版本：12+ |
 
 **示例：**
 
@@ -1906,7 +1906,7 @@ restoreFromBlock(blockIndex: number, callback: AsyncCallback\<void>): void
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The Tag I/O operation failed. |
+| 3100204 | The Tag I/O operation failed.<br>适用版本：12+ |
 
 **示例：**
 
@@ -2231,7 +2231,7 @@ readMultiplePages(pageIndex: number): Promise\<number[]>
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The tag I/O operation failed. |
+| 3100204 | The tag I/O operation failed.<br>适用版本：12+ |
 
 **示例：**
 
@@ -2292,7 +2292,7 @@ readMultiplePages(pageIndex: number, callback: AsyncCallback\<number[]>): void
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The Tag I/O operation failed. |
+| 3100204 | The Tag I/O operation failed.<br>适用版本：12+ |
 
 **示例：**
 
@@ -2360,7 +2360,7 @@ writeSinglePage(pageIndex: number, data: number[]): Promise\<void>
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The tag I/O operation failed. |
+| 3100204 | The tag I/O operation failed.<br>适用版本：12+ |
 
 **示例：**
 
@@ -2422,7 +2422,7 @@ writeSinglePage(pageIndex: number, data: number[], callback: AsyncCallback\<void
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The Tag I/O operation failed. |
+| 3100204 | The Tag I/O operation failed.<br>适用版本：12+ |
 
 **示例：**
 
@@ -2526,7 +2526,7 @@ format(message: [NdefMessage](#ndefmessage9)): Promise\<void>
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The tag I/O operation failed. |
+| 3100204 | The tag I/O operation failed.<br>适用版本：12+ |
 
 **示例：**
 
@@ -2590,7 +2590,7 @@ format(message: [NdefMessage](#ndefmessage9), callback: AsyncCallback\<void>): v
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The Tag I/O operation failed. |
+| 3100204 | The Tag I/O operation failed.<br>适用版本：12+ |
 
 **示例：**
 
@@ -2660,7 +2660,7 @@ formatReadOnly(message: [NdefMessage](#ndefmessage9)): Promise\<void>
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The tag I/O operation failed. |
+| 3100204 | The tag I/O operation failed.<br>适用版本：12+ |
 
 **示例：**
 
@@ -2724,7 +2724,7 @@ formatReadOnly(message: [NdefMessage](#ndefmessage9), callback: AsyncCallback\<v
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The Tag I/O operation failed. |
+| 3100204 | The Tag I/O operation failed.<br>适用版本：12+ |
 
 **示例：**
 
