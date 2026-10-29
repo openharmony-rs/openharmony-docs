@@ -775,13 +775,13 @@ ArkTS-Sta: setCaptureArea(displayId: int, area: RectangleRegion): Promise\<void>
 > - 录制区域以displayId对应屏幕的左上角为原点计算，单位为像素（px）。displayId为0时表示主屏。
 > - 设置的区域中，left和top不能为负数，width和height必须大于0，且区域必须在屏幕范围内、不能跨屏。区域设置失败时，仍按上一次设置的区域进行录制。
 
-**ArkTS-Dyn起始版本：** 26.1.0
-
-**ArkTS-Sta起始版本：** 26.1.0
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
 
 **参数：**
 

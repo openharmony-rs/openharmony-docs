@@ -628,13 +628,13 @@ async function setupPlayer() {
 
 矩形区域的配置参数，用于在[setCaptureArea](arkts-apis-media-AVScreenCaptureRecorder.md#setcapturearea)接口中指定屏幕录制时实际录制的区域。区域位置以屏幕左上角为原点计算，区域大小由宽度和高度确定。
 
-**ArkTS-Dyn起始版本：** 26.1.0
-
-**ArkTS-Sta起始版本：** 26.1.0
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
 
 | 名称   | 类型   | 只读 | 可选 | 说明                                                         |
 | ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
