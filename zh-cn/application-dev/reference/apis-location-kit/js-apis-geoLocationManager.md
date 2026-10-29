@@ -536,8 +536,6 @@ POI信息结构体。
 
 运动类型。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
-
 **系统能力**：SystemCapability.Location.Location.Core
 
 | 名称 | 值 | 说明 |
