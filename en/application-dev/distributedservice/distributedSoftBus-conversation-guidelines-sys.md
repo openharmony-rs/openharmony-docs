@@ -61,8 +61,6 @@ The following table describes the commonly used APIs. For details, see [@ohos.di
 
 1. Import the required module.
 
-   <!-- @[import_conversation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusConversationDemo/entry/src/main/ets/pages/Index.ets) -->
-
    ``` TypeScript
    import { conversation } from '@kit.DistributedServiceKit'
    ```
@@ -100,8 +98,6 @@ The following table describes the commonly used APIs. For details, see [@ohos.di
 
 3. Define the conversation listener callback function.
 
-   <!-- @[data_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusConversationDemo/entry/src/main/ets/pages/Index.ets) --> 
-   
    ``` TypeScript
    // Define the message callback.
    let messageCallback: conversation.DataCallback = (deviceId: string, msg: ArrayBuffer): void => {
@@ -118,8 +114,6 @@ The following table describes the commonly used APIs. For details, see [@ohos.di
 
 4. Register the conversation listener to receive data from trusted devices.
 
-   <!-- @[register_listener](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusConversationDemo/entry/src/main/ets/pages/Index.ets) --> 
-   
    ``` TypeScript
    // Register the listener.
    registerListener(): void {
@@ -136,8 +130,6 @@ The following table describes the commonly used APIs. For details, see [@ohos.di
 
 5. Unregister the conversation listener.
 
-   <!-- @[unregister_listener](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusConversationDemo/entry/src/main/ets/pages/Index.ets) --> 
-   
    ``` TypeScript
    // Unregister the listener.
    unregisterListener(): void {
@@ -155,8 +147,6 @@ The following table describes the commonly used APIs. For details, see [@ohos.di
 ### Sender Development
 
 1. Import the required module.
-
-   <!-- @[import_conversation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusConversationDemo/entry/src/main/ets/pages/Index.ets) -->
 
    ``` TypeScript
    import { conversation } from '@kit.DistributedServiceKit'
@@ -195,8 +185,6 @@ The following table describes the commonly used APIs. For details, see [@ohos.di
 
 3. Obtain the trusted device list and select the target device.
 
-   <!-- @[get_trusted_devices](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusConversationDemo/entry/src/main/ets/pages/Index.ets) --> 
-   
    ``` TypeScript
    // Obtain trusted devices.
    getTrustedDevices(): void {
@@ -221,8 +209,6 @@ The following table describes the commonly used APIs. For details, see [@ohos.di
 
 4. Send conversation data to the specified device.
 
-   <!-- @[send_message](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusConversationDemo/entry/src/main/ets/pages/Index.ets) --> 
-   
    ``` TypeScript
    // Send a message.
    sendMessage(): void {
