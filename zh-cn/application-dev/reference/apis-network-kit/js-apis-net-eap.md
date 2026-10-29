@@ -74,7 +74,7 @@ console.info('regCustomEapHandler success');
 
 unregCustomEapHandler(netType:number, eapCode: number, eapType: number, callback: Callback\<EapData\>): void
 
-用于指定需要取消定制化处理的EAP报文类型和对应的处理回调。使用callback异步回调。
+用于指定需要取消定制化处理的EAP报文类型和对应的处理回调。使用回调函数异步返回结果。
 
 **需要权限**：ohos.permission.MANAGE_ENTERPRISE_WIFI_CONNECTION
 
@@ -125,8 +125,8 @@ replyCustomEapData(result: CustomResult, data: EapData): void
 
  > **说明：**
  >
- >- 若用于处理收EAP数据包(rx)时的回调函数，传给系统的EAP数据需要剥离服务器添加的定制部分。
- >- 若用于处理发EAP数据包(tx)时的回调函数，传给系统的EAP数据为经过添加定制部分后的EAP数据。
+ >- 若用于处理收EAP数据包(rx)时的callback，传给系统的EAP数据需要剥离服务器添加的定制部分。
+ >- 若用于处理发EAP数据包(tx)时的callback，传给系统的EAP数据为经过添加定制部分后的EAP数据。
 
 **需要权限**：ohos.permission.MANAGE_ENTERPRISE_WIFI_CONNECTION
 
