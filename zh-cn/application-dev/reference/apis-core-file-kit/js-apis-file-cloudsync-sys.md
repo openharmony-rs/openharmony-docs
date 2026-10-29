@@ -1002,7 +1002,7 @@ getUploadList(uris: Array&lt;string&gt;): Promise&lt;Array&lt;UploadProgress&gt;
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
 | 13900010  | Try again. |
-| 13900020  | Invalid argument. Possible causes: 1. Mandatory parameters are left unspecified. 2.The number of instances registered at the same time exceeds the upper limit. 3.The input parameter contains an invalid uri. |
+| 13900020  | Invalid argument. Possible causes: 1.Mandatory parameters are left unspecified. 2.The length of the input parameter exceeds the upper limit. 3.The input parameter contains an invalid uri. |
 
 **示例：**
 
@@ -1255,7 +1255,7 @@ getDownloadList(uris: Array&lt;string&gt;): Promise&lt;Array&lt;DownloadProgress
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
 | 13900010  | Try again. |
-| 13900020  | Invalid argument. Possible causes: 1. Mandatory parameters are left unspecified. 2.The number of instances registered at the same time exceeds the upper limit. 3.The input parameter contains an invalid uri. |
+| 13900020  | Invalid argument. Possible causes: 1.Mandatory parameters are left unspecified. 2.The length of the input parameter exceeds the upper limit. 3.The input parameter contains an invalid uri. |
 
 **示例：**
 
@@ -1263,7 +1263,7 @@ getDownloadList(uris: Array&lt;string&gt;): Promise&lt;Array&lt;DownloadProgress
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileUri } from '@kit.CoreFileKit';
 
-let fileCache = new cloudSync.CloudFileCache();
+let fileCache = new cloudSync.CloudFileCache("com.ohos.demo");
 let path1 = "/data/storage/el2/cloud/1.txt";
 let path2 = "/data/storage/el2/cloud/2.txt";
 let uri1 = fileUri.getUriFromPath(path1);
@@ -1549,7 +1549,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let para:cloudSync.OptimizeSpaceParam = {totalSize: 1073741824, agingDays: 30};
 let callback = (data:cloudSync.OptimizeSpaceProgress) => {
   if (data.state == cloudSync.OptimizeState.FAILED) {
-    console.info("optimize space failed");
+    console.error("optimize space failed");
   } else if (data.state == cloudSync.OptimizeState.COMPLETED && data.progress == 100) {
     console.info("optimize space successfully");
   } else if (data.state == cloudSync.OptimizeState.RUNNING) {
@@ -1594,7 +1594,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let para:cloudSync.OptimizeSpaceParam = {totalSize: 1073741824, agingDays: 30};
 let callback = (data:cloudSync.OptimizeSpaceProgress) => {
   if (data.state == cloudSync.OptimizeState.FAILED) {
-    console.info("optimize space failed");
+    console.error("optimize space failed");
   } else if (data.state == cloudSync.OptimizeState.RUNNING) {
     console.info("optimize space progress: " + data.progress);
   }
