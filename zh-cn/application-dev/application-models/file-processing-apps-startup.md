@@ -1,10 +1,10 @@
 # 拉起文件处理类应用（startAbility）
 
 <!--Kit: Ability Kit-->
-<!--Subsystem: Ability-->
+<!--Subsystem: AGC-->
 <!--Owner: @liusu23-->
 <!--Designer: @xukeke-->
-<!--Tester: @lusq-->
+<!--Tester: @hid12719688-->
 <!--Adviser: @HelloCrease-->
 
 ## 使用场景
@@ -24,13 +24,13 @@
 
 | 参数名称 | 类型   | 是否必填 | 说明                                                                                                                                                                                   |
 |----------|--------|----------|----------|
-| uri      | string | 是       | 表示待打开文件的URI路径，一般配合type使用。<br />uri格式为：file:\/\/bundleName\/path<br />- file：文件URI的标志。<br />- bundleName：该文件资源的属主。<br />- path：文件资源在应用沙箱中的路径。 |
+| uri      | string | 是       | 表示待打开文件的URI路径，一般配合type使用。<br />uri格式为：file:\/\/bundleName\/path<br />- file：文件URI的标志。<br />- bundleName：该文件资源的属主。<br />- path：文件资源在应用沙箱中的路径。<br>**说明：**<br>  如果是通过Picker获取文件uri，需要先对uri[持久化权限](../file-management/file-persistPermission.md)。|
 | type     | string | 否       | 表示打开文件的类型，推荐使用[UTD类型](../database/uniform-data-type-descriptors.md)，比如：'general.plain-text'、'general.image'。目前也可以兼容使用[MIME type类型](https://www.iana.org/assignments/media-types/media-types.xhtml?utm_source=ld246.com)，如：'text/xml' 、 'image/*'等。<br>**说明：** <br>1. type为可选字段，如果不传type，系统会尝试根据uri后缀名判断文件类型进行匹配；如果传入type，必须确保与uri的文件类型一致，否则会导致无法匹配到合适的应用。文件后缀与文件类型的映射关系参见[Uniform Type Descriptor(UTD)预置列表](../database/uniform-data-type-list.md)。<br>2. 不支持传\*/\*。|
 | parameters | Record<string, Object>       | 否         | 表示由系统定义，由开发者按需赋值的自定义参数，文件打开场景请参考表2。                                                                                                                                                                                       |
 | flags | number | 否 | 表示处理方式，文件打开场景请参考表3。                                                                                                                                                                                       |
-| action | string | 是 | 表示要执行的通用操作。文件打开场景固定值：'ohos.want.action.viewData' ，表示查看数据的操作。                                                                                                                                                                                      |
+| action | string | 是 | 表示要执行的通用操作。文件打开场景固定值：'ohos.want.action.viewData' ，表示查看数据的操作。<br>**说明：**<br>接口调用传参的action不是'ohos.want.action.viewData'时，也能拉起应用选择框，但是无法体验弹框全部功能。                                                                                                                                                                                      |
 
-**表2** [parameters](../reference/apis-ability-kit/js-apis-app-ability-wantConstant.md#params)相关参数说明
+**表2** [parameters](../reference/apis-ability-kit/js-apis-app-ability-want.md#want)相关参数说明
 
 
 | 参数名称                              | 类型    | 说明                                                                                                                                                                |
@@ -137,7 +137,7 @@
 
     支持打开文件的应用需要在[module.json5](../quick-start/module-configuration-file.md)配置文件中声明文件打开能力。其中uris字段表示接收URI的类型，其中scheme固定为file。type字段表示支持打开的文件类型（参见[UTD类型](../database/uniform-data-type-descriptors.md)（推荐）或[MIME type类型](https://www.iana.org/assignments/media-types/media-types.xhtml?utm_source=ld246.com)），如下举例中类型为txt文件。
 
-    ```json
+    ```json5
     {
     "module": {
         // ...
@@ -151,7 +151,7 @@
                 ],
                 "uris": [
                 {
-                    // 允许打开uri中以file://协议开头标识的本地文件
+                    // 允许打开uri中以 file:// 协议开头标识的本地文件
                     "scheme": "file", // 必填，声明协议类型为文件
                     "type": "general.plain-text", // 必填，表示支持打开的文件类型
                     "linkFeature": "FileOpen" // 必填且大小写敏感，表示此URI的功能为文件打开
