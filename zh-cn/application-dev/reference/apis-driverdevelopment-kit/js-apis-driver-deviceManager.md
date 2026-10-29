@@ -556,5 +556,5 @@ USB设备信息，继承自[Device](#device)。
 
 | 名称      | 类型   | 只读 | 可选 | 说明                |
 | --------- | ------ | ---- | ---- | ------------------- |
-| deviceId<sup>11+</sup>  | number | 否   | 否   | 设备ID。  |
-| remote<sup>11+</sup> | [rpc.IRemoteObject](../apis-ipc-kit/js-apis-rpc.md#iremoteobject) | 否   | 否   | 远程驱动通信对象。 |
+| deviceId  | number | 否   | 否   | 设备ID。  |
+| remote | [rpc.IRemoteObject](../apis-ipc-kit/js-apis-rpc.md#iremoteobject) | 否   | 否   | 远程驱动通信对象。 |

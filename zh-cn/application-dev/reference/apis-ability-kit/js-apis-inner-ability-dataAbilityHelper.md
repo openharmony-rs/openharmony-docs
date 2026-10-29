@@ -1344,6 +1344,9 @@ dataAbilityHelper.executeBatch('dataability:///com.example.jsapidemo.UserDataAbi
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.FAModel
 
+**模型约束**：
+API版本11+：此接口可在Stage模型和FA模型下使用。
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ----- | ---- | ---- | ---- | ---- |
 | [key: string]  | number \| string \| boolean \| Array\<string \| number \| boolean> \| null  | 否 | 是 | 数据存储在键值对中。 |

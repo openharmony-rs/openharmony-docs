@@ -439,7 +439,7 @@ connectedTag.write(rawData, (err)=> {
 
 ## connectedTag.on('notify')
 
-on(type: "notify", callback: Callback&lt;number&gt;): void
+on(type: 'notify', callback: Callback&lt;number&gt;): void
 
 注册NFC场强状态事件。
 
@@ -456,7 +456,7 @@ on(type: "notify", callback: Callback&lt;number&gt;): void
 
 ## connectedTag.off('notify')
 
-off(type: "notify", callback?: Callback&lt;number&gt;): void
+off(type: 'notify', callback?: Callback&lt;number&gt;): void
 
 取消NFC场强状态事件的注册。
 
@@ -489,7 +489,7 @@ async function nfcTagTestOn(): Promise<void> {
         console.error("initialize error:" + error);
     }
     // 注册回调以接收nfc进离场状态更改通知
-    connectedTag.on("notify", nfcStatusCb);
+    connectedTag.on('notify', nfcStatusCb);
     try {
         let tag = [3, 1, 0];
         console.info("connectedTag write: tag=" + tag);
@@ -504,7 +504,7 @@ async function nfcTagTestOn(): Promise<void> {
 // 业务退出时，取消注册回调、取消初始化
 async function nfcTagTestOff(): Promise<void> {
     // 取消注册回调
-    connectedTag.off("notify", nfcStatusCb);
+    connectedTag.off('notify', nfcStatusCb);
     try {
         console.info("connectedTag uninitialize");
         connectedTag.uninitialize();

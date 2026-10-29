@@ -1,4 +1,4 @@
-# OH_AbilityRuntime_ChildProcessInfosHandle
+# OH_AbilityRuntime_ChildProcessInfos*
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->

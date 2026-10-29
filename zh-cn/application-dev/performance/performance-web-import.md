@@ -1325,7 +1325,7 @@ struct Index {
 ![](figures/web_js_pre_compile.png)
 
 
-> 说明
+> **说明：**
 >
 > 当需要更新本地已经生成的编译字节码时，修改cacheOptions参数中的responseHeaders中的E-Tag或Last-Modified响应头对应的值，再次调用接口即可。
 
@@ -1440,7 +1440,8 @@ struct Index {
 
 2. 在Web组件运行前，向Web组件注册自定义协议。
 
-   > 说明
+   > **说明：**
+   >
    > 不得与Web内核内置协议相同。
    
    ```typescript
@@ -1457,7 +1458,8 @@ struct Index {
 
 3. 拦截自定义协议的JavaScript，设置ResponseData和ResponseDataID。ResponseData为JS内容，ResponseDataID用于区分JS内容是否发生变更。
 
-   > 说明
+   > **说明：**
+   >
    > 若JS内容变更，ResponseDataID需要一起变更。
 
    ```typescript
@@ -1716,7 +1718,7 @@ struct Index {
 
 资源拦截替换加速在原本的资源拦截替换接口基础上新增支持了ArrayBuffer格式的入参，开发者无需在应用侧进行ArrayBuffer到String格式的转换，可直接使用ArrayBuffer格式的数据进行拦截替换。
 
-> 说明
+> **说明：**
 >
 > 本方案与原本的资源拦截替换接口在使用上没有任何区别，开发者仅需在调用WebResourceResponse.setResponseData()接口时传入ArrayBuffer格式的数据即可。
 

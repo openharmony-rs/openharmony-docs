@@ -43,20 +43,25 @@ struct WebComponent {
 
   在下面的示例中，Ability的onCreate中提前初始化Web内核并对首页进行预连接。
 
-```ts
-// xxx.ets
-import { webview } from '@kit.ArkWeb';
+<!-- @[initialize_kernel_in_onCreate_and_pre_connect_to_homepage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry1/src/main/ets/entryability/EntryAbility.ets) -->
+
+``` TypeScript
+// EntryAbility.ets
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+// ...
+import { webview } from '@kit.ArkWeb';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-    console.info("EntryAbility onCreate");
+    console.info('EntryAbility onCreate');
     webview.WebviewController.initializeWebEngine();
     // 预连接时，需要将'https://www.example.com'替换成真实要访问的网站地址。
-    webview.WebviewController.prepareForPageLoad("https://www.example.com/", true, 2);
-    AppStorage.setOrCreate("abilityWant", want);
-    console.info("EntryAbility onCreate done");
+    webview.WebviewController.prepareForPageLoad('https://www.example.com/', true, 2);
+    AppStorage.setOrCreate('abilityWant', want);
+    console.info('EntryAbility onCreate done');
   }
+
+  // ...
 }
 ```
 
@@ -136,7 +141,7 @@ struct WebComponent {
 
   以下示例，在onPageEnd中，触发预获取一个要访问页面的POST请求。
 
-<!-- @[on_page_end_trigger_prefetch_post_request_access_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry2/src/main/ets/pages/PrefetchingAPOSTRequest_three.ets) -->    
+<!-- @[on_page_end_trigger_prefetch_post_request_access_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry2/src/main/ets/pages/PrefetchingAPOSTRequest_two.ets) -->
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -172,30 +177,35 @@ struct WebComponent {
 
   以下示例，在Ability的onCreate中，提前初始化Web内核并预获取首页的POST请求。
 
-```ts
-// xxx.ets
+<!-- @[initialize_kernel_in_onCreate_and_pre_fetch_post_request](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry2/src/main/ets/entryability/EntryAbility.ets) -->
+
+``` TypeScript
+// EntryAbility.ets
 import { webview } from '@kit.ArkWeb';
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+// ...
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-    console.info("EntryAbility onCreate");
+    console.info('EntryAbility onCreate');
     webview.WebviewController.initializeWebEngine();
-    // 预获取时，需要将"https://www.example1.com/post?e=f&g=h"替换成真实要访问的网站地址。
+    // 预获取时，需要将'https://www.example1.com/post?e=f&g=h'替换成真实要访问的网站地址。
     webview.WebviewController.prefetchResource(
       {
-        url: "https://www.example1.com/post?e=f&g=h",
-        method: "POST",
-        formData: "a=x&b=y",
+        url: 'https://www.example1.com/post?e=f&g=h',
+        method: 'POST',
+        formData: 'a=x&b=y',
       },
       [{
-        headerKey: "c",
-        headerValue: "z",
+        headerKey: 'c',
+        headerValue: 'z',
       },],
-      "KeyX", 500);
-    AppStorage.setOrCreate("abilityWant", want);
-    console.info("EntryAbility onCreate done");
+      'KeyX', 500);
+    AppStorage.setOrCreate('abilityWant', want);
+    console.info('EntryAbility onCreate done');
   }
+
+  // ...
 }
 ```
 
@@ -207,25 +217,33 @@ export default class EntryAbility extends UIAbility {
 
 1. 首先，在EntryAbility中将[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)存到[localStorage](../ui/state-management/arkts-localstorage.md)中。
 
-   ```ts
+   <!-- @[save_the_uiContext_to_localstorage_in_entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry3/src/main/ets/entryability/EntryAbility.ets) -->
+   
+   ``` TypeScript
    // EntryAbility.ets
    import { UIAbility } from '@kit.AbilityKit';
    import { window } from '@kit.ArkUI';
-
+   // ...
+   
    const localStorage: LocalStorage = new LocalStorage('uiContext');
-
+   
    export default class EntryAbility extends UIAbility {
      storage: LocalStorage = localStorage;
-
+     // ...
+     // ...
      onWindowStageCreate(windowStage: window.WindowStage) {
        windowStage.loadContent('pages/Index', this.storage, (err, data) => {
          if (err.code) {
            return;
          }
-
-         this.storage.setOrCreate<UIContext>("uiContext", windowStage.getMainWindowSync().getUIContext());
+   
+         this.storage.setOrCreate<UIContext>('uiContext', windowStage.getMainWindowSync().getUIContext());
        });
      }
+   
+     // ...
+     // ...
+     // ...
    }
    ```
 
@@ -431,25 +449,33 @@ export default class EntryAbility extends UIAbility {
 
 1. 首先，在EntryAbility中将[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)存到[localStorage](../ui/state-management/arkts-localstorage.md)中。
 
-   ```ts
+   <!-- @[save_uiContext_to_localstorage_in_entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry4/src/main/ets/entryability/EntryAbility.ets) -->
+   
+   ``` TypeScript
    // EntryAbility.ets
    import { UIAbility } from '@kit.AbilityKit';
    import { window } from '@kit.ArkUI';
-
+   // ...
+   
    const localStorage: LocalStorage = new LocalStorage('uiContext');
-
+   
    export default class EntryAbility extends UIAbility {
      storage: LocalStorage = localStorage;
-
+     // ...
+   
+     // ...
      onWindowStageCreate(windowStage: window.WindowStage) {
        windowStage.loadContent('pages/Index', this.storage, (err, data) => {
          if (err.code) {
            return;
          }
-
-         this.storage.setOrCreate<UIContext>("uiContext", windowStage.getMainWindowSync().getUIContext());
+   
+         this.storage.setOrCreate<UIContext>('uiContext', windowStage.getMainWindowSync().getUIContext());
        });
      }
+     // ...
+     // ...
+     // ...
    }
    ```
 

@@ -60,7 +60,7 @@ static napi_value GetLastErrorInfo(napi_env env, napi_callback_info info)
     napi_status status = napi_get_value_int32(env, args[0], &value);
     // 接口使用错误，故返回值不为napi_ok
     if (status != napi_ok) {
-        OH_LOG_INFO(LOG_APP, "napi_get_value_int32 return status, status is not equal to napi_ok.");
+        OH_LOG_ERROR(LOG_APP, "napi_get_value_int32 return status, status is not equal to napi_ok.");
     }
     // 调用接口napi_get_last_error_info获取最后一次错误信息
     const napi_extended_error_info *errorInfo;
@@ -345,7 +345,7 @@ static napi_value NapiThrowBusinessError(napi_env env, napi_callback_info info)
 {
     napi_status status = napi_throw_business_error(env, INT_ARG_100, "error message");
     if (status != napi_ok) {
-        OH_LOG_INFO(LOG_APP, "napi_throw_business_error failed :: %{public}d", status);
+        OH_LOG_ERROR(LOG_APP, "napi_throw_business_error failed: %{public}d", status);
     }
     return nullptr;
 }

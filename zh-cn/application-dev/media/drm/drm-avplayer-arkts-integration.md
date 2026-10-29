@@ -59,13 +59,13 @@
          mediaKeySystem = drm.createMediaKeySystem(solutionName);
          mediaKeySession = mediaKeySystem.createMediaKeySession();
      }
-     // 媒体密钥请求与处理。
    }
    ```
 
 5. 调用[generateMediaKeyRequest](../../reference/apis-drm-kit/arkts-apis-drm-MediaKeySession.md#generatemediakeyrequest)生成媒体密钥请求，并调用[processMediaKeyResponse](../../reference/apis-drm-kit/arkts-apis-drm-MediaKeySession.md#processmediakeyresponse)处理媒体密钥响应。
 
    ```ts
+   // 媒体密钥请求与处理。
    let initData: Uint8Array = new Uint8Array(drmInfoArr[i].pssh);
    const optionsData: drm.OptionsData[] = [{
      name: "optionalDataName",
@@ -78,16 +78,17 @@
      mediaKeySession.processMediaKeyResponse(licenseResponse).then((mediaKeyId: Uint8Array) => {
        console.info("processMediaKeyResponse success");
      }).catch((err:BusinessError) =>{
-       console.error("processMediaKeyResponse err end", err.code);
+       console.error("processMediaKeyResponse failed", err.code);
      });
    }).catch((err:BusinessError) =>{
-     console.error("generateMediaKeyRequest err end", err.code);
+     console.error("generateMediaKeyRequest failed", err.code);
    });
    ```
 
 6. 调用[requireSecureDecoderModule](../../reference/apis-drm-kit/arkts-apis-drm-MediaKeySession.md#requiresecuredecodermodule)和[setDecryptionConfig](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#setdecryptionconfig11)，在处理媒体密钥响应成功后设置解密session。
 
    ```ts
+   // 实际开发中应从轨道信息获取codec mime type（如video/avc），再传入requireSecureDecoderModule。
    let svp: boolean = mediaKeySession.requireSecureDecoderModule('video/avc');
    playerHandle.setDecryptionConfig(mediaKeySession, svp)
    ```

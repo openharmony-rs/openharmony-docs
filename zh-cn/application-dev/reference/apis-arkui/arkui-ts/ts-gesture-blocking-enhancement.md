@@ -1001,19 +1001,8 @@ struct Index {
 ![example](figures/gestureCollectIntercept.gif)
 
 示例对应的组件树如下图所示。
-```mermaid
-graph TD
-    A((Column))
-    B((Column))
-    C((Row))
-    D((Button1))
-    E((Button2))
 
-    A --> B
-    A --> C
-    C --> D
-    C --> E
-```
+![gesture-collect-intercept](figures/gesture-collect-intercept.png)
 
 ### 示例7（非内置手势嵌套滚动）
 

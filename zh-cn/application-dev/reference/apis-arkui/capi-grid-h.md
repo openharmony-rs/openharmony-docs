@@ -1,4 +1,4 @@
-# grid.h
+# node_grid.h
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @rongShao-Z; @guozejun-->

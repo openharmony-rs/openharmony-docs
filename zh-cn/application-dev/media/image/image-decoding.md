@@ -211,7 +211,7 @@
      };
    
      try {
-       // 生成 pixelMap 并返回
+       // 生成 pixelMap 并返回。
        const pixelMap = await imageSource.createPixelMap(decodingOptions);
        if (pixelMap) {
          console.info('Create PixelMap successfully.');
@@ -220,7 +220,7 @@
          console.info(`Create PixelMap successfully with imageInfo.isHdr: ${imageInfo.isHdr}.`);
          return pixelMap;
        } else {
-         console.info('Create PixelMap failed.');
+         console.error('Create PixelMap failed.');
          return undefined;
        }
      } catch (error) {

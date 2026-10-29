@@ -1569,5 +1569,3 @@ int32_t OH_ArkUI_SwiperDigitIndicator_GetIgnoreSizeOfBottom(ArkUI_SwiperDigitInd
 | 类型 | 说明 |
 | -- | -- |
 | int32_t | 是否忽略导航点大小。 |
-
-

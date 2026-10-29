@@ -447,7 +447,7 @@ fillColor(color: ResourceColor|ColorContent|ColorMetrics)
 
 autoResize(value: boolean)
 
-设置图片解码过程中是否对图源自动缩放。降采样解码时图片的部分信息丢失，因此可能会导致图片质量的下降（如：出现锯齿），这时可以选择把autoResize设为false，按原图尺寸解码，提升显示效果，但会增加内存占用。
+设置图片解码过程中是否对图源自动缩放。降采样解码时图片的部分信息丢失，因此可能会导致图片质量的下降（如：出现锯齿），这时可以选择把autoResize设为false，按原图尺寸解码，提升显示效果，但会增加内存占用。当图片尺寸较大时，设置为false可能导致内存占用过高，引发进程闪退，具体原因参见[应用被查杀类问题分析方法](https://developer.huawei.com/consumer/cn/doc/doccenter-app-quality/bpta-stability-app-killed-way?docScope=all)中的ResourceLeak(GpuRsLeak)原因。
 
 原图尺寸和显示尺寸不匹配时，图片都会出现些许的失真、模糊。最佳清晰度配置建议：
 

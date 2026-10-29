@@ -162,8 +162,8 @@ import cardEmulation from '@ohos.nfc.cardEmulation';
 
 | 名称      | 值         | 说明                |
 | ------- | --------- | ----------------- |
-| PAYMENT | "payment" | 卡模拟应用所使用的业务是支付类型。 |
-| OTHER   | "other"   | 卡模拟应用所使用的业务是其他类型。 |
+| PAYMENT | 'payment' | 卡模拟应用所使用的业务是支付类型。 |
+| OTHER   | 'other'   | 卡模拟应用所使用的业务是其他类型。 |
 
 ## cardEmulation.isSupported<sup>(deprecated)</sup>
 

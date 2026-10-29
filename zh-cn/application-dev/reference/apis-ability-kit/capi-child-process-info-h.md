@@ -27,8 +27,8 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [OH_AbilityRuntime_ChildProcessInfoHandle](capi-nativechildprocess-info.md) | OH_AbilityRuntime_ChildProcessInfoHandle | 指向子进程信息的句柄。 |
-| [OH_AbilityRuntime_ChildProcessInfosHandle](capi-nativechildprocess-infos.md) | OH_AbilityRuntime_ChildProcessInfosHandle |  指向子进程信息集合的句柄。 |
+| [OH_AbilityRuntime_ChildProcessInfo](capi-nativechildprocess-info.md) | OH_AbilityRuntime_ChildProcessInfoHandle | 指向子进程信息的句柄。 |
+| [OH_AbilityRuntime_ChildProcessInfos](capi-nativechildprocess-infos.md) | OH_AbilityRuntime_ChildProcessInfosHandle |  指向子进程信息集合的句柄。 |
 
 ### 函数
 

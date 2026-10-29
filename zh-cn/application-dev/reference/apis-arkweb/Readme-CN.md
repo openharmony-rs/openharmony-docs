@@ -113,6 +113,7 @@
     - [ArkWeb_ProxyObjectWithResult](capi-web-arkweb-proxyobjectwithresult.md)
     - [ArkWeb_ControllerAPI](capi-web-arkweb-controllerapi.md)
     - [ArkWeb_ComponentAPI](capi-web-arkweb-componentapi.md)
+    - [ArkWeb_ErrorInfo_](capi-web-arkweb-errorinfo.md)
     - [ArkWeb_WebMessagePortAPI](capi-web-arkweb-webmessageportapi.md)
     - [ArkWeb_WebMessageAPI](capi-web-arkweb-webmessageapi.md)
     - [ArkWeb_CookieManagerAPI](capi-web-arkweb-cookiemanagerapi.md)

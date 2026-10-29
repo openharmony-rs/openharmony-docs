@@ -160,7 +160,7 @@ static JSVM_Value GetProperty(JSVM_Env env, JSVM_CallbackInfo info)
     size_t argc = 2;
     JSVM_Value args[2] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
-    // 传入的第一个参数为要检测的object，第二个对象为要检测的属性，通过调用OH_JSVM_GetProperty接口获取对应的值
+    // 传入的第一个参数为要检测的object，第二个参数为要检测的属性，通过调用OH_JSVM_GetProperty接口获取对应的值
     JSVM_Value result = nullptr;
     JSVM_Status status = OH_JSVM_GetProperty(env, args[0], args[1], &result);
     if (status != JSVM_OK) {
@@ -282,7 +282,7 @@ static JSVM_Value DeleteProperty(JSVM_Env env, JSVM_CallbackInfo info)
     } else {
         OH_LOG_INFO(LOG_APP, "JSVM OH_JSVM_DeleteProperty success:%{public}d", result);
     }
-    // 将bool结果转换为JSVM_value并返回
+    // 将bool结果转换为JSVM_Value并返回
     JSVM_Value ret;
     OH_JSVM_GetBoolean(env, result, &ret);
     return ret;
@@ -596,7 +596,7 @@ static JSVM_Value RunScriptAndLogResult(JSVM_Env env, const std::string &srcCode
 // OH_JSVM_DefineProperties的样例方法
 static JSVM_Value DefineProperties(JSVM_Env env, JSVM_CallbackInfo info)
 {
-    // 接受一个JavaScript侧传入的空object
+    // 接收一个JavaScript侧传入的空object
     size_t argc = 1;
     JSVM_Value argv[1] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, argv, nullptr, nullptr);
