@@ -160,6 +160,7 @@
 | [supportDeviceTypes](#supportdevicetypes标签) | 表示特定卡片支持的设备类型。例如，卡片的supportDeviceTypes字段配置了“phone”、“tablet”、“tv”，那么该卡片就支持在手机、平板、大屏上面显示。<br/>**说明：**<br/>从API version 22开始，支持该字段。 | 字符串数组 | 可缺省，缺省值：["phone", "tablet", "tv", "wearable", "car", "2in1"]。 |
 | [supportDevicePerformanceClasses](#supportdeviceperformanceclasses标签) | 表示特定卡片支持的设备性能等级信息。例如，卡片的supportDevicePerformanceClasses字段配置了“high”、“medium”、“low”，那么该卡片就支持在性能等级为“high”、“medium”、“low”设备上面显示。<br/>**说明：**<br/>从API version 22开始，支持该字段。 | 字符串数组 | 可缺省，缺省值：["high", "medium", "low"]。 |
 | [standby](#standby标签) | 待机屏保显示页面卡片扩展字段。<br/>**说明：**<br/>从API version 23开始，支持该字段。依赖系统实现待机屏保应用。 | 对象 | 可缺省，属性缺省值见[standby标签](#standby标签)。 |
+| isColorModeRefreshEnabled | 表示卡片是否使能深浅色模式切换触发刷新。<br/>-&nbsp;true：使能。<br/>-&nbsp;false：不使能。<br/>**说明：**<br/>从API版本26.1.0开始，支持该字段。 | 布尔类型 | 可缺省，缺省值为false。 |
 
 ### supportDeviceTypes标签
 
