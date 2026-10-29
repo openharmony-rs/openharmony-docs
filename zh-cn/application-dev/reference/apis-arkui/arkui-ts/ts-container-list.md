@@ -974,9 +974,13 @@ ArkTS-Sta: scrollPlaceholder(provider: PlaceholderProvider | undefined)
 设置List组件的滚动占位提供者。当框架预测在剩余帧预算内创建下一个列表项会导致超帧时，先为该项显示占位组件，真实列表项在UI线程分帧创建，以减少快速滚动时的丢帧。
 
 > **说明：**
+>
 > - 占位提供者为[PlaceholderProvider](../arkts-apis-placeholderregister.md#placeholderprovider)类型：在UI线程滚动过程中同步调用，须为纯计算，入参为即将创建的列表项索引，返回[PlaceholderOptions](../arkts-apis-placeholderregister.md#placeholderoptions)表示该项的占位信息，返回undefined表示该列表项不需要占位。
+>
 > - [PlaceholderOptions](../arkts-apis-placeholderregister.md#placeholderoptions)包含id和size两个可选字段：id为占位模板的ID，占位模板须为全局、无参、只读静态渲染的`@Builder({ isPlaceholder: true })`函数，经wrapBuilder包装后通过UIContext的[getPlaceholderRegister()](../arkts-apis-uicontext-uicontext.md#getplaceholderregister)注册；size为占位的建议尺寸，越接近真实列表项的尺寸，替换时的视觉跳动越小。
+>
 > - provider返回undefined，或返回的id为空、未注册时，使用系统默认占位，且滚动不中断。
+>
 > - 真实列表项创建完成后，在[ListItem](ts-container-listitem.md)的正常布局约束下重新布局并替换占位，同时保持滚动锚点。
 
 **模型约束：** 此接口仅可在Stage模型下使用。

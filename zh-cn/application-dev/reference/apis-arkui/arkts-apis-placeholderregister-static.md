@@ -41,7 +41,9 @@ register(id: string, builder: WrappedBuilder\<CustomBuilder\>): void
 > **说明：**
 >
 > - 占位模板须为全局、无参的`@Builder({ isPlaceholder: true })`函数，且只做只读静态渲染：不得访问响应式状态，不得注册手势，不得注册业务回调。传入的builder须经过[wrapBuilder](arkui-ts/ts-universal-wrapBuilder-static.md#wrapbuilder)包装，不接受裸builder函数。
+>
 > - 框架在注册时校验编译产物中携带的受限Builder标记：未在编译期标记`@Builder({ isPlaceholder: true })`的builder（包括通过绕过编译期类型检查的动态方式传入的builder）会被拒绝注册，该id不会注册成功，[scrollPlaceholder](arkui-ts/ts-container-list.md#scrollplaceholder)的provider命中该id时使用系统默认占位。
+>
 > - 重复注册相同id时，会原子地发布新版本的模板；已派发的占位任务在上屏前会先与模板版本做校验。
 
 **ArkTS-Sta起始版本：** 26.1.0
@@ -78,6 +80,7 @@ unregister(id: string): void
 > **说明：**
 >
 > - 模板注销后，该id不再能被匹配：[scrollPlaceholder](arkui-ts/ts-container-list.md#scrollplaceholder)的[PlaceholderProvider](#placeholderprovider)命中该id时使用系统默认占位，已为该模板派发的占位任务不会上屏。
+>
 > - 注销未注册的id时，静默处理，不产生异常。
 
 **ArkTS-Sta起始版本：** 26.1.0
