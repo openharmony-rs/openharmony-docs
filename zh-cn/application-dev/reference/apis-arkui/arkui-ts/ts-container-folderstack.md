@@ -20,6 +20,10 @@ FolderStack继承自[Stack](ts-container-stack.md)（层叠布局）控件，新
 >  - 当该组件的父组件为[if/else：条件渲染](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)节点时，折叠屏悬停能力将会失效。
 >
 > - folderStack如果不撑满页面全屏，作为普通Stack使用。
+>
+> - FolderStack在非悬停态时布局效果参考[Stack](ts-container-stack.md)，在悬停态时默认撑满父容器。如果不撑满页面全屏，作为普通Stack使用。
+>
+> - FolderStack的悬停态能力仅在窗口模式[WindowStatusType](../arkts-apis-window-e.md#windowstatustype11)为全屏模式时才能生效。
 
 ## 子组件
 
@@ -191,7 +195,7 @@ ArkTS-Dyn: onFolderStateChange(callback: OnFoldStatusChangeCallback)
 
 ArkTS-Sta: onFolderStateChange(callback: OnFoldStatusChangeCallback | undefined)
 
-当前设备的折叠状态改变时触发回调<!--RP3-->（该回调仅在横屏状态下生效）<!--RP3End-->。<br>典型使用场景：根据折叠状态调整应用布局，例如在展开状态下显示双栏布局，在半折叠状态下调整上半屏和下半屏的内容分布。
+当前设备的折叠状态改变时触发回调（该回调仅在折痕区域方向为水平时生效。）。<br>典型使用场景：根据折叠状态调整应用布局，例如在展开状态下显示双栏布局，在半折叠状态下调整上半屏和下半屏的内容分布。
 
 >**说明：**
 >
@@ -267,7 +271,7 @@ type OnHoverStatusChangeCallback = (param: HoverEventParam) => void
 
 type OnFoldStatusChangeCallback = (event: OnFoldStatusChangeInfo) => void
 
-当折叠状态改变时触发的回调<!--RP4-->，仅在横屏状态下生效<!--RP4End-->。
+当折叠状态改变时触发的回调，仅在折痕区域方向为水平时生效。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -283,12 +287,12 @@ type OnFoldStatusChangeCallback = (event: OnFoldStatusChangeInfo) => void
 
 | 参数名     | 类型                                            | 必填 | 说明                 |
 | ---------- | ----------------------------------------------- | ---- | -------------------- |
-| event | [OnFoldStatusChangeInfo](#onfoldstatuschangeinfo18) | 是   | 折叠状态改变时的信息，仅在横屏状态下生效。 |
+| event | [OnFoldStatusChangeInfo](#onfoldstatuschangeinfo18) | 是   | 折叠状态改变时的信息。 |
 
 
 ## OnFoldStatusChangeInfo<sup>18+</sup>
 
-折叠状态改变时的信息，仅在横屏状态下生效。
+折叠状态改变时的信息，仅在折痕区域方向为水平时生效。
 
 > **说明：**
 >
