@@ -23,7 +23,7 @@
 
 3. 调用[cert.buildX509CertChain](../../reference/apis-device-certificate-kit/js-apis-cert.md#certbuildx509certchain12)创建X.509证书链对象，将validationParameters的allowDownloadIntermediateCa参数设置为true，开启允许校验过程中从网络下载缺失的中间CA。
 
-> **说明**
+> **说明：**
 >
 > 本开发指导中提供的示例代码需要在配置网络的前提下执行。需要申请ohos.permission.INTERNET权限，配置方式请参见[声明权限](../../security/AccessToken/declare-permissions.md)。
 
