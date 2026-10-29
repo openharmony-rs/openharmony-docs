@@ -273,11 +273,11 @@ try{
 
 setEthEapConfig(config: EthEapConfig): void
 
-设置以太网802.1X EAP配置，配置将加密并持久化保存。
+设置以太网802.1X认证配置，配置将加密并持久化保存。
 
-任意字段发生变化时，会触发一次自动认证流程。如果802.1X功能已禁用，或者认证正由企业应用控制，则仅保存配置，不触发自动认证；企业应用仍保留认证控制权。认证结果通过[eap.onStateChange](#eaponstatechange)注册的回调返回，本接口的返回不代表认证成功。
+多次调用本接口时，若config参数中任意字段发生变化，会触发一次自动认证流程。如果802.1X功能或自动认证已禁用，则保存配置并停止自动认证；如果当前认证由企业应用通过[eap.startEthEap](#eapstartetheap)发起，则仅保存配置，不触发自动认证，企业应用仍保留认证控制权。认证结果通过[eap.onStateChange](#eaponstatechange)注册的回调返回，本接口调用返回不代表认证成功。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.0.1
 
 **需要权限**：ohos.permission.ENTERPRISE_MANAGE_EAP
 
@@ -289,15 +289,15 @@ setEthEapConfig(config: EthEapConfig): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| config | [EthEapConfig](#etheapconfig) | 是 | 待设置的以太网802.1X EAP配置。profile中的敏感字段password、certPassword传入空字符串，或certEntry传入空数组时，表示保留原值；通过getEthEapConfig读取时，这些字段始终返回空值。 |
+| config | [EthEapConfig](#etheapconfig) | 是 | 待设置的以太网802.1X认证配置。当EthEapProfile中的敏感字段password、certPassword传入空字符串，或certEntry传入空数组时，表示保留原值；通过getEthEapConfig读取时，password、certPassword返回空字符串，certEntry返回空数组。 |
 
-**错误码：**
+**错误码**：
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 201 | Permission denied. |
 
 **示例：**
 
@@ -343,11 +343,11 @@ try {
 
 getEthEapConfig(): Promise\<EthEapConfig\>
 
-获取已保存的以太网802.1X EAP配置。使用Promise异步回调。
+获取已保存的以太网802.1X认证配置。使用Promise异步回调。
 
 返回配置中profile的敏感字段password、certPassword始终为空字符串，certEntry始终为空数组。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.0.1
 
 **需要权限**：ohos.permission.ENTERPRISE_MANAGE_EAP
 
@@ -359,15 +359,15 @@ getEthEapConfig(): Promise\<EthEapConfig\>
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise\<[EthEapConfig](#etheapconfig)\> | Promise对象，返回已保存的以太网802.1X EAP配置，敏感字段返回空值。 |
+| Promise\<[EthEapConfig](#etheapconfig)\> | Promise对象，返回已保存的以太网802.1X认证配置，其中password、certPassword返回空字符串，certEntry返回空数组。 |
 
-**错误码：**
+**错误码**：
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 201 | Permission denied. |
 
 **示例：**
 
@@ -391,11 +391,9 @@ try {
 
 deleteEthEapConfig(): Promise\<void\>
 
-删除已持久化保存的以太网802.1X EAP配置，并停止正在进行的自动认证。使用Promise异步回调。
+删除已持久化保存的以太网802.1X EAP配置。若当前存在正在进行的自动认证，则会停止本次认证流程。使用Promise异步回调。
 
-该操作具有幂等性，即使尚未保存配置，也会成功完成。
-
-**起始版本：** 26.2.0
+**起始版本：** 26.0.1
 
 **需要权限**：ohos.permission.ENTERPRISE_MANAGE_EAP
 
@@ -409,13 +407,13 @@ deleteEthEapConfig(): Promise\<void\>
 | -------- | -------- |
 | Promise\<void\> | Promise对象，无返回结果。 |
 
-**错误码：**
+**错误码**：
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 201 | Permission denied. |
 
 **示例：**
 
@@ -439,9 +437,9 @@ try {
 
 getEthEapStateInfo(): EthEapStateInfo
 
-同步获取当前以太网802.1X EAP认证状态信息，包括认证状态、重试次数和补充信息。
+同步获取当前以太网802.1X认证状态信息，包括认证状态、重试次数和补充信息。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.0.1
 
 **需要权限**：ohos.permission.ENTERPRISE_MANAGE_EAP
 
@@ -453,15 +451,15 @@ getEthEapStateInfo(): EthEapStateInfo
 
 | 类型 | 说明 |
 | -------- | -------- |
-| [EthEapStateInfo](#etheapstateinfo) | 当前以太网802.1X EAP认证状态信息。 |
+| [EthEapStateInfo](#etheapstateinfo) | 当前以太网802.1X认证状态信息。 |
 
-**错误码：**
+**错误码**：
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 201 | Permission denied. |
 
 **示例：**
 
@@ -482,9 +480,9 @@ try {
 
 onStateChange(callback: Callback\<EthEapStateInfo\>): void
 
-订阅以太网802.1X EAP认证状态变化。使用callback异步回调。
+订阅以太网802.1X认证状态变化。使用callback异步回调。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.0.1
 
 **需要权限**：ohos.permission.ENTERPRISE_MANAGE_EAP
 
@@ -496,15 +494,15 @@ onStateChange(callback: Callback\<EthEapStateInfo\>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | Callback\<[EthEapStateInfo](#etheapstateinfo)\> | 是 | 回调函数，返回以太网802.1X EAP认证状态信息。 |
+| callback | Callback\<[EthEapStateInfo](#etheapstateinfo)\> | 是 | 回调函数，返回以太网802.1X认证状态信息。 |
 
-**错误码：**
+**错误码**：
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 201 | Permission denied. |
 
 **示例：**
 
@@ -529,9 +527,9 @@ try {
 
 offStateChange(callback?: Callback\<EthEapStateInfo\>): void
 
-取消订阅以太网802.1X EAP认证状态变化。
+取消订阅以太网802.1X认证状态变化。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.0.1
 
 **需要权限**：ohos.permission.ENTERPRISE_MANAGE_EAP
 
@@ -545,13 +543,13 @@ offStateChange(callback?: Callback\<EthEapStateInfo\>): void
 | -------- | -------- | -------- | -------- |
 | callback | Callback\<[EthEapStateInfo](#etheapstateinfo)\> | 否 | 待取消的回调函数，应与订阅时传入的回调函数为同一对象。不传入时，取消该事件的所有回调。 |
 
-**错误码：**
+**错误码**：
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 201 | Permission denied. |
 
 **示例：**
 
@@ -580,13 +578,13 @@ try {
 
 connect(action: EthEapConnectAction): Promise\<void\>
 
-手动触发或断开以太网802.1X EAP认证。使用Promise异步回调。
+手动触发或断开以太网802.1X认证。使用Promise异步回调。
 
-当action为ACTION_CONNECT时，使用已保存的配置重新触发认证；未保存配置时，操作失败。如果认证正由企业应用控制，本接口不会中断该认证。认证结果通过[eap.onStateChange](#eaponstatechange)注册的回调返回。
+当action为ACTION_CONNECT时，使用已保存的802.1X认证配置重新触发认证；未保存802.1X认证配置时，操作失败。认证结果通过[eap.onStateChange](#eaponstatechange)注册的回调返回。若当前认证由企业应用通过eap.startEthEap发起，则本接口不生效，仍保持原有认证。
 
-当action为ACTION_DISCONNECT时，停止自动认证，并退出底层802.1X认证。
+当action为ACTION_DISCONNECT时，停止自动认证及重试，退出当前以太网802.1X认证，并将认证状态重置为[STATE_IDLE](#etheapstate)。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.0.1
 
 **需要权限**：ohos.permission.ENTERPRISE_MANAGE_EAP
 
@@ -604,15 +602,15 @@ connect(action: EthEapConnectAction): Promise\<void\>
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise\<void\> | Promise对象，无返回结果。认证结果通过状态变化回调返回。 |
+| Promise\<void\> | Promise对象，无返回结果。 |
 
-**错误码：**
+**错误码**：
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 201 | Permission denied. |
 
 **示例：**
 
@@ -638,19 +636,19 @@ try {
 
 EAP信息。
 
-​**系统能力**​：SystemCapability.Communication.NetManager.Eap
+​**系统能力​**：SystemCapability.Communication.NetManager.Eap
 
 | **名称** | **类型** | **只读** | **可选** | **说明** |
 | -------- | -------- | -------- | -------- | -------- |
 | msgId | number | 否 | 否 | 伪随机数，用于关联处理前后的EAP数据。 |
 | eapBuffer | Uint8Array | 否 | 否 | 从EAP header开始的EAP原始数据，未加密。|
-| bufferLen| number | 否 | 否 | 数据长度。单位：Byte。 |
+| bufferLen| number | 否 | 否 | 数据长度。 |
 
 ## CustomResult
 
 表示EAP认证处理结果的枚举。
 
-​**系统能力**​：SystemCapability.Communication.NetManager.Eap
+​**系统能力​**：SystemCapability.Communication.NetManager.Eap
 
 | **名称** | **值** | **说明** |
 | -------- | -------- | -------- |
@@ -662,7 +660,7 @@ EAP信息。
 
 表示EAP认证方式的枚举。
 
-**系统能力：** SystemCapability.Communication.NetManager.Eap
+**系统能力**：SystemCapability.Communication.NetManager.Eap
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
@@ -680,7 +678,7 @@ EAP信息。
 
 表示第二阶段认证方式的枚举。
 
-**系统能力：** SystemCapability.Communication.NetManager.Eap
+**系统能力**：SystemCapability.Communication.NetManager.Eap
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
@@ -701,7 +699,7 @@ EAP信息。
 
 | 名称              | 类型                          | 只读 | 可选 | 说明                             |
 | ----------------- | ----------------------------- | ---- |----| -------------------------------- |
-| eapMethod         | [EapMethod](#eapmethod)      | 否   | 否 | AP认证方式。                     |
+| eapMethod         | [EapMethod](#eapmethod)      | 否   | 否 | EAP认证方式。                     |
 | phase2Method      | [Phase2Method](#phase2method)| 否   | 否 | 第二阶段认证方式。               |
 | identity          | string                        | 否   | 否 | 身份信息。                       |
 | anonymousIdentity | string                        | 否   | 否 | 匿名身份。                       |
@@ -719,9 +717,9 @@ EAP信息。
 
 ## EthEapConfig
 
-以太网802.1X EAP配置，包括EAP配置信息和功能开关。
+以太网802.1X认证配置，包括EAP配置信息和功能开关。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.0.1
 
 **系统能力**：SystemCapability.Communication.NetManager.Eap
 
@@ -729,16 +727,16 @@ EAP信息。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| profile | [EthEapProfile](#etheapprofile) | 否 | 否 | EAP配置信息。通过setEthEapConfig设置时，password、certPassword传入空字符串或certEntry传入空数组表示保留原值；通过getEthEapConfig获取时，这些敏感字段始终返回空值。 |
+| profile | [EthEapProfile](#etheapprofile) | 否 | 否 | EAP配置信息。通过[eap.setEthEapConfig](#eapsetetheapconfig)设置时，password、certPassword传入空字符串或certEntry传入空数组表示保留原值；通过[eap.getEthEapConfig](#eapgetetheapconfig)获取时，password、certPassword返回空字符串，certEntry返回空数组。 |
 | enabled | boolean | 否 | 否 | 是否启用802.1X功能。true表示启用，false表示禁用。 |
 | autoAuth | boolean | 否 | 否 | 是否在连接网线或设备启动时自动发起认证。true表示自动发起，false表示不自动发起。 |
 | locked | boolean | 否 | 否 | 是否锁定配置。true表示锁定，false表示未锁定。锁定后，除解锁外，不允许修改配置。 |
 
 ## EthEapState
 
-以太网802.1X EAP认证状态枚举。
+以太网802.1X认证状态枚举。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.0.1
 
 **系统能力**：SystemCapability.Communication.NetManager.Eap
 
@@ -747,16 +745,16 @@ EAP信息。
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
 | STATE_IDLE | 0 | 空闲状态，尚未发起认证。 |
-| STATE_AUTHENTICATING | 1 | 正在进行802.1X认证。 |
+| STATE_AUTHENTICATING | 1 | 正在进行以太网802.1X认证。 |
 | STATE_AUTHENTICATED | 2 | 认证成功。 |
 | STATE_FAILED | 3 | 认证失败，已达到最大重试次数。 |
 | STATE_RETRYING | 4 | 等待下一次重试。 |
 
 ## EthEapStateInfo
 
-以太网802.1X EAP认证状态信息，可通过[eap.getEthEapStateInfo](#eapgetetheapstateinfo)获取，也可通过[eap.onStateChange](#eaponstatechange)注册的回调返回。
+以太网802.1X认证状态信息，可通过[eap.getEthEapStateInfo](#eapgetetheapstateinfo)获取，也可通过[eap.onStateChange](#eaponstatechange)注册的回调返回。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.0.1
 
 **系统能力**：SystemCapability.Communication.NetManager.Eap
 
@@ -770,9 +768,9 @@ EAP信息。
 
 ## EthEapConnectAction
 
-以太网802.1X EAP手动连接操作枚举，用于[eap.connect](#eapconnect)。
+以太网802.1X认证操作枚举，用于[eap.connect](#eapconnect)。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.0.1
 
 **系统能力**：SystemCapability.Communication.NetManager.Eap
 
@@ -781,4 +779,4 @@ EAP信息。
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
 | ACTION_CONNECT | 0 | 使用已保存的配置重新触发认证。 |
-| ACTION_DISCONNECT | 1 | 停止自动认证，并退出底层802.1X认证。 |
+| ACTION_DISCONNECT | 1 | 停止自动认证及重试，退出当前以太网802.1X认证，并将认证状态重置为空闲。 |
