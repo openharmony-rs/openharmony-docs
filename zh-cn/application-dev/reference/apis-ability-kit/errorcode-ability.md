@@ -3112,7 +3112,25 @@ Failed to parse the configuration file.
 **处理步骤**
 
 检查对应模块目录下`src/main/resources/rawfile/memory_optimizer.json`配置文件是否存在，并确认其内容格式是否正确。
- 
+
+## 16000165 应用注册的观察者数量已达到上限
+
+**错误信息**
+
+The number of registered observers for the current application has reached the upper limit.
+
+**错误描述**
+
+注册新的observer失败。
+
+**可能原因**
+
+当前应用已注册observer数量达到上限。
+
+**处理步骤**
+
+注销掉其他进程中的observer。
+
 <!--Del-->
 ## 16000301 任务已存在
  
