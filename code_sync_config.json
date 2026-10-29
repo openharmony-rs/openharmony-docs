@@ -69615,5 +69615,40 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/web/web-drag.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/WebDragInteraction/entry/src/main/ets/pages/DragArkTSPage.ets",
+				"functions":[
+					{
+						"end_line":68,
+						"name":"DragArkTSPage",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/WebDragInteraction/entry/src/main/ets/pages/SetUAPage.ets",
+				"functions":[
+					{
+						"end_line":35,
+						"name":"SetUAPage",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/WebDragInteraction/entry/src/main/ets/pages/ForbidDragPage.ets",
+				"functions":[
+					{
+						"end_line":63,
+						"name":"ForbidDragPage",
+						"start_line":15
+					}
+				]
+			}
+		]
 	}
 ]
