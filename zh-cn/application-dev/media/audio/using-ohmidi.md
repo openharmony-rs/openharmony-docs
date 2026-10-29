@@ -880,7 +880,7 @@ static void OnMIDIReceived(void *userData, const OH_MIDIEvent *events, size_t ev
 ## 完整示例
 
 完整的示例代码可以在示例项目中查看：
-- 示例项目路径：`https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi`。
+- 示例项目路径：[https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi)。
 
 示例项目展示了：
 - 创建和销毁MIDI客户端。
