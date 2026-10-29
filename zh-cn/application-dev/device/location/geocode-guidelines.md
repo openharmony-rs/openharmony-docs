@@ -75,7 +75,7 @@
    - 调用getAddressesFromLocationName把地理编码（即位置信息）转化为经纬度坐标。
      
       ```ts
-      let geocodeRequest:geoLocationManager.GeoCodeRequest = {"description": "上海市浦东新区xx路xx号", "maxItems": 1};
+      let geocodeRequest:geoLocationManager.GeoCodeRequest = {"description": "上海市浦东新区张江路", "maxItems": 1};
       try {
           if (geoLocationManager.isGeocoderAvailable()) {
             geoLocationManager.getAddressesFromLocationName(geocodeRequest, (err, data) => {
