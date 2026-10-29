@@ -38,8 +38,8 @@
 3. 判断是否支持围栏功能
 
    ```ts
-   let isGnssGeoFeceSupported = geoLocationManager.isGnssFenceServiceSupported();
-   if (!isGnssGeoFeceSupported) {
+   let isGnssGeoFenceSupported = geoLocationManager.isGnssFenceServiceSupported();
+   if (!isGnssGeoFenceSupported) {
        console.error("Current Device Do not Support GnssGeofence");
    }
    ```
@@ -137,7 +137,7 @@
    // fenceId是在geoLocationManager.addGnssGeofence执行成功后获取的
    let fenceId = 1;
    try {
-     if (geoLocationManager.isGnssFenceServiceSupported();) {
+     if (geoLocationManager.isGnssFenceServiceSupported()) {
         geoLocationManager.removeGnssGeofence(fenceId).then(() => {
            console.info("removeGnssGeofence success fenceId:" + fenceId);
         }).catch((error : BusinessError) => {
