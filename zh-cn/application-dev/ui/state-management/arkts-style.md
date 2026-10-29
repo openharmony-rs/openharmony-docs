@@ -268,7 +268,7 @@ struct GlobalFancy {
 const lowVersionStyleText: string = 'Lower version performance';
 const hightVersionStylesText: string = 'Higher version performance';
 
-// 低版本适配样式：仅在系统版本大于等于Api Version 12且小于Api Version 18时生效
+// 低版本适配样式：仅在系统版本大于等于12且小于26.0.0时生效
 // '5.0.0'与12、'12'写法等价，均表示系统版本5.0.0
 @Styles({ minApiVersion: '5.0.0', maxApiVersion: '26.0.0' })
 function lowVersionStyle() {
@@ -277,7 +277,7 @@ function lowVersionStyle() {
   .height(60)
 }
 
-// 高版本样式：仅在系统版本大于等于Api Version 26.0.0时生效
+// 高版本适配样式：仅在系统版本大于等于26.0.0时生效
 @Styles({ minApiVersion: '26.0.0' })
 function highVersionStyle() {
   .backgroundColor('#64bb5c')

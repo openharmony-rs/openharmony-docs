@@ -391,14 +391,14 @@ struct FancyUse {
 const lowVersionExtendText: string = 'Lower version performance';
 const hightVersionExtendText: string = 'Higher version performance';
 
-// 低版本适配样式：仅在系统版本大于等于Api version 12且小于Api version 26.0.0时生效
+// 低版本适配样式：仅在系统版本大于等于12且小于26.0.0时生效
 @Extend(Text, { minApiVersion: 12, maxApiVersion: '26.0.0' })
 function lowVersionText(color: Color) {
   .fontColor(color)
   .fontSize(16)
 }
 
-// 高版本样式：仅在系统版本大于等于Api version 26.0.0时生效
+// 高版本适配样式：仅在系统版本大于等于26.0.0时生效
 @Extend(Text, { minApiVersion: '26.0.0' })
 function highVersionText(color: Color) {
   .fontColor(color)
