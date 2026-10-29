@@ -1,3 +1,10 @@
+---
+kits: ["Drm Kit / 数字版权保护服务"]
+description: "介绍如何通过C/C++接口调用DRM Kit实现证书管理、许可证管理、节目授权与解密，适用于需要底层Native开发的DRM版权保护场景。"
+keywords: [DRM, C/C++, Native API, 证书管理, MediaKeySystem, MediaKeySession, 节目授权, 节目解密, 安全保护级别]
+doctype: guide
+status: active
+---
 # 数字版权保护(C/C++)
 
 <!--Kit: Drm Kit-->

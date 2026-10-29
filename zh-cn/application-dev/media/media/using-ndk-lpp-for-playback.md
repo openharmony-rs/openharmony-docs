@@ -1,3 +1,10 @@
+---
+kits: ["Media Kit / 媒体服务"]
+description: "介绍从API版本20开始如何使用LPP低功耗播放器通过C/C++接口实现低功耗视频播放，适用于对功耗敏感的长时间视频播放场景。"
+keywords: [LPP, 低功耗播放器, C/C++, Native API, LowPowerPlayer, 视频播放, 解码器, LowPowerAudioSink, LowPowerVideoSink]
+doctype: guide
+status: active
+---
 # 使用LPP播放器播放视频 (C/C++)
 
 <!--Kit: Media Kit-->
