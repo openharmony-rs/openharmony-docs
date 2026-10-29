@@ -9,7 +9,7 @@
 
 评估管理模块提供评估场景管理能力，包括开始评估、结束评估、评估状态查询、评估配置获取以及评估过程中的回调等。当应用需要进入考试场景时，可调用begin接口开始评估，系统将弹窗提醒用户，用户确认进入评估模式后会限制部分系统能力，防止用户考试作弊或泄密；评估结束或被中断后，可调用end接口退出评估模式，在保障考试公平的同时保护用户权益。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 ## 导入模块
 
@@ -21,7 +21,7 @@ import { assessment } from '@kit.AutomaticSceneConfigurationKit';
 
 评估场景配置信息。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -36,7 +36,7 @@ import { assessment } from '@kit.AutomaticSceneConfigurationKit';
 
 评估错误码的枚举。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -54,7 +54,7 @@ import { assessment } from '@kit.AutomaticSceneConfigurationKit';
 
 评估错误信息。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -69,7 +69,7 @@ import { assessment } from '@kit.AutomaticSceneConfigurationKit';
 
 评估中断信息。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -84,7 +84,7 @@ import { assessment } from '@kit.AutomaticSceneConfigurationKit';
 
 评估过程回调接口，用于接收评估开始、中断、结束事件的回调。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -96,7 +96,7 @@ onBegin(error: AssessmentError): void
 
 评估开始时的回调。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -114,7 +114,7 @@ onInterrupted(info: AssessmentInterruptInfo): void
 
 评估被中断时的回调。当评估过程因用户取消、超时退出、系统错误、安全违规等原因被中断时触发。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -132,7 +132,7 @@ onEnd(): void
 
 评估结束时的回调。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -144,7 +144,7 @@ begin(context: UIAbilityContext, config: AssessmentConfig, callback: IAssessment
 
 开始评估。调用后会弹出确认弹窗，需用户确认后方可开始评估。评估结果及评估过程中的中断、结束事件通过callback回调通知。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -245,7 +245,7 @@ end(context: UIAbilityContext): void
 
 结束评估，解除评估模式下对系统能力的限制。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -318,7 +318,7 @@ isActive(): boolean
 
 查询当前是否处于评估状态。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -371,7 +371,7 @@ getConfiguration(): AssessmentConfig
 
 获取当前评估配置。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
