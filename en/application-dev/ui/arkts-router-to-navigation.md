@@ -697,7 +697,7 @@ For details, see [System Routing Table](./arkts-navigation-cross-package.md#syst
 
 ## Lifecycle Listening
 
-You can use the observer to register a listening for the lifecycle events with the **Router**. For details about the APIs, see [uiObserver.on('routerPageUpdate')](../reference/apis-arkui/js-apis-arkui-observer.md#uiobserveronrouterpageupdate11).
+You can use the observer to register a listening for the lifecycle events with the **Router**. For details about the APIs, see [uiObserver.on('routerPageUpdate')](../reference/apis-arkui/js-apis-arkui-observer.md#uiobserveronrouterpageupdate).
 
 <!-- @[observer_comm](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/observer/Comm.ets) -->
 

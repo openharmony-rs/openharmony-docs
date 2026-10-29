@@ -24,7 +24,7 @@ Starting from API version 12, the [aboutToDisappear](../reference/apis-arkui/ark
 
 - Calling [OH_ArkUI_GetNodeHandleFromNapiValue](../reference/apis-arkui/capi-native-node-napi-h.md#oh_arkui_getnodehandlefromnapivalue) to obtain the root node of a **BuilderNode** or **ComponentContent** object increases the backend node's reference count by 1.
 
-- In [NodeContent](../reference/apis-arkui/js-apis-arkui-NodeContent.md), [addFrameNode](../reference/apis-arkui/js-apis-arkui-NodeContent.md#addframenode12) is used to add a reference relationship for the created FrameNode. However, the **NodeContent** object is not reclaimed and [removeFrameNode](../reference/apis-arkui/js-apis-arkui-NodeContent.md#removeframenode12) is not called to remove the reference relationship.
+- In [NodeContent](../reference/apis-arkui/js-apis-arkui-NodeContent.md), [addFrameNode](../reference/apis-arkui/js-apis-arkui-NodeContent.md#addframenode) is used to add a reference relationship for the created FrameNode. However, the **NodeContent** object is not reclaimed and [removeFrameNode](../reference/apis-arkui/js-apis-arkui-NodeContent.md#removeframenode) is not called to remove the reference relationship.
 
 **Solution**
 
