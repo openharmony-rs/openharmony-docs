@@ -5,11 +5,12 @@
 <!--Owner: @zhang-yinglie; @volcano_wang-->
 <!--Designer: @wangyantian0-->
 <!--Tester: @alien0208-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=7e5db48730568c9986e2cf46dd9a5b999addfe40 translatedAt=2026-10-28T12:15:46.665Z pushedAt=2026-10-28T12:35:26.553Z nl=1 -->
 
 ## When to Use
 
-When the PC does not detect any user activity (such as keyboard or mouse input) within a specified period, the system automatically enters sleep mode. In this case, **RunningLockType.BACKGROUND_USER_IDLE** is used to prevent the system from automatically entering sleep mode, ensuring that services are running properly.
+When the computer has not detected any user activity (such as keyboard or mouse input) for a period of time, the system automatically attempts to enter sleep. Use the RunningLockType.BACKGROUND_USER_IDLE running lock to ensure that the system does not enter automatic sleep while the lock is held, so that services run normally.
 
 ## Environment Setup
 
@@ -21,6 +22,7 @@ When the PC does not detect any user activity (such as keyboard or mouse input) 
 
 
 - SDK version configuration:
+
   The **RunningLockType.BACKGROUND_USER_IDLE** can be used only when the SDK version is API version 23 or later.
 
 
@@ -31,7 +33,7 @@ When the PC does not detect any user activity (such as keyboard or mouse input) 
 ### Setting Up the Environment
 
 - Install [DevEco Studio](https://developer.huawei.com/consumer/en/download/deveco-studio) 4.1 or later on the PC.
-- Update the public SDK to API version 23 or later. For details, see [Switching to Full SDK](https://gitee.com/openharmony/docs/blob/master/en/application-dev/faqs/full-sdk-switch-guide.md).
+- Update public-SDK to API version 23 or later.
 - Install hdc on the PC. You can use it to interact with a real device or the Emulator on Windows, Linux, or macOS.
 - Use a USB cable to connect a device to the PC.
 
@@ -43,18 +45,24 @@ When the PC does not detect any user activity (such as keyboard or mouse input) 
 
    Sleep refers to a low-power state in which most hardware components of a PC system stop working, and only the minimum necessary components remain running to maintain the system state. System sleep is classified into the following types:
 
-   (1) Auto sleep: a sleep state that is automatically triggered by preset conditions or user configurations. Generally, when the system does not detect any user activity (such as keyboard or mouse input) within a specified period, the system automatically enters sleep state.
+   (1) Automatic sleep: a sleep state automatically triggered by system preset conditions or user configuration. Typically, when the computer has not detected any user activity (such as keyboard or mouse input) for a period of time, the system automatically enters the sleep state.
+   > **NOTE**
+   > 
+   > After automatic sleep is triggered and no sleep lock is held for a period of time, the system restricts network uplink and downlink traffic.
 
-   (2) Forced sleep: a sleep state in which the system is directly instructed by the user or application to enter sleep state immediately (for example, the user closes the laptop lid or clicks the sleep button in the menu), regardless of the current system state or user activities.
+   (2) Forced sleep: the user or an application directly commands the system to enter the sleep state immediately (for example, the user closes the PC lid or taps Sleep in the menu), regardless of the current system state or user activity.
+   > **NOTE**
+   >
+   > After forced sleep is triggered, the system immediately restricts network uplink and downlink traffic. In addition, the system preempts the audio focus, and audio and video applications pause playback.
 
 2. Constraints and device differences of the **RunningLockType.BACKGROUND_USER_IDLE** API:
 
    (1) This type of running lock is available for both system applications and non-system applications on PCs, as well as for system applications only on non-PC devices. For non-system applications on non-PC devices, this type of running lock does not take effect. This constraint must be considered during development.
 
-   (2) The **BACKGROUND_USER_IDLE** running lock can prevent the system from automatically sleeping, but cannot prevent the system from forcibly sleeping. Therefore, the application that uses this API must listen for the [COMMON_EVENT_ENTER_FORCE_SLEEP](../../../reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_enter_force_sleep12) event and release the lock within 1 second after receiving this common event. Then it should determine whether to listen for the [COMMON_EVENT_EXIT_FORCE_SLEEP](../../../reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_exit_force_sleep12) event and hold the lock again based on the specific scenario.
+   (2) The BACKGROUND_USER_IDLE user idle task lock can prevent the system from entering automatic sleep, but it cannot prevent the system from entering forced sleep. Therefore, an application that uses this API must listen for the common event [common_event_enter_force_sleep](../../../reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_enter_force_sleep12) for entering forced sleep, and actively release the lock within 1 second after receiving the common event. Whether to listen for the common event [common_event_exit_force_sleep](../../../reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_exit_force_sleep12) for exiting forced sleep and re-acquire the lock is decided by the application based on the specific scenario.
    > **NOTE**
    > 
-   > When the system enters the forced sleep mode, the **BACKGROUND_USER_IDLE** lock will be forcibly released to ensure that the system can enter the sleep state. The common event provides a way for the service side to detect the forced sleep state and process the corresponding service.
+   > After forced sleep is triggered, the system performs a fallback to forcibly release the lock, ensuring that the system can enter sleep normally. The application needs to listen for the forced sleep common event to handle the corresponding services. If necessary, re-apply for the corresponding running lock after detecting the exit from forced sleep.
 
 
 ### How to Develop

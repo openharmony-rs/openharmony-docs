@@ -5,7 +5,8 @@
 <!--Owner: @hwymlgitcode-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=b2abee6fde0080e246d10ff0f94cb54cace432c9 translatedAt=2026-10-28T12:16:55.454Z pushedAt=2026-10-28T12:44:45.329Z nl=1 -->
 
 ## Overview
 
@@ -52,7 +53,7 @@ For details, see [Preparing the Environment](usbSerial-overview.md#preparing-the
 
 You can obtain and set the serial port configuration as follows:
 
-> **NOTE**
+> **NOTE** 
 >
 > The following sample code shows only a basic process. You should execute the code in a specific method.
 
@@ -61,11 +62,9 @@ You can obtain and set the serial port configuration as follows:
    <!-- @[head](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
-   // Import the usbManager module.
-   import { serialManager } from '@kit.BasicServicesKit';
-   import { BusinessError } from '@kit.BasicServicesKit'
-   import { buffer } from '@kit.ArkTS';
-   import { JSON } from '@kit.ArkTS';
+   // Import the serialManager module.
+   import { serialManager, BusinessError } from '@kit.BasicServicesKit';
+   import { buffer, JSON } from '@kit.ArkTS';
    ```
 
 2. Obtain the USB device list.
@@ -103,8 +102,8 @@ You can obtain and set the serial port configuration as follows:
        console.info('serial device request right result: ' + result);
        this.logInfo_ += '\n[INFO] serial device request right result: ' + JSON.stringify(result);
      }).catch((error: BusinessError) => {
-       console.error(`usb device request right failed : ${error}`);
-       this.logInfo_ += '\n[ERROR] usb device request right failed: ' + JSON.stringify(error);
+       console.error(`usb device request right failed : code=${error.code}, message=${error.message}`);
+       this.logInfo_ += '\n[ERROR] usb device request right failed: code=' + error.code + ', message=' + error.message;
      });
    } else {
      console.info('serial device already request right');
@@ -124,8 +123,9 @@ You can obtain and set the serial port configuration as follows:
      console.info(`open usbSerial success, portId: ${portId}`);
      this.logInfo_ += '\n[INFO] open usbSerial success, portId: ' + JSON.stringify(portId);
    } catch (error) {
-     console.error(`open usbSerial error: ${error}`);
-     this.logInfo_ += '\n[ERROR] open usbSerial error: ' + JSON.stringify(error);
+     let errorObj: BusinessError = error as BusinessError;
+     console.error(`open usbSerial error: code=${errorObj.code}, message=${errorObj.message}`);
+     this.logInfo_ += '\n[ERROR] open usbSerial error: code=' + errorObj.code + ', message=' + errorObj.message;
    }
    ```
 
@@ -138,16 +138,12 @@ You can obtain and set the serial port configuration as follows:
    // Obtain the serial port configuration.
    try {
      let attribute: serialManager.SerialAttribute = serialManager.getAttribute(portId);
-     if (attribute === undefined) {
-       console.error('getAttribute usbSerial error, attribute is undefined');
-       this.logInfo_ += '\n[ERROR] getAttribute usbSerial error, attribute is undefined';
-     } else {
-       console.info(`getAttribute usbSerial success, attribute: ${attribute}`);
-       this.logInfo_ += '\n[INFO] getAttribute usbSerial success, attribute: ' + JSON.stringify(attribute);
-     }
+     console.info(`getAttribute usbSerial success, attribute: ${JSON.stringify(attribute)}`);
+     this.logInfo_ += '\n[INFO] getAttribute usbSerial success, attribute: ' + JSON.stringify(attribute);
    } catch (error) {
-     console.error(`getAttribute usbSerial error: ${error}`);
-     this.logInfo_ += '\n[ERROR] getAttribute usbSerial error: ' + JSON.stringify(error);
+     let errorObj: BusinessError = error as BusinessError;
+     console.error(`getAttribute usbSerial error: code=${errorObj.code}, message=${errorObj.message}`);
+     this.logInfo_ += '\n[ERROR] getAttribute usbSerial error: code=' + errorObj.code + ', message=' + errorObj.message;
    }
    ```
 
@@ -164,11 +160,12 @@ You can obtain and set the serial port configuration as follows:
        stopBits: serialManager.StopBits.STOPBIT_1
      }
      serialManager.setAttribute(portId, attribute);
-     console.info(`setAttribute usbSerial success, attribute: ${attribute}`);
+     console.info(`setAttribute usbSerial success, attribute: ${JSON.stringify(attribute)}`);
      this.logInfo_ += '\n[INFO] setAttribute usbSerial success, attribute: ' + JSON.stringify(attribute);
    } catch (error) {
-     console.error(`setAttribute usbSerial error: ${error}`);
-     this.logInfo_ += '\n[ERROR] setAttribute usbSerial error: ' + JSON.stringify(error);
+     let errorObj: BusinessError = error as BusinessError;
+     console.error(`setAttribute usbSerial error: code=${errorObj.code}, message=${errorObj.message}`);
+     this.logInfo_ += '\n[ERROR] setAttribute usbSerial error: code=' + errorObj.code + ', message=' + errorObj.message;
    }
    ```
 
