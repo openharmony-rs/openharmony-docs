@@ -52,20 +52,42 @@
    #include "LocationKit/oh_location_type.h"
    #include "hilog/log.h"
    #include <stdlib.h>
+   #include <string>
    ```
+
 
 5. 调用获取位置接口之前需要先判断位置开关是否打开。
 
    查询当前位置开关状态，返回结果为布尔值，true代表位置开关开启，false代表位置开关关闭，示例代码如下：
 
    ```c
+    std::string GetErrorMsgFromErrorCode(int errorCode)
+    {
+        switch(errorCode) {
+            case LOCATION_PERMISSION_DENIED:
+                return "Permission verification failed. The application does not have the permission required to call the API.";
+            case LOCATION_INVALID_PARAM:
+                return "Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.";
+            case LOCATION_NOT_SUPPORTED:
+                return "Capability not supported. Failed to call this API due to limited device capabilities.";
+            case LOCATION_SERVICE_UNAVAILABLE:
+                return "The location service is unavailable.";
+            case LOCATION_SWITCH_OFF:
+                return "The location switch is off.";
+            default:
+                return "Unknown error. error code: " + std::to_string(errorCode);
+        }
+    }
+
     static napi_value OhLocationIsEnabled(napi_env env, napi_callback_info info)
     {
         bool isEnabled = false;
         int resultCode = OH_Location_IsLocatingEnabled(&isEnabled);
         napi_value result = NULL;
         if (resultCode != LOCATION_SUCCESS) {
-           napi_create_int32(env, resultCode, &result);
+           std::string errorMsg = GetErrorMsgFromErrorCode(resultCode);
+           napi_throw_error(env, std::to_string(resultCode).c_str(), errorMsg.c_str());
+           napi_get_undefined(env, &result);
            return result;
         }
         napi_get_boolean(env, isEnabled, &result);
@@ -107,14 +129,6 @@
    // 订阅位置信息
    static napi_value OhLocationStartLocating(napi_env env, napi_callback_info info)
    {
-       bool isEnabled = false;
-       napi_value result = NULL;
-       int resultCode = OH_Location_IsLocatingEnabled(&isEnabled);
-       if (!isEnabled) {
-          int errCode = LOCATION_SWITCH_OFF;
-          napi_create_int32(env, errCode, &result);
-          return result;
-       }
        if (g_requestConfig == NULL) {
           g_requestConfig = OH_Location_CreateRequestConfig();
        }
@@ -122,13 +136,23 @@
        OH_LocationRequestConfig_SetInterval(g_requestConfig, 1);
        // mydata:用户自定义任意类型，触发reportLocation回调时会传回该字段，用于区分是否为携带mydata字段的位置请求回调
        mydata = (void *)malloc(sizeof("mydata"));
+       napi_value result = NULL;
        if (mydata == NULL) {
           int errCode = LOCATION_INVALID_PARAM;
-          napi_create_int32(env, errCode, &result);
+          std::string errorMsg = GetErrorMsgFromErrorCode(errCode);
+          napi_throw_error(env, std::to_string(errCode).c_str(), errorMsg.c_str());
+          napi_get_undefined(env, &result);
           return result;
        }
+
        OH_LocationRequestConfig_SetCallback(g_requestConfig, reportLocation, mydata);
-       resultCode = OH_Location_StartLocating(g_requestConfig);
+       int resultCode = OH_Location_StartLocating(g_requestConfig);
+       if (resultCode != LOCATION_SUCCESS) {
+           std::string errorMsg = GetErrorMsgFromErrorCode(resultCode);
+           napi_throw_error(env, std::to_string(resultCode).c_str(), errorMsg.c_str());
+           napi_get_undefined(env, &result);
+           return result;
+       }
        napi_create_int32(env, resultCode, &result);
        return result;
    }
@@ -136,7 +160,7 @@
    // 取消订阅位置信息， g_requestConfig要和订阅时传入的对象保持一致
    static napi_value OhLocationStopLocating(napi_env env, napi_callback_info info)
    {
-       int32_t ret = OH_Location_StopLocating(g_requestConfig);
+       int32_t resultCode = OH_Location_StopLocating(g_requestConfig);
        if (g_requestConfig != NULL) {
            OH_Location_DestroyRequestConfig(g_requestConfig);
            g_requestConfig = NULL;
@@ -146,7 +170,13 @@
            mydata = NULL;
        }
        napi_value result = NULL;
-       napi_create_int32(env, ret, &result);
+       if (resultCode != LOCATION_SUCCESS) {
+           std::string errorMsg = GetErrorMsgFromErrorCode(resultCode);
+           napi_throw_error(env, std::to_string(resultCode).c_str(), errorMsg.c_str());
+           napi_get_undefined(env, &result);
+           return result;
+       }
+       napi_create_int32(env, resultCode, &result);
        return result;
    }
 
