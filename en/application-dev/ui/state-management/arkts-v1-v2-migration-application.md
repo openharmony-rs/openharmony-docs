@@ -5,7 +5,7 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=f40d976a55afa9474832553b7faba446f7655708 translatedAt=2026-09-21T11:45:11.816Z pushedAt=2026-09-23T09:33:39.458Z -->
+<!-- md-trans-meta sourceCommit=b9b22540a5827a2e8cd777a1781974456d92844f translatedAt=2026-10-28T04:11:54.462Z pushedAt=2026-10-28T08:19:02.615Z nl=1 -->
 
 This guide provides migration instructions for in-application state variables.
 
@@ -14,7 +14,7 @@ This guide provides migration instructions for in-application state variables.
 | -------- | -------- |
 | [LocalStorage](./arkts-localstorage.md) | [@ObservedV2](./arkts-new-observedV2-and-trace.md) [@Trace](./arkts-new-observedV2-and-trace.md) |
 | [AppStorage](./arkts-appstorage.md) | [AppStorageV2](./arkts-new-appstoragev2.md) |
-| [Environment](./arkts-environment.md) | Obtain system environment variables using the **config** property of [UIAbilityContext](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#uiabilitycontext-1).|
+| [Environment](./arkts-environment.md) | Obtain system environment variables using the **config** property of [UIAbilityContext](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#uiabilitycontext-1). |
 | [PersistentStorage](./arkts-persiststorage.md) | [PersistenceV2](./arkts-new-persistencev2.md) |
 | Legacy migration scenarios| \@ObservedV2, \@Trace, [\@Monitor](./arkts-new-monitor.md)|
 
