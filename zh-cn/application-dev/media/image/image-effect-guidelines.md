@@ -396,8 +396,8 @@ target_link_libraries(entry PUBLIC
    ```c++
    // 创建OH_EffectFilterInfo实例。
    OH_EffectFilterInfo *customFilterInfo = OH_EffectFilterInfo_Create();
-   if (customFilterInfo ==nullptr) {
-       OH_LOG_ERROR(LOG_APP, "OH_EffectFilter_GetValue fail!");
+   if (customFilterInfo == nullptr) {
+       OH_LOG_ERROR(LOG_APP, "OH_EffectFilterInfo_Create fail!");
        return;
    }
 
