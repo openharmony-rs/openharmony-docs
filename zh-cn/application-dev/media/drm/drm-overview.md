@@ -5,7 +5,7 @@ keywords: [DRM, 数字版权管理, DRM插件, MediaKeySystem, MediaKeySession, 
 doctype: guide
 status: active
 ---
-# DRM Kit简介
+# DRM Kit 简介
 
 <!--Kit: Drm Kit-->
 <!--Subsystem: Multimedia-->
