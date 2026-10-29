@@ -1687,6 +1687,22 @@ Allows an application to obtain the list of applications installed on the device
  
 **Since**: 26.0.1
 
+## ohos.permission.DIRECT_CALL
+ 
+Allows an application to make calls with one tap.
+
+With this permission, the application can make calls directly without opening the Contacts screen when the device has a single SIM card or a default SIM card has been specified on a multi-SIM device. 
+ 
+<!--RP114--><!--RP114End-->
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: user_grant
+ 
+**Supported devices**: phones
+ 
+**Since**: 26.0.1
+
 ## ohos.permission.ACCESS_BOARD_INFO
  
 Allows an application to obtain the device hardware information.

@@ -1688,6 +1688,22 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
  
 **起始版本**：26.0.1
 
+## ohos.permission.DIRECT_CALL
+ 
+允许应用一键拨号。
+
+获取该权限后，在设备为单SIM卡，或多SIM卡设备已指定默认拨号卡的前提下，无需跳转联系人界面，实现直接拨号。
+ 
+<!--RP114--><!--RP114End-->
+ 
+**权限级别**：system_basic
+ 
+**授权方式**：用户授权（user_grant）
+ 
+**支持设备**：Phone
+ 
+**起始版本**：26.0.1
+
 ## ohos.permission.ACCESS_BOARD_INFO
  
 允许应用获取设备硬件信息。
