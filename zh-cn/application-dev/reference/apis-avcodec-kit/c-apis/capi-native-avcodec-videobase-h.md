@@ -144,7 +144,7 @@ OH_AVErrCode OH_VideoMetadata_ParseRoiString(const char *roiStr, OH_AVFormat **o
 
 **起始版本：** 26.0.0
 
-**资源释放：** media_foundation/OH_AVFormat_Destroy {outOwnedFormats}。
+**资源释放：** media_foundation/OH_AVFormat_Destroy {outOwnedFormats}
 
 **参数：**
 

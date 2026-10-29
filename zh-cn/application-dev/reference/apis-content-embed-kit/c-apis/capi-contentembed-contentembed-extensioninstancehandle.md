@@ -6,7 +6,7 @@ typedef struct ContentEmbed_ExtensionInstanceHandle ContentEmbed_ExtensionInstan
 
 ## 概述
 
-声明OE Extension实例对象指针类型。需要在OH_AbilityRuntime_OnNativeExtensionCreate函数实现里通过 [OH_ContentEmbed_Extension_GetExtensionInstance](capi-content-embed-extension-h.md#oh_contentembed_extension_getextensioninstance)方法，在OE Extension被系统启动时获取OE Extension实例对象。
+声明OE Extension实例对象指针类型。需要在[OH_AbilityRuntime_OnNativeExtensionCreate](../../apis-ability-kit/c-apis/capi-extension-ability-h.md#变量)函数实现里通过 [OH_ContentEmbed_Extension_GetExtensionInstance](capi-content-embed-extension-h.md#oh_contentembed_extension_getextensioninstance)方法，在OE Extension被系统启动时获取OE Extension实例对象。
 
 **系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 

@@ -123,6 +123,7 @@ Declare the Native API used for audio and video muxer, demuxer and basic encodin
 | const char *OH_AVCODEC_MIMETYPE_AUDIO_DVAUDIO | MIME type of the DVAUDIO (Digital Video Audio) audio decoder.<br>**Since**: 23<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase |
 | const char *OH_AVCODEC_MIMETYPE_AUDIO_DTS | MIME type of the DTS (Digital Theater Systems) audio decoder.<br>**Since**: 23<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase |
 | const char *OH_AVCODEC_MIMETYPE_AUDIO_COOK | MIME type of the Cook (RealAudio Cook) audio decoder.<br>**Since**: 23<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase |
+| const char *OH_AVCODEC_MIMETYPE_AUDIO_DSD | MIME type of the DSD audio decoder.<br>**Since**: 26.1.0<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase |
 | const char *OH_AVCODEC_MIMETYPE_VIDEO_MPEG2 | Pointer to the key that describes the MIME type of the MPEG2 video codec.<br>**Since**: 17<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase |
 | const char *OH_AVCODEC_MIMETYPE_VIDEO_MPEG4_PART2 | Pointer to the key that describes the MIME type of the MPEG4 video encoder, which is used only for multiplexing MPEG4 video streams.<br>**Since**: 17<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase |
 | const char *OH_AVCODEC_MIMETYPE_VIDEO_H263 | Pointer to the key that describes the MIME type of the H.263 video codec.<br>**Since**: 17<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase |

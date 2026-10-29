@@ -2,7 +2,7 @@
 
 ## 概述
 
-实现日志打印功能。<br> 使用这些接口可以输出指定日志类型、业务领域、日志标签和日志级别的日志。
+Provides logging functions.<br> For example, you can use these functions to output logs of the specified log type, service domain, log tag, and log level.
 
 **系统能力：** SystemCapability.HiviewDFX.HiLog
 
@@ -12,4 +12,4 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| [log.h](capi-log-h.md) | 定义HiLog模块的日志功能。<br> 在输出日志之前，先定义日志所属业务领域、日志标签，然后按照日志类型、日志级别选择对应接口，并指定隐私标识符。  <ul><li>业务领域： 用于标识服务的子系统或模块，其值为0x0到0xFFFF的十六进制整数。  <li>日志标签：字符串常量，用于标识调用所在的类或者业务。</li>  <li>日志级别：<b>DEBUG</b>、<b>INFO</b>、<b>WARN</b>、<b>ERROR</b>和<b>FATAL</b></li>  <li>参数格式：以%字符开头的printf格式字符串，包括格式说明符和可变参数。</li>  <li>隐私参数标识：在每个参数中%字符和格式说明符之间增加{public}、{private}标识。请注意，每个参数都有一个隐私标识符。 如果未添加隐私标识符，缺省为隐私。</li></ul> <br> 示例代码： 定义业务领域和日志标签： #include &lt;hilog/log.h&gt; #define LOG_DOMAIN 0x0201 #define LOG_TAG "MY_TAG" 输出日志： HILOG_WARN([LOG_APP](capi-log-h.md#logtype), "Failed to visit %{private}s, reason:%{public}d.", url, errno); 输出结果： 05-06 15:01:06.870 1051 1051 W 0201/MY_TAG: Failed to visit &lt;private&gt;, reason:503. |
+| [log.h](capi-log-h.md) | HiLog模块日志接口定义，通过这些接口实现日志打印相关功能。用户输出日志时，先定义日志所属业务领域、日志TAG，然后按照类型、级别选择对应API，指定参数隐私标识输出日志内容。 <br>业务领域：指定日志所对应的业务领域，用户自定义使用，用于标识业务的子系统、模块。16进制整数，范围0x0~0xFFFF，超出范围则日志无法打印。 <br>日志TAG：字符串常量，用于标识调用所在的类或者业务。 <br>日志级别：DEBUG、INFO、WARN、ERROR、FATAL。 <br>参数格式：类printf的%方式，包括格式字符串（包括参数类型标识）和变参。 <br>隐私参数标识：在格式字符串每个参数中%符号后类型前增加{public}、{private}标识。注意：每个参数未指定隐私标识时，缺省为隐私。 |

@@ -56,7 +56,7 @@ The file declares the native APIs used for video decoding.
 | [OH_AVBuffer *OH_VideoDecoder_GetInputBuffer(struct OH_AVCodec *codec, uint32_t index)](#oh_videodecoder_getinputbuffer) | Obtains the instance of the available input buffer.<br> Note that this function works only in synchronous mode. |
 | [OH_AVErrCode OH_VideoDecoder_QueryOutputBuffer(struct OH_AVCodec *codec, uint32_t *index, int64_t timeoutUs)](#oh_videodecoder_queryoutputbuffer) | Obtains the index of the next available output buffer.<br> You can perform the following operations to display or release the decoded frame of the buffer instance obtained through [OH_VideoDecoder_GetOutputBuffer](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_getoutputbuffer): 1. Return the processed output buffer to the decoder by calling [OH_VideoDecoder_FreeOutputBuffer](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_freeoutputbuffer).<br> 2. Render the output surface by calling [OH_VideoDecoder_RenderOutputBuffer](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_renderoutputbuffer).<br> 3. Render the output surface within the specified time by calling [OH_VideoDecoder_RenderOutputBufferAtTime](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_renderoutputbufferattime).<br> Note that the preceding operations are supported only in synchronous mode. |
 | [OH_AVBuffer *OH_VideoDecoder_GetOutputBuffer(struct OH_AVCodec *codec, uint32_t index)](#oh_videodecoder_getoutputbuffer) | Obtains the instance of the available output buffer. Note that this function works only in synchronous mode. |
-| [OH_AVErrCode OH_VideoDecoder_IsValid(OH_AVCodec *codec, bool *isValid)](#oh_videodecoder_isvalid) | Checks whether the decoder service is valid when a decoder instance exists. |
+| [OH_AVErrCode OH_VideoDecoder_IsValid(OH_AVCodec *codec, bool *isValid)](#oh_videodecoder_isvalid) | Check whether the current codec instance is valid. |
 | [OH_AVErrCode OH_VideoDecoder_SetDecryptionConfig(OH_AVCodec *codec, MediaKeySession *mediaKeySession, bool secureVideoPath)](#oh_videodecoder_setdecryptionconfig) | Sets the decryption configuration. This function can be called prior to [OH_VideoDecoder_Prepare](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_prepare). |
 
 ## Function description
@@ -768,7 +768,7 @@ OH_AVErrCode OH_VideoDecoder_IsValid(OH_AVCodec *codec, bool *isValid)
 
 **Description**
 
-Checks whether the decoder service is valid when a decoder instance exists.
+Check whether the current codec instance is valid.
 
 **System capability**: SystemCapability.Multimedia.Media.VideoDecoder
 
@@ -779,7 +779,7 @@ Checks whether the decoder service is valid when a decoder instance exists.
 | Parameter | Description |
 | -- | -- |
 | [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | Pointer to a video decoder instance. |
-| bool *isValid | Pointer of the Boolean type. The value indicates the validity of the decoder service only when the function returns [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode). The value **true** means that the decoder service is valid, and **false** means the opposite. It is recommended that you initialize **isValid** to **false**. |
+| bool *isValid | Pointer of the Boolean type. The value indicates the validity of the decoder instance only when the function returns [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode). The value **true** means that the decoder instance is valid, and **false** means the opposite. It is recommended that you initialize **isValid** to **false**. |
 
 **Returns**:
 

@@ -78,7 +78,7 @@ NODE_IMAGE_ANIMATOR_FILL_MODE = 19005
 
 **描述：**
 
-设置动画执行前后在当前播放方向上的状态。 支持属性设置，属性重置和属性获取接口。<br> 属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <ul> <li>.value[0].i32: 动画执行前后在当前播放方向上的状态。 参数类型为[ArkUI_AnimationFillMode](capi-native-type-visual-h.md#arkui_animationfillmode)。默认值为 <b>ARKUI_ANIMATION_FILL_MODE_FORWARDS</b>。</li> </ul><br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <ul> <li>.value[0].i32: 动画执行前后在当前播放方向上的状态。参数类型为[ArkUI_AnimationFillMode](capi-native-type-visual-h.md#arkui_animationfillmode)。</li> </ul>
+设置动画执行前后在当前播放方向上的状态。 支持属性设置，属性重置和属性获取接口。<br> 属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <ul> <li>.value[0].i32: 动画执行前后在当前播放方向上的状态。 参数类型为[ArkUI_AnimationFillMode](capi-native-type-h.md#arkui_animationfillmode)。默认值为 <b>ARKUI_ANIMATION_FILL_MODE_FORWARDS</b>。</li> </ul><br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <ul> <li>.value[0].i32: 动画执行前后在当前播放方向上的状态。参数类型为[ArkUI_AnimationFillMode](capi-native-type-h.md#arkui_animationfillmode)。</li> </ul>
 
 **起始版本：** 12
 

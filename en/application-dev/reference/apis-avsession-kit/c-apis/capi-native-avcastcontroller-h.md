@@ -53,8 +53,8 @@ Declare avcastcontroller interface.
 | [AVSession_ErrCode OH_AVCastController_SendRewindCommand(OH_AVCastController* avcastcontroller, int32_t rewindTimeS)](#oh_avcastcontroller_sendrewindcommand) | - | Request to send rewind command to Remote. |
 | [AVSession_ErrCode OH_AVCastController_SendSetSpeedCommand(OH_AVCastController* avcastcontroller, AVSession_PlaybackSpeed speed)](#oh_avcastcontroller_sendsetspeedcommand) | - | Request to send set speed command to Remote. |
 | [AVSession_ErrCode OH_AVCastController_SendVolumeCommand(OH_AVCastController* avcastcontroller, int32_t volume)](#oh_avcastcontroller_sendvolumecommand) | - | Request to send volume command to Remote. |
-| [AVSession_ErrCode OH_AVCastController_Prepare(OH_AVCastController* avcastcontroller, OH_AVSession_AVQueueItem* avqueueItem)](#oh_avcastcontroller_prepare) | - | Request to prepare the current player item, this is needed for sink media information displaying. |
-| [AVSession_ErrCode OH_AVCastController_Start(OH_AVCastController* avcastcontroller, OH_AVSession_AVQueueItem* avqueueItem)](#oh_avcastcontroller_start) | - | Request to Play the current item, should contain media uri otherwise the playback will fail. |
+| [AVSession_ErrCode OH_AVCastController_Prepare(OH_AVCastController* avcastcontroller, OH_AVSession_AVQueueItem *avqueueItem)](#oh_avcastcontroller_prepare) | - | Request to prepare the current player item, this is needed for sink media information displaying. |
+| [AVSession_ErrCode OH_AVCastController_Start(OH_AVCastController* avcastcontroller, OH_AVSession_AVQueueItem *avqueueItem)](#oh_avcastcontroller_start) | - | Request to Play the current item, should contain media uri otherwise the playback will fail. |
 
 ### Variable
 
@@ -825,7 +825,7 @@ Request to send volume command to Remote.
 ### OH_AVCastController_Prepare()
 
 ```c
-AVSession_ErrCode OH_AVCastController_Prepare(OH_AVCastController* avcastcontroller, OH_AVSession_AVQueueItem* avqueueItem)
+AVSession_ErrCode OH_AVCastController_Prepare(OH_AVCastController* avcastcontroller, OH_AVSession_AVQueueItem *avqueueItem)
 ```
 
 **Description**
@@ -841,7 +841,7 @@ Request to prepare the current player item, this is needed for sink media inform
 | Parameter | Description |
 | -- | -- |
 | [OH_AVCastController](capi-ohavsession-oh-avcastcontroller.md)* avcastcontroller | The avcastcontroller instance pointer |
-| [OH_AVSession_AVQueueItem](capi-ohavsession-oh-avsession-avqueueitem.md)* avqueueItem |  media item info [OH_AVSession_AVQueueItem](capi-ohavsession-oh-avsession-avqueueitem.md). |
+| [OH_AVSession_AVQueueItem](capi-ohavsession-oh-avsession-avqueueitem.md) *avqueueItem |  media item info [OH_AVSession_AVQueueItem](capi-ohavsession-oh-avsession-avqueueitem.md). |
 
 **Returns**:
 
@@ -852,7 +852,7 @@ Request to prepare the current player item, this is needed for sink media inform
 ### OH_AVCastController_Start()
 
 ```c
-AVSession_ErrCode OH_AVCastController_Start(OH_AVCastController* avcastcontroller, OH_AVSession_AVQueueItem* avqueueItem)
+AVSession_ErrCode OH_AVCastController_Start(OH_AVCastController* avcastcontroller, OH_AVSession_AVQueueItem *avqueueItem)
 ```
 
 **Description**
@@ -868,7 +868,7 @@ Request to Play the current item, should contain media uri otherwise the playbac
 | Parameter | Description |
 | -- | -- |
 | [OH_AVCastController](capi-ohavsession-oh-avcastcontroller.md)* avcastcontroller | The avcastcontroller instance pointer |
-| [OH_AVSession_AVQueueItem](capi-ohavsession-oh-avsession-avqueueitem.md)* avqueueItem |  media item info [OH_AVSession_AVQueueItem](capi-ohavsession-oh-avsession-avqueueitem.md). |
+| [OH_AVSession_AVQueueItem](capi-ohavsession-oh-avsession-avqueueitem.md) *avqueueItem |  media item info [OH_AVSession_AVQueueItem](capi-ohavsession-oh-avsession-avqueueitem.md). |
 
 **Returns**:
 

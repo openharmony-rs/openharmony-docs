@@ -1,4 +1,4 @@
-# OH_PixelmapNative(EffectKit)
+# OH_PixelmapNative
 
 ```c
 typedef struct OH_PixelmapNative OH_PixelmapNative

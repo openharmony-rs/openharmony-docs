@@ -28,7 +28,7 @@ struct OH_AudioSuite_DownloadStatusInfo {...}
 | int32_t downloadStatus | 下载状态。<br>**起始版本：** 26.0.0 |
 | int64_t size | 特性包大小。<br>**起始版本：** 26.0.0 |
 | char installPath[256] | 安装路径。<br>**起始版本：** 26.0.0 |
-| int32_t progress | 下载进度【0-100】。<br>**起始版本：** 26.0.0 |
+| int32_t progress | 下载进度[0-100]。<br>**起始版本：** 26.0.0 |
 | int32_t errorCode | 错误码。<br>**起始版本：** 26.0.0 |
 
 

@@ -152,7 +152,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_GetContentEmbedInfo(const char *locale, C
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char *locale | 表示区域ID的字符串， 由语言、脚本、国家地区组成，例如"zh-Hans-CN"。当locale为空时，默认使用系统区域设置。 |
+| const char *locale | [表示区域ID的字符串](../../internationalization/i18n-locale-culture.md#实现原理)， 由语言、脚本、国家地区组成，例如"zh-Hans-CN"。当locale为空时，默认使用系统区域设置。 |
 | [ContentEmbed_Info](capi-contentembed-contentembed-info.md) *info | 输出参数。该指针指向ContentEmbed_Info对象。需先通过[OH_ContentEmbed_CreateContentEmbedInfo](capi-content-embed-proxy-h.md#oh_contentembed_createcontentembedinfo)创建实例。 |
 
 **返回值：**
@@ -291,7 +291,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_GetContentEmbedFormatByOEidAndLocale(cons
 | 参数项 | 描述 |
 | -- | -- |
 | const char *oeid | 文档格式的唯一标识符字符串。 |
-| const char *locale | 表示区域ID的字符串， 由语言、脚本、国家地区组成，例如"zh-Hans-CN"。当locale为空时，默认使用系统区域设置。 |
+| const char *locale | [表示区域ID的字符串](../../internationalization/i18n-locale-culture.md#实现原理)， 由语言、脚本、国家地区组成，例如"zh-Hans-CN"。当locale为空时，默认使用系统区域设置。 |
 | [ContentEmbed_Format](capi-contentembed-contentembed-format.md) *format | 输出参数。该指针指向ContentEmbed_Format对象。需先通过[OH_ContentEmbed_CreateContentEmbedFormat](capi-content-embed-proxy-h.md#oh_contentembed_createcontentembedformat)创建实例。 |
 
 **返回值：**

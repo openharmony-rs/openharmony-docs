@@ -48,6 +48,7 @@
     - [OH_AVMediaSourceLoadingRequest](capi-avmediasource-oh-avmediasourceloadingrequest.md)
     - [OH_AVMediaSourceLoader](capi-avmediasource-oh-avmediasourceloader.md)
     - [AVPlayerCallback](capi-avplayer-avplayercallback.md)
+    - [OH_AVPlayer](capi-avplayer-oh-avplayer.md)
     - [OH_AVSeiMessageArray](capi-avplayer-oh-avseimessagearray.md)
     - [OH_AVPlaybackStrategy](capi-avplayer-oh-avplaybackstrategy.md)
     - [MediaKeySession](capi-avplayer-mediakeysession.md)
