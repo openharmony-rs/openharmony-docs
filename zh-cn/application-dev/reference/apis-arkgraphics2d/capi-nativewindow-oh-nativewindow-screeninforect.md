@@ -6,12 +6,12 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 ```c
-typedef struct OH_NativeWindow_ScreenInfoRect OH_NativeWindow_ScreenInfoRect
+typedef struct OH_NativeWindow_ScreenInfoRect {...} OH_NativeWindow_ScreenInfoRect
 ```
 
 ## 概述
 
-定义一个包含坐标和尺寸信息的矩形描述屏幕信息。
+定义一个矩形对象，包含坐标和尺寸信息，用于描述屏幕区域。
 
 **起始版本：** 26.1.0
 
@@ -25,7 +25,7 @@ typedef struct OH_NativeWindow_ScreenInfoRect OH_NativeWindow_ScreenInfoRect
 
 | 名称       | 描述              |
 | ---------- | ----------------- |
-| int32_t x  | 矩形框起始x坐标。 |
-| int32_t y  | 矩形框起始y坐标。 |
-| int32_t w | 矩形框宽度。      |
-| int32_t h | 矩形框高度。      |
+| int32_t x  | 矩形对象的X轴坐标。 |
+| int32_t y  | 矩形对象的Y轴坐标。 |
+| int32_t w | 矩形对象的宽度。      |
+| int32_t h | 矩形对象的高度。      |

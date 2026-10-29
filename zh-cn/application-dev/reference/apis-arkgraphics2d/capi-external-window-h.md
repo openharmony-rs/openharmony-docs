@@ -37,7 +37,7 @@
 | [NativeWindow](capi-nativewindow-nativewindow.md) | OHNativeWindow | 提供对OHNativeWindow的访问功能。 |
 | [NativeWindowBuffer](capi-nativewindow-nativewindowbuffer.md) | OHNativeWindowBuffer | 提供对OHNativeWindowBuffer的访问功能。 |
 | [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md) | OH_NativeBuffer | 提供对OH_NativeBuffer的访问功能。 |
-| [OH_NativeWindow_ScreenInfoRect](capi-nativewindow-oh-nativewindow-screeninforect.md) |OH_NativeWindow_ScreenInfoRect | 定义一个包含坐标和尺寸信息的矩形描述屏幕信息。 |
+| [OH_NativeWindow_ScreenInfoRect](capi-nativewindow-oh-nativewindow-screeninforect.md) |OH_NativeWindow_ScreenInfoRect | 定义一个矩形对象，包含坐标和尺寸信息，用于描述屏幕区域。 |
 ### 枚举
 
 | 名称 | typedef关键字 | 描述 |
