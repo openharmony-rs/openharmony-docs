@@ -584,7 +584,7 @@ connect(action: EthEapConnectAction): Promise\<void\>
 
 手动触发或断开以太网802.1X认证。使用Promise异步回调。
 
-当action为ACTION_CONNECT时，使用已保存的802.1X认证配置重新触发认证；未保存802.1X认证配置时，操作失败。认证结果通过[eap.onStateChange](#eaponstatechange)注册的回调返回。若当前认证由企业应用通过[eap.startEthEap](#eapstartetheap)发起，则本接口不会中断原有认证。
+当action为ACTION_CONNECT时，使用已保存的802.1X认证配置重新触发认证；未保存802.1X认证配置时，操作失败。认证结果通过[eap.onStateChange](#eaponstatechange)注册的回调返回。若当前认证由企业应用通过eap.startEthEap发起，则本接口不生效，仍保持原有认证。
 
 当action为ACTION_DISCONNECT时，停止自动认证及重试，退出当前以太网802.1X认证，并将认证状态重置为[STATE_IDLE](#etheapstate)。
 
@@ -606,7 +606,7 @@ connect(action: EthEapConnectAction): Promise\<void\>
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise\<void\> | Promise对象，无返回结果。认证结果通过状态变化回调返回。 |
+| Promise\<void\> | Promise对象，无返回结果。 |
 
 **错误码**：
 
