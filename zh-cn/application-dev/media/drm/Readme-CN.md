@@ -7,8 +7,8 @@
 <!--Tester: @xdlinc-->
 <!--Adviser: @qin_wei_jie-->
 
-- [DRM Kit 简介](drm-overview.md)
-- [DRM Kit 指南配套示例代码](drm-kit-samples.md)
+- [DRM Kit简介](drm-overview.md)
+- [DRM Kit指南配套示例代码](drm-kit-samples.md)
 - [数字版权保护(ArkTS)](drm-arkts-dev-guide.md)
 - [数字版权保护(C/C++)](drm-c-dev-guide.md)
 <!--Del-->
