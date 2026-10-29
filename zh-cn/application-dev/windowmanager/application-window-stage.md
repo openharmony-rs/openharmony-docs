@@ -372,7 +372,7 @@ struct Index {
       hilog.error(DOMAIN, TAG, `sub_windowClass is null`);
       return;
     }
-    // 4.销毁子窗口。当不再需要子窗口时，可根据具体实现逻辑，使用destroyWindow对其进行销毁。
+    // 5.销毁子窗口。当不再需要子窗口时，可根据具体实现逻辑，使用destroyWindow对其进行销毁。
     sub_windowClass.destroyWindow((err: BusinessError) => {
       let errCode: number = err.code;
       if (errCode) {
