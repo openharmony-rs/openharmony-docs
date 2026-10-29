@@ -49626,5 +49626,20 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/web/web-component-migrate.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/NetReqInterceptCacheWinOps/entry3/src/main/ets/pages/common.ets",
+				"functions":[
+					{
+						"end_line":118,
+						"name":"dynamic_web_module_manage",
+						"start_line":16
+					}
+				]
+			}
+		]
 	}
 ]
