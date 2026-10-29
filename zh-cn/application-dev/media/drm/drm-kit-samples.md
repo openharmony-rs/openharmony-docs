@@ -1,4 +1,4 @@
-# DRM Kit 指南配套示例代码
+# DRM Kit指南配套示例代码
 <!--Kit: Drm Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @hanzhengshi-->
