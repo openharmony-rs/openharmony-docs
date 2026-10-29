@@ -758,14 +758,14 @@
 						"start_line":1532
 					},
 					{
-						"end_line":910,
+						"end_line":1048,
 						"name":"AppEvent_C++_RemoveWatcher",
-						"start_line":869
+						"start_line":1000
 					},
 					{
-						"end_line":974,
+						"end_line":1120,
 						"name":"AppEvent_C++_DestroyWatcher",
-						"start_line":924
+						"start_line":1062
 					}
 				]
 			},
@@ -783,9 +783,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets",
 				"functions":[
 					{
-						"end_line":30,
+						"end_line":41,
 						"name":"EventSub_Capi_Header",
-						"start_line":28
+						"start_line":38
 					},
 					{
 						"end_line":438,
@@ -3334,14 +3334,14 @@
 						"start_line":1134
 					},
 					{
-						"end_line":909,
+						"end_line":1047,
 						"name":"APP_Hicollie_RemoveWatcher",
-						"start_line":870
+						"start_line":1001
 					},
 					{
-						"end_line":973,
+						"end_line":1119,
 						"name":"APP_Hicollie_DestroyWatcher",
-						"start_line":925
+						"start_line":1063
 					},
 					{
 						"end_line":59,
@@ -3374,9 +3374,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets",
 				"functions":[
 					{
-						"end_line":29,
+						"end_line":41,
 						"name":"EventSub_Capi_Header",
-						"start_line":27
+						"start_line":38
 					},
 					{
 						"end_line":409,
@@ -31194,7 +31194,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":25,
+						"end_line":26,
 						"name":"EventSub_Header",
 						"start_line":20
 					},
@@ -69518,7 +69518,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":26,
+						"end_line":27,
 						"name":"CrashConfig_Policy_Header",
 						"start_line":19
 					},
