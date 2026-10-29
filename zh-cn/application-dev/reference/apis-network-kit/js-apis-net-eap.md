@@ -395,7 +395,7 @@ try {
 
 deleteEthEapConfig(): Promise\<void\>
 
-删除已持久化保存的以太网802.1X EAP配置。若当前存在正在进行的自动认证，则会停止本次认证流程。
+删除已持久化保存的以太网802.1X EAP配置。若当前存在正在进行的自动认证，则会停止本次认证流程。使用Promise异步回调。
 
 **起始版本：** 26.0.1
 
@@ -484,7 +484,7 @@ try {
 
 onStateChange(callback: Callback\<EthEapStateInfo\>): void
 
-订阅以太网802.1X认证状态变化。使用回调函数异步返回结果。
+订阅以太网802.1X认证状态变化。使用callback异步回调。
 
 **起始版本：** 26.0.1
 
