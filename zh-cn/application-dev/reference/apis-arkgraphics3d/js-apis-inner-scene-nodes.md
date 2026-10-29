@@ -441,7 +441,7 @@ function printNodeTreeInRelativePath(node: Node | null): void {
 | DIRECTIONAL | 1 | 平行光类型。 |
 | SPOT | 2 | 聚光灯类型。 |
 | POINT | 3 | 点光源类型。<br>**起始版本：** 26.1.0<br>**模型约束：** 此接口仅可在Stage模型下使用。|
-| RECT | 4 | 矩形光类型。 <br>**起始版本：** 26.1.0<br>**模型约束：** 此接口仅可在Stage模型下使用。|
+| RECT | 4 | 矩形面光源类型。 <br>**起始版本：** 26.1.0<br>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ## Light
 
@@ -486,7 +486,7 @@ function printNodeTreeInRelativePath(node: Node | null): void {
 
 ## PointLight
 
-点光源类型，继承自[Light](#light)。
+点光源类型，继承自[Light](#light)。点光源不支持阴影投射，设置[Light](#light)的shadowEnabled属性不生效。
 
 点光源从空间中的单个点向所有方向均匀发射光，强度随着距离光源位置的增加而衰减。
 
@@ -498,17 +498,13 @@ function printNodeTreeInRelativePath(node: Node | null): void {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| range | number | 否 | 是 | 点光源影响的最大距离，超过该范围光强为0。单位为世界坐标系下的场景单位（比如cm、m、km等），取值大于0。若未设置此参数或取值小于等于0，系统自动计算一个经验值。 |
-
-> **说明：**
->
-> 点光源不支持阴影投射，设置[Light](#light)的shadowEnabled属性不生效。
+| range | number | 否 | 是 | 点光源影响的最大距离，超过该范围光强为0。单位为世界坐标系下的场景单位（比如cm、m、km等），取值大于0。若未设置此参数或取值小于等于0，系统根据设置的intensity值计算一个经验值作为range。 |
 
 ## RectLight
 
-矩形区域光类型，继承自[Light](#light)。
+矩形面光源类型，继承自[Light](#light)。矩形面光源不支持阴影投射，设置[Light](#light)的shadowEnabled属性不生效。
 
-矩形光源从矩形区域发射光，模拟柔和的区域照明效果，强度随着距离的增加而衰减。
+矩形面光源从矩形面发射光，模拟柔和的区域照明效果，强度随着距离的增加而衰减。矩形面光源功耗较高、性能开销较大，建议优先使用[DirectionalLight](#directionallight)等其他光源类型近似想要的渲染效果。
 
 **起始版本：** 26.1.0
 
@@ -518,13 +514,9 @@ function printNodeTreeInRelativePath(node: Node | null): void {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| width | number | 否 | 是 | 矩形发光面的宽度。单位为世界坐标系下的场景单位（比如cm、m、km等），取值大于0，若未设置，默认值为1。 |
-| height | number | 否 | 是 | 矩形发光面的高度。单位为世界坐标系下的场景单位（比如cm、m、km等），取值大于0，若未设置，默认值为1。 |
-| twoSided | boolean | 否 | 是 | 矩形光源是否从矩形的两侧发光。若未设置，默认值为false。 |
-
-> **说明：**
->
-> 矩形面光源不支持阴影投射，设置[Light](#light)的shadowEnabled属性不生效。此外，矩形面光源功耗较高、性能开销较大，建议优先使用[DirectionalLight](#directionallight)等其他光源类型近似想要的渲染效果。
+| width | number | 否 | 是 | 矩形面光源的宽度。单位为世界坐标系下的场景单位（比如cm、m、km等），取值大于0，若未设置，默认值为1。 |
+| height | number | 否 | 是 | 矩形面光源的高度。单位为世界坐标系下的场景单位（比如cm、m、km等），取值大于0，若未设置，默认值为1。 |
+| twoSided | boolean | 否 | 是 | 矩形面光源是否从矩形面的两侧发光。true表示矩形面光源两侧发光，false表示矩形面光源单侧发光。默认值为false。 |
 
 ## Camera
 
