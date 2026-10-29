@@ -51,7 +51,7 @@ import { formInfo } from '@kit.FormKit';
 | displayNameId<sup>11+</sup> | ArkTS-Dyn: number <br> ArkTS-Sta: int   | 否    | 否     | 卡片预览时标识卡片名称的ID。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 23 |
 | transparencyEnabled<sup>11+</sup>      | boolean               | 否    | 否     | 卡片是否支持设置背景透明度。<br/>ArkTS卡片由用户配置决定是否支持，JS卡片均不支持。<br/>-&nbsp;true：表示是透明卡片。<br/>-&nbsp;false：表示不是透明卡片。  <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 23 |
 | supportedShapes<sup>12+</sup>    | ArkTS-Dyn: Array&lt;number&gt; <br> ArkTS-Sta: Array&lt;int&gt; | 否    | 否     | 卡片支持的形状。具体可选形状参考[FormShape<sup>12+</sup>](#formshape12) <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23 |
-| isColorModeRefreshEnabled | boolean  | 是    | 是     | 表示卡片是否使能深浅色模式切换触发刷新，默认值为false。<br/>-&nbsp;true：使能。<br/>-&nbsp;false：不使能。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
+| isColorModeRefreshEnabled | boolean  | 是    | 是     | 表示卡片是否使能深浅色模式切换触发刷新，默认值为false。<br/>-&nbsp;true：使能。<br/>-&nbsp;false：不使能。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.1.0 <br/>**ArkTS-Sta起始版本：** 26.1.0 |
 
 ## FormType
 
