@@ -53,9 +53,9 @@ The following table describes the commonly used APIs. For details, see [@ohos.di
 
 ## Distributed SoftBus Conversation Development
 
-- The receiving end calls [registerConversationListener()](../reference/apis-distributedservice-kit/js-apis-conversation-sys.md#conversationregisterconversationlistener) to register a conversation listener and listen for data from trusted devices.
-- The sending end calls [getTrustedDevices()](../reference/apis-distributedservice-kit/js-apis-conversation-sys.md#conversationgettrusteddevices) to obtain the list of trusted devices, selects a target device, and then calls [postConversationData()](../reference/apis-distributedservice-kit/js-apis-conversation-sys.md#conversationpostconversationdata) to send conversation data.
-- When data reception is no longer needed, call [unregisterConversationListener()](../reference/apis-distributedservice-kit/js-apis-conversation-sys.md#conversationunregisterconversationlistener) to unregister the conversation listener.
+- The receiving end calls [conversation.registerConversationListener()](../reference/apis-distributedservice-kit/js-apis-conversation-sys.md#conversationregisterconversationlistener) to register a conversation listener and listen for data from trusted devices.
+- The sending end calls [conversation.getTrustedDevices()](../reference/apis-distributedservice-kit/js-apis-conversation-sys.md#conversationgettrusteddevices) to obtain the list of trusted devices, selects a target device, and then calls [conversation.postConversationData()](../reference/apis-distributedservice-kit/js-apis-conversation-sys.md#conversationpostconversationdata) to send conversation data.
+- When data reception is no longer needed, call [conversation.unregisterConversationListener()](../reference/apis-distributedservice-kit/js-apis-conversation-sys.md#conversationunregisterconversationlistener) to unregister the conversation listener.
 
 ### Receiver Development
 

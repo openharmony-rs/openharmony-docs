@@ -52,9 +52,9 @@
 
 ## 分布式软总线会话开发指导
 
-- 接收端调用[registerConversationListener()接口](../reference/apis-distributedservice-kit/js-apis-conversation-sys.md#conversationregisterconversationlistener)注册会话监听器，监听来自可信设备的数据。
-- 发送端调用[getTrustedDevices()接口](../reference/apis-distributedservice-kit/js-apis-conversation-sys.md#conversationgettrusteddevices)获取可信设备列表，选择目标设备后调用[postConversationData()接口](../reference/apis-distributedservice-kit/js-apis-conversation-sys.md#conversationpostconversationdata)发送会话数据。
-- 不再需要接收数据时，调用[unregisterConversationListener()接口](../reference/apis-distributedservice-kit/js-apis-conversation-sys.md#conversationunregisterconversationlistener)注销会话监听器。
+- 接收端调用[conversation.registerConversationListener()](../reference/apis-distributedservice-kit/js-apis-conversation-sys.md#conversationregisterconversationlistener)接口注册会话监听器，监听来自可信设备的数据。
+- 发送端调用[conversation.getTrustedDevices()](../reference/apis-distributedservice-kit/js-apis-conversation-sys.md#conversationgettrusteddevices)接口获取可信设备列表，选择目标设备后调用[conversation.postConversationData()](../reference/apis-distributedservice-kit/js-apis-conversation-sys.md#conversationpostconversationdata)接口发送会话数据。
+- 不再需要接收数据时，调用[conversation.unregisterConversationListener()](../reference/apis-distributedservice-kit/js-apis-conversation-sys.md#conversationunregisterconversationlistener)接口注销会话监听器。
 
 ### 接收端开发指导
 
