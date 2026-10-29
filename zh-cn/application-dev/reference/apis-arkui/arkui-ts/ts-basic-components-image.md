@@ -573,6 +573,10 @@ draggable(value: boolean)
 
 设置组件默认拖拽效果。
 
+> **说明：**
+>
+> 当Image组件的数据源为[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)类型且像素格式为RGBA_1010102时，若在[onDragStart](ts-universal-events-drag-drop.md#ondragstart)回调中未写入有效的拖拽数据，系统将使用默认的PixelMap数据填充，此时拖拽数据传递至放置目标时目标端无法正确解析该像素格式的图片数据。建议在[onDragStart](ts-universal-events-drag-drop.md#ondragstart)回调中自行处理该格式的数据转换。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
