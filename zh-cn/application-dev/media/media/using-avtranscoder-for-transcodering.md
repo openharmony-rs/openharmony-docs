@@ -1,3 +1,10 @@
+---
+kits: ["Media Kit / 媒体服务"]
+description: "介绍如何使用AVTranscoder的ArkTS接口实现音视频转码的完整流程，包括创建实例、设置监听、转码控制与资源释放，适用于格式转换场景。"
+keywords: [AVTranscoder, 音视频转码, ArkTS, 转码流程, complete事件, error事件, progressUpdate, fdSrc, fdDst]
+doctype: guide
+status: active
+---
 # 使用AVTranscoder实现音视频转码(ArkTS)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->

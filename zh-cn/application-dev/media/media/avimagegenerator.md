@@ -1,3 +1,10 @@
+---
+kits: ["Media Kit / 媒体服务"]
+description: "介绍如何使用AVImageGenerator的ArkTS接口从视频资源中提取指定时间点的缩略图，适用于视频封面生成、时间轴预览等场景。"
+keywords: [AVImageGenerator, 视频缩略图, ArkTS, PixelMap, fetchFrameByTime, 帧提取, 视频封面, fdSrc, 关键帧]
+doctype: guide
+status: active
+---
 # 使用AVImageGenerator提取视频指定时间图像(ArkTS)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
