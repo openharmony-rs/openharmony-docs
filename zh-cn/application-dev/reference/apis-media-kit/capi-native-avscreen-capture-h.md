@@ -84,7 +84,7 @@
 | [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_PauseScreenCapture(struct OH_AVScreenCapture *capture)](#oh_avscreencapture_pausescreencapture) | 暂停屏幕捕获。 |
 | [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_ResumeScreenCapture(struct OH_AVScreenCapture *capture)](#oh_avscreencapture_resumescreencapture) | 恢复屏幕捕获。 |
 | [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForMicAEC(OH_AVScreenCapture_CaptureStrategy *strategy, bool enable)](#oh_avscreencapture_strategyformicaec) | 在使用麦克风时是否开启回声消除（Acoustic Echo Cancellation）功能。<br>此功能需要使用[OH_AVScreenCapture_SetCaptureStrategy](#oh_avscreencapture_setcapturestrategy)在录屏启动前完成配置。 |
-| [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForHDRCapture(OH_AVScreenCapture_CaptureStrategy *strategy, bool enable)](#oh_avscreencapture_strategyformicaec) | 录屏指定是否以HDR vivid格式输出图像。<br>此功能需要使用[OH_AVScreenCapture_SetCaptureStrategy](#oh_avscreencapture_setcapturestrategy)在录屏启动前完成配置。 |
+| [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForHDRCapture(OH_AVScreenCapture_CaptureStrategy *strategy, bool enable)](#OH_AVScreenCapture_StrategyForHDRCapture) | 录屏指定是否以HDR vivid格式输出图像。<br>此功能需要使用[OH_AVScreenCapture_SetCaptureStrategy](#oh_avscreencapture_setcapturestrategy)在录屏启动前完成配置。 |
 
 ## 函数说明
 
@@ -1544,7 +1544,7 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForMicAEC(OH_AVScreenCapt
 | -- | -- |
 | [OH_AVSCREEN_CAPTURE_ErrCode](capi-native-avscreen-capture-errors-h.md#oh_avscreen_capture_errcode) | AV_SCREEN_CAPTURE_ERR_OK：执行成功。<br>         AV_SCREEN_CAPTURE_ERR_INVALID_VAL：输入参数strategy为空指针或输入value为无效值。 |
 
-### OH_AVScreenCapture_StrategyForMicAEC()
+### OH_AVScreenCapture_StrategyForHDRCapture()
 
 ```c
 OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForHDRCapture(OH_AVScreenCapture_CaptureStrategy *strategy, bool enable)
@@ -1553,6 +1553,12 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForHDRCapture(OH_AVScreen
 **描述**
 
 录屏是否以HDR格式输出图像。<br>此功能需要使用[OH_AVScreenCapture_SetCaptureStrategy](#oh_avscreencapture_setcapturestrategy)在录屏启动前完成配置。
+
+> **说明：**
+>
+> 1. 该接口设置为true时，在存文件模式下，需要设置[OH_VideoEncInfo](capi-avscreencapture-oh-videoencinfo.md#oh_videoencinfo)的videoCodec为H265编码格式，否则会导致文件存储失败。
+>
+> 2. 该接口设置为true时，视频像素格式为RGBA1010102，需要使用[OH_AVCapability_GetVideoSupportedPixelFormats](../apis-avcodec-kit/capi-native-avcapability-h.md#oh_avcapability_getvideosupportedpixelformats)查看设备是否支持该格式的数据。
 
 **起始版本：** 26.1.0
 
@@ -1567,4 +1573,4 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForHDRCapture(OH_AVScreen
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVSCREEN_CAPTURE_ErrCode](capi-native-avscreen-capture-errors-h.md#oh_avscreen_capture_errcode) | AV_SCREEN_CAPTURE_ERR_OK：执行成功。<br>         AV_SCREEN_CAPTURE_ERR_INVALID_VAL：输入参数strategy为空指针或输入value为无效值。 |
+| [OH_AVSCREEN_CAPTURE_ErrCode](capi-native-avscreen-capture-errors-h.md#oh_avscreen_capture_errcode) | AV_SCREEN_CAPTURE_ERR_OK：执行成功。<br>         AV_SCREEN_CAPTURE_ERR_INVALID_VAL：输入参数strategy为空指针或输入enable为无效值。 |
