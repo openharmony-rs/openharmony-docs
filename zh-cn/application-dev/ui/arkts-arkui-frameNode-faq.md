@@ -1,7 +1,7 @@
 # 命令式节点常见问题
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @wangjunman1-->
+<!--Owner: @sd-wu-->
 <!--Designer: @sunbees-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
