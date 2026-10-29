@@ -35,8 +35,7 @@ status: active
 - 应用在播放过程中，系统内部会因为网络数据下载失败、媒体服务异常终止等发生异常。建议通过[OH_AVPlayer_SetOnErrorCallback()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setonerrorcallback)接口设置错误监听回调函数，根据不同错误类型，做出相应处理，避免出现播放异常。
 
 ## 开发步骤及注意事项
-
-- 在CMake脚本中链接如下动态库。
+在CMake脚本中链接如下动态库。
    <!-- @[target_link_libraries](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/CMakeLists.txt) -->
    
    ``` Text
@@ -47,16 +46,16 @@ status: active
    )
    ```
 
-- 使用[OH_AVPlayer_SetOnInfoCallback()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setoninfocallback)、[OH_AVPlayer_SetOnErrorCallback()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setonerrorcallback)接口设置信息监听回调函数和错误监听回调函数，需要链接libnative_media_core.so动态库。
+使用[OH_AVPlayer_SetOnInfoCallback()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setoninfocallback)、[OH_AVPlayer_SetOnErrorCallback()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setonerrorcallback)接口设置信息监听回调函数和错误监听回调函数，需要在CMake脚本中链接libnative_media_core.so动态库。
 
-- 开发者使用系统日志能力时，需引入如下头文件。
+开发者使用系统日志能力时，需引入如下头文件。
    <!-- @[hilog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->
    
    ``` C++
    #include <hilog/log.h>
    ```
 
-  并需要链接libhilog_ndk.z.so动态库。
+并需要在CMake脚本中链接libhilog_ndk.z.so动态库。
 
 开发者通过引入[avplayer.h](../../reference/apis-media-kit/capi-avplayer-h.md)、[avplayer_base.h](../../reference/apis-media-kit/capi-avplayer-base-h.md)和[native_averrors.h](../../reference/apis-avcodec-kit/capi-native-averrors-h.md)头文件，使用流媒体播放相关API。
 
