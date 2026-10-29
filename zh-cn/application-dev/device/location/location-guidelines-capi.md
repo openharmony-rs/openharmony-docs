@@ -64,18 +64,18 @@
     std::string GetErrorMsgFromErrorCode(int errorCode)
     {
         switch(errorCode) {
-            case LOCATION_PERMISSION_DENIED:
-                return "Permission verification failed. The application does not have the permission required to call the API.";
-            case LOCATION_INVALID_PARAM:
-                return "Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.";
-            case LOCATION_NOT_SUPPORTED:
-                return "Capability not supported. Failed to call this API due to limited device capabilities.";
-            case LOCATION_SERVICE_UNAVAILABLE:
-                return "The location service is unavailable.";
-            case LOCATION_SWITCH_OFF:
-                return "The location switch is off.";
-            default:
-                return "Unknown error. error code: " + std::to_string(errorCode);
+           case LOCATION_PERMISSION_DENIED:
+              return "Permission verification failed. The application does not have the permission required to call the API.";
+           case LOCATION_INVALID_PARAM:
+              return "Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.";
+           case LOCATION_NOT_SUPPORTED:
+              return "Capability not supported. Failed to call this API due to limited device capabilities.";
+           case LOCATION_SERVICE_UNAVAILABLE:
+              return "The location service is unavailable.";
+           case LOCATION_SWITCH_OFF:
+              return "The location switch is off.";
+           default:
+              return "Unknown error. error code: " + std::to_string(errorCode);
         }
     }
 
