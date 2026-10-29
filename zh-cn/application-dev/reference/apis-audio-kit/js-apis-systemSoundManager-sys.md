@@ -108,8 +108,8 @@ import { systemSoundManager } from '@kit.AudioKit';
 
 | 名称                         | 值   | 说明         |
 | ----------------------------|-----|------------|
-| PRE_INSTALLED<sup>12+</sup> | 0   | 预安装铃声类型。 |
-| CUSTOMIZED<sup>12+</sup>    | 1   | 自定义铃声类型。 |
+| PRE_INSTALLED<sup> | 0   | 预安装铃声类型。 |
+| CUSTOMIZED<sup>    | 1   | 自定义铃声类型。 |
 
 ## ToneAttrs<sup>12+</sup>
 
@@ -502,6 +502,8 @@ let toneAttrs: systemSoundManager.ToneAttrs = systemSoundManager.createCustomize
 | TEXT_MESSAGE_ESIM_CARD_0 | 22 | ESIM卡1的短信提示音的振动。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | TEXT_MESSAGE_ESIM_CARD_1 | 23 | ESIM卡2的短信提示音的振动。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | NOTIFICATION            | 40 | 通知提示音的振动。 |
+| NOTIFICATION            | 41 | 闹钟场景的振动。用于配置闹钟铃声的振动反馈。<br>该类型可与getToneHapticsSettings和setToneHapticsSettings配合使用，用于读取或修改闹钟场景的振动设置。<br>值41表示触觉反馈配置的闹钟场景标识。<br>**起始版本：** 26.0.1<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+
 
 ## ToneHapticsMode<sup>14+</sup>
 
