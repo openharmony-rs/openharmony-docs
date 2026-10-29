@@ -57,7 +57,7 @@ AVCastPicker({
 | sessionType<sup>12+</sup> | string | 否| @Prop | 会话类型，有效值参考[AVSessionType](arkts-apis-avsession-t.md#avsessiontype10)。默认值为当前应用创建的AVSessionType。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
 | customPicker<sup>12+</sup> | [CustomBuilder](../apis-arkui/arkui-ts/ts-types.md#custombuilder8) | 否 | @Prop | 自定义样式。建议使用自定义组件样式，可有效提升组件显示速度。  <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | onStateChange<sup>11+</sup> | (state: [AVCastPickerState](js-apis-avCastPickerParam.md#avcastpickerstate11)) => void | 否 | - | 投播状态更改回调。投播组件状态变化时触发，state为STATE_APPEARING表示组件开始显示，STATE_DISAPPEARING表示组件结束显示。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
-| isIndependent | boolean | 否 | @Prop | 投播组件是否运行在独立进程。默认值：true，即不设置时页面上每个AVCastPicker组件各自运行在独立进程中；设置为false时，多个组件将共用进程。仅在Phone设备上生效，其他设备形态下该属性被忽略。<br>**起始版本：** 26.1.0 <br>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| isIndependent | boolean | 否 | @Prop | 投播组件是否运行在独立进程。默认值：true，即不设置时页面上每个AVCastPicker组件各自运行在独立进程中；设置为false时，多个组件将共用进程。 <br>**起始版本：** 26.1.0 <br>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 ## 事件
 
 支持[通用事件](../apis-arkui/arkui-ts/ts-component-general-events.md)。
