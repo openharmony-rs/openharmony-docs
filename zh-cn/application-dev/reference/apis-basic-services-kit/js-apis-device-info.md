@@ -78,7 +78,7 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 | chipType<sup>21+</sup> | string | 是 | 当前设备CPU芯片型号。<br/>**使用场景**：用于根据芯片型号进行性能适配、设备特性识别、兼容性检查等场景，不同芯片型号可能具有不同的GPU性能、AI加速能力等特性。<br/> 示例：xxxxx<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 24 |
 | bootCount<sup>21+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 当前设备重启次数，获取失败时返回-1。<br/> 示例：100<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 24 |
 | deviceColor | string | 是 | 当前设备颜色。如果无法获取，则返回空字符串<br/>**模型约束**： 此接口仅可在Stage模型下使用。<br/> **起始版本**：26.0.0<br/> 示例：gold<br/>**ArkTS-Dyn起始版本：** 26.0.0<br/>**ArkTS-Sta起始版本：** 26.0.0 |
-| kernelVersion | string | 是 | 获取当前运行环境的内核版本字符串。<br/>**ArkTS-Dyn起始版本：** 26.0.1<br/>**ArkTS-Sta起始版本：** 26.0.1<br> 示例：HongMeng Kernel 1.0.0 |
+| kernelVersion | string | 是 | 获取当前运行环境的内核版本字符串。<br>**模型约束**： 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.0.1<br/>**ArkTS-Sta起始版本：** 26.0.1<br> 示例：HongMeng Kernel 1.0.0 |
 | installTime | string | 是 | 获取系统安装UTC时间戳。<br>**模型约束**： 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.1.0<br/>**ArkTS-Sta起始版本：** 26.1.0<br> 示例：1790784000000 |
 
 **错误码**：
