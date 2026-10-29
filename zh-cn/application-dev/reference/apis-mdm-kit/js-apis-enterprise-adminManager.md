@@ -639,6 +639,87 @@ try {
 }
 ```
 
+## adminManager.getAdminInfos
+ 
+getAdminInfos(): Array&lt;AdminInfo&gt;
+ 
+查询当前用户下已激活的设备管理应用列表，仅包含超级设备管理应用和普通设备管理应用，不包含BYOD设备管理应用。该接口仅支持超级设备管理应用调用。
+ 
+**起始版本：** 26.0.1
+ 
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_DEVICE_ADMIN
+ 
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+ 
+**模型约束：** 此接口仅可在Stage模型下使用。
+ 
+**返回值：**
+ 
+| 类型                          | 说明                       |
+| ----------------------------- | -------------------------- |
+| Array&lt;[AdminInfo](#admininfo)&gt; | 已激活的设备管理应用列表。 |
+ 
+**错误码**：
+ 
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+ 
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200016  | Service timeout. |
+ 
+ 
+**示例：**
+ 
+```ts
+import { adminManager } from '@kit.MDMKit';
+ 
+try {
+  let result: boolean = adminManager.isSelfSuperAdmin();
+  if (result) {
+    let adminInfos: Array<adminManager.AdminInfo> = adminManager.getAdminInfos();
+    console.info(`Succeeded in getting admin infos :${JSON.stringify(adminInfos)}`);
+  } else {
+    console.error('current application is not SDA');
+  }
+} catch (err) {
+  console.error(`Failed to get admin infos. Code: ${err.code}, message: ${err.message}`);
+}
+```
+ 
+## adminManager.isSelfSuperAdmin
+ 
+isSelfSuperAdmin(): boolean
+ 
+查询当前应用是否被激活为[超级设备管理应用](../../mdm/mdm-kit-term.md#super-device-admin-sda超级设备管理员)。
+ 
+**起始版本：** 26.0.1
+ 
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+ 
+**模型约束：** 此接口仅可在Stage模型下使用。
+ 
+**返回值：**
+ 
+| 类型    | 说明                                                       |
+| ------- | ---------------------------------------------------------- |
+| boolean | 返回true表示当前应用被激活为超级设备管理应用，返回false表示当前应用未被激活为超级设备管理应用。 |
+ 
+**示例：**
+ 
+```ts
+import { adminManager } from '@kit.MDMKit';
+ 
+try {
+  let result: boolean = adminManager.isSelfSuperAdmin();
+  console.info(`Succeeded in querying admin is super admin or not : ${result}`);
+} catch (err) {
+  console.error(`Failed to query admin is super admin or not. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## ManagedEvent
 
 可订阅的系统管理事件。
@@ -670,11 +751,13 @@ try {
 
 | 名称                | 值  | 说明    |
 | ----------------- | ---- | ----- |
+| ADMIN_TYPE_NORMAL  | 0x00  | [普通设备管理应用](../../mdm/mdm-kit-term.md#device-admin-da普通设备管理员)。<br> **起始版本：** 26.0.1  |
+| ADMIN_TYPE_SUPER   | 0x01  |  [超级设备管理应用](../../mdm/mdm-kit-term.md#super-device-admin-sda超级设备管理员)。<br> **起始版本：** 26.0.1     |
 | ADMIN_TYPE_BYOD  | 0x02 | BYOD设备管理应用。 |
 
 ## Policy<sup>20+</sup>
 
-允许或禁用名单的策略类型。 
+允许或禁用名单的策略类型。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -684,3 +767,19 @@ try {
 | ----------------- | ---- | ----- |
 | BLOCK_LIST  | 0 | 禁用名单。 |
 | TRUST_LIST  | 1 | 允许名单。 |
+
+## AdminInfo
+ 
+设备管理应用信息。
+ 
+**起始版本：** 26.0.1
+ 
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+ 
+**模型约束：** 此接口仅可在Stage模型下使用。
+ 
+| 名称        | 类型                  | 只读 | 可选 | 说明                                       |
+| ----------- | --------------------- | ---- | ---- | ------------------------------------------ |
+| type        | [AdminType](#admintype15) | 否   | 否   | 设备管理应用类型。                         |
+| bundleName  | string                | 否   | 否   | 设备管理应用所在应用的包名。               |
+| abilityName | string                | 否   | 否   | 企业设备管理扩展能力的abilityName。        |

@@ -350,8 +350,8 @@ export function napiDeleteProperty() {
   let obj: Obj = { first: 1 };
   hilog.info(0x0000, 'testTag', 'Test Node-API napi_delete_property first: %{public}s',
     testNapi.deleteProperty(obj, 'first'));
-  // Set the new property as non-configurable
-  // The Object.defineProperty method is not supported in DevEco Studio 4.1.0.400 and above versions, and needs to be used in TS (TypeScript)
+  // 将新属性设置为不可配置
+  // DevEco Studio 4.1.0.400及以上版本不支持Object.defineProperty方法，需要在TS（TypeScript）中使用
   Object.defineProperty(obj, 'config', {
     configurable: false,
     value: 'value'
@@ -847,14 +847,14 @@ hilog.info(0x0000, 'testTag', 'Test Node-API define_method_properties:%{public}d
   testNapi.defineMethodProperties()
     .defineMethodPropertiesExample());
 // 定义string类型的属性
-hilog.info(0x0000, 'testTag', 'Test Node-API define_string_properties::%{public}s ',
+hilog.info(0x0000, 'testTag', 'Test Node-API define_string_properties:%{public}s ',
   testNapi.defineStringProperties()
     .defineStringPropertiesExample);
 // getter和setter
-hilog.info(0x0000, 'testTag', 'Test Node-API get::%{public}s ',
+hilog.info(0x0000, 'testTag', 'Test Node-API get:%{public}s ',
   testNapi.createStringWithGetterSetter()
     .getterCallback());
-hilog.info(0x0000, 'testTag', 'Test Node-API setter::%{public}s ',
+hilog.info(0x0000, 'testTag', 'Test Node-API setter:%{public}s ',
   testNapi.createStringWithGetterSetter()
     .setterCallback('set data'));
 ```

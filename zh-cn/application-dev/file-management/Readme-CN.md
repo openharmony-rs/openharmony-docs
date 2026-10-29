@@ -46,6 +46,9 @@
   - [设置分布式文件数据等级](set-security-label.md)
   - [跨设备文件共享和访问](file-access-across-devices.md)
   - [跨设备文件拷贝](file-copy-across-devices.md)<!--RP1--><!--RP1End-->
+- 网盘服务底座<!--clouddisk-foundation-->
+  - [网盘服务底座概述](clouddisk-overview.md)
+  - [网盘服务底座适配指导](clouddisk-guidelines.md)
 - 文件压缩解压缩<!--compression-->
   - [压缩解压缩概述](archive-overview.md)
   - [文件归档类压缩解压缩(C/C++)](archive-file-compression-guidelines.md)

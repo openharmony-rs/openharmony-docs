@@ -151,11 +151,17 @@ Notification verification failed for a continuous task.
 
 1. 缓存在资源子系统的长时任务通知信息资源加载失败。
 2. 通知子系统服务异常。
+3. 更新长时任务通知时，长时任务ID、通知进度信息不正确。
+4. 更新长时任务通知时，长时任务未包含数据传输类型。
+5. 在[updateBackgroundRunning](./js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerupdatebackgroundrunning21)接口中使用[ProgressInfo](./js-apis-resourceschedule-backgroundTaskManager.md#progressinfo)属性。
 
 **处理步骤**
 
 1. 请检查系统长时任务资源"ohos.backgroundtaskmgr.resources"是否存在。
 2. 系统服务内部工作异常，请稍候重试，或者重启设备尝试。
+3. 请检查更新长时任务通知时，长时任务ID、通知进度信息是否正确，重新传入正确的参数。
+4. 请检查更新长时任务通知时，长时任务是否包含“数据传输”类型。若未包含，请重新申请或者更新长时任务。
+5. 请使用[startBackgroundRunning](./js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstartbackgroundrunning21)接口申请长时任务。
 
 ## 9800007 长时任务信息存储失败
 
@@ -177,6 +183,24 @@ Continuous task storage failed.
 
 1. 请检查文件/data/service/el1/public/background_task_mgr/running_task。
 2. 系统内部工作异常，请稍候重试，或者重启设备尝试。
+
+## 9800008 请求的长时任务不支持此设备类型
+ 
+**错误信息**
+ 
+The requested continuous task is not supported on this device type.
+ 
+**错误描述**
+ 
+请求的长时任务不支持此设备类型。
+ 
+**可能原因**
+ 
+请求的长时任务类型在当前设备不支持。
+ 
+**处理步骤**
+ 
+修改申请的长时任务类型。
 
 ## 9900001 短时任务调用方信息校验失败
 

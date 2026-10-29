@@ -873,6 +873,8 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 
 可变字体属性。
 
+**卡片能力：** 从API版本26.0.1开始，该接口支持在ArkTS卡片中使用。
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 | 名称      | 类型                                                 | 只读 | 可选 | 说明                                       |
@@ -982,7 +984,7 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 | fontFamily | string | 否 | 是 | 字体家族，可取任意字符串，默认为空字符串。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
 | fontSubfamily | string | 否 | 是 | 子字体家族，可取任意字符串，默认为空字符串。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
 | weight | [FontWeight](#fontweight) | 否 | 是 | 字体字重，默认值为0。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
-| width | number | 否 | 是 | 字体宽度，取值范围1-9整数，默认值为0。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
+| width | number | 否 | 是 | 字体宽度，取值范围1-9整数，默认值为0，0表示未指定字体宽度。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
 | italic | number | 否 | 是 | 是否是斜体字体，0表示非斜体，1表示斜体，默认值为0。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
 | monoSpace | boolean | 否 | 是 | 是否是等宽字体，true表示等宽，false表示非等宽，默认值为false。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
 | symbolic | boolean | 否 | 是 | 是否支持符号，true表示支持，false表示不支持，默认值为false。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
@@ -2065,7 +2067,7 @@ let maxIntrinsicWidth = paragraph.getMaxIntrinsicWidth();
 
 getAlphabeticBaseline(): number
 
-获取拉丁字母基线位置。
+获取拉丁字母的基线位置。
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
@@ -2075,7 +2077,7 @@ getAlphabeticBaseline(): number
 
 | 类型   | 说明                |
 | ------ | ------------------ |
-| number | 拉丁字母下的基线位置，浮点数，单位为物理像素px。|
+| number | 拉丁字母的基线位置，浮点数，单位为物理像素px。|
 
 **示例：**
 
@@ -2087,7 +2089,7 @@ let alphabeticBaseline = paragraph.getAlphabeticBaseline();
 
 getIdeographicBaseline(): number
 
-获取表意字（如CJK（中文，日文，韩文））下的基线位置。
+获取表意字（如CJK（中文，日文，韩文））的基线位置。
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
@@ -2097,7 +2099,7 @@ getIdeographicBaseline(): number
 
 | 类型   | 说明                  |
 | ------ | -------------------- |
-| number | 表意字下的基线位置，浮点数，单位为物理像素px。 |
+| number | 表意字的基线位置，浮点数，单位为物理像素px。 |
 
 **示例：**
 

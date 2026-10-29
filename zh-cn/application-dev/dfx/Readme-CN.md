@@ -16,9 +16,13 @@
   - [AddrSanitizer（地址越界）检测](address-sanitizer-guidelines.md)
   - [AppFreeze（应用冻屏）检测](appfreeze-guidelines.md)<!--RP1--><!--RP1End-->
   - [任务超时检测](apptask-timeout-guidelines.md)
-  - [应用终止检测](appkilled-guidelines.md)
+  - [App Killed（应用终止）检测](appkilled-guidelines.md)
   - 通用日志<!--general-log-->
     - [页面切换日志](pageswitch-log.md)<!--RP2--><!--RP2End-->
+    - external_log日志<!--external_log-->
+      - [external_log日志介绍](external-log.md)
+      - [external_log日志清理（ArkTS）](external-log-arkts.md)
+      - [external_log日志清理（C/C++）](external-log-ndk.md)
 - 日志打印<!--hilog-dev-->
   - [使用HiLog打印日志（ArkTS）](hilog-guidelines-arkts.md)
   - [使用HiLog打印日志（C/C++）](hilog-guidelines-ndk.md)
@@ -91,7 +95,7 @@
   - [错误管理开发指导](errormanager-guidelines.md)
   - [应用恢复开发指导](apprecovery-guidelines.md)
 - 应用灰度采集<!--hiretrieval-->
-  - [HiRetrieval介绍](hiretrieval-intro.md)
+  - [应用灰度采集介绍](hiretrieval-intro.md)
   - [使用HiRetrieval进行应用灰度采集（ArkTS）](hiretrieval-guidelines-arkts.md)
   <!--Del-->
   - [HiRetrieval云端功能说明](hiretrieval-cloud-server-guidelines.md)

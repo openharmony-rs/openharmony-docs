@@ -49,6 +49,10 @@ requestPublishForm(want: Want, formBindingData: formBindingData.FormBindingData,
 | 16500050 | IPC connection error. |
 | 16500100 | Failed to obtain the configuration information. |
 | 16501000 | An internal functional error occurred. |
+| 16501002 | The number of forms exceeds the maximum allowed. <br/>适用版本：26.0.1 |
+| 16501008 | Waiting for the form addition to the desktop timed out. <br/>适用版本：26.0.1 |
+| 16501017 | There is no space to publish the form. <br/>适用版本：26.0.1 |
+| 16501018 | This form does not support publishing. <br/>适用版本：26.0.1 |
 
 **示例：**
 
@@ -111,6 +115,10 @@ requestPublishForm(want: Want, callback: AsyncCallback&lt;string&gt;): void
 | 16500050 | IPC connection error. |
 | 16500100 | Failed to obtain the configuration information. |
 | 16501000 | An internal functional error occurred. |
+| 16501002 | The number of forms exceeds the maximum allowed. <br/>适用版本：26.0.1 |
+| 16501008 | Waiting for the form addition to the desktop timed out. <br/>适用版本：26.0.1 |
+| 16501017 | There is no space to publish the form. <br/>适用版本：26.0.1 |
+| 16501018 | This form does not support publishing. <br/>适用版本：26.0.1 |
 
 **示例：**
 
@@ -174,6 +182,10 @@ requestPublishForm(want: Want, formBindingData?: formBindingData.FormBindingData
 | 16500050 | IPC connection error. |
 | 16500100 | Failed to obtain the configuration information. |
 | 16501000 | An internal functional error occurred. |
+| 16501002 | The number of forms exceeds the maximum allowed. <br/>适用版本：26.0.1 |
+| 16501008 | Waiting for the form addition to the desktop timed out. <br/>适用版本：26.0.1 |
+| 16501017 | There is no space to publish the form. <br/>适用版本：26.0.1 |
+| 16501018 | This form does not support publishing. <br/>适用版本：26.0.1 |
 
 **示例：**
 

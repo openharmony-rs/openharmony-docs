@@ -6,7 +6,7 @@
 <!--Designer: @wanyanglan; @liumingxiang-->
 <!--Tester: @nobuggers; @yhl0101-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=aa0a67ae9790115e74a1e29268966a05ae945ba8 translatedAt=2026-09-09T03:04:09.177Z pushedAt=2026-09-09T04:05:31.085Z -->
+<!-- md-trans-meta sourceCommit=8ce668ad94101a68cd0e3c33de2da76aa75a68f0 translatedAt=2026-10-21T03:07:10.672Z pushedAt=2026-10-21T09:50:08.432Z -->
 
 - ArkTS APIs<!--arkgraphics-arkts-->
   - [@ohos.effectKit (Image Effects)](js-apis-effectKit.md)
@@ -32,6 +32,7 @@
     - [Class (PathIterator)](arkts-apis-graphics-drawing-PathIterator.md)
     - [Class (Pen)](arkts-apis-graphics-drawing-Pen.md)
     - [Class (PointUtils)](arkts-apis-graphics-drawing-PointUtils.md)
+    - [Class (RecordCmdUtils)](arkts-apis-graphics-drawing-RecordCmdUtils.md)
     - [Class (RectUtils)](arkts-apis-graphics-drawing-RectUtils.md)
     - [Class (Region)](arkts-apis-graphics-drawing-Region.md)
     - [Class (RoundRect)](arkts-apis-graphics-drawing-RoundRect.md)
@@ -218,6 +219,7 @@
     - [OH_Drawing_RecordCmdUtils](capi-drawing-oh-drawing-recordcmdutils.md)
     - [OH_Drawing_RecordCmd](capi-drawing-oh-drawing-recordcmd.md)
     - [OH_Drawing_Array](capi-drawing-oh-drawing-array.md)
+    - [OH_Drawing_TypefaceFallbackInfo](capi-drawing-oh-drawing-typefacefallbackinfo.md)
     - [OH_Filter](capi-effectkit-oh-filter.md)
     - [OH_NativeImage](capi-oh-nativeimage-oh-nativeimage.md)
     - [NativeWindow](capi-nativewindow-nativewindow.md)

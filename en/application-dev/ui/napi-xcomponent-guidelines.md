@@ -416,7 +416,7 @@ By combining the methods for [creating an XComponent](#creating-an-xcomponent) a
       std::string tag = value2String(env, args[1]);
       // ...
       if (nodeAPI != nullptr && nodeAPI->createNode != nullptr && nodeAPI->addChild != nullptr) {
-          OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "PluginManager", "CreateNativeNode tag=%{public}s",
+          OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "PluginManager", "CreateNativeNode tag=%{public}s",
                        tag.c_str());
           auto nodeContentEvent = [](ArkUI_NodeContentEvent *event) {
             ArkUI_NodeContentHandle handle = OH_ArkUI_NodeContentEvent_GetNodeContentHandle(event);
@@ -1110,19 +1110,19 @@ This example shows how to create an **XComponent** of the SURFACE type on the Ar
     
     void OnSurfaceDestroyedNative(OH_ArkUI_SurfaceHolder *holder)
     {
-        OH_LOG_Print(LOG_APP, LOG_ERROR, 0xff00, "onBind", "on destroyed");
+        OH_LOG_Print(LOG_APP, LOG_INFO, 0xff00, "onBind", "on destroyed");
         EGLRender* render = reinterpret_cast<EGLRender*>(OH_ArkUI_SurfaceHolder_GetUserData(holder));
         render->DestroySurface();  // Destroy EGL surface-related resources.
     }
     
     void OnSurfaceShowNative(OH_ArkUI_SurfaceHolder *holder)
     {
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "onBind", "on surface show");
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "onBind", "on surface show");
     }
     
     void OnSurfaceHideNative(OH_ArkUI_SurfaceHolder *holder)
     {
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "onBind", "on surface hide");
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "onBind", "on surface hide");
     }
     
     void OnFrameCallbackNative(ArkUI_NodeHandle node, uint64_t timestamp, uint64_t targetTimestamp)
@@ -1134,20 +1134,20 @@ This example shows how to create an **XComponent** of the SURFACE type on the Ar
         count++;
         // Define FRAME_COUNT in the header file plugin_manager.h. The value of FRAME_COUNT is 50.
         if (count % FRAME_COUNT == 0) {
-            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "onBind", "OnFrameCallback count = %{public}ld", count);
+            OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "onBind", "OnFrameCallback count = %{public}ld", count);
         }
     }
     
     void onEvent(ArkUI_NodeEvent *event)
     {
         auto eventType = OH_ArkUI_NodeEvent_GetEventType(event); // Obtain the component event type.
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "onBind", "on event");
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "onBind", "on event");
         if (eventType == NODE_TOUCH_EVENT) {
             ArkUI_NodeHandle handle = OH_ArkUI_NodeEvent_GetNodeHandle(event); // Obtain the component that triggered the event.
             auto holder = PluginManager::surfaceHolderMap_[handle];
             EGLRender* render = reinterpret_cast<EGLRender*>(OH_ArkUI_SurfaceHolder_GetUserData(holder));
             render->DrawStar(false); // Draw a five-pointed star.
-            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "onBind", "on touch");
+            OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "onBind", "on touch");
         }
     }
     ```

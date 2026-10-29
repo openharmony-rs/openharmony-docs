@@ -176,4 +176,38 @@ enum OH_TrafficFilter_HookPoint
 | OH_TRAFFICFILTER_HOOK_PREROUTING = 3 | PREROUTING链，处理刚到达网卡、尚未路由的报文。<br>**起始版本：** 26.0.0 |
 | OH_TRAFFICFILTER_HOOK_POSTROUTING = 4 | POSTROUTING链，处理即将从网卡发出的报文。<br>**起始版本：** 26.0.0 |
 
+### OH_TrafficFilter_PacketCopyMode
 
+```c
+enum OH_TrafficFilter_PacketCopyMode
+```
+
+**描述**
+
+报文复制模式枚举。
+
+**起始版本：** 26.0.1
+
+| 枚举项 | 描述 |
+| -- | -- |
+| OH_TRAFFICFILTER_COPY_MODE_META = 0 | 仅复制元数据（不复制报文数据）。 |
+| OH_TRAFFICFILTER_COPY_MODE_HEADER = 1 | 仅复制报文头部（由packetCopyLen指定）。 |
+| OH_TRAFFICFILTER_COPY_MODE_FULL = 2 | 复制整个报文。 |
+| OH_TRAFFICFILTER_COPY_MODE_MAXLEN = 3 | 复制指定最大长度的报文。 |
+
+### OH_TrafficFilter_PacketDecision
+
+```c
+enum OH_TrafficFilter_PacketDecision
+```
+
+**描述**
+
+报文处理决策类型。
+
+**起始版本：** 26.0.1
+
+| 枚举项 | 描述 |
+| -- | -- |
+| OH_TRAFFICFILTER_DECISION_ACCEPT = 0 | 接受报文。 |
+| OH_TRAFFICFILTER_DECISION_DROP | 丢弃报文。 |

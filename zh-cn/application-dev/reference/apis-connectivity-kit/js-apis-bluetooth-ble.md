@@ -1911,7 +1911,7 @@ connect(deviceId: string, autoConnect?: boolean): void
 调用方充当GATT客户端，发起和远端BLE设备连接，通过参数autoConnect设置是否直接连接到远端设备或者在远端设备可用时自动重连。
 
 - 若要实现在远端设备可用时自动重连（即[autoConnect](#gattsetting)为true），需保证client端[createGattClientDevice](#blecreategattclientdevice-1)发起连接，并设置[autoConnect](#gattsetting)为true。
-- server端可通过订阅[on('BLEConnectionStateChange')](#onbleconnectionstatechange)事件感知连接状态。
+- server端可通过订阅[on('connectionStateChange')](#onconnectionstatechange)事件感知连接状态。
 - 当server端想要断开连接时，可主动调用[disconnect](#disconnect)。
 
 **起始版本**：26.0.0
@@ -1963,7 +1963,7 @@ disconnect(deviceId: string): void
 
 调用方充当GATT客户端，主动发起与远端设备断连，或停止正在进行的连接。
 
-可通过订阅[on('BLEConnectionStateChange')](#onbleconnectionstatechange)事件来感知连接状态。
+可通过订阅[on('connectionStateChange')](#onconnectionstatechange)事件来感知连接状态。
 
 **起始版本**：26.0.0
 

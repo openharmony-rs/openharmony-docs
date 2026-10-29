@@ -41,6 +41,10 @@ import { bundleManager } from '@kit.AbilityKit';
 |appIdentifier<sup>11+</sup>| string         | 是   | 否   | 应用的唯一标识，详情信息可参考[什么是appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)。   |
 | organization<sup>12+</sup> | string | 是   | 否   | 应用的组织信息。 |
 | bundleName<sup>23+</sup> | string | 是   | 是   | 应用的包名。 |
+| appServiceCapabilities | string | 是   | 是   | 应用的服务能力。<br/>**起始版本：** 26.0.1 <br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| appIndex | number | 是   | 是   | 应用的分身索引。<br/>**起始版本：** 26.0.1 <br/>**模型约束：** 此接口仅可在Stage模型下使用。|
+| specifiedDistributionType | string | 是   | 是   | 应用的分发类型。<br/>**起始版本：** 26.0.1 <br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| additionalInfo | string | 是   | 是   | 应用的附加信息。<br/>**起始版本：** 26.0.1 <br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## Validity
 

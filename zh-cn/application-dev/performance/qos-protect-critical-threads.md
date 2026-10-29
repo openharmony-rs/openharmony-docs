@@ -30,204 +30,204 @@
 
 具体实现步骤如下：  
 
-1、关键线程执行计算任务前先开启若干线程模拟高负载场景。
+1. 关键线程执行计算任务前先开启若干线程模拟高负载场景。
 
-```c++
-// 开启TASKS个线程模拟系统负载
-if (!g_addLoad) {
-    std::vector<std::thread> loadThreads;
-    for (int i = 0; i < TASKS; i++) {
-        // 开启线程执行负载任务
-        loadThreads.emplace_back(std::thread(AddLoads, TASKS));
-        loadThreads[i].detach();
-    }
-    g_addLoad = true;
-}
-
-```
-```c++
-// 负载任务
-void AddLoads(int n) { 
-    // 检查n是否为负数，如果是则退出
-    if (!n) {
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "QoS", "invalid input.");
-        return;
-    }
-
-    int ret = OH_QoS_SetThreadQoS(QoS_Level::QOS_BACKGROUND);
-    if (ret) {
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "QoS", "set load thread QoS level failed.");
-        return;
-    }
-
-    // 绑定到特定CPU
-    CPU_set_t mask;
-    CPU_SET(*g_affinity, &mask);
-    if (sched_setaffinity(0, sizeof(mask), &mask) != 0) {
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "QoS", "bind load thread failed");
-        return;
-    }
-    // 执行负载计算
-    for (int i = 0; i < BOUND; i++) {
-        for (int j = 0; j < BOUND; j++) {
-            int x = (i + j) - n;
-            printf("%d", x);
+    ```c++
+    // 开启TASKS个线程模拟系统负载
+    if (!g_addLoad) {
+        std::vector<std::thread> loadThreads;
+        for (int i = 0; i < TASKS; i++) {
+            // 开启线程执行负载任务
+            loadThreads.emplace_back(std::thread(AddLoads, TASKS));
+            loadThreads[i].detach();
         }
-    }
-    // 重新初始化负载线程
-    g_addLoad = false;
-}
-```
-
-2、实现高、低QoS等级计算线程所要完成的计算任务（斐波那契数列计算）。先通过 [OH_QoS_SetThreadQoS](../kernel-enhance/qos-guidelines.md) 接口设置当前线程的QoS等级，再执行 DoFib() 斐波那契数列计算：
-
-```c++
-// 执行 斐波那契数列 计算
-long long DoFib(double n) {
-    if (n == ONE) {
-        return ONE;
+        g_addLoad = true;
     }
 
-    if (n == TWO) {
-        return TWO;
-    }
-    return DoFib(n - ONE) + DoFib(n - TWO);
-}
-
-void SetQoS(QoS_Level level) {
-    // 设置当前线程的QoS等级为level
-    int ret = OH_QoS_SetThreadQoS(level); 
-    if (!ret) {
-        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "QoS", "set qos level success.");
-        // 查询当前的QoS等级
-        QoS_Level queryLevel = QoS_Level::QOS_DEFAULT;
-        ret = OH_QoS_GetThreadQoS(&queryLevel);
-        if (!ret) {
-            OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "QoS", "the qos level of current thread : %{public}d",
-                         queryLevel);
-        } else {
-            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "QoS", "get qos level failed.");
+    ```
+    ```c++
+    // 负载任务
+    void AddLoads(int n) { 
+        // 检查n是否为负数，如果是则退出
+        if (!n) {
+            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "QoS", "invalid input.");
             return;
         }
-    } else {
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "QoS", "get level qos failed!");
-        return;
-    }
 
-    // 绑定到特定CPU
-    CPU_set_t mask;
-    CPU_SET(*g_affinity, &mask);
-    if (sched_setaffinity(0, sizeof(mask), &mask) != 0) {
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "QoS", "bind qos thread failed");
-        return;
-    }
-    // 统计执行完斐波那契数列计算任务后所耗时间
-    auto startTime = std::chrono::system_clock::now();
-    // 执行斐波那契数列计算任务
-    long long res = DoFib(DEPTH);
-    auto endTime = std::chrono::system_clock::now();
-    g_durationTime = std::chrono::duration<double, std::milli>(endTime - startTime).count();
-    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "QoS", "calculate res is: %{public}llu", res);
-
-    // 重置线程QoS等级
-    ret = OH_QoS_ResetThreadQoS();
-    if (!ret) {
-        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "QoS", "reset qos level success.");
-    } else {
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "QoS", "reset qos level failed!");
-        return;
-    }
-
-    // 在重置QoS后，再次查询，此时查询会失败
-    QoS_Level queryLevelTwo;
-    ret = OH_QoS_GetThreadQoS(&queryLevelTwo);
-    if (!ret) {
-        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "QoS", "the qos level after: %{public}d", queryLevelTwo);
-        return;
-    } else {
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "QoS", "query qos level failed after reset.");
-        return;
-    }
-}
-```
-
-3、然后分别将计算线程设置低（反例）、高（正例）QoS等级来对比两者在相同的高负载情况下完成相同层级的斐波那契数列计算所花时间。
-
-- **反例：** 给计算线程配置低QoS等级 
-
-```c++
-static napi_value lowQoSCalculate(napi_env env, napi_callback_info info) {
-    g_durationTime = 0;
-    // 开启TASKS个线程模拟系统负载
-    if (!g_addLoad) {
-        std::vector<std::thread> loadThreads;
-        for (int i = 0; i < TASKS; i++) {
-            // 开启线程执行负载任务
-            loadThreads.emplace_back(std::thread(AddLoads, TASKS));
-            loadThreads[i].detach();
+        int ret = OH_QoS_SetThreadQoS(QoS_Level::QOS_BACKGROUND);
+        if (ret) {
+            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "QoS", "set load thread QoS level failed.");
+            return;
         }
-        g_addLoad = true;
-    }
 
-    // 开启 QOS_BACKGROUND 低 QoS 线程进行计算
-    QoS_Level level = QoS_Level::QOS_BACKGROUND;
-    std::thread task(SetQoS, level);
-    task.join();
-
-    // 返回计算耗时
-    napi_value res;
-    napi_create_double(env, g_durationTime, &res);
-    return res;
-}
-
-```
-
-计算线程（线程id：39260）设置低QoS等级trace图           
-
-![](./figures/qos-low.png)   
-
-如上图所示，计算线程执行完计算任务耗时726.8毫秒。
-
-- **正例：** 给计算线程配置高QoS等级 
- 
-
-```c++
-static napi_value highQoSCalculate(napi_env env, napi_callback_info info) {
-    g_durationTime = 0;
-    // 开启TASKS个线程模拟系统负载
-    if (!g_addLoad) {
-        std::vector<std::thread> loadThreads;
-        for (int i = 0; i < TASKS; i++) {
-            // 开启线程执行负载任务
-            loadThreads.emplace_back(std::thread(AddLoads, TASKS));
-            loadThreads[i].detach();
+        // 绑定到特定CPU
+        CPU_set_t mask;
+        CPU_SET(*g_affinity, &mask);
+        if (sched_setaffinity(0, sizeof(mask), &mask) != 0) {
+            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "QoS", "bind load thread failed");
+            return;
         }
-        g_addLoad = true;
+        // 执行负载计算
+        for (int i = 0; i < BOUND; i++) {
+            for (int j = 0; j < BOUND; j++) {
+                int x = (i + j) - n;
+                printf("%d", x);
+            }
+        }
+        // 重新初始化负载线程
+        g_addLoad = false;
+    }
+    ```
+
+2. 实现高、低QoS等级计算线程所要完成的计算任务（斐波那契数列计算）。先通过 [OH_QoS_SetThreadQoS](../kernel-enhance/qos-guidelines.md) 接口设置当前线程的QoS等级，再执行 DoFib() 斐波那契数列计算：
+
+    ```c++
+    // 执行 斐波那契数列 计算
+    long long DoFib(double n) {
+        if (n == ONE) {
+            return ONE;
+        }
+
+        if (n == TWO) {
+            return TWO;
+        }
+        return DoFib(n - ONE) + DoFib(n - TWO);
     }
 
-    // 开启 QOS_USER_INTERACTIVE 高 QoS 线程进行计算
-    QoS_Level level = QoS_Level::QOS_USER_INTERACTIVE;
-    std::thread task(SetQoS, level);
-    task.join();
+    void SetQoS(QoS_Level level) {
+        // 设置当前线程的QoS等级为level
+        int ret = OH_QoS_SetThreadQoS(level); 
+        if (!ret) {
+            OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "QoS", "set qos level success.");
+            // 查询当前的QoS等级
+            QoS_Level queryLevel = QoS_Level::QOS_DEFAULT;
+            ret = OH_QoS_GetThreadQoS(&queryLevel);
+            if (!ret) {
+                OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "QoS", "the qos level of current thread : %{public}d",
+                            queryLevel);
+            } else {
+                OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "QoS", "get qos level failed.");
+                return;
+            }
+        } else {
+            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "QoS", "get level qos failed!");
+            return;
+        }
 
-    // 返回计算耗时
-    napi_value res;
-    napi_create_double(env, g_durationTime, &res);
-    return res;
-}
+        // 绑定到特定CPU
+        CPU_set_t mask;
+        CPU_SET(*g_affinity, &mask);
+        if (sched_setaffinity(0, sizeof(mask), &mask) != 0) {
+            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "QoS", "bind qos thread failed");
+            return;
+        }
+        // 统计执行完斐波那契数列计算任务后所耗时间
+        auto startTime = std::chrono::system_clock::now();
+        // 执行斐波那契数列计算任务
+        long long res = DoFib(DEPTH);
+        auto endTime = std::chrono::system_clock::now();
+        g_durationTime = std::chrono::duration<double, std::milli>(endTime - startTime).count();
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "QoS", "calculate res is: %{public}llu", res);
 
-```
+        // 重置线程QoS等级
+        ret = OH_QoS_ResetThreadQoS();
+        if (!ret) {
+            OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "QoS", "reset qos level success.");
+        } else {
+            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "QoS", "reset qos level failed!");
+            return;
+        }
 
-计算线程（线程id：39204）设置高QoS等级trace图    
+        // 在重置QoS后，再次查询，此时查询会失败
+        QoS_Level queryLevelTwo;
+        ret = OH_QoS_GetThreadQoS(&queryLevelTwo);
+        if (!ret) {
+            OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "QoS", "the qos level after: %{public}d", queryLevelTwo);
+            return;
+        } else {
+            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "QoS", "query qos level failed after reset.");
+            return;
+        }
+    }
+    ```
 
-![](./figures/qos-high.png)  
+3. 然后分别将计算线程设置低（反例）、高（正例）QoS等级来对比两者在相同的高负载情况下完成相同层级的斐波那契数列计算所花时间。
 
-如上图所示，计算线程执行完计算任务耗时323.9毫秒。    
+    - **反例：** 给计算线程配置低QoS等级 
 
-  > **说明：**
-  >
-  > 该示例只在高负载压力下有效。  
-  > 在低负载情况下，由于系统资源相对充足，即使不进行特别的优先级设置，大多数线程也能够得到足够的CPU时间来完成任务，因而效果并不明显。 
+    ```c++
+    static napi_value lowQoSCalculate(napi_env env, napi_callback_info info) {
+        g_durationTime = 0;
+        // 开启TASKS个线程模拟系统负载
+        if (!g_addLoad) {
+            std::vector<std::thread> loadThreads;
+            for (int i = 0; i < TASKS; i++) {
+                // 开启线程执行负载任务
+                loadThreads.emplace_back(std::thread(AddLoads, TASKS));
+                loadThreads[i].detach();
+            }
+            g_addLoad = true;
+        }
+
+        // 开启 QOS_BACKGROUND 低 QoS 线程进行计算
+        QoS_Level level = QoS_Level::QOS_BACKGROUND;
+        std::thread task(SetQoS, level);
+        task.join();
+
+        // 返回计算耗时
+        napi_value res;
+        napi_create_double(env, g_durationTime, &res);
+        return res;
+    }
+
+    ```
+
+    计算线程（线程id：39260）设置低QoS等级trace图           
+
+    ![](./figures/qos-low.png)   
+
+    如上图所示，计算线程执行完计算任务耗时726.8毫秒。
+
+    - **正例：** 给计算线程配置高QoS等级 
+    
+
+    ```c++
+    static napi_value highQoSCalculate(napi_env env, napi_callback_info info) {
+        g_durationTime = 0;
+        // 开启TASKS个线程模拟系统负载
+        if (!g_addLoad) {
+            std::vector<std::thread> loadThreads;
+            for (int i = 0; i < TASKS; i++) {
+                // 开启线程执行负载任务
+                loadThreads.emplace_back(std::thread(AddLoads, TASKS));
+                loadThreads[i].detach();
+            }
+            g_addLoad = true;
+        }
+
+        // 开启 QOS_USER_INTERACTIVE 高 QoS 线程进行计算
+        QoS_Level level = QoS_Level::QOS_USER_INTERACTIVE;
+        std::thread task(SetQoS, level);
+        task.join();
+
+        // 返回计算耗时
+        napi_value res;
+        napi_create_double(env, g_durationTime, &res);
+        return res;
+    }
+
+    ```
+
+    计算线程（线程id：39204）设置高QoS等级trace图    
+
+    ![](./figures/qos-high.png)  
+
+    如上图所示，计算线程执行完计算任务耗时323.9毫秒。    
+
+    > **说明：**
+    >
+    > 该示例只在高负载压力下有效。  
+    > 在低负载情况下，由于系统资源相对充足，即使不进行特别的优先级设置，大多数线程也能够得到足够的CPU时间来完成任务，因而效果并不明显。 
 
 ## 总结  
 

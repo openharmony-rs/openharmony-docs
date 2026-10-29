@@ -11,6 +11,7 @@
     - [@ohos.animator (动画)](js-apis-animator.md)
     - [@ohos.arkui.componentSnapshot (组件截图)](js-apis-arkui-componentSnapshot.md)
     - [@ohos.arkui.componentUtils (componentUtils)](js-apis-arkui-componentUtils.md)
+    - [@ohos.arkui.dialog (弹出框)](js-apis-dialog.md)
     - [@ohos.arkui.dragController (DragController)](js-apis-arkui-dragController.md)
     - [@ohos.arkui.drawableDescriptor (DrawableDescriptor)](js-apis-arkui-drawableDescriptor.md)
     - [@ohos.arkui.inspector (布局回调)](js-apis-arkui-inspector.md)
@@ -28,6 +29,7 @@
       - [Class (ComponentUtils)](arkts-apis-uicontext-componentutils.md)
       - [Class (ContextMenuController)](arkts-apis-uicontext-contextmenucontroller.md)
       - [Class (CursorController)](arkts-apis-uicontext-cursorcontroller.md)
+      - [Class (DialogPresenter)](arkts-apis-uicontext-dialogpresenter.md)
       - [Class (DragController)](arkts-apis-uicontext-dragcontroller.md)
       - [Class (DynamicSyncScene)](arkts-apis-uicontext-dynamicsyncscene.md)
       - [Class (FocusController)](arkts-apis-uicontext-focuscontroller.md)
@@ -87,6 +89,7 @@
     - [getContext](js-apis-getContext.md)
     - [postCardAction](js-apis-postCardAction.md)
     <!--Del-->
+    - [@ohos.arkui.dialog (弹出框)(系统接口)](js-apis-dialog-sys.md)
     - [@ohos.arkui.drawableDescriptor (DrawableDescriptor)(系统接口)](js-apis-arkui-drawableDescriptor-sys.md)
     - [@ohos.arkui.performanceMonitor (性能监测)(系统接口)](js-apis-arkui-performancemonitor-sys.md)
     - [@ohos.arkui.uiExtension (uiExtension)(系统接口)](js-apis-arkui-uiExtension-sys.md)
@@ -720,6 +723,7 @@
     - [native_render.h](capi-native-render-h.md)
     - [grid.h](capi-grid-h.md)
     - [list.h](capi-list-h.md)
+    - [list_item.h](capi-list-item-h.md)
     - [native_type.h](capi-native-type-h.md)
     - [native_type_visual.h](capi-native-type-visual-h.md)
     - [native_xcomponent_key_event.h](capi-native-xcomponent-key-event-h.md)
@@ -775,6 +779,10 @@
     - [ArkUI_AnimatorEvent](capi-arkui-nativemodule-arkui-animatorevent.md)
     - [ArkUI_AnimatorOnFrameEvent](capi-arkui-nativemodule-arkui-animatoronframeevent.md)
     - [ArkUI_TransitionEffect](capi-arkui-nativemodule-arkui-transitioneffect.md)
+    - [OH_ArkUI_PropertyAnimation*](capi-arkui-nativemodule-arkui-propertyanimation8h.md)
+    - [OH_ArkUI_KeyframeAnimation*](capi-arkui-nativemodule-arkui-keyframeanimation8h.md)
+    - [OH_ArkUI_PathAnimation*](capi-arkui-nativemodule-arkui-pathanimation8h.md)
+    - [OH_ArkUI_AnimationGroup*](capi-arkui-nativemodule-arkui-animationgroup8h.md)
     - [ArkUI_NativeDialogAPI_1](capi-arkui-nativemodule-arkui-nativedialogapi-1.md)
     - [ArkUI_NativeDialogAPI_2](capi-arkui-nativemodule-arkui-nativedialogapi-2.md)
     - [ArkUI_NativeDialogAPI_3](capi-arkui-nativemodule-arkui-nativedialogapi-3.md)
@@ -976,6 +984,7 @@
     - [ArkUI_ParallelGestureEvent](capi-arkui-nativemodule-arkui-parallelgestureevent.md)
     - [OH_ArkUI_LinearGradientOptions](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md)
     - [OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md)
+    - [OH_ArkUI_NativeModule_LineSpacingOptions](capi-arkui-nativemodule-oh-arkui-nativemodule-linespacingoptions.md)
 - 错误码<!--arkui-arkts-errcode-->
   - UI界面<!--arkui-ui-arkts-errcode-->
     - [接口调用异常错误码](errorcode-internal.md)
@@ -1007,6 +1016,7 @@
     - [DrawableDescriptor错误码](errorcode-drawable-descriptor.md)
     - [环境变量错误码](errorcode-env.md)
     - [反色能力错误码](errorcode-force-dark.md)
+    - [动视效错误码](errorcode-animation.md)
   - 图形图像<!--arkui-graphics-images-arkts-errcode-->
     - [屏幕错误码](errorcode-display.md)
     - [窗口错误码](errorcode-window.md)

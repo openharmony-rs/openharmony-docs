@@ -137,7 +137,7 @@ struct NestedScroll {
     ```
     (2) 再使用[onGestureRecognizerJudgeBegin](../reference/apis-arkui/arkui-ts/ts-gesture-blocking-enhancement.md#ongesturerecognizerjudgebegin13)方法，禁止Web组件自带的滚动手势触发。
     ```ts
-    .onGestureRecognizerJudgeBegin((event: BaseGestureEvent, current: GestureRecognizer, otherArray<GestureRecognizer>) => {
+    .onGestureRecognizerJudgeBegin((event: BaseGestureEvent, current: GestureRecognizer, others: Array<GestureRecognizer>) => {
       if (current.isBuiltIn() && current.getType() == GestureControl.GestureType.PAN_GESTURE) {
         return GestureJudgeResult.REJECT;
       }

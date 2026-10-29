@@ -386,7 +386,7 @@ call.makeCallWithToken("138xxxxxxxx", makeOptions).then(() => {
 ```
 
 
-## call.makeDirectCall<sup>26+</sup>
+## call.makeDirectCall
  
 makeDirectCall\(phoneNumber: string\): Promise\<void\>
  

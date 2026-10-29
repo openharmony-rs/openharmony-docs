@@ -1412,3 +1412,28 @@ NODE_SYSTEM_MATERIAL = 127
 | 类型 | 说明 |
 | -- | -- |
 | .object | 系统材质对象。参数类型为[ArkUI_ImmersiveMaterialHandle](capi-arkui-nativemodule-arkui-immersivematerialhandle.md)。返回值中的ArkUI_ImmersiveMaterialHandle对象是指向静态成员的指针，因此无需也禁止通过[OH_ArkUI_NativeModule_ImmersiveMaterial_Destroy](capi-native-material-h.md#oh_arkui_nativemodule_immersivematerial_destroy)释放返回对象。 |
+
+## NODE_TRANSFORM_3D
+
+```c
+NODE_TRANSFORM_3D = 128
+```
+
+定义3D变换属性，用于设置组件的3D变换矩阵。当涉及带透视效果的3D变换时，[NODE_TRANSFORM](#node_transform)的显示效果可能不正确，此时推荐使用此属性。支持属性设置，属性重置和属性获取接口。如果重置此属性，组件将恢复为单位矩阵（无变换）。
+
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。
+
+**起始版本：** 26.0.1
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .value[0...15].f32 | 16个浮点数，表示4x4变换矩阵。数组长度必须为16。 |
+| .object | 指向[ArkUI_Matrix4](capi-arkui-nativemodule-arkui-matrix4.md)对象的指针，表示4x4变换矩阵。使用.value或.object之一来设置矩阵，如果同时设置，.value优先。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .value[0...15].f32 | 16个浮点数，表示当前3D变换矩阵。 |

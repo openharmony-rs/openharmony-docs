@@ -828,7 +828,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                      |
 | -------- | ---------------------------------------------- |
-| 801 | capability not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **Example**
 
@@ -1944,7 +1944,7 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 
 | ID| Error Message                                               |
 | -------- | ------------------------------------------------------- |
-| 801 | capability not supported. Applicable version: 18+ |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. Applicable version: 18+ |
 | 12800002 | input method engine error. Possible causes: 1.input method panel not created. 2.the input method application does not subscribe to related events. |
 | 12800013 | window manager service error. |
 | 12800017 | invalid panel type or panel flag. |
@@ -2787,7 +2787,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                               |
 | -------- | ------------------------------------------------------- |
-| 201      | permissions check fails.  |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.  |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **Example**
@@ -2885,7 +2885,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                               |
 | -------- | ------------------------------------------------------- |
-| 801  |capability not supported.                          |
+| 801  |Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.                          |
 | 12800002   |input method engine error. Possible causes:1.input method panel not created. 2.the input method application does not subscribe to related events. |
 | 12800013   |window manager service error.                          |
 | 12800020   |invalid immersive effect. 1.The gradient mode and the fluid light mode can only be used when the immersive mode is enabled. 2.The fluid light mode can only be used when the gradient mode is enabled. 3.When the gradient mode is not enabled, the gradient height can only be 0. |
@@ -5189,11 +5189,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message                                       |
 | -------- | ---------------------------------------------- |
-| 801 | Capability not supported.<br>Applicable versions: 19-19 |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.<br>Applicable versions: 19-19 |
 
 > **NOTE**
 >
-> Error code `801 Capability not supported.` is removed since API version 20.
+> Error code `801 Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.` is removed since API version 20.
 
 **Example**
 
@@ -5223,11 +5223,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message                                       |
 | -------- | ---------------------------------------------- |
-| 801 | Capability not supported. Supported versions: 19-19. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. Supported versions: 19-19. |
 
 > **NOTE**
 >
-> Error code `801 Capability not supported.` is removed since API version 20.
+> Error code `801 Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.` is removed since API version 20.
 
 **Example**
 

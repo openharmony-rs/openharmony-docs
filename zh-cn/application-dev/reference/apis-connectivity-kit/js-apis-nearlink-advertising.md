@@ -159,6 +159,8 @@ startAdvertising(advertisingParams: AdvertisingParams): Promise&lt;number&gt;
 
 发送星闪广播。使用Promise异步回调。适用于设备发现、设备信息广播等需要将本端设备能力或数据对外发布的业务场景，配合[advertising.onAdvertisingStateChange](#advertisingonadvertisingstatechange)可监听广播启停状态。
 
+调用此接口前，您可以调用[isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported)查询设备是否支持星闪。
+
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -185,8 +187,8 @@ startAdvertising(advertisingParams: AdvertisingParams): Promise&lt;number&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 801 | Capability not supported because the chip does not support it. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100003 | NearLink disabled. |
 | 36100040 | Integer out of range. |
 | 36100043 | Invalid UUID. |
@@ -250,6 +252,8 @@ stopAdvertising(advertisingId: number): Promise&lt;void&gt;
 
 停止发送星闪广播。使用Promise异步回调。
 
+调用此接口前，您可以调用[isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported)查询设备是否支持星闪。
+
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -276,8 +280,8 @@ stopAdvertising(advertisingId: number): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 801 | Capability not supported because the chip does not support it. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100003 | NearLink disabled. |
 | 36100040 | Invalid advertising ID. |
 | 36100099 | Operation failed. |
@@ -308,6 +312,8 @@ onAdvertisingStateChange(callback: Callback&lt;AdvertisingStateChangeInfo&gt;): 
 
 应用需具备ohos.permission.ACCESS_NEARLINK权限，方可接收此事件上报。
 
+调用此接口前，您可以调用[isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported)查询设备是否支持星闪。
+
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -326,7 +332,7 @@ onAdvertisingStateChange(callback: Callback&lt;AdvertisingStateChangeInfo&gt;): 
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 801 | Capability not supported because the chip does not support it. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **示例：** 
 ```typescript
@@ -352,6 +358,8 @@ offAdvertisingStateChange(callback?: Callback&lt;AdvertisingStateChangeInfo&gt;)
 
 取消订阅星闪广播状态变化事件。使用callback异步回调。
 
+调用此接口前，您可以调用[isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported)查询设备是否支持星闪。
+
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -370,7 +378,7 @@ offAdvertisingStateChange(callback?: Callback&lt;AdvertisingStateChangeInfo&gt;)
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 801 | Capability not supported because the chip does not support it. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **示例：** 
 ```typescript

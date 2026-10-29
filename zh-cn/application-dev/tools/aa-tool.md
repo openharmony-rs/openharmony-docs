@@ -5,7 +5,7 @@
 <!--Owner: @lidongrui-->
 <!--Designer: @ccllee1-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 Ability assistant（Ability助手，简称为aa），是用于启动应用和启动测试用例的工具，为开发者提供基本的应用调试和测试能力，例如启动应用组件、强制停止进程、打印应用组件相关信息等。
 
@@ -351,6 +351,7 @@ aa test -b <bundleName> [-m <module-name>] [-p <package-name>] [-s class <test-c
   | -s \<any-key> | 可选参数，任意键值对。 |
   | -w | 可选参数，指定测试运行时间（单位ms）。 |
   | -D | 可选参数，调试模式。 |
+  | -u | 可选参数，userId，表示用户ID，指定要执行的测试套或测试用例所在的用户。<br>**说明：** 从API版本26.0.0开始，支持该参数。|
 
   **返回值**：
 
@@ -364,6 +365,7 @@ aa test -b <bundleName> [-m <module-name>] [-p <package-name>] [-s class <test-c
   | 10105001 | Failed to connect to the ability service. |
   | 10106002 | The aa start command's window option or the aa test command does not support app with release signature. |
   | 10108501 | An internal error occurs during the execution of the aa test command. |
+  | 10104005 | The userId specified by the aa test command is not currently a foreground user. |
 
   **示例**：
 
@@ -374,6 +376,8 @@ aa test -b <bundleName> [-m <module-name>] [-p <package-name>] [-s class <test-c
   aa test -b com.example.myapplication -m entry_test -s unittest ActsAbilityTest
   # 启动测试框架并指定超时时间
   aa test -b com.example.myapplication -m entry_test -s timeout 10000 -s unittest ActsAbilityTest
+  # 启动测试框架并指定所在用户
+  aa test -b com.example.myapplication -m entry_test -s timeout 10000 -s unittest ActsAbilityTest -u 100
   ```
 
 ## 进入调试模式命令（attach）
@@ -1197,3 +1201,21 @@ Cannot debug applications using a release certificate.
 使用Debug签名证书重新签名，安装新签名出的HAP后，再尝试执行该命令。
 
 签名工具及签名证书的生成方式可以参考：[签名工具指导](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing)。
+
+### 10104005 指定的userId不是前台用户
+
+**错误信息**
+
+The specified userId is not a foreground user.
+
+**错误描述**
+
+指定的userId不是前台用户。
+
+**可能原因**
+
+指定的userId用户当前不在前台。
+
+**处理步骤**
+
+检查指定userId用户是否在前台

@@ -95,7 +95,7 @@ Exif信息的读取与编辑相关的API如下，详细介绍请参考[ImageSour
      : Promise<string> {
      let info: string = '';
      if (imageSourceApi) {
-       // 编辑EXIF信息
+       // 编辑Exif信息
        try {
          await imageSourceApi.modifyImageProperty(key, value);
          try {

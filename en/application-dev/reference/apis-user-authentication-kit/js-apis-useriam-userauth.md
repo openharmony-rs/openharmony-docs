@@ -33,6 +33,7 @@ This module applies to the following scenarios:
 - [UserAuthResultCode](#userauthresultcode9): Enumerates the authentication result codes.
 - [ReuseMode](#reusemode12): Enumerates the authentication result reuse modes.
 - [UserAuthTipCode](#userauthtipcode20): Enumerates the authentication tip codes.
+- **[UserRecognitionStatus](#userrecognitionstatus)**: Enumerates the user recognition statuses.
 
 ### Key APIs
 
@@ -42,10 +43,12 @@ This module applies to the following scenarios:
 - [ReuseUnlockResult](#reuseunlockresult12): Describes the authentication result reuse information.
 - [EnrolledState](#enrolledstate12): Describes the credential enrollment status.
 - [AuthLockState](#authlockstate22): Describes the authentication lock status.
+- **[UserRecognitionResult](#userrecognitionresult)**: Describes the user recognition result.
 
 ### Key Classes
 
 - [UserAuthInstance](#userauthinstance10): Defines the user authentication instance class, which provides capabilities such as authentication execution, cancellation, and event subscription.
+- **[UserRecognitionMgr](#userrecognitionmgr)**: Manages user recognition and provides the capabilities of querying and subscribing to recognition results.
 
 ![Class relationship diagram](figures/uml_userauth.png)
 
@@ -1188,6 +1191,274 @@ try {
 } catch (error) {
   const err: BusinessError = error as BusinessError;
   console.error(`auth failed. Code is ${err?.code}, message is ${err?.message}`);
+}
+```
+
+## UserRecognitionStatus
+
+Enumerates the user recognition statuses.
+
+**Since:** 26.0.1
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System capability**: SystemCapability.UserIAM.UserAuth.Core
+
+**Device behavior difference:** This API can be called normally only on car devices and returns null on other device types.
+
+| Name      | Value | Description                               |
+| --------- | -- | ---------------------------------- |
+| UNCERTAIN | 0  | Uncertain about the device owner.                       |
+| MISMATCH  | 1  | The recognized user does not match the foreground user.       |
+| MATCH     | 2  | The recognized user matches the foreground user.         |
+
+## UserRecognitionResult
+
+Enumerates the user recognition result.
+
+**Since:** 26.0.1
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System capability**: SystemCapability.UserIAM.UserAuth.Core
+
+**Device behavior difference:** This API can be called normally only on car devices and returns null on other device types.
+
+| Name           | Type                                    | Read Only | Optional | Description                                                     |
+| -------------- | --------------------------------------- | ---- | ---- | -------------------------------------------------------- |
+| status         | [UserRecognitionStatus](#userrecognitionstatus) | No   | No   | Recognition status.                        |
+| userId         | number                                  | No   | No   | System user ID recognized, which is a non-negative integer.                              |
+| userInfo       | string                                  | No   | No   | Information about the recognized user.                                           |
+| authTrustLevel | [AuthTrustLevel](#authtrustlevel8)      | No   | Yes   | Authentication trust level. Valid only when status is MATCH.                    |
+
+## UserRecognitionResultCallback
+
+type UserRecognitionResultCallback = (result: UserRecognitionResult) => void
+
+Defines the callback for the user recognition result.
+
+**Since:** 26.0.1
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System capability**: SystemCapability.UserIAM.UserAuth.Core
+
+**Device behavior difference:** This API can be called normally only on car devices and returns null on other device types.
+
+**Parameters**
+
+| Name | Type                                              | Mandatory | Description           |
+| ------ | ------------------------------------------------- | ---- | -------------- |
+| result | [UserRecognitionResult](#userrecognitionresult) | Yes   | User recognition result. |
+
+## UserRecognitionMgr
+
+Provides the APIs for querying and subscribing to user recognition results. You can obtain an instance through [getUserRecognitionMgr](#userauthgetuserrecognitionmgr).
+
+> **NOTE**
+>
+> Each call to **getUserRecognitionMgr** returns a new **UserRecognitionMgr** instance. The same instance must be used for **on** and **off**.
+
+**Since:** 26.0.1
+
+**System capability**: SystemCapability.UserIAM.UserAuth.Core
+
+**Device behavior difference:** This API can be called normally only on car devices. On other device types, it returns null.
+
+### getUserRecognitionResult
+
+getUserRecognitionResult(): Promise\<UserRecognitionResult\>
+
+Obtains the latest user recognition result. This API uses a promise to return the result.
+
+**Since:** 26.0.1
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System capability**: SystemCapability.UserIAM.UserAuth.Core
+
+**Device behavior difference:** This API can be called normally only on car devices and returns null on other device types.
+
+**Return value**
+
+| Type                                                   | Description                       |
+| ------------------------------------------------------ | -------------------------- |
+| Promise\<[UserRecognitionResult](#userrecognitionresult)\> | Promise used to return the user recognition result. |
+
+**Error codes**
+
+For details about the error codes, see [User Authentication Error Codes](errorcode-useriam.md).
+
+| ID | Error Message                 |
+| -------- | ------------------------ |
+| 12500002 | General operation error. |
+
+**Example**
+
+```ts
+import { userAuth } from '@kit.UserAuthenticationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let mgr = userAuth.getUserRecognitionMgr();
+if (mgr == null) {
+  console.error('device does not support user recognition');
+} else {
+  mgr.getUserRecognitionResult()
+    .then((result: userAuth.UserRecognitionResult) => {
+      console.info(`status: ${result.status}, userId: ${result.userId}`);
+    })
+    .catch((err: BusinessError) => {
+      console.error(`getUserRecognitionResult failed, Code: ${err?.code}, message: ${err?.message}`);
+    });
+}
+```
+
+### onUserRecognitionChange
+
+onUserRecognitionChange(callback: UserRecognitionResultCallback): void
+
+Subscribes to the user recognition result change event.
+
+**Since:** 26.0.1
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System capability**: SystemCapability.UserIAM.UserAuth.Core
+
+**Device behavior difference:** This API can be called normally only on car devices, and returns null on other device types.
+
+**Parameters**
+
+| Name   | Type                                                         | Mandatory| Description                       |
+| -------- | ------------------------------------------------------------ | ---- | -------------------------- |
+| callback | [UserRecognitionResultCallback](#userrecognitionresultcallback) | Yes   | Callback for the user recognition result. |
+
+**Error codes**
+
+For details about the error codes, see [User Authentication Error Codes](errorcode-useriam.md).
+
+| ID | Error Message                 |
+| -------- | ------------------------ |
+| 12500002 | General operation error. |
+
+**Example**
+
+```ts
+import { userAuth } from '@kit.UserAuthenticationKit';
+
+let mgr = userAuth.getUserRecognitionMgr();
+if (mgr == null) {
+  console.error('device does not support user recognition');
+} else {
+  let callback: userAuth.UserRecognitionResultCallback = (result: userAuth.UserRecognitionResult) => {
+    console.info(`status: ${result.status}, userId: ${result.userId}`);
+  };
+  mgr.onUserRecognitionChange(callback);
+}
+```
+
+### offUserRecognitionChange
+
+offUserRecognitionChange(callback?: UserRecognitionResultCallback): void
+
+Unsubscribes from the user recognition result change event.
+
+**Since:** 26.0.1
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System capability**: SystemCapability.UserIAM.UserAuth.Core
+
+**Device behavior difference:** This API can be called normally only on car devices and returns null on other device types.
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------ |
+| callback | [UserRecognitionResultCallback](#userrecognitionresultcallback) | No | Callback to be canceled. Only the callback subscribed through [onUserRecognitionChange](#onuserrecognitionchange) of this instance can be canceled. If this parameter is not specified, all callbacks registered under this instance are canceled. |
+
+**Error codes**
+
+For details about the error codes, see [User Authentication Error Codes](errorcode-useriam.md).
+
+| ID | Error Message                 |
+| -------- | ------------------------ |
+| 12500002 | General operation error. |
+
+**Example**
+
+```ts
+import { userAuth } from '@kit.UserAuthenticationKit';
+
+let mgr = userAuth.getUserRecognitionMgr();
+if (mgr == null) {
+  console.error('device does not support user recognition');
+} else {
+  let callback: userAuth.UserRecognitionResultCallback = (result: userAuth.UserRecognitionResult) => {
+    console.info(`status: ${result.status}, userId: ${result.userId}`);
+  };
+  mgr.onUserRecognitionChange(callback);
+  // Cancel the specified callback.
+  mgr.offUserRecognitionChange(callback);
+  // Cancel all callbacks.
+  mgr.offUserRecognitionChange();
+}
+```
+
+## userAuth.getUserRecognitionMgr
+
+getUserRecognitionMgr(): UserRecognitionMgr | null
+
+Obtains a [UserRecognitionMgr](#userrecognitionmgr) instance for querying and subscribing to user recognition results. A new **UserRecognitionMgr** instance is returned each time this API is called.
+
+**Required permissions:** ohos.permission.ACCESS_USER_PASSIVE_RECOGNITION
+
+**Since:** 26.0.1
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System capability**: SystemCapability.UserIAM.UserAuth.Core
+
+**Device behavior difference:** This API can be called normally only on car devices. On other device types, it returns null.
+
+**Return value**
+
+| Type                                        | Description                     |
+| ------------------------------------------- | ------------------------ |
+| [UserRecognitionMgr](#userrecognitionmgr) \| null | User recognition manager instance. If the device does not support this capability, null is returned. |
+
+**Error codes:**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                 |
+| -------- | ------------------------ |
+| 201      | Permission denied.       |
+
+**Example**
+
+```ts
+import { userAuth } from '@kit.UserAuthenticationKit';
+
+let mgr = userAuth.getUserRecognitionMgr();
+if (mgr == null) {
+  console.error('device does not support user recognition');
+} else {
+  console.info(`get user recognition mgr: ${mgr}`);
 }
 ```
 

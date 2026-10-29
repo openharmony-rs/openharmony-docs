@@ -17,7 +17,7 @@ Wi-Fi STA模式（Station Mode，站点模式）是无线设备作为客户端�
 
 ## 接口说明
 
-完整的JS API说明以及示例代码请参考：[STA接口](../../reference/apis-connectivity-kit/js-apis-wifiManager.md)。
+完整的JS API说明以及示例代码请参考：[@ohos.wifiManager (WLAN)](../../reference/apis-connectivity-kit/js-apis-wifiManager.md)。
 
 接口具体说明如下表所示。
 
@@ -97,45 +97,60 @@ Wi-Fi STA模式（Station Mode，站点模式）是无线设备作为客户端�
 
    ```ts
    import { wifiManager } from '@kit.ConnectivityKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+
+   let recvWifiConnectionChangeFunc = (result: number) => {
+     console.info("Receive wifi connection change event: " + result);
+     if (result === 1) {
+       // result为1表示已连接，此时查询连接状态和连接信息才有意义
+       if (!wifiManager.isConnected()) {
+         console.info("Wi-Fi not connected");
+       }
+       // 获取连接信息
+       wifiManager.getLinkedInfo().then(data => {
+         console.info("get Wi-Fi linked info: " + JSON.stringify(data));
+       }).catch((e: BusinessError) => {
+         console.error(`getLinkedInfo failed. Code: ${e.code}, message: ${e.message}`);
+       });
+     }
+   }
 
    try {
-     let recvWifiConnectionChangeFunc = (result: number) => {
-       console.info("Receive wifi connection change event: " + result);
-     }
-
      let config: wifiManager.WifiDeviceConfig = {
        ssid: "****",
        bssid: "****",
        preSharedKey: "****",
-       securityType: 0
+       securityType: 3 // 3为WIFI_SEC_TYPE_PSK；
      }
 
-     // 更新当前Wi-Fi连接状态
+     // 更新当前Wi-Fi连接状态。
      wifiManager.on("wifiConnectionChange", recvWifiConnectionChangeFunc);
      // 添加候选网络配置
      wifiManager.addCandidateConfig(config).then(result => {
        // 连接指定网络
        wifiManager.connectToCandidateConfig(result);
+     }).catch((e: BusinessError) => {
+       console.error(`addCandidateConfig failed. Code: ${e.code}, message: ${e.message}`);
+       // 添加失败则不会有连接事件，此处解除监听，避免泄漏
+       try {
+         wifiManager.off("wifiConnectionChange", recvWifiConnectionChangeFunc);
+       } catch (err) {
+         console.error(`off failed. ${err.message}`);
+       }
      });
-
-     if (!wifiManager.isConnected()) {
-       console.info("Wi-Fi not connected");
-     }
-     // 获取连接信息
-     wifiManager.getLinkedInfo().then(data => {
-       console.info("get Wi-Fi linked info: " + JSON.stringify(data));
-     })
      // 查询信号强度
      let rssi = -88;
      let band = 1;
      let level = wifiManager.getSignalLevel(rssi, band);
      console.info("level:" + JSON.stringify(level));
-
-     // 取消注册，停止更新当前Wi-Fi连接状态
-     wifiManager.off("wifiConnectionChange", recvWifiConnectionChangeFunc);
    } catch (error) {
      console.error(`WiFi Connection failed. ${error.message}`);
+     try {
+       wifiManager.off("wifiConnectionChange", recvWifiConnectionChangeFunc);
+     } catch (e) {
+       console.error(`WiFi Connection off failed. ${e.message}`);
+     }
    }
    ```
 6. Wi-Fi连接状态值，详情请参考[ConnState](../../reference/apis-connectivity-kit/js-apis-wifiManager.md#connstate)。
-7. 错误码详情请参见[WIFI错误码](../../reference/apis-connectivity-kit/errorcode-wifi.md)。
+7. 错误码详情请参见[Wi-Fi错误码](../../reference/apis-connectivity-kit/errorcode-wifi.md)。

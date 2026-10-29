@@ -57,9 +57,9 @@ WebSocket URL错误。
 
 **处理步骤**
 
-1.检查URL是否为空或者未包含正确的协议（ws://或wss://）。
+1. 检查URL是否为空或者未包含正确的协议（ws://或wss://）。
 
-2.检查URL长度是否超过2048个字符。
+2. 检查URL长度是否超过2048个字符。
 
 ## 2302002 Websocket 证书不存在
 
@@ -77,9 +77,9 @@ WebSocket 证书不存在。
 
 **处理步骤**
 
-1.检查CA证书路径是否有效。
+1. 检查CA证书路径是否有效。
 
-2.如指定了WebSocketRequestOptions.clientCert，请检查证书路径与私钥路径是否有效。
+2. 如指定了WebSocketRequestOptions.clientCert，请检查证书路径与私钥路径是否有效。
 
 
 ## 2302003 Websocket 连接已经存在

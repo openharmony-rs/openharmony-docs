@@ -55,7 +55,7 @@
    > 
    > 若未在系统**主题应用**中设置一项主题字体，则将使用系统默认字体进行绘制。
 
-   <!-- @[arkts_theme_font_text_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ThemeFont/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[arkts_theme_font_text_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ThemeFont/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    // 设置文本样式
@@ -66,7 +66,7 @@
    // 创建一个段落样式对象，以设置排版风格
    let myParagraphStyle: text.ParagraphStyle = {
      textStyle: myTextStyle,
-     align: 3,
+     align: text.TextAlign.JUSTIFY,
      wordBreak: text.WordBreak.NORMAL
    };
    // 创建一个段落生成器
