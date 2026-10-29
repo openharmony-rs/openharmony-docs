@@ -229,7 +229,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
    <!-- @[decoder_set_surface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp)-->
 
    ```c++
-   // 设置解码器的送显窗口。调用时必须已经完成 Configure，window 的生命周期由调用方保证。
+   // 设置解码器的送显窗口。调用时必须已经完成Configure，window的生命周期由调用方保证。
    int32_t VideoDecoder::SetSurface(OHNativeWindow *window)
    {
        CHECK_AND_RETURN_RET_LOG(decoder_ != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Decoder is null");
@@ -250,7 +250,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
    <!-- @[decoder_prepare](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp)-->
 
    ```c++
-   // 申请解码器运行所需资源。Prepare 成功后才能调用 Start。
+   // 申请解码器运行所需资源。Prepare成功后才能调用Start。
    int32_t VideoDecoder::Prepare()
    {
        CHECK_AND_RETURN_RET_LOG(decoder_ != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Decoder is null");
@@ -295,7 +295,6 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
    while (isStarted_) {
        // ...
        CHECK_AND_BREAK_LOG(isStarted_, "Decoder input thread out");
-       std::unique_lock<std::mutex> lock(videoDecContext_->inputMutex);
        CodecBufferInfo bufferInfo;
        int32_t ret = videoDecoder_->GetInputBuffer(bufferInfo, CODEC_BUFFER_TIMEOUT_US);
        // ...
@@ -323,7 +322,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
                CHECK_AND_RETURN_RET_LOG(buffer != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Input buffer is null");
                info.buffer = buffer;
                /**
-                * // 示例：调用方将待解码帧的数据与属性写入 Buffer。
+                * // 示例：调用方将待解码帧的数据与属性写入buffer。
                 * uint8_t *addr = OH_AVBuffer_GetAddr(buffer);
                 * CHECK_AND_RETURN_RET_LOG(addr != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Input buffer addr is null");
                 * // buffer数据填充。
@@ -390,10 +389,8 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
    ```c++
    while (isStarted_) {
        // ...
-       std::unique_lock<std::mutex> lock(videoDecContext_->outputMutex);
        CodecBufferInfo bufferInfo;
        const int32_t ret = videoDecoder_->GetOutputBuffer(bufferInfo, CODEC_BUFFER_TIMEOUT_US);
-       lock.unlock();
        if (!isStarted_) {
            if (ret == AVCODEC_SAMPLE_ERR_OK &&
                videoDecoder_->FreeOutputBuffer(bufferInfo, false) != AVCODEC_SAMPLE_ERR_OK) {
@@ -522,10 +519,6 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
 
    调用OH_VideoDecoder_Flush接口后，解码器仍处于运行态，但会清除解码器中缓存的输入和输出数据及参数集（如H.264格式的PPS/SPS）。此时需要调用OH_VideoDecoder_Start接口重新开始解码，并重新推送视频帧PPS/SPS数据。
 
-   以下示例中：
-
-   - xpsData、xpsSize：PPS/SPS信息，获取方式可以参考[音视频解封装](./audio-video-demuxer.md)。
-
    <!-- @[decoder_flush](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp)-->
 
    ```c++
@@ -563,7 +556,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
    {
        CHECK_AND_RETURN_RET_LOG(decoder_ != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Decoder is null");
 
-       // Reset 将codec恢复到初始状态。之后必须重新 Configure、SetSurface（Surface模式）和 Prepare。
+       // Reset将codec恢复到初始状态。之后必须重新Configure、SetSurface（Surface模式）和Prepare。
        const int32_t ret = OH_VideoDecoder_Reset(decoder_);
        CHECK_AND_RETURN_RET_LOG(ret == AV_ERR_OK, AVCODEC_SAMPLE_ERR_ERROR, "Reset failed, ret: %{public}d", ret);
        return AVCODEC_SAMPLE_ERR_OK;
@@ -635,7 +628,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
         if (sampleInfo_.video.window == decoderWindow) {
             sampleInfo_.video.window = nullptr;
         }
-        // OH_VideoDecoder_Destroy() 完成后，codec 不再访问输出 Surface，才能解除窗口引用。
+        // OH_VideoDecoder_Destroy()完成后，codec不再访问输出surface，才能解除窗口引用。
         decoderWindowLease_ = {};
         if (videoDecContext_ != nullptr) {
             std::unique_lock<std::shared_mutex> codecLock(videoDecContext_->codecMutex);
@@ -735,7 +728,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
    <!-- @[decoder_prepare](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp)-->
 
    ```c++
-   // 申请解码器运行所需资源。Prepare 成功后才能调用 Start。
+   // 申请解码器运行所需资源。Prepare成功后才能调用Start。
    int32_t VideoDecoder::Prepare()
    {
        CHECK_AND_RETURN_RET_LOG(decoder_ != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Decoder is null");
@@ -777,7 +770,6 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
    while (isStarted_) {
        // ...
        CHECK_AND_BREAK_LOG(isStarted_, "Decoder input thread out");
-       std::unique_lock<std::mutex> lock(videoDecContext_->inputMutex);
        CodecBufferInfo bufferInfo;
        int32_t ret = videoDecoder_->GetInputBuffer(bufferInfo, CODEC_BUFFER_TIMEOUT_US);
        // ...
@@ -805,7 +797,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
                CHECK_AND_RETURN_RET_LOG(buffer != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Input buffer is null");
                info.buffer = buffer;
                /**
-                * // 示例：调用方将待解码帧的数据与属性写入 Buffer。
+                * // 示例：调用方将待解码帧的数据与属性写入buffer。
                 * uint8_t *addr = OH_AVBuffer_GetAddr(buffer);
                 * CHECK_AND_RETURN_RET_LOG(addr != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Input buffer addr is null");
                 * // buffer数据填充。
@@ -872,10 +864,8 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
    ```c++
    while (isStarted_) {
        // ...
-       std::unique_lock<std::mutex> lock(videoDecContext_->outputMutex);
        CodecBufferInfo bufferInfo;
        const int32_t ret = videoDecoder_->GetOutputBuffer(bufferInfo, CODEC_BUFFER_TIMEOUT_US);
-       lock.unlock();
        if (!isStarted_) {
            if (ret == AVCODEC_SAMPLE_ERR_OK &&
                videoDecoder_->FreeOutputBuffer(bufferInfo, false) != AVCODEC_SAMPLE_ERR_OK) {

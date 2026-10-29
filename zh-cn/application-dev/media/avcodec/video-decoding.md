@@ -277,7 +277,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
    <!-- @[decoder_create_bymime](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp)-->
 
    ```c++
-   // 通过 MIME TYPE 创建解码器，只能创建系统推荐的特定编解码器。
+   // 通过MIME TYPE创建解码器，只能创建系统推荐的特定编解码器。
    // 涉及创建多路编解码器时，优先创建硬件解码器实例，硬件资源不够时再创建软件解码器实例。
    OH_AVCodec *VideoDecoder::GetCodecByMime(const char *mime)
    {
@@ -486,7 +486,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
    <!-- @[decoder_set_surface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp)-->
 
    ```c++
-   // 设置解码器的送显窗口。调用时必须已经完成 Configure，window 的生命周期由调用方保证。
+   // 设置解码器的送显窗口。调用时必须已经完成Configure，window的生命周期由调用方保证。
    int32_t VideoDecoder::SetSurface(OHNativeWindow *window)
    {
        CHECK_AND_RETURN_RET_LOG(decoder_ != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Decoder is null");
@@ -515,7 +515,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
    <!-- @[decoder_prepare](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp)-->
 
    ```c++
-   // 申请解码器运行所需资源。Prepare 成功后才能调用 Start。
+   // 申请解码器运行所需资源。Prepare成功后才能调用Start。
    int32_t VideoDecoder::Prepare()
    {
        CHECK_AND_RETURN_RET_LOG(decoder_ != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Decoder is null");
@@ -646,7 +646,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
     std::shared_lock<std::shared_mutex> codecLock(videoDecContext_->codecMutex);
     /**
      *
-     * // 示例：将数据写入 Buffer，设置属性后送入解码器。
+     * // 示例：将数据写入buffer，设置属性后送入解码器。
      * uint8_t *addr = OH_AVBuffer_GetAddr(bufferInfo->buffer);
      * CHECK_AND_RETURN_RET_LOG(addr != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Input buffer addr is null");
      * int32_t capacity = OH_AVBuffer_GetCapacity(bufferInfo->buffer);
@@ -793,7 +793,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
     {
         CHECK_AND_RETURN_RET_LOG(decoder_ != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Decoder is null");
 
-        // Reset 将codec恢复到初始状态。之后必须重新 Configure、SetSurface（Surface模式）和 Prepare。
+        // Reset将codec恢复到初始状态。之后必须重新Configure、SetSurface（Surface模式）和Prepare。
         const int32_t ret = OH_VideoDecoder_Reset(decoder_);
         CHECK_AND_RETURN_RET_LOG(ret == AV_ERR_OK, AVCODEC_SAMPLE_ERR_ERROR, "Reset failed, ret: %{public}d", ret);
         return AVCODEC_SAMPLE_ERR_OK;
@@ -861,7 +861,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
         if (sampleInfo_.video.window == decoderWindow) {
             sampleInfo_.video.window = nullptr;
         }
-        // OH_VideoDecoder_Destroy() 完成后，codec 不再访问输出 Surface，才能解除窗口引用。
+        // OH_VideoDecoder_Destroy()完成后，codec不再访问输出surface，才能解除窗口引用。
         decoderWindowLease_ = {};
         if (videoDecContext_ != nullptr) {
             std::unique_lock<std::shared_mutex> codecLock(videoDecContext_->codecMutex);
@@ -929,7 +929,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
    <!-- @[decoder_create_bymime](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp)-->
 
    ```c++
-   // 通过 MIME TYPE 创建解码器，只能创建系统推荐的特定编解码器。
+   // 通过MIME TYPE创建解码器，只能创建系统推荐的特定编解码器。
    // 涉及创建多路编解码器时，优先创建硬件解码器实例，硬件资源不够时再创建软件解码器实例。
    OH_AVCodec *VideoDecoder::GetCodecByMime(const char *mime)
    {
@@ -973,10 +973,10 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
        OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_STRIDE, &codecUserData->widthStride);
        OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_SLICE_HEIGHT, &codecUserData->heightStride);
        // 可选，获取裁剪矩形信息。
-       //OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_CROP_TOP, &cropTop) &&
-       //OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_CROP_BOTTOM, &cropBottom) &&
-       //OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_CROP_LEFT, &cropLeft) &&
-       //OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_CROP_RIGHT, &cropRight);
+       // OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_CROP_TOP, &cropTop);
+       // OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_CROP_BOTTOM, &cropBottom);
+       // OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_CROP_LEFT, &cropLeft);
+       // OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_CROP_RIGHT, &cropRight);
        AVCODEC_SAMPLE_LOGI("Format changed: %{public}d*%{public}d, stride: %{public}d*%{public}d",
                            codecUserData->width, codecUserData->height,
                            codecUserData->widthStride, codecUserData->heightStride);
@@ -1005,10 +1005,10 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
                OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_STRIDE, &codecUserData->widthStride);
                OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_SLICE_HEIGHT, &codecUserData->heightStride);
                // 获取裁剪矩形信息可选。
-               //OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_CROP_TOP, &cropTop) &&
-               //OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_CROP_BOTTOM, &cropBottom) &&
-               //OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_CROP_LEFT, &cropLeft) &&
-               //OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_CROP_RIGHT, &cropRight);
+               // OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_CROP_TOP, &cropTop);
+               // OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_CROP_BOTTOM, &cropBottom);
+               // OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_CROP_LEFT, &cropLeft);
+               // OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_CROP_RIGHT, &cropRight);
                OH_AVFormat_Destroy(format);
            }
            codecUserData->isDecFirstFrame = false;
@@ -1124,7 +1124,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
    <!-- @[decoder_prepare](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp)-->
 
    ```c++
-   // 申请解码器运行所需资源。Prepare 成功后才能调用 Start。
+   // 申请解码器运行所需资源。Prepare成功后才能调用Start。
    int32_t VideoDecoder::Prepare()
    {
        CHECK_AND_RETURN_RET_LOG(decoder_ != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Decoder is null");
@@ -1239,7 +1239,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
     std::shared_lock<std::shared_mutex> codecLock(videoDecContext_->codecMutex);
     /**
      *
-     * // 示例：将数据写入 Buffer，设置属性后送入解码器。
+     * // 示例：将数据写入buffer，设置属性后送入解码器。
      * uint8_t *addr = OH_AVBuffer_GetAddr(bufferInfo->buffer);
      * CHECK_AND_RETURN_RET_LOG(addr != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Input buffer addr is null");
      * int32_t capacity = OH_AVBuffer_GetCapacity(bufferInfo->buffer);
