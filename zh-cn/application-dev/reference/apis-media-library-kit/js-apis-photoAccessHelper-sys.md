@@ -4014,6 +4014,87 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
+### cloneWithShareAlbum
+
+cloneWithShareAlbum(owner: string, assets: PhotoAsset[], targetAlbum: Album, shareGroup: number, option?: BatchOperationOptions): Promise&lt;PhotoAsset[]&gt;
+
+复制资产到目标相册接口。该接口设定与共享相册交互，仅允许在以下场景使用：
+
+1. 从普通相册复制到共享相册。
+2. 从共享相册复制到普通相册。
+3. 从共享相册复制到共享相册。
+
+**起始版本：** 26.0.1
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**需要权限**：ohos.permission.WRITE_IMAGEVIDEO 和 ohos.permission.MANAGE_SHARE_PHOTO
+
+**参数：**
+
+| 参数名        | 类型                                | 必填 | 说明                                                         |
+| ------------- | ----------------------------------- | ---- | ------------------------------------------------------------ |
+| owner        | string | 是   | 共享相册的所有者。                                           |
+| assets        | [PhotoAsset](#photoasset)[] | 是   | 待克隆的资产数组。                                           |
+| targetAlbum        | [Album](#album) | 是   | 目标相册。                                           |
+| shareGroup        | number | 是   | 待克隆资产的共享分组。用于复制到共享相册时，写入新资产的"share_group"字段。                                     |
+| option | [BatchOperationOptions](#batchoperationoptions) | 否   | 对资产执行批量操作的可选项。如果未指定，默认支持自动重命名，不返回进度信息。 |
+
+**返回值：**
+
+| 类型                                    | 说明              |
+| --------------------------------------- | ----------------- |
+| Promise&lt;[PhotoAsset](#photoasset)[]&gt; | Promise对象，返回克隆成功的资产列表。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. Asset to be cloned has been deleted or hidden;<br>2. Asset to be cloned is cloud pictures, which can not be cloned;<br>3. The Target Album does not exist.<br>4. Insufficient system space.<br>5. Automatic renaming is not supported.<br>6. The clone task is interrupted. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+import { dataSharePredicates } from '@kit.ArkData';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  try {
+    // 获取待克隆的资产。
+    let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+    let fetchOptions: photoAccessHelper.FetchOptions = {
+      fetchColumns: [photoAccessHelper.PhotoKeys.URI],
+      predicates: predicates
+    };
+    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
+    let assets: photoAccessHelper.PhotoAsset[] = await fetchResult.getAllObjects();
+    let shareGroup: number = 0;
+    // 查询目标共享相册。
+    let shareAlbumFetchOptions: photoAccessHelper.FetchOptions = {
+      fetchColumns: [],
+      predicates: predicates
+    };
+    let shareAlbumFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = await phAccessHelper.getShareAlbums(shareAlbumFetchOptions);
+    let shareAlbum: photoAccessHelper.Album = await shareAlbumFetchResult.getFirstObject();
+    // 复制资产到目标共享相册。
+    let clonedAssets: photoAccessHelper.PhotoAsset[] = await phAccessHelper.cloneWithShareAlbum('ownerId', assets, shareAlbum, shareGroup);
+    console.info(`cloneWithShareAlbum successfully, clonedAssets count: ${clonedAssets.length}`);
+  } catch (err) {
+    console.error(`cloneWithShareAlbum failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
 ### getAssetCompatibleUris
 
 getAssetCompatibleUris(bundleName: string, assets: Array&lt;PhotoAsset&gt;, compatibleFlag?: number): Promise&lt;Array&lt;string&gt;&gt;
@@ -5152,6 +5233,382 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     } catch (err) {
       console.error(`getAlbumIdByBundleName failed: ${err.code}, ${err.message}`);
     }
+}
+```
+
+### getShareAlbums
+
+getShareAlbums(options?: FetchOptions): Promise&lt;FetchResult&lt;Album&gt;&gt;
+
+查询共享相册。
+
+**起始版本：** 26.0.1
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限：** ohos.permission.MANAGE_SHARE_PHOTO
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+
+**参数：**
+
+| 参数名  | 类型    | 必填 | 说明                       |
+| ------- | ------- | ---- | -------------------------- |
+| options | [FetchOptions](arkts-apis-photoAccessHelper-i.md#fetchoptions) | 否 | 检索选项。默认值为空，查询所有共享相册。 |
+
+**返回值：**
+
+| 类型                                    | 说明              |
+| --------------------------------------- | ----------------- |
+| Promise&lt;FetchResult&lt;[Album](#album)&gt;&gt; | Promise对象，返回相册的fetch结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800151     | The scenario parameter verification fails. Possible causes: 1. The column field does not support querying. 2. Filter conditions do not match expectations. |
+| 23800301     | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+import { dataSharePredicates } from '@kit.ArkData';
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  try {
+    // 配置检索选项。
+    let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+    let fetchOption: photoAccessHelper.FetchOptions = {
+      fetchColumns: [],
+      predicates: predicates
+    };
+    // 查询共享相册。
+    let shareAlbumFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = await phAccessHelper.getShareAlbums(fetchOption);
+    if (shareAlbumFetchResult == undefined) {
+      console.info(`getShareAlbums failed, shareAlbumFetchResult is undefined`);
+      return;
+    }
+    let album = await shareAlbumFetchResult.getFirstObject();
+    console.info(`getShareAlbums success, albumName: ${album.albumName}`);
+    // 关闭FetchResult。
+    shareAlbumFetchResult.close();
+  } catch (err) {
+    console.error(`getShareAlbums failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+### onSharePhotoChange
+
+onSharePhotoChange(callback: Callback&lt;PhotoAssetChangeInfos&gt;): void
+
+注册对共享图片和视频变化的监听。使用callback异步回调。
+
+**起始版本：** 26.0.1
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**需要权限**：ohos.permission.MANAGE_SHARE_PHOTO
+
+**参数：**
+
+| 参数名   | 类型                   | 必填 | 说明      |
+|-----------|-------------------------|-----------|-----------------|
+| callback  | Callback&lt;[PhotoAssetChangeInfos](arkts-apis-photoAccessHelper-i.md#photoassetchangeinfos20)&gt; | 是 | 回调函数，返回变更的共享图片和视频信息。<br>**注意：**<br>该接口可以注册多个不同的callback监听。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800151 | The scenario parameter verification fails. Possible causes: The same callback is registered repeatedly. |
+| 23800301 | Internal system error. You are advised to retry and check the logs. Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+class SharePhotoExample {
+  private helper: photoAccessHelper.PhotoAccessHelper;
+  private handleSharePhotoChange?: (changeData: photoAccessHelper.PhotoAssetChangeInfos) => void;
+
+  constructor(context: common.Context) {
+    this.helper = photoAccessHelper.getPhotoAccessHelper(context);
+  }
+
+  onSharePhotoChange = async () => {
+    try {
+      // 定义共享图片和视频变化的回调处理函数。
+      this.handleSharePhotoChange = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
+        console.info(`共享图片和视频变化: ${JSON.stringify(changeData)}`);
+      };
+      // 注册共享图片和视频变化监听。
+      this.helper.onSharePhotoChange(this.handleSharePhotoChange);
+      console.info('共享图片和视频监听注册成功');
+    } catch (err) {
+      console.error(`onSharePhotoChange failed::${(err as BusinessError).code}, ${(err as BusinessError).message} !`);
+    }
+  };
+}
+```
+
+### offSharePhotoChange
+
+offSharePhotoChange(callback?: Callback&lt;PhotoAssetChangeInfos&gt;): void
+
+取消注册对共享图片和视频变化的监听。
+
+**起始版本：** 26.0.1
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**需要权限**：ohos.permission.MANAGE_SHARE_PHOTO
+
+**参数：**
+
+| 参数名   | 类型                   | 必填 | 说明      |
+|-----------|-------------------------|-----------|-----------------|
+| callback  | Callback&lt;[PhotoAssetChangeInfos](arkts-apis-photoAccessHelper-i.md#photoassetchangeinfos20)&gt; | 否 | 回调函数，返回取消[onSharePhotoChange](#onsharephotochange)注册时指定的callback监听。不填时，则取消对共享图片和视频变化的所有监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800151 | The scenario parameter verification fails. Possible causes: The same callback is unregistered repeatedly. |
+| 23800301 | Internal system error. You are advised to retry and check the logs. Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+class SharePhotoExample {
+  private helper: photoAccessHelper.PhotoAccessHelper;
+  private handleSharePhotoChange?: (changeData: photoAccessHelper.PhotoAssetChangeInfos) => void;
+
+  constructor(context: common.Context) {
+    this.helper = photoAccessHelper.getPhotoAccessHelper(context);
+  }
+
+  offSharePhotoChange = async () => {
+    try {
+      // 先注册共享图片和视频变化监听，然后取消注册，演示取消监听的使用方法。
+      this.helper.onSharePhotoChange(this.handleSharePhotoChange);
+      this.helper.offSharePhotoChange(this.handleSharePhotoChange);
+      console.info('共享图片和视频监听解除成功');
+    } catch (err) {
+      console.error(`offSharePhotoChange failed::${(err as BusinessError).code}, ${(err as BusinessError).message} !`);
+    }
+  };
+}
+```
+
+### onShareAlbumChange
+
+onShareAlbumChange(callback: Callback&lt;AlbumChangeInfos&gt;): void
+
+注册对共享相册变化的监听。使用callback异步回调。
+
+**起始版本：** 26.0.1
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**需要权限**：ohos.permission.MANAGE_SHARE_PHOTO
+
+**参数：**
+
+| 参数名   | 类型                   | 必填 | 说明      |
+|-----------|-------------------------|-----------|-----------------|
+| callback  | Callback&lt;[AlbumChangeInfos](arkts-apis-photoAccessHelper-i.md#albumchangeinfos20)&gt; | 是 | 回调函数，返回变更的共享相册信息。<br>**注意：**<br>该接口可以注册多个不同的callback监听。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800151 | The scenario parameter verification fails. Possible causes: The same callback is registered repeatedly. |
+| 23800301 | Internal system error. You are advised to retry and check the logs. Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+class ShareAlbumExample {
+  private helper: photoAccessHelper.PhotoAccessHelper;
+  private handleShareAlbumChange?: (changeData: photoAccessHelper.AlbumChangeInfos) => void;
+
+  constructor(context: common.Context) {
+    this.helper = photoAccessHelper.getPhotoAccessHelper(context);
+  }
+
+  onShareAlbumChange = async () => {
+    try {
+      // 定义共享相册变化的回调处理函数。
+      this.handleShareAlbumChange = (changeData: photoAccessHelper.AlbumChangeInfos) => {
+        console.info(`共享相册变化: ${JSON.stringify(changeData)}`);
+      };
+      // 注册共享相册变化监听。
+      this.helper.onShareAlbumChange(this.handleShareAlbumChange);
+      console.info('共享相册监听注册成功');
+    } catch (err) {
+      console.error(`onShareAlbumChange failed::${(err as BusinessError).code}, ${(err as BusinessError).message} !`);
+    }
+  };
+}
+```
+
+### offShareAlbumChange
+
+offShareAlbumChange(callback?: Callback&lt;AlbumChangeInfos&gt;): void
+
+取消注册对共享相册变化的监听。
+
+**起始版本：** 26.0.1
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**需要权限**：ohos.permission.MANAGE_SHARE_PHOTO
+
+**参数：**
+
+| 参数名   | 类型                   | 必填 | 说明      |
+|-----------|-------------------------|-----------|-----------------|
+| callback  | Callback&lt;[AlbumChangeInfos](arkts-apis-photoAccessHelper-i.md#albumchangeinfos20)&gt; | 否 | 回调函数，返回取消[onShareAlbumChange](#onsharealbumchange)注册时指定的callback监听。不填时，则取消对共享相册变化的所有监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800151 | The scenario parameter verification fails. Possible causes: The same callback is unregistered repeatedly. |
+| 23800301 | Internal system error. You are advised to retry and check the logs. Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+class ShareAlbumExample {
+  private helper: photoAccessHelper.PhotoAccessHelper;
+  private handleShareAlbumChange?: (changeData: photoAccessHelper.AlbumChangeInfos) => void;
+
+  constructor(context: common.Context) {
+    this.helper = photoAccessHelper.getPhotoAccessHelper(context);
+  }
+
+  offShareAlbumChange = async () => {
+    try {
+      // 先注册共享相册变化监听，然后取消注册，演示取消监听的使用方法。
+      this.helper.onShareAlbumChange(this.handleShareAlbumChange);
+      this.helper.offShareAlbumChange(this.handleShareAlbumChange);
+      console.info('共享相册监听解除成功');
+    } catch (err) {
+      console.error(`offShareAlbumChange failed::${(err as BusinessError).code}, ${(err as BusinessError).message} !`);
+    }
+  };
+}
+```
+
+### applyShareAlbumChanges
+
+applyShareAlbumChanges(mediaChangeRequest: MediaShareAlbumChangeRequest): Promise&lt;Album|null&gt;
+
+提交共享相册变更请求，返回变更后的目标共享相册。使用Promise异步回调。
+
+变更内容包括修改共享相册名称、增删共享相册成员、更新成员状态、设置共享相册封面等，通过[MediaShareAlbumChangeRequest](#mediasharealbumchangerequest)对象设置，所有变更需通过本接口提交后生效。
+
+**起始版本：** 26.0.1
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**需要权限**：ohos.permission.WRITE_IMAGEVIDEO 和 ohos.permission.MANAGE_SHARE_PHOTO
+
+**参数：**
+
+| 参数名   | 类型   | 必填 | 说明   |
+| -------- | ------ | ---- | ------ |
+| mediaChangeRequest | [MediaShareAlbumChangeRequest](#mediasharealbumchangerequest) | 是 | 共享相册变更请求对象，变更内容通过该对象设置。 |
+
+**返回值：**
+
+| 类型   | 说明   |
+| -------- | -------- |
+| Promise&lt;[Album](#album)\|null&gt; | Promise对象，返回变更后的目标共享相册；返回null表示未返回相册信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800151 | The scenario parameter verification fails. Possible causes: 1. The mediaShareAlbumRequest is null. 2. The operator must be the owner of the share album when creating the album. 3. The operator must be the owner of the share album when adding share member. 4. The operator must be the owner of the share album or device owner of share album member when updating share member status. 5. The shared album member status update logic does not meet expectations. 6. The operator must be the owner of the share album when deleting share member. 7. The target Album is not exist. 8. The operator must be the owner of the share album when modifying the share album name. 9. The CoverUri is deleted or riskControlled. 10. The operator must be the owner of the share album when setting the cover of the album. 11. The operator must be the owner of the share album when resetting the cover of the album. 12. This member does not belong to the current shared album. |
+| 23800201 | Operation not supported. Possible causes: Request must be from share album. |
+| 23800301 | Internal system error. You are advised to retry and check the logs. Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+class ShareAlbumExample {
+  private helper: photoAccessHelper.PhotoAccessHelper;
+
+  constructor(context: common.Context) {
+    this.helper = photoAccessHelper.getPhotoAccessHelper(context);
+  }
+
+  applyShareAlbumChanges = async (album: photoAccessHelper.Album) => {
+    try {
+      // 创建共享相册变更请求，并修改共享相册名称。
+      let changeRequest: photoAccessHelper.MediaShareAlbumChangeRequest =
+        new photoAccessHelper.MediaShareAlbumChangeRequest(album);
+      changeRequest.setShareAlbumName('com.example.owner', 'newShareAlbumName');
+      // 提交共享相册变更请求。
+      let targetAlbum: photoAccessHelper.Album | null = await this.helper.applyShareAlbumChanges(changeRequest);
+      console.info('applyShareAlbumChanges success');
+    } catch (err) {
+      console.error(`applyShareAlbumChanges failed::${(err as BusinessError).code}, ${(err as BusinessError).message} !`);
+    }
+  };
 }
 ```
 
@@ -7196,6 +7653,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 | coverUriSource<sup>20+</sup>    | number | 是    | 是   | 相册封面来源。<br>**系统接口**：此接口为系统接口。|
 | uploadStatus<sup>22+</sup>    | boolean | 是    | 否   | 表示是否允许相册同步到云空间或家庭存储。true表示允许，false表示不允许。<br>**系统接口**：此接口为系统接口。|
 | HIDDEN<sup>23+</sup>    | boolean | 是    | 是   | 相册是否为隐藏状态。true表示相册为隐藏状态，false表示相册不为隐藏状态。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。|
+| shareRiskType    | string | 是    | 是   | 共享相册的风控类型。<br>**起始版本：** 26.0.1<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。|
+| shareRiskStatus    | [ShareAlbumRiskStatus](#sharealbumriskstatus) | 是    | 是   | 共享相册的风控状态。<br>**起始版本：** 26.0.1<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。|
+| cloudId    | string | 是    | 是   | 相册CloudId。<br>**起始版本：** 26.0.1<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。|
+| shareAlbumOwner    | string | 是    | 是   | 共享相册的所有者。<br>**起始版本：** 26.0.1<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。|
 
 ### recoverAssets<sup>(deprecated)</sup>
 
@@ -13321,6 +13782,7 @@ async function example(context: Context) {
 | 名称                  | 值    | 说明                        |
 | ------------------- | ---- | ------------------------- |
 | SMART<sup>11+</sup> | 4096 | 智慧分析相册。<br>**系统接口**：此接口为系统接口。 |
+| SHARE               | 8192 | 共享相册。<br>**起始版本：** 26.0.1<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。 |
 
 ## AlbumSubtype
 
@@ -13343,6 +13805,7 @@ async function example(context: Context) {
 | HIGHLIGHT<sup>12+</sup>           | 4104       | 时刻相册。**系统接口**：此接口为系统接口。         |
 | HIGHLIGHT_SUGGESTIONS<sup>12+</sup> | 4105     | 时刻建议相册。**系统接口**：此接口为系统接口。         |
 | CLOUD_ENHANCEMENT<sup>13+</sup> | 1032     | AI云增强相册。**系统接口**：此接口为系统接口。         |
+| SHARE                             | 8193     | 共享相册。<br>**起始版本：** 26.0.1<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。         |
 
 ## RequestPhotoType<sup>11+</sup>
 
@@ -13368,7 +13831,7 @@ async function example(context: Context) {
 | ------------- | ------------------- | ---------------------------------------------------------- |
 | DATE_TRASHED  | 'date_trashed'  | 删除日期（删除文件时间距1970年1月1日的秒数值）。**系统接口**：此接口为系统接口。                 |
 | HIDDEN  | 'hidden'            | 文件的隐藏状态。**系统接口**：此接口为系统接口。                               |
-| CAMERA_SHOT_KEY  | 'camera_shot_key'  | 锁屏相机拍照或录像的标记字段（仅开放给系统相机,其key值由系统相机定义）。**系统接口**：此接口为系统接口。            |
+| CAMERA_SHOT_KEY  | 'camera_shot_key'  | 锁屏相机拍照或录像的标记字段（仅开放给系统相机，其key值由系统相机定义）。**系统接口**：此接口为系统接口。            |
 | USER_COMMENT  | 'user_comment'            | 用户注释信息。**系统接口**：此接口为系统接口。           |
 | DATE_YEAR<sup>11+</sup>  | 'date_year'            | 创建文件的年份。**系统接口**：此接口为系统接口。           |
 | DATE_MONTH<sup>11+</sup>  | 'date_month'            | 创建文件的月份。**系统接口**：此接口为系统接口。           |
@@ -13402,6 +13865,12 @@ async function example(context: Context) {
 | HIDDEN_TIME | 'hidden_time'  | 文件隐藏时间（隐藏文件时间距1970年1月1日的毫秒数值）。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。 |
 | FILE_HIDDEN | 'file_hidden' | 文件的隐藏状态。 <br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。 |
 | ATTACHMENT_SIZE | 'attachment_size' | 附件文件的大小。单位为字节（Byte）。<br>默认值为0，表示尚未识别的附件文件大小或附件文件大小为0。 <br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。 |
+| SHARE_OWNER_INFO | 'share_owner_info' | 共享相册的资产所有者。<br>**起始版本：** 26.0.1<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。 |
+| SHARE_RISK_STATUS | 'share_risk_status' | 共享相册资产的风控状态。<br>**起始版本：** 26.0.1<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。 |
+| SHARE_RISK_TYPE | 'share_risk_type' | 共享相册资产的风控类型。<br>**起始版本：** 26.0.1<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。 |
+| SHARE_GROUP | 'share_group' | 共享相册资产的共享分组。<br>**起始版本：** 26.0.1<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。 |
+| SHARE_DATE_DAY | 'share_date_day' | 共享相册资产的共享日期。<br>**起始版本：** 26.0.1<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。 |
+| PHOTO_VISIBILITY | 'photo_visibility' | 资产的可见性。<br>**起始版本：** 26.0.1<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。 |
 
 
 ## AlbumKeys
@@ -13418,6 +13887,10 @@ async function example(context: Context) {
 | UPLOAD_STATUS<sup>22+</sup>     | 'upload_status'      | 相册同步状态。<br>**系统接口**：此接口为系统接口。            |
 | HIDDEN<sup>23+</sup>     | 'hidden'      | 相册为隐藏状态。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。            |
 | FILE_HIDDEN     | 'file_hidden'      | 文件管理中文件夹的隐藏状态。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。            |
+| SHARE_RISK_STATUS     | 'share_risk_status'      | 共享相册的风控状态。<br>**起始版本：** 26.0.1<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。            |
+| SHARE_RISK_TYPE     | 'share_risk_type'      | 共享相册的风控类型。<br>**起始版本：** 26.0.1<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。            |
+| SHARE_ALBUM_OWNER     | 'share_album_owner'      | 共享相册的所有者。<br>**起始版本：** 26.0.1<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。            |
+| CLOUD_ID     | 'cloud_id'      | 相册的cloudId。<br>**起始版本：** 26.0.1<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。            |
 
 ## AlbumAttribute
 
@@ -14091,6 +14564,7 @@ try {
 | ----- |  ---- |  ---- |
 | RETAIN_FORCE |  0 |  删除原文件在云空间的本地元数据和缩略图。 |
 | HDC_RETAIN_FORCE<sup>22+</sup> |  1 |  删除原文件在家庭存储设备的本地元数据和缩略图。 |
+| SHARE_RETAIN_FORCE |  2 |  删除云端原始共享文件和共享相册的本地元数据和缩略图。<br>**起始版本：** 26.0.1<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## CloudMediaAssetTaskStatus<sup>14+</sup>
 
@@ -14231,6 +14705,10 @@ try {
 | displayName | string  | 否 | 是 | 媒体资产（图片/视频）的显示名称。<br>**系统接口**：此接口为系统接口。  |
 | size | number  | 否 | 是 | 媒体资产（图片/视频）的文件大小（单位：字节）。动态照片的size包括图片和视频的总大小。<br>**系统接口**：此接口为系统接口。  |
 | albumChangeInfos | [AlbumChangeInfo](#albumchangeinfo20)[]  | 否 | 是 | 智慧相册的相册变更信息。<br>**系统接口**：此接口为系统接口。  |
+| shareRiskStatus | [ShareAlbumRiskStatus](#sharealbumriskstatus) | 否 | 是 | 共享相册资产的风险状态。该值为整数。<br>**起始版本：** 26.0.1<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。  |
+| shareDateDay | number | 否 | 是 | 共享相册资产共享的日期。该值为整数。<br>**起始版本：** 26.0.1<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。  |
+| photoVisibility | number | 否 | 是 | 图片的可见性。该值为整数。<br>**起始版本：** 26.0.1<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。  |
+| shareGroup | number | 否 | 是 | 待共享的共享相册资产分组。该值为整数。<br>**起始版本：** 26.0.1<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。  |
 
 ## PhotoAssetChangeData<sup>20+</sup>
 
@@ -14261,6 +14739,7 @@ try {
 | albumOrder | number  | 否 | 是 | 相册的排序值。<br>**系统接口**：此接口为系统接口。 |
 | HIDDEN<sup>23+</sup>    | boolean  | 否 | 是 | 相册是否为隐藏状态。true表示相册为隐藏状态，false表示相册不为隐藏状态。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。|
 | lpath | string  | 否 | 是 | 相册虚拟路径。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。|
+| shareRiskStatus | [ShareAlbumRiskStatus](#sharealbumriskstatus) | 否 | 是 | 共享相册的风险状态。<br>**起始版本：** 26.0.1<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。|
 
 ## AlbumChangeData<sup>20+</sup>
 
@@ -14780,3 +15259,728 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 | ---- | ------- | ---- |  ---- | ----- |
 | state | [DeepOptimizeState](#deepoptimizestate)  | 否 | 否 | 当前深度优化状态。 |
 | progress  | number  |否 |否 | 深度优化进度百分比。取值范围为[0, 100]。  |
+
+## MemberInfo
+
+共享相册成员信息。
+
+**起始版本：** 26.0.1
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称                    | 类型                | 只读 | 可选 | 说明                          |
+| ----------------------- | ------------------- | ---- | ---- | -------------------------------- |
+| member    | string   | 否 | 否   | 共享相册的成员身份信息。 |
+| status    | [ShareMemberStatus](#sharememberstatus)   | 否 | 否   | 共享相册的成员状态。 |
+
+## ShareMemberStatus
+
+表示共享相册的成员状态的枚举。
+
+**起始版本：** 26.0.1
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称  |  值 |  说明 |
+| ----- |  ---- |  ---- |
+| INVITING |  0 |  成员正在被邀请。|
+| ACCEPTED |  1 |  成员已接受邀请。  |
+| DECLINED |  2 |  成员已拒绝邀请。  |
+| REQUESTING |  3 |  成员请求加入。  |
+
+## ShareAlbumRiskStatus
+
+表示共享相册的风险状态的枚举。
+
+**起始版本：** 26.0.1
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称  |  值 |  说明 |
+| ----- |  ---- |  ---- |
+| UNDER_REVIEW |  0 |  表示共享相册正在审查中。|
+| LOW_REVIEW_RISK |  1 |  表示共享相册审核风险低。  |
+| HIGH_REVIEW_RISK |  2 |  表示共享相册审核风险高。  |
+
+## ShareAlbumMemberInfo
+
+共享相册成员信息。
+
+**起始版本：** 26.0.1
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称                    | 类型                | 只读 | 可选 | 说明                          |
+| ----------------------- | ------------------- | ---- | ---- | -------------------------------- |
+| shareAlbumOwner    | string   | 否 | 否   | 共享相册所有者。 |
+| memberInfos    | [MemberInfo](#memberinfo)[]   | 否 | 否   | 成员信息。 |
+
+## MediaShareAlbumChangeRequest
+
+表示管理共享相册的变更请求。
+
+**起始版本：** 26.0.1
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+### 属性
+
+**起始版本：** 26.0.1
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称           | 类型    | 只读   | 可选  | 说明   |
+| ------------ | ------ | ---- | ---- | ------- |
+| comment    | string | 是    | 否   | 用于[MediaChangeRequest](#mediachangerequest11)类型校验。<br>如果类（如MediaShareAlbumChangeRequest）对象可以访问，就说明该类是MediaChangeRequest的实现类。 |
+
+### constructor
+
+constructor(album: Album)
+
+构造函数，用于创建共享相册变更请求对象。
+
+**起始版本：** 26.0.1
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**需要权限**：ohos.permission.MANAGE_SHARE_PHOTO
+
+**参数：**
+
+| 参数名   | 类型                      | 必填 | 说明       |
+| -------- | ------------------------- | ---- | ---------- |
+| album | [Album](#album) | 是   | 需要变更的共享相册。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800151 | The scenario parameter verification fails. Possible causes: the album is not share album. |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('MediaShareAlbumChangeRequest constructorDemo');
+  try {
+    // 查询共享相册。
+    let albumFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = await phAccessHelper.getShareAlbums();
+    let album: photoAccessHelper.Album = await albumFetchResult.getFirstObject();
+    albumFetchResult.close();
+    // 创建共享相册变更请求。
+    let shareAlbumChangeRequest: photoAccessHelper.MediaShareAlbumChangeRequest =
+      new photoAccessHelper.MediaShareAlbumChangeRequest(album);
+  } catch (err) {
+    console.error(`MediaShareAlbumChangeRequest constructorDemo failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+### setShareAlbumName
+
+setShareAlbumName(owner: string, name: string): void
+
+设置共享相册名称。
+
+**起始版本：** 26.0.1
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**需要权限**：ohos.permission.MANAGE_SHARE_PHOTO 和 ohos.permission.WRITE_IMAGEVIDEO
+
+**参数：**
+
+| 参数名        | 类型      | 必填   | 说明                                 |
+| ---------- | ------- | ---- | ---------------------------------- |
+| owner | string | 是   | 共享相册创建者的OwnerId。 |
+| name | string | 是   | 待设置的共享相册名称。<br>相册名字符串长度为1~255。不允许出现的非法英文字符，包括：<br> . \ / : * ? " ' \` < > \| { } [ ]<br>英文字符大小写不敏感。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. The albums are not share album.<br>2. The album name must meet the following requirements:<br>The total length of the album name must be between 1 and 255 characters.<br>It must not contain any invalid characters, which are: . \ / : * ? " ' \` < > \| { } [ ] |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('setShareAlbumNameDemo');
+  try {
+    // 查询共享相册。
+    let albumFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = await phAccessHelper.getShareAlbums();
+    let album: photoAccessHelper.Album = await albumFetchResult.getFirstObject();
+    albumFetchResult.close();
+    // 创建共享相册变更请求。
+    let shareAlbumChangeRequest: photoAccessHelper.MediaShareAlbumChangeRequest =
+      new photoAccessHelper.MediaShareAlbumChangeRequest(album);
+    // 设置共享相册名称。
+    shareAlbumChangeRequest.setShareAlbumName('ownerId', 'newShareAlbumName' + new Date().getTime());
+    // 提交共享相册变更请求。
+    await phAccessHelper.applyShareAlbumChanges(shareAlbumChangeRequest);
+    console.info('setShareAlbumName successfully');
+  } catch (err) {
+    console.error(`setShareAlbumNameDemo failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+### addShareMember
+
+addShareMember(owner: string, member: string, status: ShareMemberStatus): void
+
+添加共享相册成员。
+
+**起始版本：** 26.0.1
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**需要权限**：ohos.permission.MANAGE_SHARE_PHOTO 和 ohos.permission.WRITE_IMAGEVIDEO
+
+**参数：**
+
+| 参数名        | 类型      | 必填   | 说明                                 |
+| ---------- | ------- | ---- | ---------------------------------- |
+| owner | string | 是   | 共享相册创建者的OwnerId。 |
+| member | string | 是   | 待添加的共享相册成员。 |
+| status | [ShareMemberStatus](#sharememberstatus) | 是   | 共享相册成员状态。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800151 | The scenario parameter verification fails. Possible causes: The albums are not share album. |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('addShareMemberDemo');
+  try {
+    // 查询共享相册。
+    let albumFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = await phAccessHelper.getShareAlbums();
+    let album: photoAccessHelper.Album = await albumFetchResult.getFirstObject();
+    albumFetchResult.close();
+    // 创建共享相册变更请求。
+    let shareAlbumChangeRequest: photoAccessHelper.MediaShareAlbumChangeRequest =
+      new photoAccessHelper.MediaShareAlbumChangeRequest(album);
+    // 添加共享相册成员。
+    shareAlbumChangeRequest.addShareMember('ownerId', 'memberId', photoAccessHelper.ShareMemberStatus.INVITING);
+    // 提交共享相册变更请求。
+    await phAccessHelper.applyShareAlbumChanges(shareAlbumChangeRequest);
+    console.info('addShareMember successfully');
+  } catch (err) {
+    console.error(`addShareMemberDemo failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+### updateShareMemberStatus
+
+updateShareMemberStatus(owner: string, member: string, status: ShareMemberStatus): void
+
+更新共享相册成员状态。
+
+**起始版本：** 26.0.1
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**需要权限**：ohos.permission.MANAGE_SHARE_PHOTO 和 ohos.permission.WRITE_IMAGEVIDEO
+
+**参数：**
+
+| 参数名        | 类型      | 必填   | 说明                                 |
+| ---------- | ------- | ---- | ---------------------------------- |
+| owner | string | 是   | 共享相册创建者的OwnerId。 |
+| member | string | 是   | 待更新状态的共享相册成员。 |
+| status | [ShareMemberStatus](#sharememberstatus) | 是   | 更新后的共享相册成员状态。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800151 | The scenario parameter verification fails. Possible causes: The albums are not share album. |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('updateShareMemberStatusDemo');
+  try {
+    // 查询共享相册。
+    let albumFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = await phAccessHelper.getShareAlbums();
+    let album: photoAccessHelper.Album = await albumFetchResult.getFirstObject();
+    albumFetchResult.close();
+    // 创建共享相册变更请求。
+    let shareAlbumChangeRequest: photoAccessHelper.MediaShareAlbumChangeRequest =
+      new photoAccessHelper.MediaShareAlbumChangeRequest(album);
+    // 更新共享相册成员状态。
+    shareAlbumChangeRequest.updateShareMemberStatus('ownerId', 'memberId',
+      photoAccessHelper.ShareMemberStatus.ACCEPTED);
+    // 提交共享相册变更请求。
+    await phAccessHelper.applyShareAlbumChanges(shareAlbumChangeRequest);
+    console.info('updateShareMemberStatus successfully');
+  } catch (err) {
+    console.error(`updateShareMemberStatusDemo failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+### deleteShareMember
+
+deleteShareMember(owner: string, member: string): void
+
+删除共享相册成员。
+
+**起始版本：** 26.0.1
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**需要权限**：ohos.permission.MANAGE_SHARE_PHOTO 和 ohos.permission.WRITE_IMAGEVIDEO
+
+**参数：**
+
+| 参数名        | 类型      | 必填   | 说明                                 |
+| ---------- | ------- | ---- | ---------------------------------- |
+| owner | string | 是   | 共享相册创建者的OwnerId。 |
+| member | string | 是   | 待删除的共享相册成员。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800151 | The scenario parameter verification fails. Possible causes: The albums are not share album. |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('deleteShareMemberDemo');
+  try {
+    // 查询共享相册。
+    let albumFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = await phAccessHelper.getShareAlbums();
+    let album: photoAccessHelper.Album = await albumFetchResult.getFirstObject();
+    albumFetchResult.close();
+    // 创建共享相册变更请求。
+    let shareAlbumChangeRequest: photoAccessHelper.MediaShareAlbumChangeRequest =
+      new photoAccessHelper.MediaShareAlbumChangeRequest(album);
+    // 删除共享相册成员。
+    shareAlbumChangeRequest.deleteShareMember('ownerId', 'memberId');
+    // 提交共享相册变更请求。
+    await phAccessHelper.applyShareAlbumChanges(shareAlbumChangeRequest);
+    console.info('deleteShareMember successfully');
+  } catch (err) {
+    console.error(`deleteShareMemberDemo failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+### deleteShareAlbum
+
+static deleteShareAlbum(context: Context, owner: string, albums: Album[]): Promise&lt;void&gt;
+
+删除共享相册。删除后该共享相册及其成员关系不再生效。
+
+**起始版本：** 26.0.1
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**需要权限**：ohos.permission.MANAGE_SHARE_PHOTO 和 ohos.permission.WRITE_IMAGEVIDEO
+
+**参数：**
+
+| 参数名            | 类型                                                                                                        | 必填 | 说明                      |
+|----------------|-----------------------------------------------------------------------------------------------------------| ---- | ------------------------- |
+| context        | [Context](../apis-ability-kit/js-apis-inner-application-context.md#context)                                                           | 是   | 传入Ability实例的上下文。 |
+| owner         | string                                                                                | 是   | 共享相册创建者的OwnerId。仅创建者可删除共享相册。 |
+| albums        | [Album](#album)[] | 是   | 待删除的共享相册数组。 |
+
+**返回值：**
+
+| 类型                                    | 说明              |
+| --------------------------------------- | ----------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. The context is null.<br>2. The albums are not share album.<br>3. The operator must be the owner of the share album when deleting the album. |
+| 23800301 | Internal system error. You are advised to retry and check the logs. Possible causes:<br>1. The database is corrupted.<br>2. The file system is abnormal.<br>3. The IPC request timed out. |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context) {
+  console.info('deleteShareAlbumDemo');
+  try {
+    // 查询待删除的共享相册。
+    let albumFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = await phAccessHelper.getShareAlbums();
+    let album: photoAccessHelper.Album = await albumFetchResult.getFirstObject();
+    albumFetchResult.close();
+    // 删除共享相册。
+    await photoAccessHelper.MediaShareAlbumChangeRequest.deleteShareAlbum(context, 'ownerId', [album]);
+    console.info('deleteShareAlbum successfully');
+  } catch (err) {
+    console.error(`deleteShareAlbumDemo failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+### deleteMemberShareAlbum
+
+static deleteMemberShareAlbum(context: Context, owner: string, albums: Album[]): Promise&lt;void&gt;
+
+成员退出共享相册，仅删除本端的共享相册数据。
+
+**起始版本：** 26.0.1
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**需要权限**：ohos.permission.MANAGE_SHARE_PHOTO 和 ohos.permission.WRITE_IMAGEVIDEO
+
+**参数：**
+
+| 参数名            | 类型                                                                                                        | 必填 | 说明                      |
+|----------------|-----------------------------------------------------------------------------------------------------------| ---- | ------------------------- |
+| context        | [Context](../apis-ability-kit/js-apis-inner-application-context.md#context)                                                           | 是   | 传入Ability实例的上下文。 |
+| owner         | string                                                                                | 是   | 共享相册创建者的OwnerId。 |
+| albums        | [Album](#album)[] | 是   | 待退出的共享相册数组。 |
+
+**返回值：**
+
+| 类型                                    | 说明              |
+| --------------------------------------- | ----------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. The context is null.<br>2. The albums are not share album.<br>3. The operator must be the member of the share album when deleting the local share album. |
+| 23800301 | Internal system error. You are advised to retry and check the logs. Possible causes:<br>1. The database is corrupted.<br>2. The file system is abnormal.<br>3. The IPC request timed out. |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context) {
+  console.info('deleteMemberShareAlbumDemo');
+  try {
+    // 查询待退出的共享相册。
+    let albumFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = await phAccessHelper.getShareAlbums();
+    let album: photoAccessHelper.Album = await albumFetchResult.getFirstObject();
+    albumFetchResult.close();
+    // 成员退出共享相册。
+    await photoAccessHelper.MediaShareAlbumChangeRequest.deleteMemberShareAlbum(context, 'ownerId', [album]);
+    console.info('deleteMemberShareAlbum successfully');
+  } catch (err) {
+    console.error(`deleteMemberShareAlbumDemo failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+### deleteShareAssets
+
+static deleteShareAssets(context: Context, owner: string, assets: string[]): Promise&lt;void&gt;
+
+删除共享相册中的资产。
+
+> **说明：**
+>
+> - 需要删除的资产必须属于共享相册。
+>
+> - 通过URI指定要删除的资产。当删除的资产属于共享相册时，只有共享相册的所有者或分享该资产的用户才能删除。
+
+**起始版本：** 26.0.1
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**需要权限**：ohos.permission.MANAGE_SHARE_PHOTO 和 ohos.permission.WRITE_IMAGEVIDEO
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| context | [Context](../apis-ability-kit/js-apis-inner-application-context.md#context) | 是 | 实例上下文 |
+| owner | string | 是 | 共享相册的所有者ID |
+| assets | string[] | 是 | 要删除的资产 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800151 | The scenario parameter verification fails. Possible causes: 1. The context is null. 2. The albums are not share album. 3. Asset uri array size is empty or bigger than 500. 4. When a deleted photo belongs to a shared album, only the album owner or the person who shared the photo can delete it. |
+| 23800301 | Internal system error. You are advised to retry and check the logs. Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: common.Context, owner: string, assets: string[]) {
+  console.info('deleteShareAssets');
+  try {
+    // 删除共享相册中的资产。
+    await photoAccessHelper.MediaShareAlbumChangeRequest.deleteShareAssets(context, owner, assets);
+    console.info('deleteShareAssets successfully');
+  } catch (err) {
+    const e: BusinessError = err as BusinessError;
+    console.error(`deleteShareAssets failed with error: ${e.code}, ${e.message}`);
+  }
+}
+```
+
+### createShareAlbum
+
+static createShareAlbum(context: Context, owner: string, name: string, cloudId: string, albumConfig: ValuesBucket): MediaShareAlbumChangeRequest | null
+
+创建共享相册的MediaShareAlbumChangeRequest实例。
+
+> **说明：**
+>
+> 待创建的共享相册名参数规格为：
+>
+> - 相册名字符串长度为 1\~255。
+>
+> - 不允许出现的非法英文字符，包括：. \\ / : * ? " ' ` < > | { } [ ]
+>
+> - 相册名不区分大小写。
+
+**起始版本：** 26.0.1
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**需要权限**：ohos.permission.MANAGE_SHARE_PHOTO 和 ohos.permission.WRITE_IMAGEVIDEO
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| context | [Context](../apis-ability-kit/js-apis-inner-application-context.md#context) | 是 | 实例上下文 |
+| owner | string | 是 | 共享相册的创建者 |
+| name | string | 是 | 共享相册名称。 |
+| cloudId | string | 是 | 共享相册的云ID，用于标识相册在云端的唯一性。 |
+| albumConfig | [ValuesBucket](#valuesbucket22) | 是 | 创建共享相册要写入的值，包括相册创建时间，lpath等。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| [MediaShareAlbumChangeRequest](#mediasharealbumchangerequest) \| null | 返回一个MediaShareAlbumChangeRequest实例；如果操作失败，则返回null。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800151 | The scenario parameter verification fails. Possible causes: 1. The context is null. 2. The album name must meet the following requirements: The total length of the album name must be between 1 and 255 characters. It must not contain any invalid characters, which are: . \\ / : * ? " ' ` < > \| { } [ ] It is case-insensitive. 3. The lpath does not meet the uniqueness requirement. |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+function getCurrentTime(): string {
+  return new Date().getTime().toString();
+}
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: common.Context, owner: string, cloudId: string) {
+  console.info('createShareAlbum');
+  try {
+    // 配置共享相册参数。
+    let albumName: string = 'newAlbumName' + new Date().getTime();
+    let lpath1: string = "/Photoshare" + "/phone" + "/" + albumName + "/" + getCurrentTime();
+    let albumConfig: photoAccessHelper.ValuesBucket = {
+      lpath: lpath1,
+      date_added: '1779010754000',
+      date_modified: '1779010751000'
+    };
+    // 创建共享相册变更请求。
+    const albumChangeRequest = photoAccessHelper.MediaShareAlbumChangeRequest.createShareAlbum(context, owner, albumName, cloudId, albumConfig);
+    if (albumChangeRequest !== null) {
+      // 提交共享相册变更请求。
+      await phAccessHelper.applyShareAlbumChanges(albumChangeRequest);
+    }
+    console.info('apply createShareAlbum successfully');
+  } catch (err) {
+    const e: BusinessError = err as BusinessError;
+    console.error(`createShareAlbum failed with error: ${e.code}, ${e.message}`);
+  }
+}
+```
+
+### getShareAlbumMemberInfo
+
+static getShareAlbumMemberInfo(context: Context, owner: string, album: Album): Promise&lt;ShareAlbumMemberInfo&gt;
+
+获取共享相册的成员信息。
+
+**起始版本：** 26.0.1
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数：**
+
+| 参数名  | 类型    | 必填 | 说明                       |
+| ------- | ------- | ---- | -------------------------- |
+| context | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是   | 实例上下文。 |
+| owner | string | 是   | 共享相册的所有者ID。|
+| album | [Album](#album) | 是   | 目标相册。|
+
+**返回值：**
+
+| 类型                                    | 说明              |
+| --------------------------------------- | ----------------- |
+| Promise&lt;[ShareAlbumMemberInfo](#sharealbummemberinfo)&gt; | Promise对象，返回共享相册的成员信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800151 | The scenario parameter verification fails. Possible causes: 1. The context is null. 2. The albums are not share album. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context,
+  owner: string, album: photoAccessHelper.Album) {
+  console.info('getShareAlbumMemberInfo');
+  try {
+    // 获取共享相册的成员信息。
+    let shareMemberInfos = await photoAccessHelper.MediaShareAlbumChangeRequest.getShareAlbumMemberInfo(context, owner, album);
+    console.info('apply getShareAlbumMemberInfo successfully');
+  } catch (err) {
+    console.error(`getShareAlbumMemberInfo failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
