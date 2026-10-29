@@ -472,6 +472,8 @@ ChipGroupV2IconGroupSuffix({
 })
 ```
 
+ChipGroupV2IconGroupSuffix用于在ChipGroupV2组件最右侧显示自定义内容，支持配置Image图标、Symbol图标或Symbol图标配置项，以及图标背景材质样式，适用于需要在标签组尾部添加额外操作入口的场景。
+
 ### 属性
 
 **ArkTS-Dyn起始版本：** 26.0.0
