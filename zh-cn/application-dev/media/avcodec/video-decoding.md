@@ -752,10 +752,6 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
 
     调用OH_VideoDecoder_Flush接口后，解码器仍处于运行态，但会清除解码器中缓存的输入和输出数据及参数集如H.264格式的PPS/SPS。重新开始解码时，需要调用OH_VideoDecoder_Start接口，并重新推送视频帧PPS/SPS数据。
 
-    以下示例中：
-
-    - xpsData、xpsSize：PPS/SPS信息，获取方式可以参考[音视频解封装](./audio-video-demuxer.md)。
-
     <!-- @[decoder_flush](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp)-->
 
     ```c++
