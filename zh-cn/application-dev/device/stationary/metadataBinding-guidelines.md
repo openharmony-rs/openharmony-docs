@@ -43,8 +43,7 @@ MetadataBinding（元数据绑定）指由第三方应用提供[鸿蒙App Linkin
    
    ``` TypeScript
    import { metadataBinding } from '@kit.MultimodalAwarenessKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
-   import { Callback } from '@kit.BasicServicesKit';
+   import { BusinessError, Callback } from '@kit.BasicServicesKit';
    ```
 
 2. 定义元数据绑定服务回调及包名，函数接收回传编码的内容。   
