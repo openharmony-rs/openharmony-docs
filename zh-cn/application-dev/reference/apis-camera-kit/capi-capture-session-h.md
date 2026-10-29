@@ -43,7 +43,7 @@
 | [Camera_ErrorCode OH_CaptureSession_UnregisterCallback(Camera_CaptureSession* session, CaptureSession_Callbacks* callback)](#oh_capturesession_unregistercallback) | - | 注销捕获会话事件回调。 |
 | [Camera_ErrorCode OH_CaptureSession_RegisterSmoothZoomInfoCallback(Camera_CaptureSession* session, OH_CaptureSession_OnSmoothZoomInfo smoothZoomInfoCallback)](#oh_capturesession_registersmoothzoominfocallback) | - | 注册平滑变焦信息事件回调。 |
 | [Camera_ErrorCode OH_CaptureSession_UnregisterSmoothZoomInfoCallback(Camera_CaptureSession* session, OH_CaptureSession_OnSmoothZoomInfo smoothZoomInfoCallback)](#oh_capturesession_unregistersmoothzoominfocallback) | - | 注销平滑变焦信息事件回调。 |
-| [Camera_ErrorCode OH_CaptureSession_SetSessionMode(Camera_CaptureSession* session, Camera_SceneMode sceneMode)](#oh_capturesession_setsessionmode) | - | 设置会话模式。<br> 此接口不能在[OH_CaptureSession_BeginConfig](capi-capture-session-h.md#oh_capturesession_beginconfig)之后使用。<br> 建议在使用[OH_CameraManager_CreateCaptureSession](capi-camera-manager-h.md#oh_cameramanager_createcapturesession)后立即使用此接口。<br>推荐使用[OH_CameraManager_GetSupportedSceneMode](./capi-camera-manager-h.md#oh_cameramanager_getsupportedscenemodes)获取Camera_SceneMode。 |
+| [Camera_ErrorCode OH_CaptureSession_SetSessionMode(Camera_CaptureSession* session, Camera_SceneMode sceneMode)](#oh_capturesession_setsessionmode) | - | 设置会话模式。<br> 此接口不能在[OH_CaptureSession_BeginConfig](capi-capture-session-h.md#oh_capturesession_beginconfig)之后使用。<br> 建议在使用[OH_CameraManager_CreateCaptureSession](capi-camera-manager-h.md#oh_cameramanager_createcapturesession)后立即使用此接口。 |
 | [Camera_ErrorCode OH_CaptureSession_AddSecureOutput(Camera_CaptureSession* session, Camera_PreviewOutput* previewOutput)](#oh_capturesession_addsecureoutput) | - | 把其中一条PreviewOutput标记成安全输出。 |
 | [Camera_ErrorCode OH_CaptureSession_BeginConfig(Camera_CaptureSession* session)](#oh_capturesession_beginconfig) | - | 开始捕获会话配置。 |
 | [Camera_ErrorCode OH_CaptureSession_CommitConfig(Camera_CaptureSession* session)](#oh_capturesession_commitconfig) | - | 提交捕获会话配置。 |
@@ -63,7 +63,7 @@
 | [Camera_ErrorCode OH_CaptureSession_HasFlash(Camera_CaptureSession* session, bool* hasFlash)](#oh_capturesession_hasflash) | - | 检查设备是否有闪光灯。 |
 | [Camera_ErrorCode OH_CaptureSession_IsFlashModeSupported(Camera_CaptureSession* session, Camera_FlashMode flashMode, bool* isSupported)](#oh_capturesession_isflashmodesupported) | - | 检查是否支持指定的闪光灯模式。 |
 | [Camera_ErrorCode OH_CaptureSession_GetFlashMode(Camera_CaptureSession* session, Camera_FlashMode* flashMode)](#oh_capturesession_getflashmode) | - | 获取当前闪光灯模式。在获取当前闪光灯模式前，需使用[OH_CaptureSession_HasFlash](#oh_capturesession_hasflash)接口检查设备是否有闪光灯。 |
-| [Camera_ErrorCode OH_CaptureSession_SetFlashMode(Camera_CaptureSession* session, Camera_FlashMode flashMode)](#oh_capturesession_setflashmode) | - | 设置闪光灯模式。在设置闪光灯模式前需先使用[OH_CaptureSession_HasFlash](#oh_capturesession_hasflash)接口检查设备是否有闪光灯，再使用[OH_CaptureSession_IsFlashModeSupported](#oh_capturesession_isflashmodesupported)接口检查设置的闪光灯模式是否支持。 |
+| [Camera_ErrorCode OH_CaptureSession_SetFlashMode(Camera_CaptureSession* session, Camera_FlashMode flashMode)](#oh_capturesession_setflashmode) | - | 设置闪光灯模式。 |
 | [typedef void (\*OH_CaptureSession_OnFlashStateChange)(const Camera_CaptureSession* session, OH_Camera_FlashState flashState)](#oh_capturesession_onflashstatechange) | OH_CaptureSession_OnFlashStateChange | 捕获会话闪光灯状态变更回调。 |
 | [Camera_ErrorCode OH_CaptureSession_RegisterFlashStateChangeCallback(const Camera_CaptureSession* session, OH_CaptureSession_OnFlashStateChange flashStateChange)](#oh_capturesession_registerflashstatechangecallback) | - | 注册闪光灯状态变更事件回调。 |
 | [Camera_ErrorCode OH_CaptureSession_UnregisterFlashStateChangeCallback(const Camera_CaptureSession* session, OH_CaptureSession_OnFlashStateChange flashStateChange)](#oh_capturesession_unregisterflashstatechangecallback) | - | 注销闪光灯状态变更回调。 |
@@ -404,7 +404,7 @@ Camera_ErrorCode OH_CaptureSession_SetSessionMode(Camera_CaptureSession* session
 | 参数项 | 描述 |
 | -- | -- |
 | [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例。 |
-| [Camera_SceneMode](capi-camera-h.md#camera_scenemode) sceneMode | 相机模式。 |
+| [Camera_SceneMode](capi-camera-h.md#camera_scenemode) sceneMode | 相机模式。推荐使用[OH_CameraManager_GetSupportedSceneMode](./capi-camera-manager-h.md#oh_cameramanager_getsupportedscenemodes)获取Camera_SceneMode。 |
 
 **返回：**
 
@@ -891,8 +891,7 @@ Camera_ErrorCode OH_CaptureSession_SetFlashMode(Camera_CaptureSession* session, 
 
 **描述**
 
-设置闪光灯模式。在设置闪光灯模式前需先使用[OH_CaptureSession_HasFlash](#oh_capturesession_hasflash)接口检查设备是否有闪光灯，再使用[OH_CaptureSession_IsFlashModeSupported](#oh_capturesession_isflashmodesupported)接口检查设置的闪光灯模式是否支持。
-
+设置闪光灯模式。
 **起始版本：** 11
 
 **参数：**
@@ -900,7 +899,7 @@ Camera_ErrorCode OH_CaptureSession_SetFlashMode(Camera_CaptureSession* session, 
 | 参数项 | 描述 |
 | -- | -- |
 | [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例。 |
-| [Camera_FlashMode](capi-camera-h.md#camera_flashmode) flashMode | 要设置的闪光灯模式。 |
+| [Camera_FlashMode](capi-camera-h.md#camera_flashmode) flashMode | 要设置的闪光灯模式。在设置闪光灯模式前需先使用{@link OH_CaptureSession_HasFlash}接口检查设备是否有闪光灯，再使用{@link @OH_CaptureSession_IsFlashModeSupported}接口检查设置的闪光灯模式是否支持。 |
 
 **返回：**
 
