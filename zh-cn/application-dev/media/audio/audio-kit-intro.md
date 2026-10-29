@@ -120,6 +120,16 @@ audio模块下的接口支持PCM编码，包括AudioRenderer、AudioCapturer、T
 
   小尾数指的是小端模式，即数据的高字节保存在内存的高地址中，而数据的低字节保存在内存的低地址中。这种存储模式将地址的高低和数据的位权有效结合起来，高地址部分权值高，低地址部分权值低。
 
+## 约束与限制
+
+### 支持的设备
+
+Phone、PC/2in1、Tablet、TV、Car、Wearable、Lite Wearable
+
+### 支持的国家/地区
+
+请参见版本说明中[各设备支持的国家/地区](https://developer.huawei.com/consumer/cn/doc/harmonyos-releases/sdk-supported-regions)。
+
 ## 相关实例
 
 针对Audio Kit开发，有以下相关实例可供参考：
