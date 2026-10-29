@@ -77,7 +77,7 @@ class MyCloudDB implements cloudExtension.CloudDB {
 generateId(count: number): Promise<Result<Array<string>>>
 ```
 
-Generates IDs for the data records inserted to the cloud database. The IDs are unique. This API uses a promise to return the result.
+Generates unique IDs for the data records inserted to the cloud database. This API uses a promise to return the result.
 
 **Since:** 11
 
@@ -91,7 +91,7 @@ Generates IDs for the data records inserted to the cloud database. The IDs are u
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| count | number | Yes | Number of IDs to generate. |
+| count | number | Yes | Number of IDs to generate. The value must be greater than or equal to 1. |
 
 **Return value:**
 
@@ -140,7 +140,7 @@ Extends the lock period of the database. This API uses a promise to return the r
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| lockId | number | Yes | Lock ID. |
+| lockId | number | Yes | ID of the lock whose period needs to be extended. The value is **lockId** in **LockInfo** returned by the lock method. |
 
 **Return value:**
 
@@ -298,8 +298,8 @@ Queries data in a cloud database table. This API uses a promise to return the re
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | table | string | Yes | Table name. |
-| fields | Array&lt;string&gt; | Yes | Name of the fields to query. |
-| queryCount | number | Yes | Number of data records to query. |
+| fields | Array&lt;string&gt; | Yes | Array of names for fields to query. |
+| queryCount | number | Yes | Number of data records to query. The value must be greater than or equal to 1. |
 | queryCursor | string | Yes | Cursor for the query. |
 
 **Return value:**
@@ -354,13 +354,13 @@ Unlocks a cloud database. This API uses a promise to return the result.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| lockId | number | Yes | Lock ID to release. |
+| lockId | number | Yes | Lock ID. The value is the same as that of **lockId** in **LockInfo** returned by the lock method. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[Result](arkts-arkdata-relationalstore-result-i.md)&lt;boolean&gt;&gt; | Promise used to return the result. The value true means the operation is successful; the value false means the opposite. |
+| Promise&lt;[Result](arkts-arkdata-relationalstore-result-i.md)&lt;boolean&gt;&gt; | Promise used to return the result. The value **true** means the operation is successful; the value **false** means the opposite. |
 
 <!--Del-->
 **Examples**
@@ -409,7 +409,7 @@ Updates data in the cloud. This API uses a promise to return the result.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | table | string | Yes | Table name. |
-| values | Array&lt;Record&lt;string, [CloudType](arkts-arkdata-cloudextension-cloudtype-t-sys.md)&gt;&gt; | Yes | Data to insert. |
+| values | Array&lt;Record&lt;string, [CloudType](arkts-arkdata-cloudextension-cloudtype-t-sys.md)&gt;&gt; | Yes | Data to update. |
 | extensions | Array&lt;Record&lt;string, [CloudType](arkts-arkdata-cloudextension-cloudtype-t-sys.md)&gt;&gt; | Yes | Extended information about the current data. |
 
 **Return value:**

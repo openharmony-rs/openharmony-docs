@@ -12,7 +12,7 @@ import { notificationManager } from '@kit.NotificationKit';
 function setDistributedEnabled(enable: boolean, deviceType: string): Promise<void>
 ```
 
-设置设备是否支持跨设备协同通知。使用Promise异步回调。
+设置设备是否支持[跨设备协同](../../../notification/notification-glossary.md#cross-device-collaboration跨设备协同)通知。使用Promise异步回调。
 
 **起始版本：** 20
 
@@ -35,7 +35,7 @@ function setDistributedEnabled(enable: boolean, deviceType: string): Promise<voi
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 无返回结果。Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 

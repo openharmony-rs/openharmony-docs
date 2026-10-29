@@ -4,7 +4,7 @@
 class EventFilter
 ```
 
-日程过滤器，查询日程时进行筛选过滤，获取符合条件的日程。
+日程过滤器，查询日程时进行筛选过滤，获取符合条件的日程。通过[filterById()](#filterbyid)、[filterByTime()](#filterbytime)、[filterByTitle()](#filterbytitle)任一方法获取日程过滤器，传入getEvents()过滤。
 
 **起始版本：** 10
 

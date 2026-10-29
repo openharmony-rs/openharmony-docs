@@ -157,5 +157,3 @@ Performs a message loopback test along the path to the target resource.
 <!--Device-RequestMethod-TRACE = "TRACE"--><!--Device-RequestMethod-TRACE = "TRACE"-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
-
-**Test API:** This API is used only in automated test scripts.

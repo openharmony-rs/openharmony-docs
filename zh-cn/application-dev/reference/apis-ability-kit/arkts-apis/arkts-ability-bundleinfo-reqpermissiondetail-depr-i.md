@@ -1,4 +1,4 @@
-# deprecated ReqPermissionDetail
+# ReqPermissionDetail
 
 ```TypeScript
 export interface ReqPermissionDetail

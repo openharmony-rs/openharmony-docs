@@ -4,7 +4,7 @@
 export type EnabledSilentReminderChangedCallback = _EnabledSilentReminderChangedCallback
 ```
 
-注册应用通知静默提醒使能状态变化的回调函数类型。
+注册应用通知[静默提醒](../../../notification/notification-glossary.md#silent-reminder静默提醒)使能状态变化的回调函数类型。
 
 **类型：** _EnabledSilentReminderChangedCallback
 

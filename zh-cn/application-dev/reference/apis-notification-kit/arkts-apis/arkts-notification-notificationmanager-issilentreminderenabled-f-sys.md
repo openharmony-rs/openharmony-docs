@@ -12,7 +12,7 @@ import { notificationManager } from '@kit.NotificationKit';
 function isSilentReminderEnabled(bundle: BundleOption): Promise<SwitchState>
 ```
 
-查询静默提醒的开关状态。使用Promise进行异步回调。
+查询[静默提醒](../../../notification/notification-glossary.md#silent-reminder静默提醒)的开关状态。使用Promise进行异步回调。
 
 **起始版本：** 20
 

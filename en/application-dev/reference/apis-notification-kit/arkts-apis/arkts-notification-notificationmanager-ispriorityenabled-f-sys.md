@@ -28,7 +28,7 @@ Checks whether the priority notification is enabled.
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise used to return the result. <br> - **true**: The priority notification is enabled. <br> - **false**: The priority notification is disabled. |
+| Promise&lt;boolean&gt; | Promise object that returns the enabled status of the notification priority master switch. <br> - **true**: allowed to be set as [priority notification](../../../notification/notification-glossary.md#priority-notification). <br> - **false**: prohibited from being set as priority notification. |
 
 **Error codes:**
 

@@ -16,7 +16,7 @@ function revokeQuickFix(bundleName: string, callback: AsyncCallback<void>): void
 
 **起始版本：** 10
 
-**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED and ohos.permission.INSTALL_BUNDLE
+**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED，ohos.permission.INSTALL_BUNDLE
 
 <!--Device-quickFixManager-function revokeQuickFix(bundleName: string, callback: AsyncCallback<void>): void--><!--Device-quickFixManager-function revokeQuickFix(bundleName: string, callback: AsyncCallback<void>): void-End-->
 

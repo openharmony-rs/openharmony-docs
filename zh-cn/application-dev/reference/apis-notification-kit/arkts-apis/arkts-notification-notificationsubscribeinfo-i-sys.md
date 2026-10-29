@@ -4,7 +4,7 @@
 export interface NotificationSubscribeInfo
 ```
 
-通知发布者的信息。
+通知订阅者的信息。
 
 **起始版本：** 7
 
@@ -20,7 +20,7 @@ export interface NotificationSubscribeInfo
 bundleNames?: Array<string>
 ```
 
-应用Bundle名称。 不传递该参数时，默认订阅所有应用的通知。
+应用Bundle名称。不传递该参数时，默认订阅所有应用的通知。
 
 **类型：** Array&lt;string&gt;
 
@@ -56,7 +56,8 @@ deviceType?: string
 enableClassification?: boolean
 ```
 
-是否启用通知分类。  
+是否启用通知分类。
+
 - true：表示启用。  
 - false：表示禁用。默认值为false。
 
@@ -100,10 +101,12 @@ filterLimit?: number
 needSilentReplayOnSubscribe?: boolean
 ```
 
-是否启用订阅时的静默重放。  
+是否启用订阅时的静默重放。
+
 - true：表示启用。  
-- false：表示禁用。默认值为false。  
-启用后，首次订阅时会以静默方式重新推送历史通知，不会出现响铃和振动提醒。
+- false：表示禁用。默认值为false。
+
+启用后，首次订阅时会以静默方式重新推送历史通知，不会出现铃声和振动提醒。
 
 **类型：** boolean
 
@@ -123,7 +126,7 @@ needSilentReplayOnSubscribe?: boolean
 pictureOptions?: PictureOptions
 ```
 
-实况通知图片配置项。
+[实况通知](../../../notification/notification-glossary.md#live-view-notification实况通知)图片配置项。
 
 **类型：** [PictureOptions](arkts-notification-notificationsubscribeinfo-pictureoptions-i-sys.md)
 
@@ -143,7 +146,7 @@ pictureOptions?: PictureOptions
 slotTypes?: Array<notificationManager.SlotType>
 ```
 
-通知渠道类型。 不传递该参数时，默认订阅所有渠道类型的通知。
+[通知渠道](../../../notification/notification-glossary.md#notification-slot通知渠道)类型。 不传递该参数时，默认订阅所有渠道类型的通知。
 
 **类型：** Array&lt;[notificationManager.SlotType](arkts-notification-notificationmanager-slottype-e.md)&gt;
 
@@ -161,7 +164,7 @@ slotTypes?: Array<notificationManager.SlotType>
 userId?: number
 ```
 
-用户ID。 不传递该参数时，默认订阅当前用户ID的通知。
+用户ID。不传递该参数时，默认订阅当前用户ID的通知。
 
 **类型：** number
 

@@ -4,7 +4,7 @@
 export type LiveViewTypes = _LiveViewTypes
 ```
 
-Enumerates live view types.
+Describes the type of the [live view notification](../../../notification/notification-glossary.md#live-view-notification).
 
 **Type:** _LiveViewTypes
 

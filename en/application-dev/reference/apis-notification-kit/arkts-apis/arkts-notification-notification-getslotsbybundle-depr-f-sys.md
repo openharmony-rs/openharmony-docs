@@ -17,7 +17,7 @@ Obtains the notification slots of a specified application. This API uses an asyn
 
 **Deprecated since:** 9
 
-**Substitutes:** [getSlotsByBundle](arkts-notification-notificationmanager-getslotsbybundle-f-sys.md)
+**Substitutes:** [getSlotsByBundle](arkts-notification-notificationmanager-getslotsbybundle-f-sys.md#getslotsbybundle-1)(bundle: BundleOption, callback: AsyncCallback&lt;Array&lt;NotificationSlot&gt;&gt;)
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -69,7 +69,7 @@ Obtains the notification slots of a specified application. This API uses a promi
 
 **Deprecated since:** 9
 
-**Substitutes:** [getSlotsByBundle](arkts-notification-notificationmanager-getslotsbybundle-f-sys.md)
+**Substitutes:** [getSlotsByBundle](arkts-notification-notificationmanager-getslotsbybundle-f-sys.md#getslotsbybundle-2)(bundle: BundleOption)
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
 

@@ -29,7 +29,7 @@ function setUserGrantedBundleState(targetBundle: BundleOption,
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| targetBundle | [BundleOption](arkts-notification-notificationextensionsubscription-bundleoption-t.md) | 是 | 需要设置的目标应用信息。应用需要具有ohos.permission.SUBSCRIBE_NOTIFICATION权限，并且实现[NotificationSubscriberExtensionAbility](arkts-notification-application-notificationsubscriberextensionability-notificationsubscriberextensionability-c.md)，否则返回1600022错误码。 |
+| targetBundle | [BundleOption](arkts-notification-notificationextensionsubscription-bundleoption-t.md) | 是 | 需要设置的目标应用信息。应用需要具有[ohos.permission.SUBSCRIBE_NOTIFICATION](../../../security/AccessToken/restricted-permissions.md#ohospermissionsubscribe_notification)权限，并且实现[NotificationSubscriberExtensionAbility](arkts-notification-application-notificationsubscriberextensionability-notificationsubscriberextensionability-c.md)，否则返回1600022错误码。 |
 | enabledBundles | [BundleOption](arkts-notification-notificationextensionsubscription-bundleoption-t.md)[] | 是 | 被授权的应用信息列表。 |
 | enabled | boolean | 是 | 表示“已获取的本机通知”的应用授权状态是否启用，true表示已启用，false表示未启用。 |
 

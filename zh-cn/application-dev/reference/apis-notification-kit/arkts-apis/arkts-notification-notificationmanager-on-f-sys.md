@@ -14,7 +14,7 @@ function on(type: 'checkNotification', callback: (checkInfo: NotificationCheckIn
 
 注册通知监听回调。通知服务将通知信息回调给校验程序，校验程序返回校验结果决定该通知是否发布，如营销类通知发布频率控制等。
 
-系统中每个SlotType只允许存在一个注册者。
+系统中每个[SlotType](arkts-notification-notificationmanager-slottype-e.md)只允许存在一个注册者。
 
 **起始版本：** 10
 
@@ -76,7 +76,7 @@ function on(type: 'checkNotification', checkRequest: NotificationCheckRequest,
 
 注册通知监听回调。通知服务将通知信息回调给校验程序，校验程序返回校验结果决定该通知是否发布，如营销类通知发布频率控制等。使用Promise异步回调。
 
-系统中每个SlotType只允许存在一个注册者。
+系统中每个[SlotType](arkts-notification-notificationmanager-slottype-e.md)只允许存在一个注册者。
 
 **起始版本：** 11
 
@@ -93,7 +93,7 @@ function on(type: 'checkNotification', checkRequest: NotificationCheckRequest,
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'checkNotification' | 是 | 回调函数类型名，固定为'checkNotification'。 |
-| checkRequest | [NotificationCheckRequest](arkts-notification-notificationmanager-notificationcheckrequest-t-sys.md) | 是 | 通知请求验证内容。 |
+| checkRequest | [NotificationCheckRequest](arkts-notification-notificationmanager-notificationcheckrequest-t-sys.md) | 是 | [通知请求](../../../notification/notification-glossary.md#notification-request通知请求)验证内容。 |
 | callback | (checkInfo: NotificationCheckInfo) =&gt; Promise&lt;[NotificationCheckResult](arkts-notification-notificationmanager-notificationcheckresult-i-sys.md)&gt; | 是 | 消息验证函数指针。 |
 
 **错误码：**

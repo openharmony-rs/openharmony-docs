@@ -1204,7 +1204,7 @@ insertTextSync(text: string): void
 > **说明：** <br>
 > <br>
 > 同步接口阻塞主线程，容易影响UI交互，需谨慎使用。建议优先使用对应的异步接口<br>
-> insertText。
+> [insertText](#inserttext-2)。
 
 **起始版本：** 10
 
@@ -1460,7 +1460,7 @@ recvMessage(msgHandler?: MessageHandler): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| msgHandler | [MessageHandler](arkts-ime-inputmethodengine-messagehandler-i.md) | 否 | 该对象将通过onMessage接收来自已绑定当前输入法应用的编辑框应用所发送的自定义通信数据，并通过[onTerminated](arkts-ime-inputmethodengine-messagehandler-i.md#onterminated)接收终止此对象订阅的消息。<br>若不填写此参数，则取消全局已注册的[MessageHandler](arkts-ime-inputmethodengine-messagehandler-i.md)对象，同时触发其[onTerminated](arkts-ime-inputmethodengine-messagehandler-i.md#onterminated)回调函数。 |
+| msgHandler | [MessageHandler](arkts-ime-inputmethodengine-messagehandler-i.md) | 否 | 该对象将通过[onMessage](arkts-ime-inputmethodengine-messagehandler-i.md#onmessage-2)接收来自已绑定当前输入法应用的编辑框应用所发送的自定义通信数据，并通过[onTerminated](arkts-ime-inputmethodengine-messagehandler-i.md#onterminated)接收终止此对象订阅的消息。<br>若不填写此参数，则取消全局已注册的[MessageHandler](arkts-ime-inputmethodengine-messagehandler-i.md)对象，同时触发其[onTerminated](arkts-ime-inputmethodengine-messagehandler-i.md#onterminated)回调函数。 |
 
 **错误码：**
 
@@ -1589,7 +1589,7 @@ selectByMovementSync(movement: Movement): void
 > **说明：** <br>
 > <br>
 > 同步接口阻塞主线程，容易影响UI交互，需谨慎使用。建议优先使用对应的异步接口<br>
-> selectByMovement。
+> [selectByMovement](#selectbymovement-2)。
 
 **起始版本：** 10
 

@@ -4,7 +4,7 @@
 enum DataProxyMaxValueLength
 ```
 
-The maximum length of [value](arkts-arkdata-datashare-proxydata-i.md#value), [value](arkts-arkdata-datashare-dataproxychangeinfo-i.md#value), [value](arkts-arkdata-datashare-dataproxygetresult-i.md#value).
+Enumerates the maximum length of the [share configuration](arkts-arkdata-datashare-proxydata-i.md) value.
 
 **Since:** 26.0.0
 
@@ -18,7 +18,7 @@ The maximum length of [value](arkts-arkdata-datashare-proxydata-i.md#value), [va
 MAX_LENGTH_100K = 102400
 ```
 
-The maximum length of value is 102400 bytes.
+The maximum length of the share configuration value is 102400 bytes.
 
 **Since:** 26.0.0
 
@@ -34,7 +34,7 @@ The maximum length of value is 102400 bytes.
 MAX_LENGTH_4K = 4096
 ```
 
-The maximum length of value is 4096 bytes.
+The maximum length of the share configuration value is 4096 bytes.
 
 **Since:** 26.0.0
 

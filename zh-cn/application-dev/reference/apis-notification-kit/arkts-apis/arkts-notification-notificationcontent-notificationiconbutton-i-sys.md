@@ -4,7 +4,7 @@
 export interface NotificationIconButton
 ```
 
-描述系统通知按钮。
+描述系统[通知按钮](../../../notification/notification-glossary.md#notification-button通知按钮)。
 
 **起始版本：** 18
 
@@ -20,7 +20,7 @@ export interface NotificationIconButton
 hidePanel?: boolean
 ```
 
-点击按钮时，是否隐藏通知中心。默认为false。
+点击按钮时，是否隐藏[通知中心](../../../notification/notification-glossary.md#notification-center通知中心)。默认为false。
 
 - true：是。  
 - false：否。

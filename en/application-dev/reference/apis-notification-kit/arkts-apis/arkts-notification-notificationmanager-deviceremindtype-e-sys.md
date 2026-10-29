@@ -4,7 +4,7 @@
 export enum DeviceRemindType
 ```
 
-Defines the notification reminder type.
+Defines the [notification reminder mode](../../../notification/notification-glossary.md#notification-reminder-mode).
 
 **Since:** 9
 

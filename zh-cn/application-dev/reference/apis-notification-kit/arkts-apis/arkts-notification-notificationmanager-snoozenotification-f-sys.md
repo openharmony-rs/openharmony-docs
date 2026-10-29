@@ -12,7 +12,9 @@ import { notificationManager } from '@kit.NotificationKit';
 function snoozeNotification(hashCode: string, delayTime: number): Promise<void>
 ```
 
-设置通知稍后提醒。该通知在指定时间后再次提醒，每次设置只会提醒一次，提醒方式与该通知相同。设置后该通知被删除。
+设置通知[稍后提醒](../../../notification/notification-glossary.md#notification-snooze稍后提醒)。该通知在指定时间后再次提醒，每次设置只会提醒一次，提醒方式与该通知相同。
+
+设置后该通知被删除。
 
 **起始版本：** 26.0.0
 

@@ -1,4 +1,4 @@
-# @system.network
+# @system.network(Network State)
 
 ## Modules to Import
 

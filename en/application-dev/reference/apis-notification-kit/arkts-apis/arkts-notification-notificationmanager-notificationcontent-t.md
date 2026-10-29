@@ -4,7 +4,7 @@
 export type NotificationContent = _NotificationContent
 ```
 
-Describes the notification content.
+Defines the [notification content](../../../notification/notification-glossary.md#notification-content).
 
 **Type:** _NotificationContent
 

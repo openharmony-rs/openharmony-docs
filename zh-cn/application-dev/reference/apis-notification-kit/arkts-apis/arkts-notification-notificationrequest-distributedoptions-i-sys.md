@@ -4,7 +4,7 @@
 export interface DistributedOptions
 ```
 
-描述跨设备协同选项。预留能力，暂未支持。
+描述[跨设备协同](../../../notification/notification-glossary.md#cross-device-collaboration跨设备协同)选项。预留能力，暂未支持。
 
 **起始版本：** 8
 

@@ -58,7 +58,7 @@ readonly reason?: number
 readonly request: NotificationRequest
 ```
 
-通知内容。
+[通知内容](../../../notification/notification-glossary.md#notification-content通知内容)。
 
 **类型：** [NotificationRequest](arkts-notification-notificationrequest-i.md)
 
@@ -76,7 +76,7 @@ readonly request: NotificationRequest
 readonly sortingMap?: NotificationSortingMap
 ```
 
-通知排序信息。
+[通知排序](../../../notification/notification-glossary.md#notification-sorting通知排序)信息。
 
 **类型：** [NotificationSortingMap](arkts-notification-notificationsortingmap-i-sys.md)
 
@@ -127,7 +127,7 @@ readonly vibrationValues?: Array<number>
 ## voiceContent
 
 ```TypeScript
-voiceContent?: VoiceContent
+readonly voiceContent?: VoiceContent
 ```
 
 通知语音播报内容。
@@ -138,7 +138,7 @@ voiceContent?: VoiceContent
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SubscribeCallbackData-voiceContent?: VoiceContent--><!--Device-SubscribeCallbackData-voiceContent?: VoiceContent-End-->
+<!--Device-SubscribeCallbackData-readonly voiceContent?: VoiceContent--><!--Device-SubscribeCallbackData-readonly voiceContent?: VoiceContent-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
 

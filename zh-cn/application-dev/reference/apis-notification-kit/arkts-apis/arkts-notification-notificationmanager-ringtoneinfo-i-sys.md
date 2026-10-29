@@ -4,7 +4,7 @@
 export interface RingtoneInfo
 ```
 
-描述自定义铃声信息。
+描述[自定义铃声](../../../notification/notification-glossary.md#customized-ringtone自定义铃声)信息。
 
 **起始版本：** 21
 
@@ -28,6 +28,8 @@ ringtoneFileName?: string
 
 铃声的文件名称。
 
+大小不超过202字节，超出后返回401错误码。默认为空。
+
 **类型：** string
 
 **起始版本：** 21
@@ -45,6 +47,8 @@ ringtoneTitle?: string
 ```
 
 铃声的标题。
+
+大小不超过202字节，超出后返回401错误码。默认为空。
 
 **类型：** string
 
@@ -80,7 +84,9 @@ ringtoneType: RingtoneType
 ringtoneUri?: string
 ```
 
-铃声的URI。
+铃声的URI。资源支持可参考[media.AVPlayer](../../apis-media/arkts-apis/arkts-media-media-avplayer-i.md)。
+
+大小不超过202字节，超出后返回401错误码。默认为空。
 
 **类型：** string
 

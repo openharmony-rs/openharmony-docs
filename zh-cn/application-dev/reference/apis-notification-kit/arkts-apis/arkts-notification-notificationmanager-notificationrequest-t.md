@@ -4,7 +4,7 @@
 export type NotificationRequest = _NotificationRequest
 ```
 
-通知请求。
+[通知请求](../../../notification/notification-glossary.md#notification-request通知请求)。
 
 **类型：** _NotificationRequest
 

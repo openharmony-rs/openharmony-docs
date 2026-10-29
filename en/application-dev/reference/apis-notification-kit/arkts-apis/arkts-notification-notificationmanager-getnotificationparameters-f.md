@@ -26,8 +26,8 @@ Obtains some information about the **wantAgent** field in [NotificationRequest](
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| id | number | Yes | Notification ID, used to identify the target notification. This value is specified by the **id** field of NotificationRequest when a notification is published. |
-| label | string | No | Notification label. This parameter is left empty by default. |
+| id | number | Yes | Notification ID, used to identify the target notification. This value is specified by the **id** field of [NotificationRequest](arkts-notification-notificationrequest-i.md) when a notification is published. |
+| label | string | No | Notification label. The default value is empty. This value is specified by the **label** field of [NotificationRequest](arkts-notification-notificationrequest-i.md) during the notification publishment. <br> - If the **label** field is empty, some information about the published notification that matches the specified notification ID and has an empty label is obtained. <br> - If the **label** field is not empty, some information about the published notification that matches both the specified notification ID and label is obtained. |
 
 **Return value:**
 

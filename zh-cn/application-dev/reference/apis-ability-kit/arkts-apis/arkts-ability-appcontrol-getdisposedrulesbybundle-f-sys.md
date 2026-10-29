@@ -16,7 +16,7 @@ function getDisposedRulesByBundle(bundleName: string): Array<DisposedRuleConfigu
 
 **起始版本：** 23
 
-**需要权限：** ohos.permission.MANAGE_DISPOSED_APP_STATUS or ohos.permission.GET_DISPOSED_APP_STATUS
+**需要权限：** ohos.permission.MANAGE_DISPOSED_APP_STATUS 或 ohos.permission.GET_DISPOSED_APP_STATUS
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -61,6 +61,7 @@
   - [AccountType](arkts-dataprotection-dlppermission-accounttype-e.md)
   - [ActionFlagType](arkts-dataprotection-dlppermission-actionflagtype-e.md)
   - [ActionType](arkts-dataprotection-dlppermission-actiontype-e.md)
+  - [DlpAtomicPermissionType](arkts-dataprotection-dlppermission-dlpatomicpermissiontype-e.md)
   - [DLPFileAccess](arkts-dataprotection-dlppermission-dlpfileaccess-e.md)
   <!--Del-->
   - [GatheringPolicyType(system api)](arkts-dataprotection-dlppermission-gatheringpolicytype-e-sys.md)<!--DelEnd-->

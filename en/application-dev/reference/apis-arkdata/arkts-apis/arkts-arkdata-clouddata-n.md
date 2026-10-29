@@ -26,15 +26,15 @@ import { cloudData } from '@kit.ArkData';
 
 | Name | Description |
 | --- | --- |
-| [sharing](arkts-arkdata-clouddata-sharing-n.md) | Provides APIs for device-cloud data sharing, including sharing or unsharing data, exiting a share, changing the privilege on the shared data, querying participants, confirming an invitation, changing the invitation confirmation state, and querying the shared resource. |
+| [sharing](arkts-arkdata-clouddata-sharing-n.md) | Provides APIs for device-cloud data sharing, including sharing or unsharing data, exiting a share, changing the privilege on the shared data, querying participants, confirming an invitation, changing a confirmed invitation, and querying the shared resource. |
 
 ### Functions
 
 | Name | Description |
 | --- | --- |
-| [offAutoSyncTrigger](arkts-arkdata-clouddata-offautosynctrigger-f.md#offautosynctrigger-1) | Describes unsubscribing from the device-cloud automatic synchronization trigger mode. |
-| [onAutoSyncTrigger](arkts-arkdata-clouddata-onautosynctrigger-f.md#onautosynctrigger-1) | Describes the triggering method for automatic device-cloud synchronization subscription. |
-| [setCloudStrategy](arkts-arkdata-clouddata-setcloudstrategy-f.md#setcloudstrategy-1) | Sets the cloud sync strategy of an application. This API uses a promise to return the result. |
+| [offAutoSyncTrigger](arkts-arkdata-clouddata-offautosynctrigger-f.md#offautosynctrigger-1) | Unsubscribes from the auto sync trigger event notification. |
+| [onAutoSyncTrigger](arkts-arkdata-clouddata-onautosynctrigger-f.md#onautosynctrigger-1) | Registers the auto sync trigger event notification when device-cloud sync is enabled and automatic sync is disabled for the application. When the auto trigger condition is met, the callback function is invoked. |
+| [setCloudStrategy](arkts-arkdata-clouddata-setcloudstrategy-f.md#setcloudstrategy-1) | Sets the cloud sync strategy of the application itself. This API uses a promise to return the result. |
 
 <!--Del-->
 ### Classes(System API)
@@ -48,16 +48,16 @@ import { cloudData } from '@kit.ArkData';
 
 | Name | Description |
 | --- | --- |
-| [AutoSyncTriggerInfo](arkts-arkdata-clouddata-autosynctriggerinfo-i.md) | Describes information about the automatic synchronization trigger mode. |
+| [AutoSyncTriggerInfo](arkts-arkdata-clouddata-autosynctriggerinfo-i.md) | Automatic synchronization trigger information. |
 
 <!--Del-->
 ### Interfaces(System API)
 
 | Name | Description |
 | --- | --- |
-| [BundleInfo](arkts-arkdata-clouddata-bundleinfo-i-sys.md) | Bundle information configuration. |
-| [ClearConfig](arkts-arkdata-clouddata-clearconfig-i-sys.md) | Defines the clearance configuration of a device-cloud synergy database. |
-| [DBActionInfo](arkts-arkdata-clouddata-dbactioninfo-i-sys.md) | Defines the clearance information of a device-cloud synergy database. |
+| [BundleInfo](arkts-arkdata-clouddata-bundleinfo-i-sys.md) | Defines the device-cloud synergy application information. |
+| [ClearConfig](arkts-arkdata-clouddata-clearconfig-i-sys.md) | Defines the database-level clearing rules for device-cloud synergy. |
+| [DBActionInfo](arkts-arkdata-clouddata-dbactioninfo-i-sys.md) | Defines the database-level clearing rules for device-cloud synergy. |
 | [DBSwitchInfo](arkts-arkdata-clouddata-dbswitchinfo-i-sys.md) | Defines the switch information of a device-cloud synergy database. |
 | [ExtraData](arkts-arkdata-clouddata-extradata-i-sys.md) | Represents the transparently transmitted data, which contains information required for a data change notification. |
 | [StatisticInfo](arkts-arkdata-clouddata-statisticinfo-i-sys.md) | Represents the device-cloud sync statistics. |
@@ -69,9 +69,9 @@ import { cloudData } from '@kit.ArkData';
 
 | Name | Description |
 | --- | --- |
-| [AutoSyncTriggerMode](arkts-arkdata-clouddata-autosynctriggermode-e.md) | Indicates automatic synchronization triggering method for Device-Cloud data. |
-| [NetWorkStrategy](arkts-arkdata-clouddata-networkstrategy-e.md) | Enumerates the network sync options. |
-| [StrategyType](arkts-arkdata-clouddata-strategytype-e.md) | Enumerates the types of the cloud-device sync strategy. |
+| [AutoSyncTriggerMode](arkts-arkdata-clouddata-autosynctriggermode-e.md) | Enumerates the trigger modes of automatic synchronization. |
+| [NetWorkStrategy](arkts-arkdata-clouddata-networkstrategy-e.md) | Enumerates the network policy parameters. |
+| [StrategyType](arkts-arkdata-clouddata-strategytype-e.md) | Enumerates the cloud sync strategy types. |
 
 <!--Del-->
 ### Enums(System API)

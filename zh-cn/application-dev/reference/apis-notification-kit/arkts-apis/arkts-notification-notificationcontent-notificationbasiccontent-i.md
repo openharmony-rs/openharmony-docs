@@ -18,7 +18,9 @@ export interface NotificationBasicContent
 additionalText?: string
 ```
 
-通知附加内容，是对通知内容的补充，不在通知中心中显示。默认为空。大小不超过3072字节，超出部分会被截断。
+通知附加内容，是对[通知内容](../../../notification/notification-glossary.md#notification-content通知内容)的补充，不在[通知中心](../../../notification/notification-glossary.md#notification-center通知中心)中显示。
+
+默认为空。大小不超过3072字节，超出部分会被截断。
 
 **类型：** string
 
@@ -50,7 +52,9 @@ lockscreenPicture?: image.PixelMap
 text: string
 ```
 
-通知正文内容，显示在标题下方。不可为空字符串，大小不超过3072字节，超出部分会被截断。
+通知正文内容，显示在标题下方。
+
+不可为空字符串，大小不超过3072字节，超出部分会被截断。
 
 **类型：** string
 
@@ -66,7 +70,9 @@ text: string
 title: string
 ```
 
-通知标题，显示在通知顶部。不可为空字符串，大小不超过1024字节，超出部分会被截断。
+通知标题，显示在通知顶部。
+
+不可为空字符串，大小不超过1024字节，超出部分会被截断。
 
 **类型：** string
 

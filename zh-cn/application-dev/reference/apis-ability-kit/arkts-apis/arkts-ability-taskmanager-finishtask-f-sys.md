@@ -35,4 +35,4 @@ function finishTask(taskId: string): Promise<void>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. Interface caller is not a system app. |
-| 16000302 | Task not found. |
+| [16000302](../errorcode-ability.md#16000302-任务不存在) | Task not found. |

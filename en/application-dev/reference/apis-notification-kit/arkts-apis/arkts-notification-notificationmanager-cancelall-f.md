@@ -14,7 +14,7 @@ function cancelAll(callback: AsyncCallback<void>): void
 
 Cancels all notifications of this application. This API uses an asynchronous callback to return the result.
 
-After cancellation, all notifications of the current application will be removed from the notification center, status bar, and other locations, and will no longer be visible to the user. This is suitable for scenarios such as application exit or when the user manually clears all notifications.
+After cancellation, all notifications of the current application are removed from the [notification center](../../../notification/notification-glossary.md#notification-center), status bar, and other locations, and are no longer visible to the user. This is suitable for scenarios where the application exits or the user manually clears all notifications.
 
 **Since:** 9
 
@@ -68,7 +68,7 @@ function cancelAll(): Promise<void>
 
 Cancels all notifications of this application. This API uses a promise to return the result.
 
-After cancellation, all notifications of the current application will be removed from the notification center, status bar, and other locations, and will no longer be visible to the user. This is suitable for scenarios such as application exit or when the user manually clears all notifications.
+After cancellation, all notifications of the current application are removed from the [notification center](../../../notification/notification-glossary.md#notification-center), status bar, and other locations, and are no longer visible to the user. This is suitable for scenarios where the application exits or the user manually clears all notifications.
 
 **Since:** 9
 

@@ -12,7 +12,7 @@ import { insightIntentProvider } from '@kit.AbilityKit';
 function sendIntentResult(instanceId: number, result: insightIntent.IntentResult<T>): Promise<void>
 ```
 
-如果意图提供方需要在业务处理的特定流程中主动发送意图执行结果，可以先通过[setReturnModeForUIAbilityForeground接口](arkts-ability-app-ability-insightintentcontext-insightintentcontext-c.md#setreturnmodeforuiabilityforeground)或[setReturnModeForUIExtensionAbility接口](arkts-ability-app-ability-insightintentcontext-insightintentcontext-c.md#setreturnmodeforuiextensionability)将意图执行结果返回形式[ReturnMode](arkts-ability-insightintent-returnmode-e.md)设置为FUNCTION，然后调用该接口发送意图执行结果。适用于@InsightIntentEntry修饰的[装饰器类意图](../../../application-models/insight-intent-decorator-development.md)。使用Promise异步回调。
+如果意图提供方需要在业务处理的特定流程中主动发送意图执行结果，可以先通过[setReturnModeForUIAbilityForeground接口](arkts-ability-app-ability-insightintentcontext-insightintentcontext-c.md#setreturnmodeforuiabilityforeground)或[setReturnModeForUIExtensionAbility接口](arkts-ability-app-ability-insightintentcontext-insightintentcontext-c.md#setreturnmodeforuiextensionability)将意图执行结果返回形式[ReturnMode](arkts-ability-insightintent-returnmode-e.md)设置为FUNCTION，然后调用该接口发送意图执行结果。适用于[@InsightIntentEntry](arkts-ability-app-ability-insightintentdecorator-insightintententry-d.md#insightintententry)修饰的[装饰器类意图](../../../application-models/insight-intent-decorator-development.md)。使用Promise异步回调。
 
 意图执行结果返回形式[ReturnMode](arkts-ability-insightintent-returnmode-e.md)设置为FUNCTION后，应用将无需再通过onExecute接口的返回值返回意图执行结果。
 

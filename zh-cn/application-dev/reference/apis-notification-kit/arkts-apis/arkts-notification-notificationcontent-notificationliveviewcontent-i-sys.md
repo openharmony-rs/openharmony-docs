@@ -4,7 +4,7 @@
 export interface NotificationLiveViewContent extends NotificationBasicContent
 ```
 
-描述普通实况通知。继承自[NotificationBasicContent](arkts-notification-notificationcontent-notificationbasiccontent-i.md)。
+描述[普通实况通知](../../../notification/notification-glossary.md#normal-live-view普通实况通知)。继承自[NotificationBasicContent](arkts-notification-notificationcontent-notificationbasiccontent-i.md)。
 
 **继承/实现关系：** NotificationLiveViewContent extends [NotificationBasicContent](arkts-notification-notificationcontent-notificationbasiccontent-i.md)
 
@@ -40,7 +40,7 @@ extensionWantAgent?: WantAgent
 extraInfo?: Record<string, Object>
 ```
 
-实况通知附加内容。默认为空。
+[实况通知](../../../notification/notification-glossary.md#live-view-notification实况通知)附加内容。默认为空。
 
 **类型：** Record&lt;string, Object&gt;
 

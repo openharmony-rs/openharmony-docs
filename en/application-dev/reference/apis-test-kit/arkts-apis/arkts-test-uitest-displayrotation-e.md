@@ -12,8 +12,6 @@ Describes the display rotation of the device.
 
 **System capability:** SystemCapability.Test.UiTest
 
-**Test API:** This API is used only in automated test scripts.
-
 ## ROTATION_0
 
 ```TypeScript

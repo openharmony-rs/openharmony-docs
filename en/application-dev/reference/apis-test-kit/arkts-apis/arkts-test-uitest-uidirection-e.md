@@ -12,8 +12,6 @@ Describes the direction of a UI operation such as fling.
 
 **System capability:** SystemCapability.Test.UiTest
 
-**Test API:** This API is used only in automated test scripts.
-
 ## DOWN
 
 ```TypeScript

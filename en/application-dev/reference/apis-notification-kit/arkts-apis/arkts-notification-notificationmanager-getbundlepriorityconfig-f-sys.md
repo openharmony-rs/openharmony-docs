@@ -12,7 +12,7 @@ import { notificationManager } from '@kit.NotificationKit';
 function getBundlePriorityConfig(bundle: BundleOption): Promise<string>
 ```
 
-Obtains the priority configuration of an application.
+Obtains the priority configuration of an application, including the keyword-based priority notification recognition rules. This API uses a promise to return the result.
 
 **Since:** 23
 

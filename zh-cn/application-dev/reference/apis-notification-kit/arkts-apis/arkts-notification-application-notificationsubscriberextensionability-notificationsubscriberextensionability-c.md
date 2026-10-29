@@ -4,7 +4,7 @@
 declare class NotificationSubscriberExtensionAbility
 ```
 
-NotificationSubscriberExtensionAbility是通知订阅者扩展能力的基类，提供通知订阅的相关功能。三方穿戴类应用（如手表配套应用）通过继承此类实现回调逻辑，在本机发布通知时接收通知信息并通过蓝牙转发给穿戴设备，在本机通知被取消时接收取消通知的回调并转发给穿戴设备删除对应通知。
+NotificationSubscriberExtensionAbility是[通知订阅](../../../notification/notification-glossary.md#notification-subscription通知订阅)者扩展能力的基类，提供通知订阅的相关功能。三方穿戴类应用（如手表配套应用）通过继承此类实现回调逻辑，在本机发布通知时接收通知信息并通过蓝牙转发给穿戴设备，在本机通知被取消时接收取消通知的回调并转发给穿戴设备删除对应通知。
 
 当穿戴类应用需要获取本机通知并同步到配对的穿戴设备时，使用本模块。本模块与notificationExtensionSubscription模块配合使用，本模块负责在回调中接收和处理通知数据，notificationExtensionSubscription模块负责授权、订阅和取消订阅等管理操作。
 
@@ -40,7 +40,7 @@ onCancelMessages(hashCodes: Array<string>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| hashCodes | Array&lt;string&gt; | 是 | 要取消的通知的哈希码列表。通过onReceiveMessage获取。 |
+| hashCodes | Array&lt;string&gt; | 是 | 要取消的通知的哈希码列表。通过[onReceiveMessage](#onreceivemessage)获取。 |
 
 **示例**
 
@@ -60,7 +60,7 @@ export default class NotificationSubscriberExtAbility extends NotificationSubscr
 onDestroy(): void
 ```
 
-通知订阅扩展被销毁时的回调。
+[通知订阅](../../../notification/notification-glossary.md#notification-subscription通知订阅)扩展被销毁时的回调。
 
 **起始版本：** 22
 

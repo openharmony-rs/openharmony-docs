@@ -15,8 +15,6 @@ Defines the ArkTS Array reduction function, which is used by the 'some' and 'eve
 
 **System capability:** SystemCapability.Utils.Lang
 
-**Test API:** This API is used only in automated test scripts.
-
 **Parameters:**
 
 | Name | Type | Mandatory | Description |

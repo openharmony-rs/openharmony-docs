@@ -96,6 +96,42 @@ Expand the title area of bindSheet as safe area for the content region.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
+## GRID_EXPAND_SAFE_AREA
+
+```TypeScript
+GRID_EXPAND_SAFE_AREA = 2
+```
+
+Avoid the window control buttons, which are the close, minimize and zoom buttons.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+<!--Device-ImmersiveStrategy-GRID_EXPAND_SAFE_AREA = 2--><!--Device-ImmersiveStrategy-GRID_EXPAND_SAFE_AREA = 2-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## LIST_EXPAND_SAFE_AREA
+
+```TypeScript
+LIST_EXPAND_SAFE_AREA = 3
+```
+
+Expands the clip content of the List component to the safe area.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+<!--Device-ImmersiveStrategy-LIST_EXPAND_SAFE_AREA = 3--><!--Device-ImmersiveStrategy-LIST_EXPAND_SAFE_AREA = 3-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
 ## NAVIGATION_EXPAND_SAFE_AREA
 
 ```TypeScript
@@ -111,5 +147,41 @@ Expands the TitleBar and ToolBar of Navigation/NavDestination as safe areas for 
 **Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-ImmersiveStrategy-NAVIGATION_EXPAND_SAFE_AREA = 8--><!--Device-ImmersiveStrategy-NAVIGATION_EXPAND_SAFE_AREA = 8-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## SCROLL_EXPAND_SAFE_AREA
+
+```TypeScript
+SCROLL_EXPAND_SAFE_AREA = 4
+```
+
+Expands the clip content of the Scroll component to the safe area.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+<!--Device-ImmersiveStrategy-SCROLL_EXPAND_SAFE_AREA = 4--><!--Device-ImmersiveStrategy-SCROLL_EXPAND_SAFE_AREA = 4-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## WATER_FLOW_EXPAND_SAFE_AREA
+
+```TypeScript
+WATER_FLOW_EXPAND_SAFE_AREA = 5
+```
+
+Expands the clip content of the WaterFlow component to the safe area.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+<!--Device-ImmersiveStrategy-WATER_FLOW_EXPAND_SAFE_AREA = 5--><!--Device-ImmersiveStrategy-WATER_FLOW_EXPAND_SAFE_AREA = 5-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

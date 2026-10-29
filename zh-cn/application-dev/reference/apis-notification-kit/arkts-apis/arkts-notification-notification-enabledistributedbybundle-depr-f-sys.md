@@ -11,13 +11,13 @@
 function enableDistributedByBundle(bundle: BundleOption, enable: boolean, callback: AsyncCallback<void>): void
 ```
 
-设置指定应用是否支持分布式通知（Callback形式）。
+设置指定应用是否支持[分布式通知](../../../notification/notification-glossary.md#distributed-notification分布式通知)（Callback形式）。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [setDistributedEnableByBundle](arkts-notification-notificationmanager-setdistributedenablebybundle-f-sys.md)
+**替代接口：** [setDistributedEnableByBundle](arkts-notification-notificationmanager-setdistributedenablebybundle-f-sys.md#setdistributedenablebybundle-1)(bundle: BundleOption, enable: boolean, callback: AsyncCallback&lt;void&gt;)
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -67,13 +67,13 @@ Notification.enableDistributedByBundle(bundle, enable, enableDistributedByBundle
 function enableDistributedByBundle(bundle: BundleOption, enable: boolean): Promise<void>
 ```
 
-设置指定应用是否支持分布式通知（Promise形式）。
+设置指定应用是否支持[分布式通知](../../../notification/notification-glossary.md#distributed-notification分布式通知)（Promise形式）。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [setDistributedEnableByBundle](arkts-notification-notificationmanager-setdistributedenablebybundle-f-sys.md)
+**替代接口：** [setDistributedEnableByBundle](arkts-notification-notificationmanager-setdistributedenablebybundle-f-sys.md#setdistributedenablebybundle-2)(bundle: BundleOption, enable: boolean)
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 

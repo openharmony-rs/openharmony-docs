@@ -4,7 +4,7 @@
 export type NotificationCapsule = _NotificationCapsule
 ```
 
-通知胶囊。
+[通知胶囊](../../../notification/notification-glossary.md#notification-capsule通知胶囊)。
 
 **类型：** _NotificationCapsule
 

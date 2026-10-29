@@ -4,7 +4,7 @@
 export type MonitorEvent = _MonitorEvent
 ```
 
-Enumerates the event types of monitoring a geofence.
+Enumerates the monitoring event types of the [geofence](../../../notification/notification-glossary.md#geofence).
 
 **Type:** _MonitorEvent
 

@@ -1,4 +1,4 @@
-# @ohos.application.NotificationSubscriberExtensionContext
+# @ohos.application.NotificationSubscriberExtensionContext(通知订阅扩展上下文)
 
 ## 导入模块
 
@@ -12,4 +12,4 @@ import { NotificationSubscriberExtensionContext } from '@kit.NotificationKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [NotificationSubscriberExtensionContext](arkts-notification-application-notificationsubscriberextensioncontext-notificationsubscriberextensioncontext-c.md) | NotificationSubscriberExtensionContext模块提供通知订阅者扩展能力。 |
+| [NotificationSubscriberExtensionContext](arkts-notification-application-notificationsubscriberextensioncontext-notificationsubscriberextensioncontext-c.md) | NotificationSubscriberExtensionContext模块提供[通知订阅](../../../notification/notification-glossary.md#notification-subscription通知订阅)者扩展能力。 |

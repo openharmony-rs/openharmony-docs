@@ -22,8 +22,6 @@ Determine the file type based on the original file name extension and select an 
 
 **System capability:** SystemCapability.Security.DataLossPrevention
 
-**Test API:** This API is used only in automated test scripts.
-
 **Parameters:**
 
 | Name | Type | Mandatory | Description |

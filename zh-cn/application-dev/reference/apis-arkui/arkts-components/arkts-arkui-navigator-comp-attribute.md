@@ -12,7 +12,7 @@ Navigator的属性。
 
 **废弃版本：** 13
 
-**替代接口：** Navigation
+**替代接口：** [Navigation](arkts-arkui-navigation-comp.md#navigation)
 
 <!--Device-unnamed-declare class NavigatorAttribute extends CommonMethod<NavigatorAttribute>--><!--Device-unnamed-declare class NavigatorAttribute extends CommonMethod<NavigatorAttribute>-End-->
 
@@ -30,7 +30,7 @@ active(value: boolean)
 
 **废弃版本：** 13
 
-**替代接口：** Navigation
+**替代接口：** [Navigation](arkts-arkui-navigation-comp.md#navigation)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -84,7 +84,7 @@ target(value: string)
 
 **废弃版本：** 13
 
-**替代接口：** Navigation
+**替代接口：** [Navigation](arkts-arkui-navigation-comp.md#navigation)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -112,7 +112,7 @@ type(value: NavigationType)
 
 **废弃版本：** 13
 
-**替代接口：** Navigation
+**替代接口：** [Navigation](arkts-arkui-navigation-comp.md#navigation)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 

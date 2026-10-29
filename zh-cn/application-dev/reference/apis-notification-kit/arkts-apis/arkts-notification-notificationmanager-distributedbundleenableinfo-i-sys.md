@@ -44,7 +44,7 @@ bundleName: string
 enable?: boolean
 ```
 
-是否支持跨设备协同，返回true表示支持，返回false表示不支持，默认为false。
+是否支持[跨设备协同](../../../notification/notification-glossary.md#cross-device-collaboration跨设备协同)，返回true表示支持，返回false表示不支持，默认为false。
 
 **类型：** boolean
 

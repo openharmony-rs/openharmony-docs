@@ -38,7 +38,7 @@ Unique ID of the notification.
 readonly ranking: number
 ```
 
-Notification level. If this parameter is not set, the default value is used based on the notification slot type.
+Notification level. If not set, the default value is determined by the [notification slot](../../../notification/notification-glossary.md#notification-slot) type.
 
 **Type:** number
 

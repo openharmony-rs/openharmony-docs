@@ -16,8 +16,6 @@ Sets the badge count for other applications. This API uses a promise to return t
 
 The current application must have a proxy relationship with another application, or the **ohos.permission.NOTIFICATION_AGENT_CONTROLLER** permission is granted to the current application.
 
-This API can be properly called on devices other than wearables. If it is called on wearables, error code 801 is returned.
-
 **Since:** 12
 
 <!--Device-notificationManager-function setBadgeNumberByBundle(bundle: BundleOption, badgeNumber: int): Promise<void>--><!--Device-notificationManager-function setBadgeNumberByBundle(bundle: BundleOption, badgeNumber: int): Promise<void>-End-->

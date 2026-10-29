@@ -4,7 +4,7 @@
 export enum Support
 ```
 
-系统公共事件是指由系统服务或系统应用发布的事件，订阅这些公共事件需要特定的权限，并使用相应的事件值。
+[系统公共事件](../../../basic-services/common-event/common-event-glossary.md#system-common-event系统公共事件)是指由系统服务或系统应用发布的事件，订阅这些公共事件需要特定的权限，并使用相应的事件值，详见[系统定义的公共事件](arkts-basicservices-commoneventmanager.md)。
 
 **起始版本：** 9
 

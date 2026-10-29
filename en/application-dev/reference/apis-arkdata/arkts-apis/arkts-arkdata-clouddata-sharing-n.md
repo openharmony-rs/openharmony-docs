@@ -4,7 +4,7 @@
 export namespace sharing
 ```
 
-Provides APIs for device-cloud data sharing, including sharing or unsharing data, exiting a share, changing the privilege on the shared data, querying participants, confirming an invitation, changing the invitation confirmation state, and querying the shared resource.
+Provides APIs for device-cloud data sharing, including sharing or unsharing data, exiting a share, changing the privilege on the shared data, querying participants, confirming an invitation, changing a confirmed invitation, and querying the shared resource.
 
 **Since:** 11
 

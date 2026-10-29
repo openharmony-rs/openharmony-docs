@@ -17,7 +17,7 @@ Subscribes to common events. This API uses an asynchronous callback to return th
 
 **Deprecated since:** 9
 
-**Substitutes:** [subscribe](arkts-basicservices-commoneventmanager-subscribe-f.md)
+**Substitutes:** [subscribe](arkts-basicservices-commoneventmanager-subscribe-f.md#subscribe-1)(subscriber: CommonEventSubscriber, callback: AsyncCallback&lt;CommonEventData&gt;)
 
 <!--Device-commonEvent-function subscribe(subscriber: CommonEventSubscriber, callback: AsyncCallback<CommonEventData>): void--><!--Device-commonEvent-function subscribe(subscriber: CommonEventSubscriber, callback: AsyncCallback<CommonEventData>): void-End-->
 
@@ -28,7 +28,7 @@ Subscribes to common events. This API uses an asynchronous callback to return th
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | subscriber | [CommonEventSubscriber](arkts-basicservices-commoneventsubscriber-i.md) | Yes | Subscriber object. |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;[CommonEventData](arkts-basicservices-commoneventdata-i.md)&gt; | Yes | Callback to be invoked when a common event is subscribed to. |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;[CommonEventData](arkts-basicservices-commoneventdata-i.md)&gt; | Yes | Callback used to return the result. If the public event is subscribed to successfully, **err** is **undefined** and **data** is the public event data obtained. Otherwise, **err** is an error object. |
 
 **Examples**
 

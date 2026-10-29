@@ -16,7 +16,7 @@ FormExtensionAbility为卡片扩展模块，提供卡片创建、销毁、刷新
 
 - [@ohos.multimedia.camera (相机管理)](../../apis-camera-kit/arkts-apis/arkts-camera-multimedia-camera.md)
 
-- @ohos.multimedia.media (媒体服务)  
+- [@ohos.multimedia.media (媒体服务)](../../apis-media/arkts-apis/arkts-media-multimedia-media.md)  
  -[@ohos.resourceschedule.backgroundTaskManager (后台任务管理)](../../apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-resourceschedule-backgroundtaskmanager.md)
 
 ## 导入模块

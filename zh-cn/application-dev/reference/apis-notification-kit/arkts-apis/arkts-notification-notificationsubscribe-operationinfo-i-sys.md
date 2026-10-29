@@ -4,7 +4,7 @@
 export interface OperationInfo
 ```
 
-跨设备协同操作信息。
+[跨设备协同](../../../notification/notification-glossary.md#cross-device-collaboration跨设备协同)操作信息。
 
 **起始版本：** 18
 
@@ -64,10 +64,10 @@ operationType?: number
 
 用户点击操作类型。
 
-- 0：用户点击非实况通知本体。  
+- 0：用户点击非[实况通知](../../../notification/notification-glossary.md#live-view-notification实况通知)本体。  
 - 1：用户点击非实况通知按钮。  
 - 32：用户点击实况通知本体。  
-- 33：用户点击实况通知辅助区
+- 33：用户点击实况通知辅助区。
 
 **类型：** number
 

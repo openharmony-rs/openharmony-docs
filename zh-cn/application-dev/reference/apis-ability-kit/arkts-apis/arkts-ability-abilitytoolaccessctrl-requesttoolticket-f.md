@@ -42,7 +42,7 @@ export function requestToolTicket(cliCmdInfos: CliCmdInfo[], ticketParams: Ticke
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| 24010000 | Invalid parameter. TicketExpireTime exceeds 60s, etc. |
-| 24010001 | Service is abnormal. Possible cause: IPC failed. |
-| 24010002 | Common internal error. Possible cause: dependent service unavailable, resource access failure, etc. |
-| 24010006 | The requested operation is not allowed to be executed while the device is locked. |
+| [24010000](../errorcode-abilityToolAccessCtrl-sys.md#24010000-入参错误) | Invalid parameter. TicketExpireTime exceeds 60s, etc. |
+| [24010001](../errorcode-abilityToolAccessCtrl-sys.md#24010001-系统服务工作异常) | Service is abnormal. Possible cause: IPC failed. |
+| [24010002](../errorcode-abilityToolAccessCtrl-sys.md#24010002-服务内部错误) | Common internal error. Possible cause: dependent service unavailable, resource access failure, etc. |
+| [24010006](../errorcode-abilityToolAccessCtrl-sys.md#24010006-设备处于锁屏状态时不允许执行操作) | The requested operation is not allowed to be executed while the device is locked. |

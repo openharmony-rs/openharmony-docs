@@ -44,7 +44,7 @@ parameter?: media.PlaybackSpeed | number | string | LoopMode
 
 命令对应的参数。
 
-**类型：** media.PlaybackSpeed &#124; number &#124; string &#124; [LoopMode](arkts-avsession-avsession-loopmode-e.md)
+**类型：** [media.PlaybackSpeed](../../apis-media/arkts-apis/arkts-media-media-playbackspeed-e.md) &#124; number &#124; string &#124; [LoopMode](arkts-avsession-avsession-loopmode-e.md)
 
 **起始版本：** 10
 

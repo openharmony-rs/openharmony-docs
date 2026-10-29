@@ -62,7 +62,7 @@ enableEdgeAutoScroll?: boolean
 enableHapticFeedback?: boolean
 ```
 
-表示拖拽时是否启用震动。true表示启用震动，false表示不启用震动。仅在存在蒙层的预览（通过bindContextMenu）场景生效。
+表示拖拽时是否启用震动。true表示启用震动，false表示不启用震动。仅在存在蒙层的预览（通过[bindContextMenu](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu-2)）场景生效。
 
 **注意：** 仅当应用具备 ohos.permission.VIBRATE 权限，且用户启用了触感反馈时才会生效。
 
@@ -116,7 +116,7 @@ isMultiSelectionEnabled?: boolean
 
 当一个item组件设置为多选拖拽时，该组件的子组件不可拖拽。聚拢组件预览图设置的优先级为[dragPreview](arkts-arkui-common-comp-commonmethod-c.md#dragpreview-1)中的string，dragPreview中的PixelMap，组件自截图，不支持dragPreview中的Builder形式。
 
-不支持组件绑定bindContextMenu中参数存在isShown的模式。
+不支持组件绑定[bindContextMenu](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu-2)中参数存在isShown的模式。
 
 默认值：false
 

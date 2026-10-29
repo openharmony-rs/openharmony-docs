@@ -4,7 +4,7 @@
 export interface DistributedOptions
 ```
 
-Describes options for cross-device notifications. Not supported currently.
+Describes the [cross-device collaboration](../../../notification/notification-glossary.md#cross-device-collaboration) options. This is a reserved capability and is not yet supported.
 
 **Since:** 8
 

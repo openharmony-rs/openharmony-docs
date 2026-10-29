@@ -4,7 +4,7 @@
 export interface NotificationSubscribeInfo
 ```
 
-The **NotificationSubscribeInfo** module provides APIs for defining the information about the publisher for notification subscription.
+The **NotificationSubscribeInfo** module provides APIs for defining the information about the notification subscriber.
 
 **Since:** 7
 
@@ -20,7 +20,7 @@ The **NotificationSubscribeInfo** module provides APIs for defining the informat
 bundleNames?: Array<string>
 ```
 
-Bundle names of the applications whose notifications to subscribe to. If this parameter is not specified, the subscription defaults to notifications from all applications.
+Bundle names of the applications whose notifications are to be subscribed to. If this parameter is not specified, the subscription defaults to notifications from all applications.
 
 **Type:** Array&lt;string&gt;
 
@@ -126,7 +126,7 @@ After this feature is enabled, historical notifications are silently re-pushed u
 pictureOptions?: PictureOptions
 ```
 
-Image options of the live notification.
+[Live view notification](../../../notification/notification-glossary.md#live-view-notification) image configuration options.
 
 **Type:** [PictureOptions](arkts-notification-notificationsubscribeinfo-pictureoptions-i-sys.md)
 
@@ -146,7 +146,7 @@ Image options of the live notification.
 slotTypes?: Array<notificationManager.SlotType>
 ```
 
-Types of the notification slots. If this parameter is not specified, the subscription defaults to notifications of all slot types.
+[Notification slot](../../../notification/notification-glossary.md#notification-slot) type. If this parameter is not passed, notifications of all slot types are subscribed to by default.
 
 **Type:** Array&lt;[notificationManager.SlotType](arkts-notification-notificationmanager-slottype-e.md)&gt;
 

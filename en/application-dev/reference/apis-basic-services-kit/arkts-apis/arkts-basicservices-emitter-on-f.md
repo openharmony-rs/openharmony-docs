@@ -27,7 +27,7 @@ Subscribes to an event in persistent manner and executes a callback after the ev
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | event | [InnerEvent](arkts-basicservices-emitter-innerevent-i.md) | Yes | Event to subscribe to in persistent manner. The [EventPriority](arkts-basicservices-emitter-eventpriority-e.md) parameter is not required and does not take effect. |
-| callback | [Callback](arkts-basicservices-base-callback-i.md)&lt;[EventData](arkts-basicservices-emitter-eventdata-i.md)&gt; | Yes | Callback to be invoked when the event is received. |
+| callback | [Callback](arkts-basicservices-base-callback-i.md)&lt;[EventData](arkts-basicservices-emitter-eventdata-i.md)&gt; | Yes | Callback used to return the data object passed when the event is sent. |
 
 **Examples**
 
@@ -67,8 +67,8 @@ Subscribes to an event in persistent manner and executes a callback after the ev
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| eventId | string | Yes | Event ID, which cannot be empty or exceed 10,240 bytes. Excess content will be truncated. |
-| callback | [Callback](arkts-basicservices-base-callback-i.md)&lt;[EventData](arkts-basicservices-emitter-eventdata-i.md)&gt; | Yes | Callback to be invoked when the event is received. |
+| eventId | string | Yes | Event ID, <br>which cannot be empty or exceed 10,240 bytes. Excess content will be truncated. |
+| callback | [Callback](arkts-basicservices-base-callback-i.md)&lt;[EventData](arkts-basicservices-emitter-eventdata-i.md)&gt; | Yes | Callback used to return the data object passed when the event is sent. |
 
 **Examples**
 
@@ -115,8 +115,8 @@ Subscribes to an event in persistent manner and executes a callback after the ev
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| eventId | string | Yes | Event ID, which cannot be empty or exceed 10,240 bytes. Excess content will be truncated. |
-| callback | [Callback](arkts-basicservices-base-callback-i.md)&lt;[GenericEventData](arkts-basicservices-emitter-genericeventdata-i.md)&lt;T&gt;&gt; | Yes | Callback to be invoked when the event is received. |
+| eventId | string | Yes | Event ID, <br>which cannot be empty or exceed 10,240 bytes. Excess content will be truncated. |
+| callback | [Callback](arkts-basicservices-base-callback-i.md)&lt;[GenericEventData](arkts-basicservices-emitter-genericeventdata-i.md)&lt;T&gt;&gt; | Yes | Callback used to return the generic data object passed when the event is sent. |
 
 **Examples**
 

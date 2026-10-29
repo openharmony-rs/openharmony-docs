@@ -23,7 +23,7 @@ the security component specifications. For specific constraints, see [Constraint
 
 - [SecurityComponentLayoutDirection](arkts-arkui-securitycomponentlayoutdirection-e.md): Enumeration of icon and text  
 layout directions for the security component. Specifies horizontal or vertical layout.  
-- ButtonType: Enumeration of button styles for the security component.  
+- [ButtonType](../arkts-components/arkts-arkui-button-comp-buttontype-e.md): Enumeration of button styles for the security component.  
 Specifies capsule, circle, rounded rectangle, or normal button style.
 
 ## Key APIs

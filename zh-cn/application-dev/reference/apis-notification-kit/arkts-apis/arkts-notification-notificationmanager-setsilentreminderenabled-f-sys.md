@@ -12,7 +12,7 @@ import { notificationManager } from '@kit.NotificationKit';
 function setSilentReminderEnabled(bundle: BundleOption, enabled: boolean): Promise<void>
 ```
 
-设置静默提醒的开关状态。使用Promise进行异步回调。
+设置[静默提醒](../../../notification/notification-glossary.md#silent-reminder静默提醒)的开关状态。使用Promise进行异步回调。
 
 **起始版本：** 20
 

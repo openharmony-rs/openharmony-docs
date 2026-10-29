@@ -17,7 +17,7 @@ function publishAsBundle(
   ): void
 ```
 
-Publishes a notification through the reminder agent. This API uses an asynchronous callback to return the result.
+Publishes a [proxy notification](../../../notification/notification-glossary.md#notification-proxy). This API uses an asynchronous callback to return the result.
 
 **Since:** 9
 
@@ -107,7 +107,7 @@ notificationManager.publishAsBundle(request, representativeBundle, userId, callb
 function publishAsBundle(request: NotificationRequest, representativeBundle: string, userId: number): Promise<void>
 ```
 
-Publishes a notification through the reminder agent. This API uses a promise to return the result.
+Publishes a [proxy notification](../../../notification/notification-glossary.md#notification-proxy). This API uses a promise to return the result.
 
 **Since:** 9
 
@@ -198,7 +198,7 @@ notificationManager.publishAsBundle(request, representativeBundle, userId).then(
 function publishAsBundle(representativeBundle: BundleOption, request: NotificationRequest): Promise<void>
 ```
 
-Publishes a notification through the reminder agent. This API uses a promise to return the result.
+Publishes a [proxy notification](../../../notification/notification-glossary.md#notification-proxy). This API uses a promise to return the result.
 
 **Since:** 12
 

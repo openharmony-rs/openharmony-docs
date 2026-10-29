@@ -44,7 +44,11 @@ bundle: BundleOption
 lastTime: number
 ```
 
-应用最后一次发布通知的时间。数据格式：时间戳。单位：ms。
+应用最后一次发布通知的时间。
+
+数据格式：时间戳。
+
+单位：毫秒。
 
 **类型：** number
 

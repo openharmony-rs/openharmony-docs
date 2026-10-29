@@ -137,6 +137,32 @@
   - [createRdbPredicates](arkts-arkdata-dataability-createrdbpredicates-f.md)
   - [DataAbilityPredicates](arkts-arkdata-dataability-dataabilitypredicates-c.md)
   - [ValueType](arkts-arkdata-dataability-valuetype-t.md)
+<!--Del-->
+- [@ohos.data.dataFabricAddress（地址数据捐赠模块提供了订阅和取消订阅地址数据的能力。）](arkts-arkdata-data-datafabricaddress.md)<!--DelEnd-->
+  <!--Del-->
+  - [offDataFabricAddress（系统接口）](arkts-arkdata-datafabricaddress-offdatafabricaddress-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [onDataFabricAddress（系统接口）](arkts-arkdata-datafabricaddress-ondatafabricaddress-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [DataFabricAddressParams（系统接口）](arkts-arkdata-datafabricaddress-datafabricaddressparams-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [DataProcessingResponse（系统接口）](arkts-arkdata-datafabricaddress-dataprocessingresponse-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [LocationInfo（系统接口）](arkts-arkdata-datafabricaddress-locationinfo-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [LocationPoint（系统接口）](arkts-arkdata-datafabricaddress-locationpoint-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [ReferenceLocationInfo（系统接口）](arkts-arkdata-datafabricaddress-referencelocationinfo-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [ActionType（系统接口）](arkts-arkdata-datafabricaddress-actiontype-e-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [BusinessScenario（系统接口）](arkts-arkdata-datafabricaddress-businessscenario-e-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [CoordinateSystemName（系统接口）](arkts-arkdata-datafabricaddress-coordinatesystemname-e-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [LabelName（系统接口）](arkts-arkdata-datafabricaddress-labelname-e-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [StatusCode（系统接口）](arkts-arkdata-datafabricaddress-statuscode-e-sys.md)<!--DelEnd-->
 - [@ohos.data.dataShare（数据共享）](arkts-arkdata-data-datashare.md)
   - [createDataProxyHandle](arkts-arkdata-datashare-createdataproxyhandle-f.md)
   <!--Del-->

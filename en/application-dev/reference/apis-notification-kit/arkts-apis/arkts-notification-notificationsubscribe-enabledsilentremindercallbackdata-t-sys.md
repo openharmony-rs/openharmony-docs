@@ -4,7 +4,7 @@
 export type EnabledSilentReminderCallbackData = _EnabledSilentReminderCallbackData
 ```
 
-Describes the switch state for silent reminder notification.
+Returns the changes of the [silent reminder](../../../notification/notification-glossary.md#silent-reminder) switch state of application notifications.
 
 **Type:** _EnabledSilentReminderCallbackData
 

@@ -18,7 +18,7 @@ Describes the data of a common event. The **CommonEventData** module is used to 
 bundleName?: string
 ```
 
-Bundle name of the common event publisher. The default value is an empty string.
+Bundle name of the common event publisher. The default value is an empty string. The value can contain a maximum of 254 bytes. Excess content will be truncated.
 
 **Type:** string
 
@@ -74,7 +74,7 @@ Common event data received by the subscriber. The data size cannot exceed 64 KB.
 event: string
 ```
 
-Name of the common event that is being received.
+Name of the common event that is being received. The value can contain a maximum of 254 bytes. Excess content will be truncated.
 
 **Type:** string
 
@@ -92,7 +92,7 @@ Name of the common event that is being received.
 parameters?: { [key: string]: any }
 ```
 
-Additional information about the common event received by the subscriber. The value of this field is the same as that of the **parameters** field in [CommonEventPublishData](arkts-basicservices-commoneventpublishdata-i.md) when the publisher uses [commonEventManager.publish](arkts-basicservices-commoneventmanager-publish-f.md) to publish a common event.
+Additional information about the common event received by the subscriber. The value of this field is the same as that of the **data** field in [CommonEventPublishData](arkts-basicservices-commoneventpublishdata-i.md) when the publisher uses [commonEventManager.publish](arkts-basicservices-commoneventmanager-publish-f.md) to publish a common event.
 
 **Type:** { [key: string]: any }
 

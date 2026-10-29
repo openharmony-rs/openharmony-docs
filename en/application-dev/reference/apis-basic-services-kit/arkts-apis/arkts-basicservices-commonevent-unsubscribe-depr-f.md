@@ -17,7 +17,7 @@ Unsubscribes from common events. This API uses an asynchronous callback to retur
 
 **Deprecated since:** 9
 
-**Substitutes:** [unsubscribe](arkts-basicservices-commoneventmanager-unsubscribe-f.md)
+**Substitutes:** [unsubscribe](arkts-basicservices-commoneventmanager-unsubscribe-f.md#unsubscribe-1)(subscriber: CommonEventSubscriber, callback?: AsyncCallback&lt;void&gt;)
 
 <!--Device-commonEvent-function unsubscribe(subscriber: CommonEventSubscriber, callback?: AsyncCallback<void>): void--><!--Device-commonEvent-function unsubscribe(subscriber: CommonEventSubscriber, callback?: AsyncCallback<void>): void-End-->
 
@@ -28,7 +28,7 @@ Unsubscribes from common events. This API uses an asynchronous callback to retur
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | subscriber | [CommonEventSubscriber](arkts-basicservices-commoneventsubscriber-i.md) | Yes | Subscriber object. |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | No | Callback used to return the result. |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | No | Callback used to return the result. If the public event is unsubscribed from successfully, **err** is **undefined**; otherwise, **err** is an error object. |
 
 **Examples**
 

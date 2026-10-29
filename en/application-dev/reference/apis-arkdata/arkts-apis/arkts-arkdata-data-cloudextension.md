@@ -23,7 +23,7 @@ import { cloudExtension } from '@kit.ArkData';
 | --- | --- |
 | [createAssetLoaderStub](arkts-arkdata-cloudextension-createassetloaderstub-f-sys.md#createassetloaderstub-1) | Creates a RemoteObject instance based on an AssetLoader instance. The system uses this object to call the APIs of the AssetLoader instance. This API uses a promise to return the result. |
 | [createCloudDBStub](arkts-arkdata-cloudextension-createclouddbstub-f-sys.md#createclouddbstub-1) | Creates a RemoteObject instance based on a CloudDB instance. The system uses this object to call the APIs of the CloudDB instance. This API uses a promise to return the result. |
-| [createCloudServiceStub](arkts-arkdata-cloudextension-createcloudservicestub-f-sys.md#createcloudservicestub-1) | Creates a RemoteObject instance based on a CloudService instance. The system uses this object to call the APIs of the CloudService instance. This API uses a promise to return the result. |
+| [createCloudServiceStub](arkts-arkdata-cloudextension-createcloudservicestub-f-sys.md#createcloudservicestub-1) | Creates a RemoteObject object based on the instance of the CloudService class. The system uses this object to call the implemented APIs of the CloudService class. This API uses a promise to return the result. |
 | [createShareServiceStub](arkts-arkdata-cloudextension-createshareservicestub-f-sys.md#createshareservicestub-1) | Creates a RemoteObject instance based on a ShareCenter instance. The system uses this object to call the APIs of the ShareCenter instance. This API uses a promise to return the result. |
 <!--DelEnd-->
 
@@ -44,7 +44,7 @@ import { cloudExtension } from '@kit.ArkData';
 | [ExtensionValue](arkts-arkdata-cloudextension-extensionvalue-i-sys.md) | Represents additional information about a data record. |
 | [Field](arkts-arkdata-cloudextension-field-i-sys.md) | Represents a field in the database. |
 | [LockInfo](arkts-arkdata-cloudextension-lockinfo-i-sys.md) | Represents the cloud database lock information. |
-| [Result](arkts-arkdata-cloudextension-result-i-sys.md) | Represents the data sharing result. |
+| [Result](arkts-arkdata-cloudextension-result-i-sys.md) | Represents the device-cloud sharing result. |
 | [ServiceInfo](arkts-arkdata-cloudextension-serviceinfo-i-sys.md) | Represents the cloud service information. |
 | [ShareCenter](arkts-arkdata-cloudextension-sharecenter-i-sys.md) | Provides APIs for interacting with the sharedCenter service. You need to inherit this class and implement APIs of this class. The system calls these APIs to initiate, cancel, or exit a device-cloud share. |
 | [SubscribeId](arkts-arkdata-cloudextension-subscribeid-i-sys.md) | Represents the subscription ID information. |
@@ -58,7 +58,7 @@ import { cloudExtension } from '@kit.ArkData';
 | Name | Description |
 | --- | --- |
 | [CloudAssets](arkts-arkdata-cloudextension-cloudassets-t-sys.md) | Represents an array of CloudAsset. |
-| [CloudType](arkts-arkdata-cloudextension-cloudtype-t-sys.md) | Enumerates the types of the cloud data field. The specific type is determined by the parameter function. |
+| [CloudType](arkts-arkdata-cloudextension-cloudtype-t-sys.md) | Enumerates the types of the cloud data field. The actual type of each API parameter varies depending on its function. |
 <!--DelEnd-->
 
 <!--Del-->

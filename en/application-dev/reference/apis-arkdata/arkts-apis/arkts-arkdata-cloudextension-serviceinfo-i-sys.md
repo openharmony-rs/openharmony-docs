@@ -26,7 +26,7 @@ import { cloudExtension } from '@kit.ArkData';
 enableCloud: boolean
 ```
 
-Whether the cloud service is enabled. The value true means that the cloud service is enabled, and the value false means the opposite.
+Whether the cloud service is enabled. The value **true** means that the cloud service is enabled, and the value **false** means the opposite.
 
 **Type:** boolean
 
@@ -98,7 +98,7 @@ Total account space on the server, in KB.
 user: number
 ```
 
-Current user ID of the device.
+Current user account ID of the device.
 
 **Type:** number
 

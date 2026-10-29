@@ -12,7 +12,7 @@ import { notificationSubscribe } from '@kit.NotificationKit';
 function subscribeSelf(subscriber: NotificationSubscriber): Promise<void>
 ```
 
-Subscribes to notifications of the application and specifies subscription information. This API uses a promise to return the result.
+Subscribes to notifications of this application. This API uses a promise to return the result.
 
 **Since:** 11
 
@@ -26,7 +26,7 @@ Subscribes to notifications of the application and specifies subscription inform
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| subscriber | [NotificationSubscriber](arkts-notification-notificationsubscribe-notificationsubscriber-t-sys.md) | Yes | Notification subscriber. |
+| subscriber | [NotificationSubscriber](arkts-notification-notificationsubscribe-notificationsubscriber-t-sys.md) | Yes | [Notification subscription](../../../notification/notification-glossary.md#notification-subscription) object. |
 
 **Return value:**
 

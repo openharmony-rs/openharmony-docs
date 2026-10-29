@@ -14,7 +14,7 @@ function getActiveNotificationCount(callback: AsyncCallback<number>): void
 
 获取当前应用的通知数量。使用callback异步回调。
 
-用于查询当前应用在通知中心中已发布的存量通知数量。适用于需要展示未读通知数量提示的场景。
+用于查询当前应用在[通知中心](../../../notification/notification-glossary.md#notification-center通知中心)中已发布的存量通知数量。适用于需要展示未读通知数量提示的场景。
 
 **起始版本：** 9
 
@@ -64,7 +64,7 @@ function getActiveNotificationCount(): Promise<number>
 
 获取当前应用的通知数量。使用Promise异步回调。
 
-用于查询当前应用在通知中心中已发布的存量通知数量。适用于需要展示未读通知数量提示的场景。
+用于查询当前应用在[通知中心](../../../notification/notification-glossary.md#notification-center通知中心)中已发布的存量通知数量。适用于需要展示未读通知数量提示的场景。
 
 **起始版本：** 9
 
@@ -78,7 +78,7 @@ function getActiveNotificationCount(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;number&gt; | Promise对象，返回当前应用未删除通知数。 |
+| Promise&lt;number&gt; | Promise对象，返回当前应用在通知中心的存量通知数量。 |
 
 **错误码：**
 

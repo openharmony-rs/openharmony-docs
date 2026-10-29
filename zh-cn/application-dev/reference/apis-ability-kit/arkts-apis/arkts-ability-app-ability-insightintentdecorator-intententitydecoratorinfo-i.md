@@ -4,7 +4,7 @@
 declare interface IntentEntityDecoratorInfo
 ```
 
-用于描述@InsightIntentEntity装饰器支持的参数。
+用于描述[@InsightIntentEntity](arkts-ability-app-ability-insightintentdecorator-insightintententity-d.md#insightintententity)装饰器支持的参数。
 
 **起始版本：** 20
 

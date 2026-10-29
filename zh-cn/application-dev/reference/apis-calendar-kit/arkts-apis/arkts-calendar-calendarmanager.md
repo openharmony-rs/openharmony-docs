@@ -26,14 +26,14 @@ import { calendarManager } from '@kit.CalendarKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [EventFilter](arkts-calendar-calendarmanager-eventfilter-c.md) | 日程过滤器，查询日程时进行筛选过滤，获取符合条件的日程。 |
+| [EventFilter](arkts-calendar-calendarmanager-eventfilter-c.md) | 日程过滤器，查询日程时进行筛选过滤，获取符合条件的日程。通过[filterById()](arkts-calendar-calendarmanager-eventfilter-c.md#filterbyid)、[filterByTime()](arkts-calendar-calendarmanager-eventfilter-c.md#filterbytime)、[filterByTitle()](arkts-calendar-calendarmanager-eventfilter-c.md#filterbytitle)任一方法获取日程过滤器，传入getEvents()过滤。 |
 
 ### 接口
 
 | 名称 | 说明 |
 | --- | --- |
 | [Attendee](arkts-calendar-calendarmanager-attendee-i.md) | 会议日程参与者。 |
-| [Calendar](arkts-calendar-calendarmanager-calendar-i.md) | 下列API示例中需先通过createCalendar()、getCalendar()中任一方法获取Calendar对象，再通过此对象调用对应方法，对该Calendar下的日程进行创建、删除、修改、查询等操作。 |
+| [Calendar](arkts-calendar-calendarmanager-calendar-i.md) | 下列API示例中需先通过[createCalendar()](arkts-calendar-calendarmanager-calendarmanager-i.md#createcalendar-2)、[getCalendar()](arkts-calendar-calendarmanager-calendarmanager-i.md#getcalendar-3)中任一方法获取Calendar对象，再通过此对象调用对应方法，对该Calendar下的日程进行创建、删除、修改、查询等操作。 |
 | [CalendarAccount](arkts-calendar-calendarmanager-calendaraccount-i.md) | 日历账户信息。 |
 | [CalendarConfig](arkts-calendar-calendarmanager-calendarconfig-i.md) | 日历配置信息。 |
 | [CalendarManager](arkts-calendar-calendarmanager-calendarmanager-i.md) | 下列API示例中需先通过[getCalendarManager()](arkts-calendar-calendarmanager-getcalendarmanager-f.md)方法获取CalendarManager对象，再通过此对象调用对应方法，进行Calendar的创建、删除、修改、查询等操作。 |

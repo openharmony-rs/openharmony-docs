@@ -6,7 +6,7 @@ export enum SlotLevel
 
 通知级别。
 
-用于定义NotificationSlot的通知提醒行为级别，影响通知在状态栏的显示方式，是否展示横幅和提示音等。
+用于定义[NotificationSlot](arkts-notification-notificationslot-i.md)的通知提醒行为级别，影响通知在状态栏的显示方式，是否展示横幅和提示音等。
 
 **起始版本：** 9
 

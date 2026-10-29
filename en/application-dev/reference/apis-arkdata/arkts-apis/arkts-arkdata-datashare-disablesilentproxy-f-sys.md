@@ -14,8 +14,7 @@ function disableSilentProxy(context: Context, uri?: string): Promise<void>
 
 Disables silent access. This API uses a promise to return the result.
 
-Observe the following when using this API:
-
+Observe the following when using this API:  
 - The data provider calls this API to disable silent access.  
 - Whether silent access is disabled is determined based on the return value of this API and the  
 **isSilentProxyEnable** field in the [data_share_config.json](../../../database/share-data-by-datashareextensionability-sys.md) file together.  
@@ -37,13 +36,13 @@ Observe the following when using this API:
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | context | [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md) | Yes | Context of the application. |
-| uri | string | No | URI of the data, for which silent access is to be disabled.Global setting: If **uri** is **undefined** or **null** or is not specified, all the previous settings will be cleared and silent access will be disabled globally for the data provider.URI-specific setting: If a URI is specified, silent access to the specified URI will be disabled.When datashareHelper APIs are called, the URI-specific setting is preferentially applied. If no match is found, the global setting is applied.URI format: **datashare:///{bundleName}/{moduleName}/{storeName}/{tableName}** |
+| uri | string | No | Data path of the data provider to be closed.<br>1. Global switch state: If the input parameter does not carry a **uri**, or the **uri** is **undefined** or **null**, the previously set uri switch state is cleared, and silent access to the data provider is disabled.<br>2. Precise switch state: If the **uri** input parameter is a fixed value, only the silent access corresponding to this **uri** is disabled.<br>When calling **datashareHelper**-related APIs, the switch state that precisely matches the **uri** is matched first. If no match is found, the global switch state is matched.<br>uri format: **datashare:///{bundleName}/{moduleName}/{storeName}/{tableName}** |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;void&gt; | returns no value. |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes:**
 

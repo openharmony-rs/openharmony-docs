@@ -12,7 +12,7 @@ import { notificationManager } from '@kit.NotificationKit';
 function isSilentReminderEnabled(bundle: BundleOption): Promise<SwitchState>
 ```
 
-Checks whether the silent reminder is enabled. This API uses a promise to return the result.
+Queries the switch status of [silent reminder](../../../notification/notification-glossary.md#silent-reminder). This API uses a promise to return the result.
 
 **Since:** 20
 

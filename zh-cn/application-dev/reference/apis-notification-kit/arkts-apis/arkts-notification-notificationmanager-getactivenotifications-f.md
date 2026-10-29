@@ -14,7 +14,7 @@ function getActiveNotifications(callback: AsyncCallback<Array<NotificationReques
 
 获取当前应用未删除的通知列表。使用callback异步回调。
 
-用于查询当前应用在通知中心中所有存量通知的详细信息列表，包括每条通知的ID、标签、内容、创建时间等。
+用于查询当前应用在[通知中心](../../../notification/notification-glossary.md#notification-center通知中心)中所有存量通知的详细信息列表，包括每条通知的ID、标签、内容、创建时间等。
 
 **起始版本：** 9
 
@@ -63,7 +63,7 @@ function getActiveNotifications(): Promise<Array<NotificationRequest>>
 
 获取当前应用未删除的通知列表。使用Promise异步回调。
 
-用于查询当前应用在通知中心中所有存量通知的详细信息列表，包括每条通知的ID、标签、内容、创建时间等。
+用于查询当前应用在[通知中心](../../../notification/notification-glossary.md#notification-center通知中心)中所有存量通知的详细信息列表，包括每条通知的ID、标签、内容、创建时间等。
 
 **起始版本：** 9
 
@@ -77,7 +77,7 @@ function getActiveNotifications(): Promise<Array<NotificationRequest>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;[NotificationRequest](arkts-notification-notificationmanager-notificationrequest-t.md)&gt;&gt; | Promise对象，返回当前应用的通知列表。 |
+| Promise&lt;Array&lt;[NotificationRequest](arkts-notification-notificationmanager-notificationrequest-t.md)&gt;&gt; | Promise对象，返回当前应用未删除的通知列表，包含每条通知的详细信息。 |
 
 **错误码：**
 

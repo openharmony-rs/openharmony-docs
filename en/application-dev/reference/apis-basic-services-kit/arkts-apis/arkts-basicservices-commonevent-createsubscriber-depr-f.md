@@ -20,7 +20,7 @@ Creates a subscriber. This API uses an asynchronous callback to return the resul
 
 **Deprecated since:** 9
 
-**Substitutes:** [createSubscriber](arkts-basicservices-commoneventmanager-createsubscriber-f.md#createsubscriber-1)( subscribeInfo: CommonEventSubscribeInfo, callback: AsyncCallback&lt;CommonEventSubscriber&gt; )
+**Substitutes:** [createSubscriber](arkts-basicservices-commoneventmanager-createsubscriber-f.md#createsubscriber-1)(subscribeInfo: CommonEventSubscribeInfo, callback: AsyncCallback&lt;CommonEventSubscriber&gt;)
 
 <!--Device-commonEvent-function createSubscriber(    subscribeInfo: CommonEventSubscribeInfo,    callback: AsyncCallback<CommonEventSubscriber>  ): void--><!--Device-commonEvent-function createSubscriber(    subscribeInfo: CommonEventSubscribeInfo,    callback: AsyncCallback<CommonEventSubscriber>  ): void-End-->
 
@@ -31,7 +31,7 @@ Creates a subscriber. This API uses an asynchronous callback to return the resul
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | subscribeInfo | [CommonEventSubscribeInfo](arkts-basicservices-commoneventsubscribeinfo-i.md) | Yes | Subscriber information. |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;[CommonEventSubscriber](arkts-basicservices-commoneventsubscriber-i.md)&gt; | Yes | Callback used to return the result. |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;[CommonEventSubscriber](arkts-basicservices-commoneventsubscriber-i.md)&gt; | Yes | Callback used to return the result. If the public event subscriber is created successfully, **err** is **undefined** and **data** is the public event subscriber obtained. Otherwise, **err** is an error object. |
 
 **Examples**
 

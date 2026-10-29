@@ -28,7 +28,7 @@ function setBadgeNumber(badgeNumber: number, callback: AsyncCallback<void>): voi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| badgeNumber | number | 是 | 角标个数。当角标设定个数取值小于或等于0时，清除角标。取值大于99时，通知角标将显示99+。 |
+| badgeNumber | number | 是 | 角标个数。当角标设定个数取值小于或等于0时，清除角标。取值大于99时，[通知角标](../../../notification/notification-glossary.md#notification-badge通知角标)将显示99+。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当设定角标个数成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -75,13 +75,13 @@ function setBadgeNumber(badgeNumber: number): Promise<void>
 
 **系统能力：** SystemCapability.Notification.Notification
 
-**参见：** [getActiveNotificationCount](arkts-notification-notificationmanager-getactivenotificationcount-f.md#getactivenotificationcount-1) 获取当前应用的通知数量。
+**参见：** [getActiveNotificationCount](arkts-notification-notificationmanager-getactivenotificationcount-f.md) 获取当前应用的通知数量。
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| badgeNumber | number | 是 | 角标个数。当角标设定个数取值小于或等于0时，清除角标。取值大于99时，通知角标将显示99+。 |
+| badgeNumber | number | 是 | 角标个数。当角标设定个数取值小于或等于0时，清除角标。取值大于99时，[通知角标](../../../notification/notification-glossary.md#notification-badge通知角标)将显示99+。 |
 
 **返回值：**
 

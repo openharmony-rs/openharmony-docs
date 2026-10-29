@@ -4,11 +4,12 @@
 export interface NotificationSystemLiveViewContent extends NotificationBasicContent
 ```
 
-Describes the system live view notification content, which is used to display real-time status information in the live view. Third-party applications are not supported to directly create this notification type. After the system proxy creates a system live view notification, a third-party application can publish a notification with the same ID to update the specified content. This API is inherited from NotificationBasicContent.
+Describes the [system live view](../../../notification/notification-glossary.md#system-live-view) [notification content](../../../notification/notification-glossary.md#notification-content), which is used to display real-time status information in the live view. Third-party applications are not supported to directly create this type of notification. After the system agent creates a system live view type notification, a third-party application can publish a notification with the same ID to update the specified content. This API is inherited from [NotificationBasicContent](arkts-notification-notificationcontent-notificationbasiccontent-i.md).
 
 > **NOTE:** 
 > 
-> The actual display effect depends on the device capabilities and the notification center UI style.
+> The actual display effect depends on the device capability and the
+> [notification center](../../../notification/notification-glossary.md#notification-center) UI style.
 
 **Inheritance/Implementation:** NotificationSystemLiveViewContent extends [NotificationBasicContent](arkts-notification-notificationcontent-notificationbasiccontent-i.md)
 

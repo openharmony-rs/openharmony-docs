@@ -12,7 +12,7 @@ import { cloudData } from '@kit.ArkData';
 function offAutoSyncTrigger(observer?: Callback<AutoSyncTriggerInfo>): void
 ```
 
-Describes unsubscribing from the device-cloud automatic synchronization trigger mode.
+Unsubscribes from the auto sync trigger event notification.
 
 **Since:** 26.0.0
 
@@ -26,7 +26,7 @@ Describes unsubscribing from the device-cloud automatic synchronization trigger 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| observer | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[AutoSyncTriggerInfo](arkts-arkdata-clouddata-autosynctriggerinfo-i.md)&gt; | No | Callback for automatic synchronization trigger interception. |
+| observer | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[AutoSyncTriggerInfo](arkts-arkdata-clouddata-autosynctriggerinfo-i.md)&gt; | No | Callback for the auto sync trigger event. If observer is passed in, the subscription of the specified callback is canceled; if observer is not passed in, all registered subscriptions are canceled. |
 
 **Error codes:**
 

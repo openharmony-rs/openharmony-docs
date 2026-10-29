@@ -17,7 +17,7 @@ Publishes a notification. This API uses an asynchronous callback to return the r
 
 **Deprecated since:** 9
 
-**Substitutes:** [publish](arkts-notification-notificationmanager-publish-f.md)
+**Substitutes:** [publish](arkts-notification-notificationmanager-publish-f.md#publish-1)(request: NotificationRequest, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-notification-function publish(request: NotificationRequest, callback: AsyncCallback<void>): void--><!--Device-notification-function publish(request: NotificationRequest, callback: AsyncCallback<void>): void-End-->
 
@@ -72,7 +72,7 @@ Publishes a notification. This API uses a promise to return the result.
 
 **Deprecated since:** 9
 
-**Substitutes:** [publish](arkts-notification-notificationmanager-publish-f.md)
+**Substitutes:** [publish](arkts-notification-notificationmanager-publish-f.md#publish-2)(request: NotificationRequest)
 
 <!--Device-notification-function publish(request: NotificationRequest): Promise<void>--><!--Device-notification-function publish(request: NotificationRequest): Promise<void>-End-->
 

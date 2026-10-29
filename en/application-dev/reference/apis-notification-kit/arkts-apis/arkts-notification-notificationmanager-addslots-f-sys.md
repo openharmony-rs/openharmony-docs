@@ -12,7 +12,7 @@ import { notificationManager } from '@kit.NotificationKit';
 function addSlots(slots: Array<NotificationSlot>, callback: AsyncCallback<void>): void
 ```
 
-Adds an array of notification slots. This API uses an asynchronous callback to return the result.
+Creates multiple [notification slots](../../../notification/notification-glossary.md#notification-slot). This API uses an asynchronous callback to return the result.
 
 **Since:** 9
 
@@ -77,7 +77,7 @@ notificationManager.addSlots(notificationSlotArray, addSlotsCallback);
 function addSlots(slots: Array<NotificationSlot>): Promise<void>
 ```
 
-Adds an array of notification slots. This API uses a promise to return the result.
+Creates multiple [notification slots](../../../notification/notification-glossary.md#notification-slot). This API uses a promise to return the result.
 
 **Since:** 9
 

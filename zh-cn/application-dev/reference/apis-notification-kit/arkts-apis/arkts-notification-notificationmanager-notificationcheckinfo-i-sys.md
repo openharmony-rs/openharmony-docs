@@ -4,7 +4,7 @@
 export interface NotificationCheckInfo
 ```
 
-通知校验参数。
+[通知校验](../../../notification/notification-glossary.md#notification-check通知校验)参数。
 
 **起始版本：** 10
 
@@ -86,7 +86,7 @@ creatorUserId: number
 extraInfos?: Record<string, Object>
 ```
 
-实况通知的附加信息。
+[实况通知](../../../notification/notification-glossary.md#live-view-notification实况通知)的附加信息。
 
 **类型：** Record&lt;string, Object&gt;
 

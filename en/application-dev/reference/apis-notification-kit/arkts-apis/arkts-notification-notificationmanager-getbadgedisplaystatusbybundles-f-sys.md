@@ -12,7 +12,7 @@ import { notificationManager } from '@kit.NotificationKit';
 function getBadgeDisplayStatusByBundles(bundles: Array<BundleOption>) : Promise<Map<BundleOption, boolean>>
 ```
 
-Batch obtains the display statuses of application badges. This API uses a promise to return the result.
+Obtains the display statuses of application badges in batches. This API uses a promise to return the result.
 
 **Since:** 21
 

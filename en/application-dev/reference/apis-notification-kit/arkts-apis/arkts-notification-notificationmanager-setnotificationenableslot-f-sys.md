@@ -19,8 +19,6 @@ function setNotificationEnableSlot(
 
 Sets the enabled status of a slot type for the specified application. This API uses an asynchronous callback to return the result.
 
-This API can be properly called on devices other than wearables. If it is called on wearables, error code 801 is returned.
-
 **Since:** 9
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
@@ -92,8 +90,6 @@ function setNotificationEnableSlot(
 
 Sets the enabled status of a slot type for the specified application. This API uses an asynchronous callback to return the result.
 
-This API can be properly called on devices other than wearables. If it is called on wearables, error code 801 is returned.
-
 **Since:** 11
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
@@ -111,7 +107,7 @@ This API can be properly called on devices other than wearables. If it is called
 | bundle | [BundleOption](arkts-notification-notificationmanager-bundleoption-t.md) | Yes | Bundle information of the application. |
 | type | [SlotType](arkts-notification-notificationmanager-slottype-e.md) | Yes | Notification slot type. |
 | enable | boolean | Yes | Whether to enable the notification slot type. The value **true** means to enable the notification slot type, and **false** means the opposite. |
-| isForceControl | boolean | Yes | Whether the slot is affected by the notification authorization. The value **true** means the slot is affected, and **false** means the opposite. |
+| isForceControl | boolean | Yes | Whether the slot switch is affected by the [notification authorization](../../../notification/notification-glossary.md#notification-authorization) switch (**false**: affected, **true**: not affected). |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
 
 **Error codes:**
@@ -158,9 +154,7 @@ notificationManager.setNotificationEnableSlot(
 function setNotificationEnableSlot(bundle: BundleOption, type: SlotType, enable: boolean, isForceControl?: boolean): Promise<void>
 ```
 
-Sets the enabled status of a slot type for the specified application. This API uses a promise to return the result.
-
-This API can be properly called on devices other than wearables. If it is called on wearables, error code 801 is returned.
+Sets the enabled status of the specified notification slot type for the specified application. This API uses a promise to return the result.
 
 **Since:** 9
 

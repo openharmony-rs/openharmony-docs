@@ -306,8 +306,6 @@ Checks whether all elements in this ArkTS Uint8Array meet a given condition.
 
 **System capability:** SystemCapability.Utils.Lang
 
-**Test API:** This API is used only in automated test scripts.
-
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -380,8 +378,6 @@ Returns a new ArkTS Uint8Array that contains all elements that meet the given co
 
 **System capability:** SystemCapability.Utils.Lang
 
-**Test API:** This API is used only in automated test scripts.
-
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -417,8 +413,6 @@ Returns the value of the first element that passes a test provided by a callback
 
 **System capability:** SystemCapability.Utils.Lang
 
-**Test API:** This API is used only in automated test scripts.
-
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -453,8 +447,6 @@ Returns the index of the first element that passes a test provided by a callback
 <!--Device-Uint8Array-findIndex(predicate: TypedArrayPredicateFn<number, Uint8Array>): number--><!--Device-Uint8Array-findIndex(predicate: TypedArrayPredicateFn<number, Uint8Array>): number-End-->
 
 **System capability:** SystemCapability.Utils.Lang
-
-**Test API:** This API is used only in automated test scripts.
 
 **Parameters:**
 
@@ -1113,8 +1105,6 @@ Checks whether any element in this ArkTS Uint8Array meets a given condition.
 <!--Device-Uint8Array-some(predicate: TypedArrayPredicateFn<number, Uint8Array>): boolean--><!--Device-Uint8Array-some(predicate: TypedArrayPredicateFn<number, Uint8Array>): boolean-End-->
 
 **System capability:** SystemCapability.Utils.Lang
-
-**Test API:** This API is used only in automated test scripts.
 
 **Parameters:**
 

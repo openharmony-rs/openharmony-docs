@@ -4,7 +4,7 @@
 export type EnabledSilentReminderChangedCallback = (callbackData: EnabledSilentReminderCallbackData) => void
 ```
 
-Defines a callback function to listen for the enabling state changes of the application's silent reminder. type EnabledSilentReminderChangedCallback = (callbackData: EnabledSilentReminderCallbackData) =&gt; void
+Triggered for registering the [silent reminder](../../../notification/notification-glossary.md#silent-reminder) enabled state change of application notifications.
 
 **Since:** 24
 
@@ -20,7 +20,7 @@ Defines a callback function to listen for the enabling state changes of the appl
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callbackData | [EnabledSilentReminderCallbackData](arkts-notification-notificationsubscriber-enabledsilentremindercallbackdata-i-sys.md) | Yes | Callback used to return the listened silent reminder enabling state. |
+| callbackData | [EnabledSilentReminderCallbackData](arkts-notification-notificationsubscriber-enabledsilentremindercallbackdata-i-sys.md) | Yes | Callback used to return the listened silent reminder enabled state. |
 
 <!--Del-->
 **Examples**

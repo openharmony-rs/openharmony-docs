@@ -144,7 +144,7 @@ fontFeature(value: string)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | string | 是 | 文字特性效果，用于设置文字的OpenType特性。格式为：normal &#124; &lt;feature-tag-value&gt;，其中&lt;feature-tag-value&gt;格式为：&lt;string&gt; [ &lt;integer&gt; &#124; on &#124; off ]。可设置多个特性，中间用','隔开。例如，使用等宽时钟数字的格式为：'"ss01" on'。 |
+| value | string | 是 | 文字特性效果，用于设置文字的OpenType特性。格式为：normal &#124; <feature-tag-value>，其中<feature-tag-value>格式为：<string> [ <integer> &#124; on &#124; off ]。可设置多个特性，中间用','隔开。例如，使用等宽时钟数字的格式为：'"ss01" on'。 |
 
 ## fontSize
 
@@ -366,4 +366,4 @@ textShadow(value: ShadowOptions | Array<ShadowOptions>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [ShadowOptions](arkts-arkui-common-comp-shadowoptions-i.md) &#124; Array&lt;[ShadowOptions](arkts-arkui-common-comp-shadowoptions-i.md)&gt; | 是 | 文字阴影效果。支持单个阴影对象或阴影数组实现多重阴影效果。ShadowOptions对象包含radius（模糊半径）、color（阴影颜色）、offsetX（X轴偏移）、offsetY（Y轴偏移）等属性。<br>不支持fill字段，不支持智能取色模式。具体属性说明请参考ShadowOptions。 |
+| value | [ShadowOptions](arkts-arkui-common-comp-shadowoptions-i.md) &#124; Array&lt;[ShadowOptions](arkts-arkui-common-comp-shadowoptions-i.md)&gt; | 是 | 文字阴影效果。支持单个阴影对象或阴影数组实现多重阴影效果。ShadowOptions对象包含radius（模糊半径）、color（阴影颜色）、offsetX（X轴偏移）、offsetY（Y轴偏移）等属性。<br>不支持fill字段，不支持智能取色模式。具体属性说明请参考[ShadowOptions](../../../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#shadowoptions)。 |

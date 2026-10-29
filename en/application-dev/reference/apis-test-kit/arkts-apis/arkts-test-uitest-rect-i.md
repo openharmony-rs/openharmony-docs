@@ -12,8 +12,6 @@ Represents the rectangle area on the device screen.
 
 **System capability:** SystemCapability.Test.UiTest
 
-**Test API:** This API is used only in automated test scripts.
-
 ## Modules to Import
 
 ```TypeScript
@@ -39,8 +37,6 @@ Y coordinate of the lower right corner of the component border, in pixels. The v
 
 **System capability:** SystemCapability.Test.UiTest
 
-**Test API:** This API is used only in automated test scripts.
-
 ## displayId
 
 ```TypeScript
@@ -58,8 +54,6 @@ ID of the display to which the component border belongs. The value is an integer
 <!--Device-Rect-displayId?: int--><!--Device-Rect-displayId?: int-End-->
 
 **System capability:** SystemCapability.Test.UiTest
-
-**Test API:** This API is used only in automated test scripts.
 
 ## left
 
@@ -79,8 +73,6 @@ X coordinate of the upper left corner of the component border, in pixels. The va
 
 **System capability:** SystemCapability.Test.UiTest
 
-**Test API:** This API is used only in automated test scripts.
-
 ## right
 
 ```TypeScript
@@ -99,8 +91,6 @@ X coordinate of the lower right corner of the component border, in pixels. The v
 
 **System capability:** SystemCapability.Test.UiTest
 
-**Test API:** This API is used only in automated test scripts.
-
 ## top
 
 ```TypeScript
@@ -118,5 +108,3 @@ Y coordinate of the upper left corner of the component border, in pixels. The va
 <!--Device-Rect-top: int--><!--Device-Rect-top: int-End-->
 
 **System capability:** SystemCapability.Test.UiTest
-
-**Test API:** This API is used only in automated test scripts.

@@ -12,8 +12,6 @@ Provides the flag attributes of this window.
 
 **System capability:** SystemCapability.Test.UiTest
 
-**Test API:** This API is used only in automated test scripts.
-
 ## Modules to Import
 
 ```TypeScript
@@ -39,8 +37,6 @@ Whether the window is interacting with the user. The value **true** indicates th
 
 **System capability:** SystemCapability.Test.UiTest
 
-**Test API:** This API is used only in automated test scripts.
-
 ## bundleName
 
 ```TypeScript
@@ -58,8 +54,6 @@ Bundle name of the application to which the window belongs, which is used to fil
 <!--Device-WindowFilter-bundleName?: string--><!--Device-WindowFilter-bundleName?: string-End-->
 
 **System capability:** SystemCapability.Test.UiTest
-
-**Test API:** This API is used only in automated test scripts.
 
 ## displayId
 
@@ -79,8 +73,6 @@ ID of the display to which the window belongs. The default value is the default 
 
 **System capability:** SystemCapability.Test.UiTest
 
-**Test API:** This API is used only in automated test scripts.
-
 ## focused
 
 ```TypeScript
@@ -99,8 +91,6 @@ Whether the window is focused. The value **true** indicates that the window is f
 
 **System capability:** SystemCapability.Test.UiTest
 
-**Test API:** This API is used only in automated test scripts.
-
 ## title
 
 ```TypeScript
@@ -118,8 +108,6 @@ Window title, which is used to filter the target window in multi-window scenario
 <!--Device-WindowFilter-title?: string--><!--Device-WindowFilter-title?: string-End-->
 
 **System capability:** SystemCapability.Test.UiTest
-
-**Test API:** This API is used only in automated test scripts.
 
 ## actived
 
@@ -142,5 +130,3 @@ This API is supported since API version 9 and deprecated since API version 11. Y
 <!--Device-WindowFilter-actived?: boolean--><!--Device-WindowFilter-actived?: boolean-End-->
 
 **System capability:** SystemCapability.Test.UiTest
-
-**Test API:** This API is used only in automated test scripts.

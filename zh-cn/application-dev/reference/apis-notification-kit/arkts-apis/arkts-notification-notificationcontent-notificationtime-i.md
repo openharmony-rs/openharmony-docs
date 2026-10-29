@@ -8,7 +8,7 @@ export interface NotificationTime
 
 > **说明：** 
 > 
-> 实际显示效果依赖于设备能力和通知中心UI样式。
+> 实际显示效果依赖于设备能力和[通知中心](../../../notification/notification-glossary.md#notification-center通知中心)UI样式。
 
 **起始版本：** 11
 
@@ -22,7 +22,9 @@ export interface NotificationTime
 initialTime?: number
 ```
 
-计时起始时间，用于设置实况窗中的计时起点。默认值为0。单位：毫秒。
+计时起始时间，用于设置实况窗中的计时起点。默认值为0。
+
+单位：毫秒。
 
 **类型：** number
 

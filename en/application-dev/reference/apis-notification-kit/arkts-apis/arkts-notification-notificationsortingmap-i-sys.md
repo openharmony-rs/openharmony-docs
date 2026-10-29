@@ -38,7 +38,7 @@ Hash codes for notification sorting.
 readonly sortings: Record<string, NotificationSorting>
 ```
 
-Array of notification sorting information.
+[Notification sorting](../../../notification/notification-glossary.md#notification-sorting) information.
 
 **Type:** Record&lt;string, [NotificationSorting](arkts-notification-notificationsorting-i-sys.md)&gt;
 

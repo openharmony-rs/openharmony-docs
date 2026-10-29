@@ -12,7 +12,7 @@ import { notificationManager } from '@kit.NotificationKit';
 function setDistributedEnable(enable: boolean, callback: AsyncCallback<void>): void
 ```
 
-设置设备是否支持分布式通知。使用callback异步回调。
+设置设备是否支持[分布式通知](../../../notification/notification-glossary.md#distributed-notification分布式通知)。使用callback异步回调。
 
 **起始版本：** 9
 
@@ -74,7 +74,7 @@ notificationManager.setDistributedEnable(enable, setDistributedEnableCallback);
 function setDistributedEnable(enable: boolean): Promise<void>
 ```
 
-设置设备是否支持分布式通知。使用Promise异步回调。
+设置设备是否支持[分布式通知](../../../notification/notification-glossary.md#distributed-notification分布式通知)。使用Promise异步回调。
 
 **起始版本：** 9
 

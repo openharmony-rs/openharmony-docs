@@ -4,7 +4,7 @@
 export interface NotificationRequest
 ```
 
-Defines the data structure of a notification request, which is used to describe all information about a notification, including the notification content, identifier, display style, and interaction behavior.
+Defines the data structure of a [notification request](../../../notification/notification-glossary.md#notification-request), which is used to describe all information of a notification, including [notification content](../../../notification/notification-glossary.md#notification-content), identifier, display style, interaction behavior, and so on.
 
 **Since:** 7
 
@@ -18,7 +18,7 @@ Defines the data structure of a notification request, which is used to describe 
 actionButtons?: Array<NotificationActionButton>
 ```
 
-Notification button. This parameter is left empty by default. A notification can contain a maximum of two buttons. Since API version 16, a notification can contain a maximum of three buttons for wearables.
+[Notification buttons](../../../notification/notification-glossary.md#notification-button). The value is empty by default. A notification can contain at most two buttons. Since API version 16, a notification on a `wearable` device can contain at most three buttons.
 
 **Type:** Array&lt;[NotificationActionButton](arkts-notification-notificationactionbutton-i.md)&gt;
 
@@ -34,7 +34,9 @@ Notification button. This parameter is left empty by default. A notification can
 appMessageId?: string
 ```
 
-Unique identifier field carried when an application sends a notification, used for notification deduplication. If the same application publishes notifications carrying the same **appMessageId** through different channels such as local and cloud, the device displays only one message, and subsequent duplicate notifications received will be silently deduplicated without being displayed or alerted. The deduplication identifier is valid only within 24 hours after the notification is published, and becomes invalid after 24 hours or after the device restarts. The size does not exceed 202 bytes, and the excess part will be truncated. The value is empty by default.
+Unique identifier field carried when an application sends a notification. It is used for notification deduplication. If the same application publishes notifications carrying the same **appMessageId** through different slots such as local and cloud, the device displays only one message, and subsequent duplicate notifications received will be silently deduplicated without being displayed or alerted. The deduplication identifier is valid only within 24 hours after the notification is published, and becomes invalid after 24 hours or after the device restarts.
+
+The size does not exceed 202 bytes, and the excess part will be truncated. The value is empty by default.
 
 **Type:** string
 
@@ -50,7 +52,13 @@ Unique identifier field carried when an application sends a notification, used f
 autoDeletedTime?: number
 ```
 
-Scheduled auto-delete time for the notification. You can set this parameter to automatically delete the notification after the specified time. Default value: **0**. This parameter does not take effect if a value less than 0 or a past time is passed in. Data format: timestamp. Unit: millisecond. For example, to delete a notification after it has been retained for 3 seconds (3000 ms), the corresponding deletion time is: **new Date().getTime()** + 3000.
+Scheduled auto-delete time for the notification. You can set this parameter to automatically delete the notification after the specified time. Default value: **0**. This parameter does not take effect if a value less than 0 or a past time is passed in.
+
+Data format: timestamp.
+
+Unit: millisecond.
+
+For example, to delete a notification after it has been retained for 3 seconds (3000 ms), the corresponding deletion time is: **new Date().getTime()** + 3000.
 
 **Type:** number
 
@@ -82,13 +90,13 @@ Notification badge type. Not supported currently.
 badgeNumber?: number
 ```
 
-Number of notifications displayed on the application icon. The value is accumulated. The default value is **0**.
+Number of notifications displayed on the application icon. The number is displayed cumulatively. The default value is 0.
 
-If the value of **badgeNumber** is less than or equal to 0, the badge number is not displayed;
+When the value of `badgeNumber` is less than or equal to 0, this badge setting is ignored.
 
-if the value is greater than 99, **99+** is displayed on the badge.
+When the cumulative badge number is greater than 99, the [notification badge](../../../notification/notification-glossary.md#notification-badge) displays 99+.
 
-For example, if an application publishes three notifications, and `badgeNumber` is set to **2**, **0**, and **3** in sequence, the application displays **2**, **2**, and **5** accordingly.
+For example, if the application publishes three notifications and sets `badgeNumber` to 2, 0, and 3 in sequence, the application displays 2, 2, and 5 in sequence.
 
 **Type:** number
 
@@ -152,7 +160,7 @@ Notification display content, including the notification title and body.
 readonly creatorBundleName?: string
 ```
 
-Name of the application that creates the notification.
+Bundle name of the application that creates the notification.
 
 **Type:** string
 
@@ -216,7 +224,11 @@ ID of the user who creates the notification.
 deliveryTime?: number
 ```
 
-Notification delivery time. This parameter is automatically generated by the system and does not require configuration. Data format: timestamp. Unit: millisecond.
+Notification delivery time. This parameter is automatically generated by the system and does not require configuration.
+
+Data format: timestamp.
+
+Unit: millisecond.
 
 **Type:** number
 
@@ -232,7 +244,7 @@ Notification delivery time. This parameter is automatically generated by the sys
 distributedOption?: DistributedOptions
 ```
 
-Distributed notification options. Not supported currently.
+Options of the [distributed notification](../../../notification/notification-glossary.md#distributed-notification). Not supported currently.
 
 **Type:** [DistributedOptions](arkts-notification-notificationrequest-distributedoptions-i.md)
 
@@ -252,8 +264,8 @@ Extended parameters, used to provide custom services for applications. This para
 
 The key value is assigned by the system. Manual modification does not take effect. The system automatically changes the value to the actual value during data transmission.
 
-- **ohos.notificationManager.wantUri**: **uri** field in the [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) object,  
-which is passed to the application when the user taps a notification. This field can be obtained via the [getActiveNotifications](arkts-notification-notification-getactivenotifications-depr-f.md) API call.
+- 'ohos.notificationManager.wantUri': uri field in the [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) object, which is  
+passed to the application when the user taps a notification. This field can be obtained via the [getActiveNotifications](arkts-notification-notificationmanager-getactivenotifications-f.md) API call.
 
 **Type:** { [key: string]: any }
 
@@ -269,7 +281,9 @@ which is passed to the application when the user taps a notification. This field
 groupName?: string
 ```
 
-Group to which the notification belongs. When different notifications have the same **groupName**, these notifications will be displayed as a group. The size does not exceed 202 bytes, and the excess part will be truncated. The value is empty by default.
+Group to which the notification belongs. When different notifications have the same **groupName**, these notifications will be displayed as a group.
+
+The size does not exceed 202 bytes, and the excess part will be truncated. The value is empty by default.
 
 **Type:** string
 
@@ -417,7 +431,13 @@ Not supported currently.
 label?: string
 ```
 
-Notification label. The **label** field functions similarly to an ID and can be used alone or combined with the ID to serve as the notification identifier. It is recommended to use the ID. If the **label** is not empty when a notification is published, the corresponding **label** must also be specified when the notification is updated or deleted. The size does not exceed 202 bytes, and the excess part will be truncated. The value is empty by default.
+Notification label.
+
+The **label** field functions similarly to an ID and can be used alone or combined with the ID to serve as the notification identifier. It is recommended to use the ID.
+
+If the **label** is not empty when a notification is published, the corresponding **label** must also be specified when the notification is updated or deleted.
+
+The size does not exceed 202 bytes, and the excess part will be truncated. The value is empty by default.
 
 **Type:** string
 
@@ -433,7 +453,9 @@ Notification label. The **label** field functions similarly to an ID and can be 
 largeIcon?: image.PixelMap
 ```
 
-Icon on the right of the notification. Empty by default. When `content` uses [NotificationPictureContent](arkts-notification-notificationcontent-notificationpicturecontent-i.md), setting this parameter does not take effect.<br>The total bytes of the icon pixel number does not exceed 192KB (the total bytes of the icon pixel number is obtained through [getPixelBytesNumber](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md#getpixelbytesnumber)). After exceeding, the setting does not take effect. The recommended icon pixel dimensions are 128*128. The actual display effect depends on device capabilities and the notification center UI style<!--RP1--><!--RP1End-->.
+Icon on the right of the notification. The value is empty by default. When `content` uses [NotificationPictureContent](arkts-notification-notificationcontent-notificationpicturecontent-i.md), setting this parameter does not take effect.
+
+The total number of bytes of the icon pixels does not exceed 192KB (the total number of bytes of the icon pixels is obtained through [getPixelBytesNumber](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md#getpixelbytesnumber)). If this limit is exceeded, the setting does not take effect. The recommended icon pixel dimensions are 128*128. The actual display effect depends on device capabilities and the notification center UI style<!--RP1--><!--RP1End-->.
 
 **Type:** [image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)
 
@@ -449,7 +471,7 @@ Icon on the right of the notification. Empty by default. When `content` uses [No
 notificationFlags?: NotificationFlags
 ```
 
-Notification flags. The default value is empty. This parameter is writable since API version 23. You can set this parameter to reduce the notification modes. This parameter does not take effect when the notification slot type is LIVE_VIEW.
+[Notification flag](../../../notification/notification-glossary.md#notification-flags) settings. The value is empty by default. This parameter becomes writable since API version 23. Setting this parameter can reduce the notification reminder modes. When the notification slot type is [LIVE_VIEW](arkts-notification-notificationmanager-slottype-e.md), setting this parameter does not take effect.
 
 **Type:** [NotificationFlags](arkts-notification-notificationflags-i.md)
 
@@ -468,7 +490,7 @@ Notification flags. The default value is empty. This parameter is writable since
 notificationSlotType?: notificationManager.SlotType
 ```
 
-Notification slot type. The default value is **OTHER_TYPES**. The notification reminder mode varies depending on the notification slot type.
+Type of the [notification slot](../../../notification/notification-glossary.md#notification-slot). The default value is OTHER_TYPES. Different slot types have different [notification reminder modes](../../../notification/notification-glossary.md#notification-reminder-mode).
 
 **Type:** [notificationManager.SlotType](arkts-notification-notificationmanager-slottype-e.md)
 
@@ -484,7 +506,9 @@ Notification slot type. The default value is **OTHER_TYPES**. The notification r
 overlayIcon?: image.PixelMap
 ```
 
-Overlay icon of the notification, which replaces the icon on the left of the notification. Empty by default. This API takes effect only when [notificationSlotType](arkts-notification-notificationrequest-i.md) is set to SOCIAL_COMMUNICATION. <br>The total bytes of the icon pixel number does not exceed 192KB (the total bytes of the icon pixel number is obtained through [getPixelBytesNumber](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md#getpixelbytesnumber)). After exceeding, the setting does not take effect. The recommended icon pixel dimensions are 128*128. The actual display effect depends on device capabilities and the notification center UI style<!--RP3--><!--RP3End-->.
+Overlay icon of the notification, which replaces the icon on the left of the notification. The value is empty by default. This API takes effect only when [notificationSlotType](arkts-notification-notificationrequest-i.md) is set to SOCIAL_COMMUNICATION.
+
+The total number of bytes of the icon pixels does not exceed 192KB (the total number of bytes of the icon pixels is obtained through [getPixelBytesNumber](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md#getpixelbytesnumber)). If this limit is exceeded, the setting does not take effect. The recommended icon pixel dimensions are 128*128. The actual display effect depends on device capabilities and the notification center UI style<!--RP3--><!--RP3End-->.
 
 **Type:** [image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)
 
@@ -500,7 +524,7 @@ Overlay icon of the notification, which replaces the icon on the left of the not
 priorityNotificationType?: notificationManager.PriorityNotificationType
 ```
 
-Notification priority type. The default value is **OTHER**. If this parameter is set, the notification is pinned on the top and displayed in a highlighted manner in the notification center. The actual display effect depends on the device capability and notification center UI style.
+Notification priority type. The default value is OTHER. Setting this parameter can pin the notification to the top and display it prominently in the [notification center](../../../notification/notification-glossary.md#notification-center). <!--RP2--><!--RP2End--> The actual display effect depends on device capabilities and the notification center UI style.
 
 **Type:** [notificationManager.PriorityNotificationType](arkts-notification-notificationmanager-prioritynotificationtype-e.md)
 
@@ -518,7 +542,9 @@ Notification priority type. The default value is **OTHER**. If this parameter is
 removalWantAgent?: WantAgent
 ```
 
-Behavior intent of an application, which is triggered when a notification is removed. This parameter is left empty by default. Currently, redirection to UIAbility is not supported. Only common events can be published (that is, the **actionType** field of WantAgentInfo is set to **4**).
+Behavior intent of an application, which is triggered when a notification is removed. This parameter is left empty by default.
+
+Currently, redirection to UIAbility is not supported. Only common events can be published (that is, the **actionType** field of [WantAgentInfo](../../apis-ability-kit/arkts-apis/arkts-ability-wantagentinfo-i.md) is set to **4**).
 
 **Type:** [WantAgent](../../apis-ability-kit/arkts-apis/arkts-ability-wantagent-depr-t.md)
 
@@ -550,7 +576,9 @@ Whether to display the time when the notification is delivered. Not supported cu
 smallIcon?: image.PixelMap
 ```
 
-Icon on the left of the notification. Empty by default. It is automatically generated by the system and does not need to be configured by the developer.<br>The total bytes of the icon pixel number does not exceed 192KB (the total bytes of the icon pixel number is obtained through [getPixelBytesNumber](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md#getpixelbytesnumber)). After exceeding, the setting does not take effect. The recommended icon pixel dimensions are 128*128. The actual display effect depends on device capabilities and the notification center UI style<!--RP4--><!--RP4End-->.
+Icon on the left of the notification. The value is empty by default. It is automatically generated by the system and does not need to be configured by the developer.
+
+The total number of bytes of the icon pixels does not exceed 192KB (the total number of bytes of the icon pixels is obtained through [getPixelBytesNumber](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md#getpixelbytesnumber)). If this limit is exceeded, the setting does not take effect. The recommended icon pixel dimensions are 128*128. The actual display effect depends on device capabilities and the notification center UI style<!--RP4--><!--RP4End-->.
 
 **Type:** [image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)
 
@@ -566,14 +594,14 @@ Icon on the left of the notification. Empty by default. It is automatically gene
 sound?: string
 ```
 
-Path of the custom application notification ringtone resource. By default, this parameter is left empty. The following two types of audio resources are supported:
+Resource path of the application notification [customized ringtone](../../../notification/notification-glossary.md#customized-ringtone). The value is empty by default. Two audio resource sources are supported:
 
-- Resource file: Audio file preconfigured in the application. It must be stored in the **resources/rawfile**  
-directory. To use the resource file, directly pass the file name.  
-- Sandbox file: Audio file downloaded from the network or generated by the user. It must be stored in the **files**  
-directory or its subdirectory in the EL1 area of the [sandbox file directory](../../../file-management/app-sandbox-directory.md#application-sandbox-directory-and-application-sandbox-path). The input format is **uri::{fileUri}**, where **fileUri** is the path obtained through [getUriFromPath](../../apis-core-file-kit/arkts-apis/arkts-corefile-fileuri-geturifrompath-f.md). For example, if an application transfers the downloaded audio resource demo.mp3 to the sandbox file directory /data/storage/el1/base/files/, the path obtained through **getUriFromPath** is **file://{bundleName}/data/storage/el1/base/files/demo.mp3**. You can use this path to release a notification to play the audio resource downloaded by the application.
+- Resource file: a preset audio file of the application. The resource file must be placed in the resources/rawfile  
+directory, and the file name is passed in directly when used.  
+- Sandbox file: an audio file downloaded from the network or generated by the user. It must be placed in the files  
+directory or its subdirectories in the EL1 area of the [sandbox file directory](../../../file-management/app-sandbox-directory.md#application-file-directory-and-application-file-path). The format passed in is uri::{fileUri}, where fileUri is the path obtained through [getUriFromPath](../../apis-core-file-kit/arkts-apis/arkts-corefile-fileuri-geturifrompath-f.md). For example, the application passes the downloaded audio resource demo.mp3 into the sandbox file directory /data/storage/el1/base/files/, and the path obtained through getUriFromPath is file://{bundleName}/data/storage/el1/base/files/demo.mp3. Publishing a notification with this path plays the audio resource downloaded by the application.
 
-Supported formats: M4A, AAC, MP3, OGG, WAV, FLAC, and AMR.
+Formats such as m4a, aac, mp3, ogg, wav, flac, and amr are supported.
 
 **Type:** string
 

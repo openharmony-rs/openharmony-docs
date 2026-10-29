@@ -4,7 +4,7 @@
 interface RdbDataChangeNode
 ```
 
-Represents the RDB data change result. The data returned by the callback is not larger than 10 MB in size.
+Represents the result of subscribing to or unsubscribing from RDB data changes. The callback supports data transfer of no more than 10 MB.
 
 **Since:** 10
 

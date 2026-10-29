@@ -69,8 +69,6 @@ A value that is not a number. In equality comparisons, NaN does not equal any va
 
 <!--Device-NumberConstructor-readonly NaN: number--><!--Device-NumberConstructor-readonly NaN: number-End-->
 
-**Test API:** This API is used only in automated test scripts.
-
 ## NEGATIVE_INFINITY
 
 ```TypeScript

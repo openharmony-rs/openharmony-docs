@@ -17,7 +17,7 @@ function setSlotByBundle(bundle: BundleOption, slot: NotificationSlot, callback:
 
 **废弃版本：** 9
 
-**替代接口：** [setSlotByBundle](arkts-notification-notificationmanager-setslotbybundle-f-sys.md)
+**替代接口：** [setSlotByBundle](arkts-notification-notificationmanager-setslotbybundle-f-sys.md#setslotbybundle-1)(bundle: BundleOption, slot: NotificationSlot, callback: AsyncCallback&lt;void&gt;)
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -73,7 +73,7 @@ function setSlotByBundle(bundle: BundleOption, slot: NotificationSlot): Promise<
 
 **废弃版本：** 9
 
-**替代接口：** [setSlotByBundle](arkts-notification-notificationmanager-setslotbybundle-f-sys.md)
+**替代接口：** [setSlotByBundle](arkts-notification-notificationmanager-setslotbybundle-f-sys.md#setslotbybundle-2)(bundle: BundleOption, slot: NotificationSlot)
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 

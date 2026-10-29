@@ -29,11 +29,13 @@ import { appManager } from '@kit.AbilityKit';
 | [isRamConstrainedDevice](arkts-ability-appmanager-isramconstraineddevice-f.md#isramconstraineddevice-2) | 查询当前设备是否为RAM受限设备（内存资源严重受限的设备）。使用callback异步回调。 |
 | [isRunningInStabilityTest](arkts-ability-appmanager-isrunninginstabilitytest-f.md#isrunninginstabilitytest-1) | 查询当前系统是否处于稳定性测试场景。使用callback异步回调。 |
 | [isRunningInStabilityTest](arkts-ability-appmanager-isrunninginstabilitytest-f.md#isrunninginstabilitytest-2) | 查询当前系统是否处于稳定性测试场景。使用Promise异步回调。 |
-| killProcessesByBundleName | 终止指定应用包名的应用进程。使用Promise异步回调。 |
+| [killProcessesByBundleName](arkts-ability-appmanager-killprocessesbybundlename-f.md#killprocessesbybundlename-2) | 终止指定应用包名的应用进程。使用Promise异步回调。 |
 | [off('applicationState')](arkts-ability-appmanager-off-f.md#offapplicationstate) | 注销应用状态监听器。使用callback异步回调。 |
 | [off('applicationState')](arkts-ability-appmanager-off-f.md#offapplicationstate) | 注销应用状态监听器。使用Promise异步回调。 |
+| [offFocusedApplicationChanged](arkts-ability-appmanager-offfocusedapplicationchanged-f.md#offfocusedapplicationchanged-1) | 注销用于监听获焦应用变化的观察者。 |
 | [on('applicationState')](arkts-ability-appmanager-on-f.md#onapplicationstate) | 注册所有应用程序的状态监听器。 |
 | [on('applicationState')](arkts-ability-appmanager-on-f.md#onapplicationstate) | 注册指定应用程序的状态监听器。 |
+| [onFocusedApplicationChanged](arkts-ability-appmanager-onfocusedapplicationchanged-f.md#onfocusedapplicationchanged-1) | 注册观察者以监听获焦应用变化。 |
 
 <!--Del-->
 ### 函数（系统接口）
@@ -63,8 +65,8 @@ import { appManager } from '@kit.AbilityKit';
 | [killProcessesByBundleName](arkts-ability-appmanager-killprocessesbybundlename-f-sys.md#killprocessesbybundlename-1) | 通过Bundle名称终止进程。使用Promise异步回调。 |
 | [killProcessesByBundleName](arkts-ability-appmanager-killprocessesbybundlename-f-sys.md#killprocessesbybundlename-3) | 通过Bundle名称终止进程。使用callback异步回调。 |
 | [killProcessesInBatch](arkts-ability-appmanager-killprocessesinbatch-f-sys.md#killprocessesinbatch-1) | 批量终止进程。使用Promise异步回调。该接口在PC/2in1中可正常调用，在其他设备类型中返回801错误码。 |
-| [killProcessWithAccount](arkts-ability-appmanager-killprocesswithaccount-f-sys.md#killprocesswithaccount-1) | 终止account进程。使用Promise异步回调。 |
-| [killProcessWithAccount](arkts-ability-appmanager-killprocesswithaccount-f-sys.md#killprocesswithaccount-2) | 终止account进程。使用Promise异步回调。 |
+| [killProcessWithAccount](arkts-ability-appmanager-killprocesswithaccount-f-sys.md#killprocesswithaccount-1) | 终止指定系统账号下的应用进程。使用Promise异步回调。 |
+| [killProcessWithAccount](arkts-ability-appmanager-killprocesswithaccount-f-sys.md#killprocesswithaccount-2) | 终止指定系统账号下的应用进程。使用Promise异步回调。 |
 | [killProcessWithAccount](arkts-ability-appmanager-killprocesswithaccount-f-sys.md#killprocesswithaccount-3) | 终止account进程。使用callback异步回调。 |
 | [off('appForegroundState')](arkts-ability-appmanager-off-f-sys.md#offappforegroundstate) | 注销应用启动和退出的监听器。 |
 | [off('abilityFirstFrameState')](arkts-ability-appmanager-off-f-sys.md#offabilityfirstframestate) | 取消注册监听Ability首帧绘制完成事件观察者对象。 |
@@ -95,6 +97,8 @@ import { appManager } from '@kit.AbilityKit';
 | [AbilityStateData](arkts-ability-appmanager-abilitystatedata-t.md) | Ability状态信息。 |
 | [ApplicationStateObserver](arkts-ability-appmanager-applicationstateobserver-t.md) | 应用状态监听器。 |
 | [AppStateData](arkts-ability-appmanager-appstatedata-t.md) | 应用状态信息。 |
+| [FocusedApplicationInfo](arkts-ability-appmanager-focusedapplicationinfo-t.md) | 定义获焦应用变化时上报的获焦应用信息。 |
+| [FocusedApplicationObserver](arkts-ability-appmanager-focusedapplicationobserver-t.md) | 定义用于监听获焦应用变化的观察者。 |
 | [ProcessData](arkts-ability-appmanager-processdata-t.md) | 进程数据。 |
 | [ProcessInformation](arkts-ability-appmanager-processinformation-t.md) | 进程信息。 |
 

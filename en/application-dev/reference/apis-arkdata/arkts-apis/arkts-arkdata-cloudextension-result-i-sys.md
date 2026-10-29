@@ -4,7 +4,7 @@
 export interface Result<T>
 ```
 
-Represents the data sharing result.
+Represents the device-cloud sharing result.
 
 **Since:** 11
 
@@ -44,7 +44,7 @@ Error code.
 description?: string
 ```
 
-Detailed description of the error code. The default value is undefined.
+Detailed description of the error code. The default value is **undefined**.
 
 **Type:** string
 
@@ -62,7 +62,7 @@ Detailed description of the error code. The default value is undefined.
 value?: T
 ```
 
-Value returned. The specific type is specified by the T parameter. The default value is undefined.
+Value returned. The specific type is specified by the **T** parameter. The default value is **undefined**.
 
 **Type:** T
 

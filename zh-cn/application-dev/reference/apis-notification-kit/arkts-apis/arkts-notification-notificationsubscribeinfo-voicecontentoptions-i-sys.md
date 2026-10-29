@@ -20,7 +20,8 @@ export interface VoiceContentOptions
 enabled?: boolean
 ```
 
-是否订阅通知语音播报内容。  
+是否订阅通知语音播报内容。
+
 - true：订阅。  
 - false：不订阅。默认值为false。
 

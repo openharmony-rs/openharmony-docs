@@ -4,7 +4,7 @@
 enum AutoSyncTriggerMode
 ```
 
-Indicates automatic synchronization triggering method for Device-Cloud data.
+Enumerates the trigger modes of automatic synchronization.
 
 **Since:** 26.0.0
 
@@ -18,7 +18,7 @@ Indicates automatic synchronization triggering method for Device-Cloud data.
 ACCOUNT_LOGIN = 0
 ```
 
-Indicates account login trigger method.
+Account login trigger mode.
 
 **Since:** 26.0.0
 
@@ -34,7 +34,7 @@ Indicates account login trigger method.
 CLOUD_DATA_CHANGE = 3
 ```
 
-Indicates the cloud-side data change trigger mode.
+Cloud data change trigger mode.
 
 **Since:** 26.0.0
 
@@ -50,7 +50,7 @@ Indicates the cloud-side data change trigger mode.
 CLOUD_SWITCH_ON = 1
 ```
 
-Indicates the synchronization switch trigger mode.
+Sync switch trigger mode.
 
 **Since:** 26.0.0
 
@@ -66,7 +66,7 @@ Indicates the synchronization switch trigger mode.
 NETWORK_RECOVER = 2
 ```
 
-Indicates the trigger mode for network reconnection after recovery.
+Trigger mode after network recovery.
 
 **Since:** 26.0.0
 
@@ -82,7 +82,7 @@ Indicates the trigger mode for network reconnection after recovery.
 USER_CHANGE = 4
 ```
 
-Indicates the user change trigger method.
+User change trigger mode.
 
 **Since:** 26.0.0
 

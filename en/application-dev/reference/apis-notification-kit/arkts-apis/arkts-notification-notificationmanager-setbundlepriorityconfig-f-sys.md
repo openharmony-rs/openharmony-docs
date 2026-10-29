@@ -12,7 +12,7 @@ import { notificationManager } from '@kit.NotificationKit';
 function setBundlePriorityConfig(bundle: BundleOption, value: string): Promise<void>
 ```
 
-Sets the priority configuration of an application.
+Sets the priority configuration of an application, including the keyword-based priority notification recognition rules. This API uses a promise to return the result.
 
 **Since:** 23
 
@@ -29,7 +29,7 @@ Sets the priority configuration of an application.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | bundle | [BundleOption](arkts-notification-notificationmanager-bundleoption-t.md) | Yes | Bundle information of the application. |
-| value | string | Yes | Priority configuration of an application. |
+| value | string | Yes | Priority function configuration of the application. The string length cannot exceed 3074 bytes. If the limit is exceeded, error code 401 is returned. |
 
 **Return value:**
 

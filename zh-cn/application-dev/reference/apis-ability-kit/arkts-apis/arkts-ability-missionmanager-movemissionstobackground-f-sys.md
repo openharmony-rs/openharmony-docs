@@ -106,7 +106,7 @@ function moveMissionsToBackground(missionIds: Array<number>): Promise<Array<numb
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;number&gt;&gt; | Promise对象，返回任务ID。 |
+| Promise&lt;Array&lt;number&gt;&gt; | Promise对象，返回任务ID数组。 |
 
 **错误码：**
 

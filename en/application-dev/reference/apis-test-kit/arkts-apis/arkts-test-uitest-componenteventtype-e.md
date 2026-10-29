@@ -12,8 +12,6 @@ Enumerates the component operation event types that can be listened for.
 
 **System capability:** SystemCapability.Test.UiTest
 
-**Test API:** This API is used only in automated test scripts.
-
 ## COMPONENT_CLICKED
 
 ```TypeScript

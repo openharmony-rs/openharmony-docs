@@ -12,13 +12,13 @@ import { notificationManager } from '@kit.NotificationKit';
 function requestEnableNotification(callback: AsyncCallback<void>): void
 ```
 
-当前应用请求通知使能。使用callback异步回调。
+当前应用请求通知授权。使用callback异步回调。
 
 **起始版本：** 9
 
 **废弃版本：** 12
 
-**替代接口：** [requestEnableNotification](arkts-notification-notificationmanager-requestenablenotification-f.md)
+**替代接口：** [requestEnableNotification](#requestenablenotification-2)(context: UIAbilityContext, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-notificationManager-function requestEnableNotification(callback: AsyncCallback<void>): void--><!--Device-notificationManager-function requestEnableNotification(callback: AsyncCallback<void>): void-End-->
 
@@ -28,7 +28,7 @@ function requestEnableNotification(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当应用请求通知使能成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当应用请求通知授权成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -63,7 +63,7 @@ notificationManager.requestEnableNotification(requestEnableNotificationCallback)
 function requestEnableNotification(context: UIAbilityContext, callback: AsyncCallback<void>): void
 ```
 
-应用需要获取用户授权才能发送通知。在通知发布前调用该接口，可以拉起通知授权弹窗，让用户选择是否允许发送通知。使用callback异步回调。
+应用需要获取用户授权才能发送通知。在通知发布前调用该接口，可以拉起[通知授权](../../../notification/notification-glossary.md#notification-authorization通知授权)弹窗，让用户选择是否允许发送通知。使用callback异步回调。
 
 > **说明：** 
 > 
@@ -81,11 +81,11 @@ function requestEnableNotification(context: UIAbilityContext, callback: AsyncCal
 
 **参见：**
 
-isNotificationEnabled 查询当前应用通知授权状态。
-
-[openNotificationSettings](arkts-notification-notificationmanager-opennotificationsettings-f.md#opennotificationsettings-1) 拉起当前应用的通知设置界面。
+[isNotificationEnabled](arkts-notification-notificationmanager-isnotificationenabled-f.md#isnotificationenabled-3) 查询当前应用通知授权状态。
 
 [openNotificationSettingsWithResult](arkts-notification-notificationmanager-opennotificationsettingswithresult-f.md#opennotificationsettingswithresult-1) 拉起应用的通知设置界面。
+
+[openNotificationSettings](arkts-notification-notificationmanager-opennotificationsettings-f.md#opennotificationsettings-1) 拉起当前应用的通知设置界面。
 
 **参数：**
 
@@ -142,13 +142,13 @@ class MyAbility extends UIAbility {
 function requestEnableNotification(): Promise<void>
 ```
 
-当前应用请求通知使能。使用Promise异步回调。
+当前应用请求通知授权。使用Promise异步回调。
 
 **起始版本：** 9
 
 **废弃版本：** 12
 
-**替代接口：** [requestEnableNotification](arkts-notification-notificationmanager-requestenablenotification-f.md)
+**替代接口：** [requestEnableNotification](#requestenablenotification-4)(context: UIAbilityContext)
 
 <!--Device-notificationManager-function requestEnableNotification(): Promise<void>--><!--Device-notificationManager-function requestEnableNotification(): Promise<void>-End-->
 
@@ -189,7 +189,7 @@ notificationManager.requestEnableNotification().then(() => {
 function requestEnableNotification(context: UIAbilityContext): Promise<void>
 ```
 
-应用需要获取用户授权才能发送通知。在通知发布前调用该接口，可以拉起通知授权弹窗，让用户选择是否允许发送通知。使用Promise异步回调。
+应用需要获取用户授权才能发送通知。在通知发布前调用该接口，可以拉起[通知授权](../../../notification/notification-glossary.md#notification-authorization通知授权)弹窗，让用户选择是否允许发送通知。使用Promise异步回调。
 
 > **说明：** 
 > 
@@ -207,11 +207,11 @@ function requestEnableNotification(context: UIAbilityContext): Promise<void>
 
 **参见：**
 
-isNotificationEnabled 查询当前应用通知授权状态。
-
-[openNotificationSettings](arkts-notification-notificationmanager-opennotificationsettings-f.md#opennotificationsettings-1) 拉起当前应用的通知设置界面。
+[isNotificationEnabled](arkts-notification-notificationmanager-isnotificationenabled-f.md#isnotificationenabled-3) 查询当前应用通知授权状态。
 
 [openNotificationSettingsWithResult](arkts-notification-notificationmanager-opennotificationsettingswithresult-f.md#opennotificationsettingswithresult-1) 拉起应用的通知设置界面。
+
+[openNotificationSettings](arkts-notification-notificationmanager-opennotificationsettings-f.md#opennotificationsettings-1) 拉起当前应用的通知设置界面。
 
 **参数：**
 

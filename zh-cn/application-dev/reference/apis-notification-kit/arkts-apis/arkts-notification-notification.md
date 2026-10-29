@@ -1,4 +1,4 @@
-# @ohos.notification
+# @ohos.notification(Notification模块)
 
 本模块提供通知管理的能力，包括发布、取消发布通知，创建、获取、移除通知通道，订阅、取消订阅通知，获取通知的使能状态、角标使能状态，获取通知的相关信息等。
 
@@ -6,7 +6,7 @@
 
 **废弃版本：** 9
 
-**替代接口：** notificationSubscribe/notificationSubscribe
+**替代接口：** [notificationManager](arkts-notification-notificationmanager.md)
 
 <!--Device-unnamed-declare namespace notification--><!--Device-unnamed-declare namespace notification-End-->
 
@@ -23,8 +23,8 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| addSlot | 创建指定类型的通知通道（callback形式）。 |
-| addSlot | 创建指定类型的通知通道（Promise形式）。 |
+| [addSlot](arkts-notification-notification-addslot-depr-f.md#addslot-3) | 创建指定类型的通知通道（callback形式）。 |
+| [addSlot](arkts-notification-notification-addslot-depr-f.md#addslot-4) | 创建指定类型的通知通道（Promise形式）。 |
 | [cancel](arkts-notification-notification-cancel-depr-f.md#cancel-1) | 取消与指定通知ID相匹配的已发布通知（callback形式）。 |
 | [cancel](arkts-notification-notification-cancel-depr-f.md#cancel-2) | 通过通知ID和通知标签取消已发布的通知（callback形式）。 |
 | [cancel](arkts-notification-notification-cancel-depr-f.md#cancel-3) | 取消与指定通知ID相匹配的已发布通知，label可以指定也可以不指定（Promise形式）。 |
@@ -40,10 +40,10 @@
 | [getSlot](arkts-notification-notification-getslot-depr-f.md#getslot-2) | 获取一个指定类型的通知通道（Promise形式）。 |
 | [getSlots](arkts-notification-notification-getslots-depr-f.md#getslots-1) | 获取此应用程序的所有通知通道（callback形式）。 |
 | [getSlots](arkts-notification-notification-getslots-depr-f.md#getslots-2) | 获取此应用程序的所有通知通道（Promise形式）。 |
-| [isDistributedEnabled](arkts-notification-notification-isdistributedenabled-depr-f.md#isdistributedenabled-1) | 查询设备是否支持分布式通知（Callback形式）。 |
-| [isDistributedEnabled](arkts-notification-notification-isdistributedenabled-depr-f.md#isdistributedenabled-2) | 查询设备是否支持分布式通知（Promise形式）。 |
-| [isSupportTemplate](arkts-notification-notification-issupporttemplate-depr-f.md#issupporttemplate-1) | 在使用[通知模板](arkts-notification-notificationtemplate-i.md)发布通知前，可以通过该接口查询是否支持对应的通知模板。使用callback异步回调。 |
-| [isSupportTemplate](arkts-notification-notification-issupporttemplate-depr-f.md#issupporttemplate-2) | 在使用[通知模板](arkts-notification-notificationtemplate-i.md)发布通知前，可以通过该接口查询是否支持对应的通知模板。使用Promise异步回调。 |
+| [isDistributedEnabled](arkts-notification-notification-isdistributedenabled-depr-f.md#isdistributedenabled-1) | 查询设备是否支持[分布式通知](../../../notification/notification-glossary.md#distributed-notification分布式通知)（Callback形式）。 |
+| [isDistributedEnabled](arkts-notification-notification-isdistributedenabled-depr-f.md#isdistributedenabled-2) | 查询设备是否支持[分布式通知](../../../notification/notification-glossary.md#distributed-notification分布式通知)（Promise形式）。 |
+| [isSupportTemplate](arkts-notification-notification-issupporttemplate-depr-f.md#issupporttemplate-1) | 在使用[NotificationTemplate](arkts-notification-notificationtemplate-i.md)发布通知前，可以通过该接口查询是否支持对应的通知模板。使用callback异步回调。 |
+| [isSupportTemplate](arkts-notification-notification-issupporttemplate-depr-f.md#issupporttemplate-2) | 在使用[NotificationTemplate](arkts-notification-notificationtemplate-i.md)发布通知前，可以通过该接口查询是否支持对应的通知模板。使用Promise异步回调。 |
 | [publish](arkts-notification-notification-publish-depr-f.md#publish-1) | 发布通知（callback形式）。 |
 | [publish](arkts-notification-notification-publish-depr-f.md#publish-2) | 发布通知（Promise形式）。 |
 | [removeAllSlots](arkts-notification-notification-removeallslots-depr-f.md#removeallslots-1) | 删除所有通知通道（callback形式）。 |
@@ -58,16 +58,16 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [addSlot](arkts-notification-notification-addslot-depr-f-sys.md#addslot-1) | 创建通知渠道。使用callback异步回调。 |
-| [addSlot](arkts-notification-notification-addslot-depr-f-sys.md#addslot-2) | 创建通知渠道。使用Promise异步回调。 |
+| [addSlot](arkts-notification-notification-addslot-depr-f-sys.md#addslot-1) | 创建通知通道（callback形式）。 |
+| [addSlot](arkts-notification-notification-addslot-depr-f-sys.md#addslot-2) | 创建通知通道（Promise形式）。 |
 | [addSlots](arkts-notification-notification-addslots-depr-f-sys.md#addslots-1) | 创建多个通知通道（callback形式）。 |
 | [addSlots](arkts-notification-notification-addslots-depr-f-sys.md#addslots-2) | 创建多个通知通道（Promise形式）。 |
 | [displayBadge](arkts-notification-notification-displaybadge-depr-f-sys.md#displaybadge-1) | 设定指定应用的角标使能状态（Callback形式）。 |
 | [displayBadge](arkts-notification-notification-displaybadge-depr-f-sys.md#displaybadge-2) | 设定指定应用的角标使能状态（Promise形式）。 |
-| [enableDistributed](arkts-notification-notification-enabledistributed-depr-f-sys.md#enabledistributed-1) | 设置设备是否支持分布式通知（Callback形式）。 |
-| [enableDistributed](arkts-notification-notification-enabledistributed-depr-f-sys.md#enabledistributed-2) | 设置设备是否支持分布式通知（Promise形式）。 |
-| [enableDistributedByBundle](arkts-notification-notification-enabledistributedbybundle-depr-f-sys.md#enabledistributedbybundle-1) | 设置指定应用是否支持分布式通知（Callback形式）。 |
-| [enableDistributedByBundle](arkts-notification-notification-enabledistributedbybundle-depr-f-sys.md#enabledistributedbybundle-2) | 设置指定应用是否支持分布式通知（Promise形式）。 |
+| [enableDistributed](arkts-notification-notification-enabledistributed-depr-f-sys.md#enabledistributed-1) | 设置设备是否支持[分布式通知](../../../notification/notification-glossary.md#distributed-notification分布式通知)（Callback形式）。 |
+| [enableDistributed](arkts-notification-notification-enabledistributed-depr-f-sys.md#enabledistributed-2) | 设置设备是否支持[分布式通知](../../../notification/notification-glossary.md#distributed-notification分布式通知)（Promise形式）。 |
+| [enableDistributedByBundle](arkts-notification-notification-enabledistributedbybundle-depr-f-sys.md#enabledistributedbybundle-1) | 设置指定应用是否支持[分布式通知](../../../notification/notification-glossary.md#distributed-notification分布式通知)（Callback形式）。 |
+| [enableDistributedByBundle](arkts-notification-notification-enabledistributedbybundle-depr-f-sys.md#enabledistributedbybundle-2) | 设置指定应用是否支持[分布式通知](../../../notification/notification-glossary.md#distributed-notification分布式通知)（Promise形式）。 |
 | [enableNotification](arkts-notification-notification-enablenotification-depr-f-sys.md#enablenotification-1) | 设定指定应用的通知使能状态（Callback形式）。 |
 | [enableNotification](arkts-notification-notification-enablenotification-depr-f-sys.md#enablenotification-2) | 设定指定应用的通知使能状态（Promise形式）。 |
 | [getAllActiveNotifications](arkts-notification-notification-getallactivenotifications-depr-f-sys.md#getallactivenotifications-1) | 获取当前未删除的所有通知（Callback形式）。 |
@@ -84,16 +84,16 @@
 | [getSlotsByBundle](arkts-notification-notification-getslotsbybundle-depr-f-sys.md#getslotsbybundle-2) | 获取指定应用的所有通知通道（Promise形式）。 |
 | [isBadgeDisplayed](arkts-notification-notification-isbadgedisplayed-depr-f-sys.md#isbadgedisplayed-1) | 获取指定应用的角标使能状态（Callback形式）。 |
 | [isBadgeDisplayed](arkts-notification-notification-isbadgedisplayed-depr-f-sys.md#isbadgedisplayed-2) | 获取指定应用的角标使能状态（Promise形式）。 |
-| [isDistributedEnabledByBundle](arkts-notification-notification-isdistributedenabledbybundle-depr-f-sys.md#isdistributedenabledbybundle-1) | 根据应用的包获取应用程序是否支持分布式通知（Callback形式）。 |
-| [isDistributedEnabledByBundle](arkts-notification-notification-isdistributedenabledbybundle-depr-f-sys.md#isdistributedenabledbybundle-2) | 查询指定应用是否支持分布式通知（Promise形式）。 |
+| [isDistributedEnabledByBundle](arkts-notification-notification-isdistributedenabledbybundle-depr-f-sys.md#isdistributedenabledbybundle-1) | 根据应用的包获取应用程序是否支持[分布式通知](../../../notification/notification-glossary.md#distributed-notification分布式通知)（Callback形式）。 |
+| [isDistributedEnabledByBundle](arkts-notification-notification-isdistributedenabledbybundle-depr-f-sys.md#isdistributedenabledbybundle-2) | 查询指定应用是否支持[分布式通知](../../../notification/notification-glossary.md#distributed-notification分布式通知)（Promise形式）。 |
 | [isNotificationEnabled](arkts-notification-notification-isnotificationenabled-depr-f-sys.md#isnotificationenabled-1) | 获取指定应用的通知使能状态（Callback形式）。 |
 | [isNotificationEnabled](arkts-notification-notification-isnotificationenabled-depr-f-sys.md#isnotificationenabled-2) | 获取指定应用的通知使能状态（Promise形式）。 |
 | [isNotificationEnabled](arkts-notification-notification-isnotificationenabled-depr-f-sys.md#isnotificationenabled-3) | 获取通知使能状态（Callback形式）。 |
 | [isNotificationEnabled](arkts-notification-notification-isnotificationenabled-depr-f-sys.md#isnotificationenabled-4) | 获取通知使能状态（Promise形式）。 |
 | [isNotificationEnabled](arkts-notification-notification-isnotificationenabled-depr-f-sys.md#isnotificationenabled-5) | 获取指定用户ID下的通知使能状态。使用callback异步回调。 |
 | [isNotificationEnabled](arkts-notification-notification-isnotificationenabled-depr-f-sys.md#isnotificationenabled-6) | 获取指定用户下的通知使能状态。使用Promise异步回调。 |
-| [publish](arkts-notification-notification-publish-depr-f-sys.md#publish-3) | 发布通知给指定的用户。使用callback异步回调。 |
-| [publish](arkts-notification-notification-publish-depr-f-sys.md#publish-4) | 发布通知给指定的用户。使用Promise异步回调。 |
+| [publish](arkts-notification-notification-publish-depr-f-sys.md#publish-3) | 发布通知给指定的用户（callback形式）。 |
+| [publish](arkts-notification-notification-publish-depr-f-sys.md#publish-4) | 发布通知给指定的用户（Promise形式）。 |
 | [remove](arkts-notification-notification-remove-depr-f-sys.md#remove-1) | 删除指定通知（Callback形式）。 |
 | [remove](arkts-notification-notification-remove-depr-f-sys.md#remove-2) | 删除指定通知（Promise形式）。 |
 | [remove](arkts-notification-notification-remove-depr-f-sys.md#remove-3) | 删除指定通知（Callback形式）。 |
@@ -111,12 +111,12 @@
 | [setDoNotDisturbDate](arkts-notification-notification-setdonotdisturbdate-depr-f-sys.md#setdonotdisturbdate-4) | 指定用户设置免打扰时间（Promise形式）。 |
 | [setSlotByBundle](arkts-notification-notification-setslotbybundle-depr-f-sys.md#setslotbybundle-1) | 设定指定应用的通知通道（Callback形式）。 |
 | [setSlotByBundle](arkts-notification-notification-setslotbybundle-depr-f-sys.md#setslotbybundle-2) | 设定指定应用的通知通道（Promise形式）。 |
-| [subscribe](arkts-notification-notification-subscribe-depr-f-sys.md#subscribe-1) | 订阅当前用户下所有应用的通知。使用callback异步回调。 |
-| [subscribe](arkts-notification-notification-subscribe-depr-f-sys.md#subscribe-2) | 订阅通知并指定订阅信息。使用callback异步回调。 |
-| [subscribe](arkts-notification-notification-subscribe-depr-f-sys.md#subscribe-3) | 订阅通知并指定订阅信息。使用Promise异步回调。 |
+| [subscribe](arkts-notification-notification-subscribe-depr-f-sys.md#subscribe-1) | 订阅当前用户下所有应用的通知（callback形式）。 |
+| [subscribe](arkts-notification-notification-subscribe-depr-f-sys.md#subscribe-2) | 订阅通知并指定订阅信息（callback形式）。 |
+| [subscribe](arkts-notification-notification-subscribe-depr-f-sys.md#subscribe-3) | 订阅通知并指定订阅信息（Promise形式）。 |
 | [supportDoNotDisturbMode](arkts-notification-notification-supportdonotdisturbmode-depr-f-sys.md#supportdonotdisturbmode-1) | 查询是否支持免打扰功能（Callback形式）。 |
 | [supportDoNotDisturbMode](arkts-notification-notification-supportdonotdisturbmode-depr-f-sys.md#supportdonotdisturbmode-2) | 查询是否支持免打扰功能（Promise形式）。 |
-| [unsubscribe](arkts-notification-notification-unsubscribe-depr-f-sys.md#unsubscribe-1) | 取消订阅（callbcak形式）。 |
+| [unsubscribe](arkts-notification-notification-unsubscribe-depr-f-sys.md#unsubscribe-1) | 取消订阅（callback形式）。 |
 | [unsubscribe](arkts-notification-notification-unsubscribe-depr-f-sys.md#unsubscribe-2) | 取消订阅（Promise形式）。 |
 <!--DelEnd-->
 

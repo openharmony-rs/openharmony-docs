@@ -102,8 +102,8 @@ adjustPanelRect(flag: PanelFlag, rect: EnhancedPanelRect): void
 > [adjustPanelRect](#adjustpanelrect-1)。<br>
 > <br>
 > 此接口为同步接口，接口返回成功仅代表系统侧收到设置的请求，不代表设置完成。如果需要感知执行过程中的异常，建议使用<br>
-> updatePanelRect或<br>
-> updatePanelRectSync <br>
+> [updatePanelRect](#updatepanelrect-2)或<br>
+> [updatePanelRectSync](#updatepanelrectsync-2) <br>
 > 。<br>
 > <br>
 > 手机的PanelFlag是FLG_FLOATING且面板宽度在0~288vp之间时，面板底部功能键将随面板宽度动态调整大小，为了保证最佳用户体验，建议面板宽度不小于90vp。<br>
@@ -558,7 +558,7 @@ off(type: 'sizeChange', callback?: SizeChangeCallback): void
 > ），输入法应用可通过该回调获取的真实面板大小，完成最终的面板布局刷新。<br>
 > <br>
 > - 从API version 12-14开始支持，此接口回调函数中仅包含[window.Size](../../apis-arkui/arkts-apis/arkts-arkui-window-size-i.md)类型的必选参数。<br><br>
-> - 从API version 15起，调用<br>adjustPanelRect接口后，此<br>接口回调函数增加[KeyboardArea](arkts-ime-inputmethodengine-keyboardarea-i.md)类型的可选参数。
+> - 从API version 15起，调用<br>[adjustPanelRect](#adjustpanelrect-2)接口后，此<br>接口回调函数增加[KeyboardArea](arkts-ime-inputmethodengine-keyboardarea-i.md)类型的可选参数。
 
 **起始版本：** 12
 
@@ -654,7 +654,7 @@ on(type: 'sizeChange', callback: SizeChangeCallback): void
 > ），输入法应用可通过该回调获取的真实面板大小，完成最终的面板布局刷新。<br>
 > <br>
 > - 从API version 12-14开始支持，此接口回调函数中仅包含[window.Size](../../apis-arkui/arkts-apis/arkts-arkui-window-size-i.md)类型的必选参数。<br><br>
-> - 从API version 15起，调用<br>adjustPanelRect接口后，此<br>接口回调函数增加[KeyboardArea](arkts-ime-inputmethodengine-keyboardarea-i.md)类型的可选参数。
+> - 从API version 15起，调用<br>[adjustPanelRect](#adjustpanelrect-2)接口后，此<br>接口回调函数增加[KeyboardArea](arkts-ime-inputmethodengine-keyboardarea-i.md)类型的可选参数。
 
 **起始版本：** 12
 
@@ -791,7 +791,7 @@ panel.resize(500, 1000).then(() => {
 setImmersiveEffect(effect: ImmersiveEffect): void
 ```
 
-设置输入法应用的沉浸效果。<br> <br>- 只有在[启用沉浸式模式](#setimmersivemode)时，才能使用渐变模式和流光模式。<br>- 只有在启用渐变模式时，才能使用流光模式。<br>- 未启用渐变模式时，渐变高度必须为0px。<br>- 只有系统应用才能设置流光模式。<br>- 必须先调用以下任一接口，才能调用当前接口：<br> - [adjustPanelRect](#adjustpanelrect-1)(支持API version 12) <br> - adjustPanelRect(支持API version 15) <br> - [resize](#resize)(支持API version 10)
+设置输入法应用的沉浸效果。<br> <br>- 只有在[启用沉浸式模式](#setimmersivemode)时，才能使用渐变模式和流光模式。<br>- 只有在启用渐变模式时，才能使用流光模式。<br>- 未启用渐变模式时，渐变高度必须为0px。<br>- 只有系统应用才能设置流光模式。<br>- 必须先调用以下任一接口，才能调用当前接口：<br> - [adjustPanelRect](#adjustpanelrect-1)(支持API version 12) <br> - [adjustPanelRect](#adjustpanelrect-2)(支持API version 15) <br> - [resize](#resize)(支持API version 10)
 
 **起始版本：** 20
 

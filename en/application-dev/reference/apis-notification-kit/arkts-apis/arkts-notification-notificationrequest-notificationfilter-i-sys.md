@@ -4,7 +4,7 @@
 export interface NotificationFilter
 ```
 
-Describes the filter criteria for querying the live view.
+Describes the filter criteria for querying live view notifications.
 
 **Since:** 11
 
@@ -20,7 +20,7 @@ Describes the filter criteria for querying the live view.
 bundle: BundleOption
 ```
 
-Bundle information of the live view.
+Bundle information of the [live view notification](../../../notification/notification-glossary.md#live-view-notification).
 
 **Type:** [BundleOption](arkts-notification-notificationcommondef-bundleoption-i.md)
 

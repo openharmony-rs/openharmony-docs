@@ -34,7 +34,7 @@ function getControlledAppLists(): Promise<Array<string>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;string&gt;&gt; | Promise that returns the appIdentifiers of controlled application for the current user. |
+| Promise&lt;Array&lt;string&gt;&gt; | Promise对象，返回当前用户受企业DLP控制的应用程序列表。 |
 
 **错误码：**
 

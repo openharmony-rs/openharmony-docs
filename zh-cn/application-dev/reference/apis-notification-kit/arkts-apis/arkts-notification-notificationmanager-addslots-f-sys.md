@@ -12,7 +12,7 @@ import { notificationManager } from '@kit.NotificationKit';
 function addSlots(slots: Array<NotificationSlot>, callback: AsyncCallback<void>): void
 ```
 
-创建多个通知渠道。使用callback异步回调。
+创建多个[通知渠道](../../../notification/notification-glossary.md#notification-slot通知渠道)。使用callback异步回调。
 
 **起始版本：** 9
 
@@ -77,7 +77,7 @@ notificationManager.addSlots(notificationSlotArray, addSlotsCallback);
 function addSlots(slots: Array<NotificationSlot>): Promise<void>
 ```
 
-创建多个通知渠道。使用Promise异步回调。
+创建多个[通知渠道](../../../notification/notification-glossary.md#notification-slot通知渠道)。使用Promise异步回调。
 
 **起始版本：** 9
 

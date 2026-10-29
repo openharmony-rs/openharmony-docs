@@ -57,8 +57,6 @@ Determines whether all the members of an array satisfy the specified test.
 
 <!--Device-BigInt64Array-every(predicate: (value: bigint, index: number, array: BigInt64Array) => boolean, thisArg?: any): boolean--><!--Device-BigInt64Array-every(predicate: (value: bigint, index: number, array: BigInt64Array) => boolean, thisArg?: any): boolean-End-->
 
-**Test API:** This API is used only in automated test scripts.
-
 **Parameters:**
 
 | Name | Type | Mandatory | Description |

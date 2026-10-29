@@ -258,7 +258,7 @@ Removes all notifications for a specified application. This API uses a promise t
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| bundle | BundleOption | No | Bundle information of the application. By default, this parameter is left empty, indicating that all notifications will be removed. |
+| bundle | BundleOption | No | Bundle information of the specified application. Default is empty. When this parameter is empty, it indicates deleting notifications of all applications. |
 
 **Return value:**
 

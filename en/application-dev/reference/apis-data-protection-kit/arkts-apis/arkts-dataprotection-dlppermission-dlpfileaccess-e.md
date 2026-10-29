@@ -12,6 +12,22 @@ Enumerates the permissions on a DLP file.
 
 **System capability:** SystemCapability.Security.DataLossPrevention
 
+## ATOMIC_CONTROL
+
+```TypeScript
+ATOMIC_CONTROL = 4
+```
+
+The user has atomic control on the file, enabling fine-grained permission management via DlpAtomicPermissionType bit masks. This provides more granular control compared to FULL_CONTROL which grants all permissions.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DLPFileAccess-ATOMIC_CONTROL = 4--><!--Device-DLPFileAccess-ATOMIC_CONTROL = 4-End-->
+
+**System capability:** SystemCapability.Security.DataLossPrevention
+
 ## CONTENT_EDIT
 
 ```TypeScript

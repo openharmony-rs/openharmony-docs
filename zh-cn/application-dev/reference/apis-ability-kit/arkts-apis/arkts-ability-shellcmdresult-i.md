@@ -8,15 +8,13 @@ export interface ShellCmdResult
 
 > **说明：** 
 > 
-> 本模块接口仅可在单元测试框架中使用。
+> 本模块接口仅可在[单元测试框架](../../../application-test/unittest-guidelines.md)中使用。
 
 **起始版本：** 8
 
 <!--Device-unnamed-export interface ShellCmdResult--><!--Device-unnamed-export interface ShellCmdResult-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**测试接口：** 此接口仅在自动化测试脚本中使用。
 
 ## exitCode
 

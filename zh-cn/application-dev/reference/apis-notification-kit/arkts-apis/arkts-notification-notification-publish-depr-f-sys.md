@@ -11,13 +11,13 @@
 function publish(request: NotificationRequest, userId: number, callback: AsyncCallback<void>): void
 ```
 
-发布通知给指定的用户。使用callback异步回调。
+发布通知给指定的用户（callback形式）。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [publish](arkts-notification-notificationmanager-publish-f.md)
+**替代接口：** [publish](arkts-notification-notificationmanager-publish-f.md)(request: NotificationRequest, userId: number, callback: AsyncCallback&lt;void&gt;)
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -76,13 +76,13 @@ Notification.publish(notificationRequest, userId, publishCallback);
 function publish(request: NotificationRequest, userId: number): Promise<void>
 ```
 
-发布通知给指定的用户。使用Promise异步回调。
+发布通知给指定的用户（Promise形式）。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [publish](arkts-notification-notificationmanager-publish-f.md)
+**替代接口：** [publish](arkts-notification-notificationmanager-publish-f.md)(request: NotificationRequest, userId: number)
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -103,7 +103,7 @@ function publish(request: NotificationRequest, userId: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 <!--Del-->
 **示例**

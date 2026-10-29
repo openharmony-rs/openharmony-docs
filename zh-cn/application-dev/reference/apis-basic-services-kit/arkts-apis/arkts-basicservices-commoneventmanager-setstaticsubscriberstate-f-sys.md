@@ -12,7 +12,7 @@ import { commonEventManager } from '@kit.BasicServicesKit';
 function setStaticSubscriberState(enable: boolean, callback: AsyncCallback<void>): void
 ```
 
-为当前应用设置静态订阅事件使能或去使能状态。使用callback异步回调。
+为当前应用设置[静态订阅](../../../basic-services/common-event/common-event-glossary.md#static-subscription静态订阅)事件使能或去使能状态。使用callback异步回调。
 
 **起始版本：** 10
 
@@ -64,7 +64,7 @@ commonEventManager.setStaticSubscriberState(true, (err: BusinessError) => {
 function setStaticSubscriberState(enable: boolean): Promise<void>
 ```
 
-为当前应用设置静态订阅事件使能或去使能状态。使用Promise异步回调。
+为当前应用设置[静态订阅](../../../basic-services/common-event/common-event-glossary.md#static-subscription静态订阅)事件使能或去使能状态。使用Promise异步回调。
 
 **起始版本：** 10
 
@@ -119,7 +119,7 @@ commonEventManager.setStaticSubscriberState(false).then(() => {
 function setStaticSubscriberState(enable: boolean, events?: Array<string>): Promise<void>
 ```
 
-设置当前应用的静态订阅公共事件的使能状态。使用Promise异步回调。
+设置当前应用的[静态订阅](../../../basic-services/common-event/common-event-glossary.md#static-subscription静态订阅)公共事件的使能状态。使用Promise异步回调。
 
 **起始版本：** 12
 

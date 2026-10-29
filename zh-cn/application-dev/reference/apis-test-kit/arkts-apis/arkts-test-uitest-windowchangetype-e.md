@@ -12,8 +12,6 @@ declare enum WindowChangeType
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**测试接口：** 此接口仅在自动化测试脚本中使用。
-
 ## WINDOW_ADDED
 
 ```TypeScript

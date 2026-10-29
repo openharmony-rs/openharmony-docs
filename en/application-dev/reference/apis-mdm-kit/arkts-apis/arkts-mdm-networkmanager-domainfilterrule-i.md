@@ -102,8 +102,6 @@ Domain name. This parameter is mandatory when a domain name filtering rule is ad
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
-**Test API:** This API is used only in automated test scripts.
-
 ## family
 
 ```TypeScript

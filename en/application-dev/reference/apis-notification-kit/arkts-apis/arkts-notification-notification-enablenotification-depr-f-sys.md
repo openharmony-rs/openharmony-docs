@@ -17,7 +17,7 @@ Sets whether to enable notification for a specified application. This API uses a
 
 **Deprecated since:** 9
 
-**Substitutes:** [setNotificationEnable](arkts-notification-notificationmanager-setnotificationenable-f-sys.md)
+**Substitutes:** [setNotificationEnable](arkts-notification-notificationmanager-setnotificationenable-f-sys.md#setnotificationenable-1)(bundle: BundleOption, enable: boolean, callback: AsyncCallback&lt;void&gt;)
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -69,7 +69,7 @@ Sets whether to enable notification for a specified application. This API uses a
 
 **Deprecated since:** 9
 
-**Substitutes:** [setNotificationEnable](arkts-notification-notificationmanager-setnotificationenable-f-sys.md)
+**Substitutes:** [setNotificationEnable](arkts-notification-notificationmanager-setnotificationenable-f-sys.md#setnotificationenable-2)(bundle: BundleOption, enable: boolean)
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
 

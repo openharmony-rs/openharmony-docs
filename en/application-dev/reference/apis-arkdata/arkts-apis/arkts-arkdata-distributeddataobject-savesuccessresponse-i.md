@@ -4,7 +4,7 @@
 interface SaveSuccessResponse
 ```
 
-Represents the information returned by the callback of save..
+Represents the information returned by the callback of save.
 
 **Since:** 9
 
@@ -24,7 +24,7 @@ import { distributedDataObject } from '@kit.ArkData';
 deviceId: string
 ```
 
-ID of the device where the distributed data object is stored. The value local indicates a local device.
+ID of the device where the distributed data object is stored. The value **local** indicates a local device.
 
 **Type:** string
 

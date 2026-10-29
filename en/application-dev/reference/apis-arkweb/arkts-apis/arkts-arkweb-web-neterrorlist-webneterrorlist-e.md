@@ -3449,7 +3449,7 @@ FLIP data received without receiving a SYN_REPLY on the stream.
 ERR_TEMPORARILY_THROTTLED = -139
 ```
 
-The request throttler module cancelled this request to avoid DDOS.
+The request throttler module cancelled this request to avoid DDoS.
 
 **Since:** 12
 

@@ -287,7 +287,7 @@
 - [@ohos.charger(Charger)](arkts-basicservices-charger.md)<!--DelEnd-->
   <!--Del-->
   - [ChargeType(system api)](arkts-basicservices-charger-chargetype-e-sys.md)<!--DelEnd-->
-- [@ohos.commonEventManager](arkts-basicservices-commoneventmanager.md)
+- [@ohos.commonEventManager(Common Event)](arkts-basicservices-commoneventmanager.md)
   - [createSubscriber](arkts-basicservices-commoneventmanager-createsubscriber-f.md)
   - [createSubscriberSync](arkts-basicservices-commoneventmanager-createsubscribersync-f.md)
   - [publish](arkts-basicservices-commoneventmanager-publish-f.md)
@@ -1148,7 +1148,7 @@
   - [PathSeparatorStrategy](arkts-basicservices-zlib-pathseparatorstrategy-e.md)
   - [ReturnStatus](arkts-basicservices-zlib-returnstatus-e.md)
   - [ErrorCode](arkts-basicservices-zlib-errorcode-e.md)
-- [@ohos.commonEvent](arkts-basicservices-commonevent.md)
+- [@ohos.commonEvent(Common Event)](arkts-basicservices-commonevent.md)
   - [createSubscriber](arkts-basicservices-commonevent-createsubscriber-depr-f.md)
   - [publish](arkts-basicservices-commonevent-publish-depr-f.md)
   <!--Del-->
@@ -1259,11 +1259,11 @@
   - [PrintExtensionContext](arkts-basicservices-printextensioncontext.md)
     - [PrintExtensionContext](arkts-basicservices-printextensioncontext-c.md)
 - commonEvent<!--arkts-basicserviceskit-commonevent-->
-  - [commonEventData(Common event data.)](arkts-basicservices-commoneventdata.md)
+  - [commonEventData(CommonEventData)](arkts-basicservices-commoneventdata.md)
     - [CommonEventData](arkts-basicservices-commoneventdata-i.md)
-  - [commonEventPublishData(The CommonEventPublishData module provides APIs for defining common event content and attributes.)](arkts-basicservices-commoneventpublishdata.md)
+  - [commonEventPublishData(CommonEventPublishData)](arkts-basicservices-commoneventpublishdata.md)
     - [CommonEventPublishData](arkts-basicservices-commoneventpublishdata-i.md)
-  - [commonEventSubscribeInfo(The CommonEventSubscribeInfo module provides APIs for providing subscriber information.)](arkts-basicservices-commoneventsubscribeinfo.md)
+  - [commonEventSubscribeInfo(CommonEventSubscribeInfo)](arkts-basicservices-commoneventsubscribeinfo.md)
     - [CommonEventSubscribeInfo](arkts-basicservices-commoneventsubscribeinfo-i.md)
-  - [commonEventSubscriber(The subscriber of common event)](arkts-basicservices-commoneventsubscriber.md)
+  - [commonEventSubscriber(CommonEventSubscriber)](arkts-basicservices-commoneventsubscriber.md)
     - [CommonEventSubscriber](arkts-basicservices-commoneventsubscriber-i.md)

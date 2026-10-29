@@ -36,7 +36,7 @@ DISABLE = 0
 ENABLE = 2
 ```
 
-应用通知的优先级开关为全部通知状态。
+应用通知均设置为优先通知。
 
 **起始版本：** 23
 
@@ -52,7 +52,7 @@ ENABLE = 2
 ENABLE_BY_INTELLIGENT = 1
 ```
 
-应用通知的优先级开关为智能识别状态。
+应用通知的优先级开关为智能识别状态。允许经智能识别、用户关键词匹配、应用规则匹配等方式设置为[优先通知](../../../notification/notification-glossary.md#priority-notification优先通知)。
 
 **起始版本：** 23
 

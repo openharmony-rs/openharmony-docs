@@ -14,8 +14,6 @@ function setSmartReminderEnabled(deviceType: string, enable: boolean): Promise<v
 
 Sets a smart reminder for cross-device collaboration. This API uses a promise to return the result.
 
-This API can be properly called on devices other than wearables and TVs. If it is called on wearables and TVs, error code 801 is returned.
-
 **Since:** 12
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
@@ -30,8 +28,8 @@ This API can be properly called on devices other than wearables and TVs. If it i
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| deviceType | string | Yes | Device type. |
-| enable | boolean | Yes | Indicates whether the specified application supports a smart reminder for cross-device collaboration (**true**: enabled; **false**: disabled). |
+| deviceType | string | Yes | Device type. <br>Since API version 18, the following device types are supported: <br>- **headset**: wearable audio device <br>- **liteWearable**: lite wearable <br>- **wearable**: wearable <br>Since API version 20, the following device types are supported: <br>- **headset**: wearable audio device <br>- **liteWearable**: lite wearable <br>- **wearable**: wearable <br>- **current**: current device <br>- **2in1**: PC <br>- **tablet**: tablet |
+| enable | boolean | Yes | Whether the application supports setting a smart reminder through cross-device collaboration (**true**: supported; **false**: not supported). |
 
 **Return value:**
 

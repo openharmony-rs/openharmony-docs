@@ -4,7 +4,7 @@
 export type BadgeNumberCallbackData = _BadgeNumberCallbackData
 ```
 
-回调返回监听到的应用信息。
+应用角标数量变化的回调数据。
 
 **类型：** _BadgeNumberCallbackData
 

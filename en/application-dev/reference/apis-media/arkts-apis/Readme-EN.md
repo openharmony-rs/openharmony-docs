@@ -136,6 +136,7 @@
   - [BufferingInfoType](arkts-media-media-bufferinginfotype-e.md)
   - [CodecMimeType](arkts-media-media-codecmimetype-e.md)
   - [ContainerFormatType](arkts-media-media-containerformattype-e.md)
+  - [DestHDRMode](arkts-media-media-desthdrmode-e.md)
   - [FetchResult](arkts-media-media-fetchresult-e.md)
   - [FileGenerationMode](arkts-media-media-filegenerationmode-e.md)
   - [HdrType](arkts-media-media-hdrtype-e.md)

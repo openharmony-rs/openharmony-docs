@@ -18,7 +18,7 @@ Describes the priority type of a notification.
 AT_ME = 'AT_ME'
 ```
 
-Message that mentions me.
+The notification priority type is @me.
 
 **Since:** 23
 
@@ -32,7 +32,7 @@ Message that mentions me.
 OTHER = 'OTHER'
 ```
 
-Default.
+The notification priority type is default.
 
 **Since:** 23
 
@@ -46,7 +46,7 @@ Default.
 PRIMARY_CONTACT = 'PRIMARY_CONTACT'
 ```
 
-Primary contact.
+The notification priority type is primary contact.
 
 **Since:** 23
 
@@ -60,7 +60,7 @@ Primary contact.
 SCHEDULE_REMINDER = 'SCHEDULE_REMINDER'
 ```
 
-Schedule reminder.
+The notification priority type is schedule reminder.
 
 **Since:** 23
 
@@ -74,7 +74,7 @@ Schedule reminder.
 URGENT_MESSAGE = 'URGENT_MESSAGE'
 ```
 
-Urgent message.
+The notification priority type is urgent message.
 
 **Since:** 23
 

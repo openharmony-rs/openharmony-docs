@@ -4,7 +4,7 @@
 export declare struct ToolBarV2
 ```
 
-The toolbar is used to display action options for the current screen content. It is displayed at the bottom of the screen and is suitable for scenarios where quick action entries need to be provided to users. A maximum of five entries can be displayed at the bottom. Any excess entries are collapsed into a "More" item, which is displayed on the far right. It is suitable for scenarios where quick operations on the current page content are needed, helping users quickly access common functions and improving operation efficiency.<br> This component is implemented based on [state management (V2)](../../../ui/state-management/arkts-state-management-overview.md#state-management-v2). Compared with [state management (V1)](../../../ui/state-management/arkts-state-management-overview.md#state-management-v1), state management (V2) enhances the deep observation and management capabilities of data objects, no longer limited to the component level. With state management (V2), developers can more flexibly control the data and state of the toolbar through this component, achieving more efficient UI refresh. <br>
+The toolbar is used to display action options for the current screen content. It is displayed at the bottom of the screen and is suitable for scenarios where quick action entries need to be provided to users. A maximum of five entries can be displayed at the bottom. Any excess entries are collapsed into a "More" item, which is displayed on the far right. It is suitable for scenarios where quick operations on the current page content are needed, helping users quickly access common functions and improving operation efficiency.<br> ToolbarV2 supports configuring advanced toolbar items via `AdvancedToolbarV2Item` (which extends `ToolBarV2Item`). A toolbar with configured advanced items is more flexible, allowing you to customize titles, overflow menus, item grouping, and more. This component is implemented based on [state management (V2)](../../../ui/state-management/arkts-state-management-overview.md#state-management-v2). Compared with [state management (V1)](../../../ui/state-management/arkts-state-management-overview.md#state-management-v1), state management (V2) enhances the deep observation and management capabilities of data objects, no longer limited to the component level. With state management (V2), developers can more flexibly control the data and state of the toolbar through this component, achieving more efficient UI refresh. <br>
 
 > **NOTE:** 
 > 
@@ -25,7 +25,7 @@ The toolbar is used to display action options for the current screen content. It
 ## Modules to Import
 
 ```TypeScript
-import { ToolBarV2ItemState, ToolBarV2SymbolGlyph, ToolBarV2SymbolGlyphOptions, ToolBarV2ItemText, ToolBarV2ItemTextOptions, ToolBarV2ItemIconType, ToolBarV2ItemImage, ToolBarV2ItemImageOptions, ToolBarV2, ToolBarV2Item, ToolBarV2ItemOptions, ToolBarV2Modifier, ToolBarV2ItemAction } from '@kit.ArkUI';
+import { ToolBarV2ItemState, ToolBarV2SymbolGlyph, ToolBarV2SymbolGlyphOptions, ToolBarV2ItemText, ToolBarV2ItemTextOptions, ToolBarV2ItemIconType, ToolBarV2ItemImage, ToolBarV2ItemImageOptions, ToolBarV2, ToolBarV2Item, ToolBarV2ItemOptions, ToolBarV2Modifier, ToolBarV2ItemAction, AdvancedToolbarV2Item, AdvancedToolbarV2ItemOptions, AdvancedToolBarV2Modifier, BarBackgroundVisibility, ToolbarV2ItemGroupStyle, ToolbarV2ItemGroupStyleOptions, ToolbarV2ItemPlacement, ToolbarV2OverflowMenuStyle, ToolbarV2PaddingOptions, ToolbarV2StyleConfigs, ToolbarV2StyleOptions, ToolbarV2TitleConfigs, ToolbarV2TitleOptions, ToolbarV2TitleStyle, ToolbarV2TitleStyleOptions } from '@kit.ArkUI';
 ```
 
 ## activatedIndex
@@ -34,7 +34,7 @@ import { ToolBarV2ItemState, ToolBarV2SymbolGlyph, ToolBarV2SymbolGlyphOptions, 
 activatedIndex?: number
 ```
 
-Define toolbarV2 activate item index, default is -1.
+Define toolbarV2 activate item index, default is -1. Which is only used for ToolBarV2Item.
 
 **Type:** number
 
@@ -48,13 +48,33 @@ Define toolbarV2 activate item index, default is -1.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
+## advancedToolBarModifier
+
+```TypeScript
+advancedToolBarModifier?: AdvancedToolBarV2Modifier
+```
+
+Define advanced toolbarV2 modifier. Merges layout attributes, style configs, and overflow menu style into a single modifier.
+
+**Type:** [AdvancedToolBarV2Modifier](arkts-arkui-arkui-advanced-toolbarv2-advancedtoolbarv2modifier-c.md)
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+<!--Device-ToolBarV2-advancedToolBarModifier?: AdvancedToolBarV2Modifier--><!--Device-ToolBarV2-advancedToolBarModifier?: AdvancedToolBarV2Modifier-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
 ## dividerModifier
 
 ```TypeScript
 dividerModifier?: DividerModifier
 ```
 
-Define divider Modifier.
+Define toolbarV2 divider Modifier.
 
 **Type:** [DividerModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
 
@@ -74,7 +94,7 @@ Define divider Modifier.
 toolBarList: ToolBarV2Item[]
 ```
 
-Define toolbarV2 item list.
+Define toolbarV2 item list. Using ToolBarV2Item[] constitutes a simple toolbar. `AdvancedToolbarV2Item` (which extends `ToolBarV2Item`) can be used for advanced layout scenarios such as titles, overflow menus, and item grouping.
 
 **Type:** [ToolBarV2Item](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2item-c.md)[]
 

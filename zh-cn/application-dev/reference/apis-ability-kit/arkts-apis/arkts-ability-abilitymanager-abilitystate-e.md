@@ -18,7 +18,7 @@ Ability的状态，该类型为枚举，可配合[AbilityRunningInfo](arkts-abil
 BACKGROUND = 10
 ```
 
-表示ability为后台状态。
+表示Ability为后台状态。
 
 **起始版本：** 14
 
@@ -32,7 +32,7 @@ BACKGROUND = 10
 BACKGROUNDING = 12
 ```
 
-表示ability为后台调度中状态。
+表示Ability为后台调度中状态。
 
 **起始版本：** 14
 
@@ -46,7 +46,7 @@ BACKGROUNDING = 12
 FOCUS = 2
 ```
 
-表示ability为获焦状态。
+表示Ability为获焦状态。
 
 **起始版本：** 14
 
@@ -60,7 +60,7 @@ FOCUS = 2
 FOREGROUND = 9
 ```
 
-表示ability为前台状态。
+表示Ability为前台状态。
 
 **起始版本：** 14
 
@@ -74,7 +74,7 @@ FOREGROUND = 9
 FOREGROUNDING = 11
 ```
 
-表示ability为前台调度中状态。
+表示Ability为前台调度中状态。
 
 **起始版本：** 14
 
@@ -88,7 +88,7 @@ FOREGROUNDING = 11
 INITIAL = 0
 ```
 
-表示ability为初始化状态。
+表示Ability为初始化状态。
 
 **起始版本：** 14
 

@@ -225,7 +225,7 @@ function replaceUrl(options: RouterOptions, mode: RouterMode): Promise<void>
 
 > **说明：** 
 > 
-> - 从API version 9开始支持，除Lite Wearable外，从API version 18开始废弃，建议使用replaceUrl替代。replaceUrl需先通过[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)中的[getRouter](arkts-arkui-arkui-uicontext-uicontext-c.md#getrouter)获取[Router](arkts-arkui-arkui-uicontext-uicontext-c.md)实例，然后通过该实例进行调用。
+> - 从API version 9开始支持，除Lite Wearable外，从API version 18开始废弃，建议使用[replaceUrl](arkts-arkui-arkui-uicontext-router-c.md#replaceurl-4)替代。replaceUrl需先通过[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)中的[getRouter](arkts-arkui-arkui-uicontext-uicontext-c.md#getrouter)获取[Router](arkts-arkui-arkui-uicontext-uicontext-c.md)实例，然后通过该实例进行调用。
 > 
 > - 从API version 10开始，可以通过使用[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)中的[getRouter](arkts-arkui-arkui-uicontext-uicontext-c.md#getrouter)方法获取当前UI上下文关联的[Router](arkts-arkui-arkui-uicontext-uicontext-c.md)对象。
 
@@ -233,7 +233,7 @@ function replaceUrl(options: RouterOptions, mode: RouterMode): Promise<void>
 
 **废弃版本：** 18
 
-**替代接口：** replaceUrl(options: router.RouterOptions, mode: router.RouterMode)
+**替代接口：** [replaceUrl](arkts-arkui-arkui-uicontext-router-c.md#replaceurl-4)(options: router.RouterOptions, mode: router.RouterMode)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 

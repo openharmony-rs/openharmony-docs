@@ -28,7 +28,7 @@ function getCalendarManager(context: Context) : CalendarManager
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md) | 是 | 应用上下文Context。 |
+| context | [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md) | 是 | 应用上下文Context，Stage模型的应用Context定义见Context。 |
 
 **返回值：**
 

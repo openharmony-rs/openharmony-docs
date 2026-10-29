@@ -401,7 +401,7 @@ proxy?: string
 
 设置代理地址，其最大长度为512个字符，默认为空。
 
-代理地址格式:"http://&lt;domain or address&gt;:&lt;port&gt;"
+代理地址格式:"http://<domain or address>:<port>"
 
 **类型：** string
 
@@ -502,8 +502,6 @@ internal://cache/path/to/file.txt"。
 <!--Device-Config-saveas?: string--><!--Device-Config-saveas?: string-End-->
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
-
-**测试接口：** 此接口仅在自动化测试脚本中使用。
 
 ## timeout
 

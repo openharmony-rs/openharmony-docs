@@ -51,7 +51,7 @@ cancel: () => void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
 | [12500002](../errorcode-useriam.md#12500002-身份认证系统通用错误码) | General operation error. |
 
@@ -91,7 +91,7 @@ off: (name: AuthEventKey) => void
 
 **废弃版本：** 10
 
-**替代接口：** off
+**替代接口：** [off](arkts-userauthentication-userauth-userauthinstance-i.md#off)
 
 <!--Device-AuthInstance-off: (name: AuthEventKey) => void--><!--Device-AuthInstance-off: (name: AuthEventKey) => void-End-->
 
@@ -154,7 +154,7 @@ on: (name: AuthEventKey, callback: AuthEvent) => void
 
 **废弃版本：** 10
 
-**替代接口：** on
+**替代接口：** [on](arkts-userauthentication-userauth-userauthinstance-i.md#on)
 
 <!--Device-AuthInstance-on: (name: AuthEventKey, callback: AuthEvent) => void--><!--Device-AuthInstance-on: (name: AuthEventKey, callback: AuthEvent) => void-End-->
 
@@ -241,7 +241,7 @@ start: () => void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
 | [12500001](../errorcode-useriam.md#12500001-认证不通过) | Authentication failed. |
 | [12500002](../errorcode-useriam.md#12500002-身份认证系统通用错误码) | General operation error. |

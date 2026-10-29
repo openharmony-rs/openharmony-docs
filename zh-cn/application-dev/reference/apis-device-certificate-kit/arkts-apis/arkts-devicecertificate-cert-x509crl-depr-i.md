@@ -2326,7 +2326,7 @@ verify(key: cryptoFramework.PubKey): Promise<void>
 > **说明：** 
 > 
 > 从API version 9开始支持，从API version 11开始废弃，建议使用
-> X509CRL.verify()替代。
+> [X509CRL.verify()](arkts-devicecertificate-cert-x509crl-i.md#verify-2)替代。
 
 **起始版本：** 9
 

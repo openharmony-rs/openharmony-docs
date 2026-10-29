@@ -4,7 +4,7 @@
 export type NotificationSwitchChangedCallback = _NotificationSwitchChangedCallback
 ```
 
-注册由[notificationManager.setNotificationSwitch]{@link./@ohos.notificationManager:notificationManager.setNotificationSwitch}接口设置的通知开关状态变化的回调函数类型。
+注册由[notificationManager.setNotificationSwitch](arkts-notification-notificationmanager-setnotificationswitch-f-sys.md)接口设置的通知开关状态变化的回调函数类型。
 
 **类型：** _NotificationSwitchChangedCallback
 

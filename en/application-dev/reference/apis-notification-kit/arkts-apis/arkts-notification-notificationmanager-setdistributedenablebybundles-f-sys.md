@@ -12,9 +12,7 @@ import { notificationManager } from '@kit.NotificationKit';
 function setDistributedEnableByBundles(bundleEnableInfos: Array<DistributedBundleEnableInfo>, deviceType: string): Promise<void>
 ```
 
-Sets whether applications enable cross-device collaboration. This API uses a promise to return the result.
-
-This API can be properly called on devices other than wearables and TVs. If it is called on wearables and TVs, error code 801 is returned.
+Sets whether applications support [cross-device collaboration](../../../notification/notification-glossary.md#cross-device-collaboration) in batches. This API uses a promise to return the result.
 
 **Since:** 20
 
@@ -31,13 +29,13 @@ This API can be properly called on devices other than wearables and TVs. If it i
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | bundleEnableInfos | Array&lt;[DistributedBundleEnableInfo](arkts-notification-notificationmanager-distributedbundleenableinfo-i-sys.md)&gt; | Yes | Applications to set. |
-| deviceType | string | Yes | Device type. |
+| deviceType | string | Yes | Device type. <br>Since API version 18, the following device types are supported: <br>- **headset**: wearable audio device <br>- **liteWearable**: lite wearable <br>- **wearable**: wearable <br>Since API version 20, the following device types are supported: <br>- **headset**: wearable audio device <br>- **liteWearable**: lite wearable <br>- **wearable**: wearable <br>- **current**: current device <br>- **2in1**: PC <br>- **tablet**: tablet |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;void&gt; | Promise that returns no result. |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes:**
 

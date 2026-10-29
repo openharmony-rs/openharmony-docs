@@ -1,4 +1,4 @@
-# NotificationInfo
+# NotificationInfo(NotificationInfo)
 
 ## Summary
 
@@ -6,4 +6,4 @@
 
 | Name | Description |
 | --- | --- |
-| [NotificationInfo](arkts-notification-notificationinfo-i.md) | The **NotificationInfo** module describes the notification information delivered to the onReceiveMessage callback of ExtensionAbility for notification subscriptions. |
+| [NotificationInfo](arkts-notification-notificationinfo-i.md) | Notification information in the [onReceiveMessage](arkts-notification-application-notificationsubscriberextensionability-notificationsubscriberextensionability-c.md#onreceivemessage) callback of the [notification subscription](../../../notification/notification-glossary.md#notification-subscription) extension ability. |

@@ -17,7 +17,7 @@ function cancelAsBundle(
   ): void
 ```
 
-取消代理通知。使用callback异步回调。
+取消[代理通知](../../../notification/notification-glossary.md#notification-proxy代理通知)。使用callback异步回调。
 
 **起始版本：** 9
 
@@ -82,7 +82,7 @@ notificationManager.cancelAsBundle(0, representativeBundle, userId, cancelAsBund
 function cancelAsBundle(id: number, representativeBundle: string, userId: number): Promise<void>
 ```
 
-取消代理通知。使用Promise异步回调。
+取消[代理通知](../../../notification/notification-glossary.md#notification-proxy代理通知)。使用Promise异步回调。
 
 **起始版本：** 9
 
@@ -148,7 +148,7 @@ notificationManager.cancelAsBundle(0, representativeBundle, userId).then(() => {
 function cancelAsBundle(representativeBundle: BundleOption, id: number): Promise<void>
 ```
 
-取消代理通知。使用Promise异步回调。
+取消[代理通知](../../../notification/notification-glossary.md#notification-proxy代理通知)。使用Promise异步回调。
 
 **起始版本：** 12
 

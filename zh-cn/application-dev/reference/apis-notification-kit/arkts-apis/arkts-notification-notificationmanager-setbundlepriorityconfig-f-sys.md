@@ -12,7 +12,7 @@ import { notificationManager } from '@kit.NotificationKit';
 function setBundlePriorityConfig(bundle: BundleOption, value: string): Promise<void>
 ```
 
-设置应用的优先功能配置。
+设置应用的优先功能配置，包括关键词优先通知识别规则。使用Promise异步回调。
 
 **起始版本：** 23
 
@@ -29,7 +29,7 @@ function setBundlePriorityConfig(bundle: BundleOption, value: string): Promise<v
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundle | [BundleOption](arkts-notification-notificationmanager-bundleoption-t.md) | 是 | 指定应用的包信息。 |
-| value | string | 是 | 应用的优先功能配置。 |
+| value | string | 是 | 应用的优先功能配置。字符串长度不超过3074字节，超出后返回401错误码。 |
 
 **返回值：**
 

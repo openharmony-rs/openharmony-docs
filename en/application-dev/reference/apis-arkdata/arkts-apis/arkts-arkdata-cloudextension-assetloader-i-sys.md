@@ -42,7 +42,7 @@ Downloads assets. This API uses a promise to return the result.
 | --- | --- | --- | --- |
 | table | string | Yes | Table name. |
 | gid | string | Yes | Unique identifier generated for the data added to the cloud. |
-| prefix | string | Yes | Asset prefix information. |
+| prefix | string | Yes | Prefix of the asset download directory. |
 | assets | Array&lt;[CloudAsset](arkts-arkdata-cloudextension-cloudasset-i-sys.md)&gt; | Yes | Assets to download. |
 
 **Return value:**

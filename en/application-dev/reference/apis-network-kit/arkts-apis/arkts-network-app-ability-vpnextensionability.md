@@ -1,4 +1,4 @@
-# @ohos.app.ability.VpnExtensionAbility
+# @ohos.app.ability.VpnExtensionAbility(Enhanced VPN Management)
 
 ## Modules to Import
 

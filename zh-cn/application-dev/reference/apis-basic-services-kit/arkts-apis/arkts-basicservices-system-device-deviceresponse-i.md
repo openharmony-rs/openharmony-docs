@@ -218,6 +218,8 @@ screenShape: 'rect' | 'circle'
 
 **废弃版本：** 6
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 <!--Device-DeviceResponse-screenShape: 'rect' | 'circle'--><!--Device-DeviceResponse-screenShape: 'rect' | 'circle'-End-->
 
 **系统能力：** SystemCapability.Startup.SystemInfo.Lite

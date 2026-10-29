@@ -100,10 +100,10 @@ Creates a **DataShareHelper** instance. **DataShareHelperOptions** specifies whe
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| context | [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md) | Yes | Indicates the application context. |
-| uri | string | Yes | Indicates the path of the file to open. |
-| options | [DataShareHelperOptions](arkts-arkdata-datashare-datasharehelperoptions-i-sys.md) | Yes | Indicates the optional config. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[DataShareHelper](arkts-arkdata-datashare-datasharehelper-i-sys.md)&gt; | Yes | {DataShareHelper}: The dataShareHelper for consumer. |
+| context | [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md) | Yes | Context of the application. |
+| uri | string | Yes | URI of the server application to connect. |
+| options | [DataShareHelperOptions](arkts-arkdata-datashare-datasharehelperoptions-i-sys.md) | Yes | Specifies whether [DataShareHelper](arkts-arkdata-datashare-datasharehelper-i-sys.md) is in proxy mode, and specifies the waiting time for startup during non-silent access. If not set, [DataShareHelper](arkts-arkdata-datashare-datasharehelper-i-sys.md) is not in proxy mode, and the waiting time for startup during non-silent access is 2 seconds. If the URI starts with **datashareproxy**, the **isProxy** parameter of **options** must be set; otherwise, **DataShareHelper** creation fails and an error is returned. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[DataShareHelper](arkts-arkdata-datashare-datasharehelper-i-sys.md)&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the **DataShareHelper** instance created. Otherwise, **err** is an error object. |
 
 **Error codes:**
 
@@ -174,7 +174,7 @@ Creates a **DataShareHelper** instance. **DataShareHelperOptions** specifies whe
 | --- | --- | --- | --- |
 | context | [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md) | Yes | Context of the application. |
 | uri | string | Yes | URI of the server application to connect. |
-| options | [DataShareHelperOptions](arkts-arkdata-datashare-datasharehelperoptions-i-sys.md) | No | Optional configuration of the **DataShareHelper** instance. It specifies whether [DataShareHelper](arkts-arkdata-datashare-datasharehelperoptions-i-sys.md) is in proxy mode and the waiting time for starting the data provider process in non-silent access mode.If this parameter is not set, [DataShareHelper](arkts-arkdata-datashare-datasharehelperoptions-i-sys.md) is not in proxy mode and the waiting time for starting the data provider process in non-silent access mode is 2 seconds.If the URI starts with **datashareproxy**, the **isProxy** parameter in **options** must be set. Otherwise, **DataShareHelper** will fail to be created and an error will be returned.<br>**Since:** 10 |
+| options | [DataShareHelperOptions](arkts-arkdata-datashare-datasharehelperoptions-i-sys.md) | No | Optional configuration. It specifies whether the [DataShareHelper](arkts-arkdata-datashare-datasharehelper-i-sys.md) is in proxy mode and the wait time for startup during non-silent access. If this parameter is not set, the [DataShareHelper](arkts-arkdata-datashare-datasharehelper-i-sys.md) is not in proxy mode, and the wait time for startup during non-silent access is 2 seconds. If the URI starts with **datashareproxy**, the **isProxy** parameter of **options** must be set; otherwise, the **DataShareHelper** fails to be created and an error is returned. |
 
 **Return value:**
 

@@ -26,7 +26,7 @@ function openSubscriptionSettings(context: UIAbilityContext): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | [UIAbilityContext](../../apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md) | 是 | 通知设置页面绑定Ability的上下文。 |
+| context | [UIAbilityContext](../../apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md) | 是 | [通知设置](../../../notification/notification-glossary.md#notification-setting通知设置)页面绑定Ability的上下文。 |
 
 **返回值：**
 

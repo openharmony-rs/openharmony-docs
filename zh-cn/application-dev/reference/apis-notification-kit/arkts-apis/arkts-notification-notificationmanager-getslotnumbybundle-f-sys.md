@@ -12,7 +12,7 @@ import { notificationManager } from '@kit.NotificationKit';
 function getSlotNumByBundle(bundle: BundleOption, callback: AsyncCallback<number>): void
 ```
 
-获取指定应用的通知渠道数量。使用callback异步回调。
+获取指定应用的[通知渠道](../../../notification/notification-glossary.md#notification-slot通知渠道)数量。使用callback异步回调。
 
 **起始版本：** 9
 
@@ -74,7 +74,7 @@ notificationManager.getSlotNumByBundle(bundle, getSlotNumByBundleCallback);
 function getSlotNumByBundle(bundle: BundleOption): Promise<number>
 ```
 
-获取指定应用的通知渠道数量。使用Promise异步回调。
+获取指定应用的[通知渠道](../../../notification/notification-glossary.md#notification-slot通知渠道)数量。使用Promise异步回调。
 
 **起始版本：** 9
 

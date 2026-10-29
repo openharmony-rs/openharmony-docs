@@ -4,7 +4,7 @@
 enum StrategyType
 ```
 
-Enumerates the types of the cloud-device sync strategy.
+Enumerates the cloud sync strategy types.
 
 **Since:** 12
 
@@ -18,7 +18,7 @@ Enumerates the types of the cloud-device sync strategy.
 NETWORK
 ```
 
-Sync over the network.
+Synchronization over the network.
 
 **Since:** 12
 

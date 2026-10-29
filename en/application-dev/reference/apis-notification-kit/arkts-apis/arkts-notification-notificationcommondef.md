@@ -1,8 +1,4 @@
-# NotificationCommonDef(Some common definitions)
-
-The **NotificationCommonDef** module defines the common data structures used in notification-related APIs.
-
-
+# NotificationCommonDef(NotificationCommonDef)
 
 ## Summary
 

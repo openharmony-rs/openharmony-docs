@@ -73,6 +73,26 @@ Encoding format of the output audio. If the specified format is not supported, p
 
 **System capability:** SystemCapability.Multimedia.Media.AVTranscoder
 
+## destHDRMode
+
+```TypeScript
+destHDRMode?:DestHDRMode
+```
+
+Specifies the HDR format of the target file. Default value: SDR.
+
+**Type:** [DestHDRMode](arkts-media-media-desthdrmode-e.md)
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+<!--Device-AVTranscoderConfig-destHDRMode?:DestHDRMode--><!--Device-AVTranscoderConfig-destHDRMode?:DestHDRMode-End-->
+
+**System capability:** SystemCapability.Multimedia.Media.AVTranscoder
+
 ## enableBFrame
 
 ```TypeScript
@@ -111,6 +131,26 @@ Whether to enable video encoding policy to quality stable encoding.
 
 **System capability:** SystemCapability.Multimedia.Media.AVTranscoder
 
+## endTime
+
+```TypeScript
+endTime?: number
+```
+
+Specifies the time when the transcoding ends in the source file. The unit is millisecond. Default value: Default to end of source file.
+
+**Type:** number
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+<!--Device-AVTranscoderConfig-endTime?: int--><!--Device-AVTranscoderConfig-endTime?: int-End-->
+
+**System capability:** SystemCapability.Multimedia.Media.AVTranscoder
+
 ## fileFormat
 
 ```TypeScript
@@ -146,6 +186,26 @@ Set the quality parameter in StableQualityMode. The value range is [0, 51]. A sm
 **Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 <!--Device-AVTranscoderConfig-sqrFactor?: int--><!--Device-AVTranscoderConfig-sqrFactor?: int-End-->
+
+**System capability:** SystemCapability.Multimedia.Media.AVTranscoder
+
+## startTime
+
+```TypeScript
+startTime?: number
+```
+
+Time point from which the source file is transcoded. The unit is millisecond. Default value: The default value is the beginning of the source file.
+
+**Type:** number
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+<!--Device-AVTranscoderConfig-startTime?: int--><!--Device-AVTranscoderConfig-startTime?: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVTranscoder
 

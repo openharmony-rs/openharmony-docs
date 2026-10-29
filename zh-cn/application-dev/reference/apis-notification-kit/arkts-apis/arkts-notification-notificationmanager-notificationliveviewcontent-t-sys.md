@@ -4,7 +4,7 @@
 export type NotificationLiveViewContent = _NotificationLiveViewContent
 ```
 
-描述普通实况通知。
+描述[普通实况通知](../../../notification/notification-glossary.md#normal-live-view普通实况通知)。
 
 **类型：** _NotificationLiveViewContent
 

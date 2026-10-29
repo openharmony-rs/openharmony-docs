@@ -39,5 +39,3 @@ Tool call ID passed by the caller, used to associate this arkTS script invocatio
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 
 **System API:** This is a system API.
-
-**Test API:** This API is used only in automated test scripts.

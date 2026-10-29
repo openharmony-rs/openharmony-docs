@@ -4,7 +4,7 @@
 export type VoiceContent = _VoiceContent
 ```
 
-通知消息中语音播报内容定义。
+通知语音播报内容。
 
 **类型：** _VoiceContent
 

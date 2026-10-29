@@ -12,7 +12,7 @@ import { notificationManager } from '@kit.NotificationKit';
 function isDistributedEnabledBySlot(slot: SlotType, deviceType: string): Promise<boolean>
 ```
 
-查询指定渠道的通知是否支持通知跨设备协同至指定类型设备。使用Promise异步回调。
+查询指定渠道的通知是否支持通知[跨设备协同](../../../notification/notification-glossary.md#cross-device-collaboration跨设备协同)至指定类型设备。使用Promise异步回调。
 
 **起始版本：** 18
 
@@ -28,7 +28,7 @@ function isDistributedEnabledBySlot(slot: SlotType, deviceType: string): Promise
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| slot | [SlotType](arkts-notification-notificationmanager-slottype-e.md) | 是 | 通知渠道类型。 |
+| slot | [SlotType](arkts-notification-notificationmanager-slottype-e.md) | 是 | [通知渠道](../../../notification/notification-glossary.md#notification-slot通知渠道)类型。 |
 | deviceType | string | 是 | 设备类型。<br>从API version 18开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>从API version 20开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>- current（本设备）。<br>- 2in1（PC设备）。<br>- tablet（平板）。 |
 
 **返回值：**

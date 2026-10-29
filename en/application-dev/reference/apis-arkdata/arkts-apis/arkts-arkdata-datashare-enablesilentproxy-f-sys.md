@@ -14,8 +14,7 @@ function enableSilentProxy(context: Context, uri?: string): Promise<void>
 
 Enables silent access. This API uses a promise to return the result.
 
-Observe the following when using this API:
-
+Observe the following when using this API:  
 - The data provider calls this API to enable silent access.  
 - Whether silent access is enabled is determined based on the return value of this API and the  
 **isSilentProxyEnable** field in the [data_share_config.json](../../../database/share-data-by-datashareextensionability-sys.md) file together.  
@@ -37,13 +36,13 @@ Observe the following when using this API:
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | context | [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md) | Yes | Context of the application. |
-| uri | string | No | URI of the data, for which silent access is to be enabled.Global setting: If **uri** is **undefined** or **null** or is not specified, all the previous settings will be cleared and silent access will be enabled globally for the data provider.URI-specific setting: If a URI is specified, silent access to the specified URI will be enabled.When datashareHelper APIs are called, the URI-specific setting is preferentially applied. If no match is found, the global setting is applied.URI format: **datashare:///{bundleName}/{moduleName}/{storeName}/{tableName}** |
+| uri | string | No | Data path of the data provider for which silent access is to be enabled.<br>1) Global switch state: If **uri** is not passed, is **undefined**, or is **null**, all previously set **uri** switch states are cleared, and silent access to the data provider is enabled.<br>2) Precise switch state: If **uri** is a fixed value, silent access is enabled only for that **uri**.<br>When calling **datashareHelper** APIs, the switch state that precisely matches the **uri** is matched first. If no match is found, the global switch state is matched.<br>uri format: **datashare:///{bundleName}/{moduleName}/{storeName}/{tableName}** |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;void&gt; | returns no value. |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes:**
 

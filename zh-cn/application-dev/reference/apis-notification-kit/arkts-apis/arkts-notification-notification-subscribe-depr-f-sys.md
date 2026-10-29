@@ -11,13 +11,13 @@
 function subscribe(subscriber: NotificationSubscriber, callback: AsyncCallback<void>): void
 ```
 
-订阅当前用户下所有应用的通知。使用callback异步回调。
+订阅当前用户下所有应用的通知（callback形式）。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [subscribe](arkts-notification-notificationsubscribe-subscribe-f-sys.md)
+**替代接口：** [subscribe](arkts-notification-notificationsubscribe-subscribe-f-sys.md#subscribe-1)(subscriber: NotificationSubscriber, callback: AsyncCallback&lt;void&gt;)
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -31,7 +31,7 @@ function subscribe(subscriber: NotificationSubscriber, callback: AsyncCallback<v
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| subscriber | [NotificationSubscriber](arkts-notification-notificationsubscriber-i-sys.md) | 是 | 通知订阅对象。 |
+| subscriber | [NotificationSubscriber](arkts-notification-notificationsubscriber-i-sys.md) | 是 | [通知订阅](../../../notification/notification-glossary.md#notification-subscription通知订阅)对象。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 订阅动作回调函数。 |
 
 <!--Del-->
@@ -70,13 +70,13 @@ function subscribe(
   ): void
 ```
 
-订阅通知并指定订阅信息。使用callback异步回调。
+订阅通知并指定订阅信息（callback形式）。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [subscribe](arkts-notification-notificationsubscribe-subscribe-f-sys.md)
+**替代接口：** [subscribe](arkts-notification-notificationsubscribe-subscribe-f-sys.md#subscribe-2)(subscriber: NotificationSubscriber, info: NotificationSubscribeInfo, callback: AsyncCallback&lt;void&gt;)
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -90,7 +90,7 @@ function subscribe(
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| subscriber | [NotificationSubscriber](arkts-notification-notificationsubscriber-i-sys.md) | 是 | 通知订阅对象。 |
+| subscriber | [NotificationSubscriber](arkts-notification-notificationsubscriber-i-sys.md) | 是 | [通知订阅](../../../notification/notification-glossary.md#notification-subscription通知订阅)对象。 |
 | info | [NotificationSubscribeInfo](arkts-notification-notificationsubscribeinfo-i-sys.md) | 是 | 通知订阅信息。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 订阅动作回调函数。 |
 
@@ -130,13 +130,13 @@ Notification.subscribe(subscriber, info, subscribeCallback);
 function subscribe(subscriber: NotificationSubscriber, info?: NotificationSubscribeInfo): Promise<void>
 ```
 
-订阅通知并指定订阅信息。使用Promise异步回调。
+订阅通知并指定订阅信息（Promise形式）。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [subscribe](arkts-notification-notificationsubscribe-subscribe-f-sys.md)
+**替代接口：** [subscribe](arkts-notification-notificationsubscribe-subscribe-f-sys.md#subscribe-3)(subscriber: NotificationSubscriber, info?: NotificationSubscribeInfo)
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -150,8 +150,8 @@ function subscribe(subscriber: NotificationSubscriber, info?: NotificationSubscr
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| subscriber | [NotificationSubscriber](arkts-notification-notificationsubscriber-i-sys.md) | 是 | 通知订阅对象。 |
-| info | [NotificationSubscribeInfo](arkts-notification-notificationsubscribeinfo-i-sys.md) | 否 | 通知订阅信息，默认为空（当为空时，表示订阅当前用户下所有应用的通知，否则表示订阅通知并指定订阅信息）。 |
+| subscriber | [NotificationSubscriber](arkts-notification-notificationsubscriber-i-sys.md) | 是 | [通知订阅](../../../notification/notification-glossary.md#notification-subscription通知订阅)对象。 |
+| info | [NotificationSubscribeInfo](arkts-notification-notificationsubscribeinfo-i-sys.md) | 否 | 通知订阅信息，默认为空。 |
 
 **返回值：**
 

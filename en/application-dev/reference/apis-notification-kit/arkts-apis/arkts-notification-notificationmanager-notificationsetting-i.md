@@ -4,7 +4,7 @@
 export interface NotificationSetting
 ```
 
-Describes the setting status of the notification mode switch.
+Defines the setting status of the [notification reminder mode](../../../notification/notification-glossary.md#notification-reminder-mode) switch.
 
 **Since:** 20
 
@@ -24,10 +24,10 @@ import { notificationManager } from '@kit.NotificationKit';
 badgeNumberEnabled?: boolean
 ```
 
-Whether to enable the display of notification badges.
+Whether to enable the numeric display of the [notification badge](../../../notification/notification-glossary.md#notification-badge).
 
-- **true**: enable.  
-- **false**: disable.
+- **true**: enabled.  
+- **false**: disabled.
 
 **Type:** boolean
 
@@ -45,7 +45,7 @@ Whether to enable the display of notification badges.
 bannerEnabled?: boolean
 ```
 
-Whether to enable banner notification.
+Whether to enable the banner notification.
 
 - **true**: enable.  
 - **false**: disable.
@@ -66,7 +66,7 @@ Whether to enable banner notification.
 lockScreenEnabled?: boolean
 ```
 
-Whether to enable lock screen notification.
+Whether to enable the lock screen notification.
 
 - **true**: enable.  
 - **false**: disable.
@@ -108,7 +108,7 @@ Whether to enable the application notification.
 soundEnabled: boolean
 ```
 
-Whether to enable ringtone.
+Whether to enable the sound.
 
 - **true**: enable.  
 - **false**: disable.

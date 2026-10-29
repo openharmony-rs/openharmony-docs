@@ -7,7 +7,7 @@ declare namespace uiEffect
 本模块提供组件效果的一些基础能力，包括模糊、提亮等。效果被分为Filter和VisualEffect大类，同类效果可以级联在一个效果大类的实例下。使用该模块可以快速实现复杂的视觉效果，无需开发者掌握底层的图像处理算法，降低了开发复杂度，提升了用户体验。在实际开发中，模糊可用于背景虚化，提亮可用于亮屏显示等。
 
 - [Filter](arkts-arkgraphics2d-uieffect-filter-i.md)：用于添加指定Filter效果到组件上。  
-- VisualEffect：用于添加指定VisualEffect效果到组件上。
+- [VisualEffect](arkts-arkgraphics2d-uieffect-visualeffect-i-sys.md)：用于添加指定VisualEffect效果到组件上。
 
 **起始版本：** 12
 
@@ -76,7 +76,7 @@ import { uiEffect } from '@kit.ArkGraphics2D';
 | [LiquidMaterialEffectParam](arkts-arkgraphics2d-uieffect-liquidmaterialeffectparam-i-sys.md) | 材质效果参数，用于控制材质的折射、反射、扰动和叠加颜色等显示属性。 |
 | [SweepRefractionMaskOptions](arkts-arkgraphics2d-uieffect-sweeprefractionmaskoptions-i-sys.md) | 创建 SweepRefractionMask 的可选参数。 |
 | [SweepRefractionParam](arkts-arkgraphics2d-uieffect-sweeprefractionparam-i-sys.md) | 创建 SweepRefractionMask 的必选参数。 |
-| VisualEffect | VisualEffect效果类，用于将背景颜色混合、边框光照、颜色渐变等效果添加到组件上。在调用VisualEffect的方法前，需要先通过[createEffect](arkts-arkgraphics2d-uieffect-createeffect-f.md)创建一个VisualEffect实例。 |
+| [VisualEffect](arkts-arkgraphics2d-uieffect-visualeffect-i-sys.md) | VisualEffect效果类，用于将背景颜色混合、边框光照、颜色渐变等效果添加到组件上。在调用VisualEffect的方法前，需要先通过[createEffect](arkts-arkgraphics2d-uieffect-createeffect-f.md)创建一个VisualEffect实例。 |
 | [WarpedRingParam](arkts-arkgraphics2d-uieffect-warpedringparam-i-sys.md) | WarpedRingParam 用于指定光环的半径、宽度、变化量、旋转、3D 朝向和噪声演化。 |
 <!--DelEnd-->
 

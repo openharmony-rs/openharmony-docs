@@ -17,7 +17,7 @@ Subscribes to notifications of all applications under this user. This API uses a
 
 **Deprecated since:** 9
 
-**Substitutes:** [subscribe](arkts-notification-notificationsubscribe-subscribe-f-sys.md)
+**Substitutes:** [subscribe](arkts-notification-notificationsubscribe-subscribe-f-sys.md#subscribe-1)(subscriber: NotificationSubscriber, callback: AsyncCallback&lt;void&gt;)
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -31,7 +31,7 @@ Subscribes to notifications of all applications under this user. This API uses a
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| subscriber | [NotificationSubscriber](arkts-notification-notificationsubscriber-i-sys.md) | Yes | Notification subscriber. |
+| subscriber | [NotificationSubscriber](arkts-notification-notificationsubscriber-i-sys.md) | Yes | [Notification subscription](../../../notification/notification-glossary.md#notification-subscription) object. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
 
 <!--Del-->
@@ -76,7 +76,7 @@ Subscribes to a notification with the subscription information specified. This A
 
 **Deprecated since:** 9
 
-**Substitutes:** [subscribe](arkts-notification-notificationsubscribe-subscribe-f-sys.md)
+**Substitutes:** [subscribe](arkts-notification-notificationsubscribe-subscribe-f-sys.md#subscribe-2)(subscriber: NotificationSubscriber, info: NotificationSubscribeInfo, callback: AsyncCallback&lt;void&gt;)
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -90,7 +90,7 @@ Subscribes to a notification with the subscription information specified. This A
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| subscriber | [NotificationSubscriber](arkts-notification-notificationsubscriber-i-sys.md) | Yes | Notification subscriber. |
+| subscriber | [NotificationSubscriber](arkts-notification-notificationsubscriber-i-sys.md) | Yes | [Notification subscription](../../../notification/notification-glossary.md#notification-subscription) object. |
 | info | [NotificationSubscribeInfo](arkts-notification-notificationsubscribeinfo-i-sys.md) | Yes | Notification subscription information. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
 
@@ -136,7 +136,7 @@ Subscribes to a notification with the subscription information specified. This A
 
 **Deprecated since:** 9
 
-**Substitutes:** [subscribe](arkts-notification-notificationsubscribe-subscribe-f-sys.md)
+**Substitutes:** [subscribe](arkts-notification-notificationsubscribe-subscribe-f-sys.md#subscribe-3)(subscriber: NotificationSubscriber, info?: NotificationSubscribeInfo)
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -150,7 +150,7 @@ Subscribes to a notification with the subscription information specified. This A
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| subscriber | [NotificationSubscriber](arkts-notification-notificationsubscriber-i-sys.md) | Yes | Notification subscriber. |
+| subscriber | [NotificationSubscriber](arkts-notification-notificationsubscriber-i-sys.md) | Yes | [Notification subscription](../../../notification/notification-glossary.md#notification-subscription) object. |
 | info | [NotificationSubscribeInfo](arkts-notification-notificationsubscribeinfo-i-sys.md) | No | Notification subscription information. This parameter is left empty by default. |
 
 **Return value:**

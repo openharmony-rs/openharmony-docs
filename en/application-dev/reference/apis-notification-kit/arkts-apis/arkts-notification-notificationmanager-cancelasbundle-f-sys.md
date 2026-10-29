@@ -17,7 +17,7 @@ function cancelAsBundle(
   ): void
 ```
 
-Cancels a notification published through the reminder agent. This API uses an asynchronous callback to return the result.
+Cancels a [proxy notification](../../../notification/notification-glossary.md#notification-proxy). This API uses an asynchronous callback to return the result.
 
 **Since:** 9
 
@@ -82,7 +82,7 @@ notificationManager.cancelAsBundle(0, representativeBundle, userId, cancelAsBund
 function cancelAsBundle(id: number, representativeBundle: string, userId: number): Promise<void>
 ```
 
-Cancels a notification published through the reminder agent. This API uses a promise to return the result.
+Cancels a [proxy notification](../../../notification/notification-glossary.md#notification-proxy). This API uses a promise to return the result.
 
 **Since:** 9
 
@@ -148,7 +148,7 @@ notificationManager.cancelAsBundle(0, representativeBundle, userId).then(() => {
 function cancelAsBundle(representativeBundle: BundleOption, id: number): Promise<void>
 ```
 
-Cancels a notification published through the reminder agent. This API uses a promise to return the result.
+Cancels a [proxy notification](../../../notification/notification-glossary.md#notification-proxy). This API uses a promise to return the result.
 
 **Since:** 12
 

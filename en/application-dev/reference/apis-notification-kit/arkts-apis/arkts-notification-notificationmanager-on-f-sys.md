@@ -16,8 +16,6 @@ Subscribes to notification events. The notification service sends the notificati
 
 Each [SlotType](arkts-notification-notificationmanager-slottype-e.md) in the system can have only one registrant.
 
-This API can be properly called on devices other than wearables. If it is called on wearables, error code 801 is returned.
-
 **Since:** 10
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER and ohos.permission.NOTIFICATION_AGENT_CONTROLLER
@@ -32,7 +30,7 @@ This API can be properly called on devices other than wearables. If it is called
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | 'checkNotification' | Yes | Event type. The value is fixed to **'checkNotification'**. |
+| type | 'checkNotification' | Yes | Callback type. The value is fixed to **'checkNotification'**. |
 | callback | (checkInfo: NotificationCheckInfo) =&gt; NotificationCheckResult | Yes | Pointer to the notification verification function. |
 
 **Error codes:**
@@ -80,8 +78,6 @@ Subscribes to notification events. The notification service sends the notificati
 
 Each [SlotType](arkts-notification-notificationmanager-slottype-e.md) in the system can have only one registrant.
 
-This API can be properly called on devices other than wearables. If it is called on wearables, error code 801 is returned.
-
 **Since:** 11
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER and ohos.permission.NOTIFICATION_AGENT_CONTROLLER
@@ -96,8 +92,8 @@ This API can be properly called on devices other than wearables. If it is called
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | 'checkNotification' | Yes | Event type. The value is fixed to **'checkNotification'**. |
-| checkRequest | [NotificationCheckRequest](arkts-notification-notificationmanager-notificationcheckrequest-t-sys.md) | Yes | Notification verification content. |
+| type | 'checkNotification' | Yes | Callback type. The value is fixed to **'checkNotification'**. |
+| checkRequest | [NotificationCheckRequest](arkts-notification-notificationmanager-notificationcheckrequest-t-sys.md) | Yes | [Notification request](../../../notification/notification-glossary.md#notification-request) content to be verified. |
 | callback | (checkInfo: NotificationCheckInfo) =&gt; Promise&lt;[NotificationCheckResult](arkts-notification-notificationmanager-notificationcheckresult-i-sys.md)&gt; | Yes | Pointer to the notification verification function. |
 
 **Error codes:**

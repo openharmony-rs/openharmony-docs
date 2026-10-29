@@ -26,8 +26,8 @@ function getNotificationParameters(id: number, label?: string): Promise<Notifica
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| id | number | 是 | 通知ID，用于标识目标通知。该值由发布通知时NotificationRequest的id字段指定。 |
-| label | string | 否 | 通知标签，默认为空。该值由发布通知时NotificationRequest的label字段指定。           - 若标签为空，则获取与指定通知ID匹配，标签为空的已发布通知的部分信息。           - 若标签不为空，则获取与指定通知ID和标签同时匹配的已发布通知的部分信息。 |
+| id | number | 是 | 通知ID，用于标识目标通知。该值由发布通知时[NotificationRequest](arkts-notification-notificationrequest-i.md)的id字段指定。 |
+| label | string | 否 | 通知标签，默认为空。该值由发布通知时[NotificationRequest](arkts-notification-notificationrequest-i.md)的label字段指定。<br> - 若标签为空，则获取与指定通知ID匹配，标签为空的已发布通知的部分信息。<br> - 若标签不为空，则获取与指定通知ID和标签同时匹配的已发布通知的部分信息。 |
 
 **返回值：**
 

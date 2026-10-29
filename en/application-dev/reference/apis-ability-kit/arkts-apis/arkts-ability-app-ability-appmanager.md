@@ -8,8 +8,6 @@ The appManager module implements application management. You can use the APIs of
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
-**Test API:** This API is used only in automated test scripts.
-
 ## Modules to Import
 
 ```TypeScript
@@ -34,8 +32,10 @@ import { appManager } from '@kit.AbilityKit';
 | [killProcessesByBundleName](arkts-ability-appmanager-killprocessesbybundlename-f.md#killprocessesbybundlename-2) | Kills a process by bundle name. This API uses a promise to return the result. |
 | [off('applicationState')](arkts-ability-appmanager-off-f.md#offapplicationstate) | Unregisters the observer used to listen for application state changes. This API uses an asynchronous callback to return the result. |
 | [off('applicationState')](arkts-ability-appmanager-off-f.md#offapplicationstate) | Unregisters the observer used to listen for application state changes. This API uses a promise to return the result. |
+| [offFocusedApplicationChanged](arkts-ability-appmanager-offfocusedapplicationchanged-f.md#offfocusedapplicationchanged-1) | Unregisters the observer used to listen for focused application changes. |
 | [on('applicationState')](arkts-ability-appmanager-on-f.md#onapplicationstate) | Registers an observer to listen for lifecycle changes of all applications. |
 | [on('applicationState')](arkts-ability-appmanager-on-f.md#onapplicationstate) | Registers an observer to listen for lifecycle changes of the specified application. |
+| [onFocusedApplicationChanged](arkts-ability-appmanager-onfocusedapplicationchanged-f.md#onfocusedapplicationchanged-1) | Registers an observer to listen for focused application changes. |
 
 <!--Del-->
 ### Functions(System API)
@@ -97,6 +97,8 @@ import { appManager } from '@kit.AbilityKit';
 | [AbilityStateData](arkts-ability-appmanager-abilitystatedata-t.md) | Defines the ability state data. |
 | [ApplicationStateObserver](arkts-ability-appmanager-applicationstateobserver-t.md) | Defines the observer used to listen for application state changes. |
 | [AppStateData](arkts-ability-appmanager-appstatedata-t.md) | Defines the application state data. |
+| [FocusedApplicationInfo](arkts-ability-appmanager-focusedapplicationinfo-t.md) | Defines the focused application information reported when the focused application changes. |
+| [FocusedApplicationObserver](arkts-ability-appmanager-focusedapplicationobserver-t.md) | Defines the observer used to listen for focused application changes. |
 | [ProcessData](arkts-ability-appmanager-processdata-t.md) | Defines the process data. |
 | [ProcessInformation](arkts-ability-appmanager-processinformation-t.md) | Defines the process information. |
 

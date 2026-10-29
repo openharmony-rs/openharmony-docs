@@ -30,7 +30,7 @@ function setPriorityStrategyByBundles(strategies: Map<BundleOption, number>): Pr
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| strategies | Map&lt;[BundleOption](arkts-notification-notificationmanager-bundleoption-t.md), number&gt; | 是 | 应用通知优先策略的键值对集合。与PriorityStrategyStatus的枚举进行按位或运算得到值。 |
+| strategies | Map&lt;[BundleOption](arkts-notification-notificationmanager-bundleoption-t.md), number&gt; | 是 | 应用通知优先策略的键值对集合。与[PriorityStrategyStatus](arkts-notification-notificationmanager-prioritystrategystatus-e-sys.md)的枚举进行按位或运算得到值。 |
 
 **返回值：**
 

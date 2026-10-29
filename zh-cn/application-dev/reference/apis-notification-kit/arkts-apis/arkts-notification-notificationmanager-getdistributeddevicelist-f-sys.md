@@ -12,7 +12,7 @@ import { notificationManager } from '@kit.NotificationKit';
 function getDistributedDeviceList(): Promise<Array<string>>
 ```
 
-查询支持跨设备协同通知的设备类型。使用Promise异步回调。
+查询支持[跨设备协同](../../../notification/notification-glossary.md#cross-device-collaboration跨设备协同)通知的设备类型。使用Promise异步回调。
 
 **起始版本：** 20
 
@@ -28,7 +28,7 @@ function getDistributedDeviceList(): Promise<Array<string>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;string&gt;&gt; | 返回支持跨设备协同通知的设备列表。Promise对象。 |
+| Promise&lt;Array&lt;string&gt;&gt; | Promise对象。返回支持跨设备协同通知的设备类型列表。 |
 
 **错误码：**
 

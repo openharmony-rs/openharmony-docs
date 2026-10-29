@@ -4,7 +4,7 @@
 export declare interface SoundPool
 ```
 
-音频池提供了系统声音的加载、播放、音量设置、循环设置、停止播放和资源卸载等功能，在调用SoundPool的接口前，需要先通过createSoundPool创建实例。
+音频池提供了系统声音的加载、播放、音量设置、循环设置、停止播放和资源卸载等功能，在调用SoundPool的接口前，需要先通过[createSoundPool](../../apis-media/arkts-apis/arkts-media-media-createsoundpool-f.md)创建实例。
 
 > **说明：** 
 > 
@@ -556,7 +556,7 @@ release(): Promise<void>
 setInterruptMode(interruptMode: media.SoundInterruptMode): void
 ```
 
-设置同一ID音频在播放时的打断模式。创建soundPool之后，该接口仅在首次调用soundPool的Play函数之前设置有效，期间可多次设置，否则将默认使用SAME_SOUND_INTERRUPT，即对同一ID的音频，如果前者尚未播放完成，后者在播放前会先打断前者的播放。
+设置同一ID音频在播放时的打断模式。创建soundPool之后，该接口仅在首次调用soundPool的Play函数之前设置有效，期间可多次设置，否则将默认使用[SAME_SOUND_INTERRUPT](../../apis-media/arkts-apis/arkts-media-media-soundinterruptmode-e.md#same_sound_interrupt)，即对同一ID的音频，如果前者尚未播放完成，后者在播放前会先打断前者的播放。
 
 **起始版本：** 23
 
@@ -570,7 +570,7 @@ setInterruptMode(interruptMode: media.SoundInterruptMode): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| interruptMode | media.SoundInterruptMode | 是 | 同一ID音频在播放时的打断模式，通过media.SoundInterruptMode枚举获取。 |
+| interruptMode | [media.SoundInterruptMode](../../apis-media/arkts-apis/arkts-media-media-soundinterruptmode-e.md) | 是 | 同一ID音频在播放时的打断模式，通过media.SoundInterruptMode枚举获取。 |
 
 ## setLoop
 

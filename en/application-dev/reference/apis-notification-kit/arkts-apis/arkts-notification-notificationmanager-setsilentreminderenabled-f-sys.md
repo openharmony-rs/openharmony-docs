@@ -12,7 +12,7 @@ import { notificationManager } from '@kit.NotificationKit';
 function setSilentReminderEnabled(bundle: BundleOption, enabled: boolean): Promise<void>
 ```
 
-Sets the enabling status of the silent reminder. This API uses a promise to return the result.
+Sets the switch status of [silent reminder](../../../notification/notification-glossary.md#silent-reminder). This API uses a promise to return the result.
 
 **Since:** 20
 

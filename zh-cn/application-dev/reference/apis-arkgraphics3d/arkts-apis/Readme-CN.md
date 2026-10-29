@@ -44,6 +44,8 @@
     - [LayerMask](arkts-arkgraphics3d-scenenodes-layermask-i.md)
     - [Light](arkts-arkgraphics3d-scenenodes-light-i.md)
     - [Node](arkts-arkgraphics3d-scenenodes-node-i.md)
+    - [PointLight](arkts-arkgraphics3d-scenenodes-pointlight-i.md)
+    - [RectLight](arkts-arkgraphics3d-scenenodes-rectlight-i.md)
     - [SpotLight](arkts-arkgraphics3d-scenenodes-spotlight-i.md)
     - [LightType](arkts-arkgraphics3d-scenenodes-lighttype-e.md)
     - [NodeType](arkts-arkgraphics3d-scenenodes-nodetype-e.md)

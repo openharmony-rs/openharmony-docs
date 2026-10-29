@@ -20,7 +20,7 @@ Enumerates the types of the fields in a database table. Use the enum name rather
 ASSET = 6
 ```
 
-Asset. For details, see [Asset](arkts-arkdata-relationalstore-asset-i.md).
+Asset.
 
 **Since:** 11
 
@@ -36,7 +36,7 @@ Asset. For details, see [Asset](arkts-arkdata-relationalstore-asset-i.md).
 ASSETS = 7
 ```
 
-Assets. For details, see [Assets](arkts-arkdata-relationalstore-assets-t.md).
+Assets.
 
 **Since:** 11
 

@@ -230,8 +230,6 @@ Indicates the tool call ID. Used to associate this intent execute with a test st
 
 **System API:** This is a system API.
 
-**Test API:** This API is used only in automated test scripts.
-
 ## uris
 
 ```TypeScript

@@ -12,7 +12,7 @@ import { notificationManager } from '@kit.NotificationKit';
 function subscribeSystemLiveView(subscriber: SystemLiveViewSubscriber): Promise<void>
 ```
 
-Subscribes to the system live view notification. This API uses a promise to return the result.
+Subscribes to a [system live view](../../../notification/notification-glossary.md#system-live-view). This API uses a promise to return the result.
 
 **Since:** 11
 

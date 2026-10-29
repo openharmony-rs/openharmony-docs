@@ -4,7 +4,7 @@
 export type NotificationCapsule = _NotificationCapsule
 ```
 
-Describes the notification capsule.
+Defines the [notification capsule](../../../notification/notification-glossary.md#notification-capsule).
 
 **Type:** _NotificationCapsule
 

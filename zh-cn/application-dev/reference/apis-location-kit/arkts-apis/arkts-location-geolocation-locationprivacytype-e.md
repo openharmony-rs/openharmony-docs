@@ -10,7 +10,7 @@ export enum LocationPrivacyType
 
 **废弃版本：** 9
 
-**替代接口：** LocationPrivacyType
+**替代接口：** [LocationPrivacyType](arkts-location-geolocationmanager-locationprivacytype-e-sys.md)
 
 **需要权限：** ohos.permission.LOCATION
 
@@ -30,7 +30,7 @@ CORE_LOCATION
 
 **废弃版本：** 9
 
-**替代接口：** CORE_LOCATION
+**替代接口：** [CORE_LOCATION](arkts-location-geolocationmanager-locationprivacytype-e-sys.md#core_location)
 
 <!--Device-LocationPrivacyType-CORE_LOCATION--><!--Device-LocationPrivacyType-CORE_LOCATION-End-->
 
@@ -48,7 +48,7 @@ OTHERS = 0
 
 **废弃版本：** 9
 
-**替代接口：** OTHERS
+**替代接口：** [OTHERS](arkts-location-geolocationmanager-locationprivacytype-e-sys.md#others)
 
 <!--Device-LocationPrivacyType-OTHERS = 0--><!--Device-LocationPrivacyType-OTHERS = 0-End-->
 
@@ -66,7 +66,7 @@ STARTUP
 
 **废弃版本：** 9
 
-**替代接口：** STARTUP
+**替代接口：** [STARTUP](arkts-location-geolocationmanager-locationprivacytype-e-sys.md#startup)
 
 <!--Device-LocationPrivacyType-STARTUP--><!--Device-LocationPrivacyType-STARTUP-End-->
 

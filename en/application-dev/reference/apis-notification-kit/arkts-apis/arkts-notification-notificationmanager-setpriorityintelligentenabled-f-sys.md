@@ -12,7 +12,7 @@ import { notificationManager } from '@kit.NotificationKit';
 function setPriorityIntelligentEnabled(enable: boolean): Promise<void>
 ```
 
-Sets the enabling status of the intelligent priority notification service. This API uses a promise to return the result.
+Sets the enabled status of the intelligent service for [priority notifications](../../../notification/notification-glossary.md#priority-notification). This API uses a promise to return the result.
 
 **Since:** 23
 
@@ -30,7 +30,7 @@ Sets the enabling status of the intelligent priority notification service. This 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enable | boolean | Yes | Enabling status of the intelligent priority notification service.<br> - **true**: The intelligent priority notification service is enabled.<br> - **false**: The intelligent priority notification service is disabled. |
+| enable | boolean | Yes | Enabling status of the intelligent priority notification service. <br> - **true**: The intelligent priority notification service is enabled. <br> - **false**: The intelligent priority notification service is disabled. |
 
 **Return value:**
 

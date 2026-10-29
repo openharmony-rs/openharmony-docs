@@ -26,7 +26,7 @@ import { cloudData } from '@kit.ArkData';
 eventId: string
 ```
 
-Event ID. The value **cloud_data_change** indicates cloud data changes.
+Event ID. Currently, only the value **cloud_data_change** is supported, indicating cloud data change. Other values are invalid.
 
 **Type:** string
 
@@ -44,7 +44,7 @@ Event ID. The value **cloud_data_change** indicates cloud data changes.
 extraData: string
 ```
 
-Data to be transmitted transparently. **extraData** is a JSON string that must contain the **data** field. The **data** field contains information required for a change notification, including the account ID, application name, database name, database type, and database table name. All the fields cannot be empty.
+Data to be transmitted transparently. **extraData** is a JSON string that must contain the **data** field. The **data** field contains information required for a change notification, including the account ID, application bundle name, database name, database type, and database table name. None of the fields can be empty.
 
 **Type:** string
 

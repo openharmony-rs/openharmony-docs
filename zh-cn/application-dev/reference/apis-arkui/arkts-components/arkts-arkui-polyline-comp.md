@@ -5,7 +5,7 @@
 > **说明：** 
 > 
 > 该组件从API version 20开始支持使用[AttributeUpdater](../arkts-apis/arkts-arkui-attributeupdater-c.md)类的
-> updateConstructorParams接口更新构造参数。
+> [updateConstructorParams](../../../reference/apis-arkui/js-apis-arkui-AttributeUpdater.md#属性)接口更新构造参数。
 
 ## 子组件
 

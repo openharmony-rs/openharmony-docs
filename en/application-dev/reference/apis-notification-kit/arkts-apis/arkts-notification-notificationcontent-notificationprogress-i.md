@@ -4,11 +4,12 @@
 export interface NotificationProgress
 ```
 
-Describes the notification progress, which is used to display progress bar information in the live view.
+Describes the [notification progress](../../../notification/notification-glossary.md#notification-progress), which is used to display progress bar information in the live view.
 
 > **NOTE:** 
 > 
-> The actual display effect depends on the device capabilities and the notification center UI style.
+> The actual display effect depends on the device capabilities and the
+> [notification center](../../../notification/notification-glossary.md#notification-center) UI style.
 
 **Since:** 11
 

@@ -17,7 +17,7 @@ function getSlotNumByBundle(bundle: BundleOption, callback: AsyncCallback<number
 
 **废弃版本：** 9
 
-**替代接口：** [getSlotNumByBundle](arkts-notification-notificationmanager-getslotnumbybundle-f-sys.md)
+**替代接口：** [getSlotNumByBundle](arkts-notification-notificationmanager-getslotnumbybundle-f-sys.md)(bundle: BundleOption, callback: AsyncCallback&lt;number&gt;)
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -69,7 +69,7 @@ function getSlotNumByBundle(bundle: BundleOption): Promise<number>
 
 **废弃版本：** 9
 
-**替代接口：** [getSlotNumByBundle](arkts-notification-notificationmanager-getslotnumbybundle-f-sys.md)
+**替代接口：** [getSlotNumByBundle](arkts-notification-notificationmanager-getslotnumbybundle-f-sys.md#getslotnumbybundle-2)(bundle: BundleOption)
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 

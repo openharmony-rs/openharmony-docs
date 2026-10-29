@@ -12,9 +12,9 @@ import { notificationManager } from '@kit.NotificationKit';
 function getSlotByBundle(bundle: BundleOption, slotType: SlotType): Promise<NotificationSlot>
 ```
 
-获取指定应用指定类型的通知渠道。使用Promise异步回调。
+获取指定应用指定类型的[通知渠道](../../../notification/notification-glossary.md#notification-slot通知渠道)。使用Promise异步回调。
 
-获取前需要先通过[addSlot](arkts-notification-notificationmanager-addslot-f-sys.md#addslot-1)创建通知渠道。
+获取前需要先通过[addSlot](arkts-notification-notificationmanager-addslot-f.md)创建通知渠道。
 
 **起始版本：** 12
 

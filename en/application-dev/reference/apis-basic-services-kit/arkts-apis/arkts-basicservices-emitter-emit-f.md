@@ -76,7 +76,7 @@ After an event is published using this API, the event may not be executed immedi
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| eventId | string | Yes | Event ID, which cannot be empty or exceed 10,240 bytes. Excess content will be truncated. |
+| eventId | string | Yes | Event ID, <br>which cannot be empty or exceed 10,240 bytes. Excess content will be truncated. |
 | data | [EventData](arkts-basicservices-emitter-eventdata-i.md) | No | Data carried by the event. This parameter is left empty by default. |
 
 **Examples**
@@ -129,7 +129,7 @@ After an event is published using this API, the event may not be executed immedi
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| eventId | string | Yes | Event ID, which cannot be empty or exceed 10,240 bytes. Excess content will be truncated. |
+| eventId | string | Yes | Event ID, <br>which cannot be empty or exceed 10,240 bytes. Excess content will be truncated. |
 | data | [GenericEventData](arkts-basicservices-emitter-genericeventdata-i.md)&lt;T&gt; | No | Data carried by the event. This parameter is left empty by default. |
 
 **Examples**
@@ -198,7 +198,7 @@ After an event is published using this API, the event may not be executed immedi
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| eventId | string | Yes | Event ID, which cannot be empty or exceed 10,240 bytes. Excess content will be truncated. |
+| eventId | string | Yes | Event ID, <br>which cannot be empty or exceed 10,240 bytes. Excess content will be truncated. |
 | options | [Options](arkts-basicservices-emitter-options-i.md) | Yes | Event emit priority. |
 | data | [EventData](arkts-basicservices-emitter-eventdata-i.md) | No | Data carried by the event. This parameter is left empty by default. |
 
@@ -260,7 +260,7 @@ After an event is published using this API, the event may not be executed immedi
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| eventId | string | Yes | Event ID, which cannot be empty or exceed 10,240 bytes. Excess content will be truncated. |
+| eventId | string | Yes | Event ID, <br>which cannot be empty or exceed 10,240 bytes. Excess content will be truncated. |
 | options | [Options](arkts-basicservices-emitter-options-i.md) | Yes | Event emit priority. |
 | data | [GenericEventData](arkts-basicservices-emitter-genericeventdata-i.md)&lt;T&gt; | No | Data carried by the event. This parameter is left empty by default. |
 

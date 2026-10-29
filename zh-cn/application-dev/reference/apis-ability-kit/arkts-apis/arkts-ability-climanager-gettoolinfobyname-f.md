@@ -35,12 +35,12 @@ function getToolInfoByName(toolName: string): Promise<ToolInfo>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;ToolInfo&gt; | Promise对象，返回工具的详细信息。 |
+| Promise&lt;[ToolInfo](arkts-ability-toolinfo-i-sys.md)&gt; | Promise对象，返回工具的详细信息。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| 35600030 | No tool with the specified name exists. |
-| 35600050 | System Error. 1. Connect to system service failed; 2.System service failed to communicate with dependency module. |
+| [35600030](../errorcode-ability.md#35600030-cli工具不存在) | No tool with the specified name exists. |
+| [35600050](../errorcode-ability.md#35600050-偶发性报错) | System Error. 1. Connect to system service failed; 2.System service failed to communicate with dependency module. |

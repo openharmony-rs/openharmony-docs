@@ -4,7 +4,7 @@
 interface DataShareHelper
 ```
 
-Provides a **DataShareHelper** instance to access or manage data on the server. Before calling an API provided by **DataShareHelper**, you must create a **DataShareHelper** instance using [createDataShareHelper](arkts-arkdata-datashare-createdatasharehelper-f-sys.md#createdatasharehelper-1).
+Provides a **DataShareHelper** instance to access or manage data on the server. Before calling an API provided by **DataShareHelper**, you must create a **DataShareHelper** instance using [createDataShareHelper](arkts-arkdata-datashare-createdatasharehelper-f-sys.md).
 
 **Since:** 9
 
@@ -108,7 +108,7 @@ In non-silent scenarios, the size of the **values** parameter and the **uri** pa
 | --- | --- | --- | --- |
 | uri | string | Yes | URI of the data to insert. |
 | values | Array&lt;[ValuesBucket](arkts-arkdata-valuesbucket-t.md)&gt; | Yes | Data to insert. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the number of data records inserted. Otherwise, **err** is an error object.The number of inserted data records is not returned if the APIs of the database in use (for example, KVDB) do not support this return. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | Yes | Callback invoked when the batch data is inserted into the database successfully. In this case, **err** is **undefined** and **data** is the number of inserted data records; otherwise, err is an error object. Because the corresponding APIs of some databases (such as KVDB) do not provide such support, if the server uses such a database, this **callback** cannot return the number of inserted data records. |
 
 **Error codes:**
 
@@ -180,7 +180,7 @@ In non-silent scenarios, the size of the **values** parameter and the **uri** pa
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;number&gt; | Promise used to return the number of data records inserted. The number of inserted data records is not returned if the APIs of the database in use (for example, KVDB) do not support this return. |
+| Promise&lt;number&gt; | Promise used to return the number of inserted data records. Because the corresponding APIs of some databases (such as KVDB) do not provide such support, if the server uses such a database, this promise cannot return the number of inserted data records. |
 
 **Error codes:**
 
@@ -225,9 +225,9 @@ try {
 batchUpdate(operations: Record<string, Array<UpdateOperation>>): Promise<Record<string, Array<number>>>
 ```
 
-Batch updates data in the database. The total number of objects for operations (that is, KV pairs of the objects) cannot exceed 4000. If the number exceeds 4000, the update will fail. The transaction of this API depends on the data provider. This API uses a promise to return the result. Silent access is not supported currently.
+Updates data records in the database in batches. The total number of all operations (that is, the key-value pairs of the **operations** object) must not exceed 4000; otherwise, the update fails. The transactionality of this API depends on the **provider** (data provider). This API uses a promise to return the result. Silent access is not supported.
 
-In non-silent scenarios, the size of the **operations** parameter passed in this API called cannot exceed 900 KB. Otherwise, the operation fails or an exception is thrown.
+In non-silent scenarios, the size of the **operations** parameter passed when calling this API cannot exceed 900 KB. Otherwise, the operation fails or an exception is thrown.
 
 **Since:** 12
 
@@ -249,7 +249,7 @@ In non-silent scenarios, the size of the **operations** parameter passed in this
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;Record&lt;string, Array&lt;number&gt;&gt;&gt; | Promise used to return an array of updated data records. The value **-1** means the update operation fails. The number of updated data records is not returned if the APIs of the database in use (for example, KVDB) do not support this return. |
+| Promise&lt;Record&lt;string, Array&lt;number&gt;&gt;&gt; | Promise object used to return the collection of the numbers of updated data records. The number of data records for an **UpdateOperation** that fails to update is **-1**. Because the corresponding APIs of some databases (such as KVDB) do not provide such support, this Promise cannot return the number of updated data records if the server uses such a database. |
 
 **Error codes:**
 
@@ -343,7 +343,7 @@ Closes the **DataShareHelper** instance. After this API is called, the instance 
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;void&gt; | returns no value. |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes:**
 
@@ -390,8 +390,8 @@ In silent scenarios, the total size of the **uri** and **predicates** parameters
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | uri | string | Yes | URI of the data to delete. |
-| predicates | [dataSharePredicates.DataSharePredicates](arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | Yes | Conditions for deleting data.The predicate methods supported by **delete()** vary depending on the database in use. For example, the KVDB supports only **inKeys**. If this parameter is left empty, the entire table will be deleted by default. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the number of deleted data records. Otherwise, **err** is an error object.The number of deleted data records is not returned if the APIs of the database in use (for example, KVDB) do not support this return. |
+| predicates | [dataSharePredicates.DataSharePredicates](arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | Yes | Filtering conditions. The predicate methods supported by the **delete** API depend on the database selected by the server. For example, the deletion of KVDB currently supports only the **inKeys** predicate. In the silent access scenario, if the methods in the predicate are empty, the entire table is deleted by default. In the non-silent access scenario, the specifications are defined by the data provider. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | Yes | Callback invoked to return the result. If one or more data records are deleted from the database successfully, **err** is **undefined** and **data** is the number of deleted data records obtained. Otherwise, err is an error object. Because the corresponding APIs of some databases (such as KVDB) do not provide the relevant support, if the server uses such a database, this **callback** cannot return the number of deleted data records. |
 
 **Error codes:**
 
@@ -457,13 +457,13 @@ In silent scenarios, the total size of the **uri** and **predicates** parameters
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | uri | string | Yes | URI of the data to delete. |
-| predicates | [dataSharePredicates.DataSharePredicates](arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | Yes | Conditions for deleting data.The predicate methods supported by **delete()** vary depending on the database in use. For example, the KVDB supports only **inKeys**. If this parameter is left empty, the entire table will be deleted by default. |
+| predicates | [dataSharePredicates.DataSharePredicates](arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | Yes | Filter criteria. The predicate methods supported by the **delete** API depend on the database selected by the server. For example, the deletion of KVDB currently supports only the **inKeys** predicate. In the silent access scenario, if the methods in the predicate are empty, the entire table is deleted by default. In the non-silent access scenario, the specifications are defined by the data provider. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;number&gt; | Promise used to return the number of deleted data records. The number of deleted data records is not returned if the APIs of the database in use (for example, KVDB) do not support this return. |
+| Promise&lt;number&gt; | Promise object. Number of deleted data records. Because the corresponding APIs of some databases (such as KVDB) do not provide such support, if the server uses such a database, this Promise cannot return the number of deleted data records either. |
 
 **Error codes:**
 
@@ -802,7 +802,7 @@ In silent scenarios, the total size of the **uri** and **value** parameters pass
 | --- | --- | --- | --- |
 | uri | string | Yes | URI of the data to insert. |
 | value | [ValuesBucket](arkts-arkdata-valuesbucket-t.md) | Yes | Value of the data to insert. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the index of the inserted data record. Otherwise, **err** is an error object.The data index is not returned if the APIs of the database in use, for example, the key- value database (KVDB), do not support the return of indexes. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | Yes | Callback used to return the result. If a single data record is inserted into the database successfully, **err** is **undefined** and **data** is the index of the inserted data record; otherwise, **err** is an error object. Because the corresponding APIs of some databases (such as KVDB) do not support returning an index, this **callback** cannot return an index value if the server uses a database that does not support indexes. |
 
 **Error codes:**
 
@@ -883,7 +883,7 @@ In silent scenarios, the total size of the **uri** and **value** parameters pass
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;number&gt; | Promise used to return the index of the inserted data record. The data index is not returned if the APIs of the database in use (for example, KVDB) do not support this return. |
+| Promise&lt;number&gt; | Promise object. Returns the index of the inserted data record. Because the corresponding APIs of some databases (such as KVDB) do not support returning an index, if the server uses a database that does not support indexes, this Promise cannot return an index value either. |
 
 **Error codes:**
 
@@ -1046,7 +1046,7 @@ notifyChange(uri: string, callback: AsyncCallback<void>): void
 
 Notifies the registered observer of data changes. This API uses an asynchronous callback to return the result. Silent access is not supported currently.
 
-In non-silent scenarios, the size of the **uri** parameter passed in this API called cannot exceed 200 KB. Otherwise, the operation fails or an exception is thrown.
+In non-silent scenarios, the size of the **uri** parameter passed when calling this API cannot exceed 200 KB. Otherwise, the operation fails or an exception is thrown.
 
 **Since:** 9
 
@@ -1095,7 +1095,7 @@ notifyChange(uri: string): Promise<void>
 
 Notifies the registered observer of data changes. This API uses a promise to return the result. Silent access is not supported currently.
 
-In non-silent scenarios, the size of the **uri** parameter passed in this API called cannot exceed 200 KB. Otherwise, the operation fails or an exception is thrown.
+In non-silent scenarios, the size of the **uri** parameter passed in this API call cannot exceed 200 KB. Otherwise, the operation fails or an exception is thrown.
 
 **Since:** 9
 
@@ -1147,7 +1147,7 @@ notifyChange(data: ChangeInfo): Promise<void>
 
 Notifies the observer of the data change of the specified URI. This API uses a promise to return the result. Silent access is not supported currently.
 
-In non-silent scenarios, the size of the **data** parameter passed in this API called cannot exceed 200 KB. Otherwise, the operation fails or an exception is thrown.
+In non-silent scenarios, the size of the **data** parameter passed when calling this API cannot exceed 200 KB. Otherwise, the operation fails or an exception is thrown.
 
 **Since:** 12
 
@@ -1316,6 +1316,11 @@ off(
 
 Unsubscribes from the changes of the data corresponding to the specified URI and template. Only silent access is supported.
 
+**API called in pairs**  
+- This API is used in pairs with [on('rdbDataChange')](#ondatachange) and must be used after subscription.  
+- To cancel the subscription, ensure that the values of **type**, **uris**, and **templateId** are the same as those set during the subscription.  
+- If the **callback** parameter is empty, all registered callbacks of the URI will be unregistered.
+
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
@@ -1432,9 +1437,13 @@ if (dataShareHelper != undefined) {
 on(type: 'dataChange', uri: string, callback: AsyncCallback<void>): void
 ```
 
-Subscribes to the data change of the specified URI. After an observer is registered, the subscriber will receive a notification when the **notifyChange** API is called. This API uses an asynchronous callback to return the result. This function does not support cross-user notification subscription. An application can subscribe to a single URI for a maximum of 51 times.
+Subscribes to the data change event of the data corresponding to the specified URI. Cross-user subscription to notifications is not supported.
 
-Notification triggering: In non-silent scenarios, a notification is published if the [notifyChange](#notifychange-2) method is called. In silent scenarios, a notification is automatically published if data is modified via silent access.
+**Notification triggering:** In non-silent scenarios, a notification is published to the subscribers of the specified URI when the [notifyChange](#notifychange) method is called. In silent scenarios, a notification is automatically published when the data is modified through silent access to the specified URI.
+
+**Specification limits**  
+- Before OpenHarmony 6.0, the maximum number of repeated subscriptions to a single URI within the same application is 50, and a single URI supports a maximum of 50 subscriptions globally.  
+- Since OpenHarmony 6.0, the maximum number of repeated subscriptions to a single URI within the same application is 50, and a single URI supports a maximum of 2500 subscriptions globally.
 
 **Since:** 9
 
@@ -1483,9 +1492,18 @@ if (dataShareHelper !== undefined) {
 on(event: 'dataChange', type:SubscriptionType, uri: string, callback: AsyncCallback<ChangeInfo>): void
 ```
 
-Subscribes to the data change of the specified URI. After a change notification is registered, the subscriber will receive a notification when the **notifyChange** API is called. The change notification contains the data change type, URI of the data changed, and the changed data. This API uses an asynchronous callback to return the result. This function does not support cross-user notification subscription. An application can subscribe to a single URI for a maximum of 51 times.
+Subscribes to the data change event of the data corresponding to the specified URI. Cross-user subscription to notifications is not supported.
 
-Notification triggering: In non-silent scenarios, a notification is published if the [notifyChange](#notifychange-3) method is called. In silent scenarios, a notification is automatically published if data is modified via silent access, but **changeInfo** in the callback is invalid.
+**API called in pairs**  
+- This API is used in pairs with [off('dataChange')](#offdatachange), which is used to unsubscribe from data change events.  
+- To cancel the subscription, ensure that the values of **type**, **uri**, and **callback** are the same as those set during the subscription.  
+- If the subscription is not canceled in time, memory leaks and resource occupation may occur.
+
+**Notification triggering:** In non-silent scenarios, a notification carrying [ChangeInfo](arkts-arkdata-datashare-changeinfo-i-sys.md) is published to the subscribers of the specified URI when the [notifyChange](#notifychange-3) method is called. In silent scenarios, a notification is automatically published when the data is modified through silent access to the specified URI, but the **ChangeInfo** in the callback notification is invalid in this case.
+
+**Specification limits**  
+- Before OpenHarmony 6.0, the maximum number of repeated subscriptions to a single URI within the same application is 50, and a single URI supports a maximum of 50 subscriptions globally.  
+- Starting from OpenHarmony 6.0, the maximum number of repeated subscriptions to a single URI within the same application is 50, and a single URI supports a maximum of 2500 subscriptions globally.
 
 **Since:** 12
 
@@ -1543,6 +1561,11 @@ on(
 ```
 
 Subscribes to the changes of the data corresponding to the specified URI and template. Only silent access is supported. This function does not support cross-user notification subscription.
+
+**API called in pairs**  
+- This API is used in pairs with [off('rdbDataChange')](#offdatachange), which is used to unsubscribe from data change events.  
+- To cancel the subscription, ensure that the values of **type**, **uris**, **templateId**, and **callback** are the same as those set during the subscription.  
+- If the subscription is not canceled in time, memory leaks and resource occupation may occur.
 
 **Since:** 10
 
@@ -1784,7 +1807,7 @@ In silent scenarios, the total size of the **data** and **bundleName** parameter
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API.<br>**Applicable version:** 12 and later |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types. |
-| [15700012](../errorcode-datashare.md#15700012-data-area-not-exist) | The data area is not exist. |
+| [15700012](../errorcode-datashare.md#15700012-data-area-not-exist) | The data area does not exist. |
 | [15700013](../errorcode-datashare.md#15700013-datasharehelper-instance-closed) | The DataShareHelper instance is already closed.<br>**Applicable version:** 12 and later |
 
 <!--Del-->
@@ -1833,7 +1856,7 @@ In silent scenarios, the total size of the **data** and **bundleName** parameter
 | --- | --- | --- | --- |
 | data | Array&lt;[PublishedItem](arkts-arkdata-datashare-publisheditem-i-sys.md)&gt; | Yes | Data to publish. |
 | bundleName | string | Yes | Application of the data to publish. This parameter is valid only for the private data published. Only the application can read the data. |
-| version | number | No | Version of the data to publish. A larger value indicates a later version. If the version of the data published is earlier than that of the data in the database, the data in the database will not be updated. If the data version is not checked, leave this parameter unspecified. |
+| version | number | No | Version of the data to publish. A larger value indicates a newer data version. If the published version number is smaller than the record in the database, the update fails. If the version of the data to publish does not need to be checked, leave this parameter unspecified. |
 
 **Return value:**
 
@@ -1899,7 +1922,7 @@ When this API is used to query database data, if the query content exceeds the r
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | uri | string | Yes | URI of the data to query. |
-| predicates | [dataSharePredicates.DataSharePredicates](arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | Yes | Conditions for querying data.The predicate methods supported by **query()** vary depending on the database used. For example, the KVDB supports only **inKeys** and **prefixKey**. If this parameter is left empty, the entire table will be queried by default. |
+| predicates | [dataSharePredicates.DataSharePredicates](arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | Yes | Filter criteria. The predicate methods supported by the **query** API depend on the database selected by the server. For example, KVDB currently supports only **inKeys** and **prefixKey**. In a silent access scenario, when the methods in the predicate are empty, the entire table is queried by default. In a non-silent access scenario, the specifications are defined by the data provider. |
 | columns | Array&lt;string&gt; | Yes | Column to query. If this parameter is left empty, all columns will be queried. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[DataShareResultSet](arkts-arkdata-data-datashareresultset-datashareresultset-i-sys.md)&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the result set obtained. Otherwise, **err** is an error object. |
 
@@ -1957,7 +1980,7 @@ In non-silent scenarios, the size of the **predicates** parameter and the total 
 
 In silent scenarios, the total size of the **uri**, **predicates**, and **columns** parameters passed in this API cannot exceed 200 KB. If the size exceeds the limit, the operation fails or an exception is thrown.
 
-When this API is used to query database data, if the query content exceeds the resource limit, the operation fails and an error is returned. You can retry the operation based on the scenario. For details about the resource limit, see [Silent Access via DatamgrService (ArkTS) (for System Applications Only)](../../../database/share-data-by-silent-access-sys.md#constraints) and [Sharing Data Using DataShareExtensionAbility (ArkTS) (for System Applications Only)](../../../database/share-data-by-datashareextensionability-sys.md#constraints).
+When this API is used to query database data, if the query content exceeds the resource limit, the operation fails and an error is returned. You can retry the operation based on the scenario. For details about the resource limit, see [Silent Access via DatamgrService](../../../database/share-data-by-silent-access-sys.md#constraints) and [Sharing Data Using DataShareExtensionAbility](../../../database/share-data-by-datashareextensionability-sys.md#constraints).
 
 **Since:** 9
 
@@ -1974,7 +1997,7 @@ When this API is used to query database data, if the query content exceeds the r
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | uri | string | Yes | URI of the data to query. |
-| predicates | [dataSharePredicates.DataSharePredicates](arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | Yes | Conditions for querying data.The predicate methods supported by **query()** vary depending on the database used. For example, the KVDB supports only **inKeys** and **prefixKey**. If this parameter is left empty, the entire table will be queried by default. |
+| predicates | [dataSharePredicates.DataSharePredicates](arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | Yes | Filter criteria. The predicate methods supported by the **query** API depend on the database selected by the server. For example, KVDB currently supports only **inKeys** and **prefixKey**. In a silent scenario, when the methods in the predicate are empty, the entire table is queried by default. In a non-silent scenario, the specification is defined by the data provider. |
 | columns | Array&lt;string&gt; | Yes | Column to query. If this parameter is left empty, all columns will be queried. |
 
 **Return value:**
@@ -2051,9 +2074,9 @@ In silent scenarios, the total size of the **uri**, **predicates**, and **value*
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | uri | string | Yes | URI of the data to update. |
-| predicates | [dataSharePredicates.DataSharePredicates](arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | Yes | Conditions for updating data.The predicate methods supported by **update()** vary depending on the database in use. For example, only the relational database (RDB) supports predicates. If this parameter is left empty, the entire table will be updated by default. |
+| predicates | [dataSharePredicates.DataSharePredicates](arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | Yes | Filtering conditions. The predicate filtering conditions supported by the **update** API depend on the database selected by the server. For example, KVDB does not support predicate filtering conditions, and only RDB does. In a silent scenario, when the methods in the predicate are empty, the entire table is updated by default. In a non-silent scenario, the specifications are defined by the data provider. |
 | value | [ValuesBucket](arkts-arkdata-valuesbucket-t.md) | Yes | Value of the data to update. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the number of updated data records. Otherwise, **err** is an error object.The number of updated data records is not returned if the APIs of the database in use (for example, KVDB) do not support this return. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | Yes | Callback invoked to return the result. If the data records in the database are updated successfully, **err** is **undefined** and **data** is the number of updated data records. Otherwise, err is an error object. Because the corresponding APIs of some databases (such as KVDB) do not provide such support, if the server uses such a database, this **callback** cannot return the number of updated data records. |
 
 **Error codes:**
 
@@ -2130,14 +2153,14 @@ In silent scenarios, the total size of the **uri**, **predicates**, and **value*
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | uri | string | Yes | URI of the data to update. |
-| predicates | [dataSharePredicates.DataSharePredicates](arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | Yes | Conditions for updating data.The predicate methods supported by **update()** vary depending on the database in use. For example, only the relational database (RDB) supports predicates. If this parameter is left empty, the entire table will be updated by default. |
+| predicates | [dataSharePredicates.DataSharePredicates](arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | Yes | Filter criteria. The predicate filter criteria supported by the **update** API depend on the database used by the server. For example, KVDB does not support predicate filter criteria, and only RDB does. In the silent access scenario, when the methods in the predicate are empty, the entire table is updated by default. In the non-silent access scenario, the specifications are defined by the data provider. |
 | value | [ValuesBucket](arkts-arkdata-valuesbucket-t.md) | Yes | Value of the data to update. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;number&gt; | Promise used to return the number of data records updated. The number of updated data records is not returned if the APIs of the database in use (for example, KVDB) do not support this return. |
+| Promise&lt;number&gt; | Promise used to return the number of updated data records. Because the corresponding APIs of some databases (such as KVDB) do not provide such support, if the server uses such a database, this Promise cannot return the number of updated data records. |
 
 **Error codes:**
 

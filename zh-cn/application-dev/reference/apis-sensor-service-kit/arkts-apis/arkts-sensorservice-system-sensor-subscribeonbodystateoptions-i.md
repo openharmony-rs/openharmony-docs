@@ -34,7 +34,7 @@ fail?: (data: string, code: number) => void
 
 **废弃版本：** 8
 
-**替代接口：** on
+**替代接口：** [on](arkts-sensorservice-sensor-on-f.md#on系统接口)
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
@@ -61,7 +61,7 @@ success: (data: OnBodyStateResponse) => void
 
 **废弃版本：** 8
 
-**替代接口：** on
+**替代接口：** [on](arkts-sensorservice-sensor-on-f.md#on系统接口)
 
 **模型约束：** 此接口仅可在FA模型下使用。
 

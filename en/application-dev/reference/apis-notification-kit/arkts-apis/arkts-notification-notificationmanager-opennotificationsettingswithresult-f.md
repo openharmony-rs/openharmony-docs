@@ -12,9 +12,9 @@ import { notificationManager } from '@kit.NotificationKit';
 function openNotificationSettingsWithResult(context: UIAbilityContext): Promise<NotificationSetting>
 ```
 
-Opens the notification settings page of the application, which is presented in a semi-modal window and can be used to set notification switches, notification reminder methods, etc. This API uses a promise to return the user-set status when the semi-modal window is closed.
+Brings up the [notification setting](../../../notification/notification-glossary.md#notification-setting) page of the application. The page is presented in semi-modal form and can be used to set the notification switch, [notification reminder mode](../../../notification/notification-glossary.md#notification-reminder-mode), and so on. This API uses a promise to return the result, and returns the status set by the user when the semi-modal window is closed.
 
-Unlike openNotificationSettings, this API returns a NotificationSetting object when the semi-modal window is closed. You can determine whether the user has enabled the notification permission based on the returned result, thereby deciding subsequent logic.
+Unlike [openNotificationSettings](arkts-notification-notificationmanager-opennotificationsettings-f.md), this API returns a [NotificationSetting](arkts-notification-notificationmanager-notificationsetting-i.md) object when the semi-modal window is closed. You can determine whether the user has enabled the notification permission based on the returned result, thereby deciding subsequent logic.
 
 **Since:** 26.0.0
 
@@ -40,7 +40,7 @@ Unlike openNotificationSettings, this API returns a NotificationSetting object w
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[NotificationSetting](arkts-notification-notificationmanager-notificationsetting-i.md)&gt; | Promise used to return the result. |
+| Promise&lt;[NotificationSetting](arkts-notification-notificationmanager-notificationsetting-i.md)&gt; | Promise used to return the notification settings of this application. |
 
 **Error codes:**
 

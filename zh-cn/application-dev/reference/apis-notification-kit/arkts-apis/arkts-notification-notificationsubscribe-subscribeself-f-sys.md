@@ -12,7 +12,7 @@ import { notificationSubscribe } from '@kit.NotificationKit';
 function subscribeSelf(subscriber: NotificationSubscriber): Promise<void>
 ```
 
-订阅本应用的通知并指定订阅信息。使用Promise异步回调。
+订阅本应用的通知。使用Promise异步回调。
 
 **起始版本：** 11
 
@@ -26,7 +26,7 @@ function subscribeSelf(subscriber: NotificationSubscriber): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| subscriber | [NotificationSubscriber](arkts-notification-notificationsubscribe-notificationsubscriber-t-sys.md) | 是 | 通知订阅对象。 |
+| subscriber | [NotificationSubscriber](arkts-notification-notificationsubscribe-notificationsubscriber-t-sys.md) | 是 | [通知订阅](../../../notification/notification-glossary.md#notification-subscription通知订阅)对象。 |
 
 **返回值：**
 

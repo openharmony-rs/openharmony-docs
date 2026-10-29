@@ -4,7 +4,7 @@
 export interface NotificationSetting
 ```
 
-通知提醒方式开关的设置状态。
+[通知提醒方式](../../../notification/notification-glossary.md#notification-reminder-mode通知提醒方式)开关的设置状态。
 
 **起始版本：** 20
 
@@ -24,8 +24,7 @@ import { notificationManager } from '@kit.NotificationKit';
 badgeNumberEnabled?: boolean
 ```
 
-表示是否开启通知角标数字展示。
-
+表示是否开启[通知角标](../../../notification/notification-glossary.md#notification-badge通知角标)数字展示。  
 - true：开启。  
 - false：关闭。
 
@@ -45,8 +44,7 @@ badgeNumberEnabled?: boolean
 bannerEnabled?: boolean
 ```
 
-表示是否开启横幅通知。
-
+表示是否开启横幅通知。  
 - true：开启。  
 - false：关闭。
 
@@ -66,8 +64,7 @@ bannerEnabled?: boolean
 lockScreenEnabled?: boolean
 ```
 
-表示是否开启锁屏通知。
-
+表示是否开启锁屏通知。  
 - true：开启。  
 - false：关闭。
 
@@ -87,8 +84,7 @@ lockScreenEnabled?: boolean
 notificationEnabled?: boolean
 ```
 
-表示应用通知使能状态。
-
+表示应用通知授权状态。  
 - true：开启。  
 - false：关闭。
 
@@ -108,7 +104,7 @@ notificationEnabled?: boolean
 soundEnabled: boolean
 ```
 
-表示是否开启响铃。
+表示是否开启铃声。
 
 - true：开启。  
 - false：关闭。

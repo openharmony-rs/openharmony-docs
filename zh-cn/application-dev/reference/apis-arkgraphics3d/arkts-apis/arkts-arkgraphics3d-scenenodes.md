@@ -18,6 +18,8 @@
 | [LayerMask](arkts-arkgraphics3d-scenenodes-layermask-i.md) | 用于定义节点的图层掩码。 |
 | [Light](arkts-arkgraphics3d-scenenodes-light-i.md) | 光源，继承自[Node](arkts-arkgraphics3d-scenenodes-node-i.md)。 |
 | [Node](arkts-arkgraphics3d-scenenodes-node-i.md) | 3D场景由树状层次结构的节点组成，其中每个节点都实现了Node接口。继承自[SceneResource](arkts-arkgraphics3d-sceneresources-sceneresource-i.md)。 |
+| [PointLight](arkts-arkgraphics3d-scenenodes-pointlight-i.md) | 点光源类型，继承自[Light](arkts-arkgraphics3d-scenenodes-light-i.md)。 |
+| [RectLight](arkts-arkgraphics3d-scenenodes-rectlight-i.md) | 矩形区域光类型，继承自[Light](arkts-arkgraphics3d-scenenodes-light-i.md)。 |
 | [SpotLight](arkts-arkgraphics3d-scenenodes-spotlight-i.md) | 聚光灯类型，继承自[Light](arkts-arkgraphics3d-scenenodes-light-i.md)。 |
 
 ### 枚举

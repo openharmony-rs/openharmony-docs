@@ -4,7 +4,7 @@
 export interface NotificationInfo
 ```
 
-The **NotificationInfo** module describes the notification information delivered to the onReceiveMessage callback of ExtensionAbility for notification subscriptions.
+Notification information in the [onReceiveMessage](arkts-notification-application-notificationsubscriberextensionability-notificationsubscriberextensionability-c.md#onreceivemessage) callback of the [notification subscription](../../../notification/notification-glossary.md#notification-subscription) extension ability.
 
 **Since:** 22
 
@@ -66,7 +66,7 @@ Bundle name of the application that creates the notification.
 readonly content: NotificationExtensionContent
 ```
 
-Notification content, which includes the title and body of the notification.
+[Notification content](../../../notification/notification-glossary.md#notification-content), including the title and body of the notification.
 
 **Type:** [NotificationExtensionContent](arkts-notification-notificationextensioncontent-i.md)
 
@@ -82,7 +82,11 @@ Notification content, which includes the title and body of the notification.
 readonly deliveryTime?: number
 ```
 
-Timestamp when the notification is published. Data format: timestamp. Unit: millisecond.
+Timestamp when the notification is published.
+
+Data format: timestamp.
+
+Unit: milliseconds.
 
 **Type:** number
 
@@ -130,7 +134,7 @@ Unique identifier of the notification.
 readonly notificationSlotType: notificationManager.SlotType
 ```
 
-Notification slot type, which identifies the slot category of the notification (such as social communication and service reminder). Different slot types correspond to different reminder types.
+Type of the [notification slot](../../../notification/notification-glossary.md#notification-slot), which identifies the channel category to which the notification belongs (for example, social communication and service reminder). Different slot types correspond to different reminder modes.
 
 **Type:** [notificationManager.SlotType](arkts-notification-notificationmanager-slottype-e.md)
 

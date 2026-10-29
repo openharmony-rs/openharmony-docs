@@ -12,7 +12,7 @@ import { notificationManager } from '@kit.NotificationKit';
 function getSlotFlagsByBundle(bundle: BundleOption): Promise<number>
 ```
 
-获取指定应用的通知渠道标识位。使用Promise异步回调。
+获取指定应用的[通知渠道](../../../notification/notification-glossary.md#notification-slot通知渠道)标识位。使用Promise异步回调。
 
 **起始版本：** 11
 

@@ -99,7 +99,7 @@ import { connection } from '@kit.ConnectivityKit';
 | --- | --- |
 | [AclStateResult](arkts-connectivity-connection-aclstateresult-i.md) | Acl state change result. |
 | [BatteryInfo](arkts-connectivity-connection-batteryinfo-i.md) | Describes the contents of the battery information. |
-| [BondStateParam](arkts-connectivity-connection-bondstateparam-i.md) | Describes the class of a bluetooth device. |
+| [BondStateParam](arkts-connectivity-connection-bondstateparam-i.md) | Bond state change parameters. |
 | [DeviceClass](arkts-connectivity-connection-deviceclass-i.md) | Describes the class of a bluetooth device. |
 | [DiscoveryResult](arkts-connectivity-connection-discoveryresult-i.md) | Describes the contents of the discovery results |
 | [PinRequiredParam](arkts-connectivity-connection-pinrequiredparam-i.md) | Describes the bond key param. |

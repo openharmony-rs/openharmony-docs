@@ -12,9 +12,9 @@ import { notificationManager } from '@kit.NotificationKit';
 function addSlot(type: SlotType, callback: AsyncCallback<void>): void
 ```
 
-创建指定类型的通知渠道。使用callback异步回调。
+创建指定类型的[通知渠道](../../../notification/notification-glossary.md#notification-slot通知渠道)。使用callback异步回调。
 
-通知渠道NotificationSlot定义了通知的提醒方式（如提示音、振动、横幅等）和级别。发布通知前，应用需先创建对应类型的通知渠道，或者发布通知时系统将自动创建对应类型的通知渠道。同一类型的通知渠道只能创建一个。
+通知渠道[NotificationSlot](arkts-notification-notificationslot-i.md)定义了通知的提醒方式（如提示音、振动、横幅等）和级别。发布通知前，应用需先创建对应类型的通知渠道，或者发布通知时系统将自动创建对应类型的通知渠道。同一类型的通知渠道只能创建一个。
 
 **起始版本：** 9
 
@@ -34,7 +34,7 @@ function addSlot(type: SlotType, callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | [SlotType](arkts-notification-notificationmanager-slottype-e.md) | 是 | 要创建的通知渠道的类型。不同的渠道类型对应不同的默认SlotLevel，影响通知的提醒方式。例如SOCIAL_COMMUNICATION对应LEVEL_HIGH（状态栏图标+横幅+提示音），CONTENT_INFORMATION对应LEVEL_MIN（状态栏不显示图标+无横幅+无提示音）。 |
+| type | [SlotType](arkts-notification-notificationmanager-slottype-e.md) | 是 | 要创建的通知渠道的类型。不同的渠道类型对应不同的默认[SlotLevel](arkts-notification-notificationmanager-slotlevel-e.md)，影响通知的提醒方式。例如`SOCIAL_COMMUNICATION`对应`LEVEL_HIGH`（状态栏图标+横幅+提示音），`CONTENT_INFORMATION`对应`LEVEL_MIN`（状态栏不显示图标+无横幅+无提示音）。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当创建指定类型的通知渠道成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -70,9 +70,9 @@ notificationManager.addSlot(notificationManager.SlotType.SOCIAL_COMMUNICATION, a
 function addSlot(type: SlotType): Promise<void>
 ```
 
-创建指定类型的通知渠道。使用Promise异步回调。
+创建指定类型的[通知渠道](../../../notification/notification-glossary.md#notification-slot通知渠道)。使用Promise异步回调。
 
-通知渠道NotificationSlot定义了通知的提醒方式（如提示音、振动、横幅等）和级别。发布通知前，应用需先创建对应类型的通知渠道，或者发布通知时系统将自动创建对应类型的通知渠道。同一类型的通知渠道只能创建一个。
+通知渠道[NotificationSlot](arkts-notification-notificationslot-i.md)定义了通知的提醒方式（如提示音、振动、横幅等）和级别。发布通知前，应用需先创建对应类型的通知渠道，或者发布通知时系统将自动创建对应类型的通知渠道。同一类型的通知渠道只能创建一个。
 
 **起始版本：** 9
 
@@ -92,7 +92,7 @@ function addSlot(type: SlotType): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | [SlotType](arkts-notification-notificationmanager-slottype-e.md) | 是 | 要创建的通知渠道的类型。不同的渠道类型对应不同的默认SlotLevel，影响通知的提醒方式。例如SOCIAL_COMMUNICATION对应LEVEL_HIGH（状态栏图标+横幅+提示音），CONTENT_INFORMATION对应LEVEL_MIN（状态栏不显示图标+无横幅+无提示音）。 |
+| type | [SlotType](arkts-notification-notificationmanager-slottype-e.md) | 是 | 要创建的通知渠道的类型。不同的渠道类型对应不同的默认[SlotLevel](arkts-notification-notificationmanager-slotlevel-e.md)，影响通知的提醒方式。例如`SOCIAL_COMMUNICATION`对应`LEVEL_HIGH`（状态栏图标+横幅+提示音），`CONTENT_INFORMATION`对应`LEVEL_MIN`（状态栏不显示图标+无横幅+无提示音）。 |
 
 **返回值：**
 

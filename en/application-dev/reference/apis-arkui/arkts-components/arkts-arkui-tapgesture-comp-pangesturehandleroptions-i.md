@@ -48,7 +48,7 @@ Default value: **8** for the stylus and **5** for other input sources
 
 **NOTE:** 
 
-If a pan gesture and a [tab](../../apis-avsession-kit/arkts-apis/arkts-avsession-avmusictemplate-customelement-i.md#tabs) swipe occur at the same time, set **distance** to **1** to make the gesture more easily recognizable.
+If a pan gesture and a [tab](arkts-arkui-tabs-comp.md) swipe occur at the same time, set **distance** to **1** to make the gesture more easily recognizable.
 
 Value range: [0, +∞). If the value specified is less than 0, the default value is used.
 
@@ -80,7 +80,7 @@ Default value: **8** for the stylus and **5** for other input sources
 
 **NOTE:** 
 
-If a pan gesture and a [tab](../../apis-avsession-kit/arkts-apis/arkts-avsession-avmusictemplate-customelement-i.md#tabs) swipe occur at the same time, set the **distanceMap** value of the corresponding input source to **1** to make the gesture more easily recognizable.
+If a pan gesture and a [tab](arkts-arkui-tabs-comp.md) swipe occur at the same time, set the **distanceMap** value of the corresponding input source to **1** to make the gesture more easily recognizable.
 
 Value range: [0, +∞). If the value specified is less than 0, the default value is used.
 

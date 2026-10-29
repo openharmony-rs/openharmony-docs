@@ -4,7 +4,7 @@
 export interface NotificationSwitchChangedCallbackData
 ```
 
-通知开关状态变化的回调函数类型。
+通知开关状态变化的回调数据。
 
 **起始版本：** 26.0.0
 

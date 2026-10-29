@@ -36,7 +36,7 @@ GET_BUNDLE_INFO_EXCLUDE_CLONE = 0x00004000
 GET_BUNDLE_INFO_OF_ALL_DEVICE_MODE = 0x00200000
 ```
 
-用于获取任意设备安装的应用的bundle信息。它只在[getAllAppCloneBundleInfo](arkts-ability-bundlemanager-getallappclonebundleinfo-f-sys.md)和[getAllBundleInfo](arkts-ability-bundlemanager-getallbundleinfo-f-sys.md)和[getAllBundleInfoInstances](arkts-ability-bundlemanager-getallbundleinfoinstances-f-sys.md) API。
+用于获取任一设备模式下已安装的应用的bundleInfo。它仅在[getAllAppCloneBundleInfo](arkts-ability-bundlemanager-getallappclonebundleinfo-f-sys.md)、[getAllBundleInfo](arkts-ability-bundlemanager-getallbundleinfo-f-sys.md)和[getAllBundleInfoInstances](arkts-ability-bundlemanager-getallbundleinfoinstances-f-sys.md)接口中生效。
 
 **起始版本：** 26.0.1
 

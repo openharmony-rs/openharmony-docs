@@ -349,7 +349,7 @@ function remove(hashCodes: Array<String>, reason: RemoveReason): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| hashCodes | Array&lt;String&gt; | 是 | 通知唯一ID数组集合。 |
+| hashCodes | Array&lt;String&gt; | 是 | 通知唯一ID数组集合。可以通过[onConsume](arkts-notification-notificationsubscriber-i-sys.md#onconsume)回调的入参[SubscribeCallbackData](arkts-notification-notificationsubscriber-subscribecallbackdata-i-sys.md)获取其内部[NotificationRequest](arkts-notification-notificationrequest-i.md)对象中的hashCode。 |
 | reason | [RemoveReason](arkts-notification-notificationsubscribe-removereason-e-sys.md) | 是 | 通知删除原因。 |
 
 **返回值：**

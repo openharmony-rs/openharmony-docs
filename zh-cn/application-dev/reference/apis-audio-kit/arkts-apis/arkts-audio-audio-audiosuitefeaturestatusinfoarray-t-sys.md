@@ -4,7 +4,7 @@
 type AudioSuiteFeatureStatusInfoArray = Array<AudioSuiteFeatureStatusInfo>
 ```
 
-定义音频编创套件特性的状态信息数组。
+定义音频编创特性的状态信息数组。
 
 **类型：** Array&lt;[AudioSuiteFeatureStatusInfo](arkts-audio-audio-audiosuitefeaturestatusinfo-i-sys.md)&gt;
 

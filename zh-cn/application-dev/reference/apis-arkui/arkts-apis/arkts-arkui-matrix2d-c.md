@@ -17,7 +17,7 @@ Matrix2D的使用场景包括：
 
 > **说明：** 
 > 
-> 可使用px2vp接口进行单位转换。
+> 可使用[px2vp](../arkts-apis-uicontext-uicontext.md#px2vp12)接口进行单位转换。
 
 **起始版本：** 8
 

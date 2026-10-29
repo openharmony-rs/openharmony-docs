@@ -230,8 +230,6 @@ sdkMinorApiVersion?: number
 
 SDK minor API version. Since API version 26.0.0, the API version is in the format of **apiVersion.sdkMinorApiVersion.sdkPatchApiVersion**. If the value fails to be obtained, **-1** is returned, which does not affect the overall return status of the **getInfo** API.
 
-**Model constraint:** This API can be used only in the FA model. **Since version**: 26.0.0 Example: 0
-
 **Type:** number
 
 **Since:** 26.0.0
@@ -251,8 +249,6 @@ sdkPatchApiVersion?: number
 ```
 
 SDK patch API version. Since API version 26.0.0, the API version is in the format of **apiVersion.sdkMinorApiVersion.sdkPatchApiVersion**. If the value fails to be obtained, **-1** is returned, which does not affect the overall return status of the **getInfo** API.
-
-**Model constraint:** This API can be used only in the FA model. **Since version**: 26.0.0 Example: 0
 
 **Type:** number
 

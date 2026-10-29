@@ -4,7 +4,7 @@
 export enum RingtoneType
 ```
 
-Enumerates the custom ringtone types.
+Describes the [customized ringtone](../../../notification/notification-glossary.md#customized-ringtone) type.
 
 **Since:** 21
 

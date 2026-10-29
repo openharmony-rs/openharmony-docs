@@ -12,8 +12,6 @@ Defines the direction of a barrier.
 
 **System capability:** SystemCapability.Test.UiTest
 
-**Test API:** This API is used only in automated test scripts.
-
 ## BOTTOM
 
 ```TypeScript

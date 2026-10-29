@@ -18,6 +18,7 @@ UIExtensionAbility is an ExtensionAbility component with a User Interface (UI). 
 
 ```TypeScript
 import { UIExtensionAbility } from '@kit.AbilityKit';
+import { ConfigurationStrategy } from '@kit.AbilityKit';
 ```
 
 ## onBackground

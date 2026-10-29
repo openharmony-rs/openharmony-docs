@@ -4,6 +4,8 @@
 export interface ShowNotificationOptions
 ```
 
+通知展示的相关参数选项，可设置通知标题、通知内容以及通知被点击后触发的行为。
+
 **起始版本：** 3
 
 **废弃版本：** 7
@@ -26,8 +28,6 @@ clickAction?: ActionResult
 
 通知被点击后触发的行为。
 
-从API version 7开始不再维护。
-
 **类型：** [ActionResult](arkts-notification-system-notification-actionresult-i.md)
 
 **起始版本：** 3
@@ -44,7 +44,7 @@ clickAction?: ActionResult
 contentText?: string
 ```
 
-通知内容。
+[通知内容](../../../notification/notification-glossary.md#notification-content通知内容)。
 
 **类型：** string
 

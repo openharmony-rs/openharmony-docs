@@ -18,7 +18,7 @@ Describes the **BundleOption** information, that is, the bundle information of a
 bundle: string
 ```
 
-Bundle name of the application.
+Bundle name of the application. The string length cannot exceed 202 bytes, and the excess part will be truncated.
 
 **Type:** string
 

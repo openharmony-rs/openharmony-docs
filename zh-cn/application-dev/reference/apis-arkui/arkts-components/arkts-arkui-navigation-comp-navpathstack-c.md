@@ -6,7 +6,7 @@ declare class NavPathStack
 
 Navigation导航控制器，以栈的数据结构管理Navigation中所有的子页面，并提供栈操作的方法用于控制Navigation中子页面的切换。
 
-从API version 12开始，NavPathStack允许被继承，派生类对象可以替代基类NavPathStack对象使用。使用示例参见示例10。
+从API version 12开始，NavPathStack允许被继承，派生类对象可以替代基类NavPathStack对象使用。使用示例参见[示例10](../../../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#示例10定义导航控制器派生类)。
 
 > **说明：** 
 > 
@@ -671,7 +671,7 @@ pushDestinationByName(name: string, param: Object, onPop: import('../api/@ohos.b
 | --- | --- | --- | --- |
 | name | string | 是 | NavDestination页面名称。 |
 | param | Object | 是 | 开发者设置的NavDestination页面详细参数。 |
-| onPop | import('../api/@ohos.base').Callback&lt;[PopInfo](arkts-arkui-navigation-comp-popinfo-i.md)&gt; | 是 | Callback回调，用于页面出栈时处理返回结果。仅pop、popToName、popToIndex中设置result参数后触发。 |
+| onPop | import('../api/@ohos.base').Callback&lt;[PopInfo](arkts-arkui-navigation-comp-popinfo-i.md)&gt; | 是 | Callback回调，用于页面出栈时处理返回结果。仅[pop](#pop-2)、[popToName](#poptoname-2)、[popToIndex](#poptoindex-2)中设置result参数后触发。 |
 | animated | boolean | 否 | 是否支持转场动画。<br>true：支持转场动画；false：不支持转场动画。<br>默认值：true |
 
 **返回值：**
@@ -789,7 +789,7 @@ pushPathByName(name: string, param: Object, onPop: import('../api/@ohos.base').C
 | --- | --- | --- | --- |
 | name | string | 是 | NavDestination页面名称。 |
 | param | Object | 是 | 开发者设置的NavDestination页面详细参数。 |
-| onPop | import('../api/@ohos.base').Callback&lt;[PopInfo](arkts-arkui-navigation-comp-popinfo-i.md)&gt; | 是 | Callback回调，用于页面出栈时触发该回调处理返回结果。仅pop、popToName、popToIndex中设置result参数后触发。 |
+| onPop | import('../api/@ohos.base').Callback&lt;[PopInfo](arkts-arkui-navigation-comp-popinfo-i.md)&gt; | 是 | Callback回调，用于页面出栈时触发该回调处理返回结果。仅[pop](#pop-2)、[popToName](#poptoname-2)、[popToIndex](#poptoindex-2)中设置result参数后触发。 |
 | animated | boolean | 否 | 是否支持转场动画。<br>true：支持转场动画；false：不支持转场动画。<br>默认值：true |
 
 ## removeByIndexes

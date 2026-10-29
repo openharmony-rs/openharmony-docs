@@ -402,7 +402,7 @@ Scroll组件默认有动画，Grid、List、WaterFlow组件默认无动画。
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | [Edge](../arkts-apis/arkts-arkui-edge-e.md) | 是 | 滚动到的边缘位置。 |
-| options | [ScrollEdgeOptions](arkts-arkui-scroll-comp-scrolledgeoptions-i.md) | 否 | 设置滚动到边缘位置的模式。<br>*原子化服务API*：该API可在原子化服务中使用，从API version 12开始。<br>**适用版本：** 12 |
+| options | [ScrollEdgeOptions](arkts-arkui-scroll-comp-scrolledgeoptions-i.md) | 否 | 设置滚动到边缘位置的模式。<br><em>原子化服务API</em>：该API可在原子化服务中使用，从API version 12开始。<br>**适用版本：** 12 |
 
 ## scrollPage
 

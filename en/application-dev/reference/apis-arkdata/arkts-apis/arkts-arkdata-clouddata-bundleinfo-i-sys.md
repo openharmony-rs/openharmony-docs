@@ -4,7 +4,7 @@
 interface BundleInfo
 ```
 
-Bundle information configuration.
+Defines the device-cloud synergy application information.
 
 **Since:** 26.0.0
 
@@ -26,7 +26,7 @@ import { cloudData } from '@kit.ArkData';
 bundleName: string
 ```
 
-Indicates the name of the application.
+Bundle name of the application.
 
 **Type:** string
 
@@ -46,7 +46,7 @@ Indicates the name of the application.
 storeId?: string
 ```
 
-Indicates the store ID.
+Name of the RDB store. The default value is an empty string. If the default value is used, this API queries all databases of this application.
 
 **Type:** string
 

@@ -12,7 +12,7 @@ import { notificationManager } from '@kit.NotificationKit';
 function getDistributedDeviceList(): Promise<Array<string>>
 ```
 
-Obtains the device types that enable cross-device notification. This API uses a promise to return the result.
+Queries the device types that support [cross-device collaboration](../../../notification/notification-glossary.md#cross-device-collaboration) notifications. This API uses a promise to return the result.
 
 **Since:** 20
 
@@ -28,7 +28,7 @@ Obtains the device types that enable cross-device notification. This API uses a 
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;Array&lt;string&gt;&gt; | Promise used to return the result. |
+| Promise&lt;Array&lt;string&gt;&gt; | Promise used to return the list of device types that support cross-device collaboration notifications. |
 
 **Error codes:**
 

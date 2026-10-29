@@ -4,11 +4,11 @@
 export interface NotificationCapsule
 ```
 
-描述通知胶囊，用于在实况窗中展示胶囊形态。
+描述[通知胶囊](../../../notification/notification-glossary.md#notification-capsule通知胶囊)，用于在实况窗中展示胶囊形态。
 
 > **说明：** 
 > 
-> 实际显示效果依赖于设备能力和通知中心UI样式。
+> 实际显示效果依赖于设备能力和[通知中心](../../../notification/notification-glossary.md#notification-center通知中心)UI样式。
 
 **起始版本：** 11
 
@@ -40,7 +40,7 @@ capsuleButtons?: Array<NotificationIconButton>
 content?: string
 ```
 
-胶囊的拓展文本。默认为空。
+胶囊的扩展文本。默认为空。
 
 **类型：** string
 
@@ -58,7 +58,9 @@ content?: string
 time?: number
 ```
 
-即时任务类实况胶囊展示时长。默认值为0。单位：秒。
+即时任务类实况胶囊展示时长。默认值为0。
+
+单位：秒。
 
 **类型：** number
 

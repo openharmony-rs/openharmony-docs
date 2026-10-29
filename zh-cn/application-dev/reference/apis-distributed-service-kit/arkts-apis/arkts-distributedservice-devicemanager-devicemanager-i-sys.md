@@ -1652,7 +1652,7 @@ on(type: 'serviceDie', callback: () => void): void
 
 **废弃版本：** 11
 
-**替代接口：** on(type: 'serviceDie', callback?: Callback&lt;{}&gt;)
+**替代接口：** [on](arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#onservicedie)(type: 'serviceDie', callback?: Callback&lt;{}&gt;)
 
 **需要权限：** ohos.permission.ACCESS_SERVICE_DM
 

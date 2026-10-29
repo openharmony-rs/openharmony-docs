@@ -391,7 +391,7 @@ clearPlaybackList(): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [5400102](../../apis-media-kit/errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed . Returned via promise. |
+| [5400102](../../apis-media-kit/errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Returned via promise. |
 
 **示例**
 
@@ -704,6 +704,12 @@ getPlaybackInfo(): Promise<PlaybackInfo>
 | --- | --- |
 | Promise&lt;[PlaybackInfo](arkts-media-media-playbackinfo-i.md)&gt; | Promise对象，返回播放器信息PlaybackInfo。 |
 
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [5400102](../../apis-media-kit/errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
+
 **示例**
 
 ```TypeScript
@@ -826,6 +832,12 @@ getPlaybackStatisticMetrics(): Promise<PlaybackMetrics>
 | 类型 | 说明 |
 | --- | --- |
 | Promise&lt;[PlaybackMetrics](arkts-media-media-playbackmetrics-t.md)&gt; | Promise对象，返回当前播放器的指标信息PlaybackMetrics。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [5400102](../../apis-media-kit/errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
 
 **示例**
 

@@ -27,7 +27,7 @@ function subscribeToEvent(subscriber: CommonEventSubscriber, callback: Callback<
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | subscriber | [CommonEventSubscriber](arkts-basicservices-commoneventmanager-commoneventsubscriber-t.md) | 是 | 表示订阅者对象。 |
-| callback | [Callback](arkts-basicservices-base-callback-i.md)&lt;[CommonEventData](arkts-basicservices-commoneventmanager-commoneventdata-t.md)&gt; | 是 | 表示接收公共事件数据的回调函数。 |
+| callback | [Callback](arkts-basicservices-base-callback-i.md)&lt;[CommonEventData](arkts-basicservices-commoneventmanager-commoneventdata-t.md)&gt; | 是 | 回调函数，返回公共事件数据。 |
 
 **返回值：**
 

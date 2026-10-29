@@ -36,7 +36,7 @@ fail?: (data: string, code: number) => void
 
 **废弃版本：** 8
 
-**替代接口：** on
+**替代接口：** [on](arkts-sensorservice-sensor-on-f.md#on系统接口)
 
 **需要权限：** ohos.permission.GYROSCOPE
 
@@ -65,7 +65,7 @@ success: (data: GyroscopeResponse) => void
 
 **废弃版本：** 8
 
-**替代接口：** on
+**替代接口：** [on](arkts-sensorservice-sensor-on-f.md#on系统接口)
 
 **需要权限：** ohos.permission.GYROSCOPE
 

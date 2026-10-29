@@ -22,7 +22,7 @@ Removes a notification for a specified bundle. This API uses an asynchronous cal
 
 **Deprecated since:** 9
 
-**Substitutes:** [remove](arkts-notification-notificationsubscribe-remove-f-sys.md)
+**Substitutes:** [remove](arkts-notification-notificationsubscribe-remove-f-sys.md#remove-1)(bundle: BundleOption, notificationKey: NotificationKey, reason: RemoveReason, callback: AsyncCallback&lt;void&gt;)
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -38,7 +38,7 @@ Removes a notification for a specified bundle. This API uses an asynchronous cal
 | --- | --- | --- | --- |
 | bundle | BundleOption | Yes | Bundle information of the application. |
 | notificationKey | [NotificationKey](arkts-notification-notification-notificationkey-depr-i.md) | Yes | Notification key. |
-| reason | RemoveReason | Yes | Reason for deleting a notification. |
+| reason | RemoveReason | Yes | Reason for notification deletion. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
 
 <!--Del-->
@@ -80,7 +80,7 @@ Removes a notification for a specified bundle. This API uses a promise to return
 
 **Deprecated since:** 9
 
-**Substitutes:** [remove](arkts-notification-notificationsubscribe-remove-f-sys.md)
+**Substitutes:** [remove](arkts-notification-notificationsubscribe-remove-f-sys.md#remove-2)(bundle: BundleOption, notificationKey: NotificationKey, reason: RemoveReason)
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -96,7 +96,7 @@ Removes a notification for a specified bundle. This API uses a promise to return
 | --- | --- | --- | --- |
 | bundle | BundleOption | Yes | Bundle information of the application. |
 | notificationKey | [NotificationKey](arkts-notification-notification-notificationkey-depr-i.md) | Yes | Notification key. |
-| reason | RemoveReason | Yes | Reason for deleting a notification. |
+| reason | RemoveReason | Yes | Reason for notification deletion. |
 
 **Return value:**
 
@@ -140,7 +140,7 @@ Removes a notification for a specified bundle. This API uses an asynchronous cal
 
 **Deprecated since:** 9
 
-**Substitutes:** [remove](arkts-notification-notificationsubscribe-remove-f-sys.md)
+**Substitutes:** [remove](arkts-notification-notificationsubscribe-remove-f-sys.md#remove-3)(hashCode: string, reason: RemoveReason, callback: AsyncCallback&lt;void&gt;)
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -155,7 +155,7 @@ Removes a notification for a specified bundle. This API uses an asynchronous cal
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | hashCode | string | Yes | Unique notification ID. It is the value of **hashCode** in the [NotificationRequest](arkts-notification-notificationrequest-i.md) object of [SubscribeCallbackData](arkts-notification-notificationsubscriber-subscribecallbackdata-i-sys.md) used in the [onConsume](arkts-notification-notificationsubscriber-i-sys.md#onconsume) callback. |
-| reason | RemoveReason | Yes | Reason for deleting a notification. |
+| reason | RemoveReason | Yes | Reason for notification deletion. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
 
 <!--Del-->
@@ -192,7 +192,7 @@ Removes a notification for a specified bundle. This API uses a promise to return
 
 **Deprecated since:** 9
 
-**Substitutes:** [remove](arkts-notification-notificationsubscribe-remove-f-sys.md)
+**Substitutes:** [remove](arkts-notification-notificationsubscribe-remove-f-sys.md#remove-5)(hashCode: string, reason: RemoveReason)
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -207,7 +207,7 @@ Removes a notification for a specified bundle. This API uses a promise to return
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | hashCode | string | Yes | Unique notification ID. |
-| reason | RemoveReason | Yes | Reason for deleting a notification. |
+| reason | RemoveReason | Yes | Reason for notification deletion. |
 
 **Return value:**
 

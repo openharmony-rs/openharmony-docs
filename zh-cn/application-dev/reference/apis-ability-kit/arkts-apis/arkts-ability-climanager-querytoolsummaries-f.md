@@ -29,11 +29,11 @@ function queryToolSummaries(): Promise<Array<ToolSummary>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;ToolSummary&gt;&gt; | Promise对象，返回工具摘要信息列表。 |
+| Promise&lt;Array&lt;[ToolSummary](arkts-ability-toolinfo-toolsummary-i-sys.md)&gt;&gt; | Promise对象，返回工具摘要信息列表。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| 35600050 | System Error. 1. Connect to system service failed; 2.System service failed to communicate with dependency module. |
+| [35600050](../errorcode-ability.md#35600050-偶发性报错) | System Error. 1. Connect to system service failed; 2.System service failed to communicate with dependency module. |

@@ -50,7 +50,7 @@ Appointment reminder.
 CUSTOM_KEYWORD = 'CUSTOM_KEYWORD'
 ```
 
-Custom keyword.
+User-defined keyword.
 
 **Since:** 23
 
@@ -82,7 +82,7 @@ Express progress.
 IOT_WARNING = 'IOT_WARNING'
 ```
 
-IoT warning.
+Early warning notification.
 
 **Since:** 23
 
@@ -98,7 +98,7 @@ IoT warning.
 KEY_PROGRESS = 'KEY_PROGRESS'
 ```
 
-Key progress.
+Key progress notification.
 
 **Since:** 23
 
@@ -130,7 +130,7 @@ Missed call.
 PAYMENT_DUE = 'PAYMENT_DUE'
 ```
 
-Payment and repayment.
+Payment due.
 
 **Since:** 23
 
@@ -146,7 +146,7 @@ Payment and repayment.
 PUBLIC_EVENT = 'PUBLIC_EVENT'
 ```
 
-Important common event.
+Important public event.
 
 **Since:** 23
 
@@ -178,7 +178,7 @@ Traffic violation.
 TRANSACTION_ALERT = 'TRANSACTION_ALERT'
 ```
 
-Account balance reminder.
+Transaction alert.
 
 **Since:** 23
 
@@ -194,7 +194,7 @@ Account balance reminder.
 TRAVEL_ALERT = 'TRAVEL_ALERT'
 ```
 
-Abnormal traveling.
+Travel alert.
 
 **Since:** 23
 

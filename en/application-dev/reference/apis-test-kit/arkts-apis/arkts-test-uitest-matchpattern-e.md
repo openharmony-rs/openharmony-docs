@@ -12,8 +12,6 @@ Enumerates the match patterns supported for component attributes.
 
 **System capability:** SystemCapability.Test.UiTest
 
-**Test API:** This API is used only in automated test scripts.
-
 ## CONTAINS
 
 ```TypeScript

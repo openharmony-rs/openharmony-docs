@@ -149,7 +149,7 @@ generateMediaKeyRequest(mimeType: string, initData: Uint8Array, mediaKeyType: nu
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | mimeType | string | 是 | 媒体类型，DRM解决方案名称，可通过[isMediaKeySystemSupported](arkts-drm-drm-ismediakeysystemsupported-f.md#ismediakeysystemsupported-2)查询。 |
-| initData | Uint8Array | 是 | 初始数据，即加密流中的PSSH box中的实际PSSH数据。可通过监听AVPlayer的'mediaKeySystemInfoUpdate'事件（on('mediaKeySystemInfoUpdate')）获取DRM信息，从中提取pssh字段生成initData。具体开发流程可参考[基于AVPlayer播放DRM节目(ArkTS)](../../../media/drm/drm-avplayer-arkts-integration.md)。 |
+| initData | Uint8Array | 是 | 初始数据，即加密流中的PSSH box中的实际PSSH数据。可通过监听AVPlayer的'mediaKeySystemInfoUpdate'事件（[on('mediaKeySystemInfoUpdate')](../../apis-media/arkts-apis/arkts-media-media-avplayer-i.md#onmediakeysysteminfoupdate)）获取DRM信息，从中提取pssh字段生成initData。具体开发流程可参考[基于AVPlayer播放DRM节目(ArkTS)](../../../media/drm/drm-avplayer-arkts-integration.md)。 |
 | mediaKeyType | number | 是 | 媒体密钥类型。取值范围为[0, 1]。0表示在线，1表示离线。<br>传入指定范围外的参数会导致参数校验失败，抛出错误码401。 |
 | options | [OptionsData](arkts-drm-drm-optionsdata-i.md)[] | 否 | 可选数据。默认值为空数组。 |
 

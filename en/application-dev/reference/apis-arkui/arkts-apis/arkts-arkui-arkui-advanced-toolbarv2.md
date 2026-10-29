@@ -3,7 +3,7 @@
 ## Modules to Import
 
 ```TypeScript
-import { ToolBarV2ItemState, ToolBarV2SymbolGlyph, ToolBarV2SymbolGlyphOptions, ToolBarV2ItemText, ToolBarV2ItemTextOptions, ToolBarV2ItemIconType, ToolBarV2ItemImage, ToolBarV2ItemImageOptions, ToolBarV2, ToolBarV2Item, ToolBarV2ItemOptions, ToolBarV2Modifier, ToolBarV2ItemAction } from '@kit.ArkUI';
+import { ToolBarV2ItemState, ToolBarV2SymbolGlyph, ToolBarV2SymbolGlyphOptions, ToolBarV2ItemText, ToolBarV2ItemTextOptions, ToolBarV2ItemIconType, ToolBarV2ItemImage, ToolBarV2ItemImageOptions, ToolBarV2, ToolBarV2Item, ToolBarV2ItemOptions, ToolBarV2Modifier, ToolBarV2ItemAction, AdvancedToolbarV2Item, AdvancedToolbarV2ItemOptions, AdvancedToolBarV2Modifier, BarBackgroundVisibility, ToolbarV2ItemGroupStyle, ToolbarV2ItemGroupStyleOptions, ToolbarV2ItemPlacement, ToolbarV2OverflowMenuStyle, ToolbarV2PaddingOptions, ToolbarV2StyleConfigs, ToolbarV2StyleOptions, ToolbarV2TitleConfigs, ToolbarV2TitleOptions, ToolbarV2TitleStyle, ToolbarV2TitleStyleOptions } from '@kit.ArkUI';
 ```
 
 ## Summary
@@ -12,26 +12,55 @@ import { ToolBarV2ItemState, ToolBarV2SymbolGlyph, ToolBarV2SymbolGlyphOptions, 
 
 | Name | Description |
 | --- | --- |
+| [AdvancedToolbarV2Item](arkts-arkui-arkui-advanced-toolbarv2-advancedtoolbarv2item-c.md) | Defines the advanced toolbar item. |
+| [AdvancedToolBarV2Modifier](arkts-arkui-arkui-advanced-toolbarv2-advancedtoolbarv2modifier-c.md) | Advanced modifier for ToolBarV2. Merges layout attributes, style configs, and overflow menu style into a single modifier class. |
 | [ToolBarV2Item](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2item-c.md) | Defines an item in the toolbar. |
+| [ToolbarV2ItemGroupStyle](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2itemgroupstyle-c.md) | Defines the style configuration for toolbar item group. |
 | [ToolBarV2ItemImage](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2itemimage-c.md) | Defines the icon content of a toolbar item. |
 | [ToolBarV2ItemText](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2itemtext-c.md) | Defines the text of a toolbar item. |
 | [ToolBarV2Modifier](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2modifier-c.md) | Provides methods for setting the toolbar height (**height**), background color (**backgroundColor**), left and right padding (**padding**, which takes effect only when the number of items is fewer than five), and whether to display the pressed state effect (**stateEffect**). |
+| [ToolbarV2StyleConfigs](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2styleconfigs-c.md) | Defines the style configuration for the toolbar. |
 | [ToolBarV2SymbolGlyph](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2symbolglyph-c.md) | Defines the icon symbol options. |
+| [ToolbarV2TitleConfigs](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2titleconfigs-c.md) | Title configuration. When not provided, no title is rendered. |
+| [ToolbarV2TitleStyle](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2titlestyle-c.md) | Title text style configuration. |
+
+<!--Del-->
+### Classes(System API)
+
+| Name | Description |
+| --- | --- |
+| [ToolbarV2StyleConfigs](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2styleconfigs-c-sys.md) | Defines the style configuration for the toolbar. |
+<!--DelEnd-->
 
 ### Structs
 
 | Name | Description |
 | --- | --- |
-| [ToolBarV2](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2-s.md) | The toolbar is used to display action options for the current screen content. It is displayed at the bottom of the screen and is suitable for scenarios where quick action entries need to be provided to users. A maximum of five entries can be displayed at the bottom. Any excess entries are collapsed into a "More" item, which is displayed on the far right. It is suitable for scenarios where quick operations on the current page content are needed, helping users quickly access common functions and improving operation efficiency.<br> This component is implemented based on [state management (V2)](../../../ui/state-management/arkts-state-management-overview.md#state-management-v2). Compared with [state management (V1)](../../../ui/state-management/arkts-state-management-overview.md#state-management-v1), state management (V2) enhances the deep observation and management capabilities of data objects, no longer limited to the component level. With state management (V2), developers can more flexibly control the data and state of the toolbar through this component, achieving more efficient UI refresh. <br> |
+| [ToolBarV2](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2-s.md) | The toolbar is used to display action options for the current screen content. It is displayed at the bottom of the screen and is suitable for scenarios where quick action entries need to be provided to users. A maximum of five entries can be displayed at the bottom. Any excess entries are collapsed into a "More" item, which is displayed on the far right. It is suitable for scenarios where quick operations on the current page content are needed, helping users quickly access common functions and improving operation efficiency.<br> ToolbarV2 supports configuring advanced toolbar items via `AdvancedToolbarV2Item` (which extends `ToolBarV2Item`). A toolbar with configured advanced items is more flexible, allowing you to customize titles, overflow menus, item grouping, and more. This component is implemented based on [state management (V2)](../../../ui/state-management/arkts-state-management-overview.md#state-management-v2). Compared with [state management (V1)](../../../ui/state-management/arkts-state-management-overview.md#state-management-v1), state management (V2) enhances the deep observation and management capabilities of data objects, no longer limited to the component level. With state management (V2), developers can more flexibly control the data and state of the toolbar through this component, achieving more efficient UI refresh. <br> |
 
 ### Interfaces
 
 | Name | Description |
 | --- | --- |
+| [AdvancedToolbarV2ItemOptions](arkts-arkui-arkui-advanced-toolbarv2-advancedtoolbarv2itemoptions-i.md) | Declare the options of AdvancedToolbarV2Item. |
+| [ToolbarV2ItemGroupStyleOptions](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2itemgroupstyleoptions-i.md) | Defines the constructor options for ToolbarV2ItemGroupStyle. |
 | [ToolBarV2ItemImageOptions](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2itemimageoptions-i.md) | Defines the options for initializing a **ToolBarV2ItemImage** object. |
 | [ToolBarV2ItemOptions](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2itemoptions-i.md) | Defines the options for initializing a **ToolBarV2Item** object. |
 | [ToolBarV2ItemTextOptions](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2itemtextoptions-i.md) | Defines the options for initializing a **ToolBarV2ItemText** object. |
+| [ToolbarV2OverflowMenuStyle](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2overflowmenustyle-i.md) | Style configuration for the overflow menu popup. |
+| [ToolbarV2PaddingOptions](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2paddingoptions-i.md) | Toolbar padding configuration along the main axis. |
+| [ToolbarV2StyleOptions](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2styleoptions-i.md) | Defines the constructor options for ToolbarV2StyleConfigs. |
 | [ToolBarV2SymbolGlyphOptions](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2symbolglyphoptions-i.md) | Defines the attributes of the symbol icon. |
+| [ToolbarV2TitleOptions](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2titleoptions-i.md) | Defines the constructor options for ToolbarV2TitleConfigs. |
+| [ToolbarV2TitleStyleOptions](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2titlestyleoptions-i.md) | Defines the constructor options for ToolbarV2TitleStyle. |
+
+<!--Del-->
+### Interfaces(System API)
+
+| Name | Description |
+| --- | --- |
+| [ToolbarV2StyleOptions](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2styleoptions-i-sys.md) | Defines the constructor options for ToolbarV2StyleConfigs. |
+<!--DelEnd-->
 
 ### Types
 
@@ -44,6 +73,8 @@ import { ToolBarV2ItemState, ToolBarV2SymbolGlyph, ToolBarV2SymbolGlyphOptions, 
 
 | Name | Description |
 | --- | --- |
+| [BarBackgroundVisibility](arkts-arkui-arkui-advanced-toolbarv2-barbackgroundvisibility-e.md) | Defines the toolbar background visibility. |
+| [ToolbarV2ItemPlacement](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2itemplacement-e.md) | Defines the placement position of a toolbar item within the toolbar. |
 | [ToolBarV2ItemState](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2itemstate-e.md) | Enumerates the states of the toolbar item. |
 
 ## Examples

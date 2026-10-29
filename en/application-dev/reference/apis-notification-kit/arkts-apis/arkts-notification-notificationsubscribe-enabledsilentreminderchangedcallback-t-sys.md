@@ -4,7 +4,7 @@
 export type EnabledSilentReminderChangedCallback = _EnabledSilentReminderChangedCallback
 ```
 
-Defines a callback function to listen for the enabling state changes of the application's silent reminder.
+Triggered for registering the [silent reminder](../../../notification/notification-glossary.md#silent-reminder) enabled state change of application notifications.
 
 **Type:** _EnabledSilentReminderChangedCallback
 

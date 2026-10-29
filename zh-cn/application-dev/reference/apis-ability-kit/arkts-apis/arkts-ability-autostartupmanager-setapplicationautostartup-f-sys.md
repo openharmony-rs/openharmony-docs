@@ -43,7 +43,7 @@ function setApplicationAutoStartup(info: AutoStartupInfo, callback: AsyncCallbac
 | [16000004](../errorcode-ability.md#16000004-可见性校验失败) | Cannot start an invisible component. |
 | [16000013](../errorcode-ability.md#16000013-应用被edm管控) | The application is controlled by EDM. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Failed to connect to the system service. |
-| 16000206 | The specified application is not authorized to start before the user is unlocked. |
+| [16000206](../errorcode-ability.md#16000206-指定应用未获授解锁前启动权限) | The specified application is not authorized to start before the user is unlocked. |
 
 
 ## setApplicationAutoStartup
@@ -88,4 +88,4 @@ function setApplicationAutoStartup(info: AutoStartupInfo): Promise<void>
 | [16000004](../errorcode-ability.md#16000004-可见性校验失败) | Cannot start an invisible component. |
 | [16000013](../errorcode-ability.md#16000013-应用被edm管控) | The application is controlled by EDM. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Failed to connect to the system service. |
-| 16000206 | The specified application is not authorized to start before the user is unlocked. |
+| [16000206](../errorcode-ability.md#16000206-指定应用未获授解锁前启动权限) | The specified application is not authorized to start before the user is unlocked. |

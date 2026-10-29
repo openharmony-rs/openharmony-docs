@@ -4,6 +4,8 @@
 export interface ActionResult
 ```
 
+定义通知被点击后触发的行为。
+
 **起始版本：** 3
 
 **废弃版本：** 7

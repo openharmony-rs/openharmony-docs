@@ -12,7 +12,7 @@ import { notificationManager } from '@kit.NotificationKit';
 function setDistributedEnableByBundle(bundle: BundleOption, enable: boolean, callback: AsyncCallback<void>): void
 ```
 
-设置指定应用是否支持分布式通知。使用callback异步回调。
+设置指定应用是否支持[分布式通知](../../../notification/notification-glossary.md#distributed-notification分布式通知)。使用callback异步回调。
 
 **起始版本：** 9
 
@@ -34,7 +34,7 @@ function setDistributedEnableByBundle(bundle: BundleOption, enable: boolean, cal
 | --- | --- | --- | --- |
 | bundle | [BundleOption](arkts-notification-notificationmanager-bundleoption-t.md) | 是 | 应用的包信息。 |
 | enable | boolean | 是 | 指定应用是否支持分布式通知（true：支持，false：不支持）。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 设置指定应用是否支持分布式通知的回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 应用是否支持分布式通知的回调函数。 |
 
 **错误码：**
 
@@ -79,7 +79,7 @@ notificationManager.setDistributedEnableByBundle(bundle, enable, setDistributedE
 function setDistributedEnableByBundle(bundle: BundleOption, enable: boolean): Promise<void>
 ```
 
-设置指定应用是否支持分布式通知。使用Promise异步回调。
+设置指定应用是否支持[分布式通知](../../../notification/notification-glossary.md#distributed-notification分布式通知)。使用Promise异步回调。
 
 **起始版本：** 9
 

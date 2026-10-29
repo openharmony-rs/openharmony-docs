@@ -4,11 +4,12 @@
 export interface NotificationCapsule
 ```
 
-Describes the notification capsule, which is used to display the capsule form in the live view.
+Describes the [notification capsule](../../../notification/notification-glossary.md#notification-capsule), which is used to display the capsule form in the live view.
 
 > **NOTE:** 
 > 
-> The actual display effect depends on the device capabilities and the notification center UI style.
+> The actual display effect depends on the device capability and the
+> [notification center](../../../notification/notification-glossary.md#notification-center) UI style.
 
 **Since:** 11
 
@@ -22,7 +23,15 @@ Describes the notification capsule, which is used to display the capsule form in
 backgroundColor?: string
 ```
 
-Capsule background color. Colors in rgb, rgba, or argb format are supported. Example of rgb format color: **#ffffff**, **rgb(255, 100, 255)**. Example of rgba format color: **rgba(255, 100, 255, 0.5)**. Example of argb format color: **#ff000000**. The size does not exceed 202 bytes, and the excess part will be truncated. The value defaults to empty.
+Capsule background color. Colors in rgb, rgba, or argb format are supported.
+
+Example of rgb format color: **#ffffff**, **rgb(255, 100, 255)**.
+
+Example of rgba format color: **rgba(255, 100, 255, 0.5)**.
+
+Example of argb format color: **#ff000000**.
+
+The size does not exceed 202 bytes, and the excess part will be truncated. The value defaults to empty.
 
 **Type:** string
 
@@ -38,7 +47,9 @@ Capsule background color. Colors in rgb, rgba, or argb format are supported. Exa
 icon?: image.PixelMap
 ```
 
-Capsule icon. The total bytes of the icon pixel does not exceed 192 KB (the total bytes of the icon pixel is obtained through getPixelBytesNumber). It is recommended that the icon pixel dimensions be 128 x 128.
+Capsule icon.
+
+The total bytes of the icon pixel does not exceed 192 KB (the total bytes of the icon pixel is obtained through [getPixelBytesNumber](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md#getpixelbytesnumber)). It is recommended that the icon pixel dimensions be 128 × 128.
 
 **Type:** [image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)
 
@@ -54,7 +65,9 @@ Capsule icon. The total bytes of the icon pixel does not exceed 192 KB (the tota
 title?: string
 ```
 
-Capsule title. The size does not exceed 202 bytes, and the excess part will be truncated. The value defaults to empty.
+Capsule title.
+
+The size does not exceed 202 bytes, and the excess part will be truncated. The value defaults to empty.
 
 **Type:** string
 

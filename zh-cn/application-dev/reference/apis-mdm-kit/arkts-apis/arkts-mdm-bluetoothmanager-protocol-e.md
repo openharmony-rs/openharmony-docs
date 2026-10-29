@@ -18,7 +18,7 @@ export enum Protocol
 GATT = 0
 ```
 
-GATT协议。
+[GATT协议](../../../connectivity/terminology.md#gatt)。
 
 **起始版本：** 20
 
@@ -34,7 +34,7 @@ GATT协议。
 OPP = 2
 ```
 
-OPP协议。
+[OPP协议](../../../connectivity/terminology.md#opp)。
 
 **起始版本：** 20
 
@@ -50,7 +50,7 @@ OPP协议。
 SPP = 1
 ```
 
-SPP协议。
+[SPP协议](../../../connectivity/terminology.md#spp)。
 
 **起始版本：** 20
 

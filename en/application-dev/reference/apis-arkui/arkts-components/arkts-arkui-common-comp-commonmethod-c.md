@@ -4459,8 +4459,6 @@ Sets the hit testing mode for a component. Before a touch or mouse event is trig
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Test API:** This API is used only in automated test scripts.
-
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -5906,8 +5904,6 @@ Allows the current component to customize the hit test and control child compone
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Test API:** This API is used only in automated test scripts.
-
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -6431,8 +6427,6 @@ Triggered after events and gestures on the current node and higher-priority node
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Test API:** This API is used only in automated test scripts.
-
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -6904,8 +6898,6 @@ Provides components with a custom event interception capability. The callback ca
 <!--Device-CommonMethod-onTouchIntercept(callback: Callback<TouchEvent, HitTestMode>): T--><!--Device-CommonMethod-onTouchIntercept(callback: Callback<TouchEvent, HitTestMode>): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Test API:** This API is used only in automated test scripts.
 
 **Parameters:**
 

@@ -30,7 +30,7 @@ function subscribeNotification(subscriber: NotificationSubscriber): Promise<void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| subscriber | [NotificationSubscriber](arkts-notification-notificationsubscribe-notificationsubscriber-t-sys.md) | 是 | 通知订阅者。 |
+| subscriber | [NotificationSubscriber](arkts-notification-notificationsubscribe-notificationsubscriber-t-sys.md) | 是 | [通知订阅](../../../notification/notification-glossary.md#notification-subscription通知订阅)者。 |
 
 **返回值：**
 
@@ -94,8 +94,8 @@ function subscribeNotification(subscriber: NotificationSubscriber, info: Notific
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| subscriber | [NotificationSubscriber](arkts-notification-notificationsubscribe-notificationsubscriber-t-sys.md) | 是 | 通知订阅者。 |
-| info | [NotificationSubscribeInfo](arkts-notification-notificationsubscribe-notificationsubscribeinfo-t-sys.md) | 是 | 通知订阅信息。 |
+| subscriber | [NotificationSubscriber](arkts-notification-notificationsubscribe-notificationsubscriber-t-sys.md) | 是 | [通知订阅](../../../notification/notification-glossary.md#notification-subscription通知订阅)者。 |
+| info | [NotificationSubscribeInfo](arkts-notification-notificationsubscribe-notificationsubscribeinfo-t-sys.md) | 是 | 通知订阅信息，默认为空。当该参数为空时，表示订阅当前用户下所有应用的通知。 |
 
 **返回值：**
 

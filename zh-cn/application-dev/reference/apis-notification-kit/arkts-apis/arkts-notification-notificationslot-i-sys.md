@@ -4,7 +4,7 @@
 export interface NotificationSlot
 ```
 
-描述通知渠道，不同通知渠道对应的通知提醒方式不同。
+描述[通知渠道](../../../notification/notification-glossary.md#notification-slot通知渠道)，不同通知渠道对应的[通知提醒方式](../../../notification/notification-glossary.md#notification-reminder-mode通知提醒方式)不同。
 
 **起始版本：** 7
 

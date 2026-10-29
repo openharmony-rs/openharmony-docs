@@ -215,6 +215,50 @@
   - [LeakWatcherConfig](arkts-performanceanalysis-jsleakwatcher-leakwatcherconfig-i.md)
   - [MonitorObjectType](arkts-performanceanalysis-jsleakwatcher-monitorobjecttype-e.md)
 <!--Del-->
+- [@ohos.hiviewdfx.jsLeakWatcherNative(This module provides the native implementation interfaces of jsLeakWatcher.)](arkts-performanceanalysis-hiviewdfx-jsleakwatchernative.md)<!--DelEnd-->
+  <!--Del-->
+  - [jsLeakWatcherNative(system api)](arkts-performanceanalysis-jsleakwatchernative-n.md)<!--DelEnd-->
+    <!--Del-->
+    - [apiRecord(system api)](arkts-performanceanalysis-jsleakwatchernative-apirecord-f-sys.md)<!--DelEnd-->
+    <!--Del-->
+    - [dumpRawHeap(system api)](arkts-performanceanalysis-jsleakwatchernative-dumprawheap-f-sys.md)<!--DelEnd-->
+    <!--Del-->
+    - [dumpRawHeapSync(system api)](arkts-performanceanalysis-jsleakwatchernative-dumprawheapsync-f-sys.md)<!--DelEnd-->
+    <!--Del-->
+    - [getDumpStatus(system api)](arkts-performanceanalysis-jsleakwatchernative-getdumpstatus-f-sys.md)<!--DelEnd-->
+    <!--Del-->
+    - [handleDumpTask(system api)](arkts-performanceanalysis-jsleakwatchernative-handledumptask-f-sys.md)<!--DelEnd-->
+    <!--Del-->
+    - [handleGCTask(system api)](arkts-performanceanalysis-jsleakwatchernative-handlegctask-f-sys.md)<!--DelEnd-->
+    <!--Del-->
+    - [handleShutdownTask(system api)](arkts-performanceanalysis-jsleakwatchernative-handleshutdowntask-f-sys.md)<!--DelEnd-->
+    <!--Del-->
+    - [registerArkUIObjectLifeCycleCallback(system api)](arkts-performanceanalysis-jsleakwatchernative-registerarkuiobjectlifecyclecallback-f-sys.md)<!--DelEnd-->
+    <!--Del-->
+    - [registerWindowLifeCycleCallback(system api)](arkts-performanceanalysis-jsleakwatchernative-registerwindowlifecyclecallback-f-sys.md)<!--DelEnd-->
+    <!--Del-->
+    - [removeTask(system api)](arkts-performanceanalysis-jsleakwatchernative-removetask-f-sys.md)<!--DelEnd-->
+    <!--Del-->
+    - [reportRawHeap(system api)](arkts-performanceanalysis-jsleakwatchernative-reportrawheap-f-sys.md)<!--DelEnd-->
+    <!--Del-->
+    - [setDumpDelay(system api)](arkts-performanceanalysis-jsleakwatchernative-setdumpdelay-f-sys.md)<!--DelEnd-->
+    <!--Del-->
+    - [setGcDelay(system api)](arkts-performanceanalysis-jsleakwatchernative-setgcdelay-f-sys.md)<!--DelEnd-->
+    <!--Del-->
+    - [unregisterArkUIObjectLifeCycleCallback(system api)](arkts-performanceanalysis-jsleakwatchernative-unregisterarkuiobjectlifecyclecallback-f-sys.md)<!--DelEnd-->
+    <!--Del-->
+    - [unregisterWindowLifeCycleCallback(system api)](arkts-performanceanalysis-jsleakwatchernative-unregisterwindowlifecyclecallback-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [RawHeapReport(system api)](arkts-performanceanalysis-hiviewdfx-jsleakwatchernative-rawheapreport-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [RawHeapDumpCallback(system api)](arkts-performanceanalysis-rawheapdumpcallback-t-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [TaskCallback(system api)](arkts-performanceanalysis-taskcallback-t-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [WeakRefCallback(system api)](arkts-performanceanalysis-weakrefcallback-t-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [WindowLifeCycleCallback(system api)](arkts-performanceanalysis-windowlifecyclecallback-t-sys.md)<!--DelEnd-->
+<!--Del-->
 - [@ohos.logLibrary(Obtaining various system maintenance and test logs)](arkts-performanceanalysis-loglibrary.md)<!--DelEnd-->
   <!--Del-->
   - [copy(system api)](arkts-performanceanalysis-loglibrary-copy-f-sys.md)<!--DelEnd-->

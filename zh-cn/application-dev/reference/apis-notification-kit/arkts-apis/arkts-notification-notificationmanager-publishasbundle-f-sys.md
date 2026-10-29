@@ -17,7 +17,7 @@ function publishAsBundle(
   ): void
 ```
 
-发布代理通知。使用callback异步回调。
+发布[代理通知](../../../notification/notification-glossary.md#notification-proxy代理通知)。使用callback异步回调。
 
 **起始版本：** 9
 
@@ -107,7 +107,7 @@ notificationManager.publishAsBundle(request, representativeBundle, userId, callb
 function publishAsBundle(request: NotificationRequest, representativeBundle: string, userId: number): Promise<void>
 ```
 
-发布代理通知。使用Promise异步回调。
+发布[代理通知](../../../notification/notification-glossary.md#notification-proxy代理通知)。使用Promise异步回调。
 
 **起始版本：** 9
 
@@ -198,7 +198,7 @@ notificationManager.publishAsBundle(request, representativeBundle, userId).then(
 function publishAsBundle(representativeBundle: BundleOption, request: NotificationRequest): Promise<void>
 ```
 
-发布代理通知。使用Promise异步回调。
+发布[代理通知](../../../notification/notification-glossary.md#notification-proxy代理通知)。使用Promise异步回调。
 
 **起始版本：** 12
 

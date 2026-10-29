@@ -196,7 +196,7 @@ struct ShowDialogExample {
 
 ### 示例2（操作菜单设置沉浸式材质、非线性形变与流光）
 
-该示例通过调用showActionMenu，设置ActionMenuOptions中的系统材质systemMaterial，以及非线性形变distortionMode和流光edgeLightMode，两者均设置为AUTO模式（依据设备算力档位和系统设置中的沉浸光感配置自适应生效）。
+该示例通过调用[showActionMenu](./arkts-apis-uicontext-promptaction.md#showactionmenu11)，设置ActionMenuOptions中的系统材质systemMaterial，以及非线性形变distortionMode和流光edgeLightMode，两者均设置为AUTO模式（依据设备算力档位和系统设置中的沉浸光感配置自适应生效）。
 
 从API版本26.0.0开始，ActionMenuOptions新增distortionMode和edgeLightMode属性。
 

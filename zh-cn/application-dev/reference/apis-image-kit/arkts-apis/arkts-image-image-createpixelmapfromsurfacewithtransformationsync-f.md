@@ -31,7 +31,7 @@ function createPixelMapFromSurfaceWithTransformationSync(surfaceId: string, tran
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| surfaceId | string | 是 | 对应Surface的ID，可通过预览组件获取，如XComponent组件。 |
+| surfaceId | string | 是 | 对应Surface的ID，可通过预览组件获取，如[XComponent](../../apis-arkui/arkui-ts/ts-basic-components-xcomponent.md)组件。 |
 | transformEnabled | boolean | 是 | 是否对携带变换信息的Surface预先进行逆变换来消除PixelMap的旋转或翻转效果，即是否进行方向校正。如果Surface未携带变换信息，则本参数不生效。<br>true表示进行逆变换，变换的角度与Surface携带的角度一致且方向相反，输出的PixelMap无旋转或翻转效果。<br>false表示不进行逆变换，输出的PixelMap会根据Surface中的变换信息而带有旋转或翻转效果。 |
 
 **返回值：**

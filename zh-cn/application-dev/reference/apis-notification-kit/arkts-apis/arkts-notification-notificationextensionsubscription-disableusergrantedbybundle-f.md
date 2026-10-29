@@ -44,7 +44,7 @@ function disableUserGrantedByBundle(bundle: GrantedBundleInfo): Promise<void>
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: <br>1. The hardware does not support the capability. <br>2. The chip does not support the capability. <br>3. A dependent service feature is not supported. |
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. Possible cause: 1.IPC communication failed. 2.Memory operation error. 3.Database operation failed. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
-| 1600022 | The specified bundle is invaild. |
+| [1600022](../errorcode-notification.md#1600022-无效的包信息) | The specified bundle is invaild. |
 
 **示例**
 

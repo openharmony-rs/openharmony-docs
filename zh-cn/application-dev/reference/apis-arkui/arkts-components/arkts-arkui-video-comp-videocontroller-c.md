@@ -140,7 +140,7 @@ setCurrentTime(value: number)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number | 是 | 视频播放进度位置。<br>取值范围：[0, [duration](arkts-arkui-video-comp-preparedinfo-i.md)] <br>当设置value大于duration时，进度跳转至最后；当设置value小于0时，不会进行进度跳转。<br>单位：s <br>从API version 8开始，支持设置视频的跳转模式，详见setCurrentTime<sup>8+</sup>。 |
+| value | number | 是 | 视频播放进度位置。<br>取值范围：[0, [duration](arkts-arkui-video-comp-preparedinfo-i.md)] <br>当设置value大于duration时，进度跳转至最后；当设置value小于0时，不会进行进度跳转。<br>单位：s <br>从API version 8开始，支持设置视频的跳转模式，详见[setCurrentTime<sup>8+</sup>](#setcurrenttime-2)。 |
 
 ## setCurrentTime
 

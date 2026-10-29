@@ -22,7 +22,7 @@ import { call } from '@kit.TelephonyKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| answerCall | 接听来电。使用callback异步回调。 |
+| [answerCall](arkts-telephony-call-answercall-f.md#answercall-3) | 接听来电。使用callback异步回调。 |
 | [formatPhoneNumber](arkts-telephony-call-formatphonenumber-f.md#formatphonenumber-1) | 格式化电话号码，可设置格式化参数。使用callback异步回调。 |
 | [formatPhoneNumber](arkts-telephony-call-formatphonenumber-f.md#formatphonenumber-2) | 格式化电话号码，可设置格式化参数。使用Promise异步回调。 |
 | [formatPhoneNumber](arkts-telephony-call-formatphonenumber-f.md#formatphonenumber-3) | 格式化电话号码。使用callback异步回调。 |
@@ -32,7 +32,7 @@ import { call } from '@kit.TelephonyKit';
 | [getCallState](arkts-telephony-call-getcallstate-f.md#getcallstate-2) | 获取当前通话状态。使用Promise异步回调。 |
 | [getCallStateSync](arkts-telephony-call-getcallstatesync-f.md#getcallstatesync-1) | 获取当前通话状态。 |
 | [getCallTransferInfo](arkts-telephony-call-getcalltransferinfo-f.md#getcalltransferinfo-1) | 获取电话号码的呼叫转移状态。使用Promise异步回调。 |
-| hangUpCall | 挂断电话。使用callback异步回调。 |
+| [hangUpCall](arkts-telephony-call-hangupcall-f.md#hangupcall-3) | 挂断电话。使用callback异步回调。 |
 | [hasCall](arkts-telephony-call-hascall-f.md#hascall-1) | 判断是否存在通话。使用callback异步回调。 |
 | [hasCall](arkts-telephony-call-hascall-f.md#hascall-2) | 判断是否存在通话。使用Promise异步回调。 |
 | [hasCallSync](arkts-telephony-call-hascallsync-f.md#hascallsync-1) | 判断是否存在通话。 |
@@ -45,7 +45,7 @@ import { call } from '@kit.TelephonyKit';
 | [makeCall](arkts-telephony-call-makecall-f.md#makecall-3) | 跳转到拨号界面，并显示待拨出的号码。使用Promise异步回调。只支持在UIAbility中调用。 |
 | [makeCall](arkts-telephony-call-makecall-f.md#makecall-4) | 跳转到拨号界面，并显示待拨出的号码。使用Promise异步回调。后台调用需要申请ohos.permission.START_ABILITIES_FROM_BACKGROUND权限。 |
 | [makeCallWithToken](arkts-telephony-call-makecallwithtoken-f.md#makecallwithtoken-1) | 跳转到拨号界面，并显示待拨出的号码。使用Promise异步回调。 |
-| rejectCall | 拒绝来电。使用callback异步回调。 |
+| [rejectCall](arkts-telephony-call-rejectcall-f.md#rejectcall-4) | 拒绝来电。使用callback异步回调。 |
 | [dial](arkts-telephony-call-dial-f.md#dial-1) | 拨打电话，可设置通话参数。使用callback异步回调。 |
 | [dial](arkts-telephony-call-dial-f.md#dial-2) | 拨打电话，可设置通话参数。使用Promise异步回调。 |
 | [dial](arkts-telephony-call-dial-f.md#dial-3) | 拨打电话。使用callback异步回调。 |

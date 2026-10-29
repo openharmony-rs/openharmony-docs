@@ -1,4 +1,4 @@
-# notificationSortingMap(Provides sorting information about the active notifications among all the notifications that have been subscribed to)
+# notificationSortingMap(NotificationSortingMap)
 
 ## 汇总
 

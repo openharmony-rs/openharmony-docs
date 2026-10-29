@@ -4,6 +4,8 @@
 export interface ActionResult
 ```
 
+Defines the action to be taken when the notification is clicked.
+
 **Since:** 3
 
 **Deprecated since:** 7
@@ -24,7 +26,7 @@ import { Notification, ActionResult, ShowNotificationOptions } from '@kit.Notifi
 abilityName: string
 ```
 
-Name of the application ability to which the notification will be redirected after being clicked.
+Name of the application ability to which the notification will be redirected after being tapped.
 
 **Type:** string
 
@@ -42,7 +44,7 @@ Name of the application ability to which the notification will be redirected aft
 bundleName: string
 ```
 
-Name of the application bundle to which the notification will be redirected after being clicked.
+Name of the application bundle to which the notification will be redirected after being tapped.
 
 **Type:** string
 

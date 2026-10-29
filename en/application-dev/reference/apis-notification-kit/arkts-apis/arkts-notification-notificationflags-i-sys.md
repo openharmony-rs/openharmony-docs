@@ -4,7 +4,7 @@
 export interface NotificationFlags
 ```
 
-Defines the notification flags.
+Describes the [notification flags](../../../notification/notification-glossary.md#notification-flags). An application can use `NotificationFlags` to reduce the notification reminder methods as needed.
 
 **Since:** 8
 
@@ -20,13 +20,13 @@ readonly reminderFlags?: number
 
 Settings of the input information reminder features.
 
-- Bit 0: sound alert. The value **0** means to enable the feature, and **1** means the opposite.  
-- Bit 1: locking the screen. The value **0** means to enable the feature, and **1** means the opposite.  
-- Bit 2: banner. The value **0** means to enable the feature, and **1** means the opposite.  
-- Bit 3: turning on the screen. The value **0** means to enable the feature, and **1** means the opposite.  
-- Bit 4: vibration. The value **0** means to enable the feature, and **1** means the opposite.  
-- Bit 5: notification icon in the status bar. The value **0** means to enable the feature, and **1** means the  
-opposite.
+- Bit 0: sound alert. The value **0** means the feature is disabled, and **1** means enabled.  
+- Bit 1: locking the screen. The value **0** means the feature is disabled, and **1** means enabled.  
+- Bit 2: banner. The value **0** means the feature is disabled, and **1** means enabled.  
+- Bit 3: turning on the screen. The value **0** means the feature is disabled, and **1** means enabled.  
+- Bit 4: vibration. The value **0** means the feature is disabled, and **1** means enabled.  
+- Bit 5: notification icon in the status bar. The value **0** means the feature is disabled, and **1** means  
+enabled.
 
 **Type:** number
 

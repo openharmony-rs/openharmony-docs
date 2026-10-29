@@ -12,8 +12,6 @@ The appManager module provides APIs for application management. For example, you
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
-**Test API:** This API is used only in automated test scripts.
-
 ## Modules to Import
 
 ```TypeScript

@@ -17,7 +17,7 @@ Adds a notification slot. This API uses an asynchronous callback to return the r
 
 **Deprecated since:** 9
 
-**Substitutes:** [addSlot](arkts-notification-notificationmanager-addslot-f.md)
+**Substitutes:** [addSlot](arkts-notification-notificationmanager-addslot-f-sys.md#addslot-1)(slot: NotificationSlot, callback: AsyncCallback&lt;void&gt;)
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -71,7 +71,7 @@ Adds a notification slot. This API uses a promise to return the result.
 
 **Deprecated since:** 9
 
-**Substitutes:** [addSlot](arkts-notification-notificationmanager-addslot-f.md)
+**Substitutes:** [addSlot](arkts-notification-notificationmanager-addslot-f-sys.md#addslot-2)(slot: NotificationSlot)
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
 

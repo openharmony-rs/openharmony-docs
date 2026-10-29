@@ -31,7 +31,7 @@ Unsubscribes from notification events.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | 'checkNotification' | Yes | Event type. The value is fixed to **'checkNotification'**. |
+| type | 'checkNotification' | Yes | Callback type. The value is fixed to **'checkNotification'**. |
 | callback | (checkInfo: NotificationCheckInfo) =&gt; NotificationCheckResult | No | Pointer to the notification verification function. |
 
 **Error codes:**

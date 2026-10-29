@@ -4,7 +4,7 @@
 interface AutoSyncTriggerInfo
 ```
 
-Describes information about the automatic synchronization trigger mode.
+Automatic synchronization trigger information.
 
 **Since:** 26.0.0
 
@@ -24,7 +24,7 @@ import { cloudData } from '@kit.ArkData';
 mode: AutoSyncTriggerMode
 ```
 
-Describes the automatic synchronization triggering mode.
+Automatic synchronization trigger mode.
 
 **Type:** [AutoSyncTriggerMode](arkts-arkdata-clouddata-autosynctriggermode-e.md)
 

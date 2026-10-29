@@ -12,7 +12,7 @@ import { notificationManager } from '@kit.NotificationKit';
 function getRingtoneInfoByBundle(bundle: BundleOption): Promise<RingtoneInfo>
 ```
 
-Obtains the custom ringtone information of an application. This API uses a promise to return the result.
+Obtains the [customized ringtone](../../../notification/notification-glossary.md#customized-ringtone) information of an application. This API uses a promise to return the result.
 
 **Since:** 21
 

@@ -12,7 +12,7 @@ import { notificationManager } from '@kit.NotificationKit';
 function getNotificationSetting(): Promise<NotificationSetting>
 ```
 
-Obtains the notification settings of the application, including the switch statuses for lock screen notifications, banner notifications, desktop badges, vibration, and ringtone. This API uses a promise to return the result.
+Obtains the [notification setting](../../../notification/notification-glossary.md#notification-setting) of the application, including the switch states of lock screen notifications, banner notifications, home screen badges, vibration, ringtone, and so on. This API uses a promise to return the result.
 
 **Since:** 20
 
@@ -30,7 +30,7 @@ Obtains the notification settings of the application, including the switch statu
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[NotificationSetting](arkts-notification-notificationmanager-notificationsetting-i.md)&gt; | Promise used to return the result. |
+| Promise&lt;[NotificationSetting](arkts-notification-notificationmanager-notificationsetting-i.md)&gt; | Promise used to return the notification settings of this application. |
 
 **Error codes:**
 

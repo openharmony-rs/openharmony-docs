@@ -12,8 +12,6 @@ declare interface Rect
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**测试接口：** 此接口仅在自动化测试脚本中使用。
-
 ## 导入模块
 
 ```TypeScript
@@ -43,8 +41,6 @@ bottom: number
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**测试接口：** 此接口仅在自动化测试脚本中使用。
-
 ## displayId
 
 ```TypeScript
@@ -64,8 +60,6 @@ displayId?: number
 <!--Device-Rect-displayId?: int--><!--Device-Rect-displayId?: int-End-->
 
 **系统能力：** SystemCapability.Test.UiTest
-
-**测试接口：** 此接口仅在自动化测试脚本中使用。
 
 ## left
 
@@ -89,8 +83,6 @@ left: number
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**测试接口：** 此接口仅在自动化测试脚本中使用。
-
 ## right
 
 ```TypeScript
@@ -113,8 +105,6 @@ right: number
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**测试接口：** 此接口仅在自动化测试脚本中使用。
-
 ## top
 
 ```TypeScript
@@ -136,5 +126,3 @@ top: number
 <!--Device-Rect-top: int--><!--Device-Rect-top: int-End-->
 
 **系统能力：** SystemCapability.Test.UiTest
-
-**测试接口：** 此接口仅在自动化测试脚本中使用。

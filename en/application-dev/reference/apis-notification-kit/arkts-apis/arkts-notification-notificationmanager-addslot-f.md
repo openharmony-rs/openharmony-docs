@@ -12,9 +12,9 @@ import { notificationManager } from '@kit.NotificationKit';
 function addSlot(type: SlotType, callback: AsyncCallback<void>): void
 ```
 
-Adds a notification slot of a specified type. This API uses an asynchronous callback to return the result.
+Creates a [notification slot](../../../notification/notification-glossary.md#notification-slot) of the specified type. This API uses an asynchronous callback.
 
-The notification slot NotificationSlot defines the reminder type (such as alert sound, vibration, and banner) and level of a notification. Before publishing a notification, the application needs to create a corresponding type of notification slot first, or the system will automatically create a corresponding type of notification slot when the notification is published. Only one notification slot of the same type can be created.
+The notification slot [NotificationSlot](arkts-notification-notificationslot-i.md) defines the reminder mode (such as alert sound, vibration, and banner) and level of a notification. Before publishing a notification, the application needs to create a corresponding type of notification slot first, or the system will automatically create a corresponding type of notification slot when the notification is published. Only one notification slot of the same type can be created.
 
 **Since:** 9
 
@@ -34,7 +34,7 @@ The notification slot NotificationSlot defines the reminder type (such as alert 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | [SlotType](arkts-notification-notificationmanager-slottype-e.md) | Yes | Notification slot type to create. Different slot types correspond to different default SlotLevel values, which affect the notification alert method. For example, **SOCIAL_COMMUNICATION** corresponds to **LEVEL_HIGH** (status bar icon + banner + sound), and **CONTENT_INFORMATION** corresponds to **LEVEL_MIN** (no status bar icon + no banner + no sound). |
+| type | [SlotType](arkts-notification-notificationmanager-slottype-e.md) | Yes | Notification slot type to create. Different slot types correspond to different default [SlotLevel](arkts-notification-notificationmanager-slotlevel-e.md) values, which affect the notification reminder mode. For example, **SOCIAL_COMMUNICATION** corresponds to **LEVEL_HIGH** (status bar icon + banner + sound), and **CONTENT_INFORMATION** corresponds to **LEVEL_MIN** (no status bar icon + no banner + no sound). |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object. |
 
 **Error codes:**
@@ -70,9 +70,9 @@ notificationManager.addSlot(notificationManager.SlotType.SOCIAL_COMMUNICATION, a
 function addSlot(type: SlotType): Promise<void>
 ```
 
-Adds a notification slot of a specified type. This API uses a promise to return the result.
+Creates a [notification slot](../../../notification/notification-glossary.md#notification-slot) of a specified type. This API uses a promise to return the result.
 
-The notification slot NotificationSlot defines the reminder type (such as alert sound, vibration, and banner) and level of a notification. Before publishing a notification, the application needs to create a corresponding type of notification slot first, or the system will automatically create a corresponding type of notification slot when the notification is published. Only one notification slot of the same type can be created.
+The notification slot [NotificationSlot](arkts-notification-notificationslot-i.md) defines the reminder mode (such as alert sound, vibration, and banner) and level of a notification. Before publishing a notification, the application needs to create a corresponding type of notification slot first, or the system will automatically create a corresponding type of notification slot when the notification is published. Only one notification slot of the same type can be created.
 
 **Since:** 9
 
@@ -92,7 +92,7 @@ The notification slot NotificationSlot defines the reminder type (such as alert 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | [SlotType](arkts-notification-notificationmanager-slottype-e.md) | Yes | Notification slot type to create. Different slot types correspond to different default SlotLevel values, which affect the notification alert method. For example, **SOCIAL_COMMUNICATION** corresponds to **LEVEL_HIGH** (status bar icon + banner + sound), and **CONTENT_INFORMATION** corresponds to **LEVEL_MIN** (no status bar icon + no banner + no sound). |
+| type | [SlotType](arkts-notification-notificationmanager-slottype-e.md) | Yes | Notification slot type to create. Different slot types correspond to different default [SlotLevel](arkts-notification-notificationmanager-slotlevel-e.md) values, which affect the notification reminder mode. For example, **SOCIAL_COMMUNICATION** corresponds to **LEVEL_HIGH** (status bar icon + banner + sound), and **CONTENT_INFORMATION** corresponds to **LEVEL_MIN** (no status bar icon + no banner + no sound). |
 
 **Return value:**
 

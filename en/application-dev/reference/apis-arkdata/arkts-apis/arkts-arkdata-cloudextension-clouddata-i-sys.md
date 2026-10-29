@@ -26,7 +26,7 @@ import { cloudExtension } from '@kit.ArkData';
 hasMore: boolean
 ```
 
-Whether there is data to be queried on the server. The value true means there is data to be queried on the server; the value false means the opposite.
+Whether there is data to be queried on the server. The value **true** means there is data to be queried on the server; the value **false** means the opposite.
 
 **Type:** boolean
 
@@ -62,7 +62,7 @@ Cursor for data query.
 values: Array<Record<string, CloudType>>
 ```
 
-Array of data to be queried, which consists of the data value and ExtensionValue.
+Array of data to be queried, which consists of the actual data value and ExtensionValue.
 
 **Type:** Array&lt;Record&lt;string, [CloudType](arkts-arkdata-cloudextension-cloudtype-t-sys.md)&gt;&gt;
 

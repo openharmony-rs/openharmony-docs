@@ -940,7 +940,7 @@ getLaunchAbility(callback: AsyncCallback<WantAgent>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[WantAgent](../../apis-ability-kit/arkts-apis/arkts-ability-wantagent-t.md)&gt; | 是 | 回调函数。返回在setLaunchAbility保存的对象，包括应用的相关属性信息，如bundleName，abilityName，deviceId等。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[WantAgent](../../apis-ability-kit/arkts-apis/arkts-ability-wantagent-t.md)&gt; | 是 | 回调函数。返回在[setLaunchAbility](arkts-avsession-avsession-avsession-i.md#setlaunchability-2)保存的对象，包括应用的相关属性信息，如bundleName，abilityName，deviceId等。 |
 
 **错误码：**
 
@@ -984,7 +984,7 @@ getLaunchAbility(): Promise<WantAgent>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[WantAgent](../../apis-ability-kit/arkts-apis/arkts-ability-wantagent-t.md)&gt; | Promise对象，返回在setLaunchAbility保存的对象，包括应用的相关属性信息，如bundleName，abilityName，deviceId等。 |
+| Promise&lt;[WantAgent](../../apis-ability-kit/arkts-apis/arkts-ability-wantagent-t.md)&gt; | Promise对象，返回在[setLaunchAbility](arkts-avsession-avsession-avsession-i.md#setlaunchability-2)保存的对象，包括应用的相关属性信息，如bundleName，abilityName，deviceId等。 |
 
 **错误码：**
 

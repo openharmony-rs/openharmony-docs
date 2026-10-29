@@ -1,4 +1,4 @@
-# notificationUserInput(Describes a NotificationUserInput instance)
+# notificationUserInput(NotificationUserInput)
 
 ## 汇总
 

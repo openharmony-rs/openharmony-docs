@@ -4,7 +4,7 @@
 export interface NotificationSubscriber
 ```
 
-Provides callback methods for subscribers to receive and cancel notifications.
+The **NotificationSubscriber** module serves as the input parameter of [subscribeNotification](arkts-notification-notificationsubscribe-subscribenotification-f-sys.md) and provides callbacks for receiving or cancelling notifications.
 
 **Since:** 7
 
@@ -20,7 +20,7 @@ Provides callback methods for subscribers to receive and cancel notifications.
 onBadgeChanged?:(data: BadgeNumberCallbackData) => void
 ```
 
-Listens for changes of the application badge number.
+Callback used to return the application badge number changes.
 
 **Since:** 10
 
@@ -65,7 +65,7 @@ notificationSubscribe.subscribeNotification(subscriber).then(() => {
 onBatchCancel?: (data: Array<SubscribeCallbackData>) => void
 ```
 
-Called for batch deletion.
+Notification information of batch deletion.
 
 **Since:** 11
 
@@ -112,7 +112,7 @@ notificationSubscribe.subscribeNotification(subscriber).then(() => {
 onCancel?:(data: SubscribeCallbackData) => void
 ```
 
-Called when a notification is canceled.
+Information about the notification to cancel.
 
 **Since:** 7
 
@@ -159,7 +159,7 @@ notificationSubscribe.subscribeNotification(subscriber).then(() => {
 onConnect?:() => void
 ```
 
-Called when subscription is complete.
+Callback invoked when subscription is complete.
 
 **Since:** 7
 
@@ -198,7 +198,7 @@ notificationSubscribe.subscribeNotification(subscriber).then(() => {
 onConsume?:(data: SubscribeCallbackData) => void
 ```
 
-Called when a new notification is received.
+Information about the notification received.
 
 **Since:** 7
 
@@ -245,7 +245,7 @@ notificationSubscribe.subscribeNotification(subscriber).then(() => {
 onDestroy?:() => void
 ```
 
-Called when the service is disconnected.
+Callback to be invoked when the service is disconnected.
 
 **Since:** 7
 
@@ -284,7 +284,7 @@ notificationSubscribe.subscribeNotification(subscriber).then(() => {
 onDisconnect?:() => void
 ```
 
-Called when unsubscription is complete.
+Callback invoked when unsubscription is complete.
 
 **Since:** 7
 
@@ -338,7 +338,7 @@ notificationSubscribe.unsubscribe(subscriber, unsubscribeCallback);
 onDoNotDisturbChanged?: (mode: notificationManager.DoNotDisturbDate) => void
 ```
 
-Called when the DND time settings are changed.
+Callback that returns the change of the DND time settings.
 
 **Since:** 11
 
@@ -384,7 +384,7 @@ notificationSubscribe.subscribeNotification(subscriber).then(() => {
 onEnabledNotificationChanged?:(callbackData: EnabledNotificationCallbackData) => void
 ```
 
-Listens for the notification enabled state changes.
+Callback used to return the subscribed application information.
 
 **Since:** 8
 
@@ -431,7 +431,7 @@ notificationSubscribe.subscribeNotification(subscriber).then(() => {
 onEnabledPriorityByBundleChanged?: (callbackData: EnabledPriorityNotificationByBundleCallbackData) => void
 ```
 
-Called when the enabling state of the application priority notification changes.
+Callback used to return the result.
 
 **Since:** 23
 
@@ -473,7 +473,7 @@ notificationSubscribe.subscribeNotification(subscriber).then(() => {
 onEnabledPriorityChanged?: (callbackData: EnabledPriorityNotificationCallbackData) => void
 ```
 
-Called when the enabling state of the priority notification changes.
+Callback used to return the result.
 
 **Since:** 23
 
@@ -515,7 +515,7 @@ notificationSubscribe.subscribeNotification(subscriber).then(() => {
 onEnabledSilentReminderChanged?: EnabledSilentReminderChangedCallback
 ```
 
-Returns the changes of the enabling state of the application's silent reminder.
+Returns the enabled state change of the application notification [silent reminder](../../../notification/notification-glossary.md#silent-reminder).
 
 **Since:** 24
 
@@ -533,7 +533,7 @@ Returns the changes of the enabling state of the application's silent reminder.
 onNotificationSwitchChanged?: NotificationSwitchChangedCallback
 ```
 
-Returns the changes of the notification switch status set by [notificationManager.setNotificationSwitch]{@link../@ohos.notificationManager:notificationManager.setNotificationSwitch}.
+Returns the changes of the notification switch status set by [notificationManager.setNotificationSwitch](arkts-notification-notificationmanager-setnotificationswitch-f-sys.md).
 
 **Since:** 26.0.0
 
@@ -551,7 +551,7 @@ Returns the changes of the notification switch status set by [notificationManage
 onSystemUpdate?: SystemUpdateCallback
 ```
 
-Returns notification information containing the system property value.
+Returns notification information carrying system property values.
 
 **Since:** 23
 
@@ -569,7 +569,7 @@ Returns notification information containing the system property value.
 onUpdate?:(data: NotificationSortingMap) => void
 ```
 
-Called when notification sorting is updated. Not supported currently.
+Latest notification sorting list.
 
 **Since:** 7
 
@@ -612,7 +612,7 @@ notificationSubscribe.subscribeNotification(subscriber).then(() => {
 onDoNotDisturbDateChange?: (mode: notification.DoNotDisturbDate) => void
 ```
 
-Called when the DND time settings are changed.
+Callback that returns the change of the DND time settings.
 
 **Since:** 8
 
@@ -666,7 +666,7 @@ notificationSubscribe.subscribe(subscriber, subscribeCallback);
 onBadgeEnabledChanged?: BadgeEnabledChangedCallback
 ```
 
-Returns the changes of the enabling state of the application's badge.
+Returns the enabled state change of the application badge.
 
 **Type:** [BadgeEnabledChangedCallback](arkts-notification-notificationsubscriber-badgeenabledchangedcallback-i-sys.md)
 

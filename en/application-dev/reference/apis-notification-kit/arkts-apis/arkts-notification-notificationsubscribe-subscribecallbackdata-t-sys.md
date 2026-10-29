@@ -4,7 +4,7 @@
 export type SubscribeCallbackData = _SubscribeCallbackData
 ```
 
-Provides methods that will be called back when the subscriber receives a new notification or a notification is canceled.
+Returns notification information carrying system property values.
 
 **Type:** _SubscribeCallbackData
 

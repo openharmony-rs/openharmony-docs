@@ -20,7 +20,7 @@ Enumerates the trigger types.
 TRIGGER_TYPE_GEOFENCE = 1
 ```
 
-Geofence.
+[geofence](../../../notification/notification-glossary.md#geofence) trigger type.
 
 **Since:** 23
 

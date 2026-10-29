@@ -42,7 +42,7 @@ Data change type.
 uri: string
 ```
 
-URI to change.
+Data change URI. The fixed format is `"datashareproxy://{bundleName}/{path}"`, where **bundleName** is the **bundleName** of the publisher application, **path** can be set as required, but duplication is not allowed within the same application, and the string length does not exceed 256 bytes.
 
 **Type:** string
 
@@ -78,7 +78,7 @@ Changed data.
 values?: ValueType[]
 ```
 
-Changed data of the multi-value type. If the changed data is not multi-value type, the **values** is undefined.
+Change data of the multi-value type. If the changed data type is not a multi-value type, the value of values is undefined.
 
 **Type:** [ValueType](arkts-arkdata-valuetype-t.md)[]
 

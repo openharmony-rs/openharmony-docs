@@ -115,7 +115,7 @@ This property can be set by using [accessibilityLevel](../../apis-arkui/arkts-co
 readonly accessibilityNextFocusId?: number
 ```
 
-ID of the next component to gain focus. This property can be set by using [accessibilityNextFocusId](../../apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#accessibilitynextfocusid).
+ID of the next component to gain focus. The ID is the componentId of the target component, which is different from the identifier attribute. This property can be set by using [accessibilityNextFocusId](../../apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#accessibilitynextfocusid).
 
 Default value: **-1**.
 
@@ -135,7 +135,7 @@ Default value: **-1**.
 readonly accessibilityPreviousFocusId?: number
 ```
 
-ID of the previous component to gain focus.
+ID of the previous component to gain focus. The ID is the componentId of the target component, which is different from the identifier attribute.
 
 Default value: **-1**.
 
@@ -731,7 +731,7 @@ Maximum text length of the element. Default value: **0**.
 readonly valueMax?: number
 ```
 
-Maximum value.
+The maximum value within the range of an element, applicable to value-based components such as sliders. The unit is defined by the component and is usually a percentage.
 
 Default value: **0**.
 
@@ -751,7 +751,7 @@ Default value: **0**.
 readonly valueMin?: number
 ```
 
-Minimum value.
+The minimum value within the range of an element, applicable to value-based components such as sliders. The unit is defined by the component and is usually a percentage.
 
 Default value: **0**.
 
@@ -771,7 +771,7 @@ Default value: **0**.
 readonly valueNow?: number
 ```
 
-Current value.
+Current value of the element. The value is within the range defined by valueMin and valueMax. The unit is defined by the component, and is usually a percentage.
 
 Default value: **0**.
 

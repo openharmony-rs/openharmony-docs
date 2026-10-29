@@ -64,7 +64,7 @@ emit(eventId: string, data?: EventData): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| eventId | string | 是 | 发送的事件ID。不可为空字符串，大小不超过10240字节，超出部分会被截断。 |
+| eventId | string | 是 | 发送的事件ID。<br>不可为空字符串，大小不超过10240字节，超出部分会被截断。 |
 | data | [EventData](arkts-basicservices-emitter-eventdata-i.md) | 否 | 事件携带的数据，默认为空。 |
 
 **示例**
@@ -116,7 +116,7 @@ emit<T>(eventId: string, data?: GenericEventData<T>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| eventId | string | 是 | 发送的事件ID。不可为空字符串，大小不超过10240字节，超出部分会被截断。 |
+| eventId | string | 是 | 发送的事件ID。<br>不可为空字符串，大小不超过10240字节，超出部分会被截断。 |
 | data | [GenericEventData](arkts-basicservices-emitter-genericeventdata-i.md)&lt;T&gt; | 否 | 事件携带的数据，默认为空。 |
 
 **示例**
@@ -184,7 +184,7 @@ emit(eventId: string, options: Options, data?: EventData): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| eventId | string | 是 | 发送的事件ID。不可为空字符串，大小不超过10240字节，超出部分会被截断。 |
+| eventId | string | 是 | 发送的事件ID。<br>不可为空字符串，大小不超过10240字节，超出部分会被截断。 |
 | options | [Options](arkts-basicservices-emitter-options-i.md) | 是 | 事件优先级。 |
 | data | [EventData](arkts-basicservices-emitter-eventdata-i.md) | 否 | 事件携带的数据，默认为空。 |
 
@@ -245,7 +245,7 @@ emit<T>(eventId: string, options: Options, data?: GenericEventData<T>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| eventId | string | 是 | 发送的事件ID。不可为空字符串，大小不超过10240字节，超出部分会被截断。 |
+| eventId | string | 是 | 发送的事件ID。<br>不可为空字符串，大小不超过10240字节，超出部分会被截断。 |
 | options | [Options](arkts-basicservices-emitter-options-i.md) | 是 | 事件优先级。 |
 | data | [GenericEventData](arkts-basicservices-emitter-genericeventdata-i.md)&lt;T&gt; | 否 | 事件携带的数据，默认为空。 |
 
@@ -317,7 +317,7 @@ getListenerCount(eventId: string): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| eventId | string | 是 | 事件ID。不可为空字符串，大小不超过10240字节，超出部分会被截断。。 |
+| eventId | string | 是 | 事件ID。<br>不可为空字符串，大小不超过10240字节，超出部分会被截断。 |
 
 **返回值：**
 
@@ -354,7 +354,7 @@ off(eventId: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| eventId | string | 是 | 事件ID。不可为空字符串，大小不超过10240字节，超出部分会被截断。 |
+| eventId | string | 是 | 事件ID。<br>不可为空字符串，大小不超过10240字节，超出部分会被截断。 |
 
 **示例**
 
@@ -391,8 +391,8 @@ off(eventId: string, callback: Callback<EventData>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| eventId | string | 是 | 事件ID。不可为空字符串，大小不超过10240字节，超出部分会被截断。 |
-| callback | [Callback](arkts-basicservices-base-callback-i.md)&lt;[EventData](arkts-basicservices-emitter-eventdata-i.md)&gt; | 是 | 回调函数，指定要取消订阅的事件处理函数。 |
+| eventId | string | 是 | 事件ID。<br>不可为空字符串，大小不超过10240字节，超出部分会被截断。 |
+| callback | [Callback](arkts-basicservices-base-callback-i.md)&lt;[EventData](arkts-basicservices-emitter-eventdata-i.md)&gt; | 是 | 回调函数，返回发送事件时传递的数据对象。 |
 
 **示例**
 
@@ -441,8 +441,8 @@ off<T>(eventId: string, callback: Callback<GenericEventData<T>>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| eventId | string | 是 | 事件ID。不可为空字符串，大小不超过10240字节，超出部分会被截断。 |
-| callback | [Callback](arkts-basicservices-base-callback-i.md)&lt;[GenericEventData](arkts-basicservices-emitter-genericeventdata-i.md)&lt;T&gt;&gt; | 是 | 回调函数，指定要取消订阅的事件处理函数。 |
+| eventId | string | 是 | 事件ID。<br>不可为空字符串，大小不超过10240字节，超出部分会被截断。 |
+| callback | [Callback](arkts-basicservices-base-callback-i.md)&lt;[GenericEventData](arkts-basicservices-emitter-genericeventdata-i.md)&lt;T&gt;&gt; | 是 | 回调函数，返回发送事件时传递的泛型数据对象。 |
 
 **示例**
 
@@ -517,8 +517,8 @@ on(eventId: string, callback: Callback<EventData>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| eventId | string | 是 | 持续订阅的事件ID。不可为空字符串，大小不超过10240字节，超出部分会被截断。 |
-| callback | [Callback](arkts-basicservices-base-callback-i.md)&lt;[EventData](arkts-basicservices-emitter-eventdata-i.md)&gt; | 是 | 回调函数，在接收到该事件时被调用。 |
+| eventId | string | 是 | 持续订阅的事件ID。<br>不可为空字符串，大小不超过10240字节，超出部分会被截断。 |
+| callback | [Callback](arkts-basicservices-base-callback-i.md)&lt;[EventData](arkts-basicservices-emitter-eventdata-i.md)&gt; | 是 | 回调函数，返回发送事件时传递的数据对象。 |
 
 **示例**
 
@@ -564,8 +564,8 @@ on<T>(eventId: string, callback: Callback<GenericEventData<T>>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| eventId | string | 是 | 持续订阅的事件ID。不可为空字符串，大小不超过10240字节，超出部分会被截断。 |
-| callback | [Callback](arkts-basicservices-base-callback-i.md)&lt;[GenericEventData](arkts-basicservices-emitter-genericeventdata-i.md)&lt;T&gt;&gt; | 是 | 回调函数，在接收到该事件时被调用。 |
+| eventId | string | 是 | 持续订阅的事件ID。<br>不可为空字符串，大小不超过10240字节，超出部分会被截断。 |
+| callback | [Callback](arkts-basicservices-base-callback-i.md)&lt;[GenericEventData](arkts-basicservices-emitter-genericeventdata-i.md)&lt;T&gt;&gt; | 是 | 回调函数，返回发送事件时传递的泛型数据对象。 |
 
 **示例**
 
@@ -639,8 +639,8 @@ once(eventId: string, callback: Callback<EventData>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| eventId | string | 是 | 单次订阅的事件ID。不可为空字符串，大小不超过10240字节，超出部分会被截断。 |
-| callback | [Callback](arkts-basicservices-base-callback-i.md)&lt;[EventData](arkts-basicservices-emitter-eventdata-i.md)&gt; | 是 | 回调函数，在接收到该事件时被调用。 |
+| eventId | string | 是 | 单次订阅的事件ID。<br>不可为空字符串，大小不超过10240字节，超出部分会被截断。 |
+| callback | [Callback](arkts-basicservices-base-callback-i.md)&lt;[EventData](arkts-basicservices-emitter-eventdata-i.md)&gt; | 是 | 回调函数，返回发送事件时传递的数据对象。 |
 
 **示例**
 
@@ -686,8 +686,8 @@ once<T>(eventId: string, callback: Callback<GenericEventData<T>>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| eventId | string | 是 | 单次订阅的事件ID。不可为空字符串，大小不超过10240字节，超出部分会被截断。 |
-| callback | [Callback](arkts-basicservices-base-callback-i.md)&lt;[GenericEventData](arkts-basicservices-emitter-genericeventdata-i.md)&lt;T&gt;&gt; | 是 | 回调函数，在接收到该事件时被调用。 |
+| eventId | string | 是 | 单次订阅的事件ID。<br>不可为空字符串，大小不超过10240字节，超出部分会被截断。 |
+| callback | [Callback](arkts-basicservices-base-callback-i.md)&lt;[GenericEventData](arkts-basicservices-emitter-genericeventdata-i.md)&lt;T&gt;&gt; | 是 | 回调函数，返回发送事件时传递的泛型数据对象。 |
 
 **示例**
 

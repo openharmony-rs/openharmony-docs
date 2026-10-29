@@ -83,7 +83,7 @@ struct MemoryOptimizeDemo {
 
 ### 示例2（主动清理缓存池）
 
-以下示例中，通过[RepeatOptions](arkts-arkui-repeat-comp-repeatoptions-i.md)的controller属性绑定了RepeatController。点击Scroll按钮，使列表跳转，旧组件进入缓存池。然后点击Clear按钮，主动清理Repeat缓存池中的组件。
+以下示例中，通过[RepeatOptions](arkts-arkui-repeat-comp-repeatoptions-i.md)的controller属性绑定了[RepeatController](#repeatcontroller)。点击Scroll按钮，使列表跳转，旧组件进入缓存池。然后点击Clear按钮，主动清理Repeat缓存池中的组件。
 
 从API版本26.1.0开始，Repeat接口新增options参数。
 

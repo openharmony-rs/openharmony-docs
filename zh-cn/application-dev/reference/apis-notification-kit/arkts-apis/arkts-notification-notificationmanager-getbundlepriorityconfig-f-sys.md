@@ -12,7 +12,7 @@ import { notificationManager } from '@kit.NotificationKit';
 function getBundlePriorityConfig(bundle: BundleOption): Promise<string>
 ```
 
-获取应用的优先功能配置。
+获取应用的优先功能配置，包括关键词优先通知识别规则。使用Promise异步回调。
 
 **起始版本：** 23
 

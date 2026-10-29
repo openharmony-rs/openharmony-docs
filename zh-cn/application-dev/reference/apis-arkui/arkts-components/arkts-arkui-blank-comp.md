@@ -47,7 +47,7 @@ Blank组件在横竖屏占满空余空间效果。
 
 竖屏状态
 
-![blank2](../arkui-ts/figures/blank2.gif)
+![blank2](figures/blank2.gif)
 
 横屏状态
 

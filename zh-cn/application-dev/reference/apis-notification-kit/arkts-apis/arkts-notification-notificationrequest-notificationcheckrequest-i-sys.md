@@ -38,7 +38,7 @@ contentType: notificationManager.ContentType
 extraInfoKeys: Array<string>
 ```
 
-实况通知的附加信息。
+[实况通知](../../../notification/notification-glossary.md#live-view-notification实况通知)的附加信息。
 
 **类型：** Array&lt;string&gt;
 

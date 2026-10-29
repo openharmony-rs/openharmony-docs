@@ -40,7 +40,7 @@ import { bundleManager } from '@kit.MDMKit';
 | [getInstalledBundleList](arkts-mdm-bundlemanager-getinstalledbundlelist-f.md#getinstalledbundlelist-1) | 获取设备指定用户下已安装应用列表。使用Promise异步回调。 |
 | [getInstalledBundleList](arkts-mdm-bundlemanager-getinstalledbundlelist-f.md#getinstalledbundlelist-2) | 根据给定的bundleInfoGetFlag获取设备指定用户下已安装应用列表。使用Promise异步回调。 |
 | [getInstalledBundleStorageStats](arkts-mdm-bundlemanager-getinstalledbundlestoragestats-f.md#getinstalledbundlestoragestats-1) | 获取设备指定用户下已安装应用的存储占用信息。使用Promise异步回调。 |
-| install | 安装指定路径下的应用包。使用Promise异步回调。 |
+| [install](arkts-mdm-bundlemanager-install-f.md#install-3) | 安装指定路径下的应用包。使用Promise异步回调。 |
 | [installForResult](arkts-mdm-bundlemanager-installforresult-f.md#installforresult-1) | 安装指定路径下的应用包，并返回安装结果。使用Promise异步回调。 |
 | [installMarketApps](arkts-mdm-bundlemanager-installmarketapps-f.md#installmarketapps-1) | 下载并安装应用市场应用。 |
 | [removeAllowedInstallBundlesSync](arkts-mdm-bundlemanager-removeallowedinstallbundlessync-f.md#removeallowedinstallbundlessync-1) | 在应用程序包安装允许名单中移除应用，在允许名单存在的情况下，不在应用程序包安装允许名单中的应用不允许在当前/指定用户下安装。 |
@@ -48,7 +48,7 @@ import { bundleManager } from '@kit.MDMKit';
 | [removeDisallowedUninstallBundlesSync](arkts-mdm-bundlemanager-removedisalloweduninstallbundlessync-f.md#removedisalloweduninstallbundlessync-1) | 在包卸载禁止名单中移除应用。在禁止名单存在的情况下，在包卸载禁止名单中的应用不允许在当前/指定用户下卸载。 |
 | [removeInstallationAllowedAppDistributionTypes](arkts-mdm-bundlemanager-removeinstallationallowedappdistributiontypes-f.md#removeinstallationallowedappdistributiontypes-1) | 移除应用的分发类型。若只移除了数组中部分的分发类型，则当前设备可以安装数组中剩下的分发类型的应用，但无法安装[AppDistributionType](arkts-mdm-bundlemanager-appdistributiontype-e.md)中未添加的分发类型的应用。 |
 | [setDefaultApplication](arkts-mdm-bundlemanager-setdefaultapplication-f.md#setdefaultapplication-1) |  |
-| uninstall | 卸载当前/指定用户下的指定包，选择是否保留包数据（由isKeepData指定）。使用Promise异步回调。调用成功后，应用被卸载，数据根据isKeepData参数保留或删除。 |
+| [uninstall](arkts-mdm-bundlemanager-uninstall-f.md#uninstall-5) | 卸载当前/指定用户下的指定包，选择是否保留包数据（由isKeepData指定）。使用Promise异步回调。调用成功后，应用被卸载，数据根据isKeepData参数保留或删除。 |
 
 <!--Del-->
 ### 函数（系统接口）

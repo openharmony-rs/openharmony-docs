@@ -1,4 +1,4 @@
-# notificationTemplate(Describes a NotificationTemplate instance)
+# notificationTemplate(NotificationTemplate)
 
 ## Summary
 

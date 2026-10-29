@@ -4,7 +4,7 @@
 export enum LiveViewTypes
 ```
 
-描述实况通知的类型。
+描述[实况通知](../../../notification/notification-glossary.md#live-view-notification实况通知)的类型。
 
 **起始版本：** 18
 

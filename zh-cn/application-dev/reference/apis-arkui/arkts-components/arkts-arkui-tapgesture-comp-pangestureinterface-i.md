@@ -20,7 +20,7 @@ interface PanGestureInterface extends GestureInterface<PanGestureInterface>
 (value?: { fingers?: number; direction?: PanDirection; distance?: number } | PanGestureOptions): PanGestureInterface
 ```
 
-创建滑动手势对象。继承自[GestureInterface&lt;T&gt;](arkts-arkui-tapgesture-comp-gestureinterface-i.md)。
+创建滑动手势对象。继承自[GestureInterface<T>](arkts-arkui-tapgesture-comp-gestureinterface-i.md)。
 
 **起始版本：** 7
 
@@ -34,7 +34,7 @@ interface PanGestureInterface extends GestureInterface<PanGestureInterface>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | { fingers?: number; direction?: PanDirection; distance?: number } &#124; [PanGestureOptions](arkts-arkui-tapgesture-comp-pangestureoptions-c.md) | 否 | 滑动手势参数。<br> - fingers：用于指定触发滑动的最少手指数，最小为1指，最大取值为10指。<br>默认值：1<br>取值范围：[1, 10] <br>**说明：** <br>当设置的值小于1或不设置时，会被转化为默认值。<br> - direction：用于指定触发滑动的手势方向，此枚举值支持逻辑与(&amp;)和逻辑或（\&#124;）运算。<br>默认值：PanDirection.All <br> - distance：用于指定触发滑动手势事件的最小滑动距离，单位为vp。<br>取值范围：[0, +∞)<br>手写笔默认值：8，其余输入源默认值：5 <br>**说明：** <br>[Tabs](../../apis-avsession-kit/arkts-apis/arkts-avsession-avmusictemplate-customelement-i.md#tabs)组件滑动与该滑动手势事件同时存在时，可将distance值设为1，使滑动更灵敏，避免造成事件错乱。<br>当设定的值小于0时，按默认值处理。<br>当组件应用了[scale](arkts-arkui-common-comp-commonmethod-c.md#scale-1)缩放变换时，distance的实际识别距离会按照scale比例进行缩放。 |
+| value | { fingers?: number; direction?: PanDirection; distance?: number } &#124; [PanGestureOptions](arkts-arkui-tapgesture-comp-pangestureoptions-c.md) | 否 | 滑动手势参数。<br> - fingers：用于指定触发滑动的最少手指数，最小为1指，最大取值为10指。<br>默认值：1<br>取值范围：[1, 10] <br>**说明：** <br>当设置的值小于1或不设置时，会被转化为默认值。<br> - direction：用于指定触发滑动的手势方向，此枚举值支持逻辑与(&amp;)和逻辑或（\&#124;）运算。<br>默认值：PanDirection.All <br> - distance：用于指定触发滑动手势事件的最小滑动距离，单位为vp。<br>取值范围：[0, +∞)<br>手写笔默认值：8，其余输入源默认值：5 <br>**说明：** <br>[Tabs](arkts-arkui-tabs-comp.md)组件滑动与该滑动手势事件同时存在时，可将distance值设为1，使滑动更灵敏，避免造成事件错乱。<br>当设定的值小于0时，按默认值处理。<br>当组件应用了[scale](arkts-arkui-common-comp-commonmethod-c.md#scale-1)缩放变换时，distance的实际识别距离会按照scale比例进行缩放。 |
 
 **返回值：**
 

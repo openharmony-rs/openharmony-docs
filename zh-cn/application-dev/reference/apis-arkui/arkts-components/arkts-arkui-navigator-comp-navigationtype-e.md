@@ -10,7 +10,7 @@ declare enum NavigationType
 
 **废弃版本：** 13
 
-**替代接口：** Navigation
+**替代接口：** [Navigation](arkts-arkui-navigation-comp.md#navigation)
 
 <!--Device-unnamed-declare enum NavigationType--><!--Device-unnamed-declare enum NavigationType-End-->
 

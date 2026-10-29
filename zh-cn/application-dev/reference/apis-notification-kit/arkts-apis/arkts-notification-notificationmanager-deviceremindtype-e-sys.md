@@ -4,7 +4,7 @@
 export enum DeviceRemindType
 ```
 
-通知提醒方式。
+[通知提醒方式](../../../notification/notification-glossary.md#notification-reminder-mode通知提醒方式)。
 
 **起始版本：** 9
 

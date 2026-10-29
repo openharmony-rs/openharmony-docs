@@ -62,8 +62,6 @@ The key consists of **udmf:/**, **intention**, **bundleName**, and **groupId** w
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
-**Test API:** This API is used only in automated test scripts.
-
 ## visibility
 
 ```TypeScript

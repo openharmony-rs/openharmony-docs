@@ -36,4 +36,4 @@ function onTopSessionChangeForAudioZone(userId: number, callback: Callback<AVSes
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | permission denied. |
-| 6700101 | Session service is not running. |
+| [6700101](../errorcode-avsession.md#6700101-会话服务未运行) | Session service is not running. |

@@ -12,7 +12,7 @@ import { appManager } from '@kit.AbilityKit';
 function killProcessWithAccount(bundleName: string, accountId: number): Promise<void>
 ```
 
-终止account进程。使用Promise异步回调。
+终止指定系统账号下的应用进程。使用Promise异步回调。
 
 > **说明：** 
 > 
@@ -85,7 +85,7 @@ function killProcessWithAccount(bundleName: string, accountId: number, clearPage
     Promise<void>
 ```
 
-终止account进程。使用Promise异步回调。
+终止指定系统账号下的应用进程。使用Promise异步回调。
 
 > **说明：** 
 > 

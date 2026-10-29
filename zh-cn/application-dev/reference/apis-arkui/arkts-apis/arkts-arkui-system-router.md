@@ -4,7 +4,7 @@
 
 > **说明：**
  >
- > - 从API version 8 开始，该接口不再维护，推荐使用新接口@ohos.router。
+ > - 从API version 8 开始，该接口不再维护，推荐使用新接口[@ohos.router](../../../reference/apis-arkui/js-apis-md)。
 
 
 

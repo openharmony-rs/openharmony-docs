@@ -12,9 +12,9 @@ import { notificationManager } from '@kit.NotificationKit';
 function removeSlot(slotType: SlotType, callback: AsyncCallback<void>): void
 ```
 
-Removes a notification slot of a specified type for this application. This API uses an asynchronous callback to return the result.
+Removes a [notification slot](../../../notification/notification-glossary.md#notification-slot) of a specified type for the current application. This API uses an asynchronous callback to return the result.
 
-After deletion, the corresponding type of notification slot and its configuration will be permanently removed. When a notification of this type is published subsequently, the system will automatically create a default slot. Notifications already published through this slot are not affected and can still be viewed in the notification center. This is suitable for scenarios where a slot needs to be deleted and then recreated for reconfiguration.
+After deletion, the corresponding type of notification slot and its configuration will be permanently removed. When a notification of this type is published subsequently, the system will automatically create a default slot. Notifications already published through this slot are not affected and can still be viewed in the [notification center](../../../notification/notification-glossary.md#notification-center). This is applicable to scenarios where the slot needs to be deleted and then re-created for reconfiguration.
 
 **Since:** 9
 
@@ -34,7 +34,7 @@ After deletion, the corresponding type of notification slot and its configuratio
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| slotType | [SlotType](arkts-notification-notificationmanager-slottype-e.md) | Yes | Notification slot type, such as social communication, service reminder, and content consultation. The created slot type must be passed in; otherwise, the deletion operation is invalid. |
+| slotType | [SlotType](arkts-notification-notificationmanager-slottype-e.md) | Yes | Type of the notification slot, for example, social communication, service reminder, and content consultation. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object. |
 
 **Error codes:**
@@ -70,9 +70,9 @@ notificationManager.removeSlot(slotType, removeSlotCallback);
 function removeSlot(slotType: SlotType): Promise<void>
 ```
 
-Removes a notification slot of a specified type for this application. This API uses a promise to return the result.
+Removes a [notification slot](../../../notification/notification-glossary.md#notification-slot) of a specified type for the current application. This API uses a promise to return the result.
 
-After deletion, the corresponding notification slot and its configuration will be permanently removed. When a notification of this type is published subsequently, the system will automatically create a default slot. Notifications already published through this slot are not affected and can still be viewed in the notification center. This is suitable for scenarios where a slot needs to be deleted and then recreated for reconfiguration.
+After deletion, the corresponding type of notification slot and its configuration will be permanently removed. When a notification of this type is published subsequently, the system will automatically create a default slot. Notifications already published through this slot are not affected and can still be viewed in the [notification center](../../../notification/notification-glossary.md#notification-center). This is applicable to scenarios where the slot needs to be deleted and then re-created for reconfiguration.
 
 **Since:** 9
 
@@ -92,7 +92,7 @@ After deletion, the corresponding notification slot and its configuration will b
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| slotType | [SlotType](arkts-notification-notificationmanager-slottype-e.md) | Yes | Notification slot type, such as social communication, service reminder, and content consultation. The created slot type must be passed in; otherwise, the deletion operation is invalid. |
+| slotType | [SlotType](arkts-notification-notificationmanager-slottype-e.md) | Yes | Notification slot type, for example, social communication, service reminder, content consultation, and so on. The slot type to be passed in must have been created; otherwise, the deletion operation does not take effect. |
 
 **Return value:**
 

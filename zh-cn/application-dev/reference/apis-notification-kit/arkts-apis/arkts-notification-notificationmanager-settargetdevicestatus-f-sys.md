@@ -12,7 +12,7 @@ import { notificationManager } from '@kit.NotificationKit';
 function setTargetDeviceStatus(deviceType: string, status: number): Promise<void>
 ```
 
-设置设备配对成功后的状态。当发布通知时，会根据各个设备的状态来确定当前设备的通知提醒方式。
+设置设备配对成功后的状态。当发布通知时，会根据各个设备的状态来确定当前设备的[通知提醒方式](../../../notification/notification-glossary.md#notification-reminder-mode通知提醒方式)。
 
 **起始版本：** 18
 

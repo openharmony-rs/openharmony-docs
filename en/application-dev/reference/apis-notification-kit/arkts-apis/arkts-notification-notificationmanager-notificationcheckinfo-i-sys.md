@@ -4,7 +4,7 @@
 export interface NotificationCheckInfo
 ```
 
-Describes the parameters of check notifications.
+Defines the [notification check](../../../notification/notification-glossary.md#notification-check) parameters.
 
 **Since:** 10
 
@@ -86,7 +86,7 @@ User ID of the notification.
 extraInfos?: Record<string, Object>
 ```
 
-Extra information about the live view.
+Additional information of the [live view notification](../../../notification/notification-glossary.md#live-view-notification).
 
 **Type:** Record&lt;string, Object&gt;
 

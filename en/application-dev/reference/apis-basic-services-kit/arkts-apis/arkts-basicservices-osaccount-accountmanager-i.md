@@ -123,8 +123,6 @@ Checks whether the current OS account is a test account. This API uses an asynch
 
 **System capability:** SystemCapability.Account.OsAccount
 
-**Test API:** This API is used only in automated test scripts.
-
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -171,8 +169,6 @@ Checks whether the current OS account is a test account. This API uses a promise
 <!--Device-AccountManager-checkOsAccountTestable(): Promise<boolean>--><!--Device-AccountManager-checkOsAccountTestable(): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
-
-**Test API:** This API is used only in automated test scripts.
 
 **Return value:**
 
@@ -3583,8 +3579,6 @@ Checks whether the current OS account is a test account. This API uses an asynch
 
 **System capability:** SystemCapability.Account.OsAccount
 
-**Test API:** This API is used only in automated test scripts.
-
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -3628,8 +3622,6 @@ Checks whether the current OS account is a test account. This API uses a promise
 <!--Device-AccountManager-isTestOsAccount(): Promise<boolean>--><!--Device-AccountManager-isTestOsAccount(): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
-
-**Test API:** This API is used only in automated test scripts.
 
 **Return value:**
 

@@ -1051,6 +1051,29 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 }
 ```
 
+## onPasswordFailed
+
+```TypeScript
+onPasswordFailed(cumulativeFailedCount: number, userId: number): void
+```
+
+密码认证失败事件回调。当密码认证失败时触发此回调。需要通过接口[adminManager.subscribeManagedEventSync](arkts-mdm-adminmanager-subscribemanagedeventsync-f.md)注册**MANAGED_EVENT_PASSWORD_FAILED**事件。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-EnterpriseAdminExtensionAbility-onPasswordFailed(cumulativeFailedCount: number, userId: number): void--><!--Device-EnterpriseAdminExtensionAbility-onPasswordFailed(cumulativeFailedCount: number, userId: number): void-End-->
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| cumulativeFailedCount | number | 是 | 密码认证失败的累计次数。 |
+| userId | number | 是 | 发生密码认证失败的用户ID。 |
+
 ## onStart
 
 ```TypeScript

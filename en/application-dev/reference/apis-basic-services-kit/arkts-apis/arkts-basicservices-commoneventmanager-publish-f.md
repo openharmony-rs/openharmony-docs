@@ -26,7 +26,7 @@ Publishes a common event. This API uses an asynchronous callback to return the r
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| event | string | Yes | Name of the common event to publish. |
+| event | string | Yes | Common event to publish. For details, see [System Common Events](arkts-basicservices-commoneventmanager.md). The value can contain a maximum of 254 bytes. Excess content will be truncated. |
 | callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the common event is successfully published, **err** is **undefined**; if the event fails to be published, **err** is an error object. |
 
 **Error codes:**
@@ -79,7 +79,7 @@ Publishes a common event. This API uses an asynchronous callback to return the r
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| event | string | Yes | Name of the common event to publish. |
+| event | string | Yes | Common event to publish. For details, see [System Common Events](arkts-basicservices-commoneventmanager.md). The value can contain a maximum of 254 bytes. Excess content will be truncated. |
 | options | [CommonEventPublishData](arkts-basicservices-commoneventmanager-commoneventpublishdata-t.md) | Yes | Properties of the common event to publish. |
 | callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the common event is successfully published, **err** is **undefined**; if the event fails to be published, **err** is an error object. |
 

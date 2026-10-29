@@ -4,7 +4,7 @@
 export interface EnabledPriorityNotificationByBundleCallbackData
 ```
 
-Returns the notification priority switch state.
+Returns the changes of the enabled state of the application notification priority.
 
 **Since:** 23
 
@@ -38,7 +38,7 @@ Bundle name of the application.
 readonly enableStatus: notificationManager.PriorityEnableStatus
 ```
 
-Whether the priority notification for an application is enabled.
+Priority enabled state of the application notification.
 
 **Type:** [notificationManager.PriorityEnableStatus](arkts-notification-notificationmanager-priorityenablestatus-e-sys.md)
 

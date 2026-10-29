@@ -12,7 +12,7 @@ import { notificationManager } from '@kit.NotificationKit';
 function isNotificationSlotEnabledByBundles(bundles: Array<BundleOption>, type: SlotType): Promise<Map<BundleOption, boolean>>
 ```
 
-批量获取多个应用的指定渠道类型的使能状态。使用Promise异步回调。
+批量获取多个应用的指定渠道类型的使能状态。使用Promise异步回调。所有应用共享同一个渠道类型。未创建渠道的应用不会出现在返回结果中。
 
 **起始版本：** 26.0.0
 
@@ -28,7 +28,7 @@ function isNotificationSlotEnabledByBundles(bundles: Array<BundleOption>, type: 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundles | Array&lt;[BundleOption](arkts-notification-notificationmanager-bundleoption-t.md)&gt; | 是 | 应用包信息数组。<br>最大长度为1000且不能为空。 |
+| bundles | Array&lt;[BundleOption](arkts-notification-notificationmanager-bundleoption-t.md)&gt; | 是 | 应用包信息数组。最大长度为1000且不能为空。 |
 | type | [SlotType](arkts-notification-notificationmanager-slottype-e.md) | 是 | 渠道类型。所有应用共享同一个渠道类型。 |
 
 **返回值：**

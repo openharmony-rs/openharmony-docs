@@ -4,7 +4,7 @@
 export interface SystemLiveViewSubscriber
 ```
 
-系统实况窗订阅者。
+[系统实况窗](../../../notification/notification-glossary.md#system-live-view系统实况窗)订阅者。
 
 **起始版本：** 11
 

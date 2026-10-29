@@ -11,13 +11,13 @@
 function unsubscribe(subscriber: NotificationSubscriber, callback: AsyncCallback<void>): void
 ```
 
-取消订阅（callbcak形式）。
+取消订阅（callback形式）。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [unsubscribe](arkts-notification-notificationsubscribe-unsubscribe-f-sys.md)
+**替代接口：** [unsubscribe](arkts-notification-notificationsubscribe-unsubscribe-f-sys.md#unsubscribe-1)(subscriber: NotificationSubscriber, callback: AsyncCallback&lt;void&gt;)
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -31,7 +31,7 @@ function unsubscribe(subscriber: NotificationSubscriber, callback: AsyncCallback
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| subscriber | [NotificationSubscriber](arkts-notification-notificationsubscriber-i-sys.md) | 是 | 通知订阅对象。 |
+| subscriber | [NotificationSubscriber](arkts-notification-notificationsubscriber-i-sys.md) | 是 | [通知订阅](../../../notification/notification-glossary.md#notification-subscription通知订阅)对象。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 取消订阅动作回调函数。 |
 
 <!--Del-->
@@ -72,7 +72,7 @@ function unsubscribe(subscriber: NotificationSubscriber): Promise<void>
 
 **废弃版本：** 9
 
-**替代接口：** [unsubscribe](arkts-notification-notificationsubscribe-unsubscribe-f-sys.md)
+**替代接口：** [unsubscribe](arkts-notification-notificationsubscribe-unsubscribe-f-sys.md#unsubscribe-2)(subscriber: NotificationSubscriber)
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -86,7 +86,7 @@ function unsubscribe(subscriber: NotificationSubscriber): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| subscriber | [NotificationSubscriber](arkts-notification-notificationsubscriber-i-sys.md) | 是 | 通知订阅对象。 |
+| subscriber | [NotificationSubscriber](arkts-notification-notificationsubscriber-i-sys.md) | 是 | [通知订阅](../../../notification/notification-glossary.md#notification-subscription通知订阅)对象。 |
 
 **返回值：**
 

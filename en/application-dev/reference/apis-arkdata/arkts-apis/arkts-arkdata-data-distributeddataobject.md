@@ -31,13 +31,13 @@ import { distributedDataObject } from '@kit.ArkData';
 | [BindInfo](arkts-arkdata-distributeddataobject-bindinfo-i.md) | Represents the information about the joint asset in the RDB store to bind. Currently, only the RDB stores are supported. |
 | [DataObject](arkts-arkdata-distributeddataobject-dataobject-i.md) | Provides APIs for managing a distributed data object. Before using any API of this class, use create() to create a DataObject object. |
 | [RevokeSaveSuccessResponse](arkts-arkdata-distributeddataobject-revokesavesuccessresponse-i.md) | Represents the information returned by the callback of revokeSave. |
-| [SaveSuccessResponse](arkts-arkdata-distributeddataobject-savesuccessresponse-i.md) | Represents the information returned by the callback of save.. |
+| [SaveSuccessResponse](arkts-arkdata-distributeddataobject-savesuccessresponse-i.md) | Represents the information returned by the callback of save. |
 | [DistributedObject](arkts-arkdata-distributeddataobject-distributedobject-i.md) | Provides APIs for managing a distributed data object. Before using any API of this class, use createDistributedObject() to create a DistributedObject object. |
 
 ### Types
 
 | Name | Description |
 | --- | --- |
-| [DataObserver](arkts-arkdata-distributeddataobject-dataobserver-t.md) | Defines an observer for obtaining the data change of a distributed object. |
+| [DataObserver](arkts-arkdata-distributeddataobject-dataobserver-t.md) | Defines the callback used to listen for data changes of a distributed data object. |
 | [ProgressObserver](arkts-arkdata-distributeddataobject-progressobserver-t.md) | Defines an observer for obtaining the transfer progress. |
-| [StatusObserver](arkts-arkdata-distributeddataobject-statusobserver-t.md) | Defines an observer for obtaining the status change of a distributed object. |
+| [StatusObserver](arkts-arkdata-distributeddataobject-statusobserver-t.md) | Defines the callback used to listen for status changes of a distributed data object. |

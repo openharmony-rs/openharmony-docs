@@ -35,7 +35,7 @@ function startChildProcess(srcEntry: string, startMode: StartMode): Promise<numb
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| srcEntry | string | 是 | 子进程源文件路径，只支持源文件放在entry类型的模块中，以src/main为根目录。例如子进程文件在entry模块下src/main/ets/process/ DemoProcess.ets，则srcEntry为"./ets/process/DemoProcess.ets"。<br>另外，需要确保子进程源文件被其它文件引用到，防止被构建工具优化掉。（详见下方示例代码） |
+| srcEntry | string | 是 | 子进程源文件路径，只支持源文件放在entry类型的模块中，以src/main为根目录。例如子进程文件在entry模块下src/main/ets/process/ DemoProcess.ets，则srcEntry为"./ets/process/DemoProcess.ets"。另外，需要确保子进程源文件被其它文件引用到，防止被构建工具优化掉。（详见下方示例代码） |
 | startMode | [StartMode](arkts-ability-childprocessmanager-startmode-e.md) | 是 | 子进程启动模式。SELF_FORK（值为0）：从App自身进程Fork子进程，继承父进程资源，不能使用Binder IPC和其他进程通信，否则会导致子进程崩溃退出；APP_SPAWN_FORK（值为1）：从AppSpawn Fork子进程，不继承父进程资源，可使用Binder IPC和其他进程通信。 |
 
 **返回值：**
@@ -117,8 +117,8 @@ function startChildProcess(srcEntry: string, startMode: StartMode, callback: Asy
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| srcEntry | string | 是 | 子进程源文件路径，只支持源文件放在entry类型的模块中，以src/main为根目录。例如子进程文件在entry模块下src/main/ets/process/ DemoProcess.ets，则srcEntry为"./ets/process/DemoProcess.ets"。<br>另外，需要确保子进程源文件被其它文件引用到，防止被构建工具优化掉。（详见下方示例代码） |
-| startMode | [StartMode](arkts-ability-childprocessmanager-startmode-e.md) | 是 | 子进程启动模式。从App自身进程Fork子进程，继承父进程资源，不能使用Binder IPC和其他进程通信，否则会导致子进程崩溃退出；APP_SPAWN_FORK（值为1）：从AppSpawn Fork子进程，不继承父进程资源，可使用Binder IPC和其他进程通信。 |
+| srcEntry | string | 是 | 子进程源文件路径，只支持源文件放在entry类型的模块中，以src/main为根目录。例如子进程文件在entry模块下src/main/ets/process/ DemoProcess.ets，则srcEntry为"./ets/process/DemoProcess.ets"。另外，需要确保子进程源文件被其它文件引用到，防止被构建工具优化掉。（详见下方示例代码） |
+| startMode | [StartMode](arkts-ability-childprocessmanager-startmode-e.md) | 是 | 子进程启动模式。SELF_FORK（值为0）：从App自身进程Fork子进程，继承父进程资源，不能使用Binder IPC和其他进程通信，否则会导致子进程崩溃退出；APP_SPAWN_FORK（值为1）：从AppSpawn Fork子进程，不继承父进程资源，可使用Binder IPC和其他进程通信。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。当子进程启动成功，err为undefined，data为获取到的子进程pid；否则为错误对象。 |
 
 **错误码：**

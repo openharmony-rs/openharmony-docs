@@ -4,7 +4,7 @@
 export default class NotificationSubscriberExtensionContext extends ExtensionContext
 ```
 
-The **NotificationSubscriberExtensionContext** module provides the context for the **NotificationSubscriberExtensionAbility**.
+The **NotificationSubscriberExtensionContext** module provides the extension capability for [notification subscription](../../../notification/notification-glossary.md#notification-subscription) subscribers.
 
 **Inheritance/Implementation:** NotificationSubscriberExtensionContext extends [ExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-extensioncontext-c.md)
 

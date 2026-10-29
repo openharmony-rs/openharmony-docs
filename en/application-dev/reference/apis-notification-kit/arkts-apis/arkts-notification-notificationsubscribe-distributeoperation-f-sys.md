@@ -12,7 +12,7 @@ import { notificationSubscribe } from '@kit.NotificationKit';
 function distributeOperation(hashcode: string, operationInfo?: OperationInfo): Promise<void>
 ```
 
-Triggers a notification for cross-device operations, such as tap-to-redirect and quick reply. This API uses a promise to return the result.
+Triggers the [cross-device collaboration](../../../notification/notification-glossary.md#cross-device-collaboration) operation of the specified notification (for example, cross-device notification click-to-redirect and cross-device quick reply). This API uses a promise to return the result.
 
 **Since:** 18
 
@@ -28,8 +28,8 @@ Triggers a notification for cross-device operations, such as tap-to-redirect and
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| hashcode | string | Yes | Unique notification ID. |
-| operationInfo | [OperationInfo](arkts-notification-notificationsubscribe-operationinfo-i-sys.md) | No | Cross-device operation information. This parameter is left empty by default. |
+| hashcode | string | Yes | Unique notification ID. It is the value of **hashCode** in the [NotificationRequest](arkts-notification-notificationrequest-i.md) object of [SubscribeCallbackData](arkts-notification-notificationsubscriber-subscribecallbackdata-i-sys.md) used in the [onConsume](arkts-notification-notificationsubscriber-i-sys.md#onconsume) callback. |
+| operationInfo | [OperationInfo](arkts-notification-notificationsubscribe-operationinfo-i-sys.md) | No | Cross-device collaboration operation information. When this parameter is not passed, the system default collaboration operation configuration is used. |
 
 **Return value:**
 

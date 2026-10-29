@@ -28,7 +28,7 @@ Obtains a list of applications that allow notifications. This API uses a promise
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;Array&lt;[BundleOption](arkts-notification-notificationmanager-bundleoption-t.md)&gt;&gt; | Returns a list of applications that allow notifications. |
+| Promise&lt;Array&lt;[BundleOption](arkts-notification-notificationmanager-bundleoption-t.md)&gt;&gt; | List of applications that allow notifications. |
 
 **Error codes:**
 
@@ -66,7 +66,7 @@ notificationManager.getAllNotificationEnabledBundles().then((data: Array<notific
 function getAllNotificationEnabledBundles(userId: number): Promise<Array<BundleOption>>
 ```
 
-Obtains the list of applications that are allowed to publish notifications by a specified user. This API uses a promise to return the result.
+Obtains the list of applications that allow notifications for a specified user. This API uses a promise to return the result.
 
 **Since:** 23
 
@@ -82,13 +82,13 @@ Obtains the list of applications that are allowed to publish notifications by a 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| userId | number | Yes | Target user. |
+| userId | number | Yes | User for whom the list of applications that allow notifications is to be obtained. <br>The value should be an integer. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;Array&lt;[BundleOption](arkts-notification-notificationmanager-bundleoption-t.md)&gt;&gt; | Returns a list of applications that allow notifications. |
+| Promise&lt;Array&lt;[BundleOption](arkts-notification-notificationmanager-bundleoption-t.md)&gt;&gt; | List of applications that allow notifications. |
 
 **Error codes:**
 

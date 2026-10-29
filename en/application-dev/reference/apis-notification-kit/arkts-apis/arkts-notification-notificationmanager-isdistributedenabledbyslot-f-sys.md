@@ -12,7 +12,7 @@ import { notificationManager } from '@kit.NotificationKit';
 function isDistributedEnabledBySlot(slot: SlotType, deviceType: string): Promise<boolean>
 ```
 
-Queries whether notifications of a specified slot can be sent to devices of a specified type. This API uses a promise to return the result.
+Queries whether notifications of a specified slot support [cross-device collaboration](../../../notification/notification-glossary.md#cross-device-collaboration) to devices of a specified type. This API uses a promise to return the result.
 
 **Since:** 18
 
@@ -28,8 +28,8 @@ Queries whether notifications of a specified slot can be sent to devices of a sp
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| slot | [SlotType](arkts-notification-notificationmanager-slottype-e.md) | Yes | Types of the notification slot. |
-| deviceType | string | Yes | Device type.<br>Since API version 18, the following device types are supported:<br>- **headset**: wearable audio device<br>- **liteWearable**: lite wearable<br>- **wearable**: wearable<br>Since API version 20, the following device types are supported:<br>- **headset**: wearable audio device<br>- **liteWearable**: lite wearable<br>- **wearable**: wearable<br>- **current**: current device<br>- **2in1**: PC<br>- **tablet**: tablet |
+| slot | [SlotType](arkts-notification-notificationmanager-slottype-e.md) | Yes | [Notification slot](../../../notification/notification-glossary.md#notification-slot) type. |
+| deviceType | string | Yes | Device type. <br>Since API version 18, the following device types are supported: <br>- **headset**: wearable audio device <br>- **liteWearable**: lite wearable <br>- **wearable**: wearable <br>Since API version 20, the following device types are supported: <br>- **headset**: wearable audio device <br>- **liteWearable**: lite wearable <br>- **wearable**: wearable <br>- **current**: current device <br>- **2in1**: PC <br>- **tablet**: tablet |
 
 **Return value:**
 

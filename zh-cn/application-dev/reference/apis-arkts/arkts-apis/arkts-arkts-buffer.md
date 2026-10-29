@@ -30,7 +30,7 @@ import { buffer } from '@kit.ArkTS';
 | [from](arkts-arkts-buffer-from-f.md#from-2) | 创建与`arrayBuffer`共享内存的指定长度的Buffer对象。共享内存意味着Buffer与arrayBuffer引用同一块内存区域，对Buffer数据的修改将同步反映到arrayBuffer中，反之亦然（注意：此方式避免内存拷贝，提升性能，但需注意内存释放时机）。 |
 | [from](arkts-arkts-buffer-from-f.md#from-4) | 当入参为Buffer对象时，创建新的Buffer对象并复制入参Buffer对象的数据，然后返回新对象。基于Uint8Array对象的内存创建新的Buffer对象并返回，新Buffer与原Uint8Array共享同一底层ArrayBuffer内存区域。 |
 | [from](arkts-arkts-buffer-from-f.md#from-5) | 根据指定的`object`类型数据，创建新的Buffer对象。当object的valueOf()返回ArrayBuffer时，按字节偏移量和长度创建Buffer；其他类型则根据编码格式将对象值转换为Buffer。 |
-| from | 根据指定编码格式的字符串，创建新的Buffer对象，字符串按编码格式转换为字节序列存入Buffer。 |
+| [from](arkts-arkts-buffer-from-f.md#from-6) | 根据指定编码格式的字符串，创建新的Buffer对象，字符串按编码格式转换为字节序列存入Buffer。 |
 | [isBuffer](arkts-arkts-buffer-isbuffer-f.md#isbuffer-1) | 判断`obj`是否为Buffer。 |
 | [isEncoding](arkts-arkts-buffer-isencoding-f.md#isencoding-1) | 判断`encoding`是否为支持的编码格式。 |
 | [transcode](arkts-arkts-buffer-transcode-f.md#transcode-1) | 将Buffer或Uint8Array对象从一种字符编码重新编码为另一种。适用于需要在不同编码格式之间转换已有Buffer数据的场景。 |

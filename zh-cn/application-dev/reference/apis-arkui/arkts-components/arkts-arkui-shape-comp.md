@@ -13,11 +13,11 @@ Shape组件的两种使用方式：
 > **说明：** 
 > 
 > 该组件从API version 20开始支持使用[AttributeUpdater](../arkts-apis/arkts-arkui-attributeupdater-c.md)类的
-> updateConstructorParams接口更新构造参数。
+> [updateConstructorParams](../../../reference/apis-arkui/js-apis-arkui-AttributeUpdater.md#属性)接口更新构造参数。
 
 ## 子组件
 
-包含Rect、Path、Circle、[Ellipse](arkts-arkui-canvas-comp-canvaspath-c.md#ellipse)、Polyline、Polygon、Image、Text、Column、Row和Shape子组件。
+包含Rect、Path、Circle、[Ellipse](arkts-arkui-canvas-comp-canvaspath-c.md#ellipse)、Polyline、[Polygon](../../apis-location-kit/arkts-apis/arkts-location-geolocationmanager-gnssfence-i-sys.md#polygon)、Image、Text、[Column](arkts-arkui-mediacachedimage-comp-astcresource-i-sys.md#column)、Row和Shape子组件。
 
 ## Shape
 

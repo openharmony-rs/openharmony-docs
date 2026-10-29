@@ -4,11 +4,11 @@
 export interface NotificationProgress
 ```
 
-描述通知进度，用于在实况窗中展示进度条信息。
+描述[通知进度](../../../notification/notification-glossary.md#notification-progress通知进度)，用于在实况窗中展示进度条信息。
 
 > **说明：** 
 > 
-> 实际显示效果依赖于设备能力和通知中心UI样式。
+> 实际显示效果依赖于设备能力和[通知中心](../../../notification/notification-glossary.md#notification-center通知中心)UI样式。
 
 **起始版本：** 11
 

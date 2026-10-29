@@ -18,6 +18,6 @@ type BundleChangedEvent = 'add' | 'update' | 'remove'
 
 | 类型 | 说明 |
 | --- | --- |
-| 'add' |  |
-| 'update' |  |
-| 'remove' |  |
+| 'add' | 监听应用安装事件，值固定为'add'字符串。 |
+| 'update' | 监听应用更新事件，值固定为'update'字符串。 |
+| 'remove' | 监听应用卸载事件，值固定为'remove'字符串。 |

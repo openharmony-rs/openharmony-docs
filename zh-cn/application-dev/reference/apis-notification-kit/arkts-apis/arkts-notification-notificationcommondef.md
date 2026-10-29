@@ -1,4 +1,4 @@
-# NotificationCommonDef(Some common definitions)
+# NotificationCommonDef(NotificationCommonDef)
 
 ## 汇总
 

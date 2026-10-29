@@ -120,6 +120,7 @@ import { dlpPermission } from '@kit.DataProtectionKit';
 | [AccountType](arkts-dataprotection-dlppermission-accounttype-e.md) | Enumerates the types of authorized accounts. |
 | [ActionFlagType](arkts-dataprotection-dlppermission-actionflagtype-e.md) | Enumerates the operations that can be performed on a DLP file. For example, the DLP sandbox application can dim its button based on this parameter. |
 | [ActionType](arkts-dataprotection-dlppermission-actiontype-e.md) | Enumerates the actions to be performed when the file's permission expiration time is reached. The default value is **NOT_OPEN**. |
+| [DlpAtomicPermissionType](arkts-dataprotection-dlppermission-dlpatomicpermissiontype-e.md) | Enumerates atomic permissions for DLP files, including user operation and application permission control. This enumeration supports bitwise OR operations to combine multiple permissions. |
 | [DLPFileAccess](arkts-dataprotection-dlppermission-dlpfileaccess-e.md) | Enumerates the permissions on a DLP file. |
 | [PluginCmd](arkts-dataprotection-dlppermission-plugincmd-e.md) | Enumerates command codes for the plugin of an enterprise security application. |
 

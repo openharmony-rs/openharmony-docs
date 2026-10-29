@@ -4,7 +4,7 @@
 export interface NotificationContent
 ```
 
-Describes the notification contents.
+NotificationContent defines the content structure of a notification and provides interfaces for describing multiple notification content types. When an application needs to publish a notification, it can select the corresponding content type interface to construct the [notification content](../../../notification/notification-glossary.md#notification-content) based on the display requirements of the notification (such as basic text, long text, multi-line text, picture, and live view).
 
 **Since:** 7
 
@@ -18,7 +18,7 @@ Describes the notification contents.
 liveView?: NotificationLiveViewContent
 ```
 
-Common live view.
+Normal live view type [notification content](../../../notification/notification-glossary.md#notification-content).
 
 **Type:** [NotificationLiveViewContent](arkts-notification-notificationcontent-notificationliveviewcontent-i-sys.md)
 

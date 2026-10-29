@@ -1652,7 +1652,7 @@ Subscribes to dead events of the **DeviceManager** service.
 
 **Deprecated since:** 11
 
-**Substitutes:** on(type: 'serviceDie', callback?: Callback&lt;{}&gt;)
+**Substitutes:** [on](arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#onservicedie)(type: 'serviceDie', callback?: Callback&lt;{}&gt;)
 
 **Required permissions:** ohos.permission.ACCESS_SERVICE_DM
 

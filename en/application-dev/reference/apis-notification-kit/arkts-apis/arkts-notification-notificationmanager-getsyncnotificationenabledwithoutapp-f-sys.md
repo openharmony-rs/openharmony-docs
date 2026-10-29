@@ -31,7 +31,7 @@ Obtains whether the notification sync feature is enabled for devices where the a
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | userId | number | Yes | User ID. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | Yes | Callback used to return the result. The value **true** means that the notification sync feature is enabled, and **false** means the opposite. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | Yes | Callback used to return whether the notification sync feature is enabled for devices where the application is not installed. The value **true** means that the notification sync feature is enabled, and **false** means the opposite. |
 
 **Error codes:**
 
@@ -97,7 +97,7 @@ Obtains whether the notification sync feature is enabled for devices where the a
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** means that the notification sync feature is enabled, and **false** means the opposite. |
+| Promise&lt;boolean&gt; | Promise used to return whether the notification sync feature is enabled for devices where the application is not installed. The value **true** means that the notification sync feature is enabled, and **false** means the opposite. |
 
 **Error codes:**
 

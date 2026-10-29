@@ -85,5 +85,3 @@ Blinking triggered by a test scenario.
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
-
-**Test API:** This API is used only in automated test scripts.

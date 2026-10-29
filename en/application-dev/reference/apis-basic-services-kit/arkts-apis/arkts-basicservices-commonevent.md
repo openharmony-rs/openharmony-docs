@@ -1,4 +1,4 @@
-# @ohos.commonEvent
+# @ohos.commonEvent(Common Event)
 
 The **CommonEvent** module provides capabilities to publish, subscribe to, and unsubscribe from common events, as well as obtain and modify the common event result code and result data.
 
@@ -43,4 +43,4 @@ The **CommonEvent** module provides capabilities to publish, subscribe to, and u
 
 | Name | Description |
 | --- | --- |
-| [Support](arkts-basicservices-commonevent-support-depr-e.md) | A system common event is an event that is published by a system service or system application and requires specific permissions to subscribe to. To publish or subscribe to this type of event, you must follow the event-specific definitions. |
+| [Support](arkts-basicservices-commonevent-support-depr-e.md) | [System common events](../../../basic-services/common-event/common-event-glossary.md#system-common-event) refer to events released by system services or system apps. Subscribing to these events requires specific permissions. To publish or subscribe to this type of event, you must follow the event-specific definitions. |

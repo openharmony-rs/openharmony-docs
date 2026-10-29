@@ -4,7 +4,7 @@
 export interface NotificationContent
 ```
 
-Describes the notification contents.
+NotificationContent defines the content structure of a notification and provides interfaces for describing multiple notification content types. When an application needs to publish a notification, it can select the corresponding content type interface to construct the [notification content](../../../notification/notification-glossary.md#notification-content) based on the display requirements of the notification (such as basic text, long text, multi-line text, picture, and live view).
 
 **Since:** 7
 
@@ -50,7 +50,7 @@ Multi-line notification content. This parameter is used when **notificationConte
 normal?: NotificationBasicContent
 ```
 
-Basic notification content. This parameter is used when **notificationContentType** is **NOTIFICATION_CONTENT_BASIC_TEXT**. The notification displays the title and body in a plain text style.
+Basic notification content. This parameter is used when **notificationContentType** is **NOTIFICATION_CONTENT_BASIC_TEXT**. The notification displays the title and body in a basic text style.
 
 **Type:** [NotificationBasicContent](arkts-notification-notificationcontent-notificationbasiccontent-i.md)
 
@@ -66,7 +66,7 @@ Basic notification content. This parameter is used when **notificationContentTyp
 notificationContentType?: notificationManager.ContentType
 ```
 
-Notification content type, used to specify the content layout type of the notification, which determines the display style of the notification in the notification center. It must be used together with the corresponding notification content object. For example, when this parameter is set to **NOTIFICATION_CONTENT_BASIC_TEXT**, the **normal** field must be specified at the same time.
+[Content type](../../../notification/notification-glossary.md#content-type) of the notification, which specifies the content layout type of the notification and determines the display style of the notification in the [notification center](../../../notification/notification-glossary.md#notification-center). It must be used together with the notification content object of the corresponding type. For example, when it is set to **NOTIFICATION_CONTENT_BASIC_TEXT**, the **normal** field must also be filled in.
 
 **Type:** [notificationManager.ContentType](arkts-notification-notificationmanager-contenttype-e.md)
 
@@ -98,7 +98,7 @@ Picture notification content. This parameter is used when **notificationContentT
 systemLiveView?: NotificationSystemLiveViewContent
 ```
 
-System live view notification content. Third-party applications are not supported to directly create this type of notification. After a system agent creates a system live view notification, a third-party application can publish a notification with the same ID to update the specified content.
+[System live view](../../../notification/notification-glossary.md#system-live-view) type notification content. Third-party applications cannot directly create this type of notification. After the system agent creates a system live view type notification, a third-party application can publish a notification with the same ID to update the specified content.
 
 **Type:** [NotificationSystemLiveViewContent](arkts-notification-notificationcontent-notificationsystemliveviewcontent-i.md)
 

@@ -38,7 +38,7 @@ readonly sortedHashCode: Array<string>
 readonly sortings: Record<string, NotificationSorting>
 ```
 
-通知排序信息。
+[通知排序](../../../notification/notification-glossary.md#notification-sorting通知排序)信息。
 
 **类型：** Record&lt;string, [NotificationSorting](arkts-notification-notificationsorting-i-sys.md)&gt;
 

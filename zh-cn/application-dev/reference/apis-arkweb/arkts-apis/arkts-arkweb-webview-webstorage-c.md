@@ -123,7 +123,7 @@ static deleteOrigin(origin: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| origin | string | 是 | 指定源的字符串索引，来自于getOrigins。 |
+| origin | string | 是 | 指定源的字符串索引，来自于[getOrigins](#getorigins-2)。 |
 
 **错误码：**
 

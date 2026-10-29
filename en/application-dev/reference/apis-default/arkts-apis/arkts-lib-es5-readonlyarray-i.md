@@ -51,8 +51,6 @@ Determines whether all the members of an array satisfy the specified test.
 
 <!--Device-ReadonlyArray-every<S extends T>(predicate: (value: T, index: number, array: readonly T[]) => value is S, thisArg?: any): this is readonly S[]--><!--Device-ReadonlyArray-every<S extends T>(predicate: (value: T, index: number, array: readonly T[]) => value is S, thisArg?: any): this is readonly S[]-End-->
 
-**Test API:** This API is used only in automated test scripts.
-
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -69,8 +67,6 @@ every(predicate: (value: T, index: number, array: readonly T[]) => unknown, this
 Determines whether all the members of an array satisfy the specified test.
 
 <!--Device-ReadonlyArray-every(predicate: (value: T, index: number, array: readonly T[]) => unknown, thisArg?: any): boolean--><!--Device-ReadonlyArray-every(predicate: (value: T, index: number, array: readonly T[]) => unknown, thisArg?: any): boolean-End-->
-
-**Test API:** This API is used only in automated test scripts.
 
 **Parameters:**
 

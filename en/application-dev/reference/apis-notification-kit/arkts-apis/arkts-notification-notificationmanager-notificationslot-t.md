@@ -4,7 +4,7 @@
 export type NotificationSlot = _NotificationSlot
 ```
 
-Describes the notification slot.
+Defines the [notification slot](../../../notification/notification-glossary.md#notification-slot).
 
 **Type:** _NotificationSlot
 

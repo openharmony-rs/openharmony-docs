@@ -60,9 +60,9 @@ import { ble } from '@kit.ConnectivityKit';
 | [BLEDescriptor](arkts-connectivity-ble-bledescriptor-i.md) | Describes the Gatt descriptor. |
 | [BleScanner](arkts-connectivity-ble-blescanner-i.md) | Manages the ble scanner. Before calling a ble scanner method, you must use [createBleScanner](arkts-connectivity-ble-createblescanner-f.md) to create an BleScanner instance. |
 | [CharacteristicReadRequest](arkts-connectivity-ble-characteristicreadrequest-i.md) | Describes the parameters of the Gatt client's characteristic read request. |
-| [CharacteristicWriteRequest](arkts-connectivity-ble-characteristicwriterequest-i.md) | Describes the parameters of the of the Gatt client's characteristic write request. |
+| [CharacteristicWriteRequest](arkts-connectivity-ble-characteristicwriterequest-i.md) | Describes the parameters of the Gatt client's characteristic write request. |
 | [DescriptorReadRequest](arkts-connectivity-ble-descriptorreadrequest-i.md) | Describes the parameters of the Gatt client's descriptor read request. |
-| [DescriptorWriteRequest](arkts-connectivity-ble-descriptorwriterequest-i.md) | Describes the parameters of the Gatt client's characteristic write request. |
+| [DescriptorWriteRequest](arkts-connectivity-ble-descriptorwriterequest-i.md) | Describes the parameters of the Gatt client's descriptor write request. |
 | [GattClientDevice](arkts-connectivity-ble-gattclientdevice-i.md) | Manages GATT client. Before calling an Gatt client method, you must use [createGattClientDevice](arkts-connectivity-ble-creategattclientdevice-f.md) to create an GattClientDevice instance. |
 | [GattPermissions](arkts-connectivity-ble-gattpermissions-i.md) | Describes the permission of a att attribute item. |
 | [GattProperties](arkts-connectivity-ble-gattproperties-i.md) | Describes the properties of a gatt characteristic. |

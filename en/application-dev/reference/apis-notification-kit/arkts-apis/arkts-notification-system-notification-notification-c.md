@@ -28,7 +28,7 @@ import { Notification, ActionResult, ShowNotificationOptions } from '@kit.Notifi
 static show(options?: ShowNotificationOptions): void
 ```
 
-Displays the notification.
+Displays a notification.
 
 **Since:** 3
 
@@ -44,7 +44,7 @@ Displays the notification.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [ShowNotificationOptions](arkts-notification-system-notification-shownotificationoptions-i.md) | No | Notification title. |
+| options | [ShowNotificationOptions](arkts-notification-system-notification-shownotificationoptions-i.md) | No | Options for displaying the notification, including the notification title, notification content, and the action triggered when the notification is tapped. |
 
 **Examples**
 

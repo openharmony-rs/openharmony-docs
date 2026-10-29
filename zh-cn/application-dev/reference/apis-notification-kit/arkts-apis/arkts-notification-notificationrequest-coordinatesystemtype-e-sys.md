@@ -4,7 +4,7 @@
 export enum CoordinateSystemType
 ```
 
-表示地理围栏坐标系类型的枚举。
+表示[地理围栏](../../../notification/notification-glossary.md#geofence地理围栏)坐标系类型的枚举。
 
 **起始版本：** 23
 

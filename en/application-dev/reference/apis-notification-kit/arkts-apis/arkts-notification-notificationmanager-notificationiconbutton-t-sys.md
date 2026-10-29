@@ -4,7 +4,7 @@
 export type NotificationIconButton = _NotificationIconButton
 ```
 
-System notification button.
+Defines the system [notification button](../../../notification/notification-glossary.md#notification-button).
 
 **Type:** _NotificationIconButton
 

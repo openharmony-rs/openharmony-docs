@@ -4,7 +4,7 @@
 declare enum LinkParamCategory
 ```
 
-@InsightIntentLink装饰器的意图参数类别，用于定义意图参数的传递形式。
+[@InsightIntentLink](arkts-ability-app-ability-insightintentdecorator-insightintentlink-d.md#insightintentlink)装饰器的意图参数类别，用于定义意图参数的传递形式。
 
 **起始版本：** 20
 

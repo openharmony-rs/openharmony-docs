@@ -458,7 +458,7 @@ share(
     ): Promise<Result<Array<Result<cloudData.sharing.Participant>>>>
 ```
 
-Shares data. This API uses a promise to return the result. The application that initiates the share, shared resource ID, participants of the share need to be specified.
+Shares data. This API uses a promise to return the result. The application that initiates the share, shared resource ID, and participants of the share need to be specified.
 
 **Since:** 11
 

@@ -3430,7 +3430,7 @@ ERR_SYN_REPLY_NOT_RECEIVED = -332
 ERR_TEMPORARILY_THROTTLED = -139
 ```
 
-因节流而取消了此请求以避免DDOS。
+因节流而取消了此请求以避免DDoS。
 
 **起始版本：** 12
 

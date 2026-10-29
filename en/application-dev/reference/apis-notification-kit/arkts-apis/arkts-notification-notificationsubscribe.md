@@ -1,6 +1,6 @@
-# @ohos.notificationSubscribe
+# @ohos.notificationSubscribe(NotificationSubscribe)
 
-The **notificationSubscribe** module provides APIs for notification subscription, notification unsubscription, subscription removal, and more. In general cases, only system applications can call these APIs.
+This module provides [notification subscription](../../../notification/notification-glossary.md#notification-subscription), unsubscription, notification removal, and other capabilities. Generally, only system applications have the permissions for these operations.
 
 **Since:** 9
 
@@ -23,7 +23,7 @@ import { notificationSubscribe } from '@kit.NotificationKit';
 
 | Name | Description |
 | --- | --- |
-| [distributeOperation](arkts-notification-notificationsubscribe-distributeoperation-f-sys.md#distributeoperation-1) | Triggers a notification for cross-device operations, such as tap-to-redirect and quick reply. This API uses a promise to return the result. |
+| [distributeOperation](arkts-notification-notificationsubscribe-distributeoperation-f-sys.md#distributeoperation-1) | Triggers the [cross-device collaboration](../../../notification/notification-glossary.md#cross-device-collaboration) operation of the specified notification (for example, cross-device notification click-to-redirect and cross-device quick reply). This API uses a promise to return the result. |
 | [remove](arkts-notification-notificationsubscribe-remove-f-sys.md#remove-1) | Removes a notification based on the bundle information and notification key. This API uses an asynchronous callback to return the result. |
 | [remove](arkts-notification-notificationsubscribe-remove-f-sys.md#remove-2) | Removes a notification based on the bundle information and notification key. This API uses a promise to return the result. |
 | [remove](arkts-notification-notificationsubscribe-remove-f-sys.md#remove-3) | Removes a notification based on the specified unique notification ID. This API uses an asynchronous callback to return the result. |
@@ -37,7 +37,7 @@ import { notificationSubscribe } from '@kit.NotificationKit';
 | [removeAll](arkts-notification-notificationsubscribe-removeall-f-sys.md#removeall-5) | Removes all notifications for a specified application. This API uses a promise to return the result. |
 | [subscribeNotification](arkts-notification-notificationsubscribe-subscribenotification-f-sys.md#subscribenotification-1) | Subscribes to notifications. After the subscription, the new message is received through the callback in the subscriber. This API uses a promise to return the result. |
 | [subscribeNotification](arkts-notification-notificationsubscribe-subscribenotification-f-sys.md#subscribenotification-2) | Subscribes to notifications. After the subscription, the new message is received through the callback in the subscriber. This API uses a promise to return the result. |
-| [subscribeSelf](arkts-notification-notificationsubscribe-subscribeself-f-sys.md#subscribeself-1) | Subscribes to notifications of the application and specifies subscription information. This API uses a promise to return the result. |
+| [subscribeSelf](arkts-notification-notificationsubscribe-subscribeself-f-sys.md#subscribeself-1) | Subscribes to notifications of this application. This API uses a promise to return the result. |
 | [unsubscribe](arkts-notification-notificationsubscribe-unsubscribe-f-sys.md#unsubscribe-1) | Unsubscribes from a notification. This API uses an asynchronous callback to return the result. |
 | [unsubscribe](arkts-notification-notificationsubscribe-unsubscribe-f-sys.md#unsubscribe-2) | Unsubscribes from a notification. This API uses a promise to return the result. |
 | [subscribe](arkts-notification-notificationsubscribe-subscribe-f-sys.md#subscribe-1) | Subscribes to notifications of all applications under this user. This API uses an asynchronous callback to return the result. |
@@ -51,7 +51,7 @@ import { notificationSubscribe } from '@kit.NotificationKit';
 | Name | Description |
 | --- | --- |
 | [NotificationKey](arkts-notification-notificationsubscribe-notificationkey-i-sys.md) | Defines the notification key value. |
-| [OperationInfo](arkts-notification-notificationsubscribe-operationinfo-i-sys.md) | Defines cross-device collaborative operation information. |
+| [OperationInfo](arkts-notification-notificationsubscribe-operationinfo-i-sys.md) | Describes the [cross-device collaboration](../../../notification/notification-glossary.md#cross-device-collaboration) operation information. |
 <!--DelEnd-->
 
 <!--Del-->
@@ -59,20 +59,20 @@ import { notificationSubscribe } from '@kit.NotificationKit';
 
 | Name | Description |
 | --- | --- |
-| [BadgeNumberCallbackData](arkts-notification-notificationsubscribe-badgenumbercallbackdata-t-sys.md) | Describes the badge number of the application has changed. |
+| [BadgeNumberCallbackData](arkts-notification-notificationsubscribe-badgenumbercallbackdata-t-sys.md) | Returns the changes of the application badge number. |
 | [BundleOption](arkts-notification-notificationsubscribe-bundleoption-t-sys.md) | Describes the **BundleOption** information, that is, the bundle information of an application. |
-| [EnabledNotificationCallbackData](arkts-notification-notificationsubscribe-enablednotificationcallbackdata-t-sys.md) | Describes the properties of the application that the permission to send notifications has changed. |
-| [EnabledPriorityNotificationByBundleCallbackData](arkts-notification-notificationsubscribe-enabledprioritynotificationbybundlecallbackdata-t-sys.md) | Describes the bundle switch state for priority notification. |
-| [EnabledPriorityNotificationCallbackData](arkts-notification-notificationsubscribe-enabledprioritynotificationcallbackdata-t-sys.md) | Describes the main switch state for priority notification. |
-| [EnabledSilentReminderCallbackData](arkts-notification-notificationsubscribe-enabledsilentremindercallbackdata-t-sys.md) | Describes the switch state for silent reminder notification. |
-| [EnabledSilentReminderChangedCallback](arkts-notification-notificationsubscribe-enabledsilentreminderchangedcallback-t-sys.md) | Defines a callback function to listen for the enabling state changes of the application's silent reminder. |
-| [NotificationClassification](arkts-notification-notificationsubscribe-notificationclassification-t-sys.md) | Describes the notification classification information. |
-| [NotificationSubscribeInfo](arkts-notification-notificationsubscribe-notificationsubscribeinfo-t-sys.md) | The **NotificationSubscribeInfo** module provides APIs for defining the information about the publisher for notification subscription. |
+| [EnabledNotificationCallbackData](arkts-notification-notificationsubscribe-enablednotificationcallbackdata-t-sys.md) | Returns the changes of the application badge enabled state. |
+| [EnabledPriorityNotificationByBundleCallbackData](arkts-notification-notificationsubscribe-enabledprioritynotificationbybundlecallbackdata-t-sys.md) | Returns the changes of the enabled state of the application notification priority. |
+| [EnabledPriorityNotificationCallbackData](arkts-notification-notificationsubscribe-enabledprioritynotificationcallbackdata-t-sys.md) | Returns the changes of the enabled state of the notification priority. |
+| [EnabledSilentReminderCallbackData](arkts-notification-notificationsubscribe-enabledsilentremindercallbackdata-t-sys.md) | Returns the changes of the [silent reminder](../../../notification/notification-glossary.md#silent-reminder) switch state of application notifications. |
+| [EnabledSilentReminderChangedCallback](arkts-notification-notificationsubscribe-enabledsilentreminderchangedcallback-t-sys.md) | Triggered for registering the [silent reminder](../../../notification/notification-glossary.md#silent-reminder) enabled state change of application notifications. |
+| [NotificationClassification](arkts-notification-notificationsubscribe-notificationclassification-t-sys.md) | Returns the notification classification information. |
+| [NotificationSubscribeInfo](arkts-notification-notificationsubscribe-notificationsubscribeinfo-t-sys.md) | The **NotificationSubscribeInfo** module provides APIs for defining the information about the notification subscriber. |
 | [NotificationSubscriber](arkts-notification-notificationsubscribe-notificationsubscriber-t-sys.md) | Provides callback methods for subscribers to receive and cancel notifications. |
-| [NotificationSwitchChangedCallback](arkts-notification-notificationsubscribe-notificationswitchchangedcallback-t-sys.md) | Register the callback function type for notification switch state changes set by the interface of [notificationManager.setNotificationSwitch]{@link./@ohos.notificationManager:notificationManager.setNotificationSwitch}. |
-| [NotificationSwitchChangedCallbackData](arkts-notification-notificationsubscribe-notificationswitchchangedcallbackdata-t-sys.md) | Describes the notification switch state changes callback data. |
-| [SubscribeCallbackData](arkts-notification-notificationsubscribe-subscribecallbackdata-t-sys.md) | Provides methods that will be called back when the subscriber receives a new notification or a notification is canceled. |
-| [VoiceContent](arkts-notification-notificationsubscribe-voicecontent-t-sys.md) | Describes the properties of the voice content of the received notification. |
+| [NotificationSwitchChangedCallback](arkts-notification-notificationsubscribe-notificationswitchchangedcallback-t-sys.md) | Registers the callback for notification switch state changes set by the [notificationManager.setNotificationSwitch](arkts-notification-notificationmanager-setnotificationswitch-f-sys.md) API. |
+| [NotificationSwitchChangedCallbackData](arkts-notification-notificationsubscribe-notificationswitchchangedcallbackdata-t-sys.md) | Returns the changes of the notification switch state. |
+| [SubscribeCallbackData](arkts-notification-notificationsubscribe-subscribecallbackdata-t-sys.md) | Returns notification information carrying system property values. |
+| [VoiceContent](arkts-notification-notificationsubscribe-voicecontent-t-sys.md) | Returns the notification voice broadcast content. |
 | [VoiceContentOptions](arkts-notification-notificationsubscribe-voicecontentoptions-t-sys.md) | Describes the properties of the voice content options for notification subscription. |
 <!--DelEnd-->
 

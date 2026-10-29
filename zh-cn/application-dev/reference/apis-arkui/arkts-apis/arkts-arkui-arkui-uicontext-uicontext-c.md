@@ -1404,7 +1404,7 @@ getComponentSnapshot(): ComponentSnapshot
 
 **示例**
 
-完整示例请参考ComponentSnapshot中的示例。
+完整示例请参考[ComponentSnapshot](arkts-apis-uicontext-componentsnapshot.md)中的示例。
 
 ## getComponentUtils
 
@@ -1484,7 +1484,7 @@ Get object cursor controller.
 
 **示例**
 
-完整示例请参考CursorController中的示例。
+完整示例请参考[CursorController](arkts-apis-uicontext-cursorcontroller.md)中的示例。
 
 ## getDialogPresenter
 
@@ -1512,7 +1512,7 @@ getDialogPresenter(): DialogPresenter
 
 **示例**
 
-完整示例请参考DialogPresenter中的示例。
+完整示例请参考[DialogPresenter](arkts-apis-uicontext-dialogpresenter.md)中的示例。
 
 ## getDragController
 
@@ -1540,7 +1540,7 @@ Get DragController.
 
 **示例**
 
-完整示例请参考DragController中的示例。
+完整示例请参考[DragController](./arkts-apis-uicontext-dragcontroller.md)中的示例。
 
 ## getFilteredInspectorTree
 
@@ -1753,7 +1753,7 @@ getFocusController(): FocusController
 
 **示例**
 
-完整示例请参考FocusController中的示例。
+完整示例请参考[FocusController](arkts-apis-uicontext-focuscontroller.md)中的示例。
 
 ## getFont
 
@@ -1781,7 +1781,7 @@ getFont(): Font
 
 **示例**
 
-完整示例请参考Font中的示例。
+完整示例请参考[Font](arkts-apis-uicontext-font.md)中的示例。
 
 ## getFrameNodeById
 
@@ -1994,7 +1994,7 @@ getKeyboardAvoidMode(): KeyboardAvoidMode
 
 **示例**
 
-完整示例请参考示例4（设置键盘避让模式为压缩）、示例5（设置键盘避让模式为上抬）以及示例6（切换避让模式）。
+完整示例请参考[示例4（设置键盘避让模式为压缩）](../arkui-ts/ts-universal-attributes-expand-safe-area.md#示例4设置键盘避让模式为压缩)、[示例5（设置键盘避让模式为上抬）](../arkui-ts/ts-universal-attributes-expand-safe-area.md#示例5设置键盘避让模式为上抬)以及[示例6（切换避让模式）](../arkui-ts/ts-universal-attributes-expand-safe-area.md#示例6切换避让模式)。
 
 ```TypeScript
 // EntryAbility.ets
@@ -2148,7 +2148,7 @@ getMagnifier(): Magnifier
 
 **示例**
 
-参考Magnifier的bind接口示例。
+参考[Magnifier](arkts-apis-uicontext-magnifier.md)的bind接口示例。
 
 ## getMaxFontScale
 
@@ -2218,7 +2218,7 @@ getMeasureUtils(): MeasureUtils
 
 **示例**
 
-完整示例请参考MeasureUtils中的示例。
+完整示例请参考[MeasureUtils](arkts-apis-uicontext-measureutils.md)中的示例。
 
 ## getMediaQuery
 
@@ -2308,7 +2308,7 @@ Obtains the OverlayManager object.
 
 **示例**
 
-完整示例请参考OverlayManager中的示例。
+完整示例请参考[OverlayManager](arkts-apis-uicontext-overlaymanager.md)中的示例。
 
 ## getOverlayManagerOptions
 
@@ -2336,7 +2336,7 @@ Get object OverlayManagerOptions.
 
 **示例**
 
-完整示例请参考OverlayManager中的示例。
+完整示例请参考[OverlayManager](arkts-apis-uicontext-overlaymanager.md)中的示例。
 
 ## getPageInfoByUniqueId
 
@@ -2639,7 +2639,7 @@ get object PromptAction.
 
 **示例**
 
-完整示例请参考PromptAction中的示例。
+完整示例请参考[PromptAction](arkts-apis-uicontext-promptaction.md)中的示例。
 
 ## getRouter
 
@@ -2790,7 +2790,7 @@ getTextMenuController(): TextMenuController
 
 **示例**
 
-参考TextMenuController接口示例。
+参考[TextMenuController](arkts-apis-uicontext-textmenucontroller.md)接口示例。
 
 ## getUIInspector
 
@@ -2818,7 +2818,7 @@ getUIInspector(): UIInspector
 
 **示例**
 
-完整示例请参考UIInspector中的示例。
+完整示例请参考[UIInspector](./arkts-apis-uicontext-uiinspector.md)中的示例。
 
 ## getUIObserver
 
@@ -4409,7 +4409,7 @@ setKeyboardAvoidMode(value: KeyboardAvoidMode): void
 
 **示例**
 
-完整示例请参考示例4（设置键盘避让模式为压缩）、示例5（设置键盘避让模式为上抬）以及示例6（切换避让模式）。
+完整示例请参考[示例4（设置键盘避让模式为压缩）](../arkui-ts/ts-universal-attributes-expand-safe-area.md#示例4设置键盘避让模式为压缩)、[示例5（设置键盘避让模式为上抬）](../arkui-ts/ts-universal-attributes-expand-safe-area.md#示例5设置键盘避让模式为上抬)以及[示例6（切换避让模式）](../arkui-ts/ts-universal-attributes-expand-safe-area.md#示例6切换避让模式)。
 
 ```TypeScript
 // EntryAbility.ets
@@ -4458,7 +4458,7 @@ Init OverlayManager.
 
 **示例**
 
-完整示例请参考OverlayManager中的示例。
+完整示例请参考[OverlayManager](arkts-apis-uicontext-overlaymanager.md)中的示例。
 
 ## setPixelRoundMode
 

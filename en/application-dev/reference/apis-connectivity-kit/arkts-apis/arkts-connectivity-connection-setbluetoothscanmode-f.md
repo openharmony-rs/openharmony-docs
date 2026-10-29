@@ -29,7 +29,7 @@ Sets the Bluetooth scan mode for a device.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | mode | [ScanMode](arkts-connectivity-connection-scanmode-e.md) | Yes | Indicates the Bluetooth scan mode to set. |
-| duration | number | Yes | Indicates the duration in seconds, in which the host is discoverable. |
+| duration | number | Yes | Indicates the duration in milliseconds, in which the host is discoverable. |
 
 **Error codes:**
 

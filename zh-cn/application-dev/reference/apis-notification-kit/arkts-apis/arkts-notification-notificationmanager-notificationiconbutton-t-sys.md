@@ -4,7 +4,7 @@
 export type NotificationIconButton = _NotificationIconButton
 ```
 
-系统通知按钮。
+系统[通知按钮](../../../notification/notification-glossary.md#notification-button通知按钮)。
 
 **类型：** _NotificationIconButton
 

@@ -10,7 +10,7 @@ The APIs provided by **DataSharePredicates** correspond to the filter criteria o
 
 <!--Del-->
 
-- It is used as a search criterion when APIs of the [RDB store](../../../apis-arkdata/js-apis-data-relationalStore-sys.md) and [KV store](../../../apis-arkdata/js-apis-distributedKVStore-sys.md) are called. In this scenario, use the corresponding predicate based on the database type.
+- It is used as the search criteria when APIs of the [RDB store](../../../apis-arkdata/js-apis-data-relationalStore-sys.md) and [distributed KV store](../../../apis-arkdata/js-apis-distributedKVStore-sys.md) are called. In this scenario, use the corresponding predicate based on the database type.
 
 <!--DelEnd-->
 

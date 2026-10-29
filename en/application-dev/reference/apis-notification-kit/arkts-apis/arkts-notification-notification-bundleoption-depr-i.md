@@ -4,13 +4,13 @@
 export interface BundleOption
 ```
 
-Describes the **BundleOption** information, that is, the bundle information of an application.
+Describes the **BundleOption** information
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** BundleOption
+**Substitutes:** [BundleOption](arkts-notification-notificationmanager-bundleoption-t.md)
 
 <!--Device-notification-export interface BundleOption--><!--Device-notification-export interface BundleOption-End-->
 

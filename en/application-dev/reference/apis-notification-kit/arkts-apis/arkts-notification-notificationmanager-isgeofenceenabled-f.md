@@ -12,7 +12,7 @@ import { notificationManager } from '@kit.NotificationKit';
 function isGeofenceEnabled(): Promise<boolean>
 ```
 
-Checks whether geofencing is enabled. This API uses a promise to return the result.
+Checks whether the [geofence](../../../notification/notification-glossary.md#geofence) feature is enabled. This API uses a promise to return the result.
 
 **Since:** 23
 

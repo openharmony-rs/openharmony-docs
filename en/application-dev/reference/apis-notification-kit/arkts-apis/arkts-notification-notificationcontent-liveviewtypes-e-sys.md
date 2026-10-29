@@ -4,7 +4,7 @@
 export enum LiveViewTypes
 ```
 
-Enumerates live view types.
+Describes the type of the [live view notification](../../../notification/notification-glossary.md#live-view-notification).
 
 **Since:** 18
 

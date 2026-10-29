@@ -4,7 +4,7 @@
 export interface DoNotDisturbProfile
 ```
 
-Do Not Disturb profile.
+Defines the configuration information of the Do Not Disturb mode.
 
 **Since:** 12
 
@@ -26,7 +26,7 @@ import { notificationManager } from '@kit.NotificationKit';
 id: number
 ```
 
-ID of the Do Not Disturb profile.
+ID of the Do Not Disturb mode.
 
 **Type:** number
 
@@ -44,7 +44,7 @@ ID of the Do Not Disturb profile.
 name: string
 ```
 
-Name of the Do Not Disturb profile.
+Name of the Do Not Disturb mode. The string length cannot exceed 202 bytes, and the excess part will be truncated.
 
 **Type:** string
 
@@ -62,7 +62,7 @@ Name of the Do Not Disturb profile.
 trustlist?: Array<BundleOption>
 ```
 
-Trustlist in Do Not Disturb profile.
+Trustlist of Do Not Disturb mode.
 
 **Type:** Array&lt;[BundleOption](arkts-notification-notificationmanager-bundleoption-t.md)&gt;
 

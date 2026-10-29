@@ -29,8 +29,8 @@ function off(type: 'mission', listenerId: number, callback: AsyncCallback<void>)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'mission' | 是 | 取消监听的任务名称。固定值：'mission'，表示系统任务状态监听器。 |
-| listenerId | number | 是 | 系统任务状态监器法的index值，和监听器一一对应，由on方法返回。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 执行结果回调函数，返回任务ID数组。解注册任务状态监听器成功，err为undefined，否则为错误对象。 |
+| listenerId | number | 是 | 系统任务状态监听器的index值，和监听器一一对应，由on方法返回。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 执行结果回调函数。解注册任务状态监听器成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
