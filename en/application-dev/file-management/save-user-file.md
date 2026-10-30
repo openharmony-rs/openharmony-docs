@@ -5,7 +5,7 @@
 <!--Designer: @hwzhangchuang; @Dyylll-->
 <!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=76e1ad5e9c965c39b6c74d5b05e0ac9aadb3cb76 translatedAt=2026-08-26T04:35:54.256Z pushedAt=2026-08-28T07:13:37.443Z -->
+<!-- md-trans-meta sourceCommit=848910fc9d974b45cd8679b48dfc15d699dc80fc translatedAt=2026-10-29T10:30:53.850Z pushedAt=2026-10-29T10:30:53.850Z nl=1 -->
 
 When a user needs to download a file from the Internet or save a file to another directory, use **FilePicker** to save the file. Pay attention to the following key points:
 
@@ -43,8 +43,7 @@ If the security component cannot be called to save images and videos in your dev
 1. Import modules.
 
    ```ts
-   import { picker } from '@kit.CoreFileKit';
-   import { fileIo } from '@kit.CoreFileKit';
+   import { picker, fileIo } from '@kit.CoreFileKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    import { common } from '@kit.AbilityKit';
    ```
@@ -61,7 +60,7 @@ If the security component cannot be called to save images and videos in your dev
    // File type. The value is in ['Suffix type description|Suffix type'] format. To save all files, use 'All files (*.*)|.*' (optional). If multiple suffixes are selected (a maximum of 100 suffixes can be filtered), the first suffix is selected by default. If this parameter is not transferred, no suffix is filtered by default.
    documentSaveOptions.fileSuffixChoices = ['Document|.txt', '.pdf'];
    // When saving files, the application determines whether to pre-create empty files. The default value is true, where the Picker pre-creates empty files and returns an array of file URIs. When the value is set to false, no empty files are pre-created, and only an array of file URIs is returned.
-   documentSaveOptions.autoCreateEmptyFile = false; 
+   documentSaveOptions.autoCreateEmptyFile = false;
    ```
 
 3. Create a [DocumentViewPicker](../reference/apis-core-file-kit/js-apis-file-picker.md#documentviewpicker) instance, and call [save()](../reference/apis-core-file-kit/js-apis-file-picker.md#save) to open the FilePicker interface for file saving.
@@ -104,7 +103,7 @@ If the security component cannot be called to save images and videos in your dev
    ```ts
    let writeLen: number = fileIo.writeSync(file.fd, 'hello, world');
    console.info('write data to file succeed and size is:' + writeLen);
-   fileIo.closeSync(file);
+   fileIo.closeSync(file.fd);
    ```
 
 ## Saving Audio Clips
@@ -112,8 +111,7 @@ If the security component cannot be called to save images and videos in your dev
 1. Import modules.
 
    ```ts
-   import { picker } from '@kit.CoreFileKit';
-   import { fileIo } from '@kit.CoreFileKit';
+   import { picker, fileIo } from '@kit.CoreFileKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    import { common } from '@kit.AbilityKit';
    ```
@@ -166,7 +164,7 @@ If the security component cannot be called to save images and videos in your dev
    ```ts
    let writeLen = fileIo.writeSync(file.fd, 'hello, world');
    console.info('write data to file succeed and size is:' + writeLen);
-   fileIo.closeSync(file);
+   fileIo.closeSync(file.fd);
  
    ```
 
@@ -185,8 +183,7 @@ If the security component cannot be called to save images and videos in your dev
 1. Import modules.
 
    ```ts
-   import { fileUri, picker } from '@kit.CoreFileKit';
-   import { fileIo } from '@kit.CoreFileKit';
+   import { fileUri, picker, fileIo } from '@kit.CoreFileKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    import { common } from '@kit.AbilityKit';
    ```

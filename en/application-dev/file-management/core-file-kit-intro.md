@@ -1,11 +1,11 @@
 # About This Kit
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wangke25; @gsl_1234; @wuchengjun5-->
-<!--Designer: @gsl_1234; @wangke25-->
-<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Owner: @bao-yangyang; @maokelong95-->
+<!--Designer: @Hun_Dun-->
+<!--Tester: @zsyztt; @yue-ye2; @juxiaopang-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=4f18c57bcbc4988278ed782932d83b5e0aeec8ed translatedAt=2026-08-26T04:30:11.840Z pushedAt=2026-08-28T03:29:37.283Z -->
+<!-- md-trans-meta sourceCommit=44a3c65806e20e068193c79ace6f0c646ec3219b translatedAt=2026-10-29T10:30:53.775Z pushedAt=2026-10-29T10:30:53.775Z nl=1 -->
 
 Core File Kit provides capabilities for accessing and managing application files and user files. You can use the APIs provided by Core File Kit to manage, search for, and back up different types of files efficiently.
 
@@ -39,6 +39,8 @@ Core File Kit provides high-performance [compression and decompression capabilit
 
 - Buffer compression: Supports buffer data compression and decompression.
 
+Core File Kit provides the [cloud disk service foundation](clouddisk-overview.md) for folder synchronization with the cloud. It maps cloud files to local placeholder files and supports sync root management, file change listening and sync status management, placeholder file lifecycle management, and on-demand hydration and dehydration.
+
 ## When to Use
 
 You can use Core File Kit in any of the following scenarios:
@@ -62,6 +64,7 @@ You can use Core File Kit in any of the following scenarios:
 - Accessing and copying files across devices.
 - File and directory archive compression and decompression, as well as streaming and buffer data compression and decompression.
 <!--RP3--><!--RP3End-->
+- Allows cloud disk applications to create cloud-synced folders that map cloud files to local placeholder files, with sync root management, file change listening and sync status management, placeholder file lifecycle management, and on-demand hydration and dehydration.
 
 ## Features
 
@@ -73,11 +76,11 @@ You can use Core File Kit in any of the following scenarios:
 - Application share:
 
   Files can be shared between applications by uniform resource identifier (URI) or file descriptor (FD). The application share feature has the following advantages:
-  - Portability: Files can be easily shared between applications, without the need for the user to switch between different applications.
+  - Convenience: Sharing files between applications eliminates the need for users to switch between applications, simplifying operations and improving efficiency.
   - High efficiency: Files can be quickly transferred between applications, which reduces the time wasted on multiple redirections and waiting.
   - Data consistency: File share between applications ensures data integrity and consistency, preventing data corruption or loss during transmission.
   - Security: File share between applications prevents files from being illegally obtained or tampered with. In addition, authorized file access further enhances file security.
-
+  
   <!--RP4--><!--RP4End-->
 
 ## Working Principles
@@ -106,7 +109,11 @@ You can use the user file access framework to access and manage user files. This
     - **UserFileManager**: implements management of the files on the built-in storage based on the File Access ExtensionAbility framework.
     - **ExternalFileManager**: implements management of the files on the external storage based on the File Access ExtensionAbility framework.
 
-## Related Kits
+<!--RP6--><!--RP6End-->
+
+<!--RP5--><!--RP5End-->
+
+## Relationship with Related Kits
 
 Ability Kit: The user file access framework of Core File Kit depends on the Extension capability provided by Ability Kit and is scheduled and managed by Ability Kit.
 
@@ -115,5 +122,3 @@ Ability Kit: The user file access framework of Core File Kit depends on the Exte
 For Core File Kit development, the following sample is available:
 
 - [FileManager (ArkTS) (Full SDK) (API10)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SystemFeature/FileManagement/FileManager)
-
-<!--RP5--><!--RP5End-->

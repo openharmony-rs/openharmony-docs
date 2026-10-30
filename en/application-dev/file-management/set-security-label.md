@@ -1,11 +1,11 @@
 # Setting the Security Level of a Distributed File
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wangke25; @gsl_1234; @wuchengjun5-->
-<!--Designer: @gsl_1234; @wangke25-->
-<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Owner: @bao-yangyang; @maokelong95-->
+<!--Designer: @Hun_Dun-->
+<!--Tester: @zsyztt; @yue-ye2; @juxiaopang-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=96b6842378a3034d6245f6b77a19ff25d0ceba9c translatedAt=2026-08-26T04:37:40.996Z pushedAt=2026-08-28T07:17:48.118Z -->
+<!-- md-trans-meta sourceCommit=983ba0100f5f5d011705e0e23088346963f80eee translatedAt=2026-10-29T10:30:53.866Z pushedAt=2026-10-29T10:30:53.866Z nl=1 -->
 
 The security capabilities vary with devices. For example, small embedded devices provide fewer security capabilities than tablets. The security requirements also vary with data. For example, personal health information and bank card information are not expected to be accessed by devices of lower security levels. OpenHarmony provides a complete set of data and device classification standards and supports customization of data transfer policies for different devices. For details, see [Access Control by Device and Data Level](../database/access-control-by-device-and-data-level.md).
 
@@ -13,18 +13,18 @@ The security capabilities vary with devices. For example, small embedded devices
 
 For details about APIs, see [ohos.file.securityLabel](../reference/apis-core-file-kit/js-apis-file-securityLabel.md).
 
-Table 1 Security level APIs
+**Table 1** File security label APIs. A check mark (√) indicates support.
 
-| API| Description| Category| Synchronous Programming| Asynchronous Programming|
+| Name | Description| Category| Synchronous Programming| Asynchronous Programming|
 | -------- | -------- | -------- | -------- | -------- |
-| setSecurityLabel | Sets a security level for a file.| Method| Supported| Supported|
-| getSecurityLabel | Obtains the security level of a file.| Method| Supported| Supported|
+| setSecurityLabel | Sets a security level for a file.| Method| √ | √ |
+| getSecurityLabel | Obtains the security level of a file.| Method| √ | √ |
 
 > **NOTE**
 >
-> - In distributed networking, a device can view the files that have a higher security level but cannot access them.
+> 1. A device can still see files whose security level does not meet its access requirements, but it cannot open or access them.
 >
-> - The default security level of the distributed file system data is S3. Applications can set the security level of files.
+> 2. The default data security level of the distributed file system is S3. Applications can set file security levels.
 
 ## Development Example
 
@@ -41,7 +41,7 @@ import { fileIo } from '@kit.CoreFileKit';
 <!--@[set_security_label](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileApiFileSample/entry/src/main/ets/pages/Index.ets)-->    
 
 ``` TypeScript
-// Obtain the sandbox path of the file where the device data level is to be obtained. Ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
+// Obtain the sandbox path of the file whose data security level is to be set. Obtain context in the component and ensure that this.getUIContext().getHostContext() returns UIAbilityContext.
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 let pathDir = context.filesDir;
 let filePath = pathDir + '/test.txt';
