@@ -2886,8 +2886,6 @@ deviceEnhanceManager.getSoundCardInfo().then((soundCardInfo: audio.SoundCardInfo
 });
 ```
 
-
-
 ## AudioSuiteFeatureType
 
 枚举，音频编创特性类型。
