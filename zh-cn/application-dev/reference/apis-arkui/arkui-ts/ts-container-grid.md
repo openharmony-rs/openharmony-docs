@@ -715,13 +715,14 @@ enableEditMode(enabled: boolean | undefined)
 
 scrollSnapStrategy(strategy?: ScrollSnapAlign | ScrollSnapOffsetProvider)
 
-设置Grid的限位滚动策略，使Grid在滚动结束时按指定方式对齐item，或停在自定义的吸附位置。使用方法参考[示例23](#示例23设置滚动吸附对齐)。
+设置Grid的限位滚动策略，使Grid在滚动结束时按指定方式对齐item，或停在自定义的吸附位置。内置对齐方式参考[示例23](#示例23设置滚动吸附对齐)，自定义吸附位置参考[示例24](#示例24自定义滚动吸附位置)。
 
-包含跨行或跨列（不规则）GridItem的布局不支持本接口。
+包含跨列（不规则）GridItem的布局不支持本接口。
 
 > **说明：**
 >
-> 最终吸附位置始终在合法滚动范围内。
+> - 最终吸附位置始终在合法滚动范围内。
+> - 启用限位滚动后，拖拽或鼠标框选操作结束时也会触发限位滚动。
 
 **起始版本：** 26.1.0
 
@@ -3681,3 +3682,85 @@ struct GridSnapExample {
 ```
 
 ![scrollSnapStrategy-grid](figures/scrollSnapStrategy-grid.gif)
+
+### 示例24（自定义滚动吸附位置）
+
+本示例通过实现[ScrollSnapOffsetProvider](ts-container-scrollable-common.md#scrollsnapoffsetprovider)接口，自定义Grid的吸附位置。每两行（240vp）一组，抛滑后沿原方向吸附。
+
+从API版本26.1.0开始，新增ScrollSnapOffsetProvider接口。
+
+```ts
+// xxx.ets
+const ITEM_HEIGHT: number = 100;
+const ROW_GAP: number = 20;
+const SNAP_INTERVAL: number = 2 * (ITEM_HEIGHT + ROW_GAP);
+
+class GridSnapProvider implements ScrollSnapOffsetProvider {
+  private scroller: Scroller;
+
+  constructor(scroller: Scroller) {
+    this.scroller = scroller;
+  }
+
+  calculateApproachOffset(velocity: number, decayOffset: number): number {
+    // 返回距离大小，滚动方向由组件根据速度处理。
+    return velocity === 0 ? 0 : Math.min(decayOffset, SNAP_INTERVAL);
+  }
+
+  calculateSnapOffset(velocity: number): number {
+    const offset = this.scroller.currentOffset().yOffset;
+    const group = offset / SNAP_INTERVAL;
+    let targetGroup = Math.round(group);
+    if (velocity > 0) {
+      targetGroup = Math.ceil(group);
+    } else if (velocity < 0) {
+      targetGroup = Math.floor(group);
+    }
+    return Math.max(0, targetGroup * SNAP_INTERVAL);
+  }
+}
+
+@Entry
+@Component
+struct GridSnapProviderExample {
+  private scroller: Scroller = new Scroller();
+  private provider: ScrollSnapOffsetProvider = new GridSnapProvider(this.scroller);
+  private numbers: number[] = [];
+
+  aboutToAppear(): void {
+    for (let index = 0; index < 40; index++) {
+      this.numbers.push(index);
+    }
+  }
+
+  build() {
+    Column({ space: 8 }) {
+      Text('Grid').fontColor(0x000000).fontSize(16)
+      Grid(this.scroller) {
+        ForEach(this.numbers, (item: number) => {
+          GridItem() {
+            Text(item.toString())
+              .fontSize(20)
+              .width('100%')
+              .height('100%')
+              .textAlign(TextAlign.Center)
+          }
+          .height(ITEM_HEIGHT)
+          .backgroundColor(0xF9CF93)
+        }, (item: number) => item.toString())
+      }
+      .columnsTemplate('1fr 1fr')
+      .columnsGap(10)
+      .rowsGap(ROW_GAP)
+      .width('100%')
+      .height(400)
+      .backgroundColor(0xFAEEE0)
+      .scrollSnapStrategy(this.provider)
+    }
+    .width('100%')
+    .padding(16)
+  }
+}
+```
+
+![scrollSnapStrategy-provider-grid](figures/scrollSnapStrategy-provider-grid.gif)
