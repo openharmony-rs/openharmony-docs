@@ -39,6 +39,12 @@
 
    <!-- @[certificate_management_development_guidance_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateManagement/entry/src/main/ets/samples/CertManagerPrivateCredSample.ets) -->
    
+   ``` TypeScript
+   import { certificateManager } from '@kit.DeviceCertificateKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { util } from '@kit.ArkTS';
+   ```
+   
 3. 安装应用证书凭据。
 
    您的应用在接收到应用服务器颁发的证书凭据后，通常打包为密钥库文件（KeyStore文件），可调用installPrivateCertificate接口把证书凭据安装到证书管理服务，安装接口返回KeyUri用于后续的证书凭据查询和签名操作。
