@@ -321,12 +321,12 @@ function sendMessageToNative() {
    
    ``` TypeScript
    import { dataShare } from '@kit.ArkData';
-
+   
    interface ExtensionConfig {
      abilityName:string;
      allowed_origins:string[];
    }
-
+   
    async function getManifestData(bundleName:string, connectExtensionOrigin:string) {
      try {
       // 调用dataShare接口获取extension配置
