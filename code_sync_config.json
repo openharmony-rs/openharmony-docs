@@ -69123,7 +69123,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/CustomDialogAfterMigrate.ets",
 				"functions":[
 					{
-						"end_line":118,
+						"end_line":107,
 						"name":"custom_dialog_after_migrate",
 						"start_line":16
 					}
