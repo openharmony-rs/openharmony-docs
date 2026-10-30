@@ -18,13 +18,13 @@ import { backgroundLoader } from '@kit.BackgroundTasksKit';
 ```
 ## 常量
 
-本模块提供的常量用于标识后台加载后台加载任务的回调方法类型，应用通过这些常量将回调方法注册给系统
+本模块提供的常量用于标识后台加载后台加载任务的回调方法类型，应用通过这些常量将回调方法注册给系统。
 
 **起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**系统能力：**SystemCapability.ResourceSchedule.WorkScheduler
+**系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
 
 **系统接口：** 此接口为系统接口。
 
@@ -41,9 +41,9 @@ registerTask(taskInfo: TaskInfo): void
 
 **起始版本：**  26.1.0
 
-**需要权限：**ohos.permission.KEEP_BACKGROUND_RUNNING
+**需要权限：** ohos.permission.KEEP_BACKGROUND_RUNNING
 
-**系统能力：**SystemCapability.ResourceSchedule.WorkScheduler
+**系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -98,9 +98,9 @@ unregisterTask(taskInfo: TaskInfo): void
 
 **起始版本：**  26.1.0
 
-**需要权限：**ohos.permission.KEEP_BACKGROUND_RUNNING
+**需要权限：** ohos.permission.KEEP_BACKGROUND_RUNNING
 
-**系统能力：**SystemCapability.ResourceSchedule.WorkScheduler
+**系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -153,9 +153,9 @@ getTaskInfo(taskId: number): Promise\<TaskInfo>
 
 **起始版本：**  26.1.0
 
-**需要权限：**ohos.permission.KEEP_BACKGROUND_RUNNING
+**需要权限：** ohos.permission.KEEP_BACKGROUND_RUNNING
 
-**系统能力：**SystemCapability.ResourceSchedule.WorkScheduler
+**系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -203,11 +203,11 @@ finishTask(taskInfo: TaskInfo): void
 
 **起始版本：**  26.1.0
 
-**超时时间限制：**应用需要确保后台加载任务在30秒内执行完成。 如果应用在执行后台加载任务时累计超时次数达到系统阈值，系统将禁用后续的后台加载任务调度。
+**超时时间限制：** 应用需要确保后台加载任务在30秒内执行完成。 如果应用在执行后台加载任务时累计超时次数达到系统阈值，系统将禁用后续的后台加载任务调度。
 
-**需要权限：**ohos.permission.KEEP_BACKGROUND_RUNNING
+**需要权限：** ohos.permission.KEEP_BACKGROUND_RUNNING
 
-**系统能力：**SystemCapability.ResourceSchedule.WorkScheduler
+**系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -302,7 +302,7 @@ finishTask(taskInfo: TaskInfo): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**系统能力：**SystemCapability.ResourceSchedule.WorkScheduler
+**系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
 
 | 名称             | 类型                                | 只读   | 可选   | 说明               |
 | --------------- | --------------------------------- | ---- | ---- | ---------------- |
@@ -318,7 +318,7 @@ finishTask(taskInfo: TaskInfo): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**系统能力：**SystemCapability.ResourceSchedule.WorkScheduler
+**系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
 
 | 名称             | 类型                                | 只读   | 可选   | 说明               |
 | --------------- | --------------------------------- | ---- | ---- | ---------------- |
@@ -335,7 +335,7 @@ finishTask(taskInfo: TaskInfo): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**系统能力：**SystemCapability.ResourceSchedule.WorkScheduler
+**系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
 
 | 名称                     | 值  | 说明                      |
 | ---------------------- | ---- | ----------------------- |
