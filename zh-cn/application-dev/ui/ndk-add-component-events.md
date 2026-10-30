@@ -373,21 +373,21 @@ nodeAPI->unregisterNodeEventReceiver();
        }
    
    protected:
-      // 处理List相关事件。
-      void OnNodeEvent(ArkUI_NodeEvent *event) override
-      {
-          auto eventType = OH_ArkUI_NodeEvent_GetEventType(event);
-          switch (eventType) {
-              case NODE_LIST_ON_SCROLL_INDEX: {
-                  auto index = OH_ArkUI_NodeEvent_GetNodeComponentEvent(event)->data[0];
-                  if (onScrollIndex_) {
-                      onScrollIndex_(index.i32);
-                  }
-              }
-              default: {
-              }
-          }
-      }
+       // 处理List相关事件。
+       void OnNodeEvent(ArkUI_NodeEvent *event) override
+       {
+           auto eventType = OH_ArkUI_NodeEvent_GetEventType(event);
+           switch (eventType) {
+               case NODE_LIST_ON_SCROLL_INDEX: {
+                   auto index = OH_ArkUI_NodeEvent_GetNodeComponentEvent(event)->data[0];
+                   if (onScrollIndex_) {
+                       onScrollIndex_(index.i32);
+                   }
+               }
+               default: {
+               }
+           }
+       }
    
    private:
        std::function<void(int32_t index)> onScrollIndex_;
