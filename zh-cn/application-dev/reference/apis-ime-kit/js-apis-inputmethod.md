@@ -1480,7 +1480,7 @@ requestSystemInputCapability(type: InputCapabilityType): Promise&lt;void&gt;
 | -------- | -------------------------------------- |
 | 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
 | 12800010 | current ime is not the default ime. |
-| 12800029 | the input type is not supported. |
+| 12800027 | the input type is not supported. |
 
 **示例：**
 
