@@ -215,9 +215,9 @@ SoundPool当前支持播放解码后1MB以下的音频资源，解码后大小�
    <!-- @[SoundPool_Release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
-    // 释放SoundPool。
-    await this.soundPool!.release();
-    ```
+   // 释放SoundPool。
+   await this.soundPool!.release();
+   ```
 
 ## 运行示例工程
 
