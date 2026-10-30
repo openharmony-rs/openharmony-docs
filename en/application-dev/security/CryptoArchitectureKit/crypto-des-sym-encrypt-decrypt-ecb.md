@@ -1,4 +1,4 @@
-# Encryption and Decryption with the DES Symmetric Key (ArkTS)
+# Encryption and Decryption with a DES Symmetric Key (ArkTS)
 
 <!--Kit: Crypto Architecture Kit-->
 <!--Subsystem: Security-->

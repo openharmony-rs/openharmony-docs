@@ -1,4 +1,4 @@
-# RSA Asymmetric Key Encryption and Decryption (C/C++)
+# Encryption and Decryption with an RSA Asymmetric Key Pair (C/C++)
 
 <!--Kit: Crypto Architecture Kit-->
 <!--Subsystem: Security-->

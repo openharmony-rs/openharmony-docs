@@ -1,4 +1,4 @@
-# Converting SM2 Ciphertext (C/C++)
+# SM2 Ciphertext Format Conversion (C/C++)
 
 <!--Kit: Crypto Architecture Kit-->
 <!--Subsystem: Security-->

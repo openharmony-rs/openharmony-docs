@@ -1,4 +1,4 @@
-# RSA Asymmetric Key Encryption and Decryption (ArkTS)
+# Encryption and Decryption with an RSA Asymmetric Key Pair (ArkTS)
 
 <!--Kit: Crypto Architecture Kit-->
 <!--Subsystem: Security-->

@@ -6,6 +6,7 @@
 <!--Designer: @linshuqing; @hehehe-li-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=85e783728a95eed12292a72918842dfb2bf0bbc4 translatedAt=2026-10-30T08:56:46.445Z pushedAt=2026-10-31T00:40:12.188Z nl=1 -->
 
 All the permissions in this topic are available to all applications and granted by the user.
 
@@ -226,11 +227,11 @@ With this permission, the application can perform operations such as taking scre
 
 **Authorization mode**: user_grant
 
-**Supported devices**: PCs/2-in-1 devices | tablets | phones
+**Supported devices**: PC/2in1 | Tablet | Phone | TV | Car | Wearable
 
 **Valid since**: 14
 
-**Changelog**: This permission is available only on tablets and PCs/2-in-1 devices from API versions 14 to 20. Since API version 21, this permission is also available on phones.
+**Changelog**: From API 14 to API 20, this permission can be applied for only on tablets and PC/2in1 devices. Since API 21, applying for it on phones is also supported. Since API 26.0.1, applying for it on TV, Car, and Wearable devices is also supported.
 
 ## ohos.permission.READ_MEDIA
 

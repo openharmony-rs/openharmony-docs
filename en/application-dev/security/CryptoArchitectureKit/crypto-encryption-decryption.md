@@ -1,4 +1,4 @@
-# Encryption/Decryption
+# Encryption and Decryption
 
 <!--Kit: Crypto Architecture Kit-->
 <!--Subsystem: Security-->
@@ -234,7 +234,7 @@ RC4 encryption/decryption is currently supported through a string parameter, whi
 
 ### Blowfish (BF)
 
-Starting from API version 26.0.0, the cipher algorithm [Blowfish](crypto-key-generation-conversion.md#blowfishbf) is supported. It is a block cipher algorithm with a block length of 8 bytes and a key length ranging from 32 to 448 bits, which must be a multiple of 8.
+Starting from API version 26.0.0, the cipher algorithm [Blowfish](crypto-key-generation-conversion.md#blowfish-bf) is supported. It is a block cipher algorithm with a block length of 8 bytes and a key length ranging from 32 to 448 bits, which must be a multiple of 8.
 
 > **NOTE**
 >

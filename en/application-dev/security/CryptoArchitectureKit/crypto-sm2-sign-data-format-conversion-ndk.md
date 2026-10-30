@@ -1,4 +1,4 @@
-# Converting SM2 Signature Formats (C/C++)
+# SM2 Signature Data Format Conversion (C/C++)
 
 <!--Kit: Crypto Architecture Kit-->
 <!--Subsystem: Security-->

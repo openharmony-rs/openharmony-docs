@@ -189,7 +189,7 @@ In information browsing applications (such as news, forums, and novel reading ap
 
 ## Enabling Immersive Lighting for the Content Area Title Bar
 
-Immersive lighting is currently subject to certain constraints. For details, see [Power Consumption Optimization for Immersive Immersive Lighting](./arkts-immersive-light-sense-constraints.md). In scenarios where the content area scrolls and contains multiple levels of titles, when a content area title scrolls to the title bar area, you can embed the corresponding content into the title bar for display, so that the content area title is shown in the NavDestination title bar area, thereby improving the user interaction experience.
+Immersive lighting is currently subject to certain constraints. For details, see [Power Consumption Optimization for Immersive Lighting](./arkts-immersive-light-sense-constraints.md). In scenarios where the content area scrolls and contains multiple levels of titles, when a content area title scrolls to the title bar area, you can embed the corresponding content into the title bar for display, so that the content area title is shown in the NavDestination title bar area, thereby improving the user interaction experience.
 
 1. Extract the subtitles in the content area as independent components.
    <!-- @[classify_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImmersiveLightSense/entry/src/main/ets/pages/immersiveLightSense/Utils.ets) -->

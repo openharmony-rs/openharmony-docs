@@ -1,4 +1,4 @@
-# AES Symmetric Key Encryption and Decryption (ArkTS)
+# Encryption and Decryption with an AES Symmetric Key (ArkTS)
 
 <!--Kit: Crypto Architecture Kit-->
 <!--Subsystem: Security-->

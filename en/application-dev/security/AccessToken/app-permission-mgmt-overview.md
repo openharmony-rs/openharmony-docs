@@ -6,6 +6,7 @@
 <!--Designer: @linshuqing; @hehehe-li-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=244b73a9a8a0e579b95f4bb551db5e3cd310c40d translatedAt=2026-10-30T08:55:55.398Z pushedAt=2026-10-30T11:51:30.570Z nl=1 -->
 
 ## Introduction
 
@@ -30,6 +31,8 @@ Determine the permissions required by your application based on the use cases of
 - Sensitive permissions must be dynamically requested before the related service feature is provided.
 
 - If a user refuses to grant a permission, other service features irrelevant to this permission can be used normally.
+
+- When a user proactively revokes a permission, if the permission status changes from "granted" to "denied", the system usually terminates the corresponding application process. In scenarios where the system proactively reclaims a permission (for example, the one-time authorization of a security control, which is automatically reclaimed by the system after the authorization period ends), the permission status also changes, but the application process is not terminated as a result.
 
 ## Authorization Mode
 
@@ -57,7 +60,7 @@ This type of permissions must be declared in the application installation packag
 
 ## Permission Groups and Permissions
 
-A permission group consists of user_grant permissions that are logically related to reduce the number of permission pop-up windows.
+A permission group consists of user_grant permissions that are logically related to reduce the number of permission dialogs.
 
 It helps minimize the number of dialogs that are presented to the user when an application requests closely related permissions. A permission in a permission group is called a sub-permission of the group.
 
@@ -89,7 +92,7 @@ The relationship between a permission group and its permissions is not fixed. Fo
 
 - Permission APL
 
-  Permissions are granted to applications based on the application APL. The permission APLs are also classified into three levels in ascending order of seniority. 
+  Permissions are granted to applications based on the application APL. The permission APLs are also classified into three levels in ascending order of seniority.
 
   | APL| Description| Available To|
   | -------- | -------- | -------- |
@@ -101,9 +104,9 @@ The relationship between a permission group and its permissions is not fixed. Fo
 
   Permission APLs and application APLs are in one-to-one correspondence. In principle, an application with a lower APL cannot apply for higher-level permissions by default. However, you can use the Access Control List (ACL) to enable an application to have permissions beyond its APL.
 
-  The **Certificate-based authorization** field is defined for all system permissions. When this field is set to **TRUE**, applications can request permissions across levels in ACL mode. For details about the definition of a permission, see [Restricted Permissions](restricted-permissions.md)<!--Del-->, [system_grant Permissions Available for System Applications via ACL](permissions-for-system-apps.md), and [user_grant Permissions for System Applications](permissions-for-system-apps-user.md)<!--DelEnd-->.
+  The **Enable via ACL** field is defined for all system permissions. When this field is set to **TRUE**, applications can request permissions across levels in ACL mode. For the specific permission definitions, see [Restricted Open Permissions](restricted-permissions.md)<!--Del-->, [Permissions Available to System Applications (System Authorization)](permissions-for-system-apps.md), and [Permissions Available to System Applications (User Authorization)](permissions-for-system-apps-user.md)<!--DelEnd-->.
 
-  For example, to implement a special feature, application A with the normal APL requires permission P, whose APL is system_basic. If **Certificate-based authorization** is **TRUE** for permission P, application A can request permission P via the ACL.
+  Example: You are developing application A with the normal APL level. Due to a functional requirement, application A needs to request permission P, whose APL level is system_basic, across levels. When **Enable via ACL** is **TRUE** for permission P, application A can request permission P across levels in ACL mode.
 
 - Permission type with data
 

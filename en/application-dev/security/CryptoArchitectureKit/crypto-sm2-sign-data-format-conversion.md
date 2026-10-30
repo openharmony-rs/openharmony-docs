@@ -1,4 +1,4 @@
-# Converting SM2 Signature Formats (ArkTS)
+# SM2 Signature Data Format Conversion (ArkTS)
 
 <!--Kit: Crypto Architecture Kit-->
 <!--Subsystem: Security-->

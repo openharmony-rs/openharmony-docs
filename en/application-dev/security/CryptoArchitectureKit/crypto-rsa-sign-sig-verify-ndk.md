@@ -1,4 +1,4 @@
-# Signature Signing and Verification with an RSA Key Pair (C/C++)
+# Signing and Signature Verification with an RSA Key Pair (C/C++)
 
 <!--Kit: Crypto Architecture Kit-->
 <!--Subsystem: Security-->

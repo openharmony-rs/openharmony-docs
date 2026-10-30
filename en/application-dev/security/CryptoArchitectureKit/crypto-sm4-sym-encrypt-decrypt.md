@@ -1,4 +1,4 @@
-# SM4 Symmetric Key Encryption and Decryption (ArkTS)
+# Encryption and Decryption with an SM4 Symmetric Key (ArkTS)
 
 <!--Kit: Crypto Architecture Kit-->
 <!--Subsystem: Security-->
