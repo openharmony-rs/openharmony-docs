@@ -49,6 +49,14 @@
 
    调用openInstallCertificateDialog接口可拉起系统证书凭据安装的对话框（certType参数设置为CREDENTIAL_SYSTEM），安装页面需要用户输入正确的密钥库文件密码。
 
+   > **说明：**
+   >
+   > 系统证书凭据功能当前仅支持RSA、ECC及SM2算法类型的证书和私钥。
+   >
+   > openInstallCertificateDialog接口当前只支持P12格式的密钥库文件。
+
+## 样例代码
+
 <!-- @[certificate_management_system_cred_guidance](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Security/DeviceCertificateKit/CertificateManagement/entry/src/main/ets/samples/CertManagerSystemCredSample.ets)  -->
 
 ``` TypeScript
@@ -87,11 +95,3 @@ function systemCredSample(): void {
   return;
 }
 ```
-   >
-   > 系统证书凭据功能当前仅支持RSA、ECC及SM2算法类型的证书和私钥。
-   >
-   > openInstallCertificateDialog接口当前只支持P12格式的密钥库文件。
-
-## 样例代码
-
-<!-- @[certificate_management_system_cred_guidance](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Security/DeviceCertificateKit/CertificateManagement/entry/src/main/ets/samples/CertManagerSystemCredSample.ets)  -->
