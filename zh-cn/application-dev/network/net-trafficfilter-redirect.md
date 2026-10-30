@@ -403,7 +403,7 @@ static napi_value CreateQueryResponseNapi(
             "QueryProcessNapi - Process found: pid=%{public}u, uid=%{public}u",
             processInfo.pid, processInfo.uid);
     } else if (ret == OH_TRAFFICFILTER_ERROR_NOT_FOUND) {
-        OH_LOG_INFO(LOG_APP, "QueryProcessNapi - Process not found");
+        OH_LOG_ERROR(LOG_APP, "QueryProcessNapi - Process not found");
     } else if (ret == OH_TRAFFICFILTER_ERROR_INVALID_PARAM) {
         OH_LOG_ERROR(LOG_APP, "QueryProcessNapi - Invalid parameters");
     } else {

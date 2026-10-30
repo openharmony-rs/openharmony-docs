@@ -1,3 +1,10 @@
+---
+kits: ["Drm Kit / 数字版权保护服务", "Media Kit / 媒体服务"]
+description: "介绍如何结合DRM Kit与Media Kit的ArkTS接口，通过AVPlayer实现DRM加密节目的播放，适用于应用层播放版权保护音视频内容的场景。"
+keywords: [DRM, AVPlayer, ArkTS, DRM节目播放, 媒体密钥, mediaKeySystemInfoUpdate, MediaKeySession, 节目解密]
+doctype: guide
+status: active
+---
 # 基于AVPlayer播放DRM节目(ArkTS)
 
 <!--Kit: Drm Kit-->
@@ -62,13 +69,13 @@
          mediaKeySystem = drm.createMediaKeySystem(solutionName);
          mediaKeySession = mediaKeySystem.createMediaKeySession();
      }
-     // 媒体密钥请求与处理。
    }
    ```
 
 5. 调用[generateMediaKeyRequest](../../reference/apis-drm-kit/arkts-apis-drm-MediaKeySession.md#generatemediakeyrequest)生成媒体密钥请求，并调用[processMediaKeyResponse](../../reference/apis-drm-kit/arkts-apis-drm-MediaKeySession.md#processmediakeyresponse)处理媒体密钥响应。
 
    ```ts
+   // 媒体密钥请求与处理。
    let initData: Uint8Array = new Uint8Array(drmInfoArr[i].pssh);
    const optionsData: drm.OptionsData[] = [{
      name: "optionalDataName",
@@ -81,10 +88,10 @@
      mediaKeySession.processMediaKeyResponse(licenseResponse).then((mediaKeyId: Uint8Array) => {
        console.info("processMediaKeyResponse success");
      }).catch((err:BusinessError) =>{
-       console.error("processMediaKeyResponse err end", err.code);
+       console.error("processMediaKeyResponse failed", err.code);
      });
    }).catch((err:BusinessError) =>{
-     console.error("generateMediaKeyRequest err end", err.code);
+     console.error("generateMediaKeyRequest failed", err.code);
    });
    ```
 

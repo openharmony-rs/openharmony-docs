@@ -399,6 +399,8 @@ requestPermissionsFromUser(context: Context, permissionList: Array&lt;Permission
 
 **系统能力：** SystemCapability.Security.AccessToken
 
+<!--RP6--><!--RP6End-->
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -460,6 +462,8 @@ requestPermissionsFromUser(context: Context, permissionList: Array&lt;Permission
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Security.AccessToken
+
+<!--RP6--><!--RP6End-->
 
 **参数：**
 
@@ -530,6 +534,8 @@ requestPermissionOnSetting(context: Context, permissionList: Array&lt;Permission
 
 **系统能力：** SystemCapability.Security.AccessToken
 
+<!--RP6--><!--RP6End-->
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -595,6 +601,8 @@ requestGlobalSwitch(context: Context, type: SwitchType): Promise&lt;boolean&gt;
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Security.AccessToken
+
+<!--RP6--><!--RP6End-->
 
 **参数：**
 
@@ -755,6 +763,8 @@ openPermissionOnSetting(context: Context, permission: Permissions): Promise&lt;S
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Security.AccessToken
+
+<!--RP6--><!--RP6End-->
 
 **参数：**
 

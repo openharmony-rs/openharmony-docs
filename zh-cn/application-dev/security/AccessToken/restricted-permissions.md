@@ -1777,3 +1777,17 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 **支持设备**：PC/2in1
 
 **起始版本**：26.1.0
+
+## ohos.permission.ACCESS_BOARD_INFO
+ 
+允许应用获取设备硬件信息。
+
+<!--RP118--><!--RP118End-->
+ 
+**权限级别**：system_basic
+ 
+**授权方式**：系统授权（system_grant）
+ 
+**支持设备**：PC/2in1
+ 
+**起始版本**：26.0.1

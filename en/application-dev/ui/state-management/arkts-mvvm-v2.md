@@ -5,6 +5,7 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=b4c16a3481f0a0bf24de133bf760018019cda10c translatedAt=2026-10-28T04:00:17.425Z pushedAt=2026-10-28T07:52:20.787Z nl=1 -->
 
 ## Overview
 
@@ -16,7 +17,7 @@ During application development, UI updates need to be synchronized in real time 
 
 ## Implementing ViewModel Through V2
 
-In the MVVM mode, ViewModel manages data state and automatically updates views when data changes. The state management of V2 (referred to as V2) in ArkUI provides various decorators and tools to help you share data between custom components and ensure that data changes are automatically synchronized to the UI. Common state management decorators include [\@Local](./arkts-new-local.md), [\@Param](./arkts-new-param.md), [\@Event](./arkts-new-event.md), [\@ObservedV2](./arkts-new-observedV2-and-trace.md), and [\@Trace](./arkts-new-observedV2-and-trace.md). In addition, V2 provides [AppStorageV2](./arkts-new-appstoragev2.md) and [PersistenceV2](./arkts-new-persistencev2.md) as global state storage tools, it is used for status sharing and persistent storage between applications.
+In the MVVM pattern, the ViewModel is responsible for managing data state and automatically updating the view when data changes. The V2 version of ArkUI state management provides a rich set of decorators and tools that help developers share data between custom components and ensure data changes are automatically synchronized to the UI. Commonly used state management decorators include [\@Local](./arkts-new-local.md), [\@Param](./arkts-new-param.md), [\@Event](./arkts-new-event.md), [\@ObservedV2, \@Trace](./arkts-new-observedV2-and-trace.md), and so on. In addition, V2 provides [AppStorageV2](./arkts-new-appstoragev2.md) and [PersistenceV2](./arkts-new-persistencev2.md) as global state storage tools for in-app state sharing and persistent storage.
 
 This section uses a simple to-do list as an example to introduce the decorators and tools of V2 and gradually extend functions based on a basic static to-do list. With step-by-step extension, you can gradually understand and grasp the usage of each decorator.
 
@@ -209,7 +210,7 @@ After the task creation and deletion functionality is added, you may want to eff
 - Lazy loading mode: suitable for large datasets. It loads components on demand within scrollable containers, significantly reducing memory usage and improving rendering efficiency.
 - Eager loading mode: ideal for small datasets. It renders all components at once and only updates changed items when data updates, avoiding unnecessary full re-renders.
 
-In Example 5, the eager loading mode is used due to the small number of task items. A **tasks** array is created, and the **Repeat** method iterates over each item in the array to dynamically generate and reuse **TaskItem** components. This approach enables efficient reuse of existing components during task additions or deletions, reducing redundant re-renders and improving code reusability and rendering efficiency.
+In Example 5, because the number of tasks is small, the non-lazy loading scenario of Repeat is used. A new task array tasks is created, and the Repeat component is used to iterate over each item in the array, dynamically generating and reusing the TaskItem component. When tasks are added or removed, this approach efficiently reuses existing components, avoids repeated rendering, and improves UI responsiveness and performance. This mechanism effectively improves code reusability and rendering efficiency.
 
 **Example 5**
 
@@ -503,9 +504,9 @@ struct TodoList {
 
 ### Implementing Global UI State Storage with AppStorageV2
 
-As the to-do list functionality continues to expand, an application involves multiple pages or functional modules that require access to shared global state. For example, a to-do list application might include a settings page linked to the home page, which requires cross-page state sharing. To address this, use AppStorageV2, which stores and shares an application's global state across multiple UIAbility instances.
+As the to-do list functionality continues to expand, an application involves multiple pages or functional modules that require access to shared global state. For example, a to-do list application might include a settings page linked to the main page, which requires cross-page state sharing. To address this, use AppStorageV2, which stores and shares an application's global state across multiple UIAbility instances.
 
-In this example, a **SettingAbility** is added to load **SettingPage**, which contains a **Setting** class. This class includes a **showCompletedTask** property that controls whether finished tasks are displayed, with a switch allowing users to modify the setting. The two abilities share data through AppStorageV2 using the key **Setting**, where the corresponding data is an instance of the **Setting** class. When AppStorageV2 first connects to **Setting**, if no stored data exists, it creates a **Setting** instance, with **showCompletedTask** set to **true** by default. After users adjust settings on **SettingPage**, the task list on the home page updates accordingly. With **AppStorageV2**, data can be shared across abilities and pages.
+In this example, a **SettingAbility** is added to load **SettingPage**, which contains a **Setting** class. This class includes a **showCompletedTask** property that controls whether finished tasks are displayed, with a switch allowing users to modify the setting. The two abilities share data through AppStorageV2 using the key **Setting**, where the corresponding data is an instance of the **Setting** class. When AppStorageV2 first connects to **Setting**, if no stored data exists, it creates a **Setting** instance, with **showCompletedTask** set to **true** by default. After users adjust settings on **SettingPage**, the task list on the main page updates accordingly. With **AppStorageV2**, data can be shared across abilities and pages.
 
 **Example 8**
 
@@ -676,7 +677,7 @@ struct SettingPage {
 
 To preserve task status when users reopen the application, use PersistenceV2 for persistent data storage. PersistenceV2 stores data on device disks. Compared with the runtime memory of AppStorageV2, PersistenceV2 ensures that data remains unchanged when an application is restarted after being closed.
 
-In Example 9, a **TaskList** class is created to store all task information persistently through PersistenceV2, using the key **TaskList** (with the corresponding data being an instance of the **TaskList** class). When PersistenceV2 connects to **TaskList** for the first time, if no existing data is found, it initializes a **TaskList** instance with an empty tasks array by default. In the **aboutToAppear** lifecycle function, if **TaskList** connected to PersistenceV2 contains no task data, tasks are loaded from the local file **defaultTasks.json** and stored in PersistenceV2. Subsequent changes to each task's completion status are synchronized to PersistenceV2. This ensures all task data remains unchanged even after the application is restarted, achieving persistent storage of the application's state.
+In Example 9, a TaskList class is created to persistently store all task information through PersistenceV2, with the key "TaskList" and the data corresponding to the TaskList class. When TaskList is connected for the first time through connect, if there is no data, a new TaskList instance with an empty default tasks array is created. In the aboutToAppear lifecycle function, the TaskList is connected to PersistenceV2. If no task data is stored, tasks are loaded from the rawfile resource file defaultTasks.json and stored in PersistenceV2. Thereafter, the completion status of each task is synchronized to PersistenceV2. In this way, even after the application is closed and reopened, all task data remains unchanged, implementing persistent application state storage.
 
 **Example 9**
 
@@ -844,7 +845,7 @@ The JSON file is stored in **src/main/resources/rawfile/defaultTasks.json**.
 
 As application features expand, repeated UI elements in the code can increase volume and complicate maintenance. To solve this problem, you are advised to use the \@Builder decorator to abstract duplicate UI components as independent build methods for reuse and code modularization.
 
-In Example 10, \@Builder is used to define an **ActionButton** API that unifies the management of text, styles, and touch events for various buttons. This simplifies the code and enhances maintainability. In addition, \@Builder enables adjustments to component layouts and styles, such as spacing, colors, and sizes, making the to-do list UI more visually appealing. The result is a fully functional to-do list application with a user-friendly UI.
+In Example 10, by using the actionButton method defined with \@Builder, unified management of button text, styles, and click events is implemented, improving code conciseness and maintainability. At the same time, the layout and styles of UI components are optimized, including visual elements such as spacing, colors, and sizes, ultimately presenting a fully functional to-do list application with a clean and aesthetically pleasing interface.
 
 **Example 10**
 
@@ -1364,7 +1365,7 @@ The View layer is responsible for application UI rendering and user interactions
   
 - **SettingPage**: represents the settings page for configuring whether to show finished tasks. It uses AppStorageV2 to store the global settings. The user can switch the status of **showCompletedTask** by using the toggle switch.
 
-  <!-- @[Main_SettingPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/pages/SettingPage.ets) -->
+  <!-- @[Main_SettingPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/pages/SettingPage.ets) --> 
   
   ``` TypeScript
   // src/main/ets/pages/SettingPage.ets
@@ -1396,16 +1397,18 @@ The View layer is responsible for application UI rendering and user interactions
         }
         Button('Back to To do')
           .onClick(()=>this.context.terminateSelf())
-          .margin({ top: 10 })
+            .margin({ top: 10 })
+          }
+          .alignItems(HorizontalAlign.Start)
       }
-      .alignItems(HorizontalAlign.Start)
-    }
-  }
-  ```
+      }
+    ```
   
 ## Summary
 
 This guide uses a simple to-do list application to demonstrate the use of V2 decorators and the implementation of the MVVM architecture through code refactoring. By separating data, service logic, and views into distinct layers, you can achieve a clearer code structure that is easier to maintain. By correctly implementing the layered architecture of Model, View, and ViewModel, you can gain a clearer understanding of the MVVM pattern and apply it more effectively. This layered approach delivers multiple practical benefits in real-world projects: It boosts development efficiency, ensures consistent code quality, optimizes the synchronization mechanism between data and the UI, and ultimately streamlines the entire development workflow.
 
 ## Sample Code
-[Complete Source Code](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry)
+<!--RP1-->
+[Complete Source Code](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM)
+<!--RP1End-->

@@ -1781,3 +1781,17 @@ With this permission, an application can implement the recording and playback fu
 **Supported devices**: PCs/2-in-1 devices
 
 **Since**: 26.1.0
+
+## ohos.permission.ACCESS_BOARD_INFO
+ 
+Allows an application to obtain the device hardware information.
+ 
+<!--RP118--><!--RP118End-->
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+**Supported devices**: PCs/2-in-1 devices
+ 
+**Since**: 26.0.1

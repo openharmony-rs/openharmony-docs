@@ -1,3 +1,11 @@
+---
+kits: ["AVCodec Kit / 音视频编解码服务"]
+description: "介绍一入二出视频编码能力，主编码器与副编码器共享同一输入Surface、同时产出两路不同规格码流，适用于多码率直播、多人会议、多人视频通话等场景。"
+keywords: [一入二出, 主编码器, 副编码器, 多码率直播, ABR, 双路码流, Surface共享, 视频通话, 降采样]
+doctype: guide
+status: active
+---
+
 # 一入二出视频编码
 
 <!--Kit: AVCodec Kit-->

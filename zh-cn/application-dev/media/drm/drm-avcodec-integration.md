@@ -1,3 +1,10 @@
+---
+kits: ["Drm Kit / 数字版权保护服务", "AVCodec Kit / 音视频编解码服务"]
+description: "介绍如何通过DRM Kit的Native API与AVCodec Kit配合，在C/C++环境下实现DRM加密节目的解密与播放，适用于需要底层编解码集成的DRM场景。"
+keywords: [DRM, AVCodec, C/C++, Native API, DRM节目播放, MediaKeySession, 节目解密, 媒体数据解析]
+doctype: guide
+status: active
+---
 # 基于AVCodec播放DRM节目(C/C++)
 
 <!--Kit: Drm Kit-->

@@ -171,6 +171,7 @@ setApplicationAutoStartup(info: AutoStartupInfo, callback: AsyncCallback\<void\>
 | 16000004 | Cannot start an invisible component.         |
 | 16000013 | The application is controlled by EDM.        |
 | 16000050 | Failed to connect to the system service. |
+| 16000206 | The specified application is not authorized to start before the user is unlocked. |
 
 **示例**：
 
@@ -236,6 +237,7 @@ setApplicationAutoStartup(info: AutoStartupInfo): Promise\<void\>
 | 16000004 | Cannot start an invisible component.         |
 | 16000013 | The application is controlled by EDM.        |
 | 16000050 | Failed to connect to the system service. |
+| 16000206 | The specified application is not authorized to start before the user is unlocked. |
 
 **示例**：
 

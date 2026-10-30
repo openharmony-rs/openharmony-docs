@@ -567,7 +567,7 @@ import { hidebug } from '@kit.PerformanceAnalysisKit';
 
 let appThreadCpuUsage: hidebug.ThreadCpuUsage[] = hidebug.getAppThreadCpuUsage();
 for (let i = 0; i < appThreadCpuUsage.length; i++) {
-  console.info(`threadId=${appThreadCpuUsage[i].threadId}, cpuUsage=${appThreadCpuUsage[i].cpuUsage}`);
+  console.info(`threadId=${appThreadCpuUsage[i].threadId}, cpuUsage=${appThreadCpuUsage[i].cpuUsage}, threadName=${appThreadCpuUsage[i].threadName}`);
 }
 ```
 
@@ -1786,6 +1786,6 @@ getAppRunningUniqueId(): string
 ```ts
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 
-let apprunningId = hidebug.getAppRunningUniqueId();
-console.info(`apprunningId: ${apprunningId}`);
+let appRunningId = hidebug.getAppRunningUniqueId();
+console.info(`appRunningId: ${appRunningId}`);
 ```

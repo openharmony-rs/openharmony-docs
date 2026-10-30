@@ -515,7 +515,7 @@ createModalUIExtension(want: Want, options?: ModalUIExtensionOptions, callback?:
 
 被拉起的Ability必须是带UI的Ability扩展，如何实现带UI的Ability扩展请参考[带界面的ExtensionAbility组件](../apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md)。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统接口：** 此接口为系统接口。
 
@@ -603,7 +603,7 @@ closeModalUIExtension(sessionId: number): void
 
 若创建模态UIExtension时指定了[transition](arkui-ts/ts-transition-animation-component.md#transitioneffect10对象说明)转场效果，则在关闭时先播放消失转场动画，动画结束后再关闭。无效的、已关闭的或正在关闭中的sessionId将被静默忽略。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统接口：** 此接口为系统接口。
 
@@ -679,7 +679,7 @@ struct ModalUIExtensionExample {
 
 模态UIExtension的创建选项。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -697,7 +697,7 @@ struct ModalUIExtensionExample {
 
 模态UIExtension的生命周期回调集合。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

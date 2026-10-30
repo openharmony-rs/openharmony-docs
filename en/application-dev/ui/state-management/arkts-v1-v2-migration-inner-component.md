@@ -5,7 +5,7 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=2fe87adc16af5a903a1eb4a9624e4d36fa962e3d translatedAt=2026-07-25T08:58:07.187Z pushedAt=2026-07-25T09:38:33.788Z -->
+<!-- md-trans-meta sourceCommit=f40d976a55afa9474832553b7faba446f7655708 translatedAt=2026-10-28T04:12:04.365Z pushedAt=2026-10-28T08:19:43.522Z nl=1 -->
 
 This topic provides migration guidance for component state variables across different scenarios.
 
@@ -247,7 +247,7 @@ In V1, the \@Prop decorator allows child components to receive and modify parent
 
 - Complex types: For complex objects requiring strict one-way data flow, perform a deep copy to prevent the child component from modifying the parent's data.
 
-- Variable modification by the child component: Use \@Once to allow one-time local modification. Note that if \@Once is used, the current child component is initialized only once, and changes from the parent component cannot be synchronized to the child component.
+- Variable modification by the child component: If the child component needs to modify the passed-in parameter, use \@Param and \@Once to allow the child component to modify the variable locally. Note that after the \@Once decorator is used, the current child component is initialized only once, and there is no subsequent synchronization capability from the parent component to the child component.
 
 **Example**
 
@@ -921,7 +921,7 @@ In V1, @Provide and @Consume enable data sharing between parent and child compon
 
 - Local initialization: In V1, \@Consume depends on the parent component's @Provide and does not support local initialization before API version 20. Since API version 20, local default values are used if no matching @Provide is found. For details, see [Setting Default Values for @Consume Decorated Variables](./arkts-provide-and-consume.md#setting-default-values-for-consume-decorated-variables). In V2, \@Consumer supports local initialization by default, using the local value if no matching \@Provider is available.
 
-- Initialization from the parent component: In V1, \@Provide can be directly initialized from the parent component. In V2, \@Provider does not support external initialization. You must use @Param with \@Once to receive the initial value from the parent and assign it to \@Provider.
+- Initialization from the parent component: In V1, \@Provide can be directly initialized from the parent component. In V2, \@Provider does not support external initialization. You must use \@Param and \@Once to receive the initial value and assign it to \@Provider.
 
 - Overriding support: In V1, \@Provide requires explicit **allowOverride** to support overriding. In V2, \@Provider supports overriding by default. \@Consumer automatically resolves to the nearest \@Provider in the component tree.
 
@@ -929,7 +929,7 @@ In V1, @Provide and @Consume enable data sharing between parent and child compon
 
 **Matching Rules**
 
-In V1, \@Provide and \@Consume can be matched by alias or variable name. In V2, matching is performed only by alias (not variable name). Once an alias is specified, it becomes the exclusive matching key.
+In V1, \@Provide and \@Consume can be matched by alias or by property name. In V2, alias becomes the only key. If an alias is specified in \@Consumer, matching can only be performed through the alias rather than the property name.
 
 V1:
 
@@ -1081,7 +1081,7 @@ Example effect:
 
 **Initialization from the Parent Component**
 
-In V1, \@Provide allows initialization from the parent component, and initial values can be passed directly through component parameters. In V2, \@Provider prohibits external initialization. To achieve equivalent functionality, use \@Param with \@Once in the child component to receive the initial value from the parent, and then assign it to the \@Provider variable.
+In V1, \@Provide allows initialization from the parent component, and initial values can be passed directly through component parameters. In V2, \@Provider prohibits external initialization. To achieve equivalent functionality, use \@Param \@Once in the child component to receive the initial value, and then assign it to the \@Provider variable.
 
 V1:
 
@@ -1119,7 +1119,7 @@ struct Child {
 }
 ```
 
-V2:
+V2 migration strategy: Use \@Param and \@Once to receive the initial value, and then assign it to \@Provider.
 
 <!-- @[Parent22_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/ProvideParentNoInitV2.ets) -->
 
@@ -1469,7 +1469,7 @@ V1 lacks computed property support, leading to redundant calculations during UI 
 
 V1:
 
-In the following example, each time the **lastName** value changes, the **Text** component is re-rendered and **this.lastName +' ' + this.firstName** needs to be computed repeatedly.
+In the following example, each time lastName changes, the Text component is refreshed, and each refresh of the Text component requires recomputing this.firstName + ' ' + this.lastName.
 
 <!-- @[ComputedV1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/ComputedV1.ets) -->
 
@@ -1620,5 +1620,3 @@ struct TextInputExampleV2 {
 Example effect:
 
 ![sync](figures/migration-sync.gif)
-
-<!--no_check-->
