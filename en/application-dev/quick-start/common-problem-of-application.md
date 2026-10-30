@@ -3,8 +3,9 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Tester: @memghaiyang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=4750934e9334e8b31ba514b4028301ceb9a20ce3 translatedAt=2026-10-30T03:51:02.613Z pushedAt=2026-10-30T03:51:02.613Z nl=1 -->
 
 ## How Do I Obtain the Fingerprint in the Signature Information?
 
@@ -43,7 +44,7 @@ bm dump -n com.example.myapplication | grep fingerprint
 
 ![alt text](figures/get_fingerprint.png)
 
-* Obtain fingerprint information from the **.cer** certificate file. The fingerprint information is generated using the SHA-1 hash algorithm.
+* Obtain fingerprint information from the **.cer** certificate file. For details about obtaining public keys and signing information for HarmonyOS applications and atomic services, see the [App Filing FAQs](https://developer.huawei.com/consumer/cn/doc/app/50130). The fingerprint information is generated using the SHA-1 hash algorithm.
 
 * Obtain fingerprint information using the keytool tool. For details, see [Generating a Signing Certificate Fingerprint](https://developer.huawei.com/consumer/en/doc/AppGallery-connect-Guides/appgallerykit-preparation-game-0000001055356911#section147011294331). The fingerprint information is generated using the SHA-256 hash algorithm.
 
@@ -51,10 +52,10 @@ bm dump -n com.example.myapplication | grep fingerprint
 
 **appIdentifier**, generated during application signing, is a field in the <!--RP1-->[profile](../security/app-provision-structure.md)<!--RP1End--> and is the unique identifier of an application. There are two ways to generate an application identifier:
 
-1. Randomly generate the **appIdentifier** field through [automatic signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section18815157237) on DevEco Studio. Signing on different devices or re-signing will result in different values of **appIdentifier**.
+1. Randomly generate the **appIdentifier** field through [automatic signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing-auto) on DevEco Studio. Signing on different devices or re-signing will result in different values of **appIdentifier**.
 2. <!--RP2-->Manually configure the signature. The **appIdentifier** field here is the same as the **app-identifier** field in the [HarmonyAppProvision configuration file](../security/app-provision-structure.md). For details, see [hapsigner Guide](../security/hapsigntool-guidelines.md).<!--RP2End-->
 
-Therefore, manual signing is recommended in scenarios where **appIdentifier** must remain unchanged, such as cross-device debugging, cross-application interaction debugging, or multi-user development with a shared key. For details, see [Use Cases for Automatic and Manual Signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section54361623194519).
+Therefore, manual signing is recommended in scenarios where **appIdentifier** must remain unchanged, such as cross-device debugging, cross-application interaction debugging, or multi-user development with a shared key. For details, see [Use Cases for Automatic and Manual Signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing).
 
 ## How Do I Obtain appIdentifier from Application Information?
 
@@ -91,12 +92,15 @@ bm dump -n com.example.myapplication | grep appIdentifier
 
 ![alt text](figures/get_appIdentifier.png)
 
+> **NOTE**
+>
+> If **appIdentifier** is empty, for example because the signing profile is outdated, you can use [appId](#what-is-appid) as the application's unique identifier.
 
 ## What Is appId?
 
 **appId**, the unique identifier of an application, consists of a bundle name, underscore (_), and Base64-encoded public key of the certificate. Since it changes with the public key of the signing certificate, you are advised to use [appIdentifier](#what-is-appidentifier) as the unique identifier of an application.
 
-## How do I obtain appId from application information?
+## How Do I Obtain appId from Application Information?
 
 * You can call [bundleManager.getBundleInfoForSelf](../reference/apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfoforself) to obtain the bundle information, which contains the signature information, and signature information in turn contains the **appId**.
 
@@ -147,4 +151,4 @@ bm dump -n ohos.app.hap.myapplication |grep uid
 ```
 ![alt text](figures/get_uid.png)
 
-* You can call [bundleManager.getBundleInfoForSelf](../reference/apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfoforself) to obtain the application's own **BundleInfo**. For sample code, see [How do I obtain appIdentifier from application information?](#how-do-i-obtain-appidentifier-from-application-information). The UID can be obtained through **bundleInfo.appInfo.uid**.
+* You can call [bundleManager.getBundleInfoForSelf](../reference/apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfoforself) to obtain the application's own **BundleInfo**. For sample code, see [How do I obtain appId from application information?](#how-do-i-obtain-appid-from-application-information). The UID can be obtained through **bundleInfo.appInfo.uid**.<!--RP3--><!--RP3End-->

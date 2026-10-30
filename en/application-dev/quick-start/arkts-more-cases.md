@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS Kit"]
+description: "Before-and-after examples and recommendations for adapting TypeScript code to ArkTS, organized by ArkTS syntax rules and illustrated with practical application scenarios."
+keywords: ["ArkTS", "adaptation cases", "TypeScript adaptation", "syntax rules", "arkts-no-any-unknown", "code refactoring", "object literals"]
+doctype: guide
+status: active
+---
+
 # Adaptation Cases
 
 <!--Kit: ArkTS-->
@@ -5,7 +13,8 @@
 <!--Owner: @oatuwwutao-->
 <!--Designer: @oatuwwutao; @cy917474985-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @zhang_yixin13-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=17ae88719a2d37a0c07e3b6e33ddb120ebd3dbc5 translatedAt=2026-10-30T06:21:33.935Z pushedAt=2026-10-30T06:21:33.935Z nl=1 -->
 
 In this topic, specific use cases are presented to provide suggestions on adapting TS code to ArkTS for compliance with ArkTS syntax rules. Each chapter is named after an ArkTS syntax rule. Each use case provides the TS code before adaptation and the ArkTS code after adaptation.
 
@@ -72,8 +81,8 @@ function printObj(obj: string) {
   console.info(obj);
   // ...
 }
-// ...
-          printObj('abc'); // abc
+
+printObj('abc'); // abc
 ```
 
 ### Marking JSON.parse Return Value Type
@@ -201,7 +210,7 @@ type ControllerConstructor = {
   new (value: string): Controller;
 }
 
-class testMenu {
+class TestMenu {
   controller: ControllerConstructor = Controller
   createController() {
     if (this.controller) {
@@ -211,7 +220,7 @@ class testMenu {
   }
 }
 
-let t = new testMenu();
+let t = new TestMenu();
 console.info(t.createController()!.value);
 ```
 
@@ -359,7 +368,7 @@ interface ControllerConstructor {
   new (value: string): Controller;
 }
 
-class testMenu {
+class TestMenu {
   controller: ControllerConstructor = Controller
   createController() {
     if (this.controller) {
@@ -369,7 +378,7 @@ class testMenu {
   }
 }
 
-let t = new testMenu();
+let t = new TestMenu();
 console.info(t.createController()!.value);
 ```
 
@@ -448,7 +457,7 @@ class C extends A {}
 
 let arr: Array<A> = [];
 
-let originMenusMap:Map<string, C> = new Map(arr.map(item => [item.str, (item instanceof C) ? item: null]));
+let originMenusMap: Map<string, C> = new Map(arr.map(item => [item.str, (item instanceof C) ? item: null]));
 ```
 
 **After adaptation**
@@ -928,9 +937,9 @@ Explicitly declare the type of array elements (using **interface** or **class**)
 
 ``` TypeScript
 let permissionList = [
-  {name: 'Device information', value: 'Used to analyze the battery life, call, Internet access, and SIM card issues of the device.'},
-  {name: 'Microphone', value: 'Used to add voice for issue reporting.'},
-  {"name: 'Storage', value: 'Used to add local file attachments for issue reporting.'}
+  { name: 'Device information', value: 'Used to analyze the battery life, call, Internet access, and SIM card issues of the device.' },
+  { name: 'Microphone', value: 'Used to add voice for issue reporting.' },
+  { name: 'Storage', value: 'Used to add local file attachments for issue reporting.' }
 ]
 ```
 
@@ -947,9 +956,9 @@ class PermissionItem {
 }
 
 let permissionList: PermissionItem[] = [
-  {name: 'Device information', value: 'Used to analyze the battery life, call, Internet access, and SIM card issues of the device.'},
-  {name: 'Microphone', value: 'Used to add voice for issue reporting.'},
-  {"name: 'Storage', value: 'Used to add local file attachments for issue reporting.'}
+  { name: 'Device information', value: 'Used to analyze the battery life, call, Internet access, and SIM card issues of the device.' },
+  { name: 'Microphone', value: 'Used to add voice for issue reporting.' },
+  { name: 'Storage', value: 'Used to add local file attachments for issue reporting.' }
 ]
 ```
 
@@ -1016,7 +1025,7 @@ let d = +'string';
 <!-- @[no_polymorphic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/BasicAdaptation.ets) -->  
 
 ``` TypeScript
-let a = Number.parseInt('5'); // Explicit conversion using Number.parseInt.
+let a = Number.parseInt('5'); // Use Number.parseInt for explicit conversion.
 let b = -Number.parseInt('5');
 let c = ~Number.parseInt('5');
 let d = new Number('123');
@@ -1052,7 +1061,7 @@ let t: typeof c = { value: 123 };
 <!-- @[no_type_query_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/module1.ets) -->  
 
 ``` TypeScript
-// File name: module1.ets
+// module1.ets
 class C {
   public value: number = 0
 }
@@ -1063,7 +1072,7 @@ export { C }
 <!-- @[no_type_query_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/module2.ets) -->  
 
 ``` TypeScript
-// File name: module2.ets
+// module2.ets
 import { C } from './module1'
 let t: C = { value: 123 };
 ```
@@ -1279,12 +1288,12 @@ function foo4() {
 }
 
 let obj = { value: 'abc' };
-foo.apply(obj);
+foo4.apply(obj);
 ```
 
 **After adaptation: mode 1**
 
-Use the method of a class. If the method is used by multiple classes, consider using the inheritance mechanism.
+Implement it by using a class method. If the method is used by multiple classes, consider using an inheritance mechanism.
 
 <!-- @[no_standalone_this_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/BasicAdaptation.ets) -->  
 
@@ -1450,7 +1459,7 @@ class Controller {
 
 type ControllerConstructor = new (value: string) => Controller;
 
-class testMenu {
+class TestMenu {
   controller: ControllerConstructor = Controller
   createController() {
     if (this.controller) {
@@ -1460,8 +1469,8 @@ class testMenu {
   }
 }
 
-let t = new testMenu()
-console.info(t.createController()!.value)
+let t = new TestMenu();
+console.info(t.createController()!.value);
 ```
 
 **After adaptation**
@@ -1771,7 +1780,7 @@ entries.forEach((value, key) => {
 
 ``` TypeScript
 interface I {
-  name:string
+  name: string;
 }
 
 class A {}
@@ -1790,24 +1799,22 @@ class Test {
 <!-- @[strictProperty_initialization](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/StrictModeCheck.ets) -->  
 
 ``` TypeScript
-{
-  interface I {
-    name:string
-  }
+interface I {
+  name: string;
+}
 
-  class A {}
+class A {}
 
-  class Test {
-    public a: number;
-    public b: string;
-    public c: boolean;
-    public d: I = { name:'abc' };
-    public e: A | null = null;
-    constructor(a:number, b:string, c:boolean) {
-      this.a = a;
-      this.b = b;
-      this.c = c;
-    }
+class Test {
+  public a: number;
+  public b: string;
+  public c: boolean;
+  public d: I = { name:'abc' };
+  public e: A | null = null;
+  constructor(a:number, b:string, c:boolean) {
+    this.a = a;
+    this.b = b;
+    this.c = c;
   }
 }
 ```
@@ -1863,42 +1870,42 @@ In a class, if a property is not initialized and is not assigned a value in the 
 
 **After adaptation**
 
-1. Whenever possible, initialize properties during declaration based on service logic or assign values to the properties in constructors. Example:
+1. Whenever possible, initialize properties during declaration **based on business logic** or assign values to the properties in constructors. Example:
 
-```typescript
-// code with error
-class Test {
-  value: number
-  flag: boolean
-}
+    ```typescript
+    // code with error
+    class Test {
+      value: number
+      flag: boolean
+    }
 
-// Method 1: Initialize properties during declaration.
-class Test {
-  value: number = 0
-  flag: boolean = false
-}
+    // Approach 1: initialize at declaration.
+    class Test {
+      value: number = 0
+      flag: boolean = false
+    }
 
-// Method 2: Assign values to properties in the constructor.
-class Test {
-  value: number
-  flag: boolean
-  constructor(value: number, flag: boolean) {
-    this.value = value;
-    this.flag = flag;
-  }
-}
-```
+    // Approach 2: assign a value in the constructor.
+    class Test {
+      value: number
+      flag: boolean
+      constructor(value: number, flag: boolean) {
+        this.value = value;
+        this.flag = flag;
+      }
+    }
+    ```
 
-2. For object type (including function type) **A**, if you are not sure how to initialize it, you are advised to initialize it in one of the following ways:
+2. For object type (including function type) `A`, if you are not sure how to initialize it, you are advised to initialize it in one of the following ways:
 
-​ Mode (i): **prop: A | null = null**
+  ​ Mode (i): **prop: A | null = null**
 
-​ Mode (ii): **prop?:A**
+  ​ Mode (ii): **prop?:A**
 
-​ Mode 3 (iii): **prop: A | undefined = undefined**
+  Mode (iii): `prop: A | undefined = undefined`
 
 - From the perspective of performance, the **null** type is used only for type check during compilation and has no impact on VM performance. In contrast, **undefined | A** is treated as a union type and may result in additional overhead at runtime.
-- In terms of code readability and simplicity, **prop?:A** is the syntax sugar of **prop: A | undefined = undefined**. You are advised to use optional properties.
+- From the perspective of code readability and conciseness, `prop?:A` is syntactic sugar for `prop: A | undefined = undefined`. **The optional property syntax is recommended.**
 
 ### Strict Function Type Check
 

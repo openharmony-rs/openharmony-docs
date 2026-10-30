@@ -3,15 +3,16 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Tester: @memghaiyang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=0d9c1b82a22704c3dcd9b4878dbd2013ea3a9d5e translatedAt=2026-10-30T06:21:33.935Z pushedAt=2026-10-30T06:21:33.935Z nl=1 -->
 
 The **module** tag contains the HAP configuration.
 
  **Table 1** Internal structure of the module tag
 
 <!--Table: 15%; 60%; 10%; 15%-->
-| Name| Description| Data Type| Initial Value Allowed|
+| Name| Description| Data Type| Optional|
 | -------- | -------- | -------- | -------- |
 | mainAbility | Ability whose icon is displayed in the Service Center. When the resident process is started, the **mainAbility** is started.| String| Yes (initial value: left empty)|
 | package | Package name of the HAP file, which must be unique in the application. The value is a string with a maximum of 127 bytes, in the reverse domain name notation. It is recommended that the value be the same as the project directory of the HAP file.  | String| No|
@@ -102,12 +103,12 @@ Example of the **module** tag structure:
 **Table 2** Internal structure of the distro attribute
 
 <!--Table: 15%; 60%; 10%; 15%-->
-| Name| Description| Data Type| Initial Value Allowed|
+| Name| Description| Data Type| Optional|
 | -------- | -------- | -------- | -------- |
 | moduleName | Name of the HAP file. The maximum length is 31 bytes. This name can be changed during application updates. However, if it is changed, directories related to the module must be migrated. For details, see [@ohos.file.fs (File Management)](../reference/apis-core-file-kit/js-apis-file-fs.md).| String| No|
 | moduleType | Type of the HAP file, which can **entry**, **feature**, or **har**.| String| No|
 | installationFree | Whether the HAP file supports the installation-free feature. **true**: The HAP file supports the installation-free feature and meets installation-free constraints. **false**: The HAP file does not support the installation-free feature. If this tag is set to **true** for an entry-type HAP file (**entry.hap**), it must also be set to **true** for feature-type HAP files (**feature.hap**) of the same application. If this tag is set to **false** for an entry-type HAP file, it can be set to **true** or **false** for feature-type modules of the same application based on service requirements.| Boolean| No|
-| deliveryWithInstall | Whether the HAP file will be installed when the user installs the application. **true**: The HAP file will be installed when the user installs the application. **false**: The HAP file will not be installed when the user installs the application.| Boolean| No|
+| deliveryWithInstall | Whether the HAP file will be installed when the user installs the app. **true**: The HAP file will be installed when the user installs the app. **false**: The HAP file will not be installed when the user installs the app. | Boolean | No |
 
 
 Example of the **distro** attribute structure:
@@ -125,17 +126,17 @@ Example of the **distro** attribute structure:
 
 **Table 3** Internal structure of the metadata attribute
 
-| Name| Description| Data Type| Initial Value Allowed|
+| Name| Description| Data Type| Optional|
 | -------- | -------- | -------- | -------- |
 | parameters | Metadata of the parameters to be passed for calling the ability. The metadata of each parameter consists of the **description**, **name**, and **type** sub-attributes.| Object array| Yes (initial value: left empty)|
 | results | Metadata of the ability return value. The metadata of each return value consists of the **description**, **name**, and **type** sub-attributes.| Object array| Yes (initial value: left empty)|
-| customizeData | Custom metadata of the parent component. The attributes **parameters** and **results** cannot be configured in **application**.| Object array| Yes (initial value: left empty)|
+| customizeData | Custom metadata of the parent component. The attributes **parameters** and **results** cannot be configured in **application**. | Object array | Yes (initial value: left empty) |
 
 ## Internal Structure of the parameters Attribute
 
 **Table 4** Internal structure of the parameters attribute
 
-| Name| Description| Data Type| Initial Value Allowed|
+| Name| Description| Data Type| Optional|
 | -------- | -------- | -------- | -------- |
 | description | Description of the parameter. The value can be a string or a resource index to descriptions in multiple languages. The value can contain a maximum of 255 bytes.| String| Yes (initial value: left empty)|
 | name | Name of the parameter passed for calling the ability. The value can contain a maximum of 255 bytes.| String| No|
@@ -145,7 +146,7 @@ Example of the **distro** attribute structure:
 
 **Table 5** Internal structure of the results attribute
 
-| Name| Description| Data Type| Initial Value Allowed|
+| Name| Description| Data Type| Optional|
 | -------- | -------- | -------- | -------- |
 | description | Description of the return value. The value can be a string or a resource index to descriptions in multiple languages. The value can contain a maximum of 255 bytes.| String| Yes (initial value: left empty)|
 | name | Name of the return value. The value can contain a maximum of 255 bytes.| String| Yes (initial value: left empty)|
@@ -155,7 +156,7 @@ Example of the **distro** attribute structure:
 
 **Table 6** Internal structure of the customizeData attribute
 
-| Name| Description| Data Type| Initial Value Allowed|
+| Name| Description| Data Type| Optional|
 | -------- | -------- | -------- | -------- |
 | name | Key of the data element. The value is a string with a maximum of 255 bytes.| String| Yes (initial value: left empty)|
 | value | Value of the data element. The value is a string with a maximum of 255 bytes.| String| Yes (initial value: left empty)|
@@ -205,9 +206,9 @@ Example of the metadata attribute:
 **Table 8** Internal structure of the abilities attribute
 
 <!--Table: 15%; 60%; 10%; 15%-->
-| Name| Description| Data Type| Initial Value Allowed|
+| Name| Description| Data Type| Optional|
 | -------- | -------- | -------- | -------- |
-| process | Name of the process running the application or ability. If the **process** attribute is configured in the **deviceConfig** tag, all abilities of the application run in this process. You can set the **process** attribute for a specific ability in the **abilities** attribute, so that the ability can run in the particular process. If this attribute is set to the name of the process running other applications, all these applications can run in the same process, provided they have the same unified user ID and the same signature. The value can contain a maximum of 31 bytes.| String| Yes (initial value: left empty)|
+| process | Name of the process running the application or ability. If the `process` attribute is configured in the `deviceConfig` tag, all abilities of the application run in this process. You can set the `process` attribute for a specific ability in the `abilities` attribute, so that the ability can run in the particular process. If this attribute is set to the name of the process running other applications, all these applications can run in the same process, provided they have the same unified user ID and the same signature. The value can contain a maximum of 31 bytes. | String | Yes (initial value: left empty) |
 | name | Ability name. The value can be a reverse domain name, in the format of *bundleName*.*className*, for example, **com.example.myapplication.EntryAbility**. Alternatively, the value can start with a period (.) followed by the class name, for example, **.EntryAbility**.<br>The ability name must be unique in an application. Note: If you use DevEco Studio to create the project, an ability named **EntryAbility** will be created by default, and its configuration will be saved to the **config.json** file. If you use other tools in DevEco Studio, the value of this attribute can be customized. The value can contain a maximum of 127 bytes.| String| No|
 | description | Description of the ability. The value can be a string or a resource index to descriptions in multiple languages. The value can contain a maximum of 255 bytes.| String| Yes (initial value: left empty)|
 | icon | Index to the ability icon file. Example value: **$media:ability_icon**. In the **skills** attribute of the ability, if the **actions** value contains **action.system.home** and the **entities** value contains **entity.system.home**, the icon of the ability is also used as the icon of the application. If multiple abilities address this condition, the icon of the first candidate ability is used as the application icon.<br>Note: The **icon** and **label** values of an application are visible to users. Ensure that at least one of them is different from any existing icons or labels.| String| Yes (initial value: left empty)|
@@ -221,7 +222,7 @@ Example of the metadata attribute:
 | metaData | Metadata.| Object| Yes (initial value: left empty)|
 | type | Ability type. The options are as follows:<br>**page**: FA developed using the Page template to provide the capability of interacting with users.<br>**service**: PA developed using the Service template to provide the capability of running tasks in the background.<br>**data**: PA developed using the Data template to provide unified data access for external systems.<br>**CA**: ability that can be started by other applications as a window.| String| No|
 | orientation | Display orientations of the ability. This attribute applies only to the ability using the Page template. The options are as follows:<br>**unspecified**: indicates that the system automatically determines the display orientation of the ability.<br>**landscape**: indicates the landscape orientation.<br>**portrait**: indicates the portrait orientation.<br>**followRecent**: indicates that the orientation follows the most recent application in the stack.| String| Yes (initial value: **unspecified**)|
-| backgroundModes | Background service type of the ability. You can assign multiple background service types to a specific ability. This field applies only to the ability using the Service template. The options are as follows:<br>**dataTransfer**: data transfer through the network or peer device, such as download, backup, and share<br>**audioPlayback**: audio playback<br>**audioRecording**: audio recording<br>**pictureInPicture**: video playback in picture-in-picture (PiP) mode or in a small window<br>**voip**: voice and video calls over VoIP<br>**location**: location and navigation<br>**bluetoothInteraction**: Bluetooth scanning, connection, and transmission<br>**wifiInteraction**: Wi-Fi scanning, connection, and transmission<br>**screenFetch**: screen recording and screenshot<br>**multiDeviceConnection**: multi-device connection| String array| Yes (initial value: left empty)|
+| backgroundModes | Background service type of the ability. You can assign multiple background service types to a specific ability. This field applies only to the ability using the Service template. The options are as follows:<br>**dataTransfer**: data transfer through the network or peer device, such as download, backup, and share<br>**audioPlayback**: audio playback<br>**audioRecording**: audio recording<br>**pictureInPicture**: video playback in picture-in-picture (PiP) mode or in a small window<br>**voip**: voice and video calls over VoIP<br>**location**: location and navigation<br>**bluetoothInteraction**: Bluetooth scanning, connection, and transmission<br>**wifiInteraction**: Wi-Fi scanning, connection, and transmission<br>**screenFetch**: screen recording and screenshot<br>**multiDeviceConnection**: multi-device connection<br>**usbConnection**: USB connection, supported since API version 26.0.1.| String array| Yes (initial value: left empty)|
 | grantPermission | Whether permissions can be granted for any data in the ability.<br>- **true**: The permission can be granted for any data in the ability.<br>- **false**: The permission cannot be granted for any data in the ability.| Boolean| Yes (initial value: left empty)|
 | readPermission | Permission required for reading data in the ability. This attribute applies only to the ability using the Data template. The value is a string with a maximum of 255 bytes. This attribute applies only to the default, tablet, smart TV, a telematics device, and wearable device types.| String| Yes (initial value: left empty)|
 | writePermission | Permission required for writing data to the ability. This attribute applies only to the ability using the Data template. The value is a string with a maximum of 255 bytes.| String| Yes (initial value: left empty)|
@@ -232,7 +233,7 @@ Example of the metadata attribute:
 | forms | Information about the widgets used by the ability. This attribute is valid only when **formsEnabled** is set to **true**.| Object array| Yes (initial value: left empty)|
 | srcLanguage | Programming language of the ability, which you can specify when creating the project. The options are **js**, **ets**, and **java**.| String| Yes (initial value: **js**)|
 | srcPath | JS code path corresponding to the ability. The value can contain a maximum of 127 bytes.| String| No|
-| uriPermission | Application data that the ability can access. This attribute consists of the **mode** and **path** sub-attributes. This attribute is valid only for the capability of the type provider.| Object| Yes (initial value: left empty)|
+| uriPermission | Application data that the ability can access. This attribute consists of the `mode` and `path` sub-attributes. This attribute is valid only for the ability of the type provider. | Object | Yes (initial value: left empty) |
 | startWindowIcon | Index to the icon file of the ability startup page. This attribute applies only to the ability using the Page template. Example: **$media:icon**.| String| Yes (initial value: left empty)|
 | startWindowBackground | Index to the background color resource file of the ability startup page. This attribute applies only to the ability using the Page template. Example: **$color:red**.| String| Yes (initial value: left empty)|
 | removeMissionAfterTerminate | Whether to remove the relevant task from the task list after the ability is destroyed. This attribute applies only to the ability using the Page template. The value **true** means to remove the relevant task from the task list after the ability is destroyed, and **false** means the opposite.| Boolean| Yes (initial value: **false**)|
@@ -254,7 +255,7 @@ Setting the application icon to be displayed on the home screen:<br>Set **icon**
         "entities": ["entity.system.home"],
         "uris": []
       }]
-    }],
+    }]
   }
 }
 ```
@@ -289,7 +290,7 @@ To hide an entry icon on the home screen, you must configure the **AllowAppDeskt
 
 **Table 9** Internal structure of the uriPermission attribute
 
-| Name| Description| Data Type| Initial Value Allowed|
+| Name| Description| Data Type| Optional|
 | -------- | -------- | -------- | -------- |
 | path | Path. The value can contain maximum of 255 bytes.| String| No|
 | mode | Matching mode.| String| Yes (initial value: **default**)|
@@ -366,7 +367,7 @@ Example of the **abilities** attribute structure:
 **Table 10** Internal structure of the skills attribute
 
 <!--Table: 10%; 60%; 15%; 15%-->
-| Name| Description| Data Type| Initial Value Allowed|
+| Name| Description| Data Type| Optional|
 | -------- | -------- | -------- | -------- |
 | actions | Actions of the **want** that can be accepted by the ability. Generally, the value is an **action** value predefined in the system.| String array| Yes (initial value: left empty)|
 | entities | Entities of the **want** that can be accepted by the ability, such as video and home applications.| String array| Yes (initial value: left empty)|
@@ -376,7 +377,7 @@ Example of the **abilities** attribute structure:
 
 **Table 11** Internal structure of the uris attribute
 
-| Name| Description| Data Type| Initial Value Allowed|
+| Name| Description| Data Type| Optional|
 | -------- | -------- | -------- | -------- |
 | scheme | Scheme of the URI.| String| No|
 | host | Host value of the URI.| String| Yes (initial value: left empty)|
@@ -415,7 +416,7 @@ Example of the **skills** attribute structure:
 
 **Table 12** Internal structure of the reqPermissions attribute
 
-| Name| Description| Data Type| Initial Value Allowed|
+| Name| Description| Data Type| Optional|
 | -------- | -------- | -------- | -------- |
 | name | Name of the permission to request.| String| No|
 | reason | Reason for requesting the permission. Multi-language adaptation is required.| String| No if the permission to request is user_grant, yes in other cases (initial value: left empty)<br>If the permission to request is user_grant, this attribute is required for the application to be released to the AppGallery.|
@@ -425,7 +426,7 @@ Example of the **skills** attribute structure:
 
 **Table 13** Internal structure of the usedScene attribute
 
-| Name| Description| Data Type| Initial Value Allowed|
+| Name| Description| Data Type| Optional|
 | -------- | -------- | -------- | -------- |
 | ability | Names of abilities that require the permission.| String array| Yes (initial value: all ability names)|
 | when | Time when the permission is used.<br>**inuse**: The permission is required when the ability is in use.<br>**always**: The permission is required at all times.| Value| Yes (initial value: left empty)|
@@ -435,7 +436,7 @@ Example of the **skills** attribute structure:
 **Table 14** Internal structure of the js attribute
 
 <!--Table: 10%; 60%; 15%; 15%-->
-| Name| Description| Data Type| Initial Value Allowed|
+| Name| Description| Data Type| Optional|
 | -------- | -------- | -------- | -------- |
 | name | Name of the JavaScript component.| String| No|
 | pages | Route information of pages in the JavaScript component, in the format of "Page path + Page name". The page path is based on the value of **srcPath** of the current ability. For example, if the value of **srcPath** is **EntryAbility**, the page path starts from the lower level of **EntryAbility**. The value is an array, the first element of which represents the home page of the JavaScript FA.| String array| No|
@@ -447,7 +448,7 @@ Example of the **skills** attribute structure:
 
 **Table 15** Internal structure of the window attribute
 
-| Name| Description| Data Type| Initial Value Allowed|
+| Name| Description| Data Type| Optional|
 | -------- | -------- | -------- | -------- |
 | designWidth | Baseline width for page design. The size of an element is scaled by the actual device width.| Number| Yes (initial value: **720 px**)|
 | autoDesignWidth | Whether to automatically calculate the baseline width for page design. If it is set to **true**, the **designWidth** attribute becomes invalid. The baseline width is calculated based on the device width and screen density. If it is set to **false**, the design reference width is **designWidth**.| Boolean| Yes (initial value: **false**)|
@@ -456,7 +457,7 @@ Example of the **skills** attribute structure:
 
 **Table 16** Internal structure of the mode attribute
 
-| Name| Description| Data Type| Initial Value Allowed|
+| Name| Description| Data Type| Optional|
 | -------- | -------- | -------- | -------- |
 | type | Type of the JS component.| String. The value can be **pageAbility** or **form**.| Yes (initial value: **pageAbility**)|
 | syntax | Syntax type of the JS component.| String. The value can be **hml** or **ets**.| Yes (initial value: **hml**)|
@@ -489,7 +490,7 @@ Example of the **js** attribute structure:
 
 **Table 17** Internal structure of the shortcuts attribute
 
-| Name| Description| Data Type| Initial Value Allowed|
+| Name| Description| Data Type| Optional|
 | -------- | -------- | -------- | -------- |
 | shortcutId | ID of the shortcut. The value is a string with a maximum of 63 bytes.| String| No|
 | label | Label of the shortcut, that is, the text description displayed for the shortcut. The value can be a string or a resource index to the label. The value is a string with a maximum of 63 bytes.| String| Yes (initial value: left empty)|
@@ -500,7 +501,7 @@ Example of the **js** attribute structure:
 
 **Table 18** Internal structure of the intents attribute
 
-| Name| Description| Data Type| Initial Value Allowed|
+| Name| Description| Data Type| Optional|
 | -------- | -------- | -------- | -------- |
 | targetClass | Target class of the shortcut.| String| Yes (initial value: left empty)|
 | targetBundle | Application bundle name for the target ability of the shortcut.| String| Yes (initial value: left empty)|
@@ -528,7 +529,7 @@ Example of the **shortcuts** attribute structure:
 **Table 19** Internal structure of the forms attribute
 
 <!--Table: 15%; 60%; 10%; 15%-->
-| Name| Description| Data Type| Initial Value Allowed|
+| Name| Description| Data Type| Optional|
 | -------- | -------- | -------- | -------- |
 | name | Class name of the widget. The value is a string with a maximum of 127 bytes.| String| No|
 | description | Description of the widget. The value can be a string or a resource index to descriptions in multiple languages. The value is a string with a maximum of 255 bytes.| String| Yes (initial value: left empty)|
@@ -549,7 +550,7 @@ Example of the **shortcuts** attribute structure:
 
 **Table 20** Internal structure of the customizeData attribute
 
-| Name| Description| Data Type| Initial Value Allowed|
+| Name| Description| Data Type| Optional|
 | -------- | -------- | -------- | -------- |
 | name | Key name that identifies a data item. The value is a string with a maximum of 255 bytes.| String| Yes (initial value: left empty)|
 | value | Value of the data item. The value is a string with a maximum of 255 bytes.| String| Yes (initial value: left empty)|
@@ -613,7 +614,7 @@ Example of the **forms** attribute structure:
 
 **Table 21** Internal structure of the distroFilter attribute
 
-| Name| Description| Data Type| Initial Value Allowed|
+| Name| Description| Data Type| Optional|
 | -------- | -------- | -------- | -------- |
 | apiVersion | Supported API versions.| Object array| Yes (initial value: left empty)|
 |screenShape | Supported screen shapes.| Object array| Yes (initial value: left empty)|
@@ -625,7 +626,7 @@ Example of the **forms** attribute structure:
 
 **Table 22** Internal structure of the apiVersion attribute
 
-| Name| Description| Data Type| Initial Value Allowed|
+| Name| Description| Data Type| Optional|
 | -------- | -------- | -------- | -------- |
 | policy | Rule for the sub-attribute value. Set this attribute to **exclude** or **include**.<br>- **exclude**: Exclude the matches of the sub-attribute value.<br>- **include**: Include the matches of the sub-attribute value.| String| No|
 | value | API versions, for example, 4, 5, or 6. Example: If an application comes with two versions developed using API version 5 and API version 6 for the same device model, two installation packages of the entry type can be released for the application.| Array| No|
@@ -634,7 +635,7 @@ Example of the **forms** attribute structure:
 
 **Table 23** Internal structure of the screenShape attribute
 
-| Name| Description| Data Type| Initial Value Allowed|
+| Name| Description| Data Type| Optional|
 | -------- | -------- | -------- | -------- |
 | policy | Rule for the sub-attribute value. Set this attribute to **exclude** or **include**.<br>- **exclude**: Exclude the matches of the sub-attribute value.<br>- **include**: Include the matches of the sub-attribute value.| String| No|
 | value | Shape.<br>Valid values:<br>- **circle**<br>- **rect**| String array| No|
@@ -643,7 +644,7 @@ Example of the **forms** attribute structure:
 
 **Table 24** Internal structure of the screenWindow attribute
 
-| Name| Description| Data Type| Initial Value Allowed|
+| Name| Description| Data Type| Optional|
 | -------- | -------- | -------- | -------- |
 | policy | Rule for the sub-attribute value. Set this attribute to **exclude** or **include**.<br>- **exclude**: Exclude the matches of the sub-attribute value.<br>- **include**: Include the matches of the sub-attribute value.| String| No|
 | value | Resolution of the application runtime window. The value is in the format of *number***number*, for example, **466*466**.| String array| No|
@@ -653,7 +654,7 @@ Example of the **forms** attribute structure:
 **Table 25** Internal structure of the screenDensity attribute
 
 <!--Table: 10%; 60%; 15%; 15%-->
-| Name| Description| Data Type| Initial Value Allowed|
+| Name| Description| Data Type| Optional|
 | -------- | -------- | -------- | -------- |
 | policy | Rule for the sub-attribute value. Set this attribute to **exclude** or **include**.<br>- **exclude**: Exclude the matches of the sub-attribute value.<br>- **include**: Include the matches of the sub-attribute value.| String| No|
 | value | The options are as follows:<br>**sdpi**: small-scale DPI. This value is applicable to devices with a DPI range of (0, 120].<br>**mdpi**: medium-scale DPI. This value is applicable to devices with a DPI range of (120, 160].<br>**ldpi**: large-scale DPI. This value is applicable to devices with a DPI range of (160, 240].<br>**xldpi**: extra-large-scale DPI. This value is applicable to devices with a DPI range of (240, 320].<br>**xxldpi**: extra-extra-large-scale DPI. This value is applicable to devices with a DPI range of (320, 480].<br>**xxxldpi**: extra-extra-extra-large-scale DPI. This value is applicable to devices with a DPI range of (480, 640].| Array| No|
@@ -662,7 +663,7 @@ Example of the **forms** attribute structure:
 
 **Table 26** Internal structure of the countryCode attribute
 
-| Name| Description| Data Type| Initial Value Allowed|
+| Name| Description| Data Type| Optional|
 | -------- | -------- | -------- | -------- |
 | policy | Rule for the sub-attribute value. Set this attribute to **exclude** or **include**.<br>- **exclude**: Exclude the matches of the sub-attribute value.<br>- **include**: Include the matches of the sub-attribute value.| String| No|
 | value | Country/Region code of the area to which the application is to be distributed. The value is a string array, of which each substring indicates a country or region. The substring consists of two uppercase letters.| String array| No|
@@ -699,7 +700,7 @@ Example of the **distroFilter** attribute structure:
 
 **Table 27** Internal structure of the commonEvents attribute
 
-| Name| Description| Data Type| Initial Value Allowed|
+| Name| Description| Data Type| Optional|
 | -------- | -------- | -------- | -------- |
 | name | Name of the static common event. The value can contain a maximum of 127 bytes.| String| No|
 | permission | Permission required to implement static common events. The value can contain a maximum of 255 bytes.| String| Yes (initial value: left empty)|
@@ -731,7 +732,7 @@ Example of the **commonEvents** attribute structure:
 
 **Table 28** Internal structure of the testRunner attribute
 
-| Name| Description| Data Type| Initial Value Allowed|
+| Name| Description| Data Type| Optional|
 | -------- | -------- | -------- | -------- |
 | name | Name of the test runner object. The value can contain a maximum of 255 bytes.| String| No|
 | srcPath | Code path of the test runner. The maximum length of this tag is 255 bytes.| String| No|
@@ -750,7 +751,7 @@ Example of the **commonEvents** attribute structure:
 
 **Table 29** Internal structure of the definePermissions attribute
 
-| Name| Description| Data Type| Initial Value Allowed|
+| Name| Description| Data Type| Optional|
 | -------- | -------- | -------- | -------- |
 | name | Name of a permission. The value can contain a maximum of 255 bytes.| String| No|
 | grantMode | Permission grant mode. The options are as follows:<br>- **system_grant**: The permission is automatically granted by the system after the application is installed.<br>- **user_grant**: The permission is dynamically requested when needed and must be granted by the user.| String| Yes (initial value: **system_grant**)|

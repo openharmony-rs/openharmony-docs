@@ -1,14 +1,15 @@
 # MDM Kit Development
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
-<!--Owner: @huanleima-->
-<!--Designer: @liuzuming-->
+<!--Owner: @huanleima; @weizai16-->
+<!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=c258a89968283d0dae7e40620fcbe92153aed300 translatedAt=2026-10-30T03:21:54.377Z pushedAt=2026-10-30T03:21:54.377Z nl=1 -->
 
 ## Introduction
 
-MDM Kit provides capabilities for [MDM applications](./mdm-kit-term.md#mdm-application-device-administrator-application), including enterprise device management and event listening, application management, feature restriction management, security management, device settings, device control, device information acquisition, hardware peripheral management, system management, and network management. For details about the APIs, see <!--RP7-->[API Reference](../reference/apis-mdm-kit/Readme-EN.md)<!--RP7End-->.
+MDM Kit provides capabilities for [MDM apps](./mdm-kit-term.md#mdm-app), including enterprise device management and event listening, application management, feature restriction management, security management, device settings, device control, device information acquisition, hardware peripheral management, system management, and network management. For details about the APIs, see <!--RP7-->[API Reference](../reference/apis-mdm-kit/Readme-EN.md)<!--RP7End-->.
 
 A device administrator application is an application with the [EnterpriseAdminExtensionAbility](./mdm-kit-admin.md).
 
@@ -51,8 +52,8 @@ Before declaring the required permissions, ensure that the [basic principles for
 
 
 > **NOTE**
-> 
-> The required permissions vary with the API to call. For details, see [Enterprise Device Management](../reference/apis-mdm-kit/js-apis-enterprise-adminManager.md) and other related APIs.
+>
+> For required permissions, see the corresponding API. The [admin permission management](../reference/apis-mdm-kit/js-apis-enterprise-adminManager.md) reference provides a starting point for accessing other MDM Kit API documents.
 >
 > <!--RP4--><!--RP4End-->
 
@@ -69,7 +70,7 @@ Before declaring the required permissions, ensure that the [basic principles for
 
 2. Call APIs to implement related functionalities. For example, disable Wi-Fi for devices.
 
-   <!-- @[set_disallowed_policy_wifi](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/EnterpriseAdminExtensionAbility/EnterpriseAdminExtensionAbility/entry/src/main/ets/enterpriseadminability/EnterpriseAdminAbility.ets) -->
+   <!-- @[set_disallowed_policy_wifi](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/EnterpriseAdminExtensionAbility/EnterpriseAdminExtensionAbility/entry/src/main/ets/enterpriseadminability/EnterpriseAdminAbility.ets) -->   
    
    ``` TypeScript
    import { adminManager, restrictions } from '@kit.MDMKit';
@@ -82,7 +83,7 @@ Before declaring the required permissions, ensure that the [basic principles for
      };
      // ...
        try {
-         restrictions.setDisallowedPolicy(this.wantTemp, 'wifi', isDisallow);
+         restrictions.setDisallowedPolicy(this.wantTemp, restrictions.FeatureForDevice.WIFI, isDisallow);
          console.info(isDisallow ? 'disable wifi success.' : 'enable wifi success.');
          // ...
        } catch (err) {
@@ -109,9 +110,9 @@ hdc shell edm disable-admin -n Bundle_name
 
 > **NOTE**
 >
-> Only one super device administrator application can be enabled on a device.
->
-> BYOD, or Bring Your Own Device, allows enterprise employees to use their own mobile devices, such as laptops, tablets, and smartphones, on premises to obtain internal information and operate authorized enterprise applications.
+> An MDM app must be installed for the first user (account ID 100) to be activated properly.
+> Only one super device administrator app can be activated on a device for actual use.
+> Bring Your Own Device (BYOD) is a policy that allows employees to bring their personal mobile devices, such as laptops, tablets, and smartphones, to the workplace and use them to access internal company information and approved applications.
 >
 > <!--RP5--><!--RP5End-->
 

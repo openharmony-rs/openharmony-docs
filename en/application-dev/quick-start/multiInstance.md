@@ -3,8 +3,9 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Tester: @memghaiyang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=850c7d4f71d6bc50d82f299a21bb9cea3a266f3d translatedAt=2026-10-30T06:21:33.935Z pushedAt=2026-10-30T06:21:33.935Z nl=1 -->
 
 Multi-instance allows an application to run on multiple processes so that a user can log in multiple accounts and run the application at the same time without affecting each other. For example, a user can run several social accounts, or primary and secondary game accounts simultaneously without frequent log-in and log-out.
 
@@ -41,3 +42,4 @@ Application multi-instance can run on only 2-in-1 devices.
 
 - Build and package the configured project and install it on the device.
 - Right-click an application icon on the home screen to open an application process. Then right-click the application icon again and choose **Open**. In this case, two application process pages of the same application are displayed on the home screen.
+
