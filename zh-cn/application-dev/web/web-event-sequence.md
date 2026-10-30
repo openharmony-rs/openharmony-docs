@@ -55,7 +55,7 @@ Web页面保活可以参考[使用离线Web组件](../web/web-offline-mode.md)�
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
-
+  
   @Entry
   @Component
   struct WebComponent {
@@ -71,7 +71,7 @@ Web页面保活可以参考[使用离线Web组件](../web/web-offline-mode.md)�
       "<h1>intercept test</h1>\n" +
       "</body>\n" +
       "</html>";
-
+  
     aboutToAppear(): void {
       try {
         webview.WebviewController.setWebDebuggingAccess(true);
@@ -79,7 +79,7 @@ Web页面保活可以参考[使用离线Web组件](../web/web-offline-mode.md)�
         console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
       }
     }
-
+  
     build() {
       Column() {
         Web({ src: 'www.example.com', controller: this.controller })
