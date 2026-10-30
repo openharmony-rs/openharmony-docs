@@ -12631,6 +12631,8 @@ minimize(callback: AsyncCallback&lt;void&gt;): void
 > **说明：**
 >
 > - 当窗口已创建且未处于前台状态时，调用该接口不生效不报错。建议在调用该接口前确保窗口已创建并处于前台状态。
+>
+> - 主窗口最小化后进入后台状态时，不同设备上UIAbility生命周期的行为存在差异，请参考[不同设备UIAbility生命周期的差异化行为](../../windowmanager/window-lifecycle.md#不同设备uiability生命周期的差异化行为)。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -12703,6 +12705,8 @@ minimize(): Promise&lt;void&gt;
 > **说明：**
 >
 > - 当窗口已创建且未处于前台状态时，调用该接口不生效不报错。建议在调用该接口前确保窗口已创建并处于前台状态。
+>
+> - 主窗口最小化后进入后台状态时，不同设备上UIAbility生命周期的行为存在差异，请参考[不同设备UIAbility生命周期的差异化行为](../../windowmanager/window-lifecycle.md#不同设备uiability生命周期的差异化行为)。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
