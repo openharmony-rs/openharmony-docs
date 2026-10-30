@@ -211,7 +211,7 @@ print.disconnectPrinter(printerId).then(() => {
 
 queryPrinterCapability(printerId: string, callback: AsyncCallback&lt;void&gt;): void
 
-查询打印机能力，使用callback异步回调。能力查询结果可通过监听[on('printerStateChange')](#printon)事件回调中的PrinterInfo.capability获取。
+查询打印机能力，使用callback异步回调。能力查询结果可通过监听[print.on(type: 'printerStateChange', callback: (state: PrinterState, info: PrinterInfo) => void)](#printon)事件回调中的PrinterInfo.capability获取。
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 
@@ -255,7 +255,7 @@ print.queryPrinterCapability(printerId, (error: BusinessError) => {
 
 queryPrinterCapability(printerId: string): Promise&lt;void&gt;
 
-查询打印机能力，使用Promise异步回调。能力查询结果可通过监听[on('printerStateChange')](#printon)事件回调中的PrinterInfo.capability获取。
+查询打印机能力，使用Promise异步回调。能力查询结果可通过监听[print.on(type: 'printerStateChange', callback: (state: PrinterState, info: PrinterInfo) => void)](#printon)事件回调中的PrinterInfo.capability获取。
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 
@@ -302,7 +302,7 @@ print.queryPrinterCapability(printerId).then(() => {
 
 startPrintJob(jobInfo: PrintJob, callback: AsyncCallback&lt;void&gt;): void
 
-开始打印任务，使用callback异步回调。可通过监听[on('jobStateChange')](#printon-1)事件获取打印任务状态变化。
+开始打印任务，使用callback异步回调。可通过监听[print.on(type: 'jobStateChange', callback: (state: PrintJobState, job: PrintJob) => void)](#printon-1)事件获取打印任务状态变化。
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 
@@ -362,7 +362,7 @@ print.startPrintJob(jobInfo, (error: BusinessError) => {
 
 startPrintJob(jobInfo: PrintJob): Promise&lt;void&gt;
 
-开始打印任务，使用Promise异步回调。可通过监听[on('jobStateChange')](#printon-1)事件获取打印任务状态变化。
+开始打印任务，使用Promise异步回调。可通过监听[print.on(type: 'jobStateChange', callback: (state: PrintJobState, job: PrintJob) => void)](#printon-1)事件获取打印任务状态变化。
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 
@@ -682,7 +682,7 @@ print.requestPrintPreview(jobInfo).then((num: number) => {
 
 on(type: 'printerStateChange', callback: (state: PrinterState, info: PrinterInfo) => void): void
 
-注册打印机状态变化事件回调，使用callback回调。在不需要监听时，可调用[print.off('printerStateChange')](#printoff)注销回调，否则可能会导致回调持续触发及内存泄漏问题。
+注册打印机状态变化事件回调，使用callback回调。在不需要监听时，可调用[print.off(type: 'printerStateChange', callback?: Callback&lt;boolean&gt;)](#printoff)注销回调，否则可能会导致回调持续触发及内存泄漏问题。
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 
@@ -766,7 +766,7 @@ print.off('printerStateChange', (data: boolean) => {
 
 on(type: 'jobStateChange', callback: (state: PrintJobState, job: PrintJob) => void): void
 
-注册打印任务状态变化事件回调，使用callback回调。在不需要监听时，可调用[print.off('jobStateChange')](#printoff-1)注销回调，否则可能会导致回调持续触发及内存泄漏问题。
+注册打印任务状态变化事件回调，使用callback回调。在不需要监听时，可调用[print.off(type: 'jobStateChange', callback?: Callback&lt;boolean&gt;)](#printoff-1)注销回调，否则可能会导致回调持续触发及内存泄漏问题。
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 
@@ -844,7 +844,7 @@ print.off('jobStateChange', (data: boolean) => {
 
 on(type: 'extInfoChange', callback: (extensionId: string, info: string) => void): void
 
-注册打印机扩展信息变化事件回调，使用callback回调。在不需要监听时，可调用[print.off('extInfoChange')](#printoff-2)注销回调，否则可能会导致回调持续触发及内存泄漏问题。
+注册打印机扩展信息变化事件回调，使用callback回调。在不需要监听时，可调用[print.off(type: 'extInfoChange', callback?: Callback&lt;boolean&gt;)](#printoff-2)注销回调，否则可能会导致回调持续触发及内存泄漏问题。
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 

@@ -1,4 +1,4 @@
-﻿# @ohos.print (打印)
+# @ohos.print (打印)
 
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Print-->
@@ -1519,7 +1519,7 @@ getAddedPrinters(): Promise&lt;Array&lt;string&gt;&gt;
 
 获取系统中已添加的打印机列表，使用Promise异步回调。
 
-**需要权限：** ohos.permission.MANAGE_PRINT_JOB或ohos.permission.PRINT
+**需要权限：** <!--Del-->ohos.permission.MANAGE_PRINT_JOB或<!--DelEnd-->ohos.permission.PRINT
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -1650,7 +1650,7 @@ startDiscoverPrinter(extensionList: Array&lt;string&gt;, callback: AsyncCallback
 
 通过指定“打印扩展能力列表”来发现打印机，发现的打印机具备指定的打印扩展能力。如果指定空的打印扩展能力列表，则表示加载所有扩展能力。使用callback异步回调。在不需要继续发现时，调用[stopDiscoverPrinter](#printstopdiscoverprinter20)停止发现，释放系统资源，否则会导致系统持续进行打印机发现，消耗系统资源。
 
-**需要权限：** ohos.permission.MANAGE_PRINT_JOB或ohos.permission.PRINT
+**需要权限：** <!--Del-->ohos.permission.MANAGE_PRINT_JOB或<!--DelEnd-->ohos.permission.PRINT
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -1693,7 +1693,7 @@ startDiscoverPrinter(extensionList: Array&lt;string&gt;): Promise&lt;void&gt;
 
 通过指定“打印扩展能力列表”来发现打印机，发现的打印机具备指定的打印扩展能力。如果指定空的打印扩展能力列表，则表示加载所有扩展能力，使用Promise异步回调。在不需要继续发现时，调用[stopDiscoverPrinter](#printstopdiscoverprinter20)停止发现，释放系统资源，否则会导致系统持续进行打印机发现，消耗系统资源。
 
-**需要权限：** ohos.permission.MANAGE_PRINT_JOB或ohos.permission.PRINT
+**需要权限：** <!--Del-->ohos.permission.MANAGE_PRINT_JOB或<!--DelEnd-->ohos.permission.PRINT
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -1739,7 +1739,7 @@ stopDiscoverPrinter(callback: AsyncCallback&lt;void&gt;): void
 
 停止发现打印机，使用callback异步回调。
 
-**需要权限：** ohos.permission.MANAGE_PRINT_JOB或ohos.permission.PRINT
+**需要权限：** <!--Del-->ohos.permission.MANAGE_PRINT_JOB或<!--DelEnd-->ohos.permission.PRINT
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -1777,7 +1777,7 @@ stopDiscoverPrinter(): Promise&lt;void&gt;
 
 停止发现打印机，使用Promise异步回调。
 
-**需要权限：** ohos.permission.MANAGE_PRINT_JOB或ohos.permission.PRINT
+**需要权限：** <!--Del-->ohos.permission.MANAGE_PRINT_JOB或<!--DelEnd-->ohos.permission.PRINT
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -1813,7 +1813,7 @@ connectPrinter(printerId: string, callback: AsyncCallback&lt;void&gt;): void
 
 通过打印机ID连接打印机，使用callback异步回调。
 
-**需要权限：** ohos.permission.MANAGE_PRINT_JOB或ohos.permission.PRINT
+**需要权限：** <!--Del-->ohos.permission.MANAGE_PRINT_JOB或<!--DelEnd-->ohos.permission.PRINT
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -1854,7 +1854,7 @@ connectPrinter(printerId: string): Promise&lt;void&gt;
 
 通过打印机ID连接打印机，使用Promise异步回调。
 
-**需要权限：** ohos.permission.MANAGE_PRINT_JOB或ohos.permission.PRINT
+**需要权限：** <!--Del-->ohos.permission.MANAGE_PRINT_JOB或<!--DelEnd-->ohos.permission.PRINT
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -2124,7 +2124,7 @@ updatePrintJobState(jobId: string, state: PrintJobState, subState: PrintJobSubSt
 
 更新打印任务状态，使用callback异步回调。
 
-**需要权限：** ohos.permission.MANAGE_PRINT_JOB或ohos.permission.ENTERPRISE_MANAGE_PRINT
+**需要权限：** <!--Del-->ohos.permission.MANAGE_PRINT_JOB或<!--DelEnd-->ohos.permission.ENTERPRISE_MANAGE_PRINT
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -2170,7 +2170,7 @@ updatePrintJobState(jobId: string, state: PrintJobState, subState: PrintJobSubSt
 
 更新打印任务状态，使用Promise异步回调。
 
-**需要权限：** ohos.permission.MANAGE_PRINT_JOB或ohos.permission.ENTERPRISE_MANAGE_PRINT
+**需要权限：** <!--Del-->ohos.permission.MANAGE_PRINT_JOB或<!--DelEnd-->ohos.permission.ENTERPRISE_MANAGE_PRINT
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -2219,7 +2219,7 @@ updatePrinterInformation(printerInformation: PrinterInformation): Promise&lt;voi
 
 更新系统中打印机的部分信息，使用Promise异步回调。当前仅允许更新[PrinterInformation](#printerinformation14)的alias和options字段。
 
-**需要权限：** ohos.permission.MANAGE_PRINT_JOB或ohos.permission.ENTERPRISE_MANAGE_PRINT
+**需要权限：** <!--Del-->ohos.permission.MANAGE_PRINT_JOB或<!--DelEnd-->ohos.permission.ENTERPRISE_MANAGE_PRINT
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -2317,7 +2317,7 @@ addPrinter(printerName: string, uri: string, ppdName?: string, options?: string)
 
 添加打印机到系统中，使用Promise异步回调。该接口面向打印驱动、打印管理软件、三方打印管理软件、云打印等需要管理打印机或扫描仪的场景。
 
-**需要权限：** ohos.permission.MANAGE_PRINT_JOB或ohos.permission.PRINTER_DRIVER
+**需要权限：** <!--Del-->ohos.permission.MANAGE_PRINT_JOB或<!--DelEnd-->ohos.permission.PRINTER_DRIVER
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
