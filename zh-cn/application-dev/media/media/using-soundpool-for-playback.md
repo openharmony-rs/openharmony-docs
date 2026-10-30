@@ -35,7 +35,9 @@ SoundPool当前支持播放解码后1MB以下的音频资源，解码后大小�
 
 1. 调用[createSoundPool](../../reference/apis-media-kit/arkts-apis-media-f.md#mediacreatesoundpool10-1)方法创建SoundPool实例。
 
-   ```ts
+   <!-- @[SoundPool_Creat](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
    import { media } from '@kit.MediaKit';
    import { audio } from '@kit.AudioKit';
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -54,7 +56,9 @@ SoundPool当前支持播放解码后1MB以下的音频资源，解码后大小�
 
 2. 调用[on('loadComplete')](../../reference/apis-media-kit/js-apis-inner-multimedia-soundPool.md#onloadcomplete)方法，用于监听“资源加载完成”。
 
-   ```ts
+   <!-- @[SoundPool_onLoadComplete](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
    private soundId: number = 0;
    // 加载完成回调。
    this.soundPool!.on('loadComplete', (soundId_: number) => {
@@ -69,7 +73,9 @@ SoundPool当前支持播放解码后1MB以下的音频资源，解码后大小�
 
     当同时注册'playFinished'事件回调和'playFinishedWithStreamId'事件回调时，当音频播放完成的时候，仅会触发'playFinishedWithStreamId'事件回调，不会触发'playFinished'事件回调。
 
-    ```ts
+   <!-- @[SoundPool_onPlayFinshed](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
     this.soundPool!.on('playFinished', () => {
       console.info("receive play finished message");
       // 可进行下次播放。
@@ -81,7 +87,9 @@ SoundPool当前支持播放解码后1MB以下的音频资源，解码后大小�
 
 4. 调用on('error')方法，设置错误类型监听。
 
-    ```ts
+   <!-- @[SoundPool_onError](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
     this.soundPool!.on('error', (error: BusinessError) => {
       console.error('error happened,message is :' + error.code);
       console.error('error happened,message is :' + error.message);
@@ -94,7 +102,9 @@ SoundPool当前支持播放解码后1MB以下的音频资源，解码后大小�
 
     当系统加载完毕音频资源文件的时候，会通过loadComplete回调，通知用户资源加载完成，请在收到回调之后，再进行后续的play操作。
 
-    ```ts
+   <!-- @[SoundPool_Load](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
     import { BusinessError } from '@kit.BasicServicesKit';
 
     private soundId: number = 0;
@@ -108,7 +118,9 @@ SoundPool当前支持播放解码后1MB以下的音频资源，解码后大小�
 
 6. 配置播放参数PlayParameters，并在收到loadComplete回调通知之后，调用play方法播放音频。多次调用play播放同一个soundID，只会播放一次。
 
-    ```ts
+   <!-- @[SoundPool_Play](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
     private soundId: number = 0;
     private streamId: number = 0;
     let playParameters: media.PlayParameters = {
@@ -131,60 +143,78 @@ SoundPool当前支持播放解码后1MB以下的音频资源，解码后大小�
 
 7. 调用setLoop方法设置循环次数。
 
-    ```ts
+   <!-- @[SoundPool_SetLoop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
     // 设置循环播放次数。
     await this.soundPool!.setLoop(this.streamId, 2); // 播放3次。
     ```
 
 8. 调用setPriority方法设置优先级。
 
-    ```ts
+  <!-- @[SoundPool_SetPriority](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
     // 设置对应流的优先级。
     await this.soundPool!.setPriority(this.streamId, 1);
     ```
 
 9. 调用setVolume方法设置音量。
 
-    ```ts
+   <!-- @[SoundPool_SetVolume](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
     // 设置音量。
     await this.soundPool!.setVolume(this.streamId, 0.5, 0.5);
     ```
 
 10. 调用stop方法终止指定流的播放。
 
-    ```ts
+   <!-- @[SoundPool_Stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
     // 终止指定流的播放。
     await this.soundPool!.stop(this.streamId);
     ```
 
 11. 调用unload方法卸载音频资源。
 
-    ```ts
+   <!-- @[SoundPool_Unload](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
     // 卸载音频资源。
     await this.soundPool!.unload(this.soundId);
     ```
 
 12. 调用off('loadComplete')方法注销加载完成监听。
 
-    ```ts
+   <!-- @[SoundPool_offLoadComplete](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
     await this.soundPool!.off('loadComplete');
     ```
 
 13. 调用off('playFinished')方法注销播放完成监听。
 
-    ```ts
+   <!-- @[SoundPool_offPlayFinished](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
     await this.soundPool!.off('playFinished');
     ```
 
 14. 调用off('error')方法注销错误类型监听。
 
-    ```ts
+   <!-- @[SoundPool_offError](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
     await this.soundPool!.off('error');
     ```
 
 15. 调用release方法释放SoundPool实例。
 
-    ```ts
+   <!-- @[SoundPool_Release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
     // 释放SoundPool。
     await this.soundPool!.release();
     ```
