@@ -4635,6 +4635,21 @@
 						"end_line":658,
 						"name":"OH_AVPlayer_Release",
 						"start_line":644
+					},
+					{
+						"end_line":24,
+						"name":"hilog",
+						"start_line":22
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/CMakeLists.txt",
+				"functions":[
+					{
+						"end_line":31,
+						"name":"target_link_libraries",
+						"start_line":25
 					}
 				]
 			}
@@ -49707,6 +49722,56 @@
 						"end_line":356,
 						"name":"custom_font_c_disable_system_font_text_step1",
 						"start_line":342
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/media/media/using-ndk-avplayer-for-playback.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/CMakeLists.txt",
+				"functions":[
+					{
+						"end_line":31,
+						"name":"target_link_libraries",
+						"start_line":25
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp",
+				"functions":[
+					{
+						"end_line":24,
+						"name":"hilog",
+						"start_line":22
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/media/media/using-ndk-avplayer-for-video-playback.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/CMakeLists.txt",
+				"functions":[
+					{
+						"end_line":31,
+						"name":"target_link_libraries",
+						"start_line":25
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp",
+				"functions":[
+					{
+						"end_line":24,
+						"name":"hilog",
+						"start_line":22
 					}
 				]
 			}
