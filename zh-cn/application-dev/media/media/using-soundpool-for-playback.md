@@ -191,8 +191,8 @@ SoundPool当前支持播放解码后1MB以下的音频资源，解码后大小�
    <!-- @[SoundPool_offLoadComplete](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
-    await this.soundPool!.off('loadComplete');
-    ```
+   this.soundPool!.off('loadComplete');
+   ```
 
 13. 调用off('playFinished')方法注销播放完成监听。
 
