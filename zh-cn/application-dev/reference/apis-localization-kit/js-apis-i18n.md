@@ -1768,7 +1768,7 @@ let isSupported = i18n.IndexUtil.isBilingualIndexSupported(locale); // isSupport
 
 getBilingualIndexList(mode?: BilingualIndexMode): Array&lt;string&gt;
 
-  获取双语索引列表。
+获取双语索引列表。
   
 **起始版本：** 26.1.0  
   
