@@ -655,7 +655,7 @@ getLogFile(latestSeconds: number): Array&lt;string&gt;
 ```js
 hilog.info(0x0001, "testTag", 'sandbox log to share sandbox with console');
 hilog.setOutputType(hilog.OutputType.SHARE_SANDBOX_WITH_CONSOLE);
-let timeInterval
+let timeInterval = 300;
 let logs = hilog.getLogFile(timeInterval);
 hilog.info(0x0001, "testTag", 'sandbox log files:%{public}s', logs.toString());
 hilog.flush();
