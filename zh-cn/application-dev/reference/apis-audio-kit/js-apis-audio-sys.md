@@ -2858,7 +2858,7 @@ getSoundCardInfo(): Promise\<SoundCardInfo\>
 
 | 类型 | 说明 |
 | ------------------- | ------------------------------ |
-| Promise\<[SoundCardInfo](#soundcardinfo)\> | Promise对象，返回内置声卡信息。 |
+| Promise\<[SoundCardInfo](arkts-apis-audio-AudioDeviceEnhanceManager.md#soundcardinfo)\> | Promise对象，返回内置声卡信息。 |
 
 **错误码：**
 
@@ -3622,41 +3622,6 @@ try {
   console.error(`Failed to unsubscribe download status change. Code: ${error.code}, message: ${error.message}`);
 }
 ```
-
-## SoundCardType
-
-枚举，声卡类型。
-
-**起始版本：** 26.1.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
-| 名称 | 值 | 说明 |
-| :--- | :--- | :--- |
-| ONBOARD | 0 | 板载声卡。 |
-| USB | 1 | USB声卡。 |
-
-## SoundCardInfo
-
-描述声卡信息。
-
-**起始版本：** 26.1.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
-| 名称 | 类型 | 只读 | 可选 | 说明 |
-| :--- | :--- | :--- | :--- | :--- |
-| name | string | 是 | 否 | 声卡名称，最大长度为256。 |
-| vendor | string | 是 | 否 | 声卡厂商，最大长度为128。 |
-| model | string | 是 | 否 | 声卡型号，最大长度为128。 |
-| busAddress | string | 是 | 否 | 声卡总线地址，最大长度为256。 |
-| driver | string | 是 | 否 | 声卡驱动信息，最大长度为128。 |
-| cardId | string | 是 | 是 | 声卡ID，最大长度为128。默认值：默认使用板载声卡的声卡ID。 |
-| cardType | [SoundCardType](#soundcardtype) | 是 | 是 | 声卡类型。默认值：默认是板载声卡类型。 |
 
 ## AudioRoutingManager<sup>9+</sup>
 

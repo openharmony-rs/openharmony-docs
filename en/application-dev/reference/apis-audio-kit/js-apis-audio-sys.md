@@ -2654,7 +2654,7 @@ Obtains information about the built-in sound card of the current audio device, i
 
 | Type| Description|
 | ------------------- | ------------------------------ |
-| Promise\<[SoundCardInfo](#soundcardinfo)\> | Promise used to return the built-in sound card information.|
+| Promise\<[SoundCardInfo](arkts-apis-audio-AudioDeviceEnhanceManager.md#soundcardinfo)\> | Promise used to return the built-in sound card information.|
 
 **Error codes**
 
@@ -2681,43 +2681,6 @@ deviceEnhanceManager.getSoundCardInfo().then((soundCardInfo: audio.SoundCardInfo
   console.error(`Failed to get sound card info. Code: ${err.code}, Message: ${err.message}`);
 });
 ```
-
-
-
-## SoundCardType
-
-Enumerates sound card types.
-
-**Since:** 26.1.0
-
-**Model restriction**: This API can be used only in the stage model.
-
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
-| Name| Value| Description|
-| :--- | :--- | :--- |
-| ONBOARD | 0 | Onboard sound card. |
-| USB | 1 | USB sound card. |
-
-## SoundCardInfo
-
-Describes the sound card information.
-
-**Since:** 26.1.0
-
-**Model restriction**: This API can be used only in the stage model.
-
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
-| Name| Type| Read-Only| Optional| Description|
-| :--- | :--- | :--- | :--- | :--- |
-| name | string | Yes| No| Sound card name. The maximum length is 256.|
-| vendor | string | Yes| No| Sound card vendor. The maximum length is 128.|
-| model | string | Yes| No| Sound card model. The maximum length is 128.|
-| busAddress | string | Yes| No| Sound card bus address. The maximum length is 256.|
-| driver | string | Yes| No| Sound card driver. The maximum length is 128.|
-| cardId | string | Yes| Yes| Sound card ID. The maximum length is 128. Default value: Default sound card ID of the onboard sound card.|
-| cardType | [SoundCardType](#soundcardtype) | Yes| Yes| Sound card type. Default value: The default is the onboard sound card type.|
 
 ## AudioRoutingManager<sup>9+</sup>
 
