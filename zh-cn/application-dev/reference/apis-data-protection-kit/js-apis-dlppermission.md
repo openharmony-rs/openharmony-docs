@@ -1039,7 +1039,7 @@ startDLPManagerForResult(context: common.Context, want: Want, window: window.Win
 >
 > 该接口仅支持域账号调用。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

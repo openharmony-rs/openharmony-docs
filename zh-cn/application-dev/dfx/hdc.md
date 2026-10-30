@@ -7,7 +7,7 @@
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
 
-hdc（OpenHarmony Device Connector）是提供给开发人员的命令行调试工具，用于与设备进行交互调试、数据传输、日志查看以及应用安装等操作。该工具支持在Windows/Linux/MacOS系统上运行，为开发者提供高效、便捷的设备调试能力。
+hdc（OpenHarmony Device Connector）是提供给开发人员的命令行调试工具，用于与设备进行交互调试、数据传输、日志查看以及应用安装等操作。该工具支持在Windows/Linux/MacOS/OpenHarmony系统上运行，为开发者提供高效、便捷的设备调试能力。
 
 hdc包含三部分：
 
@@ -31,7 +31,7 @@ hdc包含三部分：
 
 hdc可以选择以下任意一种方式获取：
 
-1. 通过OpenHarmony SDK获取hdc工具。OpenHarmony SDK已嵌入[DevEco Studio](https://developer.huawei.com/consumer/cn/deveco-studio/)中，无需额外下载配置。hdc默认安装在DevEco Studio/sdk/default/openharmony/toolchains路径下，MacOS系统的sdk位于DevEco Studio/Contents目录下。
+1. 通过OpenHarmony SDK获取hdc工具。OpenHarmony SDK已嵌入[DevEco Studio](https://developer.huawei.com/consumer/cn/deveco-studio/)中，无需额外下载配置。hdc默认安装在DevEco Studio/sdk/default/openharmony/toolchains路径下，MacOS系统的sdk位于DevEco Studio/Contents目录下，hdc全路径可以在DevEco Studio的终端中执行where/which hdc查看。
 
 2. 通过[Command Line Tools](https://developer.huawei.com/consumer/cn/download/)工具中的sdk目录获取相关工具。hdc程序默认安装在Command Line Tools/sdk/default/openharmony/toolchains路径下。
 
@@ -53,7 +53,7 @@ hdc支持USB和无线两种连接调试方式。在设备的设置>系统>开发
 
    - 在搜索栏中搜索“查看高级系统设置”。在环境变量>系统变量>Path>编辑中，将hdc.exe所在目录添加到Path。环境变量配置完成后，请重启电脑，即可在命令行窗口执行hdc命令。
 
-2. Linux/MacOS系统：
+2. Linux/MacOS/OpenHarmony系统：
 
    - 打开终端工具，执行以下命令，根据输出结果分别执行不同的命令。
 
@@ -1509,6 +1509,7 @@ hdc -l 5 start
 | Windows | %temp%\ | 实际路径参考：C:\\Users\用户名\AppData\Local\Temp<br/>（实际使用请替换用户名变量）。 |
 | Linux | /tmp/ | - |
 | MacOS | $TMPDIR/ | 实际路径可通过echo $TMPDIR查看，执行cd $TMPDIR命令可直接跳转至相应目录。 |
+| OpenHarmony | $TMPDIR/ | 实际路径参考：/storage/media/{currentUserId}/local/files/Docs/.hdc<br/>（实际使用请替换用户id）。 |
 
 日志文件类型包括：
 
@@ -1648,6 +1649,7 @@ Kill subservers finish
 | Windows | %temp%\hdc_cmd\ | 实际路径参考：C:\\Users\用户名\AppData\Local\Temp\hdc_cmd\<br/>（实际使用请替换用户名变量）。 |
 | Linux | /tmp/hdc_cmd/ | - |
 | MacOS | $TMPDIR/hdc_cmd/ | - |
+| OpenHarmony | $TMPDIR/hdc_cmd/ | 实际路径参考：/storage/media/{currentUserId}/local/files/Docs/hdc_cmd<br/>（实际使用请替换用户id）。|
 
 ### OHOS_HDC_ENCRYPT_CHANNEL
 
@@ -1686,6 +1688,7 @@ Kill subservers finish
 | Windows | 在电脑设置中搜索“查看高级系统设置”，在环境变量>系统变量>Path>编辑中，添加环境变量名称为OHOS_HDC_LOG_LEVEL，变量值为5。配置完毕后点击确认。环境变量配置完成后，关闭并重启命令行或其他使用到OpenHarmony SDK的软件，以生效新配置的环境变量。 |
 | Linux | 在~/.bash_profile文件末尾追加内容export OHOS_HDC_LOG_LEVEL=5并保存后，执行source ~/.bash_profile生效当前环境变量。 |
 | MacOS | 在~/.zshrc文件末尾追加内容export OHOS_HDC_LOG_LEVEL=5并保存后，执行source ~/.zshrc生效当前环境变量。环境变量配置完成后，关闭并重启命令行或其他使用到OpenHarmony SDK的软件，以生效新配置的环境变量。 |
+| OpenHarmony | 在~/.zshrc文件末尾追加内容export OHOS_HDC_LOG_LEVEL=5并保存后，执行source ~/.zshrc生效当前环境变量。环境变量配置完成后，关闭并重启命令行或其他使用到OpenHarmony SDK的软件，以生效新配置的环境变量。 |
 
 ## hdc版本配套表
 

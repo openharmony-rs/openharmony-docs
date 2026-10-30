@@ -1133,7 +1133,7 @@ SIGPIPE异常退出时关键日志如下所示：
 
 ### 应用主动退出缺失崩溃日志
 
-为解决应用调用`exit()`、`_exit()`等函数主动退出时因缺失调用栈而难以定位的问题，从API版本26.2.0开始，系统支持“退出捕获”功能。该功能默认关闭且仅限于[debug版本应用](performance-analysis-kit-terminology.md#debug版本应用)的开发调试，开启后会将符合条件的主动退出转换为`SIGABRT`信号，从而生成包含调用栈的CppCrash日志。
+为解决应用调用`exit()`、`_exit()`等函数主动退出时因缺失调用栈而难以定位的问题，从API版本26.1.0开始，系统支持“退出捕获”功能。该功能默认关闭且仅限于[debug版本应用](performance-analysis-kit-terminology.md#debug版本应用)的开发调试，开启后会将符合条件的主动退出转换为`SIGABRT`信号，从而生成包含调用栈的CppCrash日志。
 
 开发者可通过hdc工具设置系统参数`hilog.exit.catch.abort`，该参数控制退出捕获功能的开启和关闭。由于该参数在应用进程启动时读取，修改后必须重启目标应用进程才能生效。
 

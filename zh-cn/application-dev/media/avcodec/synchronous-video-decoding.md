@@ -1,3 +1,11 @@
+---
+kits: ["AVCodec Kit / 音视频编解码服务"]
+description: "介绍以主动请求Buffer送帧方式完成同步模式视频解码的开发流程，支持Surface与Buffer两种输出模式，适用于需要应用主动控制解码输出与取帧节奏的场景。"
+keywords: [视频解码, 同步模式, Surface模式, Buffer模式, OH_VideoDecoder, 主动请求Buffer, YUV, NV12]
+doctype: guide
+status: active
+---
+
 # 同步模式视频解码
 
 <!--Kit: AVCodec Kit-->

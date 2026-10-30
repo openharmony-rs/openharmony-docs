@@ -1256,7 +1256,7 @@ ArkTS-Sta: scrollToIndex(value: int, smooth?: boolean, align?: ScrollAlign, opti
 
 开启smooth动画且未启用快速滚动优化时，会对经过的所有item进行加载和布局计算。当大量加载item时会导致性能问题，开发者可先调用scrollToIndex不带动画跳转到目标附近位置，再调用scrollToIndex带动画滚动到目标位置，以优化性能。
 
-从API版本26.2.0开始，List组件支持通过options.fastScroll设置[快速滚动模式](#fastscrollmode)。当smooth为true且fastScroll设置为FastScrollMode.SKIP_MEASURE或FastScrollMode.SKIP_CREATE_AND_MEASURE时，长距离滚动动画可跳过部分滚动路径，并按所选模式减少这段路径上的子组件创建或测量开销。该选项不改变value、align和extraOffset的含义；smooth为false时不生效。Grid、WaterFlow和ArcList组件不支持此优化，仍按原有方式滚动。
+从API版本26.1.0开始，List组件支持通过options.fastScroll设置[快速滚动模式](#fastscrollmode)。当smooth为true且fastScroll设置为FastScrollMode.SKIP_MEASURE或FastScrollMode.SKIP_CREATE_AND_MEASURE时，长距离滚动动画可跳过部分滚动路径，并按所选模式减少这段路径上的子组件创建或测量开销。该选项不改变value、align和extraOffset的含义；smooth为false时不生效。Grid、WaterFlow和ArcList组件不支持此优化，仍按原有方式滚动。
 
 
 >  **说明：**
@@ -1516,17 +1516,17 @@ getScrollState(): ScrollState
 
 > **说明：**
 >
-> 通过鼠标滚轮滚动设置了[scrollSnapAlign](ts-container-list.md#scrollsnapalign10枚举说明)的List时，限位吸附动画滚动期间返回[Fling](ts-container-list.md#scrollstate枚举说明)。
+> 在[ArcList](ts-container-arclist.md)、设置了[scrollSnapAlign](ts-container-list.md#scrollsnapalign10枚举说明)的List和设置了[scrollSnap](#scrollsnap10)的Scroll中通过鼠标滚轮滚动时，本接口均返回[Fling](ts-container-list.md#scrollstate枚举说明)。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 26.2.0
+**ArkTS-Dyn起始版本：** 26.1.0
 
-**ArkTS-Sta起始版本：** 26.2.0
+**ArkTS-Sta起始版本：** 26.1.0
 
 **返回值：**
 
@@ -1613,7 +1613,7 @@ getScrollState(): ScrollState
 | 名称   | 类型  | 只读 | 可选 | 说明              |
 | ----- | ------ | ------ | -- | ----------------- |
 | extraOffset | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 滑动到指定Index的额外偏移量。如果值为正数，则向底部额外偏移；如果值为负数，则向顶部额外偏移。<br/>默认值：0<br/>单位：vp<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
-| fastScroll | [FastScrollMode](#fastscrollmode) | 否 | 是 | 滚动到指定Index时使用的快速滚动模式。设置为SKIP_MEASURE时，跳过中间子组件的测量；设置为SKIP_CREATE_AND_MEASURE时，跳过中间子组件的创建和测量。仅List组件支持，且仅当scrollToIndex的smooth参数为true时生效。<br/>默认值：FastScrollMode.NONE，与不设置此参数时的行为相同。<br/>取值范围：本枚举定义的0、1、2。传入其他值时，按FastScrollMode.NONE处理，不启用快速滚动优化，其余滚动参数仍按原有规则生效。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 26.2.0 <br/>**ArkTS-Sta起始版本：** 26.2.0 |
+| fastScroll | [FastScrollMode](#fastscrollmode) | 否 | 是 | 滚动到指定Index时使用的快速滚动模式。设置为SKIP_MEASURE时，跳过中间子组件的测量；设置为SKIP_CREATE_AND_MEASURE时，跳过中间子组件的创建和测量。仅List组件支持，且仅当scrollToIndex的smooth参数为true时生效。<br/>默认值：FastScrollMode.NONE，与不设置此参数时的行为相同。<br/>取值范围：本枚举定义的0、1、2。传入其他值时，按FastScrollMode.NONE处理，不启用快速滚动优化，其余滚动参数仍按原有规则生效。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 26.1.0 <br/>**ArkTS-Sta起始版本：** 26.1.0 |
 
 ## FastScrollMode
 
@@ -1626,15 +1626,15 @@ FastScrollMode表示滚动到指定Index时使用的快速滚动模式，配合[
 > - 快速滚动不保证遍历并显示滚动路径上的每一个子组件。
 > - fastScroll传入本枚举未定义的值时，按FastScrollMode.NONE处理，不启用快速滚动优化，其余滚动参数仍按原有规则生效。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 26.2.0
+**ArkTS-Dyn起始版本：** 26.1.0
 
-**ArkTS-Sta起始版本：** 26.2.0
+**ArkTS-Sta起始版本：** 26.1.0
 
 | 名称 | 值 | 说明 |
 | -- | -- | -- |
@@ -2616,7 +2616,7 @@ struct Index {
 
 该示例通过[getScrollState](#getscrollstate)接口，实现了获取滚动状态的功能。
 
-从API版本26.2.0开始，新增getScrollState接口。
+从API版本26.1.0开始，新增getScrollState接口。
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';

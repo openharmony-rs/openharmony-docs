@@ -37,7 +37,7 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 | deviceType | string | 是 | 设备类型。详细请参考[deviceTypes标签](../../quick-start/module-configuration-file.md#devicetypes标签)。<br/>**原子化服务API（仅ArkTS-Dyn）**：从API版本11开始，该接口支持在原子化服务中使用。<br/>示例：wearable<br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24|
 | manufacture | string | 是 | 设备厂家名称。<br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24 |
 | brand | string | 是 | 设备品牌名称。<br/>**原子化服务API（仅ArkTS-Dyn）**：从API版本11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24 |
-| marketName | string | 是 | 外部产品系列。<br/>示例：<!--RP2-->Mate XX<!--RP2End--><br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24 |
+| marketName | string | 是 | <!--RP17-->外部产品系列。<!--RP17End--><br/>示例：<!--RP2-->Mate XX<!--RP2End--><br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24 |
 | productSeries | string | 是 | 产品系列。<br/>示例：<!--RP3-->TAS<!--RP3End--><br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24 |
 | productModel | string | 是 | 认证型号。<br/>**原子化服务API（仅ArkTS-Dyn）**：从API版本11开始，该接口支持在原子化服务中使用。<br/>示例：<!--RP4-->TAS-AL00<!--RP4End--><br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24 |
 | productModelAlias<sup>14+</sup> | string | 是 | 认证型号别名。<br/>**原子化服务API（仅ArkTS-Dyn）**：从API版本14开始，该接口支持在原子化服务中使用。<br/>示例：TAS-AL00<br/>**ArkTS-Dyn起始版本：** 14<br/>**ArkTS-Sta起始版本：** 24 |
@@ -57,8 +57,8 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 | featureVersion | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | Feature版本号，标识规划的新特性版本，值为osFullName中的第三位数值，建议直接使用deviceInfo.featureVersion获取，可提升效率，不建议开发者自主解析osFullName获取。<br/>示例：0<br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24 |
 | buildVersion | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | Build版本号，标识编译构建的版本号，值为osFullName中的第四位数值，建议直接使用deviceInfo.buildVersion获取，可提升效率，不建议开发者自主解析osFullName获取。<br/>示例：1<br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24 |
 | sdkApiVersion | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 系统软件API版本。<br/>**原子化服务API（仅ArkTS-Dyn）**：从API版本14开始，该接口支持在原子化服务中使用。<br/>示例：12<br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24 |
-| sdkMinorApiVersion | number | 是 | 从API版本26.0.0起，为配合语义化版本号，新增次版本号的定义，即中间字段的值，值为整型数。完整版本号由sdkApiVersion.sdkMinorApiVersion.sdkPatchApiVersion共同构成。<br/>**模型约束**： 此接口仅可在Stage模型下使用。<br/>**起始版本**：26.0.0<br/>**原子化服务API（仅ArkTS-Dyn）**：从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>示例：例如系统软件的API版本为26.0.1，则sdkMinorApiVersion为0。例如系统软件的API版本为26.1.0，则sdkMinorApiVersion为1。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.1|
-| sdkPatchApiVersion | number | 是 | 从API版本26.0.0起，为配合语义化版本号，新增修订版本号的定义，即第三个字段的值，值为整型数。完整版本号由sdkApiVersion.sdkMinorApiVersion.sdkPatchApiVersion共同构成。<br/>**模型约束**： 此接口仅可在Stage模型下使用。<br/>**起始版本**：26.0.0<br/>**原子化服务API（仅ArkTS-Dyn）**：从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>示例：例如系统软件的API版本为26.0.1，则sdkPatchApiVersion为1。例如系统软件的API版本为26.1.0，则sdkPatchApiVersion为0。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.1|
+| sdkMinorApiVersion | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 从API版本26.0.0起，为配合语义化版本号，新增次版本号的定义，即中间字段的值，值为整型数。完整版本号由sdkApiVersion.sdkMinorApiVersion.sdkPatchApiVersion共同构成。<br/>**模型约束**： 此接口仅可在Stage模型下使用。<br/>**原子化服务API（仅ArkTS-Dyn）**：从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>示例：例如系统软件的API版本为26.0.1，则sdkMinorApiVersion为0。例如系统软件的API版本为26.1.0，则sdkMinorApiVersion为1。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.1|
+| sdkPatchApiVersion | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 从API版本26.0.0起，为配合语义化版本号，新增修订版本号的定义，即第三个字段的值，值为整型数。完整版本号由sdkApiVersion.sdkMinorApiVersion.sdkPatchApiVersion共同构成。<br/>**模型约束**： 此接口仅可在Stage模型下使用。<br/>**原子化服务API（仅ArkTS-Dyn）**：从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>示例：例如系统软件的API版本为26.0.1，则sdkPatchApiVersion为1。例如系统软件的API版本为26.1.0，则sdkPatchApiVersion为0。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.1|
 | firstApiVersion | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 首个版本系统软件API版本。<br/>示例：3<br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24 |
 | versionId | string | 是 | 版本ID。由deviceType、manufacture、brand、productSeries、osFullName、productModel、softwareModel、sdkApiVersion、incrementalVersion、buildType拼接组成。如果需要获取其中的某个字段值，建议直接使用对应的字段（如deviceType、manufacture等），可提升效率，不建议解析versionId获取。<br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24 |
 | buildType | string | 是 | 构建类型。<br/>示例：default<br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24|
@@ -78,6 +78,8 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 | chipType<sup>21+</sup> | string | 是 | 当前设备CPU芯片型号。<br/>**使用场景**：用于根据芯片型号进行性能适配、设备特性识别、兼容性检查等场景，不同芯片型号可能具有不同的GPU性能、AI加速能力等特性。<br/> 示例：xxxxx<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 24 |
 | bootCount<sup>21+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 当前设备重启次数，获取失败时返回-1。<br/> 示例：100<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 24 |
 | deviceColor | string | 是 | 当前设备颜色。如果无法获取，则返回空字符串<br/>**模型约束**： 此接口仅可在Stage模型下使用。<br/> **起始版本**：26.0.0<br/> 示例：gold<br/>**ArkTS-Dyn起始版本：** 26.0.0<br/>**ArkTS-Sta起始版本：** 26.0.0 |
+| kernelVersion | string | 是 | 获取当前运行环境的内核版本字符串。<br>**模型约束**： 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.0.1<br/>**ArkTS-Sta起始版本：** 26.0.1<br> 示例：HongMeng Kernel 1.0.0 |
+| installTime | string | 是 | 获取系统安装UTC时间戳。<br>**模型约束**： 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.1.0<br/>**ArkTS-Sta起始版本：** 26.1.0<br> 示例：1790784000000 |
 
 **错误码**：
 
@@ -263,6 +265,14 @@ console.info('the value of the deviceInfo bootCount is :' + bootCount);
 let deviceColor: string = deviceInfo.deviceColor;
 // 输出结果：the value of the deviceColor is :blue
 console.info('the value of the deviceColor is :' + deviceColor);
+
+let kernelVersion: string = deviceInfo.kernelVersion;
+// 输出结果：the value of the kernelVersion is :HongMeng Kernel 1.0.0
+console.info('the value of the kernelVersion is :' + kernelVersion);
+ 
+let installTime: string = deviceInfo.installTime;
+// 输出结果：the value of the installTime is :1790784000000
+console.info('the value of the installTime is :' + installTime);
 ```
 
 ## PerformanceClassLevel<sup>19+</sup>

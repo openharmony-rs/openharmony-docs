@@ -58,7 +58,6 @@ addWatcher(watcher: Watcher): AppEventPackageHolder
 
 | 错误码ID | 错误信息                        |
 | -------- | ------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 11102001 | Invalid watcher name. Possible causes: 1. Contain invalid characters; 2. Length is invalid. |
 | 11102002 | Invalid filtering event domain. Possible causes: 1. Contain invalid characters; 2. Length is invalid. |
 | 11102003 | Invalid row value. Possibly caused by the row value is less than zero. |
@@ -309,7 +308,6 @@ removeWatcher(watcher: Watcher): void
 
 | 错误码ID | 错误信息              |
 | -------- | --------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 11102001 | Invalid watcher name. Possible causes: 1. Contain invalid characters; 2. Length is invalid. |
 
 **示例：**
@@ -362,7 +360,6 @@ setEventParam(params: Record&lt;string, ParamType&gt;, domain: string, name?: st
 
 | 错误码ID | 错误信息                                      |
 | -------- | --------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 11100001 | Function disabled. Possibly caused by the param disable in ConfigOption is true. |
 | 11101001 | Invalid event domain. Possible causes: 1. Contain invalid characters; 2. Length is invalid. |
 | 11101002 | Invalid event name. Possible causes: 1. Contain invalid characters; 2. Length is invalid. |
@@ -448,7 +445,7 @@ setEventConfig(name: string, config: Record&lt;string, ParamType&gt;): Promise&l
 
 | 错误码ID | 错误信息                                      |
 | -------- | --------------------------------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3.Parameter verification failed. |
+| 401 | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; <br>3.Parameter verification failed. |
 
 **示例：**
 
@@ -519,7 +516,15 @@ configEventPolicy(policy: EventPolicy): Promise&lt;void&gt;
 
 | 类型                | 说明          |
 | ------------------- | ------------ |
-| Promise&lt;void&gt; | Promise对象，无返回结果。<br>各个事件的事件配置策略，详细规格见[EventPolicy](#eventpolicy22)类型说明。若配置策略设置有误，会导致接口返回失败。<br>- 参数类型设置有误，则返回401通用错误信息；<br>- 参数规格设置有误，则在hilog日志输出相关错误信息。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。<br>各个事件的事件配置策略，详细规格见[EventPolicy](#eventpolicy22)类型说明。若配置策略设置有误，会导致接口返回失败。<br>- 参数规格设置有误，则在hilog日志输出相关错误信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                      |
+| -------- | --------------------------------------------- |
+| 401 | [Sync/Async] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; <br>3.Parameter verification failed. |
 
 **示例：**
 
@@ -696,7 +701,6 @@ ArkTS-Sta: setSize(size: int): void
 
 | 错误码ID | 错误信息            |
 | -------- | ------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 11104001 | Invalid size value. Possibly caused by the size value is less than or equal to zero. |
 
 **示例：**
@@ -736,7 +740,6 @@ ArkTS-Sta: setRow(size: int): void
 
 | 错误码ID | 错误信息            |
 | -------- | ------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 11104001 | Invalid size value. Possibly caused by the size value is less than or equal to zero. |
 
 **示例：**
@@ -864,7 +867,7 @@ write(info: AppEventInfo, callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID | 错误信息                                      |
 | -------- | --------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401      | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; <br>3.Parameter verification failed. |
 | 11100001 | Function disabled. Possibly caused by the param disable in ConfigOption is true. |
 | 11101001 | Invalid event domain. Possible causes: 1. Contain invalid characters; 2. Length is invalid. |
 | 11101002 | Invalid event name. Possible causes: 1. Contain invalid characters; 2. Length is invalid. |
@@ -963,7 +966,7 @@ write(info: AppEventInfo): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息                                      |
 | -------- | --------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401      | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; <br>3.Parameter verification failed. |
 | 11100001 | Function disabled. Possibly caused by the param disable in ConfigOption is true. |
 | 11101001 | Invalid event domain. Possible causes: 1. Contain invalid characters; 2. Length is invalid. |
 | 11101002 | Invalid event name. Possible causes: 1. Contain invalid characters; 2. Length is invalid. |
@@ -1055,14 +1058,6 @@ ArkTS-Sta: addProcessor(processor: Processor): long
 | 类型    | 说明                   |
 | ------ | ---------------------- |
 | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 所添加上报事件数据处理者的ID，标识唯一数据处理者，可用于移除数据处理者。 添加失败返回-1，添加成功返回大于0的值。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息          |
-| ------- | ----------------- |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -1186,14 +1181,6 @@ ArkTS-Sta: removeProcessor(id: long): void
 | ------| ------- | ---- | --------------------------- |
 | id    | ArkTS-Dyn: number<br/>ArkTS-Sta: long  | 是   | 上报事件数据处理者ID。值大于0。由调用[addProcessor](#hiappeventaddprocessor11)或[addProcessorFromConfig](#hiappeventaddprocessorfromconfig20)接口返回值所得。|
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息          |
-| ------- | ----------------- |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-
 **示例：**
 
 ArkTS-Dyn示例：
@@ -1255,7 +1242,7 @@ setUserId(name: string, value: string): void
 
 | 错误码ID | 错误信息          |
 | ------- | ----------------- |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401     | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; <br>3.Parameter verification failed. |
 
 **示例：**
 
@@ -1314,7 +1301,7 @@ getUserId(name: string): string
 
 | 错误码ID | 错误信息          |
 | ------- | ----------------- |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401     | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; <br>3.Parameter verification failed. |
 
 **示例：**
 
@@ -1372,7 +1359,7 @@ setUserProperty(name: string, value: string): void
 
 | 错误码ID | 错误信息          |
 | ------- | ----------------- |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401     | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; <br>3.Parameter verification failed. |
 
 **示例：**
 
@@ -1431,7 +1418,7 @@ getUserProperty(name: string): string
 
 | 错误码ID | 错误信息          |
 | ------- | ----------------- |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401     | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; <br>3.Parameter verification failed. |
 
 **示例：**
 
@@ -1509,7 +1496,6 @@ configure(config: ConfigOption): void
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 11103001 | Invalid max storage quota value. Possibly caused by incorrectly formatted. |
 
 **示例：**
@@ -1623,7 +1609,7 @@ hiAppEvent.configure(config2);
 | logFileCutoffSzBytes    | number | 否 | 是   | 设置崩溃日志截断大小。单位为byte，取值范围为[0, 5242880]。默认值取0，表示不截断崩溃日志。<br/>**ArkTS-Dyn起始版本**：26.0.0<br/>**ArkTS-Sta起始版本**：26.0.0<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 | simplifyVmaPrinting    | boolean | 否 | 是   | 设置崩溃日志是否打印所有VMA（Virtual Memory Area，虚拟内存空间）的映射信息，即崩溃日志中Maps。<br/>true：只打印崩溃日志中出现的地址所属的VMA映射信息，以减小日志大小。<br/>false：打印所有VMA映射信息。<br/>默认值：false。<br/>**ArkTS-Dyn起始版本**：26.0.0<br/>**ArkTS-Sta起始版本**：26.0.0<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 | collectMinidump    | boolean | 否 | 是   | 是否使能[minidump](../../dfx/performance-analysis-kit-terminology.md#minidump)，默认值为false。<!--RP5--><br/>true：[params字段说明](../../dfx/hiappevent-watcher-crash-events.md#params字段说明)中log_over_limit字段判断生成的与已存在的故障日志文件的大小总和上限调整为35MB。<br/>false：log_over_limit字段判断生成的与已存在的故障日志文件的大小总和上限恢复为5MB。<!--RP5End--><br/>**说明**：该配置项为持久化配置，应用未重新设置前，值不变。<br/>**ArkTS-Dyn起始版本**：26.0.0<br/>**ArkTS-Sta起始版本**：26.0.0<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
-| publishOnNextLaunch    | boolean | 否 | 是   | 用于配置应用收到崩溃事件回调的时机，是否固定在应用重启之后收到事件回调。<br>true：使能固定在应用重启之后收到事件回调。<br>false：不使能固定在应用重启之后收到事件回调。<br>默认值：false，不使能固定在应用重启之后收到事件回调。<br>**说明**：该配置项为持久化配置，应用未重新设置前，值不变。<br>**ArkTS-Dyn起始版本**：26.2.0<br/>**ArkTS-Sta起始版本**：26.2.0<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。 |
+| publishOnNextLaunch    | boolean | 否 | 是   | 用于配置应用收到崩溃事件回调的时机，是否固定在应用重启之后收到事件回调。<br>true：使能固定在应用重启之后收到事件回调。<br>false：不使能固定在应用重启之后收到事件回调。<br>默认值：false，不使能固定在应用重启之后收到事件回调。<br>**说明**：该配置项为持久化配置，应用未重新设置前，值不变。<br>**ArkTS-Dyn起始版本**：26.1.0<br/>**ArkTS-Sta起始版本**：26.1.0<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。 |
 
 ## AppFreezePolicy<sup>24+</sup>
 

@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "汇总ArkTS语言基础类库开发的常见问题解答：涵盖TaskPool与Worker及引擎实例的内存隔离、TaskPool线程销毁时机、任务时长限制、预加载与线程复用选型、多线程数据共享、动态加载模块、任务优先级调度等问题。"
+keywords: [基础类库FAQ, 内存隔离, 线程销毁, 任务时长限制, 多线程数据共享, 动态加载模块, 任务优先级, 并发选型, taskpool, worker, sendable]
+doctype: faq
+status: active
+---
+
 # ArkTS语言基础类库开发常见问题
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->

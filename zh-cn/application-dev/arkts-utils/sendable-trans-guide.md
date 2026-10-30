@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍Sendable对象改造实践：使用TurboTrans三方库实现TurboTransJSON序列化反序列化、TurboTransProtobuf编解码并生成Sendable对象，结合makeObserved将Sendable对象转换为观察对象驱动UI实时更新。"
+keywords: [Sendable改造, TurboTrans, TurboTransJSON, TurboTransProtobuf, makeObserved, 可观察对象, UI实时更新]
+doctype: guide
+status: active
+---
+
 # Sendable对象改造实践
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->

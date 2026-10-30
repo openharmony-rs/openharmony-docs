@@ -1,3 +1,11 @@
+---
+kits: ["ArkGraphics 3D / 方舟3D图形"]
+description: "介绍3D场景的搭建与管理流程，包括glTF模型加载、相机与光源节点的创建配置、通过Component3D渲染呈现，以及自定义场景模式下视角交互控制的实现方法。"
+keywords: [ArkGraphics 3D, glTF加载, Component3D, Scene.load, 3D场景]
+doctype: guide
+status: active
+---
+
 # 场景搭建与管理
 <!--Kit: ArkGraphics 3D-->
 <!--Subsystem: Graphics-->

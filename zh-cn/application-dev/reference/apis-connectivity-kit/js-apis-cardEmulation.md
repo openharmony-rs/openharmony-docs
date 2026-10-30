@@ -162,8 +162,8 @@ import cardEmulation from '@ohos.nfc.cardEmulation';
 
 | 名称      | 值         | 说明                |
 | ------- | --------- | ----------------- |
-| PAYMENT | "payment" | 卡模拟应用所使用的业务是支付类型。 |
-| OTHER   | "other"   | 卡模拟应用所使用的业务是其他类型。 |
+| PAYMENT | 'payment' | 卡模拟应用所使用的业务是支付类型。 |
+| OTHER   | 'other'   | 卡模拟应用所使用的业务是其他类型。 |
 
 ## cardEmulation.isSupported<sup>(deprecated)</sup>
 
@@ -593,9 +593,9 @@ on(type: 'hceCmd', callback: AsyncCallback\<number[]>): void
 
 | 错误码ID | 错误信息|
 | ------- | -------|
-|201 | Permission denied.                 |
-|401 | Invalid parameter.                 |
-|801 | Capability not supported.          |
+|201 | Permission denied.<br>适用版本：12+                 |
+|401 | Invalid parameter.<br>适用版本：12+                 |
+|801 | Capability not supported.<br>适用版本：12+          |
 
 **示例：**
 

@@ -1,3 +1,11 @@
+---
+kits: ["ArkGraphics 3D / 方舟3D图形"]
+description: "说明ArkGraphics 3D中.shader资源文件的JSON格式规范，涵盖compatibility_info、vert/frag着色器路径、vertexInputDeclaration、光栅化/深度模板/颜色混合等state管线状态字段的取值与配置要求。"
+keywords: [ArkGraphics 3D, shader文件, vertex shader, fragment shader]
+doctype: guide
+status: active
+---
+
 # .shader资源文件格式要求
 <!--Kit: ArkGraphics 3D-->
 <!--Subsystem: Graphics-->

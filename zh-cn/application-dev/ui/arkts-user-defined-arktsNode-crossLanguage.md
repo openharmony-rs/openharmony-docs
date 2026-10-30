@@ -404,6 +404,10 @@ struct CrossLanguage {
 
 仅以下节点类型支持跨语言设置节点属性。Native侧需要使用[OH_ArkUI_NodeUtils_GetAttachedNodeHandleById](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodeutils_getattachednodehandlebyid)获取待修改属性的节点，不支持对[OH_ArkUI_GetNodeHandleFromNapiValue](../reference/apis-arkui/capi-native-node-napi-h.md#oh_arkui_getnodehandlefromnapivalue)获取的目标节点跨语言设置属性。
 
+> **说明：**
+>
+> 通过C API创建的Scroll、WaterFlow、Grid和List节点支持在ArkTS侧使用`bindController`绑定滚动控制器[Scroller](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#scroller)。从API版本26.0.0开始，调用如上四个组件的对应接口无需开启跨语言属性设置。
+
 | ArkTS侧[TypedFrameNode](../reference/apis-arkui/js-apis-arkui-frameNode.md#typedframenode12)类型 | Native侧[ArkUI_NodeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodetype)类型 | ArkTS属性获取接口 | ArkTS控制器获取/绑定接口 |
 | -------- | -------- | -------- | -------- |
 | [Button](../reference/apis-arkui/js-apis-arkui-typeNode.md#button) | ARKUI_NODE_BUTTON | [getAttribute](../reference/apis-arkui/js-apis-arkui-typeNode.md#getattributebutton20) | NA |

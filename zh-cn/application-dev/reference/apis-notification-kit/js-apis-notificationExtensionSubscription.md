@@ -479,9 +479,9 @@ getUserGrantedBundleIcon(bundleName: string): Promise\<image.PixelMap\>
 
 **需要权限**：ohos.permission.SUBSCRIBE_NOTIFICATION
 
-**ArkTS-Dyn起始版本：** 26.2.0
+**ArkTS-Dyn起始版本：** 26.1.0
 
-**ArkTS-Sta起始版本：** 26.2.0
+**ArkTS-Sta起始版本：** 26.1.0
 
 **参数：**
 
@@ -544,9 +544,9 @@ disableUserGrantedByBundle(bundle: GrantedBundleInfo): Promise\<void\>
 
 **需要权限**：ohos.permission.SUBSCRIBE_NOTIFICATION
 
-**ArkTS-Dyn起始版本：** 26.2.0
+**ArkTS-Dyn起始版本：** 26.1.0
 
-**ArkTS-Sta起始版本：** 26.2.0
+**ArkTS-Sta起始版本：** 26.1.0
 
 **参数：**
 

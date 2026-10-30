@@ -20,7 +20,7 @@
 import { boardInfo } from '@kit.BasicServicesKit';
 ```
 
-## 属性
+## 常量
 
 **系统能力**：SystemCapability.Startup.BoardInfo
 

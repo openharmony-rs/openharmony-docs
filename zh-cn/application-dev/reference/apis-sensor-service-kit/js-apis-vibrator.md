@@ -1398,7 +1398,7 @@ offVibratorStateChange(callback?: Callback&lt;VibratorStatusEvent&gt;): void
 | vibratorId          | number  | 否  | 否  | 马达ID。可用于[startVibration](#vibratorstartvibration9)和[stopVibration](#vibratorstopvibration19)等接口指定目标马达。     |
 | deviceName          | string  | 否  | 否  | 设备名称。     |
 | isHdHapticSupported | boolean | 否  | 否  | 是否支持高清振动。true表示支持高清振动，可使用VibrateFromFile和VibrateFromPattern类型触发振动；false表示不支持，使用自定义振动类型可能效果不佳。 |
-| isSupportIntensity | boolean | 否  | 是  | 是否支持振动强度调节。true表示支持振动强度调节，false表示不支持振动强度调节。默认值：false。<br>**起始版本：** 26.2.0 |
+| isSupportIntensity | boolean | 否  | 是  | 是否支持振动强度调节。true表示支持振动强度调节，false表示不支持振动强度调节。默认值：false。<br>**起始版本：** 26.1.0 |
 | isLocalVibrator     | boolean | 否  | 否  | 是否为本地设备。true表示本地设备，可直接触发振动；false表示远程设备，需在分布式场景下使用。 |
 
 
@@ -1733,11 +1733,11 @@ build(): VibratorPattern;
 | EFFECT_NOTICE_SUCCESS<sup>18+</sup> | 'haptic.notice.success' | 表达成功通知的振动效果。适用于操作成功提醒场景。     |
 | EFFECT_NOTICE_FAILURE<sup>18+</sup> | 'haptic.notice.fail'    | 表达失败通知的振动效果。适用于操作失败提醒场景。     |
 | EFFECT_NOTICE_WARNING<sup>18+</sup> | 'haptic.notice.warning' | 表达警告通知的振动效果。适用于风险警告提醒场景。     |
-| EFFECT_IME_STRENGTH1 | 'haptic.grade.normal.strength1' | 输入法键盘的振动效果。强度为1（最小强度）。<br>**起始版本：** 26.2.0 |
-| EFFECT_IME_STRENGTH2 | 'haptic.grade.normal.strength2' | 输入法键盘的振动效果。强度为2。<br>**起始版本：** 26.2.0 |
-| EFFECT_IME_STRENGTH3 | 'haptic.grade.normal.strength3' | 输入法键盘的振动效果。强度为3（中等强度）。<br>**起始版本：** 26.2.0 |
-| EFFECT_IME_STRENGTH4 | 'haptic.grade.normal.strength4' | 输入法键盘的振动效果。强度为4。<br>**起始版本：** 26.2.0 |
-| EFFECT_IME_STRENGTH5 | 'haptic.grade.normal.strength5' | 输入法键盘的振动效果。强度为5（最大强度）。<br>**起始版本：** 26.2.0 |
+| EFFECT_IME_STRENGTH1 | 'haptic.grade.normal.strength1' | 输入法键盘的振动效果。强度为1（最小强度）。<br>**起始版本：** 26.1.0 |
+| EFFECT_IME_STRENGTH2 | 'haptic.grade.normal.strength2' | 输入法键盘的振动效果。强度为2。<br>**起始版本：** 26.1.0 |
+| EFFECT_IME_STRENGTH3 | 'haptic.grade.normal.strength3' | 输入法键盘的振动效果。强度为3（中等强度）。<br>**起始版本：** 26.1.0 |
+| EFFECT_IME_STRENGTH4 | 'haptic.grade.normal.strength4' | 输入法键盘的振动效果。强度为4。<br>**起始版本：** 26.1.0 |
+| EFFECT_IME_STRENGTH5 | 'haptic.grade.normal.strength5' | 输入法键盘的振动效果。强度为5（最大强度）。<br>**起始版本：** 26.1.0 |
 
 ## VibratorStopMode
 

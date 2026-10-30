@@ -14,8 +14,6 @@
 >
 > - 该组件从API version 10开始支持。后续版本新增内容，采用上角标单独标记该内容的起始版本。
 >
-> - 本模块接口仅可在Stage模型下使用。
->
 > - 该组件从API版本26.0.0开始支持[WithTheme](./ts-container-with-theme.md)。
 
 
@@ -31,6 +29,8 @@
 RichEditor(value: RichEditorOptions)
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -52,6 +52,8 @@ RichEditor(options: RichEditorStyledStringOptions)
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
@@ -71,6 +73,8 @@ RichEditor(options: RichEditorStyledStringOptions)
 RichEditor(options: RichEditorOptions | RichEditorStyledStringOptions)
 
 创建富文本组件。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -121,6 +125,8 @@ ArkTS-Sta: customKeyboard(value: CustomBuilder | ComponentContentBase | undefine
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 10
@@ -143,6 +149,8 @@ ArkTS-Sta: bindSelectionMenu(spanType: RichEditorSpanType | undefined, content: 
 设置自定义选择菜单。支持自定义菜单风格和触发条件，适合需要深度自定义菜单的场景。自定义菜单超长时，建议内部嵌套[Scroll](./ts-container-scroll.md)组件使用，避免键盘被遮挡。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -178,6 +186,8 @@ copyOptions不为CopyOptions.None时，长按组件内容，会弹出文本选�
 设置copyOptions为CopyOptions.None时，禁用复制、剪切、翻译、分享、搜索、帮写功能，且不支持拖拽操作，同时[enableDataDetector](#enabledatadetector11)的实体识别菜单和[enableSelectedDataDetector](#enableselecteddatadetector22)的AI菜单功能将受限。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -221,6 +231,8 @@ decoration:{
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 11
@@ -251,6 +263,8 @@ ArkTS-Sta: dataDetectorConfig(config: TextDataDetectorConfig | undefined)
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 11
@@ -279,6 +293,8 @@ AI菜单生效时，选中范围内需包括且仅包括一个完整的AI实体�
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 22
@@ -306,6 +322,8 @@ ArkTS-Sta: enablePreviewText(enable: boolean | undefined)
 > 从API version 18开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -343,6 +361,8 @@ ArkTS-Sta: placeholder(value: ResourceStr | undefined, style?: PlaceholderStyle 
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 12
@@ -366,6 +386,8 @@ ArkTS-Sta: caretColor(value: ResourceColor | undefined)
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 12
@@ -387,6 +409,8 @@ ArkTS-Sta: selectedBackgroundColor(value: ResourceColor | undefined)
 设置文本选中高亮颜色。如果未设置不透明度或设置为完全不透明，默认使用20%不透明度。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -418,6 +442,8 @@ ArkTS-Sta: editMenuOptions(editMenu: EditMenuOptions | undefined)
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 12
@@ -441,6 +467,8 @@ ArkTS-Sta: enterKeyType(value: EnterKeyType | undefined)
 设置后，软键盘回车键的图标和触发行为将根据指定类型变化，不同EnterKeyType对应不同的回车键样式。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -468,6 +496,8 @@ ArkTS-Sta: enableKeyboardOnFocus(isEnabled: boolean | undefined)
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 12
@@ -494,6 +524,8 @@ RichEditor滚动条的显示模式。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 13
@@ -516,6 +548,8 @@ ArkTS-Sta: maxLength(maxLength: int | undefined)
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 18
@@ -537,6 +571,8 @@ ArkTS-Sta: maxLines(maxLines: int | undefined)
 设置组件可显示的最大行数。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -564,6 +600,8 @@ ArkTS-Sta: enableHapticFeedback(isEnabled: boolean | undefined)
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 13
@@ -588,6 +626,8 @@ ArkTS-Sta: keyboardAppearance(appearance: KeyboardAppearance | undefined)
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 15
@@ -609,6 +649,8 @@ ArkTS-Sta: stopBackPress(isStopped: boolean | undefined)
 设置是否阻止返回键传递。适用于编辑内容未保存时阻止返回避免数据丢失、弹窗编辑等需要防止用户误操作退出编辑的场景。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -634,6 +676,8 @@ ArkTS-Sta: undoStyle(style: UndoStyle | undefined)
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 20
@@ -655,6 +699,8 @@ ArkTS-Sta: enableAutoSpacing(enable: boolean | undefined)
 设置是否开启中文与西文的自动间距。适用于混排中英文内容（如新闻文章、技术文档）等需要改善中西文之间阅读体验的场景。开启后，中文字符与西文字符之间将自动插入间距；关闭后不自动插入间距。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -678,6 +724,8 @@ ArkTS-Sta: scrollBarColor(color: ColorMetrics | undefined)
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 21开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 21
@@ -698,7 +746,7 @@ ArkTS-Sta: includeFontPadding(include: boolean | undefined)
 
 设置是否在首行和尾行增加间距以避免文字截断。适用于自定义字体行高较小导致文字被裁剪、紧凑排版等场景。不通过该接口设置，默认不增加间距。
 
-从API版本26.2.0开始，该接口与[fallbackLineSpacing](#fallbacklinespacing23)支持通过module.json5中配置[metadata](../../../../application-dev/quick-start/module-structure.md#metadata对象内部结构)字段统一开启，两个能力同时生效，不支持单独开启。配置后，[Text](ts-basic-components-text.md)、[TextArea](ts-basic-components-textarea.md)、[TextInput](ts-basic-components-textinput.md)、[RichEditor](ts-basic-components-richeditor.md)、[Search](ts-basic-components-search.md)等文本类组件在未显式设置对应属性时默认按true处理；组件显式设置的值优先于metadata开关；未配置metadata的应用行为不变。配置如下：
+从API版本26.1.0开始，该接口与[fallbackLineSpacing](#fallbacklinespacing23)支持通过module.json5中配置[metadata](../../../../application-dev/quick-start/module-structure.md#metadata对象内部结构)字段统一开启，两个能力同时生效，不支持单独开启。配置后，[Text](ts-basic-components-text.md)、[TextArea](ts-basic-components-textarea.md)、[TextInput](ts-basic-components-textinput.md)、[RichEditor](ts-basic-components-richeditor.md)、[Search](ts-basic-components-search.md)等文本类组件在未显式设置对应属性时默认按true处理；组件显式设置的值优先于metadata开关；未配置metadata的应用行为不变。配置如下：
 ```json
 "metadata": [
   {
@@ -709,6 +757,8 @@ ArkTS-Sta: includeFontPadding(include: boolean | undefined)
 ```
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -734,7 +784,7 @@ ArkTS-Sta: fallbackLineSpacing(enabled: boolean | undefined)
 
 该接口依赖[RichEditorTextStyle](#richeditortextstyle)的lineHeight属性。当lineHeight设置值小于当前字号下文本渲染出的实际高度时，fallbackLineSpacing属性将生效。
 
-从API版本26.2.0开始，该接口与[includeFontPadding](#includefontpadding23)支持通过module.json5中配置[metadata](../../../../application-dev/quick-start/module-structure.md#metadata对象内部结构)字段统一开启，两个能力同时生效，不支持单独开启。配置后，[Text](ts-basic-components-text.md)、[TextArea](ts-basic-components-textarea.md)、[TextInput](ts-basic-components-textinput.md)、[RichEditor](ts-basic-components-richeditor.md)、[Search](ts-basic-components-search.md)等文本类组件在未显式设置对应属性时默认按true处理；组件显式设置的值优先于metadata开关；未配置metadata的应用行为不变。配置如下：
+从API版本26.1.0开始，该接口与[includeFontPadding](#includefontpadding23)支持通过module.json5中配置[metadata](../../../../application-dev/quick-start/module-structure.md#metadata对象内部结构)字段统一开启，两个能力同时生效，不支持单独开启。配置后，[Text](ts-basic-components-text.md)、[TextArea](ts-basic-components-textarea.md)、[TextInput](ts-basic-components-textinput.md)、[RichEditor](ts-basic-components-richeditor.md)、[Search](ts-basic-components-search.md)等文本类组件在未显式设置对应属性时默认按true处理；组件显式设置的值优先于metadata开关；未配置metadata的应用行为不变。配置如下：
 ```json
 "metadata": [
   {
@@ -745,6 +795,8 @@ ArkTS-Sta: fallbackLineSpacing(enabled: boolean | undefined)
 ```
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -775,6 +827,8 @@ ArkTS-Sta: compressLeadingPunctuation(enabled: boolean | undefined)
 > 支持压缩的标点符号，请参考[ParagraphStyle](../../apis-arkgraphics2d/js-apis-graphics-text.md#paragraphstyle)的行首压缩的标点范围。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -816,6 +870,8 @@ selectedDragPreviewStyle(value: SelectedDragPreviewStyle | undefined)
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 23
@@ -840,6 +896,8 @@ singleLine(isEnable: boolean | undefined)
 >
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -944,6 +1002,8 @@ ArkTS-Sta: onReady(callback:VoidCallback | undefined)
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 10
@@ -972,6 +1032,8 @@ ArkTS-Sta: onSelect(callback:Callback\<RichEditorSelection\> | undefined)
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 10
@@ -997,6 +1059,8 @@ ArkTS-Sta: aboutToIMEInput(callback:Callback\<RichEditorInsertValue, boolean\> |
 使用[RichEditorStyledStringOptions](#richeditorstyledstringoptions12)构建的RichEditor组件不支持该回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1026,6 +1090,8 @@ ArkTS-Sta: onDidIMEInput(callback:Callback\<TextRange> | undefined)
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 12
@@ -1053,6 +1119,8 @@ ArkTS-Sta: onIMEInputComplete(callback:Callback\<RichEditorTextSpanResult\> | un
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 10
@@ -1079,6 +1147,8 @@ ArkTS-Sta: aboutToDelete(callback:Callback\<RichEditorDeleteValue, boolean\> | u
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 10
@@ -1102,6 +1172,8 @@ ArkTS-Sta: onDeleteComplete(callback:VoidCallback | undefined)
 使用[RichEditorStyledStringOptions](#richeditorstyledstringoptions12)构建的RichEditor组件不支持该回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1127,6 +1199,8 @@ ArkTS-Sta: onPaste(callback: PasteEventCallback | undefined)
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 11
@@ -1148,6 +1222,8 @@ ArkTS-Sta: onSelectionChange(callback:Callback\<RichEditorRange\> | undefined)
 内容选择区域或编辑状态下的光标位置发生变化时，将触发该回调。光标位置变化时，回调中选择区域的起始和终止位置相等。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1171,6 +1247,8 @@ ArkTS-Sta: onEditingChange(callback: Callback\<boolean\> | undefined)
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 12
@@ -1192,6 +1270,8 @@ ArkTS-Sta: onSubmit(callback: SubmitCallback | undefined)
 按下软键盘输入法回车键时触发该回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1221,6 +1301,8 @@ ArkTS-Sta: onWillChange(callback: Callback\<[RichEditorChangeValue](#richeditorc
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 12
@@ -1249,6 +1331,8 @@ ArkTS-Sta: onDidChange(callback: OnDidChangeCallback | undefined)
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 12
@@ -1273,6 +1357,8 @@ ArkTS-Sta: onCut(callback: Callback\<CutEvent\> | undefined)
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 12
@@ -1296,6 +1382,8 @@ ArkTS-Sta: onCopy(callback: Callback\<CopyEvent\> | undefined)
 使用[RichEditorStyledStringOptions](#richeditorstyledstringoptions12)构建的RichEditor组件，默认支持图文的复制。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1324,6 +1412,8 @@ onWillAttachIME(callback: Callback\<IMEClient> \| undefined)
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 22
@@ -1340,6 +1430,8 @@ onWillAttachIME(callback: Callback\<IMEClient> \| undefined)
 
 插入文本的信息。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称           | 类型      | 只读 | 可选   | 说明         |
@@ -1354,6 +1446,8 @@ onWillAttachIME(callback: Callback\<IMEClient> \| undefined)
 删除操作和被删除内容的信息。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1375,6 +1469,8 @@ onWillAttachIME(callback: Callback\<IMEClient> \| undefined)
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 10
@@ -1390,6 +1486,8 @@ onWillAttachIME(callback: Callback\<IMEClient> \| undefined)
 ## RichEditorTextSpanResult
 
 文本Span信息。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1413,6 +1511,8 @@ Span位置信息。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 10
@@ -1428,6 +1528,8 @@ Span位置信息。
 
 Span类型信息。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称    | 值     | 说明         |
@@ -1441,6 +1543,8 @@ Span类型信息。
 ## RichEditorResponseType<sup>11+</sup>
 
 菜单的响应类型。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1457,6 +1561,8 @@ Span类型信息。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 20
@@ -1471,6 +1577,8 @@ Span类型信息。
 ## RichEditorTextStyleResult
 
 后端返回的文本样式信息。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1524,6 +1632,8 @@ RichEditorSymbolSpanStyle和RichEditorSymbolSpanStyleResult中fontWeight的转�
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 11
@@ -1543,25 +1653,24 @@ RichEditorSymbolSpanStyle和RichEditorSymbolSpanStyleResult中fontWeight的转�
 
 后端返回的图片信息。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 10
-
-**ArkTS-Sta起始版本：** 23
-
 | 名称               | 类型                                                                   | 只读 | 可选  | 说明               |
 |------------------|-------------------------------------------------------------------|-----|-------|-----------|
-| spanPosition     | [RichEditorSpanPosition](#richeditorspanposition)                 | 否 | 否   | Span位置。|
-| valuePixelMap    | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)                    | 否 | 是   | 图片内容。|
-| valueResourceStr | [ResourceStr](ts-types.md#resourcestr)                            | 否 | 是   | 图片资源id。|
-| imageStyle       | [RichEditorImageSpanStyleResult](#richeditorimagespanstyleresult) | 否 | 否 | 图片样式。|
-| offsetInSpan     | ArkTS-Dyn: [number, number]<br/>ArkTS-Sta: [int, int] | 否 | 否 | Span里图片的起始和结束位置，取值范围为[起始位置, 结束位置)，结束位置对应的内容不包含在内。|
+| spanPosition     | [RichEditorSpanPosition](#richeditorspanposition)                 | 否 | 否   | Span位置。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10  <br/>**ArkTS-Sta起始版本：** 23|
+| valuePixelMap    | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)                    | 否 | 是   | 图片内容。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10  <br/>**ArkTS-Sta起始版本：** 23|
+| valueResourceStr | [ResourceStr](ts-types.md#resourcestr)                            | 否 | 是   | 图片资源id。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10  <br/>**ArkTS-Sta起始版本：** 23|
+| imageStyle       | [RichEditorImageSpanStyleResult](#richeditorimagespanstyleresult) | 否 | 否 | 图片样式。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10  <br/>**ArkTS-Sta起始版本：** 23|
+| offsetInSpan     | ArkTS-Dyn: [number, number]<br/>ArkTS-Sta: [int, int] | 否 | 否 | Span里图片的起始和结束位置，取值范围为[起始位置, 结束位置)，结束位置对应的内容不包含在内。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10  <br/>**ArkTS-Sta起始版本：** 23|
+| imageTag     | string | 否 | 是 | 图片文本标签。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 26.1.0  <br/>**ArkTS-Sta起始版本：** 26.1.0|
 
 ## RichEditorImageSpanStyleResult
 
 后端返回的图片样式信息。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1580,6 +1689,8 @@ RichEditorSymbolSpanStyle和RichEditorSymbolSpanStyleResult中fontWeight的转�
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 11
@@ -1597,6 +1708,8 @@ RichEditor初始化参数。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 10
@@ -1613,6 +1726,8 @@ RichEditor初始化参数。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 12
@@ -1628,6 +1743,8 @@ RichEditor初始化参数。
 图文变化信息。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1646,6 +1763,8 @@ RichEditor初始化参数。
 
 RichEditor组件控制器基类。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 ### getCaretOffset<sup>10+</sup>
 
 ArkTS-Dyn: getCaretOffset(): number
@@ -1657,6 +1776,8 @@ ArkTS-Sta: getCaretOffset(): int | undefined
 当无法获取光标位置时（例如controller未与组件绑定时），该接口返回-1。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1681,6 +1802,8 @@ ArkTS-Sta: setCaretOffset(offset: int): boolean | undefined
 当controller未绑定组件或绑定controller的组件被释放时，该接口返回false，设置不成功。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1708,6 +1831,8 @@ closeSelectionMenu(): void
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 10
@@ -1723,6 +1848,8 @@ ArkTS-Sta: getTypingStyle(): RichEditorTextStyle | undefined
 获取用户预设的文本样式。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1746,6 +1873,8 @@ setTypingStyle(value: RichEditorTextStyle): void
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 11
@@ -1767,6 +1896,8 @@ ArkTS-Sta: setTypingParagraphStyle(style: RichEditorParagraphStyle | undefined):
 设置用户预设的段落样式。仅在组件内容为空或组件末尾换行后，输入文本生效。当controller未绑定组件或绑定controller的组件被释放时，该接口调用无效。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1802,6 +1933,8 @@ selectionStart和selectionEnd均为-1时表示全选，均为0时可以清空选
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 11
@@ -1826,6 +1959,8 @@ ArkTS-Sta: isEditing(): boolean | undefined
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 12
@@ -1848,6 +1983,8 @@ stopEditing(): void
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 12
@@ -1863,6 +2000,8 @@ ArkTS-Sta: getLayoutManager(): LayoutManager | undefined
 获取布局管理器对象。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1886,6 +2025,8 @@ ArkTS-Sta: getPreviewText(): PreviewText | undefined
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 12
@@ -1905,6 +2046,8 @@ getCaretRect(): RectResult | undefined
 返回当前光标与RichEditor组件的相对位置。如果光标不闪烁或controller未绑定组件，返回undefined。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1928,6 +2071,8 @@ deleteBackward(): void
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 23
@@ -1941,6 +2086,8 @@ setStyledPlaceholder(styledString: StyledString): void
 设置无输入时的属性字符串样式的提示文本。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1962,8 +2109,6 @@ scrollToVisible(range?: TextRange): void
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 26.0.0
@@ -1979,6 +2124,8 @@ scrollToVisible(range?: TextRange): void
 ## RichEditorController
 
 RichEditor组件的控制器，继承自[RichEditorBaseController](#richeditorbasecontroller12)。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 
 > **说明：**
@@ -2000,6 +2147,8 @@ ArkTS-Sta: addTextSpan(content: ResourceStr, options?: RichEditorTextSpanOptions
 添加文本内容。如果组件光标闪烁，插入后光标位置更新为新插入文本的后面。当controller未绑定组件或绑定controller的组件被释放时，该接口调用无效。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2031,6 +2180,8 @@ ArkTS-Sta: addImageSpan(value: PixelMap | ResourceStr, options?: RichEditorImage
 该接口为同步接口，在弱网环境下，直接添加网络图片可能会阻塞UI线程造成冻屏问题。不建议直接添加网络图片。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2077,6 +2228,8 @@ ArkTS-Sta: addBuilderSpan(value: CustomBuilder, options?: RichEditorBuilderSpanO
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 11
@@ -2110,15 +2263,15 @@ ArkTS-Sta: addRichEditorBuilderSpan(value: RichEditorBuilderSpan, info?: Builder
 > - 当RichEditor组件使用[RichEditorStyledStringOptions](#richeditorstyledstringoptions12)构造时，不支持此接口。
 > - 撤销/重做不会还原BuilderSpan对象。通过撤销还原时，被移除的BuilderSpan会降级为空格文本Span。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 26.2.0
+**ArkTS-Dyn起始版本：** 26.1.0
 
-**ArkTS-Sta起始版本：** 26.2.0
+**ArkTS-Sta起始版本：** 26.1.0
 
 **参数：**
 
@@ -2145,6 +2298,8 @@ SymbolSpan暂不支持手势、复制操作和拖拽处理。
 
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2175,6 +2330,8 @@ updateSpanStyle(value: RichEditorUpdateTextSpanStyleOptions | RichEditorUpdateIm
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 10
@@ -2199,6 +2356,8 @@ updateParagraphStyle(value: RichEditorParagraphStyleOptions): void
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 11
@@ -2220,6 +2379,8 @@ ArkTS-Sta: getSpans(value?: RichEditorRange): Array<RichEditorImageSpanResult | 
 获取span信息。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2253,15 +2414,15 @@ ArkTS-Sta: getRichEditorBuilderSpans(value?: RichEditorRange): Array\<BuilderSpa
 > - 通过接口[addBuilderSpan](#addbuilderspan11)创建的BuilderSpan，返回的[BuilderSpanInfo](#builderspaninfo)中id为**undefined**（匿名）。
 > - 返回的[BuilderSpanInfo](#builderspaninfo)中的**offset**字段反映当前实际偏移位置，随文本内容变化动态更新。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 26.2.0
+**ArkTS-Dyn起始版本：** 26.1.0
 
-**ArkTS-Sta起始版本：** 26.2.0
+**ArkTS-Sta起始版本：** 26.1.0
 
 **参数：**
 
@@ -2282,6 +2443,8 @@ deleteSpans(value?: RichEditorRange): void
 删除指定范围内的文本和图片。当controller未绑定组件或绑定controller的组件被释放时，该接口调用无效。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2304,6 +2467,8 @@ ArkTS-Sta: getParagraphs(value?: RichEditorRange): Array\<RichEditorParagraphRes
 获取指定范围的段落信息。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2333,6 +2498,8 @@ ArkTS-Sta: getSelection(): RichEditorSelection | undefined
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 11
@@ -2354,6 +2521,8 @@ ArkTS-Sta: fromStyledString(value: StyledString): Array\<RichEditorSpan> | undef
 将属性字符串转换为span信息。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2391,6 +2560,8 @@ ArkTS-Sta: toStyledString(value: RichEditorRange): StyledString | undefined
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 12
@@ -2422,6 +2593,8 @@ ArkTS-Sta: toStyledString(value: RichEditorRange): StyledString | undefined
 
 使用属性字符串构建的RichEditor组件的控制器，继承自[RichEditorBaseController](#richeditorbasecontroller12)。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 ### 导入对象
 
 ```ts
@@ -2437,6 +2610,8 @@ ArkTS-Sta: getSelection(): RichEditorRange | undefined
 获取富文本当前的选中区域范围。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2463,6 +2638,8 @@ setStyledString(styledString: StyledString): void
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 12
@@ -2485,6 +2662,8 @@ ArkTS-Sta: getStyledString(): MutableStyledString | undefined
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 12
@@ -2505,6 +2684,8 @@ onContentChanged(listener: StyledStringChangedListener): void
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 12
@@ -2523,6 +2704,8 @@ onContentChanged(listener: StyledStringChangedListener): void
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 10
@@ -2539,6 +2722,8 @@ onContentChanged(listener: StyledStringChangedListener): void
 定义RichEditor的范围。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2560,6 +2745,8 @@ onContentChanged(listener: StyledStringChangedListener): void
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 10
@@ -2571,6 +2758,8 @@ onContentChanged(listener: StyledStringChangedListener): void
 文本样式选项。
 
 继承自[RichEditorSpanStyleOptions](#richeditorspanstyleoptions)。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2586,6 +2775,8 @@ onContentChanged(listener: StyledStringChangedListener): void
 继承自[RichEditorSpanStyleOptions](#richeditorspanstyleoptions)。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2605,6 +2796,8 @@ SymbolSpan样式选项。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 11
@@ -2622,6 +2815,8 @@ SymbolSpan样式选项。
 继承自[RichEditorRange](#richeditorrange)。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2642,6 +2837,8 @@ SymbolSpan样式选项。
 
 段落样式。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 <!--Table: 20%; 20%; 8%; 8%; 44%-->
@@ -2660,6 +2857,8 @@ SymbolSpan样式选项。
 
 前导边距占位符，用于表示文本段落左侧与组件边缘之间的距离。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 11
@@ -2677,6 +2876,8 @@ SymbolSpan样式选项。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 11
@@ -2692,6 +2893,8 @@ SymbolSpan样式选项。
 
 添加文本的偏移位置和文本样式信息。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 <!--Table: 20%; 20%; 8%; 8%; 44%-->
@@ -2706,6 +2909,8 @@ SymbolSpan样式选项。
 ## RichEditorTextStyle
 
 文本样式信息。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2734,6 +2939,8 @@ SymbolSpan样式选项。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 12
@@ -2749,6 +2956,8 @@ SymbolSpan样式选项。
 
 设置图片的偏移位置和图片样式信息。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 <!--Table: 20%; 20%; 8%; 8%; 44%-->
@@ -2758,10 +2967,13 @@ SymbolSpan样式选项。
 | imageStyle            | [RichEditorImageSpanStyle](#richeditorimagespanstyle) | 否 | 是    | 图片样式信息。当需要自定义图片的大小、垂直对齐方式、缩放类型等样式时传入此参数；省略时，使用系统默认图片样式。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 10  <br>**ArkTS-Sta起始版本：** 23|
 | gesture<sup>11+</sup> | [RichEditorGesture](#richeditorgesture11) | 否 | 是    | 行为触发回调。省略时，仅使用系统默认行为。      <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11  <br/>**ArkTS-Sta起始版本：** 23|
 | onHover<sup>14+</sup> | [OnHoverCallback](#onhovercallback14) | 否 | 是    | 鼠标悬停触发回调。省略时，不执行鼠标悬停回调行为。     <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 14  <br>**ArkTS-Sta起始版本：** 23|
+| imageTag | string | 否 | 是    | 图片文本标签。省略时，不设置图片文本标签。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 26.1.0  <br>**ArkTS-Sta起始版本：** 26.1.0|
 
 ## RichEditorImageSpanStyle
 
 图片样式。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2780,6 +2992,8 @@ SymbolSpan样式选项。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 11
@@ -2796,6 +3010,8 @@ SymbolSpan样式选项。
 组件SymbolSpan样式信息。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2816,6 +3032,8 @@ SymbolSpan样式选项。
 
 设置builder插入的偏移位置和样式。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称     | 类型      | 只读 | 可选   | 说明                                    |
@@ -2831,15 +3049,15 @@ SymbolSpan样式选项。
 >
 > 当RichEditor组件使用[RichEditorStyledStringOptions](#richeditorstyledstringoptions12)构造时，不支持此接口。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 26.2.0
+**ArkTS-Dyn起始版本：** 26.1.0
 
-**ArkTS-Sta起始版本：** 26.2.0
+**ArkTS-Sta起始版本：** 26.1.0
 
 | 名称     | 类型      | 只读 | 可选   | 说明                                    |
 | ------ | ------ | ---- | ----------|--------------------------- |
@@ -2854,15 +3072,15 @@ SymbolSpan样式选项。
 >
 > 当RichEditor组件使用[RichEditorStyledStringOptions](#richeditorstyledstringoptions12)构造时，不支持此接口。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 26.2.0
+**ArkTS-Dyn起始版本：** 26.1.0
 
-**ArkTS-Sta起始版本：** 26.2.0
+**ArkTS-Sta起始版本：** 26.1.0
 
 | 名称     | 类型      | 只读 | 可选   | 说明                                    |
 | ------ | ------ | ---- | ----------|--------------------------- |
@@ -2879,6 +3097,8 @@ RichEditor span信息。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 12
@@ -2893,6 +3113,8 @@ RichEditor span信息。
 ## SelectionMenuOptions
 
 菜单的选项。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2912,6 +3134,8 @@ RichEditor span信息。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 18
@@ -2929,6 +3153,8 @@ RichEditor span信息。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
@@ -2943,6 +3169,8 @@ RichEditor span信息。
 
 定义用户粘贴事件。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
@@ -2955,6 +3183,8 @@ preventDefault(): void
 
 阻止系统默认粘贴事件。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
@@ -2966,6 +3196,8 @@ preventDefault(): void
 定义用户剪切事件。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2981,6 +3213,8 @@ preventDefault(): void
 
 定义用户剪切事件。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
@@ -2993,6 +3227,8 @@ preventDefault(): void
 
 阻止系统默认剪切事件。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
@@ -3004,6 +3240,8 @@ preventDefault(): void
 定义用户复制事件。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3019,6 +3257,8 @@ preventDefault(): void
 
 定义用户复制事件。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
@@ -3031,6 +3271,8 @@ preventDefault(): void
 
 阻止组件的默认复制操作。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
@@ -3042,6 +3284,8 @@ preventDefault(): void
 用户手势事件。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3060,6 +3304,8 @@ preventDefault(): void
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 12
@@ -3077,6 +3323,8 @@ type SubmitCallback = (enterKey: EnterKeyType, event: SubmitEvent) => void
 软键盘按下回车键时的回调事件。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3101,6 +3349,8 @@ ArkTS-Sta: type MenuOnAppearCallback = (start: int, end: int) => void
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 12
@@ -3124,6 +3374,8 @@ ArkTS-Sta: type MenuCallback = (start: int, end: int) => void
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 15
@@ -3145,6 +3397,8 @@ type PasteEventCallback = (event?: PasteEvent) => void
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 12
@@ -3165,6 +3419,8 @@ type OnHoverCallback = (status: boolean, event: HoverEvent) => void
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 14
@@ -3184,6 +3440,8 @@ type OnHoverCallback = (status: boolean, event: HoverEvent) => void
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 10
@@ -3202,6 +3460,8 @@ type OnHoverCallback = (status: boolean, event: HoverEvent) => void
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 10
@@ -3219,6 +3479,8 @@ type OnHoverCallback = (status: boolean, event: HoverEvent) => void
 Url信息。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -8808,7 +9070,7 @@ struct RichEditorResizablePage {
 
 该示例演示通过[addRichEditorBuilderSpan](#addricheditorbuilderspan)添加带身份标识的BuilderSpan，并通过[getRichEditorBuilderSpans](#getricheditorbuilderspans)获取BuilderSpan信息，在日志中打印返回结果。
 
-从API版本26.2.0开始，新增addRichEditorBuilderSpan和getRichEditorBuilderSpans接口。
+从API版本26.1.0开始，新增addRichEditorBuilderSpan和getRichEditorBuilderSpans接口。
 
 ArkTS-Dyn示例：
 ```ts
@@ -9033,3 +9295,207 @@ struct RichEditorBuilderSpanPage {
 ```
 
 ![builderSpanInfoDemo](figures/richeditor-builderspan-info.gif)
+
+### 示例46（获取图片文本标签）
+
+该示例通过[addImageSpan](#addimagespan)插入带[imageTag](#richeditorimagespanoptions)图片文本标签的表情图片，使用[getSelection](#getselection11)获取选中的图片Span并读取其图片文本标签。
+
+从API版本26.1.0开始，[RichEditorImageSpanOptions](#richeditorimagespanoptions)和[RichEditorImageSpanResult](#richeditorimagespanresult)新增imageTag属性。
+
+ArkTS-Dyn示例：
+```ts
+// xxx.ets
+@Entry
+@Component
+struct RichEditorImageTagDemo {
+  controller: RichEditorController = new RichEditorController();
+  options: RichEditorOptions = { controller: this.controller };
+  textSpanOptions: RichEditorTextSpanOptions = { style: { fontSize: 20 } };
+  exampleText: string = 'RichEditor组件';
+  @State tagResult: string = '选中图片后点击按钮获取文本标签';
+
+  build() {
+    Column() {
+      Text(this.tagResult)
+        .fontSize(18)
+        .fontWeight(FontWeight.Bold)
+        .margin({ bottom: 10 })
+
+      RichEditor(this.options)
+        .onReady(() => {
+          this.controller.addTextSpan(this.exampleText, this.textSpanOptions);
+        })
+        .width('80%')
+        .height('15%')
+        .margin(10)
+        .borderWidth(1)
+        .borderColor(Color.Blue)
+
+      Row({ space: 8 }) {
+        Button('微笑表情')
+          .onClick(() => {
+            // $r('app.media.startIcon')为统一占位资源，可替换为开发者所需的表情图片资源。
+            this.controller.addImageSpan($r('app.media.startIcon'), {
+              imageTag: '【微笑】',
+              imageStyle: {
+                size: ['30vp', '30vp'],
+                layoutStyle: { margin: 5 }
+              }
+            });
+          })
+        Button('哭泣表情')
+          .onClick(() => {
+            this.controller.addImageSpan($r('app.media.startIcon'), {
+              imageTag: '【哭泣】',
+              imageStyle: {
+                size: ['30vp', '30vp'],
+                layoutStyle: { margin: 5 }
+              }
+            });
+          })
+        Button('捂脸表情')
+          .onClick(() => {
+            this.controller.addImageSpan($r('app.media.startIcon'), {
+              imageTag: '【捂脸】',
+              imageStyle: {
+                size: ['30vp', '30vp'],
+                layoutStyle: { margin: 5 }
+              }
+            });
+          })
+      }
+      .margin(10)
+
+      Row({ space: 8 }) {
+        Button('选中图片')
+          .onClick(() => {
+            this.controller.setSelection(12, 15, { menuPolicy: MenuPolicy.HIDE });
+          })
+        Button('获取选中图片文本标签')
+          .onClick(() => {
+            let selection = this.controller.getSelection();
+            if (selection === undefined || selection.spans.length === 0) {
+              this.tagResult = '未选中任何内容';
+              return;
+            }
+            let tags: string = '';
+            selection.spans.forEach(item => {
+              if (typeof (item as RichEditorImageSpanResult)['imageStyle'] !== 'undefined') {
+                let imageSpan = item as RichEditorImageSpanResult;
+                if (imageSpan.imageTag !== undefined) {
+                  tags += imageSpan.imageTag;
+                }
+              }
+            });
+            this.tagResult = tags === '' ? '选中的内容不含图片标签' : tags;
+          })
+      }
+      .margin(10)
+    }
+    .justifyContent(FlexAlign.Center)
+    .width('100%')
+    .height('70%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { $r, Button, Color, Column, Component, Entry, FlexAlign, FontWeight, Row, RowOptions, RichEditor,
+  RichEditorController, RichEditorOptions, RichEditorTextSpanOptions, RichEditorImageSpanResult,
+  RichEditorTextSpanResult, State, Text, MenuPolicy } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct RichEditorImageTagDemo {
+  controller: RichEditorController = new RichEditorController();
+  options: RichEditorOptions = { controller: this.controller };
+  textSpanOptions: RichEditorTextSpanOptions = { style: { fontSize: 20 } };
+  exampleText: string = 'RichEditor组件';
+  @State tagResult: string = '选中图片后点击按钮获取文本标签';
+
+  build() {
+    Column() {
+      Text(this.tagResult)
+        .fontSize(18)
+        .fontWeight(FontWeight.Bold)
+        .margin({ bottom: 10 })
+
+      RichEditor(this.options)
+        .onReady(() => {
+          this.controller.addTextSpan(this.exampleText, this.textSpanOptions);
+        })
+        .width('80%')
+        .height('15%')
+        .margin(10)
+        .borderWidth(1)
+        .borderColor(Color.Blue)
+
+      Row({ space: 8 } as RowOptions) {
+        Button('微笑表情')
+          .onClick(() => {
+            // $r('app.media.startIcon')为统一占位资源，可替换为开发者所需的表情图片资源。
+            this.controller.addImageSpan($r('app.media.startIcon'), {
+              imageTag: '【微笑】',
+              imageStyle: {
+                size: ['30vp', '30vp'],
+                layoutStyle: { margin: 5 }
+              }
+            });
+          })
+        Button('哭泣表情')
+          .onClick(() => {
+            this.controller.addImageSpan($r('app.media.startIcon'), {
+              imageTag: '【哭泣】',
+              imageStyle: {
+                size: ['30vp', '30vp'],
+                layoutStyle: { margin: 5 }
+              }
+            });
+          })
+        Button('捂脸表情')
+          .onClick(() => {
+            this.controller.addImageSpan($r('app.media.startIcon'), {
+              imageTag: '【捂脸】',
+              imageStyle: {
+                size: ['30vp', '30vp'],
+                layoutStyle: { margin: 5 }
+              }
+            });
+          })
+      }
+      .margin(10)
+
+      Row({ space: 8 } as RowOptions) {
+        Button('选中图片')
+          .onClick(() => {
+            this.controller.setSelection(12, 15, { menuPolicy: MenuPolicy.HIDE });
+          })
+        Button('获取选中图片文本标签')
+          .onClick(() => {
+            let selection = this.controller.getSelection();
+            if (selection === undefined || selection.spans === undefined || selection.spans.length === 0) {
+              this.tagResult = '未选中任何内容';
+              return;
+            }
+            let tags: string = '';
+            selection.spans.forEach((item: RichEditorTextSpanResult | RichEditorImageSpanResult) => {
+              let imageSpan = item as RichEditorImageSpanResult;
+              if (imageSpan.imageTag !== undefined) {
+                tags += imageSpan.imageTag;
+              }
+            });
+            this.tagResult = tags === '' ? '选中的内容不含图片标签' : tags;
+          })
+      }
+      .margin(10)
+    }
+    .justifyContent(FlexAlign.Center)
+    .width('100%')
+    .height('70%')
+  }
+}
+```
+
+![RichEditorImageTagDemo](figures/richeditor-imagetag.gif)

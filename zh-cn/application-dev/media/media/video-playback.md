@@ -1,5 +1,5 @@
 ---
-kit: ["Media Kit / 媒体服务"]
+kits: ["Media Kit / 媒体服务"]
 description: "介绍使用AVPlayer实现视频端到端播放的开发流程，覆盖创建播放器、设置资源与窗口、状态监听、播放控制（播放/暂停/跳转/停止）、重置与资源释放等完整步骤。"
 keywords: [AVPlayer, 视频播放, 回调监听, 播放控制, 后台播放]
 doctype: guide

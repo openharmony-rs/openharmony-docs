@@ -115,7 +115,7 @@ Timestamp:2025-05-17 19:17:07.000
 | 宏：OH_APP_CRASH_PARAM_SIMPLIFY_VMA_PRINTING<br/>字符串：simplify_vma_printing | const char* | 否 | 是否打印崩溃日志中出现的地址所属的VMA（Virtual Memory Area，虚拟内存空间）映射信息。<br/>"true"：只打印崩溃日志中出现的地址所属的VMA映射信息，即崩溃日志中Maps，以减小日志大小。<br/>"false"：打印所有VMA映射信息。<br/>缺省时默认为"false"。<br>**说明**：从API version 24开始支持该参数。 |
 | 宏：OH_APP_CRASH_PARAM_MERGE_CPPCRASH_APP_LOG<br/>字符串：merge_cppcrash_app_log | const char* | 否 | 是否拼接应用沙箱的日志。<br/>"true"：在 Native Crash 场景拼接应用日志。<br/>"false"：不拼接应用生成日志。 <br/>框架读取的应用日志路径为：沙箱路径 + 应用包名 +  _CppCrash_AppMerge.log，例如：/data/storage/el2/log/com.samples.eventsub_CppCrash_AppMerge.log <br/>如果开发者选择在信号处理函数中生成拼接日志，最长生成时间不超过5s，超过5s无法拼接应用生成的日志。<br/>**注意**：沙箱路径下必须有应用生成的拼接日志。<br>**说明**：从API version 24开始支持该参数。 |
 | 宏：OH_APP_CRASH_PARAM_COLLECT_MINIDUMP<br/>字符串：collect_minidump | const char* | 否 | 是否使能minidump，默认值为"false"。<!--RP1--><br/>"true"：[params字段说明](#params字段说明)中log_over_limit字段判断生成的与已存在的故障日志文件的大小总和上限调整为35MB。<br/>"false"：log_over_limit字段判断生成的与已存在的故障日志文件的大小总和上限恢复为5MB。<!--RP1End--><br/>**说明**：该配置项为持久化配置，应用未重新设置前，值不变。<br>从API版本26.0.0开始支持该参数。 |
-| 宏：OH_APP_CRASH_PARAM_PUBLISH_ON_NEXT_LAUNCH<br>字符串：publish_on_next_launch | const char* | 否 | 用于配置应用收到崩溃事件回调的时机，是否固定在应用重启之后收到事件回调。默认值为false，不使能固定在应用重启之后收到事件回调。<br>**说明**：该配置项为持久化配置，应用未重新设置前，值不变。<br>从API版本26.2.0开始支持该参数。 |
+| 宏：OH_APP_CRASH_PARAM_PUBLISH_ON_NEXT_LAUNCH<br>字符串：publish_on_next_launch | const char* | 否 | 用于配置应用收到崩溃事件回调的时机，是否固定在应用重启之后收到事件回调。默认值为false，不使能固定在应用重启之后收到事件回调。<br>**说明**：该配置项为持久化配置，应用未重新设置前，值不变。<br>从API版本26.1.0开始支持该参数。 |
 
 参数设置示例如下：
 
@@ -127,7 +127,7 @@ OH_HiAppEvent_SetEventConfig配置参考[订阅崩溃事件（C/C++）开发步�
 
 从**API版本26.0.0**开始支持崩溃日志规格自定义设置。系统提供通用的NativeCrash崩溃日志生成功能，同时给应用提供设置崩溃日志配置参数功能，以满足其对日志内容的个性化需求。
 
-从**API版本26.2.0**开始支持使能固定在应用重启后收到崩溃事件回调设置。以满足开发者设置崩溃事件回调时机的个性化需求。
+从**API版本26.1.0**开始支持使能固定在应用重启后收到崩溃事件回调设置。以满足开发者设置崩溃事件回调时机的个性化需求。
 
 | 接口名 | 描述 |
 | -------- | -------- |
@@ -143,24 +143,30 @@ OH_HiAppEvent_SetEventConfig配置参考[订阅崩溃事件（C/C++）开发步�
 
 参数设置示例如下：
 
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog, hiAppEvent } from '@kit.PerformanceAnalysisKit';
+<!-- @[CrashConfig_Policy_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
+```
+
+<!-- @[CrashConfig_Policy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) --> 
+
+``` TypeScript
 let policy: hiAppEvent.EventPolicy = {
-    appCrashPolicy: {
-      pageSwitchLogEnable: true // 启用页面切换日志。ArkTS-Dyn起始版本：24；ArkTS-Sta起始版本：24
-      extendPcLrPrinting: true, // 使能扩展打印pc和lr寄存器附近的内存值。ArkTS-Dyn起始版本：26.0.0；ArkTS-Sta起始版本：26.0.0
-      logFileCutoffSzBytes: 102400, // 截断崩溃日志到100KB。ArkTS-Dyn起始版本：26.0.0；ArkTS-Sta起始版本：26.0.0
-      simplifyVmaPrinting: true, // 使能精简打印maps。ArkTS-Dyn起始版本：26.0.0；ArkTS-Sta起始版本：26.0.0
-      collectMinidump: true // native崩溃场景，使能minidump。ArkTS-Dyn起始版本：26.0.0；ArkTS-Sta起始版本：26.0.0
-      publishOnNextLaunch: true // 使能固定在重启后收到事件回调。ArkTS-Dyn起始版本：26.2.0；ArkTS-Sta起始版本：26.2.0
-    }
+  appCrashPolicy: {
+    pageSwitchLogEnable: true, // 启用页面切换日志。从API version 24开始支持该参数
+    extendPcLrPrinting: true, // 使能扩展打印pc和lr寄存器附近的内存值。从API版本26.0.0开始支持该参数
+    logFileCutoffSzBytes: 102400, // 截断崩溃日志到100KB。从API版本26.0.0开始支持该参数
+    simplifyVmaPrinting: true, // 使能精简打印maps。从API版本26.0.0开始支持该参数
+    collectMinidump: true // native崩溃场景，使能minidump。从API版本26.0.0开始支持该参数
+    publishOnNextLaunch: true // 使能固定在重启后收到事件回调。从API版本26.1.0开始支持该参数
+  }
 };
 hiAppEvent.configEventPolicy(policy).then(() => {
-    hilog.info(0x0000, 'hiAppEvent', `Set crash config policy successfully.`);
+  hilog.info(0x0000, 'hiAppEvent', `Set crash config policy successfully.`);
 }).catch((err: BusinessError) => {
-    hilog.error(0x0000, 'hiAppEvent', `Failed to set crash config policy. code: ${err.code}, message: ${err.message}`);
+  hilog.error(0x0000, 'hiAppEvent', `Failed to set crash config policy. code: ${err.code}, message: ${err.message}`);
 });
 ```
 

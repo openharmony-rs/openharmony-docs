@@ -94,7 +94,7 @@ const LOG_TAG: string = 'testTag-EntryIntent';
   abilityName: 'EntryAbility',
   executeMode: [insightIntent.ExecuteMode.UI_ABILITY_FOREGROUND],
   parameters: {
-    'schema': 'http://json-schema.org/draft-07/schema#',
+    '$schema': 'http://json-schema.org/draft-07/schema#',
     'type': 'object',
     'title': 'Song Schema',
     'description': 'A schema for describing songs and their artists',
@@ -129,7 +129,7 @@ export default class PlayMusicDemo extends InsightIntentEntryExecutor<string> {
     };
     hilog.info(0x0000, LOG_TAG, 'PlayMusicDemo return %{public}s', JSON.stringify(result));
     // 以Promise的方式返回意图执行结果
-    return Promise.reject(result);
+    return Promise.resolve(result);
   }
 }
 ```

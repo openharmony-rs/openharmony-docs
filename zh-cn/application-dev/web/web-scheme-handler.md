@@ -139,40 +139,41 @@ OH_ArkWeb_RegisterCustomSchemes("custom-isolated", ARKWEB_SCHEME_OPTION_DISPLAY_
 
 在ArkTS中可以通过customizeSchemes注册自定义协议，示例如下：
 
-  ``` ts
-    // xxx.ets
-    import { webview } from '@kit.ArkWeb';
-    import { BusinessError } from '@kit.BasicServicesKit';
-
-    @Entry
-    @Component
-    struct WebComponent {
-    controller: webview.WebviewController = new webview.WebviewController();
-    responseWeb: WebResourceResponse = new WebResourceResponse();
-    scheme1: webview.WebCustomScheme = { schemeName: "name1", isSupportCORS: true, isSupportFetch: true };
-    scheme2: webview.WebCustomScheme = { schemeName: "name2", isSupportCORS: true, isSupportFetch: true };
-    scheme3: webview.WebCustomScheme = { schemeName: "name3", isSupportCORS: true, isSupportFetch: true };
-
-    aboutToAppear(): void {
-        try {
-        webview.WebviewController.customizeSchemes([this.scheme1, this.scheme2, this.scheme3]);
-        } catch (error) {
-        console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-        }
-    }
-
-    build() {
-        Column() {
-        Web({ src: 'www.example.com', controller: this.controller })
-            .onInterceptRequest((event) => {
-            if (event) {
-                console.info('url:' + event.request.getRequestUrl());
-            }
-            return this.responseWeb;
-            })
-        }
+  <!-- @[register_custom_schemes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebSchemeHandler/entry/src/main/ets/pages/CustomizeSchemes.ets) -->
+  
+  ``` TypeScript
+  import { webview } from '@kit.ArkWeb';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  @Entry
+  @Component
+  struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+  responseWeb: WebResourceResponse = new WebResourceResponse();
+  scheme1: webview.WebCustomScheme = { schemeName: 'name1', isSupportCORS: true, isSupportFetch: true };
+  scheme2: webview.WebCustomScheme = { schemeName: 'name2', isSupportCORS: true, isSupportFetch: true };
+  scheme3: webview.WebCustomScheme = { schemeName: 'name3', isSupportCORS: true, isSupportFetch: true };
+  
+  aboutToAppear(): void {
+      try {
+      webview.WebviewController.customizeSchemes([this.scheme1, this.scheme2, this.scheme3]);
+      } catch (error) {
+      console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
       }
-    }
+  }
+  
+  build() {
+      Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+          .onInterceptRequest((event) => {
+          if (event) {
+              console.info('url:' + event.request.getRequestUrl());
+          }
+          return this.responseWeb;
+          })
+      }
+      }
+  }
   ```
 
 ### 获取被拦截请求的信息
@@ -200,7 +201,7 @@ OH_ArkWeb_RegisterCustomSchemes("custom-isolated", ARKWEB_SCHEME_OPTION_DISPLAY_
     OH_ArkWebResourceRequest_GetHttpBodyStream(resourceRequest(), &stream_);
     // 设置读取上传数据的读回调。
     OH_ArkWebHttpBodyStream_SetReadCallback(stream_, ReadCallback);
-    // 初始化ArkWeb_HttpBodyStream，其它OH_ArkWebHttpBodyStream*函数需要在初始化进行调用。
+    // 初始化ArkWeb_HttpBodyStream，其它OH_ArkWebHttpBodyStream*函数需要在初始化之后进行调用。
     OH_ArkWebHttpBodyStream_Init(stream_, InitCallback);
   ```
 

@@ -725,11 +725,11 @@ scrollSnapStrategy(strategy?: ScrollSnapAlign | ScrollSnapOffsetProvider)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 26.2.0
+**ArkTS-Dyn起始版本：** 26.1.0
 
 **参数：**
 
@@ -757,7 +757,7 @@ scrollSnapStrategy(strategy: ScrollSnapAlign | ScrollSnapOffsetProvider | undefi
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Sta起始版本：** 26.2.0
+**ArkTS-Sta起始版本：** 26.1.0
 
 **参数：**
 
@@ -3943,7 +3943,7 @@ struct Index {
 
 本示例使用[scrollSnapStrategy](#scrollsnapstrategy)（ArkTS-Dyn）或[scrollSnapStrategy](#scrollsnapstrategy-1)（ArkTS-Sta）设置尾部吸附（ScrollSnapAlign.END）。滚动结束时，目标FlowItem的底边与视口底边对齐。示例采用SLIDING_WINDOW布局模式，包含100个高度不同的FlowItem。
 
-从API版本26.2.0开始，新增scrollSnapStrategy接口。
+从API版本26.1.0开始，新增scrollSnapStrategy接口。
 
 WaterFlowDataSource说明及完整代码参考[示例1（使用基本瀑布流）](#示例1使用基本瀑布流)中对应范式的实现。
 

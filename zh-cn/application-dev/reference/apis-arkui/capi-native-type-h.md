@@ -1327,7 +1327,7 @@ enum OH_ArkUI_FastScrollMode
 > - 快速滚动不保证遍历并显示滚动路径上的每一个子组件。
 > - 向NODE_LIST_SCROLL_TO_INDEX传入本枚举未定义的值时，按OH_ARKUI_FAST_SCROLL_MODE_NONE处理，不启用快速滚动优化，其余滚动参数仍按原有规则生效。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 | 枚举项 | 描述 |
 | -- | -- |

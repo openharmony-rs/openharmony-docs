@@ -347,13 +347,14 @@ let audioSessionManager: audio.AudioSessionManager = audioManager.getSessionMana
 
 ### 音频会话场景
 
-音频会话统一持有焦点时，系统提供了三种音频会话场景。激活AudioSession前需要先通过[setAudioSessionScene](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setaudiosessionscene20)设置对应的音频会话场景，后续激活时系统会根据应用选择的音频会话场景申请对应的音频焦点。
+音频会话统一持有焦点时，系统提供如下几种音频会话场景。激活AudioSession前需要先通过[setAudioSessionScene](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setaudiosessionscene20)设置对应的音频会话场景，后续激活时系统会根据应用选择的音频会话场景申请对应的音频焦点。
 
 | 名称                   | 值 | 匹配的StreamUsage | 说明 | 适用的场景      |
 | :--------------------- |:--|:---------------|:--------|:----------|
-| AUDIO_SESSION_SCENE_MEDIA | 0 | STREAM_USAGE_MUSIC、STREAM_USAGE_MOVIE、STREAM_USAGE_AUDIOBOOK | 媒体音频会话场景。     | 频繁申请和释放焦点的场景（如多个小视频滑动播放），不持有AudioRenderer对象但需监听焦点变化等媒体播放场景。 |
-| AUDIO_SESSION_SCENE_GAME | 1 | STREAM_USAGE_GAME | 游戏音频会话场景。     | 游戏内配乐、配音等游戏音频场景。 |
-| AUDIO_SESSION_SCENE_VOICE_COMMUNICATION  | 2 | STREAM_USAGE_RINGTONE、STREAM_USAGE_VOICE_COMMUNICATION、STREAM_USAGE_VIDEO_COMMUNICATION | VoIP语音通话音频会话场景。 | VoIP通话场景下需同时启动铃声流等通话场景。 |
+| AUDIO_SESSION_SCENE_MEDIA | 0 | STREAM_USAGE_MUSIC、STREAM_USAGE_MOVIE、STREAM_USAGE_AUDIOBOOK | 媒体音频会话场景。     | 频繁申请和释放焦点的场景（如多个小视频滑动播放），不持有AudioRenderer对象但需监听焦点变化等媒体播放场景。<br>**说明：** 从API版本20开始，支持该参数。  |
+| AUDIO_SESSION_SCENE_GAME | 1 | STREAM_USAGE_GAME | 游戏音频会话场景。     | 游戏内配乐、配音等游戏音频场景。<br>**说明：** 从API版本20开始，支持该参数。  |
+| AUDIO_SESSION_SCENE_VOICE_COMMUNICATION  | 2 | STREAM_USAGE_RINGTONE、STREAM_USAGE_VOICE_COMMUNICATION、STREAM_USAGE_VIDEO_COMMUNICATION | VoIP语音通话音频会话场景。 | VoIP通话场景下需同时启动铃声流等通话场景。<br>**说明：** 从API版本20开始，支持该参数。  |
+| AUDIO_SESSION_SCENE_VOICE_MESSAGE  | 3 | STREAM_USAGE_VOICE_MESSAGE | 语音消息音频会话场景。 | 聊天应用中播放语音消息的场景。<br>**说明：** 从API版本26.0.1开始，支持该参数。 |
 
 > **注意：**
 >
@@ -820,7 +821,20 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 从API version 24开始，应用可以通过[setAudioSessionBehavior](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setaudiosessionbehavior24)接口设置音频会话行为参数，在特定场景下获得更优的音频焦点体验。
 
-在用户观看直播的场景中，当其他应用启动音频流（如使用键盘录音转文字）打断直播时，会导致直播的音频和画面暂停，影响用户的观看体验。直播应用可以通过设置[AudioSessionBehaviorFlags](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audiosessionbehaviorflags24).MUTE_WHEN_INTERRUPTED会话行为，使直播在被打断时保持静音播放而非暂停，避免画面中断。
+| 枚举值 | API版本 | 推荐使用场景 |
+| -------- | -------- | -------- |
+| [AudioSessionBehaviorFlags](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audiosessionbehaviorflags24).MUTE_WHEN_INTERRUPTED | 24 | 直播类音频被打断的场景。 |
+| [AudioSessionBehaviorFlags](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audiosessionbehaviorflags24).PAUSE_WHEN_INTERRUPTED | 26.0.0 | 媒体类音频被其他短时媒体音频（如有声广告）打断后需要恢复播放的场景。 |
+
+在用户观看直播的场景中，当其他应用启动音频流（如键盘录音转文字）打断直播时，会导致直播的音频和画面暂停，影响用户的观看体验。直播应用设置[AudioSessionBehaviorFlags](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audiosessionbehaviorflags24).MUTE_WHEN_INTERRUPTED会话行为后，直播在被打断时会保持静音播放而非暂停，避免画面中断，打断结束后会自动解除静音。
+
+在媒体音频被其他短时媒体音频打断的场景中，系统不会通知应用恢复播放。当应用设置[AudioSessionBehaviorFlags](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audiosessionbehaviorflags24).PAUSE_WHEN_INTERRUPTED会话行为后，系统会通知应用恢复播放，避免被短时媒体音频打断不恢复。若打断时长超出规定时间（即打断方为长时媒体音频），该接口将不会生效。
+
+> **注意：**
+>
+> - PAUSE_WHEN_INTERRUPTED不能与MUTE_WHEN_INTERRUPTED共存，若同时设置，仅PAUSE_WHEN_INTERRUPTED生效。
+> - 调用[setAudioSessionBehavior](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setaudiosessionbehavior24)接口配置该行为时，必须同步调用[setAudioSessionScene](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setaudiosessionscene20)接口，否则配置将无法生效。
+> - 当音频会话在激活状态时调用[setAudioSessionBehavior](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setaudiosessionbehavior24)接口后，必须重新调用接口[activateAudioSession](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#activateaudiosession12)使其生效。
 
 如果本应用未使用音频会话管理，也可以针对单条音频流设置独立的音频会话行为。对于播放流，详情请参考[setIndependentAudioSessionStrategy](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#setindependentaudiosessionstrategy24)。对于录音流，详情请参考[setIndependentAudioSessionStrategy](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#setindependentaudiosessionstrategy24)。
 

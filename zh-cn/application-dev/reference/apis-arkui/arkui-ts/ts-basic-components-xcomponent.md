@@ -368,15 +368,15 @@ XComponent持有的Surface通过buffer队列进行渲染上屏：生产侧（应
 >
 > 在buffer轮转过程中修改buffer队列大小，可能引起丢帧。建议在切换前后短暂停止生产侧的渲染提交，以减少丢帧。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 26.2.0
+**ArkTS-Dyn起始版本：** 26.1.0
 
-**ArkTS-Sta起始版本：** 26.2.0
+**ArkTS-Sta起始版本：** 26.1.0
 
 **参数：**
 
@@ -1453,7 +1453,7 @@ struct Index {
 
 该示例通过[bufferQueueCount](#bufferqueuecount)属性设置XComponent的buffer队列大小，并演示运行时的动态切换：在相机预览、投屏等对显示时延敏感的场景下，可减小buffer队列，以降低画面从生产到上屏的时延并减少内存占用；在视频播放等对流畅性要求较高的场景下，可保持默认值以获得更充裕的渲染缓冲。
 
-从API版本26.2.0开始，新增bufferQueueCount属性。
+从API版本26.1.0开始，新增bufferQueueCount属性。
 
 ArkTS-Dyn示例：
 

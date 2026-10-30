@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍TaskPool的运作机制与使用方法：系统统一管理线程，结合动态调度与负载均衡算法自动扩缩容，开发者无需管理线程生命周期；涵盖Concurrent装饰器用法、任务优先级、3分钟任务时长限制及注意事项。"
+keywords: [TaskPool, 任务池, 运作机制, 扩缩容机制, 负载均衡, Concurrent装饰器, 任务优先级, 任务时长限制, 多线程]
+doctype: guide
+status: active
+---
+
 # TaskPool简介
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->

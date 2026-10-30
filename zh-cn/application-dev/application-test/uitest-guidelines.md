@@ -1266,7 +1266,7 @@ hdc shell uitest screenCap -p /data/local/tmp/1.png
 | -w | \<windowId\>  | 获取指定ID目标窗口的控件树信息。<br> **说明：**<br>可通过hidumper工具<!--RP11-->[获取应用窗口信息](../dfx/hidumper.md#获取应用窗口信息)<!--RP11End-->，包含应用对应窗口的id。|
 | -m | \<true\|false\> | 指定在获取控件树信息时是否合并窗口信息。true表示合并窗口信息，false表示不合并窗口信息，不设置时默认为true。 |
 | -d | \<displayId\>  | 多屏场景下，获取指定ID屏幕下的控件树。未指定该参数时，默认获取displayId为0的屏幕下的控件树。<br> **说明：**<br> 1. 从API version 20开始支持该命令。<br>2. 可通过hidumper工具<!--RP11-->[获取应用窗口信息](../dfx/hidumper.md#获取应用窗口信息)<!--RP11End-->，包含应用对应窗口的DisplayId。|
-| -e | \<attributeName\> | 扩展输出指定属性数据，多个属性以英文逗号分隔。取值范围：**uniqueId**、**accessibility**。<br>- **uniqueId**：输出控件的唯一标识属性。<br>- **accessibility**：输出控件的无障碍属性数据。<br> **说明：**<br> 1. 从API version 23开始支持该命令。<br>2. accessibility取值从API version 26.2.0开始支持。|
+| -e | \<attributeName\> | 扩展输出指定属性数据，多个属性以英文逗号分隔。取值范围：**uniqueId**、**accessibility**。<br>- **uniqueId**：输出控件的唯一标识属性。<br>- **accessibility**：输出控件的无障碍属性数据。<br> **说明：**<br> 1. 从API version 23开始支持该命令。<br>2. accessibility取值从API version 26.1.0开始支持。|
 
 ```bash
 # 指定存储路径和文件名，存放在/data/local/tmp/下。

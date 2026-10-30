@@ -12,7 +12,9 @@
 
 普通的`Vector`、`Map`、`Set`和`Array`会将上层容器中的所有数据拷贝传给C++侧，所以对C++侧的修改不会反映到ArkTS侧，这适用于只需要在C++侧读取数据的场景；而需要C++和ArkTS共同操作同一个容器时，可以使用`SharedVector`、`SharedMap`、`SharedSet`或`SharedArray`。
 
-> 注意：共享容器只能用于将ArkTS侧已有容器传入C++。不能在C++侧新建共享容器后作为结果返回给ArkTS侧。
+> **注意：**
+>
+> 共享容器只能用于将ArkTS侧已有容器传入C++。不能在C++侧新建共享容器后作为结果返回给ArkTS侧。
 
 ## 基本概念
 

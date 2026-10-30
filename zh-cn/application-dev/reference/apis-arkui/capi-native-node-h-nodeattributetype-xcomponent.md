@@ -142,7 +142,7 @@ NODE_XCOMPONENT_BUFFER_QUEUE_SIZE = 12005
 XComponent组件的buffer队列大小，支持属性设置、属性重置和属性获取接口。buffer队列大小决定了渲染链路中可同时流转的buffer数量：值越小，画面显示时延和内存占用越低，适用于相机预览、投屏等对显示时延敏感的场景；值越大，渲染缓冲越充裕，适用于视频播放等对流畅性要求较高的场景。仅对type为SURFACE或TEXTURE的XComponent组件生效。该属性支持运行时动态修改，组件创建后可根据使用场景动态切换buffer队列大小，例如从视频播放切换到相机预览时调小队列以降低显示时延；在buffer轮转过程中修改buffer队列大小，可能引起丢帧。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **参数：**
 

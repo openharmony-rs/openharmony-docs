@@ -2102,9 +2102,9 @@ ArkTS-Sta: onZoomChange(callback: OnZoomChangeCallback | undefined)
 > - 页面缩放会缩放文字、图片并重新布局页面；CSS `zoom`不会触发该回调，捏合缩放导致的页面显示比例变化由[onScaleChange](#onscalechange9)通知。
 > - 当前Web组件导航至其他Host时，若实际倍率发生变化则触发回调；实际倍率不变时不会重复触发。
 
-**ArkTS-Dyn起始版本：** 26.2.0
+**ArkTS-Dyn起始版本：** 26.1.0
 
-**ArkTS-Sta起始版本：** 26.2.0
+**ArkTS-Sta起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2949,7 +2949,7 @@ struct Index {
           event.handler.confirm(this.uri);
         })
         .onSslErrorEventReceive(e => {
-          console.info(`onSslErrorEventReceive->${e.error.toString()}`);
+          console.error(`onSslErrorEventReceive->${e.error.toString()}`);
         })
         .onErrorReceive((event) => {
           if (event) {
@@ -3263,7 +3263,7 @@ struct Index {
               event.handler.confirm(PinVerifyResult.PIN_VERIFICATION_SUCCESS);
             }).catch((err: BusinessError) => {
             // 通知webPIN码认证失败
-            console.info(`onVerifyPin fail`);
+            console.error(`onVerifyPin fail`);
             event.handler.confirm(PinVerifyResult.PIN_VERIFICATION_FAILED);
           })
         })
@@ -3990,7 +3990,7 @@ onContextMenuUpdate(callback: OnContextMenuUpdateCallback)
 
 在单次上下文菜单会话期间，此回调可能被多次调用，每个被内核异步更新状态的菜单项各触发一次。回调绑定于Web组件生命周期，组件销毁时自动释放。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -9112,6 +9112,53 @@ ArkTS-Sta示例：
             detectionTiming:[2,4,6,8],
             detectionMethods:[BlankScreenDetectionMethod.DETECTION_CONTENTFUL_NODES_SEVENTEEN],
             contentfulNodesCountThreshold:17
+          })
+      }
+    }
+  }
+  ```
+
+## onMonitoredBlankScreen
+
+onMonitoredBlankScreen(callback: OnMonitorBlankScreenCallback)
+
+Web组件检测到白屏时会触发回调。
+
+> **说明：**
+>
+> - 需配合[enableBlankScreenMonitor](./arkts-basic-components-web-attributes.md#enableblankscreenmonitor)使用。未开启白屏检测时，不会触发本回调。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名        | 类型    | 必填   | 说明          |
+| ---------- | ------- | ---- | ------------- |
+| callback | [OnMonitorBlankScreenCallback](./arkts-basic-components-web-t.md#onmonitorblankscreencallback) | 是 | 检测到白屏时触发。事件对象包含页面URL、白屏根因、归因详情等诊断信息。 |
+
+**示例：**
+
+  ```ts
+  // onMonitoredBlankScreen.ets
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .enableBlankScreenMonitor(true)
+          .onMonitoredBlankScreen((event: MonitoredBlankScreenEventInfo)=>{
+            console.info(`Monitored blank screen on ${event.url}.`);
+            console.info(`The blank screen reason is ${event.reason}.`);
+            console.info(`The extra message is ${event.extraMsg}.`);
           })
       }
     }

@@ -177,7 +177,7 @@ Web同层渲染的配置。用于配置Web同层渲染选项，包括支持固�
 | -------------- | ------- | ---- |  ---- |---------------------------------------- |
 | supportDefaultIntrinsicSize | boolean | 否    | 是 | 设置同层渲染元素是否支持固定大小 300 * 150。<br>当H5侧CSS设置了大小时，同层渲染元素大小为CSS大小，否则为固定大小。<br>为true时，固定大小为 300 * 150。<br>为false时，若H5侧CSS未设置大小，则同层渲染元素不渲染。<br>默认值：false<br>单位：px <br>**ArkTS-Dyn起始版本：** 16 <br> **ArkTS-Sta起始版本：** 23|
 | supportCssDisplayChange<sup>20+</sup> | boolean | 否    | 是 | 设置同层渲染可见性接口是否支持显示属性。 <br>同层渲染可见性接口默认支持同层标签相对于视口的可见状态。 <br>设置为true时，支持显示CSS属性，包括visibility、display和宽高。 <br>设置为false时，不支持显示CSS属性，仅支持同层标签相对于视口的可见性。 <br>**ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 23|
-| supportTransformRotateAndSkew | boolean | 否    | 是 | 设置同层渲染是否支持CSS transform中的rotate和skew属性。<br>CSS的rotate属性用于将元素围绕定点旋转，skew属性用于倾斜元素。<br>设置为true时，支持CSS transform中的rotate和skew属性。<br>设置为false时，不支持CSS transform中的rotate和skew属性。<br>默认值：false。<br>**起始版本：** 26.2.0 <br>**模型约束：** 此接口仅可在Stage模型下使用。|
+| supportTransformRotateAndSkew | boolean | 否    | 是 | 设置同层渲染是否支持CSS transform中的rotate和skew属性。<br>CSS的rotate属性用于将元素围绕定点旋转，skew属性用于倾斜元素。<br>设置为true时，支持CSS transform中的rotate和skew属性。<br>设置为false时，不支持CSS transform中的rotate和skew属性。<br>默认值：false。<br>**起始版本：** 26.1.0 <br>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ## OnAlertEvent<sup>12+</sup>
 
@@ -382,9 +382,9 @@ Web同层渲染的配置。用于配置Web同层渲染选项，包括支持固�
 > - `oldZoomFactor`和`newZoomFactor`均为无单位浮点数，可包含小数部分且不进行取整，取值范围为闭区间[0.25, 5]。`1`表示不缩放，小于`1`表示缩小，大于`1`表示放大。
 > - 回调参数由浏览器提供，无需开发者自行构造；修改回调参数中的字段不会改变页面实际生效的缩放倍率。可通过[WebviewController.getZoomFactor](./arkts-apis-webview-WebviewController.md#getzoomfactor)获取当前页面缩放倍率。该事件不会返回负值、NaN或Infinity。
 
-**ArkTS-Dyn起始版本：** 26.2.0
+**ArkTS-Dyn起始版本：** 26.1.0
 
-**ArkTS-Sta起始版本：** 26.2.0
+**ArkTS-Sta起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1192,6 +1192,22 @@ Web组件返回的请求/响应头对象。适用于需要读取或修改HTTP头
 | detectionMethods | [BlankScreenDetectionMethod](./arkts-basic-components-web-e.md#blankscreendetectionmethod22)[] | 否 | 是 | 使用检测策略的方法，是一个数组。<br>注：<br>1.重复值会忽略。  <br/>默认值：[BlankScreenDetectionMethod.DETECTION_CONTENTFUL_NODES_SEVENTEEN]。  |
 | contentfulNodesCountThreshold | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 | 在使用到检测有内容的节点检测策略时，才会生效。<br/>可以设置0-${检测策略最大节点}，如果小于等于阈值则会触发近似白屏。<br/>默认值：0。<br>注：检测策略最大节点依赖于所选择的检测策略。|
 
+## MonitoredBlankScreenEventInfo
+
+白屏检测归因信息，包括页面URL、白屏根因、归因详情。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+| 名称             | 类型      | 只读 | 可选   | 说明                                       |
+| -------------- | ---- | ---- | ---- | ---------------------------------------- |
+| url | string | 否 | 否 | 页面URL。    |
+| reason | [BlankScreenReason](./arkts-basic-components-web-e.md#blankscreenreason) | 否 | 否 | 白屏的具体原因。    |
+| extraMsg | string | 否 | 否 | 归因详情，JSON格式的字符串。 |
+
 ## CameraCaptureStateChangeInfo<sup>23+</sup>
 
 提供摄像头触发回调时的状态变化信息，包括改变前的状态和改变后的状态。适用于需要监控摄像头状态变化的场景，提升摄像头管理的可见性和用户体验。
@@ -1276,7 +1292,7 @@ Web组件返回的请求/响应头对象。适用于需要读取或修改HTTP头
 
 定义上下文菜单项的选项。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

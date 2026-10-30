@@ -1,3 +1,11 @@
+---
+kits: ["ArkGraphics 3D / 方舟3D图形"]
+description: "介绍ArkGraphics 3D中PBR标准材质与自定义Shader材质的创建与使用方法，涵盖金属度、粗糙度、法线、清漆、自发光等属性配置，以及通过Shader材质实现描边、高光等个性化视觉效果。"
+keywords: [ArkGraphics 3D, PBR, Shader材质, 清漆层, 环境光遮蔽]
+doctype: guide
+status: active
+---
+
 # 创建并使用材质资源
 <!--Kit: ArkGraphics 3D-->
 <!--Subsystem: Graphics-->

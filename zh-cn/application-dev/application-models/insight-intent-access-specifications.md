@@ -420,7 +420,7 @@
 | code   | number| 是   | 返回结果码：0表示成功，其他值表示失败。支持自定义。     | 0 |
 | result | object | 是  | 返回结果列表对象。如果结果列表为空，则返回空。 | -       |
 | entityId   | string | 是  | 意图实体ID。                       | "C10194368"          |
-| entityName | string | 是  | 执行结果实体的名称，BicycleInfo。                        | "EBicycleDeviceInfo" |
+| entityName | string | 是  | 执行结果实体的名称，EBicycleDeviceInfo。                        | "EBicycleDeviceInfo" |
 | deviceName   | string | 是  | 设备名称。                                       | "我的小牛"               |
 | batteryLevel | number | 否  | 剩余电量结果。单位：百分比。                               | 30                   |
 | remainingMileage   | number | 否  | 剩余里程。单位：KM。                                  | 20                   |
@@ -1237,7 +1237,7 @@
 
 | 参数名 | 类型  | 必选 | 说明               | 数据样例 |
 |-------------|--------|----|------------------|---------|
-| city    | string | 是  |体检中心所在城市。 | "北京市" |
+| city    | string | 是  |医院所在城市。 | "北京市" |
 | district    | string | 否  | 所在区域。 | "丰台区" |
 | keywords    | string | 否  | 关键字。 | "建国门" |
 
@@ -1407,7 +1407,7 @@
 
 | 参数名 | 类型  | 必选 | 说明               | 数据样例 |
 |-------------|--------|------|------------------|---------|
-| category    | string | 否   | 余量分类。<br>- DataTraffic：数据流量。<br>- VoiceTraffic：语音流量。<br>- SMSTraffic：短信流量。 | "DataTraffic" |
+| category    | string | 否   | 已订业务分类。<br>- DataTraffic：数据流量。<br>- VoiceTraffic：语音流量。<br>- SMSTraffic：短信流量。 | "DataTraffic" |
 
 **返回值**：
 
@@ -1645,7 +1645,7 @@
 | result | object | 是  | 返回结果列表对象。如果结果列表为空，则返回空。 | -       |
 
 ### 查看账户变动功能
-用于触发客户端查询用户银行账户的交易明细或资金变动记录，支持通过意图实体ID、银行卡尾号、银行卡类型及时间段等多维度精准筛选目标交易数据，并返回操作结果状态及变动记录列表。
+用于以功能方式触发客户端查询用户银行账户的交易明细或资金变动记录，支持通过意图实体ID、银行卡尾号、银行卡类型及时间段等多维度精准筛选目标交易数据，并返回操作结果状态及变动记录列表。
 
 **意图名称**：ViewAccountChangeFunc
 
@@ -2081,7 +2081,7 @@
 | 参数名 | 类型  | 必选 | 说明                                               | 数据样例                                                                                                                        |
 |-------------|--------|------|--------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------|
 | keywords    | string | 否   | 搜索关键词，如景点名称，多个搜索关键词用英文逗号分隔。                      | "故宫","江宁有什么好玩的"                                                                                                             |
-| location    | object | 否   | 位置的经纬度信息。纬度的取值范围：[-90, 90]，经度的取值范围：[-180, 180]。  | {"locationSystem": "GCJ02/BD09LL", "locationName": "xxxx", "latitude": "120.785645", "longitude": "33.039635", "address": "xxx"} |
+| location    | object | 否   | 位置的经纬度信息。纬度的取值范围：[-90, 90]，经度的取值范围：[-180, 180]。  | {"locationSystem": "GCJ02/BD09LL", "locationName": "xxxx", "latitude": "33.039635", "longitude": "120.785645", "address": "xxx"} |
 | city    | string | 否   | 用于搜索景点名称等场景按城市筛选过滤非本城市记录。                        | "深圳市"                              |
 | travelGuidesType    | string | 否   | 攻略类型。<br>- Scenic：景点攻略。<br>- CitySelection：城市精选。 | "CitySelection"      |
 
