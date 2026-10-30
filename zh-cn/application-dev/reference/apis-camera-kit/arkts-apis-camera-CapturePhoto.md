@@ -22,13 +22,13 @@ import { camera } from '@kit.CameraKit';
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 | 名称   | 类型                           |   只读    |   可选   | 说明       |
 | ------ | ----------------------------- | --------  |  ------ | ---------- |
-| main | [ImageType](arkts-apis-camera-t.md#imagetype) |    否   |    否    | 全质量图和未压缩图的对象。 |
+| main | [ImageType](arkts-apis-camera-t.md#imagetype) |    否   |    否    | 全质量图和未压缩图的对象。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
+| oxygenPhoto | [ImageType](arkts-apis-camera-t.md#imagetype) |    否   |    是    | 血氧辅助图对象，用于血氧检测分析。<br>**起始版本：** 26.0.1<br>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
+| pigmentationPhoto | [ImageType](arkts-apis-camera-t.md#imagetype) |    否   |    是    | 色斑辅助图对象，用于皮肤色斑分析。<br>**起始版本：** 26.0.1<br>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
 
 ## release
 

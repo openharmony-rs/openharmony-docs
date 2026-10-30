@@ -154,9 +154,9 @@ LazyForEach数据懒加载可以通过设置cachedCount属性来指定缓存数�
          } else {
            this.avPlayer.fdSrc = this.curSource;
          }
-         Loggor.info(TAG, 'createAVPlayer success');
+         Logger.info(TAG, 'createAVPlayer success');
        } else {
-         Loggor.error(TAG, 'createAVPlayer fail');
+         Logger.error(TAG, 'createAVPlayer fail');
        }
      }).catch((error: BusinessError) => {
        Logger.error(TAG, `AVPlayer catchCallback,error message:${error.message}`);
@@ -268,12 +268,12 @@ LazyForEach数据懒加载可以通过设置cachedCount属性来指定缓存数�
        }, (item: string, index: number) => JSON.stringify(item) + index)
      }
      .cachedCount(3) // 缓存视频数量
-     .width(CommComstants.WIDTH_FULL_PERCENT)
-     .height(CommComstants.HEIGHT_FULL_PERCENT)
+     .width(CommConstants.WIDTH_FULL_PERCENT)
+     .height(CommConstants.HEIGHT_FULL_PERCENT)
      .vertical(true)
      .loop(true)
      .curve(Curve.Ease)
-     .duration(CommComstants.DURATION_TIME)
+     .duration(CommConstants.DURATION_TIME)
      .indicator(false)
      .backgroundColor(Color.Black)
      .onGestureSwipe((index: number, extraInfo: SwiperAnimationEvent) => {

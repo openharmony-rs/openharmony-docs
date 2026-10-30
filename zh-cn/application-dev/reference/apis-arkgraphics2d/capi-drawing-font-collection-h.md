@@ -1,9 +1,9 @@
 # drawing_font_collection.h
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @gmiao522-->
-<!--Designer: @liumingxiang-->
-<!--Tester: @yhl0101-->
+<!--Owner: @oh_wangxk-->
+<!--Designer: @KejiePeng-->
+<!--Tester: @LiTongguan2026-->
 <!--Adviser: @ge-yafang-->
 ## 概述
 
@@ -31,7 +31,7 @@
 | [void OH_Drawing_DisableFontCollectionSystemFont(OH_Drawing_FontCollection* fontCollection)](#oh_drawing_disablefontcollectionsystemfont) | 禁用系统字体。禁用后，该字体集对象仅能使用已注册的自定义字体进行文本渲染。 |
 | [OH_Drawing_FontCollection* OH_Drawing_CreateSharedFontCollection(void)](#oh_drawing_createsharedfontcollection) | 创建可共享的字体集对象[OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md)。 |
 | [void OH_Drawing_ClearFontCaches(OH_Drawing_FontCollection* fontCollection)](#oh_drawing_clearfontcaches) | 清理字体排版缓存（字体排版缓存本身设有内存上限和清理机制，所占内存有限，如无内存要求，不建议清理）。 |
-| [OH_Drawing_FontCollection* OH_Drawing_GetFontCollectionGlobalInstance(void)](#oh_drawing_getfontcollectionglobalinstance) | 获取全局字体集对象[OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md)，可获取主题字信息，禁止释放该对象。 |
+| [OH_Drawing_FontCollection* OH_Drawing_GetFontCollectionGlobalInstance(void)](#oh_drawing_getfontcollectionglobalinstance) | 获取全局字体集对象[OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md)，可获取主题字体信息，禁止释放该对象。 |
 
 ## 函数说明
 
@@ -174,7 +174,7 @@ OH_Drawing_FontCollection* OH_Drawing_GetFontCollectionGlobalInstance(void)
 
 **描述**
 
-获取全局字体集对象[OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md)，可获取主题字信息，禁止释放该对象。
+获取全局字体集对象[OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md)，可获取主题字体信息，禁止释放该对象。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 

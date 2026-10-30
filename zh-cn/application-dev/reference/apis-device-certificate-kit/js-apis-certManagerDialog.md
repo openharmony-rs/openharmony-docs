@@ -82,6 +82,7 @@ import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 | ERROR_NOT_COMPLY_SECURITY_POLICY<sup>18+</sup>  | 29700005      | 表示该操作不符合设备安全策略。<br>例如设备不允许用户管理GLOBAL_USER的CA证书。 |
 | ERROR_PARAMETER_VALIDATION_FAILED<sup>22+</sup>  | 29700006      | 表示输入参数校验失败。<br>例如参数格式不正确或取值范围无效。 |
 | ERROR_NO_AVAILABLE_CERTIFICATE<sup>22+</sup>  | 29700007      | 表示没有可用证书。 |
+| ERROR_PASSWORD_IS_INCORRECT  | 29700008      | 表示密码不正确。<br>**起始版本：** 26.1.0 |
 | ERROR_OPERATION_TIMEOUT  | 29700009      | 表示证书管理对话框操作超时。<br>**起始版本：** 26.0.1 |
 | ERROR_NOT_CONCURRENT_SUPPORT  | 29700010      | 表示API不支持并发调用。<br>**起始版本：** 26.0.1 |
 
@@ -169,6 +170,23 @@ USB Key PIN码认证请求。
 | abilityType | [AbilityType](#abilitytype)   | 否   | 否   | 表示Ukey认证对话框的Ability类型。 |
 | abilityName | string   | 否   | 否   | 表示Ukey认证对话框的Ability名称，最大长度256字节，且不能为空。 |
 
+## InstallCertificateRequest
+
+安装证书对话框的请求参数。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Security.CertificateManagerDialog
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称              | 类型    | 只读 | 可选 | 说明                         |
+| ----------------- | ------- | ---- | ---- | ---------------------------- |
+| certType | [CertificateType](#certificatetype14)   | 否   | 否   | 表示要安装的证书类型，当前支持CA_CERT、CREDENTIAL_USER和CREDENTIAL_SYSTEM。 |
+| certScope | [CertificateScope](#certificatescope14)   | 否   | 否   | 表示要安装的证书的使用范围，当前支持CURRENT_USER和NOT_SPECIFIED。 |
+| cert | Uint8Array   | 否   | 否   | 表示证书数据，大小不超过8KB。<br>当certType为CA_CERT时，证书数据必须为PEM或DER编码格式的证书数据。<br>当certType为CREDENTIAL_USER或CREDENTIAL_SYSTEM时，证书数据必须为P12编码格式的证书凭据数据。 |
+| keystorePwd | string   | 否   | 是   | 表示密钥库文件的密码，最大长度为128。<br>该参数仅当certType取值为CREDENTIAL_USER或CREDENTIAL_SYSTEM时有效；若指定该参数，则对话框中无需用户输入密码。 |
+
 ## certificateManagerDialog.openCertificateManagerDialog
 
 openCertificateManagerDialog(context: common.Context, pageType: CertificateDialogPageType): Promise\<void>
@@ -201,7 +219,7 @@ openCertificateManagerDialog(context: common.Context, pageType: CertificateDialo
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.     |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 29700001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.    |
 
 **示例**：
@@ -265,8 +283,8 @@ openInstallCertificateDialog(context: common.Context, certType: CertificateType,
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.     |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801      | The certificate management application Hap is not preinstalled in the system, and the capability is not supported.<br>适用版本：26.0.0+ |
+| 401      | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801      | Capability not supported because the certificate management application hap is not preinstalled in the system.<br>适用版本：26.0.0+ |
 | 29700001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.     |
 | 29700002 | The user cancels the installation operation.     |
 | 29700003 | The user install certificate failed in the certificate manager dialog, such as the certificate is in an invalid format.     |
@@ -294,11 +312,98 @@ let caCert: Uint8Array = new Uint8Array([
 try {
   certificateManagerDialog.openInstallCertificateDialog(context, certificateType, certificateScope, caCert)
     .then((uri: string) => {
-    console.info('Succeeded in opening install certificate');
-  }).catch((error: Error) => {
-    let err = error as BusinessError;
-    console.error(`Failed to open install certificate dialog. Code: ${err.code}, message: ${err.message}`);
-  });
+      console.info('Succeeded in opening install certificate');
+    }).catch((error: Error) => {
+      let err = error as BusinessError;
+      console.error(`Failed to open install certificate dialog. Code: ${err.code}, message: ${err.message}`);
+    });
+} catch (error) {
+  console.error(`Failed to open install certificate dialog. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+## certificateManagerDialog.openInstallCertificateDialog
+
+openInstallCertificateDialog(context: common.Context, request: InstallCertificateRequest): Promise\<string>
+
+打开证书管理安装证书对话框。证书安装成功后，返回证书的唯一标识符，应用可以使用该标识符来使用证书。使用Promise异步回调。
+
+**起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.ACCESS_CERT_MANAGER
+
+**系统能力：** SystemCapability.Security.CertificateManagerDialog
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**设备行为差异：**
+1. 入参request.certType为CA_CERT时，该接口在PC/2in1设备中可以正常调用，在其他设备中会返回29700004错误码。可以通过[supportsCACertDialog](#certificatemanagerdialogsupportscacertdialog)()来判断本设备是否支持打开CA证书安装对话框。
+2. 入参request.certType为CREDENTIAL_USER或CREDENTIAL_SYSTEM时，在PC/2in1、Phone和Tablet设备中可以正常调用。
+
+**参数**：
+
+| 参数名   | 类型                                              | 必填 | 说明                       |
+| -------- | ------------------------------------------------- | ---- | -------------------------- |
+| context | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md#context)                   | 是   | 应用的Context。 |
+| request | [InstallCertificateRequest](#installcertificaterequest)                   | 是   | 表示安装证书对话框的请求参数。 |
+
+**返回值**：
+
+| 类型                                        | 说明                 |
+| ------------------------------------------- | -------------------- |
+| Promise\<string> | Promise对象，返回证书URI的结果，值最多包含256字节。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[证书管理对话框错误码](errorcode-certManagerDialog.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.     |
+| 801      | Capability not supported because the certificate management application hap is not preinstalled in the system.     |
+| 29700001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.     |
+| 29700002 | The user cancels the installation operation.     |
+| 29700003 | The user install certificate failed in the certificate manager dialog, such as the certificate is in an invalid format.     |
+| 29700004 | For security purposes, the current device does not support this API. You can use the [supportsCACertDialog](#certificatemanagerdialogsupportscacertdialog) to determine whether the device supports opening the dialog box for installing a CA certificate with certType set to CA. |
+| 29700005 | The operation does not comply with the device security policy, such as the device does not allow users to manage the CA certificate of the global user.     |
+| 29700006 | Indicates that the input parameters validation failed. For example, the parameter format is incorrect or the value range is invalid. |
+| 29700008 | The keystore file password is incorrect.     |
+
+**示例**：
+```ts
+import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+import { UIContext } from '@kit.ArkUI';
+
+/* context为应用的上下文信息，调用方自行获取，此处仅为示例 */
+let context: common.Context = new UIContext().getHostContext() as common.Context;
+/* certificateType为证书类型，此处赋值CREDENTIAL_USER，即安装用户证书凭据 */
+let certificateType: certificateManagerDialog.CertificateType =
+  certificateManagerDialog.CertificateType.CREDENTIAL_USER;
+/* certificateScope为证书使用范围，此处赋值CURRENT_USER，即当前用户下可用 */
+let certificateScope: certificateManagerDialog.CertificateScope =
+  certificateManagerDialog.CertificateScope.CURRENT_USER;
+/* 安装的用户证书凭据P12数据需要业务赋值，本例数据非P12数据 */
+let credential: Uint8Array = new Uint8Array([
+  0x30, 0x82, 0x0b, 0xc1, 0x02, 0x01
+]);
+/* keystorePwd为密钥库文件的密码，指定该参数后，对话框中无需用户输入密码 */
+let keystorePwd: string = '123456';
+let request: certificateManagerDialog.InstallCertificateRequest = {
+  certType: certificateType,
+  certScope: certificateScope,
+  cert: credential,
+  keystorePwd: keystorePwd
+};
+try {
+  certificateManagerDialog.openInstallCertificateDialog(context, request)
+    .then((uri: string) => {
+      console.info('Succeeded in opening install certificate');
+    }).catch((error: Error) => {
+      let err = error as BusinessError;
+      console.error(`Failed to open install certificate dialog. Code: ${err.code}, message: ${err.message}`);
+    });
 } catch (error) {
   console.error(`Failed to open install certificate dialog. Code: ${error.code}, message: ${error.message}`);
 }
@@ -339,7 +444,7 @@ openUninstallCertificateDialog(context: common.Context, certType: CertificateTyp
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.     |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 29700001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.     |
 | 29700002 | The user cancels the uninstallation operation.     |
 | 29700003 | The user uninstall certificate failed in the certificate manager dialog, such as the certificate uri is not exist.     |
@@ -406,7 +511,7 @@ openCertificateDetailDialog(context: common.Context, cert: Uint8Array, property:
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 29700001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.                |
 | 29700003 | Show the certificate detail dialog failed, such as the certificate is in an invalid format. |
 | 29700004 | The API is not supported on this device.                     |
@@ -470,8 +575,8 @@ openAuthorizeDialog(context: common.Context): Promise\<string>
 | 错误码ID    | 错误信息                                                                                                                                            |
 |----------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201      | Permission verification failed. The application does not have the permission required to call the API.                                          |
-| 401      | Parameter error. Possible causes: 1. A mandatory parameter is left unspecified. 2. Incorrect parameter type. 3. Parameter verification failed. |
-| 801      | The certificate management application Hap is not preinstalled in the system, and the capability is not supported.<br>适用版本：26.0.0+ |
+| 401      | [Sync] Parameter error. Possible causes: 1. A mandatory parameter is left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed. |
+| 801      | Capability not supported because the certificate management application hap is not preinstalled in the system.<br>适用版本：26.0.0+ |
 | 29700001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.        |
 | 29700002 | The user cancels the authorization.                                                                                                             |
 
@@ -533,7 +638,7 @@ openAuthorizeDialog(context: common.Context, authorizeRequest: AuthorizeRequest)
 | 错误码ID    | 错误信息                                                                                                                                            |
 |----------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201      | Permission verification failed. The application does not have the permission required to call the API.                                          |
-| 801      | Capability not supported.  |
+| 801      | Capability not supported because the certificate management application hap is not preinstalled in the system.  |
 | 29700001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error; 4. Call other service failed. Please try again.                 |
 | 29700002 | The user cancels the authorization.                                                                                                             |
 | 29700006 | Indicates that the input parameters validation failed. for example, the parameter format is incorrect or the value range is invalid.            |
@@ -608,7 +713,7 @@ openUkeyAuthDialog(context: common.Context, ukeyAuthRequest: UkeyAuthRequest): P
 | 801      | Capability not supported because the certificate management application hap is not preinstalled in the system.                                 |
 | 29700001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.           |
 | 29700002 | The user cancels the authentication operation or operation timed out.                                                                             |
-| 29700003 | The authentication operation failed, such as: The USB key certificate does not exist. The USB key status is abnormal, please ask the user to check the status of the Ukey. The Ukey authentication dialog box cannot be opened concurrently, please try again later. |
+| 29700003 | The authentication operation failed, such as: The USB key certificate does not exist. The USB key status is abnormal, Please ask the user to check the status of the Ukey. The Ukey authentication dialog box cannot be opened concurrently. Please try again later. |
 | 29700006 | Indicates that the input parameters validation failed. For example, the parameter format is incorrect or the value range is invalid. |
 
 **示例**：
@@ -717,7 +822,7 @@ openAuthDialogForUkeyProvider(dialogInfo: UkeyAuthDialogInfo, ukeyAuthRequest: U
 | 801      | Capability not supported because the certificate management application hap is not preinstalled in the system.                                 |
 | 29700001 | The certificate manager service processing failed. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 29700002 | The user cancels the authentication operation.                                                                                                   |
-| 29700003 | The authentication operation failed, such as: The USB key certificate does not exist. The USB key status is abnormal, please ask the user to check the status of the Ukey. |
+| 29700003 | The authentication operation failed, such as: The USB key certificate does not exist. The USB key status is abnormal, Please ask the user to check the status of the Ukey. |
 | 29700005 | The operation does not comply with the device security policy. Only the PC/2in1 device can open the dialog box of the UkeyAuthExtensionAbility type.  |
 | 29700006 | Indicates that the input parameters validation failed. For example, the parameter format is incorrect or the value range is invalid.            |
 | 29700009 | The operation in the Ukey authentication dialog box timed out.                                                                                  |
@@ -741,12 +846,11 @@ let dialogInfo: certificateManagerDialog.UkeyAuthDialogInfo = {
 let keyUri: string = 'test';
 /* 传入Ukey鉴权对话框的自定义数据，此处仅为示例 */
 let customData: Uint8Array = new Uint8Array([0x01, 0x02, 0x03]);
-/* Ukey认证对话框的操作超时时间，单位为秒，取值范围为[180, 600]内的整数 */
-let timeoutDuration: number = 300;
 let ukeyAuthRequest: certificateManagerDialog.UkeyAuthRequest = {
   keyUri: keyUri,
   customData: customData,
-  timeoutDuration: timeoutDuration
+  /* Ukey认证对话框的操作超时时间，单位为秒，取值范围为[180, 600]内的整数 */
+  timeoutDuration: 300
 };
 try {
   certificateManagerDialog.openAuthDialogForUkeyProvider(dialogInfo, ukeyAuthRequest).then(() => {

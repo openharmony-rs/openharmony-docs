@@ -33,13 +33,13 @@
 
 图1是三种常用的缓存使用流程。常用流程1的详细过程如下：
 
-1.应用冷启动时，读取缓存。
+1. 应用冷启动时，读取缓存。
 
-2.判断是否有缓存数据。
+2. 判断是否有缓存数据。
 
-3.如果本地没有缓存数据，则需要通过网络、位置服务等方式请求相应数据，然后把数据刷新到首页，同时异步更新缓存数据。
+3. 如果本地没有缓存数据，则需要通过网络、位置服务等方式请求相应数据，然后把数据刷新到首页，同时异步更新缓存数据。
 
-4.如果本地有缓存数据，则把缓存数据先刷新到应用首页，然后异步请求数据进行页面二刷，并更新缓存数据。
+4. 如果本地有缓存数据，则把缓存数据先刷新到应用首页，然后异步请求数据进行页面二刷，并更新缓存数据。
 
 常用流程2和1的过程类似，只是常用流程2中省略了异步请求数据进行页面二刷并更新缓存的步骤。而常用流程3和2相比，常用流程3只是在本地有缓存数据时，增加了对缓存数据是否失效的处理。如果缓存数据没有失效，则把缓存数据刷新到应用首页。如果缓存数据已经失效，则需要重新请求数据，然后刷新到首页并更新缓存。
 
@@ -221,13 +221,13 @@ struct Index {
 
 下面是一个使用[PersistentStorage（持久化存储UI状态）](../ui/state-management/arkts-persiststorage.md)缓存位置数据的场景示例。主要步骤如下：
 
-1.通过persistProp初始化PersistentStorage。
+1. 通过persistProp初始化PersistentStorage。
 
-2.创建状态变量@StorageLink(MYLOCATION) myLocation，和AppStorage中MYLOCATION双向绑定。
+2. 创建状态变量@StorageLink(MYLOCATION) myLocation，和AppStorage中MYLOCATION双向绑定。
 
-3.应用冷启动时，先判断缓存AppStorage里MYLOCATION值是否为空（UI和业务逻辑不直接访问PersistentStorage中的属性，所有属性访问都是对AppStorage的访问）。
+3. 应用冷启动时，先判断缓存AppStorage里MYLOCATION值是否为空（UI和业务逻辑不直接访问PersistentStorage中的属性，所有属性访问都是对AppStorage的访问）。
 
-4.如果缓存为空，则从getCurrentLocation获取地址数据，并加载到页面，同时保存到缓存。如果缓存不为空，则直接从缓存获取地址数据，并加载到页面。
+4. 如果缓存为空，则从getCurrentLocation获取地址数据，并加载到页面，同时保存到缓存。如果缓存不为空，则直接从缓存获取地址数据，并加载到页面。
 
 >**说明：**
 >

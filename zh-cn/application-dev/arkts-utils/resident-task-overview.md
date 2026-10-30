@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍常驻任务并发场景的定义与选型：常驻任务运行时间可超过3分钟、与线程绑定且并发量小，典型场景如游戏中台主逻辑线程、后台模型预测与硬件测试，建议使用Worker在后台线程执行。"
+keywords: [常驻任务, Worker, 游戏中台, 模型预测, 硬件测试, 后台线程, 任务选型]
+doctype: guide
+status: active
+---
+
 # 常驻任务并发场景简介
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->

@@ -5,7 +5,7 @@
 <!--Designer: @zhanganxiang1-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=957fe960dd067e00360d4d1248fbe8db177fc19c translatedAt=2026-09-18T01:56:27.605Z pushedAt=2026-09-18T06:48:50.486Z -->
+<!-- md-trans-meta sourceCommit=8caf913eb3f6f81edd8b0e0ac0663d3f76c06555 translatedAt=2026-10-22T03:40:53.225Z pushedAt=2026-10-22T04:00:39.638Z nl=1 -->
 
 You can listen for audio output device changes and implement appropriate responses. For example, if the output device disconnects during music playback, the application should pause playback immediately to avoid disrupting the user.
 
@@ -56,30 +56,30 @@ The following examples are code snippets. You can get the [complete sample](http
 
 ### AudioRenderer Sample
 
-  <!-- @[onOutputDeviceChangeWithInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioOutputDeviceChange.ets) --> 
-
-  ``` TypeScript	
-  import { audio } from '@kit.AudioKit';	
-  import { BusinessError } from '@kit.BasicServicesKit';	
+  <!-- @[onOutputDeviceChangeWithInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioOutputDeviceChange.ets) -->  
+  
+  ``` TypeScript
+  import { audio } from '@kit.AudioKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   // ...
   
-  let audioRenderer: audio.AudioRenderer | undefined = undefined;	
-  let audioStreamInfo: audio.AudioStreamInfo = {	
+  let audioRenderer: audio.AudioRenderer | undefined = undefined;
+  let audioStreamInfo: audio.AudioStreamInfo = {
     samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // Sampling rate.
     channels: audio.AudioChannel.CHANNEL_2, // Channel.
     sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE, // Sampling format.
     encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW // Encoding format.
-  };	
-  let audioRendererInfo: audio.AudioRendererInfo = {	
+  };
+  let audioRendererInfo: audio.AudioRendererInfo = {
     usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION, // Audio stream usage type: voice communication. Configure it based on the service scenario. For details, see StreamUsage.
     rendererFlags: 0 // AudioRenderer flag.
-  };	
-  let audioRendererOptions: audio.AudioRendererOptions = {	
-    streamInfo: audioStreamInfo,	
-    rendererInfo: audioRendererInfo	
+  };
+  let audioRendererOptions: audio.AudioRendererOptions = {
+    streamInfo: audioStreamInfo,
+    rendererInfo: audioRendererInfo
   };
   // ...
-
+  
     // Create an AudioRenderer instance.
     audio.createAudioRenderer(audioRendererOptions, (err, renderer) => {
       if (!err) {
@@ -88,7 +88,7 @@ The following examples are code snippets. You can get the [complete sample](http
         audioRenderer = renderer;
         // ...
       } else {
-        console.info(`Failed to create audio renderer. Code: ${err.code}, message: ${err.message}`);
+        console.error(`Failed to create audio renderer. Code: ${err.code}, message: ${err.message}`);
         // ...
       }
     });
@@ -98,33 +98,33 @@ The following examples are code snippets. You can get the [complete sample](http
       audioRenderer?.on('outputDeviceChangeWithInfo', (deviceChangeInfo: audio.AudioStreamDeviceChangeInfo) => {
         console.info(`Succeeded in using on function. AudioStreamDeviceChangeInfo: ${JSON.stringify(deviceChangeInfo)}`);
         // ...
-        switch (deviceChangeInfo.changeReason) {	
-          case audio.AudioStreamDeviceChangeReason.REASON_OLD_DEVICE_UNAVAILABLE:	
+        switch (deviceChangeInfo.changeReason) {
+          case audio.AudioStreamDeviceChangeReason.REASON_OLD_DEVICE_UNAVAILABLE:
             // Respond to the device unavailable event. If the application is playing, pause playback and update the UX.
             audioRenderer?.pause();
-            break;	
-          case audio.AudioStreamDeviceChangeReason.REASON_NEW_DEVICE_AVAILABLE:	
+            break;
+          case audio.AudioStreamDeviceChangeReason.REASON_NEW_DEVICE_AVAILABLE:
             // The application responds to the device availability event based on the service status.
-            break;	
-          case audio.AudioStreamDeviceChangeReason.REASON_OVERRODE:	
+            break;
+          case audio.AudioStreamDeviceChangeReason.REASON_OVERRODE:
             // The application responds to the forcible device selection event based on the service status.
-            break;	
-          case audio.AudioStreamDeviceChangeReason.REASON_UNKNOWN:	
+            break;
+          case audio.AudioStreamDeviceChangeReason.REASON_UNKNOWN:
             // The application responds to the unknown reason event based on the service status.
-            break;	
+            break;
         }
       });
     } catch (err) {
       let error = err as BusinessError;
       console.error(`Failed to use on function. Code: ${error.code}, message: ${error.message}`);
       // ...
-    }	
+    }
   ```
 
 ### AudioSessionManager Sample
 
-  <!-- @[onCurrentOutputDeviceChanged](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioOutputDeviceChange.ets) --> 
-
+  <!-- @[onCurrentOutputDeviceChanged](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioOutputDeviceChange.ets) -->  
+  
   ``` TypeScript
   import { audio } from '@kit.AudioKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -157,7 +157,7 @@ The following examples are code snippets. You can get the [complete sample](http
         audioRenderer = renderer;
         // ...
       } else {
-        console.info(`Failed to create audio renderer. Code: ${err.code}, message: ${err.message}`);
+        console.error(`Failed to create audio renderer. Code: ${err.code}, message: ${err.message}`);
         // ...
       }
     });

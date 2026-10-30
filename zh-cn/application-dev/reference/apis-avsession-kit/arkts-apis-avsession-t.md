@@ -67,13 +67,13 @@ type AVCastControlCommandType = 'play' | 'pause' | 'stop' | 'playNext' | 'playPr
 
 type ExtraInfo = {[key: string]: Object;} 
 
-媒体提供方设置的自定义媒体数据包对象。
+媒体提供方设置的自定义媒体数据包对象。从API版本26.0.1开始，在座舱冷启动场景下，可用于传递冷启动扩展信息。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 | 类型                                | 说明                          |
 | ----------------------------------- | ----------------------------- |
-|{[key: string]: Object;} | key为远端分布式事件类型。当前支持的事件类型包括：<br>AUDIO_GET_VOLUME：获取远端设备音量。<br>AUDIO_GET_AVAILABLE_DEVICES：获取远端所有可用设备。<br>AUDIO_GET_PREFERRED_OUTPUT_DEVICE_FOR_RENDERER_INFO：获取远端实际发声设备。<br>媒体提供方根据不同的远端分布式事件类型，返回对应的媒体数据包对象。 |
+|{[key: string]: Object;} | key为远端分布式事件类型。当前支持的事件类型包括：<br>AUDIO_GET_VOLUME：获取远端设备音量。<br>AUDIO_GET_AVAILABLE_DEVICES：获取远端所有可用设备。<br>AUDIO_GET_PREFERRED_OUTPUT_DEVICE_FOR_RENDERER_INFO：获取远端实际发声设备。<br>媒体提供方根据不同的远端分布式事件类型，返回对应的媒体数据包对象。<br>从API版本26.0.1开始，在座舱冷启动场景下，ExtraInfo支持以下字段：<br>controlCommand：控制命令，包括：'play'：播放。'playNext'：下一首。'playPrevious'：上一首。<br>isPlayList：是否使用PlayMusicList意图实现播放，1：是，其他值：否。 |
 
 ## KeyRequestCallback<sup>12+</sup>
 

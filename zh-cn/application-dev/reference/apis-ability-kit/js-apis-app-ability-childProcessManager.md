@@ -45,6 +45,22 @@ import { childProcessManager } from '@kit.AbilityKit';
 | SELF_FORK |  0   | 从App自身进程Fork子进程。以该模式启动的子进程会继承父进程资源，不能使用Binder IPC和其他进程通信，否则会导致子进程崩溃退出。 |
 | APP_SPAWN_FORK |  1   | 从AppSpawn Fork子进程。以该模式启动的子进程不会继承父进程资源，可以使用Binder IPC和其他进程通信。 |
 
+## ChildProcessInformation
+
+type ChildProcessInformation = _ChildProcessInformation
+
+定义子进程信息。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+| 类型    | 说明                                          |
+| :------ | --------------------------------------------- |
+| _[ChildProcessInformation](./js-apis-inner-application-childProcessRunningInfo.md) | 定义子进程信息，包含子进程的PID、所属父进程的PID、子进程的进程名。|
+
 ## childProcessManager.startChildProcess
 
 startChildProcess(srcEntry: string, startMode: StartMode): Promise&lt;number&gt;
@@ -229,7 +245,7 @@ startArkChildProcess(srcEntry: string, args: ChildProcessArgs, options?: ChildPr
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
-| 801 | Capability not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 16000050 | Internal error. |
 | 16000061  | Operation not supported. |
 | 16000062  | The number of child processes exceeds the upper limit. <br>适用版本：13+ |
@@ -347,7 +363,7 @@ startNativeChildProcess(entryPoint: string, args: ChildProcessArgs, options?: Ch
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
-| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 16000050 | Internal error. |
 | 16000061  | Operation not supported. |
 | 16000062  | The number of child processes exceeds the upper limit. |
@@ -376,7 +392,7 @@ void Main(NativeChildProcess_Args args)
         char *fdName = current->fdName;
         int32_t fd = current->fd;
         current = current->next;
-        // 业务逻辑..
+        // 业务逻辑...
     }
 }
 } // extern "C"

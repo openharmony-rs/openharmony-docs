@@ -1,12 +1,11 @@
 # Cross-Device Agent Wake-Up and Message Transmission (for System Applications Only)
-
 <!--Kit: Distributed Service Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @wangrui7-->
 <!--Designer: @yangyang2-->
 <!--Tester: @Ytt-test-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=0a98ce16f37887e40e6b2d0e4ac5e2fbd6b63617 translatedAt=2026-08-10T01:27:08.010Z pushedAt=2026-08-10T02:20:57.978Z -->
+<!-- md-trans-meta sourceCommit=f4d85c5ccaaf75c42bd1b40efa00b5d3993e7161 translatedAt=2026-10-22T14:24:55.298Z pushedAt=2026-10-22T14:26:36.807Z nl=1 -->
 
 ## Overview
 
@@ -23,13 +22,9 @@ By registering a conversation listener, an app can receive messages from other d
 ### Constraints
 
 - The `ohos.permission.DISTRIBUTED_DATASYNC` and `ohos.permission.sec.ACCESS_UDID` permissions must be configured.
-
 - Cross-device message exchange is supported only for apps with the same `bundleName` on different devices.
-
 - The target device must be a trusted device under the same account.
-
 - Supports the system's native fast device wakeup capability. This requires Bluetooth and Wi-Fi to be turned on at close range and the devices to be connected to the same Wi-Fi LAN.
-
 - This capability is supported since API version 26.0.1.
 
 ## Environment Preparation
@@ -41,11 +36,8 @@ Ensure that the devices participating in communication are logged in with the sa
 ### Environment Setup
 
 1. Install [DevEco Studio](https://developer.huawei.com/consumer/en/download) 4.1 or later on the development PC.
-
-2. Update the public-SDK to API version 26.0.1 or later. For details, see [OpenHarmony SDK Upgrade Assistant](../tools/openharmony_sdk_upgrade_assistant.md).
-
+2. Update the public-SDK to API version 26.0.1 or later. For details, see [Update Guide](../tools/openharmony-sdk-upgrade-assistant.md).
 3. Connect the two debugging devices (device A and device B) to the development PC using USB cables.
-
 4. Ensure that the two devices have network connections enabled and are logged in with the same account.
 
 ## Available APIs
@@ -61,17 +53,13 @@ The following table describes the commonly used APIs. For details, see [@ohos.di
 
 ## Distributed SoftBus Conversation Development
 
-- The receiving end calls [registerConversationListener()](../reference/apis-distributedservice-kit/js-apis-conversation-sys.md#conversationregisterconversationlistener) to register a conversation listener and listen for data from trusted devices.
-
-- The sending end calls [getTrustedDevices()](../reference/apis-distributedservice-kit/js-apis-conversation-sys.md#conversationgettrusteddevices) to obtain the list of trusted devices, selects a target device, and then calls [postConversationData()](../reference/apis-distributedservice-kit/js-apis-conversation-sys.md#conversationpostconversationdata) to send conversation data.
-
-- When data reception is no longer needed, call [unregisterConversationListener()](../reference/apis-distributedservice-kit/js-apis-conversation-sys.md#conversationunregisterconversationlistener) to unregister the conversation listener.
+- The receiving end calls [conversation.registerConversationListener()](../reference/apis-distributedservice-kit/js-apis-conversation-sys.md#conversationregisterconversationlistener) to register a conversation listener and listen for data from trusted devices.
+- The sending end calls [conversation.getTrustedDevices()](../reference/apis-distributedservice-kit/js-apis-conversation-sys.md#conversationgettrusteddevices) to obtain the list of trusted devices, selects a target device, and then calls [conversation.postConversationData()](../reference/apis-distributedservice-kit/js-apis-conversation-sys.md#conversationpostconversationdata) to send conversation data.
+- When data reception is no longer needed, call [conversation.unregisterConversationListener()](../reference/apis-distributedservice-kit/js-apis-conversation-sys.md#conversationunregisterconversationlistener) to unregister the conversation listener.
 
 ### Receiver Development
 
 1. Import the required module.
-
-   <!-- @[import_conversation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusConversationDemo/entry/src/main/ets/pages/Index.ets) -->
 
    ``` TypeScript
    import { conversation } from '@kit.DistributedServiceKit'
@@ -110,8 +98,6 @@ The following table describes the commonly used APIs. For details, see [@ohos.di
 
 3. Define the conversation listener callback function.
 
-   <!-- @[data_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusConversationDemo/entry/src/main/ets/pages/Index.ets) --> 
-
    ``` TypeScript
    // Define the message callback.
    let messageCallback: conversation.DataCallback = (deviceId: string, msg: ArrayBuffer): void => {
@@ -128,8 +114,6 @@ The following table describes the commonly used APIs. For details, see [@ohos.di
 
 4. Register the conversation listener to receive data from trusted devices.
 
-   <!-- @[register_listener](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusConversationDemo/entry/src/main/ets/pages/Index.ets) --> 
-
    ``` TypeScript
    // Register the listener.
    registerListener(): void {
@@ -145,8 +129,6 @@ The following table describes the commonly used APIs. For details, see [@ohos.di
    ```
 
 5. Unregister the conversation listener.
-
-   <!-- @[unregister_listener](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusConversationDemo/entry/src/main/ets/pages/Index.ets) --> 
 
    ``` TypeScript
    // Unregister the listener.
@@ -165,8 +147,6 @@ The following table describes the commonly used APIs. For details, see [@ohos.di
 ### Sender Development
 
 1. Import the required module.
-
-   <!-- @[import_conversation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusConversationDemo/entry/src/main/ets/pages/Index.ets) -->
 
    ``` TypeScript
    import { conversation } from '@kit.DistributedServiceKit'
@@ -205,8 +185,6 @@ The following table describes the commonly used APIs. For details, see [@ohos.di
 
 3. Obtain the trusted device list and select the target device.
 
-   <!-- @[get_trusted_devices](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusConversationDemo/entry/src/main/ets/pages/Index.ets) --> 
-
    ``` TypeScript
    // Obtain trusted devices.
    getTrustedDevices(): void {
@@ -231,8 +209,6 @@ The following table describes the commonly used APIs. For details, see [@ohos.di
 
 4. Send conversation data to the specified device.
 
-   <!-- @[send_message](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusConversationDemo/entry/src/main/ets/pages/Index.ets) --> 
-
    ``` TypeScript
    // Send a message.
    sendMessage(): void {
@@ -243,7 +219,7 @@ The following table describes the commonly used APIs. For details, see [@ohos.di
        for (let i = 0; i < messageToSend.length; i++) {
          bufferView[i] = messageToSend.charCodeAt(i);
        }
-
+   
        conversation.postConversationData(deviceId, bundleName, abilityName, arrayBuffer)
          .then(() => {
            hilog.info(DOMAIN, TAG, 'Message sent successfully to %{public}s', deviceId);
@@ -257,3 +233,5 @@ The following table describes the commonly used APIs. For details, see [@ohos.di
      }
    }
    ```
+
+<!--no_check-->

@@ -113,7 +113,7 @@
           // 卡片提供方需在激活态页面准备就绪时，通过session发送信息告知卡片使用方
           session.sendData({['isFormReady']: true});
         } catch (e) {
-          console.info(`sth wrong when load content ${e.code}, ${e.message}`);
+          console.error(`sth wrong when load content ${e.code}, ${e.message}`);
         }
       }
     

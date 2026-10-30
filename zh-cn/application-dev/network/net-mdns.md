@@ -90,7 +90,7 @@ MDNS管理的典型场景有：
 
 ## 发现本地服务
 
-1. 设备连接WiFi。
+1. 设备连接Wi-Fi。
 2. 从@kit.NetworkKit里导入mdns的命名空间。
 
    <!-- @[MDNS_case_module_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/MDNS_case/entry/src/main/ets/pages/Index.ets) -->
@@ -158,21 +158,11 @@ MDNS管理的典型场景有：
    <!-- @[discovery_service_off_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/MDNS_case/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
-   // 取消订阅的MDNS服务。
-   discoveryService.off('discoveryStart', (data: mdns.DiscoveryEventInfo) => {
-     hilog.info(0x0000, 'testTag', JSON.stringify(data));
-   });
-   discoveryService.off('discoveryStop', (data: mdns.DiscoveryEventInfo) => {
-     hilog.info(0x0000, 'testTag', JSON.stringify(data));
-   });
-   discoveryService.off('serviceFound', (data: mdns.LocalServiceInfo) => {
-     hilog.info(0x0000, 'testTag', JSON.stringify(data));
-     // ...
-   });
-   discoveryService.off('serviceLost', (data: mdns.LocalServiceInfo) => {
-     hilog.info(0x0000, 'testTag', JSON.stringify(data));
-     // ...
-   });
+   // 取消订阅的MDNS服务。不传入callback时，取消订阅该事件的所有回调。
+   discoveryService.off('discoveryStart');
+   discoveryService.off('discoveryStop');
+   discoveryService.off('serviceFound');
+   discoveryService.off('serviceLost');
    ```
 ## 相关实例
 

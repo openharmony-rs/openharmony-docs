@@ -1,12 +1,11 @@
 # PersistenceV2: Persisting UI States
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @jiyujia926-->
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=3efb4ba336409dd0731ba011e1e227786db57fa2 translatedAt=2026-07-22T02:09:20.827Z pushedAt=2026-07-23T10:40:48.504Z -->
+<!-- md-trans-meta sourceCommit=37a41c7e4764d3e7f831e1f47fc28c3acf56e6c1 translatedAt=2026-10-28T04:06:57.114Z pushedAt=2026-10-28T07:58:24.535Z nl=1 -->
 
 To enhance the state management framework's capability of persistently storing UIs, you can use **PersistenceV2** to persist data.
 
@@ -18,11 +17,11 @@ Before reading this topic, you are advised to read [\@ComponentV2](./arkts-creat
 
 >**NOTE**
 >
->**PersistenceV2** is supported since API version 12.
+>PersistenceV2 is supported since API version 12.
 >
->**globalConnect** is supported since API version 18. The behavior of **globalConnect** is the same as that of **connect**. The only difference is that the underlying storage path of **connect** is a module-level path, while that of **globalConnect** is an application-level path. For details, see the section [Using connect and globalConnect in Different Modules](#using-connect-and-globalconnect-in-different-modules).
+>globalConnect is supported since API version 18. Its behavior is the same as that of connect. The only difference is that the underlying storage path of connect is at the module level, while that of globalConnect is at the application level. For details about the difference, see [Using connect and globalConnect in Different Modules](#using-connect-and-globalconnect-in-different-modules).
 >
->Since API version 23, globalConnect supports the persistence of [collection types](#collection-types-supported-by-globalconnect) (Array, Map, Set, Date, collections.Array, collections.Map, collections.Set), the persistence of data of the @Sendable type in the UI thread, the persistence of objects referenced cyclically, and the persistence of data whose single key exceeds 8 KB. Currently, you are advised to use the globalConnect API of API version 23.
+>Since API version 23, globalConnect supports the persistence of [collection types](#collection-types-supported-by-globalconnect) (Array, Map, Set, collections.Array, collections.Map, and collections.Set) and the Date type, supports persisting data of the @Sendable type in the UI thread, supports persisting objects with circular references, and supports persisting data of a single key larger than 8 KB. Currently, you are advised to use the globalConnect API added in API version 23.
 
 ## Overview
 
@@ -37,21 +36,15 @@ For an [\@ObservedV2](./arkts-new-observedV2-and-trace.md) object associated wit
 PersistenceV2 inherits from [AppStorageV2](../../reference/apis-arkui/js-apis-stateManagement.md#appstoragev2) and supports the creation or obtaining of stored data through [connect](../../reference/apis-arkui/js-apis-stateManagement.md#connect).
 
 ## Usage Instructions
-
 - **globalConnect**: creates or obtains the stored data.
-
 >**NOTE**
 >
->1. When associating an [\@Observed](./arkts-observed-and-objectlink.md) object, since the **name** property of this type is undefined, you need to either specify a key or customize the **name** property.
+>1. When associating [\@Observed](./arkts-observed-and-objectlink.md) objects, because the name attribute of this type is undefined, you need to specify a key or customize the name attribute.
 >
->2. **globalConnect** is an application-level storage path. For a key, the entire application has only one storage path for the corresponding encryption partition. The data path stored using the **connect** of PersistenceV2 is at the module level. That is, the data copy is stored in the persistent file of the corresponding module when the module calls **connect**. If multiple modules use the same key, the data of the module that uses the **connect** function first is used, and the data in **PersistenceV2** is also stored in the module that uses the **connect** function first. The storage path, determined when the first ability of the application is started, is the module to which the ability belongs. If an ability calls **connect** and can be started by different modules, the number of data copies is the same as the number of startup modes of the ability. Therefore, you are advised to use **globalConnect** instead of **connect**.
-
+>2. globalConnect is application-level storage. For a key, the entire application has only one storage path in the corresponding encryption partition. The data path stored by using the connect API of PersistenceV2 is at the module level. That is, whichever module calls connect, the data copy is stored in the persistent file of the corresponding module. If multiple modules use the same key, the data belongs to the module that first uses connect, and the data in PersistenceV2 is also stored in the module that first uses connect. This is because the storage path is determined when the first ability of the application is started, and it is the module to which the ability belongs. If an ability calls connect and the ability can be started by different modules, there will be as many data copies as there are startup modes of the ability. Therefore, you are advised to use globalConnect instead of connect.
 - **remove**: deletes the stored data of a specified key. If a key that does not exist in **PersistenceV2** is deleted, a warning is reported.
-
 - **keys**: returns all keys stored in PersistenceV2. All keys in the module-level and application-level storage paths are returned.
-
 - **save**: manually persists data.
-
 - **notifyOnError**: callback for responding to a serialization or deserialization failure. When data is stored to disks, the data needs to be serialized. If a key fails to be serialized, the error is unpredictable. This API can be called to capture exceptions.
 
 For details about the preceding APIs, see [PersistenceV2-API Reference](../../reference/apis-arkui/js-apis-stateManagement.md#persistencev2) and [AppStorageV2-API Reference](../../reference/apis-arkui/js-apis-stateManagement.md#appstoragev2).
@@ -61,19 +54,20 @@ For details about the preceding APIs, see [PersistenceV2-API Reference](../../re
 1. Must be used only with the UI thread. Other threads are not supported. @Sendable is not supported in versions earlier than API version 23.
 
    -  Since API version 23, the **globalConnect** API is provided to support the persistence of class objects decorated with **@Sendable** in the UI thread. The member attribute types must be basic built-in types (**string**, **number**, and **boolean**).
+  
 
-2. Types such as **collections.Set** and **collections.Map** are not supported before API version 23.
+2. Types such as `collections.Set` and `collections.Map` are not supported before API version 23.
 
-- Since API version 23, the **globalConnect** API is provided and supports [collections.Set](../../reference/apis-arkts/arkts-apis-arkts-collections-Set.md), [collections.Map](../../reference/apis-arkts/arkts-apis-arkts-collections-Map.md), and [collections.Array](../../reference/apis-arkts/arkts-apis-arkts-collections-Array.md). **collections.Set**, **collections.Map**, and **collections.Array** cannot be observed. When **defaultCreator** is used in the **globalConnect** API, [UIUtils.makeObserved](../../reference/apis-arkui/js-apis-stateManagement.md#makeobserved) needs to be used to automatically save the data when the value changes. Otherwise, you need to manually call [PersistenceV2.save(key)](../../reference/apis-arkui/js-apis-stateManagement.md#save) to save the changed data.
+   - Since API version 23, the **globalConnect** API is provided and supports [collections.Set](../../reference/apis-arkts/arkts-apis-arkts-collections-Set.md), [collections.Map](../../reference/apis-arkts/arkts-apis-arkts-collections-Map.md), and [collections.Array](../../reference/apis-arkts/arkts-apis-arkts-collections-Array.md). **collections.Set**, **collections.Map**, and **collections.Array** cannot be observed. When **defaultCreator** is used in the **globalConnect** API, [UIUtils.makeObserved](../../reference/apis-arkui/js-apis-stateManagement.md#makeobserved) needs to be used to automatically save the data when the value changes. Otherwise, you need to manually call [PersistenceV2.save(key)](../../reference/apis-arkui/js-apis-stateManagement.md#save) to save the changed data.
 
    The following is the sample code for the newly added **globalConnect** API that supports **collections.Array**.
-
+    
     <!-- @[top_level_collections_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistenceV2/entry/src/main/ets/pages/TopLevelCollectionsArray.ets) -->
-
+     
     ``` TypeScript
     import { PersistenceV2, UIUtils } from '@kit.ArkUI';
     import { collections } from '@kit.ArkTS';
-     
+
     @Entry
     @ComponentV2
     struct Page1 {
@@ -82,7 +76,7 @@ For details about the preceding APIs, see [PersistenceV2-API Reference](../../re
         // Define the data type for persistence.
         type: collections.Array<number>,
         // Define the default constructor. Call makeObserved when returning to enable automatic persistence.
-        defaultCreator: () => UIUtils.makeObserved(new collections.Array<number>(1,2))
+        defaultCreator: () => UIUtils.makeObserved(new collections.Array<number>(2, 1))
       })!;
       // Build a data source for Repeat based on collections.Array.
       toArray<T>(array: collections.Array<T>): Array<T> {
@@ -90,7 +84,7 @@ For details about the preceding APIs, see [PersistenceV2-API Reference](../../re
         array.forEach((item: T) => result.push(item));
         return result;
       }
-     
+
       build() {
         Column({ space: 10 }) {
           Column({ space: 0 }) {
@@ -108,53 +102,53 @@ For details about the preceding APIs, see [PersistenceV2-API Reference](../../re
               .key((item: number, index: number) => `${index} - ${item}`)
           }
           Divider().width('100%')
-          // Click 'array.push(0)', restart the app, and the Repeat array items are: 1, 2, 0.
-          Button('array.push(0)')
+          // The following buttons demonstrate operations on collections.Array in sequence. The data is automatically persisted, and the current array state is retained after the app restarts.
+          // Append element 4 after clicking. The array items become: 2, 1, 4.
+          Button('array.push(4)')
             .onClick(() => {
-              this.array.push(Math.round(0));
+              this.array.push(4);
             })
             .width(300)
             .margin(10)
-          // Click 'array.pop()', restart the app, and the Repeat array items are: 1, 2.
+          // Sort the array in ascending order after clicking. The array items become: 1, 2, 4.
+          Button('array.sort')
+            .onClick(() => {
+              this.array.sort((a, b) => a - b);
+            })
+            .width(300)
+            .margin(10)
+          // Reverse the array after clicking. The array items become: 4, 2, 1.
+          Button('array.reverse')
+            .onClick(() => {
+              this.array.reverse();
+            })
+            .width(300)
+            .margin(10)
+          // Insert element 9 at index 1 after clicking. The array items become: 4, 9, 2, 1.
+          Button('array.splice(1, 0, 9)')
+            .onClick(() => {
+              this.array.splice(1, 0, 9);
+            })
+            .width(300)
+            .margin(10)
+          // Replace the first two elements with 7 and 8 after clicking. The array items become: 7, 8, 2, 1.
+          Button('array.splice(0, 2, 7, 8)')
+            .onClick(() => {
+              this.array.splice(0, 2, 7, 8);
+            })
+            .width(300)
+            .margin(10)
+          // Remove the last element after clicking. The array items become: 7, 8, 2.
           Button('array.pop()')
             .onClick(() => {
               this.array.pop();
             })
             .width(300)
             .margin(10)
-          // Click 'array.splice(0)', restart the app, and the Repeat array items are empty.
+          // Clear the array after clicking. The array items become empty.
           Button('array.splice(0)')
             .onClick(() => {
               this.array.splice(0);
-            })
-            .width(300)
-            .margin(10)
-          // Click 'splice(1, 0, random)', restart the app: the Repeat component displays the same array items again.
-          Button('array.splice(1, 0, random)')
-            .onClick(() => {
-              this.array.splice(1, 0, Math.round(100*Math.random()));
-            })
-            .width(300)
-            .margin(10)
-          // Click 'array.splice(0, 2, random, random)', the first two array items are replaced and recorded.
-          // Restart the app: the Repeat component displays the array items again.
-          Button('array.splice(0, 2, random, random)')
-            .onClick(() => {
-              this.array.splice(0, 2, Math.round(100*Math.random()), Math.round(100*Math.random()));
-            })
-            .width(300)
-            .margin(10)
-          // Click 'array.sort' to sort the array items in ascending order. Restart the app, and the Repeat component displays the ascending array.
-          Button('array.sort')
-            .onClick(() => {
-              this.array.sort((a, b) => a -b);
-            })
-            .width(300)
-            .margin(10)
-          // Click 'array.reverse' to sort the array items in descending order. Restart the app, and the Repeat component displays the descending array.
-          Button('array.reverse')
-            .onClick(() => {
-              this.array.reverse();
             })
             .width(300)
             .margin(10)
@@ -166,280 +160,279 @@ For details about the preceding APIs, see [PersistenceV2-API Reference](../../re
 
      ![persistencev2-sync-0](./figures/persistencev2-sync-0.gif)
 
-- When **globalConnect** is used to persist multiple same [collection types](#collection-types-supported-by-globalconnect), different **key** values need to be provided to distinguish the persistent data.
+   - When **globalConnect** is used to persist multiple same [collection types](#collection-types-supported-by-globalconnect), different `key` values need to be provided to distinguish the persistent data.
 
    The following is a sample code snippet for persisting the same **Array\<number>** type.
 
-  ```typescript
-  @Entry
-  @ComponentV2
-  struct Page1 {
-    // Different keys are recommended to distinguish persistent data of the same container type.
-    @Local arr1: Array<number> = PersistenceV2.globalConnect({
-      type: Array<number>,
-      key: 'arr1',
-      defaultCreator: () => UIUtils.makeObserved(new Array<number>()),
-    })!;
+     ```typescript
+     @Entry
+     @ComponentV2
+     struct Page1 {
+       // To persist data of the same container type, developers are advised to use different keys to distinguish the persisted data.
+       @Local arr1: Array<number> = PersistenceV2.globalConnect({
+         type: Array<number>,
+         key: 'arr1',
+         defaultCreator: () => UIUtils.makeObserved(new Array<number>()),
+       })!;
 
-    @Local arr2: Array<number> = PersistenceV2.globalConnect({
-      type: Array<number>,
-      key: 'arr2',
-      defaultCreator: () => UIUtils.makeObserved(new Array<number>()),
-    })!;
-    // ...
-  }
-  ```
+       @Local arr2: Array<number> = PersistenceV2.globalConnect({
+         type: Array<number>,
+         key: 'arr2',
+         defaultCreator: () => UIUtils.makeObserved(new Array<number>()),
+       })!;
+       // ...
+     }
+     ```
 
 3. Non-built-in types, such as [PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md), NativePointer, and [ArrayList](../../reference/apis-arkts/js-apis-arraylist.md), are not supported.
 
 4. Before API version 23, the data size supported by a single **key** is about 8 KB. If the data size is too large, the persistence fails.
 
-- Since API version 23, this restriction is removed. Data is read and written in the UI thread at the same time. However, you are not advised to store a large amount of persistent data in the UI thread. Otherwise, the UI may freeze.
+   - Since API version 23, this restriction is removed. Data is read and written in the UI thread at the same time. However, you are not advised to store a large amount of persistent data in the UI thread. Otherwise, the UI may freeze.
 
 5. Before API version 23, the data to be persisted must be a **class** object. Container types (such as **Array**, **Set**, and **Map**), built-in constructed objects (such as **String** and **Number**), and basic types (such as **string**, **number**, and **boolean**) are not supported. To persist non-class objects, you need to use [Preferences](../../database/preferences-guidelines.md) for data persistence.
 
-- Since API version 23, class types and container types (**Array**, **Set**, **Map**, and **Date**) can be persisted. Built-in constructed types (such as **String** and **Number**) and basic types (such as **string**, **number**, and **boolean**) can be persisted as **class** attributes. **String** and **Number** are immutable data objects and cannot be directly persisted as [top-level data types](#globalconnect-top-level-persistent-data-types-and-non-top-level-persistent-data-types). For unsupported types, a runtime error is reported. Since API version 23, the error code [140103](../../reference/apis-arkui/errorcode-stateManagement.md#140103-appstoragev2-and-persistencev2-use-unsupported-data-types) will be returned in this case.
+   - Since API version 23, class types, container types (**Array**, **Set**, and **Map**), and the **Date** type can be persisted. Built-in constructed object types (such as **String** and **Number**) and basic types (such as **string**, **number**, and **boolean**) are supported as class attributes for persistence (**String** and **Number** are immutable data objects and cannot be directly persisted as [top-level data types](#globalconnect-top-level-persistent-data-types-and-non-top-level-persistent-data-types)). For unsupported types, a runtime error is thrown. Since API version 23, error code [140103](../../reference/apis-arkui/errorcode-stateManagement.md#140103-appstoragev2-and-persistencev2-use-unsupported-data-types) is returned.
 
-   The following is an example of newly added **globalConnect** that supports the persistence of the **Array\<ClassA>** type:
+     The following is an example of newly added **globalConnect** that supports the persistence of the **Array\<ClassA>** type:
 
-    <!-- @[top_level_array_classa](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistenceV2/entry/src/main/ets/pages/TopLevelArrayClassA.ets) -->
+     <!-- @[top_level_array_classa](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistenceV2/entry/src/main/ets/pages/TopLevelArrayClassA.ets) -->
+     
+     ``` TypeScript
+     import { PersistenceV2, UIUtils } from '@kit.ArkUI';
+     
+     @ObservedV2
+     class ClassA {
+       @Trace public propA: string = '';
+       @Trace public propB: string = '';
+     
+       public report(): string {
+         return `${this.propA} - ${this.propB}`;
+       }
+     }
+     
+     @Entry
+     @ComponentV2
+     struct Comp {
+       // Persist the top-level data of type Array<ClassA>.
+       @Local arr: Array<ClassA> = PersistenceV2.globalConnect({
+         type: Array<ClassA>,
+         defaultCreator: () => UIUtils.makeObserved(new Array<ClassA>()),
+         // Add defaultSubCreator to notify the state management framework how to create array items.
+         // In addition, add makeObserved to the persisted data, because JSON objects do not have observation capability and automatic persistence will fail.
+         defaultSubCreator: () => UIUtils.makeObserved(new ClassA())
+       })!;
+     
+       build() {
+         Column() {
+           Repeat(this.arr)
+             .each(ri => {
+               Row() {
+                 Text(`propA '${ri.item.propA}'`)
+                   .fontSize(20)
+                   .margin(10)
+                 Text(`propB '${ri.item.propB}'`)
+                   .fontSize(20)
+                   .margin(10)
+                 Text(`report?.() '${ri.item.report?.()}'`)
+                   .fontSize(20)
+                   .margin(10)
+               }
+             })
+           // Click 'add item' to display `propA 'a' propB 'b'report?.()'a - b'`. Kill the app and re-enter it, and the previous result is displayed.
+           Button('add item')
+             .width(300)
+             .margin(10)
+             .onClick(() => {
+               let temp: ClassA = new ClassA();
+               temp.propA = 'a';
+               temp.propB = 'b';
+               this.arr.push(temp);
+             })
+         }
+       }
+     }
+     ```
 
-    ``` TypeScript
-    import { PersistenceV2, UIUtils } from '@kit.ArkUI';
-   
-    @ObservedV2
-    class ClassA {
-      @Trace public propA: string = '';
-      @Trace public propB: string = '';
-   
-      public report(): string {
-        return `${this.propA} - ${this.propB}`;
-      }
-    }
-   
-    @Entry
-    @ComponentV2
-    struct Comp {
-      // Persist data whose top-level data type is Array&lt;ClassA&gt;.
-      @Local arr: Array<ClassA> = PersistenceV2.globalConnect({
-        type: Array<ClassA>,
-        defaultCreator: () => UIUtils.makeObserved(new Array<ClassA>()),
-        // Add defaultSubCreator to notify the state management framework how to create array items.
-        // Additionally, the persisted data must be decorated with makeObserved, because JSON objects themselves lack observation capability, and automatic persistence will fail.
-        defaultSubCreator: () => UIUtils.makeObserved(new ClassA())
-      })!;
-   
-      build() {
-        Column() {
-          Repeat(this.arr)
-            .each(ri => {
-              Row() {
-                Text(`propA '${ri.item.propA}'`)
-                  .fontSize(20)
-                  .margin(10)
-                Text(`propB '${ri.item.propB}'`)
-                  .fontSize(20)
-                  .margin(10)
-                Text(`report?.() '${ri.item.report?.()}'`)
-                  .fontSize(20)
-                  .margin(10)
-              }
-            })
-          // Click 'add item', and `propA 'a' propB 'b' report?.()'a - b'` is displayed. Kill the app and re-enter, and the last result is displayed.
-          Button('add item')
-            .width(300)
-            .margin(10)
-            .onClick(() => {
-              let temp: ClassA = new ClassA();
-              temp.propA = 'a';
-              temp.propB = 'b';
-              this.arr.push(temp);
-            })
-        }
-      }
-    }
-    ```
+     ![persistencev2-sync-1](./figures/persistencev2-sync-1.gif)
 
-   ![persistencev2-sync-1](./figures/persistencev2-sync-1.gif)
+     The following is an example of the persistence of the Date type supported by globalConnect:
 
-   The following is an example of the persistence of the Date type supported by globalConnect:
+     <!-- @[top_level_date](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistenceV2/entry/src/main/ets/pages/TopLevelDate.ets) --> 
+     
+     ``` TypeScript
+     import { PersistenceV2, UIUtils } from '@kit.ArkUI';
+     
+     @Entry
+     @ComponentV2
+     struct Page1 {
+       // Support persisting Date type data directly.
+       @Local date: Date = PersistenceV2.globalConnect({
+         type: Date,
+         defaultCreator: () => UIUtils.makeObserved(new Date())
+       })!;
+     
+       build() {
+         Column({ space: 40 }) {
+           Text(`date: ${this.date.toISOString()}`)
+             .fontSize(24)
+             .margin(10)
+           // Tap 'date.setTime( Date.now() )', kill the app, and after re-entering the app, the date is displayed.
+           Button('date.setTime( Date.now() )')
+             .margin(10)
+             .onClick(() => {
+               this.date.setTime(Date.now());
+             })
+             .fontSize(24)
+         }
+         .width('100%')
+       }
+     }
+     ```
 
-    <!-- @[top_level_date](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistenceV2/entry/src/main/ets/pages/TopLevelDate.ets) --> 
+     ![persistencev2-sync-2](./figures/persistencev2-sync-2.gif)
 
-    ``` TypeScript
-    import { PersistenceV2, UIUtils } from '@kit.ArkUI';
-    
-    @Entry
-    @ComponentV2
-    struct Page1 {
-      // Data of the Date type can be directly persisted.
-      @Local date: Date = PersistenceV2.globalConnect({
-        type: Date,
-        defaultCreator: () => UIUtils.makeObserved(new Date())
-      })!;
-    
-      build() {
-        Column({ space: 40 }) {
-          Text(`date: ${this.date.toISOString()}`)
-            .fontSize(24)
-            .margin(10)
-          // Click 'date.setTime (Date.now ())' to kill the application. After the application is started, the date is displayed.
-          Button('date.setTime( Date.now() )')
-            .margin(10)
-            .onClick(() => {
-              this.date.setTime(Date.now());
-            })
-            .fontSize(24)
-        }
-        .width('100%')
-      }
-    }
-    ```
+     The following is an example of globalConnect supporting the persistence of the Number type as a class subattribute:
 
-    ![persistencev2-sync-2](./figures/persistencev2-sync-2.gif)
+     <!-- @[non_top_level_number_of_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistenceV2/entry/src/main/ets/pages/NonTopLevelNumberOfClass.ets) --> 
+     
+     ``` TypeScript
+     import { PersistenceV2 } from '@kit.ArkUI';
+     
+     @ObservedV2 class NumberClass {
+       // The Number type is not a top-level persistent data type and can only support persistence of non-top-level data types.
+       @Trace public value: Number = new Number(Infinity);
+     }
+     
+     @Entry
+     @ComponentV2
+     struct Page1 {
+       // The Number type can only be persisted as a sub-property of NumberClass.
+       @Local number: NumberClass = PersistenceV2.globalConnect({
+         type: NumberClass,
+         defaultCreator: () => new NumberClass()
+       })!;
+       output: string[] = [];
+     
+       aboutToAppear(): void {
+         this.output.push(`this.number.value: ${this.number.value}, is instanceof Number ${this.number.value instanceof Number}`);
+         this.number.value = new Number(-this.number.value);
+       }
+     
+       build() {
+         Column() {
+           Row() {
+             // When the app is opened for the first time, the UI displays 'this.number.value: Infinity, is instanceof Number true'.
+             // When the app is opened for the second time, the UI displays 'this.number.value: -Infinity, is instanceof Number true'.
+             Text(this.output.join('\n\n'))
+               .fontSize(24)
+           }
+         }
+         .width('100%')
+       }
+     }
+     ```
 
-  The following is an example of globalConnect supporting the persistence of the Number type as a class subattribute:
-
-  <!-- @[non_top_level_number_of_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistenceV2/entry/src/main/ets/pages/NonTopLevelNumberOfClass.ets) --> 
-
-  ``` TypeScript
-  import { PersistenceV2 } from '@kit.ArkUI';
-  
-  @ObservedV2 class NumberClass {
-    // The number type is not a top-level persistent data type. Only the persistence of non-top-level data types is supported.
-    @Trace public value: Number = new Number(Infinity);
-  }
-  
-  @Entry
-  @ComponentV2
-  struct Page1 {
-    // The Number type can be used only as a sub-attribute of NumberClass for persistence.
-    @Local number: NumberClass = PersistenceV2.globalConnect({
-      type: NumberClass,
-      defaultCreator: () => new NumberClass()
-    })!;
-    output: string[] = [];
-  
-    aboutToAppear(): void {
-      this.output.push(`this.number.value: ${this.number.value}, is instanceof Number ${this.number.value instanceof Number}`);
-      this.number.value = new Number(-this.number.value);
-    }
-  
-    build() {
-      Column() {
-        Row() {
-          // When the app is opened for the first time, 'this.number.value: Infinity, is instanceof Number true' is displayed.
-          // Open the app for the second time. The 'this.number.value: -Infinity, is instanceof Number true' is displayed.
-          Text(this.output.join('\n\n'))
-            .fontSize(24)
-        }
-      }
-      .width('100%')
-    }
-  }
-  ```
-
-  ![persistencev2-sync-3](./figures/persistencev2-sync-3.png)
+     ![persistencev2-sync-3](./figures/persistencev2-sync-3.png)
 
 6. In versions earlier than API version 23, the persistence of circularly referenced objects is not supported.
 
-- Since API version 23, the globalConnect API is provided to support the persistence of circularly referenced objects.
+   - Since API version 23, the globalConnect API is provided to support the persistence of circularly referenced objects.
 
-   The following is an example of the persistence of an object that supports circular reference in globalConnect:
+     The following is an example of the persistence of an object that supports circular reference in globalConnect:
 
-   <!-- @[circular_reference_of_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistenceV2/entry/src/main/ets/pages/CircularReferenceOfObject.ets) --> 
-
-   ``` TypeScript
-   import { PersistenceV2 } from '@kit.ArkUI';
-   
-   @ObservedV2
-   class ClassA {
-     @Trace public value: string = 'a';
-     @Trace public refB: ClassB | undefined;
-   }
-   
-   @ObservedV2
-   class ClassB {
-     @Trace public value: string = 'b';
-     @Trace public refA: ClassA | undefined;
-   }
-   
-   @ObservedV2
-   class ClassC {
-     @Trace public value: string = 'c';
-     @Trace public objA: ClassA = new ClassA();
-     @Trace public objB: ClassB = new ClassB();
-   
-     // ClassC is a circular reference object.
-     constructor() {
-       this.objA.refB = this.objB;
-       this.objB.refA = this.objA;
+     <!-- @[circular_reference_of_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistenceV2/entry/src/main/ets/pages/CircularReferenceOfObject.ets) --> 
+     
+     ``` TypeScript
+     import { PersistenceV2 } from '@kit.ArkUI';
+     
+     @ObservedV2
+     class ClassA {
+       @Trace public value: string = 'a';
+       @Trace public refB: ClassB | undefined;
      }
-   }
-   
-   @Entry
-   @ComponentV2
-   struct Page1 {
-     @Local test: ClassC = PersistenceV2.globalConnect({
-       type: ClassC,
-       defaultCreator: () => new ClassC()
-     })!;
-     output: string[] = [];
-   
-     aboutToAppear(): void {
-       const refAValue = this.test.objA?.refB?.refA?.value;
-       const refBValue = this.test.objB?.refA?.refB?.value;
-       this.output.push(`${refAValue}, ${refBValue}`);
-       this.test.objA.value += 'a';
-       this.test.objB.value += 'b';
+     
+     @ObservedV2
+     class ClassB {
+       @Trace public value: string = 'b';
+       @Trace public refA: ClassA | undefined;
      }
-   
-     build() {
-       Column() {
-         Row() {
-           // When the app is opened for the first time, 'a, b' is displayed.
-           // When the app is opened for the second time, 'aa, bb' is displayed.
-           Text(this.output.join('\n\n'))
-             .fontSize(20)
-             .width(300)
-             .margin(10)
-         }
-         .height('100%')
+     
+     @ObservedV2
+     class ClassC {
+       @Trace public value: string = 'c';
+       @Trace public objA: ClassA = new ClassA();
+       @Trace public objB: ClassB = new ClassB();
+     
+       // ClassC is a circular reference object.
+       constructor() {
+         this.objA.refB = this.objB;
+         this.objB.refA = this.objA;
        }
-       .width('100%')
      }
-   }
-   ```
+     
+     @Entry
+     @ComponentV2
+     struct Page1 {
+       @Local test: ClassC = PersistenceV2.globalConnect({
+         type: ClassC,
+         defaultCreator: () => new ClassC()
+       })!;
+       output: string[] = [];
+     
+       aboutToAppear(): void {
+         const refAValue = this.test.objA?.refB?.refA?.value;
+         const refBValue = this.test.objB?.refA?.refB?.value;
+         this.output.push(`${refAValue}, ${refBValue}`);
+         this.test.objA.value += 'a';
+         this.test.objB.value += 'b';
+       }
+     
+       build() {
+         Column() {
+           Row() {
+             // When the app is opened for the first time, the UI displays 'a, b'.
+             // When the app is opened for the second time, the UI displays 'aa, bb'.
+             Text(this.output.join('\n\n'))
+               .fontSize(20)
+               .width(300)
+               .margin(10)
+           }
+           .height('100%')
+         }
+         .width('100%')
+       }
+     }
+     ```
 
-   ![persistencev2-sync-4](./figures/persistencev2-sync-4.png)
+     ![persistencev2-sync-4](./figures/persistencev2-sync-4.png)
 
 7. Automatic persistency is triggered only when [\@Trace](./arkts-new-observedV2-and-trace.md) data is changed. The change of state variables in V1, [\@Observed](./arkts-observed-and-objectlink.md) objects, and common data does not trigger persistency.
 
 8. It is not recommended to mix **connect** and **globalConnect**. If they are mixed, the keys must be different; otherwise, the application will crash. Starting from API version 23, error code [140105](../../reference/apis-arkui/errorcode-stateManagement.md#140105-persistencev2-mixes-connect-and-globalconnect-that-use-the-same-key) will be returned.
 
 9. PersistenceV2 must be associated with a UI instance. The persistence operation must be called after the UI instance is initialized (that is, after the [loadContent](../../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9) callback is triggered).
+   ```ts
+   // EntryAbility.ets
+   // The following is a code snippet that developers need to complete in EntryAbility.ets.
+   import { PersistenceV2 } from '@kit.ArkUI';
 
-```ts
-// EntryAbility.ets
-// The following is a code snippet. You need to complete it in EntryAbility.ets.
-import { PersistenceV2 } from '@kit.ArkUI';
+   // Define the class outside EntryAbility.
+   @ObservedV2
+   class Storage {
+     @Trace isPersist: boolean = false;
+   }
 
-// Define a class outside EntryAbility.
-@ObservedV2
-class Storage {
-  @Trace isPersist: boolean = false;
-}
-
-// Call PersistenceV2 in the loadContent callback of onWindowStageCreate.
-onWindowStageCreate(windowStage: window.WindowStage): void {
-  windowStage.loadContent('pages/Index', (err) => {
-    if (err.code) {
-      return;
-    }
-    PersistenceV2.connect(Storage, () => new Storage());
-  });
-}
-```
+   // Call PersistenceV2 in the loadContent callback of onWindowStageCreate.
+   onWindowStageCreate(windowStage: window.WindowStage): void {
+     windowStage.loadContent('pages/Index', (err) => {
+       if (err.code) {
+         return;
+       }
+       PersistenceV2.connect(Storage, () => new Storage());
+     });
+   }
+   ```
 
 10. If you have strong requirements on data persistence, for example, the persistence time, you are advised to use [Preferences](../../database/preferences-guidelines.md) for data persistence. Note: PersistenceV2 and Preferences cannot be used together because the data stored in Preferences does not have state variable information, and the deserialized data cannot trigger automatic storage of PersistenceV2.
 
@@ -448,18 +441,75 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
 12. **globalConnect** supports only the EL1 to EL5 encryption levels. Otherwise, a runtime exception will be thrown. Since API version 23, the error code [140106](../../reference/apis-arkui/errorcode-stateManagement.md#140106-using-persistencev2-to-store-data-at-an-unsupported-encryption-level) will be returned. For details, see [Using globalConnect to Store Data](#using-globalconnect-to-store-data).
 
 13. If the structure of the stored data is inconsistent with the current data structure, deserialization may fail. In versions earlier than API version 26.0.0, you cannot obtain the old serialized data, and therefore cannot determine the changes in your data structure.
+    - From API version 26.0.0, [PersistenceErrorCallback](../../reference/apis-arkui/js-apis-stateManagement.md#persistenceerrorcallback) supports the **oldValue** parameter, which can be used to obtain the old serialized data stored on the disk. For details, see [Obtaining the Old Serialized Data Through notifyOnError](#obtaining-the-old-serialized-data-through-notifyonerror).
 
-- From API version 26.0.0, [PersistenceErrorCallback](../../reference/apis-arkui/js-apis-stateManagement.md#persistenceerrorcallback) supports the **oldValue** parameter, which can be used to obtain the old serialized data stored on the disk. For details, see [Obtaining the Old Serialized Data Through notifyOnError](#obtaining-the-old-serialized-data-through-notifyonerror).
+14. Before API version 26.1.0, the [\@Computed](./arkts-new-computed.md) function cannot be used in classes persisted with **globalConnect**. \@Computed is a read-only attribute and does not support value assignment, which causes deserialization to fail. From API version 26.1.0, by setting **ignoreReadOnlyProperties** to **true** in [ConnectOptions](../../reference/apis-arkui/js-apis-stateManagement.md#connectoptionst18), you can use the \@Computed function in classes persisted with **globalConnect**. **ignoreReadOnlyProperties** defaults to **false**. When it is set to **true**, PersistenceV2 skips read-only attributes (such as the \@Computed function) to avoid deserialization failures.
 
-14. The [\@Computed](./arkts-new-computed.md) attribute cannot be used in classes that use **connect** or **globalConnect**. \@Computed is read-only and does not support value assignment. As a result, deserialization fails.
+    ```typescript
+    import { PersistenceV2 } from '@kit.ArkUI';
+
+    @ObservedV2
+    class SampleComputed {
+      @Trace public value: number = 1;
+
+      // @Computed is a read-only property and must be used with ignoreReadOnlyProperties.
+      @Computed
+      get doubled(): number {
+        return this.value * 2;
+      }
+    }
+
+    @Entry
+    @ComponentV2
+    struct Index {
+      @Local sample: SampleComputed = PersistenceV2.globalConnect({
+        type: SampleComputed,
+        defaultCreator: () => new SampleComputed(),
+        // ignoreReadOnlyProperties: true must be configured; otherwise, deserialization fails due to @Computed, causing the application to crash.
+        ignoreReadOnlyProperties: true
+      })!;
+
+      build() {
+        Column() {
+          Text(`doubled value is ${this.sample.doubled}`)
+        }.width('100%')
+      }
+    }
+    ```
+
+    ![persistencev2-ignorereadonlyproperties](./figures/persistencev2-ignorereadonlyproperties.png)
+  
+
+15. When using **globalConnect** to persist [collection types](#collection-types-supported-by-globalconnect) (such as `Array`, `Map`, `Set`, `collections.Array`, `collections.Map`, and `collections.Set`), if the element type inside the container is a basic type (such as `number`, `string`, or `boolean`), do not declare `defaultSubCreator`; otherwise, editing and compilation errors will occur.
+
+    The type of `defaultSubCreator` is `StorageDefaultCreator<S>`, whose generic parameter `S` is constrained by `S extends object`. However, basic types such as `number`, `string`, and `boolean` do not inherit from `object` in ArkTS and therefore cannot satisfy this constraint. As a result, when the element type inside a container is a basic type, declaring `defaultSubCreator` will cause editing and compilation errors.
+    
+    Only when the element type inside a container is a user-defined `class` type (that is, a reference type inheriting from `object`) is it necessary to declare `defaultSubCreator`, which is used to inform the state management framework how to create the object items inside the container. The following example uses `Array<number>` to demonstrate both correct and incorrect usage:
+
+    ```typescript
+    // Counterexample: the element type in the container is the basic type number, and declaring defaultSubCreator causes editing and compilation errors.
+    @Local arr1: Array<number> = PersistenceV2.globalConnect({
+      type: Array<number>,
+      defaultCreator: () => UIUtils.makeObserved(new Array<number>()),
+      defaultSubCreator: () => 10
+    })!;
+
+    // Positive example: the element type in the container is the basic type number, and defaultSubCreator is not declared.
+    @Local arr2: Array<number> = PersistenceV2.globalConnect({
+      type: Array<number>,
+      defaultCreator: () => UIUtils.makeObserved(new Array<number>())
+    })!;
+    ```
+
+16. Obfuscation of the class names and attribute names of persistent data classes is not supported. Otherwise, existing data cannot be read or deserialization fails. Applications must disable obfuscation or retain the relevant class names and attribute names through obfuscation configuration.
 
 ## Types Supported by globalConnect
 
 ### globalConnect Top-Level Persistent Data Types and Non-Top-Level Persistent Data Types
 
-In versions earlier than API version 23, the top-level persistent data type must be a user-defined **class** object. Container types (such as **Array**, **Set**, **Map**, and **Date**) are not supported. Since API version 23, the persistent top-level data type can be a user-defined **class** or a container type. Non-top-level data type, which is defined in the attributes of a user-defined class.
+In versions earlier than API version 23, the top-level persistent data type must be a user-defined `class` object. Container types (such as `Array`, `Set`, and `Map`) and the Date type are not supported. Since API version 23, the persistent top-level data type can be a user-defined `class`, a container type, or the Date type. A non-top-level data type is a type defined in the attributes of a user-defined `class`.
 
-In the following example, Array\<ClassA> is a top-level persistent data type and can be the direct return value type of globalConnect. collections.Map is the attribute type of the CollectionMapClass class, which is a non-top-level persistent data type.
+In the following example, `Array<ClassA>` is a top-level persistent data type and can be the direct return value type of `globalConnect`. `collections.Map` is the attribute type of the `CollectionMapClass` class, which is a non-top-level persistent data type.
 
 ```typescript
 class ClassA {
@@ -479,7 +529,7 @@ struct Page1 {
     type: Array<ClassA>,
     defaultCreator: () => UIUtils.makeObserved(new Array<ClassA>()),
     // Add defaultSubCreator to notify the state management framework of how to create an array item.
-    // Add makeObserved to the persisted data. Otherwise, the persistence will fail.
+    // In addition, the data to be persisted must be decorated with makeObserved; otherwise, persistence will fail.
     defaultSubCreator: () => UIUtils.makeObserved(new ClassA())
   })!;
   
@@ -512,7 +562,6 @@ class ClassA {
   // ...
 }
 ```
-
 The attributes of the user-defined class type must be decorated by the @Type decorator, and the class attribute value must be the instance of the class specified in @Type.
 
 ```typescript
@@ -538,28 +587,35 @@ The value type (**V**) in **Array\<V>**, **Map\<K, V>**, **Set\<V>** can be **bo
 The following shows how to use **globalConnect** to persist **Array\<ClassA>**.
 
 <!-- @[top_level_array_classa_apis](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistenceV2/entry/src/main/ets/pages/TopLevelArrayClassAAPIs.ets) -->
-
+ 
 ``` TypeScript
 import { PersistenceV2, UIUtils } from '@kit.ArkUI';
- 
+
 class ClassA {
   public propA: number = 0;
-  public classAToString() : string {
+
+  public classAToString(): string {
     return this.propA?.toString()
   }
 }
- 
+
 @Entry
 @ComponentV2
 struct Page1 {
   @Local arr: Array<ClassA> = PersistenceV2.globalConnect({
     type: Array<ClassA>,
-    defaultCreator: () => UIUtils.makeObserved(new Array<ClassA>()),
+    defaultCreator: () => {
+      const arr = UIUtils.makeObserved(new Array<ClassA>());
+      const item = new ClassA();
+      item.propA = 2;
+      arr.push(UIUtils.makeObserved(item));
+      return arr;
+    },
     // Add defaultSubCreator to notify the state management framework how to create ClassA objects.
     // In addition, persisted data must be decorated with makeObserved; otherwise, persistence will fail.
     defaultSubCreator: () => UIUtils.makeObserved(new ClassA())
   })!;
- 
+
   build() {
     Column({ space: 10 }) {
       Column({ space: 0 }) {
@@ -569,7 +625,8 @@ struct Page1 {
               Text(`Item: `)
                 .fontSize(20)
                 .margin(10)
-              Text(ri.item?.classAToString ? ri.item?.classAToString(): `classAToString() missing from object, propA: ${ri.item?.propA}`)
+              Text(ri.item?.classAToString ? ri.item?.classAToString() :
+                `classAToString() missing from object, propA: ${ri.item?.propA}`)
                 .fontSize(20)
                 .margin(10)
             }
@@ -577,71 +634,66 @@ struct Page1 {
           .key((item: ClassA, index: number) => `${index} - ${item?.propA}`)
       }
       .width('100%')
- 
+
       Divider().width('100%')
-      // Click 'array.push(0)', restart the app, and the Repeat array items are: 1, 2, 0.
-      Button('array.push(0)')
+      // The following buttons demonstrate operations on Array&lt;ClassA&gt; in sequence. The data is automatically persisted, and the current array state is retained after the application restarts.
+      // Tap to append an element (propA=1). The propA sequence of the array becomes: 2, 1
+      Button('array.push(1)')
         .width(300)
         .margin(10)
         .onClick(() => {
           let temp = new ClassA();
-          temp.propA = 0;
+          temp.propA = 1;
           this.arr.push(UIUtils.makeObserved(temp));
         })
-        .fontSize(24)
-      // Click 'array.pop()', restart the app, and the Repeat array items are: 1, 2.
-      Button('array.pop()')
-        .width(300)
-        .margin(10)
-        .onClick(() => {
-          this.arr.pop();
-        })
-        .fontSize(24)
-      // Click 'array.splice(0)', restart the app, and the Repeat array items are empty.
-      Button('array.splice(0)')
-        .width(300)
-        .margin(10)
-        .onClick(() => {
-          this.arr.splice(0);
-        })
-        .fontSize(24)
-      // Click 'splice(1, 0, random)', restart the app: the Repeat component displays the same array items again.
-      Button('array.splice(1, 0, random)')
-        .margin(10)
-        .onClick(() => {
-          let temp = new ClassA();
-          temp.propA = Math.round(100 * Math.random());
-          this.arr.splice(1, 0, UIUtils.makeObserved(temp));
-        })
-        .fontSize(24)
-      // Click 'array.splice(0, 2, random, random)', the first two array items are replaced and recorded.
-      // Restart the app: the Repeat component displays the array items again.
-      Button('array.splice(0, 2, random, random)')
-        .margin(10)
-        .onClick(() => {
-          let tempA = new ClassA();
-          tempA.propA = Math.round(100 * Math.random());
-          this.arr.splice(0, 2,
-            UIUtils.makeObserved(tempA),
-            UIUtils.makeObserved(tempA));
-        })
-        .fontSize(18)
-      // Click 'array.sort' to sort the array items in ascending order, restart the app, and the Repeat component displays the ascending array.
+      // Tap to sort the array in ascending order by propA. The propA sequence of the array becomes: 1, 2
       Button('array.sort')
         .width(300)
         .margin(10)
         .onClick(() => {
-          this.arr.sort((tempA, tempB)=> tempA?.propA - tempB?.propA);
+          this.arr.sort((tempA, tempB) => tempA?.propA - tempB?.propA);
         })
-        .fontSize(24)
-      // Click 'array.reverse' to sort the array items in descending order, restart the app, and the Repeat component displays the descending array.
+      // Tap to reverse the array. The propA sequence of the array becomes: 2, 1
       Button('array.reverse')
         .width(300)
         .margin(10)
         .onClick(() => {
           this.arr.reverse();
         })
-        .fontSize(24)
+      // Tap to insert an element (propA=9) at index 1. The propA sequence of the array becomes: 2, 9, 1
+      Button('array.splice(1, 0, 9)')
+        .width(300)
+        .margin(10)
+        .onClick(() => {
+          let temp = new ClassA();
+          temp.propA = 9;
+          this.arr.splice(1, 0, UIUtils.makeObserved(temp));
+        })
+      // Tap to replace the first two elements (propA=7, 8). The propA sequence of the array becomes: 7, 8, 1
+      Button('array.splice(0, 2, 7, 8)')
+        .width(300)
+        .margin(10)
+        .onClick(() => {
+          let tempA = new ClassA();
+          tempA.propA = 7;
+          let tempB = new ClassA();
+          tempB.propA = 8;
+          this.arr.splice(0, 2, UIUtils.makeObserved(tempA), UIUtils.makeObserved(tempB));
+        })
+      // Tap to remove the last element. The propA sequence of the array becomes: 7, 8
+      Button('array.pop()')
+        .width(300)
+        .margin(10)
+        .onClick(() => {
+          this.arr.pop();
+        })
+      // Tap to clear the array. The array becomes empty.
+      Button('array.splice(0)')
+        .width(300)
+        .margin(10)
+        .onClick(() => {
+          this.arr.splice(0);
+        })
     }
     .width('100%')
   }
@@ -655,7 +707,6 @@ struct Page1 {
 ### Storing Data Between Two Pages
 
 Data page
-
 <!-- @[persistence_v2_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/persistenceV2/Sample.ets) --> 
 
 ``` TypeScript
@@ -679,7 +730,6 @@ export class Sample {
 ```
 
 Page 1
-
 <!-- @[Persistence_Use_Case_Data_Page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/persistenceV2/page/Page1.ets) --> 
 
 ``` TypeScript
@@ -765,7 +815,6 @@ struct Page1 {
 ```
 
 Page 2
-
 <!-- @[Persistence_Use_Case_Data_Page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/persistenceV2/page/Page2.ets) --> 
 
 ``` TypeScript
@@ -825,9 +874,7 @@ struct Page2 {
   }
 }
 ```
-
 When using **Navigation**, create a **route_map.json** file as shown below in the **src/main/resources/base/profile** directory, replacing the value of **pageSourceFile** with the actual path to **Page2**. Then, add **"routerMap": "$profile: route_map"** to the **module.json5** file.
-
 ```json
 {
   "routerMap": [
@@ -902,7 +949,7 @@ struct Page1 {
   build() {
     Column() {
       // Display data.
-      // Data decorated by @Trace can be automatically persisted to disks.
+      // Properties decorated by @Trace can be automatically persisted to the disk.
       Text('Key SampleGlobalConnect: ' + this.p.father.childId.toString())
         .onClick(() => {
           this.p.father.childId += 1;
@@ -987,7 +1034,7 @@ struct Page1 {
       // save() API.
       Text('not save key SampleGlobalConnect: ' + this.p.father.groupId.toString() + ' refresh: ' + this.refresh)
         .onClick(() => {
-          // Objects that are not saved by @Trace cannot be automatically stored.
+          // Properties not decorated by @Trace cannot be stored automatically.
           this.p.father.groupId += 1;
           this.refresh += 1;
         })
@@ -995,7 +1042,7 @@ struct Page1 {
         .margin(5)
       Text('save key SampleGlobalConnect: ' + this.p.father.groupId.toString() + ' refresh: ' + this.refresh)
         .onClick(() => {
-          // Objects that are not saved by @Trace cannot be automatically stored. You need to call the key for storage.
+          // Properties not decorated by @Trace cannot be stored automatically and need to be stored by calling save.
           this.p.father.groupId += 1;
           PersistenceV2.save(SampleGlobalConnect);
           this.refresh += 1;
@@ -1183,9 +1230,7 @@ struct Page1 {
 When you use different startup modes for newModule, the following symptoms may occur:
 
 *   Start the **newModule** and change the variables bound to **globalConnect1** and **connect2**. For example, change the value of **childId** to **5**.
-
 * Exit the application, clear the background, start the module entry, and start **newModule** by pressing the redirection key. The value of **globalConnect1** is **5**, and the value of **connect2** remains **0**.
-
 * **globalConnect** is an application-level storage path. For a key, the entire application has only one storage path for the corresponding encryption level. **connect** is a module-level storage path. Each encryption level has a different storage path according to the startup mode of the module.
 
 ### Obtaining the Old Serialized Data Through notifyOnError
@@ -1250,10 +1295,10 @@ struct Index {
         .fontColor(Color.Red)
 
       // save() API.
-      // Variables that are not decorated by @Trace can be refreshed only by using the state variable refresh.
-      Text('save key connect3: ' + this.p.father.groupId.toString() + ' refresh:' + this.refresh)
+      // Properties not decorated by @Trace can be refreshed only with the help of the state variable refresh.
+      Text('save key connectSample: ' + this.p.father.groupId.toString() + ' refresh:' + this.refresh)
         .onClick(() => {
-          // Objects that are not saved by @Trace cannot be automatically stored. You need to call the key for storage.
+          // Properties not decorated by @Trace cannot be stored automatically and must be stored by calling save.
           this.p.father.groupId += 1;
           PersistenceV2.save('connectSample');
           this.refresh += 1;
@@ -1269,7 +1314,6 @@ struct Index {
 ![persistencev2-sync-10](./figures/persistencev2-sync-10.gif)
 
 At the beginning, the type of the **childInfo** variable in **SampleChild** is **SampleInfo**. After the data is stored normally, the type of the **childInfo** variable is changed to **number** and the value is set to **1**. Then, the program is started again. In this case, the data deserialization fails because the structure of the stored data is inconsistent with that of the current data. In this case, the callback written in **notifyOnError** is used to print the old serialized data stored in the disk. That is, the following information is displayed in the Error logs:
-
 ```text
 error key: connectSample, reason: serialization, message: TypeError: Receiver is not a JSObject, oldValue: {"father":{"childInfo":{"info":true,"propertyName":"Hello"},"groupId":1}}
 ```
@@ -1326,10 +1370,10 @@ struct Page1 {
         .fontColor(Color.Red)
 
       // save() API.
-      // Variables that are not decorated by @Trace can be refreshed only by using the state variable refresh.
+      // Properties not decorated with @Trace can be refreshed only with the help of the state variable refresh.
       Text('save key connect3: ' + this.p.father.groupId.toString() + ' refresh:' + this.refresh)
         .onClick(() => {
-          // Objects that are not saved by @Trace cannot be automatically stored. You need to call the key for storage.
+          // Properties not decorated with @Trace cannot be stored automatically and require calling save to store.
           this.p.father.groupId += 1;
           PersistenceV2.save('connect3');
           this.refresh += 1;
@@ -1383,7 +1427,7 @@ function move() {
     let p: Sample = PersistenceV2.connect(Sample, 'connect3', () => new Sample())!;
     PersistenceV2.remove('connect3');
     let p1 = PersistenceV2.globalConnect({ type: Sample, key: 'connect4', defaultCreator: () => p })!; // You can use the default constructor.
-    // For assigned value decorated by @Trace, it is automatically saved.
+    // Assign data. Properties decorated by @Trace are automatically saved.
     p1.father = p.father;
     // Set the migration flag to true.
     movingState.isCompleteMoving = true;
@@ -1412,10 +1456,10 @@ struct Page1 {
         .fontColor(Color.Red)
 
       // save() API.
-      // Variables that are not decorated by @Trace can be refreshed only by using the state variable refresh.
+      // Properties not decorated by @Trace can be refreshed only with the help of the state variable refresh.
       Text('save key connect4: ' + this.p.father.groupId.toString() + ' refresh:' + this.refresh)
         .onClick(() => {
-          // Objects that are not saved by @Trace cannot be automatically stored. You need to call the key for storage.
+          // Properties not decorated by @Trace cannot be stored automatically and must be saved by calling save.
           this.p.father.groupId += 1;
           PersistenceV2.save('connect4');
           this.refresh += 1;
@@ -1492,7 +1536,7 @@ struct Index {
 
 The following table describes the scenarios where **notifyOnError** is triggered when the data structure is changed.
 
-> **NOTE**
+> **NOTE** 
 >
 >1. **oldValue** is the parameter of the **notifyOnError** callback, which is used to obtain the old serialized data when deserialization fails.
 >

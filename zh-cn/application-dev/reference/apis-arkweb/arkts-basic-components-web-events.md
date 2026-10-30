@@ -1236,10 +1236,11 @@ onZoomChange(callback: OnZoomChangeCallback)
 > **说明：**
 >
 > - 通过[setZoomFactor](./arkts-apis-webview-WebviewController.md#setzoomfactor)设置，或[zoomControlAccess](./arkts-basic-components-web-attributes.md#zoomcontrolaccess22)为`true`时通过Ctrl组合键或鼠标滚轮/触摸板缩放，均会触发该回调。
+> - 在同一浏览数据上下文中，其他同Host Web组件改变页面缩放倍率后，如果当前Web组件的实际倍率随之变化，也会触发该回调。
 > - 页面缩放会缩放文字、图片并重新布局页面；CSS `zoom`不会触发该回调，捏合缩放导致的页面显示比例变化由[onScaleChange](#onscalechange9)通知。
-> - 同一Web组件加载另一网页后恢复相同倍率不会重复触发回调。
+> - 当前Web组件导航至其他Host时，若实际倍率发生变化则触发回调；实际倍率不变时不会重复触发。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1720,7 +1721,7 @@ struct Index {
           event.handler.confirm(this.uri);
         })
         .onSslErrorEventReceive(e => {
-          console.info(`onSslErrorEventReceive->${e.error.toString()}`);
+          console.error(`onSslErrorEventReceive->${e.error.toString()}`);
         })
         .onErrorReceive((event) => {
           if (event) {
@@ -2021,7 +2022,7 @@ struct Index {
               event.handler.confirm(PinVerifyResult.PIN_VERIFICATION_SUCCESS);
             }).catch((err: BusinessError) => {
             // 通知webPIN码认证失败
-            console.info(`onVerifyPin fail`);
+            console.error(`onVerifyPin fail`);
             event.handler.confirm(PinVerifyResult.PIN_VERIFICATION_FAILED);
           })
         })
@@ -2384,6 +2385,115 @@ onContextMenuHide(callback: OnContextMenuHideCallback)
           .onContextMenuHide(() => {
             console.info("onContextMenuHide callback");
           })
+      }
+    }
+  }
+  ```
+
+## onContextMenuUpdate
+
+onContextMenuUpdate(callback: OnContextMenuUpdateCallback)
+
+注册回调，在内核异步更新上下文菜单项状态时调用。内核完成异步处理后触发该回调，通知应用更新菜单项的显示状态。
+
+[shouldOfferLinkToText](./arkts-basic-components-web-WebContextMenuParam.md#shouldofferlinktotext)方法返回的是同步初始值，而此回调提供的是异步最终值，两者互为补充。
+
+在单次上下文菜单会话期间，此回调可能被多次调用，每个被内核异步更新状态的菜单项各触发一次。回调绑定于Web组件生命周期，组件销毁时自动释放。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名    | 类型   | 必填   | 说明                  |
+| ------ | ------ | ---- | --------------------- |
+| callback  | [OnContextMenuUpdateCallback](./arkts-basic-components-web-t.md#oncontextmenuupdatecallback) | 是 | 上下文菜单项状态更新时触发的回调函数，接收菜单项ID和选项信息。     |
+
+**示例：**
+
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+ 
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+    private result: WebContextMenuResult | undefined = undefined;
+    private param: WebContextMenuParam | undefined = undefined;
+    @State offsetX: number = 0;
+    @State offsetY: number = 0;
+    @State showMenu: boolean = false;
+ 
+    @Builder
+    // 构建自定义菜单及触发功能接口
+    MenuBuilder() {
+    // 以垂直列表形式显示的菜单。
+        Menu() {
+          // 展示菜单Menu中具体的item菜单项。
+          MenuItem({
+            content: 'copyLink',
+          })
+          .width(100)
+          .height(50)
+          .onClick(() => {
+            this.result?.copyLinkToTextMenu();
+            console.info("isOverTextFragment=" + this.param?.isOverTextFragment());
+            console.info("getTextFragmentGeneratedLink=" + this.param?.getTextFragmentGeneratedLink());
+            this.showMenu = false;
+          })
+ 
+          MenuItem({
+            content: 'removeLink',
+          })
+          .width(100)
+          .height(50)
+          .onClick(() => {
+              this.result?.removeFragments();
+              console.info("shouldOfferLinkToText=" + this.param?.shouldOfferLinkToText());
+              this.showMenu = false;
+            })
+      }
+      .width(150)
+      .height(450)
+    }
+ 
+    build() {
+      Column() {
+        Web({ src: 'https://www.baidu.com', controller: this.controller })
+        // 触发自定义弹窗
+          .onContextMenuShow((event) => {
+            if (event) {
+              this.result = event.result
+              this.param = event.param;
+            }
+            this.showMenu = true;
+            this.offsetX = 0;
+            this.offsetY = Math.max(px2vp(event?.param.y() ?? 0) - 0, 0);
+            return true;
+          })
+          .onContextMenuUpdate((menuItemId, options) => {
+            if (menuItemId === WebContextMenuItemId.MENU_COPY_LINK) {
+              console.info("onContextMenuUpdate enable = " + options?.enable);
+            }
+          })
+          .bindPopup(this.showMenu,
+            {
+              builder: this.MenuBuilder(),
+              enableArrow: false,
+              placement: Placement.LeftTop,
+              mask: false,
+              onStateChange: (e) => {
+                if (!e.isVisible) {
+                  this.showMenu = false;
+                  this.result!.closeContextMenu();
+                }
+              }
+            })
+          .height("70%")
       }
     }
   }
@@ -5177,6 +5287,53 @@ Web组件检测到白屏时触发此回调。
     }
   }
   ```
+## onMonitoredBlankScreen
+
+onMonitoredBlankScreen(callback: OnMonitorBlankScreenCallback)
+
+Web组件检测到白屏时会触发回调。
+
+> **说明：**
+>
+> - 需配合[enableBlankScreenMonitor](./arkts-basic-components-web-attributes.md#enableblankscreenmonitor)使用。未开启白屏检测时，不会触发本回调。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名        | 类型    | 必填   | 说明          |
+| ---------- | ------- | ---- | ------------- |
+| callback | [OnMonitorBlankScreenCallback](./arkts-basic-components-web-t.md#onmonitorblankscreencallback) | 是 | 检测到白屏时触发。事件对象包含页面URL、白屏根因、归因详情等诊断信息。 |
+
+**示例：**
+
+  ```ts
+  // onMonitoredBlankScreen.ets
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .enableBlankScreenMonitor(true)
+          .onMonitoredBlankScreen((event: MonitoredBlankScreenEventInfo)=>{
+            console.info(`Monitored blank screen on ${event.url}.`);
+            console.info(`The blank screen reason is ${event.reason}.`);
+            console.info(`The extra message is ${event.extraMsg}.`);
+          })
+      }
+    }
+  }
+  ```
+
 ## onRenderExited<sup>(deprecated)</sup>
 
 onRenderExited(callback: (event?: { detail: object }) => boolean)

@@ -169,10 +169,10 @@ Image支持加载存档图、多媒体像素图和可绘制描述符三种类型
       }
       ```
     2. 从媒体库获取的url格式通常如下。
-       <!-- @[fileLibrary_format](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/LoadingResources.ets) -->    
+       <!-- @[fileLibrary_format](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/LoadingResources.ets) -->
   
        ``` TypeScript
-       // 'file://media/Photos/5'为媒体库URL示例，实际使用时需通过选择器（PhotoViewPicker）动态获取真实媒体库图片URL
+       // 'file://media/Photos/5'需要替换为开发者所需的资源文件，资源文件中的value值请替换为真实路径
        Image('file://media/Photos/5')
          .width(200)
        ```
@@ -763,10 +763,10 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
             .width('40%')
             // 通过colorFilter调整图片的像素颜色，为图片添加滤镜
             .colorFilter(
-               [1, 1, 0, 0, 0,
-                0, 1, 0, 0, 0,
-                0, 0, 1, 0, 0,
-                0, 0, 0, 1, 0])
+              [1, 1, 0, 0, 0,
+               0, 1, 0, 0, 0,
+               0, 0, 1, 0, 0,
+               0, 0, 0, 1, 0])
             .margin(10)
         }.width('100%')
         .justifyContent(FlexAlign.Center)
@@ -795,7 +795,7 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
 
 ## 事件调用
 
-通过在Image组件上绑定onComplete事件，图片加载成功后可以获取图片的必要信息。如果图片加载失败，也可以通过绑定onError回调来获得结果。
+通过在Image组件上绑定onComplete事件，图片加载成功后可以获取图片的必要信息。如果图片加载失败，也可以通过绑定onError()回调来获得结果。
 
 
   <!-- @[event_invocation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/EventCall.ets) -->    

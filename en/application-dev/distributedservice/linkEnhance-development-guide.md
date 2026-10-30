@@ -1,12 +1,11 @@
 # Enhanced Connection Development
-
 <!--Kit: Distributed Service Kit-->
 <!--Subsystem: DistributedSched-->
 <!--Owner: @wangJE-->
 <!--Designer: @yangjun044-->
 <!--Tester: @Ytt-test-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=e61ddbe3678f9bd8d5e66ddc8f211e90acef6e86 translatedAt=2026-08-24T11:34:14.657Z pushedAt=2026-08-25T06:14:05.310Z -->
+<!-- md-trans-meta sourceCommit=3bb0b74f282f4cf3e6771fa62fcea0d1a886f5bc translatedAt=2026-10-22T14:25:01.766Z pushedAt=2026-10-22T14:26:50.463Z nl=1 -->
 
 ## Overview
 
@@ -46,11 +45,8 @@ Bluetooth is enabled on the client and server devices.
 ### Environment Setup
 
 1. Install [DevEco Studio](https://developer.huawei.com/consumer/en/download/deveco-studio) 4.1 or later on the PC.
-
-2. Update the public-SDK to API version 20 or later<!--Del-->. For details, see [OpenHarmony SDK Upgrade Assistant](../tools/openharmony_sdk_upgrade_assistant.md)<!--DelEnd-->.
-
+2. Update the public-SDK to API version 20 or later.
 3. Connect device A and device B to the PC using USB cables.
-
 4. Enable Bluetooth on device A and device B.
 
 ## Available APIs
@@ -78,20 +74,15 @@ The following table describes the commonly used APIs. For details, see [@ohos.di
 ## Enhanced Connection Development
 
 - After Bluetooth is enabled on the server, create a **Server** object and call [start()](../reference/apis-distributedservice-kit/js-apis-link-enhance.md#start) to start the server so that it is in the connectable state. Then, listen for status change events through the registered event listener.
-
 - After Bluetooth is enabled on the client, create a **Connection** object and call [connect()](../reference/apis-distributedservice-kit/js-apis-link-enhance.md#connect) to initiate a connection. Then, listen for status change events through the registered event listener.
-
 - After the connection is successful, call [sendData](../reference/apis-distributedservice-kit/js-apis-link-enhance.md#senddata) to send data.
 
 ### Server Development
-
 1. Import the required module.
-
     ```ts
     import {linkEnhance} from '@kit.DistributedServiceKit';
     import { BusinessError } from '@kit.BasicServicesKit';
     ```
-
 2. Declare the **ohos.permission.DISTRIBUTED_DATASYNC** permission in the **module.json5** file.
 
    ```ts
@@ -112,9 +103,7 @@ The following table describes the commonly used APIs. For details, see [@ohos.di
      }
    }
    ```
-
 3. Create a **Server** object, start the server, and register an event listener.
-
     ```ts
     const TAG = 'TEST';
     // Register the server.
@@ -139,9 +128,7 @@ The following table describes the commonly used APIs. For details, see [@ohos.di
       }
     }
     ```
-
 4. Save the **Connection** object when the connection is established.
-
     ```ts
     serverAcceptOnCallback = (connection: linkEnhance.Connection): void => {
       console.info(TAG + 'serverOnCallback');
@@ -166,9 +153,7 @@ The following table describes the commonly used APIs. For details, see [@ohos.di
       }
     }
     ```
-
 5. Disconnect from the peer end and destroy the **Connection** object.
-
     ```ts
     // Disconnect.
     linkEnhanceDisconnect(connection: linkEnhance.Connection) {
@@ -182,9 +167,7 @@ The following table describes the commonly used APIs. For details, see [@ohos.di
       }
     }
     ```
-
 6. Stop the server and destroy the **Server** object.
-
     ```ts
     // Stop the server.
     linkEnhanceStop(server: linkEnhance.Server) {
@@ -211,14 +194,11 @@ The following table describes the commonly used APIs. For details, see [@ohos.di
 ### Client Development
 
 1. Import the required module.
-
     ```ts
     import { linkEnhance } from '@kit.DistributedServiceKit';
     import { BusinessError } from '@kit.BasicServicesKit';
     ```
-
 2. Declare the **ohos.permission.DISTRIBUTED_DATASYNC** permission in the **module.json5** file.
-
    ```ts
    {
      "module" : {
@@ -237,9 +217,7 @@ The following table describes the commonly used APIs. For details, see [@ohos.di
      }
    }
    ```
-
 3. Create a **Connection** object, subscribe to connection events, and connect to the server.
-
     ```ts
     const TAG = "TEST";
     // Connect to the server.
@@ -272,9 +250,7 @@ The following table describes the commonly used APIs. For details, see [@ohos.di
       }
     }
     ```
-
 4. Disconnect from the server and destroy the **Connection** object.
-
     ```ts
     disconnect(connection: linkEnhance.Connection) {
       console.info(TAG + 'disconnect deviceId = ' + connection.getPeerDeviceId());

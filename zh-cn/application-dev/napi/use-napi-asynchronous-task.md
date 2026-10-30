@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍使用Node-API接口进行异步任务开发，通过napi_create_async_work创建异步工作对象执行耗时操作，支持callback和Promise两种方式，适用于文件操作、网络请求等场景。"
+keywords: [Node-API, 异步任务, napi_create_async_work, napi_queue_async_work, 异步工作, callback, Promise, uv_queue_work]
+doctype: guide
+status: active
+---
+
 # 使用Node-API接口进行异步任务开发
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->

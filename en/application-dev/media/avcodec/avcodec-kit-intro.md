@@ -2,25 +2,26 @@
 
 <!--Kit: AVCodec Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @zhanghongran; @mr-chencxy-->
+<!--Owner: @rchdlee-->
 <!--Designer: @dpy2650--->
 <!--Tester: @cyakee; @baotianhao-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=2e205e439bc0f41b94da84e35d75dd910dd5454c translatedAt=2026-10-22T03:54:15.541Z pushedAt=2026-10-22T12:43:30.243Z nl=1 -->
 
-Audio and Video Codec (AVCodec) Kit provides capabilities such as audio/video encoding and decoding, media file multiplexing and demultiplexing, and media data input.
+Audio and Video Codec (AVCodec) Kit provides atomic capabilities in the media system, including audio and video encoding/decoding, media file multiplexing and demultiplexing, and media data input.
 
 For performance reasons, AVCodec Kit provides only C APIs.
 
 ## Capability Scope
 
-- Media data input: Media applications can pass in the FD of a file or the URL of a stream for subsequent processing such as media information parsing.
+- Media data input: Media applications can pass a file descriptor (fd) or a streaming media URL for subsequent processing such as media information demultiplexing.
 - Media foundation: provides common basic types for media data processing, including [AVBuffer](../../reference/apis-avcodec-kit/capi-native-avbuffer-h.md) and [AVFormat](../../reference/apis-avcodec-kit/capi-native-avformat-h.md).
 - Audio encoding: Audio applications (such as audio calling and audio recording applications) can send uncompressed audio data to the audio encoder for encoding. The applications can set parameters such as the encoding format, bit rate, and sample rate to obtain compressed audio files in desired formats.
 - Video encoding: Video applications (such as video calling and video recording applications) can send uncompressed video data to the video encoder for encoding. The applications can set parameters such as the encoding format, bit rate, and frame rate to obtain compressed video files in desired formats.
 - Audio decoding: Audio applications (such as audio calling application and audio player) can send audio streams to the audio decoder for decoding. The decoded data can be sent to audio devices for playback.
 - Video decoding: Video applications (such as video calling application and video player) can send video streams to the video decoder for decoding. The decoded image data can be sent to display devices for display.
-- Media file demultiplexing: Media applications (such as audio and video players) can parse media files stored locally or received from the Internet to obtain audio and video streams, presentation time, encoding formats, and basic file attributes.
 - Media file multiplexing: Media applications (such as audio and video recording application) can multiplex stream data encoded by the encoder into media files (in MP4 or M4A format), and write the audio and video streams, presentation time, encoding format, and basic file attributes into the specified file in a certain format.
+- Media file demultiplexing: In media applications (such as audio and video players), locally stored or network-received media files can be demultiplexed to obtain audio and video streams, presentation timestamps, encoding formats, and basic file attribute information.
 
 ## Highlights
 
@@ -55,7 +56,7 @@ For performance reasons, AVCodec Kit provides only C APIs.
   
   ![](figures/avcodec-vcodec-logic.png)
 
-  For details about the development guide, see [Video Decoding in Surface Mode](video-decoding.md#surface-mode) and [Video Encoding in Surface Mode](video-encoding.md#surface-mode).
+  For details about the development guide, see [Surface Mode](video-decoding.md#surface-mode) for asynchronous video decoding and [Surface Mode](video-encoding.md#surface-mode) for asynchronous video encoding.
 
 - Audio codec
 
@@ -67,16 +68,18 @@ For performance reasons, AVCodec Kit provides only C APIs.
 
   ![](figures/avcodec-acodec-logic.png)
 
-  For details about the development guide, see [Audio Decoding](audio-decoding.md) and [Audio Encoding](audio-encoding.md).
+  For details about the development guide, see [Asynchronous Audio Decoding](audio-decoding.md) and [Asynchronous Audio Encoding](audio-encoding.md).
 
 - File multiplexing and demultiplexing
 
   During file multiplexing, an application sends an AVBuffer to the corresponding codec interface for multiplexing. The AVBuffer can be that output in the preceding encoding process or an AVBuffer created by the application. The AVBuffer must carry valid stream data and related time description.
 
-  During file demultiplexing, the application obtains the AVBuffer that carries stream data from the corresponding codec interface. The AVBuffer can be sent to the decoder for decoding.
+  During file demultiplexing, the application obtains the AVBuffer that carries stream data from the corresponding codec interface. The AVBuffer can then be sent to the video or audio codec interface mentioned above.
 
   The following figure shows the file multiplexing and demultiplexing logic.
 
   ![](figures/avcodec-muxer-demuxer-logic.png)
 
-  For details about the development guide, see [Media Data Demultiplexing](audio-video-demuxer.md) and [Media Data Multiplexing](audio-video-muxer.md).
+  For details about the development guide, see [Media Data Multiplexing](audio-video-muxer.md) and [Media Data Demultiplexing](audio-video-demuxer.md).
+
+<!--RP1--> <!--RP1End-->

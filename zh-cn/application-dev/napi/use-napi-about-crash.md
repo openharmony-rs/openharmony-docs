@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍Node-API开发中异常日志和崩溃的分析方法，涵盖env不一致、napi_value失效、线程安全等问题场景的关键日志和定位手段，帮助开发者快速排查崩溃问题。"
+keywords: [Node-API, 崩溃分析, 异常日志, cppcrash, env不一致, 线程安全, 维测, SIGSEGV, 多线程检测]
+doctype: guide
+status: active
+---
+
 # 使用Node-API接口产生的异常日志/崩溃分析
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
@@ -88,7 +96,7 @@ public:
         if (argc_ > 0) {
             argv_ = new napi_value[argc_];
             CHECK_NOT_NULL(argv_);
-            memset(argv_, 0, sizeof(argv_));
+            memset(argv_, 0, sizeof(napi_value) * argc_);
             napi_get_cb_info(env, info, &argc_, argv_, nullptr, nullptr);
         }
     }
@@ -330,13 +338,13 @@ napi_call_threadsafe_function 和 napi_release_threadsafe_function 的示例代�
                 napi_create_string_utf8(localEnv, "Test", NAPI_AUTO_LENGTH, &taskName); \
                 // napi_create_threadsafe_function创建线程安全函数，任务执行完成后，      \
                 // 需调用napi_release_threadsafe_function释放
-                napi_create_threadsafe_function(                                        \
+                napi_status status = napi_create_threadsafe_function(                   \
                     localEnv, nullptr, nullptr, taskName, 0, 1, nullptr,                \
                     [](napi_env, void *, void *) {}, nullptr,                           \
                     [](napi_env, napi_value, void *, void *) {}, &tsfn);                \
                 if (status != napi_ok) {                                                \
                     OH_LOG_ERROR(LOG_APP,"napi_create_threadsafe_function failed");     \
-                    return nullptr;                                                     \
+                    return;                                                             \
                 }                                                                       \
                 if (!localEnv.RecreateSame()) {                                         \
                     return;                                                             \

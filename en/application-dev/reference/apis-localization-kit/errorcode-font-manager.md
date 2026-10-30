@@ -98,7 +98,7 @@ This error code is reported if the number of installed font files reaches the ma
 
 **Possible Causes**
 
-The number of installed font files reaches the maximum (200).
+The number of installed font files reaches the maximum (200, or 800 on PC/2in1/Tablet).
 
 **Solution**
 

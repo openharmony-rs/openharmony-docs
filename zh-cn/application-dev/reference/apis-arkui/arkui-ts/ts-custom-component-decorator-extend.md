@@ -1,8 +1,8 @@
 # @Extend：扩展组件样式
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zhangboren-->
-<!--Designer: @zhangboren-->
+<!--Owner: @BlYynNe-->
+<!--Designer: @BlYynNe-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -13,10 +13,11 @@
 > **说明：**
 >
 > - 本装饰器首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 从API版本26.1.0开始，本装饰器支持传入可选的版本条件参数[VersionCondition](./ts-custom-component-decorator-styles.md#versioncondition)作为第二个参数，声明扩展样式的生效系统版本区间。
 
 ## @Extend
 
-const Extend: MethodDecorator & ((value: any) => MethodDecorator)
+const Extend: MethodDecorator & ((value: any, version?: VersionCondition) => MethodDecorator)
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -29,6 +30,7 @@ const Extend: MethodDecorator & ((value: any) => MethodDecorator)
 | 名称                  | 类型    | 必填  | 说明                                                         |
 | --------------------- | ------ | ---- | ------------------------------------------------------------ |
 | value                 | any | 是 | 指定要扩展样式的目标内置UI组件类型（如Text、Column），传入组件的类型而非组件实例，不支持自定义组件。@Extend装饰器内定义的样式属性将绑定到该组件类型，使其可在该组件上以链式方式调用。 |
+| version               | [VersionCondition](./ts-custom-component-decorator-styles.md#versioncondition) | 否 | 版本条件对象，声明扩展样式的生效系统版本区间。传入时，扩展样式仅在设备系统版本位于声明区间内时生效，且对该扩展样式的全部调用点统一生效。**起始版本：** 26.1.0 |
 
 **返回值：**
 
@@ -54,6 +56,27 @@ struct FancyUse {
         .fancy(16)
       Text('Fancy')
         .fancy(24)
+    }
+  }
+}
+```
+
+从API版本26.1.0开始，支持传入可选的版本条件参数，声明扩展样式的生效系统版本区间：
+
+```ts
+@Extend(Text, { minApiVersion: 12, maxApiVersion: 18 })
+function fancy(fontSize: number) {
+  .fontColor(Color.Red)
+  .fontSize(fontSize)
+}
+
+@Entry
+@Component
+struct FancyUse {
+  build() {
+    Row({ space: 10 }) {
+      Text('Fancy')
+        .fancy(16)
     }
   }
 }

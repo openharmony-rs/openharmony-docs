@@ -9,7 +9,7 @@
 
 ## 概述
 
-辅助测试工具（testhelper），为开发者提供系统状态管理和环境模拟能力，支持时间设置、剪贴板管理、输入法管理、字体管理、显示模式切换和位置模拟等功能，助力开发者快速进行测试环境配置。
+辅助测试工具（testhelper），为开发者提供系统状态管理和环境模拟能力，支持时间设置、剪贴板管理、输入法管理、字体管理、显示模式切换、位置模拟和网络状态控制等功能，助力开发者快速进行测试环境配置。
 
 搭载OpenHarmony 7.0.0及以上版本的设备支持此工具。
 
@@ -25,9 +25,37 @@ testhelper分为命令行工具层和核心能力层两部分，依赖底层系�
 
 **核心能力层：** 包含参数解析和校验、命令执行处理、服务通信管理三部分，负责testhelper的核心功能处理。
 
-**系统服务依赖：** testhelper依赖底层系统服务实现具体功能，包括时间时区服务、剪贴板服务、输入法框架、字体管理、ArkUI框架、位置服务等，testhelper通过IPC调用这些服务。
+**系统服务依赖：** testhelper依赖底层系统服务实现具体功能，包括时间时区服务、剪贴板服务、输入法框架、字体管理、ArkUI框架、位置服务、WLAN服务、蜂窝数据服务、网络连接管理等，testhelper通过IPC调用这些服务。
 
 ## 命令详细说明
+
+### 命令列表
+
+| 命令 | 参数 | 说明 |
+|-----|------|------|
+| [help](#testhelper-help) | - | 显示testhelper工具能够支持的命令信息。 |
+| [--version](#testhelper---version) | - | 获取当前testhelper工具版本信息。 |
+| [get-time](#testhelper-get-time) | - | 获取当前系统时间。 |
+| [set-time](#testhelper-set-time) | \<time\> | 设置系统时间。 |
+| [get-timezone](#testhelper-get-timezone) | - | 获取当前系统时区。 |
+| [set-timezone](#testhelper-set-timezone) | \<timezone\> | 设置系统时区。 |
+| [get-pastedata](#testhelper-get-pastedata) | - | 获取剪贴板文本内容。 |
+| [set-pastedata](#testhelper-set-pastedata) | \<text\> | 设置剪贴板文本内容。 |
+| [clear-pastedata](#testhelper-clear-pastedata) | - | 清除剪贴板内容。 |
+| [hide-keyboard](#testhelper-hide-keyboard) | - | 隐藏输入法键盘。 |
+| [get-fontname](#testhelper-get-fontname) | \<font-path\> | 从字体文件获取字体名称。 |
+| [install-font](#testhelper-install-font) | \<font-path\> | 从字体文件安装字体。 |
+| [uninstall-font](#testhelper-uninstall-font) | \<font-name\> | 卸载字体。 |
+| [set-viewmode](#testhelper-set-viewmode) | \<dark\|light\> | 设置显示模式（深色/浅色模式）。 |
+| [enable-location-mock](#testhelper-enable-location-mock) | - | 启用位置模拟功能。 |
+| [disable-location-mock](#testhelper-disable-location-mock) | - | 禁用位置模拟功能，恢复真实位置。 |
+| [set-mocked-locations](#testhelper-set-mocked-locations) | \<path\> [interval] | 从GPX文件设置模拟位置。 |
+| [enable-wifi](#testhelper-enable-wifi) | - | 开启设备WiFi。<br> **说明：** 从API version 26.1.0开始支持该命令。 |
+| [disable-wifi](#testhelper-disable-wifi) | - | 关闭设备WiFi。<br> **说明：** 从API version 26.1.0开始支持该命令。 |
+| [enable-cellular-data](#testhelper-enable-cellular-data) | - | 开启设备移动数据。<br> **说明：** 从API version 26.1.0开始支持该命令。 |
+| [disable-cellular-data](#testhelper-disable-cellular-data) | - | 关闭设备移动数据。<br> **说明：** 从API version 26.1.0开始支持该命令。 |
+| [enable-airplane-mode](#testhelper-enable-airplane-mode) | - | 开启设备飞行模式。<br> **说明：** 从API version 26.1.0开始支持该命令。 |
+| [disable-airplane-mode](#testhelper-disable-airplane-mode) | - | 关闭设备飞行模式。<br> **说明：** 从API version 26.1.0开始支持该命令。 |
 
 ### testhelper help
 
@@ -61,6 +89,12 @@ Commands:
   enable-location-mock     Enable location mock functionality
   disable-location-mock    Disable location mock and restore real location
   set-mocked-locations <path> [interval] Set mocked locations from GPX file
+  enable-wifi               Enable WiFi
+  disable-wifi              Disable WiFi
+  enable-cellular-data      Enable cellular data
+  disable-cellular-data     Disable cellular data
+  enable-airplane-mode       Enable airplane mode
+  disable-airplane-mode      Disable airplane mode
   help               Show this help message
   --version          Show version information
 ```
@@ -510,6 +544,122 @@ testhelper支持标准的GPX 1.1格式，支持以下三种位置点类型：
 | 时间间隔无效（≤0或>3600）。| `Error: The parameter validation has failed. timeInterval must be greater than 0.` 或 `timeInterval must be less than 3600.` |
 | GPX文件位置数量超过限制（>1000）。| `Error: The parameter validation in gpx file has failed. locations size must be less than 1000.` |
 | 设备不支持位置模拟功能。| `Error: Operation is not supported. Location mock is not supported on this device.` |
+| 服务不可用。| `Error: Service is not available.` |
+
+### testhelper enable-wifi
+
+开启设备WiFi。从API version 26.1.0开始支持该命令。
+
+**使用示例：**
+
+```bash
+hdc shell testhelper enable-wifi
+```
+
+输出示例：`Enable WiFi successfully.`
+
+**异常场景介绍：**
+
+| 场景 | 打印信息 |
+|-----|----------|
+| 设备不支持WiFi控制。| `Error: Operation is not supported. WiFi control is not supported on this device.` |
+| 服务不可用。| `Error: Service is not available.` |
+
+### testhelper disable-wifi
+
+关闭设备WiFi。从API version 26.1.0开始支持该命令。
+
+**使用示例：**
+
+```bash
+hdc shell testhelper disable-wifi
+```
+
+输出示例：`Disable WiFi successfully.`
+
+**异常场景介绍：**
+
+| 场景 | 打印信息 |
+|-----|----------|
+| 设备不支持WiFi控制。| `Error: Operation is not supported. WiFi control is not supported on this device.` |
+| 服务不可用。| `Error: Service is not available.` |
+
+### testhelper enable-cellular-data
+
+开启设备移动数据。要求设备已插入SIM卡且飞行模式处于关闭状态。从API version 26.1.0开始支持该命令。
+
+**使用示例：**
+
+```bash
+hdc shell testhelper enable-cellular-data
+```
+
+输出示例：`Enable cellular data successfully.`
+
+**异常场景介绍：**
+
+| 场景 | 打印信息 |
+|-----|----------|
+| 设备未插入SIM卡。| `Error: No SIM card detected. Cannot enable cellular data.` |
+| 飞行模式开启中。| `Error: Airplane mode is on. Cannot enable cellular data.` |
+| 设备不支持移动数据控制。| `Error: Operation is not supported. Cellular data control is not supported on this device.` |
+| 服务不可用。| `Error: Service is not available.` |
+
+### testhelper disable-cellular-data
+
+关闭设备移动数据。从API version 26.1.0开始支持该命令。
+
+**使用示例：**
+
+```bash
+hdc shell testhelper disable-cellular-data
+```
+
+输出示例：`Disable cellular data successfully.`
+
+**异常场景介绍：**
+
+| 场景 | 打印信息 |
+|-----|----------|
+| 设备不支持移动数据控制。| `Error: Operation is not supported. Cellular data control is not supported on this device.` |
+| 服务不可用。| `Error: Service is not available.` |
+
+### testhelper enable-airplane-mode
+
+开启设备飞行模式。开启后移动数据将关闭。从API version 26.1.0开始支持该命令。
+
+**使用示例：**
+
+```bash
+hdc shell testhelper enable-airplane-mode
+```
+
+输出示例：`Enable airplane mode successfully.`
+
+**异常场景介绍：**
+
+| 场景 | 打印信息 |
+|-----|----------|
+| 设备不支持飞行模式控制。| `Error: Operation is not supported. Airplane mode control is not supported on this device.` |
+| 服务不可用。| `Error: Service is not available.` |
+
+### testhelper disable-airplane-mode
+
+关闭设备飞行模式。从API version 26.1.0开始支持该命令。
+
+**使用示例：**
+
+```bash
+hdc shell testhelper disable-airplane-mode
+```
+
+输出示例：`Disable airplane mode successfully.`
+
+**异常场景介绍：**
+
+| 场景 | 打印信息 |
+|-----|----------|
+| 设备不支持飞行模式控制。| `Error: Operation is not supported. Airplane mode control is not supported on this device.` |
 | 服务不可用。| `Error: Service is not available.` |
 
 ## 常见问题

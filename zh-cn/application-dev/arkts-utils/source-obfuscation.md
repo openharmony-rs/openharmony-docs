@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "说明ArkGuard源码混淆的能力范围与约束限制，解析编译期读取配置、合并混淆规则并处理中间文件的混淆机制及流程，并介绍多模块混淆规则合并策略。"
+keywords: [ArkGuard, 混淆, 源码混淆, 混淆原理, 名称混淆, 代码压缩, 注释删除, 混淆规则合并]
+doctype: guide
+status: active
+---
+
 # ArkGuard混淆原理
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->

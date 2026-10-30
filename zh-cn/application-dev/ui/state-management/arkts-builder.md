@@ -12,11 +12,11 @@ ArkUI提供轻量的UI元素复用机制[\@Builder](../../reference/apis-arkui/a
 
 在阅读本文档前，建议提前阅读：[基本语法概述](./arkts-basic-syntax-overview.md)、[声明式UI描述](./arkts-declarative-ui-description.md)、[自定义组件-创建自定义组件](./arkts-create-custom-components.md)。
 
-@Builder装饰器和[@Component装饰器](./arkts-create-custom-components.md#component)在功能和使用方式上的主要差异：
+自定义构建函数和自定义组件（[@Component](./arkts-create-custom-components.md#component)装饰器和[@ComponentV2](./arkts-create-custom-components.md#componentv2)装饰器）在功能和使用方式上的主要差异：
 
-1. @Builder装饰器用于封装可复用的UI结构，通过提取重复的布局代码提高开发效率。该装饰器严格禁止在其内部定义[状态变量](./arkts-state-management-glossary.md#state-variables状态变量)或使用[自定义组件的生命周期函数](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md)，必须通过参数传递或者访问所属组件的状态变量完成数据交互。
+1. 自定义构建函数用于封装可复用的UI结构，通过提取重复的布局代码提高开发效率。自定义构建函数严格禁止在其内部定义[状态变量](./arkts-state-management-glossary.md#state-variables状态变量)或使用[自定义组件的生命周期函数](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md)，必须通过参数传递或者访问所属组件的状态变量完成数据交互。
 
-2. 在ArkUI框架中，@Component装饰器作为封装复杂UI组件的核心机制，允许开发者通过组合多个基础组件来构建可复用的复合界面。该装饰器不仅支持内部状态变量的定义，还能完整管理组件的生命周期。
+2. 在ArkUI框架中，自定义组件作为封装复杂UI组件的核心机制，允许开发者通过组合多个基础组件来构建可复用的复合界面。自定义组件不仅支持内部状态变量的定义，还能完整管理组件的生命周期。
 
 > **说明：**
 >
@@ -25,11 +25,13 @@ ArkUI提供轻量的UI元素复用机制[\@Builder](../../reference/apis-arkui/a
 > 从API version 9开始，该装饰器支持在ArkTS卡片中使用。
 >
 > 从API version 11开始，该装饰器支持在原子化服务中使用。
+>
+> 从API版本26.1.0开始，\@Builder支持传入配置项。
 
 
 ## 装饰器使用说明
 
-\@Builder装饰器有两种使用方式，分别是定义在自定义组件内部的[私有自定义构建函数](#私有自定义构建函数)和定义在全局的[全局自定义构建函数](#全局自定义构建函数)。
+\@Builder装饰器有两种使用方式，分别是定义在自定义组件内部的[私有自定义构建函数](#私有自定义构建函数)和定义在全局的[全局自定义构建函数](#全局自定义构建函数)。从API版本26.1.0开始，全局自定义构建函数还支持传入配置项，详见[占位构建函数](#占位构建函数)。
 
 ### 私有自定义构建函数
 
@@ -104,6 +106,99 @@ struct BuilderSample {
 - 如果不涉及组件状态变量变化，建议使用全局的自定义构建函数。
 
 - 全局自定义构建函数允许在build函数和其他自定义构建函数中调用。
+
+### 占位构建函数
+
+> **说明：**
+>
+> 从API版本26.1.0开始，\@Builder支持传入[BuilderDecoratorConfig](../../reference/apis-arkui/arkui-ts/ts-universal-builder-dynamic.md#builderdecoratorconfig)配置项。
+
+传入配置项的\@Builder可以将\@Builder函数声明为占位构建函数，用于在可滚动组件（如[Grid](../../reference/apis-arkui/arkui-ts/ts-container-grid.md)、[List](../../reference/apis-arkui/arkui-ts/ts-container-list.md)、[WaterFlow](../../reference/apis-arkui/arkui-ts/ts-container-waterflow.md)）创建真实列表项期间展示占位内容：可滚动组件先渲染占位内容，真实列表项创建完成后再替换占位内容。占位构建函数需经[wrapBuilder](../../reference/apis-arkui/arkui-ts/ts-universal-wrapBuilder.md#wrapbuilder)包装后，通过`placeholderRegister`的`register`方法注册，并通过可滚动组件的`scrollPlaceholder`属性引用。
+
+示例：
+
+<!-- @[builder_placeholder_list](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/BuilderPlaceholderList.ets) -->
+
+``` TypeScript
+import { PlaceholderOptions } from '@kit.ArkUI';
+
+// 占位构建函数须为全局、无参，且仅执行不依赖状态变量的静态渲染
+@Builder({ isPlaceholder: true })
+function ItemPlaceholder() {
+  Column() {
+    Text('加载中...')
+      .fontSize(16)
+      .fontColor(0x999999)
+  }
+  .width('100%')
+  .height(100)
+  .justifyContent(FlexAlign.Center)
+}
+
+@Entry
+@ComponentV2
+struct BuilderPlaceholderList {
+  @Local data: number[] = [];
+
+  aboutToAppear(): void {
+    // 通过UIContext获取占位注册表，占位构建函数经wrapBuilder包装后注册，供scrollPlaceholder按id引用
+    this.getUIContext().getPlaceholderRegister()
+      .register('itemPlaceholder', wrapBuilder(ItemPlaceholder));
+    const list: number[] = [];
+    for (let i = 0; i < 10000; i++) {
+      list.push(i);
+    }
+    this.data = list;
+  }
+
+  build() {
+    Column({ space: 5 }) {
+      List({ space: 10 }) {
+        Repeat<number>(this.data)
+          .each((repeatItem: RepeatItem<number>) => {
+            ListItem() {
+              Text(repeatItem.item.toString())
+                .fontSize(16)
+                .width('100%')
+                .height(100)
+                .textAlign(TextAlign.Center)
+            }
+          })
+      }
+      .width('90%')
+      .height(300)
+      // id对应已注册的占位构建函数，size为占位的建议尺寸，与真实列表项高度一致，减小替换时的视觉跳动
+      .scrollPlaceholder((index: number): PlaceholderOptions | undefined => {
+        return { id: 'itemPlaceholder', size: { height: 100 } };
+      })
+    }
+    .width('100%')
+    .padding({ top: 10 })
+    .backgroundColor('#FFDCDCDC')
+  }
+}
+```
+示例效果图：
+
+![arkts-builder-placeholder](figures/arkts-builder-placeholder.gif)
+
+使用方法：
+
+- \@Builder的配置项为对象字面量，目前仅支持`isPlaceholder`属性，取值必须为显式的布尔字面量`true`或`false`，字面量中的其他属性会被忽略。
+
+- `isPlaceholder`设置为`true`时，该\@Builder为占位构建函数。占位构建函数必须为全局、无参数的函数，内部仅执行不依赖状态变量的静态渲染，不能注册手势或业务回调。
+
+- `isPlaceholder`的默认值为`false`。设置为`false`时，该\@Builder等价于未传入配置项的\@Builder；`@Builder()`与`@Builder({})`同样等价于未传入配置项的\@Builder。
+
+传入配置项的\@Builder需要注意如下限制条件：
+
+- 传入配置项的\@Builder仅支持装饰全局函数。在自定义组件的成员方法或成员变量上使用携带实参的\@Builder装饰器会编译报错：`The '@Builder' decorator can only pass arguments when decorating a global function`，错误码为[10905131](../../reference/apis-arkui/errorcode-arkui-compile.md#10905131-builder装饰器使用位置校验异常)。
+
+- 为全局\@Builder装饰器传入的实参不是单个对象字面量时，会编译报错：`The '@Builder' decorator only supports passing a single object literal`，错误码为[10905132](../../reference/apis-arkui/errorcode-arkui-compile.md#10905132-builder装饰器实参校验异常)。
+
+- `isPlaceholder`的键拼写错误或取值不是显式布尔字面量（如变量、枚举值、undefined、null）会编译报错：`The 'isPlaceholder' option of the '@Builder' decorator only supports passing true/false`，错误码为[10905133](../../reference/apis-arkui/errorcode-arkui-compile.md#10905133-builder配置项isplaceholder校验异常)。
+
+- `isPlaceholder`设置为`true`且函数声明了参数会编译报错：`The '@Builder' function cannot have parameters when it serves as a placeholder`，错误码为[10905134](../../reference/apis-arkui/errorcode-arkui-compile.md#10905134-占位构建函数参数校验异常)。
 
 
 ## 参数传递规则

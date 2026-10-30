@@ -36,7 +36,7 @@ libOpenSLES.so
 | ------------------ | -------------------- | -------------------------------------------------------------------------------------|----------| -------------------- |
 |SLEngineItf         |CreateAudioPlayer     |CreateAudioPlayer(SLEngineItf self, SLObjectItf *pPlayer, SLDataSource *pAudioSrc, SLDataSink *pAudioSnk, SLuint32 numInterfaces, const SLInterfaceID *pInterfaceIds, const SLboolean *pInterfaceRequired) |是        |创建音频播放机。        |
 |SLEngineItf         |CreateAudioRecorder   |CreateAudioRecorder(SLEngineItf self, SLObjectItf *pRecorder, SLDataSource *pAudioSrc, SLDataSink *pAudioSnk, SLuint32 numInterfaces, const SLInterfaceID *pInterfaceIds, const SLboolean *pInterfaceRequired)|是        |创建音频录制器。        |
-|SLEngineItf         |CreateAudioOutputMix  |CreateOutputMix(SLEngineItf self, SLObjectItf *pMix, SLuint32 numInterfaces, const SLInterfaceID *pInterfaceIds, const SLboolean *pInterfaceRequired)|是        |创建混音器。            |
+|SLEngineItf         |CreateOutputMix  |CreateOutputMix(SLEngineItf self, SLObjectItf *pMix, SLuint32 numInterfaces, const SLInterfaceID *pInterfaceIds, const SLboolean *pInterfaceRequired)|是        |创建混音器。            |
 |SLObjectItf         |Realize               |Realize(SLObjectItf self, SLboolean async)                                            |是        |创建音频播放机。        |
 |SLObjectItf         |getState              |GetState(SLObjectItf self, SLuint32 *pState)                                           |是        |获取状态。             |
 |SLObjectItf         |getInterface          |GetInterface(SLObjectItf self, const SLInterfaceID iid, void *pInterface)              |是        |获取接口。             |

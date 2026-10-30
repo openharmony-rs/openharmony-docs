@@ -69,7 +69,8 @@ TabSegmentButtonV2({
   buttonPadding?: LengthMetrics, 
   languageDirection?: Direction,
   enableStateAnimation?: boolean,
-  backgroundSystemMaterial?: uiMaterial.Material
+  backgroundSystemMaterial?: uiMaterial.Material,
+  interactionMode?: SegmentButtonV2InteractionMode
 })
 ```
 
@@ -114,7 +115,8 @@ TabSegmentButtonV2({
 | itemSelectedSymbolFontColor      | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | 否   | @Param             | 配置分段按钮选中选项的HM Symbol类型图标颜色。<br>默认值：`$r('sys.color.font_primary')`<br>值为undefined时，按默认值处理。<br>**说明：**<br>items设置symbolModifier/fontColor属性值时，itemSelectedSymbolFontColor不生效。<br>backgroundSystemMaterial设置自动反色的系统材质时，该属性使用支持反色的特殊系统资源，颜色自动适配到材质背景色的反色。<br>该成员只读，不支持更改。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | languageDirection                | [Direction](ts-appendix-enums.md#direction)                  | 否   | @Param             | 配置分段按钮的布局方向。<br>默认值：Direction.Auto<br>超出取值范围按默认值处理。<br>该成员只读，不支持更改。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | enableStateAnimation<sup>24+</sup>             | boolean                                                      | 否   | @Param             | 设置当通过变量修改selectedIndex值时，是否开启分段按钮的属性动画。<br>true表示开启分段按钮的属性动画；未配置该属性或值为false时表示不开启分段按钮的属性动画，使用组件默认的切换动画效果。<br>默认值：false<br>该成员只读，不支持更改。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| backgroundSystemMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material)    | 否 | @Param | 分段按钮组件的背景板的系统材质。需要将组件放置在Navigation或NavDestination的标题栏，或横向Tabs的底部TabBar中，沉浸光感效果才会生效。不同系统材质包含不同的属性影响效果。传入材质后，SegmentButtonV2的动效发生改变。<br>分段按钮在使用系统材质时支持选中项的背景跟随手指拖拽的能力，分段按钮被选中的选项下标在跟随手指拖拽过程中保持不变、在拖拽结束时更新。<br>默认值：无材质效果。 <br>该成员只读，不支持更改。<br>**起始版本：** 26.0.0 <br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 <br>**模型约束：** 此接口仅可在Stage模型下使用。|
+| backgroundSystemMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material)    | 否 | @Param | 分段按钮组件的背景板的系统材质。需要将组件放置在Navigation或NavDestination的标题栏，或横向Tabs的底部TabBar中，沉浸光感效果才会生效。不同系统材质包含不同的属性影响效果。传入材质后，SegmentButtonV2的动效发生改变。<br>分段按钮在使用系统材质时，默认支持选中项背景跟随手指拖拽，选中项下标在拖拽过程中保持不变，在拖拽结束时更新。从API版本26.1.0开始，可通过interactionMode选择拖拽模式，同时保留原材质反馈。<br>默认值：无材质效果。 <br>该成员只读，不支持更改。<br>**起始版本：** 26.0.0 <br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 <br>**模型约束：** 此接口仅可在Stage模型下使用。|
+| interactionMode | [SegmentButtonV2InteractionMode](#segmentbuttonv2interactionmode) | 否 | @Param | 分段按钮的拖拽交互模式。<br>默认值：undefined<br>未设置、值为undefined或非法值时，配置了backgroundSystemMaterial则使用跟手拖拽，否则使用普通拖拽。<br>切换拖拽模式不改变原材质外观、背景板缩放和微量位移、选中项形变或配置的光源效果。未配置backgroundSystemMaterial时，跟手拖拽不会增加材质效果。<br>拖拽不触发onItemClicked。<br>选中项更新通过$selectedIndex回调通知，需要由父组件更新selectedIndex，或使用!!进行双向绑定。<br>该成员只读，不支持更改。<br>**起始版本：** 26.1.0<br>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 > **说明：**
 >
@@ -157,7 +159,8 @@ CapsuleSegmentButtonV2({
   buttonPadding?: LengthMetrics,
   languageDirection?: Direction,
   enableStateAnimation?: boolean,
-  backgroundSystemMaterial?: uiMaterial.Material
+  backgroundSystemMaterial?: uiMaterial.Material,
+  interactionMode?: SegmentButtonV2InteractionMode
 })
 ```
 
@@ -202,7 +205,8 @@ CapsuleSegmentButtonV2({
 | itemSelectedSymbolFontColor      | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | 否   | @Param             | 配置分段按钮选中的选项中HM Symbol类型图标颜色。<br>默认值：`$r('sys.color.font_on_primary')`<br>值为undefined时，按默认值处理。<br>**说明：**<br>items设置symbolModifier/fontColor属性值时，itemSelectedSymbolFontColor不生效。<br>backgroundSystemMaterial设置自动反色的系统材质时，该属性使用支持反色的特殊系统资源，颜色自动适配到材质背景色的反色。<br>该成员只读，不支持更改。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | languageDirection                | [Direction](ts-appendix-enums.md#direction)                  | 否   | @Param             | 配置分段按钮的布局方向。<br>默认值：Direction.Auto<br>超出取值范围按默认值处理。<br>该成员只读，不支持更改。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | enableStateAnimation<sup>24+</sup>             | boolean                                                      | 否   | @Param             | 设置当通过变量修改selectedIndex值时，是否开启分段按钮的属性动画。<br>true表示开启分段按钮的属性动画；未配置该属性或值为false时表示不开启分段按钮的属性动画，使用组件默认的切换动画效果。<br>默认值：false<br>该成员只读，不支持更改。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| backgroundSystemMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material)    | 否 | @Param | 分段按钮组件的背景板的系统材质。需要将组件放置在Navigation或NavDestination的标题栏，或横向Tabs的底部TabBar中，沉浸光感效果才会生效。不同系统材质包含不同的属性影响效果。传入材质后，SegmentButtonV2的动效发生改变。<br>分段按钮在使用系统材质时支持选中项的背景跟随手指拖拽的能力，分段按钮被选中的选项下标在跟随手指拖拽过程中保持不变、在拖拽结束时更新。<br>默认值：无材质效果。 <br>该成员只读，不支持更改。<br>**起始版本：** 26.0.0 <br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。  <br>**模型约束：** 此接口仅可在Stage模型下使用。|
+| backgroundSystemMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material)    | 否 | @Param | 分段按钮组件的背景板的系统材质。需要将组件放置在Navigation或NavDestination的标题栏，或横向Tabs的底部TabBar中，沉浸光感效果才会生效。不同系统材质包含不同的属性影响效果。传入材质后，SegmentButtonV2的动效发生改变。<br>分段按钮在使用系统材质时，默认支持选中项背景跟随手指拖拽，选中项下标在拖拽过程中保持不变，在拖拽结束时更新。从API版本26.1.0开始，可通过interactionMode选择拖拽模式，同时保留原材质反馈。<br>默认值：无材质效果。 <br>该成员只读，不支持更改。<br>**起始版本：** 26.0.0 <br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。  <br>**模型约束：** 此接口仅可在Stage模型下使用。|
+| interactionMode | [SegmentButtonV2InteractionMode](#segmentbuttonv2interactionmode) | 否 | @Param | 分段按钮的拖拽交互模式。<br>默认值：undefined<br>未设置、值为undefined或非法值时，配置了backgroundSystemMaterial则使用跟手拖拽，否则使用普通拖拽。<br>切换拖拽模式不改变原材质外观、背景板缩放和微量位移、选中项形变或配置的光源效果。未配置backgroundSystemMaterial时，跟手拖拽不会增加材质效果。<br>拖拽不触发onItemClicked。<br>选中项更新通过$selectedIndex回调通知，需要由父组件更新selectedIndex，或使用!!进行双向绑定。<br>该成员只读，不支持更改。<br>**起始版本：** 26.1.0<br>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 > **说明：**
 >
@@ -455,6 +459,25 @@ type OnSelectedIndexesChange = (selectedIndexes: number[]) => void
 | 参数名          | 类型     | 必填 | 说明                   |
 | --------------- | -------- | ---- | ---------------------- |
 | selectedIndexes | number[] | 是   | 分段按钮被选中项的下标集合，第一项编号为0，之后按顺序递增。 |
+
+## SegmentButtonV2InteractionMode
+
+拖拽交互模式枚举，用于设置单选分段按钮的拖拽方式。
+
+**起始版本：** 26.1.0
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+
+| 名称 | 值 | 说明 |
+| --- | --- | --- |
+| FOLLOWING_DRAG | 0 | 跟手拖拽。从当前选中项开始拖拽时，选中项背景连续跟随手指移动，选中项下标在拖拽过程中保持不变，在手指抬起时通过$selectedIndex通知更新。未配置backgroundSystemMaterial时，开启该模式不会增加材质形变或光源效果。 |
+| NORMAL_DRAG | 1 | 普通拖拽。从当前选中项开始拖拽时，选中项背景按选项位置过渡，在手指拖拽跨项时通过$selectedIndex通知更新选中项下标。配置backgroundSystemMaterial时，保留原材质反馈（包括配置的光源效果）。 |
 
 ## 示例
 

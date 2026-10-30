@@ -1,12 +1,11 @@
 # \@ReusableV2 Decorator: Reusing V2 Components
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @jiyujia926-->
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=3efb4ba336409dd0731ba011e1e227786db57fa2 translatedAt=2026-07-22T02:08:39.741Z pushedAt=2026-07-23T10:40:37.005Z -->
+<!-- md-trans-meta sourceCommit=37a41c7e4764d3e7f831e1f47fc28c3acf56e6c1 translatedAt=2026-10-28T04:03:48.545Z pushedAt=2026-10-28T07:59:49.995Z nl=1 -->
 
 To reduce the performance overhead caused by repeatedly creating and destroying custom components, you can use [\@ReusableV2](../../reference/apis-arkui/arkui-ts/ts-custom-component-decorator-reusablev2.md#reusablev2) to decorate custom components decorated by [\@ComponentV2](./arkts-create-custom-components.md#componentv2), thereby achieving component reuse.
 
@@ -23,17 +22,11 @@ Before reading this topic, you are advised to read [\@Reusable Decorator: Reusin
 Using \@ReusableV2 to decorate the custom components of V2 indicates that these components are reusable.
 
 - \@ReusableV2 can decorate only custom components of V2, that is, custom components decorated by \@ComponentV2. In addition, only \@ReusableV2 decorated custom components can be used as child components of custom components of V2.
-
 - \@ReusableV2 also provides the lifecycle methods [aboutToRecycle](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttorecycle10) and [aboutToReuse](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoreuse18). **aboutToRecycle** is called when the component is recycled, and **aboutToReuse** is called when the component is reused. However, unlike \@Reusable, **aboutToReuse** has no input parameters.
-
 - In the recycling phase, **aboutToRecycle** of all child components is recursively called (even if the child components are not reusable). In the reuse phase, so does **aboutToReuse** of all child components.
-
 - The custom component decorated with \@ReusableV2 remains frozen during recycling. That is, the UI re-render and the [\@Monitor](./arkts-new-monitor.md) callback cannot be triggered. Different from the [freezeWhenInactive](./arkts-custom-components-freezeV2.md) flag, the delayed re-render is not triggered after the \@ReusableV2 decorated custom component is unfrozen.
-
 - When an \@ReusableV2 decorated custom component is reused, its state variables are automatically reset, and the [@Computed](./arkts-new-computed.md) properties and related @Monitor callbacks within the component are recalculated. You are not advised to change the state variable of a component in **aboutToRecycle**. For details, see [Resetting State Variables in Components Before Reuse](#resetting-state-variables-in-components-before-reuse).
-
 - The reusable components of V1 and V2 can be used together under certain rules. For details, see the second point in [Constraints](#constraints).
-
 - Do not overuse the \@ReusableV2 decorator. Otherwise, the reuse efficiency may be undermined and the memory overhead may increase.
 
 ## Decorator Description
@@ -93,7 +86,7 @@ struct ReusableV2Component {
 - Only \@ReusableV2 decorated custom components can be used as child components of custom components of V2. If a reusable component of V2 is used in the custom components of V1, an error is reported during compilation. In complex scenarios where verification cannot be performed during compilation, an error is reported during runtime.
 
   <!-- @[UsageRestrictionsPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableV2/entry/src/main/ets/view/UsageRestrictionsPage.ets) -->
-
+  
   ``` TypeScript
   @Entry
   @ComponentV2
@@ -145,7 +138,7 @@ struct ReusableV2Component {
 - The reusable components of V2 cannot be directly used in the **template** of [Repeat](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md), but can be used in the custom component of V2 in **template**.
 
   <!-- @[RepeatTemplatePage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableV2/entry/src/main/ets/view/RepeatTemplatePage.ets) -->
-
+  
   ``` TypeScript
   @Entry
   @ComponentV2
@@ -290,11 +283,8 @@ struct ReusableV2Component {
 You are advised to follow the steps below:
 
 1. Click **step1. appear** to change the value of **condition1** to **true**. The **if** component in **Index** switches the branch and creates a **NormalV2Component**. Due to the initial value **true** of **condition2**, the **if** condition in **NormalV2Component** is met and the system attempts to create a **ReusableV2Component**. In this case, there is no element in the reuse pool. Therefore, **ReusableV2Component** is created, the **aboutToAppear** method is called back, and the log **ReusableV2Component aboutToAppear called** is output.
-
 2. Click **step2. recycle** to change the value of **condition2** to **false** and synchronize this change to **NormalV2Component** through \@Param. The **if** condition is switched. Because **ReusableV2Component** uses \@ReusableV2, the component is recycled to the reuse pool instead of being destroyed. The **aboutToRecycle** method is called back and the log **ReusableV2Component aboutToRecycle called** is output.
-
 3. Click **step3. reuse** to change the value of **condition2** to **true** and synchronize this change to **NormalV2Component** through \@Param. The **if** condition is switched. Because **ReusableV2Component** uses \@ReusableV2, the system attempts to search for the component in the reuse pool when creating the component. In this case, the component recycled in step 2 is reused from the reuse pool, the **aboutToReuse** method is called back, and the log **ReusableV2Component aboutToReuse called** is output.
-
 4. Click **step4. disappear** to change the value of **condition1** to **false**. The **if** component in **Index** switches the branch and destroys **NormalV2Component**. In this case, **ReusableV2Component** is destroyed due to the destroyed parent component, the **aboutToDisappear** method is called back, and the log **ReusableV2Component aboutToDisappear called** is output.
 
 If the reusable component has child components, **aboutToRecycle** and **aboutToReuse** of the child components are recursively called during recycling and reuse (irrelevant to whether the child components are marked for reuse) until all child components are traversed.
@@ -383,11 +373,8 @@ struct ReusableV2Component {
 You are advised to follow the steps below:
 
 1. Click the **Change value** button to listen for the UI change. \@Monitor is triggered to output the logs **info.age change** and **info.age onRender**, indicating that the change can be listened for and the UI re-render can be triggered.
-
 2. Click the **Reuse/Recycle** button to call the **aboutToRecycle** method and output the log of **aboutToRecycle**. However, \@Monitor is not triggered and the **onRender** method is not called back.
-
 3. Click the **Change value** button. The UI is not re-rendered, \@Monitor is not triggered, and the **onRender** method is not called back.
-
 4. Click the **Reuse/Recycle** button to call the **aboutToReuse** method and output the **aboutToReuse** log. \@Monitor is triggered, the **info.age change** log is output, and the **info.age onRender** log is output by the **onRender** method. The UI changes.
 
 ![freeze](./figures/reusablev2-freeze.gif)
@@ -397,7 +384,6 @@ If the auto-increment operation is removed from the **aboutToReuse** method, the
 In complex mixed use scenarios, the rules for component freezing can be summarized as follows:
 
 1. For Components of V1, component freezing is determined by **freezeWhenInactive**.
-
 2. V2 components are automatically frozen.
 
 ## Resetting State Variables in Components Before Reuse
@@ -657,9 +643,7 @@ struct ReusableV2Component {
 You are advised to follow the steps below:
 
 1. Click **noDecoInfo.age: 30**. The UI is re-rendered to **noDecoInfo.age: 31** and \@Monitor is triggered to output the log **age change from 30 to 31**.
-
 2. Click **Recycle/Reuse** twice. The UI is re-rendered to **noDecoInfo.age: 35** and \@Monitor is triggered to output the log **age change from 31 to 35**.
-
 3. Click **noDecoInfo.age: 35**. The UI is re-rendered to **noDecoInfo.age: 36** and \@Monitor is triggered to output the log **age change from 35 to 36**.
 
 ![resetmonitor](./figures/reusablev2-resetmonitor.gif)
@@ -667,6 +651,86 @@ You are advised to follow the steps below:
 Due to the freezing mechanism, the value change in **aboutToRecycle** is not listened by \@Monitor. After the variable is reset, a new value is assigned to the variable. Therefore, for the state variable in the component, the value assignment in **aboutToRecycle** does not have obvious effect. For the constant (such as **noDecoInfo**), due to the freezing mechanism, the change of **age** in **aboutToRecycle** is not observable and cannot be reset, therefore, the \@Monitor bound to **age** will not be reset. Finally, in \@Monitor called back in step 2, the value of **monitor.value()?.before** is **31** instead of the initial value **30** of **age**.
 
 As such, you are advised to reduce the use of constant objects that contain the [\@Trace](./arkts-new-observedV2-and-trace.md) attribute in reuse scenarios to ensure that the reuse meets expectations.
+
+## Proactively Clearing the Reuse Pool
+
+Starting from API version 26.1.0, when developers need to proactively release components in the reuse pool, they can obtain the current component's [CustomComponentContext](../../reference/apis-arkui/js-apis-stateManagement.md#customcomponentcontext) through [UIUtils.getCustomComponentContext](../../reference/apis-arkui/js-apis-stateManagement.md#getcustomcomponentcontext), call the [getDefaultReusePool](../../reference/apis-arkui/js-apis-stateManagement.md#getdefaultreusepool) method of CustomComponentContext to obtain the default reuse pool [IDefaultReusePool](../../reference/apis-arkui/js-apis-stateManagement.md#idefaultreusepool), and call the [clearCache](../../reference/apis-arkui/js-apis-stateManagement.md#clearcache) method of IDefaultReusePool to implement it.
+
+> **NOTE**
+>
+> 1. When a reuseId is specified, only the reusable custom components corresponding to that reuseId are cleared; when no reuseId is specified, all components in the reuse pool are cleared.
+> 2. Components that have been taken out of the reuse pool and are currently participating in reuse are not affected.
+> 3. When a nonexistent or empty-string `reuseId` is passed in, this call has no effect.
+
+In the following example, clicking the Recycle A button or the Recycle B button recycles the custom components into the default reuse pool, clicking the Clear All button releases all components in the default reuse pool, and clicking the Clear A button releases the components with the reuseId of A in the default reuse pool.
+
+<!-- @[DefaultReusePoolClearCache](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableV2/entry/src/main/ets/view/DefaultReusePoolClearCache.ets) -->
+
+``` TypeScript
+import { UIUtils } from '@kit.ArkUI';
+
+@ReusableV2
+@ComponentV2
+struct ReusableChild {
+  @Param label: string = '';
+  aboutToAppear() {
+    console.info(`ReusableChild [${this.label}] aboutToAppear`);
+  }
+  aboutToDisappear() {
+    console.info(`ReusableChild [${this.label}] aboutToDisappear`);
+  }
+  aboutToRecycle() {
+    console.info(`ReusableChild [${this.label}] aboutToRecycle`);
+  }
+  aboutToReuse() {
+    console.info(`ReusableChild [${this.label}] aboutToReuse`);
+  }
+
+  build() {
+    Text(`ReusableChild: ${this.label}`)
+  }
+}
+
+@Entry
+@ComponentV2
+struct Index {
+  @Local showA: boolean = true;
+  @Local showB: boolean = true;
+
+  build() {
+    Column() {
+      if (this.showA) {
+        ReusableChild({ label: 'A' })
+          .reuse({ reuseId: () => 'A' })
+      }
+      if (this.showB) {
+        ReusableChild({ label: 'B' })
+          .reuse({ reuseId: () => 'B' })
+      }
+      Button('Recycle A')
+        .onClick(() => {
+          // Switch the if branch to trigger child component recycling.
+          this.showA = false;
+        })
+      Button('Recycle B')
+        .onClick(() => {
+          // Switch the if branch to trigger child component recycling.
+          this.showB = false;
+        })
+      Button('Clear All')
+        .onClick(() => {
+          // Clear all components in the default reuse pool.
+          UIUtils.getCustomComponentContext(this).getDefaultReusePool?.()?.clearCache();
+        })
+      Button('Clear A')
+        .onClick(() => {
+          // Clear only the components whose reuseId is 'A'.
+          UIUtils.getCustomComponentContext(this).getDefaultReusePool?.()?.clearCache('A');
+        })
+    }
+  }
+}
+```
 
 ## Use Cases
 
@@ -731,7 +795,7 @@ In the lazy loading scenario of the [Repeat](../rendering-control/arkts-new-rend
 
 You can disable the reuse capability of the **Repeat** component by setting the **reusable** attribute of the **[VirtualScrollOptions](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#virtualscrolloptions)** property of this component to **false**. In this case, both scrolling and update scenarios will trigger the recycling and reuse of @ReusableV2.
 
-In the following example, click **Change condition** to add three nodes to the reuse pool. When you slide down the **List** component, you can see the log output **ReusableV2Component aboutToReuse**, indicating that **Repeat** can use the reuse pool of the custom component to fill its cache pool.
+In the following example, click **Change condition** to add three nodes to the reuse pool. When you scroll down the **List** component, you can see the log output **ReusableV2Component aboutToReuse**, indicating that **Repeat** can use the reuse pool of the custom component to fill its cache pool.
 
 <!-- @[RepeatPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableV2/entry/src/main/ets/view/RepeatPage.ets) -->
 
@@ -939,15 +1003,15 @@ struct ReusableV2Component {
   @Require @Param num: number;
 
   aboutToAppear() {
-    hilog.info(DOMAIN, TAG, 'ReusableV2Component aboutToAppear', this.num); // Triggered when the component is created.
+    hilog.info(DOMAIN, TAG, `ReusableV2Component aboutToAppear ${this.num}`); // Triggered on creation.
   }
 
   aboutToRecycle() {
-    hilog.info(DOMAIN, TAG, 'ReusableV2Component aboutToRecycle', this.num); // Triggered when the component is recycled.
+    hilog.info(DOMAIN, TAG, `ReusableV2Component aboutToRecycle ${this.num}`); // Triggered on recycling.
   }
 
   aboutToReuse() {
-    hilog.info(DOMAIN, TAG, 'ReusableV2Component aboutToReuse', this.num); // Triggered when the component is reused.
+    hilog.info(DOMAIN, TAG, `ReusableV2Component aboutToReuse ${this.num}`); // Triggered on reuse.
   }
 
   build() {
@@ -1105,19 +1169,19 @@ struct ChildComponent {
   @Require @Param data: string;
 
   aboutToAppear(): void {
-    hilog.info(DOMAIN, TAG, 'ChildComponent aboutToAppear', this.data);
+    hilog.info(DOMAIN, TAG, `ChildComponent aboutToAppear ${this.data}`);
   }
 
   aboutToDisappear(): void {
-    hilog.info(DOMAIN, TAG, 'ChildComponent aboutToDisappear', this.data);
+    hilog.info(DOMAIN, TAG, `ChildComponent aboutToDisappear ${this.data}`);
   }
 
   aboutToReuse(): void {
-    hilog.info(DOMAIN, TAG, 'ChildComponent aboutToReuse', this.data); // Triggered when the component is reused.
+    hilog.info(DOMAIN, TAG, `ChildComponent aboutToReuse ${this.data}`); // Triggered on reuse.
   }
 
   aboutToRecycle(): void {
-    hilog.info(DOMAIN, TAG, 'ChildComponent aboutToRecycle', this.data); // Triggered when the component is reclaimed.
+    hilog.info(DOMAIN, TAG, `ChildComponent aboutToRecycle ${this.data}`); // Triggered on recycle.
   }
 
   build() {

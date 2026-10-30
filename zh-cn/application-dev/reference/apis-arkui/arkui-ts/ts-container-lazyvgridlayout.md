@@ -101,9 +101,9 @@ columnsTemplate(template: string | ItemFillPolicy)
 >
 > string类型和ItemFillPolicy类型设置的是同一个属性，多次设置时以最后一次设置为准。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -688,7 +688,7 @@ struct LazyVGridLayoutColumnsTemplateDemo {
 
 LazyVGridLayout内容区宽度属于sm及更小的断点区间时显示1列，属于md断点区间时显示2列，属于lg及更大的断点区间时显示3列。
 
-从API版本26.2.0开始，新增支持columnsTemplate设置为ItemFillPolicy类型。
+从API版本26.1.0开始，新增支持columnsTemplate设置为ItemFillPolicy类型。
 
 <!--code_no_check-->
 ```ts

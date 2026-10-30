@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "讲解ArkTS基于async/await与Promise的异步并发编程，涵盖异步函数、并发任务执行、生成器与异步迭代及并发控制等能力。"
+keywords: [异步并发, 多线程, worker, Promise, async, await, 异步函数, 生成器, 并发控制]
+doctype: guide
+status: active
+---
+
 # 异步并发
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->

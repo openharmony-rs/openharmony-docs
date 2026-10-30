@@ -75,7 +75,7 @@ FileManagement_ErrCode OH_FileIO_GetFileLocation(char *uri, int uriLength, FileI
 | 参数项 | 描述 |
 | -- | -- |
 | char *uri | URI字符串的指针，用于指定需要查询存储位置的文件。 |
-| int uriLength | URI字符串的长度，不包含字符串结束符'\0'，单位为Byte。取值范围为(0，4096]。 |
+| int uriLength | URI字符串的长度，不包含字符串结束符'\0'，单位为Byte。取值范围为(0, 4096]。 |
 | [FileIO_FileLocation](capi-oh-fileio-h.md#fileio_filelocation) *location | 文件存储位置的指针。 |
 
 **返回：**

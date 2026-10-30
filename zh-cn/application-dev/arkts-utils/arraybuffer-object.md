@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍ArrayBuffer对象的跨线程传输方式：拷贝传输复制二进制数据后传递，转移传输转移内存所有权避免拷贝开销，适用于图片、音频等大段连续二进制数据的高效跨线程传递场景。"
+keywords: [ArrayBuffer, 二进制数据, 拷贝传输, 转移传输, 内存所有权, 跨线程传递, 连续内存数据]
+doctype: guide
+status: active
+---
+
 # ArrayBuffer对象
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->

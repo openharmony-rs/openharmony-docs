@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍使用OH_JSVM_StrictEquals判断两个JavaScript值是否严格相等的方法，语义等同JS的===操作符，不做类型转换。"
+keywords: [OH_JSVM_StrictEquals, 严格相等, 值比较, 相等性判断, JSVM_Value, 类型相同]
+doctype: guide
+status: active
+---
+
 # 使用JSVM-API判断给定的两个JS value是否严格相等
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->

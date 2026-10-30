@@ -1,3 +1,10 @@
+---
+kits: ["Media Kit / 媒体服务"]
+description: "介绍如何使用AVMetadataExtractor的C/C++接口从媒体资源中提取元数据信息，适用于需要底层媒体信息查询的开发场景。"
+keywords: [AVMetadataExtractor, C/C++, Native API, 元数据提取, OH_AVMetadataExtractor, SetFDSource, FetchMetadata, NDK, 媒体信息查询]
+doctype: guide
+status: active
+---
 # 使用AVMetadataExtractor获取元数据(C/C++)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
@@ -16,7 +23,7 @@
 target_link_libraries(entry PUBLIC libavmetadata_extractor.so libace_napi.z.so )
 ```
 
-使用[OH_AVFormat](../../reference/apis-avcodec-kit/capi-native-avformat-h.md)相关接口时，需引入如下头文件。
+使用[native_avformat.h](../../reference/apis-avcodec-kit/capi-native-avformat-h.md)相关接口时，需引入如下头文件。
 ```C++
 #include <multimedia/player_framework/native_avformat.h>
 ```
@@ -83,7 +90,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
 
 3. 获取元数据：调用[OH_AVMetadataExtractor_FetchMetadata()](../../reference/apis-media-kit/capi-avmetadata-extractor-h.md#oh_avmetadataextractor_fetchmetadata)。
 
-   需要先调用OH_AVFormat_Create()函数创建一个OH_AVFormat对象，通过访问该对象的各个键值对，可以获取到元数据。使用完成需要调用OH_AVFormat_Destroy销毁该对象，防止产生内存泄漏，详细使用方法请参阅[OH_AVFormat](../../reference/apis-avcodec-kit/capi-native-avformat-h.md)。
+   需要先调用OH_AVFormat_Create()函数创建一个OH_AVFormat对象，通过访问该对象的各个键值对，可以获取到元数据。使用完成需要调用OH_AVFormat_Destroy销毁该对象，防止产生内存泄漏，详细使用方法请参阅[native_avformat.h](../../reference/apis-avcodec-kit/capi-native-avformat-h.md)。
    ```c
    // 获取元数据。
    avErrCode = OH_AVMetadataExtractor_FetchMetadata(mainExtractor, avMetadata);
@@ -100,7 +107,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
 
 5. 对于音频资源而言，除了可以通过OH_AVFormat对象来获取音频资源的标题、时长等元数据外，还可以获取专辑封面（例如，调用[OH_AVMetadataExtractor_FetchAlbumCover()](../../reference/apis-media-kit/capi-avmetadata-extractor-h.md#oh_avmetadataextractor_fetchalbumcover)，可以获取到专辑封面）。
 
-   使用完成需要调用OH_PixelmapNative_Release释放OH_PixelmapNative对象资源，详细使用方法请参阅[Image_NativeModule](../../reference/apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_release)。
+   使用完成需要调用OH_PixelmapNative_Release释放OH_PixelmapNative对象资源，详细使用方法请参阅[OH_PixelmapNative_Release()](../../reference/apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_release)。
     ```c
     #include <multimedia/image_framework/image/pixelmap_native.h>
     #include <multimedia/player_framework/avmetadata_extractor.h>

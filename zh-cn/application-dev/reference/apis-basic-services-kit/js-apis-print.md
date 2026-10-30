@@ -2,7 +2,7 @@
 
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Print-->
-<!--Owner: @guoshengbang-->
+<!--Owner: @Zouhaifeng1-->
 <!--Designer: @baozewei-->
 <!--Tester: @baozewei-->
 <!--Adviser: @fang-jinxu-->
@@ -630,7 +630,7 @@ print(files: Array&lt;string&gt;, callback: AsyncCallback&lt;PrintTask&gt;): voi
 
 > **说明：**
 >
-> 从 API version 10开始支持，从API version 26.0.0开始废弃。建议使用[print](#printprint11)替代。
+> 从API version 10开始支持，从API version 26.0.0开始废弃。建议使用[print](#printprint11)替代。
 
 **需要权限：** ohos.permission.PRINT
 
@@ -681,7 +681,7 @@ print(files: Array&lt;string&gt;): Promise&lt;PrintTask&gt;
 
 > **说明：**
 >
-> 从 API version 10开始支持，从API version 26.0.0开始废弃。建议使用[print](#printprint11-1)替代。
+> 从API version 10开始支持，从API version 26.0.0开始废弃。建议使用[print](#printprint11-1)替代。
 
 **需要权限：** ohos.permission.PRINT
 
@@ -1160,6 +1160,7 @@ class MyPrintDocumentAdapter implements print.PrintDocumentAdapter {
 | PRINT_JOB_BLOCK_FILE_UPLOADING_ERROR<sup>18+</sup> | 30 | 表示文件上传失败。 |
 | PRINT_JOB_BLOCK_DRIVER_MISSING<sup>20+</sup> | 34 | 表示打印驱动缺失。 |
 | PRINT_JOB_BLOCK_INTERRUPT<sup>20+</sup> | 35 | 表示打印任务中断。 |
+| PRINT_JOB_BLOCK_EDM_POLICY_RESTRICTED | 44 | 表示打印任务受EDM策略限制。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**起始版本：** 26.0.1<br> |
 | PRINT_JOB_BLOCK_PRINTER_UNAVAILABLE<sup>20+</sup> | 98 | 表示打印机不可用。 |
 | PRINT_JOB_BLOCK_UNKNOWN | 99 | 表示打印未知问题。 |
 
@@ -1178,13 +1179,14 @@ class MyPrintDocumentAdapter implements print.PrintDocumentAdapter {
 | E_PRINT_RPC_FAILURE | 13100002 | 表示RPC失败，请检查RPC通信状态并重试。 |
 | E_PRINT_SERVER_FAILURE | 13100003 | 表示打印服务失败，请检查打印服务是否正常运行并重试。 |
 | E_PRINT_INVALID_EXTENSION | 13100004 | 表示打印扩展无效，请检查扩展能力实现是否正确。 |
-| E_PRINT_INVALID_PRINTER | 13100005 | 表示打印机无效，请确认打印机 ID 及打印机信息是否正确后重试。 |
-| E_PRINT_INVALID_PRINT_JOB | 13100006 | 表示打印任务无效，请检查任务 ID 和状态是否正确。 |
+| E_PRINT_INVALID_PRINTER | 13100005 | 表示打印机无效，请确认打印机ID及打印机信息是否正确后重试。 |
+| E_PRINT_INVALID_PRINT_JOB | 13100006 | 表示打印任务无效，请检查任务ID和状态是否正确。 |
 | E_PRINT_FILE_IO | 13100007 | 表示文件输入/输出错误，请检查文件路径、文件状态和操作是否正确。 |
 | E_PRINT_TOO_MANY_FILES<sup>18+</sup> | 13100010 | 表示文件数量超过上限，当前上限99个。 |
 | E_PRINT_SMB_LOGIN_LOCKOUT<sup>24+</sup> | 13100012 | 表示当前SMB协议共享打印机账号因多次登录失败而被锁定。请等待账号解锁后重试，或联系管理员处理。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br> |
 | E_PRINT_SMB_CONNECTION_FAILURE<sup>24+</sup> | 13100013 | 表示SMB协议共享打印机连接失败（发生网络错误、主机不可达或端口被阻止）。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br> |
 | E_PRINT_SMB_INVALID_CREDENTIALS<sup>24+</sup> | 13100014 | 表示SMB协议共享打印机账号/密码错误。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br> |
+| E_PRINT_EDM_POLICY_RESTRICTED | 13100015 | 表示打印操作受EDM策略限制。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**起始版本：** 26.0.1<br> |
 
 ## ApplicationEvent<sup>14+</sup>
 
@@ -1508,7 +1510,7 @@ print.getPrinterInformationById(printerId).then((printerInformation : print.Prin
 | defaultDuplexMode | [PrintDuplexMode](#printduplexmode11) | 否 | 是 | 表示默认单双面模式。 |
 | defaultPrintQuality | [PrintQuality](#printquality14) | 否 | 是 | 表示默认打印质量。 |
 | defaultMediaType | string | 否 | 是 | 表示默认纸张类型。 |
-| defaultPageSizeId | string | 否 | 是 | 表示默认纸张尺寸的ID，其范围包含国际标准化组织定义的标准纸张尺寸（如ISO_A4）和系统中定义的非标准的纸张尺寸（如Custom.178x254mm，表示这种纸张尺寸为178毫米 x 254毫米）。 |
+| defaultPageSizeId | string | 否 | 是 | 表示默认纸张尺寸的ID，其范围包含国际标准化组织定义的标准纸张尺寸（如ISO_A4）和系统中定义的非标准的纸张尺寸（如Custom.178x254mm，表示这种纸张尺寸为178毫米*254毫米）。 |
 | defaultOrientation | [PrintOrientationMode](#printorientationmode14) | 否 | 是 | 表示默认打印方向。 |
 | borderless | boolean | 否 | 是 | 表示是否无边距打印，true表示无边距，false表示有边距。默认值为false。 |
 | defaultColorMode<sup>24+</sup> | [PrintColorMode](#printcolormode11) | 否 | 是 | 表示默认色彩模式。默认值为黑白。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br> |
@@ -1549,7 +1551,7 @@ getAddedPrinters(): Promise&lt;Array&lt;string&gt;&gt;
 
 获取系统中已添加的打印机列表，使用Promise异步回调。
 
-**需要权限：** ohos.permission.MANAGE_PRINT_JOB 或 ohos.permission.PRINT
+**需要权限：** ohos.permission.MANAGE_PRINT_JOB或ohos.permission.PRINT
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -1681,7 +1683,7 @@ startDiscoverPrinter(extensionList: Array&lt;string&gt;, callback: AsyncCallback
 
 通过指定“打印扩展能力列表”来发现打印机，发现的打印机具备指定的打印扩展能力。如果指定空的打印扩展能力列表，则表示加载所有扩展能力。使用callback异步回调。在不需要继续发现时，调用[stopDiscoverPrinter](#printstopdiscoverprinter20)停止发现，释放系统资源，否则会导致系统持续进行打印机发现，消耗系统资源。
 
-**需要权限：** ohos.permission.MANAGE_PRINT_JOB 或 ohos.permission.PRINT
+**需要权限：** ohos.permission.MANAGE_PRINT_JOB或ohos.permission.PRINT
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -1725,7 +1727,7 @@ startDiscoverPrinter(extensionList: Array&lt;string&gt;): Promise&lt;void&gt;
 
 通过指定“打印扩展能力列表”来发现打印机，发现的打印机具备指定的打印扩展能力。如果指定空的打印扩展能力列表，则表示加载所有扩展能力，使用Promise异步回调。在不需要继续发现时，调用[stopDiscoverPrinter](#printstopdiscoverprinter20)停止发现，释放系统资源，否则会导致系统持续进行打印机发现，消耗系统资源。
 
-**需要权限：** ohos.permission.MANAGE_PRINT_JOB 或 ohos.permission.PRINT
+**需要权限：** ohos.permission.MANAGE_PRINT_JOB或ohos.permission.PRINT
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -1772,7 +1774,7 @@ stopDiscoverPrinter(callback: AsyncCallback&lt;void&gt;): void
 
 停止发现打印机，使用callback异步回调。
 
-**需要权限：** ohos.permission.MANAGE_PRINT_JOB 或 ohos.permission.PRINT
+**需要权限：** ohos.permission.MANAGE_PRINT_JOB或ohos.permission.PRINT
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -1811,7 +1813,7 @@ stopDiscoverPrinter(): Promise&lt;void&gt;
 
 停止发现打印机，使用Promise异步回调。
 
-**需要权限：** ohos.permission.MANAGE_PRINT_JOB 或 ohos.permission.PRINT
+**需要权限：** ohos.permission.MANAGE_PRINT_JOB或ohos.permission.PRINT
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -1848,7 +1850,7 @@ connectPrinter(printerId: string, callback: AsyncCallback&lt;void&gt;): void
 
 通过打印机ID连接打印机，使用callback异步回调。
 
-**需要权限：** ohos.permission.MANAGE_PRINT_JOB 或 ohos.permission.PRINT
+**需要权限：** ohos.permission.MANAGE_PRINT_JOB或ohos.permission.PRINT
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -1890,7 +1892,7 @@ connectPrinter(printerId: string): Promise&lt;void&gt;
 
 通过打印机ID连接打印机，使用Promise异步回调。
 
-**需要权限：** ohos.permission.MANAGE_PRINT_JOB 或 ohos.permission.PRINT
+**需要权限：** ohos.permission.MANAGE_PRINT_JOB或ohos.permission.PRINT
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -2176,7 +2178,7 @@ updatePrintJobState(jobId: string, state: PrintJobState, subState: PrintJobSubSt
 
 更新打印任务状态，使用callback异步回调。
 
-**需要权限：** ohos.permission.MANAGE_PRINT_JOB 或 ohos.permission.ENTERPRISE_MANAGE_PRINT
+**需要权限：** ohos.permission.MANAGE_PRINT_JOB或ohos.permission.ENTERPRISE_MANAGE_PRINT
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -2223,7 +2225,7 @@ updatePrintJobState(jobId: string, state: PrintJobState, subState: PrintJobSubSt
 
 更新打印任务状态，使用Promise异步回调。
 
-**需要权限：** ohos.permission.MANAGE_PRINT_JOB 或 ohos.permission.ENTERPRISE_MANAGE_PRINT
+**需要权限：** ohos.permission.MANAGE_PRINT_JOB或ohos.permission.ENTERPRISE_MANAGE_PRINT
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -2273,7 +2275,7 @@ updatePrinterInformation(printerInformation: PrinterInformation): Promise&lt;voi
 
 更新系统中打印机的部分信息，使用Promise异步回调。当前仅允许更新[PrinterInformation](#printerinformation14)的alias和options字段。
 
-**需要权限：** ohos.permission.MANAGE_PRINT_JOB 或 ohos.permission.ENTERPRISE_MANAGE_PRINT
+**需要权限：** ohos.permission.MANAGE_PRINT_JOB或ohos.permission.ENTERPRISE_MANAGE_PRINT
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -2376,7 +2378,7 @@ addPrinter(printerName: string, uri: string, ppdName?: string, options?: string)
 
 添加打印机到系统中，使用Promise异步回调。该接口面向打印驱动、打印管理软件、三方打印管理软件、云打印等需要管理打印机或扫描仪的场景。
 
-**需要权限：** ohos.permission.MANAGE_PRINT_JOB 或 ohos.permission.PRINTER_DRIVER
+**需要权限：** ohos.permission.MANAGE_PRINT_JOB或ohos.permission.PRINTER_DRIVER
 
 **系统能力：** SystemCapability.Print.PrintFramework
 

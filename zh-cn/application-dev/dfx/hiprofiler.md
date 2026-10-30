@@ -211,6 +211,8 @@ hdc shell "bm dump -n com.example.myapplication | grep appProvisionType"
 | RES_VMA_ARKWEB | ArkWeb PA分配器内存跟踪。 | 23 |
 | RES_ARK_LOCAL_HANDLE | ark本地句柄分配栈。 | 23 |
 | RES_COMPOSITE_HEAP | 三合一维测日志，具体包含调用栈trace、堆快照rawheap、map映射文件。 | 26.0.0 |
+| RES_CHROMIUM_HEAP | chromium/cef/electron框架V8 JS堆内存分配栈。 | 26.1.0 |
+| RES_VMA_CHROMIUM | chromium/cef/electron框架PartitionAlloc分配器内存跟踪。 | 26.1.0 |
 
 ### async_type参数介绍
 
@@ -1301,6 +1303,58 @@ $ hiprofiler_cmd \
  }
 CONFIG
 ```
+
+### 抓取chromium/cef/electron框架V8 JS堆内存分配栈和PartitionAlloc分配器内存调用栈
+
+从API版本26.1.0开始，支持抓取chromium/cef/electron框架V8 JS堆内存分配栈和PartitionAlloc分配器内存调用栈。可通过如下方式对com.example.insight_test_stage进程的堆内存分配操作进行抓栈，并开启fp回栈、离线符号化、统计模式、跨语言回栈、异步栈抓取、启动模式、文件缓存模式，通过restrace_tag抓取chromium/cef/electron框架V8 JS堆内存分配栈和PartitionAlloc分配器内存跟踪数据。
+
+```shell
+$ hiprofiler_cmd \
+  -c - \
+  -o /data/local/tmp/hiprofiler_data.htrace \
+  -t  60 \
+  -s \
+  -k \
+<<CONFIG
+request_id: 1
+session_config {
+  buffers {
+  pages: 131072
+  }
+}
+plugin_configs {
+  plugin_name: "nativehook"
+  sample_interval: 1000
+  is_protobuf_serialize:true
+  config_data {
+  save_file: false
+  smb_pages: 16384
+  max_stack_depth: 50
+  process_name: "com.example.insight_test_stage"
+  string_compressed: true
+  fp_unwind: true
+  blocked: true
+  callframe_compress: true
+  record_accurately: true
+  offline_symbolization: true
+  statistics_interval: 1
+  startup_mode: true
+  js_stack_report: 1 
+  max_js_stack_depth: 16
+  malloc_disable: false
+  memtrace_enable: true
+  async_stack_enable: true
+  async_type: ALL_ASYNC_TYPE
+  restrace_tag: "RES_CHROMIUM_HEAP"
+  restrace_tag: "RES_VMA_CHROMIUM"
+  unique_stack_table_size:256
+  use_file_cache_mode:true
+  }
+}
+CONFIG
+```
+
+采集的数据会被保存至/data/local/tmp/hiprofiler_data.htrace文件中，该文件包含了chromium/cef/electron框架V8 JS堆内存分配调用栈信息、PartitionAlloc分配器内存分配跟踪数据、跨语言（JS与Native混合）调用栈信息、异步调用栈信息，以及调用栈出现次数和分配大小统计信息。
 
 ## 常见问题
 

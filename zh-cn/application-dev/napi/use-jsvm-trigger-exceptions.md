@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍如何为虚拟机设置OOM、致命错误与未捕获Promise拒绝的定制化处理函数，异常触发时执行清理或日志记录，避免程序直接崩溃。"
+keywords: [OH_JSVM_SetHandlerForOOMError, OH_JSVM_SetHandlerForFatalError, OH_JSVM_SetHandlerForPromiseReject, OOM Error, Fatal Error, Promise Reject, 异常处理回调, 定制化处理]
+doctype: guide
+status: active
+---
+
 # 使用JSVM-API进行异常的定制化处理
 
 <!--Kit: ArkTS-->

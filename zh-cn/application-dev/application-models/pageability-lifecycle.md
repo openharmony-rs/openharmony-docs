@@ -142,7 +142,7 @@ PageAbility生命周期回调与生命周期状态的关系如下图所示。
         ability_featureAbility.terminateSelf().then((data) => {
           console.info(`Index: terminateSelf success data = : ${JSON.stringify(data)}`);
         }).catch((err: BusinessError) => {
-          console.info(`Index: terminateSelf err = ${JSON.stringify(err)}`);
+          console.error(`Index: terminateSelf err = ${JSON.stringify(err)}`);
         });
       }
 

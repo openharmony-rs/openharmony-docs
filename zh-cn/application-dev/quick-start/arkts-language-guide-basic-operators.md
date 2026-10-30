@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "讲解ArkTS的赋值、算术、比较、逻辑、三元条件等基本运算符的用法与运算符优先级规则，并说明ArkTS与TypeScript的差异限制。"
+keywords: [ArkTS, 基本操作符, 赋值运算符, 算术运算符, 比较运算符, 逻辑运算符, 三元条件运算符, 运算符优先级]
+doctype: guide
+status: active
+---
+
 # 基本操作符
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->

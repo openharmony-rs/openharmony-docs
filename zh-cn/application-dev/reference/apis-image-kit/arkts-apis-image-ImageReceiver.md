@@ -447,8 +447,8 @@ function setMemoryNameSync(receiver: image.ImageReceiver) {
     // 建议在注册imageArrival回调并读取图片前设置内存标识符。
     receiver.setMemoryName('ImageReceiverNameTest');
     console.info('Succeeded in setting memory name.');
-  } catch (e) {
-    const err = e as BusinessError;
+  } catch (error) {
+    const err = error as BusinessError;
     console.error(`Failed to set memory name. Code: ${err.code}, message: ${err.message}`);
     return;
   }

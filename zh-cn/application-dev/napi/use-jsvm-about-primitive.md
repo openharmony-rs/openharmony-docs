@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍如何使用JSVM-API将JavaScript值强制转换为布尔、数值、对象或字符串，以及获取Boolean、null、undefined和全局对象等特殊值。"
+keywords: [OH_JSVM_CoerceToBool, OH_JSVM_CoerceToNumber, OH_JSVM_CoerceToObject, OH_JSVM_CoerceToString, OH_JSVM_GetBoolean, OH_JSVM_GetNull, OH_JSVM_GetUndefined, OH_JSVM_GetGlobal, 强制转换]
+doctype: guide
+status: active
+---
+
 # 使用JSVM-API接口进行primitive类型相关开发
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->

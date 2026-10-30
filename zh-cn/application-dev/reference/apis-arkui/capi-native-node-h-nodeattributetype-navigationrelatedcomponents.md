@@ -677,13 +677,13 @@ NODE_ARC_ALPHABET_INDEXER_COLOR = 23001
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].u32 | 文本颜色，0xargb格式。默认值为0x99182431，表示略带透明的深暗蓝色。 |
+| .value[0].u32 | 文本颜色，0xARGB格式。默认值为0x99182431，表示略带透明的深暗蓝色。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].u32 | 文本颜色，0xargb格式。 |
+| .value[0].u32 | 文本颜色，0xARGB格式。 |
 
 ## NODE_ARC_ALPHABET_INDEXER_SELECTED_COLOR
 
@@ -700,13 +700,13 @@ NODE_ARC_ALPHABET_INDEXER_SELECTED_COLOR = 23002
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].u32 | 文本颜色，0xargb格式。默认值为0xFF007DFF，表示蓝色。 |
+| .value[0].u32 | 文本颜色，0xARGB格式。默认值为0xFF007DFF，表示蓝色。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].u32 | 文本颜色，0xargb格式。 |
+| .value[0].u32 | 文本颜色，0xARGB格式。 |
 
 ## NODE_ARC_ALPHABET_INDEXER_POPUP_COLOR
 
@@ -723,13 +723,13 @@ NODE_ARC_ALPHABET_INDEXER_POPUP_COLOR = 23003
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].u32 | 文本颜色，0xargb格式。默认值为0xFF007DFF，表示蓝色。 |
+| .value[0].u32 | 文本颜色，0xARGB格式。默认值为0xFF007DFF，表示蓝色。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].u32 | 文本颜色，0xargb格式。 |
+| .value[0].u32 | 文本颜色，0xARGB格式。 |
 
 ## NODE_ARC_ALPHABET_INDEXER_SELECTED_BACKGROUND_COLOR
 
@@ -746,13 +746,13 @@ NODE_ARC_ALPHABET_INDEXER_SELECTED_BACKGROUND_COLOR = 23004
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].u32 | 背景颜色，0xargb格式。默认值为0xFF1F71FF，表示深蓝色。 |
+| .value[0].u32 | 背景颜色，0xARGB格式。默认值为0xFF1F71FF，表示深蓝色。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].u32 | 背景颜色，0xargb格式。 |
+| .value[0].u32 | 背景颜色，0xARGB格式。 |
 
 ## NODE_ARC_ALPHABET_INDEXER_POPUP_BACKGROUND_COLOR
 
@@ -769,13 +769,13 @@ NODE_ARC_ALPHABET_INDEXER_POPUP_BACKGROUND_COLOR = 23005
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].u32 | 背景颜色，0xargb格式。默认值为0xD8404040，表示微透明的深灰色。 |
+| .value[0].u32 | 背景颜色，0xARGB格式。默认值为0xD8404040，表示微透明的深灰色。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].u32 | 背景颜色，0xargb格式。 |
+| .value[0].u32 | 背景颜色，0xARGB格式。 |
 
 ## NODE_ARC_ALPHABET_INDEXER_USE_POPUP
 
@@ -1019,9 +1019,9 @@ NODE_ARC_SWIPER_INDICATOR = 1022001
 | -- | -- |
 | .value[0].i32 | 是否显示导航点指示器，1表示显示导航点指示器，0表示不显示，默认值为1。 |
 | .value[1].i32 | ArcSwiper导航点指示器的方向，参数类型[OH_ArkUI_ArcDirection](capi-native-type-h.md#oh_arkui_arcdirection)，默认值为OH_ARKUI_ARCDIRECTION_SIX_CLOCK_DIRECTION，为可选参数。 |
-| .value[2].i32 | 未选中点的颜色，0xargb格式，默认值为0xA9FFFFFF，表示白色，为可选参数。 |
-| .value[3].i32 | 选中点的颜色，0xargb格式，默认值为0xFF5EA1FF，表示蓝色，为可选参数。 |
-| .value[4].i32 | 长按后ArcSwiper导航点指示器的背景颜色，0xargb格式，默认值为0xFF5EA1FF，表示蓝色，为可选参数。 |
+| .value[2].i32 | 未选中点的颜色，0xARGB格式，默认值为0xA9FFFFFF，表示白色，为可选参数。 |
+| .value[3].i32 | 选中点的颜色，0xARGB格式，默认值为0xFF5EA1FF，表示蓝色，为可选参数。 |
+| .value[4].i32 | 长按后ArcSwiper导航点指示器的背景颜色，0xARGB格式，默认值为0xFF5EA1FF，表示蓝色，为可选参数。 |
 | .object | 遮罩的渐变颜色，为可选参数。颜色停止点数组，每个颜色停止点由一种颜色及其停止位置组成。参数类型为[ArkUI_ColorStop](capi-arkui-nativemodule-arkui-colorstop.md)。无效颜色会被自动跳过。colors：颜色停止点的颜色。stops：颜色停止点的停止位置。size：颜色数量。 |
 
 **返回：**

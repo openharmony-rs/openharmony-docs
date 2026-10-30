@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "提供同步任务的多线程开发指导：对于会阻塞UI主线程的同步任务，分别演示使用TaskPool处理同步任务与使用Worker处理相互关联的同步任务两种方式，避免同步调用导致应用卡顿。"
+keywords: [同步任务, TaskPool, Worker, 主线程阻塞, 应用卡顿, 关联任务, 多线程处理]
+doctype: guide
+status: active
+---
+
 # 同步任务开发指导 (TaskPool和Worker)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->

@@ -1118,7 +1118,7 @@ addKeepAliveApps(admin: Want, bundleNames: Array\<string>, accountId: number): v
 | 参数名    | 类型                                                    | 必填 | 说明                                                         |
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                               |
-| bundleNames    | Array&lt;string&gt;                                     | 是   | 应用包名数组，指定需要添加至保活名单的应用，最大支持5个。<!--RP5--><!--RP5End-->                                    |
+| bundleNames    | Array&lt;string&gt;                                     | 是   | 应用包名数组，指定需要添加至保活名单的应用，最大支持5个。从API版本26.0.1开始，最大支持10个。<!--RP5--><!--RP5End-->                                    |
 | accountId | number                                                  | 是   | 用户ID，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。|
 
 **错误码**：
@@ -1161,7 +1161,7 @@ try {
 
 addKeepAliveApps(admin: Want, bundleNames: Array\<string>, accountId: number, disallowModify: boolean): void
 
-添加保活应用名单，并设置是否禁止用户手动取消保活，添加后将自动保活应用进程。在开机和应用被杀死后，由系统主动拉起应用进程。<br>通过本接口、[addKeepAliveApps](#applicationmanageraddkeepaliveapps14)接口均可添加保活应用名单，两个接口的设置可同时生效。同一用户下，保活应用名单最多支持包含5个应用。例如：若当前名单中已有3个应用，则最多还能通过本接口为当前用户添加2个应用。<br>如果通过[addDisallowedRunningBundlesSync](#applicationmanageradddisallowedrunningbundlessync)接口将应用添加至应用禁止运行名单，就不能将应用添加至保活应用名单，否则会报9200010冲突错误码。<br>如果需要在Phone/Tablet设备使用类似功能，可以调用[addUserNonStopApps](#applicationmanageraddusernonstopapps22)或者[addFreezeExemptedApps](#applicationmanageraddfreezeexemptedapps22)接口，具体功能请参考相关文档。
+添加保活应用名单，并设置是否禁止用户手动取消保活，添加后将自动保活应用进程。在开机和应用被杀死后，由系统主动拉起应用进程。<br>通过本接口、[addKeepAliveApps](#applicationmanageraddkeepaliveapps14)接口均可添加保活应用名单，两个接口的设置可同时生效。同一用户下，保活应用名单最多支持包含5个应用。例如：若当前名单中已有3个应用，则最多还能通过本接口为当前用户添加2个应用。从API版本26.0.1开始，同一用户下，保活应用名单修改为最多支持包含10个应用。例如：若当前名单中已有8个应用，则最多还能通过本接口为当前用户添加2个应用。<br>如果通过[addDisallowedRunningBundlesSync](#applicationmanageradddisallowedrunningbundlessync)接口将应用添加至应用禁止运行名单，就不能将应用添加至保活应用名单，否则会报9200010冲突错误码。<br>如果需要在Phone/Tablet设备使用类似功能，可以调用[addUserNonStopApps](#applicationmanageraddusernonstopapps22)或者[addFreezeExemptedApps](#applicationmanageraddfreezeexemptedapps22)接口，具体功能请参考相关文档。
 
 > **说明：**
 >
@@ -1185,7 +1185,7 @@ addKeepAliveApps(admin: Want, bundleNames: Array\<string>, accountId: number, di
 | 参数名    | 类型                                                    | 必填 | 说明                                                         |
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                               |
-| bundleNames    | Array&lt;string&gt;                                     | 是   | 应用包名数组，指定需要添加至保活名单的应用，最大支持5个。<br>应用需要满足条件：安装在1用户下（1用户是支持三方应用单例运行的用户），且应用接入[后台服务](../../application-models/app-service-extension-ability.md#实现一个后台服务)<!--RP3--><!--RP3End-->。否则，会报错误码9201005。  |
+| bundleNames    | Array&lt;string&gt;                                     | 是   | 应用包名数组，指定需要添加至保活名单的应用，最大支持5个。从API版本26.0.1开始，最大支持10个。<br>应用需要满足条件：安装在1用户下（1用户是支持三方应用单例运行的用户），且应用接入[后台服务](../../application-models/app-service-extension-ability.md#实现一个后台服务)<!--RP3--><!--RP3End-->。否则，会报错误码9201005。  |
 | accountId | number                                                  | 是   | 用户ID，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。|
 | disallowModify | boolean | 是   | 是否禁止用户手动取消应用保活，true表示禁止，false表示允许。<!--RP2--><!--RP2End--> |
 
@@ -1248,7 +1248,7 @@ removeKeepAliveApps(admin: Want, bundleNames: Array\<string>, accountId: number)
 | 参数名    | 类型                                                    | 必填 | 说明                                                         |
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                               |
-| bundleNames    | Array&lt;string&gt;                                     | 是   | 应用包名数组，指定需要移除保活的应用，最大支持5个。                                   |
+| bundleNames    | Array&lt;string&gt;                                     | 是   | 应用包名数组，指定需要移除保活的应用，最大支持5个。从API版本26.0.1开始，最大支持10个。                                 |
 | accountId | number                                                  | 是   | 用户ID，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。 |
 
 **错误码**：
@@ -2465,9 +2465,9 @@ addDockApp(admin: Want, bundleName: string, abilityName: string, index?: number)
 >
 > 6. 若不传index参数，或传入的index值大于快捷栏当前应用数量，则新应用默认追加到快捷栏末尾。
 >
-> 7.通过本接口添加应用到快捷栏后，用户可以手动移除或调整应用的位置。
+> 7. 通过本接口添加应用到快捷栏后，用户可以手动移除或调整应用的位置。
 >
-> 8.在多个MDM应用场景下，遵循[配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)规则。
+> 8. 在多个MDM应用场景下，遵循[配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)规则。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
@@ -2667,11 +2667,11 @@ addAllowedNotificationBundles(admin: Want, bundleNames: Array\<string\>, account
 添加允许发送通知的应用名单。设置通知允许名单后，不在此名单内的应用无法发送通知。
 > **说明：**
 >
-> 1.如果Kiosk模式与通知允许名单策略同时设置，那么设置Kiosk模式的应用与通知允许名单中的应用都可以发送通知。<br>
-> 2.当已经通过[setDisallowedPolicy](./js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicydeprecated)设置了禁用设备通知能力时，再通过本接口设置通知允许名单，会抛出错误码9200010。<br>
-> 3.通知允许名单对系统服务不生效，系统服务始终可以发送通知。系统应用受通知允许名单管控。<br>
-> 4.支持跨用户设置，设置后跨用户立即生效。<br>
-> 5.在多个MDM应用场景下，遵循[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)规则。
+> 1. 如果Kiosk模式与通知允许名单策略同时设置，那么设置Kiosk模式的应用与通知允许名单中的应用都可以发送通知。<br>
+> 2. 当已经通过[setDisallowedPolicy](./js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicydeprecated)设置了禁用设备通知能力时，再通过本接口设置通知允许名单，会抛出错误码9200010。<br>
+> 3. 通知允许名单对系统服务不生效，系统服务始终可以发送通知。系统应用受通知允许名单管控。<br>
+> 4. 支持跨用户设置，设置后跨用户立即生效。<br>
+> 5. 在多个MDM应用场景下，遵循[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)规则。
 
 **起始版本：** 26.0.0
 
@@ -2849,9 +2849,9 @@ addAllowedDistributeAbilityConnBundles(admin: Want, appIdentifiers: Array&lt;str
 当前支持的分布式业务类型有：[协同业务](#servicetype)。
 > **说明：**
 >
-> 1.如果要设置允许使用特定分布式业务的应用名单，在调用本接口前必须已经通过[setDisallowedPolicyForAccount](./js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccountdeprecated)接口禁用了向其他设备传输数据的设备间单向传输数据的能力，否则会抛出错误码9201043。<br>
-> 2.当向其他设备传输数据的设备间单向传输数据的能力被解除禁用时，通过本接口设置的允许使用特定分布式业务的应用名单会被同步清除。<br>
-> 3.在多个MDM应用场景下，遵循[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)规则。
+> 1. 如果要设置允许使用特定分布式业务的应用名单，在调用本接口前必须已经通过[setDisallowedPolicyForAccount](./js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccountdeprecated)接口禁用了向其他设备传输数据的设备间单向传输数据的能力，否则会抛出错误码9201043。<br>
+> 2. 当向其他设备传输数据的设备间单向传输数据的能力被解除禁用时，通过本接口设置的允许使用特定分布式业务的应用名单会被同步清除。<br>
+> 3. 在多个MDM应用场景下，遵循[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)规则。
 
 **起始版本：** 26.0.0
 
@@ -3402,9 +3402,9 @@ addHideLauncherIcon(admin: Want, bundleNames: Array\<string\>): void
 >
 > 2. 如果被隐藏的应用有应用分身，会同步隐藏应用分身。
 >
-> 3、不能把桌面所有应用都添加到隐藏名单中，否则所有应用都会显示到桌面上。
+> 3. 不能把桌面所有应用都添加到隐藏名单中，否则所有应用都会显示到桌面上。
 >
-> 4、在多个MDM应用场景下，遵循[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)规则。
+> 4. 在多个MDM应用场景下，遵循[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)规则。
 
 **起始版本：** 26.0.0
 
@@ -3683,3 +3683,171 @@ async function publishFormToDesktop() {
 | abilityName | string | 否   | 否 | 卡片所属的Ability名称。|
 | name        | string | 否   | 否 | 卡片名称。|
 | dimension   | [formInfo.FormDimension](../apis-form-kit/js-apis-app-form-formInfo.md#formdimension) | 否   | 否 | 卡片尺寸。|
+
+## applicationManager.requestExemptionResource
+
+requestExemptionResource(resourceType: StandbyResourceType, bundleName: string, duration: number): void
+
+为指定应用申请待机资源豁免。申请成功后，指定应用可以在设备进入待机模式时继续使用被豁免的资源（如网络访问）。豁免不做持久化，设备重启后豁免失效。适用于企业场景中管理应用需要持续资源访问以维持服务连续性的需求。
+
+豁免为限时生效。当指定的duration到期后，系统自动释放豁免。duration未到期时再次申请豁免，生效时间以多个豁免中结束时间最晚者为准。如需提前释放豁免，可调用[applicationManager.releaseExemptionResource](#applicationmanagerreleaseexemptionresource)。
+
+> **说明：**
+>
+> 本接口需在设备待机状态下调用，而待机状态下系统进入低功耗休眠，普通定时器（如`setTimeout`、`setInterval`等）会被冻结，无法触发调用。因此，从首次申请到后续续期，均需通过[systemManager.createExactTimer](./js-apis-enterprise-systemManager.md#systemmanagercreateexacttimer)方法创建精确定时器来调用本接口。精确定时器可在设备待机休眠下唤醒执行，在其回调中调用本接口，实现待机资源豁免的首次申请和持续续期。
+
+**起始版本：** 26.0.1
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**设备行为差异：** 该接口在Phone和Tablet中可正常调用，在其他设备中调用返回801错误码。
+
+**参数：**
+
+| 参数名       | 类型                                                    | 必填 | 说明                                                         |
+| ------------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| resourceType | [StandbyResourceType](#standbyresourcetype)             | 是   | 待机资源豁免类型。当前仅支持NETWORK（值=1）。 |
+| bundleName   | string                                                  | 是   | 待申请资源豁免的指定应用包名。包名必须为设备上已安装的有效应用，不能为空字符串。 |
+| duration     | number                                                  | 是   | 豁免时长，单位为秒，必须大于0。系统最大豁免时长为3600秒，传入值超过3600时按3600秒生效。到期后系统自动释放豁免。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Possible causes:<br>1. The hardware does not support the capability.<br>2. The chip does not support the capability.<br>3. A dependent service feature is not supported. |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed.                               |
+| 9200016  | Service timeout.                                             |
+| 9201002  | The application is not installed.                            |
+
+**示例：**
+
+```ts
+import { applicationManager, systemManager } from '@kit.MDMKit';
+import { BusinessError, systemDateTime } from '@kit.BasicServicesKit';
+
+// 需根据实际情况进行替换
+let bundleName: string = 'com.example.test';
+let duration: number = 3600;
+let timerId: number = 0;
+// 精确定时器初始化配置
+let config: systemManager.ExactTimerConfig = {
+  name: 'networkExemptionTimer',
+  repeat: true,
+  interval: 3500000,
+  callback: () => {
+    try {
+      // 在精确定时器回调中调用网络资源豁免接口
+      applicationManager.requestExemptionResource(applicationManager.StandbyResourceType.NETWORK, bundleName, duration);
+      console.info('Succeeded in requesting exemption resource.');
+    } catch (err) {
+      console.error(`Failed to request exemption resource. Code is ${err.code}, message is ${err.message}`);
+    }
+  }
+};
+// 创建精确定时器
+systemManager.createExactTimer(config).then((id: number) => {
+  timerId = id;
+  console.info(`Succeeded in creating exact timer, timerId: ${timerId}.`);
+  let triggerTime: number = systemDateTime.getUptime(systemDateTime.TimeType.STARTUP) + 5000;
+  // 启动精确定时器，触发回调，申请网络资源豁免。成功后即可按需调用网络资源
+  return systemManager.startExactTimer(timerId, triggerTime);
+}).then(() => {
+  console.info('Succeeded in starting exact timer.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to create or start exact timer. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+## applicationManager.releaseExemptionResource
+
+releaseExemptionResource(resourceType: StandbyResourceType, bundleName: string): void
+
+释放指定应用的待机资源豁免。释放成功后，指定应用将恢复正常的待机资源限制。本接口用于提前释放豁免。若豁免已自动到期（duration已过），调用本接口不会返回错误，但无实际效果。
+
+resourceType和bundleName必须与之前申请豁免时一致。
+
+> **说明：**
+>
+> 如使用[systemManager.createExactTimer](./js-apis-enterprise-systemManager.md#systemmanagercreateexacttimer)精确定时器进行网络豁免的首次申请和续期，释放豁免时应同时调用[systemManager.stopExactTimer](./js-apis-enterprise-systemManager.md#systemmanagerstopexacttimer)停止定时器，并调用[systemManager.destroyExactTimer](./js-apis-enterprise-systemManager.md#systemmanagerdestroyexacttimer)销毁定时器，避免定时器资源泄漏。
+
+**起始版本：** 26.0.1
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**设备行为差异：** 该接口在Phone和Tablet中可正常调用，在其他设备中调用返回801错误码。
+
+**参数：**
+
+| 参数名       | 类型                                                    | 必填 | 说明                                                         |
+| ------------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| resourceType | [StandbyResourceType](#standbyresourcetype)             | 是   | 待机资源豁免类型。当前仅支持NETWORK（值=1）。 |
+| bundleName   | string                                                  | 是   | 待释放资源豁免的指定应用包名。包名必须为设备上已安装的有效应用，不能为空字符串。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Possible causes:<br>1. The hardware does not support the capability.<br>2. The chip does not support the capability.<br>3. A dependent service feature is not supported. |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed.                               |
+| 9200016  | Service timeout.                                             |
+| 9201002  | The application is not installed.                            |
+
+**示例：**
+
+```ts
+import { applicationManager, systemManager } from '@kit.MDMKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 需根据实际情况进行替换
+let bundleName: string = 'com.example.test';
+let timerId: number = 1;
+
+// 停止并销毁精确定时器，避免资源泄漏
+systemManager.stopExactTimer(timerId).then(() => {
+  console.info('Succeeded in stopping exact timer.');
+  return systemManager.destroyExactTimer(timerId);
+}).then(() => {
+  console.info('Succeeded in destroying exact timer.');
+  // 释放网络豁免
+  try {
+    applicationManager.releaseExemptionResource(applicationManager.StandbyResourceType.NETWORK, bundleName);
+    console.info('Succeeded in releasing exemption resource.');
+  } catch (err) {
+    console.error(`Failed to release exemption resource. Code is ${err.code}, message is ${err.message}`);
+  }
+}).catch((err: BusinessError) => {
+  console.error(`Failed to stop or destroy exact timer. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+## StandbyResourceType
+
+设备待机资源豁免类型枚举。当设备在未充电且灭屏状态下持续超过一定时长后，系统会限制网络访问等资源，同时普通定时器（如`setTimeout`、`setInterval`等）会被冻结，无法触发调用。通过申请待机资源豁免，指定应用可以在设备待机期间继续使用这些资源。
+
+**起始版本：** 26.0.1
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称     | 值 | 说明           |
+| -------- | -- | -------------- |
+| NETWORK  | 1  | 网络访问资源。申请后，指定应用在设备待机期间可以继续访问网络。适用于企业通信工具、推送通知服务、实时数据同步等需要持续网络连接的应用场景。 |

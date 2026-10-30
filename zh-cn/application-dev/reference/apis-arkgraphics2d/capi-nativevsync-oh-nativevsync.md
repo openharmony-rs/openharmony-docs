@@ -3,7 +3,7 @@
 <!--Subsystem: Graphics-->
 <!--Owner: @alexcii-->
 <!--Designer: @wh_qwe-->
-<!--Tester: @zhaoxiaoguang2-->
+<!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
 
 ```c

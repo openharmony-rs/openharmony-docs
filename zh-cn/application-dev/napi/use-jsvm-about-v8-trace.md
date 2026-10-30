@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍使用HiSmartPerf采集与解析JSVM trace的方法，包括开启web.debug.rcs开关、用hitrace抓取，以及按compile、runtime、builtin等类别过滤RCS_前缀事件。"
+keywords: [HiSmartPerf, JSVM trace, hitrace, web.debug.rcs, RCS前缀, trace点, 性能优化]
+doctype: guide
+status: active
+---
+
 # 使用HiSmartPerf采集JSVM trace
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->

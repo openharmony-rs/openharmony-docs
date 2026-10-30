@@ -60,7 +60,7 @@ requestToolPermissions(permissionQuery: PermissionQuery): Promise&lt;PermissionQ
 | 202 | The caller is not a system application. |
 | 24010000 | Invalid parameter. OperationType and operationInfo do not match, specified callerTokenId does not exist, ticketExpireTime exceeds 24h, etc. |
 | 24010001 | Service is abnormal. Possible cause: IPC failed. |
-| 24010002 | Common internal error. Possible cause: dependent service unavailable, resource access failed, etc. |
+| 24010002 | Common internal error. Possible cause: dependent service unavailable, resource access failure, etc. |
 | 24010003 | The account is not logged in, network is unavailable, timeout, etc. |
 | 24010006 | The requested operation is not allowed to be executed while the device is locked. |
 
@@ -122,9 +122,9 @@ grantToolPermissionsByUser(userAuthResult: UserAuthResult[]): Promise&lt;TicketI
 | -------- | -------- |
 | 201 | Permission denial. The interface caller does not have permission "ohos.permission.MANAGE_TOOL_RUNTIME_PERMISSIONS". |
 | 202 | The caller is not a system application. |
-| 24010000 | Invalid parameter. OperationType and operationInfo do not match, specified callerTokenId does not exist, ticketExpireTime exceeds 24h, etc. |
+| 24010000 | Invalid parameter. PermissionName exceeds 256 characters, permissionStatus is invalid, etc. |
 | 24010001 | Service is abnormal. Possible cause: IPC failed. |
-| 24010002 | Common internal error. Possible cause: dependent service unavailable, resource access failed, etc. |
+| 24010002 | Common internal error. Possible cause: dependent service unavailable, resource access failure, etc. |
 | 24010003 | The account is not logged in, network is unavailable, timeout, etc. |
 | 24010004 | Invalid permission. A permission in permissionInfo does not exist. |
 | 24010005 | Grant permission failed. The application specified by the tokenID is not allowed to be granted with the specified permission, the specified permission cannot be granted by user, etc. |
@@ -192,7 +192,7 @@ generateControllerDevicePackage(remoteUserAuthResult: RemoteUserAuthResults[]): 
 | 202 | The caller is not a system application. |
 | 24010000 | Invalid parameter. OperationType and operationInfo do not match, specified callerTokenId does not exist, etc. |
 | 24010001 | Service is abnormal. Possible cause: IPC failed. |
-| 24010002 | Common internal error. Possible cause: dependent service unavailable, resource access failed, etc. |
+| 24010002 | Common internal error. Possible cause: dependent service unavailable, resource access failure, etc. |
 | 24010003 | The account is not logged in, network is unavailable, timeout, etc. |
 
 **示例：**
@@ -260,7 +260,7 @@ generateControlledDevicePackage(permissionQuery: PermissionQuery[]): Promise&lt;
 | 202 | The caller is not a system application. |
 | 24010000 | Invalid parameter. Permission exceeds 256 characters, specified tokenId is invalid, etc. |
 | 24010001 | Service is abnormal. Possible cause: IPC failed. |
-| 24010002 | Common internal error. Possible cause: dependent service unavailable, resource access failed, etc. |
+| 24010002 | Common internal error. Possible cause: dependent service unavailable, resource access failure, etc. |
 | 24010003 | The account is not logged in, network is unavailable, timeout, etc. |
 
 **示例：**
@@ -328,7 +328,7 @@ verifyControllerDevicePackage(ticketInfo: RemoteAuthPackage[], remoteInfo: Remot
 | 202 | The caller is not a system application. |
 | 24010000 | Invalid parameter. Format of ticketInfo or remoteInfo is invalid. |
 | 24010001 | Service is abnormal. Possible cause: IPC failed. |
-| 24010002 | Common internal error. Possible cause: dependent service unavailable, resource access failed, etc. |
+| 24010002 | Common internal error. Possible cause: dependent service unavailable, resource access failure, etc. |
 | 24010003 | The account is not logged in, network is unavailable, timeout, etc. |
 
 **示例：**
@@ -390,7 +390,7 @@ verifyControlledDevicePackage(ticketInfo: RemoteAuthPackage[]): Promise&lt;boole
 | 202 | The caller is not a system application. |
 | 24010000 | Invalid parameter. Format of ticketInfo is invalid. |
 | 24010001 | Service is abnormal. Possible cause: IPC failed. |
-| 24010002 | Common internal error. Possible cause: dependent service unavailable, resource access failed, etc. |
+| 24010002 | Common internal error. Possible cause: dependent service unavailable, resource access failure, etc. |
 | 24010003 | The account is not logged in, network is unavailable, timeout, etc. |
 
 **示例：**
@@ -440,7 +440,7 @@ getRemoteGrantStatus(): Promise&lt;RemoteGrantStatus&gt;
 | 201 | Permission denial. The interface caller does not have permission "ohos.permission.QUERY_TOOL_PERMISSIONS". |
 | 202 | The caller is not a system application. |
 | 24010001 | Service is abnormal. Possible cause: IPC failed. |
-| 24010002 | Common internal error. Possible cause: dependent service unavailable, resource access failed, etc. |
+| 24010002 | Common internal error. Possible cause: dependent service unavailable, resource access failure, etc. |
 
 **示例：**
 
@@ -491,7 +491,7 @@ updateRemoteGrantStatus(remoteGrantStatus: RemoteGrantStatus): Promise&lt;void&g
 | 202 | The caller is not a system application. |
 | 24010000 | Invalid parameter. RemoteGrantStatus is invalid. |
 | 24010001 | Service is abnormal. Possible cause: IPC failed. |
-| 24010002 | Common internal error. Possible cause: dependent service unavailable, resource access failed, etc. |
+| 24010002 | Common internal error. Possible cause: dependent service unavailable, resource access failure, etc. |
 
 **示例：**
 
@@ -603,7 +603,7 @@ abilityToolAccessCtrl.updateRemoteGrantStatus(abilityToolAccessCtrl.RemoteGrantS
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | permission | string | 否 | 否 | 权限名称，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。 |
-| permissionStatus | [PermissionStatus](js-apis-abilityAccessCtrl.md#permissionstatus20) | 否 | 否 | 权限状态。 |
+| permissionStatus | [abilityAccessCtrl.PermissionStatus](js-apis-abilityAccessCtrl.md#permissionstatus20) | 否 | 否 | 权限状态。 |
 | authStatusInfo | [AuthStatusInfo](#authstatusinfo) | 否 | 是 | 授权状态信息。<br>该项作为出参；当PermissionInfo作为入参时，该项无需传入，如果传入会被忽略。默认值为undefined。|
 
 ## AuthStatusInfo

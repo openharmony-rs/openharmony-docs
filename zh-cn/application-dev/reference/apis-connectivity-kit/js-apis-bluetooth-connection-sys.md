@@ -1037,6 +1037,65 @@ try {
 ```
 
 
+## connection.getBleMacByBrMac
+
+getBleMacByBrMac(brMac: string): string
+
+根据已配对的对端设备的实际BR地址，获取该设备的实际BLE地址。
+
+当双模设备的BR地址与BLE地址不同时，该设备会在已配对列表中呈现为BR和BLE两个条目，本接口用于识别这两个条目是否属于同一设备。参数brMac是某个已配对远程设备的实际BR地址，返回值则是同一远程设备的实际BLE地址。
+
+**起始版本**： 26.1.0
+
+**模型约束**： 此接口仅可在Stage模型下使用。
+
+**系统接口**： 此接口为系统接口。
+
+**需要权限**： ohos.permission.ACCESS_BLUETOOTH
+
+**系统能力**： SystemCapability.Communication.Bluetooth.Core
+
+**参数**：
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| brMac | string | 是 | 表示已配对的对端设备的实际BR地址，例如"11:22:33:AA:BB:FF"。 |
+
+**返回值**：
+
+| 类型 | 说明 |
+| ---- | ---- |
+| string | 表示对端设备的实际BLE地址，例如"11:22:33:AA:BB:FF"。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+|201 | Permission denied. |
+|202 | Non-system applications are not allowed to use system APIs. |
+|801 | Capability not supported. |
+|2900003 | Bluetooth disabled. |
+|2900016 | Device unpaired. |
+|2900017 | No BLE address is associated with the input BR address. |
+|2900099 | Operation failed. |
+
+**示例**：
+
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+    let bleMac: string = connection.getBleMacByBrMac('11:22:33:AA:BB:FF'); // 入参为已配对的对端设备的实际BR地址
+    console.info(`Succeeded in getting bleMac, bleMac is ${bleMac}`);
+} catch (error) {
+    const err: BusinessError = error as BusinessError;
+    console.error(`Failed to get bleMac by brMac. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
+
 ## PinRequiredParam
 
 描述配对请求参数。

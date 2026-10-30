@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍使用Node-API的napi_load_module接口在主线程中加载模块，加载后可获取模块导出的变量和函数，适用于动态加载ArkTS模块的场景。"
+keywords: [Node-API, 模块加载, napi_load_module, 主线程, 动态加载, 模块导出, napi_get_named_property]
+doctype: guide
+status: active
+---
+
 # 使用Node-API接口在主线程中进行模块加载
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
@@ -324,7 +332,7 @@ napi_status napi_load_module(napi_env env, const char* path, napi_value* result)
     }
     ```
 
-2. 在使用library的模块中，对build-profile.json5进行配置：
+2. 在使用sharedlibrary的模块中，对build-profile.json5进行配置：
 
     ```json
     {

@@ -1146,7 +1146,7 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 ## ohos.permission.kernel.LOAD_INDEPENDENT_LIBRARY
 
-允许应用加载二进制证书签名的共享库。
+允许应用加载二进制证书签名、调试证书签名、自签名的共享库。
 
 <!--RP61--><!--RP61End-->
 
@@ -1674,6 +1674,20 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 **起始版本**：26.0.1
 
+## ohos.permission.kernel.LOAD_CERTSIGN_LIBRARY
+ 
+允许应用加载二进制证书签名与调试证书签名的共享库。
+ 
+<!--RP109--><!--RP109End-->
+ 
+**权限级别**：system_basic
+ 
+**授权方式**：系统授权（system_grant）
+ 
+**支持设备**：PC/2in1
+ 
+**起始版本**：26.0.1
+
 ## ohos.permission.kernel.ALLOW_PTRACE_READ
 
 允许应用通过PTRACE读能力获取应用内进程的寄存器及内存信息。
@@ -1746,4 +1760,34 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 **支持设备**：PC/2in1 | Tablet
 
+**起始版本**：26.0.1
+
+## ohos.permission.INPUT_RECORDING
+
+允许应用监听输入事件。
+
+获取该权限后，应用可实现输入事件的录制和回放功能。
+
+<!--RP116--><!--RP116End-->
+
+**权限级别**：system_basic
+
+**授权方式**：手动设置授权（manual_settings）
+
+**支持设备**：PC/2in1
+
+**起始版本**：26.1.0
+
+## ohos.permission.ACCESS_BOARD_INFO
+ 
+允许应用获取设备硬件信息。
+
+<!--RP118--><!--RP118End-->
+ 
+**权限级别**：system_basic
+ 
+**授权方式**：系统授权（system_grant）
+ 
+**支持设备**：PC/2in1
+ 
 **起始版本**：26.0.1

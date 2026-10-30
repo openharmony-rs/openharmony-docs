@@ -6,7 +6,7 @@
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
 
-本模块提供系统管理能力，包括NTP时间服务器设置、OTA升级策略管理、系统更新管理、按键事件处理策略、日志收集、设备激活锁管理等功能。适用于企业设备管理场景，帮助企业管理员统一管控设备系统配置、升级策略和安全策略，提升企业设备管理效率和安全性。
+本模块提供系统管理能力，包括NTP时间服务器设置、OTA升级策略管理、系统更新管理、按键事件处理策略、日志收集、设备激活锁管理、音量管理等功能。适用于企业设备管理场景，帮助企业管理员统一管控设备系统配置、升级策略和安全策略，提升企业设备管理效率和安全性。
 
 > **说明：**
 > 
@@ -638,7 +638,7 @@ try {
 
 ## systemManager.setLocalHotaDomain
 
-setLocalHotaDomain(admin: Want, domain: string): void
+setLocalHotaDomain(domain: string): void
 
 设置设备本机HOTA（Huawei Over-the-Air）域名。设置成功后，系统将使用指定的HOTA域名进行升级。适用于企业内网升级场景，帮助企业管理员指定设备本机HOTA域名，使设备能够从企业指定的升级服务器获取升级包，避免通过公网升级，提升升级的安全性和可控性。调用本接口前，可通过[common.isFeatureSupported](./js-apis-enterprise-common.md#commonisfeaturesupported)接口（入参为common.ManagedFeature.LOCAL_HOTA_DOMAIN）查询设备是否支持本机HOTA域名特性。
 
@@ -680,7 +680,6 @@ HOTA域名使用流程：
 
 | 参数名   | 类型                                  | 必填   | 说明      |
 | ----- | ----------------------------------- | ---- | ------- |
-| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | domain | string | 是 | 本机HOTA域名，具体校验规则详见接口说明。 |
 
 **错误码**：
@@ -692,6 +691,7 @@ HOTA域名使用流程：
 | 9200001 | The application is not an administrator application of the device. |
 | 9200002 | The administrator application does not have permission to manage the device. |
 | 9200012 | Parameter verification failed. |
+| 9200016 | Service timeout. |
 | 9200018 | This device is not an enterprise device. |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
@@ -700,20 +700,14 @@ HOTA域名使用流程：
 
 ```ts
 import { common, systemManager } from '@kit.MDMKit';
-import { Want } from '@kit.AbilityKit';
 
-let wantTemp: Want = {
-  // 需根据实际情况进行替换
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
 // 需根据实际情况进行替换
 let domain: string = "https://www.hotaExample.com";
 // 调用本接口前，先查询设备是否支持本机HOTA域名特性
 let isSupported: boolean = common.isFeatureSupported(common.ManagedFeature.LOCAL_HOTA_DOMAIN);
 if (isSupported) {
   try {
-    systemManager.setLocalHotaDomain(wantTemp, domain);
+    systemManager.setLocalHotaDomain(domain);
     console.info('Succeeded in setting local HOTA domain.');
   } catch (err) {
     console.error(`Failed to set local HOTA domain. Code is ${err.code}, message is ${err.message}`);
@@ -725,7 +719,7 @@ if (isSupported) {
 
 ## systemManager.getLocalHotaDomain
 
-getLocalHotaDomain(admin: Want): string
+getLocalHotaDomain(): string
 
 获取设备本机HOTA（Huawei Over-the-Air）域名。适用于需要查询当前设备配置的本机HOTA域名的场景。
 
@@ -747,12 +741,6 @@ getLocalHotaDomain(admin: Want): string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**参数：**
-
-| 参数名 | 类型                                                    | 必填 | 说明                   |
-| ------ | ------------------------------------------------------- | ---- | ---------------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-
 **返回值：**
 
 | 类型   | 说明                                |
@@ -767,6 +755,7 @@ getLocalHotaDomain(admin: Want): string
 | -------- | ------------------------------------------------------------ |
 | 9200001  | The application is not an administrator application of the device. |
 | 9200002  | The administrator application does not have permission to manage the device. |
+| 9200016  | Service timeout. |
 | 9200018  | This device is not an enterprise device. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 
@@ -774,15 +763,9 @@ getLocalHotaDomain(admin: Want): string
 
 ```ts
 import { systemManager } from '@kit.MDMKit';
-import { Want } from '@kit.AbilityKit';
 
-let wantTemp: Want = {
-  // 需根据实际情况进行替换
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
 try {
-  let domain: string = systemManager.getLocalHotaDomain(wantTemp);
+  let domain: string = systemManager.getLocalHotaDomain();
   console.info(`Succeeded in getting local HOTA domain: ${domain}`);
 } catch (err) {
   console.error(`Failed to get local HOTA domain. Code is ${err.code}, message is ${err.message}`);
@@ -1921,6 +1904,7 @@ addAllowedPrinterIPAddressesForDevice(ipAddresses: Array&lt;string&gt;): void
 | 9200002  | The administrator application does not have permission to manage the device. |
 | 9200010  | A conflict policy has been configured.|
 | 9200012  | Parameter verification failed. |
+| 9200016  | Service timeout. |
 | 9200019  | The policy list has exceeded the limit. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
@@ -1981,7 +1965,8 @@ removeAllowedPrinterIPAddressesForDevice(ipAddresses: Array&lt;string&gt;): void
 | -------- | ------------------------------------------------------------ |
 | 9200001  | The application is not an administrator application of the device. |
 | 9200002  | The administrator application does not have permission to manage the device. | 
-| 9200012  | Parameter verification failed. |                
+| 9200012  | Parameter verification failed. |
+| 9200016  | Service timeout. |                
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 
@@ -2042,6 +2027,7 @@ getAllowedPrinterIPAddressesForDevice(queryPolicy?: common.QueryPolicy): Array&l
 | -------- | ------------------------------------------------------------ |
 | 9200001  | The application is not an administrator application of the device. |
 | 9200002  | The administrator application does not have permission to manage the device. |
+| 9200016  | Service timeout. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 
 **示例：**
@@ -2099,6 +2085,7 @@ addAllowedPrinterIPAddressesForAccount(ipAddresses: Array&lt;string&gt;): void
 | 9200002  | The administrator application does not have permission to manage the device. |
 | 9200010  | A conflict policy has been configured.|
 | 9200012  | Parameter verification failed. |
+| 9200016  | Service timeout. |
 | 9200019  | The policy list has exceeded the limit. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
@@ -2161,7 +2148,8 @@ removeAllowedPrinterIPAddressesForAccount(ipAddresses: Array&lt;string&gt;): voi
 | -------- | ------------------------------------------------------------ |
 | 9200001  | The application is not an administrator application of the device. |
 | 9200002  | The administrator application does not have permission to manage the device. | 
-| 9200012  | Parameter verification failed. |                
+| 9200012  | Parameter verification failed. | 
+| 9200016  | Service timeout. |               
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 
@@ -2222,6 +2210,7 @@ getAllowedPrinterIPAddressesForAccount(queryPolicy?: common.QueryPolicy): Array&
 | -------- | ------------------------------------------------------------ |
 | 9200001  | The application is not an administrator application of the device. |
 | 9200002  | The administrator application does not have permission to manage the device. |
+| 9200016  | Service timeout. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 
 **示例：**
@@ -2252,6 +2241,8 @@ createExactTimer(config: ExactTimerConfig): Promise&lt;number&gt;
 > 3. 若创建的定时器名称与已存在的定时器名称相同，则先前的同名定时器将被自动停止并销毁，新创建的定时器将被分配新的定时器ID，与被销毁的定时器ID不同。
 >
 > 4. 单个设备管理应用最多可创建5个同时生效的定时器，超出上限时返回9201053错误码。
+>
+> 5. 应用进程长时间后台运行时可能被系统冻结或终止，导致定时器被销毁，可通过[addFreezeExemptedApps](./js-apis-enterprise-applicationManager.md#applicationmanageraddfreezeexemptedapps22)接口将应用添加至防冻结名单以避免此问题。
 
 **起始版本：** 26.0.1
 
@@ -2481,6 +2472,108 @@ systemManager.destroyExactTimer(timerId).then(() => {
 }).catch((err: BusinessError) => {
   console.error(`Failed to destroy exact timer. Code: ${err.code}, message: ${err.message}`);
 });
+```
+
+## systemManager.setVolumeDegree
+
+setVolumeDegree(volumeType: AudioVolumeType, degree: number): void
+
+设置当前用户指定音量类型的音量值。适用于企业统一管控设备音量的场景，例如批量调整终端设备的媒体播放音量。
+
+**起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名     | 类型                                 | 必填 | 说明                                                         |
+| ---------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
+| volumeType | [AudioVolumeType](#audiovolumetype) | 是   | 音量类型。 |
+| degree     | number                               | 是   | 音量值，取值范围：0～100。取值超出该范围时返回9200012错误码。在耳机佩戴状态下，由于安规限制，如果设置值超过当前设备安规要求的最大值，则设置为当前安规要求的最大值，并触发系统弹框提醒用户。对于PC/2in1设备，则不会显示该弹窗。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed.                               |
+| 9200016  | Service timeout.                                             |
+
+**示例：**
+
+```ts
+import { systemManager } from '@kit.MDMKit';
+
+// 需根据实际情况进行替换
+let volumeType: systemManager.AudioVolumeType = systemManager.AudioVolumeType.STREAM_MUSIC;
+let degree: number = 50;
+try {
+  systemManager.setVolumeDegree(volumeType, degree);
+  console.info('Succeeded in setting volume degree.');
+} catch (err) {
+  console.error(`Failed to set volume degree. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## systemManager.getVolumeDegree
+
+getVolumeDegree(volumeType: AudioVolumeType): number
+
+获取当前用户指定音量类型的音量值。适用于企业设备管理应用在下发音量策略前确认设备当前音量状态的场景。
+
+**起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名     | 类型                                 | 必填 | 说明                                                         |
+| ---------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
+| volumeType | [AudioVolumeType](#audiovolumetype) | 是   | 音量类型。 |
+
+**返回值：**
+
+| 类型   | 说明                                                         |
+| ------ | ------------------------------------------------------------ |
+| number | 指定音量类型的音量值，取值范围：0～100。                     |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed.                               |
+| 9200016  | Service timeout.                                             |
+
+**示例：**
+
+```ts
+import { systemManager } from '@kit.MDMKit';
+
+// 需根据实际情况进行替换
+let volumeType: systemManager.AudioVolumeType = systemManager.AudioVolumeType.STREAM_MUSIC;
+try {
+  let degree: number = systemManager.getVolumeDegree(volumeType);
+  console.info(`Succeeded in getting volume degree, degree is ${degree}.`);
+} catch (err) {
+  console.error(`Failed to get volume degree. Code is ${err.code}, message is ${err.message}`);
+}
 ```
 
 ## SystemUpdateInfo
@@ -2774,3 +2867,17 @@ callback(): void
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+## AudioVolumeType
+
+音量类型。通过[setVolumeDegree](#systemmanagersetvolumedegree)、[getVolumeDegree](#systemmanagergetvolumedegree)接口指定需要设置或查询的音量类型。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称         | 值  | 说明       |
+| ------------ | --- | ---------- |
+| STREAM_MUSIC | 1   | 媒体音量。 |

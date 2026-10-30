@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍ArkTS异步等待（ConditionVariable）能力，通过ConditionVariable对象实现多线程异步任务的等待与唤醒机制，支持wait、waitFor超时等待及notifyAll、notifyOne唤醒操作，解决跨线程任务时序控制问题。"
+keywords: [异步等待 ,ConditionVariable, 等待唤醒, 多线程时序控制, notifyAll, notifyOne, wait, waitFor, 超时等待]
+doctype: guide
+status: active
+---
+
 # 异步等待
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->

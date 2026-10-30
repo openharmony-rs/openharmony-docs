@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍OpenHarmony Node-API机制，基于Node.js规范扩展开发，提供ArkTS/JS与C/C++模块间的跨语言交互能力，适用于性能敏感和底层系统调用场景。"
+keywords: [Node-API, 跨语言交互, C/C++交互, 模块注册, ArkTS, napi_env, Native模块]
+doctype: guide
+status: active
+---
+
 # Node-API简介
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->

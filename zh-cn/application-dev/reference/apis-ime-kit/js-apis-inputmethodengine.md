@@ -458,7 +458,7 @@ on(type: 'inputStop', callback: () => void): void
 
 订阅停止输入法应用事件。使用callback异步回调。
 
-使用场景：输入法应用需要在编辑框失去焦点或用户切换输入法时，执行清理操作（如隐藏面板、释放资源）。
+使用场景：输入法应用需要在用户切换输入法时，执行清理操作（如隐藏面板、释放资源）。
 
 使用后效果：当输入法应用被停止绑定时触发回调。输入法应用应在回调中隐藏面板、取消事件订阅、释放InputClient相关资源。
 
@@ -3360,6 +3360,7 @@ InputClient是输入法客户端对象，代表当前绑定到输入法应用的
 - 编辑框属性：通过[getEditorAttribute](#geteditorattribute9)/[getEditorAttributeSync](#geteditorattributesync10)获取编辑框属性信息（输入类型、回车键类型等），据此调整键盘布局。
 - 文本预览：通过[setPreviewText](#setpreviewtext12)/[setPreviewTextSync](#setpreviewtextsync12)设置预览文本，通过[finishTextPreview](#finishtextpreview12)/[finishTextPreviewSync](#finishtextpreviewsync12)结束文本预览。
 - 私有通信：通过[sendPrivateCommand](#sendprivatecommand12)向应用发送私有命令，通过[sendMessage](#sendmessage15)/[recvMessage](#recvmessage15)进行消息通信。
+- 富文本获取：通过[getLeftRichText](#getleftrichtext)/[getLeftRichTextSync](#getleftrichtextsync)获取光标前的富文本内容，通过[getRightRichText](#getrightrichtext)/[getRightRichTextSync](#getrightrichtextsync)获取光标后的富文本内容，包括编辑框中的纯文本、图片、符号等多种span类型的富文本数据。
 
 注意事项：
 - InputClient实例与当前绑定的编辑框关联，当编辑框失去焦点或输入法解绑时，该实例可能失效。
@@ -5210,6 +5211,481 @@ inputClient.on('attachOptionsDidChange', attachOptionsDidChangeCallback);
 console.info(`attachOptionsDidChangeCallback subscribed to attachOptionsDidChange`);
 inputClient.off('attachOptionsDidChange', attachOptionsDidChangeCallback);
 console.info(`attachOptionsDidChange unsubscribed from attachOptionsDidChange`);
+```
+
+### getLeftRichText
+
+getLeftRichText(length: number): Promise&lt;InputMethodRichText&gt;
+
+获取光标前指定长度的富文本内容。使用Promise异步回调。
+
+使用场景：获取编辑框中光标前的富文本内容（包括纯文本、图片、符号等），用于输入法应用分析已输入的多模态内容，提供更精准的智能补全和输入建议。
+
+使用后效果：成功时返回光标前指定长度的[InputMethodRichText](#inputmethodrichtext)对象，输入法应用可通过该对象提取纯文本或遍历span数组获取各类型内容。
+
+> **说明：**
+>
+> 如果当前绑定输入法的编辑框是ArkUI富文本组件（如RichEditor），则返回对应获取区间的富文本内容；如果绑定的不是富文本组件，则返回的getSpans()数组中只包含SpanType.TEXT类型的span，不包含IMAGE等其他类型的span。
+>
+> 可获取的富文本总大小最大为128KB，超过该限制将导致请求失败。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| length | number | 是 | 文本长度。不能小于0，取值范围为[0, 4096]的整数。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;[InputMethodRichText](#inputmethodrichtext)&gt; | Promise对象，返回光标前指定长度的富文本。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let length: number = 5;
+inputClient?.getLeftRichText(length).then((richText: inputMethodEngine.InputMethodRichText) => {
+  let plainText: string = richText.getString();
+  console.info(`Succeeded in getting left rich text, plainText: ${plainText}`);
+  let spans: Array<inputMethodEngine.RichTextSpan> = richText.getSpans();
+  for (let i = 0; i < spans.length; i++) {
+    let span = spans[i];
+    let type: inputMethodEngine.SpanType = span.getType();
+    let content: string = span.getContent();
+    let range: inputMethodEngine.Range = span.getRange();
+    console.info(`span[${i}]: type=${type}, content=${content}, range={start:${range.start}, end:${range.end}}`);
+  }
+}).catch((err: BusinessError) => {
+  console.error(`Failed to getLeftRichText. Code is ${err.code}, message is ${err.message}`);
+});
+```
+
+### getLeftRichTextSync
+
+getLeftRichTextSync(length: number): InputMethodRichText
+
+获取光标前指定长度的富文本内容。
+
+> **说明：**
+>
+> 同步接口阻塞主线程，容易影响UI交互，需谨慎使用。建议优先使用对应的异步接口[getLeftRichText](#getleftrichtext)。
+>
+> 如果当前绑定输入法的编辑框是ArkUI富文本组件（如RichEditor），则返回对应获取区间的富文本内容；如果绑定的不是富文本组件，则返回的getSpans()数组中只包含SpanType.TEXT类型的span，不包含IMAGE等其他类型的span。
+>
+> 可获取的富文本总大小最大为128KB，超过该限制将导致请求失败。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| length | number | 是 | 文本长度。不能小于0，取值范围为[0, 4096]的整数。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| [InputMethodRichText](#inputmethodrichtext) | 光标前指定长度的富文本。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let length: number = 5;
+  let richText: inputMethodEngine.InputMethodRichText = inputClient!.getLeftRichTextSync(length);
+  let plainText: string = richText.getString();
+  console.info(`Succeeded in getting left rich text sync, plainText: ${plainText}`);
+  let spans: Array<inputMethodEngine.RichTextSpan> = richText.getSpans();
+  for (let i = 0; i < spans.length; i++) {
+    let span = spans[i];
+    let type: inputMethodEngine.SpanType = span.getType();
+    let content: string = span.getContent();
+    let range: inputMethodEngine.Range = span.getRange();
+    console.info(`span[${i}]: type=${type}, content=${content}, range={start:${range.start}, end:${range.end}}`);
+  }
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to getLeftRichTextSync. Code is ${error.code}, message is ${error.message}`);
+}
+```
+
+### getRightRichText
+
+getRightRichText(length: number): Promise&lt;InputMethodRichText&gt;
+
+获取光标后指定长度的富文本内容。使用Promise异步回调。
+
+使用场景：获取编辑框中光标后的富文本内容（包括纯文本、图片、符号等），用于输入法应用分析光标后的多模态内容，提供更精准的智能补全和输入建议。
+
+使用后效果：成功时返回光标后指定长度的[InputMethodRichText](#inputmethodrichtext)对象，输入法应用可通过该对象提取纯文本或遍历span数组获取各类型内容。
+
+> **说明：**
+>
+> 如果当前绑定输入法的编辑框是ArkUI富文本组件（如RichEditor），则返回对应获取区间的富文本内容；如果绑定的不是富文本组件，则返回的getSpans()数组中只包含SpanType.TEXT类型的span，不包含IMAGE等其他类型的span。
+>
+> 可获取的富文本总大小最大为128KB，超过该限制将导致请求失败。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| length | number | 是 | 文本长度。不能小于0，取值范围为[0, 4096]的整数。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;[InputMethodRichText](#inputmethodrichtext)&gt; | Promise对象，返回光标后指定长度的富文本。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let length: number = 5;
+inputClient?.getRightRichText(length).then((richText: inputMethodEngine.InputMethodRichText) => {
+  let plainText: string = richText.getString();
+  console.info(`Succeeded in getting right rich text, plainText: ${plainText}`);
+  let spans: Array<inputMethodEngine.RichTextSpan> = richText.getSpans();
+  for (let i = 0; i < spans.length; i++) {
+    let span = spans[i];
+    let type: inputMethodEngine.SpanType = span.getType();
+    let content: string = span.getContent();
+    let range: inputMethodEngine.Range = span.getRange();
+    console.info(`span[${i}]: type=${type}, content=${content}, range={start:${range.start}, end:${range.end}}`);
+  }
+}).catch((err: BusinessError) => {
+  console.error(`Failed to getRightRichText. Code is ${err.code}, message is ${err.message}`);
+});
+```
+
+### getRightRichTextSync
+
+getRightRichTextSync(length: number): InputMethodRichText
+
+获取光标后指定长度的富文本内容。
+
+> **说明：**
+>
+> 同步接口阻塞主线程，容易影响UI交互，需谨慎使用。建议优先使用对应的异步接口[getRightRichText](#getrightrichtext)。
+>
+> 如果当前绑定输入法的编辑框是ArkUI富文本组件（如RichEditor），则返回对应获取区间的富文本内容；如果绑定的不是富文本组件，则返回的getSpans()数组中只包含SpanType.TEXT类型的span，不包含IMAGE等其他类型的span。
+>
+> 可获取的富文本总大小最大为128KB，超过该限制将导致请求失败。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| length | number | 是 | 文本长度。不能小于0，取值范围为[0, 4096]的整数。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| [InputMethodRichText](#inputmethodrichtext) | 光标后指定长度的富文本。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let length: number = 5;
+  let richText: inputMethodEngine.InputMethodRichText = inputClient!.getRightRichTextSync(length);
+  let plainText: string = richText.getString();
+  console.info(`Succeeded in getting right rich text sync, plainText: ${plainText}`);
+  let spans: Array<inputMethodEngine.RichTextSpan> = richText.getSpans();
+  for (let i = 0; i < spans.length; i++) {
+    let span = spans[i];
+    let type: inputMethodEngine.SpanType = span.getType();
+    let content: string = span.getContent();
+    let range: inputMethodEngine.Range = span.getRange();
+    console.info(`span[${i}]: type=${type}, content=${content}, range={start:${range.start}, end:${range.end}}`);
+  }
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to getRightRichTextSync. Code is ${error.code}, message is ${error.message}`);
+}
+```
+
+## SpanType
+
+枚举，定义富文本中span的类型。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+| 名称 | 值 | 说明 |
+| -------- | -- | -------- |
+| TEXT | 0 | 纯文本。|
+| IMAGE | 1 | 图片。|
+| SYMBOL | 2 | 符号。|
+| CUSTOM | 3 | 自定义。|
+
+## InputMethodRichText
+
+定义富文本内容。输入法应用通过[getLeftRichText](#getleftrichtext)/[getLeftRichTextSync](#getleftrichtextsync)/[getRightRichText](#getrightrichtext)/[getRightRichTextSync](#getrightrichtextsync)获取该对象实例后，可调用下列方法提取纯文本或遍历span数组。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+### getString
+
+getString(): string
+
+从富文本中提取纯文本。
+
+> **说明：**
+>
+> 提取规则因[SpanType](#spantype)类型而异：TEXT按原始文本内容正常提取；IMAGE和CUSTOM各替换为一个占位符；SYMBOL替换为两个占位符。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| string | 从富文本中提取的纯文本。 |
+
+**示例：**
+
+```ts
+inputMethodEngine.getInputMethodAbility()!
+  .on('inputStart',
+    (keyboardController: inputMethodEngine.KeyboardController, inputClient: inputMethodEngine.InputClient) => {
+      let length: number = 5;
+      let richText: inputMethodEngine.InputMethodRichText = inputClient!.getLeftRichTextSync(length);
+      let plainText: string = richText.getString();
+      console.info(`plainText: ${plainText}`);
+    });
+```
+
+### getSpans
+
+getSpans(): Array&lt;RichTextSpan&gt;
+
+获取组成富文本的span数组。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Array&lt;[RichTextSpan](#richtextspan)&gt; | 富文本中的span数组。 |
+
+**示例：**
+
+```ts
+inputMethodEngine.getInputMethodAbility()!
+  .on('inputStart',
+    (keyboardController: inputMethodEngine.KeyboardController, inputClient: inputMethodEngine.InputClient) => {
+      let length: number = 5;
+      let richText: inputMethodEngine.InputMethodRichText = inputClient!.getLeftRichTextSync(length);
+      let spans: Array<inputMethodEngine.RichTextSpan> = richText.getSpans();
+      for (let i = 0; i < spans.length; i++) {
+        let span = spans[i];
+        let type: inputMethodEngine.SpanType = span.getType();
+        let content: string = span.getContent();
+        let range: inputMethodEngine.Range = span.getRange();
+        console.info(`span[${i}]: type=${type}, content=${content}, range={start:${range.start}, end:${range.end}}`);
+      }
+    });
+```
+
+## RichTextSpan
+
+定义富文本中的一个span。通过该对象可获取span的类型、内容和在富文本中的范围。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+### getType
+
+getType(): SpanType
+
+获取span的类型。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| [SpanType](#spantype) | span的类型。 |
+
+**示例：**
+
+```ts
+inputMethodEngine.getInputMethodAbility()!
+  .on('inputStart',
+    (keyboardController: inputMethodEngine.KeyboardController, inputClient: inputMethodEngine.InputClient) => {
+      let length: number = 5;
+      let richText: inputMethodEngine.InputMethodRichText = inputClient!.getLeftRichTextSync(length);
+      let spans: Array<inputMethodEngine.RichTextSpan> = richText.getSpans();
+      for (let i = 0; i < spans.length; i++) {
+        let type: inputMethodEngine.SpanType = spans[i].getType();
+        console.info(`span[${i}] type: ${type}`);
+      }
+    });
+```
+
+### getContent
+
+getContent(): string
+
+获取span的内容。
+
+> **说明：**
+>
+> 如果span类型为[SpanType.IMAGE](#spantype)，则content为图片插入到ArkUI富文本组件时携带的标签信息，即[RichEditorImageSpanOptions](../apis-arkui/arkui-ts/ts-basic-components-richeditor.md#richeditorimagespanoptions)中的imageTag属性。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| string | span的内容。 |
+
+**示例：**
+
+```ts
+inputMethodEngine.getInputMethodAbility()!
+  .on('inputStart',
+    (keyboardController: inputMethodEngine.KeyboardController, inputClient: inputMethodEngine.InputClient) => {
+      let length: number = 5;
+      let richText: inputMethodEngine.InputMethodRichText = inputClient!.getLeftRichTextSync(length);
+      let spans: Array<inputMethodEngine.RichTextSpan> = richText.getSpans();
+      for (let i = 0; i < spans.length; i++) {
+        let content: string = spans[i].getContent();
+        console.info(`span[${i}] content: ${content}`);
+      }
+    });
+```
+
+### getRange
+
+getRange(): Range
+
+获取span在富文本中的范围，由起始位置和结束位置表示。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| [Range](#range10) | span在富文本中的范围。 |
+
+**示例：**
+
+```ts
+inputMethodEngine.getInputMethodAbility()!
+  .on('inputStart',
+    (keyboardController: inputMethodEngine.KeyboardController, inputClient: inputMethodEngine.InputClient) => {
+      let length: number = 5;
+      let richText: inputMethodEngine.InputMethodRichText = inputClient!.getLeftRichTextSync(length);
+      let spans: Array<inputMethodEngine.RichTextSpan> = richText.getSpans();
+      for (let i = 0; i < spans.length; i++) {
+        let range: inputMethodEngine.Range = spans[i].getRange();
+        console.info(`span[${i}] range: {start:${range.start}, end:${range.end}}`);
+      }
+    });
 ```
 
 ## CapitalizeMode<sup>20+</sup>

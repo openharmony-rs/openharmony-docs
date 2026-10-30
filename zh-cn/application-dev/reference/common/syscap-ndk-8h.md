@@ -16,7 +16,9 @@
 
 **起始版本：** 8
 
-**相关模块：** [Init](init.md)
+**库：** libdeviceinfo_ndk.z.so
+
+**相关模块：** [SyscapNdk](capi-syscap-ndk.md)
 
 ## 汇总
 
@@ -45,9 +47,9 @@ bool canIUse (const char * cap)
 
 **参数：**
 
-| 名称 | 描述 | 
+| 参数项 | 描述 | 
 | -------- | -------- |
-| cap | 待查询的系统能力名称。 | 
+| const char * cap | 待查询的系统能力名称。 | 
 
 **返回：**
 

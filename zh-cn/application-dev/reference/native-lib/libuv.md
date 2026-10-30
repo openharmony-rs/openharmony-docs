@@ -1228,7 +1228,8 @@ int uv_async_send(uv_async_t* handle)
   handle：线程间通信句柄。
 
   返回：成功，返回0。失败，返回错误码。
-> 说明
+
+> **说明：**
 >
 > 1. uv_async_t从调用`uv_async_init`开始后就一直处于活跃状态，除非用`uv_close`将其关闭。
 >

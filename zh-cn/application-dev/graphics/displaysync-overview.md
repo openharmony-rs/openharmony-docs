@@ -1,9 +1,17 @@
+---
+kits: ["ArkGraphics 2D / 方舟2D图形服务"]
+description: "介绍可变帧率能力的基本概念与运作机制，说明基于LTPO屏幕如何在性能体验与功耗间取得平衡，涵盖动画、UI绘制、自绘制内容及非UI线程等多种帧率配置场景。"
+keywords: [可变帧率, LTPO, DisplaySync, 期望帧率, 控帧系统, 绘制帧率, 刷新率, 帧率]
+doctype: guide
+status: active
+---
+
 # 可变帧率简介
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @wh_qwe-->
 <!--Designer: @wh_qwe-->
-<!--Tester: @zhaoxiaoguang2-->
+<!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
 
 随着设备屏幕的不断演进，当前主流设备采用LTPO屏幕，此类屏幕支持在多个档位之间切换屏幕帧率。

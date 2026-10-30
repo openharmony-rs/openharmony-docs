@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍使用Node-API接口进行ArrayBuffer相关开发，包括创建、获取信息、分离和判断ArrayBuffer，适用于文件I/O和网络传输等二进制数据处理场景。"
+keywords: [Node-API, ArrayBuffer, 二进制数据, napi_create_arraybuffer, napi_detach_arraybuffer, 缓冲区, 数据指针]
+doctype: guide
+status: active
+---
+
 # 使用Node-API接口进行ArrayBuffer相关开发
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->

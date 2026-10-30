@@ -5,7 +5,7 @@
 <!--Designer: @weixin_41398971-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=c0281edace533769c93c548e38cc3e71b71b9db6 translatedAt=2026-09-20T02:36:14.993Z pushedAt=2026-09-20T03:35:26.782Z -->
+<!-- md-trans-meta sourceCommit=d862c1854b2a1b490393efe922403ee29cdf113a translatedAt=2026-10-22T03:45:20.223Z pushedAt=2026-10-22T07:26:56.813Z nl=1 -->
 
 The AudioCapturer is used to record Pulse Code Modulation (PCM) audio data. It is suitable if you have extensive audio development experience and want to implement more flexible recording features.
 
@@ -27,14 +27,16 @@ When an audio stream is in the working state (not in the released state), it occ
 
 The following examples are code snippets. You can obtain the [complete sample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS) via the link at the bottom right of the sample code.
 
+The complete example demonstrates how to use `AudioCapturer` to record audio and play back the recorded audio after recording is complete.
+
 1. Set audio capture parameters and create an AudioCapturer instance. For details about the parameters, see [AudioCapturerOptions](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiocaptureroptions8).
 
    > **NOTE**
    >
    > When the microphone audio source is set ([SourceType](../../reference/apis-audio-kit/arkts-apis-audio-e.md#sourcetype8) is set to **SOURCE_TYPE_MIC**, **SOURCE_TYPE_VOICE_RECOGNITION**, **SOURCE_TYPE_VOICE_COMMUNICATION**, **SOURCE_TYPE_VOICE_MESSAGE**, or **SOURCE_TYPE_LIVE**), the permission ohos.permission.MICROPHONE is required. Note that **SOURCE_TYPE_LIVE** is supported since API version 20. For details about how to apply for the permission, see [Requesting User Authorization](../../security/AccessToken/request-user-authorization.md).
 
-   <!-- @[create_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->  
-
+   <!-- @[create_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->
+   
    ``` TypeScript
    import { audio } from '@kit.AudioKit';
    // ...
@@ -82,8 +84,8 @@ The following examples are code snippets. You can obtain the [complete sample](h
    >   1. The recording stream must remain running during muting: The application copies the captured data in the `readData` callback, sets all sample data in the copy to the mute value, and then saves or sends it. The mute value for signed PCM format is `0`; the mute value for `SAMPLE_FORMAT_U8` format is `0x80`.
    >   2. The service allows no data capture during muting: The application proactively stops the recording stream and restarts it when recording is needed later, replacing muting with stopping capture.
 
-   <!-- @[listen_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->     
-
+   <!-- @[listen_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->
+   
    ``` TypeScript
    import { BusinessError } from '@kit.BasicServicesKit';
    import { fileIo as fs } from '@kit.CoreFileKit';
@@ -120,8 +122,8 @@ The following examples are code snippets. You can obtain the [complete sample](h
    ```
 3. Call [start](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#start8) to switch the AudioCapturer to the running state and start recording.
 
-   <!-- @[start_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->  
-
+   <!-- @[start_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->
+   
    ``` TypeScript
    import { BusinessError } from '@kit.BasicServicesKit';
    // ...
@@ -137,8 +139,8 @@ The following examples are code snippets. You can obtain the [complete sample](h
    ```
 4. Call [stop](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#stop8) to stop recording.
 
-   <!-- @[stop_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->  
-
+   <!-- @[stop_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->
+   
    ``` TypeScript
    import { BusinessError } from '@kit.BasicServicesKit';
    // ...
@@ -153,7 +155,7 @@ The following examples are code snippets. You can obtain the [complete sample](h
        }
    ```
 5. Call [release](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#release8) to destroy the instance and release resources.
-<!-- @[release_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->   
+<!-- @[release_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->
 
 ``` TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -177,7 +179,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 Refer to the sample code below to record audio using AudioCapturer.
 
-<!-- @[all_audioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->  
+<!-- @[all_audioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit';
@@ -267,7 +269,7 @@ async function initRender(context: common.UIAbilityContext) {
       if (bufferLength < buffer.byteLength) {
         let view = new DataView(buffer);
         for (let i = bufferLength; i < buffer.byteLength; i++) {
-          // Fill the blank area with silence data. When the audio sampling format is SAMPLE_FORMAT_U8, 0x7F is the silence data; when other sampling formats are used, 0 is the silence data.
+          // Fill the blank area with silence data. When the audio sampling format is SAMPLE_FORMAT_U8, 0x80 is the silence data; when other sampling formats are used, 0 is the silence data. In this example, the sampling format is SAMPLE_FORMAT_S16LE, so the silence data is filled with 0.
           view.setUint8(i, 0);
         }
       }
@@ -288,7 +290,7 @@ async function initRender(context: common.UIAbilityContext) {
         audioRenderer.on('writeData', writeDataCallback);
       }
     } else {
-      console.info(`${TAG}: creating AudioRenderer failed, error: ${err.message}`);
+      console.error(`${TAG}: creating AudioRenderer failed, error: ${err.message}`);
     }
   });
 }
@@ -318,7 +320,7 @@ async function stopRender(updateCallback?: (msg: string, isError: boolean) => vo
     // The renderer can be stopped only when its state is running or paused.
     if (audioRenderer.state.valueOf() !== audio.AudioState.STATE_RUNNING &&
       audioRenderer.state.valueOf() !== audio.AudioState.STATE_PAUSED) {
-      console.info('Renderer is not running or paused.');
+      console.error('Renderer is not running or paused.');
       return;
     }
     // Stop rendering.
@@ -337,7 +339,7 @@ async function releaseRender(updateCallback?: (msg: string, isError: boolean) =>
   if (audioRenderer !== undefined) {
     // The renderer can be released only when its state is not released.
     if (audioRenderer.state.valueOf() === audio.AudioState.STATE_RELEASED) {
-      console.info('Renderer already released');
+      console.error('Renderer already released');
       return;
     }
     // Release resources.
@@ -441,7 +443,7 @@ async function stop(updateCallback?: (msg: string, isError: boolean) => void): P
     // The AudioCapturer can be stopped only when it is in the STATE_RUNNING or STATE_PAUSED state.
     if (audioCapturer.state.valueOf() !== audio.AudioState.STATE_RUNNING &&
       audioCapturer.state.valueOf() !== audio.AudioState.STATE_PAUSED) {
-      console.info(`${TAG}: Capturer is not running or paused`);
+      console.error(`${TAG}: Capturer is not running or paused`);
       // ...
       return;
     }
@@ -465,7 +467,7 @@ async function release(updateCallback?: (msg: string, isError: boolean) => void)
     // The AudioCapturer can be released only when it is not in the STATE_RELEASED or STATE_NEW state.
     if (audioCapturer.state.valueOf() === audio.AudioState.STATE_RELEASED ||
       audioCapturer.state.valueOf() === audio.AudioState.STATE_NEW) {
-      console.info(`${TAG}: Capturer already released`);
+      console.error(`${TAG}: Capturer already released`);
       // ...
       return;
     }
@@ -502,7 +504,7 @@ From API version 24 onward, when an application has muted a recording stream on 
 
 This API can only be called when the AudioCapturer is in the running state; otherwise, error code `6800103` is returned. If both a stream-level mute hint and a session-level mute hint [setCapturerMuteHint](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setcapturermutehint24) are set for the same recording stream, the stream-level mute hint takes precedence, and the stream-level setting is used. No system query API is currently provided. If you need to display the mute hint state on the UI, the app must maintain the most recently set state on its own. In the following example, `muteHint` set to `true` indicates reporting a mute hint, and `false` indicates canceling the mute hint. `capturerMuteHintEnabledByApp` is a state maintained locally by the app, recording the current value of muteHint.
 
-<!-- @[set_mute_hint](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) --> 
+<!-- @[set_mute_hint](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->
 
 ``` TypeScript
 try {

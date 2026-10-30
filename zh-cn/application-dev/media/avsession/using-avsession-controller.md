@@ -37,7 +37,7 @@
 
 2. 监听媒体会话的创建、销毁以及当前最新播放的媒体会话变更，并创建媒体会话对应的AVSessionController，从而对系统中的音视频应用进行统一的播放控制。
 
-   <!-- @[getAVSessionDescriptorsInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionController/entry/src/main/ets/feature/MediaController.ets) -->
+   <!-- @[getAVSessionDescriptorsInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionController/entry/src/main/ets/feature/MediaController.ets) --> 
    
    ``` TypeScript
    import { avSession } from '@kit.AVSessionKit';
@@ -84,7 +84,7 @@
          });
        } catch (error) {
          if (error) {
-           console.error(`avSession Error: Code: ${error.code}, message: ${error.message}`);
+           Log.error(TAG, `avSession Error: Code: ${error.code}, message: ${error.message}`);
          }
        }
      }
@@ -92,14 +92,14 @@
 
 3. 获取媒体会话提供方传递的当前播放曲目及播放状态等。
 
-   <!-- @[getControllerInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionController/entry/src/main/ets/feature/MediaController.ets) -->
+   <!-- @[getControllerInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionController/entry/src/main/ets/feature/MediaController.ets) --> 
    
    ``` TypeScript
    async getControllerInfo(): Promise<void> {
      // 获取会话元数据。
      this.currentController?.getAVMetadata((error: BusinessError, metadata: avSession.AVMetadata) => {
        if (error) {
-         Log.info(TAG, 'Failed to get AV metadata, code: ' + error.code + ', message: ' + error.message);
+         Log.error(TAG, 'Failed to get AV metadata, code: ' + error.code + ', message: ' + error.message);
          return;
        }
        Log.info(TAG, 'Succeeded in getting AV metadata, assetId: ' + metadata.assetId);
@@ -111,7 +111,7 @@
      // 获取播放状态。
      this.currentController?.getAVPlaybackState((error: BusinessError, state: avSession.AVPlaybackState) => {
        if (error) {
-         Log.info(TAG, 'Failed to get AV playback state, code: ' + error.code + ', message: ' + error.message);
+         Log.error(TAG, 'Failed to get AV playback state, code: ' + error.code + ', message: ' + error.message);
          return;
        }
        Log.info(TAG, 'Succeeded in getting AV playback state.');
@@ -125,7 +125,7 @@
 
 4. 监听媒体会话提供方的媒体信息变化及会话其他事件，从而应用可以根据回调及时刷新播放的曲目及播放状态。
 
-   <!-- @[listenControllerInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionController/entry/src/main/ets/feature/MediaController.ets) -->
+   <!-- @[listenControllerInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionController/entry/src/main/ets/feature/MediaController.ets) --> 
    
    ``` TypeScript
    async listenControllerInfo(): Promise<void> {
@@ -147,7 +147,7 @@
        // ...
      } catch (error) {
        if (error) {
-         console.error(`listenControllerInfo Error: Code: ${error.code}, message: ${error.message}`);
+         Log.error(TAG, `listenControllerInfo Error: Code: ${error.code}, message: ${error.message}`);
        }
      }
    }
@@ -155,7 +155,7 @@
 
 5. 获取会话支持的有效命令，从而应用可以感知媒体会话提供方支持的命令。
 
-   <!-- @[getAVSessionValidCommands](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionController/entry/src/main/ets/feature/MediaController.ets) -->
+   <!-- @[getAVSessionValidCommands](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionController/entry/src/main/ets/feature/MediaController.ets) --> 
    
    ``` TypeScript
    async getAVSessionValidCommands(): Promise<void> {
@@ -164,7 +164,7 @@
        this.currentController?.getValidCommands((error: BusinessError,
          validCommands: avSession.AVControlCommandType[]) => {
          if (error) {
-           Log.info(TAG, 'Failed to get valid commands, code: ' + error.code + ', message: ' + error.message);
+           Log.error(TAG, 'Failed to get valid commands, code: ' + error.code + ', message: ' + error.message);
            return;
          }
          Log.info(TAG, 'Succeeded in getting valid commands, size: ' + validCommands.length);
@@ -178,7 +178,7 @@
        });
      } catch (error) {
        if (error) {
-         console.error(`validCommand Error: Code: ${error.code}, message: ${error.message}`);
+         Log.error(TAG, `validCommand Error: Code: ${error.code}, message: ${error.message}`);
        }
      }
    }
@@ -249,7 +249,7 @@
 
 7. 媒体会话退出时，媒体会话控制方应及时取消监听，并释放资源。
 
-   <!-- @[listenAVSessionDestroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionController/entry/src/main/ets/feature/MediaController.ets) -->
+   <!-- @[listenAVSessionDestroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionController/entry/src/main/ets/feature/MediaController.ets) --> 
    
    ``` TypeScript
    async listenAVSessionDestroy(): Promise<void> {
@@ -263,7 +263,7 @@
        });
      } catch (error) {
        if (error) {
-         console.error(`destroy Error: Code: ${error.code}, message: ${error.message}`);
+         Log.error(TAG, `destroy Error: Code: ${error.code}, message: ${error.message}`);
        }
      }
    }

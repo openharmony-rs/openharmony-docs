@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "介绍ArkTS的数组、元组、Set、Map等集合类型及只读集合，讲解遍历迭代、集合选型流程与常见反模式，帮助开发者按场景正确选用集合。"
+keywords: [集合类型, 数组, Array, Map, 元组, Set, forEach, ReadonlyArray, 迭代器]
+doctype: guide
+status: active
+---
+
 # 集合类型
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->

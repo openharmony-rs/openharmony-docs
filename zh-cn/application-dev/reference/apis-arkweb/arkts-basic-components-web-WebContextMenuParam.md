@@ -245,3 +245,75 @@ getContextMenuMediaType(): ContextMenuDataMediaType
 | 类型     | 说明       |
 | ------ | ----------  |
 | [ContextMenuDataMediaType](./arkts-basic-components-web-e.md#contextmenudatamediatype22) | 网页元素的媒体类型，包括图片、视频、音频等不同类型，用于区分用户点击的网页元素种类。 |
+
+## shouldOfferLinkToText
+
+shouldOfferLinkToText(): boolean
+
+检查当前选中的文本是否可用于生成Text Fragment链接。Text Fragment链接是包含**#:~:text=**片段的URL，用于在打开链接时滚动到并高亮特定文本段落。
+
+建议在[onContextMenuShow](./arkts-basic-components-web-events.md#oncontextmenushow9)事件回调中使用此接口，以决定是否显示“复制指向高亮的链接”菜单项。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**返回值：**
+
+| 类型      | 说明                                       |
+| ------- | ---------------------------------------- |
+| boolean | true表示当前选中文本可用于生成Text Fragment链接；false表示不可用。 |
+
+**示例：**
+
+示例代码请参考[onContextMenuUpdate](./arkts-basic-components-web-events.md#oncontextmenuupdate)。
+
+## getTextFragmentGeneratedLink
+
+getTextFragmentGeneratedLink(): string
+
+获取指向当前网页高亮文本的Text Fragment链接URL。返回的URL包含符合W3C Text Fragments规范的**#:~:text=**片段。
+
+建议在[onContextMenuShow](./arkts-basic-components-web-events.md#oncontextmenushow9)事件回调中使用此接口。调用此接口前，建议先调用[shouldOfferLinkToText](./arkts-basic-components-web-WebContextMenuParam.md#shouldofferlinktotext)检查当前选中文本是否支持链接生成。若选中文本不支持链接生成，返回空字符串。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**返回值：**
+
+| 类型     | 说明                                       |
+| ------ | ---------------------------------------- |
+| string | 返回完整的Text Fragment URL字符串；如果不可用则返回空字符串。 |
+
+**示例：**
+
+示例代码请参考[onContextMenuUpdate](./arkts-basic-components-web-events.md#oncontextmenuupdate)。
+
+## isOverTextFragment
+
+isOverTextFragment(): boolean
+
+检查当前网页是否存在Text Fragment高亮。使用此接口判断是否应显示“撤销突出显示”和“重新分享链接”菜单项。
+
+建议在[onContextMenuShow](./arkts-basic-components-web-events.md#oncontextmenushow9)事件回调中使用此接口。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**返回值：**
+
+| 类型      | 说明                                       |
+| ------- | ---------------------------------------- |
+| boolean | 如果当前页面存在Text Fragment高亮，返回true；否则返回false。 |
+
+**示例：**
+
+Text Fragment相关接口使用示例请参考[onContextMenuUpdate](./arkts-basic-components-web-events.md#oncontextmenuupdate)。

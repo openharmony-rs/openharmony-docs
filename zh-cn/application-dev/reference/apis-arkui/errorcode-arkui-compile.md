@@ -1310,6 +1310,58 @@ A property decorated by \'xxx\' cannot define a set method.
 **处理步骤**<br>
 按照@Computed规范正确使用，只能装饰get方法。
 
+## 10905131 @Builder装饰器使用位置校验异常
+**错误信息**<br>
+The \'@Builder\' decorator can only pass arguments when decorating a global function.
+
+**错误描述**<br>
+携带实参的@Builder装饰器仅支持装饰全局函数。
+
+**可能原因**<br>
+开发者在自定义组件的成员方法或成员变量上使用携带实参的@Builder装饰器导致报错。
+
+**处理步骤**<br>
+将携带实参的@Builder装饰器用于装饰全局函数，或去除装饰器实参改为不携带实参的@Builder。
+
+## 10905132 @Builder装饰器实参校验异常
+**错误信息**<br>
+The \'@Builder\' decorator only supports passing a single object literal.
+
+**错误描述**<br>
+@Builder装饰器仅支持传入单个对象字面量实参。
+
+**可能原因**<br>
+开发者为全局@Builder装饰器传入的实参不是单个对象字面量导致报错。
+
+**处理步骤**<br>
+为全局@Builder装饰器传入单个对象字面量实参。
+
+## 10905133 @Builder配置项isPlaceholder校验异常
+**错误信息**<br>
+The \'isPlaceholder\' option of the \'@Builder\' decorator only supports passing true/false.
+
+**错误描述**<br>
+@Builder装饰器配置项中的isPlaceholder属性仅支持取值true或false。
+
+**可能原因**<br>
+开发者传入的对象字面量中isPlaceholder键缺失、拼写错误，或取值不是显式的布尔字面量（如变量、枚举值、undefined、null）导致报错。
+
+**处理步骤**<br>
+将isPlaceholder的取值改为显式布尔字面量true或false，并检查键名拼写是否正确。
+
+## 10905134 占位构建函数参数校验异常
+**错误信息**<br>
+The \'@Builder\' function cannot have parameters when it serves as a placeholder.
+
+**错误描述**<br>
+@Builder函数作为占位构建函数时不能声明参数。
+
+**可能原因**<br>
+开发者使用isPlaceholder为true的@Builder装饰器声明占位构建函数时，为函数声明了参数导致报错。
+
+**处理步骤**<br>
+去除占位构建函数的参数，或将isPlaceholder改为false后按普通@Builder使用。
+
 ## 10905358 !!语法校验异常
 **错误信息**<br>
 When the two-way binding syntax is used, do not assign a value to \'xxx\' variable \'yyy\' because the framework generates the default assignment.

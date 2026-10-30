@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "说明JSVM坚盾守护模式的功能限制与启用方法。该模式面向高安全需求用户，开启后全局禁用JIT与WebAssembly，并指导开发者评估应用在此模式下的兼容性与性能表现。"
+keywords: [坚盾守护模式, JSVM, JIT, WebAssembly, 安全限制, 功能限制, 兼容性评估]
+doctype: guide
+status: active
+---
+
 # JSVM-API 坚盾守护模式
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->

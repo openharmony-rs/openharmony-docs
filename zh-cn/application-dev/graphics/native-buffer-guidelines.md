@@ -1,3 +1,10 @@
+---
+kits: ["ArkGraphics 2D / 方舟2D图形服务"]
+description: "介绍NativeBuffer共享内存模块的申请、映射、属性查询与释放流程，适用于图像数据处理、视频编解码及跨进程内存共享场景，帮助开发者通过C/C++接口高效管理图形缓冲区内存。"
+keywords: [ NativeBuffer, 共享内存, 跨进程内存共享, ION内存, 内存映射, 图像数据处理, 视频编解码]
+doctype: guide
+status: active
+---
 # NativeBuffer开发指导 (C/C++)
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->

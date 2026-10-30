@@ -182,11 +182,11 @@ Calendar Kit中的日程[Event](../reference/apis-calendar-kit/js-apis-calendarM
      recurrenceRule: {
        // 日程重复规则类型，支持按天、按周、按月、按年重复
        recurrenceFrequency: calendarManager.RecurrenceFrequency.DAILY,
-       // 日程重复次数，该字段和expire属性只需要填写一个，如果两个都填写按照count属性计算。
+       // 日程重复次数，当count与interval和expire同时设置时，以先到达的限制条件及效果为准。
        count: 100,
        // 重复日程间隔时间，与recurrenceFrequency相关，此示例表示日程每隔2天进行重复。
        interval: 2,
-       // 日程过期时间，该字段和count属性只需要填写一个，如果两个都填写按照count属性计算。
+       // 日程过期时间，当expire与count和interval同时设置时，以先到达的限制条件及效果为准。
        expire: date.getTime() + 60 * 60 * 1000 * 3,
        // 日程排除日期，将该日期从重复日程中排除掉
        excludedDates: [date.getTime() + 60 * 60 * 1000 * 2]

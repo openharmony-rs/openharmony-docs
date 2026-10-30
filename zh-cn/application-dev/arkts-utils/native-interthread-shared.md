@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍C++线程间数据共享场景的开发方法：支持在C++线程上调用ArkTS能力，以及在C++线程之间操作Sendable共享对象，适用于Native多线程与ArkTS混合开发的数据交互场景。"
+keywords: [C++线程, 线程间数据共享, Sendable共享对象, Native线程, 跨语言调用, ArkTS能力调用, 混合开发, 多线程]
+doctype: guide
+status: active
+---
+
 # C++线程间数据共享场景
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->

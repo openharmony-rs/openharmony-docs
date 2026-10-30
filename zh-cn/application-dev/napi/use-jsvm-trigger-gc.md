@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍如何通过OH_JSVM_AddHandlerForGC在垃圾回收前后的Prologue与Epilogue阶段注册自定义回调，感知GC行为以执行性能监控与调优。"
+keywords: [OH_JSVM_AddHandlerForGC, OH_JSVM_RemoveHandlerForGC, 垃圾回收, GC回调, 回调注册, Prologue, Epilogue, JSVM_CB_TRIGGER_BEFORE_GC, 性能监控]
+doctype: guide
+status: active
+---
+
 # 使用JSVM-API感知JSVM引擎生命周期管理
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->

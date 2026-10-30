@@ -1151,7 +1151,7 @@ With this permission, the application can access the public directory without ha
 
 ## ohos.permission.kernel.LOAD_INDEPENDENT_LIBRARY
 
-Allows an application to load shared libraries signed with binary certificates.
+Allows an application to load shared libraries that are signed with binary certificates, debug certificates, or self-signed certificates.
 
 <!--RP61--><!--RP61End-->
 
@@ -1678,6 +1678,20 @@ Allows an application to use the aa tool to debug other applications locally in 
 
 **Since**: 26.0.1
 
+## ohos.permission.kernel.LOAD_CERTSIGN_LIBRARY
+ 
+Allows an application to load shared libraries that are signed with either binary or debug certificates.
+ 
+<!--RP109--><!--RP109End-->
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+**Supported devices**: PCs/2-in-1 devices
+ 
+**Since**: 26.0.1
+
 ## ohos.permission.kernel.ALLOW_PTRACE_READ
 
 Allows an application to use PTRACE read capabilities to obtain register and memory information of application processes.
@@ -1750,4 +1764,34 @@ With this permission, the application can add sync root folders to the sidebar o
 
 **Supported devices**: PCs/2-in-1 devices | tablets
 
+**Since**: 26.0.1
+
+## ohos.permission.INPUT_RECORDING
+
+Allows an application to listen for input events.
+
+With this permission, an application can implement the recording and playback functions of input events.
+
+<!--RP116--><!--RP116End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: manual_settings
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Since**: 26.1.0
+
+## ohos.permission.ACCESS_BOARD_INFO
+ 
+Allows an application to obtain the device hardware information.
+ 
+<!--RP118--><!--RP118End-->
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+**Supported devices**: PCs/2-in-1 devices
+ 
 **Since**: 26.0.1

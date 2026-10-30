@@ -97,6 +97,7 @@ SegmentButton({ options: SegmentButtonOptions, selectedIndexes: number[], onItem
 | backgroundBorderRadius<sup>20+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否 | 是 | 分段按钮整体容器的边框圆角半径。<br>**说明：**<br>此属性仅在borderRadiusMode为BorderRadiusMode.CUSTOM时生效。<br>对于胶囊类多选分段按钮（type为"capsule"且multiply为true），此属性不生效，需要用itemBorderRadius配置圆角。<br>圆角大小受组件尺寸限制，最大值为组件宽或高的一半，不支持百分比设置。超出最大值时自动修正为最大值，使用百分比时按默认值处理。<br>默认值：`$r('sys.float.segmentbutton_container_shape')`<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | itemBorderRadius<sup>20+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否 | 是 | 分段按钮中按钮项的边框圆角半径。<br>**说明：**<br>此属性仅在borderRadiusMode为BorderRadiusMode.CUSTOM时生效。<br>对于胶囊类多选分段按钮（type为"capsule"且multiply为true），只能控制两端的选项圆角。<br>圆角大小受组件尺寸限制，最大值为组件宽或高的一半，不支持百分比设置。超出最大值时自动修正为最大值，使用百分比时按默认值处理。<br>默认值：`$r('sys.float.segmentbutton_selected_background_shape')`<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | backgroundSystemMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material)    | 否 | 是 | 分段按钮组件的背景板的系统材质。需要将组件放置在Navigation或NavDestination的标题栏，或横向Tabs的底部TabBar中，沉浸光感效果才会生效。不同系统材质具有不同的属性，产生不同的效果。传入材质后，SegmentButton的动效发生改变。<br>对于胶囊类多选分段按钮（即type为"capsule"且multiply为true），该属性不生效。<br>默认值：无材质效果。<br>**起始版本：** 26.0.0 <br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 <br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| interactionMode | [SegmentButtonInteractionMode](#segmentbuttoninteractionmode) | 否 | 是 | 分段按钮的拖拽交互模式。<br>默认值：undefined<br>未设置、值为undefined或非法值时，配置了backgroundSystemMaterial则使用跟手拖拽，否则使用普通拖拽。<br>切换拖拽模式不改变原材质外观、背景板缩放和微量位移、选中项形变或配置的光源效果。未配置backgroundSystemMaterial时，跟手拖拽不会增加材质效果。<br>拖拽不触发onItemClicked。<br>该属性在胶囊类多选分段按钮（type为"capsule"且multiply为true）中不生效。<br>**起始版本：** 26.1.0<br>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 > **说明：**
 >
@@ -217,6 +218,26 @@ type DimensionNoPercentage = PX \| VP \| FP \| LPX \| Resource
 | backgroundBorderRadius<sup>20+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否 | 是 | 分段按钮整体容器的边框圆角半径。<br>**说明：**<br>此属性仅在borderRadiusMode为BorderRadiusMode.CUSTOM时生效。<br>对于胶囊类多选分段按钮（type为"capsule"且multiply为true），此属性不生效，需要用itemBorderRadius配置圆角。<br>圆角大小受组件尺寸限制，最大值为组件宽或高的一半，不支持百分比设置。超出最大值时自动修正为最大值，使用百分比时按默认值处理。<br>默认值：`$r('sys.float.segmentbutton_container_shape')`<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | itemBorderRadius<sup>20+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否 | 是 | 分段按钮中按钮项的边框圆角半径。<br>**说明：**<br>此属性仅在borderRadiusMode为BorderRadiusMode.CUSTOM时生效。<br>对于胶囊类多选分段按钮（type为"capsule"且multiply为true），只能控制两端的选项圆角。<br>圆角大小受组件尺寸限制，最大值为组件宽或高的一半，不支持百分比设置。超出最大值时自动修正为最大值，使用百分比时按默认值处理。<br>默认值：`$r('sys.float.segmentbutton_selected_background_shape')`<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | backgroundSystemMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material)   | 否 | 是 | 分段按钮组件的背景板的系统材质。需要将组件放置在Navigation或NavDestination的标题栏，或横向Tabs的底部TabBar中，沉浸光感效果才会生效。不同系统材质具有不同的属性，产生不同的效果。传入材质后，SegmentButton的动效发生改变。<br>对于胶囊类多选分段按钮（即type为"capsule"且multiply为true），该属性不生效。<br>默认值：无材质效果。<br>从API版本26.0.0开始，除胶囊类多选分段按钮（即type为\"capsule\"且multiply为true）外，backgroundSystemMaterial设置自动反色的系统材质时，fontColor和selectedFontColor使用支持反色的特殊系统资源，颜色自动适配到材质背景色的反色。<br>**起始版本：** 26.0.0 <br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 <br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| interactionMode | [SegmentButtonInteractionMode](#segmentbuttoninteractionmode) | 否 | 是 | 分段按钮的拖拽交互模式。<br>默认值：undefined<br>未设置、值为undefined或非法值时，配置了backgroundSystemMaterial则使用跟手拖拽，否则使用普通拖拽。<br>切换拖拽模式不改变原材质外观、背景板缩放和微量位移、选中项形变或配置的光源效果。未配置backgroundSystemMaterial时，跟手拖拽不会增加材质效果。<br>拖拽不触发onItemClicked。<br>该属性在胶囊类多选分段按钮（type为"capsule"且multiply为true）中不生效。<br>**起始版本：** 26.1.0<br>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+
+## SegmentButtonInteractionMode
+
+拖拽交互模式枚举，用于设置单选分段按钮的拖拽方式。
+
+**起始版本：** 26.1.0
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+
+| 名称 | 值 | 说明 |
+| --- | --- | --- |
+| FOLLOWING_DRAG | 0 | 跟手拖拽。从当前选中项开始拖拽时，选中项背景连续跟随手指移动，选中项下标在拖拽过程中保持不变，在手指抬起时更新。未配置backgroundSystemMaterial时，开启该模式不会增加材质形变或光源效果。 |
+| NORMAL_DRAG | 1 | 普通拖拽。从当前选中项开始拖拽时，选中项背景按选项位置过渡，选中项下标在手指拖拽跨项时更新。配置backgroundSystemMaterial时，保留原材质反馈（包括配置的光源效果）。 |
 
 ## BorderRadiusMode<sup>20+</sup>
 

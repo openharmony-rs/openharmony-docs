@@ -33,23 +33,9 @@
 
 详情见[规格限制](data-persistence-by-vector-store.md#规格限制)。
 
-## 接口说明
+## 开发步骤
 
 详细的接口说明请参考[RDB](../reference/apis-arkdata/capi-rdb.md)。
-
-| 接口名称 | 描述 |
-| -------- | -------- |
-| int OH_Rdb_SetDbType(OH_Rdb_ConfigV2 *config, int dbType) | 设置数据库类型。 |
-| OH_Rdb_Store *OH_Rdb_CreateOrOpen(const OH_Rdb_ConfigV2 *config, int *errCode) | 获得一个相关的OH_Rdb_Store实例(调用OH_Rdb_SetDbType设置dbType为RDB_CAYLEY)，操作向量数据库。 |
-| int OH_Rdb_ExecuteV2(OH_Rdb_Store *store, const char *sql, const OH_Data_Values *args, OH_Data_Value **result) | 执行有返回值的SQL语句，用来执行写操作，支持参数绑定，语句中的各种表达式和操作符之间的关系操作符号(例如=、>、<)不超过1000个。|
-| int OH_Rdb_ExecuteByTrxId(OH_Rdb_Store *store, int64_t trxId, const char *sql) | 使用指定的事务ID执行无返回值的SQL语句，事务ID为0时不使用事务。 |
-| OH_Cursor *OH_Rdb_ExecuteQuery(OH_Rdb_Store *store, const char *sql) | 根据指定SQL语句查询数据库中的数据。 |
-| OH_Cursor *OH_Rdb_ExecuteQueryV2(OH_Rdb_Store *store, const char *sql, const OH_Data_Values *args) | 根据指定SQL语句查询数据库中的数据，支持参数绑定，语句中的各种表达式和操作符之间的关系操作符号(例如=、>、<)不超过1000个。 |
-| int OH_Rdb_DeleteStoreV2(const OH_Rdb_ConfigV2 *config) | 删除数据库。 |
-| int OH_Cursor_GetFloatVectorCount(OH_Cursor *cursor, int32_t columnIndex, size_t *length) | 获取当前行中指定列的浮点数数组大小。 |
-| int OH_Cursor_GetFloatVector(OH_Cursor *cursor, int32_t columnIndex, float *val, size_t inLen, size_t *outLen) | 以浮点数数组的形式获取当前行中指定列的值，其中inLen不能小于实际的数组大小。 |
-
-## 开发步骤
 
 **添加动态链接库**
 
@@ -71,17 +57,23 @@ libnative_rdb_ndk.z.so
 #include <database/rdb/relational_store_error_code.h>
 ```
 
-1. 判断当前系统是否支持向量数据库，若不支持，则表示当前系统不具备向量数据库能力。示例代码如下：
+1. 调用[OH_Rdb_GetSupportedDbType()](../reference/apis-arkdata/capi-relational-store-h.md#oh_rdb_getsupporteddbtype)接口获取当前系统支持的所有数据库类型，遍历其中元素查找是否支持目标数据库类型。若包含[RDB_SQLITE](../reference/apis-arkdata/capi-relational-store-h.md#rdb_dbtype)，则表示当前系统支持SQLite数据库。若包含[RDB_CAYLEY](../reference/apis-arkdata/capi-relational-store-h.md#rdb_dbtype)，则表示当前系统支持向量数据库。示例代码如下：
 
    <!--@[vector_OH_Rdb_GetSupportedDbType](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/cpp/napi_init.cpp)-->
    
    ``` C++
-   int numType = 0;
-   // 如果numType为2则支持向量数据库，为1则不支持向量数据库
-   OH_Rdb_GetSupportedDbType(&numType);
+   int typeCount = 0;
+   const int *dbTypes = OH_Rdb_GetSupportedDbType(&typeCount);
+   bool isVectorStoreSupported = false;
+   for (int i = 0; i < typeCount; i++) {
+       if (dbTypes[i] == RDB_CAYLEY) {
+           isVectorStoreSupported = true;
+           break;
+       }
+   }
    ```
 
-2. 当前系统支持向量数据库时，获取OH_Rdb_Store实例。示例代码如下：
+2. 当前系统支持向量数据库时，通过[OH_Rdb_SetDbType()](../reference/apis-arkdata/capi-relational-store-h.md#oh_rdb_setdbtype)接口设置数据库类型为向量数据库，并通过[OH_Rdb_CreateOrOpen()](../reference/apis-arkdata/capi-relational-store-h.md#oh_rdb_createoropen)接口获取OH_Rdb_Store实例。示例代码如下：
 
    <!--@[vector_OH_Rdb_Store](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/cpp/napi_init.cpp)-->
    
@@ -109,7 +101,7 @@ libnative_rdb_ndk.z.so
    OH_Rdb_Store *store_ = OH_Rdb_CreateOrOpen(config, &errCode);
    ```
 
-3. 获取到OH_Rdb_Store后，建表并插入数据。
+3. 获取到OH_Rdb_Store后，调用[OH_Rdb_ExecuteByTrxId()](../reference/apis-arkdata/capi-relational-store-h.md#oh_rdb_executebytrxid)接口建表，并调用[OH_Rdb_ExecuteV2()](../reference/apis-arkdata/capi-relational-store-h.md#oh_rdb_executev2)接口插入数据。
 
    > **说明：**
    >
@@ -138,7 +130,7 @@ libnative_rdb_ndk.z.so
    OH_Values_Destroy(values);
    ```
 
-4. 获取到OH_Rdb_Store后，修改或删除数据。示例代码如下：
+4. 获取到OH_Rdb_Store后，调用[OH_Rdb_ExecuteV2()](../reference/apis-arkdata/capi-relational-store-h.md#oh_rdb_executev2)接口修改或删除数据。示例代码如下：
 
    <!--@[vector_OH_Rdb_ExecuteV2_update_and_delete](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/cpp/napi_init.cpp)-->
    
@@ -165,11 +157,11 @@ libnative_rdb_ndk.z.so
    OH_Values_Destroy(values2);
    ```
 
-5. 获取到OH_Rdb_Store后，查询数据。
+5. 获取到OH_Rdb_Store后，调用[OH_Rdb_ExecuteQueryV2()](../reference/apis-arkdata/capi-relational-store-h.md#oh_rdb_executequeryv2)接口查询数据，并通过[OH_Cursor_GetFloatVectorCount()](../reference/apis-arkdata/capi-oh-cursor-h.md#oh_cursor_getfloatvectorcount)和[OH_Cursor_GetFloatVector()](../reference/apis-arkdata/capi-oh-cursor-h.md#oh_cursor_getfloatvector)接口从结果集中读取向量数据。
 
    > **说明：**
    >
-   > 当应用完成查询数据操作，不再使用结果集（OH_Cursor）时，请及时调用destroy方法关闭结果集，释放系统为其分配的内存。
+   > 当应用完成查询数据操作，不再使用结果集（OH_Cursor）时，请及时调用[destroy()](../reference/apis-arkdata/capi-rdb-oh-cursor.md#destroy)接口关闭结果集，释放系统为其分配的内存。
 
    示例代码如下：
 
@@ -425,7 +417,7 @@ libnative_rdb_ndk.z.so
        "(time_col = 'time', interval = '5 minute', compress_col = 'content');", nullptr, nullptr);
    ```
 
-10. 删除数据库。示例代码如下：
+10. 删除数据库。调用[OH_Rdb_CloseStore()](../reference/apis-arkdata/capi-relational-store-h.md#oh_rdb_closestore)接口关闭数据库实例，并调用[OH_Rdb_DeleteStoreV2()](../reference/apis-arkdata/capi-relational-store-h.md#oh_rdb_deletestorev2)接口删除数据库及数据库相关文件。示例代码如下：
 
     <!--@[vector_OH_Rdb_DeleteStoreV2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/cpp/napi_init.cpp)-->    
     

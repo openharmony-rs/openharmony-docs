@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍如何使用JSVM-API创建Proxy代理对象、判断给定JSVM_Value是否为Proxy类型以及获取代理中的目标对象。"
+keywords: [OH_JSVM_CreateProxy, OH_JSVM_IsProxy, OH_JSVM_ProxyGetTarget, Proxy, 代理对象, 目标对象, handler]
+doctype: guide
+status: active
+---
+
 # 使用JSVM-API接口进行Proxy相关开发
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->

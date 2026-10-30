@@ -22,6 +22,16 @@ import { a2dp } from '@kit.ConnectivityKit';
 ```
 
 
+## A2dpSourceProfile
+
+该实例表示蓝牙媒体音频中的[A2DP Source](../../connectivity/bluetooth/terminology.md#a2dp-source)角色。
+- 该类继承于[BaseProfile](js-apis-bluetooth-a2dp.md#baseprofile)，因此可以使用其父类中的方法。
+- 使用该类的接口前，需通过[createA2dpSrcProfile](js-apis-bluetooth-a2dp.md#a2dpcreatea2dpsrcprofile)接口构造该类的实例。
+- 和该实例角色相对应的是[A2DP Sink](../../connectivity/bluetooth/terminology.md#a2dp-sink)角色。
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+
 ### connect
 
 connect(deviceId: string): void
@@ -826,6 +836,174 @@ try {
     a2dpSrc.getAutoPlayDisabledDuration('XX:XX:XX:XX:XX:XX').then((data: number) => {
         console.info('number' + JSON.stringify(data));
     });
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
+
+## A2dpSinkProfile
+
+该实例表示蓝牙媒体音频中的[A2DP Sink](../../connectivity/bluetooth/terminology.md#a2dp-sink)角色。
+- 该类继承于[BaseProfile](js-apis-bluetooth-a2dp.md#baseprofile)，因此可以使用其父类中的方法。
+- 使用该类的接口前，需通过[createA2dpSnkProfile](js-apis-bluetooth-a2dp.md#a2dpcreatea2dpsnkprofile)接口构造该类的实例。
+- 和该实例角色相对应的是[A2DP Source](../../connectivity/bluetooth/terminology.md#a2dp-source)角色。
+
+**起始版本**： 26.0.1
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+
+### connect
+
+connect(deviceId: string): void
+
+向远端设备发起A2DP Sink连接。
+
+**起始版本**： 26.0.1
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名    | 类型     | 必填   | 说明      |
+| ------ | ------ | ---- | ------- |
+| deviceId | string | 是    | 远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------- |
+|201 | Permission verification failed. The application does not have the permission required to call the API. |
+|202 | Permission verification failed. A non-system application calls a system API. |
+|801 | Capability not supported. |
+|2900003 | Bluetooth disabled. |
+|2900004 | Profile not supported. |
+|2900099 | Internal system error. For example, IPC error. Detailed error messages can be used to assist in locating the problem. |
+|2904000 | The a2dp sink service is not running. |
+|2904002 | The connection is rejected due to the connection policy. For example, connection limit restrictions. |
+
+**示例：**
+
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+try {
+    let a2dpSink = a2dp.createA2dpSnkProfile();
+    a2dpSink.connect('XX:XX:XX:XX:XX:XX');
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
+
+### disconnect
+
+disconnect(deviceId: string): void
+
+断开与远端设备的A2DP Sink连接。
+
+**起始版本**： 26.0.1
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名    | 类型     | 必填   | 说明      |
+| ------ | ------ | ---- | ------- |
+| deviceId | string | 是    | 远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------- |
+|201 | Permission verification failed. The application does not have the permission required to call the API. |
+|202 | Permission verification failed. A non-system application calls a system API. |
+|801 | Capability not supported. |
+|2900003 | Bluetooth disabled. |
+|2900004 | Profile not supported. |
+|2900099 | Internal system error. For example, IPC error. Detailed error messages can be used to assist in locating the problem. |
+|2904000 | The a2dp sink service is not running. |
+
+**示例：**
+
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+try {
+    let a2dpSink = a2dp.createA2dpSnkProfile();
+    a2dpSink.disconnect('XX:XX:XX:XX:XX:XX');
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
+
+### getPlayingState
+
+getPlayingState(deviceId: string): PlayingState
+
+获取设备播放状态。
+
+**起始版本**： 26.0.1
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名    | 类型     | 必填   | 说明      |
+| ------ | ------ | ---- | ------- |
+| deviceId | string | 是    | 远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
+
+**返回值：**
+
+| 类型                            | 说明         |
+| ----------------------------- | ---------- |
+| [PlayingState](js-apis-bluetooth-a2dp.md#playingstate) | 返回播放状态。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------- |
+|201 | Permission verification failed. The application does not have the permission required to call the API. |
+|202 | Permission verification failed. A non-system application calls a system API. |
+|801 | Capability not supported. |
+|2900003 | Bluetooth disabled. |
+|2900004 | Profile not supported. |
+|2900099 | Internal system error. For example, IPC error. Detailed error messages can be used to assist in locating the problem. |
+|2904001 | The a2dp sink not connected. |
+
+**示例：**
+
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+try {
+    let a2dpSink = a2dp.createA2dpSnkProfile();
+    let state = a2dpSink.getPlayingState('XX:XX:XX:XX:XX:XX');
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }

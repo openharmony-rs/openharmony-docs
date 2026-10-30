@@ -1,4 +1,4 @@
-# Applying Image Effects (C/C++)
+# Adding Image Effects (C/C++)
 
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Multimedia-->
@@ -6,7 +6,7 @@
 <!--Designer: @chensiyi_CE-->
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=e82880fc1b3fb82c03ab5c9c350aff1a7e98d202 translatedAt=2026-07-13T07:23:31.111Z pushedAt=2026-07-13T07:50:44.458Z -->
+<!-- md-trans-meta sourceCommit=c271abe0bfb01eb9db1d3add3baa3b6c0b3d1e5f translatedAt=2026-10-19T01:25:22.737Z pushedAt=2026-10-19T07:38:57.643Z -->
 
 ## When to Use
 
@@ -20,16 +20,15 @@ The common APIs for setting image effects using filters are listed in the follow
 
 | Name | Description |
 | -------- | -------- |
-| EffectErrorCode OH_Filter_CreateEffect(OH_PixelmapNative\* pixelmap, OH_Filter\*\* filter)| Creates a filter object based on a pixel map object. |
+| EffectErrorCode OH_Filter_CreateEffect(OH_PixelmapNative\* pixelmap, OH_Filter\*\* filter)| Creates a filter object based on a pixelmap object. |
 | EffectErrorCode OH_Filter_Blur(OH_Filter\* filter, float radius)| Creates a blur effect and adds it to the filter. |
 | EffectErrorCode OH_Filter_Brighten(OH_Filter\* filter, float brightness) | Creates a brighten effect and adds it to the filter. |
 | EffectErrorCode OH_Filter_GrayScale(OH_Filter\* filter) | Creates a grayscale effect and adds it to the filter. |
 | EffectErrorCode OH_Filter_Invert(OH_Filter\* filter) | Creates an invert effect and adds it to the filter. |
-| EffectErrorCode OH_Filter_GetEffectPixelMap(OH_Filter\* filter, OH_PixelmapNative\*\* pixelmap) | Obtains the pixel map object generated after filter processing. |
+| EffectErrorCode OH_Filter_GetEffectPixelMap(OH_Filter\* filter, OH_PixelmapNative\*\* pixelmap) | Obtains the pixelmap object generated after filter processing. |
 | EffectErrorCode OH_Filter_Release(OH_Filter\* filter) | Releases the filter object. |
 
 ## How to Develop
-
 1. Add the following link libraries to **src/main/cpp/CMakeLists.txt** in the native project.
 
    ``` C++
@@ -46,11 +45,11 @@ The common APIs for setting image effects using filters are listed in the follow
    #include "native_effect/effect_filter.h"
    ```
 
-3. Create an **OH_PixelmapNative** pixel map object.
+3. Create an **OH_PixelmapNative** object.
 
-   Creating a filter requires a pixel map object (**OH_PixelmapNative**) defined by the image framework. You can create a custom pixel map using **OH_PixelmapNative_CreatePixelmap()**, or import a pixel map from an external source using **OH_PixelmapNative_ConvertPixelmapNativeFromNapi()**.
-
-This section uses **OH_PixelmapNative_CreatePixelmap()** as an example to create an **OH_PixelmapNative** object. This function accepts four parameters: the first parameter is the buffer of image pixel data, used to initialize the pixels of the pixel map; the second parameter is the buffer length; the third parameter is the pixel map format (including width, height, color type, alpha type, etc.); and the fourth parameter is the **OH_PixelmapNative** object, which serves as an output parameter.
+   Creating a filter requires a pixelmap object (**OH_PixelmapNative**) defined by the image framework. You can create a custom pixelmap using **OH_PixelmapNative_CreatePixelmap()**, or import a pixelmap from an external source using **OH_PixelmapNative_ConvertPixelmapNativeFromNapi()**.
+   
+   This section uses **OH_PixelmapNative_CreatePixelmap()** as an example to create an **OH_PixelmapNative** object. This function accepts four parameters: the first parameter is the buffer of image pixel data, used to initialize the pixels of the pixelmap; the second parameter is the buffer length; the third parameter is the pixelmap format (including width, height, color type, alpha type, etc.); and the fourth parameter is the **OH_PixelmapNative** object, which serves as an output parameter.
 
    ``` C++
    // Image size: 600 x 400.
@@ -77,7 +76,7 @@ This section uses **OH_PixelmapNative_CreatePixelmap()** as an example to create
             pixels[i * RGBA_SIZE + 2] = RGBA_MAX; // Set the blue channel to display blue.
         }
    }
-   // Set the pixel map format (width, height, color type, and alpha type).
+   // Set the pixelmap format (width, height, color type, and alpha type).
    OH_Pixelmap_InitializationOptions *createOps = nullptr;
    OH_PixelmapInitializationOptions_Create(&createOps);
    OH_PixelmapInitializationOptions_SetWidth(createOps, width);
@@ -87,9 +86,13 @@ This section uses **OH_PixelmapNative_CreatePixelmap()** as an example to create
    // Create an OH_PixelmapNative object.
    OH_PixelmapNative *pixelMapNative = nullptr;
    OH_PixelmapNative_CreatePixelmap(pixels, bufferSize, createOps, &pixelMapNative);
+   // The pixel data has been copied to the pixelmap. Release the pixel data buffer after the creation is complete.
+   delete[] pixels;
+   // Release the initialization options object.
+   OH_PixelmapInitializationOptions_Release(createOps);
    ```
 
-4. Based on the **OH_PixelmapNative** object generated above, initialize an **OH_Filter** object using the **OH_Filter_CreateEffect()** API.
+4. Based on the **OH_PixelmapNative** object generated above, create an **OH_Filter** object using the **OH_Filter_CreateEffect()** API.
 
    ``` C++
    OH_Filter *filter = nullptr;
@@ -97,23 +100,22 @@ This section uses **OH_PixelmapNative_CreatePixelmap()** as an example to create
    ```
 
 5. Add different image effects to the filter as needed.
-
     - You can use the **OH_Filter_Blur()** API to add a blur effect to the filter.
-
+        
       ``` C++
       float radius = 20.0; // Blur radius.
       EffectErrorCode errCodeEffect = OH_Filter_Blur(filter, radius);
       ```
 
     - You can use the **OH_Filter_Brighten()** API to add a brightening effect to the filter.
-
+    
       ``` C++
       float brightness = 0.5; // Brightness level (0 to 1).
       EffectErrorCode errCodeEffect = OH_Filter_Brighten(filter, brightness);
       ```
 
     - You can use the **OH_Filter_GrayScale()** API to add a grayscale effect to the filter.
-
+    
       ``` C++
       EffectErrorCode errCodeEffect = OH_Filter_GrayScale(filter);
       ```
@@ -131,14 +133,17 @@ This section uses **OH_PixelmapNative_CreatePixelmap()** as an example to create
    EffectErrorCode errCodeResult = OH_Filter_GetEffectPixelMap(filter, &filterResult);
    ```
 
-7. When the filter is no longer needed for generating image effects, use **OH_Filter_Release()** to destroy the **OH_Filter** object in a timely manner.
+7. When the image effect generated by the filter is no longer needed, release the **OH_Filter** object in a timely manner using **OH_Filter_Release()**. Similarly, when the original pixelmap and the pixelmap generated after filter processing are no longer needed, release them in a timely manner using **OH_PixelmapNative_Release()**.
 
    ``` C++
    EffectErrorCode errCodeRelease = OH_Filter_Release(filter);
+   // Release the pixelmap object generated after filter processing.
+   OH_PixelmapNative_Release(filterResult);
+   // Release the original pixelmap object.
+   OH_PixelmapNative_Release(pixelMapNative);
    ```
 
    The following table lists the rendering effects.
-
    | Image Processing | Rendering Effect |
    | -------- | -------- |
    | Original image | ![effectfilter_origin](figures/effectfilter_origin.png) |

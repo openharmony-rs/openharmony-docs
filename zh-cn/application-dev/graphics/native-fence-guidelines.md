@@ -1,3 +1,10 @@
+---
+kits: ["ArkGraphics 2D / 方舟2D图形服务"]
+description: "介绍NativeFence通过fenceFd实现GPU与CPU之间内存访问同步的机制，涵盖阻塞等待、永久阻塞、关闭与有效性检查等接口用法，适用于共享内存访问顺序需严格同步的C/C++图形开发场景。"
+keywords: [NativeFence, fenceFd, 内存访问同步, GPU与CPU同步, 阻塞等待, 同步信号, 共享内存]
+doctype: guide
+status: active
+---
 # GPU/CPU内存访问同步操作开发指南 (C/C++)
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->

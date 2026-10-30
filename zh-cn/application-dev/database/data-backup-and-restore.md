@@ -290,7 +290,10 @@ import { common } from '@kit.AbilityKit';
 
 ``` TypeScript
 /* context为应用的上下文信息，由调用方自行获取，此处仅为示例。 */
-const context = new UIContext().getHostContext() as common.UIAbilityContext;
+const context = uiContext.getHostContext();
+if (context === undefined) {
+  return;
+}
 let store: relationalStore.RdbStore | undefined = undefined;
 const STORE_CONFIG: relationalStore.StoreConfig = {
   name: 'RdbTest.db',
@@ -374,7 +377,10 @@ export default class EntryAbility extends UIAbility {
 ``` TypeScript
 let store: relationalStore.RdbStore | undefined = undefined;
 /* context为应用的上下文信息，由调用方自行获取，此处仅为示例。 */
-const context = new UIContext().getHostContext() as common.UIAbilityContext;
+const context = uiContext.getHostContext();
+if (context === undefined) {
+  return;
+}
 try {
   const STORE_CONFIG: relationalStore.StoreConfig = {
     name: 'RdbTest.db',
@@ -433,7 +439,7 @@ try {
             if (err.code === 14800011) {
               // 执行下文的步骤，即关闭结果集之后进行数据的恢复
             }
-            hilog.info(DOMAIN, 'BackupAndRestore', JSON.stringify(err));
+            hilog.error(DOMAIN, 'BackupAndRestore', JSON.stringify(err));
           }
         })
     }
@@ -453,7 +459,7 @@ try {
         resultSet.close();
       } catch (e) {
         if (e.code !== 14800014) {
-          hilog.info(DOMAIN, 'BackupAndRestore', `Code:${e.code}, message:${e.message}`);
+          hilog.error(DOMAIN, 'BackupAndRestore', `Code:${e.code}, message:${e.message}`);
         }
       }
     }
@@ -469,7 +475,10 @@ try {
     ``` TypeScript
     let store: relationalStore.RdbStore | undefined = undefined;
     /* context为应用的上下文信息，由调用方自行获取，此处仅为示例。 */
-    const context = new UIContext().getHostContext() as common.UIAbilityContext;
+    const context = uiContext.getHostContext();
+    if (context === undefined) {
+      return;
+    }
     let STORE_CONFIG: relationalStore.StoreConfig = {
       name: 'RdbTest.db',
       securityLevel: relationalStore.SecurityLevel.S3,
@@ -489,7 +498,7 @@ try {
         return;
       }
     } catch (e) {
-      hilog.info(DOMAIN, 'BackupAndRestore', `Code:${e.code}, message:${e.message}`);
+      hilog.error(DOMAIN, 'BackupAndRestore', `Code:${e.code}, message:${e.message}`);
     }
     
     try {

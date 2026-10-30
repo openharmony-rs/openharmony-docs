@@ -3,9 +3,10 @@
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=3c9498a5af1cedc12000d743f1689bf266862723 translatedAt=2026-10-19T01:30:14.580Z pushedAt=2026-10-19T10:19:15.501Z -->
 
 A pixel map is a data structure used to store and represent images in memory. It is an uncompressed collection of pixels. Images in formats such as JPEG or PNG are compressed, which are different from pixel maps. If you need to draw JPEG or PNG images on the screen, decode them into the pixel map format first. For details about image decoding, see [Introduction to Image Kit](../media/image/image-overview.md).
 
@@ -92,7 +93,7 @@ Drawing pixel maps using the **Drawing** APIs (ArkTS) depends on the **PixelMap*
 
 3. Draw the pixel map.
 
-   Use the **Canva** APIs to draw the pixel map. The following uses **drawImage()** as an example. For details about other ways and APIs, see [drawing.Canvas](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md).
+   Use the **Canvas** APIs to draw the pixel map. The following uses **drawImage()** as an example. For details about other ways and APIs, see [drawing.Canvas](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md).
 
    The **drawImage()** function takes four parameters: (1) **PixelMap** created; (2) X coordinate of the upper left corner of the drawn image; (3) Y coordinate of the upper left corner; (4) sampling option object. By default, the original sampling option object is constructed without any parameter.
 

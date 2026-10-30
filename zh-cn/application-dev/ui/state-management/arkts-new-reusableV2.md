@@ -653,7 +653,7 @@ struct ReusableV2Component {
 
 ## 主动清理复用池
 
-从API version 26.2.0开始，当开发者需要主动释放复用池中的组件时，可以通过[UIUtils.getCustomComponentContext](../../reference/apis-arkui/js-apis-stateManagement.md#getcustomcomponentcontext)获取当前组件的[CustomComponentContext](../../reference/apis-arkui/js-apis-stateManagement.md#customcomponentcontext)，调用CustomComponentContext的[getDefaultReusePool](../../reference/apis-arkui/js-apis-stateManagement.md#getdefaultreusepool)方法获取默认复用池[IDefaultReusePool](../../reference/apis-arkui/js-apis-stateManagement.md#idefaultreusepool)，并调用IDefaultReusePool的[clearCache](../../reference/apis-arkui/js-apis-stateManagement.md#clearcache)方法实现。
+从API version 26.1.0开始，当开发者需要主动释放复用池中的组件时，可以通过[UIUtils.getCustomComponentContext](../../reference/apis-arkui/js-apis-stateManagement.md#getcustomcomponentcontext)获取当前组件的[CustomComponentContext](../../reference/apis-arkui/js-apis-stateManagement.md#customcomponentcontext)，调用CustomComponentContext的[getDefaultReusePool](../../reference/apis-arkui/js-apis-stateManagement.md#getdefaultreusepool)方法获取默认复用池[IDefaultReusePool](../../reference/apis-arkui/js-apis-stateManagement.md#idefaultreusepool)，并调用IDefaultReusePool的[clearCache](../../reference/apis-arkui/js-apis-stateManagement.md#clearcache)方法实现。
 
 > **说明：**
 >
@@ -719,12 +719,12 @@ struct Index {
       Button('Clear All')
         .onClick(() => {
           // 清理默认复用池中的全部组件
-          UIUtils.getCustomComponentContext(this).getDefaultReusePool?.()?.clearCache();
+          UIUtils.getCustomComponentContext(this).getDefaultReusePool()?.clearCache();
         })
       Button('Clear A')
         .onClick(() => {
           // 仅清理reuseId为'A'的组件
-          UIUtils.getCustomComponentContext(this).getDefaultReusePool?.()?.clearCache('A');
+          UIUtils.getCustomComponentContext(this).getDefaultReusePool()?.clearCache('A');
         })
     }
   }

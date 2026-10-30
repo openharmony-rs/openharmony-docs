@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "讲解ArkTS函数的声明与调用方式，涵盖参数、返回值、函数类型及闭包、箭头函数、重载、高阶函数等特性。"
+keywords: [ArkTS, 函数, 参数, 返回值, 闭包, 箭头函数, 函数重载, 高阶函数, 调用签名]
+doctype: guide
+status: active
+---
+
 # 函数
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->

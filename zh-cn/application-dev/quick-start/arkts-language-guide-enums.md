@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "介绍ArkTS枚举类型的声明与使用，涵盖数值与字符串枚举、带原始值枚举、联合枚举、const enum及枚举扩展与类型安全等特性。"
+keywords: [ArkTS, 枚举, enum, 数值枚举, 字符串枚举, 联合枚举, const enum, 枚举扩展]
+doctype: guide
+status: active
+---
+
 # 枚举
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
