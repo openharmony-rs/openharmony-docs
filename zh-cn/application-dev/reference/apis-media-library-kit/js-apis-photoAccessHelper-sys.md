@@ -12372,6 +12372,71 @@ async function example(context: Context) {
   }
 }
 ```
+### queryLocalEnhancementTaskState<sup>26+</sup>
+
+queryLocalEnhancementTaskState(photoAsset: PhotoAsset): Promise&lt;LocalEnhancementTaskState&gt;
+
+查询本地AI增强任务状态。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**需要权限**：ohos.permission.READ_IMAGEVIDEO
+
+**参数：**
+
+| 参数名   | 类型                      | 必填 | 说明       |
+| -------- | ------------------------- | ---- | ---------- |
+| photoAsset | [PhotoAsset](#photoasset) | 是   | 需要查询本地AI增强任务状态的[PhotoAsset](#photoasset)。 |
+
+**返回值：**
+
+| 类型                                    | 说明              |
+| --------------------------------------- | ----------------- |
+| Promise<[LocalEnhancementTaskState](#localenhancementtaskstate26)> | 返回本地AI增强任务状态。 |
+
+**错误码：**
+
+接口抛出错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201      | Permission denied.                |
+| 202      | Called by non-system application. |
+| 23800108 | The specified asset does not exist. |
+| 23800151 | Scene parameters validate failed. Possible causes: 1. The photoAsset does not support local AI enhancement. |
+| 23800301 | Internal system error. Possible causes: 1. The database is corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+import { dataSharePredicates } from '@kit.ArkData';
+
+async function example(context: Context) {
+  console.info('queryLocalEnhancementTaskStateDemo');
+  let photoPredicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let photoFetchOptions: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: photoPredicates
+  };
+  let phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
+  try {
+    let fetchResult = await phAccessHelper.getAssets(photoFetchOptions);
+    let asset = await fetchResult.getLastObject();
+    let localEnhancementInstance: photoAccessHelper.CloudEnhancement
+      = photoAccessHelper.CloudEnhancement.getCloudEnhancementInstance(context);
+    const localEnhancementTaskState: photoAccessHelper.LocalEnhancementTaskState
+      = await localEnhancementInstance.queryLocalEnhancementTaskState(asset);
+    let progress = localEnhancementTaskState.progress;
+    console.info(`local enhancement task progress: ${progress}`);
+  } catch (err) {
+    console.error(`queryLocalEnhancementTaskStateDemo failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
 
 ### syncCloudEnhancementTaskStatus<sup>13+</sup>
 
@@ -13806,6 +13871,8 @@ async function example(context: Context) {
 | FILE_HIDDEN | 'file_hidden' | 文件的隐藏状态。 <br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。 |
 | ATTACHMENT_SIZE | 'attachment_size' | 附件文件的大小。单位为字节（Byte）。<br>默认值为0，表示尚未识别的附件文件大小或附件文件大小为0。 <br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。 |
 | MUSIC_MASTER_MODE | 'music_master_mode' | 音乐大师模式。<br>**起始版本：** 26.0.1<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。 |
+| LOCAL_ENHANCEMENT_ABILITY | 'local_enhancement_ability' | 本地AI增强任务类型。<br>**起始版本：** 26.0.1<br>**系统接口**：此接口为系统接口。 |
+| LOCAL_ENHANCEMENT_STATUS | 'local_enhancement_status' | 本地AI增强任务状态。<br>**起始版本：** 26.0.1<br>**系统接口**：此接口为系统接口。 |
 
 
 ## AlbumKeys
@@ -14499,6 +14566,18 @@ try {
 | totalFileSize  | number  | 是 | 是 | 总文件大小，单位：字节。当taskStage为CloudEnhancementTaskStage.TASK_STAGE_UPLOADING或者CloudEnhancementTaskStage.TASK_STAGE_DOWNLOADING时提供。  |
 | expectedDuration  | number  | 是 | 是 | 排队时间，单位：毫秒。当taskStage为CloudEnhancementTaskStage.TASK_STAGE_EXECUTING时提供。  |
 | statusCode  | number  | 是 | 是 | 状态码。当taskStage为CloudEnhancementTaskStage.TASK_STAGE_FAILED时提供。  |
+
+## LocalEnhancementTaskState<sup>26+</sup>
+
+本地AI增强任务状态，应用调用本地AI增强任务状态查询接口的返回类型，包含本地AI增强任务的进度信息。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称    | 类型                        | 只读 | 可选 | 说明                                                         |
+| ---- | ------- | ---- |  ---- | ----- |
+| progress  | int  | 是 | 否 | 本地AI增强任务的进度，值为整数。  |
 
 ## VideoEnhancementType<sup>13+</sup>
 
