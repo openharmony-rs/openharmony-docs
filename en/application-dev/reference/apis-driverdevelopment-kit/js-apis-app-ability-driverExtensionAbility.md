@@ -306,7 +306,7 @@ type DriverExtensionContext = _DriverExtensionContext;
 | Basic Services Kit | [@ohos.deviceInfo (Device Information)](../apis-basic-services-kit/js-apis-device-info.md)  |
 | Basic Services Kit | [@ohos.power (System Power Management)](../apis-basic-services-kit/js-apis-power.md) |
 | Basic Services Kit  | [@ohos.request (Upload and Download)](../apis-basic-services-kit/js-apis-request.md) |
-| Basic Services Kit | [@ohos.runningLock (RunningLock)](reference/apis-basic-services-kit/js-apis-runninglock.md) |
+| Basic Services Kit | [@ohos.runningLock (RunningLock)](../apis-basic-services-kit/js-apis-runninglock.md) |
 | Basic Services Kit | [@ohos.settings (Data Item Settings)](../apis-basic-services-kit/js-apis-settings.md)  |
 | Basic Services Kit | [@ohos.systemTime (System Time and Time Zone)](../apis-basic-services-kit/js-apis-system-time.md)  |
 |<!--DelRow-->Basic Services Kit | [@ohos.update (Update) (System API)](../apis-basic-services-kit/js-apis-update-sys.md) |
