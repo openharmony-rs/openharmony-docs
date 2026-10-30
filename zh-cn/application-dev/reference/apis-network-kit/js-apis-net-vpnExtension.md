@@ -391,8 +391,8 @@ create(config: VpnConfig): Promise\<number\>
 
 > **说明：**
 >
-> 1.建议在不需要VPN网络的时候配对调用[destroy()](#destroy)或[destroy(vpnId: string)](#destroy20)接口销毁启动的VPN网络，并执行资源清理等操作。<br>
-> 2.当调用该接口返回错误码2200003时，请排查是否已申请ohos.permission.INTERNET权限。
+> 1. 建议在不需要VPN网络的时候配对调用[destroy()](#destroy)或[destroy(vpnId: string)](#destroy20)接口销毁启动的VPN网络，并执行资源清理等操作。<br>
+> 2. 当调用该接口返回错误码2200003时，请排查是否已申请ohos.permission.INTERNET权限。
 
 **系统能力**：SystemCapability.Communication.NetManager.Vpn
 
