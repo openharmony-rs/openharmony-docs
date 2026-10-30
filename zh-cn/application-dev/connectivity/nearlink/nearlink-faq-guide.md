@@ -75,14 +75,14 @@
 
 ## 什么是帧类型
 
-星闪设备通过空口发送数据时，会按一定格式将数据打包成无线帧后发送。帧类型（Frame Type）用于指定无线帧的发送格式，不同帧类型的传输能力和适用场景不同。
+星闪设备之间通过无线方式发送数据时，会按一定格式将数据打包成无线帧后发送。帧类型（Frame Type）用于指定无线帧的发送格式，不同帧类型的传输能力和适用场景不同。
 
 当前支持以下两种帧类型：
 
 - **FRAME_TYPE_1（基础帧）**：默认帧类型，适用于大多数低功耗、低成本的基础交互场景。
 - **FRAME_TYPE_4（扩展覆盖帧）**：对传输数据增加了纠错保护，在信号较弱时仍能保持稳定通信，适合设备间距离较远的场景。使用该帧类型需要设备芯片支持。
 
-广播参数、扫描参数和端口连接参数中的frameType字段用于指定帧类型，扫描结果的frameType字段表示收到的广播包所用的帧类型。使用时需注意：
+广播参数、扫描参数和端口连接参数中的frameType字段用于指定帧类型，取值为nearlinkConstant.FrameType的枚举成员；扫描结果的frameType字段表示收到的广播包所用的帧类型。使用时需注意：
 
 - 广播与扫描需使用相同的帧类型才能互相发现。例如外围设备使用FRAME_TYPE_4广播时，中心设备的扫描参数也需配置为FRAME_TYPE_4。
 - 使用FRAME_TYPE_4前，先调用[isFrameType4Supported()](../../reference/apis-connectivity-kit/js-apis-nearlink-manager.md#managerisframetype4supported)查询设备是否支持；在不支持的设备上启动广播、扫描或发起连接将返回[801 API功能在部分设备不支持](../../reference/errorcode-universal.md#801-api功能在部分设备不支持)错误码。

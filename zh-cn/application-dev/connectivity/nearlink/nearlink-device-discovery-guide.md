@@ -54,7 +54,7 @@
     }
     ```
 
-3. 构造用户需要的广播参数及数据。广播中携带的服务UUID必须为自定义UUID，参见[星闪常见问题 > 标准UUID与自定义UUID有什么区别](nearlink-faq-guide.md#标准uuid与自定义uuid有什么区别)。广播参数中的frameType用于指定帧类型，默认值为FRAME_TYPE_1；如需使用扩展覆盖帧，参见[星闪常见问题 > 什么是帧类型](nearlink-faq-guide.md#什么是帧类型)。
+3. 构造用户需要的广播参数及数据。广播中携带的服务UUID必须为自定义UUID，参见[星闪常见问题 > 标准UUID与自定义UUID有什么区别](nearlink-faq-guide.md#标准uuid与自定义uuid有什么区别)。广播参数中的frameType用于指定帧类型，默认值为FRAME_TYPE_1；如需使用扩展覆盖帧，将该字段设置为nearlinkConstant.FrameType.FRAME_TYPE_4，参见[星闪常见问题 > 什么是帧类型](nearlink-faq-guide.md#什么是帧类型)。
 
     <!-- @[advertising_build_params](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/AdvertisingPage.ets) -->
     
