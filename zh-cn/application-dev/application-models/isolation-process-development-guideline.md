@@ -120,7 +120,7 @@
     <!-- @[dynamic_isolation_process](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/DynamicIsolationProcess/entry/src/main/ets/MyAbilityStage/MyAbilityStage.ets) --> 
     
     ``` TypeScript
-    import AbilityStage from '@ohos.app.ability.AbilityStage';
+    import { AbilityStage, Want } from '@kit.AbilityKit';
     
     export default class MyAbilityStage extends AbilityStage {
     // ...
