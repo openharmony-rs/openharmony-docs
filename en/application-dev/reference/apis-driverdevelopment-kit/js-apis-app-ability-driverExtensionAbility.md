@@ -36,7 +36,7 @@ import { DriverExtensionAbility } from '@kit.DriverDevelopmentKit';
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| context | [DriverExtensionContext (Driver Extension Context)](js-apis-inner-application-driverExtensionContext.md) | No| No| Context of the **DriverExtension**. This context is inherited from **ExtensionContext**.|
+| context | DriverExtensionContext  | No| No| Context of the **DriverExtension**. This context is inherited from **ExtensionContext**.|
 
 ### onInit
 
@@ -306,7 +306,7 @@ type DriverExtensionContext = _DriverExtensionContext;
 | Basic Services Kit | [@ohos.deviceInfo (Device Information)](../apis-basic-services-kit/js-apis-device-info.md)  |
 | Basic Services Kit | [@ohos.power (System Power Management)](../apis-basic-services-kit/js-apis-power.md) |
 | Basic Services Kit  | [@ohos.request (Upload and Download)](../apis-basic-services-kit/js-apis-request.md) |
-| Basic Services Kit | [@ohos.runningLock (RunningLock)](../apis-basic-services-kit/js-apis-runninglock.md)  |
+| Basic Services Kit | [@ohos.runningLock (RunningLock)](reference/apis-basic-services-kit/js-apis-runninglock.md) |
 | Basic Services Kit | [@ohos.settings (Data Item Settings)](../apis-basic-services-kit/js-apis-settings.md)  |
 | Basic Services Kit | [@ohos.systemTime (System Time and Time Zone)](../apis-basic-services-kit/js-apis-system-time.md)  |
 |<!--DelRow-->Basic Services Kit | [@ohos.update (Update) (System API)](../apis-basic-services-kit/js-apis-update-sys.md) |
@@ -332,13 +332,13 @@ type DriverExtensionContext = _DriverExtensionContext;
 |<!--DelRow-->Form Kit| [@ohos.application.formHost (formHost) (System API)](../apis-form-kit/js-apis-application-formHost-sys.md) |
 | IME Kit| [@ohos.inputMethod (Input Method Framework)](../apis-ime-kit/js-apis-inputmethod.md) |
 |<!--DelRow-->Input Kit| [@ohos.multimodalInput.inputMonitor (Input Monitor) (System API)](reference/apis-input-kit/js-apis-inputmonitor-sys.md) |
-| Location Kit | [@ohos.geolocation (Geolocation)](../apis-location-kit/js-apis-geolocation.md) |
-| Location Kit | [@ohos.geoLocationManager (Geolocation Manager)](../apis-location-kit/js-apis-geoLocationManager.md)  |
+| Location Kit| [@ohos.geolocation (Geolocation)](../apis-location-kit/js-apis-geolocation.md) |
+| Location Kit| [@ohos.geoLocationManager (Geolocation Manager)](../apis-location-kit/js-apis-geoLocationManager.md)  |
 | MDM Kit| [@ohos.enterprise.adminManager (Administrator Permission Management)](../apis-mdm-kit/js-apis-enterprise-adminManager.md) |
 |<!--DelRow-->MDM Kit| [@ohos.enterprise.dateTimeManager (System Time Management) (System API)](../apis-mdm-kit/js-apis-enterprise-dateTimeManager-sys.md) |
 | MDM Kit| [@ohos.enterprise.deviceInfo (Device Information Management)](../apis-mdm-kit/js-apis-enterprise-deviceInfo.md)  |
 |<!--DelRow-->Media Kit| [@ohos.multimedia.media (Media) (System API)](../apis-media-kit/js-apis-media-sys.md)  |
-| MultimediaKit | @ohos.multimedia.mediaLibrary (Media Library Management)|
+| Media Library Kit| @ohos.multimedia.mediaLibrary [Module Description](../apis-media-library-kit/arkts-apis-photoAccessHelper.md) |
 | Network Kit| [@ohos.net.connection (Network Connection Management)](../apis-network-kit/js-apis-net-connection.md)  |
 | Network Kit| [@ohos.net.ethernet (Ethernet Connection Management)](../apis-network-kit/js-apis-net-ethernet.md)  |
 | Network Kit| [@ohos.net.http (Data Request)](../apis-network-kit/js-apis-http.md)  |
