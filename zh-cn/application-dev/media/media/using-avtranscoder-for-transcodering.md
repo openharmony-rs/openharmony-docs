@@ -94,7 +94,7 @@ export class AVTranscoderDemo {
        if (this.avTranscoder != undefined) {
          // 转码完成回调函数。
          this.avTranscoder.on('complete', async () => {
-           console.log(`AVTranscoder is completed`);
+           console.info(`AVTranscoder is completed`);
            await this.releaseTranscoderingProcess();
          });
          // 错误上报回调函数。
