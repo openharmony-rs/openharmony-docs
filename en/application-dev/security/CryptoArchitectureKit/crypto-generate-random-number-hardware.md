@@ -6,14 +6,13 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=ee3aff3c192b61804c6eafd655527edff9eb980a translatedAt=2026-08-07T03:29:21.397Z pushedAt=2026-08-10T09:16:23.685Z -->
+<!-- md-trans-meta sourceCommit=d72018541c8c2dd5dad395009d1fba92751f60f3 translatedAt=2026-10-30T03:42:36.536Z pushedAt=2026-10-30T07:22:27.429Z nl=1 -->
 
 Starting from API version 21, a hardware entropy source can be used to generate secure random numbers.
 
 Random numbers are used to generate temporary session keys and asymmetric encryption algorithm keys. In encryption and decryption, a secure random number generator must feature randomness, unrepeatability, and unpredictability.
 
 A stronger entropy source makes random numbers harder to predict or replicate, achieving true randomness.
-
 <!--Del-->You need to use HUKS for generating random numbers with hardware entropy sources. For systems or devices with a secure environment (such as TEE and secure chip), after the hardware entropy source is enabled, the secure random number (with hardware entropy source) is obtained from the TEE through HUKS as the entropy source of the algorithm library. The secure environment depends on the hardware. The implementation in the open source repository is simulated, and subject to adaptation by OEM vendors.<!--DelEnd-->
 
 You need to call the [HUKS](../../../application-dev/security/UniversalKeystoreKit/huks-overview.md) APIs to implement the hardware entropy source.
@@ -24,7 +23,7 @@ You can call APIs to:
 
 - Enable the hardware entropy source.
 
-- Generate a series of random sequences based on a seed.
+- Specify a random seed to generate a series of random sequences.
 
 It will be helpful if you have basic knowledge of encryption and decryption and understand the following basic concepts:
 
@@ -59,9 +58,8 @@ After the hardware entropy source is set, use the **RAND_priv_bytes** API of Ope
    The length of the random number to generate ranges from **1** to **INT_MAX**, in bytes.
 
 - Return the result using **await**:
-
   <!-- @[secure_hard_ware_random_number_generation_await](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SecureHardWareRandomNumberGeneration/entry/src/main/ets/pages/Await.ets) -->
-
+  
   ``` TypeScript
   
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -77,10 +75,10 @@ After the hardware entropy source is set, use the **RAND_priv_bytes** API of Ope
     }
   ```
 
+
 - Return the result synchronously:
-
   <!-- @[secure_hard_ware_random_number_generation_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SecureHardWareRandomNumberGeneration/entry/src/main/ets/pages/Sync.ets) -->
-
+  
   ``` TypeScript
   
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -103,3 +101,4 @@ After the hardware entropy source is set, use the **RAND_priv_bytes** API of Ope
     }
   }
   ```
+

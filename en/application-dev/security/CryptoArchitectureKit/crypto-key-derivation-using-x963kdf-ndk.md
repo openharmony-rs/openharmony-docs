@@ -6,20 +6,23 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=ee3aff3c192b61804c6eafd655527edff9eb980a translatedAt=2026-08-07T03:31:20.620Z pushedAt=2026-08-10T09:28:45.101Z -->
+<!-- md-trans-meta sourceCommit=99672258e158c110c5ee74a166a44dafda8d8dee translatedAt=2026-10-30T03:48:53.922Z pushedAt=2026-10-30T07:25:49.454Z nl=1 -->
 
 Starting from API version 22, the algorithm library supports key derivation operations using this algorithm.
 
 For details about the corresponding algorithm specifications, see [X963KDF](crypto-key-derivation-overview.md#x963kdf).
+
+## Linking Related Dynamic Libraries in the CMake Script
+```txt
+target_link_libraries(entry PUBLIC libohcrypto.so)
+```
 
 ## How to Develop
 
 1. Call [OH_CryptoKdfParams_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-kdf-h.md#oh_cryptokdfparams_create) with the string parameter **X963KDF** to create a key derivation parameter object.
 
 2. Call [OH_CryptoKdfParams_SetParam](../../reference/apis-crypto-architecture-kit/capi-crypto-kdf-h.md#oh_cryptokdfparams_setparam) to set the parameters required by X963KDF. Example:
-
    - **CRYPTO_KDF_KEY_DATABLOB**: original key material used to generate a derived key.
-
    - **CRYPTO_KDF_INFO_DATABLOB**: (optional) application-specific information.
 
 3. Call [OH_CryptoKdf_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-kdf-h.md#oh_cryptokdf_create) with the string parameter **X963KDF|SHA256** to create a key derivation function object.

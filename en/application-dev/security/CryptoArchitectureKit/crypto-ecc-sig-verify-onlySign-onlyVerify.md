@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=71a9c24c930904b17deb97103d1dfffd94b342e3 translatedAt=2026-08-07T03:27:28.414Z pushedAt=2026-08-10T08:16:26.338Z -->
+<!-- md-trans-meta sourceCommit=54563f4d762a79828d807de44c3263058eb36558 translatedAt=2026-10-30T03:37:02.949Z pushedAt=2026-10-30T07:04:06.848Z nl=1 -->
 
 ## OnlySign and OnlyVerify Modes
 
@@ -22,7 +22,7 @@ Signing and signature verification supports the **OnlySign** and **OnlyVerify** 
 
 4. Call [cryptoFramework.createAsyKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateasykeygenerator) and [AsyKeyGenerator.generateKeyPair](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatekeypair-1) to generate an asymmetric key object (KeyPair), which includes a public key (**PubKey**) and a private key (**PriKey**). The key algorithm is **ECC** and curve type is **ECC224**.
 
-To learn how to generate an ECC asymmetric key pair, refer to the following example and also see [Asymmetric Key Generation and Conversion Specifications: ECC](crypto-key-generation-conversion.md#ecc) and [Randomly Generating an Asymmetric Key Pair](crypto-generate-asym-key-pair-randomly.md). Note that the reference documents may differ from the current example in input parameters.
+   To learn how to generate an ECC asymmetric key pair, refer to the following example and also see [Asymmetric Key Generation and Conversion Specifications: ECC](crypto-key-generation-conversion.md#ecc) and [Randomly Generating an Asymmetric Key Pair](crypto-generate-asym-key-pair-randomly.md). Note that the reference documents may differ from the current example in input parameters.
 
 5. Call [cryptoFramework.createSign](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesign) with the string parameter **'ECC|SHA1|OnlySign'** to create a **Sign** instance. The asymmetric key type is **ECC**, digest algorithm is **SHA1**, and signature mode is **OnlySign**.
 
@@ -41,7 +41,7 @@ To learn how to generate an ECC asymmetric key pair, refer to the following exam
 - Example (using asynchronous APIs):
 
   <!-- @[ecc_onlysign_onlyverify_signature_verification_asynchronous](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerificationArkTs/entry/src/main/ets/pages/onlysign_onlyverify_signature_validator/ecc_onlysign_onlyverify_signature_verification_asynchronous.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
@@ -84,15 +84,16 @@ To learn how to generate an ECC asymmetric key pair, refer to the following exam
   }
   ```
 
+
 - Example (using synchronous APIs):
 
   <!-- @[ecc_onlysign_onlyverify_signature_verification_synchronous](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerificationArkTs/entry/src/main/ets/pages/onlysign_onlyverify_signature_validator/ecc_onlysign_onlyverify_signature_verification_synchronous.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
   
-  function signMessagePromise(priKey: cryptoFramework.PriKey, digestBlob: cryptoFramework.DataBlob) {
+  function signMessageSync(priKey: cryptoFramework.PriKey, digestBlob: cryptoFramework.DataBlob) {
     let signAlg = 'ECC|SHA1|OnlySign';
     let signer = cryptoFramework.createSign(signAlg);
     signer.initSync(priKey);
@@ -100,7 +101,7 @@ To learn how to generate an ECC asymmetric key pair, refer to the following exam
     return signData;
   }
   
-  function verifyMessagePromise(digestBlob: cryptoFramework.DataBlob, signMessageBlob: cryptoFramework.DataBlob,
+  function verifyMessageSync(digestBlob: cryptoFramework.DataBlob, signMessageBlob: cryptoFramework.DataBlob,
     pubKey: cryptoFramework.PubKey) {
     let verifyAlg = 'ECC|SHA1|OnlyVerify';
     let verifier = cryptoFramework.createVerify(verifyAlg);
@@ -119,8 +120,8 @@ To learn how to generate an ECC asymmetric key pair, refer to the following exam
     let keyGenAlg = 'ECC224';
     let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg);
     let keyPair = generator.generateKeyPairSync();
-    let signData = signMessagePromise(keyPair.priKey, digestBlob);
-    let verifyResult = verifyMessagePromise(digestBlob, signData, keyPair.pubKey);
+    let signData = signMessageSync(keyPair.priKey, digestBlob);
+    let verifyResult = verifyMessageSync(digestBlob, signData, keyPair.pubKey);
     if (verifyResult === true) {
       console.info('verify result: success.');
     } else {
@@ -128,5 +129,3 @@ To learn how to generate an ECC asymmetric key pair, refer to the following exam
     }
   }
   ```
-  
-  <!--no_check-->

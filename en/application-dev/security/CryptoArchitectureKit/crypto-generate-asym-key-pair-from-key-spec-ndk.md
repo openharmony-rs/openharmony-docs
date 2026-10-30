@@ -6,11 +6,16 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=7bf845a7c8933b8c5015a7da3dfa1923d0e9dc57 translatedAt=2026-08-07T03:29:14.011Z pushedAt=2026-08-10T08:24:59.925Z -->
+<!-- md-trans-meta sourceCommit=99672258e158c110c5ee74a166a44dafda8d8dee translatedAt=2026-10-30T03:37:50.500Z pushedAt=2026-10-30T07:10:33.378Z nl=1 -->
 
 This topic walks you through on how to generate an RSA, an ECC, and an SM2 asymmetric key pair (**KeyPair**) based on the specified key parameters and obtain the key parameter properties.
 
 The **KeyPair** object created can be used for subsequent operations, such as encryption and decryption. The obtained key parameter properties can be used for key storage and transfer.
+
+## Linking Related Dynamic Libraries in the CMake Script
+```txt
+target_link_libraries(entry PUBLIC libohcrypto.so)
+```
 
 ## Generating an RSA Key Pair Based on Key Parameters
 
@@ -20,7 +25,7 @@ For details about the algorithm specifications, see [Asymmetric Key Generation a
 
 2. Specify the RSA key pair data (**pk**, **sk**, and **n**) of the uint8_t type and encapsulate them into [Crypto_DataBlob](../../reference/apis-crypto-architecture-kit/capi-cryptocommonapi-crypto-datablob.md).
 
-3. Call [OH_CryptoAsymKeySpec_SetParam](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoasymkeyspec_setparam) to set the parameter types to **CRYPTO_RSA_E_DATABLOB (pk)**, **CRYPTO_RSA_D_DATABLOB (sk)**, and **CRYPTO_RSA_N_DATABLOB (n)** respectively, and pass the encapsulated [Crypto_DataBlob](../../reference/apis-crypto-architecture-kit/capi-cryptocommonapi-crypto-datablob.md) in sequence to set the parameter object (**keySpec**).
+3. Call [OH_CryptoAsymKeySpec_SetParam](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoasymkeyspec_setparam) to set the parameter types to CRYPTO_RSA_E_DATABLOB (pk), CRYPTO_RSA_D_DATABLOB (sk), and CRYPTO_RSA_N_DATABLOB (n), respectively, pass in the encapsulated [Crypto_DataBlob](../../reference/apis-crypto-architecture-kit/capi-cryptocommonapi-crypto-datablob.md) in sequence, and set the parameter object (keySpec).
 
    > **NOTE**
    > The values of **pk**, **sk**, and **n** must be positive numbers entered in big-endian mode.
@@ -173,6 +178,7 @@ OH_Crypto_ErrCode doTestRsaGenKeyPairBySpec()
 }
 ```
 
+
 ## Generating an ECC Key Pair Based on Key Parameters
 
 For details about the algorithm specifications, see [Asymmetric Key Generation and Conversion Specifications: ECC](crypto-key-generation-conversion.md#ecc).
@@ -181,7 +187,7 @@ For details about the algorithm specifications, see [Asymmetric Key Generation a
 
 2. Specify the common parameters (**p**, **a**, **b**, **gx**, **gy**, **n**, and **h**) contained in the ECC public and private keys of the uint8_t type and encapsulate them into [Crypto_DataBlob](../../reference/apis-crypto-architecture-kit/capi-cryptocommonapi-crypto-datablob.md).
 
-3. Call [OH_CryptoAsymKeySpec_SetParam](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoasymkeyspec_setparam) to set the parameter types to **CRYPTO_ECC_FP_P_DATABLOB (p)**, **CRYPTO_ECC_A_DATABLOB (a)**, **CRYPTO_ECC_B_DATABLOB (b)**, **CRYPTO_ECC_G_X_DATABLOB (gx)**, **CRYPTO_ECC_G_Y_DATABLOB (gy)**, **CRYPTO_ECC_N_DATABLOB (n)**, and **CRYPTO_ECC_H_INT (h)**, respectively, and pass the encapsulated [Crypto_DataBlob](../../reference/apis-crypto-architecture-kit/capi-cryptocommonapi-crypto-datablob.md) in sequence to the parameter object (**keySpec**).
+3. Call [OH_CryptoAsymKeySpec_SetParam](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoasymkeyspec_setparam) to set the parameter types to CRYPTO_ECC_FP_P_DATABLOB (p), CRYPTO_ECC_A_DATABLOB (a), CRYPTO_ECC_B_DATABLOB (b), CRYPTO_ECC_G_X_DATABLOB (gx), CRYPTO_ECC_G_Y_DATABLOB (gy), CRYPTO_ECC_N_DATABLOB (n), and CRYPTO_ECC_H_INT (h), respectively, pass in the encapsulated [Crypto_DataBlob](../../reference/apis-crypto-architecture-kit/capi-cryptocommonapi-crypto-datablob.md) in sequence, and set the parameter object (keySpec).
 
    > **NOTE**
    > **p**, **a**, **b**, **gx**, **gy**, **n**, and **h** must be positive numbers entered in big-endian mode.
@@ -464,6 +470,7 @@ OH_Crypto_ErrCode doTestEccGenKeyPairBySpec()
 }
 ```
 
+
 ## Generating an SM2 Key Pair Based on the Elliptic Curve Name
 
 For details about the algorithm specifications, see [Asymmetric Key Generation and Conversion Specifications: SM2](crypto-key-generation-conversion.md#sm2).
@@ -476,7 +483,7 @@ For details about the algorithm specifications, see [Asymmetric Key Generation a
 
 4. Specify the SM2 key pair data (**pkx**, **pky**, and **sk**) of the uint8_t type and encapsulate them into [Crypto_DataBlob](../../reference/apis-crypto-architecture-kit/capi-cryptocommonapi-crypto-datablob.md).
 
-5. Call [OH_CryptoAsymKeySpec_SetParam](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoasymkeyspec_setparam) to set the parameter types to **CRYPTO_ECC_PK_X_DATABLOB (pkx)**, **CRYPTO_ECC_PK_Y_DATABLOB (pky)**, and **CRYPTO_ECC_SK_DATABLOB (sk)** respectively, and pass the encapsulated [Crypto_DataBlob](../../reference/apis-crypto-architecture-kit/capi-cryptocommonapi-crypto-datablob.md) in sequence to set the parameter object (**keySpec**).
+5. Call [OH_CryptoAsymKeySpec_SetParam](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoasymkeyspec_setparam) to set the parameter types to CRYPTO_ECC_PK_X_DATABLOB (pkx), CRYPTO_ECC_PK_Y_DATABLOB (pky), and CRYPTO_ECC_SK_DATABLOB (sk), respectively, pass in the encapsulated [Crypto_DataBlob](../../reference/apis-crypto-architecture-kit/capi-cryptocommonapi-crypto-datablob.md) in sequence, and set the parameter object (keySpec).
 
    > **NOTE**
    > The values of **pkx**, **pky**, and **sk** must be positive numbers entered in big-endian mode.
@@ -668,4 +675,3 @@ OH_Crypto_ErrCode doTestSm2GenKeyPairBySpec()
 }
 ```
 
-<!--no_check-->

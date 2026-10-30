@@ -6,19 +6,25 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=7bf845a7c8933b8c5015a7da3dfa1923d0e9dc57 translatedAt=2026-08-07T03:30:14.793Z pushedAt=2026-08-10T09:19:51.471Z -->
+<!-- md-trans-meta sourceCommit=99672258e158c110c5ee74a166a44dafda8d8dee translatedAt=2026-10-30T03:45:20.356Z pushedAt=2026-10-30T07:24:35.016Z nl=1 -->
 
 For details about the algorithm specifications, see [DH](crypto-key-agreement-overview.md#dh).
+
+## Linking Related Dynamic Libraries in the CMake Script
+```txt
+target_link_libraries(entry PUBLIC libohcrypto.so)
+```
 
 ## How to Develop
 
 1. Call [OH_CryptoAsymKeyGenerator_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoasymkeygenerator_create) and [OH_CryptoAsymKeyGenerator_Generate](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoasymkeygenerator_generate) to generate an asymmetric key (**keyPair**) of the DH_modp1536 type.
 
-    To learn how to generate a DH asymmetric key, refer to the following example, along with [DH Asymmetric Key Generation and Conversion Specifications](crypto-key-generation-conversion.md#dh) and [Randomly Generating an Asymmetric Key Pair](crypto-generate-asym-key-pair-randomly-ndk.md). Note that the reference documents may differ from the current example in input parameters. Pay attention to these differences when reading.
+   To learn how to generate a DH asymmetric key, refer to the following example, along with [DH Asymmetric Key Generation and Conversion Specifications](crypto-key-generation-conversion.md#dh) and [Randomly Generating an Asymmetric Key Pair](crypto-generate-asym-key-pair-randomly-ndk.md). Note that the reference documents may differ from the current example in input parameters. Pay attention to these differences when reading.
 
-2. Call [OH_CryptoKeyAgreement_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-key-agreement-h.md#oh_cryptokeyagreement_create) and specify the string parameter **DH_modp1536** to create a key protocol generator of the DH_modp1536 type.
+2. Call [OH_CryptoKeyAgreement_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-key-agreement-h.md#oh_cryptokeyagreement_create) and specify the string parameter 'DH_modp1536' to create a key agreement generator with the key algorithm DH_modp1536.
 
 3. Call [OH_CryptoKeyAgreement_GenerateSecret](../../reference/apis-crypto-architecture-kit/capi-crypto-key-agreement-h.md#oh_cryptokeyagreement_generatesecret) to perform key agreement based on the passed private key (**keyPair.priKey**) and public key (**keyPair.pubKey**) and return the shared key.
+
 
 <!-- @[TestDh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyNegotiationCpp/entry/src/main/cpp/types/project/DH.cpp) -->
 
@@ -106,4 +112,3 @@ goto_cleanup:
 }
 ```
 
-<!--no_check-->

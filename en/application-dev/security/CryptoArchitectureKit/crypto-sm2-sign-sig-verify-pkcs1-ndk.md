@@ -6,23 +6,21 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=9fdfc79fd811dbd3830944fd4ada4372911e5c41 translatedAt=2026-08-07T03:35:50.866Z pushedAt=2026-08-10T10:07:27.904Z -->
+<!-- md-trans-meta sourceCommit=54563f4d762a79828d807de44c3263058eb36558 translatedAt=2026-10-30T04:03:33.286Z pushedAt=2026-10-30T07:32:52.453Z nl=1 -->
 
 For details about the algorithm specifications, see [SM2](crypto-sign-sig-verify-overview.md#sm2).
 
 ## Adding the Dynamic Library in the CMake Script
-
 ```txt
 target_link_libraries(entry PUBLIC libohcrypto.so)
 ```
 
 ## Signing Data
-
 1. Call [OH_CryptoSign_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptosign_create) with the string parameter **'SM2_256|SM3'** to create a **Sign** instance. The key type is **SM2_256**, and MD algorithm is **SM3**.
 
 2. Call [OH_CryptoSign_Init](../../reference/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptosign_init) to initialize the **Sign** instance using [OH_CryptoPrivKey](../../reference/apis-crypto-architecture-kit/capi-cryptoasymkeyapi-oh-cryptoprivkey.md).
 
-3. Call [OH_CryptoSign_Update](../../reference/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptosign_update) to pass in the data to be signed. Currently, the amount of data to be passed in by a single **update** is not limited. You can determine how to pass in data based on the data volume. If the data size is small, you can simply call **OH_CryptoSign_Final** to pass in the full data.
+3. Call [OH_CryptoSign_Update](../../reference/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptosign_update) to pass in the data to be signed. Currently, the data volume to be passed in by a single **update** is not limited. You can determine how to pass in data based on the data volume. If the data size is small, you can simply call **OH_CryptoSign_Final** to pass in the full data.
 
 4. Call [OH_CryptoSign_Final](../../reference/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptosign_final) to obtain the signed data.
 
@@ -95,6 +93,7 @@ static OH_Crypto_ErrCode doSm2Test() {
 }
 ```
 
+
 ## Verifying the Signature
 
 1. Call [OH_CryptoVerify_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptoverify_create) with the string parameter **'SM2_256|SM3'** to create a **Verify** instance. The key type is **SM2_256**, and MD algorithm is **SM3**.
@@ -109,6 +108,20 @@ static OH_Crypto_ErrCode doSm2Test() {
 
 ``` C++
 #include "signing_signature_verification.h"
+
+static void CleanupSm2SignResources(OH_CryptoAsymKeyGenerator *keyCtx,
+    OH_CryptoKeyPair *keyPair, OH_CryptoVerify *verify)
+{
+    if (verify != nullptr) {
+        OH_CryptoVerify_Destroy(verify);
+    }
+    if (keyPair != nullptr) {
+        OH_CryptoKeyPair_Destroy(keyPair);
+    }
+    if (keyCtx != nullptr) {
+        OH_CryptoAsymKeyGenerator_Destroy(keyCtx);
+    }
+}
 
 bool DoTestSm2Signature()
 {
@@ -157,26 +170,17 @@ bool DoTestSm2Signature()
     // verify
     ret = OH_CryptoVerify_Create((const char *)"SM2_256|SM3", &verify);
     if (ret != CRYPTO_SUCCESS) {
-        OH_CryptoVerify_Destroy(verify);
-        OH_CryptoAsymKeyGenerator_Destroy(keyCtx);
+        CleanupSm2SignResources(keyCtx, keyPair, verify);
         return false;
     }
     ret = OH_CryptoVerify_Init(verify, pubKey);
     if (ret != CRYPTO_SUCCESS) {
-        OH_CryptoVerify_Destroy(verify);
-        OH_CryptoAsymKeyGenerator_Destroy(keyCtx);
+        CleanupSm2SignResources(keyCtx, keyPair, verify);
         return false;
     }
     bool res = OH_CryptoVerify_Final(verify, &msgBlob, &signBlob);
-    if (res != true) {
-        OH_CryptoVerify_Destroy(verify);
-        OH_CryptoAsymKeyGenerator_Destroy(keyCtx);
-        return false;
-    }
-
-    OH_CryptoVerify_Destroy(verify);
-    OH_CryptoAsymKeyGenerator_Destroy(keyCtx);
-    OH_CryptoKeyPair_Destroy(keyPair);
+    CleanupSm2SignResources(keyCtx, keyPair, verify);
     return res;
 }
 ```
+

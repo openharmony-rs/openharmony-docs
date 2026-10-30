@@ -6,14 +6,13 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=7bf845a7c8933b8c5015a7da3dfa1923d0e9dc57 translatedAt=2026-08-07T03:28:04.729Z pushedAt=2026-08-10T08:27:22.308Z -->
+<!-- md-trans-meta sourceCommit=65945a7a0f4fc96eaefe48f50def3bda3f01bc0a translatedAt=2026-10-30T03:37:54.142Z pushedAt=2026-10-30T07:15:23.876Z nl=1 -->
 
 This topic uses RSA and SM2 as an example to describe how to generate an asymmetric key pair (**OH_CryptoKeyPair**) and obtain the binary data.
 
 The asymmetric key pair may be used for subsequent operations such as encryption and decryption, and binary data may be used for storage or transmission.
 
 ## Adding the Dynamic Library in the CMake Script
-
 ```txt
 target_link_libraries(entry PUBLIC libohcrypto.so)
 ```
@@ -71,6 +70,7 @@ OH_Crypto_ErrCode generateRSAKey()
 }
 ```
 
+
 ## Randomly Generating an SM2 Key Pair
 
 For the corresponding algorithm specifications, see [Asymmetric Key Generation and Conversion Specifications: SM2](crypto-key-generation-conversion.md#sm2).
@@ -123,4 +123,3 @@ OH_Crypto_ErrCode generateSM2Key()
 }
 ```
 
-<!--no_check-->
