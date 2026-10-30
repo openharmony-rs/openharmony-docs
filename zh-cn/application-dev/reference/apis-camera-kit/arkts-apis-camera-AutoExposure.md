@@ -108,7 +108,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 function setExposureMode(photoSession: camera.PhotoSession): void {
   try {
-    photoSession.setExposureMode(camera.ExposureMode.EXPOSURE_MODE_LOCKED);
+    if (photoSession.isExposureModeSupported(camera.ExposureMode.EXPOSURE_MODE_LOCKED)) {
+      photoSession.setExposureMode(camera.ExposureMode.EXPOSURE_MODE_LOCKED);
+    }
   } catch (error) {
     // 失败返回错误码error.code并处理。
     let err = error as BusinessError;
