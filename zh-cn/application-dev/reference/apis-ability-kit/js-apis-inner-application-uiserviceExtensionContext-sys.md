@@ -288,7 +288,7 @@ connectServiceExtensionAbility(want: Want, options: ConnectOptions): number
 
 | 参数名               | 类型                     | 必填 | 说明              |
 | -------------------- | ------------------------ | ---- |----------------- |
-| want                 | [Want](js-apis-app-ability-want.md) | 是 | Want参数，用于传入需要连接的UIExtensionAbility的信息，如Ability名称、Bundle名称等。       |
+| want                 | [Want](js-apis-app-ability-want.md) | 是 | Want参数，用于传入需要连接的ServiceExtensionAbility的信息，如Ability名称、Bundle名称等。       |
 | options              | [ConnectOptions](js-apis-inner-ability-connectOptions.md) | 是 | 连接选项。 |
 
 **返回值：**
@@ -350,7 +350,7 @@ let options: common.ConnectOptions = {
   },
   // 连接失败回调
   onFailed(code: number): void {
-    hilog.info(DOMAIN_NUMBER, TAG, `onFailed callback, ${code}`);
+    hilog.error(DOMAIN_NUMBER, TAG, 'onFailed callback, code: %{public}d', code);
   }
 };
 
@@ -386,7 +386,7 @@ struct Page_UIServiceExtensionAbility {
 
 disconnectServiceExtensionAbility(connectionId: number): Promise&lt;void&gt;
 
-断开与[UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md)的连接，与[connectServiceExtensionAbility](#uiserviceextensioncontextconnectserviceextensionability)功能相反。使用Promise异步回调。使用场景：不再需要与UIExtensionAbility交互时断开连接，例如业务完成后释放资源。
+断开与[ServiceExtensionAbility](js-apis-app-ability-serviceExtensionAbility-sys.md#serviceextensionability)的连接，与[connectServiceExtensionAbility](#uiserviceextensioncontextconnectserviceextensionability)功能相反。使用Promise异步回调。使用场景：不再需要与ServiceExtensionAbility交互时断开连接，例如业务完成后释放资源。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
