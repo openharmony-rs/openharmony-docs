@@ -22,6 +22,9 @@ status: active
 详细的API说明请参考[AVMetadataExtractor](../../reference/apis-media-kit/arkts-apis-media-AVMetadataExtractor.md)。
 
 1. 使用[createAVMetadataExtractor()](../../reference/apis-media-kit/arkts-apis-media-f.md#mediacreateavmetadataextractor11-1)创建实例。
+
+   <!-- @[AVMetadataExtractor_CreateAVMetadataExtractor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorArkTS/entry/src/main/ets/pages/Index.ets) -->
+
    ```ts
    import { media } from '@kit.MediaKit';
    // 创建AVMetadataExtractor对象。
@@ -33,6 +36,9 @@ status: active
    开发者需根据实际情况，确认资源有效性并设置（只能设置其中一种）：
    
    - 如果设置fdSrc，可以使用ResourceManager.getRawFd打开HAP资源文件描述符，使用方法可参考ResourceManager API中的[getRawFd](../../reference/apis-localization-kit/js-apis-resource-manager.md#getrawfd9)。也可以通过应用沙箱路径访问对应资源（必须确保资源可用），参考[获取应用文件路径](../../application-models/application-context-stage.md#获取应用文件路径)。应用沙箱的介绍及如何向应用沙箱推送文件，请参考[文件管理](../../file-management/app-sandbox-directory.md)。
+
+     <!-- @[AVMetadataExtractor_SetFdSrc](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorArkTS/entry/src/main/ets/pages/Index.ets) -->
+
      ```ts
      import { common } from '@kit.AbilityKit';
      import { media } from '@kit.MediaKit';
@@ -47,6 +53,9 @@ status: active
      ```
 
    - 如果设置dataSrc，必须正确设置dataSrc中的callback属性，确保callback被调用时能正确读取到对应资源，使用应用沙箱路径访问对应资源，参考[获取应用文件路径](../../application-models/application-context-stage.md#获取应用文件路径)。应用沙箱的介绍及如何向应用沙箱推送文件，请参考[文件管理](../../file-management/app-sandbox-directory.md)。
+     
+     <!-- @[AVMetadataExtractor_SetDataSrc](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorArkTS/entry/src/main/ets/pages/Index.ets) -->
+
      ```ts
      import { fileIo, ReadOptions } from '@kit.CoreFileKit';
      import { common } from '@kit.AbilityKit';
@@ -90,6 +99,9 @@ status: active
      ```
 
    - 如果设置[setUrlSource](../../reference/apis-media-kit/arkts-apis-media-AVMetadataExtractor.md#seturlsource20)，必须正确设置setUrlSource中的url和headers属性，确保正确访问url。
+
+     <!-- @[AVMetadataExtractor_**](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorArkTS/entry/src/main/ets/pages/Index.ets) -->
+
      ```ts
      import { media } from '@kit.MediaKit';
 
@@ -104,6 +116,9 @@ status: active
      ```
 
    - 不同AVMetadataExtractor或者[AVImageGenerator](../../reference/apis-media-kit/arkts-apis-media-AVImageGenerator.md)实例，如果需要操作同一资源，需要多次打开文件描述符，不要共用同一文件描述符。
+
+    <!-- @[AVMetadataExtractor_SetOpenSync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorArkTS/entry/src/main/ets/pages/Index.ets) -->
+
      ```ts
      import { common } from '@kit.AbilityKit';
      import { fileIo } from '@kit.CoreFileKit';
@@ -119,6 +134,9 @@ status: active
      ```
 
 3. 获取元数据：调用fetchMetadata()，可以获取到一个[AVMetadata](../../reference/apis-media-kit/arkts-apis-media-i.md#avmetadata11)对象，通过访问该对象的各个属性，可以获取到元数据。
+
+   <!-- @[AVMetadataExtractor_FetchMetadata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorArkTS/entry/src/main/ets/pages/Index.ets) -->
+
    ```ts
    // 获取元数据（callback模式）。
    avMetadataExtractor.fetchMetadata((error, metadata) => {
@@ -127,12 +145,19 @@ status: active
        return;
      }
    })
+   ```
 
+   <!-- @[AVMetadataExtractor_FetchMetadataPromise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorArkTS/entry/src/main/ets/pages/Index.ets) -->
+
+   ```ts
    // 获取元数据（promise模式）。
    let metadata = await avMetadataExtractor.fetchMetadata();
    ```
 
 4. 对于视频资源：可以通过fetchMetadata获取的AVMetadata对象metadata拿到视频资源的宽、高等数据。
+
+   <!-- @[AVMetadataExtractor_**](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorArkTS/entry/src/main/ets/pages/Index.ets) -->
+
    ```ts
    // 获取视频资源的宽和高。
    let metadata = await avMetadataExtractor.fetchMetadata();
@@ -141,6 +166,9 @@ status: active
    ```
 
 5. 对于音频资源而言，除了可以通过AVMetadata对象来获取音频资源的标题、时长等元数据外，还可以获取专辑封面（例如，调用fetchAlbumCover()，可以获取到专辑封面）。
+
+   <!-- @[AVMetadataExtractor_fetchAlbumCover](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorArkTS/entry/src/main/ets/pages/Index.ets) -->
+
    ```ts
    import { image } from '@kit.ImageKit';
    // pixelMap对象声明，用于图片显示。
@@ -153,12 +181,19 @@ status: active
      }
      this.pixelMap = pixelMap;
    })
+   ```
 
+   <!-- @[AVMetadataExtractor_fetchAlbumCoverPromise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorArkTS/entry/src/main/ets/pages/Index.ets) -->
+
+   ```ts
    // 获取专辑封面（promise模式）。
    this.pixelMap = await avMetadataExtractor.fetchAlbumCover();
    ```
 
 6. （可选）获取视频缩略图：调用fetchFrameByTime，可以获取到视频缩略图。
+
+   <!-- @[AVMetadataExtractor_**](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorArkTS/entry/src/main/ets/pages/Index.ets) -->
+
    ```ts
    import { image } from '@kit.ImageKit';
    // pixelMap对象声明，用于图片显示。
@@ -175,6 +210,9 @@ status: active
    ```
 
 7. （可选）批量获取视频缩略图：调用fetchFramesByTimes，能够批量获取视频缩略图。
+
+   <!-- @[AVMetadataExtractor_**](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorArkTS/entry/src/main/ets/pages/Index.ets) -->
+
    ```ts
    import { image } from '@kit.ImageKit';
    // pixelMap对象声明，用于图片显示。
@@ -203,6 +241,9 @@ status: active
    ```
 
 8. 释放资源：调用release()销毁实例，释放资源。
+
+   <!-- @[AVMetadataExtractor_Release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorArkTS/entry/src/main/ets/pages/Index.ets) -->
+
    ```ts
    // 释放资源（callback模式）。
    avMetadataExtractor.release((error) => {
@@ -212,7 +253,11 @@ status: active
      }
      console.info(TAG, `release success.`);
    })
+   ```
 
+   <!-- @[AVMetadataExtractor_ReleasePromise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorArkTS/entry/src/main/ets/pages/Index.ets) -->
+
+   ```ts
    // 释放资源（promise模式）。
    avMetadataExtractor.release();
    ```

@@ -23,6 +23,8 @@ status: active
 
 1. 使用[createAVImageGenerator()](../../reference/apis-media-kit/arkts-apis-media-f.md#mediacreateavimagegenerator12-1)创建实例。
 
+   <!-- @[AVImageGenerator_CreateAVImageGenerator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVImageGenerator/AVImageGeneratorArkTS/entry/src/main/ets/pages/Index.ets) -->
+
    ```ts
    import { media } from '@kit.MediaKit';
    let avImageGenerator: media.AVImageGenerator = await media.createAVImageGenerator();
@@ -38,6 +40,8 @@ status: active
    >
    > - 不同AVImageGenerator或者[AVMetadataExtractor](../../reference/apis-media-kit/arkts-apis-media-AVMetadataExtractor.md)，如果需要操作同一资源，需要多次打开文件描述符，不要共用同一文件描述符。
 
+   <!-- @[AVImageGenerator_SetFdSrc](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVImageGenerator/AVImageGeneratorArkTS/entry/src/main/ets/pages/Index.ets) -->
+
    ```ts
    import { common } from '@kit.AbilityKit';
    // 获取当前组件所在Ability的Context，并通过Context获取应用文件路径。
@@ -47,6 +51,9 @@ status: active
    ```
 
 3. 获取指定时间图像：调用fetchFrameByTime()，可以获取到一个PixelMap对象，该对象可用于图片显示。
+   
+   <!-- @[AVImageGenerator_fetchFrameByTime](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVImageGenerator/AVImageGeneratorArkTS/entry/src/main/ets/pages/Index.ets) -->
+
    ```ts
    import { image } from '@kit.ImageKit';
 
@@ -67,11 +74,12 @@ status: active
    ```
 
 4. 释放资源：调用release()销毁实例，释放资源。
+
+   <!-- @[AVImageGenerator_release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVImageGenerator/AVImageGeneratorArkTS/entry/src/main/ets/pages/Index.ets) -->
+
    ```ts
    // 释放资源（promise模式）。
-   await avImageGenerator.release().catch((err: BusinessError) => {
-      console.error(`release failed, error code: ${err.code}, error message: ${err.message}`);
-   });
+   avImageGenerator.release();
    ```
 
 ## 运行示例工程
