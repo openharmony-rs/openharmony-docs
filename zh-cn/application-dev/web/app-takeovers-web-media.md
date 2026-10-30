@@ -992,7 +992,7 @@ ArkWeb内核需要本地播放器的状态信息来更新到网页（例如：�
   }
   ```
 
-- 应用侧代码，视频播放示例, ./PlayerDemo.ets。Xcomponent创建方法请参考[自定义渲染(XComponent)](../../ui/napi-xcomponent-guidelines.md)。
+- 应用侧代码，视频播放示例，./PlayerDemo.ets。Xcomponent创建方法请参考[自定义渲染(XComponent)](../ui/napi-xcomponent-guidelines.md)。
 
   ```ts
   import { media } from '@kit.MediaKit';
