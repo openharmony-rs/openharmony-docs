@@ -378,7 +378,7 @@ function sendMessageToNative() {
    ``` TypeScript
    import { UIAbility, Want, common } from '@kit.AbilityKit';
    import { webNativeMessagingExtensionManager } from '@kit.ArkWeb'
-
+   
    class ConnectionCallback implements webNativeMessagingExtensionManager.WebExtensionConnectionCallback {
      onConnect(connection:webNativeMessagingExtensionManager.ConnectionNativeInfo) {
        // connected
@@ -392,7 +392,7 @@ function sendMessageToNative() {
        console.error(`onFailed error code is ${code}, errMsg is ${errMsg}`);
      }
    }
-
+   
    function connectNative(abilityContext: common.UIAbilityContext, bundleName: string, abilityName: string,
      connectExtensionOrigin: string, readPipe: number, writePipe: number) : void {
      try {
@@ -405,7 +405,7 @@ function sendMessageToNative() {
            'ohos.arkweb.extensionOrigin': connectExtensionOrigin
          },
        };
-
+   
        let options : ConnectionCallback = new ConnectionCallback;
        let connectId = webNativeMessagingExtensionManager.connectNative(abilityContext, wantInfo, options);
        console.info(`innerWebNativeMessageManager  connectionId : ${connectId}` );
