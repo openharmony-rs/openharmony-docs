@@ -1733,11 +1733,13 @@ getIndex(text: string): string
   let index: string = indexUtil.getIndex('hi'); // index = 'H'
   ```
 
-### isBilingualIndexSupported<sup>26+</sup>
+### isBilingualIndexSupported
 
 static isBilingualIndexSupported(locale: Intl.Locale): boolean
 
 检查指定的区域是否支持双语索引。
+
+**起始版本：** 26.1.0
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -1756,16 +1758,21 @@ static isBilingualIndexSupported(locale: Intl.Locale): boolean
 | boolean | 是否支持双语索引。true表示支持双语索引，false表示不支持双语索引。 |
 
 **示例：**
+
 ```ts
 let locale = new Intl.Locale('ja-JP');
 let isSupported = i18n.IndexUtil.isBilingualIndexSupported(locale); // isSupported = true
 ```
 
-### getBilingualIndexList<sup>26+</sup>
+### getBilingualIndexList
 
-getBilingualIndexList(mode?: BilingualIndexMode): Array<string>
+getBilingualIndexList(mode?: BilingualIndexMode): Array&lt;string&gt;
 
-**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
+  获取双语索引列表。
+  
+**起始版本：** 26.1.0  
+  
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -1775,13 +1782,15 @@ getBilingualIndexList(mode?: BilingualIndexMode): Array<string>
 
 | 参数名 | 类型   | 必填 | 说明                     |
 | ------ | ------ | ---- | ------------------------ |
-| mode | [BilingualIndexMode](#bilingualindexmode26) | 否  | 双语索引的模式。默认值：FULL。 |
+| mode | [BilingualIndexMode](#bilingualindexmode) | 否  | 双语索引的模式。默认值：FULL。 |
 
 **返回值：**
 
 | 类型     | 说明          |
 | ------ | ----------- |
-| Array<string> | 双语索引列表。其中第一个元素是“#”，后面是本地索引列表和英语索引列表。如果区域不支持双语索引，则首元素“#”后面只有本地索引列表。 |
+| Array&lt;string&gt; | 双语索引列表。其中第一个元素是“#”，后面是本地索引列表和英语索引列表。如果区域不支持双语索引，则首元素“#”后面只有本地索引列表。 |
+
+**示例：**
 
 ```ts
 let locale = new Intl.Locale('ja-JP');
@@ -1789,13 +1798,15 @@ let indexUtil: i18n.IndexUtil = i18n.getInstance(locale.toString());
 let indexList = indexUtil.getBilingualIndexList(); // indexList = ['#', 'あ', 'か', 'さ', 'た', 'な', 'は', 'ま', 'や', 'ら', 'わ', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
 ```
 
-### getBilingualIndex<sup>26+</sup>
+### getBilingualIndex
 
 getBilingualIndex(text: string): string
 
 获取文本的双语索引。
 
-**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
+**起始版本：** 26.1.0  
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.I18n
 
@@ -1813,6 +1824,8 @@ getBilingualIndex(text: string): string
 | ------ | ----------- |
 | string | 文本对应的双语索引。文本为空或找不到正确的索引，则返回“#”。 |
 
+**示例：**
+
 ```ts
 let locale = new Intl.Locale('ja-JP');
 let indexUtil: i18n.IndexUtil = i18n.getInstance(locale.toString());
@@ -1820,11 +1833,13 @@ let jaIndex = indexUtil.getBilingualIndex('リンゴ'); // jaIndex = 'ら'
 let enIndex = indexUtil.getBilingualIndex('apple'); // enIndex = 'A'
 ```
 
-## BilingualIndexMode<sup>26+</sup>
+## BilingualIndexMode
 
-双语索引模式的枚举。
+表示双语索引模式的枚举。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**起始版本：** 26.1.0  
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.I18n
 
