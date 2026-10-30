@@ -11591,3 +11591,93 @@ getSubframeErrorPageEnabled(): boolean
 **示例：**
 
 完整示例代码参考[setErrorPageEnabled](#seterrorpageenabled)。
+
+## enableAutoReload
+
+enableAutoReload(enable: boolean): void
+
+设置是否启用错误页面的自动重载。
+
+启用后，Web组件会在出现网络错误时自动重试加载，每次重试的时间间隔依次为：1s → 5s → 30s → 1min → 5min → 10min → 30min。最多重试7次后停止。
+
+> **说明：**
+>
+> - 只有网络错误才会触发自动重新加载。不包括以下内容：证书错误、SSL（安全套接字层）协议错误、身份验证错误、POST请求、非HTTP(S)协议和客户端拦截的错误。
+> - 自动重新加载不会影响[onOverrideErrorPage](./arkts-basic-components-web-events.md#onoverrideerrorpage20)回调。
+> - 当触发自动重新加载时，每次重试时[onErrorReceive](./arkts-basic-components-web-events.md#onerrorreceive)回调都会被重新调用。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名   | 类型    | 必填 | 说明                      |
+| -------- | ------- | ---- | -------------------------------------- |
+| enable | boolean | 是 | 是否启用自动重载。true表示启用，false表示不启用。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 17100001 | Init error. The WebviewController must be associated with a Web component. |
+
+**示例：**
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+        .onControllerAttached(() => {
+          // 启用错误页面的自动重载
+          this.controller.enableAutoReload(true);
+          // 查询是否已启用
+          let isEnabled: boolean = this.controller.isAutoReloadEnabled();
+          console.info("已启用自动重载: " + isEnabled);
+        })
+    }
+  }
+}
+```
+
+## isAutoReloadEnabled
+
+isAutoReloadEnabled(): boolean
+
+获取是否启用错误页面的自动重载。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+| 类型                 | 说明                      |
+| -------------------- | ------------------------- |
+| boolean | 是否使能自动重新加载。如果启用，则返回true，否则返回false。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 17100001 | Init error. The WebviewController must be associated with a Web component. |
+
+**示例：**
+
+完整示例代码参考[enableAutoReload](#enableautoreload)。
