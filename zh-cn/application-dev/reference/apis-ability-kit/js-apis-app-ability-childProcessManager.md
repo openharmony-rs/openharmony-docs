@@ -557,7 +557,7 @@ getChildProcessInfos(): Promise&lt;Array&lt;ChildProcessInformation&gt;&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 16000050 | 连接系统服务失败。 |
+| 16000050 | Connect to system service failed. |
 
 **示例：**
 

@@ -829,7 +829,7 @@ getUIAbilityChildProcessInfos(): Promise\<Array\<ChildProcessInformation>>
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 16000011 | The context does not exist. |
-| 16000050 | Internal error. Possible causes: Fail to connect system service. |
+| 16000050 | Connect to system service failed. |
 
 **示例：**
 
