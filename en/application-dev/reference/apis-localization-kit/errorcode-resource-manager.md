@@ -181,7 +181,7 @@ Failed to access the system resource.
 
 **Description**
 
-A Resource Manager Object fails to obtain .
+A Resource Manager Object fails to be obtained.
 
 **Possible Causes**
 
