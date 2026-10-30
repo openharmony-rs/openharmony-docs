@@ -540,7 +540,7 @@
       - [@Entry: Page Entry Declaration](arkui-ts/ts-universal-entry.md)
     - Component Extension Decorators<!--arkts-extend-component-decorator-->
       - [@AnimatableExtend: Animatable Property Definition](arkui-ts/ts-animatable-extend.md)
-      - [\@Builder Decorator: Custom Builder Function](arkui-ts/ts-universal-builder-dynamic.md)
+      - [@Builder Decorator: Custom Builder Function](arkui-ts/ts-universal-builder-dynamic.md)
       - [\@BuilderParam Decorator: Referencing the \@Builder Function](arkui-ts/ts-universal-builderparam-dynamic.md)
       - [@Extend: Extended Component Styles](arkui-ts/ts-custom-component-decorator-extend.md)
       - [@LocalBuilder Decorator: Maintaining Component Relationships](arkui-ts/ts-universal-localbuilder.md)
@@ -548,7 +548,7 @@
       - [\@Reusable: Reusing Components](arkui-ts/ts-custom-component-decorator-reusable.md)
       - [@ReusableV2: Component Reuse V2](arkui-ts/ts-custom-component-decorator-reusablev2.md)
       - [@Styles: Component Reuse Styles](arkui-ts/ts-custom-component-decorator-styles.md)
-      - [wrapBuilder](arkui-ts/ts-universal-wrapBuilder.md)
+      - [wrapBuilder: Wrapping a Global @Builder](arkui-ts/ts-universal-wrapBuilder.md)
       - [mutableBuilder](arkui-ts/ts-universal-mutableBuilder.md)
   - Component Preview<!--component-preview-->
     - [Component Preview](arkui-ts/ts-universal-component-previewer.md)

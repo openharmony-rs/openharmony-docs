@@ -5,7 +5,7 @@
 <!--Designer: @keerecles-->
 <!--Tester: @khq-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=3cd7a88aa48788902d0133e2f69247ba0fd6a00d translatedAt=2026-09-01T11:41:30.975Z -->
+<!-- md-trans-meta sourceCommit=ee226a61937d72488771ef2e8f8022bbdda3a37a translatedAt=2026-10-30T09:02:17.797Z pushedAt=2026-10-30T09:32:33.721Z nl=1 -->
 
 **Repeat** performs iterative rendering based on array data and is typically used together with scrollable components.
 
@@ -19,7 +19,11 @@ This document provides API parameter descriptions. For details about the compone
 
 ## APIs
 
-### Repeat: \<T\>(arr: Array\<T\>)
+### Repeat
+
+Repeat\<T\>(arr: Array\<T\>)
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -37,11 +41,17 @@ This document provides API parameter descriptions. For details about the compone
 Repeat<string>(this.arr)
 ```
 
-### Repeat: \<T\>(arr: RepeatArray\<T\>)<sup>18+</sup>
+### Repeat
+
+Repeat\<T\>(arr: RepeatArray\<T\>, options?: RepeatOptions)
 
 > **NOTE**
 >
 > Data sources of the RepeatArray type are supported since API version 18.
+>
+> Since API version 26.1.0, **Repeat** supports passing in [RepeatOptions](#repeatoptions) to bind the controller [RepeatController](#repeatcontroller) and set the child component reuse strategy [allowReuseInAnimation](#repeatoptions) during the animation process.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 18.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -52,6 +62,7 @@ Repeat<string>(this.arr)
 | Name| Type      | Mandatory| Description     |
 | ------ | ---------- | -------- | -------- |
 | arr    | [RepeatArray\<T\>](#repeatarrayt18) | Yes| Data source, which is an array of the **RepeatArray\<T>** type. You can determine the data types.|
+| options    | [RepeatOptions](#repeatoptions) | No | Configuration options for creating a **Repeat** component, used to bind a controller and set the child component node reuse strategy during the animation process. When not passed, the default configuration (without binding a controller) is used.<br>**Since:** 26.1.0<br>**Model restriction:** This API can only be used in the Stage model.<br>**Atomic service API:** Since API version 26.1.0, this interface supports use in atomic services. |
 
 ## Properties
 
@@ -243,6 +254,68 @@ Defines a union type for **Repeat** data source parameters.
 | ReadonlyArray\<T\> | Read-only array type, where the array object cannot be modified.|
 | Readonly\<Array\<T\>> | Read-only array type, where the array object cannot be modified.|
 
+## RepeatOptions
+
+Configuration options for creating a **Repeat** component.
+
+**Since:** 26.1.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name | Type | Read-Only | Optional | Description |
+| --- | --- | --- | --- | --- |
+| controller | [RepeatController](#repeatcontroller) | No | Yes | Controller bound to the **Repeat** component. After binding, when the cache needs to be cleared, call [clearCache](#clearcache) to clear the components in the cache pool of the **Repeat** component in lazy loading mode. This controller is bound only when **Repeat** is created and does not support dynamic modification.<br>Default value: **undefined**, which means no controller is bound. |
+| allowReuseInAnimation | boolean | No | Yes | Whether to allow reuse of child components when **Repeat** is updated during the [animateTo](../arkts-apis-uicontext-uicontext.md#animateto) animation process. This takes effect only when the parent container component of Repeat is [List](./ts-container-list.md), [Grid](./ts-container-grid.md), or [WaterFlow](./ts-container-waterflow.md).<br>When **Repeat** is used together with animations, the reuse capability of Repeat conflicts with the animation, causing animation exceptions. In scenarios involving animations, set this parameter to false so that **Repeat** does not reuse child components when updated during the animation process, thereby supporting the animation.<br>**true**: the reuse capability remains enabled during the animation process.<br>**false**: the reuse capability is disabled during the animation process.<br>Default value: **false** when the parent container component of **Repeat** is **List**; **true** when the parent container component is **Grid** or **WaterFlow**. |
+
+## RepeatController
+
+Controller of the **Repeat** component. Bind the controller to the **Repeat** component through the controller field in [RepeatOptions](#repeatoptions). When the cache needs to be cleared, call [clearCache](#clearcache) to clear the components in the cache pool of the **Repeat** component in lazy loading mode.
+
+> **NOTE**
+>
+> 1. The controller is bound only when **Repeat** is created and does not support dynamic modification.
+> 2. A controller can control only one **Repeat** component. If the controller is bound to another **Repeat** component, the previous binding automatically becomes invalid, and the controller controls only the last bound component.
+
+**Since:** 26.1.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+### constructor
+
+constructor()
+
+Constructor of **RepeatController**.
+
+**Since:** 26.1.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+### clearCache
+
+clearCache(): void
+
+Clears the components in the cache pool of the **Repeat** component bound to this controller in lazy loading mode.
+
+**Since:** 26.1.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 ## RepeatItem\<T\>
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
@@ -270,7 +343,7 @@ Configures the expected total number of data items to be loaded in lazy loading 
 | ---------- | ------ | ---- | ---- | ------------------------------------------------------------ |
 | totalCount | number | No | Yes | Total number of expected data items to load, which can be different from the data source length (the length of the array actually passed to Repeat).<br>Value range: natural number.<br>At most one of totalCount and onTotalCount() can be set. If neither is set, the default value is used: the data source length. If both are set, totalCount is ignored.<br>If totalCount is omitted or out of the value range, totalCount takes the value of the data source length, and the list scrolls normally.<br>If totalCount = 0, no data is loaded.<br>If 0 < totalCount <= data source length, only the data in the range [0, totalCount - 1] is rendered in the UI.<br>If totalCount > data source length, **Repeat** renders the data in the range [0, totalCount - 1], and the scrollbar style of the container component changes based on the totalCount value. During scrolling of the container component, the application must ensure that subsequent data is requested when the list is about to scroll to the end of the data source. The developer needs to protect against error scenarios of data requests (such as network latency) until the data source is fully loaded; otherwise, abnormal scrolling effects may occur during list scrolling. It is recommended to use [onLazyLoading](#onlazyloading19) to implement data lazy loading.<br>In addition to the totalCount attribute, the developer can also set a custom method through [onTotalCount](#ontotalcount19) to calculate the expected total number of data items to load.<br>**Atomic service API:** Since API version 12, this API is supported in atomic services. |
 | reusable<sup>18+</sup> | boolean | No | Yes | Whether to enable the reuse capability. When the child component of **Repeat** is a custom component decorated by [@ReusableV2](../../../ui/state-management/arkts-new-reusableV2.md), the reuse capability of **Repeat** itself takes precedence over that of @ReusableV2. If the developer wants to use the reuse capability of @ReusableV2, it is recommended to disable the reuse capability of **Repeat** itself.<br>**true**: enables reuse.<br>**false**: disables reuse.<br>Default value: **true**<br>**Atomic service API:** Since API version 18, this API is supported in atomic services. |
-| memoryOptimizationStrategy | [RepeatMemOptStrategy](#repeatmemoptstrategy) | No | Yes | Memory optimization strategy of **Repeat**. This parameter is set when **Repeat** is created and does not support dynamic modification.<br>Default value: [DEFAULT](#repeatmemoptstrategy)<br>**Since:** 26.0.0<br>**Model constraint:** This API can be used only in the stage model.<br>**Atomic service API:** Since API version 26.0.0, this API is supported in atomic services.|
+| memoryOptimizationStrategy | [RepeatMemOptStrategy](#repeatmemoptstrategy) | No | Yes | Memory optimization strategy of **Repeat**. This parameter is set when **Repeat** is created and does not support dynamic modification.<br>Default value: [DEFAULT](#repeatmemoptstrategy)<br>**Since:** 26.0.0<br>**Model restriction:** This API can be used only in the stage model.<br>**Atomic service API:** Since API version 26.0.0, this API is supported in atomic services.|
 
 **Example**
 
@@ -486,3 +559,127 @@ struct MemoryOptimizeDemo {
   }
 }
 ```
+
+### Example 2 Actively Clearing the Cache Pool
+
+In the following example, the [RepeatController](#repeatcontroller) is bound through the **controller** attribute of [RepeatOptions](#repeatoptions). Click the **Scroll** button to make the list jump, and the old components enter the cache pool. Then click the **Clear** button to actively clear the components in the **Repeat** cache pool.
+
+Since API version 26.1.0, the **Repeat** API adds the **options** parameter.
+
+```ts
+@ComponentV2
+struct ChildComponent {
+  aboutToAppear() {
+    console.info('ChildComponent aboutToAppear');
+  }
+  aboutToDisappear() {
+    console.info('ChildComponent aboutToDisappear');
+  }
+  build() {
+    Text('ChildComponent')
+  }
+}
+
+@Entry
+@ComponentV2
+struct ClearCacheDemo {
+  @Local data: Array<number> = [];
+  // Create the RepeatController object.
+  private controller: RepeatController = new RepeatController();
+  private scroller: Scroller = new Scroller();
+
+  aboutToAppear(): void {
+    for (let i = 0; i < 100; i++) {
+      this.data.push(i);
+    }
+  }
+
+  build() {
+    Column() {
+      List({ scroller: this.scroller }) {
+        // Bind the controller through the controller field of RepeatOptions.
+        Repeat<number>(this.data, { controller: this.controller })
+          .each((repeatItem: RepeatItem<number>) => {
+            ListItem() {
+              ChildComponent()
+            }
+          })
+          .virtualScroll()
+      }
+      .cachedCount(5)
+      .height('80%')
+
+      Button('Scroll')
+        .onClick(() => {
+          // Tap the button to trigger list jump, and the old components enter the cache pool.
+          this.scroller.scrollToIndex(30);
+        })
+
+      Button('Clear')
+        .onClick(() => {
+          // Actively clear the components in the Repeat cache pool.
+          this.controller.clearCache();
+        })
+    }
+  }
+}
+```
+
+### Example 3 Using Animation Capability
+
+In the following example, the animation capability is adapted through the **allowReuseInAnimation** attribute of [RepeatOptions](#repeatoptions).
+
+Since API version 26.1.0, the **Repeat** API adds the **options** parameter.
+
+```ts
+@Entry
+@ComponentV2
+struct RepeatAnimationDemo {
+  @Local dataArray: string[] = [];
+  private count: number = 0;
+
+  aboutToAppear(): void {
+    for (let i = 0; i < 20; i++) {
+      this.dataArray.push(`Item ${i}`);
+    }
+  }
+
+  build() {
+    Column({ space: 5 }) {
+      Row({ space: 5 }) {
+        Button('Update Repeat in Animation')
+          .onClick(() => { // Insert child components during the animation process.
+            this.getUIContext()?.animateTo({ duration: 1000 }, () => {
+              this.dataArray.splice(0, 0, `New item ${this.count++}`)
+            })
+          })
+      }
+      Row({ space: 5 }) {
+        Grid() {
+          Repeat(this.dataArray, { allowReuseInAnimation: false }) // Repeat does not reuse child components during the animation process, thereby adapting to the animation.
+            .each((repeatItem) => {
+              GridItem() {
+                Text(repeatItem.item)
+              }
+              .width(150)
+              .height(50)
+              .border({ width: 1 })
+              .transition(TransitionEffect.translate({ x: 300 })) // Set the transition effect when child components are inserted.
+            })
+            .key((item: string, index: number) => item)
+            .virtualScroll()
+        }
+        .columnsTemplate('1fr')
+        .columnsGap(5)
+        .rowsGap(5)
+        .width('80%')
+      }
+    }
+    .width('100%')
+  }
+}
+```
+
+Running effect:
+
+![Repeat-animate-grid](figures/repeat-animate-grid.gif)
