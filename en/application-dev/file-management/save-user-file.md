@@ -58,7 +58,7 @@ If the security component cannot be called to save images and videos in your dev
    // Specify the URI of the file or directory to save (optional).
    documentSaveOptions.defaultFilePathUri = "file://docs/storage/Users/currentUser/test";
    // File type. The value is in ['Suffix type description|Suffix type'] format. To save all files, use 'All files (*.*)|.*' (optional). If multiple suffixes are selected (a maximum of 100 suffixes can be filtered), the first suffix is selected by default. If this parameter is not transferred, no suffix is filtered by default.
-   documentSaveOptions.fileSuffixChoices = ['文档|.txt', '.pdf'];
+   documentSaveOptions.fileSuffixChoices = ['Document|.txt', '.pdf'];
    // When saving files, the application determines whether to pre-create empty files. The default value is true, where the Picker pre-creates empty files and returns an array of file URIs. When the value is set to false, no empty files are pre-created, and only an array of file URIs is returned.
    documentSaveOptions.autoCreateEmptyFile = false;
    ```
