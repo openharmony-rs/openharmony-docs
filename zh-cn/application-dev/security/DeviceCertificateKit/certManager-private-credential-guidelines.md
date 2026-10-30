@@ -77,6 +77,8 @@
    >
    > 签名、验签操作支持的参数组合，详见HUKS声明的[签名/验签介绍及算法规格](../UniversalKeystoreKit/huks-signing-signature-verification-overview.md)中RSA、ECC及SM2的描述。
 
+5. 卸载已安装的应用证书凭据。
+
    当您的应用不再需要使用应用证书凭据时，可调用uninstallPrivateCertificate接口卸载已安装的应用证书凭据。例如您的应用证书凭据与登录用户绑定，在用户退出登录时卸载对应用户的应用证书凭据。
 
 ## 样例代码
