@@ -313,6 +313,7 @@ ArkGraphics 3D中的材质类型通过[MaterialType](../reference/apis-arkgraphi
    import { Scene, Camera, Material, Node, Image, SceneResourceFactory, Geometry, EnvironmentBackgroundType,
      PostProcessSettings, ToneMappingType, MetallicRoughnessMaterial, Vec4 } from '@kit.ArkGraphics3D';
    import {lookAt, OrbitCameraHelper } from '../common/utils';
+   import { BusinessError } from '@kit.BasicServicesKit';
    ```
 
 2. 加载场景资源。
