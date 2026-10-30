@@ -12372,6 +12372,7 @@ async function example(context: Context) {
   }
 }
 ```
+
 ### queryLocalEnhancementTaskState<sup>26+</sup>
 
 queryLocalEnhancementTaskState(photoAsset: PhotoAsset): Promise&lt;LocalEnhancementTaskState&gt;
