@@ -28,7 +28,7 @@ Used to control whether the component inherits the effect attribute parameters<!
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| value | boolean | Yes | Whether the component inherits the effect attribute parameters<!--Del--> of the parent [EffectComponent](ts-container-effectcomponent-sys.md)<!--DelEnd--> to merge the rendering of effects.<br>When useEffect is true, the child component inherits the effect attribute parameters<!--Del--> of the parent [EffectComponent](ts-container-effectcomponent-sys.md); when it is false, the child component does not inherit the effect attribute parameters<!--Del--> of the parent [EffectComponent](ts-container-effectcomponent-sys.md).<br>Default value: false|
+| value | boolean | Yes | Whether the component inherits the effect attribute parameters<!--Del--> of the parent [EffectComponent](ts-container-effectcomponent-sys.md)<!--DelEnd--> to merge the rendering of effects.<br>When useEffect is true, the child component inherits the effect attribute parameters<!--Del--> of the parent [EffectComponent](ts-container-effectcomponent-sys.md)<!--DelEnd-->; when it is false, the child component does not inherit the effect attribute parameters<!--Del--> of the parent [EffectComponent](ts-container-effectcomponent-sys.md)<!--DelEnd-->.<br>Default value: false|
 
 **Return value**
 
