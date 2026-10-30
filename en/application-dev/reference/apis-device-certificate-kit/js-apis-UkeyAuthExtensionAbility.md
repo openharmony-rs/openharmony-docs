@@ -1,4 +1,4 @@
-# @ohos.security.UkeyAuthExtensionAbility (UKey Authentication Extension Capability)
+# @ohos.security.UkeyAuthExtensionAbility (UKey Authentication Extension Ability)
 
 <!--Kit: Device Certificate Kit-->
 <!--Subsystem: Security-->
@@ -6,7 +6,7 @@
 <!--Designer: @chande-->
 <!--Tester: @zhangzhi1995-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=4c527713007118f6425722eade659066f086fae1 translatedAt=2026-10-30T06:44:01.588Z pushedAt=2026-10-30T09:23:25.816Z nl=1 -->
+<!-- md-trans-meta sourceCommit=4c527713007118f6425722eade659066f086fae1 translatedAt=2026-10-30T06:44:01.588Z pushedAt=2026-10-30T10:10:42.958Z nl=1 -->
 
 **UkeyAuthExtensionAbility** is an ExtensionAbility component used for UKey authentication UI display, which inherits from [ExtensionAbility](../apis-ability-kit/js-apis-app-ability-extensionAbility.md). Driver vendors can provide a custom UKey authentication UI by inheriting **UkeyAuthExtensionAbility** and implementing the related lifecycle callbacks. The UI is displayed through the [UIExtensionContentSession](../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession.md) started by the host application.
 

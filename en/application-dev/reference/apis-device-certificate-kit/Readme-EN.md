@@ -5,14 +5,14 @@
 <!--Designer: @chande-->
 <!--Tester: @zhangzhi1995-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=2071749f389a8ec1ad52f2d21faa1fe48054e9b2 translatedAt=2026-10-30T06:53:37.214Z pushedAt=2026-10-30T09:30:16.535Z nl=1 -->
+<!-- md-trans-meta sourceCommit=2071749f389a8ec1ad52f2d21faa1fe48054e9b2 translatedAt=2026-10-30T06:53:37.214Z pushedAt=2026-10-30T10:11:12.398Z nl=1 -->
 
 - ArkTS APIs<!--device-certificate-arkts-->
   - [@ohos.security.cert (Certificate)](js-apis-cert.md)
   - [@ohos.security.certManager (Certificate Management)](js-apis-certManager.md)
   - [@ohos.security.certManagerDialog (Certificate Management Dialog Box](js-apis-certManagerDialog.md)
   - [@ohos.security.UkeyAuthExtensionAbility (UKey Authentication Extension Ability)](js-apis-UkeyAuthExtensionAbility.md)
-  - [@ohos.security.UkeyAuthExtensionContext (UKey Authentication Extension Ability Context)](js-apis-UkeyAuthExtensionContext.md)
+  - [@ohos.security.UkeyAuthExtensionContext (UKey Authentication Extension Context)](js-apis-UkeyAuthExtensionContext.md)
   <!--Del-->
   - [@ohos.security.certManager (Certificate Management) (System API)](js-apis-certManager-sys.md)
   <!--DelEnd-->
