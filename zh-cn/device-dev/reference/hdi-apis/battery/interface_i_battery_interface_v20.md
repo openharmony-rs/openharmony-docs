@@ -384,6 +384,7 @@ HDF_SUCCESS 表示注册成功。
 
 HDF_FAILED 表示注册失败。
 
+
 ### GetTemperature()
 
 ```
