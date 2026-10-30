@@ -409,6 +409,8 @@ createScene(uri?: ResourceStr): Promise\<Scene>
 
 从指定的资源URI创建一个新的场景。如果不指定URI，则创建一个空场景，使用Promise异步回调。
 
+该接口为耗时操作。在异步任务执行期间，调用其他接口可能会被阻塞，直到该异步任务完成。
+
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
 **ArkTS-Dyn起始版本：** 20
@@ -1101,6 +1103,8 @@ PCF（Percentage Closer Filtering，百分比邻近过滤）软阴影配置类�
 static load(uri?: ResourceStr): Promise\<Scene>
 
 通过传入的资源路径加载资源，使用Promise异步回调。调用后，应该在Scene使用完毕时调用[destroy](#destroy)释放资源，否则可能导致资源泄漏。
+
+该接口为耗时操作。在异步任务执行期间，调用其他接口可能会被阻塞，直到该异步任务完成。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
