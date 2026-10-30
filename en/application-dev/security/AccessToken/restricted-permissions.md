@@ -1778,9 +1778,23 @@ With this permission, an application can implement the recording and playback fu
 
 **Authorization mode**: manual_settings
 
-**Supported devices**: PCs/2-in-1 devices
+**Supported devices**: PCs/2-in-1 devices | phones | tablets
 
 **Since**: 26.1.0
+
+## ohos.permission.USE_ULTRA_FAST_AUDIO_STREAM
+ 
+Allow the app to create a specified ultra-low-latency audio mode when creating an audio playback or recording stream, enabling the resulting audio stream to achieve lower overall latency than normal mode during playback or recording.
+ 
+<!--RP117--><!--RP117End-->
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+**Supported devices**: PCs/2-in-1 devices
+ 
+**Since**: 26.0.1
 
 ## ohos.permission.ACCESS_BOARD_INFO
  
