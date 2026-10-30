@@ -5,6 +5,7 @@
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @hu-zhiqiong-->
+<!-- md-trans-meta sourceCommit=451e36dee22d047833da6215878b888c723693f0 translatedAt=2026-10-29T12:25:42.347Z pushedAt=2026-10-30T08:16:54.675Z nl=1 -->
 
 This module is a collection of device management APIs provided by Driver Development Kit. It allows you to query information about external devices and bind or unbind apps to or from peripheral drivers. The APIs of this module can be used to implement the following functions:
 
@@ -556,5 +557,5 @@ Represents information about a remote device driver.
 
 | Name     | Type  | Read-Only| Optional| Description               |
 | --------- | ------ | ---- | ---- | ------------------- |
-| deviceId<sup>11+</sup>  | number | No  | No  | ID of the peripheral device. |
-| remote<sup>11+</sup> | [rpc.IRemoteObject](../apis-ipc-kit/js-apis-rpc.md#iremoteobject) | No  | No  | Remote driver communication object.|
+| deviceId  | number | No   | No   | Device ID.  |
+| remote | [rpc.IRemoteObject](../apis-ipc-kit/js-apis-rpc.md#iremoteobject) | No   | No   | Remote driver communication object. |

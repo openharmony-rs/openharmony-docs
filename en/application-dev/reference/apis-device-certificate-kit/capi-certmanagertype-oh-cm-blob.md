@@ -6,6 +6,7 @@
 <!--Designer: @chande-->
 <!--Tester: @zhangzhi1995-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=a6d1ecf9e75b8b70f5a7c31d0a647870288e2f5c translatedAt=2026-10-30T06:35:03.159Z pushedAt=2026-10-30T08:49:37.635Z nl=1 -->
 
 ```c
 typedef struct {...} OH_CM_Blob
@@ -27,5 +28,7 @@ Defines a struct for a binary large object (BLOB).
 
 | Name| Description|
 | -- | -- |
-| uint32_t size | Data size.|
+| uint32_t size | Data size, in bytes. |
 | uint8_t *data | Pointer to the memory in which the data is stored.|
+
+
