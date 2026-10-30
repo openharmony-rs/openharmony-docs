@@ -420,7 +420,7 @@ function sendMessageToNative() {
    
    ``` TypeScript
    import { webNativeMessagingExtensionManager } from '@kit.ArkWeb'
-
+   
    function disconnectNative(connectId: number) : void {
      console.info(`NativeMessageDisconnect start connectionId is ${connectId}`);
      webNativeMessagingExtensionManager.disconnectNative(connectId);
