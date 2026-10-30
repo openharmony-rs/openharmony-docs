@@ -49696,5 +49696,20 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/graphics/system-font-c.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp",
+				"functions":[
+					{
+						"end_line":356,
+						"name":"custom_font_c_disable_system_font_text_step1",
+						"start_line":342
+					}
+				]
+			}
+		]
 	}
 ]
