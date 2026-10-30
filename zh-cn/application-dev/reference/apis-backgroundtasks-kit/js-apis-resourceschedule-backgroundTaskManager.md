@@ -569,10 +569,10 @@ export default class EntryAbility extends UIAbility {
     try {
       notificationManager.publish(request).then(() => {
         console.info('publish success, id= ' + this.notificationId);
-      }).catch((err: BusinessError) => {
+      }).catch((error: BusinessError) => {
         console.error(`publish fail. code is ${error.code} message is ${error.message}`);
       });
-    } catch (err) {
+    } catch (error) {
       console.error(`publish fail. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
     }
   }
