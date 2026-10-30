@@ -928,19 +928,17 @@ type Callback<T, V = void> = (data: T) => V;
 
 分割线样式属性集合，用于描述分割线相关信息。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称     | 类型                                      | 只读 | 可选 | 说明              |
 | ------ | --------------------------------------- |---| -------- |-----------------|
-| strokeWidth  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)  | 否 | 是 | 分割线的线宽。         |
-| color  | [ResourceColor](#resourcecolor) | 否  | 是 | 分割线的颜色。         |
-| startMargin | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否  | 是 | 分割线与菜单侧边起始端的距离。 |
-| endMargin  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)| 否  | 是 | 分割线与菜单侧边结束端的距离。 |
-| mode<sup>19+</sup>  | [DividerMode](ts-appendix-enums.md#dividermode19枚举说明)| 否  | 是 | 设置分割线模式。 |
+| strokeWidth  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)  | 否 | 是 | 分割线的线宽。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。         |
+| color  | [ResourceColor](#resourcecolor) | 否  | 是 | 分割线的颜色。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。         |
+| startMargin | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否  | 是 | 分割线与菜单侧边起始端的距离。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| endMargin  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)| 否  | 是 | 分割线与菜单侧边结束端的距离。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| mode<sup>19+</sup>  | [DividerMode](ts-appendix-enums.md#dividermode19枚举说明)| 否  | 是 | 设置分割线模式。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
 
 ## ChainWeightOptions<sup>14+</sup>对象说明
 
