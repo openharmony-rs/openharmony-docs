@@ -604,6 +604,7 @@ display，position，z-index，visibility，opacity, background-color，backgrou
           Stack() {
             ForEach(this.componentIdArr, (componentId: string) => {
               NodeContainer(this.nodeControllerMap.get(componentId))
+                // 同层组件容器应与同层标签的宽高和位置绑定。
                 .position(this.positionMap.get(componentId))
                 .width(this.widthMap.get(componentId))
                 .height(this.heightMap.get(componentId))
