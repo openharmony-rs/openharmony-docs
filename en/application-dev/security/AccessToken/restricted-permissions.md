@@ -1778,7 +1778,7 @@ With this permission, an application can implement the recording and playback fu
 
 **Authorization mode**: manual_settings
 
-**Supported devices**: PCs/2-in-1 devices | phones | tablets
+**Supported devices**: PCs/2-in-1 devices
 
 **Since**: 26.1.0
 
@@ -1792,9 +1792,9 @@ Allow the app to create a specified ultra-low-latency audio mode when creating a
  
 **Authorization mode**: system_grant
  
-**Supported devices**: PCs/2-in-1 devices
+**Supported devices**: PCs/2-in-1 devices | phones | tablets
  
-**Since**: 26.0.1
+**Since**: 26.1.0
 
 ## ohos.permission.ACCESS_BOARD_INFO
  
