@@ -40,6 +40,49 @@ import { cliManager } from '@kit.AbilityKit';
 | toolCallId | string | 否 | 表示工具调用的唯一标识符，由Agent分配。取值由字母、数字、'_'和'-'组成，最大长度为256。<br>从API版本26.0.1开始支持。 |
 | dmSessionId | string | 否 | 表示对话管理器（DM）的会话ID，用于唯一标识Agent会话。取值由字母、数字、'_'和'-'组成，最大长度为256。<br>从API版本26.0.1开始支持。 |
 
+## ExecCmdOptions
+
+执行命令的可选参数。
+
+**起始版本：** 26.0.1
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Ability.AgentRuntime.Core
+
+**系统接口：** 此接口为系统接口。
+
+| 名称           | 类型    | 必填 | 说明 |
+| -------------- | ------- | ---- | ---- |
+| isShellCommand | boolean | 否   | 表示cmd是否作为Shell命令执行。<br>true：Shell命令模式，将cmd作为Shell命令执行，行为与原有逻辑一致。<br>false：工具命令模式，将cmd作为已注册CLI工具的命令字符串解析并执行，权限校验、沙箱和进程管理与[execTool](#climanagerexectool)一致。<br>默认值：true<br>工具命令模式下，cmd中首个空格前的字符串为工具名；参数仅支持长标志形式，包括--key value、--flag、--flag false，取值含空格时需使用单引号包裹（如--name 'hello world'）；cmd的字节长度不能超过8192，超出时抛出错误码401；工具或子命令不存在时抛出错误码35600030。 |
+| challenge      | string  | 否   | 使用[requestToolPermissions](js-apis-abilityToolAccessCtrl-sys.md#abilitytoolaccessctrlrequesttoolpermissions)接口生成的[TicketInfo](js-apis-abilityToolAccessCtrl-sys.md#ticketinfo)中的ticket字符串。仅在工具命令模式下生效，原值透传给工具进程，服务端不生成、不校验、不修改。<br/>默认值：空字符串。 |
+
+**示例：**
+
+```ts
+import { cliManager } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 工具命令模式：将已注册CLI工具的命令字符串直接交给execCmd执行，无需自行解析为结构化参数
+let toolCmd: string = 'ohos-aa start --bundleName com.example.myapplication --abilityName EntryAbility';
+// 如需透传认证标识，可将challenge设置为requestToolPermissions接口生成的ticket字符串
+let options: cliManager.ExecCmdOptions = {
+  isShellCommand: false,
+  timeout: 60
+};
+try {
+  cliManager.execCmd(toolCmd, options).then((sessionInfo) => {
+    hilog.info(0x0000, 'CliManager', 'execCmd success, toolName: %{public}s, status: %{public}s',
+      sessionInfo.toolName, sessionInfo.status);
+  }).catch((error: BusinessError) => {
+    hilog.error(0x0000, 'CliManager', 'execCmd failed, code: %{public}d, message: %{public}s', error.code, error.message);
+  });
+} catch (error) {
+  hilog.error(0x0000, 'CliManager', 'execCmd failed, error: %{public}s', JSON.stringify(error));
+}
+```
+
 ## cliManager.queryToolSummaries
 
 queryToolSummaries(): Promise\<Array\<ToolSummary>>
