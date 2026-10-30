@@ -1,10 +1,11 @@
 # Defining Gesture Events
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=3b17ae247298f1cf952b1cbdcb60f1ff0e80beac translatedAt=2026-10-29T09:02:46.798Z pushedAt=2026-10-30T02:58:17.190Z nl=1 -->
 
 A gesture represents a semantic action (for example, touch, click, or long press) recognized from one or more input events. A gesture lifecycle may consist of multiple sequential events from its initiation to completion. Supported events are as follows:
 
