@@ -215,10 +215,10 @@ function sendMessageToNative() {
    import { hilog } from '@kit.PerformanceAnalysisKit';
    import {buffer, util} from '@kit.ArkTS';
    import { fileIo } from '@kit.CoreFileKit';
-
+   
    const TAG: string = '[MyWebNativeMessageExtAbility]';
    const DOMAIN_NUMBER: number = 0xFF00;
-
+   
    export default class MyWebNativeMessageExtAbility extends WebNativeMessagingExtensionAbility {
      // 读取扩展发来的消息，并回复
      async ReadAsync(fdRead:number, fdWrite:number) : Promise<void> {
@@ -231,7 +231,7 @@ function sendMessageToNative() {
            return;
          }
          hilog.info(DOMAIN_NUMBER, TAG, 'read pipe %{public}s', buffer.from(arrayBuffer, 4, readLen - 4).toString());
-
+   
          // write
          let strResponse : string = 'pong';
          const encoder = new util.TextEncoder('utf-8');
@@ -251,17 +251,17 @@ function sendMessageToNative() {
          hilog.error(DOMAIN_NUMBER, TAG, 'fileIo failed, error code: ' + err.code + ' message: ' + err.message);
        }
      }
-
+   
      onConnectNative(info: ConnectionInfo): void {
        hilog.info(DOMAIN_NUMBER, TAG,
          `onConnectNative, connectionId ${info.connectionId} caller bundle: ${info.bundleName}, extension origin: ${info.extensionOrigin}, pipe Read: ${info.fdRead}, pipe write ${info.fdWrite}  `);
        this.ReadAsync(info.fdRead, info.fdWrite)
      }
-
+   
      onDisconnectNative(info: ConnectionInfo): void {
        hilog.info(DOMAIN_NUMBER, TAG, `onDisconnectNative, connectionId: ${info.connectionId}`);
      }
-
+   
      onDestroy(): void {
        hilog.info(DOMAIN_NUMBER, TAG, 'onDestroy');
      }
