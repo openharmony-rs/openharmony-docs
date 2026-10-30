@@ -40,6 +40,14 @@
 2. 导入相关模块。
 
    <!-- @[certificate_management_user_cred_guidance_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateManagement/entry/src/main/ets/samples/CertManagerUserCredSample.ets) -->
+   
+   ``` TypeScript
+   import { certificateManager, certificateManagerDialog } from '@kit.DeviceCertificateKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { common } from '@kit.AbilityKit';
+   import { UIContext } from '@kit.ArkUI';
+   import { JSON, util } from '@kit.ArkTS';
+   ```
 
 3. 安装用户证书凭据。
 
