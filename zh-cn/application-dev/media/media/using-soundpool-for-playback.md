@@ -146,9 +146,9 @@ SoundPool当前支持播放解码后1MB以下的音频资源，解码后大小�
    <!-- @[SoundPool_SetLoop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
-    // 设置循环播放次数。
-    await this.soundPool!.setLoop(this.streamId, 2); // 播放3次。
-    ```
+   // 设置循环播放次数。
+   await this.soundPool!.setLoop(this.streamId, 2); // 播放3次。
+   ```
 
 8. 调用setPriority方法设置优先级。
 
