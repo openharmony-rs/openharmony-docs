@@ -77,7 +77,7 @@
 
    其中部分字段解释如下：
 
-   - srcEntry：表示ExtensionAbility的入口文件路径，即步骤2中声明的静态订阅者所在的文件路径。
+   - srcEntry：表示ExtensionAbility的入口文件路径，即步骤1中声明的静态订阅者所在的文件路径。
 
    - type：表示ExtensionAbility的类型，对于静态订阅者需要声明为`staticSubscriber`。
 
