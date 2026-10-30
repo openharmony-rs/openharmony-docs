@@ -965,7 +965,7 @@ ArkTS-Sta: enableEditMode(enabled: boolean | Bindable\<boolean\> | undefined)
 | ------ | ------ | ---- | ---------------------------------------- |
 | enabled  | ArkTS-Dyn: boolean&nbsp;\|&nbsp;undefined<br/>ArkTS-Sta: boolean&nbsp;\|&nbsp;Bindable\<boolean\>&nbsp;\|&nbsp;undefined | 是   | 是否启用编辑模式，该参数支持[!!](../../../ui/state-management/arkts-new-binding.md)双向绑定变量。<br/>设置为true时启用编辑模式，可以滑动多选；设置为false或undefined时关闭编辑模式，不可滑动多选。<br/>Bindable\<boolean\>时，支持双向绑定。 |
 
-### scrollPlaceholder（ArkTS-Dyn）
+### scrollPlaceholder
 
 scrollPlaceholder(provider?: PlaceholderProvider)
 
@@ -981,6 +981,8 @@ scrollPlaceholder(provider?: PlaceholderProvider)
 >
 > - 真实列表项创建完成后，在[ListItem](ts-container-listitem.md)的正常布局约束下重新布局并替换占位，同时保持滚动锚点。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
@@ -995,7 +997,7 @@ scrollPlaceholder(provider?: PlaceholderProvider)
 | ------ | ---- | ---- | ---- |
 | provider | [PlaceholderProvider](../arkts-apis-placeholderregister.md#placeholderprovider) | 否   | 列表项的占位提供者。未设置此属性时，关闭滚动占位，List保持既有行为（含syncLoad语义）。 |
 
-### scrollPlaceholder（ArkTS-Sta）
+### scrollPlaceholder
 
 scrollPlaceholder(provider: PlaceholderProvider | undefined)
 
@@ -1010,6 +1012,8 @@ scrollPlaceholder(provider: PlaceholderProvider | undefined)
 > - provider返回undefined，或返回的id为空、未注册时，使用系统默认占位，且滚动不中断。
 >
 > - 真实列表项创建完成后，在[ListItem](ts-container-listitem.md)的正常布局约束下重新布局并替换占位，同时保持滚动锚点。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -4680,7 +4684,7 @@ struct ListExample {
 
 ### 示例19（设置滚动占位）
 
-该示例通过[scrollPlaceholder](#scrollplaceholderarkts-dyn)接口为List设置滚动占位：占位模板经wrapBuilder包装后，通过UIContext的[getPlaceholderRegister()](../arkts-apis-uicontext-uicontext.md#getplaceholderregister)注册（完整说明参考[PlaceholderRegister](../arkts-apis-placeholderregister.md#placeholderregister)）；快速滚动时，帧预算不足的列表项先显示已注册的占位模板，真实列表项分帧创建完成后替换占位，减少丢帧。
+该示例通过[scrollPlaceholder](#scrollplaceholder)接口为List设置滚动占位：占位模板经wrapBuilder包装后，通过UIContext的[getPlaceholderRegister()](../arkts-apis-uicontext-uicontext.md#getplaceholderregister)注册（完整说明参考[PlaceholderRegister](../arkts-apis-placeholderregister.md#placeholderregister)）；快速滚动时，帧预算不足的列表项先显示已注册的占位模板，真实列表项分帧创建完成后替换占位，减少丢帧。
 
 从API版本26.1.0开始，List组件新增scrollPlaceholder接口。
 
