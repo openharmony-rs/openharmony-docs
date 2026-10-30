@@ -507,7 +507,7 @@ struct ImageRecycleSample {
 
 ArkTS-Dyn: createModalUIExtension(want: Want, options?: ModalUIExtensionOptions, callback?: ModalUIExtensionCallback): number
 
-ArkTS-Sta: createModalUIExtension(want: Want, options?: ModalUIExtensionOptions, callback?: ModalUIExtensionCallback): int;
+ArkTS-Sta: createModalUIExtension(want: Want, options?: ModalUIExtensionOptions, callback?: ModalUIExtensionCallback): int
 
 创建并显示模态UIExtension。使用callback异步回调。返回的sessionId可用于调用[closeModalUIExtension](#closemodaluiextension)关闭该模态UIExtension。
 
@@ -661,7 +661,9 @@ struct ModalUIExtensionExample {
 
 ### closeModalUIExtension
 
-closeModalUIExtension(sessionId: number): void
+ArkTS-Dyn: closeModalUIExtension(sessionId: number): void
+ 
+ArkTS-Sta: closeModalUIExtension(sessionId: int): void
 
 关闭模态UIExtension。
 
@@ -681,7 +683,7 @@ closeModalUIExtension(sessionId: number): void
 
 | 参数名     | 类型   | 必填 | 说明                                                                 |
 | ---------- | ------ | ---- | -------------------------------------------------------------------- |
-| sessionId  | number | 是   | 由[createModalUIExtension](#createmodaluiextension)返回的sessionId。取值范围：[0, +∞)。值为0表示创建失败，值大于0表示创建成功。 |
+| sessionId  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 由[createModalUIExtension](#createmodaluiextension)返回的sessionId。取值范围：[0, +∞)。值为0表示创建失败，值大于0表示创建成功。 |
 
 **示例：**
 
@@ -821,6 +823,28 @@ struct ModalUIExtensionExample {
 | dpiFollowStrategy       | [DpiFollowStrategy](arkui-ts/ts-container-ui-extension-component-sys.md#dpifollowstrategy12) | 否   | 是   | DPI跟随策略。</br>默认值：DpiFollowStrategy.FOLLOW_HOST_DPI |
 | windowModeFollowStrategy | [WindowModeFollowStrategy](arkui-ts/ts-container-ui-extension-component-sys.md#windowmodefollowstrategy18) | 否 | 是 | 窗口模式跟随策略。</br>默认值：WindowModeFollowStrategy.FOLLOW_HOST_WINDOW_MODE |
 | transition              | [TransitionEffect](arkui-ts/ts-transition-animation-component.md#transitioneffect10对象说明) | 否   | 是   | 模态UIExtension显示和关闭时播放的转场动画效果。</br>默认值：TransitionEffect.IDENTITY（无动画） |
+
+## ModalUIExtensionCallback
+
+模态UIExtension的生命周期回调集合。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.0.1
+
+**ArkTS-Sta起始版本：** 26.0.1
+
+| 名称          | 类型                                                         | 只读 | 可选 | 说明                                                         |
+| ------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
+| onRemoteReady | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)&lt;[UIExtensionProxy](arkui-ts/ts-container-ui-extension-component-sys.md#uiextensionproxy)&gt; | 否 | 是 | UIExtensionAbility连接完成时的回调。回调参数为[UIExtensionProxy](arkui-ts/ts-container-ui-extension-component-sys.md#uiextensionproxy)实例，可通过该实例向被拉起的Ability发送数据。 |
+| onReceive     | [ReceiveCallback](arkui-ts/ts-container-ui-extension-component-sys.md#receivecallback18) | 否   | 是   | 收到被拉起的Ability发送的数据时触发的回调。                  |
+| onError       | ArkTS-Dyn：[ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) <br/>ArkTS-Sta：[ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback)&lt;[BusinessError](../apis-basic-services-kit/js-apis-base.md#businesserror)&gt; | 否   | 是   | 被拉起的Ability扩展在运行过程中发生异常时触发的回调。可通过回调参数中的code、name和message获取错误信息，业务错误码详细介绍请参见[UIExtension错误码](errorcode-uiextension.md)。 |
+| onTerminated  | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)&lt;[TerminationInfo](arkui-ts/ts-container-ui-extension-component-sys.md#terminationinfo12)&gt; | 否 | 是 | 被拉起的UIExtensionAbility通过调用[terminateSelfWithResult](../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession.md#terminateselfwithresult)或者[terminateSelf](../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession.md#terminateself)正常退出时触发的回调。 |
+| onDrawReady   | ArkTS-Dyn：[Callback](../apis-basic-services-kit/js-apis-base.md#callback)&lt;void&gt; <br/>ArkTS-Sta：[VoidCallback](arkui-ts/ts-types.md#voidcallback12)| 否   | 是   | 被拉起的UIExtensionAbility绘制第一帧时触发的回调。           |
 
 ## ComponentSnapshot<sup>12+</sup>
 
