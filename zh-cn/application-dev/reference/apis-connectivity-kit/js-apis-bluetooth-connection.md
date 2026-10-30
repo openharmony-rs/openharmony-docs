@@ -2052,8 +2052,13 @@ disconnectAllowedProfiles(deviceId: string): Promise&lt;void&gt;
 **示例**：
 
 ```js
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
-  await connection.disconnectAllowedProfiles('68:13:24:79:4C:8C');
+  connection.disconnectAllowedProfiles('68:13:24:79:4C:8C').then(() => {
+      console.info('disconnectAllowedProfiles success');
+    }, (err: BusinessError) => {
+      console.error('disconnectAllowedProfiles:errCode' + err.code + ', errMessage: ' + err.message);
+  });
 } catch (err) {
   console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
