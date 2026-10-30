@@ -8,8 +8,8 @@ status: active
 # 创建异步线程执行AVTranscoder视频转码(ArkTS)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @wang-haizhou6-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @hanzhengshi-->
+<!--Designer: @yangde_dy-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -36,13 +36,15 @@ status: active
 
 1. 引入头文件，创建worker线程，并注册回调。
 
-   ```ts
+   <!-- @[includeHeaderFile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVTranscoder/AsyncTranscoder/entry/src/main/ets/pages/Index.ets) -->
+   ``` TypeScript
    import { ErrorEvent, MessageEvents, worker } from '@kit.ArkTS'
    import { SendableObject } from '../util/SendableObject';
    import { common, sendableContextManager } from '@kit.AbilityKit';
    ```
 
-   ```ts
+   <!-- @[workerCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVTranscoder/AsyncTranscoder/entry/src/main/ets/pages/Index.ets) -->
+   ``` TypeScript
    // 创建Worker对象。
    private workerInstance?: worker.ThreadWorker;
    @State currentProgress: number = 0;
@@ -84,7 +86,8 @@ status: active
 
    如下是参数对象模型：
 
-   ```ts
+   <!-- @[CreateParameterObject](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVTranscoder/AsyncTranscoder/entry/src/main/ets/util/SendableObject.ets) -->
+   ``` TypeScript
    import { sendableContextManager } from '@kit.AbilityKit';
 
    // 发送的参数必须加上@Sendable标注。
@@ -111,7 +114,8 @@ status: active
 
    如下是发送参数的逻辑：
 
-   ```ts
+   <!-- @[logicSendingParameters](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVTranscoder/AsyncTranscoder/entry/src/main/ets/pages/Index.ets) -->
+   ``` TypeScript
    private context: Context | undefined;
    // 向Worker线程发送消息。
    this.context = this.getUIContext().getHostContext(); // 获取当前组件所在Ability的Context。
@@ -127,7 +131,8 @@ status: active
 
    worker线程接收参数：
 
-   ```ts
+   <!-- @[ExecuteTranscodingLogic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVTranscoder/AsyncTranscoder/entry/src/main/ets/workers/task.ets) -->
+   ``` TypeScript
    //worker线程接收参数。
    const sendableObject: SendableObject = event.data;
    const sendableContext: sendableContextManager.SendableContext =
@@ -142,7 +147,8 @@ status: active
 
    执行转码逻辑：
 
-   ```ts
+   <!-- @[performingTranscoding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVTranscoder/AsyncTranscoder/entry/src/main/ets/workers/task.ets) -->
+   ``` TypeScript
    async function doSome(context: common.Context) {
      console.info(`doSome in`);
      try {
@@ -203,9 +209,10 @@ status: active
    }
    ```
 
-4. 监听转码的Complete回调，在转码结束的时候向主线程发送消息。
+4. 监听转码的complete回调，在转码结束的时候向主线程发送消息。
 
-   ```ts
+   <!-- @[transcoderCompleteCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVTranscoder/AsyncTranscoder/entry/src/main/ets/workers/task.ets) -->
+   ``` TypeScript
    // 转码完成回调函数。
    transcoder.on('complete', async () => {
      console.info(`transcode complete`);
@@ -217,7 +224,8 @@ status: active
 
 5. 主线程接收到worker线程转码结束的信息，销毁worker线程。
 
-   ```ts
+   <!-- @[DestroyWorkerThread](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVTranscoder/AsyncTranscoder/entry/src/main/ets/pages/Index.ets) -->
+   ``` TypeScript
    // 注册onmessage回调，当宿主线程接收到来自其创建的Worker通过workerPort.postMessage接口发送的消息时被调用，在宿主线程执行。
    this.workerInstance.onmessage = (e: MessageEvents) => {
      let data: string | number = e.data;
