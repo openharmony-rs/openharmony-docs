@@ -8,7 +8,7 @@
 
 该模块提供呼叫管理功能，包括拨打电话、跳转到拨号界面、获取通话状态、格式化电话号码等。
 
-如需订阅通话状态请使用[`observer.on('callStateChange')`](js-apis-observer.md#observeroncallstatechange)。
+如需订阅通话状态请使用[observer.on('callStateChange')](js-apis-observer.md#observeroncallstatechange)。
 
 >**说明：**
 >
@@ -393,6 +393,8 @@ makeDirectCall\(phoneNumber: string\): Promise\<void\>
 允许应用一键拨号。只支持在[UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md#uiability)中调用。使用Promise异步回调。
 
 **起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Telephony.CallManager
 
