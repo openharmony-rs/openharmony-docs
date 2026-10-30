@@ -2898,7 +2898,7 @@ Multimodalinput Kit面向应用发布如下[系统公共事件](../../../basic-s
 
 **订阅者所需权限：** ohos.permission.LISTEN_BUNDLE_CHANGE
 
-**取值：** "usual.event.ABILITY_ADDED"
+**取值：** "common.event.ABILITY_ADDED"
 
 
 ### COMMON_EVENT_ABILITY_REMOVED
@@ -2912,7 +2912,7 @@ Multimodalinput Kit面向应用发布如下[系统公共事件](../../../basic-s
 
 **订阅者所需权限：** ohos.permission.LISTEN_BUNDLE_CHANGE
 
-**取值：** "usual.event.ABILITY_REMOVED"
+**取值：** "common.event.ABILITY_REMOVED"
 
 
 
@@ -2927,7 +2927,7 @@ Multimodalinput Kit面向应用发布如下[系统公共事件](../../../basic-s
 
 **订阅者所需权限：** ohos.permission.LISTEN_BUNDLE_CHANGE
 
-**取值：** "usual.event.ABILITY_UPDATED"
+**取值：** "common.event.ABILITY_UPDATED"
 
 
 ### COMMON_EVENT_LOCATION_MODE_STATE_CHANGED
@@ -3144,7 +3144,7 @@ Multimodalinput Kit面向应用发布如下[系统公共事件](../../../basic-s
 
 **订阅者所需权限：** ohos.permission.RECEIVER_STARTUP_COMPLETED（该权限仅系统应用可申请）
 
-**取值：** "usual.event.data.FOUNDATION_READY"
+**取值：** "common.event.FOUNDATION_READY"
 
 
 
