@@ -104,7 +104,7 @@ Opens the SCSI device specified by **deviceId** and **interfaceIndex**. The **de
 | Name                            | Description|
 |---------------------------------| -- |
 | uint64_t deviceId               | ID of the device to be operated, which can be obtained by calling [OH_Usb_GetDevices](capi-usb-ddk-api-h.md#oh_usb_getdevices).|
-| uint8_t interfaceIndex          |  Interface index, which is the index of the USB port corresponding to the SCSI device to be opened.|
+| uint8_t interfaceIndex          |  Interface index, which is the index of the USB interface corresponding to the SCSI device to be opened.|
 | [ScsiPeripheral_Device](capi-scsiperipheralddk-scsiperipheral-device.md) **dev | Device handle. For details, see [ScsiPeripheral_Device](capi-scsiperipheralddk-scsiperipheral-device.md).|
 
 **Returns**

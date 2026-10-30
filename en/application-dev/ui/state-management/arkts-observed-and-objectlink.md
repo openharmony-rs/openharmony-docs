@@ -1,12 +1,11 @@
 # \@Observed and \@ObjectLink Decorators: Observing Property Changes in Nested Class Objects
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liwenzhen3-->
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=3efb4ba336409dd0731ba011e1e227786db57fa2 translatedAt=2026-07-22T02:13:05.248Z pushedAt=2026-07-23T10:40:20.098Z -->
+<!-- md-trans-meta sourceCommit=6731353e95ca92d0b8b50de9083fe2085729362a translatedAt=2026-10-28T04:05:12.559Z pushedAt=2026-10-28T08:00:37.919Z nl=1 -->
 
 The decorators described above (including [\@State](./arkts-state.md), [\@Prop](./arkts-prop.md), [\@Link](./arkts-link.md), and [\@Provide and \@Consume](./arkts-provide-and-consume.md)) can only observe changes at the first layer. However, in actual app development, developers often encapsulate their own data models based on requirements. For multi-level nesting scenarios, such as two-dimensional arrays, object arrays, and nested classes, changes to second-layer properties cannot be observed. Therefore, the [\@Observed](../../reference/apis-arkui/arkui-ts/ts-state-management-observed.md#observed) and [\@ObjectLink](../../reference/apis-arkui/arkui-ts/ts-state-management-objectlink.md#objectlink) decorators are introduced to enable observation of deep property changes in nested data structures.
 
@@ -30,6 +29,7 @@ When used together, the \@ObjectLink and \@Observed class decorators enable two-
 
 - To implement one-way data synchronization, use @Prop in conjunction. For an example, see [Differences Between @Prop and @ObjectLink](#differences-between-prop-and-objectlink).
 
+
 ## Decorator Description
 
 | @Observed Class Decorator | Description                                                  |
@@ -40,10 +40,11 @@ When used together, the \@ObjectLink and \@Observed class decorators enable two-
 | \@ObjectLink Variable Decorator | Description                                                         |
 | ---------------------- | ------------------------------------------------------------ |
 | Decorator Parameter             | None.                                                         |
-| Allowed Variable Types     | Supports class instances that inherit from Date or [Array](#two-dimensional-arrays).<br/>Since API version 11, supports class instances that inherit from [Map](#inheriting-the-map-class) or [Set](#inheriting-the-set-class), as well as union types composed of \@Observed-decorated classes and undefined or null, such as ClassA \| ClassB, ClassA \| undefined, or ClassA \| null. For examples, see [Supporting Union Types with \@ObjectLink](#supporting-union-types-with-objectlink).<br/>Before API version 19, the variable must be an instance of a class decorated by \@Observed.<br/>Since API version 19, \@ObjectLink can be initialized with complex types, namely class, object, or built-in types. However, when observing nested types, it must still receive an instance of a class decorated by \@Observed or the return value of makeV1Observed.<br/>**Note:**<br/>\@ObjectLink does not support simple types. If a simple type is required, use [\@Prop](arkts-prop.md). |
+| Allowed decorated variable types | Supports class instances that inherit from Date and [Array](#two-dimensional-arrays).<br/>From API version 11 onwards, supports class instances that inherit from [Map](#inheriting-the-map-class) and [Set](#inheriting-the-set-class), as well as union types composed of \@Observed decorated classes and undefined or null, such as ClassA \| ClassB, ClassA \| undefined, or ClassA \| null. For an example, see [Supporting Union Types with \@ObjectLink](#supporting-union-types-with-objectlink).<br/>Before API version 19, it must be a class instance decorated by \@Observed.<br/>From API version 19 onwards, \@ObjectLink can be initialized with complex types, that is, class, object, or built-in types. However, when observing nested types, it must still receive a class instance decorated by \@Observed or the return value of makeV1Observed.<br/>**Note:** **<br/>\@ObjectLink does not support simple types. If developers need to use simple types, they can use [\@Prop](arkts-prop.md). |
 | Initial Value of the Decorated Variable     | Local initialization is prohibited.                                             |
 
 The property of an \@ObjectLink-decorated variable can be changed, but the variable itself cannot be assigned as a whole. That is, the \@ObjectLink-decorated variable is read-only.
+
 
 ```ts
 // Assignment to the data property decorated by @ObjectLink is allowed.
@@ -68,9 +69,11 @@ this.objLink= ...
 | Synchronized with the source object | Bidirectional.                                                       |
 | Can initialize child components | Allowed. Can be used to initialize regular variables, @State, @Link, @Prop, and @Provide. |
 
-  **Figure 1** Initialization rule illustration  
+
+  **Figure 1** Initialization rule illustration
 
   ![en-us_image_0000001502255261](figures/Initialization-rules01.PNG)
+
 
 ## Observed Changes and Behavior
 
@@ -88,7 +91,7 @@ For @ObjectLink, it is recommended to design a separate custom component to rend
 
 - If the data source is an array, replacement of array items can be observed. If the data source is a class, changes to the class properties can be observed. For an example, see [Object Arrays](#object-arrays).
 
-When @ObjectLink decorates a class that inherits from Date, the overall assignment of the Date object can be observed, and the Date properties can be updated by calling the Date APIs `setFullYear`, `setMonth`, `setDate`, `setHours`, `setMinutes`, `setSeconds`, `setMilliseconds`, `setTime`, `setUTCFullYear`, `setUTCMonth`, `setUTCDate`, `setUTCHours`, `setUTCMinutes`, `setUTCSeconds`, and `setUTCMilliseconds`.
+When @ObjectLink decorates a class that inherits from Date, the overall assignment of the Date object can be observed, and the Date value can be updated by calling the Date APIs `setFullYear`, `setMonth`, `setDate`, `setHours`, `setMinutes`, `setSeconds`, `setMilliseconds`, `setTime`, `setUTCFullYear`, `setUTCMonth`, `setUTCDate`, `setUTCHours`, `setUTCMinutes`, `setUTCSeconds`, and `setUTCMilliseconds`.
 
 <!-- @[Observation_ChangeInheritance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/overview/ObservationChangeInheritance.ets) -->  
 
@@ -166,6 +169,7 @@ When \@ObjectLink decorates a class that inherits from Map, the overall assignme
 
 When \@ObjectLink decorates a class that inherits from Set, the overall assignment of the Set can be observed, and the Set values can be updated by calling the Set interfaces `add`, `clear`, and `delete`. For an example, see [Inheriting the Set Class](#inheriting-the-set-class).
 
+
 ### Framework Behavior
 
 1. Initial rendering:
@@ -175,6 +179,7 @@ When \@ObjectLink decorates a class that inherits from Set, the overall assignme
    b. In a child component, a variable decorated by @ObjectLink is initialized from the parent component and receives an instance of the @Observed-decorated class. The @ObjectLink wrapper class then registers itself with the @Observed class. Here, registration means that the @ObjectLink wrapper class provides its own reference to the @Observed instance, so that the @Observed instance can add it to the dependency list and notify it when a property changes.
 
 2. Property update: When a property of an @Observed-decorated class changes, the proxied setter and getter are executed, and then all @ObjectLink wrapper classes that depend on it are traversed to notify them of the data update.
+
 
 ## Constraints
 
@@ -186,7 +191,7 @@ When \@ObjectLink decorates a class that inherits from Set, the overall assignme
 
 4. Before API version 19, the type of a variable decorated by @ObjectLink must be explicitly a class decorated by @Observed. If the type is not specified or is not a class decorated by @Observed, a compile-time error will occur.
 
-   Since API version 19, @ObjectLink can also be initialized by the return value of [makeV1Observed](../../reference/apis-arkui/js-apis-stateManagement.md#makev1observed19). If @ObjectLink is initialized with a class not decorated by @Observed or a value that is not the return value of makeV1Observed, a runtime warning log will be generated.
+   Since API version 19, @ObjectLink can also be initialized by the return value of [makeV1Observed](../../reference/apis-arkui/js-apis-stateManagement.md#makev1observed19). If the initialization value received by @ObjectLink is neither a class instance decorated by @Observed nor the return value of makeV1Observed, a runtime warning log will be generated.
 
    ```ts
    class Test {
@@ -201,7 +206,7 @@ When \@ObjectLink decorates a class that inherits from Set, the overall assignme
    // Incorrect usage: Test is not decorated with @Observed, causing a compilation error.
    @ObjectLink test: Test;
    ```
-
+     
    ``` TypeScript
    @Observed
    class Info {
@@ -222,7 +227,7 @@ When \@ObjectLink decorates a class that inherits from Set, the overall assignme
    // Incorrect usage, causing a compilation error.
    @ObjectLink count: CountInfo = new CountInfo(10);
    ```
-
+   
    ``` TypeScript
    @Observed
    class CountInfo {
@@ -283,7 +288,7 @@ When \@ObjectLink decorates a class that inherits from Set, the overall assignme
    **Correct Usage**
 
    <!-- @[variables_decorated_ObjectLink_read_only](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/restrictiveconditions/ReadOnlyVariable.ets) --> 
-
+   
    ``` TypeScript
    
    @Observed
@@ -468,9 +473,7 @@ struct Index {
 In the preceding example:
 
 - For the state variable `@State bag: Bag` in the Index component, `bag.book` is the first level, and `bag.book.name` is the second level. Therefore, when you tap `change bag.book.name` to directly modify `this.bag.book.name`, the `Text('Index: ${this.bag.book.name}')` in Index does not refresh, because \@State can only observe changes at the first level of properties and cannot directly observe changes to the nested object's internal property `name`.
-
 - For the state variable `@ObjectLink book: Book` in the BookCard component, `Book` is decorated by \@Observed, and `book` is received by \@ObjectLink. Changes to `book.name` can be observed by `@ObjectLink`. Therefore, whether you tap `change bag.book.name` in the parent component Index or tap `change book.name` in the child component BookCard, the `Text('BookCard: ${this.book.name}')` in BookCard refreshes.
-
 - \@State is responsible for sensing changes at the first level of the outer object `Bag`, while `@Observed + @ObjectLink` is responsible for sensing property changes of the inner object `Book`.
 
 ### Object Arrays
@@ -565,7 +568,7 @@ struct Parent {
         .onClick(() => {
           this.arrA[Math.floor(this.arrA.length / 2)].info = 10;
         })
-      Button('ViewParent: item property in middle')
+      Button('ViewParent: replace item in middle')
         .width(320)
         .margin(10)
         .onClick(() => {
@@ -579,22 +582,20 @@ struct Parent {
 ![Observed_ObjectLink_object_array](figures/Observed_ObjectLink_object_array.gif)
 
 - this.arrA[Math.floor(this.arrA.length/2)] = new Info(..): This state variable change triggers two updates:
-
   1. ForEach: The assignment of the array item causes the itemGenerator of [ForEach](../../reference/apis-arkui/arkui-ts/ts-rendering-control-foreach.md) to be modified, so the array item is identified as changed. The item builder of ForEach is executed, creating a new Child component instance.
-
   2. Child({ label: 'ViewChild this.arrA[last]', info: this.arrA[this.arrA.length-1] }): The above change modifies the second element in the array, so the Child bound to this.arrA[1] is updated.
 
 - this.arrA.push(new Info(0)): Triggers two updates with different effects:
-
   1. ForEach: The newly added Info object is an unknown itemGenerator for ForEach, so the ForEach item builder executes and creates a new Child component instance.
-
   2. Child({ label: 'ViewChild this.arrA[last]', info: this.arrA[this.arrA.length-1] }): The last item of the array has changed, causing the second Child instance to update. For Child({ label: 'ViewChild this.arrA[first]', info: this.arrA[0] }), the array change does not trigger a change notification for an individual array item, so the first Child is not refreshed.
 
 - this.arrA[Math.floor(this.arrA.length/2)].info: @State cannot observe second-level changes, but since Info is decorated with @Observed, changes to Info's properties are observed by @ObjectLink.
 
+
 ### Two-Dimensional Arrays
 
 Use \@Observed to observe changes in two-dimensional arrays. A subclass that inherits from Array and is decorated by \@Observed can be declared.
+
 
 ``` TypeScript
 @Observed
@@ -1048,6 +1049,7 @@ Each decorator has its own observation capability, but not all changes can be ob
 
 In the following example, some UI components do not update.
 
+
 ```ts
 class Parent {
   parentId: number;
@@ -1141,14 +1143,13 @@ struct MyView {
 - The last Text component, `Text('childId: ${this.cousin.child.childId}')`, does not trigger a UI refresh when tapped. This is because `@State cousin: Cousin` can only observe changes to the properties of `this.cousin`, such as `this.cousin.parentId`, `this.cousin.cousinId`, and `this.cousin.child`, but cannot observe properties nested within those properties, namely `this.cousin.child.childId` (the `childId` property belongs to the `Child` object nested inside `cousin`).
 
 - To observe the properties of the nested `Child` object, the following changes are required:
-
   - Construct a child component dedicated to rendering the `Child` instance. This child component can use `@ObjectLink child: Child` or `@Prop child: Child`. Typically, `@ObjectLink` is used, unless the child component needs to make local modifications to its `Child` object.
-
   - The nested `Child` class must be decorated with `@Observed`. When a `Child` object is created inside `Cousin` (in this example, `Cousin(10, 20, 30)`), it is wrapped in an ES6 proxy, so that when a `Child` property changes (`this.cousin.child.childId += 1`), the modification is notified to the `@ObjectLink` variable.
 
 **Correct Usage**
 
 The following example uses `@Observed`/`@ObjectLink` to observe property changes of a nested object.
+
 
 <!-- @[Basic_nesting](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/ObservedAndObjectLinkFAQs/BasicNesting.ets) --> 
 
@@ -1281,6 +1282,7 @@ struct MyView {
 
 The following example creates a child component with an \@ObjectLink decorated variable to render a ParentCounter that contains nested properties, with the SubCounter nested in ParentCounter decorated by \@Observed.
 
+
 ```ts
 let nextId = 1;
 @Observed
@@ -1384,6 +1386,7 @@ In addition, the first click event calls this.counter[0].incrCounter(), which ma
 
 To address the preceding issue, the following approach can be used to directly observe the properties in SubCounter so that the operation this.counter[0].setSubCounter(10) takes effect:
 
+
 <!-- @[Complex_Methods_Nesting](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/ObservedAndObjectLinkFAQs/ComplexMethodsNesting.ets) --> 
 
 ``` TypeScript
@@ -1463,6 +1466,7 @@ struct CounterChild {
 With this approach, @ObjectLink proxies the properties of both ParentCounter and SubCounter, so that changes to the properties of either class can be observed, meaning the UI is refreshed accordingly. Even if the aforementioned `this.counter[0].incrCounter()` is removed, the UI is still refreshed correctly.
 
 This approach can be used to implement "two-level" observation, that is, observation of both the outer object and the inner nested object. However, it applies only to the @ObjectLink decorator and cannot be used with @Prop (which passes objects through deep copy). For details, see [Differences Between @Prop and @ObjectLink](#differences-between-prop-and-objectlink).
+
 
 <!-- @[Complex_nested_observation_levels](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/ObservedAndObjectLinkFAQs/ComplexNestingComplete.ets) -->  
 
@@ -1592,7 +1596,6 @@ Both @Prop and @ObjectLink can receive class object instances decorated by @Obse
 In the following example, the `UserChild` component uses both @Prop and @ObjectLink to receive the @Observed-decorated class object instance from the parent component as the data source. Modifications to this data source object affect both the @Prop-decorated and @ObjectLink-decorated variables. Tap the `change @ObjectLink value` button and then the `change @Prop value` button to observe the following:
 
 1. Modifying the object content decorated by @ObjectLink affects the data source object and re-synchronizes it to @Prop, so both Text components are refreshed.
-
 2. Modifying the object content decorated by @Prop affects only the Text2 component that uses this object, without affecting the data source object.
 
 <!-- @[Differences_Prop_ObjectLink](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/ObservedAndObjectLinkFAQs/DifferencesPropObjectLink.ets) --> 
@@ -1959,6 +1962,10 @@ struct Index {
     this.dataDownloader.startIntervalUpdate(); // Modify the property after the @Observed decorated class is constructed to trigger UI updates.
   }
 
+  aboutToDisappear() {
+    this.dataDownloader.stopIntervalUpdate();
+  }
+
   build() {
     Column() {
       Text(`Download state is ${this.dataDownloader.state}`)
@@ -2255,5 +2262,3 @@ struct ChildComponent {
 ```
 
 ![observed_lazyforeach_refresh.gif](./figures/observed_lazyforeach_refresh.gif)
-
-<!--no_check-->

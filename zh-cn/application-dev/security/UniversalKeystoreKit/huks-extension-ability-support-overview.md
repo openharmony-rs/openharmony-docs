@@ -32,7 +32,7 @@ CryptoExtensionAbility作为Stage模型中扩展组件[ExtensionAbility](../../a
 
 - Ability：代表开发者针对各业务定制的扩展能力，标识一个CryptoExtensionAbility实例的逻辑名。一个Provider下可注册多个Ability，对应密钥管理扩展应用中不同的CryptoExtensionAbility子类实例，用于在同一驱动下区分不同业务场景。
 
-下文将依次介绍可用性检测、Provider/Ability约束、设备级资源隔离与UIExtensionAbility关联。
+下文将依次介绍可用性检测、Provider/Ability约束、设备级资源隔离与定制化认证UI关联。
 
 ### 可用性检测与注册/注销时机
 
@@ -54,13 +54,28 @@ CryptoExtensionAbility作为Stage模型中扩展组件[ExtensionAbility](../../a
 
 建议密钥管理扩展应用保障不同外部密钥管理资源的设备句柄、资源映射、会话状态、认证状态等相互独立。
 
-### 定制化UI弹框
+### 定制化认证UI
 
-从API版本26.0.0开始，OpenHarmony中支持两类ExtensionAbility配合使用：CryptoExtensionAbility处理密码学操作，UIExtensionAbility处理需要定制化的UI交互的流程（如PIN输入框、证书选择界面）。密钥管理扩展应用可根据实际业务需要，在注册Provider时同步关联UIExtensionAbility。
+系统提供PIN码认证弹窗能力，供上层应用在需要时拉起UKey PIN认证界面。若系统默认弹窗不满足业务需求，密钥管理扩展应用可注册自定义认证UI，在注册Provider时同步关联，由证书管理在需要时统一拉起。
 
-- 数量限制：1个CryptoExtensionAbility最多关联**10个**UIExtensionAbility，超出时registerProvider返回HUKS_ERR_CODE_EXCEED_LIMIT。
-- 字段说明：通过[HUKS_EXT_CRYPTO_TAG_ABILITY_INFO](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag)传入JSON字符串，其中abilityName字段对应module.json5中UIExtensionAbility的name字段，最大长度为128字节，index字段对应resourceId，最大长度为512字节，用于将UIExtensionAbility路由到具体资源。
+从API版本26.0.0开始，支持注册[UIAbility](../../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#uiability)作为自定义认证UI，开发者自行实现UI布局与交互逻辑。该方式仅支持由上层应用拉起，依赖调用方持有上下文信息。
+
+从API版本26.0.1开始，新增支持注册[UkeyAuthExtensionAbility](../../reference/apis-device-certificate-kit/js-apis-UkeyAuthExtensionAbility.md#ukeyauthextensionability)作为自定义认证UI，开发者继承后自行实现UI布局与交互逻辑。该方式支持两种拉起路径：一种由上层应用拉起，依赖调用方持有上下文信息；另一种由UKey驱动应用主动拉起，不依赖上层应用持有上下文信息。
+
+- 数量限制：同一resourceId字段对应的资源，仅支持关联一种类型的定制化认证UI（UIAbility或UkeyAuthExtensionAbility），不可同时注册两种类型。1个CryptoExtensionAbility最多关联**10个**自定义认证UI，超出时registerProvider返回HUKS_ERR_CODE_EXCEED_LIMIT。
+- 字段说明：在注册密钥管理扩展时同步注册对应的定制化认证UI弹窗，通过[HUKS_EXT_CRYPTO_TAG_ABILITY_INFO](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag)传入JSON字符串，其中abilityName字段对应module.json5中name字段，最大长度为127字节，index字段对应resourceId，最大长度为512字节，用于将定制化认证UI路由到具体资源。
 - 典型场景：自定义PIN输入框、自定义证书选择界面、自定义用户确认对话框等。
+
+两种方式的差异如下：
+
+| 维度 | UIAbility（26.0.0+） | UkeyAuthExtensionAbility（26.0.1+） |
+| --- | --- | --- |
+| 实现方式 | 开发者自实现UIAbility。 | 开发者继承UkeyAuthExtensionAbility自实现。 |
+| abilityType | 0（或不传，默认按UIAbility处理） | 1 |
+| 拉起方 | 上层应用。 | 上层应用或UKey驱动应用。 |
+| 拉起接口 | [openUkeyAuthDialog()](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenukeyauthdialog22) | [openUkeyAuthDialog()](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenukeyauthdialog22)或[openAuthDialogForUkeyProvider()](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthdialogforukeyprovider) |
+| 上下文依赖 | 依赖调用方持有上下文信息。 | 依赖上下文（上层应用拉起）或不依赖上下文（UKey驱动应用拉起）。 |
+| 弹窗行为 | 普通应用窗口，支持前后台切换，可被切到后台。 | 模系统弹窗，在用户完成交互前整个系统进入模态状态，无法切到后台或关闭。 |
 
 ## 核心能力实现
 

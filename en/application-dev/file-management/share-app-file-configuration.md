@@ -5,7 +5,7 @@
 <!--Designer: @renzehua; @huangjieliang; @zhanganxiang-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=b5f67a9c2b44700818fc955f119afe9e2cc86fe3 translatedAt=2026-08-26T04:39:23.562Z pushedAt=2026-08-28T07:27:33.123Z -->
+<!-- md-trans-meta sourceCommit=93b5325f5b55e75c4a74e888a26d2e38ecc1f921 translatedAt=2026-10-29T10:30:53.867Z pushedAt=2026-10-29T10:30:53.867Z nl=1 -->
 
 From API version 23, the system supports shared directory configuration. In the [app file sharing](share-app-file.md) scenario, you can [configure the shared directory](#configuring-the-shared-directory). After configuration, only files in the shared directory can be shared by users with other apps for viewing, preventing sensitive app data from being leaked. This configuration takes effect only on phones and tablets.
 

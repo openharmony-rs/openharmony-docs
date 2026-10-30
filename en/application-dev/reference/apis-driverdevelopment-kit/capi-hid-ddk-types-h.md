@@ -202,7 +202,7 @@ Enumerates the key codes, including the key codes and event codes of input devic
 | HID_KEY_NUMPAD_SUBTRACT = 74 | Key - on the numeric keyboard|
 | HID_KEY_NUMPAD_ADD = 78 | Key + on the numeric keyboard|
 | HID_KEY_NUMPAD_DOT = 83 | Key . on the numeric keyboard|
-| HID_KEY_SYSRQ = 99 | SYSRQ key|
+| HID_KEY_SYSRQ = 99 | Key Print Screen|
 | HID_KEY_DELETE = 111 | Delete key|
 | HID_KEY_MUTE = 113 | Mute key|
 | HID_KEY_VOLUME_DOWN = 114 | Volume Down key|
@@ -331,7 +331,7 @@ Enumerates miscellaneous input events.
 | HID_MSC_SERIAL = 0x00 | Serial number.|
 | HID_MSC_PULSE_LED = 0x01 | Pulse.|
 | HID_MSC_GESTURE = 0x02 | Gesture.|
-| HID_MSC_RAW = 0x03 | Original events.|
+| HID_MSC_RAW = 0x03 | Raw events.|
 | HID_MSC_SCAN = 0x04 | Scanning.|
 | HID_MSC_TIMESTAMP = 0x05 | Timestamp.|
 

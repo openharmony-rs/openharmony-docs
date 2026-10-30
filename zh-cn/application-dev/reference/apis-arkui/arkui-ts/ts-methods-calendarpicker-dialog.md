@@ -72,6 +72,7 @@ static show(options?: CalendarDialogOptions): void
 | markToday<sup>19+</sup>       | boolean | 否  | 是  | 设置日历选择器弹窗中系统当前日期是否保持高亮显示。<br>- true：系统当前日期在日历选择器弹窗内保持高亮显示。<br>- false：系统当前日期在日历选择器弹窗内不保持高亮显示。<br>默认值：false<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
 | systemMaterial | [SystemUiMaterial](ts-universal-attributes-image-effect.md#systemuimaterial) | 否 | 是 | 设置弹窗的系统材质。<br>**说明：**<br>- 默认值：[ImmersiveOptions](../arkts-apis-uimaterial.md#immersiveoptions)的style为ImmersiveStyle.ULTRA_THICK的[ImmersiveMaterial](../arkts-apis-uimaterial.md#immersivematerial)对象。设置undefined时与默认值保持一致。<br>- 不同的材质具有不同的视觉效果，包括背景透明度、模糊程度、阴影样式等方面的差异，该接口影响背景色[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、背景模糊[backgroundBlurStyle](ts-universal-attributes-background.md#backgroundblurstyle9)、背景效果[backgroundEffect](ts-universal-attributes-background.md#backgroundeffect11)、边框颜色[borderColor](ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](ts-universal-attributes-border.md#borderwidth)、阴影[shadow](ts-universal-attributes-image-effect.md#shadow)，当设置系统材质时，上述接口不生效。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
 | firstDayOfWeek | [CalendarFirstDayOfWeek](ts-basic-components-calendarpicker.md#calendarfirstdayofweek) | 否 | 是 | 设置日历选择器弹窗每周的起始日。<br>默认值：CalendarFirstDayOfWeek.LOCAL（跟随系统区域变化）<br>**起始版本：** 26.1.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。 |
+| adaptToHandedness | [HandednessFollowMode](../js-apis-dialog.md#handednessfollowmode) | 否 | 是 | 弹窗是否以及如何适配握持习惯。<br>默认值：HandednessFollowMode.NONE。<br>**起始版本：** 26.1.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。 |
 
 > **说明：**
 >
@@ -500,3 +501,35 @@ struct CalendarPickerDialogExample {
 ```
 
 ![CalendarPickerDialog](figures/calendar-picker-dialog-first-day-of-week.png)
+
+### 示例11（设置弹窗适配握持习惯）
+
+该示例通过配置[CalendarDialogOptions](#calendardialogoptions对象说明)的adaptToHandedness，设置弹窗适配握持习惯，使弹窗跟随触发它的组件的位置偏移。
+
+从API版本26.1.0开始，在[CalendarDialogOptions](#calendardialogoptions对象说明)中新增了adaptToHandedness属性。
+
+```ts
+// xxx.ets
+import { HandednessFollowMode } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct CalendarPickerDialogExample {
+  private selectedDate: Date = new Date('2025-01-15');
+
+  build() {
+    Column() {
+      Button('Show CalendarPicker Dialog')
+        .margin(20)
+        .onClick(() => {
+          CalendarPickerDialog.show({
+            selected: this.selectedDate,
+            adaptToHandedness: HandednessFollowMode.FOLLOW_ANCHOR
+          });
+        })
+    }.width('100%')
+  }
+}
+```
+
+![设置弹窗适配握持习惯](figures/calendarpickerdialoghandedness.gif)

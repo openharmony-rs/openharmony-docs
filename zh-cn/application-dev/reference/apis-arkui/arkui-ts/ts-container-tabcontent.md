@@ -164,7 +164,7 @@ tabBarVisibility(visibility: TabVisibility, displayMode?: TabBarDisplayMode)
 | -------- | -------- | --- | ----- | -------- |
 | icon<sup>7+</sup> | string \| [Resource](ts-types.md#resource) | 否 | 是 | 页签内的图片内容。未设置时不显示图片。如果icon采用svg格式图源，需删除其内置的宽高属性。否则，icon大小将使用svg图源内置的宽高属性值。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | text<sup>7+</sup> | string \| [Resource](ts-types.md#resource) | 否 | 是 | 页签内的文字内容。未设置时不显示文字。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| badge | [TabBarBadgeStyle](#tabbarbadgestyle) | 否 | 是 | 页签的信息标记样式。未设置时不显示信息标记。<br/>**起始版本：** 26.0.1<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
+| badge | [TabBarBadgeStyle](#tabbarbadgestyle) | 否 | 是 | 页签的信息标记样式。未设置时不显示信息标记。<br/>**起始版本：** 26.1.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。 |
 
 ## SubTabBarStyle<sup>9+</sup>
 
@@ -768,9 +768,9 @@ badge(badgeStyle: TabBarBadgeStyle): BottomTabBarStyle
 
 设置底部页签的信息标记样式。未设置时不显示信息标记。
 
-**起始版本：** 26.0.1
+**起始版本：** 26.1.0
 
-**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -855,9 +855,9 @@ Tab页签可见性枚举。
 
 页签信息标记样式对象。
 
-**起始版本：** 26.0.1
+**起始版本：** 26.1.0
 
-**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -874,9 +874,9 @@ type TabBarBadgeType = number | ResourceStr
 
 信息标记显示内容的联合类型。
 
-**起始版本：** 26.0.1
+**起始版本：** 26.1.0
 
-**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2451,7 +2451,7 @@ struct TabBarVisibilityExample {
 
 该示例通过[TabBarOptions](#tabbaroptions18对象说明)的badge属性和[BottomTabBarStyle](#bottomtabbarstyle9)的[badge](#badge)属性，设置页签的信息标记内容。
 
-从API版本26.0.1开始，[TabBarOptions](#tabbaroptions18对象说明)和[BottomTabBarStyle](#bottomtabbarstyle9)都新增了badge属性。
+从API版本26.1.0开始，[TabBarOptions](#tabbaroptions18对象说明)和[BottomTabBarStyle](#bottomtabbarstyle9)都新增了badge属性。
 
 ```ts
 // xxx.ets

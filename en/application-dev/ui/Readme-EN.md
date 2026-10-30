@@ -41,8 +41,8 @@
     - [State Management Overview](state-management/arkts-state-management-overview.md)
     - [State Management Principles](state-management/arkts-state-management-introduce.md)
     - [Differences Between State Management V1 and V2 Update Mechanisms](state-management/arkts-v1-v2-update-difference.md)
-    - [MVVM V1](state-management/arkts-mvvm.md)
-    - [MVVM V2](state-management/arkts-mvvm-v2.md)
+    - [MVVM (V1)](state-management/arkts-mvvm.md)
+    - [MVVM (V2)](state-management/arkts-mvvm-v2.md)
     - State Management V1<!--arkts-state-management-v1-->
       - Component State Management<!--arkts-v1-component-state-management-->
         - [\@State Decorator: State Owned by Component](state-management/arkts-state.md)
@@ -74,7 +74,7 @@
         - [\@Type Decorator: Marking the Types of the Class Property](state-management/arkts-new-type.md)
       - Application State Management<!--arkts-v2-manage-application-state-->
         - [AppStorageV2: Storing Application-wide UI State](state-management/arkts-new-appstoragev2.md)
-        - [PersistenceV2: Persisting Application State](state-management/arkts-new-persistencev2.md)
+        - [PersistenceV2: Persisting UI States](state-management/arkts-new-persistencev2.md)
     - Auxiliary APIs<!--arkts-state-management-uiutils-->
       - [getTarget API: Obtaining Original Objects](state-management/arkts-new-getTarget.md)
       - [makeObserved API: Changing Unobservable Data to Observable Data](state-management/arkts-new-makeObserved.md)

@@ -85,6 +85,12 @@
 | OH_TRAFFICFILTER_PROTO_ICMP          1 | 协议类型常量：ICMP协议。<br>**起始版本：** 26.0.0 |
 | OH_TRAFFICFILTER_PROTO_ICMPV6        58 | 协议类型常量：ICMPV6协议。<br>**起始版本：** 26.0.0 |
 
+### 函数
+
+| 名称 | typedef关键字 | 描述 |
+| -- | -- | -- |
+| [typedef OH_TrafficFilter_PacketDecision (*OH_TrafficFilter_PacketCallback)(const OH_TrafficFilter_PacketDesc* packet, void* userData)](capi-trafficfilter-oh-trafficfilter-packetcallback.md) | OH_TrafficFilter_PacketCallback | 包过滤回调函数。 |
+
 ## 枚举类型说明
 
 ### OH_TrafficFilter_ErrCode

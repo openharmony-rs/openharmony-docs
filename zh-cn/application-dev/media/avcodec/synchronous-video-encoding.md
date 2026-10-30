@@ -1,3 +1,11 @@
+---
+kits: ["AVCodec Kit / 音视频编解码服务"]
+description: "介绍以主动请求Buffer送帧方式完成同步模式视频编码的开发流程，支持Surface与Buffer两种输入模式，适用于需要应用主动控制编码输入节奏的场景。"
+keywords: [视频编码, 同步模式, Surface模式, Buffer模式, OH_VideoEncoder, 主动请求Buffer, NV12, 跨距]
+doctype: guide
+status: active
+---
+
 # 同步模式视频编码
 
 <!--Kit: AVCodec Kit-->

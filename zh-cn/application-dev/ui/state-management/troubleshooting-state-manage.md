@@ -488,9 +488,9 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN: number = 0x0000;
 const TAG: string = '[Sample_TroubleshootingStateManage]';
-const INIT_WIDTH: number = 100; // Image initial width value
-const CHANGED_WIDTH: number = 200; // Image width value after change
-const IMAGE_HEIGHT: number = 500; // Image fixed height value
+const INIT_WIDTH: number = 100; // 图片初始宽度值
+const CHANGED_WIDTH: number = 200; // 图片变化后的宽度值
+const IMAGE_HEIGHT: number = 500; // 图片固定高度值
 
 @Entry
 @Component

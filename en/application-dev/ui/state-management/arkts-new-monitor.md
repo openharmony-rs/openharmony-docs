@@ -5,7 +5,7 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=c5048176f6262dc964719f060fa47f02cc8c53d5 translatedAt=2026-09-21T11:14:14.865Z pushedAt=2026-09-23T08:57:41.434Z -->
+<!-- md-trans-meta sourceCommit=f746332fcab053c44b4c12884f67fd410a77128c translatedAt=2026-10-28T04:03:04.551Z pushedAt=2026-10-28T07:57:32.769Z nl=1 -->
 
 To enhance the state management framework's capability of monitoring State Variable changes, you can use the [\@Monitor](../../reference/apis-arkui/arkui-ts/ts-state-management-monitor.md#monitor) decorator to listen for State Variable changes.
 
@@ -167,7 +167,7 @@ When the state variables listened by \@Monitor change, the callback is triggered
 - Variables listened by \@Monitor need to be decorated by \@Local, \@Param, \@Provider, \@Consumer, and \@Computed. Otherwise, they cannot be listened when they change. \@Monitor can listen for multiple state variables at the same time. Names of these variables are separated by commas (,).
 
   <!-- @[monitor_decorator_multi_watch_comp_v2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorDecoratorMultiWatchCompV2.ets) -->  
-
+  
   ``` TypeScript
   import { hilog } from '@kit.PerformanceAnalysisKit';
   
@@ -207,7 +207,7 @@ When the state variables listened by \@Monitor change, the callback is triggered
 - When the state variable listened by \@Monitor is a class object, only the overall object changes can be listened. To listen for the changes of a class property, this property should be decorated by \@Trace.
 
   <!-- @[monitor_decorator_object_trace_comp_v2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorDecoratorObjectTraceCompV2.ets) --> 
-
+  
   ``` TypeScript
   import { hilog } from '@kit.PerformanceAnalysisKit';
   
@@ -267,7 +267,7 @@ When the properties listened by \@Monitor change, the callback is triggered.
 
 - The object property listened to by \@Monitor should be decorated by \@Trace. Otherwise, the property cannot be listened to. \@Monitor can listen for multiple properties at the same time. These properties are separated by commas (,).
   <!-- @[monitor_decorator_multi_watch_observed_v2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorDecoratorMultiWatchObservedV2.ets) --> 
-
+  
   ``` TypeScript
   import { hilog } from '@kit.PerformanceAnalysisKit';
   
@@ -343,7 +343,7 @@ When the properties listened by \@Monitor change, the callback is triggered.
 
 - \@Monitor can listen for the changes of deep properties which should be decorated by @Trace.
   <!-- @[monitor_decorator_object_trace_observed_v2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorDecoratorObjectTraceObservedV2.ets) --> 
-
+  
   ``` TypeScript
   import { hilog } from '@kit.PerformanceAnalysisKit';
   
@@ -386,7 +386,7 @@ When the properties listened by \@Monitor change, the callback is triggered.
 
 - In the inheritance class scenario, you can listen for the same property for multiple times in the inheritance chain.
   <!-- @[monitor_decorator_inheritance_support_observed_v2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorDecoratorInheritanceSupportObservedV2.ets) --> 
-
+  
   ``` TypeScript
   import { hilog } from '@kit.PerformanceAnalysisKit';
   
@@ -445,7 +445,7 @@ When the properties listened by \@Monitor change, the callback is triggered.
 
 - \@Monitor can listen for items in arrays, including multi-dimensional arrays and object arrays. However, it cannot listen for changes caused by calling APIs of built-in types (Array, Map, Date, and Set). When \@Monitor listens for the entire array, it can only observe reassignment of the whole array. You can detect insertions or deletions by listening for the length change of the array. Currently, only periods (.) can be used to listen for deep properties and array items.
   <!-- @[monitor_decorator_array_support](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorDecoratorArraySupport.ets) --> 
-
+  
   ``` TypeScript
   import { hilog } from '@kit.PerformanceAnalysisKit';
   
@@ -565,7 +565,7 @@ When the properties listened by \@Monitor change, the callback is triggered.
 
   If you only execute the instruction of Step 2 or Step 3 to change the values of **name** or **age**, the **onNameChange** and **onAgeChange** methods are triggered.
   <!-- @[monitor_decorator_object_support](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorDecoratorObjectSupport.ets) --> 
-
+  
   ``` TypeScript
   import { hilog } from '@kit.PerformanceAnalysisKit';
   
@@ -636,7 +636,7 @@ When the properties listened by \@Monitor change, the callback is triggered.
 
 - If the property listened by \@Monitor is changed for multiple times in an event, the last change is used.
   <!-- @[monitor_decorator_last_write](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorDecoratorLastWrite.ets) --> 
-
+  
   ``` TypeScript
   import { hilog } from '@kit.PerformanceAnalysisKit';
   
@@ -1318,7 +1318,7 @@ Pay attention to the following constraints when using \@Monitor:
 
 - Do not listen for the same property for multiple times in a class. When a property in a class is listened for multiple times, only the last listening method takes effect.
   <!-- @[monitor_limitation_last_listener_wins](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorLimitationLastListenerWins.ets) --> 
-
+  
   ``` TypeScript
   import { hilog } from '@kit.PerformanceAnalysisKit';
   
@@ -1360,7 +1360,7 @@ Pay attention to the following constraints when using \@Monitor:
 
 - When @Monitor receives multiple path parameters, the system determines duplicate observation based on the full combination result of the parameters. Spaces are added between parameters during full combination to distinguish them. For example, the full combination of 'ab' and 'c' is 'ab c', while 'a' and 'bc' becomes 'a bc'. These results are not equal. In the following example, Monitor 1, Monitor 2, and Monitor 3 all observe the name attribute. The input parameters of Monitor 2 and Monitor 3 are the same (name position), so only Monitor 3 takes effect. When name changes, both onNameAgeChange and onNamePositionChangeDuplicate are triggered simultaneously. However, note that Monitor 2 and Monitor 3 implementations are still considered multiple @Monitor observations of the same attribute in the same class, which is not recommended.
   <!-- @[monitor_limitation_multiple_path_params](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorLimitationMultiplePathParams.ets) --> 
-
+  
   ``` TypeScript
   import { hilog } from '@kit.PerformanceAnalysisKit';
   
@@ -1420,7 +1420,7 @@ Pay attention to the following constraints when using \@Monitor:
 - The \@Monitor parameter must be a string that listens for the property name. Only string literals, **const** constants, and **enum** enumerated values can be used as parameters. If a variable is used as a parameter, only the property corresponding to the variable value during \@Monitor initialization is listened. When a variable is changed, \@Monitor cannot change the listened property in real time. That is, the target property listened by \@Monitor is determined during initialization and cannot be dynamically changed. It is not recommended to use variables as @Monitor parameters for initialization.
 
   <!-- @[monitor_limitation_parameter_string_constraint](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorLimitationParameterStringConstraint.ets) --> 
-
+  
   ``` TypeScript
   import { hilog } from '@kit.PerformanceAnalysisKit';
   
@@ -1530,6 +1530,113 @@ Pay attention to the following constraints when using \@Monitor:
     }
   }
   ```
+
+- Starting from API version 24, when the \@Monitor listened path may not exist or the variables in the path lack observation capability, the editor prompts the warning `The '@Monitor' decorator needs to monitor the state variables that exist.`. The following are the warning scenarios and fixes for \@Monitor path validation:
+
+  - **Class not \@ObservedV2 decorated**: When the \@Monitor listened path passes through a class that is not \@ObservedV2 decorated, the path cannot be listened to normally, and the editor prompts a warning.
+
+    Warning code:
+    ``` TypeScript
+    class Inner {
+      public num: number = 0;
+    }
+
+    @ObservedV2
+    class Outer {
+      @Trace public inner: Inner = new Inner();
+
+      // The type Inner of inner is not decorated by @ObservedV2, so the path 'inner.num' cannot listen to changes of the 'num' property.
+      @Monitor('inner.num')
+      onChange(monitor: IMonitor) {
+      }
+    }
+    ```
+
+    Fix code: Decorate the Inner class with @ObservedV2 and decorate its properties with @Trace.
+    ``` TypeScript
+    @ObservedV2
+    class Inner {
+      @Trace public num: number = 0;
+    }
+
+    @ObservedV2
+    class Outer {
+      @Trace public inner: Inner = new Inner();
+
+      @Monitor('inner.num')
+      onChange(monitor: IMonitor) {
+      }
+    }
+    ```
+
+  - **Property not \@Trace decorated**: When the \@Monitor listened property is not \@Trace decorated, changes to the property cannot be listened to, and the editor prompts a warning.
+
+    Warning code:
+    ``` TypeScript
+    @ObservedV2
+    class Info {
+      public name: string = 'Tom';
+
+      // name is not decorated by @Trace, so the path 'name' cannot listen to changes.
+      @Monitor('name')
+      onNameChange(monitor: IMonitor) {
+      }
+    }
+    ```
+
+    Fix code: Decorate the name property with @Trace.
+    ``` TypeScript
+    @ObservedV2
+    class Info {
+      @Trace public name: string = 'Tom';
+
+      @Monitor('name')
+      onNameChange(monitor: IMonitor) {
+      }
+    }
+    ```
+
+  - **Path type is interface**: When a variable of the interface type exists in the \@Monitor listened path, because the interface itself has no observation capability over its properties, the editor prompts a warning that the path may not exist. This warning cannot be removed. Developers need to confirm that the interface data is wrapped by UIUtils.makeObserved before it can be \@Monitor listened to.
+
+    Warning code:
+    ``` TypeScript
+    import { UIUtils } from '@kit.ArkUI';
+
+    interface IInfo {
+      name: string;
+    }
+
+    @ObservedV2
+    class Container {
+      // Use UIUtils.makeObserved to wrap the interface data so that it can be listened to by @Monitor.
+      public info: IInfo = UIUtils.makeObserved({ name: 'Name' }); 
+
+      // The type of info is interface, so the path 'info.name' may not listen to changes of the 'name' property.
+      @Monitor('info.name')
+      onNameChange(monitor: IMonitor) {
+      }
+    }
+    ```
+
+  - **Path type is a union type**: When a variable of a union type exists in the \@Monitor listened path, the editor prompts a warning that the path may not exist. This warning cannot be removed. Developers need to confirm that the object type containing the target path in the union type exists and has observation capability.
+
+    Warning code:
+    ``` TypeScript
+    @ObservedV2
+    class User {
+      @Trace public age: number = 10;
+    }
+
+    @ObservedV2
+    class Page {
+      @Trace user: User | number = new User();
+
+      // The type of user is the union type User | number, so the path 'user.age' may not exist.
+      @Monitor('user.age')
+      onChange(monitor: IMonitor) {
+      }
+    }
+    ```
 
 ## Comparing \@Monitor with \@Watch
 
@@ -1879,42 +1986,42 @@ The result is unstable when you use the garbage collection mechanism to cancel t
 1. Define \@Monitor in the custom component. When a custom component is destroyed, the state management framework cancels the listening of \@Monitor. Therefore, after the custom component calls **aboutToDisappear**, the \@Monitor callback will not be triggered even though the data of the custom component may not be released.
 
    <!-- @[monitor_problem_class_failure_time_set_comp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorProblemClassFailureTimeSetComp.ets) --> 
-
+   
    ``` TypeScript
    import { hilog } from '@kit.PerformanceAnalysisKit';
-
+   
    @ObservedV2
    class InfoWrapper {
      public info?: Info;
-
+   
      constructor(info: Info) {
        this.info = info;
      }
    }
-
+   
    @ObservedV2
    class Info {
      @Trace public age: number;
-
+   
      constructor(age: number) {
        this.age = age;
      }
    }
-
+   
    @ComponentV2
    struct Child {
      @Param @Require infoWrapper: InfoWrapper;
-
+   
      @Monitor('infoWrapper.info.age')
      onInfoAgeChange(monitor: IMonitor) {
        hilog.info(0xFF00, 'testTag', '%{public}s',
          `age change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
      }
-
+   
      aboutToDisappear(): void {
        hilog.info(0xFF00, 'testTag', '%{public}s', `Child aboutToDisappear, age: ${this.infoWrapper.info?.age}`);
      }
-
+   
      build() {
        Column() {
          Text(`${this.infoWrapper.info?.age}`)
@@ -1923,19 +2030,19 @@ The result is unstable when you use the garbage collection mechanism to cancel t
        }
      }
    }
-
+   
    @Entry
    @ComponentV2
    struct Index {
      dataArray: Info[] = [];
      @Local showFlag: boolean = true;
-
+   
      aboutToAppear(): void {
        for (let i = 0; i < 5; i++) {
          this.dataArray.push(new Info(i));
        }
      }
-
+   
      build() {
        Column() {
          // Tap Button to toggle showFlag, triggering the creation/destruction of the Child component.
@@ -1975,43 +2082,43 @@ The result is unstable when you use the garbage collection mechanism to cancel t
 2. Set the listened object to empty. When the custom component is about to be destroyed, the \@Monitor listened object is set empty. In this way, the \@Monitor cannot listen for the changes to the original object, thus cancelling the @Monitor listening.
 
    <!-- @[monitor_problem_class_failure_time_empty_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorProblemClassFailureTimeEmptyObject.ets) -->  
-
+   
    ``` TypeScript
    import { hilog } from '@kit.PerformanceAnalysisKit';
-
+   
    @ObservedV2
    class InfoWrapper {
      public info?: Info;
-
+   
      constructor(info: Info) {
        this.info = info;
      }
-
+   
      @Monitor('info.age')
      onInfoAgeChange(monitor: IMonitor) {
        hilog.info(0xFF00, 'testTag', '%{public}s',
          `age change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
      }
    }
-
+   
    @ObservedV2
    class Info {
      @Trace public age: number;
-
+   
      constructor(age: number) {
        this.age = age;
      }
    }
-
+   
    @ComponentV2
    struct Child {
      @Param @Require infoWrapper: InfoWrapper;
-
+   
      aboutToDisappear(): void {
        hilog.info(0xFF00, 'testTag', '%{public}s', `Child aboutToDisappear, age: ${this.infoWrapper.info?.age}`);
        this.infoWrapper.info = undefined; // Disable InfoWrapper's listening on info.age.
      }
-
+   
      build() {
        Column() {
          Text(`${this.infoWrapper.info?.age}`)
@@ -2020,19 +2127,19 @@ The result is unstable when you use the garbage collection mechanism to cancel t
        }
      }
    }
-
+   
    @Entry
    @ComponentV2
    struct Index {
      dataArray: Info[] = [];
      @Local showFlag: boolean = true;
-
+   
      aboutToAppear(): void {
        for (let i = 0; i < 5; i++) {
          this.dataArray.push(new Info(i));
        }
      }
-
+   
      build() {
        Column() {
          Button('change showFlag')

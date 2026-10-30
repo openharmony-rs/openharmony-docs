@@ -7565,6 +7565,8 @@ minimize(callback: AsyncCallback&lt;void&gt;): void
 > **说明：**
 >
 > - 当窗口已创建且未处于前台状态时，调用该接口不生效不报错。建议在调用该接口前确保窗口已创建并处于前台状态。
+>
+> - 主窗口最小化后进入后台状态时，不同设备上UIAbility生命周期的行为存在差异，请参考[不同设备UIAbility生命周期的差异化行为](../../windowmanager/window-lifecycle.md#不同设备uiability生命周期的差异化行为)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -7617,6 +7619,8 @@ minimize(): Promise&lt;void&gt;
 > **说明：**
 >
 > - 当窗口已创建且未处于前台状态时，调用该接口不生效不报错。建议在调用该接口前确保窗口已创建并处于前台状态。
+>
+> - 主窗口最小化后进入后台状态时，不同设备上UIAbility生命周期的行为存在差异，请参考[不同设备UIAbility生命周期的差异化行为](../../windowmanager/window-lifecycle.md#不同设备uiability生命周期的差异化行为)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -8519,7 +8523,7 @@ try {
 
 setWindowMask(windowMask: Array&lt;Array&lt;number&gt;&gt;): Promise&lt;void&gt;
 
-设置异形窗口的掩码，使用Promise异步回调。异形窗口为非常规形状的窗口，掩码用于描述异形窗口的形状。此接口仅限子窗和全局悬浮窗可用。
+设置异形窗口的掩码，使用Promise异步回调。异形窗口为非常规形状的窗口，掩码用于描述异形窗口的形状。此接口仅限子窗口和全局悬浮窗可用。
 
 当异形窗口大小发生变化时，实际的显示内容为掩码大小和窗口大小的交集部分。
 
@@ -8541,7 +8545,7 @@ setWindowMask(windowMask: Array&lt;Array&lt;number&gt;&gt;): Promise&lt;void&gt;
 
 | 类型                                         | 说明                                |
 | :------------------------------------------- | :---------------------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -8585,7 +8589,7 @@ try {
 
 setWindowMaskWithAlpha(windowMask: Uint8Array, maskWidth: number, maskHeight: number): Promise&lt;void&gt;
 
-通过按像素顺序排列的Alpha数组设置异形窗口的掩码，像素顺序以窗口左上角为像素起点，同行内从左到右依次排列，从上至下逐行排列。使用Promise异步回调。异形窗口为非常规形状的窗口，掩码用于描述异形窗口的形状。此接口仅限子窗和全局悬浮窗可用。
+通过按像素顺序排列的Alpha数组设置异形窗口的掩码，像素顺序以窗口左上角为像素起点，同行内从左到右依次排列，从上至下逐行排列。使用Promise异步回调。异形窗口为非常规形状的窗口，掩码用于描述异形窗口的形状。此接口仅限子窗口和全局悬浮窗可用。
 
 当异形窗口大小发生变化时，实际的显示内容为掩码大小和窗口大小的交集部分。
 
@@ -8651,7 +8655,7 @@ try {
 
 clearWindowMask(): Promise&lt;void&gt;
 
-清除异形窗口的掩码使其恢复为矩形窗口，使用Promise异步回调。异形窗口为非常规形状的窗口，掩码用于描述异形窗口的形状。此接口仅限子窗和全局悬浮窗可用。
+清除异形窗口的掩码使其恢复为矩形窗口，使用Promise异步回调。异形窗口为非常规形状的窗口，掩码用于描述异形窗口的形状。此接口仅限子窗口和全局悬浮窗可用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

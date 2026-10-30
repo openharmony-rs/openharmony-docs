@@ -1,3 +1,11 @@
+---
+kits: ["ArkGraphics 3D / 方舟3D图形"]
+description: "介绍3D场景中动画资源的播放与控制能力，涵盖动画的加载、开始、暂停、停止、结束、重启和跳转等状态的控制操作，以及onStarted与onFinished回调的注册使用，帮助开发者实现灵活的动画交互。"
+keywords: [ArkGraphics 3D, 3D动画, onStarted, onFinished]
+doctype: guide
+status: active
+---
+
 # 场景动画控制与管理
 <!--Kit: ArkGraphics 3D-->
 <!--Subsystem: Graphics-->

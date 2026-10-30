@@ -292,6 +292,7 @@ EntityInfo继承自[IntentEntityDecoratorInfo](./js-apis-app-ability-InsightInte
 | entities | Array&lt;[EntityInfo](#entityinfo20)&gt; | 是 | 否 | 表示意图包含的实体信息。 |
 | subIntentInfoForConfiguration<sup>23+</sup> | [SubIntentInfoForConfiguration](#subintentinfoforconfiguration23) | 是 | 是 | 表示使用配置文件开发的意图的特有信息。 |
 | developType<sup>23+</sup> | [DevelopType](#developtype23) | 是 | 是 | 表示意图的开发方式。 |
+| permissions | string[] | 是 | 是 | 调用该意图所需的权限列表，为可选字段。该字段仅用于调用方查询或参考。系统不会自动校验这些权限。权限校验必须由意图提供方（服务端）实现。<br>**起始版本：** 26.1.0 |
 
 ## GetInsightIntentFlag<sup>20+</sup>
 

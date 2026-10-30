@@ -2,8 +2,8 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @fei_1007-->
-<!--Designer: @gcw_sPCsris4; @jingbotao-->
+<!--Owner: @betafringe007-->
+<!--Designer: @taoweihua-->
 <!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
 
@@ -29,27 +29,27 @@
 
 1. 创建全局悬浮窗。  
 
-   通过[window.createWindow()](../reference/apis-arkui/arkts-apis-window-f.md#windowcreatewindow9-1)接口创建全局悬浮窗类型（TYPE_FLOAT）的窗口。
+   通过[window.createWindow()](../reference/apis-arkui/arkts-apis-window-f.md#windowcreatewindow9)接口创建全局悬浮窗类型（TYPE_FLOAT）的窗口。
 
    <!-- @[floating_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) -->  
    
    ``` TypeScript
    let floatWindowClass: window.Window | undefined = undefined;
    // ...
-         // 1.创建全局悬浮窗。
-         let context: common.UIAbilityContext | undefined = AppStorage.get<common.UIAbilityContext>('context');
-         let config: window.Configuration = {
-           name: 'floatWindow', windowType: window.WindowType.TYPE_FLOAT, ctx: context as common.BaseContext
-         };
-         window.createWindow(config, (err, data) => {
-           if (err?.code) {
-             console.error(`Failed to create the floatWindow. Cause code: ${err.code}, message: ${err.message}`);
-             return;
-           }
-           floatWindowClass = data;
-           console.info('Succeeded in creating the floatWindow. Data: ' + JSON.stringify(data));
-           // ...
-         });
+   // 1.创建全局悬浮窗。
+   let context: common.UIAbilityContext | undefined = AppStorage.get<common.UIAbilityContext>('context');
+   let config: window.Configuration = {
+     name: 'floatWindow', windowType: window.WindowType.TYPE_FLOAT, ctx: context as common.BaseContext
+   };
+   window.createWindow(config, (err, data) => {
+     if (err?.code) {
+       console.error(`Failed to create the floatWindow. Cause code: ${err.code}, message: ${err.message}`);
+       return;
+     }
+     floatWindowClass = data;
+     console.info('Succeeded in creating the floatWindow. Data: ' + JSON.stringify(data));
+     // ...
+   });
    ```
 
 2. 对全局悬浮窗进行属性设置等操作。  

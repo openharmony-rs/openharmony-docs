@@ -107,4 +107,4 @@ Enumerates the SCSI status codes used for the response.
 | SCSIPERIPHERAL_STATUS_RESERVATION_CONFLICT = 0x18 | Resource reservation conflict.|
 | SCSIPERIPHERAL_STATUS_TASK_SET_FULL = 0x28 | Task set already full.|
 | SCSIPERIPHERAL_STATUS_ACA_ACTIVE = 0x30 | ACA activity status.|
-| SCSIPERIPHERAL_STATUS_TASK_ABORTED = 0x40 | Task aborted|
+| SCSIPERIPHERAL_STATUS_TASK_ABORTED = 0x40 | Task aborted.|

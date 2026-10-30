@@ -5,7 +5,7 @@
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=4e4b18ce5c3346ee05b620e87051d886ec217a55 translatedAt=2026-10-14T05:04:37.765Z pushedAt=2026-10-22T06:06:42.383Z nl=2 -->
+<!-- md-trans-meta sourceCommit=4e4b18ce5c3346ee05b620e87051d886ec217a55 translatedAt=2026-10-14T05:04:37.765Z pushedAt=2026-10-26T06:44:58.029Z nl=2 -->
 
 > **NOTE**
 >
@@ -65,11 +65,11 @@ This error code is reported if a driver client is prohibited from binding a driv
 
 **Possible Causes**
 
-An incorrect value is set for **ohos.permission.ACCESS_DDK_ALLOWED** in the metadata attribute of the extensionAbilities structure whose type is **driver**.
+In the source code project of the non-standard peripheral driver, an incorrect value is set for **ohos.permission.ACCESS_DDK_ALLOWED** in the metadata attribute of the extensionAbilities structure whose type is **driver** in the **entry/src/main/module.json5** file.
 
 **Solution**
 
-In the source code project of the non-standard peripheral driver, open the entry/src/main/module.json5 file, and assign the value **true** to **ohos.permission.ACCESS_DDK_ALLOWED** in the metadata attribute of the extensionAbilities structure whose type is **driver**.
+In the source code project of the non-standard peripheral driver, open the **entry/src/main/module.json5** file, and assign the value **true** to **ohos.permission.ACCESS_DDK_ALLOWED** in the metadata attribute of the extensionAbilities structure whose type is **driver**.
 
 ## 26300003 Driver Client Not Bound to Any Driver Server
 

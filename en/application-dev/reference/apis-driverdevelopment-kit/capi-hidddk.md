@@ -8,7 +8,7 @@
 
 ## Overview
 
-Provides HID driver development kit (DDK) functions, including those for creating a device, sending events to a device, and destroying a device, for HID driver development.
+Provides HID driver development kit (DDK) interfaces, including those for creating a device, sending events to a device, and destroying a device, for HID driver development.
 
 **System capability**: SystemCapability.Driver.HID.Extension
 

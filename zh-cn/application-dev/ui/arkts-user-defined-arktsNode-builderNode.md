@@ -19,7 +19,7 @@
 
 ## 基本概念
 
-- 系统组件：组件是UI的必要元素，形成了在界面中的样子，由ArkUI直接提供的称为[系统组件](arkts-ui-development-overview.md)。
+- 系统组件：组件是UI的必要元素，形成了在界面中的样式，由ArkUI直接提供的称为[系统组件](arkts-ui-development-overview.md)。
 
 - 实体节点：由后端创建的Native节点。
 

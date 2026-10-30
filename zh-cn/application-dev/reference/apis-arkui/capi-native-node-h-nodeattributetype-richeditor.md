@@ -731,6 +731,51 @@ NODE_TEXT_EDITOR_PUNCTUATION_OVERFLOW = 22030
 | -- | -- |
 | .value[0].i32 | 是否启用行尾标点符号悬挂，0表示不启用行尾标点符号悬挂，1表示启用行尾标点符号悬挂。 |
 
+## NODE_TEXT_EDITOR_TYPE
+
+```c
+NODE_TEXT_EDITOR_TYPE = 22031
+```
+
+设置TextEditor组件的文本编辑器类型，支持属性设置、属性重置和属性获取。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .value[0].i32 | 文本编辑器类型，数据类型[OH_ArkUI_TextEditorType](capi-rich-editor-h.md#oh_arkui_texteditortype)，默认值为OH_ARKUI_TEXT_EDITOR_TYPE_NORMAL。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .value[0].i32 | 文本编辑器类型，数据类型[OH_ArkUI_TextEditorType](capi-rich-editor-h.md#oh_arkui_texteditortype)。 |
+
+## NODE_TEXT_EDITOR_SHOW_PASSWORD_ICON
+
+```c
+NODE_TEXT_EDITOR_SHOW_PASSWORD_ICON = 22032
+```
+
+设置密码输入模式下是否在文本末尾显示密码图标，支持属性设置、属性重置和属性获取。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .value[0].i32 | 是否在文本末尾显示密码图标，true表示显示密码图标，false表示不显示。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .value[0].i32 | 是否在文本末尾显示密码图标，1表示显示密码图标，0表示不显示。 |
 
 ## NODE_TEXT_EDITOR_SHOW_UNDERLINE
 

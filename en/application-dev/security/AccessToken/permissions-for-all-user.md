@@ -263,3 +263,19 @@ Allows an application to read media files from and write media files into the us
 **Substitute**:
 
 See the [alternative solution of the **Files** permission group](app-permission-group-list.md#filesdeprecated).
+
+## ohos.permission.DISABLE_SCREEN_PRIVACY_PROTECTION
+
+Allows an application to record content protected by screen privacy guard.
+
+With this permission, the application can record system UI elements (such as status notifications and input method editors) that are shielded by default under screen privacy protection during screen recording.
+
+**Prerequisites**: Before requesting this permission, the application must request the [ohos.permission.CUSTOM_SCREEN_RECORDING](restricted-permissions.md#ohospermissioncustom_screen_recording) permission (privacy warnings will no longer be displayed after user authorization is obtained.)
+
+**Permission level**: normal
+
+**Authorization mode**: manual_settings
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Since**: 26.1.0

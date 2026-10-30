@@ -129,6 +129,7 @@ static show(options?: TextPickerDialogOptions)
 | textStyle | [TextPickerTextStyle](ts-basic-components-textpicker.md#textpickertextstyle15类型说明) | 否 | 是 | 设置待选项（以选中项为基准向上或向下的第一项）的文本颜色、字号、字体粗细、最大字号、最小字号、超长文本截断方式。<br>默认值：<br>{<br>color: '#ff182431',<br>font: {<br>size: '16fp', <br>weight: FontWeight.Regular<br>},<br>minFontSize: 0,<br>maxFontSize: 0,<br>overflow: TextOverflow.CLIP<br>}<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | selectedTextStyle | [TextPickerTextStyle](ts-basic-components-textpicker.md#textpickertextstyle15类型说明) | 否 | 是 | 设置选中项的文本颜色、字号、字体粗细、最大字号、最小字号、超长文本截断方式。<br>默认值：<br>{<br>color: '#ff007dff',<br>font: {<br>size: '20fp', <br>weight: FontWeight.Medium<br>},<br>minFontSize: 0,<br>maxFontSize: 0,<br>overflow: TextOverflow.CLIP<br>}<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | systemMaterial  | [SystemUiMaterial](ts-universal-attributes-image-effect.md#systemuimaterial) | 否 | 是 | 设置弹窗的系统材质。当需要使用系统预定义的材质效果以快速实现统一的视觉效果时设置此参数。<br>**说明：**<br>- 默认值为ImmersiveOptions的style为ImmersiveStyle.ULTRA_THICK的ImmersiveMaterial对象，设置undefined时与默认值保持一致。不同的材质具有不同的效果。<br>- 该接口影响背景色[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、背景模糊[backgroundBlurStyle](ts-universal-attributes-background.md#backgroundblurstyle9)、背景效果[backgroundEffect](ts-universal-attributes-background.md#backgroundeffect11)、边框颜色[borderColor](ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](ts-universal-attributes-border.md#borderwidth)、阴影[shadow](ts-universal-attributes-image-effect.md#shadow)，当设置系统材质时，上述接口不生效。<br>**起始版本：** 26.0.0<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
+| adaptToHandedness | [HandednessFollowMode](../js-apis-dialog.md#handednessfollowmode) | 否 | 是 | 弹窗是否以及如何适配握持习惯。<br>默认值：HandednessFollowMode.NONE<br>**说明：**<br>当alignment不为DialogAlignment.Default，或者offset值不为0时，该接口不生效。<br>**起始版本：** 26.1.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。 |
 
 
 
@@ -699,3 +700,36 @@ struct TextPickerDialogExample {
 ```
 
 ![text-picker-dialog-systemMaterial](figures/text-picker-dialog-systemMaterial.gif)
+
+### 示例12（设置弹窗适配握持习惯）
+
+该示例通过[TextPickerDialogOptionsExt](#textpickerdialogoptionsext20对象说明)中的adaptToHandedness属性设置弹窗适配握持习惯，使弹窗跟随触发它的组件的位置偏移。
+
+从API版本26.1.0开始，在[TextPickerDialogOptionsExt](#textpickerdialogoptionsext20对象说明)中新增了adaptToHandedness属性。
+
+```ts
+import { HandednessFollowMode } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct TextPickerDialogExample {
+  private showText: string[] = ['Text1', 'Text2', 'Text3', 'Text4', 'Text5', 'Text6'];
+
+  build() {
+    Column() {
+      Button('TextPickerDialog')
+        .margin(20)
+        .onClick(() => {
+          this.getUIContext().showTextPickerDialog({
+            range: this.showText,
+            adaptToHandedness: HandednessFollowMode.FOLLOW_ANCHOR
+          });
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+![设置弹窗适配握持习惯](figures/textpickerdialoghandedness.gif)

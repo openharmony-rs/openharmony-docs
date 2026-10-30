@@ -2175,7 +2175,7 @@ struct CompV2 {
 
 ## CustomComponentContext
 
-`CustomComponentContext`类提供对组件级服务的访问，包括复用池。通过[UIUtils.getCustomComponentContext](#getcustomcomponentcontext)获取实例。
+`CustomComponentContext`类提供对组件级服务的访问，包括复用池。通过[UIUtils.getCustomComponentContext](#getcustomcomponentcontext)获取实例，开发者请勿自行实现或重写该接口。
 
 **起始版本：** 26.0.0
 
@@ -2244,13 +2244,9 @@ struct PoolOwner {
 
 ### getDefaultReusePool
 
-getDefaultReusePool?(): IDefaultReusePool | undefined
+getDefaultReusePool(): IDefaultReusePool | undefined
 
 返回该自定义组件拥有的默认复用池。与[getReusePool](#getreusepool)返回的全局复用池不同，默认复用池用于缓存该组件回收的直接子组件，无需开发者配置。当组件存在默认复用池时返回默认复用池，否则返回`undefined`。
-
-> **说明：**
->
-> 该方法为可选方法，调用时建议使用`getDefaultReusePool?.()`的形式。
 
 **起始版本：** 26.1.0
 
@@ -2302,7 +2298,7 @@ struct Index {
 
   clearDefaultPool() {
     // 获取当前组件的默认复用池
-    const pool = UIUtils.getCustomComponentContext(this).getDefaultReusePool?.();
+    const pool = UIUtils.getCustomComponentContext(this).getDefaultReusePool();
     if (!pool) {
       console.info('No default reuse pool available.');
       return;
@@ -2336,7 +2332,7 @@ struct Index {
 
 ## IReusePool
 
-`IReusePool`接口提供自定义组件上的全局复用池的相关功能，包括查询回收组件的当前数量和上限信息、预渲染可复用组件到复用池中等，适用于开发者需要手动管理和优化组件复用效率的场景。
+`IReusePool`接口提供自定义组件上的全局复用池的相关功能，包括查询回收组件的当前数量和上限信息、预渲染可复用组件到复用池中等，适用于开发者需要手动管理和优化组件复用效率的场景。通过[CustomComponentContext.getReusePool](#getreusepool)获取实例，开发者请勿自行实现或重写该接口。
 
 **起始版本：** 26.0.0
 
@@ -2559,7 +2555,7 @@ struct CompA {
 
 ## IDefaultReusePool
 
-`IDefaultReusePool`接口提供自定义组件上的默认复用池的相关功能，包括清理复用池中的组件。通过[CustomComponentContext.getDefaultReusePool](#getdefaultreusepool)获取实例。
+`IDefaultReusePool`接口提供自定义组件上的默认复用池的相关功能，包括清理复用池中的组件。通过[CustomComponentContext.getDefaultReusePool](#getdefaultreusepool)获取实例，开发者请勿自行实现或重写该接口。
 
 **起始版本：** 26.1.0
 
@@ -2652,12 +2648,12 @@ struct Index {
       Button('Clear All')
         .onClick(() => {
           // 清理默认复用池中的全部组件
-          UIUtils.getCustomComponentContext(this).getDefaultReusePool?.()?.clearCache();
+          UIUtils.getCustomComponentContext(this).getDefaultReusePool()?.clearCache();
         })
       Button('Clear A')
         .onClick(() => {
           // 仅清理reuseId为'A'的组件
-          UIUtils.getCustomComponentContext(this).getDefaultReusePool?.()?.clearCache('A');
+          UIUtils.getCustomComponentContext(this).getDefaultReusePool()?.clearCache('A');
         })
     }
   }

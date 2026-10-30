@@ -8,7 +8,7 @@
 
 该模块提供外置存储磁盘设备和卷设备信息查询的相关功能，包括获取外置存储物理磁盘信息和外置存储卷设备信息等。适用于外置存储设备管理、存储空间查询等场景，帮助开发者获取外置存储设备的磁盘和卷设备详情。
 
-**起始版本**：26.0.1
+**起始版本**：9
 
 ## 导入模块
 
@@ -16,7 +16,7 @@
 import { volumeManager } from '@kit.CoreFileKit';
 ```
 
-## volumemanager.getExternalDiskInfos
+## volumeManager.getExternalDiskInfos
 
 getExternalDiskInfos(): Promise&lt;Array&lt;ExternalDiskInfo&gt;&gt;
 
@@ -57,7 +57,7 @@ volumeManager.getExternalDiskInfos().then((disks: Array<volumeManager.ExternalDi
 });
 ```
 
-## volumemanager.getExternalVolumeInfos
+## volumeManager.getExternalVolumeInfos
 
 getExternalVolumeInfos(): Promise&lt;Array&lt;ExternalVolumeInfo&gt;&gt;
 
