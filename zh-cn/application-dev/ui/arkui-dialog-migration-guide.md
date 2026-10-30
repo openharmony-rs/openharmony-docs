@@ -179,13 +179,6 @@
               .fontWeight(FontWeight.Bold)
               .margin({ bottom: 20 })
   
-            Button('老接口：@CustomDialog + CustomDialogController')
-              .width('90%')
-              .margin({ bottom: 10 })
-              .onClick(() => {
-                this.showOldCustomDialog();
-              })
-  
             Button('新接口：DialogPresenter.present（自定义弹窗）')
               .width('90%')
               .margin({ bottom: 10 })
@@ -203,10 +196,6 @@
         }
         .height('100%')
       }
-    }
-  
-    private showOldCustomDialog(): void {
-      this.result = '老接口示例请参考 DialogProject 工程';
     }
   
     private showNewCustomDialog(): void {
