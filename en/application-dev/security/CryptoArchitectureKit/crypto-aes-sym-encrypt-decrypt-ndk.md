@@ -218,7 +218,7 @@ Call [OH_CryptoSymKeyGenerator_Create](../../reference/apis-crypto-architecture-
 4. Call [OH_CryptoSymCipher_Update](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_update) to update data (ciphertext).
    
    There is no limit on the length of a single update call. You can determine the length of the data to be passed to a single update call based on the ciphertext length.
-   > **Note:**
+   > **NOTE**
    >
    > The CCM mode does not support segmented encryption and decryption.
    >
@@ -226,7 +226,7 @@ Call [OH_CryptoSymKeyGenerator_Create](../../reference/apis-crypto-architecture-
 
 5. Call [OH_CryptoSymCipher_Final](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_final) to obtain the decrypted data.
 
-   > **Note:**
+   > **NOTE**
    >
    > If data is passed through update, pass null for data here.
    >

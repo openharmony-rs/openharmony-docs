@@ -234,7 +234,7 @@ For the corresponding algorithm specifications, see [Asymmetric Key Encryption a
    The doFinal output result may be null. Before accessing the specific data, check whether the result is null to avoid exceptions.
 
    Here, the plaintext is split into 64-byte groups and encrypted multiple times. With a 1024-bit key, each encryption produces 128 bytes of ciphertext.
-   > **Note:**
+   > **NOTE**
    >
    > Segmented encryption and decryption with asymmetric keys means that when the plaintext exceeds the data length supported by a single encryption or decryption operation, the data to be encrypted or decrypted must be divided into data segments of appropriate length, and the encryption or decryption operation is performed on each segment. For details, see [Introduction to Asymmetric Segmented Encryption and Decryption](crypto-encryption-decryption.md#asymmetric-encryptiondecryption).
 

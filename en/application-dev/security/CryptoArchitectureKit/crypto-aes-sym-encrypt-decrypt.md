@@ -33,7 +33,7 @@ For details about the algorithm specifications, see [Symmetric Key Encryption an
 
 6. Read [GcmParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#gcmparamsspec).authTag as the authentication information for decryption.
 
-   > **NOTE:**
+   > **NOTE**
    In GCM mode, during a single encryption process, concatenating the result of each update and the final doFinal yields "ciphertext + authTag", where authTag is the last 16 bytes and the rest is ciphertext. If null is passed to the data parameter of doFinal, the doFinal result is the authTag.
 
 **Decryption**
@@ -885,7 +885,7 @@ If AES (ECB mode) decryption fails and returns error code 17630001, see [Failed 
 
 6. Read [GcmParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#gcmparamsspec).authTag as the decryption authentication information.
 
-   > **NOTE:**
+   > **NOTE**
    In GCM mode, during a single encryption process, concatenating the result of each update and the final doFinal yields "ciphertext + authTag", where authTag is the last 16 bytes and the rest is ciphertext. If null is passed to the data parameter of doFinal, the doFinal result is the authTag.
 
 **Decryption**
