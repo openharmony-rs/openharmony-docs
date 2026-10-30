@@ -523,7 +523,7 @@ workScheduler.isLastWorkTimeOut(500)
 | idleWaitTime    | number                            | 否    | 是    |空闲等待时间，单位：ms。           |
 | parameters      | Record<string, number \| string \| boolean>  | 否    | 是    |携带参数信息。 |
 | earliestStartTime<sup>22+</sup> | number | 否    | 是    |任务首次执行时间距离任务申请时间的间隔，单位：ms，默认为0，范围大于等于0。 |
-| isPerformanceSensitive    | boolean                 | 否    | 是    |是否是性能敏感任务。这个参数限制比较严格，系统会对运行时长、运行频率以及整机总运行时长进行限制，默认为false。<br>- true表示是性能敏感任务，当该标记置true时，isCharging和isDeepIdle必须为true，如果是周期性任务，repeatCycleTime参数需要大于等于24小时。<br/>- false表示不是性能敏感任务。<br>**起始版本：** 26.0.0 |
+| isPerformanceSensitive    | boolean                 | 否    | 是    |是否是性能敏感任务。这个参数限制比较严格，系统会对运行时长、运行频率以及整机总运行时长进行限制，默认为false。<br>- true表示是性能敏感任务，当该标记置true时，isCharging和isDeepIdle必须为true，如果是周期性任务，repeatCycleTime参数需要大于等于24小时。<br/>- false表示不是性能敏感任务。<br>**起始版本：** 26.1.0 |
 
 ## NetworkType
 
