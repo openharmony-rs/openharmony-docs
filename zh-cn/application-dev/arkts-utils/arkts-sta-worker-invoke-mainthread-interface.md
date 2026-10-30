@@ -6,7 +6,7 @@
 <!--Tester: @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
 
-[EAWorker（独占线程任务执行器）(ArkTS)](../reference/apis-arkts/eaworker_managed.md)中的任务如果需要调用宿主线程接口，可以使用EAWorker.postToMain将函数投递到主线程执行，并通过返回的任务句柄等待主线程执行结果。
+[EAWorker（独占线程任务执行器）(ArkTS)](../reference/apis-arkts/eaworker-managed.md)中的任务如果需要调用宿主线程接口，可以使用EAWorker.postToMain将函数投递到主线程执行，并通过返回的任务句柄等待主线程执行结果。
 
 ArkTS-Sta不使用ArkTS-Dyn Worker中的registerGlobalCallObject和callGlobalCallObjectMethod接口。静态场景下，建议通过显式共享对象、函数参数和EAWorker.postToMain完成宿主线程接口调用。
 

@@ -93,11 +93,11 @@
         - [Atomics (实例化原子类型接口)](arkts-sta-atomics.md)
         - [Atomics (基于typedArray的原子类型接口)](arkts-sta-legacyatomics.md)
       - EAWorker<!--js-apis-arkts-eaworker-->
-        - [EAWorker（独占线程任务执行器）(ArkTS)](eaworker_managed.md)
+        - [EAWorker（独占线程任务执行器）(ArkTS)](eaworker-managed.md)
         - [EAWorker（独占线程任务执行器）(C/C++)](eaworker_native.md)
         - [Job和CompletableJob（任务执行结果）](job.md)
         - [Message (EAWorker消息)](message.md)
-        - [MessageHandler (EAWorker消息处理器)](message_handler.md)
+        - [MessageHandler (EAWorker消息处理器)](message-handler.md)
       - [WorkerLocal (工作线程本地存储)](arkts-sta-workerlocal.md)
       - [Mutex (互斥锁)](arkts-sta-mutex.md)
       - [RWLock (读写锁)](arkts-sta-rwlock.md)
