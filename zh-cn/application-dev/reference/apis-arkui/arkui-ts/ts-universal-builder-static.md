@@ -69,6 +69,8 @@ struct BuilderDemo {
 
 下例声明占位构建函数，经placeholderRegister注册后由List的scrollPlaceholder属性使用。
 
+ArkTS-Sta示例：
+
 ```ts
 import { Column, Text, Builder, FlexAlign } from '@kit.ArkUI';
 
