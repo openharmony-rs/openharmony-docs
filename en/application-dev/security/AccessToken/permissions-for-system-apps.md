@@ -9767,8 +9767,6 @@ Allow the app to create a specified ultra-low-latency audio mode when creating a
 
 **Authorization mode**: system_grant
 
-**Certificate-based authorization**: true
-
 **Supported devices**: 2in1 | phone | tablet
 
 **Valid since**: 26.1.0
