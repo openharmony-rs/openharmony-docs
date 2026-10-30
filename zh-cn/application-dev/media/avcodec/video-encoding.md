@@ -195,12 +195,6 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
            inputBufferQueue.Flush();
            outputBufferQueue.Flush();
        }
-
-       void ClearCache()
-       {
-           cache.clear();
-           remainlen = 0;
-       }
    };
 
    struct VideoSampleInfo {
@@ -228,8 +222,6 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
    // 编码器实例指针。
    OH_AVCodec *encoder_ = nullptr;
-
-
    ```
 
 ### Surface模式
