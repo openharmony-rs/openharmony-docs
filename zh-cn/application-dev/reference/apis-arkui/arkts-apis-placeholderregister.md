@@ -30,7 +30,9 @@ import { PlaceholderRegister } from '@kit.ArkUI';
 >
 > 以下API需先使用UIContext中的[getPlaceholderRegister()](./arkts-apis-uicontext-uicontext.md#getplaceholderregister)方法获取到PlaceholderRegister对象，再通过该对象调用对应方法。
 
-**起始版本：** 26.1.0
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
 
 ### register
 
@@ -54,7 +56,9 @@ ArkTS-Sta: register(id: string, builder: WrappedBuilder\<CustomBuilder\>): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 26.1.0
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
 
 **参数：**
 
@@ -93,7 +97,9 @@ unregister(id: string): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 26.1.0
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
 
 **参数：**
 
@@ -121,7 +127,9 @@ isRegistered(id: string): boolean
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 26.1.0
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
 
 **参数：**
 
@@ -149,7 +157,9 @@ isRegistered(id: string): boolean
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 26.1.0
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
 
 | 名称   | 类型                                       | 只读 | 可选 | 说明                                       |
 | ------ | ------------------------------------------ | ---- | ---- | ------------------------------------------ |
@@ -170,7 +180,9 @@ ArkTS-Sta: type PlaceholderProvider = (index: int) => PlaceholderOptions | undef
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 26.1.0
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
 
 **参数：**
 
