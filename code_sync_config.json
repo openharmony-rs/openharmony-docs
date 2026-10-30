@@ -66760,14 +66760,14 @@
 						"start_line":304
 					},
 					{
-						"end_line":145,
+						"end_line":159,
 						"name":"availableBitrates",
-						"start_line":140
+						"start_line":154
 					},
 					{
-						"end_line":187,
+						"end_line":202,
 						"name":"setBitrate",
-						"start_line":180
+						"start_line":195
 					},
 					{
 						"end_line":207,
@@ -66775,14 +66775,14 @@
 						"start_line":203
 					},
 					{
-						"end_line":171,
+						"end_line":187,
 						"name":"getTrackDescription",
-						"start_line":155
+						"start_line":171
 					},
 					{
-						"end_line":202,
+						"end_line":217,
 						"name":"selectTrack",
-						"start_line":195
+						"start_line":210
 					}
 				]
 			}
