@@ -5,8 +5,9 @@
 <!--Designer: @houguobiao-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=3c99d361bd809f89d75f2709441031bf2ea8ffa1 translatedAt=2026-10-29T09:10:57.127Z pushedAt=2026-10-30T03:42:18.929Z nl=1 -->
 
-Provides the capability to draw overlays. OverlayManager allows you to manage overlay nodes through configuration of layer level, display order, display mode, and more. It is suitable for scenarios where overlays need to be displayed for a long time above pages but below dialogs, popups, and menus. This class provides flexible overlay management capabilities.
+Provides the capability to draw overlays. **OverlayManager** allows you to manage overlay nodes by setting layer levels, display orders, and display modes. It is suitable for scenarios where overlays need to be displayed for a long time above pages but below dialogs, popups, and menus. This class provides flexible overlay management capabilities.
 
 > **NOTE**
 >
@@ -42,8 +43,8 @@ Opens an overlay that supports level configuration on **OverlayManager**. The co
 
 | Name    | Type                                      | Mandatory   | Description         |
 | ------- | ---------------------------------------- | ------ | ----------- |
-| content | [ComponentContent](js-apis-arkui-ComponentContent.md#componentcontent-1) | Yes   | Content to be displayed on the overlay. This content node needs to be added to the OverlayManager.<br>**NOTE**<br> By default, the new node is centered on the page and stacked according to its stacking level.|
-| options | [OrderOverlayOptions](#orderoverlayoptions) | No   | Layer level configuration options of the floating layer. If this parameter is not passed, the default configuration is used.|
+| content | [ComponentContent](js-apis-arkui-ComponentContent.md#componentcontent-1) | Yes   | Content to be displayed on the overlay. This content node needs to be added to the **OverlayManager**.<br>**NOTE**<br> By default, the new node is centered on the page and stacked according to its stacking level.|
+| options | [OrderOverlayOptions](#orderoverlayoptions) | No   | Layer level configuration options of the overlay. If this parameter is not passed, the default configuration is used.|
 
 **Return value**
 
@@ -89,18 +90,27 @@ struct OverlayExample {
   @State message: string = 'ComponentContent';
   private uiContext: UIContext = this.getUIContext();
   private overlayNode: OverlayManager = this.uiContext.getOverlayManager();
+  @StorageLink('contentArray') contentArray: ComponentContent<Params>[] = [];
 
   build() {
     Column({ space: 5 }) {
-      Button ('Open Overlay').onClick(() => {
+      Button('openOrderOverlay').onClick(() => {
         let componentContent = new ComponentContent(
           this.uiContext, wrapBuilder<[Params]>(builderText),
           new Params(this.message, { x: 0, y: 110 })
         );
+        this.contentArray.push(componentContent);
         this.overlayNode.openOrderOverlay(componentContent, {
           levelOrder: LevelOrder.clamp(100),
           levelMode: LevelMode.OVERLAY
         });
+      })
+      Button('close overlay').onClick(() => {
+        if (this.contentArray.length > 0) {
+          this.overlayNode.removeComponentContent(this.contentArray.pop());
+        } else {
+          console.info('Incorrect arrayIndex');
+        }
       })
     }
     .width('100%')
@@ -111,7 +121,7 @@ struct OverlayExample {
 
 ## OrderOverlayOptions
 
-Layer level configuration options of the floating layer.
+Defines the layer level configuration options of the overlay.
 
 **Since:** 26.0.0
 
@@ -124,14 +134,14 @@ Layer level configuration options of the floating layer.
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- |--------| -------- |
 | levelOrder | [LevelOrder](js-apis-promptAction.md#levelorder18) | No| Yes| Display order of the overlay.<br>**NOTE**<br>- Default value: **LevelOrder.clamp(0)**|
-| levelMode | [LevelMode](js-apis-promptAction.md#levelmode15) | No| Yes| Display mode of the overlay.<br>**NOTE**<br>- Default value: LevelMode.OVERLAY |
-| levelUniqueId | number | No| Yes| Unique ID of the target node under the specified overlay, obtained via [getUniqueId](js-apis-arkui-frameNode.md#getuniqueid12). The value must be greater than or equal to 0. This parameter takes effect only when **levelMode** is set to **LevelMode.EMBEDDED**.|
+| levelMode | [LevelMode](js-apis-promptAction.md#levelmode15) | No| Yes| Display mode of the overlay.<br>**NOTE**<br>- Default value: **LevelMode.OVERLAY** |
+| levelUniqueId | number | No| Yes| Unique ID of the node under the layer level where the overlay is displayed, which is obtained by [getUniqueId](js-apis-arkui-frameNode.md#getuniqueid12). The value must be greater than or equal to 0. This parameter takes effect only when **levelMode** is set to **LevelMode.EMBEDDED**.|
 
 ## addComponentContent<sup>12+</sup>
 
 addComponentContent(content: ComponentContent, index?: number): void
 
-Adds a specified node to OverlayManager. You can use the **index** parameter to control the level of the new node.
+Adds a specified node to **OverlayManager**. You can use the **index** parameter to control the level of the new node.
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -143,8 +153,8 @@ Adds a specified node to OverlayManager. You can use the **index** parameter to 
 
 | Name    | Type                                      | Mandatory  | Description         |
 | ------- | ---------------------------------------- | ---- | ----------- |
-| content | [ComponentContent](js-apis-arkui-ComponentContent.md) | Yes   | Adds a specified content node to the OverlayManager.<br>**NOTE**<br> By default, the new node is centered on the page and stacked according to its stacking level.|
-| index | number | No   | Stacking level of the new node on the **OverlayManager**.<br>**NOTE**<br> If the value is greater than or equal to 0, a higher value indicates a higher layer level. If multiple ComponentContent entries share the same index, the later-added ones appear above earlier ones.<br> If the value is less than 0, **null**, or **undefined**, the **ComponentContent** node is added at the highest level by default.<br>If the same **ComponentContent** node is added multiple times, only the last added one is retained.|
+| content | [ComponentContent](js-apis-arkui-ComponentContent.md) | Yes   | Content to add to the target node on the **OverlayManager**.<br>**NOTE**<br> By default, the new node is centered on the page and stacked according to its stacking level.|
+| index | number | No   | Stacking level of the new node on the **OverlayManager**.<br>**NOTE**<br> If the value is greater than or equal to 0, a larger value means a higher layer for the **ComponentContent** node. If multiple **ComponentContent** nodes have the same index, the later-added ones appear above earlier ones.<br> If the value is less than **0**, **null**, or **undefined**, the **ComponentContent** node is added at the highest level by default.<br>If the same **ComponentContent** node is added multiple times, only the last added one is retained.|
 
 **Example**
 
@@ -208,7 +218,7 @@ struct OverlayExample {
           let componentContent = this.contentArray.splice(this.arrayIndex, 1);
           this.overlayNode.removeComponentContent(componentContent.pop());
         } else {
-          console.info("Invalid arrayIndex.");
+          console.info("Incorrect arrayIndex");
         }
       })
       Button('Show ComponentContent' + this.arrayIndex).onClick(() => {
@@ -216,7 +226,7 @@ struct OverlayExample {
           let componentContent = this.contentArray[this.arrayIndex];
           this.overlayNode.showComponentContent(componentContent);
         } else {
-          console.info("Invalid arrayIndex.");
+          console.info("Incorrect arrayIndex");
         }
       })
       Button('Hide ComponentContent' + this.arrayIndex).onClick(() => {
@@ -224,7 +234,7 @@ struct OverlayExample {
           let componentContent = this.contentArray[this.arrayIndex];
           this.overlayNode.hideComponentContent(componentContent);
         } else {
-          console.info("Invalid arrayIndex.");
+          console.info("Incorrect arrayIndex");
         }
       })
       Button('Show All ComponentContent').onClick(() => {
@@ -246,7 +256,7 @@ struct OverlayExample {
 
 addComponentContentWithOrder(content: ComponentContent, levelOrder?: LevelOrder): void
 
-Creates an overlay node with the specified display order. This API allows you to define the stacking order of the nodes when they are created.
+Creates an overlay node with the specified display order. This API allows you to define the display order of the nodes when they are created.
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -258,12 +268,12 @@ Creates an overlay node with the specified display order. This API allows you to
 
 | Name    | Type                                      | Mandatory  | Description         |
 | ------- | ---------------------------------------- | ---- | ----------- |
-| content | [ComponentContent](js-apis-arkui-ComponentContent.md) | Yes   | Adds a specified content node to the OverlayManager.<br>**NOTE**<br> By default, the new node is centered on the page and stacked according to its stacking level.|
-| levelOrder | [LevelOrder](js-apis-promptAction.md#levelorder18) | No   | Display order of the new floating layer node.<br>**NOTE**<br>- Default value: **LevelOrder.clamp(0)**|
+| content | [ComponentContent](js-apis-arkui-ComponentContent.md) | Yes   | Content to add to the target node on the **OverlayManager**.<br>**NOTE**<br> By default, the new node is centered on the page and stacked according to its stacking level.|
+| levelOrder | [LevelOrder](js-apis-promptAction.md#levelorder18) | No   | Display order of the new overlay node.<br>**NOTE**<br>- Default value: **LevelOrder.clamp(0)**|
 
 **Example**
 
-This example shows how to call the addComponentContentWithOrder API to create a floating layer node and specify the display order.
+This example demonstrates how to use **addComponentContentWithOrder** to create an overlay node with the specified display order.
 
 ```ts
 import { ComponentContent, PromptAction, LevelOrder, UIContext, OverlayManager } from '@kit.ArkUI';
@@ -348,7 +358,7 @@ struct Index {
 
 removeComponentContent(content: ComponentContent): void
 
-Removes a specified node from the OverlayManager
+Removes a specified node from the **OverlayManager**.
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -364,7 +374,7 @@ Removes a specified node from the OverlayManager
 
 **Example**
 
-For details, see the [addComponentContent](#addcomponentcontent12) example.
+For details, see the example of [addComponentContent](#addcomponentcontent12).
 
 ## showComponentContent<sup>12+</sup>
 
@@ -386,7 +396,7 @@ Shows a specified **ComponentContent** node on the **OverlayManager**.
 
 **Example**
 
-For details, see the [addComponentContent](#addcomponentcontent12) example.
+For details, see the example of [addComponentContent](#addcomponentcontent12).
 
 ## hideComponentContent<sup>12+</sup>
 
@@ -408,7 +418,7 @@ Hides a specified **ComponentContent** node on the **OverlayManager**.
 
 **Example**
 
-For details, see the [addComponentContent](#addcomponentcontent12) example.
+For details, see the example of [addComponentContent](#addcomponentcontent12).
 
 ## showAllComponentContents<sup>12+</sup>
 
@@ -424,7 +434,7 @@ Shows all **ComponentContent** nodes on the **OverlayManager**.
 
 **Example**
 
-For details, see the [addComponentContent](#addcomponentcontent12) example.
+For details, see the example of [addComponentContent](#addcomponentcontent12).
 
 ## hideAllComponentContents<sup>12+</sup>
 
@@ -440,4 +450,4 @@ Hides all **ComponentContent** nodes on the **OverlayManager**.
 
 **Example**
 
-For details, see the [addComponentContent](#addcomponentcontent12) example.
+For details, see the example of [addComponentContent](#addcomponentcontent12).
