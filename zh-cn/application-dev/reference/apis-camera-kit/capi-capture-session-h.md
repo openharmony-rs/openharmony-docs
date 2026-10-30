@@ -899,7 +899,7 @@ Camera_ErrorCode OH_CaptureSession_SetFlashMode(Camera_CaptureSession* session, 
 | 参数项 | 描述 |
 | -- | -- |
 | [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例。 |
-| [Camera_FlashMode](capi-camera-h.md#camera_flashmode) flashMode | 要设置的闪光灯模式。在设置闪光灯模式前需先使用{@link OH_CaptureSession_HasFlash}接口检查设备是否有闪光灯，再使用{@link @OH_CaptureSession_IsFlashModeSupported}接口检查设置的闪光灯模式是否支持。 |
+| [Camera_FlashMode](capi-camera-h.md#camera_flashmode) flashMode | 要设置的闪光灯模式。在设置闪光灯模式前需先使用[OH_CaptureSession_HasFlash](#oh_capturesession_hasflash)接口检查设备是否有闪光灯，再使用[@OH_CaptureSession_IsFlashModeSupported](#oh_capturesession_isflashmodesupported)接口检查设置的闪光灯模式是否支持。 |
 
 **返回：**
 
