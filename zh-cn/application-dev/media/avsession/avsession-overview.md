@@ -1,4 +1,10 @@
-<!--RP2--><!--RP2End-->
+---
+kits: ["AVSession Kit / 音视频播控服务"]
+description: "<!--RP2--><!--RP2End-->"
+keywords: [<!--RP3--><!--RP3End-->]
+doctype: guide
+status: active
+---
 
 # AVSession Kit简介
 <!--Kit: AVSession Kit-->

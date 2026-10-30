@@ -1,4 +1,10 @@
-<!--RP2--><!--RP2End-->
+---
+kits: ["AVSession Kit / 音视频播控服务"]
+description: "<!--RP2--><!--RP2End-->"
+keywords: [<!--RP3--><!--RP3End-->]
+doctype: faq
+status: active
+---
 
 # 本地媒体会话常见问题
 <!--Kit: AVSession Kit-->
