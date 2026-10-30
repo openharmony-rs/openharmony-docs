@@ -485,14 +485,10 @@ function printNodeTreeInRelativePath(node: Node | null): void {
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 23
-
 | 名称 | 值 | 说明 |
 | ---- | ---- | ---- |
-| DIRECTIONAL | 1 | 平行光类型。 |
-| SPOT | 2 | 聚光灯类型。 |
+| DIRECTIONAL | 1 | 平行光类型。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| SPOT | 2 | 聚光灯类型。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
 | POINT | 3 | 点光源类型。<br>**ArkTS-Dyn起始版本：** 26.1.0<br>**ArkTS-Sta起始版本：** 26.1.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | RECT | 4 | 矩形面光源类型。<br>**ArkTS-Dyn起始版本：** 26.1.0<br>**ArkTS-Sta起始版本：** 26.1.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
@@ -565,7 +561,7 @@ function printNodeTreeInRelativePath(node: Node | null): void {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| range | ArkTS-Dyn: number \| undefined<br>ArkTS-Sta: double \| undefined | 否 | 是 | 点光源影响的最大距离，超过该范围光强为0。单位为世界坐标系下的场景单位（比如cm、m、km等），取值大于0。若未设置此参数或取值小于等于0，系统根据设置的intensity值计算一个经验值作为range。 |
+| range | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 是 | 点光源影响的最大距离，超过该范围光强为0。单位为世界坐标系下的场景单位（比如cm、m、km等），取值大于0。若未设置此参数或取值小于等于0，系统根据设置的intensity值计算一个经验值作为range。 |
 
 ## RectLight
 
@@ -583,8 +579,8 @@ function printNodeTreeInRelativePath(node: Node | null): void {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| width | ArkTS-Dyn: number \| undefined<br>ArkTS-Sta: double \| undefined | 否 | 是 | 矩形面光源的宽度。单位为世界坐标系下的场景单位（比如cm、m、km等），取值大于0，若未设置，默认值为1。 |
-| height | ArkTS-Dyn: number \| undefined<br>ArkTS-Sta: double \| undefined | 否 | 是 | 矩形面光源的高度。单位为世界坐标系下的场景单位（比如cm、m、km等），取值大于0，若未设置，默认值为1。 |
+| width | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 是 | 矩形面光源的宽度。单位为世界坐标系下的场景单位（比如cm、m、km等），取值大于0，若未设置，默认值为1。 |
+| height | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 是 | 矩形面光源的高度。单位为世界坐标系下的场景单位（比如cm、m、km等），取值大于0，若未设置，默认值为1。 |
 | twoSided | boolean | 否 | 是 | 矩形面光源是否从矩形面的两侧发光。true表示矩形面光源两侧发光，false表示矩形面光源单侧发光。默认值为false。 |
 
 ## Camera
