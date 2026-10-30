@@ -28,6 +28,7 @@ import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 | 名称  | 值   | 说明    |
 | ----- | ---- | -------- |
 | HUKS_EXT_CRYPTO_TAG_TYPE_INT | 1 << 28   | 表示TAG的值为整数类型。 |
+| HUKS_EXT_CRYPTO_TAG_TYPE_UINT | 2 << 28   | 表示TAG的值为无符号整数类型。 |
 | HUKS_EXT_CRYPTO_TAG_TYPE_BYTES | 5 << 28  | 表示TAG的值为字节数组。 |
 
 ## HuksExternalCryptoTag
