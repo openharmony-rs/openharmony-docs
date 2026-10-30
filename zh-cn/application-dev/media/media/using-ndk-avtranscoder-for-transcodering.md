@@ -43,12 +43,6 @@ target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so libavtrans
 #include <hilog/log.h>
 ```
 
-并需要在CMake脚本中链接如下动态库：
-
-``` C
-target_link_libraries(sample PUBLIC libhilog_ndk.z.so)
-```
-
 开发者通过引入avtranscoder.h和avtranscoder_base.h头文件，使用转码相关API。
 
 详细的API说明请参考[AVTranscoder](../../reference/apis-media-kit/capi-avtranscoder.md)。
