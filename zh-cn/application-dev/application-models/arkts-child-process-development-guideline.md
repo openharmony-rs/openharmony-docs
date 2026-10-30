@@ -71,6 +71,7 @@
     
     ``` TypeScript
     import { childProcessManager } from '@kit.AbilityKit';
+    // ...
     import { BusinessError } from '@kit.BasicServicesKit';
     import DemoProcessNoArg from '../process/DemoProcessNoArg';
     // ...
@@ -117,6 +118,7 @@
     
     ``` TypeScript
     import { childProcessManager } from '@kit.AbilityKit';
+    // ...
     import { BusinessError } from '@kit.BasicServicesKit';
     import DemoProcessNoArg from '../process/DemoProcessNoArg';
     // ...
@@ -194,7 +196,8 @@
     <!-- @[arkts_child_process_arg](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ArkTsChildProcess/entry/src/main/ets/pages/Index.ets) --> 
     
     ``` TypeScript
-    import { common, ChildProcessArgs, ChildProcessOptions, childProcessManager } from '@kit.AbilityKit';
+    import { childProcessManager } from '@kit.AbilityKit';
+    import { common, ChildProcessArgs, ChildProcessOptions } from '@kit.AbilityKit';
     import { BusinessError } from '@kit.BasicServicesKit';
     // ...
     import DemoProcessArg from  '../process/DemoProcessArg';
