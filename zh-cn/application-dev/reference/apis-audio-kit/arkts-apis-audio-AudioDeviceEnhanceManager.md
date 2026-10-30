@@ -24,7 +24,7 @@ import { audio } from '@kit.AudioKit';
 
 ## SoundCardType
 
-枚举，声卡类型。
+声卡类型枚举。
 
 **起始版本：** 26.1.0
 
@@ -49,13 +49,13 @@ import { audio } from '@kit.AudioKit';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | :--- | :--- | :--- | :--- | :--- |
-| name | string | 是 | 否 | 声卡名称，最大长度为256。 |
-| vendor | string | 是 | 否 | 声卡厂商，最大长度为128。 |
-| model | string | 是 | 否 | 声卡型号，最大长度为128。 |
-| busAddress | string | 是 | 否 | 声卡总线地址，最大长度为256。 |
-| driver | string | 是 | 否 | 声卡驱动信息，最大长度为128。 |
-| cardId | string | 是 | 是 | 声卡ID，最大长度为128。默认值：默认使用板载声卡的声卡ID。 |
-| cardType | [SoundCardType](#soundcardtype) | 是 | 是 | 声卡类型。默认值：默认是板载声卡类型。 |
+| name | string | 是 | 否 | 声卡名称。最大长度为256字节。 |
+| vendor | string | 是 | 否 | 声卡厂商。最大长度为128字节。 |
+| model | string | 是 | 否 | 声卡型号。最大长度为128字节。 |
+| busAddress | string | 是 | 否 | 声卡总线地址。最大长度为256字节。 |
+| driver | string | 是 | 否 | 声卡驱动信息。最大长度为128字节。 |
+| cardId | string | 是 | 是 | 声卡ID。最大长度为128字节。默认使用板载声卡的声卡ID。 |
+| cardType | [SoundCardType](#soundcardtype) | 是 | 是 | 声卡类型。默认为板载声卡类型。 |
 
 
 ## isEnhancedRoutingSupported()
@@ -290,7 +290,10 @@ getSoundCardInfoList(): Promise\<Array\<SoundCardInfo\>\>
 
 获取声卡信息列表，包括板载声卡和USB声卡。使用Promise异步回调。
 
-使用场景：应用需要获取设备上所有声卡信息，包括板载声卡和USB声卡，用于资产管理与监控等场景。
+> **说明：**
+>
+> - 应用需要获取设备上所有声卡信息，包括板载声卡和USB声卡，用于资产管理与监控等场景。
+> - 此接口仅支持PC设备。非PC设备调用该接口，返回错误码801。
 
 **起始版本：** 26.1.0
 
@@ -314,10 +317,6 @@ getSoundCardInfoList(): Promise\<Array\<SoundCardInfo\>\>
 | ------- | -------------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 801 | The current device model does not support this function. |
-
-**约束：**
-
-- 此接口仅支持PC设备。非PC设备调用该接口，返回错误码801。
 
 **示例：**
 

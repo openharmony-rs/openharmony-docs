@@ -2654,7 +2654,7 @@ Obtains information about the built-in sound card of the current audio device, i
 
 | Type| Description|
 | ------------------- | ------------------------------ |
-| Promise\<[SoundCardInfo](arkts-apis-audio-AudioDeviceEnhanceManager.md#soundcardinfo)\> | Promise used to return the built-in sound card information.|
+| Promise\<[SoundCardInfo](#soundcardinfo)\> | Promise used to return the built-in sound card information.|
 
 **Error codes**
 
@@ -2681,6 +2681,26 @@ deviceEnhanceManager.getSoundCardInfo().then((soundCardInfo: audio.SoundCardInfo
   console.error(`Failed to get sound card info. Code: ${err.code}, Message: ${err.message}`);
 });
 ```
+
+## SoundCardInfo
+ 
+Describes the sound card information.
+ 
+**Since:** 26.0.0
+ 
+**System API**: This is a system API.
+ 
+**Model restriction**: This API can be used only in the stage model.
+ 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+ 
+| Name| Type| Read-Only| Optional| Description|
+| :--- | :--- | :--- | :--- | :--- |
+| name | string | Yes| No| Sound card name.|
+| vendor | string | Yes| No| Sound card manufacturer.|
+| model | string | Yes| No| Sound card model.|
+| busAddress | string | Yes| No| Bus address of the sound card.|
+| driver | string | Yes| No| Driver information of the sound card.|
 
 ## AudioRoutingManager<sup>9+</sup>
 
