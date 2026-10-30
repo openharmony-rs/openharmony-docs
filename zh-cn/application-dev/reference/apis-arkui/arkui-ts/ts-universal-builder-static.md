@@ -59,11 +59,9 @@ struct BuilderDemo {
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**ArkTS-Sta起始版本：** 26.1.0
-
 | 名称          | 类型    | 只读 | 可选 | 说明                                                         |
 | ------------- | ------- | ---- | ---- | ------------------------------------------------------------ |
-| isPlaceholder | boolean | 否   | 否   | 是否将\@Builder函数声明为占位构建函数。true：启用占位能力。此时该函数必须为全局且无参数的函数，内部仅执行不依赖状态变量的静态渲染，且不能注册手势或业务回调。通过[placeholderRegister](../arkts-apis-placeholderregister.md)的[register](../arkts-apis-placeholderregister.md#register)方法注册后，供可滚动组件的[scrollPlaceholder](./ts-container-list.md#scrollplaceholderarkts-sta)属性使用。false：不启用占位能力，等价于未传入配置项的\@Builder。默认值为false。<br/>**起始版本：** 26.1.0 |
+| isPlaceholder | boolean | 否   | 否   | 是否将\@Builder函数声明为占位构建函数。true：启用占位能力。此时该函数必须为全局且无参数的函数，内部仅执行不依赖状态变量的静态渲染，且不能注册手势或业务回调。通过[placeholderRegister](../arkts-apis-placeholderregister.md)的[register](../arkts-apis-placeholderregister.md#register)方法注册后，供可滚动组件的[scrollPlaceholder](./ts-container-list.md#scrollplaceholder)属性使用。false：不启用占位能力，等价于未传入配置项的\@Builder。默认值为false。 |
 
 **示例：**
 

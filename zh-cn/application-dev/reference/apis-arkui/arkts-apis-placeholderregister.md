@@ -6,7 +6,7 @@
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
-本模块提供滚动占位模板的注册、注销和查询能力。快速滚动场景下，当框架预测在剩余帧预算内创建下一个列表项会导致超帧时，可滚动组件（如[List](arkui-ts/ts-container-list.md)）会先为该项显示占位组件，真实列表项在UI线程分帧创建完成后替换占位，以减少丢帧。占位模板经[register](#register)注册后，供[List](arkui-ts/ts-container-list.md)的[scrollPlaceholder](arkui-ts/ts-container-list.md#scrollplaceholderarkts-dyn)属性按id引用。
+本模块提供滚动占位模板的注册、注销和查询能力。快速滚动场景下，当框架预测在剩余帧预算内创建下一个列表项会导致超帧时，可滚动组件（如[List](arkui-ts/ts-container-list.md)）会先为该项显示占位组件，真实列表项在UI线程分帧创建完成后替换占位，以减少丢帧。占位模板经[register](#register)注册后，供[List](arkui-ts/ts-container-list.md)的[scrollPlaceholder](arkui-ts/ts-container-list.md#scrollplaceholder)属性按id引用。
 
 > **说明：**
 >
@@ -14,9 +14,7 @@
 >
 > - 本模块接口仅可在Stage模型下使用。
 
-**ArkTS-Dyn起始版本：** 26.1.0
-
-**ArkTS-Sta起始版本：** 26.1.0
+**起始版本：** 26.1.0
 
 ## 导入模块
 
@@ -32,9 +30,7 @@ import { PlaceholderRegister } from '@kit.ArkUI';
 >
 > 以下API需先使用UIContext中的[getPlaceholderRegister()](./arkts-apis-uicontext-uicontext.md#getplaceholderregister)方法获取到PlaceholderRegister对象，再通过该对象调用对应方法。
 
-**ArkTS-Dyn起始版本：** 26.1.0
-
-**ArkTS-Sta起始版本：** 26.1.0
+**起始版本：** 26.1.0
 
 ### register
 
@@ -42,13 +38,13 @@ ArkTS-Dyn: register(id: string, builder: WrappedBuilder\<[]\>): void
 
 ArkTS-Sta: register(id: string, builder: WrappedBuilder\<CustomBuilder\>): void
 
-注册滚动占位模板，将占位builder绑定到指定id，供可滚动组件的[scrollPlaceholder](arkui-ts/ts-container-list.md#scrollplaceholderarkts-dyn)属性按id引用。
+注册滚动占位模板，将占位builder绑定到指定id，供可滚动组件的[scrollPlaceholder](arkui-ts/ts-container-list.md#scrollplaceholder)属性按id引用。
 
 > **说明：**
 >
 > - 占位模板须为全局、无参的`@Builder({ isPlaceholder: true })`函数，且只做只读静态渲染：不得访问响应式状态，不得注册手势，不得注册业务回调。传入的builder须经过[wrapBuilder](arkui-ts/ts-universal-wrapBuilder.md#wrapbuilder)包装，不接受裸builder函数。
 >
-> - 框架在注册时校验编译产物中携带的受限Builder标记：未在编译期标记`@Builder({ isPlaceholder: true })`的builder（包括通过绕过编译期类型检查的动态方式传入的builder）会被拒绝注册，该id不会注册成功，[scrollPlaceholder](arkui-ts/ts-container-list.md#scrollplaceholderarkts-dyn)的provider命中该id时使用系统默认占位。
+> - 框架在注册时校验编译产物中携带的受限Builder标记：未在编译期标记`@Builder({ isPlaceholder: true })`的builder（包括通过绕过编译期类型检查的动态方式传入的builder）会被拒绝注册，该id不会注册成功，[scrollPlaceholder](arkui-ts/ts-container-list.md#scrollplaceholder)的provider命中该id时使用系统默认占位。
 >
 > - 重复注册相同id时，会原子地发布新版本的模板；已派发的占位任务在上屏前会先与模板版本做校验。
 
@@ -58,16 +54,14 @@ ArkTS-Sta: register(id: string, builder: WrappedBuilder\<CustomBuilder\>): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 26.1.0
-
-**ArkTS-Sta起始版本：** 26.1.0
+**起始版本：** 26.1.0
 
 **参数：**
 
 | 参数名   | 类型                 | 必填 | 说明                                       |
 | ------- | -------------------- | ---- | ------------------------------------------ |
-| id      | string               | 是   | 占位模板的id，[scrollPlaceholder](arkui-ts/ts-container-list.md#scrollplaceholderarkts-dyn)的[PlaceholderProvider](#placeholderprovider)通过该id引用模板。 |
-| builder | ArkTS-Dyn: [WrappedBuilder](arkui-ts/ts-universal-wrapBuilder.md#wrappedbuilder)\<[]\><br/>ArkTS-Sta: [WrappedBuilder](arkui-ts/ts-universal-wrapBuilder-static.md#wrappedbuilder)\<CustomBuilder\> | 是   | 经[wrapBuilder](arkui-ts/ts-universal-wrapBuilder.md#wrapbuilder)包装后的全局无参占位builder，不接受裸builder函数。 |
+| id      | string               | 是   | 占位模板的id，[scrollPlaceholder](arkui-ts/ts-container-list.md#scrollplaceholder)的[PlaceholderProvider](#placeholderprovider)通过该id引用模板。 |
+| builder | ArkTS-Dyn: [WrappedBuilder](arkui-ts/ts-universal-wrapBuilder.md#wrappedbuilder)\<[]\><br/>ArkTS-Sta: [WrappedBuilder](arkui-ts/ts-universal-wrapBuilder-static.md#wrappedbuilder)\<[CustomBuilder](arkui-ts/ts-types.md#custombuilder8)\> | 是   | 经[wrapBuilder](arkui-ts/ts-universal-wrapBuilder.md#wrapbuilder)包装后的全局无参占位builder，不接受裸builder函数。 |
 
 **错误码：**
 
@@ -89,7 +83,7 @@ unregister(id: string): void
 
 > **说明：**
 >
-> - 模板注销后，该id不再能被匹配：[scrollPlaceholder](arkui-ts/ts-container-list.md#scrollplaceholderarkts-dyn)的[PlaceholderProvider](#placeholderprovider)命中该id时使用系统默认占位，已为该模板派发的占位任务不会上屏。
+> - 模板注销后，该id不再能被匹配：[scrollPlaceholder](arkui-ts/ts-container-list.md#scrollplaceholder)的[PlaceholderProvider](#placeholderprovider)命中该id时使用系统默认占位，已为该模板派发的占位任务不会上屏。
 >
 > - 注销未注册的id时，静默处理，不产生异常。
 
@@ -99,9 +93,7 @@ unregister(id: string): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 26.1.0
-
-**ArkTS-Sta起始版本：** 26.1.0
+**起始版本：** 26.1.0
 
 **参数：**
 
@@ -129,9 +121,7 @@ isRegistered(id: string): boolean
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 26.1.0
-
-**ArkTS-Sta起始版本：** 26.1.0
+**起始版本：** 26.1.0
 
 **参数：**
 
@@ -159,9 +149,7 @@ isRegistered(id: string): boolean
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 26.1.0
-
-**ArkTS-Sta起始版本：** 26.1.0
+**起始版本：** 26.1.0
 
 | 名称   | 类型                                       | 只读 | 可选 | 说明                                       |
 | ------ | ------------------------------------------ | ---- | ---- | ------------------------------------------ |
@@ -174,7 +162,7 @@ ArkTS-Dyn: type PlaceholderProvider = (index: number) => PlaceholderOptions | un
 
 ArkTS-Sta: type PlaceholderProvider = (index: int) => PlaceholderOptions | undefined
 
-列表项占位信息的提供函数，供[List](arkui-ts/ts-container-list.md)的[scrollPlaceholder](arkui-ts/ts-container-list.md#scrollplaceholderarkts-dyn)属性使用。该函数在UI线程滚动过程中同步调用，须为纯计算，不得执行耗时操作。
+列表项占位信息的提供函数，供[List](arkui-ts/ts-container-list.md)的[scrollPlaceholder](arkui-ts/ts-container-list.md#scrollplaceholder)属性使用。该函数在UI线程滚动过程中同步调用，须为纯计算，不得执行耗时操作。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -182,9 +170,7 @@ ArkTS-Sta: type PlaceholderProvider = (index: int) => PlaceholderOptions | undef
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 26.1.0
-
-**ArkTS-Sta起始版本：** 26.1.0
+**起始版本：** 26.1.0
 
 **参数：**
 
@@ -202,7 +188,7 @@ ArkTS-Sta: type PlaceholderProvider = (index: int) => PlaceholderOptions | undef
 
 ### 示例1（注册滚动占位模板并设置滚动占位）
 
-该示例通过[register](#register)接口注册占位模板，通过[isRegistered](#isregistered)接口查询注册状态，通过[unregister](#unregister)接口在组件销毁时注销占位模板，并通过[List](arkui-ts/ts-container-list.md)的[scrollPlaceholder](arkui-ts/ts-container-list.md#scrollplaceholderarkts-dyn)属性设置占位提供者：快速滚动时，帧预算不足的列表项先显示已注册的占位模板，真实列表项分帧创建完成后替换占位，减少丢帧。
+该示例通过[register](#register)接口注册占位模板，通过[isRegistered](#isregistered)接口查询注册状态，通过[unregister](#unregister)接口在组件销毁时注销占位模板，并通过[List](arkui-ts/ts-container-list.md)的[scrollPlaceholder](arkui-ts/ts-container-list.md#scrollplaceholder)属性设置占位提供者：快速滚动时，帧预算不足的列表项先显示已注册的占位模板，真实列表项分帧创建完成后替换占位，减少丢帧。
 
 从API版本26.1.0开始，新增register、unregister、isRegistered接口及PlaceholderOptions、PlaceholderProvider类型。
 
@@ -296,6 +282,8 @@ struct PlaceholderRegisterExample {
 ```
 
 ArkTS-Sta示例：
+
+ArkTS-Sta示例代码段须为静态工程可编译的写法（如显式声明索引类型为int、数据源实现泛型接口IDataSource<number>等），API用法与ArkTS-Dyn示例一致。
 
 <!--code_no_check-->
 ```ts
