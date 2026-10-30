@@ -1784,7 +1784,7 @@ With this permission, an application can implement the recording and playback fu
 
 ## ohos.permission.USE_ULTRA_FAST_AUDIO_STREAM
  
-Allow the app to create a specified ultra-low-latency audio mode when creating an audio playback or recording stream, enabling the resulting audio stream to achieve lower overall latency than normal mode during playback or recording.
+Allows an application to create audio streams with a specified ultra‑low latency mode when creating audio playback or recording streams, so that the overall latency of the resulting audio stream is lower than that of the normal mode.
  
 <!--RP117--><!--RP117End-->
  
