@@ -96,18 +96,18 @@ this.avPlayer.on('bufferingUpdate', (infoType: media.BufferingInfoType, value: n
    <!-- @[availableBitrates](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSStreamingMedia/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
-   this.avPlayer.on('availableBitrates', (bitrates: Array<number>) => {
+   this.avPlayer?.on('availableBitrates', (bitrates: Array<number>) => {
      console.info('availableBitrates called, and availableBitrates length is: ' + bitrates.length);
-     this.bitrate = bitrates[0]; // 保存需要切换的码率
+     this.bitrate = bitrates[0]; // 保存需要切换的码率。
    })
    ```
 
 2. 通过[setBitrate](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#setbitrate9)接口设置播放码率。若用户设置的码率不在可用码率中，播放器将选择最小且最接近的码率。该接口只能在prepared/playing/paused/completed状态下调用，可通过监听[bitrateDone](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#onbitratedone9)事件确认是否生效。
 
    <!-- @[setBitrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSStreamingMedia/entry/src/main/ets/pages/Index.ets) -->
-  
+   
    ``` TypeScript
-   // 设置播放码率
+   // 设置播放码率。
    try {
      this.avPlayer.setBitrate(bitrate);
    } catch (error) {
@@ -148,7 +148,7 @@ DASH流媒体资源包含多路不同分辨率、码率、采样率、编码格�
    <!-- @[getTrackDescription](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSStreamingMedia/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
-   this.avPlayer.getTrackDescription((error: BusinessError, arrList: Array<media.MediaDescription>) => {
+   this.avPlayer?.getTrackDescription((error: BusinessError, arrList: Array<media.MediaDescription>) => {
      if (arrList != null) {
        for (let i = 0; i < arrList.length; i++) {
          let propertyIndex: Object = arrList[i][media.MediaDescriptionKey.MD_KEY_TRACK_INDEX];
@@ -170,7 +170,7 @@ DASH流媒体资源包含多路不同分辨率、码率、采样率、编码格�
    <!-- @[selectTrack](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSStreamingMedia/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
-   // 切换至目标视频轨道
+   // 切换至目标视频轨道。
    try {
      this.avPlayer.selectTrack(track);
    } catch (error) {
