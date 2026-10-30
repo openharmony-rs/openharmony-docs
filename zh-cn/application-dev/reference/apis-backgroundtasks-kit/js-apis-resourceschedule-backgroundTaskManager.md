@@ -1385,7 +1385,7 @@ on(type: 'continuousTaskCancel', callback: Callback&lt;ContinuousTaskCancelInfo&
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 201 | Permission denied. |
-| 401 | Parameter error. Possible cause: 1. Callback parameter error; 2. Register a exist callback type; 3. Parameter verification failed. |
+| 401 | Parameter error. Possible cause: 1. Callback parameter error; 2. Register an existing callback type; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -1424,7 +1424,7 @@ off(type: 'continuousTaskCancel', callback?: Callback&lt;ContinuousTaskCancelInf
 | 参数名       | 类型                                 | 必填   | 说明                                       |
 | --------- | ---------------------------------- | ---- | ---------------------------------------- |
 | type   | string                            | 是    | 事件回调类型，固定取值为'continuousTaskCancel'，表示长时任务取消。 |
-| callback   | Callback\<[ContinuousTaskCancelInfo](#continuoustaskcancelinfo15)>       | 否    | 需要取消监听的回调函数，未传入则取消所有注册的回调。 |
+| callback   | Callback\<[ContinuousTaskCancelInfo](#continuoustaskcancelinfo15)>       | 否    | 需要取消监听的回调函数，未传入则取消所有注册回调。 |
 
 **错误码：**
 
@@ -1433,7 +1433,7 @@ off(type: 'continuousTaskCancel', callback?: Callback&lt;ContinuousTaskCancelInf
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 201 | Permission denied. |
-| 401 | Parameter error. Possible cause: 1. Callback parameter error; 2. Unregister type has not register; 3. Parameter verification failed. |
+| 401 | Parameter error. Possible cause: 1. Callback parameter error; 2. Unregister type has not been registered; 3. Parameter verification failed. |
 
 **示例：**
 
