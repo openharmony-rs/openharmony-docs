@@ -80,7 +80,7 @@ Exif信息的读取与编辑相关的API如下，详细介绍请参考[ImageSour
      } else {
        info = 'getExif: The imageSourceApi is undefined.';
        console.info(info);
-       return info; // 如果 imageSourceApi 是 undefined，则直接返回信息。
+       return info; // 如果imageSourceApi是undefined，则直接返回信息。
      }
    }
    ```
@@ -116,7 +116,7 @@ Exif信息的读取与编辑相关的API如下，详细介绍请参考[ImageSour
      } else {
        info = 'modifyExif: The imageSourceApi is undefined.';
        console.info(info);
-       return info; // 如果 imageSourceApi 是 undefined，直接返回信息。
+       return info; // 如果imageSourceApi是undefined，直接返回信息。
      }
    }
    ```

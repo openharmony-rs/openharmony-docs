@@ -211,7 +211,7 @@
      };
    
      try {
-       // 生成 pixelMap 并返回。
+       // 生成pixelMap并返回。
        const pixelMap = await imageSource.createPixelMap(decodingOptions);
        if (pixelMap) {
          console.info('Create PixelMap successfully.');
