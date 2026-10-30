@@ -37,7 +37,7 @@
 
 2. 导入相关模块。
 
-   <!-- @[certificate_management_development_guidance_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateManagement/entry/src/main/ets/samples/CertManagerPrivateCredSample.ets) -->
+   <!-- @[certificate_management_development_guidance_import](https://gitcode.com/openharmony/applications_app_samples/blob/weekly_20261012/code/DocsSample/Security/DeviceCertificateKit/CertificateManagement/entry/src/main/ets/samples/CertManagerPrivateCredSample.ets) -->
    
 3. 安装应用证书凭据。
 
@@ -77,4 +77,4 @@
 
 ## 样例代码
 
-<!-- @[certificate_management_development_guidance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateManagement/entry/src/main/ets/samples/CertManagerPrivateCredSample.ets) -->
+<!-- @[certificate_management_development_guidance](https://gitcode.com/openharmony/applications_app_samples/blob/weekly_20261012/code/DocsSample/Security/DeviceCertificateKit/CertificateManagement/entry/src/main/ets/samples/CertManagerPrivateCredSample.ets) -->

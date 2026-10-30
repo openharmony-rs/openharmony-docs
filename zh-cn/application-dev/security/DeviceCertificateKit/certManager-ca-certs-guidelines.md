@@ -67,7 +67,7 @@ Device Certificate Kit的CA证书管理功能包含如下能力：
 
 2. 导入相关模块。
 
-   <!-- @[certificate_management_user_ca_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateManagement/entry/src/main/ets/samples/CertManagerUserCASample.ets)  -->
+   <!-- @[certificate_management_user_ca_import](https://gitcode.com/openharmony/applications_app_samples/blob/weekly_20261012/code/DocsSample/Security/DeviceCertificateKit/CertificateManagement/entry/src/main/ets/samples/CertManagerUserCASample.ets)  -->
 
 3. 安装和卸载用户CA证书。
 
@@ -97,4 +97,4 @@ Device Certificate Kit的CA证书管理功能包含如下能力：
 
 ## 样例代码
 
-<!-- @[certificate_management_user_ca](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateManagement/entry/src/main/ets/samples/CertManagerUserCASample.ets)  -->
+<!-- @[certificate_management_user_ca](https://gitcode.com/openharmony/applications_app_samples/blob/weekly_20261012/code/DocsSample/Security/DeviceCertificateKit/CertificateManagement/entry/src/main/ets/samples/CertManagerUserCASample.ets)  -->
