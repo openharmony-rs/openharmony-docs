@@ -5032,7 +5032,7 @@ createAssetsWithAlbum(creationSettings: CreationSetting[], isRealTimeThumb: bool
 
 | 类型 | 说明 |
 | ---- | ---- |
-| Promise\<string[]> | Promise对象，返回创建成功的资产URI数组，创建失败时返回null。 |
+| Promise\<string[]> | Promise对象，返回创建成功的资产URI数组，创建失败时返回空字符串。 |
 
 **错误码：**
 
