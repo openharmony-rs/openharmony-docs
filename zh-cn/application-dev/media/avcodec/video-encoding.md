@@ -155,7 +155,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
        {
            std::unique_lock<std::mutex> lock(mutex_);
            // 清空回调buffer队列。
-           // 调用方需先与 codec 的 Flush/Stop 及工作线程完成同步，避免在其他线程仍访问 Buffer 时清空队列。
+           // 调用方需先与codec 的 Flush/Stop 及工作线程完成同步，避免在其他线程仍访问 Buffer 时清空队列。
            while (!bufferQueue_.empty()) {
                bufferQueue_.pop();
            }
@@ -183,6 +183,12 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
        int32_t widthStride = 0;
        int32_t heightStride = 0;
        OH_AVPixelFormat outputPixelFormat = AV_PIXEL_FORMAT_NV12;
+       // 编码器同步锁。
+       std::shared_mutex codecMutex;
+       // 编码器输入队列。
+       CodecBufferQueue inputBufferQueue;
+       // 编码器输出队列。
+       CodecBufferQueue outputBufferQueue;
 
        void ClearQueue()
        {
@@ -198,57 +204,32 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
    };
 
    struct VideoSampleInfo {
+       // 视频帧宽度。
        int32_t videoWidth = 0;
+       // 视频帧高度。
        int32_t videoHeight = 0;
-       double frameRate = 0.0;
-       int64_t bitrate = BITRATE_10M;
-       int64_t frameInterval = 0;
+       // 视频像素格式。
        OH_AVPixelFormat pixelFormat = AV_PIXEL_FORMAT_NV12;
+       // 视频帧率。
+       double frameRate = 0.0;
+       // 码率模式。
        uint32_t bitrateMode = CBR;
-       int32_t iFrameInterval = 100;
-       int32_t rangFlag = 1;
-       int32_t isHDRVivid = 0;
-       bool hdrVividContainerSignaled = false;
+       // 码率。
+       int64_t bitrate = BITRATE_10M;
+       // HEVC档次。
        int32_t hevcProfile = HEVC_PROFILE_MAIN;
-       OH_ColorPrimary primary = COLOR_PRIMARY_BT2020;
-       OH_TransferCharacteristic transfer = TRANSFER_CHARACTERISTIC_HLG;
-       OH_MatrixCoefficient matrix = MATRIX_COEFFICIENT_BT2020_CL;
-       int32_t rotation = 0;
-       OHNativeWindow *window = nullptr;
-       // API 26 编码前处理设置。降采样与裁剪互斥，目标帧率可与二者之一组合。
-       int32_t preprocMode = 0;
-       int32_t downsamplingWidth = 0;
-       int32_t downsamplingHeight = 0;
-       int32_t cropLeft = 0;
-       int32_t cropTop = 0;
-       int32_t cropRight = 0;
-       int32_t cropBottom = 0;
-       double dropToFrameRate = 0.0;
+       // 关键帧间隔时间，单位为ms。
+       int32_t iFrameInterval = 100;
    };
 
    struct SampleInfo {
        VideoSampleInfo video;
    };
 
-
-   // 视频帧宽度。
-   int32_t width = 320;
-   // 视频帧高度。
-   int32_t height = 240;
-   // 视频像素格式。
-    OH_AVPixelFormat pixelFormat = AV_PIXEL_FORMAT_NV12;
-   // 视频宽跨距。
-   int32_t widthStride = 0;
-   // 视频高跨距。
-   int32_t heightStride = 0;
    // 编码器实例指针。
-   OH_AVCodec *videoEnc = nullptr;
-   // 编码器同步锁。
-   std::shared_mutex codecMutex;
-   // 编码器输入队列。
-   CodecBufferQueue inputBufferQueue;
-   // 编码器输出队列。
-   CodecBufferQueue outputBufferQueue;
+   OH_AVCodec *encoder_ = nullptr;
+
+
    ```
 
 ### Surface模式
@@ -317,30 +298,33 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
    示例如下所示：
 
    ```c++
-   // 设置OH_AVCodecOnError 回调函数，编码异常。
+   // 编码异常回调OH_AVCodecOnError实现。
    void SampleCallback::OnCodecError(OH_AVCodec *codec, int32_t errorCode, void *userData)
    {
        (void)codec;
-       (void)errorCode;
        (void)userData;
        AVCODEC_SAMPLE_LOGE("On codec error, error code: %{public}d", errorCode);
    }
 
-   // 设置OH_AVCodecOnStreamChanged 回调函数，编码数据流变化。
+   // 编码数据流变化回调OH_AVCodecOnStreamChanged实现。
    void SampleCallback::OnCodecFormatChange(OH_AVCodec *codec, OH_AVFormat *format, void *userData)
    {
-       // Surface模式下，该回调函数在surface分辨率变化时触发。
        (void)codec;
+       AVCODEC_SAMPLE_LOGI("On codec format change");
        auto *codecUserData = static_cast<CodecUserData *>(userData);
        if (codecUserData == nullptr || codecUserData->isDestroyed.load() || format == nullptr) {
            return;
        }
-       // 可通过format获取到分辨率变化后的视频宽、高。
+
+       // 可通过format获取到变化后的视频宽、高、跨距等。
        OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_PIC_WIDTH, &codecUserData->width);
        OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_PIC_HEIGHT, &codecUserData->height);
+       OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_STRIDE, &codecUserData->widthStride);
+       OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_SLICE_HEIGHT, &codecUserData->heightStride);
+       const int32_t pixelFormat = static_cast<int32_t>(codecUserData->outputPixelFormat);
    }
 
-   // 设置OH_AVCodecOnNeedInputBuffer回调函数，编码输入帧送入数据队列。
+   // 编码输入回调OH_AVCodecOnNeedInputBuffer实现。
    void SampleCallback::OnNeedInputBuffer(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)
    {
        // Surface模式下，该回调函数无作用，开发者通过获取的surface输入数据。
@@ -349,6 +333,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
        (void)buffer;
    }
 
+   // 编码输出回调OH_AVCodecOnNewOutputBuffer实现。
    void SampleCallback::OnNewOutputBuffer(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)
    {
        auto *codecUserData = static_cast<CodecUserData *>(userData);
@@ -357,7 +342,6 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
        }
        if (codec == nullptr || buffer == nullptr) {
            AVCODEC_SAMPLE_LOGE("Invalid codec output callback argument");
-           codecUserData->SignalError();
            return;
        }
 
@@ -456,6 +440,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
    ```c++
    // 获取编码器Surface模式的OHNativeWindow输入，需要在调用OH_VideoEncoder_Prepare接口之前完成。
+   // 通过OHNativeWindow*获取生产者待填充数据地址。
    int32_t VideoEncoder::GetSurface(SampleInfo &sampleInfo)
    {
        int32_t ret = OH_VideoEncoder_GetSurface(encoder_, &sampleInfo.video.window);
@@ -465,7 +450,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
    }
    ```
 
-   通过OHNativeWindow*变量类型，可通过生产者接口获取待填充数据地址。使用方法请参考图形子系统 [OHNativeWindow](../../reference/apis-arkgraphics2d/capi-nativewindow.md)。
+   通过OHNativeWindow*获取生产者待填充数据地址。使用方法请参考图形子系统 [OHNativeWindow](../../reference/apis-arkgraphics2d/capi-nativewindow.md)。
 
 7. 调用OH_VideoEncoder_Prepare()编码器就绪。
 
@@ -594,6 +579,19 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
         std::shared_lock<std::shared_mutex> codecLock(context->codecMutex);
         // 开发者可根据业务需要，对输出数据进行保存/释放处理。
         // ...
+    }
+    ```
+
+    释放处理：
+    ```c++
+    int32_t VideoEncoder::FreeOutputBuffer(const CodecBufferInfo &info)
+    {
+        CHECK_AND_RETURN_RET_LOG(encoder_ != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Encoder is null");
+
+        int32_t ret = OH_VideoEncoder_FreeOutputBuffer(encoder_, info.bufferIndex);
+        CHECK_AND_RETURN_RET_LOG(ret == AV_ERR_OK, AVCODEC_SAMPLE_ERR_ERROR,
+            "Free output data failed, ret: %{public}d", ret);
+        return AVCODEC_SAMPLE_ERR_OK;
     }
     ```
 
@@ -790,7 +788,6 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
    #include <multimedia/player_framework/native_avcodec_videoencoder.h>
    #include <multimedia/player_framework/native_avcapability.h>
    #include <multimedia/player_framework/native_avcodec_base.h>
-   #include <multimedia/player_framework/native_avformat.h>
    #include <multimedia/player_framework/native_avbuffer.h>
    #include <fstream>
    ```
@@ -840,73 +837,68 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
    开发者可以通过处理该回调报告的信息，确保编码器正常运转。
 
-   <!--RP2--><!--RP2End-->
-
-   <!--RP9-->
-   ```c++
-   bool isFirstFrame = true;
-   ```
-   <!--RP9End-->
-
    ```c++
    // 编码异常回调OH_AVCodecOnError实现。
-   static void OnError(OH_AVCodec *codec, int32_t errorCode, void *userData)
+   void SampleCallback::OnCodecError(OH_AVCodec *codec, int32_t errorCode, void *userData)
    {
-       // 回调的错误码由开发者判断处理。
        (void)codec;
-       (void)errorCode;
        (void)userData;
+       AVCODEC_SAMPLE_LOGE("On codec error, error code: %{public}d", errorCode);
    }
-   ```
 
-   ```c++
    // 编码数据流变化回调OH_AVCodecOnStreamChanged实现。
-   static void OnStreamChanged(OH_AVCodec *codec, OH_AVFormat *format, void *userData)
+   void SampleCallback::OnCodecFormatChange(OH_AVCodec *codec, OH_AVFormat *format, void *userData)
    {
        // Buffer模式下，该回调函数无作用。
        (void)codec;
        (void)format;
        (void)userData;
    }
-   ```
 
-   ```c++
    // 编码输入回调OH_AVCodecOnNeedInputBuffer实现。
-   static void OnNeedInputBuffer(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)
+   void SampleCallback::OnNeedInputBuffer(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)
    {
-       // 获取视频宽跨距、高跨距。
-       if (isFirstFrame) {
-           auto format = std::shared_ptr<OH_AVFormat>(OH_VideoEncoder_GetInputDescription(codec), OH_AVFormat_Destroy);
-           if (format == nullptr) {
-               // 异常处理。
-           }
-           bool ret = OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_STRIDE, &widthStride) &&
-                      OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_SLICE_HEIGHT, &heightStride);
-           if (!ret) {
-               // 异常处理。
-           }
-           isFirstFrame = false;
+       auto *codecUserData = static_cast<CodecUserData *>(userData);
+       if (codecUserData == nullptr || codecUserData->isDestroyed.load()) {
+           return;
        }
-       // 输入帧的数据buffer和对应的index送入inQueue队列。
-       (void)codec;
-       (void)userData;
-       inQueue.Enqueue(std::make_shared<CodecBufferInfo>(index, buffer));
-   }
-   ```
+       if (codec == nullptr || buffer == nullptr) {
+           AVCODEC_SAMPLE_LOGE("Invalid codec input callback argument");
+           return;
+       }
+       // 视频编码首帧：从输入描述中读取宽高/stride信息。
+       if (codecUserData->isEncFirstFrame) {
+           OH_AVFormat *format = OH_VideoEncoder_GetInputDescription(codec);
+           if (format != nullptr) {
+               OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_PIC_WIDTH, &codecUserData->width);
+               OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_PIC_HEIGHT, &codecUserData->height);
+               OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_STRIDE, &codecUserData->widthStride);
+               OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_SLICE_HEIGHT, &codecUserData->heightStride);
+               OH_AVFormat_Destroy(format);
+           }
+           codecUserData->isEncFirstFrame = false;
+       }
 
-   <!--RP10-->
-   ```c++
+       // 输入帧的数据buffer和对应的index送入inputBufferQueue队列。
+       codecUserData->inputBufferQueue.Enqueue(std::make_shared<CodecBufferInfo>(index, buffer));
+   }
+
    // 编码输出回调OH_AVCodecOnNewOutputBuffer实现。
-   static void OnNewOutputBuffer(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)
+   void SampleCallback::OnNewOutputBuffer(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)
    {
-       // 完成帧的数据buffer和对应的index送入outQueue队列。
-       (void)userData;
-       outQueue.Enqueue(std::make_shared<CodecBufferInfo>(index, buffer));
+       auto *codecUserData = static_cast<CodecUserData *>(userData);
+       if (codecUserData == nullptr || codecUserData->isDestroyed.load()) {
+           return;
+       }
+       if (codec == nullptr || buffer == nullptr) {
+           AVCODEC_SAMPLE_LOGE("Invalid codec output callback argument");
+           return;
+       }
+
+       // 输出帧的数据buffer和对应的index送入outputBufferQueue队列。
+       codecUserData->outputBufferQueue.Enqueue(std::make_shared<CodecBufferInfo>(index, buffer));
    }
    ```
-   <!--RP10End-->
-
-   配置回调：
 
    <!-- @[encoder_set_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_encoder.cpp) -->
 
