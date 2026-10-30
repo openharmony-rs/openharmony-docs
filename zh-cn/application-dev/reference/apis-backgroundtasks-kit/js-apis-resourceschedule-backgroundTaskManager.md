@@ -520,7 +520,7 @@ export default class EntryAbility extends UIAbility {
       // 在原子化服务中，请使用wantAgent.getWantAgent(wantAgentInfo).then((wantAgentObj: object) => {替换下面一行代码
       wantAgent.getWantAgent(wantAgentInfo).then((wantAgentObj: WantAgent) => {
         try {
-          // 当长时任务类型包含数据传输（dataTransfer）时，应用需要更新进度，其他类型不需要
+          // 当长时任务类型包含数据传输(dataTransfer)时，应用需要更新进度，其他类型不需要
           let list: Array<string> = ['dataTransfer'];
           // 在原子化服务中，let list: Array<string> = ['audioPlayback'];
           backgroundTaskManager.startBackgroundRunning(this.context, list, wantAgentObj).then((res: backgroundTaskManager.ContinuousTaskNotification) => {
@@ -539,7 +539,7 @@ export default class EntryAbility extends UIAbility {
     }
   }
 
-  // 当长时任务类型包含数据传输（dataTransfer）时，应用需要更新进度，其他类型不需要
+  // 当长时任务类型包含数据传输(dataTransfer)时，应用需要更新进度，其他类型不需要
   // 从API版本26.0.1开始，可使用updateDataTransferProgress接口更新包含数据传输类型的长时任务通知。可选择通知是否带进度环，以及进度环为100时是否响铃。
   updateProcess(process: number) {
     // 定义通知类型，更新进度时的通知类型必须为实况窗
@@ -556,7 +556,7 @@ export default class EntryAbility extends UIAbility {
         // 系统实况类型，保持不变
         notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_SYSTEM_LIVE_VIEW,
         systemLiveView: {
-          typeCode: 8, // 数据传输（dataTransfer）类型需要填写 8，当前仅支持此类型。保持不变
+          typeCode: 8, // 数据传输(dataTransfer)类型需要填写 8，当前仅支持此类型。保持不变
           title: 'test', // 应用自定义
           text: 'test', // 应用自定义
         }
@@ -1891,8 +1891,8 @@ export default class EntryAbility extends UIAbility {
 <!--Table: 25%; 25%; 8%; 8%; 44%-->
 | 名称             | 类型     | 只读   | 可选   | 说明                                       |
 | --------------- | ------ | ---- | ---- | ---------------------------------------- |
-| backgroundTaskModes       | [BackgroundTaskMode](#backgroundtaskmode21)[] | 否    | 否    | 长时任务主类型。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**说明：** 主类型与子类型必须匹配。具体对应关系请参考长时任务主类型与子类型对照表(#backgroundtasksubmode21)。     |
-| backgroundTaskSubmodes | [BackgroundTaskSubmode](#backgroundtasksubmode21)[] | 否    | 否    | 长时任务子类型。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 <br/>**说明：** 主类型与子类型必须匹配。具体对应关系请参考长时任务主类型与子类型对照表(#backgroundtasksubmode21)。|
+| backgroundTaskModes       | [BackgroundTaskMode](#backgroundtaskmode21)[] | 否    | 否    | 长时任务主类型。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**说明：** 主类型与子类型必须匹配。具体对应关系请参考长时任务主类型与子类型对照表。     |
+| backgroundTaskSubmodes | [BackgroundTaskSubmode](#backgroundtasksubmode21)[] | 否    | 否    | 长时任务子类型。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 <br/>**说明：** 主类型与子类型必须匹配。具体对应关系请参考长时任务主类型与子类型对照表。|
 | wantAgent | [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md#wantagent) | 否    | 否    | 通知参数，用于指定点击长时任务通知后跳转的界面。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 | combinedTaskNotification | boolean   | 否    | 是    | 是否合并通知，true表示合并，false表示不合并，默认为false。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**说明：** 该属性在[updateBackgroundRunning](#backgroundtaskmanagerupdatebackgroundrunning21)接口中不生效，如需在已有任务上合并通知，请重新申请该任务，并在申请时设置为支持合并。|
 | continuousTaskId | number   | 否    | 是    | 长时任务ID，默认值为-1。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 <br/>**说明：** 如果combinedTaskNotification取值为true，则该值为必填项，且必须是存在的ID。<br/>作为[updateBackgroundRunning](#backgroundtaskmanagerupdatebackgroundrunning21)接口入参时，该属性必填，且必须是存在的ID。<br/>可以通过[getAllContinuousTasks](#backgroundtaskmanagergetallcontinuoustasks20-1)接口查看当前所有长时任务信息。   |
@@ -2196,7 +2196,7 @@ export default class EntryAbility extends UIAbility {
 
 ## BackgroundTaskMode<sup>21+</sup>
 
-长时任务主类型。通常与长时任务子类型[BackgroundTaskSubmode](#backgroundtasksubmode21)配合使用，对照关系请参考长时任务主类型与子类型对照表(#backgroundtasksubmode21)，两者共同作为API version 21新增的申请[startBackgroundRunning](#backgroundtaskmanagerstartbackgroundrunning21)、更新[updateBackgroundRunning](#backgroundtaskmanagerupdatebackgroundrunning21)长时任务接口入参，用于指定长时任务类型。</br>仅当主类型为MODE_SPECIAL_SCENARIO_PROCESSING特殊场景类型，或非PC/2in1设备主类型为MODE_TASK_KEEPING计算任务时，调用长时任务相关接口时需同时申请ACL权限[ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../../application-dev/security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system)，其他场景无需申请该权限。
+长时任务主类型。通常与长时任务子类型[BackgroundTaskSubmode](#backgroundtasksubmode21)配合使用，对照关系请参考长时任务主类型与子类型对照表，两者共同作为API version 21新增的申请[startBackgroundRunning](#backgroundtaskmanagerstartbackgroundrunning21)、更新[updateBackgroundRunning](#backgroundtaskmanagerupdatebackgroundrunning21)长时任务接口入参，用于指定长时任务类型。</br>仅当主类型为MODE_SPECIAL_SCENARIO_PROCESSING特殊场景类型，或非PC/2in1设备主类型为MODE_TASK_KEEPING计算任务时，调用长时任务相关接口时需同时申请ACL权限[ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../../application-dev/security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system)，其他场景无需申请该权限。
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
