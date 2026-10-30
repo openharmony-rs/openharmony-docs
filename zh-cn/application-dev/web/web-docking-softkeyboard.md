@@ -309,8 +309,8 @@ struct WebComponent {
     ])
 
     /**
-     * 自定义键盘组件Builder
-     */
+      * 自定义键盘组件Builder
+      */
     @Builder
     customKeyboardBuilder() {
     // 这里实现自定义键盘组件，对接WebKeyboardController实现输入、删除、关闭等操作。
