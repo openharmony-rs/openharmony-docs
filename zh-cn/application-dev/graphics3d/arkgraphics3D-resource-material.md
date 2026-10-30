@@ -340,7 +340,6 @@ ArkGraphics 3D中的材质类型通过[MaterialType](../reference/apis-arkgraphi
        });
    }
    ```
-   ```
 
 3. 获取几何体节点并预加载纹理。
 
