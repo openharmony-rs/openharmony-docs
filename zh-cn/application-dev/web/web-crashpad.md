@@ -27,7 +27,7 @@ Web组件支持使用Crashpad记录进程崩溃信息。Crashpad是Chromium内�
 
 2. 参考<!--RP1-->Native访问应用沙箱<!--RP1End-->实现访问应用沙箱dmp文件；也可将存放dmp文件的沙箱路径的文件复制到可以查看的路径。示例如下
 
-   <!-- @[web_get_dmp_files](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebGetDmpFiles/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[web_get_dmp_files](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebGetDmpFiles/entry/src/main/ets/pages/Index.ets) --> 
 
    ``` TypeScript
    import { fileIo as fs } from '@kit.CoreFileKit'
