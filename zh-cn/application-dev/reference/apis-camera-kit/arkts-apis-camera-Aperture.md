@@ -97,9 +97,11 @@ setPhysicalAperture(aperture: number): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function setPhysicalAperture(photoSession: camera.PhotoSession, aperture: number): void {
+function setPhysicalAperture(photoSession: camera.PhotoSession): void {
   try {
-    photoSession.setPhysicalAperture(aperture);
+    let apertures = photoSession.getSupportedPhysicalApertures();
+    photoSession.setZoomRatio(apertures[0].zoomRange[0]);
+    photoSession.setPhysicalAperture(apertures[0].apertures[0]);
   } catch (error) {
     // 失败返回错误码error.code并处理。
     let err = error as BusinessError;

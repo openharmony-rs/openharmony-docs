@@ -80,7 +80,7 @@ setExposureDuration(exposureDuration: number): void
 
 | 参数名      | 类型                           | 必填  | 说明                           |
 | -------- | -------------------------------| ---- | ----------------------------- |
-| exposureDuration   | number  | 是   | 曝光时长值。单位：微秒。                 |
+| exposureDuration   | number  | 是   | 曝光时长值。单位：微秒（μs）。通过[getSupportedExposureDurationRange](arkts-apis-camera-ManualExposureQuery.md#getsupportedexposuredurationrange24)接口获取支持的曝光时长范围。                 |
 
 **错误码：**
 
@@ -95,9 +95,10 @@ setExposureDuration(exposureDuration: number): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function setExposureDuration(photoSession: camera.PhotoSession, exposureDuration: number): void {
+function setExposureDuration(photoSession: camera.PhotoSession): void {
   try {
-    photoSession.setExposureDuration(exposureDuration);
+    let durationRange = photoSession.getSupportedExposureDurationRange();
+    photoSession.setExposureDuration(durationRange[0]);
   } catch (error) {
     // 失败返回错误码error.code并处理。
     let err = error as BusinessError;

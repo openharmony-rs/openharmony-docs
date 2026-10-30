@@ -97,9 +97,10 @@ setIso(iso: number): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function setIso(photoSession: camera.PhotoSession, iso: number): void {
+function setIso(photoSession: camera.PhotoSession): void {
+  let iso = photoSession.getSupportedIsoRange();
   try {
-    photoSession.setIso(iso);
+    photoSession.setIso(iso[0]);
   } catch (error) {
     // 失败返回错误码error.code并处理。
     let err = error as BusinessError;

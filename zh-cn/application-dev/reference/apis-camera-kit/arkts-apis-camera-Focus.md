@@ -54,7 +54,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 function setFocusMode(photoSession: camera.PhotoSession): void {
   try {
-    photoSession.setFocusMode(camera.FocusMode.FOCUS_MODE_AUTO);
+    if (photoSession.isFocusModeSupported(camera.FocusMode.FOCUS_MODE_AUTO)) {
+      photoSession.setFocusMode(camera.FocusMode.FOCUS_MODE_AUTO);
+    }
   } catch (error) {
     // 失败返回错误码error.code并处理。
     let err = error as BusinessError;
@@ -239,6 +241,8 @@ lockFocusTracking(focusPoint: Point): void
 
 锁定焦点跟踪，使对焦持续追踪指定的物体。通过focusPoint参数指定追踪目标。
 
+设置锁定焦点追踪前，先通过[isLockFocusTrackingSupported](arkts-apis-camera-FocusQuery.md#islockfocustrackingsupported)接口查询是否支持锁定焦点跟踪。
+
 **起始版本：** 26.0.0
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
@@ -270,7 +274,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 function lockFocusTracking(photoSession: camera.PhotoSession): void {
   try {
     const focusPoint: camera.Point = {x: 0, y: 0};
-    photoSession.lockFocusTracking(focusPoint);
+    if (photoSession.isLockFocusTrackingSupported()) {
+      photoSession.lockFocusTracking(focusPoint);
+    }
   } catch (error) {
     // 失败返回错误码error.code并处理。
     let err = error as BusinessError;
@@ -284,6 +290,8 @@ function lockFocusTracking(photoSession: camera.PhotoSession): void {
 unlockFocusTracking(): void
 
 解锁焦点跟踪。
+
+可以通过[isLockFocusTrackingSupported](arkts-apis-camera-FocusQuery.md#islockfocustrackingsupported)接口查询是否支持锁定焦点跟踪。
 
 **起始版本：** 26.0.0
 
@@ -309,7 +317,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 function unlockFocusTracking(photoSession: camera.PhotoSession): void {
   try {
-    photoSession.unlockFocusTracking();
+    if (photoSession.isLockFocusTrackingSupported()) {
+      photoSession.unlockFocusTracking();
+    }
   } catch (error) {
     // 失败返回错误码error.code并处理。
     let err = error as BusinessError;

@@ -298,7 +298,7 @@ addMetadataObjectTypes(types: Array\<MetadataObjectType\>): void
 
 | 参数名                  | 类型                                               | 必填 | 说明                          |
 | -------------------- | -------------------------------------------------- | --- | ---------------------------- |
-| types  | Array\<[MetadataObjectType](arkts-apis-camera-e.md#metadataobjecttype)\>  | 是  | metadata流类型信息，通过getSupportedOutputCapability接口获取。 |
+| types  | Array\<[MetadataObjectType](arkts-apis-camera-e.md#metadataobjecttype)\>  | 是  | metadata流类型信息，通过[getSupportedOutputCapability](./arkts-apis-camera-CameraManager.md#getsupportedoutputcapability11)接口获取。 |
 
 **错误码：**
 
@@ -315,7 +315,9 @@ addMetadataObjectTypes(types: Array\<MetadataObjectType\>): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function addMetadataObjectTypes(metadataOutput: camera.MetadataOutput, types: Array<camera.MetadataObjectType>): void {
+function addMetadataObjectTypes(metadataOutput: camera.MetadataOutput, cameraManager: camera.CameraManager, cameraDevice: camera.CameraDevice): void {
+  let cameraOutputCapability = cameraManager.getSupportedOutputCapability(cameraDevice, camera.SceneMode.NORMAL_PHOTO);
+  let types: Array<camera.MetadataObjectType> = cameraOutputCapability.supportedMetadataObjectTypes;
   try {
     metadataOutput.addMetadataObjectTypes(types);
   } catch (error) {
@@ -357,7 +359,9 @@ removeMetadataObjectTypes(types: Array\<MetadataObjectType\>): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function removeMetadataObjectTypes(metadataOutput: camera.MetadataOutput, types: Array<camera.MetadataObjectType>): void {
+function removeMetadataObjectTypes(metadataOutput: camera.MetadataOutput, cameraManager: camera.CameraManager, cameraDevice: camera.CameraDevice): void {
+  let cameraOutputCapability = cameraManager.getSupportedOutputCapability(cameraDevice, camera.SceneMode.NORMAL_PHOTO);
+  let types: Array<camera.MetadataObjectType> = cameraOutputCapability.supportedMetadataObjectTypes;
   try {
     metadataOutput.removeMetadataObjectTypes(types);
   } catch (error) {
