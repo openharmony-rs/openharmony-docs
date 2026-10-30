@@ -22,6 +22,42 @@ Before using the APIs of AudioDeviceEnhanceManager, you need to obtain an AudioD
 import { audio } from '@kit.AudioKit';
 ```
 
+## SoundCardType
+
+Enumerates sound card types.
+
+**Since:** 26.1.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
+| Name| Value| Description|
+| :--- | :--- | :--- |
+| ONBOARD | 0 | Onboard sound card. |
+| USB | 1 | USB sound card. |
+
+## SoundCardInfo
+
+Describes the sound card information.
+
+**Since:** 26.1.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
+| Name| Type| Read-Only| Optional| Description|
+| :--- | :--- | :--- | :--- | :--- |
+| name | string | Yes| No| Sound card name. The maximum length is 256.|
+| vendor | string | Yes| No| Sound card vendor. The maximum length is 128.|
+| model | string | Yes| No| Sound card model. The maximum length is 128.|
+| busAddress | string | Yes| No| Sound card bus address. The maximum length is 256.|
+| driver | string | Yes| No| Sound card driver. The maximum length is 128.|
+| cardId | string | Yes| Yes| Sound card ID. The maximum length is 128. Default value: Default sound card ID of the onboard sound card.|
+| cardType | [SoundCardType](#soundcardtype) | Yes| Yes| Sound card type. Default value: The default is the onboard sound card type.|
+
+
 ## isEnhancedRoutingSupported()
 
 isEnhancedRoutingSupported(): boolean
@@ -245,6 +281,58 @@ audio.createAudioRenderer(audioRendererOptions).then((data) => {
   });
 }).catch((err: BusinessError) => {
   console.error(`AudioFrameworkRenderLog: AudioRenderer Created : ERROR : ${err}`);
+});
+```
+
+## getSoundCardInfoList()
+
+getSoundCardInfoList(): Promise\<Array\<SoundCardInfo\>\>
+
+Obtains the list of sound card information, including onboard sound cards and USB sound cards. This API uses a promise to return the result.
+
+Application scenario: The application needs to obtain information about all audio adapters on the device, including onboard audio adapters and USB audio adapters, for asset management and monitoring.
+
+**Since:** 26.1.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Required permissions**: ohos.permission.GET_AUDIO_ADAPTER_INFO
+
+**System capability**: SystemCapability.Multimedia.Audio.DeviceEnhance
+
+**Return value**
+
+| Type| Description|
+| ------------------- | ------------------------------ |
+| Promise\<Array\<[SoundCardInfo](#soundcardinfo)\>\> | Promise used to return the sound card information list.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message|
+| ------- | -------------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 801 | The current device model does not support this function. |
+
+**Restriction**
+
+- This API supports only PC devices. When a non-PC device invokes this API, error code 801 is returned.
+
+**Example**
+
+```ts
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let audioManager = audio.getAudioManager();
+let deviceEnhanceManager = audioManager.getDeviceEnhanceManager();
+
+deviceEnhanceManager.getSoundCardInfoList().then((soundCardInfoList: Array<audio.SoundCardInfo>) => {
+  console.info(`Successfully obtained sound card info list: ${JSON.stringify(soundCardInfoList, null, 2)}`);
+})
+.catch((err: BusinessError) => {
+  console.error(`Failed to get sound card info list. Code: ${err.code}, Message: ${err.message}`);
 });
 ```
 

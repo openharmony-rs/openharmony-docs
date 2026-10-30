@@ -22,6 +22,42 @@
 import { audio } from '@kit.AudioKit';
 ```
 
+## SoundCardType
+
+枚举，声卡类型。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+| 名称 | 值 | 说明 |
+| :--- | :--- | :--- |
+| ONBOARD | 0 | 板载声卡。 |
+| USB | 1 | USB声卡。 |
+
+## SoundCardInfo
+
+描述声卡信息。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| :--- | :--- | :--- | :--- | :--- |
+| name | string | 是 | 否 | 声卡名称，最大长度为256。 |
+| vendor | string | 是 | 否 | 声卡厂商，最大长度为128。 |
+| model | string | 是 | 否 | 声卡型号，最大长度为128。 |
+| busAddress | string | 是 | 否 | 声卡总线地址，最大长度为256。 |
+| driver | string | 是 | 否 | 声卡驱动信息，最大长度为128。 |
+| cardId | string | 是 | 是 | 声卡ID，最大长度为128。默认值：默认使用板载声卡的声卡ID。 |
+| cardType | [SoundCardType](#soundcardtype) | 是 | 是 | 声卡类型。默认值：默认是板载声卡类型。 |
+
+
 ## isEnhancedRoutingSupported()
 
 isEnhancedRoutingSupported(): boolean
@@ -245,6 +281,58 @@ audio.createAudioRenderer(audioRendererOptions).then((data) => {
   });
 }).catch((err: BusinessError) => {
   console.error(`AudioFrameworkRenderLog: AudioRenderer Created : ERROR : ${err}`);
+});
+```
+
+## getSoundCardInfoList()
+
+getSoundCardInfoList(): Promise\<Array\<SoundCardInfo\>\>
+
+获取声卡信息列表，包括板载声卡和USB声卡。使用Promise异步回调。
+
+使用场景：应用需要获取设备上所有声卡信息，包括板载声卡和USB声卡，用于资产管理与监控等场景。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**需要权限：** ohos.permission.GET_AUDIO_ADAPTER_INFO
+
+**系统能力：** SystemCapability.Multimedia.Audio.DeviceEnhance
+
+**返回值：**
+
+| 类型 | 说明 |
+| ------------------- | ------------------------------ |
+| Promise\<Array\<[SoundCardInfo](#soundcardinfo)\>\> | Promise对象，返回声卡信息列表。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 801 | The current device model does not support this function. |
+
+**约束：**
+
+- 此接口仅支持PC设备。非PC设备调用该接口，返回错误码801。
+
+**示例：**
+
+```ts
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let audioManager = audio.getAudioManager();
+let deviceEnhanceManager = audioManager.getDeviceEnhanceManager();
+
+deviceEnhanceManager.getSoundCardInfoList().then((soundCardInfoList: Array<audio.SoundCardInfo>) => {
+  console.info(`Successfully obtained sound card info list: ${JSON.stringify(soundCardInfoList, null, 2)}`);
+})
+.catch((err: BusinessError) => {
+  console.error(`Failed to get sound card info list. Code: ${err.code}, Message: ${err.message}`);
 });
 ```
 
