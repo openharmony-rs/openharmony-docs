@@ -38191,17 +38191,17 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/haptic.ets",
 				"functions":[
 					{
-						"end_line":117,
+						"end_line":121,
 						"name":"get_haptic",
 						"start_line":16
 					},
 					{
-						"end_line":89,
+						"end_line":92,
 						"name":"set_hapticparam",
-						"start_line":83
+						"start_line":85
 					},
 					{
-						"end_line":107,
+						"end_line":111,
 						"name":"create_haptic",
 						"start_line":24
 					},
@@ -38221,9 +38221,9 @@
 						"start_line":181
 					},
 					{
-						"end_line":214,
+						"end_line":219,
 						"name":"haptic_unregist",
-						"start_line":198
+						"start_line":202
 					}
 				]
 			}
