@@ -371,8 +371,7 @@ function copyFileWithData(context: common.UIAbilityContext): void {
 
 ```ts
 // pages/xxx.ets
-import { fileIo } from '@kit.CoreFileKit';
-import { hash } from '@kit.CoreFileKit';
+import { fileIo, hash } from '@kit.CoreFileKit';
 import { common } from '@kit.AbilityKit';
 
 // 获取应用文件路径，请在组件内获取context
