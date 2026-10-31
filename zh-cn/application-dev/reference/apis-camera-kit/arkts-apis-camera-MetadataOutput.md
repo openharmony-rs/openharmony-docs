@@ -315,11 +315,16 @@ addMetadataObjectTypes(types: Array\<MetadataObjectType\>): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function addMetadataObjectTypes(metadataOutput: camera.MetadataOutput, cameraManager: camera.CameraManager, cameraDevice: camera.CameraDevice): void {
+function addMetadataObjectTypes(metadataOutput: camera.MetadataOutput, cameraManager: camera.CameraManager,
+  cameraDevice: camera.CameraDevice, metadataObjectTypes: Array<camera.MetadataObjectType>): void {
   let cameraOutputCapability = cameraManager.getSupportedOutputCapability(cameraDevice, camera.SceneMode.NORMAL_PHOTO);
   let types: Array<camera.MetadataObjectType> = cameraOutputCapability.supportedMetadataObjectTypes;
+  if (!metadataObjectTypes.every(type => types.includes(type))) {
+    console.error(`invalied metadataObjectTypes.`);
+    return;
+  }
   try {
-    metadataOutput.addMetadataObjectTypes(types);
+    metadataOutput.addMetadataObjectTypes(metadataObjectTypes);
   } catch (error) {
     // 失败返回错误码error.code并处理。
     let err = error as BusinessError;
@@ -359,11 +364,16 @@ removeMetadataObjectTypes(types: Array\<MetadataObjectType\>): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function removeMetadataObjectTypes(metadataOutput: camera.MetadataOutput, cameraManager: camera.CameraManager, cameraDevice: camera.CameraDevice): void {
+function removeMetadataObjectTypes(metadataOutput: camera.MetadataOutput, cameraManager: camera.CameraManager,
+  cameraDevice: camera.CameraDevice, metadataObjectTypes: Array<camera.MetadataObjectType>): void {
   let cameraOutputCapability = cameraManager.getSupportedOutputCapability(cameraDevice, camera.SceneMode.NORMAL_PHOTO);
   let types: Array<camera.MetadataObjectType> = cameraOutputCapability.supportedMetadataObjectTypes;
+  if (!metadataObjectTypes.every(type => types.includes(type))) {
+    console.error(`invalied metadataObjectTypes.`);
+    return;
+  }
   try {
-    metadataOutput.removeMetadataObjectTypes(types);
+    metadataOutput.removeMetadataObjectTypes(metadataObjectTypes);
   } catch (error) {
     // 失败返回错误码error.code并处理。
     let err = error as BusinessError;
