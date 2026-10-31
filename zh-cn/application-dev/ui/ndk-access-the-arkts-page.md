@@ -29,7 +29,7 @@
   
   ``` TypeScript
   import nativeNode from 'libentry.so';
-  import { NodeContent } from '@kit.ArkUI';
+  import { NodeContent, router } from '@kit.ArkUI';
   
   @Entry
   @Component
@@ -55,6 +55,16 @@
           this.showNative = !this.showNative
         })
           .id('btn')
+        Button('CrossLanguage')
+          .margin({ top: 15 })
+          .onClick(() => {
+            // 跳转前销毁已挂载的Native组件，避免与跨语言示例页面争用Native根节点。
+            if (this.showNative) {
+              this.showNative = false;
+            }
+            router.pushUrl({ url: 'pages/CrossLanguage' });
+          })
+          .id('crossLanguageBtn')
         Row() {
           // 将NodeContent和ContentSlot占位组件绑定
           ContentSlot(this.rootSlot)
@@ -175,7 +185,7 @@ OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, arkUINativ
     
     ``` TypeScript
     import nativeNode from 'libentry.so';
-    import { NodeContent } from '@kit.ArkUI';
+    import { NodeContent, router } from '@kit.ArkUI';
     
     @Entry
     @Component
@@ -201,6 +211,16 @@ OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, arkUINativ
             this.showNative = !this.showNative
           })
             .id('btn')
+          Button('CrossLanguage')
+            .margin({ top: 15 })
+            .onClick(() => {
+              // 跳转前销毁已挂载的Native组件，避免与跨语言示例页面争用Native根节点。
+              if (this.showNative) {
+                this.showNative = false;
+              }
+              router.pushUrl({ url: 'pages/CrossLanguage' });
+            })
+            .id('crossLanguageBtn')
           Row() {
             // 将NodeContent和ContentSlot占位组件绑定
             ContentSlot(this.rootSlot)
@@ -221,6 +241,7 @@ OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, arkUINativ
     ``` TypeScript
     // entry/src/main/cpp/types/libentry/Index.d.ts
     export const createNativeRoot: (content: Object) => void;
+    export const createCrossLanguageRoot: (content: Object) => void;
     export const destroyNativeRoot: () => void;
     ```
 
@@ -240,6 +261,9 @@ OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, arkUINativ
         napi_property_descriptor desc[] = {
             {"createNativeRoot", nullptr,
              NativeModule::CreateNativeRoot, nullptr, nullptr,
+             nullptr, napi_default, nullptr},
+            {"createCrossLanguageRoot", nullptr,
+             NativeModule::CreateCrossLanguageRoot, nullptr, nullptr,
              nullptr, napi_default, nullptr},
             {"destroyNativeRoot", nullptr,
              NativeModule::DestroyNativeRoot, nullptr, nullptr,
@@ -279,6 +303,8 @@ OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, arkUINativ
     namespace NativeModule {
     
     napi_value CreateNativeRoot(napi_env env, napi_callback_info info);
+    
+    napi_value CreateCrossLanguageRoot(napi_env env, napi_callback_info info);
     
     napi_value DestroyNativeRoot(napi_env env, napi_callback_info info);
     
@@ -329,6 +355,7 @@ OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, arkUINativ
     #include <arkui/native_node_napi.h>
     #include <js_native_api.h>
     #include "NativeEntry.h"
+    #include "CrossLanguageExample.h"
     #include "NormalTextListExample.h"
     
     namespace NativeModule {
@@ -350,6 +377,26 @@ OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, arkUINativ
     
         // 保持Native侧对象到管理类中，维护生命周期。
         NativeEntry::GetInstance()->SetRootNode(list);
+        return nullptr;
+    }
+    
+    napi_value CreateCrossLanguageRoot(napi_env env, napi_callback_info info)
+    {
+        size_t argc = 1;
+        napi_value args[1] = {nullptr};
+    
+        napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    
+        // 获取NodeContent
+        ArkUI_NodeContentHandle contentHandle;
+        OH_ArkUI_GetNodeContentFromNapiValue(env, args[0], &contentHandle);
+        NativeEntry::GetInstance()->SetContentHandle(contentHandle);
+    
+        // 创建跨语言属性设置示例
+        auto node = CreateCrossLanguageExample();
+    
+        // 保持Native侧对象到管理类中，维护生命周期。
+        NativeEntry::GetInstance()->SetRootNode(node);
         return nullptr;
     }
     
