@@ -33,7 +33,7 @@ type PairingState = nearlinkConstant.PairingState
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API**：从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -52,7 +52,7 @@ type ConnectionState = nearlinkConstant.ConnectionState
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API**：从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -71,7 +71,7 @@ type DeviceClass = nearlinkConstant.DeviceClass
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API**：从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -90,7 +90,7 @@ type AcbState = nearlinkConstant.AcbState
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API**：从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -111,7 +111,7 @@ createRemoteDevice(address: string): RemoteDevice
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API**：从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -165,7 +165,7 @@ onPairingStateChange(callback: Callback&lt;PairingStateParam&gt;): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API**：从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -211,7 +211,7 @@ offPairingStateChange(callback?: Callback&lt;PairingStateParam&gt;): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API**：从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -256,7 +256,7 @@ onConnectionStateChange(callback: Callback&lt;ConnectionStateParam&gt;): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API**：从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -302,7 +302,7 @@ offConnectionStateChange(callback?: Callback&lt;ConnectionStateParam&gt;): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API**：从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -347,7 +347,7 @@ onAcbStateChange(callback: Callback&lt;AcbStateParam&gt;): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API**：从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -393,7 +393,7 @@ offAcbStateChange(callback?: Callback&lt;AcbStateParam&gt;): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API**：从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -731,7 +731,7 @@ getDeviceInformation(): DeviceInformation
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API**：从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **需要权限：** ohos.permission.ACCESS_NEARLINK
 
@@ -780,7 +780,7 @@ try {
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API**：从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -797,7 +797,7 @@ try {
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API**：从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -817,7 +817,7 @@ try {
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API**：从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -841,7 +841,7 @@ try {
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API**：从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -862,7 +862,7 @@ try {
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API**：从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -881,7 +881,7 @@ try {
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API**：从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -904,7 +904,7 @@ try {
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API**：从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -923,7 +923,7 @@ try {
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API**：从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
