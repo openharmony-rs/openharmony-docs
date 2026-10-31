@@ -30,7 +30,7 @@ Web组件支持使用Crashpad记录进程崩溃信息。Crashpad是Chromium内�
    <!-- @[web_get_dmp_files](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebGetDmpFiles/entry/src/main/ets/pages/Index.ets) --> 
 
    ``` TypeScript
-   import { fileIo as fs } from '@kit.CoreFileKit'
+   import { fileIo } from '@kit.CoreFileKit'
    import { BusinessError } from '@kit.BasicServicesKit'
    import { webview } from '@kit.ArkWeb'
 
@@ -46,7 +46,7 @@ Web组件支持使用Crashpad记录进程崩溃信息。Crashpad是Chromium内�
            .onClick(() => {
              let pathDir = this.uiContext.getHostContext()?.filesDir;
              console.info("pathdir=" + pathDir);
-             fs.copyDir("/data/storage/el2/log/crashpad/pending/", pathDir, 0)
+             fileIo.copyDir("/data/storage/el2/log/crashpad/pending/", pathDir, 0)
                .then(()=>{
                  console.info("copy files success");
                })
