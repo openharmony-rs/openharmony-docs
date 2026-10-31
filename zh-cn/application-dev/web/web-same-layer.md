@@ -1622,62 +1622,56 @@ ArkWeb同层渲染场景下的私有属性`arkwebnativestyle`，仅在开启同�
 - 自定义组件宽高未指定为同层渲染标签的宽高
 
   自定义的同层渲染组件宽高需要与同层标签的宽高保持一致，示例如下：
-<!-- @[text_input_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/RenderTxtBoxSameLayer_two.ets) -->
+  <!-- @[text_input_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/RenderTxtBoxSameLayer_two.ets) -->
 
-``` TypeScript
-@Component
-struct TextInputComponent {
-  @Prop params: Params;
-  @State bkColor: Color = Color.White;
+  ``` TypeScript
+  @Component
+  struct TextInputComponent {
+    @Prop params: Params;
+    @State bkColor: Color = Color.White;
 
-  build() {
-    Column() {
-      TextInput({text: '', placeholder: 'please input your word...'})
-        .placeholderColor(Color.Gray)
-        .id(this.params?.elementId)
-        .placeholderFont({size: 13, weight: 400})
-        .caretColor(Color.Gray)
-        .fontSize(14)
-        .fontColor(Color.Black)
+    build() {
+      Column() {
+        TextInput({text: '', placeholder: 'please input your word...'})
+          .placeholderColor(Color.Gray)
+          .id(this.params?.elementId)
+          .placeholderFont({size: 13, weight: 400})
+          .caretColor(Color.Gray)
+          .fontSize(14)
+          .fontColor(Color.Black)
+      }
+      // 自定义组件中的最外层容器组件宽高应该为同层标签的宽高。
+      .width(this.params.width)
+      .height(this.params.height)
     }
-    // 自定义组件中的最外层容器组件宽高应该为同层标签的宽高。
-    .width(this.params.width)
-    .height(this.params.height)
   }
-}
 
-// @Builder中为动态组件的具体组件内容。
-@Builder
-function textInputBuilder(params:Params) {
-  TextInputComponent({params: params})
-    .backgroundColor(Color.White)
-}
-```
-Web({src: $rawfile('test2.html'), controller: this.browserTabController})
-// ...
-  // 配置同层渲染开关开启。
-  .enableNativeEmbedMode(true)
-```
-        .placeholderColor(Color.Gray)
-        .id(this.params?.elementId)
-        .placeholderFont({size: 13, weight: 400})
-        .caretColor(Color.Gray)
-        .fontSize(14)
-        .fontColor(Color.Black)
+  // @Builder中为动态组件的具体组件内容。
+  @Builder
+  function textInputBuilder(params:Params) {
+    TextInputComponent({params: params})
+      .backgroundColor(Color.White)
+  }
+          .placeholderColor(Color.Gray)
+          .id(this.params?.elementId)
+          .placeholderFont({size: 13, weight: 400})
+          .caretColor(Color.Gray)
+          .fontSize(14)
+          .fontColor(Color.Black)
+      }
+      // 自定义组件中的最外层容器组件宽高应该为同层标签的宽高。
+      .width(this.params.width)
+      .height(this.params.height)
     }
-    // 自定义组件中的最外层容器组件宽高应该为同层标签的宽高。
-    .width(this.params.width)
-    .height(this.params.height)
   }
-}
 
-// @Builder中为动态组件的具体组件内容。
-@Builder
-function textInputBuilder(params:Params) {
-  TextInputComponent({params: params})
-    .backgroundColor(Color.White)
-}
-```
+  // @Builder中为动态组件的具体组件内容。
+  @Builder
+  function textInputBuilder(params:Params) {
+    TextInputComponent({params: params})
+      .backgroundColor(Color.White)
+  }
+  ```
 
 ### 如何将同层渲染组件捕获到的事件透传到Web前端？
 同层渲染手势事件通过[setGestureEventResult()](../reference/apis-arkweb/arkts-basic-components-web-EventResult.md#setgestureeventresult14)设置手势事件消费结果，可以选择系统组件侧或ArkWeb侧消费手势事件。如果要实现系统组件侧和ArkWeb侧同时消费手势事件，可以在[setGestureEventResult()](../reference/apis-arkweb/arkts-basic-components-web-EventResult.md#setgestureeventresult14)中将stopPropagation设置为false，即系统组件侧消费的同时可以将手势事件向上冒泡给ArkWeb。
@@ -1687,14 +1681,13 @@ function textInputBuilder(params:Params) {
 - 同层渲染开关[enableNativeEmbedMode](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#enablenativeembedmode11)未开启
 
   使用同层渲染技术需要显式开启同层渲染开关
-<!-- @[enable_native_embedmode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/RenderTxtBoxSameLayer_two.ets) -->
+  <!-- @[enable_native_embedmode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/RenderTxtBoxSameLayer_two.ets) -->
 
-``` TypeScript
-Web({src: $rawfile('test2.html'), controller: this.browserTabController})
-// ...
-  // 配置同层渲染开关开启。
-  .enableNativeEmbedMode(true)
-```
+  ``` TypeScript
+  Web({src: $rawfile('test2.html'), controller: this.browserTabController})
+    // 配置同层渲染开关开启。
+    .enableNativeEmbedMode(true)
+  ```
 
 - 同层标签使用有误
 
