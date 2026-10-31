@@ -5,7 +5,7 @@
 <!--Designer: @widecode; @htt1997; @dboy190-->
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=dcae6f10c07044342acb5b2dc0416e100c5bcaa2 translatedAt=2026-06-17T06:39:33.054Z pushedAt=2026-06-22T07:44:09.128Z -->
+<!-- md-trans-meta sourceCommit=f08a2bc7585a47e3ee5a2e60edcdd8af21f269f1 translatedAt=2026-10-31T01:21:26.054Z pushedAt=2026-10-31T03:30:32.895Z nl=1 -->
 
 ## When to Use
 
@@ -42,7 +42,7 @@ For details about the APIs, see [Distributed KV Store](../reference/apis-arkdata
    }
    ```
    <!-- @[kv_store1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
-
+   
    ``` TypeScript
    public CreateKvManager = (() => {
      Logger.info('CreateKvManager start');
@@ -64,7 +64,7 @@ For details about the APIs, see [Distributed KV Store](../reference/apis-arkdata
    })
    ```
    <!-- @[kv_store3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
-
+   
    ``` TypeScript
    public GetKvStore = (() => {
      Logger.info('GetKvStore start');
@@ -150,7 +150,10 @@ import { common } from '@kit.AbilityKit';
 let store: relationalStore.RdbStore | undefined = undefined;
 
 /* context indicates the application's context information, which is obtained by the caller. The following is for demonstration purposes only. */
-const context = new UIContext().getHostContext() as common.UIAbilityContext;
+const context = uiContext.getHostContext();
+if (context === undefined) {
+  return;
+}
 try {
   const STORE_CONFIG: relationalStore.StoreConfig = {
     name: 'RdbTest.db',
@@ -182,7 +185,7 @@ for (let i = 0; i < 32; i++) {
 // Initialize the encryption algorithm.
 const CRYPTO_PARAM: relationalStore.CryptoParam = {
   encryptionKey: key, // (Mandatory) Key used to open the encrypted database. If this parameter is not specified, the database generates and saves the key and uses the generated key to open the database file.
-  iterationCount: 25000, // (Optional) Number of iterations. The value must be greater than or equal to 0. If this parameter is not specified or is set to 0, the default value 10000 and the default encryption algorithm are used.
+  iterationCount: 25000, // (Optional) Number of iterations. The value must be greater than 0. If this parameter is not specified or is set to 0, the default value 10000 and the default encryption algorithm are used.
   encryptionAlgo: relationalStore.EncryptionAlgo.AES_256_CBC, // (Optional) Encryption/Decryption algorithm. If this parameter is not specified, the default algorithm AES_256_GCM is used.
   hmacAlgo: relationalStore.HmacAlgo.SHA256, // (Optional) HMAC algorithm. If this parameter is not specified, the default value SHA256 is used.
   kdfAlgo: relationalStore.KdfAlgo.KDF_SHA512, // (Optional) KDF algorithm. If this parameter is not specified, the default value (same as the HMAC algorithm) is used.
@@ -197,7 +200,10 @@ const STORE_CONFIG: relationalStore.StoreConfig = {
 }
 
 /* context indicates the application's context information, which is obtained by the caller. The following is for demonstration purposes only. */
-const context = new UIContext().getHostContext() as common.UIAbilityContext;
+const context = uiContext.getHostContext();
+if (context === undefined) {
+  return;
+}
 try {
   store = await relationalStore.getRdbStore(context, STORE_CONFIG);
   if (store == null) {

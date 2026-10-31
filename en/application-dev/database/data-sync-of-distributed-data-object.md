@@ -1,12 +1,12 @@
 # Cross-Device Sync of Distributed Data Objects (ArkTS)
-
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @lvcong_oh-->
 <!--Designer: @lvcong_oh-->
 <!--Tester: @logic42; @hanjiawei-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=b504d26dfc97256c1aae157485692176a3eff938 translatedAt=2026-08-01T02:50:40.821Z pushedAt=2026-08-01T06:20:55.113Z -->
+<!-- md-trans-meta sourceCommit=fb30f4735181c495fcfa540143cf90b73c34803f translatedAt=2026-10-31T01:23:49.978Z pushedAt=2026-10-31T03:36:38.371Z nl=1 -->
+
 
 ## When to Use
 
@@ -27,10 +27,9 @@ Currently<!--RP2--> distributed data objects can be used only in [cross-device m
   The distributed data object has the following states in its lifecycle:
 
   - **Uninitialized**: The distributed data object is not instantiated or is destroyed.
-
   - **Local**: A data table is created, but the data cannot be synced.
-
   - **Distributed**: A data table is created, and data can be synced (there are at least two online devices with the same session ID). If a device is offline or the session ID is empty, the distributed data object changes to the local state.
+
 
 ## Working Principles
 
@@ -39,6 +38,7 @@ Currently<!--RP2--> distributed data objects can be used only in [cross-device m
 ![distributedObject](figures/distributedObject.jpg)
 
 The distributed data objects are encapsulated JS objects in distributed in-memory databases, and can be operated in the same way as local variables. The system automatically implements data sync across devices.
+
 
 ### Encapsulation and Storage of JS Objects
 
@@ -83,7 +83,9 @@ dataObject['parents']['mom'] = "amy"; // Unsupported modification
 
 **Figure 3** Sync of distributed data objects 
 
+
 ![distributedObject_syncView](figures/distributedObject_syncView.jpg)
+
 
 ### Persistence of Distributed Data Objects
 
@@ -104,19 +106,13 @@ Prior to API version 20, only the **Asset** type is supported; the asset array t
 Starting from API version 20, asset arrays ([Assets](../reference/apis-arkdata/js-apis-data-commonType.md#assets)) can be synced.
 
 ## Constraints
-
 <!--RP5-->
-
 - Currently, distributed data objects can only be used in [cross-device migration](../application-models/hop-cross-device-migration.md) and [multi-device collaboration through cross-device call](../application-models/uiability-cross-device-interaction.md) scenarios. In cross-device migration scenarios, the size of each distributed data object does not exceed 150 KB. In multi-device collaboration scenarios, the size of each distributed data object does not exceed 500 KB.
 
 - Currently, the cross-device continuation capability supports the following scenarios:
-
   - [Migrating between abilities in the same application across devices](../application-models/hop-cross-device-migration.md#migrating-between-abilities-in-the-same-application-across-devices)
-
   - [Migrating abilities with different bundle names in the same application across devices](../application-models/hop-cross-device-migration.md#migrating-abilities-with-different-bundle-names-in-the-same-application-across-devices)
-
 <!--RP5End-->
-
 - Data synchronization of distributed data objects occurs within the same application and between the same **sessionId**.
 
 - If data of 1 KB is modified on device A, device B can complete data update within 50 ms after receiving a data change notification.
@@ -133,6 +129,8 @@ Starting from API version 20, asset arrays ([Assets](../reference/apis-arkdata/j
 
 The following are APIs for cross-device data sync of distributed data objects. For more APIs and usage, see [@ohos.data.distributedDataObject (Distributed Data Object)](../reference/apis-arkdata/js-apis-data-distributedobject.md).
 
+
+
 | API| Description|
 | -------- | -------- |
 | create(context: Context, source: object): DataObject | Creates a distributed data object instance.|
@@ -146,12 +144,13 @@ The following are APIs for cross-device data sync of distributed data objects. F
 | save(deviceId: string, callback: AsyncCallback&lt;SaveSuccessResponse&gt;): void | Saves a distributed data object.|
 | revokeSave(callback: AsyncCallback&lt;RevokeSaveSuccessResponse&gt;): void | Revokes the saving of a distributed data object.|
 | bindAssetStore(assetKey: string, bindInfo: BindInfo, callback: AsyncCallback&lt;void&gt;): void | Binds an asset and its RDB store.|
-| setAsset(assetKey: string, uri: string): void | Sets an asset.|
-| setAssets(assetKey: string, uris: Array&lt;string&gt;): void | Sets assets.|
-| on(type: 'change', callback: DataObserver&lt;void&gt;): void | Subscribes to data changes of a distributed data object. |
-| off(type: 'change', callback?: DataObserver&lt;void&gt;): void | Unsubscribes from data changes of a distributed data object. |
-| on(type: 'status', callback: StatusObserver&lt;void&gt;): void | Subscribes to the status changes of a distributed data object. |
-| off(type: 'status', callback?: StatusObserver&lt;void&gt;): void | Unsubscribes from status changes of a distributed data object. |
+| setAsset(assetKey: string, uri: string): Promise&lt;void&gt; | Sets a single asset. |
+| setAssets(assetsKey: string, uris: Array&lt;string&gt;): Promise&lt;void&gt; | Sets an array of assets. |
+| on(type: 'change', callback: DataObserver): void | Subscribes to data changes of a distributed data object. |
+| off(type: 'change', callback?: DataObserver): void |  Removes the callback instance for listening to data changes of the distributed data object. |
+| on(type: 'status', callback: StatusObserver): void | Listens for status changes of the distributed data object. |
+| off(type: 'status', callback?: StatusObserver): void | Removes the callback instance for listening to status changes of the distributed data object. |
+
 
 ## How to Develop
 
@@ -178,9 +177,7 @@ The following are APIs for cross-device data sync of distributed data objects. F
 > - During cross-device migration, after **setSessionId()** is called on the source device to set **sessionId**, you should call **save()** to save data to the target device. However, data can only be synced to the target device upon the first call of the **save()** API. This is because the migration task is completed immediately after data is obtained from the source device for the first time; subsequent data shall be subject to the target device and no further sync is required.
 > - When an application is launched as a result of a migration, the [onWindowStageRestore()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagerestore) lifecycle callback function, rather than [onWindowStageCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagecreate), is triggered following **onCreate()** or **onNewWant()**. This sequence occurs for both cold and hot starts. If you have performed some necessary initialization operations during application launch in `onWindowStageCreate()`, you must perform the same initialization operations in `onWindowStageRestore()` after the migration to avoid application exceptions.
 >
-
 <!--RP1-->
-
 > - The `continuable` tag must be set for cross-device migration. For details, see [cross-device migration development procedure](../application-models/hop-cross-device-migration.md#how-to-develop).<!--RP1End-->
 >
 > - The **sessionId** field in **wantParam** is used by other services. You are advised to customize a key for accessing the **sessionId** field.
@@ -360,6 +357,7 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
+               
 
 ### Using Distributed Data Objects in Multi-Device Collaboration
 

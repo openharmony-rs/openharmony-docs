@@ -6,7 +6,7 @@
 <!--Designer: @qq_43802146-->
 <!--Tester: @furryfurry123-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=304517cf5105092ff7ebb1be0da01c6a3f1d16fb translatedAt=2026-09-28T02:22:40.929Z pushedAt=2026-09-28T11:39:59.826Z -->
+<!-- md-trans-meta sourceCommit=810f68f79227345aff0fb397751dcb518b78e10d translatedAt=2026-10-31T01:17:31.722Z pushedAt=2026-10-31T01:53:34.620Z nl=2 -->
 
 - [About This Kit](connectivity-kit-intro.md)
 - Bluetooth<!--bluetooth-->
@@ -32,6 +32,7 @@
   - [P2P Development Guide](wlan/p2p-development-guide.md)
   - [STA Development](wlan/sta-development-guide.md)
   - [Wi-Fi Scanning Development](wlan/scan-development-guide.md)
+  - [Wi-Fi Glossary](wlan/wlan-glossary.md)
 - Converged Short-Range<!--fusion-connectivity-->
   - [Converged Short-Range Service Development](fusion-connectivity/fusion-connectivity-overview.md)
   - [Interconnection Between Partner Devices and OpenHarmony Devices](fusion-connectivity/partneragent-life-application-guide.md)
@@ -43,5 +44,5 @@
   - [Managing SSAP Connections and Services](nearlink/nearlink-ssap-connection-guide.md)
   - [Transferring Data over NearLink](nearlink/nearlink-data-transfer-guide.md)
   - [Obtaining NearLink Coordinated Devices Set Information](nearlink/nearlink-cdsm-information-guide.md)
-  - [FAQs](nearlink/nearlink-faq-guide.md)
-  - [Glossary](nearlink/nearlink-glossary-guide.md)
+  - [NearLink FAQs](nearlink/nearlink-faq-guide.md)
+  - [NearLink Glossary](nearlink/nearlink-glossary-guide.md)

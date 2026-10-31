@@ -6,6 +6,7 @@
 <!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=b3add22a83b286a77b59d5322d3bf8b5f1998739 translatedAt=2026-10-31T01:17:28.252Z pushedAt=2026-10-31T01:36:12.329Z nl=1 -->
 
 ## A
 ### A2DP
@@ -18,9 +19,9 @@ The audio source device in the [A2DP](#a2dp) profile. It is responsible for enco
 Asynchronous Connectionless Link. In the Bluetooth subsystem, it indicates the connection status of the physical link between devices.
 ## B
 ### BLE
-Bluetooth Low Energy. This protocol has been supported since Bluetooth 4.0. Compared with classic Bluetooth, it is a Bluetooth communication technology designed for low power consumption and long battery life.
+Bluetooth Low Energy. This protocol has been supported since Bluetooth 4.0. Compared with Bluetooth Classic, it is a Bluetooth communication technology designed for low power consumption and long battery life.
 ### BR
-Basic Rate. This is a Bluetooth wireless communication technology used to refer to classic Bluetooth. It is mainly used for file transfer and audio streaming.
+Basic Rate, which is a Bluetooth wireless communication technology representing Bluetooth Classic. It is mainly used in scenarios such as file and audio stream transmission.
 ### Bluetooth SIG
 Bluetooth Special Interest Group. This organization publishes Bluetooth technical specifications. You can obtain detailed Bluetooth technical documents from its official website.
 ## C
@@ -31,7 +32,7 @@ The core data unit of a [GATT](#gatt) service ([Service](#service)). It is the b
 The data unit of a [GATT](#gatt) characteristic ([Characteristic](#characteristic)). It describes additional information and attributes of the characteristic, supports data read/write, and is identified by a [UUID](#uuid).
 ## E
 ### EDR
-Enhanced Data Rate. This is an enhanced version of Bluetooth [BR](#br) with a higher data transmission rate. Together with BR, it is referred to as classic Bluetooth.
+Enhanced Data Rate, which enhances [BR](#br) by offering a higher data transmission rate. Together with BR, they are collectively referred to as Bluetooth Classic.
 ## G
 ### GATT
 Generic Attribute Profile. This is the core protocol of [BLE](#ble). It defines the mechanism for Bluetooth communication and data transmission based on services ([Service](#service)), characteristics ([Characteristic](#characteristic)), and descriptors ([Descriptor](#descriptor)).
@@ -43,7 +44,7 @@ Hands-Free Profile. This profile is used to implement hands-free calling between
 ### HFP AG
 Hands-Free Audio Gateway. This is the audio gateway in the [HFP](#hfp) profile. It serves as the audio processing center in Bluetooth call audio and is responsible for functions such as call control, for example, answering or hanging up a call, and managing audio input/output. Typical devices include phones and tablets.
 ### HID
-Human Interface Device Profile. This profile is designed for classic Bluetooth and can be used to implement low-latency bidirectional communication between Bluetooth wireless human interface devices. For example, it can be used to transfer data between devices such as keyboards, mice, and game controllers and a host such as a phone or tablet. This profile defines two roles: [HID Host](#hid-host) and [HID Device](#hid-device).
+Human Interface Device Profile. This profile is designed for Bluetooth Classic and can be used to implement low-latency bidirectional communication between Bluetooth wireless human interface devices. For example, it can be used to transfer data between devices such as keyboards, mice, and game controllers and a host such as a phone or tablet. This profile defines two roles: [HID Host](#hid-host) and [HID Device](#hid-device).
 
 In the HID profile, data transmission channels are classified into two types: the interrupt channel and the control channel. The interrupt channel is used to transmit one-way low-latency real-time data. The control channel is used to transmit two-way reliable real-time data and includes the following three requests:
 - GET_REPORT: A data read request initiated by the HID host to obtain the status information of the HID device.
