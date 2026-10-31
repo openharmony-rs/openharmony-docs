@@ -2336,7 +2336,7 @@ scale(x: number, y: number, level: AntiAliasingLevel): Promise\<void>
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function scaleSync(pixelMap: image.PixelMap) {
+function scale(pixelMap: image.PixelMap) {
   const scaleX: number = 2.0;
   const scaleY: number = 1.0;
   pixelMap.scale(scaleX, scaleY, image.AntiAliasingLevel.LOW).then(() => {
