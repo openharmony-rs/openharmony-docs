@@ -188,11 +188,96 @@ java -jar app_packing_tool.jar --mode app [--hap-path <path>] [--hsp-path <path>
 | --stat-duplicate       | 否     | boolean       | 打包完成后，是否扫描重复so文件，该参数可用于识别重复so，以减小包大小。取值为true时，执行扫描，扫描完成会在--out-path参数指定的输出文件所在目录下生成`scan_report`目录，其中包含文件名为`scan_result`的[重复so文件扫描报告](#扫描重复so文件)，并在告警中打印`scan_report`目录路径。取值为false时，不执行扫描。默认值为false。<br/>从API version 23开始支持该参数。 |
 | --deduplicate-so       | 否     | boolean       | 用于在打包时对so文件进行去重，从而有效减小App的包体积。<br/>默认值：`false`<br/>取值说明：<br/>`true`：执行so文件去重。去重完成后，将在`--out-path`指定的目录下生成去重报告[so_dedup_report.json](#so去重报告)，并在日志中打印去重结果。<br/>`false`：不执行so文件去重。<br/>去重策略：<br/>- 当App包中不同模块间存在相同的so文件，且这些so会解压到应用根目录时（即`module.json5`中`compressNativeLibs`和`extractNativeLibs`不同时为`false`，且`libIsolation`为`false`）。<br/>- 打包工具会根据`deviceTypes`、`deliveryWithInstall`、`distributionFilter`、`requiredDeviceFeatures`等配置进行去重，确保去重后应用在各个可安装设备上的功能保持不变。<br/>**说明**：<br/>- 若应用代码中有直接从原始安装包中读取so文件的操作，开启去重后应用行为将发生变化。此时请勿开启该功能，或修改代码逻辑改为读取解压后的so文件后再开启。<br/>- 开发者若在打包时开启了so去重功能，建议仔细检查去重结果，并在上架前充分验证去重后App包的功能完整性。<br/>从API版本26.0.0开始支持该参数。|
 
+## installer模式打包指令
+
+从API版本26.0.1开始支持installer模式。
+
+installer模式用于将一个或多个应用的HAP、HSP和安装清单打包为一个.app包，供安装器读取。生成的包采用ZIP格式，根目录包含manifest.json和Contents目录，Contents下按应用目录存放原始HAP、HSP文件。
+
+该包与[App打包指令](#app打包指令)生成的包具有不同的内部结构，使用时需要安装器支持installer包格式。打包工具负责生成容器，不执行应用安装或签名、验签。
+
+### 命令与参数
+
+```bash
+java -jar app_packing_tool.jar --mode installer --contents <path> [--manifest <path>] --out-path <path> [--force true]
+```
+
+**表6** installer打包指令参数说明
+
+| 指令 | 是否必选项 | 选项 | 描述 |
+| --- | --- | --- | --- |
+| --mode | 是 | installer | 打包类型。 |
+| --contents | 是 | NA | 包含应用目录的输入目录路径。该目录必须非空，其直接子目录分别对应一个应用。目录结构要求见[输入目录与包结构](#输入目录与包结构)。 |
+| --manifest | 否 | NA | 外部安装清单文件路径，必须指向非空、可读的普通文件。提供时，工具校验清单后保留其原始内容；不提供时，工具自动生成清单。清单要求见[安装清单](#安装清单)。 |
+| --out-path | 是 | NA | 输出文件路径，文件名必须以小写.app为后缀。输出必须位于--contents目录之外，且不能与输入HAP、HSP或外部清单指向同一文件。 |
+| --force | 否 | boolean | 是否覆盖已存在的输出文件。true表示允许覆盖已有普通文件，false表示输出已存在时终止打包并报错，默认值为false。仅在校验和写入成功后替换已有输出；输出路径为目录时不能覆盖。 |
+
+### 输入目录与包结构
+
+--contents指定的目录需要满足以下要求：
+
+- 直接子项只能是应用目录，至少包含一个应用目录。
+- 每个应用目录必须非空，且只能直接包含可读的普通HAP、HSP文件，文件名以小写.hap或.hsp结尾。应用目录内不能包含子目录或其他文件。
+- 所有输入模块必须为Stage模型，module.json中有效的bundleType为app，deviceTypes数组中必须包含`2in1`，可以同时包含其他设备类型。
+
+例如，--contents指定`./payload`时，输入结构可以为：
+
+```text
+payload/
+├── app1/
+│   ├── entry.hap
+│   └── library.hsp
+└── app2/
+    └── entry.hap
+```
+
+输出的installer包结构如下。输入目录本身的名称不影响包内固定的Contents目录名称。
+
+```text
+example.app
+├── manifest.json
+└── Contents/
+    ├── app1/
+    │   ├── entry.hap
+    │   └── library.hsp
+    └── app2/
+        └── entry.hap
+```
+
+打包时保留HAP、HSP的原始文件内容，不修改模块内部文件，不在installer包根目录生成pack.info。manifest.json和HAP、HSP在外层ZIP中均采用DEFLATE压缩，压缩等级固定为5，与模块的debug配置无关。
+
+### 安装清单
+
+manifest.json记录应用信息。未传入--manifest时，工具自动生成清单；传入时，工具校验后将外部清单的原始内容写入包内。
+
+**表7** manifest.json顶层字段说明
+
+| 字段 | 类型 | 是否必填 | 描述 |
+| --- | --- | --- | --- |
+| version | number | 否 | 清单格式版本号。 |
+| distributionType | string | 否 | 分发类型。 |
+| apps | Array&lt;Object&gt; | 是 | 非空应用信息数组，与--contents下的应用目录一一对应。 |
+
+**表8** apps数组元素字段说明
+
+| 字段 | 类型 | 是否必填 | 描述 |
+| --- | --- | --- | --- |
+| bundleName | string | 是 | 非空应用Bundle名称。 |
+| versionCode | number | 是 | 应用版本号。 |
+| versionName | string | 是 | 非空应用版本名称。 |
+| minAPIVersion | number | 是 | 最小API版本，不低于对应应用内所有模块的最大值。 |
+| path | string | 是 | 包内应用目录，格式为`Contents/<应用目录名>`，使用正斜杠。 |
+| coreApp | boolean | 否 | 是否为核心应用。整个apps数组必须有且只有一个true，其余项可省略或设为false。 |
+
+versionCode和minAPIVersion均须为[0, 2147483647]范围内的整数，不接受数字字符串。
+
+自动生成时，apps按应用目录名的Unicode码点顺序排序，minAPIVersion取对应应用内所有模块的最大值，第一个应用设为核心应用。需要指定其他核心应用时，可通过--manifest传入外部清单。
+
 ## 多工程打包指令
 
 多工程打包适用于多个团队开发同一个应用，但不方便共享代码的情况。开发者通过传入已经打好的HAP、HSP和App包，将多个包打成一个最终的App包，并上架应用市场。
 
-**表6** 多工程打包合法性校验规则
+**表9** 多工程打包合法性校验规则
 
 | HAP或HSP的module.json中的被校验字段  | 校验规则                           |
 | --------------------------------- | --------------------------------- |
@@ -217,7 +302,7 @@ java -jar app_packing_tool.jar --mode app [--hap-path <path>] [--hsp-path <path>
 java -jar app_packing_tool.jar --mode multiApp [--hap-list <path>] [--hsp-list <path>] [--app-list <path>] --out-path <option> [--force true] [--encrypt-path <path>] [--pac-json-path <path>] [--atomic-service-entry-size-limit <size>] [--atomic-service-non-entry-size-limit <size>]
 ```
 
-**表7** 多工程打包指令参数说明
+**表10** 多工程打包指令参数说明
 
 | 指令         | 是否必选项 | 选项        | 描述                                                        |
 |------------|-------|-----------|----------------------------------------------------------------|
@@ -248,7 +333,7 @@ HQF包适用于[增量调试](https://developer.huawei.com/consumer/cn/doc/harmo
 java -jar app_packing_tool.jar --mode hqf --json-path <path> [--lib-path <path>] [--ets-path <path>] [--resources-path <path>] --out-path <path> [--force true]
 ```
 
-**表8** HQF打包指令参数说明
+**表11** HQF打包指令参数说明
 
 | 指令          | 是否必选项 | 选项          | 描述                                 |
 |-------------|-------|-------------|------------------------------------|
@@ -276,7 +361,7 @@ APPQF包由一个或多个HQF文件组成。这些HQF包在应用市场会从APP
 java -jar app_packing_tool.jar --mode appqf --hqf-list <path> --out-path <path> [--force true]
 ```
 
-**表9** APPQF打包指令参数说明
+**表12** APPQF打包指令参数说明
 
 | 指令         | 是否必选项 | 选项          | 描述                                 |
 |------------|-------|-------------|------------------------------------|
@@ -294,7 +379,7 @@ java -jar app_packing_tool.jar --mode appqf --hqf-list <path> --out-path <path> 
 java -jar app_packing_tool.jar --mode versionNormalize --input-list 1.hap,2.hsp --version-code 1000001 --version-name 1.0.1 --out-path out
 ```
 
-**表10** versionNormalize指令参数说明
+**表13** versionNormalize指令参数说明
 
 | 指令             | 是否必选项 | 选项               | 描述                                                                |
 |----------------|-------|------------------|-------------------------------------------------------------------|
@@ -313,7 +398,7 @@ java -jar app_packing_tool.jar --mode versionNormalize --input-list 1.hap,2.hsp 
 java -jar app_packing_tool.jar --mode packageNormalize --hsp-list 1.hsp,2.hsp --bundle-name com.example.myapplication --version-code 1000001 --out-path out
 ```
 
-**表11**  参数含义及规范
+**表14**  参数含义及规范
 
 | 指令             | 是否必选项 | 选项            | 描述                                                  |
 |----------------|-------|---------------|-----------------------------------------------------|
@@ -338,7 +423,7 @@ apiReleaseType/bundleTypes/installationFree/deliveryWithInstall参数，并在�
 java -jar app_packing_tool.jar --mode generalNormalize --input-list 1.hsp,2.hsp --bundle-name com.example.myapplication --version-code 1000001 --version-name 1.0.1 --min-compatible-version-code 14 --min-api-version 14 --target-api-version 14 --api-release-type Release1 --bundle-type app --installation-free false --delivery-with-install true --device-types default,tablet --out-path out
 ```
 
-**表12**  参数含义及规范
+**表15**  参数含义及规范
 
 | 指令                          | 是否必选项 | 选项                                               | 描述                                                         |
 | ----------------------------- | ---------- | -------------------------------------------------- | ------------------------------------------------------------ |
@@ -368,7 +453,7 @@ java -jar app_packing_tool.jar --mode generalNormalize --input-list 1.hsp,2.hsp 
 java -jar app_packing_tool.jar --mode res --entrycard-path <path> --pack-info-path <path> --out-path <path> [--force true]
 ```
 
-**表13** 参数含义及规范
+**表16** 参数含义及规范
 
 | 指令               | 是否必选项 | 选项            | 描述                                 |
 |------------------|-------|---------------|------------------------------------|
@@ -382,7 +467,7 @@ java -jar app_packing_tool.jar --mode res --entrycard-path <path> --pack-info-pa
 
 开发者可以使用打包工具的jar包对应用进行打包，通过传入打包选项、HAP、HSP包文件目录路径，生成所需的App包。App包用于上架应用市场。
 
-**表14** fastApp打包合法性校验规则
+**表17** fastApp打包合法性校验规则
 
 | HAP或HSP的module.json中的被校验字段  | 校验规则                           |
 | --------------------------------- | --------------------------------- |
@@ -412,7 +497,7 @@ java -jar app_packing_tool.jar --mode res --entrycard-path <path> --pack-info-pa
 java -jar app_packing_tool.jar --mode fastApp [--hap-path <path>] [--hsp-path <path>] --out-path <path> [--signature-path <path>] [--certificate-path <path>] --pack-info-path <path> [--pack-res-path <path>] [--force true] [--encrypt-path <path>] [--pac-json-path <path>] [--atomic-service-entry-size-limit <size>] [--atomic-service-non-entry-size-limit <size>]
 ```
 
-**表15** 参数含义及规范
+**表18** 参数含义及规范
 
 | 指令                 | 是否必选项 | 选项         | 描述                                                     |
 |--------------------|-------|------------|----------------------------------------------------|
@@ -434,7 +519,7 @@ java -jar app_packing_tool.jar --mode fastApp [--hap-path <path>] [--hsp-path <p
 
 ## 扫描重复so文件
 
-通过[app打包指令](#app打包指令)、[fastApp打包指令](#fastapp模式打包指令)或[多工程打包指令](#多工程打包指令)打包生成App包时，设置--stat-duplicate为true开启扫描重复so文件，系统将在打包成功后生成扫描报告。识别重复so后，开发者可根据实际需求减小包大小。扫描报告将存放在打包生成的App包所在目录下的`scan_report`目录中。扫描报告的内容结构如表16所示，重复so文件的特征信息结构如表17所示。扫描报告的示例如下：
+通过[app打包指令](#app打包指令)、[fastApp打包指令](#fastapp模式打包指令)或[多工程打包指令](#多工程打包指令)打包生成App包时，设置--stat-duplicate为true开启扫描重复so文件，系统将在打包成功后生成扫描报告。识别重复so后，开发者可根据实际需求减小包大小。扫描报告将存放在打包生成的App包所在目录下的`scan_report`目录中。扫描报告的内容结构如表19所示，重复so文件的特征信息结构如表20所示。扫描报告的示例如下：
 
 json统计结果：
 ```json
@@ -452,16 +537,16 @@ json统计结果：
     "taskDesc": "find the duplicated so"
 }]
 ```
-**表16 重复so文件扫描报告字段信息**
+**表19 重复so文件扫描报告字段信息**
 
 | 字段      | 类型   | 描述                        |
 | --------- | ------ | --------------------------- |
-| result    | Struct | 重复so文件的特征信息，包含MD5值、文件大小和文件路径，具体内容参考表17。       |
+| result    | Struct | 重复so文件的特征信息，包含MD5值、文件大小和文件路径，具体内容参考表20。       |
 | startTime | String | 任务开始时间。              |
 | stopTime  | String | 任务结束时间。              |
 | taskDesc  | String | 任务描述，输出"find the duplicated so"。            |
 
-**表17 重复so文件的特征字段信息**
+**表20 重复so文件的特征字段信息**
 
 | 字段  | 类型            | 描述                       |
 | ----- | --------------- | -------------------------- |
@@ -495,7 +580,7 @@ json统计结果：
 }
 ```
 
-**表18 so去重报告字段信息**
+**表21 so去重报告字段信息**
 
 | 字段           | 类型   | 描述                                                         |
 | -------------- | ------ | ------------------------------------------------------------ |
@@ -503,7 +588,7 @@ json统计结果：
 | totalSavedSize | int    | 通过去重操作节省的总文件大小，即去重前后所有HAP/HSP包大小差值之和（app压缩前），单位为Byte。                  |
 | modules        | Object | 各个模块的去重详情，key为模块名称，value为该模块的去重信息对象。   |
 
-**表19 模块去重信息字段信息**
+**表22 模块去重信息字段信息**
 
 | 字段    | 类型            | 描述                                                         |
 | ------- | --------------- | ------------------------------------------------------------ |
@@ -2899,3 +2984,218 @@ so去重失败。
 1. 根据日志中“Error Message:”信息，确认具体的异常原因。
 2. 检查模块中libs目录和so文件是否完整。
 3. 确保有足够的磁盘空间进行so去重操作。
+
+### 10022001 installer打包参数无效
+
+**错误信息**
+
+Installer arguments are invalid.
+
+**错误描述**
+
+installer模式下，必填参数、输出后缀或覆盖设置不符合要求。
+
+**可能原因**
+
+1. --contents或--out-path未提供或为空，或传入的--manifest路径为空。
+2. --out-path指定的文件名不是以小写.app结尾。
+3. --force的值不是true或false。
+4. 输出已存在但未设置--force true，或输出路径不是普通文件。
+
+**处理步骤**
+
+1. 按照[installer打包指令参数说明](#命令与参数)提供非空的--contents和--out-path；使用外部清单时，提供有效的--manifest文件路径。
+2. 将输出文件后缀设置为小写.app。
+3. 将--force设置为true或false，或省略该参数以使用默认值false。
+4. 检查输出路径。需要覆盖已有普通文件时设置--force true；若输出路径为目录，改用其他输出文件路径。
+
+### 10022002 installer打包路径无效
+
+**错误信息**
+
+Installer path is invalid.
+
+**错误描述**
+
+installer模式下，输出路径与输入冲突，或包内路径名称不符合要求。
+
+**可能原因**
+
+1. 输出位于--contents目录内部。
+2. 输出路径与输入HAP、HSP或外部清单指向同一文件，包括通过链接指向同一文件的情况。
+3. 应用目录名或模块文件名为`.`、`..`，或包含`/`、`\`、`:`。
+
+**处理步骤**
+
+1. 将--out-path设置为--contents目录之外的文件路径。
+2. 使用与输入文件不同的输出路径，并检查链接指向的实际文件。
+3. 根据日志定位名称不合法的目录或文件，修改名称，并同步更新外部清单中的path。
+
+### 10022003 installer输入目录无效
+
+**错误信息**
+
+Installer contents are invalid.
+
+**错误描述**
+
+installer模式下，输入目录的结构或模块文件后缀不符合要求。
+
+**可能原因**
+
+1. --contents不是有效目录，或该目录为空。
+2. --contents目录的直接子项中存在非目录项。
+3. 应用目录为空，或包含后缀不是小写.hap、.hsp的子项。
+
+**处理步骤**
+
+1. 检查--contents路径，确保目录存在且包含至少一个应用目录。
+2. 按照[输入目录与包结构](#输入目录与包结构)组织输入，将各应用的模块分别放入应用目录。
+3. 确保每个应用目录非空，并且只直接包含可读的普通.hap、.hsp文件，不包含子目录或其他文件。
+
+### 10022004 installer输入模块无效
+
+**错误信息**
+
+Installer module is invalid.
+
+**错误描述**
+
+installer模式下，输入HAP、HSP不能被正确解析，或模块类型、设备类型不符合要求。
+
+**可能原因**
+
+1. 模块损坏、缺少有效的module.json，或模块内部配置、profile无法解析。
+2. 输入模块为FA模型，或有效的bundleType不是app。
+3. deviceTypes不是有效数组，或未包含2in1。
+
+**处理步骤**
+
+1. 根据此前的模块解析日志定位问题，检查配置并重新构建HAP、HSP，确保文件完整。
+2. 使用Stage模型模块，在[app.json5](../quick-start/app-configuration-file.md)中核对bundleType。该模式要求有效值为app。
+3. 在[module.json5](../quick-start/module-configuration-file.md)中将deviceTypes配置为包含2in1的数组，并重新构建模块。
+
+### 10022005 installer应用校验失败
+
+**错误信息**
+
+Installer application validation failed.
+
+**错误描述**
+
+installer模式下，同一应用目录内的模块未通过应用校验。
+
+**可能原因**
+
+1. 同一应用的bundleName、bundleType、versionCode、buildVersion或versionName不一致。
+2. debug、API版本、模块名称、依赖关系或其他模块配置不符合应用打包要求。
+
+**处理步骤**
+
+1. 核对同一应用目录下各模块的应用标识和版本配置，确保一致，修改后重新构建模块。
+2. 优先查看此前的模块校验错误，根据日志修正配置及跨模块关系。
+
+### 10022006 installer安装清单无效
+
+**错误信息**
+
+Installer manifest is invalid.
+
+**错误描述**
+
+installer模式下，外部安装清单无法解析或未通过清单校验。
+
+**可能原因**
+
+1. 清单不是可解析的JSON对象，或apps不是非空对象数组；必填字段缺失、为空或类型、数值范围不合法。
+2. apps的path重复、遗漏应用目录、包含不存在的目录，或不符合`Contents/<应用目录名>`格式。
+3. 清单中的bundleName、versionCode、versionName与模块不一致，或minAPIVersion低于对应应用目录内模块的最大值。
+4. coreApp=true的数量不是1，或coreApp使用了非布尔值。
+
+**处理步骤**
+
+1. 根据[安装清单](#安装清单)检查JSON结构、必填字段及类型。versionCode、minAPIVersion使用[0, 2147483647]范围内的整数数值，不使用数字字符串。
+2. 确保每个输入应用目录恰好对应一条apps记录，path使用`Contents/<应用目录名>`，且使用正斜杠。
+3. 按实际模块信息修正应用标识和版本字段，使minAPIVersion不低于对应应用目录内所有模块的最大值。
+4. 仅为一个应用设置布尔值coreApp=true，其余应用省略该字段或设置为false。
+
+### 10022007 installer包写入失败
+
+**错误信息**
+
+Write installer archive failed.
+
+**错误描述**
+
+installer模式下，创建临时输出、读取模块或写入ZIP包时发生错误。
+
+**可能原因**
+
+1. 模块无法完整读取，或打包过程中发生ZIP写入错误。
+2. 输出目录无法创建或写入，或磁盘空间不足。
+
+**处理步骤**
+
+1. 根据日志定位输入模块，检查文件是否完整、可读，并查看具体的ZIP错误原因。
+2. 检查输出目录的创建、写入权限及可用磁盘空间，修正后重试。
+
+### 10022008 installer包提交失败
+
+**错误信息**
+
+Commit installer archive failed.
+
+**错误描述**
+
+installer模式下，临时包已写入，但无法将其提交到--out-path指定的位置。
+
+**可能原因**
+
+1. 输出目录或目标文件的权限、占用状态不允许提交，或目标路径在打包期间发生变化。
+2. 未允许覆盖时，目标文件已经存在。
+3. 输出所在文件系统不支持提交所需的原子移动或硬链接操作。
+
+**处理步骤**
+
+1. 检查输出目录及目标文件的权限和占用情况，确保输出路径稳定、可写。
+2. 需要覆盖已有普通文件时设置--force true，否则改用未被占用的输出路径。
+3. 根据日志确认文件系统错误，改用支持相应文件操作的输出位置后重试。
+
+### 10022009 installer临时产物清理失败
+
+**错误信息**
+
+Clean installer temporary output failed.
+
+**错误描述**
+
+installer模式下，清理本次打包生成的临时文件或目录失败。该诊断单独记录，不改变本次打包已确定的成功或失败结果。
+
+**可能原因**
+
+临时文件或目录被占用、无删除权限，或删除时发生文件系统错误。
+
+**处理步骤**
+
+1. 根据日志中的临时路径检查占用情况和权限，确认该临时产物已不再被使用后清理。
+2. 若同时存在其他打包错误，优先按主错误排查；不能仅凭此清理诊断判断打包是否成功，应检查进程退出码和输出文件。
+
+### 10022010 installer文件操作失败
+
+**错误信息**
+
+Installer file operation failed.
+
+**错误描述**
+
+installer模式下，访问输入目录、模块或外部清单时发生文件系统错误。
+
+**可能原因**
+
+1. 输入路径不存在或无法访问，或模块、外部清单路径不是普通文件。
+2. 外部清单无法读取，或遍历输入目录、获取文件信息等操作失败。
+
+**处理步骤**
+
+1. 根据日志检查路径是否存在、可访问，并确保模块和外部清单为可读的普通文件。
+2. 检查输入目录的访问权限、文件读取权限及文件系统状态，修正后重试。
