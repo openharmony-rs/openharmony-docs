@@ -2,10 +2,11 @@
 
 <!--Kit: Asset Store Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @JeremyXu-->
-<!--Designer: @skye_you-->
+<!--Owner: @HarMonkey-->
+<!--Designer: @wkr321_ent-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=0f15572057cde5e246e5efac8fa50aaf3207c8bf translatedAt=2026-10-31T06:57:00.632Z pushedAt=2026-10-31T09:09:04.689Z nl=1 -->
 
 - [Introduction to Asset Store Kit](asset-store-kit-overview.md)
 - Scenarios<!--asset-scenarios-->
@@ -32,3 +33,4 @@
   - [Querying Assets (C/C++)](asset-native-query.md)
   - [Managing Assets in a Group (C/C++)](asset-native-group-access-control.md)
   - [Syncing Assets (Backup and Restore) (C/C++)](asset-native-sync.md)
+- [Glossary](asset-glossary.md)
